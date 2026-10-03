@@ -1,0 +1,664 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Existing scoped reviews only; not whole game/scene/script approval",
+  "fields": {
+    "Vec2/Polygon": {
+      "source": "reports/cloud-world/house-exact.json;reports/cloud-world/player-exact.json",
+      "selector": "native physics_shape_owners + resource shapes + transforms",
+      "derivation": "world_geometry.geometry; float32 multiply/add order; actor hull first"
+    },
+    "BodyRule": {
+      "source": "reports/cloud-world/house-exact.json;upstream/MOTHER-Encore/Maps/podunk/Nintens House.tscn",
+      "selector": "21 bodies; door serialized overrides; existing world-flags-v0410 fresh-world rules"
+    },
+    "Overlay": {
+      "source": "reports/m2-scene-reference-reviewed/house-data.json;upstream/MOTHER-Encore/Maps/podunk/Nintens House.tscn;upstream/MOTHER-Encore/Tilesets/Interior.tres",
+      "selector": "Objects single-tile mode cells and Above atlas-mode cells; zero Z and later Above sibling order",
+      "derivation": "Objects flags=0 uses source Y-sort origin; Above flags=1 is the fixed foreground pass; atlas UV = region position + cell atlas coordinate * tile size; original RGBA pixels and offsets retained"
+    },
+    "Resource/Overlay/MapDraw": {
+      "source": "romfs/{actor-preview,house-layers,map-preview}/source.json",
+      "selector": "reviewed source layouts and asset-byte SHA256; PNG IHDR dimensions"
+    },
+    "Clip[0:32]/Key/AnimationBinding": {
+      "source": "reports/m3-actor-reference-reviewed/{player-data,animation}.json",
+      "selector": "character_animation.build; native decimal timelines; reviewed state/direction order",
+      "derivation": "interval-discrete sampling; preserve out-of-duration Idle Right keys"
+    },
+    "Clip[32:35]/DirectionFrame": {
+      "source": "upstream/MOTHER-Encore/{Data/Animations/Lamp.yaml,Data/Animations/PartyMember.yaml,Nodes/Ui/emotes.tscn}",
+      "selector": "Lamp Idle/Open, PartyMember Idle, emotes surprise",
+      "derivation": "YAML one-based frame to zero-based; durations accumulated in binary64 then stored binary32; Lamp Open absolute-latched, Idle synchronously finishes, surprise stops channel"
+    },
+    "ActorProfile.emote_offset": {
+      "source": "upstream/MOTHER-Encore/Nodes/Ui/emotes.tscn",
+      "selector": {
+        "regex": "object\\.vframes \\+ (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 29
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Scene.spawn.y.adjustment": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/Door.gd",
+      "selector": {
+        "regex": "Vector2\\(targetX, targetY - (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 57
+      },
+      "derivation": "IEEE-754 binary32 rounding"
+    },
+    "ActorInstance[0].flags": {
+      "source": "reports/cloud-world/player-exact.json",
+      "selector": "nodes[path=.] properties.visible",
+      "derivation": "bit0 initially_visible from native Player root visibility"
+    },
+    "ActorInstance[1].flags": {
+      "source": "reports/cloud-world/house-exact.json",
+      "selector": "nodes[path=.], nodes[path=Objects], nodes[path=Objects/lamp] properties.visible",
+      "derivation": "bit0 initially_visible is the AND of native lamp and all ancestor CanvasItem visibility"
+    },
+    "ActorProfile": {
+      "source": "upstream/MOTHER-Encore/{Nodes/Reusables/actor.tscn,Scripts/Main/character_sprite.gd,Nodes/Ui/emotes.tscn,Data/Animations/PartyMember.yaml,Data/Animations/Lamp.yaml}",
+      "selector": "actor position/shadow; auto sprite offset; emote bubble offset; native sprite/frame defaults",
+      "derivation": "execution_kind 1=directional proxy, 2=scripted animation proxy; stable identity lives separately"
+    },
+    "ActorInstance/Scene.spawn": {
+      "source": "upstream/MOTHER-Encore/Maps/Cutscenes/Mt Itoi Landscape.tscn;upstream/MOTHER-Encore/Scripts/Main/Door.gd;reports/cloud-world/house-exact.json",
+      "selector": "Objects/Door targetX,targetY,dir; change_scene targetY adjustment; Objects/lamp native position"
+    },
+    "CameraArea": {
+      "source": "reports/cloud-world/house-exact.json",
+      "selector": "Limits/camarea* rectangle shape centers/extents; preserve native node order"
+    },
+    "Flag/InitialFlag": {
+      "source": "upstream/MOTHER-Encore/Scripts/global/globalData.gd;upstream/MOTHER-Encore/Scripts/Main/RoomTypes/AreaRoom.gd",
+      "selector": "_init_flags false defaults; native-reference order; scene region visit flag"
+    },
+    "Trigger/Condition": {
+      "source": "reports/cloud-world/house-exact.json;upstream/MOTHER-Encore/Maps/podunk/Nintens House.tscn",
+      "selector": "Poltergeist/Cutscene Area world shape; own and ancestor disappear flags"
+    },
+    "Binding[1].duration": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/roomshaker.gd",
+      "selector": {
+        "regex": "func delayed_start\\(time = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 20
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Binding[1].value": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/roomshaker.gd",
+      "selector": {
+        "regex": "^export \\(float\\) var magnitude = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\s*$",
+        "line": 6
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Binding[1]/Resource[roomshake]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/roomshaker.gd;upstream/MOTHER-Encore/Nodes/Reusables/roomshaker.tscn",
+      "selector": "delayed_start default; magnitude/sound exports; native repeating idle Timer defaults",
+      "derivation": "PeriodicCameraShake binding with sound resource index; scheduler owns guarded timeout and source RNG sequence"
+    },
+    "Program/Command/Binding/Battle": {
+      "source": "reports/m5-lamp-dialogue-reference/dialogue.json;compatibility/reviews/lamp-dialogue-v0410.json",
+      "selector": "lamp_dialogue.compile_receipt reviewed native YAML parser receipt and fixed handler order",
+      "derivation": "source-only names resolved offline to explicit clip/resource/actor/binding/battle indices; no runtime string dispatch"
+    },
+    "Battle.flags/advantage": {
+      "source": "upstream/MOTHER-Encore/Scripts/UI/DialogueBox.gd",
+      "selector": "start_battle arguments + ovbattlemusic reviewed YAML field"
+    },
+    "Doll Program/MovementPath/MovementEntry/Battle": {
+      "source": "upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/doll_attack.yaml;reports/doll-sequence/native-parser-animation.json",
+      "selector": "all seven native-parser phrases in DialogueBox handler order; actors dictionary order retained",
+      "derivation": "source asynchronous waits are path entries; step target resolved when entry starts; flag set before queued battle and final wait; no win flag invented; keepAfterBattle and win cutscene preserved; absent ovbattlemusic inherits current source global state through typed Battle.flags bit8"
+    },
+    "Doll/Mimmie ActorProfile/AnimationBinding/Clip/Key": {
+      "source": "reports/doll-sequence/native-parser-animation.json",
+      "selector": "original CharacterSprite._create_animations native Animation tracks; native exclamation resource keys",
+      "derivation": "exact native real decimals, original texture dimensions and sprite offsets; Actor Walk motion4 distinct from Player Walk; Talk motion5 and delayed-first-key flag16"
+    },
+    "Doll post-win Program/Command/MovementPath/MovementEntry": {
+      "source": "upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml;reports/doll-postwin/native-parser-animation.json",
+      "selector": "all eight native-parser phrases in original DialogueBox handler order; final nonbattle done carries source camera return duration",
+      "derivation": "source jump speed aliases duration; false poltergeist flag retained; no melody, tutorial or initial event-position fabrication"
+    },
+    "Minnie ActorInstance/ActorProfile/Resource": {
+      "source": "reports/cloud-world/house-exact.json;reports/doll-postwin/native-parser-animation.json;content/native-house-presentation.json",
+      "selector": "Objects/npc3 original texture, 4dir profile, initial position and visibility; House binds original body11",
+      "derivation": "append after existing resource28, actor4, program2 namespaces; original geometry/body IDs untouched"
+    },
+    "Rule[1]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/party/Player.gd",
+      "selector": {
+        "regex": "^const SPEED_WALKING := (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)$",
+        "line": 29
+      },
+      "derivation": "IEEE-754 binary32 rounding"
+    },
+    "Rule[2]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/party/Player.gd",
+      "selector": {
+        "regex": "^const SPEED_RUNNING := (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)$",
+        "line": 30
+      },
+      "derivation": "IEEE-754 binary32 rounding"
+    },
+    "Rule[3]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/party/Player.gd",
+      "selector": {
+        "regex": "\\(_speed/(-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 337
+      },
+      "derivation": "IEEE-754 binary32 rounding"
+    },
+    "Rule[4]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/actor.gd",
+      "selector": {
+        "regex": "var angle = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?) \\* sign\\(_direction.angle_to\\(newDir\\)\\)",
+        "line": 532
+      },
+      "derivation": "IEEE-754 binary32 rounding"
+    },
+    "Rule[5]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/actor.gd",
+      "selector": {
+        "regex": "^var speed: float = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)$",
+        "line": 15
+      },
+      "derivation": "IEEE-754 binary32 rounding"
+    },
+    "Rule[6]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/actor.gd",
+      "selector": {
+        "regex": "_sprite_position.y - height\\), length \\* (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 509
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[7]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/actor.gd",
+      "selector": {
+        "regex": "_sprite_position.y\\), length \\* (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 511
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[8]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/actor.gd",
+      "selector": {
+        "regex": "for i in int\\(length \\* (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 611
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[9]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/actor.gd",
+      "selector": {
+        "regex": "character_sprite.offset = oldOffset \\+ offset\\n\\s*yield\\(get_tree\\(\\).create_timer\\((-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 612
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[10]": {
+      "source": "upstream/MOTHER-Encore/Scripts/UI/DialogueBox.gd",
+      "selector": {
+        "regex": "var turner = _actors\\[i\\]\\n\\s*var direction = Vector2.ZERO\\n\\s*var speed = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)",
+        "line": 690
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[11]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/actor.gd",
+      "selector": {
+        "regex": "global.get_player\\(\\).camera.return_camera\\((-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 261
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[12]": {
+      "source": "upstream/MOTHER-Encore/Scripts/UI/DialogueBox.gd",
+      "selector": {
+        "regex": "\"small\":\\n\\s*global.start_joy_vibration\\([^\\n]+\\)\\n\\s*global.currentCamera.shake_camera\\((-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)",
+        "line": 834
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[13]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/Camera2D.gd",
+      "selector": {
+        "regex": "^const SHAKE_STEP_TIME := (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)$",
+        "line": 19
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[14]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/Camera2D.gd",
+      "selector": {
+        "regex": "lerp_weight := (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?), diminish := true",
+        "line": 148
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[15]": {
+      "source": "upstream/MOTHER-Encore/Scripts/misc/Shaker.gd",
+      "selector": {
+        "regex": "var new_magnitude = max\\(_shake_magnitude, (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 119
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[16]": {
+      "source": "upstream/MOTHER-Encore/Scripts/misc/Shaker.gd",
+      "selector": {
+        "regex": "if _shake_magnitude <= (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?) and _shake_side == -1:",
+        "line": 120
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[17]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/Camera2D.gd",
+      "selector": {
+        "regex": "final_tween.tween_property\\(self, \"_shake_offset\", Vector2.ZERO, (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\)",
+        "line": 164
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[18]": {
+      "source": "upstream/MOTHER-Encore/Scripts/UI/DialogueBox.gd",
+      "selector": {
+        "regex": "var cam_pos = global.currentCamera.global_position\\n\\s*var time = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)",
+        "line": 861
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[19]": {
+      "source": "upstream/MOTHER-Encore/Scripts/UI/DialogueBox.gd",
+      "selector": {
+        "regex": "var size = str\\(_curr_phrase\\[\"shakecam\"\\][^\\n]*\\n\\s*var length = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)",
+        "line": 824
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[20]": {
+      "source": "reports/cloud-world/player-exact.json",
+      "selector": "nodes[0].properties[collision/safe_margin]",
+      "derivation": "native real_t exact decimal to binary32"
+    },
+    "Rule[21]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/roomshaker.gd",
+      "selector": {
+        "regex": "^export \\(float\\) var wait_time = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\s*$",
+        "line": 4
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[22]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/roomshaker.gd",
+      "selector": {
+        "regex": "^export \\(float\\) var wait_margin = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\s*$",
+        "line": 5
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[23]": {
+      "source": "upstream/MOTHER-Encore/Scripts/Main/roomshaker.gd",
+      "selector": {
+        "regex": "^export \\(float\\) var length = (-?\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?)\\s*$",
+        "line": 7
+      },
+      "derivation": "GDScript numeric binary64"
+    },
+    "Rule[24:25]": {
+      "source": "upstream/MOTHER-Encore/Maps/podunk/Nintens House.tscn",
+      "selector": "Room Shaker.direction scene override",
+      "derivation": "preserve source Vector2 components; no runtime content constant"
+    },
+    "Experience": {
+      "source": "reports/m1-progression-linux-reference.json",
+      "selector": "level_cases levels 1 through reviewed level_cap",
+      "derivation": "measured original Godot functions; no new formula or changed goldens"
+    },
+    "Scene": {
+      "source": "reports/cloud-world/house-exact.json;upstream.lock",
+      "selector": "native root name, pin game version; source-backed actor spawn; scoped initial animation bindings",
+      "derivation": "all IDs explicitly persisted in native-opening.json; local indices are not save identities"
+    },
+    "Program Podunk/dollmelody": {
+      "source": "reports/doll-melody/native-parser.json;upstream/MOTHER-Encore/Data/Dialogue/Podunk/dollmelody.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0",
+          "3",
+          "4"
+        ],
+        "command_order": "original DialogueBox handler order"
+      },
+      "derivation": "rules4: original NPC inherited talker, deferred object calls, immediate dialogue music, concurrent text input delay, dialogue-owned camera; only source-bound actors restored"
+    },
+    "Program Podunk/cutscenes/mimmie_ignore": {
+      "source": "reports/doll-melody/native-parser.json;upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0",
+          "1"
+        ],
+        "command_order": "original DialogueBox handler order"
+      },
+      "derivation": "rules4: original NPC inherited talker, deferred object calls, immediate dialogue music, concurrent text input delay, dialogue-owned camera; only source-bound actors restored"
+    },
+    "Melody Resource/Binding": {
+      "source": "upstream/MOTHER-Encore/Maps/podunk/Nintens House.tscn;upstream/MOTHER-Encore/Nodes/Overworld/MusicChanger.tscn;content/native-world-effect.json",
+      "selector": "Root MusicArea House ownership; source music and heal requests; checked independent melody effect pack",
+      "derivation": "Targeted stop is a no-op without attached House track; it cannot stop newly started melody. Source music properties execute before deferred object calls."
+    },
+    "Carol ActorProfile/ActorInstance/AnimationBinding/Resource": {
+      "source": "upstream/MOTHER-Encore/Maps/podunk/Nintens House.tscn;upstream/MOTHER-Encore/Data/Animations/4dir.yaml;reports/doll-postwin/native-parser-animation.json;content/native-house-presentation.json",
+      "selector": "Objects/npc; exact inherited 4dir YAML/grid/zero authored offset; native Idle/Walk/Talk frame tracks",
+      "derivation": "Append actor index5; share verified frame tracks only; own Carol texture and 32px frame-height offsets"
+    },
+    "Entrance DeferredFlagBodyDeletion Binding": {
+      "source": "upstream/MOTHER-Encore/Maps/podunk/Nintens House.tscn;upstream/MOTHER-Encore/Nodes/Reusables/flag landmarks.tscn;upstream/MOTHER-Encore/Scripts/Main/Flag Landmarks.gd;upstream/MOTHER-Encore/Scripts/global/globalData.gd",
+      "selector": {
+        "ancestor": "DoorBlock",
+        "descendant_body": "DoorBlock/Entrance",
+        "body_id": 21,
+        "disappear_flag": "talked_to_dad",
+        "flag_index": 47,
+        "delete_if_hidden": true,
+        "source_ready_check": true,
+        "signal": "flags_updated",
+        "source_removal": "queue_free()",
+        "stable_binding_id": 9
+      },
+      "derivation": "Disappearance queues ancestor subtree destruction after the scene frame; remove its checked collider permanently for that instance. Original BodyRule/Polygon geometry and initial visibility remain unchanged."
+    },
+    "Program Podunk/carol_call": {
+      "source": "content/phone-stage/dialogue.json;upstream/MOTHER-Encore/Data/Dialogue/Podunk/carol_call.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "command_order": "reviewed source handler order"
+      },
+      "derivation": "rules5; typed text/hide/automatic gate, queued actor target, axis-preserving camera, original deferred Phone object call"
+    },
+    "Program Podunk/cutscenes/carol_call": {
+      "source": "content/phone-stage/dialogue.json;upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0",
+          "1",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "command_order": "reviewed source handler order"
+      },
+      "derivation": "rules5; typed text/hide/automatic gate, queued actor target, axis-preserving camera, original deferred Phone object call"
+    },
+    "Program Podunk/cutscenes/carol_phone": {
+      "source": "content/phone-stage/dialogue.json;upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0"
+        ],
+        "command_order": "reviewed source handler order"
+      },
+      "derivation": "rules5; typed text/hide/automatic gate, queued actor target, axis-preserving camera, original deferred Phone object call"
+    },
+    "Program Podunk/carol_phone": {
+      "source": "content/phone-stage/dialogue.json;upstream/MOTHER-Encore/Data/Dialogue/Podunk/carol_phone.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0"
+        ],
+        "command_order": "reviewed source handler order"
+      },
+      "derivation": "rules5; typed text/hide/automatic gate, queued actor target, axis-preserving camera, original deferred Phone object call"
+    },
+    "Program Podunk/dad_poltergeist": {
+      "source": "content/phone-stage/dialogue.json;upstream/MOTHER-Encore/Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0",
+          "1",
+          "7",
+          "9",
+          "13"
+        ],
+        "command_order": "reviewed source handler order"
+      },
+      "derivation": "rules5; typed text/hide/automatic gate, queued actor target, axis-preserving camera, original deferred Phone object call"
+    },
+    "Program Reusable/phonenoanswer": {
+      "source": "content/phone-stage/dialogue.json;upstream/MOTHER-Encore/Data/Dialogue/Reusable/phonenoanswer.yaml",
+      "selector": {
+        "dense_phase_source_labels": [
+          "0"
+        ],
+        "command_order": "reviewed source handler order"
+      },
+      "derivation": "rules5; typed text/hide/automatic gate, queued actor target, axis-preserving camera, original deferred Phone object call"
+    },
+    "Phone Resource/Binding": {
+      "source": "content/phone-stage/presentation.json",
+      "selector": "Objects/Phone index0; phonering and phonehangup; StartPhoneRing binding8",
+      "derivation": "Original InteractDialog remains separate from actor/NPC and does not mark NPC seen"
+    },
+    "Program Reusable/dad_normal": {
+      "source": "content/phone-stage/dialogue.json;content/native-dialogue-choices.json;upstream/MOTHER-Encore/Data/Dialogue/Reusable/dad_normal.yaml",
+      "selector": {
+        "source_labels": [
+          "0",
+          "check_lloyd",
+          "check_ana",
+          "check_teddy",
+          "check_pippi",
+          "lloyd_leader",
+          "ana_leader",
+          "teddy_leader",
+          "pippi_leader",
+          "check_earned_cash",
+          "1",
+          "2",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "label_to_pc": {
+          "0": 1,
+          "check_lloyd": 4,
+          "check_ana": 6,
+          "check_teddy": 8,
+          "check_pippi": 10,
+          "lloyd_leader": 12,
+          "ana_leader": 15,
+          "teddy_leader": 18,
+          "pippi_leader": 21,
+          "check_earned_cash": 24,
+          "1": 26,
+          "2": 29,
+          "4": 31,
+          "5": 37,
+          "6": 40,
+          "7": 43
+        },
+        "choice_groups": [
+          {
+            "id": "Reusable/dad_normal::2",
+            "program_identity": "Reusable/dad_normal",
+            "source_label": "2",
+            "program_command_count": 48,
+            "initial_selection": 0,
+            "options": [
+              {
+                "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_0",
+                "target_label": "4",
+                "target_pc": 31,
+                "text": "Record"
+              },
+              {
+                "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_1",
+                "target_label": "6",
+                "target_pc": 40,
+                "text": "Nothing, really"
+              }
+            ],
+            "cancel_target_label": "6",
+            "cancel_target_pc": 40
+          }
+        ],
+        "reviewed_noops": [
+          {
+            "source_label": "2",
+            "command": "unsetflags",
+            "value": "money_earned",
+            "before_pc": 30,
+            "mutation": false,
+            "signal": false
+          }
+        ]
+      },
+      "derivation": "rules6; all source leader/earned/saved branches; program-relative label entries; text-completion choices; hidden Record and callback-only save gate; checked House value/delay/newline tokens"
+    },
+    "Pillow/Minnie Programs/Actor/MovementPaths/Rules": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml;Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml;Data/Dialogue/Podunk/cutscenes/minnie_door.yaml;Data/Dialogue/Podunk/minnie_run_tutorial.yaml;Data/Dialogue/Podunk/minnie_door_open.yaml",
+      "selector": "Original native-parser graphs,14-point loop,queued path,stop_loop,looping shake,repeated jump,strictly source-ordered flags",
+      "derivation": "Append actor6/battle3; original Minnie actor4 reused. No fabricated event positions or optional-path prerequisite"
+    }
+  },
+  "stable_namespaces": {
+    "body": {
+      "Below/Openable Door/StaticBody2D": 1,
+      "Below/Openable Door/NonPlayerStaticBody2D": 2,
+      "Below/Openable Door2/StaticBody2D": 3,
+      "Below/Openable Door2/NonPlayerStaticBody2D": 4,
+      "Below/Openable Door3/StaticBody2D": 5,
+      "Below/Openable Door3/NonPlayerStaticBody2D": 6,
+      "Below/Openable Door4/StaticBody2D": 7,
+      "Below/Openable Door4/NonPlayerStaticBody2D": 8,
+      "Objects/npc": 9,
+      "Objects/npc2": 10,
+      "Objects/npc3": 11,
+      "Objects/pillow": 12,
+      "Objects/Phone/StaticBody2D": 13,
+      "Objects/lamp": 14,
+      "Objects/npcdoll": 15,
+      "Objects/Present1/StaticBody2D": 16,
+      "Objects/Present2/StaticBody2D": 17,
+      "Objects/Present4/StaticBody2D": 18,
+      "Objects/Present3/StaticBody2D": 19,
+      "Collisions": 20,
+      "DoorBlock/Entrance": 21
+    },
+    "owner": {
+      "Below/Openable Door/StaticBody2D/CollisionShape2D": 1,
+      "Below/Openable Door2/StaticBody2D/CollisionShape2D": 2,
+      "Below/Openable Door3/StaticBody2D/CollisionShape2D": 3,
+      "Below/Openable Door4/StaticBody2D/CollisionShape2D": 4,
+      "Objects/npc/CollisionShape2D": 5,
+      "Objects/npc2/CollisionShape2D": 6,
+      "Objects/npc3/CollisionShape2D": 7,
+      "Objects/pillow/CollisionShape2D": 8,
+      "Objects/Phone/StaticBody2D/CollisionShape2D": 9,
+      "Objects/lamp/CollisionShape2D": 10,
+      "Objects/npcdoll/CollisionShape2D": 11,
+      "Objects/Present1/StaticBody2D/CollisionShape2D": 12,
+      "Objects/Present2/StaticBody2D/CollisionShape2D": 13,
+      "Objects/Present4/StaticBody2D/CollisionShape2D": 14,
+      "Objects/Present3/StaticBody2D/CollisionShape2D": 15,
+      "Collisions/CollisionPolygon2D5": 16,
+      "Collisions/CollisionPolygon2D7": 17,
+      "Collisions/CollisionPolygon2D11": 18,
+      "Collisions/CollisionPolygon2D12": 19,
+      "Collisions/CollisionPolygon2D13": 20,
+      "Collisions/CollisionPolygon2D6": 21,
+      "Collisions/CollisionPolygon2D": 22,
+      "DoorBlock/Entrance/CollisionShape2D": 23
+    },
+    "clips": {
+      "Idle Down": 1,
+      "Idle Left": 2,
+      "Idle Right": 3,
+      "Idle Up": 4,
+      "Idle DownLeft": 5,
+      "Idle DownRight": 6,
+      "Idle UpLeft": 7,
+      "Idle UpRight": 8,
+      "Walk Down": 9,
+      "Walk Left": 10,
+      "Walk Right": 11,
+      "Walk Up": 12,
+      "Walk DownLeft": 13,
+      "Walk DownRight": 14,
+      "Walk UpLeft": 15,
+      "Walk UpRight": 16,
+      "Run Down": 17,
+      "Run Left": 18,
+      "Run Right": 19,
+      "Run Up": 20,
+      "Run DownLeft": 21,
+      "Run DownRight": 22,
+      "Run UpLeft": 23,
+      "Run UpRight": 24,
+      "Crouch Down": 25,
+      "Crouch Left": 26,
+      "Crouch Right": 27,
+      "Crouch Up": 28,
+      "Crouch DownLeft": 29,
+      "Crouch DownRight": 30,
+      "Crouch UpLeft": 31,
+      "Crouch UpRight": 32,
+      "Lamp Idle": 33,
+      "Lamp Open": 34,
+      "surprise": 35,
+      "Ninten Actor Walk Down": 36,
+      "Ninten Actor Walk Left": 37,
+      "Ninten Actor Walk Right": 38,
+      "Ninten Actor Walk Up": 39,
+      "Ninten Actor Walk DownLeft": 40,
+      "Ninten Actor Walk DownRight": 41,
+      "Ninten Actor Walk UpLeft": 42,
+      "Ninten Actor Walk UpRight": 43,
+      "Doll Idle": 44,
+      "Doll Float": 45,
+      "Mimmie Idle Down": 46,
+      "Mimmie Idle Left": 47,
+      "Mimmie Idle Right": 48,
+      "Mimmie Idle Up": 49,
+      "Mimmie Walk Down": 50,
+      "Mimmie Walk Left": 51,
+      "Mimmie Walk Right": 52,
+      "Mimmie Walk Up": 53,
+      "Mimmie Talk Down": 54,
+      "Mimmie Talk Left": 55,
+      "Mimmie Talk Right": 56,
+      "Mimmie Talk Up": 57,
+      "exclamation": 58,
+      "Minnie Idle Down": 59,
+      "Minnie Idle Left": 60,
+      "Minnie Idle Right": 61,
+      "Minnie Idle Up": 62,
+      "Minnie Walk Down": 63,
+      "Minnie Walk Left": 64,
+      "Minnie Walk Right": 65,
+      "Minnie Walk Up": 66,
+      "Minnie Talk Down": 67,
+      "Minnie Talk Left": 68,
+      "Minnie Talk Right": 69,
+      "Minnie Talk Up": 70,
+      "dot": 71,
+      "Pillow Idle": 44,
+      "sweat": 72
+    }
+  }
+}

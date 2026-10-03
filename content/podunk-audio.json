@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "bus_source": "Audio/Audio Buses/default_bus_layout.tres",
+  "bus_sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+  "manager_source": "Scripts/global/audioManager.gd",
+  "manager_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+  "assets": [
+    {
+      "stable_id": 582446421,
+      "source_path": "res://Audio/Music/Pollyanna.ogg",
+      "source_sha256": "2f1c880cfca68c41178f178c8f91ba651ff16f0acf6477363eb99d60a5a6ac1e",
+      "import_sha256": "fed99162c364459577272700329efb22d63ba8ac3c1bcd53eaa72b7c23cf2764",
+      "pcm_path": "audio/podunk-582446421.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 364625705,
+      "source_path": "res://Audio/Music/Canary_Village.mp3",
+      "source_sha256": "a24be04338c2ed4fcfe07bd1876fdcf5346f6495250b6258c53dec65081065d2",
+      "import_sha256": "b1e714336541e931765ab143c37eec4afc53d5785efc287e2b0ec1a99d6a59fb",
+      "pcm_path": "audio/podunk-364625705.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 2369254644,
+      "source_path": "res://Audio/Music/A_Ghastly_Site.mp3",
+      "source_sha256": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+      "import_sha256": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+      "pcm_path": "audio/podunk-2369254644.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 61517992,
+      "source_path": "res://Audio/Music/Zoo.mp3",
+      "source_sha256": "03627006ef7be36ffe406d3e8d78f372366b4818eab5a8629c4ceda7a290e1f5",
+      "import_sha256": "c3ba64da9e540c95ec36952087004b8dace5467d9d06635b504639d7ec902fb8",
+      "pcm_path": "audio/podunk-61517992.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1388543241,
+      "source_path": "res://Audio/Music/Ambiance_Wind_And_Birds.mp3",
+      "source_sha256": "6655846cc0ce68089f5fd0a3af23407c89752f772f8a1bb859d135957c5a88f5",
+      "import_sha256": "f39dff42179dce7adc03461f3f6a79a3e8d824c7c1c39ac130aafd98e0717298",
+      "pcm_path": "audio/podunk-1388543241.pcm",
+      "gain_db": 0
+    }
+  ]
+}

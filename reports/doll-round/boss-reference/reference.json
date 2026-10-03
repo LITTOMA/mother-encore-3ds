@@ -1,0 +1,48 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "events": [
+    {
+      "event": "flash_started",
+      "frame": 270
+    },
+    {
+      "event": "enemy_hidden",
+      "frame": 360
+    },
+    {
+      "event": "flash_position",
+      "frame": 388,
+      "value": "1.98333215713500980"
+    },
+    {
+      "event": "flash_position",
+      "frame": 389,
+      "value": "1.99999880790710450"
+    },
+    {
+      "event": "defeat_enemies",
+      "frame": 390
+    },
+    {
+      "event": "flash_position",
+      "frame": 390,
+      "value": "2.01666545867919920"
+    },
+    {
+      "event": "victory_requested",
+      "frame": 539
+    }
+  ],
+  "frames": 539,
+  "next_randi": "4045365244"
+}

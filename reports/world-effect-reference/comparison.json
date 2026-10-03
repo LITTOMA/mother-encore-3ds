@@ -1,0 +1,207 @@
+{
+  "passed": true,
+  "samples": [
+    {
+      "sample": 0,
+      "width": 320,
+      "height": 180,
+      "time": 0,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "d25537718bc77757f90404168ecbe8d3f591631d2e6b3f0b8bd87c3665e041d9",
+      "expected_sha256": "d25537718bc77757f90404168ecbe8d3f591631d2e6b3f0b8bd87c3665e041d9"
+    },
+    {
+      "sample": 1,
+      "width": 320,
+      "height": 180,
+      "time": 0.016666666666666666,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "c4b79dc00045c41c9ba2eac994e18e21ac4358d30abb1bae72050d1a3d9ec011",
+      "expected_sha256": "c4b79dc00045c41c9ba2eac994e18e21ac4358d30abb1bae72050d1a3d9ec011"
+    },
+    {
+      "sample": 2,
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "f6739c6bf12c9fc7b9f94c4b554274b1a763e2682ac950391cec9d3005784dfc",
+      "expected_sha256": "f6739c6bf12c9fc7b9f94c4b554274b1a763e2682ac950391cec9d3005784dfc"
+    },
+    {
+      "sample": 3,
+      "width": 320,
+      "height": 180,
+      "time": 0.5,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "2f63575fbeeb9fd391063aaa72f1a97423c6cbce2926f1e7793b3fc47812f01a",
+      "expected_sha256": "2f63575fbeeb9fd391063aaa72f1a97423c6cbce2926f1e7793b3fc47812f01a"
+    },
+    {
+      "sample": 4,
+      "width": 320,
+      "height": 180,
+      "time": 1,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "8c991fbe1d0dd0e89d55d7e10ad5041a7d2305bc1f8e6bc703426ed1fb35529d",
+      "expected_sha256": "8c991fbe1d0dd0e89d55d7e10ad5041a7d2305bc1f8e6bc703426ed1fb35529d"
+    },
+    {
+      "sample": 5,
+      "width": 320,
+      "height": 180,
+      "time": 3.125,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "8798712962c7e581ae44e3f34c76aa01524cd7a55a2cc373c98be8d7a0dae0e5",
+      "expected_sha256": "8798712962c7e581ae44e3f34c76aa01524cd7a55a2cc373c98be8d7a0dae0e5"
+    },
+    {
+      "sample": 6,
+      "width": 320,
+      "height": 180,
+      "time": 17.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "247a20c611a3ce1965f58287bd4e7ac151a62bbc68c479bd625f3edc5e7a3aff",
+      "expected_sha256": "247a20c611a3ce1965f58287bd4e7ac151a62bbc68c479bd625f3edc5e7a3aff"
+    },
+    {
+      "sample": 7,
+      "width": 320,
+      "height": 180,
+      "time": 63.5,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "b4850914824b1490354e9637cd331fb5f61670c9b97da45d743e60b2592762f9",
+      "expected_sha256": "b4850914824b1490354e9637cd331fb5f61670c9b97da45d743e60b2592762f9"
+    },
+    {
+      "sample": 8,
+      "width": 400,
+      "height": 240,
+      "time": 0,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "16e59054cf14b9e57d7418e09090136a72602e11f8fd8b7f21f60b2605ea3fc8",
+      "expected_sha256": "16e59054cf14b9e57d7418e09090136a72602e11f8fd8b7f21f60b2605ea3fc8"
+    },
+    {
+      "sample": 9,
+      "width": 400,
+      "height": 240,
+      "time": 0.016666666666666666,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "d98212f772f4761566653d5c6a57510451446349f0986be4bc19e8f0dbfbae77",
+      "expected_sha256": "d98212f772f4761566653d5c6a57510451446349f0986be4bc19e8f0dbfbae77"
+    },
+    {
+      "sample": 10,
+      "width": 400,
+      "height": 240,
+      "time": 0.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "9326db20ab186cecb6f1e86f14abc6367032b72fd0a182f9776a4a7179c9df6a",
+      "expected_sha256": "9326db20ab186cecb6f1e86f14abc6367032b72fd0a182f9776a4a7179c9df6a"
+    },
+    {
+      "sample": 11,
+      "width": 400,
+      "height": 240,
+      "time": 0.5,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "ffe4d247233f4aa8ab2b9dde053a9814ec967b116adca061df957ffbcbacae7b",
+      "expected_sha256": "ffe4d247233f4aa8ab2b9dde053a9814ec967b116adca061df957ffbcbacae7b"
+    },
+    {
+      "sample": 12,
+      "width": 400,
+      "height": 240,
+      "time": 1,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "8fe8dc8f5351c0d772144c8685aee3642efeb35dd7c38be21f060691329f255d",
+      "expected_sha256": "8fe8dc8f5351c0d772144c8685aee3642efeb35dd7c38be21f060691329f255d"
+    },
+    {
+      "sample": 13,
+      "width": 400,
+      "height": 240,
+      "time": 3.125,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "5466445b737aa0df37b968e20016107e87ff09981a9b624f7693c43bc6c669e4",
+      "expected_sha256": "5466445b737aa0df37b968e20016107e87ff09981a9b624f7693c43bc6c669e4"
+    },
+    {
+      "sample": 14,
+      "width": 400,
+      "height": 240,
+      "time": 17.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "b0a9e6e1674a7367a75808a48ee69d5641e8fa3972f06d2f72eafa6e5c85e035",
+      "expected_sha256": "b0a9e6e1674a7367a75808a48ee69d5641e8fa3972f06d2f72eafa6e5c85e035"
+    },
+    {
+      "sample": 15,
+      "width": 400,
+      "height": 240,
+      "time": 63.5,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "efbb1c042285ddcc7895e27186ec989b52e664bb12632362d1e7ca5cd908825e",
+      "expected_sha256": "efbb1c042285ddcc7895e27186ec989b52e664bb12632362d1e7ca5cd908825e"
+    },
+    {
+      "sample": 16,
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "5ce06c3d1f5bece5b770e748df7992eeefaf42f3ba7251388009eae7451c9bcc",
+      "expected_sha256": "5ce06c3d1f5bece5b770e748df7992eeefaf42f3ba7251388009eae7451c9bcc"
+    },
+    {
+      "sample": 17,
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "596c25b2c08f9af99cf435b018b80079434af07014da513d6097b3d43e364c53",
+      "expected_sha256": "596c25b2c08f9af99cf435b018b80079434af07014da513d6097b3d43e364c53"
+    },
+    {
+      "sample": 18,
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2",
+      "expected_sha256": "2a589ae1f2fa2a6328223ff195a29c9244bec633dca49139f6f231e1d79c0eb2"
+    },
+    {
+      "sample": 19,
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "mismatched_pixels": 0,
+      "maximum_channel_delta": 0,
+      "native_sha256": "a0dab87a5910c0e10c0c75df5bbc4f88ee48c25583440db504c397cfdff1cc8a",
+      "expected_sha256": "a0dab87a5910c0e10c0c75df5bbc4f88ee48c25583440db504c397cfdff1cc8a"
+    }
+  ],
+  "compared_pixels": 1459200,
+  "scope": "Source shader320x180, separately marked centered400x240 extension, and RGBA8 tint/fade blend samples. Numerical offscreen reference; not full UI or PICA hardware pixel equivalence."
+}

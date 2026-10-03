@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "game_version": "0.4.1.0",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "scene_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+  "texture": "Graphics/Rooms/Podunk/Ninten's House.png",
+  "texture_sha256": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+  "size": [624, 1104],
+  "sprite_center": [312, 552],
+  "tile_size": 256,
+  "scope": "Only the opening map's background Sprite texture; NOT a scene/gameplay binding. Other tiles, objects, scripts, collisions, visibility conditions and animations remain unsupported. The viewer does not execute or discard these scene behaviors.",
+  "licence_review": "Pinned LICENSE permits repository assets/music for game-related forks/modifications/translations. This original room texture is used only in this Mother: Encore port development preview. No fonts, music or developer-environment assets are included. Scope does not relicense the asset under the native project's MIT licence."
+}

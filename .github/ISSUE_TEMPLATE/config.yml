@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 开发与验证范围
+    url: https://github.com/LITTOMA/mother-encore-3ds/blob/main/docs/STATUS.md
+    about: 先核对当前支持范围，再提交问题。
+  - name: 安全与凭据问题
+    url: https://github.com/LITTOMA/mother-encore-3ds/blob/main/SECURITY.md
+    about: 避免在公开报告中附漏洞细节或敏感信息。

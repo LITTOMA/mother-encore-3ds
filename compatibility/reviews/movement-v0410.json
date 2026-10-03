@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "sources": {
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/controlsManager.gd": "73ffd540c3c95ed9f2d92d57ecbde8fc9c48fa98e683f3641cca5498becddae7"
+  },
+  "symbols": {
+    "Scripts/Main/party/Player.gd": [
+      "_move",
+      "_movement"
+    ],
+    "Scripts/global/controlsManager.gd": [
+      "_get_vector_sign"
+    ]
+  },
+  "native": [
+    "include/encore/movement.hpp",
+    "runtime/movement.cpp"
+  ],
+  "scope": "opening single-member MOVE state, walking, held/tap running, crouch, direction and moved signal count at 60Hz; not entire Player class",
+  "semantic_review": [
+    "_move computes velocity using previous speed before walking/running chooses the next speed",
+    "velocity is scaled by explicit delta and speed/1.7 before Godot move_and_slide applies the physics step",
+    "substantial movement rounds the actual displacement before final position rounding",
+    "idle toggle enters/exits crouch; releasing a crouch without teleport starts tap running",
+    "diagonal controls are rounded to component signs; no additional normalization",
+    "threshold := 0 is a Godot-inferred integer parameter; fractional supplied thresholds are coerced to int before the function",
+    "paused/entering-door gates suppress movement as in _move_state"
+  ],
+  "reference_overrides": {
+    "_set_running": "retain running flag; audio playback excluded",
+    "_update_party_positions": "single-member movement test excludes follower history",
+    "animation interfaces": "record requested state; AnimationTree evaluation excluded",
+    "_party_member": "opening member without teleport/relay; unsupported skill requests assert",
+    "global": "one party member, not entering a door; no cutscene or interaction",
+    "audioManager": "no audio player; audio callbacks excluded"
+  },
+  "not_implemented_by_this_review": [
+    "Godot collision backend",
+    "party followers",
+    "step/status damage",
+    "blink timer/RNG",
+    "audio and dust",
+    "climbing",
+    "attacks",
+    "relay",
+    "teleport",
+    "interaction",
+    "opening cutscenes"
+  ],
+  "whole_file_approved": false,
+  "function_sha256": {
+    "Scripts/Main/party/Player.gd": {
+      "_move": "3c26290f8b1cd88bb927dda1f4a5a83f92126b26dd90503a9d3b5c82318d2575",
+      "_movement": "96d3a15a91335d263b354cf08ba0edd887634bb9beaaacb7914c09df2ce19739"
+    },
+    "Scripts/global/controlsManager.gd": {
+      "_get_vector_sign": "2384c51a5031cd8ead669f0c29808e195eb2f01080f2bb7990ab1d9911bf09fd"
+    }
+  }
+}

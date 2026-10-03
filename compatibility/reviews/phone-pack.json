@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "kind": "encore.native-phone.checked-pack",
+  "pack_schema": 1,
+  "capabilities": 1,
+  "rules": 1,
+  "pack_sha256": "2bb19c265f23e37ab3cab461464fef21d0715598644f26d2906496fbf9e41e76",
+  "pack_bytes": 860,
+  "dependencies": {
+    "content/phone-stage/presentation.json": "bebe9e2e48dc38cfa62032cca790be2e57b0c19b5409babd9bd4ea3529cb601b",
+    "compatibility/reviews/phone-presentation.json": "fb378fcb14bb2e13f9e1811cc78dfd865777ea26efd1f57253edc7d889ee76a3",
+    "romfs/phone-preview/source.json": "01ec74784414942d1ac674caedfef79c1d45b83004910c7b6f6bdedb1ee826c4",
+    "romfs/phone-preview/phone.t3x": "75d51a98706720b861530629b498593ab0ee2329f7c80ebb9662725fcb33c784"
+  },
+  "sections": {
+    "Strings": 1,
+    "Resources": 60,
+    "Objects": 152,
+    "Clips": 44,
+    "FrameKeys": 12,
+    "SoundKeys": 12,
+    "FlagRefs": 8,
+    "Dispatch": 8
+  },
+  "scope": "Free InteractDialog phone animation, sound requests and ordered dispatch only"
+}

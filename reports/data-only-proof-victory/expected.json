@@ -1,0 +1,97 @@
+{
+  "scope": "Synthetic A/B test packages for one unchanged compiled native runtime; B is not shipping/approved upstream content.",
+  "compiler_sha256": "8a6cf4ab628059423f8168e72285e5d192b950a4a8f14c29caa614b38e707d8e",
+  "cpp_compiler_environment": {
+    "PATH": "nonexistent directory",
+    "CXX": "/bin/false",
+    "CC": "/bin/false",
+    "DEVKITPRO": "",
+    "DEVKITARM": ""
+  },
+  "cpp_compiler_invoked": false,
+  "changes": [
+    {
+      "name": "spawn_x",
+      "section": "Scene",
+      "index": 0,
+      "field": "spawn[0]",
+      "A": 520.0,
+      "B": 521.0
+    },
+    {
+      "name": "initial_animation_frame",
+      "section": "Key",
+      "index": 0,
+      "field": "frame",
+      "A": 1,
+      "B": 2
+    },
+    {
+      "name": "first_script_wait",
+      "section": "Command",
+      "index": 6,
+      "field": "duration",
+      "A": 1,
+      "B": 1.125
+    },
+    {
+      "name": "layer_sort_y",
+      "section": "Overlay",
+      "index": 0,
+      "field": "sort_y",
+      "A": 144,
+      "B": 147
+    },
+    {
+      "name": "actor_sprite_offset_x",
+      "section": "ActorProfile",
+      "index": 0,
+      "field": "sprite_offset[0]",
+      "A": 0.0,
+      "B": 2.0
+    },
+    {
+      "name": "registered_flag_count",
+      "section": "Flag",
+      "field": "count",
+      "A": 178,
+      "B": 179
+    },
+    {
+      "name": "level_2_required_xp",
+      "section": "Experience",
+      "index": 1,
+      "field": "required_total_exp",
+      "A": 9,
+      "B": 10
+    }
+  ],
+  "added_flag": {
+    "stable_id": 179,
+    "name": "data_only_probe_flag",
+    "index": 178,
+    "default": false
+  },
+  "behavior_probe_expectations": {
+    "xp_value": 9,
+    "level_A": 2,
+    "level_B": 1,
+    "new_flag_known_A": false,
+    "new_flag_known_B": true
+  },
+  "packages": {
+    "A": {
+      "path": "reports/data-only-proof-victory/A.encroom",
+      "bytes": 46768,
+      "sha256": "9b5b99244a59226e0b248020c6a50be36ef12b513a44a308884617d425d44303"
+    },
+    "B": {
+      "path": "reports/data-only-proof-victory/B.encroom",
+      "bytes": 46816,
+      "sha256": "055daae6a17bad91df89cafdd231ae682dab283767d831d1ebf9d45609dce57b"
+    }
+  },
+  "runtime_probe_status": "Verified by one unchanged executable; see runtime-proof.json",
+  "room_rules_revision": 4,
+  "room_capability_revision": 4
+}

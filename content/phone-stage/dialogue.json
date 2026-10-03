@@ -1,0 +1,2170 @@
+{
+  "schema": 1,
+  "kind": "encore.phone-stage.dialogue-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "shipping_integrated": false,
+  "sources": {
+    "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
+    "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+    "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/UI/SaveSelect.gd": "067f0a28af8b9d9b62204ae89ac4bdafbd8470e81a55e02fa27f2958510d6d00",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc"
+  },
+  "programs": [
+    {
+      "identity": "Podunk/carol_call",
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "source_labels": [
+        "0",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "actor_bindings": [
+        {
+          "actor": "Carol",
+          "source": "Objects/npc"
+        }
+      ],
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::0",
+          "flags": 0
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "source_label": "3",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::3",
+          "flags": 0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "source_label": "3",
+          "actor": "None",
+          "flags": 2
+        },
+        {
+          "kind": "HideDialogue",
+          "phrase": 2,
+          "source_label": "4",
+          "actor": "None",
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 2,
+          "source_label": "4",
+          "actor": "None",
+          "duration": 0.3
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 2,
+          "source_label": "4",
+          "actor": "None"
+        },
+        {
+          "kind": "HideDialogue",
+          "phrase": 3,
+          "source_label": "5",
+          "actor": "None",
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 3,
+          "source_label": "5",
+          "actor": "None",
+          "duration": 1
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "phrase": 3,
+          "source_label": "5",
+          "actor": "None",
+          "binding": "phone_ring",
+          "source_object": "Objects/Phone",
+          "source_method": "_ring"
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 3,
+          "source_label": "5",
+          "actor": "Carol",
+          "vector": [
+            -1,
+            0
+          ],
+          "duration": 0.05,
+          "flags": 0
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 3,
+          "source_label": "5",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 4,
+          "source_label": "6",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::6",
+          "flags": 0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 4,
+          "source_label": "6",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::7",
+          "flags": 0
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "None",
+          "flag": "phone_ring",
+          "value": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "Carol"
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "None"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "Carol"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 5,
+          "source_label": "7",
+          "actor": "None",
+          "duration": 0.5
+        }
+      ],
+      "clears_phone_location_on_finish": true
+    },
+    {
+      "identity": "Podunk/cutscenes/carol_call",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "source_labels": [
+        "0",
+        "1",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "actor_bindings": [
+        {
+          "actor": "Ninten",
+          "source": "leader"
+        },
+        {
+          "actor": "Carol",
+          "source": "Objects/npc"
+        }
+      ],
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::0",
+          "flags": 0
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Ninten"
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Ninten"
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "SetActorDirection",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol",
+          "vector": [
+            0,
+            1
+          ]
+        },
+        {
+          "kind": "ReturnCamera",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "duration": 0.1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "source_label": "1",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::1",
+          "flags": 0
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 1,
+          "source_label": "1",
+          "actor": "Ninten",
+          "path": {
+            "movement": [
+              {
+                "x": 0,
+                "y": -32
+              },
+              {
+                "wait": 0.1
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 1,
+          "source_label": "1",
+          "actor": "Ninten",
+          "target_actor": "Carol",
+          "vector": [
+            0,
+            0
+          ],
+          "duration": 0.1,
+          "flags": 3
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "source_label": "1",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 2,
+          "source_label": "3",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::3",
+          "flags": 0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 2,
+          "source_label": "3",
+          "actor": "None",
+          "flags": 2
+        },
+        {
+          "kind": "HideDialogue",
+          "phrase": 3,
+          "source_label": "4",
+          "actor": "None",
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 3,
+          "source_label": "4",
+          "actor": "None",
+          "duration": 0.3
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 3,
+          "source_label": "4",
+          "actor": "None"
+        },
+        {
+          "kind": "HideDialogue",
+          "phrase": 4,
+          "source_label": "5",
+          "actor": "None",
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 4,
+          "source_label": "5",
+          "actor": "None",
+          "duration": 1
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "phrase": 4,
+          "source_label": "5",
+          "actor": "None",
+          "binding": "phone_ring",
+          "source_object": "Objects/Phone",
+          "source_method": "_ring"
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 4,
+          "source_label": "5",
+          "actor": "Carol",
+          "vector": [
+            -1,
+            0
+          ],
+          "duration": 0.05,
+          "flags": 0
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 4,
+          "source_label": "5",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 5,
+          "source_label": "6",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::6",
+          "flags": 0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 5,
+          "source_label": "6",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::7",
+          "flags": 0
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "None",
+          "flag": "phone_ring",
+          "value": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "Carol"
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "None"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "Ninten"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "Carol"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 6,
+          "source_label": "7",
+          "actor": "None",
+          "duration": 0.5
+        }
+      ],
+      "clears_phone_location_on_finish": true
+    },
+    {
+      "identity": "Podunk/cutscenes/carol_phone",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "source_labels": [
+        "0"
+      ],
+      "actor_bindings": [
+        {
+          "actor": "Ninten",
+          "source": "leader"
+        },
+        {
+          "actor": "Carol",
+          "source": "Objects/npc"
+        }
+      ],
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol",
+          "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml::0",
+          "flags": 0
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Ninten"
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Ninten"
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "SetActorDirection",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol",
+          "vector": [
+            0,
+            1
+          ]
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Ninten",
+          "path": {
+            "movement": [
+              {
+                "wait": 0.1
+              },
+              {
+                "x": 0,
+                "y": -16
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        {
+          "kind": "ReturnCamera",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "duration": 0.1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Ninten"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "Carol"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "duration": 0.5
+        }
+      ],
+      "clears_phone_location_on_finish": true
+    },
+    {
+      "identity": "Podunk/carol_phone",
+      "source_path": "Data/Dialogue/Podunk/carol_phone.yaml",
+      "source_labels": [
+        "0"
+      ],
+      "actor_bindings": [],
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "dialogue_key": "Data/Dialogue/Podunk/carol_phone.yaml::0",
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "duration": 0.5
+        }
+      ],
+      "clears_phone_location_on_finish": true
+    },
+    {
+      "identity": "Podunk/dad_poltergeist",
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "source_labels": [
+        "0",
+        "1",
+        "7",
+        "9",
+        "13"
+      ],
+      "actor_bindings": [],
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::0",
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "source_label": "1",
+          "actor": "None",
+          "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::1",
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "source_label": "1",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 2,
+          "source_label": "7",
+          "actor": "None",
+          "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::7",
+          "flags": 1
+        },
+        {
+          "kind": "MoveCamera",
+          "phrase": 2,
+          "source_label": "7",
+          "actor": "None",
+          "vector": [
+            96,
+            0
+          ],
+          "flags": 1,
+          "duration": 1.0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 2,
+          "source_label": "7",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 3,
+          "source_label": "9",
+          "actor": "None",
+          "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::9",
+          "flags": 1
+        },
+        {
+          "kind": "ReturnCamera",
+          "phrase": 3,
+          "source_label": "9",
+          "actor": "None",
+          "duration": 1.0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 3,
+          "source_label": "9",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 4,
+          "source_label": "13",
+          "actor": "None",
+          "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::13",
+          "flags": 1
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 4,
+          "source_label": "13",
+          "actor": "None",
+          "flag": "talked_to_dad",
+          "value": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 4,
+          "source_label": "13",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 4,
+          "source_label": "13",
+          "actor": "None"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 4,
+          "source_label": "13",
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 4,
+          "source_label": "13",
+          "actor": "None",
+          "duration": 0.5
+        }
+      ],
+      "clears_phone_location_on_finish": true
+    },
+    {
+      "identity": "Reusable/phonenoanswer",
+      "source_path": "Data/Dialogue/Reusable/phonenoanswer.yaml",
+      "source_labels": [
+        "0"
+      ],
+      "actor_bindings": [],
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "dialogue_key": "Data/Dialogue/Reusable/phonenoanswer.yaml::0",
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "flags": 0
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "source_label": "0",
+          "actor": "None",
+          "duration": 0.5
+        }
+      ],
+      "clears_phone_location_on_finish": true
+    }
+  ],
+  "texts": [
+    {
+      "identity": "Data/Dialogue/Podunk/carol_call.yaml::0",
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_PODUNK_CAROL_CALL_0",
+      "text_en": "[@]Are you okay, [Ninten]?[WAIT@]What on earth is happening to our home?[WAIT@]I'm so scared...",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Are you okay, "
+            },
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "?"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "What on earth is happening to our home?"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I'm so scared..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/carol_call.yaml::3",
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "source_label": "3",
+      "translation_key": "DIALOGUE_PODUNK_CAROL_CALL_3",
+      "text_en": "[@]If only your father were here now...",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "If only your father were here now..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/carol_call.yaml::6",
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "source_label": "6",
+      "translation_key": "DIALOGUE_PODUNK_CAROL_CALL_6",
+      "text_en": "[@]Oh! That must be him.",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Oh! That must be him."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/carol_call.yaml::7",
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "source_label": "7",
+      "translation_key": "DIALOGUE_PODUNK_CAROL_CALL_7",
+      "text_en": "[@]Could you get it, [Ninten]?",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Could you get it, "
+            },
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "?"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::0",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_0",
+      "text_en": "[@]Are you okay, [Ninten]?",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Are you okay, "
+            },
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "?"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::1",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "source_label": "1",
+      "translation_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_1",
+      "text_en": "[@]What on earth is happening to our home?[WAIT@]I'm so scared...",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "What on earth is happening to our home?"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I'm so scared..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::3",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "source_label": "3",
+      "translation_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_3",
+      "text_en": "[@]If only your father were here now...",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "If only your father were here now..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::6",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "source_label": "6",
+      "translation_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_6",
+      "text_en": "[@]Oh! That must be him.",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Oh! That must be him."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::7",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "source_label": "7",
+      "translation_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_7",
+      "text_en": "[@]Could you get it, [Ninten]?",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Could you get it, "
+            },
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "?"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml::0",
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_PHONE_0",
+      "text_en": "[@]Telephone! [Ninten], would you please get it?",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_CAROL_PHONE_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Telephone! "
+            },
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": ", would you please get it?"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/carol_phone.yaml::0",
+      "source_path": "Data/Dialogue/Podunk/carol_phone.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_PODUNK_CAROL_PHONE_0",
+      "text_en": "[@]Telephone! [Ninten], would you please get it?",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_PHONE_SPEAKER_Carol",
+      "speaker_en": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Telephone! "
+            },
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": ", would you please get it?"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/dad_poltergeist.yaml::0",
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_0",
+      "text_en": "[@][Ninten] picked up the phone.",
+      "speaker_key": "",
+      "speaker_en": "",
+      "voice": "",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": " picked up the phone."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/dad_poltergeist.yaml::1",
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "source_label": "1",
+      "translation_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_1",
+      "text_en": "[@][Ninten]? It's your dad.[WAIT@]Hmm, I see. Sounds like it must be a poltergeist of some sort.[WAIT@]I'm not sure what to do about it either...[WAIT@]Oh, I remember![WAIT@]Your great-grandfather studied [color]PSI[/color] at one point.[WAIT@]He documented all of his research in a [color]diary[/color] of his.",
+      "speaker_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "? It's your dad."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Hmm, I see. Sounds like it must be a poltergeist of some sort."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I'm not sure what to do about it either..."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Oh, I remember!"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Your great-grandfather studied "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "PSI"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": " at one point."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "He documented all of his research in a "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "diary"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": " of his."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/dad_poltergeist.yaml::7",
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "source_label": "7",
+      "translation_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_7",
+      "text_en": "[@]We put all of his junk in the [color]basement[/color], but I think it's locked.[WAIT@]The [color]key[/color] shouldn't be too far...",
+      "speaker_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "We put all of his junk in the "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "basement"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": ", but I think it's locked."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "The "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "key"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": " shouldn't be too far..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/dad_poltergeist.yaml::9",
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "source_label": "9",
+      "translation_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_9",
+      "text_en": "[@]Anyway, you're our only hope![WAIT@]You've always dreamed about going on an adventure, haven't you?[WAIT@]Well, go forth and protect us all, [Ninten]![WAIT@]Oh, and if you ever need to [color]SAVE your progress[/color], don't forget to [color]call your dear old dad[/color].",
+      "speaker_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Anyway, you're our only hope!"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "You've always dreamed about going on an adventure, haven't you?"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, go forth and protect us all, "
+            },
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "!"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Oh, and if you ever need to "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "SAVE your progress"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": ", don't forget to "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "call your dear old dad"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": "."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Podunk/dad_poltergeist.yaml::13",
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "source_label": "13",
+      "translation_key": "DIALOGUE_PODUNK_DAD_POLTERGEIST_13",
+      "text_en": "[@](Click! Beep-beep-beep...)",
+      "speaker_key": "",
+      "speaker_en": "",
+      "voice": "",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "(Click! Beep-beep-beep...)"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/phonenoanswer.yaml::0",
+      "source_path": "Data/Dialogue/Reusable/phonenoanswer.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_REUSABLE_PHONENOANSWER_0",
+      "text_en": "[@]Beeep...",
+      "speaker_key": "",
+      "speaker_en": "",
+      "voice": "",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Beeep..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::0",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_0",
+      "text_en": "[@][Ninten]? It's your dad.",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "? It's your dad."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::lloyd_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "lloyd_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_LLOYDLEADER_0",
+      "text_en": "[@]Why is your voice so nasally?[D:4] Do you have a cold?\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Why is your voice so nasally?"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 4
+            },
+            {
+              "kind": "Literal",
+              "text": " Do you have a cold?\n"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::ana_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "ana_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_ANALEADER_0",
+      "text_en": "[@]Ha-ha![D:4] Why are you so formal with your old man, silly?\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Ha-ha!"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 4
+            },
+            {
+              "kind": "Literal",
+              "text": " Why are you so formal with your old man, silly?\n"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::teddy_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "teddy_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_TEDDYLEADER_0",
+      "text_en": "[@]Your voice sounds so deep![D:5] Kids grow up too fast...\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Your voice sounds so deep!"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 5
+            },
+            {
+              "kind": "Literal",
+              "text": " Kids grow up too fast...\n"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::pippi_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "pippi_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_PIPPILEADER_0",
+      "text_en": "[@]Why is your voice so high?[D:5] Are you pretending to be Mimmie?\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Why is your voice so high?"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 5
+            },
+            {
+              "kind": "Literal",
+              "text": " Are you pretending to be Mimmie?\n"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::1",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "1",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_1",
+      "text_en": "[@]I've deposited $[EarnedCash] into your bank account.",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I've deposited $"
+            },
+            {
+              "kind": "EarnedCash"
+            },
+            {
+              "kind": "Literal",
+              "text": " into your bank account."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::2",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "2",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_2",
+      "text_en": "[@]Taking away what you've spent, you should now have $[BankCash] in the bank.[WAIT@]Anyways, what do you need from me?",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Taking away what you've spent, you should now have $"
+            },
+            {
+              "kind": "BankCash"
+            },
+            {
+              "kind": "Literal",
+              "text": " in the bank."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Anyways, what do you need from me?"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::5",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "5",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_5",
+      "text_en": "[@]All done.",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "All done."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::6",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "6",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_6",
+      "text_en": "[@]Well, good luck with your adventure and whatnot.[WAIT@]Just remember to take a break once in a while, okay?",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, good luck with your adventure and whatnot."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Just remember to take a break once in a while, okay?"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::7",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "7",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_7",
+      "text_en": "[@](Click! Beep-beep-beep...)",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "(Click! Beep-beep-beep...)"
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    }
+  ],
+  "dad_normal": {
+    "identity": "Reusable/dad_normal",
+    "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+    "execution_status": "not_integrated",
+    "entry": "0",
+    "nodes": [
+      {
+        "label": "0",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::0",
+        "fallback": "check_lloyd",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "check_lloyd",
+        "text_key": null,
+        "fallback": "check_ana",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "lloyd",
+          "target": "lloyd_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "check_ana",
+        "text_key": null,
+        "fallback": "check_teddy",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "ana",
+          "target": "ana_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "check_teddy",
+        "text_key": null,
+        "fallback": "check_pippi",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "teddy",
+          "target": "teddy_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "check_pippi",
+        "text_key": null,
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "pippi",
+          "target": "pippi_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "lloyd_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::lloyd_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "ana_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::ana_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "teddy_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::teddy_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "pippi_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::pippi_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "check_earned_cash",
+        "text_key": null,
+        "fallback": "2",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "FlagEquals",
+          "flag": "earned_cash",
+          "value": true,
+          "target": "1"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "1",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::1",
+        "fallback": "2",
+        "terminal": false,
+        "textless_immediate": false,
+        "text_replacement_effects": [
+          {
+            "token": "EarnedCash",
+            "capture": "earned_cash",
+            "reset_amount": 0,
+            "clear_flag": "earned_cash",
+            "flags_updated": false,
+            "phase": "before_print",
+            "frequency": "once_per_phrase_entry"
+          }
+        ]
+      },
+      {
+        "label": "2",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::2",
+        "fallback": null,
+        "terminal": false,
+        "textless_immediate": false,
+        "choices": [
+          {
+            "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_0",
+            "text_en": "Record",
+            "target": "4"
+          },
+          {
+            "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_1",
+            "text_en": "Nothing, really",
+            "target": "6"
+          }
+        ],
+        "cancel_target": "6",
+        "initial_selection": 0,
+        "show_choices": "after_text_complete",
+        "text_replacement_effects": [
+          {
+            "token": "BankCash",
+            "read": "bank",
+            "mutate": false,
+            "phase": "before_print"
+          }
+        ],
+        "reviewed_noop": {
+          "source_command": "unsetflags",
+          "flag": "money_earned",
+          "reason": "Unregistered exact upstream spelling; globalData.set_flag returns without mutation or signal",
+          "flags_updated": false,
+          "source": "Scripts/global/globalData.gd:409"
+        }
+      },
+      {
+        "label": "4",
+        "text_key": null,
+        "fallback": "6",
+        "terminal": false,
+        "textless_immediate": false,
+        "branch": {
+          "kind": "FlagEquals",
+          "flag": "saved",
+          "value": true,
+          "target": "5"
+        },
+        "evaluate_branch": "submenu_callback",
+        "entry": [
+          {
+            "kind": "ShowEmptyText"
+          },
+          {
+            "kind": "HideDialogue"
+          },
+          {
+            "kind": "SetFlag",
+            "flag": "saved",
+            "value": false
+          },
+          {
+            "kind": "OpenSave",
+            "mode": "SAVE",
+            "callback": "_try_resume_dialogue"
+          }
+        ],
+        "can_input": false,
+        "suspend_until": "submenu_callback",
+        "hidden_text_does_not_finish": true
+      },
+      {
+        "label": "5",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::5",
+        "fallback": "6",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "6",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::6",
+        "fallback": "7",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "7",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::7",
+        "fallback": null,
+        "terminal": true,
+        "textless_immediate": false
+      }
+    ],
+    "clears_phone_location_on_finish": true,
+    "singleton_specialization": {
+      "required_party": [
+        "ninten"
+      ],
+      "skipped_conditions": [],
+      "policy": "Retain typed leader checks; any future specialization must assert singleton Ninten"
+    }
+  },
+  "text_contracts": {
+    "hint_color_hex": "ea8b2c",
+    "money_replacement": "Once before phrase printing/reflow; retain substituted result",
+    "player_name": "Source Ninten nickname with existing source name-length policy"
+  },
+  "contracts": {
+    "phone_is_actor": false,
+    "phone_marks_npc_seen": false,
+    "phone_card_required": false,
+    "money_required": false,
+    "basement_required": false,
+    "pillow_required": false,
+    "grants_rewards": false,
+    "first_call_opens_save": false,
+    "flag_timing": "source command phase before final line finishes",
+    "restoration": "Only bound original actors; update_npcs writes position/direction then restores asynchronously",
+    "queued_turn_target_resolution": "Compute direction at command dispatch, before queued wait",
+    "camera_axis_flags": "1 replaces absolute X retaining current camera global Y; sine/out source defaults"
+  }
+}

@@ -1,0 +1,453 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "dependencies": {
+    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
+    "romfs/round-preview/source.json": "8d0c89c8ab435af3383c12c4766077d328fea091c9b37b34774d8dbe99eb1e41"
+  },
+  "layout_bindings": {
+    "cursor": 22,
+    "cursor_back": 23,
+    "grid": 1,
+    "hint": 34,
+    "info": 29,
+    "menu": 0,
+    "scrollbar": 24
+  },
+  "limits": [
+    "No GUI/screenshot capture",
+    "No pixel or audibility comparison",
+    "No hardware validation"
+  ],
+  "native_reference_sha256": "6d1a4162ff12ca5fcbc74084afc48c41656fa4e8744c6968d83417a7cfe20ae6",
+  "raw": {
+    "audio_paths": {
+      "back": "Audio/Sound effects/M3/curshoriz.wav",
+      "cursor1": "Audio/Sound effects/Cursor 1.mp3",
+      "cursor2": "Audio/Sound effects/Cursor 2.mp3",
+      "restricted": "Audio/Sound effects/M3/bump.wav"
+    },
+    "cap": {
+      "HPrecover": 0,
+      "PPrecover": 0,
+      "actions": [
+        {
+          "function": "equip"
+        }
+      ],
+      "article": "BASEBALLCAP_ART",
+      "boost": {
+        "defense": 5,
+        "guts": 0,
+        "iq": 0,
+        "maxhp": 0,
+        "maxpp": 0,
+        "offense": 0,
+        "speed": 0
+      },
+      "can_use": [
+        "ninten"
+      ],
+      "cost": 60,
+      "description": "BASEBALLCAP_DESC",
+      "keyitem": false,
+      "name": "BASEBALLCAP_NAME",
+      "slot": "other",
+      "sorting_name": "BASEBALLCAP_SORT",
+      "transform": "",
+      "value": 30
+    },
+    "capacity": 16,
+    "clips": [
+      {
+        "length": 0.1,
+        "loop": false,
+        "name": "Open",
+        "source": "Nodes/Ui/Battle/Battle.tscn",
+        "source_resource_id": 70,
+        "step": 0.1,
+        "tracks": [
+          {
+            "enabled": true,
+            "imported": false,
+            "interp": 1,
+            "keys": {
+              "times": [
+                0,
+                0.1
+              ],
+              "transitions": [
+                0.25,
+                0.25
+              ],
+              "update": 0,
+              "values": [
+                [
+                  32,
+                  -100
+                ],
+                [
+                  32,
+                  8
+                ]
+              ]
+            },
+            "loop_wrap": true,
+            "path": ".:rect_position",
+            "type": "value"
+          },
+          {
+            "enabled": true,
+            "imported": false,
+            "interp": 1,
+            "keys": {
+              "times": [
+                0
+              ],
+              "transitions": [
+                1
+              ],
+              "update": 1,
+              "values": [
+                true
+              ]
+            },
+            "loop_wrap": true,
+            "path": ".:visible",
+            "type": "value"
+          }
+        ]
+      },
+      {
+        "length": 0.1,
+        "loop": false,
+        "name": "Close",
+        "source": "Nodes/Ui/Battle/Battle.tscn",
+        "source_resource_id": 69,
+        "step": 0.1,
+        "tracks": [
+          {
+            "enabled": true,
+            "imported": false,
+            "interp": 1,
+            "keys": {
+              "times": [
+                0,
+                0.1
+              ],
+              "transitions": [
+                0.25,
+                0.25
+              ],
+              "update": 0,
+              "values": [
+                [
+                  32,
+                  8
+                ],
+                [
+                  32,
+                  -100
+                ]
+              ]
+            },
+            "loop_wrap": true,
+            "path": ".:rect_position",
+            "type": "value"
+          },
+          {
+            "enabled": true,
+            "imported": false,
+            "interp": 1,
+            "keys": {
+              "times": [
+                0,
+                0.1
+              ],
+              "transitions": [
+                1,
+                1
+              ],
+              "update": 1,
+              "values": [
+                true,
+                false
+              ]
+            },
+            "loop_wrap": true,
+            "path": ".:visible",
+            "type": "value"
+          }
+        ]
+      }
+    ],
+    "columns": 2,
+    "cursor_idle": {
+      "fps": 5.0,
+      "frames": [
+        0,
+        1,
+        2,
+        1
+      ]
+    },
+    "description": "A hat for baseball players.\nOther @ Defense +5.",
+    "doses": 1,
+    "flavor": [
+      "f3f2f4",
+      "bfb4cd",
+      "7a6c86",
+      "141117",
+      "ba53e4",
+      "d6cedf",
+      "332943",
+      "ff285f"
+    ],
+    "item_value": 5,
+    "layout": {
+      "InfoBox": {
+        "desc_label": "Description",
+        "margin_bottom": 248.0,
+        "margin_left": 32.0,
+        "margin_right": 288.0,
+        "margin_top": 200.0,
+        "material": {
+          "ExtResource": 30
+        },
+        "patch_margin_bottom": 8,
+        "patch_margin_left": 8,
+        "patch_margin_right": 8,
+        "patch_margin_top": 8,
+        "script": {
+          "ExtResource": 77
+        },
+        "texture": {
+          "ExtResource": 3
+        },
+        "visible": false
+      },
+      "InfoBox/Description": {
+        "margin_bottom": 43.0,
+        "margin_left": -1.0,
+        "margin_right": 257.0,
+        "margin_top": 3.0
+      },
+      "InfoBox/PPCost": {
+        "custom_styles/panel": {
+          "SubResource": 62
+        },
+        "grow_horizontal": 0,
+        "margin_bottom": 9.0,
+        "margin_left": 234.0,
+        "margin_right": 243.0,
+        "margin_top": -9.0,
+        "material": {
+          "ExtResource": 30
+        }
+      },
+      "InfoBox/PPCost/MarginContainer": {
+        "custom_constants/margin_left": 1,
+        "custom_constants/margin_top": -2,
+        "grow_horizontal": 0,
+        "margin_bottom": 14.0,
+        "margin_left": 4.0,
+        "margin_right": 5.0,
+        "margin_top": 4.0,
+        "size_flags_horizontal": 4
+      },
+      "InfoBox/PPCost/MarginContainer/ButtonText": {
+        "align": 1,
+        "grow_horizontal": 2,
+        "grow_vertical": 0,
+        "hint_color": false,
+        "key": "ui_scope",
+        "margin_bottom": 9.0,
+        "margin_left": 1.0,
+        "margin_right": 1.0,
+        "margin_top": -2.0,
+        "modulate": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "size_flags_horizontal": 0,
+        "size_flags_vertical": 0,
+        "text": ""
+      },
+      "ItemsBox": {
+        "__meta__": {
+          "_edit_lock_": true
+        },
+        "_info_box": "../InfoBox",
+        "margin_bottom": 105.0,
+        "margin_left": 32.0,
+        "margin_right": 288.0,
+        "margin_top": 9.0,
+        "material": {
+          "ExtResource": 30
+        },
+        "patch_margin_bottom": 8,
+        "patch_margin_left": 8,
+        "patch_margin_right": 8,
+        "patch_margin_top": 8,
+        "rect_pivot_offset": [
+          52,
+          24
+        ],
+        "script": {
+          "ExtResource": 23
+        },
+        "texture": {
+          "ExtResource": 3
+        },
+        "visible": false
+      },
+      "ItemsBox/Arrow": {
+        "consume_input_events": true,
+        "cursor_offset": [
+          -5,
+          1
+        ],
+        "menu_parent_path": "../GridContainer",
+        "move_sfx": true,
+        "position": [
+          15,
+          10
+        ],
+        "reset_on_show": false,
+        "skip_empty_labels": true
+      },
+      "ItemsBox/Arrow/ColorRect": {
+        "color": [
+          0.0784314,
+          0.0666667,
+          0.0901961,
+          1
+        ],
+        "margin_bottom": 5.0,
+        "margin_left": -5.0,
+        "margin_right": 5.0,
+        "margin_top": -3.0,
+        "script": {
+          "ExtResource": 29
+        },
+        "show_behind_parent": true
+      },
+      "ItemsBox/GridContainer": {
+        "__meta__": {
+          "_editor_description_": ""
+        },
+        "anchor_bottom": 1.0,
+        "anchor_right": 1.0,
+        "columns": 2,
+        "custom_constants/hseparation": 12,
+        "margin_bottom": -10.0,
+        "margin_left": 20.0,
+        "margin_right": -20.0,
+        "margin_top": 10.0
+      },
+      "ItemsBox/Scrollbar": {
+        "margin_bottom": 89.0,
+        "margin_left": 240.0,
+        "margin_right": 248.0,
+        "margin_top": 6.0
+      },
+      "PlayerInfo/PlayerInfoVbox/PartyInfo": {
+        "margin_bottom": 68.0,
+        "margin_right": 320.0,
+        "rect_min_size": [
+          320,
+          68
+        ],
+        "size_flags_vertical": 0
+      }
+    },
+    "rows": 5
+  },
+  "resource_roles": {
+    "box": 0,
+    "cap": 2,
+    "cursor": 1,
+    "cursor_down": 11,
+    "cursor_up": 10,
+    "equipped": 3,
+    "font": 9,
+    "hint_box": 7,
+    "hint_glyph": 8,
+    "icon_frame": 4,
+    "scroll_bg": 5,
+    "scroll_thumb": 6
+  },
+  "schema": 1,
+  "semantics": {
+    "close_visibility": "ItemsBox.hide schedules Close then BattleMenuBox.hide immediately hides; retain source clip but do not promise a visible close tween",
+    "cursor_position": "Native float vector operations; source centered origin retained with Centered flag; cursor backplate retains show_behind_parent",
+    "description": "Original TextTools.add_line_breaks and strip_bbcode executed with native font in isolated headless helper",
+    "disabled_color": "uiManager.get_flavor_color(3) is one-based NEWCOLOR3",
+    "hint": "Source ButtonText custom BottleRocket font and native Panel/MarginContainer/Label layout; platform scope labelL rasterized monochrome with source outline1; noGPU raster equality claim",
+    "scope_binding": "Source joypadbutton6 left trigger → native3DS L512; explicit adaptation",
+    "scroll_arrows": "Source +/-1.5708 rotations mapped to nearest-sampled lossless90-degree per-frame rotation; headless initial single-row scrollbar hidden"
+  },
+  "sources": {
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+    "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+    "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+    "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+    "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Graphics/Objects/Items/BaseballCap.png": "a488850070f306cce6fe08fc1546de558fb18873153dd2f80cf9944897308b05",
+    "Graphics/Objects/Items/BaseballCap.png.import": "079064d87a125b57b2871ebe4c7409a9d93cc0c41052e844e39d22167b00749e",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Graphics/UI/Inventory/item_icon.png": "3479bd4197cf02a6997e9947ef8a7882002636adc4a658b7f8ddeeafc8867f5e",
+    "Graphics/UI/Inventory/item_icon.png.import": "153842ae51512b9e3b9fdd87411b5a6a5ed8e08dd629ab42a94afe5699050535",
+    "Graphics/UI/Inventory/modifiers.png": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
+    "Graphics/UI/Inventory/modifiers.png.import": "3b670c47f51983c1927c6ed06ad1ef2e5a8f80c998ca37d5f4c9c26b321cbea9",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png": "016b161a791b5c3cc95db2002921dae062f4b90ca87cdd2e4b7da62cefc72bf3",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png.import": "cec66f58131b9cabd2900bd2fe99af81e0ace80215f081b85e5064ee5a711ccf",
+    "Graphics/UI/Overworld/flavours/defaultlabel.png": "2584ab1f8114d7d75e11271fa9d0801b352f334e35389c2a08ff104605d914cf",
+    "Graphics/UI/Overworld/flavours/defaultlabel.png.import": "efebeb90b5041c1d781463346f2f954c97459a7094a2155d8550ba6526779fd2",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png": "019a1b69d3091aad552390204a6d6250af4ab90a124fc726262554d1fa5fce0d",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png.import": "69a4e9fef64d8d941c7a7bac0c31f991188b0f1fcfbe8b85d8f414349c6bb8aa",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Battle/ActionMenuBox.gd": "92142910d696db1a7f007ee174854277f926c705fd123ee07d9cef11ef640ebd",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Battle/InfoBox.gd": "da8e9e33dca703269d1b8a4bd922e9e63c5ab4139cc9355d6e4a2750249ccbf6",
+    "Nodes/Ui/Battle/ItemsBox.gd": "c869b5441d2e4abd44035591cb6b402cb1becea1a5942c8aa9e0e9fa59ae779a",
+    "Nodes/Ui/ButtonText.tscn": "1694e72e90585ec4cdf0b0967624ddf32ac996b29e1f4c62ab1045eb46f382d4",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Nodes/Ui/HighlightLabel.gd": "91a1ec1e640166c2e38a6ee8c094042fddc64f165f128bd4aa706b09f29ad367",
+    "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
+    "Nodes/Ui/Reusables/Scrollbar.tscn": "5448fa7a0464b0d7cf18a5a01dde998f96f56d5b0123a5b03d8be0869cc5bfd0",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/Battle/BattleMenuBox.gd": "d01947cb671feedc0467069af68c680a94002650bd34e405afc00d44dfc6902b",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/ButtonText.gd": "0b03d5d7982499552d0160e1a7fc6c72110d29030878f3c17b48086fcb8ac763",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/UI/Reusables/Scrollbar.gd": "d93225ed2f66383190e12d57cd1fe5b978ba43b824ffbf3b3893993e0e7fa226",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  }
+}

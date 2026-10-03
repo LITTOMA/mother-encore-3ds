@@ -1,0 +1,11 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "distortionator_version": "1.0.5 (verify against pinned upstream README)",
+  "game_version": "0.4.1.0",
+  "godot_version": "3.6.2-stable",
+  "repository": "https://github.com/motherencore/MOTHER-Encore-Source-Code.git",
+  "requested_ref": "7d9246600fffe518408f5830d4848635019005a3",
+  "schema": 1,
+  "status": "pinned; compatibility NOT yet established",
+  "tree": "dab3bb25b417d2273a35679a3edfbc45a597dcf9"
+}

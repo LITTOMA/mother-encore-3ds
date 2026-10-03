@@ -1,0 +1,403 @@
+{
+  "schema": 1,
+  "kind": "encore.phone-stage.presentation-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png.import": "c2a5c9f187d55231055c5203bbb134304f9965549becb75ad0ca594bfa518a97",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
+    "Audio/Sound effects/phonehangup.wav": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145",
+    "Audio/Sound effects/phonehangup.wav.import": "fdbe75f6e2df204ccc6bd2fa775982d96d8d5a6ce5cbf91517e53a3fbb2b78a4"
+  },
+  "shipping_integrated": false,
+  "resources": [
+    {
+      "id": 1,
+      "role": "phone",
+      "source": "Graphics/Character Sprites/Npcs/misc/Phone/main.png",
+      "path": "phone-preview/phone.t3x",
+      "kind": 1,
+      "width": 76,
+      "height": 22,
+      "columns": 4,
+      "rows": 1
+    }
+  ],
+  "objects": [
+    {
+      "identity": "house_phone",
+      "source_path": "Objects/Phone",
+      "type": "InteractDialog",
+      "position": [
+        148,
+        677
+      ],
+      "sprite": {
+        "resource": "phone",
+        "offset": [
+          0,
+          3
+        ],
+        "center": [
+          148.0,
+          680.0
+        ],
+        "frame_size": [
+          19,
+          22
+        ],
+        "initial_frame": 0,
+        "centered": true,
+        "y_sort_origin": [
+          148,
+          677
+        ],
+        "shadow": false,
+        "direction_count": 0,
+        "talk_animation": false
+      },
+      "interaction": {
+        "center": [
+          148.0,
+          692.0
+        ],
+        "source_offset": [
+          -1.19209e-07,
+          15
+        ],
+        "source_extents": [
+          15.7493,
+          19.1346
+        ],
+        "source_scale": [
+          1.01592,
+          0.940705
+        ],
+        "effective_extents": [
+          16.000028610229492,
+          18.00001335144043
+        ],
+        "player_turn": {
+          "x": true,
+          "y": true
+        },
+        "collision_layer": 1,
+        "collision_mask": 1,
+        "creates_actor": false,
+        "turns_phone": false,
+        "sets_talker": false,
+        "marks_npc_seen": false
+      },
+      "collider": {
+        "source_path": "Objects/Phone/StaticBody2D",
+        "center": [
+          149.0,
+          685.5
+        ],
+        "extents": [
+          7.5,
+          4.5
+        ],
+        "collision_layer": 573,
+        "collision_mask": 0
+      },
+      "dispatch": {
+        "default": "Reusable/phonenoanswer",
+        "policy": "last_matching_nonempty_flag",
+        "overrides": [
+          {
+            "flag": "phone_ring",
+            "dialogue": "Podunk/dad_poltergeist"
+          },
+          {
+            "flag": "talked_to_dad",
+            "dialogue": "Reusable/dad_normal"
+          }
+        ]
+      },
+      "use": {
+        "is_payphone": false,
+        "save_location": "",
+        "key_item": "PhoneCard",
+        "searches_for_phone_card": true,
+        "consumes_phone_card": false,
+        "consumes_cash": false,
+        "ordered_actions": [
+          {
+            "kind": "SetAudioStream",
+            "resource": "Audio/Sound effects/phonehangup.wav"
+          },
+          {
+            "kind": "PlayAnimation",
+            "clip": "Idle"
+          },
+          {
+            "kind": "SetPhoneLocation",
+            "value": ""
+          },
+          {
+            "kind": "OpenDialogue",
+            "dispatch": "last_matching_nonempty_flag"
+          },
+          {
+            "kind": "StartAudio"
+          }
+        ]
+      },
+      "audio": {
+        "source_path": "Objects/Phone/AudioStreamPlayer2D",
+        "bus": "SFX",
+        "center": [
+          148.0,
+          686.0
+        ],
+        "positional": true,
+        "ring": "Audio/Sound effects/phonering.wav",
+        "hangup": "Audio/Sound effects/phonehangup.wav"
+      },
+      "ring": {
+        "binding": "phone_ring",
+        "method": "_ring",
+        "idempotent_when_current": "Ring",
+        "stream": "Audio/Sound effects/phonering.wav",
+        "clip": "Ring",
+        "automatic_on_load": false
+      },
+      "clips": [
+        {
+          "name": "Idle",
+          "length": 1.0,
+          "loop": false,
+          "events": [
+            {
+              "time": 0,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 0
+            }
+          ]
+        },
+        {
+          "name": "Ring",
+          "length": 1.25,
+          "loop": true,
+          "events": [
+            {
+              "time": 0.0,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 1
+            },
+            {
+              "time": 0.08299999684095383,
+              "track": 1,
+              "kind": "PlaySound",
+              "resource": "Audio/Sound effects/phonering.wav"
+            },
+            {
+              "time": 0.08333329856395721,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 2
+            },
+            {
+              "time": 0.16666699945926666,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 3
+            },
+            {
+              "time": 0.25,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 2
+            },
+            {
+              "time": 0.3319999873638153,
+              "track": 1,
+              "kind": "PlaySound",
+              "resource": "Audio/Sound effects/phonering.wav"
+            },
+            {
+              "time": 0.33333298563957214,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 3
+            },
+            {
+              "time": 0.41666701436042786,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 2
+            },
+            {
+              "time": 0.5,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 1
+            },
+            {
+              "time": 0.5833330154418945,
+              "track": 0,
+              "kind": "Frame",
+              "frame": 0
+            }
+          ],
+          "simultaneous_tick_order": "Source track order: frame track0 before audio track1"
+        }
+      ]
+    }
+  ],
+  "story_triggers": [
+    {
+      "source_path": "Cutscene Area4",
+      "root_position": [
+        104,
+        808
+      ],
+      "scale": [
+        8,
+        2
+      ],
+      "inherited_offset": [
+        4,
+        4
+      ],
+      "center": [
+        136.0,
+        816.0
+      ],
+      "extents": [
+        32,
+        8
+      ],
+      "dialogue": "Podunk/cutscenes/carol_call",
+      "conditions": [
+        {
+          "flag": "doll_melody",
+          "value": true
+        },
+        {
+          "flag": "phone_ring",
+          "value": false
+        }
+      ],
+      "activation": "player_contact_then_source_idle_process",
+      "disposition": "ExecuteProgram"
+    },
+    {
+      "source_path": "Cutscene Area3",
+      "root_position": [
+        104,
+        816
+      ],
+      "scale": [
+        8,
+        2
+      ],
+      "inherited_offset": [
+        4,
+        4
+      ],
+      "center": [
+        136.0,
+        824.0
+      ],
+      "extents": [
+        32,
+        8
+      ],
+      "dialogue": "Podunk/cutscenes/carol_phone",
+      "conditions": [
+        {
+          "flag": "phone_ring",
+          "value": true
+        },
+        {
+          "flag": "talked_to_dad",
+          "value": false
+        }
+      ],
+      "activation": "player_contact_then_source_idle_process",
+      "disposition": "ExecuteProgram"
+    }
+  ],
+  "carol_dispatch": {
+    "source_path": "Objects/npc",
+    "policy": "last_matching_ordered_row",
+    "marks_selected_seen": true,
+    "rows": [
+      {
+        "flag": "",
+        "dialogue": "Podunk/carol_panic",
+        "seen_key": "/root/Ninten's House/Objects/npc::1:Podunk/carol_panic",
+        "staged_here": false
+      },
+      {
+        "flag": "doll_melody",
+        "dialogue": "Podunk/carol_call",
+        "seen_key": "/root/Ninten's House/Objects/npc:doll_melody:1:Podunk/carol_call",
+        "staged_here": true
+      },
+      {
+        "flag": "phone_ring",
+        "dialogue": "Podunk/carol_phone",
+        "seen_key": "/root/Ninten's House/Objects/npc:phone_ring:1:Podunk/carol_phone",
+        "staged_here": true
+      },
+      {
+        "flag": "talked_to_dad",
+        "dialogue": "Podunk/carol_key",
+        "seen_key": "/root/Ninten's House/Objects/npc:talked_to_dad:1:Podunk/carol_key",
+        "staged_here": false
+      },
+      {
+        "flag": "carol_ask_key",
+        "dialogue": "Podunk/carol_key_again",
+        "seen_key": "/root/Ninten's House/Objects/npc:carol_ask_key:1:Podunk/carol_key_again",
+        "staged_here": false
+      },
+      {
+        "flag": "mick_telepathy",
+        "dialogue": "Podunk/carol_got_key",
+        "seen_key": "/root/Ninten's House/Objects/npc:mick_telepathy:1:Podunk/carol_got_key",
+        "staged_here": false
+      },
+      {
+        "flag": "got_diary",
+        "dialogue": "Podunk/carol_food",
+        "seen_key": "/root/Ninten's House/Objects/npc:got_diary:1:Podunk/carol_food",
+        "staged_here": false
+      },
+      {
+        "flag": "good_morning",
+        "dialogue": "Podunk/carol_rested",
+        "seen_key": "/root/Ninten's House/Objects/npc:good_morning:1:Podunk/carol_rested",
+        "staged_here": false
+      }
+    ]
+  },
+  "entrance_guard": {
+    "source_path": "DoorBlock",
+    "disappear_flag": "talked_to_dad"
+  },
+  "dormant_animations": {
+    "source": "Maps/podunk/Nintens House.tscn",
+    "animation": "PhoneRing",
+    "policy": "Not an automatic trigger"
+  },
+  "licence_review": "Original asset use only for this related Mother: Encore port; retain upstream LICENSE"
+}

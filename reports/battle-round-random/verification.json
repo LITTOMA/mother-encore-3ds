@@ -1,0 +1,16 @@
+{
+  "host_compiler": "c++ (Debian 14.2.0-19) 14.2.0",
+  "arm_compiler": "arm-none-eabi-g++ (devkitARM) 16.1.0",
+  "host_command": "c++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -Iinclude runtime/source_random.cpp tests/source_random_tests.cpp -o build/battle-round-random/source_random_tests",
+  "sanitizer_command": "c++ -std=c++17 -g -O1 -fno-pie -no-pie -fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer -Wall -Wextra -Wpedantic -Iinclude runtime/source_random.cpp tests/source_random_tests.cpp -o build/battle-round-random/source_random_tests_sanitize",
+  "sanitizer_run": "ASAN_OPTIONS=detect_leaks=0 build/battle-round-random/source_random_tests_sanitize reports/battle-round-random/reference.bin",
+  "arm_compile_command": "arm-none-eabi-g++ -std=c++17 -O2 -Wall -Wextra -Wpedantic -march=armv6k -mtune=mpcore -mfloat-abi=hard -Iinclude -c runtime/source_random.cpp -o build/battle-round-random/source_random.arm.o",
+  "arm_result": "compiled only; no ARM execution claim",
+  "artifacts": {
+    "include/encore/source_random.hpp": "92496af2bdc87c123815aeace9e52a7e133aa03ae90193a14a627b6c075be73f",
+    "runtime/source_random.cpp": "3705d10157ef6104775471c0a5c09633e145249cf64d30145333f8bb3fd6e246",
+    "tests/source_random_tests.cpp": "3c1289ac1cf24ca2673359b7e2f2ef07e5573bc8db6a082c1ffe7ef235ad729c",
+    "build/battle-round-random/source_random.arm.o": "bde33ac725887984e6d157dd59fb0d9b9d6718c894c61069453251bf1100c299"
+  },
+  "post_validation_change": "Source-only attribution comment added; no executable statements changed after validation"
+}

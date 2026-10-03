@@ -1,0 +1,12 @@
+test_bad_key_order_and_modes_fail (__main__.WorldEffectAssets.test_bad_key_order_and_modes_fail) ... ok
+test_bad_settings_fail (__main__.WorldEffectAssets.test_bad_settings_fail) ... ok
+test_bad_texture_fail (__main__.WorldEffectAssets.test_bad_texture_fail) ... ok
+test_float32_collapsed_keys_fail (__main__.WorldEffectAssets.test_float32_collapsed_keys_fail) ... ok
+test_reproducible_checked_pack (__main__.WorldEffectAssets.test_reproducible_checked_pack) ... ok
+test_source_coverage_fail (__main__.WorldEffectAssets.test_source_coverage_fail) ... ok
+test_unknown_fields_fail (__main__.WorldEffectAssets.test_unknown_fields_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.018s
+
+OK

@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source_sha256": {
+    "Graphics/Battle BGS/baby.png": "1de8cae77c5282b572c682e9339b68624d1ba96562b47134a8b0954b7177f300",
+    "Graphics/Battle BGS/baby_pal.png": "2bd34845af2be7166bcb042f1f7413f54dcbce86a97568e013638f79d1d7ef15",
+    "addons/distortionator_integration/default_shader.tres": "f65588ad747f102d2358bc016a016e22a2d1ef986a461938b8c1e3b75122d61c",
+    "Graphics/Battle BGS/baby.bbg": "cfd180f2ee72b8e748d780203707d50744620a8b697c75530c94c4f7e88c6bb6"
+  },
+  "engine_sha256": "7f6d2abd045dbfd5db05ccd1792512dd5d21e19da3b2a00a561c5d314df9c733",
+  "renderer": "Godot3.6.2 official GLES2 llvmpipe (LLVM19.1.7,256 bits)",
+  "source_uniform_value": null,
+  "source_default_divisor": 0,
+  "compatibility_policy": {
+    "kind": "fixed_palette_row_for_undefined_divisor",
+    "row": 0,
+    "only_when_source_divisor": 0,
+    "scope": "Exact pinned Baby texture, palette, shader and importer; reviewed GLES2 native observations only"
+  },
+  "observations": "All8 full320x180 source layer buffers at4 native times equal row0 and row2 alternatives exactly; source palette rows0 and2 are identical. Rows1/3 never match. No invented4 frame divisor. Shader arithmetic remains undefined on other backends.",
+  "evidence": {
+    "engine.json": "79a6386667b625050c59ccc0866a8c5d408d601b6b2ab9b2a2d299c1b5350554",
+    "native-gles2.log": "6901c5fb17c33ff1cdc265a2a82fbc0f0a82e15a0833f29085a40efa95b9b144",
+    "reference.json": "d2e0e77a46989000b14b49286cfa64555961366886b2b5001bd4aee51c62a7c7",
+    "source-layer0-sample0.png": "9eb3251eeeb4bbb31a288812bcc031472e9e87e8e13e7dfb6efa43efa797db40",
+    "source-layer0-sample1.png": "e98ec779e5646512089632474cc843ddef8063764d71dc1c1296f9f4e34d72f1",
+    "source-layer0-sample2.png": "d22887de3b8b84aa8a9db4e094f5fd21dfc495c4f506a8cb6cb19f7ff3da8356",
+    "source-layer0-sample3.png": "819b58a4dbcde4484618eed3bfbb969b01af273737f54526ac7de6f4b9481778",
+    "source-layer1-sample0.png": "512ac3eabc39801878f1e75a8eb6545c0e0da9ca7664fa3ab47377f8faf9011b",
+    "source-layer1-sample1.png": "d263de6b8ad2a143a80677e24f8b819da8f895654da336cb612b9dd35deff371",
+    "source-layer1-sample2.png": "db3c97c39cd946fd58eeae4c09d1a0077d575e1a7686782239668e6cb8e61763",
+    "source-layer1-sample3.png": "bcd193caff94efe123b92988717113465518516f2c3aa68001d7cf9656ba13a7",
+    "source.json": "e27748a359339d78c1e583e0e6008d99657c5afbf4ca49a80b1043df722de1b1"
+  },
+  "limitations": [
+    "Not cross-GPU undefined-arithmetic portability",
+    "Not full original game rendering comparison",
+    "Not CPU/GPU complete shader pixel equivalence",
+    "Native ALSA unavailable; dummy audio irrelevant to image probe"
+  ]
+}

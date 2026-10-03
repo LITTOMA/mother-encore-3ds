@@ -1,0 +1,2063 @@
+{
+  "font_metrics": {
+    "advances": [
+      3,
+      3,
+      4,
+      6,
+      6,
+      8,
+      8,
+      3,
+      4,
+      4,
+      4,
+      6,
+      3,
+      3,
+      3,
+      5,
+      6,
+      4,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      2,
+      3,
+      4,
+      6,
+      4,
+      5,
+      6,
+      7,
+      6,
+      6,
+      6,
+      5,
+      5,
+      6,
+      6,
+      2,
+      5,
+      6,
+      5,
+      8,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      7,
+      8,
+      6,
+      6,
+      5,
+      3,
+      5,
+      3,
+      0,
+      6,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      5,
+      5,
+      2,
+      3,
+      5,
+      2,
+      8,
+      5,
+      5,
+      5,
+      5,
+      4,
+      5,
+      4,
+      5,
+      6,
+      8,
+      5,
+      5,
+      5,
+      4,
+      2,
+      4,
+      7
+    ],
+    "ascent": 11,
+    "descent": 1,
+    "height": 12,
+    "version": {
+      "build": "official",
+      "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "hex": 198146,
+      "major": 3,
+      "minor": 6,
+      "patch": 2,
+      "status": "stable",
+      "string": "3.6.2-stable (official)",
+      "year": 2025
+    }
+  },
+  "glyphs": [
+    {
+      "advance": 3.0,
+      "codepoint": 32,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 0,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 33,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 24,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 34,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 48,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 35,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 72,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 36,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 96,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 8.0,
+      "codepoint": 37,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 120,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 8.0,
+      "codepoint": 38,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 144,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 39,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 168,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 40,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 192,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 41,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 216,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 42,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 240,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 43,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 264,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 44,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 288,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 45,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 312,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 46,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 336,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 47,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 360,
+      "v": 0,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 48,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 0,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 49,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 24,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 50,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 48,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 51,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 72,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 52,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 96,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 53,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 120,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 54,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 144,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 55,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 168,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 56,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 192,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 57,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 216,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 2.0,
+      "codepoint": 58,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 240,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 59,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 264,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 60,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 288,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 61,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 312,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 62,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 336,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 63,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 360,
+      "v": 24,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 64,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 0,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 7.0,
+      "codepoint": 65,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 24,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 66,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 48,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 67,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 72,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 68,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 96,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 69,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 120,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 70,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 144,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 71,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 168,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 72,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 192,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 2.0,
+      "codepoint": 73,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 216,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 74,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 240,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 75,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 264,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 76,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 288,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 8.0,
+      "codepoint": 77,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 312,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 78,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 336,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 79,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 360,
+      "v": 48,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 80,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 0,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 81,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 24,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 82,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 48,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 83,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 72,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 84,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 96,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 85,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 120,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 7.0,
+      "codepoint": 86,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 144,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 8.0,
+      "codepoint": 87,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 168,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 88,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 192,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 89,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 216,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 90,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 240,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 91,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 264,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 92,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 288,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 93,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 312,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 0,
+      "codepoint": 94,
+      "height": 0,
+      "offset_x": 0,
+      "offset_y": 0,
+      "u": 0,
+      "v": 0,
+      "width": 0
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 95,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 360,
+      "v": 72,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 96,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 0,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 97,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 24,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 98,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 48,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 99,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 72,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 100,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 96,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 101,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 120,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 102,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 144,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 103,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 168,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 104,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 192,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 2.0,
+      "codepoint": 105,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 216,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 3.0,
+      "codepoint": 106,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 240,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 107,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 264,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 2.0,
+      "codepoint": 108,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 288,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 8.0,
+      "codepoint": 109,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 312,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 110,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 336,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 111,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 360,
+      "v": 96,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 112,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 0,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 113,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 24,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 114,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 48,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 115,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 72,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 116,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 96,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 117,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 120,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 6.0,
+      "codepoint": 118,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 144,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 8.0,
+      "codepoint": 119,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 168,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 120,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 192,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 121,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 216,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 5.0,
+      "codepoint": 122,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 240,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 123,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 264,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 2.0,
+      "codepoint": 124,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 288,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 4.0,
+      "codepoint": 125,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 312,
+      "v": 120,
+      "width": 24
+    },
+    {
+      "advance": 7.0,
+      "codepoint": 126,
+      "height": 24,
+      "offset_x": 0,
+      "offset_y": -1,
+      "u": 336,
+      "v": 120,
+      "width": 24
+    }
+  ],
+  "limits": "Font is original EBMain16px, advances checked against native Godot3.6.2; glyph raster pixels still require rendered GPU comparison. No hardware/performance claim.",
+  "native_import": {
+    "godot_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+    "helper_sha256": "90b073c1c102fdde58c544f3a75d3d073ddfd94a78901fa9983110e66f565b05",
+    "imported_palette": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        255,
+        0,
+        0
+      ],
+      [
+        0,
+        255,
+        0,
+        255
+      ],
+      [
+        255,
+        255,
+        255,
+        0
+      ],
+      [
+        255,
+        255,
+        255,
+        255
+      ]
+    ],
+    "result_sha256": "caba9df95ab478ce5eaa27f2856b99c05c9947e8d789a4c5f8117ea634da22a0"
+  },
+  "outputs": {
+    "background.bpx": {
+      "bytes": 90788,
+      "sha256": "f8cf9bdeba285fac267130c65f476a1477210e1a3aef922db7a94e6942c4bec5"
+    },
+    "basic.t3x": {
+      "bytes": 1045,
+      "sha256": "63e259d5f3e2db0b403799f0334d573c6eedef173b7cce9f2ef78e1dd74a18b6"
+    },
+    "box.t3x": {
+      "bytes": 4117,
+      "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
+    },
+    "counter-grey.t3x": {
+      "bytes": 2069,
+      "sha256": "87cfd1b0b170e452040d9aafb9c3395c8f8fce4bc599f5cd29cf4df0a0d32f38"
+    },
+    "counter.t3x": {
+      "bytes": 2069,
+      "sha256": "390a5498f4fddcb57dda3aaf98be8d32759abe698a8ac8ca06d475840b57c67f"
+    },
+    "defend.t3x": {
+      "bytes": 1045,
+      "sha256": "206b828c1594ecc0cba19fb5f4840a64a4bdae389f7f2f82883bd180855494a0"
+    },
+    "digits.t3x": {
+      "bytes": 32789,
+      "sha256": "ad3f59b15448d4d6daaa9cd5b696a2af3c16d32ac990c2a8405d4e50f07edf4d"
+    },
+    "enemy.t3x": {
+      "bytes": 16405,
+      "sha256": "6db2d0eb4d5e801869f6d2ae928ca4c5f84aea1fbd1706bb32f83ecb083bccea"
+    },
+    "font.t3x": {
+      "bytes": 524309,
+      "sha256": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39"
+    },
+    "hp-label.t3x": {
+      "bytes": 1045,
+      "sha256": "faf5e720c7d12dbf24c61be814df254f90cb16666df1016e89a0a93aa0f14688"
+    },
+    "items.t3x": {
+      "bytes": 1045,
+      "sha256": "27871cdba63ebe2b03166f69461ebfb7209cc80e5c4fa0819737d797d6bd5780"
+    },
+    "party.t3x": {
+      "bytes": 16405,
+      "sha256": "ce6d9a6a4b01a33ea67062840947db4a58fa041f9fa31320c97779f44445b40f"
+    },
+    "plate-bg.t3x": {
+      "bytes": 277,
+      "sha256": "3c53675f1cee33f3240b5cd7de87823fd56b6df2edef2947bfa062bbeddcae50"
+    },
+    "plate.t3x": {
+      "bytes": 4117,
+      "sha256": "a5a1be68e66f0775f4f8681d609537b817606e0609e33ee71435f3b7af3f2cd9"
+    },
+    "pp-label.t3x": {
+      "bytes": 1045,
+      "sha256": "4cfac8fed3f1fa0a93fbdef9da00a902a5b4c486b658e1750a97960a608fa9f9"
+    },
+    "psi.t3x": {
+      "bytes": 1045,
+      "sha256": "4928ee26b8844a230e318a3d3a7a7565a8da70105e58dc0633ee6ac8bc6c5ba1"
+    },
+    "run.t3x": {
+      "bytes": 1045,
+      "sha256": "ef133912efc70b19a73da9b3e5c3dc5e26cf5739a48f55f46d05c84b7d4f97a1"
+    },
+    "skills.t3x": {
+      "bytes": 1045,
+      "sha256": "2bc648f6d54a3be6759700065d2bf3d326c9d778586523b6111ffce7148d7331"
+    },
+    "transition.bpx": {
+      "bytes": 1440056,
+      "sha256": "4e5d3fc6844777881b0ea32b6982e21ac197de7a477d4fa091aa345fa2417a48"
+    }
+  },
+  "pillow_version": "12.3.0",
+  "pixel_format": "Lossless RGBA8 texture and BPX1 palette+indices; nearest sampling",
+  "recipe": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "font": {
+      "cell": [
+        24,
+        24
+      ],
+      "columns": 16,
+      "extra_spacing_bottom": -1,
+      "extra_spacing_top": -1,
+      "first": 32,
+      "id": 18,
+      "last": 126,
+      "name": "font",
+      "output": "battle-preview/font.t3x",
+      "rasterization": "FreeType via Pillow grayscale rasterization; native Godot3.6.2 metrics comparison required. Not a system-font substitution.",
+      "size": 16,
+      "source": "Fonts/EBMain.ttf"
+    },
+    "game_version": "0.4.1.0",
+    "licence_review": "Pinned LICENSE permits assets in game-related forks, modifications and translations. These original art/font files are used only in the Mother: Encore port and retain upstream conditions; they are not relicensed as MIT.",
+    "presentation": {
+      "adaptation": "Default400x240 expanded canvas with 1:1 source pixels; no noninteger scaling. Source320x180 remains available for QA. Source mask is centered at external offsets and extends its edge pixels to fill expanded border; UI anchor placement is separate external layout data.",
+      "background": {
+        "control_extent": [
+          504,
+          180
+        ],
+        "platform_control_extent": [
+          504,
+          240
+        ],
+        "repeat": true,
+        "sampling": "Nearest; STRETCH_TILE uses original texture504x180 as UV divisor even when control grows504x240; final distorted UV repeat-wraps in desktopGLES2. Never wrap initialUV before barrel/oscillation.",
+        "uv_extent": [
+          504,
+          180
+        ],
+        "visible_extent": [
+          320,
+          180
+        ]
+      },
+      "plain_menu_colors": [
+        "f3f2f4",
+        "bfb4cd",
+        "7a6c86",
+        "141117",
+        "ba53e4",
+        "d6cedf",
+        "332943",
+        "ff285f"
+      ],
+      "platform_viewport": [
+        400,
+        240
+      ],
+      "source_viewport": [
+        320,
+        180
+      ],
+      "transition": {
+        "expanded_border": "edge_clamp_no_resampling",
+        "frame_seconds": 0.05,
+        "frames": 25,
+        "neutral_color": [
+          0,
+          0,
+          255,
+          130
+        ],
+        "old_color": [
+          255,
+          255,
+          255,
+          255
+        ],
+        "platform_offset": [
+          40,
+          30
+        ],
+        "reference_offset": [
+          0,
+          0
+        ],
+        "seconds": 1.3,
+        "shader": "Exact equality then replacement; otherwise alpha255 samples composed live background; others retain sourceRGBA as fragment output. Pinned source project uses GLES2; Godot3.6.2 ignores blend_disabled and retains MIX, so draw this output by source-alpha over the current room. Alpha0 RGB never overwrites the room under that backend.",
+        "source_backend": "GLES2: blend_disabled parsed but unsupported by renderer; defaults to MIX. See reports/transition-compositing source audit."
+      }
+    },
+    "resources": [
+      {
+        "fix_alpha_edges": true,
+        "grid": [
+          5,
+          5
+        ],
+        "id": 0,
+        "kind": "indexed",
+        "name": "transition",
+        "output": "battle-preview/transition.bpx",
+        "size": [
+          1600,
+          900
+        ],
+        "source": "Graphics/VFX/battle_transition.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 1,
+        "kind": "indexed",
+        "name": "background",
+        "output": "battle-preview/background.bpx",
+        "size": [
+          504,
+          180
+        ],
+        "source": "Graphics/Battle BGS/lamp.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 2,
+        "kind": "texture",
+        "name": "enemy",
+        "output": "battle-preview/enemy.t3x",
+        "size": [
+          33,
+          49
+        ],
+        "source": "Graphics/Battle Sprites/lamp.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 3,
+        "kind": "texture",
+        "name": "basic",
+        "output": "battle-preview/basic.t3x",
+        "size": [
+          16,
+          16
+        ],
+        "source": "Graphics/UI/Battle/bashIcon.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 4,
+        "kind": "texture",
+        "name": "skills",
+        "output": "battle-preview/skills.t3x",
+        "size": [
+          16,
+          16
+        ],
+        "source": "Graphics/UI/Battle/placeholderIcon.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 5,
+        "kind": "texture",
+        "name": "psi",
+        "output": "battle-preview/psi.t3x",
+        "size": [
+          16,
+          16
+        ],
+        "source": "Graphics/UI/Battle/psiIcon.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 6,
+        "kind": "texture",
+        "name": "items",
+        "output": "battle-preview/items.t3x",
+        "size": [
+          16,
+          16
+        ],
+        "source": "Graphics/UI/Battle/itemIcon.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 7,
+        "kind": "texture",
+        "name": "defend",
+        "output": "battle-preview/defend.t3x",
+        "size": [
+          16,
+          16
+        ],
+        "source": "Graphics/UI/Battle/defendIcon.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 8,
+        "kind": "texture",
+        "name": "run",
+        "output": "battle-preview/run.t3x",
+        "size": [
+          16,
+          16
+        ],
+        "source": "Graphics/UI/Battle/runIcon.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 9,
+        "kind": "texture",
+        "name": "plate",
+        "output": "battle-preview/plate.t3x",
+        "size": [
+          22,
+          27
+        ],
+        "source": "Graphics/UI/Battle/info_plate_frame.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 10,
+        "kind": "texture",
+        "name": "plate-bg",
+        "output": "battle-preview/plate-bg.t3x",
+        "size": [
+          6,
+          6
+        ],
+        "source": "Graphics/UI/Battle/info_plate_bg_battle.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 11,
+        "kind": "texture",
+        "name": "counter",
+        "output": "battle-preview/counter.t3x",
+        "size": [
+          27,
+          9
+        ],
+        "source": "Graphics/UI/Battle/info_plate_counter_bg.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 12,
+        "kind": "texture",
+        "name": "counter-grey",
+        "output": "battle-preview/counter-grey.t3x",
+        "size": [
+          27,
+          9
+        ],
+        "source": "Graphics/UI/Battle/info_plate_counter_bg_greyed.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 13,
+        "kind": "texture",
+        "name": "hp-label",
+        "output": "battle-preview/hp-label.t3x",
+        "size": [
+          13,
+          9
+        ],
+        "source": "Graphics/UI/Battle/label_hp.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 14,
+        "kind": "texture",
+        "name": "pp-label",
+        "output": "battle-preview/pp-label.t3x",
+        "size": [
+          13,
+          9
+        ],
+        "source": "Graphics/UI/Battle/label_pp.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          8,
+          10
+        ],
+        "id": 15,
+        "kind": "texture",
+        "name": "digits",
+        "output": "battle-preview/digits.t3x",
+        "size": [
+          56,
+          70
+        ],
+        "source": "Graphics/UI/Battle/hp_pp_numbers.png"
+      },
+      {
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 16,
+        "kind": "texture",
+        "name": "box",
+        "output": "battle-preview/box.t3x",
+        "size": [
+          24,
+          24
+        ],
+        "source": "Graphics/UI/Overworld/flavours/defaultbox.png"
+      },
+      {
+        "crop": [
+          0,
+          0,
+          64,
+          64
+        ],
+        "fix_alpha_edges": false,
+        "grid": [
+          1,
+          1
+        ],
+        "id": 17,
+        "kind": "texture",
+        "name": "party",
+        "output": "battle-preview/party.t3x",
+        "size": [
+          640,
+          1152
+        ],
+        "source": "Graphics/Character Sprites/Ninten/battle.png"
+      }
+    ],
+    "schema": 1,
+    "scope": "Original transition atlas with native PNG alpha-edge processing; two-layer lamp barrel/oscillation background; enemy sprite and English first command menu/party plate only. No action execution, victory, audio, other encounter or localization compatibility claim.",
+    "sources": {
+      "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+      "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+      "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+      "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+      "Fonts/fontsource/EBMain-d.txt": "f50249491f9899f80f097299fe7930cdbcc2ccb1b1c52715dcb978162d907e9d",
+      "Graphics/Battle BGS/lamp.bbg": "10ea9c5ba2a5a109c6c815180d4ee21683191263ca25dc6c829ca1598f97734f",
+      "Graphics/Battle BGS/lamp.png": "c99233a36071100ad022c43f940d76c741d8fcfa9d4abf23f378327bc96211ec",
+      "Graphics/Battle BGS/lamp.png.import": "5a946bf7f1445c65bf2942b0659f7ccd9e6e6ee27986bf967722c5322c788dbe",
+      "Graphics/Battle Sprites/lamp.png": "9a368ef8ba5727af433c84077db7ad25ecbfe66cdc7cc6a041c407b6e30cc385",
+      "Graphics/Character Sprites/Ninten/battle.png": "b541795453ef23b211486d741e0485a68b1df9b5ea533d07ada1051197a95a5b",
+      "Graphics/UI/Battle/bashIcon.png": "36f8e4622fdac4fa075438e515b353898a76562cfffe895defd8b3e53a3ee80c",
+      "Graphics/UI/Battle/defendIcon.png": "bd095505d74731279c8a72f3efdf4cbc5df3a4ddd16dc72bff13fce87701dcb8",
+      "Graphics/UI/Battle/hp_pp_numbers.png": "b049dc27660d35a837bacb1ced15171876b389e863a63e707d0dafbdd4e7287c",
+      "Graphics/UI/Battle/info_plate_bg_battle.png": "a274306d7797a2cb0c9a296c610061a8d6690e59b011d9abaaa4f386da6d0e0f",
+      "Graphics/UI/Battle/info_plate_counter_bg.png": "8a024af6dde38ace443b6fec4dc87832a631557991768199a2b0e7f2867ed0c2",
+      "Graphics/UI/Battle/info_plate_counter_bg_greyed.png": "e64b62244ad2a4bc890832bb6cc97cf485ba6baf63aca81fbadeb160e4885732",
+      "Graphics/UI/Battle/info_plate_frame.png": "8197c5b812d54ad5ba4fdfa21548650cd9dab4f2f66163062271aa6425d25fff",
+      "Graphics/UI/Battle/itemIcon.png": "b143b4242452df9ad20a552fcaeb2133ce917e6515317a9d973c8112f220bcbe",
+      "Graphics/UI/Battle/label_hp.png": "892919e65839ac857e6334c03c75f8d3a818e5146bd29ced26ce3f04da5274e3",
+      "Graphics/UI/Battle/label_pp.png": "7581ee7a53dcebb86be3ffd7755972b1c82b6d605f823457d2e48a09f35c394d",
+      "Graphics/UI/Battle/placeholderIcon.png": "3735ab5e932c4a804ee4140c56b47c9dcc710003381368daf76c3af264d8f9a7",
+      "Graphics/UI/Battle/psiIcon.png": "635f634f9756b3146b2ccb378daa9f494772b481b9e41756c27ff29637215b71",
+      "Graphics/UI/Battle/runIcon.png": "5fbbb2b9bdb0dd5e32adfe918d7cb7706f6179fddf7a35a388e8177d88b2ec9d",
+      "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+      "Graphics/VFX/battle_transition.png": "8ab268b2d77ee3b7c2979f5c77d59af1d15a5bbe36912af21df20fc556b212c9",
+      "Graphics/VFX/battle_transition.png.import": "1d938e8efb1b57203caf930e5b9ca4ace7fde3c67b038e4e25c3770de841a144",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Nodes/Ui/Battle/Battle Transition.tscn": "392290f15f3ea5e6ef855f3a8fa78720c718e71cd56470d15dde008192da4848",
+      "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+      "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
+      "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+      "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
+      "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+      "Scripts/UI/BattleTransition.gd": "ba3217779943e87fbb604f46e7ebd935ed74a37f8cec2dd4a45b4bab2ad50a81",
+      "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+      "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+      "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+      "Shaders/Transition.shader": "12270f6f16cfda98d7ae01435c9e33d50aa31606c901a360317e742da5b0b5ae",
+      "addons/distortionator_integration/default_shader.tres": "f65588ad747f102d2358bc016a016e22a2d1ef986a461938b8c1e3b75122d61c",
+      "addons/distortionator_integration/scene_importer.gd": "3b800ed49e18d07438e9b75abc98787b837ded3c9128922d634114ecaef798f9"
+    }
+  },
+  "resources": [
+    {
+      "fix_alpha_edges": true,
+      "frames": 25,
+      "grid": [
+        5,
+        5
+      ],
+      "height": 180,
+      "id": 0,
+      "kind": "indexed",
+      "name": "transition",
+      "output": "battle-preview/transition.bpx",
+      "palette": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          255,
+          0,
+          0
+        ],
+        [
+          0,
+          255,
+          0,
+          255
+        ],
+        [
+          255,
+          255,
+          255,
+          0
+        ],
+        [
+          255,
+          255,
+          255,
+          255
+        ]
+      ],
+      "size": [
+        1600,
+        900
+      ],
+      "source": "Graphics/VFX/battle_transition.png",
+      "width": 320
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 180,
+      "id": 1,
+      "kind": "indexed",
+      "name": "background",
+      "output": "battle-preview/background.bpx",
+      "palette": [
+        [
+          120,
+          120,
+          136,
+          255
+        ],
+        [
+          128,
+          128,
+          144,
+          255
+        ],
+        [
+          136,
+          136,
+          152,
+          255
+        ],
+        [
+          152,
+          152,
+          168,
+          255
+        ],
+        [
+          160,
+          160,
+          176,
+          255
+        ],
+        [
+          176,
+          176,
+          192,
+          255
+        ],
+        [
+          184,
+          184,
+          200,
+          255
+        ],
+        [
+          200,
+          200,
+          216,
+          255
+        ]
+      ],
+      "size": [
+        504,
+        180
+      ],
+      "source": "Graphics/Battle BGS/lamp.png",
+      "width": 504
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 49,
+      "id": 2,
+      "kind": "texture",
+      "name": "enemy",
+      "output": "battle-preview/enemy.t3x",
+      "size": [
+        33,
+        49
+      ],
+      "source": "Graphics/Battle Sprites/lamp.png",
+      "width": 33
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 16,
+      "id": 3,
+      "kind": "texture",
+      "name": "basic",
+      "output": "battle-preview/basic.t3x",
+      "size": [
+        16,
+        16
+      ],
+      "source": "Graphics/UI/Battle/bashIcon.png",
+      "width": 16
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 16,
+      "id": 4,
+      "kind": "texture",
+      "name": "skills",
+      "output": "battle-preview/skills.t3x",
+      "size": [
+        16,
+        16
+      ],
+      "source": "Graphics/UI/Battle/placeholderIcon.png",
+      "width": 16
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 16,
+      "id": 5,
+      "kind": "texture",
+      "name": "psi",
+      "output": "battle-preview/psi.t3x",
+      "size": [
+        16,
+        16
+      ],
+      "source": "Graphics/UI/Battle/psiIcon.png",
+      "width": 16
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 16,
+      "id": 6,
+      "kind": "texture",
+      "name": "items",
+      "output": "battle-preview/items.t3x",
+      "size": [
+        16,
+        16
+      ],
+      "source": "Graphics/UI/Battle/itemIcon.png",
+      "width": 16
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 16,
+      "id": 7,
+      "kind": "texture",
+      "name": "defend",
+      "output": "battle-preview/defend.t3x",
+      "size": [
+        16,
+        16
+      ],
+      "source": "Graphics/UI/Battle/defendIcon.png",
+      "width": 16
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 16,
+      "id": 8,
+      "kind": "texture",
+      "name": "run",
+      "output": "battle-preview/run.t3x",
+      "size": [
+        16,
+        16
+      ],
+      "source": "Graphics/UI/Battle/runIcon.png",
+      "width": 16
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 27,
+      "id": 9,
+      "kind": "texture",
+      "name": "plate",
+      "output": "battle-preview/plate.t3x",
+      "size": [
+        22,
+        27
+      ],
+      "source": "Graphics/UI/Battle/info_plate_frame.png",
+      "width": 22
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 6,
+      "id": 10,
+      "kind": "texture",
+      "name": "plate-bg",
+      "output": "battle-preview/plate-bg.t3x",
+      "size": [
+        6,
+        6
+      ],
+      "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
+      "width": 6
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 9,
+      "id": 11,
+      "kind": "texture",
+      "name": "counter",
+      "output": "battle-preview/counter.t3x",
+      "size": [
+        27,
+        9
+      ],
+      "source": "Graphics/UI/Battle/info_plate_counter_bg.png",
+      "width": 27
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 9,
+      "id": 12,
+      "kind": "texture",
+      "name": "counter-grey",
+      "output": "battle-preview/counter-grey.t3x",
+      "size": [
+        27,
+        9
+      ],
+      "source": "Graphics/UI/Battle/info_plate_counter_bg_greyed.png",
+      "width": 27
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 9,
+      "id": 13,
+      "kind": "texture",
+      "name": "hp-label",
+      "output": "battle-preview/hp-label.t3x",
+      "size": [
+        13,
+        9
+      ],
+      "source": "Graphics/UI/Battle/label_hp.png",
+      "width": 13
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 9,
+      "id": 14,
+      "kind": "texture",
+      "name": "pp-label",
+      "output": "battle-preview/pp-label.t3x",
+      "size": [
+        13,
+        9
+      ],
+      "source": "Graphics/UI/Battle/label_pp.png",
+      "width": 13
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 80,
+      "grid": [
+        8,
+        10
+      ],
+      "height": 70,
+      "id": 15,
+      "kind": "texture",
+      "name": "digits",
+      "output": "battle-preview/digits.t3x",
+      "size": [
+        56,
+        70
+      ],
+      "source": "Graphics/UI/Battle/hp_pp_numbers.png",
+      "width": 56
+    },
+    {
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 24,
+      "id": 16,
+      "kind": "texture",
+      "name": "box",
+      "output": "battle-preview/box.t3x",
+      "size": [
+        24,
+        24
+      ],
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "width": 24
+    },
+    {
+      "crop": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "fix_alpha_edges": false,
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 64,
+      "id": 17,
+      "kind": "texture",
+      "name": "party",
+      "output": "battle-preview/party.t3x",
+      "size": [
+        640,
+        1152
+      ],
+      "source": "Graphics/Character Sprites/Ninten/battle.png",
+      "width": 64
+    },
+    {
+      "frames": 1,
+      "grid": [
+        1,
+        1
+      ],
+      "height": 144,
+      "id": 18,
+      "kind": "texture",
+      "name": "font",
+      "output": "battle-preview/font.t3x",
+      "width": 384
+    }
+  ],
+  "schema": 1,
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+}

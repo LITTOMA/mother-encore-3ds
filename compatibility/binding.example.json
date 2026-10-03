@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "bindings": {
+    "Scripts/Example.gd": {
+      "kind": "native",
+      "reviewed_sha256": "REPLACE_WITH_ACTUAL_REVIEWED_SHA256",
+      "native_files": [
+        "runtime/example.cpp"
+      ],
+      "dependencies": {
+        "Data/example.yaml": "REPLACE_WITH_DEPENDENCY_SHA256"
+      },
+      "tests": [
+        "example_reference_cases"
+      ]
+    }
+  },
+  "reviewed_removals": {},
+  "note": "Documentation example ONLY. Not used by builds."
+}

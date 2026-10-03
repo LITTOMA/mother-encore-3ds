@@ -1,0 +1,15 @@
+name: 移植任务建议
+description: 提出有上游依据的移植或适配需求
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 上游行为与移植需求
+      description: 指明固定上游场景/脚本/行为及当前缺口。
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 范围、来源与验证依据
+      description: 真实内容、绑定、调参应来自独立资源。说明受影响流程与可用对照，不把 M0 fixture 当成原作。

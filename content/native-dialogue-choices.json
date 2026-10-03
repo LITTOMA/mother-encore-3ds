@@ -1,0 +1,193 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml": "6e100c4ed8dc5cfd1fc6f88bc79ef9198d57c32721c5a9690d38e2e9c59c2f17",
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": "6cc6d9c3c8f7eb2517dd945369b272b315e344e0af5afd0721a6b485894d053a",
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": "0c07ab7c8f6c64708c9f41571429967827ba7ac82d8dc72a156aad84d17cd07a",
+    "Data/Dialogue/Podunk/minnie_run_tutorial.yaml": "e97378db5d1dcd911d0febf1397c8462949c5974f15beef0e176f00266847aa5",
+    "Data/Dialogue/Podunk/minnie_door_open.yaml": "6ceb4598c44bc85803fe05ca43d46cc2ab5e32cc5a8692318bc358431fbf3eff",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1"
+  },
+  "scope": "Original Dad-normal two-option panel; English source; no general dialogue UI translator",
+  "graph_sha256": "ea256d6782fac5b4275c43140831b5cd5321ff736de3021a058b574b7b9d7616",
+  "columns": 3,
+  "child_count": 6,
+  "grid": [
+    52.0,
+    38.0,
+    203.0,
+    12.0
+  ],
+  "option_min_size": [
+    60,
+    10
+  ],
+  "trailing_blank_lines": 1,
+  "separation": 12,
+  "arrow_size": [
+    8.0,
+    8.0
+  ],
+  "arrow_offset": [
+    -6.333333333333333,
+    6.0
+  ],
+  "arrow_move": 0.1,
+  "arrow_loop": 0.8,
+  "arrow_keys": [
+    {
+      "time": 0.0,
+      "frame": 0
+    },
+    {
+      "time": 0.2,
+      "frame": 1
+    },
+    {
+      "time": 0.4,
+      "frame": 2
+    },
+    {
+      "time": 0.6,
+      "frame": 1
+    }
+  ],
+  "arrow_resource": {
+    "path": "house-preview/cursor.t3x",
+    "width": 24,
+    "height": 8,
+    "columns": 3,
+    "rows": 1,
+    "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
+  },
+  "font_path": "battle-preview/font.t3x",
+  "groups": [
+    {
+      "id": "Reusable/dad_normal::2",
+      "program_identity": "Reusable/dad_normal",
+      "source_label": "2",
+      "program_command_count": 48,
+      "initial_selection": 0,
+      "options": [
+        {
+          "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_0",
+          "target_label": "4",
+          "target_pc": 31,
+          "text": "Record"
+        },
+        {
+          "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_1",
+          "target_label": "6",
+          "target_pc": 40,
+          "text": "Nothing, really"
+        }
+      ],
+      "cancel_target_label": "6",
+      "cancel_target_pc": 40
+    },
+    {
+      "id": "Podunk/minnie_run_tutorial::0",
+      "program_identity": "Podunk/minnie_run_tutorial",
+      "source_label": "0",
+      "program_command_count": 11,
+      "initial_selection": 0,
+      "cancel_target_label": "7",
+      "cancel_target_pc": 6,
+      "options": [
+        {
+          "translation_key": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_0",
+          "text": "Yes",
+          "target_label": "3",
+          "target_pc": 3
+        },
+        {
+          "translation_key": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_1",
+          "text": "No",
+          "target_label": "7",
+          "target_pc": 6
+        }
+      ]
+    }
+  ],
+  "sounds": [
+    "cursor1",
+    "cursor2",
+    "cursor2"
+  ],
+  "policies": {
+    "loop_around": false,
+    "show_after_text_complete": true,
+    "clear_text_on_result": true,
+    "confirm_and_cancel_sound_after_target_phrase": true,
+    "navigation_uses_caller_repeat": true
+  },
+  "dependencies": {
+    "content/native-house-presentation.json": "dee92cd2ffc13e39eea0b2ccd38ddac81b4601d1d634111cc19352c29abe504a",
+    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
+    "romfs/battle-preview/font.t3x": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39",
+    "romfs/house-preview/cursor.t3x": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
+  },
+  "native_reference_sha256": "da257ab469b45563814d04875023c8ac5d8ca244a5c3d0ca20bd200845aecb16",
+  "option_rects": [
+    [
+      0,
+      0,
+      64,
+      12
+    ],
+    [
+      76,
+      0,
+      64,
+      12
+    ]
+  ],
+  "font_height": 12,
+  "text_color": 4294967295,
+  "extra_native_reference_sha256": [
+    "da257ab469b45563814d04875023c8ac5d8ca244a5c3d0ca20bd200845aecb16"
+  ],
+  "extra_option_rects": [
+    [
+      [
+        0,
+        0,
+        64,
+        12
+      ],
+      [
+        76,
+        0,
+        64,
+        12
+      ]
+    ]
+  ]
+}

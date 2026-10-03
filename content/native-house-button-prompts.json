@@ -1,0 +1,302 @@
+{
+  "schema": 1,
+  "capability": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Scripts/UI/NamingScreen/ButtonPrompts.gd": "b0a1398101a8151b51ac6418dafa9d86b8eb4074ed47f3ab136eaee515a86c89",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666"
+  },
+  "dependencies": {
+    "content/native-house.json": "bd67003b8bd7f68b7003333aad16bbb0b2a743c8bc528ba4fc3f5e0aa2d0d442",
+    "content/phone-stage/presentation.json": "bebe9e2e48dc38cfa62032cca790be2e57b0c19b5409babd9bd4ea3529cb601b"
+  },
+  "choices": [
+    "Both",
+    "Objects",
+    "NPCs",
+    "None"
+  ],
+  "choice_masks": [
+    3,
+    1,
+    2,
+    0
+  ],
+  "ray_origin": [
+    0,
+    6
+  ],
+  "ray_length": 16,
+  "collision_mask": 1,
+  "resources": [
+    {
+      "path": "house-button-prompts-preview/accept.t3x",
+      "width": 12,
+      "height": 21,
+      "sha256": "09a3afeef81068e7510329077fad1d30b0f0d6a807b522c8c7db83e273da1b93"
+    },
+    {
+      "path": "house-button-prompts-preview/present.t3x",
+      "width": 18,
+      "height": 16,
+      "sha256": "dbaf0ee2743c58342ff4b35840343f878724f03f60ee842508e8b94a0a7bdf9c"
+    },
+    {
+      "path": "house-button-prompts-preview/npc.t3x",
+      "width": 21,
+      "height": 30,
+      "sha256": "d2f2aec8fa0e73e22042a6fe608902c8e2ed12431451ad0da4c1b9ef438301a5"
+    }
+  ],
+  "prompt_rect": [
+    -5,
+    -21,
+    12,
+    21
+  ],
+  "color": 4294967295,
+  "previews": [
+    {
+      "resource": 1,
+      "category": 1,
+      "position": [
+        75,
+        57
+      ],
+      "offset": [
+        0,
+        -8
+      ]
+    },
+    {
+      "resource": 2,
+      "category": 2,
+      "position": [
+        104,
+        50
+      ],
+      "offset": [
+        0,
+        -16
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "kind": 1,
+      "index": 0,
+      "category": 2,
+      "source_path": "Objects/npc",
+      "position": [
+        192,
+        704
+      ],
+      "center": [
+        191.5,
+        709
+      ],
+      "extents": [
+        12.3,
+        14
+      ],
+      "offset": [
+        0,
+        -21
+      ]
+    },
+    {
+      "kind": 1,
+      "index": 1,
+      "category": 2,
+      "source_path": "Objects/npc2",
+      "position": [
+        120,
+        88
+      ],
+      "center": [
+        119.5,
+        93
+      ],
+      "extents": [
+        12.3,
+        14
+      ],
+      "offset": [
+        0,
+        -21
+      ]
+    },
+    {
+      "kind": 1,
+      "index": 2,
+      "category": 2,
+      "source_path": "Objects/npcdoll",
+      "position": [
+        40,
+        40
+      ],
+      "center": [
+        39.5,
+        45
+      ],
+      "extents": [
+        12.3,
+        14
+      ],
+      "offset": [
+        0,
+        -21
+      ]
+    },
+    {
+      "kind": 1,
+      "index": 3,
+      "category": 2,
+      "source_path": "Objects/npc3",
+      "position": [
+        472,
+        88
+      ],
+      "center": [
+        471.5,
+        93
+      ],
+      "extents": [
+        12.3,
+        14
+      ],
+      "offset": [
+        0,
+        -21
+      ]
+    },
+    {
+      "kind": 2,
+      "index": 0,
+      "category": 1,
+      "source_path": "Below/Openable Door",
+      "position": [
+        176,
+        352
+      ],
+      "center": [
+        176,
+        368
+      ],
+      "extents": [
+        16,
+        4
+      ],
+      "offset": [
+        0,
+        -16
+      ]
+    },
+    {
+      "kind": 2,
+      "index": 1,
+      "category": 1,
+      "source_path": "Below/Openable Door2",
+      "position": [
+        64,
+        352
+      ],
+      "center": [
+        64,
+        368
+      ],
+      "extents": [
+        16,
+        4
+      ],
+      "offset": [
+        0,
+        -16
+      ]
+    },
+    {
+      "kind": 2,
+      "index": 2,
+      "category": 1,
+      "source_path": "Below/Openable Door3",
+      "position": [
+        96,
+        688
+      ],
+      "center": [
+        96,
+        704
+      ],
+      "extents": [
+        16,
+        4
+      ],
+      "offset": [
+        0,
+        -16
+      ]
+    },
+    {
+      "kind": 2,
+      "index": 3,
+      "category": 1,
+      "source_path": "Below/Openable Door4",
+      "position": [
+        88,
+        960
+      ],
+      "center": [
+        88,
+        976
+      ],
+      "extents": [
+        16,
+        4
+      ],
+      "offset": [
+        0,
+        -16
+      ]
+    },
+    {
+      "kind": 3,
+      "index": 0,
+      "category": 1,
+      "source_path": "Objects/Phone",
+      "position": [
+        148,
+        677
+      ],
+      "center": [
+        148.0,
+        692.0
+      ],
+      "extents": [
+        16.000028610229492,
+        18.00001335144043
+      ],
+      "offset": [
+        1,
+        2
+      ]
+    }
+  ],
+  "scope": "Static source visible A+arrow pose, CTR A maps ui_accept; current supported NPC/door/phone ray rectangles. Additional occlusion supplied by caller; no general Godot broadphase or Show/Float/Hide/Press choreography.",
+  "license_review": "Pinned LICENSE permits original art/fonts in this game-related fork; upstream conditions retained, no MIT relicensing."
+}

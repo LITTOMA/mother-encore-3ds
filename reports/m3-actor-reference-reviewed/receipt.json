@@ -1,0 +1,34 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "emulator": "not run",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "game_version": "0.4.1.0",
+  "hardware": "not run",
+  "reports_sha256": {
+    "animation.json": "f40f4e417cfb51ad7afe1cf16dab0c4c706dc00023a4eba2bf78e6f7a8e26d94",
+    "animation.txt": "a493fef75a4f583ce89f850d229cb9e242290ad618c01765e19f16b0ba260f95",
+    "animation_v0410.hpp": "9ef4db0cc24e5869657fdbf2e06b7cbd57763fbf16a1501d75e425bed761bad1",
+    "movement.json": "21fa656787fb3fe6da277e48e03f80ace4fee19ddc882cba3cacd00d14c310b5",
+    "movement.txt": "2c1ff957f4332fcec15423d4fe4b8923e733455cdacceda874b60e21b1e6fdb7",
+    "movement_v0410.hpp": "7ad03ea5912392853bff70dc7560a992f8d01dcc0317c646a68c5daf6d94903c",
+    "ninten_animation.hpp": "aeb7758bb5d6aad8ede7bfaf2770c3d320f0e9f7630bbb0f89458cc3dde4abf0",
+    "player-data.json": "bca8a477ba1ecd16e0c7906262ba95a38c5004f806810c6bc20fde5487fa8abc",
+    "player-export.txt": "a494b40eb5ca33932d69b7d499fed15318e0e7c8c37802dc77467c1e3abe0c32",
+    "player-import.txt": "7f02ddc8a189026038f37b1666884b12c01b5c26ee4a4e2b8de4d050b0fd3512",
+    "player-source.json": "4f12d18ec825f06512620046b3b514efb5d2d880fff5afbd69357632e6811f91",
+    "profile.json": "e72d97b577975ebe7032061181b959710ec1a9025866f032cbbd4234612d631a"
+  },
+  "schema": 1,
+  "scope": "isolated movement without collisions/skills/followers and native discrete Ninten animation; not full Player/game compatibility",
+  "tools_sha256": {
+    "tools\\character_animation.py": "a00b804be4f2affe00cf87ec0f1e63b62e6ca9563b347d254fdccd4819a86bb8",
+    "tools\\godot_exporter\\animation_probe.gd": "9f7b88454e28565794bee45d613cdfa0530d20f9b49b607df28fae704566fc21",
+    "tools\\godot_exporter\\movement_probe.gd": "2cdeadeac2b9862a3e85fc064cf3fc42305361aae184ac569c5e2e5d2e535f71",
+    "tools\\godot_exporter\\movement_wrapper.gd": "67325e85a1683d8c9b79ed07df89bb1955ac700590c883af5d578021da80fcad",
+    "tools\\godot_exporter\\scene_data.gd": "6a8e39ca9aca3aec0a06618adfa74fed28e69085015af4fe6929991c2d63edba",
+    "tools\\reference_animation.py": "2847077da88acdf320c39e94322bc3b69d8283ed8bd2ae68d9143953f7f99237",
+    "tools\\reference_movement.py": "65db7e4a5a767e751a26190bbe0aa00069c4d6b40a3c21a6bf95333694da3aba",
+    "tools\\run_actor_reference.py": "c7f85dbc64b74ccd60dfe14b9e3582f0341a60f0560d8d3a8ab276a7a0e7f115",
+    "tools\\scene_reference.py": "f6baf629675eb414bfcce269af4b54c34621c91e798648b3ca5fa948fe258723"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "files": {
+    "include/encore/battle_action_presentation.hpp": "020c2414eeddbb6165ec443be3c5ace0390f85deb638106d1962f3a525778477",
+    "runtime/battle_action_presentation.cpp": "9402bf22218f93c7ef62af4c8d68a645ddba1afbcbaafb83f17aef27008d28fe",
+    "platform/ctr/round_renderer.hpp": "72a4e70695687fe2a2d171746f6d691e44394ee9e3791c09ba4b8a37629dbf72",
+    "tools/round_assets.py": "7e35e87bbb7a64393b43d3c70f4b0a76486b22f21da35075babfa9631379519a",
+    "content/round-assets.json": "1d2b14d6dfbba24f634e1cc71a2935c28f9c13deb97ba8b3fce64abbfd5ac327",
+    "tests/battle_action_presentation_tests.cpp": "1d3382fb8f1d7b89b41628e0ad77310959d834fcb6220b78ed0673ce76685721",
+    "tests/test_round_assets.py": "add4779513bd3ed1d1c747a581344de48553eb3af485bd3e8fe01965d96b35ee"
+  },
+  "tests": {
+    "host_checks": 670,
+    "asan_ubsan_checks": 670,
+    "leak_detection": false,
+    "python_asset_tests": 8
+  },
+  "parent_owned": [
+    "reward/world scheduler",
+    "main integration beyond narrow draw-slot/projection corrections",
+    "full cross-build",
+    "emulator acceptance"
+  ]
+}

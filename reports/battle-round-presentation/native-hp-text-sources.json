@@ -1,0 +1,6 @@
+{
+  "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+  "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+  "Scripts/UI/Battle/BattleDialogueBox.gd": "d712af3bbdcc1bab9ed24caccf7a9f4702187b60c24092beec9a7138394e09a5",
+  "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac"
+}

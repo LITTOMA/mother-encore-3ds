@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "source_ir_sha256": "b59ffd1cbac9c210936f5a6c01934edcc8e63cc45b7e413c9cbc31e3554952a6",
+  "scope": "Original seven synthetic data changes and nine runtime observations preserved while refreshing fixture to current Room schema",
+  "legacy_package_metadata": {
+    "room_rules_revision": 3,
+    "room_capability_revision": 3,
+    "packages": {
+      "A": {
+        "path": "reports/data-only-proof-victory/A.encroom",
+        "bytes": 44032,
+        "sha256": "709860d58a7e2d9fdaf2dcb3feb7424dc1e3ac5ecba3ed7518ff2a964508cdf9"
+      },
+      "B": {
+        "path": "reports/data-only-proof-victory/B.encroom",
+        "bytes": 44080,
+        "sha256": "507209db75bbf48cd5e5224ab592bf9e8ccb99968d31c9e551606b9e1a541a57"
+      }
+    }
+  },
+  "current_package_metadata": {
+    "A": {
+      "path": "reports/data-only-proof-victory/A.encroom",
+      "bytes": 46768,
+      "sha256": "9b5b99244a59226e0b248020c6a50be36ef12b513a44a308884617d425d44303"
+    },
+    "B": {
+      "path": "reports/data-only-proof-victory/B.encroom",
+      "bytes": 46816,
+      "sha256": "055daae6a17bad91df89cafdd231ae682dab283767d831d1ebf9d45609dce57b"
+    }
+  },
+  "changes": [
+    {
+      "name": "spawn_x",
+      "section": "Scene",
+      "index": 0,
+      "field": "spawn[0]",
+      "A": 520.0,
+      "B": 521.0
+    },
+    {
+      "name": "initial_animation_frame",
+      "section": "Key",
+      "index": 0,
+      "field": "frame",
+      "A": 1,
+      "B": 2
+    },
+    {
+      "name": "first_script_wait",
+      "section": "Command",
+      "index": 6,
+      "field": "duration",
+      "A": 1,
+      "B": 1.125
+    },
+    {
+      "name": "layer_sort_y",
+      "section": "Overlay",
+      "index": 0,
+      "field": "sort_y",
+      "A": 144,
+      "B": 147
+    },
+    {
+      "name": "actor_sprite_offset_x",
+      "section": "ActorProfile",
+      "index": 0,
+      "field": "sprite_offset[0]",
+      "A": 0.0,
+      "B": 2.0
+    },
+    {
+      "name": "registered_flag_count",
+      "section": "Flag",
+      "field": "count",
+      "A": 178,
+      "B": 179
+    },
+    {
+      "name": "level_2_required_xp",
+      "section": "Experience",
+      "index": 1,
+      "field": "required_total_exp",
+      "A": 9,
+      "B": 10
+    }
+  ],
+  "behavior_probe_expectations": {
+    "xp_value": 9,
+    "level_A": 2,
+    "level_B": 1,
+    "new_flag_known_A": false,
+    "new_flag_known_B": true
+  },
+  "executable_sha256_before": "dbe66762bedb0b0231390a6186cf655047ef87f778ecce139a96f6abbba6e395",
+  "executable_sha256_after": "dbe66762bedb0b0231390a6186cf655047ef87f778ecce139a96f6abbba6e395",
+  "same_executable": true,
+  "cpp_compiler_invoked": false,
+  "compiler_environment": {
+    "PATH": "/workspace/scratch/c6ba063dd54d/encore_handoff/encore-native/reports/data-only-proof-victory/nonexistent-toolchain",
+    "CC": "/bin/false",
+    "CXX": "/bin/false",
+    "DEVKITPRO": "",
+    "DEVKITARM": ""
+  }
+}

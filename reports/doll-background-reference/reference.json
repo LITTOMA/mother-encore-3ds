@@ -1,0 +1,165 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "driver": "GLES2",
+  "samples": [
+    {
+      "sample": 0,
+      "layers": [
+        {
+          "layer": 0,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        },
+        {
+          "layer": 1,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 1,
+      "layers": [
+        {
+          "layer": 0,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        },
+        {
+          "layer": 1,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "layers": [
+        {
+          "layer": 0,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        },
+        {
+          "layer": 1,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 3,
+      "layers": [
+        {
+          "layer": 0,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        },
+        {
+          "layer": 1,
+          "matching_fixed_palette_rows": [
+            0,
+            2
+          ],
+          "uniform_value": null,
+          "control_size": [
+            320,
+            180
+          ],
+          "texture_size": [
+            176,
+            172
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Original pinned Baby shader vs fixed palette row counterfactuals at identical native TIME, GLES2 GPU. No claim of portable undefined GLSL division semantics."
+}

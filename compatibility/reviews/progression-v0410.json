@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "source": "Scripts/global/PartyMember.gd",
+  "source_sha256": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+  "level_cap": 30,
+  "symbols": ["_level_to_exp", "_exp_to_level"],
+  "native_files": ["runtime/progression.cpp", "include/encore/progression.hpp"],
+  "tests": ["upstream_progression", "tests/test_progression_reference.py"],
+  "scope": "Only experience thresholds and experience-to-level lookup. No stats, skill learning, inventory, save, battle or whole-file approval.",
+  "review": "LEVEL_CAP=30; level 1 maps to 0; above-cap levels recurse to cap; .75 formula truncates; xp lookup compares next threshold inclusively. Supported level input >=1, signed int32 experience. Invalid nonpositive levels are rejected by native API; upstream formula outside game level domain is not supported.",
+  "reference": "Godot 3.6.2 executes unchanged copies of the two audited functions with their unchanged LEVEL_CAP constant in an isolated Reference script; not a full original-game run. No reference output is fabricated."
+}

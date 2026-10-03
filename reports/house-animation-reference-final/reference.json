@@ -1,0 +1,1180 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine": {
+    "build": "official",
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "hex": 198146,
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "status": "stable",
+    "string": "3.6.2-stable (official)",
+    "year": 2025
+  },
+  "frames": [
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.00000000000000000",
+      "state": "Talk",
+      "talk": true,
+      "tick": 0
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.01666668057441710",
+      "state": "Talk",
+      "talk": true,
+      "tick": 1
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.03333333134651180",
+      "state": "Talk",
+      "talk": true,
+      "tick": 2
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.05000001192092900",
+      "state": "Talk",
+      "talk": true,
+      "tick": 3
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.06666666269302370",
+      "state": "Talk",
+      "talk": true,
+      "tick": 4
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.08333334326744080",
+      "state": "Talk",
+      "talk": true,
+      "tick": 5
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.09999999403953550",
+      "state": "Talk",
+      "talk": true,
+      "tick": 6
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.11666667461395260",
+      "state": "Talk",
+      "talk": true,
+      "tick": 7
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.13333335518836980",
+      "state": "Talk",
+      "talk": true,
+      "tick": 8
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.15000000596046450",
+      "state": "Talk",
+      "talk": true,
+      "tick": 9
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.16666667163372040",
+      "state": "Talk",
+      "talk": true,
+      "tick": 10
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.18333333730697630",
+      "state": "Talk",
+      "talk": true,
+      "tick": 11
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.20000000298023220",
+      "state": "Talk",
+      "talk": true,
+      "tick": 12
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.21666666865348820",
+      "state": "Talk",
+      "talk": true,
+      "tick": 13
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.23333333432674410",
+      "state": "Talk",
+      "talk": true,
+      "tick": 14
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.25000000000000000",
+      "state": "Talk",
+      "talk": false,
+      "tick": 15
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.26666668057441710",
+      "state": "Talk",
+      "talk": false,
+      "tick": 16
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 4,
+      "position": "0.28333336114883420",
+      "state": "Talk",
+      "talk": false,
+      "tick": 17
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 3,
+      "position": "0.30000004172325130",
+      "state": "Talk",
+      "talk": false,
+      "tick": 18
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 3,
+      "position": "0.31666672229766850",
+      "state": "Talk",
+      "talk": false,
+      "tick": 19
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 3,
+      "position": "0.33333340287208560",
+      "state": "Talk",
+      "talk": false,
+      "tick": 20
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 3,
+      "position": "0.35000008344650270",
+      "state": "Talk",
+      "talk": false,
+      "tick": 21
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 3,
+      "position": "0.36666676402091980",
+      "state": "Talk",
+      "talk": false,
+      "tick": 22
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 3,
+      "position": "0.38333344459533690",
+      "state": "Talk",
+      "talk": false,
+      "tick": 23
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 3,
+      "position": "0.00000000000000000",
+      "state": "Idle",
+      "talk": false,
+      "tick": 24
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.01666666567325590",
+      "state": "Idle",
+      "talk": false,
+      "tick": 25
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.03333333134651180",
+      "state": "Idle",
+      "talk": false,
+      "tick": 26
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.04999999701976780",
+      "state": "Idle",
+      "talk": false,
+      "tick": 27
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.06666667759418490",
+      "state": "Idle",
+      "talk": false,
+      "tick": 28
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.08333333581686020",
+      "state": "Idle",
+      "talk": false,
+      "tick": 29
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.10000000149011610",
+      "state": "Idle",
+      "talk": false,
+      "tick": 30
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.11666666716337200",
+      "state": "Idle",
+      "talk": false,
+      "tick": 31
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.13333334028720860",
+      "state": "Idle",
+      "talk": false,
+      "tick": 32
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.15000000596046450",
+      "state": "Idle",
+      "talk": false,
+      "tick": 33
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.16666667163372040",
+      "state": "Idle",
+      "talk": false,
+      "tick": 34
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.18333333730697630",
+      "state": "Idle",
+      "talk": false,
+      "tick": 35
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.00000000000000000",
+      "state": "Idle",
+      "talk": false,
+      "tick": 36
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.01666666567325590",
+      "state": "Idle",
+      "talk": false,
+      "tick": 37
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.03333333134651180",
+      "state": "Idle",
+      "talk": false,
+      "tick": 38
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.04999999701976780",
+      "state": "Idle",
+      "talk": false,
+      "tick": 39
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.06666667759418490",
+      "state": "Idle",
+      "talk": false,
+      "tick": 40
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.08333333581686020",
+      "state": "Idle",
+      "talk": false,
+      "tick": 41
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.10000000149011610",
+      "state": "Idle",
+      "talk": false,
+      "tick": 42
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.11666666716337200",
+      "state": "Idle",
+      "talk": false,
+      "tick": 43
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.13333334028720860",
+      "state": "Idle",
+      "talk": false,
+      "tick": 44
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.15000000596046450",
+      "state": "Idle",
+      "talk": false,
+      "tick": 45
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.16666667163372040",
+      "state": "Idle",
+      "talk": false,
+      "tick": 46
+    },
+    {
+      "case": "talk_to_idle",
+      "frame": 1,
+      "position": "0.18333333730697630",
+      "state": "Idle",
+      "talk": false,
+      "tick": 47
+    },
+    {
+      "case": "direction_change",
+      "frame": 1,
+      "position": "0.00000000000000000",
+      "state": "Talk",
+      "talk": true,
+      "tick": 0
+    },
+    {
+      "case": "direction_change",
+      "frame": 1,
+      "position": "0.01666668057441710",
+      "state": "Talk",
+      "talk": true,
+      "tick": 1
+    },
+    {
+      "case": "direction_change",
+      "frame": 1,
+      "position": "0.03333333134651180",
+      "state": "Talk",
+      "talk": true,
+      "tick": 2
+    },
+    {
+      "case": "direction_change",
+      "frame": 1,
+      "position": "0.05000001192092900",
+      "state": "Talk",
+      "talk": true,
+      "tick": 3
+    },
+    {
+      "case": "direction_change",
+      "frame": 1,
+      "position": "0.06666666269302370",
+      "state": "Talk",
+      "talk": true,
+      "tick": 4
+    },
+    {
+      "case": "direction_change",
+      "frame": 1,
+      "position": "0.08333334326744080",
+      "state": "Talk",
+      "talk": true,
+      "tick": 5
+    },
+    {
+      "case": "direction_change",
+      "frame": 1,
+      "position": "0.09999999403953550",
+      "state": "Talk",
+      "talk": true,
+      "tick": 6
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.11666667461395260",
+      "state": "Talk",
+      "talk": true,
+      "tick": 7
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.00000000000000000",
+      "state": "Talk",
+      "talk": true,
+      "tick": 8
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.01666668057441710",
+      "state": "Talk",
+      "talk": true,
+      "tick": 9
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.03333333134651180",
+      "state": "Talk",
+      "talk": true,
+      "tick": 10
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.05000001192092900",
+      "state": "Talk",
+      "talk": true,
+      "tick": 11
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.06666666269302370",
+      "state": "Talk",
+      "talk": true,
+      "tick": 12
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.08333334326744080",
+      "state": "Talk",
+      "talk": true,
+      "tick": 13
+    },
+    {
+      "case": "direction_change",
+      "frame": 4,
+      "position": "0.09999999403953550",
+      "state": "Talk",
+      "talk": true,
+      "tick": 14
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.11666667461395260",
+      "state": "Talk",
+      "talk": false,
+      "tick": 15
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.13333335518836980",
+      "state": "Talk",
+      "talk": false,
+      "tick": 16
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.15000000596046450",
+      "state": "Talk",
+      "talk": false,
+      "tick": 17
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.16666667163372040",
+      "state": "Talk",
+      "talk": false,
+      "tick": 18
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.18333333730697630",
+      "state": "Talk",
+      "talk": false,
+      "tick": 19
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.20000000298023220",
+      "state": "Talk",
+      "talk": false,
+      "tick": 20
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.21666666865348820",
+      "state": "Talk",
+      "talk": false,
+      "tick": 21
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.23333333432674410",
+      "state": "Talk",
+      "talk": false,
+      "tick": 22
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.25000000000000000",
+      "state": "Talk",
+      "talk": false,
+      "tick": 23
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.26666668057441710",
+      "state": "Talk",
+      "talk": false,
+      "tick": 24
+    },
+    {
+      "case": "direction_change",
+      "frame": 9,
+      "position": "0.28333336114883420",
+      "state": "Talk",
+      "talk": false,
+      "tick": 25
+    },
+    {
+      "case": "direction_change",
+      "frame": 8,
+      "position": "0.30000004172325130",
+      "state": "Talk",
+      "talk": false,
+      "tick": 26
+    },
+    {
+      "case": "direction_change",
+      "frame": 8,
+      "position": "0.31666672229766850",
+      "state": "Talk",
+      "talk": false,
+      "tick": 27
+    },
+    {
+      "case": "direction_change",
+      "frame": 8,
+      "position": "0.33333340287208560",
+      "state": "Talk",
+      "talk": false,
+      "tick": 28
+    },
+    {
+      "case": "direction_change",
+      "frame": 8,
+      "position": "0.35000008344650270",
+      "state": "Talk",
+      "talk": false,
+      "tick": 29
+    },
+    {
+      "case": "direction_change",
+      "frame": 8,
+      "position": "0.36666676402091980",
+      "state": "Talk",
+      "talk": false,
+      "tick": 30
+    },
+    {
+      "case": "direction_change",
+      "frame": 8,
+      "position": "0.38333344459533690",
+      "state": "Talk",
+      "talk": false,
+      "tick": 31
+    },
+    {
+      "case": "direction_change",
+      "frame": 8,
+      "position": "0.00000000000000000",
+      "state": "Idle",
+      "talk": false,
+      "tick": 32
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.01666666567325590",
+      "state": "Idle",
+      "talk": false,
+      "tick": 33
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.03333333134651180",
+      "state": "Idle",
+      "talk": false,
+      "tick": 34
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.04999999701976780",
+      "state": "Idle",
+      "talk": false,
+      "tick": 35
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.06666667759418490",
+      "state": "Idle",
+      "talk": false,
+      "tick": 36
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.08333333581686020",
+      "state": "Idle",
+      "talk": false,
+      "tick": 37
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.10000000149011610",
+      "state": "Idle",
+      "talk": false,
+      "tick": 38
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.11666666716337200",
+      "state": "Idle",
+      "talk": false,
+      "tick": 39
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.13333334028720860",
+      "state": "Idle",
+      "talk": false,
+      "tick": 40
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.15000000596046450",
+      "state": "Idle",
+      "talk": false,
+      "tick": 41
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.16666667163372040",
+      "state": "Idle",
+      "talk": false,
+      "tick": 42
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.18333333730697630",
+      "state": "Idle",
+      "talk": false,
+      "tick": 43
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.00000000000000000",
+      "state": "Idle",
+      "talk": false,
+      "tick": 44
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.01666666567325590",
+      "state": "Idle",
+      "talk": false,
+      "tick": 45
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.03333333134651180",
+      "state": "Idle",
+      "talk": false,
+      "tick": 46
+    },
+    {
+      "case": "direction_change",
+      "frame": 6,
+      "position": "0.04999999701976780",
+      "state": "Idle",
+      "talk": false,
+      "tick": 47
+    },
+    {
+      "case": "direction_ties",
+      "frame": 1,
+      "position": "0.00000000000000000",
+      "state": "Talk",
+      "talk": true,
+      "tick": 0
+    },
+    {
+      "case": "direction_ties",
+      "frame": 1,
+      "position": "0.01666668057441710",
+      "state": "Talk",
+      "talk": true,
+      "tick": 1
+    },
+    {
+      "case": "direction_ties",
+      "frame": 1,
+      "position": "0.03333333134651180",
+      "state": "Talk",
+      "talk": true,
+      "tick": 2
+    },
+    {
+      "case": "direction_ties",
+      "frame": 1,
+      "position": "0.05000001192092900",
+      "state": "Talk",
+      "talk": true,
+      "tick": 3
+    },
+    {
+      "case": "direction_ties",
+      "frame": 1,
+      "position": "0.06666666269302370",
+      "state": "Talk",
+      "talk": true,
+      "tick": 4
+    },
+    {
+      "case": "direction_ties",
+      "frame": 1,
+      "position": "0.08333334326744080",
+      "state": "Talk",
+      "talk": true,
+      "tick": 5
+    },
+    {
+      "case": "direction_ties",
+      "frame": 1,
+      "position": "0.09999999403953550",
+      "state": "Talk",
+      "talk": true,
+      "tick": 6
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.11666667461395260",
+      "state": "Talk",
+      "talk": true,
+      "tick": 7
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.13333335518836980",
+      "state": "Talk",
+      "talk": true,
+      "tick": 8
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.15000000596046450",
+      "state": "Talk",
+      "talk": true,
+      "tick": 9
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.16666667163372040",
+      "state": "Talk",
+      "talk": true,
+      "tick": 10
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.18333333730697630",
+      "state": "Talk",
+      "talk": true,
+      "tick": 11
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.20000000298023220",
+      "state": "Talk",
+      "talk": true,
+      "tick": 12
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.21666666865348820",
+      "state": "Talk",
+      "talk": true,
+      "tick": 13
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.23333333432674410",
+      "state": "Talk",
+      "talk": true,
+      "tick": 14
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.25000000000000000",
+      "state": "Talk",
+      "talk": false,
+      "tick": 15
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.26666668057441710",
+      "state": "Talk",
+      "talk": false,
+      "tick": 16
+    },
+    {
+      "case": "direction_ties",
+      "frame": 4,
+      "position": "0.28333336114883420",
+      "state": "Talk",
+      "talk": false,
+      "tick": 17
+    },
+    {
+      "case": "direction_ties",
+      "frame": 3,
+      "position": "0.30000004172325130",
+      "state": "Talk",
+      "talk": false,
+      "tick": 18
+    },
+    {
+      "case": "direction_ties",
+      "frame": 3,
+      "position": "0.31666672229766850",
+      "state": "Talk",
+      "talk": false,
+      "tick": 19
+    },
+    {
+      "case": "direction_ties",
+      "frame": 3,
+      "position": "0.33333340287208560",
+      "state": "Talk",
+      "talk": false,
+      "tick": 20
+    },
+    {
+      "case": "direction_ties",
+      "frame": 3,
+      "position": "0.35000008344650270",
+      "state": "Talk",
+      "talk": false,
+      "tick": 21
+    },
+    {
+      "case": "direction_ties",
+      "frame": 3,
+      "position": "0.36666676402091980",
+      "state": "Talk",
+      "talk": false,
+      "tick": 22
+    },
+    {
+      "case": "direction_ties",
+      "frame": 3,
+      "position": "0.38333344459533690",
+      "state": "Talk",
+      "talk": false,
+      "tick": 23
+    },
+    {
+      "case": "direction_ties",
+      "frame": 3,
+      "position": "0.00000000000000000",
+      "state": "Idle",
+      "talk": false,
+      "tick": 24
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.01666666567325590",
+      "state": "Idle",
+      "talk": false,
+      "tick": 25
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.03333333134651180",
+      "state": "Idle",
+      "talk": false,
+      "tick": 26
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.04999999701976780",
+      "state": "Idle",
+      "talk": false,
+      "tick": 27
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.06666667759418490",
+      "state": "Idle",
+      "talk": false,
+      "tick": 28
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.08333333581686020",
+      "state": "Idle",
+      "talk": false,
+      "tick": 29
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.10000000149011610",
+      "state": "Idle",
+      "talk": false,
+      "tick": 30
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.11666666716337200",
+      "state": "Idle",
+      "talk": false,
+      "tick": 31
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.13333334028720860",
+      "state": "Idle",
+      "talk": false,
+      "tick": 32
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.15000000596046450",
+      "state": "Idle",
+      "talk": false,
+      "tick": 33
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.16666667163372040",
+      "state": "Idle",
+      "talk": false,
+      "tick": 34
+    },
+    {
+      "case": "direction_ties",
+      "frame": 11,
+      "position": "0.18333333730697630",
+      "state": "Idle",
+      "talk": false,
+      "tick": 35
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.00000000000000000",
+      "state": "Idle",
+      "talk": false,
+      "tick": 36
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.01666666567325590",
+      "state": "Idle",
+      "talk": false,
+      "tick": 37
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.03333333134651180",
+      "state": "Idle",
+      "talk": false,
+      "tick": 38
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.04999999701976780",
+      "state": "Idle",
+      "talk": false,
+      "tick": 39
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.06666667759418490",
+      "state": "Idle",
+      "talk": false,
+      "tick": 40
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.08333333581686020",
+      "state": "Idle",
+      "talk": false,
+      "tick": 41
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.10000000149011610",
+      "state": "Idle",
+      "talk": false,
+      "tick": 42
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.11666666716337200",
+      "state": "Idle",
+      "talk": false,
+      "tick": 43
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.13333334028720860",
+      "state": "Idle",
+      "talk": false,
+      "tick": 44
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.15000000596046450",
+      "state": "Idle",
+      "talk": false,
+      "tick": 45
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.16666667163372040",
+      "state": "Idle",
+      "talk": false,
+      "tick": 46
+    },
+    {
+      "case": "direction_ties",
+      "frame": 6,
+      "position": "0.18333333730697630",
+      "state": "Idle",
+      "talk": false,
+      "tick": 47
+    }
+  ],
+  "methods": {
+    "_create_animations": "426005e609ca5d652aa14d43ebf432becdf565ff9067de3b0895ca8b4911571b",
+    "_create_tree": "b01939bb3aa0ea3504b00943097144d923fac3f7175eaa78b36e9f2b9ca21084",
+    "blend_position": "c80e4c337dd587bd13bbe93307ca94d4967b376d46d9df9f0b118f4fd01be004",
+    "get_state": "234afa22556f0a4e4f1e815b59d27183faac82308f331b4b0bb293d8b4b42e99",
+    "travel": "0bb4052328bb11f6feeb8fb71f7c2b877644adeb6c02194b021299ab78cef223"
+  },
+  "scope": "Exact source animation creation/tree/travel/blend; manually stepped native AnimationTree; no NPC AI or rendering claim",
+  "sources": {
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498"
+  }
+}

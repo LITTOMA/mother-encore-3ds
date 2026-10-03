@@ -1,0 +1,7 @@
+{
+  "official_release": "https://github.com/godotengine/godot-builds/releases/tag/3.6.2-stable",
+  "archive": "Godot_v3.6.2-stable_x11.64.zip",
+  "sha512_verified": "b131d94494ecc2c61ba1b266b17fc1f40e0707c5d38ce88fe017b67298caf7cb0cc87210dcd44c5c36b17fad45b8587285d4d9c74d985179b1b1041ea00d4022",
+  "executable": "/workspace/scratch/c6ba063dd54d/toolchain/godot-gui/Godot_v3.6.2-stable_x11.64",
+  "executable_sha256": "7f6d2abd045dbfd5db05ccd1792512dd5d21e19da3b2a00a561c5d314df9c733"
+}

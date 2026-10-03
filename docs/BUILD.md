@@ -1,0 +1,62 @@
+# 构建
+
+项目包含共享 C++17 核心、桌面测试和原生 3DS 平台实现。SDK、上游 checkout、缓存和构建产物不纳入源码。
+
+## 依赖
+
+- 主机：C++17 编译器、CMake 3.16+、Python 3.9+、Git、FFmpeg / ffprobe。
+- 3DS：devkitARM、libctru、Citro2D、Citro3D、tex3ds，正确设置 `DEVKITPRO`、`DEVKITARM` 和 `PATH`。
+- CIA：makerom 0.19.0、bannertool 1.2.2。CTRTool 1.3.0 可用于验包。
+- 重新生成贴图：Pillow、fontTools 和 FreeType；独立上游行为对照使用 Godot 3.6.2。
+
+Windows 使用 devkitPro MSYS2；需要时可通过 `make PYTHON=python` 指定 Python。隔离 SDK 获取脚本与固定工具来源见 [tools/cloud-sdk](../tools/cloud-sdk/README.md)。
+
+## 上游与资源
+
+```sh
+python3 tools/ci_bootstrap.py
+python3 tools/ci_bootstrap.py --verify-only
+```
+
+恢复工具检查固定官方 URL、提交、树和 5,839 个文件的内容与大小。已有 checkout 只核对；未知文件、字节变化或版本不一致会停止。`--verify-only` 不下载。不要使用 `upstream.py fetch` 改变当前固定子模块。
+
+源码包含受检的外部内容 IR、生成包和纹理。21 项 PCM 从固定上游按指纹恢复，不纳入 Git。FFmpeg 仅用于离线转换，不链接进设备程序；DSP 组件不随项目提供。详见 [音频恢复](AUDIO_RESTORATION.md)。
+
+```sh
+make native-content
+```
+
+该目标编译受检的外部游戏内容，不编译 C++。普通构建会验证资源引用与来源，缺失或改变时停止。不要手改 pack、manifest，或以 `extract_native_content.py` 覆盖未经重新审查的 IR。
+
+## 主机检查
+
+```sh
+make test
+make sanitize
+```
+
+`make sanitize` 启用 ASan / UBSan，保持默认泄漏检查。具体覆盖和平台验证区别见 [测试说明](TESTING.md)。
+
+## 3DS 构建
+
+```sh
+make 3dsx
+make cia
+```
+
+源码默认使用 CPU 背景路径。常规 GPU 开发配置显式启用背景与证书，保留 CPU fallback：
+
+```sh
+make 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0
+make cia EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0
+```
+
+纹理条带是独立实验选项，不能从上述配置推导其兼容性。设备程序与主机测试共享游戏核心，M0 fixture 不进入生产设备程序。
+
+## 打包
+
+```sh
+python3 tools/release.py
+```
+
+SD ZIP 包含真实 3DSX/CIA、所需资源及逐项核对的许可文件。运行时资源置于 RomFS，不支持 SD 覆盖或热重载。CIA 使用未全局登记的测试 TitleID `000400000F3E2100` 和 homebrew 测试签名；构建成功不代表安装、真机运行或官方认证。

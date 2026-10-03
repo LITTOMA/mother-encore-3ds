@@ -1,0 +1,14 @@
+{
+  "sources": {
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/BossDefeatFlash.tscn": "beccb44697e77bd232f1ce3173ac16d427ddc1c9d0c45b9f265423d8166dbac8",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb"
+  },
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "adapters": [
+    "native AnimationPlayer method tracks extracted without audio/visual tracks",
+    "method calls set immediate inside manually advanced idle pass; source Shaker physics ticks precede that pass",
+    "audio/video not tested; scalar frame/RNG callback ordering tested"
+  ]
+}

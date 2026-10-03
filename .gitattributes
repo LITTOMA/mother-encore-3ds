@@ -1,0 +1,3 @@
+# Reviewed source/fixture/asset fingerprints are byte-exact, including line endings.
+# Disable checkout/check-in newline conversion even with user core.autocrlf=true.
+* -text

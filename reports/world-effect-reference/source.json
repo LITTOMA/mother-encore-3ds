@@ -1,0 +1,8 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd"
+  }
+}

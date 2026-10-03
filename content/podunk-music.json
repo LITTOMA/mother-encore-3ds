@@ -1,0 +1,241 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "silence_db": -80.0,
+  "fade_to_seconds": 1,
+  "tracks": [
+    {
+      "stable_id": 582446421,
+      "source_path": "res://Audio/Music/Pollyanna.ogg",
+      "source_sha256": "2f1c880cfca68c41178f178c8f91ba651ff16f0acf6477363eb99d60a5a6ac1e",
+      "import_sha256": "fed99162c364459577272700329efb22d63ba8ac3c1bcd53eaa72b7c23cf2764",
+      "pcm_path": "audio/podunk-582446421.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 364625705,
+      "source_path": "res://Audio/Music/Canary_Village.mp3",
+      "source_sha256": "a24be04338c2ed4fcfe07bd1876fdcf5346f6495250b6258c53dec65081065d2",
+      "import_sha256": "b1e714336541e931765ab143c37eec4afc53d5785efc287e2b0ec1a99d6a59fb",
+      "pcm_path": "audio/podunk-364625705.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 2369254644,
+      "source_path": "res://Audio/Music/A_Ghastly_Site.mp3",
+      "source_sha256": "e3d0b02ab7486401e22fb9b2257d4ff972f30293e69d4da9d155330def16b880",
+      "import_sha256": "dd1d1646e059405b8c976003327de069c237a74f8e0aebb05c03574491108f7c",
+      "pcm_path": "audio/podunk-2369254644.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 61517992,
+      "source_path": "res://Audio/Music/Zoo.mp3",
+      "source_sha256": "03627006ef7be36ffe406d3e8d78f372366b4818eab5a8629c4ceda7a290e1f5",
+      "import_sha256": "c3ba64da9e540c95ec36952087004b8dace5467d9d06635b504639d7ec902fb8",
+      "pcm_path": "audio/podunk-61517992.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1388543241,
+      "source_path": "res://Audio/Music/Ambiance_Wind_And_Birds.mp3",
+      "source_sha256": "6655846cc0ce68089f5fd0a3af23407c89752f772f8a1bb859d135957c5a88f5",
+      "import_sha256": "f39dff42179dce7adc03461f3f6a79a3e8d824c7c1c39ac130aafd98e0717298",
+      "pcm_path": "audio/podunk-1388543241.pcm",
+      "gain_db": 0
+    }
+  ],
+  "regions": [
+    {
+      "id": 4159936839,
+      "source_path": "Music/MusicArea",
+      "track_id": 582446421,
+      "volume_db": 0,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea/CollisionPolygon2D"
+      ]
+    },
+    {
+      "id": 2241702193,
+      "source_path": "Music/MusicArea3",
+      "track_id": 582446421,
+      "volume_db": -8,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea3/CollisionPolygon2D"
+      ]
+    },
+    {
+      "id": 1828588548,
+      "source_path": "Music/MusicArea5",
+      "track_id": 582446421,
+      "volume_db": -4,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea5/CollisionPolygon2D",
+        "Music/MusicArea5/CollisionPolygon2D2"
+      ]
+    },
+    {
+      "id": 2196794664,
+      "source_path": "Music/MusicArea7",
+      "track_id": 582446421,
+      "volume_db": -3,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea7/CollisionShape2D"
+      ]
+    },
+    {
+      "id": 307196089,
+      "source_path": "Music/MusicArea8",
+      "track_id": 582446421,
+      "volume_db": -6,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea8/CollisionShape2D"
+      ]
+    },
+    {
+      "id": 1699233839,
+      "source_path": "Music/MusicArea9",
+      "track_id": 582446421,
+      "volume_db": -9,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea9/CollisionShape2D"
+      ]
+    },
+    {
+      "id": 4070218151,
+      "source_path": "Music/MusicArea2",
+      "track_id": 364625705,
+      "volume_db": -6,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "canary_melody",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea2/CollisionPolygon2D"
+      ]
+    },
+    {
+      "id": 469318802,
+      "source_path": "Music/MusicArea4",
+      "track_id": 364625705,
+      "volume_db": -12,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "canary_melody",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea4/CollisionPolygon2D"
+      ]
+    },
+    {
+      "id": 4126629310,
+      "source_path": "Music/MusicArea6",
+      "track_id": 2369254644,
+      "volume_db": -6,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea6/CollisionShape2D"
+      ]
+    },
+    {
+      "id": 2545295408,
+      "source_path": "Music/MusicArea10",
+      "track_id": 61517992,
+      "volume_db": 0,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "zoo_freed",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea10/CollisionPolygon2D"
+      ]
+    },
+    {
+      "id": 3769700518,
+      "source_path": "Music/MusicArea11",
+      "track_id": 582446421,
+      "volume_db": 0,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "zoo_freed",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea11/CollisionPolygon2D"
+      ]
+    },
+    {
+      "id": 2042118428,
+      "source_path": "Music/MusicArea12",
+      "track_id": 1388543241,
+      "volume_db": 12,
+      "fadein_seconds": 20,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "canary_melody",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea12/CollisionShape2D",
+        "Music/MusicArea12/CollisionPolygon2D2"
+      ]
+    },
+    {
+      "id": 247427466,
+      "source_path": "Music/MusicArea13",
+      "track_id": 1388543241,
+      "volume_db": 12,
+      "fadein_seconds": 20,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "disabled": false,
+      "shape_paths": [
+        "Music/MusicArea13/CollisionShape2D",
+        "Music/MusicArea13/CollisionShape2D2"
+      ]
+    }
+  ]
+}

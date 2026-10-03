@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "review_date_utc": "2026-10-03",
+  "baseline": "include/encore/background_kernel.hpp",
+  "normalization": "Remove the exact optional four-space-indented friend class RegionBackgroundKernel; declaration and its trailing newline before SHA256.",
+  "previous_reviewed_normalized_sha256": "e722c99c7a475444faf71a1d5165bb1c0f9443995dd9f6426a2a399d4b6054c5",
+  "additional_reviewed_normalized_sha256": "2c33c6934889a8a48951571da0391e2de041474b39b1fd141faa151f81319dcb",
+  "additional_reviewed_file_sha256": "5187c503c8e965684333cdb3c05c883af82c6a58469a4b095194410cbd9c6850",
+  "review_basis": {
+    "comparison": "Current integrated header against startup-settings-checkpoint preimage",
+    "previous_preimage_sha256_prefix": "0b6947",
+    "changes": [
+      "PreparationControl include, default-null argument, and cancellation checks",
+      "Explicit vector reserves",
+      "preparation_upper_bound, potential_separable_pair, and allocated_bytes accounting helpers"
+    ],
+    "preserved": [
+      "Existing UV and floating-point math expressions",
+      "Palette and composition expressions",
+      "Normal noncancelled iteration order"
+    ]
+  },
+  "reason": "The reviewed preparation cancellation and resource-accounting additions preserve normal composition semantics; permit the exact additional baseline for the existing region comparison.",
+  "gate": "Only these two normalized SHA256 values are accepted; all unknown values fail closed, including under python -O.",
+  "scope_limits": [
+    "No gameplay/header implementation or expected comparison output changed by this publication amendment.",
+    "This receipt records semantic review, not a claim of a passed test run."
+  ]
+}

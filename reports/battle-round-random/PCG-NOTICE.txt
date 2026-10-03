@@ -1,0 +1,16 @@
+PCG32 random number generator
+Copyright (c) 2014 M. E. O'Neill
+https://www.pcg-random.org/
+
+The PCG32 XSH-RR transformation and seeding in runtime/source_random.cpp are
+adapted from Godot Engine 3.6.2 thirdparty/misc/pcg.cpp and pcg.h. Those files
+identify the minimal PCG32 implementation as licensed under the Apache License,
+Version 2.0. A full copy is provided in PCG-APACHE-2.0.txt.
+
+Changes: explicit evaluation order; portable leading-zero count; exact Godot
+global floating API; diagnostic draw count; state-injection interface. No
+third-party endorsement is claimed.
+
+The Godot RandomPCG / Math / GDScript API semantics were audited against:
+https://github.com/godotengine/godot/tree/3.6.2-stable
+Godot's MIT license is retained in docs/licenses/Godot-3.6.2-LICENSE.txt.

@@ -1,0 +1,727 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original settings choices and static final confirmation layout, with source restart/cancel semantics. Source transition choreography and Introduction remain separate.",
+  "choices": {
+    "speeds": [
+      0.02,
+      0.028,
+      0.035
+    ],
+    "speed_names": [
+      "FAST",
+      "MEDIUM",
+      "SLOW"
+    ],
+    "flavors": [
+      "Plain",
+      "Mint",
+      "Strawberry",
+      "Banana",
+      "Peanut",
+      "Grape",
+      "Melon"
+    ],
+    "prompts": [
+      "Both",
+      "Objects",
+      "NPCs",
+      "None"
+    ]
+  },
+  "defaults": [
+    0,
+    0,
+    0
+  ],
+  "description": true,
+  "text_color": 4294967295,
+  "patch": [
+    13,
+    13,
+    13,
+    13
+  ],
+  "settings_box": [
+    8,
+    39,
+    168.0,
+    81.0
+  ],
+  "confirmation_settings_box": [
+    140,
+    39,
+    168.0,
+    81.0
+  ],
+  "rows": [
+    {
+      "text": "Text Speed",
+      "label": [
+        15,
+        11,
+        103.0,
+        12.0
+      ],
+      "value": [
+        92,
+        11,
+        68.0,
+        12.0
+      ]
+    },
+    {
+      "text": "Menu Flavors",
+      "label": [
+        15,
+        27.0,
+        103.0,
+        12.0
+      ],
+      "value": [
+        92,
+        27.0,
+        68.0,
+        12.0
+      ]
+    },
+    {
+      "text": "Button Prompts",
+      "label": [
+        15,
+        43.0,
+        103.0,
+        12.0
+      ],
+      "value": [
+        92,
+        43.0,
+        68.0,
+        12.0
+      ]
+    },
+    {
+      "text": "End",
+      "label": [
+        15,
+        59.0,
+        103.0,
+        12.0
+      ],
+      "value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "confirmation_row_offset": [
+    0,
+    8
+  ],
+  "panels": [
+    {
+      "box": [
+        184.0,
+        48.0,
+        128.0,
+        64.0
+      ],
+      "labels": [
+        {
+          "text": "Fast Speed",
+          "rect": [
+            15.0,
+            11.0,
+            84.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Medium Speed",
+          "rect": [
+            15.0,
+            27.0,
+            84.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Slow Speed",
+          "rect": [
+            15.0,
+            43.0,
+            84.0,
+            12.0
+          ]
+        }
+      ]
+    },
+    {
+      "box": [
+        184.0,
+        16.0,
+        128.0,
+        128.0
+      ],
+      "labels": [
+        {
+          "text": "Plain",
+          "rect": [
+            15.0,
+            11.0,
+            104.0,
+            12
+          ]
+        },
+        {
+          "text": "Mint",
+          "rect": [
+            15.0,
+            27.0,
+            104.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Strawberry",
+          "rect": [
+            15.0,
+            43.0,
+            104.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Banana",
+          "rect": [
+            15.0,
+            59.0,
+            104.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Peanut",
+          "rect": [
+            15.0,
+            75.0,
+            104.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Grape",
+          "rect": [
+            15.0,
+            91.0,
+            104.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Melon",
+          "rect": [
+            15.0,
+            107.0,
+            104.0,
+            12.0
+          ]
+        }
+      ]
+    },
+    {
+      "box": [
+        184.0,
+        39.0,
+        128.0,
+        81.0
+      ],
+      "labels": [
+        {
+          "text": "Both",
+          "rect": [
+            15.0,
+            11.0,
+            77.0,
+            12.0
+          ]
+        },
+        {
+          "text": "Objects",
+          "rect": [
+            15.0,
+            27.0,
+            77.0,
+            12.0
+          ]
+        },
+        {
+          "text": "NPCs",
+          "rect": [
+            15.0,
+            43.0,
+            77.0,
+            12.0
+          ]
+        },
+        {
+          "text": "None",
+          "rect": [
+            15.0,
+            59.0,
+            77.0,
+            12.0
+          ]
+        }
+      ]
+    }
+  ],
+  "speed_labels": [
+    "Fast",
+    "Medium",
+    "Slow"
+  ],
+  "flavor_labels": [
+    "Plain",
+    "Mint",
+    "Strawberry",
+    "Banana",
+    "Peanut",
+    "Grape",
+    "Melon"
+  ],
+  "prompt_labels": [
+    "Both",
+    "Objects",
+    "NPCs",
+    "None"
+  ],
+  "resources": [
+    {
+      "path": "settings-preview/ui-0.t3x",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "width": 28,
+      "height": 28,
+      "columns": 1,
+      "rows": 1,
+      "normalize": true
+    },
+    {
+      "path": "settings-preview/ui-1.t3x",
+      "source": "Graphics/UI/Overworld/flavours/defaultempty.png",
+      "width": 28,
+      "height": 28,
+      "columns": 1,
+      "rows": 1,
+      "normalize": true
+    },
+    {
+      "path": "settings-preview/ui-2.t3x",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside.png",
+      "width": 28,
+      "height": 28,
+      "columns": 1,
+      "rows": 1,
+      "normalize": true
+    },
+    {
+      "path": "settings-preview/ui-3.t3x",
+      "source": "Graphics/UI/Inventory/characters/ninten.png",
+      "width": 19,
+      "height": 21,
+      "columns": 1,
+      "rows": 1,
+      "normalize": false
+    },
+    {
+      "path": "settings-preview/ui-4.t3x",
+      "source": "Graphics/UI/Inventory/characters/ana.png",
+      "width": 19,
+      "height": 21,
+      "columns": 1,
+      "rows": 1,
+      "normalize": false
+    },
+    {
+      "path": "settings-preview/ui-5.t3x",
+      "source": "Graphics/UI/Inventory/characters/lloyd.png",
+      "width": 19,
+      "height": 21,
+      "columns": 1,
+      "rows": 1,
+      "normalize": false
+    },
+    {
+      "path": "settings-preview/ui-6.t3x",
+      "source": "Graphics/UI/Inventory/characters/pippi.png",
+      "width": 19,
+      "height": 21,
+      "columns": 1,
+      "rows": 1,
+      "normalize": false
+    },
+    {
+      "path": "settings-preview/ui-7.t3x",
+      "source": "Graphics/UI/Inventory/characters/teddy.png",
+      "width": 19,
+      "height": 21,
+      "columns": 1,
+      "rows": 1,
+      "normalize": false
+    },
+    {
+      "path": "settings-preview/ui-8.t3x",
+      "source": "Graphics/UI/Misc/FavFoodPlate.png",
+      "width": 18,
+      "height": 19,
+      "columns": 1,
+      "rows": 1,
+      "normalize": false
+    }
+  ],
+  "box_resource": 0,
+  "card_resource": 1,
+  "inside_resource": 2,
+  "confirmation_fields": [
+    {
+      "box": [
+        12.0,
+        6.0,
+        120.0,
+        32.0
+      ],
+      "inside": [
+        30.0,
+        0,
+        90.0,
+        32.0
+      ],
+      "label": [
+        40.0,
+        9.0,
+        72.0,
+        16.0
+      ],
+      "icon": [
+        8.0,
+        4.0,
+        19.0,
+        21.0
+      ],
+      "resource": 3
+    },
+    {
+      "box": [
+        12.0,
+        39.0,
+        120.0,
+        32.0
+      ],
+      "inside": [
+        30.0,
+        0,
+        90.0,
+        32.0
+      ],
+      "label": [
+        40.0,
+        9.0,
+        72.0,
+        16.0
+      ],
+      "icon": [
+        8.0,
+        4.0,
+        19.0,
+        21.0
+      ],
+      "resource": 4
+    },
+    {
+      "box": [
+        12.0,
+        72.0,
+        120.0,
+        32.0
+      ],
+      "inside": [
+        30.0,
+        0,
+        90.0,
+        32.0
+      ],
+      "label": [
+        40.0,
+        9.0,
+        72.0,
+        16.0
+      ],
+      "icon": [
+        8.0,
+        4.0,
+        19.0,
+        21.0
+      ],
+      "resource": 5
+    },
+    {
+      "box": [
+        12.0,
+        105.0,
+        120.0,
+        32.0
+      ],
+      "inside": [
+        30.0,
+        0,
+        90.0,
+        32.0
+      ],
+      "label": [
+        40.0,
+        9.0,
+        72.0,
+        16.0
+      ],
+      "icon": [
+        8.0,
+        4.0,
+        19.0,
+        21.0
+      ],
+      "resource": 6
+    },
+    {
+      "box": [
+        12.0,
+        138.0,
+        120.0,
+        32.0
+      ],
+      "inside": [
+        30.0,
+        0,
+        90.0,
+        32.0
+      ],
+      "label": [
+        40.0,
+        9.0,
+        72.0,
+        16.0
+      ],
+      "icon": [
+        8.0,
+        4.0,
+        19.0,
+        21.0
+      ],
+      "resource": 7
+    },
+    {
+      "box": [
+        140.0,
+        6.0,
+        168.0,
+        32.0
+      ],
+      "inside": [
+        31.0,
+        0,
+        137.0,
+        32.0
+      ],
+      "label": [
+        41.0,
+        9.0,
+        117.0,
+        16.0
+      ],
+      "icon": [
+        8.0,
+        4.0,
+        20.0,
+        29.0
+      ],
+      "resource": 8
+    }
+  ],
+  "confirmation_box": [
+    140.0,
+    121.0,
+    168.0,
+    49.0
+  ],
+  "certainty": {
+    "text": "Are you sure?",
+    "rect": [
+      16.0,
+      15.0,
+      66.0,
+      16.0
+    ]
+  },
+  "confirmation_choices": [
+    {
+      "text": "Yep",
+      "rect": [
+        110.0,
+        10.0,
+        54.0,
+        12.0
+      ]
+    },
+    {
+      "text": "Nope",
+      "rect": [
+        110.0,
+        26.0,
+        54.0,
+        12.0
+      ]
+    }
+  ],
+  "palettes": [
+    [
+      4294243059,
+      4291671231,
+      4286999674,
+      4279701780,
+      4293153722,
+      4292857558,
+      4282591539,
+      4284426495
+    ],
+    [
+      4294049705,
+      4289767500,
+      4289032029,
+      4280552483,
+      4294598548,
+      4291085161,
+      4281210934,
+      4284426495
+    ],
+    [
+      4290093823,
+      4287197412,
+      4284105400,
+      4279570742,
+      4284268591,
+      4288250862,
+      4279574095,
+      4284426495
+    ],
+    [
+      4283617791,
+      4281103060,
+      4281292205,
+      4278651426,
+      4280504792,
+      4281830368,
+      4279507516,
+      4284426495
+    ],
+    [
+      4283599610,
+      4282140610,
+      4281414041,
+      4279899699,
+      4280756169,
+      4282802648,
+      4280428611,
+      4284426495
+    ],
+    [
+      4294947818,
+      4291193254,
+      4288764999,
+      4281473815,
+      4287969758,
+      4292247225,
+      4282591022,
+      4281150900
+    ],
+    [
+      4285456513,
+      4284986187,
+      4282923414,
+      4280029225,
+      4285878271,
+      4285121704,
+      4280688950,
+      4281150900
+    ]
+  ],
+  "palette_threshold": 0.01,
+  "source_palette": [
+    4294243059,
+    4291671231,
+    4286999674,
+    4279701780,
+    4293153722,
+    4292857558,
+    4282591539,
+    4281150900
+  ],
+  "skin_paths": [
+    "battle-preview/box.t3x",
+    "battle-preview/hp-label.t3x",
+    "battle-preview/plate-bg.t3x",
+    "battle-preview/plate.t3x",
+    "battle-preview/pp-label.t3x",
+    "house-preview/dialogue_box.t3x",
+    "round-preview/box.t3x",
+    "settings-preview/ui-0.t3x",
+    "settings-preview/ui-1.t3x",
+    "settings-preview/ui-2.t3x"
+  ],
+  "skin_sha256": {
+    "battle-preview/plate-bg.t3x": "3c53675f1cee33f3240b5cd7de87823fd56b6df2edef2947bfa062bbeddcae50",
+    "battle-preview/box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+    "battle-preview/pp-label.t3x": "4cfac8fed3f1fa0a93fbdef9da00a902a5b4c486b658e1750a97960a608fa9f9",
+    "battle-preview/hp-label.t3x": "faf5e720c7d12dbf24c61be814df254f90cb16666df1016e89a0a93aa0f14688",
+    "house-preview/dialogue_box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+    "round-preview/box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+    "battle-preview/plate.t3x": "a5a1be68e66f0775f4f8681d609537b817606e0609e33ee71435f3b7af3f2cd9"
+  },
+  "sources": {
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/UI/NamingScreen/TextSpeed.gd": "ac6e7d08c2c4baa3c315b3d905610d7f056dd77958fa4a33c96889a2a2b449ba",
+    "Scripts/UI/NamingScreen/Flavors.gd": "efd38a4072b59fbcdcc171e27c93226659a07fb0c8cbac7cf1d11eb184b1fd54",
+    "Scripts/UI/NamingScreen/ButtonPrompts.gd": "b0a1398101a8151b51ac6418dafa9d86b8eb4074ed47f3ab136eaee515a86c89",
+    "Scripts/UI/colorRectFlavor.gd": "aa54241880f05f6efaa4cc7d1996eac12b3c1749a739482976fd4bc3af59d82a",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultempty.png": "33af3d9a91a397b79e67c7500486c5cb85f3d1396ecc1e9a1faa09581de73fdc",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433",
+    "Graphics/UI/Inventory/characters/ninten.png": "91beffd915870c9879750c4581e592ff1d81f3b4845d387e00547a0f76e5a28f",
+    "Graphics/UI/Inventory/characters/ana.png": "1b6e1dd96d6ba4063e898459b56eff88f949b5bea60f159e1d5639a350f97463",
+    "Graphics/UI/Inventory/characters/lloyd.png": "05a1602950e42c5faafea26f19df74794f345132543036bf82d40d63b54d180c",
+    "Graphics/UI/Inventory/characters/pippi.png": "1edb8d523b6e08ad8d7beb1ed00ec491eb5a08f0f8eefd744cfedc385154fa46",
+    "Graphics/UI/Inventory/characters/teddy.png": "2b0886c3486b0599fb59cdccaf6486395e9546ac77a37441040b4838e38fc18c",
+    "Graphics/UI/Misc/FavFoodPlate.png": "ed19719f2c121867d449bfe750e6f0b7e0fb41d4030b1ae8670079ae3d04acc7",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c"
+  },
+  "outputs": {
+    "settings-preview/ui-0.t3x": "72221e2c65e0fd1f0ee8f0d0a74a3d65aab12c01c5df35b7f21fded7ee7e5c3d",
+    "settings-preview/ui-1.t3x": "82f36f6bb28ce48b6adbeb58033b36dc624f98d80e0fb779fdfa60fad7737620",
+    "settings-preview/ui-2.t3x": "0501a123a757cc2e15ad3bc35f0e1eda5696b56ae743cf7abf5fbbc4de1c5e84",
+    "settings-preview/ui-3.t3x": "fc0f7a78e16eb7c760926168210828ee36ba92964f7e6764ea5f0df1df8ed688",
+    "settings-preview/ui-4.t3x": "e84048378fc026fd70cb8461965e3e7cd97580b4be1c2532bcb1b6baf4e78f18",
+    "settings-preview/ui-5.t3x": "fa7441713e5806d5fe0a3a46a7fca5e166019d1b7a7e3af16b464789eb94252f",
+    "settings-preview/ui-6.t3x": "d02f18b3037ae8f55e8267d83fa615eabcfced6bc96ae1a3aa3f6220b619797a",
+    "settings-preview/ui-7.t3x": "02b9963ed42044b83b1e5d4381e91ec35a83aaac8308bacb8e4247844bf21f43",
+    "settings-preview/ui-8.t3x": "ce811b9a1ab828eda25430e64a43c5b30b6867a43047692422901b1b85b0fdc2"
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "samples": [
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.016666666666666666,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 1,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 3.125,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 17.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 63.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0.016666666666666666,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 1,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 3.125,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 17.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 63.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.423529,
+        0.568627,
+        0.941176,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.423529,
+        0.568627,
+        0.941176,
+        1
+      ],
+      "alpha": 0.5
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.423529,
+        0.568627,
+        0.941176,
+        1
+      ],
+      "alpha": 0
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.5392155,
+        0.5392155,
+        0.952941,
+        1
+      ],
+      "alpha": 0.25
+    }
+  ],
+  "numeric_rgba_sha256": "3edd6e01196c92d2ad9e4dba5c1ae4547cfffe67e93f6f7bdf78cce6d93947dc",
+  "native_rgba_bytes": 5836800,
+  "compressed_bytes": 44408,
+  "scope": "Offscreen shader numeric readback, no screenshot or image encoding. TIME replaced by uniform for deterministic samples. Expanded400x240 source UV centered at40,30 uses separately marked adapter."
+}

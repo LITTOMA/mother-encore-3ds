@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "whole_handler_approved": false,
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+  },
+  "scope": "Textless lamp_attack command dispatch, actor-ready/idle yields, idle WaitTimer and queued battle handoff only",
+  "parsed_sha256": "d727f33b9efa2a8fa2f39dc3b985517ddd104cfe9d5bed2f940953ddd942ff67",
+  "known_source_quirks": [
+    "movecam.time is inert: handler reads length and defaults to 1 second",
+    "shakecam.get uses an Array key; original small value matches the default",
+    "startbattle queues actor enemy and win flag; actual start is after final WaitTimer and cleanup"
+  ],
+  "command_blocks": {
+    "actors": "06f9c6efd3998d3aa7a3365fc9634139ffde947bb130688fba096e6382554dee",
+    "autowait": "d951a8e658d520c34d495c82e72506d39fb5d3ffc87e9dabe056d0522b5700d4",
+    "objectsfunction": "29c810372db6ab3d7fefed1cf72334db584ed08b2e65429b652b7b9278016b86",
+    "ovbattlemusic": "f1c1d85f19336b47c5ff04658356e7df3e99c0c08623f18c4b97f7830fb48444",
+    "musicloop": "6b9951fe0dc85245011c7ae26b49ecfb8beafd2b811f1f9c870e47a2309719e6",
+    "soundeffect": "f1436e5ab96517b2748e7e4186d2990ad6729b2ea2af7085f473d3ba8fe5d23f",
+    "talker": "5a34f6c235267a586963c1e5258131de6b489fc193c552f408232e9734b2efdb",
+    "actorsmove": "4fba204503c32ce783e09535a68a5e11d11dc8391600692fa4f9d4fb388d9b67",
+    "actorsturn": "6ebb020e855f8ff08351de16e50a8d84bb9e9b81592d7c6a8263f587ec9f3ec7",
+    "actorsshake": "b44dd3e20bce83fdd07856bd9046bf2137a91aeef5fbf8cf64a98be2943c638b",
+    "actorsjump": "a07cba1a97e7cf7292dcb9cb058f4cacc32494db3591b93e3e2b587ac77ee914",
+    "actorsanim": "b3bac9905df1ad4cfe03d4fbb881b810aa635189b728904bf04c0cbac4d17fa0",
+    "actorsemote": "792643d04396007e0417c0960c7fdc4fa8d218e1934ae72074806b4ad671a1df",
+    "shakecam": "c4bbe91585f89478a91e044db1cb525c49b0dc584687fd3088cfd40a5e6a1648",
+    "changecam": "1f4a30899a929de2a047f075674b3854e24b6fad9dc5b745085e7d1caf62bc9c",
+    "movecam": "3e72d19e1020a75d31565f72e72632d5b6a75313dfa373f541642f8816b03a64",
+    "startbattle": "c81fa3059f9780b031266b2f10f075ec0dc3342d317b26080f2d00fae22be06d"
+  },
+  "native_trace_sha256": "6adcdb1b7d3c10e6c7bb2ba428fe76fda065948c613bbd11cdb58f56648a9840"
+}

@@ -1,0 +1,49 @@
+{
+  "status": "PASS_SCOPED_NPC_OCCLUSION_AND_START",
+  "date_utc": "2026-10-03",
+  "binary": "dist/encore-native.3dsx",
+  "bytes": 76247720,
+  "sha256": "d5714187859d7bee578ba57033b2708f99360f78493c232c71dcd15481a1d1d4",
+  "gpu_mode": "1:1:0",
+  "main_sha256": "2377a7557b4a90b624d30c9b275fe81bece72dcb1d4875407255915a3f14cec1",
+  "root_cause": "Scripted Minnie traverses the original collision-free path to y200 beyond the finite Above mask ending y192. Player and NPC share the same rendering/foreground pass; normal player hits door/fade or wall earlier. The missing original dialogue-owned Blackbars layer covers this source cutscene exit.",
+  "fix": "Restore checked data-driven original Blackbars above world and below dialogue; preserve all source map cells, textures, paths, timing, positions, camera and physics. Retain independent START global-quit removal.",
+  "verification": {
+    "production_ui": "PASS: title New Game; AB; START retains AB/UI; append C produces ABC; cancel to title; explicit title Exit returns to stopped emulator list.",
+    "unpaused_source_path": {
+      "status": "PASS",
+      "samples": 44,
+      "minimum_y": 168.799988,
+      "maximum_y": 200.0,
+      "all_exit_samples_have_source_bars": true,
+      "bars_close_after_script": true,
+      "qa_sha256": "6b4cd199f8df40d67c0aa6a255bf4ee6faee5fd8348797935f227aba11e625de",
+      "save_io": "Disabled; no user profile IO",
+      "path": "Actual source Minnie leave after actual Pillow combat, generated post-Lamp start"
+    },
+    "final_visual": {
+      "status": "PASS",
+      "diagnostic_sha256": "2a909415c914001e2a72b873c235dd17ad0494f045372e61d9aa8a6a5ea3834f",
+      "method": "Internal full-desktop CUA observation after indefinite diagnostic-only hold of naturally submitted Minnie y200 frame. Ninten and room remain unchanged; Minnie fully occluded with no sprite pixels below doorway. Manually stopped afterward; no source position was forced.",
+      "screenshots_delivered": false
+    },
+    "earlier_visual_attempt": {
+      "status": "INCONCLUSIVE_DIAGNOSTIC_ONLY",
+      "diagnostic_sha256": "75b8a60f1cee879d078e35d702c0a8316c9bddd2b9033658cedb59e33dabd43a",
+      "detail": "Missed finite20s display hold; resumed diagnostic wall clock caused Phone idle delta rejection. Not a production failure and not claimed as a passing test."
+    },
+    "source_animation": "602 unchanged Godot3.6.2 samples; maximum position delta0.0000152593px",
+    "host": "PASS targeted blackbars source/state/malformed pack tests",
+    "asan_ubsan": "PASS targeted blackbars tests; LeakSanitizer disabled",
+    "arm": "PASS incremental real devkitARM3DSX",
+    "embedded_romfs": "195/195 files including145 textures and124-byte opening.encbars exactly match staged bytes",
+    "source_foreground": "Original14Objects+276Above verified unchanged"
+  },
+  "limitations": [
+    "No new full host/sanitizer suite",
+    "No hardware or CIA execution",
+    "Minnie source-path checks use generated post-Lamp diagnostic start; production UI checked on exact delivered3DSX",
+    "No performance claim"
+  ],
+  "changed_files": "reports/npc-doorway-occlusion/changed-files.json"
+}

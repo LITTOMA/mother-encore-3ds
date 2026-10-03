@@ -1,0 +1,22 @@
+name: 问题报告
+description: 报告受检移植范围内的错误
+body:
+  - type: textarea
+    id: version
+    attributes:
+      label: 提交与运行环境
+      description: 精确 commit、构建开关、主机/模拟器/3DS 型号；不要上传 SDK 或个人存档。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 重现步骤、预期与实际结果
+      description: 请说明对应的已支持流程；若有上游差异，附固定版本和出处。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 必要日志或截图
+      description: 去除凭据和私人信息，标明本次验证层次。安全漏洞使用 SECURITY.md 中的途径。

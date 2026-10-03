@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "scene": "Nodes/Reusables/Player.tscn",
+  "scene_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+  "texture": "Graphics/Character Sprites/Ninten/main.png",
+  "texture_sha256": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+  "texture_size": [
+    310,
+    580
+  ],
+  "grid": [
+    10,
+    20
+  ],
+  "states": [
+    "Idle",
+    "Walk",
+    "Run",
+    "Crouch"
+  ],
+  "directions": [
+    "Down",
+    "Left",
+    "Right",
+    "Up",
+    "DownLeft",
+    "DownRight",
+    "UpLeft",
+    "UpRight"
+  ],
+  "scope": "32 discrete normal-Ninten Sprite.frame animation tracks; not Player or AnimationTree compatibility",
+  "out_of_duration_keys": "Idle Right has a 0.1s loop with original keys at 8..12.9s. Preserve all keys and compare actual engine playback; do not delete them as malformed or change source expectations.",
+  "not_implemented": [
+    "AnimationTree transition timing",
+    "blend state history",
+    "blink/RNG",
+    "fainted/costume profiles",
+    "attack animations",
+    "method tracks",
+    "shaders",
+    "full game actor placement"
+  ],
+  "licence_review": "Pinned upstream LICENSE permits source assets for game-related forks/modifications/translations. Ninten frame data and the source texture are used only for this Mother: Encore port; this does not relicense game assets as MIT. No environment fonts/images or third-party game binaries are used.",
+  "whole_scene_approved": false,
+  "visibility_tracks": "Run has only Position/main:frame and must preserve both visibility properties. Idle, Walk and Crouch set main true and SpecialAnimations false at time zero.",
+  "discrete_playback": "Godot 3.6.2 AnimationPlayer uses float clock and [from,to) discrete events. Events exactly at the new time normally apply on the next advance; zero-delta seeks and exact loop multiples have explicit engine exceptions. Scoped implementation maps these rules, not interpolated frame sampling."
+}

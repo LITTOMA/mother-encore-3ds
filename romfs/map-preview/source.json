@@ -1,0 +1,227 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "outputs": {
+    "house-00.t3x": {
+      "bytes": 262165,
+      "sha256": "4340081f068db84221569b1feaf09db941e4ed822a82ea96aa480d81e6a71048"
+    },
+    "house-01.t3x": {
+      "bytes": 262165,
+      "sha256": "2b63089f113ff8e6b27742144d5198eb9727ff7b9d83286b70f28187dedcde91"
+    },
+    "house-02.t3x": {
+      "bytes": 131093,
+      "sha256": "2bce2f73c7ca2b64af9d76e9837c1f698fb80bd025fd2801f2d867389dd8863f"
+    },
+    "house-03.t3x": {
+      "bytes": 262165,
+      "sha256": "1b5cc99dd2e2fa6de3a21efd002e1580a459e47cac77399ee214e152a9b55894"
+    },
+    "house-04.t3x": {
+      "bytes": 262165,
+      "sha256": "7acf1bd924e2708683ee63e68418742fe2ab73501b05a3f6fd30d5257355b321"
+    },
+    "house-05.t3x": {
+      "bytes": 131093,
+      "sha256": "c0a3215c9302d5b80d7fa77bd02138d2b423fc2e26910ecf6ce43593afd7b991"
+    },
+    "house-06.t3x": {
+      "bytes": 262165,
+      "sha256": "5ea77df29b85e7a692b5b9713aef9b741334f8c0569c2ee9e5fde5a295f2b75c"
+    },
+    "house-07.t3x": {
+      "bytes": 262165,
+      "sha256": "c3a81d7ab6a596d86c0af9737ba49fbcc67f04bb57a6880d72711d1aa853e663"
+    },
+    "house-08.t3x": {
+      "bytes": 131093,
+      "sha256": "a836c9fafec132b800ba53e2e0ac08a77cbc828a1a9ea7bf941f27996e82da83"
+    },
+    "house-09.t3x": {
+      "bytes": 262165,
+      "sha256": "447223c3d6bfa9241c2cf74e3578e3b38d8cc1c3efba4350cbea5b325210cee2"
+    },
+    "house-10.t3x": {
+      "bytes": 262165,
+      "sha256": "c3a81d7ab6a596d86c0af9737ba49fbcc67f04bb57a6880d72711d1aa853e663"
+    },
+    "house-11.t3x": {
+      "bytes": 131093,
+      "sha256": "a836c9fafec132b800ba53e2e0ac08a77cbc828a1a9ea7bf941f27996e82da83"
+    },
+    "house-12.t3x": {
+      "bytes": 131093,
+      "sha256": "322b356db6aa7f7f2491393a2883d04a61e22fd82b5ccecfc7779886869c83b3"
+    },
+    "house-13.t3x": {
+      "bytes": 131093,
+      "sha256": "ddd8c44802476ec6f8c3e5a7a2ada07c7d3ec17c95f58568ae967398776d1d28"
+    },
+    "house-14.t3x": {
+      "bytes": 65557,
+      "sha256": "9bce2a25276d1a11abd1f063c37463ee20d94d710b8bce9c3fe5a336af1b77eb"
+    }
+  },
+  "pixel_format": "RGBA8, no lossy compression, nearest sampling in viewer",
+  "recipe": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "game_version": "0.4.1.0",
+    "licence_review": "Pinned LICENSE permits repository assets/music for game-related forks/modifications/translations. This original room texture is used only in this Mother: Encore port development preview. No fonts, music or developer-environment assets are included. Scope does not relicense the asset under the native project's MIT licence.",
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "scene_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "schema": 1,
+    "scope": "Only the opening map's background Sprite texture; NOT a scene/gameplay binding. Other tiles, objects, scripts, collisions, visibility conditions and animations remain unsupported. The viewer does not execute or discard these scene behaviors.",
+    "size": [
+      624,
+      1104
+    ],
+    "sprite_center": [
+      312,
+      552
+    ],
+    "texture": "Graphics/Rooms/Podunk/Ninten's House.png",
+    "texture_sha256": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+    "tile_size": 256
+  },
+  "schema": 1,
+  "scope": "static opening map background preview; not a playable map",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "tiles": [
+    {
+      "height": 256,
+      "index": 0,
+      "png": "tile-00.png",
+      "sha256": "dc48fcd62e536933a6f15971b5a11e00b39190ee22fe394c39e48df09bc292a7",
+      "width": 256,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "height": 256,
+      "index": 1,
+      "png": "tile-01.png",
+      "sha256": "b6defa60fe3256f32ffd0b44fc68b7d510cbe8dda6ab4b4dd64f315668fa15dc",
+      "width": 256,
+      "x": 256,
+      "y": 0
+    },
+    {
+      "height": 256,
+      "index": 2,
+      "png": "tile-02.png",
+      "sha256": "c845911d9f7eb05f1f8c37cbce5ce744acfa2c267164ee7ee9452eaaae1a1d3c",
+      "width": 112,
+      "x": 512,
+      "y": 0
+    },
+    {
+      "height": 256,
+      "index": 3,
+      "png": "tile-03.png",
+      "sha256": "17930d25ca3ac94402a97165d41caef1243ce20f6908829eeb3342db6a146c87",
+      "width": 256,
+      "x": 0,
+      "y": 256
+    },
+    {
+      "height": 256,
+      "index": 4,
+      "png": "tile-04.png",
+      "sha256": "50179ca65fa1f134c3f05e8e220410ce6c98ab536f2e712a17e610c4bdb2507b",
+      "width": 256,
+      "x": 256,
+      "y": 256
+    },
+    {
+      "height": 256,
+      "index": 5,
+      "png": "tile-05.png",
+      "sha256": "9ba1eeb0ea591eb1a3fff4bc4ea49d99b204a1879aa69fa041b0d910dc02a251",
+      "width": 112,
+      "x": 512,
+      "y": 256
+    },
+    {
+      "height": 256,
+      "index": 6,
+      "png": "tile-06.png",
+      "sha256": "094034683119b2b8c27c1f9cd19ba2e5a2a0d733d8c27847754a2e0a9608d835",
+      "width": 256,
+      "x": 0,
+      "y": 512
+    },
+    {
+      "height": 256,
+      "index": 7,
+      "png": "tile-07.png",
+      "sha256": "3c6c50f94ab35e9f96c772731fe6b7950048179bc81b8ab0396cc1edbde89163",
+      "width": 256,
+      "x": 256,
+      "y": 512
+    },
+    {
+      "height": 256,
+      "index": 8,
+      "png": "tile-08.png",
+      "sha256": "948416d4fddb0c5e37ce35c9e739594e24338269e60618db1f4c64e074220983",
+      "width": 112,
+      "x": 512,
+      "y": 512
+    },
+    {
+      "height": 256,
+      "index": 9,
+      "png": "tile-09.png",
+      "sha256": "e29ea8d4d3d60a6ddf613e6296d22c7acc0ddfc293340ae0fac42c53c057044b",
+      "width": 256,
+      "x": 0,
+      "y": 768
+    },
+    {
+      "height": 256,
+      "index": 10,
+      "png": "tile-10.png",
+      "sha256": "3c6c50f94ab35e9f96c772731fe6b7950048179bc81b8ab0396cc1edbde89163",
+      "width": 256,
+      "x": 256,
+      "y": 768
+    },
+    {
+      "height": 256,
+      "index": 11,
+      "png": "tile-11.png",
+      "sha256": "948416d4fddb0c5e37ce35c9e739594e24338269e60618db1f4c64e074220983",
+      "width": 112,
+      "x": 512,
+      "y": 768
+    },
+    {
+      "height": 80,
+      "index": 12,
+      "png": "tile-12.png",
+      "sha256": "01a766b4d20d6634f473bcdac18a6e8a045c5d75387a1870a58f836bdd4809d7",
+      "width": 256,
+      "x": 0,
+      "y": 1024
+    },
+    {
+      "height": 80,
+      "index": 13,
+      "png": "tile-13.png",
+      "sha256": "3533d82d014da083c1bb5caa400ec8fafdda1bd1da8c0662beeba918ad2c127c",
+      "width": 256,
+      "x": 256,
+      "y": 1024
+    },
+    {
+      "height": 80,
+      "index": 14,
+      "png": "tile-14.png",
+      "sha256": "2e974f140c831b609558743aacbb2d0457f9bdbe17902c205b3fd9dcf7ba38ae",
+      "width": 112,
+      "x": 512,
+      "y": 1024
+    }
+  ]
+}

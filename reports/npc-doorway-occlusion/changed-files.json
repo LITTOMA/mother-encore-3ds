@@ -1,0 +1,21 @@
+{
+  "platform/ctr/main.cpp": "2377a7557b4a90b624d30c9b275fe81bece72dcb1d4875407255915a3f14cec1",
+  "include/encore/blackbars.hpp": "d3a6db81221fff08801327ef3092df6f50551fae9f585d869e8de41bc5bcc14c",
+  "tools/blackbars_assets.py": "6d955b2dd54d15b3eeab8ca5ef48341221930979965cbeb3a7b4e7975ae61e0b",
+  "content/native-blackbars.json": "8a218ff0b047a55f70b047f1ace512e6a5f12d2dc664e6c52dcb4328995e5828",
+  "romfs/data/opening.encbars": "b96a507eb2aaa143fb7842d4221cea2ee40e8853ea8de9269fdf43bb3ec753a0",
+  "tools/stage_native_romfs.py": "430a46a6f19399c3bddb0f144607c387a30059aa8e589a7a00f6683535eb493d",
+  "Makefile": "e67a0fbf827ff3e249108ef9434814200fdd51355ff1d484ff60d9afb7024ecb",
+  "CMakeLists.txt": "93fec24542eff53318e06d7a55d5c39c1d75991b479a0b33a79ecff687af0690",
+  "tests/blackbars_tests.cpp": "3357ccf291c8f07023f48ba658adb4b5f77f6b113ae810c4dfc91f6c07f19b82",
+  "README.md": "66e8ec87c376a2fec26b1819a323279d7b5e4c937d4d856ec679bf3dfda424fc",
+  "docs/OPENING_RENDERER.md": "d0c96688ed36db829622d7a5a27ffb46f48605e4b8dbd6be0f7628f65ae4333f",
+  "docs/NPC_DOORWAY_OCCLUSION.md": "83eed414d346b3cd97a439fd74402c9b3375385776122a73b71a362e41104d9c",
+  ".gitignore": "7cbb0979d2b27afcb4414a46ad87300e486c219938411beebeea5ad782099989",
+  "reports/npc-doorway-occlusion/blackbars-native.tsv": "dfafe21e096df2df353ec2a9e0ed3c7593ac0e685e1023f697541c038e000deb",
+  "reports/npc-doorway-occlusion/blackbars-probe.gd": "26b78ce83c002e03c47427a105e38762d51eed7798ba3703cfb8399b70b2be3d",
+  "reports/npc-doorway-occlusion/blackbars-reference.json": "1d3ff984ae639b1fa6cf7b84e6869680fea16ff951c98df115ed0e8248f0c41d",
+  "reports/npc-doorway-occlusion/result.json": "c82aaf778da142c0f864d37cb7a3cf84e5ccdab1eeeb5d14a29245489bc88215",
+  "reports/npc-doorway-occlusion/equal-position-pixels.json": "06a3d5806d60312a29a22805723532cd910303411d2bf9fc801b88c82bd6f46b",
+  "reports/npc-doorway-occlusion/compare_equal_positions.py": "297215dad620d0311a7d1cfd1cd0208a51b59b3e6885c00be6016ffc4340083c"
+}

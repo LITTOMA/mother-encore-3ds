@@ -1,0 +1,18 @@
+{
+  "engine": "Godot3.6.2 official headless",
+  "engine_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
+    "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "probe": "reports/npc-doorway-occlusion/blackbars-probe.gd",
+  "probe_sha256": "26b78ce83c002e03c47427a105e38762d51eed7798ba3703cfb8399b70b2be3d",
+  "samples": "reports/npc-doorway-occlusion/blackbars-native.tsv",
+  "samples_sha256": "dfafe21e096df2df353ec2a9e0ed3c7593ac0e685e1023f697541c038e000deb",
+  "sample_count": 602,
+  "method": "Copy unchanged Blackbars.tscn and Blackbars.gd into disposable project; instantiate source scene and seek Open/Close AnimationPlayer tracks at0..0.5s in1/600s steps; no source modification."
+}

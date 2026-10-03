@@ -1,0 +1,42 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "experience": 11,
+  "level": 2,
+  "hp": 54,
+  "pp": 27,
+  "effective_stats": {
+    "maxhp": 65,
+    "maxpp": 27,
+    "offense": 12,
+    "defense": 12,
+    "speed": 6,
+    "iq": 6,
+    "guts": 8
+  },
+  "changed_stats": {
+    "maxhp": 3,
+    "maxpp": 1,
+    "offense": 1,
+    "iq": 1
+  },
+  "learned": [
+    "telepathy"
+  ],
+  "all_skills": [
+    "strike",
+    "splitShot",
+    "telepathy"
+  ],
+  "expected_next_randi": "2485838647",
+  "actual_next_randi": "2485838647"
+}

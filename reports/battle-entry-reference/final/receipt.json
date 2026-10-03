@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "scope": "isolated original entry methods and native animation/timer/tween timing; no combat/render reference",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "reference_sha256": "a35c2d8a6a30732ec3db16e6fc0d69f2227b6a0f03990fb235db7c8e1e54aada",
+  "tools_sha256": {
+    "tools/reference_battle_entry.py": "4318317bd1ccc28b703583d3a8f9d5a8c6f650b54ace3fda181767fefb7dc9c2",
+    "tools/godot_battle_reference.gd": "9bdd6c893a78d78ae4f74fb546564c8c57cf5f7468aa4d72d18d89149cd670f7",
+    "tools/extract_battle_entry.py": "34737b675131a952759fc30ded9f6723e3c5fe670e5a44fa940ad3f16e22b982"
+  },
+  "events": [
+    {
+      "event": "play_requested",
+      "driver_frame": 0,
+      "nominal_seconds": 0,
+      "animation_position": 0
+    },
+    {
+      "event": "_enemy_to_position",
+      "driver_frame": 2,
+      "nominal_seconds": 0.033333,
+      "animation_position": 0.016667
+    },
+    {
+      "event": "cursor_move_requested",
+      "driver_frame": 10,
+      "nominal_seconds": 0.166667,
+      "animation_position": 0.166667
+    },
+    {
+      "event": "_jump_to_battle",
+      "driver_frame": 11,
+      "nominal_seconds": 0.183333,
+      "animation_position": 0.166667
+    },
+    {
+      "event": "jump_wait_1_done",
+      "driver_frame": 23,
+      "nominal_seconds": 0.383333,
+      "animation_position": 0.366667
+    },
+    {
+      "event": "jump_wait_2_done",
+      "driver_frame": 30,
+      "nominal_seconds": 0.5,
+      "animation_position": 0.483334
+    },
+    {
+      "event": "_jump_player_to_partyinfo",
+      "driver_frame": 30,
+      "nominal_seconds": 0.5,
+      "animation_position": 0.483334
+    },
+    {
+      "event": "jump_wait_3_done",
+      "driver_frame": 43,
+      "nominal_seconds": 0.716667,
+      "animation_position": 0.7
+    },
+    {
+      "event": "plate_quake",
+      "driver_frame": 65,
+      "nominal_seconds": 1.083333,
+      "animation_position": 1.066666
+    },
+    {
+      "event": "_show_action_menu",
+      "driver_frame": 74,
+      "nominal_seconds": 1.233333,
+      "animation_position": 1.216666
+    },
+    {
+      "event": "_show_enemy_sprites",
+      "driver_frame": 77,
+      "nominal_seconds": 1.283333,
+      "animation_position": 1.266666
+    },
+    {
+      "event": "enemy_appear",
+      "driver_frame": 77,
+      "nominal_seconds": 1.283333,
+      "animation_position": 1.266666
+    },
+    {
+      "event": "_remove_enemy_transitions",
+      "driver_frame": 83,
+      "nominal_seconds": 1.383333,
+      "animation_position": 1.366666
+    },
+    {
+      "event": "battle_start_menu_active",
+      "driver_frame": 115,
+      "nominal_seconds": 1.916667,
+      "animation_position": 1.9
+    }
+  ],
+  "gpu_reference": "not run",
+  "full_source_game": "not run",
+  "hardware": "not run",
+  "emulator": "not run"
+}

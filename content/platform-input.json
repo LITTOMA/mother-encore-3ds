@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "reason": "User-requested native menu adapter: one move per press, delayed hold repeat; original source cursor timing stays separate.",
+  "menu_repeat": [
+    0.35,
+    0.1,
+    0,
+    0
+  ]
+}

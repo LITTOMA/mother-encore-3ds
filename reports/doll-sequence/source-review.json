@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Only original doll_attack seven phrases, referenced Actor sprite tracks and House text; no Doll combat/reward/win-cutscene execution approval",
+  "whole_handler_approved": false,
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005"
+  },
+  "native_receipt_sha256": "64dac6443afbd67490d3fbb8616427f310ac34369dad4fa804a04777195a2eef",
+  "native_mechanisms": [
+    "Original yaml_parser.gd parses Doll and PartyMember/4dir/Floater data",
+    "Original character_sprite.gd _create_animations constructs native Animation resources; tree creation stubbed, so this receipt proves track construction, not animation-tree runtime",
+    "Native Animation loader reads exclamation subresource; stored floats carry IEEE754 little-endian binary64 hex plus decimal display"
+  ],
+  "handler_order": [
+    "text starts presentation",
+    "actor replacement ready/persistent and idle yields",
+    "wait mode",
+    "deferred object method",
+    "talker",
+    "teleportactors",
+    "actorsdir",
+    "actorsmove",
+    "actorsturn",
+    "actorsshake",
+    "actorsjump",
+    "actorsanim",
+    "actorsemote",
+    "changecam then idle yield",
+    "returncam",
+    "setflags",
+    "startbattle metadata queue",
+    "manual dialogue completion or timer",
+    "ordered replacement restoration; battle request"
+  ],
+  "source_edges": {
+    "movement": "step target resolved at execution; WaitAction remains asynchronous queue entry; Mimmie moonwalk true",
+    "returncam": "duration source1; target is current camera parent, not cached actor location",
+    "flag": "doll_attack sets in phrase6 before queue battle and wait0.25; doll_defeated/melody untouched",
+    "battle": "enemy doll; actorskeep doll true; no winflag; wincutscene Podunk/cutscenes/doll_defeated; start_battle(0,false,...)",
+    "animation": "Ninten source ActorWalk selector4 separate from existing Player Walk; Mimmie Idle0/Walk4/Talk5 four-cardinal; Float remains looping; exclamation delayed first key and stop channel flag",
+    "cleanup": "Ninten restore; drafted Doll release-persistence; Mimmie restore; requestBattle after dialogueDone"
+  },
+  "format": {
+    "room": "ENCRMD01 format1.0 rules3 capabilities3;28 sections",
+    "house": "ENCHSE01 version3/rules3/caps3;17 sections",
+    "paths": 6,
+    "entries": 14,
+    "actors": 4,
+    "programs": 2,
+    "text_stable_ids": [
+      2,
+      3
+    ]
+  },
+  "lamp_program": {
+    "command_count": 70,
+    "source_command_kind_sequence_preserved": true
+  },
+  "not_verified_here": [
+    "whole Godot game startup",
+    "complete native Actor/AnimationTree equivalence",
+    "Doll combat or victory/level-up",
+    "hardware",
+    "audible audio"
+  ]
+}

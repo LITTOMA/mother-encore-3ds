@@ -1,0 +1,5104 @@
+{
+  "actor": {
+    "keys": [
+      [
+        0,
+        0
+      ],
+      [
+        0.2,
+        1
+      ],
+      [
+        0.4,
+        2
+      ],
+      [
+        0.6000000000000001,
+        1
+      ]
+    ],
+    "length": 0.8,
+    "position": [
+      64,
+      33
+    ],
+    "shadow": [
+      64,
+      44
+    ]
+  },
+  "arrow": {
+    "keys": [
+      {
+        "frame": 0,
+        "time": 0.0
+      },
+      {
+        "frame": 1,
+        "time": 0.2
+      },
+      {
+        "frame": 2,
+        "time": 0.4
+      },
+      {
+        "frame": 1,
+        "time": 0.6
+      }
+    ],
+    "length": 0.8,
+    "move": 0.1,
+    "offset": [
+      -5.333333333333333,
+      5.0
+    ]
+  },
+  "bindings": [
+    {
+      "battle_id": 1,
+      "expected": "",
+      "index": 0,
+      "key": "",
+      "parts": [
+        ""
+      ],
+      "source_text": ""
+    },
+    {
+      "battle_id": 1,
+      "expected": "Bash",
+      "index": 1,
+      "key": "ATTACK_NAME",
+      "parts": [
+        "Bash"
+      ],
+      "source_text": "Bash"
+    },
+    {
+      "battle_id": 1,
+      "expected": "Deals damage to an enemy.",
+      "index": 2,
+      "key": "ATTACK_DESC",
+      "parts": [
+        "Deals damage to an enemy."
+      ],
+      "source_text": "Deals damage to an enemy."
+    },
+    {
+      "battle_id": 1,
+      "expected": "Ninten attacks!",
+      "index": 3,
+      "key": "ATTACK_DIALOG",
+      "parts": [
+        "",
+        " attacks!"
+      ],
+      "source_text": "{n0}{name} attacks!"
+    },
+    {
+      "battle_id": 1,
+      "expected": "Charge",
+      "index": 4,
+      "key": "TACKLE_NAME",
+      "parts": [
+        "Charge"
+      ],
+      "source_text": "Charge"
+    },
+    {
+      "battle_id": 1,
+      "expected": "A charge attack by using one's body.",
+      "index": 5,
+      "key": "TACKLE_DESC",
+      "parts": [
+        "A charge attack by using one's body."
+      ],
+      "source_text": "A charge attack by using one's body."
+    },
+    {
+      "battle_id": 1,
+      "expected": "The Lamp threw its body at Ninten!",
+      "index": 6,
+      "key": "TACKLE_DIALOG",
+      "parts": [
+        "The Lamp threw its body at ",
+        "!"
+      ],
+      "source_text": "{n0}{name} threw {n4} body at {t1}{target}!"
+    },
+    {
+      "battle_id": 1,
+      "expected": "Float",
+      "index": 7,
+      "key": "FLOAT_NAME",
+      "parts": [
+        "Float"
+      ],
+      "source_text": "Float"
+    },
+    {
+      "battle_id": 1,
+      "expected": "Float around.",
+      "index": 8,
+      "key": "FLOAT_DESC",
+      "parts": [
+        "Float around."
+      ],
+      "source_text": "Float around."
+    },
+    {
+      "battle_id": 1,
+      "expected": "The Lamp floated around!",
+      "index": 9,
+      "key": "FLOAT_DIALOG",
+      "parts": [
+        "The Lamp floated around!"
+      ],
+      "source_text": "{n0}{name} floated around!"
+    },
+    {
+      "battle_id": 1,
+      "expected": "GUARD_NAME",
+      "index": 10,
+      "key": "GUARD_NAME",
+      "parts": [
+        "GUARD_NAME"
+      ],
+      "source_text": "GUARD_NAME"
+    },
+    {
+      "battle_id": 1,
+      "expected": "GUARD_DESC",
+      "index": 11,
+      "key": "GUARD_DESC",
+      "parts": [
+        "GUARD_DESC"
+      ],
+      "source_text": "GUARD_DESC"
+    },
+    {
+      "battle_id": 1,
+      "expected": "Lamp",
+      "index": 12,
+      "key": "LAMP_NAME",
+      "parts": [
+        "Lamp"
+      ],
+      "source_text": "Lamp"
+    },
+    {
+      "battle_id": 1,
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "index": 13,
+      "key": "LAMP_ART",
+      "parts": [
+        "The ,the ,A ,a ,its,it,it"
+      ],
+      "source_text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "battle_id": 1,
+      "expected": "The Lamp became tame!",
+      "index": 14,
+      "key": "",
+      "parts": [
+        "The Lamp became tame!"
+      ],
+      "source_text": "{n0}{name} became tame!"
+    },
+    {
+      "battle_id": 1,
+      "expected": "Ninten took mortal damage!",
+      "index": 15,
+      "key": "BATTLE_MSG_MORTAL_DAMAGE",
+      "parts": [
+        "",
+        " took mortal damage!"
+      ],
+      "source_text": "{t0}{target} took mortal damage!"
+    },
+    {
+      "battle_id": 1,
+      "expected": "It had no effect on the Lamp!",
+      "index": 16,
+      "key": "BATTLE_MSG_TARGET_NO_EFFECT",
+      "parts": [
+        "It had no effect on the Lamp!"
+      ],
+      "source_text": "It had no effect on {t1}{target}!"
+    },
+    {
+      "battle_id": 1,
+      "expected": "Ninten gained 3 exp.",
+      "index": 17,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "parts": [
+        "",
+        " gained 3 exp."
+      ],
+      "source_text": "{name} gained {value} exp."
+    },
+    {
+      "battle_id": 2,
+      "expected": "",
+      "index": 0,
+      "key": "",
+      "parts": [
+        ""
+      ],
+      "source_text": ""
+    },
+    {
+      "battle_id": 2,
+      "expected": "Bash",
+      "index": 1,
+      "key": "ATTACK_NAME",
+      "parts": [
+        "Bash"
+      ],
+      "source_text": "Bash"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Deals damage to an enemy.",
+      "index": 2,
+      "key": "ATTACK_DESC",
+      "parts": [
+        "Deals damage to an enemy."
+      ],
+      "source_text": "Deals damage to an enemy."
+    },
+    {
+      "battle_id": 2,
+      "expected": "Ninten attacks!",
+      "index": 3,
+      "key": "ATTACK_DIALOG",
+      "parts": [
+        "",
+        " attacks!"
+      ],
+      "source_text": "{n0}{name} attacks!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Charge",
+      "index": 4,
+      "key": "TACKLE_NAME",
+      "parts": [
+        "Charge"
+      ],
+      "source_text": "Charge"
+    },
+    {
+      "battle_id": 2,
+      "expected": "A charge attack by using one's body.",
+      "index": 5,
+      "key": "TACKLE_DESC",
+      "parts": [
+        "A charge attack by using one's body."
+      ],
+      "source_text": "A charge attack by using one's body."
+    },
+    {
+      "battle_id": 2,
+      "expected": "The Lamp threw its body at Ninten!",
+      "index": 6,
+      "key": "TACKLE_DIALOG",
+      "parts": [
+        "The Lamp threw its body at ",
+        "!"
+      ],
+      "source_text": "{n0}{name} threw {n4} body at {t1}{target}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Float",
+      "index": 7,
+      "key": "FLOAT_NAME",
+      "parts": [
+        "Float"
+      ],
+      "source_text": "Float"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Float around.",
+      "index": 8,
+      "key": "FLOAT_DESC",
+      "parts": [
+        "Float around."
+      ],
+      "source_text": "Float around."
+    },
+    {
+      "battle_id": 2,
+      "expected": "The Lamp floated around!",
+      "index": 9,
+      "key": "FLOAT_DIALOG",
+      "parts": [
+        "The Lamp floated around!"
+      ],
+      "source_text": "{n0}{name} floated around!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "GUARD_NAME",
+      "index": 10,
+      "key": "GUARD_NAME",
+      "parts": [
+        "GUARD_NAME"
+      ],
+      "source_text": "GUARD_NAME"
+    },
+    {
+      "battle_id": 2,
+      "expected": "GUARD_DESC",
+      "index": 11,
+      "key": "GUARD_DESC",
+      "parts": [
+        "GUARD_DESC"
+      ],
+      "source_text": "GUARD_DESC"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Lamp",
+      "index": 12,
+      "key": "LAMP_NAME",
+      "parts": [
+        "Lamp"
+      ],
+      "source_text": "Lamp"
+    },
+    {
+      "battle_id": 2,
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "index": 13,
+      "key": "LAMP_ART",
+      "parts": [
+        "The ,the ,A ,a ,its,it,it"
+      ],
+      "source_text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "battle_id": 2,
+      "expected": "The Lamp became tame!",
+      "index": 14,
+      "key": "",
+      "parts": [
+        "The Lamp became tame!"
+      ],
+      "source_text": "{n0}{name} became tame!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Ninten took mortal damage!",
+      "index": 15,
+      "key": "BATTLE_MSG_MORTAL_DAMAGE",
+      "parts": [
+        "",
+        " took mortal damage!"
+      ],
+      "source_text": "{t0}{target} took mortal damage!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "It had no effect on the Lamp!",
+      "index": 16,
+      "key": "BATTLE_MSG_TARGET_NO_EFFECT",
+      "parts": [
+        "It had no effect on the Lamp!"
+      ],
+      "source_text": "It had no effect on {t1}{target}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Ninten gained 3 exp.",
+      "index": 17,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "parts": [
+        "",
+        " gained 3 exp."
+      ],
+      "source_text": "{name} gained {value} exp."
+    },
+    {
+      "battle_id": 2,
+      "expected": "Ninten attacks!",
+      "index": 18,
+      "key": "ATTACK_DIALOG",
+      "parts": [
+        "",
+        " attacks!"
+      ],
+      "source_text": "{n0}{name} attacks!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "The Doll threw its body at Ninten!",
+      "index": 19,
+      "key": "TACKLE_DIALOG",
+      "parts": [
+        "The Doll threw its body at ",
+        "!"
+      ],
+      "source_text": "{n0}{name} threw {n4} body at {t1}{target}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "The Doll floated around!",
+      "index": 20,
+      "key": "FLOAT_DIALOG",
+      "parts": [
+        "The Doll floated around!"
+      ],
+      "source_text": "{n0}{name} floated around!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Doll",
+      "index": 21,
+      "key": "DOLL_NAME",
+      "parts": [
+        "Doll"
+      ],
+      "source_text": "Doll"
+    },
+    {
+      "battle_id": 2,
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "index": 22,
+      "key": "DOLL_ART",
+      "parts": [
+        "The ,the ,A ,a ,its,it,it"
+      ],
+      "source_text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Ninten gained 8 exp.",
+      "index": 23,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "parts": [
+        "",
+        " gained 8 exp."
+      ],
+      "source_text": "{name} gained {value} exp."
+    },
+    {
+      "battle_id": 2,
+      "expected": "Max. HP raised by 3!",
+      "index": 24,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "Max. HP raised by 3!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Max. PP raised by 1!",
+      "index": 25,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "Max. PP raised by 1!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Offense raised by 1!",
+      "index": 26,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "Offense raised by 1!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "IQ raised by 1!",
+      "index": 27,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "IQ raised by 1!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Ninten leveled up to 2!",
+      "index": 28,
+      "key": "BATTLE_MSG_LEVEL_UP",
+      "parts": [
+        "",
+        " leveled up to 2!"
+      ],
+      "source_text": "{name} leveled up to {value}!"
+    },
+    {
+      "battle_id": 2,
+      "expected": "Ninten learned Telepathy!",
+      "index": 29,
+      "key": "BATTLE_MSG_LEARNING",
+      "parts": [
+        "",
+        " learned Telepathy!"
+      ],
+      "source_text": "{n0}{name} learned {skill}{skillLevel}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "",
+      "index": 0,
+      "key": "",
+      "parts": [
+        ""
+      ],
+      "source_text": ""
+    },
+    {
+      "battle_id": 3,
+      "expected": "Bash",
+      "index": 1,
+      "key": "ATTACK_NAME",
+      "parts": [
+        "Bash"
+      ],
+      "source_text": "Bash"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Deals damage to an enemy.",
+      "index": 2,
+      "key": "ATTACK_DESC",
+      "parts": [
+        "Deals damage to an enemy."
+      ],
+      "source_text": "Deals damage to an enemy."
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten attacks!",
+      "index": 3,
+      "key": "ATTACK_DIALOG",
+      "parts": [
+        "",
+        " attacks!"
+      ],
+      "source_text": "{n0}{name} attacks!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Charge",
+      "index": 4,
+      "key": "TACKLE_NAME",
+      "parts": [
+        "Charge"
+      ],
+      "source_text": "Charge"
+    },
+    {
+      "battle_id": 3,
+      "expected": "A charge attack by using one's body.",
+      "index": 5,
+      "key": "TACKLE_DESC",
+      "parts": [
+        "A charge attack by using one's body."
+      ],
+      "source_text": "A charge attack by using one's body."
+    },
+    {
+      "battle_id": 3,
+      "expected": "The Lamp threw its body at Ninten!",
+      "index": 6,
+      "key": "TACKLE_DIALOG",
+      "parts": [
+        "The Lamp threw its body at ",
+        "!"
+      ],
+      "source_text": "{n0}{name} threw {n4} body at {t1}{target}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Float",
+      "index": 7,
+      "key": "FLOAT_NAME",
+      "parts": [
+        "Float"
+      ],
+      "source_text": "Float"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Float around.",
+      "index": 8,
+      "key": "FLOAT_DESC",
+      "parts": [
+        "Float around."
+      ],
+      "source_text": "Float around."
+    },
+    {
+      "battle_id": 3,
+      "expected": "The Lamp floated around!",
+      "index": 9,
+      "key": "FLOAT_DIALOG",
+      "parts": [
+        "The Lamp floated around!"
+      ],
+      "source_text": "{n0}{name} floated around!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "GUARD_NAME",
+      "index": 10,
+      "key": "GUARD_NAME",
+      "parts": [
+        "GUARD_NAME"
+      ],
+      "source_text": "GUARD_NAME"
+    },
+    {
+      "battle_id": 3,
+      "expected": "GUARD_DESC",
+      "index": 11,
+      "key": "GUARD_DESC",
+      "parts": [
+        "GUARD_DESC"
+      ],
+      "source_text": "GUARD_DESC"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Lamp",
+      "index": 12,
+      "key": "LAMP_NAME",
+      "parts": [
+        "Lamp"
+      ],
+      "source_text": "Lamp"
+    },
+    {
+      "battle_id": 3,
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "index": 13,
+      "key": "LAMP_ART",
+      "parts": [
+        "The ,the ,A ,a ,its,it,it"
+      ],
+      "source_text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "battle_id": 3,
+      "expected": "The Lamp became tame!",
+      "index": 14,
+      "key": "",
+      "parts": [
+        "The Lamp became tame!"
+      ],
+      "source_text": "{n0}{name} became tame!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten took mortal damage!",
+      "index": 15,
+      "key": "BATTLE_MSG_MORTAL_DAMAGE",
+      "parts": [
+        "",
+        " took mortal damage!"
+      ],
+      "source_text": "{t0}{target} took mortal damage!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "It had no effect on the Lamp!",
+      "index": 16,
+      "key": "BATTLE_MSG_TARGET_NO_EFFECT",
+      "parts": [
+        "It had no effect on the Lamp!"
+      ],
+      "source_text": "It had no effect on {t1}{target}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten gained 3 exp.",
+      "index": 17,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "parts": [
+        "",
+        " gained 3 exp."
+      ],
+      "source_text": "{name} gained {value} exp."
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten attacks!",
+      "index": 18,
+      "key": "ATTACK_DIALOG",
+      "parts": [
+        "",
+        " attacks!"
+      ],
+      "source_text": "{n0}{name} attacks!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "The Pillow threw its body at Ninten!",
+      "index": 19,
+      "key": "TACKLE_DIALOG",
+      "parts": [
+        "The Pillow threw its body at ",
+        "!"
+      ],
+      "source_text": "{n0}{name} threw {n4} body at {t1}{target}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "The Pillow floated around!",
+      "index": 20,
+      "key": "FLOAT_DIALOG",
+      "parts": [
+        "The Pillow floated around!"
+      ],
+      "source_text": "{n0}{name} floated around!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "The Pillow became tame!",
+      "index": 21,
+      "key": "",
+      "parts": [
+        "The Pillow became tame!"
+      ],
+      "source_text": "{n0}{name} became tame!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten took mortal damage!",
+      "index": 22,
+      "key": "BATTLE_MSG_MORTAL_DAMAGE",
+      "parts": [
+        "",
+        " took mortal damage!"
+      ],
+      "source_text": "{t0}{target} took mortal damage!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "It had no effect on the Pillow!",
+      "index": 23,
+      "key": "BATTLE_MSG_TARGET_NO_EFFECT",
+      "parts": [
+        "It had no effect on the Pillow!"
+      ],
+      "source_text": "It had no effect on {t1}{target}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Pillow",
+      "index": 24,
+      "key": "PILLOW_NAME",
+      "parts": [
+        "Pillow"
+      ],
+      "source_text": "Pillow"
+    },
+    {
+      "battle_id": 3,
+      "expected": "The ,the ,A ,a ,its,it,it",
+      "index": 25,
+      "key": "PILLOW_ART",
+      "parts": [
+        "The ,the ,A ,a ,its,it,it"
+      ],
+      "source_text": "The ,the ,A ,a ,its,it,it"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten gained 5 exp.",
+      "index": 26,
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "parts": [
+        "",
+        " gained 5 exp."
+      ],
+      "source_text": "{name} gained {value} exp."
+    },
+    {
+      "battle_id": 3,
+      "expected": "Max. HP raised by 3!",
+      "index": 27,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "Max. HP raised by 3!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Max. PP raised by 1!",
+      "index": 28,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "Max. PP raised by 1!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Offense raised by 1!",
+      "index": 29,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "Offense raised by 1!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "IQ raised by 1!",
+      "index": 30,
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "parts": [
+        "IQ raised by 1!"
+      ],
+      "source_text": "{stat} raised by {value}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten leveled up to 2!",
+      "index": 31,
+      "key": "BATTLE_MSG_LEVEL_UP",
+      "parts": [
+        "",
+        " leveled up to 2!"
+      ],
+      "source_text": "{name} leveled up to {value}!"
+    },
+    {
+      "battle_id": 3,
+      "expected": "Ninten learned Telepathy!",
+      "index": 32,
+      "key": "BATTLE_MSG_LEARNING",
+      "parts": [
+        "",
+        " learned Telepathy!"
+      ],
+      "source_text": "{n0}{name} learned {skill}{skillLevel}!"
+    }
+  ],
+  "blacklist": [
+    "george",
+    "minnie",
+    "mimmie",
+    "duncan",
+    "abbott",
+    "abbé",
+    "laura",
+    "gyiyg",
+    "giegue",
+    "giygas",
+    "mary",
+    "maria",
+    "maría",
+    "eve",
+    "ève",
+    ""
+  ],
+  "cancel_delay": 0.5,
+  "colors": [
+    4278190080,
+    4294967295,
+    4293153722,
+    4279701780,
+    4286999674
+  ],
+  "columns": [
+    6,
+    6,
+    5,
+    3,
+    2
+  ],
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "defaults": [
+    "Ninten",
+    "Ken",
+    "Douglas",
+    "Jeremy",
+    "Mark",
+    "Ryu",
+    "Colin"
+  ],
+  "dependencies": {
+    "content/doll-round.json": "cb004e6815a7623fdedb9b1dc9a7389e8a6f8e72271091a4a101e631a31d8844",
+    "content/native-opening.json": "925efd1ddbd73cf21ea9a43f158e75de80ca399767802bfb4ae36ca68be94764",
+    "content/native-round.json": "35e546e808931982bb5d2969d3394af61827203e4af2107ceb752bc6d00e0f3b",
+    "content/native-save-menu.json": "ab731410a30e20f27863486d8099658ec220a41765e41860f8febcb288adce46",
+    "content/native-session.json": "7288e6d414b715df0c3075a5b4d27cfc5debe4c18a9d13aa14bf91509f31ae3a",
+    "content/pillow-round.json": "846f4ce6d4718e9d37ad8e85f55ac50dfb53517ed6620065f95a42e08f983b5a",
+    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68"
+  },
+  "error_duration": 2.0,
+  "field_assets": [
+    {
+      "columns": 10,
+      "height": 560,
+      "path": "new-game-preview/ana.t3x",
+      "rows": 20,
+      "source": "Graphics/Character Sprites/Ana/main.png",
+      "width": 310
+    },
+    {
+      "columns": 10,
+      "height": 560,
+      "path": "new-game-preview/lloyd.t3x",
+      "rows": 20,
+      "source": "Graphics/Character Sprites/Lloyd/main.png",
+      "width": 310
+    },
+    {
+      "columns": 10,
+      "height": 560,
+      "path": "new-game-preview/pippi.t3x",
+      "rows": 20,
+      "source": "Graphics/Character Sprites/Pippi/main.png",
+      "width": 250
+    },
+    {
+      "columns": 10,
+      "height": 740,
+      "path": "new-game-preview/teddy.t3x",
+      "rows": 20,
+      "source": "Graphics/Character Sprites/Teddy/main.png",
+      "width": 230
+    },
+    {
+      "columns": 1,
+      "height": 19,
+      "path": "new-game-preview/favorite_food.t3x",
+      "rows": 1,
+      "source": "Graphics/UI/Misc/FavFoodPlate.png",
+      "width": 18
+    }
+  ],
+  "fields": [
+    {
+      "actor": {
+        "keys": [
+          [
+            0,
+            0
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.4,
+            2
+          ],
+          [
+            0.6000000000000001,
+            1
+          ]
+        ],
+        "length": 0.8,
+        "position": [
+          64,
+          33
+        ],
+        "shadow": [
+          64,
+          44
+        ]
+      },
+      "defaults": [
+        "Ninten",
+        "Ken",
+        "Douglas",
+        "Jeremy",
+        "Mark",
+        "Ryu",
+        "Colin"
+      ],
+      "initial": "",
+      "kind": 0,
+      "maximum": 7,
+      "prompt": "What is this boy's name?",
+      "resource": 2,
+      "shadow": true,
+      "target": "ninten"
+    },
+    {
+      "actor": {
+        "keys": [
+          [
+            0,
+            0
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.4,
+            2
+          ],
+          [
+            0.6000000000000001,
+            1
+          ]
+        ],
+        "length": 0.8,
+        "position": [
+          64,
+          33
+        ],
+        "shadow": [
+          64,
+          44
+        ]
+      },
+      "defaults": [
+        "Ana",
+        "Jill",
+        "Sylvia",
+        "Catrine",
+        "Carrie",
+        "Nina",
+        "Emily"
+      ],
+      "initial": "",
+      "kind": 0,
+      "maximum": 7,
+      "prompt": "What is this girl's name?",
+      "resource": 6,
+      "shadow": true,
+      "target": "ana"
+    },
+    {
+      "actor": {
+        "keys": [
+          [
+            0,
+            0
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.4,
+            2
+          ],
+          [
+            0.6000000000000001,
+            1
+          ]
+        ],
+        "length": 0.8,
+        "position": [
+          64,
+          33
+        ],
+        "shadow": [
+          64,
+          44
+        ]
+      },
+      "defaults": [
+        "Lloyd",
+        "Brian",
+        "Albert",
+        "Louis",
+        "Kenny",
+        "Jean",
+        "Maxwell"
+      ],
+      "initial": "",
+      "kind": 0,
+      "maximum": 7,
+      "prompt": "This other boy's name?",
+      "resource": 7,
+      "shadow": true,
+      "target": "lloyd"
+    },
+    {
+      "actor": {
+        "keys": [
+          [
+            0,
+            0
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.4,
+            2
+          ],
+          [
+            0.6000000000000001,
+            1
+          ]
+        ],
+        "length": 0.8,
+        "position": [
+          64,
+          33
+        ],
+        "shadow": [
+          64,
+          44
+        ]
+      },
+      "defaults": [
+        "Pippi",
+        "Alex",
+        "Penny",
+        "Ferris",
+        "Natalie",
+        "Katt",
+        "Ashley"
+      ],
+      "initial": "",
+      "kind": 0,
+      "maximum": 7,
+      "prompt": "This other girl's name?",
+      "resource": 8,
+      "shadow": true,
+      "target": "pippi"
+    },
+    {
+      "actor": {
+        "keys": [
+          [
+            0,
+            0
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.4,
+            2
+          ],
+          [
+            0.6000000000000001,
+            1
+          ]
+        ],
+        "length": 0.8,
+        "position": [
+          64,
+          29
+        ],
+        "shadow": [
+          64,
+          44
+        ]
+      },
+      "defaults": [
+        "Teddy",
+        "Joe",
+        "Leo",
+        "Jeb",
+        "Alec",
+        "Rand",
+        "Dallas"
+      ],
+      "initial": "",
+      "kind": 0,
+      "maximum": 7,
+      "prompt": "This last boy's name?",
+      "resource": 9,
+      "shadow": true,
+      "target": "teddy"
+    },
+    {
+      "actor": {
+        "keys": [
+          [
+            0,
+            0
+          ]
+        ],
+        "length": 1,
+        "position": [
+          64,
+          40
+        ],
+        "shadow": [
+          0,
+          0
+        ]
+      },
+      "defaults": [
+        "Prime Rib",
+        "Bean Paste",
+        "Creme Cookies",
+        "Pasta",
+        "Omelets",
+        "Custard",
+        "Salmon"
+      ],
+      "initial": "",
+      "kind": 1,
+      "maximum": 13,
+      "prompt": "What is your favorite homemade food?",
+      "resource": 10,
+      "shadow": false,
+      "target": "favorite_food"
+    }
+  ],
+  "font_height": 12,
+  "groups": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    4,
+    4
+  ],
+  "initial": "",
+  "layouts": [
+    [
+      128.0,
+      8.0,
+      184.0,
+      48.0
+    ],
+    [
+      6.0,
+      8.0,
+      173.0,
+      14.0
+    ],
+    [
+      34.0,
+      23.0,
+      116.0,
+      15.0
+    ],
+    [
+      0,
+      1.0,
+      116.0,
+      14.0
+    ],
+    [
+      8.0,
+      64.0,
+      304.0,
+      106.0
+    ]
+  ],
+  "license_review": "Pinned LICENSE permits original art/fonts in this game-related fork; upstream conditions retained, no MIT relicensing.",
+  "maximum": 7,
+  "native_layout_sha256": "ff2d6c847df7c1b677c83b3d4b1999a48cfd21bd46a3185dfaa5e58ef3c4d3c4",
+  "other_initial": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "outputs": {
+    "actor-preview/ninten-main.t3x": {
+      "bytes": 2097173,
+      "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2"
+    },
+    "actor-preview/shadow.t3x": {
+      "bytes": 533,
+      "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
+    },
+    "new-game-preview/ana.t3x": {
+      "bytes": 2097173,
+      "sha256": "7bd93477bc0c0d4e8cb9613a419368c04a83f6081f46ff54f4adac6699cbea16"
+    },
+    "new-game-preview/favorite_food.t3x": {
+      "bytes": 4117,
+      "sha256": "ce811b9a1ab828eda25430e64a43c5b30b6867a43047692422901b1b85b0fdc2"
+    },
+    "new-game-preview/keyboard-0.t3x": {
+      "bytes": 524309,
+      "sha256": "7aa65302178f445667f2a047e19b8eb36ca11ffffe93f576cd2e2610e972171e"
+    },
+    "new-game-preview/keyboard-1.t3x": {
+      "bytes": 524309,
+      "sha256": "818b983667fda1d772b345f495463c911bb8f11b021836aae01ea8c1e0595e72"
+    },
+    "new-game-preview/lloyd.t3x": {
+      "bytes": 2097173,
+      "sha256": "0cf7237b0f6760e753a84304057bb1407fae8de68047f0ed7673f166412f37da"
+    },
+    "new-game-preview/pippi.t3x": {
+      "bytes": 1048597,
+      "sha256": "fe5d479069c44a200d3300ffe5be9ea7e579bc9519d15d60870d20da576ce375"
+    },
+    "new-game-preview/teddy.t3x": {
+      "bytes": 1048597,
+      "sha256": "9e5512ff7bd893845d6882b06f1c969d5c7fc0e7ae95e1f4c6052a480618351a"
+    },
+    "save-preview/arrow.t3x": {
+      "bytes": 1045,
+      "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
+    },
+    "save-preview/confirm-plain.t3x": {
+      "bytes": 4117,
+      "sha256": "72221e2c65e0fd1f0ee8f0d0a74a3d65aab12c01c5df35b7f21fded7ee7e5c3d"
+    }
+  },
+  "panels": [
+    [
+      {
+        "codepoint": 65,
+        "kind": 0,
+        "neighbors": [
+          64,
+          1,
+          85,
+          6
+        ],
+        "rect": [
+          20,
+          72,
+          7,
+          12
+        ],
+        "value": "A"
+      },
+      {
+        "codepoint": 66,
+        "kind": 0,
+        "neighbors": [
+          0,
+          2,
+          85,
+          7
+        ],
+        "rect": [
+          36,
+          72,
+          7,
+          12
+        ],
+        "value": "B"
+      },
+      {
+        "codepoint": 67,
+        "kind": 0,
+        "neighbors": [
+          1,
+          3,
+          85,
+          8
+        ],
+        "rect": [
+          52,
+          72,
+          7,
+          12
+        ],
+        "value": "C"
+      },
+      {
+        "codepoint": 68,
+        "kind": 0,
+        "neighbors": [
+          2,
+          4,
+          85,
+          9
+        ],
+        "rect": [
+          68,
+          72,
+          7,
+          12
+        ],
+        "value": "D"
+      },
+      {
+        "codepoint": 69,
+        "kind": 0,
+        "neighbors": [
+          3,
+          5,
+          85,
+          10
+        ],
+        "rect": [
+          84,
+          72,
+          7,
+          12
+        ],
+        "value": "E"
+      },
+      {
+        "codepoint": 70,
+        "kind": 0,
+        "neighbors": [
+          4,
+          30,
+          85,
+          11
+        ],
+        "rect": [
+          100,
+          72,
+          7,
+          12
+        ],
+        "value": "F"
+      },
+      {
+        "codepoint": 77,
+        "kind": 0,
+        "neighbors": [
+          69,
+          7,
+          0,
+          12
+        ],
+        "rect": [
+          20,
+          86,
+          7,
+          12
+        ],
+        "value": "M"
+      },
+      {
+        "codepoint": 78,
+        "kind": 0,
+        "neighbors": [
+          6,
+          8,
+          1,
+          13
+        ],
+        "rect": [
+          36,
+          86,
+          7,
+          12
+        ],
+        "value": "N"
+      },
+      {
+        "codepoint": 79,
+        "kind": 0,
+        "neighbors": [
+          7,
+          9,
+          2,
+          26
+        ],
+        "rect": [
+          52,
+          86,
+          7,
+          12
+        ],
+        "value": "O"
+      },
+      {
+        "codepoint": 80,
+        "kind": 0,
+        "neighbors": [
+          8,
+          10,
+          3,
+          27
+        ],
+        "rect": [
+          68,
+          86,
+          7,
+          12
+        ],
+        "value": "P"
+      },
+      {
+        "codepoint": 81,
+        "kind": 0,
+        "neighbors": [
+          9,
+          11,
+          4,
+          28
+        ],
+        "rect": [
+          84,
+          86,
+          7,
+          12
+        ],
+        "value": "Q"
+      },
+      {
+        "codepoint": 82,
+        "kind": 0,
+        "neighbors": [
+          10,
+          36,
+          5,
+          29
+        ],
+        "rect": [
+          100,
+          86,
+          7,
+          12
+        ],
+        "value": "R"
+      },
+      {
+        "codepoint": 89,
+        "kind": 0,
+        "neighbors": [
+          74,
+          13,
+          6,
+          24
+        ],
+        "rect": [
+          20,
+          100,
+          7,
+          12
+        ],
+        "value": "Y"
+      },
+      {
+        "codepoint": 90,
+        "kind": 0,
+        "neighbors": [
+          12,
+          24,
+          7,
+          25
+        ],
+        "rect": [
+          36,
+          100,
+          7,
+          12
+        ],
+        "value": "Z"
+      },
+      {
+        "codepoint": 196,
+        "kind": 0,
+        "neighbors": [
+          14,
+          14,
+          14,
+          14
+        ],
+        "rect": [
+          52,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 193,
+        "kind": 0,
+        "neighbors": [
+          15,
+          15,
+          15,
+          15
+        ],
+        "rect": [
+          68,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 199,
+        "kind": 0,
+        "neighbors": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "rect": [
+          84,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 203,
+        "kind": 0,
+        "neighbors": [
+          17,
+          17,
+          17,
+          17
+        ],
+        "rect": [
+          100,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 206,
+        "kind": 0,
+        "neighbors": [
+          18,
+          18,
+          18,
+          18
+        ],
+        "rect": [
+          20,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 209,
+        "kind": 0,
+        "neighbors": [
+          19,
+          19,
+          19,
+          19
+        ],
+        "rect": [
+          36,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 214,
+        "kind": 0,
+        "neighbors": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "rect": [
+          52,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 211,
+        "kind": 0,
+        "neighbors": [
+          21,
+          21,
+          21,
+          21
+        ],
+        "rect": [
+          68,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 210,
+        "kind": 0,
+        "neighbors": [
+          22,
+          22,
+          22,
+          22
+        ],
+        "rect": [
+          84,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 212,
+        "kind": 0,
+        "neighbors": [
+          23,
+          23,
+          23,
+          23
+        ],
+        "rect": [
+          100,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 61,
+        "kind": 0,
+        "neighbors": [
+          83,
+          25,
+          12,
+          85
+        ],
+        "rect": [
+          20,
+          128,
+          7,
+          12
+        ],
+        "value": "="
+      },
+      {
+        "codepoint": 43,
+        "kind": 0,
+        "neighbors": [
+          24,
+          26,
+          13,
+          85
+        ],
+        "rect": [
+          36,
+          128,
+          7,
+          12
+        ],
+        "value": "+"
+      },
+      {
+        "codepoint": 45,
+        "kind": 0,
+        "neighbors": [
+          25,
+          27,
+          8,
+          85
+        ],
+        "rect": [
+          52,
+          128,
+          7,
+          12
+        ],
+        "value": "-"
+      },
+      {
+        "codepoint": 42,
+        "kind": 0,
+        "neighbors": [
+          26,
+          28,
+          9,
+          85
+        ],
+        "rect": [
+          68,
+          128,
+          7,
+          12
+        ],
+        "value": "*"
+      },
+      {
+        "codepoint": 47,
+        "kind": 0,
+        "neighbors": [
+          27,
+          29,
+          10,
+          85
+        ],
+        "rect": [
+          84,
+          128,
+          7,
+          12
+        ],
+        "value": "/"
+      },
+      {
+        "codepoint": 37,
+        "kind": 0,
+        "neighbors": [
+          28,
+          54,
+          11,
+          85
+        ],
+        "rect": [
+          100,
+          128,
+          7,
+          12
+        ],
+        "value": "%"
+      },
+      {
+        "codepoint": 71,
+        "kind": 0,
+        "neighbors": [
+          5,
+          31,
+          85,
+          36
+        ],
+        "rect": [
+          124,
+          72,
+          7,
+          12
+        ],
+        "value": "G"
+      },
+      {
+        "codepoint": 72,
+        "kind": 0,
+        "neighbors": [
+          30,
+          32,
+          85,
+          37
+        ],
+        "rect": [
+          140,
+          72,
+          7,
+          12
+        ],
+        "value": "H"
+      },
+      {
+        "codepoint": 73,
+        "kind": 0,
+        "neighbors": [
+          31,
+          33,
+          85,
+          38
+        ],
+        "rect": [
+          156,
+          72,
+          7,
+          12
+        ],
+        "value": "I"
+      },
+      {
+        "codepoint": 74,
+        "kind": 0,
+        "neighbors": [
+          32,
+          34,
+          86,
+          39
+        ],
+        "rect": [
+          172,
+          72,
+          7,
+          12
+        ],
+        "value": "J"
+      },
+      {
+        "codepoint": 75,
+        "kind": 0,
+        "neighbors": [
+          33,
+          35,
+          86,
+          40
+        ],
+        "rect": [
+          188,
+          72,
+          7,
+          12
+        ],
+        "value": "K"
+      },
+      {
+        "codepoint": 76,
+        "kind": 0,
+        "neighbors": [
+          34,
+          60,
+          86,
+          41
+        ],
+        "rect": [
+          204,
+          72,
+          7,
+          12
+        ],
+        "value": "L"
+      },
+      {
+        "codepoint": 83,
+        "kind": 0,
+        "neighbors": [
+          11,
+          37,
+          30,
+          54
+        ],
+        "rect": [
+          124,
+          86,
+          7,
+          12
+        ],
+        "value": "S"
+      },
+      {
+        "codepoint": 84,
+        "kind": 0,
+        "neighbors": [
+          36,
+          38,
+          31,
+          55
+        ],
+        "rect": [
+          140,
+          86,
+          7,
+          12
+        ],
+        "value": "T"
+      },
+      {
+        "codepoint": 85,
+        "kind": 0,
+        "neighbors": [
+          37,
+          39,
+          32,
+          85
+        ],
+        "rect": [
+          156,
+          86,
+          7,
+          12
+        ],
+        "value": "U"
+      },
+      {
+        "codepoint": 86,
+        "kind": 0,
+        "neighbors": [
+          38,
+          40,
+          33,
+          86
+        ],
+        "rect": [
+          172,
+          86,
+          7,
+          12
+        ],
+        "value": "V"
+      },
+      {
+        "codepoint": 87,
+        "kind": 0,
+        "neighbors": [
+          39,
+          41,
+          34,
+          86
+        ],
+        "rect": [
+          188,
+          86,
+          7,
+          12
+        ],
+        "value": "W"
+      },
+      {
+        "codepoint": 88,
+        "kind": 0,
+        "neighbors": [
+          40,
+          65,
+          35,
+          53
+        ],
+        "rect": [
+          204,
+          86,
+          7,
+          12
+        ],
+        "value": "X"
+      },
+      {
+        "codepoint": 201,
+        "kind": 0,
+        "neighbors": [
+          42,
+          42,
+          42,
+          42
+        ],
+        "rect": [
+          124,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 200,
+        "kind": 0,
+        "neighbors": [
+          43,
+          43,
+          43,
+          43
+        ],
+        "rect": [
+          140,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 202,
+        "kind": 0,
+        "neighbors": [
+          44,
+          44,
+          44,
+          44
+        ],
+        "rect": [
+          156,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 207,
+        "kind": 0,
+        "neighbors": [
+          45,
+          45,
+          45,
+          45
+        ],
+        "rect": [
+          172,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 205,
+        "kind": 0,
+        "neighbors": [
+          46,
+          46,
+          46,
+          46
+        ],
+        "rect": [
+          188,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 204,
+        "kind": 0,
+        "neighbors": [
+          47,
+          47,
+          47,
+          47
+        ],
+        "rect": [
+          204,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 338,
+        "kind": 0,
+        "neighbors": [
+          48,
+          48,
+          48,
+          48
+        ],
+        "rect": [
+          124,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 220,
+        "kind": 0,
+        "neighbors": [
+          49,
+          49,
+          49,
+          49
+        ],
+        "rect": [
+          140,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 218,
+        "kind": 0,
+        "neighbors": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "rect": [
+          156,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 217,
+        "kind": 0,
+        "neighbors": [
+          51,
+          51,
+          51,
+          51
+        ],
+        "rect": [
+          172,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 219,
+        "kind": 0,
+        "neighbors": [
+          52,
+          52,
+          52,
+          52
+        ],
+        "rect": [
+          188,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 32,
+        "kind": 0,
+        "neighbors": [
+          41,
+          75,
+          41,
+          86
+        ],
+        "rect": [
+          204,
+          114,
+          7,
+          12
+        ],
+        "value": " "
+      },
+      {
+        "codepoint": 40,
+        "kind": 0,
+        "neighbors": [
+          29,
+          55,
+          36,
+          85
+        ],
+        "rect": [
+          124,
+          128,
+          7,
+          12
+        ],
+        "value": "("
+      },
+      {
+        "codepoint": 41,
+        "kind": 0,
+        "neighbors": [
+          54,
+          80,
+          37,
+          85
+        ],
+        "rect": [
+          140,
+          128,
+          7,
+          12
+        ],
+        "value": ")"
+      },
+      {
+        "codepoint": 10214,
+        "kind": 0,
+        "neighbors": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "rect": [
+          156,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 10215,
+        "kind": 0,
+        "neighbors": [
+          57,
+          57,
+          57,
+          57
+        ],
+        "rect": [
+          172,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 8220,
+        "kind": 0,
+        "neighbors": [
+          58,
+          58,
+          58,
+          58
+        ],
+        "rect": [
+          188,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 8221,
+        "kind": 0,
+        "neighbors": [
+          59,
+          59,
+          59,
+          59
+        ],
+        "rect": [
+          204,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 49,
+        "kind": 0,
+        "neighbors": [
+          35,
+          61,
+          86,
+          65
+        ],
+        "rect": [
+          228,
+          72,
+          7,
+          12
+        ],
+        "value": "1"
+      },
+      {
+        "codepoint": 50,
+        "kind": 0,
+        "neighbors": [
+          60,
+          62,
+          86,
+          66
+        ],
+        "rect": [
+          244,
+          72,
+          7,
+          12
+        ],
+        "value": "2"
+      },
+      {
+        "codepoint": 51,
+        "kind": 0,
+        "neighbors": [
+          61,
+          63,
+          86,
+          67
+        ],
+        "rect": [
+          260,
+          72,
+          7,
+          12
+        ],
+        "value": "3"
+      },
+      {
+        "codepoint": 52,
+        "kind": 0,
+        "neighbors": [
+          62,
+          64,
+          87,
+          68
+        ],
+        "rect": [
+          276,
+          72,
+          7,
+          12
+        ],
+        "value": "4"
+      },
+      {
+        "codepoint": 53,
+        "kind": 0,
+        "neighbors": [
+          63,
+          0,
+          87,
+          69
+        ],
+        "rect": [
+          292,
+          72,
+          7,
+          12
+        ],
+        "value": "5"
+      },
+      {
+        "codepoint": 54,
+        "kind": 0,
+        "neighbors": [
+          41,
+          66,
+          60,
+          70
+        ],
+        "rect": [
+          228,
+          86,
+          7,
+          12
+        ],
+        "value": "6"
+      },
+      {
+        "codepoint": 55,
+        "kind": 0,
+        "neighbors": [
+          65,
+          67,
+          61,
+          71
+        ],
+        "rect": [
+          244,
+          86,
+          7,
+          12
+        ],
+        "value": "7"
+      },
+      {
+        "codepoint": 56,
+        "kind": 0,
+        "neighbors": [
+          66,
+          68,
+          62,
+          77
+        ],
+        "rect": [
+          260,
+          86,
+          7,
+          12
+        ],
+        "value": "8"
+      },
+      {
+        "codepoint": 57,
+        "kind": 0,
+        "neighbors": [
+          67,
+          69,
+          63,
+          73
+        ],
+        "rect": [
+          276,
+          86,
+          7,
+          12
+        ],
+        "value": "9"
+      },
+      {
+        "codepoint": 48,
+        "kind": 0,
+        "neighbors": [
+          68,
+          6,
+          64,
+          74
+        ],
+        "rect": [
+          292,
+          86,
+          7,
+          12
+        ],
+        "value": "0"
+      },
+      {
+        "codepoint": 96,
+        "kind": 0,
+        "neighbors": [
+          41,
+          71,
+          65,
+          75
+        ],
+        "rect": [
+          228,
+          100,
+          7,
+          12
+        ],
+        "value": "`"
+      },
+      {
+        "codepoint": 64,
+        "kind": 0,
+        "neighbors": [
+          70,
+          73,
+          66,
+          76
+        ],
+        "rect": [
+          244,
+          100,
+          7,
+          12
+        ],
+        "value": "@"
+      },
+      {
+        "codepoint": 9834,
+        "kind": 0,
+        "neighbors": [
+          72,
+          72,
+          72,
+          72
+        ],
+        "rect": [
+          260,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 36,
+        "kind": 0,
+        "neighbors": [
+          71,
+          74,
+          68,
+          78
+        ],
+        "rect": [
+          276,
+          100,
+          7,
+          12
+        ],
+        "value": "$"
+      },
+      {
+        "codepoint": 38,
+        "kind": 0,
+        "neighbors": [
+          73,
+          6,
+          69,
+          79
+        ],
+        "rect": [
+          292,
+          100,
+          7,
+          12
+        ],
+        "value": "&"
+      },
+      {
+        "codepoint": 46,
+        "kind": 0,
+        "neighbors": [
+          53,
+          76,
+          70,
+          80
+        ],
+        "rect": [
+          228,
+          114,
+          7,
+          12
+        ],
+        "value": "."
+      },
+      {
+        "codepoint": 33,
+        "kind": 0,
+        "neighbors": [
+          75,
+          77,
+          71,
+          81
+        ],
+        "rect": [
+          244,
+          114,
+          7,
+          12
+        ],
+        "value": "!"
+      },
+      {
+        "codepoint": 63,
+        "kind": 0,
+        "neighbors": [
+          76,
+          78,
+          67,
+          82
+        ],
+        "rect": [
+          260,
+          114,
+          7,
+          12
+        ],
+        "value": "?"
+      },
+      {
+        "codepoint": 58,
+        "kind": 0,
+        "neighbors": [
+          77,
+          79,
+          73,
+          83
+        ],
+        "rect": [
+          276,
+          114,
+          7,
+          12
+        ],
+        "value": ":"
+      },
+      {
+        "codepoint": 59,
+        "kind": 0,
+        "neighbors": [
+          78,
+          24,
+          74,
+          87
+        ],
+        "rect": [
+          292,
+          114,
+          7,
+          12
+        ],
+        "value": ";"
+      },
+      {
+        "codepoint": 44,
+        "kind": 0,
+        "neighbors": [
+          53,
+          81,
+          75,
+          86
+        ],
+        "rect": [
+          228,
+          128,
+          7,
+          12
+        ],
+        "value": ","
+      },
+      {
+        "codepoint": 34,
+        "kind": 0,
+        "neighbors": [
+          80,
+          82,
+          76,
+          86
+        ],
+        "rect": [
+          244,
+          128,
+          7,
+          12
+        ],
+        "value": "\""
+      },
+      {
+        "codepoint": 39,
+        "kind": 0,
+        "neighbors": [
+          81,
+          83,
+          77,
+          86
+        ],
+        "rect": [
+          260,
+          128,
+          7,
+          12
+        ],
+        "value": "'"
+      },
+      {
+        "codepoint": 126,
+        "kind": 0,
+        "neighbors": [
+          82,
+          24,
+          78,
+          87
+        ],
+        "rect": [
+          276,
+          128,
+          7,
+          12
+        ],
+        "value": "~"
+      },
+      {
+        "codepoint": 169,
+        "kind": 0,
+        "neighbors": [
+          84,
+          84,
+          84,
+          84
+        ],
+        "rect": [
+          292,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 0,
+        "kind": 1,
+        "neighbors": [
+          87,
+          86,
+          24,
+          0
+        ],
+        "rect": [
+          20,
+          150,
+          45,
+          12
+        ],
+        "value": "Don't care"
+      },
+      {
+        "codepoint": 0,
+        "kind": 2,
+        "neighbors": [
+          85,
+          87,
+          80,
+          64
+        ],
+        "rect": [
+          230,
+          150,
+          46,
+          12
+        ],
+        "value": "Backspace"
+      },
+      {
+        "codepoint": 0,
+        "kind": 3,
+        "neighbors": [
+          86,
+          85,
+          83,
+          64
+        ],
+        "rect": [
+          288,
+          150,
+          12,
+          12
+        ],
+        "value": "OK"
+      }
+    ],
+    [
+      {
+        "codepoint": 97,
+        "kind": 0,
+        "neighbors": [
+          64,
+          1,
+          85,
+          6
+        ],
+        "rect": [
+          20,
+          72,
+          7,
+          12
+        ],
+        "value": "a"
+      },
+      {
+        "codepoint": 98,
+        "kind": 0,
+        "neighbors": [
+          0,
+          2,
+          85,
+          7
+        ],
+        "rect": [
+          36,
+          72,
+          7,
+          12
+        ],
+        "value": "b"
+      },
+      {
+        "codepoint": 99,
+        "kind": 0,
+        "neighbors": [
+          1,
+          3,
+          85,
+          8
+        ],
+        "rect": [
+          52,
+          72,
+          7,
+          12
+        ],
+        "value": "c"
+      },
+      {
+        "codepoint": 100,
+        "kind": 0,
+        "neighbors": [
+          2,
+          4,
+          85,
+          9
+        ],
+        "rect": [
+          68,
+          72,
+          7,
+          12
+        ],
+        "value": "d"
+      },
+      {
+        "codepoint": 101,
+        "kind": 0,
+        "neighbors": [
+          3,
+          5,
+          85,
+          10
+        ],
+        "rect": [
+          84,
+          72,
+          7,
+          12
+        ],
+        "value": "e"
+      },
+      {
+        "codepoint": 102,
+        "kind": 0,
+        "neighbors": [
+          4,
+          30,
+          85,
+          11
+        ],
+        "rect": [
+          100,
+          72,
+          7,
+          12
+        ],
+        "value": "f"
+      },
+      {
+        "codepoint": 109,
+        "kind": 0,
+        "neighbors": [
+          69,
+          7,
+          0,
+          12
+        ],
+        "rect": [
+          20,
+          86,
+          7,
+          12
+        ],
+        "value": "m"
+      },
+      {
+        "codepoint": 110,
+        "kind": 0,
+        "neighbors": [
+          6,
+          8,
+          1,
+          13
+        ],
+        "rect": [
+          36,
+          86,
+          7,
+          12
+        ],
+        "value": "n"
+      },
+      {
+        "codepoint": 111,
+        "kind": 0,
+        "neighbors": [
+          7,
+          9,
+          2,
+          26
+        ],
+        "rect": [
+          52,
+          86,
+          7,
+          12
+        ],
+        "value": "o"
+      },
+      {
+        "codepoint": 112,
+        "kind": 0,
+        "neighbors": [
+          8,
+          10,
+          3,
+          27
+        ],
+        "rect": [
+          68,
+          86,
+          7,
+          12
+        ],
+        "value": "p"
+      },
+      {
+        "codepoint": 113,
+        "kind": 0,
+        "neighbors": [
+          9,
+          11,
+          4,
+          28
+        ],
+        "rect": [
+          84,
+          86,
+          7,
+          12
+        ],
+        "value": "q"
+      },
+      {
+        "codepoint": 114,
+        "kind": 0,
+        "neighbors": [
+          10,
+          36,
+          5,
+          29
+        ],
+        "rect": [
+          100,
+          86,
+          7,
+          12
+        ],
+        "value": "r"
+      },
+      {
+        "codepoint": 121,
+        "kind": 0,
+        "neighbors": [
+          74,
+          13,
+          6,
+          24
+        ],
+        "rect": [
+          20,
+          100,
+          7,
+          12
+        ],
+        "value": "y"
+      },
+      {
+        "codepoint": 122,
+        "kind": 0,
+        "neighbors": [
+          12,
+          24,
+          7,
+          25
+        ],
+        "rect": [
+          36,
+          100,
+          7,
+          12
+        ],
+        "value": "z"
+      },
+      {
+        "codepoint": 228,
+        "kind": 0,
+        "neighbors": [
+          14,
+          14,
+          14,
+          14
+        ],
+        "rect": [
+          52,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 225,
+        "kind": 0,
+        "neighbors": [
+          15,
+          15,
+          15,
+          15
+        ],
+        "rect": [
+          68,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 231,
+        "kind": 0,
+        "neighbors": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "rect": [
+          84,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 235,
+        "kind": 0,
+        "neighbors": [
+          17,
+          17,
+          17,
+          17
+        ],
+        "rect": [
+          100,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 238,
+        "kind": 0,
+        "neighbors": [
+          18,
+          18,
+          18,
+          18
+        ],
+        "rect": [
+          20,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 241,
+        "kind": 0,
+        "neighbors": [
+          19,
+          19,
+          19,
+          19
+        ],
+        "rect": [
+          36,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 246,
+        "kind": 0,
+        "neighbors": [
+          20,
+          20,
+          20,
+          20
+        ],
+        "rect": [
+          52,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 243,
+        "kind": 0,
+        "neighbors": [
+          21,
+          21,
+          21,
+          21
+        ],
+        "rect": [
+          68,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 242,
+        "kind": 0,
+        "neighbors": [
+          22,
+          22,
+          22,
+          22
+        ],
+        "rect": [
+          84,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 244,
+        "kind": 0,
+        "neighbors": [
+          23,
+          23,
+          23,
+          23
+        ],
+        "rect": [
+          100,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 61,
+        "kind": 0,
+        "neighbors": [
+          83,
+          25,
+          12,
+          85
+        ],
+        "rect": [
+          20,
+          128,
+          7,
+          12
+        ],
+        "value": "="
+      },
+      {
+        "codepoint": 43,
+        "kind": 0,
+        "neighbors": [
+          24,
+          26,
+          13,
+          85
+        ],
+        "rect": [
+          36,
+          128,
+          7,
+          12
+        ],
+        "value": "+"
+      },
+      {
+        "codepoint": 45,
+        "kind": 0,
+        "neighbors": [
+          25,
+          27,
+          8,
+          85
+        ],
+        "rect": [
+          52,
+          128,
+          7,
+          12
+        ],
+        "value": "-"
+      },
+      {
+        "codepoint": 42,
+        "kind": 0,
+        "neighbors": [
+          26,
+          28,
+          9,
+          85
+        ],
+        "rect": [
+          68,
+          128,
+          7,
+          12
+        ],
+        "value": "*"
+      },
+      {
+        "codepoint": 47,
+        "kind": 0,
+        "neighbors": [
+          27,
+          29,
+          10,
+          85
+        ],
+        "rect": [
+          84,
+          128,
+          7,
+          12
+        ],
+        "value": "/"
+      },
+      {
+        "codepoint": 37,
+        "kind": 0,
+        "neighbors": [
+          28,
+          54,
+          11,
+          85
+        ],
+        "rect": [
+          100,
+          128,
+          7,
+          12
+        ],
+        "value": "%"
+      },
+      {
+        "codepoint": 103,
+        "kind": 0,
+        "neighbors": [
+          5,
+          31,
+          85,
+          36
+        ],
+        "rect": [
+          124,
+          72,
+          7,
+          12
+        ],
+        "value": "g"
+      },
+      {
+        "codepoint": 104,
+        "kind": 0,
+        "neighbors": [
+          30,
+          32,
+          85,
+          37
+        ],
+        "rect": [
+          140,
+          72,
+          7,
+          12
+        ],
+        "value": "h"
+      },
+      {
+        "codepoint": 105,
+        "kind": 0,
+        "neighbors": [
+          31,
+          33,
+          85,
+          38
+        ],
+        "rect": [
+          156,
+          72,
+          7,
+          12
+        ],
+        "value": "i"
+      },
+      {
+        "codepoint": 106,
+        "kind": 0,
+        "neighbors": [
+          32,
+          34,
+          86,
+          39
+        ],
+        "rect": [
+          172,
+          72,
+          7,
+          12
+        ],
+        "value": "j"
+      },
+      {
+        "codepoint": 107,
+        "kind": 0,
+        "neighbors": [
+          33,
+          35,
+          86,
+          40
+        ],
+        "rect": [
+          188,
+          72,
+          7,
+          12
+        ],
+        "value": "k"
+      },
+      {
+        "codepoint": 108,
+        "kind": 0,
+        "neighbors": [
+          34,
+          60,
+          86,
+          41
+        ],
+        "rect": [
+          204,
+          72,
+          7,
+          12
+        ],
+        "value": "l"
+      },
+      {
+        "codepoint": 115,
+        "kind": 0,
+        "neighbors": [
+          11,
+          37,
+          30,
+          54
+        ],
+        "rect": [
+          124,
+          86,
+          7,
+          12
+        ],
+        "value": "s"
+      },
+      {
+        "codepoint": 116,
+        "kind": 0,
+        "neighbors": [
+          36,
+          38,
+          31,
+          55
+        ],
+        "rect": [
+          140,
+          86,
+          7,
+          12
+        ],
+        "value": "t"
+      },
+      {
+        "codepoint": 117,
+        "kind": 0,
+        "neighbors": [
+          37,
+          39,
+          32,
+          85
+        ],
+        "rect": [
+          156,
+          86,
+          7,
+          12
+        ],
+        "value": "u"
+      },
+      {
+        "codepoint": 118,
+        "kind": 0,
+        "neighbors": [
+          38,
+          40,
+          33,
+          86
+        ],
+        "rect": [
+          172,
+          86,
+          7,
+          12
+        ],
+        "value": "v"
+      },
+      {
+        "codepoint": 119,
+        "kind": 0,
+        "neighbors": [
+          39,
+          41,
+          34,
+          86
+        ],
+        "rect": [
+          188,
+          86,
+          7,
+          12
+        ],
+        "value": "w"
+      },
+      {
+        "codepoint": 120,
+        "kind": 0,
+        "neighbors": [
+          40,
+          65,
+          35,
+          53
+        ],
+        "rect": [
+          204,
+          86,
+          7,
+          12
+        ],
+        "value": "x"
+      },
+      {
+        "codepoint": 233,
+        "kind": 0,
+        "neighbors": [
+          42,
+          42,
+          42,
+          42
+        ],
+        "rect": [
+          124,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 232,
+        "kind": 0,
+        "neighbors": [
+          43,
+          43,
+          43,
+          43
+        ],
+        "rect": [
+          140,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 234,
+        "kind": 0,
+        "neighbors": [
+          44,
+          44,
+          44,
+          44
+        ],
+        "rect": [
+          156,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 239,
+        "kind": 0,
+        "neighbors": [
+          45,
+          45,
+          45,
+          45
+        ],
+        "rect": [
+          172,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 237,
+        "kind": 0,
+        "neighbors": [
+          46,
+          46,
+          46,
+          46
+        ],
+        "rect": [
+          188,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 236,
+        "kind": 0,
+        "neighbors": [
+          47,
+          47,
+          47,
+          47
+        ],
+        "rect": [
+          204,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 339,
+        "kind": 0,
+        "neighbors": [
+          48,
+          48,
+          48,
+          48
+        ],
+        "rect": [
+          124,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 252,
+        "kind": 0,
+        "neighbors": [
+          49,
+          49,
+          49,
+          49
+        ],
+        "rect": [
+          140,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 250,
+        "kind": 0,
+        "neighbors": [
+          50,
+          50,
+          50,
+          50
+        ],
+        "rect": [
+          156,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 249,
+        "kind": 0,
+        "neighbors": [
+          51,
+          51,
+          51,
+          51
+        ],
+        "rect": [
+          172,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 251,
+        "kind": 0,
+        "neighbors": [
+          52,
+          52,
+          52,
+          52
+        ],
+        "rect": [
+          188,
+          114,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 32,
+        "kind": 0,
+        "neighbors": [
+          41,
+          75,
+          41,
+          86
+        ],
+        "rect": [
+          204,
+          114,
+          7,
+          12
+        ],
+        "value": " "
+      },
+      {
+        "codepoint": 40,
+        "kind": 0,
+        "neighbors": [
+          29,
+          55,
+          36,
+          85
+        ],
+        "rect": [
+          124,
+          128,
+          7,
+          12
+        ],
+        "value": "("
+      },
+      {
+        "codepoint": 41,
+        "kind": 0,
+        "neighbors": [
+          54,
+          80,
+          37,
+          85
+        ],
+        "rect": [
+          140,
+          128,
+          7,
+          12
+        ],
+        "value": ")"
+      },
+      {
+        "codepoint": 10214,
+        "kind": 0,
+        "neighbors": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "rect": [
+          156,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 10215,
+        "kind": 0,
+        "neighbors": [
+          57,
+          57,
+          57,
+          57
+        ],
+        "rect": [
+          172,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 8220,
+        "kind": 0,
+        "neighbors": [
+          58,
+          58,
+          58,
+          58
+        ],
+        "rect": [
+          188,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 8221,
+        "kind": 0,
+        "neighbors": [
+          59,
+          59,
+          59,
+          59
+        ],
+        "rect": [
+          204,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 49,
+        "kind": 0,
+        "neighbors": [
+          35,
+          61,
+          86,
+          65
+        ],
+        "rect": [
+          228,
+          72,
+          7,
+          12
+        ],
+        "value": "1"
+      },
+      {
+        "codepoint": 50,
+        "kind": 0,
+        "neighbors": [
+          60,
+          62,
+          86,
+          66
+        ],
+        "rect": [
+          244,
+          72,
+          7,
+          12
+        ],
+        "value": "2"
+      },
+      {
+        "codepoint": 51,
+        "kind": 0,
+        "neighbors": [
+          61,
+          63,
+          86,
+          67
+        ],
+        "rect": [
+          260,
+          72,
+          7,
+          12
+        ],
+        "value": "3"
+      },
+      {
+        "codepoint": 52,
+        "kind": 0,
+        "neighbors": [
+          62,
+          64,
+          87,
+          68
+        ],
+        "rect": [
+          276,
+          72,
+          7,
+          12
+        ],
+        "value": "4"
+      },
+      {
+        "codepoint": 53,
+        "kind": 0,
+        "neighbors": [
+          63,
+          0,
+          87,
+          69
+        ],
+        "rect": [
+          292,
+          72,
+          7,
+          12
+        ],
+        "value": "5"
+      },
+      {
+        "codepoint": 54,
+        "kind": 0,
+        "neighbors": [
+          41,
+          66,
+          60,
+          70
+        ],
+        "rect": [
+          228,
+          86,
+          7,
+          12
+        ],
+        "value": "6"
+      },
+      {
+        "codepoint": 55,
+        "kind": 0,
+        "neighbors": [
+          65,
+          67,
+          61,
+          71
+        ],
+        "rect": [
+          244,
+          86,
+          7,
+          12
+        ],
+        "value": "7"
+      },
+      {
+        "codepoint": 56,
+        "kind": 0,
+        "neighbors": [
+          66,
+          68,
+          62,
+          77
+        ],
+        "rect": [
+          260,
+          86,
+          7,
+          12
+        ],
+        "value": "8"
+      },
+      {
+        "codepoint": 57,
+        "kind": 0,
+        "neighbors": [
+          67,
+          69,
+          63,
+          73
+        ],
+        "rect": [
+          276,
+          86,
+          7,
+          12
+        ],
+        "value": "9"
+      },
+      {
+        "codepoint": 48,
+        "kind": 0,
+        "neighbors": [
+          68,
+          6,
+          64,
+          74
+        ],
+        "rect": [
+          292,
+          86,
+          7,
+          12
+        ],
+        "value": "0"
+      },
+      {
+        "codepoint": 96,
+        "kind": 0,
+        "neighbors": [
+          41,
+          71,
+          65,
+          75
+        ],
+        "rect": [
+          228,
+          100,
+          7,
+          12
+        ],
+        "value": "`"
+      },
+      {
+        "codepoint": 64,
+        "kind": 0,
+        "neighbors": [
+          70,
+          73,
+          66,
+          76
+        ],
+        "rect": [
+          244,
+          100,
+          7,
+          12
+        ],
+        "value": "@"
+      },
+      {
+        "codepoint": 9834,
+        "kind": 0,
+        "neighbors": [
+          72,
+          72,
+          72,
+          72
+        ],
+        "rect": [
+          260,
+          100,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 36,
+        "kind": 0,
+        "neighbors": [
+          71,
+          74,
+          68,
+          78
+        ],
+        "rect": [
+          276,
+          100,
+          7,
+          12
+        ],
+        "value": "$"
+      },
+      {
+        "codepoint": 38,
+        "kind": 0,
+        "neighbors": [
+          73,
+          6,
+          69,
+          79
+        ],
+        "rect": [
+          292,
+          100,
+          7,
+          12
+        ],
+        "value": "&"
+      },
+      {
+        "codepoint": 46,
+        "kind": 0,
+        "neighbors": [
+          53,
+          76,
+          70,
+          80
+        ],
+        "rect": [
+          228,
+          114,
+          7,
+          12
+        ],
+        "value": "."
+      },
+      {
+        "codepoint": 33,
+        "kind": 0,
+        "neighbors": [
+          75,
+          77,
+          71,
+          81
+        ],
+        "rect": [
+          244,
+          114,
+          7,
+          12
+        ],
+        "value": "!"
+      },
+      {
+        "codepoint": 63,
+        "kind": 0,
+        "neighbors": [
+          76,
+          78,
+          67,
+          82
+        ],
+        "rect": [
+          260,
+          114,
+          7,
+          12
+        ],
+        "value": "?"
+      },
+      {
+        "codepoint": 58,
+        "kind": 0,
+        "neighbors": [
+          77,
+          79,
+          73,
+          83
+        ],
+        "rect": [
+          276,
+          114,
+          7,
+          12
+        ],
+        "value": ":"
+      },
+      {
+        "codepoint": 59,
+        "kind": 0,
+        "neighbors": [
+          78,
+          24,
+          74,
+          87
+        ],
+        "rect": [
+          292,
+          114,
+          7,
+          12
+        ],
+        "value": ";"
+      },
+      {
+        "codepoint": 44,
+        "kind": 0,
+        "neighbors": [
+          53,
+          81,
+          75,
+          86
+        ],
+        "rect": [
+          228,
+          128,
+          7,
+          12
+        ],
+        "value": ","
+      },
+      {
+        "codepoint": 34,
+        "kind": 0,
+        "neighbors": [
+          80,
+          82,
+          76,
+          86
+        ],
+        "rect": [
+          244,
+          128,
+          7,
+          12
+        ],
+        "value": "\""
+      },
+      {
+        "codepoint": 39,
+        "kind": 0,
+        "neighbors": [
+          81,
+          83,
+          77,
+          86
+        ],
+        "rect": [
+          260,
+          128,
+          7,
+          12
+        ],
+        "value": "'"
+      },
+      {
+        "codepoint": 126,
+        "kind": 0,
+        "neighbors": [
+          82,
+          24,
+          78,
+          87
+        ],
+        "rect": [
+          276,
+          128,
+          7,
+          12
+        ],
+        "value": "~"
+      },
+      {
+        "codepoint": 169,
+        "kind": 0,
+        "neighbors": [
+          84,
+          84,
+          84,
+          84
+        ],
+        "rect": [
+          292,
+          128,
+          7,
+          12
+        ],
+        "value": ""
+      },
+      {
+        "codepoint": 0,
+        "kind": 1,
+        "neighbors": [
+          87,
+          86,
+          24,
+          0
+        ],
+        "rect": [
+          20,
+          150,
+          45,
+          12
+        ],
+        "value": "Don't care"
+      },
+      {
+        "codepoint": 0,
+        "kind": 2,
+        "neighbors": [
+          85,
+          87,
+          80,
+          64
+        ],
+        "rect": [
+          230,
+          150,
+          46,
+          12
+        ],
+        "value": "Backspace"
+      },
+      {
+        "codepoint": 0,
+        "kind": 3,
+        "neighbors": [
+          86,
+          85,
+          83,
+          64
+        ],
+        "rect": [
+          288,
+          150,
+          12,
+          12
+        ],
+        "value": "OK"
+      }
+    ]
+  ],
+  "patch": [
+    13,
+    13,
+    13,
+    13
+  ],
+  "rects": [
+    [
+      20,
+      72,
+      7,
+      12
+    ],
+    [
+      36,
+      72,
+      7,
+      12
+    ],
+    [
+      52,
+      72,
+      7,
+      12
+    ],
+    [
+      68,
+      72,
+      7,
+      12
+    ],
+    [
+      84,
+      72,
+      7,
+      12
+    ],
+    [
+      100,
+      72,
+      7,
+      12
+    ],
+    [
+      20,
+      86,
+      7,
+      12
+    ],
+    [
+      36,
+      86,
+      7,
+      12
+    ],
+    [
+      52,
+      86,
+      7,
+      12
+    ],
+    [
+      68,
+      86,
+      7,
+      12
+    ],
+    [
+      84,
+      86,
+      7,
+      12
+    ],
+    [
+      100,
+      86,
+      7,
+      12
+    ],
+    [
+      20,
+      100,
+      7,
+      12
+    ],
+    [
+      36,
+      100,
+      7,
+      12
+    ],
+    [
+      52,
+      100,
+      7,
+      12
+    ],
+    [
+      68,
+      100,
+      7,
+      12
+    ],
+    [
+      84,
+      100,
+      7,
+      12
+    ],
+    [
+      100,
+      100,
+      7,
+      12
+    ],
+    [
+      20,
+      114,
+      7,
+      12
+    ],
+    [
+      36,
+      114,
+      7,
+      12
+    ],
+    [
+      52,
+      114,
+      7,
+      12
+    ],
+    [
+      68,
+      114,
+      7,
+      12
+    ],
+    [
+      84,
+      114,
+      7,
+      12
+    ],
+    [
+      100,
+      114,
+      7,
+      12
+    ],
+    [
+      20,
+      128,
+      7,
+      12
+    ],
+    [
+      36,
+      128,
+      7,
+      12
+    ],
+    [
+      52,
+      128,
+      7,
+      12
+    ],
+    [
+      68,
+      128,
+      7,
+      12
+    ],
+    [
+      84,
+      128,
+      7,
+      12
+    ],
+    [
+      100,
+      128,
+      7,
+      12
+    ],
+    [
+      124,
+      72,
+      7,
+      12
+    ],
+    [
+      140,
+      72,
+      7,
+      12
+    ],
+    [
+      156,
+      72,
+      7,
+      12
+    ],
+    [
+      172,
+      72,
+      7,
+      12
+    ],
+    [
+      188,
+      72,
+      7,
+      12
+    ],
+    [
+      204,
+      72,
+      7,
+      12
+    ],
+    [
+      124,
+      86,
+      7,
+      12
+    ],
+    [
+      140,
+      86,
+      7,
+      12
+    ],
+    [
+      156,
+      86,
+      7,
+      12
+    ],
+    [
+      172,
+      86,
+      7,
+      12
+    ],
+    [
+      188,
+      86,
+      7,
+      12
+    ],
+    [
+      204,
+      86,
+      7,
+      12
+    ],
+    [
+      124,
+      100,
+      7,
+      12
+    ],
+    [
+      140,
+      100,
+      7,
+      12
+    ],
+    [
+      156,
+      100,
+      7,
+      12
+    ],
+    [
+      172,
+      100,
+      7,
+      12
+    ],
+    [
+      188,
+      100,
+      7,
+      12
+    ],
+    [
+      204,
+      100,
+      7,
+      12
+    ],
+    [
+      124,
+      114,
+      7,
+      12
+    ],
+    [
+      140,
+      114,
+      7,
+      12
+    ],
+    [
+      156,
+      114,
+      7,
+      12
+    ],
+    [
+      172,
+      114,
+      7,
+      12
+    ],
+    [
+      188,
+      114,
+      7,
+      12
+    ],
+    [
+      204,
+      114,
+      7,
+      12
+    ],
+    [
+      124,
+      128,
+      7,
+      12
+    ],
+    [
+      140,
+      128,
+      7,
+      12
+    ],
+    [
+      156,
+      128,
+      7,
+      12
+    ],
+    [
+      172,
+      128,
+      7,
+      12
+    ],
+    [
+      188,
+      128,
+      7,
+      12
+    ],
+    [
+      204,
+      128,
+      7,
+      12
+    ],
+    [
+      228,
+      72,
+      7,
+      12
+    ],
+    [
+      244,
+      72,
+      7,
+      12
+    ],
+    [
+      260,
+      72,
+      7,
+      12
+    ],
+    [
+      276,
+      72,
+      7,
+      12
+    ],
+    [
+      292,
+      72,
+      7,
+      12
+    ],
+    [
+      228,
+      86,
+      7,
+      12
+    ],
+    [
+      244,
+      86,
+      7,
+      12
+    ],
+    [
+      260,
+      86,
+      7,
+      12
+    ],
+    [
+      276,
+      86,
+      7,
+      12
+    ],
+    [
+      292,
+      86,
+      7,
+      12
+    ],
+    [
+      228,
+      100,
+      7,
+      12
+    ],
+    [
+      244,
+      100,
+      7,
+      12
+    ],
+    [
+      260,
+      100,
+      7,
+      12
+    ],
+    [
+      276,
+      100,
+      7,
+      12
+    ],
+    [
+      292,
+      100,
+      7,
+      12
+    ],
+    [
+      228,
+      114,
+      7,
+      12
+    ],
+    [
+      244,
+      114,
+      7,
+      12
+    ],
+    [
+      260,
+      114,
+      7,
+      12
+    ],
+    [
+      276,
+      114,
+      7,
+      12
+    ],
+    [
+      292,
+      114,
+      7,
+      12
+    ],
+    [
+      228,
+      128,
+      7,
+      12
+    ],
+    [
+      244,
+      128,
+      7,
+      12
+    ],
+    [
+      260,
+      128,
+      7,
+      12
+    ],
+    [
+      276,
+      128,
+      7,
+      12
+    ],
+    [
+      292,
+      128,
+      7,
+      12
+    ],
+    [
+      20,
+      150,
+      45,
+      12
+    ],
+    [
+      230,
+      150,
+      46,
+      12
+    ],
+    [
+      288,
+      150,
+      12,
+      12
+    ]
+  ],
+  "resources": [
+    {
+      "columns": 1,
+      "height": 28,
+      "path": "save-preview/confirm-plain.t3x",
+      "rows": 1,
+      "width": 28
+    },
+    {
+      "columns": 3,
+      "height": 8,
+      "path": "save-preview/arrow.t3x",
+      "rows": 1,
+      "width": 24
+    },
+    {
+      "columns": 10,
+      "height": 580,
+      "path": "actor-preview/ninten-main.t3x",
+      "rows": 20,
+      "width": 310
+    },
+    {
+      "columns": 1,
+      "height": 5,
+      "path": "actor-preview/shadow.t3x",
+      "rows": 1,
+      "width": 15
+    },
+    {
+      "columns": 1,
+      "height": 180,
+      "path": "new-game-preview/keyboard-0.t3x",
+      "rows": 1,
+      "width": 320
+    },
+    {
+      "columns": 1,
+      "height": 180,
+      "path": "new-game-preview/keyboard-1.t3x",
+      "rows": 1,
+      "width": 320
+    },
+    {
+      "columns": 10,
+      "height": 560,
+      "path": "new-game-preview/ana.t3x",
+      "rows": 20,
+      "width": 310
+    },
+    {
+      "columns": 10,
+      "height": 560,
+      "path": "new-game-preview/lloyd.t3x",
+      "rows": 20,
+      "width": 310
+    },
+    {
+      "columns": 10,
+      "height": 560,
+      "path": "new-game-preview/pippi.t3x",
+      "rows": 20,
+      "width": 250
+    },
+    {
+      "columns": 10,
+      "height": 740,
+      "path": "new-game-preview/teddy.t3x",
+      "rows": 20,
+      "width": 230
+    },
+    {
+      "columns": 1,
+      "height": 19,
+      "path": "new-game-preview/favorite_food.t3x",
+      "rows": 1,
+      "width": 18
+    }
+  ],
+  "schema": 2,
+  "scope": "Six source startup naming fields; only Ninten is playable. Remaining settings/final confirmation/intro and transition choreography are not ported. Food is a real session field. ASCII subset retains source keyboard cells.",
+  "sounds": [
+    "Audio/Sound effects/Cursor 1.mp3",
+    "Audio/Sound effects/Cursor 2.mp3",
+    "Audio/Sound effects/M3/curshoriz.wav"
+  ],
+  "sources": {
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Graphics/Character Sprites/Ana/main.png": "c54ea3c0b5ef31ab0709fd26ac7e9f21ca6e48f7da861ecefb304bb58fcd343f",
+    "Graphics/Character Sprites/Ana/main.png.import": "7569838b6a343b5eafd733919510c4dffc8f718a9a7c23bc58fa9ef1821777a3",
+    "Graphics/Character Sprites/Lloyd/main.png": "f66ac54e088cce2b839c23c9403840d40c516991337f86db05102e4fff0eb978",
+    "Graphics/Character Sprites/Lloyd/main.png.import": "04c09f5e870474767c6b65babddfb388ad8454c69d102acf8970cdeee72b4738",
+    "Graphics/Character Sprites/Pippi/main.png": "552eaf3a8fa668afe0d3a8bd12ac13b70cf4312fef57a14f8cc8ef254196164f",
+    "Graphics/Character Sprites/Pippi/main.png.import": "31e32c6978ae45aa04c9fe9df6db237a230b6d1c2ddee5da9b37d70c9eb8aa3b",
+    "Graphics/Character Sprites/Teddy/main.png": "0b1e8886356775706f2c09c7977a14fee5d51fb3a96d20c84577b79d9069a97b",
+    "Graphics/Character Sprites/Teddy/main.png.import": "a1a55fe6a948b760cf7984bbbd0b2911327ec572ece8ee68606a964866a8b330",
+    "Graphics/UI/Misc/FavFoodPlate.png": "ed19719f2c121867d449bfe750e6f0b7e0fb41d4030b1ae8670079ae3d04acc7",
+    "Graphics/UI/Misc/FavFoodPlate.png.import": "d5d2869e68c2a6a435f7b2c3c0ade4d9f307819afff1b14a92ce7b39289e527c",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+    "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Translations/TranslatedText/battlers - sheet.csv": "d90fc7ffdc1a5c0550e4cb1d52b7cf5f666383d96ace8dca0d5550c9bf800b1e",
+    "Translations/TranslatedText/battleskills - sheet.csv": "cd4d4cbaeb8eec6bcda6b042fed70823c6ee790e9d3e4535e09c88a698781235",
+    "Translations/TranslatedText/battletext - sheet.csv": "740b4c183584fd29b9876c7905e5e0f53a317d63399f1bee4a809c94ab6ebd65",
+    "Translations/TranslatedText/keyboard - sheet.csv": "eae9ffff19d5a63439113b401bc05e9137fc9e4f419c4778a9c5ae61b0cb9deb",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "target": "ninten",
+  "texts": [
+    "What is this boy's name?",
+    "Please change this name.",
+    "This name's already taken!",
+    "@",
+    "`",
+    "SMALL",
+    "CAPITAL"
+  ]
+}

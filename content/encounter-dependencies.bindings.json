@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "bindings": [
+    {
+      "formation": "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml#12",
+      "entry_ir": "content/native-battle.json",
+      "round_ir": "content/native-round.json",
+      "battle_pack": "data/opening.encbattle",
+      "round_pack": "data/opening.encround"
+    },
+    {
+      "formation": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml#6",
+      "entry_ir": "content/doll-entry.json",
+      "round_ir": "content/doll-round.json",
+      "battle_pack": "data/doll-entry.encbattle",
+      "round_pack": "data/doll-entry.encround"
+    },
+    {
+      "formation": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml#6",
+      "entry_ir": "content/pillow-entry.json",
+      "round_ir": "content/pillow-round.json",
+      "battle_pack": "data/pillow-entry.encbattle",
+      "round_pack": "data/pillow-entry.encround"
+    }
+  ]
+}

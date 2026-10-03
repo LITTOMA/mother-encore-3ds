@@ -1,0 +1,43 @@
+{
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "read_only_upstream": true,
+  "source_sha256": {
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+    "Scripts/UI/Battle/RisingNumber.gd": "d22dd5e96e69a8331ffd1183de2ff32b2e2eff6e01059f4ce0b104bdd6dc9dba",
+    "Scripts/UI/Battle/HitEffect.gd": "adac7ef2ebe476c7210426974224be8c8d166e26a196f90c903beac55261c9a2",
+    "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb",
+    "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+    "Scripts/UI/Battle/Smash.gd": "886d8defe0b0fa2bb113a071f9c7cbad1eee82e8cd4d9d32e1f2c868368e6dfc",
+    "Scripts/UI/Battle/BattleItemPool.gd": "8f193447042817087a33cf761ea4c89cb6e9e453bc257a04b95089deaee8ff07",
+    "Scripts/UI/Battle/BattleDialogueBox.gd": "d712af3bbdcc1bab9ed24caccf7a9f4702187b60c24092beec9a7138394e09a5",
+    "Scripts/UI/Battle/SpeechBubble.gd": "2108a4d12dade8ddd51165824065a6c99aab13c0c38d9c8cc510161c8e9dcf4f",
+    "Scripts/UI/Battle/BattleParticipant.gd": "a6012e909f32931dd673b884bfc3564ae78741e64a18adb3a23cf5c25c9a1fdb",
+    "Scripts/UI/Battle/EnemySkill.gd": "152280867468742f87b0212237d27df4c28ec7717217fbcf6cb72663363236c6",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/Enemy.gd": "ba81a8f7144dc06cd1674413e5c9b6e670c05aed00c44de98161ad7dda8ebe1b",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
+    "Nodes/Ui/Battle/FlyingNumber.tscn": "47f54f11a67d7f4138bf042f189f4617bf57fff40b5d463093ad094fa4ac3e22",
+    "Nodes/Ui/Battle/Smash.tscn": "f82e7a1caa0dfb3f54fe9107a3328d814c241040779a6845b65f2690c19068f9",
+    "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+    "Data/BattleSkills/attack.yaml": "97d01c135e783f4510b13501fd79b3b0f023297d6c860c3d06ac7db07f1f26ae",
+    "Data/BattleSkills/bash.yaml": "ef8f69c8897aa82f91dedf69bc662761f894c75374dca7b5b0a9ef6fa4d4b407",
+    "Data/BattleSkills/tackle.yaml": "8b82dc31555bdc4f6a3c1843eb8e8a81eb1ded3c2efa7b4f433ab424c7d88078",
+    "Data/BattleSkills/float.yaml": "febabbfa812aeda67aaf4177c99f49abb7c76b038bf418abe0e47429b5966221",
+    "Data/BattleSkills/guard.yaml": "3dd5ab7132619f863332845e7fbcd46b56cc9bf0f32ae2b864fd4b30c38294c0",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7"
+  },
+  "source_derived_content_sha256": {
+    "content/native-battle.json": "ff44b8e515dc6e3e61bfb4e0c47df2bcc063e951bf24e927e387aaa0c0d5e924"
+  },
+  "scope": "Fresh healthy Ninten/Lamp; attack,tackle,float,guard; first menu controlled seed/state; no upstream file changes"
+}

@@ -1,0 +1,115 @@
+{
+  "scope": "Equal-position source sprite alpha + exact original Above atlas. Common native pose transform/floor(+0.5). No runtime geometry or source data changed. This is differential pixel evidence, not an emulator result.",
+  "results": [
+    {
+      "actor": "Ninten",
+      "root": [
+        464,
+        160
+      ],
+      "source_pixels": 305,
+      "covered_by_original_above": 0,
+      "uncovered_below_above": 0,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Ninten",
+      "root": [
+        464,
+        176
+      ],
+      "source_pixels": 305,
+      "covered_by_original_above": 107,
+      "uncovered_below_above": 0,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Ninten",
+      "root": [
+        464,
+        184
+      ],
+      "source_pixels": 305,
+      "covered_by_original_above": 173,
+      "uncovered_below_above": 18,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Ninten",
+      "root": [
+        464,
+        192
+      ],
+      "source_pixels": 305,
+      "covered_by_original_above": 191,
+      "uncovered_below_above": 107,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Ninten",
+      "root": [
+        464,
+        200
+      ],
+      "source_pixels": 305,
+      "covered_by_original_above": 114,
+      "uncovered_below_above": 191,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Minnie",
+      "root": [
+        464,
+        160
+      ],
+      "source_pixels": 293,
+      "covered_by_original_above": 0,
+      "uncovered_below_above": 0,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Minnie",
+      "root": [
+        464,
+        176
+      ],
+      "source_pixels": 293,
+      "covered_by_original_above": 103,
+      "uncovered_below_above": 0,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Minnie",
+      "root": [
+        464,
+        184
+      ],
+      "source_pixels": 293,
+      "covered_by_original_above": 196,
+      "uncovered_below_above": 17,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Minnie",
+      "root": [
+        464,
+        192
+      ],
+      "source_pixels": 293,
+      "covered_by_original_above": 190,
+      "uncovered_below_above": 103,
+      "uncovered_below_above_with_source_bars": 0
+    },
+    {
+      "actor": "Minnie",
+      "root": [
+        464,
+        200
+      ],
+      "source_pixels": 293,
+      "covered_by_original_above": 80,
+      "uncovered_below_above": 213,
+      "uncovered_below_above_with_source_bars": 0
+    }
+  ]
+}

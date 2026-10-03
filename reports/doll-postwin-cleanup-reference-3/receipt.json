@@ -1,0 +1,10 @@
+{
+  "emulator": "not run",
+  "engine_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "hardware": "not run",
+  "probe_sha256": "60689f5c1f52d934d44f07ddd84ad2ee44b7e85606db45d746caeff83621d464",
+  "reference_sha256": "af0e5c8d4427272eafcb13bbc07f5abc8fe010fa2a13929aca0d2c434e5d6425",
+  "result": "Five cases,120 native idle samples each; immediate pose copy and source frame_changed+idle waits retained",
+  "scope": "Unchanged nonplayer Actor.update_npcs; original CharacterSprite trees; Doll Floater/Minnie and Mimmie4dir replacement signal waits; minimal global/UI stubs",
+  "tool_sha256": "d1145edeed906c3c5ba6bdbf2f074116cb4f96dddf22ecb2847a67b17b761132"
+}

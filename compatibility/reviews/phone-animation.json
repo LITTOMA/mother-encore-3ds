@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_handler_approved": false,
+  "sources": {
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626"
+  },
+  "native_receipt_sha256": "a1cc27bf1434cfd1912fbf38460085d41b1f72864c2cd141f3dd579c39375454",
+  "binary_fixture_sha256": "ff8901d5fad4beacdb6f26fab67ac132be32eb5189ce4d8553dfc71c648577bf",
+  "scope": "Original Idle/Ring Animation resources and native AnimationPlayer.advance; setter recorders replace sprite/audio devices"
+}

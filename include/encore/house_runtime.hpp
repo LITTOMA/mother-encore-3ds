@@ -1,0 +1,93 @@
+#pragma once
+#include "encore/house_data.hpp"
+#include "encore/world.hpp"
+#include "encore/phone_runtime.hpp"
+#include "encore/dialogue_choices.hpp"
+#include <set>
+namespace encore::upstream {
+class HousePresentation;
+enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error};
+enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested};
+struct HouseEvent {HouseEventKind kind{};uint32_t object=0;uint64_t physics_tick=0,idle_frame=0;Vec2 position{};};
+struct HouseSoundRequest {uint32_t sound=0;};
+struct HouseOpenableState {
+ bool blocked=false,locked=false,unlocked=false,one_way=false,inside=false,sprite_visible=true,player_disabled=false,nonplayer_disabled=false;
+ bool action=false,pending_action=false,pending_normal=false,animation_pending=false,collision_pending=false,collision_value=false,timer_running=false;
+ double timer_remaining=0,animation_time=0;
+};
+class HouseRuntime : public PhoneFlagQuery, public PhoneSoundSink {
+public:
+ bool initialize(HouseView,OpeningWorld&,HousePresentation&);
+ bool rebind_scene(OpeningWorld&,HousePresentation&);
+ bool restore_seen_dialogue(const std::set<uint32_t>&);
+ bool set_player_nickname(std::string_view);
+ bool bind_phone(PhoneRuntime&);
+ void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
+ bool select_story_option(uint32_t pc,uint32_t generation);
+ bool close_story_submenu(uint32_t generation);
+ bool get_phone_flag(uint32_t,bool&)const override;
+ bool play_phone_sound(const PhoneSoundRequest&)override;
+ const std::vector<PhoneSoundRequest>&phone_sounds()const{return phone_sounds_;}
+ bool before_physics(WalkInput&);
+ bool after_physics();
+ bool idle_frame(double delta,bool accept,bool cancel);
+ HousePhase phase()const{return phase_;}
+ bool blocks_player()const;
+ bool npc_interaction_supported(uint32_t)const;bool door_interaction_supported(uint32_t)const;bool phone_interaction_supported(uint32_t)const;
+ bool entering_door()const;
+ float fade_alpha()const;
+ BattleValue fade_color()const;
+ const char* error()const{return error_;}
+ uint32_t active_object()const{return active_;}
+ const HouseOpenableState& openable_state(uint32_t index)const{return openables_[index];}
+ bool story_executing()const{return story_executing_;}
+ bool story_pending()const{return story_index_!=house_no_index;}
+ uint32_t story_index()const{return story_index_;}
+ std::string_view story_path()const{return story_pending()?content_.string(content_.story_trigger(story_index_).dialogue):std::string_view{};}
+ bool seen_dialogue(uint32_t key)const{return seen_.count(key)!=0;}
+ const std::set<uint32_t>&seen_dialogue_keys()const{return seen_;}
+ const std::vector<HouseEvent>&events()const{return events_;}
+ std::vector<HouseSoundRequest>take_sounds(){auto result=std::move(sounds_);sounds_.clear();return result;}
+private:
+ bool fail(const char*);void event(HouseEventKind,uint32_t);
+ std::string_view player_nickname()const;
+ std::string nickname_;
+ bool overlaps(Vec2 center,Vec2 extents,Vec2 player)const;
+ bool overlaps_circle(Vec2 center,float radius,Vec2 player)const;
+ bool update_openable_contacts(Vec2 player);
+ bool advance_openables(double delta);
+ bool open_openable(uint32_t index);
+ bool normal_openable(uint32_t index);
+ bool interact_openable(uint32_t index);
+ bool interact_phone(uint32_t index);
+ uint32_t program_for_path(std::string_view)const;
+ bool story_conditions(uint32_t index)const;
+ bool sync_npc_visibility();
+ bool process_npc_restores();
+ Vec2 npc_point(uint32_t index,Vec2 original)const;
+ bool process_story_requests();
+ bool deliver_area_contacts();
+ bool sync_story_dialogue();bool advance_story_dialogue(bool automatic);bool text_finished();
+ bool resolve_npc_dialogue(uint32_t,uint32_t&first,uint32_t&count,uint32_t&program,uint32_t&seen)const;
+ bool begin_door(uint32_t);bool interact();bool finish_door();
+ const DialogueChoicesData*choices_data_=nullptr;DialogueChoices*choices_=nullptr;uint32_t choices_generation_=0;
+ PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;
+ HouseView content_;OpeningWorld*world_=nullptr;HousePresentation*presentation_=nullptr;
+ struct AreaContact {uint8_t kind;uint32_t index;bool entered;};
+ std::vector<AreaContact>pending_contacts_;
+ std::vector<uint8_t>door_inside_,boundary_inside_,story_inside_,story_process_;
+ std::vector<HouseOpenableState>openables_;
+ struct RestoreWait {uint64_t frame_revision=0,ready_idle=0;uint8_t phase=0;};
+ std::vector<RestoreWait>npc_restore_;
+ std::vector<uint64_t>story_ready_idle_;
+ Vec2 observed_physics_position_{};
+ uint32_t story_original_npc_=house_no_index;
+ uint32_t active_story_dialogue_=house_no_index;bool story_executing_=false;
+ bool observed_battle_=false;
+ uint32_t story_index_=house_no_index;std::set<uint32_t>seen_;
+ std::vector<HouseEvent>events_;std::vector<HouseSoundRequest>sounds_;
+ HousePhase phase_=HousePhase::Idle;uint32_t active_=house_no_index;double fade_time_=0;
+ bool door_unpaused_=false;uint64_t physics_tick_=0,idle_frame_=0,await_idle_=0;
+ Vec2 last_safe_position_{},last_safe_direction_{};const char*error_="";
+};
+}

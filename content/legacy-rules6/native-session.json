@@ -1,0 +1,884 @@
+{
+  "schema": 1,
+  "kind": "encore.native-session.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Single live party member; connected native house rooms; source levels 1 and 2; initial equipment and key item; no restore UI or event-transform snapshot",
+  "compatibility": {
+    "content_family": 1162739714,
+    "content_revision": 1,
+    "rules_revision": 6
+  },
+  "defaults": {
+    "scene_id": "res://Maps/podunk/Nintens House.tscn",
+    "scene_label": "Ninten's House",
+    "position_x": 520.0,
+    "position_y": 397.0,
+    "direction_x": 0,
+    "direction_y": 1,
+    "run_sound": "wood",
+    "shadow_effect": "shadow",
+    "playtime_seconds": 0,
+    "settings": {
+      "text_speed": 0.02,
+      "menu_flavor": "Plain",
+      "button_prompts": "Both",
+      "description": true
+    },
+    "player_name": "",
+    "favorite_food": "",
+    "cash": 0,
+    "bank": 0,
+    "earned_cash": 0,
+    "characters": [
+      {
+        "character_id": "ninten",
+        "nickname": "Ninten",
+        "level": 1,
+        "experience": 0,
+        "hp": 62,
+        "pp": 26,
+        "permanent_boosts": [],
+        "affinity_multipliers": [
+          {
+            "id": "asthma",
+            "value": 1
+          }
+        ],
+        "learned_skills": [
+          "strike",
+          "splitShot"
+        ],
+        "status": [],
+        "inventory": [
+          {
+            "item_id": "BaseballCap",
+            "equipped": true,
+            "doses": 1,
+            "uid": 1
+          }
+        ]
+      }
+    ],
+    "party": [
+      "ninten"
+    ],
+    "key_items": [
+      {
+        "item_id": "CashCard",
+        "equipped": false,
+        "doses": 1,
+        "uid": 2
+      }
+    ],
+    "storage": [],
+    "flags": [
+      {
+        "id": "doll_melody",
+        "value": false
+      },
+      {
+        "id": "canary_melody",
+        "value": false
+      },
+      {
+        "id": "monkey_melody",
+        "value": false
+      },
+      {
+        "id": "piano_melody",
+        "value": false
+      },
+      {
+        "id": "cactus_melody",
+        "value": false
+      },
+      {
+        "id": "dragon_melody",
+        "value": false
+      },
+      {
+        "id": "eve_melody",
+        "value": false
+      },
+      {
+        "id": "grave_melody",
+        "value": false
+      },
+      {
+        "id": "switch_leader",
+        "value": false
+      },
+      {
+        "id": "bat",
+        "value": false
+      },
+      {
+        "id": "energy_beam",
+        "value": false
+      },
+      {
+        "id": "eagle_feather",
+        "value": false
+      },
+      {
+        "id": "encore_tutorial",
+        "value": false
+      },
+      {
+        "id": "used_encore",
+        "value": false
+      },
+      {
+        "id": "earned_cash",
+        "value": false
+      },
+      {
+        "id": "good_morning",
+        "value": false
+      },
+      {
+        "id": "saved",
+        "value": false
+      },
+      {
+        "id": "npc_disappear_1",
+        "value": false
+      },
+      {
+        "id": "npc_dialog_1",
+        "value": false
+      },
+      {
+        "id": "npc_dialog_2",
+        "value": false
+      },
+      {
+        "id": "visited_podunk",
+        "value": true
+      },
+      {
+        "id": "visited_magicant",
+        "value": false
+      },
+      {
+        "id": "visited_merrysville",
+        "value": false
+      },
+      {
+        "id": "visited_twinkle_elementary",
+        "value": false
+      },
+      {
+        "id": "visited_reindeer",
+        "value": false
+      },
+      {
+        "id": "visited_spookane",
+        "value": false
+      },
+      {
+        "id": "visited_snowman",
+        "value": false
+      },
+      {
+        "id": "visited_yucca",
+        "value": false
+      },
+      {
+        "id": "visited_youngtown",
+        "value": false
+      },
+      {
+        "id": "visited_ellay",
+        "value": false
+      },
+      {
+        "id": "visited_mtitoi",
+        "value": false
+      },
+      {
+        "id": "pippi_reunion",
+        "value": false
+      },
+      {
+        "id": "pippi_met_lloyd",
+        "value": false
+      },
+      {
+        "id": "pippi_met_ana",
+        "value": false
+      },
+      {
+        "id": "pippi_met_teddy",
+        "value": false
+      },
+      {
+        "id": "pippi_rocket",
+        "value": false
+      },
+      {
+        "id": "lloyd_magicant",
+        "value": false
+      },
+      {
+        "id": "ana_magicant",
+        "value": false
+      },
+      {
+        "id": "teddy_magicant",
+        "value": false
+      },
+      {
+        "id": "poltergeist",
+        "value": false
+      },
+      {
+        "id": "mimmie_door_opened",
+        "value": false
+      },
+      {
+        "id": "doll_attack",
+        "value": false
+      },
+      {
+        "id": "pillow_attack",
+        "value": false
+      },
+      {
+        "id": "minnie_leave",
+        "value": false
+      },
+      {
+        "id": "minnie_door",
+        "value": false
+      },
+      {
+        "id": "doll_defeated",
+        "value": false
+      },
+      {
+        "id": "phone_ring",
+        "value": false
+      },
+      {
+        "id": "talked_to_dad",
+        "value": false
+      },
+      {
+        "id": "mimmie_ask_key",
+        "value": false
+      },
+      {
+        "id": "carol_ask_key",
+        "value": false
+      },
+      {
+        "id": "mick_scratch",
+        "value": false
+      },
+      {
+        "id": "mick_telepathy",
+        "value": false
+      },
+      {
+        "id": "ninten_basement_door",
+        "value": false
+      },
+      {
+        "id": "got_juice",
+        "value": false
+      },
+      {
+        "id": "got_diary",
+        "value": false
+      },
+      {
+        "id": "got_dog_treats",
+        "value": false
+      },
+      {
+        "id": "got_asthma_spray",
+        "value": false
+      },
+      {
+        "id": "gave_treats",
+        "value": false
+      },
+      {
+        "id": "beat_dog_bridge",
+        "value": false
+      },
+      {
+        "id": "pippis_mom_call",
+        "value": false
+      },
+      {
+        "id": "pippis_mom_help",
+        "value": false
+      },
+      {
+        "id": "disguised_zombie_defeated",
+        "value": false
+      },
+      {
+        "id": "cem_roots_grown",
+        "value": false
+      },
+      {
+        "id": "got_shovel",
+        "value": false
+      },
+      {
+        "id": "returned_shovel",
+        "value": false
+      },
+      {
+        "id": "hidden_entrance_opened",
+        "value": false
+      },
+      {
+        "id": "pippi_fight",
+        "value": false
+      },
+      {
+        "id": "pippi_fought",
+        "value": false
+      },
+      {
+        "id": "pippi_rescued",
+        "value": false
+      },
+      {
+        "id": "courage_badge_received",
+        "value": false
+      },
+      {
+        "id": "church_door_opened",
+        "value": false
+      },
+      {
+        "id": "church_exited",
+        "value": false
+      },
+      {
+        "id": "canary_found",
+        "value": false
+      },
+      {
+        "id": "wally_attack",
+        "value": false
+      },
+      {
+        "id": "wally_fought",
+        "value": false
+      },
+      {
+        "id": "wally_defeat",
+        "value": false
+      },
+      {
+        "id": "pippi_reunite",
+        "value": false
+      },
+      {
+        "id": "alfred_song",
+        "value": false
+      },
+      {
+        "id": "leave_canary_village",
+        "value": false
+      },
+      {
+        "id": "pippi_delivered",
+        "value": false
+      },
+      {
+        "id": "zoo_key_stolen",
+        "value": false
+      },
+      {
+        "id": "starman_jr_fought",
+        "value": false
+      },
+      {
+        "id": "zoo_freed",
+        "value": false
+      },
+      {
+        "id": "monkey_apologize",
+        "value": false
+      },
+      {
+        "id": "guard_moved",
+        "value": false
+      },
+      {
+        "id": "ninten_family_goodbye",
+        "value": false
+      },
+      {
+        "id": "got_magic_candy",
+        "value": false
+      },
+      {
+        "id": "got_magic_ribbon",
+        "value": false
+      },
+      {
+        "id": "lent_cash_card",
+        "value": false
+      },
+      {
+        "id": "got_big_bag",
+        "value": false
+      },
+      {
+        "id": "met_happiness_guy",
+        "value": false
+      },
+      {
+        "id": "met_guy_who_talks_about_how_you_cant_part_if_you_havent_met",
+        "value": false
+      },
+      {
+        "id": "got_nicknamed",
+        "value": false
+      },
+      {
+        "id": "slept_at_spoon_guys_place",
+        "value": false
+      },
+      {
+        "id": "guard_riddle_solved",
+        "value": false
+      },
+      {
+        "id": "fountain_scouts_met",
+        "value": false
+      },
+      {
+        "id": "marys_story_learned",
+        "value": false
+      },
+      {
+        "id": "enteredwell",
+        "value": false
+      },
+      {
+        "id": "first_flying_man",
+        "value": false
+      },
+      {
+        "id": "flying_man_in_party",
+        "value": false
+      },
+      {
+        "id": "flying_man_1_joined",
+        "value": false
+      },
+      {
+        "id": "flying_man_2_joined",
+        "value": false
+      },
+      {
+        "id": "flying_man_3_joined",
+        "value": false
+      },
+      {
+        "id": "flying_man_4_joined",
+        "value": false
+      },
+      {
+        "id": "flying_man_5_joined",
+        "value": false
+      },
+      {
+        "id": "onyx_hook_found",
+        "value": false
+      },
+      {
+        "id": "fish_attack",
+        "value": false
+      },
+      {
+        "id": "fish_defeat",
+        "value": false
+      },
+      {
+        "id": "forgotten_man_1",
+        "value": false
+      },
+      {
+        "id": "forgotten_man_2",
+        "value": false
+      },
+      {
+        "id": "forgotten_man_3",
+        "value": false
+      },
+      {
+        "id": "forgotten_man_4",
+        "value": false
+      },
+      {
+        "id": "forgotten_man_5",
+        "value": false
+      },
+      {
+        "id": "roof_door_checked",
+        "value": false
+      },
+      {
+        "id": "janitor_cutscene_finished",
+        "value": false
+      },
+      {
+        "id": "lloyd_roof_1",
+        "value": false
+      },
+      {
+        "id": "rat_king_1",
+        "value": false
+      },
+      {
+        "id": "rat_king_2",
+        "value": false
+      },
+      {
+        "id": "sweet_factory_key_1",
+        "value": false
+      },
+      {
+        "id": "got_br_wings",
+        "value": false
+      },
+      {
+        "id": "got_br_head",
+        "value": false
+      },
+      {
+        "id": "br_progress_1",
+        "value": false
+      },
+      {
+        "id": "br_progress_1_arrived",
+        "value": false
+      },
+      {
+        "id": "br_wings_attached",
+        "value": false
+      },
+      {
+        "id": "br_progress_2",
+        "value": false
+      },
+      {
+        "id": "br_progress_2_arrived",
+        "value": false
+      },
+      {
+        "id": "br_head_attached",
+        "value": false
+      },
+      {
+        "id": "br_progress_3",
+        "value": false
+      },
+      {
+        "id": "br_progress_3_arrived",
+        "value": false
+      },
+      {
+        "id": "br_finishing_touch",
+        "value": false
+      },
+      {
+        "id": "rat_king_attack",
+        "value": false
+      },
+      {
+        "id": "rat_king_defeat",
+        "value": false
+      },
+      {
+        "id": "rat_king_disappear",
+        "value": false
+      },
+      {
+        "id": "bottle_rocket_found",
+        "value": false
+      },
+      {
+        "id": "sweet_factory_bomb_chain",
+        "value": false
+      },
+      {
+        "id": "sweet_factory_exit_open",
+        "value": false
+      },
+      {
+        "id": "lloyd_befriended",
+        "value": false
+      },
+      {
+        "id": "lab_destroyed",
+        "value": false
+      },
+      {
+        "id": "missile_explosion",
+        "value": false
+      },
+      {
+        "id": "missile_damage_seen",
+        "value": false
+      },
+      {
+        "id": "weird_teacher_appear",
+        "value": false
+      },
+      {
+        "id": "weird_teacher_alt_dialogue",
+        "value": false
+      },
+      {
+        "id": "weird_teacher_real_rocket_launched",
+        "value": false
+      },
+      {
+        "id": "got_factory_pass",
+        "value": false
+      },
+      {
+        "id": "guard_dog_beaten",
+        "value": false
+      },
+      {
+        "id": "drdistorto_1",
+        "value": false
+      },
+      {
+        "id": "drdistorto_2",
+        "value": false
+      },
+      {
+        "id": "drdistorto_3",
+        "value": false
+      },
+      {
+        "id": "drdistorto_4",
+        "value": false
+      },
+      {
+        "id": "computer_left_hacked",
+        "value": false
+      },
+      {
+        "id": "computer_right_hacked",
+        "value": false
+      },
+      {
+        "id": "computers_all_hacked",
+        "value": false
+      },
+      {
+        "id": "franklin_badge_found",
+        "value": false
+      },
+      {
+        "id": "drdistorto_attack",
+        "value": false
+      },
+      {
+        "id": "drdistorto_defeat",
+        "value": false
+      },
+      {
+        "id": "rocket_launched",
+        "value": false
+      },
+      {
+        "id": "drdistorto_disappear",
+        "value": false
+      },
+      {
+        "id": "lloyd_kitchen",
+        "value": false
+      },
+      {
+        "id": "fixed_merrysville_road_bridge",
+        "value": false
+      },
+      {
+        "id": "lloyd_mom_goodbye",
+        "value": false
+      },
+      {
+        "id": "train_to_reindeer",
+        "value": false
+      },
+      {
+        "id": "met_arms_dealer",
+        "value": false
+      },
+      {
+        "id": "received_swindler_money",
+        "value": false
+      },
+      {
+        "id": "donated_to_charity",
+        "value": false
+      },
+      {
+        "id": "found_ana_hat",
+        "value": false
+      },
+      {
+        "id": "magicant_second_visit",
+        "value": false
+      },
+      {
+        "id": "wally2_attack",
+        "value": false
+      },
+      {
+        "id": "wally2_defeat",
+        "value": false
+      },
+      {
+        "id": "lloyd_asleep",
+        "value": false
+      },
+      {
+        "id": "ana_befriended",
+        "value": false
+      },
+      {
+        "id": "nancy_attack",
+        "value": false
+      },
+      {
+        "id": "nancy_defeat",
+        "value": false
+      },
+      {
+        "id": "magicant_third_visit",
+        "value": false
+      },
+      {
+        "id": "giantrobot1_attack",
+        "value": false
+      },
+      {
+        "id": "giantrobot1_defeat",
+        "value": false
+      },
+      {
+        "id": "magicant_fourth_visit",
+        "value": false
+      },
+      {
+        "id": "magicant_fifth_visit",
+        "value": false
+      },
+      {
+        "id": "magicant_sixth_visit",
+        "value": false
+      }
+    ],
+    "object_flags": [],
+    "seen_dialogue_flags": [],
+    "encountered": [],
+    "keys": [
+      {
+        "id": "Catacombs",
+        "value": 0
+      }
+    ],
+    "rare_drops": [],
+    "source_version": "0.4.1.0",
+    "saved_at": "",
+    "is_debug": false,
+    "rng_policy": 1
+  },
+  "levels": [
+    {
+      "level": 1,
+      "minimum_exp": 0,
+      "next_exp": 9,
+      "stats": [
+        62,
+        26,
+        11,
+        12,
+        6,
+        5,
+        8
+      ],
+      "skills": [
+        "strike",
+        "splitShot"
+      ]
+    },
+    {
+      "level": 2,
+      "minimum_exp": 9,
+      "next_exp": 27,
+      "stats": [
+        65,
+        27,
+        12,
+        12,
+        6,
+        6,
+        8
+      ],
+      "skills": [
+        "strike",
+        "splitShot",
+        "telepathy"
+      ]
+    }
+  ],
+  "saved_flag": "saved",
+  "earned_cash_flag": "earned_cash",
+  "mutable_flags": [
+    "doll_attack",
+    "doll_defeated",
+    "doll_melody",
+    "earned_cash",
+    "mimmie_door_opened",
+    "phone_ring",
+    "pillow_attack",
+    "poltergeist",
+    "saved",
+    "talked_to_dad"
+  ],
+  "camera_area_ids": [
+    1,
+    3,
+    4,
+    5
+  ],
+  "uid_policy": "Native session IDs preserve live InventoryState.id; initial key items use reserved subsequent IDs. Original random UIDs and RNG stream are not reproduced.",
+  "sources": {
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "dependencies": {
+    "content/native-opening.json": "519802f23675a880c7f6fab412c2f84aeed9f34385c0ba25888fb5ba4786e200",
+    "content/native-house.json": "b2b860a88d9fd5f236e4360aa13dab77d9fcffbafa6406a424757abf0ce02d54",
+    "content/native-battle.json": "ff44b8e515dc6e3e61bfb4e0c47df2bcc063e951bf24e927e387aaa0c0d5e924",
+    "content/native-items.json": "1425b51f0c0e011564d59d02cbeabdb0f9b717ee7daf6216dd936309b9c72751",
+    "content/native-round.json": "5f294d0e903d81b05d4db5ab5905173478f624aebc643fa9ccdbb34f2b96684c",
+    "content/doll-round.json": "c0394e670f690105bacdf819541c03293a056ec7c88f44ab5cd18c0c7b6db649"
+  }
+}

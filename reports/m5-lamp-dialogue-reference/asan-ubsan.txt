@@ -1,0 +1,1 @@
+Lamp dialogue: 848 checks; 55 actions match native Godot frames; final request at frame384

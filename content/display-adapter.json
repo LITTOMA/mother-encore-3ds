@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "policy": "400x240 expanded canvas at 1:1 source art pixels; retain 320x180 reference for QA",
+  "authorization": "User approved source reference plus expanded native canvas on 2026-10-01",
+  "default_canvas": [400, 240],
+  "reference_canvas": [320, 180],
+  "role_anchors": {
+    "0": [0,0], "1": [0.5,0.5], "2": [0.5,0.5], "3": [0.5,0.5],
+    "4": [0.5,1], "5": [0.5,1], "6": [0.5,1], "7": [0.5,1], "8": [0.5,1],
+    "9": [0,0], "10": [0,0], "11": [0,0], "12": [0,1], "13": [1,0], "14": [1,0], "15": [0.5,0.5]
+  },
+  "expand_width_roles": [11,12],
+  "transition_mask": "source pixels centered, extended edge coverage outside source frame",
+  "party_transition": "source trajectory with destination anchor interpolated to the bottom plate during descent",
+  "background_uv": "divide pixel coordinates by original tiled texture extent, repeat final distorted UV",
+  "sprite_sampling": "nearest and pixel-snapped, no fractional or nonuniform image scaling"
+}

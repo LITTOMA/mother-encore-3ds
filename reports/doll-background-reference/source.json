@@ -1,0 +1,10 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Graphics/Battle BGS/baby.png": "1de8cae77c5282b572c682e9339b68624d1ba96562b47134a8b0954b7177f300",
+    "Graphics/Battle BGS/baby_pal.png": "2bd34845af2be7166bcb042f1f7413f54dcbce86a97568e013638f79d1d7ef15",
+    "addons/distortionator_integration/default_shader.tres": "f65588ad747f102d2358bc016a016e22a2d1ef986a461938b8c1e3b75122d61c",
+    "Graphics/Battle BGS/baby.bbg": "cfd180f2ee72b8e748d780203707d50744620a8b697c75530c94c4f7e88c6bb6"
+  },
+  "generator_sha256": "19edde0c6639a373766d6f679848e4dc068452c89a1f836bfef887ecc7aa5cbc"
+}

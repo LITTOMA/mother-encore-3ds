@@ -1,0 +1,1036 @@
+{
+  "source_reference": "reports/battle-round-reference/final/reference.json",
+  "source_reference_sha256": "455606f18e0d42cba4aea1bda27c0425763db610f520e301713c15ff5fb72c95",
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Extracted original methods and actual FlyingNumber.run in Godot3.6.2; source-method harness adapters and limitations are retained in source_reference; values copied without altered expectations",
+  "cases": [
+    {
+      "case": "seed_0",
+      "seed_u64": "0",
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "10116158231463745938",
+          "state_after_u64": "10046909401099057155"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 27,
+          "state_before_u64": "10046909401099057155",
+          "state_after_u64": "5735713945700390950"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 27,
+          "state_before_u64": "5735713945700390950",
+          "state_after_u64": "5295815986678782797"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 27,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "5295815986678782797",
+          "state_after_u64": "10389552378507106298"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 27,
+          "state_before_u64": "10389552378507106298",
+          "state_after_u64": "12701166781001711505"
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 60,
+          "state_before_u64": "12701166781001711505",
+          "state_after_u64": "4884245368506490396"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73,
+          "state_before_u64": "4884245368506490396",
+          "state_after_u64": "14798591270703411595"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "14798591270703411595",
+          "state_after_u64": "7114744539756843344"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73,
+          "state_before_u64": "7114744539756843344",
+          "state_after_u64": "10495292585042705839"
+        }
+      ]
+    },
+    {
+      "case": "seed_1",
+      "seed_u64": "1",
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 13
+      },
+      "raw_draw_count": 15,
+      "next_randi": "1007932533",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.98867726621920140",
+          "raw": [
+            "1811587497",
+            "683407368",
+            "2033395789"
+          ],
+          "raw_count": 3,
+          "state_before": "-1966449618399012673",
+          "state_after": "-8738384320504433132",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "16480294455310538943",
+          "state_after_u64": "9708359753205118484"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2375931748",
+          "raw": [
+            "2375931748"
+          ],
+          "raw_count": 4,
+          "state_before": "-8738384320504433132",
+          "state_after": "-5114255963836862429",
+          "frame": 27,
+          "state_before_u64": "9708359753205118484",
+          "state_after_u64": "13332488109872689187"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.66899681091308590",
+          "raw": [
+            "2873319489"
+          ],
+          "raw_count": 5,
+          "state_before": "-5114255963836862429",
+          "state_after": "4182585409017107910",
+          "frame": 27,
+          "state_before_u64": "13332488109872689187",
+          "state_after_u64": "4182585409017107910"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "57.27193669410065980",
+          "raw": [
+            "2189615729",
+            "3391941925",
+            "1039475129"
+          ],
+          "raw_count": 8,
+          "state_before": "4182585409017107910",
+          "state_after": "-1472948210019650105",
+          "frame": 27,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "4182585409017107910",
+          "state_after_u64": "16973795863689901511"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "2402520051",
+          "raw": [
+            "2402520051"
+          ],
+          "raw_count": 9,
+          "state_before": "-1472948210019650105",
+          "state_after": "8123836371601731482",
+          "frame": 27,
+          "state_before_u64": "16973795863689901511",
+          "state_after_u64": "8123836371601731482"
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "102522587",
+          "raw": [
+            "102522587"
+          ],
+          "raw_count": 10,
+          "state_before": "8123836371601731482",
+          "state_after": "6958822977713391281",
+          "frame": 60,
+          "state_before_u64": "8123836371601731482",
+          "state_after_u64": "6958822977713391281"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.03370889276266100",
+          "raw": [
+            "144778585"
+          ],
+          "raw_count": 11,
+          "state_before": "6958822977713391281",
+          "state_after": "-501794451285426500",
+          "frame": 73,
+          "state_before_u64": "6958822977713391281",
+          "state_after_u64": "17944949622424125116"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "41.13147545856647010",
+          "raw": [
+            "1113503278",
+            "2451211778",
+            "2890936911"
+          ],
+          "raw_count": 14,
+          "state_before": "-501794451285426500",
+          "state_after": "-5234540103586539211",
+          "frame": 73,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "17944949622424125116",
+          "state_after_u64": "13212203970123012405"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "2150260653",
+          "raw": [
+            "2150260653"
+          ],
+          "raw_count": 15,
+          "state_before": "-5234540103586539211",
+          "state_after": "2235178343712275440",
+          "frame": 73,
+          "state_before_u64": "13212203970123012405",
+          "state_after_u64": "2235178343712275440"
+        }
+      ]
+    },
+    {
+      "case": "seed_123",
+      "seed_u64": "123",
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 62,
+        "lamp": 13
+      },
+      "raw_draw_count": 9,
+      "next_randi": "451443022",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "2.83828767773709640",
+          "raw": [
+            "4043782474",
+            "1915967269",
+            "2176999240"
+          ],
+          "raw_count": 3,
+          "state_before": "-305081404891433935",
+          "state_after": "5298790857563703854",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "18141662668818117681",
+          "state_after_u64": "5298790857563703854"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2065207365",
+          "raw": [
+            "2065207365"
+          ],
+          "raw_count": 4,
+          "state_before": "5298790857563703854",
+          "state_after": "-645011620294058315",
+          "frame": 27,
+          "state_before_u64": "5298790857563703854",
+          "state_after_u64": "17801732453415493301"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.52399140596389770",
+          "raw": [
+            "2250525995"
+          ],
+          "raw_count": 5,
+          "state_before": "-645011620294058315",
+          "state_after": "-2504336549740366992",
+          "frame": 27,
+          "state_before_u64": "17801732453415493301",
+          "state_after_u64": "15942407523969184624"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "52.18847661446410770",
+          "raw": [
+            "4225862164",
+            "562167814",
+            "4185465629"
+          ],
+          "raw_count": 8,
+          "state_before": "-2504336549740366992",
+          "state_after": "8594761812770646393",
+          "frame": 27,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "15942407523969184624",
+          "state_after_u64": "8594761812770646393"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3265504083",
+          "raw": [
+            "3265504083"
+          ],
+          "raw_count": 9,
+          "state_before": "8594761812770646393",
+          "state_after": "3091848636090717156",
+          "frame": 27,
+          "state_before_u64": "8594761812770646393",
+          "state_after_u64": "3091848636090717156"
+        }
+      ]
+    },
+    {
+      "case": "ordinary_tackle",
+      "seed_u64": "0",
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "10116158231463745938",
+          "state_after_u64": "10046909401099057155"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 27,
+          "state_before_u64": "10046909401099057155",
+          "state_after_u64": "5735713945700390950"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 27,
+          "state_before_u64": "5735713945700390950",
+          "state_after_u64": "5295815986678782797"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 27,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "5295815986678782797",
+          "state_after_u64": "10389552378507106298"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 27,
+          "state_before_u64": "10389552378507106298",
+          "state_after_u64": "12701166781001711505"
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 60,
+          "state_before_u64": "12701166781001711505",
+          "state_after_u64": "4884245368506490396"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73,
+          "state_before_u64": "4884245368506490396",
+          "state_after_u64": "14798591270703411595"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "14798591270703411595",
+          "state_after_u64": "7114744539756843344"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73,
+          "state_before_u64": "7114744539756843344",
+          "state_after_u64": "10495292585042705839"
+        }
+      ]
+    },
+    {
+      "case": "ordinary_float",
+      "seed_u64": "2",
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 62,
+        "lamp": 15
+      },
+      "raw_draw_count": 9,
+      "next_randi": "77322774",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "2.10864703438565780",
+          "raw": [
+            "3242323450",
+            "3018856683",
+            "3570245418"
+          ],
+          "raw_count": 3,
+          "state_before": "4397686605447780332",
+          "state_after": "-9076933968398371803",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "4397686605447780332",
+          "state_after_u64": "9369810105311179813"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "83181836",
+          "raw": [
+            "83181836"
+          ],
+          "raw_count": 4,
+          "state_before": "-9076933968398371803",
+          "state_after": "2482518200335435808",
+          "frame": 27,
+          "state_before_u64": "9369810105311179813",
+          "state_after_u64": "2482518200335435808"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.20665428042411800",
+          "raw": [
+            "887573365"
+          ],
+          "raw_count": 5,
+          "state_before": "2482518200335435808",
+          "state_after": "3069354831355433023",
+          "frame": 27,
+          "state_before_u64": "2482518200335435808",
+          "state_after_u64": "3069354831355433023"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "48.93619606612987380",
+          "raw": [
+            "3667428178",
+            "2273137756",
+            "4116681034"
+          ],
+          "raw_count": 8,
+          "state_before": "3069354831355433023",
+          "state_after": "5111295275163145108",
+          "frame": 27,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "3069354831355433023",
+          "state_after_u64": "5111295275163145108"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "1843256520",
+          "raw": [
+            "1843256520"
+          ],
+          "raw_count": 9,
+          "state_before": "5111295275163145108",
+          "state_after": "3546505962201751459",
+          "frame": 27,
+          "state_before_u64": "5111295275163145108",
+          "state_after_u64": "3546505962201751459"
+        }
+      ]
+    },
+    {
+      "case": "smash_lethal",
+      "seed_u64": "59",
+      "boundary": "win",
+      "hp": {
+        "ninten": 62,
+        "lamp": 0
+      },
+      "raw_draw_count": 9,
+      "next_randi": "1179546988",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "1.74414404468816550",
+          "raw": [
+            "2388533886",
+            "2497013877",
+            "642573461"
+          ],
+          "raw_count": 3,
+          "state_before": "-1781430109476050703",
+          "state_after": "8519224249066227182",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "16665313964233500913",
+          "state_after_u64": "8519224249066227182"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "1877155104",
+          "raw": [
+            "1877155104"
+          ],
+          "raw_count": 4,
+          "state_before": "8519224249066227182",
+          "state_after": "-7223212210872803467",
+          "frame": 27,
+          "state_before_u64": "8519224249066227182",
+          "state_after_u64": "11223531862836748149"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37816137075424190",
+          "raw": [
+            "1624190727"
+          ],
+          "raw_count": 5,
+          "state_before": "-7223212210872803467",
+          "state_after": "-5044555874231380688",
+          "frame": 27,
+          "state_before_u64": "11223531862836748149",
+          "state_after_u64": "13402188199478170928"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "50.23657439665008440",
+          "raw": [
+            "2203440255",
+            "300187934",
+            "91675590"
+          ],
+          "raw_count": 8,
+          "state_before": "-5044555874231380688",
+          "state_after": "-6968451617318111687",
+          "frame": 27,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "13402188199478170928",
+          "state_after_u64": "11478292456391439929"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3355032876",
+          "raw": [
+            "3355032876"
+          ],
+          "raw_count": 9,
+          "state_before": "-6968451617318111687",
+          "state_after": "893089658336612772",
+          "frame": 27,
+          "state_before_u64": "11478292456391439929",
+          "state_after_u64": "893089658336612772"
+        }
+      ]
+    },
+    {
+      "case": "equal_speed_player_inserted_first",
+      "seed_u64": "0",
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "10116158231463745938",
+          "state_after_u64": "10046909401099057155"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 27,
+          "state_before_u64": "10046909401099057155",
+          "state_after_u64": "5735713945700390950"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 27,
+          "state_before_u64": "5735713945700390950",
+          "state_after_u64": "5295815986678782797"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 27,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "5295815986678782797",
+          "state_after_u64": "10389552378507106298"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 27,
+          "state_before_u64": "10389552378507106298",
+          "state_after_u64": "12701166781001711505"
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 60,
+          "state_before_u64": "12701166781001711505",
+          "state_after_u64": "4884245368506490396"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73,
+          "state_before_u64": "4884245368506490396",
+          "state_after_u64": "14798591270703411595"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "14798591270703411595",
+          "state_after_u64": "7114744539756843344"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73,
+          "state_before_u64": "7114744539756843344",
+          "state_after_u64": "10495292585042705839"
+        }
+      ]
+    },
+    {
+      "case": "equal_speed_lamp_inserted_first",
+      "seed_u64": "0",
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "calls": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3,
+          "state_before_u64": "10116158231463745938",
+          "state_after_u64": "10046909401099057155"
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 21,
+          "state_before_u64": "10046909401099057155",
+          "state_after_u64": "5735713945700390950"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 34,
+          "state_before_u64": "5735713945700390950",
+          "state_after_u64": "5295815986678782797"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 34,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "5295815986678782797",
+          "state_after_u64": "10389552378507106298"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 34,
+          "state_before_u64": "10389552378507106298",
+          "state_after_u64": "12701166781001711505"
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 73,
+          "state_before_u64": "12701166781001711505",
+          "state_after_u64": "4884245368506490396"
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73,
+          "state_before_u64": "4884245368506490396",
+          "state_after_u64": "14798591270703411595"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64,
+          "state_before_u64": "14798591270703411595",
+          "state_after_u64": "7114744539756843344"
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73,
+          "state_before_u64": "7114744539756843344",
+          "state_after_u64": "10495292585042705839"
+        }
+      ]
+    }
+  ]
+}

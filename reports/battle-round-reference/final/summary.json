@@ -1,0 +1,2811 @@
+{
+  "scope": "isolated original BattleSystem round methods; healthy first-round Ninten/Lamp; native RNG, double Variant arithmetic, deferred/yield/SceneTreeTimer semantics",
+  "timing_limits": [
+    "healthy participant stats/target HP with direct integer clamping; no original scrolling HP plate",
+    "dialogue completes after one native idle frame; not original glyph/text timing",
+    "Ninten bash native AnimationPlayer source tracks; source EnemySprite.attack native tween; nonblocking hide/hit/flash visual methods recorded only",
+    "sound/vibration/SP/hit-effect are recorded; no audio/GPU; bound text-only formatted dialogue has no pitch RNG",
+    "FlyingNumber.run is extracted source and consumes actual global RNG; its native tween is retained",
+    "SMASH visuals and global slow-motion recorded but not applied; source combat values remain unchanged",
+    "win records boundary and deactivates; no rewards, transition, world resume, or fabricated done",
+    "no statuses/passives/NPCs/encore/items; unexpected branches assert"
+  ],
+  "cases": [
+    {
+      "name": "seed_0",
+      "seed": 0,
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "turn": 2,
+      "action_index": 0,
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "start_tick": 1,
+      "end_tick": 130,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 0,
+          "seed": 0
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 0,
+          "site": "_end_player_action_choices",
+          "timer": 1,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 17,
+          "site": "_end_player_action_choices",
+          "timer": 1
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 17,
+          "actions": [
+            "ninten:attack",
+            "lamp:tackle"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 18,
+          "site": "_start_action",
+          "timer": 2,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 20,
+          "site": "_start_action",
+          "timer": 2
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 21,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 27,
+          "engine_idle": 27,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 16,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 27,
+          "engine_idle": 27,
+          "target": "lamp",
+          "before": 30,
+          "after": 14,
+          "delta": -16
+        },
+        {
+          "event": "timer_create",
+          "frame": 28,
+          "engine_idle": 28,
+          "site": "_do_skill",
+          "timer": 3,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 32,
+          "engine_idle": 32,
+          "site": "_do_skill",
+          "timer": 3
+        },
+        {
+          "event": "timer_create",
+          "frame": 32,
+          "engine_idle": 32,
+          "site": "_do_skill",
+          "timer": 4,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 56,
+          "engine_idle": 56,
+          "site": "_do_skill",
+          "timer": 4
+        },
+        {
+          "event": "action_done",
+          "frame": 56,
+          "engine_idle": 56,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "timer_create",
+          "frame": 57,
+          "engine_idle": 57,
+          "site": "_start_action",
+          "timer": 5,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 59,
+          "engine_idle": 59,
+          "site": "_start_action",
+          "timer": 5
+        },
+        {
+          "event": "targets",
+          "frame": 60,
+          "engine_idle": 60,
+          "user": "lamp",
+          "skill": "tackle",
+          "targets": [
+            "ninten"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 73,
+          "engine_idle": 73,
+          "user": "lamp",
+          "target": "ninten",
+          "skill": "tackle",
+          "damage": 1,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 73,
+          "engine_idle": 73,
+          "target": "ninten",
+          "before": 62,
+          "after": 61,
+          "delta": -1
+        },
+        {
+          "event": "timer_create",
+          "frame": 74,
+          "engine_idle": 74,
+          "site": "_do_skill",
+          "timer": 6,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 78,
+          "engine_idle": 78,
+          "site": "_do_skill",
+          "timer": 6
+        },
+        {
+          "event": "timer_create",
+          "frame": 78,
+          "engine_idle": 78,
+          "site": "_do_skill",
+          "timer": 7,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 102,
+          "engine_idle": 102,
+          "site": "_do_skill",
+          "timer": 7
+        },
+        {
+          "event": "action_done",
+          "frame": 102,
+          "engine_idle": 102,
+          "user": "lamp",
+          "skill": "tackle"
+        },
+        {
+          "event": "round_done",
+          "frame": 102,
+          "engine_idle": 102,
+          "turn": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 102,
+          "engine_idle": 102,
+          "site": "_new_round",
+          "timer": 8,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 126,
+          "engine_idle": 126,
+          "site": "_new_round",
+          "timer": 8
+        },
+        {
+          "event": "next_menu",
+          "frame": 126,
+          "engine_idle": 126,
+          "turn": 2
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 27
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 27
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 27,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 27
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 60
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73
+        }
+      ]
+    },
+    {
+      "name": "seed_1",
+      "seed": 1,
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 13
+      },
+      "turn": 2,
+      "action_index": 0,
+      "raw_draw_count": 15,
+      "next_randi": "1007932533",
+      "start_tick": 132,
+      "end_tick": 261,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 131,
+          "seed": 1
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 131,
+          "site": "_end_player_action_choices",
+          "timer": 9,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 148,
+          "site": "_end_player_action_choices",
+          "timer": 9
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 148,
+          "actions": [
+            "ninten:attack",
+            "lamp:tackle"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 149,
+          "site": "_start_action",
+          "timer": 10,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 151,
+          "site": "_start_action",
+          "timer": 10
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 152,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 27,
+          "engine_idle": 158,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 17,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 27,
+          "engine_idle": 158,
+          "target": "lamp",
+          "before": 30,
+          "after": 13,
+          "delta": -17
+        },
+        {
+          "event": "timer_create",
+          "frame": 28,
+          "engine_idle": 159,
+          "site": "_do_skill",
+          "timer": 11,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 32,
+          "engine_idle": 163,
+          "site": "_do_skill",
+          "timer": 11
+        },
+        {
+          "event": "timer_create",
+          "frame": 32,
+          "engine_idle": 163,
+          "site": "_do_skill",
+          "timer": 12,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 56,
+          "engine_idle": 187,
+          "site": "_do_skill",
+          "timer": 12
+        },
+        {
+          "event": "action_done",
+          "frame": 56,
+          "engine_idle": 187,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "timer_create",
+          "frame": 57,
+          "engine_idle": 188,
+          "site": "_start_action",
+          "timer": 13,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 59,
+          "engine_idle": 190,
+          "site": "_start_action",
+          "timer": 13
+        },
+        {
+          "event": "targets",
+          "frame": 60,
+          "engine_idle": 191,
+          "user": "lamp",
+          "skill": "tackle",
+          "targets": [
+            "ninten"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 73,
+          "engine_idle": 204,
+          "user": "lamp",
+          "target": "ninten",
+          "skill": "tackle",
+          "damage": 1,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 73,
+          "engine_idle": 204,
+          "target": "ninten",
+          "before": 62,
+          "after": 61,
+          "delta": -1
+        },
+        {
+          "event": "timer_create",
+          "frame": 74,
+          "engine_idle": 205,
+          "site": "_do_skill",
+          "timer": 14,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 78,
+          "engine_idle": 209,
+          "site": "_do_skill",
+          "timer": 14
+        },
+        {
+          "event": "timer_create",
+          "frame": 78,
+          "engine_idle": 209,
+          "site": "_do_skill",
+          "timer": 15,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 102,
+          "engine_idle": 233,
+          "site": "_do_skill",
+          "timer": 15
+        },
+        {
+          "event": "action_done",
+          "frame": 102,
+          "engine_idle": 233,
+          "user": "lamp",
+          "skill": "tackle"
+        },
+        {
+          "event": "round_done",
+          "frame": 102,
+          "engine_idle": 233,
+          "turn": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 102,
+          "engine_idle": 233,
+          "site": "_new_round",
+          "timer": 16,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 126,
+          "engine_idle": 257,
+          "site": "_new_round",
+          "timer": 16
+        },
+        {
+          "event": "next_menu",
+          "frame": 126,
+          "engine_idle": 257,
+          "turn": 2
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.98867726621920140",
+          "raw": [
+            "1811587497",
+            "683407368",
+            "2033395789"
+          ],
+          "raw_count": 3,
+          "state_before": "-1966449618399012673",
+          "state_after": "-8738384320504433132",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2375931748",
+          "raw": [
+            "2375931748"
+          ],
+          "raw_count": 4,
+          "state_before": "-8738384320504433132",
+          "state_after": "-5114255963836862429",
+          "frame": 27
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.66899681091308590",
+          "raw": [
+            "2873319489"
+          ],
+          "raw_count": 5,
+          "state_before": "-5114255963836862429",
+          "state_after": "4182585409017107910",
+          "frame": 27
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "57.27193669410065980",
+          "raw": [
+            "2189615729",
+            "3391941925",
+            "1039475129"
+          ],
+          "raw_count": 8,
+          "state_before": "4182585409017107910",
+          "state_after": "-1472948210019650105",
+          "frame": 27,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "2402520051",
+          "raw": [
+            "2402520051"
+          ],
+          "raw_count": 9,
+          "state_before": "-1472948210019650105",
+          "state_after": "8123836371601731482",
+          "frame": 27
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "102522587",
+          "raw": [
+            "102522587"
+          ],
+          "raw_count": 10,
+          "state_before": "8123836371601731482",
+          "state_after": "6958822977713391281",
+          "frame": 60
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.03370889276266100",
+          "raw": [
+            "144778585"
+          ],
+          "raw_count": 11,
+          "state_before": "6958822977713391281",
+          "state_after": "-501794451285426500",
+          "frame": 73
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "41.13147545856647010",
+          "raw": [
+            "1113503278",
+            "2451211778",
+            "2890936911"
+          ],
+          "raw_count": 14,
+          "state_before": "-501794451285426500",
+          "state_after": "-5234540103586539211",
+          "frame": 73,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "2150260653",
+          "raw": [
+            "2150260653"
+          ],
+          "raw_count": 15,
+          "state_before": "-5234540103586539211",
+          "state_after": "2235178343712275440",
+          "frame": 73
+        }
+      ]
+    },
+    {
+      "name": "seed_123",
+      "seed": 123,
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 62,
+        "lamp": 13
+      },
+      "turn": 2,
+      "action_index": 0,
+      "raw_draw_count": 9,
+      "next_randi": "451443022",
+      "start_tick": 263,
+      "end_tick": 380,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 262,
+          "seed": 123
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 262,
+          "site": "_end_player_action_choices",
+          "timer": 17,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 279,
+          "site": "_end_player_action_choices",
+          "timer": 17
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 279,
+          "actions": [
+            "ninten:attack",
+            "lamp:float"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 280,
+          "site": "_start_action",
+          "timer": 18,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 282,
+          "site": "_start_action",
+          "timer": 18
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 283,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 27,
+          "engine_idle": 289,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 17,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 27,
+          "engine_idle": 289,
+          "target": "lamp",
+          "before": 30,
+          "after": 13,
+          "delta": -17
+        },
+        {
+          "event": "timer_create",
+          "frame": 28,
+          "engine_idle": 290,
+          "site": "_do_skill",
+          "timer": 19,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 32,
+          "engine_idle": 294,
+          "site": "_do_skill",
+          "timer": 19
+        },
+        {
+          "event": "timer_create",
+          "frame": 32,
+          "engine_idle": 294,
+          "site": "_do_skill",
+          "timer": 20,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 56,
+          "engine_idle": 318,
+          "site": "_do_skill",
+          "timer": 20
+        },
+        {
+          "event": "action_done",
+          "frame": 56,
+          "engine_idle": 318,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "timer_create",
+          "frame": 57,
+          "engine_idle": 319,
+          "site": "_start_action",
+          "timer": 21,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 59,
+          "engine_idle": 321,
+          "site": "_start_action",
+          "timer": 21
+        },
+        {
+          "event": "targets",
+          "frame": 60,
+          "engine_idle": 322,
+          "user": "lamp",
+          "skill": "float",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 62,
+          "engine_idle": 324,
+          "site": "_do_skill",
+          "timer": 22,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 66,
+          "engine_idle": 328,
+          "site": "_do_skill",
+          "timer": 22
+        },
+        {
+          "event": "timer_create",
+          "frame": 66,
+          "engine_idle": 328,
+          "site": "_do_skill",
+          "timer": 23,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 90,
+          "engine_idle": 352,
+          "site": "_do_skill",
+          "timer": 23
+        },
+        {
+          "event": "action_done",
+          "frame": 90,
+          "engine_idle": 352,
+          "user": "lamp",
+          "skill": "float"
+        },
+        {
+          "event": "round_done",
+          "frame": 90,
+          "engine_idle": 352,
+          "turn": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 90,
+          "engine_idle": 352,
+          "site": "_new_round",
+          "timer": 24,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 114,
+          "engine_idle": 376,
+          "site": "_new_round",
+          "timer": 24
+        },
+        {
+          "event": "next_menu",
+          "frame": 114,
+          "engine_idle": 376,
+          "turn": 2
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "2.83828767773709640",
+          "raw": [
+            "4043782474",
+            "1915967269",
+            "2176999240"
+          ],
+          "raw_count": 3,
+          "state_before": "-305081404891433935",
+          "state_after": "5298790857563703854",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2065207365",
+          "raw": [
+            "2065207365"
+          ],
+          "raw_count": 4,
+          "state_before": "5298790857563703854",
+          "state_after": "-645011620294058315",
+          "frame": 27
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.52399140596389770",
+          "raw": [
+            "2250525995"
+          ],
+          "raw_count": 5,
+          "state_before": "-645011620294058315",
+          "state_after": "-2504336549740366992",
+          "frame": 27
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "52.18847661446410770",
+          "raw": [
+            "4225862164",
+            "562167814",
+            "4185465629"
+          ],
+          "raw_count": 8,
+          "state_before": "-2504336549740366992",
+          "state_after": "8594761812770646393",
+          "frame": 27,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3265504083",
+          "raw": [
+            "3265504083"
+          ],
+          "raw_count": 9,
+          "state_before": "8594761812770646393",
+          "state_after": "3091848636090717156",
+          "frame": 27
+        }
+      ]
+    },
+    {
+      "name": "ordinary_tackle",
+      "seed": 0,
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "turn": 2,
+      "action_index": 0,
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "start_tick": 382,
+      "end_tick": 511,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 381,
+          "seed": 0
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 381,
+          "site": "_end_player_action_choices",
+          "timer": 25,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 398,
+          "site": "_end_player_action_choices",
+          "timer": 25
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 398,
+          "actions": [
+            "ninten:attack",
+            "lamp:tackle"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 399,
+          "site": "_start_action",
+          "timer": 26,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 401,
+          "site": "_start_action",
+          "timer": 26
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 402,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 27,
+          "engine_idle": 408,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 16,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 27,
+          "engine_idle": 408,
+          "target": "lamp",
+          "before": 30,
+          "after": 14,
+          "delta": -16
+        },
+        {
+          "event": "timer_create",
+          "frame": 28,
+          "engine_idle": 409,
+          "site": "_do_skill",
+          "timer": 27,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 32,
+          "engine_idle": 413,
+          "site": "_do_skill",
+          "timer": 27
+        },
+        {
+          "event": "timer_create",
+          "frame": 32,
+          "engine_idle": 413,
+          "site": "_do_skill",
+          "timer": 28,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 56,
+          "engine_idle": 437,
+          "site": "_do_skill",
+          "timer": 28
+        },
+        {
+          "event": "action_done",
+          "frame": 56,
+          "engine_idle": 437,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "timer_create",
+          "frame": 57,
+          "engine_idle": 438,
+          "site": "_start_action",
+          "timer": 29,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 59,
+          "engine_idle": 440,
+          "site": "_start_action",
+          "timer": 29
+        },
+        {
+          "event": "targets",
+          "frame": 60,
+          "engine_idle": 441,
+          "user": "lamp",
+          "skill": "tackle",
+          "targets": [
+            "ninten"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 73,
+          "engine_idle": 454,
+          "user": "lamp",
+          "target": "ninten",
+          "skill": "tackle",
+          "damage": 1,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 73,
+          "engine_idle": 454,
+          "target": "ninten",
+          "before": 62,
+          "after": 61,
+          "delta": -1
+        },
+        {
+          "event": "timer_create",
+          "frame": 74,
+          "engine_idle": 455,
+          "site": "_do_skill",
+          "timer": 30,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 78,
+          "engine_idle": 459,
+          "site": "_do_skill",
+          "timer": 30
+        },
+        {
+          "event": "timer_create",
+          "frame": 78,
+          "engine_idle": 459,
+          "site": "_do_skill",
+          "timer": 31,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 102,
+          "engine_idle": 483,
+          "site": "_do_skill",
+          "timer": 31
+        },
+        {
+          "event": "action_done",
+          "frame": 102,
+          "engine_idle": 483,
+          "user": "lamp",
+          "skill": "tackle"
+        },
+        {
+          "event": "round_done",
+          "frame": 102,
+          "engine_idle": 483,
+          "turn": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 102,
+          "engine_idle": 483,
+          "site": "_new_round",
+          "timer": 32,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 126,
+          "engine_idle": 507,
+          "site": "_new_round",
+          "timer": 32
+        },
+        {
+          "event": "next_menu",
+          "frame": 126,
+          "engine_idle": 507,
+          "turn": 2
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 27
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 27
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 27,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 27
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 60
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73
+        }
+      ]
+    },
+    {
+      "name": "ordinary_float",
+      "seed": 2,
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 62,
+        "lamp": 15
+      },
+      "turn": 2,
+      "action_index": 0,
+      "raw_draw_count": 9,
+      "next_randi": "77322774",
+      "start_tick": 513,
+      "end_tick": 630,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 512,
+          "seed": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 512,
+          "site": "_end_player_action_choices",
+          "timer": 33,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 529,
+          "site": "_end_player_action_choices",
+          "timer": 33
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 529,
+          "actions": [
+            "ninten:attack",
+            "lamp:float"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 530,
+          "site": "_start_action",
+          "timer": 34,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 532,
+          "site": "_start_action",
+          "timer": 34
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 533,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 27,
+          "engine_idle": 539,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 15,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 27,
+          "engine_idle": 539,
+          "target": "lamp",
+          "before": 30,
+          "after": 15,
+          "delta": -15
+        },
+        {
+          "event": "timer_create",
+          "frame": 28,
+          "engine_idle": 540,
+          "site": "_do_skill",
+          "timer": 35,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 32,
+          "engine_idle": 544,
+          "site": "_do_skill",
+          "timer": 35
+        },
+        {
+          "event": "timer_create",
+          "frame": 32,
+          "engine_idle": 544,
+          "site": "_do_skill",
+          "timer": 36,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 56,
+          "engine_idle": 568,
+          "site": "_do_skill",
+          "timer": 36
+        },
+        {
+          "event": "action_done",
+          "frame": 56,
+          "engine_idle": 568,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "timer_create",
+          "frame": 57,
+          "engine_idle": 569,
+          "site": "_start_action",
+          "timer": 37,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 59,
+          "engine_idle": 571,
+          "site": "_start_action",
+          "timer": 37
+        },
+        {
+          "event": "targets",
+          "frame": 60,
+          "engine_idle": 572,
+          "user": "lamp",
+          "skill": "float",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 62,
+          "engine_idle": 574,
+          "site": "_do_skill",
+          "timer": 38,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 66,
+          "engine_idle": 578,
+          "site": "_do_skill",
+          "timer": 38
+        },
+        {
+          "event": "timer_create",
+          "frame": 66,
+          "engine_idle": 578,
+          "site": "_do_skill",
+          "timer": 39,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 90,
+          "engine_idle": 602,
+          "site": "_do_skill",
+          "timer": 39
+        },
+        {
+          "event": "action_done",
+          "frame": 90,
+          "engine_idle": 602,
+          "user": "lamp",
+          "skill": "float"
+        },
+        {
+          "event": "round_done",
+          "frame": 90,
+          "engine_idle": 602,
+          "turn": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 90,
+          "engine_idle": 602,
+          "site": "_new_round",
+          "timer": 40,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 114,
+          "engine_idle": 626,
+          "site": "_new_round",
+          "timer": 40
+        },
+        {
+          "event": "next_menu",
+          "frame": 114,
+          "engine_idle": 626,
+          "turn": 2
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "2.10864703438565780",
+          "raw": [
+            "3242323450",
+            "3018856683",
+            "3570245418"
+          ],
+          "raw_count": 3,
+          "state_before": "4397686605447780332",
+          "state_after": "-9076933968398371803",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "83181836",
+          "raw": [
+            "83181836"
+          ],
+          "raw_count": 4,
+          "state_before": "-9076933968398371803",
+          "state_after": "2482518200335435808",
+          "frame": 27
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.20665428042411800",
+          "raw": [
+            "887573365"
+          ],
+          "raw_count": 5,
+          "state_before": "2482518200335435808",
+          "state_after": "3069354831355433023",
+          "frame": 27
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "48.93619606612987380",
+          "raw": [
+            "3667428178",
+            "2273137756",
+            "4116681034"
+          ],
+          "raw_count": 8,
+          "state_before": "3069354831355433023",
+          "state_after": "5111295275163145108",
+          "frame": 27,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "1843256520",
+          "raw": [
+            "1843256520"
+          ],
+          "raw_count": 9,
+          "state_before": "5111295275163145108",
+          "state_after": "3546505962201751459",
+          "frame": 27
+        }
+      ]
+    },
+    {
+      "name": "smash_lethal",
+      "seed": 59,
+      "boundary": "win",
+      "hp": {
+        "ninten": 62,
+        "lamp": 0
+      },
+      "turn": 1,
+      "action_index": 1,
+      "raw_draw_count": 9,
+      "next_randi": "1179546988",
+      "start_tick": 632,
+      "end_tick": 691,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 631,
+          "seed": 59
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 631,
+          "site": "_end_player_action_choices",
+          "timer": 41,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 648,
+          "site": "_end_player_action_choices",
+          "timer": 41
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 648,
+          "actions": [
+            "ninten:attack",
+            "lamp:tackle"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 649,
+          "site": "_start_action",
+          "timer": 42,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 651,
+          "site": "_start_action",
+          "timer": 42
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 652,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 27,
+          "engine_idle": 658,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 67,
+          "smash": true,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 27,
+          "engine_idle": 658,
+          "target": "lamp",
+          "before": 30,
+          "after": 0,
+          "delta": -67
+        },
+        {
+          "event": "defeat",
+          "frame": 27,
+          "engine_idle": 658,
+          "target": "lamp"
+        },
+        {
+          "event": "timer_create",
+          "frame": 28,
+          "engine_idle": 659,
+          "site": "_do_skill",
+          "timer": 43,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 32,
+          "engine_idle": 663,
+          "site": "_do_skill",
+          "timer": 43
+        },
+        {
+          "event": "timer_create",
+          "frame": 32,
+          "engine_idle": 663,
+          "site": "_do_skill",
+          "timer": 44,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 56,
+          "engine_idle": 687,
+          "site": "_do_skill",
+          "timer": 44
+        },
+        {
+          "event": "action_done",
+          "frame": 56,
+          "engine_idle": 687,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "win_boundary",
+          "frame": 56,
+          "engine_idle": 687,
+          "current_action": "lamp",
+          "index": 1
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "1.74414404468816550",
+          "raw": [
+            "2388533886",
+            "2497013877",
+            "642573461"
+          ],
+          "raw_count": 3,
+          "state_before": "-1781430109476050703",
+          "state_after": "8519224249066227182",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "1877155104",
+          "raw": [
+            "1877155104"
+          ],
+          "raw_count": 4,
+          "state_before": "8519224249066227182",
+          "state_after": "-7223212210872803467",
+          "frame": 27
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37816137075424190",
+          "raw": [
+            "1624190727"
+          ],
+          "raw_count": 5,
+          "state_before": "-7223212210872803467",
+          "state_after": "-5044555874231380688",
+          "frame": 27
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "50.23657439665008440",
+          "raw": [
+            "2203440255",
+            "300187934",
+            "91675590"
+          ],
+          "raw_count": 8,
+          "state_before": "-5044555874231380688",
+          "state_after": "-6968451617318111687",
+          "frame": 27,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3355032876",
+          "raw": [
+            "3355032876"
+          ],
+          "raw_count": 9,
+          "state_before": "-6968451617318111687",
+          "state_after": "893089658336612772",
+          "frame": 27
+        }
+      ]
+    },
+    {
+      "name": "equal_speed_player_inserted_first",
+      "seed": 0,
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "turn": 2,
+      "action_index": 0,
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "start_tick": 693,
+      "end_tick": 822,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 692,
+          "seed": 0
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 692,
+          "site": "_end_player_action_choices",
+          "timer": 45,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 709,
+          "site": "_end_player_action_choices",
+          "timer": 45
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 709,
+          "actions": [
+            "ninten:attack",
+            "lamp:tackle"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 710,
+          "site": "_start_action",
+          "timer": 46,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 712,
+          "site": "_start_action",
+          "timer": 46
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 713,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 27,
+          "engine_idle": 719,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 16,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 27,
+          "engine_idle": 719,
+          "target": "lamp",
+          "before": 30,
+          "after": 14,
+          "delta": -16
+        },
+        {
+          "event": "timer_create",
+          "frame": 28,
+          "engine_idle": 720,
+          "site": "_do_skill",
+          "timer": 47,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 32,
+          "engine_idle": 724,
+          "site": "_do_skill",
+          "timer": 47
+        },
+        {
+          "event": "timer_create",
+          "frame": 32,
+          "engine_idle": 724,
+          "site": "_do_skill",
+          "timer": 48,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 56,
+          "engine_idle": 748,
+          "site": "_do_skill",
+          "timer": 48
+        },
+        {
+          "event": "action_done",
+          "frame": 56,
+          "engine_idle": 748,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "timer_create",
+          "frame": 57,
+          "engine_idle": 749,
+          "site": "_start_action",
+          "timer": 49,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 59,
+          "engine_idle": 751,
+          "site": "_start_action",
+          "timer": 49
+        },
+        {
+          "event": "targets",
+          "frame": 60,
+          "engine_idle": 752,
+          "user": "lamp",
+          "skill": "tackle",
+          "targets": [
+            "ninten"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 73,
+          "engine_idle": 765,
+          "user": "lamp",
+          "target": "ninten",
+          "skill": "tackle",
+          "damage": 1,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 73,
+          "engine_idle": 765,
+          "target": "ninten",
+          "before": 62,
+          "after": 61,
+          "delta": -1
+        },
+        {
+          "event": "timer_create",
+          "frame": 74,
+          "engine_idle": 766,
+          "site": "_do_skill",
+          "timer": 50,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 78,
+          "engine_idle": 770,
+          "site": "_do_skill",
+          "timer": 50
+        },
+        {
+          "event": "timer_create",
+          "frame": 78,
+          "engine_idle": 770,
+          "site": "_do_skill",
+          "timer": 51,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 102,
+          "engine_idle": 794,
+          "site": "_do_skill",
+          "timer": 51
+        },
+        {
+          "event": "action_done",
+          "frame": 102,
+          "engine_idle": 794,
+          "user": "lamp",
+          "skill": "tackle"
+        },
+        {
+          "event": "round_done",
+          "frame": 102,
+          "engine_idle": 794,
+          "turn": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 102,
+          "engine_idle": 794,
+          "site": "_new_round",
+          "timer": 52,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 126,
+          "engine_idle": 818,
+          "site": "_new_round",
+          "timer": 52
+        },
+        {
+          "event": "next_menu",
+          "frame": 126,
+          "engine_idle": 818,
+          "turn": 2
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 27
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 27
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 27,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 27
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 60
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73
+        }
+      ]
+    },
+    {
+      "name": "equal_speed_lamp_inserted_first",
+      "seed": 0,
+      "boundary": "next_menu",
+      "hp": {
+        "ninten": 61,
+        "lamp": 14
+      },
+      "turn": 2,
+      "action_index": 0,
+      "raw_draw_count": 15,
+      "next_randi": "78826807",
+      "start_tick": 824,
+      "end_tick": 953,
+      "events": [
+        {
+          "event": "invoke_round",
+          "frame": 0,
+          "engine_idle": 823,
+          "seed": 0
+        },
+        {
+          "event": "timer_create",
+          "frame": 0,
+          "engine_idle": 823,
+          "site": "_end_player_action_choices",
+          "timer": 53,
+          "duration": "0.30000000000000000",
+          "native_time_left": "0.30000001192092900"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 17,
+          "engine_idle": 840,
+          "site": "_end_player_action_choices",
+          "timer": 53
+        },
+        {
+          "event": "queue_order",
+          "frame": 17,
+          "engine_idle": 840,
+          "actions": [
+            "lamp:tackle",
+            "ninten:attack"
+          ]
+        },
+        {
+          "event": "timer_create",
+          "frame": 18,
+          "engine_idle": 841,
+          "site": "_start_action",
+          "timer": 54,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 20,
+          "engine_idle": 843,
+          "site": "_start_action",
+          "timer": 54
+        },
+        {
+          "event": "targets",
+          "frame": 21,
+          "engine_idle": 844,
+          "user": "lamp",
+          "skill": "tackle",
+          "targets": [
+            "ninten"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 34,
+          "engine_idle": 857,
+          "user": "lamp",
+          "target": "ninten",
+          "skill": "tackle",
+          "damage": 1,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 34,
+          "engine_idle": 857,
+          "target": "ninten",
+          "before": 62,
+          "after": 61,
+          "delta": -1
+        },
+        {
+          "event": "timer_create",
+          "frame": 35,
+          "engine_idle": 858,
+          "site": "_do_skill",
+          "timer": 55,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 39,
+          "engine_idle": 862,
+          "site": "_do_skill",
+          "timer": 55
+        },
+        {
+          "event": "timer_create",
+          "frame": 39,
+          "engine_idle": 862,
+          "site": "_do_skill",
+          "timer": 56,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 63,
+          "engine_idle": 886,
+          "site": "_do_skill",
+          "timer": 56
+        },
+        {
+          "event": "action_done",
+          "frame": 63,
+          "engine_idle": 886,
+          "user": "lamp",
+          "skill": "tackle"
+        },
+        {
+          "event": "timer_create",
+          "frame": 64,
+          "engine_idle": 887,
+          "site": "_start_action",
+          "timer": 57,
+          "duration": "0.05000000000000000",
+          "native_time_left": "0.05000000074505810"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 66,
+          "engine_idle": 889,
+          "site": "_start_action",
+          "timer": 57
+        },
+        {
+          "event": "targets",
+          "frame": 67,
+          "engine_idle": 890,
+          "user": "ninten",
+          "skill": "attack",
+          "targets": [
+            "lamp"
+          ]
+        },
+        {
+          "event": "damage",
+          "frame": 73,
+          "engine_idle": 896,
+          "user": "ninten",
+          "target": "lamp",
+          "skill": "attack",
+          "damage": 16,
+          "smash": false,
+          "adrenaline": false
+        },
+        {
+          "event": "hp_target",
+          "frame": 73,
+          "engine_idle": 896,
+          "target": "lamp",
+          "before": 30,
+          "after": 14,
+          "delta": -16
+        },
+        {
+          "event": "timer_create",
+          "frame": 74,
+          "engine_idle": 897,
+          "site": "_do_skill",
+          "timer": 58,
+          "duration": "0.08000000000000000",
+          "native_time_left": "0.07999999821186070"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 78,
+          "engine_idle": 901,
+          "site": "_do_skill",
+          "timer": 58
+        },
+        {
+          "event": "timer_create",
+          "frame": 78,
+          "engine_idle": 901,
+          "site": "_do_skill",
+          "timer": 59,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 102,
+          "engine_idle": 925,
+          "site": "_do_skill",
+          "timer": 59
+        },
+        {
+          "event": "action_done",
+          "frame": 102,
+          "engine_idle": 925,
+          "user": "ninten",
+          "skill": "attack"
+        },
+        {
+          "event": "round_done",
+          "frame": 102,
+          "engine_idle": 925,
+          "turn": 2
+        },
+        {
+          "event": "timer_create",
+          "frame": 102,
+          "engine_idle": 925,
+          "site": "_new_round",
+          "timer": 60,
+          "duration": "0.40000000000000000",
+          "native_time_left": "0.40000000596046450"
+        },
+        {
+          "event": "timer_timeout",
+          "frame": 126,
+          "engine_idle": 949,
+          "site": "_new_round",
+          "timer": 60
+        },
+        {
+          "event": "next_menu",
+          "frame": 126,
+          "engine_idle": 949,
+          "turn": 2
+        }
+      ],
+      "draws": [
+        {
+          "site": "_choose_random_action",
+          "op": "rand_range",
+          "value": "0.60681555149399850",
+          "raw": [
+            "881477183",
+            "1327520283",
+            "692503688"
+          ],
+          "raw_count": 3,
+          "state_before": "-8330585842245805678",
+          "state_after": "-8399834672610494461",
+          "frame": 0,
+          "a": 0,
+          "b": 3
+        },
+        {
+          "site": "_retargeting",
+          "op": "randi",
+          "value": "2153658078",
+          "raw": [
+            "2153658078"
+          ],
+          "raw_count": 4,
+          "state_before": "-8399834672610494461",
+          "state_after": "5735713945700390950",
+          "frame": 21
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.47646453976631160",
+          "raw": [
+            "2046399657"
+          ],
+          "raw_count": 5,
+          "state_before": "5735713945700390950",
+          "state_after": "5295815986678782797",
+          "frame": 34
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "54.78440062459904420",
+          "raw": [
+            "3080186220",
+            "910586837",
+            "2901098513"
+          ],
+          "raw_count": 8,
+          "state_before": "5295815986678782797",
+          "state_after": "-8057191695202445318",
+          "frame": 34,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "4142039417",
+          "raw": [
+            "4142039417"
+          ],
+          "raw_count": 9,
+          "state_before": "-8057191695202445318",
+          "state_after": "-5745577292707840111",
+          "frame": 34
+        },
+        {
+          "site": "_chance_roll",
+          "op": "randi",
+          "value": "3690598433",
+          "raw": [
+            "3690598433"
+          ],
+          "raw_count": 10,
+          "state_before": "-5745577292707840111",
+          "state_after": "4884245368506490396",
+          "frame": 73
+        },
+        {
+          "site": "_calculate_damage",
+          "op": "randf",
+          "value": "0.37294057011604310",
+          "raw": [
+            "1601767543"
+          ],
+          "raw_count": 11,
+          "state_before": "4884245368506490396",
+          "state_after": "-3648152803006140021",
+          "frame": 73
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "rand_range",
+          "value": "59.68515952832048300",
+          "raw": [
+            "4054898517",
+            "3715839211",
+            "896472976"
+          ],
+          "raw_count": 14,
+          "state_before": "-3648152803006140021",
+          "state_after": "7114744539756843344",
+          "frame": 73,
+          "a": 32,
+          "b": 64
+        },
+        {
+          "site": "FlyingNumber.run",
+          "op": "randi",
+          "value": "3009771901",
+          "raw": [
+            "3009771901"
+          ],
+          "raw_count": 15,
+          "state_before": "7114744539756843344",
+          "state_after": "-7951451488666845777",
+          "frame": 73
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "representative_seeds": {
+      "tackle": 0,
+      "float": 2,
+      "smash": 59
+    },
+    "zero_chance": {
+      "chance": false,
+      "zero_multiplier": false,
+      "miss": false,
+      "expected_next_randi": "4043782474",
+      "observed_next_randi": "4043782474",
+      "draws": []
+    },
+    "timer_threshold": [
+      {
+        "event": "timer_created",
+        "frame": 0,
+        "engine_idle": 953,
+        "name": "0",
+        "time_left": "0.00000000000000000"
+      },
+      {
+        "event": "timer_created",
+        "frame": 0,
+        "engine_idle": 953,
+        "name": "0.05",
+        "time_left": "0.05000000074505810"
+      },
+      {
+        "event": "timer_created",
+        "frame": 0,
+        "engine_idle": 953,
+        "name": "0.08",
+        "time_left": "0.07999999821186070"
+      },
+      {
+        "event": "timer_created",
+        "frame": 0,
+        "engine_idle": 953,
+        "name": "0.3",
+        "time_left": "0.30000001192092900"
+      },
+      {
+        "event": "timer_created",
+        "frame": 0,
+        "engine_idle": 953,
+        "name": "0.4",
+        "time_left": "0.40000000596046450"
+      },
+      {
+        "event": "timer_created",
+        "frame": 0,
+        "engine_idle": 953,
+        "name": "0.5",
+        "time_left": "0.50000000000000000"
+      },
+      {
+        "event": "timer_timeout",
+        "frame": 0,
+        "engine_idle": 953,
+        "name": "0",
+        "elapsed_frames": 0
+      },
+      {
+        "event": "timer_timeout",
+        "frame": 2,
+        "engine_idle": 955,
+        "name": "0.05",
+        "elapsed_frames": 2
+      },
+      {
+        "event": "timer_timeout",
+        "frame": 4,
+        "engine_idle": 957,
+        "name": "0.08",
+        "elapsed_frames": 4
+      },
+      {
+        "event": "timer_timeout",
+        "frame": 17,
+        "engine_idle": 970,
+        "name": "0.3",
+        "elapsed_frames": 17
+      },
+      {
+        "event": "timer_timeout",
+        "frame": 23,
+        "engine_idle": 976,
+        "name": "0.4",
+        "elapsed_frames": 23
+      },
+      {
+        "event": "timer_timeout",
+        "frame": 29,
+        "engine_idle": 982,
+        "name": "0.5",
+        "elapsed_frames": 29
+      }
+    ],
+    "strict_zero_threshold": [
+      {
+        "event": "exact_timer_created",
+        "frame": 0,
+        "engine_idle": 988,
+        "time_left": "0.12500000000000000",
+        "bits": "000000000000c03f"
+      },
+      {
+        "event": "exact_timer_sample",
+        "frame": 1,
+        "engine_idle": 989,
+        "time_left": "0.06250000000000000",
+        "bits": "000000000000b03f",
+        "fired": false
+      },
+      {
+        "event": "exact_timer_sample",
+        "frame": 2,
+        "engine_idle": 990,
+        "time_left": "0.00000000000000000",
+        "bits": "0000000000000000",
+        "fired": false
+      },
+      {
+        "event": "exact_timer_timeout",
+        "frame": 2,
+        "engine_idle": 990
+      },
+      {
+        "event": "exact_timer_sample",
+        "frame": 3,
+        "engine_idle": 991,
+        "time_left": "-0.06250000000000000",
+        "bits": "000000000000b0bf",
+        "fired": true
+      },
+      {
+        "event": "exact_timer_sample",
+        "frame": 4,
+        "engine_idle": 992,
+        "time_left": "-0.06250000000000000",
+        "bits": "000000000000b0bf",
+        "fired": true
+      }
+    ]
+  },
+  "frame_delta_sequence": "frame-deltas.json"
+}

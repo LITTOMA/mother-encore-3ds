@@ -1,0 +1,4102 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "isolated original entry methods and native animation/timer/tween timing; no combat/render reference",
+  "methods": [
+    "_jump_to_battle",
+    "_jump_player_to_partyinfo",
+    "_enemy_to_position",
+    "_show_action_menu",
+    "_show_enemy_sprites",
+    "_remove_enemy_transitions",
+    "set_cursor_from_index",
+    "get_menu_item_at_index",
+    "_idx_or_next_valid_idx",
+    "_idx_or_prev_valid_idx",
+    "_should_skip_item",
+    "PartyInfoPlate.quake"
+  ],
+  "sources": {
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/BattleSkills/attack.yaml": "97d01c135e783f4510b13501fd79b3b0f023297d6c860c3d06ac7db07f1f26ae",
+    "Data/BattleSkills/strike.yaml": "2249e5e4d4e3113a037ae888a76f8c1af3494a7e156003bc0374f8449e59d53e",
+    "Data/BattleSkills/splitShot.yaml": "efdd73c94385d40a882c9173b15097d5e03591d1f99d9da5655bda580239523b",
+    "Nodes/Ui/Battle/ActionMenuBox.gd": "92142910d696db1a7f007ee174854277f926c705fd123ee07d9cef11ef640ebd",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Enemy.gd": "ba81a8f7144dc06cd1674413e5c9b6e670c05aed00c44de98161ad7dda8ebe1b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/UI/Battle/BattleParticipant.gd": "a6012e909f32931dd673b884bfc3564ae78741e64a18adb3a23cf5c25c9a1fdb",
+    "Scripts/UI/Battle/BattleMenuBox.gd": "d01947cb671feedc0467069af68c680a94002650bd34e405afc00d44dfc6902b",
+    "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
+    "Scripts/UI/Battle/EnemySpritesManager.gd": "663250716e71c14f91a9e723c8d8c9ae9ff4a60dd1f4a092a46b1cd1d4469e4f",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb",
+    "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+    "Scripts/UI/Battle/BattleItemPool.gd": "8f193447042817087a33cf761ea4c89cb6e9e453bc257a04b95089deaee8ff07",
+    "Scripts/UI/Battle/OnScreenEnemy.gd": "5f7842328e0017243286f2808d0308f83d96ee8cb8b5fa7840fc4e39eef316a9",
+    "Scripts/UI/Battle/EnemySkill.gd": "152280867468742f87b0212237d27df4c28ec7717217fbcf6cb72663363236c6",
+    "Scripts/UI/BattleTransition.gd": "ba3217779943e87fbb604f46e7ebd935ed74a37f8cec2dd4a45b4bab2ad50a81",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "addons/distortionator_integration/scene_importer.gd": "3b800ed49e18d07438e9b75abc98787b837ded3c9128922d634114ecaef798f9",
+    "addons/distortionator_integration/default_shader.tres": "f65588ad747f102d2358bc016a016e22a2d1ef986a461938b8c1e3b75122d61c",
+    "Shaders/Transition.shader": "12270f6f16cfda98d7ae01435c9e33d50aa31606c901a360317e742da5b0b5ae",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Scripts/UI/colorRectFlavor.gd": "aa54241880f05f6efaa4cc7d1996eac12b3c1749a739482976fd4bc3af59d82a",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Nodes/Ui/Battle/Battle Transition.tscn": "392290f15f3ea5e6ef855f3a8fa78720c718e71cd56470d15dde008192da4848",
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
+    "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+    "Translations/TranslatedText/battletext - sheet.csv": "740b4c183584fd29b9876c7905e5e0f53a317d63399f1bee4a809c94ab6ebd65",
+    "Translations/TranslatedText/battleskills - sheet.csv": "cd4d4cbaeb8eec6bcda6b042fed70823c6ee790e9d3e4535e09c88a698781235",
+    "Translations/TranslatedText/battlers - sheet.csv": "d90fc7ffdc1a5c0550e4cb1d52b7cf5f666383d96ace8dca0d5550c9bf800b1e",
+    "Graphics/Battle BGS/lamp.bbg": "10ea9c5ba2a5a109c6c815180d4ee21683191263ca25dc6c829ca1598f97734f",
+    "Graphics/Battle Sprites/lamp.png": "9a368ef8ba5727af433c84077db7ad25ecbfe66cdc7cc6a041c407b6e30cc385",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3.import": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Graphics/VFX/battle_transition.png": "8ab268b2d77ee3b7c2979f5c77d59af1d15a5bbe36912af21df20fc556b212c9",
+    "Graphics/VFX/battle_transition.png.import": "1d938e8efb1b57203caf930e5b9ca4ace7fde3c67b038e4e25c3770de841a144",
+    "Graphics/Battle Sprites/lamp.png.import": "c62e28f5cf645b2d4e4c68ae7c4522d4f9664202c9742eb508eeefcd2ce93699",
+    "Graphics/Character Sprites/Ninten/battle.png": "b541795453ef23b211486d741e0485a68b1df9b5ea533d07ada1051197a95a5b",
+    "Graphics/Character Sprites/Ninten/battle.png.import": "6617cccb749bbcdc105245fb6d03692c1a015f5dbd7dbb9500fbe3330c5b6ef2",
+    "Graphics/Battle BGS/lamp.png": "c99233a36071100ad022c43f940d76c741d8fcfa9d4abf23f378327bc96211ec",
+    "Graphics/Battle BGS/lamp.png.import": "5a946bf7f1445c65bf2942b0659f7ccd9e6e6ee27986bf967722c5322c788dbe",
+    "Graphics/UI/Battle/hp_pp_numbers.png": "b049dc27660d35a837bacb1ced15171876b389e863a63e707d0dafbdd4e7287c",
+    "Graphics/UI/Battle/hp_pp_numbers.png.import": "e15d435126208c2a269b572d8ac3c64f88f9ae34c504b54428eecdeb6cbdfac9",
+    "Graphics/UI/Battle/bashIcon.png": "36f8e4622fdac4fa075438e515b353898a76562cfffe895defd8b3e53a3ee80c",
+    "Graphics/UI/Battle/bashIcon.png.import": "76843a2fc29b3d7a12a6c07f14ad845eaf8f325bf3754b3546f830363df270c5",
+    "Graphics/UI/Battle/itemIcon.png": "b143b4242452df9ad20a552fcaeb2133ce917e6515317a9d973c8112f220bcbe",
+    "Graphics/UI/Battle/itemIcon.png.import": "a622e0ab97d4d34431c467e9fd7f77c940ad2c7869079bc71900652721fab39d",
+    "Graphics/UI/Battle/defendIcon.png": "bd095505d74731279c8a72f3efdf4cbc5df3a4ddd16dc72bff13fce87701dcb8",
+    "Graphics/UI/Battle/defendIcon.png.import": "3cf1ac756bb55b61f123485a8887dec70006da006e16e074b1ab0bada169e3f5",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Battle/info_plate_frame.png": "8197c5b812d54ad5ba4fdfa21548650cd9dab4f2f66163062271aa6425d25fff",
+    "Graphics/UI/Battle/info_plate_frame.png.import": "9ef824d90dbd55a26ea8b7a7d62cc85c358b76ebc27ffe35e7c156e2f4b76290",
+    "Graphics/UI/Battle/info_plate_bg_battle.png": "a274306d7797a2cb0c9a296c610061a8d6690e59b011d9abaaa4f386da6d0e0f",
+    "Graphics/UI/Battle/info_plate_bg_battle.png.import": "81d4c0be2e1142cfb2a2027a481d774091094d693ec62258d9ea3fbd71242cfc",
+    "Graphics/UI/Battle/info_plate_counter_bg.png": "8a024af6dde38ace443b6fec4dc87832a631557991768199a2b0e7f2867ed0c2",
+    "Graphics/UI/Battle/info_plate_counter_bg.png.import": "f59e9d22294d481bbe6cd2763d9f213b03d77d71f9fbc29d7291ff66253a67cd",
+    "Graphics/UI/Battle/label_hp.png": "892919e65839ac857e6334c03c75f8d3a818e5146bd29ced26ce3f04da5274e3",
+    "Graphics/UI/Battle/label_hp.png.import": "4b3618b4c6746eaaca5497a32e617805492761b4c49b4ea05e55390b307f76be",
+    "Graphics/UI/Battle/label_pp.png": "7581ee7a53dcebb86be3ffd7755972b1c82b6d605f823457d2e48a09f35c394d",
+    "Graphics/UI/Battle/label_pp.png.import": "abbb87b498049601a2e64d274d8547e4f13d390b45f0865515b43de6d2d38c99"
+  },
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "observer_phase": "Driver._process before child AnimationPlayer/process/tween/timer work; frame0 starts play; captures state at beginning of each subsequent fixed60Hz idle",
+  "events": [
+    {
+      "event": "play_requested",
+      "driver_frame": 0,
+      "nominal_seconds": 0,
+      "animation_position": 0
+    },
+    {
+      "event": "_enemy_to_position",
+      "driver_frame": 2,
+      "nominal_seconds": 0.033333,
+      "animation_position": 0.016667
+    },
+    {
+      "event": "cursor_move_requested",
+      "driver_frame": 10,
+      "nominal_seconds": 0.166667,
+      "animation_position": 0.166667
+    },
+    {
+      "event": "_jump_to_battle",
+      "driver_frame": 11,
+      "nominal_seconds": 0.183333,
+      "animation_position": 0.166667
+    },
+    {
+      "event": "jump_wait_1_done",
+      "driver_frame": 23,
+      "nominal_seconds": 0.383333,
+      "animation_position": 0.366667
+    },
+    {
+      "event": "jump_wait_2_done",
+      "driver_frame": 30,
+      "nominal_seconds": 0.5,
+      "animation_position": 0.483334
+    },
+    {
+      "event": "_jump_player_to_partyinfo",
+      "driver_frame": 30,
+      "nominal_seconds": 0.5,
+      "animation_position": 0.483334
+    },
+    {
+      "event": "jump_wait_3_done",
+      "driver_frame": 43,
+      "nominal_seconds": 0.716667,
+      "animation_position": 0.7
+    },
+    {
+      "event": "plate_quake",
+      "driver_frame": 65,
+      "nominal_seconds": 1.083333,
+      "animation_position": 1.066666
+    },
+    {
+      "event": "_show_action_menu",
+      "driver_frame": 74,
+      "nominal_seconds": 1.233333,
+      "animation_position": 1.216666
+    },
+    {
+      "event": "_show_enemy_sprites",
+      "driver_frame": 77,
+      "nominal_seconds": 1.283333,
+      "animation_position": 1.266666
+    },
+    {
+      "event": "enemy_appear",
+      "driver_frame": 77,
+      "nominal_seconds": 1.283333,
+      "animation_position": 1.266666
+    },
+    {
+      "event": "_remove_enemy_transitions",
+      "driver_frame": 83,
+      "nominal_seconds": 1.383333,
+      "animation_position": 1.366666
+    },
+    {
+      "event": "battle_start_menu_active",
+      "driver_frame": 115,
+      "nominal_seconds": 1.916667,
+      "animation_position": 1.9
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.00000000000000000",
+      "menu_active": false
+    },
+    {
+      "frame": 1,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.01666666753590110",
+      "menu_active": false
+    },
+    {
+      "frame": 2,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.03333333507180210",
+      "menu_active": false
+    },
+    {
+      "frame": 3,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.05000000447034840",
+      "menu_active": false
+    },
+    {
+      "frame": 4,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.06666667014360430",
+      "menu_active": false
+    },
+    {
+      "frame": 5,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.08333333581686020",
+      "menu_active": false
+    },
+    {
+      "frame": 6,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.10000000149011610",
+      "menu_active": false
+    },
+    {
+      "frame": 7,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.11666666716337200",
+      "menu_active": false
+    },
+    {
+      "frame": 8,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.13333334028720860",
+      "menu_active": false
+    },
+    {
+      "frame": 9,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.15000000596046450",
+      "menu_active": false
+    },
+    {
+      "frame": 10,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "17.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.16666667163372040",
+      "menu_active": false
+    },
+    {
+      "frame": 11,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "33.56790161132812500",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.05887341499328610",
+        "0.94112652540206910"
+      ],
+      "scene_position": "0.18333333730697630",
+      "menu_active": false
+    },
+    {
+      "frame": 12,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "42.67901229858398440",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.20123457908630370",
+        "0.79876542091369630"
+      ],
+      "scene_position": "0.20000000298023220",
+      "menu_active": false
+    },
+    {
+      "frame": 13,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "47.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.26874995231628420",
+        "0.73124998807907100"
+      ],
+      "scene_position": "0.21666666865348820",
+      "menu_active": false
+    },
+    {
+      "frame": 14,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "48.60493850708007810",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.29382705688476560",
+        "0.70617282390594480"
+      ],
+      "scene_position": "0.23333333432674410",
+      "menu_active": false
+    },
+    {
+      "frame": 15,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "48.97530746459960940",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.29961419105529790",
+        "0.70038580894470210"
+      ],
+      "scene_position": "0.25000000000000000",
+      "menu_active": false
+    },
+    {
+      "frame": 16,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.29999995231628420",
+        "0.69999998807907100"
+      ],
+      "scene_position": "0.26666668057441710",
+      "menu_active": false
+    },
+    {
+      "frame": 17,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "0.81950920820236210",
+        "1.18049085140228270"
+      ],
+      "scene_position": "0.28333336114883420",
+      "menu_active": false
+    },
+    {
+      "frame": 18,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "0.87514102458953860",
+        "1.18728840351104740"
+      ],
+      "scene_position": "0.30000004172325130",
+      "menu_active": false
+    },
+    {
+      "frame": 19,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "0.99753087759017940",
+        "1.00370371341705320"
+      ],
+      "scene_position": "0.31666672229766850",
+      "menu_active": false
+    },
+    {
+      "frame": 20,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.33333340287208560",
+      "menu_active": false
+    },
+    {
+      "frame": 21,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.35000008344650270",
+      "menu_active": false
+    },
+    {
+      "frame": 22,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.36666676402091980",
+      "menu_active": false
+    },
+    {
+      "frame": 23,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.38333344459533690",
+      "menu_active": false
+    },
+    {
+      "frame": 24,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.40000012516975400",
+      "menu_active": false
+    },
+    {
+      "frame": 25,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.41666680574417110",
+      "menu_active": false
+    },
+    {
+      "frame": 26,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.43333348631858830",
+      "menu_active": false
+    },
+    {
+      "frame": 27,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.45000016689300540",
+      "menu_active": false
+    },
+    {
+      "frame": 28,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.46666684746742250",
+      "menu_active": false
+    },
+    {
+      "frame": 29,
+      "player_pos": [
+        "126.00000000000000000",
+        "94.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.48333352804183960",
+      "menu_active": false
+    },
+    {
+      "frame": 30,
+      "player_pos": [
+        "126.95833587646484380",
+        "91.83950805664062500"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.50000017881393430",
+      "menu_active": false
+    },
+    {
+      "frame": 31,
+      "player_pos": [
+        "127.91666412353515620",
+        "89.80246734619140620"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.51666682958602910",
+      "menu_active": false
+    },
+    {
+      "frame": 32,
+      "player_pos": [
+        "128.87500000000000000",
+        "87.88888549804687500"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.53333348035812380",
+      "menu_active": false
+    },
+    {
+      "frame": 33,
+      "player_pos": [
+        "129.83332824707031250",
+        "86.09876251220703120"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.55000013113021850",
+      "menu_active": false
+    },
+    {
+      "frame": 34,
+      "player_pos": [
+        "130.79167175292968750",
+        "84.43209838867187500"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.56666678190231320",
+      "menu_active": false
+    },
+    {
+      "frame": 35,
+      "player_pos": [
+        "131.75000000000000000",
+        "82.88888549804687500"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.58333343267440800",
+      "menu_active": false
+    },
+    {
+      "frame": 36,
+      "player_pos": [
+        "132.70832824707031250",
+        "81.46913909912109380"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.60000008344650270",
+      "menu_active": false
+    },
+    {
+      "frame": 37,
+      "player_pos": [
+        "133.66667175292968750",
+        "80.17283630371093750"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.61666673421859740",
+      "menu_active": false
+    },
+    {
+      "frame": 38,
+      "player_pos": [
+        "134.62500000000000000",
+        "79.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.63333338499069210",
+      "menu_active": false
+    },
+    {
+      "frame": 39,
+      "player_pos": [
+        "135.58332824707031250",
+        "77.95062255859375000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.65000003576278690",
+      "menu_active": false
+    },
+    {
+      "frame": 40,
+      "player_pos": [
+        "136.54167175292968750",
+        "77.02468872070312500"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.66666668653488160",
+      "menu_active": false
+    },
+    {
+      "frame": 41,
+      "player_pos": [
+        "137.50000000000000000",
+        "76.22222137451171880"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.68333333730697630",
+      "menu_active": false
+    },
+    {
+      "frame": 42,
+      "player_pos": [
+        "138.45832824707031250",
+        "75.54321289062500000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.69999998807907100",
+      "menu_active": false
+    },
+    {
+      "frame": 43,
+      "player_pos": [
+        "139.41667175292968750",
+        "74.98765563964843750"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.71666663885116580",
+      "menu_active": false
+    },
+    {
+      "frame": 44,
+      "player_pos": [
+        "140.37500000000000000",
+        "74.55555725097656250"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.73333328962326050",
+      "menu_active": false
+    },
+    {
+      "frame": 45,
+      "player_pos": [
+        "141.33332824707031250",
+        "74.24691009521484380"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.74999994039535520",
+      "menu_active": false
+    },
+    {
+      "frame": 46,
+      "player_pos": [
+        "142.29167175292968750",
+        "74.06172943115234380"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.76666659116745000",
+      "menu_active": false
+    },
+    {
+      "frame": 47,
+      "player_pos": [
+        "143.25000000000000000",
+        "74.00000000000000000"
+      ],
+      "player_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.78333324193954470",
+      "menu_active": false
+    },
+    {
+      "frame": 48,
+      "player_pos": [
+        "144.20834350585937500",
+        "74.32716369628906250"
+      ],
+      "player_scale": [
+        "0.99999332427978520",
+        "1.00000953674316410"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.79999989271163940",
+      "menu_active": false
+    },
+    {
+      "frame": 49,
+      "player_pos": [
+        "145.16667175292968750",
+        "75.30864715576171880"
+      ],
+      "player_scale": [
+        "0.99989330768585210",
+        "1.00015246868133540"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.81666654348373410",
+      "menu_active": false
+    },
+    {
+      "frame": 50,
+      "player_pos": [
+        "146.12500000000000000",
+        "76.94445037841796880"
+      ],
+      "player_scale": [
+        "0.99945986270904540",
+        "1.00077164173126220"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.83333319425582890",
+      "menu_active": false
+    },
+    {
+      "frame": 51,
+      "player_pos": [
+        "147.08334350585937500",
+        "79.23458099365234380"
+      ],
+      "player_scale": [
+        "0.99829292297363280",
+        "1.00243866443634030"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.84999984502792360",
+      "menu_active": false
+    },
+    {
+      "frame": 52,
+      "player_pos": [
+        "148.04167175292968750",
+        "82.17903137207031250"
+      ],
+      "player_scale": [
+        "0.99583238363265990",
+        "1.00595378875732420"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.86666649580001830",
+      "menu_active": false
+    },
+    {
+      "frame": 53,
+      "player_pos": [
+        "149.00000000000000000",
+        "85.77780151367187500"
+      ],
+      "player_scale": [
+        "0.99135798215866090",
+        "1.01234579086303710"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.88333314657211300",
+      "menu_active": false
+    },
+    {
+      "frame": 54,
+      "player_pos": [
+        "149.95834350585937500",
+        "90.03089904785156250"
+      ],
+      "player_scale": [
+        "0.98398959636688230",
+        "1.02287197113037110"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.89999979734420780",
+      "menu_active": false
+    },
+    {
+      "frame": 55,
+      "player_pos": [
+        "150.91667175292968750",
+        "94.93831634521484380"
+      ],
+      "player_scale": [
+        "0.97268700599670410",
+        "1.03901863098144530"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.91666644811630250",
+      "menu_active": false
+    },
+    {
+      "frame": 56,
+      "player_pos": [
+        "151.87500000000000000",
+        "100.50005340576171880"
+      ],
+      "player_scale": [
+        "0.95624983310699460",
+        "1.06250023841857910"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.93333309888839720",
+      "menu_active": false
+    },
+    {
+      "frame": 57,
+      "player_pos": [
+        "152.83334350585937500",
+        "106.71611785888671880"
+      ],
+      "player_scale": [
+        "0.93331784009933470",
+        "1.09526026248931880"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.94999974966049190",
+      "menu_active": false
+    },
+    {
+      "frame": 58,
+      "player_pos": [
+        "153.79167175292968750",
+        "113.58649444580078120"
+      ],
+      "player_scale": [
+        "0.90237063169479370",
+        "1.13947045803070070"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.96666640043258670",
+      "menu_active": false
+    },
+    {
+      "frame": 59,
+      "player_pos": [
+        "154.75000000000000000",
+        "121.11119079589843750"
+      ],
+      "player_scale": [
+        "0.86172795295715330",
+        "1.19753158092498780"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.98333305120468140",
+      "menu_active": false
+    },
+    {
+      "frame": 60,
+      "player_pos": [
+        "155.70834350585937500",
+        "129.29019165039062500"
+      ],
+      "player_scale": [
+        "0.80954933166503910",
+        "1.27207243442535400"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "0.99999970197677610",
+      "menu_active": false
+    },
+    {
+      "frame": 61,
+      "player_pos": [
+        "156.66667175292968750",
+        "138.12353515625000000"
+      ],
+      "player_scale": [
+        "0.74383419752120970",
+        "1.36595118045806880"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.01666641235351560",
+      "menu_active": false
+    },
+    {
+      "frame": 62,
+      "player_pos": [
+        "157.62500000000000000",
+        "147.61117553710937500"
+      ],
+      "player_scale": [
+        "0.66242229938507080",
+        "1.48225390911102290"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.03333306312561040",
+      "menu_active": false
+    },
+    {
+      "frame": 63,
+      "player_pos": [
+        "158.58334350585937500",
+        "157.75314331054687500"
+      ],
+      "player_scale": [
+        "0.56299287080764770",
+        "1.62429594993591310"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.04999971389770510",
+      "menu_active": false
+    },
+    {
+      "frame": 64,
+      "player_pos": [
+        "159.54167175292968750",
+        "168.54943847656250000"
+      ],
+      "player_scale": [
+        "0.44306540489196780",
+        "1.79562091827392580"
+      ],
+      "player_visible": true,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.06666636466979980",
+      "menu_active": false
+    },
+    {
+      "frame": 65,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.08333301544189450",
+      "menu_active": false
+    },
+    {
+      "frame": 66,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "21.33333396911621090"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.09999966621398930",
+      "menu_active": false
+    },
+    {
+      "frame": 67,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "22.66666603088378910"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.11666631698608400",
+      "menu_active": false
+    },
+    {
+      "frame": 68,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "24.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.13333296775817870",
+      "menu_active": false
+    },
+    {
+      "frame": 69,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "21.55555534362792970"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.14999961853027340",
+      "menu_active": false
+    },
+    {
+      "frame": 70,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.55555534362792970"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.16666626930236820",
+      "menu_active": false
+    },
+    {
+      "frame": 71,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "18.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.18333292007446290",
+      "menu_active": false
+    },
+    {
+      "frame": 72,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "16.88888931274414060"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.19999957084655760",
+      "menu_active": false
+    },
+    {
+      "frame": 73,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "16.22222137451171880"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.21666622161865230",
+      "menu_active": false
+    },
+    {
+      "frame": 74,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "16.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.23333287239074710",
+      "menu_active": false
+    },
+    {
+      "frame": 75,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.22222137451171880"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.24999952316284180",
+      "menu_active": false
+    },
+    {
+      "frame": 76,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.22222137451171880"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.26666617393493650",
+      "menu_active": false
+    },
+    {
+      "frame": 77,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "21.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.28333282470703120",
+      "menu_active": false
+    },
+    {
+      "frame": 78,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "21.55555534362792970"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.29999947547912600",
+      "menu_active": false
+    },
+    {
+      "frame": 79,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "21.88888931274414060"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.31666612625122070",
+      "menu_active": false
+    },
+    {
+      "frame": 80,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "22.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.33333277702331540",
+      "menu_active": false
+    },
+    {
+      "frame": 81,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.77777862548828120"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.34999942779541020",
+      "menu_active": false
+    },
+    {
+      "frame": 82,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.77777862548828120"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.36666607856750490",
+      "menu_active": false
+    },
+    {
+      "frame": 83,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.38333272933959960",
+      "menu_active": false
+    },
+    {
+      "frame": 84,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "18.44444465637207030"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.39999938011169430",
+      "menu_active": false
+    },
+    {
+      "frame": 85,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "18.11111068725585940"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.41666603088378910",
+      "menu_active": false
+    },
+    {
+      "frame": 86,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "18.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.43333268165588380",
+      "menu_active": false
+    },
+    {
+      "frame": 87,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "18.41975402832031250"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.44999933242797850",
+      "menu_active": false
+    },
+    {
+      "frame": 88,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "18.79012298583984380"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.46666598320007320",
+      "menu_active": false
+    },
+    {
+      "frame": 89,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.11111068725585940"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.48333263397216800",
+      "menu_active": false
+    },
+    {
+      "frame": 90,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.38271522521972660"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.49999928474426270",
+      "menu_active": false
+    },
+    {
+      "frame": 91,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.60493850708007810"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.51666593551635740",
+      "menu_active": false
+    },
+    {
+      "frame": 92,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.77777862548828120"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.53333258628845210",
+      "menu_active": false
+    },
+    {
+      "frame": 93,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.90123367309570310"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.54999923706054690",
+      "menu_active": false
+    },
+    {
+      "frame": 94,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "19.97530937194824220"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.56666588783264160",
+      "menu_active": false
+    },
+    {
+      "frame": 95,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.58333253860473630",
+      "menu_active": false
+    },
+    {
+      "frame": 96,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.59999918937683110",
+      "menu_active": false
+    },
+    {
+      "frame": 97,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.61666584014892580",
+      "menu_active": false
+    },
+    {
+      "frame": 98,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.63333249092102050",
+      "menu_active": false
+    },
+    {
+      "frame": 99,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.64999914169311520",
+      "menu_active": false
+    },
+    {
+      "frame": 100,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.66666579246521000",
+      "menu_active": false
+    },
+    {
+      "frame": 101,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.68333244323730470",
+      "menu_active": false
+    },
+    {
+      "frame": 102,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.69999909400939940",
+      "menu_active": false
+    },
+    {
+      "frame": 103,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.71666574478149410",
+      "menu_active": false
+    },
+    {
+      "frame": 104,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.73333239555358890",
+      "menu_active": false
+    },
+    {
+      "frame": 105,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.74999904632568360",
+      "menu_active": false
+    },
+    {
+      "frame": 106,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.76666569709777830",
+      "menu_active": false
+    },
+    {
+      "frame": 107,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.78333234786987300",
+      "menu_active": false
+    },
+    {
+      "frame": 108,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.79999899864196780",
+      "menu_active": false
+    },
+    {
+      "frame": 109,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.81666564941406250",
+      "menu_active": false
+    },
+    {
+      "frame": 110,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.83333230018615720",
+      "menu_active": false
+    },
+    {
+      "frame": 111,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.84999895095825200",
+      "menu_active": false
+    },
+    {
+      "frame": 112,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.86666560173034670",
+      "menu_active": false
+    },
+    {
+      "frame": 113,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.88333225250244140",
+      "menu_active": false
+    },
+    {
+      "frame": 114,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999890327453610",
+      "menu_active": false
+    },
+    {
+      "frame": 115,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 116,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 117,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 118,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 119,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 120,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 121,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 122,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 123,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 124,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 125,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 126,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 127,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 128,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 129,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 130,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 131,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 132,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 133,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 134,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 135,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 136,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 137,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 138,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 139,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 140,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 141,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 142,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 143,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 144,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 145,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 146,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 147,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 148,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    },
+    {
+      "frame": 149,
+      "player_pos": [
+        "160.50000000000000000",
+        "180.00000000000000000"
+      ],
+      "player_scale": [
+        "0.30000001192092900",
+        "2.00000000000000000"
+      ],
+      "player_visible": false,
+      "plate_pos": [
+        "128.00000000000000000",
+        "20.00000000000000000"
+      ],
+      "cursor_pos": [
+        "49.00000000000000000",
+        "9.00000000000000000"
+      ],
+      "cursor_scale": [
+        "1.00000000000000000",
+        "1.00000000000000000"
+      ],
+      "scene_position": "1.89999997615814210",
+      "menu_active": true
+    }
+  ],
+  "menu_active": true
+}

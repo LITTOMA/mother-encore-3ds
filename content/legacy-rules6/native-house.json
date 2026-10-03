@@ -1,0 +1,2343 @@
+{
+  "schema": 6,
+  "kind": "encore.native-house.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Six same-scene house warps; original NPCs and openable doors; Lamp/Doll/melody plus six reviewed Carol/Phone programs; original Area3/4 contact gates; complete reviewed Dad-normal branch/choice/save-continuation graph and all leader texts",
+  "sources": {
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
+    "Audio/Sound effects/Stairs_Down.mp3": "14d839a41c3c033cc3def3234f22d6c7defc22bc1ade34b713eea6b4e360860a",
+    "Audio/Sound effects/Stairs_Up.mp3": "13ca833111ca480ab932daa1df15b0d5d14851d7c40f77a7b5db906e01acaa37",
+    "Audio/Sound effects/bash.mp3": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598",
+    "Audio/Sound effects/phonehangup.wav": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145",
+    "Audio/Sound effects/phonehangup.wav.import": "fdbe75f6e2df204ccc6bd2fa775982d96d8d5a6ce5cbf91517e53a3fbb2b78a4",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+    "Data/Dialogue/Podunk/carol_panic.yaml": "e74b73f1ab2500ab77c8be31bbd51a8c8a385302542f62d9bc750dc0612fb2f9",
+    "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+    "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+    "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a",
+    "Data/Dialogue/Podunk/dollmelody.yaml": "9058f5f24fece54d7446e152830579f763773f312a2be5710c17a9d67c357fd6",
+    "Data/Dialogue/Podunk/mimmie_dead_doll.yaml": "a80642231df7dd64410eb34544f84265d53974587c7098efc32585816ec7d371",
+    "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": "24937777b12b6796ec2c3ce357a95b032575926ec836a097aa37b8620808ed03",
+    "Data/Dialogue/Podunk/minnie_run_tutorial.yaml": "e97378db5d1dcd911d0febf1397c8462949c5974f15beef0e176f00266847aa5",
+    "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+    "Data/Dialogue/Reusable/doorblocked.yaml": "d6f8f581ffc9163dc3c145c3aea7e527d568c97388bbf21ab2d4de1970033e64",
+    "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
+    "Data/Dialogue/Reusable/lockopened.yaml": "ed10dc7cda371e34202cd8fddbe84365b3f494e14f6e6b9d303c4c5d6d697930",
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png.import": "c2a5c9f187d55231055c5203bbb134304f9965549becb75ad0ca594bfa518a97",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Nodes/Ui/effects/Fade.gd": "8266bf5f24eedd8281be92a04abe8ab988da720189f2bbc90c24656cbb99efaa",
+    "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/SaveSelect.gd": "067f0a28af8b9d9b62204ae89ac4bdafbd8470e81a55e02fa27f2958510d6d00",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Shaders/Fade.shader": "c5c5b6b5b60c8c4b4fab8a9aa105cfa3777ab88eecf1c1ccdfb591db2245146d",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "dependencies": {
+    "content/native-opening.json": "519802f23675a880c7f6fab412c2f84aeed9f34385c0ba25888fb5ba4786e200"
+  },
+  "fade_parameters": {
+    "FadeCuts": [
+      1.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "FadeShader": [
+      1.0,
+      1.0,
+      0,
+      0
+    ]
+  },
+  "npc_parameters": {
+    "NpcInteractionReturn": [
+      1.0,
+      0,
+      0,
+      0
+    ]
+  },
+  "doors": [
+    {
+      "id": 1,
+      "source_path": "Doors/Ninten_upstairs",
+      "start_sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "Audio/Sound effects/Door_Short.mp3",
+      "center": [
+        416,
+        394
+      ],
+      "extents": [
+        4,
+        16
+      ],
+      "destination": [
+        220,
+        385.0
+      ],
+      "direction": [
+        -1,
+        0
+      ],
+      "fade_in_length": 1.0,
+      "fade_in_opaque": 0.4,
+      "fade_out_length": 1.0,
+      "fade_out_mostly": 0.4,
+      "fade_in_speed": 1.5,
+      "fade_out_speed": 1.5,
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "source_path": "Doors/Upstairs_Ninten",
+      "start_sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "Audio/Sound effects/Door_Short.mp3",
+      "center": [
+        234,
+        392
+      ],
+      "extents": [
+        4,
+        16
+      ],
+      "destination": [
+        430,
+        387.0
+      ],
+      "direction": [
+        1,
+        0
+      ],
+      "fade_in_length": 1.0,
+      "fade_in_opaque": 0.4,
+      "fade_out_length": 1.0,
+      "fade_out_mostly": 0.4,
+      "fade_in_speed": 1.5,
+      "fade_out_speed": 1.5,
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "source_path": "Doors/Upstairs_Living",
+      "start_sound": "Audio/Sound effects/Stairs_Down.mp3",
+      "end_sound": "",
+      "center": [
+        140,
+        416
+      ],
+      "extents": [
+        4,
+        16
+      ],
+      "destination": [
+        32,
+        681
+      ],
+      "direction": [
+        0,
+        1
+      ],
+      "fade_in_length": 1.0,
+      "fade_in_opaque": 0.4,
+      "fade_out_length": 1.0,
+      "fade_out_mostly": 0.4,
+      "fade_in_speed": 1.5,
+      "fade_out_speed": 1.5,
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "source_path": "Doors/Living_Upstairs",
+      "start_sound": "Audio/Sound effects/Stairs_Up.mp3",
+      "end_sound": "",
+      "center": [
+        32,
+        676
+      ],
+      "extents": [
+        24,
+        4
+      ],
+      "destination": [
+        155.0,
+        401
+      ],
+      "direction": [
+        1,
+        0
+      ],
+      "fade_in_length": 1.0,
+      "fade_in_opaque": 0.4,
+      "fade_out_length": 1.0,
+      "fade_out_mostly": 0.4,
+      "fade_in_speed": 1.5,
+      "fade_out_speed": 1.5,
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "source_path": "Doors/Upstair_Sister",
+      "start_sound": "",
+      "end_sound": "Audio/Sound effects/Door_Short.mp3",
+      "center": [
+        64,
+        363
+      ],
+      "extents": [
+        16,
+        4
+      ],
+      "destination": [
+        128,
+        169
+      ],
+      "direction": [
+        0,
+        -1
+      ],
+      "fade_in_length": 1.0,
+      "fade_in_opaque": 0.4,
+      "fade_out_length": 1.0,
+      "fade_out_mostly": 0.4,
+      "fade_in_speed": 1.5,
+      "fade_out_speed": 1.5,
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "source_path": "Doors/Sister_Upstair",
+      "start_sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "",
+      "center": [
+        128,
+        188
+      ],
+      "extents": [
+        16,
+        4
+      ],
+      "destination": [
+        64,
+        369
+      ],
+      "direction": [
+        0,
+        1
+      ],
+      "fade_in_length": 1.0,
+      "fade_in_opaque": 0.4,
+      "fade_out_length": 1.0,
+      "fade_out_mostly": 0.4,
+      "fade_in_speed": 1.5,
+      "fade_out_speed": 1.5,
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "room_actor_index": 5,
+      "profile": "carol",
+      "dialogue_path": "Data/Dialogue/Podunk/carol_panic.yaml",
+      "id": 1,
+      "source_path": "Objects/npc",
+      "body_id": 9,
+      "primary_resource": "carol",
+      "shadow_resource": "shadow",
+      "first_segment": 0,
+      "segment_count": 4,
+      "seen_key": "/root/Ninten's House/Objects/npc::1:Podunk/carol_panic",
+      "position": [
+        192,
+        704
+      ],
+      "interact_center": [
+        191.5,
+        709
+      ],
+      "interact_extents": [
+        12.3,
+        14
+      ],
+      "default_direction": [
+        0,
+        1
+      ],
+      "view_center": [
+        192,
+        713
+      ],
+      "view_radius": 44.0,
+      "return_delay": 1.0,
+      "flags": 15,
+      "program_index": 4294967295
+    },
+    {
+      "room_actor_index": 3,
+      "id": 2,
+      "source_path": "Objects/npc2",
+      "body_id": 10,
+      "primary_resource": "mimmie",
+      "shadow_resource": "shadow",
+      "first_segment": 20,
+      "segment_count": 2,
+      "seen_key": "/root/Ninten's House/Objects/npc2::1:Podunk/mimmie_doll_defeated",
+      "position": [
+        120,
+        88
+      ],
+      "interact_center": [
+        119.5,
+        93
+      ],
+      "interact_extents": [
+        12.3,
+        14
+      ],
+      "default_direction": [
+        0,
+        1
+      ],
+      "view_center": [
+        120,
+        97
+      ],
+      "view_radius": 44.0,
+      "return_delay": 1.0,
+      "flags": 15,
+      "profile": "mimmie",
+      "dialogue_path": "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml",
+      "program_index": 4294967295
+    },
+    {
+      "room_actor_index": 2,
+      "id": 3,
+      "source_path": "Objects/npcdoll",
+      "body_id": 15,
+      "primary_resource": "doll",
+      "shadow_resource": null,
+      "first_segment": 0,
+      "segment_count": 0,
+      "seen_key": "/root/Ninten's House/Objects/npcdoll::1:Podunk/dollmelody",
+      "position": [
+        40,
+        40
+      ],
+      "interact_center": [
+        39.5,
+        45
+      ],
+      "interact_extents": [
+        12.3,
+        14
+      ],
+      "default_direction": [
+        0,
+        1
+      ],
+      "view_center": [
+        40,
+        49
+      ],
+      "view_radius": 44.0,
+      "return_delay": 1.0,
+      "flags": 14,
+      "profile": "doll",
+      "dialogue_path": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "program_index": 3
+    },
+    {
+      "room_actor_index": 4,
+      "id": 4,
+      "source_path": "Objects/npc3",
+      "body_id": 11,
+      "primary_resource": "minnie",
+      "shadow_resource": "shadow",
+      "first_segment": 0,
+      "segment_count": 0,
+      "seen_key": "",
+      "position": [
+        472,
+        88
+      ],
+      "interact_center": [
+        471.5,
+        93
+      ],
+      "interact_extents": [
+        12.3,
+        14
+      ],
+      "default_direction": [
+        0,
+        1
+      ],
+      "view_center": [
+        472,
+        97
+      ],
+      "view_radius": 44.0,
+      "return_delay": 1.0,
+      "flags": 15,
+      "profile": "minnie",
+      "dialogue_path": "Data/Dialogue/Podunk/minnie_run_tutorial.yaml",
+      "program_index": 4294967295
+    }
+  ],
+  "segments": [
+    {
+      "id": 1,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Are you okay, "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "?"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 2,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "What on earth is happening to our home?"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 3,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "I'm so scared..."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 4,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "If only your father were here now..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 5,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "The door won't open!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 6,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Ahhhh!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 7,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Big brother! Help!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 8,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Is it over?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 9,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "It doesn't seem to be moving..."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 10,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "But I can still hear something coming out of it."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 11,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ", can you check it to make sure it's dead?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 12,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "There's an old music box hidden inside the doll."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 13,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " opened it."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 14,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "A broken melody began to play."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 15,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " remembered the tune."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 16,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Hey, where are you going?!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 17,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Please make sure it's dead..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 18,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "It's dead? What a relief!"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 19,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "I knew we shouldn't have taken that doll from the basement..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 20,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "It's not moving anymore."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 21,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Hurry up!"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 22,
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "I won't be able to sleep at night knowing it might still be alive..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 23,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Are you okay, "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "?"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 24,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "What on earth is happening to our home?"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 25,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "I'm so scared..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 26,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "If only your father were here now..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 27,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Oh! That must be him."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 28,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Could you get it, "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 29,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Are you okay, "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 30,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "What on earth is happening to our home?"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 31,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "I'm so scared..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 32,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "If only your father were here now..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 33,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Oh! That must be him."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 34,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Could you get it, "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 35,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Telephone! "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ", would you please get it?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 36,
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Telephone! "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ", would you please get it?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 37,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " picked up the phone."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 38,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "? It's your dad."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 39,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Hmm, I see. Sounds like it must be a poltergeist of some sort."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 40,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "I'm not sure what to do about it either..."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 41,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Oh, I remember!"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 42,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Your great-grandfather studied "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "PSI"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " at one point."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 43,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "He documented all of his research in a "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "diary"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " of his."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 44,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "We put all of his junk in the "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "basement"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ", but I think it's locked."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 45,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "The "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "key"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " shouldn't be too far..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 46,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Anyway, you're our only hope!"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 47,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "You've always dreamed about going on an adventure, haven't you?"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 48,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Well, go forth and protect us all, "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "!"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 49,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Oh, and if you ever need to "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "SAVE your progress"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ", don't forget to "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "call your dear old dad"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 50,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Click! Beep-beep-beep...)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 51,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Beeep..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 52,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "? It's your dad."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 53,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Why is your voice so nasally?"
+        },
+        {
+          "kind": 8,
+          "text": "4"
+        },
+        {
+          "kind": 1,
+          "text": " Do you have a cold?"
+        },
+        {
+          "kind": 9,
+          "text": ""
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 54,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Well, anyway..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 55,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Ha-ha!"
+        },
+        {
+          "kind": 8,
+          "text": "4"
+        },
+        {
+          "kind": 1,
+          "text": " Why are you so formal with your old man, silly?"
+        },
+        {
+          "kind": 9,
+          "text": ""
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 56,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Well, anyway..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 57,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Your voice sounds so deep!"
+        },
+        {
+          "kind": 8,
+          "text": "5"
+        },
+        {
+          "kind": 1,
+          "text": " Kids grow up too fast..."
+        },
+        {
+          "kind": 9,
+          "text": ""
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 58,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Well, anyway..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 59,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Why is your voice so high?"
+        },
+        {
+          "kind": 8,
+          "text": "5"
+        },
+        {
+          "kind": 1,
+          "text": " Are you pretending to be Mimmie?"
+        },
+        {
+          "kind": 9,
+          "text": ""
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 60,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Well, anyway..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 61,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "I've deposited $"
+        },
+        {
+          "kind": 5,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " into your bank account."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 62,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Taking away what you've spent, you should now have $"
+        },
+        {
+          "kind": 6,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " in the bank."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 63,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Anyways, what do you need from me?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 64,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "All done."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 65,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Well, good luck with your adventure and whatnot."
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 66,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Just remember to take a break once in a while, okay?"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 67,
+      "speaker": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Click! Beep-beep-beep...)"
+        }
+      ],
+      "flags": 5
+    }
+  ],
+  "interaction": {
+    "voice_pitch_min": 0.85,
+    "voice_pitch_max": 1.0,
+    "bullet_string": "@ ",
+    "word_separator": " ",
+    "max_player_name_length": 7,
+    "ray_origin": [
+      0,
+      6
+    ],
+    "ray_length": 16,
+    "text_seconds": 0.02,
+    "accept_multiplier": 3.0,
+    "cancel_multiplier": 1000.0,
+    "collision_mask": 1
+  },
+  "boundaries": [
+    {
+      "id": 1,
+      "source_path": "Doors/Upstair_Mom",
+      "kind": 1,
+      "center": [
+        176,
+        363
+      ],
+      "extents": [
+        16,
+        4
+      ]
+    },
+    {
+      "id": 2,
+      "source_path": "Doors/Mom_Upstair",
+      "kind": 1,
+      "center": [
+        464,
+        188
+      ],
+      "extents": [
+        16,
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "source_path": "Doors/Living_Basement",
+      "kind": 1,
+      "center": [
+        96,
+        699
+      ],
+      "extents": [
+        16,
+        4
+      ]
+    },
+    {
+      "id": 4,
+      "source_path": "Doors/Living_Basement2",
+      "kind": 1,
+      "center": [
+        88,
+        972
+      ],
+      "extents": [
+        16,
+        4
+      ]
+    },
+    {
+      "id": 5,
+      "source_path": "Doors/Podunk",
+      "kind": 2,
+      "center": [
+        136,
+        828
+      ],
+      "extents": [
+        24,
+        4
+      ]
+    }
+  ],
+  "overrides": [
+    {
+      "npc": 0,
+      "flag": "doll_melody",
+      "dialogue": "Podunk/carol_call",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc:doll_melody:1:Podunk/carol_call"
+    },
+    {
+      "npc": 0,
+      "flag": "phone_ring",
+      "dialogue": "Podunk/carol_phone",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc:phone_ring:1:Podunk/carol_phone"
+    },
+    {
+      "npc": 0,
+      "flag": "talked_to_dad",
+      "dialogue": "Podunk/carol_key",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc:talked_to_dad:1:Podunk/carol_key"
+    },
+    {
+      "npc": 0,
+      "flag": "carol_ask_key",
+      "dialogue": "Podunk/carol_key_again",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc:carol_ask_key:1:Podunk/carol_key_again"
+    },
+    {
+      "npc": 0,
+      "flag": "mick_telepathy",
+      "dialogue": "Podunk/carol_got_key",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc:mick_telepathy:1:Podunk/carol_got_key"
+    },
+    {
+      "npc": 0,
+      "flag": "got_diary",
+      "dialogue": "Podunk/carol_food",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc:got_diary:1:Podunk/carol_food"
+    },
+    {
+      "npc": 0,
+      "flag": "good_morning",
+      "dialogue": "Podunk/carol_rested",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc:good_morning:1:Podunk/carol_rested"
+    },
+    {
+      "npc": 1,
+      "flag": "doll_melody",
+      "dialogue": "Podunk/mimmie_dead_doll",
+      "dialogue_index": 9,
+      "seen_key": "/root/Ninten's House/Objects/npc2:doll_melody:1:Podunk/mimmie_dead_doll"
+    },
+    {
+      "npc": 1,
+      "flag": "talked_to_dad",
+      "dialogue": "Podunk/mimmie_key",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc2:talked_to_dad:1:Podunk/mimmie_key"
+    },
+    {
+      "npc": 1,
+      "flag": "mimmie_ask_key",
+      "dialogue": "Podunk/mimmie_key_again",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc2:mimmie_ask_key:1:Podunk/mimmie_key_again"
+    },
+    {
+      "npc": 1,
+      "flag": "mick_telepathy",
+      "dialogue": "Podunk/mimmie_got_key",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc2:mick_telepathy:1:Podunk/mimmie_got_key"
+    },
+    {
+      "npc": 1,
+      "flag": "ninten_basement_door",
+      "dialogue": "Podunk/mimmie_open_basement",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc2:ninten_basement_door:1:Podunk/mimmie_open_basement"
+    },
+    {
+      "npc": 1,
+      "flag": "got_juice",
+      "dialogue": "Podunk/mimmie_juice",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc2:got_juice:1:Podunk/mimmie_juice"
+    },
+    {
+      "npc": 2,
+      "flag": "doll_melody",
+      "dialogue": "Podunk/doll",
+      "dialogue_index": 10,
+      "seen_key": "/root/Ninten's House/Objects/npcdoll:doll_melody:1:Podunk/doll"
+    },
+    {
+      "npc": 3,
+      "flag": "mimmie_door_opened",
+      "dialogue": "Podunk/minnie_door_open",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc3:mimmie_door_opened:1:Podunk/minnie_door_open"
+    },
+    {
+      "npc": 3,
+      "flag": "doll_melody",
+      "dialogue": "Podunk/minnie_storage",
+      "dialogue_index": 4294967295,
+      "seen_key": "/root/Ninten's House/Objects/npc3:doll_melody:1:Podunk/minnie_storage"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "source_path": "Data/Dialogue/Reusable/doorblocked.yaml",
+      "first_segment": 4,
+      "segment_count": 1
+    },
+    {
+      "id": 2,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "first_segment": 5,
+      "segment_count": 1
+    },
+    {
+      "id": 3,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "first_segment": 6,
+      "segment_count": 1
+    },
+    {
+      "id": 4,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "first_segment": 7,
+      "segment_count": 1
+    },
+    {
+      "id": 5,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "first_segment": 8,
+      "segment_count": 3
+    },
+    {
+      "id": 6,
+      "source_path": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "first_segment": 11,
+      "segment_count": 3
+    },
+    {
+      "id": 7,
+      "source_path": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "first_segment": 14,
+      "segment_count": 1
+    },
+    {
+      "id": 8,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "first_segment": 15,
+      "segment_count": 1
+    },
+    {
+      "id": 9,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "first_segment": 16,
+      "segment_count": 1
+    },
+    {
+      "id": 10,
+      "source_path": "Data/Dialogue/Podunk/mimmie_dead_doll.yaml",
+      "first_segment": 17,
+      "segment_count": 2
+    },
+    {
+      "id": 11,
+      "source_path": "Data/Dialogue/Podunk/doll.yaml",
+      "first_segment": 19,
+      "segment_count": 1
+    },
+    {
+      "id": 12,
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "first_segment": 22,
+      "segment_count": 3
+    },
+    {
+      "id": 13,
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "first_segment": 25,
+      "segment_count": 1
+    },
+    {
+      "id": 14,
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "first_segment": 26,
+      "segment_count": 1
+    },
+    {
+      "id": 15,
+      "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+      "first_segment": 27,
+      "segment_count": 1
+    },
+    {
+      "id": 16,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "first_segment": 28,
+      "segment_count": 1
+    },
+    {
+      "id": 17,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "first_segment": 29,
+      "segment_count": 2
+    },
+    {
+      "id": 18,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "first_segment": 31,
+      "segment_count": 1
+    },
+    {
+      "id": 19,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "first_segment": 32,
+      "segment_count": 1
+    },
+    {
+      "id": 20,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "first_segment": 33,
+      "segment_count": 1
+    },
+    {
+      "id": 21,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "first_segment": 34,
+      "segment_count": 1
+    },
+    {
+      "id": 22,
+      "source_path": "Data/Dialogue/Podunk/carol_phone.yaml",
+      "first_segment": 35,
+      "segment_count": 1
+    },
+    {
+      "id": 23,
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "first_segment": 36,
+      "segment_count": 1
+    },
+    {
+      "id": 24,
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "first_segment": 37,
+      "segment_count": 6
+    },
+    {
+      "id": 25,
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "first_segment": 43,
+      "segment_count": 2
+    },
+    {
+      "id": 26,
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "first_segment": 45,
+      "segment_count": 4
+    },
+    {
+      "id": 27,
+      "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "first_segment": 49,
+      "segment_count": 1
+    },
+    {
+      "id": 28,
+      "source_path": "Data/Dialogue/Reusable/phonenoanswer.yaml",
+      "first_segment": 50,
+      "segment_count": 1
+    },
+    {
+      "id": 29,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 51,
+      "segment_count": 1
+    },
+    {
+      "id": 30,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 52,
+      "segment_count": 2
+    },
+    {
+      "id": 31,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 54,
+      "segment_count": 2
+    },
+    {
+      "id": 32,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 56,
+      "segment_count": 2
+    },
+    {
+      "id": 33,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 58,
+      "segment_count": 2
+    },
+    {
+      "id": 34,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 60,
+      "segment_count": 1
+    },
+    {
+      "id": 35,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 61,
+      "segment_count": 2
+    },
+    {
+      "id": 36,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 63,
+      "segment_count": 1
+    },
+    {
+      "id": 37,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 64,
+      "segment_count": 2
+    },
+    {
+      "id": 38,
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "first_segment": 66,
+      "segment_count": 1
+    }
+  ],
+  "openable_doors": [
+    {
+      "id": 1,
+      "source_path": "Below/Openable Door",
+      "player_body_id": 1,
+      "nonplayer_body_id": 2,
+      "sprite_resource": "door",
+      "flag": "",
+      "key": "",
+      "activates_flag": "",
+      "deactivates_flag": "",
+      "blocked_dialogue": 0,
+      "locked_dialogue": "Data/Dialogue/Reusable/locklocked.yaml",
+      "opened_dialogue": "Data/Dialogue/Reusable/lockopened.yaml",
+      "start_sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "Audio/Sound effects/Door_Short.mp3",
+      "ram_sound": "Audio/Sound effects/bash.mp3",
+      "policy": 0,
+      "normal_mask": 5,
+      "normal_values": 1,
+      "action_mask": 7,
+      "action_values": 6,
+      "timer_flags": 1,
+      "position": [
+        176,
+        352
+      ],
+      "trigger_center": [
+        176,
+        353.5
+      ],
+      "trigger_extents": [
+        16,
+        19.5
+      ],
+      "interact_center": [
+        176,
+        368
+      ],
+      "interact_extents": [
+        16,
+        4
+      ],
+      "collision_center": [
+        176,
+        364
+      ],
+      "collision_extents": [
+        16,
+        4
+      ],
+      "sprite_position": [
+        176,
+        336
+      ],
+      "sprite_offset": [
+        0,
+        8
+      ],
+      "ram_direction": [
+        2,
+        0
+      ],
+      "ram_required_y": -1,
+      "close_delay": 0.3,
+      "action_length": 1.0,
+      "normal_length": 1.0,
+      "ram_strength": 1,
+      "ram_duration": 0.2
+    },
+    {
+      "id": 2,
+      "source_path": "Below/Openable Door2",
+      "player_body_id": 3,
+      "nonplayer_body_id": 4,
+      "sprite_resource": "door",
+      "flag": "mimmie_door_opened",
+      "key": "",
+      "activates_flag": "",
+      "deactivates_flag": "",
+      "blocked_dialogue": 0,
+      "locked_dialogue": "Data/Dialogue/Reusable/locklocked.yaml",
+      "opened_dialogue": "Data/Dialogue/Reusable/lockopened.yaml",
+      "start_sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "Audio/Sound effects/Door_Short.mp3",
+      "ram_sound": "Audio/Sound effects/bash.mp3",
+      "policy": 1,
+      "normal_mask": 5,
+      "normal_values": 1,
+      "action_mask": 7,
+      "action_values": 6,
+      "timer_flags": 1,
+      "position": [
+        64,
+        352
+      ],
+      "trigger_center": [
+        64,
+        353.5
+      ],
+      "trigger_extents": [
+        16,
+        19.5
+      ],
+      "interact_center": [
+        64,
+        368
+      ],
+      "interact_extents": [
+        16,
+        4
+      ],
+      "collision_center": [
+        64,
+        364
+      ],
+      "collision_extents": [
+        16,
+        4
+      ],
+      "sprite_position": [
+        64,
+        336
+      ],
+      "sprite_offset": [
+        0,
+        8
+      ],
+      "ram_direction": [
+        2,
+        0
+      ],
+      "ram_required_y": -1,
+      "close_delay": 0.3,
+      "action_length": 1.0,
+      "normal_length": 1.0,
+      "ram_strength": 1,
+      "ram_duration": 0.2
+    },
+    {
+      "id": 3,
+      "source_path": "Below/Openable Door3",
+      "player_body_id": 5,
+      "nonplayer_body_id": 6,
+      "sprite_resource": "door_basement",
+      "flag": "ninten_basement_door",
+      "key": "KeyBasement",
+      "activates_flag": "",
+      "deactivates_flag": "",
+      "blocked_dialogue": 0,
+      "locked_dialogue": "Data/Dialogue/Reusable/locklocked.yaml",
+      "opened_dialogue": "Data/Dialogue/Reusable/lockopened.yaml",
+      "start_sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "Audio/Sound effects/Door_Short.mp3",
+      "ram_sound": "Audio/Sound effects/bash.mp3",
+      "policy": 0,
+      "normal_mask": 5,
+      "normal_values": 1,
+      "action_mask": 7,
+      "action_values": 6,
+      "timer_flags": 1,
+      "position": [
+        96,
+        688
+      ],
+      "trigger_center": [
+        96,
+        689.5
+      ],
+      "trigger_extents": [
+        16,
+        19.5
+      ],
+      "interact_center": [
+        96,
+        704
+      ],
+      "interact_extents": [
+        16,
+        4
+      ],
+      "collision_center": [
+        96,
+        700
+      ],
+      "collision_extents": [
+        16,
+        4
+      ],
+      "sprite_position": [
+        96,
+        672
+      ],
+      "sprite_offset": [
+        0,
+        8
+      ],
+      "ram_direction": [
+        2,
+        0
+      ],
+      "ram_required_y": -1,
+      "close_delay": 0.3,
+      "action_length": 1.0,
+      "normal_length": 1.0,
+      "ram_strength": 1,
+      "ram_duration": 0.2
+    },
+    {
+      "id": 4,
+      "source_path": "Below/Openable Door4",
+      "player_body_id": 7,
+      "nonplayer_body_id": 8,
+      "sprite_resource": "door",
+      "flag": "",
+      "key": "",
+      "activates_flag": "",
+      "deactivates_flag": "",
+      "blocked_dialogue": 0,
+      "locked_dialogue": "Data/Dialogue/Reusable/locklocked.yaml",
+      "opened_dialogue": "Data/Dialogue/Reusable/lockopened.yaml",
+      "start_sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "Audio/Sound effects/Door_Short.mp3",
+      "ram_sound": "Audio/Sound effects/bash.mp3",
+      "policy": 0,
+      "normal_mask": 5,
+      "normal_values": 1,
+      "action_mask": 7,
+      "action_values": 6,
+      "timer_flags": 1,
+      "position": [
+        88,
+        960
+      ],
+      "trigger_center": [
+        88,
+        961.5
+      ],
+      "trigger_extents": [
+        16,
+        19.5
+      ],
+      "interact_center": [
+        88,
+        976
+      ],
+      "interact_extents": [
+        16,
+        4
+      ],
+      "collision_center": [
+        88,
+        972
+      ],
+      "collision_extents": [
+        16,
+        4
+      ],
+      "sprite_position": [
+        88,
+        944
+      ],
+      "sprite_offset": [
+        0,
+        8
+      ],
+      "ram_direction": [
+        2,
+        0
+      ],
+      "ram_required_y": -1,
+      "close_delay": 0.3,
+      "action_length": 1.0,
+      "normal_length": 1.0,
+      "ram_strength": 1,
+      "ram_duration": 0.2
+    }
+  ],
+  "story_triggers": [
+    {
+      "id": 1,
+      "source_path": "Poltergeist/Cutscene Area2",
+      "dialogue": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "center": [
+        128,
+        176
+      ],
+      "extents": [
+        16,
+        8
+      ],
+      "first_condition": 0,
+      "condition_count": 2,
+      "disposition": 2,
+      "program_index": 1
+    },
+    {
+      "id": 2,
+      "source_path": "Cutscene Area5",
+      "dialogue": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "center": [
+        128,
+        185
+      ],
+      "extents": [
+        16,
+        8
+      ],
+      "first_condition": 2,
+      "condition_count": 2,
+      "disposition": 2,
+      "program_index": 4
+    },
+    {
+      "id": 3,
+      "source_path": "Cutscene Area4",
+      "dialogue": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "center": [
+        136,
+        816
+      ],
+      "extents": [
+        32,
+        8
+      ],
+      "first_condition": 4,
+      "condition_count": 2,
+      "disposition": 2,
+      "program_index": 6
+    },
+    {
+      "id": 4,
+      "source_path": "Cutscene Area3",
+      "dialogue": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "center": [
+        136,
+        824
+      ],
+      "extents": [
+        32,
+        8
+      ],
+      "first_condition": 6,
+      "condition_count": 2,
+      "disposition": 2,
+      "program_index": 7
+    }
+  ],
+  "story_conditions": [
+    {
+      "kind": 1,
+      "flag": "doll_melody",
+      "value": 0
+    },
+    {
+      "kind": 2,
+      "flag": "doll_defeated",
+      "value": 0
+    },
+    {
+      "kind": 1,
+      "flag": "doll_defeated",
+      "value": 1
+    },
+    {
+      "kind": 2,
+      "flag": "doll_melody",
+      "value": 0
+    },
+    {
+      "kind": 1,
+      "flag": "doll_melody",
+      "value": 1
+    },
+    {
+      "kind": 2,
+      "flag": "phone_ring",
+      "value": 0
+    },
+    {
+      "kind": 1,
+      "flag": "phone_ring",
+      "value": 1
+    },
+    {
+      "kind": 2,
+      "flag": "talked_to_dad",
+      "value": 0
+    }
+  ]
+}

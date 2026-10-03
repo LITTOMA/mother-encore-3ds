@@ -1,0 +1,13 @@
+#include "encore/localization.hpp"
+#include "encore/utf8.hpp"
+#include <cassert>
+#include <algorithm>
+#include <fstream>
+#include <iterator>
+#include <iostream>
+#include "encore/crc32.hpp"
+#include <cstdio>
+using namespace encore::upstream;
+int main(int argc,char**argv){assert(argc==2);std::string e;LocaleCatalog c;assert(c.load_file(argv[1],e));assert(c.locales().size()==13&&c.key_count()>=3800);LocaleSelection s;assert(s.bind(c,e));assert(s.select("zh_CN",e));assert(s.code()=="zh_Hans_CN");assert(s.text("OPTIONS_LANGUAGE").text=="语言");assert(c.lookup("OPTIONS_LANGUAGE","fr_BE").text=="Langue");assert(c.lookup("OPTIONS_LANGUAGE_FR","ja").status==TranslationStatus::LanguageFallback);assert(c.lookup("NATIVE_UNKNOWN_KEY","fr").status==TranslationStatus::MissingKey);assert(c.lookup("NATIVE_UNKNOWN_KEY","fr").text=="NATIVE_UNKNOWN_KEY");std::string out;assert(c.bound("naming.prompt/0","What is this boy's name?",s.code(),out,e));assert(out!="What is this boy's name?");assert(!c.bound("naming.prompt/0","changed",s.code(),out,e));std::vector<uint8_t>p;assert(encode_locale_preference(s,p,e));std::string code;assert(decode_locale_preference(c,p.data(),p.size(),code,e)&&code==s.code());p.back()^=1;assert(!decode_locale_preference(c,p.data(),p.size(),code,e));auto before=s.code();assert(!s.select("invented",e)&&s.code()==before);std::ifstream f(argv[1],std::ios::binary);std::vector<uint8_t>b{std::istreambuf_iterator<char>(f),{}};b.back()^=1;assert(!c.load(b.data(),b.size(),e));assert(c.valid()&&c.lookup("OPTIONS_LANGUAGE","zh_CN").text=="语言");b.back()^=1;auto unicode=std::find(b.begin()+24,b.end(),uint8_t(0xe8));assert(unicode!=b.end());*unicode=0xff;auto crc=encore::crc32(b.data()+24,b.size()-24);for(unsigned i=0;i<4;++i)b[16+i]=uint8_t(crc>>(8*i));assert(!c.load(b.data(),b.size(),e));
+ const std::string path="build/locale-preference-test.encprefs";std::remove(path.c_str());std::remove((path+".tmp").c_str());std::remove((path+".bak").c_str());assert(read_locale_preference(c,path.c_str(),code,e)==LocalePreferenceRead::Missing);assert(write_locale_preference(s,path.c_str(),e));assert(read_locale_preference(c,path.c_str(),code,e)==LocalePreferenceRead::Loaded&&code=="zh_Hans_CN");assert(s.select("en",e)&&write_locale_preference(s,path.c_str(),e));assert(read_locale_preference(c,path.c_str(),code,e)==LocalePreferenceRead::Loaded&&code=="en");assert(!s.select("ru",e));
+ std::u32string cp;assert(encore::utf8_decode("名称é",cp)&&cp.size()==3);assert(!encore::utf8_decode("\xed\xa0\x80",cp));std::cout<<"Catalog, fallback, binding, preference, corruption and UTF-8 checks passed\n";}

@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "sources": {
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Maps/Cutscenes/Mt Itoi Landscape.tscn": "c334e9ab97f842c9b478430b3ca4ecc0958560aaf2dd1710ec9244e885f69340",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "scope": "Pure boolean story/object flags, appear/disappear conditions, deferred landmark deletion state, NPC visibility output gates, openable door flag-update outputs, and fresh-opening body enablement. Not complete scripts, event scheduling, collision, camera or opening gameplay.",
+  "native": [
+    "include/encore/world_flags.hpp",
+    "runtime/world_flags.cpp"
+  ],
+  "symbols": {
+    "Scripts/global/globalData.gd": [
+      "_init_flags",
+      "check_appear_disappear_flags",
+      "set_flag",
+      "set_object_flag"
+    ],
+    "Scripts/Main/FlaggableObject.gd": [
+      "_get_flag_status",
+      "_set_flag_status",
+      "_on_leave_area"
+    ],
+    "Scripts/Main/Flag Landmarks.gd": [
+      "_check_flags"
+    ],
+    "Scripts/Main/npc.gd": [
+      "update_visibility_changed"
+    ],
+    "Scripts/Main/Openable Door.gd": [
+      "_update_door_state",
+      "lock",
+      "unlock"
+    ]
+  },
+  "semantic_review": [
+    "All 178 global story flags initially false; object flags empty. Unknown read defaults false; unknown set_flag does not emit. Known writes emit if requested even for unchanged values. Object writes create keys.",
+    "FlaggableObject defaults to object_flags[currentScene.name + \"/\" + leaf name], not full path. Explicit is_object_flag chooses dictionary. Editor-only behavior outside runtime scope.",
+    "Appearance is (empty appear or true flag) and (empty disappear or false flag). Missing appear hides; missing disappear does not hide.",
+    "FlagLandmark queues deletion when hidden and delete_if_hidden, without setting visible false in that branch. queue_free is not cancelled by later flags; collision/tree removal waits for deletion flush.",
+    "npc visibility callback sets collisions.disabled to inverse effective tree visibility, interaction disabled also when no dialogue, and physics processing to visibility. It overwrites prior no_collision at end of ready. Complete NPC/notifier behavior not implemented.",
+    "Openable door flag update first chooses lock/unlock from key/blocked/one_way/locked, deferring collider disabled property. Registered flag then overrides only unlocked and prompt, not collider. Full door body-entered/animation/timer behavior not implemented.",
+    "Fresh house21-body enablement allows two unlocked player-door shapes disabled, other bodies enabled. Four NonPlayerStaticBody2D shapes have layer1596 and mask0, excluded from initial player mask4353 separately.",
+    "Invisible static bodies remain enabled: present bodies and DoorBlock/Entrance. Flags-based loot state changes do not disable presents.",
+    "Fresh-opening resolver rejects unknown body paths, non-opening true flags except visited_podunk, and any object flag entries; it is not a saved or post-cutscene world evaluator.",
+    "Opening Door target520,404 becomes actual actor position520,397 via Door.change_scene targetY-7. DebugStartPos456,409 is scene-debug only. House AreaRoom ready sets visited_podunk true.",
+    "Bedroom camera area center504,376 extents208,104 yields limits296,272,712,480 at viewport320x180; camera-area script enlarges each dimension to at least viewport size and applies after idle_frame. Camera not implemented by this module."
+  ],
+  "not_implemented_by_this_review": [
+    "whole scripts",
+    "door transitions and animations",
+    "NPC screen culling and movement",
+    "collision engine",
+    "scene event ordering",
+    "game camera",
+    "cutscenes and battles",
+    "save schema",
+    "general GDScript"
+  ],
+  "whole_file_approved": false
+}

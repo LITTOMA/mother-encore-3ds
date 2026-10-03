@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "isolated original BattleSystem round methods; healthy first-round Ninten/Lamp; native RNG, double Variant arithmetic, deferred/yield/SceneTreeTimer semantics",
+  "engine_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "tool_sha256": "419e13d77ca7bc42eed125803e39f124f384db5e7ad6c0ab94482726bf8f95e0",
+  "reference_sha256": "455606f18e0d42cba4aea1bda27c0425763db610f520e301713c15ff5fb72c95",
+  "generated_scripts_sha256": {
+    "participant.gd": "691ac659749f6e11632eba548e0291e7312a148d039dc360f72a899ecc7e6552",
+    "enemy_skill.gd": "ed027ac1536a4abfecd2db4f6e6586ba8798db06e344047bde57b313e9446dc0",
+    "flying.gd": "d55fa1684f7a7daff3162268a4ea22f4d980f15fc90807a9d30c8012d8d17d3a",
+    "battle.gd": "4868e90063243fbf23acdbafcb6bd97b5f41cfabb4fa161596f1adee276f1f30",
+    "probe.gd": "af6f47b4313a9671803cd442c8ad95f30f19903e561d1be55583446fdd812dd8",
+    "services.gd": "c7dd2f0776b12c3a11aefc0cf7adfa6e40f6c6970f072b2bbdcaec644799ab32",
+    "sprite.gd": "7027de93177e37c8cc4eb9ed58014e795317de754d9a3420d9ca11378fc46c73"
+  },
+  "full_game_reference": "not run",
+  "hardware": "not run",
+  "render_reference": "not run"
+}

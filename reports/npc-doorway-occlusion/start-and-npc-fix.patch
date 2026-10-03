@@ -1,0 +1,1347 @@
+diff --git a/platform/ctr/main.cpp b/platform/ctr/main.cpp
+--- a/platform/ctr/main.cpp
++++ b/platform/ctr/main.cpp
+@@ -37,6 +37,7 @@
+ #include <memory>
+ #include "encore/house_runtime.hpp"
+ #include "encore/house_presentation.hpp"
++#include "encore/blackbars.hpp"
+ #include "encore/battle_action_presentation.hpp"
+ #include "encore/battle_outcome.hpp"
+ #include "audio_player.hpp"
+@@ -120,6 +121,7 @@
+ 
+ 
+ HouseRenderer house_renderer;
++upstream::Blackbars world_blackbars;
+ std::string house_error;uint64_t house_sound_requests=0;
+ struct RoomDrawItem {float y;uint32_t kind,index,order;};
+ std::vector<RoomDrawItem> room_draw_items;
+@@ -735,7 +737,7 @@
+ }
+ 
+ bool load_house(std::string& error){
+-    if(!opening_data.load_file("romfs:/data/opening.encroom",error))return false;
++    if(!opening_data.load_file("romfs:/data/opening.encroom",error)||!world_blackbars.load_file("romfs:/data/opening.encbars",error))return false;
+     const auto room=opening_data.view();
+     if(!opening_actor.load(room,error))return false;
+     if(!gameplay_scene->world.initialize(room,{float(view_width),float(view_height)})){error=gameplay_scene->world.error();return false;}
+@@ -811,6 +813,10 @@
+         std::stable_sort(room_draw_items.begin(),room_draw_items.end(),[](const RoomDrawItem&a,const RoomDrawItem&b){return a.y<b.y;});
+         for(const auto&draw:room_draw_items){if(draw.kind==2){if(!house_renderer.draw_npc(gameplay_scene->presentation.npc_pose(draw.index),cx,cy))house_error="Lifted NPC renderer rejected";}else opening_actor.draw_actor(gameplay_scene->world.actor(draw.index),cx,cy);}
+     }
++    // Source layer-1 bars cover the complete world canvas (including effects),
++    // before layer-3 dialogue. Width/bottom anchoring adapt to the native view.
++    const auto bars=world_blackbars.pose(float(view_width),float(view_height));
++    for(const auto&bar:bars.bars)if(bar.h>0)BattleRenderer::draw_rect(view_x()+bar.x,view_y()+bar.y,bar.w,bar.h,bars.color);
+ 
+ }
+ void house_bottom(){
+@@ -865,7 +871,7 @@
+         text(3,14,128,0.29f,timing,ink,292);
+     }else
+ #endif
+-    text(3,14,143,0.37f,"D-pad: move / choose    A: select\nSELECT: reference view + restart\nSTART: exit",ink,292);
++    text(3,14,143,0.37f,"D-pad: move / choose    A: select\nSELECT: reference view + restart\nExit: title menu",ink,292);
+     char position[160];const auto& player=gameplay_scene->world.player();
+     if(stage==upstream::OpeningStage::Walking){
+         const auto instance=room.actor_instance(scene.player_instance_index);
+@@ -964,7 +970,9 @@
+         if(input_resume_reset.exchange(false,std::memory_order_relaxed)){
+             native_input.reset();menu_navigation.reset();last=osGetTime();accumulator=0;
+         }
+-        hidScanInput();u32 down=hidKeysDown(),held=hidKeysHeld();if(down&KEY_START)break;
++        hidScanInput();u32 down=hidKeysDown(),held=hidKeysHeld();
++        // START is not a global quit shortcut: UI editing must not discard the
++        // pending session. Normal exit is the explicit title-menu request.
+         if(down&KEY_SELECT){
+             wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();reference_view=!reference_view;const auto native=battle_data.view().parameter(upstream::BattleParameter::CanvasSize);view_width=reference_view?unsigned(native.x):400;view_height=reference_view?unsigned(native.y):240;loaded_battle_path.clear();world_effect_assets_ready=false;
+             if(!reset_development_game(error)||!open_continue(error))break;last=osGetTime();accumulator=0;
+@@ -1155,6 +1163,11 @@
+             }
+         }
+         if(!gameplay_scene->world.end_scene_frame())house_error=gameplay_scene->world.error();
++        // uiManager owns bars for the entire dialogue lifetime, including
++        // showbox:false movement phrases. Closing text alone is not an end.
++        const bool bars_open=world_visible&&!in_battle()&&(gameplay_scene->world.cutscene_active()||
++            (gameplay_scene->presentation.dialogue_active()&&!gameplay_scene->presentation.dialogue_closing()));
++        if(!world_blackbars.update(bars_open,dt))house_error="World blackbar animation rejected";
+         if(audio_player.available()){
+             if(!audio_player.consume(opening_data.view(),gameplay_scene->world.audio_requests(),error)||!audio_player.update(dt,error))audio_status=error;
+             if(in_battle()&&battle_entry.encounter_audio_pending())if(!audio_player.play(battle_entry.take_encounter_audio(),ctr::AudioLane::Jingle,error))audio_status=error;
+diff --git a/include/encore/blackbars.hpp b/include/encore/blackbars.hpp
+new file mode 100644
+--- /dev/null
++++ b/include/encore/blackbars.hpp
+@@ -0,0 +1,60 @@
++#pragma once
++#include <algorithm>
++#include <array>
++#include <cmath>
++#include <cstdint>
++#include <cstdio>
++#include <cstring>
++#include <string>
++
++namespace encore::upstream {
++// Bounded two-key, non-looping cubic CanvasLayer tracks. All source geometry,
++// timing, easing and color are checked external data; this has no actor rules.
++class Blackbars {
++public:
++ struct Rect {float x=0,y=0,w=0,h=0;};
++ struct Pose {std::array<Rect,2> bars{};uint32_t color=0;};
++ bool load(const uint8_t*p,size_t n,std::string&error){
++  auto fail=[&](const char*s){error=s;return false;};
++  if(!p||n!=124||std::memcmp(p,"ENCBAR01",8)||integer(p+8)!=1||integer(p+12)!=n||integer(p+20)!=1)return fail("Blackbar schema/size rejected");
++  uint32_t crc=~0u;for(size_t i=24;i<n;++i){crc^=p[i];for(int b=0;b<8;++b)crc=(crc>>1)^(0xedb88320u&uint32_t(-int32_t(crc&1)));}
++  if(~crc!=integer(p+16))return fail("Blackbar checksum rejected");
++  Blackbars candidate;candidate.width_=real(p+24);candidate.height_=real(p+28);candidate.sizes_={real(p+32),real(p+36)};candidate.color_=integer(p+40);
++  if(!positive(candidate.width_,8192)||!positive(candidate.height_,8192)||(candidate.color_>>24)!=255)return fail("Blackbar canvas/color rejected");
++  for(float size:candidate.sizes_)if(!positive(size,candidate.height_))return fail("Blackbar rectangle rejected");
++  for(size_t i=0;i<4;++i){auto&t=candidate.tracks_[i];const auto*q=p+44+i*20;t={real(q),real(q+4),real(q+8),real(q+12),real(q+16)};
++   if(!positive(t.duration,120)||!positive(t.end,t.duration)||!std::isfinite(t.from)||!std::isfinite(t.to)||!positive(t.ease,100)||std::abs(t.from)>8192||std::abs(t.to)>8192)return fail("Blackbar track rejected");
++  }
++  for(size_t i=0;i<2;++i)if(candidate.tracks_[i].from!=candidate.tracks_[i+2].to||candidate.tracks_[i].to!=candidate.tracks_[i+2].from)return fail("Blackbar open/close endpoints rejected");
++  candidate.ready_=true;candidate.reset();*this=candidate;return true;
++ }
++ bool load_file(const char*path,std::string&error){
++  FILE*f=std::fopen(path,"rb");if(!f){error="Blackbar pack unavailable";return false;}std::array<uint8_t,125>b{};const auto n=std::fread(b.data(),1,b.size(),f);const bool ok=!std::ferror(f);std::fclose(f);if(!ok){error="Blackbar pack read failed";return false;}return load(b.data(),n,error);
++ }
++ void reset(){open_=false;time_=ready_?std::max(tracks_[2].duration,tracks_[3].duration):0;}
++ bool update(bool open,double delta){
++  if(!ready_||!std::isfinite(delta)||delta<0||delta>1)return false;
++  // Source play() restarts the selected clip from its authored first key,
++  // including interrupted transitions; repeated toggle(target) does nothing.
++  if(open!=open_){open_=open;time_=0;}
++  time_=std::min(time_+delta,double(std::max(tracks_[open_?0:2].duration,tracks_[open_?1:3].duration)));return true;
++ }
++ bool target_open()const{return open_;}
++ Pose pose(float width,float height)const{
++  Pose p;p.color=color_;if(!ready_||!positive(width,8192)||!positive(height,8192))return p;
++  for(size_t i=0;i<2;++i){const float y=sample(tracks_[(open_?0:2)+i],time_)+(i?height-height_:0);const float top=std::clamp(y,0.0f,height),bottom=std::clamp(y+sizes_[i],0.0f,height);p.bars[i]={0,top,width,std::max(0.0f,bottom-top)};}return p;
++ }
++private:
++ struct Track{float duration=0,end=0,from=0,to=0,ease=0;};
++ static uint32_t integer(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
++ static float real(const uint8_t*p){const auto bits=integer(p);float value;std::memcpy(&value,&bits,4);return value;}
++ static bool positive(float x,float limit){return std::isfinite(x)&&x>0&&x<=limit;}
++ static float sample(const Track&t,double time){
++  if(time>=t.end)return t.to;
++  float f=std::clamp(float(time)/t.end,0.0f,1.0f);
++  f=t.ease<1?1-std::pow(1-f,1/t.ease):std::pow(f,t.ease);
++  return .5f*((2*t.from)+(-t.from+t.to)*f+(2*t.from-5*t.from+4*t.to-t.to)*f*f+(-t.from+3*t.from-3*t.to+t.to)*f*f*f);
++ }
++ std::array<Track,4>tracks_{};std::array<float,2>sizes_{};float width_=0,height_=0;uint32_t color_=0;double time_=0;bool ready_=false,open_=false;
++};
++}
+diff --git a/tools/blackbars_assets.py b/tools/blackbars_assets.py
+new file mode 100644
+--- /dev/null
++++ b/tools/blackbars_assets.py
+@@ -0,0 +1,99 @@
++#!/usr/bin/env python3
++"""Compile the pinned source dialogue CanvasLayer bars, without new textures."""
++import argparse
++import json
++import struct
++import sys
++import zlib
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT))
++from tools.extract_battle_entry import Extractor, animation, node, one, require
++
++IR = ROOT / 'content/native-blackbars.json'
++PACK = Path('data/opening.encbars')
++SCENE = 'Nodes/Ui/Blackbars.tscn'
++
++
++def extract():
++    ex = Extractor(ROOT)
++    scene = ex.text(SCENE)
++    script = ex.text('Scripts/UI/Blackbars.gd')
++    manager = ex.text('Scripts/global/uiManager.gd')
++    dialogue = ex.text('Scripts/UI/DialogueBox.gd')
++    project = ex.text('project.godot')
++    require('_anim_player.play("Open")' in script and '_anim_player.play("Close")' in script
++            and 'if open and !_is_open:' in script and 'elif !open and _is_open:' in script,
++            'Unreviewed blackbar state transitions')
++    require('_add_to_canvas(_black_bars, 1)' in manager
++            and 'toggle_black_bars(true)\n\t_dialogue_box.start_from_id' in manager
++            and '_dialogue_box = null\n\ttoggle_black_bars(false)' in manager,
++            'Unreviewed blackbar dialogue ownership/layer')
++    require('emit_signal("done", _dialog_response)' in dialogue,
++            'Unreviewed dialogue completion')
++    canvas = [int(one(r'^window/size/' + key + r'=(\d+)$', project, key)[1])
++              for key in ('width', 'height')]
++    bars = []
++    for name in ('ColorRect', 'ColorRect2'):
++        p = node(scene, name)
++        require(p['color'] == [0, 0, 0, 1] and p.get('margin_left', 0) == 0
++                and p['margin_right'] == canvas[0], 'Unreviewed blackbar rectangle')
++        bars.append(dict(height=p.get('margin_bottom', 0) - p['margin_top'],
++                         reset_y=p['margin_top']))
++    tracks = []
++    for ident, name in ((2, 'Open'), (1, 'Close')):
++        clip = animation(scene, ident, SCENE, name)
++        require(not clip['loop'] and len(clip['tracks']) == 2, 'Unreviewed blackbar clip')
++        for bar, track in enumerate(clip['tracks']):
++            keys = track['keys']
++            require(track['path'] == ('ColorRect' if bar == 0 else 'ColorRect2') + ':rect_position'
++                    and track['type'] == 'value' and track['interp'] == 2
++                    and track['enabled'] and track['loop_wrap'] and keys['update'] == 0
++                    and len(keys['times']) == len(keys['values']) == len(keys['transitions']) == 2
++                    and keys['times'][0] == 0 and all(v[0] == 0 for v in keys['values']),
++                    'Unreviewed blackbar animation track')
++            tracks.append(dict(duration=clip['length'], end_time=keys['times'][1],
++                               from_y=keys['values'][0][1], to_y=keys['values'][1][1],
++                               ease=keys['transitions'][0]))
++    return dict(schema=1, commit=ex.lock['commit'], sources=ex.sources, canvas=canvas,
++                bars=bars, color=0xff000000, tracks=tracks,
++                scope='Original dialogue-owned layer-1 Blackbars, before dialogue UI. Source 320x180 is exact; native 400x240 stretches width and bottom-anchors the original 28-pixel lower bar. No world mask, collision, movement, camera or actor visibility changes.')
++
++
++def encode(r):
++    require(r['schema'] == 1 and len(r['canvas']) == len(r['bars']) == 2
++            and len(r['tracks']) == 4, 'Blackbar IR schema')
++    payload = bytearray(struct.pack('<4fI', *r['canvas'], *(b['height'] for b in r['bars']), r['color']))
++    for t in r['tracks']:
++        payload.extend(struct.pack('<5f', *(t[k] for k in ('duration', 'end_time', 'from_y', 'to_y', 'ease'))))
++    return struct.pack('<8s4I', b'ENCBAR01', 1, len(payload)+24, zlib.crc32(payload), 1) + payload
++
++
++def checked():
++    r = extract()
++    require(json.loads(IR.read_text()) == r, 'Stale blackbar source IR')
++    return encode(r)
++
++
++def stage_files(root):
++    blob = checked()
++    require((root / PACK).read_bytes() == blob, 'Stale blackbar pack')
++    return {PACK: blob}
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument('action', choices=['extract', 'compile', 'verify'])
++    args = parser.parse_args()
++    if args.action == 'extract':
++        IR.write_text(json.dumps(extract(), indent=2) + '\n')
++    elif args.action == 'compile':
++        (ROOT / 'romfs' / PACK).write_bytes(checked())
++    else:
++        stage_files(ROOT / 'romfs')
++    print('Blackbar ' + args.action + ': source-owned animation and layer verified')
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/content/native-blackbars.json b/content/native-blackbars.json
+new file mode 100644
+--- /dev/null
++++ b/content/native-blackbars.json
+@@ -0,0 +1,57 @@
++{
++  "schema": 1,
++  "commit": "7d9246600fffe518408f5830d4848635019005a3",
++  "sources": {
++    "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
++    "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
++    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
++    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
++    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
++  },
++  "canvas": [
++    320,
++    180
++  ],
++  "bars": [
++    {
++      "height": 18.0,
++      "reset_y": -18.0
++    },
++    {
++      "height": 28.0,
++      "reset_y": 180.0
++    }
++  ],
++  "color": 4278190080,
++  "tracks": [
++    {
++      "duration": 0.5,
++      "end_time": 0.2,
++      "from_y": -18,
++      "to_y": 0,
++      "ease": 0.287175
++    },
++    {
++      "duration": 0.5,
++      "end_time": 0.2,
++      "from_y": 180,
++      "to_y": 152,
++      "ease": 0.287174
++    },
++    {
++      "duration": 0.5,
++      "end_time": 0.15,
++      "from_y": 0,
++      "to_y": -18,
++      "ease": 2.2974
++    },
++    {
++      "duration": 0.5,
++      "end_time": 0.15,
++      "from_y": 152,
++      "to_y": 180,
++      "ease": 2.2974
++    }
++  ],
++  "scope": "Original dialogue-owned layer-1 Blackbars, before dialogue UI. Source 320x180 is exact; native 400x240 stretches width and bottom-anchors the original 28-pixel lower bar. No world mask, collision, movement, camera or actor visibility changes."
++}
+diff --git a/romfs/data/opening.encbars b/romfs/data/opening.encbars
+new file mode 100644
+index 0000000000000000000000000000000000000000..5b11ea9390524210bbee4e792b8f8163fe9b9f24
+GIT binary patch
+literal 124
+zcmZ?ub9QnJGB9LhU|^^L;_&b1ia~4!h6T<H3?@K4!I6RC0T46%2V(oPXMF5{Vh2Gg
+pW^qggvSDH%wGz%1P_bDvB|&mPFyY`V4q*o%!yY0g0X7#T1^}Y!8m|BV
+
+literal 0
+HcmV?d00001
+
+diff --git a/tools/stage_native_romfs.py b/tools/stage_native_romfs.py
+--- a/tools/stage_native_romfs.py
++++ b/tools/stage_native_romfs.py
+@@ -42,6 +42,8 @@
+     files.update(startup_settings_files(source))
+     from house_button_prompt_assets import stage_files as house_prompt_files
+     files.update(house_prompt_files(source))
++    from blackbars_assets import stage_files as blackbar_files
++    files.update(blackbar_files(source))
+     from localization_assets import stage_files as localization_files
+     from source_fonts import stage_files as source_font_files
+     from title_locale_assets import stage_files as title_locale_files
+diff --git a/Makefile b/Makefile
+--- a/Makefile
++++ b/Makefile
+@@ -9,6 +9,7 @@
+ content: native-content
+ 	$(PYTHON) tools/content_compiler.py
+ native-content:
++	$(PYTHON) tools/blackbars_assets.py compile
+ 	$(PYTHON) tools/native_input.py compile
+ 	$(PYTHON) tools/native_phone.py compile
+ 	$(PYTHON) tools/world_effect_assets.py compile
+@@ -61,6 +62,7 @@
+ 	cmake --build build/sanitize --parallel
+ 	ctest --test-dir build/sanitize --output-on-failure
+ 3dsx: content assets
++	$(PYTHON) tools/blackbars_assets.py verify
+ 	$(PYTHON) tools/native_session.py verify
+ 	$(PYTHON) tools/session_migration.py verify
+ 	$(PYTHON) tools/native_restore.py verify
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -564,3 +564,9 @@
+     add_test(NAME encounter_dependency_manifest COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_encounter_dependencies)
+     set_tests_properties(encounter_dependency_manifest PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+ endif()
++
++if(BUILD_TESTING)
++    add_executable(blackbars_tests tests/blackbars_tests.cpp)
++    target_include_directories(blackbars_tests PRIVATE ${CMAKE_SOURCE_DIR}/include)
++    add_test(NAME blackbars_source COMMAND blackbars_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encbars ${CMAKE_SOURCE_DIR}/reports/npc-doorway-occlusion/blackbars-native.tsv)
++endif()
+diff --git a/tests/blackbars_tests.cpp b/tests/blackbars_tests.cpp
+new file mode 100644
+--- /dev/null
++++ b/tests/blackbars_tests.cpp
+@@ -0,0 +1,25 @@
++#include "encore/blackbars.hpp"
++#include <fstream>
++#include <iostream>
++#include <sstream>
++#include <vector>
++using encore::upstream::Blackbars;
++int main(int argc,char**argv){
++ if(argc<2)return 2;
++ std::string error;Blackbars bars;if(!bars.load_file(argv[1],error)){std::cerr<<error;return 1;}
++ int failures=0;auto check=[&](bool ok,const char*s){if(!ok){std::cerr<<s<<'\n';++failures;}};
++ auto p=bars.pose(400,240);check(p.bars[0].h==0&&p.bars[1].h==0,"Reset is hidden");
++ check(bars.update(true,.5),"Open");p=bars.pose(400,240);check(p.bars[0].h==18&&p.bars[1].y==212&&p.bars[1].h==28,"Native source-sized bars");
++ p=bars.pose(320,180);check(p.bars[1].y==152&&p.bars[1].h==28,"Reference exact bars");
++ check(bars.update(true,0)&&bars.pose(320,180).bars[1].y==152,"Repeated open preserves animation");
++ check(bars.update(false,.15),"Close");p=bars.pose(400,240);check(p.bars[0].h==0&&p.bars[1].h<.0001,"Close reaches hidden");
++ bars.update(true,.05);bars.update(false,0);check(bars.pose(320,180).bars[1].y==152,"Interrupted close uses authored first key");bars.update(true,0);check(bars.pose(320,180).bars[0].h==0,"Interrupted open uses authored first key");
++ check(!bars.update(true,-1)&&!bars.update(true,2)&&!bars.update(true,NAN),"Invalid delta rejected");
++ std::ifstream in(argv[1],std::ios::binary);std::vector<uint8_t>bytes((std::istreambuf_iterator<char>(in)),{});
++ for(size_t n=0;n<bytes.size();++n){Blackbars b;check(!b.load(bytes.data(),n,error),"Truncated pack accepted");}
++ auto repair=[](std::vector<uint8_t>&v){uint32_t crc=~0u;for(size_t i=24;i<v.size();++i){crc^=v[i];for(int b=0;b<8;++b)crc=(crc>>1)^(0xedb88320u&uint32_t(-int32_t(crc&1)));}crc=~crc;for(int i=0;i<4;++i)v[16+i]=uint8_t(crc>>(8*i));};
++ for(size_t offset:{size_t(8),size_t(12),size_t(20),size_t(24),size_t(28),size_t(32),size_t(36),size_t(44),size_t(48),size_t(52),size_t(56),size_t(60)}){auto b=bytes;b[offset]=0;b[offset+1]=0;b[offset+2]=0xc0;b[offset+3]=0x7f;repair(b);Blackbars bad;check(!bad.load(b.data(),b.size(),error),"Invalid field accepted");}
++ double maximum=0;unsigned samples=0;
++ if(argc>2){std::ifstream source(argv[2]);std::string row;while(std::getline(source,row)){std::istringstream s(row);std::string clip;double time,top,bottom;s>>clip>>time>>top>>bottom;bars.reset();if(clip=="Close")bars.update(true,.5);bars.update(clip=="Open",time);const auto pose=bars.pose(320,180);maximum=std::max(maximum,std::abs(double(pose.bars[0].h-18)-top));maximum=std::max(maximum,std::abs(double(pose.bars[1].y)-bottom));++samples;}check(samples==602&&maximum<.0001,"Dense native Godot interpolation mismatch");}
++ std::cout<<"Blackbars failures="<<failures<<" native_samples="<<samples<<" max_error="<<maximum<<'\n';return failures?1:0;
++}
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -55,7 +55,7 @@
+ CIA另需makerom0.19.0、bannertool固定官方发行。构建输出在`dist/`，不制造占位安装包。
+ `make release`附带SD目录与许可；在生成发布包前必须记录当次实际构建来源。
+ 
+-控制：方向键/摇杆导航或移动，A确认，B取消或在世界切换已映射的奔跑/蹲下，START退出；SELECT开发重置并切换320×180参考模式后返回标题，默认400×240保持图素1:1。
++控制：方向键/摇杆导航或移动，A确认，B取消或在世界切换已映射的奔跑/蹲下，从标题菜单选择Exit退出；START不再全局退出。SELECT开发重置并切换320×180参考模式后返回标题，默认400×240保持图素1:1。
+ 通过Dad的Record手动保存，退出不自动保存；已支持从受检的原生格式存档继续当前房屋切片。不能读取任意Godot存档或未移植场景；未知数据明确拒绝，不回退为新游戏。LOAD经严格旧域和新域验证后只读接受精确rules6历史身份；旧槽Record保持拒写，请选择空槽另存rules7。LOAD重建场景并保留存档值，RNG不在存档中，库存重建的随机副作用在提交边界单独执行。
+ 
+ ## Godot数据与持续更新
+@@ -82,3 +82,7 @@
+ - `docs/DEVELOPMENT_PLAN.md`：长期完整移植计划
+ 
+ 自编工程代码按MIT许可，原版代码/素材保留其许可；见`THIRD_PARTY_NOTICES.md`和`docs/licenses/`。
++
++## 2026-10-03：START与NPC离开房间遮挡修复
++
++命名期间START不再全局退出，正常退出改用标题Exit。NPC和主角原本共用Above前景；Minnie原版无碰撞剧情路径到达y200，会越过有限遮罩，而正常主角先触发门传送。现恢复原版对话期间的Blackbars动画层，在世界之上、对话框之下绘制；不改NPC路径、坐标、碰撞或地图素材。精确验证范围见`docs/NPC_DOORWAY_OCCLUSION.md`和`reports/npc-doorway-occlusion/result.json`。
+diff --git a/docs/OPENING_RENDERER.md b/docs/OPENING_RENDERER.md
+--- a/docs/OPENING_RENDERER.md
++++ b/docs/OPENING_RENDERER.md
+@@ -1,3 +1,7 @@
++# 2026-10-03 scoped update
++
++The original dialogue-owned Blackbars layer is now restored from a checked independent resource. See NPC_DOORWAY_OCCLUSION.md and its current checkpoint; the older boundaries below are historical.
++
+ # Native opening-room presentation
+ 
+ Current renderer uses the original source textures and shared-core actor/camera state on the400×240 upper screen. Debug text remains on the lower screen.
+diff --git a/docs/NPC_DOORWAY_OCCLUSION.md b/docs/NPC_DOORWAY_OCCLUSION.md
+new file mode 100644
+--- /dev/null
++++ b/docs/NPC_DOORWAY_OCCLUSION.md
+@@ -0,0 +1,54 @@
++# NPC doorway occlusion: source layer restored
++
++## Differential cause
++
++The player and scripted Minnie already share the same sorted world pass and the
++same `OpeningActorRenderer::pose` sprite projection. All original 276 `Above`
++TileMap cells draw afterward. No separate NPC scissor or depth override exists.
++Minnie is correctly masked while crossing those cells, then reappears beyond
++their finite lower edge at world y192.
++
++This differs from ordinary player movement. Mom's return door is centered at
++(464,188), extents (16,4); Ninten's nine-pixel lower hull triggers the door/fade
++before it can walk through the wall at y192. The original `minnie_leave.yaml`
++phrase 5 instead sends the scripted actor to (464,200). Source `actor.tscn`
++sets both collision layer and mask to zero, so its `move_and_slide` is not
++blocked by that wall. The native actor preserves this behavior.
++
++An equal-position alpha/UV comparison using the original textures confirms
++both Ninten and Minnie are covered at y176 and both would leak beyond the
++mask at y200: 191 and 213 opaque sprite pixels respectively. Thus the user's
++correctly occluded player does not establish a different NPC drawing pass.
++Evidence is in `reports/npc-doorway-occlusion/equal-position-pixels.json`.
++
++## Actual missing source presentation
++
++`uiManager.gd::open_dialogue_box` opens `Blackbars.tscn` before starting a
++dialogue and closes it when its `done` signal fires. That layer-1 CanvasLayer
++is above the world but below dialogue UI. It remains open during `showbox:
++false` movement phrases. The lower black bar is 28 pixels tall, opening from
++y180 to y152 in the original 320x180 viewport. The top bar is 18 pixels tall.
++The two-key cubic/eased tracks move in 0.2 seconds on Open and 0.15 on Close;
++each non-looping animation has source duration 0.5 seconds. Interrupted toggles
++restart their authored clip, and repeated identical toggles do not restart it.
++
++The native renderer previously omitted this source layer. Its restoration
++uses the independent checked `opening.encbars` binary, compiled from the pinned
++source scene and scripts. The 400x240 adaptation fills the viewport width and
++bottom-anchors the original lower bar at y212; source sprite pixels stay 1:1.
++At the Mom-room camera offset, this connects to the existing Above mask and
++covers the portion of the original exit path behind the cinematic bar.
++
++No original map cell, texture pixel, movement path, actor position, visibility,
++camera, collision or script timing is changed. No invented room-mask extension
++or early NPC deletion is used. The START fix is preserved independently.
++
++## Verification
++
++- 602 samples from the unchanged source AnimationPlayer in official Godot3.6.2
++  match the native animation within 0.000016 pixels.
++- Targeted host and ASan/UBSan tests cover initial hidden state, both viewport
++  layouts, repeated toggles, interrupted Open/Close, invalid deltas, every
++  truncated pack length, and malformed numeric/schema fields.
++- ARM, source-path emulator and production START/Exit checks are recorded in
++  the checkpoint result when completed. These are not yet hardware evidence.
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore
++++ b/.gitignore
+@@ -269,3 +269,11 @@
+ # Current next-stage source audit; static developer context, not runtime output.
+ !/reports/post-melody-phone-audit/source-proposal.md
+ !/reports/post-melody-phone-audit/sha256-manifest.json
++
++# Source-native Blackbars animation oracle required by blackbars_source CTest.
++!/reports/npc-doorway-occlusion/blackbars-native.tsv
++!/reports/npc-doorway-occlusion/blackbars-probe.gd
++!/reports/npc-doorway-occlusion/blackbars-reference.json
++!/reports/npc-doorway-occlusion/result.json
++!/reports/npc-doorway-occlusion/equal-position-pixels.json
++!/reports/npc-doorway-occlusion/compare_equal_positions.py
+diff --git a/reports/npc-doorway-occlusion/blackbars-native.tsv b/reports/npc-doorway-occlusion/blackbars-native.tsv
+new file mode 100644
+--- /dev/null
++++ b/reports/npc-doorway-occlusion/blackbars-native.tsv
+@@ -0,0 +1,602 @@
++Open	0.000000000	-18.000000000	180.000000000
++Open	0.001666667	-17.719682693	179.563949585
++Open	0.003333333	-17.404443741	179.073562622
++Open	0.005000000	-17.059061050	178.536315918
++Open	0.006666667	-16.687931061	177.958999634
++Open	0.008333333	-16.295093536	177.347915649
++Open	0.010000000	-15.884242058	176.708816528
++Open	0.011666667	-15.458767891	176.046951294
++Open	0.013333333	-15.021755219	175.367156982
++Open	0.015000000	-14.576019287	174.673782349
++Open	0.016666667	-14.124112129	173.970809937
++Open	0.018333333	-13.668347359	173.261840820
++Open	0.020000000	-13.210813522	172.550125122
++Open	0.021666667	-12.753386497	171.838577271
++Open	0.023333333	-12.297750473	171.129806519
++Open	0.025000000	-11.845406532	170.426162720
++Open	0.026666667	-11.397687912	169.729690552
++Open	0.028333333	-10.955770493	169.042266846
++Open	0.030000000	-10.520687103	168.365478516
++Open	0.031666667	-10.093338013	167.700714111
++Open	0.033333333	-9.674496651	167.049163818
++Open	0.035000000	-9.264831543	166.411911011
++Open	0.036666667	-8.864896774	165.789779663
++Open	0.038333333	-8.475156784	165.183532715
++Open	0.040000000	-8.095987320	164.593719482
++Open	0.041666667	-7.727684021	164.020812988
++Open	0.043333333	-7.370472908	163.465133667
++Open	0.045000000	-7.024507523	162.926971436
++Open	0.046666667	-6.689888954	162.406448364
++Open	0.048333333	-6.366660118	161.903656006
++Open	0.050000000	-6.054811478	161.418548584
++Open	0.051666667	-5.754302025	160.951095581
++Open	0.053333333	-5.465039730	160.501129150
++Open	0.055000000	-5.186904907	160.068481445
++Open	0.056666667	-4.919746876	159.652893066
++Open	0.058333333	-4.663385868	159.254104614
++Open	0.060000000	-4.417620659	158.871810913
++Open	0.061666667	-4.182231903	158.505645752
++Open	0.063333333	-3.956981182	158.155273438
++Open	0.065000000	-3.741618156	157.820251465
++Open	0.066666667	-3.535876751	157.500213623
++Open	0.068333333	-3.339488029	157.194717407
++Open	0.070000000	-3.152169228	156.903350830
++Open	0.071666667	-2.973637581	156.625625610
++Open	0.073333333	-2.803605080	156.361129761
++Open	0.075000000	-2.641777039	156.109390259
++Open	0.076666667	-2.487864494	155.869995117
++Open	0.078333333	-2.341582298	155.642440796
++Open	0.080000000	-2.202635765	155.426300049
++Open	0.081666667	-2.070739746	155.221130371
++Open	0.083333333	-1.945614815	155.026489258
++Open	0.085000000	-1.826984406	154.841964722
++Open	0.086666667	-1.714574814	154.667098999
++Open	0.088333333	-1.608118057	154.501495361
++Open	0.090000000	-1.507356644	154.344757080
++Open	0.091666667	-1.412035942	154.196472168
++Open	0.093333333	-1.321908951	154.056274414
++Open	0.095000000	-1.236739159	153.923797607
++Open	0.096666667	-1.156292915	153.798660278
++Open	0.098333333	-1.080346107	153.680511475
++Open	0.100000000	-1.008681297	153.569046021
++Open	0.101666667	-0.941095352	153.463928223
++Open	0.103333333	-0.877382278	153.364807129
++Open	0.105000000	-0.817350388	153.271423340
++Open	0.106666667	-0.760818481	153.183471680
++Open	0.108333333	-0.707605362	153.100723267
++Open	0.110000000	-0.657542229	153.022842407
++Open	0.111666667	-0.610467911	152.949600220
++Open	0.113333333	-0.566227913	152.880783081
++Open	0.115000000	-0.524671555	152.816162109
++Open	0.116666667	-0.485657692	152.755447388
++Open	0.118333333	-0.449055672	152.698516846
++Open	0.120000000	-0.414735794	152.645141602
++Open	0.121666667	-0.382574081	152.595108032
++Open	0.123333333	-0.352458000	152.548263550
++Open	0.125000000	-0.324275970	152.504425049
++Open	0.126666667	-0.297922134	152.463424683
++Open	0.128333333	-0.273300171	152.425125122
++Open	0.130000000	-0.250316620	152.389373779
++Open	0.131666667	-0.228878021	152.356018066
++Open	0.133333333	-0.208904266	152.324966431
++Open	0.135000000	-0.190311432	152.296020508
++Open	0.136666667	-0.173023224	152.269149780
++Open	0.138333333	-0.156967163	152.244171143
++Open	0.140000000	-0.142080307	152.221008301
++Open	0.141666667	-0.128292084	152.199569702
++Open	0.143333333	-0.115543365	152.179718018
++Open	0.145000000	-0.103771210	152.161422729
++Open	0.146666667	-0.092926025	152.144546509
++Open	0.148333333	-0.082950592	152.129028320
++Open	0.150000000	-0.073791504	152.114791870
++Open	0.151666667	-0.065404892	152.101745605
++Open	0.153333333	-0.057746887	152.089813232
++Open	0.155000000	-0.050765991	152.078964233
++Open	0.156666667	-0.044424057	152.069107056
++Open	0.158333333	-0.038681030	152.060180664
++Open	0.160000000	-0.033500671	152.052108765
++Open	0.161666667	-0.028841019	152.044860840
++Open	0.163333333	-0.024673462	152.038391113
++Open	0.165000000	-0.020957947	152.032592773
++Open	0.166666667	-0.017665863	152.027465820
++Open	0.168333333	-0.014759064	152.022949219
++Open	0.170000000	-0.012214661	152.018997192
++Open	0.171666667	-0.010004044	152.015563965
++Open	0.173333333	-0.008096695	152.012588501
++Open	0.175000000	-0.006464005	152.010040283
++Open	0.176666667	-0.005081177	152.007904053
++Open	0.178333333	-0.003923416	152.006088257
++Open	0.180000000	-0.002969742	152.004608154
++Open	0.181666667	-0.002193451	152.003402710
++Open	0.183333333	-0.001573563	152.002441406
++Open	0.185000000	-0.001089096	152.001693726
++Open	0.186666667	-0.000722885	152.001129150
++Open	0.188333333	-0.000453949	152.000701904
++Open	0.190000000	-0.000265121	152.000411987
++Open	0.191666667	-0.000141144	152.000213623
++Open	0.193333333	-0.000064850	152.000106812
++Open	0.195000000	-0.000022888	152.000030518
++Open	0.196666667	-0.000005722	152.000015259
++Open	0.198333333	0.000000000	152.000000000
++Open	0.200000000	0.000000000	152.000000000
++Open	0.201666667	0.000000000	152.000000000
++Open	0.203333333	0.000000000	152.000000000
++Open	0.205000000	0.000000000	152.000000000
++Open	0.206666667	0.000000000	152.000000000
++Open	0.208333333	0.000000000	152.000000000
++Open	0.210000000	0.000000000	152.000000000
++Open	0.211666667	0.000000000	152.000000000
++Open	0.213333333	0.000000000	152.000000000
++Open	0.215000000	0.000000000	152.000000000
++Open	0.216666667	0.000000000	152.000000000
++Open	0.218333333	0.000000000	152.000000000
++Open	0.220000000	0.000000000	152.000000000
++Open	0.221666667	0.000000000	152.000000000
++Open	0.223333333	0.000000000	152.000000000
++Open	0.225000000	0.000000000	152.000000000
++Open	0.226666667	0.000000000	152.000000000
++Open	0.228333333	0.000000000	152.000000000
++Open	0.230000000	0.000000000	152.000000000
++Open	0.231666667	0.000000000	152.000000000
++Open	0.233333333	0.000000000	152.000000000
++Open	0.235000000	0.000000000	152.000000000
++Open	0.236666667	0.000000000	152.000000000
++Open	0.238333333	0.000000000	152.000000000
++Open	0.240000000	0.000000000	152.000000000
++Open	0.241666667	0.000000000	152.000000000
++Open	0.243333333	0.000000000	152.000000000
++Open	0.245000000	0.000000000	152.000000000
++Open	0.246666667	0.000000000	152.000000000
++Open	0.248333333	0.000000000	152.000000000
++Open	0.250000000	0.000000000	152.000000000
++Open	0.251666667	0.000000000	152.000000000
++Open	0.253333333	0.000000000	152.000000000
++Open	0.255000000	0.000000000	152.000000000
++Open	0.256666667	0.000000000	152.000000000
++Open	0.258333333	0.000000000	152.000000000
++Open	0.260000000	0.000000000	152.000000000
++Open	0.261666667	0.000000000	152.000000000
++Open	0.263333333	0.000000000	152.000000000
++Open	0.265000000	0.000000000	152.000000000
++Open	0.266666667	0.000000000	152.000000000
++Open	0.268333333	0.000000000	152.000000000
++Open	0.270000000	0.000000000	152.000000000
++Open	0.271666667	0.000000000	152.000000000
++Open	0.273333333	0.000000000	152.000000000
++Open	0.275000000	0.000000000	152.000000000
++Open	0.276666667	0.000000000	152.000000000
++Open	0.278333333	0.000000000	152.000000000
++Open	0.280000000	0.000000000	152.000000000
++Open	0.281666667	0.000000000	152.000000000
++Open	0.283333333	0.000000000	152.000000000
++Open	0.285000000	0.000000000	152.000000000
++Open	0.286666667	0.000000000	152.000000000
++Open	0.288333333	0.000000000	152.000000000
++Open	0.290000000	0.000000000	152.000000000
++Open	0.291666667	0.000000000	152.000000000
++Open	0.293333333	0.000000000	152.000000000
++Open	0.295000000	0.000000000	152.000000000
++Open	0.296666667	0.000000000	152.000000000
++Open	0.298333333	0.000000000	152.000000000
++Open	0.300000000	0.000000000	152.000000000
++Open	0.301666667	0.000000000	152.000000000
++Open	0.303333333	0.000000000	152.000000000
++Open	0.305000000	0.000000000	152.000000000
++Open	0.306666667	0.000000000	152.000000000
++Open	0.308333333	0.000000000	152.000000000
++Open	0.310000000	0.000000000	152.000000000
++Open	0.311666667	0.000000000	152.000000000
++Open	0.313333333	0.000000000	152.000000000
++Open	0.315000000	0.000000000	152.000000000
++Open	0.316666667	0.000000000	152.000000000
++Open	0.318333333	0.000000000	152.000000000
++Open	0.320000000	0.000000000	152.000000000
++Open	0.321666667	0.000000000	152.000000000
++Open	0.323333333	0.000000000	152.000000000
++Open	0.325000000	0.000000000	152.000000000
++Open	0.326666667	0.000000000	152.000000000
++Open	0.328333333	0.000000000	152.000000000
++Open	0.330000000	0.000000000	152.000000000
++Open	0.331666667	0.000000000	152.000000000
++Open	0.333333333	0.000000000	152.000000000
++Open	0.335000000	0.000000000	152.000000000
++Open	0.336666667	0.000000000	152.000000000
++Open	0.338333333	0.000000000	152.000000000
++Open	0.340000000	0.000000000	152.000000000
++Open	0.341666667	0.000000000	152.000000000
++Open	0.343333333	0.000000000	152.000000000
++Open	0.345000000	0.000000000	152.000000000
++Open	0.346666667	0.000000000	152.000000000
++Open	0.348333333	0.000000000	152.000000000
++Open	0.350000000	0.000000000	152.000000000
++Open	0.351666667	0.000000000	152.000000000
++Open	0.353333333	0.000000000	152.000000000
++Open	0.355000000	0.000000000	152.000000000
++Open	0.356666667	0.000000000	152.000000000
++Open	0.358333333	0.000000000	152.000000000
++Open	0.360000000	0.000000000	152.000000000
++Open	0.361666667	0.000000000	152.000000000
++Open	0.363333333	0.000000000	152.000000000
++Open	0.365000000	0.000000000	152.000000000
++Open	0.366666667	0.000000000	152.000000000
++Open	0.368333333	0.000000000	152.000000000
++Open	0.370000000	0.000000000	152.000000000
++Open	0.371666667	0.000000000	152.000000000
++Open	0.373333333	0.000000000	152.000000000
++Open	0.375000000	0.000000000	152.000000000
++Open	0.376666667	0.000000000	152.000000000
++Open	0.378333333	0.000000000	152.000000000
++Open	0.380000000	0.000000000	152.000000000
++Open	0.381666667	0.000000000	152.000000000
++Open	0.383333333	0.000000000	152.000000000
++Open	0.385000000	0.000000000	152.000000000
++Open	0.386666667	0.000000000	152.000000000
++Open	0.388333333	0.000000000	152.000000000
++Open	0.390000000	0.000000000	152.000000000
++Open	0.391666667	0.000000000	152.000000000
++Open	0.393333333	0.000000000	152.000000000
++Open	0.395000000	0.000000000	152.000000000
++Open	0.396666667	0.000000000	152.000000000
++Open	0.398333333	0.000000000	152.000000000
++Open	0.400000000	0.000000000	152.000000000
++Open	0.401666667	0.000000000	152.000000000
++Open	0.403333333	0.000000000	152.000000000
++Open	0.405000000	0.000000000	152.000000000
++Open	0.406666667	0.000000000	152.000000000
++Open	0.408333333	0.000000000	152.000000000
++Open	0.410000000	0.000000000	152.000000000
++Open	0.411666667	0.000000000	152.000000000
++Open	0.413333333	0.000000000	152.000000000
++Open	0.415000000	0.000000000	152.000000000
++Open	0.416666667	0.000000000	152.000000000
++Open	0.418333333	0.000000000	152.000000000
++Open	0.420000000	0.000000000	152.000000000
++Open	0.421666667	0.000000000	152.000000000
++Open	0.423333333	0.000000000	152.000000000
++Open	0.425000000	0.000000000	152.000000000
++Open	0.426666667	0.000000000	152.000000000
++Open	0.428333333	0.000000000	152.000000000
++Open	0.430000000	0.000000000	152.000000000
++Open	0.431666667	0.000000000	152.000000000
++Open	0.433333333	0.000000000	152.000000000
++Open	0.435000000	0.000000000	152.000000000
++Open	0.436666667	0.000000000	152.000000000
++Open	0.438333333	0.000000000	152.000000000
++Open	0.440000000	0.000000000	152.000000000
++Open	0.441666667	0.000000000	152.000000000
++Open	0.443333333	0.000000000	152.000000000
++Open	0.445000000	0.000000000	152.000000000
++Open	0.446666667	0.000000000	152.000000000
++Open	0.448333333	0.000000000	152.000000000
++Open	0.450000000	0.000000000	152.000000000
++Open	0.451666667	0.000000000	152.000000000
++Open	0.453333333	0.000000000	152.000000000
++Open	0.455000000	0.000000000	152.000000000
++Open	0.456666667	0.000000000	152.000000000
++Open	0.458333333	0.000000000	152.000000000
++Open	0.460000000	0.000000000	152.000000000
++Open	0.461666667	0.000000000	152.000000000
++Open	0.463333333	0.000000000	152.000000000
++Open	0.465000000	0.000000000	152.000000000
++Open	0.466666667	0.000000000	152.000000000
++Open	0.468333333	0.000000000	152.000000000
++Open	0.470000000	0.000000000	152.000000000
++Open	0.471666667	0.000000000	152.000000000
++Open	0.473333333	0.000000000	152.000000000
++Open	0.475000000	0.000000000	152.000000000
++Open	0.476666667	0.000000000	152.000000000
++Open	0.478333333	0.000000000	152.000000000
++Open	0.480000000	0.000000000	152.000000000
++Open	0.481666667	0.000000000	152.000000000
++Open	0.483333333	0.000000000	152.000000000
++Open	0.485000000	0.000000000	152.000000000
++Open	0.486666667	0.000000000	152.000000000
++Open	0.488333333	0.000000000	152.000000000
++Open	0.490000000	0.000000000	152.000000000
++Open	0.491666667	0.000000000	152.000000000
++Open	0.493333333	0.000000000	152.000000000
++Open	0.495000000	0.000000000	152.000000000
++Open	0.496666667	0.000000000	152.000000000
++Open	0.498333333	0.000000000	152.000000000
++Open	0.500000000	0.000000000	152.000000000
++Close	0.000000000	0.000000000	152.000000000
++Close	0.001666667	-0.000291479	152.000457764
++Close	0.003333333	-0.001433374	152.002227783
++Close	0.005000000	-0.003641079	152.005661011
++Close	0.006666667	-0.007059212	152.010986328
++Close	0.008333333	-0.011805299	152.018371582
++Close	0.010000000	-0.017983209	152.027969360
++Close	0.011666667	-0.025689710	152.039962769
++Close	0.013333333	-0.035018303	152.054473877
++Close	0.015000000	-0.046061765	152.071655273
++Close	0.016666667	-0.058914091	152.091659546
++Close	0.018333333	-0.073671699	152.114593506
++Close	0.020000000	-0.090434678	152.140670776
++Close	0.021666667	-0.109307609	152.170028687
++Close	0.023333333	-0.130400240	152.202850342
++Close	0.025000000	-0.153828129	152.239288330
++Close	0.026666667	-0.179713130	152.279556274
++Close	0.028333333	-0.208183721	152.323837280
++Close	0.030000000	-0.239375383	152.372360229
++Close	0.031666667	-0.273430943	152.425338745
++Close	0.033333333	-0.310500681	152.483001709
++Close	0.035000000	-0.350742221	152.545593262
++Close	0.036666667	-0.394321144	152.613388062
++Close	0.038333333	-0.441410542	152.686645508
++Close	0.040000000	-0.492191076	152.765625000
++Close	0.041666667	-0.546850920	152.850646973
++Close	0.043333333	-0.605585814	152.942031860
++Close	0.045000000	-0.668598473	153.040039062
++Close	0.046666667	-0.736098111	153.145050049
++Close	0.048333333	-0.808301270	153.257354736
++Close	0.050000000	-0.885430217	153.377334595
++Close	0.051666667	-0.967712820	153.505325317
++Close	0.053333333	-1.055382609	153.641693115
++Close	0.055000000	-1.148677111	153.786819458
++Close	0.056666667	-1.247838736	153.941085815
++Close	0.058333333	-1.353112102	154.104843140
++Close	0.060000000	-1.464745998	154.278488159
++Close	0.061666667	-1.582989693	154.462432861
++Close	0.063333333	-1.708093762	154.657043457
++Close	0.065000000	-1.840308547	154.862701416
++Close	0.066666667	-1.979884386	155.079818726
++Close	0.068333333	-2.127067804	155.308776855
++Close	0.070000000	-2.282102585	155.549926758
++Close	0.071666667	-2.445229053	155.803680420
++Close	0.073333333	-2.616680622	156.070373535
++Close	0.075000000	-2.796684027	156.350402832
++Close	0.076666667	-2.985455513	156.644042969
++Close	0.078333333	-3.183204412	156.951644897
++Close	0.080000000	-3.390125036	157.273544312
++Close	0.081666667	-3.606398582	157.609954834
++Close	0.083333333	-3.832194328	157.961181641
++Close	0.085000000	-4.067660809	158.327468872
++Close	0.086666667	-4.312926292	158.708999634
++Close	0.088333333	-4.568101406	159.105941772
++Close	0.090000000	-4.833274364	159.518417358
++Close	0.091666667	-5.108499527	159.946548462
++Close	0.093333333	-5.393813610	160.390380859
++Close	0.095000000	-5.689217567	160.849899292
++Close	0.096666667	-5.994679451	161.325057983
++Close	0.098333333	-6.310135365	161.815765381
++Close	0.100000000	-6.635478497	162.321853638
++Close	0.101666667	-6.970566273	162.843093872
++Close	0.103333333	-7.315206528	163.379196167
++Close	0.105000000	-7.669165134	163.929809570
++Close	0.106666667	-8.032161713	164.494476318
++Close	0.108333333	-8.403849602	165.072662354
++Close	0.110000000	-8.783837318	165.663757324
++Close	0.111666667	-9.171671867	166.267059326
++Close	0.113333333	-9.566835403	166.881744385
++Close	0.115000000	-9.968738556	167.506927490
++Close	0.116666667	-10.376728058	168.141571045
++Close	0.118333333	-10.790078163	168.784561157
++Close	0.120000000	-11.207975388	169.434631348
++Close	0.121666667	-11.629531860	170.090393066
++Close	0.123333333	-12.053767204	170.750305176
++Close	0.125000000	-12.479615211	171.412719727
++Close	0.126666667	-12.905906677	172.075866699
++Close	0.128333333	-13.331380844	172.737701416
++Close	0.130000000	-13.754672050	173.396163940
++Close	0.131666667	-14.174293518	174.048904419
++Close	0.133333333	-14.588657379	174.693466187
++Close	0.135000000	-14.996047020	175.327178955
++Close	0.136666667	-15.394624710	175.947204590
++Close	0.138333333	-15.782425880	176.550430298
++Close	0.140000000	-16.157342911	177.133651733
++Close	0.141666667	-16.517135620	177.693328857
++Close	0.143333333	-16.859407425	178.225738525
++Close	0.145000000	-17.181613922	178.726959229
++Close	0.146666667	-17.481056213	179.192749023
++Close	0.148333333	-17.754865646	179.618682861
++Close	0.150000000	-18.000000000	180.000000000
++Close	0.151666667	-18.000000000	180.000000000
++Close	0.153333333	-18.000000000	180.000000000
++Close	0.155000000	-18.000000000	180.000000000
++Close	0.156666667	-18.000000000	180.000000000
++Close	0.158333333	-18.000000000	180.000000000
++Close	0.160000000	-18.000000000	180.000000000
++Close	0.161666667	-18.000000000	180.000000000
++Close	0.163333333	-18.000000000	180.000000000
++Close	0.165000000	-18.000000000	180.000000000
++Close	0.166666667	-18.000000000	180.000000000
++Close	0.168333333	-18.000000000	180.000000000
++Close	0.170000000	-18.000000000	180.000000000
++Close	0.171666667	-18.000000000	180.000000000
++Close	0.173333333	-18.000000000	180.000000000
++Close	0.175000000	-18.000000000	180.000000000
++Close	0.176666667	-18.000000000	180.000000000
++Close	0.178333333	-18.000000000	180.000000000
++Close	0.180000000	-18.000000000	180.000000000
++Close	0.181666667	-18.000000000	180.000000000
++Close	0.183333333	-18.000000000	180.000000000
++Close	0.185000000	-18.000000000	180.000000000
++Close	0.186666667	-18.000000000	180.000000000
++Close	0.188333333	-18.000000000	180.000000000
++Close	0.190000000	-18.000000000	180.000000000
++Close	0.191666667	-18.000000000	180.000000000
++Close	0.193333333	-18.000000000	180.000000000
++Close	0.195000000	-18.000000000	180.000000000
++Close	0.196666667	-18.000000000	180.000000000
++Close	0.198333333	-18.000000000	180.000000000
++Close	0.200000000	-18.000000000	180.000000000
++Close	0.201666667	-18.000000000	180.000000000
++Close	0.203333333	-18.000000000	180.000000000
++Close	0.205000000	-18.000000000	180.000000000
++Close	0.206666667	-18.000000000	180.000000000
++Close	0.208333333	-18.000000000	180.000000000
++Close	0.210000000	-18.000000000	180.000000000
++Close	0.211666667	-18.000000000	180.000000000
++Close	0.213333333	-18.000000000	180.000000000
++Close	0.215000000	-18.000000000	180.000000000
++Close	0.216666667	-18.000000000	180.000000000
++Close	0.218333333	-18.000000000	180.000000000
++Close	0.220000000	-18.000000000	180.000000000
++Close	0.221666667	-18.000000000	180.000000000
++Close	0.223333333	-18.000000000	180.000000000
++Close	0.225000000	-18.000000000	180.000000000
++Close	0.226666667	-18.000000000	180.000000000
++Close	0.228333333	-18.000000000	180.000000000
++Close	0.230000000	-18.000000000	180.000000000
++Close	0.231666667	-18.000000000	180.000000000
++Close	0.233333333	-18.000000000	180.000000000
++Close	0.235000000	-18.000000000	180.000000000
++Close	0.236666667	-18.000000000	180.000000000
++Close	0.238333333	-18.000000000	180.000000000
++Close	0.240000000	-18.000000000	180.000000000
++Close	0.241666667	-18.000000000	180.000000000
++Close	0.243333333	-18.000000000	180.000000000
++Close	0.245000000	-18.000000000	180.000000000
++Close	0.246666667	-18.000000000	180.000000000
++Close	0.248333333	-18.000000000	180.000000000
++Close	0.250000000	-18.000000000	180.000000000
++Close	0.251666667	-18.000000000	180.000000000
++Close	0.253333333	-18.000000000	180.000000000
++Close	0.255000000	-18.000000000	180.000000000
++Close	0.256666667	-18.000000000	180.000000000
++Close	0.258333333	-18.000000000	180.000000000
++Close	0.260000000	-18.000000000	180.000000000
++Close	0.261666667	-18.000000000	180.000000000
++Close	0.263333333	-18.000000000	180.000000000
++Close	0.265000000	-18.000000000	180.000000000
++Close	0.266666667	-18.000000000	180.000000000
++Close	0.268333333	-18.000000000	180.000000000
++Close	0.270000000	-18.000000000	180.000000000
++Close	0.271666667	-18.000000000	180.000000000
++Close	0.273333333	-18.000000000	180.000000000
++Close	0.275000000	-18.000000000	180.000000000
++Close	0.276666667	-18.000000000	180.000000000
++Close	0.278333333	-18.000000000	180.000000000
++Close	0.280000000	-18.000000000	180.000000000
++Close	0.281666667	-18.000000000	180.000000000
++Close	0.283333333	-18.000000000	180.000000000
++Close	0.285000000	-18.000000000	180.000000000
++Close	0.286666667	-18.000000000	180.000000000
++Close	0.288333333	-18.000000000	180.000000000
++Close	0.290000000	-18.000000000	180.000000000
++Close	0.291666667	-18.000000000	180.000000000
++Close	0.293333333	-18.000000000	180.000000000
++Close	0.295000000	-18.000000000	180.000000000
++Close	0.296666667	-18.000000000	180.000000000
++Close	0.298333333	-18.000000000	180.000000000
++Close	0.300000000	-18.000000000	180.000000000
++Close	0.301666667	-18.000000000	180.000000000
++Close	0.303333333	-18.000000000	180.000000000
++Close	0.305000000	-18.000000000	180.000000000
++Close	0.306666667	-18.000000000	180.000000000
++Close	0.308333333	-18.000000000	180.000000000
++Close	0.310000000	-18.000000000	180.000000000
++Close	0.311666667	-18.000000000	180.000000000
++Close	0.313333333	-18.000000000	180.000000000
++Close	0.315000000	-18.000000000	180.000000000
++Close	0.316666667	-18.000000000	180.000000000
++Close	0.318333333	-18.000000000	180.000000000
++Close	0.320000000	-18.000000000	180.000000000
++Close	0.321666667	-18.000000000	180.000000000
++Close	0.323333333	-18.000000000	180.000000000
++Close	0.325000000	-18.000000000	180.000000000
++Close	0.326666667	-18.000000000	180.000000000
++Close	0.328333333	-18.000000000	180.000000000
++Close	0.330000000	-18.000000000	180.000000000
++Close	0.331666667	-18.000000000	180.000000000
++Close	0.333333333	-18.000000000	180.000000000
++Close	0.335000000	-18.000000000	180.000000000
++Close	0.336666667	-18.000000000	180.000000000
++Close	0.338333333	-18.000000000	180.000000000
++Close	0.340000000	-18.000000000	180.000000000
++Close	0.341666667	-18.000000000	180.000000000
++Close	0.343333333	-18.000000000	180.000000000
++Close	0.345000000	-18.000000000	180.000000000
++Close	0.346666667	-18.000000000	180.000000000
++Close	0.348333333	-18.000000000	180.000000000
++Close	0.350000000	-18.000000000	180.000000000
++Close	0.351666667	-18.000000000	180.000000000
++Close	0.353333333	-18.000000000	180.000000000
++Close	0.355000000	-18.000000000	180.000000000
++Close	0.356666667	-18.000000000	180.000000000
++Close	0.358333333	-18.000000000	180.000000000
++Close	0.360000000	-18.000000000	180.000000000
++Close	0.361666667	-18.000000000	180.000000000
++Close	0.363333333	-18.000000000	180.000000000
++Close	0.365000000	-18.000000000	180.000000000
++Close	0.366666667	-18.000000000	180.000000000
++Close	0.368333333	-18.000000000	180.000000000
++Close	0.370000000	-18.000000000	180.000000000
++Close	0.371666667	-18.000000000	180.000000000
++Close	0.373333333	-18.000000000	180.000000000
++Close	0.375000000	-18.000000000	180.000000000
++Close	0.376666667	-18.000000000	180.000000000
++Close	0.378333333	-18.000000000	180.000000000
++Close	0.380000000	-18.000000000	180.000000000
++Close	0.381666667	-18.000000000	180.000000000
++Close	0.383333333	-18.000000000	180.000000000
++Close	0.385000000	-18.000000000	180.000000000
++Close	0.386666667	-18.000000000	180.000000000
++Close	0.388333333	-18.000000000	180.000000000
++Close	0.390000000	-18.000000000	180.000000000
++Close	0.391666667	-18.000000000	180.000000000
++Close	0.393333333	-18.000000000	180.000000000
++Close	0.395000000	-18.000000000	180.000000000
++Close	0.396666667	-18.000000000	180.000000000
++Close	0.398333333	-18.000000000	180.000000000
++Close	0.400000000	-18.000000000	180.000000000
++Close	0.401666667	-18.000000000	180.000000000
++Close	0.403333333	-18.000000000	180.000000000
++Close	0.405000000	-18.000000000	180.000000000
++Close	0.406666667	-18.000000000	180.000000000
++Close	0.408333333	-18.000000000	180.000000000
++Close	0.410000000	-18.000000000	180.000000000
++Close	0.411666667	-18.000000000	180.000000000
++Close	0.413333333	-18.000000000	180.000000000
++Close	0.415000000	-18.000000000	180.000000000
++Close	0.416666667	-18.000000000	180.000000000
++Close	0.418333333	-18.000000000	180.000000000
++Close	0.420000000	-18.000000000	180.000000000
++Close	0.421666667	-18.000000000	180.000000000
++Close	0.423333333	-18.000000000	180.000000000
++Close	0.425000000	-18.000000000	180.000000000
++Close	0.426666667	-18.000000000	180.000000000
++Close	0.428333333	-18.000000000	180.000000000
++Close	0.430000000	-18.000000000	180.000000000
++Close	0.431666667	-18.000000000	180.000000000
++Close	0.433333333	-18.000000000	180.000000000
++Close	0.435000000	-18.000000000	180.000000000
++Close	0.436666667	-18.000000000	180.000000000
++Close	0.438333333	-18.000000000	180.000000000
++Close	0.440000000	-18.000000000	180.000000000
++Close	0.441666667	-18.000000000	180.000000000
++Close	0.443333333	-18.000000000	180.000000000
++Close	0.445000000	-18.000000000	180.000000000
++Close	0.446666667	-18.000000000	180.000000000
++Close	0.448333333	-18.000000000	180.000000000
++Close	0.450000000	-18.000000000	180.000000000
++Close	0.451666667	-18.000000000	180.000000000
++Close	0.453333333	-18.000000000	180.000000000
++Close	0.455000000	-18.000000000	180.000000000
++Close	0.456666667	-18.000000000	180.000000000
++Close	0.458333333	-18.000000000	180.000000000
++Close	0.460000000	-18.000000000	180.000000000
++Close	0.461666667	-18.000000000	180.000000000
++Close	0.463333333	-18.000000000	180.000000000
++Close	0.465000000	-18.000000000	180.000000000
++Close	0.466666667	-18.000000000	180.000000000
++Close	0.468333333	-18.000000000	180.000000000
++Close	0.470000000	-18.000000000	180.000000000
++Close	0.471666667	-18.000000000	180.000000000
++Close	0.473333333	-18.000000000	180.000000000
++Close	0.475000000	-18.000000000	180.000000000
++Close	0.476666667	-18.000000000	180.000000000
++Close	0.478333333	-18.000000000	180.000000000
++Close	0.480000000	-18.000000000	180.000000000
++Close	0.481666667	-18.000000000	180.000000000
++Close	0.483333333	-18.000000000	180.000000000
++Close	0.485000000	-18.000000000	180.000000000
++Close	0.486666667	-18.000000000	180.000000000
++Close	0.488333333	-18.000000000	180.000000000
++Close	0.490000000	-18.000000000	180.000000000
++Close	0.491666667	-18.000000000	180.000000000
++Close	0.493333333	-18.000000000	180.000000000
++Close	0.495000000	-18.000000000	180.000000000
++Close	0.496666667	-18.000000000	180.000000000
++Close	0.498333333	-18.000000000	180.000000000
++Close	0.500000000	-18.000000000	180.000000000
+diff --git a/reports/npc-doorway-occlusion/blackbars-probe.gd b/reports/npc-doorway-occlusion/blackbars-probe.gd
+new file mode 100644
+--- /dev/null
++++ b/reports/npc-doorway-occlusion/blackbars-probe.gd
+@@ -0,0 +1,16 @@
++extends SceneTree
++func _init():
++ call_deferred("run")
++func run():
++ var scene = load("res://Blackbars.tscn").instance()
++ get_root().add_child(scene)
++ var player=scene.get_node("AnimationPlayer")
++ var out=File.new()
++ out.open("res://samples.tsv",File.WRITE)
++ for clip in ["Open","Close"]:
++  for step in range(301):
++   player.play(clip)
++   player.seek(step/600.0,true)
++   out.store_line("%s\t%.9f\t%.9f\t%.9f" % [clip,step/600.0,scene.get_node("ColorRect").rect_position.y,scene.get_node("ColorRect2").rect_position.y])
++ out.close()
++ quit()
+diff --git a/reports/npc-doorway-occlusion/blackbars-reference.json b/reports/npc-doorway-occlusion/blackbars-reference.json
+new file mode 100644
+--- /dev/null
++++ b/reports/npc-doorway-occlusion/blackbars-reference.json
+@@ -0,0 +1,18 @@
++{
++  "engine": "Godot3.6.2 official headless",
++  "engine_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
++  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
++  "sources": {
++    "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
++    "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
++    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
++    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
++    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
++  },
++  "probe": "reports/npc-doorway-occlusion/blackbars-probe.gd",
++  "probe_sha256": "26b78ce83c002e03c47427a105e38762d51eed7798ba3703cfb8399b70b2be3d",
++  "samples": "reports/npc-doorway-occlusion/blackbars-native.tsv",
++  "samples_sha256": "dfafe21e096df2df353ec2a9e0ed3c7593ac0e685e1023f697541c038e000deb",
++  "sample_count": 602,
++  "method": "Copy unchanged Blackbars.tscn and Blackbars.gd into disposable project; instantiate source scene and seek Open/Close AnimationPlayer tracks at0..0.5s in1/600s steps; no source modification."
++}
+diff --git a/reports/npc-doorway-occlusion/result.json b/reports/npc-doorway-occlusion/result.json
+new file mode 100644
+--- /dev/null
++++ b/reports/npc-doorway-occlusion/result.json
+@@ -0,0 +1,49 @@
++{
++  "status": "PASS_SCOPED_NPC_OCCLUSION_AND_START",
++  "date_utc": "2026-10-03",
++  "binary": "dist/encore-native.3dsx",
++  "bytes": 76247720,
++  "sha256": "d5714187859d7bee578ba57033b2708f99360f78493c232c71dcd15481a1d1d4",
++  "gpu_mode": "1:1:0",
++  "main_sha256": "2377a7557b4a90b624d30c9b275fe81bece72dcb1d4875407255915a3f14cec1",
++  "root_cause": "Scripted Minnie traverses the original collision-free path to y200 beyond the finite Above mask ending y192. Player and NPC share the same rendering/foreground pass; normal player hits door/fade or wall earlier. The missing original dialogue-owned Blackbars layer covers this source cutscene exit.",
++  "fix": "Restore checked data-driven original Blackbars above world and below dialogue; preserve all source map cells, textures, paths, timing, positions, camera and physics. Retain independent START global-quit removal.",
++  "verification": {
++    "production_ui": "PASS: title New Game; AB; START retains AB/UI; append C produces ABC; cancel to title; explicit title Exit returns to stopped emulator list.",
++    "unpaused_source_path": {
++      "status": "PASS",
++      "samples": 44,
++      "minimum_y": 168.799988,
++      "maximum_y": 200.0,
++      "all_exit_samples_have_source_bars": true,
++      "bars_close_after_script": true,
++      "qa_sha256": "6b4cd199f8df40d67c0aa6a255bf4ee6faee5fd8348797935f227aba11e625de",
++      "save_io": "Disabled; no user profile IO",
++      "path": "Actual source Minnie leave after actual Pillow combat, generated post-Lamp start"
++    },
++    "final_visual": {
++      "status": "PASS",
++      "diagnostic_sha256": "2a909415c914001e2a72b873c235dd17ad0494f045372e61d9aa8a6a5ea3834f",
++      "method": "Internal full-desktop CUA observation after indefinite diagnostic-only hold of naturally submitted Minnie y200 frame. Ninten and room remain unchanged; Minnie fully occluded with no sprite pixels below doorway. Manually stopped afterward; no source position was forced.",
++      "screenshots_delivered": false
++    },
++    "earlier_visual_attempt": {
++      "status": "INCONCLUSIVE_DIAGNOSTIC_ONLY",
++      "diagnostic_sha256": "75b8a60f1cee879d078e35d702c0a8316c9bddd2b9033658cedb59e33dabd43a",
++      "detail": "Missed finite20s display hold; resumed diagnostic wall clock caused Phone idle delta rejection. Not a production failure and not claimed as a passing test."
++    },
++    "source_animation": "602 unchanged Godot3.6.2 samples; maximum position delta0.0000152593px",
++    "host": "PASS targeted blackbars source/state/malformed pack tests",
++    "asan_ubsan": "PASS targeted blackbars tests; LeakSanitizer disabled",
++    "arm": "PASS incremental real devkitARM3DSX",
++    "embedded_romfs": "195/195 files including145 textures and124-byte opening.encbars exactly match staged bytes",
++    "source_foreground": "Original14Objects+276Above verified unchanged"
++  },
++  "limitations": [
++    "No new full host/sanitizer suite",
++    "No hardware or CIA execution",
++    "Minnie source-path checks use generated post-Lamp diagnostic start; production UI checked on exact delivered3DSX",
++    "No performance claim"
++  ],
++  "changed_files": "reports/npc-doorway-occlusion/changed-files.json"
++}
+diff --git a/reports/npc-doorway-occlusion/equal-position-pixels.json b/reports/npc-doorway-occlusion/equal-position-pixels.json
+new file mode 100644
+--- /dev/null
++++ b/reports/npc-doorway-occlusion/equal-position-pixels.json
+@@ -0,0 +1,115 @@
++{
++  "scope": "Equal-position source sprite alpha + exact original Above atlas. Common native pose transform/floor(+0.5). No runtime geometry or source data changed. This is differential pixel evidence, not an emulator result.",
++  "results": [
++    {
++      "actor": "Ninten",
++      "root": [
++        464,
++        160
++      ],
++      "source_pixels": 305,
++      "covered_by_original_above": 0,
++      "uncovered_below_above": 0,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Ninten",
++      "root": [
++        464,
++        176
++      ],
++      "source_pixels": 305,
++      "covered_by_original_above": 107,
++      "uncovered_below_above": 0,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Ninten",
++      "root": [
++        464,
++        184
++      ],
++      "source_pixels": 305,
++      "covered_by_original_above": 173,
++      "uncovered_below_above": 18,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Ninten",
++      "root": [
++        464,
++        192
++      ],
++      "source_pixels": 305,
++      "covered_by_original_above": 191,
++      "uncovered_below_above": 107,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Ninten",
++      "root": [
++        464,
++        200
++      ],
++      "source_pixels": 305,
++      "covered_by_original_above": 114,
++      "uncovered_below_above": 191,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Minnie",
++      "root": [
++        464,
++        160
++      ],
++      "source_pixels": 293,
++      "covered_by_original_above": 0,
++      "uncovered_below_above": 0,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Minnie",
++      "root": [
++        464,
++        176
++      ],
++      "source_pixels": 293,
++      "covered_by_original_above": 103,
++      "uncovered_below_above": 0,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Minnie",
++      "root": [
++        464,
++        184
++      ],
++      "source_pixels": 293,
++      "covered_by_original_above": 196,
++      "uncovered_below_above": 17,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Minnie",
++      "root": [
++        464,
++        192
++      ],
++      "source_pixels": 293,
++      "covered_by_original_above": 190,
++      "uncovered_below_above": 103,
++      "uncovered_below_above_with_source_bars": 0
++    },
++    {
++      "actor": "Minnie",
++      "root": [
++        464,
++        200
++      ],
++      "source_pixels": 293,
++      "covered_by_original_above": 80,
++      "uncovered_below_above": 213,
++      "uncovered_below_above_with_source_bars": 0
++    }
++  ]
++}
+diff --git a/reports/npc-doorway-occlusion/compare_equal_positions.py b/reports/npc-doorway-occlusion/compare_equal_positions.py
+new file mode 100644
+--- /dev/null
++++ b/reports/npc-doorway-occlusion/compare_equal_positions.py
+@@ -0,0 +1,25 @@
++from pathlib import Path
++import json,math,hashlib
++from PIL import Image
++R=Path(__file__).resolve().parents[2]
++r=json.loads((R/'content/native-opening.json').read_text());rows=json.loads((R/'romfs/house-layers/source.json').read_text())['tiles'];up=R/'upstream/MOTHER-Encore';mask=Image.open(up/'Graphics/Tilesets/TilPodunkInteriors.png').convert('RGBA')
++result=[]
++for name,idx,path in [('Ninten',0,'Graphics/Character Sprites/Ninten/main.png'),('Minnie',4,'Graphics/Character Sprites/Npcs/4dir/minnie.png')]:
++ p=r['sections']['ActorProfile'][idx];res=r['sections']['Resource'][p['primary_resource']];tex=Image.open(up/path).convert('RGBA');w=res['width']//res['columns'];h=res['height']//res['rows'];frame=1
++ for y in (160,176,184,192,200):
++  x0=math.floor(464+p['sprite_position'][0]+p['sprite_offset'][0]-w/2+.5);y0=math.floor(y+p['sprite_position'][1]+p['sprite_offset'][1]-h/2+.5)
++  opaque=covered=below=withbars=0
++  for sy in range(h):
++   for sx in range(w):
++    if not tex.getpixel((frame%res['columns']*w+sx,frame//res['columns']*h+sy))[3]:continue
++    opaque+=1;x=x0+sx;wy=y0+sy;masked=False
++    for t in rows:
++     if t['flags']==1 and t['x']<=x<t['x']+t['width'] and t['y']<=wy<t['y']+t['height'] and mask.getpixel((t['u']+x-t['x'],t['v']+wy-t['y']))[3]:masked=True;break
++    covered+=masked
++    if wy>=192 and not masked:
++     below+=1
++     # Original 28-pixel source bottom bar, bottom-anchored on native viewport.
++     withbars+=not (212<=wy+24<240)
++  result.append(dict(actor=name,root=[464,y],source_pixels=opaque,covered_by_original_above=covered,uncovered_below_above=below,uncovered_below_above_with_source_bars=withbars))
++report=dict(scope='Equal-position source sprite alpha + exact original Above atlas. Common native pose transform/floor(+0.5). No runtime geometry or source data changed. This is differential pixel evidence, not an emulator result.',results=result)
++(R/'reports/npc-doorway-occlusion/equal-position-pixels.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

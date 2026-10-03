@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "bus_source": "Audio/Audio Buses/default_bus_layout.tres",
+  "bus_sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+  "manager_source": "Scripts/global/audioManager.gd",
+  "manager_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+  "assets": [
+    {
+      "stable_id": 21,
+      "source_path": "res://Audio/Music/Poltergeist.ogg",
+      "source_sha256": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+      "import_sha256": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+      "pcm_path": "audio/poltergeist.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 22,
+      "source_path": "res://Audio/Sound effects/bash.mp3",
+      "source_sha256": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598",
+      "import_sha256": "1e3241d9ac7d026dffe39041ac76131052b9eb3ef8f8ca92f816190d095b31d9",
+      "pcm_path": "audio/bash.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1001,
+      "source_path": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+      "source_sha256": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+      "import_sha256": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+      "pcm_path": "audio/encounter-enemy.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1002,
+      "source_path": "res://Audio/Music/Battle Encounter/Encounter Boss.mp3",
+      "source_sha256": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03",
+      "import_sha256": "e07f81afe34f32ecd03fb1f65a88305b047e208004de2dbf662102c54591302a",
+      "pcm_path": "audio/encounter-boss.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1101,
+      "source_path": "res://Audio/Sound effects/Cursor 1.mp3",
+      "source_sha256": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+      "import_sha256": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+      "pcm_path": "audio/cursor-move.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1102,
+      "source_path": "res://Audio/Sound effects/Cursor 2.mp3",
+      "source_sha256": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+      "import_sha256": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+      "pcm_path": "audio/cursor-select.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1103,
+      "source_path": "res://Audio/Sound effects/M3/curshoriz.wav",
+      "source_sha256": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+      "import_sha256": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+      "pcm_path": "audio/cursor-back.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1104,
+      "source_path": "res://Audio/Sound effects/M3/bump.wav",
+      "source_sha256": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+      "import_sha256": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+      "pcm_path": "audio/cursor-restricted.pcm",
+      "gain_db": 0,
+      "output_sample_rate": 48000
+    },
+    {
+      "stable_id": 30,
+      "source_path": "res://Audio/Sound effects/M3/SMAAAASH.wav",
+      "source_sha256": "ab087702670dd87d46207b48429b9c9d1fa5daec0f74b0b10c9b1fe0e9a8c47f",
+      "import_sha256": "2670b26676ad536fb2d45147a675cee4edbbe640dca449b33de0fa0b35cf331e",
+      "pcm_path": "audio/doll-postwin-smash.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 32,
+      "source_path": "res://Audio/Music/Melodies/melody1.mp3",
+      "source_sha256": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+      "import_sha256": "3f7d52ded59d4efae922628f9716fd8c1ca7f7d88ba6774b2065095c83ac7f23",
+      "pcm_path": "audio/doll-melody.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 33,
+      "source_path": "res://Audio/Sound effects/M3/heal_se.wav",
+      "source_sha256": "d8712d29a0ef6feec927753dd897c136ae58e940b6e67b03693ecde2b6345021",
+      "import_sha256": "1b82db1b468075e83174548e87a7150b71ca3aa039063f1c47f1d1fdf578256b",
+      "pcm_path": "audio/melody-remembered.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 34,
+      "source_path": "res://Audio/Music/House.mp3",
+      "source_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+      "import_sha256": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+      "pcm_path": "audio/house-music.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 36,
+      "source_path": "res://Audio/Sound effects/phonering.wav",
+      "source_sha256": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "import_sha256": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
+      "pcm_path": "audio/phone-ring.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 37,
+      "source_path": "res://Audio/Sound effects/phonehangup.wav",
+      "source_sha256": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145",
+      "import_sha256": "fdbe75f6e2df204ccc6bd2fa775982d96d8d5a6ce5cbf91517e53a3fbb2b78a4",
+      "pcm_path": "audio/phone-hangup.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1201,
+      "source_path": "res://Audio/Sound effects/text/Adult.mp3",
+      "source_sha256": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc",
+      "import_sha256": "416f91e675ceb7bdd87850942624389e82e689f7e8bd6e1b74b0ec75454f3487",
+      "pcm_path": "audio/text-adult.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1202,
+      "source_path": "res://Audio/Music/Mother Earth.mp3",
+      "source_sha256": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+      "import_sha256": "dcc0a020300706b28f4c540a8922eb71f10c58b2bc8f1773efb140c285e18409",
+      "pcm_path": "audio/title-mother-earth.pcm",
+      "gain_db": 0
+    }
+  ]
+}

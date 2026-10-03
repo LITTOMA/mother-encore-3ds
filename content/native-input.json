@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "reason": "User-authorized native 3DS usability adapter: equal eight-way Circle Pad sectors and a dynamic lower-screen touch stick/tap confirm. This is not the original Godot analog deadzone policy. Existing movement speeds and physical menu repeat remain unchanged.",
+  "circle_pad": {
+    "nominal_radius": 156,
+    "activate_radius": 24,
+    "release_radius": 18,
+    "angular_hysteresis_degrees": 4
+  },
+  "touch": {
+    "width": 320,
+    "height": 240,
+    "activate_radius": 8,
+    "release_radius": 6,
+    "tap_max_travel": 8,
+    "tap_max_seconds": 0.35
+  },
+  "visual": {
+    "base_radius": 32,
+    "thumb_radius": 7,
+    "base_rgba": [170, 192, 202, 45],
+    "thumb_rgba": [215, 231, 238, 100]
+  }
+}

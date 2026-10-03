@@ -1,0 +1,139 @@
+{
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "yaml": [
+    {
+      "0": {
+        "actors": {
+          "leader": "leader"
+        },
+        "text": "DIALOGUE_PODUNK_DOLLMELODY_0",
+        "goto": "3"
+      },
+      "3": {
+        "objectsfunction": {
+          "MusicArea": "stop_music_immediately",
+          "melodyBG": "appear"
+        },
+        "wait": 4,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4",
+        "music": "Melodies/melody1.mp3"
+      },
+      "4": {
+        "text": "DIALOGUE_PODUNK_DOLLMELODY_4",
+        "soundeffect": "M3/heal_se.wav",
+        "objectsfunction": {
+          "MusicArea": "play_music",
+          "melodyBG": "disappear"
+        },
+        "setflags": "doll_melody",
+        "wait": {
+          "native_f64_decimal": "0.60000000000000000",
+          "native_f64_le_hex": "333333333333e33f"
+        }
+      }
+    },
+    {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "mimmie": "Objects/npc2"
+        },
+        "talker": "mimmie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_0",
+        "changecam": null,
+        "goto": "1"
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_1",
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "x": 0,
+                "y": -12
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "step"
+          }
+        }
+      }
+    },
+    {
+      "0": {
+        "name": "DIALOGUE_PODUNK_MIMMIE_DOLL_DEFEATED_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MIMMIE_DOLL_DEFEATED_0"
+      }
+    },
+    {
+      "0": {
+        "name": "DIALOGUE_PODUNK_MIMMIE_DEAD_DOLL_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MIMMIE_DEAD_DOLL_0"
+      }
+    },
+    {
+      "0": {
+        "text": "DIALOGUE_PODUNK_DOLL_0"
+      }
+    }
+  ],
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/Dialogue/Podunk/dollmelody.yaml": "9058f5f24fece54d7446e152830579f763773f312a2be5710c17a9d67c357fd6",
+    "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
+    "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": "24937777b12b6796ec2c3ce357a95b032575926ec836a097aa37b8620808ed03",
+    "Data/Dialogue/Podunk/mimmie_dead_doll.yaml": "a80642231df7dd64410eb34544f84265d53974587c7098efc32585816ec7d371",
+    "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Audio/Music/Melodies/melody1.mp3": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+    "Audio/Music/Melodies/melody1.mp3.import": "3f7d52ded59d4efae922628f9716fd8c1ca7f7d88ba6774b2065095c83ac7f23",
+    "Audio/Sound effects/M3/heal_se.wav": "d8712d29a0ef6feec927753dd897c136ae58e940b6e67b03693ecde2b6345021",
+    "Audio/Sound effects/M3/heal_se.wav.import": "1b82db1b468075e83174548e87a7150b71ca3aa039063f1c47f1d1fdf578256b",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a"
+  },
+  "log": "Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org\n \n"
+}

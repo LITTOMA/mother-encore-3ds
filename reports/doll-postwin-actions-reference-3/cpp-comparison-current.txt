@@ -1,0 +1,70 @@
+doll_postwin_concurrent_bounces tick0: blend
+doll_postwin_concurrent_bounces tick0: action signals
+doll_postwin_concurrent_bounces tick1: blend
+doll_postwin_concurrent_bounces tick1: action signals
+doll_postwin_concurrent_bounces tick2: blend
+doll_postwin_concurrent_bounces tick2: action signals
+doll_postwin_concurrent_bounces tick3: blend
+doll_postwin_concurrent_bounces tick3: action signals
+doll_postwin_concurrent_bounces tick4: blend
+doll_postwin_concurrent_bounces tick4: action signals
+doll_postwin_concurrent_bounces tick5: blend
+doll_postwin_concurrent_bounces tick5: action signals
+doll_postwin_concurrent_bounces tick6: blend
+doll_postwin_concurrent_bounces tick6: action signals
+doll_postwin_concurrent_bounces tick7: blend
+doll_postwin_concurrent_bounces tick7: action signals
+doll_postwin_concurrent_bounces tick8: blend
+doll_postwin_concurrent_bounces tick8: action signals
+doll_postwin_concurrent_bounces tick9: blend
+doll_postwin_concurrent_bounces tick9: action signals
+doll_postwin_concurrent_bounces tick10: blend
+doll_postwin_concurrent_bounces tick10: action signals
+doll_postwin_concurrent_bounces tick11: blend
+doll_postwin_concurrent_bounces tick11: action signals
+doll_postwin_concurrent_bounces tick12: blend
+doll_postwin_concurrent_bounces tick12: action signals
+doll_postwin_concurrent_bounces tick13: blend
+doll_postwin_concurrent_bounces tick13: action signals
+doll_postwin_concurrent_bounces tick14: blend
+doll_postwin_concurrent_bounces tick14: action signals
+doll_postwin_concurrent_bounces tick15: blend
+doll_postwin_concurrent_bounces tick15: action signals
+doll_postwin_concurrent_bounces tick16: blend
+doll_postwin_concurrent_bounces tick16: action signals
+doll_postwin_concurrent_bounces tick17: blend
+doll_postwin_concurrent_bounces tick17: action signals
+doll_postwin_concurrent_bounces tick18: blend
+doll_postwin_concurrent_bounces tick18: action signals
+doll_postwin_concurrent_bounces tick19: blend
+doll_postwin_concurrent_bounces tick19: action signals
+doll_postwin_concurrent_bounces tick20: blend
+doll_postwin_concurrent_bounces tick20: action signals
+doll_postwin_concurrent_bounces tick21: blend
+doll_postwin_concurrent_bounces tick21: action signals
+doll_postwin_concurrent_bounces tick22: blend
+doll_postwin_concurrent_bounces tick22: action signals
+doll_postwin_concurrent_bounces tick23: blend
+doll_postwin_concurrent_bounces tick23: action signals
+doll_postwin_concurrent_bounces tick24: blend
+doll_postwin_concurrent_bounces tick24: action signals
+doll_postwin_concurrent_bounces tick25: blend
+doll_postwin_concurrent_bounces tick25: action signals
+doll_postwin_concurrent_bounces tick26: blend
+doll_postwin_concurrent_bounces tick26: action signals
+doll_postwin_concurrent_bounces tick27: blend
+doll_postwin_concurrent_bounces tick27: action signals
+doll_postwin_concurrent_bounces tick28: blend
+doll_postwin_concurrent_bounces tick28: action signals
+doll_postwin_concurrent_bounces tick29: blend
+doll_postwin_concurrent_bounces tick29: action signals
+doll_postwin_concurrent_bounces: 100 samples, 133 failures
+mimmie_postwin_walk_jumps: 180 samples, 0 failures
+ninten_postwin_long_turns: 220 samples, 0 failures
+ninten_overlapping_turn_at_30: 300 samples, 0 failures
+ninten_overlapping_turn_at_59: 300 samples, 0 failures
+ninten_overlapping_turn_at_60: 300 samples, 0 failures
+ninten_overlapping_turn_at_61: 300 samples, 0 failures
+ninten_overlapping_turn_at_62: 300 samples, 0 failures
+ninten_same_target_overlap: 150 samples, 0 failures
+Doll post-win native actions: 27991 checks, 133 failures

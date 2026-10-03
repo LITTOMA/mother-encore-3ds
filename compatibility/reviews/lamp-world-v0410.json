@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "whole_game_approved": false,
+  "sources": {
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19"
+  },
+  "scope": "Initial lamp Area2D new-entry signal scheduling, source-bound actor replacement/deferred lifecycle,13-phrase lamp_attack action sink, typed audio intents and delayed battle-request boundary",
+  "timing": [
+    "Previous physics motion overlap reported before next player physics; idle callback starts actual continuous walk entry at430397",
+    "Deferred Actor.ready callbacks drain same MessageQueue flush; phrase0 waits next idle signal",
+    "Original WaitTimer uses strict negativity at float real_t callback delta; no overshoot carry",
+    "Audio/actor actions follow source fixed order, not YAML key order",
+    "Ninten update_npcs restores data/camera before yielding; proxy cleanup remains pending at battle-request boundary"
+  ],
+  "not_implemented": [
+    "Full audio mixer and playback",
+    "Battle unit construction,transition and battle gameplay",
+    "Full Area2D exit hysteresis and other room trigger mappings",
+    "Post-battle actor cleanup/world progression",
+    "RoomShaker recurring callback beyond battle request",
+    "General YAML/GDScript interpretation"
+  ],
+  "limits": [
+    "World idle step limited to100ms; larger stalls rejected/discarded by platform",
+    "Audio cues are intents; MusicChanger mixer/persistence and real playback remain unimplemented",
+    "Ninten proxy and hidden NPC delayed cleanup remain pending atBattleRequested"
+  ]
+}

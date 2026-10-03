@@ -1,0 +1,317 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "driver": "GLES2",
+  "samples": [
+    {
+      "sample": 0,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 1,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 2,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 3,
+      "bytes": 230400,
+      "native_pixel_0": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 4,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 5,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 6,
+      "bytes": 230400,
+      "native_pixel_0": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 7,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 8,
+      "bytes": 384000,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 9,
+      "bytes": 384000,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 10,
+      "bytes": 384000,
+      "native_pixel_0": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 11,
+      "bytes": 384000,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 12,
+      "bytes": 384000,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 13,
+      "bytes": 384000,
+      "native_pixel_0": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 14,
+      "bytes": 384000,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 15,
+      "bytes": 384000,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        400,
+        240
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 16,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        255
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 17,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        128
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 18,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    },
+    {
+      "sample": 19,
+      "bytes": 230400,
+      "native_pixel_0": [
+        0,
+        0,
+        0,
+        64
+      ],
+      "rect_size": [
+        320,
+        180
+      ],
+      "texture_flags": 0
+    }
+  ],
+  "scope": "Numeric offscreen source-render readback only. Original320x180 source and separately marked centered400x240 extension. Deterministic TIME uniform substitution."
+}

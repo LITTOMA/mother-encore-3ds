@@ -1,0 +1,271 @@
+{
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "dialogue": {
+    "0": {
+      "actors": {
+        "ninten": "leader",
+        "lamp": "Objects/lamp"
+      },
+      "talker": "lamp",
+      "wait": 1,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "1",
+      "actorsanim": {
+        "lamp": {
+          "anim": "Idle"
+        }
+      },
+      "music": ""
+    },
+    "1": {
+      "actorsturn": {
+        "ninten": {
+          "x": 1,
+          "y": 0
+        }
+      },
+      "movecam": {
+        "x": 474,
+        "y": 392,
+        "time": 1
+      },
+      "changecam": "lamp",
+      "wait": 1.5,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "2",
+      "actorsanim": {
+        "lamp": {
+          "anim": "Open"
+        }
+      },
+      "actorsshake": {
+        "lamp": {
+          "x": 2,
+          "length": 1
+        }
+      }
+    },
+    "2": {
+      "actorsemote": {
+        "ninten": "surprise"
+      },
+      "objectsfunction": {
+        "Poltergeist/MusicArea": "play_music"
+      },
+      "wait": 1,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "3"
+    },
+    "3": {
+      "wait": 0.5,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "4",
+      "actorsshake": {
+        "lamp": {
+          "x": 2,
+          "length": 0.5
+        }
+      }
+    },
+    "4": {
+      "actorsmove": {
+        "lamp": {
+          "movement": [
+            {
+              "x": 460,
+              "y": 456
+            }
+          ],
+          "speed": 600,
+          "type": "position"
+        }
+      },
+      "wait": 0.2,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "5"
+    },
+    "5": {
+      "actorsjump": {
+        "ninten": {
+          "height": 3,
+          "length": 0.2
+        }
+      },
+      "soundeffect": "bash.mp3",
+      "wait": 0.5,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "6",
+      "shakecam": {
+        "length": 0.2,
+        "size": "small"
+      }
+    },
+    "6": {
+      "actorsmove": {
+        "lamp": {
+          "movement": [
+            {
+              "x": 410,
+              "y": 408
+            }
+          ],
+          "speed": 500,
+          "type": "position"
+        }
+      },
+      "wait": 0.1,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "7"
+    },
+    "7": {
+      "actorsjump": {
+        "ninten": {
+          "height": 3,
+          "length": 0.2
+        }
+      },
+      "soundeffect": "bash.mp3",
+      "wait": 0.05,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "8",
+      "shakecam": {
+        "length": 0.2,
+        "size": "small"
+      }
+    },
+    "8": {
+      "actorsmove": {
+        "lamp": {
+          "movement": [
+            {
+              "x": 480,
+              "y": 328
+            }
+          ],
+          "speed": 500,
+          "type": "position"
+        }
+      },
+      "wait": 0.1,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "9"
+    },
+    "9": {
+      "actorsjump": {
+        "ninten": {
+          "height": 3,
+          "length": 0.2
+        }
+      },
+      "soundeffect": "bash.mp3",
+      "wait": 0.1,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "10",
+      "shakecam": {
+        "length": 0.2,
+        "size": "small"
+      }
+    },
+    "10": {
+      "actorsmove": {
+        "lamp": {
+          "movement": [
+            {
+              "x": 496,
+              "y": 392
+            }
+          ],
+          "speed": 500,
+          "type": "position"
+        }
+      },
+      "wait": 0.5,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "11"
+    },
+    "11": {
+      "wait": 0.5,
+      "autoadvance": true,
+      "caninput": false,
+      "goto": "12",
+      "actorsshake": {
+        "lamp": {
+          "x": 2,
+          "length": 0.5
+        }
+      }
+    },
+    "12": {
+      "actorsjump": {
+        "lamp": {
+          "height": 24,
+          "length": 0.35
+        }
+      },
+      "actorsmove": {
+        "lamp": {
+          "movement": [
+            {
+              "x": 432,
+              "y": 392
+            }
+          ],
+          "speed": 200,
+          "type": "position"
+        }
+      },
+      "objectsfunction": {
+        "Room Shaker": "delayed_start"
+      },
+      "startbattle": {
+        "battlers": [
+          {
+            "lamp": "lamp"
+          }
+        ],
+        "winflag": "poltergeist"
+      },
+      "wait": 0.35,
+      "autoadvance": true,
+      "caninput": false,
+      "ovbattlemusic": true
+    }
+  },
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+  },
+  "log": "Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org\n \n"
+}

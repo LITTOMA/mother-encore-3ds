@@ -1,0 +1,17 @@
+{
+  "expected": {
+    "flash_started": 270,
+    "enemy_hidden": 360,
+    "defeat_enemies": 390,
+    "victory_requested": 539,
+    "next_randi": "4045365244"
+  },
+  "actual": {
+    "flash_started": 270,
+    "enemy_hidden": 360,
+    "defeat_enemies": 390,
+    "victory_requested": 539,
+    "next_randi": "4045365244"
+  },
+  "match": true
+}

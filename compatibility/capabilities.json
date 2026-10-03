@@ -1,0 +1,17 @@
+{
+  "format": 1,
+  "rules": 1,
+  "mask": 15,
+  "content_family": 1162739713,
+  "opcodes": {
+    "END": 0,
+    "SAY": 1,
+    "SET_FLAG": 2,
+    "IF_FLAG": 3,
+    "JUMP": 4,
+    "WAIT": 5,
+    "TELEPORT": 6,
+    "BATTLE": 7
+  },
+  "status": "fixture IR only; upstream EncoreScript is not yet supported"
+}

@@ -1,0 +1,37 @@
+{
+  "emulator": "not run",
+  "engine_sha256": "e748acc92ee5205dd3cc1754d4422870f6a68ae6e00a16ff88bd3438c957adfd",
+  "exporter_sha256": "6a8e39ca9aca3aec0a06618adfa74fed28e69085015af4fe6929991c2d63edba",
+  "hardware": "not run",
+  "house": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "data_sha256": "27de33d85016dd62348d3c1f7a7366ff7d0974271424b59246a27f80d69d0fb1",
+    "game_version": "0.4.1.0",
+    "native_compatible": false,
+    "nodes": 497,
+    "quarantined_attachments": 25,
+    "quarantined_connections": 29,
+    "resources": 381,
+    "scene_states": 21,
+    "source_receipt_sha256": "ac4fd1161782bb58a04a86f4c3382b779ecfd09d9c218719ce87bd628b01a06c",
+    "tilemaps": {
+      "Above": 276,
+      "Below": 1,
+      "Objects": 14
+    }
+  },
+  "micro": {
+    "gameplay_gate": "blocked as required",
+    "negative": "unknown Variant and deferred instance rejected without partial output",
+    "positive": "native defaults, script defaults, inheritance, instance overrides, transforms, int64 and signals verified"
+  },
+  "schema": 1,
+  "tools": {
+    "tools/godot_exporter/import_plugin.gd": "8a0ba75521db1cb1e89c200228ea8143477cde215e755da0efc844d6f27cd07b",
+    "tools/godot_exporter/scene_data.gd": "6a8e39ca9aca3aec0a06618adfa74fed28e69085015af4fe6929991c2d63edba",
+    "tools/run_scene_reference.py": "b6a73f5853f6a4292db8c2dcdbc08d73c1f4c161d3ba421fa94f6430b775d64d",
+    "tools/scene_data.py": "794cd7e44d04455c791bc365baa46c306656c4130e99814ee2d11facfe37497e",
+    "tools/scene_reference.py": "f6baf629675eb414bfcce269af4b54c34621c91e798648b3ca5fa948fe258723"
+  },
+  "verification": "official engine data reference; not full original game execution"
+}

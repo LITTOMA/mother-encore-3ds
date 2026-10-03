@@ -1,0 +1,1287 @@
+{
+  "blockers": [
+    "script defaults and runtime factories",
+    "script behavior and signals",
+    "dynamic resource paths",
+    "animation method calls",
+    "native mechanism coverage"
+  ],
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "files": {
+    "Audio/Sound effects/Door_Short.mp3": {
+      "bytes": 20160,
+      "sha256": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160"
+    },
+    "Audio/Sound effects/EB/knock.wav": {
+      "bytes": 44144,
+      "sha256": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94"
+    },
+    "Audio/Sound effects/Gift Box.mp3": {
+      "bytes": 10448,
+      "sha256": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01"
+    },
+    "Audio/Sound effects/Laugh Small.mp3": {
+      "bytes": 7847,
+      "sha256": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03"
+    },
+    "Audio/Sound effects/Shock.mp3": {
+      "bytes": 53416,
+      "sha256": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de"
+    },
+    "Audio/Sound effects/phonering.wav": {
+      "bytes": 44144,
+      "sha256": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685"
+    },
+    "Fonts/BottleRocket.tres": {
+      "bytes": 727,
+      "external_resources": [],
+      "native_font_payloads": [
+        {
+          "line": 5,
+          "path": "Fonts/BottleRocket_ja.ttf"
+        },
+        {
+          "line": 9,
+          "path": "Fonts/BottleRocket_ko.ttf"
+        },
+        {
+          "line": 13,
+          "path": "Fonts/BottleRocket_zh_cn.otf"
+        },
+        {
+          "line": 17,
+          "path": "Fonts/BottleRocket.ttf"
+        }
+      ],
+      "reference_sha256": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "sha256": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e"
+    },
+    "Fonts/BottleRocket.ttf": {
+      "bytes": 41176,
+      "sha256": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1"
+    },
+    "Fonts/BottleRocket_ja.ttf": {
+      "bytes": 21876,
+      "sha256": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db"
+    },
+    "Fonts/BottleRocket_ko.ttf": {
+      "bytes": 787288,
+      "sha256": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5"
+    },
+    "Fonts/BottleRocket_zh_cn.otf": {
+      "bytes": 2954512,
+      "sha256": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5"
+    },
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": {
+      "bytes": 4382,
+      "sha256": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666"
+    },
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": {
+      "bytes": 936,
+      "sha256": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691"
+    },
+    "Graphics/Character Sprites/Shadow.png": {
+      "bytes": 104,
+      "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+    },
+    "Graphics/Objects/Common/Briefcase.png": {
+      "bytes": 741,
+      "sha256": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d"
+    },
+    "Graphics/Objects/Common/Present Box.png": {
+      "bytes": 1363,
+      "sha256": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8"
+    },
+    "Graphics/Objects/Common/Sparkles.png": {
+      "bytes": 253,
+      "sha256": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a"
+    },
+    "Graphics/Objects/Doors/Door_Dark.png": {
+      "bytes": 290,
+      "sha256": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4"
+    },
+    "Graphics/Objects/Doors/Door_Dark_Locked.png": {
+      "bytes": 387,
+      "sha256": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f"
+    },
+    "Graphics/Other/emotes/emotes.png": {
+      "bytes": 7835,
+      "sha256": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb"
+    },
+    "Graphics/Rooms/Podunk/Ninten's House.png": {
+      "bytes": 32604,
+      "sha256": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717"
+    },
+    "Graphics/Tilesets/TilNintensHouse.png": {
+      "bytes": 5173,
+      "sha256": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023"
+    },
+    "Graphics/Tilesets/TilPodunkInteriors.png": {
+      "bytes": 54394,
+      "sha256": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6"
+    },
+    "Graphics/UI/melody bg.png": {
+      "bytes": 102,
+      "sha256": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd"
+    },
+    "Graphics/UI/select_arrow.png": {
+      "bytes": 121,
+      "sha256": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc"
+    },
+    "Maps/Testing/phone.gd": {
+      "bytes": 1547,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89"
+    },
+    "Maps/podunk/Ninten_s room.gd": {
+      "bytes": 130,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300"
+    },
+    "Maps/podunk/Nintens House.tscn": {
+      "bytes": 39423,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Nodes/Reusables/stepping sounds.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Scripts/debug/DebugStartPos.gd",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Nodes/Overworld/Ladder.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 4,
+          "line": 6,
+          "path": "Nodes/Ui/effects/melodyBG.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 8,
+          "line": 7,
+          "path": "Nodes/Overworld/camarea.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 9,
+          "line": 8,
+          "path": "Nodes/Reusables/roomshaker.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 10,
+          "line": 9,
+          "path": "Nodes/Reusables/CutsceneArea.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 11,
+          "line": 10,
+          "path": "Nodes/Reusables/npc.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 12,
+          "line": 11,
+          "path": "Nodes/Overworld/Objects/Openable Door.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 13,
+          "line": 12,
+          "path": "Nodes/Overworld/Door.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 14,
+          "line": 13,
+          "path": "Nodes/Reusables/interact_dialog.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 15,
+          "line": 14,
+          "path": "Nodes/Reusables/phone.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 16,
+          "line": 15,
+          "path": "Nodes/Overworld/MusicChanger.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 17,
+          "line": 16,
+          "path": "Nodes/Reusables/flag landmarks.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 18,
+          "line": 17,
+          "path": "Nodes/Overworld/Objects/Present.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 19,
+          "line": 18,
+          "path": "Tilesets/Interior.tres",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "TileSet"
+        },
+        {
+          "id": 20,
+          "line": 19,
+          "path": "Maps/podunk/Ninten_s room.gd",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 21,
+          "line": 20,
+          "path": "Graphics/Objects/Doors/Door_Dark.png",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 22,
+          "line": 21,
+          "path": "Graphics/Rooms/Podunk/Ninten's House.png",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 23,
+          "line": 22,
+          "path": "Nodes/Reusables/door_npc.tscn",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 24,
+          "line": 23,
+          "path": "Graphics/Objects/Doors/Door_Dark_Locked.png",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 25,
+          "line": 24,
+          "path": "Graphics/Objects/Common/Briefcase.png",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 26,
+          "line": 25,
+          "path": "Scripts/misc/Anim_start.gd",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 27,
+          "line": 26,
+          "path": "Graphics/Tilesets/TilNintensHouse.png",
+          "source": "Maps/podunk/Nintens House.tscn",
+          "type": "Texture"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "380a7cad3d21a89b2ef28b212f34ed192fa69225af977a846a436cc052359db1",
+      "sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
+    },
+    "Nodes/Overworld/Door.tscn": {
+      "bytes": 787,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/Door.gd",
+          "source": "Nodes/Overworld/Door.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Audio/Sound effects/Door_Short.mp3",
+          "source": "Nodes/Overworld/Door.tscn",
+          "type": "AudioStream"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "19393741e95c4c32f41ab832608428a3813044e59f12b3a88929601ff792ae54",
+      "sha256": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e"
+    },
+    "Nodes/Overworld/Ladder.tscn": {
+      "bytes": 442,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/Ladder.gd",
+          "source": "Nodes/Overworld/Ladder.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "c3639ccbb69cb75c8e774be04b094c45eedaad00cedcf0cb22438ac42627c980",
+      "sha256": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d"
+    },
+    "Nodes/Overworld/MusicChanger.tscn": {
+      "bytes": 5532,
+      "external_resources": [],
+      "native_font_payloads": [],
+      "reference_sha256": "36f2e2d82b9f3e0a98d85b85c7d2703ead582584815106fd86018a49590c5618",
+      "sha256": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506"
+    },
+    "Nodes/Overworld/Objects/Openable Door.tscn": {
+      "bytes": 6036,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/Openable Door.gd",
+          "source": "Nodes/Overworld/Objects/Openable Door.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Nodes/Ui/ButtonPrompt.tscn",
+          "source": "Nodes/Overworld/Objects/Openable Door.tscn",
+          "type": "PackedScene"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "34ea899e13b3fd078a2c93978aa38efd7953d8589d5bf271ee0b6832adac627f",
+      "sha256": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331"
+    },
+    "Nodes/Overworld/Objects/Present.tscn": {
+      "bytes": 4510,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Objects/Common/Present Box.png",
+          "source": "Nodes/Overworld/Objects/Present.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Scripts/Main/Present.gd",
+          "source": "Nodes/Overworld/Objects/Present.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Audio/Sound effects/Gift Box.mp3",
+          "source": "Nodes/Overworld/Objects/Present.tscn",
+          "type": "AudioStream"
+        },
+        {
+          "id": 4,
+          "line": 6,
+          "path": "Nodes/Ui/ButtonPrompt.tscn",
+          "source": "Nodes/Overworld/Objects/Present.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 5,
+          "line": 7,
+          "path": "Nodes/Reusables/sprite_data_fetcher.tscn",
+          "source": "Nodes/Overworld/Objects/Present.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 6,
+          "line": 8,
+          "path": "Nodes/Reusables/Effects/Sparkles.tscn",
+          "source": "Nodes/Overworld/Objects/Present.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 7,
+          "line": 9,
+          "path": "Scripts/misc/character_tint.gd",
+          "source": "Nodes/Overworld/Objects/Present.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "33ad2cfb704ff78efd70d1b17c920a6846cd985b8991c465984e5e1854a46b6c",
+      "sha256": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193"
+    },
+    "Nodes/Overworld/camarea.tscn": {
+      "bytes": 466,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/camarea.gd",
+          "source": "Nodes/Overworld/camarea.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "9a263057d37812dda3e63d5a69d495f0c3fe16557a638f66080dbbca14f6e77d",
+      "sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f"
+    },
+    "Nodes/Reusables/CutsceneArea.tscn": {
+      "bytes": 612,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/CutsceneArea.gd",
+          "source": "Nodes/Reusables/CutsceneArea.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "a7f3c0a9444d4ba76b475bbf638200367fc05ece3c0d1693bbe4e035db89032f",
+      "sha256": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b"
+    },
+    "Nodes/Reusables/Effects/Sparkles.tscn": {
+      "bytes": 1712,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Objects/Common/Sparkles.png",
+          "source": "Nodes/Reusables/Effects/Sparkles.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Scripts/misc/sparkles.gd",
+          "source": "Nodes/Reusables/Effects/Sparkles.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "9be75d668b543c6052bcfae7602055718b6f2bbdeb19ab7db1775559b5bb1742",
+      "sha256": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29"
+    },
+    "Nodes/Reusables/character_sprite.tscn": {
+      "bytes": 738,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/character_sprite.gd",
+          "source": "Nodes/Reusables/character_sprite.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Graphics/Character Sprites/Npcs/4dir/woman.png",
+          "source": "Nodes/Reusables/character_sprite.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Nodes/Ui/emotes.tscn",
+          "source": "Nodes/Reusables/character_sprite.tscn",
+          "type": "PackedScene"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "448b52f297a8f946d852c218237828105d5e5ed6093ff53b590bd07cd47c40f5",
+      "sha256": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed"
+    },
+    "Nodes/Reusables/door_npc.tscn": {
+      "bytes": 681,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/door_npc.gd",
+          "source": "Nodes/Reusables/door_npc.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Audio/Sound effects/EB/knock.wav",
+          "source": "Nodes/Reusables/door_npc.tscn",
+          "type": "AudioStream"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "b51e10aa05de5779bc4d0926f722a1ad962079ec23de80f61467ccd31d64a111",
+      "sha256": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2"
+    },
+    "Nodes/Reusables/flag landmarks.tscn": {
+      "bytes": 180,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/Flag Landmarks.gd",
+          "source": "Nodes/Reusables/flag landmarks.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "ae562aab074f73842b9f48a0c6bd4246962872ae54096b7cee49a446ddcf0fa6",
+      "sha256": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699"
+    },
+    "Nodes/Reusables/interact_dialog.tscn": {
+      "bytes": 1337,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/Interact Dialog.gd",
+          "source": "Nodes/Reusables/interact_dialog.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Nodes/Ui/ButtonPrompt.tscn",
+          "source": "Nodes/Reusables/interact_dialog.tscn",
+          "type": "PackedScene"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "145d0b8b1ae9f24ad3538bb695891404db1ac180486474313106fc116869fb6e",
+      "sha256": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799"
+    },
+    "Nodes/Reusables/npc.tscn": {
+      "bytes": 5022,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Nodes/Reusables/sprite_data_fetcher.tscn",
+          "source": "Nodes/Reusables/npc.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Scripts/Main/npc.gd",
+          "source": "Nodes/Reusables/npc.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Scripts/misc/character_tint.gd",
+          "source": "Nodes/Reusables/npc.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 4,
+          "line": 6,
+          "path": "Graphics/Character Sprites/Shadow.png",
+          "source": "Nodes/Reusables/npc.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 5,
+          "line": 7,
+          "path": "Nodes/Ui/ButtonPrompt.tscn",
+          "source": "Nodes/Reusables/npc.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 6,
+          "line": 8,
+          "path": "Nodes/Reusables/character_sprite.tscn",
+          "source": "Nodes/Reusables/npc.tscn",
+          "type": "PackedScene"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "d0ee83b057c22302b96e08d0fd5679f140bf00bba1ceefd6c0a3f82b4808475d",
+      "sha256": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    "Nodes/Reusables/phone.tscn": {
+      "bytes": 4659,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Maps/Testing/phone.gd",
+          "source": "Nodes/Reusables/phone.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Graphics/Character Sprites/Npcs/misc/Phone/main.png",
+          "source": "Nodes/Reusables/phone.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Nodes/Ui/emotes.tscn",
+          "source": "Nodes/Reusables/phone.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 4,
+          "line": 6,
+          "path": "Audio/Sound effects/phonering.wav",
+          "source": "Nodes/Reusables/phone.tscn",
+          "type": "AudioStream"
+        },
+        {
+          "id": 5,
+          "line": 7,
+          "path": "Nodes/Ui/ButtonPrompt.tscn",
+          "source": "Nodes/Reusables/phone.tscn",
+          "type": "PackedScene"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "6fd2791f162c6c42ae8331eb669bab26b1e30b707270c6219fc9c9cb869ec027",
+      "sha256": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626"
+    },
+    "Nodes/Reusables/roomshaker.tscn": {
+      "bytes": 419,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/roomshaker.gd",
+          "source": "Nodes/Reusables/roomshaker.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "59ab904ee73cf9a4e0cf99baee0debbe3d3c2360699c1e567756884d791694f6",
+      "sha256": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea"
+    },
+    "Nodes/Reusables/sprite_data_fetcher.tscn": {
+      "bytes": 186,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/SpriteDataFetcher.gd",
+          "source": "Nodes/Reusables/sprite_data_fetcher.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "d25ce3684afb21aa7e4a2b48ef112c23250bb06ead6f983d6f47eff441f1af30",
+      "sha256": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5"
+    },
+    "Nodes/Reusables/stepping sounds.tscn": {
+      "bytes": 412,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/Stepping Sounds.gd",
+          "source": "Nodes/Reusables/stepping sounds.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "b017f5ec5136493fb1a9c97e8e1cc7f0cd9b60185d828fca269343f022e68fe6",
+      "sha256": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be"
+    },
+    "Nodes/Ui/ButtonPrompt.tscn": {
+      "bytes": 12916,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Fonts/BottleRocket.tres",
+          "source": "Nodes/Ui/ButtonPrompt.tscn",
+          "type": "DynamicFont"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Graphics/UI/select_arrow.png",
+          "source": "Nodes/Ui/ButtonPrompt.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Scripts/UI/Button Prompt.gd",
+          "source": "Nodes/Ui/ButtonPrompt.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 4,
+          "line": 6,
+          "path": "Shaders/Flash.tres",
+          "source": "Nodes/Ui/ButtonPrompt.tscn",
+          "type": "Material"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "14f440f7543a5b1964f4ae011cbfe95d8663397d5c49d2cc5c41cab80878f053",
+      "sha256": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c"
+    },
+    "Nodes/Ui/effects/melodyBG.gd": {
+      "bytes": 1490,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b"
+    },
+    "Nodes/Ui/effects/melodyBG.tscn": {
+      "bytes": 3230,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/UI/melody bg.png",
+          "source": "Nodes/Ui/effects/melodyBG.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Nodes/Ui/effects/melodyBG.gd",
+          "source": "Nodes/Ui/effects/melodyBG.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Shaders/Distortionator.shader",
+          "source": "Nodes/Ui/effects/melodyBG.tscn",
+          "type": "Shader"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "7f93c69c7207dd0cb154768227d4f6faf410806d32f685aeb5404c2d10b62aa4",
+      "sha256": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9"
+    },
+    "Nodes/Ui/emotes.tscn": {
+      "bytes": 10847,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Other/emotes/emotes.png",
+          "source": "Nodes/Ui/emotes.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Audio/Sound effects/Shock.mp3",
+          "source": "Nodes/Ui/emotes.tscn",
+          "type": "AudioStream"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Audio/Sound effects/Laugh Small.mp3",
+          "source": "Nodes/Ui/emotes.tscn",
+          "type": "AudioStream"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "8115009d8c898bbff32ff7ae8f92eff56f8e736d690b748d21ab56e993ab07a9",
+      "sha256": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb"
+    },
+    "Scripts/Main/CutsceneArea.gd": {
+      "bytes": 1117,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
+    },
+    "Scripts/Main/Door.gd": {
+      "bytes": 2487,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08"
+    },
+    "Scripts/Main/Flag Landmarks.gd": {
+      "bytes": 398,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5"
+    },
+    "Scripts/Main/Interact Dialog.gd": {
+      "bytes": 1463,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
+    },
+    "Scripts/Main/Ladder.gd": {
+      "bytes": 219,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519"
+    },
+    "Scripts/Main/Openable Door.gd": {
+      "bytes": 4763,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
+    },
+    "Scripts/Main/Present.gd": {
+      "bytes": 1214,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
+    },
+    "Scripts/Main/SpriteDataFetcher.gd": {
+      "bytes": 1617,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9"
+    },
+    "Scripts/Main/Stepping Sounds.gd": {
+      "bytes": 1035,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
+    },
+    "Scripts/Main/camarea.gd": {
+      "bytes": 2130,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"
+    },
+    "Scripts/Main/character_sprite.gd": {
+      "bytes": 8819,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498"
+    },
+    "Scripts/Main/door_npc.gd": {
+      "bytes": 2156,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f"
+    },
+    "Scripts/Main/npc.gd": {
+      "bytes": 12017,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86"
+    },
+    "Scripts/Main/roomshaker.gd": {
+      "bytes": 1125,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005"
+    },
+    "Scripts/UI/Button Prompt.gd": {
+      "bytes": 2882,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2"
+    },
+    "Scripts/debug/DebugStartPos.gd": {
+      "bytes": 326,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7"
+    },
+    "Scripts/misc/Anim_start.gd": {
+      "bytes": 172,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11"
+    },
+    "Scripts/misc/character_tint.gd": {
+      "bytes": 625,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744"
+    },
+    "Scripts/misc/sparkles.gd": {
+      "bytes": 77,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
+    },
+    "Shaders/Distortionator.shader": {
+      "bytes": 7460,
+      "sha256": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c"
+    },
+    "Shaders/Flash.tres": {
+      "bytes": 770,
+      "external_resources": [],
+      "native_font_payloads": [],
+      "reference_sha256": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "sha256": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e"
+    },
+    "Tilesets/Interior.tres": {
+      "bytes": 106653,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Tilesets/TilPodunkInteriors.png",
+          "source": "Tilesets/Interior.tres",
+          "type": "Texture"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3",
+      "sha256": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+    }
+  },
+  "game_version": "0.4.1.0",
+  "native_compatible": false,
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "schema": 1,
+  "scope": "native serialized scene data only; script behavior NOT executed",
+  "script_attachments": [
+    {
+      "declaration": "script = ExtResource( 20 )",
+      "line": 359,
+      "node_declaration": "[node name=\"Ninten\\'s House\" type=\"Node2D\"]",
+      "script": "Maps/podunk/Ninten_s room.gd",
+      "source": "Maps/podunk/Nintens House.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 367,
+      "node_declaration": "[node name=\"DebugStartPos\" type=\"Position2D\" parent=\".\"]",
+      "script": "Scripts/debug/DebugStartPos.gd",
+      "source": "Maps/podunk/Nintens House.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 26 )",
+      "line": 818,
+      "node_declaration": "[node name=\"AnimationPlayer\" type=\"AnimationPlayer\" parent=\".\"]",
+      "script": "Scripts/misc/Anim_start.gd",
+      "source": "Maps/podunk/Nintens House.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 12,
+      "node_declaration": "[node name=\"Door NPC\" type=\"Area2D\"]",
+      "script": "Scripts/Main/door_npc.gd",
+      "source": "Nodes/Reusables/door_npc.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 102,
+      "node_declaration": "[node name=\"Present\" type=\"Sprite\"]",
+      "script": "Scripts/Main/Present.gd",
+      "source": "Nodes/Overworld/Objects/Present.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 7 )",
+      "line": 150,
+      "node_declaration": "[node name=\"CharacterTint\" type=\"Node\" parent=\".\"]",
+      "script": "Scripts/misc/character_tint.gd",
+      "source": "Nodes/Overworld/Objects/Present.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 40,
+      "node_declaration": "[node name=\"Sparkles\" type=\"AnimatedSprite\"]",
+      "script": "Scripts/misc/sparkles.gd",
+      "source": "Nodes/Reusables/Effects/Sparkles.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 6,
+      "node_declaration": "[node name=\"SpriteDataFetcher\" type=\"Node\"]",
+      "script": "Scripts/Main/SpriteDataFetcher.gd",
+      "source": "Nodes/Reusables/sprite_data_fetcher.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 3 )",
+      "line": 458,
+      "node_declaration": "[node name=\"ButtonPrompt\" type=\"Node2D\"]",
+      "script": "Scripts/UI/Button Prompt.gd",
+      "source": "Nodes/Ui/ButtonPrompt.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 6,
+      "node_declaration": "[node name=\"Flag Landmark\" type=\"YSort\"]",
+      "script": "Scripts/Main/Flag Landmarks.gd",
+      "source": "Nodes/Reusables/flag landmarks.tscn"
+    },
+    {
+      "declaration": "script = SubResource( 3 )",
+      "embedded_script": {
+        "embedded_declaration": "[sub_resource type=\"GDScript\" id=3]\nscript/source = \"extends Node2D\n\nexport (String) var music = \\\"\\\"\nexport (String) var loop = \\\"\\\"\nexport var appear_flag = \\\"\\\"\nexport var disappear_flag = \\\"\\\"\nexport (bool) var diegetic = false\nexport (int) var volume_db = 0\nexport var fadein_length = 1\nexport var fadeout_length = 1.5\nexport var disabled = false\nvar attached_player = null\nvar player_inside = false\n\nfunc _ready():\n\tget_child(0).disabled = disabled\n\nfunc _on_Area2D_body_entered(body):\n\tif body == global.get_player() and !uiManager.is_in_cutscene() and !uiManager.is_in_battle() and _check_flags():\n\t\tplayer_inside = true\n\t\tif !self in audioManager.musicChangers:\n\t\t\taudioManager.musicChangers.append(self)\n\t\t\tplay_music()\n\nfunc _on_MusicArea_body_exited(body):\n\tif body == global.get_player() and body.has_collisions() and !uiManager.is_in_cutscene():\n\t\tplayer_inside = false\n\t\tcheck_player_and_stop()\n\nfunc play_music():\n\tif !player_inside:\n\t\tplayer_inside = true\n\tif !self in audioManager.musicChangers:\n\t\taudioManager.musicChangers.append(self)\n\tif get_tree().is_connected(\\\"idle_frame\\\", self, \\\"play_music\\\"):\n\t\tget_tree().disconnect(\\\"idle_frame\\\", self, \\\"play_music\\\")\n\tvar same_song = false\n\tvar music_player = audioManager.get_latest_audio_player_index()\n\t#To check if the music area the player is going into has the same loop and song as the one the player was in before\n\t#Music Changers are Music Areas\n\tif audioManager.musicChangers[0] != self:\n\t\tif music != \\\"\\\":\n\t\t\tif audioManager.musicChangers[0].music == music or audioManager.get_audio_player_from_song(music):\n\t\t\t\tsame_song = true\n\t\t\t\tif audioManager.get_audio_player_from_song(music):\n\t\t\t\t\tmusic_player = audioManager.get_audio_player_index(audioManager.get_audio_player_from_song(music))\n\t\tif loop != \\\"\\\":\n\t\t\tif audioManager.musicChangers[0].loop == loop or audioManager.get_audio_player_from_song(loop):\n\t\t\t\tsame_song = true\n\t\t\t\tif audioManager.get_audio_player_from_song(loop):\n\t\t\t\t\tmusic_player = audioManager.get_audio_player_index(audioManager.get_audio_player_from_song(loop))\n\t#Otherwise it's different\n\telse:\n\t\tif music != \\\"\\\":\n\t\t\tif audioManager.get_audio_player(music_player).stream == load(\\\"res://Audio/Music/\\\" + music):\n\t\t\t\tsame_song = true\n\t\tif loop != \\\"\\\":\n\t\t\tif audioManager.get_audio_player(music_player).stream == load(\\\"res://Audio/Music/\\\" + loop):\n\t\t\t\tsame_song = true\n\tif !same_song and audioManager.get_audio_player(audioManager.get_latest_audio_player_index()).playing: #Checks if it isn't the same song playing\n\t\taudioManager.add_audio_player()\n\t\tvar start = 0\n\t\tmusic_player = audioManager.get_latest_audio_player_index()\n\t\tattached_player = audioManager.get_audio_player(music_player)\n\t\tif diegetic:\n\t\t\tstart = audioManager.get_audio_player(0).get_playback_position()\n\t\taudioManager.set_audio_player_volume(music_player, audioManager.SILENT_SOUND_THRESHOLD)\n\t\taudioManager.music_fadein(music_player, volume_db, fadein_length)\n\t\taudioManager.play_music(music, loop, music_player, start)\n\t\t\n\telse:\n\t\tvar was_playing = true\n\t\t#music_player = audioManager.get_latest_audio_player_index()\n\t\tif !audioManager.get_audio_player(music_player).playing or audioManager.get_audio_player(music_player).volume_db <= audioManager.SILENT_SOUND_THRESHOLD:\n\t\t\twas_playing = false\n\t\tif was_playing:\n\t\t\tattached_player = audioManager.get_audio_player(music_player)\n\t\t\taudioManager.music_fadeto(music_player, volume_db)\n\t\telse:\n\t\t\tattached_player = audioManager.get_audio_player(music_player)\n\t\t\taudioManager.play_music(music, loop, music_player)\n\t\t\taudioManager.set_audio_player_volume(music_player, volume_db)\n\nfunc check_player_and_stop():\n\tyield(get_tree(), \\\"idle_frame\\\")\n\tif !player_inside:\n\t\tstop_music(fadeout_length)\n\nfunc stop_music(fadeoutLength = 1.5):\n\tif self in audioManager.musicChangers:\n\t\taudioManager.musicChangers.erase(self)\n\tif attached_player != null:\n\t\tvar same_song = false\n\t\tvar music_player = audioManager.get_audio_player_index(attached_player)\n\t\tif audioManager.musicChangers.size() > 0:\n\t\t\tif music != \\\"\\\":\n\t\t\t\tif audioManager.get_audio_player_from_song(music, self) != null:\n\t\t\t\t\tmusic_player = audioManager.get_audio_player_index(audioManager.get_audio_player_from_song(music, self))\n\t\t\t\t\tsame_song = true\n\t\t\tif loop != \\\"\\\":\n\t\t\t\tif audioManager.get_audio_player_from_song(loop, self) != null:\n\t\t\t\t\tmusic_player = audioManager.get_audio_player_index(audioManager.get_audio_player_from_song(loop, self))\n\t\t\t\t\tsame_song = true\n\t\t\tif diegetic:\n\t\t\t\tsame_song = false\n\t\tif music_player != -1 and !same_song:\n\t\t\tif fadeoutLength == 0:\n\t\t\t\taudioManager.stop_audio_player(music_player)\n\t\t\telse:\n\t\t\t\taudioManager.music_fadeout(music_player, fadeoutLength)\n\t\tattached_player = null\n\nfunc stop_music_immediately():\n\tstop_music(0)\n\nfunc set_disabled(value):\n\tget_child(0).disabled = value\n\nfunc _check_flags():\n\treturn globaldata.check_appear_disappear_flags(appear_flag, disappear_flag)\n\nfunc _on_MusicArea_tree_exiting():\n\tif self in audioManager.musicChangers:\n\t\tstop_music(fadeout_length)\n\"\n__meta__ = {\n\"Scene_Path\": \"res://Nodes/Overworld/MusicChanger.tscn\"\n}\n\n",
+        "line": 3,
+        "path": "Nodes/Overworld/MusicChanger.tscn::3",
+        "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b",
+        "source": "Nodes/Overworld/MusicChanger.tscn"
+      },
+      "line": 137,
+      "node_declaration": "[node name=\"MusicArea\" type=\"Area2D\"]",
+      "script": "Nodes/Overworld/MusicChanger.tscn::3",
+      "source": "Nodes/Overworld/MusicChanger.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 125,
+      "node_declaration": "[node name=\"Phone\" type=\"Sprite\"]",
+      "script": "Maps/Testing/phone.gd",
+      "source": "Nodes/Reusables/phone.tscn"
+    },
+    {
+      "declaration": "script = SubResource( 6 )",
+      "embedded_script": {
+        "embedded_declaration": "[sub_resource type=\"GDScript\" id=6]\nscript/source = \"extends Sprite\n\nexport (NodePath) var objectPath\n\nonready var animaPlayer = $AnimationPlayer\nonready var object = get_node_or_null(objectPath)\n\nfunc _on_AnimationPlayer_animation_started(anim_name):\n\tif anim_name in [\\\"sweat\\\", \\\"angry\\\"]:\n\t\tvar direction\n\t\tvar emotive_parent := get_parent()\n\t\twhile !emotive_parent.has_method(\\\"get_direction\\\"):\n\t\t\temotive_parent = emotive_parent.get_parent()\n\t\tif emotive_parent.has_method(\\\"get_direction\\\"):\n\t\t\tdirection = emotive_parent.get_direction()\n\t\tif direction.x < 0:\n\t\t\tscale.x = -1\n\telse:\n\t\tscale.x = 1\n\nfunc set_bubble_offset():\n\tposition.y = -(object.texture.get_height() / object.vframes + 8)\n\t#print(position.y)\n\"\n__meta__ = {\n\"Scene_Path\": \"res://Nodes/Ui/emotes.tscn\"\n}\n\n",
+        "line": 7,
+        "path": "Nodes/Ui/emotes.tscn::6",
+        "sha256": "472089970f9b1e3fb2fab75b0ab357ec438550e3c58b5f2391ab3b06bfc5afb0",
+        "source": "Nodes/Ui/emotes.tscn"
+      },
+      "line": 373,
+      "node_declaration": "[node name=\"emotes\" type=\"Sprite\"]",
+      "script": "Nodes/Ui/emotes.tscn::6",
+      "source": "Nodes/Ui/emotes.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 34,
+      "node_declaration": "[node name=\"interact_dialog\" type=\"Area2D\"]",
+      "script": "Scripts/Main/Interact Dialog.gd",
+      "source": "Nodes/Reusables/interact_dialog.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 14,
+      "node_declaration": "[node name=\"Door\" type=\"Area2D\"]",
+      "script": "Scripts/Main/Door.gd",
+      "source": "Nodes/Overworld/Door.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 161,
+      "node_declaration": "[node name=\"Openable Door\" type=\"Sprite\"]",
+      "script": "Scripts/Main/Openable Door.gd",
+      "source": "Nodes/Overworld/Objects/Openable Door.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 50,
+      "node_declaration": "[node name=\"npc\" type=\"KinematicBody2D\"]",
+      "script": "Scripts/Main/npc.gd",
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 3 )",
+      "line": 140,
+      "node_declaration": "[node name=\"CharacterTint\" type=\"Node\" parent=\".\"]",
+      "script": "Scripts/misc/character_tint.gd",
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 13,
+      "node_declaration": "[node name=\"CharacterSprite\" type=\"Sprite\"]",
+      "script": "Scripts/Main/character_sprite.gd",
+      "source": "Nodes/Reusables/character_sprite.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 12,
+      "node_declaration": "[node name=\"Cutscene Area\" type=\"Area2D\"]",
+      "script": "Scripts/Main/CutsceneArea.gd",
+      "source": "Nodes/Reusables/CutsceneArea.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 8,
+      "node_declaration": "[node name=\"Room Shaker\" type=\"Control\"]",
+      "script": "Scripts/Main/roomshaker.gd",
+      "source": "Nodes/Reusables/roomshaker.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 9,
+      "node_declaration": "[node name=\"camarea\" type=\"Area2D\"]",
+      "script": "Scripts/Main/camarea.gd",
+      "source": "Nodes/Overworld/camarea.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 80,
+      "node_declaration": "[node name=\"melodyBG\" type=\"YSort\"]",
+      "script": "Nodes/Ui/effects/melodyBG.gd",
+      "source": "Nodes/Ui/effects/melodyBG.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 8,
+      "node_declaration": "[node name=\"Ladder\" type=\"Area2D\"]",
+      "script": "Scripts/Main/Ladder.gd",
+      "source": "Nodes/Overworld/Ladder.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 8,
+      "node_declaration": "[node name=\"Stepping Sounds\" type=\"Area2D\"]",
+      "script": "Scripts/Main/Stepping Sounds.gd",
+      "source": "Nodes/Reusables/stepping sounds.tscn"
+    }
+  ],
+  "signal_connections": [
+    {
+      "declaration": "[connection signal=\"animation_finished\" from=\"AnimationPlayer\" to=\".\" method=\"_on_AnimationPlayer_animation_finished\"]",
+      "line": 960,
+      "source": "Maps/podunk/Nintens House.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\".\" to=\".\" method=\"_on_Door_NPC_body_entered\"]",
+      "line": 22,
+      "source": "Nodes/Reusables/door_npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"animation_finished\" from=\"AnimationPlayer\" to=\".\" method=\"_on_AnimationPlayer_animation_finished\"]",
+      "line": 494,
+      "source": "Nodes/Ui/ButtonPrompt.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\".\" to=\".\" method=\"_on_Area2D_body_entered\"]",
+      "line": 142,
+      "source": "Nodes/Overworld/MusicChanger.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\".\" to=\".\" method=\"_on_MusicArea_body_exited\"]",
+      "line": 143,
+      "source": "Nodes/Overworld/MusicChanger.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"tree_exiting\" from=\".\" to=\".\" method=\"_on_MusicArea_tree_exiting\"]",
+      "line": 144,
+      "source": "Nodes/Overworld/MusicChanger.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"animation_started\" from=\"AnimationPlayer\" to=\".\" method=\"_on_AnimationPlayer_animation_started\"]",
+      "line": 395,
+      "source": "Nodes/Ui/emotes.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\".\" to=\".\" method=\"_on_Door_body_entered\"]",
+      "line": 27,
+      "source": "Nodes/Overworld/Door.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\"Area2D\" to=\".\" method=\"_on_Area2D_body_entered\"]",
+      "line": 221,
+      "source": "Nodes/Overworld/Objects/Openable Door.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\"Area2D\" to=\".\" method=\"_on_Area2D_body_exited\"]",
+      "line": 222,
+      "source": "Nodes/Overworld/Objects/Openable Door.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"Timer\" to=\".\" method=\"_on_Timer_timeout\"]",
+      "line": 223,
+      "source": "Nodes/Overworld/Objects/Openable Door.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"tree_exiting\" from=\".\" to=\".\" method=\"_on_npc_tree_exiting\"]",
+      "line": 143,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\"NearPlayerArea\" to=\".\" method=\"_on_NearPlayerArea_body_entered\"]",
+      "line": 144,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\"NearPlayerArea\" to=\".\" method=\"_on_NearPlayerArea_body_exited\"]",
+      "line": 145,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\"ViewArea\" to=\".\" method=\"_on_ViewArea_body_entered\"]",
+      "line": 146,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\"ViewArea\" to=\".\" method=\"_on_ViewArea_body_exited\"]",
+      "line": 147,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"WanderRadius/Timer\" to=\".\" method=\"_on_Timer_timeout\"]",
+      "line": 148,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"screen_entered\" from=\"VisibilityNotifier2D\" to=\".\" method=\"_on_VisibilityNotifier2D_screen_entered\"]",
+      "line": 149,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"screen_exited\" from=\"VisibilityNotifier2D\" to=\".\" method=\"_on_VisibilityNotifier2D_screen_exited\"]",
+      "line": 150,
+      "source": "Nodes/Reusables/npc.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"sprite_changed\" from=\".\" to=\"emotes\" method=\"set_bubble_offset\"]",
+      "line": 21,
+      "source": "Nodes/Reusables/character_sprite.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\".\" to=\".\" method=\"_on_Cutscene_Area_body_entered\"]",
+      "line": 18,
+      "source": "Nodes/Reusables/CutsceneArea.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\".\" to=\".\" method=\"_on_Cutscene_Area_body_exited\"]",
+      "line": 19,
+      "source": "Nodes/Reusables/CutsceneArea.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"Timer\" to=\".\" method=\"_on_Timer_timeout\"]",
+      "line": 15,
+      "source": "Nodes/Reusables/roomshaker.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\".\" to=\".\" method=\"_on_camarea_body_entered\"]",
+      "line": 13,
+      "source": "Nodes/Overworld/camarea.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\".\" to=\".\" method=\"_on_camarea_body_exited\"]",
+      "line": 14,
+      "source": "Nodes/Overworld/camarea.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\".\" to=\".\" method=\"_on_Ladder_body_entered\"]",
+      "line": 12,
+      "source": "Nodes/Overworld/Ladder.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\".\" to=\".\" method=\"_on_Ladder_body_exited\"]",
+      "line": 13,
+      "source": "Nodes/Overworld/Ladder.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_entered\" from=\".\" to=\".\" method=\"_on_Stepping_Sounds_body_entered\"]",
+      "line": 10,
+      "source": "Nodes/Reusables/stepping sounds.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"body_exited\" from=\".\" to=\".\" method=\"_on_Stepping_Sounds_body_exited\"]",
+      "line": 11,
+      "source": "Nodes/Reusables/stepping sounds.tscn"
+    }
+  ],
+  "tools": {
+    "tools/godot_exporter/import_plugin.gd": "8a0ba75521db1cb1e89c200228ea8143477cde215e755da0efc844d6f27cd07b",
+    "tools/godot_exporter/scene_data.gd": "6a8e39ca9aca3aec0a06618adfa74fed28e69085015af4fe6929991c2d63edba",
+    "tools/scene_reference.py": "f6baf629675eb414bfcce269af4b54c34621c91e798648b3ca5fa948fe258723"
+  }
+}

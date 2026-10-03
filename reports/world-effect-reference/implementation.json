@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "files": {
+    "tools/world_effect_assets.py": "66128ba098d9b00cb7444c80c210893db6aba806aeb35192befd22672b86a8b0",
+    "tests/world_effect_reference.py": "f89e57b2287ead2de203f9ded3c1b6e2d9bc1fee0aea5baab3cd83d44a5b8cb5",
+    "tests/world_effect_timing_reference.py": "3d43e869c7e2604ca8c904d3fee8a805a155cefd77acfaa0d6ff083ceaefdef3",
+    "tests/world_effect_compare_reference.py": "453b2152340946e5c300ba8b82a873fd7b47d61bf0a89512a3a5a726ee8a225e",
+    "include/encore/world_effect_data.hpp": "046397dbb1644115543d8189eac21a45410c05024395771fea3288c6d0450781",
+    "include/encore/world_effect.hpp": "17356438c613aaea0a13e04cca86b5a467c0c3e6b92ea8077d312fe97deded96",
+    "runtime/world_effect_data.cpp": "c9e0d0540433ffec1753bfafd4a2c3d25e38bb8903a4c7211b6f6ae08c3b9799",
+    "runtime/world_effect.cpp": "6d189dc99ea74b7dcb5eb47d524b1087e21f7dfab324f70cb27ef26eaf0c18c3",
+    "platform/ctr/world_effect_renderer.hpp": "35b70746425a8cb614abc0d64e443730588977908a20130a11a78ceae2612446",
+    "content/native-world-effect.json": "3c768a5a89d51886180f80c7898472d1d0c56175b5798e3ef4ae979cf30bb4cd",
+    "romfs/world-effect/melody.encfx": "ae1f08e6f07fca9d27e488f77e734156bdcff92e377b1787be3168488156a463"
+  }
+}

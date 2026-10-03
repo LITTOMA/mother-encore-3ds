@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "checked_on": "2026-10-03",
+  "files": [
+    {
+      "file": "COPYING.NEWLIB",
+      "sha256": "9a59b4ee3af067045fe0ea78786201c42d54756fe48cbccf44f3dfc398474717",
+      "source_url": "https://sourceware.org/newlib/COPYING.NEWLIB",
+      "source_revision": null,
+      "scope": "newlib runtime copyright compilation; linked SDK correspondence unverified",
+      "verification": "retained existing archive; source URL from original license index"
+    },
+    {
+      "file": "COPYING.RUNTIME",
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+      "source_url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-16.1.0/COPYING.RUNTIME",
+      "source_revision": "releases/gcc-16.1.0",
+      "scope": "GCC Runtime Library Exception 3.1",
+      "verification": "retained existing archive; source URL from original license index"
+    },
+    {
+      "file": "COPYING3",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "source_url": "https://raw.githubusercontent.com/gcc-mirror/gcc/releases/gcc-16.1.0/COPYING3",
+      "source_revision": "releases/gcc-16.1.0",
+      "scope": "GCC GPLv3 text; match the actual toolchain separately",
+      "verification": "retained existing archive; source URL from original license index"
+    },
+    {
+      "file": "Godot-3.6.2-LICENSE.txt",
+      "sha256": "b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80",
+      "source_url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/LICENSE.txt",
+      "source_revision": "3.6.2-stable",
+      "scope": "Godot-derived mechanisms: MIT",
+      "verification": "retained existing archive"
+    },
+    {
+      "file": "MOTHER-Encore-0.4.1.0-LICENSE.txt",
+      "sha256": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "source_url": "https://raw.githubusercontent.com/motherencore/MOTHER-Encore-Source-Code/7d9246600fffe518408f5830d4848635019005a3/LICENSE",
+      "source_revision": "7d9246600fffe518408f5830d4848635019005a3",
+      "scope": "upstream code declaration and game-related asset terms",
+      "verification": "unchanged bytes match pinned upstream LICENSE"
+    },
+    {
+      "file": "PCG-APACHE-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source_url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+      "source_revision": null,
+      "scope": "PCG portions: Apache-2.0",
+      "verification": "retained existing full license"
+    },
+    {
+      "file": "PCG-NOTICE.txt",
+      "sha256": "d12c978b68794f0ae8f8b43c2b5491e0c3ab4480351ad10d27eabaf964f4a26d",
+      "source_url": "https://github.com/godotengine/godot/blob/3.6.2-stable/thirdparty/misc/pcg.cpp",
+      "source_revision": "3.6.2-stable",
+      "scope": "PCG attribution and local adaptation description",
+      "verification": "project-authored provenance notice; not an official downloaded source file"
+    },
+    {
+      "file": "citro2d-1.7.0-LICENSE.txt",
+      "sha256": "852711e22394a8ccc0487b8179774d15e4fed72a994c1a6fb2993b2279984bde",
+      "source_url": "https://raw.githubusercontent.com/devkitPro/citro2d/v1.7.0/LICENSE",
+      "source_revision": "v1.7.0",
+      "scope": "Citro2D: zlib",
+      "verification": "retained existing archive; source URL from original license index"
+    },
+    {
+      "file": "citro3d-1.7.1-LICENSE.txt",
+      "sha256": "4d8db8e7270929946a3439aef932e37c7356a83391e56006439087e1d685809d",
+      "source_url": "https://raw.githubusercontent.com/devkitPro/citro3d/v1.7.1/LICENSE",
+      "source_revision": "v1.7.1",
+      "scope": "Citro3D: zlib",
+      "verification": "retained existing archive; source URL from original license index"
+    },
+    {
+      "file": "libctru-2.7.0-README.txt",
+      "sha256": "6ca781f919d70afba6206e61415ac8bd003adce37fc08c10d8367c9114c77fd0",
+      "source_url": "https://raw.githubusercontent.com/devkitPro/libctru/v2.7.0/README.md",
+      "source_revision": "v2.7.0",
+      "scope": "libctru: zlib in README",
+      "verification": "retained existing archive; source URL from original license index"
+    },
+    {
+      "file": "Fusion-Pixel-LICENSE-OFL.txt",
+      "sha256": "bc518cf64b8032c07690f33cc270c35c179255a6ac8efa7c165ebae7e8f76a63",
+      "source_url": "https://raw.githubusercontent.com/TakWolf/fusion-pixel-font/8ba7717c18a4023ac2162694aad10af72ebd9356/LICENSE-OFL",
+      "source_revision": "8ba7717c18a4023ac2162694aad10af72ebd9356",
+      "scope": "Fusion Pixel font portions: SIL OFL-1.1; pinned TTF RFN retained separately",
+      "verification": "official download on 2026-10-03, unchanged bytes"
+    },
+    {
+      "file": "Galmuri-LICENSE-OFL.md",
+      "sha256": "9a9e5a342c430c3fcf01a408b680f4405d5bf4ac659c931be35f8a1b27ea69c9",
+      "source_url": "https://raw.githubusercontent.com/quiple/galmuri/71e1cacf1437a11220307120e63e30bc275312d4/ofl.md",
+      "source_revision": "71e1cacf1437a11220307120e63e30bc275312d4",
+      "scope": "Galmuri font portions: SIL OFL-1.1; mixed-origin portions separately reviewed",
+      "verification": "official download on 2026-10-03, unchanged bytes"
+    },
+    {
+      "file": "CMake-3.31.10-Copyright.txt",
+      "sha256": "0676e30827684487aa0ea8f72f01e9460a6320fa34a2888df0ad1dd3e8a06eb8",
+      "source_url": "https://raw.githubusercontent.com/Kitware/CMake/v3.31.10/Copyright.txt",
+      "source_revision": "v3.31.10",
+      "scope": "CMake 3.31.10: BSD-3-Clause license archive",
+      "verification": "official download on 2026-10-03, unchanged bytes"
+    }
+  ]
+}

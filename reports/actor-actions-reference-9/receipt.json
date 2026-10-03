@@ -1,0 +1,14 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "emulator": "not run",
+  "engine_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "fixture_sha256": "75775e26f711be8cecf3eb0ac6fed216fc3a35b4df5e5057a7bf808be6bdd145",
+  "hardware": "not run",
+  "reference_sha256": "78bfcd87f619d9486db4641909afe53d55ff06f1bf8376287ce3221ec5c21d29",
+  "scope": "lamp_attack Actor replacement free position movement, timed turn_to, default jumps, finite x shakes, Lamp Idle/Open, Ninten idle direction and surprise emote; isolated engine functions, not full actors or game",
+  "tools_sha256": {
+    "tools/godot_exporter/actor_actions_probe.gd": "e9da6f8c70f29083b795f061071754204d5e8e2fbc153ad3b08afa580c9dd3d3",
+    "tools/godot_exporter/actor_actions_wrapper.gd": "5622478f4129367bd655b710e1a18eca1fff9710c8dd4a247e40760dd9c279ce",
+    "tools/reference_actor_actions.py": "d0de7b8e489a80589a7567650661d6e9d8e761b631f758d4927eef50a46aaeeb"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1.2.2",
+  "url": "https://github.com/Epicpkmn11/bannertool/releases/download/v1.2.2/bannertool.zip",
+  "archive_sha256": "e4259c08fe8944ebadd5f4b96f9a8603e5427338074cfc46323fbbc3410d51ed",
+  "binary_sha256": "f1f73965c5154392fe29868d0fbad5da74c8f53fd30eeeca04c803f00b083125",
+  "verification": "Archive matches digest pinned in incoming HANDOFF.md; not an independently published signed digest",
+  "internal_version_banner": "bannertool v1.2.0",
+  "dependency_check": "ldd resolves all dynamic dependencies"
+}

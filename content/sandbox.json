@@ -1,0 +1,218 @@
+{
+  "format": 1,
+  "rules": 1,
+  "family": 1162739713,
+  "required_capabilities": 15,
+  "start": {
+    "map": "test_yard",
+    "x": 56,
+    "y": 88
+  },
+  "flags": [
+    {
+      "key": "met_guide",
+      "id": 5001
+    }
+  ],
+  "maps": [
+    {
+      "key": "test_yard",
+      "id": 1001,
+      "title": "Integration yard",
+      "tiles": [
+        "####################",
+        "#..................#",
+        "#..###.............#",
+        "#..###.............#",
+        "#..................#",
+        "#..................#",
+        "#........##........#",
+        "#........##........#",
+        "#..................#",
+        "#..................#",
+        "####################"
+      ],
+      "objects": [
+        {
+          "id": 2001,
+          "kind": "guide",
+          "name": "Guide",
+          "x": 88,
+          "y": 88,
+          "program": "guide"
+        },
+        {
+          "id": 2002,
+          "kind": "terminal",
+          "name": "Training",
+          "x": 216,
+          "y": 88,
+          "program": "training"
+        },
+        {
+          "id": 2003,
+          "kind": "door",
+          "name": "Test door",
+          "x": 280,
+          "y": 136,
+          "program": "enter"
+        }
+      ]
+    },
+    {
+      "key": "test_room",
+      "id": 1002,
+      "title": "Second room",
+      "tiles": [
+        "####################",
+        "#..................#",
+        "#..................#",
+        "#....####..........#",
+        "#....#..#..........#",
+        "#..................#",
+        "#....####..........#",
+        "#..................#",
+        "#..................#",
+        "#..................#",
+        "####################"
+      ],
+      "objects": [
+        {
+          "id": 2004,
+          "kind": "door",
+          "name": "Return",
+          "x": 56,
+          "y": 88,
+          "program": "leave"
+        },
+        {
+          "id": 2005,
+          "kind": "sign",
+          "name": "Notice",
+          "x": 216,
+          "y": 136,
+          "program": "notice"
+        }
+      ]
+    }
+  ],
+  "programs": [
+    {
+      "key": "guide",
+      "id": 3001,
+      "code": [
+        {
+          "op": "IF_FLAG",
+          "flag": "met_guide",
+          "value": true,
+          "target": "again"
+        },
+        {
+          "op": "SAY",
+          "text": "Welcome! This is a C++ engine test.\nNo original game content is included."
+        },
+        {
+          "op": "SET_FLAG",
+          "flag": "met_guide",
+          "value": true
+        },
+        {
+          "op": "SAY",
+          "text": "Try the terminal for a test battle.\nThe blue door leads to another room."
+        },
+        {
+          "op": "END"
+        },
+        {
+          "label": "again"
+        },
+        {
+          "op": "SAY",
+          "text": "Your story flag survived!\nX saves and Y loads while idle."
+        },
+        {
+          "op": "END"
+        }
+      ]
+    },
+    {
+      "key": "training",
+      "id": 3002,
+      "code": [
+        {
+          "op": "SAY",
+          "text": "Training battle: A attacks, B leaves.\nThese are fixture rules, not Encore rules."
+        },
+        {
+          "op": "BATTLE",
+          "enemy": "target"
+        },
+        {
+          "op": "SAY",
+          "text": "Returned from the training battle.\nThe story VM resumed correctly."
+        },
+        {
+          "op": "END"
+        }
+      ]
+    },
+    {
+      "key": "enter",
+      "id": 3003,
+      "code": [
+        {
+          "op": "WAIT",
+          "ticks": 12
+        },
+        {
+          "op": "TELEPORT",
+          "map": "test_room",
+          "x": 88,
+          "y": 88
+        },
+        {
+          "op": "END"
+        }
+      ]
+    },
+    {
+      "key": "leave",
+      "id": 3004,
+      "code": [
+        {
+          "op": "TELEPORT",
+          "map": "test_yard",
+          "x": 264,
+          "y": 136
+        },
+        {
+          "op": "END"
+        }
+      ]
+    },
+    {
+      "key": "notice",
+      "id": 3005,
+      "code": [
+        {
+          "op": "SAY",
+          "text": "Content is compiled separately.\nUnknown opcodes must fail the build."
+        },
+        {
+          "op": "END"
+        }
+      ]
+    }
+  ],
+  "enemies": [
+    {
+      "key": "target",
+      "id": 4001,
+      "name": "Training target",
+      "hp": 24,
+      "attack": 4,
+      "defense": 1,
+      "reward": 10
+    }
+  ]
+}

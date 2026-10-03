@@ -1,0 +1,16 @@
+{
+  "scope": "focused Doll actor additions and unchanged Lamp actor regression",
+  "sha256": {
+    "include/encore/actor_actions.hpp": "c66b50f87d2040cbaa86fd472bdc99f5e3caf7969850a1d3ce3c7974b9b2e559",
+    "runtime/actor_actions.cpp": "57319385116a0f4c0d46ef7ad8b791f9105b1d209aa49d909bf3f267c8a9f6da",
+    "tests/doll_actor_actions_tests.cpp": "42595e01c36fd671ecdbb9d3c2661239c3bf1a73f788832b6aab980e0f4f7692",
+    "tests/fixtures/doll_actor_actions_v0410.hpp": "3130ba9a79ed3611fa6eb2174ea8531c1d5337eda02786e39d8361451827fdcf",
+    "tests/test_doll_actor_actions_reference.py": "8bdfb2e0ed394ab5c5fa054997efcebc513ceda3d1c4cc1bd0c902cec9d291f6",
+    "romfs/data/opening.encroom": "d8baa19dd095f9e4dfe90a27f49fb150ce8c1d7337119f3210e17121c6b858a4"
+  },
+  "host_checks": 13730,
+  "lamp_checks": 10196,
+  "sanitizers": "ASan+UBSan, detect_leaks=0; no leak claim",
+  "emulator": "not run",
+  "hardware": "not run"
+}

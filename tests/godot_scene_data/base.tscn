@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+[ext_resource path="res://defaults.gd" type="Script" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 3 )
+[node name="Base" type="Node2D"]
+position = Vector2( 10, 20 )
+scale = Vector2( 2, 3 )
+script = ExtResource( 1 )
+__meta__ = {"identity": 9223372036854775807, "negative": -9223372036854775808, "path": NodePath("Body/Shape"), "pool": PoolIntArray( -1, 0, 2147483647 )}
+[node name="Body" type="StaticBody2D" parent="."]
+position = Vector2( 4, 5 )
+collision_layer = 5
+collision_mask = 0
+[node name="Shape" type="CollisionShape2D" parent="Body"]
+position = Vector2( 1, -2 )
+shape = SubResource( 1 )
+[connection signal="ready" from="." to="." method="signal_target" binds=[ 7 ]]

@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "licence_review": "Pinned LICENSE permits original art/fonts for related game forks/modifications. Used solely for Mother: Encore port; upstream conditions retained.",
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Graphics/Character Sprites/Npcs/4dir/carol.png": "58a91f79e495c3475564a3afda1364ee768b8c2b94ed54122e50acfac7928bbb",
+    "Graphics/Character Sprites/Npcs/4dir/carol.png.import": "527cfc1c1ec642938d3262b84ce4ceae1c18db6ef8232fbfee291bde144e34db",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Overworld/flavours/defaulttag.png": "4f2aae1377c38297537a8cbbc7bbfec14b7b5bf13129877ddd8a4e724b631a9e",
+    "Graphics/UI/Overworld/flavours/defaulttag.png.import": "c71e55d6242483e2708c56ccdcd7cb9cb463ffa190bc8485bc454b86dff64768",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Graphics/Character Sprites/Npcs/4dir/mimmie.png": "92cc5589bfe0ad56cd4f0e884952f2d3bc923ac57638fe657b7ea9c689a530e1",
+    "Graphics/Character Sprites/Npcs/4dir/mimmie.png.import": "e9f472fa03898476e7ebc692eba8f42a27fcf070789cc33c2633901409e2b981",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png.import": "a5e1ad37ae4fdb7ebb00d665656715d1bace2038dd97876e1f320d0e5a905edb",
+    "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+    "Graphics/Objects/Doors/Door_Dark.png.import": "85a7c87f12e637594258185aaf5d60866b99cd0c7a4918f20f837fce60ef2efd",
+    "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+    "Graphics/Objects/Doors/Door_Dark_Locked.png.import": "bd0c5d6dcba3d9aaec2a95a3f0a73b6972666e15d23b672b016b365bee57440b",
+    "Graphics/Character Sprites/Npcs/4dir/minnie.png": "55ede50937e2511bfa27a88ce4660040c2e140886ee107be9260cb830be5338a",
+    "Graphics/Character Sprites/Npcs/4dir/minnie.png.import": "7c3cc4334634cba38a2f1199084262bc2c6f90dba6c00d717802cb04ca0c8d11"
+  },
+  "resources": [
+    {
+      "id": 1,
+      "role": "carol",
+      "source": "Graphics/Character Sprites/Npcs/4dir/carol.png",
+      "size": [
+        105,
+        128
+      ],
+      "grid": [
+        5,
+        4
+      ],
+      "output": "house-preview/carol.t3x"
+    },
+    {
+      "id": 2,
+      "role": "shadow",
+      "source": "Graphics/Character Sprites/Shadow.png",
+      "size": [
+        15,
+        5
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "house-preview/shadow.t3x"
+    },
+    {
+      "id": 3,
+      "role": "dialogue_box",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "size": [
+        24,
+        24
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "house-preview/dialogue_box.t3x"
+    },
+    {
+      "id": 4,
+      "role": "name_box",
+      "source": "Graphics/UI/Overworld/flavours/defaulttag.png",
+      "size": [
+        42,
+        42
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "house-preview/name_box.t3x"
+    },
+    {
+      "id": 5,
+      "role": "cursor",
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "size": [
+        24,
+        8
+      ],
+      "grid": [
+        3,
+        1
+      ],
+      "output": "house-preview/cursor.t3x"
+    },
+    {
+      "id": 6,
+      "role": "mimmie",
+      "source": "Graphics/Character Sprites/Npcs/4dir/mimmie.png",
+      "size": [
+        85,
+        100
+      ],
+      "grid": [
+        5,
+        4
+      ],
+      "output": "house-preview/mimmie.t3x"
+    },
+    {
+      "id": 7,
+      "role": "doll",
+      "source": "Graphics/Character Sprites/Npcs/1dir/doll.png",
+      "size": [
+        68,
+        22
+      ],
+      "grid": [
+        4,
+        1
+      ],
+      "output": "house-preview/doll.t3x"
+    },
+    {
+      "id": 8,
+      "role": "door",
+      "source": "Graphics/Objects/Doors/Door_Dark.png",
+      "size": [
+        32,
+        48
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "house-preview/door.t3x"
+    },
+    {
+      "id": 9,
+      "role": "door_basement",
+      "source": "Graphics/Objects/Doors/Door_Dark_Locked.png",
+      "size": [
+        32,
+        48
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "house-preview/door_basement.t3x"
+    },
+    {
+      "id": 10,
+      "role": "minnie",
+      "source": "Graphics/Character Sprites/Npcs/4dir/minnie.png",
+      "size": [
+        95,
+        100
+      ],
+      "grid": [
+        5,
+        4
+      ],
+      "output": "house-preview/minnie.t3x"
+    }
+  ]
+}

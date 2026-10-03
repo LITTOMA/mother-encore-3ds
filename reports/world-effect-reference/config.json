@@ -1,0 +1,328 @@
+{
+  "parameters": {
+    "opacity": 1.0,
+    "screen_size": [
+      320,
+      180
+    ],
+    "move": [
+      0,
+      -1
+    ],
+    "ping_pong_speed": [
+      0,
+      0
+    ],
+    "oscillation_amplitude": [
+      0,
+      0.5
+    ],
+    "oscillation_frequency": [
+      0,
+      2
+    ],
+    "oscillation_speed": [
+      0,
+      2
+    ],
+    "osc_amp_ping_pong": [
+      0,
+      0
+    ],
+    "osc_trans_ping_pong": [
+      0,
+      2
+    ],
+    "compression_amplitude": [
+      0,
+      0
+    ],
+    "compression_frequency": [
+      0,
+      0
+    ],
+    "compression_speed": [
+      0,
+      0
+    ],
+    "comp_amp_ping_pong": [
+      0,
+      0
+    ],
+    "comp_trans_ping_pong": [
+      0,
+      0
+    ],
+    "interlaced_amplitude": [
+      0,
+      0
+    ],
+    "interlaced_frequency": [
+      0,
+      0
+    ],
+    "interlaced_speed": [
+      0,
+      0
+    ],
+    "inter_amp_ping_pong": [
+      0,
+      0
+    ],
+    "inter_trans_ping_pong": [
+      0,
+      0
+    ],
+    "palette_shifting_speed": 1.0,
+    "palette_shifting": false,
+    "barrel": false,
+    "effect": 1.0,
+    "effect_scale": 2.0,
+    "barrelxy": [
+      1,
+      1
+    ]
+  },
+  "samples": [
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.016666666666666666,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 1,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 3.125,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 17.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 63.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0.016666666666666666,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 0.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 1,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 3.125,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 17.25,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 400,
+      "height": 240,
+      "time": 63.5,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.423529,
+        0.568627,
+        0.941176,
+        1
+      ],
+      "alpha": 1
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.423529,
+        0.568627,
+        0.941176,
+        1
+      ],
+      "alpha": 0.5
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.423529,
+        0.568627,
+        0.941176,
+        1
+      ],
+      "alpha": 0
+    },
+    {
+      "width": 320,
+      "height": 180,
+      "time": 0.25,
+      "color": [
+        0.5392155,
+        0.5392155,
+        0.952941,
+        1
+      ],
+      "alpha": 0.25
+    }
+  ]
+}

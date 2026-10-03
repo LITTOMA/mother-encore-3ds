@@ -1,0 +1,329 @@
+{
+  "schema": 1,
+  "kind": "encore.native-restore.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/PartyNPC.gd": "36b19f7fe73d01097371d788587685ea1ea1869dc0fa7014a97da7e79d25b925",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/Items/KickMeNote.yaml": "3d1481a5d1eac9a119e804a1d7d4924bfca03a25c29376a01586596a46d43165",
+    "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270"
+  },
+  "dependencies": {
+    "content/native-opening.json": "925efd1ddbd73cf21ea9a43f158e75de80ca399767802bfb4ae36ca68be94764",
+    "content/native-house.json": "bd67003b8bd7f68b7003333aad16bbb0b2a743c8bc528ba4fc3f5e0aa2d0d442",
+    "romfs/data/opening.encroom": "87fec977f6b861db7526fac6a69cc759649764823b1ed9bf5fedecf3cac27dad",
+    "romfs/data/opening.enchouse": "84354aaa8ec5126b7dff5f3cc2f091ac9a4256084bc3f41d5a3fd66e6d6fd8c6"
+  },
+  "fingerprints": {
+    "room": {
+      "bytes": 63312,
+      "sha256": "87fec977f6b861db7526fac6a69cc759649764823b1ed9bf5fedecf3cac27dad"
+    },
+    "house": {
+      "bytes": 17424,
+      "sha256": "84354aaa8ec5126b7dff5f3cc2f091ac9a4256084bc3f41d5a3fd66e6d6fd8c6"
+    }
+  },
+  "scene_id": 1,
+  "scene_path": "res://Maps/podunk/Nintens House.tscn",
+  "npc_event_positions": [
+    {
+      "npc_index": 3,
+      "npc_id": 4,
+      "actor_index": 4,
+      "actor_id": 5,
+      "body_id": 11,
+      "source_path": "Objects/npc3",
+      "condition": {
+        "flag_index": 43,
+        "flag_id": 44,
+        "flag_name": "minnie_leave",
+        "expected_value": true
+      },
+      "position": [
+        32.0,
+        368.0
+      ]
+    },
+    {
+      "npc_index": 3,
+      "npc_id": 4,
+      "actor_index": 4,
+      "actor_id": 5,
+      "body_id": 11,
+      "source_path": "Objects/npc3",
+      "condition": {
+        "flag_index": 45,
+        "flag_id": 46,
+        "flag_name": "doll_defeated",
+        "expected_value": true
+      },
+      "position": [
+        464.0,
+        80.0
+      ]
+    }
+  ],
+  "music_areas": [
+    {
+      "id": 1,
+      "source_path": "MusicArea",
+      "resource_path": "res://Audio/Music/House.mp3",
+      "supported": true,
+      "room_resource_index": 33,
+      "room_resource_id": 34,
+      "resource_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+      "center": [
+        283.99969999999996,
+        416.0
+      ],
+      "extents": [
+        356,
+        456
+      ],
+      "conditions": [
+        {
+          "flag_index": 0,
+          "flag_id": 1,
+          "flag_name": "doll_melody",
+          "expected_value": true
+        },
+        {
+          "flag_index": 15,
+          "flag_id": 16,
+          "flag_name": "good_morning",
+          "expected_value": false
+        }
+      ],
+      "volume_db": 0.0,
+      "fadein_seconds": 1.0,
+      "fadeout_seconds": 1.5
+    },
+    {
+      "id": 2,
+      "source_path": "MusicArea2",
+      "resource_path": "res://Audio/Music/House.mp3",
+      "supported": true,
+      "room_resource_index": 33,
+      "room_resource_id": 34,
+      "resource_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+      "center": [
+        129.341,
+        1014.8720000000001
+      ],
+      "extents": [
+        198.659,
+        129.128
+      ],
+      "conditions": [
+        {
+          "flag_index": 0,
+          "flag_id": 1,
+          "flag_name": "doll_melody",
+          "expected_value": true
+        },
+        {
+          "flag_index": 15,
+          "flag_id": 16,
+          "flag_name": "good_morning",
+          "expected_value": false
+        }
+      ],
+      "volume_db": -5,
+      "fadein_seconds": 1.0,
+      "fadeout_seconds": 1.5
+    },
+    {
+      "id": 3,
+      "source_path": "MusicArea3",
+      "resource_path": "res://Audio/Music/Good_Morning.mp3",
+      "supported": false,
+      "room_resource_index": 4294967295,
+      "room_resource_id": 0,
+      "resource_sha256": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+      "center": [
+        283.99969999999996,
+        560.0
+      ],
+      "extents": [
+        356,
+        600
+      ],
+      "conditions": [
+        {
+          "flag_index": 15,
+          "flag_id": 16,
+          "flag_name": "good_morning",
+          "expected_value": true
+        }
+      ],
+      "volume_db": 0.0,
+      "fadein_seconds": 1.0,
+      "fadeout_seconds": 1.5
+    },
+    {
+      "id": 4,
+      "source_path": "Poltergeist/MusicArea",
+      "resource_path": "res://Audio/Music/Poltergeist.ogg",
+      "supported": true,
+      "room_resource_index": 20,
+      "room_resource_id": 21,
+      "resource_sha256": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+      "center": [
+        283.99969999999996,
+        416.0
+      ],
+      "extents": [
+        356,
+        456
+      ],
+      "conditions": [
+        {
+          "flag_index": 0,
+          "flag_id": 1,
+          "flag_name": "doll_melody",
+          "expected_value": false
+        },
+        {
+          "flag_index": 39,
+          "flag_id": 40,
+          "flag_name": "poltergeist",
+          "expected_value": true
+        },
+        {
+          "flag_index": 45,
+          "flag_id": 46,
+          "flag_name": "doll_defeated",
+          "expected_value": false
+        }
+      ],
+      "volume_db": 0.0,
+      "fadein_seconds": 1.0,
+      "fadeout_seconds": 1.5
+    }
+  ],
+  "inventory_load_order": [
+    {
+      "order_id": 1,
+      "kind": 1,
+      "character_id": "",
+      "rebuilds_inventory": true,
+      "projected_items": [
+        {
+          "item_id": "CashCard",
+          "equipped": false,
+          "doses": 1
+        }
+      ]
+    },
+    {
+      "order_id": 2,
+      "kind": 2,
+      "character_id": "",
+      "rebuilds_inventory": true,
+      "projected_items": []
+    },
+    {
+      "order_id": 3,
+      "kind": 3,
+      "character_id": "ninten",
+      "rebuilds_inventory": true,
+      "projected_items": [
+        {
+          "item_id": "BaseballCap",
+          "equipped": true,
+          "doses": 1
+        }
+      ]
+    },
+    {
+      "order_id": 4,
+      "kind": 3,
+      "character_id": "ana",
+      "rebuilds_inventory": true,
+      "projected_items": []
+    },
+    {
+      "order_id": 5,
+      "kind": 3,
+      "character_id": "lloyd",
+      "rebuilds_inventory": true,
+      "projected_items": [
+        {
+          "item_id": "KickMeNote",
+          "equipped": true,
+          "doses": 1
+        },
+        {
+          "item_id": "GlassesCelluloid",
+          "equipped": true,
+          "doses": 1
+        }
+      ]
+    },
+    {
+      "order_id": 6,
+      "kind": 3,
+      "character_id": "teddy",
+      "rebuilds_inventory": true,
+      "projected_items": []
+    },
+    {
+      "order_id": 7,
+      "kind": 3,
+      "character_id": "pippi",
+      "rebuilds_inventory": true,
+      "projected_items": []
+    },
+    {
+      "order_id": 8,
+      "kind": 3,
+      "character_id": "canarychick",
+      "rebuilds_inventory": false,
+      "projected_items": []
+    },
+    {
+      "order_id": 9,
+      "kind": 3,
+      "character_id": "flyingman",
+      "rebuilds_inventory": false,
+      "projected_items": []
+    },
+    {
+      "order_id": 10,
+      "kind": 3,
+      "character_id": "eve",
+      "rebuilds_inventory": false,
+      "projected_items": []
+    }
+  ],
+  "uid_policy": 1,
+  "projection_policy": "Absent native characters retain frozen source initial inventories; this is a bounded native save projection, not original missing-character fallback.",
+  "existing_coverage": {
+    "authored_npc_positions": "House Npcs and Room ActorInstance remain authoritative; reinstantiate every load",
+    "landmark_deletion": "Room DeferredFlagBodyDeletion and existing Room/House trigger conditions; refresh then scene-frame flush",
+    "unsupported_landmarks": "Door NPC remains outside the native slice; optional Pillow/Minnie trigger lifetimes are handled by checked House conditions",
+    "phone_and_roomshaker": "Fresh instances start idle; flags alone do not start their animations/timers"
+  }
+}

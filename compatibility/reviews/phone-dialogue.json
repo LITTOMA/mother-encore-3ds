@@ -1,0 +1,129 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_handler_approved": false,
+  "sources": {
+    "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
+    "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+    "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/UI/SaveSelect.gd": "067f0a28af8b9d9b62204ae89ac4bdafbd8470e81a55e02fa27f2958510d6d00",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc"
+  },
+  "native_receipt_sha256": "0036925ac2fe17d4426854ccc7d8d4618c017db9fbbfd88699c406ecefa0af5b",
+  "scope": "Exact seven phone YAML documents; six bounded linear programs and retained Dad-normal graph",
+  "source_phase_labels": {
+    "Data/Dialogue/Podunk/carol_call.yaml": [
+      "0",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": [
+      "0",
+      "1",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": [
+      "0"
+    ],
+    "Data/Dialogue/Podunk/carol_phone.yaml": [
+      "0"
+    ],
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": [
+      "0",
+      "1",
+      "7",
+      "9",
+      "13"
+    ],
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": [
+      "0"
+    ],
+    "Data/Dialogue/Reusable/dad_normal.yaml": [
+      "0",
+      "check_lloyd",
+      "check_ana",
+      "check_teddy",
+      "check_pippi",
+      "lloyd_leader",
+      "ana_leader",
+      "teddy_leader",
+      "pippi_leader",
+      "check_earned_cash",
+      "1",
+      "2",
+      "4",
+      "5",
+      "6",
+      "7"
+    ]
+  },
+  "handler_order": [
+    "text or hide box",
+    "actor-ready/persistent/idle",
+    "timer",
+    "deferred object calls",
+    "talker",
+    "directions",
+    "move queues",
+    "enqueue-time actor turn",
+    "camera",
+    "flags",
+    "dialogue/timer gate",
+    "stop talker",
+    "ordered actor restoration",
+    "cutscene ended/done/camera return"
+  ],
+  "constraints": [
+    "Phone remains InteractDialog and never becomes NPC/Actor",
+    "No item, cash, basement, Pillow, or Minnie prerequisite",
+    "No first-call save/reward; retain phone_ring after first Dad",
+    "All source locations/labels/text/flags/timings remain content data",
+    "Dad-normal alternate-leader text is metadata, not evidence of alternate-party runtime support"
+  ],
+  "unverified": [
+    "Native runtime integration",
+    "Full Godot game",
+    "GUI",
+    "3DS gameplay",
+    "Audio audibility"
+  ]
+}

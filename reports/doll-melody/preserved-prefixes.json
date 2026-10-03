@@ -1,0 +1,233 @@
+{
+  "schema": 1,
+  "prefixes": {
+    "content/native-opening.json": {
+      "Resource": {
+        "count": 30,
+        "sha256": "79e8ec5bf58936747e74d8105df8b657fca854a8656a80b6ecd10246ffaa6a9c"
+      },
+      "Vec2": {
+        "count": 416,
+        "sha256": "22df7f358df4bf2ac26b2c290909f5bc99ba10f9a534a4904752b8fd9b5cebc2"
+      },
+      "Polygon": {
+        "count": 105,
+        "sha256": "85174eb7545e401ddf28a44a3ee350e6346c55d964132ab5d13df0a9f0aa3d88"
+      },
+      "BodyRule": {
+        "count": 21,
+        "sha256": "2194c294bc7bc68f40062a2c6aee35bfd541197d8d4ff2e28a91d7abeb4b1df3"
+      },
+      "Overlay": {
+        "count": 290,
+        "sha256": "7113d2bb0092c051e13a459a292f31ff2262099710814a2ad5577bf74ff905c2"
+      },
+      "MapDraw": {
+        "count": 15,
+        "sha256": "e4bf80f39236ce7c19a78d8b0835ec12455bc5f6f4c62127cf0df26142d0d305"
+      },
+      "Clip": {
+        "count": 71,
+        "sha256": "3ba3df2460c13e8ac0dd2bac9a13fa2dfc298bd008d60f2172040fc4c63ab381"
+      },
+      "Key": {
+        "count": 224,
+        "sha256": "04ded077dd0206065e2b4877b5dd2952a7072599025da27b75654597813e881d"
+      },
+      "DirectionFrame": {
+        "count": 16,
+        "sha256": "14af6e09276fa657104ffd3aa377b310370b9812ebb83353c1ac2fe77efb563f"
+      },
+      "ActorProfile": {
+        "count": 5,
+        "sha256": "56e01a32f60800c48d09eb1daf0c8d9dade779a192df8df30d3f0e525c917a13"
+      },
+      "ActorInstance": {
+        "count": 5,
+        "sha256": "9bdb8f1ffa07c1e13a8a602a818e78d289f499b09b3a96327770396170f9bdc9"
+      },
+      "CameraArea": {
+        "count": 8,
+        "sha256": "cbf186d01b9d739afd7099cf7ae6adbcde0e8f37fe58c6871aa51f00e05b3795"
+      },
+      "Flag": {
+        "count": 178,
+        "sha256": "3cbd588aa8c654317dadf5bee9cc1a7d6127a31cc5e18a3c40f0114bab34f3e8"
+      },
+      "InitialFlag": {
+        "count": 1,
+        "sha256": "7128c1b07074e1f86f8898fed40484eae97730bd33fad8a8b547c15645108a5d"
+      },
+      "Condition": {
+        "count": 2,
+        "sha256": "f55c40132b9f8eb17a7c6f350e6de0be6e985461c99a3059520bdca33b7decfd"
+      },
+      "Trigger": {
+        "count": 1,
+        "sha256": "f9c3b248a3c6e70f428ef2db13d33f3455bc22822469eaf159eecc2881f35bf0"
+      },
+      "Program": {
+        "count": 3,
+        "sha256": "7f34fd224c88c0d3b12c69153313329f3cd54fef13e480cbfd05ab040e7eb3a3"
+      },
+      "Command": {
+        "count": 198,
+        "sha256": "6a214dc1df2437998ad3a9adfe11d1806d6769b487aa0af9606b90ef4541118d"
+      },
+      "Binding": {
+        "count": 3,
+        "sha256": "5778d33b440fe075a8ba35529bce43993500c9dca714ba229a635501aa6406aa"
+      },
+      "Battle": {
+        "count": 2,
+        "sha256": "f5637b8a63c584f41e51dcc935cbd96dbb2e8dbc96d042b3f3fc7fb19546b1cc"
+      },
+      "Rule": {
+        "count": 25,
+        "sha256": "e8ed6934c07deb9c468a2d84286579e9afdacada442108d8a11da82c6b12875a"
+      },
+      "Experience": {
+        "count": 30,
+        "sha256": "58585f785c91a9909a514204ddbbad9fd4920516f875c2f277acdc70c903a504"
+      },
+      "Scene": {
+        "count": 1,
+        "sha256": "019e1f077afe6660390726efc002b9e2ec6a93f493590043eaa006c56c64514c"
+      },
+      "AnimationBinding": {
+        "count": 64,
+        "sha256": "86ef742008959d248b6ab6f0326195eb34cecd29db974cda633c7dc70230b3a4"
+      },
+      "MovementPath": {
+        "count": 9,
+        "sha256": "75061c71ee15120cdee606f3a8327e7db85d8c927d5ca0c103ea6cc53f58063a"
+      },
+      "MovementEntry": {
+        "count": 18,
+        "sha256": "e986a2131e160fd4f7c53eeeefc2d05663a252847a4471da35eb16100f7383c7"
+      }
+    },
+    "content/native-house.json": {
+      "doors": {
+        "count": 6,
+        "sha256": "0709b8d54ee4ef1c8c1bf637885a448118dda9b97bb05a1e72e34581adf8572b"
+      },
+      "npcs": {
+        "count": 4,
+        "sha256": "37da9db02982b87c837b5dca080d4c0d930b99c08f1e765963dc1979f9b28351"
+      },
+      "segments": {
+        "count": 11,
+        "sha256": "d39f70a4f1b8fc51eb749bd0de20436b871a7e089a681e054b1b59912809cdc0"
+      },
+      "boundaries": {
+        "count": 5,
+        "sha256": "2f6e571760a7c337ac4a283a49d428180d565da5dce06c15bd10843757a3876b"
+      },
+      "overrides": {
+        "count": 16,
+        "sha256": "7002b339d15530253ed0cb6ee42c223151d363a843c11ebdc229596027ed2ebb"
+      },
+      "dialogues": {
+        "count": 5,
+        "sha256": "7915dd0dc9f4369395f7cb6d4e8cb45d18f059681badbf89110e748bab1f8a4d"
+      },
+      "openable_doors": {
+        "count": 4,
+        "sha256": "eae2a306ac2b92baebc5ca154d4b6d8bffdeacbe144e01f7780a05b3ae39af64"
+      },
+      "story_triggers": {
+        "count": 1,
+        "sha256": "256c818cb88b269a2c956c804ddac3fb9523f9bd4656560023ecf01ff2a79c98"
+      },
+      "story_conditions": {
+        "count": 2,
+        "sha256": "74ecd519864599c4d1c61b73dd91f00db9b3a7cec29c3237df482c8422f3a693"
+      }
+    },
+    "content/native-house-presentation.json": {
+      "clips": {
+        "count": 30,
+        "sha256": "5ad62d1b41998d534c9f25193a6e079d637c5540f3f92626550e2421be7f1de1"
+      },
+      "profiles": {
+        "count": 4,
+        "sha256": "f74a7e3383c41f3dff027329ae3eaac687ed8daa18d4e4164038bdc29332a165"
+      },
+      "resources": {
+        "count": 10,
+        "sha256": "5d73fdbf1c5058246cc8f7a7e4e8e1a420b0e862f7d6cd00bc5808d8a04c3fce"
+      }
+    },
+    "content/native-audio.json": {
+      "assets": {
+        "count": 9,
+        "sha256": "5ced733e5854cbb17f5f493f9c686c53608639e0650923f3590a5f4e438d4383"
+      }
+    }
+  },
+  "reviewed_corrections": [
+    {
+      "source": "content/native-house.json",
+      "section": "npcs",
+      "index": 1,
+      "field": "first_segment",
+      "before": 0,
+      "after": 20,
+      "reason": "Append source default Mimmie text"
+    },
+    {
+      "source": "content/native-house.json",
+      "section": "npcs",
+      "index": 1,
+      "field": "segment_count",
+      "before": 0,
+      "after": 2,
+      "reason": "Append source default Mimmie text"
+    },
+    {
+      "source": "content/native-house.json",
+      "section": "npcs",
+      "index": 1,
+      "field": "seen_key",
+      "before": "",
+      "after": "/root/Ninten's House/Objects/npc2::1:Podunk/mimmie_doll_defeated",
+      "reason": "Original default dialogue seen key"
+    },
+    {
+      "source": "content/native-house.json",
+      "section": "npcs",
+      "index": 2,
+      "field": "seen_key",
+      "before": "",
+      "after": "/root/Ninten's House/Objects/npcdoll::1:Podunk/dollmelody",
+      "reason": "Original program interaction seen key"
+    },
+    {
+      "source": "content/native-opening.json",
+      "section": "Battle",
+      "index": 1,
+      "field": "flags",
+      "before": 4,
+      "after": 12,
+      "reason": "Source Doll attack omits ovbattlemusic; bit8 preserves current source-global music policy across program entry instead of resetting false. The Lamp route inherits true, while direct isolated fixtures inherit their actual initial state."
+    }
+  ],
+  "added_fields": {
+    "content/native-house.json": {
+      "npcs": [
+        "program_index"
+      ],
+      "overrides": [
+        "dialogue_index",
+        "seen_key"
+      ]
+    }
+  },
+  "string_prefix": {
+    "count": 242,
+    "sha256": "fa37b8ed934667821a1e116733e178679041d1d71f4c64546faf27c740e89019",
+    "source_archive": "dist/checkpoints/doll-postwin-v14/full-source.zip",
+    "source_archive_sha256": "f880412d4c4cc7917ad0803e6102e87c2dba96f4182aac5069373bebcc47d92f"
+  }
+}

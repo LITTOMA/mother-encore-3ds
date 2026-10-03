@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source": "Pre-edit source after input-fix checkpoint freeze; preserves old slice while appending original post-win data",
+  "prefixes": {
+    "content/native-opening.json": {
+      "Resource": {
+        "count": 28,
+        "sha256": "a14998f471b59af8dbddae631f4c9f6091d3d169dd9fc3d29ce7fa7d63bf4773"
+      },
+      "ActorProfile": {
+        "count": 4,
+        "sha256": "c79519b19ba6ee2e784add16720af5c25ddf20fd064cb6ccf3c822de2f7553f2"
+      },
+      "ActorInstance": {
+        "count": 4,
+        "sha256": "7938c463e34f3463460ae9767131053a4bb0db0346863e9b7064a44940d3f70f"
+      },
+      "Program": {
+        "count": 2,
+        "sha256": "92c8a7c2929759342425fd92bffbd815418eb021b3128f6ea72b30c352021a99"
+      },
+      "Command": {
+        "count": 134,
+        "sha256": "938c362b0ee63067bb377227fbf4441a1b75a3eac8f1ee204965b7263884293b"
+      },
+      "BodyRule": {
+        "count": 21,
+        "sha256": "2194c294bc7bc68f40062a2c6aee35bfd541197d8d4ff2e28a91d7abeb4b1df3"
+      },
+      "Polygon": {
+        "count": 105,
+        "sha256": "85174eb7545e401ddf28a44a3ee350e6346c55d964132ab5d13df0a9f0aa3d88"
+      },
+      "Clip": {
+        "count": 58,
+        "sha256": "b941e59c6a14c42656eb05b854361a8362c9afea6afa47fff9e703e1f2ab3427"
+      },
+      "Key": {
+        "count": 186,
+        "sha256": "898ac325b2fd691dac5a53fe32e194f6ff99189b3e9533f4eaf48b6e63c06107"
+      },
+      "DirectionFrame": {
+        "count": 12,
+        "sha256": "bb371ce189359121794ad39bd671a278b5296407ba1aa6fdc6cf6380852b864b"
+      },
+      "AnimationBinding": {
+        "count": 52,
+        "sha256": "9e4effa74b0bab1a128f58c14305c6e2deaa5971c5162ba86f5a6f4a3b26d5d8"
+      },
+      "MovementPath": {
+        "count": 6,
+        "sha256": "0b8aa4e207091cbf69a2fce96c40337d146cbf4c1279a161cb837ca315e4a401"
+      },
+      "MovementEntry": {
+        "count": 14,
+        "sha256": "70a88fb0af097d5ad87536206963a677c061b6e240675bca1f1ff4d940768734"
+      },
+      "Battle": {
+        "count": 2,
+        "sha256": "f5637b8a63c584f41e51dcc935cbd96dbb2e8dbc96d042b3f3fc7fb19546b1cc"
+      },
+      "Binding": {
+        "count": 3,
+        "sha256": "5778d33b440fe075a8ba35529bce43993500c9dca714ba229a635501aa6406aa"
+      },
+      "Overlay": {
+        "count": 290,
+        "sha256": "7113d2bb0092c051e13a459a292f31ff2262099710814a2ad5577bf74ff905c2"
+      },
+      "MapDraw": {
+        "count": 15,
+        "sha256": "e4bf80f39236ce7c19a78d8b0835ec12455bc5f6f4c62127cf0df26142d0d305"
+      },
+      "Flag": {
+        "count": 178,
+        "sha256": "3cbd588aa8c654317dadf5bee9cc1a7d6127a31cc5e18a3c40f0114bab34f3e8"
+      },
+      "InitialFlag": {
+        "count": 1,
+        "sha256": "7128c1b07074e1f86f8898fed40484eae97730bd33fad8a8b547c15645108a5d"
+      }
+    },
+    "content/native-house.json": {
+      "doors": {
+        "count": 6,
+        "sha256": "0709b8d54ee4ef1c8c1bf637885a448118dda9b97bb05a1e72e34581adf8572b"
+      },
+      "npcs": {
+        "count": 3,
+        "sha256": "2b6e1f1457dbfb806f4afc5faee06cf26aa45c1938db7027c52cde16b3710dfd"
+      },
+      "segments": {
+        "count": 7,
+        "sha256": "c5b43f2e11de15f2e2e3016a7fa735567f81615cea7d906b25667ef866ca0541"
+      },
+      "dialogues": {
+        "count": 3,
+        "sha256": "80242c3372ea1d7a858bbd7358894283ddaf2db0599dcbc0649731ea2b55bc8b"
+      },
+      "overrides": {
+        "count": 14,
+        "sha256": "fa10571535fded6a01178eb3b9d9f06ba612acd1bd69c7b6e70253b1edbe277a"
+      },
+      "openable_doors": {
+        "count": 4,
+        "sha256": "eae2a306ac2b92baebc5ca154d4b6d8bffdeacbe144e01f7780a05b3ae39af64"
+      },
+      "story_triggers": {
+        "count": 1,
+        "sha256": "256c818cb88b269a2c956c804ddac3fb9523f9bd4656560023ecf01ff2a79c98"
+      },
+      "story_conditions": {
+        "count": 2,
+        "sha256": "74ecd519864599c4d1c61b73dd91f00db9b3a7cec29c3237df482c8422f3a693"
+      }
+    },
+    "content/native-house-presentation.json": {
+      "resources": {
+        "count": 9,
+        "sha256": "0ad41a4a9561d57b9d84206ee6d47485e7874fa2181ea6698a2396f8ccf98d5c"
+      },
+      "profiles": {
+        "count": 3,
+        "sha256": "1860fb542396908d4c1e0b8a65a07bbbda42e599135a6c15bec92424c8cffb6b"
+      },
+      "clips": {
+        "count": 22,
+        "sha256": "88d1ff3e2c147ef9eb99cd0c1288c0e2748e0e6f8405f80fbdb604bc84d03d26"
+      }
+    }
+  },
+  "reviewed_corrections": [
+    {
+      "source": "content/native-opening.json",
+      "section": "Clip",
+      "index": 43,
+      "field": "flags",
+      "before": 1,
+      "after": 5,
+      "source_selector": "Scripts/Main/actor.gd:play_anim, immediate finished_action for idle/talk-idle while character_sprite visible",
+      "reason": "Correct newly exercised source Idle play semantics; same clip stable44 and native keys. Previous attack plays Float, initialization selects rather than plays Idle."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "whole_file_approved": false,
+  "scope": "Only bedroom camera change/move, parent translation, right small shake, actor update_npcs player-camera return and tween pause at 400x240; not full game camera approval.",
+  "sources": {
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36"
+  },
+  "reference_overrides": {
+    "world": "Isolated 400x240 Viewport; bedroom camarea position (500,397), child (4,-21), extents (208,104) from Nintens House.tscn.",
+    "camera": "Full unchanged Camera2D.gd and Shaker.gd; Camera.tscn process_mode=physics, rotating=true, pause_mode=process, smoothing disabled by native default. ScopeArrows hidden stub.",
+    "services": "Minimal player state, global currentCamera, uiManager battle=false, controls vector stubs; camera move/shake/return native bodies unchanged.",
+    "timing": "Commands injected during native idle node callback, as dialogue WaitTimer-born actions; snapshots before next physics after native idle/tween pass. Actor translation values are controlled inputs, not actor movement validation.",
+    "restore": "Direct actor.gd update_npcs camera calls: player.camera.set_current(), return_camera(.5)."
+  }
+}

@@ -1,0 +1,10 @@
+.out position position
+.out tex0 texcoord0
+.out tex1 texcoord1
+.entry main
+.proc main
+ mov position, v0
+ mov tex0.xy, v1.xy
+ mov tex1.xy, v1.zw
+ end
+.end

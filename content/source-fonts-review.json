@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "legacy_ascii_resource": "Fonts/EBMain_la.tres",
+  "role": "EBMain",
+  "permission_scope": "Game-related Mother: Encore native port only, retaining upstream and embedded font notices; no unrelated use or claim of Nintendo rights. Existing EBMain ASCII release asset remains byte-identical.",
+  "sources": {
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_ja.tres": "cb4a295268c120cf6b6db209cc5fe3d80ca280c74137872420b558958157aaf7",
+    "Fonts/EBMain_ko.tres": "71e85072c4cb4d4ddc59063be72b0d253b1ff783be2b3a0ef75ece91a5b34a5b",
+    "Fonts/EBMain_zh_cn.tres": "eca67a75ba69dc4669db4b4e6c00bf6126a8cb03b5fd54620b7159f69e6de28c",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99"
+  }
+}

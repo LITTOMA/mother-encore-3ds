@@ -1,0 +1,1303 @@
+{
+  "clips": [
+    {
+      "keys": [
+        [
+          0.0,
+          1
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle Down",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          1
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::10",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          11
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle Left",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          11
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::13",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          21
+        ],
+        [
+          8.0,
+          120
+        ],
+        [
+          8.100000381469727,
+          21
+        ],
+        [
+          12.600000381469727,
+          120
+        ],
+        [
+          12.699999809265137,
+          21
+        ],
+        [
+          12.800000190734863,
+          120
+        ],
+        [
+          12.899999618530273,
+          21
+        ]
+      ],
+      "keys_outside_duration": [
+        [
+          8.0,
+          120
+        ],
+        [
+          8.100000381469727,
+          21
+        ],
+        [
+          12.600000381469727,
+          120
+        ],
+        [
+          12.699999809265137,
+          21
+        ],
+        [
+          12.800000190734863,
+          120
+        ],
+        [
+          12.899999618530273,
+          21
+        ]
+      ],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle Right",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          21
+        ],
+        [
+          "8.00000000000000000",
+          120
+        ],
+        [
+          "8.10000038146972660",
+          21
+        ],
+        [
+          "12.60000038146972700",
+          120
+        ],
+        [
+          "12.69999980926513700",
+          21
+        ],
+        [
+          "12.80000019073486300",
+          120
+        ],
+        [
+          "12.89999961853027300",
+          21
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::14",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          31
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle Up",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          31
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::15",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          41
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle DownLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          41
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::11",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          51
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle DownRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          51
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::12",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          61
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle UpLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          61
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::16",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          71
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.10000000149011612,
+      "loop": true,
+      "main_visible": true,
+      "name": "Idle UpRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          71
+        ]
+      ],
+      "native_length_decimal": "0.10000000149011610",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::17",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          0
+        ],
+        [
+          0.20000000298023224,
+          1
+        ],
+        [
+          0.4000000059604645,
+          2
+        ],
+        [
+          0.6000000238418579,
+          1
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk Down",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          0
+        ],
+        [
+          "0.20000000298023220",
+          1
+        ],
+        [
+          "0.40000000596046450",
+          2
+        ],
+        [
+          "0.60000002384185790",
+          1
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::18",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          10
+        ],
+        [
+          0.20000000298023224,
+          11
+        ],
+        [
+          0.4000000059604645,
+          12
+        ],
+        [
+          0.6000000238418579,
+          11
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk Left",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          10
+        ],
+        [
+          "0.20000000298023220",
+          11
+        ],
+        [
+          "0.40000000596046450",
+          12
+        ],
+        [
+          "0.60000002384185790",
+          11
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::21",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          20
+        ],
+        [
+          0.20000000298023224,
+          21
+        ],
+        [
+          0.4000000059604645,
+          22
+        ],
+        [
+          0.6000000238418579,
+          21
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk Right",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          20
+        ],
+        [
+          "0.20000000298023220",
+          21
+        ],
+        [
+          "0.40000000596046450",
+          22
+        ],
+        [
+          "0.60000002384185790",
+          21
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::22",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          30
+        ],
+        [
+          0.20000000298023224,
+          31
+        ],
+        [
+          0.4000000059604645,
+          32
+        ],
+        [
+          0.6000000238418579,
+          31
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk Up",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          30
+        ],
+        [
+          "0.20000000298023220",
+          31
+        ],
+        [
+          "0.40000000596046450",
+          32
+        ],
+        [
+          "0.60000002384185790",
+          31
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::23",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          40
+        ],
+        [
+          0.20000000298023224,
+          41
+        ],
+        [
+          0.4000000059604645,
+          42
+        ],
+        [
+          0.6000000238418579,
+          41
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk DownLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          40
+        ],
+        [
+          "0.20000000298023220",
+          41
+        ],
+        [
+          "0.40000000596046450",
+          42
+        ],
+        [
+          "0.60000002384185790",
+          41
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::19",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          50
+        ],
+        [
+          0.20000000298023224,
+          51
+        ],
+        [
+          0.4000000059604645,
+          52
+        ],
+        [
+          0.6000000238418579,
+          51
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk DownRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          50
+        ],
+        [
+          "0.20000000298023220",
+          51
+        ],
+        [
+          "0.40000000596046450",
+          52
+        ],
+        [
+          "0.60000002384185790",
+          51
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::20",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          60
+        ],
+        [
+          0.20000000298023224,
+          61
+        ],
+        [
+          0.4000000059604645,
+          62
+        ],
+        [
+          0.6000000238418579,
+          61
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk UpLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          60
+        ],
+        [
+          "0.20000000298023220",
+          61
+        ],
+        [
+          "0.40000000596046450",
+          62
+        ],
+        [
+          "0.60000002384185790",
+          61
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::24",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          70
+        ],
+        [
+          0.20000000298023224,
+          71
+        ],
+        [
+          0.4000000059604645,
+          72
+        ],
+        [
+          0.6000000238418579,
+          71
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.800000011920929,
+      "loop": true,
+      "main_visible": true,
+      "name": "Walk UpRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          70
+        ],
+        [
+          "0.20000000298023220",
+          71
+        ],
+        [
+          "0.40000000596046450",
+          72
+        ],
+        [
+          "0.60000002384185790",
+          71
+        ]
+      ],
+      "native_length_decimal": "0.80000001192092900",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::25",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          4
+        ],
+        [
+          0.08333329856395721,
+          5
+        ],
+        [
+          0.16666699945926666,
+          6
+        ],
+        [
+          0.25,
+          7
+        ],
+        [
+          0.33333298563957214,
+          8
+        ],
+        [
+          0.41666701436042786,
+          9
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run Down",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          4
+        ],
+        [
+          "0.08333329856395720",
+          5
+        ],
+        [
+          "0.16666699945926670",
+          6
+        ],
+        [
+          "0.25000000000000000",
+          7
+        ],
+        [
+          "0.33333298563957210",
+          8
+        ],
+        [
+          "0.41666701436042790",
+          9
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::26",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          14
+        ],
+        [
+          0.08333329856395721,
+          15
+        ],
+        [
+          0.16666699945926666,
+          16
+        ],
+        [
+          0.25,
+          17
+        ],
+        [
+          0.33333298563957214,
+          18
+        ],
+        [
+          0.41666701436042786,
+          19
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run Left",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          14
+        ],
+        [
+          "0.08333329856395720",
+          15
+        ],
+        [
+          "0.16666699945926670",
+          16
+        ],
+        [
+          "0.25000000000000000",
+          17
+        ],
+        [
+          "0.33333298563957210",
+          18
+        ],
+        [
+          "0.41666701436042790",
+          19
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::29",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          24
+        ],
+        [
+          0.08333329856395721,
+          25
+        ],
+        [
+          0.16666699945926666,
+          26
+        ],
+        [
+          0.25,
+          27
+        ],
+        [
+          0.33333298563957214,
+          28
+        ],
+        [
+          0.41666701436042786,
+          29
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run Right",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          24
+        ],
+        [
+          "0.08333329856395720",
+          25
+        ],
+        [
+          "0.16666699945926670",
+          26
+        ],
+        [
+          "0.25000000000000000",
+          27
+        ],
+        [
+          "0.33333298563957210",
+          28
+        ],
+        [
+          "0.41666701436042790",
+          29
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::30",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          34
+        ],
+        [
+          0.08333329856395721,
+          35
+        ],
+        [
+          0.16666699945926666,
+          36
+        ],
+        [
+          0.25,
+          37
+        ],
+        [
+          0.33333298563957214,
+          38
+        ],
+        [
+          0.41666701436042786,
+          39
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run Up",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          34
+        ],
+        [
+          "0.08333329856395720",
+          35
+        ],
+        [
+          "0.16666699945926670",
+          36
+        ],
+        [
+          "0.25000000000000000",
+          37
+        ],
+        [
+          "0.33333298563957210",
+          38
+        ],
+        [
+          "0.41666701436042790",
+          39
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::31",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          44
+        ],
+        [
+          0.08333329856395721,
+          45
+        ],
+        [
+          0.16666699945926666,
+          46
+        ],
+        [
+          0.25,
+          47
+        ],
+        [
+          0.33333298563957214,
+          48
+        ],
+        [
+          0.41666701436042786,
+          49
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run DownLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          44
+        ],
+        [
+          "0.08333329856395720",
+          45
+        ],
+        [
+          "0.16666699945926670",
+          46
+        ],
+        [
+          "0.25000000000000000",
+          47
+        ],
+        [
+          "0.33333298563957210",
+          48
+        ],
+        [
+          "0.41666701436042790",
+          49
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::27",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          54
+        ],
+        [
+          0.08333329856395721,
+          55
+        ],
+        [
+          0.16666699945926666,
+          56
+        ],
+        [
+          0.25,
+          57
+        ],
+        [
+          0.33333298563957214,
+          58
+        ],
+        [
+          0.41666701436042786,
+          59
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run DownRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          54
+        ],
+        [
+          "0.08333329856395720",
+          55
+        ],
+        [
+          "0.16666699945926670",
+          56
+        ],
+        [
+          "0.25000000000000000",
+          57
+        ],
+        [
+          "0.33333298563957210",
+          58
+        ],
+        [
+          "0.41666701436042790",
+          59
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::28",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          64
+        ],
+        [
+          0.08333329856395721,
+          65
+        ],
+        [
+          0.16666699945926666,
+          66
+        ],
+        [
+          0.25,
+          67
+        ],
+        [
+          0.33333298563957214,
+          68
+        ],
+        [
+          0.41666701436042786,
+          69
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run UpLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          64
+        ],
+        [
+          "0.08333329856395720",
+          65
+        ],
+        [
+          "0.16666699945926670",
+          66
+        ],
+        [
+          "0.25000000000000000",
+          67
+        ],
+        [
+          "0.33333298563957210",
+          68
+        ],
+        [
+          "0.41666701436042790",
+          69
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::32",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          74
+        ],
+        [
+          0.08333329856395721,
+          75
+        ],
+        [
+          0.16666699945926666,
+          76
+        ],
+        [
+          0.25,
+          77
+        ],
+        [
+          0.33333298563957214,
+          78
+        ],
+        [
+          0.41666701436042786,
+          79
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.5,
+      "loop": true,
+      "main_visible": null,
+      "name": "Run UpRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          74
+        ],
+        [
+          "0.08333329856395720",
+          75
+        ],
+        [
+          "0.16666699945926670",
+          76
+        ],
+        [
+          "0.25000000000000000",
+          77
+        ],
+        [
+          "0.33333298563957210",
+          78
+        ],
+        [
+          "0.41666701436042790",
+          79
+        ]
+      ],
+      "native_length_decimal": "0.50000000000000000",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::33",
+      "special_visible": null
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          3
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch Down",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          3
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::136",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          13
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch Left",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          13
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::137",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          23
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch Right",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          23
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::138",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          33
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch Up",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          33
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::139",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          43
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch DownLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          43
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::148",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          53
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch DownRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          53
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::149",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          63
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch UpLeft",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          63
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::150",
+      "special_visible": false
+    },
+    {
+      "keys": [
+        [
+          0.0,
+          73
+        ]
+      ],
+      "keys_outside_duration": [],
+      "length": 0.08333329856395721,
+      "loop": false,
+      "main_visible": true,
+      "name": "Crouch UpRight",
+      "native_keys_decimal": [
+        [
+          "0.00000000000000000",
+          73
+        ]
+      ],
+      "native_length_decimal": "0.08333329856395720",
+      "source_resource": "res://Nodes/Reusables/Player.tscn::151",
+      "special_visible": false
+    }
+  ],
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "frame_count": 200,
+  "frame_size": [
+    31,
+    29
+  ],
+  "game_version": "0.4.1.0",
+  "native_compatible": false,
+  "schema": 1,
+  "scope": "32 discrete normal-Ninten Sprite.frame animation tracks; not Player or AnimationTree compatibility"
+}

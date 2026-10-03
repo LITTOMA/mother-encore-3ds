@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
+    "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "canvas": [
+    320,
+    180
+  ],
+  "bars": [
+    {
+      "height": 18.0,
+      "reset_y": -18.0
+    },
+    {
+      "height": 28.0,
+      "reset_y": 180.0
+    }
+  ],
+  "color": 4278190080,
+  "tracks": [
+    {
+      "duration": 0.5,
+      "end_time": 0.2,
+      "from_y": -18,
+      "to_y": 0,
+      "ease": 0.287175
+    },
+    {
+      "duration": 0.5,
+      "end_time": 0.2,
+      "from_y": 180,
+      "to_y": 152,
+      "ease": 0.287174
+    },
+    {
+      "duration": 0.5,
+      "end_time": 0.15,
+      "from_y": 0,
+      "to_y": -18,
+      "ease": 2.2974
+    },
+    {
+      "duration": 0.5,
+      "end_time": 0.15,
+      "from_y": 152,
+      "to_y": 180,
+      "ease": 2.2974
+    }
+  ],
+  "scope": "Original dialogue-owned layer-1 Blackbars, before dialogue UI. Source 320x180 is exact; native 400x240 stretches width and bottom-anchors the original 28-pixel lower bar. No world mask, collision, movement, camera or actor visibility changes."
+}

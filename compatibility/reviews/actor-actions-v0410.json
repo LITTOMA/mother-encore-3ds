@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "game_version": "0.4.1.0",
+  "whole_file_approved": false,
+  "symbols": [
+    "_physics_process",
+    "move_queue",
+    "_move_to",
+    "jump",
+    "shake",
+    "set_direction",
+    "blend_position",
+    "play_anim",
+    "_set_special_sprite",
+    "set_shadow",
+    "turn_to"
+  ],
+  "sources": {
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Data/Animations/Lamp.yaml": "eb5043e8979cb5ed982ae75a5a95a89ebca765324d564da10759fa27736c66ed",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Graphics/Character Sprites/Npcs/1dir/lamp.png": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb"
+  },
+  "function_sha256": {
+    "_physics_process": "0b837a0ec49f47ae2ab66ab38a7224f9f2ce9b4d0a6ef64ef29c4823d72a42c9",
+    "move_queue": "e89ce2bf352eb4b86aee998a0c66f798cdba57b56e02fdfa05f590d0b3d1c54a",
+    "_move_to": "8860d771468bda3f2837de9deb054b0a1cea4bcfaafdbc4f24aeb0cdd153f32c",
+    "jump": "9aaa6e48c698001ae185bb9abff1308a4fe3b80b1cef9c52bc4a9ddfcdcaea27",
+    "shake": "a21a52475053d386b8100a4a7057cc00def775ef57409daf7d23b45122cfd7bc",
+    "set_direction": "c7f3c738395ddf79bca51f5aad5c36992da326f69fcb60710297ffaccae255b5",
+    "blend_position": "29ed26068193c2a14543ab239889d947424b65e52308d2fd29a03c534abd5505",
+    "play_anim": "99de1d87308e40b40b16db6950a4d1d82b16d06ca663529c321e2e0248a53666",
+    "_set_special_sprite": "6c542e43aff946fb66dc76de3b5f88f1c2642e4b7dfa81d539e585d4e14a6796",
+    "set_shadow": "882b84b8800f9b5ff1f9af1e81763937b3df874e5df62509c69ca0184ca6ef6e",
+    "turn_to": "84f81de431c6eef3f96e6486d94818e6579687874a7a1d5e458819ecb6d6abb2"
+  },
+  "scope": "lamp_attack Actor replacement free position movement, timed turn_to, default jumps, finite x shakes, Lamp Idle/Open, Ninten idle direction and surprise emote; isolated engine functions, not full actors or game",
+  "reference_overrides": [
+    "Global.talker is null because only Idle/Open are tested; talk branch untested",
+    "Source CharacterSprite AnimationTree and emote AnimationPlayer run their native automatic idle process; Timer nodes run after Actor animation nodes in tree order.",
+    "Textures absent; audited sprite positions/offsets initialized from scene/YAML dimensions",
+    "Actor replacement/battle/party/audio services excluded; source movement/jump/shake/play_anim functions unchanged"
+  ],
+  "not_implemented": [
+    "General move queue actions besides position",
+    "Looping shakes",
+    "Crouch or repeated jumps",
+    "Full NPC lifecycle",
+    "Battle",
+    "Audio",
+    "Arbitrary concurrent scripts",
+    "Overlapping turn_to calls",
+    "turn_to during motion/jump/shake; not exercised by lamp_attack"
+  ],
+  "numeric_contract": "Official single-precision Godot engine callbacks supply double(1.0f/60.0f). In particular ceil(600*delta)=11. Position/velocity and animation clock use float; SceneTreeTimer countdown double consumes float callback delta.",
+  "phase_contract": "Actor physics then SceneTreeTween physics; native automatic AnimationTree/AnimationPlayer idle advancement then Timer-node timeout callbacks then SceneTreeTimer callbacks. New callback-created SceneTreeTimers wait until next timer iteration; new timers from idle nodes advance same frame.",
+  "turn_to_contract": "Dialogue actorsturn calls turn_to(default0.08,false), not set_direction. Normalize+round current/target, take signed literal45-radian rotations then round, apply first step immediately, yield a new SceneTreeTimer after every step including final target, finally IDLE and finished_action. ROTATING does not round actor root position."
+}

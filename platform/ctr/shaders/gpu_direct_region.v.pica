@@ -1,0 +1,10 @@
+; Sparse span input: x, y, width, ignored; RGBA bytes.
+.constf values(0.0, 1.0, 0.00392156862745098, 0.5)
+.out span dummy
+.out color dummy
+.entry vmain
+.proc vmain
+ mov span, v0
+ mul color, values.z, v1
+ end
+.end

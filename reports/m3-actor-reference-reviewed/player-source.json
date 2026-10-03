@@ -1,0 +1,554 @@
+{
+  "blockers": [
+    "script defaults and runtime factories",
+    "script behavior and signals",
+    "dynamic resource paths",
+    "animation method calls",
+    "native mechanism coverage"
+  ],
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "files": {
+    "Audio/Sound effects/Laugh Small.mp3": {
+      "bytes": 7847,
+      "sha256": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03"
+    },
+    "Audio/Sound effects/Ninten Bat.mp3": {
+      "bytes": 37615,
+      "sha256": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50"
+    },
+    "Audio/Sound effects/Shock.mp3": {
+      "bytes": 53416,
+      "sha256": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de"
+    },
+    "Graphics/Character Sprites/Ana/special.png": {
+      "bytes": 1975,
+      "sha256": "bb6e22d5f67239a71871c1f881fb4285bdba17208af17453748d942ea7b0b344"
+    },
+    "Graphics/Character Sprites/Lloyd/special.png": {
+      "bytes": 21217,
+      "sha256": "e4253fbd3d651fc9cc3d3e48e5d409fa8869452372f8ab17d5d2e789ef98ac99"
+    },
+    "Graphics/Character Sprites/Magic_Ripple.png": {
+      "bytes": 194,
+      "sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0"
+    },
+    "Graphics/Character Sprites/Ninten/bat_swing.png": {
+      "bytes": 13951,
+      "sha256": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898"
+    },
+    "Graphics/Character Sprites/Ninten/main.png": {
+      "bytes": 40018,
+      "sha256": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9"
+    },
+    "Graphics/Character Sprites/Ninten/special.png": {
+      "bytes": 33276,
+      "sha256": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9"
+    },
+    "Graphics/Character Sprites/Shadow.png": {
+      "bytes": 104,
+      "sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7"
+    },
+    "Graphics/Character Sprites/Sweat_drop.png": {
+      "bytes": 511,
+      "sha256": "89c899a00b9b6c69888618ce62d2b5c7bbb50411663e9d6f6316ce1152316164"
+    },
+    "Graphics/Character Sprites/Water_Ripple.png": {
+      "bytes": 136,
+      "sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6"
+    },
+    "Graphics/Other/emotes/emotes.png": {
+      "bytes": 7835,
+      "sha256": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb"
+    },
+    "Graphics/UI/Inventory/cursor.png": {
+      "bytes": 142,
+      "sha256": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af"
+    },
+    "Graphics/VFX/AnaPSISparks.png": {
+      "bytes": 7815,
+      "sha256": "c7b9bacef7ea276641c25830cda411989191f50346954b565901ab0c63d86a68"
+    },
+    "Nodes/Reusables/Effects/AfterImageCreator.tscn": {
+      "bytes": 341,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/misc/AfterImageCreator.gd",
+          "source": "Nodes/Reusables/Effects/AfterImageCreator.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "bc5ba18c2b017f08d02bc059495c944a1d9bcd9273165fdab67f5527457a9adf",
+      "sha256": "6e7436316f5ced4d3d9ef8f1416cfa7b2cd860ca739e1534369c3a00fe10122e"
+    },
+    "Nodes/Reusables/Overlap/Hitbox.tscn": {
+      "bytes": 162,
+      "external_resources": [],
+      "native_font_payloads": [],
+      "reference_sha256": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
+      "sha256": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23"
+    },
+    "Nodes/Reusables/Player.tscn": {
+      "bytes": 241795,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Character Sprites/Ninten/main.png",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Scripts/Main/party/Player.gd",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Nodes/Ui/Camera.tscn",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 4,
+          "line": 6,
+          "path": "Graphics/Character Sprites/Ninten/special.png",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 5,
+          "line": 7,
+          "path": "Nodes/Reusables/Overlap/Hitbox.tscn",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 6,
+          "line": 8,
+          "path": "Nodes/Reusables/Shadow.tscn",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 7,
+          "line": 9,
+          "path": "Graphics/Character Sprites/Lloyd/special.png",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 8,
+          "line": 10,
+          "path": "Nodes/Ui/emotes.tscn",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 9,
+          "line": 11,
+          "path": "Audio/Sound effects/Ninten Bat.mp3",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "AudioStream"
+        },
+        {
+          "id": 10,
+          "line": 12,
+          "path": "Scripts/misc/character_tint.gd",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 11,
+          "line": 13,
+          "path": "Graphics/Character Sprites/Ana/special.png",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 12,
+          "line": 14,
+          "path": "Graphics/VFX/AnaPSISparks.png",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 13,
+          "line": 15,
+          "path": "Nodes/Reusables/Sweatdrops.tscn",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 14,
+          "line": 16,
+          "path": "Shaders/Outline.shader",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Shader"
+        },
+        {
+          "id": 15,
+          "line": 17,
+          "path": "Nodes/Reusables/Effects/AfterImageCreator.tscn",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 16,
+          "line": 18,
+          "path": "Scripts/misc/DustCreator.gd",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 17,
+          "line": 19,
+          "path": "Nodes/Reusables/sprite_data_fetcher.tscn",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "PackedScene"
+        },
+        {
+          "id": 18,
+          "line": 20,
+          "path": "Graphics/Character Sprites/Ninten/bat_swing.png",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 19,
+          "line": 21,
+          "path": "Scripts/misc/NintenBatSwing.gd",
+          "source": "Nodes/Reusables/Player.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "a87021fae4c7ad0d46a0bed3ed31ed9eaefbb1151ef05f8ecc492931d4c9c0da",
+      "sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2"
+    },
+    "Nodes/Reusables/Shadow.tscn": {
+      "bytes": 1637,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Character Sprites/Shadow.png",
+          "source": "Nodes/Reusables/Shadow.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Scripts/Main/Shadow.gd",
+          "source": "Nodes/Reusables/Shadow.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Graphics/Character Sprites/Water_Ripple.png",
+          "source": "Nodes/Reusables/Shadow.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 4,
+          "line": 6,
+          "path": "Graphics/Character Sprites/Magic_Ripple.png",
+          "source": "Nodes/Reusables/Shadow.tscn",
+          "type": "Texture"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "8dc815edb37a4f1c7185a75a25bcfe65b227a635178b9d8292a4508db2c97dd7",
+      "sha256": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b"
+    },
+    "Nodes/Reusables/Sweatdrops.tscn": {
+      "bytes": 1428,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Character Sprites/Sweat_drop.png",
+          "source": "Nodes/Reusables/Sweatdrops.tscn",
+          "type": "Texture"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "770e43a7852e0896fee0c3ebdbd7d7204200495a5f0aa6a8dd426cbd6cd7275a",
+      "sha256": "770e43a7852e0896fee0c3ebdbd7d7204200495a5f0aa6a8dd426cbd6cd7275a"
+    },
+    "Nodes/Reusables/sprite_data_fetcher.tscn": {
+      "bytes": 186,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Scripts/Main/SpriteDataFetcher.gd",
+          "source": "Nodes/Reusables/sprite_data_fetcher.tscn",
+          "type": "Script"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "d25ce3684afb21aa7e4a2b48ef112c23250bb06ead6f983d6f47eff441f1af30",
+      "sha256": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5"
+    },
+    "Nodes/Ui/Camera.tscn": {
+      "bytes": 1230,
+      "external_resources": [
+        {
+          "id": 4,
+          "line": 3,
+          "path": "Scripts/Main/Camera2D.gd",
+          "source": "Nodes/Ui/Camera.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 7,
+          "line": 4,
+          "path": "Nodes/Ui/MapScreen/MapArrows.tscn",
+          "source": "Nodes/Ui/Camera.tscn",
+          "type": "PackedScene"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "a0600e516795bad23c28935385f09db48ef22ac821d702a405721ad1dd1dddcd",
+      "sha256": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466"
+    },
+    "Nodes/Ui/MapScreen/MapArrows.tscn": {
+      "bytes": 12757,
+      "external_resources": [
+        {
+          "id": 2,
+          "line": 3,
+          "path": "Scripts/UI/MapScreen/MapArrows.gd",
+          "source": "Nodes/Ui/MapScreen/MapArrows.tscn",
+          "type": "Script"
+        },
+        {
+          "id": 3,
+          "line": 4,
+          "path": "Graphics/UI/Inventory/cursor.png",
+          "source": "Nodes/Ui/MapScreen/MapArrows.tscn",
+          "type": "Texture"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "df3889ba5600f10659806e68d34d4dd38785c15ce47d94d780bf852c7ce13666",
+      "sha256": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e"
+    },
+    "Nodes/Ui/emotes.tscn": {
+      "bytes": 10847,
+      "external_resources": [
+        {
+          "id": 1,
+          "line": 3,
+          "path": "Graphics/Other/emotes/emotes.png",
+          "source": "Nodes/Ui/emotes.tscn",
+          "type": "Texture"
+        },
+        {
+          "id": 2,
+          "line": 4,
+          "path": "Audio/Sound effects/Shock.mp3",
+          "source": "Nodes/Ui/emotes.tscn",
+          "type": "AudioStream"
+        },
+        {
+          "id": 3,
+          "line": 5,
+          "path": "Audio/Sound effects/Laugh Small.mp3",
+          "source": "Nodes/Ui/emotes.tscn",
+          "type": "AudioStream"
+        }
+      ],
+      "native_font_payloads": [],
+      "reference_sha256": "8115009d8c898bbff32ff7ae8f92eff56f8e736d690b748d21ab56e993ab07a9",
+      "sha256": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb"
+    },
+    "Scripts/Main/Camera2D.gd": {
+      "bytes": 6238,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
+    },
+    "Scripts/Main/Shadow.gd": {
+      "bytes": 326,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae"
+    },
+    "Scripts/Main/SpriteDataFetcher.gd": {
+      "bytes": 1617,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9"
+    },
+    "Scripts/Main/party/Player.gd": {
+      "bytes": 27187,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b"
+    },
+    "Scripts/UI/MapScreen/MapArrows.gd": {
+      "bytes": 2521,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
+    },
+    "Scripts/misc/AfterImageCreator.gd": {
+      "bytes": 641,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "44ef601a4b969553b707a7a05100c747b8cb7d2f161486232a119dbf5fc95dd3"
+    },
+    "Scripts/misc/DustCreator.gd": {
+      "bytes": 807,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "5c48002707bb12c27d79041f812636731099879fae1c6caec066d3fc4807d410"
+    },
+    "Scripts/misc/NintenBatSwing.gd": {
+      "bytes": 361,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a"
+    },
+    "Scripts/misc/character_tint.gd": {
+      "bytes": 625,
+      "quarantined": "not executed; defaults and behavior require mechanism adapter",
+      "sha256": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744"
+    },
+    "Shaders/Outline.shader": {
+      "bytes": 1377,
+      "sha256": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999"
+    }
+  },
+  "game_version": "0.4.1.0",
+  "native_compatible": false,
+  "scene": "Nodes/Reusables/Player.tscn",
+  "schema": 1,
+  "scope": "native serialized scene data only; script behavior NOT executed",
+  "script_attachments": [
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 8934,
+      "node_declaration": "[node name=\"Player\" type=\"KinematicBody2D\"]",
+      "script": "Scripts/Main/party/Player.gd",
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 19 )",
+      "line": 8977,
+      "node_declaration": "[node name=\"NintenBat\" type=\"Sprite\" parent=\"SpecialAnimations\"]",
+      "script": "Scripts/misc/NintenBatSwing.gd",
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 16 )",
+      "line": 9237,
+      "node_declaration": "[node name=\"DustCreator\" type=\"Node2D\" parent=\".\"]",
+      "script": "Scripts/misc/DustCreator.gd",
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 10 )",
+      "line": 9252,
+      "node_declaration": "[node name=\"CharacterTint\" type=\"Node\" parent=\".\"]",
+      "script": "Scripts/misc/character_tint.gd",
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 6,
+      "node_declaration": "[node name=\"SpriteDataFetcher\" type=\"Node\"]",
+      "script": "Scripts/Main/SpriteDataFetcher.gd",
+      "source": "Nodes/Reusables/sprite_data_fetcher.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 1 )",
+      "line": 6,
+      "node_declaration": "[node name=\"AfterImageCreator\" type=\"Node\"]",
+      "script": "Scripts/misc/AfterImageCreator.gd",
+      "source": "Nodes/Reusables/Effects/AfterImageCreator.tscn"
+    },
+    {
+      "declaration": "script = SubResource( 6 )",
+      "embedded_script": {
+        "embedded_declaration": "[sub_resource type=\"GDScript\" id=6]\nscript/source = \"extends Sprite\n\nexport (NodePath) var objectPath\n\nonready var animaPlayer = $AnimationPlayer\nonready var object = get_node_or_null(objectPath)\n\nfunc _on_AnimationPlayer_animation_started(anim_name):\n\tif anim_name in [\\\"sweat\\\", \\\"angry\\\"]:\n\t\tvar direction\n\t\tvar emotive_parent := get_parent()\n\t\twhile !emotive_parent.has_method(\\\"get_direction\\\"):\n\t\t\temotive_parent = emotive_parent.get_parent()\n\t\tif emotive_parent.has_method(\\\"get_direction\\\"):\n\t\t\tdirection = emotive_parent.get_direction()\n\t\tif direction.x < 0:\n\t\t\tscale.x = -1\n\telse:\n\t\tscale.x = 1\n\nfunc set_bubble_offset():\n\tposition.y = -(object.texture.get_height() / object.vframes + 8)\n\t#print(position.y)\n\"\n__meta__ = {\n\"Scene_Path\": \"res://Nodes/Ui/emotes.tscn\"\n}\n\n",
+        "line": 7,
+        "path": "Nodes/Ui/emotes.tscn::6",
+        "sha256": "472089970f9b1e3fb2fab75b0ab357ec438550e3c58b5f2391ab3b06bfc5afb0",
+        "source": "Nodes/Ui/emotes.tscn"
+      },
+      "line": 373,
+      "node_declaration": "[node name=\"emotes\" type=\"Sprite\"]",
+      "script": "Nodes/Ui/emotes.tscn::6",
+      "source": "Nodes/Ui/emotes.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 59,
+      "node_declaration": "[node name=\"Shadow\" type=\"AnimatedSprite\"]",
+      "script": "Scripts/Main/Shadow.gd",
+      "source": "Nodes/Reusables/Shadow.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 4 )",
+      "line": 27,
+      "node_declaration": "[node name=\"Camera2D\" type=\"Camera2D\"]",
+      "script": "Scripts/Main/Camera2D.gd",
+      "source": "Nodes/Ui/Camera.tscn"
+    },
+    {
+      "declaration": "script = ExtResource( 2 )",
+      "line": 458,
+      "node_declaration": "[node name=\"MapArrows\" type=\"Node2D\"]",
+      "script": "Scripts/UI/MapScreen/MapArrows.gd",
+      "source": "Nodes/Ui/MapScreen/MapArrows.tscn"
+    }
+  ],
+  "signal_connections": [
+    {
+      "declaration": "[connection signal=\"animation_finished\" from=\"OutlineAnim\" to=\".\" method=\"_on_OutlineAnim_animation_finished\"]",
+      "line": 9255,
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"AimTime\" to=\".\" method=\"_on_AimTime_timeout\"]",
+      "line": 9256,
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"BlinkTime\" to=\".\" method=\"_on_BlinkTime_timeout\"]",
+      "line": 9257,
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"PKTime\" to=\".\" method=\"_on_PKTime_timeout\"]",
+      "line": 9258,
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"TPCrouchTime\" to=\".\" method=\"_on_TPCrouchTime_timeout\"]",
+      "line": 9259,
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"TPTakeOffTime\" to=\".\" method=\"_on_TPTakeOffTime_timeout\"]",
+      "line": 9260,
+      "source": "Nodes/Reusables/Player.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"timeout\" from=\"Timer\" to=\".\" method=\"_on_Timer_timeout\"]",
+      "line": 12,
+      "source": "Nodes/Reusables/Effects/AfterImageCreator.tscn"
+    },
+    {
+      "declaration": "[connection signal=\"animation_started\" from=\"AnimationPlayer\" to=\".\" method=\"_on_AnimationPlayer_animation_started\"]",
+      "line": 395,
+      "source": "Nodes/Ui/emotes.tscn"
+    }
+  ],
+  "tools": {
+    "tools/godot_exporter/import_plugin.gd": "8a0ba75521db1cb1e89c200228ea8143477cde215e755da0efc844d6f27cd07b",
+    "tools/godot_exporter/scene_data.gd": "6a8e39ca9aca3aec0a06618adfa74fed28e69085015af4fe6929991c2d63edba",
+    "tools/scene_reference.py": "f6baf629675eb414bfcce269af4b54c34621c91e798648b3ca5fa948fe258723"
+  }
+}

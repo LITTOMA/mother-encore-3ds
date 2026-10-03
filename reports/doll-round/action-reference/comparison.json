@@ -1,0 +1,198 @@
+[
+  {
+    "seed": 0,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 58,
+      "enemy_hp": 22,
+      "turn": 2,
+      "raw_draw_count": 18,
+      "next_randi": "612535561",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 16,
+          "smash": false
+        },
+        {
+          "actor": 1,
+          "target": 0,
+          "damage": 4,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "seed": 1,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 58,
+      "enemy_hp": 21,
+      "turn": 2,
+      "raw_draw_count": 18,
+      "next_randi": "2594448518",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 17,
+          "smash": false
+        },
+        {
+          "actor": 1,
+          "target": 0,
+          "damage": 4,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "seed": 2,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 57,
+      "enemy_hp": 23,
+      "turn": 2,
+      "raw_draw_count": 18,
+      "next_randi": "130393095",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 15,
+          "smash": false
+        },
+        {
+          "actor": 1,
+          "target": 0,
+          "damage": 5,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "seed": 3,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 58,
+      "enemy_hp": 23,
+      "turn": 2,
+      "raw_draw_count": 18,
+      "next_randi": "2829605564",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 15,
+          "smash": false
+        },
+        {
+          "actor": 1,
+          "target": 0,
+          "damage": 4,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "seed": 4,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 62,
+      "enemy_hp": 21,
+      "turn": 2,
+      "raw_draw_count": 9,
+      "next_randi": "4230674709",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 17,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "seed": 5,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 57,
+      "enemy_hp": 22,
+      "turn": 2,
+      "raw_draw_count": 18,
+      "next_randi": "2523198271",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 16,
+          "smash": false
+        },
+        {
+          "actor": 1,
+          "target": 0,
+          "damage": 5,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "seed": 6,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 62,
+      "enemy_hp": 22,
+      "turn": 2,
+      "raw_draw_count": 9,
+      "next_randi": "3985637069",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 16,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  },
+  {
+    "seed": 7,
+    "actual": {
+      "boundary": "next_menu",
+      "player_hp": 57,
+      "enemy_hp": 21,
+      "turn": 2,
+      "raw_draw_count": 18,
+      "next_randi": "2093886535",
+      "decisions": [
+        {
+          "actor": 0,
+          "target": 1,
+          "damage": 17,
+          "smash": false
+        },
+        {
+          "actor": 1,
+          "target": 0,
+          "damage": 5,
+          "smash": false
+        }
+      ]
+    },
+    "match": true
+  }
+]

@@ -1,0 +1,3 @@
+[submodule "upstream/MOTHER-Encore"]
+	path = upstream/MOTHER-Encore
+	url = https://github.com/motherencore/MOTHER-Encore-Source-Code.git

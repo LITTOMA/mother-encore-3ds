@@ -1,0 +1,1385 @@
+{
+  "schema": 1,
+  "coverage": "native_instantiated_data_with_raw_scene_states",
+  "native_compatible": false,
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "source": "res://instances.tscn",
+  "nodes": [
+    {
+      "path": ".",
+      "name": "Instances",
+      "class": "Node2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 100,
+          "y": 200
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 1
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "script": null
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 1
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 100,
+          "y": 200
+        }
+      }
+    },
+    {
+      "path": "First",
+      "name": "First",
+      "class": "Node2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 5,
+          "y": 6
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 3
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "script": {
+          "type": "ResourceReference",
+          "id": 2
+        },
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "identity",
+              {
+                "type": "int64",
+                "value": "9223372036854775807"
+              }
+            ],
+            [
+              "negative",
+              {
+                "type": "int64",
+                "value": "-9223372036854775808"
+              }
+            ],
+            [
+              "path",
+              {
+                "type": "NodePath",
+                "value": "Body/Shape"
+              }
+            ],
+            [
+              "pool",
+              {
+                "type": "PoolIntArray",
+                "value": [
+                  {
+                    "type": "int64",
+                    "value": "-1"
+                  },
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  },
+                  {
+                    "type": "int64",
+                    "value": "2147483647"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "speed": {
+          "type": "int64",
+          "value": "128"
+        },
+        "from_script": "default from script"
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 105,
+          "y": 206
+        }
+      }
+    },
+    {
+      "path": "First/Body",
+      "name": "Body",
+      "class": "StaticBody2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 4,
+          "y": 5
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 1
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "collision_layer": {
+          "type": "int64",
+          "value": "5"
+        },
+        "collision_mask": {
+          "type": "int64",
+          "value": "0"
+        },
+        "input_pickable": false,
+        "constant_linear_velocity": {
+          "type": "Vector2",
+          "x": 0,
+          "y": 0
+        },
+        "constant_angular_velocity": 0,
+        "physics_material_override": null,
+        "script": null
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 113,
+          "y": 221
+        }
+      },
+      "physics_shape_owners": [
+        {
+          "owner": {
+            "type": "NodeReference",
+            "path": "First/Body/Shape"
+          },
+          "transform": {
+            "type": "Transform2D",
+            "x": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 0
+            },
+            "y": {
+              "type": "Vector2",
+              "x": -0,
+              "y": 1
+            },
+            "origin": {
+              "type": "Vector2",
+              "x": 2,
+              "y": -1
+            }
+          },
+          "cached_transform_before_enter_tree": {
+            "type": "Transform2D",
+            "x": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 0
+            },
+            "y": {
+              "type": "Vector2",
+              "x": -0,
+              "y": 1
+            },
+            "origin": {
+              "type": "Vector2",
+              "x": 1,
+              "y": -2
+            }
+          },
+          "disabled": true,
+          "one_way": false,
+          "one_way_margin": 1,
+          "shapes": [
+            {
+              "type": "ResourceReference",
+              "id": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "First/Body/Shape",
+      "name": "Shape",
+      "class": "CollisionShape2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 2,
+          "y": -1
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 1
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "shape": {
+          "type": "ResourceReference",
+          "id": 3
+        },
+        "disabled": true,
+        "one_way_collision": false,
+        "one_way_collision_margin": 1,
+        "script": null
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 117,
+          "y": 218
+        }
+      }
+    },
+    {
+      "path": "First/NewChild",
+      "name": "NewChild",
+      "class": "Position2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 9,
+          "y": 11
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 1
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "script": null
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 123,
+          "y": 239
+        }
+      }
+    },
+    {
+      "path": "Second",
+      "name": "Second",
+      "class": "Node2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": -5,
+          "y": -6
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 3
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "script": {
+          "type": "ResourceReference",
+          "id": 2
+        },
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "identity",
+              {
+                "type": "int64",
+                "value": "9223372036854775807"
+              }
+            ],
+            [
+              "negative",
+              {
+                "type": "int64",
+                "value": "-9223372036854775808"
+              }
+            ],
+            [
+              "path",
+              {
+                "type": "NodePath",
+                "value": "Body/Shape"
+              }
+            ],
+            [
+              "pool",
+              {
+                "type": "PoolIntArray",
+                "value": [
+                  {
+                    "type": "int64",
+                    "value": "-1"
+                  },
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  },
+                  {
+                    "type": "int64",
+                    "value": "2147483647"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        "speed": {
+          "type": "int64",
+          "value": "96"
+        },
+        "from_script": "default from script"
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 95,
+          "y": 194
+        }
+      }
+    },
+    {
+      "path": "Second/Body",
+      "name": "Body",
+      "class": "StaticBody2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 4,
+          "y": 5
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 1
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "collision_layer": {
+          "type": "int64",
+          "value": "5"
+        },
+        "collision_mask": {
+          "type": "int64",
+          "value": "0"
+        },
+        "input_pickable": false,
+        "constant_linear_velocity": {
+          "type": "Vector2",
+          "x": 0,
+          "y": 0
+        },
+        "constant_angular_velocity": 0,
+        "physics_material_override": null,
+        "script": null
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 103,
+          "y": 209
+        }
+      },
+      "physics_shape_owners": [
+        {
+          "owner": {
+            "type": "NodeReference",
+            "path": "Second/Body/Shape"
+          },
+          "transform": {
+            "type": "Transform2D",
+            "x": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 0
+            },
+            "y": {
+              "type": "Vector2",
+              "x": -0,
+              "y": 1
+            },
+            "origin": {
+              "type": "Vector2",
+              "x": 2,
+              "y": -1
+            }
+          },
+          "cached_transform_before_enter_tree": {
+            "type": "Transform2D",
+            "x": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 0
+            },
+            "y": {
+              "type": "Vector2",
+              "x": -0,
+              "y": 1
+            },
+            "origin": {
+              "type": "Vector2",
+              "x": 1,
+              "y": -2
+            }
+          },
+          "disabled": false,
+          "one_way": false,
+          "one_way_margin": 1,
+          "shapes": [
+            {
+              "type": "ResourceReference",
+              "id": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Second/Body/Shape",
+      "name": "Shape",
+      "class": "CollisionShape2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 2,
+          "y": -1
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 1
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "shape": {
+          "type": "ResourceReference",
+          "id": 3
+        },
+        "disabled": false,
+        "one_way_collision": false,
+        "one_way_collision_margin": 1,
+        "script": null
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 107,
+          "y": 206
+        }
+      }
+    },
+    {
+      "path": "Second/NewChild",
+      "name": "NewChild",
+      "class": "Position2D",
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "physics_interpolation_mode": {
+          "type": "int64",
+          "value": "0"
+        },
+        "unique_name_in_owner": false,
+        "process_priority": {
+          "type": "int64",
+          "value": "0"
+        },
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        },
+        "show_behind_parent": false,
+        "light_mask": {
+          "type": "int64",
+          "value": "1"
+        },
+        "material": null,
+        "use_parent_material": false,
+        "position": {
+          "type": "Vector2",
+          "x": 9,
+          "y": 11
+        },
+        "rotation": 0,
+        "scale": {
+          "type": "Vector2",
+          "x": 1,
+          "y": 1
+        },
+        "z_index": {
+          "type": "int64",
+          "value": "0"
+        },
+        "z_as_relative": true,
+        "script": null
+      },
+      "world_transform": {
+        "type": "Transform2D",
+        "x": {
+          "type": "Vector2",
+          "x": 2,
+          "y": 0
+        },
+        "y": {
+          "type": "Vector2",
+          "x": -0,
+          "y": 3
+        },
+        "origin": {
+          "type": "Vector2",
+          "x": 113,
+          "y": 227
+        }
+      }
+    }
+  ],
+  "resources": [
+    {
+      "id": 0,
+      "class": "PackedScene",
+      "path": "res://derived.tscn"
+    },
+    {
+      "id": 1,
+      "class": "PackedScene",
+      "path": "res://base.tscn"
+    },
+    {
+      "id": 2,
+      "class": "GDScript",
+      "path": "res://defaults.gd",
+      "source_code": "extends Node2D\nexport var speed = 64\nexport var from_script = \"default from script\"\nvar ready_executed = false\nfunc _ready():\n    ready_executed = true\n    assert(false) # Export must never enter the SceneTree.\nfunc signal_target(_value):\n    pass\n"
+    },
+    {
+      "id": 3,
+      "class": "RectangleShape2D",
+      "path": "res://base.tscn::1",
+      "properties": {
+        "resource_local_to_scene": false,
+        "resource_name": "",
+        "custom_solver_bias": 0,
+        "extents": {
+          "type": "Vector2",
+          "x": 7,
+          "y": 3
+        },
+        "script": null
+      }
+    }
+  ],
+  "scene_states": [
+    {
+      "source": "res://instances.tscn",
+      "nodes": [
+        {
+          "path": ".",
+          "class": "Node2D",
+          "name": "Instances",
+          "owner": "",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": null,
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 100,
+              "y": 200
+            }
+          }
+        },
+        {
+          "path": "./First",
+          "class": "",
+          "name": "First",
+          "owner": ".",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": {
+            "type": "ResourceReference",
+            "id": 0
+          },
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 5,
+              "y": 6
+            },
+            "speed": {
+              "type": "int64",
+              "value": "128"
+            }
+          }
+        },
+        {
+          "path": "./First/Body/Shape",
+          "class": "",
+          "name": "Shape",
+          "owner": "",
+          "sibling_index": 0,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": null,
+          "properties": {
+            "disabled": true
+          }
+        },
+        {
+          "path": "./Second",
+          "class": "",
+          "name": "Second",
+          "owner": ".",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": {
+            "type": "ResourceReference",
+            "id": 0
+          },
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": -5,
+              "y": -6
+            }
+          }
+        }
+      ],
+      "connections": [
+
+      ]
+    },
+    {
+      "source": "res://derived.tscn",
+      "nodes": [
+        {
+          "path": ".",
+          "class": "",
+          "name": "Derived",
+          "owner": "",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": {
+            "type": "ResourceReference",
+            "id": 1
+          },
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 3,
+              "y": 4
+            },
+            "speed": {
+              "type": "int64",
+              "value": "96"
+            }
+          }
+        },
+        {
+          "path": "./Body/Shape",
+          "class": "",
+          "name": "Shape",
+          "owner": "",
+          "sibling_index": 0,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": null,
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 2,
+              "y": -1
+            }
+          }
+        },
+        {
+          "path": "./NewChild",
+          "class": "Position2D",
+          "name": "NewChild",
+          "owner": ".",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": null,
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 9,
+              "y": 11
+            }
+          }
+        }
+      ],
+      "connections": [
+
+      ]
+    },
+    {
+      "source": "res://base.tscn",
+      "nodes": [
+        {
+          "path": ".",
+          "class": "Node2D",
+          "name": "Base",
+          "owner": "",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": null,
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 10,
+              "y": 20
+            },
+            "scale": {
+              "type": "Vector2",
+              "x": 2,
+              "y": 3
+            },
+            "script": {
+              "type": "ResourceReference",
+              "id": 2
+            },
+            "__meta__": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "identity",
+                  {
+                    "type": "int64",
+                    "value": "9223372036854775807"
+                  }
+                ],
+                [
+                  "negative",
+                  {
+                    "type": "int64",
+                    "value": "-9223372036854775808"
+                  }
+                ],
+                [
+                  "path",
+                  {
+                    "type": "NodePath",
+                    "value": "Body/Shape"
+                  }
+                ],
+                [
+                  "pool",
+                  {
+                    "type": "PoolIntArray",
+                    "value": [
+                      {
+                        "type": "int64",
+                        "value": "-1"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "0"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "2147483647"
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          }
+        },
+        {
+          "path": "./Body",
+          "class": "StaticBody2D",
+          "name": "Body",
+          "owner": ".",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": null,
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 4,
+              "y": 5
+            },
+            "collision_layer": {
+              "type": "int64",
+              "value": "5"
+            },
+            "collision_mask": {
+              "type": "int64",
+              "value": "0"
+            }
+          }
+        },
+        {
+          "path": "./Body/Shape",
+          "class": "CollisionShape2D",
+          "name": "Shape",
+          "owner": ".",
+          "sibling_index": -1,
+          "groups": {
+            "type": "PoolStringArray",
+            "value": [
+
+            ]
+          },
+          "instance": null,
+          "properties": {
+            "position": {
+              "type": "Vector2",
+              "x": 1,
+              "y": -2
+            },
+            "shape": {
+              "type": "ResourceReference",
+              "id": 3
+            }
+          }
+        }
+      ],
+      "connections": [
+        {
+          "source": ".",
+          "target": ".",
+          "signal": "ready",
+          "method": "signal_target",
+          "flags": 2,
+          "binds": {
+            "type": "Array",
+            "value": [
+              {
+                "type": "int64",
+                "value": "7"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "not_executed": [
+    "_ready",
+    "_process",
+    "_physics_process",
+    "animation playback"
+  ],
+  "blockers": [
+    "script mechanism/default bindings",
+    "runtime factories",
+    "signals",
+    "method tracks"
+  ]
+}

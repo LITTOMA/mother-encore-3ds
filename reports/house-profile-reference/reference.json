@@ -1,0 +1,3679 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine": {
+    "build": "official",
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "hex": 198146,
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "status": "stable",
+    "string": "3.6.2-stable (official)",
+    "year": 2025
+  },
+  "methods": {
+    "_create_animations": "426005e609ca5d652aa14d43ebf432becdf565ff9067de3b0895ca8b4911571b",
+    "_create_tree": "b01939bb3aa0ea3504b00943097144d923fac3f7175eaa78b36e9f2b9ca21084",
+    "blend_position": "c80e4c337dd587bd13bbe93307ca94d4967b376d46d9df9f0b118f4fd01be004",
+    "get_state": "234afa22556f0a4e4f1e815b59d27183faac82308f331b4b0bb293d8b4b42e99",
+    "set_spritesheet": "92097b3580eb0cf3c315974025875d63848006f3920837eaee08c099bbb16109",
+    "travel": "0bb4052328bb11f6feeb8fb71f7c2b877644adeb6c02194b021299ab78cef223"
+  },
+  "presentation_sha256": "820526bfd289233cd68f2017d60868e747ce9f566c1c22735cc456a96b229783",
+  "profiles": [
+    {
+      "combined_offset": [
+        0,
+        -7
+      ],
+      "frame": 1,
+      "frames": [
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 0
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 1
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 2
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 3
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 4
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 5
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 6
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 7
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 8
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 9
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 10
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 11
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 12
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 13
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 14
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 15
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 16
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 17
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 18
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 19
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 20
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 21
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 22
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 23
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 24
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 25
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 26
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 27
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 28
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 29
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 30
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 31
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 32
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 33
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 34
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 35
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 36
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 37
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 38
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 39
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 40
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 41
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 42
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 43
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 44
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 45
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 46
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 47
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 48
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 49
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 50
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 51
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 52
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 53
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 54
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 55
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 56
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 57
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 58
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 59
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 60
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 61
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 62
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 63
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 64
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 65
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 66
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 67
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 68
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 69
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 70
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 71
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 72
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 73
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 74
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 75
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 76
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 77
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 78
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 79
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 80
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 81
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 82
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 83
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 84
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 85
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 86
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 87
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 88
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 89
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 90
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 91
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 92
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 93
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 94
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 95
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 96
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 97
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 98
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 99
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 100
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 101
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 102
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 103
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 104
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 105
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 106
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 107
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 108
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 109
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 110
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 111
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 112
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 113
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 114
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 115
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 116
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 117
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 118
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 119
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 120
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 121
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 122
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 123
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 124
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 125
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 126
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 127
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 128
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 129
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 130
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 131
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 132
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 133
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 134
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 135
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 136
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 137
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 138
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 139
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 140
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 141
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 142
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 143
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 144
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 145
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 146
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 147
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 148
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 149
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 150
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 151
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 152
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 153
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 154
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 155
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 156
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 157
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 158
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 159
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 160
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 161
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 162
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 163
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 164
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 165
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 166
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 167
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 168
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 169
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 170
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 171
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 172
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 173
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 174
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 175
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 176
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 177
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 178
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 179
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 180
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 181
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 182
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 183
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 184
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 185
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 186
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 187
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 188
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 189
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 190
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 191
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 192
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 193
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 194
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 195
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 196
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 197
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 198
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 199
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 200
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 201
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 202
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 203
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 204
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 205
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 206
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 207
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 208
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 209
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 210
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 211
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 212
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 213
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 214
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 215
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 216
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 217
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 218
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 219
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 220
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 221
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 222
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 223
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 224
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 225
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 226
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 227
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 228
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 229
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 230
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 231
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 232
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 233
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 234
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 235
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 236
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 237
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 238
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 239
+        }
+      ],
+      "offset": [
+        0,
+        -16
+      ],
+      "role": "carol",
+      "state": "Idle"
+    },
+    {
+      "combined_offset": [
+        0,
+        -3
+      ],
+      "frame": 1,
+      "frames": [
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 0
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 1
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 2
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 3
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 4
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 5
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 6
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 7
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 8
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 9
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 10
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 11
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 12
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 13
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 14
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 15
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 16
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 17
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 18
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 19
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 20
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 21
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 22
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 23
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 24
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 25
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 26
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 27
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 28
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 29
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 30
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 31
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 32
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 33
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 34
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 35
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 36
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 37
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 38
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 39
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 40
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 41
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 42
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 43
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 44
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 45
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 46
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 47
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 48
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 49
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 50
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 51
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 52
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 53
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 54
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 55
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 56
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 57
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 58
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 59
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 60
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 61
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 62
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 63
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 64
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 65
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 66
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 67
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 68
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 69
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 70
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 71
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 72
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 73
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 74
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 75
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 76
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 77
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 78
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 79
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 80
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 81
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 82
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 83
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 84
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 85
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 86
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 87
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 88
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 89
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 90
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 91
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 92
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 93
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 94
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 95
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 96
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 97
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 98
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 99
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 100
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 101
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 102
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 103
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 104
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 105
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 106
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 107
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 108
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 109
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 110
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 111
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 112
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 113
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 114
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 115
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 116
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 117
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 118
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 119
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 120
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 121
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 122
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 123
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 124
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 125
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 126
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 127
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 128
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 129
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 130
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 131
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 132
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 133
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 134
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 135
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 136
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 137
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 138
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 139
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 140
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 141
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 142
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 143
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 144
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 145
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 146
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 147
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 148
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 149
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 150
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 151
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 152
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 153
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 154
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 155
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 156
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 157
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 158
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 159
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 160
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 161
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 162
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 163
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 164
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 165
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 166
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 167
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 168
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 169
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 170
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 171
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 172
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 173
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 174
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 175
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 176
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 177
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 178
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 179
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 180
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 181
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 182
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 183
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 184
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 185
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 186
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 187
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 188
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 189
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 190
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 191
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 192
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 193
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 194
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 195
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 196
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 197
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 198
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 199
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 200
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 201
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 202
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 203
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 204
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 205
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 206
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 207
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 208
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 209
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 210
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 211
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 212
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 213
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 214
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 215
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 216
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 217
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 218
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 219
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 220
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 221
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 222
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 223
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 224
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 225
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 226
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 227
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 228
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 229
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 230
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 231
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 232
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 233
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 234
+        },
+        {
+          "frame": 16,
+          "state": "Idle",
+          "tick": 235
+        },
+        {
+          "frame": 11,
+          "state": "Idle",
+          "tick": 236
+        },
+        {
+          "frame": 6,
+          "state": "Idle",
+          "tick": 237
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 238
+        },
+        {
+          "frame": 1,
+          "state": "Idle",
+          "tick": 239
+        }
+      ],
+      "offset": [
+        0,
+        -12
+      ],
+      "role": "mimmie",
+      "state": "Idle"
+    },
+    {
+      "combined_offset": [
+        0,
+        -2
+      ],
+      "frame": 0,
+      "frames": [
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 0
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 1
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 2
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 3
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 4
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 5
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 6
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 7
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 8
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 9
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 10
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 11
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 12
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 13
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 14
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 15
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 16
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 17
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 18
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 19
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 20
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 21
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 22
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 23
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 24
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 25
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 26
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 27
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 28
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 29
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 30
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 31
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 32
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 33
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 34
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 35
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 36
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 37
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 38
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 39
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 40
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 41
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 42
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 43
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 44
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 45
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 46
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 47
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 48
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 49
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 50
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 51
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 52
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 53
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 54
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 55
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 56
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 57
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 58
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 59
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 60
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 61
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 62
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 63
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 64
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 65
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 66
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 67
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 68
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 69
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 70
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 71
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 72
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 73
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 74
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 75
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 76
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 77
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 78
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 79
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 80
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 81
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 82
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 83
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 84
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 85
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 86
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 87
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 88
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 89
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 90
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 91
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 92
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 93
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 94
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 95
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 96
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 97
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 98
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 99
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 100
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 101
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 102
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 103
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 104
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 105
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 106
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 107
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 108
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 109
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 110
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 111
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 112
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 113
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 114
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 115
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 116
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 117
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 118
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 119
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 120
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 121
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 122
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 123
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 124
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 125
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 126
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 127
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 128
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 129
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 130
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 131
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 132
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 133
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 134
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 135
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 136
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 137
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 138
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 139
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 140
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 141
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 142
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 143
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 144
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 145
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 146
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 147
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 148
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 149
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 150
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 151
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 152
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 153
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 154
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 155
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 156
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 157
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 158
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 159
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 160
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 161
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 162
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 163
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 164
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 165
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 166
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 167
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 168
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 169
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 170
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 171
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 172
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 173
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 174
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 175
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 176
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 177
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 178
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 179
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 180
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 181
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 182
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 183
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 184
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 185
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 186
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 187
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 188
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 189
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 190
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 191
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 192
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 193
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 194
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 195
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 196
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 197
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 198
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 199
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 200
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 201
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 202
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 203
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 204
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 205
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 206
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 207
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 208
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 209
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 210
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 211
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 212
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 213
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 214
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 215
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 216
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 217
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 218
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 219
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 220
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 221
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 222
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 223
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 224
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 225
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 226
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 227
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 228
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 229
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 230
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 231
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 232
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 233
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 234
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 235
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 236
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 237
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 238
+        },
+        {
+          "frame": 0,
+          "state": "Idle",
+          "tick": 239
+        }
+      ],
+      "offset": [
+        0,
+        -11
+      ],
+      "role": "doll",
+      "state": "Idle"
+    }
+  ],
+  "scope": "Exact source character sprite methods in native Godot3.6.2; original textures, automatic offset, four-direction equivalence and 240-frame initial Doll Idle; no cutscene/battle implementation",
+  "sources": {
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498"
+  },
+  "stress_talk": false
+}

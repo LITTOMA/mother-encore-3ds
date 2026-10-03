@@ -1,0 +1,8 @@
+.out strip0 dummy
+.out strip1 dummy
+.entry vmain
+.proc vmain
+ mov strip0, v0
+ mov strip1, v1
+ end
+.end

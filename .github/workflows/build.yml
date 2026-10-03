@@ -1,0 +1,76 @@
+name: Verify Encore Native source and shared core
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: host-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  host:
+    name: Host and sanitizers (${{ matrix.compiler }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - compiler: gcc
+            cc: gcc
+            cxx: g++
+          - compiler: clang
+            cc: clang
+            cxx: clang++
+    env:
+      CC: ${{ matrix.cc }}
+      CXX: ${{ matrix.cxx }}
+      GIT_OPTIONAL_LOCKS: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          # Initialization follows checked .gitmodules/gitlink/lock validation.
+          submodules: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned host data-tool dependencies
+        run: python -m pip install Pillow==12.3.0 PyYAML==6.0.3 cmake==3.31.10
+      - name: Install audio restoration tools from Ubuntu packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes ffmpeg
+          ffmpeg -version
+          ffprobe -version
+      - name: Initialize the pinned official submodule and verify every reviewed source byte
+        run: python tools/ci_bootstrap.py
+      - name: Regenerate checked resources and run the current shared-core tests
+        run: make test
+      - name: Run ASan and UBSan with the hosted runner's normal leak checking
+        run: make sanitize
+      - name: Retain failure logs and current build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: host-diagnostics-${{ matrix.compiler }}
+          if-no-files-found: warn
+          path: |
+            build/host/Testing/Temporary/LastTest.log
+            build/host/Testing/Temporary/LastTestsFailed.log
+            build/host/CMakeFiles/CMakeConfigureLog.yaml
+            build/sanitize/Testing/Temporary/LastTest.log
+            build/sanitize/Testing/Temporary/LastTestsFailed.log
+            build/sanitize/CMakeFiles/CMakeConfigureLog.yaml
+
+# The tracked RomFS baseline and retained native oracles are required inputs.
+# No source identity, reviewed hashes, expected traces or asset IR are refreshed.
+# This default CI covers Linux host logic/data and sanitizers, not Windows,
+# SDK provisioning, console packaging, emulator execution or physical hardware.
+# Console build dependencies and commands are documented in docs/BUILD.md.
+# Local export/bootstrap checks do not mean this workflow has run on GitHub.

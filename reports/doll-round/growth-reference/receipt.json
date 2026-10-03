@@ -1,0 +1,33 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source_sha256": {
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
+    "Data/BattleSkills/strike.yaml": "2249e5e4d4e3113a037ae888a76f8c1af3494a7e156003bc0374f8449e59d53e",
+    "Data/BattleSkills/splitShot.yaml": "efdd73c94385d40a882c9173b15097d5e03591d1f99d9da5655bda580239523b"
+  },
+  "godot_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "methods": [
+    "_level_to_exp",
+    "_exp_to_level",
+    "_set_exp",
+    "_update_level_from_exp",
+    "_get_stat_for_level",
+    "_learn_new_skills",
+    "_is_skill_usable",
+    "add_skill",
+    "_sort_skills",
+    "Character.get_base_stat",
+    "Character.set_stat",
+    "Character.set_hp",
+    "Character.set_pp"
+  ],
+  "adapters": [
+    "source data through JSON; fixture initial EXP3 HP51 PP26",
+    "Character name and no-status max HP/PP getters supplied",
+    "equipped BaseballCap boost applied separately to output effective defense",
+    "unreachable weapon activation rejects"
+  ],
+  "native_rng_unchanged": true
+}

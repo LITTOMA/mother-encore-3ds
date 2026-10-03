@@ -1,0 +1,50 @@
+.gsh point c0
+.constf values(0.0, 1.0, 0.5, -0.5)
+.constf scale(0.00390625, 0.0078125, 0.875, 0.5625)
+.out position position
+.out tex0 texcoord0
+.out tex1 texcoord1
+.entry gmain
+.proc gmain
+ mov r0.xy, v0.xy
+ mov r1.x, v0.w
+ mov r1.y, v1.y
+ add r2.xy, values.zz, v1.xz
+ mul r2.xy, scale.xx, r2.xy
+ add r2.xy, values.yy, -r2.xy
+ setemit 0
+ call corner
+ emit
+ add r0.x, r0.x, v0.z
+ add r1.xy, r1.xy, v0.zz
+ setemit 1
+ call corner
+ emit
+ mov r0.x, v0.x
+ mov r1.x, v0.w
+ mov r1.y, v1.y
+ add r0.y, values.y, r0.y
+ setemit 2, prim
+ call corner
+ emit
+ add r0.x, r0.x, v0.z
+ add r1.xy, r1.xy, v0.zz
+ setemit 0, inv prim
+ call corner
+ emit
+ end
+.end
+.proc corner
+ mul r3.x, scale.y, r0.y
+ add position.x, scale.z, -r3.x
+ mul r3.y, scale.x, r0.x
+ add position.y, scale.w, -r3.y
+ mov position.z, values.w
+ mov position.w, values.y
+ mul tex0.x, scale.x, r1.x
+ mul tex1.x, scale.x, r1.y
+ mov tex0.y, r2.x
+ mov tex1.y, r2.y
+ mov tex0.z, values.x
+ mov tex1.z, values.x
+.end

@@ -1,0 +1,3018 @@
+{
+  "godot": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "delta": {
+    "native_f64_decimal": "0.01666666753590110",
+    "native_f64_le_hex": "000000201111913f"
+  },
+  "clips": {
+    "Idle": {
+      "length": {
+        "native_f64_decimal": "1.00000000000000000",
+        "native_f64_le_hex": "000000000000f03f"
+      },
+      "loop": false,
+      "tracks": [
+        {
+          "path": "main:frame",
+          "keys": [
+            [
+              {
+                "native_f64_decimal": "0.00000000000000000",
+                "native_f64_le_hex": "0000000000000000"
+              },
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    "Ring": {
+      "length": {
+        "native_f64_decimal": "1.25000000000000000",
+        "native_f64_le_hex": "000000000000f43f"
+      },
+      "loop": true,
+      "tracks": [
+        {
+          "path": "main:frame",
+          "keys": [
+            [
+              {
+                "native_f64_decimal": "0.00000000000000000",
+                "native_f64_le_hex": "0000000000000000"
+              },
+              1
+            ],
+            [
+              {
+                "native_f64_decimal": "0.08333329856395720",
+                "native_f64_le_hex": "000000c05455b53f"
+              },
+              2
+            ],
+            [
+              {
+                "native_f64_decimal": "0.16666699945926670",
+                "native_f64_le_hex": "000000205855c53f"
+              },
+              3
+            ],
+            [
+              {
+                "native_f64_decimal": "0.25000000000000000",
+                "native_f64_le_hex": "000000000000d03f"
+              },
+              2
+            ],
+            [
+              {
+                "native_f64_decimal": "0.33333298563957210",
+                "native_f64_le_hex": "000000e05355d53f"
+              },
+              3
+            ],
+            [
+              {
+                "native_f64_decimal": "0.41666701436042790",
+                "native_f64_le_hex": "00000020acaada3f"
+              },
+              2
+            ],
+            [
+              {
+                "native_f64_decimal": "0.50000000000000000",
+                "native_f64_le_hex": "000000000000e03f"
+              },
+              1
+            ],
+            [
+              {
+                "native_f64_decimal": "0.58333301544189450",
+                "native_f64_le_hex": "00000000aaaae23f"
+              },
+              0
+            ]
+          ]
+        },
+        {
+          "path": "AudioStreamPlayer2D:playing",
+          "keys": [
+            [
+              {
+                "native_f64_decimal": "0.08299999684095380",
+                "native_f64_le_hex": "000000e07c3fb53f"
+              },
+              true
+            ],
+            [
+              {
+                "native_f64_decimal": "0.33199998736381530",
+                "native_f64_le_hex": "000000e07c3fd53f"
+              },
+              true
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "records": [
+    {
+      "tick": 0,
+      "action": 1,
+      "before": 0,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 1,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 2,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 3,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 4,
+      "action": 0,
+      "before": 1,
+      "frame": 2,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 5,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 6,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 7,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 8,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 9,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 10,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 11,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 12,
+      "action": 1,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 13,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 14,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 15,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 16,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 17,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 18,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 19,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 20,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 21,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 22,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 23,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 24,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 25,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 26,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 27,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 28,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 29,
+      "action": 0,
+      "before": 2,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 30,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 31,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 32,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 33,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 34,
+      "action": 0,
+      "before": 1,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 35,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 36,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 37,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 38,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 39,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 40,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 41,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 42,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 43,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 44,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 45,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 46,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 47,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 48,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 49,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 50,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 51,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 52,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 53,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 54,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 55,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 56,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 57,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 58,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 59,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 60,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 61,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 62,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 63,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 64,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 65,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 66,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 67,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 68,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 69,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 70,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 71,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 72,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 73,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 74,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 75,
+      "action": 0,
+      "before": 0,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 76,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 77,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 78,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 79,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 80,
+      "action": 0,
+      "before": 1,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 81,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 82,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 83,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 84,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 85,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 86,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 87,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 88,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 89,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 90,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 91,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 92,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 93,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 94,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 95,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 96,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 97,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 98,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 99,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 100,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 101,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 102,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 103,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 104,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 105,
+      "action": 0,
+      "before": 2,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 106,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 107,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 108,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 109,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 110,
+      "action": 0,
+      "before": 1,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 111,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 112,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 113,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 114,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 115,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 116,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 117,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 118,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 119,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 120,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 121,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 122,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 123,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 124,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 125,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 126,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 127,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 128,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 129,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 130,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 131,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 132,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 133,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 134,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 135,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 136,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 137,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 138,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 139,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 140,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 141,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 142,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 143,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 144,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 145,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 146,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 147,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 148,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 149,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 150,
+      "action": 0,
+      "before": 0,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 151,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 152,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 153,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 154,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 155,
+      "action": 2,
+      "before": 1,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 156,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 157,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 158,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 159,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 160,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 161,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 162,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 163,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 164,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 165,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 166,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 167,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 168,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 169,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 170,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 171,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 172,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 173,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 174,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 175,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 176,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 177,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 178,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 179,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": false
+    },
+    {
+      "tick": 180,
+      "action": 1,
+      "before": 0,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 181,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 182,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 183,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 184,
+      "action": 0,
+      "before": 1,
+      "frame": 2,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 185,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 186,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 187,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 188,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 189,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 190,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 191,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 192,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 193,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 194,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 195,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 196,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 197,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 198,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 199,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 200,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 201,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 202,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 203,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 204,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 205,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 206,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 207,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 208,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 209,
+      "action": 0,
+      "before": 2,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 210,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 211,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 212,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 213,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 214,
+      "action": 0,
+      "before": 1,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 215,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 216,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 217,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 218,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 219,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 220,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 221,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 222,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 223,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 224,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 225,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 226,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 227,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 228,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 229,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 230,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 231,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 232,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 233,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 234,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 235,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 236,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 237,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 238,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 239,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 240,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 241,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 242,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 243,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 244,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 245,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 246,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 247,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 248,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 249,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 250,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 251,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 252,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 253,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 254,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 255,
+      "action": 0,
+      "before": 0,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 256,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 257,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 258,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 259,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 260,
+      "action": 0,
+      "before": 1,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 261,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 262,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 263,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 264,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 265,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 266,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 267,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 268,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 269,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 270,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 271,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 272,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 273,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 274,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 275,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 276,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 277,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 278,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 279,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 280,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 281,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 282,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 283,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 284,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 285,
+      "action": 0,
+      "before": 2,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 286,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 287,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 288,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 289,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 290,
+      "action": 0,
+      "before": 1,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 291,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 292,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 293,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 294,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 295,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 296,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 297,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 298,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 299,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 300,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 301,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 302,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 303,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 304,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 305,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 306,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 307,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 308,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 309,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 310,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 311,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 312,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 313,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 314,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 315,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 316,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 317,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 318,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 319,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 320,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 321,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 322,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 323,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 324,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 325,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 326,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 327,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 328,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 329,
+      "action": 0,
+      "before": 0,
+      "frame": 0,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 330,
+      "action": 0,
+      "before": 0,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 331,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 332,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 333,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 334,
+      "action": 0,
+      "before": 1,
+      "frame": 1,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 335,
+      "action": 0,
+      "before": 1,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 336,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 337,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 338,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 339,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 340,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 341,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 342,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 343,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 344,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 345,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 346,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 347,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 348,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 349,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 1,
+      "ringing": true
+    },
+    {
+      "tick": 350,
+      "action": 0,
+      "before": 2,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 351,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 352,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 353,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 354,
+      "action": 0,
+      "before": 3,
+      "frame": 3,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 355,
+      "action": 0,
+      "before": 3,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 356,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 357,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 358,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    },
+    {
+      "tick": 359,
+      "action": 0,
+      "before": 2,
+      "frame": 2,
+      "sound_count": 0,
+      "ringing": true
+    }
+  ],
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626"
+  },
+  "log": "Godot Engine v3.6.2.stable.official.3cd3caab6 - https://godotengine.org\n \n",
+  "scope": "Original Idle/Ring Animation resources and native AnimationPlayer.advance; setter recorders replace sprite/audio devices"
+}

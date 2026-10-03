@@ -1,0 +1,18 @@
+test_changed_command_handler_parser_body_or_object_body_fails (test_lamp_dialogue.LampDialogueTests.test_changed_command_handler_parser_body_or_object_body_fails) ... ok
+test_changed_reference_timing_payload_or_scope_rejected (test_lamp_dialogue.LampDialogueTests.test_changed_reference_timing_payload_or_scope_rejected) ... ok
+test_dispatch_order_is_handler_order_not_yaml_order (test_lamp_dialogue.LampDialogueTests.test_dispatch_order_is_handler_order_not_yaml_order) ... ok
+test_final_handoff_is_after_wait_and_ordered_signals (test_lamp_dialogue.LampDialogueTests.test_final_handoff_is_after_wait_and_ordered_signals) ... ok
+test_mutated_original_dialogue_and_missing_phrases_rejected (test_lamp_dialogue.LampDialogueTests.test_mutated_original_dialogue_and_missing_phrases_rejected) ... ok
+test_native_parser_receipt_generates_header (test_lamp_dialogue.LampDialogueTests.test_native_parser_receipt_generates_header) ... ok
+test_native_source_gate_when_checkout_present (test_lamp_dialogue.LampDialogueTests.test_native_source_gate_when_checkout_present) ... ok
+test_receipt_wrong_engine_provenance_unknown_body_rejected (test_lamp_dialogue.LampDialogueTests.test_receipt_wrong_engine_provenance_unknown_body_rejected) ... ok
+test_review_scope_version_and_missing_source_gate_rejected (test_lamp_dialogue.LampDialogueTests.test_review_scope_version_and_missing_source_gate_rejected) ... ok
+test_source_block_extraction_rejects_missing_or_ambiguous (test_lamp_dialogue.LampDialogueTests.test_source_block_extraction_rejects_missing_or_ambiguous) ... ok
+test_unknown_actor_target_method_and_body_fail_closed (test_lamp_dialogue.LampDialogueTests.test_unknown_actor_target_method_and_body_fail_closed) ... ok
+test_unknown_movement_modes_body_and_nonfinite_numbers_rejected (test_lamp_dialogue.LampDialogueTests.test_unknown_movement_modes_body_and_nonfinite_numbers_rejected) ... ok
+test_unsupported_commands_control_flow_and_wait_modes (test_lamp_dialogue.LampDialogueTests.test_unsupported_commands_control_flow_and_wait_modes) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.018s
+
+OK

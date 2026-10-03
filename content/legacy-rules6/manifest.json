@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "encore.session-migration.legacy-validation",
+  "source_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "from": {
+    "content_family": 1162739714,
+    "content_revision": 1,
+    "rules_revision": 6
+  },
+  "to": {
+    "content_family": 1162739714,
+    "content_revision": 1,
+    "rules_revision": 7
+  },
+  "payload_policy": "identity; retain every saved field, require both complete legacy and target validation",
+  "files": {
+    "opening.encsession": "d323ca36a29c822a09ad8eb6e7b1cd0165b7bca119e742e816b3c7706d37428f",
+    "opening.encroom": "e1e05c51ed7645a605a535854ace4b8dd69d110d5edd0c26889bec2aa15807af",
+    "opening.enchouse": "e8310e722dcdab85eb46523dac5d2d577a9d30ecc42b84b6c0506a716aef40ff",
+    "opening.encround": "0fcd02667c7f785c536526cd03b0f7b03ae45ddec1f7158b2728af22ca901347",
+    "opening.encitems": "cceffa89f321773691b4518e6dd20fc3a0d4b9a41a56e6c33ec59cf748824470"
+  },
+  "recipes": {
+    "native-session.json": "4e469dddb96d533722afa1f869a3ff571429c3c96f097ae3525639617759d40d",
+    "native-opening.json": "519802f23675a880c7f6fab412c2f84aeed9f34385c0ba25888fb5ba4786e200",
+    "native-house.json": "b2b860a88d9fd5f236e4360aa13dab77d9fcffbafa6406a424757abf0ce02d54"
+  }
+}

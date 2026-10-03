@@ -1,0 +1,613 @@
+[
+  {
+    "last_frame": {
+      "actions": 5,
+      "blend": [
+        -1,
+        0
+      ],
+      "direction": [
+        -0.948683,
+        -0.316228
+      ],
+      "emote": 64,
+      "frame": 0,
+      "moonwalk": false,
+      "movements": 2,
+      "moving": false,
+      "position": [
+        40,
+        40
+      ],
+      "rotating": false,
+      "velocity": [
+        -94.868324,
+        -31.622776
+      ]
+    },
+    "name": "doll_postwin_concurrent_bounces",
+    "signal_changes": [
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": true,
+        "position": [
+          126.068253,
+          135.283478
+        ],
+        "rotating": false,
+        "tick": 0
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": true,
+        "position": [
+          77.774567,
+          67.370499
+        ],
+        "rotating": false,
+        "tick": 25
+      },
+      {
+        "actions": 3,
+        "movements": 1,
+        "moving": true,
+        "position": [
+          64,
+          48
+        ],
+        "rotating": false,
+        "tick": 32
+      },
+      {
+        "actions": 5,
+        "movements": 2,
+        "moving": false,
+        "position": [
+          40,
+          40
+        ],
+        "rotating": false,
+        "tick": 47
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 3,
+      "blend": [
+        0,
+        1
+      ],
+      "direction": [
+        0,
+        1
+      ],
+      "emote": 64,
+      "frame": 1,
+      "moonwalk": false,
+      "movements": 2,
+      "moving": false,
+      "position": [
+        112,
+        88
+      ],
+      "rotating": false,
+      "velocity": [
+        3e-06,
+        -64
+      ]
+    },
+    "name": "mimmie_postwin_walk_jumps",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": true,
+        "position": [
+          126.933334,
+          160
+        ],
+        "rotating": false,
+        "tick": 0
+      },
+      {
+        "actions": 0,
+        "movements": 1,
+        "moving": true,
+        "position": [
+          112,
+          160
+        ],
+        "rotating": false,
+        "tick": 14
+      },
+      {
+        "actions": 1,
+        "movements": 2,
+        "moving": false,
+        "position": [
+          112,
+          88
+        ],
+        "rotating": false,
+        "tick": 81
+      },
+      {
+        "actions": 2,
+        "movements": 2,
+        "moving": false,
+        "position": [
+          112,
+          88
+        ],
+        "rotating": false,
+        "tick": 125
+      },
+      {
+        "actions": 3,
+        "movements": 2,
+        "moving": false,
+        "position": [
+          112,
+          88
+        ],
+        "rotating": false,
+        "tick": 143
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 3,
+      "blend": [
+        -1,
+        -1
+      ],
+      "direction": [
+        -1,
+        -1
+      ],
+      "emote": 64,
+      "frame": 61,
+      "moonwalk": false,
+      "movements": 0,
+      "moving": false,
+      "position": [
+        128,
+        144
+      ],
+      "rotating": false,
+      "velocity": [
+        0,
+        0
+      ]
+    },
+    "name": "ninten_postwin_long_turns",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 0
+      },
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 60
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 90
+      },
+      {
+        "actions": 3,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 149
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 2,
+      "blend": [
+        -1,
+        -1
+      ],
+      "direction": [
+        -1,
+        -1
+      ],
+      "emote": 64,
+      "frame": 61,
+      "moonwalk": false,
+      "movements": 0,
+      "moving": false,
+      "position": [
+        128,
+        144
+      ],
+      "rotating": false,
+      "velocity": [
+        0,
+        0
+      ]
+    },
+    "name": "ninten_overlapping_turn_at_30",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 0
+      },
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 59
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 121
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 2,
+      "blend": [
+        -1,
+        -1
+      ],
+      "direction": [
+        -1,
+        -1
+      ],
+      "emote": 64,
+      "frame": 61,
+      "moonwalk": false,
+      "movements": 0,
+      "moving": false,
+      "position": [
+        128,
+        144
+      ],
+      "rotating": false,
+      "velocity": [
+        0,
+        0
+      ]
+    },
+    "name": "ninten_overlapping_turn_at_59",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 0
+      },
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 118
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 182
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 2,
+      "blend": [
+        -1,
+        -1
+      ],
+      "direction": [
+        -1,
+        -1
+      ],
+      "emote": 64,
+      "frame": 61,
+      "moonwalk": false,
+      "movements": 0,
+      "moving": false,
+      "position": [
+        128,
+        144
+      ],
+      "rotating": false,
+      "velocity": [
+        0,
+        0
+      ]
+    },
+    "name": "ninten_overlapping_turn_at_60",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 0
+      },
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 119
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 182
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 2,
+      "blend": [
+        0,
+        -1
+      ],
+      "direction": [
+        0,
+        -1
+      ],
+      "emote": 64,
+      "frame": 31,
+      "moonwalk": false,
+      "movements": 0,
+      "moving": false,
+      "position": [
+        128,
+        144
+      ],
+      "rotating": false,
+      "velocity": [
+        0,
+        0
+      ]
+    },
+    "name": "ninten_overlapping_turn_at_61",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 0
+      },
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 60
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 90
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 2,
+      "blend": [
+        0,
+        -1
+      ],
+      "direction": [
+        0,
+        -1
+      ],
+      "emote": 64,
+      "frame": 31,
+      "moonwalk": false,
+      "movements": 0,
+      "moving": false,
+      "position": [
+        128,
+        144
+      ],
+      "rotating": false,
+      "velocity": [
+        0,
+        0
+      ]
+    },
+    "name": "ninten_overlapping_turn_at_62",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 0
+      },
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 60
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 91
+      }
+    ]
+  },
+  {
+    "last_frame": {
+      "actions": 2,
+      "blend": [
+        -1,
+        -1
+      ],
+      "direction": [
+        -1,
+        -1
+      ],
+      "emote": 64,
+      "frame": 61,
+      "moonwalk": false,
+      "movements": 0,
+      "moving": false,
+      "position": [
+        128,
+        144
+      ],
+      "rotating": false,
+      "velocity": [
+        0,
+        0
+      ]
+    },
+    "name": "ninten_same_target_overlap",
+    "signal_changes": [
+      {
+        "actions": 0,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 0
+      },
+      {
+        "actions": 1,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": true,
+        "tick": 10
+      },
+      {
+        "actions": 2,
+        "movements": 0,
+        "moving": false,
+        "position": [
+          128,
+          144
+        ],
+        "rotating": false,
+        "tick": 60
+      }
+    ]
+  }
+]

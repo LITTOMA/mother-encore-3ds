@@ -1,0 +1,88 @@
+{
+  "outputs": {
+    "emotes.t3x": {
+      "bytes": 1048597,
+      "sha256": "65b5b99815f10ed402ce9abf2de91d7e4f98158258bfa481a8a1d6bd447cf362"
+    },
+    "lamp.t3x": {
+      "bytes": 16405,
+      "sha256": "aecc093a963e7e5ee1544f8091ea5cd8efebe82b47189c8d2d1caea1f204ff03"
+    },
+    "ninten-main.t3x": {
+      "bytes": 2097173,
+      "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2"
+    },
+    "shadow.t3x": {
+      "bytes": 533,
+      "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
+    }
+  },
+  "pixel_format": "RGBA8; no lossy compression; nearest sampling",
+  "recipe": {
+    "actor_scene": "Nodes/Reusables/actor.tscn",
+    "actor_scene_sha256": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "centered": true,
+    "character_sprite_script": "Scripts/Main/character_sprite.gd",
+    "character_sprite_script_sha256": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "emote_scene": "Nodes/Ui/emotes.tscn",
+    "emote_scene_sha256": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "emote_texture": "Graphics/Other/emotes/emotes.png",
+    "emote_texture_sha256": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "game_version": "0.4.1.0",
+    "grid": [
+      10,
+      20
+    ],
+    "lamp_layout": {
+      "auto_offset": [
+        0,
+        -11
+      ],
+      "child_offset": [
+        0,
+        9
+      ],
+      "grid": [
+        4,
+        1
+      ],
+      "idle_frame": 0,
+      "root": [
+        496,
+        390
+      ],
+      "shadow": false,
+      "size": [
+        68,
+        22
+      ]
+    },
+    "lamp_texture": "Graphics/Character Sprites/Npcs/1dir/lamp.png",
+    "lamp_texture_sha256": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+    "lamp_yaml": "Data/Animations/Lamp.yaml",
+    "lamp_yaml_sha256": "eb5043e8979cb5ed982ae75a5a95a89ebca765324d564da10759fa27736c66ed",
+    "licence_review": "Pinned LICENSE permits repository assets for game-related forks/modifications/translations. Ninten texture is used only in this Mother: Encore port. Upstream assets retain upstream conditions and are not relicensed under project MIT.",
+    "npc_script": "Scripts/Main/npc.gd",
+    "npc_script_sha256": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "scene": "Nodes/Reusables/Player.tscn",
+    "scene_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "schema": 1,
+    "scope": "Position/main regular sprite layout only, from reviewed native Player scene export; default flash/glow modifiers zero. No compatibility approval of the complete player or AnimationTree. Initial NPC lamp Idle frame only; yaml frame-1 and auto-offset reviewed from pinned npc and character_sprite scripts.",
+    "shadow_texture": "Graphics/Character Sprites/Shadow.png",
+    "shadow_texture_sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "size": [
+      310,
+      580
+    ],
+    "sprite_offset": [
+      0,
+      -4
+    ],
+    "texture": "Graphics/Character Sprites/Ninten/main.png",
+    "texture_sha256": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9"
+  },
+  "schema": 1,
+  "scope": "Regular Ninten sprite only; no AnimationTree, blink, special animation or shader compatibility claim",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+}

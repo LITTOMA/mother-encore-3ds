@@ -1,0 +1,27 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99"
+  },
+  "fixture_cases_sha256": "cad100d564957d8e4707e38e5857edbb02a3397f6e8d908d2aa212085f37f8f4",
+  "reference_sha256": {
+    "cases.tsv": "7e2878182bdcb0acac6ea77e5f875b7adc866d7026b0efd4cd3e1e423afe7862",
+    "frames.tsv": "81cf0728b17ea95b58d650c366f2af28cc2e040df834c7fd11b0bf9f2d2abc0c",
+    "finals.tsv": "a80ee9dadae4574489c57e2b505b7344683f6b0fe25d2139a41de04f383fabe1"
+  },
+  "methods": {
+    "add_line_breaks": "3a682219a3dd5fbb00a9808ce78fce7ad2e83159f3b6f195d4369f566acdda00",
+    "strip_bbcode": "fe34c602d5a64290cde6c629c2a8b54a6c992a9f6836cbc178b39f6c1a999c17",
+    "get_text_delay": "04d00ea084c3e8b8f671b850247a9067e07e826d250dd4902d570fdf1f723f3b",
+    "_tr": "d7c82df579498af0d56bc088bb75ddaf9501f52940c14d3b1774026b2edbcb46"
+  },
+  "scope": "Native Godot3.6.2 printing, source line wrapping, live delay counts, voice RNG; explicit phrase-tag/audio adapters; no GUI or hardware"
+}

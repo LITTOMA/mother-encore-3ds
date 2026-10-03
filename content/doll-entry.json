@@ -1,0 +1,2207 @@
+{
+  "animations": [
+    {
+      "length": 1.3,
+      "loop": false,
+      "name": "overlay.Start",
+      "source": "Nodes/Ui/Battle/Battle Transition.tscn",
+      "source_resource_id": 1,
+      "step": 0.05,
+      "tracks": [
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.05,
+              0.1,
+              0.15,
+              0.2,
+              0.25,
+              0.3,
+              0.35,
+              0.4,
+              0.45,
+              0.5,
+              0.55,
+              0.6,
+              0.65,
+              0.7,
+              0.75,
+              0.8,
+              0.85,
+              0.9,
+              0.95,
+              1,
+              1.05,
+              1.1,
+              1.15,
+              1.2
+            ],
+            "transitions": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "update": 1,
+            "values": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ]
+          },
+          "loop_wrap": true,
+          "path": "Sprite:frame",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "length": 1.9,
+      "loop": false,
+      "name": "scene.transitionIn",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "source_resource_id": 11,
+      "step": 0.05,
+      "tracks": [
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.3
+            ],
+            "transitions": [
+              0.6,
+              1
+            ],
+            "update": 0,
+            "values": [
+              [
+                -64,
+                -180
+              ],
+              [
+                -64,
+                -162
+              ]
+            ]
+          },
+          "loop_wrap": true,
+          "path": "top:rect_position",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.3
+            ],
+            "transitions": [
+              0.6,
+              1
+            ],
+            "update": 0,
+            "values": [
+              [
+                -64,
+                180
+              ],
+              [
+                -64,
+                148
+              ]
+            ]
+          },
+          "loop_wrap": true,
+          "path": "bottom:rect_position",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.15,
+              1.2,
+              1.25,
+              1.35
+            ],
+            "transitions": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "values": [
+              {
+                "args": [],
+                "method": "_enemy_to_position"
+              },
+              {
+                "args": [],
+                "method": "_jump_to_battle"
+              },
+              {
+                "args": [
+                  true
+                ],
+                "method": "_show_action_menu"
+              },
+              {
+                "args": [],
+                "method": "_show_enemy_sprites"
+              },
+              {
+                "args": [],
+                "method": "_remove_enemy_transitions"
+              }
+            ]
+          },
+          "loop_wrap": true,
+          "path": ".",
+          "type": "method"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.3
+            ],
+            "transitions": [
+              0.6,
+              1
+            ],
+            "update": 0,
+            "values": [
+              257.0,
+              180.0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "PlayerInfo:rect_position:y",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "length": 0.65,
+      "loop": false,
+      "name": "actions.transitionIn",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "source_resource_id": 73,
+      "step": 0.05,
+      "tracks": [
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.15
+            ],
+            "transitions": [
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              [
+                17,
+                -10
+              ],
+              [
+                17,
+                8
+              ]
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/Arrow:position",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0
+            ],
+            "transitions": [
+              1
+            ],
+            "update": 1,
+            "values": [
+              [
+                9,
+                0
+              ]
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/ActionIcons:rect_position",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.15
+            ],
+            "transitions": [
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              -18.0,
+              0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/ActionIcons/BashIcon:margin_top",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.1,
+              0.25
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              -18.0,
+              -18.0,
+              0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/ActionIcons/SkillsIcon:margin_top",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.2,
+              0.35
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              -18.0,
+              -18.0,
+              0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/ActionIcons/PSIIcon:margin_top",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.3,
+              0.45
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              -18.0,
+              -18.0,
+              0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/ActionIcons/ItemsIcon:margin_top",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.4,
+              0.55
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              -18.0,
+              -18.0,
+              0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/ActionIcons/DefendIcon:margin_top",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.5,
+              0.65
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              -18.0,
+              -18.0,
+              0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "ActionMenuBox/ActionIcons/RunIcon:margin_top",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.1,
+              0.4
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              -27.0,
+              -27.0,
+              0.0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "TargetNameBox:rect_position:y",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "length": 0.7,
+      "loop": false,
+      "name": "enemy.appear",
+      "source": "Nodes/Ui/Battle/EnemySprite.tscn",
+      "source_resource_id": 3,
+      "step": 0.05,
+      "tracks": [
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.3,
+              0.35
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              [
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                1
+              ],
+              [
+                1,
+                1,
+                1,
+                1
+              ]
+            ]
+          },
+          "loop_wrap": true,
+          "path": ".:material:shader_param/flash_color",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.35,
+              0.55
+            ],
+            "transitions": [
+              1,
+              1,
+              1
+            ],
+            "update": 0,
+            "values": [
+              1.0,
+              1.0,
+              0.0
+            ]
+          },
+          "loop_wrap": true,
+          "path": ".:material:shader_param/flash_modifier",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0,
+              0.15,
+              0.2,
+              0.25,
+              0.35,
+              0.4
+            ],
+            "transitions": [
+              0.287174,
+              -2.21914,
+              1,
+              0.138696,
+              2.14354,
+              0.31864
+            ],
+            "update": 0,
+            "values": [
+              [
+                0.3,
+                0.2
+              ],
+              [
+                0.8,
+                1.3
+              ],
+              [
+                1,
+                1.2
+              ],
+              [
+                1.15,
+                1
+              ],
+              [
+                1.2,
+                0.8
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          },
+          "loop_wrap": true,
+          "path": ".:rect_scale",
+          "type": "value"
+        }
+      ]
+    },
+    {
+      "length": 0.0714286,
+      "loop": false,
+      "name": "party.lookIntoYourSoul",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "source_resource_id": 5,
+      "step": 0.0714286,
+      "tracks": [
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0
+            ],
+            "transitions": [
+              1
+            ],
+            "update": 1,
+            "values": [
+              0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "Sprite:frame",
+          "type": "value"
+        },
+        {
+          "enabled": true,
+          "imported": false,
+          "interp": 1,
+          "keys": {
+            "times": [
+              0
+            ],
+            "transitions": [
+              1
+            ],
+            "update": 0,
+            "values": [
+              0.0
+            ]
+          },
+          "loop_wrap": true,
+          "path": "Sprite:material:shader_param/width",
+          "type": "value"
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "battle_music_source": null,
+    "continue_overworld_source": "Audio/Music/Poltergeist.ogg",
+    "encounter_audio_id": 1002,
+    "encounter_loop": false,
+    "encounter_source": "Audio/Music/Battle Encounter/Encounter Boss.mp3",
+    "encounter_trigger": "BattleSystem._ready",
+    "overworld_battle_music": true,
+    "overworld_battle_music_note": "Doll music field empty; existing Poltergeist overworld audio remains; Boss encounter jingle is separate",
+    "overworld_loop_offset_seconds": 6.382,
+    "pause_overworld_music": false
+  },
+  "background": {
+    "compatibility_policy": {
+      "fixed_palette_row": 0,
+      "kind": "fixed_palette_row_for_undefined_divisor",
+      "review": "reports/doll-background-reference/review.json",
+      "review_sha256": "c4b98bb6d683ea97b7ef04ac650514c11f67f9940d1a0adeed97f63547a842f9",
+      "scope": "Matches pinned original Godot3.6.2 GLES2 llvmpipe observations; undefined arithmetic on other backends is not portable"
+    },
+    "gpu_reference_verified": false,
+    "layers": [
+      {
+        "index": 0,
+        "properties": {
+          "barrel": true,
+          "barrelxy": [
+            1.8,
+            1
+          ],
+          "comp_amp_ping_pong": [
+            0,
+            0
+          ],
+          "comp_trans_ping_pong": [
+            0,
+            0
+          ],
+          "compression_amplitude": [
+            0,
+            0.7
+          ],
+          "compression_frequency": [
+            0,
+            0.6
+          ],
+          "compression_speed": [
+            0,
+            0.6
+          ],
+          "effect": 1.0,
+          "effect_scale": 3.5,
+          "inter_amp_ping_pong": [
+            0,
+            0
+          ],
+          "inter_trans_ping_pong": [
+            0,
+            0
+          ],
+          "interlaced_amplitude": [
+            0,
+            0
+          ],
+          "interlaced_frequency": [
+            0,
+            0
+          ],
+          "interlaced_speed": [
+            0,
+            0
+          ],
+          "move": [
+            0.2,
+            0.1
+          ],
+          "opacity": 1.0,
+          "osc_amp_ping_pong": [
+            0,
+            0
+          ],
+          "osc_trans_ping_pong": [
+            0,
+            0
+          ],
+          "oscillation_amplitude": [
+            0.9,
+            0
+          ],
+          "oscillation_frequency": [
+            1,
+            0
+          ],
+          "oscillation_speed": [
+            0.4,
+            0
+          ],
+          "palette": "[Resource]/Graphics/Battle BGS/baby_pal.png",
+          "palette_shifting": true,
+          "palette_shifting_speed": 0.2,
+          "ping_pong_speed": [
+            0,
+            0.4
+          ],
+          "screen_size": [
+            320,
+            180
+          ],
+          "shader": "[DEFAULT]",
+          "texture": "/Graphics/Battle BGS/baby.png",
+          "texture_stretch": "STRETCH_TILE"
+        }
+      },
+      {
+        "index": 1,
+        "properties": {
+          "barrel": true,
+          "barrelxy": [
+            1.8,
+            1
+          ],
+          "comp_amp_ping_pong": [
+            0,
+            0
+          ],
+          "comp_trans_ping_pong": [
+            0,
+            0
+          ],
+          "compression_amplitude": [
+            0,
+            0.5
+          ],
+          "compression_frequency": [
+            0,
+            0.6
+          ],
+          "compression_speed": [
+            0,
+            0.9
+          ],
+          "effect": 1.0,
+          "effect_scale": 3.5,
+          "inter_amp_ping_pong": [
+            0,
+            0
+          ],
+          "inter_trans_ping_pong": [
+            0,
+            0
+          ],
+          "interlaced_amplitude": [
+            0,
+            0
+          ],
+          "interlaced_frequency": [
+            0,
+            0
+          ],
+          "interlaced_speed": [
+            0,
+            0
+          ],
+          "move": [
+            0.3,
+            0.4
+          ],
+          "opacity": 0.7,
+          "osc_amp_ping_pong": [
+            0,
+            0
+          ],
+          "osc_trans_ping_pong": [
+            0,
+            0
+          ],
+          "oscillation_amplitude": [
+            0,
+            0
+          ],
+          "oscillation_frequency": [
+            0,
+            0
+          ],
+          "oscillation_speed": [
+            0,
+            0
+          ],
+          "palette": "[Resource]/Graphics/Battle BGS/baby_pal.png",
+          "palette_shifting": true,
+          "palette_shifting_speed": -0.1,
+          "ping_pong_speed": [
+            0,
+            0.8
+          ],
+          "screen_size": [
+            320,
+            180
+          ],
+          "shader": "[DEFAULT]",
+          "texture": "/Graphics/Battle BGS/baby.png",
+          "texture_stretch": "STRETCH_TILE"
+        }
+      }
+    ],
+    "native_control_size": [
+      320,
+      180
+    ],
+    "native_layer_size": [
+      176,
+      172
+    ],
+    "palette_divisor": {
+      "default_value": 0,
+      "runtime_assignment_found": false,
+      "source_value": null,
+      "status": "undefined GLSL division by zero; render must fail closed unless separately reviewed backend result is supplied",
+      "uniform": "palette_anim_frame_count"
+    },
+    "shader_clock": "Godot TIME is engine-relative, not restarted by battle entry",
+    "shader_source": "addons/distortionator_integration/default_shader.tres",
+    "source": "Graphics/Battle BGS/baby.bbg",
+    "texture_size": [
+      176,
+      172
+    ],
+    "uv_domain": "STRETCH_TILE native source texture176x172 divisor, control320x180 reference /400x240 expanded; distorted coordinates repeat",
+    "viewport_clip_size": [
+      320,
+      180
+    ]
+  },
+  "binary_version": 2,
+  "binding": {
+    "enemy_instance": 2,
+    "player_instance": 0,
+    "stable_id": 2,
+    "world_resources": {
+      "world_enemy": {
+        "columns": 4,
+        "height": 22,
+        "path": "house-preview/doll.t3x",
+        "rows": 1,
+        "sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6",
+        "width": 68
+      },
+      "world_player": {
+        "columns": 10,
+        "height": 580,
+        "path": "actor-preview/ninten-main.t3x",
+        "rows": 20,
+        "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
+        "width": 310
+      }
+    }
+  },
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "enemy": {
+    "data": {
+      "article": "DOLL_ART",
+      "bg": "baby",
+      "boss": true,
+      "cash": 10,
+      "defense": 9,
+      "description": "DOLL_DESC",
+      "exp": 8,
+      "guts": 0,
+      "hp": 38,
+      "iq": 1,
+      "level": 2,
+      "maxhp": 38,
+      "maxpp": 0,
+      "music": "",
+      "name": "DOLL_NAME",
+      "offense": 4,
+      "pp": 0,
+      "skills": [
+        {
+          "skill": "tackle",
+          "weight": 5
+        },
+        {
+          "skill": "float",
+          "weight": 1
+        }
+      ],
+      "speed": 5,
+      "sprite": "doll"
+    },
+    "defaults": {
+      "affinity_multipliers": {},
+      "items": [],
+      "musicintro": "",
+      "passive_skills": [],
+      "show_intro_outro": false
+    },
+    "final_scale": [
+      1,
+      1
+    ],
+    "homonym_index": -1,
+    "id": "doll",
+    "initial_appear_scale": [
+      0.3,
+      0.2
+    ],
+    "initial_flash_modifier": 1.0,
+    "initial_hidden": true,
+    "item_drop": null,
+    "pool_cash": 10,
+    "pool_exp": 8,
+    "sprite_center": [
+      160.0,
+      73.5
+    ],
+    "sprite_position": [
+      142.5,
+      48.0
+    ],
+    "sprite_size": [
+      35,
+      51
+    ]
+  },
+  "entry": {
+    "action_reveal_duration": 0.65,
+    "action_reveal_time": 1.2,
+    "advantage": 0,
+    "area_backdrop_z_index": -100,
+    "await_camera_stopped_shaking": true,
+    "backbuffer": {
+      "captured_canvas": "battle background layer -1 before canvas 0 world",
+      "live_each_frame": true,
+      "mode": "COPY_MODE_RECT",
+      "z_index": -128
+    },
+    "background_final_layer": 1,
+    "background_initial_layer": -1,
+    "battle_canvas_layer": 2,
+    "blend_mode": "blend_disabled",
+    "can_run": false,
+    "can_run_explanation": "DialogueBox._end_dialogue explicitly calls uiManager.start_battle(0,false,...) for queued encounters",
+    "command_menu_activation_time": 1.9,
+    "encountered_key": "doll",
+    "enemy_reveal_time": 1.25,
+    "enemy_transition_cleanup_time": 1.35,
+    "first_encounter_flag": "doll_fought",
+    "mask_grid": [
+      5,
+      5
+    ],
+    "mask_other_opaque": "copy SCREEN_TEXTURE",
+    "mask_transparent": "write source RGBA with blending disabled",
+    "mask_white": "replace with neutral_color",
+    "neutral_color_rgba8": [
+      0,
+      0,
+      255,
+      130
+    ],
+    "overlay_add_deferred_after_idle_frame": true,
+    "overlay_duration": 1.3,
+    "overlay_z_index": 2,
+    "party_fully_shown_time": 2.02,
+    "post_battle_cutscenes": {
+      "win": "Podunk/cutscenes/doll_defeated"
+    },
+    "scene_duration": 1.9,
+    "show_intro_outro": false,
+    "source_can_run_argument": false,
+    "time_domain": "source animation key times; native deferred callbacks and timer completion may occur on later frames",
+    "win_flag": ""
+  },
+  "game_version": "0.4.1.0",
+  "kind": "encore.native-battle-entry.source-ir",
+  "licence_review": "Pinned LICENSE permits assets in game-related forks/modifications/translations; original art retained only in Mother: Encore port with original conditions",
+  "menu": {
+    "actions": [
+      {
+        "icon_asset": "bash_icon",
+        "id": "Basic",
+        "label_key": "ATTACK_NAME",
+        "source_index": 0
+      },
+      {
+        "icon_asset": "items_icon",
+        "id": "Items",
+        "label_key": "BATTLE_ACTION_ITEMS",
+        "source_index": 3
+      },
+      {
+        "icon_asset": "defend_icon",
+        "id": "Defend",
+        "label_key": "BATTLE_ACTION_DEFEND",
+        "source_index": 4
+      }
+    ],
+    "cancel_at_first_member": "reset stack and reopen ActionMenuBox, reset selection to Basic",
+    "cancel_sound_key": "back",
+    "confirm_boundary": "emit selected request only; action execution outside this entry slice",
+    "cursor_anchor_delta": [
+      8,
+      8
+    ],
+    "cursor_ease": "OUT",
+    "cursor_offset": [
+      12,
+      2
+    ],
+    "cursor_repeat_delay_seconds": 0.05,
+    "cursor_scale_steps": [
+      {
+        "duration": 0.1,
+        "ease": 0.25,
+        "from": [
+          0.8,
+          1.2
+        ],
+        "to": [
+          1.3,
+          0.7
+        ]
+      },
+      {
+        "duration": 0.03,
+        "ease": 0.25,
+        "from": [
+          1.3,
+          0.7
+        ],
+        "to": [
+          0.8,
+          1.2
+        ]
+      },
+      {
+        "duration": 0.03,
+        "ease": 0.25,
+        "from": [
+          0.8,
+          1.3
+        ],
+        "to": [
+          1,
+          1
+        ]
+      }
+    ],
+    "cursor_size": [
+      24,
+      12
+    ],
+    "cursor_transition": "QUART",
+    "cursor_tween_seconds": 0.1,
+    "hidden_source_indices": [
+      1,
+      2,
+      5
+    ],
+    "horizontal_only": true,
+    "initial_source_index": 0,
+    "input_gate": "cursor.on set only when BattleMenuBox.enter called at scene animation completion",
+    "move_sound_key": "cursor1",
+    "select_sound_key": "cursor2",
+    "source_indices": [
+      0,
+      3,
+      4
+    ],
+    "wrap_around": true
+  },
+  "party": {
+    "base_stats": {
+      "defense": 7,
+      "guts": 8,
+      "iq": 5,
+      "maxhp": 62,
+      "maxpp": 26,
+      "offense": 11,
+      "speed": 6
+    },
+    "basic_skill": {
+      "action_type": 0,
+      "crit_chance": 5,
+      "damage_or_heal": 10,
+      "damage_type": "normal",
+      "description": "ATTACK_DESC",
+      "dialog": "ATTACK_DIALOG",
+      "hit_effect": "bash",
+      "hit_sound": "bash",
+      "hp_cost": 0,
+      "miss_chance": 0,
+      "name": "ATTACK_NAME",
+      "pp_cost": 0,
+      "pre_hit_effect": "",
+      "priority": 0,
+      "skill_type": "basic",
+      "target_type": 0,
+      "use_cases": 1,
+      "use_sound": "",
+      "user_anim": "bash",
+      "variance": 5
+    },
+    "basic_skill_id": "attack",
+    "effective_stats": {
+      "defense": 12,
+      "guts": 8,
+      "hp": 62,
+      "iq": 5,
+      "maxhp": 62,
+      "maxpp": 26,
+      "offense": 11,
+      "pp": 26,
+      "speed": 6
+    },
+    "encore_enabled": false,
+    "equipment": [
+      {
+        "boosts": {
+          "defense": 5,
+          "guts": 0,
+          "iq": 0,
+          "maxhp": 0,
+          "maxpp": 0,
+          "offense": 0,
+          "speed": 0
+        },
+        "equipped": true,
+        "id": "BaseballCap",
+        "slot": "other"
+      }
+    ],
+    "exp": 0,
+    "id": "ninten",
+    "initial_save_data": {
+      "affinity_multipliers": {
+        "asthma": 1
+      },
+      "exp": 0,
+      "hp": 100,
+      "inventory": [
+        {
+          "equipped": true,
+          "item_name": "BaseballCap"
+        }
+      ],
+      "learnedSkills": [
+        "strike",
+        "splitShot"
+      ],
+      "level": 1,
+      "name": "Ninten",
+      "nickname": "",
+      "pp": 100,
+      "status": []
+    },
+    "learned_skills": [
+      "strike",
+      "splitShot"
+    ],
+    "level": 1,
+    "nickname_default_translation_key": "NAME_NINTEN0",
+    "runtime_state": "The caller supplies surviving party HP/PP/EXP from the current world; these baseline rows do not heal/reset after Lamp",
+    "sp_meter_visible": false,
+    "stat_targets": {
+      "defense": [
+        7,
+        11,
+        16,
+        21,
+        28,
+        36,
+        44,
+        52,
+        61,
+        71,
+        80
+      ],
+      "guts": [
+        8,
+        10,
+        13,
+        17,
+        20,
+        25,
+        29,
+        34,
+        39,
+        44,
+        50
+      ],
+      "iq": [
+        5,
+        11,
+        18,
+        26,
+        36,
+        47,
+        58,
+        70,
+        83,
+        97,
+        110
+      ],
+      "maxhp": [
+        60,
+        88,
+        121,
+        160,
+        205,
+        254,
+        308,
+        365,
+        425,
+        487,
+        550
+      ],
+      "maxpp": [
+        25,
+        38,
+        54,
+        73,
+        94,
+        118,
+        144,
+        171,
+        200,
+        230,
+        260
+      ],
+      "offense": [
+        10,
+        21,
+        34,
+        49,
+        66,
+        85,
+        106,
+        128,
+        152,
+        176,
+        200
+      ],
+      "speed": [
+        6,
+        10,
+        15,
+        21,
+        28,
+        35,
+        43,
+        52,
+        61,
+        70,
+        80
+      ]
+    },
+    "statuses": [],
+    "unusable_skills": [
+      {
+        "id": "strike",
+        "required_weapon": "bat"
+      },
+      {
+        "id": "splitShot",
+        "required_weapon": "slingshot"
+      }
+    ],
+    "usable_skills": []
+  },
+  "presentation": {
+    "asset_receipt_path": "romfs/doll-preview/source.json",
+    "asset_recipe_path": "content/doll-entry.json",
+    "assets": {
+      "background": {
+        "frame_size": [
+          176,
+          172
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "kind": "indexed",
+        "output": "doll-preview/doll-background.bpx",
+        "source": "Graphics/Battle BGS/baby.png",
+        "texture_size": [
+          176,
+          172
+        ]
+      },
+      "background-palette": {
+        "frame_size": [
+          4,
+          4
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "kind": "indexed",
+        "output": "doll-preview/doll-palette.bpx",
+        "source": "Graphics/Battle BGS/baby_pal.png",
+        "texture_size": [
+          4,
+          4
+        ]
+      },
+      "bash_icon": {
+        "source": "Graphics/UI/Battle/bashIcon.png",
+        "texture_size": [
+          16,
+          16
+        ]
+      },
+      "box": {
+        "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+        "texture_size": [
+          24,
+          24
+        ]
+      },
+      "counter_bg": {
+        "source": "Graphics/UI/Battle/info_plate_counter_bg.png",
+        "texture_size": [
+          27,
+          9
+        ]
+      },
+      "defend_icon": {
+        "source": "Graphics/UI/Battle/defendIcon.png",
+        "texture_size": [
+          16,
+          16
+        ]
+      },
+      "digits": {
+        "frame_size": [
+          7,
+          7
+        ],
+        "grid": [
+          8,
+          10
+        ],
+        "source": "Graphics/UI/Battle/hp_pp_numbers.png",
+        "texture_size": [
+          56,
+          70
+        ]
+      },
+      "enemy": {
+        "frame_size": [
+          35,
+          51
+        ],
+        "grid": [
+          1,
+          1
+        ],
+        "kind": "texture",
+        "output": "doll-preview/doll-enemy.t3x",
+        "source": "Graphics/Battle Sprites/doll.png",
+        "texture_size": [
+          35,
+          51
+        ]
+      },
+      "hp_label": {
+        "source": "Graphics/UI/Battle/label_hp.png",
+        "texture_size": [
+          13,
+          9
+        ]
+      },
+      "items_icon": {
+        "source": "Graphics/UI/Battle/itemIcon.png",
+        "texture_size": [
+          16,
+          16
+        ]
+      },
+      "party": {
+        "frame_size": [
+          64,
+          64
+        ],
+        "grid": [
+          10,
+          18
+        ],
+        "source": "Graphics/Character Sprites/Ninten/battle.png",
+        "texture_size": [
+          640,
+          1152
+        ]
+      },
+      "plate_bg": {
+        "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
+        "texture_size": [
+          6,
+          6
+        ]
+      },
+      "plate_frame": {
+        "source": "Graphics/UI/Battle/info_plate_frame.png",
+        "texture_size": [
+          22,
+          27
+        ]
+      },
+      "pp_label": {
+        "source": "Graphics/UI/Battle/label_pp.png",
+        "texture_size": [
+          13,
+          9
+        ]
+      },
+      "transition": {
+        "frame_size": [
+          320,
+          180
+        ],
+        "grid": [
+          5,
+          5
+        ],
+        "source": "Graphics/VFX/battle_transition.png",
+        "texture_size": [
+          1600,
+          900
+        ]
+      }
+    },
+    "derived_layout": {
+      "command_icon_positions": [
+        [
+          9,
+          1
+        ],
+        [
+          41,
+          1
+        ],
+        [
+          73,
+          1
+        ]
+      ],
+      "cursor_centers": [
+        [
+          17,
+          9
+        ],
+        [
+          49,
+          9
+        ],
+        [
+          81,
+          9
+        ]
+      ],
+      "method": "Godot 3.6.2 native Control/HBox/VBox/PanelContainer micro-probe; not full source scene",
+      "party_hidden_position": [
+        128,
+        116
+      ],
+      "party_info_position": [
+        0,
+        112
+      ],
+      "party_shown_position": [
+        128,
+        96
+      ],
+      "party_sprite_size": [
+        64,
+        64
+      ],
+      "plate_position": [
+        128,
+        132
+      ],
+      "plate_size": [
+        65,
+        49
+      ]
+    },
+    "enemy_transition": {
+      "duration": 0.25,
+      "ease": "OUT",
+      "per_enemy_delay_numerator": 0.2,
+      "shake_frequency": 0.04,
+      "shake_range": [
+        -4,
+        4
+      ],
+      "shaking_cleared_after_reveal_delay": 0.1,
+      "target": "enemy sprite center",
+      "tint_seconds": 0.6,
+      "tint_to": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "transition": "QUAD"
+    },
+    "party_sprite": {
+      "control_hidden_y": -16,
+      "distance_to_shown": 20,
+      "frame": 0,
+      "grid": [
+        10,
+        18
+      ],
+      "show_tween_seconds": 0.12,
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn"
+    },
+    "party_transition": {
+      "arrival_hide_deferred": true,
+      "arrival_quake_base_magnitude": 8,
+      "arrival_quake_intensity": 0.5,
+      "arrival_quake_steps": [
+        {
+          "duration": 0.05,
+          "ease": 1,
+          "from": 0,
+          "to": 4
+        },
+        {
+          "duration": 0.1,
+          "ease": 0.5,
+          "from": 4,
+          "to": -4
+        },
+        {
+          "duration": 0.1,
+          "ease": 0.5,
+          "from": -2,
+          "to": 2
+        },
+        {
+          "duration": 0.1,
+          "ease": 0.5,
+          "from": 2,
+          "to": -2
+        },
+        {
+          "duration": 0.15,
+          "ease": 0.5,
+          "from": -2,
+          "to": 0
+        }
+      ],
+      "center_nudge": {
+        "center_x": 160,
+        "distance_lt": 4,
+        "duration": 0.2,
+        "ease": "OUT",
+        "offset": 16,
+        "party_count": 1,
+        "random_sign": true,
+        "transition": "BACK"
+      },
+      "crouch_frame_coords": [
+        3,
+        0
+      ],
+      "initial_jump_wait": 0.2,
+      "jump_apex_formula": "start_y - (16 + max(0,start_y-90))",
+      "jump_apex_offset": 16,
+      "jump_down_delay": 0.3,
+      "jump_down_seconds": 0.3,
+      "jump_duration": 0.6,
+      "jump_frame_coords": [
+        0,
+        18
+      ],
+      "jump_height_threshold": 90,
+      "jump_method_time": 0.15,
+      "jump_start_for_first_party": 0.45,
+      "jump_target_x": 160.5,
+      "jump_target_y": 180,
+      "jump_up_seconds": 0.3,
+      "per_member_wait": 0.1,
+      "scale_delay": 0.3,
+      "scale_duration": 0.3,
+      "scale_ease": "IN",
+      "scale_target": [
+        0.3,
+        2
+      ],
+      "scale_transition": "QUART",
+      "screen_offset": [
+        0,
+        -4
+      ],
+      "source_function": "BattleSystem._add_players_and_npc_transitions / _jump_to_battle / _jump_player_to_partyinfo",
+      "squash_ease": "OUT",
+      "squash_scale": [
+        1.1,
+        0.9
+      ],
+      "squash_segment_seconds": 0.1,
+      "squash_transition": "QUART",
+      "x_transition": "LINEAR",
+      "y_down_ease": "IN",
+      "y_down_transition": "QUAD",
+      "y_up_ease": "OUT",
+      "y_up_transition": "QUAD"
+    },
+    "plain_palette_hex": [
+      "f3f2f4",
+      "bfb4cd",
+      "7a6c86",
+      "141117",
+      "ba53e4",
+      "d6cedf",
+      "332943",
+      "ff285f"
+    ],
+    "plate_nodes": {
+      ".": {
+        "margin_bottom": 49.0,
+        "margin_right": 65.0,
+        "material": {
+          "ExtResource": 5
+        },
+        "patch_margin_bottom": 9,
+        "patch_margin_left": 9,
+        "patch_margin_right": 9,
+        "patch_margin_top": 17,
+        "rect_min_size": [
+          65,
+          0
+        ],
+        "rect_pivot_offset": [
+          -30,
+          -59
+        ],
+        "script": {
+          "ExtResource": 4
+        },
+        "texture": {
+          "ExtResource": 1
+        }
+      },
+      "ContentBattle": {
+        "anchor_bottom": 1.0,
+        "anchor_right": 1.0,
+        "margin_bottom": -3.0,
+        "margin_left": 3.0,
+        "margin_right": -3.0,
+        "margin_top": 16.0,
+        "show_behind_parent": true,
+        "use_parent_material": true
+      },
+      "ContentBattle/BG": {
+        "anchor_bottom": 1.0,
+        "anchor_right": 1.0,
+        "rect_pivot_offset": [
+          4,
+          2
+        ],
+        "show_behind_parent": true,
+        "stretch_mode": 2,
+        "texture": {
+          "ExtResource": 12
+        },
+        "use_parent_material": true
+      },
+      "ContentBattle/Counter": {
+        "anchor_bottom": 1.0,
+        "anchor_left": 1.0,
+        "anchor_right": 1.0,
+        "margin_bottom": -1.0,
+        "margin_left": -56.0,
+        "margin_right": -3.0
+      },
+      "ContentBattle/Counter/HPCounterBG": {
+        "margin_bottom": 13.0,
+        "margin_left": 21.0,
+        "margin_right": 27.0,
+        "margin_top": 4.0,
+        "rect_pivot_offset": [
+          26,
+          28
+        ],
+        "texture": {
+          "ExtResource": 14
+        }
+      },
+      "ContentBattle/Counter/HP_H": {
+        "centered": false,
+        "hframes": 8,
+        "position": [
+          22,
+          5
+        ],
+        "texture": {
+          "ExtResource": 3
+        },
+        "vframes": 10
+      },
+      "ContentBattle/Counter/HP_O": {
+        "centered": false,
+        "hframes": 8,
+        "position": [
+          40,
+          5
+        ],
+        "texture": {
+          "ExtResource": 3
+        },
+        "vframes": 10
+      },
+      "ContentBattle/Counter/HP_T": {
+        "centered": false,
+        "hframes": 8,
+        "position": [
+          31,
+          5
+        ],
+        "texture": {
+          "ExtResource": 3
+        },
+        "vframes": 10
+      },
+      "ContentBattle/Counter/NoPPCounterBG": {
+        "margin_bottom": 25.0,
+        "margin_left": 21.0,
+        "margin_right": -5.0,
+        "margin_top": 16.0,
+        "rect_pivot_offset": [
+          26,
+          28
+        ],
+        "texture": {
+          "ExtResource": 8
+        }
+      },
+      "ContentBattle/Counter/PPCounterBG": {
+        "margin_bottom": 25.0,
+        "margin_left": 21.0,
+        "margin_right": 4.0,
+        "margin_top": 16.0,
+        "rect_pivot_offset": [
+          26,
+          28
+        ],
+        "texture": {
+          "ExtResource": 14
+        }
+      },
+      "ContentBattle/Counter/PP_H": {
+        "centered": false,
+        "hframes": 8,
+        "position": [
+          22,
+          17
+        ],
+        "texture": {
+          "ExtResource": 3
+        },
+        "vframes": 10
+      },
+      "ContentBattle/Counter/PP_O": {
+        "centered": false,
+        "hframes": 8,
+        "position": [
+          40,
+          17
+        ],
+        "texture": {
+          "ExtResource": 3
+        },
+        "vframes": 10
+      },
+      "ContentBattle/Counter/PP_T": {
+        "centered": false,
+        "hframes": 8,
+        "position": [
+          31,
+          17
+        ],
+        "texture": {
+          "ExtResource": 3
+        },
+        "vframes": 10
+      },
+      "Name": {
+        "align": 1,
+        "anchor_right": 1.0,
+        "custom_colors/font_color": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "custom_fonts/font": {
+          "ExtResource": 2
+        },
+        "grow_horizontal": 2,
+        "margin_bottom": 16.0,
+        "margin_left": 1.0,
+        "margin_top": 1.0,
+        "text": "ЩЩЩЩЩЩЩ",
+        "valign": 1
+      },
+      "hp_label": {
+        "margin_bottom": 29.0,
+        "margin_left": 11.0,
+        "margin_right": 24.0,
+        "margin_top": 20.0,
+        "material": {
+          "ExtResource": 5
+        },
+        "texture": {
+          "ExtResource": 10
+        }
+      },
+      "pp_label": {
+        "margin_bottom": 41.0,
+        "margin_left": 11.0,
+        "margin_right": 24.0,
+        "margin_top": 32.0,
+        "material": {
+          "ExtResource": 5
+        },
+        "texture": {
+          "ExtResource": 11
+        }
+      }
+    },
+    "scene_nodes": {
+      "ActionMenuBox": {
+        "__meta__": {
+          "_editor_description_": ""
+        },
+        "_name_box": "../TargetNameBox",
+        "_sp_meter": "../PlayerInfo/PlayerInfoVbox/SpMeter",
+        "margin_bottom": 17.0,
+        "margin_right": 194.0,
+        "margin_top": 1.0,
+        "mouse_filter": 1,
+        "script": {
+          "ExtResource": 19
+        }
+      },
+      "ActionMenuBox/ActionIcons": {
+        "custom_constants/separation": 16,
+        "margin_bottom": -2.0,
+        "margin_left": 9.0,
+        "margin_right": 185.0,
+        "margin_top": -18.0
+      },
+      "ActionMenuBox/ActionIcons/BashIcon": {
+        "margin_bottom": 16.0,
+        "margin_right": 16.0,
+        "margin_top": -18.0,
+        "texture": {
+          "ExtResource": 1
+        }
+      },
+      "ActionMenuBox/ActionIcons/DefendIcon": {
+        "margin_bottom": 16.0,
+        "margin_left": 128.0,
+        "margin_right": 144.0,
+        "texture": {
+          "ExtResource": 6
+        },
+        "theme": {
+          "SubResource": 1
+        }
+      },
+      "ActionMenuBox/ActionIcons/ItemsIcon": {
+        "margin_bottom": 16.0,
+        "margin_left": 96.0,
+        "margin_right": 112.0,
+        "texture": {
+          "ExtResource": 8
+        },
+        "theme": {
+          "SubResource": 1
+        }
+      },
+      "ActionMenuBox/Arrow": {
+        "_cursor_size": [
+          24,
+          12
+        ],
+        "consume_input_events": true,
+        "cursor_offset": [
+          12,
+          2
+        ],
+        "dont_kill_tween": true,
+        "frames": null,
+        "loop_around": true,
+        "menu_parent_path": "../ActionIcons",
+        "move_sfx": true,
+        "position": [
+          17,
+          -10
+        ],
+        "reset_on_show": false,
+        "select_sfx": true
+      },
+      "ActionMenuBox/Arrow/ActionCursor": {
+        "color": [
+          0.729412,
+          0.32549,
+          0.894118,
+          1
+        ],
+        "margin_bottom": 6.0,
+        "margin_left": -12.0,
+        "margin_right": 12.0,
+        "margin_top": -6.0,
+        "script": {
+          "ExtResource": 29
+        }
+      },
+      "PlayerInfo": {
+        "grow_horizontal": 0,
+        "grow_vertical": 0,
+        "margin_bottom": 257.0,
+        "margin_right": 320.0,
+        "margin_top": 257.0
+      },
+      "PlayerInfo/PlayerInfoVbox": {
+        "alignment": 2,
+        "custom_constants/separation": 0,
+        "grow_vertical": 0,
+        "size_flags_vertical": 0
+      },
+      "PlayerInfo/PlayerInfoVbox/PartyInfo": {
+        "margin_bottom": 68.0,
+        "margin_right": 320.0,
+        "rect_min_size": [
+          320,
+          68
+        ],
+        "size_flags_vertical": 0
+      },
+      "TargetNameBox": {
+        "margin_left": 194.0,
+        "margin_right": 320.0,
+        "margin_top": -27.0,
+        "material": {
+          "ExtResource": 30
+        },
+        "patch_margin_bottom": 8,
+        "patch_margin_left": 8,
+        "patch_margin_right": 8,
+        "patch_margin_top": 8,
+        "texture": {
+          "ExtResource": 3
+        }
+      },
+      "TargetNameBox/Label": {
+        "__meta__": {
+          "_edit_lock_": true,
+          "_edit_use_anchors_": false
+        },
+        "align": 1,
+        "custom_fonts/font": {
+          "ExtResource": 25
+        },
+        "margin_bottom": 21.0,
+        "margin_left": 6.0,
+        "margin_right": 120.0,
+        "margin_top": 7.0,
+        "valign": 1
+      },
+      "bottom": {
+        "color": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "grow_vertical": 2,
+        "margin_bottom": 360.001,
+        "margin_right": 448.0,
+        "margin_top": 180.0,
+        "rect_pivot_offset": [
+          224,
+          0
+        ]
+      },
+      "top": {
+        "color": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "margin_right": 448.0,
+        "margin_top": -180.0,
+        "rect_min_size": [
+          0,
+          180
+        ],
+        "rect_pivot_offset": [
+          224,
+          180
+        ]
+      }
+    },
+    "translations_en": {
+      "ATTACK_NAME": "Bash",
+      "BATTLE_ACTION_DEFEND": "Defend",
+      "BATTLE_ACTION_ITEMS": "Items",
+      "DOLL_ART": "The ,the ,A ,a ,its,it,it",
+      "DOLL_DESC": "It stares back at you.",
+      "DOLL_NAME": "Doll",
+      "LAMP_ART": "The ,the ,A ,a ,its,it,it",
+      "LAMP_DESC": "It hovers in the air!",
+      "LAMP_NAME": "Lamp"
+    }
+  },
+  "schema": 1,
+  "scope": {
+    "battle_id": "doll",
+    "combat_implemented": false,
+    "completion": "source Doll entrance and first command menu; explicit reviewed GLES2 fixed-palette-row policy; no selected action execution",
+    "gpu_reference_verified": false,
+    "whole_battle_approved": false
+  },
+  "selectors": {
+    "background": "baby.bbg all fields, exact default shader ordering, source omitted palette count0; no inferred palette cycling period",
+    "entry": "uiManager.start_battle; DialogueBox._end_dialogue queued start; BattleSystem.init_battle_params/_ready/_battle_start",
+    "layout": "Battle.tscn selected nodes; PartyInfoPlate.tscn; BattleParticipant.add_info_plate; EnemySpritesManager._get_new_position",
+    "menu": "ActionMenuBox.set_actions_for_user/_reset_actions/_move; BattleSystem._set_active_member/_add_actions_to_menu; cursor.gd",
+    "stats": "save_new_game plus save_overrides; PartyMember.init_from_dict/_get_stat_for_level/get_base_stat; Character.set_stat"
+  },
+  "sources": {
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03",
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3.import": "e07f81afe34f32ecd03fb1f65a88305b047e208004de2dbf662102c54591302a",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3.import": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Data/BattleSkills/attack.yaml": "97d01c135e783f4510b13501fd79b3b0f023297d6c860c3d06ac7db07f1f26ae",
+    "Data/BattleSkills/splitShot.yaml": "efdd73c94385d40a882c9173b15097d5e03591d1f99d9da5655bda580239523b",
+    "Data/BattleSkills/strike.yaml": "2249e5e4d4e3113a037ae888a76f8c1af3494a7e156003bc0374f8449e59d53e",
+    "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
+    "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Graphics/Battle BGS/baby.bbg": "cfd180f2ee72b8e748d780203707d50744620a8b697c75530c94c4f7e88c6bb6",
+    "Graphics/Battle BGS/baby.png": "1de8cae77c5282b572c682e9339b68624d1ba96562b47134a8b0954b7177f300",
+    "Graphics/Battle BGS/baby.png.import": "16c3409f4b3c7f15e3762f4631f2857233ec6598fb15ac7713b1eeb757f7b754",
+    "Graphics/Battle BGS/baby_pal.png": "2bd34845af2be7166bcb042f1f7413f54dcbce86a97568e013638f79d1d7ef15",
+    "Graphics/Battle BGS/baby_pal.png.import": "64ee0c60d07544497eb579dc4ced4c73a074b07cc5b4c0ab8f210b78a37b58d3",
+    "Graphics/Battle BGS/lamp.bbg": "10ea9c5ba2a5a109c6c815180d4ee21683191263ca25dc6c829ca1598f97734f",
+    "Graphics/Battle BGS/lamp.png": "c99233a36071100ad022c43f940d76c741d8fcfa9d4abf23f378327bc96211ec",
+    "Graphics/Battle BGS/lamp.png.import": "5a946bf7f1445c65bf2942b0659f7ccd9e6e6ee27986bf967722c5322c788dbe",
+    "Graphics/Battle Sprites/doll.png": "a6ad8fa2b88d12cb51e24e8c995ee0203be97275e6e7a86c63b52170f7f5a295",
+    "Graphics/Battle Sprites/doll.png.import": "708743380b7a9141f2b3a6331d2091b3249545bdedf1e5532ca60e153a5c1103",
+    "Graphics/Battle Sprites/lamp.png": "9a368ef8ba5727af433c84077db7ad25ecbfe66cdc7cc6a041c407b6e30cc385",
+    "Graphics/Battle Sprites/lamp.png.import": "c62e28f5cf645b2d4e4c68ae7c4522d4f9664202c9742eb508eeefcd2ce93699",
+    "Graphics/Character Sprites/Ninten/battle.png": "b541795453ef23b211486d741e0485a68b1df9b5ea533d07ada1051197a95a5b",
+    "Graphics/Character Sprites/Ninten/battle.png.import": "6617cccb749bbcdc105245fb6d03692c1a015f5dbd7dbb9500fbe3330c5b6ef2",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/UI/Battle/bashIcon.png": "36f8e4622fdac4fa075438e515b353898a76562cfffe895defd8b3e53a3ee80c",
+    "Graphics/UI/Battle/bashIcon.png.import": "76843a2fc29b3d7a12a6c07f14ad845eaf8f325bf3754b3546f830363df270c5",
+    "Graphics/UI/Battle/defendIcon.png": "bd095505d74731279c8a72f3efdf4cbc5df3a4ddd16dc72bff13fce87701dcb8",
+    "Graphics/UI/Battle/defendIcon.png.import": "3cf1ac756bb55b61f123485a8887dec70006da006e16e074b1ab0bada169e3f5",
+    "Graphics/UI/Battle/hp_pp_numbers.png": "b049dc27660d35a837bacb1ced15171876b389e863a63e707d0dafbdd4e7287c",
+    "Graphics/UI/Battle/hp_pp_numbers.png.import": "e15d435126208c2a269b572d8ac3c64f88f9ae34c504b54428eecdeb6cbdfac9",
+    "Graphics/UI/Battle/info_plate_bg_battle.png": "a274306d7797a2cb0c9a296c610061a8d6690e59b011d9abaaa4f386da6d0e0f",
+    "Graphics/UI/Battle/info_plate_bg_battle.png.import": "81d4c0be2e1142cfb2a2027a481d774091094d693ec62258d9ea3fbd71242cfc",
+    "Graphics/UI/Battle/info_plate_counter_bg.png": "8a024af6dde38ace443b6fec4dc87832a631557991768199a2b0e7f2867ed0c2",
+    "Graphics/UI/Battle/info_plate_counter_bg.png.import": "f59e9d22294d481bbe6cd2763d9f213b03d77d71f9fbc29d7291ff66253a67cd",
+    "Graphics/UI/Battle/info_plate_frame.png": "8197c5b812d54ad5ba4fdfa21548650cd9dab4f2f66163062271aa6425d25fff",
+    "Graphics/UI/Battle/info_plate_frame.png.import": "9ef824d90dbd55a26ea8b7a7d62cc85c358b76ebc27ffe35e7c156e2f4b76290",
+    "Graphics/UI/Battle/itemIcon.png": "b143b4242452df9ad20a552fcaeb2133ce917e6515317a9d973c8112f220bcbe",
+    "Graphics/UI/Battle/itemIcon.png.import": "a622e0ab97d4d34431c467e9fd7f77c940ad2c7869079bc71900652721fab39d",
+    "Graphics/UI/Battle/label_hp.png": "892919e65839ac857e6334c03c75f8d3a818e5146bd29ced26ce3f04da5274e3",
+    "Graphics/UI/Battle/label_hp.png.import": "4b3618b4c6746eaaca5497a32e617805492761b4c49b4ea05e55390b307f76be",
+    "Graphics/UI/Battle/label_pp.png": "7581ee7a53dcebb86be3ffd7755972b1c82b6d605f823457d2e48a09f35c394d",
+    "Graphics/UI/Battle/label_pp.png.import": "abbb87b498049601a2e64d274d8547e4f13d390b45f0865515b43de6d2d38c99",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/VFX/battle_transition.png": "8ab268b2d77ee3b7c2979f5c77d59af1d15a5bbe36912af21df20fc556b212c9",
+    "Graphics/VFX/battle_transition.png.import": "1d938e8efb1b57203caf930e5b9ca4ace7fde3c67b038e4e25c3770de841a144",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Battle/ActionMenuBox.gd": "92142910d696db1a7f007ee174854277f926c705fd123ee07d9cef11ef640ebd",
+    "Nodes/Ui/Battle/Battle Transition.tscn": "392290f15f3ea5e6ef855f3a8fa78720c718e71cd56470d15dde008192da4848",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/UI/Battle/BattleItemPool.gd": "8f193447042817087a33cf761ea4c89cb6e9e453bc257a04b95089deaee8ff07",
+    "Scripts/UI/Battle/BattleMenuBox.gd": "d01947cb671feedc0467069af68c680a94002650bd34e405afc00d44dfc6902b",
+    "Scripts/UI/Battle/BattleParticipant.gd": "a6012e909f32931dd673b884bfc3564ae78741e64a18adb3a23cf5c25c9a1fdb",
+    "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/Battle/EnemySkill.gd": "152280867468742f87b0212237d27df4c28ec7717217fbcf6cb72663363236c6",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb",
+    "Scripts/UI/Battle/EnemySpritesManager.gd": "663250716e71c14f91a9e723c8d8c9ae9ff4a60dd1f4a092a46b1cd1d4469e4f",
+    "Scripts/UI/Battle/OnScreenEnemy.gd": "5f7842328e0017243286f2808d0308f83d96ee8cb8b5fa7840fc4e39eef316a9",
+    "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+    "Scripts/UI/BattleTransition.gd": "ba3217779943e87fbb604f46e7ebd935ed74a37f8cec2dd4a45b4bab2ad50a81",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/colorRectFlavor.gd": "aa54241880f05f6efaa4cc7d1996eac12b3c1749a739482976fd4bc3af59d82a",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Enemy.gd": "ba81a8f7144dc06cd1674413e5c9b6e670c05aed00c44de98161ad7dda8ebe1b",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Shaders/Transition.shader": "12270f6f16cfda98d7ae01435c9e33d50aa31606c901a360317e742da5b0b5ae",
+    "Translations/TranslatedText/battlers - sheet.csv": "d90fc7ffdc1a5c0550e4cb1d52b7cf5f666383d96ace8dca0d5550c9bf800b1e",
+    "Translations/TranslatedText/battleskills - sheet.csv": "cd4d4cbaeb8eec6bcda6b042fed70823c6ee790e9d3e4535e09c88a698781235",
+    "Translations/TranslatedText/battletext - sheet.csv": "740b4c183584fd29b9876c7905e5e0f53a317d63399f1bee4a809c94ab6ebd65",
+    "addons/distortionator_integration/default_shader.tres": "f65588ad747f102d2358bc016a016e22a2d1ef986a461938b8c1e3b75122d61c",
+    "addons/distortionator_integration/scene_importer.gd": "3b800ed49e18d07438e9b75abc98787b837ded3c9128922d634114ecaef798f9",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "viewport": {
+    "height": 180,
+    "width": 320
+  }
+}

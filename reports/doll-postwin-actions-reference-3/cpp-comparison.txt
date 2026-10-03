@@ -1,0 +1,1 @@
+External test room failed: Room: invalid section stride/size

@@ -1,0 +1,1005 @@
+{
+  "schema": 1,
+  "kind": "encore.dad-record.graph-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
+    "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+    "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/UI/SaveSelect.gd": "067f0a28af8b9d9b62204ae89ac4bdafbd8470e81a55e02fa27f2958510d6d00",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc"
+  },
+  "program": {
+    "identity": "Reusable/dad_normal",
+    "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+    "source_labels": [
+      "0",
+      "check_lloyd",
+      "check_ana",
+      "check_teddy",
+      "check_pippi",
+      "lloyd_leader",
+      "ana_leader",
+      "teddy_leader",
+      "pippi_leader",
+      "check_earned_cash",
+      "1",
+      "2",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "entry_pc": 0,
+    "label_to_pc": {
+      "0": 1,
+      "check_lloyd": 4,
+      "check_ana": 6,
+      "check_teddy": 8,
+      "check_pippi": 10,
+      "lloyd_leader": 12,
+      "ana_leader": 15,
+      "teddy_leader": 18,
+      "pippi_leader": 21,
+      "check_earned_cash": 24,
+      "1": 26,
+      "2": 29,
+      "4": 31,
+      "5": 37,
+      "6": 40,
+      "7": 43
+    },
+    "commands": [
+      {
+        "kind": "BeginCutscene",
+        "source_label": "0",
+        "phrase": 0,
+        "actor": "None"
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "0",
+        "phrase": 0,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::0",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "0",
+        "phrase": 0,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "0",
+        "phrase": 0,
+        "actor": "None",
+        "target_label": "check_lloyd",
+        "target_pc": 4
+      },
+      {
+        "kind": "BranchLeader",
+        "source_label": "check_lloyd",
+        "phrase": 1,
+        "actor": "None",
+        "leader": "lloyd",
+        "target_label": "lloyd_leader",
+        "target_pc": 12
+      },
+      {
+        "kind": "Jump",
+        "source_label": "check_lloyd",
+        "phrase": 1,
+        "actor": "None",
+        "target_label": "check_ana",
+        "target_pc": 6
+      },
+      {
+        "kind": "BranchLeader",
+        "source_label": "check_ana",
+        "phrase": 2,
+        "actor": "None",
+        "leader": "ana",
+        "target_label": "ana_leader",
+        "target_pc": 15
+      },
+      {
+        "kind": "Jump",
+        "source_label": "check_ana",
+        "phrase": 2,
+        "actor": "None",
+        "target_label": "check_teddy",
+        "target_pc": 8
+      },
+      {
+        "kind": "BranchLeader",
+        "source_label": "check_teddy",
+        "phrase": 3,
+        "actor": "None",
+        "leader": "teddy",
+        "target_label": "teddy_leader",
+        "target_pc": 18
+      },
+      {
+        "kind": "Jump",
+        "source_label": "check_teddy",
+        "phrase": 3,
+        "actor": "None",
+        "target_label": "check_pippi",
+        "target_pc": 10
+      },
+      {
+        "kind": "BranchLeader",
+        "source_label": "check_pippi",
+        "phrase": 4,
+        "actor": "None",
+        "leader": "pippi",
+        "target_label": "pippi_leader",
+        "target_pc": 21
+      },
+      {
+        "kind": "Jump",
+        "source_label": "check_pippi",
+        "phrase": 4,
+        "actor": "None",
+        "target_label": "check_earned_cash",
+        "target_pc": 24
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "lloyd_leader",
+        "phrase": 5,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::lloyd_leader",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "lloyd_leader",
+        "phrase": 5,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "lloyd_leader",
+        "phrase": 5,
+        "actor": "None",
+        "target_label": "check_earned_cash",
+        "target_pc": 24
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "ana_leader",
+        "phrase": 6,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::ana_leader",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "ana_leader",
+        "phrase": 6,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "ana_leader",
+        "phrase": 6,
+        "actor": "None",
+        "target_label": "check_earned_cash",
+        "target_pc": 24
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "teddy_leader",
+        "phrase": 7,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::teddy_leader",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "teddy_leader",
+        "phrase": 7,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "teddy_leader",
+        "phrase": 7,
+        "actor": "None",
+        "target_label": "check_earned_cash",
+        "target_pc": 24
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "pippi_leader",
+        "phrase": 8,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::pippi_leader",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "pippi_leader",
+        "phrase": 8,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "pippi_leader",
+        "phrase": 8,
+        "actor": "None",
+        "target_label": "check_earned_cash",
+        "target_pc": 24
+      },
+      {
+        "kind": "BranchFlag",
+        "source_label": "check_earned_cash",
+        "phrase": 9,
+        "actor": "None",
+        "flag": "earned_cash",
+        "value": 1,
+        "target_label": "1",
+        "target_pc": 26
+      },
+      {
+        "kind": "Jump",
+        "source_label": "check_earned_cash",
+        "phrase": 9,
+        "actor": "None",
+        "target_label": "2",
+        "target_pc": 29
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "1",
+        "phrase": 10,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::1",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "1",
+        "phrase": 10,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "1",
+        "phrase": 10,
+        "actor": "None",
+        "target_label": "2",
+        "target_pc": 29
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "2",
+        "phrase": 11,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::2",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitChoices",
+        "source_label": "2",
+        "phrase": 11,
+        "actor": "None",
+        "choice_group": "Reusable/dad_normal::2"
+      },
+      {
+        "kind": "HideDialogue",
+        "source_label": "4",
+        "phrase": 12,
+        "actor": "None",
+        "flags": 1
+      },
+      {
+        "kind": "SetFlag",
+        "source_label": "4",
+        "phrase": 12,
+        "actor": "None",
+        "flag": "saved",
+        "value": 0
+      },
+      {
+        "kind": "OpenSave",
+        "source_label": "4",
+        "phrase": 12,
+        "actor": "None"
+      },
+      {
+        "kind": "AwaitSubmenu",
+        "source_label": "4",
+        "phrase": 12,
+        "actor": "None"
+      },
+      {
+        "kind": "BranchFlag",
+        "source_label": "4",
+        "phrase": 12,
+        "actor": "None",
+        "flag": "saved",
+        "value": 1,
+        "target_label": "5",
+        "target_pc": 37
+      },
+      {
+        "kind": "Jump",
+        "source_label": "4",
+        "phrase": 12,
+        "actor": "None",
+        "target_label": "6",
+        "target_pc": 40
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "5",
+        "phrase": 13,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::5",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "5",
+        "phrase": 13,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "5",
+        "phrase": 13,
+        "actor": "None",
+        "target_label": "6",
+        "target_pc": 40
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "6",
+        "phrase": 14,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::6",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "6",
+        "phrase": 14,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "Jump",
+        "source_label": "6",
+        "phrase": 14,
+        "actor": "None",
+        "target_label": "7",
+        "target_pc": 43
+      },
+      {
+        "kind": "ShowDialogue",
+        "source_label": "7",
+        "phrase": 15,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Reusable/dad_normal.yaml::7",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "source_label": "7",
+        "phrase": 15,
+        "actor": "None",
+        "flags": 0
+      },
+      {
+        "kind": "SetTalker",
+        "source_label": "7",
+        "phrase": 15,
+        "actor": "None"
+      },
+      {
+        "kind": "CutsceneEnded",
+        "source_label": "7",
+        "phrase": 15,
+        "actor": "None"
+      },
+      {
+        "kind": "DialogueDone",
+        "source_label": "7",
+        "phrase": 15,
+        "actor": "None",
+        "duration": 0.5
+      }
+    ],
+    "choice_groups": [
+      {
+        "id": "Reusable/dad_normal::2",
+        "program_identity": "Reusable/dad_normal",
+        "source_label": "2",
+        "program_command_count": 48,
+        "initial_selection": 0,
+        "options": [
+          {
+            "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_0",
+            "target_label": "4",
+            "target_pc": 31,
+            "text": "Record"
+          },
+          {
+            "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_1",
+            "target_label": "6",
+            "target_pc": 40,
+            "text": "Nothing, really"
+          }
+        ],
+        "cancel_target_label": "6",
+        "cancel_target_pc": 40
+      }
+    ],
+    "reviewed_noops": [
+      {
+        "source_label": "2",
+        "command": "unsetflags",
+        "value": "money_earned",
+        "before_pc": 30,
+        "mutation": false,
+        "signal": false
+      }
+    ],
+    "clears_phone_location_on_finish": true
+  },
+  "texts": [
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::0",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "0",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_0",
+      "text_en": "[@][Ninten]? It's your dad.",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "PlayerName"
+            },
+            {
+              "kind": "Literal",
+              "text": "? It's your dad."
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 2,
+              "text": ""
+            },
+            {
+              "kind": 1,
+              "text": "? It's your dad."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::lloyd_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "lloyd_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_LLOYDLEADER_0",
+      "text_en": "[@]Why is your voice so nasally?[D:4] Do you have a cold?\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Why is your voice so nasally?"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 4
+            },
+            {
+              "kind": "Literal",
+              "text": " Do you have a cold?\n"
+            }
+          ],
+          "wait_for_input": true,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Why is your voice so nasally?"
+            },
+            {
+              "kind": 8,
+              "text": "4"
+            },
+            {
+              "kind": 1,
+              "text": " Do you have a cold?"
+            },
+            {
+              "kind": 9,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Well, anyway..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::ana_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "ana_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_ANALEADER_0",
+      "text_en": "[@]Ha-ha![D:4] Why are you so formal with your old man, silly?\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Ha-ha!"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 4
+            },
+            {
+              "kind": "Literal",
+              "text": " Why are you so formal with your old man, silly?\n"
+            }
+          ],
+          "wait_for_input": true,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Ha-ha!"
+            },
+            {
+              "kind": 8,
+              "text": "4"
+            },
+            {
+              "kind": 1,
+              "text": " Why are you so formal with your old man, silly?"
+            },
+            {
+              "kind": 9,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Well, anyway..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::teddy_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "teddy_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_TEDDYLEADER_0",
+      "text_en": "[@]Your voice sounds so deep![D:5] Kids grow up too fast...\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Your voice sounds so deep!"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 5
+            },
+            {
+              "kind": "Literal",
+              "text": " Kids grow up too fast...\n"
+            }
+          ],
+          "wait_for_input": true,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Your voice sounds so deep!"
+            },
+            {
+              "kind": 8,
+              "text": "5"
+            },
+            {
+              "kind": 1,
+              "text": " Kids grow up too fast..."
+            },
+            {
+              "kind": 9,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Well, anyway..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::pippi_leader",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "pippi_leader",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_PIPPILEADER_0",
+      "text_en": "[@]Why is your voice so high?[D:5] Are you pretending to be Mimmie?\n[W@]Well, anyway...",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Why is your voice so high?"
+            },
+            {
+              "kind": "SourceDelay",
+              "parameter": 5
+            },
+            {
+              "kind": "Literal",
+              "text": " Are you pretending to be Mimmie?\n"
+            }
+          ],
+          "wait_for_input": true,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Why is your voice so high?"
+            },
+            {
+              "kind": 8,
+              "text": "5"
+            },
+            {
+              "kind": 1,
+              "text": " Are you pretending to be Mimmie?"
+            },
+            {
+              "kind": 9,
+              "text": ""
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, anyway..."
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Well, anyway..."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::1",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "1",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_1",
+      "text_en": "[@]I've deposited $[EarnedCash] into your bank account.",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I've deposited $"
+            },
+            {
+              "kind": "EarnedCash"
+            },
+            {
+              "kind": "Literal",
+              "text": " into your bank account."
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "I've deposited $"
+            },
+            {
+              "kind": 5,
+              "text": ""
+            },
+            {
+              "kind": 1,
+              "text": " into your bank account."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::2",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "2",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_2",
+      "text_en": "[@]Taking away what you've spent, you should now have $[BankCash] in the bank.[WAIT@]Anyways, what do you need from me?",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Taking away what you've spent, you should now have $"
+            },
+            {
+              "kind": "BankCash"
+            },
+            {
+              "kind": "Literal",
+              "text": " in the bank."
+            }
+          ],
+          "wait_for_input": true,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Taking away what you've spent, you should now have $"
+            },
+            {
+              "kind": 6,
+              "text": ""
+            },
+            {
+              "kind": 1,
+              "text": " in the bank."
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Anyways, what do you need from me?"
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Anyways, what do you need from me?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::5",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "5",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_5",
+      "text_en": "[@]All done.",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "All done."
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "All done."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::6",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "6",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_6",
+      "text_en": "[@]Well, good luck with your adventure and whatnot.[WAIT@]Just remember to take a break once in a while, okay?",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Well, good luck with your adventure and whatnot."
+            }
+          ],
+          "wait_for_input": true,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Well, good luck with your adventure and whatnot."
+            }
+          ]
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Just remember to take a break once in a while, okay?"
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "Just remember to take a break once in a while, okay?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "identity": "Data/Dialogue/Reusable/dad_normal.yaml::7",
+      "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+      "source_label": "7",
+      "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_7",
+      "text_en": "[@](Click! Beep-beep-beep...)",
+      "speaker_key": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+      "speaker_en": "Dad",
+      "voice": "Audio/Sound effects/text/Adult.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "(Click! Beep-beep-beep...)"
+            }
+          ],
+          "wait_for_input": false,
+          "house_tokens": [
+            {
+              "kind": 1,
+              "text": "(Click! Beep-beep-beep...)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "command_schema": {
+    "Jump": 36,
+    "BranchFlag": 37,
+    "BranchLeader": 38,
+    "AwaitChoices": 39,
+    "OpenSave": 40,
+    "AwaitSubmenu": 41
+  },
+  "contracts": {
+    "branch_pc": "Program-relative command index; bind/validate before execution",
+    "await_choices": "Wait for final text completion, then menu result supplies the next PC",
+    "await_submenu": "Only SaveSelect close callback resumes; hidden empty text never finishes",
+    "money": "EarnedCash captures/resets once at phrase entry without flag broadcast; BankCash reads only",
+    "source_delay": "Token8 carries source numeric amount; CHAR_DELAY count=int(amount/(text_seconds*16)); suppress voice/RNG for delay chars",
+    "source_newline": "Token9 is an empty-payload forced newline with no printable cell; W@ wait then new bullet is a separate segment",
+    "choice_clear": "Clear text and hide choices before handling selected phrase; play InputSound after handling it"
+  }
+}

@@ -109,7 +109,7 @@ std::vector<uint32_t>generated_uid_ledger;
 u64 load_epoch_tick=0;
 std::string continue_status;
 bool continue_exit=false,restore_input_pending=false;
-bool house_assets_ready=false,continue_assets_ready=false,world_effect_assets_ready=false;
+bool house_assets_ready=false,house_graphics_ready=false,continue_assets_ready=false,world_effect_assets_ready=false;
 std::string loaded_battle_path;
 upstream::SessionSnapshot session_state;
 bool session_state_ready=false;
@@ -274,17 +274,25 @@ struct LoadingScope {
     ScopedLoadProgress observer;
     explicit LoadingScope(const char* value,unsigned tasks):label(value),started(osGetTime()),observer(pulse,this){plan.begin(tasks);report_load_progress(LoadPhase::Scene,0,0);}
     bool complete(){if(!plan.complete_task(next_task))return false;++next_task;report_load_progress(LoadPhase::Scene,next_task,next_task);return true;}
-    template<class Work> bool step(Work work){if(!work()){plan.fail();return false;}return complete();}
+    template<class Work> bool step(Work work,const char* resource="task"){
+        const auto tick=svcGetSystemTick();const bool ok=work();
+        char line[240];const int n=std::snprintf(line,sizeof(line),"ENCORE_LOAD_TASK scope=%s task=%u resource=%s elapsed_ms=%.3f ok=%u\n",label,next_task,resource,double(svcGetSystemTick()-tick)/CPU_TICKS_PER_MSEC,unsigned(ok));
+        if(n>0)svcOutputDebugString(line,size_t(n));
+#ifdef ENCORE_TEXT_QA
+        if(qa_log){std::fprintf(qa_log,"%s",line);std::fflush(qa_log);}
+#endif
+        if(!ok){plan.fail();return false;}return complete();
+    }
     bool finish(){if(!plan.finish())return false;force_frame=true;report_load_progress(LoadPhase::Scene,next_task,next_task);force_frame=false;return true;}
     static void pulse(void* context,const LoadProgress& progress){
         (void)progress;
         auto& self=*static_cast<LoadingScope*>(context);const u64 now=osGetTime();
-        if(!loading_top||!loading_indicator.ready()||(!self.force_frame&&self.frames&&now-self.last_frame<17))return;
+        if(!loading_top||!loading_indicator.ready()||(!self.force_frame&&self.frames&&now-self.last_frame<50))return;
         if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))return;
         C2D_TargetClear(loading_top,C2D_Color32(0,0,0,255));C2D_SceneBegin(loading_top);
         C2D_DrawRectSolid(view_x(),view_y(),0,float(view_width),float(view_height),loading_indicator.background_color());
         C3D_Mtx saved_view;C2D_ViewSave(&saved_view);C2D_ViewTranslate(view_x(),view_y());
-        loading_indicator.draw_progress(int(view_width),int(view_height),double(now-self.started)/1000.0,self.plan.fraction());
+        loading_indicator.draw_progress(int(view_width),int(view_height),double(now-self.started)/1000.0,0.0); // Fixed bottom-left; task progress is diagnostic only.
         C2D_ViewRestore(&saved_view);
         C3D_FrameEnd(0);self.last_frame=now;++self.frames;
 #ifdef ENCORE_TEXT_QA
@@ -403,6 +411,23 @@ bool load_ui_font_only(std::string&error){
     std::vector<BattleRenderer::Glyph>glyphs;for(uint32_t i=0;i<view.count(BattleSection::Glyphs);++i){const auto g=view.glyph(i);const auto id=uint32_t(std::find(ids.begin(),ids.end(),g.resource)-ids.begin());glyphs.push_back({g.codepoint,id,g.u,g.v,g.w,g.h,g.advance,g.offset_x,g.offset_y});}
     loaded_battle_path.clear();const bool ok=battle_renderer.set_glyphs(std::move(glyphs),error);if(ok)texture_owner_checkpoint("ui-font-only");return ok;
 }
+// Title and naming need checked world metadata for save admission, not the
+// room's image owners. Prepare those once before exposing a new/loaded house.
+bool ensure_house_graphics(std::string&error){
+    if(house_graphics_ready)return true;
+    wait_for_gpu_idle();LoadingScope loading("Preparing house graphics",4);
+    if(!loading.step([&]{return opening_actor.load(opening_data.view(),error);},"room-atlases")||
+       !loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error);},"house-atlases")||
+       !loading.step([&]{return items_renderer.load(items_data.view(),"romfs:/",error);},"item-atlases")||
+       !loading.step([&]{
+           if(!audio_player.available())return true;
+           const auto room=opening_data.view();
+           for(uint32_t i=0;i<room.resource_count();++i){const auto r=room.resource(i);
+               if(r.kind==uint16_t(upstream::RoomResourceKind::AudioRequestOnly)&&!audio_player.prepare(r.stable_id,error))return false;}
+           return true;
+       },"house-audio")||!loading.finish())return false;
+    house_graphics_ready=true;return true;
+}
 bool initialize_world_effect(std::string&error){
     world_effect_resource=upstream::kRoomNoIndex;world_effect_consumed=0;world_effect_actors=0;world_effect_npc=upstream::kRoomNoIndex;
     const auto room=opening_data.view();
@@ -475,8 +500,25 @@ bool update_house_prompt(std::string&error){
  }
  return evaluate_house_button_prompt(house_prompt_data,uint32_t(startup_settings_data.prompt_index(session_state.settings.button_prompts)),observation,house_prompt_pose,error);
 }
+bool prepare_source_audio(const std::string& path,std::string&error){
+    for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto asset=menu_audio_bank.asset(i);
+        if(asset.source_path==path||(asset.source_path.substr(0,6)=="res://"&&asset.source_path.substr(6)==path)){
+            if(!audio_player.available()){error.clear();return true;}
+            return audio_player.prepare(asset.stable_id,error);
+        }
+    }
+    error="Sound is absent from checked audio bank";return false;
+}
+bool prepare_title_audio(std::string&error){
+    if(!prepare_source_audio(continue_data.title_music(),error))return false;
+    for(uint32_t i=0;i<uint32_t(upstream::ContinueSound::Count);++i)
+        if(!prepare_source_audio(continue_data.sound(upstream::ContinueSound(i)),error))return false;
+    return true;
+}
 bool play_source_audio(const std::string& path,ctr::AudioLane lane=ctr::AudioLane::Effect,float gain=0,float pitch=1){
-    for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto asset=menu_audio_bank.asset(i);if(asset.source_path==path||(asset.source_path.substr(0,6)=="res://"&&asset.source_path.substr(6)==path)){if(!audio_player.available())return true;std::string error;if(!audio_player.play(asset.stable_id,lane,error,gain,0,pitch)){audio_status=error;return false;}return true;}}
+    for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto asset=menu_audio_bank.asset(i);if(asset.source_path==path||(asset.source_path.substr(0,6)=="res://"&&asset.source_path.substr(6)==path)){if(!audio_player.available())return true;std::string error;
+        if(!audio_player.prepared(asset.stable_id)){LoadingScope loading("Preparing sound",1);if(!loading.step([&]{return audio_player.prepare(asset.stable_id,error);},"pcm-validation")||!loading.finish()){audio_status=error;return false;}}
+        if(!audio_player.play(asset.stable_id,lane,error,gain,0,pitch)){audio_status=error;return false;}return true;}}
     house_error="Menu sound is absent from checked audio bank";return false;
 }
 bool load_introduction(std::string&error){
@@ -594,7 +636,7 @@ bool apply_loaded_slot(uint32_t slot,std::string&error){
     candidate->house.bind_choices(choice_data,dialogue_choices);
     candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);
     if(!candidate->finish_scene_ready()||!candidate->world.pause_for_house()){error="Fresh scene ready boundary rejected";return false;}
-    if(!admit_encounter_scene(error))return false;
+    if(!ensure_house_graphics(error)||!admit_encounter_scene(error))return false;
     // Stable owners are committed together. All validation/clock failures above
     // leave the old scene, inventory, random stream and game files untouched.
     battle_entry=BattleEntry{};battle_round=BattleRound{};battle_outcome=BattleOutcome{};round_presentation=BattleActionPresentation{};round_ready=false;round_error.clear();
@@ -624,7 +666,7 @@ bool commit_named_new_game(std::string&error){
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);
     BattleItemsMenu checked_menu;if(!checked_menu.initialize(prepared.inventory)||!candidate->finish_scene_ready()){error="Named startup scene/menu preparation rejected";return false;}
-    if(!admit_encounter_scene(error))return false;
+    if(!ensure_house_graphics(error)||!admit_encounter_scene(error))return false;
     if(!loading.complete()||!loading.finish())return false;
     // Pending names and UID allocations become visible only with the new owner.
     // Failures above preserve the prior session, RNG, ledger and every save file.
@@ -641,6 +683,7 @@ bool commit_named_new_game(std::string&error){
 bool reset_development_game(std::string&error){
     cancel_battle_prewarm();
     LoadingScope loading("Starting new game",5);
+    if(!ensure_house_graphics(error))return false;
     wait_for_gpu_idle();restore_input_pending=false;session_rewards_valid=session_state_ready=false;session_inventory.initialize(items_data.view());items_menu.initialize(session_inventory);items_status.clear();
     battle_entry=upstream::BattleEntry{};battle_round=upstream::BattleRound{};battle_outcome=upstream::BattleOutcome{};round_presentation=upstream::BattleActionPresentation{};round_ready=false;round_error.clear();
     if(!loading.complete())return false;
@@ -786,7 +829,6 @@ void reference_borders(){
 bool load_house(std::string& error){
     if(!opening_data.load_file(resource_path(ResourceRole::Room).c_str(),error)||!world_blackbars.load_file(resource_path(ResourceRole::Blackbars).c_str(),error))return false;
     const auto room=opening_data.view();
-    if(!opening_actor.load(room,error))return false;
     if(!gameplay_scene->world.initialize(room,{float(view_width),float(view_height)})){error=gameplay_scene->world.error();return false;}
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count());
     return true;
@@ -985,18 +1027,27 @@ int main(int argc,char** argv){
     upstream::NativeInputAdapter native_input;
     loading_top=top;
     if(!resource_catalog.load_file("romfs:/data/native.encresources",error)||!resource_catalog.verify_files("romfs:/",error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
-    loaded_battle_path=resource_path(ResourceRole::Battle);
     if(!loading_indicator.load("romfs:/",resource_catalog.path(ResourceRole::LoadingIndicator).c_str(),error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
-    { LoadingScope loading("Starting game",21);
-    if(!loading.step([&]{return load_house(error);})||!loading.step([&]{return house_font_data.load_file(resource_path(ResourceRole::Battle).c_str(),error);})||!loading.step([&]{return battle_data.load_file(resource_path(ResourceRole::Battle).c_str(),error);})||!loading.step([&]{return load_battle_presentation(error);})||!loading.step([&]{return round_data.load_file(resource_path(ResourceRole::Round).c_str(),error);})||!loading.step([&]{return round_renderer.load(round_data.view(),"romfs:/",error);})||!loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);})||!loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error);})||!loading.step([&]{return initialize_house_interactions(error);})||!loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);})||!loading.step([&]{return session_inventory.initialize(items_data.view());})||!loading.step([&]{return items_menu.initialize(session_inventory);})||!loading.step([&]{return items_renderer.load(items_data.view(),"romfs:/",error);})){
+    { LoadingScope loading("Starting game",19);
+    // Keep checked metadata for saves/reference view, but admit only UI glyph
+    // textures. Full encounter preparation belongs to house scene admission.
+    if(!loading.step([&]{return load_house(error);},"room-metadata")||
+       !loading.step([&]{return house_font_data.load_file(resource_path(ResourceRole::Battle).c_str(),error);},"font-metadata")||
+       !loading.step([&]{return battle_data.load_file(resource_path(ResourceRole::Battle).c_str(),error);},"battle-metadata")||
+       !loading.step([&]{return load_ui_font_only(error);},"ui-font-textures")||
+       !loading.step([&]{return round_data.load_file(resource_path(ResourceRole::Round).c_str(),error);},"round-metadata")||
+       !loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);},"house-metadata")||
+       !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
+       !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
+       !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
+       !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();
         error_console(error);romfsExit();gfxExit();return 1;
     }
-    if(!loading.step([&]{return native_input_data.load_file(resource_path(ResourceRole::Input).c_str(),error);})||!loading.step([&]{return native_input.configure(native_input_data,error);})){
+    if(!loading.step([&]{return native_input_data.load_file(resource_path(ResourceRole::Input).c_str(),error);},"input-metadata")||!loading.step([&]{return native_input.configure(native_input_data,error);},"input-adapter")){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;
     }
-    initialize_audio();
-    if(!loading.complete()){error="Startup loading plan rejected";free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
+    if(!loading.step([&]{initialize_audio();return true;},"audio-stream-backend")){error="Startup loading plan rejected";free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
 
     // One shared stream for mechanics and action presentation. The full original
     // startup/entry random stream is not yet ported; seeded oracle runs explicitly
@@ -1006,8 +1057,9 @@ int main(int argc,char** argv){
 #else
     battle_random.seed(svcGetSystemTick());
 #endif
-    if(!open_continue(error,&loading)||!loading.finish()){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
+    if(!open_continue(error,&loading)||!loading.step([&]{return prepare_title_audio(error);},"title-audio")||!loading.finish()){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
     }
+    {char line[120];const int n=std::snprintf(line,sizeof(line),"ENCORE_STARTUP_READY elapsed_ms=%.3f\n",double(svcGetSystemTick()-load_epoch_tick)/CPU_TICKS_PER_MSEC);if(n>0)svcOutputDebugString(line,size_t(n));}
     upstream::MenuNavigationRepeat menu_navigation;
     std::atomic<bool> input_resume_reset{false};aptHookCookie input_hook{};
     aptHook(&input_hook,[](APT_HookType kind,void* state){

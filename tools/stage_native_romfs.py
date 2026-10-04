@@ -11,6 +11,10 @@ from native_items import stage_files as item_files
 ROOT=Path(__file__).resolve().parents[1]
 def main():
     source=ROOT/'romfs';target=ROOT/'build/ctr/native-romfs'
+    from resource_catalog import decode, stage_files as catalog_files
+    catalog=decode((source/'data/native.encresources').read_bytes())
+    catalog_bindings={b['id']:b['path'] for b in catalog['bindings']}
+    companions={catalog_bindings[e['battle_id']]:catalog_bindings[e['round_id']] for e in catalog['encounters']}
     blob=(source/'data/opening.encroom').read_bytes();room=parse_pack(blob)
     files={Path('data/opening.encroom'):blob}
     files.update(audio_files(source))
@@ -57,7 +61,8 @@ def main():
         if resource['kind']==3:
             path=Path(room['strings'][resource['path_string']])
             files.update(battle_files(source,path))
-            files.update(round_files(source,path.with_suffix(".encround")))
+            if path.as_posix() not in companions:raise ValueError('Missing checked encounter companion')
+            files.update(round_files(source,Path(companions[path.as_posix()])))
         path=Path(room['strings'][resource['path_string']])
         if path.is_absolute()or'..'in path.parts:raise ValueError('Unsafe native resource path')
         data=(source/path).read_bytes()
@@ -67,6 +72,7 @@ def main():
             ir=json.loads(IR.read_text());verify_sources(ir)
             if data!=encode(ir):raise ValueError("Stale checked world effect")
         files[path]=data
+    files.update(catalog_files(source, files))
     temporary=target.with_name(target.name+'-pending')
     if temporary.exists():shutil.rmtree(temporary)
     temporary.mkdir(parents=True)

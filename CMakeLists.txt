@@ -6,7 +6,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(Python3 3.9 COMPONENTS Interpreter REQUIRED)
 option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 add_library(encore_core
-    runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
+    runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
     runtime/music_regions.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
     runtime/game.cpp runtime/save.cpp runtime/progression.cpp runtime/movement.cpp runtime/animation.cpp runtime/collision.cpp runtime/world_flags.cpp runtime/world.cpp runtime/opening_trigger.cpp runtime/dialogue.cpp runtime/actor_actions.cpp runtime/cutscene_camera.cpp)
 target_include_directories(encore_core PUBLIC include)
@@ -605,4 +605,12 @@ if(BUILD_TESTING)
     add_executable(blackbars_tests tests/blackbars_tests.cpp)
     target_include_directories(blackbars_tests PRIVATE ${CMAKE_SOURCE_DIR}/include)
     add_test(NAME blackbars_source COMMAND blackbars_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encbars ${CMAKE_SOURCE_DIR}/reports/npc-doorway-occlusion/blackbars-native.tsv)
+endif()
+
+if(BUILD_TESTING)
+ add_executable(encore_resource_catalog_tests tests/resource_catalog_tests.cpp)
+ target_link_libraries(encore_resource_catalog_tests PRIVATE encore_core)
+ add_test(NAME resource_catalog COMMAND encore_resource_catalog_tests ${CMAKE_SOURCE_DIR}/romfs/data/native.encresources ${CMAKE_SOURCE_DIR}/romfs ${CMAKE_BINARY_DIR}/resource-catalog-fixture)
+ add_test(NAME resource_catalog_sources COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/resource_catalog_tests.py)
+ set_tests_properties(resource_catalog resource_catalog_sources PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()

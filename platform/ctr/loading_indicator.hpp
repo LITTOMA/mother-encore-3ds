@@ -11,13 +11,13 @@ public:
     LoadingIndicatorRenderer(const LoadingIndicatorRenderer&)=delete;
     LoadingIndicatorRenderer& operator=(const LoadingIndicatorRenderer&)=delete;
     ~LoadingIndicatorRenderer(){free();}
-    bool load(const char* prefix,std::string& error) {
-        free();if(!prefix){error="Loading indicator resource prefix missing";return false;}
+    bool load(const char* prefix,const char* pack_path,std::string& error) {
+        free();if(!prefix||!pack_path||!*pack_path){error="Loading indicator resource prefix missing";return false;}
         // Bootstrap must never call the heavy-load observer while its own
         // resources are incomplete, including when reloaded during an observer.
         encore::ScopedLoadProgress silence(nullptr);
         upstream::LoadingIndicatorData data;
-        if(!data.load_file((std::string(prefix)+"loading-preview/indicator.encload").c_str(),error))return false;
+        if(!data.load_file((std::string(prefix)+pack_path).c_str(),error))return false;
         auto sheet=loading_sprite_sheet_load((std::string(prefix)+data.texture_path()).c_str());
         if(!sheet||loading_sprite_sheet_count(sheet)!=1) {
             loading_sprite_sheet_free(sheet);error="Loading indicator texture unavailable";return false;

@@ -89,7 +89,7 @@ bool ResourceCatalog::load_file(const char* path,std::string& error) {
 }
 const std::string& ResourceCatalog::path(ResourceRole role)const {
     static const std::string empty;
-    auto id=uint32_t(role);if(valid_&&id>=1&&id<=22)for(const auto& row:bindings_)if(row.id==id)return row.path;
+    auto id=uint32_t(role);if(valid_&&id>=1&&(id<=22||role==ResourceRole::Introduction))for(const auto& row:bindings_)if(row.id==id)return row.path;
     return empty;
 }
 std::string ResourceCatalog::companion_path(std::string_view battle_path)const {

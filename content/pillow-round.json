@@ -89,10 +89,10 @@
   },
   "dependencies": {
     "content/native-battle.json": "ff44b8e515dc6e3e61bfb4e0c47df2bcc063e951bf24e927e387aaa0c0d5e924",
-    "content/native-opening.json": "925efd1ddbd73cf21ea9a43f158e75de80ca399767802bfb4ae36ca68be94764",
-    "content/native-round.json": "35e546e808931982bb5d2969d3394af61827203e4af2107ceb752bc6d00e0f3b",
+    "content/native-opening.json": "a466ae0f4cb80df3f76e86f52ce9ef69323e96135e9b39ce7ecba09af4f403a8",
+    "content/native-round.json": "3159d5f20fb67e40633710e524c97f1317c9a6b6ff3995f2f2bc5a9f9c4e342d",
     "content/pillow-entry.json": "c6239cebd11bd70a8d9a29d258d477a9322f9f6696b9dc567513ace52f86f49c",
-    "content/doll-round.json": "cb004e6815a7623fdedb9b1dc9a7389e8a6f8e72271091a4a101e631a31d8844"
+    "content/doll-round.json": "2f8097a511d5036338476061848367d079339b893e722805609a451458e4476d"
   },
   "skills": [
     {
@@ -231,9 +231,6 @@
     "enemy_participant": 1,
     "basic_skill": 0,
     "guard_skill": 3,
-    "basic_menu": 1,
-    "items_menu": 2,
-    "guard_menu": 3,
     "locale": "en",
     "enemy_name": 24,
     "enemy_article": 25,
@@ -241,7 +238,10 @@
     "mortal_damage": 22,
     "no_effect": 23,
     "show_intro_outro": 0,
-    "win_flag": ""
+    "win_flag": "",
+    "basic_menu": 1,
+    "items_menu": 2,
+    "guard_menu": 3
   },
   "texts": [
     {

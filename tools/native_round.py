@@ -43,6 +43,9 @@ class RoundTables(dict):
 def verify_sources(ir,root=ROOT):
  from battle_round_bindings import load,check_round
  check_round(ir,load(root))
+ if ir.get('encounter',{}).get('boss'):
+  from boss_presentation_bindings import load as load_boss, check_round as check_boss
+  check_boss(ir,load_boss(root),root)
  require(ir['schema']in[2,3,4,5] and ir['kind']=='encore.native-battle-round.source-ir' and ir['commit']==PIN,'Unreviewed round schema/pin')
  review='reports/pillow-battle/source-review.json'if ir['schema']==5 and ir['binding']['battle_id']==3 else('reports/doll-round/source-review.json'if ir['schema']in[3,4,5] else'reports/battle-victory-data/source-review.json')
  report=json.loads((root/review).read_text())

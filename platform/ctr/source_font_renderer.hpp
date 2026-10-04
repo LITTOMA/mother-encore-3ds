@@ -116,7 +116,11 @@ private:
         const auto image=loading_sprite_sheet_get_image(pages_[g.page],0);auto sub=*image.subtex;
         const float du=(sub.right-sub.left)/page.width,dv=(sub.bottom-sub.top)/page.height,left=sub.left,top=sub.top;
         sub.left=left+u*du;sub.right=left+(u+w)*du;sub.top=top+v*dv;sub.bottom=top+(v+h)*dv;sub.width=w;sub.height=h;
-        C2D_ImageTint tint;C2D_PlainImageTint(&tint,color,1);
+        C2D_ImageTint tint;
+        // White text needs opacity only. Solid white tint would also whiten
+        // the atlas's black outline, filling the small source glyphs.
+        if((color&0x00ffffffu)==0x00ffffffu)C2D_AlphaImageTint(&tint,float(color>>24)/255.f);
+        else C2D_PlainImageTint(&tint,color,1);
         return C2D_DrawImageAt({image.tex,&sub},x,y,depth,&tint,width/w,height/h);
     }
 };

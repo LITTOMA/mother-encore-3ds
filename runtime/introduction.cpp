@@ -115,7 +115,7 @@ bool Introduction::step(double delta,bool accept_hint,bool skip,std::string&e){
  if(skip&&time_>=0&&time_<s.length){if(scene_==0){IntroAudio a;a.kind=IntroAudioKind::FadeMusic;a.lane=IntroAudioLane::Music;a.seconds=data_->music_fade;audio_.push_back(a);enter_door(1);}else finish_now();e.clear();return true;}
  const double previous_time=time_;time_+=delta;
  if(time_<0){if(!door_revealing)phase_=IntroPhase::Waiting;e.clear();return true;}
- const double active_delta=time_-std::max(previous_time,0.);
+ const double active_delta=std::max(0.,delta+std::min(previous_time,0.));
  if(!door_revealing)phase_=time_>=s.length?IntroPhase::TextTail:IntroPhase::Playing;
  if(scene_==1&&!blackbars_.update(true,active_delta))return fail(e,"Introduction blackbars rejected");
  if(border_!=UINT32_MAX)border_time_+=active_delta;

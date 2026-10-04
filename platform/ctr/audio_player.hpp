@@ -3,6 +3,7 @@
 #include "encore/world.hpp"
 #include <3ds.h>
 #include <array>
+#include <string>
 
 namespace encore::ctr {
 enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5 };
@@ -25,6 +26,10 @@ public:
     AudioPlayer(const AudioPlayer&)=delete;
     AudioPlayer& operator=(const AudioPlayer&)=delete;
     bool initialize(const char* bank_path,const char* asset_root,std::string& error);
+    // Opening a stream performs its complete size/CRC validation once. Metadata
+    // admission and NDSP initialization do not read unused PCM payloads.
+    bool prepare(uint32_t stable_audio_id,std::string& error);
+    bool prepared(uint32_t stable_audio_id) const;
     void shutdown();
     // Stop all voices/history while preserving checked streams and buffers.
     // Also safe when NDSP was unavailable; does not retry initialization.
@@ -57,10 +62,12 @@ private:
         uint32_t asset_index=0;
         bool active=false,fading=false,stop_after_fade=false;
     };
+    bool prepare_index(uint32_t index,std::string& error);
     bool refill(uint32_t lane,std::string& error);
     void stop(uint32_t lane);
     void mix(uint32_t lane);
     upstream::AudioBank bank_;
+    std::string asset_root_;
     std::array<upstream::AudioPcmStream,64> streams_;
     std::array<Voice,lane_count> voices_;
     Result dsp_result_=0;

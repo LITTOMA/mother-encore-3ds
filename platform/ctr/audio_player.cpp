@@ -26,13 +26,12 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     if(!bank_.load_file(bank_path,error))return false;
     // libctru loads a component already supplied by the launcher or from SD.
     // No firmware is included, downloaded, fabricated, or silently substituted.
-    // Check availability before scanning the complete PCM bank: a missing DSP
-    // service cannot play any of those checked streams.
+    // Admit metadata and the DSP service here; prepare() validates each needed
+    // PCM payload before its first playback, retaining that checked stream.
     dsp_result_=ndspInit();
     if(R_FAILED(dsp_result_)){char message[112];std::snprintf(message,sizeof(message),"Audio unavailable: NDSP init 0x%08lX (DSP component/service required)",static_cast<unsigned long>(uint32_t(dsp_result_)));error=message;shutdown();return false;}
     ndsp_initialized_=true;
-    for(uint32_t i=0;i<bank_.count();++i){const auto a=bank_.asset(i);std::string path=root;path+=a.pcm_path;
-        if(!streams_[i].open(a,path.c_str(),error)){shutdown();return false;}}
+    asset_root_=root;
     ndspSetMasterVol(upstream::audio_linear_gain(bank_.master_db()));
     for(uint32_t i=0;i<4;++i){
         voices_[i].samples=static_cast<int16_t*>(linearAlloc(buffer_count*buffer_frames*2*sizeof(int16_t)));
@@ -46,6 +45,23 @@ void AudioPlayer::shutdown(){
     ndsp_initialized_=ready_=false;
     for(auto& v:voices_){if(v.samples)linearFree(v.samples);v=Voice{};}
     for(auto& stream:streams_)stream.close();
+    asset_root_.clear();
+}
+bool AudioPlayer::prepare_index(uint32_t index,std::string& error){
+    if(streams_[index].is_open()){error.clear();return true;}
+    const auto asset=bank_.asset(index);const auto path=asset_root_+std::string(asset.pcm_path);
+    // AudioPcmStream::open checks every byte before publishing its file handle.
+    // Missing/truncated/corrupt payloads cannot reach an NDSP wave queue.
+    return streams_[index].open(asset,path.c_str(),error);
+}
+bool AudioPlayer::prepare(uint32_t id,std::string& error){
+    if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
+    for(uint32_t i=0;i<bank_.count();++i)if(bank_.asset(i).stable_id==id)return prepare_index(i,error);
+    error="Audio resource is absent from bank";return false;
+}
+bool AudioPlayer::prepared(uint32_t id)const{
+    if(ready_)for(uint32_t i=0;i<bank_.count();++i)if(bank_.asset(i).stable_id==id)return streams_[i].is_open();
+    return false;
 }
 void AudioPlayer::reset_scene(){
     // The immutable checked bank and open streams belong to the application,
@@ -79,6 +95,7 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
     uint32_t index=0;while(index<bank_.count()&&bank_.asset(index).stable_id!=id)++index;
     if(index==bank_.count()){error="Audio resource is absent from bank";return false;}
     for(uint32_t i=0;i<lane_count;++i)if(i!=lane&&voices_[i].active&&voices_[i].asset_index==index){error="Concurrent playback of one PCM asset across lanes is outside audio slice";return false;}
+    if(!prepare_index(index,error))return false; // Preserve a live voice when preparation fails.
     auto& voice=voices_[lane];
     if(!voice.samples){
         voice.samples=static_cast<int16_t*>(linearAlloc(buffer_count*buffer_frames*2*sizeof(int16_t)));

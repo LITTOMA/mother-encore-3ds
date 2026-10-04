@@ -652,3 +652,8 @@ if(BUILD_TESTING)
  add_test(NAME round_recipe_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_round_presentation_recipe)
  set_tests_properties(round_recipe_consumer round_recipe_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
+
+if(BUILD_TESTING)
+ add_test(NAME boss_presentation_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_boss_presentation_bindings)
+ set_tests_properties(boss_presentation_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()

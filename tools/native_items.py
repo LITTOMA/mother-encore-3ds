@@ -10,6 +10,7 @@ import zlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 PIN = '7d9246600fffe518408f5830d4848635019005a3'
 NO_INDEX = 0xffffffff
 SECTION_NAMES = ['Strings', 'Metadata', 'Definitions', 'Instances', 'Resources',
@@ -86,6 +87,9 @@ def verify_sources(ir, root=ROOT):
     for path, sha in ir['dependencies'].items():
         require(safe_path(path) and path.startswith(('content/', 'romfs/'))
                 and digest(root / path) == sha, 'Changed Items dependency ' + str(path))
+
+    from tools.items_presentation_bindings import check_round
+    check_round(ir, root)
 
 
 def lower(ir, root=ROOT, verify_assets=True):

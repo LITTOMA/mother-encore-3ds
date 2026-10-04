@@ -60,6 +60,7 @@ add_custom_target(encore_native_content ALL
     COMMAND ${Python3_EXECUTABLE} tools/new_game_assets.py compile
     COMMAND ${Python3_EXECUTABLE} tools/startup_settings_assets.py verify
     COMMAND ${Python3_EXECUTABLE} tools/house_button_prompt_assets.py verify
+    COMMAND ${Python3_EXECUTABLE} tools/encounter_dependencies.py compile
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} VERBATIM)
 endif()
 add_executable(encore_host platform/desktop/main.cpp)

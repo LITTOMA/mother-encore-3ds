@@ -38,6 +38,7 @@ native-content:
 	$(PYTHON) tools/house_button_prompt_assets.py verify
 	$(PYTHON) tools/localization_assets.py compile
 	$(PYTHON) tools/resource_catalog.py compile
+	$(PYTHON) tools/encounter_dependencies.py compile
 assets:
 	$(PYTHON) tools/generate_branding.py
 audio-assets:

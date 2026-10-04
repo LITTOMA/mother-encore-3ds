@@ -2,6 +2,7 @@
 .DEFAULT_GOAL := help
 PYTHON ?= python3
 CTEST_ARGS ?=
+CMAKE_ARGS ?=
 BUILD_JOBS ?= 2
 TEX3DS ?= $(DEVKITPRO)/tools/bin/tex3ds
 .PHONY: help content native-content items-assets audio-assets battle-assets round-assets house-assets assets map-assets actor-assets house-layers new-game-assets host test sanitize 3dsx cia cxi 3ds release doctor clean
@@ -60,12 +61,12 @@ actor-assets:
 house-layers:
 	$(PYTHON) tools/house_layers.py compile --tex3ds "$(TEX3DS)"
 host: content
-	cmake -S . -B build/host -DCMAKE_BUILD_TYPE=Release
+	cmake -S . -B build/host -DCMAKE_BUILD_TYPE=Release $(CMAKE_ARGS)
 	cmake --build build/host --parallel $(BUILD_JOBS)
 test: host
 	ctest --test-dir build/host --output-on-failure $(CTEST_ARGS)
 sanitize: content
-	cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_SANITIZERS=ON
+	cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_SANITIZERS=ON $(CMAKE_ARGS)
 	cmake --build build/sanitize --parallel $(BUILD_JOBS)
 	ctest --test-dir build/sanitize --output-on-failure $(CTEST_ARGS)
 introduction-assets:

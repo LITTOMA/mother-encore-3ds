@@ -58,6 +58,31 @@ class RomFSLayoutTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 checked_inventory(Path(directory) / 'missing')
 
+    def test_symlink_inventory_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            root = base / 'romfs'
+            root.mkdir()
+            outside = base / 'outside.pcm'
+            outside.write_bytes(b'\0\0')
+            link = root / 'linked.pcm'
+            try:
+                link.symlink_to(outside)
+            except OSError as error:
+                if getattr(error, 'winerror', None) == 1314:
+                    self.skipTest('Windows account lacks symlink creation privilege')
+                raise
+            with self.assertRaises(ValueError):
+                checked_inventory(root)
+            link.unlink()
+            linked_root = base / 'linked-romfs'
+            linked_root.symlink_to(root, target_is_directory=True)
+            with self.assertRaises(ValueError):
+                checked_inventory(linked_root)
+            (root / 'linked-directory').symlink_to(base, target_is_directory=True)
+            with self.assertRaises(ValueError):
+                checked_inventory(root)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -134,6 +134,46 @@
       "import_sha256": "dcc0a020300706b28f4c540a8922eb71f10c58b2bc8f1773efb140c285e18409",
       "pcm_path": "sound/music/title-mother-earth.pcm",
       "gain_db": 0
+    },
+    {
+      "stable_id": 1301,
+      "source_path": "res://Audio/Music/Mother_Earth_Piano.mp3",
+      "source_sha256": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+      "import_sha256": "cb11b39c995aed4baa5c2149c5cebabbd96e496105c4a26559d6fa4aae5b55db",
+      "pcm_path": "sound/music/naming-mother-earth-piano.pcm",
+      "gain_db": 0.0
+    },
+    {
+      "stable_id": 1302,
+      "source_path": "res://Audio/Sound effects/EB/text.wav",
+      "source_sha256": "a48a37b245414b45ca46cdb1d8c23181ddc2ac16ece6b5354b7545e021464329",
+      "import_sha256": "9d5b13d4578ef6aadb22f4bea123af0f94d7898677d376f80e116f411f9d2cb6",
+      "pcm_path": "sound/effects/introduction-text.pcm",
+      "gain_db": 0.0
+    },
+    {
+      "stable_id": 1303,
+      "source_path": "res://Audio/Sound effects/text/Kid.mp3",
+      "source_sha256": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+      "import_sha256": "b6a18c76670a93798baea7a5535a2ef0a515862c80bced44c29b3aba0039776c",
+      "pcm_path": "sound/effects/introduction-kid-text.pcm",
+      "gain_db": 0.0
+    },
+    {
+      "stable_id": 1304,
+      "source_path": "res://Audio/Sound effects/M3/teleport.wav",
+      "source_sha256": "33d08178c1002aceeb9eaa8c546c454dc6ec987cf07b6b39939fe531eddd32ac",
+      "import_sha256": "9b5f48ce64993fbfb74a36b011050ad9320e3f1f42ab9e829e2697a9f59bf5b5",
+      "pcm_path": "sound/effects/introduction-teleport.pcm",
+      "gain_db": 0.0
+    },
+    {
+      "stable_id": 1305,
+      "source_path": "res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav",
+      "source_sha256": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+      "import_sha256": "0e2de0762e6defcfba189424106dc08c522a154d12d59d12f1431d4bb1f16c5a",
+      "pcm_path": "sound/effects/introduction-thunder.pcm",
+      "gain_db": 0.0
     }
   ]
 }

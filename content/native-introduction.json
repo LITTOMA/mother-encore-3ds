@@ -1,0 +1,3338 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/UI/Introduction.gd": "397e96ad78b6283050b6e69048130fd524a45c873cdbba9141328d724dd4acae",
+    "Scripts/Cutscenes/Mt Itoi Landscape.gd": "e82b6903a35b4d8e246d5877c259b065bd080db4566bc3817c3869840785253f",
+    "Nodes/Ui/Borders.tscn": "d9a60bcd4c45de6487de75fe12006c9879042a7c8239589325c3ff1ca9a18ca7",
+    "Nodes/Reusables/Mt Itoi Cloud.tscn": "15fc4edd806644bf7550adac93a07df9a52dcfb8ff5c5101b8ee8e4006079129",
+    "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f",
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+    "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",
+    "Nodes/Ui/Skip.tscn": "38c046267f18ef3b95fa0f430700a46b5f87c57efef509ce64e15d73425fd208",
+    "Scripts/UI/Reusables/ButtonLabel.gd": "d8e0cabaabc18f4e1a30a2f41123732d1535b145cafe592920152d31ef2d2e2e",
+    "Scripts/UI/Borders.gd": "c058216f7f521cc61a41d372126b8c413a72093c6602b8abe5e67ea693dacb8b",
+    "Scripts/misc/mt itoi cloud.gd": "6825477c9d6ce6edda03ebdcb5e95c90572a63ba60248476f1727a7012b53e93",
+    "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
+    "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
+    "Scripts/UI/ButtonText.gd": "0b03d5d7982499552d0160e1a7fc6c72110d29030878f3c17b48086fcb8ac763",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+    "Nodes/Ui/effects/Fade.gd": "8266bf5f24eedd8281be92a04abe8ab988da720189f2bbc90c24656cbb99efaa",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Shaders/Fade.shader": "c5c5b6b5b60c8c4b4fab8a9aa105cfa3777ab88eecf1c1ccdfb591db2245146d",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Fonts/BottleRocket_zh_cn.tres": "8c0312896267441ebf322e057a8e77d9cbce8c07becadf6c98e31977018e3925",
+    "Fonts/EB0_la.tres": "b4c7df2f04e2909ba2d17dbe7ce7aa2326688af192a152c6433e5934c54aaf49",
+    "Fonts/EB0_zh_cn.tres": "f67f7909436799ea6d9e7c710d0ee7b385508f943f2c67377dde6031d076ba58",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.tres": "eca67a75ba69dc4669db4b4e6c00bf6126a8cb03b5fd54620b7159f69e6de28c",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Fonts/EarthboundZero.ttf": "decf81bbe4f7c36bb7472be05c00db1dd86739bd14863b53d0d7d79c68315fb8",
+    "Fonts/EarthboundZero_zh_cn.otf": "10ae119fe7d1460444f78a312399bb0962846644cab94a2161456e4a019ac7b1",
+    "Graphics/Cutscenes/Intro/Intro_0_1.png": "afbac79b7422c8a16a7b6b8dba94a3274d93b6e0b40f13279e8c864e7e91919d",
+    "Graphics/Cutscenes/Intro/Intro_0_1.png.import": "5ee919045d802f3b155d88d47376f8068f301afed494e28cb7815d4c8541df11",
+    "Graphics/Cutscenes/Intro/Intro_0_2.png": "c6830ca15194d415a3f125f808a6ba8d04b0f5a87f409fb8fe862a7639232bc1",
+    "Graphics/Cutscenes/Intro/Intro_0_2.png.import": "8f3ac6206c231f69194b044b0ec8287b5b6dda08a147066beb1c549a11815322",
+    "Graphics/Cutscenes/Intro/Intro_0_3.png": "014bb639b79ce575f90549a61d4a8c06203187967115a1b23df4f93193deff88",
+    "Graphics/Cutscenes/Intro/Intro_0_3.png.import": "cefd0b765cd4d38dbd693bbfff8e115eb4889635c9429e0096af99d8e03f943a",
+    "Graphics/Cutscenes/Intro/Intro_1_1.png": "8da92986ef00852592f052ed8fc02d8cd95d6ec6c84901d3a36d666e1209620e",
+    "Graphics/Cutscenes/Intro/Intro_1_1.png.import": "33528f298661d73750d6f45f2169f33225b690f28361326bdc0e1d57ce2d2899",
+    "Graphics/Cutscenes/Intro/Intro_1_2.png": "b182d0b3ca134c7595f6573fbf87f73703a95c997355db954a3bc436e26fbd9f",
+    "Graphics/Cutscenes/Intro/Intro_1_2.png.import": "dbfdd6246820ca9768481e7fe0a5dd7e2842a2406076428d9af9050bf8ad6db8",
+    "Graphics/Cutscenes/Intro/Intro_2_1.png": "5d6832008493b872083f8505cce5cf03e76229a1838105f73c5668d0838183a9",
+    "Graphics/Cutscenes/Intro/Intro_2_1.png.import": "b4ae9efad587e67f10eec3f627a71d7eefa8b0b4103949cf4960a11c4a6bd7b4",
+    "Graphics/Cutscenes/Intro/Intro_3_1.png": "246fcfd2b3b9737b8ed0d2c57bc1063e295f7c8e305df5e64d9a54a6b6f97cae",
+    "Graphics/Cutscenes/Intro/Intro_3_1.png.import": "6241781dbcfab5cea2dd6c253f65252aa79b6ccd72f3bb05f92635802e8552be",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png": "8fb27a44804561952eba7fb597ab92661bad58d9de010c8c6e1f48572f5a2148",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png.import": "00af8622d149715581e2a35325b1240fdb9cfae53e3dd80b325d0a06f473e84e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png": "b7b8e666e8bd36f8082771ca29e61bb2f1f832ed3d85a3f6b8fa6da91bba590e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png.import": "d77e95b48b9dec58f0c002a01023ccc7845ada4525515f825a8b43ebcb5b9a0e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png": "a9658ed22996ba2ff3cce686af7c5c7fc59502468c31e2eacb3ffd5be5519253",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png.import": "d7e094d96679a81211c6ed7e778b081745b071ee39b7a2703077885161cfc2ef",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png": "fa45b97d1954ecc774f470426d4199036eee695916439f03f8da3c9f8b2bca47",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png.import": "fc2e0a6ad496ead5fbb658971987db688069ad4c0a2118ef6317dc86ab02a24b",
+    "Maps/Cutscenes/Introduction.tscn": "cbeea01bab3abc567c2f8f9449da19444ad0aa1a487302f784f9fb35cdfd56d9",
+    "Maps/Cutscenes/Mt Itoi Landscape.tscn": "c334e9ab97f842c9b478430b3ca4ecc0958560aaf2dd1710ec9244e885f69340",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "Translations/TranslatedText/story - sheet.csv": "a04d9adba4bb1a9620a65253d65ccdb3307ecce2696dcfda3f9dd4f5f92c0e2c",
+    "Audio/Music/Mother_Earth_Piano.mp3": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+    "Audio/Music/Mother_Earth_Piano.mp3.import": "cb11b39c995aed4baa5c2149c5cebabbd96e496105c4a26559d6fa4aae5b55db",
+    "Audio/Sound effects/EB/text.wav": "a48a37b245414b45ca46cdb1d8c23181ddc2ac16ece6b5354b7545e021464329",
+    "Audio/Sound effects/EB/text.wav.import": "9d5b13d4578ef6aadb22f4bea123af0f94d7898677d376f80e116f411f9d2cb6",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Audio/Sound effects/text/Kid.mp3.import": "b6a18c76670a93798baea7a5535a2ef0a515862c80bced44c29b3aba0039776c",
+    "Audio/Sound effects/M3/teleport.wav": "33d08178c1002aceeb9eaa8c546c454dc6ec987cf07b6b39939fe531eddd32ac",
+    "Audio/Sound effects/M3/teleport.wav.import": "9b5f48ce64993fbfb74a36b011050ad9320e3f1f42ab9e829e2697a9f59bf5b5",
+    "Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+    "Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav.import": "0e2de0762e6defcfba189424106dc08c522a154d12d59d12f1431d4bb1f16c5a",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8"
+  },
+  "bindings_sha256": "56aeedf57ebebc197d4dd3bfe27de8e28700af1779c25d0fd5422e1d9efb49bd",
+  "asset_recipe_sha256": "16845f3c8330ebcad6aff4f22c8c2b170e165720a4feadd50441323091839077",
+  "source_map": {
+    "schema": 1,
+    "kind": "encore.introduction-bindings",
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "asset_recipe": "content/introduction-assets.json",
+    "source_refs": {
+      "old_script": "Scripts/UI/Introduction.gd",
+      "now_script": "Scripts/Cutscenes/Mt Itoi Landscape.gd",
+      "border_scene": "Nodes/Ui/Borders.tscn",
+      "cloud_scene": "Nodes/Reusables/Mt Itoi Cloud.tscn",
+      "fade_scene": "Nodes/Ui/effects/Fade.tscn",
+      "naming_scene": "Maps/Naming screen.tscn",
+      "naming_script": "Scripts/UI/NamingScreen/Naming screen.gd",
+      "naming_sequence": "Data/NamingSequences/intro.yaml",
+      "skip_scene": "Nodes/Ui/Skip.tscn",
+      "skip_script": "Scripts/UI/Reusables/ButtonLabel.gd",
+      "border_script": "Scripts/UI/Borders.gd",
+      "cloud_script": "Scripts/misc/mt itoi cloud.gd",
+      "blackbars_script": "Scripts/UI/Blackbars.gd",
+      "blackbars_scene": "Nodes/Ui/Blackbars.tscn",
+      "button_script": "Scripts/UI/ButtonText.gd",
+      "door_script": "Scripts/Main/Door.gd",
+      "door_scene": "Nodes/Overworld/Door.tscn",
+      "transition": "Scripts/global/SceneTransition.gd",
+      "fade_script": "Nodes/Ui/effects/Fade.gd",
+      "audio_manager": "Scripts/global/audioManager.gd",
+      "global_script": "Scripts/global/global.gd",
+      "project": "project.godot",
+      "license": "LICENSE",
+      "fade_shader": "Shaders/Fade.shader"
+    },
+    "scenes": [
+      {
+        "role": "old",
+        "script_ref": "old_script",
+        "source": "Maps/Cutscenes/Introduction.tscn",
+        "animation": "Introduction",
+        "track_count": 13,
+        "image_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "text_clip": "Text/HBoxContainer",
+        "text_label": "Text/HBoxContainer/ScrollingText",
+        "background": "Images/ColorRect5",
+        "timer": "Timer",
+        "text_audio": "AudioStreamPlayer",
+        "hint_ref": "skip_scene",
+        "hint_node": ".",
+        "hint_label": "Label",
+        "nested_borders": "Borders/BorderAnims",
+        "nested_cloud": null,
+        "resource_nodes": {}
+      },
+      {
+        "role": "now",
+        "script_ref": "now_script",
+        "source": "Maps/Cutscenes/Mt Itoi Landscape.tscn",
+        "animation": "Introduction",
+        "track_count": 8,
+        "image_ids": [
+          8,
+          9,
+          10,
+          11
+        ],
+        "text_clip": "Text/HBoxContainer",
+        "text_label": "Text/HBoxContainer/ScrollingText",
+        "background": "Images/ColorRect5",
+        "timer": "Timer",
+        "text_audio": "AudioStreamPlayer",
+        "hint_ref": null,
+        "hint_node": "Text/Skip",
+        "hint_label": "Text/Skip/Label",
+        "nested_borders": "Borders/BorderAnims",
+        "nested_cloud": "Images/Cloud/AnimationPlayer",
+        "resource_nodes": {
+          "11": "Images/Cloud"
+        }
+      }
+    ],
+    "border_clips": [
+      "Open",
+      "Close",
+      "Open Middle",
+      "Open Middle Fully",
+      "Cut In"
+    ],
+    "border_nodes": [
+      "ColorRect",
+      "ColorRect4",
+      "ColorRect2",
+      "ColorRect3"
+    ],
+    "cloud_clip": "Form",
+    "cloud_node": "Images/Cloud",
+    "fade_kinds": [
+      {
+        "name": "Fade",
+        "kind": 0
+      },
+      {
+        "name": "Circle Focus",
+        "kind": 1
+      },
+      {
+        "name": "Circle Pop",
+        "kind": 2
+      }
+    ],
+    "fade_clips": [
+      {
+        "name": "Fade In",
+        "kind": 0,
+        "incoming": false
+      },
+      {
+        "name": "Fade Out",
+        "kind": 0,
+        "incoming": true
+      },
+      {
+        "name": "Circle In",
+        "kind": 1,
+        "incoming": false
+      },
+      {
+        "name": "Circle Out",
+        "kind": 1,
+        "incoming": true
+      },
+      {
+        "name": "Circle Pop In",
+        "kind": 2,
+        "incoming": false
+      },
+      {
+        "name": "Circle Pop Out",
+        "kind": 2,
+        "incoming": true
+      }
+    ],
+    "fade_material_id": 4,
+    "fade_follow": "Path2D/PathFollow2D",
+    "fade_rect": "Path2D/PathFollow2D/ColorRect",
+    "doors": [
+      {
+        "source_ref": "naming_scene",
+        "node": "Objects/DoorToIntro"
+      },
+      {
+        "scene": 0,
+        "node": "Objects/Door"
+      },
+      {
+        "scene": 1,
+        "node": "Objects/Door"
+      }
+    ],
+    "effect_slots": {
+      "teleport": 0,
+      "thunder": 1
+    },
+    "punctuation_key": "INTRO_CUTSCENE_PUNCTUATION",
+    "engine_defaults": {
+      "label_font_color": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "license_review": "Original art and font data from fixed Mother: Encore upstream, solely for the related native port; retain upstream LICENSE and embedded font notices. No system fonts or invented glyph replacements; Nintendo-source glyph rights remain unconfirmed.",
+    "cloud_asset_id": 11,
+    "audio": {
+      "naming_music": {
+        "stable_id": 1301,
+        "source_path": "res://Audio/Music/Mother_Earth_Piano.mp3",
+        "source_sha256": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+        "import_sha256": "cb11b39c995aed4baa5c2149c5cebabbd96e496105c4a26559d6fa4aae5b55db",
+        "pcm_path": "sound/music/naming-mother-earth-piano.pcm",
+        "gain_db": 0.0
+      },
+      "old_text": {
+        "stable_id": 1302,
+        "source_path": "res://Audio/Sound effects/EB/text.wav",
+        "source_sha256": "a48a37b245414b45ca46cdb1d8c23181ddc2ac16ece6b5354b7545e021464329",
+        "import_sha256": "9d5b13d4578ef6aadb22f4bea123af0f94d7898677d376f80e116f411f9d2cb6",
+        "pcm_path": "sound/effects/introduction-text.pcm",
+        "gain_db": 0.0
+      },
+      "now_text": {
+        "stable_id": 1303,
+        "source_path": "res://Audio/Sound effects/text/Kid.mp3",
+        "source_sha256": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+        "import_sha256": "b6a18c76670a93798baea7a5535a2ef0a515862c80bced44c29b3aba0039776c",
+        "pcm_path": "sound/effects/introduction-kid-text.pcm",
+        "gain_db": 0.0
+      },
+      "teleport": {
+        "stable_id": 1304,
+        "source_path": "res://Audio/Sound effects/M3/teleport.wav",
+        "source_sha256": "33d08178c1002aceeb9eaa8c546c454dc6ec987cf07b6b39939fe531eddd32ac",
+        "import_sha256": "9b5f48ce64993fbfb74a36b011050ad9320e3f1f42ab9e829e2697a9f59bf5b5",
+        "pcm_path": "sound/effects/introduction-teleport.pcm",
+        "gain_db": 0.0
+      },
+      "thunder": {
+        "stable_id": 1305,
+        "source_path": "res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav",
+        "source_sha256": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+        "import_sha256": "0e2de0762e6defcfba189424106dc08c522a154d12d59d12f1431d4bb1f16c5a",
+        "pcm_path": "sound/effects/introduction-thunder.pcm",
+        "gain_db": 0.0
+      }
+    }
+  },
+  "asset_receipt_sha256": "bc2657ed122a135720eebedfb10f2fc082ff6856c49517ae62d188ff71611b6c",
+  "font_catalog": "fonts/introduction/intro.encfont",
+  "canvas": [
+    320,
+    180
+  ],
+  "music": "res://Audio/Music/Mother_Earth_Piano.mp3",
+  "music_gain": 8.0,
+  "music_fade": 5.0,
+  "finish_stop_slot": 0,
+  "hint_curve": [
+    0.25,
+    -4.0
+  ],
+  "hint_timing": [
+    1.0,
+    1.0,
+    3.0
+  ],
+  "fade_shader": [
+    1.0,
+    320.0,
+    180.0,
+    800.0,
+    450.0,
+    0.001672,
+    -7.99947
+  ],
+  "background_color": 471604479,
+  "blackbars": {
+    "schema": 1,
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "sources": {
+      "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
+      "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
+      "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+      "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+    },
+    "canvas": [
+      320,
+      180
+    ],
+    "bars": [
+      {
+        "height": 18.0,
+        "reset_y": -18.0
+      },
+      {
+        "height": 28.0,
+        "reset_y": 180.0
+      }
+    ],
+    "color": 4278190080,
+    "tracks": [
+      {
+        "duration": 0.5,
+        "end_time": 0.2,
+        "from_y": -18,
+        "to_y": 0,
+        "ease": 0.287175
+      },
+      {
+        "duration": 0.5,
+        "end_time": 0.2,
+        "from_y": 180,
+        "to_y": 152,
+        "ease": 0.287174
+      },
+      {
+        "duration": 0.5,
+        "end_time": 0.15,
+        "from_y": 0,
+        "to_y": -18,
+        "ease": 2.2974
+      },
+      {
+        "duration": 0.5,
+        "end_time": 0.15,
+        "from_y": 152,
+        "to_y": 180,
+        "ease": 2.2974
+      }
+    ],
+    "scope": "Original dialogue-owned layer-1 Blackbars, before dialogue UI. Source 320x180 is exact; native 400x240 stretches width and bottom-anchors the original 28-pixel lower bar. No world mask, collision, movement, camera or actor visibility changes."
+  },
+  "resources": [
+    {
+      "path": "graphics/cutscenes/introduction/intro-0.t3x",
+      "source": "Graphics/Cutscenes/Intro/Intro_0_1.png",
+      "width": 284,
+      "height": 112,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 284,
+      "source_height": 112,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 262165,
+      "crc32": 2714697516,
+      "sha256": "4190e6cc6f2734708b00b5d13f04b1f218b4a6f53afd4718c910cc42c63a83b8"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/intro-1.t3x",
+      "source": "Graphics/Cutscenes/Intro/Intro_0_2.png",
+      "width": 284,
+      "height": 112,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 284,
+      "source_height": 112,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 262165,
+      "crc32": 4061745791,
+      "sha256": "1038543f90e5629b5aa3cd1f2e9dd42989599fcaa973ae60bcc5c9fc9221b522"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/intro-2.t3x",
+      "source": "Graphics/Cutscenes/Intro/Intro_0_3.png",
+      "width": 284,
+      "height": 112,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 284,
+      "source_height": 112,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 262165,
+      "crc32": 3766863334,
+      "sha256": "ef58bba48c8fc3a56d391deb824b88c3bb54c0ddae20163f1eeb5a55def45804"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/intro-3.t3x",
+      "source": "Graphics/Cutscenes/Intro/Intro_1_1.png",
+      "width": 192,
+      "height": 224,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 192,
+      "source_height": 224,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 262165,
+      "crc32": 1445415090,
+      "sha256": "0494e99e1f69ecc7150f5eb612877b1ffd7fdccd019cc946f3cf93b84380744c"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/intro-4.t3x",
+      "source": "Graphics/Cutscenes/Intro/Intro_1_2.png",
+      "width": 192,
+      "height": 224,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 192,
+      "source_height": 224,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 262165,
+      "crc32": 741557643,
+      "sha256": "213186217b59b52ed0aa342c5738881c64a0d1768d5a16f631bc544f835e8e85"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/intro-5.t3x",
+      "source": "Graphics/Cutscenes/Intro/Intro_2_1.png",
+      "width": 192,
+      "height": 224,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 192,
+      "source_height": 224,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 262165,
+      "crc32": 2001816588,
+      "sha256": "efb57fc0d9248a11432f2fe9cddcc36c0125ab2226ff1156f0c5c304c71a0d58"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/intro-6.t3x",
+      "source": "Graphics/Cutscenes/Intro/Intro_3_1.png",
+      "width": 192,
+      "height": 112,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 192,
+      "source_height": 112,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 131093,
+      "crc32": 2297893954,
+      "sha256": "4b325527e30088b3e71147586d2df30f2eeaab82d8113e2db5042372af67832a"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/landscape-0.t3x",
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png",
+      "width": 352,
+      "height": 180,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 352,
+      "source_height": 180,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 524309,
+      "crc32": 3412320299,
+      "sha256": "164d5722ec17b419963ac5c07da91dfc18710b6101ef364aaa44ea6e90107f77"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/landscape-1.t3x",
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png",
+      "width": 352,
+      "height": 180,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 352,
+      "source_height": 180,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 524309,
+      "crc32": 1334662724,
+      "sha256": "b996e9e8b00815c81f7a14f41c40eae4fc17f1db913f7b23bd91c2d97fdaf4f8"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/landscape-2.t3x",
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png",
+      "width": 352,
+      "height": 180,
+      "columns": 1,
+      "rows": 1,
+      "frame_count": 1,
+      "source_width": 352,
+      "source_height": 180,
+      "trim_x": 0,
+      "trim_y": 0,
+      "bytes": 524309,
+      "crc32": 1838733151,
+      "sha256": "f0427faa0937f164b2912740dac4c84fc51f57e35e4a2a78d7bfd44ebd88502a"
+    },
+    {
+      "path": "graphics/cutscenes/introduction/cloud-31.t3x",
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png",
+      "width": 720,
+      "height": 164,
+      "columns": 8,
+      "rows": 4,
+      "frame_count": 31,
+      "source_width": 352,
+      "source_height": 96,
+      "trim_x": 131,
+      "trim_y": 33,
+      "bytes": 1048597,
+      "crc32": 249613297,
+      "sha256": "0c89939fb640cf7dff0212c089f73503cc5fe2370b2643db40c62c1e428fe1f5"
+    }
+  ],
+  "locales": [
+    {
+      "code": "en",
+      "old_font": "Fonts/EB0_la.tres",
+      "now_font": "Fonts/EBMain.tres",
+      "hint_font": "Fonts/BottleRocket.tres",
+      "character_spacing": [
+        0.0,
+        0.0,
+        -1.0
+      ],
+      "punctuation": ".,;:…!?",
+      "skip": "Skip",
+      "texts": [
+        "In the early 1900's,\na dark shadow covered a small\ncountry town in rural America.",
+        "The dark shadow formed\nmysteriously at the\nsummit of Mt Itoi.",
+        "At that time,\nnumerous paranormal\nincidents occured.",
+        "The last incident\ninvolved the disappearance\nof a young married couple.",
+        "The man's name was George.\nThe woman's name was Maria.",
+        "As soon as they disappeared,\nso did the dark shadow.",
+        "Two years later,\nas suddenly as he left,\nGeorge returned.",
+        "He never told anyone\nwhere he had been\nor what he had done.",
+        "But he began an odd\nstudy of psychic powers,\nall by himself.",
+        "As for Maria,\nhis wife...",
+        "She never returned.",
+        "80 years have passed\nsince then.",
+        "The year is 1988.",
+        "Outside Podunk, a small town in America."
+      ]
+    },
+    {
+      "code": "zh_Hans_CN",
+      "old_font": "Fonts/EB0_zh_cn.tres",
+      "now_font": "Fonts/EBMain.tres",
+      "hint_font": "Fonts/BottleRocket_zh_cn.tres",
+      "character_spacing": [
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "punctuation": "。，；：…！？",
+      "skip": "跳过",
+      "texts": [
+        "20世纪初，一片诡异的阴影笼罩了\n美国乡间的一座小镇。",
+        "这片诡影在糸井山的山巅上\n神秘地凝聚成形。",
+        "那段时间，超自然事件接连不断。",
+        "最后一起事件\n涉及到了一对年轻夫妇的离奇失踪。",
+        "丈夫名为乔治，妻子名为玛丽亚。",
+        "他们消失的那一刻，\n那片诡影也随之散去。",
+        "两年后，一如当年消失时那样，\n乔治突然回来了。",
+        "他从未向任何人透露自己去了哪里，\n又做了什么。",
+        "但随后他却开始独自一人进行\n对PSI的奇异研究。",
+        "至于他的妻子玛丽亚…",
+        "她再也没有回来。",
+        "时光飞逝，80年过去了。",
+        "时间来到了1988年。",
+        "故事发生于美国的一座小镇，波顿克郊外。"
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "delay": 2.0,
+      "length": 116.0,
+      "speed": 0.08,
+      "slow": 0.15,
+      "pause": 0.8,
+      "hide": 0.5,
+      "hide_y": -36.0,
+      "pitch_min": 1.0,
+      "pitch_max": 1.0,
+      "round_images": 5,
+      "text_first": 0,
+      "text_count": 12,
+      "images": [
+        {
+          "path": "graphics/cutscenes/introduction/intro-0.t3x",
+          "rect": [
+            64.0,
+            18.0,
+            284.0,
+            112.0
+          ],
+          "alpha": 1,
+          "visible": true,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/intro-1.t3x",
+          "rect": [
+            64.0,
+            18.0,
+            284.0,
+            112.0
+          ],
+          "alpha": 1,
+          "visible": true,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/intro-2.t3x",
+          "rect": [
+            64.0,
+            18.0,
+            284.0,
+            112.0
+          ],
+          "alpha": 1,
+          "visible": true,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/intro-3.t3x",
+          "rect": [
+            64.0,
+            18.0,
+            192.0,
+            224.0
+          ],
+          "alpha": 1,
+          "visible": false,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/intro-4.t3x",
+          "rect": [
+            64.0,
+            -94.0,
+            192.0,
+            224.0
+          ],
+          "alpha": 0,
+          "visible": true,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/intro-5.t3x",
+          "rect": [
+            64.0,
+            -94.0,
+            192.0,
+            224.0
+          ],
+          "alpha": 1,
+          "visible": false,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/intro-6.t3x",
+          "rect": [
+            64.0,
+            18.0,
+            192.0,
+            112.0
+          ],
+          "alpha": 1,
+          "visible": false,
+          "frame": 0,
+          "columns": 1
+        }
+      ],
+      "resources": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "tracks": [
+        {
+          "target": 0,
+          "index": 2,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 3,
+              "value": [
+                64,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 13,
+              "value": [
+                2,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 3,
+              "value": [
+                64,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 13,
+              "value": [
+                -28,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 1,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 3,
+              "value": [
+                64,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 13,
+              "value": [
+                -100,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 3,
+          "property": 2,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 13.5,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 3,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 33,
+              "value": [
+                64,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 40.5,
+              "value": [
+                64,
+                -94,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 4,
+          "property": 1,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 50.25,
+              "value": [
+                1,
+                1,
+                1,
+                0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 50.5,
+              "value": [
+                1,
+                1,
+                1,
+                0.333333
+              ],
+              "transition": 1
+            },
+            {
+              "time": 50.75,
+              "value": [
+                1,
+                1,
+                1,
+                0.666667
+              ],
+              "transition": 1
+            },
+            {
+              "time": 51,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 4,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 51.5,
+              "value": [
+                64,
+                -94,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 57.5,
+              "value": [
+                64,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 5,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 63,
+              "value": [
+                64,
+                -94,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 79.5,
+              "value": [
+                64,
+                18,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 5,
+          "property": 2,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 61,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 2,
+          "index": 0,
+          "property": 0,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0,
+                133,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 103.5,
+              "value": [
+                0,
+                70,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 6,
+          "property": 2,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 91.5,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "time": 0,
+          "kind": 6,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 3,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 11.5,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 11.5,
+          "kind": 6,
+          "arg": 1,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 14,
+          "kind": 6,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 17,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 24,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 25,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 32,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 33,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 41,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 42,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 49,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 50,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 58.5,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 58.5,
+          "kind": 6,
+          "arg": 1,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 61,
+          "kind": 6,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 63.75,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 71.75,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 72.75,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 79.5,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 80.5,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 89.5,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 89.5,
+          "kind": 6,
+          "arg": 1,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 92,
+          "kind": 6,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 94.75,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 101.5,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 101.5,
+          "kind": 6,
+          "arg": 1,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 102,
+          "kind": 2,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 102.25,
+          "kind": 3,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 104.5,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 111.5,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 112,
+          "kind": 4,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 112.5,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 116.5,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        }
+      ],
+      "text_clip": [
+        0,
+        136.0,
+        320.0,
+        42.0
+      ],
+      "background": {
+        "rect": [
+          64.0,
+          18.0,
+          192.0,
+          112.0
+        ],
+        "color": 2996927487
+      },
+      "text_color": 4294967295,
+      "hint_color": 4294967295,
+      "line_spacing": 4,
+      "hint_rect": [
+        232.0,
+        0,
+        84.0,
+        11.0
+      ]
+    },
+    {
+      "delay": 0.8,
+      "length": 22.0,
+      "speed": 0.08,
+      "slow": 0.08,
+      "pause": 0.8,
+      "hide": 0.5,
+      "hide_y": -36.0,
+      "pitch_min": 0.85,
+      "pitch_max": 1.0,
+      "round_images": 0,
+      "text_first": 12,
+      "text_count": 2,
+      "images": [
+        {
+          "path": "graphics/cutscenes/introduction/landscape-0.t3x",
+          "rect": [
+            -16.0,
+            0,
+            352.0,
+            180.0
+          ],
+          "alpha": 1,
+          "visible": true,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/landscape-1.t3x",
+          "rect": [
+            -16.0,
+            0,
+            352.0,
+            180.0
+          ],
+          "alpha": 1,
+          "visible": true,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/landscape-2.t3x",
+          "rect": [
+            -16.0,
+            0,
+            352.0,
+            180.0
+          ],
+          "alpha": 1,
+          "visible": true,
+          "frame": 0,
+          "columns": 1
+        },
+        {
+          "path": "graphics/cutscenes/introduction/cloud-31.t3x",
+          "rect": [
+            -16.0,
+            0.0,
+            352,
+            96
+          ],
+          "alpha": 1,
+          "visible": false,
+          "frame": 29,
+          "columns": 8
+        }
+      ],
+      "resources": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "tracks": [
+        {
+          "target": 0,
+          "index": 2,
+          "property": 1,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ],
+              "transition": 1
+            },
+            {
+              "time": 3.75,
+              "value": [
+                1,
+                1,
+                1,
+                0.666667
+              ],
+              "transition": 1
+            },
+            {
+              "time": 4.25,
+              "value": [
+                1,
+                1,
+                1,
+                0.333333
+              ],
+              "transition": 1
+            },
+            {
+              "time": 4.75,
+              "value": [
+                1,
+                1,
+                1,
+                0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 3,
+          "property": 2,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 13.2,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 1,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.1,
+              "value": [
+                -16,
+                3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.2,
+              "value": [
+                -16,
+                -3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.3,
+              "value": [
+                -16,
+                3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.4,
+              "value": [
+                -16,
+                -3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.5,
+              "value": [
+                -16,
+                3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.6,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.7,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.8,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.9,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.1,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.2,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.3,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.4,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.5,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.6,
+              "value": [
+                -16,
+                -1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.7,
+              "value": [
+                -16,
+                1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.8,
+              "value": [
+                -16,
+                -1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.9,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 12,
+              "value": [
+                -16,
+                -1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 12.1,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 0,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.1,
+              "value": [
+                -16,
+                3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.2,
+              "value": [
+                -16,
+                -3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.3,
+              "value": [
+                -16,
+                3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.4,
+              "value": [
+                -16,
+                -3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.5,
+              "value": [
+                -16,
+                3,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.6,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.7,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.8,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 10.9,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.1,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.2,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.3,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.4,
+              "value": [
+                -16,
+                -2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.5,
+              "value": [
+                -16,
+                2,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.6,
+              "value": [
+                -16,
+                -1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.7,
+              "value": [
+                -16,
+                1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.8,
+              "value": [
+                -16,
+                -1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 11.9,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 12,
+              "value": [
+                -16,
+                -1,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 12.1,
+              "value": [
+                -16,
+                0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 2,
+          "index": 0,
+          "property": 0,
+          "discrete": 1,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0,
+                142,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 17.9,
+              "value": [
+                0,
+                74,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "time": 0,
+          "kind": 6,
+          "arg": 2,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 2.5,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 6,
+          "kind": 1,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 6.5,
+          "kind": 6,
+          "arg": 3,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 9.5,
+          "kind": 5,
+          "arg": 0,
+          "source": "res://Audio/Sound effects/M3/teleport.wav",
+          "name": "teleport"
+        },
+        {
+          "time": 10,
+          "kind": 5,
+          "arg": 1,
+          "source": "res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav",
+          "name": "thunder"
+        },
+        {
+          "time": 13.1,
+          "kind": 7,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 15.7,
+          "kind": 6,
+          "arg": 4,
+          "source": "",
+          "name": ""
+        },
+        {
+          "time": 17.9,
+          "kind": 0,
+          "arg": 0,
+          "source": "",
+          "name": ""
+        }
+      ],
+      "text_clip": [
+        0,
+        142.0,
+        320.0,
+        32.0
+      ],
+      "background": {
+        "rect": [
+          64.0,
+          18.0,
+          192.0,
+          112.0
+        ],
+        "color": 2996927487
+      },
+      "text_color": 4294967295,
+      "hint_color": 4294967295,
+      "line_spacing": 4,
+      "hint_rect": [
+        232.0,
+        0,
+        84.0,
+        11.0
+      ]
+    }
+  ],
+  "borders": [
+    {
+      "length": 2.0,
+      "tracks": [
+        {
+          "target": 1,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -16,
+                -110,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -16,
+                -158,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 1,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -8,
+                66,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -8,
+                130,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 2,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -160,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 3,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                160,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 2.0,
+      "tracks": [
+        {
+          "target": 1,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -16,
+                -158,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -16,
+                -110,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 1,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -8,
+                130,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -8,
+                66,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 2,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -160,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 3,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                160,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 2.0,
+      "tracks": [
+        {
+          "target": 1,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -16,
+                -102,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -16,
+                -150,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 1,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -8,
+                74,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -8,
+                138,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 2,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -160,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 3,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                160,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 2.0,
+      "tracks": [
+        {
+          "target": 1,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -16,
+                -150,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -16,
+                -158,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 1,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -8,
+                138,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -8,
+                152,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 2,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                -320,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 3,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                256,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 2,
+              "value": [
+                320,
+                -16,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 1.5,
+      "tracks": [
+        {
+          "target": 1,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -16,
+                -158,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 1.5,
+              "value": [
+                -16,
+                -88,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        },
+        {
+          "target": 1,
+          "index": 1,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                -8,
+                152,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 1.5,
+              "value": [
+                -8,
+                88,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "border_rects": [
+    {
+      "rect": [
+        -16.0,
+        -88.0,
+        352.0,
+        176.0
+      ],
+      "color": 255
+    },
+    {
+      "rect": [
+        -8.0,
+        88.0,
+        336.0,
+        176.002
+      ],
+      "color": 255
+    },
+    {
+      "rect": [
+        -320.0,
+        -16.0,
+        320.0,
+        208.0
+      ],
+      "color": 255
+    },
+    {
+      "rect": [
+        320.0,
+        -16.0,
+        319.999,
+        208.0
+      ],
+      "color": 255
+    }
+  ],
+  "cloud": {
+    "length": 2.0,
+    "tracks": [
+      {
+        "target": 0,
+        "index": 3,
+        "property": 2,
+        "discrete": 1,
+        "keys": [
+          {
+            "time": 0,
+            "value": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          }
+        ]
+      },
+      {
+        "target": 0,
+        "index": 3,
+        "property": 3,
+        "discrete": 1,
+        "keys": [
+          {
+            "time": 0,
+            "value": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.0666667,
+            "value": [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.133333,
+            "value": [
+              2.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.2,
+            "value": [
+              3.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.266667,
+            "value": [
+              4.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.333333,
+            "value": [
+              5.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.4,
+            "value": [
+              6.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.466667,
+            "value": [
+              7.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.533333,
+            "value": [
+              8.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.6,
+            "value": [
+              9.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.666667,
+            "value": [
+              10.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.733333,
+            "value": [
+              11.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.8,
+            "value": [
+              12.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.866667,
+            "value": [
+              13.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 0.933333,
+            "value": [
+              14.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1,
+            "value": [
+              15.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.06667,
+            "value": [
+              16.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.13333,
+            "value": [
+              17.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.2,
+            "value": [
+              18.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.26667,
+            "value": [
+              19.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.33333,
+            "value": [
+              20.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.4,
+            "value": [
+              21.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.46667,
+            "value": [
+              22.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.53333,
+            "value": [
+              23.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.6,
+            "value": [
+              24.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.66667,
+            "value": [
+              25.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.73333,
+            "value": [
+              26.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.8,
+            "value": [
+              27.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.86667,
+            "value": [
+              28.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          },
+          {
+            "time": 1.93333,
+            "value": [
+              29.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "transition": 1
+          }
+        ]
+      }
+    ]
+  },
+  "fades": [
+    {
+      "length": 1.0,
+      "tracks": [
+        {
+          "target": 3,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 0.4,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 1.0,
+      "tracks": [
+        {
+          "target": 3,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 0.4,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 0.8,
+      "tracks": [
+        {
+          "target": 3,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 0.287175
+            },
+            {
+              "time": 0.8,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 0.287175
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 0.8,
+      "tracks": [
+        {
+          "target": 3,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 3.03143
+            },
+            {
+              "time": 0.8,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 3.03143
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 2.0,
+      "tracks": [
+        {
+          "target": 3,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 0.450625
+            },
+            {
+              "time": 0.7,
+              "value": [
+                0.05,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 0.8,
+              "value": [
+                0.06,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 1.3,
+              "value": [
+                0.06,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 1.5,
+              "value": [
+                0.062,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 0.25
+            },
+            {
+              "time": 2,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "length": 2.0,
+      "tracks": [
+        {
+          "target": 3,
+          "index": 0,
+          "property": 0,
+          "discrete": 0,
+          "keys": [
+            {
+              "time": 0,
+              "value": [
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 0.25
+            },
+            {
+              "time": 0.5,
+              "value": [
+                0.062,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 0.7,
+              "value": [
+                0.06,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 1.2,
+              "value": [
+                0.06,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            },
+            {
+              "time": 1.3,
+              "value": [
+                0.05,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 2.5
+            },
+            {
+              "time": 2,
+              "value": [
+                1.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "transition": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fade_mostly": [
+    0.5,
+    0.4,
+    0.7,
+    0.5,
+    1.9,
+    1.8
+  ],
+  "doors": [
+    {
+      "destination": {
+        "scene": "res://Maps/Cutscenes/Introduction.tscn",
+        "x": 520,
+        "y": 393.0,
+        "dx": 0,
+        "dy": 1,
+        "set_respawn": false,
+        "unpause": false
+      },
+      "in_kind": 0,
+      "out_kind": 0,
+      "in_speed": 0.4,
+      "out_speed": 1.5
+    },
+    {
+      "destination": {
+        "scene": "res://Maps/Cutscenes/Mt Itoi Landscape.tscn",
+        "x": 520,
+        "y": 393.0,
+        "dx": 0,
+        "dy": 1,
+        "set_respawn": false,
+        "unpause": false
+      },
+      "in_kind": 0,
+      "out_kind": 1,
+      "in_speed": 1.5,
+      "out_speed": 1.5
+    },
+    {
+      "destination": {
+        "scene": "res://Maps/podunk/Nintens House.tscn",
+        "x": 520,
+        "y": 397.0,
+        "dx": 0,
+        "dy": 1,
+        "set_respawn": true,
+        "unpause": true
+      },
+      "in_kind": 0,
+      "out_kind": 2,
+      "in_speed": 0.3,
+      "out_speed": 1.5
+    }
+  ],
+  "text_sounds": [
+    "res://Audio/Sound effects/EB/text.wav",
+    "res://Audio/Sound effects/text/Kid.mp3"
+  ],
+  "scope": "Original two-scene intro source adapters; no generic Godot. Source dependencies and role bindings reviewed at fixed pin. English and Simplified Chinese source font roles; 1:1 native viewport composition."
+}

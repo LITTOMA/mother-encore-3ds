@@ -5,7 +5,7 @@
 #include <array>
 
 namespace encore::ctr {
-enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3 };
+enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5 };
 // Read-only snapshot of the existing bounded Music owner, not a inferred
 // source-player graph. generation identifies a successful Music start and never
 // resets across scene stop/reset/reinitialize; inactive snapshots retain it.
@@ -30,8 +30,10 @@ public:
     // Also safe when NDSP was unavailable; does not retry initialization.
     void reset_scene();
     bool consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error);
-    bool play(uint32_t stable_audio_id,AudioLane lane,std::string& error,float gain_db=0,double fadein_seconds=0);
+    bool play(uint32_t stable_audio_id,AudioLane lane,std::string& error,float gain_db=0,double fadein_seconds=0,float pitch=1);
     bool fade_music(double duration,std::string& error);
+    bool fade_all_music(double duration,std::string& error);
+    bool stop_lane(AudioLane,std::string& error);
     bool update(double delta,std::string& error);
     bool available() const{return ready_;}
     MusicObservation observe_music() const;
@@ -46,7 +48,7 @@ public:
     uint32_t dropped_frames() const{return ready_?ndspGetDroppedFrames():0;}
     uint32_t queued_frames() const{return queued_frames_;}
 private:
-    static constexpr uint32_t lane_count=4,buffer_count=3,buffer_frames=2048;
+    static constexpr uint32_t lane_count=6,buffer_count=3,buffer_frames=2048;
     struct Voice {
         upstream::AudioAsset asset{};
         upstream::AudioFade fade;

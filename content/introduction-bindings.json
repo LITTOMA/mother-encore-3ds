@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "kind": "encore.introduction-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "asset_recipe": "content/introduction-assets.json",
+  "source_refs": {
+    "old_script": "Scripts/UI/Introduction.gd",
+    "now_script": "Scripts/Cutscenes/Mt Itoi Landscape.gd",
+    "border_scene": "Nodes/Ui/Borders.tscn",
+    "cloud_scene": "Nodes/Reusables/Mt Itoi Cloud.tscn",
+    "fade_scene": "Nodes/Ui/effects/Fade.tscn",
+    "naming_scene": "Maps/Naming screen.tscn",
+    "naming_script": "Scripts/UI/NamingScreen/Naming screen.gd",
+    "naming_sequence": "Data/NamingSequences/intro.yaml",
+    "skip_scene": "Nodes/Ui/Skip.tscn",
+    "skip_script": "Scripts/UI/Reusables/ButtonLabel.gd",
+    "border_script": "Scripts/UI/Borders.gd",
+    "cloud_script": "Scripts/misc/mt itoi cloud.gd",
+    "blackbars_script": "Scripts/UI/Blackbars.gd",
+    "blackbars_scene": "Nodes/Ui/Blackbars.tscn",
+    "button_script": "Scripts/UI/ButtonText.gd",
+    "door_script": "Scripts/Main/Door.gd",
+    "door_scene": "Nodes/Overworld/Door.tscn",
+    "transition": "Scripts/global/SceneTransition.gd",
+    "fade_script": "Nodes/Ui/effects/Fade.gd",
+    "audio_manager": "Scripts/global/audioManager.gd",
+    "global_script": "Scripts/global/global.gd",
+    "project": "project.godot",
+    "license": "LICENSE",
+    "fade_shader": "Shaders/Fade.shader"
+  },
+  "scenes": [
+    {
+      "role": "old",
+      "script_ref": "old_script",
+      "source": "Maps/Cutscenes/Introduction.tscn",
+      "animation": "Introduction",
+      "track_count": 13,
+      "image_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "text_clip": "Text/HBoxContainer",
+      "text_label": "Text/HBoxContainer/ScrollingText",
+      "background": "Images/ColorRect5",
+      "timer": "Timer",
+      "text_audio": "AudioStreamPlayer",
+      "hint_ref": "skip_scene",
+      "hint_node": ".",
+      "hint_label": "Label",
+      "nested_borders": "Borders/BorderAnims",
+      "nested_cloud": null,
+      "resource_nodes": {}
+    },
+    {
+      "role": "now",
+      "script_ref": "now_script",
+      "source": "Maps/Cutscenes/Mt Itoi Landscape.tscn",
+      "animation": "Introduction",
+      "track_count": 8,
+      "image_ids": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "text_clip": "Text/HBoxContainer",
+      "text_label": "Text/HBoxContainer/ScrollingText",
+      "background": "Images/ColorRect5",
+      "timer": "Timer",
+      "text_audio": "AudioStreamPlayer",
+      "hint_ref": null,
+      "hint_node": "Text/Skip",
+      "hint_label": "Text/Skip/Label",
+      "nested_borders": "Borders/BorderAnims",
+      "nested_cloud": "Images/Cloud/AnimationPlayer",
+      "resource_nodes": {
+        "11": "Images/Cloud"
+      }
+    }
+  ],
+  "border_clips": [
+    "Open",
+    "Close",
+    "Open Middle",
+    "Open Middle Fully",
+    "Cut In"
+  ],
+  "border_nodes": [
+    "ColorRect",
+    "ColorRect4",
+    "ColorRect2",
+    "ColorRect3"
+  ],
+  "cloud_clip": "Form",
+  "cloud_node": "Images/Cloud",
+  "fade_kinds": [
+    {
+      "name": "Fade",
+      "kind": 0
+    },
+    {
+      "name": "Circle Focus",
+      "kind": 1
+    },
+    {
+      "name": "Circle Pop",
+      "kind": 2
+    }
+  ],
+  "fade_clips": [
+    {
+      "name": "Fade In",
+      "kind": 0,
+      "incoming": false
+    },
+    {
+      "name": "Fade Out",
+      "kind": 0,
+      "incoming": true
+    },
+    {
+      "name": "Circle In",
+      "kind": 1,
+      "incoming": false
+    },
+    {
+      "name": "Circle Out",
+      "kind": 1,
+      "incoming": true
+    },
+    {
+      "name": "Circle Pop In",
+      "kind": 2,
+      "incoming": false
+    },
+    {
+      "name": "Circle Pop Out",
+      "kind": 2,
+      "incoming": true
+    }
+  ],
+  "fade_material_id": 4,
+  "fade_follow": "Path2D/PathFollow2D",
+  "fade_rect": "Path2D/PathFollow2D/ColorRect",
+  "doors": [
+    {
+      "source_ref": "naming_scene",
+      "node": "Objects/DoorToIntro"
+    },
+    {
+      "scene": 0,
+      "node": "Objects/Door"
+    },
+    {
+      "scene": 1,
+      "node": "Objects/Door"
+    }
+  ],
+  "effect_slots": {
+    "teleport": 0,
+    "thunder": 1
+  },
+  "punctuation_key": "INTRO_CUTSCENE_PUNCTUATION",
+  "engine_defaults": {
+    "label_font_color": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "license_review": "Original art and font data from fixed Mother: Encore upstream, solely for the related native port; retain upstream LICENSE and embedded font notices. No system fonts or invented glyph replacements; Nintendo-source glyph rights remain unconfirmed.",
+  "cloud_asset_id": 11,
+  "audio": {
+    "naming_music": {
+      "stable_id": 1301,
+      "source_path": "res://Audio/Music/Mother_Earth_Piano.mp3",
+      "source_sha256": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+      "import_sha256": "cb11b39c995aed4baa5c2149c5cebabbd96e496105c4a26559d6fa4aae5b55db",
+      "pcm_path": "sound/music/naming-mother-earth-piano.pcm",
+      "gain_db": 0.0
+    },
+    "old_text": {
+      "stable_id": 1302,
+      "source_path": "res://Audio/Sound effects/EB/text.wav",
+      "source_sha256": "a48a37b245414b45ca46cdb1d8c23181ddc2ac16ece6b5354b7545e021464329",
+      "import_sha256": "9d5b13d4578ef6aadb22f4bea123af0f94d7898677d376f80e116f411f9d2cb6",
+      "pcm_path": "sound/effects/introduction-text.pcm",
+      "gain_db": 0.0
+    },
+    "now_text": {
+      "stable_id": 1303,
+      "source_path": "res://Audio/Sound effects/text/Kid.mp3",
+      "source_sha256": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+      "import_sha256": "b6a18c76670a93798baea7a5535a2ef0a515862c80bced44c29b3aba0039776c",
+      "pcm_path": "sound/effects/introduction-kid-text.pcm",
+      "gain_db": 0.0
+    },
+    "teleport": {
+      "stable_id": 1304,
+      "source_path": "res://Audio/Sound effects/M3/teleport.wav",
+      "source_sha256": "33d08178c1002aceeb9eaa8c546c454dc6ec987cf07b6b39939fe531eddd32ac",
+      "import_sha256": "9b5f48ce64993fbfb74a36b011050ad9320e3f1f42ab9e829e2697a9f59bf5b5",
+      "pcm_path": "sound/effects/introduction-teleport.pcm",
+      "gain_db": 0.0
+    },
+    "thunder": {
+      "stable_id": 1305,
+      "source_path": "res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav",
+      "source_sha256": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+      "import_sha256": "0e2de0762e6defcfba189424106dc08c522a154d12d59d12f1431d4bb1f16c5a",
+      "pcm_path": "sound/effects/introduction-thunder.pcm",
+      "gain_db": 0.0
+    }
+  }
+}

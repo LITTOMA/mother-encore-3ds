@@ -1,0 +1,606 @@
+{
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "font_catalog": "fonts/introduction/intro.encfont",
+  "fonts": [
+    {
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EarthboundZero.ttf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_top": "-3"
+        }
+      },
+      "extra_characters": " ",
+      "locale": "en",
+      "node": "Text/HBoxContainer/ScrollingText",
+      "role": "old",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "source": "Fonts/EB0_la.tres",
+      "text_keys": [
+        "INTRO_CUTSCENE_OLD_01",
+        "INTRO_CUTSCENE_OLD_02",
+        "INTRO_CUTSCENE_OLD_03",
+        "INTRO_CUTSCENE_OLD_04",
+        "INTRO_CUTSCENE_OLD_05",
+        "INTRO_CUTSCENE_OLD_06",
+        "INTRO_CUTSCENE_OLD_07",
+        "INTRO_CUTSCENE_OLD_08",
+        "INTRO_CUTSCENE_OLD_09",
+        "INTRO_CUTSCENE_OLD_10",
+        "INTRO_CUTSCENE_OLD_11",
+        "INTRO_CUTSCENE_OLD_12"
+      ]
+    },
+    {
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EarthboundZero_zh_cn.otf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_bottom": "2",
+          "extra_spacing_char": "1",
+          "extra_spacing_top": "-2",
+          "size": "12"
+        }
+      },
+      "extra_characters": " ",
+      "locale": "zh_Hans_CN",
+      "node": "Text/HBoxContainer/ScrollingText",
+      "role": "old",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "source": "Fonts/EB0_zh_cn.tres",
+      "text_keys": [
+        "INTRO_CUTSCENE_OLD_01",
+        "INTRO_CUTSCENE_OLD_02",
+        "INTRO_CUTSCENE_OLD_03",
+        "INTRO_CUTSCENE_OLD_04",
+        "INTRO_CUTSCENE_OLD_05",
+        "INTRO_CUTSCENE_OLD_06",
+        "INTRO_CUTSCENE_OLD_07",
+        "INTRO_CUTSCENE_OLD_08",
+        "INTRO_CUTSCENE_OLD_09",
+        "INTRO_CUTSCENE_OLD_10",
+        "INTRO_CUTSCENE_OLD_11",
+        "INTRO_CUTSCENE_OLD_12"
+      ]
+    },
+    {
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_fw9.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_jaM3.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_ko.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_zh_cn.ttf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_bottom": "-1",
+          "extra_spacing_top": "-1"
+        }
+      },
+      "extra_characters": " ",
+      "locale": "en",
+      "node": "Text/HBoxContainer/ScrollingText",
+      "role": "now",
+      "scene": "Maps/Cutscenes/Mt Itoi Landscape.tscn",
+      "source": "Fonts/EBMain.tres",
+      "text_keys": [
+        "INTRO_CUTSCENE_NOW_01",
+        "INTRO_CUTSCENE_NOW_02"
+      ]
+    },
+    {
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_fw9.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_jaM3.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_ko.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_zh_cn.ttf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_bottom": "-1",
+          "extra_spacing_top": "-1"
+        }
+      },
+      "extra_characters": " ",
+      "locale": "zh_Hans_CN",
+      "node": "Text/HBoxContainer/ScrollingText",
+      "role": "now",
+      "scene": "Maps/Cutscenes/Mt Itoi Landscape.tscn",
+      "source": "Fonts/EBMain.tres",
+      "text_keys": [
+        "INTRO_CUTSCENE_NOW_01",
+        "INTRO_CUTSCENE_NOW_02"
+      ]
+    },
+    {
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_ja.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_ko.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_zh_cn.otf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_char": "-1",
+          "extra_spacing_space": "3",
+          "outline_color": "Color( 0, 0, 0, 1 )",
+          "outline_size": "1"
+        }
+      },
+      "extra_characters": "Z",
+      "locale": "en",
+      "node": "Label",
+      "role": "hint",
+      "scene": "Nodes/Ui/Skip.tscn",
+      "source": "Fonts/BottleRocket.tres",
+      "text_keys": [
+        "MENU_SKIP"
+      ]
+    },
+    {
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_zh_cn.otf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_char": "-1",
+          "extra_spacing_space": "3",
+          "outline_color": "Color( 0, 0, 0, 1 )",
+          "outline_size": "1"
+        }
+      },
+      "extra_characters": "Z",
+      "locale": "zh_Hans_CN",
+      "node": "Label",
+      "role": "hint",
+      "scene": "Nodes/Ui/Skip.tscn",
+      "source": "Fonts/BottleRocket_zh_cn.tres",
+      "text_keys": [
+        "MENU_SKIP"
+      ]
+    }
+  ],
+  "kind": "encore.introduction-assets",
+  "licence_review": "Original art and font data from fixed Mother: Encore upstream, solely for the related native port; retain upstream LICENSE and embedded font notices. No system fonts or invented glyph replacements; Nintendo-source glyph rights remain unconfirmed.",
+  "locales": {
+    "en": "en",
+    "zh_Hans_CN": "zh_CN"
+  },
+  "resources": [
+    {
+      "id": 1,
+      "node": "Images/Intro_0",
+      "output": "graphics/cutscenes/introduction/intro-0.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "intro-0",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "size": [
+        284,
+        112
+      ],
+      "source": "Graphics/Cutscenes/Intro/Intro_0_1.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        284,
+        112
+      ]
+    },
+    {
+      "id": 2,
+      "node": "Images/Intro_1",
+      "output": "graphics/cutscenes/introduction/intro-1.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "intro-1",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "size": [
+        284,
+        112
+      ],
+      "source": "Graphics/Cutscenes/Intro/Intro_0_2.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        284,
+        112
+      ]
+    },
+    {
+      "id": 3,
+      "node": "Images/Intro_2",
+      "output": "graphics/cutscenes/introduction/intro-2.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "intro-2",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "size": [
+        284,
+        112
+      ],
+      "source": "Graphics/Cutscenes/Intro/Intro_0_3.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        284,
+        112
+      ]
+    },
+    {
+      "id": 4,
+      "node": "Images/Intro_3",
+      "output": "graphics/cutscenes/introduction/intro-3.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "intro-3",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "size": [
+        192,
+        224
+      ],
+      "source": "Graphics/Cutscenes/Intro/Intro_1_1.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        192,
+        224
+      ]
+    },
+    {
+      "id": 5,
+      "node": "Images/Intro_4",
+      "output": "graphics/cutscenes/introduction/intro-4.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "intro-4",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "size": [
+        192,
+        224
+      ],
+      "source": "Graphics/Cutscenes/Intro/Intro_1_2.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        192,
+        224
+      ]
+    },
+    {
+      "id": 6,
+      "node": "Images/Intro_5",
+      "output": "graphics/cutscenes/introduction/intro-5.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "intro-5",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "size": [
+        192,
+        224
+      ],
+      "source": "Graphics/Cutscenes/Intro/Intro_2_1.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        192,
+        224
+      ]
+    },
+    {
+      "id": 7,
+      "node": "Images/Intro_6",
+      "output": "graphics/cutscenes/introduction/intro-6.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "intro-6",
+      "scene": "Maps/Cutscenes/Introduction.tscn",
+      "size": [
+        192,
+        112
+      ],
+      "source": "Graphics/Cutscenes/Intro/Intro_3_1.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        192,
+        112
+      ]
+    },
+    {
+      "id": 8,
+      "node": "Images/Intro_0",
+      "output": "graphics/cutscenes/introduction/landscape-0.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "landscape-0",
+      "scene": "Maps/Cutscenes/Mt Itoi Landscape.tscn",
+      "size": [
+        352,
+        180
+      ],
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        352,
+        180
+      ]
+    },
+    {
+      "id": 9,
+      "node": "Images/Intro_1",
+      "output": "graphics/cutscenes/introduction/landscape-1.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "landscape-1",
+      "scene": "Maps/Cutscenes/Mt Itoi Landscape.tscn",
+      "size": [
+        352,
+        180
+      ],
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        352,
+        180
+      ]
+    },
+    {
+      "id": 10,
+      "node": "Images/Intro_2",
+      "output": "graphics/cutscenes/introduction/landscape-2.t3x",
+      "output_grid": [
+        1,
+        1
+      ],
+      "role": "landscape-2",
+      "scene": "Maps/Cutscenes/Mt Itoi Landscape.tscn",
+      "size": [
+        352,
+        180
+      ],
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png",
+      "source_grid": [
+        1,
+        1
+      ],
+      "trim": [
+        0,
+        0,
+        352,
+        180
+      ]
+    },
+    {
+      "id": 11,
+      "node": "Cloud",
+      "output": "graphics/cutscenes/introduction/cloud-31.t3x",
+      "output_grid": [
+        8,
+        4
+      ],
+      "role": "cloud-31",
+      "scene": "Nodes/Reusables/Mt Itoi Cloud.tscn",
+      "size": [
+        10912,
+        96
+      ],
+      "source": "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png",
+      "source_grid": [
+        31,
+        1
+      ],
+      "trim": [
+        131,
+        33,
+        221,
+        74
+      ]
+    }
+  ],
+  "schema": 1,
+  "sources": {
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Fonts/BottleRocket_zh_cn.tres": "8c0312896267441ebf322e057a8e77d9cbce8c07becadf6c98e31977018e3925",
+    "Fonts/EB0_la.tres": "b4c7df2f04e2909ba2d17dbe7ce7aa2326688af192a152c6433e5934c54aaf49",
+    "Fonts/EB0_zh_cn.tres": "f67f7909436799ea6d9e7c710d0ee7b385508f943f2c67377dde6031d076ba58",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.tres": "eca67a75ba69dc4669db4b4e6c00bf6126a8cb03b5fd54620b7159f69e6de28c",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Fonts/EarthboundZero.ttf": "decf81bbe4f7c36bb7472be05c00db1dd86739bd14863b53d0d7d79c68315fb8",
+    "Fonts/EarthboundZero_zh_cn.otf": "10ae119fe7d1460444f78a312399bb0962846644cab94a2161456e4a019ac7b1",
+    "Graphics/Cutscenes/Intro/Intro_0_1.png": "afbac79b7422c8a16a7b6b8dba94a3274d93b6e0b40f13279e8c864e7e91919d",
+    "Graphics/Cutscenes/Intro/Intro_0_1.png.import": "5ee919045d802f3b155d88d47376f8068f301afed494e28cb7815d4c8541df11",
+    "Graphics/Cutscenes/Intro/Intro_0_2.png": "c6830ca15194d415a3f125f808a6ba8d04b0f5a87f409fb8fe862a7639232bc1",
+    "Graphics/Cutscenes/Intro/Intro_0_2.png.import": "8f3ac6206c231f69194b044b0ec8287b5b6dda08a147066beb1c549a11815322",
+    "Graphics/Cutscenes/Intro/Intro_0_3.png": "014bb639b79ce575f90549a61d4a8c06203187967115a1b23df4f93193deff88",
+    "Graphics/Cutscenes/Intro/Intro_0_3.png.import": "cefd0b765cd4d38dbd693bbfff8e115eb4889635c9429e0096af99d8e03f943a",
+    "Graphics/Cutscenes/Intro/Intro_1_1.png": "8da92986ef00852592f052ed8fc02d8cd95d6ec6c84901d3a36d666e1209620e",
+    "Graphics/Cutscenes/Intro/Intro_1_1.png.import": "33528f298661d73750d6f45f2169f33225b690f28361326bdc0e1d57ce2d2899",
+    "Graphics/Cutscenes/Intro/Intro_1_2.png": "b182d0b3ca134c7595f6573fbf87f73703a95c997355db954a3bc436e26fbd9f",
+    "Graphics/Cutscenes/Intro/Intro_1_2.png.import": "dbfdd6246820ca9768481e7fe0a5dd7e2842a2406076428d9af9050bf8ad6db8",
+    "Graphics/Cutscenes/Intro/Intro_2_1.png": "5d6832008493b872083f8505cce5cf03e76229a1838105f73c5668d0838183a9",
+    "Graphics/Cutscenes/Intro/Intro_2_1.png.import": "b4ae9efad587e67f10eec3f627a71d7eefa8b0b4103949cf4960a11c4a6bd7b4",
+    "Graphics/Cutscenes/Intro/Intro_3_1.png": "246fcfd2b3b9737b8ed0d2c57bc1063e295f7c8e305df5e64d9a54a6b6f97cae",
+    "Graphics/Cutscenes/Intro/Intro_3_1.png.import": "6241781dbcfab5cea2dd6c253f65252aa79b6ccd72f3bb05f92635802e8552be",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png": "8fb27a44804561952eba7fb597ab92661bad58d9de010c8c6e1f48572f5a2148",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png.import": "00af8622d149715581e2a35325b1240fdb9cfae53e3dd80b325d0a06f473e84e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png": "b7b8e666e8bd36f8082771ca29e61bb2f1f832ed3d85a3f6b8fa6da91bba590e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png.import": "d77e95b48b9dec58f0c002a01023ccc7845ada4525515f825a8b43ebcb5b9a0e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png": "a9658ed22996ba2ff3cce686af7c5c7fc59502468c31e2eacb3ffd5be5519253",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png.import": "d7e094d96679a81211c6ed7e778b081745b071ee39b7a2703077885161cfc2ef",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png": "fa45b97d1954ecc774f470426d4199036eee695916439f03f8da3c9f8b2bca47",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png.import": "fc2e0a6ad496ead5fbb658971987db688069ad4c0a2118ef6317dc86ab02a24b",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Cutscenes/Introduction.tscn": "cbeea01bab3abc567c2f8f9449da19444ad0aa1a487302f784f9fb35cdfd56d9",
+    "Maps/Cutscenes/Mt Itoi Landscape.tscn": "c334e9ab97f842c9b478430b3ca4ecc0958560aaf2dd1710ec9244e885f69340",
+    "Nodes/Reusables/Mt Itoi Cloud.tscn": "15fc4edd806644bf7550adac93a07df9a52dcfb8ff5c5101b8ee8e4006079129",
+    "Nodes/Ui/Skip.tscn": "38c046267f18ef3b95fa0f430700a46b5f87c57efef509ce64e15d73425fd208",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "Translations/TranslatedText/story - sheet.csv": "a04d9adba4bb1a9620a65253d65ccdb3307ecce2696dcfda3f9dd4f5f92c0e2c",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "text_keys": [
+    "INTRO_CUTSCENE_OLD_01",
+    "INTRO_CUTSCENE_OLD_02",
+    "INTRO_CUTSCENE_OLD_03",
+    "INTRO_CUTSCENE_OLD_04",
+    "INTRO_CUTSCENE_OLD_05",
+    "INTRO_CUTSCENE_OLD_06",
+    "INTRO_CUTSCENE_OLD_07",
+    "INTRO_CUTSCENE_OLD_08",
+    "INTRO_CUTSCENE_OLD_09",
+    "INTRO_CUTSCENE_OLD_10",
+    "INTRO_CUTSCENE_OLD_11",
+    "INTRO_CUTSCENE_OLD_12",
+    "INTRO_CUTSCENE_NOW_01",
+    "INTRO_CUTSCENE_NOW_02",
+    "INTRO_CUTSCENE_PUNCTUATION",
+    "MENU_SKIP"
+  ],
+  "translation_sources": [
+    "Translations/TranslatedText/story - sheet.csv",
+    "Translations/TranslatedText/menus - sheet.csv"
+  ]
+}

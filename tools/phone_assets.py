@@ -19,16 +19,19 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "tools"))
 from tools.doll_dialogue import PIN, sha, require
 from tools.extract_battle_entry import Extractor, node, properties, one, animation
 from tools.phone_dialogue import write_json
 from tools.upstream import safe_path
+from tools import phone_presentation_bindings as presentation
 
 HOUSE = 'Maps/podunk/Nintens House.tscn'
-SCENE = 'Nodes/Reusables/phone.tscn'
-TEXTURE = 'Graphics/Character Sprites/Npcs/misc/Phone/main.png'
-RING_SOUND = 'Audio/Sound effects/phonering.wav'
-HANGUP_SOUND = 'Audio/Sound effects/phonehangup.wav'
+_identity = presentation.identity(ROOT)
+SCENE = _identity['scene']
+TEXTURE = _identity['sprite']['source']
+RING_SOUND = _identity['sounds']['ring']
+HANGUP_SOUND = _identity['sounds']['hangup']
 SOURCES = ['LICENSE', HOUSE, SCENE, 'Maps/Testing/phone.gd', 'Scripts/Main/Interact Dialog.gd',
            'Scripts/Main/npc.gd', 'Scripts/Main/party/Player.gd', 'Scripts/Main/party/party_object.gd',
            'Scripts/Main/CutsceneArea.gd', 'Nodes/Reusables/CutsceneArea.tscn',
@@ -55,10 +58,15 @@ def transformed(origin, offset, scale=(1, 1)):
 
 
 def build(root=ROOT):
+    bindings = presentation.load(root)
+    clips = {row['role']: row for row in bindings['clips']}
+    scene, texture = bindings['scene'], bindings['sprite']['source']
+    ring_sound, hangup_sound = bindings['sounds']['ring'], bindings['sounds']['hangup']
+    idle_name, ring_name = clips['idle']['animation']['name'], clips['ring']['animation']['name']
     ex = Extractor(root)
     for path in SOURCES:
         ex.data(path)
-    house, phone = ex.text(HOUSE), ex.text(SCENE)
+    house, phone = ex.text(HOUSE), ex.text(scene)
     instance, base = node(house, 'Objects/Phone'), node(phone, '.')
     require(set(instance) == {'position', 'dialog', '_all_dialog'}, 'Unreviewed house phone override')
     require(node(house, '.').get('position', [0, 0]) == [0, 0]
@@ -69,9 +77,9 @@ def build(root=ROOT):
     require(instance == {'position': [148, 677], 'dialog': 'Reusable/phonenoanswer',
         '_all_dialog': [['phone_ring', 'Podunk/dad_poltergeist'], ['talked_to_dad', 'Reusable/dad_normal']]},
         'Unreviewed phone dispatch or position')
-    main = node(phone, 'main')
-    require(main == {'position': [0, 3], 'texture': {'ExtResource': 2}, 'hframes': 4}, 'Phone sprite changed')
-    require(ex.png_size(TEXTURE) == [76, 22], 'Phone original atlas dimensions')
+    main = node(phone, bindings['sprite']['node'])
+    width, height = ex.png_size(texture)
+    columns, rows = main.get('hframes', 1), main.get('vframes', 1)
     collision, interact = node(phone, 'StaticBody2D/CollisionShape2D'), node(phone, 'interact/CollisionShape2D')
     solid = node(phone, 'StaticBody2D')
     require(solid == {'collision_layer': 573, 'collision_mask': 0}, 'Phone collision policy changed')
@@ -80,38 +88,19 @@ def build(root=ROOT):
     require(interact == {'modulate': [0, 1, .717647, 1], 'position': [-1.19209e-07, 15],
                         'scale': [1.01592, .940705], 'shape': {'SubResource': 3}}, 'Phone interaction transform changed')
     require(node(phone, 'interact') == {}, 'Phone inherited Area2D defaults changed')
-    animations = node(phone, 'AnimationPlayer')
-    require(animations == {'anims/Idle': {'SubResource': 103}, 'anims/RESET': {'SubResource': 88},
-                           'anims/Ring': {'SubResource': 104}}, 'Phone autoplay/animation binding changed')
-    idle = animation(phone, 103, SCENE, 'Idle')
-    ring = animation(phone, 104, SCENE, 'Ring')
-    expected_frames = [1, 2, 3, 2, 3, 2, 1, 0]
-    expected_times = [0, .0833333, .166667, .25, .333333, .416667, .5, .583333]
-    require(idle['length'] == 1 and not idle['loop'] and len(idle['tracks']) == 1 and
-            idle['tracks'][0]['path'] == 'main:frame' and idle['tracks'][0]['keys'] ==
-            {'times': [0], 'transitions': [1], 'update': 1, 'values': [0]}, 'Phone Idle track changed')
-    require(ring['length'] == 1.25 and ring['loop'] and len(ring['tracks']) == 2,
-            'Phone Ring mode changed')
-    for track, path, times, values in zip(ring['tracks'], ['main:frame', 'AudioStreamPlayer2D:playing'],
-                                        [expected_times, [.083, .332]], [expected_frames, [True, True]]):
-        require(track['type'] == 'value' and track['path'] == path and track['interp'] == 1
-                and track['loop_wrap'] is True and track['keys'] == dict(times=times,
-                transitions=[1] * len(times), update=1, values=values), 'Unreviewed phone ring track: ' + path)
-    script = ex.text('Maps/Testing/phone.gd')
+    idle, ring = clips['idle']['animation'], clips['ring']['animation']
+    script = ex.text(bindings['script'])
     require('export (bool) var _is_payphone: bool' in script and 'export var _save_location := ""' in script,
             'Phone free/default-location declaration changed')
-    audio = node(phone, 'AudioStreamPlayer2D')
-    require(audio == {'position': [0, 9], 'stream': {'ExtResource': 4}, 'bus': 'SFX'}, 'Phone audio node changed')
+    audio = node(phone, bindings['audio']['node'])
     position = instance['position']
-    events = [dict(time=f32(t), track=0, kind='Frame', frame=v)
-              for t, v in zip(expected_times, expected_frames)]
-    events.extend(dict(time=f32(t), track=1, kind='PlaySound', resource=RING_SOUND) for t in [.083, .332])
-    events.sort(key=lambda e: (e['time'], e['track']))
-    resource = dict(id=1, role='phone', source=TEXTURE, path='phone-preview/phone.t3x',
-                    kind=1, width=76, height=22, columns=4, rows=1)
+    ring_events = presentation.events(clips['ring'], bindings)
+    resource = dict(id=bindings['sprite']['resource_id'], role=bindings['sprite']['role'],
+        source=texture, path=bindings['sprite']['path'], kind=bindings['sprite']['kind'],
+        width=width, height=height, columns=columns, rows=rows)
     obj = dict(identity='house_phone', source_path='Objects/Phone', type='InteractDialog', position=position,
-        sprite=dict(resource='phone', offset=main['position'], center=transformed(position, main['position']),
-                    frame_size=[19, 22], initial_frame=0, centered=True, y_sort_origin=position,
+        sprite=dict(resource=resource['role'], offset=main['position'], center=transformed(position, main['position']),
+                    frame_size=[width // columns, height // rows], initial_frame=main.get('frame', 0), centered=True, y_sort_origin=position,
                     shadow=False, direction_count=0, talk_animation=False),
         interaction=dict(center=transformed(position, interact['position']),
             source_offset=interact['position'], source_extents=shape(phone, 3), source_scale=interact['scale'],
@@ -124,16 +113,16 @@ def build(root=ROOT):
                       overrides=[dict(flag=f, dialogue=d) for f, d in instance['_all_dialog']]),
         use=dict(is_payphone=False, save_location='', key_item=base['_key_item'],
                  searches_for_phone_card=True, consumes_phone_card=False, consumes_cash=False,
-                 ordered_actions=[dict(kind='SetAudioStream', resource=HANGUP_SOUND),
-                     dict(kind='PlayAnimation', clip='Idle'), dict(kind='SetPhoneLocation', value=''),
+                 ordered_actions=[dict(kind='SetAudioStream', resource=hangup_sound),
+                     dict(kind='PlayAnimation', clip=idle_name), dict(kind='SetPhoneLocation', value=''),
                      dict(kind='OpenDialogue', dispatch='last_matching_nonempty_flag'), dict(kind='StartAudio')]),
         audio=dict(source_path='Objects/Phone/AudioStreamPlayer2D', bus=audio['bus'],
                    center=transformed(position, audio['position']), positional=True,
-                   ring=RING_SOUND, hangup=HANGUP_SOUND),
-        ring=dict(binding='phone_ring', method='_ring', idempotent_when_current='Ring',
-                  stream=RING_SOUND, clip='Ring', automatic_on_load=False),
-        clips=[dict(name='Idle', length=idle['length'], loop=False, events=[dict(time=0, track=0, kind='Frame', frame=0)]),
-               dict(name='Ring', length=ring['length'], loop=True, events=events,
+                   ring=ring_sound, hangup=hangup_sound),
+        ring=dict(binding=bindings['ring_binding']['flag'], method=bindings['callbacks']['ring']['method'], idempotent_when_current=ring_name,
+                  stream=ring_sound, clip=ring_name, automatic_on_load=False),
+        clips=[dict(name=idle_name, length=idle['length'], loop=idle['loop'], events=presentation.events(clips['idle'], bindings)),
+               dict(name=ring_name, length=ring['length'], loop=ring['loop'], events=ring_events,
                     simultaneous_tick_order='Source track order: frame track0 before audio track1')])
     area_scene = ex.text('Nodes/Reusables/CutsceneArea.tscn')
     offset = node(area_scene, 'CollisionShape2D')['position']
@@ -196,12 +185,14 @@ def compile_assets(root, tex3ds, out=OUT):
     ir = extract(root)
     recipe = recipe_from_ir(ir)
     out.mkdir(parents=True, exist_ok=True)
-    source = safe_path(root / 'upstream/MOTHER-Encore', TEXTURE)
+    resource = ir['resources'][0]
+    filename = Path(resource['path']).name
+    source = safe_path(root / 'upstream/MOTHER-Encore', resource['source'])
     with Image.open(source) as image:
-        require(image.format == 'PNG' and image.size == (76, 22), 'Invalid original phone PNG')
-    subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(out / 'phone.t3x'), str(source)], check=True)
+        require(image.format == 'PNG' and image.size == (resource['width'], resource['height']), 'Invalid original phone PNG')
+    subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(out / filename), str(source)], check=True)
     write_json(out / 'source.json', dict(schema=1, recipe=recipe, tex3ds_sha256=sha(tex3ds),
-        outputs={'phone.t3x': dict(bytes=(out / 'phone.t3x').stat().st_size, sha256=sha(out / 'phone.t3x'))}))
+        outputs={filename: dict(bytes=(out / filename).stat().st_size, sha256=sha(out / filename))}))
 
 
 def verify(root=ROOT, out=OUT):
@@ -216,8 +207,8 @@ def verify(root=ROOT, out=OUT):
             'Unreviewed phone presentation receipt')
     receipt = json.loads((out / 'source.json').read_text())
     require(set(receipt) == {'schema', 'recipe', 'tex3ds_sha256', 'outputs'} and receipt['schema'] == 1
-            and receipt['recipe'] == recipe and set(receipt['outputs']) == {'phone.t3x'}
-            and {p.name for p in out.iterdir()} == {'phone.t3x', 'source.json'}, 'Stale/missing/unexpected phone assets')
+            and receipt['recipe'] == recipe and set(receipt['outputs']) == {Path(r['path']).name for r in ir['resources']}
+            and {p.name for p in out.iterdir()} == set(receipt['outputs']) | {'source.json'}, 'Stale/missing/unexpected phone assets')
     for name, record in receipt['outputs'].items():
         path = safe_path(out, name)
         require(set(record) == {'bytes', 'sha256'} and sha(path) == record['sha256']

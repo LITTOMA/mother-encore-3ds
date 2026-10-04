@@ -81,7 +81,7 @@ public:
             const auto u=image.frame%resource.columns*w,v=image.frame/resource.columns*h;
             const float du=(sub.right-sub.left)/resource.width,dv=(sub.bottom-sub.top)/resource.height,left=sub.left,top=sub.top;
             sub.left=left+u*du;sub.right=left+(u+w)*du;sub.top=top+v*dv;sub.bottom=top+(v+h)*dv;sub.width=w;sub.height=h;
-            const C2D_Image sprite{atlas.tex,&sub};C2D_ImageTint tint;C2D_PlainImageTint(&tint,C2D_Color32(255,255,255,uint8_t(std::round(image.alpha*255))),1);
+            const C2D_Image sprite{atlas.tex,&sub};C2D_ImageTint tint;C2D_AlphaImageTint(&tint,image.alpha);
             if(!C2D_DrawImageAt(sprite,image.rect.x,image.rect.y,0,&tint,1,1))return false;
         }
         for(const auto& mask:pose.masks)C2D_DrawRectSolid(mask.rect.x,mask.rect.y,0,mask.rect.width,mask.rect.height,rgba(mask.color));

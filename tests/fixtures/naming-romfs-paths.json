@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "historical_commit": "c02fc001a443e070697ae904c0879926875e50bc",
+  "historical_payload_sha256": "bc79853503a565c772a4316e8fa7d6ce9e320b66a11c47052397141f555f0395",
+  "historical_full_payload_sha256": "a270a0b9bc99bcc08fbe607e1127adb2ba7736d4507ef271eb4f7ac37bf9ffb9",
+  "paths": {
+    "graphics/ui/save/confirm-plain.t3x": "save-preview/confirm-plain.t3x",
+    "graphics/ui/save/arrow.t3x": "save-preview/arrow.t3x",
+    "graphics/actors/ninten-main.t3x": "actor-preview/ninten-main.t3x",
+    "graphics/actors/shadow.t3x": "actor-preview/shadow.t3x",
+    "graphics/ui/naming/keyboard-0.t3x": "new-game-preview/keyboard-0.t3x",
+    "graphics/ui/naming/keyboard-1.t3x": "new-game-preview/keyboard-1.t3x",
+    "graphics/ui/naming/ana.t3x": "new-game-preview/ana.t3x",
+    "graphics/ui/naming/lloyd.t3x": "new-game-preview/lloyd.t3x",
+    "graphics/ui/naming/pippi.t3x": "new-game-preview/pippi.t3x",
+    "graphics/ui/naming/teddy.t3x": "new-game-preview/teddy.t3x",
+    "graphics/ui/naming/favorite_food.t3x": "new-game-preview/favorite_food.t3x"
+  }
+}

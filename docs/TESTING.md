@@ -30,3 +30,15 @@ python3 tools/release.py
 实际工具链构建、许可与资源暂存核对、CIA 解包、模拟器交互、真机运行是不同层次的验证。保留具体提交、配置、工具版本、产物哈希和原始日志；检查存在不等于已经运行。
 
 CI 执行主机与消毒器检查。3DS 交叉构建和打包见 [BUILD](BUILD.md)。硬件验收还需覆盖 Old / New 3DS 的帧率、内存、音频、输入、休眠恢复、存档与 CIA 安装；当前尚未完成。
+
+## CI 的受限多进程调度
+
+默认构建与完整 CI 使用至少 4 路：GNU make 调度资源生成，CMake 并行编译，CTest 使用 `--parallel 4`。已审查文件读写的来源检查和七项生产消费者可并行；共享文件写入、未审查测试和计时探针继续通过 `RUN_SERIAL` 独占执行。并发上限不是每个时刻都有四个可运行任务；存在依赖或剩余任务不足时会减少。
+
+Python 聚合测试占用四个 CTest 槽，将六个已审查只读模块分配给最多四个独立解释器，隔离模块状态与 mock。其他模块等待子进程全部退出再执行。收集与实际执行的方法身份必须逐项一致；重复、缺失、导入失败或子进程失败均使检查失败。日志与 PID 记录保存在 `build/host/python-workers/`，旧成功记录不能用于新运行。新模块默认串行。
+
+`make/native-content.mk` 将原有 27 条资源命令组织为独立目标与依赖。房间来源核验在入口 / 效果包完成后进行，并在重新写入 Lamp 战斗包之前完成；Restore 等待房间与 House；目录和遭遇指纹等待所有生产者。Settings 的生成与验证保持顺序。CMake 直接构建也使用同一图，并让读取资源的 fixture 准备和编译等待生成完成。所有目标仍为 phony，逐次保留来源核验，不通过时间戳跳过检查。
+
+资源日志与起止时间 / PID / 退出码保存在 `build/content-jobs/`，CI 上传诊断日志。多个 `CONTENT START` 先于对应 `CONTENT END` 表示重叠执行；记录中的区间可核对实际并发峰值。这些属于构建诊断，不进入 RomFS。
+
+默认 `BUILD_JOBS=4`、`CONTENT_JOBS=4`；独立 CMake 的 `ENCORE_CONTENT_JOBS=4` 和测试的 `ENCORE_TEST_JOBS=4` 可调高，CTest 的并发参数应与后者一致。单进程资源基准可显式使用 `make native-content CONTENT_JOBS=1`；测试串行对照可使用 `-DENCORE_TEST_PARALLEL=OFF` 和 `CTEST_ARGS="--parallel 1"`。完整 CI 耗时仍须以当前提交的 runner 记录衡量，不把局部资源基准当作整体加速结果。

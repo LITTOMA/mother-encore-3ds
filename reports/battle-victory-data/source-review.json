@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-opening.json": "05eee1af86f76a8b917456999e9f422321e962c08f8e912bedd13ce0c07d729f"
+    "content/native-opening.json": "c994b2dfd385c6285e8f4a9245a3adf262d8f132eb3e41ae1e376bc2acdfa7fc"
   },
   "review": "Retains reviewed action semantics; extends the existing external pack with a bounded victory singleton, source EXP label, empty reward pool, cash/bank accounting policy, source acknowledgment rule, progression references, victory animation and transition callbacks. World must cross-check progression and flag bindings before writes. No level-up, items, new encounter, general script compatibility or audio playback is implied."
 }

@@ -5,6 +5,9 @@ at runtime. Ordered emissions, saved identities and game-specific bindings are
 external reviewed data; these functions implement the bounded recipe schema.
 """
 import copy,csv,hashlib,io,json,math,re
+from contextvars import ContextVar
+from functools import wraps
+from inspect import signature
 from pathlib import Path
 from tools.extract_battle_entry import Extractor,require,one
 
@@ -149,7 +152,46 @@ def checked(value,root=ROOT):
             require(row['reviewed_noop']['source_command']=='unsetflags'and row['reviewed_noop']['flag']==phrase['unsetflags'],'Normal no-op source mismatch')
     return value
 
-def load(root=ROOT):return checked(read(root),root)
+_operation = ContextVar('programme_source_operation', default=None)
+
+def operation(function):
+    """Reuse an admitted recipe only inside one bounded, read-only conversion.
+
+    Admission is lazy so earlier receipt failures retain their original gate.
+    Every operation re-admits real source bytes before returning its result;
+    neither successful nor failed operations leave a persistent source cache.
+    """
+    parameters = signature(function)
+    @wraps(function)
+    def run(*args, **kwargs):
+        bound = parameters.bind(*args, **kwargs)
+        root = Path(bound.arguments.get('root', parameters.parameters['root'].default)).resolve()
+        active = _operation.get()
+        if active is not None and active['root'] == root:
+            return function(*args, **kwargs)
+        state = {'root': root, 'value': None}
+        token = _operation.set(state)
+        try:
+            result = function(*args, **kwargs)
+            if state['value'] is not None:
+                final = checked(read(root), root)
+                require(final == state['value'], 'Programme recipe changed during conversion')
+            return result
+        finally:
+            _operation.reset(token)
+    return run
+
+def load(root=ROOT):
+    value = read(root)
+    active = _operation.get()
+    if active is None or active['root'] != Path(root).resolve():
+        return checked(value, root)
+    if active['value'] is None:
+        active['value'] = copy.deepcopy(checked(value, root))
+    else:
+        require(value == active['value'], 'Programme recipe changed during conversion')
+    # Callers cannot mutate the admitted snapshot used by another nested call.
+    return copy.deepcopy(active['value'])
 def execute(name,doc,end_duration=None,root=ROOT):
     value=load(root);require(name in value['programmes'],'Unknown programme dispatch')
     row=value['programmes'][name];document(value,row['source'],doc)

@@ -134,15 +134,18 @@ def compile_fonts(args):
     binary=HEADER.pack(b'ENCFONT\0',1,len(payload),zlib.crc32(payload),len(faces),len(pages),len(all_glyphs))+payload
     target=out/'source-fonts.encfont';target.write_bytes(binary)
     receipt={'schema':1,'review':review,'catalog_sha256':sha(cat),'generator_sha256':sha(__file__),'godot_sha256':sha(args.godot),'tex3ds_sha256':sha(args.tex3ds),'pillow_version':pillow_version,'freetype_version':features.version_module('freetype2'),'fonttools_version':fonttools_version,'metrics':metrics,'faces':faces,'pages':pages,'glyphs':all_glyphs,'missing_source_glyphs':missing,'font_embedded_notices':credits,'binary':{'path':target.name,'sha256':sha(target),'bytes':len(binary)},'limits':'EBMain role only; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.'}
-    dump(out/'source-fonts-manifest.json',receipt)
-    shutil.copyfile(root/'LICENSE',out/'MOTHER-Encore-LICENSE.txt')
+    receipt_path=ROOT/'content/asset-receipts/fonts/source.json'
+    receipt_path.parent.mkdir(parents=True,exist_ok=True)
+    dump(receipt_path,receipt)
     print(json.dumps({'faces':[{k:f[k] for k in ('source','glyph_count','page_count','texture_bytes')} for f in faces],'pages':len(pages),'missing':missing,'binary_bytes':len(binary)}))
 
 def stage_files(root):
     """Verify reviewed inputs and supplied RomFS bytes; return fonts/* mapping.
 
-    ROOT is the source project containing this tool. `root` is a RomFS tree,
+    ROOT supplies the reviewed receipt outside RomFS. `root` is a RomFS tree,
     allowing the normal packager to verify a separate staging tree as well.
+    Only the font pack and texture pages are included; redistribution notices
+    are supplied by release_notices under licenses/.
     This path never invokes Godot/tex3ds or changes any source/output file.
     """
     root=Path(root)
@@ -156,18 +159,14 @@ def stage_files(root):
         if rel.is_absolute() or '..' in rel.parts or '\\' in name:
             raise ValueError('Unsafe reviewed font source path')
         if sha(upstream/rel)!=digest: raise ValueError('Source changed: '+name)
-    relative_manifest=Path('fonts/source-fonts-manifest.json')
-    expected_manifest=(ROOT/'romfs'/relative_manifest).read_bytes()
-    manifest_bytes=(root/relative_manifest).read_bytes()
-    if manifest_bytes!=expected_manifest: raise ValueError('Staged source font manifest differs')
-    manifest=json.loads(manifest_bytes)
+    manifest=json.loads((ROOT/'content/asset-receipts/fonts/source.json').read_bytes())
     if manifest.get('schema')!=1 or manifest.get('review')!=review:
         raise ValueError('Source font manifest review changed')
     if manifest.get('generator_sha256')!=sha(__file__):
         raise ValueError('Source font generator changed; regenerate assets')
     if manifest.get('catalog_sha256')!=sha(ROOT/'content/native-localization.json'):
         raise ValueError('Source font locale catalogue changed; regenerate assets')
-    files={relative_manifest:manifest_bytes}
+    files={}
     def output(name,expected_hash,expected_bytes,expected_crc=None):
         if not isinstance(name,str) or not name or Path(name).name!=name or name in ('.','..') or ':' in name or '\\' in name:
             raise ValueError('Unsafe staged source font output path')
@@ -189,8 +188,6 @@ def stage_files(root):
         raise ValueError('Staged source font header/count/CRC mismatch')
     for page in manifest['pages']:
         output(page['path'],page['sha256'],page['file_bytes'],page['crc32'])
-    licence=(upstream/'LICENSE').read_bytes()
-    output('MOTHER-Encore-LICENSE.txt',review['sources']['LICENSE'],len(licence))
     return files
 
 if __name__=='__main__':

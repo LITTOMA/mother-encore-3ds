@@ -5,7 +5,7 @@ import podunk_music as m
 class TestPodunkMusic(unittest.TestCase):
  def setUp(self):self.recipe=json.loads((m.ROOT/'content/podunk-music.json').read_text())
  def test_pinned_source(self):
-  data=m.checked(self.recipe,m.DEFAULT_PROJECT/'upstream/MOTHER-Encore');self.assertEqual(data,(m.ROOT/'romfs/data/podunk.encmusic').read_bytes());self.assertEqual(len(self.recipe['regions']),13);self.assertEqual(len(self.recipe['tracks']),5)
+  data=m.checked(self.recipe,m.DEFAULT_PROJECT/'upstream/MOTHER-Encore');self.assertEqual(data,(m.ROOT/'romfs/sound/banks/podunk.encmusic').read_bytes());self.assertEqual(len(self.recipe['regions']),13);self.assertEqual(len(self.recipe['tracks']),5)
  def test_negative_recipe(self):
   cases=[]
   def add(fn):v=copy.deepcopy(self.recipe);fn(v);cases.append(v)
@@ -17,15 +17,15 @@ class TestPodunkMusic(unittest.TestCase):
   with self.assertRaises(m.MusicError):m.checked(self.recipe,m.DEFAULT_PROJECT/'upstream/MOTHER-Encore')
  def test_audio_output_keeps_house_bank(self):
   with tempfile.TemporaryDirectory() as t:
-   root=Path(t);(root/'data').mkdir();(root/'data/opening.encaudio').write_bytes(b'house');(root/'data/opening-audio-manifest.json').write_bytes(b'house-manifest')
+   root=Path(t);(root/'data').mkdir();(root/'sound/banks').mkdir(parents=True);(root/'sound/banks/opening.encaudio').write_bytes(b'house');(root/'data/opening-audio-manifest.json').write_bytes(b'house-manifest')
    def compiler(recipe,upstream,out):
     files=[]
-    for path,data in [('data/opening.encaudio',b'podunk-bank'),('audio/podunk-1.pcm',b'pcm')]:
+    for path,data in [('sound/banks/opening.encaudio',b'podunk-bank'),('sound/music/podunk-1.pcm',b'pcm')]:
      f=out/path;f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes(data);files.append(dict(path=path,size=len(data),sha256=m.sha(data)))
     return dict(files=files)
-   manifest=m.compile_audio_isolated({'assets':[{'pcm_path':'audio/podunk-1.pcm'}]},root,root,compiler)
-   self.assertEqual((root/'data/opening.encaudio').read_bytes(),b'house');self.assertEqual((root/'data/opening-audio-manifest.json').read_bytes(),b'house-manifest')
-   self.assertEqual((root/'data/podunk.encaudio').read_bytes(),b'podunk-bank');self.assertIn('data/podunk.encaudio',[x['path'] for x in manifest['files']])
+   manifest=m.compile_audio_isolated({'assets':[{'pcm_path':'sound/music/podunk-1.pcm'}]},root,root,compiler)
+   self.assertEqual((root/'sound/banks/opening.encaudio').read_bytes(),b'house');self.assertEqual((root/'data/opening-audio-manifest.json').read_bytes(),b'house-manifest')
+   self.assertEqual((root/'sound/banks/podunk.encaudio').read_bytes(),b'podunk-bank');self.assertIn('sound/banks/podunk.encaudio',[x['path'] for x in manifest['files']])
  def test_audio_output_rejects_non_owned_file(self):
   with tempfile.TemporaryDirectory() as t:
    root=Path(t);(root/'sentinel').write_bytes(b'kept')

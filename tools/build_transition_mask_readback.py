@@ -7,10 +7,10 @@ def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
     build=ROOT/'build/transition-mask';report=ROOT/'reports/transition-mask';build.mkdir(parents=True,exist_ok=True);report.mkdir(parents=True,exist_ok=True)
     sdk=Path(os.environ['DEVKITPRO']);arm=Path(os.environ['DEVKITARM'])
-    assets=['battle-preview/transition.bpx','data/pillow-entry.encbattle']
+    assets=['graphics/battle/lamp/transition.bpx','data/pillow-entry.encbattle']
     # Resource entries use validated project relative paths; take Pillow's
     # already-built resource family, not the entire game or upstream tree.
-    assets+=sorted(str(p.relative_to(ROOT/'romfs')) for p in (ROOT/'romfs/pillow-preview').glob('*.bpx'))
+    assets+=sorted(str(p.relative_to(ROOT/'romfs')) for p in (ROOT/'romfs/graphics/battle/pillow').glob('*.bpx'))
     for item in assets:
         destination=build/'romfs'/item;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/'romfs'/item,destination)
     elf=build/'transition-mask.elf';smdh=build/'transition-mask.smdh';output=build/'transition-mask.3dsx'

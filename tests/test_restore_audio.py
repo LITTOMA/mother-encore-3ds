@@ -23,10 +23,10 @@ class RestoreAudioTests(unittest.TestCase):
         self.root = Path(self.temporary.name) / 'project'
         self.output = self.root / 'romfs'
         self.upstream = self.root / 'upstream/MOTHER-Encore'
-        self.banks = (('content/audio-test.json', 'data/test-audio-manifest.json', 'data/test.encaudio'),)
+        self.banks = (('content/audio-test.json', 'content/asset-receipts/audio/test.json', 'data/test.encaudio'),)
         recipe = json.loads((ROOT / 'content/native-audio.json').read_bytes())
-        original = json.loads((ROOT / 'romfs/data/opening-audio-manifest.json').read_bytes())
-        self.path = 'audio/cursor-back.pcm'
+        original = json.loads((ROOT / 'content/asset-receipts/audio/opening.json').read_bytes())
+        self.path = 'sound/effects/cursor-back.pcm'
         entry = next(x for x in recipe['assets'] if x['pcm_path'] == self.path)
         self.receipt = next(x for x in original['assets'] if x['pcm_path'] == self.path)
         self.pcm = (ROOT / 'romfs' / self.path).read_bytes()
@@ -35,7 +35,7 @@ class RestoreAudioTests(unittest.TestCase):
         self.manifest = copy.deepcopy(original)
         self.manifest['assets'] = [self.receipt]
         self.manifest['recipe_sha256'] = audio_asset.sha(json.dumps(recipe, sort_keys=True, separators=(',', ':')).encode())
-        old_bank = audio_asset.parse_bank((ROOT / 'romfs/data/opening.encaudio').read_bytes())
+        old_bank = audio_asset.parse_bank((ROOT / 'romfs/sound/banks/opening.encaudio').read_bytes())
         bank = audio_asset.build_bank([self.receipt], old_bank['master_db'], old_bank['silence_db'])
         self.manifest['files'] = [
             dict(path=self.path, size=len(self.pcm), sha256=audio_asset.sha(self.pcm)),
@@ -57,7 +57,7 @@ class RestoreAudioTests(unittest.TestCase):
 
     def save_metadata(self):
         self.put('content/audio-test.json', json.dumps(self.recipe).encode())
-        self.put('romfs/data/test-audio-manifest.json', json.dumps(self.manifest).encode())
+        self.put('content/asset-receipts/audio/test.json', json.dumps(self.manifest).encode())
 
     def restore(self, **kwargs):
         return restore_audio.restore(self.root, self.output, banks=self.banks, **kwargs)

@@ -154,7 +154,8 @@ def validate(ir,ex=None):
         fields(info,('sha256','generated_roles'));digest=info['sha256']
         require(type(info['generated_roles'])is list and all(type(v)is str for v in info['generated_roles'])and len(set(info['generated_roles']))==len(info['generated_roles']),'Unknown/duplicate generated manifest role')
         require(safe(path)and path.endswith('/source.json')and type(digest)is str and re.fullmatch('[0-9a-f]{64}',digest),'Unsafe/unknown skin manifest')
-        data=(ROOT/'romfs'/path).read_bytes();require(hashlib.sha256(data).hexdigest()==digest,'Skin manifest changed')
+        require(path.startswith('content/asset-receipts/'),'Skin manifest must be offline provenance')
+        data=(ROOT/path).read_bytes();require(hashlib.sha256(data).hexdigest()==digest,'Skin manifest changed')
         rows=manifest_rows(json.loads(data),info['generated_roles']);expected.update({(path,role):(source,output)for role,(source,output)in rows.items()if source in tinted})
     require(type(ir['skin_bindings'])is list,'Missing skin bindings');actual={}
     for row in ir['skin_bindings']:

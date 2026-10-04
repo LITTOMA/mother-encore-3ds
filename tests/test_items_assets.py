@@ -18,7 +18,7 @@ class ItemsAssetsTests(unittest.TestCase):
 
     def fixture(self,root):
         source=root/'art.png';Image.new('RGBA',(8,8),(2,4,6,0)).save(source)
-        recipe=dict(schema=1,commit=a.PIN,game_version='fixture',licence_review=a.LICENSE_REVIEW,sources={'art.png':a.sha(source)},resources=[dict(id=1,name='art',source='art.png',size=[8,8],grid=[1,1],output='items-preview/art.t3x',reuse=False)])
+        recipe=dict(schema=1,commit=a.PIN,game_version='fixture',licence_review=a.LICENSE_REVIEW,sources={'art.png':a.sha(source)},resources=[dict(id=1,name='art',source='art.png',size=[8,8],grid=[1,1],output='graphics/ui/items/art.t3x',reuse=False)])
         return recipe,dict(commit=a.PIN,game_version='fixture')
 
     def test_pristine_sources_resources_and_ir_verify(self):
@@ -81,9 +81,9 @@ class ItemsAssetsTests(unittest.TestCase):
     def test_existing_font_box_cursor_are_checked_references(self):
         reused=[r for r in self.recipe['resources']if r['reuse']]
         self.assertEqual([r['name']for r in reused],['box','cursor','font'])
-        self.assertEqual(self.ir['resources'][9]['path'],'battle-preview/font.t3x')
+        self.assertEqual(self.ir['resources'][9]['path'],'graphics/battle/lamp/font.t3x')
         self.assertFalse((a.OUT/'font.t3x').exists())
-        self.assertEqual(set(self.ir['dependencies']),{'romfs/battle-preview/source.json','romfs/round-preview/source.json'})
+        self.assertEqual(set(self.ir['dependencies']),{'content/asset-receipts/graphics/battle/lamp/source.json','content/asset-receipts/graphics/battle/round/source.json'})
 
     def test_rotation_is_lossless_per_frame_including_transparent_rgb(self):
         image=Image.new('RGBA',(24,8));image.putdata([(i%256,i//256,255-i%256,0 if i%3==0 else 255)for i in range(192)])

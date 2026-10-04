@@ -60,7 +60,7 @@ def build(bindings=None):
  v=ir['victory'];v.update(initial_exp=base['victory']['reward_exp'],initial_bank=base['victory']['reward_cash'],initial_earned_cash=base['victory']['reward_cash'],reward_exp=enemy['exp'],reward_cash=enemy['cash'],exp_text=text(text_bindings['experience']['key'],text_bindings['experience']['role'],dict(name=name,value=enemy['exp'])))
  from native_content import parse_pack
  room=parse_pack((ROOT/'romfs/data/opening.encroom').read_bytes());body=[b for b in room['sections']['BodyRule']if room['strings'][b['source_path_string']]==enc['body_source']];require(len(body)==1,'Doll body binding');v['enemy_body_id']=body[0]['body_id']
- p=ir['presentation'];receipt=read(ROOT/'romfs/doll-preview/source.json');r=next(r for r in receipt['resources']if r['name']==enc['receipt_resource']);idx=next(m['resource']for m in p['media']if m['role']==2)
+ p=ir['presentation'];receipt=read(ROOT/'content/asset-receipts/graphics/battle/doll/source.json');r=next(r for r in receipt['resources']if r['name']==enc['receipt_resource']);idx=next(m['resource']for m in p['media']if m['role']==2)
  resource=p['resources'][idx];resource.update(path=r['output'],width=r['width'],height=r['height'],columns=1,rows=1,sha256=digest(ROOT/'romfs'/r['output']));ex.data(enc['sprite_source'])
  for m in p['media']:
   if m['role']==2:m['rect'][2:]=[resource['width'],resource['height']]

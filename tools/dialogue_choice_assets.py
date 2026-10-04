@@ -77,7 +77,7 @@ def extract():
             'Shared House cursor dimensions changed')
     resource = {k: original[k] for k in ('path', 'width', 'height', 'columns', 'rows', 'sha256')}
     require(sha(ROOT / 'romfs' / resource['path']) == resource['sha256'], 'Shared House cursor changed')
-    battle = json.loads((ROOT / 'romfs/battle-preview/source.json').read_text())
+    battle = json.loads((ROOT / 'content/asset-receipts/graphics/battle/lamp/source.json').read_text())
     require(battle['recipe']['sources']['Fonts/EBMain.ttf'] == ex.sources['Fonts/EBMain.ttf'],
             'Shared Battle font has different source')
     groups = list(graph['program']['choice_groups'])
@@ -97,12 +97,12 @@ def extract():
         arrow_offset=[arrow['cursor_offset'][0]-size[0]/6, arrow['cursor_offset'][1]+size[1]/2],
         arrow_move=float(one(r'const TWEEN_LENGTH := ([\d.]+)', cursor, 'arrow tween')[1]),
         arrow_loop=len(frames)/speed, arrow_keys=[dict(time=i/speed, frame=f) for i, f in enumerate(frames)],
-        arrow_resource=resource, font_path='battle-preview/font.t3x', groups=groups,
+        arrow_resource=resource, font_path='graphics/battle/lamp/font.t3x', groups=groups,
         sounds=['cursor1', 'cursor2', 'cursor2'],
         policies=dict(loop_around=False, show_after_text_complete=True, clear_text_on_result=True,
                       confirm_and_cancel_sound_after_target_phrase=True, navigation_uses_caller_repeat=True),
         dependencies={p: sha(ROOT / p) for p in ['content/native-house-presentation.json',
-            'romfs/battle-preview/source.json', 'romfs/battle-preview/font.t3x', 'romfs/' + resource['path']]})
+            'content/asset-receipts/graphics/battle/lamp/source.json', 'romfs/graphics/battle/lamp/font.t3x', 'romfs/' + resource['path']]})
     probe = dict(font=str(ex.upstream / 'Fonts/EBMain.ttf'), grid=grid,
                  minimum=label['rect_min_size'], size_flags=label['size_flags_horizontal'],
                  labels=[o['text'] for o in groups[0]['options']], child_count=recipe['child_count'])

@@ -1,127 +1,127 @@
 {
   "base_readonly_outputs": {
-    "continue-preview/title-background.t3x": "b3bf17879e7baa711d1c7346ee5cf594d1514d95551b3d6c85c1b6cea6418cf1",
-    "continue-preview/title-earth.t3x": "5bc135f8efac60a8294d0eb24dc8fb1869f0731e1ea46b2d50d3da742e05fc3d",
-    "continue-preview/title-encore.t3x": "3ed95d7f1b8fc3232e5d78e743a90cd6c3697ced4d81b10d75368683c726ae51",
-    "continue-preview/title-exit-selected.t3x": "d85dd76f039b75b06568768f3d07d658098e5e7f9211a683c59b03c55cbb3816",
-    "continue-preview/title-exit.t3x": "4b88238a0e9cf456e877a3c520113a9142cbed725b8489e919228b98d0f8b209",
-    "continue-preview/title-load-selected.t3x": "699ac619df48a8140aaa59c78f6ca16ba1e296f1702eda607f0516a84cbcdc13",
-    "continue-preview/title-load.t3x": "21c56c955e7fa67ddb73ff63fa8f71e169ac560bf53ccc131f5eb3b8cd9cf82b",
-    "continue-preview/title-mther.t3x": "20d20d4546a435fb41cd3e5d9fe84ca2f5e23e75cef65057d41ba46c4a3cd9da",
-    "continue-preview/title-newgame-selected.t3x": "7d4a072a04f4e9fe989c4421b351707931c31dbd08fed94b90cb032253d261fe",
-    "continue-preview/title-newgame.t3x": "da19f2ebfebdd9220c1a2fa86b44a6c33cf4d773c689239dab4369e08083dcf3",
-    "continue-preview/title-options-selected.t3x": "2e8d5e81c6965169b9dd99983ecddd0d1344e70aadad43e72bc65aa365fc5e2c",
-    "continue-preview/title-options.t3x": "fb5fdac4dd4a0bb15f54a685bb10baeb39facf57b291e393105f2c79b9e6fec3"
+    "graphics/ui/continue/title-background.t3x": "b3bf17879e7baa711d1c7346ee5cf594d1514d95551b3d6c85c1b6cea6418cf1",
+    "graphics/ui/continue/title-earth.t3x": "5bc135f8efac60a8294d0eb24dc8fb1869f0731e1ea46b2d50d3da742e05fc3d",
+    "graphics/ui/continue/title-encore.t3x": "3ed95d7f1b8fc3232e5d78e743a90cd6c3697ced4d81b10d75368683c726ae51",
+    "graphics/ui/continue/title-exit-selected.t3x": "d85dd76f039b75b06568768f3d07d658098e5e7f9211a683c59b03c55cbb3816",
+    "graphics/ui/continue/title-exit.t3x": "4b88238a0e9cf456e877a3c520113a9142cbed725b8489e919228b98d0f8b209",
+    "graphics/ui/continue/title-load-selected.t3x": "699ac619df48a8140aaa59c78f6ca16ba1e296f1702eda607f0516a84cbcdc13",
+    "graphics/ui/continue/title-load.t3x": "21c56c955e7fa67ddb73ff63fa8f71e169ac560bf53ccc131f5eb3b8cd9cf82b",
+    "graphics/ui/continue/title-mther.t3x": "20d20d4546a435fb41cd3e5d9fe84ca2f5e23e75cef65057d41ba46c4a3cd9da",
+    "graphics/ui/continue/title-newgame-selected.t3x": "7d4a072a04f4e9fe989c4421b351707931c31dbd08fed94b90cb032253d261fe",
+    "graphics/ui/continue/title-newgame.t3x": "da19f2ebfebdd9220c1a2fa86b44a6c33cf4d773c689239dab4369e08083dcf3",
+    "graphics/ui/continue/title-options-selected.t3x": "2e8d5e81c6965169b9dd99983ecddd0d1344e70aadad43e72bc65aa365fc5e2c",
+    "graphics/ui/continue/title-options.t3x": "fb5fdac4dd4a0bb15f54a685bb10baeb39facf57b291e393105f2c79b9e6fec3"
   },
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
-    "content/native-continue.json": "81c8a12a6edec5c84be3f1ca405329775c88b485b20060fb72aeeb2c48443a95"
+    "content/native-continue.json": "f4672d17079560d62f29cc3c549fea7bdbd9ed31e366f29ccc118d31f0ca1284"
   },
   "fallback": "en",
   "outputs": {
-    "title-locales/zh_Hans_CN/title-exit-selected.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-exit-selected.t3x": {
       "bytes": 2069,
       "sha256": "3591240953c23c6b782fde77cfd82b78bd14ab9f3e3d61f011b8ba6bef27b2f2"
     },
-    "title-locales/zh_Hans_CN/title-exit.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-exit.t3x": {
       "bytes": 2069,
       "sha256": "d7116a2b22c816e68bf88202cf5fe9fba3d236a9506f9fbcd9b4f5f47f3c6c65"
     },
-    "title-locales/zh_Hans_CN/title-load-selected.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-load-selected.t3x": {
       "bytes": 2069,
       "sha256": "80551ec1e223c3a7b1611c93c8e152aadc046baae87cd8814440b843713156e2"
     },
-    "title-locales/zh_Hans_CN/title-load.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-load.t3x": {
       "bytes": 2069,
       "sha256": "8c4a359f45eea7e67c23ee1b325a791489dfd9a9411892c8d4df1e856c280bdc"
     },
-    "title-locales/zh_Hans_CN/title-newgame-selected.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-newgame-selected.t3x": {
       "bytes": 4117,
       "sha256": "f494322c148de4d275587fb5c974f5c823f2ad2de7bbd494c435040490834eac"
     },
-    "title-locales/zh_Hans_CN/title-newgame.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-newgame.t3x": {
       "bytes": 4117,
       "sha256": "946cd41e718d1cdfb3661b83d404e66a240519c6f44254444753af587bb118a4"
     },
-    "title-locales/zh_Hans_CN/title-options-selected.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-options-selected.t3x": {
       "bytes": 4117,
       "sha256": "5eb2d590963c3502450075d300508e08776dc243393118a69366a54480685ccd"
     },
-    "title-locales/zh_Hans_CN/title-options.t3x": {
+    "graphics/ui/title/zh_Hans_CN/title-options.t3x": {
       "bytes": 4117,
       "sha256": "39926f5014d045d08be26919c1fe010fe59c7e4fc6c5cdd1a8ea4c5ef9449550"
     }
   },
   "resources": [
     {
-      "base_path": "continue-preview/title-newgame.t3x",
+      "base_path": "graphics/ui/continue/title-newgame.t3x",
       "flash": 0,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-newgame.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-newgame.t3x",
       "source": "Translations/TranslatedUI/TitleNewGame_zh_CN.png",
       "width": 54
     },
     {
-      "base_path": "continue-preview/title-newgame-selected.t3x",
+      "base_path": "graphics/ui/continue/title-newgame-selected.t3x",
       "flash": 0.35,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-newgame-selected.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-newgame-selected.t3x",
       "source": "Translations/TranslatedUI/TitleNewGame_zh_CN.png",
       "width": 54
     },
     {
-      "base_path": "continue-preview/title-load.t3x",
+      "base_path": "graphics/ui/continue/title-load.t3x",
       "flash": 0,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-load.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-load.t3x",
       "source": "Translations/TranslatedUI/TitleLoad_zh_CN.png",
       "width": 29
     },
     {
-      "base_path": "continue-preview/title-load-selected.t3x",
+      "base_path": "graphics/ui/continue/title-load-selected.t3x",
       "flash": 0.35,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-load-selected.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-load-selected.t3x",
       "source": "Translations/TranslatedUI/TitleLoad_zh_CN.png",
       "width": 29
     },
     {
-      "base_path": "continue-preview/title-options.t3x",
+      "base_path": "graphics/ui/continue/title-options.t3x",
       "flash": 0,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-options.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-options.t3x",
       "source": "Translations/TranslatedUI/TitleSettings_zh_CN.png",
       "width": 53
     },
     {
-      "base_path": "continue-preview/title-options-selected.t3x",
+      "base_path": "graphics/ui/continue/title-options-selected.t3x",
       "flash": 0.35,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-options-selected.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-options-selected.t3x",
       "source": "Translations/TranslatedUI/TitleSettings_zh_CN.png",
       "width": 53
     },
     {
-      "base_path": "continue-preview/title-exit.t3x",
+      "base_path": "graphics/ui/continue/title-exit.t3x",
       "flash": 0,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-exit.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-exit.t3x",
       "source": "Translations/TranslatedUI/TitleExit_zh_CN.png",
       "width": 25
     },
     {
-      "base_path": "continue-preview/title-exit-selected.t3x",
+      "base_path": "graphics/ui/continue/title-exit-selected.t3x",
       "flash": 0.35,
       "height": 12,
       "locale": "zh_Hans_CN",
-      "path": "title-locales/zh_Hans_CN/title-exit-selected.t3x",
+      "path": "graphics/ui/title/zh_Hans_CN/title-exit-selected.t3x",
       "source": "Translations/TranslatedUI/TitleExit_zh_CN.png",
       "width": 25
     }

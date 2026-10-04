@@ -1,8 +1,8 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
-    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
-    "romfs/round-preview/source.json": "8d0c89c8ab435af3383c12c4766077d328fea091c9b37b34774d8dbe99eb1e41"
+    "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
+    "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c"
   },
   "layout_bindings": {
     "cursor": 22,

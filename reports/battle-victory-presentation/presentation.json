@@ -4208,7 +4208,7 @@
       "height": 768,
       "id": 1,
       "kind": 1,
-      "path": "round-preview/party.t3x",
+      "path": "graphics/battle/round/party.t3x",
       "rows": 12,
       "sha256": "9150ff5f2088bb586119a4f293a92d54355d27d249985d31dd1c2882a729c3fb",
       "width": 960
@@ -4218,7 +4218,7 @@
       "height": 49,
       "id": 2,
       "kind": 1,
-      "path": "round-preview/enemy.t3x",
+      "path": "graphics/battle/round/enemy.t3x",
       "rows": 1,
       "sha256": "6db2d0eb4d5e801869f6d2ae928ca4c5f84aea1fbd1706bb32f83ecb083bccea",
       "width": 33
@@ -4228,7 +4228,7 @@
       "height": 32,
       "id": 3,
       "kind": 1,
-      "path": "round-preview/bash.t3x",
+      "path": "graphics/battle/round/bash.t3x",
       "rows": 1,
       "sha256": "83b83f653d62a11f6324a4eb0238d0b60622ed8dff431cdb5e33cb42d914d170",
       "width": 96
@@ -4238,7 +4238,7 @@
       "height": 25,
       "id": 4,
       "kind": 1,
-      "path": "round-preview/pointer.t3x",
+      "path": "graphics/battle/round/pointer.t3x",
       "rows": 1,
       "sha256": "9f0b4a78e1c3bf86c8274ad3038c70af45e73d6003992168526acbd2b5ac473d",
       "width": 25
@@ -4248,7 +4248,7 @@
       "height": 11,
       "id": 5,
       "kind": 1,
-      "path": "round-preview/numbers.t3x",
+      "path": "graphics/battle/round/numbers.t3x",
       "rows": 1,
       "sha256": "fb563e635faeac950a7da7dba3b614791d6d423c7442d024c98b4b1b067d0dff",
       "width": 286
@@ -4258,7 +4258,7 @@
       "height": 19,
       "id": 6,
       "kind": 1,
-      "path": "round-preview/miss.t3x",
+      "path": "graphics/battle/round/miss.t3x",
       "rows": 1,
       "sha256": "cf6826fdef170d0a548e338576a592f38e32ee3152ddda9d8c07c2d0bed884e3",
       "width": 40
@@ -4268,7 +4268,7 @@
       "height": 24,
       "id": 7,
       "kind": 1,
-      "path": "round-preview/box.t3x",
+      "path": "graphics/battle/round/box.t3x",
       "rows": 1,
       "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
       "width": 24
@@ -4278,7 +4278,7 @@
       "height": 152,
       "id": 8,
       "kind": 1,
-      "path": "round-preview/smash.t3x",
+      "path": "graphics/battle/round/smash.t3x",
       "rows": 2,
       "sha256": "13b0e32bd006f2e7b1ce729fc1dedfa27becbdf1e055b2e413dda5d73847bb84",
       "width": 504
@@ -4288,7 +4288,7 @@
       "height": 8,
       "id": 9,
       "kind": 1,
-      "path": "round-preview/dialogue_cursor.t3x",
+      "path": "graphics/battle/round/dialogue_cursor.t3x",
       "rows": 1,
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516",
       "width": 24
@@ -4298,7 +4298,7 @@
       "height": 48,
       "id": 10,
       "kind": 1,
-      "path": "round-preview/victory.t3x",
+      "path": "graphics/battle/round/victory.t3x",
       "rows": 6,
       "sha256": "4df05b495c27b645e6f4da5a1a0bb706866602864e541ac0ad3425f385d40d01",
       "width": 93
@@ -4308,7 +4308,7 @@
       "height": 580,
       "id": 11,
       "kind": 1,
-      "path": "round-preview/world_party.t3x",
+      "path": "graphics/battle/round/world_party.t3x",
       "rows": 20,
       "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
       "width": 310

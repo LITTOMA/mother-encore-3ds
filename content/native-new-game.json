@@ -933,21 +933,21 @@
     "Colin"
   ],
   "dependencies": {
-    "content/doll-round.json": "70135d1f071dbb58177cbaf6e8c992151f532e8d4d9dc4dcbb87bab4255c9e61",
-    "content/naming-presentation-bindings.json": "cde07ae6a70227b58648cccaccc1b0ef526d96b7ceaaf39bc2de8cd6df834bdd",
-    "content/native-opening.json": "58dcad29cd293936cae4d48c756a2381bd9d4a78d6fd8b8d1e93ec4d2f60a250",
-    "content/native-round.json": "b7b73d0cfc2094a3d4e7c8510e835e840667fad803c8973595e4e2e9bca1c247",
-    "content/native-save-menu.json": "ab731410a30e20f27863486d8099658ec220a41765e41860f8febcb288adce46",
-    "content/native-session.json": "152b51df1062542d4d0826d203fdf2e87e684b6da5a8856fb5290a6e2c9501be",
-    "content/pillow-round.json": "c2f9e7d16c1341d7b92f173b35488b5c15124d6844871d7173fb8a2ee19ea9d4",
-    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68"
+    "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
+    "content/doll-round.json": "48490a242f18fd73aacaaf36a8d3fb6e8a631a5a024530b9cf4f2439489dc163",
+    "content/naming-presentation-bindings.json": "360ac753aff3c6a9de5866e25c17c9e5b138e0843d202df0e6617f83ddc064a9",
+    "content/native-opening.json": "9e0980e5c1339c6f136845209ff30f94964423ecd4933cc94792c0bbb5991b7d",
+    "content/native-round.json": "d0f1205780951d5897345d9916add78134e058a76dfa6786b654df165d1e2d3f",
+    "content/native-save-menu.json": "b218ea6d27f378d59413eebff938b8ef3cc0d9ec5e65124deb2efa210ecfa0db",
+    "content/native-session.json": "2992ed18f5e4a5bf4ee81ace67913affa9143dcb7434e59c2be2291d54091c0d",
+    "content/pillow-round.json": "615fd1bc7a921856c813a3b851d10f370f6d0b509b7dd4e877ec931c23520a68"
   },
   "error_duration": 2.0,
   "field_assets": [
     {
       "columns": 10,
       "height": 560,
-      "path": "new-game-preview/ana.t3x",
+      "path": "graphics/ui/naming/ana.t3x",
       "rows": 20,
       "source": "Graphics/Character Sprites/Ana/main.png",
       "width": 310
@@ -955,7 +955,7 @@
     {
       "columns": 10,
       "height": 560,
-      "path": "new-game-preview/lloyd.t3x",
+      "path": "graphics/ui/naming/lloyd.t3x",
       "rows": 20,
       "source": "Graphics/Character Sprites/Lloyd/main.png",
       "width": 310
@@ -963,7 +963,7 @@
     {
       "columns": 10,
       "height": 560,
-      "path": "new-game-preview/pippi.t3x",
+      "path": "graphics/ui/naming/pippi.t3x",
       "rows": 20,
       "source": "Graphics/Character Sprites/Pippi/main.png",
       "width": 250
@@ -971,7 +971,7 @@
     {
       "columns": 10,
       "height": 740,
-      "path": "new-game-preview/teddy.t3x",
+      "path": "graphics/ui/naming/teddy.t3x",
       "rows": 20,
       "source": "Graphics/Character Sprites/Teddy/main.png",
       "width": 230
@@ -979,7 +979,7 @@
     {
       "columns": 1,
       "height": 19,
-      "path": "new-game-preview/favorite_food.t3x",
+      "path": "graphics/ui/naming/favorite_food.t3x",
       "rows": 1,
       "source": "Graphics/UI/Misc/FavFoodPlate.png",
       "width": 18
@@ -1392,47 +1392,47 @@
     ""
   ],
   "outputs": {
-    "actor-preview/ninten-main.t3x": {
+    "graphics/actors/ninten-main.t3x": {
       "bytes": 2097173,
       "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2"
     },
-    "actor-preview/shadow.t3x": {
+    "graphics/actors/shadow.t3x": {
       "bytes": 533,
       "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
     },
-    "new-game-preview/ana.t3x": {
+    "graphics/ui/naming/ana.t3x": {
       "bytes": 2097173,
       "sha256": "7bd93477bc0c0d4e8cb9613a419368c04a83f6081f46ff54f4adac6699cbea16"
     },
-    "new-game-preview/favorite_food.t3x": {
+    "graphics/ui/naming/favorite_food.t3x": {
       "bytes": 4117,
       "sha256": "ce811b9a1ab828eda25430e64a43c5b30b6867a43047692422901b1b85b0fdc2"
     },
-    "new-game-preview/keyboard-0.t3x": {
+    "graphics/ui/naming/keyboard-0.t3x": {
       "bytes": 524309,
       "sha256": "7aa65302178f445667f2a047e19b8eb36ca11ffffe93f576cd2e2610e972171e"
     },
-    "new-game-preview/keyboard-1.t3x": {
+    "graphics/ui/naming/keyboard-1.t3x": {
       "bytes": 524309,
       "sha256": "818b983667fda1d772b345f495463c911bb8f11b021836aae01ea8c1e0595e72"
     },
-    "new-game-preview/lloyd.t3x": {
+    "graphics/ui/naming/lloyd.t3x": {
       "bytes": 2097173,
       "sha256": "0cf7237b0f6760e753a84304057bb1407fae8de68047f0ed7673f166412f37da"
     },
-    "new-game-preview/pippi.t3x": {
+    "graphics/ui/naming/pippi.t3x": {
       "bytes": 1048597,
       "sha256": "fe5d479069c44a200d3300ffe5be9ea7e579bc9519d15d60870d20da576ce375"
     },
-    "new-game-preview/teddy.t3x": {
+    "graphics/ui/naming/teddy.t3x": {
       "bytes": 1048597,
       "sha256": "9e5512ff7bd893845d6882b06f1c969d5c7fc0e7ae95e1f4c6052a480618351a"
     },
-    "save-preview/arrow.t3x": {
+    "graphics/ui/save/arrow.t3x": {
       "bytes": 1045,
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
-    "save-preview/confirm-plain.t3x": {
+    "graphics/ui/save/confirm-plain.t3x": {
       "bytes": 4117,
       "sha256": "72221e2c65e0fd1f0ee8f0d0a74a3d65aab12c01c5df35b7f21fded7ee7e5c3d"
     }
@@ -4480,7 +4480,7 @@
       6
     ]
   },
-  "presentation_sha256": "cde07ae6a70227b58648cccaccc1b0ef526d96b7ceaaf39bc2de8cd6df834bdd",
+  "presentation_sha256": "360ac753aff3c6a9de5866e25c17c9e5b138e0843d202df0e6617f83ddc064a9",
   "rects": [
     [
       20,
@@ -5015,77 +5015,77 @@
     {
       "columns": 1,
       "height": 28,
-      "path": "save-preview/confirm-plain.t3x",
+      "path": "graphics/ui/save/confirm-plain.t3x",
       "rows": 1,
       "width": 28
     },
     {
       "columns": 3,
       "height": 8,
-      "path": "save-preview/arrow.t3x",
+      "path": "graphics/ui/save/arrow.t3x",
       "rows": 1,
       "width": 24
     },
     {
       "columns": 10,
       "height": 580,
-      "path": "actor-preview/ninten-main.t3x",
+      "path": "graphics/actors/ninten-main.t3x",
       "rows": 20,
       "width": 310
     },
     {
       "columns": 1,
       "height": 5,
-      "path": "actor-preview/shadow.t3x",
+      "path": "graphics/actors/shadow.t3x",
       "rows": 1,
       "width": 15
     },
     {
       "columns": 1,
       "height": 180,
-      "path": "new-game-preview/keyboard-0.t3x",
+      "path": "graphics/ui/naming/keyboard-0.t3x",
       "rows": 1,
       "width": 320
     },
     {
       "columns": 1,
       "height": 180,
-      "path": "new-game-preview/keyboard-1.t3x",
+      "path": "graphics/ui/naming/keyboard-1.t3x",
       "rows": 1,
       "width": 320
     },
     {
       "columns": 10,
       "height": 560,
-      "path": "new-game-preview/ana.t3x",
+      "path": "graphics/ui/naming/ana.t3x",
       "rows": 20,
       "width": 310
     },
     {
       "columns": 10,
       "height": 560,
-      "path": "new-game-preview/lloyd.t3x",
+      "path": "graphics/ui/naming/lloyd.t3x",
       "rows": 20,
       "width": 310
     },
     {
       "columns": 10,
       "height": 560,
-      "path": "new-game-preview/pippi.t3x",
+      "path": "graphics/ui/naming/pippi.t3x",
       "rows": 20,
       "width": 250
     },
     {
       "columns": 10,
       "height": 740,
-      "path": "new-game-preview/teddy.t3x",
+      "path": "graphics/ui/naming/teddy.t3x",
       "rows": 20,
       "width": 230
     },
     {
       "columns": 1,
       "height": 19,
-      "path": "new-game-preview/favorite_food.t3x",
+      "path": "graphics/ui/naming/favorite_food.t3x",
       "rows": 1,
       "width": 18
     }

@@ -15,7 +15,7 @@ def main():
     for p,digest in frozen.items():
         if sha(ROOT/p)!=digest: raise SystemExit('Frozen input changed: '+p)
     build=ROOT/'build/gpu-span-experiment';report=ROOT/'reports/gpu-span-experiment';build.mkdir(parents=True,exist_ok=True);report.mkdir(parents=True,exist_ok=True)
-    assets=['data/doll-entry.encbattle','doll-preview/doll-background.bpx','doll-preview/doll-palette.bpx']
+    assets=['data/doll-entry.encbattle','graphics/battle/doll/doll-background.bpx','graphics/battle/doll/doll-palette.bpx']
     for p in assets:
         dest=build/'romfs'/p;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/'romfs'/p,dest)
     elf=build/'gpu-span-benchmark.elf';smdh=build/'gpu-span-benchmark.smdh';pending=build/'gpu-span-benchmark.pending.3dsx';output=build/'gpu-span-benchmark.3dsx'

@@ -61,7 +61,7 @@ def main() -> None:
                   timestamp_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
                   platform=platform.platform(), compiler=subprocess.check_output([args.compiler, '--version'], text=True).splitlines()[0],
                   build_command=shlex.join(command), sanitizer=args.sanitize, leak_sanitizer=False if args.sanitize else None,
-                  sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [args.reference, ROOT / 'include/encore/background_kernel.hpp', ROOT / 'tests/background_kernel_tests.cpp', Path(__file__).resolve(), ROOT / 'romfs/data/opening.encbattle', ROOT / 'romfs/battle-preview/background.bpx']},
+                  sha256={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [args.reference, ROOT / 'include/encore/background_kernel.hpp', ROOT / 'tests/background_kernel_tests.cpp', Path(__file__).resolve(), ROOT / 'romfs/data/opening.encbattle', ROOT / 'romfs/graphics/battle/lamp/background.bpx']},
                   results=results)
     if args.arm_compiler:
         probe = build / 'background-mapped-arm.cpp'

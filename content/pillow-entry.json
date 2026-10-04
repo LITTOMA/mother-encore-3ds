@@ -891,7 +891,7 @@
       "world_enemy": {
         "columns": 4,
         "height": 22,
-        "path": "pillow-preview/pillow-world.t3x",
+        "path": "graphics/battle/pillow/pillow-world.t3x",
         "rows": 1,
         "sha256": "faf7872097617c11b47b78d9943357d86578dae5a716076f7424412123cbba80",
         "width": 68
@@ -899,7 +899,7 @@
       "world_player": {
         "columns": 10,
         "height": 580,
-        "path": "actor-preview/ninten-main.t3x",
+        "path": "graphics/actors/ninten-main.t3x",
         "rows": 20,
         "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
         "width": 310
@@ -1025,7 +1025,7 @@
   },
   "entry_bindings": {
     "path": "content/battle-entry-bindings.json",
-    "sha256": "861827a553ead6f2571f44d93c701571c644bc729b9817007603e53983603ad8"
+    "sha256": "cd8b34f7cb29736d008344649a3ccfcb51af8fc775b31da148715e2d163ee833"
   },
   "game_version": "0.4.1.0",
   "kind": "encore.native-battle-entry.source-ir",
@@ -1325,7 +1325,7 @@
     "usable_skills": []
   },
   "presentation": {
-    "asset_receipt_path": "romfs/pillow-preview/source.json",
+    "asset_receipt_path": "content/asset-receipts/graphics/battle/pillow/source.json",
     "asset_recipe_path": "content/pillow-entry.json",
     "assets": {
       "background": {
@@ -1338,7 +1338,7 @@
           1
         ],
         "kind": "indexed",
-        "output": "pillow-preview/pillow-background.bpx",
+        "output": "graphics/battle/pillow/pillow-background.bpx",
         "source": "Graphics/Battle BGS/pillow.png",
         "texture_size": [
           176,
@@ -1398,7 +1398,7 @@
           1
         ],
         "kind": "texture",
-        "output": "pillow-preview/pillow-enemy.t3x",
+        "output": "graphics/battle/pillow/pillow-enemy.t3x",
         "source": "Graphics/Battle Sprites/pillow.png",
         "texture_size": [
           36,

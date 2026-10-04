@@ -39,7 +39,7 @@ def main() -> None:
         candidate = guarded_reference if args.candidate == "guarded" else ROOT / ("tests/baby_background_block_prototype.hpp" if args.candidate == "blocks" else "tests/baby_background_combined_prototype.hpp" if args.candidate == "combined" else "tests/baby_background_inline_prototype.hpp")
     staged = build / "romfs"
     build.mkdir(parents=True, exist_ok=True)
-    paths = ["data/doll-entry.encbattle", "doll-preview/doll-background.bpx", "doll-preview/doll-palette.bpx"]
+    paths = ["data/doll-entry.encbattle", "graphics/battle/doll/doll-background.bpx", "graphics/battle/doll/doll-palette.bpx"]
     for path in paths:
         target = staged / path
         target.parent.mkdir(parents=True, exist_ok=True)

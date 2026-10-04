@@ -24,6 +24,7 @@ from tools.doll_dialogue import PIN, sha, require
 from tools.extract_battle_entry import Extractor, node, properties, one, animation
 from tools.phone_dialogue import write_json
 from tools.upstream import safe_path
+from tools.asset_receipts import receipt_path, receipt_entries
 from tools import phone_presentation_bindings as presentation
 
 HOUSE = 'Maps/podunk/Nintens House.tscn'
@@ -37,7 +38,7 @@ SOURCES = ['LICENSE', HOUSE, SCENE, 'Maps/Testing/phone.gd', 'Scripts/Main/Inter
            'Scripts/Main/CutsceneArea.gd', 'Nodes/Reusables/CutsceneArea.tscn',
            'Scripts/Main/Flag Landmarks.gd', 'Scripts/global/global.gd',
            *[p for asset in [TEXTURE, RING_SOUND, HANGUP_SOUND] for p in [asset, asset + '.import']]]
-OUT = ROOT / 'romfs/phone-preview'
+OUT = ROOT / 'romfs/graphics/ui/phone'
 IR = ROOT / 'content/phone-stage/presentation.json'
 RECIPE = ROOT / 'content/phone-stage/assets.json'
 REVIEW = ROOT / 'compatibility/reviews/phone-presentation.json'
@@ -191,7 +192,7 @@ def compile_assets(root, tex3ds, out=OUT):
     with Image.open(source) as image:
         require(image.format == 'PNG' and image.size == (resource['width'], resource['height']), 'Invalid original phone PNG')
     subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(out / filename), str(source)], check=True)
-    write_json(out / 'source.json', dict(schema=1, recipe=recipe, tex3ds_sha256=sha(tex3ds),
+    write_json(receipt_path(out, ROOT), dict(schema=1, recipe=recipe, tex3ds_sha256=sha(tex3ds),
         outputs={filename: dict(bytes=(out / filename).stat().st_size, sha256=sha(out / filename))}))
 
 
@@ -205,10 +206,10 @@ def verify(root=ROOT, out=OUT):
     require(review['schema'] == 1 and review['commit'] == PIN and review['whole_handler_approved'] is False
             and review['sources'] == ir['sources'] and review['ir_sha256'] == sha(root / IR.relative_to(ROOT)),
             'Unreviewed phone presentation receipt')
-    receipt = json.loads((out / 'source.json').read_text())
+    receipt = json.loads((receipt_path(out, ROOT)).read_text())
     require(set(receipt) == {'schema', 'recipe', 'tex3ds_sha256', 'outputs'} and receipt['schema'] == 1
             and receipt['recipe'] == recipe and set(receipt['outputs']) == {Path(r['path']).name for r in ir['resources']}
-            and {p.name for p in out.iterdir()} == set(receipt['outputs']) | {'source.json'}, 'Stale/missing/unexpected phone assets')
+            and {p.name for p in out.iterdir()} == set(receipt['outputs']) |receipt_entries(out, ROOT), 'Stale/missing/unexpected phone assets')
     for name, record in receipt['outputs'].items():
         path = safe_path(out, name)
         require(set(record) == {'bytes', 'sha256'} and sha(path) == record['sha256']

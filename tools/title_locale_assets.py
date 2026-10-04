@@ -48,7 +48,7 @@ def extract():
             source=translated[0][6:];size=ex.png_size(source);ex.data(source+'.import')
             require(all(0<v<=1024 for v in size),'Title remap dimensions exceed renderer')
             for resource in (normal,selected):
-                resources.append(dict(locale=locale,base_path=resource['path'],path='title-locales/'+locale+'/'+Path(resource['path']).name,source=source,width=size[0],height=size[1],flash=resource['flash']))
+                resources.append(dict(locale=locale,base_path=resource['path'],path='graphics/ui/title/'+locale+'/'+Path(resource['path']).name,source=source,width=size[0],height=size[1],flash=resource['flash']))
     require(len(resources)==8 and len({r['path'] for r in resources})==8,'Title remap coverage changed')
     base_outputs={r['path']:sha(SOURCE_ROOT/'romfs'/r['path']) for r in base['resources']}
     return ex,dict(schema=1,commit=ex.lock['commit'],fallback=fallback,sources=ex.sources,

@@ -22,7 +22,7 @@
     "Audio/Sound effects/phonehangup.wav": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145",
     "Audio/Sound effects/phonehangup.wav.import": "fdbe75f6e2df204ccc6bd2fa775982d96d8d5a6ce5cbf91517e53a3fbb2b78a4"
   },
-  "ir_sha256": "bebe9e2e48dc38cfa62032cca790be2e57b0c19b5409babd9bd4ea3529cb601b",
+  "ir_sha256": "baf161acb30d6e9947c3aea13703c03ef169072c150244e6c528b0ffb32f84ca",
   "scope": "Original house Phone InteractDialog geometry, four-frame atlas, idle/ring tracks, ordered dispatch and Carol areas",
   "semantics": [
     "House root override replaces reusable root -4Y; no additive root offset",

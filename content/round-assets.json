@@ -47,7 +47,7 @@
         15,
         12
       ],
-      "output": "round-preview/party.t3x"
+      "output": "graphics/battle/round/party.t3x"
     },
     {
       "id": 2,
@@ -65,7 +65,7 @@
         1,
         1
       ],
-      "output": "round-preview/enemy.t3x"
+      "output": "graphics/battle/round/enemy.t3x"
     },
     {
       "id": 3,
@@ -83,7 +83,7 @@
         3,
         1
       ],
-      "output": "round-preview/bash.t3x"
+      "output": "graphics/battle/round/bash.t3x"
     },
     {
       "id": 4,
@@ -101,7 +101,7 @@
         1,
         1
       ],
-      "output": "round-preview/pointer.t3x"
+      "output": "graphics/battle/round/pointer.t3x"
     },
     {
       "id": 5,
@@ -119,7 +119,7 @@
         26,
         1
       ],
-      "output": "round-preview/numbers.t3x"
+      "output": "graphics/battle/round/numbers.t3x"
     },
     {
       "id": 6,
@@ -137,7 +137,7 @@
         1,
         1
       ],
-      "output": "round-preview/miss.t3x"
+      "output": "graphics/battle/round/miss.t3x"
     },
     {
       "id": 7,
@@ -155,7 +155,7 @@
         1,
         1
       ],
-      "output": "round-preview/box.t3x"
+      "output": "graphics/battle/round/box.t3x"
     },
     {
       "id": 8,
@@ -173,7 +173,7 @@
         3,
         2
       ],
-      "output": "round-preview/smash.t3x"
+      "output": "graphics/battle/round/smash.t3x"
     },
     {
       "id": 9,
@@ -191,7 +191,7 @@
         3,
         1
       ],
-      "output": "round-preview/dialogue_cursor.t3x"
+      "output": "graphics/battle/round/dialogue_cursor.t3x"
     },
     {
       "id": 10,
@@ -209,7 +209,7 @@
         1,
         6
       ],
-      "output": "round-preview/victory.t3x"
+      "output": "graphics/battle/round/victory.t3x"
     },
     {
       "id": 11,
@@ -227,7 +227,7 @@
         10,
         20
       ],
-      "output": "round-preview/world_party.t3x"
+      "output": "graphics/battle/round/world_party.t3x"
     }
   ]
 }

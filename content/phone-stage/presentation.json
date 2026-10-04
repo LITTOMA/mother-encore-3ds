@@ -28,7 +28,7 @@
       "id": 1,
       "role": "phone",
       "source": "Graphics/Character Sprites/Npcs/misc/Phone/main.png",
-      "path": "phone-preview/phone.t3x",
+      "path": "graphics/ui/phone/phone.t3x",
       "kind": 1,
       "width": 76,
       "height": 22,

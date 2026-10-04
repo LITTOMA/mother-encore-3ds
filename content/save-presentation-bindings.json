@@ -144,15 +144,15 @@
     ],
     "eb_top": -1,
     "eb_bottom": -1,
-    "resource_root": "save-preview/",
+    "resource_root": "graphics/ui/save/",
     "resource_suffix": ".t3x",
     "card_name_prefix": "card-",
     "confirm_name_prefix": "confirm-",
     "cursor_name": "cursor",
     "arrow_name": "arrow",
     "icon_name_prefix": "icon-",
-    "font_path": "save-preview/bottle-font.t3x",
-    "outline_path": "save-preview/bottle-outline.t3x",
+    "font_path": "graphics/ui/save/bottle-font.t3x",
+    "outline_path": "graphics/ui/save/bottle-outline.t3x",
     "right_anchor_layouts": [
       9,
       10

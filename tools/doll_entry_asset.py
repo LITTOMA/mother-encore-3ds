@@ -15,11 +15,12 @@ sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'tools'))
 from tools.extract_battle_entry import Extractor, require, properties, one
 from tools.battle_assets import encode_indexed, decode_indexed, verify as verify_common_assets
 from tools.upstream import read_json, write_json
+from tools.asset_receipts import receipt_path, receipt_entries
 from tools import native_battle
 IR_PATH=ROOT/'content/doll-entry.json'
-OUT=ROOT/'romfs/doll-preview'
+OUT=ROOT/'romfs/graphics/battle/doll'
 PACK=ROOT/'romfs/data/doll-entry.encbattle'
-RECEIPT=OUT/'source.json'
+RECEIPT=receipt_path(OUT, ROOT)
 PIN='7d9246600fffe518408f5830d4848635019005a3'
 EXTRA_ART=[('background','Graphics/Battle BGS/baby.png','doll-background.bpx','indexed'),('enemy','Graphics/Battle Sprites/doll.png','doll-enemy.t3x','texture'),('background-palette','Graphics/Battle BGS/baby_pal.png','doll-palette.bpx','indexed')]
 
@@ -36,12 +37,12 @@ def extract():
  ir['entry']['can_run_explanation']='DialogueBox._end_dialogue explicitly calls uiManager.start_battle(0,false,...) for queued encounters'
  size=ex.png_size('Graphics/Battle Sprites/doll.png');vp=ir['viewport']
  ir['enemy'].update(id='doll',data=doll,pool_exp=doll['exp'],pool_cash=doll['cash'],sprite_size=size,sprite_center=[vp['width']/2,147/2],sprite_position=[vp['width']/2-size[0]/2,147/2-size[1]/2])
- ir['presentation'].update(asset_recipe_path='content/doll-entry.json',asset_receipt_path='romfs/doll-preview/source.json')
+ ir['presentation'].update(asset_recipe_path='content/doll-entry.json',asset_receipt_path='content/asset-receipts/graphics/battle/doll/source.json')
  for row in csv.reader(io.StringIO(ex.text('Translations/TranslatedText/battlers - sheet.csv'))):
   if row and row[0] in ['DOLL_NAME','DOLL_DESC','DOLL_ART']:ir['presentation']['translations_en'][row[0]]=row[1]
  for name,path,output,kind in EXTRA_ART:
   imsize=ex.png_size(path);ex.data(path+'.import')
-  ir['presentation']['assets'][name]={'source':path,'texture_size':imsize,'grid':[1,1],'frame_size':imsize,'output':'doll-preview/'+output,'kind':kind}
+  ir['presentation']['assets'][name]={'source':path,'texture_size':imsize,'grid':[1,1],'frame_size':imsize,'output':'graphics/battle/doll/'+output,'kind':kind}
  text=ex.text('Graphics/Battle BGS/baby.bbg')
  layers=[{'index':int(m[1]),'properties':properties(m[2])} for m in re.finditer(r'^\[Layer (\d+)\]\s*\n(.*?)(?=^\[|\Z)',text,re.M|re.S)]
  require([l['index'] for l in layers]==[0,1],'Unknown Baby layer count')
@@ -58,11 +59,11 @@ def extract():
  ir['background']['compatibility_policy']={'kind':'fixed_palette_row_for_undefined_divisor','fixed_palette_row':0,'review':'reports/doll-background-reference/review.json','review_sha256':sha(ROOT/'reports/doll-background-reference/review.json'),'scope':'Matches pinned original Godot3.6.2 GLES2 llvmpipe observations; undefined arithmetic on other backends is not portable'}
  ir['audio'].update(encounter_audio_id=1002,encounter_source=boss)
  ir['audio']['overworld_battle_music_note']='Doll music field empty; existing Poltergeist overworld audio remains; Boss encounter jingle is separate'
- receipt=read_json(ROOT/'romfs/house-preview/source.json');doll_resource=next(r for r in receipt['resources'] if r['role']=='doll')
- actor=read_json(ROOT/'romfs/actor-preview/source.json');texture=actor['recipe']
+ receipt=read_json(ROOT/'content/asset-receipts/graphics/ui/house/source.json');doll_resource=next(r for r in receipt['resources'] if r['role']=='doll')
+ actor=read_json(ROOT/'content/asset-receipts/graphics/actors/source.json');texture=actor['recipe']
  for src in ['Graphics/Character Sprites/Npcs/1dir/doll.png','Graphics/Character Sprites/Ninten/main.png','LICENSE']:ex.data(src)
  def resource(r):return {k:r[k] for k in ['path','width','height','columns','rows','sha256']}
- ir['binding']={'stable_id':2,'player_instance':0,'enemy_instance':2,'world_resources':{'world_player':{'path':'actor-preview/ninten-main.t3x','width':texture['size'][0],'height':texture['size'][1],'columns':texture['grid'][0],'rows':texture['grid'][1],'sha256':actor['outputs']['ninten-main.t3x']['sha256']},'world_enemy':resource(doll_resource)}}
+ ir['binding']={'stable_id':2,'player_instance':0,'enemy_instance':2,'world_resources':{'world_player':{'path':'graphics/actors/ninten-main.t3x','width':texture['size'][0],'height':texture['size'][1],'columns':texture['grid'][0],'rows':texture['grid'][1],'sha256':actor['outputs']['ninten-main.t3x']['sha256']},'world_enemy':resource(doll_resource)}}
  ir['party']['runtime_state']='The caller supplies surviving party HP/PP/EXP from the current world; these baseline rows do not heal/reset after Lamp'
  ir['selectors']['background']='baby.bbg all fields, exact default shader ordering, source omitted palette count0; no inferred palette cycling period'
  ir['licence_review']='Pinned LICENSE permits assets in game-related forks/modifications/translations; original art retained only in Mother: Encore port with original conditions'
@@ -87,10 +88,10 @@ def validate(ir):
 
 def compile_art(ir,tex3ds):
  validate(ir);verify_common_assets(ROOT/'upstream/MOTHER-Encore')
- base=read_json(ROOT/'romfs/battle-preview/source.json');receipt=copy.deepcopy(base);OUT.mkdir(parents=True,exist_ok=True)
+ base=read_json(ROOT/'content/asset-receipts/graphics/battle/lamp/source.json');receipt=copy.deepcopy(base);OUT.mkdir(parents=True,exist_ok=True)
  for name,path,filename,kind in EXTRA_ART:
   spec=ir['presentation']['assets'][name];source=ROOT/'upstream/MOTHER-Encore'/path;target=OUT/filename
-  require(spec['source']==path and spec['kind']==kind and spec['output']=='doll-preview/'+filename,'Unreviewed asset output')
+  require(spec['source']==path and spec['kind']==kind and spec['output']=='graphics/battle/doll/'+filename,'Unreviewed asset output')
   with Image.open(source) as im:
    image=im.convert('RGBA');require(list(image.size)==spec['texture_size'],'Changed Doll dimensions')
   if kind=='indexed':target.write_bytes(encode_indexed(image,(1,1)));decode_indexed(target.read_bytes())

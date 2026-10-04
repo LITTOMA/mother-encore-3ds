@@ -58,7 +58,7 @@
         5,
         4
       ],
-      "output": "house-preview/carol.t3x"
+      "output": "graphics/ui/house/carol.t3x"
     },
     {
       "id": 2,
@@ -72,7 +72,7 @@
         1,
         1
       ],
-      "output": "house-preview/shadow.t3x"
+      "output": "graphics/ui/house/shadow.t3x"
     },
     {
       "id": 3,
@@ -86,7 +86,7 @@
         1,
         1
       ],
-      "output": "house-preview/dialogue_box.t3x"
+      "output": "graphics/ui/house/dialogue_box.t3x"
     },
     {
       "id": 4,
@@ -100,7 +100,7 @@
         1,
         1
       ],
-      "output": "house-preview/name_box.t3x"
+      "output": "graphics/ui/house/name_box.t3x"
     },
     {
       "id": 5,
@@ -114,7 +114,7 @@
         3,
         1
       ],
-      "output": "house-preview/cursor.t3x"
+      "output": "graphics/ui/house/cursor.t3x"
     },
     {
       "id": 6,
@@ -128,7 +128,7 @@
         5,
         4
       ],
-      "output": "house-preview/mimmie.t3x"
+      "output": "graphics/ui/house/mimmie.t3x"
     },
     {
       "id": 7,
@@ -142,7 +142,7 @@
         4,
         1
       ],
-      "output": "house-preview/doll.t3x"
+      "output": "graphics/ui/house/doll.t3x"
     },
     {
       "id": 8,
@@ -156,7 +156,7 @@
         1,
         1
       ],
-      "output": "house-preview/door.t3x"
+      "output": "graphics/ui/house/door.t3x"
     },
     {
       "id": 9,
@@ -170,7 +170,7 @@
         1,
         1
       ],
-      "output": "house-preview/door_basement.t3x"
+      "output": "graphics/ui/house/door_basement.t3x"
     },
     {
       "id": 10,
@@ -184,7 +184,7 @@
         5,
         4
       ],
-      "output": "house-preview/minnie.t3x"
+      "output": "graphics/ui/house/minnie.t3x"
     }
   ]
 }

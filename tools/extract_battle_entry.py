@@ -233,7 +233,7 @@ class Extractor:
                      'sprite_size':enemy_size,'sprite_center':[viewport[0]/2,147/2],'sprite_position':[viewport[0]/2-enemy_size[0]/2,147/2-enemy_size[1]/2],
                      'initial_hidden':True,'initial_appear_scale':[0.3,0.2],'initial_flash_modifier':1.0,'final_scale':[1,1]},
             'animations':transitions,
-            'presentation':{'asset_recipe_path':'content/battle-assets.json','asset_receipt_path':'romfs/battle-preview/source.json','assets':assets,'scene_nodes':all_layout,'plate_nodes':plate_nodes,'plain_palette_hex':flavor,'translations_en':translations,
+            'presentation':{'asset_recipe_path':'content/battle-assets.json','asset_receipt_path':'content/asset-receipts/graphics/battle/lamp/source.json','assets':assets,'scene_nodes':all_layout,'plate_nodes':plate_nodes,'plain_palette_hex':flavor,'translations_en':translations,
                             **{key:projected[key]for key in ('derived_layout','party_sprite','party_transition','enemy_transition')}},
             'menu':projected['menu'],
             'audio':{'encounter_audio_id':1001,'encounter_source':encounter,'encounter_loop':False,

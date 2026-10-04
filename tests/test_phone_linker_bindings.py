@@ -14,7 +14,7 @@ class PhoneLinkerBindingTests(unittest.TestCase):
   c=copy.deepcopy(self.c);change(c)
   with self.assertRaises(ValueError):recipe.load(self.root,c)
  def test_audio_ir_and_existing_binary_exact(self):
-  self.assertEqual(self.audio,linker.build_audio(self.root,self.room));raw=(self.root/'romfs/data/opening.encaudio').read_bytes();parsed=audio_asset.parse_bank(raw)
+  self.assertEqual(self.audio,linker.build_audio(self.root,self.room));raw=(self.root/'romfs/sound/banks/opening.encaudio').read_bytes();parsed=audio_asset.parse_bank(raw)
   self.assertEqual(raw,audio_asset.build_bank(parsed['assets'],parsed['master_db'],parsed['silence_db']))
  def test_actual_room_append_and_commands_exact(self):
   fresh,_=Extractor(self.root).run();self.assertEqual(self.room['strings'],fresh['strings']);self.assertEqual(self.room['sections'],fresh['sections']);self.assertEqual({'None':65535,'Ninten':0,'Carol':5},self.actors)

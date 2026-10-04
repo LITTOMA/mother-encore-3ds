@@ -9,7 +9,7 @@ from tools.ui_presentation_bindings import load as load_ui_bindings
 from tools.extract_battle_entry import Extractor,require,one,node,properties
 from tools.upstream import read_json,write_json
 from tools.menu_audio_binding import source_sound
-RECIPE=ROOT/'content/native-save-menu.json';OUT=ROOT/'romfs/save-preview';PACK=ROOT/'romfs/data/opening.encsavemenu';REPORT=ROOT/'reports/save-menu'
+RECIPE=ROOT/'content/native-save-menu.json';OUT=ROOT/'romfs/graphics/ui/save';PACK=ROOT/'romfs/data/opening.encsavemenu';REPORT=ROOT/'reports/save-menu'
 
 def checked_bindings():return load_ui_bindings('save-presentation-bindings.json',BINDING_SCHEMA,ROOT,expected_checks=44,expected_contracts=123)
 BINDING_SCHEMA={'source_0':str,'source_1':str,'source_2':str,'source_3':str,'source_4':str,'source_5':str,'source_6':str,'source_7':str,'source_8':str,'source_9':str,'source_10':str,'source_11':str,'source_12':str,'source_13':str,'source_14':str,'source_15':str,'source_16':str,'source_17':str,'source_18':str,'source_19':str,'source_20':str,'node_0':str,'node_1':str,'node_2':str,'node_3':str,'node_4':str,'node_5':str,'node_6':str,'node_7':str,'node_8':str,'node_9':str,'translation_keys':[str,str,str,str,str,str,str],'card_layout_nodes':[str,str,str,str,str,str,str,str,str],'viewports':[int,int,int,int],'body_insets':[int,int],'cursor_size':[float,float],'icons':[str,str,str,str,str],'icon_root':str,'icon_suffix':str,'arrow_grid':[int,int],'font_recipe':{'size':int,'first':int,'last':int,'cell':[int,int],'columns':int,'outline':int,'char_spacing':int,'space_spacing':int},'atlas':[int,int],'glyph_inset':[int,int],'old_palette':[str,str,str,str,str],'text_color':str,'time_color':str,'outline_color':str,'scroll':float,'sounds':[str,str,str],'eb_top':int,'eb_bottom':int,'resource_root':str,'resource_suffix':str,'card_name_prefix':str,'confirm_name_prefix':str,'cursor_name':str,'arrow_name':str,'icon_name_prefix':str,'font_path':str,'outline_path':str,'right_anchor_layouts':[int,int]}
@@ -151,7 +151,7 @@ def assets(tex3ds,godot):
    if native<=0: continue
    draw.text((x+b['glyph_inset'][0],y+b['glyph_inset'][1]),char,font=face,fill='white',stroke_width=j,stroke_fill='white')
   glyphs.append(dict(codepoint=cp,u=x,v=y,width=b['font_recipe']['cell'][0],height=b['font_recipe']['cell'][1],advance=max(0,native),offset_x=-b['glyph_inset'][0],offset_y=ref['bottle']['ascent']-face.getmetrics()[0]-b['glyph_inset'][1]))
- r['glyphs']=glyphs;battle=read_json(ROOT/'romfs/battle-preview/source.json');r['ebmain_codepoints']=[g['codepoint']for g in battle['glyphs']if g['advance']>0];r['dependencies']={'romfs/battle-preview/font.t3x':sha(ROOT/'romfs/battle-preview/font.t3x'),'romfs/battle-preview/source.json':sha(ROOT/'romfs/battle-preview/source.json')}
+ r['glyphs']=glyphs;battle=read_json(ROOT/'content/asset-receipts/graphics/battle/lamp/source.json');r['ebmain_codepoints']=[g['codepoint']for g in battle['glyphs']if g['advance']>0];r['dependencies']={'romfs/graphics/battle/lamp/font.t3x':sha(ROOT/'romfs/graphics/battle/lamp/font.t3x'),'content/asset-receipts/graphics/battle/lamp/source.json':sha(ROOT/'content/asset-receipts/graphics/battle/lamp/source.json')}
  old=b['old_palette'];outputs={}
  for i,a in enumerate(r['resources']):
   if i in [r['font'],r['outline']]:image=images[i-r['font']]
@@ -202,7 +202,7 @@ def verify_recipe(r):
  for i,cp in enumerate(range(b['font_recipe']['first'],b['font_recipe']['last']+1)):
   expected.append(dict(codepoint=cp,u=i%b['font_recipe']['columns']*b['font_recipe']['cell'][0],v=i//b['font_recipe']['columns']*b['font_recipe']['cell'][1],width=b['font_recipe']['cell'][0],height=b['font_recipe']['cell'][1],advance=max(0,ref['bottle']['advances'][i]),offset_x=-b['glyph_inset'][0],offset_y=ref['bottle']['ascent']-face.getmetrics()[0]-b['glyph_inset'][1]))
  require(r['glyphs']==expected,'Save menu glyph geometry/advances mismatch')
- battle=read_json(ROOT/'romfs/battle-preview/source.json');require(r['ebmain_codepoints']==[g['codepoint']for g in battle['glyphs']if g['advance']>0],'Save menu EBMain domain mismatch')
+ battle=read_json(ROOT/'content/asset-receipts/graphics/battle/lamp/source.json');require(r['ebmain_codepoints']==[g['codepoint']for g in battle['glyphs']if g['advance']>0],'Save menu EBMain domain mismatch')
 
 def stage_files(source_root):
     global b;b=checked_bindings()

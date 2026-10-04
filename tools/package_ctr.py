@@ -31,6 +31,8 @@ def main():
         if not smdh.is_file() or smdh.read_bytes()[:4]!=b'SMDH':raise RuntimeError('Missing/invalid SMDH')
         from resource_catalog import stage_files as catalog_files
         catalog_files(romfs)
+        from romfs_layout import checked_inventory
+        checked_inventory(romfs)
         banner=ROOT/'build/ctr/banner.bin';banner.parent.mkdir(parents=True,exist_ok=True)
         subprocess.run([tool('bannertool'),'makebanner','-i',str(ROOT/'assets/banner.png'),'-a',str(ROOT/'assets/silence.wav'),'-o',str(banner)],check=True)
         extension={'cci':'3ds','cia':'cia','cxi':'cxi'}[a.format]

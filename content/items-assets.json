@@ -10,7 +10,7 @@
       ],
       "id": 1,
       "name": "box",
-      "output": "battle-preview/box.t3x",
+      "output": "graphics/battle/lamp/box.t3x",
       "reuse": true,
       "size": [
         24,
@@ -25,7 +25,7 @@
       ],
       "id": 2,
       "name": "cursor",
-      "output": "round-preview/dialogue_cursor.t3x",
+      "output": "graphics/battle/round/dialogue_cursor.t3x",
       "reuse": true,
       "size": [
         24,
@@ -40,7 +40,7 @@
       ],
       "id": 3,
       "name": "cap",
-      "output": "items-preview/cap.t3x",
+      "output": "graphics/ui/items/cap.t3x",
       "reuse": false,
       "size": [
         20,
@@ -61,7 +61,7 @@
       ],
       "id": 4,
       "name": "equipped",
-      "output": "items-preview/equipped.t3x",
+      "output": "graphics/ui/items/equipped.t3x",
       "reuse": false,
       "size": [
         26,
@@ -76,7 +76,7 @@
       ],
       "id": 5,
       "name": "icon_frame",
-      "output": "items-preview/icon-frame.t3x",
+      "output": "graphics/ui/items/icon-frame.t3x",
       "reuse": false,
       "size": [
         7,
@@ -91,7 +91,7 @@
       ],
       "id": 6,
       "name": "scroll_bg",
-      "output": "items-preview/scroll-bg.t3x",
+      "output": "graphics/ui/items/scroll-bg.t3x",
       "reuse": false,
       "size": [
         4,
@@ -106,7 +106,7 @@
       ],
       "id": 7,
       "name": "scroll_thumb",
-      "output": "items-preview/scroll-thumb.t3x",
+      "output": "graphics/ui/items/scroll-thumb.t3x",
       "reuse": false,
       "size": [
         6,
@@ -121,7 +121,7 @@
       ],
       "id": 8,
       "name": "hint_box",
-      "output": "items-preview/hint-box.t3x",
+      "output": "graphics/ui/items/hint-box.t3x",
       "reuse": false,
       "size": [
         9,
@@ -137,7 +137,7 @@
       ],
       "id": 9,
       "name": "hint_glyph",
-      "output": "items-preview/hint-glyph.t3x",
+      "output": "graphics/ui/items/hint-glyph.t3x",
       "reuse": false,
       "size": [
         16,
@@ -152,7 +152,7 @@
       ],
       "id": 10,
       "name": "font",
-      "output": "battle-preview/font.t3x",
+      "output": "graphics/battle/lamp/font.t3x",
       "reuse": true,
       "size": [
         384,
@@ -167,7 +167,7 @@
       ],
       "id": 11,
       "name": "cursor_up",
-      "output": "items-preview/cursor_up.t3x",
+      "output": "graphics/ui/items/cursor_up.t3x",
       "quarter_turns": 1,
       "reuse": false,
       "size": [
@@ -183,7 +183,7 @@
       ],
       "id": 12,
       "name": "cursor_down",
-      "output": "items-preview/cursor_down.t3x",
+      "output": "graphics/ui/items/cursor_down.t3x",
       "quarter_turns": 3,
       "reuse": false,
       "size": [

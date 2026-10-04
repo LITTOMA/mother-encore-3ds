@@ -18,7 +18,7 @@
       "derivation": "Objects flags=0 uses source Y-sort origin; Above flags=1 is the fixed foreground pass; atlas UV = region position + cell atlas coordinate * tile size; original RGBA pixels and offsets retained"
     },
     "Resource/Overlay/MapDraw": {
-      "source": "romfs/{actor-preview,house-layers,map-preview}/source.json",
+      "source": "content/asset-receipts/graphics/{actors,world/house-layers,world/house-map}/source.json",
       "selector": "reviewed source layouts and asset-byte SHA256; PNG IHDR dimensions"
     },
     "Clip[0:32]/Key/AnimationBinding": {

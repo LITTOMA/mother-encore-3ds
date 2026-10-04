@@ -66,6 +66,6 @@ $(APP).elf: $(OBJECTS)
 $(APP).smdh: assets/icon.png
 	@mkdir -p dist
 	$(TOOLS)/smdhtool --create "Encore Native Preview" "Mother Encore port development" "Encore Native contributors" $< $@
-$(APP).3dsx: $(APP).elf $(APP).smdh stage-romfs $(wildcard romfs/map-preview/*) $(wildcard romfs/actor-preview/*) $(wildcard romfs/house-layers/*) $(wildcard romfs/data/*)
+$(APP).3dsx: $(APP).elf $(APP).smdh stage-romfs $(wildcard romfs/graphics/world/house-map/*) $(wildcard romfs/graphics/actors/*) $(wildcard romfs/graphics/world/house-layers/*) $(wildcard romfs/data/*)
 	$(TOOLS)/3dsxtool $(APP).elf $@ --smdh=$(APP).smdh --romfs=$(ROOT)/build/ctr/native-romfs
 -include $(OBJECTS:.o=.d)

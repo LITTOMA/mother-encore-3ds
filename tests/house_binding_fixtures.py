@@ -16,7 +16,7 @@ def fixtures(output):
  assert bindings.read(output/'bindings.json')==candidate()
  with patch.object(bindings,'IR',output/'bindings.json'):
   changed=extract_house.build(ROOT);assert changed==baseline
-  receipt=bindings.read(ROOT/'romfs/house-preview/source.json');adapter=assets.export_presentation(ROOT/'upstream/MOTHER-Encore',receipt['resources'],write=False)
+  receipt=bindings.read(ROOT/'content/asset-receipts/graphics/ui/house/source.json');adapter=assets.export_presentation(ROOT/'upstream/MOTHER-Encore',receipt['resources'],write=False)
   expected=dict(presentation);expected['parameters']=dict(presentation['parameters']);expected['parameters']['DisplayReference']=[320,180,.75,1];assert adapter==expected
   native_house.verify_sources(changed,adapter,ROOT);blob=native_house.encode(native_house.lower(changed,adapter,ROOT),changed['commit'],changed['schema']);native_house.parse_pack(blob)
  assert blob!=original

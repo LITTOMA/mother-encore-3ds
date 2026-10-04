@@ -283,8 +283,8 @@
     }
   ],
   "dependencies": {
-    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
-    "romfs/round-preview/source.json": "8d0c89c8ab435af3383c12c4766077d328fea091c9b37b34774d8dbe99eb1e41"
+    "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
+    "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c"
   },
   "initial_inventory": [
     {
@@ -1494,7 +1494,7 @@
       "height": 24,
       "id": 1,
       "kind": 1,
-      "path": "battle-preview/box.t3x",
+      "path": "graphics/battle/lamp/box.t3x",
       "rows": 1,
       "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
       "width": 24
@@ -1504,7 +1504,7 @@
       "height": 8,
       "id": 2,
       "kind": 1,
-      "path": "round-preview/dialogue_cursor.t3x",
+      "path": "graphics/battle/round/dialogue_cursor.t3x",
       "rows": 1,
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516",
       "width": 24
@@ -1514,7 +1514,7 @@
       "height": 20,
       "id": 3,
       "kind": 1,
-      "path": "items-preview/cap.t3x",
+      "path": "graphics/ui/items/cap.t3x",
       "rows": 1,
       "sha256": "c348428f72a469e12e0fac00567142d7a4c396197c73c7b28d469c20b52141f7",
       "width": 20
@@ -1524,7 +1524,7 @@
       "height": 7,
       "id": 4,
       "kind": 1,
-      "path": "items-preview/equipped.t3x",
+      "path": "graphics/ui/items/equipped.t3x",
       "rows": 1,
       "sha256": "5055911003e3abe30aa2add0b31da88f47f643b6ea4cef1565f3cf71aeaa8008",
       "width": 8
@@ -1534,7 +1534,7 @@
       "height": 7,
       "id": 5,
       "kind": 1,
-      "path": "items-preview/icon-frame.t3x",
+      "path": "graphics/ui/items/icon-frame.t3x",
       "rows": 1,
       "sha256": "c1264403312908e5f4e4b6a01f351e16e2382b04792aba7248e422f6321d70a0",
       "width": 7
@@ -1544,7 +1544,7 @@
       "height": 4,
       "id": 6,
       "kind": 1,
-      "path": "items-preview/scroll-bg.t3x",
+      "path": "graphics/ui/items/scroll-bg.t3x",
       "rows": 1,
       "sha256": "45de60e183b033c30763ac35c60c571278bfb5342b741cf91f54fdd8b4be4f73",
       "width": 4
@@ -1554,7 +1554,7 @@
       "height": 6,
       "id": 7,
       "kind": 1,
-      "path": "items-preview/scroll-thumb.t3x",
+      "path": "graphics/ui/items/scroll-thumb.t3x",
       "rows": 1,
       "sha256": "41c27a2418f67560bd8758023c6e70295fedaccb14b75146e7c77d07d84d6e92",
       "width": 6
@@ -1564,7 +1564,7 @@
       "height": 9,
       "id": 8,
       "kind": 1,
-      "path": "items-preview/hint-box.t3x",
+      "path": "graphics/ui/items/hint-box.t3x",
       "rows": 1,
       "sha256": "7fe599635657c938405be8493603d1558c4a9ec1c225a0e4d73adf3300434455",
       "width": 9
@@ -1574,7 +1574,7 @@
       "height": 16,
       "id": 9,
       "kind": 1,
-      "path": "items-preview/hint-glyph.t3x",
+      "path": "graphics/ui/items/hint-glyph.t3x",
       "rows": 1,
       "sha256": "63bc7d84e68b8e8496c3511c130f283be78d0adb8ad233b6b61268fc47e6fa7c",
       "width": 16
@@ -1584,7 +1584,7 @@
       "height": 144,
       "id": 10,
       "kind": 1,
-      "path": "battle-preview/font.t3x",
+      "path": "graphics/battle/lamp/font.t3x",
       "rows": 1,
       "sha256": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39",
       "width": 384
@@ -1594,7 +1594,7 @@
       "height": 8,
       "id": 11,
       "kind": 1,
-      "path": "items-preview/cursor_up.t3x",
+      "path": "graphics/ui/items/cursor_up.t3x",
       "rows": 1,
       "sha256": "349b5a185494a7194c460ffab92913ebe682fb04090abcc8ae17b0c1d11777ca",
       "width": 24
@@ -1604,7 +1604,7 @@
       "height": 8,
       "id": 12,
       "kind": 1,
-      "path": "items-preview/cursor_down.t3x",
+      "path": "graphics/ui/items/cursor_down.t3x",
       "rows": 1,
       "sha256": "7ada78c4813f2768cdd48e0e749e25c19f35c9222481804a353c9a2970308ee0",
       "width": 24

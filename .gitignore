@@ -278,6 +278,7 @@ cookies.json
 
 # Upstream-derived PCM is restored from pinned sources, never tracked.
 /romfs/audio/*.pcm
+/romfs/sound/**/*.pcm
 
 # Reviewed additional region-comparison baseline; unknown hashes remain blocked.
 !/reports/github-publication/region-baseline-review.json

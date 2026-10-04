@@ -17,6 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.upstream import read_json, write_json, safe_path, git
+from tools.asset_receipts import receipt_path, receipt_entries
 from tools.scene_data import validate as validate_scene
 
 SOURCE = 'reports/m2-scene-reference-reviewed/house-data.json'
@@ -27,7 +28,7 @@ TILESET = 'Tilesets/Interior.tres'
 TEXTURE = 'Graphics/Tilesets/TilNintensHouse.png'
 ABOVE_TEXTURE = 'Graphics/Tilesets/TilPodunkInteriors.png'
 TEXTURES = {'objects': (TEXTURE, 'objects.t3x'), 'above': (ABOVE_TEXTURE, 'above.t3x')}
-OUT = ROOT / 'romfs/house-layers'
+OUT = ROOT / 'romfs/graphics/world/house-layers'
 
 
 def sha(path):
@@ -191,12 +192,12 @@ def compile(root, tex3ds, output=OUT):
     output.mkdir(parents=True, exist_ok=True)
     for source, name in TEXTURES.values():
         subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(output / name), str(safe_path(root, source))], check=True)
-    write_json(output / 'source.json', receipt(root, rows, output))
+    write_json(receipt_path(output, ROOT), receipt(root, rows, output))
 
 
 def verify(root, output=OUT):
     rows = validate(root)
-    require(read_json(output / 'source.json') == receipt(root, rows, output), 'Stale or tampered overlay bundle')
+    require(read_json(receipt_path(output, ROOT)) == receipt(root, rows, output), 'Stale or tampered overlay bundle')
     print('Verified 14 original house Y-sorted overlays and 276 original foreground atlas cells')
 
 

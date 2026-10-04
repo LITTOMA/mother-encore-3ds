@@ -42,7 +42,7 @@
     {
       "id": 7,
       "role": "Audio",
-      "path": "data/opening.encaudio"
+      "path": "sound/banks/opening.encaudio"
     },
     {
       "id": 8,
@@ -112,12 +112,12 @@
     {
       "id": 21,
       "role": "Input",
-      "path": "input/native.encinput"
+      "path": "data/native.encinput"
     },
     {
       "id": 22,
       "role": "LoadingIndicator",
-      "path": "loading-preview/indicator.encload"
+      "path": "data/indicator.encload"
     },
     {
       "id": 256,

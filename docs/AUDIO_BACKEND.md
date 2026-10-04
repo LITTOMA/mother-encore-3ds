@@ -47,10 +47,19 @@ zero-dB Music/SFX buses. Upstream persisted user volume settings are not importe
 
 `tools/audio_asset.py` compiles the external recipe and reviewed imports into:
 
-- `romfs/data/opening.encaudio`: 539-byte ENCAUD01 metadata (three records)
-- Three independent PCM files under `romfs/audio/`, totaling 11212208 bytes
-- `romfs/data/opening-audio-manifest.json`: source/import/PCM fingerprints,
+- `romfs/sound/banks/opening.encaudio`: ENCAUD01 metadata for the integrated opening audio
+- Independent PCM samples under `romfs/sound/music/` and `romfs/sound/effects/`
+- `content/asset-receipts/audio/opening.json`: source/import/PCM fingerprints,
   actual FFmpeg command/version/binary hash, and staging file list
+
+`.encaudio` is this project's checked identity and playback metadata, not an
+audio codec. Sample files contain signed little-endian PCM16, streamed into
+NDSP buffers. Official libctru supports PCM8, PCM16 and DSP ADPCM sample
+encodings; its streaming example uses PCM16. Switching to DSP ADPCM would
+require conversion, coefficient and loop-state validation, and a corresponding
+runtime adapter; this layout change preserves the existing encoding.
+See [libctru sample formats](https://github.com/devkitPro/libctru/blob/master/libctru/include/3ds/ndsp/channel.h)
+and the [official streaming example](https://github.com/devkitPro/3ds-examples/blob/master/audio/streaming/source/main.c).
 
 No audio content, paths, stable IDs, gains or loop positions are C++ constants.
 The existing room Resource table stays unchanged. The CTR request adapter checks

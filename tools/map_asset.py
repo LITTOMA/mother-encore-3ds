@@ -9,6 +9,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.upstream import read_json,write_json,safe_path,git
+from tools.asset_receipts import receipt_path, receipt_entries
 REVIEW=ROOT/'compatibility/reviews/house-background-v0410.json'
 TILES=ROOT/'build/m2/house-background'
 
@@ -61,7 +62,7 @@ def compile_tiles(root: Path,tiles_root: Path,tex3ds: Path)->None:
         if any(tile.get(k)!=v for k,v in wanted.items()):raise ValueError('Tile geometry/order mismatch')
         if tile.get('png')!=f"tile-{wanted['index']:02d}.png":raise ValueError('Unsupported tile file identity')
         if sha(safe_path(tiles_root,tile['png']))!=tile.get('sha256'):raise ValueError('Tile bytes changed; regenerate from source')
-    out=ROOT/'romfs/map-preview';out.mkdir(parents=True,exist_ok=True);outputs={}
+    out=ROOT/'romfs/graphics/world/house-map';out.mkdir(parents=True,exist_ok=True);outputs={}
     for tile in tiles:
         target=out/f"house-{tile['index']:02d}.t3x"
         # This packaged tex3ds documents -b but rejects that short option.
@@ -71,17 +72,17 @@ def compile_tiles(root: Path,tiles_root: Path,tex3ds: Path)->None:
     receipt={'schema':1,'commit':recipe['commit'],'game_version':recipe['game_version'],'recipe':recipe,
         'pixel_format':'RGBA8, no lossy compression, nearest sampling in viewer','tiles':tiles,'outputs':outputs,
         'tex3ds_sha256':sha(tex3ds),'scope':'static opening map background preview; not a playable map'}
-    write_json(out/'source.json',receipt);write_json(ROOT/'reports/m2-map-asset-build.json',receipt)
+    write_json(receipt_path(out, ROOT),receipt);write_json(ROOT/'reports/m2-map-asset-build.json',receipt)
     print('Compiled 15 real texture tiles for 3DS; background preview only, no scene compatibility approval.')
 
 def verify(root: Path,out: Path)->None:
     if not out.exists():raise ValueError("Missing required opening-map assets; run make map-assets")
-    receipt=read_json(out/'source.json');recipe=read_json(REVIEW)
+    receipt=read_json(receipt_path(out, ROOT));recipe=read_json(REVIEW)
     validate_source(root,recipe,read_json(ROOT/'upstream.lock'))
     if receipt.get('schema')!=1 or receipt.get('recipe')!=recipe:raise ValueError('Unreviewed/stale map build receipt')
     outputs=receipt.get('outputs',{})
     if set(outputs)!={f'house-{i:02d}.t3x' for i in range(15)}:raise ValueError('Incomplete map build receipt')
-    if {p.name for p in out.iterdir()}!=set(outputs)|{'source.json'}:raise ValueError('Unexpected map preview files require review')
+    if {p.name for p in out.iterdir()}!=set(outputs)|receipt_entries(out, ROOT):raise ValueError('Unexpected map preview files require review')
     for name,record in outputs.items():
         path=safe_path(out,name)
         if sha(path)!=record.get('sha256') or path.stat().st_size!=record.get('bytes'):raise ValueError('Compiled map asset differs from receipt: '+name)
@@ -94,7 +95,7 @@ def main()->int:
     try:
         if args.action=='prepare':prepare(args.root,args.tiles)
         elif args.action=='compile':compile_tiles(args.root,args.tiles,args.tex3ds)
-        else:verify(args.root,ROOT/'romfs/map-preview')
+        else:verify(args.root,ROOT/'romfs/graphics/world/house-map')
         return 0
     except (OSError,ValueError,KeyError,ImportError,subprocess.CalledProcessError) as error:
         print(f'MAP ASSET ERROR: {error}',file=sys.stderr);return 1

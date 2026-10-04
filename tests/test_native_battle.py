@@ -8,7 +8,7 @@ spec=importlib.util.spec_from_file_location('native_battle',ROOT/'tools/native_b
 class BattleBinaryTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.ir=json.loads((ROOT/'content/native-battle.json').read_text());cls.assets=json.loads((ROOT/'romfs/battle-preview/source.json').read_text());cls.room=(ROOT/'romfs/data/opening.encroom').read_bytes();cls.tables=m.lower(cls.ir,cls.assets,cls.room);cls.blob=m.encode(cls.tables,cls.ir['commit'])
+  cls.ir=json.loads((ROOT/'content/native-battle.json').read_text());cls.assets=json.loads((ROOT/'content/asset-receipts/graphics/battle/lamp/source.json').read_text());cls.room=(ROOT/'romfs/data/opening.encroom').read_bytes();cls.tables=m.lower(cls.ir,cls.assets,cls.room);cls.blob=m.encode(cls.tables,cls.ir['commit'])
  def test_deterministic_external_binary(self):
   self.assertEqual(self.blob,m.encode(m.lower(self.ir,self.assets,self.room),self.ir['commit']));self.assertEqual(self.blob,(ROOT/'romfs/data/opening.encbattle').read_bytes());self.assertEqual(len(m.parse_sections(self.blob)),12)
  def test_all_truncations(self):

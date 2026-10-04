@@ -25,12 +25,14 @@ def embedded_romfs(blob):
 
 def check(project, output):
     import resource_catalog
+    from romfs_layout import checked_inventory
     project, output = Path(project).resolve(), Path(output).resolve()
     output.mkdir(parents=True, exist_ok=True)
     dist, stage = project / 'dist', project / 'build/ctr/native-romfs'
     blob = (dist / 'encore-native.3dsx').read_bytes()
     romfs = embedded_romfs(blob)
     resource_catalog.stage_files(stage)
+    expected = checked_inventory(stage)
     ctrtool = shutil.which('ctrtool')
     if not ctrtool:
         raise ValueError('CTRTool unavailable; CIA extraction cannot be checked')
@@ -49,8 +51,7 @@ def check(project, output):
             raise ValueError('Expected exactly one CIA content')
         extracted = work / 'romfs'
         run('cia-romfs', ['--romfsdir=' + str(extracted), str(contents[0])])
-        expected = {p.relative_to(stage) for p in stage.rglob('*') if p.is_file()}
-        actual = {p.relative_to(extracted) for p in extracted.rglob('*') if p.is_file()}
+        actual = checked_inventory(extracted)
         if actual != expected:
             raise ValueError('CIA RomFS file inventory differs from checked staging')
         for relative in sorted(expected):

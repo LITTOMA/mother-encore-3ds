@@ -92,7 +92,7 @@
     "phone_category": 1,
     "door_origin": 32.0,
     "color": 4294967295,
-    "resource_root": "house-button-prompts-preview/",
+    "resource_root": "graphics/ui/house-button-prompts/",
     "resource_suffix": ".t3x",
     "accept_name": "accept",
     "label": "A",

@@ -1669,6 +1669,6 @@
       2,
       2
     ],
-    "font_manifest": "romfs/battle-preview/source.json"
+    "font_manifest": "content/asset-receipts/graphics/battle/lamp/source.json"
   }
 }

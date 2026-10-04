@@ -28,7 +28,7 @@ class HouseAssetsTests(unittest.TestCase):
             recipe=copy.deepcopy(self.recipe);mutate(recipe)
             with self.assertRaises(ValueError):h.validate_source(self.root,recipe,self.lock)
     def test_source_tracks_and_font_identity(self):
-        resources=h.read_json(h.OUT/'source.json')['resources']
+        resources=h.read_json(h.receipt_path(h.OUT,h.ROOT))['resources']
         with tempfile.TemporaryDirectory() as td:
             dest=Path(td)/'presentation.json';h.export_presentation(self.root,resources,dest)
             data=h.read_json(dest)
@@ -61,7 +61,7 @@ class HouseAssetsTests(unittest.TestCase):
         self.assertEqual(data['parameters']['FontMetrics'],[12,3,11,1])
     def test_missing_or_changed_texture_rejected(self):
         with tempfile.TemporaryDirectory() as td:
-            target=Path(td);receipt=h.read_json(h.OUT/'source.json');h.write_json(target/'source.json',receipt)
+            target=Path(td);receipt=h.read_json(h.receipt_path(h.OUT,h.ROOT));h.write_json(target/'source.json',receipt)
             with self.assertRaises(ValueError):h.verify(self.root,target)
             for name in receipt['outputs']:(target/name).write_bytes(b'invalid')
             with self.assertRaisesRegex(ValueError,'Changed house output'):h.verify(self.root,target)

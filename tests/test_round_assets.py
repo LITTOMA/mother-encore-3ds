@@ -6,7 +6,7 @@ from tools import round_assets as a
 class RoundAssetsTests(unittest.TestCase):
  def fixture(self,root):
   p=root/'atlas.png';im=Image.new('RGBA',(6,4));im.putdata([(i,255-i,i*3,0 if i%3==0 else 255)for i in range(24)]);im.save(p)
-  return dict(schema=1,commit='fixture',game_version='fixture',licence_review='fixture only',sources={'atlas.png':a.sha(p)},resources=[dict(id=1,name='fixture',source='atlas.png',size=[6,4],grid=[3,2],output_grid=[2,3],output='round-preview/fixture.t3x')])
+  return dict(schema=1,commit='fixture',game_version='fixture',licence_review='fixture only',sources={'atlas.png':a.sha(p)},resources=[dict(id=1,name='fixture',source='atlas.png',size=[6,4],grid=[3,2],output_grid=[2,3],output='graphics/battle/round/fixture.t3x')])
  def test_repack_preserves_every_linear_frame_and_transparent_rgb(self):
   im=Image.new('RGBA',(6,4));im.putdata([(i,255-i,i*3,0 if i%3==0 else 255)for i in range(24)]);out=a.repack(im,[3,2],[2,3]);self.assertEqual(out.size,(4,6))
   for i in range(6):self.assertEqual(im.crop((i%3*2,i//3*2,i%3*2+2,i//3*2+2)).tobytes(),out.crop((i%2*2,i//2*2,i%2*2+2,i//2*2+2)).tobytes())
@@ -27,7 +27,7 @@ class RoundAssetsTests(unittest.TestCase):
     p=copy.deepcopy(j);p[key]=value
     with self.subTest(key=key),self.assertRaises(ValueError):a.validate_source(r,p,lock)
  def test_real_source_receipt_and_display_assumptions(self):
-  a.verify(a.ROOT/'upstream/MOTHER-Encore');recipe=json.loads(a.RECIPE.read_text());receipt=json.loads((a.OUT/'source.json').read_text())
+  a.verify(a.ROOT/'upstream/MOTHER-Encore');recipe=json.loads(a.RECIPE.read_text());receipt=json.loads((a.receipt_path(a.OUT,a.ROOT)).read_text())
   party=next(r for r in receipt['resources']if r['name']=='party');self.assertEqual((party['width'],party['height'],party['columns'],party['rows']),(960,768,15,12))
   lamp=Image.open(a.ROOT/'upstream/MOTHER-Encore/Graphics/Battle Sprites/lamp.png').convert('RGBA');self.assertEqual(set(lamp.getchannel('A').getdata()),{0,255})
   self.assertEqual(len(receipt['resources']),len(recipe['resources']))

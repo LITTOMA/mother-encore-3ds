@@ -4,17 +4,17 @@
   "whole_handler_approved": false,
   "inputs": {
     "content/phone-stage/dialogue.json": "9daaa3de0a4e4ac3ba61927aec90d242a87c39400e03832402bfbd7cf6582cae",
-    "content/phone-stage/presentation.json": "bebe9e2e48dc38cfa62032cca790be2e57b0c19b5409babd9bd4ea3529cb601b",
+    "content/phone-stage/presentation.json": "baf161acb30d6e9947c3aea13703c03ef169072c150244e6c528b0ffb32f84ca",
     "content/phone-stage/native-parser.json": "0036925ac2fe17d4426854ccc7d8d4618c017db9fbbfd88699c406ecefa0af5b",
     "reports/doll-postwin/native-parser-animation.json": "a27f1abd99a61811fbc6d15a9708c39d1a21815c654aeacc40f23f269e5be2de",
     "tools/link_phone_content.py": "04050c3da322104dc1534d0a2cf18b5a7019eebe33c88bec728af153dc49d690",
-    "tools/extract_native_content.py": "6e7f3187464bb96d7cca342a504167ce953342b0d95841e92d95bde2f7a41a6b",
+    "tools/extract_native_content.py": "9b70b239b6a589410d7d06e25008b1aeb4fbcacb881ef9769f1064f70c12dc3e",
     "tools/extract_house.py": "11d05b43b3a6070415b20aeadabedaa0fcf74880b8f4548752dababee2d907da",
     "tools/dad_record_dialogue.py": "829f990f3131802e2b478af01718a51172bd8cf4a2d103892649c70b0467e4d5",
-    "tools/dialogue_choice_assets.py": "986e3131bbdf85f5e6255e7ed26e67ca37d494b8c5fd8235adfceb9b5422dd9d",
+    "tools/dialogue_choice_assets.py": "84ef33094999b99b5cc163158f4f642e4b26ceabc11c8f96b38faceef89449fd",
     "tools/menu_audio_binding.py": "e62bd2de48cea6a4822773246a8582ce20f4db45118be13dede21935266e87ac",
-    "content/native-dialogue-choices.json": "4f256f21fb52c4d873d50f8a22107e8846fe38ae3f1556fe528328c356ab3a95",
-    "content/phone-linker-bindings.json": "1a7dbf803c7ab0b388984f9740a87011197f6cc6ee3f427117e03a866bfd11b7",
+    "content/native-dialogue-choices.json": "29d769528bb33c5b47d6fe1a2f72c1f2cc98c95c7e9a1e972dc4cd030f019aa7",
+    "content/phone-linker-bindings.json": "fd638b9a6ca3dad6520a7ddb748c81e3b52a915870feb8068f37d61224ac9ae4",
     "tools/phone_linker_bindings.py": "8d2425393842b882b692f7ddc8afd04392c8ff2370860f51d517f8093cf4b7c0"
   },
   "sources": {
@@ -88,9 +88,9 @@
     "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699"
   },
   "outputs": {
-    "content/native-opening.json": "58dcad29cd293936cae4d48c756a2381bd9d4a78d6fd8b8d1e93ec4d2f60a250",
-    "content/native-house.json": "b89904ea57a3fc0075029a591981f968164e9338c651bb31549ef5d39af1bfba",
-    "content/native-audio.json": "00d0d7548d96fd096fc59d54ae08b246937b8aae3b1cf594b84dc02ce0caf0b2"
+    "content/native-opening.json": "9e0980e5c1339c6f136845209ff30f94964423ecd4933cc94792c0bbb5991b7d",
+    "content/native-house.json": "4c3db0c530fad5d5778f1e8965ffa003d2f171a82e10c6e2c27331211c352c4f",
+    "content/native-audio.json": "4af2e3098433df83fb6fd2aac1e0314c3e24cbe3ea1827f2c6cd42e94fa84dce"
   },
   "stable_namespaces": {
     "preserved_program_ids": [

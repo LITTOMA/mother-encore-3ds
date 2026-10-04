@@ -51,7 +51,7 @@ class PresentationRecipeTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.original=recipe.read(ROOT/'content/round-presentation-recipe.json')
-        cls.resources=json.loads((assets.OUT/'source.json').read_text(encoding='utf-8'))['resources']
+        cls.resources=json.loads((assets.receipt_path(assets.OUT,assets.ROOT)).read_text(encoding='utf-8'))['resources']
     def rejected(self,value,resources=None):
         p=assets.Presentation(Extractor(ROOT),self.resources if resources is None else resources)
         with self.assertRaises(ValueError):recipe.apply(p,value)
@@ -148,7 +148,7 @@ class PresentationRecipeTests(unittest.TestCase):
 
 if __name__=='__main__':
     if sys.argv[1:]==['--prepare-only']:
-        resources=json.loads((assets.OUT/'source.json').read_text(encoding='utf-8'))['resources']
+        resources=json.loads((assets.receipt_path(assets.OUT,assets.ROOT)).read_text(encoding='utf-8'))['resources']
         prepare_fixtures(recipe.read(),resources,write=True)
         prepare_return_fixtures(recipe.read(),resources,write=True)
     else:unittest.main()

@@ -11,7 +11,7 @@ def compare(probe,reference):
  with tempfile.TemporaryDirectory() as temp:
   for i,s in enumerate(manifest['samples']):
    count=s['width']*s['height']*4;actual=raw[offset:offset+count];offset+=count;out=Path(temp)/'native.rgba'
-   subprocess.run([str(probe),'--compose',str(ROOT/'romfs/world-effect/melody.encfx'),str(s['width']),str(s['height']),str(s['time']),*[str(v)for v in s['color']],str(s['alpha']),str(out)],check=True)
+   subprocess.run([str(probe),'--compose',str(ROOT/'romfs/data/melody.encfx'),str(s['width']),str(s['height']),str(s['time']),*[str(v)for v in s['color']],str(s['alpha']),str(out)],check=True)
    cpu=out.read_bytes()
    # GLES2 transparent target stores source-alpha blended RGB. The C2D source
    # texture is straight RGBA8; apply its ordinary blend over transparent black.

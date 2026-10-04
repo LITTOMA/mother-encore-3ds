@@ -9,7 +9,7 @@ invented. Existing lower-screen development information is retained.
 ## Checked external tuning
 
 `content/native-input.json` compiles with `python3 tools/native_input.py compile`
-to `romfs/input/native.encinput`. `verify` rejects a stale binary. The independent
+to `romfs/data/native.encinput`. `verify` rejects a stale binary. The independent
 88-byte little-endian ENCINP01 resource has version, exact length, payload length,
 reserved-byte and CRC32 checks. Runtime and compiler both validate all fields,
 finite floats, relationships, screen geometry and translucent overlay colors.

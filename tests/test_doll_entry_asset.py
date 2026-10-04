@@ -14,7 +14,7 @@ class DollEntryAssetTests(unittest.TestCase):
   self.assertEqual(self.blob,doll.PACK.read_bytes());self.assertEqual(struct.unpack_from('<I',self.blob,8)[0],2)
   self.assertEqual(self.blob,native.encode(native.lower(self.ir,self.assets),self.ir['commit']))
   files=native.stage_files(ROOT/'romfs',Path('data/doll-entry.encbattle'))
-  self.assertEqual(len(files),len(self.tables['resources'])+1);self.assertIn(Path('house-preview/doll.t3x'),files)
+  self.assertEqual(len(files),len(self.tables['resources'])+1);self.assertIn(Path('graphics/ui/house/doll.t3x'),files)
   with self.assertRaises(native.ContentError):native.stage_files(ROOT/'romfs',Path('../else'))
  def test_lossless_background_and_palette(self):
   for name in ['background','background-palette']:

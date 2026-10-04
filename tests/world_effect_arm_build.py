@@ -20,11 +20,11 @@ def main():
   samples=manifest['samples'];assert len(samples)==20
   fixture=bytearray(32+48*len(samples));cursor=0
   for i,s in enumerate(samples):
-   out=build/'host-sample.rgba';run([host,'--compose',ROOT/'romfs/world-effect/melody.encfx',s['width'],s['height'],s['time'],*s['color'],s['alpha'],out]);cpu=out.read_bytes();amount=s['width']*s['height']*4;assert len(cpu)==amount
+   out=build/'host-sample.rgba';run([host,'--compose',ROOT/'romfs/data/melody.encfx',s['width'],s['height'],s['time'],*s['color'],s['alpha'],out]);cpu=out.read_bytes();amount=s['width']*s['height']*4;assert len(cpu)==amount
    cpu_offset=len(fixture);fixture.extend(cpu);gpu_offset=len(fixture);fixture.extend(native[cursor:cursor+amount]);cursor+=amount
    struct.pack_into('<2I6f4I',fixture,32+i*48,s['width'],s['height'],s['time'],*s['color'],s['alpha'],cpu_offset,amount,gpu_offset,amount)
   assert cursor==len(native);struct.pack_into('<8s6I',fixture,0,b'ENCWFQA1',1,20,48,len(fixture),0,0);(romfs/'cases.bin').write_bytes(fixture);out.unlink()
-  shutil.copyfile(ROOT/'romfs/world-effect/melody.encfx',romfs/'melody.encfx')
+  shutil.copyfile(ROOT/'romfs/data/melody.encfx',romfs/'melody.encfx')
   production=(ROOT/'platform/ctr/world_effect_renderer.hpp').read_text();instrumented=replace(production,' WorldEffectRenderer()=default;',' double arm_kernel_ms=0,arm_upload_ms=0;\n WorldEffectRenderer()=default;')
   instrumented=replace(instrumented,'  if(!kernel_.compose(global_shader_time,sample,surface_.data(),surface_.size()))','  arm_kernel_ms=arm_upload_ms=0;const u64 arm_start=svcGetSystemTick();\n  if(!kernel_.compose(global_shader_time,sample,surface_.data(),surface_.size()))')
   instrumented=replace(instrumented,'  visible_=sample.active&&sample.alpha>0;','  arm_kernel_ms=double(svcGetSystemTick()-arm_start)/CPU_TICKS_PER_MSEC;const u64 arm_upload_start=svcGetSystemTick();\n  visible_=sample.active&&sample.alpha>0;')

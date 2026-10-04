@@ -45,7 +45,7 @@ class DollPostwinTests(unittest.TestCase):
   for p in self.s['Program'][:2]:self.assertEqual(self.s['Command'][p['first_command']+p['command_count']-1]['opcode'],24)
   blob,_=room.compile_ir(self.ir);self.assertEqual(room.parse_pack(blob)['sections']['Program'],self.s['Program'])
  def test_minnie_texture_profile_body_and_original_initial_position(self):
-  self.assertEqual((self.s['Resource'][28]['stable_id'],self.ir['strings'][self.s['Resource'][28]['path_string']]),(29,'house-preview/minnie.t3x'))
+  self.assertEqual((self.s['Resource'][28]['stable_id'],self.ir['strings'][self.s['Resource'][28]['path_string']]),(29,'graphics/ui/house/minnie.t3x'))
   self.assertEqual((self.s['ActorInstance'][4]['stable_id'],self.s['ActorInstance'][4]['position']),(5,[472,88]))
   p=self.s['ActorProfile'][4];self.assertEqual((p['primary_resource'],p['execution_kind'],p['sprite_position'],p['sprite_offset'],p['flags']),(28,3,[0,9],[0,-12],1))
   n=self.h['npcs'][3];self.assertEqual((n['id'],n['room_actor_index'],n['source_path'],n['body_id'],n['position']),(4,4,'Objects/npc3',11,[472,88]))
@@ -63,7 +63,7 @@ class DollPostwinTests(unittest.TestCase):
   self.assertEqual((clip['key_count'],clip['flags'],clip['channel']),(10,8,1));self.assertEqual([[k['time'],k['frame']]for k in keys],self.native['dot']['keys'])
   self.assertEqual((self.s['Resource'][29]['stable_id'],self.ir['strings'][self.s['Resource'][29]['path_string']]),(30,'res://'+post.SOUND))
   from tools.audio_asset import parse_bank
-  assets=parse_bank((room.ROOT/'romfs/data/opening.encaudio').read_bytes())['assets'];sound=next(x for x in assets if x['stable_id']==30)
+  assets=parse_bank((room.ROOT/'romfs/sound/banks/opening.encaudio').read_bytes())['assets'];sound=next(x for x in assets if x['stable_id']==30)
   self.assertEqual(sound['source_path'],'res://'+post.SOUND);self.assertFalse(sound['loop'])
  def test_prior_content_prefixes_and_explicit_idle_semantic_correction(self):
   receipt=json.loads((room.ROOT/'reports/doll-postwin/preserved-prefixes.json').read_text())

@@ -109,7 +109,7 @@ class PhonePresentationBindingsTests(unittest.TestCase):
     def test_ordinary_compile_gate_rejects_and_preserves_existing_outputs(self):
         paths=[ROOT/'romfs/data/opening.encphone',ROOT/'compatibility/reviews/phone-pack.json']
         before=[p.read_bytes()for p in paths]
-        for mutation in [lambda v:v.update(extra=1),lambda v:v['sprite'].update(path='phone-preview/changed.t3x')]:
+        for mutation in [lambda v:v.update(extra=1),lambda v:v['sprite'].update(path='graphics/ui/phone/changed.t3x')]:
             value=copy.deepcopy(self.value);mutation(value)
             with mock.patch.object(b,'read',return_value=value),mock.patch.object(sys,'argv',['native_phone.py','compile','--root',str(ROOT)]),mock.patch.object(sys,'stderr',io.StringIO()):
                 self.assertEqual(native_phone.main(),1)

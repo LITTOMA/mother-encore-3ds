@@ -113,11 +113,11 @@ class NativeInputTests(unittest.TestCase):
     def test_staging_rejects_stale_corrupt_and_escaping_resource(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / 'romfs'
-            path = root / 'input/native.encinput'
+            path = root / 'data/native.encinput'
             path.parent.mkdir(parents=True)
             blob = n.encode(self.ir)
             path.write_bytes(blob)
-            self.assertEqual(n.stage_files(root), {Path('input/native.encinput'): blob})
+            self.assertEqual(n.stage_files(root), {Path('data/native.encinput'): blob})
             changed = copy.deepcopy(self.ir)
             changed['circle_pad']['activate_radius'] = 30
             path.write_bytes(n.encode(changed))

@@ -990,7 +990,7 @@
   ],
   "presentation": {
     "asset_recipe_path": "content/battle-assets.json",
-    "asset_receipt_path": "romfs/battle-preview/source.json",
+    "asset_receipt_path": "content/asset-receipts/graphics/battle/lamp/source.json",
     "assets": {
       "transition": {
         "source": "Graphics/VFX/battle_transition.png",
@@ -2118,6 +2118,6 @@
   },
   "entry_bindings": {
     "path": "content/battle-entry-bindings.json",
-    "sha256": "861827a553ead6f2571f44d93c701571c644bc729b9817007603e53983603ad8"
+    "sha256": "cd8b34f7cb29736d008344649a3ccfcb51af8fc775b31da148715e2d163ee833"
   }
 }

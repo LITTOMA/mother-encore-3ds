@@ -426,7 +426,16 @@ bool ensure_house_graphics(std::string&error){
            if(!audio_player.available())return true;
            const auto room=opening_data.view();
            for(uint32_t i=0;i<room.resource_count();++i){const auto r=room.resource(i);
-               if(r.kind==uint16_t(upstream::RoomResourceKind::AudioRequestOnly)&&!audio_player.prepare(r.stable_id,error))return false;}
+               if(r.kind!=uint16_t(upstream::RoomResourceKind::AudioRequestOnly))continue;
+               // Prefetch source identity, not saved/gameplay identity: one
+               // source can have separate room and cutscene bank stable IDs.
+               bool found=false;
+               for(uint32_t j=0;j<menu_audio_bank.count();++j){const auto asset=menu_audio_bank.asset(j);
+                   if(asset.source_path==room.string(r.path_string)&&asset.source_sha256==r.sha256){
+                       found=true;if(!audio_player.prepare(asset.stable_id,error))return false;break;}
+               }
+               if(!found){error="House audio source is absent from checked bank";return false;}
+           }
            return true;
        },"house-audio")||!loading.finish())return false;
     house_graphics_ready=true;return true;

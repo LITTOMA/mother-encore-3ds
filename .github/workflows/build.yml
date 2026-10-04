@@ -1,21 +1,31 @@
-name: Manual full Encore Native verification
+name: 3DS artifacts and manual full verification
 
-# Only an explicit manual invocation runs verification. Pushes, PR updates,
-# review status changes and labels do not trigger any job.
+# Every main update builds downloadable console artifacts. Tests require an
+# explicit manual full run; PR updates and review changes never trigger tests.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Build artifacts only, or explicitly run full verification
+        type: choice
+        required: true
+        default: build
+        options: [build, full]
 
 permissions:
   contents: read
 
 concurrency:
-  group: manual-full-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Separate commits must each finish and upload, including rapid main merges.
+  group: console-${{ github.workflow }}-${{ github.sha }}-${{ github.event_name }}
+  cancel-in-progress: false
 
 jobs:
   host:
     name: Host and sanitizers (${{ matrix.compiler }})
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'full'
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     strategy:
@@ -92,10 +102,12 @@ jobs:
 
   console:
     name: Real 3DSX and CIA (GPU 1:1:0)
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
+      BUILD_JOBS: '4'
+      CONTENT_JOBS: '4'
       GIT_OPTIONAL_LOCKS: '0'
     steps:
       - uses: actions/checkout@v4
@@ -136,6 +148,7 @@ jobs:
       - name: Validate the fixed official submodule before restoring any content
         run: python tools/ci_bootstrap.py
       - name: Check console header positive and negative cases
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'full'
         run: python tests/test_ci_console_check.py
       - name: Build a genuine ARM ELF and 3DSX with checked RomFS
         shell: bash
@@ -157,6 +170,25 @@ jobs:
           python tools/ci_bootstrap.py --verify-only
           git diff --exit-code
           git diff --cached --exit-code
+      - name: Prepare installable artifacts with notices and commit receipt
+        shell: bash
+        run: |
+          # Uses only the genuine outputs checked above; never rerun make release.
+          python tools/release.py
+          cp build/console-ci/console-check.json dist/sd/build-receipt.json
+          printf 'Source commit: %s\nRun: %s/%s/actions/runs/%s\nGPU configuration: background=1 certificates=1 texture_strips=0\nScope: cross-build and extracted CIA package; emulator/hardware not run\n' "$GITHUB_SHA" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > dist/sd/BUILD_INFO.txt
+          (cd dist/sd && sha256sum 3ds/encore-native/encore-native.3dsx 3ds/encore-native/encore-native.smdh cias/encore-native.cia > SHA256SUMS)
+      - name: Upload genuine 3DSX and CIA installable artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: encore-3ds-${{ github.sha }}-${{ github.run_id }}
+          path: dist/sd/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Link the downloadable package in the run summary
+        shell: bash
+        run: |
+          printf '### 3DS build artifacts\nCommit: `%s`\n\nDownload **encore-3ds-%s-%s** from this run’s Artifacts section. The ZIP contains `3ds/encore-native/*.3dsx`, its SMDH, `cias/*.cia`, installation notes, licenses, SHA256SUMS and build receipt.\n\nTests run only in explicitly selected full mode. Emulator and hardware verification remain unperformed.\n' "$GITHUB_SHA" "$GITHUB_SHA" "$GITHUB_RUN_ID" >> "$GITHUB_STEP_SUMMARY"
       - name: Include package diagnostics in the run log
         if: always()
         shell: bash
@@ -165,6 +197,6 @@ jobs:
             if test -f "$log"; then cat "$log"; fi
           done
 
-# No game binaries/assets, private local logs, or release uploads. Download the
-# Actions run log separately for the private validation archive.
+# Actions artifacts are downloadable build outputs, not GitHub Releases.
+# Download full Actions run logs separately into the private validation archive.
 # Cross-build and extracted-package checks do not prove emulator/hardware runs.

@@ -63,15 +63,17 @@ SD ZIP 包含真实 3DSX/CIA、所需资源及逐项核对的许可文件。运�
 
 ## GitHub runner 构建
 
-GitHub Actions 只保留手动全面验证。Push、PR 创建 / 更新 / 重开、转为 Ready、添加标签和 main 更新都不启动检查；没有自动快速测试或定时任务。
+每次 main 更新（包括合并 PR）自动构建真实 3DSX / CIA，完成必要的来源、许可和打包校验后上传 Actions artifact。PR 创建 / 更新 / 重开、转为 Ready 和标签变化不启动工作流；测试仅在明确选择手动全面验证时运行，没有定时任务。
 
-需要全面验证时，在 Actions 的 `Manual full Encore Native verification` 中选择目标分支并点击 **Run workflow**，或显式执行：
+在 Actions 的 `3DS artifacts and manual full verification` 中选择目标分支和模式，再点击 **Run workflow**。默认 `build` 只构建下载包；明确选择 `full` 才运行全面测试：
 
 ```sh
-gh workflow run build.yml --ref <候选分支>
+gh workflow run build.yml --ref <候选分支> -f mode=build
+# 仅在明确要求全面测试时：
+gh workflow run build.yml --ref <候选分支> -f mode=full
 ```
 
-一次手动运行覆盖 GCC / Clang 共享核心、ASan / UBSan、受检来源与资源重生成，以及真实 3DSX / CIA 构建和提取资源比较。生成、编译和已审查测试保持四路并发；共享写入与计时检查保留必要顺序。检查结论只覆盖实际提交；未手动运行的候选明确标为未验证，不把缺少 CI 当作通过。
+一次 `full` 手动运行覆盖 GCC / Clang 共享核心、ASan / UBSan、受检来源与资源重生成，以及真实 3DSX / CIA 构建和提取资源比较。生成、编译和已审查测试保持四路并发；共享写入与计时检查保留必要顺序。检查结论只覆盖实际提交；未手动运行的候选明确标为未验证，不把缺少 CI 当作通过。
 
 电话与 Dad 来源转换在单次只读操作中复用已校验的剧情配方，避免每个命令重新读取来源并启动 Git 查询。首次使用及返回结果前均执行完整来源校验；配方改变或来源不匹配会阻断结果，操作结束或失败后不保留缓存。此优化不删减正常／负向测试，也不改变二进制中的游戏内容。
 
@@ -79,4 +81,4 @@ Actions 的 `Real 3DSX and CIA (GPU 1:1:0)` 任务从仓库直接完成真实 `m
 
 任务先核对只读上游，恢复受检 PCM，再编译 ARM ELF 与嵌入 RomFS 的 3DSX，生成 CIA。CTRTool 提取真实 CIA 并逐文件比较完整 RomFS 与受检 staging；另检查 3DSX 嵌入边界及资源目录消费者依赖。FFmpeg 使用 Ubuntu 包，输出必须逐项匹配既有 PCM 长度、SHA-256 和 CRC；不同版本不允许刷新期望指纹来通过检查。
 
-此任务不上传游戏二进制、素材或发行包。实际结果以对应提交的 Actions 运行记录为准；维护者下载完整运行日志到私有验证目录。CI 文件存在不代表构建通过，交叉构建 / 打包通过也不代表模拟器或真机验收。已有本地构建保留用于开发调试与设备验证。
+成功后在对应运行页面的 **Artifacts** 下载 `encore-3ds-<完整提交 SHA>-<运行 ID>`，保留 30 天。解压后包含 `3ds/encore-native/encore-native.3dsx`、SMDH、`cias/encore-native.cia`、安装说明、许可文件、`SHA256SUMS`、提交与产物哈希收据及构建配置。不同 main 提交的构建不会互相取消；失败时不上传不完整安装包。此流程只上传 Actions artifact，不创建 GitHub Release。实际结果以对应提交的 Actions 运行记录为准；维护者下载完整运行日志到私有验证目录。CI 文件存在不代表构建通过，交叉构建 / 打包通过也不代表模拟器或真机验收。已有本地构建保留用于开发调试与设备验证。

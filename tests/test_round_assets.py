@@ -27,7 +27,7 @@ class RoundAssetsTests(unittest.TestCase):
     p=copy.deepcopy(j);p[key]=value
     with self.subTest(key=key),self.assertRaises(ValueError):a.validate_source(r,p,lock)
  def test_real_source_receipt_and_display_assumptions(self):
-  a.verify(a.ROOT/'upstream/MOTHER-Encore');recipe=json.loads(a.RECIPE.read_text());receipt=json.loads((a.OUT/'source.json').read_text())
+  a.verify(a.ROOT/'upstream/MOTHER-Encore');recipe=json.loads(a.RECIPE.read_text());receipt=json.loads((a.receipt_path(a.OUT,a.ROOT)).read_text())
   party=next(r for r in receipt['resources']if r['name']=='party');self.assertEqual((party['width'],party['height'],party['columns'],party['rows']),(960,768,15,12))
   lamp=Image.open(a.ROOT/'upstream/MOTHER-Encore/Graphics/Battle Sprites/lamp.png').convert('RGBA');self.assertEqual(set(lamp.getchannel('A').getdata()),{0,255})
   self.assertEqual(len(receipt['resources']),len(recipe['resources']))

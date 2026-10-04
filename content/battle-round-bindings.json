@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/BattleSkills/attack.yaml": "97d01c135e783f4510b13501fd79b3b0f023297d6c860c3d06ac7db07f1f26ae",
+    "Data/BattleSkills/tackle.yaml": "8b82dc31555bdc4f6a3c1843eb8e8a81eb1ded3c2efa7b4f433ab424c7d88078",
+    "Data/BattleSkills/float.yaml": "febabbfa812aeda67aaf4177c99f49abb7c76b038bf418abe0e47429b5966221",
+    "Data/BattleSkills/guard.yaml": "3dd5ab7132619f863332845e7fbcd46b56cc9bf0f32ae2b864fd4b30c38294c0",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "attack",
+      "source": "Data/BattleSkills/attack.yaml",
+      "actor": "party"
+    },
+    {
+      "id": 2,
+      "name": "tackle",
+      "source": "Data/BattleSkills/tackle.yaml",
+      "actor": "enemy"
+    },
+    {
+      "id": 3,
+      "name": "float",
+      "source": "Data/BattleSkills/float.yaml",
+      "actor": "enemy"
+    },
+    {
+      "id": 4,
+      "name": "guard",
+      "source": "Data/BattleSkills/guard.yaml",
+      "actor": "party"
+    }
+  ],
+  "menus": {
+    "basic": {
+      "identity": "Basic",
+      "source": "Scripts/UI/Battle/BattleSystem.gd"
+    },
+    "items": {
+      "identity": "Items",
+      "source": "Scripts/UI/Battle/BattleSystem.gd"
+    },
+    "guard": {
+      "identity": "Defend",
+      "source": "Scripts/UI/Battle/BattleSystem.gd"
+    }
+  },
+  "constants": {
+    "basic": {
+      "source": "Scripts/global/globalData.gd",
+      "constant": "SKILL_ATTACK",
+      "skill": "attack"
+    },
+    "guard": {
+      "source": "Scripts/global/globalData.gd",
+      "constant": "SKILL_GUARD",
+      "skill": "guard"
+    }
+  },
+  "source_facts": {
+    "Scripts/global/PartyMember.gd": [
+      "return globaldata.SKILL_ATTACK"
+    ],
+    "Scripts/UI/Battle/BattleSystem.gd": [
+      "\"Basic\":\n\t\t\tvar skill_action := SkillAction.new(bp)\n\t\t\tskill_action.skill = globaldata.get_battle_skill(bp.character.get_basic_skill())",
+      "\"Items\":\n\t\t\tvar item_action := ItemAction.new(bp)",
+      "\"Defend\":\n\t\t\tvar skill_action := SkillAction.new(bp)\n\t\t\tskill_action.skill = globaldata.get_battle_skill(globaldata.SKILL_GUARD)"
+    ]
+  },
+  "boss_shake": {
+    "source": "Scripts/misc/Shaker.gd",
+    "parameter": "weight",
+    "value": 0.5,
+    "facts": [
+      "_shake_lerp_weight = weight",
+      "round(rand_range(-1, 1)), round(rand_range(-1, 1))",
+      "while (_dir == old__dir)"
+    ]
+  }
+}

@@ -35,11 +35,13 @@ def return_music_policy(enemy,system):
 
 def build():
  ex=Extractor(ROOT);base=read(ROOT/'content/native-round.json');native.verify_sources(base)
+ from battle_round_bindings import load
+ recipe=load();skill_bindings=recipe['skills'];enemy_skill_names=[s['name']for s in skill_bindings if s['actor']=='enemy']
  ir=copy.deepcopy(base);entry=read(ROOT/'content/doll-entry.json');lamp=read(ROOT/'content/native-battle.json')
  for path,sha in base['sources'].items():require(digest(ex.upstream/path)==sha,'Changed inherited source '+path);ex.data(path)
  enemy=ex.yaml('Data/Battlers/doll.yaml');scene=ex.yaml('Data/Dialogue/Podunk/cutscenes/doll_attack.yaml')
  require(scene['6']['startbattle']=={'battlers':[{'doll':'doll'}],'actorskeep':{'doll':True},'wincutscene':'Podunk/cutscenes/doll_defeated'},'Doll encounter source changed')
- require(enemy['boss'] and [x['skill']for x in enemy['skills']]==['tackle','float']and not enemy.get('items'),'Doll AI/reward path changed')
+ require(enemy['boss'] and [x['skill']for x in enemy['skills']]==enemy_skill_names and not enemy.get('items'),'Doll AI/reward path changed')
  require(entry['binding']['stable_id']==2 and entry['enemy']['data']==enemy,'Doll entry mismatch')
  trans={}
  for name in['battletext','battlers','battleskills','menus']:
@@ -53,7 +55,7 @@ def build():
  contexts=[dict(name=name,n0=party_articles[0],n4=party_articles[4],target=ename,t0=articles[0],t1=articles[1]),dict(name=ename,n0=articles[0],n4=articles[4],target=name,t0=party_articles[0],t1=party_articles[1])]
  for i,s in enumerate(ir['skills']):
   source=ex.yaml(s['source'])
-  if source['dialog']:s['dialog']=text(source['dialog'],3,contexts[0 if i in[0,3]else 1])
+  if source['dialog']:s['dialog']=text(source['dialog'],3,contexts[0 if skill_bindings[i]['actor']=='party'else 1])
  ir['binding'].update(battle_id=entry['binding']['stable_id'],enemy_name=text(enemy['name'],4),enemy_article=text(enemy['article'],5),win_flag='',show_intro_outro=int(entry['entry']['show_intro_outro']))
  ir['enemy_choices']=[dict(skill=next(i for i,s in enumerate(ir['skills'])if Path(s['source']).stem==c['skill']),weight=c['weight'])for c in enemy['skills']]
  v=ir['victory'];v.update(initial_exp=base['victory']['reward_exp'],initial_bank=base['victory']['reward_cash'],initial_earned_cash=base['victory']['reward_cash'],reward_exp=enemy['exp'],reward_cash=enemy['cash'],exp_text=text('BATTLE_MSG_EXP_ONE_ALLY',9,dict(name=name,value=enemy['exp'])))
@@ -79,7 +81,7 @@ def build():
    elif tr['type']=='method':
     for time,value in zip(keys['times'],keys['values']):
      if value['method']=='shake':
-      require(role==2 and len(value['args'])==3,'Unknown shake');mag,length,interval=value['args'];ir['boss_shakes'].append(dict(time=time,magnitude=mag,length=length,interval=interval,weight=.5))
+      require(role==2 and len(value['args'])==3,'Unknown shake');mag,length,interval=value['args'];ir['boss_shakes'].append(dict(time=time,magnitude=mag,length=length,interval=interval,weight=recipe['boss_shake']['value']))
      else:require(value=={'args':[],'method':method_kind[0]},'Unknown boss callback');pres.event(m,time,method_kind[1])
    elif tr['type']=='audio':
     times,ref=([1.55,3.05],3)if role==2 else([1],1)
@@ -89,7 +91,7 @@ def build():
  ir['boss_shakes']=[]
  boss=rawanim('Nodes/Ui/Battle/EnemySprite.tscn','bossDefeat',2,idx,[0,0,resource['width'],resource['height']],{'.:material:shader_param/flash_color':9,'.:material:shader_param/flash_modifier':10,'.:material:shader_param/glow_modifier':14,'.:modulate':15},('start_boss_defeat_flash',10));pres.bind('EnemyDefeat',boss)
  flash=rawanim('Nodes/Ui/Battle/BossDefeatFlash.tscn','DefeatFlash',12,0xffffffff,[0,0,entry['viewport']['width'],entry['viewport']['height']],{'ColorRect:material:shader_param/radius':18,'ColorRect:color':8},('defeat_enemies',11))
- shaker=ex.text('Scripts/misc/Shaker.gd');require('interval := 0.2, weight := 0.5, diminish := true'in shaker and 'round(rand_range(-1, 1)), round(rand_range(-1, 1))'in shaker and 'while (_dir == old__dir)'in shaker,'Unreviewed boss shake mechanism')
+ ex.data(recipe['boss_shake']['source']) # load() checks the default and reviewed mechanism facts.
  system=ex.text('Scripts/UI/Battle/BattleSystem.gd');participant=ex.text('Scripts/UI/Battle/BattleParticipant.gd');sprite=ex.text('Scripts/UI/Battle/EnemySprite.gd');ex.data('Scripts/UI/Battle/BossDefeatFlash.gd')
  for f in['$BossDefeatFlash.connect("animation_finished", self, "_win")','$BossDefeatFlash.connect("defeat_enemies", self, "_kill_all_enemies")','bp.get_plate().stop_scrolling()','pause_battle()']:require(f in system,'Unreviewed boss lifecycle '+f)
  require('if is_boss() and !silent:'in participant and 'yield(_battle_sprite, "start_boss_defeat_flash")'in participant and 'if boss: $AnimationPlayer.play("bossDefeat")'in sprite,'Unreviewed boss handoff')

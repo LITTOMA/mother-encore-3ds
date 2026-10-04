@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT))
 from tools.phone_dialogue import NORMAL, build as phone_build, load_receipt, validate_document, write_json
 from tools.doll_dialogue import PIN, require
 from tools.doll_postwin import return_duration
+from tools.programme_lowering_recipe import operation
 
 REPORT = 'reports/dad-record/command-graph.json'
 OPCODES = {'Jump': 36, 'BranchFlag': 37, 'BranchLeader': 38,
@@ -156,6 +157,7 @@ def validate_graph(graph, root=ROOT):
             require(c['target_pc'] > pc, 'Dad-normal branch must progress')
 
 
+@operation
 def build(root=ROOT):
     root = Path(root)
     stage = json.loads((root / 'content/phone-stage/dialogue.json').read_text())

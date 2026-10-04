@@ -24,6 +24,7 @@ sys.path.insert(0, str(ROOT))
 from tools.doll_dialogue import PIN, decode, sha, require
 from tools.doll_postwin import return_duration
 from tools.extract_battle_entry import Extractor, node
+from tools.programme_lowering_recipe import operation
 
 DIRECT = 'Data/Dialogue/Podunk/carol_call.yaml'
 AREA = 'Data/Dialogue/Podunk/cutscenes/carol_call.yaml'
@@ -132,6 +133,7 @@ func _init():
         return data
 
 
+@operation
 def load_receipt(root=ROOT):
     root = Path(root)
     ex = Extractor(root)
@@ -233,6 +235,7 @@ def compile_normal_graph(doc,translations,root=ROOT):
     return recipe.normal_metadata(doc,translations,root)
 
 
+@operation
 def build(root=ROOT):
     ex, documents = load_receipt(root)
     texts, translations = extract_texts(ex, documents)

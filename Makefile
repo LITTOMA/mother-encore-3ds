@@ -1,9 +1,10 @@
 # Desktop and 3DS front door. Use devkitPro MSYS2 make on Windows, not nmake.
 .DEFAULT_GOAL := help
 PYTHON ?= python3
-CTEST_ARGS ?=
+CTEST_ARGS ?= --parallel $(BUILD_JOBS)
 CMAKE_ARGS ?=
-BUILD_JOBS ?= 2
+BUILD_JOBS ?= 4
+CONTENT_JOBS ?= $(BUILD_JOBS)
 TEX3DS ?= $(DEVKITPRO)/tools/bin/tex3ds
 .PHONY: help content native-content items-assets audio-assets battle-assets round-assets house-assets assets map-assets actor-assets house-layers new-game-assets host test sanitize 3dsx cia cxi 3ds release doctor clean
 help:
@@ -12,33 +13,7 @@ help:
 content: native-content
 	$(PYTHON) tools/content_compiler.py
 native-content:
-	$(PYTHON) tools/restore_audio.py
-	$(PYTHON) tools/blackbars_assets.py compile
-	$(PYTHON) tools/native_input.py compile
-	$(PYTHON) tools/native_phone.py compile
-	$(PYTHON) tools/world_effect_assets.py compile
-	$(PYTHON) tools/doll_entry_asset.py compile
-	$(PYTHON) tools/pillow_entry_asset.py compile
-	$(PYTHON) tools/native_content.py compile
-	$(PYTHON) tools/native_battle.py compile
-	$(PYTHON) tools/native_round.py compile
-	$(PYTHON) tools/doll_round.py compile
-	$(PYTHON) tools/pillow_round.py compile
-	$(PYTHON) tools/native_house.py compile
-	$(PYTHON) tools/items_assets.py verify
-	$(PYTHON) tools/native_items.py compile
-	$(PYTHON) tools/native_session.py compile
-	$(PYTHON) tools/session_migration.py compile
-	$(PYTHON) tools/native_restore.py compile
-	$(PYTHON) tools/continue_assets.py compile
-	$(PYTHON) tools/loading_indicator_assets.py compile
-	$(PYTHON) tools/new_game_assets.py compile
-	$(PYTHON) tools/startup_settings_assets.py compile
-	$(PYTHON) tools/startup_settings_assets.py verify
-	$(PYTHON) tools/house_button_prompt_assets.py verify
-	$(PYTHON) tools/localization_assets.py compile
-	$(PYTHON) tools/native_introduction.py compile
-	$(PYTHON) tools/resource_catalog.py compile
+	+$(MAKE) --no-print-directory -f make/native-content.mk -j$(CONTENT_JOBS) PYTHON="$(PYTHON)" native-content
 assets:
 	$(PYTHON) tools/generate_branding.py
 audio-assets:
@@ -61,12 +36,12 @@ actor-assets:
 house-layers:
 	$(PYTHON) tools/house_layers.py compile --tex3ds "$(TEX3DS)"
 host: content
-	cmake -S . -B build/host -DCMAKE_BUILD_TYPE=Release $(CMAKE_ARGS)
+	cmake -S . -B build/host -DCMAKE_BUILD_TYPE=Release -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON $(CMAKE_ARGS)
 	cmake --build build/host --parallel $(BUILD_JOBS)
 test: host
 	ctest --test-dir build/host --output-on-failure $(CTEST_ARGS)
 sanitize: content
-	cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_SANITIZERS=ON $(CMAKE_ARGS)
+	cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_SANITIZERS=ON -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON $(CMAKE_ARGS)
 	cmake --build build/sanitize --parallel $(BUILD_JOBS)
 	ctest --test-dir build/sanitize --output-on-failure $(CTEST_ARGS)
 introduction-assets:
@@ -103,7 +78,7 @@ introduction-assets:
 	$(PYTHON) tools/map_asset.py verify
 	$(PYTHON) tools/actor_asset.py verify
 	$(PYTHON) tools/house_layers.py verify
-	$(MAKE) -f platform/ctr/Makefile all
+	$(MAKE) -f platform/ctr/Makefile -j$(BUILD_JOBS) all
 cia: 3dsx
 	$(PYTHON) tools/package_ctr.py --format cia
 cxi: 3dsx

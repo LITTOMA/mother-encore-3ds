@@ -6,6 +6,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(Python3 3.9 COMPONENTS Interpreter REQUIRED)
 option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
+option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
     runtime/music_regions.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
@@ -36,30 +37,17 @@ add_custom_command(OUTPUT ${CMAKE_SOURCE_DIR}/build/fixtures/sandbox.encpak
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} VERBATIM)
 add_custom_target(encore_content ALL DEPENDS ${CMAKE_SOURCE_DIR}/build/fixtures/sandbox.encpak)
 if(ENCORE_REGENERATE_NATIVE_CONTENT)
+set(ENCORE_CONTENT_JOBS 4 CACHE STRING "Native resource subprocess limit")
+if(NOT ENCORE_CONTENT_JOBS MATCHES "^[0-9]+$" OR ENCORE_CONTENT_JOBS LESS 4)
+    message(FATAL_ERROR "ENCORE_CONTENT_JOBS must be at least 4")
+endif()
+find_program(ENCORE_GNU_MAKE NAMES gmake make)
+if(NOT ENCORE_GNU_MAKE)
+    message(FATAL_ERROR "Native regeneration requires GNU make (devkitPro MSYS2 on Windows)")
+endif()
 add_custom_target(encore_native_content ALL
-    COMMAND ${Python3_EXECUTABLE} tools/restore_audio.py
-    COMMAND ${Python3_EXECUTABLE} tools/doll_entry_asset.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/pillow_entry_asset.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/world_effect_assets.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_input.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_phone.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_content.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_battle.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_round.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/doll_round.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/pillow_round.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_house.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/items_assets.py verify
-    COMMAND ${Python3_EXECUTABLE} tools/native_items.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_session.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/session_migration.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/native_restore.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/continue_assets.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/loading_indicator_assets.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/new_game_assets.py compile
-    COMMAND ${Python3_EXECUTABLE} tools/startup_settings_assets.py verify
-    COMMAND ${Python3_EXECUTABLE} tools/house_button_prompt_assets.py verify
-    COMMAND ${Python3_EXECUTABLE} tools/native_introduction.py compile
+    COMMAND ${ENCORE_GNU_MAKE} --no-print-directory -f make/native-content.mk
+        -j${ENCORE_CONTENT_JOBS} "PYTHON=${Python3_EXECUTABLE}" native-content
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} VERBATIM)
 endif()
 add_executable(encore_host platform/desktop/main.cpp)
@@ -781,4 +769,17 @@ if(BUILD_TESTING)
  target_link_libraries(encore_introduction_tests PRIVATE encore_core)
  add_test(NAME original_introduction COMMAND encore_introduction_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encintro)
  set_tests_properties(original_introduction PROPERTIES TIMEOUT 60)
+endif()
+
+# Apply only after every test is registered, including future additions.
+include(cmake/TestParallelism.cmake)
+
+# Resource writers finish before compilation or fixture preparers read packs.
+if(ENCORE_REGENERATE_NATIVE_CONTENT)
+    get_property(encore_build_targets DIRECTORY PROPERTY BUILDSYSTEM_TARGETS)
+    foreach(encore_target IN LISTS encore_build_targets)
+        if(NOT encore_target STREQUAL "encore_native_content")
+            add_dependencies(${encore_target} encore_native_content)
+        endif()
+    endforeach()
 endif()

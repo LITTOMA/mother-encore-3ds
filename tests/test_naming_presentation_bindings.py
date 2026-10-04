@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Default naming source/data equivalence and fail-closed recipe compilation."""
 from pathlib import Path
-import copy,hashlib,json,struct,sys,unittest
+import copy,hashlib,json,struct,sys,unittest,zlib
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools import new_game_assets as assets
 from tools import naming_presentation_bindings as recipe
@@ -16,6 +16,27 @@ def candidate():
 def prepare_fixtures():
  r,_=candidate();assets.verify(r);path=assets.ROOT/'build/naming-bindings-fixtures';path.mkdir(parents=True,exist_ok=True);(path/'default.encnewgame').write_bytes(assets.encode(r));return path
 
+REFERENCE=json.loads((ROOT/'tests/fixtures/naming-romfs-paths.json').read_text(),object_pairs_hook=recipe.pairs)
+ORIGINAL_PAYLOAD_SHA='bc79853503a565c772a4316e8fa7d6ce9e320b66a11c47052397141f555f0395'
+
+def original_payload(raw):
+ # Compare the historical bytes without excluding path bytes or replacing the
+ # reviewed digest. Only the eleven explicitly reviewed length-prefixed paths
+ # may be restored, exactly once each; every other gameplay byte is preserved.
+ if len(raw)<140 or struct.unpack_from('<8s4I',raw)!= (b'ENCNAMES',3,len(raw),zlib.crc32(raw[24:]),2):raise ValueError('Invalid naming reference header/CRC')
+ payload=raw[24:]
+ for current,previous in REFERENCE['paths'].items():
+  a=current.encode();a=struct.pack('<I',len(a))+a
+  b=previous.encode();b=struct.pack('<I',len(b))+b
+  if payload.count(a)!=1:raise ValueError('Missing/duplicate naming resource path: '+current)
+  payload=payload.replace(a,b,1)
+ if (hashlib.sha256(payload[:-116]).hexdigest()!=ORIGINAL_PAYLOAD_SHA or
+     hashlib.sha256(payload).hexdigest()!=REFERENCE['historical_full_payload_sha256']):raise ValueError('Original naming gameplay payload changed')
+ return payload[:-116]
+
+def reseal(raw):
+ raw=bytearray(raw);struct.pack_into('<II',raw,12,len(raw),zlib.crc32(raw[24:]));return bytes(raw)
+
 class NamingBindingsTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):cls.config,cls.facts,cls.binding=recipe.load(assets.ROOT);cls.r,cls.old=candidate()
@@ -26,9 +47,25 @@ class NamingBindingsTests(unittest.TestCase):
   for k in self.old:
    if k not in ('sources','dependencies','schema','presentation','presentation_sha256'):self.assertEqual(self.old[k],self.r[k],k)
   raw=assets.encode(self.r);self.assertEqual((3,2),(struct.unpack_from('<I',raw,8)[0],struct.unpack_from('<I',raw,20)[0]))
-  # Reviewed original gameplay payload; source/data metadata changes header/tail only.
-  self.assertEqual(hashlib.sha256(raw[24:-116]).hexdigest(),'bc79853503a565c772a4316e8fa7d6ce9e320b66a11c47052397141f555f0395')
+  self.assertEqual(REFERENCE['schema'],1);self.assertEqual(REFERENCE['historical_payload_sha256'],ORIGINAL_PAYLOAD_SHA)
+  self.assertEqual([a['path']for a in self.r['resources']],list(REFERENCE['paths']))
+  self.assertEqual(len(set(REFERENCE['paths'].values())),len(REFERENCE['paths']))
+  self.assertEqual(hashlib.sha256(original_payload(raw)).hexdigest(),ORIGINAL_PAYLOAD_SHA)
+  self.assertEqual(raw,assets.PACK.read_bytes())
   assets.verify(self.r)
+ def test_path_reference_rejects_missing_duplicate_and_unknown_paths(self):
+  raw=assets.encode(self.r);path=next(iter(REFERENCE['paths'])).encode();token=struct.pack('<I',len(path))+path
+  for replacement in (b'',token+token,struct.pack('<I',len(path))+b'x'*len(path)):
+   with self.subTest(replacement=replacement),self.assertRaises(ValueError):original_payload(reseal(raw.replace(token,replacement,1)))
+ def test_path_reference_keeps_gameplay_bytes_checked(self):
+  raw=bytearray(assets.encode(self.r));struct.pack_into('<I',raw,24,self.r['maximum']+1)
+  with self.assertRaisesRegex(ValueError,'gameplay payload changed'):original_payload(reseal(raw))
+  raw=bytearray(assets.encode(self.r));raw[-1]^=1
+  with self.assertRaisesRegex(ValueError,'gameplay payload changed'):original_payload(reseal(raw))
+ def test_path_reference_checks_header_version_crc_and_truncation(self):
+  raw=assets.encode(self.r)
+  for candidate_raw in (raw[:100],raw[:-1],raw[:8]+struct.pack('<I',99)+raw[12:],raw[:16]+b'\0'*4+raw[20:]):
+   with self.subTest(size=len(candidate_raw)),self.assertRaises(ValueError):original_payload(candidate_raw)
  def test_source_tuning(self):
   self.assertEqual(self.facts['error_duration'],2.0);self.assertEqual(self.facts['navigation_point'],[8-8/6,1+4]);self.assertEqual(self.facts['dim_color'],0xff866c7a);self.assertEqual(self.binding['source_width'],320)
  def test_unknown_missing_version(self):

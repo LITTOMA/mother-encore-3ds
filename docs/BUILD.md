@@ -69,6 +69,8 @@ SD ZIP 包含真实 3DSX/CIA、所需资源及逐项核对的许可文件。运�
 
 快速运行和完整运行使用不同并发组，日常提交不会中断仍在运行的完整检查。检查结论绑定实际提交和文件树，旧内容的通过不能冒充新内容通过；纯历史同步需记录文件树一致性证据。真实执行记录和日志仍是唯一验证依据。
 
+电话与 Dad 来源转换在单次只读操作中复用已校验的剧情配方，避免每个命令重新读取来源并启动 Git 查询。首次使用及返回结果前均执行完整来源校验；配方改变或来源不匹配会阻断结果，操作结束或失败后不保留缓存。此优化不删减正常／负向测试，也不改变二进制中的游戏内容。
+
 Actions 的 `Real 3DSX and CIA (GPU 1:1:0)` 任务从仓库直接完成真实 `make 3dsx` 和 `make cia`，不要求先在本地编译。Ubuntu runner 恢复已有清单固定的官方 devkitPro SDK layer，强制核对 bannertool archive SHA-256，并从固定官方 Project_CTR 源码构建 makerom / CTRTool。
 
 任务先核对只读上游，恢复受检 PCM，再编译 ARM ELF 与嵌入 RomFS 的 3DSX，生成 CIA。CTRTool 提取真实 CIA 并逐文件比较完整 RomFS 与受检 staging；另检查 3DSX 嵌入边界及资源目录消费者依赖。FFmpeg 使用 Ubuntu 包，输出必须逐项匹配既有 PCM 长度、SHA-256 和 CRC；不同版本不允许刷新期望指纹来通过检查。

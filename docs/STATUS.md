@@ -34,7 +34,7 @@ Introduction 使用独立 `.encintro`，11 张原版纹理、专用受检字幕�
 
 ## 验证
 
-CI 检查 Linux 共享核心与数据工具，分别使用 GCC、Clang 运行主机测试和 ASan / UBSan，默认保留泄漏检查。另有 Ubuntu runner 任务恢复固定官方 SDK，执行真实 3DSX / CIA 构建与提取资源校验，不上传游戏产物。具体结果以 [Actions](https://github.com/LITTOMA/mother-encore-3ds/actions) 中对应提交的检查为准；工作流配置本身不代表检查通过。
+手动完整 CI 检查 Linux 共享核心与数据工具，分别使用 GCC、Clang 运行主机测试和 ASan / UBSan，默认保留泄漏检查。另有 Ubuntu runner 任务恢复固定官方 SDK，执行真实 3DSX / CIA 构建与提取资源校验，不上传游戏产物。具体结果以 [Actions](https://github.com/LITTOMA/mother-encore-3ds/actions) 中对应提交的检查为准；工作流配置本身不代表检查通过。
 
 主机测试、真实交叉构建、打包检查、模拟器和真机是不同验证层次。构建步骤见 [BUILD](BUILD.md)，复现与验证要求见 [TESTING](TESTING.md)。当前 Old / New 3DS 真机验收仍未完成，没有全游戏适配百分比或目标设备帧率保证。
 

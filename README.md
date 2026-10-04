@@ -26,7 +26,7 @@ python3 tools/ci_bootstrap.py
 
 ## 构建
 
-电脑上的共享核心自动测试需要 C++17 编译器、CMake 3.16+、Python 3.9+ 和 FFmpeg / ffprobe。这些测试不制作 PC 游戏版本；游戏构建目标是 3DSX / CIA。
+电脑上的共享核心手动测试需要 C++17 编译器、CMake 3.16+、Python 3.9+ 和 FFmpeg / ffprobe。这些测试不制作 PC 游戏版本；游戏构建目标是 3DSX / CIA。
 
 ```sh
 make test

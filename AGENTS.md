@@ -12,7 +12,7 @@ This is a partial native C++ 3DS port of Mother: Encore. Do not describe it as a
 7. M0 battle, movement, flags and VM are isolated fixture rules. Do not claim they reproduce upstream gameplay or substitute them for original game mechanics.
 8. Maintain pack format, capabilities, rule compatibility and save schema independently. Use stable IDs for saved identity.
 9. Preserve actual test logs and distinguish host, cross-build, packaging, emulator and hardware verification. Historical results only cover their recorded source and artifacts.
-10. Run `make test`; run sanitizers on GCC and Clang. With devkitPro, run real `make 3dsx` and `make cia` and retain logs. Keep leak checking enabled by default and document any environment limitation.
+10. Verification is manual and starts only on explicit request. Do not run CI or local test suites during routine development, pushes or PR updates. Retain comprehensive `make test`, GCC/Clang sanitizers and real `make 3dsx` / `make cia` verification for requested full runs, with actual logs and default leak checking. Resource compilation still performs its required source and format admission.
 11. Add negative tests for every new parser, opcode and version path. Never silently discard unsupported content or partially commit a failed load.
 12. Keep build outputs in `build/` or `dist/`. Never manufacture files with `.3dsx` or `.cia` extensions without invoking the real toolchain.
 13. Avoid a generic Godot or GDScript reimplementation unless the audited game requires that scope.

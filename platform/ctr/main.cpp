@@ -927,6 +927,17 @@ void house_bottom(){
     }else std::snprintf(position,sizeof(position),"Phrase %u    audio cues %u",unsigned(gameplay_scene->world.phrase()),unsigned(gameplay_scene->world.audio_request_count()));
     if(in_battle())std::snprintf(position,sizeof(position),"CPU background %.1f ms  upload %.1f ms",compose_ms,upload_ms);
     if(round_ready){const auto b=round_data.view().binding();std::snprintf(position,sizeof(position),"Round %u  HP %ld  enemy %ld  RNG %llu",unsigned(battle_round.number()),long(battle_round.battler(b.player_participant).target_hp),long(battle_round.battler(b.enemy_participant).target_hp),(unsigned long long)battle_random.raw_draw_count());}
+    if(in_battle()){
+        const char* backend="CPU";
+#ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
+        if(battle_renderer.gpu_background_active())backend="GPU spans";
+#ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
+        if(battle_renderer.gpu_texture_active())backend="GPU texture strips";
+#endif
+#endif
+        const auto used=std::strlen(position);
+        std::snprintf(position+used,sizeof(position)-used,"\nBackground: %s",backend);
+    }
     // Only changing numeric diagnostics are sampled at10Hz. Error, scope and
     // audio status are checked every frame and update their own cache at once.
     static std::string telemetry;static u64 telemetry_time=0;static bool telemetry_battle=false;

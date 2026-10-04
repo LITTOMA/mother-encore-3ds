@@ -44,14 +44,14 @@ make 3dsx
 make cia
 ```
 
-源码默认使用 CPU 背景路径。常规 GPU 开发配置显式启用背景与证书，保留 CPU fallback：
+源码默认使用 CPU 背景路径。Actions 默认下载包显式启用背景、证书和枕头纹理条带（`1:1:1`）。本地使用相同配置，保留精确 spans 与 CPU fallback：
 
 ```sh
-make 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0
-make cia EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0
+make 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=1
+make cia EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=1
 ```
 
-纹理条带是独立实验选项，不能从上述配置推导其兼容性。设备程序与主机测试共享游戏核心，M0 fixture 不进入生产设备程序。
+纹理条带恢复用于支持的 400×240 枕头背景；不支持的背景或未获纹理资源时沿用已有精确 spans / CPU 路径。战斗下屏的 `Background` 行显示实际后端。保留原 spans 配置可显式设 `EXPERIMENTAL_GPU_TEXTURE_STRIPS=0`；纯 CPU 配置为三个开关全部 `0`。此变更不构成新的模拟器帧率或真机采样精度结论。设备程序与主机测试共享游戏核心，M0 fixture 不进入生产设备程序。
 
 ## 打包
 
@@ -77,7 +77,7 @@ gh workflow run build.yml --ref <候选分支> -f mode=full
 
 电话与 Dad 来源转换在单次只读操作中复用已校验的剧情配方，避免每个命令重新读取来源并启动 Git 查询。首次使用及返回结果前均执行完整来源校验；配方改变或来源不匹配会阻断结果，操作结束或失败后不保留缓存。此优化不删减正常／负向测试，也不改变二进制中的游戏内容。
 
-Actions 的 `Real 3DSX and CIA (GPU 1:1:0)` 任务从仓库直接完成真实 `make 3dsx` 和 `make cia`，不要求先在本地编译。Ubuntu runner 恢复已有清单固定的官方 devkitPro SDK layer，强制核对 bannertool archive SHA-256，并从固定官方 Project_CTR 源码构建 makerom / CTRTool。
+Actions 的 `Real 3DSX and CIA (GPU 1:1:1)` 任务从仓库直接完成真实 `make 3dsx` 和 `make cia`，不要求先在本地编译。Ubuntu runner 恢复已有清单固定的官方 devkitPro SDK layer，强制核对 bannertool archive SHA-256，并从固定官方 Project_CTR 源码构建 makerom / CTRTool。
 
 任务先核对只读上游，恢复受检 PCM，再编译 ARM ELF 与嵌入 RomFS 的 3DSX，生成 CIA。CTRTool 提取真实 CIA 并逐文件比较完整 RomFS 与受检 staging；另检查 3DSX 嵌入边界及资源目录消费者依赖。FFmpeg 使用 Ubuntu 包，输出必须逐项匹配既有 PCM 长度、SHA-256 和 CRC；不同版本不允许刷新期望指纹来通过检查。
 

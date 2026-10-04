@@ -1,0 +1,245 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/BossDefeatFlash.tscn": "beccb44697e77bd232f1ce3173ac16d427ddc1c9d0c45b9f265423d8166dbac8",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/Battle/BattleParticipant.gd": "a6012e909f32931dd673b884bfc3564ae78741e64a18adb3a23cf5c25c9a1fdb",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb",
+    "Scripts/UI/Battle/BossDefeatFlash.gd": "3dc4a7cc686985c0021c956e511e1ca1a3560e2ef4d495769fe07c5fbd697eb1",
+    "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
+    "Graphics/Battle Sprites/doll.png": "a6ad8fa2b88d12cb51e24e8c995ee0203be97275e6e7a86c63b52170f7f5a295",
+    "Audio/Sound effects/Hurt 2.mp3": "4e66063595416c1fe404b427edb380dbaa76b52b3be61cd69135600b1d7b62b4",
+    "Audio/Sound effects/Boss Defeat.mp3": "df49d04d59acc1119de566e4f012e1b89d4134f4578927a7bd8bbe8577b39bdb",
+    "Translations/TranslatedText/battletext - sheet.csv": "740b4c183584fd29b9876c7905e5e0f53a317d63399f1bee4a809c94ab6ebd65",
+    "Translations/TranslatedText/battlers - sheet.csv": "d90fc7ffdc1a5c0550e4cb1d52b7cf5f666383d96ace8dca0d5550c9bf800b1e",
+    "Translations/TranslatedText/battleskills - sheet.csv": "cd4d4cbaeb8eec6bcda6b042fed70823c6ee790e9d3e4535e09c88a698781235",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "animations": {
+    "enemy_defeat": {
+      "source": "Nodes/Ui/Battle/EnemySprite.tscn",
+      "player_node": "AnimationPlayer",
+      "clip": "bossDefeat",
+      "role": "EnemySprite",
+      "resource": "enemy",
+      "geometry": "enemy",
+      "flags": 4,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "binding_slot": "EnemyDefeat",
+      "value_properties": {
+        ".:material:shader_param/flash_color": 9,
+        ".:material:shader_param/flash_modifier": 10,
+        ".:material:shader_param/glow_modifier": 14,
+        ".:modulate": 15
+      },
+      "method_node": ".",
+      "methods": {
+        "shake": {
+          "operation": "Shake",
+          "script": "Scripts/UI/Battle/EnemySprite.gd",
+          "signal": ""
+        },
+        "start_boss_defeat_flash": {
+          "operation": "BossFlashStart",
+          "script": "Scripts/UI/Battle/EnemySprite.gd",
+          "signal": "start_boss_defeat_flash"
+        }
+      },
+      "audio": {
+        "node": "AudioStreamPlayer",
+        "resource_id": 3,
+        "source": "Audio/Sound effects/Hurt 2.mp3",
+        "keys": {
+          "times": [
+            1.55,
+            3.05
+          ],
+          "clips": [
+            {
+              "end_offset": 0.0,
+              "start_offset": 0.0,
+              "stream": {
+                "ExtResource": 3
+              }
+            },
+            {
+              "end_offset": 0.0,
+              "start_offset": 0.0,
+              "stream": {
+                "ExtResource": 3
+              }
+            }
+          ]
+        }
+      }
+    },
+    "defeat_flash": {
+      "source": "Nodes/Ui/Battle/BossDefeatFlash.tscn",
+      "player_node": "AnimationPlayer",
+      "clip": "DefeatFlash",
+      "role": "BossFlash",
+      "resource": "none",
+      "geometry": "viewport",
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "binding_slot": "",
+      "value_properties": {
+        "ColorRect:material:shader_param/radius": 18,
+        "ColorRect:color": 8
+      },
+      "method_node": ".",
+      "methods": {
+        "defeat_enemies": {
+          "operation": "BossKillEnemies",
+          "script": "Scripts/UI/Battle/BossDefeatFlash.gd",
+          "signal": "defeat_enemies"
+        }
+      },
+      "audio": {
+        "node": "AudioStreamPlayer",
+        "resource_id": 1,
+        "source": "Audio/Sound effects/Boss Defeat.mp3",
+        "keys": {
+          "times": [
+            1
+          ],
+          "clips": [
+            {
+              "end_offset": 0.0,
+              "start_offset": 0.0,
+              "stream": {
+                "ExtResource": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "scene_links": {
+    "battle": {
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "flash_node": "BossDefeatFlash",
+      "animation": "defeat_flash"
+    },
+    "enemy": {
+      "source": "Scripts/UI/Battle/BattleParticipant.gd",
+      "constant": "EnemySprite",
+      "animation": "enemy_defeat"
+    }
+  },
+  "encounter": {
+    "battle_id": 2,
+    "enemy_source": "Data/Battlers/doll.yaml",
+    "cutscene_source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+    "cutscene_step": "6",
+    "actor": "doll",
+    "body_source": "Objects/npcdoll",
+    "sprite_source": "Graphics/Battle Sprites/doll.png",
+    "receipt_resource": "enemy",
+    "party_articles_key": "ARTICLES_NINTEN",
+    "system_source": "Scripts/UI/Battle/BattleSystem.gd"
+  },
+  "progression": {
+    "source": "Scripts/global/PartyMember.gd",
+    "character_source": "Scripts/global/Character.gd",
+    "party_constant": "NINTEN",
+    "party_id": "ninten",
+    "learn_table": "PLAYER_LEARN_SKILL_TABLE",
+    "promoted_level": 2,
+    "following_level": 3,
+    "learned_skill": "telepathy",
+    "skill_source": "Data/BattleSkills/telepathy.yaml",
+    "stat_order": [
+      "maxhp",
+      "maxpp",
+      "offense",
+      "defense",
+      "speed",
+      "iq",
+      "guts"
+    ],
+    "stat_table": "PLAYER_STAT_TARGET_TABLE",
+    "stat_labels": {
+      "maxhp": "STAT_MAXHP",
+      "maxpp": "STAT_MAXPP",
+      "offense": "STAT_OFFENSE",
+      "defense": "STAT_DEFENSE",
+      "speed": "STAT_SPEED",
+      "iq": "STAT_IQ",
+      "guts": "STAT_GUTS"
+    }
+  },
+  "texts": {
+    "experience": {
+      "key": "BATTLE_MSG_EXP_ONE_ALLY",
+      "role": 9
+    },
+    "growth": {
+      "key": "BATTLE_MSG_LEVEL_UP_STAT",
+      "role": 11
+    },
+    "level": {
+      "key": "BATTLE_MSG_LEVEL_UP",
+      "role": 10
+    },
+    "learning": {
+      "key": "BATTLE_MSG_LEARNING",
+      "role": 12
+    }
+  },
+  "translation_sources": [
+    "Translations/TranslatedText/battletext - sheet.csv",
+    "Translations/TranslatedText/battlers - sheet.csv",
+    "Translations/TranslatedText/battleskills - sheet.csv",
+    "Translations/TranslatedText/menus - sheet.csv"
+  ],
+  "source_facts": {
+    "Scripts/UI/Battle/BattleSystem.gd": [
+      "$BossDefeatFlash.connect(\"animation_finished\", self, \"_win\")",
+      "$BossDefeatFlash.connect(\"defeat_enemies\", self, \"_kill_all_enemies\")",
+      "bp.get_plate().stop_scrolling()",
+      "pause_battle()"
+    ],
+    "Scripts/UI/Battle/BattleParticipant.gd": [
+      "if is_boss() and !silent:",
+      "yield(_battle_sprite, \"start_boss_defeat_flash\")"
+    ],
+    "Scripts/UI/Battle/EnemySprite.gd": [
+      "if boss: $AnimationPlayer.play(\"bossDefeat\")",
+      ".set_shake_diminish(false).start()"
+    ],
+    "Scripts/UI/Battle/BossDefeatFlash.gd": [
+      "animation_player.play(\"DefeatFlash\")",
+      "emit_signal(\"animation_finished\")"
+    ],
+    "Scripts/global/PartyMember.gd": [
+      "return _set_exp(_exp + quantity, true, out_stats, out_learned_skills)",
+      "_exp = min(new_value, _level_to_exp(LEVEL_CAP)) as int",
+      "var new_level := _exp_to_level(_exp)",
+      "if _level != new_level:",
+      "var difference := new_value - get_base_stat(stat)",
+      "set_stat(stat, new_value)",
+      "if difference > 0:",
+      "_learn_new_skills(level_diff, out_learned_skills)",
+      "return int(lerp(lower_stat, upper_stat, level_units / 10.0))"
+    ],
+    "Scripts/global/Character.gd": [
+      "set_hp(_hp + diff)",
+      "set_pp(_pp + diff)"
+    ]
+  }
+}

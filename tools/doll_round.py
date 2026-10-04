@@ -13,13 +13,10 @@ def read(p):return json.loads(Path(p).read_text())
 def write(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v,indent=2,ensure_ascii=False)+'\n')
 def conditional_growth_policy(pm):
  """Audit the source boundary that makes growth conditional on live EXP."""
- for fragment in ['return _set_exp(_exp + quantity, true, out_stats, out_learned_skills)',
-                  '_exp = min(new_value, _level_to_exp(LEVEL_CAP)) as int',
-                  'var new_level := _exp_to_level(_exp)', 'if _level != new_level:',
-                  'var difference := new_value - get_base_stat(stat)',
-                  'set_stat(stat, new_value)', 'if difference > 0:',
-                  '_learn_new_skills(level_diff, out_learned_skills)']:
-  require(fragment in pm,'Unreviewed conditional progression source '+fragment)
+ from boss_presentation_bindings import load
+ recipe=load(ROOT);facts=recipe['source_facts'][recipe['progression']['source']]
+ for fragment in facts:require(fragment in pm,'Unreviewed conditional progression source '+fragment)
+
 def return_music_policy(enemy,system):
  """Lower the reviewed single-enemy source return branch into encounter data."""
  def function(name):return one(r'^func '+name+r'\([^\n]*\):[^\n]*\n(.*?)(?=^func |\Z)',system,name,re.M|re.S)[1]
@@ -33,79 +30,77 @@ def return_music_policy(enemy,system):
  require(type(enemy.get('boss',False))is bool and isinstance(enemy.get('music',''),str),'Unreviewed enemy music/boss value')
  return int(enemy.get('boss',False)and not enemy.get('music',''))
 
-def build():
+def build(bindings=None):
  ex=Extractor(ROOT);base=read(ROOT/'content/native-round.json');native.verify_sources(base)
  from battle_round_bindings import load
  recipe=load();skill_bindings=recipe['skills'];enemy_skill_names=[s['name']for s in skill_bindings if s['actor']=='enemy']
+ from boss_presentation_bindings import load as boss_bindings, MEDIA, EVENT, STAT, animation
+ boss_recipe=boss_bindings(ROOT,bindings);enc=boss_recipe['encounter'];progression=boss_recipe['progression'];text_bindings=boss_recipe['texts']
  ir=copy.deepcopy(base);entry=read(ROOT/'content/doll-entry.json');lamp=read(ROOT/'content/native-battle.json')
  for path,sha in base['sources'].items():require(digest(ex.upstream/path)==sha,'Changed inherited source '+path);ex.data(path)
- enemy=ex.yaml('Data/Battlers/doll.yaml');scene=ex.yaml('Data/Dialogue/Podunk/cutscenes/doll_attack.yaml')
- require(scene['6']['startbattle']=={'battlers':[{'doll':'doll'}],'actorskeep':{'doll':True},'wincutscene':'Podunk/cutscenes/doll_defeated'},'Doll encounter source changed')
+ enemy=ex.yaml(enc['enemy_source']);scene=ex.yaml(enc['cutscene_source']);request=scene[enc['cutscene_step']]['startbattle']
+ require(request['battlers']==[{enc['actor']:enc['actor']}]and request['actorskeep']=={enc['actor']:True},'Doll encounter source changed')
  require(enemy['boss'] and [x['skill']for x in enemy['skills']]==enemy_skill_names and not enemy.get('items'),'Doll AI/reward path changed')
- require(entry['binding']['stable_id']==2 and entry['enemy']['data']==enemy,'Doll entry mismatch')
+ require(entry['binding']['stable_id']==enc['battle_id'] and entry['enemy']['data']==enemy,'Doll entry mismatch')
  trans={}
- for name in['battletext','battlers','battleskills','menus']:
-  for row in csv.DictReader(io.StringIO(ex.text('Translations/TranslatedText/'+name+' - sheet.csv'))):trans[row['key']]=row['en']
+ for source in boss_recipe['translation_sources']:
+  for row in csv.DictReader(io.StringIO(ex.text(source))):trans[row['key']]=row['en']
  def text(key,role,values=None):
   raw=trans[key];value=raw
   for k,v in(values or {}).items():value=value.replace('{'+k+'}',str(v))
   require(not re.search(r'\{[^}]+\}',value),'Unhandled Doll text '+value)
   ir['texts'].append(dict(id=len(ir['texts'])+1,role=role,key=key,source_text=raw,text=value));return len(ir['texts'])-1
- name=lamp['party']['initial_save_data']['name'];ename=trans[enemy['name']];articles=trans[enemy['article']].split(',');party_articles=trans['ARTICLES_NINTEN'].split(',')
+ name=lamp['party']['initial_save_data']['name'];ename=trans[enemy['name']];articles=trans[enemy['article']].split(',');party_articles=trans[enc['party_articles_key']].split(',')
  contexts=[dict(name=name,n0=party_articles[0],n4=party_articles[4],target=ename,t0=articles[0],t1=articles[1]),dict(name=ename,n0=articles[0],n4=articles[4],target=name,t0=party_articles[0],t1=party_articles[1])]
  for i,s in enumerate(ir['skills']):
   source=ex.yaml(s['source'])
   if source['dialog']:s['dialog']=text(source['dialog'],3,contexts[0 if skill_bindings[i]['actor']=='party'else 1])
  ir['binding'].update(battle_id=entry['binding']['stable_id'],enemy_name=text(enemy['name'],4),enemy_article=text(enemy['article'],5),win_flag='',show_intro_outro=int(entry['entry']['show_intro_outro']))
  ir['enemy_choices']=[dict(skill=next(i for i,s in enumerate(ir['skills'])if Path(s['source']).stem==c['skill']),weight=c['weight'])for c in enemy['skills']]
- v=ir['victory'];v.update(initial_exp=base['victory']['reward_exp'],initial_bank=base['victory']['reward_cash'],initial_earned_cash=base['victory']['reward_cash'],reward_exp=enemy['exp'],reward_cash=enemy['cash'],exp_text=text('BATTLE_MSG_EXP_ONE_ALLY',9,dict(name=name,value=enemy['exp'])))
+ v=ir['victory'];v.update(initial_exp=base['victory']['reward_exp'],initial_bank=base['victory']['reward_cash'],initial_earned_cash=base['victory']['reward_cash'],reward_exp=enemy['exp'],reward_cash=enemy['cash'],exp_text=text(text_bindings['experience']['key'],text_bindings['experience']['role'],dict(name=name,value=enemy['exp'])))
  from native_content import parse_pack
- room=parse_pack((ROOT/'romfs/data/opening.encroom').read_bytes());body=[b for b in room['sections']['BodyRule']if room['strings'][b['source_path_string']]=='Objects/npcdoll'];require(len(body)==1,'Doll body binding');v['enemy_body_id']=body[0]['body_id']
- p=ir['presentation'];receipt=read(ROOT/'romfs/doll-preview/source.json');r=next(r for r in receipt['resources']if r['name']=='enemy');idx=next(m['resource']for m in p['media']if m['role']==2)
- resource=p['resources'][idx];resource.update(path=r['output'],width=r['width'],height=r['height'],columns=1,rows=1,sha256=digest(ROOT/'romfs'/r['output']));ex.data('Graphics/Battle Sprites/doll.png')
+ room=parse_pack((ROOT/'romfs/data/opening.encroom').read_bytes());body=[b for b in room['sections']['BodyRule']if room['strings'][b['source_path_string']]==enc['body_source']];require(len(body)==1,'Doll body binding');v['enemy_body_id']=body[0]['body_id']
+ p=ir['presentation'];receipt=read(ROOT/'romfs/doll-preview/source.json');r=next(r for r in receipt['resources']if r['name']==enc['receipt_resource']);idx=next(m['resource']for m in p['media']if m['role']==2)
+ resource=p['resources'][idx];resource.update(path=r['output'],width=r['width'],height=r['height'],columns=1,rows=1,sha256=digest(ROOT/'romfs'/r['output']));ex.data(enc['sprite_source'])
  for m in p['media']:
   if m['role']==2:m['rect'][2:]=[resource['width'],resource['height']]
  pres=Presentation(ex,p['resources'])
  for k in['media','tracks','keys','events','bindings','parameters']:setattr(pres,k,p[k])
- def rawanim(path,name,role,res,rect,value_props,method_kind):
-  source=ex.text(path);rid=node(source,'AnimationPlayer')['anims/'+name]['SubResource'];body=one(r'^\[sub_resource type="Animation" id='+str(rid)+r'\]\n(.*?)(?=^\[|\Z)',source,name,re.M|re.S)[1];props=properties(body)
-  m=pres.add(path+':'+name,role,res,props['length'],rect,flags=4 if role==2 else 0,anchor=(.5,.5)if role==2 else(0,0))
-  tracks={}
-  for key,value in props.items():
-   if key.startswith('tracks/'):
-    _,index,field=key.split('/');tracks.setdefault(int(index),{})[field]=value
+ def rawanim(binding):
+  source=ex.text(binding['source']);props,tracks=animation(source,binding);role=MEDIA[binding['role']]
+  rect=[0,0,resource['width'],resource['height']]if binding['geometry']=='enemy'else[0,0,entry['viewport']['width'],entry['viewport']['height']]
+  res=idx if binding['resource']=='enemy'else 0xffffffff
+  m=pres.add(binding['source']+':'+binding['clip'],role,res,props['length'],rect,flags=binding['flags'],anchor=binding['anchor'])
   for tr in tracks.values():
-   require(tr['enabled']and not tr['imported'],'Disabled/imported boss track');keys=tr['keys']
-   if tr['type']=='value':
-    require(tr['path']in value_props and tr['interp']==1,'Unreviewed boss value track');pres.track(m,value_props[tr['path']],keys['times'],keys['values'],keys.get('update',0),eases=keys['transitions'])
+   keys=tr['keys']
+   if tr['type']=='value':pres.track(m,binding['value_properties'][tr['path']],keys['times'],keys['values'],keys.get('update',0),eases=keys['transitions'])
    elif tr['type']=='method':
     for time,value in zip(keys['times'],keys['values']):
-     if value['method']=='shake':
-      require(role==2 and len(value['args'])==3,'Unknown shake');mag,length,interval=value['args'];ir['boss_shakes'].append(dict(time=time,magnitude=mag,length=length,interval=interval,weight=recipe['boss_shake']['value']))
-     else:require(value=={'args':[],'method':method_kind[0]},'Unknown boss callback');pres.event(m,time,method_kind[1])
-   elif tr['type']=='audio':
-    times,ref=([1.55,3.05],3)if role==2 else([1],1)
-    require(tr['path']=='AudioStreamPlayer'and keys['times']==times and all(c=={'end_offset':0.0,'start_offset':0.0,'stream':{'ExtResource':ref}}for c in keys['clips']),'Unreviewed boss audio track')
-   else:raise ValueError('Unknown boss track')
+     operation=binding['methods'][value['method']]['operation']
+     if operation=='Shake':
+      mag,length,interval=value['args'];ir['boss_shakes'].append(dict(time=time,magnitude=mag,length=length,interval=interval,weight=recipe['boss_shake']['value']))
+     else:pres.event(m,time,EVENT[operation])
+   elif tr['type']!='audio':raise ValueError('Unknown boss track')
+  if binding['binding_slot']:pres.bind(binding['binding_slot'],m)
   return m
  ir['boss_shakes']=[]
- boss=rawanim('Nodes/Ui/Battle/EnemySprite.tscn','bossDefeat',2,idx,[0,0,resource['width'],resource['height']],{'.:material:shader_param/flash_color':9,'.:material:shader_param/flash_modifier':10,'.:material:shader_param/glow_modifier':14,'.:modulate':15},('start_boss_defeat_flash',10));pres.bind('EnemyDefeat',boss)
- flash=rawanim('Nodes/Ui/Battle/BossDefeatFlash.tscn','DefeatFlash',12,0xffffffff,[0,0,entry['viewport']['width'],entry['viewport']['height']],{'ColorRect:material:shader_param/radius':18,'ColorRect:color':8},('defeat_enemies',11))
+ boss=rawanim(boss_recipe['animations']['enemy_defeat']);flash=rawanim(boss_recipe['animations']['defeat_flash'])
  ex.data(recipe['boss_shake']['source']) # load() checks the default and reviewed mechanism facts.
- system=ex.text('Scripts/UI/Battle/BattleSystem.gd');participant=ex.text('Scripts/UI/Battle/BattleParticipant.gd');sprite=ex.text('Scripts/UI/Battle/EnemySprite.gd');ex.data('Scripts/UI/Battle/BossDefeatFlash.gd')
- for f in['$BossDefeatFlash.connect("animation_finished", self, "_win")','$BossDefeatFlash.connect("defeat_enemies", self, "_kill_all_enemies")','bp.get_plate().stop_scrolling()','pause_battle()']:require(f in system,'Unreviewed boss lifecycle '+f)
- require('if is_boss() and !silent:'in participant and 'yield(_battle_sprite, "start_boss_defeat_flash")'in participant and 'if boss: $AnimationPlayer.play("bossDefeat")'in sprite,'Unreviewed boss handoff')
- pm=ex.text('Scripts/global/PartyMember.gd');character=ex.text('Scripts/global/Character.gd');skill=ex.yaml('Data/BattleSkills/telepathy.yaml')
- require('2: ["telepathy"]'in pm and skill['use_cases']==-1 and 'required_weapon'not in skill,'Unreviewed level2 learning')
- require('return int(lerp(lower_stat, upper_stat, level_units / 10.0))'in pm and 'set_hp(_hp + diff)'in character and 'set_pp(_pp + diff)'in character,'Unreviewed deterministic growth')
+ for source,facts in boss_recipe['source_facts'].items():
+  actual=ex.text(source)
+  for fact in facts:require(fact in actual,'Unreviewed boss lifecycle/growth fact')
+ system=ex.text(enc['system_source'])
+ pm=ex.text(progression['source']);skill=ex.yaml(progression['skill_source'])
  stats=lamp['party']['stat_targets'];effective=lamp['party']['effective_stats'];bases=lamp['party']['base_stats'];ir['growth']=[]
- for i,(stat,targets)in enumerate(stats.items()):
-  after=int(targets[0]+(targets[1]-targets[0])*.2);before=bases[stat];boost=effective[stat]-before;gain=after-before
-  ir['growth'].append(dict(stat=i+1,before=effective[stat],after=after+boost,text=text('BATTLE_MSG_LEVEL_UP_STAT',11,dict(stat=trans['STAT_'+stat.upper()],value=gain))if gain else 0))
- ir['encounter']=dict(boss=int(enemy['boss']),keep_actor=int(scene['6']['startbattle']['actorskeep']['doll']),post_win_script=scene['6']['startbattle']['wincutscene'],boss_flash_media=flash['id']-1,promoted_level=2,following_level_exp=room['sections']['Experience'][2]['required_total_exp'],level_text=text('BATTLE_MSG_LEVEL_UP',10,dict(name=name,value=2)),learned_skill='telepathy',learned_text=text('BATTLE_MSG_LEARNING',12,dict(n0=party_articles[0],name=name,skill=trans[skill['name']],skillLevel='')),stop_area_music_if_overworld=return_music_policy(enemy,system))
+ for stat in progression['stat_order']:
+  targets=stats[stat];after=int(targets[0]+(targets[1]-targets[0])*(progression['promoted_level']/10.0));before=bases[stat];boost=effective[stat]-before;gain=after-before
+  ir['growth'].append(dict(stat=STAT[stat],before=effective[stat],after=after+boost,text=text(text_bindings['growth']['key'],text_bindings['growth']['role'],dict(stat=trans[progression['stat_labels'][stat]],value=gain))if gain else 0))
+ ir['encounter']=dict(boss=int(enemy['boss']),keep_actor=int(request['actorskeep'][enc['actor']]),post_win_script=request['wincutscene'],boss_flash_media=flash['id']-1,promoted_level=progression['promoted_level'],following_level_exp=room['sections']['Experience'][progression['following_level']-1]['required_total_exp'],level_text=text(text_bindings['level']['key'],text_bindings['level']['role'],dict(name=name,value=progression['promoted_level'])),learned_skill=progression['learned_skill'],learned_text=text(text_bindings['learning']['key'],text_bindings['learning']['role'],dict(n0=party_articles[0],name=name,skill=trans[skill['name']],skillLevel='')),stop_area_music_if_overworld=return_music_policy(enemy,system))
  conditional_growth_policy(pm)
  ir['schema']=5;ir['scope']='Doll actions, retained actor, source boss callbacks, live carried session with conditional level2 growth and field Telepathy, typed post-win boundary and pre-return owned area music cleanup'
  ir['sources']=ex.sources;ir['dependencies']={path:digest(ROOT/path)for path in['content/native-battle.json','content/native-opening.json','content/doll-entry.json','content/native-round.json']}
+ from boss_presentation_bindings import check_round
+ check_round(ir,boss_recipe,ROOT)
  return ir
 
 def main():

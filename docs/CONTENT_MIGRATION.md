@@ -42,3 +42,5 @@
 Boss 演出 / 进度来源绑定已迁入 `content/boss-presentation-bindings.json`：场景创建与实例引用、动画 / 属性 / 方法 / signal / 音频来源、保留角色 / collision body、升级与学习身份、统计顺序及文本键都受来源语义核对。提取器和普通回合编译共用门控，默认 Doll IR 与 19,844 字节资源保持一致。已审计的 Boss 音频轨道仅保留来源核对，尚无对应原生播放映射；本次不宣称实现或验收该音频。未知轨道 / 方法 / 来源仍拒绝。
 
 电话纹理、声音、Idle / Ring 动画与事件绑定已迁入 `content/phone-presentation-bindings.json`。提取器从完整动画键生成事件；普通电话编译重新核对脚本表达式、来源轨道及 Carol 的调用 / 旗标关联。未知、损坏及合法但陈旧的映射在替换输出前拒绝。默认呈现 IR 与 `ENCPHN` 字节不变；显式重新生成的资源进入既有 `PhoneRuntime`，与原始 AnimationPlayer 的 360 帧参考对照。电话剧情前端的命令内容仍在迁移范围中。
+
+Items 的资产源 / 输出 / 裁剪、节点 / 布局、cursor 与 Info tween、声音和库存身份已迁入 `content/items-presentation-bindings.json`。普通编译重新提取并核对来源与 IR；坏映射或陈旧输出在替换包前拒绝。默认纹理与 5,596 字节资源保持一致。同一真实 Items 消费者读取改变 Info anchor / hint offset 的资源，库存身份、声音、时间线与 RNG 保持一致。

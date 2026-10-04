@@ -17,6 +17,8 @@ public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);bool valid()const{return valid_;}
  SessionSettings defaults()const;bool supports(const SessionSettings&)const;
  int speed_index(double)const;int flavor_index(const std::string&)const;int prompt_index(const std::string&)const;
+ // Source comparison uses Unicode character counts for every speed label.
+ uint32_t preview_minimum_characters=0;
  std::vector<double>speeds;std::vector<std::string>flavors,prompts,speed_labels,flavor_labels,prompt_labels;
  std::array<uint32_t,3>default_indices{};bool description=false;uint32_t text_color=0;std::array<uint32_t,4>patch{};
  SettingsRect settings_box,confirmation_settings_box,confirmation_box;std::array<float,2>confirmation_row_offset{};

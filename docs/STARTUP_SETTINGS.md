@@ -25,7 +25,7 @@ Prompt limitation: the existing native interaction selector includes implemented
 
 ## Data, persistence and ownership
 
-- `opening.encsettings` (`ENCSETUI` v1) stores source settings/confirmation UI, choices, palettes and the exact skin-path allowlist.
+- `opening.encsettings` (`ENCSETUI` v2) stores source settings/confirmation UI, choices, palettes and the exact skin-path allowlist. The source all-label character-count threshold is also external data: preview animation runs only when every translated label exceeds it; shipped threshold 5 preserves the original rule. Format v1 is rejected rather than using an embedded fallback; capability 1 and save/rules identities stay unchanged.
 - `opening.encprompts` (`ENCPRMPT` v1) stores nine current House targets and original prompt/preview resources.
 - `opening.encsession` (`ENCNSESS` v3) appends the source-supported setting choices after the unchanged v2 payload. V1 and V2 resource readers remain supported with their original default-only settings scope.
 - `ENCSNAP1` save schema, content family, rules revision, initial source snapshot values and opaque inventory UIDs are unchanged. The default snapshot SHA256 remains `a9cfbb498a20cb2bbb4a0a56dc5a87f9f13e37bac7ebbef14c875b67c93e7e9f`. No user save was read or written.

@@ -12,6 +12,16 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def rect(p):
  x,y=p.get('margin_left',0),p.get('margin_top',0);return [x,y,p.get('margin_right',0)-x,p.get('margin_bottom',0)-y]
 def add(a,b):return [a[0]+b[0],a[1]+b[1],*b[2:]]
+def preview_minimum(script):
+ # This source predicate requires all three translated labels to exceed the
+ # same character-count threshold. Unknown topology or operators fail closed.
+ body=one(r'^func _is_animation_worth_it\(\) -> bool:\s*\n(.*?)(?=^func |\Z)',script,'preview predicate',re.M|re.S)[1]
+ matches=re.findall(r'len\(tr\(\$VBoxContainer/(Fast|Medium|Slow)\.text\)\) > ([0-9]+)',body)
+ require([name for name,value in matches]==['Fast','Medium','Slow'] and len({value for name,value in matches})==1,'Unreviewed preview predicate topology')
+ remainder=re.sub(r'len\(tr\(\$VBoxContainer/(?:Fast|Medium|Slow)\.text\)\) > [0-9]+','CLAUSE',body)
+ require(re.sub(r'\s|\\','',remainder)=='returnCLAUSEandCLAUSEandCLAUSE','Unreviewed preview predicate mechanism')
+ value=int(matches[0][1]);require(0<=value<=1024,'Preview threshold outside supported bounds');return value
+
 def extract():
  ex=Extractor(ROOT);path='Maps/Naming screen.tscn';scene=ex.text(path);script=ex.text('Scripts/UI/NamingScreen/Naming screen.gd');source=choices(ex)
  for p in ['Scripts/UI/NamingScreen/TextSpeed.gd','Scripts/UI/NamingScreen/Flavors.gd','Scripts/UI/NamingScreen/ButtonPrompts.gd','Scripts/UI/colorRectFlavor.gd','Shaders/MenuFlavors.tres']:ex.data(p)
@@ -25,7 +35,7 @@ def extract():
  settings=pose('SettingsOpen');confirm=pose('ConfirmationOpen')
  def positioned(path,positions):
   r=rect(node(scene,path));r[:2]=positions.get(path+':rect_position',r[:2]);return r
- r=dict(schema=1,commit=ex.lock['commit'],scope='Original settings choices and static final confirmation layout, with source restart/cancel semantics. Source transition choreography and Introduction remain separate.',choices=source,defaults=defaults,description=save['description'],text_color=0xffffffff,patch=[node(scene,'CanvasLayer/Settings')['patch_margin_'+v]for v in ['left','top','right','bottom']],settings_box=positioned('CanvasLayer/Settings',settings),confirmation_settings_box=positioned('CanvasLayer/Settings',confirm))
+ r=dict(schema=2,preview_minimum_characters=preview_minimum(ex.text('Scripts/UI/NamingScreen/TextSpeed.gd')),commit=ex.lock['commit'],scope='Original settings choices and static final confirmation layout, with source restart/cancel semantics. Source transition choreography and Introduction remain separate.',choices=source,defaults=defaults,description=save['description'],text_color=0xffffffff,patch=[node(scene,'CanvasLayer/Settings')['patch_margin_'+v]for v in ['left','top','right','bottom']],settings_box=positioned('CanvasLayer/Settings',settings),confirmation_settings_box=positioned('CanvasLayer/Settings',confirm))
  r['rows']=[]
  for index,name in enumerate(['TextSpeed','MenuFlavor','ButtonPrompts','End']):
   key='CanvasLayer/Settings/VBoxContainer/'+name;label=node(scene,key);text=menus[label['text']]
@@ -78,6 +88,9 @@ def extract():
  r['sources']=ex.sources;return r
 
 def encode(r):
+ require(type(r.get('schema'))is int and r['schema']==2,'Unsupported settings IR schema')
+ threshold=r.get('preview_minimum_characters')
+ require(type(threshold)is int and 0<=threshold<=1024,'Preview threshold must be a bounded integer')
  raw=bytearray();put=lambda f,*v:raw.extend(struct.pack('<'+f,*v))
  def text(s):b=s.encode();put('I',len(b));raw.extend(b)
  def texts(v):put('I',len(v));[text(x)for x in v]
@@ -96,7 +109,8 @@ def encode(r):
   put('I',f['resource'])
  rect(r['confirmation_box']);label(r['certainty']);put('I',len(r['confirmation_choices']));[label(v)for v in r['confirmation_choices']]
  put('d8I',r['palette_threshold'],*r['source_palette']);put('I',len(r['palettes']));[put('8I',*v)for v in r['palettes']];texts(r['skin_paths'])
- return struct.pack('<8s4I',b'ENCSETUI',1,24+len(raw),zlib.crc32(raw),1)+raw
+ put('I',threshold)
+ return struct.pack('<8s4I',b'ENCSETUI',2,24+len(raw),zlib.crc32(raw),1)+raw
 
 def stage_files(root):
  r=json.loads(IR.read_text());base=extract();require({k:v for k,v in r.items()if k!='outputs'}==base,'Settings source recipe changed');files={Path('data/opening.encsettings'):(Path(root)/'data/opening.encsettings').read_bytes()};require(files[Path('data/opening.encsettings')]==encode(r),'Settings pack stale')
@@ -104,8 +118,12 @@ def stage_files(root):
   raw=(Path(root)/p).read_bytes();require(hashlib.sha256(raw).hexdigest()==d,'Settings texture changed');files[Path(p)]=raw
  return files
 if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','verify']);ap.add_argument('--tex3ds');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','compile','verify']);ap.add_argument('--tex3ds');a=ap.parse_args()
  if a.action=='verify':stage_files(ROOT/'romfs');print('Settings source/pack/assets verified')
+ elif a.action=='compile':
+  r=json.loads(IR.read_text());require({k:v for k,v in r.items()if k!='outputs'}==extract(),'Settings source recipe changed')
+  for p,d in r['outputs'].items():require(sha(ROOT/'romfs'/p)==d,'Settings texture changed')
+  PACK.write_bytes(encode(r));print('Settings UI pack compiled',PACK.stat().st_size,'bytes')
  else:
   r=extract();build=ROOT/'build/settings-assets';build.mkdir(parents=True,exist_ok=True);r['outputs']={}
   for i,res in enumerate(r['resources']):

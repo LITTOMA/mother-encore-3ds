@@ -8,7 +8,6 @@ import argparse,csv,hashlib,io,json,re,sys
 from pathlib import Path
 from extract_battle_entry import Extractor, PIN, ROOT, one, require, node
 
-SKILLS=['attack','tackle','float','guard']
 SYSTEM='Scripts/UI/Battle/BattleSystem.gd'
 PLATE='Scripts/UI/Battle/PartyInfoPlate.gd'
 SOURCE_LIST=[SYSTEM,PLATE,'Scripts/UI/Battle/BattleParticipant.gd','Scripts/global/Character.gd','Scripts/global/Enemy.gd','Scripts/global/PartyMember.gd','Scripts/global/globalData.gd','Scripts/UI/Battle/EnemySkill.gd','Scripts/UI/DialogueBox.gd','Scripts/global/text_tools.gd','Data/Battlers/lamp.yaml','Data/save_new_game.yaml','Data/save_overrides.yaml','Data/Items/BaseballCap.yaml','Scripts/UI/Battle/BattleDialogueBox.gd','Scripts/UI/Battle/BattleItemPool.gd','Scripts/UI/AbstractDialogueBox.gd','Scripts/global/uiManager.gd']
@@ -38,18 +37,18 @@ def return_camera_parameter(ex,room):
 
 def build(root=ROOT,presentation=None):
  ex=Extractor(root);root=Path(root)
+ from battle_round_bindings import load
+ recipe=load(root);skill_names=[s['name']for s in recipe['skills']]
  source={p:ex.text(p) for p in SOURCE_LIST}
  sysrc=source[SYSTEM];plate=source[PLATE]
  entry=json.loads((root/'content/native-battle.json').read_text())
- require(entry['commit']==PIN and entry['party']['basic_skill_id']=='attack','Unreviewed initial basic skill')
+ require(entry['commit']==PIN and entry['party']['basic_skill_id']==recipe['constants']['basic']['skill'],'Unreviewed initial basic skill')
  require(not entry['party']['statuses'] and not entry['party']['initial_save_data']['status'] and not entry['party']['usable_skills'] and not entry['party']['encore_enabled'],'Unsupported initial statuses, actions or Encore')
  require(all(value==1 for value in entry['party']['initial_save_data']['affinity_multipliers'].values()),'Unsupported initial affinity')
  require(not entry['enemy']['defaults']['passive_skills'] and not entry['enemy']['defaults']['affinity_multipliers'],'Unsupported enemy passive/affinity')
  for p,sha in entry['sources'].items():
   if p in ['Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml','Data/save_new_game.yaml','Data/save_overrides.yaml','Data/Items/BaseballCap.yaml']:
    require(hashlib.sha256(ex.data(p)).hexdigest()==sha,'Entry source mismatch: '+p)
- require('return globaldata.SKILL_ATTACK' in source['Scripts/global/PartyMember.gd'],'Basic skill mechanism changed')
- require('const SKILL_ATTACK := "attack"' in source['Scripts/global/globalData.gd'],'Basic skill binding changed')
  translations={}
  for table in ['battleskills','battletext','battlers']:
   for row in csv.DictReader(io.StringIO(ex.text('Translations/TranslatedText/'+table+' - sheet.csv'))):
@@ -71,15 +70,15 @@ def build(root=ROOT,presentation=None):
  enemy_context={'name':ename,'n0':articles[0],'n4':articles[4],'target':player,'t0':party_articles[0],'t1':party_articles[1]}
  allowed={'name','description','dialog','skill_type','action_type','use_cases','damage_type','target_type','damage_or_heal','variance','priority','miss_chance','pp_cost','hp_cost','crit_chance','fail_chance','value_type','hit_effect','pre_hit_effect','user_anim','use_sound','hit_sound','traits'}
  skills=[]
- for index,name in enumerate(SKILLS):
-  path='Data/BattleSkills/'+name+'.yaml';s=ex.yaml(path)
+ for index,skill_binding in enumerate(recipe['skills']):
+  name=skill_binding['name'];path=skill_binding['source'];s=ex.yaml(path)
   require(not(set(s)-allowed),'Unreviewed skill fields: '+name)
   require(s.get('value_type','normal')=='normal' and s.get('fail_chance',fail_default)==0,'Unreviewed value type/failure path')
   require(s['pp_cost']==0 and s['hp_cost']==0,'Unreviewed skill costs')
   require(s['use_cases']==1 and s.get('traits',[]) in ([],['guard']),'Unreviewed skill case/traits')
   require(s['action_type'] in [0,4] and s['target_type'] in [0,5] and s['skill_type'] in ['','basic','skill'],'Unreviewed action classification')
   require(s.get('damage_type','') in ['','normal'] and not s['pre_hit_effect'] and not s['use_sound'],'Unreviewed skill effect')
-  ctx=player_context if index in [0,3] else enemy_context
+  ctx=player_context if skill_binding['actor']=='party' else enemy_context
   skills.append(dict(id=index+1,source=path,name=text(s['name'],1),description=text(s['description'],2),dialog=text(s['dialog'],3,ctx) if s['dialog'] else 0,action_type=s['action_type'],target_type=s['target_type'],skill_type={'':0,'basic':1,'skill':2}[s['skill_type']],damage_type={'':0,'normal':1}[s.get('damage_type','')],traits=int('guard'in s.get('traits',[])),power=s['damage_or_heal'],variance=s['variance'],priority=s['priority'],miss_chance=s['miss_chance'],pp_cost=s['pp_cost'],hp_cost=s['hp_cost'],crit_chance=s.get('crit_chance',crit_default),user_media=4294967295,hit_media=4294967295,fail_chance=s.get('fail_chance',fail_default)))
  def num(pattern,label,source=sysrc):return float(one(pattern,source,label)[1])
  rules={
@@ -105,7 +104,7 @@ def build(root=ROOT,presentation=None):
  require(list(rules)==RULE_NAMES[:19],'Rule schema drift')
  from native_content import parse_pack
  room=parse_pack((root/'romfs/data/opening.encroom').read_bytes());battle=room['sections']['Battle'][0]
- binding=dict(battle_id=battle['stable_id'],player_participant=0,enemy_participant=1,basic_skill=0,guard_skill=3,basic_menu=1,items_menu=2,guard_menu=3,locale='en',enemy_name=text(enemy['name'],4),enemy_article=text(enemy['article'],5),enemy_outro=text('',6,enemy_context,literal=one(r'else "(\{n0\}\{name\} became tame!)"',sysrc,'default enemy outro')[1]),mortal_damage=text('BATTLE_MSG_MORTAL_DAMAGE',7,enemy_context),no_effect=text('BATTLE_MSG_TARGET_NO_EFFECT',8,player_context),show_intro_outro=int(entry['entry']['show_intro_outro']),win_flag=entry['entry']['win_flag'])
+ binding=dict(battle_id=battle['stable_id'],player_participant=0,enemy_participant=1,basic_skill=skill_names.index(recipe['constants']['basic']['skill']),guard_skill=skill_names.index(recipe['constants']['guard']['skill']),locale='en',enemy_name=text(enemy['name'],4),enemy_article=text(enemy['article'],5),enemy_outro=text('',6,enemy_context,literal=one(r'else "(\{n0\}\{name\} became tame!)"',sysrc,'default enemy outro')[1]),mortal_damage=text('BATTLE_MSG_MORTAL_DAMAGE',7,enemy_context),no_effect=text('BATTLE_MSG_TARGET_NO_EFFECT',8,player_context),show_intro_outro=int(entry['entry']['show_intro_outro']),win_flag=entry['entry']['win_flag'])
  # Menu IDs are compiler bindings to the existing independent battle-entry resource.
  from native_battle import parse_sections
  import struct
@@ -113,8 +112,8 @@ def build(root=ROOT,presentation=None):
  mids=[struct.unpack_from('<4I',sections[7],i)[0] for i in range(0,len(sections[7]),16)]
  require(len(mids)==len(entry['menu']['actions'])==3,'Unreviewed first menu')
  menus={v['id']:mids[i]for i,v in enumerate(entry['menu']['actions'])}
- binding.update(basic_menu=menus['Basic'],items_menu=menus['Items'],guard_menu=menus['Defend'])
- choices=[dict(skill=SKILLS.index(s['skill']),weight=s['weight'])for s in enemy['skills']]
+ binding.update({role+'_menu':menus[menu['identity']]for role,menu in recipe['menus'].items()})
+ choices=[dict(skill=skill_names.index(s['skill']),weight=s['weight'])for s in enemy['skills']]
  media=json.loads(Path(presentation or root/'reports/battle-victory-presentation/presentation.json').read_text())
  require(media['schema']==1,'Presentation schema')
  require('ReturnCamera'not in media['parameters'],'ReturnCamera must be derived by the victory extractor')
@@ -125,8 +124,8 @@ def build(root=ROOT,presentation=None):
  require(list(rules)==RULE_NAMES,'Complete rule schema drift')
  for p,sha in media['sources'].items():require(hashlib.sha256(ex.data(p)).hexdigest()==sha,'Presentation source mismatch '+p)
  for name,refs in media['skill_media'].items():
-  require(name in SKILLS and set(refs)=={'user_media','hit_media'},'Presentation skill media binding')
-  skills[SKILLS.index(name)].update(refs)
+  require(name in skill_names and set(refs)=={'user_media','hit_media'},'Presentation skill media binding')
+  skills[skill_names.index(name)].update(refs)
  # The one conscious party member starts below the next level threshold. This
  # adapter must refuse items, level-up/skill learning and altered entry state.
  fresh=ex.yaml('Data/save_new_game.yaml');initial=entry['party']['initial_save_data']

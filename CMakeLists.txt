@@ -624,3 +624,8 @@ if(BUILD_TESTING)
  add_test(NAME settings_preview_source COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/settings-preview.py)
  set_tests_properties(settings_preview settings_preview_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
+
+if(BUILD_TESTING)
+ add_test(NAME battle_round_source_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_battle_round_bindings)
+ set_tests_properties(battle_round_source_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()

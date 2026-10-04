@@ -16,13 +16,19 @@
 
 `TextSpeed.gd:_is_animation_worth_it` 的三项翻译标签共同长度阈值已提取到设置 IR，并由 `ENCSETUI` 格式 2 加载后交给命名流程的实际设置预览消费者。它按 Unicode 字符数比较；任意标签未超过阈值就立即显示整条文字，否则保留源严格时间门和逐字预览。受检资源默认仍为 5，改变阈值无需重新编译 C++。新增字段缺失、越界、损坏、未知格式 / 能力明确拒绝，失败保留原设置。能力 1、rules 和存档 schema 独立保持原值。
 
+## 回合动作来源绑定
+
+`content/battle-round-bindings.json` 独立声明已有回合的技能稳定顺序、角色、来源文件、基本 / 防御动作常量、菜单角色及 Boss shake 默认参数。提取工具按绑定读取原来源，核对常量值、实际动作分支与 shake 默认 / 机制片段；普通回合编译核对绑定与既有 IR，不能仅修改来源指纹就放行语义变化。基本 / 防御技能和菜单不再由提取工具内的名字列表或索引猜测；Doll shake 默认权重不再是手写数值。
+
+既有 IR 与 `ENCRND01` 输出逐项、逐字节保持一致，实际 `BattleRound` / 演出消费者继续使用同一资源格式；本切片不扩展技能、Boss 生命周期或存档 schema。Boss 的其他演出和对象 / 程序顺序仍在剩余范围中。
+
 ## 剩余范围
 
 | 范围 | 当前位置 | 下一步 |
 |---|---|---|
 | 法语与德语文本规则 | `runtime/localized_presentation.cpp`，`text_tools.gd` | 元音 / 词尾集合和输出后缀迁到语言来源绑定；保留未知标签拒绝 |
 | 战斗演出编译配方 | `tools/round_assets.py` | 已编入外部 IR 的手写轨道、布局、绑定和调参进一步迁到独立受检配方 |
-| Boss 演出及对象 / 程序顺序 | `tools/doll_round.py`、`tools/extract_battle_round.py`、`tools/extract_native_content.py` | 外置剩余来源绑定、默认调参及稳定顺序，保持现有身份 |
+| Boss 演出及对象 / 程序顺序 | `tools/doll_round.py`、`tools/extract_native_content.py` | 外置剩余 Boss 媒体 / callback / 音频绑定及对象 / 程序稳定顺序，保持现有身份 |
 | 设置编译绑定 | `tools/startup_settings_assets.py` | 外置角色顺序与皮肤角色映射，逐项核对继承来源 |
 
 加载上限、schema 编号、stride、sentinel、RNG 算法、插值数学、物理帧契约和平台预算属于机制或校验边界，不应机械地当作游戏内容迁移。M0 fixture 独立于以上实际游戏流程。完整迁移和 Old / New 3DS 真机验收仍未完成。

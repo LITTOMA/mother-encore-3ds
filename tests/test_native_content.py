@@ -2,6 +2,7 @@ import copy
 import hashlib
 import json
 import os
+import shutil
 from pathlib import Path
 import struct
 import subprocess
@@ -283,6 +284,11 @@ class NativeContentTests(unittest.TestCase):
         with tempfile.TemporaryDirectory()as tmp:
             root=Path(tmp);f=root/'source.txt';f.write_text('original')
             data=copy.deepcopy(self.ir);data['provenance']={'sources':{'source.txt':hashlib.sha256(f.read_bytes()).hexdigest()}}
+            # rules7 always requires the complete reviewed recipe. This tiny
+            # file-only fixture exercises the accepted historical hash gate.
+            with self.assertRaisesRegex(ContentError,'Missing Pillow source binding provenance'):
+                verify_provenance(data,root)
+            data['rules']=data['capabilities']=6
             verify_provenance(data,root);f.write_text('changed')
             with self.assertRaises(ContentError):verify_provenance(data,root)
 
@@ -299,10 +305,25 @@ class NativeContentTests(unittest.TestCase):
         self.assertEqual(parsed['sections']['ActorProfile'][0]['sprite_offset'],data['sections']['ActorProfile'][0]['sprite_offset'])
         with tempfile.TemporaryDirectory()as tmp:
             p=Path(tmp);source=p/'variant.json';source.write_text(json.dumps(data))
-            env=dict(os.environ,PATH=str(p/'no-toolchain'),CXX='/bin/false',CC='/bin/false',DEVKITPRO='',DEVKITARM='')
-            run=subprocess.run([sys.executable,str(ROOT/'tools/native_content.py'),'compile','--input',str(source),'--out',str(p/'variant.encroom'),'--manifest',str(p/'manifest.json')],env=env,cwd=ROOT,text=True,capture_output=True)
+            git=shutil.which('git');self.assertIsNotNone(git)
+            if os.name=='nt':
+                tools_path=str(Path(git).parent)
+            else:
+                tools_path=str(p/'no-toolchain');Path(tools_path).mkdir();(Path(tools_path)/'git').symlink_to(Path(git).resolve())
+            for compiler in ('cc','c++','gcc','g++','clang','clang++','cl','arm-none-eabi-g++'):
+                self.assertIsNone(shutil.which(compiler,path=tools_path),compiler)
+            env=dict(os.environ,PATH=tools_path,CXX='/bin/false',CC='/bin/false',DEVKITPRO='',DEVKITARM='')
+            command=[sys.executable,str(ROOT/'tools/native_content.py'),'compile','--input',str(source),'--out',str(p/'variant.encroom'),'--manifest',str(p/'manifest.json')]
+            # Schema-valid changes above prove compile_ir is data-driven, but
+            # the production CLI must reject content absent from the source IR.
+            run=subprocess.run(command,env=env,cwd=ROOT,text=True,capture_output=True)
+            self.assertNotEqual(run.returncode,0,run.stdout+run.stderr)
+            self.assertIn('Stale programme recipe/Room content',run.stderr)
+            self.assertFalse((p/'variant.encroom').exists());self.assertFalse((p/'manifest.json').exists())
+            source.write_text(json.dumps(self.ir))
+            run=subprocess.run(command,env=env,cwd=ROOT,text=True,capture_output=True)
             self.assertEqual(run.returncode,0,run.stdout+run.stderr)
-            self.assertEqual((p/'variant.encroom').read_bytes(),changed)
+            self.assertEqual((p/'variant.encroom').read_bytes(),self.blob)
             self.assertFalse(json.loads((p/'manifest.json').read_text())['cpp_compiler_invoked'])
 
     def test_production_exporters_no_longer_emit_content_headers(self):

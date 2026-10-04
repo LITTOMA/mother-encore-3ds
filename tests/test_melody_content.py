@@ -95,7 +95,16 @@ class MelodyContentTests(unittest.TestCase):
     # unchanged and every other prefix field is still checked below.
     from tools import extract_house,link_pillow_content
     legacy_doors=['Ninten_upstairs','Upstairs_Ninten','Upstairs_Living','Living_Upstairs','Upstair_Sister','Sister_Upstair']
-    with patch.object(extract_house,'SUPPORTED',legacy_doors),patch.object(link_pillow_content,'append_house',lambda ex,ir,room:ir):
+    from tools import house_source_bindings
+    load_bindings=house_source_bindings.load
+    def previous_door_view(root):
+     # Validate the current source contract before projecting the historical
+     # six-door fixture; no removed Python content table is recreated.
+     bindings=copy.deepcopy(load_bindings(root))
+     bindings['same_scene_doors']=[row for row in bindings['same_scene_doors']if row['source_path']in {'Doors/'+name for name in legacy_doors}]
+     self.assertEqual(len(bindings['same_scene_doors']),len(legacy_doors))
+     return bindings
+    with patch.object(house_source_bindings,'load',previous_door_view),patch.object(link_pillow_content,'append_house',lambda ex,ir,room:ir):
      legacy=extract_house.build(room.ROOT)
     current_boundaries=[dict(row,id=i+1)for i,row in enumerate(row for row in legacy['boundaries']if row['source_path']not in ('Doors/Upstair_Mom','Doors/Mom_Upstair'))]
     self.assertEqual(d['boundaries'],current_boundaries)

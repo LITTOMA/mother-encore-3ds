@@ -22,7 +22,7 @@ static void command(Game& g,char c){
     for(int n=0;n<ticks;++n){g.tick(i);i.pressed=0;}
 }
 int main(int argc,char** argv){
-    std::string pack="romfs/sandbox.encpak",trace,script,save="encore-sandbox.sav";bool smoke=false;
+    std::string pack="build/fixtures/sandbox.encpak",trace,script,save="encore-sandbox.sav";bool smoke=false;
     for(int i=1;i<argc;++i){std::string a=argv[i];
         if((a=="--pack"||a=="--trace"||a=="--script"||a=="--save")&&i+1<argc){auto v=std::string(argv[++i]);if(a=="--pack")pack=v;else if(a=="--trace")trace=v;else if(a=="--save")save=v;else script=v;}
         else if(a=="--smoke")smoke=true;

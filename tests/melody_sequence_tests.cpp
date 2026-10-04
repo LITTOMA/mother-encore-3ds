@@ -149,7 +149,7 @@ void check_melody(Fixture&f){
  check(f.world.effect_requests().size()==1,"Appear is delivered once on phrase transition");
  const auto appear=f.world.effect_requests().front();
  check(appear.appear&&appear.npc_index==f.doll&&appear.actor_mask==(uint64_t(1)<<f.leader),"Effect ownership is original Doll plus leader only");
- check(appear.resource_index==resource_index(f.room,"world-effect/melody.encfx"),"Appearance uses the checked external melody effect");
+ check(appear.resource_index==resource_index(f.room,"data/melody.encfx"),"Appearance uses the checked external melody effect");
  check(same(appear.center,captured_center),"Effect captures the current world camera center");
  check(f.world.audio_request_count()==before_audio+1,"Unattached root MusicArea stop leaves new melody audio running");
  check(f.world.audio_requests().back().kind==AudioRequestKind::PlayDialogueMusic&&f.world.audio_requests().back().resource_index==resource_index(f.room,"res://Audio/Music/Melodies/melody1.mp3"),"Synchronous one-shot melody uses source audio resource");

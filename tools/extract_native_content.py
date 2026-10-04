@@ -231,21 +231,21 @@ class Extractor:
             require(binding['id']==len(s['Resource'])+1,'Actor asset stable append order')
             resources[binding['role']] = self.add_resource(binding['path'], *size, *binding['grid'],
                 expected=actor_receipt['outputs'][Path(binding['path']).name]['sha256'])
-        layers_receipt = self.document('romfs/house-layers/source.json')
+        layers_receipt = self.document('content/asset-receipts/graphics/world/house-layers/source.json')
         layer_data = self.document('reports/m2-scene-reference-reviewed/house-data.json', layers_receipt['scene_export_sha256'])
         self.document('reports/m2-scene-reference-reviewed/receipt.json', layers_receipt['reference_sha256'])
         self.document('reports/m2-scene-reference-reviewed/house-source.json', layers_receipt['source_receipt_sha256'])
         for path, expected in layers_receipt['sources'].items():
             self.source(path, expected)
         overlays = overlay_records(layer_data)
-        require(layers_receipt == overlay_receipt(self.upstream, overlays, self.root / 'romfs/house-layers'),
+        require(layers_receipt == overlay_receipt(self.upstream, overlays, self.root / 'romfs/graphics/world/house-layers'),
                 'Stale overlay bundle')
         # Preserve the established Resource indices/stable IDs used by the
         # separate audio bank. New resources are appended after the old slice.
         for role in ('objects',):
             resource = layers_receipt['resources'][role]
             size = image_size(self.source(resource['source'], resource['source_sha256']))
-            resources[role] = self.add_resource('house-layers/' + resource['output'], *size, 1, 1,
+            resources[role] = self.add_resource('graphics/world/house-layers/' + resource['output'], *size, 1, 1,
                                                 expected=resource['sha256'])
         for i, row in enumerate(overlays):
             if row['flags'] == 1:
@@ -258,7 +258,7 @@ class Extractor:
                         'Objects single-tile mode cells and Above atlas-mode cells; zero Z and later Above sibling order',
                         'Objects flags=0 uses source Y-sort origin; Above flags=1 is the fixed foreground pass; '
                         'atlas UV = region position + cell atlas coordinate * tile size; original RGBA pixels and offsets retained')
-        map_receipt = self.document('romfs/map-preview/source.json')
+        map_receipt = self.document('content/asset-receipts/graphics/world/house-map/source.json')
         require(map_receipt['recipe'] == self.reviews['house-background'], 'Stale map recipe')
         for key in ('scene', 'texture'):
             self.source(map_receipt['recipe'][key], map_receipt['recipe'][key + '_sha256'])
@@ -269,11 +269,11 @@ class Extractor:
         for tile, expected in zip(map_receipt['tiles'], expected_tiles):
             require(all(tile.get(key) == value for key, value in expected.items()), 'Unreviewed map slice geometry/order')
             name = 'house-%02d.t3x' % tile['index']
-            rid = self.add_resource('map-preview/' + name, tile['width'], tile['height'], 1, 1,
+            rid = self.add_resource('graphics/world/house-map/' + name, tile['width'], tile['height'], 1, 1,
                                     expected=map_receipt['outputs'][name]['sha256'])
             s['MapDraw'].append(dict(stable_id=tile['index'] + 1, resource_index=rid,
                 x=tile['x'], y=tile['y'], w=tile['width'], h=tile['height'], flags=0))
-        self.record_map('Resource/Overlay/MapDraw', 'romfs/{actor-preview,house-layers,map-preview}/source.json',
+        self.record_map('Resource/Overlay/MapDraw', 'content/asset-receipts/graphics/{actors,world/house-layers,world/house-map}/source.json',
                         'reviewed source layouts and asset-byte SHA256; PNG IHDR dimensions')
 
         # Build normal tracks directly from reviewed native-export inputs.
@@ -489,7 +489,7 @@ class Extractor:
         self.extend_doll(hn,resources,clip_names,add_clip,sprite_position,shadow_offset,emote_initial,bubble_extra,flags,battle_args)
         foreground_resource = layers_receipt['resources']['above']
         size = image_size(self.source(foreground_resource['source'], foreground_resource['source_sha256']))
-        resources['above'] = self.add_resource('house-layers/' + foreground_resource['output'], *size, 1, 1,
+        resources['above'] = self.add_resource('graphics/world/house-layers/' + foreground_resource['output'], *size, 1, 1,
                                               expected=foreground_resource['sha256'])
         for i, row in enumerate(overlays):
             if row['flags'] == 1:

@@ -38,7 +38,7 @@ class ChoicesAssets(unittest.TestCase):
 
     def test_shared_resources_and_safe_staging(self):
         files = stage_files(ROOT / 'romfs')
-        self.assertEqual(set(map(str, files)), {'data/opening.encchoices', 'house-preview/cursor.t3x', 'battle-preview/font.t3x'})
+        self.assertEqual(set(map(str, files)), {'data/opening.encchoices', 'graphics/ui/house/cursor.t3x', 'graphics/battle/lamp/font.t3x'})
         with tempfile.TemporaryDirectory() as td:
             p = Path(td); (p / 'data').mkdir(); (p / 'data/opening.encchoices').symlink_to(PACK)
             with self.assertRaises(ValueError): stage_files(p)

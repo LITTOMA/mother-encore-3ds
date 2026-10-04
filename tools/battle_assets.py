@@ -20,9 +20,10 @@ import zlib
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.upstream import git, read_json, safe_path, write_json
+from tools.asset_receipts import receipt_path, receipt_entries
 
 RECIPE = ROOT / 'content/battle-assets.json'
-OUT = ROOT / 'romfs/battle-preview'
+OUT = ROOT / 'romfs/graphics/battle/lamp'
 MAGIC = b'ENCBPIX\0'
 HEADER = struct.Struct('<8s7I')
 
@@ -245,18 +246,18 @@ def compile_assets(root: Path, tex3ds: Path, godot: Path, out: Path = OUT) -> No
                                       result_sha256=sha(imported), imported_palette=records[0]['palette']),
                    tex3ds_sha256=sha(tex3ds), pillow_version=pillow_version, outputs=outputs,
                    limits='Font is original EBMain16px, advances checked against native Godot3.6.2; glyph raster pixels still require rendered GPU comparison. No hardware/performance claim.')
-    write_json(out / 'source.json', receipt)
+    write_json(receipt_path(out, ROOT), receipt)
     print('Compiled battle assets: ' + str(sum(v['bytes'] for v in outputs.values())) + ' bytes')
 
 
 def verify(root: Path, out: Path = OUT) -> None:
     recipe = read_json(RECIPE)
     validate_source(root, recipe, read_json(ROOT / 'upstream.lock'))
-    receipt = read_json(out / 'source.json')
+    receipt = read_json(receipt_path(out, ROOT))
     if receipt.get('schema') != 1 or receipt.get('recipe') != recipe:
         raise ValueError('Stale battle asset receipt')
     expected = {Path(r['output']).name for r in recipe['resources']} | {Path(recipe['font']['output']).name}
-    if set(receipt['outputs']) != expected or {p.name for p in out.iterdir()} != expected | {'source.json'}:
+    if set(receipt['outputs']) != expected or {p.name for p in out.iterdir()} != expected |receipt_entries(out, ROOT):
         raise ValueError('Unexpected/missing battle output files')
     for name, record in receipt['outputs'].items():
         path = safe_path(out, name)

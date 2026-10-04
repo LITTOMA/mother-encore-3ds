@@ -7,7 +7,7 @@ FROZEN="${ENCORE_MUSIC_REGION_RESOURCES:-$PWD}"
 COMMON=(-std=c++17 -O2 -Wall -Wextra -Werror -Iinclude -I"$BASE/include" -Iplatform/ctr -I"$BASE/tests/fixtures/audio_ndsp")
 CORE=("$BASE/runtime/audio_data.cpp" "$BASE/runtime/room_data.cpp" "$BASE/runtime/content.cpp" "$BASE/runtime/file_io.cpp")
 NEW=(runtime/music_regions.cpp platform/ctr/audio_player.cpp platform/ctr/music_region_player.cpp platform/ctr/music_region_service.cpp)
-ARGS=("$BASE/romfs/data/opening.encaudio" "$BASE/romfs/" "$FROZEN/romfs/data/podunk.encmusic" "$FROZEN/romfs/data/podunk.encaudio" "$FROZEN/romfs/")
+ARGS=("$BASE/romfs/sound/banks/opening.encaudio" "$BASE/romfs/" "$FROZEN/romfs/sound/banks/podunk.encmusic" "$FROZEN/romfs/sound/banks/podunk.encaudio" "$FROZEN/romfs/")
 mkdir -p build reports
 g++ "${COMMON[@]}" "${CORE[@]}" "${NEW[@]}" tests/music_region_prepare_tests.cpp -Wl,--wrap=fopen,--wrap=fread,--wrap=fclose,--wrap=ferror -o build/music_region_prepare_tests >reports/prepare-build.log 2>&1
 build/music_region_prepare_tests "${ARGS[@]}" >reports/prepare-tests.log 2>&1

@@ -54,7 +54,7 @@ def main():
     generated = build/"span-selfcheck.cpp"
     generated.write_text(source)
     staged=build/"romfs"
-    paths=["data/doll-entry.encbattle","doll-preview/doll-background.bpx","doll-preview/doll-palette.bpx"]
+    paths=["data/doll-entry.encbattle","graphics/battle/doll/doll-background.bpx","graphics/battle/doll/doll-palette.bpx"]
     for path in paths:
         destination=staged/path
         destination.parent.mkdir(parents=True,exist_ok=True)

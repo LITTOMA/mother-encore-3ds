@@ -78,8 +78,8 @@
   ],
   "cursor_loop": 0.8,
   "dependencies": {
-    "romfs/battle-preview/font.t3x": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39",
-    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68"
+    "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
+    "romfs/graphics/battle/lamp/font.t3x": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39"
   },
   "ebmain_codepoints": [
     32,
@@ -1350,95 +1350,95 @@
   "outline": 22,
   "outline_color": 4278190080,
   "outputs": {
-    "save-preview/arrow.t3x": {
+    "graphics/ui/save/arrow.t3x": {
       "bytes": 1045,
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
-    "save-preview/bottle-font.t3x": {
+    "graphics/ui/save/bottle-font.t3x": {
       "bytes": 524309,
       "sha256": "7c4e547ffed191f3de1c02a9fe54fc241527c7f18d68af590fd58192c63c5d63"
     },
-    "save-preview/bottle-outline.t3x": {
+    "graphics/ui/save/bottle-outline.t3x": {
       "bytes": 524309,
       "sha256": "ea92dc603b2fc7928d3298c6499838975832d45e53092f0aae435f8e45cbe1ed"
     },
-    "save-preview/card-banana.t3x": {
+    "graphics/ui/save/card-banana.t3x": {
       "bytes": 4117,
       "sha256": "c1d6a6b2490845457f508eb91d05c3381d8aca319a263b855288163c3c12c846"
     },
-    "save-preview/card-grape.t3x": {
+    "graphics/ui/save/card-grape.t3x": {
       "bytes": 4117,
       "sha256": "f293f6bc9b4fc7a3b499e5856b00f5d97451540bc30e46480d82fb31d18f1973"
     },
-    "save-preview/card-melon.t3x": {
+    "graphics/ui/save/card-melon.t3x": {
       "bytes": 4117,
       "sha256": "dac677bf3391e7ca5aaffc8a45b452bc5a1d29e1dbff8e1cd86becab2ebc19e0"
     },
-    "save-preview/card-mint.t3x": {
+    "graphics/ui/save/card-mint.t3x": {
       "bytes": 4117,
       "sha256": "d9cf23e30ff7d2fb84189e3dfb81e12626e08d8aa009d54f20d49bbaf04225be"
     },
-    "save-preview/card-peanut.t3x": {
+    "graphics/ui/save/card-peanut.t3x": {
       "bytes": 4117,
       "sha256": "26e16989247cd22b62d89ca0f43621bbed3cf54a2df860060169bc3db3239edd"
     },
-    "save-preview/card-plain.t3x": {
+    "graphics/ui/save/card-plain.t3x": {
       "bytes": 4117,
       "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
     },
-    "save-preview/card-strawberry.t3x": {
+    "graphics/ui/save/card-strawberry.t3x": {
       "bytes": 4117,
       "sha256": "8ea53515b558c89a2c7b40b0670a5f5a7d74f1ef5f2a8fe6759a0493f102b66d"
     },
-    "save-preview/confirm-banana.t3x": {
+    "graphics/ui/save/confirm-banana.t3x": {
       "bytes": 4117,
       "sha256": "a7eca12ac43d63cfe52ebd96fd363810747e130ec62d0377da897d90d1115319"
     },
-    "save-preview/confirm-grape.t3x": {
+    "graphics/ui/save/confirm-grape.t3x": {
       "bytes": 4117,
       "sha256": "7cce620bab0c3ae8b2697abd8e3deb38d3baf51d0a75ef147f7418f3641d6cef"
     },
-    "save-preview/confirm-melon.t3x": {
+    "graphics/ui/save/confirm-melon.t3x": {
       "bytes": 4117,
       "sha256": "4fb73c1a1b547bb281a91b87bb73beb1be21e45a3811e42eaf24d0a941d5cadb"
     },
-    "save-preview/confirm-mint.t3x": {
+    "graphics/ui/save/confirm-mint.t3x": {
       "bytes": 4117,
       "sha256": "ce56a4a45c09a28e870a2ddd9122874eadeab39654186efea9d51fb4a877cb86"
     },
-    "save-preview/confirm-peanut.t3x": {
+    "graphics/ui/save/confirm-peanut.t3x": {
       "bytes": 4117,
       "sha256": "6ac6654436cbe03a036b2c2cadab4616b21081a188bae7222764abe4331556ff"
     },
-    "save-preview/confirm-plain.t3x": {
+    "graphics/ui/save/confirm-plain.t3x": {
       "bytes": 4117,
       "sha256": "72221e2c65e0fd1f0ee8f0d0a74a3d65aab12c01c5df35b7f21fded7ee7e5c3d"
     },
-    "save-preview/confirm-strawberry.t3x": {
+    "graphics/ui/save/confirm-strawberry.t3x": {
       "bytes": 4117,
       "sha256": "78db34631f7c1f47c51e4593505b824531fbe4e54e9af892f1b79e6a0d79acb5"
     },
-    "save-preview/cursor.t3x": {
+    "graphics/ui/save/cursor.t3x": {
       "bytes": 4117,
       "sha256": "e8f17265249ad0b08b7be4ade39a16cee6819a2263370bb992bb0dd6f945f86d"
     },
-    "save-preview/icon-ana.t3x": {
+    "graphics/ui/save/icon-ana.t3x": {
       "bytes": 4117,
       "sha256": "e84048378fc026fd70cb8461965e3e7cd97580b4be1c2532bcb1b6baf4e78f18"
     },
-    "save-preview/icon-lloyd.t3x": {
+    "graphics/ui/save/icon-lloyd.t3x": {
       "bytes": 4117,
       "sha256": "fa7441713e5806d5fe0a3a46a7fca5e166019d1b7a7e3af16b464789eb94252f"
     },
-    "save-preview/icon-ninten.t3x": {
+    "graphics/ui/save/icon-ninten.t3x": {
       "bytes": 4117,
       "sha256": "fc0f7a78e16eb7c760926168210828ee36ba92964f7e6764ea5f0df1df8ed688"
     },
-    "save-preview/icon-pippi.t3x": {
+    "graphics/ui/save/icon-pippi.t3x": {
       "bytes": 4117,
       "sha256": "d02f18b3037ae8f55e8267d83fa615eabcfced6bc96ae1a3aa3f6220b619797a"
     },
-    "save-preview/icon-teddy.t3x": {
+    "graphics/ui/save/icon-teddy.t3x": {
       "bytes": 4117,
       "sha256": "02b9963ed42044b83b1e5d4381e91ec35a83aaac8308bacb8e4247844bf21f43"
     }
@@ -1457,7 +1457,7 @@
         "332943",
         "ff285f"
       ],
-      "path": "save-preview/card-plain.t3x",
+      "path": "graphics/ui/save/card-plain.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
@@ -1476,7 +1476,7 @@
         "332943",
         "ff285f"
       ],
-      "path": "save-preview/confirm-plain.t3x",
+      "path": "graphics/ui/save/confirm-plain.t3x",
       "rows": 1,
       "seams": [
         13,
@@ -1500,7 +1500,7 @@
         "36182e",
         "ff285f"
       ],
-      "path": "save-preview/card-mint.t3x",
+      "path": "graphics/ui/save/card-mint.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
@@ -1519,7 +1519,7 @@
         "36182e",
         "ff285f"
       ],
-      "path": "save-preview/confirm-mint.t3x",
+      "path": "graphics/ui/save/confirm-mint.t3x",
       "rows": 1,
       "seams": [
         13,
@@ -1543,7 +1543,7 @@
         "4f1e15",
         "ff285f"
       ],
-      "path": "save-preview/card-strawberry.t3x",
+      "path": "graphics/ui/save/card-strawberry.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
@@ -1562,7 +1562,7 @@
         "4f1e15",
         "ff285f"
       ],
-      "path": "save-preview/confirm-strawberry.t3x",
+      "path": "graphics/ui/save/confirm-strawberry.t3x",
       "rows": 1,
       "seams": [
         13,
@@ -1586,7 +1586,7 @@
         "3c1a14",
         "ff285f"
       ],
-      "path": "save-preview/card-banana.t3x",
+      "path": "graphics/ui/save/card-banana.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
@@ -1605,7 +1605,7 @@
         "3c1a14",
         "ff285f"
       ],
-      "path": "save-preview/confirm-banana.t3x",
+      "path": "graphics/ui/save/confirm-banana.t3x",
       "rows": 1,
       "seams": [
         13,
@@ -1629,7 +1629,7 @@
         "432822",
         "ff285f"
       ],
-      "path": "save-preview/card-peanut.t3x",
+      "path": "graphics/ui/save/card-peanut.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
@@ -1648,7 +1648,7 @@
         "432822",
         "ff285f"
       ],
-      "path": "save-preview/confirm-peanut.t3x",
+      "path": "graphics/ui/save/confirm-peanut.t3x",
       "rows": 1,
       "seams": [
         13,
@@ -1672,7 +1672,7 @@
         "2e2743",
         "b42d2d"
       ],
-      "path": "save-preview/card-grape.t3x",
+      "path": "graphics/ui/save/card-grape.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
@@ -1691,7 +1691,7 @@
         "2e2743",
         "b42d2d"
       ],
-      "path": "save-preview/confirm-grape.t3x",
+      "path": "graphics/ui/save/confirm-grape.t3x",
       "rows": 1,
       "seams": [
         13,
@@ -1715,7 +1715,7 @@
         "362126",
         "b42d2d"
       ],
-      "path": "save-preview/card-melon.t3x",
+      "path": "graphics/ui/save/card-melon.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
@@ -1734,7 +1734,7 @@
         "362126",
         "b42d2d"
       ],
-      "path": "save-preview/confirm-melon.t3x",
+      "path": "graphics/ui/save/confirm-melon.t3x",
       "rows": 1,
       "seams": [
         13,
@@ -1748,7 +1748,7 @@
     {
       "columns": 1,
       "height": 19,
-      "path": "save-preview/cursor.t3x",
+      "path": "graphics/ui/save/cursor.t3x",
       "rows": 1,
       "seams": [
         9,
@@ -1762,7 +1762,7 @@
     {
       "columns": 3,
       "height": 8,
-      "path": "save-preview/arrow.t3x",
+      "path": "graphics/ui/save/arrow.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Inventory/cursor.png",
@@ -1771,7 +1771,7 @@
     {
       "columns": 1,
       "height": 21,
-      "path": "save-preview/icon-ninten.t3x",
+      "path": "graphics/ui/save/icon-ninten.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Inventory/characters/ninten.png",
@@ -1780,7 +1780,7 @@
     {
       "columns": 1,
       "height": 21,
-      "path": "save-preview/icon-lloyd.t3x",
+      "path": "graphics/ui/save/icon-lloyd.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Inventory/characters/lloyd.png",
@@ -1789,7 +1789,7 @@
     {
       "columns": 1,
       "height": 21,
-      "path": "save-preview/icon-ana.t3x",
+      "path": "graphics/ui/save/icon-ana.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Inventory/characters/ana.png",
@@ -1798,7 +1798,7 @@
     {
       "columns": 1,
       "height": 21,
-      "path": "save-preview/icon-teddy.t3x",
+      "path": "graphics/ui/save/icon-teddy.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Inventory/characters/teddy.png",
@@ -1807,7 +1807,7 @@
     {
       "columns": 1,
       "height": 21,
-      "path": "save-preview/icon-pippi.t3x",
+      "path": "graphics/ui/save/icon-pippi.t3x",
       "rows": 1,
       "seams": null,
       "source": "Graphics/UI/Inventory/characters/pippi.png",
@@ -1816,7 +1816,7 @@
     {
       "columns": 1,
       "height": 192,
-      "path": "save-preview/bottle-font.t3x",
+      "path": "graphics/ui/save/bottle-font.t3x",
       "rows": 1,
       "seams": null,
       "source": "Fonts/BottleRocket.ttf",
@@ -1825,7 +1825,7 @@
     {
       "columns": 1,
       "height": 192,
-      "path": "save-preview/bottle-outline.t3x",
+      "path": "graphics/ui/save/bottle-outline.t3x",
       "rows": 1,
       "seams": null,
       "source": "Fonts/BottleRocket.ttf",

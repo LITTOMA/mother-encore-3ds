@@ -115,7 +115,7 @@
   "audio": [
     {
       "source": "Audio/Music/Poltergeist.ogg",
-      "pcm": "audio/poltergeist.pcm",
+      "pcm": "sound/music/poltergeist.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -125,7 +125,7 @@
     },
     {
       "source": "Audio/Sound effects/bash.mp3",
-      "pcm": "audio/bash.pcm",
+      "pcm": "sound/effects/bash.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -135,7 +135,7 @@
     },
     {
       "source": "Audio/Music/Battle Encounter/Encounter Enemy.mp3",
-      "pcm": "audio/encounter-enemy.pcm",
+      "pcm": "sound/music/encounter-enemy.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -145,7 +145,7 @@
     },
     {
       "source": "Audio/Music/Battle Encounter/Encounter Boss.mp3",
-      "pcm": "audio/encounter-boss.pcm",
+      "pcm": "sound/music/encounter-boss.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -155,7 +155,7 @@
     },
     {
       "source": "Audio/Sound effects/Cursor 1.mp3",
-      "pcm": "audio/cursor-move.pcm",
+      "pcm": "sound/effects/cursor-move.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -165,7 +165,7 @@
     },
     {
       "source": "Audio/Sound effects/Cursor 2.mp3",
-      "pcm": "audio/cursor-select.pcm",
+      "pcm": "sound/effects/cursor-select.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -175,7 +175,7 @@
     },
     {
       "source": "Audio/Sound effects/M3/curshoriz.wav",
-      "pcm": "audio/cursor-back.pcm",
+      "pcm": "sound/effects/cursor-back.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -185,7 +185,7 @@
     },
     {
       "source": "Audio/Sound effects/M3/bump.wav",
-      "pcm": "audio/cursor-restricted.pcm",
+      "pcm": "sound/effects/cursor-restricted.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -198,7 +198,7 @@
     },
     {
       "source": "Audio/Sound effects/M3/SMAAAASH.wav",
-      "pcm": "audio/doll-postwin-smash.pcm",
+      "pcm": "sound/effects/doll-postwin-smash.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -208,7 +208,7 @@
     },
     {
       "source": "Audio/Music/Melodies/melody1.mp3",
-      "pcm": "audio/doll-melody.pcm",
+      "pcm": "sound/music/doll-melody.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -218,7 +218,7 @@
     },
     {
       "source": "Audio/Sound effects/M3/heal_se.wav",
-      "pcm": "audio/melody-remembered.pcm",
+      "pcm": "sound/effects/melody-remembered.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -228,7 +228,7 @@
     },
     {
       "source": "Audio/Music/House.mp3",
-      "pcm": "audio/house-music.pcm",
+      "pcm": "sound/music/house-music.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -238,7 +238,7 @@
     },
     {
       "source": "Audio/Sound effects/phonering.wav",
-      "pcm": "audio/phone-ring.pcm",
+      "pcm": "sound/effects/phone-ring.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "room",
@@ -248,7 +248,7 @@
     },
     {
       "source": "Audio/Sound effects/phonehangup.wav",
-      "pcm": "audio/phone-hangup.pcm",
+      "pcm": "sound/effects/phone-hangup.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "room",
@@ -258,7 +258,7 @@
     },
     {
       "source": "Audio/Sound effects/text/Adult.mp3",
-      "pcm": "audio/text-adult.pcm",
+      "pcm": "sound/effects/text-adult.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",
@@ -268,7 +268,7 @@
     },
     {
       "source": "Audio/Music/Mother Earth.mp3",
-      "pcm": "audio/title-mother-earth.pcm",
+      "pcm": "sound/music/title-mother-earth.pcm",
       "gain_db": 0,
       "identity": {
         "kind": "stable",

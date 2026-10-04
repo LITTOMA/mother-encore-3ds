@@ -54,7 +54,7 @@ def extract():
  r['prompt_labels']=[menus[key]for key in bindings['panels'][2]['value_keys']]
  r['resources']=[]
  def resource(source,normalized=False):
-  ex.data(source);image=Image.open(ex.upstream/source).convert('RGBA');image=normalize(image,r['patch'])if normalized else image;ident=len(r['resources']);r['resources'].append(dict(path='settings-preview/ui-'+str(ident)+'.t3x',source=source,width=image.width,height=image.height,columns=1,rows=1,normalize=normalized));return ident
+  ex.data(source);image=Image.open(ex.upstream/source).convert('RGBA');image=normalize(image,r['patch'])if normalized else image;ident=len(r['resources']);r['resources'].append(dict(path='graphics/ui/settings/ui-'+str(ident)+'.t3x',source=source,width=image.width,height=image.height,columns=1,rows=1,normalize=normalized));return ident
  for binding in bindings['resources']:r[binding['role']+'_resource']=resource(texture(scene,binding['node']),True)
  r['confirmation_fields']=[]
  for binding in bindings['confirmation_fields']:
@@ -72,7 +72,7 @@ def extract():
  paths={binding['path']for binding in bindings['skin_bindings']}
  # Save cards retain their per-slot palette and must never join this registry.
  paths.update(a['path']for a in r['resources'][:3]);r['skin_paths']=sorted(paths)
- r['skin_sha256']={p:sha(ROOT/'romfs'/p)for p in paths if not p.startswith('settings-preview/')}
+ r['skin_sha256']={p:sha(ROOT/'romfs'/p)for p in paths if not p.startswith('graphics/ui/settings/')}
  for p in ['Nodes/Ui/Battle/PartyInfoPlate.tscn','Nodes/Ui/DialogueBox.tscn']:ex.data(p)
  r['sources']=ex.sources;return r
 

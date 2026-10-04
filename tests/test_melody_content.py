@@ -52,11 +52,11 @@ class MelodyContentTests(unittest.TestCase):
   house.verify_sources(self.h,self.pres);table=house.parse_pack(house.encode(house.lower(self.h,self.pres),version=self.h['schema']))
   self.assertEqual((house.STRIDES[2],house.STRIDES[11]),(104,20));self.assertEqual(table['Parameters'][-1],(19,1,0,0,0))
  def test_resource_binding_and_audio_identity(self):
-  self.assertEqual([(r['stable_id'],r['kind'],self.ir['strings'][r['path_string']])for r in self.s['Resource'][30:34]],[(31,4,'world-effect/melody.encfx'),(32,2,'res://'+melody.AUDIO[0]),(33,2,'res://'+melody.AUDIO[1]),(34,2,'res://'+melody.AUDIO[2])])
+  self.assertEqual([(r['stable_id'],r['kind'],self.ir['strings'][r['path_string']])for r in self.s['Resource'][30:34]],[(31,4,'data/melody.encfx'),(32,2,'res://'+melody.AUDIO[0]),(33,2,'res://'+melody.AUDIO[1]),(34,2,'res://'+melody.AUDIO[2])])
   self.assertEqual([(b['stable_id'],b['kind'],b['target_index'])for b in self.s['Binding'][3:7]],[(4,5,33),(5,6,30),(6,1,33),(7,7,30)])
-  self.assertEqual(self.s['Resource'][30]['sha256'],hashlib.sha256((room.ROOT/'romfs/world-effect/melody.encfx').read_bytes()).hexdigest())
+  self.assertEqual(self.s['Resource'][30]['sha256'],hashlib.sha256((room.ROOT/'romfs/data/melody.encfx').read_bytes()).hexdigest())
   from tools.audio_asset import parse_bank
-  assets=parse_bank((room.ROOT/'romfs/data/opening.encaudio').read_bytes())['assets']
+  assets=parse_bank((room.ROOT/'romfs/sound/banks/opening.encaudio').read_bytes())['assets']
   new=[a for a in assets if a['stable_id']in(32,33,34)]
   self.assertEqual([a['source_path']for a in new],['res://'+p for p in melody.AUDIO])
   self.assertEqual([(a['loop'],a['loop_start'])for a in new],[(False,0),(False,0),(True,int(2.035*44100))])

@@ -2,16 +2,16 @@
   "capabilities": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
-    "compatibility/reviews/phone-presentation.json": "fb378fcb14bb2e13f9e1811cc78dfd865777ea26efd1f57253edc7d889ee76a3",
-    "content/phone-presentation-bindings.json": "9c25609ebd78ddc7075abacc052d94feed18dcbe891c2457acfdc54ba751be11",
-    "content/phone-stage/presentation.json": "bebe9e2e48dc38cfa62032cca790be2e57b0c19b5409babd9bd4ea3529cb601b",
-    "romfs/phone-preview/phone.t3x": "75d51a98706720b861530629b498593ab0ee2329f7c80ebb9662725fcb33c784",
-    "romfs/phone-preview/source.json": "01ec74784414942d1ac674caedfef79c1d45b83004910c7b6f6bdedb1ee826c4"
+    "compatibility/reviews/phone-presentation.json": "4b6424cc1d37cb43e92351fee966ea61e1e4340c339b614c14579ebc4d8ecb77",
+    "content/asset-receipts/graphics/ui/phone/source.json": "c77050d053eb2992c773f44f5d62a07efacd8494db45f5b4522a60ee1d972420",
+    "content/phone-presentation-bindings.json": "6e03691d91193401829fbc682ba469f53e71a96f80260afadaf4f83d758330f1",
+    "content/phone-stage/presentation.json": "baf161acb30d6e9947c3aea13703c03ef169072c150244e6c528b0ffb32f84ca",
+    "romfs/graphics/ui/phone/phone.t3x": "75d51a98706720b861530629b498593ab0ee2329f7c80ebb9662725fcb33c784"
   },
   "kind": "encore.native-phone.checked-pack",
-  "pack_bytes": 860,
+  "pack_bytes": 864,
   "pack_schema": 1,
-  "pack_sha256": "2bb19c265f23e37ab3cab461464fef21d0715598644f26d2906496fbf9e41e76",
+  "pack_sha256": "4a11306a4396464c4ac36a7585665e87c981cf4664a687ac988e186ef582bc57",
   "rules": 1,
   "schema": 1,
   "scope": "Free InteractDialog phone animation, sound requests and ordered dispatch only",

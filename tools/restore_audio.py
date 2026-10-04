@@ -22,8 +22,8 @@ import ci_bootstrap
 
 ROOT = Path(__file__).resolve().parents[1]
 BANKS = (
-    ('content/native-audio.json', 'data/opening-audio-manifest.json', 'data/opening.encaudio'),
-    ('content/podunk-audio.json', 'data/podunk-audio-manifest.json', 'data/podunk.encaudio'),
+    ('content/native-audio.json', 'content/asset-receipts/audio/opening.json', 'sound/banks/opening.encaudio'),
+    ('content/podunk-audio.json', 'content/asset-receipts/audio/podunk.json', 'sound/banks/podunk.encaudio'),
 )
 
 
@@ -37,7 +37,7 @@ def sha(path):
 
 def safe_target(output, relative):
     audio.safe_path(relative)
-    audio.check(relative.startswith('audio/') and relative.endswith('.pcm'), 'Unexpected PCM path')
+    audio.check(relative.startswith(('sound/music/', 'sound/effects/')) and relative.endswith('.pcm'), 'Unexpected PCM path')
     target = output / relative
     audio.check(not output.is_symlink() and not target.is_symlink(), 'PCM symlink is not allowed')
     audio.check(target.resolve().is_relative_to(output.resolve()), 'PCM output escaped root')
@@ -52,7 +52,7 @@ def validated_plan(project, output, banks=BANKS):
     seen = set()
     for recipe_path, manifest_path, bank_path in banks:
         recipe = json.loads((project / recipe_path).read_bytes())
-        manifest = json.loads((project / 'romfs' / manifest_path).read_bytes())
+        manifest = json.loads((project / manifest_path).read_bytes())
         audio.check(recipe['schema'] == manifest['schema'] == 1, 'Unsupported audio schema')
         audio.check(recipe['upstream_commit'] == manifest['upstream_commit'] == lock['commit'], 'Audio source pin mismatch')
         encoded = json.dumps(recipe, sort_keys=True, separators=(',', ':')).encode()

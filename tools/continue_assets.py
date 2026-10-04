@@ -146,7 +146,7 @@ func run():
 '''
 def assets(tex3ds,godot):
  global b;b=checked_bindings()
- ex,r,probe=extract();build=ROOT/'build/continue-assets';build.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True);(ROOT/'romfs/continue-preview').mkdir(parents=True,exist_ok=True)
+ ex,r,probe=extract();build=ROOT/'build/continue-assets';build.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True);(ROOT/'romfs/graphics/ui/continue').mkdir(parents=True,exist_ok=True)
  write_json(build/'input.json',probe);(build/b['source_18']).write_text('config_version=4\n[logging]\nfile_logging/enable_logging=false\n');(build/'probe.gd').write_text(PROBE)
  run=subprocess.run([str(godot.resolve()),'--path',str(build.resolve()),'-s','probe.gd'],capture_output=True,text=True,timeout=30,env=dict(os.environ,XDG_DATA_HOME=str(build/'userdata')));(REPORT/'native-reference.log').write_text(run.stdout+run.stderr);require(run.returncode==0 and 'CONTINUE_REFERENCE_OK'in run.stdout,'Continue native reference failed')
  ref=read_json(build/'reference.json');require(ref['engine']['hash']=='3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8','Unknown Godot');write_json(REPORT/'native-layout.json',ref);(REPORT/'native-fade-oracle.txt').write_text(''.join(' '.join(str(v)for v in row)+'\n'for row in ref['fades']));r['viewports']=ref['viewports'];r['native_reference_sha256']=sha(REPORT/'native-layout.json');r['dependencies']={'content/native-save-menu.json':sha(save_menu_assets.RECIPE),'romfs/data/opening.encsavemenu':sha(save_menu_assets.PACK)};r['outputs']={}

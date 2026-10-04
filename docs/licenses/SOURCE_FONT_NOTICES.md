@@ -1,6 +1,6 @@
 # 已核对的 EBMain 字体来源
 
-以下字体来自固定上游 `7d9246600fffe518408f5830d4848635019005a3`。版权和许可字段读取自原始 TTF 的 `name` 表，与 `romfs/fonts/source-fonts-manifest.json` 一致。
+以下字体来自固定上游 `7d9246600fffe518408f5830d4848635019005a3`。版权和许可字段读取自原始 TTF 的 `name` 表，与 `content/asset-receipts/fonts/source.json` 一致。
 
 | 上游文件 | SHA-256 | 嵌入版权字串（原样） | 已确认许可范围 |
 |---|---|---|---|

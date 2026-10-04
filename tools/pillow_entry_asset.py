@@ -13,17 +13,18 @@ sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / 'tools'))
 from tools.extract_battle_entry import Extractor, require, properties, node
 from tools.battle_assets import encode_indexed, decode_indexed, verify as verify_common_assets
 from tools.upstream import read_json, write_json
+from tools.asset_receipts import receipt_path, receipt_entries
 from tools import native_battle
 from tools.doll_entry_asset import sha
 
 PIN = '7d9246600fffe518408f5830d4848635019005a3'
 IR_PATH = ROOT / 'content/pillow-entry.json'
-OUT = ROOT / 'romfs/pillow-preview'
+OUT = ROOT / 'romfs/graphics/battle/pillow'
 PACK = ROOT / 'romfs/data/pillow-entry.encbattle'
-RECEIPT = OUT / 'source.json'
+RECEIPT = receipt_path(OUT, ROOT)
 REPORT = ROOT / 'reports/pillow-battle'
 WORLD_SOURCE = 'Graphics/Character Sprites/Npcs/1dir/pillow.png'
-WORLD_OUTPUT = 'pillow-preview/pillow-world.t3x'
+WORLD_OUTPUT = 'graphics/battle/pillow/pillow-world.t3x'
 EXTRA_ART = [('background', 'Graphics/Battle BGS/pillow.png', 'pillow-background.bpx', 'indexed'),
              ('enemy', 'Graphics/Battle Sprites/pillow.png', 'pillow-enemy.t3x', 'texture')]
 POST_WIN = 'Podunk/cutscenes/minnie_leave'
@@ -35,7 +36,7 @@ def prepare_world(tex3ds):
     require(actor['sprite'] == 'Npcs/1dir/pillow' and animation['size'] == [4, 1], 'Changed Pillow world sprite binding')
     OUT.mkdir(parents=True, exist_ok=True)
     subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(ROOT / 'romfs' / WORLD_OUTPUT), str(ex.upstream / WORLD_SOURCE)], check=True)
-    write_json(OUT / 'world-source.json', dict(commit=PIN, sources=ex.sources, path=WORLD_OUTPUT,
+    write_json(receipt_path(OUT, ROOT, 'world-source.json'), dict(commit=PIN, sources=ex.sources, path=WORLD_OUTPUT,
                width=size[0], height=size[1], columns=4, rows=1, sha256=sha(ROOT / 'romfs' / WORLD_OUTPUT),
                tex3ds_sha256=sha(tex3ds)))
 
@@ -53,12 +54,12 @@ def extract():
     size = ex.png_size('Graphics/Battle Sprites/pillow.png'); center = [ir['viewport']['width'] / 2, 147 / 2]
     ir['enemy'].update(id='pillow', data=enemy, pool_exp=enemy['exp'], pool_cash=enemy['cash'], sprite_size=size,
                        sprite_center=center, sprite_position=[center[i] - size[i] / 2 for i in range(2)])
-    ir['presentation'].update(asset_recipe_path='content/pillow-entry.json', asset_receipt_path='romfs/pillow-preview/source.json')
+    ir['presentation'].update(asset_recipe_path='content/pillow-entry.json', asset_receipt_path='content/asset-receipts/graphics/battle/pillow/source.json')
     for row in csv.reader(io.StringIO(ex.text('Translations/TranslatedText/battlers - sheet.csv'))):
         if row and row[0] in ['PILLOW_NAME', 'PILLOW_DESC', 'PILLOW_ART']: ir['presentation']['translations_en'][row[0]] = row[1]
     for name, path, output, kind in EXTRA_ART:
         size = ex.png_size(path); ex.data(path + '.import')
-        ir['presentation']['assets'][name] = dict(source=path, texture_size=size, grid=[1, 1], frame_size=size, output='pillow-preview/' + output, kind=kind)
+        ir['presentation']['assets'][name] = dict(source=path, texture_size=size, grid=[1, 1], frame_size=size, output='graphics/battle/pillow/' + output, kind=kind)
     source = ex.text('Graphics/Battle BGS/pillow.bbg')
     layers = [dict(index=int(m[1]), properties=properties(m[2])) for m in re.finditer(r'^\[Layer (\d+)\]\s*\n(.*?)(?=^\[|\Z)', source, re.M | re.S)]
     require([l['index'] for l in layers] == [0, 1], 'Unknown Pillow layer count')
@@ -66,12 +67,12 @@ def extract():
         texture_size=ir['presentation']['assets']['background']['texture_size'], native_layer_size=ir['presentation']['assets']['background']['texture_size'],
         native_control_size=[320, 180], uv_domain='STRETCH_TILE original texture176x176; source default shader, expanded400x240 viewport; distorted coordinates repeat')
     ir['audio']['overworld_battle_music_note'] = 'Pillow music field empty; existing source overworld music ownership remains; normal encounter jingle'
-    world = read_json(OUT / 'world-source.json')
+    world = read_json(receipt_path(OUT, ROOT, 'world-source.json'))
     require(world['commit'] == PIN and sha(ROOT / 'romfs' / world['path']) == world['sha256'], 'Stale Pillow world texture')
     for path, digest in world['sources'].items(): require(sha(ex.upstream / path) == digest, 'Changed world art source'); ex.data(path)
-    actor = read_json(ROOT / 'romfs/actor-preview/source.json'); texture = actor['recipe']
+    actor = read_json(ROOT / 'content/asset-receipts/graphics/actors/source.json'); texture = actor['recipe']
     ir['binding'] = dict(stable_id=3, player_instance=0, enemy_instance=6, world_resources={
-        'world_player': dict(path='actor-preview/ninten-main.t3x', width=texture['size'][0], height=texture['size'][1], columns=texture['grid'][0], rows=texture['grid'][1], sha256=actor['outputs']['ninten-main.t3x']['sha256']),
+        'world_player': dict(path='graphics/actors/ninten-main.t3x', width=texture['size'][0], height=texture['size'][1], columns=texture['grid'][0], rows=texture['grid'][1], sha256=actor['outputs']['ninten-main.t3x']['sha256']),
         'world_enemy': {k: world[k] for k in ['path', 'width', 'height', 'columns', 'rows', 'sha256']}})
     ex.data('Graphics/Character Sprites/Ninten/main.png'); ex.data('LICENSE')
     ir['party']['runtime_state'] = 'The caller supplies live HP, PP, EXP, level and effective stats. Entry baselines must never heal or reset the carried session.'
@@ -96,10 +97,10 @@ def validate(ir):
 
 def compile_art(ir, tex3ds):
     validate(ir); verify_common_assets(ROOT / 'upstream/MOTHER-Encore')
-    receipt = copy.deepcopy(read_json(ROOT / 'romfs/battle-preview/source.json')); OUT.mkdir(parents=True, exist_ok=True)
+    receipt = copy.deepcopy(read_json(ROOT / 'content/asset-receipts/graphics/battle/lamp/source.json')); OUT.mkdir(parents=True, exist_ok=True)
     for name, path, filename, kind in EXTRA_ART:
         spec = ir['presentation']['assets'][name]; source = ROOT / 'upstream/MOTHER-Encore' / path; target = OUT / filename
-        require(spec['source'] == path and spec['kind'] == kind and spec['output'] == 'pillow-preview/' + filename, 'Unreviewed Pillow asset output')
+        require(spec['source'] == path and spec['kind'] == kind and spec['output'] == 'graphics/battle/pillow/' + filename, 'Unreviewed Pillow asset output')
         with Image.open(source) as im: image = im.convert('RGBA')
         require(list(image.size) == spec['texture_size'], 'Changed Pillow dimensions')
         if kind == 'indexed': target.write_bytes(encode_indexed(image, (1, 1))); decode_indexed(target.read_bytes())

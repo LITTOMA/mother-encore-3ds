@@ -9,7 +9,7 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 IR = ROOT / 'content/native-input.json'
-OUT = ROOT / 'romfs/input/native.encinput'
+OUT = ROOT / 'romfs/data/native.encinput'
 MAGIC = b'ENCINP01'
 HEADER = struct.Struct('<8s6I')
 PAYLOAD = struct.Struct('<10f4I')
@@ -113,7 +113,7 @@ def compile_file(source=IR, output=OUT):
 def stage_files(source_root):
     """Stage a RomFS-relative resource only after source and binary validation."""
     source_root = Path(source_root)
-    relative = Path('input/native.encinput')
+    relative = Path('data/native.encinput')
     path = (source_root / relative).resolve()
     require(path.is_relative_to(source_root.resolve()), 'Native input staged path escape')
     blob = path.read_bytes()

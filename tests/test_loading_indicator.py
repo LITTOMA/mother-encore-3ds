@@ -16,7 +16,7 @@ class LoadingIndicatorTests(unittest.TestCase):
         recipe = assets.read_json(assets.RECIPE)
         assets.verify_recipe(recipe)
         files = assets.stage_files(ROOT / 'romfs')
-        self.assertEqual(files[Path('loading-preview/indicator.encload')], assets.encode(recipe))
+        self.assertEqual(files[Path('data/indicator.encload')], assets.encode(recipe))
         self.assertEqual(recipe['texture']['source_frames'], [20, 21, 22])
         self.assertLess(len(files[Path(assets.TEXTURE_PATH)]), 20000)
         self.assertEqual([k['source_frame'] for k in recipe['animation']['keys']], [20, 21, 22, 21])

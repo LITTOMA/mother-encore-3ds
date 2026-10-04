@@ -13,9 +13,10 @@ from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.upstream import read_json,write_json,safe_path,git
+from tools.asset_receipts import receipt_path, receipt_entries
 from tools.extract_battle_entry import Extractor,node,animation,one
 RECIPE=ROOT/'content/house-assets.json'
-OUT=ROOT/'romfs/house-preview'
+OUT=ROOT/'romfs/graphics/ui/house'
 IR=ROOT/'content/native-house-presentation.json'
 
 def f32(value):return struct.unpack('<f',struct.pack('<f',value))[0]
@@ -42,7 +43,7 @@ def export_presentation(root,resources,destination=IR,write=True):
     scene=re.sub(r'(?m)^(bbcode_text|text) = \"(.*?)\"(?=\n)',lambda m:m[1]+' = '+json.dumps(m[2]),scene,flags=re.S)
     if ex.data(b['source_refs']['main_font'])!=ex.data(b['source_refs']['reviewed_font']):raise ValueError('World and reviewed font resources differ')
     box=node(scene,b['nodes']['dialogue_box']);name=node(scene,b['nodes']['name_box']);clip=node(scene,b['nodes']['clip_box']);hbox=node(scene,b['nodes']['hbox']);label=node(scene,b['nodes']['dialogue_label']);bullet=node(scene,b['nodes']['bullet']);namelabel=node(scene,b['nodes']['name_label']);cursor=node(scene,b['nodes']['dialogue_cursor'])
-    font=read_json(ROOT/'romfs/battle-preview/source.json')['font_metrics']
+    font=read_json(ROOT/'content/asset-receipts/graphics/battle/lamp/source.json')['font_metrics']
     abstract=ex.text(b['source_refs']['abstract_script']);globaldata=ex.text(b['source_refs']['global_data'])
     def c(key):return float(one(r'^const '+key+r'\s*:?=\s*([0-9.]+)',abstract,key)[1])
     def margins(n):return [n['patch_margin_'+p] for p in ['left','top','right','bottom']]
@@ -100,12 +101,12 @@ def compile_assets(root,tex3ds,out=OUT):
             if image.format!='PNG' or list(image.size)!=r['size']:raise ValueError('Changed image size/codec')
         subprocess.run([str(tex3ds),'-f','rgba8','-z','none','-o',str(target),str(src)],check=True)
         resources.append(dict(id=r['id'],role=r['role'],path=r['output'],kind=1,width=r['size'][0],height=r['size'][1],columns=r['grid'][0],rows=r['grid'][1],sha256=sha(target)))
-    write_json(out/'source.json',dict(schema=1,recipe=recipe,resources=resources,tex3ds_sha256=sha(tex3ds),outputs={Path(r['path']).name:dict(sha256=r['sha256'],bytes=(out/Path(r['path']).name).stat().st_size) for r in resources}))
+    write_json(receipt_path(out, ROOT),dict(schema=1,recipe=recipe,resources=resources,tex3ds_sha256=sha(tex3ds),outputs={Path(r['path']).name:dict(sha256=r['sha256'],bytes=(out/Path(r['path']).name).stat().st_size) for r in resources}))
     export_presentation(root,resources)
 
 def verify(root,out=OUT):
-    recipe=read_json(RECIPE);validate_source(root,recipe,read_json(ROOT/'upstream.lock'));receipt=read_json(out/'source.json')
-    if receipt.get('recipe')!=recipe or set(receipt['outputs'])!={Path(r['output']).name for r in recipe['resources']} or {p.name for p in out.iterdir()}!=set(receipt['outputs'])|{'source.json'}:raise ValueError('Stale/missing/unexpected house assets')
+    recipe=read_json(RECIPE);validate_source(root,recipe,read_json(ROOT/'upstream.lock'));receipt=read_json(receipt_path(out, ROOT))
+    if receipt.get('recipe')!=recipe or set(receipt['outputs'])!={Path(r['output']).name for r in recipe['resources']} or {p.name for p in out.iterdir()}!=set(receipt['outputs'])|receipt_entries(out, ROOT):raise ValueError('Stale/missing/unexpected house assets')
     for name,r in receipt['outputs'].items():
         p=safe_path(out,name)
         if sha(p)!=r['sha256'] or p.stat().st_size!=r['bytes']:raise ValueError('Changed house output: '+name)
@@ -116,7 +117,7 @@ def main():
         if a.action=='compile':
             if not a.tex3ds:raise ValueError('Need tex3ds')
             compile_assets(a.root,a.tex3ds)
-        elif a.action=='extract':export_presentation(a.root,read_json(OUT/'source.json')['resources'])
+        elif a.action=='extract':export_presentation(a.root,read_json(receipt_path(OUT, ROOT))['resources'])
         else:verify(a.root)
         print('House assets '+a.action+' complete');return 0
     except (ValueError,OSError,KeyError,TypeError,subprocess.SubprocessError) as e:print('HOUSE ASSET ERROR:',e,file=sys.stderr);return 1

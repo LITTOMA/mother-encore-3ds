@@ -5,7 +5,7 @@ commands=[[str(sdk/'tools/bin/picasso'),'-o',str(b/'shader.shbin'),str(r/'tests/
 subprocess.run(commands[0],check=True);blob=(b/'shader.shbin').read_bytes();(b/'pillow_texture_shader.hpp').write_text('#pragma once\n#include <cstdint>\nalignas(4) static const uint8_t pillow_texture_shader[]={'+','.join(str(x)for x in blob)+'};\n')
 commands += [[str(arm/'bin/arm-none-eabi-g++'),'-std=gnu++17','-O2','-g','-Wall','-Wextra','-Wpedantic','-ffp-contract=off','-march=armv6k','-mtune=mpcore','-mfloat-abi=hard','-mtp=soft','-D__3DS__','-fno-exceptions','-fno-rtti','-ffunction-sections','-fdata-sections','-I'+str(r),'-I'+str(r/'include'),'-I'+str(b),'-isystem',str(sdk/'libctru/include'),'-specs=3dsx.specs','-Wl,--gc-sections',str(r/'tests/gpu_pillow_tev_arm.cpp'),str(r/'runtime/battle_data.cpp'),str(r/'runtime/file_io.cpp'),'-L'+str(sdk/'libctru/lib'),'-lcitro3d','-lctru','-lm','-o',str(b/'tev.elf')]]
 rom=b/'romfs';(rom/'data').mkdir(parents=True,exist_ok=True);(rom/'pillow-preview').mkdir(exist_ok=True)
-for f in ['data/pillow-entry.encbattle','pillow-preview/pillow-background.bpx']:shutil.copy2(r/'romfs'/f,rom/f)
+for f in ['data/pillow-entry.encbattle','graphics/battle/pillow/pillow-background.bpx']:shutil.copy2(r/'romfs'/f,rom/f)
 commands.append([str(sdk/'tools/bin/smdhtool'),'--create','Pillow TEV','36 exact color pairs','Encore tests',str(r/'assets/icon.png'),str(b/'tev.smdh')])
 commands.append([str(sdk/'tools/bin/3dsxtool'),str(b/'tev.elf'),str(b/'tev.3dsx'),'--smdh='+str(b/'tev.smdh'),'--romfs='+str(rom)])
 with(p/'tev-build.log').open('w')as log:

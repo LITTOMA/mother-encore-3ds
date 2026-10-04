@@ -84,7 +84,7 @@ class BattleAssetsTests(unittest.TestCase):
         return dict(schema=1, commit='reviewed', game_version='fixture', licence_review='fixture only',
                     sources={p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in [source, font]},
                     resources=[dict(id=0, name='fixture', source='source.png', kind='texture', size=[4, 2],
-                                    grid=[1, 1], output='battle-preview/fixture.t3x', fix_alpha_edges=False)],
+                                    grid=[1, 1], output='graphics/battle/lamp/fixture.t3x', fix_alpha_edges=False)],
                     font=dict(source='font.ttf', id=1, size=16, first=32, last=126))
 
     def test_source_pin_and_changes(self):
@@ -124,7 +124,7 @@ class BattleAssetsTests(unittest.TestCase):
         # This project deliberately fails if its required source-backed content
         # has not been compiled; a missing asset is not a skipped passing test.
         assets.verify(assets.ROOT / 'upstream/MOTHER-Encore')
-        receipt = json.loads((assets.OUT / 'source.json').read_text())
+        receipt = json.loads(assets.receipt_path(assets.OUT, assets.ROOT).read_text())
         transition = assets.decode_indexed((assets.OUT / 'transition.bpx').read_bytes())
         self.assertEqual((transition['width'], transition['height'], transition['frames']), (320, 180, 25))
         self.assertEqual(set(transition['palette']), {(0, 0, 0, 0), (0, 255, 0, 0), (255, 255, 255, 0),

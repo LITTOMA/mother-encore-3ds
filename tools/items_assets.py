@@ -15,10 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.extract_battle_entry import Extractor, PIN, animation, node, one, properties, require
 from tools.upstream import read_json, safe_path, write_json
+from tools.asset_receipts import receipt_path, receipt_entries
 
 RECIPE = ROOT / 'content/items-assets.json'
 IR = ROOT / 'content/native-items.json'
-OUT = ROOT / 'romfs/items-preview'
+OUT = ROOT / 'romfs/graphics/ui/items'
 REPORT = ROOT / 'reports/items-menu-source'
 NIL = 0xffffffff
 PARAMETERS = ['SourceViewport','PlatformViewport','GridShape','LabelSize','CursorOffset','CursorMotion','InfoMotion','DisabledColor','NormalColor','ScrollColor','InputBinding','InputRepeat']
@@ -103,7 +104,7 @@ def validate_source(root,recipe,lock):
             x,y,w,h=r['crop'];require(all(type(v)is int for v in r['crop']) and x>=0 and y>=0 and w>0 and h>0 and x+w<=r['size'][0] and y+h<=r['size'][1],'Invalid Items crop')
         if 'glyph' in r:require(r['glyph']==b['platform']['hint_glyph'] and r['source']==b['source_refs']['hint_font'] and not r['reuse'],'Unreviewed hint glyph')
         if 'quarter_turns' in r:require(r['quarter_turns'] in [1,3] and r['grid']==[3,1] and r['size']==[24,8] and not r['reuse'],'Unreviewed cursor rotation')
-        require(r['reuse'] == (not r['output'].startswith('items-preview/')),'Invalid Items reuse destination')
+        require(r['reuse'] == (not r['output'].startswith('graphics/ui/items/')),'Invalid Items reuse destination')
 
 PROBE = '''extends SceneTree
 var config
@@ -251,7 +252,7 @@ def compile_assets(ex,recipe,tex3ds,reference,build):
         resources.append(dict(id=r['id'],path=r['output'],kind=1,width=width,height=height,columns=r['grid'][0],rows=r['grid'][1],sha256=sha(target)))
         if not r['reuse']:outputs[target.name]=dict(bytes=target.stat().st_size,sha256=sha(target))
     receipt=dict(schema=1,recipe=recipe,dependencies=dependencies,resources=resources,outputs=outputs,tex3ds_sha256=sha(tex3ds),native_reference_sha256=sha(REPORT/'native-layout.json'),native_helper_sha256=sha(build/'probe.gd'),native_input_sha256=sha(build/'probe-input.json'),limits='Source-pinned lossless textures and native headless layout/font evidence only; no GPU, emulator, audibility, or hardware claim')
-    write_json(OUT/'source.json',receipt)
+    write_json(receipt_path(OUT, ROOT),receipt)
     return resources,dependencies
 
 def export_ir(ex,definitions,raw,reference,resources,dependencies,write=True):
@@ -336,9 +337,9 @@ def export_ir(ex,definitions,raw,reference,resources,dependencies,write=True):
 
 def verify(root=ROOT/'upstream/MOTHER-Encore'):
     recipe=read_json(RECIPE);validate_source(root,recipe,read_json(ROOT/'upstream.lock'))
-    receipt=read_json(OUT/'source.json');require(receipt['schema']==1 and receipt['recipe']==recipe,'Stale Items receipt')
+    receipt=read_json(receipt_path(OUT, ROOT));require(receipt['schema']==1 and receipt['recipe']==recipe,'Stale Items receipt')
     expected={Path(r['output']).name for r in recipe['resources'] if not r['reuse']}
-    require(set(receipt['outputs'])==expected and {p.name for p in OUT.iterdir()}==expected|{'source.json'},'Missing/unexpected Items output')
+    require(set(receipt['outputs'])==expected and {p.name for p in OUT.iterdir()}==expected|receipt_entries(OUT, ROOT),'Missing/unexpected Items output')
     for path,digest in receipt['dependencies'].items():require(sha(ROOT/path)==digest,'Changed Items dependency '+path)
     for r in receipt['resources']:require(sha(safe_path(ROOT/'romfs',r['path']))==r['sha256'],'Changed Items resource '+r['path'])
     for name,r in receipt['outputs'].items():require((OUT/name).stat().st_size==r['bytes'],'Changed Items output length')

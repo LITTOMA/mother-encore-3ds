@@ -28,7 +28,7 @@ NO_INDEX=0xffffffff
 
 def lower(ir,root=ROOT):
     require(ir==phone_assets.build(root),'Unreviewed phone staging IR')
-    phone_assets.verify(root,Path(root)/'romfs/phone-preview')
+    phone_assets.verify(root,Path(root)/'romfs/graphics/ui/phone')
     bindings=phone_assets.presentation.load(root)
     clips_by_name={row['animation']['name']: row for row in bindings['clips']}
     clip_names={row['role']: row['animation']['name']for row in bindings['clips']}
@@ -170,7 +170,7 @@ def main():
                 kind='encore.native-phone.checked-pack',pack_schema=1,capabilities=1,rules=1,
                 pack_sha256=sha(out),pack_bytes=len(blob),
                 dependencies={p:sha(args.root/p)for p in ['content/phone-presentation-bindings.json','content/phone-stage/presentation.json',
-                    'compatibility/reviews/phone-presentation.json','romfs/phone-preview/source.json','romfs/phone-preview/phone.t3x']},
+                    'compatibility/reviews/phone-presentation.json','content/asset-receipts/graphics/ui/phone/source.json','romfs/graphics/ui/phone/phone.t3x']},
                 sections=dict(zip(SECTIONS,STRIDES)),scope='Free InteractDialog phone animation, sound requests and ordered dispatch only'))
         else:require(out.read_bytes()==blob,'Stale compiled phone pack')
         print('Native phone '+args.action+' complete: '+str(len(blob))+' bytes');return 0

@@ -69,5 +69,5 @@ class DollRoundTests(unittest.TestCase):
    ir=copy.deepcopy(self.ir);ir['presentation']['events'][m['first_event']]['kind']=1
    with self.assertRaises(n.ContentError):n.parse_pack(n.encode(n.lower(ir,verify_assets=False)))
  def test_staging_uses_companion_pack(self):
-  files=n.stage_files(ROOT/'romfs',Path('data/doll-entry.encround'));self.assertEqual(files[Path('data/doll-entry.encround')],self.blob);self.assertIn(Path('doll-preview/doll-enemy.t3x'),files)
+  files=n.stage_files(ROOT/'romfs',Path('data/doll-entry.encround'));self.assertEqual(files[Path('data/doll-entry.encround')],self.blob);self.assertIn(Path('graphics/battle/doll/doll-enemy.t3x'),files)
 if __name__=='__main__':unittest.main()

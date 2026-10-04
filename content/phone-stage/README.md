@@ -20,7 +20,7 @@ python -m unittest discover -s tests -p 'test_phone_*.py' -v
 
 `record` calls the original YAML parser offline. Exact phrase shapes and full
 source fingerprints reject unreviewed changes. The original phone atlas is
-compiled unchanged to RGBA8 `romfs/phone-preview/phone.t3x`.
+compiled unchanged to RGBA8 `romfs/graphics/ui/phone/phone.t3x`.
 
 ## Source frontend
 

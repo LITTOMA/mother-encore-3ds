@@ -42,6 +42,8 @@ make cia
 
 CIA 另需 makerom 和 bannertool。生成文件位于 `dist/`。完整依赖、资源恢复和 GPU 配置见 [构建说明](docs/BUILD.md)，运行方式见 [安装与操作](docs/INSTALL.md)。
 
+游戏资源按用途统一组织到 `graphics/`、`sound/`、`fonts/`、`data/` 和 `licenses/`，构建记录留在 RomFS 外。见 [资源目录](docs/ROMFS_LAYOUT.md)。
+
 ## 来源与许可证
 
 本项目自行编写的代码、工具和原创文档采用 [MIT](LICENSE)。上游代码、游戏素材、音乐、字体和运行库保留各自版权与许可；根目录 MIT 不覆盖这些第三方内容。素材与音乐遵循上游的游戏相关用途条件，已核实字体部分保留 OFL。Nintendo 来源字形的独立授权仍未确认。

@@ -83,7 +83,8 @@ def validate_animation(ir,ex,docs):
         require(type(row['role'])is str and row['role']not in roles and row['path']not in paths and row['recipe_key']not in keys,'Duplicate actor asset binding')
         roles.add(row['role']);paths.add(row['path']);keys.add(row['recipe_key'])
         require(row['recipe_key']in recipe and type(recipe[row['recipe_key']])is str and recipe[row['recipe_key']]in ir['sources'],'Unknown actor asset recipe/source selector')
-        name=Path(row['path']).name;require('romfs/'+row['path']==a['sprite_manifest'].rsplit('/',1)[0]+'/'+name and name in manifest['outputs'],'Unknown actor asset output mapping')
+        asset=Path(row['path']);name=asset.name
+        require(a['sprite_manifest']=='content/asset-receipts/'+asset.parent.as_posix()+'/source.json' and name in manifest['outputs'],'Unknown actor asset output mapping')
         output=ex.file('romfs/'+row['path']);require(hashlib.sha256(output.read_bytes()).hexdigest()==manifest['outputs'][name]['sha256'],'Stale actor resource bytes')
         raw=output.read_bytes();source=ex.source(recipe[row['recipe_key']]).read_bytes()
         require(len(raw)>=21 and len(source)>=24 and source[:8]==b'\x89PNG\r\n\x1a\n','Invalid actor texture source/header')

@@ -70,7 +70,7 @@ def load(root=ROOT,recipe=None):
  indices={key:assets[value]['id']-1 for key,value in b['asset_roles'].items()}
  require(type(b['reuse'])is dict and set(b['reuse'])=={r['name']for r in b['assets']if r['reuse']},'Incomplete Items reuse receipt mapping')
  for key,row in b['reuse'].items():
-  fields(row,['receipt','name'],'reuse binding');require(safe(row['receipt'])and row['receipt'].startswith('romfs/')and row['receipt'].endswith('/source.json')and safe(row['name']),'Invalid Items reuse binding')
+  fields(row,['receipt','name'],'reuse binding');require(safe(row['receipt'])and row['receipt'].startswith('content/asset-receipts/')and row['receipt'].endswith('/source.json')and safe(row['name']),'Invalid Items reuse binding')
   receipt=read(root/row['receipt']);matches=[r for r in receipt['resources']if r['name']==row['name']]
   require(len(matches)==1 and [matches[0]['width'],matches[0]['height']]==assets[key]['size'],'Items reused resource source geometry')
   target=root/'romfs'/assets[key]['output'];entry=receipt['outputs'][target.name]
@@ -164,7 +164,7 @@ def check_round(ir,root=ROOT):
  require(Path(root)==assets.ROOT,'Items extractor root must match compiler checkout')
  ex,definitions,raw=assets.reviewed_extract()
  reference=read(root/'reports/items-menu-source/native-layout.json')
- receipt=read(root/'romfs/items-preview/source.json')
+ receipt=read(root/'content/asset-receipts/graphics/ui/items/source.json')
  require(assets.make_recipe(ex)==receipt['recipe'],'Items asset binding differs from compiled checked source receipt')
  require(sha(root/'reports/items-menu-source/native-layout.json')==receipt['native_reference_sha256']and reference['engine']['hash']==load(root)['probe']['engine'],'Changed Items checked native layout/reference')
  expected=assets.export_ir(ex,definitions,raw,reference,receipt['resources'],receipt['dependencies'],write=False)

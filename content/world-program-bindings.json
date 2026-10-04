@@ -359,16 +359,16 @@
       "target_binding_id": null
     }
   ],
-  "presentation_manifest": "romfs/house-preview/source.json",
+  "presentation_manifest": "content/asset-receipts/graphics/ui/house/source.json",
   "effect": {
     "id": 31,
-    "path": "world-effect/melody.encfx",
+    "path": "data/melody.encfx",
     "source_ir": "content/native-world-effect.json",
     "scene": "Nodes/Ui/effects/melodyBG.tscn"
   },
   "animation": {
     "sprite_review": "compatibility/reviews/ninten-sprite-v0410.json",
-    "sprite_manifest": "romfs/actor-preview/source.json",
+    "sprite_manifest": "content/asset-receipts/graphics/actors/source.json",
     "direction_review": "compatibility/reviews/ninten-animation-v0410.json",
     "actor_script": "Scripts/Main/actor.gd",
     "npc_scene": "Nodes/Reusables/npc.tscn",
@@ -404,7 +404,7 @@
       {
         "id": 1,
         "role": "primary",
-        "path": "actor-preview/ninten-main.t3x",
+        "path": "graphics/actors/ninten-main.t3x",
         "recipe_key": "texture",
         "grid": [
           10,
@@ -414,7 +414,7 @@
       {
         "id": 2,
         "role": "lamp",
-        "path": "actor-preview/lamp.t3x",
+        "path": "graphics/actors/lamp.t3x",
         "recipe_key": "lamp_texture",
         "grid": [
           4,
@@ -424,7 +424,7 @@
       {
         "id": 3,
         "role": "emote",
-        "path": "actor-preview/emotes.t3x",
+        "path": "graphics/actors/emotes.t3x",
         "recipe_key": "emote_texture",
         "grid": [
           12,
@@ -434,7 +434,7 @@
       {
         "id": 4,
         "role": "shadow",
-        "path": "actor-preview/shadow.t3x",
+        "path": "graphics/actors/shadow.t3x",
         "recipe_key": "shadow_texture",
         "grid": [
           1,

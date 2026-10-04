@@ -47,7 +47,7 @@ def read_source(upstream):
         require(r['music']=='' and r['loop'] and r['diegetic'] is False,'Unreviewed intro/diegetic region '+f['name'])
         source='res://Audio/Music/'+r['loop']; ident=stable(source)
         if source not in [a['source_path'] for a in tracks]:
-            relative=source[6:];tracks.append(dict(stable_id=ident,source_path=source,source_sha256=sha((upstream/relative).read_bytes()),import_sha256=sha((upstream/(relative+'.import')).read_bytes()),pcm_path='audio/podunk-'+str(ident)+'.pcm',gain_db=0))
+            relative=source[6:];tracks.append(dict(stable_id=ident,source_path=source,source_sha256=sha((upstream/relative).read_bytes()),import_sha256=sha((upstream/(relative+'.import')).read_bytes()),pcm_path='sound/music/podunk-'+str(ident)+'.pcm',gain_db=0))
         path='Music/'+f['name']; shapes=[]
         for sf,sp in rows:
             if sf.get('parent')==path:
@@ -76,7 +76,7 @@ def validate(recipe):
         require(set(a)=={'stable_id','source_path','source_sha256','import_sha256','pcm_path','gain_db'},'Invalid track fields')
         require(type(a['stable_id'])is int and 0<a['stable_id']<2**32 and a['stable_id'] not in ids,'Invalid track identity');ids.add(a['stable_id'])
         text(a['source_path']);require(a['source_path'].startswith('res://Audio/Music/') and a['source_path'] not in paths,'Invalid track source');paths.add(a['source_path'])
-        text(a['pcm_path']);require(a['pcm_path'].startswith('audio/') and '..' not in a['pcm_path'] and ':' not in a['pcm_path'],'Unsafe PCM path')
+        text(a['pcm_path']);require(a['pcm_path'].startswith('sound/music/') and '..' not in a['pcm_path'] and ':' not in a['pcm_path'],'Unsafe PCM path')
         digest(a['source_sha256']);digest(a['import_sha256']);number(a['gain_db'],-120,0)
     require(type(recipe['regions'])is list and 1<=len(recipe['regions'])<=64,'Invalid region count')
     rid=set();rpath=set();shapes=set()
@@ -109,21 +109,24 @@ def compile_audio_isolated(recipe,upstream,output,compiler):
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='podunk-audio-',dir=output.parent) as temporary:
         staging=Path(temporary);manifest=compiler(recipe,upstream,staging)
-        owned={a['pcm_path'] for a in recipe['assets']}|{'data/opening.encaudio'}
+        owned={a['pcm_path'] for a in recipe['assets']}|{'sound/banks/opening.encaudio'}
         require({row['path'] for row in manifest['files']}==owned,'Unexpected Podunk audio output')
         for row in manifest['files']:
-            old=row['path'];target='data/podunk.encaudio' if old=='data/opening.encaudio' else old
-            require(target=='data/podunk.encaudio' or re.fullmatch(r'audio/podunk-[0-9]+\.pcm',target),'Non-Podunk output path')
+            old=row['path'];target='sound/banks/podunk.encaudio' if old=='sound/banks/opening.encaudio' else old
+            require(target=='sound/banks/podunk.encaudio' or re.fullmatch(r'sound/music/podunk-[0-9]+\.pcm',target),'Non-Podunk output path')
             data=(staging/old).read_bytes();require(len(data)==row['size'] and sha(data)==row['sha256'],'Podunk audio output fingerprint mismatch')
         for row in manifest['files']:
-            old=row['path'];target='data/podunk.encaudio' if old=='data/opening.encaudio' else old
+            old=row['path'];target='sound/banks/podunk.encaudio' if old=='sound/banks/opening.encaudio' else old
             dest=output/target;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(staging/old,dest);row['path']=target
-        (output/'data/podunk-audio-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+        from audio_asset import manifest_path
+        report = manifest_path(output, 'podunk')
+        report.parent.mkdir(parents=True, exist_ok=True)
+        report.write_text(json.dumps(manifest,indent=2)+'\n')
         return manifest
 def main():
     p=argparse.ArgumentParser();p.add_argument('action',choices=['audit','compile','audio']);p.add_argument('--project',type=Path,default=DEFAULT_PROJECT);p.add_argument('--output',type=Path,default=ROOT/'romfs');args=p.parse_args();upstream=args.project/'upstream/MOTHER-Encore';recipe_path=ROOT/'content/podunk-music.json'
     if args.action=='audit':recipe_path.write_text(json.dumps(read_source(upstream),indent=2)+'\n');return
-    recipe=json.loads(recipe_path.read_text());binary=checked(recipe,upstream);args.output.mkdir(parents=True,exist_ok=True);(args.output/'data').mkdir(exist_ok=True);(args.output/'data/podunk.encmusic').write_bytes(binary)
+    recipe=json.loads(recipe_path.read_text());binary=checked(recipe,upstream);(args.output/'sound/banks').mkdir(parents=True,exist_ok=True);(args.output/'sound/banks/podunk.encmusic').write_bytes(binary)
     if args.action=='audio':
         sys.path.insert(0,str(args.project/'tools'));import audio_asset
         base=json.loads((args.project/'content/native-audio.json').read_text());base['assets']=recipe['tracks'];(ROOT/'content/podunk-audio.json').write_text(json.dumps(base,indent=2)+'\n')

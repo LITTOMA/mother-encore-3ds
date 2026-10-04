@@ -1,0 +1,407 @@
+{
+  "limits": "Lossless repacking; nearest sampling; no GPU/hardware comparison claim",
+  "outputs": {
+    "bash.t3x": {
+      "bytes": 16405,
+      "sha256": "83b83f653d62a11f6324a4eb0238d0b60622ed8dff431cdb5e33cb42d914d170"
+    },
+    "box.t3x": {
+      "bytes": 4117,
+      "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
+    },
+    "dialogue_cursor.t3x": {
+      "bytes": 1045,
+      "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
+    },
+    "enemy.t3x": {
+      "bytes": 16405,
+      "sha256": "6db2d0eb4d5e801869f6d2ae928ca4c5f84aea1fbd1706bb32f83ecb083bccea"
+    },
+    "miss.t3x": {
+      "bytes": 8213,
+      "sha256": "cf6826fdef170d0a548e338576a592f38e32ee3152ddda9d8c07c2d0bed884e3"
+    },
+    "numbers.t3x": {
+      "bytes": 32789,
+      "sha256": "fb563e635faeac950a7da7dba3b614791d6d423c7442d024c98b4b1b067d0dff"
+    },
+    "party.t3x": {
+      "bytes": 4194325,
+      "sha256": "9150ff5f2088bb586119a4f293a92d54355d27d249985d31dd1c2882a729c3fb"
+    },
+    "pointer.t3x": {
+      "bytes": 4117,
+      "sha256": "9f0b4a78e1c3bf86c8274ad3038c70af45e73d6003992168526acbd2b5ac473d"
+    },
+    "smash.t3x": {
+      "bytes": 524309,
+      "sha256": "13b0e32bd006f2e7b1ce729fc1dedfa27becbdf1e055b2e413dda5d73847bb84"
+    },
+    "victory.t3x": {
+      "bytes": 32789,
+      "sha256": "4df05b495c27b645e6f4da5a1a0bb706866602864e541ac0ad3425f385d40d01"
+    },
+    "world_party.t3x": {
+      "bytes": 2097173,
+      "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2"
+    }
+  },
+  "recipe": {
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "game_version": "0.4.1.0",
+    "licence_review": "Pinned LICENSE permits assets in related game forks/modifications. Original game assets used only in Mother: Encore port and retain upstream conditions.",
+    "resources": [
+      {
+        "grid": [
+          10,
+          18
+        ],
+        "id": 1,
+        "name": "party",
+        "output": "graphics/battle/round/party.t3x",
+        "output_grid": [
+          15,
+          12
+        ],
+        "size": [
+          640,
+          1152
+        ],
+        "source": "Graphics/Character Sprites/Ninten/battle.png"
+      },
+      {
+        "grid": [
+          1,
+          1
+        ],
+        "id": 2,
+        "name": "enemy",
+        "output": "graphics/battle/round/enemy.t3x",
+        "output_grid": [
+          1,
+          1
+        ],
+        "size": [
+          33,
+          49
+        ],
+        "source": "Graphics/Battle Sprites/lamp.png"
+      },
+      {
+        "grid": [
+          3,
+          1
+        ],
+        "id": 3,
+        "name": "bash",
+        "output": "graphics/battle/round/bash.t3x",
+        "output_grid": [
+          3,
+          1
+        ],
+        "size": [
+          96,
+          32
+        ],
+        "source": "Graphics/UI/Battle/bash-effect.png"
+      },
+      {
+        "grid": [
+          1,
+          1
+        ],
+        "id": 4,
+        "name": "pointer",
+        "output": "graphics/battle/round/pointer.t3x",
+        "output_grid": [
+          1,
+          1
+        ],
+        "size": [
+          25,
+          25
+        ],
+        "source": "Graphics/UI/Battle/pointer.png"
+      },
+      {
+        "grid": [
+          26,
+          1
+        ],
+        "id": 5,
+        "name": "numbers",
+        "output": "graphics/battle/round/numbers.t3x",
+        "output_grid": [
+          26,
+          1
+        ],
+        "size": [
+          286,
+          11
+        ],
+        "source": "Graphics/UI/Battle/hit_number.png"
+      },
+      {
+        "grid": [
+          1,
+          1
+        ],
+        "id": 6,
+        "name": "miss",
+        "output": "graphics/battle/round/miss.t3x",
+        "output_grid": [
+          1,
+          1
+        ],
+        "size": [
+          40,
+          19
+        ],
+        "source": "Graphics/UI/Battle/miss.png"
+      },
+      {
+        "grid": [
+          1,
+          1
+        ],
+        "id": 7,
+        "name": "box",
+        "output": "graphics/battle/round/box.t3x",
+        "output_grid": [
+          1,
+          1
+        ],
+        "size": [
+          24,
+          24
+        ],
+        "source": "Graphics/UI/Overworld/flavours/defaultbox.png"
+      },
+      {
+        "grid": [
+          6,
+          1
+        ],
+        "id": 8,
+        "name": "smash",
+        "output": "graphics/battle/round/smash.t3x",
+        "output_grid": [
+          3,
+          2
+        ],
+        "size": [
+          1008,
+          76
+        ],
+        "source": "Graphics/Battle Effects/Smaaaaash!.png"
+      },
+      {
+        "grid": [
+          3,
+          1
+        ],
+        "id": 9,
+        "name": "dialogue_cursor",
+        "output": "graphics/battle/round/dialogue_cursor.t3x",
+        "output_grid": [
+          3,
+          1
+        ],
+        "size": [
+          24,
+          8
+        ],
+        "source": "Graphics/UI/Inventory/cursor.png"
+      },
+      {
+        "grid": [
+          1,
+          6
+        ],
+        "id": 10,
+        "name": "victory",
+        "output": "graphics/battle/round/victory.t3x",
+        "output_grid": [
+          1,
+          6
+        ],
+        "size": [
+          93,
+          48
+        ],
+        "source": "Graphics/UI/Battle/youwin.png"
+      },
+      {
+        "grid": [
+          10,
+          20
+        ],
+        "id": 11,
+        "name": "world_party",
+        "output": "graphics/battle/round/world_party.t3x",
+        "output_grid": [
+          10,
+          20
+        ],
+        "size": [
+          310,
+          580
+        ],
+        "source": "Graphics/Character Sprites/Ninten/main.png"
+      }
+    ],
+    "schema": 1,
+    "sources": {
+      "Graphics/Battle Effects/Smaaaaash!.png": "64b72d368268ccd502ef5182906e2a1969ce71037cfcefddfd37aa7c6747dd63",
+      "Graphics/Battle Effects/Smaaaaash!.png.import": "de6acb06fc1be8cf07b4fb7d5d6f37bafa0a574008778d3967566232e47be968",
+      "Graphics/Battle Sprites/lamp.png": "9a368ef8ba5727af433c84077db7ad25ecbfe66cdc7cc6a041c407b6e30cc385",
+      "Graphics/Battle Sprites/lamp.png.import": "c62e28f5cf645b2d4e4c68ae7c4522d4f9664202c9742eb508eeefcd2ce93699",
+      "Graphics/Character Sprites/Ninten/battle.png": "b541795453ef23b211486d741e0485a68b1df9b5ea533d07ada1051197a95a5b",
+      "Graphics/Character Sprites/Ninten/battle.png.import": "6617cccb749bbcdc105245fb6d03692c1a015f5dbd7dbb9500fbe3330c5b6ef2",
+      "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+      "Graphics/Character Sprites/Ninten/main.png.import": "26679ede556b6d516e35824e952c32ac0657c622951eb88559d447164cd756fb",
+      "Graphics/UI/Battle/bash-effect.png": "2be5cc450467d2c661800dbd6f5da92f15e9a64d5f0dedade8eadec44fa93576",
+      "Graphics/UI/Battle/bash-effect.png.import": "cb40d39dd928f1744e841b3e29ff4673c11452cf8e525b565df55edbdd043de3",
+      "Graphics/UI/Battle/hit_number.png": "68e34a644687b719d7af43bcccab1340baa9076b545f415017630eae2cc1325e",
+      "Graphics/UI/Battle/hit_number.png.import": "db3a5bb3532d0de761b6de461911b394e00f0f2dd280e294fff706966eb15ad7",
+      "Graphics/UI/Battle/miss.png": "999b1ecf268c358217d5b0ea0e55beb067a03000e52d14f3400306f0517179ec",
+      "Graphics/UI/Battle/miss.png.import": "714dbcd34dcad84a082e55643f9a1e1ce15e20a6ecad9ac4627133e1bda54692",
+      "Graphics/UI/Battle/pointer.png": "fbfe2b28eae78d1bc09fd9dd891b528db74ff6b1d1dc95e92ff0d3f39674172d",
+      "Graphics/UI/Battle/pointer.png.import": "5d10fc9cf85cdcc0b897553b94011ebc318b93356af23a707b67611a1ff4df93",
+      "Graphics/UI/Battle/youwin.png": "6d2e5be0fe534e59424ec284d59e93661a699d89f55fe3d635de6297d619c2b1",
+      "Graphics/UI/Battle/youwin.png.import": "0559ed44b6f54effa840a172fc78c3bcb90499dca4c725689e88e25806cb5fbd",
+      "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+      "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+      "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+      "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+      "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315"
+    }
+  },
+  "resources": [
+    {
+      "columns": 15,
+      "height": 768,
+      "id": 1,
+      "kind": 1,
+      "name": "party",
+      "path": "graphics/battle/round/party.t3x",
+      "rows": 12,
+      "sha256": "9150ff5f2088bb586119a4f293a92d54355d27d249985d31dd1c2882a729c3fb",
+      "width": 960
+    },
+    {
+      "columns": 1,
+      "height": 49,
+      "id": 2,
+      "kind": 1,
+      "name": "enemy",
+      "path": "graphics/battle/round/enemy.t3x",
+      "rows": 1,
+      "sha256": "6db2d0eb4d5e801869f6d2ae928ca4c5f84aea1fbd1706bb32f83ecb083bccea",
+      "width": 33
+    },
+    {
+      "columns": 3,
+      "height": 32,
+      "id": 3,
+      "kind": 1,
+      "name": "bash",
+      "path": "graphics/battle/round/bash.t3x",
+      "rows": 1,
+      "sha256": "83b83f653d62a11f6324a4eb0238d0b60622ed8dff431cdb5e33cb42d914d170",
+      "width": 96
+    },
+    {
+      "columns": 1,
+      "height": 25,
+      "id": 4,
+      "kind": 1,
+      "name": "pointer",
+      "path": "graphics/battle/round/pointer.t3x",
+      "rows": 1,
+      "sha256": "9f0b4a78e1c3bf86c8274ad3038c70af45e73d6003992168526acbd2b5ac473d",
+      "width": 25
+    },
+    {
+      "columns": 26,
+      "height": 11,
+      "id": 5,
+      "kind": 1,
+      "name": "numbers",
+      "path": "graphics/battle/round/numbers.t3x",
+      "rows": 1,
+      "sha256": "fb563e635faeac950a7da7dba3b614791d6d423c7442d024c98b4b1b067d0dff",
+      "width": 286
+    },
+    {
+      "columns": 1,
+      "height": 19,
+      "id": 6,
+      "kind": 1,
+      "name": "miss",
+      "path": "graphics/battle/round/miss.t3x",
+      "rows": 1,
+      "sha256": "cf6826fdef170d0a548e338576a592f38e32ee3152ddda9d8c07c2d0bed884e3",
+      "width": 40
+    },
+    {
+      "columns": 1,
+      "height": 24,
+      "id": 7,
+      "kind": 1,
+      "name": "box",
+      "path": "graphics/battle/round/box.t3x",
+      "rows": 1,
+      "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+      "width": 24
+    },
+    {
+      "columns": 3,
+      "height": 152,
+      "id": 8,
+      "kind": 1,
+      "name": "smash",
+      "path": "graphics/battle/round/smash.t3x",
+      "rows": 2,
+      "sha256": "13b0e32bd006f2e7b1ce729fc1dedfa27becbdf1e055b2e413dda5d73847bb84",
+      "width": 504
+    },
+    {
+      "columns": 3,
+      "height": 8,
+      "id": 9,
+      "kind": 1,
+      "name": "dialogue_cursor",
+      "path": "graphics/battle/round/dialogue_cursor.t3x",
+      "rows": 1,
+      "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516",
+      "width": 24
+    },
+    {
+      "columns": 1,
+      "height": 48,
+      "id": 10,
+      "kind": 1,
+      "name": "victory",
+      "path": "graphics/battle/round/victory.t3x",
+      "rows": 6,
+      "sha256": "4df05b495c27b645e6f4da5a1a0bb706866602864e541ac0ad3425f385d40d01",
+      "width": 93
+    },
+    {
+      "columns": 10,
+      "height": 580,
+      "id": 11,
+      "kind": 1,
+      "name": "world_party",
+      "path": "graphics/battle/round/world_party.t3x",
+      "rows": 20,
+      "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
+      "width": 310
+    }
+  ],
+  "schema": 1,
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+}

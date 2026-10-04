@@ -165,7 +165,7 @@ def write(path: Path, data: bytes) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input', type=Path, default=Path('content/sandbox.json'))
-    parser.add_argument('--out', type=Path, default=Path('romfs/sandbox.encpak'))
+    parser.add_argument('--out', type=Path, default=Path('build/fixtures/sandbox.encpak'))
     parser.add_argument('--manifest', type=Path, default=Path('build/content-manifest.json'))
     parser.add_argument('--source-map', type=Path, default=Path('build/story-source-map.json'))
     a = parser.parse_args()

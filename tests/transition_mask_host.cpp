@@ -61,7 +61,7 @@ static void cancellation(){
     std::printf("CANCELLATION PASS checkpoints=%zu index_chunk=8192 rows_checked_in_both_passes=1 final_commit_checked=1 success_exact=1\n",all_checks);
 }
 int main(){
-    Image real;require(load("romfs/battle-preview/transition.bpx",real),"checked real mask");
+    Image real;require(load("romfs/graphics/battle/lamp/transition.bpx",real),"checked real mask");
     for(const auto canvas:{Plan::Canvas{320,180,0,0},Plan::Canvas{400,240,40,30}}){
         compare(real,canvas,0xffffffffu,0x82ff0000u,12);
         compare(real,canvas,0x0000ff00u,0x7d9f3473u,0); // equality wins even for alpha-zero old colors

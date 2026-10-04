@@ -60,7 +60,7 @@
     ]
   },
   "outputs": {
-    "loading-preview/ninten-walk-right.t3x": {
+    "graphics/ui/loading/ninten-walk-right.t3x": {
       "bytes": 16405,
       "sha256": "d8d4a3b4d7306de037b0c311a3d1bd31532d0148b0b0d0b52dc39a662ad705d8"
     }
@@ -83,7 +83,7 @@
     "frame_height": 29,
     "frame_width": 31,
     "height": 29,
-    "path": "loading-preview/ninten-walk-right.t3x",
+    "path": "graphics/ui/loading/ninten-walk-right.t3x",
     "source": "Graphics/Character Sprites/Ninten/main.png",
     "source_frames": [
       20,

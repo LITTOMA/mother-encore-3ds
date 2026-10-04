@@ -20,6 +20,12 @@ import tempfile
 import zlib
 
 ROOT=Path(__file__).resolve().parents[1]
+
+def manifest_path(output, bank='opening'):
+    output = Path(output)
+    if output.resolve() == (ROOT / 'romfs').resolve():
+        return ROOT / 'content/asset-receipts/audio' / (bank + '.json')
+    return output / 'data' / (bank + '-audio-manifest.json')
 sys.path.insert(0,str(ROOT))
 HEADER=64
 STRIDE=96
@@ -138,7 +144,7 @@ def compile_assets(recipe,upstream,output,ffmpeg='ffmpeg',ffprobe='ffprobe'):
             check(type(entry['stable_id']) is int and 0<entry['stable_id']<2**32,'Invalid stable audio ID')
             check(type(entry['gain_db']) in (int,float) and math.isfinite(entry['gain_db']) and -120<=entry['gain_db']<=0,'Invalid asset gain')
             relative=source_path(entry['source_path']);safe_path(entry['pcm_path'])
-            check(entry['pcm_path'] not in ('data/opening.encaudio','data/opening-audio-manifest.json'),'PCM path collides with metadata')
+            check(entry['pcm_path'] not in ('sound/banks/opening.encaudio','data/opening-audio-manifest.json'),'PCM path collides with metadata')
             verified(upstream,relative,entry['source_sha256'])
             imported=verified(upstream,relative+'.import',entry['import_sha256']);loop,offset=import_settings(imported,entry['source_path'])
             src=upstream/relative
@@ -158,23 +164,22 @@ def compile_assets(recipe,upstream,output,ffmpeg='ffmpeg',ffprobe='ffprobe'):
             record=dict(stable_id=entry['stable_id'],source_sha256=entry['source_sha256'],sample_rate=rate,channels=channels,loop=loop,frames=frames,loop_start=loop_frame,pcm_bytes=len(pcm),pcm_crc32=zlib.crc32(pcm)&0xffffffff,pcm_path=entry['pcm_path'],source_path=entry['source_path'],gain_db=entry['gain_db'])
             records.append(record);payloads[entry['pcm_path']]=pcm
             receipts.append(dict(**record,source_sample_rate=source_rate,import_sha256=entry['import_sha256'],loop_offset_seconds=offset,pcm_sha256=sha(pcm),command=command))
-    bank=build_bank(records,master,floor);payloads['data/opening.encaudio']=bank
+    bank=build_bank(records,master,floor);payloads['sound/banks/opening.encaudio']=bank
     manifest=dict(schema=1,upstream_commit=recipe['upstream_commit'],recipe_sha256=sha(json.dumps(recipe,sort_keys=True,separators=(',',':')).encode()),ffmpeg_version=version,ffmpeg_sha256=sha(Path(ffmpeg_path).read_bytes()),assets=receipts,files=[dict(path=path,size=len(data),sha256=sha(data)) for path,data in sorted(payloads.items())],scope='PCM decode and stream metadata only; no DSP firmware; no hardware audibility or Godot decoder bit-exactness claim')
     for path,data in payloads.items():target=output/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
-    report=output/'data/opening-audio-manifest.json';report.write_text(json.dumps(manifest,indent=2)+'\n');return manifest
+    report=manifest_path(output);report.parent.mkdir(parents=True,exist_ok=True);report.write_text(json.dumps(manifest,indent=2)+'\n');return manifest
 
 def stage_files(source):
     """Return only verified audio paths/bytes for the existing host staging tool."""
-    manifest_path=source/'data/opening-audio-manifest.json'
-    manifest=json.loads(manifest_path.read_text());check(manifest['schema']==1,'Unsupported audio staging manifest')
+    manifest=json.loads(manifest_path(source).read_text());check(manifest['schema']==1,'Unsupported audio staging manifest')
     files={}
     for item in manifest['files']:
         path=safe_path(item['path']);resolved=(source/path).resolve();check(resolved.is_relative_to(source.resolve()),'Staged audio escaped root');data=resolved.read_bytes()
         check(len(data)==item['size'] and sha(data)==item['sha256'],'Audio staged fingerprint mismatch: '+path)
         check(path not in files,'Duplicate staged audio file');files[path]=data
-    check('data/opening.encaudio' in files,'Audio metadata absent')
-    bank=parse_bank(files['data/opening.encaudio'])
-    check(set(files)=={'data/opening.encaudio'}|{a['pcm_path'] for a in bank['assets']},'Audio staging manifest contains unrelated/missing files')
+    check('sound/banks/opening.encaudio' in files,'Audio metadata absent')
+    bank=parse_bank(files['sound/banks/opening.encaudio'])
+    check(set(files)=={'sound/banks/opening.encaudio'}|{a['pcm_path'] for a in bank['assets']},'Audio staging manifest contains unrelated/missing files')
     for a in bank['assets']:
         pcm=files[a['pcm_path']];check(len(pcm)==a['pcm_bytes'] and zlib.crc32(pcm)&0xffffffff==a['pcm_crc32'],'Audio PCM metadata mismatch')
     return {Path(p):data for p,data in files.items()}
@@ -187,7 +192,7 @@ def main():
         verify_audio(recipe,ROOT)
     lock=json.loads((ROOT/'upstream.lock').read_text());check(recipe['upstream_commit']==lock['commit'],'Audio recipe/upstream lock mismatch')
     if args.action=='verify':
-        manifest=json.loads((args.output/'data/opening-audio-manifest.json').read_text())
+        manifest=json.loads(manifest_path(args.output).read_text())
         check(manifest['recipe_sha256']==sha(json.dumps(recipe,sort_keys=True,separators=(',',':')).encode()),'Audio recipe changed since compilation')
         verified(args.upstream,recipe['bus_source'],recipe['bus_sha256']);verified(args.upstream,recipe['manager_source'],recipe['manager_sha256'])
         for entry in recipe['assets']:

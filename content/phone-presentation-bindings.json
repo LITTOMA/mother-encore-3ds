@@ -16,7 +16,7 @@
     "node": "main",
     "resource_id": 1,
     "role": "phone",
-    "path": "phone-preview/phone.t3x",
+    "path": "graphics/ui/phone/phone.t3x",
     "kind": 1,
     "source": "Graphics/Character Sprites/Npcs/misc/Phone/main.png",
     "size": [

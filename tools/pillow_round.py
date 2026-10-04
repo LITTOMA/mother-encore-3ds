@@ -61,7 +61,7 @@ def build():
     room = parse_pack((ROOT / 'romfs/data/opening.encroom').read_bytes())
     body = [b for b in room['sections']['BodyRule'] if room['strings'][b['source_path_string']] == 'Objects/pillow']
     require(len(body) == 1, 'Pillow body binding'); victory['enemy_body_id'] = body[0]['body_id']
-    presentation = ir['presentation']; receipt = read(ROOT / 'romfs/pillow-preview/source.json')
+    presentation = ir['presentation']; receipt = read(ROOT / 'content/asset-receipts/graphics/battle/pillow/source.json')
     source_resource = next(r for r in receipt['resources'] if r['name'] == 'enemy')
     index = next(m['resource'] for m in presentation['media'] if m['role'] == 2)
     resource = presentation['resources'][index]

@@ -11,9 +11,10 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.extract_battle_entry import Extractor, animation, node, properties, one
 from tools.upstream import read_json,write_json,safe_path
+from tools.asset_receipts import receipt_path, receipt_entries
 from PIL import Image
 RECIPE=ROOT/'content/round-assets.json'
-OUT=ROOT/'romfs/round-preview'
+OUT=ROOT/'romfs/graphics/battle/round'
 REPORT=ROOT/'reports/battle-victory-presentation'
 NIL=4294967295
 
@@ -54,14 +55,14 @@ def compile_assets(root,tex3ds,out=OUT):
         subprocess.run([str(tex3ds),'-f','rgba8','-z','none','-o',str(target),str(png)],check=True)
         resources.append(dict(id=r['id'],name=r['name'],path=r['output'],kind=1,width=converted.width,height=converted.height,columns=r['output_grid'][0],rows=r['output_grid'][1],sha256=sha(target)))
     receipt=dict(schema=1,recipe=recipe,resources=resources,outputs={Path(r['path']).name:dict(sha256=r['sha256'],bytes=(out/Path(r['path']).name).stat().st_size) for r in resources},tex3ds_sha256=sha(tex3ds),limits='Lossless repacking; nearest sampling; no GPU/hardware comparison claim')
-    write_json(out/'source.json',receipt)
+    write_json(receipt_path(out, ROOT),receipt)
     export_presentation(ex,resources)
     print('Compiled source-pinned round assets and presentation IR')
 
 def verify(root,out=OUT):
-    recipe=read_json(RECIPE);validate_source(root,recipe,read_json(ROOT/'upstream.lock'));receipt=read_json(out/'source.json')
+    recipe=read_json(RECIPE);validate_source(root,recipe,read_json(ROOT/'upstream.lock'));receipt=read_json(receipt_path(out, ROOT))
     if receipt.get('recipe')!=recipe:raise ValueError('Stale round asset receipt')
-    if set(receipt['outputs'])!={Path(r['output']).name for r in recipe['resources']} or {p.name for p in out.iterdir()}!=set(receipt['outputs'])|{'source.json'}:raise ValueError('Missing/unexpected round files')
+    if set(receipt['outputs'])!={Path(r['output']).name for r in recipe['resources']} or {p.name for p in out.iterdir()}!=set(receipt['outputs'])|receipt_entries(out, ROOT):raise ValueError('Missing/unexpected round files')
     for name,r in receipt['outputs'].items():
         p=safe_path(out,name)
         if sha(p)!=r['sha256'] or p.stat().st_size!=r['bytes']:raise ValueError('Changed round output: '+name)
@@ -119,7 +120,7 @@ def build_presentation(ex,resources,recipe=None):
 
 def verify_reviewed_presentation(root=ROOT):
     from tools.round_presentation_recipe import read
-    resources=read_json(root/'romfs/round-preview/source.json')['resources']
+    resources=read_json(root/'content/asset-receipts/graphics/battle/round/source.json')['resources']
     fresh=build_presentation(Extractor(root),resources,read(root/'content/round-presentation-recipe.json'))
     if fresh!=read_json(root/'reports/battle-victory-presentation/presentation.json'):raise ValueError('Stale reviewed presentation recipe output')
     base=read_json(root/'content/native-round.json')['presentation']
@@ -140,7 +141,7 @@ def main():
         if args.action=='compile':
             if args.tex3ds is None:raise ValueError('Need official tex3ds path')
             compile_assets(args.root,args.tex3ds)
-        elif args.action=='extract':export_presentation(Extractor(ROOT),read_json(OUT/'source.json')['resources'])
+        elif args.action=='extract':export_presentation(Extractor(ROOT),read_json(receipt_path(OUT, ROOT))['resources'])
         else:verify(args.root)
         return 0
     except (ValueError,OSError,KeyError,TypeError,subprocess.SubprocessError) as e:print('ROUND ASSET ERROR:',e,file=sys.stderr);return 1

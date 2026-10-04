@@ -110,8 +110,8 @@
     ]
   ],
   "panel_paths": [
-    "new-game-preview/keyboard-0.t3x",
-    "new-game-preview/keyboard-1.t3x"
+    "graphics/ui/naming/keyboard-0.t3x",
+    "graphics/ui/naming/keyboard-1.t3x"
   ],
   "commands": [
     {
@@ -188,7 +188,7 @@
   ],
   "sprite_prefix": "Graphics/Character Sprites/",
   "sprite_suffix": "/main.png",
-  "output_prefix": "new-game-preview/",
+  "output_prefix": "graphics/ui/naming/",
   "output_suffix": ".t3x",
   "translations": {
     "menus": "menus",
@@ -204,12 +204,12 @@
     "content/native-save-menu.json",
     "content/native-opening.json",
     "content/native-session.json",
-    "romfs/battle-preview/source.json"
+    "content/asset-receipts/graphics/battle/lamp/source.json"
   ],
   "save_ir": "content/native-save-menu.json",
   "opening_ir": "content/native-opening.json",
   "session_ir": "content/native-session.json",
-  "font_receipt": "romfs/battle-preview/source.json",
+  "font_receipt": "content/asset-receipts/graphics/battle/lamp/source.json",
   "battle_irs": [
     "content/native-round.json",
     "content/doll-round.json",

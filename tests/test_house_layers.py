@@ -170,7 +170,7 @@ class HouseLayersTests(unittest.TestCase):
             self.assertEqual([actual[k] for k in ('x', 'y', 'sort_y', 'u', 'v', 'flags')],
                              [source[k] for k in ('x', 'y', 'sort_y', 'u', 'v', 'flags')])
             resource = self.ir['sections']['Resource'][actual['resource_index']]
-            self.assertEqual(self.ir['strings'][resource['path_string']], 'house-layers/' + source['resource'] + '.t3x')
+            self.assertEqual(self.ir['strings'][resource['path_string']], 'graphics/world/house-layers/' + source['resource'] + '.t3x')
         blob, manifest = compile_ir(self.ir)
         self.assertEqual(parse_pack(blob)['sections']['Overlay'], overlays)
         changed = copy.deepcopy(self.ir)
@@ -187,17 +187,17 @@ class HouseLayersTests(unittest.TestCase):
     def test_foreground_resource_appends_after_existing_stable_identities(self):
         # These published identities are shared with independently compiled
         # audio/battle resources; inserting a texture must never renumber them.
-        original_paths = ['actor-preview/ninten-main.t3x', 'actor-preview/lamp.t3x',
-                          'actor-preview/emotes.t3x', 'actor-preview/shadow.t3x', 'house-layers/objects.t3x']
-        original_paths += ['map-preview/house-%02d.t3x' % i for i in range(15)]
+        original_paths = ['graphics/actors/ninten-main.t3x', 'graphics/actors/lamp.t3x',
+                          'graphics/actors/emotes.t3x', 'graphics/actors/shadow.t3x', 'graphics/world/house-layers/objects.t3x']
+        original_paths += ['graphics/world/house-map/house-%02d.t3x' % i for i in range(15)]
         original_paths += ['res://Audio/Music/Poltergeist.ogg', 'res://Audio/Sound effects/bash.mp3',
                            'res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav', 'data/opening.encbattle',
-                           'house-preview/doll.t3x', 'house-preview/mimmie.t3x', 'data/doll-entry.encbattle']
+                           'graphics/ui/house/doll.t3x', 'graphics/ui/house/mimmie.t3x', 'data/doll-entry.encbattle']
         resources = self.ir['sections']['Resource']
         self.assertEqual([(r['stable_id'], self.ir['strings'][r['path_string']]) for r in resources[:27]],
                          list(enumerate(original_paths, 1)))
         self.assertEqual(resources[27]['stable_id'], 28)
-        self.assertEqual(self.ir['strings'][resources[27]['path_string']], 'house-layers/above.t3x')
+        self.assertEqual(self.ir['strings'][resources[27]['path_string']], 'graphics/world/house-layers/above.t3x')
         self.assertTrue(all(row['resource_index'] == 27 for row in self.ir['sections']['Overlay'][14:]))
         audio = h.read_json(h.ROOT / 'content/native-audio.json')
         paths = {self.ir['strings'][r['path_string']]: r for r in resources}

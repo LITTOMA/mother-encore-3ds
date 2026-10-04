@@ -42,8 +42,8 @@ def main():
             for p in sorted((ROOT / 'compatibility/reviews').glob('*.json'))
         },
         'native_rule_integration': 'progression, scoped opening movement and discrete animation compiled for ARM; current background viewer and M0 fixture do not call them; unused sections may be discarded',
-        'upstream_visual_assets': json.loads((ROOT / 'romfs/map-preview/source.json').read_text())
-            if (ROOT / 'romfs/map-preview/source.json').is_file() else None,
+        'upstream_visual_assets': json.loads((ROOT / 'content/asset-receipts/graphics/world/house-map/source.json').read_text())
+            if (ROOT / 'content/asset-receipts/graphics/world/house-map/source.json').is_file() else None,
         'content_manifest': content,
         'source_sha256': sources,
         'docker_image_id': image['Id'], 'docker_repo_digests': image['RepoDigests'],
@@ -55,7 +55,7 @@ def main():
         'bannertool_download_records': json.loads((ROOT / 'tools/bin/download-manifest.json').read_text()),
         'artifacts': {name: describe(ROOT / name) for name in (
             'dist/encore-native.elf', 'dist/encore-native.3dsx', 'dist/encore-native.cia',
-            'dist/encore-native.smdh', 'romfs/sandbox.encpak')},
+            'dist/encore-native.smdh', 'build/fixtures/sandbox.encpak')},
         'emulator_verification': 'not run', 'hardware_verification': 'not run',
         'bit_reproducibility': 'not claimed; tools embed build dates/paths and makerom uses random identifiers',
     }

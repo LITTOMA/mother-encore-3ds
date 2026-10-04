@@ -17,12 +17,12 @@ class HouseSourceBindings(unittest.TestCase):
   with self.assertRaises((ValueError,KeyError,TypeError,IndexError)):bindings.load(ROOT,candidate)
  def test_default_source_ir_presentation_and_pack_equivalence(self):
   self.assertEqual(extract_house.build(ROOT),self.ir)
-  receipt=bindings.read(ROOT/'romfs/house-preview/source.json')
+  receipt=bindings.read(ROOT/'content/asset-receipts/graphics/ui/house/source.json')
   self.assertEqual(assets.export_presentation(ROOT/'upstream/MOTHER-Encore',receipt['resources'],write=False),self.presentation)
   native_house.verify_sources(self.ir,self.presentation,ROOT)
   blob=native_house.encode(native_house.lower(self.ir,self.presentation,ROOT),self.ir['commit'],self.ir['schema'])
   self.assertEqual(blob,(ROOT/'romfs/data/opening.enchouse').read_bytes())
-  assets.verify(ROOT/'upstream/MOTHER-Encore',ROOT/'romfs/house-preview')
+  assets.verify(ROOT/'upstream/MOTHER-Encore',ROOT/'romfs/graphics/ui/house')
  def test_closed_root_version_pin_unknown_and_duplicate_fields(self):
   for path,value in [(['schema'],2),(['schema'],True),(['commit'],'0'*40),(['kind'],'other'),(['nodes','door_target'],'../Position2D')]:
    with self.subTest(path=path,value=value):self.reject(path,value)

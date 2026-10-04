@@ -49,7 +49,7 @@ struct Harness {
     }
 };
 bool run(){
-    Image source;if(!load("romfs:/battle-preview/transition.bpx",source))return false;
+    Image source;if(!load("romfs:/graphics/battle/lamp/transition.bpx",source))return false;
     encore::upstream::BattleData data;std::string error;if(!data.load_file("romfs:/data/pillow-entry.encbattle",error))return false;const auto v=data.view();
     gpu_span::Image src[2],pal[2];std::vector<encore::BackgroundKernel::Layer> layers;
     for(unsigned n=0;n<2;++n){const auto b=v.background(n);const auto r=v.resource(b.resource);if(!gpu_span::image("romfs:/"+std::string(v.string(r.path)),r,src[n]))return false;layers.push_back(gpu_span::layer<encore::BackgroundKernel>(b,src[n],pal[n]));}

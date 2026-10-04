@@ -179,6 +179,6 @@ def check_house(ir,presentation,root=ROOT):
  require(Path(root)==house_assets.ROOT,'House extractor must match compiler checkout')
  require(extract_house.build(root)==ir,'House IR differs from checked source bindings')
  if presentation is not None:
-  receipt=read(root/'romfs/house-preview/source.json')
+  receipt=read(root/'content/asset-receipts/graphics/ui/house/source.json')
   expected=house_assets.export_presentation(root/'upstream/MOTHER-Encore',receipt['resources'],write=False)
   require(expected==presentation,'House presentation differs from checked source bindings')

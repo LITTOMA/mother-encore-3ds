@@ -9,7 +9,7 @@ make cia 2>&1 | tee "$report_dir/cia-build.txt"
 tools/bin/ctrtool --verify --showsyscalls --listromfs dist/encore-native.cia > "$report_dir/cia-inspection.txt" 2>&1
 inspection_dir="build/ctr/inspection-$(date -u +%Y%m%dT%H%M%SZ)"
 tools/bin/ctrtool --romfsdir="$inspection_dir/romfs" dist/encore-native.cia > "$report_dir/cia-extraction.txt" 2>&1
-cmp romfs/sandbox.encpak "$inspection_dir/romfs/sandbox.encpak"
+python3 tools/ci_console_check.py --output "$report_dir/package-check"
 python3 tools/record_ctr_build.py
 cp reports/ctr-toolchain-lock.json "$report_dir/toolchain-lock.json"
 python3 tools/release.py

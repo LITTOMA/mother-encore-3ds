@@ -9,8 +9,9 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.upstream import read_json,write_json,safe_path,git
+from tools.asset_receipts import receipt_path, receipt_entries
 REVIEW=ROOT/'compatibility/reviews/ninten-sprite-v0410.json'
-OUT=ROOT/'romfs/actor-preview'
+OUT=ROOT/'romfs/graphics/actors'
 
 def sha(path: Path)->str:return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -54,17 +55,17 @@ def compile_sprite(root: Path,tex3ds: Path,out: Path=OUT)->None:
     receipt={'schema':1,'recipe':recipe,'pixel_format':'RGBA8; no lossy compression; nearest sampling',
              'tex3ds_sha256':sha(tex3ds),'outputs':{p.name:{'sha256':sha(p),'bytes':p.stat().st_size} for p in (target,lamp_target,*extra_targets)},
              'scope':'Regular Ninten sprite only; no AnimationTree, blink, special animation or shader compatibility claim'}
-    write_json(out/'source.json',receipt)
+    write_json(receipt_path(out, ROOT),receipt)
     write_json(ROOT/'reports/m3-actor-asset-build.json',receipt)
     print('Compiled pinned Ninten regular-animation texture.')
 
 def verify(root: Path,out: Path=OUT)->None:
     if not out.exists():raise ValueError('Missing required actor assets; run make actor-assets')
     recipe=read_json(REVIEW);validate_source(root,recipe,read_json(ROOT/'upstream.lock'))
-    receipt=read_json(out/'source.json')
+    receipt=read_json(receipt_path(out, ROOT))
     if receipt.get('schema')!=1 or receipt.get('recipe')!=recipe:raise ValueError('Stale actor asset receipt')
     outputs=receipt.get('outputs',{})
-    if set(outputs)!={'ninten-main.t3x','lamp.t3x','emotes.t3x','shadow.t3x'} or {p.name for p in out.iterdir()}!=set(outputs)|{'source.json'}:
+    if set(outputs)!={'ninten-main.t3x','lamp.t3x','emotes.t3x','shadow.t3x'} or {p.name for p in out.iterdir()}!=set(outputs)|receipt_entries(out, ROOT):
         raise ValueError('Unexpected or missing actor asset files')
     for name,record in outputs.items():
         path=safe_path(out,name)

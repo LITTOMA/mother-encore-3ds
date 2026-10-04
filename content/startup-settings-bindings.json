@@ -182,135 +182,135 @@
     }
   ],
   "skin_manifests": {
-    "battle-preview/source.json": {
-      "sha256": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
+    "content/asset-receipts/graphics/battle/lamp/source.json": {
+      "sha256": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
       "generated_roles": [
         "font"
       ]
     },
-    "round-preview/source.json": {
-      "sha256": "8d0c89c8ab435af3383c12c4766077d328fea091c9b37b34774d8dbe99eb1e41",
+    "content/asset-receipts/graphics/battle/pillow/source.json": {
+      "sha256": "5cc6e4ea1f841b054d104322c590ee0d5d60551d281da34111f0273bacdd51f7",
+      "generated_roles": [
+        "font"
+      ]
+    },
+    "content/asset-receipts/graphics/ui/house/source.json": {
+      "sha256": "53f5c978d4b7d728dda1bd24303653caeab4b2640aa5e1534ac1941b39ee928f",
       "generated_roles": []
     },
-    "doll-preview/source.json": {
-      "sha256": "6069ad8cef20c71232d674af5d421ee490aaac43ca9b11de5d8860a530a0b767",
+    "content/asset-receipts/graphics/battle/doll/source.json": {
+      "sha256": "d72d88eea4653f641b773fbb8d5a838526e86f3f7796f37cad4aa936fcc64a46",
       "generated_roles": [
         "font"
       ]
     },
-    "pillow-preview/source.json": {
-      "sha256": "7afa3209998347433334deefd09cdc011a6e85cf8fa83b19d24ce6e3884c7215",
-      "generated_roles": [
-        "font"
-      ]
-    },
-    "house-preview/source.json": {
-      "sha256": "d700de96dd5ff2003d5aa6e85194b44311533bc797a0927fda2d53f596f4aac5",
+    "content/asset-receipts/graphics/battle/round/source.json": {
+      "sha256": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c",
       "generated_roles": []
     }
   },
   "skin_bindings": [
     {
-      "manifest": "battle-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/lamp/source.json",
       "role": "plate",
       "source": "Graphics/UI/Battle/info_plate_frame.png",
-      "path": "battle-preview/plate.t3x"
+      "path": "graphics/battle/lamp/plate.t3x"
     },
     {
-      "manifest": "battle-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/lamp/source.json",
       "role": "plate-bg",
       "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
-      "path": "battle-preview/plate-bg.t3x"
+      "path": "graphics/battle/lamp/plate-bg.t3x"
     },
     {
-      "manifest": "battle-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/lamp/source.json",
       "role": "hp-label",
       "source": "Graphics/UI/Battle/label_hp.png",
-      "path": "battle-preview/hp-label.t3x"
+      "path": "graphics/battle/lamp/hp-label.t3x"
     },
     {
-      "manifest": "battle-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/lamp/source.json",
       "role": "pp-label",
       "source": "Graphics/UI/Battle/label_pp.png",
-      "path": "battle-preview/pp-label.t3x"
+      "path": "graphics/battle/lamp/pp-label.t3x"
     },
     {
-      "manifest": "battle-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/lamp/source.json",
       "role": "box",
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
-      "path": "battle-preview/box.t3x"
+      "path": "graphics/battle/lamp/box.t3x"
     },
     {
-      "manifest": "round-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/round/source.json",
       "role": "box",
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
-      "path": "round-preview/box.t3x"
+      "path": "graphics/battle/round/box.t3x"
     },
     {
-      "manifest": "doll-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/doll/source.json",
       "role": "plate",
       "source": "Graphics/UI/Battle/info_plate_frame.png",
-      "path": "battle-preview/plate.t3x"
+      "path": "graphics/battle/lamp/plate.t3x"
     },
     {
-      "manifest": "doll-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/doll/source.json",
       "role": "plate-bg",
       "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
-      "path": "battle-preview/plate-bg.t3x"
+      "path": "graphics/battle/lamp/plate-bg.t3x"
     },
     {
-      "manifest": "doll-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/doll/source.json",
       "role": "hp-label",
       "source": "Graphics/UI/Battle/label_hp.png",
-      "path": "battle-preview/hp-label.t3x"
+      "path": "graphics/battle/lamp/hp-label.t3x"
     },
     {
-      "manifest": "doll-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/doll/source.json",
       "role": "pp-label",
       "source": "Graphics/UI/Battle/label_pp.png",
-      "path": "battle-preview/pp-label.t3x"
+      "path": "graphics/battle/lamp/pp-label.t3x"
     },
     {
-      "manifest": "doll-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/doll/source.json",
       "role": "box",
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
-      "path": "battle-preview/box.t3x"
+      "path": "graphics/battle/lamp/box.t3x"
     },
     {
-      "manifest": "pillow-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/pillow/source.json",
       "role": "plate",
       "source": "Graphics/UI/Battle/info_plate_frame.png",
-      "path": "battle-preview/plate.t3x"
+      "path": "graphics/battle/lamp/plate.t3x"
     },
     {
-      "manifest": "pillow-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/pillow/source.json",
       "role": "plate-bg",
       "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
-      "path": "battle-preview/plate-bg.t3x"
+      "path": "graphics/battle/lamp/plate-bg.t3x"
     },
     {
-      "manifest": "pillow-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/pillow/source.json",
       "role": "hp-label",
       "source": "Graphics/UI/Battle/label_hp.png",
-      "path": "battle-preview/hp-label.t3x"
+      "path": "graphics/battle/lamp/hp-label.t3x"
     },
     {
-      "manifest": "pillow-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/pillow/source.json",
       "role": "pp-label",
       "source": "Graphics/UI/Battle/label_pp.png",
-      "path": "battle-preview/pp-label.t3x"
+      "path": "graphics/battle/lamp/pp-label.t3x"
     },
     {
-      "manifest": "pillow-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/battle/pillow/source.json",
       "role": "box",
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
-      "path": "battle-preview/box.t3x"
+      "path": "graphics/battle/lamp/box.t3x"
     },
     {
-      "manifest": "house-preview/source.json",
+      "manifest": "content/asset-receipts/graphics/ui/house/source.json",
       "role": "dialogue_box",
       "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
-      "path": "house-preview/dialogue_box.t3x"
+      "path": "graphics/ui/house/dialogue_box.t3x"
     }
   ],
   "global_data": "Scripts/global/globalData.gd"

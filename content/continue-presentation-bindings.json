@@ -187,7 +187,7 @@
     "font_outline": 1,
     "font_char_spacing": -1,
     "font_space_spacing": 3,
-    "resource_root": "continue-preview/",
+    "resource_root": "graphics/ui/continue/",
     "resource_suffix": ".t3x",
     "background_name": "title-background",
     "layer_name_prefix": "title-",

@@ -23,8 +23,8 @@
     "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666"
   },
   "dependencies": {
-    "content/native-house.json": "b89904ea57a3fc0075029a591981f968164e9338c651bb31549ef5d39af1bfba",
-    "content/phone-stage/presentation.json": "bebe9e2e48dc38cfa62032cca790be2e57b0c19b5409babd9bd4ea3529cb601b"
+    "content/native-house.json": "4c3db0c530fad5d5778f1e8965ffa003d2f171a82e10c6e2c27331211c352c4f",
+    "content/phone-stage/presentation.json": "baf161acb30d6e9947c3aea13703c03ef169072c150244e6c528b0ffb32f84ca"
   },
   "choices": [
     "Both",
@@ -46,19 +46,19 @@
   "collision_mask": 1,
   "resources": [
     {
-      "path": "house-button-prompts-preview/accept.t3x",
+      "path": "graphics/ui/house-button-prompts/accept.t3x",
       "width": 12,
       "height": 21,
       "sha256": "09a3afeef81068e7510329077fad1d30b0f0d6a807b522c8c7db83e273da1b93"
     },
     {
-      "path": "house-button-prompts-preview/present.t3x",
+      "path": "graphics/ui/house-button-prompts/present.t3x",
       "width": 18,
       "height": 16,
       "sha256": "dbaf0ee2743c58342ff4b35840343f878724f03f60ee842508e8b94a0a7bdf9c"
     },
     {
-      "path": "house-button-prompts-preview/npc.t3x",
+      "path": "graphics/ui/house-button-prompts/npc.t3x",
       "width": 21,
       "height": 30,
       "sha256": "d2f2aec8fa0e73e22042a6fe608902c8e2ed12431451ad0da4c1b9ef438301a5"

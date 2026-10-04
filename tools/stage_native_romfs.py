@@ -73,6 +73,8 @@ def main():
             if data!=encode(ir):raise ValueError("Stale checked world effect")
         files[path]=data
     files.update(catalog_files(source, files))
+    from romfs_layout import check_layout
+    check_layout(files)
     temporary=target.with_name(target.name+'-pending')
     if temporary.exists():shutil.rmtree(temporary)
     temporary.mkdir(parents=True)

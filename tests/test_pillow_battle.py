@@ -22,9 +22,9 @@ class PillowBattleTests(unittest.TestCase):
         self.assertEqual(native_round.encode(native_round.lower(self.round)), self.round_blob)
         self.assertEqual(native_round.parse_pack(self.round_blob).version, 5)
         files = native_battle.stage_files(ROOT / 'romfs', Path('data/pillow-entry.encbattle'))
-        self.assertIn(Path('pillow-preview/pillow-world.t3x'), files)
+        self.assertIn(Path('graphics/battle/pillow/pillow-world.t3x'), files)
         files = native_round.stage_files(ROOT / 'romfs', Path('data/pillow-entry.encround'))
-        self.assertIn(Path('pillow-preview/pillow-enemy.t3x'), files)
+        self.assertIn(Path('graphics/battle/pillow/pillow-enemy.t3x'), files)
 
     def test_exact_enemy_rewards_and_normal_encounter(self):
         enemy = self.ir['enemy']['data']

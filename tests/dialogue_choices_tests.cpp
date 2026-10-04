@@ -65,7 +65,7 @@ int main(int argc,char**argv){
  mutated=bytes;put(mutated,24,0);repair(mutated);check(!rejected.load(mutated.data(),mutated.size(),error),"invalid source columns rejected");
  mutated=bytes;put(mutated,76,0x7ff80000);repair(mutated);check(!rejected.load(mutated.data(),mutated.size(),error),"nonfinite source time rejected");
  mutated=bytes;const auto record=find(mutated,"Record");check(record<mutated.size(),"locate fixture option");put(mutated,record+6,g.program_command_count);repair(mutated);check(!rejected.load(mutated.data(),mutated.size(),error),"CRC-valid option branch beyond extent rejected");
- mutated=bytes;const auto resource=find(mutated,"house-preview/cursor.t3x");check(resource<mutated.size(),"locate source resource");mutated[resource]='/';repair(mutated);check(!rejected.load(mutated.data(),mutated.size(),error),"absolute resource path rejected");
+ mutated=bytes;const auto resource=find(mutated,"graphics/ui/house/cursor.t3x");check(resource<mutated.size(),"locate source resource");mutated[resource]='/';repair(mutated);check(!rejected.load(mutated.data(),mutated.size(),error),"absolute resource path rejected");
  mutated=bytes;mutated.push_back(0);repair(mutated);check(!rejected.load(mutated.data(),mutated.size(),error),"CRC-valid trailing payload rejected");
  check(!d.load(mutated.data(),mutated.size(),error)&&d.valid()&&d.groups()[0].options[0].text=="Record","failed reload preserves earlier checked data");
  std::printf("Dialogue choices: %u checks, %s\n",checks,okay?"passed":"FAILED");return okay?0:1;

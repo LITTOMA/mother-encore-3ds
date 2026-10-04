@@ -2207,7 +2207,7 @@
     "node": "Objects/pillow",
     "sprite": "Npcs/1dir/pillow",
     "name": "pillow",
-    "world_manifest": "romfs/pillow-preview/world-source.json",
+    "world_manifest": "content/asset-receipts/graphics/battle/pillow/world-source.json",
     "attack_receipt": "reports/pillow-sequence/pillow_attack-native.json",
     "template_receipt": "reports/doll-sequence/native-parser-animation.json",
     "door_receipt": "reports/pillow-sequence/minnie_door-native.json",

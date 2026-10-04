@@ -122,7 +122,7 @@ class PhoneAssetsTests(unittest.TestCase):
         for action in ['missing', 'mutated', 'extra']:
             with tempfile.TemporaryDirectory() as td:
                 out = Path(td)
-                shutil.copy(p.OUT / 'source.json', out)
+                shutil.copy(p.receipt_path(p.OUT, p.ROOT), out)
                 if action != 'missing':
                     shutil.copy(p.OUT / 'phone.t3x', out)
                 if action == 'mutated':

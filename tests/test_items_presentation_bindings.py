@@ -18,7 +18,7 @@ class ItemsPresentationBindingsTests(unittest.TestCase):
   ir=assets.export_ir(ex,definitions,raw,self.reference,self.ir['resources'],self.ir['dependencies'],write=False)
   self.assertEqual(ir,self.ir);native.verify_sources(ir,ROOT)
   self.assertEqual(native.encode(native.lower(ir,root=ROOT)),(ROOT/'romfs/data/opening.encitems').read_bytes())
-  receipt=bindings.read(ROOT/'romfs/items-preview/source.json')
+  receipt=bindings.read(ROOT/'content/asset-receipts/graphics/ui/items/source.json')
   for row in receipt['resources']:self.assertEqual(bindings.sha(ROOT/'romfs'/row['path']),row['sha256'])
  def test_versions_pin_unknown_missing_and_duplicate_fields(self):
   for version in [0,2,True,'1',None]:self.reject(lambda r:r.update(schema=version))
@@ -32,7 +32,7 @@ class ItemsPresentationBindingsTests(unittest.TestCase):
     with self.subTest(route=route,missing=missing):self.reject(edit)
   with self.assertRaises(ValueError):json.loads('{"schema":1,"schema":1}',object_pairs_hook=bindings.unique)
  def test_asset_source_crop_reuse_and_identity_bindings(self):
-  for field,value in [('source','../escape.png'),('output','../escape.t3x'),('output','items-preview/x.bin'),('size',[24,23]),('grid',[0,1]),('id',True)]:
+  for field,value in [('source','../escape.png'),('output','../escape.t3x'),('output','graphics/ui/items/x.bin'),('size',[24,23]),('grid',[0,1]),('id',True)]:
    with self.subTest(field=field):self.reject(lambda r:r['assets'][0].update({field:value}))
   self.reject(lambda r:r['assets'][1].update(name=r['assets'][0]['name']))
   self.reject(lambda r:r['assets'][1].update(output=r['assets'][0]['output']))

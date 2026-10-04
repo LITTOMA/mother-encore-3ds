@@ -80,14 +80,14 @@
     }
   ],
   "arrow_resource": {
-    "path": "house-preview/cursor.t3x",
+    "path": "graphics/ui/house/cursor.t3x",
     "width": 24,
     "height": 8,
     "columns": 3,
     "rows": 1,
     "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
   },
-  "font_path": "battle-preview/font.t3x",
+  "font_path": "graphics/battle/lamp/font.t3x",
   "groups": [
     {
       "id": "Reusable/dad_normal::2",
@@ -149,10 +149,10 @@
     "navigation_uses_caller_repeat": true
   },
   "dependencies": {
-    "content/native-house-presentation.json": "cb5df794ea64caa7350bbf231e29f7a068b6fe87988ae9010b75f8215587c9b6",
-    "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
-    "romfs/battle-preview/font.t3x": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39",
-    "romfs/house-preview/cursor.t3x": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
+    "content/native-house-presentation.json": "a30127f9074586f86d1b3178b73c9890b1a4948f8c2d17be601f01624b121792",
+    "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
+    "romfs/graphics/battle/lamp/font.t3x": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39",
+    "romfs/graphics/ui/house/cursor.t3x": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
   },
   "native_reference_sha256": "da257ab469b45563814d04875023c8ac5d8ca244a5c3d0ca20bd200845aecb16",
   "option_rects": [

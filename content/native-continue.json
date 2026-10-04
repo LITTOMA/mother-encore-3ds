@@ -37,8 +37,8 @@
   "background_color": 4278190080,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
-    "content/native-save-menu.json": "ab731410a30e20f27863486d8099658ec220a41765e41860f8febcb288adce46",
-    "romfs/data/opening.encsavemenu": "2ab744ecd7d2fced17dbeb072b382ba0e6500445d28412a90298444ed1ffcc23"
+    "content/native-save-menu.json": "b218ea6d27f378d59413eebff938b8ef3cc0d9ec5e65124deb2efa210ecfa0db",
+    "romfs/data/opening.encsavemenu": "b9fddce89858deb1ce2e6209c81f72b8a9c84fcfd4adf72fae2bb508cf70239c"
   },
   "door_music_fade": 0.8,
   "door_speeds": [
@@ -98,51 +98,51 @@
   "music_fade": 0.5,
   "native_reference_sha256": "978e7b39772b10a5d0d0aa292a01b22dbacc6975fb08d3e3931f58dc403e5e37",
   "outputs": {
-    "continue-preview/title-background.t3x": {
+    "graphics/ui/continue/title-background.t3x": {
       "bytes": 524309,
       "sha256": "b3bf17879e7baa711d1c7346ee5cf594d1514d95551b3d6c85c1b6cea6418cf1"
     },
-    "continue-preview/title-earth.t3x": {
+    "graphics/ui/continue/title-earth.t3x": {
       "bytes": 16405,
       "sha256": "5bc135f8efac60a8294d0eb24dc8fb1869f0731e1ea46b2d50d3da742e05fc3d"
     },
-    "continue-preview/title-encore.t3x": {
+    "graphics/ui/continue/title-encore.t3x": {
       "bytes": 32789,
       "sha256": "3ed95d7f1b8fc3232e5d78e743a90cd6c3697ced4d81b10d75368683c726ae51"
     },
-    "continue-preview/title-exit-selected.t3x": {
+    "graphics/ui/continue/title-exit-selected.t3x": {
       "bytes": 2069,
       "sha256": "d85dd76f039b75b06568768f3d07d658098e5e7f9211a683c59b03c55cbb3816"
     },
-    "continue-preview/title-exit.t3x": {
+    "graphics/ui/continue/title-exit.t3x": {
       "bytes": 2069,
       "sha256": "4b88238a0e9cf456e877a3c520113a9142cbed725b8489e919228b98d0f8b209"
     },
-    "continue-preview/title-load-selected.t3x": {
+    "graphics/ui/continue/title-load-selected.t3x": {
       "bytes": 2069,
       "sha256": "699ac619df48a8140aaa59c78f6ca16ba1e296f1702eda607f0516a84cbcdc13"
     },
-    "continue-preview/title-load.t3x": {
+    "graphics/ui/continue/title-load.t3x": {
       "bytes": 2069,
       "sha256": "21c56c955e7fa67ddb73ff63fa8f71e169ac560bf53ccc131f5eb3b8cd9cf82b"
     },
-    "continue-preview/title-mther.t3x": {
+    "graphics/ui/continue/title-mther.t3x": {
       "bytes": 65557,
       "sha256": "20d20d4546a435fb41cd3e5d9fe84ca2f5e23e75cef65057d41ba46c4a3cd9da"
     },
-    "continue-preview/title-newgame-selected.t3x": {
+    "graphics/ui/continue/title-newgame-selected.t3x": {
       "bytes": 4117,
       "sha256": "7d4a072a04f4e9fe989c4421b351707931c31dbd08fed94b90cb032253d261fe"
     },
-    "continue-preview/title-newgame.t3x": {
+    "graphics/ui/continue/title-newgame.t3x": {
       "bytes": 4117,
       "sha256": "da19f2ebfebdd9220c1a2fa86b44a6c33cf4d773c689239dab4369e08083dcf3"
     },
-    "continue-preview/title-options-selected.t3x": {
+    "graphics/ui/continue/title-options-selected.t3x": {
       "bytes": 4117,
       "sha256": "2e8d5e81c6965169b9dd99983ecddd0d1344e70aadad43e72bc65aa365fc5e2c"
     },
-    "continue-preview/title-options.t3x": {
+    "graphics/ui/continue/title-options.t3x": {
       "bytes": 4117,
       "sha256": "fb5fdac4dd4a0bb15f54a685bb10baeb39facf57b291e393105f2c79b9e6fec3"
     }
@@ -153,7 +153,7 @@
       "crop": null,
       "flash": 0,
       "height": 180,
-      "path": "continue-preview/title-background.t3x",
+      "path": "graphics/ui/continue/title-background.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/Title Screen background.png",
       "tint": [
@@ -174,7 +174,7 @@
       ],
       "flash": 0,
       "height": 40,
-      "path": "continue-preview/title-encore.t3x",
+      "path": "graphics/ui/continue/title-encore.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TS_Encore.png",
       "tint": null,
@@ -190,7 +190,7 @@
       ],
       "flash": 0,
       "height": 36,
-      "path": "continue-preview/title-mther.t3x",
+      "path": "graphics/ui/continue/title-mther.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TS_Shine.png",
       "tint": null,
@@ -206,7 +206,7 @@
       ],
       "flash": 0,
       "height": 47,
-      "path": "continue-preview/title-earth.t3x",
+      "path": "graphics/ui/continue/title-earth.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TS_Earth.png",
       "tint": null,
@@ -217,7 +217,7 @@
       "crop": null,
       "flash": 0,
       "height": 12,
-      "path": "continue-preview/title-newgame.t3x",
+      "path": "graphics/ui/continue/title-newgame.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleNewGame.png",
       "tint": null,
@@ -228,7 +228,7 @@
       "crop": null,
       "flash": 0.35,
       "height": 12,
-      "path": "continue-preview/title-newgame-selected.t3x",
+      "path": "graphics/ui/continue/title-newgame-selected.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleNewGame.png",
       "tint": null,
@@ -239,7 +239,7 @@
       "crop": null,
       "flash": 0,
       "height": 12,
-      "path": "continue-preview/title-load.t3x",
+      "path": "graphics/ui/continue/title-load.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleLoad.png",
       "tint": null,
@@ -250,7 +250,7 @@
       "crop": null,
       "flash": 0.35,
       "height": 12,
-      "path": "continue-preview/title-load-selected.t3x",
+      "path": "graphics/ui/continue/title-load-selected.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleLoad.png",
       "tint": null,
@@ -261,7 +261,7 @@
       "crop": null,
       "flash": 0,
       "height": 12,
-      "path": "continue-preview/title-options.t3x",
+      "path": "graphics/ui/continue/title-options.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleSettings.png",
       "tint": null,
@@ -272,7 +272,7 @@
       "crop": null,
       "flash": 0.35,
       "height": 12,
-      "path": "continue-preview/title-options-selected.t3x",
+      "path": "graphics/ui/continue/title-options-selected.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleSettings.png",
       "tint": null,
@@ -283,7 +283,7 @@
       "crop": null,
       "flash": 0,
       "height": 12,
-      "path": "continue-preview/title-exit.t3x",
+      "path": "graphics/ui/continue/title-exit.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleExit.png",
       "tint": null,
@@ -294,7 +294,7 @@
       "crop": null,
       "flash": 0.35,
       "height": 12,
-      "path": "continue-preview/title-exit-selected.t3x",
+      "path": "graphics/ui/continue/title-exit-selected.t3x",
       "rows": 1,
       "source": "Graphics/UI/Title/TitleExit.png",
       "tint": null,

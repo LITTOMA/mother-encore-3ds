@@ -2383,11 +2383,11 @@
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633"
   },
   "dependencies": {
-    "content/native-opening.json": "9e0980e5c1339c6f136845209ff30f94964423ecd4933cc94792c0bbb5991b7d",
-    "content/native-house.json": "4c3db0c530fad5d5778f1e8965ffa003d2f171a82e10c6e2c27331211c352c4f",
+    "content/native-opening.json": "05eee1af86f76a8b917456999e9f422321e962c08f8e912bedd13ce0c07d729f",
+    "content/native-house.json": "8743ccfc0eaa018cc208bd58dbfc6ccdb4eb304a8b3bb1bc7ef8d9d979a8dbee",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "bfa229c89756d7abc7d9b42100a005f135bdc4654121ef59e85a53505c5a47d1",
-    "content/native-round.json": "d0f1205780951d5897345d9916add78134e058a76dfa6786b654df165d1e2d3f",
-    "content/doll-round.json": "48490a242f18fd73aacaaf36a8d3fb6e8a631a5a024530b9cf4f2439489dc163"
+    "content/native-round.json": "dc0b815b2e95c271bc64d7415430701e9b2d9bb0a4b8f9d6250d85340df5aa97",
+    "content/doll-round.json": "b8769d6a27f8415b9a8b483a81734b13002b90f76ae83555ceee26fa1192c068"
   }
 }

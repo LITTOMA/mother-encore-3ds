@@ -12,7 +12,11 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools import phone_assets
 from tools.doll_dialogue import PIN,require,sha
-from tools.phone_dialogue import write_json
+
+def write_json(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open('w', encoding='utf-8', newline='\n') as stream:
+        stream.write(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False)+'\n')
 
 SECTIONS=['Strings','Resources','Objects','Clips','FrameKeys','SoundKeys','FlagRefs','Dispatch']
 FORMATS=[None,'<7I32s','<18I20f','<9Id','<dI','<dI','<2I','<2I']
@@ -25,6 +29,9 @@ NO_INDEX=0xffffffff
 def lower(ir,root=ROOT):
     require(ir==phone_assets.build(root),'Unreviewed phone staging IR')
     phone_assets.verify(root,Path(root)/'romfs/phone-preview')
+    bindings=phone_assets.presentation.load(root)
+    clips_by_name={row['animation']['name']: row for row in bindings['clips']}
+    clip_names={row['role']: row['animation']['name']for row in bindings['clips']}
     pool=bytearray(b'\0');strings={'':0}
     def string(value):
         require(isinstance(value,str)and '\0'not in value and len(value.encode())<=4096,'Phone invalid string')
@@ -54,7 +61,7 @@ def lower(ir,root=ROOT):
             sound_events=[e for e in clip['events']if e['kind']=='PlaySound']
             for event in frame_events:table['FrameKeys'].append([event['time'],event['frame']])
             for event in sound_events:table['SoundKeys'].append([event['time'],string(event['resource'])])
-            table['Clips'].append([len(table['Clips'])+1,1 if clip['name']=='Idle'else 2,
+            table['Clips'].append([len(table['Clips'])+1,clips_by_name[clip['name']]['native_kind'],
                 first_frame,len(frame_events),first_sound,len(sound_events),int(clip['loop']),
                 frame_events[0]['track'],sound_events[0]['track']if sound_events else NO_INDEX,clip['length']])
         interaction,sprite,collider,audio=obj['interaction'],obj['sprite'],obj['collider'],obj['audio']
@@ -65,7 +72,7 @@ def lower(ir,root=ROOT):
                  collider['center'],collider['extents'],audio['center']]
         table['Objects'].append([index+1,string(obj['source_path']),resources[sprite['resource']],
             string(obj['dispatch']['default']),first_dispatch,len(obj['dispatch']['overrides']),
-            clip_indices['Idle'],clip_indices['Ring'],string(audio['ring']),string(audio['hangup']),
+            clip_indices[clip_names['idle']],clip_indices[clip_names['ring']],string(audio['ring']),string(audio['hangup']),
             string(audio['bus']),string(obj['use']['save_location']),policy,
             collider['collision_layer'],collider['collision_mask'],interaction['collision_layer'],
             interaction['collision_mask'],sprite['initial_frame'],*[n for v in vectors for n in v]])
@@ -162,7 +169,7 @@ def main():
             write_json(args.root/'compatibility/reviews/phone-pack.json',dict(schema=1,commit=PIN,
                 kind='encore.native-phone.checked-pack',pack_schema=1,capabilities=1,rules=1,
                 pack_sha256=sha(out),pack_bytes=len(blob),
-                dependencies={p:sha(args.root/p)for p in ['content/phone-stage/presentation.json',
+                dependencies={p:sha(args.root/p)for p in ['content/phone-presentation-bindings.json','content/phone-stage/presentation.json',
                     'compatibility/reviews/phone-presentation.json','romfs/phone-preview/source.json','romfs/phone-preview/phone.t3x']},
                 sections=dict(zip(SECTIONS,STRIDES)),scope='Free InteractDialog phone animation, sound requests and ordered dispatch only'))
         else:require(out.read_bytes()==blob,'Stale compiled phone pack')

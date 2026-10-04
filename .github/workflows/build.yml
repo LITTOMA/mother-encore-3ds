@@ -63,6 +63,9 @@ jobs:
         # Make's content prerequisite is authoritative here; do not regenerate
         # the same resources again through CMake's default ALL target.
         run: make test CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF" CTEST_ARGS="${{ matrix.ctest_args }}"
+      - name: Retain Clang coverage for Python suites that compile renderer doubles
+        if: matrix.compiler == 'clang'
+        run: python -m unittest -v tests.test_loading_texture tests.test_loading_indicator
       - name: Run ASan and UBSan with the hosted runner's normal leak checking
         # Python tools are not instrumented by this CMake sanitizer build.
         # Reuse content already regenerated and admitted by the successful

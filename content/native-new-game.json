@@ -933,13 +933,13 @@
     "Colin"
   ],
   "dependencies": {
-    "content/doll-round.json": "349be7e17f35f0a3ee746115708e69c3aac55f136c78cbe8b8dc1cbcb5d27107",
+    "content/doll-round.json": "70135d1f071dbb58177cbaf6e8c992151f532e8d4d9dc4dcbb87bab4255c9e61",
     "content/naming-presentation-bindings.json": "cde07ae6a70227b58648cccaccc1b0ef526d96b7ceaaf39bc2de8cd6df834bdd",
-    "content/native-opening.json": "503df1cbfe3395520856007268a674c6525a8414bcdba961a71f77f74f04743b",
-    "content/native-round.json": "340e18fd57ab0ead4af8b522cb8a43545e4bb023d5be6b2bd1ef85c62bf0224c",
+    "content/native-opening.json": "58dcad29cd293936cae4d48c756a2381bd9d4a78d6fd8b8d1e93ec4d2f60a250",
+    "content/native-round.json": "b7b73d0cfc2094a3d4e7c8510e835e840667fad803c8973595e4e2e9bca1c247",
     "content/native-save-menu.json": "ab731410a30e20f27863486d8099658ec220a41765e41860f8febcb288adce46",
-    "content/native-session.json": "a95de24ab7bd20306791d76a5520ff7ae2bf3f8ea37afa44b8a84b757d63a04c",
-    "content/pillow-round.json": "0ca74a0e0acc77cca54ee1de7d2f70754b1981eeab172bcaf2f8439d2c39b2b7",
+    "content/native-session.json": "152b51df1062542d4d0826d203fdf2e87e684b6da5a8856fb5290a6e2c9501be",
+    "content/pillow-round.json": "c2f9e7d16c1341d7b92f173b35488b5c15124d6844871d7173fb8a2ee19ea9d4",
     "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68"
   },
   "error_duration": 2.0,

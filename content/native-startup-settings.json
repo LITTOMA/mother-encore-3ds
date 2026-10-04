@@ -680,13 +680,13 @@
     "settings-preview/ui-2.t3x"
   ],
   "skin_sha256": {
-    "battle-preview/hp-label.t3x": "faf5e720c7d12dbf24c61be814df254f90cb16666df1016e89a0a93aa0f14688",
-    "battle-preview/pp-label.t3x": "4cfac8fed3f1fa0a93fbdef9da00a902a5b4c486b658e1750a97960a608fa9f9",
     "round-preview/box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
     "battle-preview/box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
-    "house-preview/dialogue_box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+    "battle-preview/hp-label.t3x": "faf5e720c7d12dbf24c61be814df254f90cb16666df1016e89a0a93aa0f14688",
+    "battle-preview/pp-label.t3x": "4cfac8fed3f1fa0a93fbdef9da00a902a5b4c486b658e1750a97960a608fa9f9",
+    "battle-preview/plate-bg.t3x": "3c53675f1cee33f3240b5cd7de87823fd56b6df2edef2947bfa062bbeddcae50",
     "battle-preview/plate.t3x": "a5a1be68e66f0775f4f8681d609537b817606e0609e33ee71435f3b7af3f2cd9",
-    "battle-preview/plate-bg.t3x": "3c53675f1cee33f3240b5cd7de87823fd56b6df2edef2947bfa062bbeddcae50"
+    "house-preview/dialogue_box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
   },
   "sources": {
     "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",

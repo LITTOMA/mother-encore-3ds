@@ -65,7 +65,8 @@ def verify(root,out=OUT):
     for name,r in receipt['outputs'].items():
         p=safe_path(out,name)
         if sha(p)!=r['sha256'] or p.stat().st_size!=r['bytes']:raise ValueError('Changed round output: '+name)
-    print('Verified source-pinned round assets')
+    if build_presentation(Extractor(ROOT),receipt['resources'])!=read_json(REPORT/'presentation.json'):raise ValueError('Stale reviewed presentation recipe output')
+    print('Verified source-pinned round assets and presentation recipe')
 
 class Presentation:
     def __init__(self,ex,resources):self.ex=ex;self.resources=resources;self.media=[];self.tracks=[];self.keys=[];self.events=[];self.bindings={};self.parameters={}
@@ -113,56 +114,11 @@ class Presentation:
         return m
     def bind(self,name,m):self.bindings[name]=m['id']-1;return m
 
-def export_presentation(ex,resources):
-    p=Presentation(ex,resources);party='Nodes/Ui/Battle/BattleSpriteNinten.tscn';enemy='Nodes/Ui/Battle/EnemySprite.tscn';battle='Nodes/Ui/Battle/Battle.tscn';dim='Nodes/Ui/Battle/BGDarkinator.tscn';num='Nodes/Ui/Battle/FlyingNumber.tscn';rising='Nodes/Ui/Battle/RisingNumber.tscn'
-    for path in ['Scripts/UI/Battle/BattleSystem.gd','Scripts/UI/Battle/BattleSpriteParty.gd','Scripts/UI/Battle/EnemySprite.gd','Scripts/UI/Battle/PartyInfoPlate.gd','Scripts/UI/Battle/BattleDialogueBox.gd','Scripts/UI/AbstractDialogueBox.gd','Scripts/UI/Battle/FlyingNumber.gd','Scripts/UI/Battle/RisingNumber.gd','Scripts/UI/Battle/BattleParticipant.gd','Nodes/Ui/Battle/TargetsBox.gd','Scripts/global/globalData.gd','Scripts/global/Slowmo.gd','Fonts/HitNumber.tres','Nodes/Ui/Battle/BattleDialogueBox.tscn']:
-        ex.data(path)
-    pr=p.resource('party');en=p.resource('enemy');fx=p.resource('bash');point=p.resource('pointer');font=p.resource('numbers');miss=p.resource('miss');box=p.resource('box');smash=p.resource('smash')
-    for slot,name in [('PartyIdle','lookIntoYourSoul'),('PartyPrepare','bashPrep'),('PartyReturn','lookIntoYourSoul'),('PartyGuard','guard'),('PartyHit','hit1'),('PartyHit2','hit2'),('PartyHit3','hit3')]:
-        p.bind(slot,p.anim(party,name,1,pr,rect=(0,0,64,64),flags=2,anchor=(.5,1)))
-    p.bind('PartyGuardPrepare',p.anim(party,'guardPrep',1,pr,rect=(0,0,64,64),flags=2,anchor=(.5,1)))
-    bash=p.anim(party,'bash',1,pr,rect=(0,0,64,64),flags=2,anchor=(.5,1))
-    for slot,name in [('EnemyFlash','flash'),('EnemyHit','hit')]:p.bind(slot,p.anim(enemy,name,2,en,rect=(0,0,33,49),flags=2))
-    # Source defeat continues independently into the bounded victory scheduler.
-    p.bind('EnemyDefeat',p.anim(enemy,'defeat',2,en,rect=(0,0,33,49),flags=2|4))
-    effect=p.anim(battle,'bash',3,fx,rect=(0,0,32,32),nodepath='HitEffect/AnimationPlayer',flags=2|4)
-    p.bind('TargetPointer',p.anim(battle,'point',5,point,rect=(0,0,25,25),nodepath='TargetsBox/TargetPointer/AnimationPlayer',anchor=(.5,.5)))
-    for slot,name in [('BackgroundDim','darken'),('BackgroundUndim','undarken'),('SmashBackground','smash')]:p.bind(slot,p.anim(dim,name,9,rect=(0,0,320,180),anchor=(0,0)))
-    p.bind('Smash',p.anim('Nodes/Ui/Battle/Smash.tscn','Smaaaash!!',3,smash,rect=(0,0,resources[smash]['width']/resources[smash]['columns'],resources[smash]['height']/resources[smash]['rows']),flags=2|4))
-    flying=p.bind('FlyingNumber',p.anim(num,'start',7,font,rect=(0,0,55,11),flags=4))
-    # FlyingNumber.run owns lifetime .8s (AnimationPlayer start is 1s).
-    flying['duration']=.8;p.track(flying,2,[0,.8],[0,1],mode=2);p.track(flying,3,[0,.4],[0,-20],interp=3,mode=1);p.track(flying,3,[.4,.8],[-20,180],interp=4,mode=1)
-    rising_m=p.bind('RisingNumber',p.anim(rising,'start',8,miss,rect=(-4,-4,40,19),flags=4));p.track(rising_m,3,[0,.6],[0,-16],interp=3,mode=1)
-    # Reviewed procedural SceneTreeTween equivalents. Durations/values originate
-    # in the pinned scripts above and are kept exclusively in external IR.
-    def proc(slot,role,res,duration,rect=(0,0,0,0),flags=0):return p.bind(slot,p.add(slot,role,res,duration,rect,flags))
-    m=proc('EnemyAttack',2,en,.2,(0,0,33,49),2);p.track(m,11,[0,.1],[[0,0],[0,-10]],interp=1);p.track(m,11,[.1,.2],[[0,-10],[0,0]],interp=2);p.event(m,.2,1)
-    for slot,values in [('PartyShow',[0,1]),('PartyHide',[0,1])]:
-        m=proc(slot,1,pr,.12,(0,0,64,64),2);p.track(m,3,[0,.12],values,mode=2)
-    m=proc('PartyBounce',1,pr,.52,(0,0,64,64),2);p.track(m,4,[0,.2],[[.6,1.6],[1,1]],interp=1);p.track(m,3,[0,.2],[0,-1],interp=1,mode=2);p.track(m,3,[.32,.52],[[-1,0],[0,1]],interp=4,mode=2)
-    m=proc('PartyShake',1,pr,.2,(0,0,64,64),2);p.track(m,3,[0,.15],[5,0],interp=6,mode=1);p.track(m,2,[0,.2],[10,0],interp=5,mode=1)
-    m=proc('PlateQuake',4,NIL,.6);p.track(m,3,[.1,.15],[0,8],mode=2);p.track(m,3,[.15,.25],[8,-8],interp=3,mode=2);p.track(m,3,[.25,.35],[-4,4],interp=3,mode=2);p.track(m,3,[.35,.45],[4,-4],interp=3,mode=2);p.track(m,3,[.45,.6],[-4,0],interp=3,mode=2)
-    for slot,role,res,rect in [('EnemyDodge',2,en,(0,0,33,49)),('PartyDodge',1,pr,(0,0,64,64))]:
-        m=proc(slot,role,res,.2,rect,2);p.track(m,2,[0,.1],[0,8],interp=1,mode=2);p.track(m,2,[.1,.2],[8,0],interp=2,mode=2)
-    dialogue=node(ex.text('Nodes/Ui/Battle/BattleDialogueBox.tscn'),'Dialoguebox')
-    dr=[dialogue['margin_left'],dialogue['margin_top'],dialogue['margin_right']-dialogue['margin_left'],dialogue['margin_bottom']-dialogue['margin_top']]
-    proc('Dialogue',6,box,0,dr)['anchor']=[.5,0]
-    proc('DialogueText',6,NIL,0,(19,12,282,32))['anchor']=[.5,0]
-    cursor=node(ex.text('Nodes/Ui/Battle/BattleDialogueBox.tscn'),'Dialoguebox/Cursor_Down')
-    m=proc('DialogueCursor',3,p.resource('dialogue_cursor'),.8,(dr[0]+cursor['position'][0],dr[1]+cursor['position'][1],8,8),3);m['anchor']=[.5,0]
-    p.track(m,6,[0,.2,.4,.6],[0,1,2,1],update=1);p.track(m,12,[0],[math.degrees(cursor['rotation'])])
-    bt=ex.text(battle);name=node(bt,'TargetNameBox');label=node(bt,'TargetNameBox/Label')
-    # Final target name box follows the already source-validated AnimAction y=0.
-    proc('TargetNameBox',6,box,0,(name['margin_left'],0,name['margin_right']-name['margin_left'],-name['margin_top']))['anchor']=[1,0]
-    proc('TargetNameText',6,NIL,0,(name['margin_left']+label['margin_left'],label['margin_top']+(label['margin_bottom']-label['margin_top']-12)/2,label['margin_right']-label['margin_left'],label['margin_bottom']-label['margin_top']),2)['anchor']=[1,0]
-    abstract=ex.text('Scripts/UI/AbstractDialogueBox.gd');globaldata=ex.text('Scripts/global/globalData.gd');plate=ex.text('Scripts/UI/Battle/PartyInfoPlate.gd')
-    def constant(text,key):return float(one(r'^const '+key+r'\s*:?=\s*([0-9.]+)',text,key)[1])
-    p.parameters=dict(TextTiming=[json.loads(one(r'const TEXT_SPEEDS := (\[[^\n]+\])',globaldata,'text speeds')[1])[0],constant(abstract,'SPEED_UP_FROM_PRESS_A'),constant(abstract,'SPEED_UP_FROM_PRESS_B'),node(ex.text('Nodes/Ui/Battle/BattleDialogueBox.tscn'),'Timer')['wait_time']],TextTagSpeeds=[constant(abstract,'NORMAL_SPEED'),constant(abstract,'FASTER_SPEED'),constant(abstract,'SLOWER_SPEED'),0],HpDigits=[10,constant(plate,'TRANSITION_FRAMES'),0,0],PartyHit=[16,2,3,node(ex.text(party),'.')['_hits']],PartyShown=[20,.12,.12,1.3],FlyingNumberRandom=[32,64,0,0],DamageGlyphGrid=[32,11,11,11],TargetPointerOffset=[1.5,0,0,0],TargetGlow=[1,1,1,.25],DialogueMargins=[dialogue['patch_margin_'+s] for s in ['left','top','right','bottom']],DialogueTextLayout=[19,12,282,15],DamageShadow=[1,1,0,0],SmashTiming=[.5,.5,0,0],SmashOffset=[0,-32,0,0])
-    # Additional source-derived bounce/plate response coefficients are media data.
-    # Store them in PartyBounce's rect x/y, which are not a visual layout origin.
-    # Instead dedicated parameter schema keeps their intended interpretation explicit.
-    root_rising=node(ex.text(rising),'.');p.parameters['RisingNumberSize']=[root_rising['margin_right']-root_rising['margin_left'],root_rising['margin_bottom']-root_rising['margin_top'],0,0]
-    p.parameters['PartyBounceMotion']=[32,16,.32,.52];p.parameters['PlateHitIntensity']=[1,1.5,.1,0]
+def build_presentation(ex,resources,recipe=None):
+    from tools.round_presentation_recipe import apply
+    p=Presentation(ex,resources);context=apply(p,recipe)
+    party,battle,pr,box,dr,bash,effect=(context[key]for key in ['party','battle','pr','box','dr','bash','effect'])
+    bt=ex.text(battle)
     # Victory is a source actor clip plus the independent, looping YouWin UI.
     p.bind('PartyVictory',p.anim(party,'victory',1,pr,rect=(0,0,64,64),flags=2,anchor=(.5,1)))
     dialog_scene='Nodes/Ui/Battle/BattleDialogueBox.tscn';dt=ex.text(dialog_scene)
@@ -220,7 +176,12 @@ def export_presentation(ex,resources):
     p.parameters['ReturnPartyTurn']=[0,-1,.05,0]
     for path,digest in read_json(RECIPE)['sources'].items():ex.data(path)
     report=dict(schema=1,sources=ex.sources,resources=[{k:v for k,v in r.items() if k!='name'} for r in resources],media=p.media,tracks=p.tracks,keys=p.keys,events=p.events,bindings=p.bindings,parameters=p.parameters,skill_media={'attack':dict(user_media=bash['id']-1,hit_media=effect['id']-1),'tackle':dict(user_media=bash['id']-1,hit_media=effect['id']-1),'float':dict(user_media=NIL,hit_media=NIL),'guard':dict(user_media=p.bindings['PartyGuard'],hit_media=NIL)})
+    return report
+
+def export_presentation(ex,resources):
+    report=build_presentation(ex,resources)
     REPORT.mkdir(parents=True,exist_ok=True);write_json(REPORT/'presentation.json',report)
+    return report
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=['compile','verify','extract']);parser.add_argument('--root',type=Path,default=ROOT/'upstream/MOTHER-Encore');parser.add_argument('--tex3ds',type=Path);args=parser.parse_args()

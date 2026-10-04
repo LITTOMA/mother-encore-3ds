@@ -1,0 +1,3745 @@
+{
+  "schema": 1,
+  "kind": "encore.round-presentation.reviewed-recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Complete pre-victory action presentation recipe: reviewed native AnimationPlayer bindings, procedural motions, dialogue/target layout and parameters; victory and return stay separately source-extracted.",
+  "sources": {
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb",
+    "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+    "Scripts/UI/Battle/BattleDialogueBox.gd": "d712af3bbdcc1bab9ed24caccf7a9f4702187b60c24092beec9a7138394e09a5",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+    "Scripts/UI/Battle/RisingNumber.gd": "d22dd5e96e69a8331ffd1183de2ff32b2e2eff6e01059f4ce0b104bdd6dc9dba",
+    "Scripts/UI/Battle/BattleParticipant.gd": "a6012e909f32931dd673b884bfc3564ae78741e64a18adb3a23cf5c25c9a1fdb",
+    "Nodes/Ui/Battle/TargetsBox.gd": "071c01038ea9bc830a1c69ed6d3d7f539ecde5f0a8926c44ad3f7b3faa786885",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+    "Fonts/HitNumber.tres": "a5dc45e581a98dbbd4498c6aea51d807cc53727ca3620a0023e2994395dbd6a1",
+    "Nodes/Ui/Battle/BattleDialogueBox.tscn": "f8ab52a6550c1a429e802594fd9617cff56a7da7bdc071df3f642aa459a4f69b",
+    "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Battle/BGDarkinator.tscn": "c13599a9b0a0970c8dcd3dcd5db26997ea4093cac9f45691897c6044557ecc2a",
+    "Nodes/Ui/Battle/Smash.tscn": "f82e7a1caa0dfb3f54fe9107a3328d814c241040779a6845b65f2690c19068f9",
+    "Nodes/Ui/Battle/FlyingNumber.tscn": "47f54f11a67d7f4138bf042f189f4617bf57fff40b5d463093ad094fa4ac3e22",
+    "Nodes/Ui/Battle/RisingNumber.tscn": "0354d11990a85913945fad6d220b83c72e36d13abc369ef6e88e94b96ddd0b08",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7"
+  },
+  "facts": [
+    {
+      "id": "cell.party",
+      "kind": "resource_cell",
+      "resource": "party",
+      "expected": [
+        64,
+        64
+      ]
+    },
+    {
+      "id": "cell.enemy",
+      "kind": "resource_cell",
+      "resource": "enemy",
+      "expected": [
+        33,
+        49
+      ]
+    },
+    {
+      "id": "cell.bash",
+      "kind": "resource_cell",
+      "resource": "bash",
+      "expected": [
+        32,
+        32
+      ]
+    },
+    {
+      "id": "cell.pointer",
+      "kind": "resource_cell",
+      "resource": "pointer",
+      "expected": [
+        25,
+        25
+      ]
+    },
+    {
+      "id": "cell.smash",
+      "kind": "resource_cell",
+      "resource": "smash",
+      "expected": [
+        168.0,
+        76.0
+      ]
+    },
+    {
+      "id": "cell.dialogue_cursor",
+      "kind": "resource_cell",
+      "resource": "dialogue_cursor",
+      "expected": [
+        8,
+        8
+      ]
+    },
+    {
+      "id": "flying.random",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/FlyingNumber.gd",
+      "function": "run",
+      "pattern": "var distance = rand_range\\(([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        32,
+        64
+      ]
+    },
+    {
+      "id": "flying.x",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/FlyingNumber.gd",
+      "function": "run",
+      "pattern": "tween_property\\(self, \"rect_position:x\", rect_position.x \\+ distance, ([\\d.]+)\\)",
+      "expected": [
+        0.8
+      ]
+    },
+    {
+      "id": "flying.up",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/FlyingNumber.gd",
+      "function": "run",
+      "pattern": "tween_property\\(self, \"rect_position:y\", rect_position.y - ([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        20,
+        0.4
+      ]
+    },
+    {
+      "id": "flying.down",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/FlyingNumber.gd",
+      "function": "run",
+      "pattern": "tween_property\\(self, \"rect_position:y\", rect_position.y \\+ ([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        180,
+        0.4
+      ]
+    },
+    {
+      "id": "flying.delay",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/FlyingNumber.gd",
+      "function": "run",
+      "pattern": "set_delay\\(([\\d.]+)\\)",
+      "expected": [
+        0.4
+      ]
+    },
+    {
+      "id": "rising.move",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/RisingNumber.gd",
+      "function": "run",
+      "pattern": "tween_property\\(self, \"rect_position:y\", rect_position.y - ([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        16,
+        0.6
+      ]
+    },
+    {
+      "id": "enemy.attack.up",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/EnemySprite.gd",
+      "function": "attack",
+      "pattern": "tween_property\\(_sprite, \"offset:y\", (-?[\\d.]+), ([\\d.]+)\\)\\.set_ease\\(Tween.EASE_OUT\\)",
+      "expected": [
+        -10,
+        0.1
+      ]
+    },
+    {
+      "id": "enemy.attack.return",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/EnemySprite.gd",
+      "function": "attack",
+      "pattern": "tween_property\\(_sprite, \"offset:y\", _sprite.offset.y, ([\\d.]+)\\)\\.set_ease\\(Tween.EASE_IN\\)",
+      "expected": [
+        0.1
+      ]
+    },
+    {
+      "id": "party.show",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "show_in",
+      "pattern": "tween_property\\(self, \"rect_position:y\", _shown_pos, ([\\d.]+)\\)",
+      "expected": [
+        0.12
+      ]
+    },
+    {
+      "id": "party.hide",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "hide_away",
+      "pattern": "tween_property\\(self, \"rect_position:y\", _hide_pos, ([\\d.]+)\\)",
+      "expected": [
+        0.12
+      ]
+    },
+    {
+      "id": "party.scale",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "bounce_up_hit",
+      "pattern": "tween_property\\(\\$Sprite, \"scale\", Vector2.ONE, ([\\d.]+)\\)\\.from\\(Vector2\\(([\\d.]+),([\\d.]+)\\)\\)",
+      "expected": [
+        0.2,
+        0.6,
+        1.6
+      ]
+    },
+    {
+      "id": "party.bounce",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "bounce_up_hit",
+      "pattern": "tween_property\\(self, \"rect_position:y\", rect_position.y - toAdd - ([\\d.]+) \\* intensity - ([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        32,
+        16,
+        0.2
+      ]
+    },
+    {
+      "id": "party.bounce.delay",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "bounce_up_hit",
+      "pattern": "set_delay\\(([\\d.]+)\\)",
+      "expected": [
+        0.32
+      ]
+    },
+    {
+      "id": "party.shake.y",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "shake",
+      "pattern": "tween_property\\(self, \"rect_position:y\", rect_position.y, ([\\d.]+)\\)\\.from\\(rect_position.y \\+ ([\\d.]+)\\)",
+      "expected": [
+        0.15,
+        5
+      ]
+    },
+    {
+      "id": "party.shake.x",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "shake",
+      "pattern": "tween_property\\(self, \"rect_position:x\", rect_position.x, ([\\d.]+)\\)\\.from\\(rect_position.x \\+ ([\\d.]+)\\)",
+      "expected": [
+        0.2,
+        10
+      ]
+    },
+    {
+      "id": "plate.offset",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": "quake",
+      "pattern": "var offset = ([\\d.]+) \\* intensity",
+      "expected": [
+        8
+      ]
+    },
+    {
+      "id": "plate.first",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": "quake",
+      "pattern": "tween_property\\(self, \"rect_position:y\", _init_rect_pos_y \\+ offset, ([\\d.]+)\\)\\.set_trans\\(Tween.TRANS_LINEAR\\)",
+      "expected": [
+        0.05
+      ]
+    },
+    {
+      "id": "plate.second",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": "quake",
+      "pattern": "tween_property\\(self, \"rect_position:y\", _init_rect_pos_y - offset, ([\\d.]+)\\)",
+      "expected": [
+        0.1
+      ]
+    },
+    {
+      "id": "plate.third",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": "quake",
+      "pattern": "tween_property\\(self, \"rect_position:y\", _init_rect_pos_y \\+ offset/([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        2,
+        0.1
+      ]
+    },
+    {
+      "id": "plate.fourth",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": "quake",
+      "pattern": "tween_property\\(self, \"rect_position:y\", _init_rect_pos_y - offset/([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        2,
+        0.1
+      ]
+    },
+    {
+      "id": "plate.last",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": "quake",
+      "pattern": "tween_property\\(self, \"rect_position:y\", _init_rect_pos_y, ([\\d.]+)\\)",
+      "expected": [
+        0.15
+      ]
+    },
+    {
+      "id": "plate.defaults",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": null,
+      "pattern": "^func quake\\(delay = ([\\d.]+), intensity = ([\\d.]+)\\):",
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "plate.hit",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": null,
+      "pattern": "target\\.get_plate\\(\\)\\.quake\\(([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        0.1,
+        1.5
+      ]
+    },
+    {
+      "id": "enemy.dodge",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/EnemySprite.gd",
+      "function": "dodge",
+      "pattern": "var movement\\s*:?=\\s*([\\d.]+)",
+      "expected": [
+        8
+      ]
+    },
+    {
+      "id": "enemy.dodge.duration",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/EnemySprite.gd",
+      "function": "dodge",
+      "pattern": "tween_property\\(self, \"rect_position:x\", rect_position.x \\+ movement, ([\\d.]+)\\)",
+      "expected": [
+        0.1
+      ]
+    },
+    {
+      "id": "party.dodge",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "dodge",
+      "pattern": "var movement\\s*:?=\\s*([\\d.]+)",
+      "expected": [
+        8
+      ]
+    },
+    {
+      "id": "party.dodge.duration",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "dodge",
+      "pattern": "tween_property\\(self, \"rect_position:x\", rect_position.x \\+ movement, ([\\d.]+)\\)",
+      "expected": [
+        0.1
+      ]
+    },
+    {
+      "id": "text.initial",
+      "kind": "numbers",
+      "source": "Scripts/global/globalData.gd",
+      "function": null,
+      "pattern": "const TEXT_SPEEDS := \\[([\\d.]+), [\\d.]+, [\\d.]+\\]",
+      "expected": [
+        0.02
+      ]
+    },
+    {
+      "id": "hp.radix",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": null,
+      "pattern": "wrapi\\(row, 0, ([\\d.]+)\\)",
+      "expected": [
+        10
+      ]
+    },
+    {
+      "id": "hp.frames",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/PartyInfoPlate.gd",
+      "function": null,
+      "pattern": "^const TRANSITION_FRAMES := ([\\d.]+)",
+      "expected": [
+        8.0
+      ]
+    },
+    {
+      "id": "party.hit.threshold",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": null,
+      "pattern": "elif val > \\(1.0/([\\d.]+)\\) \\* max_hp:",
+      "expected": [
+        16
+      ]
+    },
+    {
+      "id": "party.hit.bounce",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": null,
+      "pattern": "bounce_up_hit\\(min\\(val / \\(max_hp / ([\\d.]+)\\), ([\\d.]+)\\)\\)",
+      "expected": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "party.shown",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": null,
+      "pattern": "^export var _distance_to_shown := ([\\d.]+)",
+      "expected": [
+        20
+      ]
+    },
+    {
+      "id": "party.position_divisor",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSpriteParty.gd",
+      "function": "get_shown_global_position",
+      "pattern": "rect_size.y/([\\d.]+) - _distance_to_shown",
+      "expected": [
+        1.3
+      ]
+    },
+    {
+      "id": "glyph.start",
+      "kind": "numbers",
+      "source": "Fonts/HitNumber.tres",
+      "function": null,
+      "pattern": "^StartChar = ([\\d.]+)",
+      "expected": [
+        32
+      ]
+    },
+    {
+      "id": "glyph.size",
+      "kind": "numbers",
+      "source": "Fonts/HitNumber.tres",
+      "function": null,
+      "pattern": "^GlyphSize = Vector2\\( ([\\d.]+), ([\\d.]+) \\)",
+      "expected": [
+        11,
+        11
+      ]
+    },
+    {
+      "id": "glyph.height",
+      "kind": "numbers",
+      "source": "Fonts/HitNumber.tres",
+      "function": null,
+      "pattern": "^height = ([\\d.]+)",
+      "expected": [
+        11
+      ]
+    },
+    {
+      "id": "target.pointer",
+      "kind": "numbers",
+      "source": "Nodes/Ui/Battle/TargetsBox.gd",
+      "function": null,
+      "pattern": "^\\s+_pointer.rect_position = target.get_target_position\\(\\) - _pointer.rect_size/([\\d.]+)",
+      "expected": [
+        1.5
+      ]
+    },
+    {
+      "id": "target.glow",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/EnemySprite.gd",
+      "function": "select",
+      "pattern": "set_shader_param\\(\"glow_modifier\", ([\\d.]+)\\)",
+      "expected": [
+        0.25
+      ]
+    },
+    {
+      "id": "smash.timing",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": null,
+      "pattern": "global.start_slowmo\\(([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": "smash.offset",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_create_smash_attack",
+      "pattern": "target_pos.y -= ([\\d.]+)",
+      "expected": [
+        32
+      ]
+    },
+    {
+      "id": "cursor.speed",
+      "kind": "numbers",
+      "source": "Nodes/Ui/arrow.tscn",
+      "function": null,
+      "pattern": "\"speed\": ([\\d.]+)",
+      "expected": [
+        5
+      ]
+    },
+    {
+      "id": "cursor.frames",
+      "kind": "numbers",
+      "source": "Nodes/Ui/arrow.tscn",
+      "function": null,
+      "pattern": "\"frames\": \\[ SubResource\\( ([\\d.]+) \\), SubResource\\( ([\\d.]+) \\), SubResource\\( ([\\d.]+) \\), SubResource\\( ([\\d.]+) \\) \\]",
+      "expected": [
+        1,
+        2,
+        3,
+        2
+      ]
+    },
+    {
+      "id": "text.SPEED_UP_FROM_PRESS_A",
+      "kind": "numbers",
+      "source": "Scripts/UI/AbstractDialogueBox.gd",
+      "function": null,
+      "pattern": "^const SPEED_UP_FROM_PRESS_A\\s*:?=\\s*([\\d.]+)",
+      "expected": [
+        3.0
+      ]
+    },
+    {
+      "id": "text.SPEED_UP_FROM_PRESS_B",
+      "kind": "numbers",
+      "source": "Scripts/UI/AbstractDialogueBox.gd",
+      "function": null,
+      "pattern": "^const SPEED_UP_FROM_PRESS_B\\s*:?=\\s*([\\d.]+)",
+      "expected": [
+        1000.0
+      ]
+    },
+    {
+      "id": "text.NORMAL_SPEED",
+      "kind": "numbers",
+      "source": "Scripts/UI/AbstractDialogueBox.gd",
+      "function": null,
+      "pattern": "^const NORMAL_SPEED\\s*:?=\\s*([\\d.]+)",
+      "expected": [
+        1.0
+      ]
+    },
+    {
+      "id": "text.FASTER_SPEED",
+      "kind": "numbers",
+      "source": "Scripts/UI/AbstractDialogueBox.gd",
+      "function": null,
+      "pattern": "^const FASTER_SPEED\\s*:?=\\s*([\\d.]+)",
+      "expected": [
+        2.0
+      ]
+    },
+    {
+      "id": "text.SLOWER_SPEED",
+      "kind": "numbers",
+      "source": "Scripts/UI/AbstractDialogueBox.gd",
+      "function": null,
+      "pattern": "^const SLOWER_SPEED\\s*:?=\\s*([\\d.]+)",
+      "expected": [
+        0.7
+      ]
+    },
+    {
+      "id": "dim.size",
+      "kind": "native_policy",
+      "sources": [
+        "Nodes/Ui/Battle/BGDarkinator.tscn"
+      ],
+      "reason": "Existing explicit source-coordinate reference canvas for the full-anchor darkinator. This records the native binding policy; default 400x240 expansion remains in the runtime viewport bridge.",
+      "expected": [
+        320,
+        180
+      ]
+    },
+    {
+      "id": "flying.margins",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/FlyingNumber.tscn",
+      "node": ".",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        },
+        {
+          "property": "margin_bottom",
+          "index": null
+        }
+      ],
+      "expected": [
+        158.0,
+        80.0,
+        213.0,
+        91.0
+      ]
+    },
+    {
+      "id": "rising.margins",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/RisingNumber.tscn",
+      "node": ".",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        },
+        {
+          "property": "margin_bottom",
+          "index": null
+        }
+      ],
+      "expected": [
+        148.0,
+        80.0,
+        173.0,
+        91.0
+      ]
+    },
+    {
+      "id": "rising.miss",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/RisingNumber.tscn",
+      "node": "Miss",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        },
+        {
+          "property": "margin_bottom",
+          "index": null
+        }
+      ],
+      "expected": [
+        -4,
+        -4,
+        36,
+        15
+      ]
+    },
+    {
+      "id": "dialogue.margins",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "node": "Dialoguebox",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        },
+        {
+          "property": "margin_bottom",
+          "index": null
+        }
+      ],
+      "expected": [
+        10.0,
+        4.0,
+        310.0,
+        49.0
+      ]
+    },
+    {
+      "id": "target.box",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "node": "TargetNameBox",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        }
+      ],
+      "expected": [
+        194.0,
+        -27.0,
+        320.0
+      ]
+    },
+    {
+      "id": "target.label",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "node": "TargetNameBox/Label",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        },
+        {
+          "property": "margin_bottom",
+          "index": null
+        }
+      ],
+      "expected": [
+        6.0,
+        7.0,
+        120.0,
+        21.0
+      ]
+    },
+    {
+      "id": "text.auto",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "node": "Timer",
+      "properties": [
+        {
+          "property": "wait_time",
+          "index": null
+        }
+      ],
+      "expected": [
+        1.25
+      ]
+    },
+    {
+      "id": "party.hit.variants",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "node": ".",
+      "properties": [
+        {
+          "property": "_hits",
+          "index": null
+        }
+      ],
+      "expected": [
+        3
+      ]
+    },
+    {
+      "id": "dialogue.patch",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "node": "Dialoguebox",
+      "properties": [
+        {
+          "property": "patch_margin_left",
+          "index": null
+        },
+        {
+          "property": "patch_margin_top",
+          "index": null
+        },
+        {
+          "property": "patch_margin_right",
+          "index": null
+        },
+        {
+          "property": "patch_margin_bottom",
+          "index": null
+        }
+      ],
+      "expected": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "damage.shadow",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/FlyingNumber.tscn",
+      "node": ".",
+      "properties": [
+        {
+          "property": "custom_constants/shadow_offset_x",
+          "index": null
+        },
+        {
+          "property": "custom_constants/shadow_offset_y",
+          "index": null
+        }
+      ],
+      "expected": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "cursor.pose",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "node": "Dialoguebox/Cursor_Down",
+      "properties": [
+        {
+          "property": "position",
+          "index": 0
+        },
+        {
+          "property": "position",
+          "index": 1
+        },
+        {
+          "property": "rotation",
+          "index": null
+        }
+      ],
+      "expected": [
+        285.21,
+        39.306,
+        1.5708
+      ]
+    },
+    {
+      "id": "flying.negative_height",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "flying.up",
+          "index": 0
+        }
+      ],
+      "expected": [
+        -20
+      ]
+    },
+    {
+      "id": "rising.negative_height",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "rising.move",
+          "index": 0
+        }
+      ],
+      "expected": [
+        -16
+      ]
+    },
+    {
+      "id": "enemy.attack.length",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "enemy.attack.up",
+          "index": 1
+        },
+        {
+          "fact": "enemy.attack.return",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.2
+      ]
+    },
+    {
+      "id": "party.bounce.length",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "party.bounce.delay",
+          "index": 0
+        },
+        {
+          "fact": "party.bounce",
+          "index": 2
+        }
+      ],
+      "expected": [
+        0.52
+      ]
+    },
+    {
+      "id": "plate.negative_offset",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "plate.offset",
+          "index": 0
+        }
+      ],
+      "expected": [
+        -8
+      ]
+    },
+    {
+      "id": "plate.half_offset",
+      "kind": "derive",
+      "operation": "ratio",
+      "inputs": [
+        {
+          "fact": "plate.offset",
+          "index": 0
+        },
+        {
+          "fact": "plate.third",
+          "index": 0
+        }
+      ],
+      "expected": [
+        4
+      ]
+    },
+    {
+      "id": "plate.negative_half",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "plate.half_offset",
+          "index": 0
+        }
+      ],
+      "expected": [
+        -4
+      ]
+    },
+    {
+      "id": "enemy.dodge.length",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "enemy.dodge.duration",
+          "index": 0
+        },
+        {
+          "fact": "enemy.dodge.duration",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.2
+      ]
+    },
+    {
+      "id": "party.dodge.length",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "party.dodge.duration",
+          "index": 0
+        },
+        {
+          "fact": "party.dodge.duration",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.2
+      ]
+    },
+    {
+      "id": "flying.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "flying.margins",
+          "index": 2
+        },
+        {
+          "fact": "flying.margins",
+          "index": 0
+        }
+      ],
+      "expected": [
+        55
+      ]
+    },
+    {
+      "id": "flying.height",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "flying.margins",
+          "index": 3
+        },
+        {
+          "fact": "flying.margins",
+          "index": 1
+        }
+      ],
+      "expected": [
+        11
+      ]
+    },
+    {
+      "id": "rising.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "rising.margins",
+          "index": 2
+        },
+        {
+          "fact": "rising.margins",
+          "index": 0
+        }
+      ],
+      "expected": [
+        25.0
+      ]
+    },
+    {
+      "id": "rising.height",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "rising.margins",
+          "index": 3
+        },
+        {
+          "fact": "rising.margins",
+          "index": 1
+        }
+      ],
+      "expected": [
+        11.0
+      ]
+    },
+    {
+      "id": "rising.miss.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "rising.miss",
+          "index": 2
+        },
+        {
+          "fact": "rising.miss",
+          "index": 0
+        }
+      ],
+      "expected": [
+        40
+      ]
+    },
+    {
+      "id": "rising.miss.height",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "rising.miss",
+          "index": 3
+        },
+        {
+          "fact": "rising.miss",
+          "index": 1
+        }
+      ],
+      "expected": [
+        19
+      ]
+    },
+    {
+      "id": "dialogue.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "dialogue.margins",
+          "index": 2
+        },
+        {
+          "fact": "dialogue.margins",
+          "index": 0
+        }
+      ],
+      "expected": [
+        300.0
+      ]
+    },
+    {
+      "id": "dialogue.height",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "dialogue.margins",
+          "index": 3
+        },
+        {
+          "fact": "dialogue.margins",
+          "index": 1
+        }
+      ],
+      "expected": [
+        45.0
+      ]
+    },
+    {
+      "id": "cursor.x",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "dialogue.margins",
+          "index": 0
+        },
+        {
+          "fact": "cursor.pose",
+          "index": 0
+        }
+      ],
+      "expected": [
+        295.21
+      ]
+    },
+    {
+      "id": "cursor.y",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "dialogue.margins",
+          "index": 1
+        },
+        {
+          "fact": "cursor.pose",
+          "index": 1
+        }
+      ],
+      "expected": [
+        43.306
+      ]
+    },
+    {
+      "id": "cursor.degrees",
+      "kind": "derive",
+      "operation": "degrees",
+      "inputs": [
+        {
+          "fact": "cursor.pose",
+          "index": 2
+        }
+      ],
+      "expected": [
+        90.00021045914971
+      ]
+    },
+    {
+      "id": "cursor.step",
+      "kind": "derive",
+      "operation": "ratio",
+      "inputs": [
+        1,
+        {
+          "fact": "cursor.speed",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.2
+      ]
+    },
+    {
+      "id": "target.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "target.box",
+          "index": 2
+        },
+        {
+          "fact": "target.box",
+          "index": 0
+        }
+      ],
+      "expected": [
+        126.0
+      ]
+    },
+    {
+      "id": "target.height",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "target.box",
+          "index": 1
+        }
+      ],
+      "expected": [
+        27.0
+      ]
+    },
+    {
+      "id": "target.label.x",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "target.box",
+          "index": 0
+        },
+        {
+          "fact": "target.label",
+          "index": 0
+        }
+      ],
+      "expected": [
+        200.0
+      ]
+    },
+    {
+      "id": "target.label.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "target.label",
+          "index": 2
+        },
+        {
+          "fact": "target.label",
+          "index": 0
+        }
+      ],
+      "expected": [
+        114.0
+      ]
+    },
+    {
+      "id": "target.label.height",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "target.label",
+          "index": 3
+        },
+        {
+          "fact": "target.label",
+          "index": 1
+        }
+      ],
+      "expected": [
+        14.0
+      ]
+    },
+    {
+      "id": "smash.negative_offset",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "smash.offset",
+          "index": 0
+        }
+      ],
+      "expected": [
+        -32
+      ]
+    },
+    {
+      "id": "plate.end.first",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "plate.hit",
+          "index": 0
+        },
+        {
+          "fact": "plate.first",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.15
+      ]
+    },
+    {
+      "id": "plate.end.second",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "plate.end.first",
+          "index": 0
+        },
+        {
+          "fact": "plate.second",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.25
+      ]
+    },
+    {
+      "id": "plate.end.third",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "plate.end.second",
+          "index": 0
+        },
+        {
+          "fact": "plate.third",
+          "index": 1
+        }
+      ],
+      "expected": [
+        0.35
+      ]
+    },
+    {
+      "id": "plate.end.fourth",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "plate.end.third",
+          "index": 0
+        },
+        {
+          "fact": "plate.fourth",
+          "index": 1
+        }
+      ],
+      "expected": [
+        0.45
+      ]
+    },
+    {
+      "id": "plate.end.last",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "plate.end.fourth",
+          "index": 0
+        },
+        {
+          "fact": "plate.last",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.6
+      ]
+    },
+    {
+      "id": "cursor.time.2",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "cursor.step",
+          "index": 0
+        },
+        {
+          "fact": "cursor.step",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.4
+      ]
+    },
+    {
+      "id": "cursor.time.3",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "cursor.step",
+          "index": 0
+        },
+        {
+          "fact": "cursor.step",
+          "index": 0
+        },
+        {
+          "fact": "cursor.step",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.6
+      ]
+    },
+    {
+      "id": "cursor.time.4",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "cursor.step",
+          "index": 0
+        },
+        {
+          "fact": "cursor.step",
+          "index": 0
+        },
+        {
+          "fact": "cursor.step",
+          "index": 0
+        },
+        {
+          "fact": "cursor.step",
+          "index": 0
+        }
+      ],
+      "expected": [
+        0.8
+      ]
+    },
+    {
+      "id": "cursor.frame.0",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "cursor.frames",
+          "index": 0
+        },
+        1
+      ],
+      "expected": [
+        0
+      ]
+    },
+    {
+      "id": "cursor.frame.1",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "cursor.frames",
+          "index": 1
+        },
+        1
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "cursor.frame.2",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "cursor.frames",
+          "index": 2
+        },
+        1
+      ],
+      "expected": [
+        2
+      ]
+    },
+    {
+      "id": "cursor.frame.3",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "cursor.frames",
+          "index": 3
+        },
+        1
+      ],
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "target.font_height",
+      "kind": "native_policy",
+      "sources": [
+        "Nodes/Ui/Battle/Battle.tscn"
+      ],
+      "reason": "Retain the existing native target-label font line height used to center this source Label; captured native font/layout policy, not a new gameplay value.",
+      "expected": [
+        12
+      ]
+    },
+    {
+      "id": "target.label.extra",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "target.label.height",
+          "index": 0
+        },
+        {
+          "fact": "target.font_height",
+          "index": 0
+        }
+      ],
+      "expected": [
+        2.0
+      ]
+    },
+    {
+      "id": "target.label.center",
+      "kind": "derive",
+      "operation": "ratio",
+      "inputs": [
+        {
+          "fact": "target.label.extra",
+          "index": 0
+        },
+        2
+      ],
+      "expected": [
+        1.0
+      ]
+    },
+    {
+      "id": "target.label.y",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "target.label",
+          "index": 1
+        },
+        {
+          "fact": "target.label.center",
+          "index": 0
+        }
+      ],
+      "expected": [
+        8.0
+      ]
+    },
+    {
+      "id": "dialogue.text_rect",
+      "kind": "native_policy",
+      "sources": [
+        "Nodes/Ui/Battle/BattleDialogueBox.tscn"
+      ],
+      "reason": "Preserve the existing native settled text projection and 32-pixel two-line clip. Source Control origins/282-pixel label width remain pinned; this native projection is not claimed as a newly sampled Godot layout.",
+      "expected": [
+        19,
+        12,
+        282,
+        32
+      ]
+    },
+    {
+      "id": "dialogue.line_height",
+      "kind": "native_policy",
+      "sources": [
+        "Nodes/Ui/Battle/BattleDialogueBox.tscn"
+      ],
+      "reason": "Existing captured native EBMain_la glyph row spacing; retained layout policy, without new font copying or rendering equivalence claim.",
+      "expected": [
+        15
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "op": "animation",
+      "id": "1",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "lookIntoYourSoul",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyIdle",
+      "media": "1"
+    },
+    {
+      "op": "animation",
+      "id": "2",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "bashPrep",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyPrepare",
+      "media": "2"
+    },
+    {
+      "op": "animation",
+      "id": "3",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "lookIntoYourSoul",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyReturn",
+      "media": "3"
+    },
+    {
+      "op": "animation",
+      "id": "4",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "guard",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyGuard",
+      "media": "4"
+    },
+    {
+      "op": "animation",
+      "id": "5",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "hit1",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyHit",
+      "media": "5"
+    },
+    {
+      "op": "animation",
+      "id": "6",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "hit2",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyHit2",
+      "media": "6"
+    },
+    {
+      "op": "animation",
+      "id": "7",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "hit3",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyHit3",
+      "media": "7"
+    },
+    {
+      "op": "animation",
+      "id": "8",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "guardPrep",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyGuardPrepare",
+      "media": "8"
+    },
+    {
+      "op": "animation",
+      "id": "9",
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "name": "bash",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "animation",
+      "id": "10",
+      "source": "Nodes/Ui/Battle/EnemySprite.tscn",
+      "name": "flash",
+      "role": 2,
+      "resource": "enemy",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.enemy",
+          "index": 0
+        },
+        {
+          "fact": "cell.enemy",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "EnemyFlash",
+      "media": "10"
+    },
+    {
+      "op": "animation",
+      "id": "11",
+      "source": "Nodes/Ui/Battle/EnemySprite.tscn",
+      "name": "hit",
+      "role": 2,
+      "resource": "enemy",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.enemy",
+          "index": 0
+        },
+        {
+          "fact": "cell.enemy",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 2,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "EnemyHit",
+      "media": "11"
+    },
+    {
+      "op": "animation",
+      "id": "12",
+      "source": "Nodes/Ui/Battle/EnemySprite.tscn",
+      "name": "defeat",
+      "role": 2,
+      "resource": "enemy",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.enemy",
+          "index": 0
+        },
+        {
+          "fact": "cell.enemy",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 6,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "EnemyDefeat",
+      "media": "12"
+    },
+    {
+      "op": "animation",
+      "id": "13",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "name": "bash",
+      "role": 3,
+      "resource": "bash",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.bash",
+          "index": 0
+        },
+        {
+          "fact": "cell.bash",
+          "index": 1
+        }
+      ],
+      "nodepath": "HitEffect/AnimationPlayer",
+      "flags": 6,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "animation",
+      "id": "14",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "name": "point",
+      "role": 5,
+      "resource": "pointer",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.pointer",
+          "index": 0
+        },
+        {
+          "fact": "cell.pointer",
+          "index": 1
+        }
+      ],
+      "nodepath": "TargetsBox/TargetPointer/AnimationPlayer",
+      "flags": 0,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "TargetPointer",
+      "media": "14"
+    },
+    {
+      "op": "animation",
+      "id": "15",
+      "source": "Nodes/Ui/Battle/BGDarkinator.tscn",
+      "name": "darken",
+      "role": 9,
+      "resource": null,
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "dim.size",
+          "index": 0
+        },
+        {
+          "fact": "dim.size",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "BackgroundDim",
+      "media": "15"
+    },
+    {
+      "op": "animation",
+      "id": "16",
+      "source": "Nodes/Ui/Battle/BGDarkinator.tscn",
+      "name": "undarken",
+      "role": 9,
+      "resource": null,
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "dim.size",
+          "index": 0
+        },
+        {
+          "fact": "dim.size",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "BackgroundUndim",
+      "media": "16"
+    },
+    {
+      "op": "animation",
+      "id": "17",
+      "source": "Nodes/Ui/Battle/BGDarkinator.tscn",
+      "name": "smash",
+      "role": 9,
+      "resource": null,
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "dim.size",
+          "index": 0
+        },
+        {
+          "fact": "dim.size",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "SmashBackground",
+      "media": "17"
+    },
+    {
+      "op": "animation",
+      "id": "18",
+      "source": "Nodes/Ui/Battle/Smash.tscn",
+      "name": "Smaaaash!!",
+      "role": 3,
+      "resource": "smash",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.smash",
+          "index": 0
+        },
+        {
+          "fact": "cell.smash",
+          "index": 1
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 6,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "Smash",
+      "media": "18"
+    },
+    {
+      "op": "animation",
+      "id": "19",
+      "source": "Nodes/Ui/Battle/FlyingNumber.tscn",
+      "name": "start",
+      "role": 7,
+      "resource": "numbers",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "flying.width",
+          "index": 0
+        },
+        {
+          "fact": "flying.height",
+          "index": 0
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 4,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "FlyingNumber",
+      "media": "19"
+    },
+    {
+      "op": "track",
+      "media": "19",
+      "property": 2,
+      "times": [
+        0,
+        {
+          "fact": "flying.x",
+          "index": 0
+        }
+      ],
+      "values": [
+        0,
+        1
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "19",
+      "property": 3,
+      "times": [
+        0,
+        {
+          "fact": "flying.up",
+          "index": 1
+        }
+      ],
+      "values": [
+        0,
+        {
+          "fact": "flying.negative_height",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 1,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "19",
+      "property": 3,
+      "times": [
+        {
+          "fact": "flying.delay",
+          "index": 0
+        },
+        {
+          "fact": "flying.x",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "flying.negative_height",
+          "index": 0
+        },
+        {
+          "fact": "flying.down",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 4,
+      "mode": 1,
+      "eases": null
+    },
+    {
+      "op": "animation",
+      "id": "20",
+      "source": "Nodes/Ui/Battle/RisingNumber.tscn",
+      "name": "start",
+      "role": 8,
+      "resource": "miss",
+      "rect": [
+        {
+          "fact": "rising.miss",
+          "index": 0
+        },
+        {
+          "fact": "rising.miss",
+          "index": 1
+        },
+        {
+          "fact": "rising.miss.width",
+          "index": 0
+        },
+        {
+          "fact": "rising.miss.height",
+          "index": 0
+        }
+      ],
+      "nodepath": "AnimationPlayer",
+      "flags": 4,
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "RisingNumber",
+      "media": "20"
+    },
+    {
+      "op": "track",
+      "media": "20",
+      "property": 3,
+      "times": [
+        0,
+        {
+          "fact": "rising.move",
+          "index": 1
+        }
+      ],
+      "values": [
+        0,
+        {
+          "fact": "rising.negative_height",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 1,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "21",
+      "name": "EnemyAttack",
+      "role": 2,
+      "resource": "enemy",
+      "duration": {
+        "fact": "enemy.attack.length",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.enemy",
+          "index": 0
+        },
+        {
+          "fact": "cell.enemy",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "EnemyAttack",
+      "media": "21"
+    },
+    {
+      "op": "track",
+      "media": "21",
+      "property": 11,
+      "times": [
+        0,
+        {
+          "fact": "enemy.attack.up",
+          "index": 1
+        }
+      ],
+      "values": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          {
+            "fact": "enemy.attack.up",
+            "index": 0
+          }
+        ]
+      ],
+      "update": 0,
+      "interpolation": 1,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "21",
+      "property": 11,
+      "times": [
+        {
+          "fact": "enemy.attack.up",
+          "index": 1
+        },
+        {
+          "fact": "enemy.attack.length",
+          "index": 0
+        }
+      ],
+      "values": [
+        [
+          0,
+          {
+            "fact": "enemy.attack.up",
+            "index": 0
+          }
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "update": 0,
+      "interpolation": 2,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "event",
+      "media": "21",
+      "time": {
+        "fact": "enemy.attack.length",
+        "index": 0
+      },
+      "kind": 1
+    },
+    {
+      "op": "media",
+      "id": "22",
+      "name": "PartyShow",
+      "role": 1,
+      "resource": "party",
+      "duration": {
+        "fact": "party.show",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyShow",
+      "media": "22"
+    },
+    {
+      "op": "track",
+      "media": "22",
+      "property": 3,
+      "times": [
+        0,
+        {
+          "fact": "party.show",
+          "index": 0
+        }
+      ],
+      "values": [
+        0,
+        1
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "23",
+      "name": "PartyHide",
+      "role": 1,
+      "resource": "party",
+      "duration": {
+        "fact": "party.hide",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyHide",
+      "media": "23"
+    },
+    {
+      "op": "track",
+      "media": "23",
+      "property": 3,
+      "times": [
+        0,
+        {
+          "fact": "party.hide",
+          "index": 0
+        }
+      ],
+      "values": [
+        0,
+        1
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "24",
+      "name": "PartyBounce",
+      "role": 1,
+      "resource": "party",
+      "duration": {
+        "fact": "party.bounce.length",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyBounce",
+      "media": "24"
+    },
+    {
+      "op": "track",
+      "media": "24",
+      "property": 4,
+      "times": [
+        0,
+        {
+          "fact": "party.scale",
+          "index": 0
+        }
+      ],
+      "values": [
+        [
+          {
+            "fact": "party.scale",
+            "index": 1
+          },
+          {
+            "fact": "party.scale",
+            "index": 2
+          }
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "update": 0,
+      "interpolation": 1,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "24",
+      "property": 3,
+      "times": [
+        0,
+        {
+          "fact": "party.bounce",
+          "index": 2
+        }
+      ],
+      "values": [
+        0,
+        -1
+      ],
+      "update": 0,
+      "interpolation": 1,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "24",
+      "property": 3,
+      "times": [
+        {
+          "fact": "party.bounce.delay",
+          "index": 0
+        },
+        {
+          "fact": "party.bounce.length",
+          "index": 0
+        }
+      ],
+      "values": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "update": 0,
+      "interpolation": 4,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "25",
+      "name": "PartyShake",
+      "role": 1,
+      "resource": "party",
+      "duration": {
+        "fact": "party.shake.x",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyShake",
+      "media": "25"
+    },
+    {
+      "op": "track",
+      "media": "25",
+      "property": 3,
+      "times": [
+        0,
+        {
+          "fact": "party.shake.y",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "party.shake.y",
+          "index": 1
+        },
+        0
+      ],
+      "update": 0,
+      "interpolation": 6,
+      "mode": 1,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "25",
+      "property": 2,
+      "times": [
+        0,
+        {
+          "fact": "party.shake.x",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "party.shake.x",
+          "index": 1
+        },
+        0
+      ],
+      "update": 0,
+      "interpolation": 5,
+      "mode": 1,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "26",
+      "name": "PlateQuake",
+      "role": 4,
+      "resource": null,
+      "duration": {
+        "fact": "plate.end.last",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flags": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PlateQuake",
+      "media": "26"
+    },
+    {
+      "op": "track",
+      "media": "26",
+      "property": 3,
+      "times": [
+        {
+          "fact": "plate.hit",
+          "index": 0
+        },
+        {
+          "fact": "plate.end.first",
+          "index": 0
+        }
+      ],
+      "values": [
+        0,
+        {
+          "fact": "plate.offset",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "26",
+      "property": 3,
+      "times": [
+        {
+          "fact": "plate.end.first",
+          "index": 0
+        },
+        {
+          "fact": "plate.end.second",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "plate.offset",
+          "index": 0
+        },
+        {
+          "fact": "plate.negative_offset",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "26",
+      "property": 3,
+      "times": [
+        {
+          "fact": "plate.end.second",
+          "index": 0
+        },
+        {
+          "fact": "plate.end.third",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "plate.negative_half",
+          "index": 0
+        },
+        {
+          "fact": "plate.half_offset",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "26",
+      "property": 3,
+      "times": [
+        {
+          "fact": "plate.end.third",
+          "index": 0
+        },
+        {
+          "fact": "plate.end.fourth",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "plate.half_offset",
+          "index": 0
+        },
+        {
+          "fact": "plate.negative_half",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "26",
+      "property": 3,
+      "times": [
+        {
+          "fact": "plate.end.fourth",
+          "index": 0
+        },
+        {
+          "fact": "plate.end.last",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "plate.negative_half",
+          "index": 0
+        },
+        0
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "27",
+      "name": "EnemyDodge",
+      "role": 2,
+      "resource": "enemy",
+      "duration": {
+        "fact": "enemy.dodge.length",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.enemy",
+          "index": 0
+        },
+        {
+          "fact": "cell.enemy",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "EnemyDodge",
+      "media": "27"
+    },
+    {
+      "op": "track",
+      "media": "27",
+      "property": 2,
+      "times": [
+        0,
+        {
+          "fact": "enemy.dodge.duration",
+          "index": 0
+        }
+      ],
+      "values": [
+        0,
+        {
+          "fact": "enemy.dodge",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 1,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "27",
+      "property": 2,
+      "times": [
+        {
+          "fact": "enemy.dodge.duration",
+          "index": 0
+        },
+        {
+          "fact": "enemy.dodge.length",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "enemy.dodge",
+          "index": 0
+        },
+        0
+      ],
+      "update": 0,
+      "interpolation": 2,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "28",
+      "name": "PartyDodge",
+      "role": 1,
+      "resource": "party",
+      "duration": {
+        "fact": "party.dodge.length",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyDodge",
+      "media": "28"
+    },
+    {
+      "op": "track",
+      "media": "28",
+      "property": 2,
+      "times": [
+        0,
+        {
+          "fact": "party.dodge.duration",
+          "index": 0
+        }
+      ],
+      "values": [
+        0,
+        {
+          "fact": "party.dodge",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 1,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "28",
+      "property": 2,
+      "times": [
+        {
+          "fact": "party.dodge.duration",
+          "index": 0
+        },
+        {
+          "fact": "party.dodge.length",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "party.dodge",
+          "index": 0
+        },
+        0
+      ],
+      "update": 0,
+      "interpolation": 2,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "29",
+      "name": "Dialogue",
+      "role": 6,
+      "resource": "box",
+      "duration": 0,
+      "rect": [
+        {
+          "fact": "dialogue.margins",
+          "index": 0
+        },
+        {
+          "fact": "dialogue.margins",
+          "index": 1
+        },
+        {
+          "fact": "dialogue.width",
+          "index": 0
+        },
+        {
+          "fact": "dialogue.height",
+          "index": 0
+        }
+      ],
+      "flags": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "Dialogue",
+      "media": "29"
+    },
+    {
+      "op": "media",
+      "id": "30",
+      "name": "DialogueText",
+      "role": 6,
+      "resource": null,
+      "duration": 0,
+      "rect": [
+        {
+          "fact": "dialogue.text_rect",
+          "index": 0
+        },
+        {
+          "fact": "dialogue.text_rect",
+          "index": 1
+        },
+        {
+          "fact": "dialogue.text_rect",
+          "index": 2
+        },
+        {
+          "fact": "dialogue.text_rect",
+          "index": 3
+        }
+      ],
+      "flags": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "DialogueText",
+      "media": "30"
+    },
+    {
+      "op": "media",
+      "id": "31",
+      "name": "DialogueCursor",
+      "role": 3,
+      "resource": "dialogue_cursor",
+      "duration": {
+        "fact": "cursor.time.4",
+        "index": 0
+      },
+      "rect": [
+        {
+          "fact": "cursor.x",
+          "index": 0
+        },
+        {
+          "fact": "cursor.y",
+          "index": 0
+        },
+        {
+          "fact": "cell.dialogue_cursor",
+          "index": 0
+        },
+        {
+          "fact": "cell.dialogue_cursor",
+          "index": 1
+        }
+      ],
+      "flags": 3,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "DialogueCursor",
+      "media": "31"
+    },
+    {
+      "op": "track",
+      "media": "31",
+      "property": 6,
+      "times": [
+        0,
+        {
+          "fact": "cursor.step",
+          "index": 0
+        },
+        {
+          "fact": "cursor.time.2",
+          "index": 0
+        },
+        {
+          "fact": "cursor.time.3",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "cursor.frame.0",
+          "index": 0
+        },
+        {
+          "fact": "cursor.frame.1",
+          "index": 0
+        },
+        {
+          "fact": "cursor.frame.2",
+          "index": 0
+        },
+        {
+          "fact": "cursor.frame.3",
+          "index": 0
+        }
+      ],
+      "update": 1,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "31",
+      "property": 12,
+      "times": [
+        0
+      ],
+      "values": [
+        {
+          "fact": "cursor.degrees",
+          "index": 0
+        }
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "media",
+      "id": "32",
+      "name": "TargetNameBox",
+      "role": 6,
+      "resource": "box",
+      "duration": 0,
+      "rect": [
+        {
+          "fact": "target.box",
+          "index": 0
+        },
+        0,
+        {
+          "fact": "target.width",
+          "index": 0
+        },
+        {
+          "fact": "target.height",
+          "index": 0
+        }
+      ],
+      "flags": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "TargetNameBox",
+      "media": "32"
+    },
+    {
+      "op": "media",
+      "id": "33",
+      "name": "TargetNameText",
+      "role": 6,
+      "resource": null,
+      "duration": 0,
+      "rect": [
+        {
+          "fact": "target.label.x",
+          "index": 0
+        },
+        {
+          "fact": "target.label.y",
+          "index": 0
+        },
+        {
+          "fact": "target.label.width",
+          "index": 0
+        },
+        {
+          "fact": "target.label.height",
+          "index": 0
+        }
+      ],
+      "flags": 2,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "TargetNameText",
+      "media": "33"
+    },
+    {
+      "op": "update",
+      "media": "19",
+      "values": {
+        "duration": {
+          "fact": "flying.x",
+          "index": 0
+        }
+      }
+    },
+    {
+      "op": "update",
+      "media": "29",
+      "values": {
+        "anchor": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "op": "update",
+      "media": "30",
+      "values": {
+        "anchor": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "op": "update",
+      "media": "31",
+      "values": {
+        "anchor": [
+          0.5,
+          0
+        ]
+      }
+    },
+    {
+      "op": "update",
+      "media": "32",
+      "values": {
+        "anchor": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "op": "update",
+      "media": "33",
+      "values": {
+        "anchor": [
+          1,
+          0
+        ]
+      }
+    }
+  ],
+  "parameters": {
+    "TextTiming": [
+      {
+        "fact": "text.initial",
+        "index": 0
+      },
+      {
+        "fact": "text.SPEED_UP_FROM_PRESS_A",
+        "index": 0
+      },
+      {
+        "fact": "text.SPEED_UP_FROM_PRESS_B",
+        "index": 0
+      },
+      {
+        "fact": "text.auto",
+        "index": 0
+      }
+    ],
+    "TextTagSpeeds": [
+      {
+        "fact": "text.NORMAL_SPEED",
+        "index": 0
+      },
+      {
+        "fact": "text.FASTER_SPEED",
+        "index": 0
+      },
+      {
+        "fact": "text.SLOWER_SPEED",
+        "index": 0
+      },
+      0
+    ],
+    "HpDigits": [
+      {
+        "fact": "hp.radix",
+        "index": 0
+      },
+      {
+        "fact": "hp.frames",
+        "index": 0
+      },
+      0,
+      0
+    ],
+    "PartyHit": [
+      {
+        "fact": "party.hit.threshold",
+        "index": 0
+      },
+      {
+        "fact": "party.hit.bounce",
+        "index": 0
+      },
+      {
+        "fact": "party.hit.bounce",
+        "index": 1
+      },
+      {
+        "fact": "party.hit.variants",
+        "index": 0
+      }
+    ],
+    "PartyShown": [
+      {
+        "fact": "party.shown",
+        "index": 0
+      },
+      {
+        "fact": "party.show",
+        "index": 0
+      },
+      {
+        "fact": "party.hide",
+        "index": 0
+      },
+      {
+        "fact": "party.position_divisor",
+        "index": 0
+      }
+    ],
+    "FlyingNumberRandom": [
+      {
+        "fact": "flying.random",
+        "index": 0
+      },
+      {
+        "fact": "flying.random",
+        "index": 1
+      },
+      0,
+      0
+    ],
+    "DamageGlyphGrid": [
+      {
+        "fact": "glyph.start",
+        "index": 0
+      },
+      {
+        "fact": "glyph.size",
+        "index": 0
+      },
+      {
+        "fact": "glyph.size",
+        "index": 1
+      },
+      {
+        "fact": "glyph.height",
+        "index": 0
+      }
+    ],
+    "TargetPointerOffset": [
+      {
+        "fact": "target.pointer",
+        "index": 0
+      },
+      0,
+      0,
+      0
+    ],
+    "TargetGlow": [
+      1,
+      1,
+      1,
+      {
+        "fact": "target.glow",
+        "index": 0
+      }
+    ],
+    "DialogueMargins": [
+      {
+        "fact": "dialogue.patch",
+        "index": 0
+      },
+      {
+        "fact": "dialogue.patch",
+        "index": 1
+      },
+      {
+        "fact": "dialogue.patch",
+        "index": 2
+      },
+      {
+        "fact": "dialogue.patch",
+        "index": 3
+      }
+    ],
+    "DialogueTextLayout": [
+      {
+        "fact": "dialogue.text_rect",
+        "index": 0
+      },
+      {
+        "fact": "dialogue.text_rect",
+        "index": 1
+      },
+      {
+        "fact": "dialogue.text_rect",
+        "index": 2
+      },
+      {
+        "fact": "dialogue.line_height",
+        "index": 0
+      }
+    ],
+    "DamageShadow": [
+      {
+        "fact": "damage.shadow",
+        "index": 0
+      },
+      {
+        "fact": "damage.shadow",
+        "index": 1
+      },
+      0,
+      0
+    ],
+    "SmashTiming": [
+      {
+        "fact": "smash.timing",
+        "index": 0
+      },
+      {
+        "fact": "smash.timing",
+        "index": 1
+      },
+      0,
+      0
+    ],
+    "SmashOffset": [
+      0,
+      {
+        "fact": "smash.negative_offset",
+        "index": 0
+      },
+      0,
+      0
+    ],
+    "RisingNumberSize": [
+      {
+        "fact": "rising.width",
+        "index": 0
+      },
+      {
+        "fact": "rising.height",
+        "index": 0
+      },
+      0,
+      0
+    ],
+    "PartyBounceMotion": [
+      {
+        "fact": "party.bounce",
+        "index": 0
+      },
+      {
+        "fact": "party.bounce",
+        "index": 1
+      },
+      {
+        "fact": "party.bounce.delay",
+        "index": 0
+      },
+      {
+        "fact": "party.bounce.length",
+        "index": 0
+      }
+    ],
+    "PlateHitIntensity": [
+      {
+        "fact": "plate.defaults",
+        "index": 1
+      },
+      {
+        "fact": "plate.hit",
+        "index": 1
+      },
+      {
+        "fact": "plate.hit",
+        "index": 0
+      },
+      0
+    ]
+  },
+  "context": {
+    "party": {
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn"
+    },
+    "battle": {
+      "source": "Nodes/Ui/Battle/Battle.tscn"
+    },
+    "pr": {
+      "resource": "party"
+    },
+    "box": {
+      "resource": "box"
+    },
+    "dr": {
+      "facts": [
+        {
+          "fact": "dialogue.margins",
+          "index": 0
+        },
+        {
+          "fact": "dialogue.margins",
+          "index": 1
+        },
+        {
+          "fact": "dialogue.width",
+          "index": 0
+        },
+        {
+          "fact": "dialogue.height",
+          "index": 0
+        }
+      ]
+    },
+    "bash": {
+      "media": "9"
+    },
+    "effect": {
+      "media": "13"
+    }
+  }
+}

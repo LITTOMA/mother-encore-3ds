@@ -65,7 +65,7 @@ def verify(root,out=OUT):
     for name,r in receipt['outputs'].items():
         p=safe_path(out,name)
         if sha(p)!=r['sha256'] or p.stat().st_size!=r['bytes']:raise ValueError('Changed round output: '+name)
-    if build_presentation(Extractor(ROOT),receipt['resources'])!=read_json(REPORT/'presentation.json'):raise ValueError('Stale reviewed presentation recipe output')
+    verify_reviewed_presentation(ROOT)
     print('Verified source-pinned round assets and presentation recipe')
 
 class Presentation:
@@ -83,100 +83,51 @@ class Presentation:
     def anim(self,path,name,role,res=NIL,rect=(0,0,0,0),nodepath='AnimationPlayer',flags=0,anchor=(.5,.5)):
         text=self.ex.text(path)
         rid=int(one(r'^anims/'+re.escape(name)+r' = SubResource\( (\d+) \)',text,name)[1]) if '!' in name else node(text,nodepath)['anims/'+name]['SubResource']
-        if path=='Nodes/Ui/Battle/EnemySprite.tscn' and name=='defeat':
-            # Exact reviewed audio track is retained separately as an audio
-            # limitation; there is no audio backend mapping in this visual IR.
-            body=one(r'^\[sub_resource type="Animation" id='+str(rid)+r'\]\n(.*?)(?=^\[|\Z)',text,'enemy defeat',re.M|re.S)[1]
-            props=properties(body)
-            if props.get('tracks/7/type')!='audio' or props.get('tracks/7/path')!='AudioStreamPlayer' or props.get('tracks/7/keys')!={'clips':[{'end_offset':0.0,'start_offset':0.0,'stream':{'ExtResource':4}}],'times':[0]}:raise ValueError('Unreviewed defeat audio track')
-            text=text.replace(body,body[:body.index('tracks/7/type')])
+        from tools.round_animation_bindings import checked_visual_source
+        if not hasattr(self,'animation_config'):raise ValueError('Unreviewed presentation track: missing checked source bindings')
+        text=checked_visual_source(text,rid,path,name,self.animation_config)
         a=animation(text,rid,path,name)
         m=self.add(path+':'+name,role,res,a['length'],rect,flags|(1 if a['loop'] else 0),anchor=anchor)
-        mapping={'Sprite:frame':6,'.:frame':6,'Sprite:offset':11,'.:rect_rotation':12,'.:material:shader_param/glow_color':13,'.:material:shader_param/glow_modifier':14,'.:material:shader_param/flash_color':9,'.:material:shader_param/flash_modifier':10,'.:rect_scale':4,'.:scale':4,'.:visible':7,'.:modulate':15,'.:color':8,'.:position':11,'.:rect_size':16,'Sprite:material:shader_param/width':17}
+        config=self.animation_config;mapping=config['properties']
         for tr in a['tracks']:
             k=tr['keys'];p=tr['path']
             if not k['times']:continue
             if tr['type']=='method':
                 for t,v in zip(k['times'],k['values']):
-                    if v['args'] or v['method'] not in ['_apply_damage','_try_pause']:raise ValueError('Unreviewed action method')
-                    self.event(m,t,1 if v['method']=='_apply_damage' else 2)
+                    if v['args'] or v['method'] not in config['methods']:raise ValueError('Unreviewed action method')
+                    self.event(m,t,config['methods'][v['method']])
                 continue
-            if p in ['Sprite:hframes','Sprite:vframes','Sprite:texture']:
+            if p in config['atlas']:
                 if len(k['values'])!=1:raise ValueError('Changing resource binding not reviewed')
                 r=self.resources[res]
-                expected=r['columns'] if p=='Sprite:hframes' else r['rows']
-                if p!='Sprite:texture' and k['values'][0]!=expected:raise ValueError('Effect atlas mismatch')
+                selector=config['atlas'][p];expected=r[selector]if selector!='texture'else None
+                if selector!='texture' and k['values'][0]!=expected:raise ValueError('Effect atlas mismatch')
                 continue
             if p not in mapping:raise ValueError('Unreviewed presentation track '+path+':'+p)
-            if p.endswith('/width') and k['values']!=[0.0]:raise ValueError('Outline rendering outside scope')
-            if tr['interp'] not in [1,2]:raise ValueError('Unknown source interpolation')
-            self.track(m,mapping[p],k['times'],k['values'],k.get('update',0),7 if tr['interp']==2 else 0,eases=k['transitions'])
+            if p in config['outline'] and k['values']!=config['outline'][p]:raise ValueError('Outline rendering outside scope')
+            if str(tr['interp']) not in config['interpolation']:raise ValueError('Unknown source interpolation')
+            self.track(m,mapping[p],k['times'],k['values'],k.get('update',0),config['interpolation'][str(tr['interp'])],eases=k['transitions'])
         return m
     def bind(self,name,m):self.bindings[name]=m['id']-1;return m
 
 def build_presentation(ex,resources,recipe=None):
     from tools.round_presentation_recipe import apply
     p=Presentation(ex,resources);context=apply(p,recipe)
-    party,battle,pr,box,dr,bash,effect=(context[key]for key in ['party','battle','pr','box','dr','bash','effect'])
-    bt=ex.text(battle)
-    # Victory is a source actor clip plus the independent, looping YouWin UI.
-    p.bind('PartyVictory',p.anim(party,'victory',1,pr,rect=(0,0,64,64),flags=2,anchor=(.5,1)))
-    dialog_scene='Nodes/Ui/Battle/BattleDialogueBox.tscn';dt=ex.text(dialog_scene)
-    win_anim=animation(dt,node(dt,'AnimationPlayer')['anims/YouWin']['SubResource'],dialog_scene,'YouWin')
-    yn=node(dt,'Dialoguebox/ClipBox/YouWin');clipbox=node(dt,'Dialoguebox/ClipBox')
-    yr=p.resource('victory');yr_size=resources[yr]
-    banner=p.bind('VictoryBanner',p.add('Dialoguebox:YouWin',3,yr,win_anim['length'],
-        (dr[0]+clipbox['margin_left']+yn['position'][0],dr[1]+clipbox['margin_top']+yn['position'][1],yr_size['width']/yr_size['columns'],yr_size['height']/yr_size['rows']),flags=3,anchor=(.5,0)))
-    banner_paths={'ClipBox/YouWin:frame':6,'ClipBox/YouWin:visible':7}
-    for tr in win_anim['tracks']:
-        k=tr['keys'];path=tr['path']
-        if tr['type']!='value' or tr['interp']!=1:raise ValueError('Unreviewed victory banner track')
-        if path in banner_paths:p.track(banner,banner_paths[path],k['times'],k['values'],k['update'],eases=k['transitions'])
-        elif path in ['ClipBox/HBoxContainer:visible','Cursor_Down:visible']:
-            if k!={'times':[0],'transitions':[1],'update':1,'values':[False]}:raise ValueError('Changed victory UI visibility')
-        else:raise ValueError('Unreviewed victory banner target')
-    # Split one source AnimationPlayer into typed visual lanes and method events.
-    # The shared sampler executes these tracks; there is no secondary interpreter.
-    outgoing=animation(bt,node(bt,'AnimScene')['anims/transitionOut']['SubResource'],battle,'transitionOut')
-    return_paths={'top:rect_position':('ReturnTop',10,1),'bottom:rect_position':('ReturnBottom',10,1),'PlayerInfo:rect_position:y':('ReturnPlate',4,3)}
-    callbacks={'_turn_party_to_overworld':4,'_hide_battle_BG':5,'_hide_enemies':6,'_jump_to_overworld':7,'_rotate_party_to_original_direction':8}
-    deferred=[]
-    for tr in outgoing['tracks']:
-        k=tr['keys'];path=tr['path']
-        if tr['interp']!=1:raise ValueError('Unreviewed return interpolation')
-        if tr['type']=='method':
-            if path!='.':raise ValueError('Unknown return callback target')
-            for t,v in zip(k['times'],k['values']):
-                if v['args'] or v['method'] not in callbacks:raise ValueError('Unreviewed return callback')
-                deferred.append((t,callbacks[v['method']]))
-        elif path in return_paths:
-            slot,role,prop=return_paths[path]
-            if slot=='ReturnPlate':rect=(0,k['values'][0],0,0);anchor=(.5,1);color=(1,1,1,1)
-            else:
-                n=node(bt,path.split(':')[0]);rect=(0,0,n['margin_right']-n.get('margin_left',0),n.get('margin_bottom',0)-n['margin_top']);anchor=(0,0 if slot=='ReturnTop' else 1);color=n['color']
-            m=p.bind(slot,p.add(slot,role,NIL,outgoing['length'],rect,color=color,anchor=anchor))
-            p.track(m,prop,k['times'],k['values'],k['update'],eases=k['transitions'])
-        else:raise ValueError('Unreviewed return track')
-    timeline=p.bind('ReturnTimeline',p.add('Battle:transitionOut',10,NIL,outgoing['length']))
-    for time,kind in deferred:p.event(timeline,time,kind)
-    # Exact reviewed _jump_to_overworld SceneTreeTween; x and base-y normalize
-    # against the fresh world projection supplied by the camera/world bridge.
-    world=p.resource('world_party');wr=resources[world]
-    jump=p.bind('PartyJumpToWorld',p.add('BattleSystem:_jump_to_overworld',11,world,.6,(0,0,wr['width']/wr['columns'],wr['height']/wr['rows']),flags=2|4,anchor=(.5,.5)))
-    p.track(jump,2,[0,.55],[0,1],mode=2)
-    p.track(jump,3,[0,.35],[0,1],interp=3,mode=2)
-    p.track(jump,11,[0,.35],[[0,0],[0,-24]],interp=3)
-    p.track(jump,11,[.4,.6],[[0,-24],[0,4]],interp=8)
-    p.track(jump,4,[0,.4],[[.6,1.2],[1,1]],interp=8)
-    p.track(jump,4,[.4,.6],[[1,1],[.8,1.1]],interp=8)
-    p.track(jump,6,[0],[3+18*wr['columns']],update=1)
-    p.event(jump,.6,9)
-    p.parameters['ReturnPartyGeometry']=[0,-4,24,4]
-    p.parameters['ReturnPartyFrames']=[3+18*wr['columns'],3+3*wr['columns'],0,0]
-    p.parameters['ReturnPartyTurn']=[0,-1,.05,0]
-    for path,digest in read_json(RECIPE)['sources'].items():ex.data(path)
-    report=dict(schema=1,sources=ex.sources,resources=[{k:v for k,v in r.items() if k!='name'} for r in resources],media=p.media,tracks=p.tracks,keys=p.keys,events=p.events,bindings=p.bindings,parameters=p.parameters,skill_media={'attack':dict(user_media=bash['id']-1,hit_media=effect['id']-1),'tackle':dict(user_media=bash['id']-1,hit_media=effect['id']-1),'float':dict(user_media=NIL,hit_media=NIL),'guard':dict(user_media=p.bindings['PartyGuard'],hit_media=NIL)})
+    for path,digest in read_json(ex.root/'content/round-assets.json')['sources'].items():ex.data(path)
+    report=dict(schema=1,sources=ex.sources,resources=[{k:v for k,v in r.items() if k!='name'} for r in resources],media=p.media,tracks=p.tracks,keys=p.keys,events=p.events,bindings=p.bindings,parameters=p.parameters,skill_media=context['skill_media'])
     return report
+
+def verify_reviewed_presentation(root=ROOT):
+    from tools.round_presentation_recipe import read
+    resources=read_json(root/'romfs/round-preview/source.json')['resources']
+    fresh=build_presentation(Extractor(root),resources,read(root/'content/round-presentation-recipe.json'))
+    if fresh!=read_json(root/'reports/battle-victory-presentation/presentation.json'):raise ValueError('Stale reviewed presentation recipe output')
+    base=read_json(root/'content/native-round.json')['presentation']
+    for key,value in base.items():
+        if key=='parameters':
+            if any(value[name]!=fresh[key][name]for name in fresh[key]):raise ValueError('Stale presentation parameters in native round IR')
+        elif value!=fresh[key]:raise ValueError('Stale presentation section in native round IR: '+key)
+    return fresh
 
 def export_presentation(ex,resources):
     report=build_presentation(ex,resources)

@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.round-presentation.reviewed-recipe",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Complete pre-victory action presentation recipe: reviewed native AnimationPlayer bindings, procedural motions, dialogue/target layout and parameters; victory and return stay separately source-extracted.",
+  "scope": "Complete reviewed native battle round presentation, including victory and return; execution remains shared C++.",
   "sources": {
     "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
     "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
@@ -1631,6 +1631,796 @@
       "reason": "Existing captured native EBMain_la glyph row spacing; retained layout policy, without new font copying or rendering equivalence claim.",
       "expected": [
         15
+      ]
+    },
+    {
+      "id": "cell.victory",
+      "kind": "resource_cell",
+      "resource": "victory",
+      "expected": [
+        93.0,
+        8.0
+      ]
+    },
+    {
+      "id": "cell.world_party",
+      "kind": "resource_cell",
+      "resource": "world_party",
+      "expected": [
+        31.0,
+        29.0
+      ]
+    },
+    {
+      "id": "return.clip",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "node": "Dialoguebox/ClipBox",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        }
+      ],
+      "expected": [
+        5.0,
+        5.0
+      ]
+    },
+    {
+      "id": "return.win",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "node": "Dialoguebox/ClipBox/YouWin",
+      "properties": [
+        {
+          "property": "position",
+          "index": 0
+        },
+        {
+          "property": "position",
+          "index": 1
+        }
+      ],
+      "expected": [
+        141,
+        17
+      ]
+    },
+    {
+      "id": "return.banner.x",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "dialogue.margins",
+          "index": 0
+        },
+        {
+          "fact": "return.clip",
+          "index": 0
+        },
+        {
+          "fact": "return.win",
+          "index": 0
+        }
+      ],
+      "expected": [
+        156.0
+      ]
+    },
+    {
+      "id": "return.banner.y",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "dialogue.margins",
+          "index": 1
+        },
+        {
+          "fact": "return.clip",
+          "index": 1
+        },
+        {
+          "fact": "return.win",
+          "index": 1
+        }
+      ],
+      "expected": [
+        26.0
+      ]
+    },
+    {
+      "id": "return.banner.duration",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "track": null,
+      "field": "length",
+      "expected": [
+        0.6
+      ]
+    },
+    {
+      "id": "return.banner.frame.times",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "track": "ClipBox/YouWin:frame",
+      "field": "times",
+      "expected": [
+        0,
+        0.1,
+        0.2,
+        0.3,
+        0.4
+      ]
+    },
+    {
+      "id": "return.banner.frame.values",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "track": "ClipBox/YouWin:frame",
+      "field": "values",
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "return.banner.frame.transitions",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "track": "ClipBox/YouWin:frame",
+      "field": "transitions",
+      "expected": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "return.banner.visible.times",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "track": "ClipBox/YouWin:visible",
+      "field": "times",
+      "expected": [
+        0
+      ]
+    },
+    {
+      "id": "return.banner.visible.values",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "track": "ClipBox/YouWin:visible",
+      "field": "values",
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "return.banner.visible.transitions",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "track": "ClipBox/YouWin:visible",
+      "field": "transitions",
+      "expected": [
+        1
+      ]
+    },
+    {
+      "id": "return.transition.duration",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": null,
+      "field": "length",
+      "expected": [
+        2.7
+      ]
+    },
+    {
+      "id": "return.top",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "node": "top",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null,
+          "default": 0
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        },
+        {
+          "property": "margin_bottom",
+          "index": null,
+          "default": 0
+        },
+        {
+          "property": "color",
+          "index": 0
+        },
+        {
+          "property": "color",
+          "index": 1
+        },
+        {
+          "property": "color",
+          "index": 2
+        },
+        {
+          "property": "color",
+          "index": 3
+        }
+      ],
+      "expected": [
+        0,
+        -180.0,
+        448.0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "return.top.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "return.top",
+          "index": 2
+        },
+        {
+          "fact": "return.top",
+          "index": 0
+        }
+      ],
+      "expected": [
+        448.0
+      ]
+    },
+    {
+      "id": "return.top.height",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "return.top",
+          "index": 3
+        },
+        {
+          "fact": "return.top",
+          "index": 1
+        }
+      ],
+      "expected": [
+        180.0
+      ]
+    },
+    {
+      "id": "return.bottom",
+      "kind": "node",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "node": "bottom",
+      "properties": [
+        {
+          "property": "margin_left",
+          "index": null,
+          "default": 0
+        },
+        {
+          "property": "margin_top",
+          "index": null
+        },
+        {
+          "property": "margin_right",
+          "index": null
+        },
+        {
+          "property": "margin_bottom",
+          "index": null
+        },
+        {
+          "property": "color",
+          "index": 0
+        },
+        {
+          "property": "color",
+          "index": 1
+        },
+        {
+          "property": "color",
+          "index": 2
+        },
+        {
+          "property": "color",
+          "index": 3
+        }
+      ],
+      "expected": [
+        0,
+        180.0,
+        448.0,
+        360.001,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "return.bottom.width",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "return.bottom",
+          "index": 2
+        },
+        {
+          "fact": "return.bottom",
+          "index": 0
+        }
+      ],
+      "expected": [
+        448.0
+      ]
+    },
+    {
+      "id": "return.bottom.height",
+      "kind": "derive",
+      "operation": "difference",
+      "inputs": [
+        {
+          "fact": "return.bottom",
+          "index": 3
+        },
+        {
+          "fact": "return.bottom",
+          "index": 1
+        }
+      ],
+      "expected": [
+        180.00099999999998
+      ]
+    },
+    {
+      "id": "return.36.times",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "top:rect_position",
+      "field": "times",
+      "expected": [
+        0,
+        0.7,
+        1.4,
+        1.9
+      ]
+    },
+    {
+      "id": "return.36.values",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "top:rect_position",
+      "field": "values",
+      "expected": [
+        0,
+        -162,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -180
+      ]
+    },
+    {
+      "id": "return.36.transitions",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "top:rect_position",
+      "field": "transitions",
+      "expected": [
+        0.5,
+        0.466516,
+        0.3,
+        0.287175
+      ]
+    },
+    {
+      "id": "return.37.times",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "bottom:rect_position",
+      "field": "times",
+      "expected": [
+        0,
+        0.7,
+        1.4,
+        1.9
+      ]
+    },
+    {
+      "id": "return.37.values",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "bottom:rect_position",
+      "field": "values",
+      "expected": [
+        0,
+        148,
+        0,
+        0,
+        0,
+        0,
+        0,
+        180
+      ]
+    },
+    {
+      "id": "return.37.transitions",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "bottom:rect_position",
+      "field": "transitions",
+      "expected": [
+        0.5,
+        0.466516,
+        0.3,
+        0.287175
+      ]
+    },
+    {
+      "id": "return.38.times",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "PlayerInfo:rect_position:y",
+      "field": "times",
+      "expected": [
+        0,
+        1.55,
+        1.9
+      ]
+    },
+    {
+      "id": "return.38.values",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "PlayerInfo:rect_position:y",
+      "field": "values",
+      "expected": [
+        180.0,
+        180.0,
+        257.0
+      ]
+    },
+    {
+      "id": "return.38.transitions",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": "PlayerInfo:rect_position:y",
+      "field": "transitions",
+      "expected": [
+        1,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "return.callbacks.times",
+      "kind": "animation_numbers",
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": ".",
+      "field": "times",
+      "expected": [
+        0.1,
+        0.75,
+        0.8,
+        1.65,
+        2.4
+      ]
+    },
+    {
+      "id": "jump.x",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "tween_property\\(sprite, \"position:x\", _party_orig_positions\\[i\\].x, ([\\d.]+)\\)",
+      "expected": [
+        0.55
+      ]
+    },
+    {
+      "id": "jump.up",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "tween_property\\(sprite, \"position:y\", _party_orig_positions\\[i\\].y - ([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        24,
+        0.35
+      ]
+    },
+    {
+      "id": "jump.down",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "tween_property\\(sprite, \"position:y\", _party_orig_positions\\[i\\].y \\+ ([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        4,
+        0.2
+      ]
+    },
+    {
+      "id": "jump.delay",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "\\.from\\(_party_orig_positions\\[i\\].y - ([\\d.]+)\\)\\.set_delay\\(([\\d.]+)\\)",
+      "expected": [
+        24,
+        0.4
+      ]
+    },
+    {
+      "id": "jump.scale.up",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "tween_property\\(sprite, \"scale\", Vector2.ONE, ([\\d.]+)\\)\\.from\\(Vector2\\(([\\d.]+), ([\\d.]+)\\)\\)",
+      "expected": [
+        0.4,
+        0.6,
+        1.2
+      ]
+    },
+    {
+      "id": "jump.scale.down",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "tween_property\\(sprite, \"scale\", Vector2\\(([\\d.]+), ([\\d.]+)\\), ([\\d.]+)\\)\\.from\\(Vector2.ONE\\)\\.set_delay\\(([\\d.]+)\\)",
+      "expected": [
+        0.8,
+        1.1,
+        0.2,
+        0.4
+      ]
+    },
+    {
+      "id": "jump.origoffset",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "canvas_transform.xform\\(party_mem.position\\) - Vector2\\(([\\d.]+),([\\d.]+)\\)",
+      "expected": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "jump.direction",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "\"set_direction\", \\[Vector2\\(([\\d.]+), (-?[\\d.]+)\\)\\]",
+      "expected": [
+        0,
+        -1
+      ]
+    },
+    {
+      "id": "jump.turn",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": "_jump_to_overworld",
+      "pattern": "create_timer\\(([\\d.]+)\\)",
+      "expected": [
+        0.05
+      ]
+    },
+    {
+      "id": "jump.frames",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": null,
+      "pattern": "\"jump_up\": Vector2\\(([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        3,
+        18
+      ]
+    },
+    {
+      "id": "jump.crouch.frames",
+      "kind": "numbers",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "function": null,
+      "pattern": "\"crouch_up\": Vector2\\(([\\d.]+), ([\\d.]+)\\)",
+      "expected": [
+        3,
+        3
+      ]
+    },
+    {
+      "id": "world.columns",
+      "kind": "resource_geometry",
+      "resource": "world_party",
+      "property": "columns",
+      "expected": [
+        10
+      ]
+    },
+    {
+      "id": "jump.frame.row",
+      "kind": "derive",
+      "operation": "product",
+      "inputs": [
+        {
+          "fact": "jump.frames",
+          "index": 1
+        },
+        {
+          "fact": "world.columns",
+          "index": 0
+        }
+      ],
+      "expected": [
+        180
+      ]
+    },
+    {
+      "id": "jump.frame",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "jump.frames",
+          "index": 0
+        },
+        {
+          "fact": "jump.frame.row",
+          "index": 0
+        }
+      ],
+      "expected": [
+        183
+      ]
+    },
+    {
+      "id": "jump.crouch.row",
+      "kind": "derive",
+      "operation": "product",
+      "inputs": [
+        {
+          "fact": "jump.crouch.frames",
+          "index": 1
+        },
+        {
+          "fact": "world.columns",
+          "index": 0
+        }
+      ],
+      "expected": [
+        30
+      ]
+    },
+    {
+      "id": "jump.crouch",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "jump.crouch.frames",
+          "index": 0
+        },
+        {
+          "fact": "jump.crouch.row",
+          "index": 0
+        }
+      ],
+      "expected": [
+        33
+      ]
+    },
+    {
+      "id": "jump.duration",
+      "kind": "derive",
+      "operation": "sum",
+      "inputs": [
+        {
+          "fact": "jump.delay",
+          "index": 1
+        },
+        {
+          "fact": "jump.down",
+          "index": 1
+        }
+      ],
+      "expected": [
+        0.6
+      ]
+    },
+    {
+      "id": "jump.negative_height",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "jump.up",
+          "index": 0
+        }
+      ],
+      "expected": [
+        -24
+      ]
+    },
+    {
+      "id": "jump.negative_origoffset",
+      "kind": "derive",
+      "operation": "negate",
+      "inputs": [
+        {
+          "fact": "jump.origoffset",
+          "index": 1
+        }
+      ],
+      "expected": [
+        -4
       ]
     }
   ],
@@ -3455,6 +4245,882 @@
           0
         ]
       }
+    },
+    {
+      "op": "animation",
+      "id": "34",
+      "name": "victory",
+      "role": 1,
+      "resource": "party",
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.party",
+          "index": 0
+        },
+        {
+          "fact": "cell.party",
+          "index": 1
+        }
+      ],
+      "flags": 2,
+      "anchor": [
+        0.5,
+        1
+      ],
+      "source": "Nodes/Ui/Battle/BattleSpriteNinten.tscn",
+      "nodepath": "AnimationPlayer"
+    },
+    {
+      "op": "bind",
+      "slot": "PartyVictory",
+      "media": "34"
+    },
+    {
+      "op": "media",
+      "id": "35",
+      "name": "Dialoguebox:YouWin",
+      "role": 3,
+      "resource": "victory",
+      "duration": {
+        "fact": "return.banner.duration",
+        "index": 0
+      },
+      "rect": [
+        {
+          "fact": "return.banner.x",
+          "index": 0
+        },
+        {
+          "fact": "return.banner.y",
+          "index": 0
+        },
+        {
+          "fact": "cell.victory",
+          "index": 0
+        },
+        {
+          "fact": "cell.victory",
+          "index": 1
+        }
+      ],
+      "flags": 3,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "VictoryBanner",
+      "media": "35"
+    },
+    {
+      "op": "track",
+      "media": "35",
+      "property": 6,
+      "times": [
+        {
+          "fact": "return.banner.frame.times",
+          "index": 0
+        },
+        {
+          "fact": "return.banner.frame.times",
+          "index": 1
+        },
+        {
+          "fact": "return.banner.frame.times",
+          "index": 2
+        },
+        {
+          "fact": "return.banner.frame.times",
+          "index": 3
+        },
+        {
+          "fact": "return.banner.frame.times",
+          "index": 4
+        }
+      ],
+      "values": [
+        {
+          "fact": "return.banner.frame.values",
+          "index": 0
+        },
+        {
+          "fact": "return.banner.frame.values",
+          "index": 1
+        },
+        {
+          "fact": "return.banner.frame.values",
+          "index": 2
+        },
+        {
+          "fact": "return.banner.frame.values",
+          "index": 3
+        },
+        {
+          "fact": "return.banner.frame.values",
+          "index": 4
+        }
+      ],
+      "update": 1,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": [
+        {
+          "fact": "return.banner.frame.transitions",
+          "index": 0
+        },
+        {
+          "fact": "return.banner.frame.transitions",
+          "index": 1
+        },
+        {
+          "fact": "return.banner.frame.transitions",
+          "index": 2
+        },
+        {
+          "fact": "return.banner.frame.transitions",
+          "index": 3
+        },
+        {
+          "fact": "return.banner.frame.transitions",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "op": "track",
+      "media": "35",
+      "property": 7,
+      "times": [
+        {
+          "fact": "return.banner.visible.times",
+          "index": 0
+        }
+      ],
+      "values": [
+        {
+          "fact": "return.banner.visible.values",
+          "index": 0
+        }
+      ],
+      "update": 1,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": [
+        {
+          "fact": "return.banner.visible.transitions",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "op": "media",
+      "id": "36",
+      "name": "ReturnTop",
+      "role": 10,
+      "resource": null,
+      "duration": {
+        "fact": "return.transition.duration",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "return.top.width",
+          "index": 0
+        },
+        {
+          "fact": "return.top.height",
+          "index": 0
+        }
+      ],
+      "flags": 0,
+      "color": [
+        {
+          "fact": "return.top",
+          "index": 4
+        },
+        {
+          "fact": "return.top",
+          "index": 5
+        },
+        {
+          "fact": "return.top",
+          "index": 6
+        },
+        {
+          "fact": "return.top",
+          "index": 7
+        }
+      ],
+      "anchor": [
+        0,
+        0
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "ReturnTop",
+      "media": "36"
+    },
+    {
+      "op": "track",
+      "media": "36",
+      "property": 1,
+      "times": [
+        {
+          "fact": "return.36.times",
+          "index": 0
+        },
+        {
+          "fact": "return.36.times",
+          "index": 1
+        },
+        {
+          "fact": "return.36.times",
+          "index": 2
+        },
+        {
+          "fact": "return.36.times",
+          "index": 3
+        }
+      ],
+      "values": [
+        [
+          {
+            "fact": "return.36.values",
+            "index": 0
+          },
+          {
+            "fact": "return.36.values",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "fact": "return.36.values",
+            "index": 2
+          },
+          {
+            "fact": "return.36.values",
+            "index": 3
+          }
+        ],
+        [
+          {
+            "fact": "return.36.values",
+            "index": 4
+          },
+          {
+            "fact": "return.36.values",
+            "index": 5
+          }
+        ],
+        [
+          {
+            "fact": "return.36.values",
+            "index": 6
+          },
+          {
+            "fact": "return.36.values",
+            "index": 7
+          }
+        ]
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": [
+        {
+          "fact": "return.36.transitions",
+          "index": 0
+        },
+        {
+          "fact": "return.36.transitions",
+          "index": 1
+        },
+        {
+          "fact": "return.36.transitions",
+          "index": 2
+        },
+        {
+          "fact": "return.36.transitions",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "op": "media",
+      "id": "37",
+      "name": "ReturnBottom",
+      "role": 10,
+      "resource": null,
+      "duration": {
+        "fact": "return.transition.duration",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "return.bottom.width",
+          "index": 0
+        },
+        {
+          "fact": "return.bottom.height",
+          "index": 0
+        }
+      ],
+      "flags": 0,
+      "color": [
+        {
+          "fact": "return.bottom",
+          "index": 4
+        },
+        {
+          "fact": "return.bottom",
+          "index": 5
+        },
+        {
+          "fact": "return.bottom",
+          "index": 6
+        },
+        {
+          "fact": "return.bottom",
+          "index": 7
+        }
+      ],
+      "anchor": [
+        0,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "ReturnBottom",
+      "media": "37"
+    },
+    {
+      "op": "track",
+      "media": "37",
+      "property": 1,
+      "times": [
+        {
+          "fact": "return.37.times",
+          "index": 0
+        },
+        {
+          "fact": "return.37.times",
+          "index": 1
+        },
+        {
+          "fact": "return.37.times",
+          "index": 2
+        },
+        {
+          "fact": "return.37.times",
+          "index": 3
+        }
+      ],
+      "values": [
+        [
+          {
+            "fact": "return.37.values",
+            "index": 0
+          },
+          {
+            "fact": "return.37.values",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "fact": "return.37.values",
+            "index": 2
+          },
+          {
+            "fact": "return.37.values",
+            "index": 3
+          }
+        ],
+        [
+          {
+            "fact": "return.37.values",
+            "index": 4
+          },
+          {
+            "fact": "return.37.values",
+            "index": 5
+          }
+        ],
+        [
+          {
+            "fact": "return.37.values",
+            "index": 6
+          },
+          {
+            "fact": "return.37.values",
+            "index": 7
+          }
+        ]
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": [
+        {
+          "fact": "return.37.transitions",
+          "index": 0
+        },
+        {
+          "fact": "return.37.transitions",
+          "index": 1
+        },
+        {
+          "fact": "return.37.transitions",
+          "index": 2
+        },
+        {
+          "fact": "return.37.transitions",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "op": "media",
+      "id": "38",
+      "name": "ReturnPlate",
+      "role": 4,
+      "resource": null,
+      "duration": {
+        "fact": "return.transition.duration",
+        "index": 0
+      },
+      "rect": [
+        0,
+        {
+          "fact": "return.38.values",
+          "index": 0
+        },
+        0,
+        0
+      ],
+      "flags": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "ReturnPlate",
+      "media": "38"
+    },
+    {
+      "op": "track",
+      "media": "38",
+      "property": 3,
+      "times": [
+        {
+          "fact": "return.38.times",
+          "index": 0
+        },
+        {
+          "fact": "return.38.times",
+          "index": 1
+        },
+        {
+          "fact": "return.38.times",
+          "index": 2
+        }
+      ],
+      "values": [
+        {
+          "fact": "return.38.values",
+          "index": 0
+        },
+        {
+          "fact": "return.38.values",
+          "index": 1
+        },
+        {
+          "fact": "return.38.values",
+          "index": 2
+        }
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": [
+        {
+          "fact": "return.38.transitions",
+          "index": 0
+        },
+        {
+          "fact": "return.38.transitions",
+          "index": 1
+        },
+        {
+          "fact": "return.38.transitions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "op": "media",
+      "id": "39",
+      "name": "Battle:transitionOut",
+      "role": 10,
+      "resource": null,
+      "duration": {
+        "fact": "return.transition.duration",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flags": 0,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "ReturnTimeline",
+      "media": "39"
+    },
+    {
+      "op": "source_event",
+      "media": "39",
+      "time": {
+        "fact": "return.callbacks.times",
+        "index": 0
+      },
+      "kind": 4,
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": ".",
+      "method": "_turn_party_to_overworld"
+    },
+    {
+      "op": "source_event",
+      "media": "39",
+      "time": {
+        "fact": "return.callbacks.times",
+        "index": 1
+      },
+      "kind": 5,
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": ".",
+      "method": "_hide_battle_BG"
+    },
+    {
+      "op": "source_event",
+      "media": "39",
+      "time": {
+        "fact": "return.callbacks.times",
+        "index": 2
+      },
+      "kind": 6,
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": ".",
+      "method": "_hide_enemies"
+    },
+    {
+      "op": "source_event",
+      "media": "39",
+      "time": {
+        "fact": "return.callbacks.times",
+        "index": 3
+      },
+      "kind": 7,
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": ".",
+      "method": "_jump_to_overworld"
+    },
+    {
+      "op": "source_event",
+      "media": "39",
+      "time": {
+        "fact": "return.callbacks.times",
+        "index": 4
+      },
+      "kind": 8,
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "track": ".",
+      "method": "_rotate_party_to_original_direction"
+    },
+    {
+      "op": "media",
+      "id": "40",
+      "name": "BattleSystem:_jump_to_overworld",
+      "role": 11,
+      "resource": "world_party",
+      "duration": {
+        "fact": "jump.duration",
+        "index": 0
+      },
+      "rect": [
+        0,
+        0,
+        {
+          "fact": "cell.world_party",
+          "index": 0
+        },
+        {
+          "fact": "cell.world_party",
+          "index": 1
+        }
+      ],
+      "flags": 6,
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "anchor": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "op": "bind",
+      "slot": "PartyJumpToWorld",
+      "media": "40"
+    },
+    {
+      "op": "track",
+      "media": "40",
+      "property": 2,
+      "times": [
+        0,
+        {
+          "fact": "jump.x",
+          "index": 0
+        }
+      ],
+      "values": [
+        0,
+        1
+      ],
+      "update": 0,
+      "interpolation": 0,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "40",
+      "property": 3,
+      "times": [
+        0,
+        {
+          "fact": "jump.up",
+          "index": 1
+        }
+      ],
+      "values": [
+        0,
+        1
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 2,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "40",
+      "property": 11,
+      "times": [
+        0,
+        {
+          "fact": "jump.up",
+          "index": 1
+        }
+      ],
+      "values": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          {
+            "fact": "jump.negative_height",
+            "index": 0
+          }
+        ]
+      ],
+      "update": 0,
+      "interpolation": 3,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "40",
+      "property": 11,
+      "times": [
+        {
+          "fact": "jump.delay",
+          "index": 1
+        },
+        {
+          "fact": "jump.duration",
+          "index": 0
+        }
+      ],
+      "values": [
+        [
+          0,
+          {
+            "fact": "jump.negative_height",
+            "index": 0
+          }
+        ],
+        [
+          0,
+          {
+            "fact": "jump.down",
+            "index": 0
+          }
+        ]
+      ],
+      "update": 0,
+      "interpolation": 8,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "40",
+      "property": 4,
+      "times": [
+        0,
+        {
+          "fact": "jump.scale.up",
+          "index": 0
+        }
+      ],
+      "values": [
+        [
+          {
+            "fact": "jump.scale.up",
+            "index": 1
+          },
+          {
+            "fact": "jump.scale.up",
+            "index": 2
+          }
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "update": 0,
+      "interpolation": 8,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "40",
+      "property": 4,
+      "times": [
+        {
+          "fact": "jump.scale.down",
+          "index": 3
+        },
+        {
+          "fact": "jump.duration",
+          "index": 0
+        }
+      ],
+      "values": [
+        [
+          1,
+          1
+        ],
+        [
+          {
+            "fact": "jump.scale.down",
+            "index": 0
+          },
+          {
+            "fact": "jump.scale.down",
+            "index": 1
+          }
+        ]
+      ],
+      "update": 0,
+      "interpolation": 8,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "track",
+      "media": "40",
+      "property": 6,
+      "times": [
+        0
+      ],
+      "values": [
+        {
+          "fact": "jump.frame",
+          "index": 0
+        }
+      ],
+      "update": 1,
+      "interpolation": 0,
+      "mode": 0,
+      "eases": null
+    },
+    {
+      "op": "event",
+      "media": "40",
+      "time": {
+        "fact": "jump.duration",
+        "index": 0
+      },
+      "kind": 9
     }
   ],
   "parameters": {
@@ -3700,6 +5366,51 @@
         "index": 0
       },
       0
+    ],
+    "ReturnPartyGeometry": [
+      {
+        "fact": "jump.origoffset",
+        "index": 0
+      },
+      {
+        "fact": "jump.negative_origoffset",
+        "index": 0
+      },
+      {
+        "fact": "jump.up",
+        "index": 0
+      },
+      {
+        "fact": "jump.down",
+        "index": 0
+      }
+    ],
+    "ReturnPartyFrames": [
+      {
+        "fact": "jump.frame",
+        "index": 0
+      },
+      {
+        "fact": "jump.crouch",
+        "index": 0
+      },
+      0,
+      0
+    ],
+    "ReturnPartyTurn": [
+      {
+        "fact": "jump.direction",
+        "index": 0
+      },
+      {
+        "fact": "jump.direction",
+        "index": 1
+      },
+      {
+        "fact": "jump.turn",
+        "index": 0
+      },
+      0
     ]
   },
   "context": {
@@ -3740,6 +5451,263 @@
     },
     "effect": {
       "media": "13"
+    }
+  },
+  "animation_reviews": [
+    {
+      "source": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "animation": "YouWin",
+      "nodepath": "AnimationPlayer",
+      "tracks": [
+        {
+          "path": "ClipBox/YouWin:frame",
+          "type": "value",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0,
+              0.1,
+              0.2,
+              0.3,
+              0.4
+            ],
+            "transitions": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "update": 1,
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        {
+          "path": "ClipBox/YouWin:visible",
+          "type": "value",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0
+            ],
+            "transitions": [
+              1
+            ],
+            "update": 1,
+            "values": [
+              true
+            ]
+          }
+        },
+        {
+          "path": "ClipBox/HBoxContainer:visible",
+          "type": "value",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0
+            ],
+            "transitions": [
+              1
+            ],
+            "update": 1,
+            "values": [
+              false
+            ]
+          }
+        },
+        {
+          "path": "Cursor_Down:visible",
+          "type": "value",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0
+            ],
+            "transitions": [
+              1
+            ],
+            "update": 1,
+            "values": [
+              false
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "source": "Nodes/Ui/Battle/Battle.tscn",
+      "animation": "transitionOut",
+      "nodepath": "AnimScene",
+      "tracks": [
+        {
+          "path": "top:rect_position",
+          "type": "value",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0,
+              0.7,
+              1.4,
+              1.9
+            ],
+            "transitions": [
+              0.5,
+              0.466516,
+              0.3,
+              0.287175
+            ],
+            "update": 0,
+            "values": [
+              [
+                0,
+                -162
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                -180
+              ]
+            ]
+          }
+        },
+        {
+          "path": "bottom:rect_position",
+          "type": "value",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0,
+              0.7,
+              1.4,
+              1.9
+            ],
+            "transitions": [
+              0.5,
+              0.466516,
+              0.3,
+              0.287175
+            ],
+            "update": 0,
+            "values": [
+              [
+                0,
+                148
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        {
+          "path": ".",
+          "type": "method",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0.1,
+              0.75,
+              0.8,
+              1.65,
+              2.4
+            ],
+            "transitions": [
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "values": [
+              {
+                "args": [],
+                "method": "_turn_party_to_overworld"
+              },
+              {
+                "args": [],
+                "method": "_hide_battle_BG"
+              },
+              {
+                "args": [],
+                "method": "_hide_enemies"
+              },
+              {
+                "args": [],
+                "method": "_jump_to_overworld"
+              },
+              {
+                "args": [],
+                "method": "_rotate_party_to_original_direction"
+              }
+            ]
+          }
+        },
+        {
+          "path": "PlayerInfo:rect_position:y",
+          "type": "value",
+          "interpolation": 1,
+          "keys": {
+            "times": [
+              0,
+              1.55,
+              1.9
+            ],
+            "transitions": [
+              1,
+              0.5,
+              1
+            ],
+            "update": 0,
+            "values": [
+              180.0,
+              180.0,
+              257.0
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "animation_bindings": "content/round-animation-bindings.json",
+  "skill_media": {
+    "attack": {
+      "user_media": "9",
+      "hit_media": "13"
+    },
+    "tackle": {
+      "user_media": "9",
+      "hit_media": "13"
+    },
+    "float": {
+      "user_media": null,
+      "hit_media": null
+    },
+    "guard": {
+      "user_media": "4",
+      "hit_media": null
     }
   }
 }

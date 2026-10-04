@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "kind": "encore.round-animation.reviewed-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/Battle/BattleSpriteParty.gd": "49371a470917b0d969fb1bae3fa9bdfce121bcbb0192bf448b95bc483aac6f78",
+    "Scripts/UI/Battle/EnemySprite.gd": "04885b26ec849e2ae20bd09aec27eed5b203264723a94cdcb396ac4a094f88eb",
+    "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+    "Scripts/UI/Battle/BattleDialogueBox.gd": "d712af3bbdcc1bab9ed24caccf7a9f4702187b60c24092beec9a7138394e09a5",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/UI/Battle/FlyingNumber.gd": "b3dadd044c6087f4bd7354f532e7d4b0268e3021ea14ae020ac3092bec8e3c09",
+    "Scripts/UI/Battle/RisingNumber.gd": "d22dd5e96e69a8331ffd1183de2ff32b2e2eff6e01059f4ce0b104bdd6dc9dba",
+    "Scripts/UI/Battle/BattleParticipant.gd": "a6012e909f32931dd673b884bfc3564ae78741e64a18adb3a23cf5c25c9a1fdb",
+    "Nodes/Ui/Battle/TargetsBox.gd": "071c01038ea9bc830a1c69ed6d3d7f539ecde5f0a8926c44ad3f7b3faa786885",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+    "Fonts/HitNumber.tres": "a5dc45e581a98dbbd4498c6aea51d807cc53727ca3620a0023e2994395dbd6a1",
+    "Nodes/Ui/Battle/BattleDialogueBox.tscn": "f8ab52a6550c1a429e802594fd9617cff56a7da7bdc071df3f642aa459a4f69b",
+    "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
+    "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Battle/BGDarkinator.tscn": "c13599a9b0a0970c8dcd3dcd5db26997ea4093cac9f45691897c6044557ecc2a",
+    "Nodes/Ui/Battle/Smash.tscn": "f82e7a1caa0dfb3f54fe9107a3328d814c241040779a6845b65f2690c19068f9",
+    "Nodes/Ui/Battle/FlyingNumber.tscn": "47f54f11a67d7f4138bf042f189f4617bf57fff40b5d463093ad094fa4ac3e22",
+    "Nodes/Ui/Battle/RisingNumber.tscn": "0354d11990a85913945fad6d220b83c72e36d13abc369ef6e88e94b96ddd0b08",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7"
+  },
+  "properties": {
+    "Sprite:frame": 6,
+    ".:frame": 6,
+    "Sprite:offset": 11,
+    ".:rect_rotation": 12,
+    ".:material:shader_param/glow_color": 13,
+    ".:material:shader_param/glow_modifier": 14,
+    ".:material:shader_param/flash_color": 9,
+    ".:material:shader_param/flash_modifier": 10,
+    ".:rect_scale": 4,
+    ".:scale": 4,
+    ".:visible": 7,
+    ".:modulate": 15,
+    ".:color": 8,
+    ".:position": 11,
+    ".:rect_size": 16,
+    "Sprite:material:shader_param/width": 17
+  },
+  "methods": {
+    "_apply_damage": 1,
+    "_try_pause": 2
+  },
+  "atlas": {
+    "Sprite:hframes": "columns",
+    "Sprite:vframes": "rows",
+    "Sprite:texture": "texture"
+  },
+  "outline": {
+    "Sprite:material:shader_param/width": [
+      0.0
+    ]
+  },
+  "interpolation": {
+    "1": 0,
+    "2": 7
+  },
+  "audio": [
+    {
+      "source": "Nodes/Ui/Battle/EnemySprite.tscn",
+      "animation": "defeat",
+      "index": 7,
+      "properties": {
+        "type": "audio",
+        "path": "AudioStreamPlayer",
+        "keys": {
+          "clips": [
+            {
+              "end_offset": 0.0,
+              "start_offset": 0.0,
+              "stream": {
+                "ExtResource": 4
+              }
+            }
+          ],
+          "times": [
+            0
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -16,7 +16,7 @@ jobs:
   host:
     name: Host and sanitizers (${{ matrix.compiler }})
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 120
     strategy:
       fail-fast: false
       matrix:
@@ -68,9 +68,76 @@ jobs:
             build/sanitize/Testing/Temporary/LastTestsFailed.log
             build/sanitize/CMakeFiles/CMakeConfigureLog.yaml
 
-# The tracked RomFS baseline and retained native oracles are required inputs.
-# No source identity, reviewed hashes, expected traces or asset IR are refreshed.
-# This default CI covers Linux host logic/data and sanitizers, not Windows,
-# SDK provisioning, console packaging, emulator execution or physical hardware.
-# Console build dependencies and commands are documented in docs/BUILD.md.
-# Local export/bootstrap checks do not mean this workflow has run on GitHub.
+  console:
+    name: Real 3DSX and CIA (GPU 1:1:0)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      GIT_OPTIONAL_LOCKS: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          submodules: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned Python data tools and host dependencies
+        run: |
+          python -m pip install Pillow==12.3.0 PyYAML==6.0.3 fontTools==4.61.1
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes ffmpeg build-essential pkg-config libssl-dev libpng-dev
+          ffmpeg -version
+          ffprobe -version
+      - name: Restore the SDK from the existing checksum-pinned official layers
+        shell: bash
+        run: |
+          mkdir -p build/console-sdk/downloads
+          cp tools/cloud-sdk/fetch-official-sdk.py build/console-sdk/
+          cp -r tools/cloud-sdk/reference build/console-sdk/
+          python build/console-sdk/fetch-official-sdk.py
+          sdk="$GITHUB_WORKSPACE/build/console-sdk/sdk-image/opt/devkitpro"
+          echo "DEVKITPRO=$sdk" >> "$GITHUB_ENV"
+          echo "DEVKITARM=$sdk/devkitARM" >> "$GITHUB_ENV"
+          echo "CTRULIB=$sdk/libctru" >> "$GITHUB_ENV"
+          echo "$sdk/tools/bin" >> "$GITHUB_PATH"
+          echo "$sdk/devkitARM/bin" >> "$GITHUB_PATH"
+          echo "$GITHUB_WORKSPACE/tools/bin" >> "$GITHUB_PATH"
+      - name: Restore pinned CIA packaging tools from official sources
+        run: |
+          python tools/bootstrap_cia_tools.py --from-source --bannertool-sha256 e4259c08fe8944ebadd5f4b96f9a8603e5427338074cfc46323fbbc3410d51ed
+          arm-none-eabi-g++ --version
+          ldd tools/bin/bannertool
+      - name: Validate the fixed official submodule before restoring any content
+        run: python tools/ci_bootstrap.py
+      - name: Check console header positive and negative cases
+        run: python tests/test_ci_console_check.py
+      - name: Build a genuine ARM ELF and 3DSX with checked RomFS
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p build/console-ci
+          make 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0 2>&1 | tee build/console-ci/3dsx.log
+      - name: Package the genuine ARM ELF as CIA
+        shell: bash
+        run: |
+          set -o pipefail
+          make cia EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0 2>&1 | tee build/console-ci/cia.log
+      - name: Extract and compare the actual packaged resources
+        run: python tools/ci_console_check.py
+      - name: Confirm the readonly upstream and tracked source remain unchanged
+        run: |
+          python tools/ci_bootstrap.py --verify-only
+          git diff --exit-code
+          git diff --cached --exit-code
+      - name: Include package diagnostics in the run log
+        if: always()
+        shell: bash
+        run: |
+          for log in build/console-ci/cia-contents.log build/console-ci/cia-romfs.log; do
+            if test -f "$log"; then cat "$log"; fi
+          done
+
+# No game binaries/assets, private local logs, or release uploads. Download the
+# Actions run log separately for the private validation archive.
+# Cross-build and extracted-package checks do not prove emulator/hardware runs.

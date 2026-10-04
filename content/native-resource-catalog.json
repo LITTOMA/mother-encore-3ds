@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "kind": "encore.native-resource-catalog.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Native wiring adapter for the already reviewed opening, title, menus and house encounter resources. Relative paths and encounter companions are native bindings; no new upstream gameplay behavior is claimed.",
+  "sources": {
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c"
+  },
+  "bindings": [
+    {
+      "id": 1,
+      "role": "Room",
+      "path": "data/opening.encroom"
+    },
+    {
+      "id": 2,
+      "role": "Blackbars",
+      "path": "data/opening.encbars"
+    },
+    {
+      "id": 3,
+      "role": "Battle",
+      "path": "data/opening.encbattle"
+    },
+    {
+      "id": 4,
+      "role": "Round",
+      "path": "data/opening.encround"
+    },
+    {
+      "id": 5,
+      "role": "House",
+      "path": "data/opening.enchouse"
+    },
+    {
+      "id": 6,
+      "role": "Items",
+      "path": "data/opening.encitems"
+    },
+    {
+      "id": 7,
+      "role": "Audio",
+      "path": "data/opening.encaudio"
+    },
+    {
+      "id": 8,
+      "role": "Phone",
+      "path": "data/opening.encphone"
+    },
+    {
+      "id": 9,
+      "role": "Choices",
+      "path": "data/opening.encchoices"
+    },
+    {
+      "id": 10,
+      "role": "SaveMenu",
+      "path": "data/opening.encsavemenu"
+    },
+    {
+      "id": 11,
+      "role": "Session",
+      "path": "data/opening.encsession"
+    },
+    {
+      "id": 12,
+      "role": "Settings",
+      "path": "data/opening.encsettings"
+    },
+    {
+      "id": 13,
+      "role": "Prompts",
+      "path": "data/opening.encprompts"
+    },
+    {
+      "id": 14,
+      "role": "Continue",
+      "path": "data/opening.enccontinue"
+    },
+    {
+      "id": 15,
+      "role": "Restore",
+      "path": "data/opening.encrestore"
+    },
+    {
+      "id": 16,
+      "role": "SessionMigration",
+      "path": "data/rules6-to7.encmigration"
+    },
+    {
+      "id": 17,
+      "role": "NewGame",
+      "path": "data/opening.encnewgame"
+    },
+    {
+      "id": 18,
+      "role": "Localization",
+      "path": "data/localization.enclocale"
+    },
+    {
+      "id": 19,
+      "role": "TitleLocale",
+      "path": "data/opening.enctitlelocale"
+    },
+    {
+      "id": 20,
+      "role": "SourceFonts",
+      "path": "fonts/source-fonts.encfont"
+    },
+    {
+      "id": 21,
+      "role": "Input",
+      "path": "input/native.encinput"
+    },
+    {
+      "id": 22,
+      "role": "LoadingIndicator",
+      "path": "loading-preview/indicator.encload"
+    },
+    {
+      "id": 256,
+      "role": "EncounterBattle",
+      "path": "data/doll-entry.encbattle"
+    },
+    {
+      "id": 257,
+      "role": "EncounterRound",
+      "path": "data/doll-entry.encround"
+    },
+    {
+      "id": 258,
+      "role": "EncounterBattle",
+      "path": "data/pillow-entry.encbattle"
+    },
+    {
+      "id": 259,
+      "role": "EncounterRound",
+      "path": "data/pillow-entry.encround"
+    }
+  ],
+  "encounters": [
+    {
+      "battle_id": 3,
+      "round_id": 4
+    },
+    {
+      "battle_id": 256,
+      "round_id": 257
+    },
+    {
+      "battle_id": 258,
+      "round_id": 259
+    }
+  ]
+}

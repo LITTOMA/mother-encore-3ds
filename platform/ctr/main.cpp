@@ -45,6 +45,7 @@
 #include "encore/battle_entry.hpp"
 #include "encore/menu_navigation.hpp"
 #include "encore/native_input.hpp"
+#include "encore/resource_catalog.hpp"
 #include "native_input_renderer.hpp"
 #include <algorithm>
 #include <cstdio>
@@ -53,6 +54,15 @@
 
 using namespace encore;
 namespace {
+using upstream::ResourceRole;
+upstream::ResourceCatalog resource_catalog;
+std::string resource_path(ResourceRole role){return std::string("romfs:/")+resource_catalog.path(role);}
+std::string resource_directory(ResourceRole role){const auto path=resource_path(role);return path.substr(0,path.rfind('/'));}
+std::string companion_path(const std::string& path){
+    if(path.compare(0,7,"romfs:/"))return {};
+    const auto relative=resource_catalog.companion_path(std::string_view(path).substr(7));
+    return relative.empty()?std::string{}:"romfs:/"+relative;
+}
 using GameplayScene=upstream::FreshHouseState;
 std::unique_ptr<GameplayScene> gameplay_scene=std::make_unique<GameplayScene>();
 struct DebugText {C2D_TextBuf buffer=nullptr;C2D_Text text{};std::string value;bool ready=false;};
@@ -92,7 +102,7 @@ u64 load_epoch_tick=0;
 std::string continue_status;
 bool continue_exit=false,restore_input_pending=false;
 bool house_assets_ready=false,continue_assets_ready=false,world_effect_assets_ready=false;
-std::string loaded_battle_path="romfs:/data/opening.encbattle";
+std::string loaded_battle_path;
 upstream::SessionSnapshot session_state;
 bool session_state_ready=false;
 std::string save_status;bool save_open_failed=false;
@@ -314,8 +324,8 @@ bool select_native_locale(std::string_view code,bool persist,std::string&error){
 }
 bool initialize_localization(std::string&error){
     if(locale_catalog.valid())return select_native_locale(locale_selection.code(),false,error);
-    if(!locale_catalog.load_file("romfs:/data/localization.enclocale",error)||!locale_selection.bind(locale_catalog,error)||!locale_font.load_catalog_at_safe_boundary("romfs:/fonts/source-fonts.encfont","romfs:/fonts",error))return false;
-    if(!title_locale_data.load_file("romfs:/data/opening.enctitlelocale",error)||!continue_renderer.attach_localized_title(title_locale_data,locale_selection,error))return false;
+    if(!locale_catalog.load_file(resource_path(ResourceRole::Localization).c_str(),error)||!locale_selection.bind(locale_catalog,error)||!locale_font.load_catalog_at_safe_boundary(resource_path(ResourceRole::SourceFonts).c_str(),resource_directory(ResourceRole::SourceFonts).c_str(),error))return false;
+    if(!title_locale_data.load_file(resource_path(ResourceRole::TitleLocale).c_str(),error)||!continue_renderer.attach_localized_title(title_locale_data,locale_selection,error))return false;
     std::string restored;const auto status=upstream::read_locale_preference(locale_catalog,"sdmc:/3ds/encore-native/language.encprefs",restored,locale_status);
     const auto code=status==upstream::LocalePreferenceRead::Loaded?std::string_view(restored):locale_catalog.fallback();
     const std::string notice=locale_status;if(!select_native_locale(code,false,error))return false;locale_status=notice;return true;
@@ -424,13 +434,13 @@ bool initialize_house_interactions(std::string& error){
     bind_localized_house(gameplay_scene->presentation);
     if(!gameplay_scene->house.initialize(house_data.view(),gameplay_scene->world,gameplay_scene->presentation)){error=gameplay_scene->house.error();return false;}
     if(!house_assets_ready){
-        if(!new_game_data.load_file("romfs:/data/opening.encnewgame",error))return false;
-        if(!phone_data.load_file("romfs:/data/opening.encphone",error)||!phone_renderer.load(phone_data.view(),"romfs:/",error))return false;
-        if(!choice_data.load_file("romfs:/data/opening.encchoices",error)||!choice_renderer.load(choice_data,"romfs:/",error)||!save_menu_data.load_file("romfs:/data/opening.encsavemenu",error)||!save_renderer.load(save_menu_data,"romfs:/",error)||!menu_audio_bank.load_file("romfs:/data/opening.encaudio",error)||!native_session_data.load_file("romfs:/data/opening.encsession",error))return false;
-        if(!startup_settings_data.load_file("romfs:/data/opening.encsettings",error))return false;
+        if(!new_game_data.load_file(resource_path(ResourceRole::NewGame).c_str(),error))return false;
+        if(!phone_data.load_file(resource_path(ResourceRole::Phone).c_str(),error)||!phone_renderer.load(phone_data.view(),"romfs:/",error))return false;
+        if(!choice_data.load_file(resource_path(ResourceRole::Choices).c_str(),error)||!choice_renderer.load(choice_data,"romfs:/",error)||!save_menu_data.load_file(resource_path(ResourceRole::SaveMenu).c_str(),error)||!save_renderer.load(save_menu_data,"romfs:/",error)||!menu_audio_bank.load_file(resource_path(ResourceRole::Audio).c_str(),error)||!native_session_data.load_file(resource_path(ResourceRole::Session).c_str(),error))return false;
+        if(!startup_settings_data.load_file(resource_path(ResourceRole::Settings).c_str(),error))return false;
         if(startup_settings_data.speeds!=native_session_data.text_speeds()||startup_settings_data.flavors!=native_session_data.menu_flavors()||startup_settings_data.prompts!=native_session_data.button_prompts()){error="Startup UI/session setting choices disagree";return false;}
         wait_for_gpu_idle();if(!ctr::loading_menu_flavor_configure(startup_settings_data.skin_paths,startup_settings_data.source_palette,startup_settings_data.palettes,startup_settings_data.palette_threshold,startup_settings_data.default_indices[1])){error="Checked UI palette binding failed";return false;}
-        if(!house_prompt_data.load_file("romfs:/data/opening.encprompts",error)||!house_prompt_data.validate_bindings(house_data.view(),phone_data.view(),error)||!house_prompt_renderer.load(house_prompt_data,error))return false;
+        if(!house_prompt_data.load_file(resource_path(ResourceRole::Prompts).c_str(),error)||!house_prompt_data.validate_bindings(house_data.view(),phone_data.view(),error)||!house_prompt_renderer.load(house_prompt_data,error))return false;
         new_game_renderer.bind_prompts(house_prompt_renderer);
         house_assets_ready=true;
     }
@@ -480,7 +490,7 @@ bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error
 }
 bool read_prepared_slot(uint32_t slot,upstream::SessionSnapshot&snapshot,upstream::PreparedSessionRestore&prepared,std::string&error){
     if(slot<1||slot>save_menu_data.slot_count()){error="Selected slot is out of range";return false;}
-    return upstream::read_compatible_session_restore(session_slot_path(slot).c_str(),"romfs:/data/rules6-to7.encmigration",native_session_data,opening_data.view(),house_data.view(),round_data.view(),items_data.view(),house_font_data.view(),snapshot,prepared,error);
+    return upstream::read_compatible_session_restore(session_slot_path(slot).c_str(),resource_path(ResourceRole::SessionMigration).c_str(),native_session_data,opening_data.view(),house_data.view(),round_data.view(),items_data.view(),house_font_data.view(),snapshot,prepared,error);
 }
 bool scan_record_slots(std::vector<upstream::SaveSlotMetadata>&slots,std::string&error){
     slots.assign(save_menu_data.slot_count(),{});
@@ -507,14 +517,14 @@ bool write_record_slot(uint32_t slot,std::string&error){
     const auto metadata=slot_metadata(snapshot);if(!save_menu.acknowledge_save(true,&metadata,error))return false;
     std::string preference_error;remember_slot(slot,preference_error);error=preference_error;return true;
 }
-void initialize_audio(){audio_status.clear();if(!audio_player.initialize("romfs:/data/opening.encaudio","romfs:/",audio_status))audio_status="Audio unavailable: "+audio_status;}
+void initialize_audio(){audio_status.clear();if(!audio_player.initialize(resource_path(ResourceRole::Audio).c_str(),"romfs:/",audio_status))audio_status="Audio unavailable: "+audio_status;}
 bool open_continue(std::string&error,LoadingScope* parent=nullptr){
     cancel_battle_prewarm();
     std::unique_ptr<LoadingScope> owned;
     if(!parent)owned=std::make_unique<LoadingScope>("Preparing title",continue_assets_ready?(continue_renderer.ready()?2:3):5);
     auto& loading=parent?*parent:*owned;
     continue_menu.close();
-    if(!continue_assets_ready){if(!loading.step([&]{return continue_data.load_file("romfs:/data/opening.enccontinue",error);})||!loading.step([&]{return continue_renderer.load(continue_data,"romfs:/",error);})||!loading.step([&]{return restore_data.load_file("romfs:/data/opening.encrestore",opening_data.view(),house_data.view(),error);}))return false;continue_assets_ready=true;}
+    if(!continue_assets_ready){if(!loading.step([&]{return continue_data.load_file(resource_path(ResourceRole::Continue).c_str(),error);})||!loading.step([&]{return continue_renderer.load(continue_data,"romfs:/",error);})||!loading.step([&]{return restore_data.load_file(resource_path(ResourceRole::Restore).c_str(),opening_data.view(),house_data.view(),error);}))return false;continue_assets_ready=true;}
     else if(!continue_renderer.ready()&&!loading.step([&]{return continue_renderer.load(continue_data,"romfs:/",error);}))return false;
     uint32_t remembered=0;std::string preference_error;const auto result=upstream::read_slot_preference("sdmc:/3ds/encore-native/settings.encprefs",save_menu_data.slot_count(),remembered,preference_error);
     if(result==upstream::SlotPreferenceReadResult::Error)continue_status="Slot preference unavailable: "+preference_error;
@@ -597,7 +607,7 @@ bool reset_development_game(std::string&error){
     battle_entry=upstream::BattleEntry{};battle_round=upstream::BattleRound{};battle_outcome=upstream::BattleOutcome{};round_presentation=upstream::BattleActionPresentation{};round_ready=false;round_error.clear();
     if(!loading.complete())return false;
     auto fresh=std::make_unique<GameplayScene>();if(!fresh->world.initialize(opening_data.view(),{float(view_width),float(view_height)})){error=fresh->world.error();return false;}gameplay_scene.swap(fresh);if(!loading.complete())return false;
-    if(loaded_battle_path!="romfs:/data/opening.encbattle"){if(!battle_data.load_file("romfs:/data/opening.encbattle",error)||!load_battle_presentation(error)||!round_data.load_file("romfs:/data/opening.encround",error)||!round_renderer.load(round_data.view(),"romfs:/",error))return false;loaded_battle_path="romfs:/data/opening.encbattle";}
+    if(loaded_battle_path!=resource_path(ResourceRole::Battle).c_str()){if(!battle_data.load_file(resource_path(ResourceRole::Battle).c_str(),error)||!load_battle_presentation(error)||!round_data.load_file(resource_path(ResourceRole::Round).c_str(),error)||!round_renderer.load(round_data.view(),"romfs:/",error))return false;loaded_battle_path=resource_path(ResourceRole::Battle).c_str();}
     if(!loading.complete()||!loading.step([&]{return initialize_house_interactions(error);}))return false;
     region_music.shutdown();audio_player.reset_scene();return loading.complete()&&loading.finish();
 }
@@ -613,9 +623,8 @@ bool begin_battle(std::string&error){
     if(session_state_ready){const std::string id=gameplay_scene->world.battle_request().enemy;auto it=std::find_if(session_state.encountered.begin(),session_state.encountered.end(),[&](const auto&entry){return entry.id==id;});if(it==session_state.encountered.end())session_state.encountered.push_back({id,true});else it->value=true;}
     wait_for_gpu_idle();battle_entry=BattleEntry{};battle_round=BattleRound{};round_presentation=BattleActionPresentation{};battle_outcome=BattleOutcome{};round_ready=false;round_error.clear();items_status.clear();
     if(!items_menu.initialize(session_inventory)){error=items_menu.error();return false;}
-    constexpr const char* battle_suffix=".encbattle";
-    if(path.size()<std::strlen(battle_suffix)||path.compare(path.size()-std::strlen(battle_suffix),std::strlen(battle_suffix),battle_suffix)!=0){error="Battle resource has no supported companion container";return false;}
-    const auto round_path=path.substr(0,path.size()-std::strlen(battle_suffix))+".encround";
+    const auto round_path=companion_path(path);
+    if(round_path.empty()){error="Battle resource has no checked companion binding";return false;}
     if((loaded_battle_path!=path||!battle_renderer.fully_resident())&&!commit_battle_prewarm(path,error))return false;
     if(round_data.view().binding().battle_id!=battle_data.view().metadata().room_battle_id){error="Battle companion identity mismatch";return false;}
     const auto content=battle_data.view();const auto native=content.parameter(BattleParameter::CanvasSize);
@@ -737,7 +746,7 @@ void reference_borders(){
 }
 
 bool load_house(std::string& error){
-    if(!opening_data.load_file("romfs:/data/opening.encroom",error)||!world_blackbars.load_file("romfs:/data/opening.encbars",error))return false;
+    if(!opening_data.load_file(resource_path(ResourceRole::Room).c_str(),error)||!world_blackbars.load_file(resource_path(ResourceRole::Blackbars).c_str(),error))return false;
     const auto room=opening_data.view();
     if(!opening_actor.load(room,error))return false;
     if(!gameplay_scene->world.initialize(room,{float(view_width),float(view_height)})){error=gameplay_scene->world.error();return false;}
@@ -925,13 +934,15 @@ int main(int argc,char** argv){
     upstream::NativeInputData native_input_data;
     upstream::NativeInputAdapter native_input;
     loading_top=top;
-    if(!loading_indicator.load("romfs:/",error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
+    if(!resource_catalog.load_file("romfs:/data/native.encresources",error)||!resource_catalog.verify_files("romfs:/",error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
+    loaded_battle_path=resource_path(ResourceRole::Battle);
+    if(!loading_indicator.load("romfs:/",resource_catalog.path(ResourceRole::LoadingIndicator).c_str(),error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
     { LoadingScope loading("Starting game",21);
-    if(!loading.step([&]{return load_house(error);})||!loading.step([&]{return house_font_data.load_file("romfs:/data/opening.encbattle",error);})||!loading.step([&]{return battle_data.load_file("romfs:/data/opening.encbattle",error);})||!loading.step([&]{return load_battle_presentation(error);})||!loading.step([&]{return round_data.load_file("romfs:/data/opening.encround",error);})||!loading.step([&]{return round_renderer.load(round_data.view(),"romfs:/",error);})||!loading.step([&]{return house_data.load_file("romfs:/data/opening.enchouse",error);})||!loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error);})||!loading.step([&]{return initialize_house_interactions(error);})||!loading.step([&]{return items_data.load_file("romfs:/data/opening.encitems",error);})||!loading.step([&]{return session_inventory.initialize(items_data.view());})||!loading.step([&]{return items_menu.initialize(session_inventory);})||!loading.step([&]{return items_renderer.load(items_data.view(),"romfs:/",error);})){
+    if(!loading.step([&]{return load_house(error);})||!loading.step([&]{return house_font_data.load_file(resource_path(ResourceRole::Battle).c_str(),error);})||!loading.step([&]{return battle_data.load_file(resource_path(ResourceRole::Battle).c_str(),error);})||!loading.step([&]{return load_battle_presentation(error);})||!loading.step([&]{return round_data.load_file(resource_path(ResourceRole::Round).c_str(),error);})||!loading.step([&]{return round_renderer.load(round_data.view(),"romfs:/",error);})||!loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);})||!loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error);})||!loading.step([&]{return initialize_house_interactions(error);})||!loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);})||!loading.step([&]{return session_inventory.initialize(items_data.view());})||!loading.step([&]{return items_menu.initialize(session_inventory);})||!loading.step([&]{return items_renderer.load(items_data.view(),"romfs:/",error);})){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();
         error_console(error);romfsExit();gfxExit();return 1;
     }
-    if(!loading.step([&]{return native_input_data.load_file("romfs:/input/native.encinput",error);})||!loading.step([&]{return native_input.configure(native_input_data,error);})){
+    if(!loading.step([&]{return native_input_data.load_file(resource_path(ResourceRole::Input).c_str(),error);})||!loading.step([&]{return native_input.configure(native_input_data,error);})){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;
     }
     initialize_audio();

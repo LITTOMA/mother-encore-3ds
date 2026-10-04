@@ -29,7 +29,8 @@ def main():
         if len(head)<52 or head[:6]!=b'\x7fELF\x01\x01' or struct.unpack_from('<H',head,18)[0]!=40:
             raise RuntimeError('Input is not a 32-bit little-endian ARM ELF')
         if not smdh.is_file() or smdh.read_bytes()[:4]!=b'SMDH':raise RuntimeError('Missing/invalid SMDH')
-        if not (romfs/'data/opening.encroom').is_file():raise RuntimeError('Missing staged native content; first run make 3dsx')
+        from resource_catalog import stage_files as catalog_files
+        catalog_files(romfs)
         banner=ROOT/'build/ctr/banner.bin';banner.parent.mkdir(parents=True,exist_ok=True)
         subprocess.run([tool('bannertool'),'makebanner','-i',str(ROOT/'assets/banner.png'),'-a',str(ROOT/'assets/silence.wav'),'-o',str(banner)],check=True)
         extension={'cci':'3ds','cia':'cia','cxi':'cxi'}[a.format]

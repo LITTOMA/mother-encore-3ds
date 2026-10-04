@@ -134,7 +134,7 @@ int main(int argc,char** argv){
     encore::ctr::LoadingIndicatorRenderer renderer;
     assert(!renderer.ready()&&renderer.frame_at(0)==-1&&!renderer.draw(400,240,0));
     assert(!renderer.draw_progress(400,240,0,0));
-    assert(renderer.load(root.c_str(),error)&&renderer.ready()&&renderer.valid());
+    assert(renderer.load(root.c_str(),"loading-preview/indicator.encload",error)&&renderer.ready()&&renderer.valid());
     assert(observer_calls==0&&live_textures==1&&live_metadata==1); // Bootstrap never reenters observer.
     encore::report_load_progress(encore::LoadPhase::Scene,1,1);assert(observer_calls==1);
     assert(renderer.background_color()==0xff1c1c1cu&&renderer.frame_at(.41)==22);
@@ -161,11 +161,11 @@ int main(int argc,char** argv){
                                           std::numeric_limits<double>::quiet_NaN()})
         assert(!renderer.draw_progress(400,240,0,fraction));
     assert(draw_calls==prior);
-    assert(renderer.load(root.c_str(),error)&&live_textures==1&&live_metadata==1&&observer_calls==1);
-    bad_dimensions=true;assert(!renderer.load(root.c_str(),error)&&!renderer.ready()&&live_textures==0&&live_metadata==0);
-    bad_dimensions=false;rotated=true;assert(!renderer.load(root.c_str(),error)&&!renderer.ready()&&live_textures==0&&live_metadata==0);
-    rotated=false;assert(renderer.load(root.c_str(),error));renderer.free();renderer.free();
+    assert(renderer.load(root.c_str(),"loading-preview/indicator.encload",error)&&live_textures==1&&live_metadata==1&&observer_calls==1);
+    bad_dimensions=true;assert(!renderer.load(root.c_str(),"loading-preview/indicator.encload",error)&&!renderer.ready()&&live_textures==0&&live_metadata==0);
+    bad_dimensions=false;rotated=true;assert(!renderer.load(root.c_str(),"loading-preview/indicator.encload",error)&&!renderer.ready()&&live_textures==0&&live_metadata==0);
+    rotated=false;assert(renderer.load(root.c_str(),"loading-preview/indicator.encload",error));renderer.free();renderer.free();
     assert(!renderer.ready()&&live_textures==0&&live_metadata==0);
-    assert(!renderer.load(nullptr,error)&&!renderer.load("/missing-loading-root/",error));
+    assert(!renderer.load(nullptr,"loading-preview/indicator.encload",error)&&!renderer.load("/missing-loading-root/","loading-preview/indicator.encload",error));
     std::puts("PASS loading indicator: checked data, original timing, both viewports, progress placement/rounding/UV parity, bootstrap isolation, rejection and cleanup");
 }

@@ -114,8 +114,9 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
         for(uint32_t i=0;i<room.battle_count();++i){const auto index=room.battle(i).battle_resource_index;
             if(index>=room.resource_count()||room.resource(index).kind!=uint16_t(upstream::RoomResourceKind::CheckedBattlePack)){house_error="Scene encounter declaration has an uncompiled dependency";return;}
             const std::string path(room.string(room.resource(index).path_string));bool found=false;for(const auto& e:declaration.encounters)found|=e.battle_pack==path;if(found)continue;
-            if(path.size()<10||path.compare(path.size()-10,10,".encbattle")){house_error="Scene encounter declaration companion rejected";return;}
-            declaration.encounters.push_back({path,path,path.substr(0,path.size()-10)+".encround"});
+            const auto round=resource_catalog.companion_path(path);
+            if(round.empty()){house_error="Scene encounter declaration companion binding rejected";return;}
+            declaration.encounters.push_back({path,path,round});
         }
         std::string error;
         // Component budgets include both the current battle and all incoming
@@ -141,8 +142,8 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
     if(path.empty())for(uint32_t i=0;i<room.battle_count();++i){path=missing(room.battle(i).battle_resource_index);if(!path.empty())break;}
     if(path.empty()&&!battle_prewarm)return;
     if(!battle_prewarm){
-        constexpr size_t suffix_size=sizeof(".encbattle")-1;if(path.size()<suffix_size||path.compare(path.size()-suffix_size,suffix_size,".encbattle")){house_error="Prewarm companion suffix rejected";return;}
-        auto p=std::make_unique<BattlePrewarm>();p->path=path;p->round_path=path.substr(0,path.size()-suffix_size)+".encround";p->width=view_width;p->height=view_height;p->started=osGetTime();
+        const auto round=companion_path(path);if(round.empty()){house_error="Prewarm companion binding rejected";return;}
+        auto p=std::make_unique<BattlePrewarm>();p->path=path;p->round_path=round;p->width=view_width;p->height=view_height;p->started=osGetTime();
         const auto& declaration=encounter_admission.declaration();for(size_t i=0;i<declaration.encounters.size();++i)if("romfs:/"+declaration.encounters[i].battle_pack==path)p->ticket={declaration.scene_epoch,i};
         size_t snapshot_peak=2*1024*1024+2*battle_renderer.indexed_snapshot_bytes();
         for(const auto& entry:battle_resident)snapshot_peak+=2*entry->renderer.indexed_snapshot_bytes();

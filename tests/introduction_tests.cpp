@@ -34,6 +34,26 @@ int main(int argc,char**argv){if(argc!=2)return 2;std::ifstream f(argv[1],std::i
   // nonlooping 116-second old scene; two scene transitions must still close.
   check(data.scenes[0].events.back().time>data.scenes[0].length,"unreachable source key retained");if(locale.code=="en")check(tail,"final source text outlasts 22-second animation");
  }
+ // The production door fields are AnimationPlayer speed multipliers. Test
+ // the actual entry/final durations and one supported frame crossing both
+ // the Landscape ready timer and its shorter Circle Out animation.
+ {
+  SourceRandom clock_random(912);Introduction clock;check(clock.begin(data,clock_random,"en",400,240,error),"source clock entry");
+  auto advance=[&](double seconds){while(seconds>0){const double delta=std::min(seconds,.25);check(clock.step(delta,false,false,error),"source clock frame");clock.take_audio();seconds-=delta;}};
+  const double epsilon=.0001;
+  auto before_door_end=[&](bool incoming){const auto p=clock.pose();const auto&door=data.doors[p.door.index];const auto kind=incoming?door.out_kind:door.in_kind;const double duration=data.fades[kind*2+(incoming?1:0)].length/(incoming?door.out_speed:door.in_speed);advance(duration-epsilon);check(clock.phase()==(incoming?IntroPhase::DoorOut:IntroPhase::DoorIn),"source speed multiplier remains before animation completion");advance(epsilon*2);check(clock.phase()!=(incoming?IntroPhase::DoorOut:IntroPhase::DoorIn),"source speed multiplier completes at length divided by speed");};
+  before_door_end(false);check(clock.phase()==IntroPhase::DoorOut,"actual Naming .4 fade multiplier");before_door_end(true);
+  for(int frame=0;frame<200&&clock.phase()!=IntroPhase::Playing;++frame)advance(.05);
+  check(clock.step(0,false,true,error),"source first scene skip");clock.take_audio();before_door_end(false);
+  check(clock.pose().scene==1&&clock.phase()==IntroPhase::DoorOut,"actual Landscape scene ready begins during DoorOut");
+  check(clock.step(1,false,false,error),"valid frame crosses real Landscape wait and Circle Out");clock.take_audio();const auto p=clock.pose();
+  Blackbars expected=data.blackbars;expected.reset();check(expected.update(true,1-data.scenes[1].delay),"only post-ready time advances source Blackbars");const auto bars=expected.pose(400,240);
+  check(p.phase==IntroPhase::Playing&&p.masks.size()>=2,"source animation starts on same frame as ready timer");
+  for(size_t i=0;i<2;++i){const auto&m=p.masks[p.masks.size()-2+i];check(std::abs(m.rect.y-bars.bars[i].y)<.001&&std::abs(m.rect.height-bars.bars[i].h)<.001,"Landscape Blackbars execute without a deferred extra frame");}
+  check(clock.step(0,false,true,error),"source Landscape skip after animation activation");clock.take_audio();check(clock.playtime_started()&&!clock.house_ready(),"source finish_intro playtime precedes final DoorIn");before_door_end(false);check(clock.house_ready()&&!clock.house_unpaused(),"actual final .3 multiplier reaches HouseReady before unpause");
+  const double mostly=data.fade_mostly[data.doors.back().out_kind*2+1]/data.doors.back().out_speed;advance(mostly-epsilon);check(!clock.house_unpaused(),"House remains paused before source mostly-done callback");advance(epsilon*2);check(clock.house_unpaused()&&!clock.complete(),"House unpauses at source mostly-done before full DoorOut");
+  const double full=data.fades[data.doors.back().out_kind*2+1].length/data.doors.back().out_speed;advance(full-mostly+epsilon);check(clock.complete(),"final source DoorOut completes at length divided by multiplier");
+ }
  SourceRandom random(999);Introduction skipped;check(skipped.begin(data,random,"en",320,180,error),"explicit320x180 reference");check(!skipped.begin(data,random,"missing",400,240,error)&&skipped.active(),"unsupported locale preserves current run");check(!skipped.step(std::numeric_limits<double>::quiet_NaN(),false,false,error),"nonfinite step rejected");check(!skipped.step(-1,false,false,error),"negative step rejected");
  bool old=false,now=false;for(int i=0;i<1000&&!skipped.complete();++i){const auto p=skipped.pose();const bool skip=p.phase==IntroPhase::Playing;if(skip){p.scene==0?old=true:now=true;}check(skipped.step(1./60,true,skip,error),"skip frame");skipped.take_audio();}check(old&&now&&skipped.complete()&&skipped.house_ready()&&skipped.house_unpaused(),"both source ui_select exits close House");check(random.raw_draw_count()==0,"skip before any Now glyph does not consume RNG");
  std::cout<<checks<<" Introduction checks; "<<failed<<" failures\n";return failed?1:0;

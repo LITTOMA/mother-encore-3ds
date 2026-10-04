@@ -102,19 +102,29 @@ bool Introduction::step(double delta,bool accept_hint,bool skip,std::string&e){
  if(accept_hint)hint_time_=0;
  if(hint_time_>=0)hint_time_+=delta;
  if(phase_==IntroPhase::DoorIn){const auto&door=data_->doors[door_];phase_time_+=delta*door.in_speed;if(phase_time_>=data_->fades[door.in_kind*2].length){phase_time_=0;if(door_+1<data_->doors.size())enter_scene(door_);phase_=IntroPhase::DoorOut;}e.clear();return true;}
- if(phase_==IntroPhase::DoorOut){const auto&door=data_->doors[door_];phase_time_+=delta*door.out_speed;if(door_+1<data_->doors.size())time_+=delta;if(phase_time_>=data_->fades[door.out_kind*2+1].length){phase_time_=0;phase_=door_+1==data_->doors.size()?IntroPhase::Complete:(time_<0?IntroPhase::Waiting:IntroPhase::Playing);}e.clear();return true;}
+ bool door_revealing=false;
+ if(phase_==IntroPhase::DoorOut){
+  const auto&door=data_->doors[door_];phase_time_+=delta*door.out_speed;
+  const bool done=phase_time_>=data_->fades[door.out_kind*2+1].length;
+  if(door_+1==data_->doors.size()){if(done){phase_time_=0;phase_=IntroPhase::Complete;}e.clear();return true;}
+  // Source _ready owns its timer independently of the door AnimationPlayer.
+  // Preserve the overlay while executing any scene time already activated.
+  door_revealing=!done;if(done)phase_time_=0;
+ }
  const auto&s=data_->scenes[scene_];
  if(skip&&time_>=0&&time_<s.length){if(scene_==0){IntroAudio a;a.kind=IntroAudioKind::FadeMusic;a.lane=IntroAudioLane::Music;a.seconds=data_->music_fade;audio_.push_back(a);enter_door(1);}else finish_now();e.clear();return true;}
- time_+=delta;if(time_<0){phase_=IntroPhase::Waiting;e.clear();return true;}
- phase_=time_>=s.length?IntroPhase::TextTail:IntroPhase::Playing;
- if(scene_==1&&!blackbars_.update(true,delta))return fail(e,"Introduction blackbars rejected");
- if(border_!=UINT32_MAX)border_time_+=delta;
- if(cloud_time_>=0)cloud_time_+=delta;
+ const double previous_time=time_;time_+=delta;
+ if(time_<0){if(!door_revealing)phase_=IntroPhase::Waiting;e.clear();return true;}
+ const double active_delta=time_-std::max(previous_time,0.);
+ if(!door_revealing)phase_=time_>=s.length?IntroPhase::TextTail:IntroPhase::Playing;
+ if(scene_==1&&!blackbars_.update(true,active_delta))return fail(e,"Introduction blackbars rejected");
+ if(border_!=UINT32_MAX)border_time_+=active_delta;
+ if(cloud_time_>=0)cloud_time_+=active_delta;
  while(event_<s.events.size()&&s.events[event_].time<=std::min(time_,double(s.length))){event(s.events[event_++]);}
  if(scene_==0&&time_>=s.length){enter_door(1);e.clear();return true;}
- if(hide_time_>=0){hide_time_+=delta;if(scene_==1&&next_==s.text_count&&hide_time_>=s.hide){finish_now();e.clear();return true;}}
- if(pause_>0){pause_-=delta;if(pause_<=0)process_=true;else{e.clear();return true;}}
- if(process_&&!finished_){const auto chars=spaceless(text_);text_time_+=delta;if(text_time_>speed_){++visible_;text_time_=0;IntroAudio a;a.lane=IntroAudioLane::Text;a.source_path=data_->text_sounds[scene_];a.pitch=scene_==1?random_->rand_range(s.pitch_min,s.pitch_max):1;audio_.push_back(a);std::u32string punctuation;utf8_decode(locale_->punctuation,punctuation);if(visible_<chars.size()&&punctuation.find(chars[visible_-1])!=punctuation.npos){pause_=s.pause;process_=false;}}
+ if(hide_time_>=0){hide_time_+=active_delta;if(scene_==1&&next_==s.text_count&&hide_time_>=s.hide){finish_now();e.clear();return true;}}
+ if(pause_>0){pause_-=active_delta;if(pause_<=0)process_=true;else{e.clear();return true;}}
+ if(process_&&!finished_){const auto chars=spaceless(text_);text_time_+=active_delta;if(text_time_>speed_){++visible_;text_time_=0;IntroAudio a;a.lane=IntroAudioLane::Text;a.source_path=data_->text_sounds[scene_];a.pitch=scene_==1?random_->rand_range(s.pitch_min,s.pitch_max):1;audio_.push_back(a);std::u32string punctuation;utf8_decode(locale_->punctuation,punctuation);if(visible_<chars.size()&&punctuation.find(chars[visible_-1])!=punctuation.npos){pause_=s.pause;process_=false;}}
   if(visible_>=chars.size()){visible_=uint32_t(chars.size());finished_=true;text_time_=0;if(scene_==1){pause_=s.pause;process_=false;}}
  }else if(process_&&finished_&&scene_==1&&next_==s.text_count)hide_text();
  e.clear();return true;

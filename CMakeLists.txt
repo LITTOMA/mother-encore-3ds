@@ -69,15 +69,14 @@ if(BUILD_TESTING)
     add_dependencies(encore_core_tests encore_content)
     add_test(NAME core COMMAND encore_core_tests ${CMAKE_SOURCE_DIR}/romfs/sandbox.encpak)
     add_test(NAME host_smoke COMMAND encore_host --pack ${CMAKE_SOURCE_DIR}/romfs/sandbox.encpak --smoke)
-    add_test(NAME python_tools COMMAND ${Python3_EXECUTABLE} -m unittest discover -s tests -p test_*.py -v)
+    add_test(NAME python_tools COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR})
     set_tests_properties(python_tools PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
     set_tests_properties(core host_smoke python_tools PROPERTIES TIMEOUT 60)
     # The native asset/compiler and corruption suite now includes SDK doubles
     # and source-image verification, plus real temporary Git repositories.
-    # The scoped migration adds full source-binding corruption suites. The
-    # aggregate discovery timed out at 300.04s on candidate 302ba10 while still
-    # executing passing House source tests. Keep every assertion and bound the
-    # complete aggregate separately from individual runtime tests.
+    # Full discovery duplicated the separately registered binding suites and
+    # reached 1800.02s on hosted Clang. python_suite.py partitions by exact
+    # method IDs, retaining new unregistered modules and every subTest.
     set_tests_properties(python_tools PROPERTIES TIMEOUT 1800)
     add_executable(encore_progression_tests tests/progression_tests.cpp)
     target_link_libraries(encore_progression_tests PRIVATE encore_core)
@@ -758,4 +757,17 @@ if(BUILD_TESTING)
  target_link_libraries(encore_playable_opening_tests PRIVATE encore_core)
  add_test(NAME playable_opening COMMAND encore_playable_opening_tests ${CMAKE_SOURCE_DIR}/romfs/data)
  set_tests_properties(playable_opening PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
+endif()
+
+# These unittest suites do not invoke the current CMake sanitizer binaries.
+# Normal GCC/Clang jobs run every method once; CI sanitizer jobs can omit only
+# this label while retaining fixture preparers, source CLI and C++ consumers.
+if(BUILD_TESTING)
+ set_tests_properties(
+  python_tools encounter_dependency_manifest battle_round_source_bindings
+  round_recipe_source boss_presentation_bindings phone_presentation_bindings
+  items_presentation_bindings world_program_bindings programme_lowering_recipe
+  battle_entry_bindings ui_presentation_bindings house_source_bindings
+  naming_presentation_bindings phone_linker_bindings pillow_source_bindings
+  PROPERTIES LABELS python_unit)
 endif()

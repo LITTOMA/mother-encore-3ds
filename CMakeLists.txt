@@ -629,3 +629,8 @@ if(BUILD_TESTING)
  add_test(NAME battle_round_source_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_battle_round_bindings)
  set_tests_properties(battle_round_source_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
+
+if(BUILD_TESTING)
+ add_test(NAME startup_settings_bindings COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/startup-settings-bindings.py)
+ set_tests_properties(startup_settings_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()

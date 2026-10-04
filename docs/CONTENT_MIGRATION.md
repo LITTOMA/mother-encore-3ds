@@ -24,11 +24,12 @@
 
 ## 剩余范围
 
+设置行 / 面板顺序、值翻译键、确认卡片 / 图标、继承标签源、九宫格角色及已有皮肤 manifest 映射已迁入 `content/startup-settings-bindings.json`。`startup_settings_bindings.py` 在提取、普通编译和 staging 前核对实际节点顺序、设置索引分支、命名 scenario、标签继承、材质继承和纹理身份；未知、缺失、重复或不完整映射拒绝。默认设置 IR 与 `ENCSETUI` 格式 2 字节不变。
+
 | 范围 | 当前位置 | 下一步 |
 |---|---|---|
 | 法语与德语文本规则 | `runtime/localized_presentation.cpp`，`text_tools.gd` | 元音 / 词尾集合和输出后缀迁到语言来源绑定；保留未知标签拒绝 |
 | 战斗演出编译配方 | `tools/round_assets.py` | 已编入外部 IR 的手写轨道、布局、绑定和调参进一步迁到独立受检配方 |
 | Boss 演出及对象 / 程序顺序 | `tools/doll_round.py`、`tools/extract_native_content.py` | 外置剩余 Boss 媒体 / callback / 音频绑定及对象 / 程序稳定顺序，保持现有身份 |
-| 设置编译绑定 | `tools/startup_settings_assets.py` | 外置角色顺序与皮肤角色映射，逐项核对继承来源 |
 
 加载上限、schema 编号、stride、sentinel、RNG 算法、插值数学、物理帧契约和平台预算属于机制或校验边界，不应机械地当作游戏内容迁移。M0 fixture 独立于以上实际游戏流程。完整迁移和 Old / New 3DS 真机验收仍未完成。

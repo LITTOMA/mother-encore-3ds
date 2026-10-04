@@ -11,6 +11,14 @@ namespace {unsigned checks=0;std::string error;
 uint32_t get(const std::vector<uint8_t>&b,size_t p){return uint32_t(b[p])|uint32_t(b[p+1])<<8|uint32_t(b[p+2])<<16|uint32_t(b[p+3])<<24;}
 void put(std::vector<uint8_t>&b,size_t p,uint32_t v){for(unsigned i=0;i<4;++i)b[p+i]=uint8_t(v>>(8*i));}
 void fix(std::vector<uint8_t>&b){put(b,12,uint32_t(b.size()));put(b,16,encore::crc32(b.data()+24,b.size()-24));}
+std::vector<uint8_t> padding_binding(const std::vector<uint8_t>&original,uint32_t role,const std::string&glyph){
+ auto b=original;size_t offset=28;
+ auto text=[&](){const auto n=get(b,offset);offset+=4+n;};
+ auto texts=[&](){const auto n=get(b,offset);offset+=4;for(uint32_t i=0;i<n;++i)text();};
+ text();text();texts();texts();texts();const auto count_offset=offset;const auto count=get(b,offset);texts();
+ std::vector<uint8_t>extra(4+glyph.size());put(extra,0,uint32_t(glyph.size()));std::copy(glyph.begin(),glyph.end(),extra.begin()+4);b.insert(b.begin()+offset,extra.begin(),extra.end());put(b,count_offset,count+1);
+ put(b,b.size()-116+48+role*4,count);fix(b);return b;
+}
 void run_names(NewGameSetup&m){for(unsigned i=0;i<6;++i){CHECK(m.field_index()==i);CHECK(m.step(.1,{0,0,false,false,false,true},error));CHECK(m.step(.1,{0,0,true},error));CHECK(!m.name().empty());CHECK(m.step(.1,{0,0,false,false,false,false,true},error));}CHECK(m.phase()==NamingPhase::Settings);}
 }
 int main(int argc,char**argv){
@@ -22,6 +30,15 @@ int main(int argc,char**argv){
  auto changed=bytes;put(changed,tail+76,1);put(changed,tail+80,0);fix(changed);NewGameSetupData alternate;CHECK(alternate.load(changed.data(),changed.size(),error));CHECK(menu.open(alternate,settings,error));CHECK(menu.step(.1,{0,0,true},error));const auto other=menu.take_sounds();CHECK(menu.name()==name&&other.size()==1&&other[0]==data.sounds[0]&&other!=original);
  for(const auto*d:{&data,&alternate}){CHECK(menu.open(*d,settings,error));CHECK(menu.step(.1,{0,0,false,false,true},error));CHECK(menu.panel()==1);CHECK(menu.step(.1,{0,0,false,false,true},error));CHECK(menu.panel()==0);run_names(menu);}
  auto rejected=[&](std::vector<uint8_t> b){fix(b);const auto old=data.presentation.cursor;CHECK(!data.load(b.data(),b.size(),error));CHECK(data.valid()&&data.presentation.cursor==old&&data.fields.size()==6);};
+ // Corrupt the actual v3 text table with valid lengths and CRC, and bind
+ // each padding role to the appended entry. Failed loads preserve all text
+ // bindings and an already open consumer; its padding still terminates.
+ NewGameSetup padding_menu;CHECK(padding_menu.open(data,settings,error));const auto previous_texts=data.texts;const auto previous_roles=data.presentation.texts;const auto previous_padding=padding_menu.dotted_name();
+ for(uint32_t role:{3u,4u})for(const auto&glyph:{std::string(),std::string("ab"),std::string(1,char(31)),std::string(1,char(127))}){
+  auto corrupt=padding_binding(bytes,role,glyph);CHECK(get(corrupt,16)==encore::crc32(corrupt.data()+24,corrupt.size()-24));CHECK(!data.load(corrupt.data(),corrupt.size(),error));CHECK(error=="Naming padding glyph rejected");CHECK(data.valid()&&data.texts==previous_texts&&data.presentation.texts==previous_roles);CHECK(padding_menu.data()==&data&&padding_menu.dotted_name()==previous_padding);
+ }
+ // A different printable one-byte padding binding is accepted and consumed.
+ auto printable=padding_binding(bytes,4,".");NewGameSetupData other_padding;CHECK(other_padding.load(printable.data(),printable.size(),error));CHECK(padding_menu.open(other_padding,settings,error));CHECK(padding_menu.dotted_name().size()==padding_menu.field().maximum);CHECK(padding_menu.dotted_name()==previous_texts[previous_roles[3]]+std::string(padding_menu.field().maximum-1,'.'));
  for(size_t offset:{size_t(0),size_t(20),size_t(92)}){auto bad=bytes;put(bad,tail+offset,99);rejected(std::move(bad));}
  for(const auto offsets:{std::array<size_t,2>{{28,32}},std::array<size_t,2>{{20,24}},std::array<size_t,2>{{48,52}},std::array<size_t,2>{{76,80}},std::array<size_t,2>{{92,96}}}){auto bad=bytes;put(bad,tail+offsets[1],get(bad,tail+offsets[0]));rejected(std::move(bad));}
  auto bad=bytes;put(bad,tail+4,0);rejected(bad);bad=bytes;put(bad,tail+4,1);rejected(bad);bad=bytes;put(bad,tail+88,99);rejected(bad);bad=bytes;put(bad,tail+100,0x7fc00000);rejected(bad);

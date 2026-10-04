@@ -299,7 +299,7 @@
   },
   "fonttools_version": "4.61.1",
   "freetype_version": "2.14.3",
-  "generator_sha256": "57650796ca75cf030f7a60a14f4ea53af3fdcc1771daaf74370338a48629a66f",
+  "generator_sha256": "222bee61a5fbc57b98c9978ca8996a44719cb4b6528c46650ccf5c5956dda04f",
   "glyphs": [
     {
       "advance": 8,
@@ -8177,7 +8177,7 @@
     }
   ],
   "pillow_version": "12.3.0",
-  "recipe_sha256": "16845f3c8330ebcad6aff4f22c8c2b170e165720a4feadd50441323091839077",
+  "recipe_sha256": "71f47ace5683e1e2981d51c33708db3b4f9a6515037d6b886275a28e0c948be9",
   "schema": 1,
   "sources": {
     "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",

@@ -83,8 +83,8 @@
     "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
     "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8"
   },
-  "bindings_sha256": "56aeedf57ebebc197d4dd3bfe27de8e28700af1779c25d0fd5422e1d9efb49bd",
-  "asset_recipe_sha256": "16845f3c8330ebcad6aff4f22c8c2b170e165720a4feadd50441323091839077",
+  "bindings_sha256": "9adef4a46179b573ecd0cba210e6530dc5d4af54e0361a98a7a04d6899cc1827",
+  "asset_recipe_sha256": "71f47ace5683e1e2981d51c33708db3b4f9a6515037d6b886275a28e0c948be9",
   "source_map": {
     "schema": 1,
     "kind": "encore.introduction-bindings",
@@ -307,7 +307,7 @@
       }
     }
   },
-  "asset_receipt_sha256": "bc2657ed122a135720eebedfb10f2fc082ff6856c49517ae62d188ff71611b6c",
+  "asset_receipt_sha256": "07b7d3191355b565f42bf1ea059fb471296f6573e2eac429bb08d8f3ffe945b1",
   "font_catalog": "fonts/introduction/intro.encfont",
   "canvas": [
     320,

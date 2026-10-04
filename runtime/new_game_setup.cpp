@@ -52,6 +52,9 @@ bool NewGameSetupData::load(const uint8_t*p,size_t n,std::string&e){
  count=r.count(8);for(uint32_t i=0;i<count;++i)b.keyboard.push_back(r.u32());for(auto&v:b.field_bevel)v=r.real();
  auto unique_refs=[](const auto&values,size_t limit){std::set<uint32_t>ids;for(auto v:values)if(v>=limit||!ids.insert(v).second)return false;return true;};
  if(!b.source_width||!b.source_height||b.source_width>1024||b.source_height>1024||!unique_refs(std::array<uint32_t,4>{{b.box,b.cursor,b.actor,b.shadow}},d.resources.size())||!unique_refs(b.layouts,d.layouts.size())||!unique_refs(b.texts,d.texts.size())||!unique_refs(b.sounds,d.sounds.size())||b.keyboard.size()!=d.panels.size()||!unique_refs(b.keyboard,d.resources.size()))return fail(e,"Naming presentation reference rejected");
+ // dotted_name appends these placeholders until the field is filled. Each
+ // role must advance by one printable byte in the supported ASCII font scope.
+ for(auto role:{3u,4u})if(d.texts[b.texts[role]].size()!=1||!ascii(d.texts[b.texts[role]]))return fail(e,"Naming padding glyph rejected");
  for(auto v:b.field_bevel)if(std::abs(v)>64)return fail(e,"Naming field bevel rejected");
  std::set<std::string>paths;for(const auto&resource:d.resources)if(!paths.insert(resource.path).second)return fail(e,"Duplicate naming resource path");
  for(size_t i=0;i<d.panels.size();++i){const auto&resource=d.resources[b.keyboard[i]];if(resource.width!=b.source_width||resource.height!=b.source_height||resource.columns!=1||resource.rows!=1)return fail(e,"Naming keyboard resource extent rejected");for(const auto&key:d.panels[i])if(key.rect.x+key.rect.w>b.source_width||key.rect.y+key.rect.h>b.source_height)return fail(e,"Naming key exceeds source viewport");}

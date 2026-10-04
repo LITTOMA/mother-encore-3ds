@@ -19,6 +19,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "tools"))
 from tools.doll_dialogue import PIN, sha, require
 from tools.extract_battle_entry import Extractor, node, properties, one, animation
 from tools.phone_dialogue import write_json

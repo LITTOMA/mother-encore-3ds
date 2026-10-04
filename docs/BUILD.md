@@ -60,3 +60,11 @@ python3 tools/release.py
 ```
 
 SD ZIP 包含真实 3DSX/CIA、所需资源及逐项核对的许可文件。运行时资源置于 RomFS，不支持 SD 覆盖或热重载。CIA 使用未全局登记的测试 TitleID `000400000F3E2100` 和 homebrew 测试签名；构建成功不代表安装、真机运行或官方认证。
+
+## GitHub runner 构建
+
+Actions 的 `Real 3DSX and CIA (GPU 1:1:0)` 任务从仓库直接完成真实 `make 3dsx` 和 `make cia`，不要求先在本地编译。Ubuntu runner 恢复已有清单固定的官方 devkitPro SDK layer，强制核对 bannertool archive SHA-256，并从固定官方 Project_CTR 源码构建 makerom / CTRTool。
+
+任务先核对只读上游，恢复受检 PCM，再编译 ARM ELF 与嵌入 RomFS 的 3DSX，生成 CIA。CTRTool 提取真实 CIA 并逐文件比较完整 RomFS 与受检 staging；另检查 3DSX 嵌入边界及资源目录消费者依赖。FFmpeg 使用 Ubuntu 包，输出必须逐项匹配既有 PCM 长度、SHA-256 和 CRC；不同版本不允许刷新期望指纹来通过检查。
+
+此任务不上传游戏二进制、素材或发行包。实际结果以对应提交的 Actions 运行记录为准；维护者下载完整运行日志到私有验证目录。CI 文件存在不代表构建通过，交叉构建 / 打包通过也不代表模拟器或真机验收。已有本地构建保留用于开发调试与设备验证。

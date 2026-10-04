@@ -3,6 +3,7 @@
 import argparse,hashlib,json,math,struct,sys,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 PIN='7d9246600fffe518408f5830d4848635019005a3'
 from extract_battle_round import RULE_NAMES
 SECTION_NAMES=['Strings','Skills','EnemyChoices','Rules','Bindings','Texts','Resources','Media','Tracks','Keys','Events','PresentationBindings','Parameters','Victory']
@@ -41,6 +42,8 @@ class RoundTables(dict):
   names,_,_=schema_layout(version);super().__init__((name,[])for name in names);self.version=version
 
 def verify_sources(ir,root=ROOT):
+ from tools.round_assets import verify_reviewed_presentation
+ verify_reviewed_presentation(root)
  from battle_round_bindings import load,check_round
  check_round(ir,load(root))
  if ir.get('encounter',{}).get('boss'):

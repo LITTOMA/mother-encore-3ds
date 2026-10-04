@@ -2,6 +2,10 @@
 # Reviewed source suites use copies/unique temp dirs; fixture preparation has
 # already finished during the build. Re-review IO if these tests are changed.
 if(BUILD_TESTING AND ENCORE_TEST_PARALLEL)
+  set(ENCORE_TEST_JOBS 4 CACHE STRING "Reviewed test subprocess limit")
+  if(NOT ENCORE_TEST_JOBS MATCHES "^[0-9]+$" OR ENCORE_TEST_JOBS LESS 4 OR ENCORE_TEST_JOBS GREATER 64)
+    message(FATAL_ERROR "ENCORE_TEST_JOBS must be between 4 and 64")
+  endif()
   get_property(encore_registered_tests DIRECTORY PROPERTY TESTS)
   set_tests_properties(${encore_registered_tests} PROPERTIES RUN_SERIAL TRUE)
   set(encore_parallel_tests
@@ -18,7 +22,7 @@ if(BUILD_TESTING AND ENCORE_TEST_PARALLEL)
     endif()
   endforeach()
   if(python_tools IN_LIST encore_registered_tests)
-    set_tests_properties(python_tools PROPERTIES RUN_SERIAL FALSE PROCESSORS 2)
-    set_property(TEST python_tools APPEND PROPERTY ENVIRONMENT ENCORE_PYTHON_TEST_JOBS=2)
+    set_tests_properties(python_tools PROPERTIES RUN_SERIAL FALSE PROCESSORS ${ENCORE_TEST_JOBS})
+    set_property(TEST python_tools APPEND PROPERTY ENVIRONMENT ENCORE_PYTHON_TEST_JOBS=${ENCORE_TEST_JOBS})
   endif()
 endif()

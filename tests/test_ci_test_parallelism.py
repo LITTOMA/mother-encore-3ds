@@ -27,11 +27,12 @@ class ParallelTests(unittest.TestCase):
         (self.root / ('tests/' + name + '.py')).write_text(body, encoding='utf-8')
         return name + '.Case.test_run'
 
-    def test_two_processes_overlap_and_isolate_module_mocks(self):
+    def test_four_processes_overlap_and_isolate_module_mocks(self):
         (self.root / 'tests/shared.py').write_text('value = 0\n', encoding='utf-8')
         groups = {}
-        for name, other, value in [('test_native_content', 'test_native_house', 1),
-                                   ('test_native_house', 'test_native_content', 2)]:
+        names = ['test_native_content', 'test_native_house', 'test_native_round', 'test_native_restore']
+        for value, name in enumerate(names, 1):
+            others = [other for other in names if other != name]
             body = '''import os, time, unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -41,15 +42,15 @@ class Case(unittest.TestCase):
   with patch.object(shared, 'value', VALUE):
    Path('NAME.started').write_text(str(os.getpid()))
    deadline = time.monotonic() + 10
-   while not Path('OTHER.started').exists() and time.monotonic() < deadline:
+   while not all(Path(n + '.started').exists() for n in OTHERS) and time.monotonic() < deadline:
     time.sleep(.01)
-   self.assertTrue(Path('OTHER.started').exists(), 'workers did not overlap')
+   self.assertTrue(all(Path(n + '.started').exists() for n in OTHERS), 'workers did not overlap')
    self.assertEqual(shared.value, VALUE)
-'''.replace('VALUE', str(value)).replace('NAME', name).replace('OTHER', other)
+'''.replace('VALUE', str(value)).replace('NAME', name).replace('OTHERS', repr(others))
             groups[name] = [self.module(name, body)]
-        self.assertTrue(runner.run_parallel(self.root, groups, self.output, 2))
+        self.assertTrue(runner.run_parallel(self.root, groups, self.output, 4))
         pids = [(self.root / (name + '.started')).read_text() for name in groups]
-        self.assertEqual(len(set(pids)), 2)
+        self.assertEqual(len(set(pids)), 4)
         for name, ids in groups.items():
             receipt = json.loads((self.output / (name + '.result.json')).read_text())
             self.assertEqual(receipt['executed_ids'], ids)
@@ -59,7 +60,7 @@ class Case(unittest.TestCase):
         good = self.module('test_native_content', 'import unittest\nclass Case(unittest.TestCase):\n def test_run(self): pass\n')
         bad = self.module('test_native_house', 'import unittest\nclass Case(unittest.TestCase):\n def test_run(self): self.fail("intentional worker failure")\n')
         groups = dict(test_native_content=[good], test_native_house=[bad])
-        self.assertFalse(runner.run_parallel(self.root, groups, self.output, 2))
+        self.assertFalse(runner.run_parallel(self.root, groups, self.output, 4))
         for name in groups:
             self.assertTrue((self.output / (name + '.log')).is_file())
             receipt = json.loads((self.output / (name + '.result.json')).read_text())
@@ -73,7 +74,7 @@ class Case(unittest.TestCase):
         receipt.write_text(json.dumps(dict(success=True, module='test_native_content',
             expected_ids=[actual], executed_ids=[actual])))
         self.assertFalse(runner.run_parallel(self.root,
-            {'test_native_content': ['test_native_content.Case.test_missing']}, self.output, 2))
+            {'test_native_content': ['test_native_content.Case.test_missing']}, self.output, 4))
         self.assertFalse(receipt.exists())
 
     def test_worker_rejects_unknown_or_duplicate_plan_before_execution(self):
@@ -100,11 +101,11 @@ class Case(unittest.TestCase):
                 self.assertFalse((self.root / 'result.json').exists())
 
     def test_invalid_job_count_and_unreviewed_modules_fail_closed(self):
-        for jobs in (0, 3, True):
+        for jobs in (0, 2, 3, 65, True):
             with self.subTest(jobs=jobs), self.assertRaises(ValueError):
                 runner.run_parallel(self.root, {}, self.output, jobs)
         with self.assertRaises(ValueError):
-            runner.run_parallel(self.root, {'../unknown': ['x']}, self.output, 2)
+            runner.run_parallel(self.root, {'../unknown': ['x']}, self.output, 4)
 
     def test_partition_preserves_unknown_modules_and_detects_missing_methods(self):
         class Case(unittest.TestCase):
@@ -129,7 +130,7 @@ class Case(unittest.TestCase):
                 runner.parallel_partition(unittest.TestSuite([selected]))
 
     @unittest.skipUnless(shutil.which('cmake') and shutil.which('ctest'), 'CMake/CTest unavailable')
-    def test_ctest_defaults_and_two_slot_policy(self):
+    def test_ctest_defaults_and_four_slot_policy(self):
         helper = (ROOT / 'cmake/TestParallelism.cmake').as_posix()
         source = self.root / 'CMakeLists.txt'
         source.write_text('cmake_minimum_required(VERSION 3.16)\nproject(Schedule NONE)\n'
@@ -137,6 +138,12 @@ class Case(unittest.TestCase):
             'foreach(name room_data phone_presentation_bindings python_tools future_writer timing_probe)\n'
             ' add_test(NAME ${name} COMMAND "' + sys.executable.replace('\\', '/') + '" -c "pass")\n'
             'endforeach()\ninclude("' + helper + '")\n', encoding='utf-8')
+        for jobs in (0, 2, 3, 65, 'invalid'):
+            with self.subTest(invalid_jobs=jobs):
+                result = subprocess.run(['cmake', '-S', str(self.root), '-B',
+                    str(self.root / ('invalid-' + str(jobs))), '-DENCORE_TEST_PARALLEL=ON',
+                    '-DENCORE_TEST_JOBS=' + str(jobs)], capture_output=True)
+                self.assertNotEqual(result.returncode, 0)
         for enabled in ('OFF', 'ON'):
             with self.subTest(enabled=enabled):
                 build = self.root / enabled
@@ -153,8 +160,8 @@ class Case(unittest.TestCase):
                     self.assertTrue(props['timing_probe']['RUN_SERIAL'])
                     self.assertFalse(props['room_data'].get('RUN_SERIAL', False))
                     self.assertFalse(props['phone_presentation_bindings'].get('RUN_SERIAL', False))
-                    self.assertEqual(props['python_tools']['PROCESSORS'], 2)
-                    self.assertIn('ENCORE_PYTHON_TEST_JOBS=2', props['python_tools']['ENVIRONMENT'])
+                    self.assertEqual(props['python_tools']['PROCESSORS'], 4)
+                    self.assertIn('ENCORE_PYTHON_TEST_JOBS=4', props['python_tools']['ENVIRONMENT'])
 
 
 if __name__ == '__main__':

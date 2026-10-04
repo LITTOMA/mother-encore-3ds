@@ -60,7 +60,7 @@ jobs:
           git diff --exit-code
       - name: Check the CI selector and production consumers
         run: |
-          python -m unittest -v tests.test_ci_quick tests.test_ci_workflow_policy tests.test_ci_python_environment tests.test_ci_test_parallelism
+          python -m unittest -v tests.test_ci_quick tests.test_ci_workflow_policy tests.test_ci_python_environment tests.test_ci_test_parallelism tests.test_content_parallelism
           python tools/ci_quick.py --build-dir build/quick
       - name: Retain quick-check diagnostics
         if: always()
@@ -72,6 +72,7 @@ jobs:
             build/quick/Testing/Temporary/LastTest.log
             build/quick/Testing/Temporary/LastTestsFailed.log
             build/quick/selection.json
+            build/content-jobs/
 
   host:
     name: Host and sanitizers (${{ matrix.compiler }})
@@ -97,7 +98,7 @@ jobs:
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
-      BUILD_JOBS: '2'
+      BUILD_JOBS: '4'
       GIT_OPTIONAL_LOCKS: '0'
     steps:
       - uses: actions/checkout@v4
@@ -125,9 +126,9 @@ jobs:
         # runs every C++ consumer, source CLI and fixture test.
         # Make's content prerequisite is authoritative here; do not regenerate
         # the same resources again through CMake's default ALL target.
-        # Two CTest slots; the aggregate Python test reserves both and starts
-        # at most two isolated module processes. Unreviewed writers stay serial.
-        run: make test CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 2 --no-tests=error ${{ matrix.ctest_args }}"
+        # Four CTest slots; the aggregate Python test reserves all four and starts
+        # at most four isolated module processes. Unreviewed writers stay serial.
+        run: make test CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error ${{ matrix.ctest_args }}"
       - name: Retain Clang coverage for Python suites that compile renderer doubles
         if: matrix.compiler == 'clang'
         run: python -m unittest -v tests.test_loading_texture tests.test_loading_indicator
@@ -135,7 +136,7 @@ jobs:
         # Python tools are not instrumented by this CMake sanitizer build.
         # Reuse content already regenerated and admitted by the successful
         # preceding step. This job changes no source between the two builds.
-        run: make sanitize -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 2 --no-tests=error --label-exclude python_unit"
+        run: make sanitize -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 4 --no-tests=error --label-exclude python_unit"
       - name: Confirm regeneration did not change tracked source or resources
         run: git diff --exit-code
       - name: Retain failure logs and current build diagnostics
@@ -149,6 +150,7 @@ jobs:
             build/host/Testing/Temporary/LastTestsFailed.log
             build/host/CMakeFiles/CMakeConfigureLog.yaml
             build/host/python-workers/
+            build/content-jobs/
             build/sanitize/Testing/Temporary/LastTest.log
             build/sanitize/Testing/Temporary/LastTestsFailed.log
             build/sanitize/CMakeFiles/CMakeConfigureLog.yaml

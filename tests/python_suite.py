@@ -107,13 +107,13 @@ def worker(project, expected, result_path):
     result = unittest.TextTestRunner(verbosity=2, resultclass=TrackedResult).run(suite)
     success = result.wasSuccessful() and Counter(executed) == Counter(ids)
     Path(result_path).write_text(json.dumps(dict(module=module, expected_ids=ids,
-        executed_ids=executed, success=success, seconds=time.monotonic()-start), indent=2)+'\n', encoding='utf-8')
+        executed_ids=executed, success=success, pid=os.getpid(), started=start, seconds=time.monotonic()-start), indent=2)+'\n', encoding='utf-8')
     return 0 if success else 1
 
 
 def run_parallel(project, groups, directory, jobs):
-    if type(jobs) is not int or jobs not in (1, 2):
-        raise ValueError('Python test jobs must be 1 or 2')
+    if type(jobs) is not int or not (jobs == 1 or 4 <= jobs <= 64):
+        raise ValueError('Python test jobs must be 1 (serial) or between 4 and 64')
     for module, ids in groups.items():
         if (module not in READ_ONLY or type(ids) is not list or not ids
             or any(type(i) is not str or not i.startswith(module + '.') for i in ids)
@@ -130,10 +130,13 @@ def run_parallel(project, groups, directory, jobs):
         # A failed launch must never reuse a preceding invocation's receipt.
         result_path.unlink(missing_ok=True)
         with log.open('wb') as output:
-            process = subprocess.run([sys.executable, str(Path(__file__).resolve()),
+            process = subprocess.Popen([sys.executable, str(Path(__file__).resolve()),
                 '--project', str(project), '--worker-plan', str(expected),
                 '--worker-result', str(result_path)], cwd=project, stdout=output,
                 stderr=subprocess.STDOUT, env=dict(os.environ, PYTHONIOENCODING='utf-8'))
+            print('PYTHON START {} pid={}'.format(module, process.pid), flush=True)
+            process.wait()
+            print('PYTHON END {} pid={} status={}'.format(module, process.pid, process.returncode), flush=True)
         print(log.read_text(encoding='utf-8', errors='replace'), flush=True)
         if process.returncode != 0 or not result_path.is_file():
             return False
@@ -197,7 +200,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--ctest-dir', type=Path)
-    parser.add_argument('--jobs', type=int, choices=(1, 2), default=int(os.environ.get('ENCORE_PYTHON_TEST_JOBS', '1')))
+    parser.add_argument('--jobs', type=int, choices=(1, *range(4, 65)), default=int(os.environ.get('ENCORE_PYTHON_TEST_JOBS', '1')))
     parser.add_argument('--worker-plan', type=Path)
     parser.add_argument('--worker-result', type=Path)
     parser.add_argument('--collect-only', action='store_true')
@@ -209,10 +212,10 @@ def main():
         return worker(args.project, args.worker_plan, args.worker_result)
     if args.ctest_dir is None:
         parser.error('--ctest-dir is required')
-    if args.jobs not in (1, 2):
-        parser.error('Python test jobs must be 1 or 2')
+    if not (args.jobs == 1 or 4 <= args.jobs <= 64):
+        parser.error('Python test jobs must be 1 (serial) or between 4 and 64')
     suite, receipt = plan(args.project, args.ctest_dir)
-    serial, groups = parallel_partition(suite) if args.jobs == 2 else (suite, {})
+    serial, groups = parallel_partition(suite) if args.jobs >= 4 else (suite, {})
     receipt['parallel_modules'] = groups
     receipt['serial_ids'] = sorted(identity(c) for c in cases(serial))
     print('Python method partition: {discovered} discovered = {aggregate} aggregate + {dedicated} dedicated; exact ID multiset preserved'.format(**receipt), flush=True)

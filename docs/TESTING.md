@@ -33,8 +33,12 @@ CI 执行主机与消毒器检查。3DS 交叉构建和打包见 [BUILD](BUILD.m
 
 ## CI 的受限多进程调度
 
-完整 CI 使用 `-DENCORE_TEST_PARALLEL=ON` 与 `ctest --parallel 2`。已审查文件读写的来源检查和七项生产消费者可并行；其余测试、共享文件写入和计时探针通过 `RUN_SERIAL` 独占执行。所有 fixture 仍在构建阶段准备完毕，再运行测试。新注册的 CTest 默认独占，加入并行名单前须审查文件读写。
+默认构建与完整 CI 使用至少 4 路：GNU make 调度资源生成，CMake 并行编译，CTest 使用 `--parallel 4`。已审查文件读写的来源检查和七项生产消费者可并行；共享文件写入、未审查测试和计时探针继续通过 `RUN_SERIAL` 独占执行。并发上限不是每个时刻都有四个可运行任务；存在依赖或剩余任务不足时会减少。
 
-Python 聚合测试占用两个 CTest 调度槽，并将六个已审查的只读模块分配给最多两个独立解释器进程，隔离模块状态与 mock；其他模块等所有子进程退出后串行执行。收集与实际执行的方法身份必须逐项一致，重复、缺失、导入失败或任一子进程失败均使检查失败。子进程日志和执行记录保存在 `build/host/python-workers/`，旧成功记录不能用于新运行。新增 Python 模块默认串行，不减少原有正常或负向测试。
+Python 聚合测试占用四个 CTest 槽，将六个已审查只读模块分配给最多四个独立解释器，隔离模块状态与 mock。其他模块等待子进程全部退出再执行。收集与实际执行的方法身份必须逐项一致；重复、缺失、导入失败或子进程失败均使检查失败。日志与 PID 记录保存在 `build/host/python-workers/`，旧成功记录不能用于新运行。新模块默认串行。
 
-本地默认调度不变；需要相同调度时使用 `make test CMAKE_ARGS="-DENCORE_TEST_PARALLEL=ON" CTEST_ARGS="--parallel 2 --no-tests=error"`。两个进程是初始上限，整体耗时须以最终提交的 runner 记录衡量，不能把单项并行或局部转换耗时当作整套 CI 的加速结果。
+`make/native-content.mk` 将原有 27 条资源命令组织为独立目标与依赖。房间来源核验在入口 / 效果包完成后进行，并在重新写入 Lamp 战斗包之前完成；Restore 等待房间与 House；目录和遭遇指纹等待所有生产者。Settings 的生成与验证保持顺序。CMake 直接构建也使用同一图，并让读取资源的 fixture 准备和编译等待生成完成。所有目标仍为 phony，逐次保留来源核验，不通过时间戳跳过检查。
+
+资源日志与起止时间 / PID / 退出码保存在 `build/content-jobs/`，CI 上传诊断日志。多个 `CONTENT START` 先于对应 `CONTENT END` 表示重叠执行；记录中的区间可核对实际并发峰值。这些属于构建诊断，不进入 RomFS。
+
+默认 `BUILD_JOBS=4`、`CONTENT_JOBS=4`；独立 CMake 的 `ENCORE_CONTENT_JOBS=4` 和测试的 `ENCORE_TEST_JOBS=4` 可调高，CTest 的并发参数应与后者一致。单进程资源基准可显式使用 `make native-content CONTENT_JOBS=1`；测试串行对照可使用 `-DENCORE_TEST_PARALLEL=OFF` 和 `CTEST_ARGS="--parallel 1"`。完整 CI 耗时仍须以当前提交的 runner 记录衡量，不把局部资源基准当作整体加速结果。

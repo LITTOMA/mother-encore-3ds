@@ -14,8 +14,10 @@ from tools.extract_battle_entry import node,require
 import yaml
 UPSTREAM=BASE/'upstream/MOTHER-Encore'
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
-def load(p):return json.loads(Path(p).read_text())
-def write(p,x):Path(p).parent.mkdir(parents=True,exist_ok=True);Path(p).write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def load(p):return json.loads(Path(p).read_text(encoding='utf-8'))
+def write(p,x):
+ path=Path(p);path.parent.mkdir(parents=True,exist_ok=True)
+ with path.open('w',encoding='utf-8',newline='\n')as output:output.write(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
 def extract():
  from localization_house import unescape,bindings as house_bindings
  sources={}; tables={}; records={}; superseded=[]
@@ -25,7 +27,7 @@ def extract():
  locales=json.loads(re.search(r'const LANGUAGES := (\[[^\n]+\])',global_source)[1])
  disabled=json.loads(re.search(r'const LANGUAGES_DISABLED := (\[[^\n]*\])',global_source)[1])
  fallback=re.search(r'const LANGUAGE_DEFAULT := "([^"]+)"',global_source)[1]
- for f in sorted((UPSTREAM/'Translations/TranslatedText').glob('*.csv')):
+ for f in sorted((UPSTREAM/'Translations/TranslatedText').glob('*.csv'),key=lambda path:path.as_posix()):
   path=f.relative_to(UPSTREAM).as_posix();source(path); rows=list(csv.DictReader(f.open(encoding='utf-8-sig',newline='')));tables[f.stem]=rows
   for line,row in enumerate(rows,2):
    key=row.pop('key')
@@ -91,7 +93,7 @@ def extract():
  # Source list is authoritative; compiled resources not referenced by project
  # are inventoried as unused, never merged under ambiguous duplicate keys.
  project=source('project.godot');legacy=[]
- for f in sorted((UPSTREAM/'Translations/TranslatedText').glob('*.translation')):
+ for f in sorted((UPSTREAM/'Translations/TranslatedText').glob('*.translation'),key=lambda path:path.as_posix()):
   p=f.relative_to(UPSTREAM).as_posix();sources[p]=sha(f);legacy.append(dict(source=p,sha256=sha(f),bytes=f.stat().st_size,referenced=p in project))
  require(not any(x['referenced']for x in legacy),'Legacy compiled translation now requires semantic import')
  for p in ['Scripts/global/text_tools.gd','Scripts/UI/AbstractDialogueBox.gd','Fonts/EBMain_la.tres','Fonts/EBMain_ja.tres','Fonts/EBMain_ko.tres','Fonts/EBMain_zh_cn.tres']:source(p)
@@ -102,6 +104,8 @@ def extract():
   locale_rows.append(dict(native_ready=not unsupported and locale in ['en','zh_Hans_CN'],native_blocker='Source custom-name declension is not yet implemented'if unsupported else('Native presentation validation pending'if locale not in ['en','zh_Hans_CN']else ''),code=locale,csv_code='zh_CN'if locale=='zh_Hans_CN'else locale,name=tr('OPTIONS_LANGUAGE_'+locale.upper()),enabled=locale not in disabled,font=font))
  return dict(schema=1,commit=load(BASE/'upstream.lock')['commit'],fallback=fallback,locales=locale_rows,records=sorted(superseded+list(records.values()),key=lambda r:r['key']),bindings=sorted(bindings,key=lambda r:r['identity']),sources=sources,unused_compiled=legacy,house_bindings=house,battle_bindings=battles)
 def encode(d):
+ from locale_grammar import load_ir as grammar_ir, encode as encode_grammar
+ grammar=encode_grammar(grammar_ir(),BASE)
  raw=bytearray()
  def number(x):raw.extend(struct.pack('<I',x))
  def text(x):b=x.encode('utf-8');number(len(b));raw.extend(b)
@@ -117,7 +121,8 @@ def encode(d):
  number(len(d['bindings']))
  for r in d['bindings']:
   for k in ['identity','key','expected','origin']:text(r[k])
- return struct.pack('<8s4I',b'ENCL10N1',1,len(raw)+24,zlib.crc32(raw),0)+raw
+ number(len(grammar));raw.extend(grammar)
+ return struct.pack('<8s4I',b'ENCL10N1',2,len(raw)+24,zlib.crc32(raw),0)+raw
 def stage_files(root):
  d=extract();blob=encode(d);path=Path('data/localization.enclocale');actual=(Path(root)/path).read_bytes();require(actual==blob,'Locale catalog does not match current source keys/bindings');return {path:actual}
 

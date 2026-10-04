@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "kind": "encore.locale-affix.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "source": "Scripts/global/text_tools.gd",
+  "sha256": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+  "profiles": [
+    {
+      "kind": "Elision",
+      "matching": "aeiouáàâäæéèêëíìîïóòôöœúùûü",
+      "lower_pairs": "AaEeIiOoUuÁáÀàÂâÄäÆæÉéÈèÊêËëÍíÌìÎîÏïÓóÒòÔôÖöŒœÚúÙùÛûÜü",
+      "when_match": "'",
+      "otherwise": "e "
+    },
+    {
+      "kind": "Genitive",
+      "matching": "sx",
+      "lower_pairs": "",
+      "when_match": "'",
+      "otherwise": "s"
+    }
+  ]
+}

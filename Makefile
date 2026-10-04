@@ -33,6 +33,7 @@ native-content:
 	$(PYTHON) tools/startup_settings_assets.py compile
 	$(PYTHON) tools/startup_settings_assets.py verify
 	$(PYTHON) tools/house_button_prompt_assets.py verify
+	$(PYTHON) tools/localization_assets.py compile
 	$(PYTHON) tools/resource_catalog.py compile
 assets:
 	$(PYTHON) tools/generate_branding.py

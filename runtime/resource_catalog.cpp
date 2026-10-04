@@ -26,6 +26,7 @@ const char* suffix(uint32_t role) {
     case ResourceRole::NewGame:return ".encnewgame";case ResourceRole::Localization:return ".enclocale";
     case ResourceRole::TitleLocale:return ".enctitlelocale";case ResourceRole::SourceFonts:return ".encfont";
     case ResourceRole::Input:return ".encinput";case ResourceRole::LoadingIndicator:return ".encload";
+    case ResourceRole::Introduction:return ".encintro";
     }return nullptr;
 }
 bool canonical(const std::string& path) {
@@ -60,7 +61,7 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     ResourceCatalog data;
     bool roots[22]={};
     for(uint32_t i=0;i<count;++i){const auto id=r.integer(),role=r.integer(),size=r.integer(),checksum=r.integer();auto path=r.path();
-        if(!r.ok||role<1||role>24||(role<=22?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
+        if(!r.ok||role<1||role>25||((role<=22||role==25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
         const auto expected=suffix(role);const auto len=std::strlen(expected);
         if(path.size()<=len||path.compare(path.size()-len,len,expected))return fail("Resource catalog binding type rejected");
         for(const auto& prior:data.bindings_)if(prior.id==id||prior.path==path)return fail("Resource catalog duplicate ID/path rejected");
@@ -88,7 +89,7 @@ bool ResourceCatalog::load_file(const char* path,std::string& error) {
 }
 const std::string& ResourceCatalog::path(ResourceRole role)const {
     static const std::string empty;
-    auto id=uint32_t(role);if(valid_&&id>=1&&id<=22)for(const auto& row:bindings_)if(row.id==id)return row.path;
+    auto id=uint32_t(role);if(valid_&&id>=1&&(id<=22||role==ResourceRole::Introduction))for(const auto& row:bindings_)if(row.id==id)return row.path;
     return empty;
 }
 std::string ResourceCatalog::companion_path(std::string_view battle_path)const {

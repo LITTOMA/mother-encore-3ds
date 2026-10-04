@@ -33,8 +33,8 @@ from pathlib import Path
 task = sys.argv[1]
 deps = {'room': ['audio', 'effects', 'doll-entry', 'pillow-entry'],
         'battle': ['room'], 'restore': ['room', 'house'],
-        'items': ['items-check'], 'locale': ['migration'], 'settings-check': ['settings']}
-producers = 'audio bars input phone effects doll-entry pillow-entry room battle round doll-round pillow-round house items-check items session migration restore continue loading naming settings settings-check prompts locale'.split()
+        'items': ['items-check'], 'locale': ['migration'], 'settings-check': ['settings'], 'introduction': ['audio']}
+producers = 'audio bars input phone effects doll-entry pillow-entry room battle round doll-round pillow-round house items-check items session migration restore continue loading naming settings settings-check prompts locale introduction'.split()
 if task in ('catalog', 'encounters'): deps[task] = producers
 for dependency in deps.get(task, []):
  assert Path(dependency + '.done').exists(), (task, dependency)
@@ -60,7 +60,7 @@ Path(task + '.done').write_text(json.dumps(sys.argv[3:]))
                 self.assertFalse((self.root / (task + '.started')).exists(), task)
         else:
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-            self.assertEqual(len(list(self.root.glob('*.done'))), 27)
+            self.assertEqual(len(list(self.root.glob('*.done'))), 28)
             for task in ('catalog', 'encounters'):
                 self.assertTrue((self.root / (task + '.done')).exists())
         pids = [(self.root / (n + '.started')).read_text()

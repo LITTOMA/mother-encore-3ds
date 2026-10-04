@@ -89,10 +89,10 @@
   },
   "dependencies": {
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-opening.json": "b2eaee0cbbbd90643ee24ee6250cd00ccaac84975f2f21f3f60cc79673d78bfa",
-    "content/native-round.json": "e4ed2f5bc9c5ec203b822171969ddf444c9e4c20bf188ddd45dc2a146ff5e084",
+    "content/native-opening.json": "5f309e82386badd25e7be3401eaccd9f0aa08a3ebea89c8cf5a95cd22e505a6f",
+    "content/native-round.json": "187b3a4d79edeb1c5d29ae71844540da595642ea627870fbdf121373e5939d8f",
     "content/pillow-entry.json": "a2d897659f7e838a48cfcdde25f43744fb92ca1212533ae56363d9e606bff407",
-    "content/doll-round.json": "dbf8f376fe28105a74c414f262e0d58047bbe059cbd60df3eb5eb39952e88c69"
+    "content/doll-round.json": "a36a439ebcedc55fc38997275661613c443677bfb6217f18da0de22ebeced1ef"
   },
   "skills": [
     {

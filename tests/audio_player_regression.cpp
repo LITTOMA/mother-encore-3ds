@@ -11,7 +11,7 @@ uint64_t audio_trace=1469598103934665603ull;uint64_t trace_events=0;
 void trace(uint32_t kind,uint32_t a=0,uint32_t b=0){++trace_events;for(uint32_t v:{kind,a,b})for(unsigned i=0;i<4;++i){audio_trace^=uint8_t(v>>(8*i));audio_trace*=1099511628211ull;}}
 uint32_t bits(float f){uint32_t v;std::memcpy(&v,&f,4);return v;}
 unsigned checks=0;Result init_result=0,flush_result=0;bool ndsp_started=false;int exits=0;size_t allocated=0;bool fail_alloc=false;
-constexpr size_t channel_count=4;
+constexpr size_t channel_count=24;
 std::array<std::vector<ndspWaveBuf*>,channel_count> queues;std::array<float,channel_count> gains{};float master=0;
 void check(bool ok,const char* why){++checks;if(!ok){std::cerr<<"FAIL: "<<why<<"\n";std::exit(1);}}
 size_t channel(int lane){check(lane>=0&&size_t(lane)<queues.size(),"NDSP double channel in bounds");return size_t(lane);}
@@ -42,7 +42,7 @@ int main(int argc,char** argv){
     init_result=0;check(!player.initialize(argv[1],missing_root.c_str(),error)&&error=="Cannot open PCM asset"&&!player.available()&&!ndsp_started&&exits==1&&allocated==0,"playable audio still validates PCM and shuts down DSP on failure");
     fail_alloc=true;check(!player.initialize(argv[1],argv[2],error)&&!player.available()&&exits==2,"allocation failure shuts down NDSP");fail_alloc=false;
     check(player.initialize(argv[1],argv[2],error),error.c_str());check(allocated==4*3*2048*2*2,"96KiB four-lane streaming allocation");check(std::abs(master-upstream::audio_linear_gain(-5.93075f))<0.00001,"master gain loaded from bank");
-    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(4),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
+    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(6),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
     upstream::RoomData room;check(room.load_file(argv[3],error),error.c_str());
     std::vector<upstream::OpeningAudioRequest> requests={{upstream::AudioRequestKind::FadeMusic,upstream::kRoomNoIndex,2,0},{upstream::AudioRequestKind::PlayMusic,20,0,2}};
     check(player.consume(room.view(),requests,error),error.c_str());check(player.consumed_requests()==2&&player.submitted_voices()==1&&queues[0].size()==3,"typed requests consumed and music queued");
@@ -87,7 +87,7 @@ int main(int argc,char** argv){
     flush_result=-1;check(!player.play(22,ctr::AudioLane::Effect,error)&&queues[1].empty(),"DSP cache failure aborts playback");flush_result=0;
     check(player.play(34,ctr::AudioLane::Music,error)&&player.play(22,ctr::AudioLane::Effect,error)&&player.play(1001,ctr::AudioLane::Jingle,error)&&player.play(32,ctr::AudioLane::DialogueMusic,error),"all lanes active before scene reset");
     check(player.fade_music(2,error)&&player.update(.25,error),"scene reset includes an active fade");
-    std::array<int16_t*,channel_count> prior_buffers{};for(size_t lane=0;lane<channel_count;++lane)prior_buffers[lane]=queues[lane].front()->data_pcm16;
+    std::array<int16_t*,channel_count> prior_buffers{};for(size_t lane=0;lane<4;++lane)prior_buffers[lane]=queues[lane].front()->data_pcm16;
     const auto allocations_before_reset=allocated;const auto exits_before_reset=exits;
     player.reset_scene();player.reset_scene();
     check(player.available()&&ndsp_started&&allocated==allocations_before_reset&&exits==exits_before_reset,"repeated scene reset retains DSP and streaming allocations");
@@ -98,7 +98,7 @@ int main(int argc,char** argv){
     const std::vector<upstream::OpeningAudioRequest> fresh_requests={{upstream::AudioRequestKind::PlayMusic,house_resource,0,0},{upstream::AudioRequestKind::PlayEffect,room_resource(room.view(),22),0,0},{upstream::AudioRequestKind::PlayDialogueMusic,melody_resource,0,0}};
     check(player.consume(room.view(),fresh_requests,error)&&player.play(1001,ctr::AudioLane::Jingle,error),"fresh scene can replay checked PCM assets on every lane");
     check(player.consumed_requests()==3&&player.submitted_voices()==4,"fresh request history consumed from its beginning");
-    for(size_t lane=0;lane<channel_count;++lane)check(!queues[lane].empty()&&queues[lane].front()->data_pcm16==prior_buffers[lane],"same streaming buffer reused after reset");
+    for(size_t lane=0;lane<4;++lane)check(!queues[lane].empty()&&queues[lane].front()->data_pcm16==prior_buffers[lane],"same streaming buffer reused after reset");
     upstream::AudioBank checked_bank;upstream::AudioAsset house_music;check(checked_bank.load_file(argv[1],error)&&checked_bank.find(34,house_music),"checked music gain available");
     check(std::abs(gains[0]-upstream::audio_linear_gain(house_music.gain_db))<.00001f,"fresh music has no stale fade gain");
     check(player.dropped_frames()==7,"platform drop count reported");player.shutdown();check(!player.available()&&player.dropped_frames()==0,"shutdown explicit");

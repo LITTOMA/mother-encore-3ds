@@ -8,7 +8,7 @@
 
 共享加载器拒绝未知版本、能力、来源身份和角色、重复身份 / 路径、非法路径 / 后缀、坏配对、截断、损坏与非零保留字段。失败保留既有目录。启动在构造游戏流程前检查目录引用的文件；内容仍需经过各自的语义加载器。CRC 用于损坏检测，不是认证。目录拥有路径字符串，启动后保持不变，RomFS 不提供覆盖或热更新。
 
-设备入口的标题与语言、六字段命名与设置、房屋、战斗、Items、电话、Dad Record、Continue / LOAD 和加载指示器使用目录角色。遭遇驻留准备和切换使用显式配对，不能根据文件名猜测伴随资源。平台仅保留 RomFS 前缀与目录引导位置，以及 SD 存档路径等平台契约。
+设备入口的标题与语言、六字段命名与设置、Introduction、房屋、战斗、Items、电话、Dad Record、Continue / LOAD 和加载指示器使用目录角色。遭遇驻留准备和切换使用显式配对，不能根据文件名猜测伴随资源。平台仅保留 RomFS 前缀与目录引导位置，以及 SD 存档路径等平台契约。
 
 主机 A/B 回归用同一执行文件读取重新绑定的 round 资源，并驱动实际 `BattleRound` 消费者。它证明资源绑定可在不编译 C++ 的情况下改变；不代表模拟器或真机运行。目录格式与能力独立于既有 pack、rules 和 save schema，本次不改变存档身份、随机流或剧情时序。
 
@@ -57,10 +57,16 @@ Items 的资产源 / 输出 / 裁剪、节点 / 布局、cursor 与 Info tween�
 
 Continue、Save 和按钮提示分别使用 `continue-presentation-bindings.json`、`save-presentation-bindings.json`、`prompts-presentation-bindings.json`。转换器核对实际来源、引用与源布局；普通编译及 staging 拒绝合法但陈旧的 IR。Godot 仅用于离线参考探针，设备不运行 Godot。
 
+## 原版 Introduction
+
+`introduction-bindings.json` 与 `introduction-assets.json` 声明两场景来源、字幕键与语言字体、图片、动画、门过渡及音频身份。受检 IR 编译为 `opening.encintro`；CTR 使用原版 11 张纹理、31 帧云图集和独立字幕字体，按 400×240 居中保留图素 1:1。历史介绍与 Mt. Itoi 的自然播放、逐字字幕、共享音调 RNG、源跳过与最终进入房屋均由消费者执行。五项音频追加到既有受检 bank；JSON 与来源收据位于构建输入目录。
+
+房屋创建与原版最终门口换场点一致，玩家在淡入的 mostly-done 信号后解锁。历史动画长度 116 秒，116.5 秒键保留为来源事实并不执行。格式、能力、来源、路径、引用、浮点数和未知轨道 / 方法均受检，失败保留已加载资源。
+
 ## 验收边界
 
-`playable_opening` 自动测试从标题的 NewGame 边界进入真实六字段命名与设置，同一 House owner 完成 Lamp / Doll 实际回合、奖励与战后演出，再执行 Melody / 电话 / Dad Record，写入真实临时文件，经 Continue LOAD 读取同一文件并准备、提交新的 House owner。它使用目前已实现的 NewGame → FreshHouse 边界；后半 NPC / 电话定位使用公开 warp 接口，不能证明未移植的 Introduction、全程步行或设备画面。
+`playable_opening` 自动测试从标题的 NewGame 边界进入真实六字段命名与设置，同一 House owner 完成 Lamp / Doll 实际回合、奖励与战后演出，再执行 Melody / 电话 / Dad Record，写入真实临时文件，经 Continue LOAD 读取同一文件并准备、提交新的 House owner。该入口现经真实 Introduction / Mt. Itoi 消费者及原版两段跳过，再准备 FreshHouse；独立 Introduction 测试另跑完整英文 / 中文自然时间线。后半 NPC / 电话定位使用公开 warp 接口，不能证明全程步行或设备画面。
 
-加载上限、schema 编号、stride、sentinel、RNG 算法、插值数学、物理帧契约和平台预算属于机制或校验边界。M0 fixture 与上述实际流程分开。绑定迁移不代表完成原版 Introduction、Podunk、完整战斗或尚未映射的音频播放。
+加载上限、schema 编号、stride、sentinel、RNG 算法、插值数学、物理帧契约和平台预算属于机制或校验边界。M0 fixture 与上述实际流程分开。绑定迁移不代表完成 Podunk、完整战斗或尚未映射的音频播放；Introduction 的设备显示与声音仍需实测。
 
 电脑上的共享核心正常 / 负向自动测试和同一执行文件的资源变化检查证明核心消费者行为；真实 3DSX / CIA 构建和嵌入资源检查证明交叉构建与打包。它们不能代替模拟器、Old / New 3DS 的画面、声音、输入和存档验收。对应提交的实际检查结果见 PR 与 Actions，原始日志保留在仓库外的私有构建目录。

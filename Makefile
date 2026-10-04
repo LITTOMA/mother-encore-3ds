@@ -44,7 +44,11 @@ sanitize: content
 	cmake -S . -B build/sanitize -DCMAKE_BUILD_TYPE=Debug -DENCORE_SANITIZERS=ON -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON $(CMAKE_ARGS)
 	cmake --build build/sanitize --parallel $(BUILD_JOBS)
 	ctest --test-dir build/sanitize --output-on-failure $(CTEST_ARGS)
+introduction-assets:
+	$(PYTHON) tools/introduction_assets.py compile --tex3ds "$(TEX3DS)" --godot "$(GODOT3)"
 3dsx: content assets
+	$(PYTHON) tools/introduction_assets.py verify
+	$(PYTHON) tools/native_introduction.py verify
 	$(PYTHON) tools/blackbars_assets.py verify
 	$(PYTHON) tools/native_session.py verify
 	$(PYTHON) tools/session_migration.py verify

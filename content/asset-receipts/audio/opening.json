@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "93cb63d6b776e7295ddff91ab54fee6a53eb39a49a99c4636832179498826ba2",
+  "recipe_sha256": "94f9be22215e05f9b3705c00838aca8cebef46e926ed2e28059298304493550f",
   "ffmpeg_version": "ffmpeg version 7.1.5 Copyright (c) 2000-2026 the FFmpeg developers\nbuilt with gcc 12 (Debian 12.2.0-14+deb12u1)\nconfiguration: --prefix=/opt/encore-ffmpeg --disable-doc --disable-everything --enable-ffmpeg --enable-ffprobe --enable-protocol=file --enable-demuxer='ogg,wav,mp3' --enable-decoder='vorbis,mp3float,pcm_s16le,pcm_s24le,pcm_u8,pcm_f32le' --enable-encoder=pcm_s16le --enable-muxer=pcm_s16le --enable-filter='aresample,aformat,anull'\nlibavutil      59. 39.100 / 59. 39.100\nlibavcodec     61. 19.101 / 61. 19.101\nlibavformat    61.  7.103 / 61.  7.103\nlibavdevice    61.  3.100 / 61.  3.100\nlibavfilter    10.  5.100 / 10.  5.100\nlibswscale      8.  3.100 /  8.  3.100\nlibswresample   5.  3.100 /  5.  3.100\n",
   "ffmpeg_sha256": "4dee476fa932662ce7ff2b6e53356ec5f6173505df6d4fed8bc87583187be59e",
   "assets": [
@@ -28,7 +28,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Music/Poltergeist.ogg",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Music/Poltergeist.ogg",
         "-map",
         "0:a:0",
         "-vn",
@@ -41,7 +41,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/0.pcm"
+        "/tmp/encore-audio-o7pnfwze/0.pcm"
       ]
     },
     {
@@ -67,7 +67,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/bash.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/bash.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -80,7 +80,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/1.pcm"
+        "/tmp/encore-audio-o7pnfwze/1.pcm"
       ]
     },
     {
@@ -106,7 +106,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Music/Battle Encounter/Encounter Enemy.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -119,7 +119,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/2.pcm"
+        "/tmp/encore-audio-o7pnfwze/2.pcm"
       ]
     },
     {
@@ -145,7 +145,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Music/Battle Encounter/Encounter Boss.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Music/Battle Encounter/Encounter Boss.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -158,7 +158,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/3.pcm"
+        "/tmp/encore-audio-o7pnfwze/3.pcm"
       ]
     },
     {
@@ -184,7 +184,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/Cursor 1.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/Cursor 1.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -197,7 +197,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/4.pcm"
+        "/tmp/encore-audio-o7pnfwze/4.pcm"
       ]
     },
     {
@@ -223,7 +223,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/Cursor 2.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/Cursor 2.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -236,7 +236,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/5.pcm"
+        "/tmp/encore-audio-o7pnfwze/5.pcm"
       ]
     },
     {
@@ -262,7 +262,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/curshoriz.wav",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/curshoriz.wav",
         "-map",
         "0:a:0",
         "-vn",
@@ -275,7 +275,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/6.pcm"
+        "/tmp/encore-audio-o7pnfwze/6.pcm"
       ]
     },
     {
@@ -301,7 +301,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/bump.wav",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/bump.wav",
         "-map",
         "0:a:0",
         "-vn",
@@ -316,7 +316,7 @@
         "1",
         "-ar",
         "48000",
-        "/tmp/encore-audio-tn_1laxe/7.pcm"
+        "/tmp/encore-audio-o7pnfwze/7.pcm"
       ]
     },
     {
@@ -342,7 +342,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/SMAAAASH.wav",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/SMAAAASH.wav",
         "-map",
         "0:a:0",
         "-vn",
@@ -355,7 +355,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/8.pcm"
+        "/tmp/encore-audio-o7pnfwze/8.pcm"
       ]
     },
     {
@@ -381,7 +381,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Music/Melodies/melody1.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Music/Melodies/melody1.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -394,7 +394,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/9.pcm"
+        "/tmp/encore-audio-o7pnfwze/9.pcm"
       ]
     },
     {
@@ -420,7 +420,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/heal_se.wav",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/heal_se.wav",
         "-map",
         "0:a:0",
         "-vn",
@@ -433,7 +433,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/10.pcm"
+        "/tmp/encore-audio-o7pnfwze/10.pcm"
       ]
     },
     {
@@ -459,7 +459,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Music/House.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Music/House.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -472,7 +472,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/11.pcm"
+        "/tmp/encore-audio-o7pnfwze/11.pcm"
       ]
     },
     {
@@ -498,7 +498,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/phonering.wav",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/phonering.wav",
         "-map",
         "0:a:0",
         "-vn",
@@ -511,7 +511,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/12.pcm"
+        "/tmp/encore-audio-o7pnfwze/12.pcm"
       ]
     },
     {
@@ -537,7 +537,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/phonehangup.wav",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/phonehangup.wav",
         "-map",
         "0:a:0",
         "-vn",
@@ -550,7 +550,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/13.pcm"
+        "/tmp/encore-audio-o7pnfwze/13.pcm"
       ]
     },
     {
@@ -576,7 +576,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Sound effects/text/Adult.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/text/Adult.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -589,7 +589,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/14.pcm"
+        "/tmp/encore-audio-o7pnfwze/14.pcm"
       ]
     },
     {
@@ -615,7 +615,7 @@
         "-v",
         "error",
         "-i",
-        "/romfs-layout-generation/upstream/MOTHER-Encore/Audio/Music/Mother Earth.mp3",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Music/Mother Earth.mp3",
         "-map",
         "0:a:0",
         "-vn",
@@ -628,15 +628,210 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-tn_1laxe/15.pcm"
+        "/tmp/encore-audio-o7pnfwze/15.pcm"
+      ]
+    },
+    {
+      "stable_id": 1301,
+      "source_sha256": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 5043456,
+      "loop_start": 0,
+      "pcm_bytes": 20173824,
+      "pcm_crc32": 2825049751,
+      "pcm_path": "sound/music/naming-mother-earth-piano.pcm",
+      "source_path": "res://Audio/Music/Mother_Earth_Piano.mp3",
+      "gain_db": 0.0,
+      "source_sample_rate": 44100,
+      "import_sha256": "cb11b39c995aed4baa5c2149c5cebabbd96e496105c4a26559d6fa4aae5b55db",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "fea132a11b00cd2092e844ec8408a5390f2db62aab0524c2302ab950f8cc2432",
+      "command": [
+        "/opt/encore-ffmpeg/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Music/Mother_Earth_Piano.mp3",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "/tmp/encore-audio-o7pnfwze/16.pcm"
+      ]
+    },
+    {
+      "stable_id": 1302,
+      "source_sha256": "a48a37b245414b45ca46cdb1d8c23181ddc2ac16ece6b5354b7545e021464329",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": false,
+      "frames": 960,
+      "loop_start": 0,
+      "pcm_bytes": 3840,
+      "pcm_crc32": 958038262,
+      "pcm_path": "sound/effects/introduction-text.pcm",
+      "source_path": "res://Audio/Sound effects/EB/text.wav",
+      "gain_db": 0.0,
+      "source_sample_rate": 44100,
+      "import_sha256": "9d5b13d4578ef6aadb22f4bea123af0f94d7898677d376f80e116f411f9d2cb6",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "00214e73fd47ccd15f9a0c5019e584febe8cb4fa474925d6eac7044dcfb36bae",
+      "command": [
+        "/opt/encore-ffmpeg/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/EB/text.wav",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "/tmp/encore-audio-o7pnfwze/17.pcm"
+      ]
+    },
+    {
+      "stable_id": 1303,
+      "source_sha256": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": false,
+      "frames": 3584,
+      "loop_start": 0,
+      "pcm_bytes": 14336,
+      "pcm_crc32": 3076912155,
+      "pcm_path": "sound/effects/introduction-kid-text.pcm",
+      "source_path": "res://Audio/Sound effects/text/Kid.mp3",
+      "gain_db": 0.0,
+      "source_sample_rate": 44100,
+      "import_sha256": "b6a18c76670a93798baea7a5535a2ef0a515862c80bced44c29b3aba0039776c",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "3442491d9a6ab0bf843fa339e7865c03c317d031529637906d87b269f7b7e578",
+      "command": [
+        "/opt/encore-ffmpeg/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/text/Kid.mp3",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "/tmp/encore-audio-o7pnfwze/18.pcm"
+      ]
+    },
+    {
+      "stable_id": 1304,
+      "source_sha256": "33d08178c1002aceeb9eaa8c546c454dc6ec987cf07b6b39939fe531eddd32ac",
+      "sample_rate": 11025,
+      "channels": 1,
+      "loop": false,
+      "frames": 87110,
+      "loop_start": 0,
+      "pcm_bytes": 174220,
+      "pcm_crc32": 2130679356,
+      "pcm_path": "sound/effects/introduction-teleport.pcm",
+      "source_path": "res://Audio/Sound effects/M3/teleport.wav",
+      "gain_db": 0.0,
+      "source_sample_rate": 11025,
+      "import_sha256": "9b5f48ce64993fbfb74a36b011050ad9320e3f1f42ab9e829e2697a9f59bf5b5",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "d4f01f48675d8e2ef8a35afe0f71d988f34b37b8702113bb5adc1e84788e4e6d",
+      "command": [
+        "/opt/encore-ffmpeg/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/teleport.wav",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "/tmp/encore-audio-o7pnfwze/19.pcm"
+      ]
+    },
+    {
+      "stable_id": 1305,
+      "source_sha256": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": false,
+      "frames": 84525,
+      "loop_start": 0,
+      "pcm_bytes": 338100,
+      "pcm_crc32": 2027673402,
+      "pcm_path": "sound/effects/introduction-thunder.pcm",
+      "source_path": "res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav",
+      "gain_db": 0.0,
+      "source_sample_rate": 44100,
+      "import_sha256": "0e2de0762e6defcfba189424106dc08c522a154d12d59d12f1431d4bb1f16c5a",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "46113def40102327d47df699af3fa141b4843649ab030a3418467631bfb2e072",
+      "command": [
+        "/opt/encore-ffmpeg/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/introduction-generation/upstream/MOTHER-Encore/Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "/tmp/encore-audio-o7pnfwze/20.pcm"
       ]
     }
   ],
   "files": [
     {
       "path": "sound/banks/opening.encaudio",
-      "size": 2740,
-      "sha256": "c3a21c25ead4b523c4a7178827a380821b0c319ee776a758a5d482a534ce52f3"
+      "size": 3633,
+      "sha256": "c0326c98984d0ed05ccad259ac5c8a133d78c6861513b60931df37141d4dc34c"
     },
     {
       "path": "sound/effects/bash.pcm",
@@ -667,6 +862,26 @@
       "path": "sound/effects/doll-postwin-smash.pcm",
       "size": 175680,
       "sha256": "13e1767f062a1b77594f0428655a382f26f6adddf1509c219472e6f0d421cbb6"
+    },
+    {
+      "path": "sound/effects/introduction-kid-text.pcm",
+      "size": 14336,
+      "sha256": "3442491d9a6ab0bf843fa339e7865c03c317d031529637906d87b269f7b7e578"
+    },
+    {
+      "path": "sound/effects/introduction-teleport.pcm",
+      "size": 174220,
+      "sha256": "d4f01f48675d8e2ef8a35afe0f71d988f34b37b8702113bb5adc1e84788e4e6d"
+    },
+    {
+      "path": "sound/effects/introduction-text.pcm",
+      "size": 3840,
+      "sha256": "00214e73fd47ccd15f9a0c5019e584febe8cb4fa474925d6eac7044dcfb36bae"
+    },
+    {
+      "path": "sound/effects/introduction-thunder.pcm",
+      "size": 338100,
+      "sha256": "46113def40102327d47df699af3fa141b4843649ab030a3418467631bfb2e072"
     },
     {
       "path": "sound/effects/melody-remembered.pcm",
@@ -707,6 +922,11 @@
       "path": "sound/music/house-music.pcm",
       "size": 6003820,
       "sha256": "beb4d21f7e43e93dd8c1f401eb2fe8e9a72d4e33b38ef36dfabbeabd50202ae1"
+    },
+    {
+      "path": "sound/music/naming-mother-earth-piano.pcm",
+      "size": 20173824,
+      "sha256": "fea132a11b00cd2092e844ec8408a5390f2db62aab0524c2302ab950f8cc2432"
     },
     {
       "path": "sound/music/poltergeist.pcm",

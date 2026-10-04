@@ -1,6 +1,6 @@
 // Shared-core acceptance test; actual supported original packs and consumers.
 // No renderer, emulator, hardware, or independently playable desktop product.
-// Uses the implemented NewGame-to-FreshHouse boundary, not an unported intro.
+// Runs original Introduction consumers before the checked FreshHouse boundary.
 // Postwin NPC/phone positioning uses explicit public warp shortcuts; the House
 // route to Doll uses actual movement, door callbacks, dialogue and source script.
 #include "encore/battle_outcome.hpp"
@@ -8,6 +8,7 @@
 #include "encore/continue_menu.hpp"
 #include "encore/new_game_setup.hpp"
 #include "encore/fresh_house.hpp"
+#include "encore/introduction.hpp"
 #include <cstdlib>
 #include <cmath>
 #include <iostream>
@@ -301,9 +302,20 @@ int main(int argc,char**argv){
  NewGameSetup setup;check(setup.open(naming,settings,error),error.c_str());
  for(unsigned field=0;field<6;++field){check(setup.field_index()==field,"Source six-field order");check(setup.step(.1,{0,0,false,false,false,true},error),error.c_str());check(setup.step(.1,{0,0,true},error),error.c_str());check(!setup.name().empty(),"Actual default button selects source name");check(setup.step(.1,{0,0,false,false,false,false,true},error),error.c_str());}
  check(setup.phase()==NamingPhase::Settings,"Food completion opens actual settings");for(unsigned i=0;i<3;++i)check(setup.step(.1,{0,1},error),error.c_str());check(setup.step(.1,{0,0,true},error),error.c_str());check(setup.phase()==NamingPhase::Confirmation,"Settings opens confirmation");check(setup.step(.1,{0,0,true},error),error.c_str());check(setup.phase()==NamingPhase::Accepted,"Actual confirmation accepts startup");
- check(setup.apply(startup,session,error),error.c_str());PreparedSessionRestore prepared;check(prepare_session_restore(session,room.view(),house.view(),round.view(),items.view(),font.view(),startup,prepared,error),error.c_str());
+ check(setup.apply(startup,session,error),error.c_str());
+ IntroductionData intro_data;Introduction intro;check(intro_data.load_file((root+"/opening.encintro").c_str(),error),error.c_str());
+ const auto& destination=intro_data.house_destination();check(destination.scene==startup.scene_id&&destination.x==startup.position_x&&destination.y==startup.position_y&&destination.dx==startup.direction_x&&destination.dy==startup.direction_y&&destination.set_respawn&&destination.unpause,"Original Introduction hands off to supported House destination");
+ check(intro.begin(intro_data,random,"en",400,240,error),error.c_str());const auto before_intro=random.raw_draw_count();
+ // Exercise the original ui_select path in each scene; the separate Intro
+ // acceptance test also runs the full natural historical/landscape timelines.
+ unsigned skipped=0;for(unsigned frame=0;frame<1800&&!intro.house_ready();++frame){const bool skip=intro.phase()==IntroPhase::Playing;if(skip)++skipped;check(intro.step(double(float(1.0/60)),false,skip,error),error.c_str());intro.take_audio();}
+ check(intro.house_ready()&&skipped==2&&intro.playtime_started(),"Both original scene skip callbacks reach House DoorOut");
+ check(random.raw_draw_count()==before_intro,"Skip before caption reveal preserves shared random stream");
+ PreparedSessionRestore prepared;check(prepare_session_restore(session,room.view(),house.view(),round.view(),items.view(),font.view(),startup,prepared,error),error.c_str());
  std::unique_ptr<FreshHouseState>fresh;check(prepare_fresh_house(prepared,restore,room.view(),house.view(),font.view(),phone.view(),random,{400,240},fresh,error),error.c_str());check(fresh->finish_scene_ready(),"FreshHouse scene ready");auto*owner=fresh.get();
+ for(unsigned frame=0;frame<300&&!intro.complete();++frame){check(intro.step(double(float(1.0/60)),false,false,error),error.c_str());intro.take_audio();}
+ check(intro.complete()&&intro.house_unpaused(),"Original final DoorOut unpauses the prepared House");intro.close();
  std::string paths[]={root+"/opening.encround",root+"/opening.encbattle",root+"/opening.enchouse"};char*route[]={argv[0],paths[0].data(),paths[1].data(),paths[2].data()};lamp_to_doll_entry(*fresh,house.view(),random,prepared.stats,route);check(fresh.get()==owner,"Same fresh world owner throughout title/naming-to-Doll entry path");
  complete_chain(root,session,restore,room,house,font,phone,round,items,title,save,prepared,random,ledger,clock,fresh,error);
- std::cout<<"Opening acceptance: "<<checks<<" checks; title NewGame -> six fields/settings -> FreshHouse -> original Lamp/Doll victories/postwin -> Melody/Carol/first Dad -> Dad Record real file -> Continue LOAD -> checked fresh restoration. 400x240; no GPU/emulator/hardware claim\n";
+ std::cout<<"Opening acceptance: "<<checks<<" checks; title NewGame -> six fields/settings -> original Introduction/Mt. Itoi -> FreshHouse -> original Lamp/Doll victories/postwin -> Melody/Carol/first Dad -> Dad Record real file -> Continue LOAD -> checked fresh restoration. 400x240; no GPU/emulator/hardware claim\n";
 }

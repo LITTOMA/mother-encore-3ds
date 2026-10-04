@@ -78,7 +78,7 @@ int main(int argc,char** argv){
  check(!catalog.load_file((fixture_root/"missing.enccatalog").string().c_str(),error),"missing catalog rejected");
  check(catalog.load(blob.data(),blob.size(),error),error);check(catalog.valid(),"loaded catalog valid");
  check(catalog.verify_files(prefix(source_root).c_str(),error),error);
- check(catalog.path(ResourceRole(0)).empty()&&catalog.path(ResourceRole(25)).empty(),"unknown resource roles have no fallback");
+ check(catalog.path(ResourceRole(0)).empty()&&catalog.path(ResourceRole(26)).empty(),"unknown resource roles have no fallback");
  check(catalog.companion_path("unknown.encbattle").empty(),"unknown encounters have no fallback");
  check(catalog.companion_path(catalog.path(ResourceRole::Battle))==catalog.path(ResourceRole::Round),"reviewed root encounter companion is externally bound");
  const auto original_round=catalog.path(ResourceRole::Round);
@@ -90,9 +90,13 @@ int main(int argc,char** argv){
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{8,0},{8,2},{12,uint32_t(blob.size()+1)},{20,0},{20,2},{24,1},{28,1},{52,0},{52,129},{56,0},{56,33}}){bad=blob;put(bad,edit.first,edit.second);if(edit.first!=12)fix(bad);reject(bad,"unknown header or record count rejected");}
  bad=blob;bad[32]^=1;fix(bad);reject(bad,"unreviewed upstream pin rejected");
  const auto round_row=row(blob,ResourceRole::Round),battle_row=row(blob,ResourceRole::Battle);
- for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{round_row,0},{round_row,uint32_t(ResourceRole::Battle)},{round_row+4,0},{round_row+4,25},{round_row+4,uint32_t(ResourceRole::Battle)},{round_row+8,0},{round_row+8,16*1024*1024+1},{round_row+16,0},{round_row+16,UINT32_MAX}}){bad=blob;put(bad,edit.first,edit.second);fix(bad);reject(bad,"unknown or duplicate id/role, unsupported size or path span rejected");}
+ for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{round_row,0},{round_row,uint32_t(ResourceRole::Battle)},{round_row+4,0},{round_row+4,26},{round_row+4,uint32_t(ResourceRole::Battle)},{round_row+8,0},{round_row+8,16*1024*1024+1},{round_row+16,0},{round_row+16,UINT32_MAX}}){bad=blob;put(bad,edit.first,edit.second);fix(bad);reject(bad,"unknown or duplicate id/role, unsupported size or path span rejected");}
  for(const auto& unsafe:std::vector<std::string>{"../data/round.encround","data/../round.encround","/data/round.encround","C:/round.encround","data\\round.encround","data//round.encround","data/./round.encround","data/round.encbattle","data/round.encround/","data/round.encround?x","data/\xc3\xa9.encround"}){bad=blob;path(bad,ResourceRole::Round,unsafe);reject(bad,"noncanonical or wrong typed resource path rejected");}
  bad=blob;path(bad,ResourceRole::EncounterBattle,catalog.path(ResourceRole::Battle));reject(bad,"duplicate catalog path rejected");
+ const auto intro_row=row(blob,ResourceRole::Introduction);
+ check(catalog.path(ResourceRole::Introduction)==row_path(blob,intro_row),"Introduction singleton resolves checked resource");
+ bad=blob;put(bad,intro_row,256);fix(bad);reject(bad,"Introduction cannot use encounter namespace");
+ bad=blob;path(bad,ResourceRole::Introduction,"data/opening.encroom");reject(bad,"Introduction requires its own binary type");
  const auto extra=row(blob,ResourceRole::EncounterBattle);
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{extra,255},{extra,get(blob,battle_row)},{extra+4,uint32_t(ResourceRole::Battle)}}){bad=blob;put(bad,edit.first,edit.second);fix(bad);reject(bad,"extra identities cannot collide with reserved root ids or roles");}
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{pairs(blob),0},{pairs(blob),uint32_t(ResourceRole::Round)},{pairs(blob)+4,255},{pairs(blob)+4,uint32_t(ResourceRole::Battle)},{pairs(blob)+8,uint32_t(ResourceRole::Battle)},{pairs(blob)+12,uint32_t(ResourceRole::Round)}}){bad=blob;put(bad,edit.first,edit.second);fix(bad);reject(bad,"unknown or duplicate encounter binding rejected");}

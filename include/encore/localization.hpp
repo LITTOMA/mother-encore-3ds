@@ -8,6 +8,8 @@ enum class TranslationStatus {Exact,LanguageFallback,MissingKey};
 struct Translation {std::string_view text,key,source,locale;TranslationStatus status=TranslationStatus::MissingKey;uint32_t line=0;};
 struct LocaleInfo {std::string_view code,csv_code,name,font;bool source_enabled=false,native_ready=false;std::string_view native_blocker;};
 struct TextBinding {std::string_view identity,key,expected,origin;};
+enum class LocaleAffix:uint32_t {Elision=1,Genitive=2};
+struct LocaleAffixData {LocaleAffix kind{};std::string_view matching,lower_pairs,when_match,otherwise;};
 // App-owned, immutable catalog. Locale is a presentation preference and never a
 // save-domain field. Views borrow this owner; keep it at a stable lifetime.
 class LocaleCatalog {
@@ -22,10 +24,11 @@ public:
  Translation lookup(std::string_view key,std::string_view locale)const;
  const TextBinding*binding(std::string_view identity)const;
  bool bound(std::string_view identity,std::string_view expected,std::string_view locale,std::string&out,std::string&error)const;
+ const LocaleAffixData*affix(LocaleAffix kind)const;
  size_t key_count()const{return records_.size();}
 private:
  struct Record {std::string_view key,source;uint32_t line=0;std::vector<std::string_view>values;};
- std::vector<uint8_t>bytes_;std::vector<LocaleInfo>locales_;std::vector<Record>records_;std::vector<TextBinding>bindings_;std::string_view fallback_;
+ std::vector<uint8_t>bytes_;std::vector<LocaleInfo>locales_;std::vector<Record>records_;std::vector<TextBinding>bindings_;std::string_view fallback_;std::vector<LocaleAffixData>affixes_;
 };
 class LocaleSelection {
 public:

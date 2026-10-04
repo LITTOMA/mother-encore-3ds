@@ -49,9 +49,9 @@ def read_metadata(build_dir, *args):
 
 def run(build_dir):
     subprocess.run(['cmake', '-S', str(ROOT), '-B', str(build_dir), '-DCMAKE_BUILD_TYPE=Release',
-                    '-DENCORE_REGENERATE_NATIVE_CONTENT=OFF', '-DBUILD_TESTING=ON'], check=True)
+                    '-DENCORE_REGENERATE_NATIVE_CONTENT=OFF', '-DBUILD_TESTING=ON', '-DENCORE_TEST_PARALLEL=ON'], check=True)
     selected = select(read_metadata(build_dir))
-    subprocess.run(['cmake', '--build', str(build_dir), '--parallel', '2', '--target', *selected.values()], check=True)
+    subprocess.run(['cmake', '--build', str(build_dir), '--parallel', '4', '--target', *selected.values()], check=True)
     regex = expression(selected)
     filtered = read_metadata(build_dir, '-R', regex)
     actual = [test['name'] for test in filtered['tests']]
@@ -64,7 +64,7 @@ def run(build_dir):
         if Path(command[0]).stem != selected[test['name']]:
             raise ValueError('Production test command changed: ' + test['name'])
     (build_dir / 'selection.json').write_text(json.dumps({'scope': 'partial-production-flow', 'tests': sorted(selected)}, indent=2) + '\n', encoding='utf-8')
-    subprocess.run(['ctest', '--test-dir', str(build_dir), '--output-on-failure', '--no-tests=error', '-R', regex], check=True)
+    subprocess.run(['ctest', '--test-dir', str(build_dir), '--output-on-failure', '--parallel', '4', '--no-tests=error', '-R', regex], check=True)
     print('Partial production-flow checks passed; full compiler/sanitizer/source/console verification is separate.')
 
 

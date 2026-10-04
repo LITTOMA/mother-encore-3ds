@@ -155,6 +155,15 @@ class EncounterDependenciesTests(unittest.TestCase):
         with self.assertRaisesRegex(e.DependencyError, 'fingerprints/binding are stale'):
             e.adapt_compiled_dependencies(doc, [LAMP], 1, ROOT)
 
+    def test_stored_manifest_admits_every_compiled_pair(self):
+        # Test the shipping manifest as well as a freshly constructed document:
+        # a layout change must not leave last generation's pack fingerprints.
+        stored = json.loads((ROOT / 'content/encounter-dependencies.json').read_bytes())
+        keys = [f['key'] for f in stored['formations'] if f['compiled'] is not None]
+        self.assertEqual(set(keys), {LAMP, DOLL, PILLOW})
+        admitted = e.adapt_compiled_dependencies(stored, keys, 1, ROOT)
+        self.assertEqual({row['key'] for row in admitted['encounters']}, set(keys))
+
     def test_source_member_order_actor_binding_checked(self):
         formation = copy.deepcopy(self.formations[LAMP])
         formation['ordered_members'][0]['actor'] = 'different_actor'

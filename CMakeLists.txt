@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(Python3 3.9 COMPONENTS Interpreter REQUIRED)
 option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
+option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 add_library(encore_core
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
     runtime/music_regions.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
@@ -34,6 +35,7 @@ add_custom_command(OUTPUT ${CMAKE_SOURCE_DIR}/build/fixtures/sandbox.encpak
     DEPENDS content/sandbox.json tools/content_compiler.py
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} VERBATIM)
 add_custom_target(encore_content ALL DEPENDS ${CMAKE_SOURCE_DIR}/build/fixtures/sandbox.encpak)
+if(ENCORE_REGENERATE_NATIVE_CONTENT)
 add_custom_target(encore_native_content ALL
     COMMAND ${Python3_EXECUTABLE} tools/restore_audio.py
     COMMAND ${Python3_EXECUTABLE} tools/doll_entry_asset.py compile
@@ -58,6 +60,7 @@ add_custom_target(encore_native_content ALL
     COMMAND ${Python3_EXECUTABLE} tools/startup_settings_assets.py verify
     COMMAND ${Python3_EXECUTABLE} tools/house_button_prompt_assets.py verify
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} VERBATIM)
+endif()
 add_executable(encore_host platform/desktop/main.cpp)
 target_link_libraries(encore_host PRIVATE encore_core)
 add_dependencies(encore_host encore_content)

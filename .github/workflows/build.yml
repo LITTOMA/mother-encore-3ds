@@ -26,9 +26,11 @@ jobs:
           - compiler: gcc
             cc: gcc
             cxx: g++
+            ctest_args: ''
           - compiler: clang
             cc: clang
             cxx: clang++
+            ctest_args: --label-exclude python_unit
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
@@ -51,14 +53,23 @@ jobs:
           sudo apt-get install --no-install-recommends --yes ffmpeg
           ffmpeg -version
           ffprobe -version
+      - name: Enable the validated LibYAML safe parser after installing dependencies
+        run: echo "PYTHONPATH=$GITHUB_WORKSPACE/tools/ci_python" >> "$GITHUB_ENV"
       - name: Initialize the pinned official submodule and verify every reviewed source byte
         run: python tools/ci_bootstrap.py
       - name: Regenerate checked resources and run the current shared-core tests
-        run: make test
+        # The compiler-independent Python methods all run in GCC. Clang still
+        # runs every C++ consumer, source CLI and fixture test.
+        # Make's content prerequisite is authoritative here; do not regenerate
+        # the same resources again through CMake's default ALL target.
+        run: make test CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF" CTEST_ARGS="${{ matrix.ctest_args }}"
       - name: Run ASan and UBSan with the hosted runner's normal leak checking
         # Python tools are not instrumented by this CMake sanitizer build.
-        # Their complete suite runs once in make test for each compiler.
-        run: make sanitize CTEST_ARGS="--label-exclude python_unit"
+        # Reuse content already regenerated and admitted by the successful
+        # preceding step. This job changes no source between the two builds.
+        run: make sanitize -o content CMAKE_ARGS="-DENCORE_REGENERATE_NATIVE_CONTENT=OFF" CTEST_ARGS="--label-exclude python_unit"
+      - name: Confirm regeneration did not change tracked source or resources
+        run: git diff --exit-code
       - name: Retain failure logs and current build diagnostics
         if: always()
         uses: actions/upload-artifact@v4
@@ -94,6 +105,8 @@ jobs:
           sudo apt-get install --no-install-recommends --yes ffmpeg build-essential pkg-config libssl-dev libpng-dev
           ffmpeg -version
           ffprobe -version
+      - name: Enable the validated LibYAML safe parser after installing dependencies
+        run: echo "PYTHONPATH=$GITHUB_WORKSPACE/tools/ci_python" >> "$GITHUB_ENV"
       - name: Restore the SDK from the existing checksum-pinned official layers
         shell: bash
         run: |
@@ -127,7 +140,9 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          make cia EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0 2>&1 | tee build/console-ci/cia.log
+          # The preceding full make 3dsx already verified and built this exact
+          # checkout. Package its ELF without repeating that phony prerequisite.
+          make cia -o 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0 2>&1 | tee build/console-ci/cia.log
       - name: Extract and compare the actual packaged resources
         run: python tools/ci_console_check.py
       - name: Confirm the readonly upstream and tracked source remain unchanged

@@ -36,8 +36,9 @@ const TextBinding*LocaleCatalog::binding(std::string_view id)const{auto it=std::
 bool LocaleCatalog::bound(std::string_view id,std::string_view expected,std::string_view locale,std::string&out,std::string&e)const{
  const auto*b=binding(id);if(!b||b->expected!=expected)return fail(e,"Localized source binding does not match the loaded content");out=std::string(lookup(b->key,locale).text);e.clear();return true;
 }
+const LocaleAffixData*LocaleCatalog::affix(LocaleAffix kind)const{for(const auto& row:affixes_)if(row.kind==kind)return &row;return nullptr;}
 bool LocaleCatalog::load(const uint8_t*p,size_t n,std::string&e){
- if(!p||n<24||n>maximum_bytes||std::memcmp(p,"ENCL10N1",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)||u32(p+16)!=crc(p+24,n-24))return fail(e,"Locale catalog version/size/CRC rejected");
+ if(!p||n<24||n>maximum_bytes||std::memcmp(p,"ENCL10N1",8)||u32(p+8)!=2||u32(p+12)!=n||u32(p+20)||u32(p+16)!=crc(p+24,n-24))return fail(e,"Locale catalog version/size/CRC rejected");
  LocaleCatalog d;d.bytes_.assign(p,p+n);Reader r{d.bytes_.data()+24,n-24};d.fallback_=r.text();auto count=r.count(64);std::set<std::string_view>codes;
  for(uint32_t i=0;i<count;++i){LocaleInfo l{r.text(),r.text(),r.text(),r.text(),false,false,{}};auto enabled=r.integer();l.source_enabled=enabled!=0;const auto ready=r.integer();l.native_ready=ready!=0;l.native_blocker=r.text();if(!code(l.code)||!code(l.csv_code)||l.name.empty()||l.font.empty()||enabled>1||ready>1||!codes.insert(l.code).second)return fail(e,"Locale identity rejected");d.locales_.push_back(l);}
  if(d.locales_.empty()||d.locale_index(d.fallback_)<0)return fail(e,"Catalog fallback locale unavailable");
@@ -45,6 +46,24 @@ bool LocaleCatalog::load(const uint8_t*p,size_t n,std::string&e){
  for(uint32_t i=0;i<count;++i){Record q;q.key=r.text();q.source=r.text();q.line=r.integer();if(q.key.empty()||q.source.empty()||!q.line||q.key<previous)return fail(e,"Catalog source order rejected");previous=q.key;for(size_t j=0;j<d.locales_.size();++j)q.values.push_back(r.text());d.records_.push_back(std::move(q));}
  count=r.count(100000);previous={};
  for(uint32_t i=0;i<count;++i){TextBinding b{r.text(),r.text(),r.text(),r.text()};if(b.identity.empty()||b.identity<=previous||b.key.empty()||b.origin.empty())return fail(e,"Catalog binding order rejected");previous=b.identity;d.bindings_.push_back(b);}
+ const auto grammar_size=r.count(2048);
+ if(!r.ok||grammar_size<56||grammar_size>r.n)return fail(e,"Missing/truncated locale affix block");
+ const auto*g=r.p;
+ if(std::memcmp(g,"ENCAFX01",8)||u32(g+8)!=1||u32(g+12)!=grammar_size||u32(g+20)!=1||u32(g+24)||u32(g+28)||u32(g+16)!=crc(g+32,grammar_size-32))return fail(e,"Locale affix version/capability/reserved/CRC rejected");
+ constexpr char source_pin[]="7d9246600fffe518408f5830d4848635019005a3";
+ for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};if(g[32+i]!=uint8_t(hex(source_pin[i*2])*16+hex(source_pin[i*2+1])))return fail(e,"Locale affix source pin rejected");}
+ Reader grammar{g+52,grammar_size-52};const auto profiles=grammar.count(2);
+ if(profiles!=2)return fail(e,"Incomplete locale affix profiles");
+ for(uint32_t i=0;i<profiles;++i){const auto kind=grammar.integer(),reserved=grammar.integer();LocaleAffixData row{static_cast<LocaleAffix>(kind),grammar.text(),grammar.text(),grammar.text(),grammar.text()};
+  if(kind<1||kind>2||reserved||d.affix(row.kind)||row.matching.empty())return fail(e,"Unknown/duplicate locale affix profile");
+  for(const auto text:{row.matching,row.lower_pairs,row.when_match,row.otherwise}){if(text.size()>256)return fail(e,"Locale affix string bound rejected");for(unsigned char c:text)if(c<32||c=='['||c==']')return fail(e,"Locale affix string rejected");}
+  std::u32string matching,lower_pairs;if(!encore::utf8_decode(row.matching,matching)||!encore::utf8_decode(row.lower_pairs,lower_pairs)||lower_pairs.size()%2)return fail(e,"Locale affix codepoint/pair rejected");
+  std::set<char32_t>matches,uppers;for(const auto cp:matching)if(!matches.insert(cp).second)return fail(e,"Duplicate affix matching codepoint");
+  for(size_t j=0;j<lower_pairs.size();j+=2)if(lower_pairs[j]==lower_pairs[j+1]||matches.count(lower_pairs[j])||!matches.count(lower_pairs[j+1])||!uppers.insert(lower_pairs[j]).second)return fail(e,"Invalid/duplicate locale affix case pair");
+  if(row.kind==LocaleAffix::Genitive&&!lower_pairs.empty())return fail(e,"Case-sensitive genitive mapping rejected");
+  d.affixes_.push_back(row);
+ }
+ if(!grammar.ok||grammar.n)return fail(e,"Malformed locale affix block");r.p+=grammar_size;r.n-=grammar_size;
  if(!r.ok||r.n||d.records_.empty())return fail(e,"Malformed UTF-8 locale catalog");
  for(const auto&b:d.bindings_)if(d.lookup(b.key,d.fallback_).text!=b.expected)return fail(e,"Catalog expected source text rejected");
  *this=std::move(d);e.clear();return true;

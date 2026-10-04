@@ -30,6 +30,7 @@ native-content:
 	$(PYTHON) tools/continue_assets.py compile
 	$(PYTHON) tools/loading_indicator_assets.py compile
 	$(PYTHON) tools/new_game_assets.py compile
+	$(PYTHON) tools/startup_settings_assets.py compile
 	$(PYTHON) tools/startup_settings_assets.py verify
 	$(PYTHON) tools/house_button_prompt_assets.py verify
 	$(PYTHON) tools/resource_catalog.py compile

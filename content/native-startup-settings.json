@@ -1,5 +1,6 @@
 {
-  "schema": 1,
+  "schema": 2,
+  "preview_minimum_characters": 5,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scope": "Original settings choices and static final confirmation layout, with source restart/cancel semantics. Source transition choreography and Introduction remain separate.",
   "choices": {

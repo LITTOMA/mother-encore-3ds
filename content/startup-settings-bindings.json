@@ -1,0 +1,317 @@
+{
+  "schema": 1,
+  "kind": "encore.startup-settings-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
+    "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "scene": "Maps/Naming screen.tscn",
+  "script": "Scripts/UI/NamingScreen/Naming screen.gd",
+  "scenario": "Data/NamingSequences/intro.yaml",
+  "shader": "Shaders/MenuFlavors.tres",
+  "row_parent": "CanvasLayer/Settings/VBoxContainer",
+  "value_parent": "CanvasLayer/Settings/VBoxContainer2",
+  "rows": [
+    {
+      "role": "speed",
+      "label": "CanvasLayer/Settings/VBoxContainer/TextSpeed",
+      "value": "CanvasLayer/Settings/VBoxContainer2/Speed"
+    },
+    {
+      "role": "flavor",
+      "label": "CanvasLayer/Settings/VBoxContainer/MenuFlavor",
+      "value": "CanvasLayer/Settings/VBoxContainer2/Flavor"
+    },
+    {
+      "role": "prompts",
+      "label": "CanvasLayer/Settings/VBoxContainer/ButtonPrompts",
+      "value": "CanvasLayer/Settings/VBoxContainer2/Prompts"
+    },
+    {
+      "role": "advance",
+      "label": "CanvasLayer/Settings/VBoxContainer/End",
+      "value": null
+    }
+  ],
+  "panels": [
+    {
+      "role": "speed",
+      "node": "CanvasLayer/TextSpeed",
+      "container": "CanvasLayer/TextSpeed/VBoxContainer",
+      "labels": [
+        "Fast",
+        "Medium",
+        "Slow"
+      ],
+      "inherited_source": null,
+      "value_constant": "TEXT_SPEEDS_NAMES",
+      "value_keys": [
+        "MENU_FAST",
+        "MENU_MEDIUM",
+        "MENU_SLOW"
+      ]
+    },
+    {
+      "role": "flavor",
+      "node": "CanvasLayer/Flavors",
+      "container": "CanvasLayer/Flavors/VBoxContainer",
+      "labels": [
+        "Plain",
+        "Mint",
+        "Strawberry",
+        "Banana",
+        "Peanut",
+        "Grape",
+        "Melon"
+      ],
+      "inherited_source": "Nodes/Ui/HighlightLabel.tscn",
+      "value_constant": "FLAVORS",
+      "value_keys": [
+        "FLAVOR_PLAIN",
+        "FLAVOR_MINT",
+        "FLAVOR_STRAWBERRY",
+        "FLAVOR_BANANA",
+        "FLAVOR_PEANUT",
+        "FLAVOR_GRAPE",
+        "FLAVOR_MELON"
+      ]
+    },
+    {
+      "role": "prompts",
+      "node": "CanvasLayer/ButtonPrompts",
+      "container": "CanvasLayer/ButtonPrompts/VBoxContainer",
+      "labels": [
+        "Both",
+        "Objects",
+        "NPCs",
+        "None"
+      ],
+      "inherited_source": null,
+      "value_constant": "BUTTON_PROMPTS",
+      "value_keys": [
+        "MENU_BOTH",
+        "MENU_OBJECTS",
+        "MENU_NPCS",
+        "MENU_NONE"
+      ]
+    }
+  ],
+  "confirmation_fields": [
+    {
+      "target": "ninten",
+      "parent": "CanvasLayer/ConfirmationLeft",
+      "card": "CanvasLayer/ConfirmationLeft/Confirm0",
+      "icon": "Toolbox/Confirm/Ninten"
+    },
+    {
+      "target": "ana",
+      "parent": "CanvasLayer/ConfirmationLeft",
+      "card": "CanvasLayer/ConfirmationLeft/Confirm1",
+      "icon": "Toolbox/Confirm/Ana"
+    },
+    {
+      "target": "lloyd",
+      "parent": "CanvasLayer/ConfirmationLeft",
+      "card": "CanvasLayer/ConfirmationLeft/Confirm2",
+      "icon": "Toolbox/Confirm/Lloyd"
+    },
+    {
+      "target": "pippi",
+      "parent": "CanvasLayer/ConfirmationLeft",
+      "card": "CanvasLayer/ConfirmationLeft/Confirm3",
+      "icon": "Toolbox/Confirm/Pippi"
+    },
+    {
+      "target": "teddy",
+      "parent": "CanvasLayer/ConfirmationLeft",
+      "card": "CanvasLayer/ConfirmationLeft/Confirm4",
+      "icon": "Toolbox/Confirm/Teddy"
+    },
+    {
+      "target": "favorite_food",
+      "parent": "CanvasLayer/ConfirmationRight",
+      "card": "CanvasLayer/ConfirmationRight/Confirm5",
+      "icon": "Toolbox/Confirm/Plate"
+    }
+  ],
+  "confirmation_choices": [
+    "CanvasLayer/ConfirmationRight/Surely/VBoxContainer/Label",
+    "CanvasLayer/ConfirmationRight/Surely/VBoxContainer/Label2"
+  ],
+  "resources": [
+    {
+      "role": "box",
+      "node": "CanvasLayer/Settings"
+    },
+    {
+      "role": "card",
+      "node": "CanvasLayer/ConfirmationLeft/Confirm0"
+    },
+    {
+      "role": "inside",
+      "node": "CanvasLayer/ConfirmationLeft/Confirm0/Inside"
+    }
+  ],
+  "skin_nodes": [
+    {
+      "scene": "Nodes/Ui/DialogueBox.tscn",
+      "node": "Dialoguebox"
+    },
+    {
+      "scene": "Nodes/Ui/Battle/PartyInfoPlate.tscn",
+      "node": "."
+    },
+    {
+      "scene": "Nodes/Ui/Battle/PartyInfoPlate.tscn",
+      "node": "ContentBattle/BG"
+    },
+    {
+      "scene": "Nodes/Ui/Battle/PartyInfoPlate.tscn",
+      "node": "hp_label"
+    },
+    {
+      "scene": "Nodes/Ui/Battle/PartyInfoPlate.tscn",
+      "node": "pp_label"
+    }
+  ],
+  "skin_manifests": {
+    "battle-preview/source.json": {
+      "sha256": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
+      "generated_roles": [
+        "font"
+      ]
+    },
+    "round-preview/source.json": {
+      "sha256": "8d0c89c8ab435af3383c12c4766077d328fea091c9b37b34774d8dbe99eb1e41",
+      "generated_roles": []
+    },
+    "doll-preview/source.json": {
+      "sha256": "3183a75fd9157362d946c17030752a89b9f81779f0c2b8df65e5e418794a1744",
+      "generated_roles": [
+        "font"
+      ]
+    },
+    "pillow-preview/source.json": {
+      "sha256": "44272a3bc771c1f3ba4c0065affbd59d8211e9595b9f0dbc9792229f7a50a95e",
+      "generated_roles": [
+        "font"
+      ]
+    },
+    "house-preview/source.json": {
+      "sha256": "d700de96dd5ff2003d5aa6e85194b44311533bc797a0927fda2d53f596f4aac5",
+      "generated_roles": []
+    }
+  },
+  "skin_bindings": [
+    {
+      "manifest": "battle-preview/source.json",
+      "role": "plate",
+      "source": "Graphics/UI/Battle/info_plate_frame.png",
+      "path": "battle-preview/plate.t3x"
+    },
+    {
+      "manifest": "battle-preview/source.json",
+      "role": "plate-bg",
+      "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
+      "path": "battle-preview/plate-bg.t3x"
+    },
+    {
+      "manifest": "battle-preview/source.json",
+      "role": "hp-label",
+      "source": "Graphics/UI/Battle/label_hp.png",
+      "path": "battle-preview/hp-label.t3x"
+    },
+    {
+      "manifest": "battle-preview/source.json",
+      "role": "pp-label",
+      "source": "Graphics/UI/Battle/label_pp.png",
+      "path": "battle-preview/pp-label.t3x"
+    },
+    {
+      "manifest": "battle-preview/source.json",
+      "role": "box",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "path": "battle-preview/box.t3x"
+    },
+    {
+      "manifest": "round-preview/source.json",
+      "role": "box",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "path": "round-preview/box.t3x"
+    },
+    {
+      "manifest": "doll-preview/source.json",
+      "role": "plate",
+      "source": "Graphics/UI/Battle/info_plate_frame.png",
+      "path": "battle-preview/plate.t3x"
+    },
+    {
+      "manifest": "doll-preview/source.json",
+      "role": "plate-bg",
+      "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
+      "path": "battle-preview/plate-bg.t3x"
+    },
+    {
+      "manifest": "doll-preview/source.json",
+      "role": "hp-label",
+      "source": "Graphics/UI/Battle/label_hp.png",
+      "path": "battle-preview/hp-label.t3x"
+    },
+    {
+      "manifest": "doll-preview/source.json",
+      "role": "pp-label",
+      "source": "Graphics/UI/Battle/label_pp.png",
+      "path": "battle-preview/pp-label.t3x"
+    },
+    {
+      "manifest": "doll-preview/source.json",
+      "role": "box",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "path": "battle-preview/box.t3x"
+    },
+    {
+      "manifest": "pillow-preview/source.json",
+      "role": "plate",
+      "source": "Graphics/UI/Battle/info_plate_frame.png",
+      "path": "battle-preview/plate.t3x"
+    },
+    {
+      "manifest": "pillow-preview/source.json",
+      "role": "plate-bg",
+      "source": "Graphics/UI/Battle/info_plate_bg_battle.png",
+      "path": "battle-preview/plate-bg.t3x"
+    },
+    {
+      "manifest": "pillow-preview/source.json",
+      "role": "hp-label",
+      "source": "Graphics/UI/Battle/label_hp.png",
+      "path": "battle-preview/hp-label.t3x"
+    },
+    {
+      "manifest": "pillow-preview/source.json",
+      "role": "pp-label",
+      "source": "Graphics/UI/Battle/label_pp.png",
+      "path": "battle-preview/pp-label.t3x"
+    },
+    {
+      "manifest": "pillow-preview/source.json",
+      "role": "box",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "path": "battle-preview/box.t3x"
+    },
+    {
+      "manifest": "house-preview/source.json",
+      "role": "dialogue_box",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "path": "house-preview/dialogue_box.t3x"
+    }
+  ],
+  "global_data": "Scripts/global/globalData.gd"
+}

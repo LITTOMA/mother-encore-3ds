@@ -60,3 +60,17 @@ python3 tools/release.py
 ```
 
 SD ZIP 包含真实 3DSX/CIA、所需资源及逐项核对的许可文件。运行时资源置于 RomFS，不支持 SD 覆盖或热重载。CIA 使用未全局登记的测试 TitleID `000400000F3E2100` 和 homebrew 测试签名；构建成功不代表安装、真机运行或官方认证。
+
+## GitHub runner 构建
+
+日常 PR 提交运行 `Quick production-flow checks (gcc)`：完整核对固定上游、重生成受检资源一次，仅构建七项真实开场 / 数据消费者并执行已有正负测试。已接入 Introduction 的分支会额外检查它。此结果只是局部验证，不包含 M0 fixture，也不等于完整测试或设备验收。
+
+完整 GCC / Clang、ASan / UBSan 和真实 3DSX / CIA 检查在 PR 转为 Ready for review、显式添加 `ci/full` 标签、手动选择 `suite=full` 或 main 更新时运行。审查后又修改内容时，合入前必须对最终候选再次请求完整验证；普通提交的快速通过不能代替它。添加标签只触发当次完整运行，后续提交不会因为标签仍存在而自动重复全量。手动运行也可选择 `suite=quick`。
+
+快速运行和完整运行使用不同并发组，日常提交不会中断仍在运行的完整检查。检查结论绑定实际提交和文件树，旧内容的通过不能冒充新内容通过；纯历史同步需记录文件树一致性证据。真实执行记录和日志仍是唯一验证依据。
+
+Actions 的 `Real 3DSX and CIA (GPU 1:1:0)` 任务从仓库直接完成真实 `make 3dsx` 和 `make cia`，不要求先在本地编译。Ubuntu runner 恢复已有清单固定的官方 devkitPro SDK layer，强制核对 bannertool archive SHA-256，并从固定官方 Project_CTR 源码构建 makerom / CTRTool。
+
+任务先核对只读上游，恢复受检 PCM，再编译 ARM ELF 与嵌入 RomFS 的 3DSX，生成 CIA。CTRTool 提取真实 CIA 并逐文件比较完整 RomFS 与受检 staging；另检查 3DSX 嵌入边界及资源目录消费者依赖。FFmpeg 使用 Ubuntu 包，输出必须逐项匹配既有 PCM 长度、SHA-256 和 CRC；不同版本不允许刷新期望指纹来通过检查。
+
+此任务不上传游戏二进制、素材或发行包。实际结果以对应提交的 Actions 运行记录为准；维护者下载完整运行日志到私有验证目录。CI 文件存在不代表构建通过，交叉构建 / 打包通过也不代表模拟器或真机验收。已有本地构建保留用于开发调试与设备验证。

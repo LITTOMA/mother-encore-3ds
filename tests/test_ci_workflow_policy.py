@@ -1,4 +1,4 @@
-"""Exercise the actual workflow conditions for quick and full run routing."""
+"""Check manual-only admission and preservation of comprehensive verification."""
 from pathlib import Path
 import unittest
 from types import SimpleNamespace
@@ -18,30 +18,24 @@ class WorkflowPolicyTests(unittest.TestCase):
     def setUpClass(cls):
         cls.workflow = yaml.safe_load((Path(__file__).resolve().parents[1] / '.github/workflows/build.yml').read_text(encoding='utf-8'))
 
-    def test_actual_conditions_separate_quick_and_full_events(self):
-        for event, action, suite, label, full, quick in (
-            ('pull_request', 'opened', '', '', False, True),
-            ('pull_request', 'synchronize', '', '', False, True),
-            ('pull_request', 'reopened', '', '', False, True),
-            ('pull_request', 'ready_for_review', '', '', True, False),
-            ('pull_request', 'labeled', '', 'ci/full', True, False),
-            ('pull_request', 'labeled', '', 'bug', False, False),
-            ('workflow_dispatch', '', 'full', '', True, False),
-            ('workflow_dispatch', '', 'quick', '', False, True),
-            ('push', '', '', '', True, False),
-        ):
-            with self.subTest(event=event, action=action, suite=suite, label=label):
-                args = (event, action, suite, label)
-                self.assertEqual(matches(self.workflow['jobs']['quick']['if'], *args), quick)
-                for name in ('host', 'console'):
-                    self.assertEqual(matches(self.workflow['jobs'][name]['if'], *args), full)
+    def test_only_manual_trigger_is_registered(self):
+        # YAML 1.1 parsers may treat the unquoted GitHub key `on` as True.
+        triggers = self.workflow.get('on', self.workflow.get(True))
+        self.assertEqual(triggers, {'workflow_dispatch': None})
+        self.assertEqual(set(self.workflow['jobs']), {'host', 'console'})
 
-    def test_quick_uses_checked_production_selection_not_full_make_test(self):
-        runs = '\n'.join(step.get('run', '') for step in self.workflow['jobs']['quick']['steps'])
-        for required in ('ci_bootstrap.py', 'make content', 'git diff --exit-code', 'tools/ci_quick.py'):
-            self.assertIn(required, runs)
-        self.assertNotIn('make test', runs)
-        self.assertNotIn('make sanitize', runs)
+    def test_automatic_events_cannot_admit_jobs(self):
+        for event, action, label in (
+            ('push', '', ''), ('pull_request', 'opened', ''),
+            ('pull_request', 'synchronize', ''), ('pull_request', 'reopened', ''),
+            ('pull_request', 'ready_for_review', ''),
+            ('pull_request', 'labeled', 'ci/full'), ('schedule', '', ''),
+            ('repository_dispatch', '', ''), ('workflow_dispatch', '', ''),
+        ):
+            with self.subTest(event=event, action=action, label=label):
+                for name in ('host', 'console'):
+                    self.assertEqual(matches(self.workflow['jobs'][name]['if'],
+                        event, action, label=label), event == 'workflow_dispatch')
 
     def test_full_checks_remain_complete(self):
         self.assertEqual({row['compiler'] for row in self.workflow['jobs']['host']['strategy']['matrix']['include']}, {'gcc', 'clang'})

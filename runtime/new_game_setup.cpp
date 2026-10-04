@@ -140,7 +140,7 @@ void NewGameSetup::step_settings(double dt,const NamingInput&in){
   const uint32_t count=uint32_t(d.panels[settings_row_].labels.size());
   if(in.y){option_=(option_+count+in.y)%count;reset_preview();sound(0);}
   if(in.accept){if(settings_row_==0)settings_.text_speed=d.speeds[option_];else if(settings_row_==1)settings_.menu_flavor=d.flavors[option_];else settings_.button_prompts=d.prompts[option_];phase_=NamingPhase::Settings;sound(1);return;}
-  if(settings_row_==0){const auto&labels=d.panels[0].labels;bool worthwhile=true;size_t length=0;for(size_t i=0;i<labels.size();++i){size_t count=0;if(!encore::utf8_count(localized("settings.panel/0/"+std::to_string(i),labels[i].text),count))return;worthwhile&=count>5;if(i==option_)length=count;}if(!worthwhile)preview_visible_=uint32_t(length);else{preview_time_+=dt;if(preview_time_>d.speeds[option_]){preview_time_=0;preview_visible_=std::min(preview_visible_+1,uint32_t(length));}}}
+  if(settings_row_==0){const auto&labels=d.panels[0].labels;bool worthwhile=true;size_t length=0;for(size_t i=0;i<labels.size();++i){size_t count=0;if(!encore::utf8_count(localized("settings.panel/0/"+std::to_string(i),labels[i].text),count))return;worthwhile&=count>d.preview_minimum_characters;if(i==option_)length=count;}if(!worthwhile)preview_visible_=uint32_t(length);else{preview_time_+=dt;if(preview_time_>d.speeds[option_]){preview_time_=0;preview_visible_=std::min(preview_visible_+1,uint32_t(length));}}}
   return;
  }
  if(in.cancel){phase_=NamingPhase::Editing;enter(uint32_t(data_->fields.size()-1));sound(2);return;}

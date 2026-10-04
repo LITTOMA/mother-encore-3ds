@@ -12,11 +12,14 @@
 
 主机 A/B 回归用同一执行文件读取重新绑定的 round 资源，并驱动实际 `BattleRound` 消费者。它证明资源绑定可在不编译 C++ 的情况下改变；不代表模拟器或真机运行。目录格式与能力独立于既有 pack、rules 和 save schema，本次不改变存档身份、随机流或剧情时序。
 
+## 设置文字预览
+
+`TextSpeed.gd:_is_animation_worth_it` 的三项翻译标签共同长度阈值已提取到设置 IR，并由 `ENCSETUI` 格式 2 加载后交给命名流程的实际设置预览消费者。它按 Unicode 字符数比较；任意标签未超过阈值就立即显示整条文字，否则保留源严格时间门和逐字预览。受检资源默认仍为 5，改变阈值无需重新编译 C++。新增字段缺失、越界、损坏、未知格式 / 能力明确拒绝，失败保留原设置。能力 1、rules 和存档 schema 独立保持原值。
+
 ## 剩余范围
 
 | 范围 | 当前位置 | 下一步 |
 |---|---|---|
-| 设置预览长度阈值 | `runtime/new_game_setup.cpp`，`TextSpeed.gd` | 提取源阈值到设置 IR / 二进制，校验并替换消费者 |
 | 法语与德语文本规则 | `runtime/localized_presentation.cpp`，`text_tools.gd` | 元音 / 词尾集合和输出后缀迁到语言来源绑定；保留未知标签拒绝 |
 | 战斗演出编译配方 | `tools/round_assets.py` | 已编入外部 IR 的手写轨道、布局、绑定和调参进一步迁到独立受检配方 |
 | Boss 演出及对象 / 程序顺序 | `tools/doll_round.py`、`tools/extract_battle_round.py`、`tools/extract_native_content.py` | 外置剩余来源绑定、默认调参及稳定顺序，保持现有身份 |

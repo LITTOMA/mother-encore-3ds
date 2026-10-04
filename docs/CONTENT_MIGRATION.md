@@ -26,6 +26,8 @@
 
 ## 剩余范围
 
+胜利前演出配方已迁入 `content/round-presentation-recipe.json`：媒体 / 绑定 / 轨道 / 事件 / 布局和参数由来源数值表达式、节点属性、图集单元与明确的原生呈现政策组成。编译器只执行受限事实引用与坐标计算，未知字段 / 操作 / 引用拒绝；不执行 GDScript。默认完整 presentation 报告、回合 IR 和二进制保持一致，同一实际攻击对白消费者能读取由配方编译的布局差异资源。胜利 / 返回及通用动画适配的剩余来源绑定继续单独迁移。
+
 设置行 / 面板顺序、值翻译键、确认卡片 / 图标、继承标签源、九宫格角色及已有皮肤 manifest 映射已迁入 `content/startup-settings-bindings.json`。`startup_settings_bindings.py` 在提取、普通编译和 staging 前核对实际节点顺序、设置索引分支、命名 scenario、标签继承、材质继承和纹理身份；未知、缺失、重复或不完整映射拒绝。默认设置 IR 与 `ENCSETUI` 格式 2 字节不变。
 
 | 范围 | 当前位置 | 下一步 |

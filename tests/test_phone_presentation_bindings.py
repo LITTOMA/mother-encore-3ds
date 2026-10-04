@@ -1,10 +1,11 @@
 import copy,io,json,sys,unittest,tempfile
 from pathlib import Path
 from unittest import mock
+ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
 from tools import phone_presentation_bindings as b,phone_assets,native_phone
 from tools.extract_battle_entry import Extractor
-
-ROOT=Path(__file__).resolve().parents[1]
 
 def prepare_fixtures(root=ROOT):
     # Only the explicit fixture target writes. Ordinary parallel test runs read

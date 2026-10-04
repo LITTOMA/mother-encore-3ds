@@ -20042,7 +20042,7 @@
       "content/phone-stage/presentation.json": "bebe9e2e48dc38cfa62032cca790be2e57b0c19b5409babd9bd4ea3529cb601b",
       "tools/link_phone_content.py": "a30a0bc5133ac2c37ef30f42cf7f1aeb579346d8d5273fed6e18902796a5181f",
       "tools/phone_dialogue.py": "3a8be89556fed8bde5108ea612b67c63fb1a465f130e261e165c691aeda6efd9",
-      "tools/phone_assets.py": "a676b29890b9c44669e3a92a2fd4fbb4ea13270fc2de25df5122470161b28b5c",
+      "tools/phone_assets.py": "9e5060c746d7b3b4eb4823788ea45d663f400c9d6eeea05b8990df3bd3b53851",
       "compatibility/reviews/phone-dialogue.json": "8de7b683dcca7ba4b081592708c25a069c36aaf1af3187217124a7547df4e943",
       "compatibility/reviews/phone-presentation.json": "fb378fcb14bb2e13f9e1811cc78dfd865777ea26efd1f57253edc7d889ee76a3",
       "content/phone-stage/native-parser.json": "0036925ac2fe17d4426854ccc7d8d4618c017db9fbbfd88699c406ecefa0af5b",

@@ -4,8 +4,8 @@
     "romfs/round-preview/source.json": "8d0c89c8ab435af3383c12c4766077d328fea091c9b37b34774d8dbe99eb1e41"
   },
   "limits": "Source-pinned lossless textures and native headless layout/font evidence only; no GPU, emulator, audibility, or hardware claim",
-  "native_helper_sha256": "74c889c6321d76c3b263b123207846495382c6a61e6b5eb59dfe9b4f91da99e9",
-  "native_input_sha256": "fd4010f944e6e3ad71c8b29a2ad0686bef73cc63a09aec1001bb7381226e0f77",
+  "native_helper_sha256": "4fd5d06da49e2fe097016b35c767519f4d0e0a222f03ecc90f191ffd90a17796",
+  "native_input_sha256": "b0a8c6d3f481da4d10797f9dfc704ca6f98507a6567e5fcfce0432013cf45b7b",
   "native_reference_sha256": "6d1a4162ff12ca5fcbc74084afc48c41656fa4e8744c6968d83417a7cfe20ae6",
   "outputs": {
     "cap.t3x": {

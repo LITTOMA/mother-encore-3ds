@@ -74,9 +74,11 @@ if(BUILD_TESTING)
     set_tests_properties(core host_smoke python_tools PROPERTIES TIMEOUT 60)
     # The native asset/compiler and corruption suite now includes SDK doubles
     # and source-image verification, plus real temporary Git repositories.
-    # The same aggregate suite exceeded 180s on hosted Clang in run 37128212084;
-    # retain every assertion and a finite budget for the complete suite.
-    set_tests_properties(python_tools PROPERTIES TIMEOUT 300)
+    # The scoped migration adds full source-binding corruption suites. The
+    # aggregate discovery timed out at 300.04s on candidate 302ba10 while still
+    # executing passing House source tests. Keep every assertion and bound the
+    # complete aggregate separately from individual runtime tests.
+    set_tests_properties(python_tools PROPERTIES TIMEOUT 1800)
     add_executable(encore_progression_tests tests/progression_tests.cpp)
     target_link_libraries(encore_progression_tests PRIVATE encore_core)
     add_test(NAME upstream_progression COMMAND encore_progression_tests)

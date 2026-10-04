@@ -60,78 +60,16 @@ def write_json(path, data):
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
 
 
-def expected_documents():
-    """Exact reviewed phrase shapes; values come from the pinned YAML files."""
-    def line(prefix, label, speaker='Carol', voice='Female', **fields):
-        return dict(name=prefix + '_SPEAKER_' + speaker, sound=voice,
-                    text=prefix + '_' + label, **fields)
-    def carol(area):
-        prefix = 'DIALOGUE_PODUNK_' + ('CUTSCENES_' if area else '') + 'CAROL_CALL'
-        first = line(prefix, '0', actors={'ninten': 'leader', 'carol': 'Objects/npc'} if area
-                     else {'carol': 'Objects/npc'}, talker='carol', goto='1' if area else '3')
-        if area:
-            first.update(actorsdir={'carol': {'x': 0, 'y': 1}}, returncam=.1)
-        doc = {'0': first}
-        if area:
-            doc['1'] = line(prefix, '1', actorsmove={'ninten': {
-                'movement': [{'x': 0, 'y': -32}, {'wait': .1}], 'speed': 64,
-                'animation': 'Walk', 'type': 'step'}},
-                actorsturn={'ninten': {'speed': .1, 'actor': 'carol', 'queue': True}}, goto='3')
-        doc.update({'3': line(prefix, '3', autoadvance=True, goto='4'),
-                    '4': dict(name='Carol', wait=.3, autoadvance=True, caninput=False, goto='5'),
-                    '5': dict(name='Carol', actorsturn={'carol': {'x': -1, 'y': 0, 'speed': .05}},
-                              objectsfunction={'Objects/Phone': '_ring'}, autowait=1, goto='6'),
-                    '6': line(prefix, '6', goto='7'),
-                    '7': line(prefix, '7', setflags='phone_ring')})
-        return doc
-    reminder = {'0': line('DIALOGUE_PODUNK_CUTSCENES_CAROL_PHONE', '0',
-                         actors={'ninten': 'leader', 'carol': 'Objects/npc'}, talker='carol',
-                         actorsdir={'carol': {'x': 0, 'y': 1}},
-                         actorsmove={'ninten': {'movement': [{'wait': .1}, {'x': 0, 'y': -16}],
-                                               'speed': 64, 'animation': 'Walk', 'type': 'step'}},
-                         returncam=.1)}
-    first_dad = {'0': dict(text='DIALOGUE_PODUNK_DAD_POLTERGEIST_0', goto='1')}
-    prefix = 'DIALOGUE_PODUNK_DAD_POLTERGEIST'
-    first_dad['1'] = line(prefix, '1', 'Dad', 'Adult', goto='7')
-    first_dad['7'] = line(prefix, '7', 'Dad', 'Adult', movecam={'x': 96, 'length': 1.0}, goto='9')
-    first_dad['9'] = line(prefix, '9', 'Dad', 'Adult', returncam=1.0, goto='13')
-    first_dad['13'] = dict(text=prefix + '_13', setflags='talked_to_dad')
-    normal_prefix = 'DIALOGUE_REUSABLE_DAD_NORMAL'
-    normal = {'0': line(normal_prefix, '0', 'Dad', 'Adult', goto='check_lloyd')}
-    leaders = ['lloyd', 'ana', 'teddy', 'pippi']
-    for index, leader in enumerate(leaders):
-        normal['check_' + leader] = dict(name=normal_prefix + '_SPEAKER_Dad',
-            **{'if': {'leader': leader, 'goto': leader + '_leader'}},
-            goto='check_' + leaders[index + 1] if index < 3 else 'check_earned_cash')
-    for leader in leaders:
-        normal[leader + '_leader'] = dict(name=normal_prefix + '_SPEAKER_Dad', sound='Adult',
-            text='DIALOGUE_REUSABLE_DAD_' + leader.upper() + 'LEADER_0', goto='check_earned_cash')
-    normal['check_earned_cash'] = dict(name=normal_prefix + '_SPEAKER_Dad',
-        **{'if': {'flags': {'earned_cash': True}, 'goto': '1'}}, goto='2')
-    normal['1'] = line(normal_prefix, '1', 'Dad', 'Adult', goto='2')
-    normal['2'] = line(normal_prefix, '2', 'Dad', 'Adult', options={
-        normal_prefix + '_3-OPT_0': '4', normal_prefix + '_3-OPT_1': '6', 'cancel': '6'},
-        unsetflags='money_earned')
-    normal['4'] = dict(text='', showbox=False, unsetflags='saved', caninput=False,
-        **{'if': {'flags': {'saved': True}, 'goto': '5'}}, goto='6', save=True)
-    for label, target in [('5', '6'), ('6', '7'), ('7', None)]:
-        normal[label] = line(normal_prefix, label, 'Dad', 'Adult', **({'goto': target} if target else {}))
-    return {DIRECT: carol(False), AREA: carol(True), REMINDER: reminder,
-            CAROL_PHONE: {'0': line('DIALOGUE_PODUNK_CAROL_PHONE', '0')},
-            FIRST_DAD: first_dad, NO_ANSWER: {'0': {'text': 'DIALOGUE_REUSABLE_PHONENOANSWER_0'}},
-            NORMAL: normal}
+def expected_documents(root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.phone_documents(root)
 
 
-def validate_document(path, doc):
-    expected = expected_documents()
-    require(path in expected, 'Unreviewed phone dialogue: ' + path)
-    require(isinstance(doc, dict) and list(doc) == list(expected[path]), 'Phone phrase labels/order: ' + path)
-    for label, phrase in doc.items():
-        require(typed_equal(phrase, expected[path][label]), 'Unreviewed phone phrase: ' + path + ':' + label)
-        if 'actors' in phrase:
-            require(list(phrase['actors']) == list(expected[path][label]['actors']), 'Phone actor binding order: ' + path)
-        if 'options' in phrase:
-            require(list(phrase['options']) == list(expected[path][label]['options']), 'Phone option order: ' + path)
+def validate_document(path,doc,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    value=recipe.load(root)
+    require(path in value['phone_sources'],'Unreviewed phone dialogue: '+path)
+    recipe.document(value,path,doc)
 
 
 def typed_equal(actual, expected):
@@ -217,78 +155,19 @@ def load_receipt(root=ROOT):
     require(len(parsed) == len(YAMLS), 'Phone parser document count')
     for path, doc in zip(YAMLS, parsed):
         require(ex.yaml(path) == doc, 'Phone native/Python parser mismatch: ' + path)
-        validate_document(path, doc)
+        validate_document(path, doc, root)
     return ex, dict(zip(YAMLS, parsed))
 
 
-def compile_program(path, doc, end_duration):
-    validate_document(path, doc)
-    require(path != NORMAL, 'Dad-normal graph is staged, not a linear program')
-    require(type(end_duration) in (int, float) and math.isfinite(end_duration) and end_duration > 0,
-            'Phone camera return duration')
-    commands = []
-    labels = list(doc)
-    bound = list(doc['0'].get('actors', {}))
-    talker = 'Carol' if path in (DIRECT, AREA, REMINDER) else 'None'
-    def emit(kind, phase=0, actor='None', **fields):
-        commands.append(dict(kind=kind, phrase=phase, source_label=labels[phase], actor=actor, **fields))
-    emit('BeginCutscene')
-    for phase, (label, p) in enumerate(doc.items()):
-        if 'text' in p:
-            emit('ShowDialogue', phase, talker, dialogue_key=path + '::' + label,
-                 flags=1 if talker == 'None' else 0)
-        elif 'wait' in p or 'autowait' in p:
-            emit('HideDialogue', phase, flags=1)
-        if 'actors' in p:
-            for actor in p['actors']:
-                emit('BindActor', phase, actor.title())
-                emit('ActorPersistent', phase, actor.title())
-            emit('YieldIdle', phase)
-        if 'wait' in p or 'autowait' in p:
-            emit('StartWait', phase, duration=p.get('wait', p.get('autowait')))
-        if 'objectsfunction' in p:
-            emit('CallObjectDeferred', phase, binding='phone_ring', source_object='Objects/Phone', source_method='_ring')
-        if 'talker' in p:
-            emit('SetTalker', phase, 'Carol')
-        for actor, direction in p.get('actorsdir', {}).items():
-            emit('SetActorDirection', phase, actor.title(), vector=[direction['x'], direction['y']])
-        for actor, movement in p.get('actorsmove', {}).items():
-            emit('MoveActorPath', phase, actor.title(), path=movement)
-        for actor, turn in p.get('actorsturn', {}).items():
-            if 'actor' in turn:
-                emit('TurnActor', phase, actor.title(), target_actor=turn['actor'].title(),
-                     vector=[0, 0], duration=turn['speed'], flags=3)
-            else:
-                emit('TurnActor', phase, actor.title(), vector=[turn['x'], turn['y']], duration=turn['speed'], flags=0)
-        if 'movecam' in p:
-            emit('MoveCamera', phase, vector=[p['movecam']['x'], 0], flags=1,
-                 duration=p['movecam']['length'])
-        if 'returncam' in p:
-            emit('ReturnCamera', phase, duration=p['returncam'])
-        if 'setflags' in p:
-            emit('SetFlag', phase, flag=p['setflags'], value=1)
-        if 'text' in p:
-            emit('AwaitDialogue', phase, flags=(2 if p.get('autoadvance', False) else 0)
-                 | (4 if not p.get('caninput', True) else 0))
-        else:
-            emit('AwaitTimer', phase)
-    last = len(labels) - 1
-    # Dad and no-answer have no talker; no fabricated Phone Actor is stopped or restored.
-    if talker != 'None':
-        emit('StopInteraction', last, talker)
-    elif path == CAROL_PHONE:
-        emit('StopInteraction', last, flags=1)
-    emit('SetTalker', last)
-    for actor in bound:
-        emit('RestoreActor', last, actor.title())
-    emit('CutsceneEnded', last)
-    emit('DialogueDone', last, duration=end_duration)
-    return dict(identity=path.removeprefix('Data/Dialogue/').removesuffix('.yaml'), source_path=path,
-                source_labels=labels, actor_bindings=[dict(actor=k.title(), source=v) for k, v in doc['0'].get('actors', {}).items()],
-                commands=commands, clears_phone_location_on_finish=True)
+def compile_program(path,doc,end_duration,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.for_source(path,doc,end_duration,root)
 
 
-def text_segments(raw, allow_money=False, allow_delay=False):
+def text_segments(raw, allow_money=False, allow_delay=False, player_token=None):
+    if player_token is None:
+        from tools import programme_lowering_recipe as recipe
+        player_token = recipe.load(ROOT)['identities']['phone/player-token']['value']
     require(raw.startswith('[@]'), 'Phone text lacks source bullet')
     out = []
     color = False
@@ -298,7 +177,7 @@ def text_segments(raw, allow_money=False, allow_delay=False):
         for piece in re.split(r'(\[[^\]]*\])', part):
             if not piece:
                 continue
-            if piece == '[Ninten]':
+            if piece == player_token:
                 tokens.append(dict(kind='PlayerName'))
             elif piece == '[color]':
                 require(not color, 'Nested phone hint color')
@@ -323,6 +202,11 @@ def text_segments(raw, allow_money=False, allow_delay=False):
 
 
 def extract_texts(ex, documents):
+    from tools import programme_lowering_recipe as recipe
+    bindings = recipe.load(ex.root)
+    voice_prefix = bindings['facts']['voice-root']['value'].removeprefix('res://')
+    voice_extension = bindings['facts']['voice-extension']['value']
+    player_token = bindings['identities']['phone/player-token']['value']
     translations = {}
     for path in TABLES:
         for row in csv.DictReader(io.StringIO(ex.text(path))):
@@ -339,56 +223,22 @@ def extract_texts(ex, documents):
             texts.append(dict(identity=path + '::' + label, source_path=path, source_label=label,
                 translation_key=key, text_en=raw, speaker_key=phrase.get('name', ''),
                 speaker_en=translations[phrase['name']] if 'name' in phrase else '',
-                voice='Audio/Sound effects/text/' + phrase['sound'] + '.mp3' if 'sound' in phrase else '',
-                segments=text_segments(raw, allow_money=path == NORMAL, allow_delay=path == NORMAL)))
+                voice=voice_prefix + phrase['sound'] + voice_extension if 'sound' in phrase else '',
+                segments=text_segments(raw, allow_money=path == NORMAL, allow_delay=path == NORMAL, player_token=player_token)))
     return texts, translations
 
 
-def compile_normal_graph(doc, translations):
-    validate_document(NORMAL, doc)
-    nodes = []
-    for label, p in doc.items():
-        n = dict(label=label, text_key=NORMAL + '::' + label if p.get('text') else None,
-                 fallback=p.get('goto'), terminal=not any(k in p for k in ('goto', 'options', 'if')),
-                 textless_immediate='text' not in p)
-        if 'if' in p:
-            condition = p['if']
-            if 'leader' in condition:
-                n['branch'] = dict(kind='LeaderEquals', value=condition['leader'], target=condition['goto'])
-            else:
-                flag, value = next(iter(condition['flags'].items()))
-                n['branch'] = dict(kind='FlagEquals', flag=flag, value=value, target=condition['goto'])
-            n['evaluate_branch'] = 'submenu_callback' if label == '4' else 'phrase_advance'
-        if 'options' in p:
-            n['choices'] = [dict(translation_key=k, text_en=translations[k], target=v)
-                            for k, v in p['options'].items() if k != 'cancel']
-            n.update(cancel_target=p['options']['cancel'], initial_selection=0, show_choices='after_text_complete')
-        if label == '1':
-            n['text_replacement_effects'] = [dict(token='EarnedCash', capture='earned_cash', reset_amount=0,
-                clear_flag='earned_cash', flags_updated=False, phase='before_print', frequency='once_per_phrase_entry')]
-        if label == '2':
-            n['text_replacement_effects'] = [dict(token='BankCash', read='bank', mutate=False, phase='before_print')]
-            n['reviewed_noop'] = dict(source_command='unsetflags', flag='money_earned',
-                reason='Unregistered exact upstream spelling; globalData.set_flag returns without mutation or signal',
-                flags_updated=False, source='Scripts/global/globalData.gd:409')
-        if label == '4':
-            n['entry'] = [dict(kind='ShowEmptyText'), dict(kind='HideDialogue'),
-                          dict(kind='SetFlag', flag='saved', value=False),
-                          dict(kind='OpenSave', mode='SAVE', callback='_try_resume_dialogue')]
-            n.update(can_input=False, suspend_until='submenu_callback', hidden_text_does_not_finish=True)
-        nodes.append(n)
-    return dict(identity='Reusable/dad_normal', source_path=NORMAL, execution_status='not_integrated',
-                entry='0', nodes=nodes, clears_phone_location_on_finish=True,
-                singleton_specialization=dict(required_party=['ninten'], skipped_conditions=[],
-                    policy='Retain typed leader checks; any future specialization must assert singleton Ninten'))
+def compile_normal_graph(doc,translations,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.normal_metadata(doc,translations,root)
 
 
 def build(root=ROOT):
     ex, documents = load_receipt(root)
     texts, translations = extract_texts(ex, documents)
-    programs = [compile_program(path, documents[path], return_duration(ex.text('Scripts/UI/DialogueBox.gd')))
+    programs = [compile_program(path, documents[path], return_duration(ex.text('Scripts/UI/DialogueBox.gd')), root)
                 for path in YAMLS if path != NORMAL]
-    normal = compile_normal_graph(documents[NORMAL], translations)
+    normal = compile_normal_graph(documents[NORMAL], translations, root)
     hint_match = re.search(r'^const DIALOG_HINT_COLOR := "([0-9a-f]{6})"',
                            ex.text('Scripts/global/text_tools.gd'), re.M)
     require(hint_match is not None, 'Phone source hint color missing')
@@ -428,12 +278,12 @@ def main():
             require(args.godot is not None, 'Recording requires official Godot')
             data = run_native(args.root, args.godot)
             for path, doc in zip(YAMLS, decode(data)['yaml']):
-                validate_document(path, doc)
+                validate_document(path, doc, args.root)
             write_json(args.root / RECEIPT, data)
             write_json(args.root / REVIEW, dict(schema=1, commit=PIN, whole_handler_approved=False,
                 sources=data['sources'], native_receipt_sha256=sha(args.root / RECEIPT),
                 scope='Exact seven phone YAML documents; six bounded linear programs and retained Dad-normal graph',
-                source_phase_labels={p: list(d) for p, d in expected_documents().items()},
+                source_phase_labels={p: list(d) for p, d in expected_documents(args.root).items()},
                 handler_order=['text or hide box', 'actor-ready/persistent/idle', 'timer', 'deferred object calls',
                     'talker', 'directions', 'move queues', 'enqueue-time actor turn', 'camera', 'flags',
                     'dialogue/timer gate', 'stop talker', 'ordered actor restoration', 'cutscene ended/done/camera return'],

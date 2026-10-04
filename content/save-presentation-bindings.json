@@ -1,0 +1,2015 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Scripts/UI/SaveSelect.gd": "067f0a28af8b9d9b62204ae89ac4bdafbd8470e81a55e02fa27f2958510d6d00",
+    "Maps/SaveSelect.tscn": "cd754211dc3bda6d3bd8afa8c1d1daca74f6d60946e32f9a5909e1d929d5b458",
+    "Scripts/UI/SaveSelection/saveFile.gd": "eec9b3b324a47153dc0f802bdb95b3fbdbb89f2b8f269b5c816182da56eb2338",
+    "Nodes/Ui/Saves/saveFile.tscn": "93a7440f256c75b8e78bb8c7983310d3137e1f05e759fe221a5852b2ecd6ad31",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Graphics/UI/save_cursor_idle.tres": "9df3ca0dbe1bd4526f5341b937789746a1152333d31023582209c11f2cf46aca",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "Shaders/MenuFlavorShader.gdshader": "b8ed0f5be42162bead098669299bce73a4beb9516eeed012c9bca2f2669e5880",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Graphics/UI/Misc/file_select_cursor.png": "77fd1c5ad181ea65bbeb601938f68f86e68f6602dd9c23cfa95216037633826f",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120"
+  },
+  "bindings": {
+    "source_0": "Scripts/UI/SaveSelect.gd",
+    "source_1": "Maps/SaveSelect.tscn",
+    "source_2": "Scripts/UI/SaveSelection/saveFile.gd",
+    "source_3": "Nodes/Ui/Saves/saveFile.tscn",
+    "source_4": "Nodes/Ui/arrow.tscn",
+    "source_5": "Scripts/UI/cursor.gd",
+    "source_6": "Graphics/UI/save_cursor_idle.tres",
+    "source_7": "Scripts/global/uiManager.gd",
+    "source_8": "Scripts/global/globalData.gd",
+    "source_9": "Fonts/EBMain.tres",
+    "source_10": "Fonts/EBMain.ttf",
+    "source_11": "Fonts/BottleRocket.tres",
+    "source_12": "Fonts/BottleRocket.ttf",
+    "source_13": "Translations/TranslatedText/menus - sheet.csv",
+    "source_14": "Shaders/MenuFlavorShader.gdshader",
+    "source_15": "Shaders/MenuFlavors.tres",
+    "source_16": "LICENSE",
+    "source_17": "Graphics/UI/Misc/file_select_cursor.png",
+    "source_18": "Graphics/UI/Inventory/cursor.png",
+    "source_19": "Graphics/UI/Overworld/flavours/defaultbox.png",
+    "source_20": "project.godot",
+    "node_0": ".",
+    "node_1": "icons/Control1/picon1",
+    "node_2": "icons/Control2/picon2",
+    "node_3": "icons",
+    "node_4": ".",
+    "node_5": "CanvasLayer/Body/Cursor/cursor_menu",
+    "node_6": "CanvasLayer/SaveConfirmation",
+    "node_7": "CanvasLayer/SaveConfirmation/Text",
+    "node_8": "CanvasLayer/SaveConfirmation/HBoxContainer",
+    "node_9": "CanvasLayer/Body/Saves",
+    "translation_keys": [
+      "SAVE_NODATA",
+      "MENU_LV",
+      "SAVE_TIME",
+      "SAVE_TIME_TOO_MUCH",
+      "SAVE_SAVECONFIRM",
+      "MENU_YES",
+      "MENU_NO"
+    ],
+    "card_layout_nodes": [
+      "Name",
+      "Level",
+      "Title",
+      "Time",
+      "NoData",
+      "NoData/Label",
+      "FileNum",
+      "ColorRect",
+      "ColorRect2"
+    ],
+    "viewports": [
+      320,
+      180,
+      400,
+      240
+    ],
+    "body_insets": [
+      32,
+      -32
+    ],
+    "cursor_size": [
+      8.0,
+      8.0
+    ],
+    "icons": [
+      "ninten",
+      "lloyd",
+      "ana",
+      "teddy",
+      "pippi"
+    ],
+    "icon_root": "Graphics/UI/Inventory/characters/",
+    "icon_suffix": ".png",
+    "arrow_grid": [
+      3,
+      1
+    ],
+    "font_recipe": {
+      "size": 16,
+      "first": 32,
+      "last": 126,
+      "cell": [
+        32,
+        32
+      ],
+      "columns": 16,
+      "outline": 1,
+      "char_spacing": -1,
+      "space_spacing": 3
+    },
+    "atlas": [
+      512,
+      192
+    ],
+    "glyph_inset": [
+      2,
+      2
+    ],
+    "old_palette": [
+      "f3f2f4",
+      "bfb4cd",
+      "7a6c86",
+      "141117",
+      "ba53e4"
+    ],
+    "text_color": "ffffff",
+    "time_color": "f8f800",
+    "outline_color": "000000",
+    "scroll": 0.2,
+    "sounds": [
+      "cursor1",
+      "cursor2",
+      "back"
+    ],
+    "eb_top": -1,
+    "eb_bottom": -1,
+    "resource_root": "save-preview/",
+    "resource_suffix": ".t3x",
+    "card_name_prefix": "card-",
+    "confirm_name_prefix": "confirm-",
+    "cursor_name": "cursor",
+    "arrow_name": "arrow",
+    "icon_name_prefix": "icon-",
+    "font_path": "save-preview/bottle-font.t3x",
+    "outline_path": "save-preview/bottle-outline.t3x",
+    "right_anchor_layouts": [
+      9,
+      10
+    ]
+  },
+  "checks": [
+    {
+      "binding": [
+        "source_0"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/UI/SaveSelect.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_1"
+      ],
+      "selector": [
+        "source_path",
+        "Maps/SaveSelect.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_2"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/UI/SaveSelection/saveFile.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_3"
+      ],
+      "selector": [
+        "source_path",
+        "Nodes/Ui/Saves/saveFile.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_4"
+      ],
+      "selector": [
+        "source_path",
+        "Nodes/Ui/arrow.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_5"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/UI/cursor.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_6"
+      ],
+      "selector": [
+        "source_path",
+        "Graphics/UI/save_cursor_idle.tres"
+      ]
+    },
+    {
+      "binding": [
+        "source_7"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/global/uiManager.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_8"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/global/globalData.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_9"
+      ],
+      "selector": [
+        "source_path",
+        "Fonts/EBMain.tres"
+      ]
+    },
+    {
+      "binding": [
+        "source_10"
+      ],
+      "selector": [
+        "source_path",
+        "Fonts/EBMain.ttf"
+      ]
+    },
+    {
+      "binding": [
+        "source_11"
+      ],
+      "selector": [
+        "source_path",
+        "Fonts/BottleRocket.tres"
+      ]
+    },
+    {
+      "binding": [
+        "source_12"
+      ],
+      "selector": [
+        "source_path",
+        "Fonts/BottleRocket.ttf"
+      ]
+    },
+    {
+      "binding": [
+        "source_13"
+      ],
+      "selector": [
+        "source_path",
+        "Translations/TranslatedText/menus - sheet.csv"
+      ]
+    },
+    {
+      "binding": [
+        "source_14"
+      ],
+      "selector": [
+        "source_path",
+        "Shaders/MenuFlavorShader.gdshader"
+      ]
+    },
+    {
+      "binding": [
+        "source_15"
+      ],
+      "selector": [
+        "source_path",
+        "Shaders/MenuFlavors.tres"
+      ]
+    },
+    {
+      "binding": [
+        "source_16"
+      ],
+      "selector": [
+        "source_path",
+        "LICENSE"
+      ]
+    },
+    {
+      "binding": [
+        "source_17"
+      ],
+      "selector": [
+        "source_path",
+        "Graphics/UI/Misc/file_select_cursor.png"
+      ]
+    },
+    {
+      "binding": [
+        "source_18"
+      ],
+      "selector": [
+        "source_path",
+        "Graphics/UI/Inventory/cursor.png"
+      ]
+    },
+    {
+      "binding": [
+        "source_19"
+      ],
+      "selector": [
+        "source_path",
+        "Graphics/UI/Overworld/flavours/defaultbox.png"
+      ]
+    },
+    {
+      "binding": [
+        "source_20"
+      ],
+      "selector": [
+        "source_path",
+        "project.godot"
+      ]
+    },
+    {
+      "binding": [
+        "node_0"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/arrow.tscn",
+        "."
+      ]
+    },
+    {
+      "binding": [
+        "node_1"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "icons/Control1/picon1"
+      ]
+    },
+    {
+      "binding": [
+        "node_2"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "icons/Control2/picon2"
+      ]
+    },
+    {
+      "binding": [
+        "node_3"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "icons"
+      ]
+    },
+    {
+      "binding": [
+        "node_4"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "."
+      ]
+    },
+    {
+      "binding": [
+        "node_5"
+      ],
+      "selector": [
+        "node_path",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/Body/Cursor/cursor_menu"
+      ]
+    },
+    {
+      "binding": [
+        "node_6"
+      ],
+      "selector": [
+        "node_path",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/SaveConfirmation"
+      ]
+    },
+    {
+      "binding": [
+        "node_7"
+      ],
+      "selector": [
+        "node_path",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/SaveConfirmation/Text"
+      ]
+    },
+    {
+      "binding": [
+        "node_8"
+      ],
+      "selector": [
+        "node_path",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/SaveConfirmation/HBoxContainer"
+      ]
+    },
+    {
+      "binding": [
+        "node_9"
+      ],
+      "selector": [
+        "node_path",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/Body/Saves"
+      ]
+    },
+    {
+      "binding": [
+        "cursor_size"
+      ],
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^export var _cursor_size := Vector2\\(([^)]+)\\)",
+        1,
+        "vector"
+      ]
+    },
+    {
+      "binding": [
+        "icons"
+      ],
+      "selector": [
+        "members",
+        "Scripts/global/global.gd",
+        "Scripts/global/PartyMember.gd",
+        "^const POSSIBLE_PLAYABLE_MEMBERS := (\\[[^\\n]+\\])"
+      ]
+    },
+    {
+      "binding": [
+        "font_recipe",
+        "outline"
+      ],
+      "selector": [
+        "font",
+        "Fonts/BottleRocket.tres",
+        "outline_size"
+      ]
+    },
+    {
+      "binding": [
+        "font_recipe",
+        "char_spacing"
+      ],
+      "selector": [
+        "font",
+        "Fonts/BottleRocket.tres",
+        "extra_spacing_char"
+      ]
+    },
+    {
+      "binding": [
+        "font_recipe",
+        "space_spacing"
+      ],
+      "selector": [
+        "font",
+        "Fonts/BottleRocket.tres",
+        "extra_spacing_space"
+      ]
+    },
+    {
+      "binding": [
+        "old_palette"
+      ],
+      "selector": [
+        "palette",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        1,
+        [
+          "shader_param/OLDCOLOR1",
+          "shader_param/OLDCOLOR2",
+          "shader_param/OLDCOLOR3",
+          "shader_param/OLDCOLOR4",
+          "shader_param/OLDCOLOR5"
+        ]
+      ]
+    },
+    {
+      "binding": [
+        "time_color"
+      ],
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelection/saveFile.gd",
+        "\\[color=#([a-f0-9]+)\\]",
+        1,
+        "string"
+      ]
+    },
+    {
+      "binding": [
+        "eb_top"
+      ],
+      "selector": [
+        "regex",
+        "Fonts/EBMain.tres",
+        "^extra_spacing_top = (-?\\d+)",
+        1,
+        "number"
+      ]
+    },
+    {
+      "binding": [
+        "eb_bottom"
+      ],
+      "selector": [
+        "regex",
+        "Fonts/EBMain.tres",
+        "^extra_spacing_bottom = (-?\\d+)",
+        1,
+        "number"
+      ]
+    },
+    {
+      "binding": [
+        "scroll"
+      ],
+      "selector": [
+        "regex_equal",
+        "Scripts/UI/SaveSelect.gd",
+        "tween_property\\([^\\n]*, ([\\d.]+)\\)"
+      ]
+    },
+    {
+      "binding": [
+        "source_17"
+      ],
+      "selector": [
+        "regex",
+        "Maps/SaveSelect.tscn",
+        "^\\[ext_resource path=\"res://(Graphics/UI/Misc/file_select_cursor\\.png)\" type=\"Texture\" id=\\d+\\]$",
+        1,
+        "string"
+      ]
+    },
+    {
+      "binding": [
+        "source_18"
+      ],
+      "selector": [
+        "regex",
+        "Nodes/Ui/arrow.tscn",
+        "^\\[ext_resource path=\"res://(Graphics/UI/Inventory/cursor\\.png)\" type=\"Texture\" id=\\d+\\]$",
+        1,
+        "string"
+      ]
+    },
+    {
+      "binding": [
+        "source_19"
+      ],
+      "selector": [
+        "regex",
+        "Maps/SaveSelect.tscn",
+        "^\\[ext_resource path=\"res://(Graphics/UI/Overworld/flavours/defaultbox\\.png)\" type=\"Texture\" id=\\d+\\]$",
+        1,
+        "string"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/arrow.tscn",
+        "."
+      ],
+      "expected": {
+        "frames": {
+          "SubResource": 4
+        },
+        "animation": "Idle",
+        "playing": true,
+        "script": {
+          "ExtResource": 2
+        },
+        "cursor_offset": [
+          -4,
+          1
+        ]
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "icons/Control1/picon1"
+      ],
+      "expected": {
+        "position": [
+          30,
+          16
+        ],
+        "texture": {
+          "ExtResource": 4
+        }
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "icons/Control2/picon2"
+      ],
+      "expected": {
+        "position": [
+          10,
+          36
+        ],
+        "texture": {
+          "ExtResource": 4
+        }
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "icons"
+      ],
+      "expected": {
+        "margin_top": 5.0,
+        "margin_right": 60.0,
+        "margin_bottom": 45.0,
+        "custom_constants/separation": 20
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "."
+      ],
+      "expected": {
+        "material": {
+          "SubResource": 1
+        },
+        "margin_right": 256.0,
+        "margin_bottom": 69.0,
+        "rect_min_size": [
+          256,
+          69
+        ],
+        "texture": {
+          "ExtResource": 3
+        },
+        "patch_margin_left": 8,
+        "patch_margin_top": 8,
+        "patch_margin_right": 8,
+        "patch_margin_bottom": 8,
+        "script": {
+          "ExtResource": 6
+        }
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/Body/Cursor/cursor_menu"
+      ],
+      "expected": {
+        "anchor_right": 1.0,
+        "margin_left": -4.0,
+        "margin_top": 17.0,
+        "margin_right": 4.0,
+        "margin_bottom": 94.0,
+        "rect_pivot_offset": [
+          250,
+          78
+        ],
+        "texture": {
+          "ExtResource": 6
+        },
+        "patch_margin_left": 9,
+        "patch_margin_top": 9,
+        "patch_margin_right": 9,
+        "patch_margin_bottom": 9
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/SaveConfirmation"
+      ],
+      "expected": {
+        "material": {
+          "ExtResource": 4
+        },
+        "margin_left": 64.0,
+        "margin_top": 48.0,
+        "margin_right": 256.0,
+        "margin_bottom": 112.0,
+        "texture": {
+          "ExtResource": 3
+        },
+        "patch_margin_left": 13,
+        "patch_margin_top": 13,
+        "patch_margin_right": 13,
+        "patch_margin_bottom": 13
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/SaveConfirmation/Text"
+      ],
+      "expected": {
+        "margin_left": 8.0,
+        "margin_top": 16.0,
+        "margin_right": 184.0,
+        "margin_bottom": 30.0,
+        "custom_fonts/font": {
+          "ExtResource": 2
+        },
+        "text": "SAVE_SAVECONFIRM",
+        "align": 1
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/SaveConfirmation/HBoxContainer"
+      ],
+      "expected": {
+        "margin_left": 48.0,
+        "margin_top": 32.0,
+        "margin_right": 144.0,
+        "margin_bottom": 56.0,
+        "custom_constants/separation": 24,
+        "alignment": 1
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/SaveSelect.tscn",
+        "CanvasLayer/Body/Saves"
+      ],
+      "expected": {
+        "anchor_right": 1.0,
+        "margin_top": 21.0,
+        "margin_bottom": 205.0
+      }
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func init\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func init(type: int, index: int, embed = null, callback = null):\n\t_type = type\n\t_index = index\n\t_is_embed = embed if (embed != null) else (_type == Type.SAVE)\n\t_callback = callback\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\t_saves_offset = _saves_container.rect_position.y\n\t_cursor_anim.play(\"idle\")\n\tfor item in [_menu_save, _menu_delete, _menu_prompts, _menu_flavors, _menu_text_speed]:\n\t\titem.hide()\n\t\n\tfor i in _max_files:\n\t\tvar save_file = SaveFile.instance()\n\t\tsave_file.init(_is_embed, i + 1)\n\t\t_saves_list.add_child(save_file)\n\t\tsave_file.connect(\"deactivate\", self, \"activate\")\n\t\tsave_file.connect(\"show_copy\", self, \"set_copy_mode\")\n\t\tsave_file.connect(\"show_delete\", self, \"show_delete_confirm\")\n\t\tsave_file.connect(\"show_textSpeed\", self, \"show_textSpeed_setting\")\n\t\tsave_file.connect(\"show_menuFlavor\", self, \"show_menuFlavor_setting\")\n\t\tsave_file.connect(\"show_buttonPrompts\", self, \"show_buttonPrompts_setting\")\n\tif _is_embed:\n\t\t$Background.hide()\n\t\taudioManager.music_muffle(0, 1)\n\t\t$CanvasLayer/Body.margin_left = 32\n\t\t$CanvasLayer/Body.margin_right = -32\n\t_saves_container.rect_position.y = _saves_offset - (_index - 1) * 76\n\t_saves_offset = _saves_container.rect_position.y\n\tyield(get_tree().create_timer(0.5), \"timeout\")\n\t_menus_cursor.show()\n\t_active = true\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _input\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _input(event: InputEvent):\n\tif !_active: return\n\tif event.is_action_pressed(\"ui_accept\"):\n\t\tvar save_file = _saves_list.get_child(_index - 1)\n\t\tif _copying:\n\t\t\t_play_sfx(\"cursor2\")\n\t\t\tif !save_file.has_data():\n\t\t\t\toverwrite_save(true)\n\t\t\t\t_copying = false\n\t\t\telse:\n\t\t\t\tshow_save_confirm()\n\t\telse:\n\t\t\tmatch _type:\n\t\t\t\tType.LOAD:\n\t\t\t\t\tif save_file.has_data():\n\t\t\t\t\t\tif _is_embed:\n\t\t\t\t\t\t\tyield(save_file.load_game(), \"completed\")\n\t\t\t\t\t\t\t_finish()\n\t\t\t\t\t\telse:\n\t\t\t\t\t\t\t_play_sfx(\"cursor2\")\n\t\t\t\t\t\t\tdeactivate()\n\t\t\t\t\t\t\tsave_file.activate(true)\n\t\t\t\t\telse:\n\t\t\t\t\t\t_play_sfx(\"restricted\")\n\t\t\t\tType.SAVE:\n\t\t\t\t\t_play_sfx(\"cursor2\")\n\t\t\t\t\tif !save_file.has_data():\n\t\t\t\t\t\toverwrite_save(false)\n\t\t\t\t\telse:\n\t\t\t\t\t\tshow_save_confirm()\n\t\n\tif event.is_action_pressed(\"ui_cancel\"):\n\t\tif _copying:\n\t\t\t_play_sfx(\"back\")\n\t\t\t_copying = false\n\t\t\t_copy_cursor.hide()\n\t\telse:\n\t\t\tInput.action_release(\"ui_cancel\")\n\t\t\t_finish()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _process\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _process(_delta):\n\tif !_active: return\n\tvar direction = controlsManager.get_controls_vector(true).y\n\t\n\tif direction < 0 and _index > 1:\n\t\t_play_sfx(\"cursor1\")\n\t\t_index -= 1\n\t\tif !_cursor_top:\n\t\t\t_cursor_top = true\n\t\t\t_create_smooth_tween().tween_property(_menus_cursor, \"rect_position:y\", 0, 0.2)\n\t\telse:\n\t\t\tvar new_saves_offset = _saves_offset + _save_file_height\n\t\t\t_create_smooth_tween().tween_property(_saves_container, \"rect_position:y\", new_saves_offset, 0.2)\n\t\t\t_saves_offset = new_saves_offset\n\t\t\t\n\telif direction < 0 and _index == 1:\n\t\t_play_sfx(\"cursor1\")\n\t\t_index = _max_files\n\t\t_cursor_top = false\n\t\tvar new_saves_offset = _saves_offset - (_save_file_height * (_max_files - 2))\n\t\tvar tween = _create_smooth_tween().set_parallel()\n\t\ttween.tween_property(_menus_cursor, \"rect_position:y\", _save_file_height, 0.2) \n\t\ttween.tween_property(_saves_container, \"rect_position:y\", new_saves_offset, 0.2) \n\t\t_saves_offset = new_saves_offset\n\t\t\n\telif direction > 0 and _index < _max_files:\n\t\t_play_sfx(\"cursor1\")\n\t\t_index += 1\n\t\tif _cursor_top:\n\t\t\t_cursor_top = false\n\t\t\t_create_smooth_tween().tween_property(_menus_cursor, \"rect_position:y\", _save_file_height, 0.2)\n\t\telse:\n\t\t\tvar new_saves_offset = _saves_offset - _save_file_height\n\t\t\t_create_smooth_tween().tween_property(_saves_container, \"rect_position:y\", new_saves_offset, 0.2)\n\t\t\t_saves_offset = new_saves_offset\n\t\n\telif direction > 0 and _index == _max_files:\n\t\t_play_sfx(\"cursor1\")\n\t\tvar new_saves_offset = _saves_offset + (_save_file_height * (_max_files - (1 if _cursor_top else 2)))\n\t\tvar tween = _create_smooth_tween().set_parallel()\n\t\ttween.tween_property(_menus_cursor, \"rect_position:y\", 0, 0.2) \n\t\ttween.tween_property(_saves_container, \"rect_position:y\", new_saves_offset, 0.2)\n\t\t_index = 1\n\t\t_cursor_top = true\n\t\t_saves_offset = new_saves_offset\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func activate\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func activate():\n\t_active = true\n\t_cursor_anim.play(\"idle\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func deactivate\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func deactivate():\n\t_active = false\n\t_cursor_anim.play(\"select\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _play_sfx\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _play_sfx(sfx_name: String):\n\taudioManager.play_sfx_by_name(sfx_name, \"cursor\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _load_save_dict\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _load_save_dict(num: int):\n\tvar dict = global.load_to_dict(num)\n\tif dict: _save_dict = dict\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _finish\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _finish():\n\tif _is_embed:\n\t\tuiManager.remove_ui(self)\n\telse:\n\t\t_active = false\n\t\t$Objects/Door.enter()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func close\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func close():\n\taudioManager.music_muffle(0, 0)\n\tif _callback and _callback.is_valid():\n\t\t_callback.call_func()\n\t\t_callback = null\n\tqueue_free()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func overwrite_save\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func overwrite_save(from_dict := false):\n\tvar save_file = _saves_list.get_child(_index - 1)\n\tif from_dict:\n\t\tglobal.save_from_dict(_index, _save_dict)\n\telse:\n\t\tglobal.save_game(_index)\n\tsave_file.load_data(_index)\n\tglobaldata.save_file = _index\n\t_copying = false\n\tglobal.save_settings()\n\t_copy_cursor.hide()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func erase_save\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func erase_save():\n\tglobal.erase_save(_index)\n\tvar save_file = _saves_list.get_child(_index - 1)\n\tsave_file.clear_data()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func show_save_confirm\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func show_save_confirm():\n\tyield(get_tree(), \"idle_frame\")\n\t_menu_save.get_node(\"saveArrow\").on = true\n\t_menu_save.show()\n\tdeactivate()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func show_delete_confirm\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func show_delete_confirm():\n\t_menu_delete.show() # Put this way to prevent the cursor bugging during one frame when opening this menu\n\tyield(get_tree(), \"idle_frame\")\n\t_menu_delete.get_node(\"deleteArrow\").on = true\n\tdeactivate()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func show_textSpeed_type\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func show_textSpeed_type():\n\tyield(get_tree(), \"idle_frame\")\n\t_menu_delete.get_node(\"deleteArrow\").on = true\n\t_menu_delete.show()\n\tdeactivate()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func show_textSpeed_setting\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func show_textSpeed_setting():\n\tyield(get_tree(), \"idle_frame\")\n\t_load_save_dict(_index)\n\t_menu_text_speed.get_node(\"TextSpeedArrow\").on = true\n\t_menu_text_speed.show()\n\tdeactivate()\n\tvar text_speed_arrow = _menu_text_speed.get_node(\"TextSpeedArrow\")\n\tvar text_speed_index = globaldata.TEXT_SPEEDS.find(_save_dict[\"textspeed\"])\n\ttext_speed_arrow.set_cursor_from_index(text_speed_index, false)\n\t_menu_text_speed._on_TextSpeedArrow_moved(null)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func show_menuFlavor_setting\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func show_menuFlavor_setting():\n\t_load_save_dict(_index)\n\t_menu_flavors.get_node(\"FlavorsArrow\").on = true\n\t_menu_flavors.show()\n\tdeactivate()\n\tvar flavors_arrow = _menu_flavors.get_node(\"FlavorsArrow\")\n\tvar flavor_index = globaldata.FLAVORS.find(_save_dict[\"menuflavor\"])\n\tflavors_arrow.set_cursor_from_index(flavor_index, false)\n\t_menu_flavors._on_FlavorsArrow_moved(null)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func show_buttonPrompts_setting\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func show_buttonPrompts_setting():\n\t_load_save_dict(_index)\n\t_menu_prompts.get_node(\"ButtonPromptsArrow\").on = true\n\t_menu_prompts.show()\n\tdeactivate()\n\tvar button_prompts_arrow = _menu_prompts.get_node(\"ButtonPromptsArrow\")\n\tvar options := [\"Both\", \"Objects\", \"NPCs\", \"None\"]\n\tbutton_prompts_arrow.set_cursor_from_index(options.find(_save_dict[\"buttonprompts\"]), false)\n\t_menu_prompts.refresh(true)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func set_copy_mode\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_copy_mode():\n\t_load_save_dict(_index)\n\t_copying = true\n\tactivate()\n\t_copy_cursor.show()\n\t_copy_cursor.rect_global_position = _menus_cursor.rect_global_position\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_arrow_selected\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_arrow_selected(cursor_index: int):\n\tif cursor_index == 0:\n\t\toverwrite_save(_copying)\n\t\t_play_sfx(\"cursor2\")\n\telse:\n\t\t_play_sfx(\"back\")\n\tactivate()\n\t_menu_save.get_node(\"saveArrow\").on = false\n\t_menu_save.hide()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_deleteArrow_selected\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_deleteArrow_selected(cursor_index: int):\n\tmatch cursor_index:\n\t\t0:\n\t\t\t_play_sfx(\"cursor2\")\n\t\t\terase_save()\n\t\t\tactivate()\n\t\t1:\n\t\t\t_play_sfx(\"back\")\n\t\t\tvar saveFile = _saves_list.get_child(_index - 1)\n\t\t\tsaveFile.activate()\n\t_menu_delete.get_node(\"deleteArrow\").on = false\n\t_menu_delete.hide()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_TextSpeedArrow_selected\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_TextSpeedArrow_selected(cursor_index: int):\n\t_save_dict[\"textspeed\"] = globaldata.TEXT_SPEEDS[cursor_index]\n\t_close_submenu(_menu_text_speed, _menu_text_speed.get_node(\"TextSpeedArrow\"))\n\toverwrite_save(true)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_FlavorsArrow_selected\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_FlavorsArrow_selected(cursor_index: int):\n\t_save_dict[\"menuflavor\"] = globaldata.FLAVORS[cursor_index]\n\toverwrite_save(true)\n\t_close_submenu(_menu_flavors, _menu_flavors.get_node(\"FlavorsArrow\"))\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_ButtonPromptsArrow_selected\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_ButtonPromptsArrow_selected(cursor_index: int):\n\tvar options := [\"Both\", \"Objects\", \"NPCs\", \"None\"]\n\t_save_dict[\"buttonprompts\"] = options[cursor_index]\n\toverwrite_save(true)\n\t_close_submenu(_menu_prompts, _menu_prompts.get_node(\"ButtonPromptsArrow\"))\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _close_submenu\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _close_submenu(menu_node: Control, arrow_node: Node):\n\tvar save_file = _saves_list.get_child(_index - 1)\n\tsave_file.activate()\n\tarrow_node.on = false\n\tmenu_node.hide()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_arrow_cancel\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_arrow_cancel():\n\tactivate()\n\t_menu_save.get_node(\"saveArrow\").on = false\n\t_menu_save.hide()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_deleteArrow_cancel\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_deleteArrow_cancel():\n\t_close_submenu(_menu_delete, _menu_delete.get_node(\"deleteArrow\"))\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_TextSpeedArrow_cancel\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_TextSpeedArrow_cancel():\n\t_close_submenu(_menu_text_speed, _menu_text_speed.get_node(\"TextSpeedArrow\"))\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_FlavorsArrow_cancel\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_FlavorsArrow_cancel():\n\t_close_submenu(_menu_flavors, _menu_flavors.get_node(\"FlavorsArrow\"))\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelect.gd",
+        "^((?:static )?func _on_ButtonPromptsArrow_cancel\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_ButtonPromptsArrow_cancel():\n\t_close_submenu(_menu_prompts, _menu_prompts.get_node(\"ButtonPromptsArrow\"))\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelection/saveFile.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\t_arrow.hide()\n\tglobal.get_player().pause()\n\tglobal.connect(\"locale_changed\", self, \"_refresh\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelection/saveFile.gd",
+        "^((?:static )?func _on_arrow_cancel\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_arrow_cancel():\n\tif !$Options.visible: deactivate()\n\telse:\n\t\t$Options.hide()\n\t\t_arrow.cursor_offset.y = 3\n\t\t_arrow.change_parent($HBoxContainer, false)\n\t\t_arrow.set_cursor_from_index(6, true)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/SaveSelection/saveFile.gd",
+        "^((?:static )?func _on_arrow_selected\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_arrow_selected(cursor_index: int):\n\tif not $Options.visible:\n\t\tmatch _arrow.get_current_item().name:\n\t\t\t\"Play\":\n\t\t\t\tload_game()\n\t\t\t\"Copy\":\n\t\t\t\tglobal.load_game(_file_num, false)\n\t\t\t\tdeactivate()\n\t\t\t\temit_signal(\"show_copy\")\n\t\t\t\"Delete\":\n\t\t\t\tglobal.load_game(_file_num, false)\n\t\t\t\tdeactivate()\n\t\t\t\temit_signal(\"show_delete\")\n\t\t\t\"Options\":\n\t\t\t\t$Options.show()\n\t\t\t\t_arrow.cursor_offset.y = 1\n\t\t\t\t_arrow.change_parent($Options/VBoxContainer, false)\n\t\t\t\t_arrow.set_cursor_from_index(0, true)\n\telse:\n\t\tglobal.load_game(_file_num, false)\n\t\tdeactivate()\n\t\tvar signals := [\"show_textSpeed\", \"show_menuFlavor\", \"show_buttonPrompts\"]\n\t\temit_signal(signals[cursor_index])\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\tmenu_parent = get_node_or_null(menu_parent_path)\n\tset_cursor_from_index(0, false)\n\tif menu_parent:\n\t\tmenu_parent.connect(\"item_rect_changed\", self, \"refresh_pos\", [false])\n\t_on_visibility_changed()\n\tconnect(\"visibility_changed\", self, \"_on_visibility_changed\")\n\tglobal.connect(\"locale_changed\", self, \"refresh_pos\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _physics_process\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _physics_process(_delta):\n\tif !is_active() or (_exact_dir_input and Input.is_action_pressed(\"ui_toggle\")):\n\t\treturn\n\tinput = controlsManager.get_controls_vector(true)\n\tif input == Vector2.ZERO or $Timer.time_left != 0:\n\t\treturn\n\t\n\tvar old_index = cursor_index\n\tvar index: int\n\tvar dir: int\n\t# assign index and input dir based on container\n\tif menu_parent is VBoxContainer:\n\t\t#input.x = 0\n\t\tindex = int(cursor_index + input.y)\n\t\tdir = int(input.y)\n\t\tif loop_around:\n\t\t\tif index < get_first_available_idx():\n\t\t\t\tindex = get_last_available_idx()\n\t\t\telif index > get_last_available_idx():\n\t\t\t\tindex = get_first_available_idx()\n\telif menu_parent is HBoxContainer:\n\t\tindex = int(cursor_index + input.x)\n\t\tdir = int(input.x)\n\t\tif loop_around:\n\t\t\tif index < get_first_available_idx():\n\t\t\t\tindex = get_last_available_idx()\n\t\t\telif index > get_last_available_idx():\n\t\t\t\tindex = get_first_available_idx()\n\telif menu_parent is GridContainer:\n\t\tvar row = int(cursor_index/menu_parent.columns)\n\t\tvar column = cursor_index - row * menu_parent.columns\n\t\tvar nb_rows = ceil(float(menu_parent.get_child_count() - column) / menu_parent.columns)\n\t\tvar total_rows = ceil(float(menu_parent.get_child_count()) / menu_parent.columns)\n\t\tif column == 0 and input.x != 0:\n\t\t\tif input.x == -1:\n\t\t\t\tif loop_around:\n\t\t\t\t\tvar new_column = menu_parent.columns - 1\n\t\t\t\t\tvar new_column_rows = ceil(float(menu_parent.get_child_count() - new_column) / menu_parent.columns)\n\t\t\t\t\tif new_column_rows - 1 < row:\n\t\t\t\t\t\tindex = new_column + (new_column_rows - 1) * menu_parent.columns\n\t\t\t\t\telse:\n\t\t\t\t\t\tindex = cursor_index + menu_parent.columns - 1\n\t\t\t\t\tinput.x = 1\n\t\t\t\t\tdir = int(input.x + input.y)\n\t\t\telif input.x == 1 and menu_parent.columns > 1:\n\t\t\t\tvar new_column = 1\n\t\t\t\tvar new_column_rows = ceil(float(menu_parent.get_child_count() - new_column) / menu_parent.columns)\n\t\t\t\tif new_column_rows - 1 < row:\n\t\t\t\t\tindex = new_column + (new_column_rows - 1) * menu_parent.columns\n\t\t\t\telse:\n\t\t\t\t\tindex = cursor_index + 1\n\t\t\t\tdir = int(input.x + input.y)\n\t\telif column == menu_parent.columns - 1 and input.x == 1:\n\t\t\tif loop_around:\n\t\t\t\tindex = cursor_index - menu_parent.columns + 1\n\t\t\t\tinput.x = -1\n\t\t\t\tdir = int(input.x + input.y)\n\t\telif row == nb_rows - 1 and input.y == 1:\n\t\t\tif nb_rows < total_rows:\n\t\t\t\tindex = menu_parent.get_child_count() - 1\n\t\t\t\tinput.y = -1\n\t\t\t\tdir = int(input.x + input.y)\n\t\t\telif loop_around:\n\t\t\t\tindex = cursor_index % menu_parent.columns\n\t\t\t\tinput.y = -1\n\t\t\t\tdir = int(input.x + input.y)\n\t\telif row == 0 and input.y == -1:\n\t\t\tif loop_around:\n\t\t\t\tif nb_rows < total_rows:\n\t\t\t\t\tindex = menu_parent.get_child_count() - 1\n\t\t\t\telse:\n\t\t\t\t\tindex = menu_parent.columns * (nb_rows - 1) + (cursor_index % menu_parent.columns)\n\t\t\t\tinput.y = 1\n\t\t\t\tdir = int(input.x + input.y)\n\t\t\t\t\n\t\telse:\n\t\t\tindex = cursor_index + input.x + input.y * menu_parent.columns\n\t\t\t\n\t\t\tdir = index - cursor_index\n\t\t\tif dir != 0:\n\t\t\t\tdir = sign(dir) as int\n\t# process direction to validate idx\n\tif dir != 0:\n\t\tvar step = 1\n\t\tif menu_parent is GridContainer:\n\t\t\tstep = abs(index - cursor_index)\n\t\tif dir > 0:\n\t\t\tindex = _idx_or_next_valid_idx(index, step)\n\t\telif dir < 0:\n\t\t\tindex = _idx_or_prev_valid_idx(index, step)\n\t\tset_cursor_from_index(index)\n\t\n\tif cursor_index != old_index:\n\t\tif move_sfx:\n\t\t\tplay_sfx('cursor1')\n\t\temit_signal(\"moved\", input)\n\telse:\n\t\temit_signal(\"failed_move\", input)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _input\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _input(event: InputEvent):\n\tif !is_active(): return\n\tif event.is_action_pressed(\"ui_accept\"):\n\t\tvar current_menu_item := get_current_item()\n\t\tif current_menu_item != null:\n\t\t\tif select_sfx:\n\t\t\t\tplay_sfx('cursor2')\n\t\t\temit_signal(\"selected\", cursor_index)\n\t\telse:\n\t\t\temit_signal(\"failed_select\", cursor_index)\n\t\tif consume_input_events:\n\t\t\tInput.action_release(\"ui_accept\")\n\t\t\tget_tree().set_input_as_handled()\n\t\n\telif event.is_action_pressed(\"ui_cancel\"):\n\t\tif cancel_on:\n\t\t\tif cancel_sfx:\n\t\t\t\tplay_sfx('back')\n\t\t\temit_signal(\"cancel\")\n\t\t\tif consume_input_events:\n\t\t\t\tInput.action_release(\"ui_cancel\")\n\t\t\t\tget_tree().set_input_as_handled()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func refresh_pos\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func refresh_pos(wait := true):\n\tif wait: yield(get_tree(), \"idle_frame\")\n\tset_cursor_from_index(cursor_index, false)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _set_on\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _set_on(val: bool):\n\ton = val\n\tplaying = on\n\tif !on and _tween and !dont_kill_tween: \n\t\t_tween.pause()\n\t\t_tween.custom_step(TWEEN_LENGTH)\n\t\t_tween.kill()\n\tif on:\n\t\temit_signal(\"activated\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _turn_on_highlight\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _turn_on_highlight():\n\tif highlight and get_current_item() != null:\n\t\tif get_current_item().has_method(\"highlight\") and visible:\n\t\t\tget_current_item().highlight(1)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _unhighlight\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _unhighlight():\n\tif highlight:\n\t\tfor i in menu_parent.get_child_count():\n\t\t\tif get_menu_item_at_index(i)!= null:\n\t\t\t\tif get_menu_item_at_index(i).has_method(\"highlight\"):\n\t\t\t\t\tget_menu_item_at_index(i).highlight(0)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _on_visibility_changed\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_visibility_changed():\n\tif highlight:\n\t\tif visible:\n\t\t\t_turn_on_highlight()\n\t\telse:\n\t\t\t_unhighlight()\n\n#func get_visible_menu_items():\n#\tvar visible_items = []\n#\tfor i in menu_parent.get_children():\n#\t\tif i.visible:\n#\t\t\tvisible_items.append(i)\n#\treturn visible_items\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func set_cursor_to_front\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_cursor_to_front():\n\tvar j = -1\n\tfor i in menu_parent.get_child_count():\n\t\tif _should_skip_item(menu_parent.get_child(i)):\n\t\t\tcontinue\n\t\tj = i\n\t\tbreak\n\t\n\tif j == -1:\n\t\treturn\n\tset_cursor_from_index(j, false)\n\tif menu_parent != null:\n\t\tvar size = _cursor_size\n\t\tsize.y = size.y/2.0\n\t\tsize.x = -size.x/6.0\n\t\tglobal_position = menu_parent.rect_global_position + cursor_offset + size\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _idx_or_next_valid_idx\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _idx_or_next_valid_idx(index, step = 1):\n\tif !is_instance_valid(menu_parent):\n\t\treturn -1\n\telif index >= menu_parent.get_child_count() or index < 0:\n\t\treturn -1\n\telse:\n\t\tfor i in range(index, menu_parent.get_child_count(), step):\n\t\t\tvar item = menu_parent.get_child(i)\n\t\t\tif _should_skip_item(item):\n\t\t\t\tcontinue\n\t\t\treturn i\n\treturn -1\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _idx_or_prev_valid_idx\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _idx_or_prev_valid_idx(index, step = 1):\n\tif !is_instance_valid(menu_parent):\n\t\treturn -1\n\telif index >= menu_parent.get_child_count() or index < 0:\n\t\treturn -1\n\telse:\n\t\tfor i in range(index, -1, -step):\n\t\t\tvar item = menu_parent.get_child(i)\n\t\t\tif _should_skip_item(item):\n\t\t\t\tcontinue\n\t\t\treturn i\n\treturn -1\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _should_skip_item\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _should_skip_item(item):\n\tif skip_hidden_items:\n\t\tif \"visible\" in item and !item.visible:\n\t\t\treturn true\n\tif skip_empty_labels:\n\t\tif item is Label and item.text == \"\":\n\t\t\treturn true\n\treturn false\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func get_first_available_idx\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func get_first_available_idx():\n\treturn _idx_or_next_valid_idx(0)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func get_last_available_idx\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func get_last_available_idx():\n\treturn _idx_or_prev_valid_idx(menu_parent.get_child_count() - 1)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func play_sfx\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func play_sfx(sfx: String):\n\taudioManager.play_sfx_by_name(sfx, \"cursor\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func get_closest_menu_item_index\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func get_closest_menu_item_index(new_parent):\n\tvar closest = 0\n\tvar cursor_position = global_position\n\tcursor_position.x += _cursor_size.x - cursor_offset.x\n\tfor i in new_parent.get_child_count():\n\t\tvar closestItem = new_parent.get_child(closest)\n\t\tvar newItem = new_parent.get_child(i)\n\t\tif cursor_position.distance_to(closestItem.rect_global_position + closestItem.rect_size / 2) > cursor_position.distance_to(newItem.rect_global_position + closestItem.rect_size / 2 ):\n\t\t\tif _should_skip_item(newItem):\n\t\t\t\tcontinue\n\t\t\telse:\n\t\t\t\tclosest = i\n\n\treturn closest\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func get_farthest_menu_item_index\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func get_farthest_menu_item_index(new_parent):\n\tvar farthest = 0\n\tvar cursor_position = global_position\n\tcursor_position.x += _cursor_size.x - cursor_offset.x\n\tfor i in new_parent.get_child_count():\n\t\tvar farthestItem = new_parent.get_child(farthest)\n\t\tvar newItem = new_parent.get_child(i)\n\t\tif cursor_position.distance_to(farthestItem.rect_global_position + farthestItem.rect_size / 2) < cursor_position.distance_to(newItem.rect_global_position + farthestItem.rect_size / 2 ):\n\t\t\tif _should_skip_item(newItem):\n\t\t\t\tcontinue\n\t\t\telse:\n\t\t\t\tfarthest = i\n\treturn farthest\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func change_parent\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func change_parent(new_parent, play_sfx = true, closest_index = true):\n\tvar index\n\tif closest_index:\n\t\tindex = get_closest_menu_item_index(new_parent)\n\telse:\n\t\tindex = get_farthest_menu_item_index(new_parent)\n\tif _should_skip_item(new_parent.get_child(index)):\n\t\treturn false\n\t_connect_to_menu_parent(new_parent, menu_parent)\n\tmenu_parent = new_parent\n\tset_cursor_from_index(index, true)\n\tif play_sfx:\n\t\tplay_sfx('cursor1')\n\treturn true\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func change_parent_same_index\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func change_parent_same_index(new_parent, play_sfx = true):\n\t_connect_to_menu_parent(new_parent, menu_parent)\n\tmenu_parent = new_parent\n\tset_cursor_from_index(int(min(cursor_index, get_last_available_idx())), false)\n\tif play_sfx:\n\t\tplay_sfx(\"cursor1\")\n\treturn true\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _connect_to_menu_parent\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _connect_to_menu_parent(new_parent, old_parent = null):\n\tif old_parent != null:\n\t\told_parent.disconnect(\"item_rect_changed\", self, \"refresh_pos\")\n\tnew_parent.connect(\"item_rect_changed\", self, \"refresh_pos\", [false])\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/cursor.gd",
+        "^((?:static )?func _on_arrow_visibility_changed\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_arrow_visibility_changed():\n\tif reset_on_show:\n\t\tyield(get_tree(), \"idle_frame\")\n\t\tcursor_index = 0\n\t\tset_cursor_from_index(0, false)\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\trandomize()\n\t\n\tset_menu_flavors(globaldata.menu_flavor)\n\t\n\t# Load all the battle bgs\n\t_load_battle_bgs()\n\t\n\t_stable_canvas_layer = load(\"res://Nodes/Ui/mainCanvasLayer.tscn\").instance()\n\tglobal.currentScene.add_child(_stable_canvas_layer)\n\tglobal.add_persistent(_stable_canvas_layer)\n\t_add_to_canvas(_black_bars, 1)\n\t_add_to_canvas(_key, 1)\n\t_add_to_canvas(_party_info_view, 2)\n\t_add_to_canvas(_commands_menu, 3)\n\t_add_to_canvas(_cash, 3)\n\t_add_to_canvas(_phone_units, 3)\n\t_add_to_canvas(_map_screen, 0)\n\t\n\tvar transition_node := load(\"res://Nodes/Ui/effects/Fade.tscn\")\n\tvar transition: CanvasLayer = transition_node.instance()\n\ttransition.set_name(\"fade\")\n\t_stable_canvas_layer.add_child(transition)\n\t_fade = transition\n\t\n\t_fixed_camera = load(\"res://Nodes/Ui/Camera.tscn\").instance()\n\tcall_deferred(\"add_child\", _fixed_camera)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func set_menu_flavors\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_menu_flavors(flavor: String):\n\tvar flavor_index := globaldata.FLAVORS.find(flavor)\n\tfor i in 8:\n\t\t_menu_flavor_shader.set_shader_param(\"NEWCOLOR%s\" % (i+1), Color(menuFlavors[flavor_index][i]))\n\temit_signal(\"menu_flavor_updated\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func add_ui\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func add_ui(ui: Node, add_child = true):\n\t_ui_stack.push_front(ui)\n\tif add_child:\n\t\t_stable_canvas_layer.call_deferred(\"add_child\", ui)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func remove_ui\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func remove_ui(ui: Node = _ui_stack[0]):\n\tif ui in _ui_stack:\n\t\t_ui_stack.erase(ui)\n\t\tif is_instance_valid(ui):\n\t\t\tclose_item(ui)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func fix_camera\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func fix_camera():\n\t_fixed_camera.set_current()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func close_item\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func close_item(item: Node): # Calls a function in the menu that closes it.\n\titem.call(\"close\" if item.has_method(\"close\") else \"queue_free\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_dialogue_box_and_unpause\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_dialogue_box_and_unpause(dialogue_id: String, npc = null):\n\tvar on_finished := funcref(global.get_player(), \"on_dialogue_done\")\n\tyield(open_dialogue_box(dialogue_id, on_finished, npc), \"completed\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_dialogue_box\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_dialogue_box(dialogue_id: String, on_finished: FuncRef = null, npc = null):\n\tvar was_paused := global.get_player().is_paused()\n\tif !was_paused:\n\t\tglobal.get_player().pause(true, true)\n\t_dialogue_box = DialogueBoxRes.instance()\n\t_pause_menu_active = false\n\tadd_ui(_dialogue_box)\n\tyield(_dialogue_box, \"ready\")\n\t_cutscene = true\n\tclose_key_indicator()\n\ttoggle_black_bars(true)\n\t_dialogue_box.start_from_id(dialogue_id, npc)\n\tvar result: bool = yield(_dialogue_box, \"done\")\n\t_dialogue_box = null\n\ttoggle_black_bars(false)\n\t_cutscene = false\n\tif !was_paused:\n\t\tglobal.get_player().unpause()\n\tif on_finished and on_finished.is_valid():\n\t\ton_finished.call_func(result)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func close_dialogue_box\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func close_dialogue_box():\n\tif _dialogue_box:\n\t\t_dialogue_box.close_dialogue()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func set_cutscene\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_cutscene(value: bool):\n\t_cutscene = value\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_battle_dialogue_box\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_battle_dialogue_box(dialog := {}):\n\tvar battle_dialogue_box = BattleDialogueBoxRes.instance()\n\t_pause_menu_active = false\n\tadd_ui(battle_dialogue_box)\n\tyield(battle_dialogue_box, \"ready\")\n\tif dialog:\n\t\tbattle_dialogue_box.start_from_scripted_dialog(dialog)\n\t\tyield(battle_dialogue_box, \"done\")\n\t\tremove_ui(battle_dialogue_box)\n\telse:\n\t\tbattle_dialogue_box.connect(\"done\", self, \"remove_ui\", [battle_dialogue_box], CONNECT_ONESHOT)\n\t\treturn battle_dialogue_box\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func add_cash\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func add_cash(amount):\n\tglobaldata.cash += amount\n\tget_cash_box().open_and_close()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func remove_cash\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func remove_cash(amount):\n\tglobaldata.cash -= amount\n\tget_cash_box().open_and_close()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func give_cash_to_bank\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func give_cash_to_bank(amount: int):\n\tglobaldata.earned_cash += amount\n\tglobaldata.bank += amount\n\tglobaldata.set_flag(\"earned_cash\", true, false)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_commands_menu\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_commands_menu():\n\tglobal.get_player().pause(false, true)\n\t_commands_menu.open()\n\t_pause_menu_active = true\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func close_commands_menu\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func close_commands_menu(keep_pause := false, remove_bars := false, silent := false, called_from_pause := false):\n\t_party_info_view.close()\n\t_pause_menu_active = false\n\tif !keep_pause:\n\t\tglobal.get_player().unpause()\n\tif remove_bars:\n\t\ttoggle_black_bars(false)\n\tif !called_from_pause:\n\t\tvar flags: int = 0\n\t\tif silent: flags |= _commands_menu.CloseFlags.SILENT\n\t\tif !keep_pause: flags |= _commands_menu.CloseFlags.UNPAUSE\n\t\tif remove_bars: flags |= _commands_menu.CloseFlags.HIDE_BARS\n\t\t_commands_menu.close(flags, true)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func toggle_black_bars\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func toggle_black_bars(show: bool):\n\t_black_bars.toggle(show)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func set_battle_queued\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_battle_queued(enabled: bool):\n\t_battle_queued = enabled\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func start_battle\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func start_battle(advantage := 0, can_run := true, enemies_to_join := [], post_battle_cutscenes := {}, win_flag := \"\"):\n\tif _in_battle:\n\t\treturn\n\t\n\tinfo_plates_hide()\n\t\n\temit_signal(\"ov_to_battle\")\n\tglobal.get_player().pause(true)\n\t\n\t# hoooo boy this is gonna be some funky code right here.\n\tvar root := get_tree().root\n\t_battle_ui = BattleSceneRes.instance()\n\t\n\tif !enemies_to_join:\n\t\t# add enemies to battle and an enemyTransition sprite\n\t\tfor enemy in _onScreenEnemies:\n\t\t\tif enemy.overworld_object != null:\n\t\t\t\tif enemy.overworld_object.get(\"eventRayCaster\") != null and !enemy.overworld_object.drafted:\n\t\t\t\t\tenemy.overworld_object.eventRayCaster.look_at(global.get_player().global_position + global.get_player().get_node(\"CollisionShape2D\").position * 2)\n\t\t\t\t\tvar collider = enemy.overworld_object.eventRayCaster.get_collider()\n\t\t\t\t\tif collider is PartyObject or collider is OverworldEnemy:\n\t\t\t\t\t\tenemy.overworld_object.emotes.hide()\n\t\t\t\t\t\tenemy.overworld_object.emotes.frame = 0\n\t\t\t\t\t\tenemies_to_join.append(enemy)\n\t\t\t\telse:\n\t\t\t\t\tenemy.overworld_object.emotes.hide()\n\t\t\t\t\tenemy.overworld_object.emotes.frame = 0\n\t\t\t\t\tenemies_to_join.append(enemy)\n\t\t\t\t\tenemy.overworld_object.drafted = false\n\t\t\telse:\n\t\t\t\tenemies_to_join.append(enemy)\n\t\n\t_in_battle = true\n\t\n\tif global.currentCamera.is_shaking():\n\t\tyield(global.currentCamera, \"stopped_shaking\")\n\t\n\t\n\tvar transition = BattleTransitionRes.instance()\n\t\n\t_battle_ui.init_battle_params(enemies_to_join, advantage, can_run, _battle_bgs, transition, post_battle_cutscenes, win_flag)\n\t\n\t\n\t# Then add to UI canvas\n\tadd_ui(_battle_ui)\n\t\n\t# Transition stuff\n\t# First we add a black rect behind everything \n\t\n\tvar bg = _add_black_rect()\n\t\n\t# THEN a back buffer copy to the root, right before the current scene\n\t# This captures the BG as the SCREEN_TEXTURE, which is used by the transition shader\n\tvar backBuffer := BackBufferCopy.new()\n\tbackBuffer.copy_mode = BackBufferCopy.COPY_MODE_RECT\n\t\n\tvar backBufferPosition = -get_viewport().canvas_transform.origin\n\t\n\tbackBuffer.rect = get_viewport().get_visible_rect()\n\troot.add_child(backBuffer)\n\troot.move_child(backBuffer, root.get_children().size() - 2)\n\tbackBuffer.z_index = -128\n\t\n\tyield(get_tree(), \"idle_frame\")\n\t\n\t# add the transition ui, keep at the end of the draw order. So it draws on top of everything else\n\troot.call_deferred(\"add_child\", transition)\n\t# Set the position to the VIEWPORT POSITION (aka, so it lines up with the camera)\n\ttransition.position = -get_viewport().canvas_transform.origin\n\t\n\tvar transparency := 130\n\ttransition.set_color(ColorN(\"green\" if advantage == BattleSystem.Advantage.PLAYER \\\n\t\t\telse \"red\" if advantage == BattleSystem.Advantage.ENEMY else \"blue\", transparency / 255 as float))\n\t\n\t# Delete the backbuffer and black bg after the transition is complete\n\ttransition.connect(\"done\", backBuffer, \"queue_free\")\n\ttransition.connect(\"done\", bg, \"queue_free\")\n\t\n\t_battle_ui.connect(\"battle_to_ov\", self, \"emit_signal\", [\"battle_to_ov\"], CONNECT_ONESHOT)\n\t_battle_ui.connect(\"battle_ended\", self, \"_on_battle_ended\", [_battle_ui], CONNECT_ONESHOT)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func _on_battle_ended\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_battle_ended(result: int, battle_ui: Node):\n\t_in_battle = false\n\tremove_ui(battle_ui)\n\t_battle_ui = null\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func _add_to_canvas\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _add_to_canvas(node: Node, layer: int = 0):\n\t_stable_canvas_layer.add_child(node)\n\tif layer != -1:\n\t\t_stable_canvas_layer.move_child(node, int(min(layer, _stable_canvas_layer.get_child_count()-1)))\n\t\tif node is CanvasLayer: node.layer = layer\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func _load_battle_bgs\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _load_battle_bgs():\n\tvar dir := Directory.new()\n\tvar path := \"res://Graphics/Battle BGS/\"\n\tif dir.open(path) == OK:\n\t\tdir.list_dir_begin()\n\t\tvar file_name := dir.get_next()\n\t\twhile file_name != \"\":\n\t\t\tif !dir.current_is_dir():\n\t\t\t\t# jank bg import lol\n\t\t\t\tif file_name.ends_with(\".bbg.import\"):\n\t\t\t\t\t_battle_bgs[file_name.replace(\".bbg.import\", \"\")] = load(path + file_name.replace(\".import\", \"\"))\n\t\t\t\telif file_name.ends_with(\".dsp.import\"):\n\t\t\t\t\t_battle_bgs[file_name.replace(\".dsp.import\", \"\")] = load(path + file_name.replace(\".import\", \"\"))\n\t\t\tfile_name = dir.get_next()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func update_key_indicator\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func update_key_indicator():\n\tif get_key_count() <= 0:\n\t\t_key.close()\n\telse:\n\t\t_key.open()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func close_key_indicator\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func close_key_indicator():\n\t_key.close()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func set_current_shop\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_current_shop(shop: String):\n\t_current_shop = shop\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_shop\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_shop(shop = null, can_sell = true, callback: FuncRef = null):\n\tvar shop_ui: Control = ShopRes.instance()\n\tif shop == null:\n\t\tshop = _current_shop\n\tshop_ui.setup(shop, can_sell, callback)\n\t_pause_menu_active = false\n\tadd_ui(shop_ui)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_storage\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_storage(god_mode = false, callback: FuncRef = null):\n\tvar storage_ui: Control = StorageRes.instance()\n\tstorage_ui.god_mode = god_mode\n\tstorage_ui.setup(callback)\n\t_pause_menu_active = false\n\tadd_ui(storage_ui)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_atm\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_atm(callback: FuncRef = null):\n\tvar atm_ui: Control = ATMMenuRes.instance()\n\tatm_ui.setup(callback)\n\t_pause_menu_active = false\n\tadd_ui(atm_ui)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_save\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_save(type := SaveSelect.Type.SAVE, callback: FuncRef = null):\n\tvar save_ui: SaveSelect = SaveSelectRes.instance()\n\t_pause_menu_active = false\n\tsave_ui.init(type, globaldata.save_file, true, callback)\n\tadd_ui(save_ui)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_keyboard\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_keyboard(scenario_id: String, callback: FuncRef = null):\n\tvar keyboard_ui: Control = KeyboardRes.instance()\n\t_pause_menu_active = false\n\tkeyboard_ui.init(scenario_id, true, callback)\n\tadd_ui(keyboard_ui)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_ocarina_screen\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_ocarina_screen(callback: FuncRef = null):\n\tvar ocarina_ui: CanvasLayer = OcarinaScreenRes.instance()\n\t_fade.fade_in(\"Circle Focus\")\n\tyield(_fade, \"fade_in_done\")\n\tocarina_ui.init(callback)\n\t_pause_menu_active = false\n\tadd_ui(ocarina_ui)\n\t_fade.fade_out(\"Circle Focus\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_current_map\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_current_map(is_reticle_mode := false, callback: FuncRef = null):\n\tvar map_name := \"\"\n\tvar nameplate_name := \"\"\n\tif global.currentScene is AreaRoom:\n\t\tmap_name = global.currentScene.get_map_name(true, true)\n\t\tnameplate_name = global.currentScene.get_region_name()\n\topen_map_screen(map_name, nameplate_name, is_reticle_mode, callback)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func open_map_screen\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func open_map_screen(area_name: String, name_plate_name: String, is_reticle_mode := false, callback: FuncRef = null):\n\tglobal.get_player().pause(true)\n\tMapScreen.set_reticle_mode(_map_screen, is_reticle_mode)\n\t_pause_menu_active = false\n\tadd_ui(_map_screen, false)\n\t_map_screen.enter(area_name, name_plate_name, callback)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func set_telepathy_effect\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_telepathy_effect(enabled: bool, object = global.get_player()):\n\tif enabled:\n\t\t_fade.focus_object(object)\n\t\t_fade.set_color(Color(0, 0, 0, 0.5))\n\t\t_fade.set_cut(0.1, 0.3, 1, Tween.EASE_OUT)\n\t\t_fade.set_spin(true, 0.5)\n\telse:\n\t\t_fade.set_cut(1, 0.3, 1, Tween.EASE_IN)\n\t\tyield(_fade, \"cut_done\")\n\t\t_fade.set_spin(false)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func info_plates_update\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func info_plates_update(scroll := false):\n\t_party_info_view.refresh_stats(scroll)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func info_plates_highlight\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func info_plates_highlight(characters: Array):\n\t_party_info_view.select_characters(characters)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func info_plates_show\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func info_plates_show(show_max_num := true, auto_hide := false, update_info := false):\n\tif update_info: info_plates_update()\n\tif is_instance_valid(_party_info_timer):\n\t\t_party_info_timer.stop()\n\t\t_party_info_timer.queue_free()\n\t_party_info_view.open(show_max_num)\n\tif auto_hide:\n\t\tvar timer := Timer.new()\n\t\t_party_info_timer = timer\n\t\tif _party_info_view.is_any_plate_scrolling():\n\t\t\tyield(_party_info_view, \"scroll_done\")\n\t\tyield(global.get_player(), \"moved\")\n\t\tif is_instance_valid(timer):\n\t\t\ttimer.wait_time = 1.0\n\t\t\ttimer.one_shot = true\n\t\t\tadd_child(timer)\n\t\t\ttimer.connect(\"timeout\", self, \"info_plates_hide\")\n\t\t\ttimer.start()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func info_plates_hide\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func info_plates_hide():\n\tif is_instance_valid(_party_info_timer):\n\t\t_party_info_timer.stop()\n\t\t_party_info_timer.queue_free()\n\t_party_info_view.close()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func create_flying_num\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func create_flying_num(text, target_pos: Vector2):\n\tvar FlyingNumTscn := load(\"res://Nodes/Ui/Battle/FlyingNumber.tscn\")\n\tvar flying_num: Label = FlyingNumTscn.instance()\n\tflying_num.text = str(text)\n\tglobal.currentScene.add_child(flying_num)\n\tflying_num.rect_position = target_pos - Vector2(16, 0) \n\tflying_num.run()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func clear_on_screen_enemies\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func clear_on_screen_enemies():\n\tprint(\"Before clear size: %s\" % _onScreenEnemies.size())\n\t\n\tfor enemy in _onScreenEnemies:\n\t\tif enemy.overworld_object and is_instance_valid(enemy.overworld_object) and enemy.overworld_object.has_method(\"remove_battle\"):\n\t\t\tenemy.overworld_object.remove_battle()\n\t_onScreenEnemies.clear()\n\t\n\tprint(\"Onscreen Enemy Count: %s\" % _onScreenEnemies.size())\n\t\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func move_on_screen_enemy_to_front\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func move_on_screen_enemy_to_front(onscreen_enemy: OnScreenEnemy):\n\tif has_on_screen_enemy(onscreen_enemy):\n\t\terase_on_screen_enemy(onscreen_enemy)\n\t\t_onScreenEnemies.push_front(onscreen_enemy)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func game_over\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func game_over(play_sfx := true):\n\tif play_sfx:\n\t\taudioManager.play_sfx(load(\"res://Audio/Sound effects/PartyLose.mp3\"), \"PartyLose\")\n\tvar game_over = GameOverRes.instance()\n\tgame_over.connect(\"done\", self, \"_on_game_over_done\", [game_over], CONNECT_ONESHOT)\n\tadd_ui(game_over)\n\t_game_over = true\n\tyield(game_over, \"fade_done\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/uiManager.gd",
+        "^((?:static )?func _on_game_over_done\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_game_over_done(instance: Node):\n\t_game_over = false \n\tremove_ui(instance)\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _test_all_yaml\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _test_all_yaml():\n\tvar test_dict := {}\n\t\n\tvar types := [\"Animations\", \"Battlers\", \"BattleScripts\", \"BattleSkills\", \"Dialogue\", \"FieldSkills\", \"Items\", \"MapMarkers\", \"NamingSequences\", \"PassiveSkills\", \"Shops\", \"StatusAilments\"]\n\t\n\tfor key in types:\n\t\ttest_dict[key] = {}\n\t\t_load_data(\"res://Data/%s/\" % key, test_dict[key])\n\t\tfor sub_key in test_dict[key]:\n\t\t\tprint(\"== %s ==\" % sub_key)\n\t\t\tprint(test_dict[key][sub_key])\n\t\t\tprint(\"\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _init\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _init():\n\t_init_flags()\n\t\n\tvar to_load := {\n\t\t\"BattleSkills\": _battle_skills,\n\t\t\"FieldSkills\": _field_skills,\n\t\t\"PassiveSkills\": _passive_skills,\n\t\t\"Shops\": _shop_lists,\n\t\t\"Items\": _items,\n\t\t\"StatusAilments\": _status_ailments\n\t}\n\tfor key in to_load:\n\t\t_load_data(\"res://Data/%s/\" % key, to_load[key])\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\tgod_storage = Inventory.new(Inventory.InvType.STORAGE_GOD)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _init_flags\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _init_flags():\n\tvar flag_names := [\n\t\t#===GLOBAL===\n\t\t#Melodies\n\t\t\"doll_melody\",\n\t\t\"canary_melody\",\n\t\t\"monkey_melody\",\n\t\t\"piano_melody\",\n\t\t\"cactus_melody\",\n\t\t\"dragon_melody\",\n\t\t\"eve_melody\",\n\t\t\"grave_melody\",\n\t\t\n\t\t#Abilities\n\t\t\"switch_leader\",\n\t\t\"bat\",\n\t\t\"energy_beam\",\n\t\t\"eagle_feather\",\n\t\t\"encore_tutorial\",\n\t\t\"used_encore\",\n\t\t\n\t\t#Misc\n\t\t\"earned_cash\",\n\t\t\"good_morning\",\n\t\t\"saved\",\n\t\t\n\t\t#Debug\n\t\t\"npc_disappear_1\",\n\t\t\"npc_dialog_1\",\n\t\t\"npc_dialog_2\",\n\t\t\n\t\t#Exploration\n\t\t\"visited_podunk\",\n\t\t\"visited_magicant\",\n\t\t\"visited_merrysville\",\n\t\t\"visited_twinkle_elementary\",\n\t\t\"visited_reindeer\",\n\t\t\"visited_spookane\",\n\t\t\"visited_snowman\",\n\t\t\"visited_yucca\",\n\t\t\"visited_youngtown\",\n\t\t\"visited_ellay\",\n\t\t\"visited_mtitoi\",\n\t\t\n\t\t#Pippi Banter\n\t\t\"pippi_reunion\",\n\t\t\"pippi_met_lloyd\",\n\t\t\"pippi_met_ana\",\n\t\t\"pippi_met_teddy\",\n\t\t\"pippi_rocket\",\n\t\t\n\t\t#Paty Members Visit Magicant\n\t\t\"lloyd_magicant\",\n\t\t\"ana_magicant\",\n\t\t\"teddy_magicant\",\n\t\t\n\t\t#===ACT 1===\n\t\t#Ninten's House\n\t\t\"poltergeist\",\n\t\t\"mimmie_door_opened\",\n\t\t\"doll_attack\",\n\t\t\"pillow_attack\",\n\t\t\"minnie_leave\",\n\t\t\"minnie_door\",\n\t\t\"doll_defeated\",\n\t\t\"phone_ring\",\n\t\t\"talked_to_dad\",\n\t\t\"mimmie_ask_key\",\n\t\t\"carol_ask_key\",\n\t\t\"mick_scratch\",\n\t\t\"mick_telepathy\",\n\t\t\"ninten_basement_door\",\n\t\t\"got_juice\",\n\t\t\"got_diary\",\n\t\t\"got_dog_treats\",\n\t\t\"got_asthma_spray\",\n\t\t\"gave_treats\",\n\t\t\n\t\t#Podunk\n\t\t\"beat_dog_bridge\",\n\t\t\"pippis_mom_call\",\n\t\t\"pippis_mom_help\",\n\t\t\n\t\t#Podunk Cemetery\n\t\t\"disguised_zombie_defeated\",\n\t\t\"cem_roots_grown\",\n\t\t\"got_shovel\",\n\t\t\"returned_shovel\",\n\t\t\n\t\t#Podunk Catacombs\n\t\t\"hidden_entrance_opened\",\n\t\t\"pippi_fight\",\n\t\t\"pippi_fought\",\n\t\t\"pippi_rescued\",\n\t\t\"courage_badge_received\",\n\t\t\"church_door_opened\",\n\t\t\"church_exited\",\n\t\t\n\t\t#Return to podunk\n\t\t\"canary_found\",\n\t\t\"wally_attack\",\n\t\t\"wally_fought\", # duplicated but ANYWAYS we shouldn't touch either of these cuz of backwards compatibility with older saves\n\t\t\"wally_defeat\",\n\t\t\"pippi_reunite\",\n\t\t\"alfred_song\",\n\t\t\"leave_canary_village\",\n\t\t\"pippi_delivered\",\n\t\t\n\t\t#Zoo\n\t\t\"zoo_key_stolen\",\n\t\t\"starman_jr_fought\",\n\t\t\"zoo_freed\",\n\t\t\"monkey_apologize\",\n\t\t\"guard_moved\",\n\t\t\"ninten_family_goodbye\",\n\t\t\n\t\t#===ACT 2===\n\t\t\n\t\t#Magicant\n\t\t\"got_magic_candy\",\n\t\t\"got_magic_ribbon\",\n\t\t\"lent_cash_card\",\n\t\t\"got_big_bag\",\n\t\t\"met_happiness_guy\",\n\t\t\"met_guy_who_talks_about_how_you_cant_part_if_you_havent_met\",\n\t\t\"got_nicknamed\",\n\t\t\"slept_at_spoon_guys_place\",\n\t\t\"guard_riddle_solved\",\n\t\t\"fountain_scouts_met\",\n\t\t\"marys_story_learned\",\n\t\t\"enteredwell\",\n\t\t\"first_flying_man\",\n\t\t\"flying_man_in_party\",\n\t\t\"flying_man_1_joined\",\n\t\t\"flying_man_2_joined\",\n\t\t\"flying_man_3_joined\",\n\t\t\"flying_man_4_joined\",\n\t\t\"flying_man_5_joined\",\n\n\t\t\"onyx_hook_found\",\n\t\t\"fish_attack\",\n\t\t\"fish_defeat\",\n\t\t\n\t\t\"forgotten_man_1\",\n\t\t\"forgotten_man_2\",\n\t\t\"forgotten_man_3\",\n\t\t\"forgotten_man_4\",\n\t\t\"forgotten_man_5\",\n\t\t\n\t\t#Merrysville 1\n\t\t\"roof_door_checked\",\n\t\t\"janitor_cutscene_finished\",\n\t\t\"lloyd_roof_1\",\n\t\t\n\t\t#Sweet's Little Factory\n\t\t\"rat_king_1\",\n\t\t\"rat_king_2\",\n\t\t\"sweet_factory_key_1\",\n\t\t\"got_br_wings\",\n\t\t\"got_br_head\",\n\t\t\"br_progress_1\",\n\t\t\"br_progress_1_arrived\",\n\t\t\"br_wings_attached\",\n\t\t\"br_progress_2\",\n\t\t\"br_progress_2_arrived\",\n\t\t\"br_head_attached\",\n\t\t\"br_progress_3\",\n\t\t\"br_progress_3_arrived\",\n\t\t\"br_finishing_touch\",\n\t\t\"rat_king_attack\",\n\t\t\"rat_king_defeat\",\n\t\t\"rat_king_disappear\",\n\t\t\"bottle_rocket_found\",\n\t\t\"sweet_factory_bomb_chain\",\n\t\t\"sweet_factory_exit_open\",\n\t\t\n\t\t#Merrysville 2\n\t\t\"lloyd_befriended\",\n\t\t\"lab_destroyed\",\n\t\t\"missile_explosion\",\n\t\t\"missile_damage_seen\",\n\t\t\"weird_teacher_appear\",\n\t\t\"weird_teacher_alt_dialogue\",\n\t\t\"weird_teacher_real_rocket_launched\",\n\t\t\"got_factory_pass\",\n\t\t\n\t\t#Duncan's Factory\n\t\t\"guard_dog_beaten\",\n\t\t\"drdistorto_1\",\n\t\t\"drdistorto_2\",\n\t\t\"drdistorto_3\",\n\t\t\"drdistorto_4\",\n\t\t\"computer_left_hacked\",\n\t\t\"computer_right_hacked\",\n\t\t\"computers_all_hacked\",\n\t\t\"franklin_badge_found\",\n\t\t\"drdistorto_attack\",\n\t\t\"drdistorto_defeat\",\n\t\t\"rocket_launched\",\n\t\t\"drdistorto_disappear\",\n\t\t#Merrysville 3\n\t\t\"lloyd_kitchen\",\n\t\t\"fixed_merrysville_road_bridge\",\n\t\t\"lloyd_mom_goodbye\",\n\t\t\"train_to_reindeer\",\n\n\t\t#===ACT 3===\n\n\t\t#Reindeer\n\t\t\"met_arms_dealer\",\n\t\t\"received_swindler_money\",\n\t\t\"donated_to_charity\",\n\t\t\"found_ana_hat\",\n\n\t\t#Magicant\n\t\t\"magicant_second_visit\",\n\t\t\"wally2_attack\",\n\t\t\"wally2_defeat\",\n\t\t\n\t\t#Snowman\n\t\t\"lloyd_asleep\",\n\t\t\"ana_befriended\",\n\t\t\"nancy_attack\",\n\t\t\"nancy_defeat\",\n\t\t\n\t\t#===ACT 4===\n\t\t\n\t\t#Spookane\n\t\t\"magicant_third_visit\",\n\t\t\n\t\t#Yucca Desert\n\t\t\"giantrobot1_attack\",\n\t\t\"giantrobot1_defeat\",\n\t\t\"magicant_fourth_visit\",\n\t\t\n\t\t#Youngtown #Swamp #Ellay #MtItoi\n\t\t\"magicant_fifth_visit\",\n\t\t\"magicant_sixth_visit\"\n\t]\n\t\n\tfor flag in flag_names:\n\t\tflags[flag] = false\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _load_data\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _load_data(path: String, dest: Dictionary, sub_dir: String = \"\"):\n\tvar dir = Directory.new()\n\tif dir.open(path) != OK:\n\t\tprint(\"An error occurred when trying to access %s.\" % path)\n\t\treturn\n\tdir.list_dir_begin()\n\tvar file_name = dir.get_next()\n\twhile file_name != \"\":\n\t\tif dir.current_is_dir():\n\t\t\tif not file_name in [\".\", \"..\"]:\n\t\t\t\t_load_data(\"%s%s/\" % [path, file_name], dest, \"%s%s/\" % [sub_dir, file_name])\n\t\telse:\n\t\t\tif file_name.ends_with(\".yaml\"):\n\t\t\t\tvar json_data = get_json_data(path + file_name)\n\t\t\t\tdest[sub_dir + file_name.trim_suffix(\".yaml\")] = json_data\n\t\tfile_name = dir.get_next()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func set_flag\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_flag(flag_name: String, value: bool, emit_signal := true):\n\tif flags.has(flag_name):\n\t\tflags[flag_name] = value\n\t\tif emit_signal: global.emit_signal(\"flags_updated\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func set_object_flag\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_object_flag(flag_name: String, value: bool, emit_signal := true):\n\tobject_flags[flag_name] = value\n\tif emit_signal: global.emit_signal(\"flags_updated\")\n\n########################### DATA GETTERS ###########################\n\n# AILMENTS\n"
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "Name"
+      ],
+      "expected": {
+        "margin_left": 43.0,
+        "margin_top": 17.0,
+        "margin_right": 91.0,
+        "margin_bottom": 29.0,
+        "custom_fonts/font": {
+          "ExtResource": 1
+        },
+        "text": "Player"
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "Level"
+      ],
+      "expected": {
+        "anchor_left": 1.0,
+        "anchor_right": 1.0,
+        "margin_left": -159.0,
+        "margin_top": 5.0,
+        "margin_right": -124.0,
+        "margin_bottom": 19.0,
+        "size_flags_horizontal": 8,
+        "custom_fonts/font": {
+          "ExtResource": 2
+        },
+        "text": "LV100",
+        "align": 2
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "Title"
+      ],
+      "expected": {
+        "anchor_left": 1.0,
+        "anchor_right": 1.0,
+        "margin_left": -116.0,
+        "margin_top": 10.0,
+        "margin_right": -68.0,
+        "margin_bottom": 24.0,
+        "custom_fonts/font": {
+          "ExtResource": 1
+        },
+        "text": "Location"
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "Time"
+      ],
+      "expected": {
+        "anchor_left": 1.0,
+        "anchor_right": 1.0,
+        "margin_left": -116.0,
+        "margin_top": 24.0,
+        "margin_right": 1.0,
+        "margin_bottom": 50.0,
+        "size_flags_vertical": 0,
+        "custom_constants/line_separation": -1,
+        "custom_fonts/normal_font": {
+          "ExtResource": 2
+        },
+        "bbcode_enabled": true,
+        "bbcode_text": "SAVE_TIME",
+        "text": "SAVE_TIME",
+        "scroll_active": false
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "NoData"
+      ],
+      "expected": {
+        "visible": false,
+        "anchor_right": 1.0,
+        "margin_left": 13.0,
+        "margin_top": 6.0,
+        "margin_right": -6.0,
+        "margin_bottom": 63.0,
+        "color": [
+          0.0784314,
+          0.0666667,
+          0.0901961,
+          1
+        ]
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "NoData/Label"
+      ],
+      "expected": {
+        "anchor_right": 1.0,
+        "margin_left": -7.0,
+        "margin_bottom": 56.0,
+        "custom_fonts/font": {
+          "ExtResource": 2
+        },
+        "text": "SAVE_NODATA",
+        "align": 1,
+        "valign": 1
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "FileNum"
+      ],
+      "expected": {
+        "margin_left": 7.0,
+        "margin_top": 3.0,
+        "margin_right": 67.0,
+        "margin_bottom": 17.0,
+        "custom_fonts/font": {
+          "ExtResource": 2
+        },
+        "text": "1"
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "ColorRect"
+      ],
+      "expected": {
+        "anchor_left": 1.0,
+        "anchor_right": 1.0,
+        "margin_left": -119.0,
+        "margin_top": 8.0,
+        "margin_right": -118.0,
+        "margin_bottom": 50.0,
+        "color": [
+          0.478431,
+          0.423529,
+          0.52549,
+          1
+        ]
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/Saves/saveFile.tscn",
+        "ColorRect2"
+      ],
+      "expected": {
+        "anchor_left": 1.0,
+        "anchor_right": 1.0,
+        "margin_left": -119.0,
+        "margin_top": 23.0,
+        "margin_right": -7.0,
+        "margin_bottom": 24.0,
+        "color": [
+          0.478431,
+          0.423529,
+          0.52549,
+          1
+        ]
+      }
+    }
+  ]
+}

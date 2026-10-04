@@ -1186,7 +1186,7 @@
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
     "licence_review": "Pinned LICENSE permits assets in game-related forks/modifications/translations; original art retained solely for the Mother: Encore port under its existing conditions",
     "schema": 1,
-    "source_ir_sha256": "c6239cebd11bd70a8d9a29d258d477a9322f9f6696b9dc567513ace52f86f49c",
+    "source_ir_sha256": "57efeca26ba2ad7fc4ae5088cbdb725140ba337ab3a98bcd11a24e191793ecd1",
     "sources": {
       "Graphics/Battle BGS/pillow.png": "8e4e43c79fcccad172b758195e4f9b705eb2dbd5894af8b2ffc341f05b3388e8",
       "Graphics/Battle Sprites/pillow.png": "041791dc0664442498bad2ba5867748987c5fa70c8d7b04cba520a1e278baee9"

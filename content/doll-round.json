@@ -85,10 +85,10 @@
     "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066"
   },
   "dependencies": {
-    "content/native-battle.json": "ff44b8e515dc6e3e61bfb4e0c47df2bcc063e951bf24e927e387aaa0c0d5e924",
-    "content/native-opening.json": "925efd1ddbd73cf21ea9a43f158e75de80ca399767802bfb4ae36ca68be94764",
-    "content/doll-entry.json": "147b07843c17c9065c973f617d866de5481e9c3a9ffa288579f0a134e245deda",
-    "content/native-round.json": "35e546e808931982bb5d2969d3394af61827203e4af2107ceb752bc6d00e0f3b"
+    "content/native-battle.json": "f12bcb6c3187c1a2b775d260b83ef20f60550ec300511e8c3ba0acd5530fa3e7",
+    "content/native-opening.json": "503df1cbfe3395520856007268a674c6525a8414bcdba961a71f77f74f04743b",
+    "content/doll-entry.json": "41e2a33500f2ea2704965515647b0b66cfeaccada8bc4e92da7403f1e5ea0d03",
+    "content/native-round.json": "340e18fd57ab0ead4af8b522cb8a43545e4bb023d5be6b2bd1ef85c62bf0224c"
   },
   "skills": [
     {
@@ -227,9 +227,6 @@
     "enemy_participant": 1,
     "basic_skill": 0,
     "guard_skill": 3,
-    "basic_menu": 1,
-    "items_menu": 2,
-    "guard_menu": 3,
     "locale": "en",
     "enemy_name": 21,
     "enemy_article": 22,
@@ -237,7 +234,10 @@
     "mortal_damage": 15,
     "no_effect": 16,
     "show_intro_outro": 0,
-    "win_flag": ""
+    "win_flag": "",
+    "basic_menu": 1,
+    "items_menu": 2,
+    "guard_menu": 3
   },
   "texts": [
     {

@@ -16,6 +16,7 @@ import sys
 import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 MAGIC = b'ENCRMD01'
 FAMILY = 0x454e0002
 RULES = 4
@@ -449,6 +450,11 @@ def validate_ir(ir):
 
 
 def verify_provenance(ir, root=ROOT):
+    if ir['rules']>=7:
+        check('content/pillow-source-bindings.json' in ir['provenance']['sources'],'Missing Pillow source binding provenance')
+        check('content/programme-lowering-recipe.json' in ir['provenance']['sources'],'Missing programme recipe provenance')
+        from tools.programme_lowering_recipe import verify_room
+        verify_room(ir,root)
     for name,expected in ir['provenance']['sources'].items():
         path=(root/name).resolve()
         try:path.relative_to(root.resolve())
@@ -564,6 +570,11 @@ def main():
         if a.action in('compile','verify'):
             check(a.input.stat().st_size<=16*1024*1024,'IR exceeds authoring limit')
             ir=json.loads(a.input.read_text(encoding='utf-8'));validate_ir(ir);verify_provenance(ir)
+            if ir['rules']>=7:
+                check('content/world-program-bindings.json'in ir['provenance']['sources'],'Missing world binding provenance')
+                from tools.extract_native_content import Extractor
+                from tools.world_program_bindings import load as load_world_bindings,verify_room
+                source=Extractor(ROOT);verify_room(load_world_bindings(source),ir,source)
             blob,manifest=compile_ir(ir)
             manifest['ir_source']=a.input.resolve().relative_to(ROOT).as_posix()if a.input.resolve().is_relative_to(ROOT)else a.input.name
             manifest['ir_sha256']=hashlib.sha256(a.input.read_bytes()).hexdigest()

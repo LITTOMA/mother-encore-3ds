@@ -21,6 +21,11 @@ struct NamingField {
  uint32_t kind=0,maximum=0,resource=0;std::string target,initial,prompt;std::vector<std::string>defaults;bool shadow=false;
  std::array<float,2>actor_position{},shadow_position{};NamingAnimation actor;
 };
+struct NamingPresentation {
+ uint32_t source_width=0,source_height=0,box=0,cursor=0,actor=0,shadow=0;
+ std::array<uint32_t,5>layouts{};std::array<uint32_t,7>texts{};std::array<uint32_t,3>sounds{};
+ std::vector<uint32_t>keyboard;std::array<float,4>field_bevel{};
+};
 class NewGameSetupData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);bool valid()const{return valid_;}
@@ -34,7 +39,7 @@ public:
  bool battle_text(RoundView,uint32_t,std::string_view nickname,std::string&)const;
  bool supported_name(std::string_view)const;
  bool supported_field(uint32_t,std::string_view)const;
- std::vector<NamingField> fields;
+ std::vector<NamingField> fields;NamingPresentation presentation;
 private:bool valid_=false;std::vector<NamingBattleText>battle_texts_;
 };
 // Call on copies at New Game selection, before entering naming. Source UID

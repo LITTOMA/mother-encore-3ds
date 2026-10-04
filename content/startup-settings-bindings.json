@@ -193,13 +193,13 @@
       "generated_roles": []
     },
     "doll-preview/source.json": {
-      "sha256": "3183a75fd9157362d946c17030752a89b9f81779f0c2b8df65e5e418794a1744",
+      "sha256": "6069ad8cef20c71232d674af5d421ee490aaac43ca9b11de5d8860a530a0b767",
       "generated_roles": [
         "font"
       ]
     },
     "pillow-preview/source.json": {
-      "sha256": "44272a3bc771c1f3ba4c0065affbd59d8211e9595b9f0dbc9792229f7a50a95e",
+      "sha256": "7afa3209998347433334deefd09cdc011a6e85cf8fa83b19d24ce6e3884c7215",
       "generated_roles": [
         "font"
       ]

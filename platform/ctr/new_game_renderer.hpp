@@ -14,7 +14,7 @@ class NewGameRenderer {
   auto box=[&](uint32_t resource,const SettingsRect&r){return settings_art_.draw_ninepatch(resource,r.x,r.y,r.w,r.h,d.patch.data(),d.text_color);};
   auto label=[&](const std::string&text,SettingsRect r,bool right=false){const float x=r.x+(right?r.w-font.text_width(text.c_str()):0);return font.draw_text(text.c_str(),pixel(x),pixel(r.y),1,1,d.text_color);};
   auto offset=[](const SettingsRect&a,const SettingsRect&b){return SettingsRect{a.x+b.x,a.y+b.y,b.w,b.h};};
-  auto arrow=[&](const SettingsRect&r){return sprite(1,data_->arrow.frame(menu.elapsed()),r.x+data_->arrow_offset[0],r.y+data_->arrow_offset[1]);};
+  auto arrow=[&](const SettingsRect&r){return sprite(data_->presentation.cursor,data_->arrow.frame(menu.elapsed()),r.x+data_->arrow_offset[0],r.y+data_->arrow_offset[1]);};
   const auto frame=confirmation?d.confirmation_settings_box:d.settings_box;if(!box(d.box_resource,frame))return false;
   const auto&chosen=menu.settings();const std::string values[]={menu.localized("settings.speed/"+std::to_string(d.speed_index(chosen.text_speed)),d.speed_labels[size_t(d.speed_index(chosen.text_speed))]),menu.localized("settings.flavor/"+std::to_string(d.flavor_index(chosen.menu_flavor)),d.flavor_labels[size_t(d.flavor_index(chosen.menu_flavor))]),menu.localized("settings.prompt/"+std::to_string(d.prompt_index(chosen.button_prompts)),d.prompt_labels[size_t(d.prompt_index(chosen.button_prompts))])};
   for(size_t i=0;i<d.rows.size()-(confirmation?1:0);++i){auto l=offset(frame,d.rows[i].label),v=offset(frame,d.rows[i].value);if(confirmation){l.x+=d.confirmation_row_offset[0];l.y+=d.confirmation_row_offset[1];v.x+=d.confirmation_row_offset[0];v.y+=d.confirmation_row_offset[1];}if(!label(menu.localized("settings.row/"+std::to_string(i),d.rows[i].text),l)||(i<3&&!label(values[i],v,true)))return false;if(!confirmation&&menu.phase()==NamingPhase::Settings&&i==menu.settings_row()&&!arrow(l))return false;}
@@ -41,19 +41,19 @@ public:
   if(!menu.active())return true;
   if(!data_||menu.data()!=data_||!((width==320&&height==180)||(width==400&&height==240)))return false;
   const auto&d=*data_;
-  BattleRenderer::draw_rect(0,0,width,height,d.colors[0]);C3D_Mtx saved;C2D_ViewSave(&saved);C2D_ViewTranslate((width-320)/2,(height-180)/2);
+  BattleRenderer::draw_rect(0,0,width,height,d.colors[0]);C3D_Mtx saved;C2D_ViewSave(&saved);C2D_ViewTranslate((width-d.presentation.source_width)/2,(height-d.presentation.source_height)/2);
   const auto draw=[&](){
    if(menu.phase()!=encore::upstream::NamingPhase::Editing)return draw_settings(menu,font);
-   for(auto index:{0u,4u}){const auto&r=d.layouts[index];if(!settings_art_.draw_ninepatch(settings_->box_resource,r.x,r.y,r.w,r.h,d.patch.data(),d.colors[1]))return false;}
-   const auto&f=menu.field();if((f.shadow&&!sprite(3,0,f.shadow_position[0],f.shadow_position[1]))||!sprite(f.resource,f.actor.frame(menu.elapsed()),f.actor_position[0],f.actor_position[1]))return false;
-   const auto&box=d.layouts[0];const auto&prompt=d.layouts[1];const auto&field=d.layouts[2];const auto&label=d.layouts[3];
+   for(auto index:{d.presentation.layouts[0],d.presentation.layouts[4]}){const auto&r=d.layouts[index];if(!art_.draw_ninepatch(d.presentation.box,r.x,r.y,r.w,r.h,d.patch.data(),d.colors[1]))return false;}
+   const auto&f=menu.field();if((f.shadow&&!sprite(d.presentation.shadow,0,f.shadow_position[0],f.shadow_position[1]))||!sprite(f.resource,f.actor.frame(menu.elapsed()),f.actor_position[0],f.actor_position[1]))return false;
+   const auto&box=d.layouts[d.presentation.layouts[0]];const auto&prompt=d.layouts[d.presentation.layouts[1]];const auto&field=d.layouts[d.presentation.layouts[2]];const auto&label=d.layouts[d.presentation.layouts[3]];
    if(!font.draw_text(menu.prompt().c_str(),pixel(box.x+prompt.x+(prompt.w-font.text_width(menu.prompt().c_str()))/2),pixel(box.y+prompt.y),1,1,d.colors[1]))return false;
    BattleRenderer::draw_rect(box.x+field.x,box.y+field.y,field.w,field.h,encore::ctr::loading_menu_flavor_color(d.colors[2]));
-   BattleRenderer::draw_rect(box.x+field.x-1,box.y+field.y+1,field.w+2,field.h-2,encore::ctr::loading_menu_flavor_color(d.colors[2]));
+   BattleRenderer::draw_rect(box.x+field.x+d.presentation.field_bevel[0],box.y+field.y+d.presentation.field_bevel[1],field.w+d.presentation.field_bevel[2],field.h+d.presentation.field_bevel[3],encore::ctr::loading_menu_flavor_color(d.colors[2]));
    const auto name=menu.dotted_name();if(!font.draw_text(name.c_str(),pixel(box.x+field.x+(field.w-font.text_width(name.c_str()))/2),pixel(box.y+field.y+label.y+(field.h-label.y-font.text_height(d.font_height))/2),1,1,d.colors[3]))return false;
-   if(!art_.draw_sprite(4+menu.panel(),0,0,0,320,180,d.colors[1]))return false;
+   if(!art_.draw_sprite(d.presentation.keyboard[menu.panel()],0,0,0,float(d.presentation.source_width),float(d.presentation.source_height),d.colors[1]))return false;
    for(const auto&k:d.panels[menu.panel()])if(k.kind){const auto value=menu.localized("naming.command/"+std::to_string(k.kind),k.value);const float x=k.rect.x+(k.kind==3?k.rect.w-font.text_width(value.c_str()):0);if(!font.draw_text(value.c_str(),pixel(x),pixel(k.rect.y),1,1,d.colors[1]))return false;}
-   const auto cursor=menu.cursor();return sprite(1,d.arrow.frame(menu.elapsed()),cursor[0]+d.arrow_offset[0],cursor[1]+d.arrow_offset[1]);
+   const auto cursor=menu.cursor();return sprite(data_->presentation.cursor,d.arrow.frame(menu.elapsed()),cursor[0]+d.arrow_offset[0],cursor[1]+d.arrow_offset[1]);
   };const bool ok=draw();C2D_ViewRestore(&saved);return ok&&menu.locale_error().empty();
  }
 };

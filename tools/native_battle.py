@@ -3,6 +3,7 @@
 import argparse,hashlib,json,math,struct,sys,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 STRIDES=[1,60,92,24,24,20,64,16,32,60,16,36]
 PARAMETERS=['CanvasSize','SceneDuration','MaskDuration','MaskColor','MaskGrid','MenuDuration','EnemyMoveDuration','EnemyMoveScaleDuration','EnemyMoveScaleDelay','EnemyMoveInitialScale','PlayerJumpDuration','PlayerJumpHeight','CursorDuration','CursorRepeatDelay','CursorRepeatInterval','PlateSize','MenuSpacing','EnemyShakeInterval','EnemyShakeMagnitude','FontMetrics','PartyJumpStart','PartyJumpTarget','PartyJumpScale','PartySquash','PartyShow','EnemyTint','BackdropColor','DigitGrid','PartyNudge','PartyScreenOffset','CursorScale1','CursorScale2','CursorScale3','PartyQuake1','PartyQuake2','PartyQuake3','PartyQuake4','PartyQuake5','MaskOldColor']
 class ContentError(ValueError):pass
@@ -14,11 +15,17 @@ def vec(v):
  require(len(v)<=4 and all(isinstance(x,(int,float))and math.isfinite(x)for x in v),'Invalid finite vector')
  return list(v)+[0]*(4-len(v))
 def verify_sources(ir):
+ from tools.extract_battle_entry import Extractor
+ from tools.battle_entry_bindings import verify_ir
+ verify_ir(ir,Extractor(ROOT))
  require(ir['schema']==1 and ir['kind']=='encore.native-battle-entry.source-ir','Unknown battle IR')
  for path,sha in ir['sources'].items():
   p=ROOT/'upstream/MOTHER-Encore'/path
   require(digest(p)==sha,'Changed source '+path)
 def lower(ir,assets,room=None):
+ from tools.extract_battle_entry import Extractor
+ from tools.battle_entry_bindings import compiler
+ entry_bindings=compiler(ir,assets,Extractor(ROOT));plate_binding=entry_bindings['plate'];depths=entry_bindings['compiler']['plate_depths'];menu_depths=entry_bindings['compiler']['menu_depths']
  pool=bytearray(b'\0');strings={'':0}
  def string(v):
   require(isinstance(v,str)and '\0'not in v,'Invalid string')
@@ -49,7 +56,8 @@ def lower(ir,assets,room=None):
  layouts=[];roles={};tracks=[];keys=[];events=[];menus=[]
  def layout(name,kind,role,resource,rect,color=(1,1,1,1),frame=0,text='',visible=True,centered=False,depth=0,margins=(0,0,0,0),binding=0):
   index=len(layouts);roles[name]=index
-  layouts.append([index+1,kind,role,names.get(resource,0),frame,string(text),int(visible)|(int(centered)<<1),binding,vec(rect),vec(color),depth,list(margins)]);return index
+  require(resource is None or resource in names,'Unknown layout resource alias')
+  layouts.append([index+1,kind,role,names[resource]if resource is not None else 0,frame,string(text),int(visible)|(int(centered)<<1),binding,vec(rect),vec(color),depth,list(margins)]);return index
  def track(target,prop,clock,times,values,eases=None,update=0):
   require(len(times)==len(values)>0,'Invalid track')
   first=len(keys);eases=eases or[1]*len(times)
@@ -88,32 +96,38 @@ def lower(ir,assets,room=None):
  track('party',3,6,[0,presentation['party_sprite']['show_tween_seconds']],[derived['party_hidden_position'][1],derived['party_shown_position'][1]],[1,1])
  # One plate for the current scoped fresh-game party. All child positions are source/natively resolved.
  px,py=derived['plate_position'];plate_nodes=presentation['plate_nodes'];ps=derived['plate_size'];m=plate_nodes['.']
- layout('plate_bg',5,5,'plate-bg',[px+3,py+16,ps[0]-6,ps[1]-19],depth=40,margins=(2,2,2,2))
- layout('plate',3,5,'plate',[px,py,*ps],depth=42,margins=[m['patch_margin_'+s]for s in ['left','top','right','bottom']])
- for what in ['hp','pp']:
-  node=plate_nodes[what+'_label'];layout(what+'_label',1,5,what+'-label',[px+node['margin_left'],py+node['margin_top'],node['margin_right']-node['margin_left'],node['margin_bottom']-node['margin_top']],depth=43)
-  node=plate_nodes['ContentBattle/Counter/'+what.upper()+'CounterBG'];layout(what+'_counter',1,5,'counter',[px+6+node['margin_left'],py+16+node['margin_top'],27,9],depth=43)
-  stat=ir['party']['effective_stats'][what]
-  for digit,label in enumerate(['H','T','O']):
-   node=plate_nodes['ContentBattle/Counter/'+what.upper()+'_'+label];value=(stat//(10**(2-digit)))%10
-   layout(what+'_'+label,1,7 if what=='hp'else 8,'digits',[px+6+node['position'][0],py+16+node['position'][1],7,7],frame=value*resources[names['digits']][5],visible=not(digit==0 and value==0),depth=44,binding=digit)
- name=ir['party']['initial_save_data']['name'];layout('party_name',4,6,'font',[px+1,py+1,ps[0]-1,15],[0,0,0,1],text=name,depth=45)
+ content=plate_nodes[plate_binding['content']];counter_node=plate_nodes[plate_binding['counter']]
+ content_pos=[content['margin_left'],content['margin_top']];content_size=[ps[i]+content['margin_'+side]-content_pos[i]for i,side in enumerate(['right','bottom'])]
+ counter_pos=[content_size[0]*counter_node['anchor_left']+counter_node['margin_left'],counter_node.get('margin_top',0)]
+ layout('plate_bg',5,5,plate_binding['background_asset'],[px+content_pos[0],py+content_pos[1],*content_size],depth=depths[0],margins=entry_bindings['compiler']['background_margins'])
+ layout('plate',3,5,plate_binding['frame_asset'],[px,py,*ps],depth=depths[1],margins=[m['patch_margin_'+side]for side in ['left','top','right','bottom']])
+ for stat_binding,label_asset in zip(plate_binding['stats'],plate_binding['label_assets']):
+  what=stat_binding['stat'];node=plate_nodes[stat_binding['label']]
+  layout(what+'_label',1,5,label_asset,[px+node['margin_left'],py+node['margin_top'],node['margin_right']-node['margin_left'],node['margin_bottom']-node['margin_top']],depth=depths[2])
+  node=plate_nodes[stat_binding['counter']];counter_resource=resources[names[plate_binding['counter_asset']]]
+  layout(what+'_counter',1,5,plate_binding['counter_asset'],[px+content_pos[0]+counter_pos[0]+node['margin_left'],py+content_pos[1]+counter_pos[1]+node['margin_top'],counter_resource[3],counter_resource[4]],depth=depths[2])
+  stat=ir['party']['effective_stats'][what];digits_resource=resources[names[plate_binding['digits_asset']]]
+  for digit in stat_binding['digits']:
+   node=plate_nodes[digit['node']];value=(stat//(10**digit['power']))%10
+   layout(digit['label'],1,stat_binding['role'],plate_binding['digits_asset'],[px+content_pos[0]+counter_pos[0]+node['position'][0],py+content_pos[1]+counter_pos[1]+node['position'][1],digits_resource[3]/digits_resource[5],digits_resource[4]/digits_resource[6]],frame=value*digits_resource[5],visible=not(digit['binding']==0 and value==0),depth=depths[3],binding=digit['binding'])
+ name=ir['party']['initial_save_data']['name'];name_node=plate_nodes[plate_binding['name']]
+ name_size=[ps[0]*name_node['anchor_right']+name_node.get('margin_right',0)-name_node['margin_left'],name_node['margin_bottom']-name_node['margin_top']]
+ layout('party_name',4,6,plate_binding['name_asset'],[px+name_node['margin_left'],py+name_node['margin_top'],*name_size],name_node['custom_colors/font_color'],text=name,depth=depths[4])
  for name in list(roles):
   if layouts[roles[name]][2]in[5,6,7,8]:
    base=layouts[roles[name]][8][1]
    apply_track(name,3,0,'scene.transitionIn','PlayerInfo:rect_position:y',lambda v,b=base:b+v-viewport[1])
  for i,action in enumerate(ir['menu']['actions']):
-  alias={'bash_icon':'basic','items_icon':'items','defend_icon':'defend'}[action['icon_asset']];x,y=derived['command_icon_positions'][i];idx=layout('menu_'+action['id'],1,9,alias,[x,y,16,16],depth=110,binding=i)
+  binding=entry_bindings['menu'][i];alias=binding['asset_alias'];x,y=derived['command_icon_positions'][i];idx=layout('menu_'+action['id'],1,9,alias,[x,y,presentation['scene_nodes'][binding['node']]['margin_right']-presentation['scene_nodes'][binding['node']].get('margin_left',0),presentation['scene_nodes'][binding['node']]['margin_bottom']],depth=menu_depths[1],binding=i)
   menus.append([i+1,string(presentation['translations_en'][action['label_key']]),idx,1])
-  source={'Basic':'BashIcon','Items':'ItemsIcon','Defend':'DefendIcon'}[action['id']]
-  apply_track('menu_'+action['id'],3,2,'actions.transitionIn','ActionMenuBox/ActionIcons/'+source+':margin_top',lambda v,b=y:b+v)
+  apply_track('menu_'+action['id'],3,2,'actions.transitionIn',binding['node']+':margin_top',lambda v,b=y:b+v)
  cursor=ir['menu']['cursor_size'];center=derived['cursor_centers'][0];color=presentation['scene_nodes']['ActionMenuBox/Arrow/ActionCursor']['color']
- layout('cursor',2,10,None,[center[0]-cursor[0]/2,center[1]-cursor[1]/2,*cursor],color,visible=False,depth=109)
+ layout('cursor',2,10,None,[center[0]-cursor[0]/2,center[1]-cursor[1]/2,*cursor],color,visible=False,depth=menu_depths[0])
  apply_track('cursor',1,2,'actions.transitionIn','ActionMenuBox/Arrow:position',lambda v:[v[0]-cursor[0]/2,v[1]+presentation['scene_nodes']['ActionMenuBox']['margin_top']-cursor[1]/2])
  box=presentation['scene_nodes']['TargetNameBox'];bw=box['margin_right']-box['margin_left'];bh=-box['margin_top']
- layout('target_box',3,13,'box',[box['margin_left'],box['margin_top'],bw,bh],depth=111,margins=[box['patch_margin_'+s]for s in['left','top','right','bottom']])
+ layout('target_box',3,13,'box',[box['margin_left'],box['margin_top'],bw,bh],depth=menu_depths[2],margins=[box['patch_margin_'+s]for s in['left','top','right','bottom']])
  apply_track('target_box',3,2,'actions.transitionIn','TargetNameBox:rect_position:y')
- label=presentation['scene_nodes']['TargetNameBox/Label'];layout('target_text',4,14,'font',[box['margin_left']+label['margin_left'],label['margin_top']+box['margin_top'],label['margin_right']-label['margin_left'],label['margin_bottom']-label['margin_top']],text=presentation['translations_en'][ir['menu']['actions'][0]['label_key']],depth=112)
+ label=presentation['scene_nodes']['TargetNameBox/Label'];layout('target_text',4,14,'font',[box['margin_left']+label['margin_left'],label['margin_top']+box['margin_top'],label['margin_right']-label['margin_left'],label['margin_bottom']-label['margin_top']],text=presentation['translations_en'][ir['menu']['actions'][0]['label_key']],depth=menu_depths[3])
  apply_track('target_text',3,2,'actions.transitionIn','TargetNameBox:rect_position:y',lambda v:v+label['margin_top'])
  method_k=source_track('scene.transitionIn','.')
  event_ids={'_enemy_to_position':1,'_jump_to_battle':2,'_show_action_menu':3,'_show_enemy_sprites':4,'_remove_enemy_transitions':5}
@@ -121,7 +135,7 @@ def lower(ir,assets,room=None):
  # _jump_to_battle creates nested SceneTreeTimers; the state machine preserves these waits, not a flattened timestamp.
  params={k:[0,0,0,0]for k in PARAMETERS}
  def param(k,v):params[k]=vec(v)
- for k,v in [('CanvasSize',viewport),('SceneDuration',entry['scene_duration']),('MaskDuration',entry['overlay_duration']),('MaskColor',[v/255 for v in entry['neutral_color_rgba8']]),('MaskGrid',entry['mask_grid']),('MenuDuration',entry['action_reveal_duration']),('EnemyMoveDuration',et['duration']),('PlayerJumpDuration',pt['jump_duration']),('PlayerJumpHeight',pt['jump_apex_offset']),('CursorDuration',ir['menu']['cursor_tween_seconds']),('CursorRepeatDelay',ir['menu']['cursor_repeat_delay_seconds']),('CursorRepeatInterval',ir['menu']['cursor_repeat_delay_seconds']),('PlateSize',ps),('MenuSpacing',presentation['scene_nodes']['ActionMenuBox/ActionIcons']['custom_constants/separation']),('EnemyShakeInterval',et['shake_frequency']),('EnemyShakeMagnitude',et['shake_range']),('FontMetrics',[assets['font_metrics']['ascent'],assets['font_metrics']['descent'],assets['font_metrics']['height']]),('PartyJumpStart',[pt['initial_jump_wait'],pt['per_member_wait'],pt['jump_up_seconds'],pt['jump_down_seconds']]),('PartyJumpTarget',[pt['jump_target_x'],pt['jump_target_y'],pt['jump_apex_offset'],pt['jump_height_threshold']]),('PartyJumpScale',[*pt['scale_target'],pt['scale_delay'],pt['scale_duration']]),('PartySquash',[*pt['squash_scale'],squash,0]),('PartyShow',[presentation['party_sprite']['show_tween_seconds'],presentation['party_sprite']['distance_to_shown']]),('EnemyTint',[*et['tint_to'][:3],et['tint_seconds']]),('BackdropColor',[0,0,0,1]),('DigitGrid',[resources[names['digits']][5],7,7])]:param(k,v)
+ for k,v in [('CanvasSize',viewport),('SceneDuration',entry['scene_duration']),('MaskDuration',entry['overlay_duration']),('MaskColor',[v/255 for v in entry['neutral_color_rgba8']]),('MaskGrid',entry['mask_grid']),('MenuDuration',entry['action_reveal_duration']),('EnemyMoveDuration',et['duration']),('PlayerJumpDuration',pt['jump_duration']),('PlayerJumpHeight',pt['jump_apex_offset']),('CursorDuration',ir['menu']['cursor_tween_seconds']),('CursorRepeatDelay',ir['menu']['cursor_repeat_delay_seconds']),('CursorRepeatInterval',ir['menu']['cursor_repeat_delay_seconds']),('PlateSize',ps),('MenuSpacing',presentation['scene_nodes']['ActionMenuBox/ActionIcons']['custom_constants/separation']),('EnemyShakeInterval',et['shake_frequency']),('EnemyShakeMagnitude',et['shake_range']),('FontMetrics',[assets['font_metrics']['ascent'],assets['font_metrics']['descent'],assets['font_metrics']['height']]),('PartyJumpStart',[pt['initial_jump_wait'],pt['per_member_wait'],pt['jump_up_seconds'],pt['jump_down_seconds']]),('PartyJumpTarget',[pt['jump_target_x'],pt['jump_target_y'],pt['jump_apex_offset'],pt['jump_height_threshold']]),('PartyJumpScale',[*pt['scale_target'],pt['scale_delay'],pt['scale_duration']]),('PartySquash',[*pt['squash_scale'],squash,0]),('PartyShow',[presentation['party_sprite']['show_tween_seconds'],presentation['party_sprite']['distance_to_shown']]),('EnemyTint',[*et['tint_to'][:3],et['tint_seconds']]),('BackdropColor',[0,0,0,1]),('DigitGrid',[digits_resource[5],digits_resource[3]/digits_resource[5],digits_resource[4]/digits_resource[6]])]:param(k,v)
  nudge=pt['center_nudge'];param('PartyNudge',[nudge['center_x'],nudge['distance_lt'],nudge['offset'],nudge['duration']]);param('PartyScreenOffset',pt['screen_offset'])
  cursor_steps=ir['menu']['cursor_scale_steps']
  param('CursorScale1',cursor_steps[0]['to']+cursor_steps[0]['from'])

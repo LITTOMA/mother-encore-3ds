@@ -1,0 +1,7590 @@
+{
+  "schema": 1,
+  "kind": "encore.programme-lowering.reviewed-recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+    "Data/Dialogue/Podunk/dollmelody.yaml": "9058f5f24fece54d7446e152830579f763773f312a2be5710c17a9d67c357fd6",
+    "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
+    "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": "24937777b12b6796ec2c3ce357a95b032575926ec836a097aa37b8620808ed03",
+    "Data/Dialogue/Podunk/mimmie_dead_doll.yaml": "a80642231df7dd64410eb34544f84265d53974587c7098efc32585816ec7d371",
+    "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a",
+    "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
+    "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+    "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf"
+  },
+  "documents": {
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "lamp": "Objects/lamp"
+        },
+        "talker": "lamp",
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1",
+        "actorsanim": {
+          "lamp": {
+            "anim": "Idle"
+          }
+        },
+        "music": ""
+      },
+      "1": {
+        "actorsturn": {
+          "ninten": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        "movecam": {
+          "x": 474,
+          "y": 392,
+          "time": 1
+        },
+        "changecam": "lamp",
+        "wait": 1.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "2",
+        "actorsanim": {
+          "lamp": {
+            "anim": "Open"
+          }
+        },
+        "actorsshake": {
+          "lamp": {
+            "x": 2,
+            "length": 1
+          }
+        }
+      },
+      "2": {
+        "actorsemote": {
+          "ninten": "surprise"
+        },
+        "objectsfunction": {
+          "Poltergeist/MusicArea": "play_music"
+        },
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "3"
+      },
+      "3": {
+        "wait": 0.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4",
+        "actorsshake": {
+          "lamp": {
+            "x": 2,
+            "length": 0.5
+          }
+        }
+      },
+      "4": {
+        "actorsmove": {
+          "lamp": {
+            "movement": [
+              {
+                "x": 460,
+                "y": 456
+              }
+            ],
+            "speed": 600,
+            "type": "position"
+          }
+        },
+        "wait": 0.2,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "5"
+      },
+      "5": {
+        "actorsjump": {
+          "ninten": {
+            "height": 3,
+            "length": 0.2
+          }
+        },
+        "soundeffect": "bash.mp3",
+        "wait": 0.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "6",
+        "shakecam": {
+          "length": 0.2,
+          "size": "small"
+        }
+      },
+      "6": {
+        "actorsmove": {
+          "lamp": {
+            "movement": [
+              {
+                "x": 410,
+                "y": 408
+              }
+            ],
+            "speed": 500,
+            "type": "position"
+          }
+        },
+        "wait": 0.1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "7"
+      },
+      "7": {
+        "actorsjump": {
+          "ninten": {
+            "height": 3,
+            "length": 0.2
+          }
+        },
+        "soundeffect": "bash.mp3",
+        "wait": 0.05,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "8",
+        "shakecam": {
+          "length": 0.2,
+          "size": "small"
+        }
+      },
+      "8": {
+        "actorsmove": {
+          "lamp": {
+            "movement": [
+              {
+                "x": 480,
+                "y": 328
+              }
+            ],
+            "speed": 500,
+            "type": "position"
+          }
+        },
+        "wait": 0.1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "9"
+      },
+      "9": {
+        "actorsjump": {
+          "ninten": {
+            "height": 3,
+            "length": 0.2
+          }
+        },
+        "soundeffect": "bash.mp3",
+        "wait": 0.1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "10",
+        "shakecam": {
+          "length": 0.2,
+          "size": "small"
+        }
+      },
+      "10": {
+        "actorsmove": {
+          "lamp": {
+            "movement": [
+              {
+                "x": 496,
+                "y": 392
+              }
+            ],
+            "speed": 500,
+            "type": "position"
+          }
+        },
+        "wait": 0.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "11"
+      },
+      "11": {
+        "wait": 0.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "12",
+        "actorsshake": {
+          "lamp": {
+            "x": 2,
+            "length": 0.5
+          }
+        }
+      },
+      "12": {
+        "actorsjump": {
+          "lamp": {
+            "height": 24,
+            "length": 0.35
+          }
+        },
+        "actorsmove": {
+          "lamp": {
+            "movement": [
+              {
+                "x": 432,
+                "y": 392
+              }
+            ],
+            "speed": 200,
+            "type": "position"
+          }
+        },
+        "objectsfunction": {
+          "Room Shaker": "delayed_start"
+        },
+        "startbattle": {
+          "battlers": [
+            {
+              "lamp": "lamp"
+            }
+          ],
+          "winflag": "poltergeist"
+        },
+        "wait": 0.35,
+        "autoadvance": true,
+        "caninput": false,
+        "ovbattlemusic": true
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "doll": "Objects/npcdoll",
+          "mimmie": "Objects/npc2"
+        },
+        "actorsdir": {
+          "ninten": {
+            "x": 0,
+            "y": -1
+          },
+          "mimmie": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "x": 128,
+                "y": 144
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "position"
+          },
+          "doll": {
+            "movement": [
+              {
+                "x": 0,
+                "y": 16
+              },
+              {
+                "wait": 1
+              },
+              {
+                "x": 0,
+                "y": 16
+              },
+              {
+                "wait": 1
+              }
+            ],
+            "speed": 32,
+            "type": "step"
+          }
+        },
+        "teleportactors": {
+          "doll": {
+            "x": 128,
+            "y": 74
+          },
+          "mimmie": {
+            "x": 128,
+            "y": 90
+          }
+        },
+        "changecam": "doll",
+        "returncam": 1,
+        "wait": 0.1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1",
+        "actorsanim": {
+          "doll": {
+            "anim": "Float"
+          }
+        }
+      },
+      "1": {
+        "actorsmove": {
+          "mimmie": {
+            "movement": [
+              {
+                "x": 0,
+                "y": 20
+              },
+              {
+                "wait": 1
+              },
+              {
+                "x": 0,
+                "y": 20
+              },
+              {
+                "wait": 1
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step",
+            "moonwalk": true
+          }
+        },
+        "wait": 3,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "2"
+      },
+      "2": {
+        "talker": "mimmie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_DOLL_ATTACK_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_DOLL_ATTACK_2",
+        "actorsemote": {
+          "mimmie": "exclamation"
+        },
+        "actorsturn": {
+          "mimmie": {
+            "x": 0,
+            "y": 1,
+            "speed": 0.05
+          }
+        },
+        "changecam": "mimmie",
+        "returncam": 1,
+        "goto": "3"
+      },
+      "3": {
+        "showbox": false,
+        "actorsmove": {
+          "mimmie": {
+            "movement": [
+              {
+                "x": 136,
+                "y": 144
+              },
+              {
+                "x": 136,
+                "y": 160
+              },
+              {
+                "x": 128,
+                "y": 160
+              }
+            ],
+            "speed": 128,
+            "animation": "Walk",
+            "type": "position"
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": 0,
+            "y": 1,
+            "speed": 0.1
+          }
+        },
+        "wait": 0.6,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4"
+      },
+      "4": {
+        "talker": "mimmie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_DOLL_ATTACK_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_DOLL_ATTACK_4",
+        "actorsdir": {
+          "mimmie": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "actorsjump": {
+          "mimmie": {
+            "height": 8,
+            "length": 0.4
+          }
+        },
+        "goto": "5",
+        "actorsshake": {
+          "mimmie": {
+            "x": 1,
+            "length": 0.2
+          }
+        }
+      },
+      "5": {
+        "showbox": false,
+        "actorsmove": {
+          "doll": {
+            "movement": [
+              {
+                "x": 0,
+                "y": -16
+              }
+            ],
+            "speed": 64,
+            "type": "step"
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": 0,
+            "y": -1,
+            "speed": 0.1
+          }
+        },
+        "changecam": "doll",
+        "returncam": 1,
+        "wait": 1.2,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "6",
+        "actorsshake": {
+          "doll": {
+            "x": 2,
+            "length": 0.8
+          }
+        }
+      },
+      "6": {
+        "talker": "doll",
+        "actorsmove": {
+          "doll": {
+            "movement": [
+              {
+                "x": 0,
+                "y": 48
+              }
+            ],
+            "speed": 200,
+            "type": "step"
+          }
+        },
+        "objectsfunction": {
+          "Room Shaker": "stop_shake"
+        },
+        "setflags": "doll_attack",
+        "startbattle": {
+          "battlers": [
+            {
+              "doll": "doll"
+            }
+          ],
+          "actorskeep": {
+            "doll": true
+          },
+          "wincutscene": "Podunk/cutscenes/doll_defeated"
+        },
+        "wait": 0.25,
+        "autoadvance": true,
+        "caninput": false
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "doll": "Objects/npcdoll",
+          "mimmie": "Objects/npc2",
+          "minnie": "Objects/npc3"
+        },
+        "actorsdir": {
+          "ninten": {
+            "x": 0,
+            "y": -1
+          },
+          "mimmie": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "actorsjump": {
+          "doll": {
+            "speed": 0.42,
+            "height": 48
+          }
+        },
+        "actorsmove": {
+          "doll": {
+            "movement": [
+              {
+                "x": 64,
+                "y": 48
+              }
+            ],
+            "speed": 200,
+            "type": "position"
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": -1,
+            "y": -1,
+            "speed": 1
+          }
+        },
+        "teleportactors": {
+          "minnie": {
+            "x": 472,
+            "y": 88
+          }
+        },
+        "changecam": "doll",
+        "returncam": 1,
+        "soundeffect": "M3/SMAAAASH.wav",
+        "setflags": "doll_defeated",
+        "unsetflags": "poltergeist",
+        "wait": 0.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1",
+        "actorsanim": {
+          "doll": {
+            "anim": "Idle"
+          }
+        },
+        "ovbattlemusic": false
+      },
+      "1": {
+        "actorsjump": {
+          "doll": {
+            "speed": 0.3,
+            "height": 10
+          }
+        },
+        "actorsmove": {
+          "doll": {
+            "movement": [
+              {
+                "x": 40,
+                "y": 40
+              }
+            ],
+            "speed": 100,
+            "type": "position"
+          }
+        },
+        "setflags": "pillow_attack",
+        "wait": 0.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "2"
+      },
+      "2": {
+        "talker": "mimmie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_DOLL_DEFEATED_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_DOLL_DEFEATED_2",
+        "actorsemote": {
+          "mimmie": "dot"
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": 0,
+            "y": -1,
+            "speed": 0.5
+          }
+        },
+        "changecam": "mimmie",
+        "returncam": 1,
+        "goto": "3",
+        "actorsshake": {
+          "mimmie": {
+            "x": 2,
+            "length": 0.2
+          }
+        }
+      },
+      "3": {
+        "showbox": false,
+        "actorsmove": {
+          "mimmie": {
+            "movement": [
+              {
+                "x": -16,
+                "y": 0
+              },
+              {
+                "x": 0,
+                "y": -72
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": -1,
+            "y": -1,
+            "speed": 0.5
+          }
+        },
+        "wait": 1.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4"
+      },
+      "4": {
+        "actorsdir": {
+          "mimmie": {
+            "x": -1,
+            "y": 0
+          }
+        },
+        "wait": 0.4,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "5"
+      },
+      "5": {
+        "actorsjump": {
+          "mimmie": {
+            "height": 10,
+            "length": 0.2
+          }
+        },
+        "wait": 0.3,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "6"
+      },
+      "6": {
+        "actorsjump": {
+          "mimmie": {
+            "height": 10,
+            "length": 0.2
+          }
+        },
+        "wait": 0.3,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_DOLL_DEFEATED_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_DOLL_DEFEATED_7",
+        "actorsdir": {
+          "mimmie": {
+            "x": 0,
+            "y": 1
+          }
+        }
+      }
+    },
+    "Data/Dialogue/Podunk/dollmelody.yaml": {
+      "0": {
+        "actors": {
+          "leader": "leader"
+        },
+        "text": "DIALOGUE_PODUNK_DOLLMELODY_0",
+        "goto": "3"
+      },
+      "3": {
+        "objectsfunction": {
+          "MusicArea": "stop_music_immediately",
+          "melodyBG": "appear"
+        },
+        "wait": 4,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4",
+        "music": "Melodies/melody1.mp3"
+      },
+      "4": {
+        "text": "DIALOGUE_PODUNK_DOLLMELODY_4",
+        "soundeffect": "M3/heal_se.wav",
+        "objectsfunction": {
+          "MusicArea": "play_music",
+          "melodyBG": "disappear"
+        },
+        "setflags": "doll_melody",
+        "wait": 0.6
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "mimmie": "Objects/npc2"
+        },
+        "talker": "mimmie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_0",
+        "changecam": null,
+        "goto": "1"
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_1",
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "x": 0,
+                "y": -12
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "step"
+          }
+        }
+      }
+    },
+    "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": {
+      "0": {
+        "name": "DIALOGUE_PODUNK_MIMMIE_DOLL_DEFEATED_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MIMMIE_DOLL_DEFEATED_0"
+      }
+    },
+    "Data/Dialogue/Podunk/mimmie_dead_doll.yaml": {
+      "0": {
+        "name": "DIALOGUE_PODUNK_MIMMIE_DEAD_DOLL_SPEAKER_Mimmie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MIMMIE_DEAD_DOLL_0"
+      }
+    },
+    "Data/Dialogue/Podunk/doll.yaml": {
+      "0": {
+        "text": "DIALOGUE_PODUNK_DOLL_0"
+      }
+    },
+    "Data/Dialogue/Podunk/carol_call.yaml": {
+      "0": {
+        "actors": {
+          "carol": "Objects/npc"
+        },
+        "talker": "carol",
+        "name": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CAROL_CALL_0",
+        "goto": "3"
+      },
+      "3": {
+        "name": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CAROL_CALL_3",
+        "autoadvance": true,
+        "goto": "4"
+      },
+      "4": {
+        "name": "Carol",
+        "wait": 0.3,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "5"
+      },
+      "5": {
+        "name": "Carol",
+        "actorsturn": {
+          "carol": {
+            "x": -1,
+            "y": 0,
+            "speed": 0.05
+          }
+        },
+        "objectsfunction": {
+          "Objects/Phone": "_ring"
+        },
+        "autowait": 1,
+        "goto": "6"
+      },
+      "6": {
+        "name": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CAROL_CALL_6",
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CAROL_CALL_7",
+        "setflags": "phone_ring"
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "carol": "Objects/npc"
+        },
+        "talker": "carol",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_0",
+        "actorsdir": {
+          "carol": {
+            "x": 0,
+            "y": 1
+          }
+        },
+        "returncam": 0.1,
+        "goto": "1"
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_1",
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "x": 0,
+                "y": -32
+              },
+              {
+                "wait": 0.1
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "speed": 0.1,
+            "actor": "carol",
+            "queue": true
+          }
+        },
+        "goto": "3"
+      },
+      "3": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_3",
+        "autoadvance": true,
+        "goto": "4"
+      },
+      "4": {
+        "name": "Carol",
+        "wait": 0.3,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "5"
+      },
+      "5": {
+        "name": "Carol",
+        "actorsturn": {
+          "carol": {
+            "x": -1,
+            "y": 0,
+            "speed": 0.05
+          }
+        },
+        "objectsfunction": {
+          "Objects/Phone": "_ring"
+        },
+        "autowait": 1,
+        "goto": "6"
+      },
+      "6": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_6",
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_7",
+        "setflags": "phone_ring"
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "carol": "Objects/npc"
+        },
+        "talker": "carol",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_CAROL_PHONE_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_CAROL_PHONE_0",
+        "actorsdir": {
+          "carol": {
+            "x": 0,
+            "y": 1
+          }
+        },
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "wait": 0.1
+              },
+              {
+                "x": 0,
+                "y": -16
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "returncam": 0.1
+      }
+    },
+    "Data/Dialogue/Podunk/carol_phone.yaml": {
+      "0": {
+        "name": "DIALOGUE_PODUNK_CAROL_PHONE_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CAROL_PHONE_0"
+      }
+    },
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": {
+      "0": {
+        "text": "DIALOGUE_PODUNK_DAD_POLTERGEIST_0",
+        "goto": "1"
+      },
+      "1": {
+        "name": "DIALOGUE_PODUNK_DAD_POLTERGEIST_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_DAD_POLTERGEIST_1",
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_DAD_POLTERGEIST_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_DAD_POLTERGEIST_7",
+        "movecam": {
+          "x": 96,
+          "length": 1.0
+        },
+        "goto": "9"
+      },
+      "9": {
+        "name": "DIALOGUE_PODUNK_DAD_POLTERGEIST_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_PODUNK_DAD_POLTERGEIST_9",
+        "returncam": 1.0,
+        "goto": "13"
+      },
+      "13": {
+        "text": "DIALOGUE_PODUNK_DAD_POLTERGEIST_13",
+        "setflags": "talked_to_dad"
+      }
+    },
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": {
+      "0": {
+        "text": "DIALOGUE_REUSABLE_PHONENOANSWER_0"
+      }
+    },
+    "Data/Dialogue/Reusable/dad_normal.yaml": {
+      "0": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_NORMAL_0",
+        "goto": "check_lloyd"
+      },
+      "check_lloyd": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "if": {
+          "leader": "lloyd",
+          "goto": "lloyd_leader"
+        },
+        "goto": "check_ana"
+      },
+      "check_ana": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "if": {
+          "leader": "ana",
+          "goto": "ana_leader"
+        },
+        "goto": "check_teddy"
+      },
+      "check_teddy": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "if": {
+          "leader": "teddy",
+          "goto": "teddy_leader"
+        },
+        "goto": "check_pippi"
+      },
+      "check_pippi": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "if": {
+          "leader": "pippi",
+          "goto": "pippi_leader"
+        },
+        "goto": "check_earned_cash"
+      },
+      "lloyd_leader": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_LLOYDLEADER_0",
+        "goto": "check_earned_cash"
+      },
+      "ana_leader": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_ANALEADER_0",
+        "goto": "check_earned_cash"
+      },
+      "teddy_leader": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_TEDDYLEADER_0",
+        "goto": "check_earned_cash"
+      },
+      "pippi_leader": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_PIPPILEADER_0",
+        "goto": "check_earned_cash"
+      },
+      "check_earned_cash": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "if": {
+          "flags": {
+            "earned_cash": true
+          },
+          "goto": "1"
+        },
+        "goto": "2"
+      },
+      "1": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_NORMAL_1",
+        "goto": "2"
+      },
+      "2": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_NORMAL_2",
+        "options": {
+          "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_0": "4",
+          "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_1": "6",
+          "cancel": "6"
+        },
+        "unsetflags": "money_earned"
+      },
+      "4": {
+        "text": "",
+        "showbox": false,
+        "unsetflags": "saved",
+        "caninput": false,
+        "if": {
+          "flags": {
+            "saved": true
+          },
+          "goto": "5"
+        },
+        "goto": "6",
+        "save": true
+      },
+      "5": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_NORMAL_5",
+        "goto": "6"
+      },
+      "6": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_NORMAL_6",
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_REUSABLE_DAD_NORMAL_SPEAKER_Dad",
+        "sound": "Adult",
+        "text": "DIALOGUE_REUSABLE_DAD_NORMAL_7"
+      }
+    }
+  },
+  "facts": {
+    "turn-default": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "if _curr_phrase.has\\(\"actorsturn\"\\):[\\s\\S]*?var speed = (?P<value>[0-9.]+)",
+      "type": "number",
+      "value": 0.08
+    },
+    "music-fade": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "audioManager.music_fadeout\\(0, (?P<value>[0-9.]+)\\)",
+      "type": "number",
+      "value": 2
+    },
+    "camera-default": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "if _curr_phrase.has\\(\"movecam\"\\):\\n\\s*var cam_pos = global.currentCamera.global_position\\n\\s*var time = (?P<value>[0-9.]+)",
+      "type": "number",
+      "value": 1
+    },
+    "shake-small": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "\"small\":\\n\\s*global.start_joy_vibration\\([^\\n]+\\)\\n\\s*global.currentCamera.shake_camera\\((?P<value>[0-9.]+),",
+      "type": "number",
+      "value": 4
+    },
+    "shake-direction": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "if _curr_phrase.has\\(\"shakecam\"\\):[\\s\\S]*?var direction = Vector2\\.(?P<value>RIGHT)",
+      "type": "direction",
+      "value": [
+        1,
+        0
+      ]
+    },
+    "sound-root": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "_curr_phrase\\[\"soundeffect\"\\] = \"(?P<value>[^\"]+)\" \\+ _curr_phrase\\[\"soundeffect\"\\]",
+      "type": "string",
+      "value": "res://Audio/Sound effects/"
+    },
+    "music-root": {
+      "source": "Scripts/global/audioManager.gd",
+      "pattern": "path = \"(?P<value>[^\"]+)\" \\+ track",
+      "type": "string",
+      "value": "res://Audio/Music/"
+    },
+    "dialogue-bus": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "audioManager.play_sfx\\(load\\(_curr_phrase\\[\"soundeffect\"\\]\\), \"(?P<value>[^\"]+)\"\\)",
+      "type": "string",
+      "value": "dialogBoxSound"
+    },
+    "camera-trans": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "var trans_type = trans_types.find\\(_curr_phrase\\[\"movecam\"\\].get\\(\"trans\", \"(?P<value>[^\"]+)\"\\)\\)",
+      "type": "string",
+      "value": "sine"
+    },
+    "camera-ease": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "var ease_type = ease_types.find\\(_curr_phrase\\[\"movecam\"\\].get\\(\"ease\", \"(?P<value>[^\"]+)\"\\)\\)",
+      "type": "string",
+      "value": "out"
+    },
+    "voice-root": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "_curr_phrase\\[\"sound\"\\] = \"(?P<value>[^\"]+)\" \\+ _curr_phrase\\[\"sound\"\\]",
+      "type": "string",
+      "value": "res://Audio/Sound effects/text/"
+    },
+    "voice-extension": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "\\$AudioStreamPlayer.stream = load\\(_curr_phrase\\[\"sound\"\\] \\+\"(?P<value>[^\"]+)\"\\)",
+      "type": "string",
+      "value": ".mp3"
+    }
+  },
+  "identities": {
+    "lamp/actor/Ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "lamp/actor/Lamp": {
+      "source": "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "lamp"
+      ],
+      "value": "Lamp",
+      "category": "actor"
+    },
+    "doll/actor/Ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "doll/actor/Doll": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "doll"
+      ],
+      "value": "Doll",
+      "category": "actor"
+    },
+    "doll/actor/Mimmie": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "mimmie"
+      ],
+      "value": "Mimmie",
+      "category": "actor"
+    },
+    "doll/text/2": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "path": [
+        "2",
+        "text"
+      ],
+      "value": 2,
+      "category": "text"
+    },
+    "doll/text/4": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "path": [
+        "4",
+        "text"
+      ],
+      "value": 3,
+      "category": "text"
+    },
+    "doll/binding/2": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "path": [
+        "6",
+        "objectsfunction",
+        "Room Shaker"
+      ],
+      "value": 2,
+      "category": "binding"
+    },
+    "postwin/actor/Ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "postwin/actor/Doll": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "path": [
+        "0",
+        "actors",
+        "doll"
+      ],
+      "value": "Doll",
+      "category": "actor"
+    },
+    "postwin/actor/Mimmie": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "path": [
+        "0",
+        "actors",
+        "mimmie"
+      ],
+      "value": "Mimmie",
+      "category": "actor"
+    },
+    "postwin/actor/Minnie": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "path": [
+        "0",
+        "actors",
+        "minnie"
+      ],
+      "value": "Minnie",
+      "category": "actor"
+    },
+    "postwin/text/2": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "path": [
+        "2",
+        "text"
+      ],
+      "value": 4,
+      "category": "text"
+    },
+    "postwin/text/7": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "path": [
+        "7",
+        "text"
+      ],
+      "value": 5,
+      "category": "text"
+    },
+    "melody/text/0": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "path": [
+        "0",
+        "text"
+      ],
+      "value": 6,
+      "category": "text"
+    },
+    "melody/actor/Ninten": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "path": [
+        "0",
+        "actors",
+        "leader"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "melody/binding/stop_house_music": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "path": [
+        "3",
+        "objectsfunction",
+        "MusicArea"
+      ],
+      "value": "stop_house_music",
+      "category": "binding"
+    },
+    "melody/binding/effect_appear": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "path": [
+        "3",
+        "objectsfunction",
+        "melodyBG"
+      ],
+      "value": "effect_appear",
+      "category": "binding"
+    },
+    "melody/text/4": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "path": [
+        "4",
+        "text"
+      ],
+      "value": 7,
+      "category": "text"
+    },
+    "melody/binding/house_music": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "path": [
+        "4",
+        "objectsfunction",
+        "MusicArea"
+      ],
+      "value": "house_music",
+      "category": "binding"
+    },
+    "melody/binding/effect_disappear": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "path": [
+        "4",
+        "objectsfunction",
+        "melodyBG"
+      ],
+      "value": "effect_disappear",
+      "category": "binding"
+    },
+    "guard/actor/Mimmie": {
+      "source": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "path": [
+        "0",
+        "actors",
+        "mimmie"
+      ],
+      "value": "Mimmie",
+      "category": "actor"
+    },
+    "guard/text/0": {
+      "source": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "path": [
+        "0",
+        "text"
+      ],
+      "value": 8,
+      "category": "text"
+    },
+    "guard/actor/Ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "guard/text/1": {
+      "source": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "path": [
+        "1",
+        "text"
+      ],
+      "value": 9,
+      "category": "text"
+    },
+    "phone/0/actor/Carol": {
+      "source": "Data/Dialogue/Podunk/carol_call.yaml",
+      "path": [
+        "0",
+        "actors",
+        "carol"
+      ],
+      "value": "Carol",
+      "category": "actor"
+    },
+    "phone/0/binding/phone_ring": {
+      "source": "Data/Dialogue/Podunk/carol_call.yaml",
+      "path": [
+        "5",
+        "objectsfunction",
+        "Objects/Phone"
+      ],
+      "value": "phone_ring",
+      "category": "binding"
+    },
+    "phone/1/actor/Carol": {
+      "source": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "path": [
+        "0",
+        "actors",
+        "carol"
+      ],
+      "value": "Carol",
+      "category": "actor"
+    },
+    "phone/1/actor/Ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "phone/1/binding/phone_ring": {
+      "source": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "path": [
+        "5",
+        "objectsfunction",
+        "Objects/Phone"
+      ],
+      "value": "phone_ring",
+      "category": "binding"
+    },
+    "phone/2/actor/Carol": {
+      "source": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "path": [
+        "0",
+        "actors",
+        "carol"
+      ],
+      "value": "Carol",
+      "category": "actor"
+    },
+    "phone/2/actor/Ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "phone/player-token": {
+      "source": "Data/save_new_game.yaml",
+      "path": [
+        "ninten"
+      ],
+      "value": "[Ninten]",
+      "category": "token"
+    }
+  },
+  "programmes": {
+    "lamp": {
+      "source": "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "actors",
+                "ninten"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "actors",
+                "lamp"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 0,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "0",
+                "wait"
+              ]
+            },
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MusicFadeOut",
+            "phrase": 0,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$fact": "music-fade"
+            },
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AnimateActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "0",
+                "wait"
+              ]
+            },
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "actorsanim",
+                "lamp",
+                "anim"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 0,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "0",
+                "music"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 1,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "1",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 1,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "1",
+                  "actorsturn",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "1",
+                  "actorsturn",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            },
+            "duration": {
+              "$fact": "turn-default"
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeActor",
+            "phrase": 1,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "1",
+                  "actorsshake",
+                  "lamp",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "1",
+                  "actorsturn",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "1",
+                "actorsshake",
+                "lamp",
+                "length"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AnimateActor",
+            "phrase": 1,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "x"
+              ]
+            },
+            "duration": 0,
+            "text": {
+              "$source": [
+                "1",
+                "actorsanim",
+                "lamp",
+                "anim"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ChangeCamera",
+            "phrase": 1,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            },
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 1,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            },
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveCamera",
+            "phrase": 1,
+            "actor": "None",
+            "vector": [
+              {
+                "$source": [
+                  "1",
+                  "movecam",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "1",
+                  "movecam",
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "1",
+                "actorsshake",
+                "lamp",
+                "length"
+              ]
+            },
+            "text": {
+              "$fact": "camera-trans"
+            },
+            "detail": {
+              "$fact": "camera-ease"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 1,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            },
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 2,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "2",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 2,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "Poltergeist/MusicArea",
+            "detail": {
+              "$source": [
+                "2",
+                "objectsfunction",
+                "Poltergeist/MusicArea"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "EmoteActor",
+            "phrase": 2,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "2",
+                "actorsemote",
+                "ninten"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 2,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 3,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "3",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeActor",
+            "phrase": 3,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "3",
+                  "actorsshake",
+                  "lamp",
+                  "x"
+                ]
+              },
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "3",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 3,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 4,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "4",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActor",
+            "phrase": 4,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "4",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "4",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "4",
+                "actorsmove",
+                "lamp",
+                "speed"
+              ]
+            },
+            "duration": 0,
+            "text": {
+              "$source": [
+                "4",
+                "actorsmove",
+                "lamp",
+                "type"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 4,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 5,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "5",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "PlaySound",
+            "phrase": 5,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$concat": [
+                {
+                  "$fact": "sound-root"
+                },
+                {
+                  "$source": [
+                    "5",
+                    "soundeffect"
+                  ]
+                }
+              ]
+            },
+            "detail": {
+              "$fact": "dialogue-bus"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 5,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "5",
+                "actorsjump",
+                "ninten",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "5",
+                "actorsjump",
+                "ninten",
+                "length"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeCamera",
+            "phrase": 5,
+            "actor": "None",
+            "vector": {
+              "$fact": "shake-direction"
+            },
+            "value": {
+              "$fact": "shake-small"
+            },
+            "duration": {
+              "$source": [
+                "5",
+                "actorsjump",
+                "ninten",
+                "length"
+              ]
+            },
+            "text": {
+              "$source": [
+                "5",
+                "shakecam",
+                "size"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 5,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 6,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "6",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActor",
+            "phrase": 6,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "6",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "6",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "6",
+                "actorsmove",
+                "lamp",
+                "speed"
+              ]
+            },
+            "duration": 0,
+            "text": {
+              "$source": [
+                "6",
+                "actorsmove",
+                "lamp",
+                "type"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 6,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 7,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "7",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "PlaySound",
+            "phrase": 7,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$concat": [
+                {
+                  "$fact": "sound-root"
+                },
+                {
+                  "$source": [
+                    "7",
+                    "soundeffect"
+                  ]
+                }
+              ]
+            },
+            "detail": {
+              "$fact": "dialogue-bus"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 7,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "7",
+                "actorsjump",
+                "ninten",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "7",
+                "actorsjump",
+                "ninten",
+                "length"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeCamera",
+            "phrase": 7,
+            "actor": "None",
+            "vector": {
+              "$fact": "shake-direction"
+            },
+            "value": {
+              "$fact": "shake-small"
+            },
+            "duration": {
+              "$source": [
+                "7",
+                "actorsjump",
+                "ninten",
+                "length"
+              ]
+            },
+            "text": {
+              "$source": [
+                "7",
+                "shakecam",
+                "size"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 7,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 8,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "8",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActor",
+            "phrase": 8,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "8",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "8",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "8",
+                "actorsmove",
+                "lamp",
+                "speed"
+              ]
+            },
+            "duration": 0,
+            "text": {
+              "$source": [
+                "8",
+                "actorsmove",
+                "lamp",
+                "type"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 8,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 9,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "9",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "PlaySound",
+            "phrase": 9,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$concat": [
+                {
+                  "$fact": "sound-root"
+                },
+                {
+                  "$source": [
+                    "9",
+                    "soundeffect"
+                  ]
+                }
+              ]
+            },
+            "detail": {
+              "$fact": "dialogue-bus"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 9,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "9",
+                "actorsjump",
+                "ninten",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "9",
+                "actorsjump",
+                "ninten",
+                "length"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeCamera",
+            "phrase": 9,
+            "actor": "None",
+            "vector": {
+              "$fact": "shake-direction"
+            },
+            "value": {
+              "$fact": "shake-small"
+            },
+            "duration": {
+              "$source": [
+                "9",
+                "actorsjump",
+                "ninten",
+                "length"
+              ]
+            },
+            "text": {
+              "$source": [
+                "9",
+                "shakecam",
+                "size"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 9,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 10,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "10",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActor",
+            "phrase": 10,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "10",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "10",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "10",
+                "actorsmove",
+                "lamp",
+                "speed"
+              ]
+            },
+            "duration": 0,
+            "text": {
+              "$source": [
+                "10",
+                "actorsmove",
+                "lamp",
+                "type"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 10,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 11,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "11",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeActor",
+            "phrase": 11,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "11",
+                  "actorsshake",
+                  "lamp",
+                  "x"
+                ]
+              },
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "11",
+                "wait"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 11,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 12,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": {
+              "$source": [
+                "12",
+                "actorsjump",
+                "lamp",
+                "length"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 12,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "Room Shaker",
+            "detail": {
+              "$source": [
+                "12",
+                "objectsfunction",
+                "Room Shaker"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "OverworldBattleMusic",
+            "phrase": 12,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 1,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActor",
+            "phrase": 12,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "12",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "12",
+                  "actorsmove",
+                  "lamp",
+                  "movement",
+                  0,
+                  "y"
+                ]
+              }
+            ],
+            "value": {
+              "$source": [
+                "12",
+                "actorsmove",
+                "lamp",
+                "speed"
+              ]
+            },
+            "duration": 0,
+            "text": {
+              "$source": [
+                "12",
+                "actorsmove",
+                "lamp",
+                "type"
+              ]
+            },
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 12,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": {
+              "$source": [
+                "12",
+                "actorsjump",
+                "lamp",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "12",
+                "actorsjump",
+                "lamp",
+                "length"
+              ]
+            },
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "QueueBattle",
+            "phrase": 12,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "12",
+                "startbattle",
+                "battlers",
+                0,
+                "lamp"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "12",
+                "startbattle",
+                "winflag"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 12,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 12,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 12,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 12,
+            "actor": {
+              "$identity": "lamp/actor/Ninten"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReleaseBattleActor",
+            "phrase": 12,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 12,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 12,
+            "actor": "None",
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": "",
+            "detail": ""
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RequestBattle",
+            "phrase": 12,
+            "actor": {
+              "$identity": "lamp/actor/Lamp"
+            },
+            "vector": [
+              0,
+              0
+            ],
+            "value": 0,
+            "duration": 0,
+            "text": {
+              "$source": [
+                "12",
+                "startbattle",
+                "battlers",
+                0,
+                "lamp"
+              ]
+            },
+            "detail": {
+              "$source": [
+                "12",
+                "startbattle",
+                "winflag"
+              ]
+            }
+          }
+        }
+      ],
+      "boundary": {
+        "prefix_count": 1,
+        "suffix_count": 7
+      }
+    },
+    "doll": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 0,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "0",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TeleportActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsmove",
+                  "ninten",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "teleportactors",
+                  "doll",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TeleportActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsmove",
+                  "ninten",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "teleportactors",
+                  "mimmie",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Ninten"
+            },
+            "path": {
+              "$source": [
+                "0",
+                "actorsmove",
+                "ninten"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            },
+            "path": {
+              "$source": [
+                "0",
+                "actorsmove",
+                "doll"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AnimateActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            },
+            "clip": {
+              "$concat": [
+                "Doll ",
+                {
+                  "$source": [
+                    "0",
+                    "actorsanim",
+                    "doll",
+                    "anim"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ChangeCamera",
+            "phrase": 0,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 0,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "0",
+                "actorsmove",
+                "doll",
+                "movement",
+                1,
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 1,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "1",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 1,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "path": {
+              "$source": [
+                "1",
+                "actorsmove",
+                "mimmie"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 1,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 2,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "dialogue_id": {
+              "$identity": "doll/text/2"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 2,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 2,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "2",
+                  "actorsturn",
+                  "mimmie",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "2",
+                  "actorsturn",
+                  "mimmie",
+                  "y"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "2",
+                "actorsturn",
+                "mimmie",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "EmoteActor",
+            "phrase": 2,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "clip": {
+              "$source": [
+                "2",
+                "actorsemote",
+                "mimmie"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ChangeCamera",
+            "phrase": 2,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 2,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 2,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "2",
+                "returncam"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 2,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 3,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "3",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 3,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "path": {
+              "$source": [
+                "3",
+                "actorsmove",
+                "mimmie"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 3,
+            "actor": {
+              "$identity": "doll/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "3",
+                  "actorsturn",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "3",
+                  "actorsturn",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "3",
+                "actorsturn",
+                "ninten",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 3,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 4,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "dialogue_id": {
+              "$identity": "doll/text/4"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 4,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 4,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "4",
+                  "actorsdir",
+                  "mimmie",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "4",
+                  "actorsdir",
+                  "mimmie",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeActor",
+            "phrase": 4,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "4",
+                  "actorsshake",
+                  "mimmie",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "4",
+                  "actorsdir",
+                  "mimmie",
+                  "x"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "4",
+                "actorsshake",
+                "mimmie",
+                "length"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 4,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            },
+            "value": {
+              "$source": [
+                "4",
+                "actorsjump",
+                "mimmie",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "4",
+                "actorsjump",
+                "mimmie",
+                "length"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 4,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 5,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "5",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 5,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            },
+            "path": {
+              "$source": [
+                "5",
+                "actorsmove",
+                "doll"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 5,
+            "actor": {
+              "$identity": "doll/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "5",
+                  "actorsmove",
+                  "doll",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "5",
+                  "actorsturn",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "5",
+                "actorsturn",
+                "ninten",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeActor",
+            "phrase": 5,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "5",
+                  "actorsshake",
+                  "doll",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "5",
+                  "actorsmove",
+                  "doll",
+                  "movement",
+                  0,
+                  "x"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "5",
+                "actorsshake",
+                "doll",
+                "length"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ChangeCamera",
+            "phrase": 5,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 5,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 5,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "5",
+                "returncam"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 5,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 6,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "6",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 6,
+            "actor": "None",
+            "binding": {
+              "$identity": "doll/binding/2"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            },
+            "path": {
+              "$source": [
+                "6",
+                "actorsmove",
+                "doll"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 6,
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "6",
+                "setflags"
+              ]
+            },
+            "value": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "QueueBattle",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 6,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 6,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReleaseBattleActor",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 6,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 6,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RequestBattle",
+            "phrase": 6,
+            "actor": {
+              "$identity": "doll/actor/Doll"
+            }
+          }
+        }
+      ]
+    },
+    "postwin": {
+      "source": "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Minnie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Minnie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 0,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "0",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "OverworldBattleMusic",
+            "phrase": 0,
+            "actor": "None",
+            "value": {
+              "$source": [
+                "0",
+                "actorsdir",
+                "ninten",
+                "x"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "PlaySound",
+            "phrase": 0,
+            "actor": "None",
+            "resource": {
+              "$concat": [
+                {
+                  "$fact": "sound-root"
+                },
+                {
+                  "$source": [
+                    "0",
+                    "soundeffect"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TeleportActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Minnie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "teleportactors",
+                  "minnie",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "teleportactors",
+                  "minnie",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            },
+            "path": {
+              "$source": [
+                "0",
+                "actorsmove",
+                "doll"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "y"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "0",
+                "actorsturn",
+                "ninten",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            },
+            "value": {
+              "$source": [
+                "0",
+                "actorsjump",
+                "doll",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "0",
+                "actorsjump",
+                "doll",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AnimateActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            },
+            "clip": {
+              "$concat": [
+                "Doll ",
+                {
+                  "$source": [
+                    "0",
+                    "actorsanim",
+                    "doll",
+                    "anim"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ChangeCamera",
+            "phrase": 0,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 0,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "0",
+                "actorsturn",
+                "ninten",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 0,
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "0",
+                "setflags"
+              ]
+            },
+            "value": {
+              "$source": [
+                "0",
+                "actorsturn",
+                "ninten",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 0,
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "0",
+                "unsetflags"
+              ]
+            },
+            "value": {
+              "$source": [
+                "0",
+                "actorsdir",
+                "ninten",
+                "x"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 1,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "1",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 1,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            },
+            "path": {
+              "$source": [
+                "1",
+                "actorsmove",
+                "doll"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 1,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            },
+            "value": {
+              "$source": [
+                "1",
+                "actorsjump",
+                "doll",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "1",
+                "actorsjump",
+                "doll",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 1,
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "1",
+                "setflags"
+              ]
+            },
+            "value": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 1,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 2,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "dialogue_id": {
+              "$identity": "postwin/text/2"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 2,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 2,
+            "actor": {
+              "$identity": "postwin/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "2",
+                  "actorsturn",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "2",
+                  "actorsturn",
+                  "ninten",
+                  "y"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "2",
+                "actorsturn",
+                "ninten",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShakeActor",
+            "phrase": 2,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "2",
+                  "actorsshake",
+                  "mimmie",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "2",
+                  "actorsturn",
+                  "ninten",
+                  "x"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "2",
+                "actorsshake",
+                "mimmie",
+                "length"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "EmoteActor",
+            "phrase": 2,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "clip": {
+              "$source": [
+                "2",
+                "actorsemote",
+                "mimmie"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ChangeCamera",
+            "phrase": 2,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 2,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 2,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "2",
+                "returncam"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 2,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 3,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "3",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 3,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "path": {
+              "$source": [
+                "3",
+                "actorsmove",
+                "mimmie"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 3,
+            "actor": {
+              "$identity": "postwin/actor/Ninten"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "3",
+                  "actorsturn",
+                  "ninten",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "3",
+                  "actorsturn",
+                  "ninten",
+                  "x"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "3",
+                "actorsturn",
+                "ninten",
+                "speed"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 3,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 4,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "4",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 4,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "4",
+                  "actorsdir",
+                  "mimmie",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "4",
+                  "actorsdir",
+                  "mimmie",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 4,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 5,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "5",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 5,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "value": {
+              "$source": [
+                "5",
+                "actorsjump",
+                "mimmie",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "5",
+                "actorsjump",
+                "mimmie",
+                "length"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 5,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 6,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "6",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "JumpActor",
+            "phrase": 6,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "value": {
+              "$source": [
+                "6",
+                "actorsjump",
+                "mimmie",
+                "height"
+              ]
+            },
+            "duration": {
+              "$source": [
+                "6",
+                "actorsjump",
+                "mimmie",
+                "length"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 6,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 7,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "dialogue_id": {
+              "$identity": "postwin/text/7"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 7,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "7",
+                  "actorsdir",
+                  "mimmie",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "7",
+                  "actorsdir",
+                  "mimmie",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 7,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 7,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 7,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 7,
+            "actor": {
+              "$identity": "postwin/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 7,
+            "actor": {
+              "$identity": "postwin/actor/Doll"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 7,
+            "actor": {
+              "$identity": "postwin/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 7,
+            "actor": {
+              "$identity": "postwin/actor/Minnie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 7,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 7,
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ]
+    },
+    "melody": {
+      "source": "Data/Dialogue/Podunk/dollmelody.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "actor": "None",
+            "dialogue_id": {
+              "$identity": "melody/text/0"
+            },
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "melody/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "melody/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 1,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "3",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 1,
+            "actor": "None",
+            "binding": {
+              "$identity": "melody/binding/stop_house_music"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 1,
+            "actor": "None",
+            "binding": {
+              "$identity": "melody/binding/effect_appear"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "PlayMusicImmediate",
+            "phrase": 1,
+            "actor": "None",
+            "resource": {
+              "$concat": [
+                {
+                  "$fact": "music-root"
+                },
+                {
+                  "$source": [
+                    "3",
+                    "music"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 1,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 2,
+            "actor": "None",
+            "dialogue_id": {
+              "$identity": "melody/text/4"
+            },
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 2,
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "4",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 2,
+            "actor": "None",
+            "binding": {
+              "$identity": "melody/binding/house_music"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 2,
+            "actor": "None",
+            "binding": {
+              "$identity": "melody/binding/effect_disappear"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "PlaySound",
+            "phrase": 2,
+            "actor": "None",
+            "resource": {
+              "$concat": [
+                {
+                  "$fact": "sound-root"
+                },
+                {
+                  "$source": [
+                    "4",
+                    "soundeffect"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 2,
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "4",
+                "setflags"
+              ]
+            },
+            "value": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 2,
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 2,
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 2,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 2,
+            "actor": {
+              "$identity": "melody/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 2,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 2,
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ]
+    },
+    "guard": {
+      "source": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "actor": {
+              "$identity": "guard/actor/Mimmie"
+            },
+            "dialogue_id": {
+              "$identity": "guard/text/0"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "guard/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "guard/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "actor": {
+              "$identity": "guard/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "actor": {
+              "$identity": "guard/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "actor": {
+              "$identity": "guard/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ChangeCamera",
+            "phrase": 0,
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 1,
+            "actor": {
+              "$identity": "guard/actor/Mimmie"
+            },
+            "dialogue_id": {
+              "$identity": "guard/text/1"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 1,
+            "actor": {
+              "$identity": "guard/actor/Ninten"
+            },
+            "path": {
+              "$source": [
+                "1",
+                "actorsmove",
+                "ninten"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 1,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 1,
+            "actor": {
+              "$identity": "guard/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 1,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 1,
+            "actor": {
+              "$identity": "guard/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 1,
+            "actor": {
+              "$identity": "guard/actor/Mimmie"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 1,
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 1,
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ]
+    },
+    "phone/0": {
+      "source": "Data/Dialogue/Podunk/carol_call.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::0",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 1,
+            "source_label": "3",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::3",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 1,
+            "source_label": "3",
+            "actor": "None",
+            "flags": 2
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "HideDialogue",
+            "phrase": 2,
+            "source_label": "4",
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 2,
+            "source_label": "4",
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "4",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 2,
+            "source_label": "4",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "HideDialogue",
+            "phrase": 3,
+            "source_label": "5",
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 3,
+            "source_label": "5",
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "5",
+                "autowait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 3,
+            "source_label": "5",
+            "actor": "None",
+            "binding": {
+              "$identity": "phone/0/binding/phone_ring"
+            },
+            "source_object": "Objects/Phone",
+            "source_method": {
+              "$source": [
+                "5",
+                "objectsfunction",
+                "Objects/Phone"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 3,
+            "source_label": "5",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "5",
+                  "actorsturn",
+                  "carol",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "5",
+                  "actorsturn",
+                  "carol",
+                  "y"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "5",
+                "actorsturn",
+                "carol",
+                "speed"
+              ]
+            },
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 3,
+            "source_label": "5",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 4,
+            "source_label": "6",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::6",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 4,
+            "source_label": "6",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/carol_call.yaml::7",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "7",
+                "setflags"
+              ]
+            },
+            "value": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": {
+              "$identity": "phone/0/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 5,
+            "source_label": "7",
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ],
+      "result": {
+        "identity": "Podunk/carol_call",
+        "source_path": "Data/Dialogue/Podunk/carol_call.yaml",
+        "source_labels": [
+          "0",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "actor_bindings": [
+          {
+            "actor": "Carol",
+            "source": "Objects/npc"
+          }
+        ],
+        "clears_phone_location_on_finish": true
+      }
+    },
+    "phone/1": {
+      "source": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::0",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/1/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/1/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "carol",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "carol",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "0",
+                "returncam"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 1,
+            "source_label": "1",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::1",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 1,
+            "source_label": "1",
+            "actor": {
+              "$identity": "phone/1/actor/Ninten"
+            },
+            "path": {
+              "$source": [
+                "1",
+                "actorsmove",
+                "ninten"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 1,
+            "source_label": "1",
+            "actor": {
+              "$identity": "phone/1/actor/Ninten"
+            },
+            "target_actor": "Carol",
+            "vector": [
+              0,
+              0
+            ],
+            "duration": {
+              "$source": [
+                "1",
+                "actorsmove",
+                "ninten",
+                "movement",
+                1,
+                "wait"
+              ]
+            },
+            "flags": 3
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 1,
+            "source_label": "1",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 2,
+            "source_label": "3",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::3",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 2,
+            "source_label": "3",
+            "actor": "None",
+            "flags": 2
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "HideDialogue",
+            "phrase": 3,
+            "source_label": "4",
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 3,
+            "source_label": "4",
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "4",
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 3,
+            "source_label": "4",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "HideDialogue",
+            "phrase": 4,
+            "source_label": "5",
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StartWait",
+            "phrase": 4,
+            "source_label": "5",
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "5",
+                "autowait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CallObjectDeferred",
+            "phrase": 4,
+            "source_label": "5",
+            "actor": "None",
+            "binding": {
+              "$identity": "phone/1/binding/phone_ring"
+            },
+            "source_object": "Objects/Phone",
+            "source_method": {
+              "$source": [
+                "5",
+                "objectsfunction",
+                "Objects/Phone"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "TurnActor",
+            "phrase": 4,
+            "source_label": "5",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "5",
+                  "actorsturn",
+                  "carol",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "5",
+                  "actorsturn",
+                  "carol",
+                  "y"
+                ]
+              }
+            ],
+            "duration": {
+              "$source": [
+                "5",
+                "actorsturn",
+                "carol",
+                "speed"
+              ]
+            },
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitTimer",
+            "phrase": 4,
+            "source_label": "5",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 5,
+            "source_label": "6",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::6",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 5,
+            "source_label": "6",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml::7",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "7",
+                "setflags"
+              ]
+            },
+            "value": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": {
+              "$identity": "phone/1/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": {
+              "$identity": "phone/1/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 6,
+            "source_label": "7",
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ],
+      "result": {
+        "identity": "Podunk/cutscenes/carol_call",
+        "source_path": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+        "source_labels": [
+          "0",
+          "1",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "actor_bindings": [
+          {
+            "actor": "Ninten",
+            "source": "leader"
+          },
+          {
+            "actor": "Carol",
+            "source": "Objects/npc"
+          }
+        ],
+        "clears_phone_location_on_finish": true
+      }
+    },
+    "phone/2": {
+      "source": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Carol"
+            },
+            "dialogue_key": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml::0",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BindActor",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ActorPersistent",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "YieldIdle",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetActorDirection",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Carol"
+            },
+            "vector": [
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "carol",
+                  "x"
+                ]
+              },
+              {
+                "$source": [
+                  "0",
+                  "actorsdir",
+                  "carol",
+                  "y"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveActorPath",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Ninten"
+            },
+            "path": {
+              "$source": [
+                "0",
+                "actorsmove",
+                "ninten"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "0",
+                "actorsmove",
+                "ninten",
+                "movement",
+                0,
+                "wait"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Ninten"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "RestoreActor",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": {
+              "$identity": "phone/2/actor/Carol"
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ],
+      "result": {
+        "identity": "Podunk/cutscenes/carol_phone",
+        "source_path": "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+        "source_labels": [
+          "0"
+        ],
+        "actor_bindings": [
+          {
+            "actor": "Ninten",
+            "source": "leader"
+          },
+          {
+            "actor": "Carol",
+            "source": "Objects/npc"
+          }
+        ],
+        "clears_phone_location_on_finish": true
+      }
+    },
+    "phone/3": {
+      "source": "Data/Dialogue/Podunk/carol_phone.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "dialogue_key": "Data/Dialogue/Podunk/carol_phone.yaml::0",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "StopInteraction",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ],
+      "result": {
+        "identity": "Podunk/carol_phone",
+        "source_path": "Data/Dialogue/Podunk/carol_phone.yaml",
+        "source_labels": [
+          "0"
+        ],
+        "actor_bindings": [],
+        "clears_phone_location_on_finish": true
+      }
+    },
+    "phone/4": {
+      "source": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::0",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 1,
+            "source_label": "1",
+            "actor": "None",
+            "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::1",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 1,
+            "source_label": "1",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 2,
+            "source_label": "7",
+            "actor": "None",
+            "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::7",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "MoveCamera",
+            "phrase": 2,
+            "source_label": "7",
+            "actor": "None",
+            "vector": [
+              {
+                "$source": [
+                  "7",
+                  "movecam",
+                  "x"
+                ]
+              },
+              0
+            ],
+            "flags": 1,
+            "duration": {
+              "$source": [
+                "7",
+                "movecam",
+                "length"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 2,
+            "source_label": "7",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 3,
+            "source_label": "9",
+            "actor": "None",
+            "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::9",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ReturnCamera",
+            "phrase": 3,
+            "source_label": "9",
+            "actor": "None",
+            "duration": {
+              "$source": [
+                "9",
+                "returncam"
+              ]
+            }
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 3,
+            "source_label": "9",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 4,
+            "source_label": "13",
+            "actor": "None",
+            "dialogue_key": "Data/Dialogue/Podunk/dad_poltergeist.yaml::13",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetFlag",
+            "phrase": 4,
+            "source_label": "13",
+            "actor": "None",
+            "flag": {
+              "$source": [
+                "13",
+                "setflags"
+              ]
+            },
+            "value": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 4,
+            "source_label": "13",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 4,
+            "source_label": "13",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 4,
+            "source_label": "13",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 4,
+            "source_label": "13",
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ],
+      "result": {
+        "identity": "Podunk/dad_poltergeist",
+        "source_path": "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+        "source_labels": [
+          "0",
+          "1",
+          "7",
+          "9",
+          "13"
+        ],
+        "actor_bindings": [],
+        "clears_phone_location_on_finish": true
+      }
+    },
+    "phone/5": {
+      "source": "Data/Dialogue/Reusable/phonenoanswer.yaml",
+      "commands": [
+        {
+          "op": "emit",
+          "template": {
+            "kind": "BeginCutscene",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "ShowDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "dialogue_key": "Data/Dialogue/Reusable/phonenoanswer.yaml::0",
+            "flags": 1
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "AwaitDialogue",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "flags": 0
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "SetTalker",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "CutsceneEnded",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None"
+          }
+        },
+        {
+          "op": "emit",
+          "template": {
+            "kind": "DialogueDone",
+            "phrase": 0,
+            "source_label": "0",
+            "actor": "None",
+            "duration": {
+              "$argument": "end_duration"
+            }
+          }
+        }
+      ],
+      "result": {
+        "identity": "Reusable/phonenoanswer",
+        "source_path": "Data/Dialogue/Reusable/phonenoanswer.yaml",
+        "source_labels": [
+          "0"
+        ],
+        "actor_bindings": [],
+        "clears_phone_location_on_finish": true
+      }
+    }
+  },
+  "normal_metadata": {
+    "identity": "Reusable/dad_normal",
+    "source_path": "Data/Dialogue/Reusable/dad_normal.yaml",
+    "execution_status": "not_integrated",
+    "entry": "0",
+    "nodes": [
+      {
+        "label": "0",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::0",
+        "fallback": "check_lloyd",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "check_lloyd",
+        "text_key": null,
+        "fallback": "check_ana",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "lloyd",
+          "target": "lloyd_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "check_ana",
+        "text_key": null,
+        "fallback": "check_teddy",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "ana",
+          "target": "ana_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "check_teddy",
+        "text_key": null,
+        "fallback": "check_pippi",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "teddy",
+          "target": "teddy_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "check_pippi",
+        "text_key": null,
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "LeaderEquals",
+          "value": "pippi",
+          "target": "pippi_leader"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "lloyd_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::lloyd_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "ana_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::ana_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "teddy_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::teddy_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "pippi_leader",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::pippi_leader",
+        "fallback": "check_earned_cash",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "check_earned_cash",
+        "text_key": null,
+        "fallback": "2",
+        "terminal": false,
+        "textless_immediate": true,
+        "branch": {
+          "kind": "FlagEquals",
+          "flag": "earned_cash",
+          "value": true,
+          "target": "1"
+        },
+        "evaluate_branch": "phrase_advance"
+      },
+      {
+        "label": "1",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::1",
+        "fallback": "2",
+        "terminal": false,
+        "textless_immediate": false,
+        "text_replacement_effects": [
+          {
+            "token": "EarnedCash",
+            "capture": "earned_cash",
+            "reset_amount": 0,
+            "clear_flag": "earned_cash",
+            "flags_updated": false,
+            "phase": "before_print",
+            "frequency": "once_per_phrase_entry"
+          }
+        ]
+      },
+      {
+        "label": "2",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::2",
+        "fallback": null,
+        "terminal": false,
+        "textless_immediate": false,
+        "choices": [
+          {
+            "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_0",
+            "text_en": {
+              "$translation": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_0"
+            },
+            "target": "4"
+          },
+          {
+            "translation_key": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_1",
+            "text_en": {
+              "$translation": "DIALOGUE_REUSABLE_DAD_NORMAL_3-OPT_1"
+            },
+            "target": "6"
+          }
+        ],
+        "cancel_target": "6",
+        "initial_selection": 0,
+        "show_choices": "after_text_complete",
+        "text_replacement_effects": [
+          {
+            "token": "BankCash",
+            "read": "bank",
+            "mutate": false,
+            "phase": "before_print"
+          }
+        ],
+        "reviewed_noop": {
+          "source_command": "unsetflags",
+          "flag": "money_earned",
+          "reason": "Unregistered exact upstream spelling; globalData.set_flag returns without mutation or signal",
+          "flags_updated": false,
+          "source": "Scripts/global/globalData.gd:409"
+        }
+      },
+      {
+        "label": "4",
+        "text_key": null,
+        "fallback": "6",
+        "terminal": false,
+        "textless_immediate": false,
+        "branch": {
+          "kind": "FlagEquals",
+          "flag": "saved",
+          "value": true,
+          "target": "5"
+        },
+        "evaluate_branch": "submenu_callback",
+        "entry": [
+          {
+            "kind": "ShowEmptyText"
+          },
+          {
+            "kind": "HideDialogue"
+          },
+          {
+            "kind": "SetFlag",
+            "flag": "saved",
+            "value": false
+          },
+          {
+            "kind": "OpenSave",
+            "mode": "SAVE",
+            "callback": "_try_resume_dialogue"
+          }
+        ],
+        "can_input": false,
+        "suspend_until": "submenu_callback",
+        "hidden_text_does_not_finish": true
+      },
+      {
+        "label": "5",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::5",
+        "fallback": "6",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "6",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::6",
+        "fallback": "7",
+        "terminal": false,
+        "textless_immediate": false
+      },
+      {
+        "label": "7",
+        "text_key": "Data/Dialogue/Reusable/dad_normal.yaml::7",
+        "fallback": null,
+        "terminal": true,
+        "textless_immediate": false
+      }
+    ],
+    "clears_phone_location_on_finish": true,
+    "singleton_specialization": {
+      "required_party": [
+        "ninten"
+      ],
+      "skipped_conditions": [],
+      "policy": "Retain typed leader checks; any future specialization must assert singleton Ninten"
+    }
+  },
+  "normal_source": "Data/Dialogue/Reusable/dad_normal.yaml",
+  "phone_sources": [
+    "Data/Dialogue/Podunk/carol_call.yaml",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml",
+    "Data/Dialogue/Podunk/carol_phone.yaml",
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml",
+    "Data/Dialogue/Reusable/phonenoanswer.yaml",
+    "Data/Dialogue/Reusable/dad_normal.yaml"
+  ]
+}

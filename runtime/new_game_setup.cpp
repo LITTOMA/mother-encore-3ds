@@ -25,12 +25,12 @@ struct Reader {
 }
 uint32_t NamingAnimation::frame(double elapsed)const{if(keys.empty()||length<=0)return 0;double t=std::fmod(std::max(0.,elapsed),length);uint32_t result=keys.front().frame;for(const auto&k:keys){if(t<k.time)break;result=k.frame;}return result;}
 bool NewGameSetupData::load(const uint8_t*p,size_t n,std::string&e){
- if(!p||n<24||n>1024*1024||std::memcmp(p,"ENCNAMES",8)||integer(p+8)!=2||integer(p+12)!=n||integer(p+20)!=2)return fail(e,"Naming schema/size/capability rejected");
+ if(!p||n<24||n>1024*1024||std::memcmp(p,"ENCNAMES",8)||integer(p+8)!=3||integer(p+12)!=n||integer(p+20)!=2)return fail(e,"Naming schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Naming CRC mismatch");
  NewGameSetupData d;Reader r{p+24,n-24};d.maximum=r.u32();d.target=r.text();d.initial=r.text();d.other_initial=r.texts();d.defaults=r.texts();d.blacklist=r.texts();d.texts=r.texts();d.sounds=r.texts();d.cancel_delay=r.number();d.error_duration=r.number();d.font_height=r.real();
  auto count=r.count(32);for(uint32_t i=0;i<count;++i)d.layouts.push_back(r.rect());for(auto&x:d.patch)x=r.u32();for(auto&x:d.colors)x=r.u32();count=r.count(32);
  for(uint32_t i=0;i<count;++i){NamingResource a{r.text(),r.u32(),r.u32(),r.u32(),r.u32()};if(!safe_path(a.path)||!a.width||!a.height||a.width>1024||a.height>1024||!a.columns||!a.rows||a.width%a.columns||a.height%a.rows)return fail(e,"Naming texture rejected");d.resources.push_back(a);}
- count=r.count(8);for(uint32_t i=0;i<count;++i){std::vector<NamingKey>panel;auto keys=r.count(512);for(uint32_t j=0;j<keys;++j){NamingKey k;k.codepoint=r.u32();k.kind=r.u32();k.value=r.text();k.rect=r.rect();for(auto&v:k.neighbors)v=r.u32();if(k.kind>3||(!k.kind&&k.value.size()>1)||!ascii(k.value)||k.rect.w<=0||k.rect.h<=0||k.rect.x<0||k.rect.y<0||k.rect.x+k.rect.w>320||k.rect.y+k.rect.h>180)return fail(e,"Naming key rejected");panel.push_back(k);}if(panel.empty()||panel.front().value.empty())return fail(e,"Naming initial key rejected");for(const auto&key:panel)for(auto next:key.neighbors)if(next>=panel.size()||(!key.value.empty()&&panel[next].value.empty()))return fail(e,"Naming navigation target rejected");d.panels.push_back(panel);}
+ count=r.count(8);for(uint32_t i=0;i<count;++i){std::vector<NamingKey>panel;auto keys=r.count(512);for(uint32_t j=0;j<keys;++j){NamingKey k;k.codepoint=r.u32();k.kind=r.u32();k.value=r.text();k.rect=r.rect();for(auto&v:k.neighbors)v=r.u32();if(k.kind>3||(!k.kind&&k.value.size()>1)||!ascii(k.value)||k.rect.w<=0||k.rect.h<=0||k.rect.x<0||k.rect.y<0)return fail(e,"Naming key rejected");panel.push_back(k);}if(panel.empty()||panel.front().value.empty())return fail(e,"Naming initial key rejected");for(const auto&key:panel)for(auto next:key.neighbors)if(next>=panel.size()||(!key.value.empty()&&panel[next].value.empty()))return fail(e,"Naming navigation target rejected");d.panels.push_back(panel);}
  for(auto&v:d.actor_position)v=r.real();
  for(auto&v:d.shadow_position)v=r.real();
  d.actor=r.animation(r.number());
@@ -44,18 +44,27 @@ bool NewGameSetupData::load(const uint8_t*p,size_t n,std::string&e){
   for(const auto&k:f.actor.keys)if(k.frame>=d.resources[f.resource].columns*d.resources[f.resource].rows)return fail(e,"Naming field actor frame rejected");
   d.fields.push_back(std::move(f));
  }
- if(d.texts.empty()||d.fields.size()<2||foods!=1||d.fields.front().target!=d.target||d.fields.front().maximum!=d.maximum||d.fields.front().initial!=d.initial||d.fields.front().defaults!=d.defaults||d.fields.front().prompt!=d.texts[0])return fail(e,"Naming startup field scope rejected");
+ auto&b=d.presentation;if(r.u32()!=1)return fail(e,"Naming presentation tail schema rejected");
+ b.source_width=r.u32();b.source_height=r.u32();b.box=r.u32();b.cursor=r.u32();b.actor=r.u32();b.shadow=r.u32();
+ for(auto&v:b.layouts)v=r.u32();for(auto&v:b.texts)v=r.u32();for(auto&v:b.sounds)v=r.u32();
+ count=r.count(8);for(uint32_t i=0;i<count;++i)b.keyboard.push_back(r.u32());for(auto&v:b.field_bevel)v=r.real();
+ auto unique_refs=[](const auto&values,size_t limit){std::set<uint32_t>ids;for(auto v:values)if(v>=limit||!ids.insert(v).second)return false;return true;};
+ if(!b.source_width||!b.source_height||b.source_width>1024||b.source_height>1024||!unique_refs(std::array<uint32_t,4>{{b.box,b.cursor,b.actor,b.shadow}},d.resources.size())||!unique_refs(b.layouts,d.layouts.size())||!unique_refs(b.texts,d.texts.size())||!unique_refs(b.sounds,d.sounds.size())||b.keyboard.size()!=d.panels.size()||!unique_refs(b.keyboard,d.resources.size()))return fail(e,"Naming presentation reference rejected");
+ for(auto v:b.field_bevel)if(std::abs(v)>64)return fail(e,"Naming field bevel rejected");
+ std::set<std::string>paths;for(const auto&resource:d.resources)if(!paths.insert(resource.path).second)return fail(e,"Duplicate naming resource path");
+ for(size_t i=0;i<d.panels.size();++i){const auto&resource=d.resources[b.keyboard[i]];if(resource.width!=b.source_width||resource.height!=b.source_height||resource.columns!=1||resource.rows!=1)return fail(e,"Naming keyboard resource extent rejected");for(const auto&key:d.panels[i])if(key.rect.x+key.rect.w>b.source_width||key.rect.y+key.rect.h>b.source_height)return fail(e,"Naming key exceeds source viewport");}
+ if(d.texts.empty()||d.fields.size()<2||foods!=1||d.fields.front().target!=d.target||d.fields.front().maximum!=d.maximum||d.fields.front().initial!=d.initial||d.fields.front().defaults!=d.defaults||d.fields.front().prompt!=d.texts[b.texts[0]])return fail(e,"Naming startup field scope rejected");
  for(uint32_t i=0;i<d.fields.size();++i){const auto&f=d.fields[i];if(!f.initial.empty()&&!d.supported_field(i,f.initial))return fail(e,"Naming field initial value rejected");for(const auto&v:f.defaults)if(!d.supported_field(i,v))return fail(e,"Naming field default rejected");}
- if(!r.ok||r.n||!d.maximum||d.maximum>128||d.target.empty()||d.layouts.size()!=5||d.resources.size()!=11||d.panels.size()!=2||d.texts.size()!=7||d.sounds.size()!=3||d.defaults.empty()||d.defaults.size()>32||d.blacklist.empty()||d.cancel_delay<0||d.cancel_delay>10||d.error_duration<=0||d.error_duration>10||d.font_height<=0||d.font_height>64||d.arrow_move<=0||d.arrow_move>1||d.battle_texts_.empty())return fail(e,"Naming malformed payload or scope rejected");
- if(d.panels[0].size()!=d.panels[1].size())return fail(e,"Naming keyboard panel topology differs");
+ if(!r.ok||r.n||!d.maximum||d.maximum>128||d.target.empty()||d.layouts.empty()||d.resources.empty()||d.panels.empty()||d.texts.empty()||d.sounds.empty()||d.defaults.empty()||d.defaults.size()>32||d.blacklist.empty()||d.cancel_delay<0||d.cancel_delay>10||d.error_duration<=0||d.error_duration>10||d.font_height<=0||d.font_height>64||d.arrow_move<=0||d.arrow_move>1||d.battle_texts_.empty())return fail(e,"Naming malformed payload or scope rejected");
+ for(const auto&panel:d.panels)if(panel.size()!=d.panels.front().size())return fail(e,"Naming keyboard panel topology differs");
  for(const auto&l:d.layouts)if(l.w<0||l.h<0)return fail(e,"Naming layout rejected");
  for(auto margin:d.patch)if(margin>64)return fail(e,"Naming patch rejected");
  for(const auto&s:d.texts)if(!ascii(s))return fail(e,"Naming prompt glyph rejected");
  for(const auto&s:d.sounds)if(!safe_path(s))return fail(e,"Naming sound path rejected");
  for(const auto&s:d.defaults)if(!d.supported_name(s))return fail(e,"Naming default exceeds input scope");
  if(!d.initial.empty()&&!d.supported_name(d.initial))return fail(e,"Naming initial value rejected");
- for(const auto&k:d.actor.keys)if(k.frame>=d.resources[2].columns*d.resources[2].rows)return fail(e,"Naming actor frame rejected");
- for(const auto&k:d.arrow.keys)if(k.frame>=d.resources[1].columns*d.resources[1].rows)return fail(e,"Naming cursor frame rejected");
+ for(const auto&k:d.actor.keys)if(k.frame>=d.resources[b.actor].columns*d.resources[b.actor].rows)return fail(e,"Naming actor frame rejected");
+ for(const auto&k:d.arrow.keys)if(k.frame>=d.resources[b.cursor].columns*d.resources[b.cursor].rows)return fail(e,"Naming cursor frame rejected");
  for(const auto&t:d.battle_texts_){std::string expected=t.parts[0];if(t.parts.size()==2)expected+=d.defaults[0]+t.parts[1];if(expected!=t.expected)return fail(e,"Naming source text reconstruction rejected");}
  d.valid_=true;*this=std::move(d);e.clear();return true;
 }
@@ -103,7 +112,7 @@ void NewGameSetup::enter(uint32_t index){field_=index;value_=values_[index];sele
 void NewGameSetup::previous(){values_[field_]=value_;if(field_)enter(field_-1);else if(elapsed_>=data_->cancel_delay)phase_=NamingPhase::Cancelled;}
 
 std::string NewGameSetup::normalized(std::string_view s)const{size_t first=0,last=s.size();while(first<last&&static_cast<unsigned char>(s[first])<=32)++first;while(last>first&&static_cast<unsigned char>(s[last-1])<=32)--last;std::string v(s.substr(first,last-first));for(char&c:v)if(c>='A'&&c<='Z')c=char(c-'A'+'a');return v;}
-void NewGameSetup::sound(uint32_t index){if(index<data_->sounds.size())sounds_.push_back(data_->sounds[index]);}
+void NewGameSetup::sound(uint32_t index){if(index<data_->presentation.sounds.size())sounds_.push_back(data_->sounds[data_->presentation.sounds[index]]);}
 std::array<float,2>NewGameSetup::cursor()const{if(!data_)return{};const double t=std::clamp(cursor_time_/data_->arrow_move,0.,1.),ease=1-std::pow(1-t,4);return {{float(cursor_from_[0]+(cursor_to_[0]-cursor_from_[0])*ease),float(cursor_from_[1]+(cursor_to_[1]-cursor_from_[1])*ease)}};}
 void NewGameSetup::select(uint32_t index){if(index>=data_->panels[panel_].size()||data_->panels[panel_][index].value.empty())return;cursor_from_=cursor();selected_=index;const auto&r=data_->panels[panel_][index].rect;cursor_to_={{r.x,r.y}};cursor_time_=0;sound(0);}
 void NewGameSetup::erase(){if(!value_.empty()){value_.pop_back();sound(2);}else previous();}
@@ -151,8 +160,8 @@ void NewGameSetup::step_settings(double dt,const NamingInput&in){
  }
 }
 std::string NewGameSetup::localized(std::string_view id,std::string_view expected)const{if(!locale_)return std::string(expected);std::string out,error;if(!locale_->catalog()->bound(id,expected,locale_->code(),out,error)){locale_error_=error+": "+std::string(id);return {};}return out;}
-std::string NewGameSetup::prompt()const{if(!data_)return {};return error_prompt_?localized("naming.text/"+std::to_string(error_prompt_),data_->texts[error_prompt_]):localized("naming.prompt/"+std::to_string(field_),field().prompt);}
-std::string NewGameSetup::dotted_name()const{if(!data_)return{};auto s=value_;if(s.size()<field().maximum){s+=data_->texts[3];while(s.size()<field().maximum)s+=data_->texts[4];}return s;}
+std::string NewGameSetup::prompt()const{if(!data_)return {};return error_prompt_?localized("naming.text/"+std::to_string(data_->presentation.texts[error_prompt_]),data_->texts[data_->presentation.texts[error_prompt_]]):localized("naming.prompt/"+std::to_string(field_),field().prompt);}
+std::string NewGameSetup::dotted_name()const{if(!data_)return{};auto s=value_;if(s.size()<field().maximum){s+=data_->texts[data_->presentation.texts[3]];while(s.size()<field().maximum)s+=data_->texts[data_->presentation.texts[4]];}return s;}
 bool NewGameSetup::apply(SessionSnapshot&s,const NativeSessionData&session,std::string&e)const{
  if(phase_!=NamingPhase::Accepted||!data_||!session.valid()||s.characters.size()!=session.startup_characters().size()||s.party!=session.defaults().party||s.characters.empty()||s.characters[0].character_id!=data_->target||values_.size()!=data_->fields.size())return fail(e,"Naming commit outside fresh source startup target");
  auto next=s;std::set<std::string>named;

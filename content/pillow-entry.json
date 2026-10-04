@@ -1023,6 +1023,10 @@
     "time_domain": "source animation key times; native deferred callbacks and timer completion may occur on later frames",
     "win_flag": ""
   },
+  "entry_bindings": {
+    "path": "content/battle-entry-bindings.json",
+    "sha256": "861827a553ead6f2571f44d93c701571c644bc729b9817007603e53983603ad8"
+  },
   "game_version": "0.4.1.0",
   "kind": "encore.native-battle-entry.source-ir",
   "licence_review": "Pinned LICENSE permits assets in game-related forks/modifications/translations; original art retained solely for the Mother: Encore port under its existing conditions",
@@ -2135,6 +2139,7 @@
     "Nodes/Ui/Battle/BattleSpriteNinten.tscn": "be9e30af97fc90414a5c45102338cd27d78e11accb75f2e905b833f551843b1e",
     "Nodes/Ui/Battle/EnemySprite.tscn": "4a1549d50c44c994f6121d1c4691011429a70da4bb940b87d0bb94d20f861129",
     "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
     "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
     "Scripts/UI/Battle/BattleItemPool.gd": "8f193447042817087a33cf761ea4c89cb6e9e453bc257a04b95089deaee8ff07",
     "Scripts/UI/Battle/BattleMenuBox.gd": "d01947cb671feedc0467069af68c680a94002650bd34e405afc00d44dfc6902b",

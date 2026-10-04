@@ -1,0 +1,408 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "paths": {
+    "scene": "Maps/Naming screen.tscn",
+    "script": "Scripts/UI/NamingScreen/Naming screen.gd",
+    "sequence": "Data/NamingSequences/intro.yaml",
+    "save": "Data/save_new_game.yaml",
+    "title": "Scripts/UI/Title screen.gd",
+    "audio": "Scripts/global/audioManager.gd",
+    "cursor": "Scripts/UI/cursor.gd",
+    "arrow": "Nodes/Ui/arrow.tscn",
+    "party": "Scripts/global/PartyMember.gd",
+    "global": "Scripts/global/global.gd",
+    "text_tools": "Scripts/global/text_tools.gd",
+    "license": "LICENSE",
+    "npc": "Nodes/Reusables/npc.tscn",
+    "npc_script": "Scripts/Main/npc.gd",
+    "sprite_script": "Scripts/Main/character_sprite.gd",
+    "animation": "Data/Animations/PartyMember.yaml",
+    "project": "project.godot",
+    "font": "Fonts/EBMain.ttf",
+    "font_resource": "Fonts/EBMain.tres"
+  },
+  "sources": {
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Scripts/UI/NamingScreen/Naming screen.gd": "8e094a7d8db69cc90f70f11238a4c5b0231678ad7041dc537ce671e4284b570d",
+    "Data/NamingSequences/intro.yaml": "cc6036576852edb7ff29bbd44f71dd50ae2e7ee51fdffd6322457d36d3719507",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4"
+  },
+  "review": {
+    "Scripts/UI/NamingScreen/Naming screen.gd": {
+      "_highlight_color": "func _highlight_color():\n\t_highlight_tween = create_tween().set_trans(Tween.TRANS_QUAD)\n\tfor i in range(2):\n\t\t_highlight_tween.tween_property(_prompt_label, \"modulate\", Color(TextTools.DIALOG_HINT_COLOR), BLINK_DURATION) \\\n\t\t\t\t.set_ease(Tween.EASE_OUT)\n\t\t_highlight_tween.tween_property(_prompt_label, \"modulate\", Color.white, BLINK_DURATION) \\\n\t\t\t\t.set_ease(Tween.EASE_OUT)\n\t_highlight_tween.tween_property(_prompt_label, \"modulate\", Color.white, 0.8)\n\n",
+      "_refresh_keys": "func _refresh_keys():\n\tvar gridId = 0\n\tfor parent in _keyboard_area.get_children():\n\t\tif parent is GridContainer && !parent in [_keyboard_grid_dont_care, _keyboard_grid_ok_back]:\n\t\t\tvar letters = tr(\"KEYBOARD_PANEL%s_GRID%s\" % [_current_keyboard_panel,gridId])\n\t\t\t# In case we need to set a different number of columns for different languages\n\t\t\t#parent.columns = len(letters) / KEYBOARD_ROWS\n\t\t\tfor i in parent.get_child_count():\n\t\t\t\tvar label = parent.get_child(i)\n\t\t\t\tvar lower_label: Label\n\t\t\t\tif label.get_child_count() == 0:\n\t\t\t\t\tlower_label = label.duplicate()\n\t\t\t\t\tlabel.add_child(lower_label)\n\t\t\t\t\tlabel.percent_visible = 0\n\t\t\t\t\tlower_label.rect_position = Vector2.ZERO\n\t\t\t\telse:\n\t\t\t\t\tlower_label = label.get_child(0)\n\t\t\t\tvar letter = letters[i] if i < len(letters) else \"\"\n\t\t\t\tletter = letter.replace(\"_\", \"\")\n\t\t\t\tlower_label.text = letter\n\t\t\t\tlabel.text = \"A\" if !letter in [\"\", \"⁦\"]  else \"\"\n\t\t\tgridId += 1\n\t\n\tvar next_current_keyboard_panel = fmod(_current_keyboard_panel + 1, _count_keyboard_panels())\n\t_panel_switch_button.text = \"KEYBOARD_PANEL%s_NAME\" % next_current_keyboard_panel\n\n",
+      "_on_arrow_failed_move": "func _on_arrow_failed_move(dir: Vector2):\n\tvar index = 0\n\tmatch _keyboard_arrow.menu_parent:\n\t\t_keyboard_grid_1:\n\t\t\tmatch dir:\n\t\t\t\tVector2.LEFT:\n\t\t\t\t\tif _keyboard_arrow.change_parent(_keyboard_grid_3):\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index + _keyboard_grid_3.columns - 1)\n\t\t\t\t\telif _keyboard_arrow.change_parent(_keyboard_grid_2):\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index + _keyboard_grid_2.columns - 1)\n\t\t\t\t\telse:\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index + _keyboard_grid_1.columns - 1, true, true)\n\t\t\t\tVector2.RIGHT:\n\t\t\t\t\tif !_keyboard_arrow.change_parent(_keyboard_grid_2):\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index - _keyboard_grid_1.columns + 1, true, true)\n\t\t\t\tVector2.UP:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_dont_care) \\\n\t\t\t\t\tor _keyboard_arrow.set_cursor_from_index(_keyboard_grid_1.get_child_count() - _keyboard_grid_1.columns + (_keyboard_arrow.cursor_index % _keyboard_grid_1.columns), true, true)\n\t\t\t\tVector2.DOWN:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_dont_care) or _keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index % _keyboard_grid_1.columns, true, true)\n\t\t_keyboard_grid_2:\n\t\t\tmatch dir:\n\t\t\t\tVector2.LEFT:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_1)\n\t\t\t\tVector2.RIGHT:\n\t\t\t\t\tif !_keyboard_arrow.change_parent(_keyboard_grid_3):\n\t\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_1)\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index - _keyboard_grid_1.columns + 1)\n\t\t\t\tVector2.UP:\n\t\t\t\t\tif _keyboard_arrow.cursor_index % _keyboard_grid_2.columns >= _keyboard_grid_2.columns/2:\n\t\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_ok_back)\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(0)\n\t\t\t\t\telse:\n\t\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_dont_care) \\\n\t\t\t\t\t\tor _keyboard_arrow.set_cursor_from_index(_keyboard_grid_2.get_child_count() - _keyboard_grid_2.columns + (_keyboard_arrow.cursor_index % _keyboard_grid_2.columns), true, true)\n\t\t\t\tVector2.DOWN:\n\t\t\t\t\tif _keyboard_arrow.cursor_index % _keyboard_grid_2.columns >= _keyboard_grid_2.columns/2:\n\t\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_ok_back)\n\t\t\t\t\telse:\n\t\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_dont_care) \\\n\t\t\t\t\t\tor _keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index % _keyboard_grid_2.columns, true, true)\n\t\t_keyboard_grid_3:\n\t\t\tmatch dir:\n\t\t\t\tVector2.LEFT:\n\t\t\t\t\tif !_keyboard_arrow.change_parent(_keyboard_grid_2):\n\t\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_1)\n\t\t\t\tVector2.RIGHT:\n\t\t\t\t\tif _keyboard_arrow.change_parent(_keyboard_grid_1):\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index - _keyboard_grid_1.columns + 1)\n\t\t\t\tVector2.UP:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_ok_back)\n\t\t\t\tVector2.DOWN:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_ok_back)\n\t\t_keyboard_grid_dont_care:\n\t\t\tmatch dir:\n\t\t\t\tVector2.LEFT:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_ok_back)\n\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_arrow.cursor_index + _keyboard_grid_ok_back.columns - 1)\n\t\t\t\tVector2.RIGHT:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_ok_back)\n\t\t\t\tVector2.UP:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_1)\n\t\t\t\tVector2.DOWN:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_1)\n\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(0)\n\t\t_keyboard_grid_ok_back:\n\t\t\tmatch dir:\n\t\t\t\tVector2.LEFT:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_dont_care) or _keyboard_arrow.set_cursor_from_index(_keyboard_arrow.get_last_available_idx(), true, true)\n\t\t\t\tVector2.RIGHT:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_dont_care) or _keyboard_arrow.set_cursor_from_index(_keyboard_arrow.get_first_available_idx(), true, true)\n\t\t\t\tVector2.UP:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_3)\n\t\t\t\tVector2.DOWN:\n\t\t\t\t\t_keyboard_arrow.change_parent(_keyboard_grid_3)\n\t\t\t\t\tif _keyboard_arrow.cursor_index == 0:\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(0)\n\t\t\t\t\telse:\n\t\t\t\t\t\t_keyboard_arrow.set_cursor_from_index(_keyboard_grid_3.columns - 1)\n\n",
+      "_on_arrow_selected": "func _on_arrow_selected(cursor_index: int):\n\tmatch _keyboard_arrow.get_current_item():\n\t\t_keyboard_dont_care:\n\t\t\t_set_dont_care()\n\t\t\t_keyboard_arrow.play_sfx(\"cursor2\")\n\t\t_keyboard_backspace:\n\t\t\t_backspace()\n\t\t_keyboard_ok:\n\t\t\tif _input_text != \"\":\n\t\t\t\t_set_next_step()\n\t\t\t\t_pinyin.text = \"\"#标\n\t\t_:\n\t\t\tvar character = \"\"\n\t\t\tif _keyboard_arrow.menu_parent.get_child(cursor_index).percent_visible == 1:\n\t\t\t\tcharacter = tr(_keyboard_arrow.menu_parent.get_child(cursor_index).text)\n\t\t\telse:\n\t\t\t\tcharacter = tr(_keyboard_arrow.menu_parent.get_child(cursor_index).get_child(0).text)\n\t\t\tvar has_text_changed = _keyboard_char_addition(character)\n\t\t\tif has_text_changed:\n\t\t\t\t_set_dots()\n\t\t\t\t_update_lr_prompts()\n\t\t\t\t_keyboard_arrow.play_sfx(\"cursor2\")\n\n",
+      "_backspace": "func _backspace():\n\tif _input_text != \"\" or _pinyin.text != \"\":#标\n\t\t_keyboard_char_removal()\n\t\t_set_dots()\n\t\t_update_lr_prompts()\n\t\t_keyboard_arrow.play_sfx(\"back\")\n\telse:\n\t\t_set_prev_step()\n\n"
+    },
+    "Scripts/UI/cursor.gd": {
+      "set_cursor_from_index": "func set_cursor_from_index(index: int, transition := true, play_sfx := false) -> void:\n\tif !is_instance_valid(menu_parent):\n\t\treturn\n\t# try to fix index preemptively lol\n\tindex = _idx_or_prev_valid_idx(index)\n\tindex = _idx_or_next_valid_idx(index)\n\tif index >= menu_parent.get_child_count():\n\t\treturn\n\tif index < 0:\n\t\treturn\n\tvar menu_item := get_menu_item_at_index(index)\n\t# if there is any problem, try to recalculate the idx\n\tif menu_item == null:\n\t\treturn\n\tcursor_index = index\n\t\n\tvar size = _cursor_size\n\tsize.y = size.y/2.0\n\tsize.x = -size.x/6.0\n\t\n\t_unhighlight()\n\t_turn_on_highlight()\n\t\n\tvar new_position = menu_item.rect_global_position + cursor_offset + size\n#\tvar size = menu_item.rect_size\n\tif _tween: _tween.kill()\n\tif transition:\n\t\t_tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)\n\t\t_tween.tween_property(self, \"global_position\", new_position, TWEEN_LENGTH)\n\t\tif frames == null:\n\t\t\t_tween.parallel().tween_property(self, \"scale\", Vector2(1.3,0.7), TWEEN_LENGTH).from(Vector2(0.8, 1.2))\n\t\t\t_tween.tween_property(self, \"scale\", Vector2(0.8, 1.2), 0.03)\n\t\t\t_tween.tween_property(self, \"scale\", Vector2(1,1), 0.03).from(Vector2(0.8, 1.3))\n\t\t$Timer.start()\n\telse:\n\t\tscale = Vector2.ONE\n\t\tglobal_position = new_position\n\t\n\tif play_sfx:\n\t\tplay_sfx('cursor1')\n\n",
+      "get_closest_menu_item_index": "func get_closest_menu_item_index(new_parent):\n\tvar closest = 0\n\tvar cursor_position = global_position\n\tcursor_position.x += _cursor_size.x - cursor_offset.x\n\tfor i in new_parent.get_child_count():\n\t\tvar closestItem = new_parent.get_child(closest)\n\t\tvar newItem = new_parent.get_child(i)\n\t\tif cursor_position.distance_to(closestItem.rect_global_position + closestItem.rect_size / 2) > cursor_position.distance_to(newItem.rect_global_position + closestItem.rect_size / 2 ):\n\t\t\tif _should_skip_item(newItem):\n\t\t\t\tcontinue\n\t\t\telse:\n\t\t\t\tclosest = i\n\n\treturn closest\n\n",
+      "change_parent": "func change_parent(new_parent, play_sfx = true, closest_index = true):\n\tvar index\n\tif closest_index:\n\t\tindex = get_closest_menu_item_index(new_parent)\n\telse:\n\t\tindex = get_farthest_menu_item_index(new_parent)\n\tif _should_skip_item(new_parent.get_child(index)):\n\t\treturn false\n\t_connect_to_menu_parent(new_parent, menu_parent)\n\tmenu_parent = new_parent\n\tset_cursor_from_index(index, true)\n\tif play_sfx:\n\t\tplay_sfx('cursor1')\n\treturn true\n\n"
+    }
+  },
+  "targets": [
+    "ninten",
+    "ana",
+    "lloyd",
+    "pippi",
+    "teddy",
+    "favorite_food",
+    null,
+    null
+  ],
+  "groups": [
+    "CanvasLayer/NamingBox/Grid/GridContainer",
+    "CanvasLayer/NamingBox/Grid/GridContainer2",
+    "CanvasLayer/NamingBox/Grid/GridContainer3",
+    "CanvasLayer/NamingBox/CommandGrid/GridContainer4",
+    "CanvasLayer/NamingBox/CommandGrid/GridContainer5"
+  ],
+  "group_aliases": [
+    "_keyboard_grid_1",
+    "_keyboard_grid_2",
+    "_keyboard_grid_3",
+    "_keyboard_grid_dont_care",
+    "_keyboard_grid_ok_back"
+  ],
+  "group_counts": [
+    30,
+    30,
+    25,
+    1,
+    2
+  ],
+  "character_groups": [
+    0,
+    1,
+    2
+  ],
+  "command_groups": [
+    3,
+    4
+  ],
+  "panel_keys": [
+    [
+      "KEYBOARD_PANEL0_GRID0",
+      "KEYBOARD_PANEL0_GRID1",
+      "KEYBOARD_PANEL0_GRID2"
+    ],
+    [
+      "KEYBOARD_PANEL1_GRID0",
+      "KEYBOARD_PANEL1_GRID1",
+      "KEYBOARD_PANEL1_GRID2"
+    ]
+  ],
+  "panel_paths": [
+    "new-game-preview/keyboard-0.t3x",
+    "new-game-preview/keyboard-1.t3x"
+  ],
+  "commands": [
+    {
+      "node": "CanvasLayer/NamingBox/CommandGrid/GridContainer4/Don\\'t care",
+      "kind": 1,
+      "text": "MENU_DONT_CARE"
+    },
+    {
+      "node": "CanvasLayer/NamingBox/CommandGrid/GridContainer5/Backspace",
+      "kind": 2,
+      "text": "MENU_BACKSPACE"
+    },
+    {
+      "node": "CanvasLayer/NamingBox/CommandGrid/GridContainer5/OK",
+      "kind": 3,
+      "text": "MENU_OK"
+    }
+  ],
+  "layouts": [
+    "CanvasLayer/NameBox",
+    "CanvasLayer/NameBox/Label",
+    "CanvasLayer/NameBox/name",
+    "CanvasLayer/NameBox/name/Label",
+    "CanvasLayer/NamingBox"
+  ],
+  "nodes": {
+    "background": "Background",
+    "field": "CanvasLayer/NameBox/name",
+    "label": "CanvasLayer/NameBox/name/Label",
+    "actors": "Objects/Actors",
+    "npc_sprite": "CharacterSprite",
+    "npc_shadow": "Shadow",
+    "dim": "CanvasLayer/Settings/ColorRect"
+  },
+  "texts": [
+    "$prompt",
+    "NAME_BLOCKED",
+    "NAME_DUPLICATED",
+    "SYMBOL_BULLET_NAMING",
+    "SYMBOL_DOT",
+    "KEYBOARD_PANEL1_NAME",
+    "KEYBOARD_PANEL0_NAME"
+  ],
+  "blacklist": "BLACKLISTED_NAMES",
+  "favorite_food_target": "favorite_food",
+  "favorite_food_save": "favoritefood",
+  "food_asset": "Graphics/UI/Misc/FavFoodPlate.png",
+  "food_grid": [
+    1,
+    1
+  ],
+  "food_animation": {
+    "position": [
+      64,
+      40
+    ],
+    "shadow": [
+      0,
+      0
+    ],
+    "length": 1,
+    "keys": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "actor_animation": "Walk",
+  "actor_type": 0,
+  "actor_grid": [
+    10,
+    20
+  ],
+  "sprite_prefix": "Graphics/Character Sprites/",
+  "sprite_suffix": "/main.png",
+  "output_prefix": "new-game-preview/",
+  "output_suffix": ".t3x",
+  "translations": {
+    "menus": "menus",
+    "keyboard": "keyboard",
+    "battle": [
+      "battletext",
+      "battlers",
+      "battleskills",
+      "menus"
+    ]
+  },
+  "dependencies": [
+    "content/native-save-menu.json",
+    "content/native-opening.json",
+    "content/native-session.json",
+    "romfs/battle-preview/source.json"
+  ],
+  "save_ir": "content/native-save-menu.json",
+  "opening_ir": "content/native-opening.json",
+  "session_ir": "content/native-session.json",
+  "font_receipt": "romfs/battle-preview/source.json",
+  "battle_irs": [
+    "content/native-round.json",
+    "content/doll-round.json",
+    "content/pillow-round.json"
+  ],
+  "player_article": "ARTICLES_NINTEN",
+  "name_roles": [
+    3,
+    9,
+    10,
+    12
+  ],
+  "target_roles": [
+    3,
+    7
+  ],
+  "sounds": [
+    "cursor1",
+    "cursor2",
+    "back"
+  ],
+  "default_count": 7,
+  "arrow_layout": 18,
+  "first_resources": {
+    "box": 0,
+    "cursor": 1,
+    "actor": 2,
+    "shadow": 3
+  },
+  "keyboard_resources": [
+    4,
+    5
+  ],
+  "field_resources": [
+    2,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "presentation": {
+    "layouts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "texts": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "sounds": [
+      0,
+      1,
+      2
+    ],
+    "field_bevel": [
+      -1,
+      1,
+      2,
+      -2
+    ]
+  },
+  "routing": [
+    [
+      {
+        "op": "adjust",
+        "group": 2,
+        "column_scale": 1,
+        "bias": -1
+      },
+      {
+        "op": "closest",
+        "group": 1
+      },
+      {
+        "op": "closest",
+        "group": 3
+      },
+      {
+        "op": "closest",
+        "group": 3
+      }
+    ],
+    [
+      {
+        "op": "closest",
+        "group": 0
+      },
+      {
+        "op": "closest",
+        "group": 2
+      },
+      {
+        "op": "if",
+        "condition": "right_half",
+        "yes": {
+          "op": "first",
+          "group": 4
+        },
+        "no": {
+          "op": "closest",
+          "group": 3
+        }
+      },
+      {
+        "op": "if",
+        "condition": "right_half",
+        "yes": {
+          "op": "closest",
+          "group": 4
+        },
+        "no": {
+          "op": "closest",
+          "group": 3
+        }
+      }
+    ],
+    [
+      {
+        "op": "closest",
+        "group": 1
+      },
+      {
+        "op": "adjust",
+        "group": 0,
+        "column_scale": -1,
+        "bias": 1
+      },
+      {
+        "op": "closest",
+        "group": 4
+      },
+      {
+        "op": "closest",
+        "group": 4
+      }
+    ],
+    [
+      {
+        "op": "adjust",
+        "group": 4,
+        "column_scale": 1,
+        "bias": -1
+      },
+      {
+        "op": "closest",
+        "group": 4
+      },
+      {
+        "op": "closest",
+        "group": 0
+      },
+      {
+        "op": "first",
+        "group": 0
+      }
+    ],
+    [
+      {
+        "op": "closest",
+        "group": 3
+      },
+      {
+        "op": "closest",
+        "group": 3
+      },
+      {
+        "op": "closest",
+        "group": 2
+      },
+      {
+        "op": "edge",
+        "group": 2
+      }
+    ]
+  ],
+  "probe_extra_nodes": [
+    "CanvasLayer/NamingBox/CommandGrid/Empty"
+  ],
+  "source_rows": {
+    "save_flavor": 0,
+    "opening_actor": 0,
+    "animation_direction": 0,
+    "session_character": 0,
+    "layout_label": 3,
+    "layout_field": 2
+  }
+}

@@ -31,6 +31,7 @@ from tools.doll_dialogue import receipt as doll_receipt, compile_dialogue as com
 from tools.doll_postwin import receipt as postwin_receipt, compile_dialogue as compile_postwin_dialogue, return_duration as postwin_return_duration
 from tools.melody_dialogue import receipt as melody_receipt, compile_melody, compile_guard
 from tools.native_content import OPCODES as SCHEMA_OPCODES
+from tools.world_program_bindings import load as load_world_bindings, actor_indices as world_actor_indices, program as world_program, actor as world_actor, object_indices as world_object_indices, clip_name as world_clip_name, motion as world_motion, encounter as world_encounter
 
 NONE = 0xffffffff
 # Schema/execution enums, never source names dispatched by the runtime.
@@ -161,6 +162,7 @@ class Extractor:
 
     def run(self):
         s = self.sections
+        self.world_bindings=load_world_bindings(self)
         house_path = 'reports/cloud-world/house-exact.json'
         player_path = 'reports/cloud-world/player-exact.json'
         house = self.document(house_path)
@@ -213,8 +215,9 @@ class Extractor:
                         '21 bodies; door serialized overrides; existing world-flags-v0410 fresh-world rules')
 
         # Source-backed texture layout and compiled-byte identities.
-        sprite_recipe = self.reviews['ninten-sprite']
-        actor_receipt = self.document('romfs/actor-preview/source.json')
+        animation_bindings=self.world_bindings['animation']
+        sprite_recipe = self.document(animation_bindings['sprite_review'])
+        actor_receipt = self.document(animation_bindings['sprite_manifest'])
         require(actor_receipt['recipe'] == sprite_recipe, 'Stale actor recipe')
         for key in ('scene', 'texture', 'lamp_texture', 'lamp_yaml', 'npc_script',
                     'character_sprite_script', 'emote_texture', 'emote_scene', 'shadow_texture', 'actor_scene'):
@@ -222,16 +225,12 @@ class Extractor:
         emote_text = self.text(sprite_recipe['emote_scene'])
         emote_node = node_block(emote_text, '.')
         emote_grid = [int(prop(emote_node, key)) for key in ('hframes', 'vframes')]
-        asset_descriptors = [
-            ('primary', 'ninten-main.t3x', sprite_recipe['texture'], sprite_recipe['grid']),
-            ('lamp', 'lamp.t3x', sprite_recipe['lamp_texture'], sprite_recipe['lamp_layout']['grid']),
-            ('emote', 'emotes.t3x', sprite_recipe['emote_texture'], emote_grid),
-            ('shadow', 'shadow.t3x', sprite_recipe['shadow_texture'], [1, 1])]
         resources = {}
-        for role, name, source, grid in asset_descriptors:
-            size = image_size(self.source(source))
-            resources[role] = self.add_resource('actor-preview/' + name, *size, *grid,
-                                               expected=actor_receipt['outputs'][name]['sha256'])
+        for binding in animation_bindings['assets']:
+            size = image_size(self.source(sprite_recipe[binding['recipe_key']]))
+            require(binding['id']==len(s['Resource'])+1,'Actor asset stable append order')
+            resources[binding['role']] = self.add_resource(binding['path'], *size, *binding['grid'],
+                expected=actor_receipt['outputs'][Path(binding['path']).name]['sha256'])
         layers_receipt = self.document('romfs/house-layers/source.json')
         layer_data = self.document('reports/m2-scene-reference-reviewed/house-data.json', layers_receipt['scene_export_sha256'])
         self.document('reports/m2-scene-reference-reviewed/receipt.json', layers_receipt['reference_sha256'])
@@ -299,24 +298,27 @@ class Extractor:
                         'interval-discrete sampling; preserve out-of-duration Idle Right keys')
         # PyYAML is used only by this source extraction command, never the pack compiler.
         import yaml
-        lamp_yaml = yaml.safe_load(self.text(sprite_recipe['lamp_yaml']))
-        party_yaml = yaml.safe_load(self.text('Data/Animations/PartyMember.yaml'))
-        require(set(lamp_yaml['animations']) == {'Idle', 'Open'}, 'Unknown lamp animation source')
-        for name, flags in (('Idle', 4), ('Open', 2)):
+        base_profiles=animation_bindings['base_profiles']
+        lamp_profile=base_profiles[1];party_profile=base_profiles[0]
+        lamp_yaml = yaml.safe_load(self.text(lamp_profile['animation_source']))
+        party_yaml = yaml.safe_load(self.text(party_profile['animation_source']))
+        for binding in lamp_profile['clips']:
+            name,flags=binding['animation'],binding['flags']
             anim = lamp_yaml['animations'][name]
             require(anim['type'] == 1 and len(anim['directions']) == 1, 'Unreviewed lamp animation')
             direction = anim['directions'][0]; time = float(direction[0]); keys = []
             for frame, duration in direction[1:]:
                 keys.append((time, frame - 1)); time += duration
-            clip_names['Lamp ' + name] = add_clip(time, keys, flags, frame_count=math.prod(lamp_yaml['size']))
-        surprise = one(r'^\[sub_resource type="Animation" id=\d+\]\nresource_name = "surprise"\n(.*?)(?=^\[|\Z)',
+            clip_names[world_clip_name(lamp_profile['prefix'],name)] = add_clip(time, keys, flags, frame_count=math.prod(lamp_yaml['size']))
+        initial_emote=animation_bindings['emotes'][0]['animation']
+        surprise = one(r'^\[sub_resource type="Animation" id=\d+\]\nresource_name = "'+re.escape(initial_emote)+r'"\n(.*?)(?=^\[|\Z)',
                        emote_text, 'surprise animation', re.M | re.S)[1]
         times = [float(n.strip()) for n in one(r'"times": PoolRealArray\( ([^)]*) \)', surprise, 'surprise times')[1].split(',')]
         frames = [int(n.strip()) for n in one(r'"values": \[ ([^]]*) \]', surprise, 'surprise frames')[1].split(',')]
         require(len(times) == len(frames), 'Emote timeline arity')
-        clip_names['surprise'] = add_clip(float(prop(surprise, 'length')), list(zip(times, frames)),
+        clip_names[initial_emote] = add_clip(float(prop(surprise, 'length')), list(zip(times, frames)),
                                          8, frame_count=math.prod(emote_grid), channel=1)
-        idle_directions = party_yaml['animations']['Idle']['directions']
+        idle_directions = party_yaml['animations'][party_profile['idle_animation']]['directions']
         require(len(idle_directions) == 8 and all(len(d) == 2 for d in idle_directions), 'Unknown directional idle profile')
         s['DirectionFrame'] = [dict(frame=d[1][0] - 1) for d in idle_directions]
         self.record_map('Clip[32:35]/DirectionFrame', 'upstream/MOTHER-Encore/{Data/Animations/Lamp.yaml,Data/Animations/PartyMember.yaml,Nodes/Ui/emotes.tscn}',
@@ -331,21 +333,22 @@ class Extractor:
         sprite_code = self.text(sprite_recipe['character_sprite_script'])
         require('offset.y = -int(texture.get_height()/float(vframes*2))' in sprite_code,
                 'Unreviewed sprite auto-offset formula')
-        for index, data in enumerate((party_yaml, lamp_yaml)):
-            rid = resources['primary' if index == 0 else 'lamp']; resource = s['Resource'][rid]
+        for binding in base_profiles:
+            index=binding['actor_id']-1;data=yaml.safe_load(self.text(binding['animation_source']))
+            rid = resources[self.world_bindings['actors'][index]['resource_role']]; resource = s['Resource'][rid]
             offset = [f32(data['offset'][0]), f32(-int(resource['height'] / float(resource['rows'] * 2)) + data['offset'][1])]
             emote_offset = [0, f32(-(resource['height'] / resource['rows'] + bubble_extra))]
-            idle_clip = clip_names['Idle Down' if index == 0 else 'Lamp Idle']
-            s['ActorProfile'].append(dict(stable_id=index + 1, execution_kind=index + 1,
+            idle_clip = clip_names[world_clip_name(binding['prefix'],binding['idle_animation'],animation_bindings['directions'][0]if binding['execution_kind']==1 else None)]
+            s['ActorProfile'].append(dict(stable_id=binding['actor_id'], execution_kind=binding['execution_kind'],
                 flags=int(next(n for n in player['nodes'] if n['path'] == 'Shadow')['properties']['visible']) if index == 0 else int(sprite_recipe['lamp_layout']['shadow']),
                 primary_resource=rid, shadow_resource=resources['shadow'], emote_resource=resources['emote'],
                 animation_binding_first=0 if index == 0 else len(s['AnimationBinding']),
                 animation_binding_count=len(s['AnimationBinding']) if index == 0 else 0,
-                initial_frame=s['DirectionFrame'][0]['frame'] if index == 0 else lamp_yaml['animations']['Idle']['directions'][0][1][0] - 1,
+                initial_frame=s['DirectionFrame'][0]['frame'] if index == 0 else lamp_yaml['animations'][lamp_profile['idle_animation']]['directions'][0][1][0] - 1,
                 emote_initial_frame=emote_initial, sprite_position=sprite_position, sprite_offset=offset,
                 emote_offset=emote_offset, shadow_offset=shadow_offset, direction_first=0,
                 direction_count=len(s['DirectionFrame']) if index == 0 else 0,
-                idle_clip=idle_clip, emote_clip=clip_names['surprise'] if index == 0 else NONE))
+                idle_clip=idle_clip, emote_clip=clip_names[initial_emote] if index == 0 else NONE))
         intro_source = 'Maps/Cutscenes/Mt Itoi Landscape.tscn'
         intro_door = node_block(self.text(intro_source), 'Objects/Door')
         door_y = self.scalar('Scripts/Main/Door.gd', r'Vector2\(targetX, targetY - ' + NUMBER + r'\)', 'Scene.spawn.y.adjustment', 1)
@@ -353,13 +356,15 @@ class Extractor:
         direction = pair(prop(intro_door, 'dir'))
         npc_default = one(r'initial_dir = (Vector2\([^\n]+\))', self.text('Scripts/Main/npc.gd'), 'NPC initial direction')[1]
         lamp_direction = pair(npc_default)
+        lamp_node=world_actor(self.world_bindings,2)['node']
         instance_visibility = [player['nodes'][0]['properties']['visible'],
                                all(hn[path]['properties'].get('visible', True)
-                                   for path in ('.', 'Objects', 'Objects/lamp'))]
+                                   for path in ('.',lamp_node.rsplit('/',1)[0],lamp_node))]
         require(all(type(value) is bool for value in instance_visibility), 'Invalid native actor visibility')
-        for i, name in enumerate((Path(sprite_recipe['texture']).parent.name, hn['Objects/lamp']['name'])):
-            s['ActorInstance'].append(dict(stable_id=i + 1, profile_index=i, binding_kind=i + 1, flags=int(instance_visibility[i]),
-                display_name_string=self.string(name), position=spawn if i == 0 else list(vec(hn['Objects/lamp']['properties']['position'])),
+        for binding in base_profiles:
+            i=binding['actor_id']-1;name=Path(sprite_recipe['texture']).parent.name if binding['execution_kind']==1 else hn[world_actor(self.world_bindings,binding['actor_id'])['node']]['name']
+            s['ActorInstance'].append(dict(stable_id=binding['actor_id'], profile_index=i, binding_kind=binding['execution_kind'], flags=int(instance_visibility[i]),
+                display_name_string=self.string(name), position=spawn if i == 0 else list(vec(hn[lamp_node]['properties']['position'])),
                 direction=direction if i == 0 else lamp_direction,
                 initial_clip=s['ActorProfile'][i]['idle_clip']))
         self.record_map('ActorInstance[0].flags', player_path,
@@ -420,7 +425,7 @@ class Extractor:
         verify_sources(self.upstream, dialogue_review)
         receipt = self.document('reports/m5-lamp-dialogue-reference/dialogue.json')
         actions = compile_receipt(receipt, dialogue_review)
-        music_node = node_block(house_text, 'Poltergeist/MusicArea')
+        music_node = node_block(house_text, self.world_bindings['initial_bindings'][0]['node'])
         music_uri = 'res://Audio/Music/' + json.loads(prop(music_node, 'loop'))
         resources['music'] = self.add_resource(music_uri, kind=2)
         sound_uris = list(dict.fromkeys(a['text'] for a in actions if a['kind'] == 'PlaySound'))
@@ -445,8 +450,8 @@ class Extractor:
         magnitude = self.scalar(shaker_source, r'^export \(float\) var magnitude = ' + NUMBER + r'\s*$', 'Binding[1].value')
         sound = json.loads(one(r'^export \(String\) var sound = ("[^"\n]+")', shaker, 'room shaker sound')[1])
         shake_sound = self.add_resource('res://Audio/Sound effects/' + sound, kind=2)
-        s['Binding'] = [dict(stable_id=1, kind=1, flags=0, target_index=resources['music'], auxiliary_index=NONE, value=0, duration=0),
-                        dict(stable_id=2, kind=3, flags=0, target_index=shake_sound, auxiliary_index=NONE, value=magnitude, duration=delay)]
+        initial_targets={'music':resources['music'],'shake_sound':shake_sound}
+        s['Binding']=[dict(stable_id=binding['id'],kind=binding['kind'],flags=0,target_index=initial_targets[binding['target']],auxiliary_index=NONE,value=magnitude if binding['kind']==3 else 0,duration=delay if binding['kind']==3 else 0)for binding in self.world_bindings['initial_bindings']]
         self.record_map('Binding[1]/Resource[roomshake]', 'upstream/MOTHER-Encore/' + shaker_source + ';upstream/MOTHER-Encore/Nodes/Reusables/roomshaker.tscn',
                         'delayed_start default; magnitude/sound exports; native repeating idle Timer defaults',
                         'PeriodicCameraShake binding with sound resource index; scheduler owns guarded timeout and source RNG sequence')
@@ -456,25 +461,26 @@ class Extractor:
         dialogue_code = self.text('Scripts/UI/DialogueBox.gd')
         battle_args = one(r'uiManager\.start_battle\((-?\d+), (true|false), \[\], _post_battle_cutscenes, _battle_win_flag\)',
                           dialogue_code, 'battle request arguments')
-        s['Battle'] = [dict(stable_id=1, enemy_string=self.string(battle['text']), actor_instance_index=1,
+        encounter_binding=world_encounter(self.world_bindings,'initial')
+        s['Battle'] = [dict(stable_id=encounter_binding['id'], enemy_string=self.string(battle['text']), actor_instance_index=encounter_binding['actor_id']-1,
             win_flag_index=flags.index(battle['detail']), advantage=int(battle_args[1]),
-            win_cutscene_string=0, battle_resource_index=self.add_resource('data/opening.encbattle',kind=3),
+            win_cutscene_string=0, battle_resource_index=self.add_resource(encounter_binding['resource_path'],kind=3),
             flags=int(battle_args[2] == 'true') | (2 if any(a['kind'] == 'OverworldBattleMusic' and a['value'] for a in actions) else 0))]
-        actor_indexes = {'None': 65535, 'Ninten': 0, 'Lamp': 1}
-        binding_indexes = {('Poltergeist/MusicArea', 'play_music'): 0, ('Room Shaker', 'delayed_start'): 1}
+        actor_indexes = world_actor_indices(self.world_bindings)
+        binding_indexes = world_object_indices(self.world_bindings,'initial')
         for a in actions:
             target = NONE
             if a['kind'] == 'CallObjectDeferred': target = binding_indexes[a['text'], a['detail']]
             elif a['kind'] == 'PlaySound': target = sound_resources[a['text']]
-            elif a['kind'] == 'AnimateActor': target = clip_names['Lamp ' + a['text']]
+            elif a['kind'] == 'AnimateActor': target = clip_names[world_clip_name(a['actor'],a['text'])]
             elif a['kind'] == 'EmoteActor': target = clip_names[a['text']]
-            elif a['kind'] in ('QueueBattle', 'RequestBattle'): target = 0
+            elif a['kind'] in ('QueueBattle', 'RequestBattle'): target = encounter_binding['id']-1
             elif a['kind'] == 'MoveCamera': target = 1 # reviewed schema SineOut
             s['Command'].append(dict(opcode=OPCODES[a['kind']], actor_index=actor_indexes[a['actor']], phrase=a['phrase'],
                 target_index=target, flags=0, vector=[f32(v) for v in a['vector']],
                 value=a['value'] if a['kind'] != 'AnimateActor' else 0,
                 duration=a['duration'], auxiliary_index=NONE))
-        s['Program'] = [dict(stable_id=1, first_command=0, command_count=len(actions), phrase_count=len(receipt['dialogue']))]
+        s['Program'] = [dict(stable_id=world_program(self.world_bindings,'initial')['id'], first_command=0, command_count=len(actions), phrase_count=len(receipt['dialogue']))]
         self.record_map('Program/Command/Binding/Battle', 'reports/m5-lamp-dialogue-reference/dialogue.json;compatibility/reviews/lamp-dialogue-v0410.json',
                         'lamp_dialogue.compile_receipt reviewed native YAML parser receipt and fixed handler order',
                         'source-only names resolved offline to explicit clip/resource/actor/binding/battle indices; no runtime string dispatch')
@@ -540,18 +546,23 @@ class Extractor:
             default_camera_area=0, rule_profile_id=1, flags=0)]
         self.record_map('Scene', house_path + ';upstream.lock', 'native root name, pin game version; source-backed actor spawn; scoped initial animation bindings',
                         'all IDs explicitly persisted in native-opening.json; local indices are not save identities')
-        for program,path in zip(s['Program'],('Podunk/cutscenes/lamp_attack','Podunk/cutscenes/doll_attack','Podunk/cutscenes/doll_defeated')):
-            self.source('Data/Dialogue/'+path+'.yaml')
-            program['source_path_string']=self.string(path)
+        prefix=[row for row in self.world_bindings['programs']if row['stage']not in('melody','guard')]
+        require(len(s['Program'])==len(prefix),'World program prefix coverage mismatch')
+        for record,binding in zip(s['Program'],prefix):
+            require(record['stable_id']==binding['id'],'World program stable order mismatch')
+            self.source('Data/Dialogue/'+binding['path']+'.yaml')
+            record['source_path_string']=self.string(binding['path'])
         # Append after all established rows AND strings, preserving identities.
         self.extend_melody(flags)
         from tools.link_phone_content import link_room
         link_room(self)
         from tools.link_pillow_content import append_room
         append_room(self,clip_names,add_clip)
-        for module in ('world_geometry', 'house_layers', 'character_animation', 'lamp_dialogue', 'doll_dialogue', 'doll_postwin', 'melody_dialogue', 'reference_animation', 'scene_data', 'reference_progression', 'upstream', 'map_asset'):
+        for module in ('world_geometry', 'house_layers', 'character_animation', 'lamp_dialogue', 'doll_dialogue', 'doll_postwin', 'melody_dialogue', 'reference_animation', 'scene_data', 'reference_progression', 'upstream', 'map_asset', 'world_program_bindings'):
             self.file('tools/' + module + '.py')
         self.file('tools/extract_native_content.py')
+        self.file('tools/programme_lowering_recipe.py')
+        self.file('content/programme-lowering-recipe.json')
         source_map = dict(schema=1, upstream_commit=self.lock['commit'], scope='Existing scoped reviews only; not whole game/scene/script approval',
                           fields=self.mapping, stable_namespaces=dict(body=body_ids, owner=owner_ids,
                               clips={name: index + 1 for name, index in clip_names.items()}))
@@ -567,11 +578,13 @@ class Extractor:
     def extend_doll(self,hn,resources,clip_names,add_clip,sprite_position,shadow_offset,emote_initial,bubble_extra,flags,battle_args):
         s=self.sections;native=doll_receipt(self);doc=native['yaml'][0]
         presentation=self.document('content/native-house-presentation.json')
-        for role in ('doll','mimmie'):
+        npc_bindings=[row for row in self.world_bindings['npc_profiles']if row['phase']=='attack']
+        for binding in npc_bindings:
+            actor_binding=world_actor(self.world_bindings,binding['actor_id']);role=actor_binding['resource_role']
             candidates=[r for r in presentation['resources']if r['role']==role]
             require(len(candidates)==1,'Doll source resource identity')
             r=candidates[0];resources[role]=self.add_resource(r['path'],r['width'],r['height'],r['columns'],r['rows'],expected=r['sha256'])
-            source_node=node_block(self.text('Maps/podunk/Nintens House.tscn'),'Objects/npcdoll'if role=='doll'else'Objects/npc2')
+            source_node=node_block(self.text(self.world_bindings['scene']),actor_binding['node'])
             self.source('Graphics/Character Sprites/'+json.loads(prop(source_node,'sprite'))+'.png')
         def add_native(name,clip,frames,extra=0,channel=0):
             flags_=int(clip['loop'])|extra|(16 if clip['keys'][0][0]>0 else 0)
@@ -579,34 +592,39 @@ class Extractor:
             return clip_names[name]
         # Player AnimationPlayer tracks remain unchanged. Actor replacement uses
         # a distinct motion selector for its native PartyMember YAML Walk tracks.
-        directions=['Down','Left','Right','Up','DownLeft','DownRight','UpLeft','UpRight']
+        directions=self.world_bindings['animation']['directions'];walk=self.world_bindings['animation']['actor_walk']
         for d,name in enumerate(directions):
-            c=add_native('Ninten Actor Walk '+name,native['animations'][0]['Walk '+name],math.prod(native['yaml'][1]['size']))
-            s['AnimationBinding'].append(dict(actor_profile_index=0,motion_state=4,direction=d,clip_index=c))
+            c=add_native(world_clip_name(walk['prefix'],walk['animation'],name),native['animations'][walk['animation_index']][world_clip_name('',walk['animation'],name)],math.prod(native['yaml'][walk['yaml_index']]['size']))
+            s['AnimationBinding'].append(dict(actor_profile_index=walk['actor_id']-1,motion_state=walk['motion'],direction=d,clip_index=c))
         s['ActorProfile'][0]['animation_binding_count']=len(s['AnimationBinding'])
         s['ActorProfile'][1]['animation_binding_first']=len(s['AnimationBinding'])
-        for role,profile_index,yaml_index,animation_index,nodepath in [('doll',2,3,2,'Objects/npcdoll'),('mimmie',3,2,1,'Objects/npc2')]:
+        for binding in npc_bindings:
+            actor_binding=world_actor(self.world_bindings,binding['actor_id']);role=actor_binding['resource_role'];profile_index=actor_binding['id']-1;nodepath=actor_binding['node'];alias=actor_binding['alias']
+            yaml_index=binding['yaml_index'];animation_index=binding['animation_index']
+            require(profile_index==len(s['ActorProfile']),'NPC profile stable append order mismatch')
             yaml=native['yaml'][yaml_index];frames=math.prod(yaml['size']);r=s['Resource'][resources[role]]
             native_clips=native['animations'][animation_index];first_binding=len(s['AnimationBinding']);first_direction=len(s['DirectionFrame'])
-            if role=='doll':
+            if binding['execution_kind']==2:
                 # Source Actor.play_anim emits finished_action immediately for
                 # the idle animation. Initialization only selects the clip and
                 # therefore does not emit this play-command event.
-                idle=add_native('Doll Idle',native_clips['Idle'],frames,4)
-                add_native('Doll Float',native_clips['Float'],frames)
+                for clip_binding in binding['clips']:
+                    name=world_clip_name(alias,clip_binding['animation']);index=add_native(name,native_clips[clip_binding['animation']],frames,clip_binding['flags'])
+                    if clip_binding['animation']==binding['idle_animation']:idle=index
                 direction_count=0
             else:
-                for motion,animation in [(0,'Idle'),(4,'Walk'),(5,'Talk')]:
-                    for d,name in enumerate(directions[:4]):
-                        c=add_native('Mimmie '+animation+' '+name,native_clips[animation+' '+name],frames)
+                for clip_binding in binding['clips']:
+                    animation=clip_binding['animation'];motion=world_motion(self.world_bindings,animation)
+                    for d,name in enumerate(directions[:len(yaml['animations'][animation]['directions'])]):
+                        c=add_native(world_clip_name(alias,animation,name),native_clips[world_clip_name('',animation,name)],frames,clip_binding['flags'])
                         s['AnimationBinding'].append(dict(actor_profile_index=profile_index,motion_state=motion,direction=d,clip_index=c))
-                idle=clip_names['Mimmie Idle Down'];direction_count=4
-                s['DirectionFrame'].extend(dict(frame=int(direction[1][0])-1)for direction in yaml['animations']['Idle']['directions'])
-            node=hn[nodepath];properties=node['properties'];source_position=pair(prop(node_block(self.text('Nodes/Reusables/npc.tscn'),'CharacterSprite'),'position'))
+                idle=clip_names[world_clip_name(alias,binding['idle_animation'],directions[0])];direction_count=len(yaml['animations'][binding['idle_animation']]['directions'])
+                s['DirectionFrame'].extend(dict(frame=int(direction[1][0])-1)for direction in yaml['animations'][binding['idle_animation']]['directions'])
+            node=hn[nodepath];properties=node['properties'];source_position=pair(prop(node_block(self.text(self.world_bindings['animation']['npc_scene']),'CharacterSprite'),'position'))
             offset=[f32(yaml['offset'][0]),f32(-int(r['height']/float(r['rows']*2))+yaml['offset'][1])]
-            source_node=node_block(self.text('Maps/podunk/Nintens House.tscn'),nodepath)
+            source_node=node_block(self.text(self.world_bindings['scene']),nodepath)
             no_shadow=bool(re.search(r'^no_shadow = true$',source_node,re.M))
-            s['ActorProfile'].append(dict(stable_id=profile_index+1,execution_kind=2 if role=='doll'else 3,flags=int(not no_shadow),
+            s['ActorProfile'].append(dict(stable_id=profile_index+1,execution_kind=binding['execution_kind'],flags=int(not no_shadow),
                 primary_resource=resources[role],shadow_resource=resources['shadow'],emote_resource=resources['emote'],
                 animation_binding_first=first_binding,animation_binding_count=len(s['AnimationBinding'])-first_binding,
                 initial_frame=s['Key'][s['Clip'][idle]['first_key']]['frame'],emote_initial_frame=emote_initial,sprite_position=source_position,
@@ -615,15 +633,18 @@ class Extractor:
             s['ActorInstance'].append(dict(stable_id=profile_index+1,profile_index=profile_index,binding_kind=2,
                 flags=int(all(hn[p]['properties'].get('visible',True)for p in('.', 'Objects',nodepath))),display_name_string=self.string(node['name']),
                 position=list(vec(properties['position'])),direction=[0,1],initial_clip=idle))
-        add_native('exclamation',native['exclamation'],s['Resource'][resources['emote']]['columns']*s['Resource'][resources['emote']]['rows'],8,1)
-        s['ActorProfile'][3]['emote_clip']=clip_names['exclamation']
-        s['Binding'].append(dict(stable_id=3,kind=4,flags=0,target_index=1,auxiliary_index=NONE,value=0,duration=0))
-        battle=doc['6']['startbattle']
+        emote_binding=next(row for row in self.world_bindings['animation']['emotes']if row['phase']=='attack')
+        add_native(emote_binding['animation'],native[emote_binding['receipt_key']],s['Resource'][resources['emote']]['columns']*s['Resource'][resources['emote']]['rows'],8,1)
+        s['ActorProfile'][emote_binding['actor_id']-1]['emote_clip']=clip_names[emote_binding['animation']]
+        stop_binding=self.world_bindings['stop_binding']
+        s['Binding'].append(dict(stable_id=stop_binding['id'],kind=stop_binding['kind'],flags=0,target_index=stop_binding['target_binding_id']-1,auxiliary_index=NONE,value=0,duration=0))
+        encounter_binding=world_encounter(self.world_bindings,'attack')
+        battle=doc[encounter_binding['phrase']]['startbattle']
         require(all('ovbattlemusic'not in p for p in doc.values()),'Doll must inherit original overworld battle music state')
-        s['Battle'].append(dict(stable_id=2,enemy_string=self.string(next(iter(battle['battlers'][0]))),actor_instance_index=2,
+        s['Battle'].append(dict(stable_id=encounter_binding['id'],enemy_string=self.string(next(iter(battle['battlers'][0]))),actor_instance_index=encounter_binding['actor_id']-1,
             win_flag_index=NONE,advantage=int(battle_args[1]),flags=int(battle_args[2]=='true')|4|8,
-            win_cutscene_string=self.string(battle['wincutscene']),battle_resource_index=self.add_resource('data/doll-entry.encbattle',kind=3)))
-        actor_indices={'None':65535,'Ninten':0,'Lamp':1,'Doll':2,'Mimmie':3};first_command=len(s['Command'])
+            win_cutscene_string=self.string(battle['wincutscene']),battle_resource_index=self.add_resource(encounter_binding['resource_path'],kind=3)))
+        actor_indices=world_actor_indices(self.world_bindings);first_command=len(s['Command'])
         commands=compile_doll_dialogue(doc)
         for a in commands:
             kind=a['kind'];target=NONE
@@ -631,15 +652,15 @@ class Extractor:
                 p=a['path'];target=len(s['MovementPath']);first=len(s['MovementEntry'])
                 for e in p['movement']:
                     s['MovementEntry'].append(dict(kind=int('wait'in e),vector=[0,0]if'wait'in e else[f32(e['x']),f32(e['y'])],duration=e.get('wait',0)))
-                s['MovementPath'].append(dict(stable_id=target+1,first_entry=first,entry_count=len(p['movement']),flags=int(p['type']=='step')|int(p.get('moonwalk',False))*2,animation_motion=4 if p.get('animation')=='Walk'else 65535,speed=p['speed']))
+                s['MovementPath'].append(dict(stable_id=target+1,first_entry=first,entry_count=len(p['movement']),flags=int(p['type']=='step')|int(p.get('moonwalk',False))*2,animation_motion=world_motion(self.world_bindings,p.get('animation')),speed=p['speed']))
             elif kind in('AnimateActor','EmoteActor'):target=clip_names[a['clip']]
-            elif kind in('QueueBattle','RequestBattle'):target=1
+            elif kind in('QueueBattle','RequestBattle'):target=encounter_binding['id']-1
             elif kind=='SetFlag':target=flags.index(a['flag'])
             elif kind=='ShowDialogue':target=a['dialogue_id']
             elif kind=='CallObjectDeferred':target=a['binding']
             s['Command'].append(dict(opcode=OPCODES[kind],actor_index=actor_indices[a['actor']],phrase=a['phrase'],target_index=target,flags=0,
                 vector=[f32(v)for v in a.get('vector',[0,0])],value=a.get('value',0),duration=a.get('duration',0),auxiliary_index=NONE))
-        s['Program'].append(dict(stable_id=2,first_command=first_command,command_count=len(commands),phrase_count=len(doc)))
+        s['Program'].append(dict(stable_id=world_program(self.world_bindings,'attack')['id'],first_command=first_command,command_count=len(commands),phrase_count=len(doc)))
         self.record_map('Doll Program/MovementPath/MovementEntry/Battle','upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/doll_attack.yaml;'+ 'reports/doll-sequence/native-parser-animation.json',
             'all seven native-parser phrases in DialogueBox handler order; actors dictionary order retained',
             'source asynchronous waits are path entries; step target resolved when entry starts; flag set before queued battle and final wait; no win flag invented; keepAfterBattle and win cutscene preserved; absent ovbattlemusic inherits current source global state through typed Battle.flags bit8')
@@ -651,29 +672,35 @@ class Extractor:
         s=self.sections;native=postwin_receipt(self);doc=native['yaml'][0]
         require(len(s['Resource'])==28 and len(s['ActorInstance'])==4 and len(s['Program'])==2,'Post-win append-only namespace')
         presentation=self.document('content/native-house-presentation.json')
-        candidates=[r for r in presentation['resources']if r['role']=='minnie']
+        npc_bindings=[row for row in self.world_bindings['npc_profiles']if row['phase']=='postwin']
+        require(len(npc_bindings)==1,'Post-win NPC profile coverage')
+        binding=npc_bindings[0];actor_binding=world_actor(self.world_bindings,binding['actor_id']);alias=actor_binding['alias'];role=actor_binding['resource_role']
+        candidates=[r for r in presentation['resources']if r['role']==role]
         require(len(candidates)==1,'Minnie source resource identity')
-        r=candidates[0];resources['minnie']=self.add_resource(r['path'],r['width'],r['height'],r['columns'],r['rows'],expected=r['sha256'])
+        r=candidates[0];resources[role]=self.add_resource(r['path'],r['width'],r['height'],r['columns'],r['rows'],expected=r['sha256'])
         sound='res://Audio/Sound effects/'+doc['0']['soundeffect'];resources['postwin_sound']=self.add_resource(sound,kind=2)
-        nodepath=doc['0']['actors']['minnie'];source_node=node_block(self.text('Maps/podunk/Nintens House.tscn'),nodepath)
-        require(json.loads(prop(source_node,'sprite'))=='Npcs/4dir/minnie','Minnie source texture binding')
-        self.source('Graphics/Character Sprites/Npcs/4dir/minnie.png')
+        nodepath=actor_binding['node'];require(doc['0']['actors'][actor_binding['source_alias']]==nodepath,'Post-win actor node mismatch');source_node=node_block(self.text(self.world_bindings['scene']),nodepath)
+        require('Graphics/Character Sprites/'+json.loads(prop(source_node,'sprite'))+'.png'==binding['texture_source'],'Post-win source texture binding')
+        self.source(binding['texture_source'])
         require(not re.search(r'^yaml = ',source_node,re.M),'Minnie inherited animation changed')
-        yaml=native['yaml'][2];frames=math.prod(yaml['size']);profile_index=len(s['ActorProfile'])
+        yaml=native['yaml'][binding['yaml_index']];frames=math.prod(yaml['size']);profile_index=actor_binding['id']-1
+        require(profile_index==len(s['ActorProfile']),'Post-win profile stable append order mismatch')
         def add_native(name,clip,channel=0):
             clip_names[name]=add_clip(clip['length'],clip['keys'],int(clip['loop'])|(8 if channel else 0)|(16 if clip['keys'][0][0]>0 else 0),frame_count=frames if not channel else s['Resource'][resources['emote']]['columns']*s['Resource'][resources['emote']]['rows'],channel=channel)
             return clip_names[name]
         first_binding=len(s['AnimationBinding']);first_direction=len(s['DirectionFrame'])
-        for motion,animation in [(0,'Idle'),(4,'Walk'),(5,'Talk')]:
-            for d,name in enumerate(['Down','Left','Right','Up']):
-                clip=add_native('Minnie '+animation+' '+name,native['animations'][1][animation+' '+name])
+        directions=self.world_bindings['animation']['directions']
+        for clip_binding in binding['clips']:
+            animation=clip_binding['animation'];motion=world_motion(self.world_bindings,animation)
+            for d,name in enumerate(directions[:len(yaml['animations'][animation]['directions'])]):
+                clip=add_native(world_clip_name(alias,animation,name),native['animations'][binding['animation_index']][world_clip_name('',animation,name)])
                 s['AnimationBinding'].append(dict(actor_profile_index=profile_index,motion_state=motion,direction=d,clip_index=clip))
-        idle=clip_names['Minnie Idle Down']
-        s['DirectionFrame'].extend(dict(frame=int(direction[1][0])-1)for direction in yaml['animations']['Idle']['directions'])
-        source_position=pair(prop(node_block(self.text('Nodes/Reusables/npc.tscn'),'CharacterSprite'),'position'))
+        idle=clip_names[world_clip_name(alias,binding['idle_animation'],directions[0])]
+        s['DirectionFrame'].extend(dict(frame=int(direction[1][0])-1)for direction in yaml['animations'][binding['idle_animation']]['directions'])
+        source_position=pair(prop(node_block(self.text(self.world_bindings['animation']['npc_scene']),'CharacterSprite'),'position'))
         node=hn[nodepath];offset=[f32(yaml['offset'][0]),f32(-int(r['height']/float(r['rows']*2))+yaml['offset'][1])]
         require(not re.search(r'^no_shadow = true$',source_node,re.M),'Minnie shadow binding changed')
-        s['ActorProfile'].append(dict(stable_id=profile_index+1,execution_kind=3,flags=1,primary_resource=resources['minnie'],
+        s['ActorProfile'].append(dict(stable_id=profile_index+1,execution_kind=binding['execution_kind'],flags=1,primary_resource=resources[role],
             shadow_resource=resources['shadow'],emote_resource=resources['emote'],animation_binding_first=first_binding,
             animation_binding_count=len(s['AnimationBinding'])-first_binding,initial_frame=s['Key'][s['Clip'][idle]['first_key']]['frame'],
             emote_initial_frame=emote_initial,sprite_position=source_position,sprite_offset=offset,
@@ -682,23 +709,24 @@ class Extractor:
         s['ActorInstance'].append(dict(stable_id=profile_index+1,profile_index=profile_index,binding_kind=2,
             flags=int(all(hn[p]['properties'].get('visible',True)for p in('.', 'Objects',nodepath))),display_name_string=self.string(node['name']),
             position=list(vec(node['properties']['position'])),direction=[0,1],initial_clip=idle))
-        add_native('dot',native['dot'],1)
+        emote_binding=next(row for row in self.world_bindings['animation']['emotes']if row['phase']=='postwin')
+        add_native(emote_binding['animation'],native[emote_binding['receipt_key']],1)
         end_duration=postwin_return_duration(self.text('Scripts/UI/DialogueBox.gd'))
         commands=compile_postwin_dialogue(doc,end_duration);first_command=len(s['Command'])
-        actor_indices={'None':65535,'Ninten':0,'Lamp':1,'Doll':2,'Mimmie':3,'Minnie':4}
+        actor_indices=world_actor_indices(self.world_bindings)
         for a in commands:
             kind=a['kind'];target=NONE
             if kind=='MoveActorPath':
                 p=a['path'];target=len(s['MovementPath']);first=len(s['MovementEntry'])
                 for e in p['movement']:s['MovementEntry'].append(dict(kind=0,vector=[f32(e['x']),f32(e['y'])],duration=0))
-                s['MovementPath'].append(dict(stable_id=target+1,first_entry=first,entry_count=len(p['movement']),flags=int(p['type']=='step'),animation_motion=4 if p.get('animation')=='Walk'else 65535,speed=p['speed']))
+                s['MovementPath'].append(dict(stable_id=target+1,first_entry=first,entry_count=len(p['movement']),flags=int(p['type']=='step'),animation_motion=world_motion(self.world_bindings,p.get('animation')),speed=p['speed']))
             elif kind in('AnimateActor','EmoteActor'):target=clip_names[a['clip']]
             elif kind=='PlaySound':target=resources['postwin_sound']
             elif kind=='SetFlag':target=flags.index(a['flag'])
             elif kind=='ShowDialogue':target=a['dialogue_id']
             s['Command'].append(dict(opcode=OPCODES[kind],actor_index=actor_indices[a['actor']],phrase=a['phrase'],target_index=target,flags=0,
                 vector=[f32(v)for v in a.get('vector',[0,0])],value=a.get('value',0),duration=a.get('duration',0),auxiliary_index=NONE))
-        s['Program'].append(dict(stable_id=3,first_command=first_command,command_count=len(commands),phrase_count=len(doc)))
+        s['Program'].append(dict(stable_id=world_program(self.world_bindings,'postwin')['id'],first_command=first_command,command_count=len(commands),phrase_count=len(doc)))
         self.record_map('Doll post-win Program/Command/MovementPath/MovementEntry','upstream/MOTHER-Encore/Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml;reports/doll-postwin/native-parser-animation.json',
             'all eight native-parser phrases in original DialogueBox handler order; final nonbattle done carries source camera return duration',
             'source jump speed aliases duration; false poltergeist flag retained; no melody, tutorial or initial event-position fabrication')
@@ -717,33 +745,38 @@ class Extractor:
         import yaml
         save=yaml.safe_load(self.text('Data/save_new_game.yaml'))
         require(save['party']==['ninten'],'Melody singleton save-party contract')
-        self.document('content/native-world-effect.json')
-        effect=self.add_resource('world-effect/melody.encfx',kind=4)
+        effect_binding=self.world_bindings['effect'];self.document(effect_binding['source_ir'])
+        effect=self.add_resource(effect_binding['path'],kind=4)
+        require(s['Resource'][effect]['stable_id']==effect_binding['id'],'Melody effect stable order mismatch')
         audio={}
-        for path in ('Audio/Music/Melodies/melody1.mp3','Audio/Sound effects/M3/heal_se.wav','Audio/Music/House.mp3'):
-            audio['res://'+path]=self.add_resource('res://'+path,kind=2)
-        house=audio['res://Audio/Music/House.mp3']
-        root_music=node_block(self.text('Maps/podunk/Nintens House.tscn'),'MusicArea')
-        require(json.loads(prop(root_music,'loop'))=='House.mp3','Melody root music binding')
+        for binding in self.world_bindings['audio']:
+            path=binding['path'];index=self.add_resource('res://'+path,kind=2)
+            require(s['Resource'][index]['stable_id']==binding['id'],'Melody audio stable order mismatch');audio['res://'+path]=index
+        root_audio=[row for row in self.world_bindings['audio']if row['selector']['kind']=='scene_loop']
+        require(len(root_audio)==1,'Melody root music coverage');house=audio['res://'+root_audio[0]['path']]
         bindings={}
-        for name,kind,target in [('stop_house_music',5,house),('effect_appear',6,effect),('house_music',1,house),('effect_disappear',7,effect)]:
-            index=len(s['Binding']);bindings[name]=index
-            s['Binding'].append(dict(stable_id=index+1,kind=kind,flags=0,target_index=target,auxiliary_index=NONE,value=0,duration=0))
+        targets={'house_music':house,'effect':effect}
+        for binding in self.world_bindings['melody_bindings']:
+            index=len(s['Binding']);require(index+1==binding['id'],'Melody object stable order mismatch');bindings[binding['name']]=index
+            s['Binding'].append(dict(stable_id=binding['id'],kind=binding['kind'],flags=0,target_index=targets[binding['target']],auxiliary_index=NONE,value=0,duration=0))
         end=postwin_return_duration(self.text('Scripts/UI/DialogueBox.gd'))
-        for path,commands,labels in [('Podunk/dollmelody',compile_melody(native['yaml'][0],end),['0','3','4']),
-                                     ('Podunk/cutscenes/mimmie_ignore',compile_guard(native['yaml'][1],end),['0','1'])]:
+        compiled={'melody':compile_melody(native['yaml'][0],end),'guard':compile_guard(native['yaml'][1],end)}
+        for binding in self.world_bindings['programs']:
+            if binding['stage']not in compiled:continue
+            path=binding['path'];commands=compiled[binding['stage']];labels=binding['labels']
+            require(binding['id']==len(s['Program'])+1,'Melody program stable order mismatch')
             first=len(s['Command'])
             for a in commands:
                 kind=a['kind'];target=NONE
                 if kind=='MoveActorPath':
                     p=a['path'];target=len(s['MovementPath']);entry=len(s['MovementEntry'])
                     for e in p['movement']:s['MovementEntry'].append(dict(kind=0,vector=[f32(e['x']),f32(e['y'])],duration=0))
-                    s['MovementPath'].append(dict(stable_id=target+1,first_entry=entry,entry_count=len(p['movement']),flags=int(p['type']=='step'),animation_motion=4 if p.get('animation')=='Walk'else 65535,speed=p['speed']))
+                    s['MovementPath'].append(dict(stable_id=target+1,first_entry=entry,entry_count=len(p['movement']),flags=int(p['type']=='step'),animation_motion=world_motion(self.world_bindings,p.get('animation')),speed=p['speed']))
                 elif kind=='CallObjectDeferred':target=bindings[a['binding']]
                 elif kind in('PlaySound','PlayMusicImmediate'):target=audio[a['resource']]
                 elif kind=='SetFlag':target=flags.index(a['flag'])
                 elif kind=='ShowDialogue':target=a['dialogue_id']
-                s['Command'].append(dict(opcode=OPCODES[kind],actor_index={'None':65535,'Ninten':0,'Mimmie':3}[a['actor']],phrase=a['phrase'],target_index=target,
+                s['Command'].append(dict(opcode=OPCODES[kind],actor_index=world_actor_indices(self.world_bindings)[a['actor']],phrase=a['phrase'],target_index=target,
                     flags=a.get('flags',0),vector=[f32(v)for v in a.get('vector',[0,0])],value=a.get('value',0),duration=a.get('duration',0),auxiliary_index=NONE))
             s['Program'].append(dict(stable_id=len(s['Program'])+1,first_command=first,command_count=len(commands),phrase_count=len(labels),source_path_string=self.string(path)))
             self.record_map('Program '+path,'reports/doll-melody/native-parser.json;upstream/MOTHER-Encore/Data/Dialogue/'+path+'.yaml',

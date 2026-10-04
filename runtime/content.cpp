@@ -5,11 +5,6 @@
 #include <utility>
 
 namespace encore {
-uint32_t crc32(const uint8_t* p,size_t n) {
-    uint32_t c=0xffffffffU;
-    for(size_t i=0;i<n;++i) { c^=p[i]; for(int j=0;j<8;++j) c=(c>>1)^((0U-(c&1U))&0xedb88320U); }
-    return ~c;
-}
 bool Map::blocked(int x,int y) const {
     if(x<0||y<0||x>=int(width)*16||y>=int(height)*16) return true;
     return tiles[size_t(y/16)*width+size_t(x/16)]!=0;

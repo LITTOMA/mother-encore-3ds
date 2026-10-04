@@ -1,0 +1,684 @@
+{
+  "schema": 1,
+  "kind": "encore.items-presentation-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+    "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+    "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+    "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+    "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Graphics/Objects/Items/BaseballCap.png": "a488850070f306cce6fe08fc1546de558fb18873153dd2f80cf9944897308b05",
+    "Graphics/Objects/Items/BaseballCap.png.import": "079064d87a125b57b2871ebe4c7409a9d93cc0c41052e844e39d22167b00749e",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Graphics/UI/Inventory/item_icon.png": "3479bd4197cf02a6997e9947ef8a7882002636adc4a658b7f8ddeeafc8867f5e",
+    "Graphics/UI/Inventory/item_icon.png.import": "153842ae51512b9e3b9fdd87411b5a6a5ed8e08dd629ab42a94afe5699050535",
+    "Graphics/UI/Inventory/modifiers.png": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
+    "Graphics/UI/Inventory/modifiers.png.import": "3b670c47f51983c1927c6ed06ad1ef2e5a8f80c998ca37d5f4c9c26b321cbea9",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png": "016b161a791b5c3cc95db2002921dae062f4b90ca87cdd2e4b7da62cefc72bf3",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png.import": "cec66f58131b9cabd2900bd2fe99af81e0ace80215f081b85e5064ee5a711ccf",
+    "Graphics/UI/Overworld/flavours/defaultlabel.png": "2584ab1f8114d7d75e11271fa9d0801b352f334e35389c2a08ff104605d914cf",
+    "Graphics/UI/Overworld/flavours/defaultlabel.png.import": "efebeb90b5041c1d781463346f2f954c97459a7094a2155d8550ba6526779fd2",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png": "019a1b69d3091aad552390204a6d6250af4ab90a124fc726262554d1fa5fce0d",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png.import": "69a4e9fef64d8d941c7a7bac0c31f991188b0f1fcfbe8b85d8f414349c6bb8aa",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Battle/ActionMenuBox.gd": "92142910d696db1a7f007ee174854277f926c705fd123ee07d9cef11ef640ebd",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Battle/InfoBox.gd": "da8e9e33dca703269d1b8a4bd922e9e63c5ab4139cc9355d6e4a2750249ccbf6",
+    "Nodes/Ui/Battle/ItemsBox.gd": "c869b5441d2e4abd44035591cb6b402cb1becea1a5942c8aa9e0e9fa59ae779a",
+    "Nodes/Ui/ButtonText.tscn": "1694e72e90585ec4cdf0b0967624ddf32ac996b29e1f4c62ab1045eb46f382d4",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Nodes/Ui/HighlightLabel.gd": "91a1ec1e640166c2e38a6ee8c094042fddc64f165f128bd4aa706b09f29ad367",
+    "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
+    "Nodes/Ui/Reusables/Scrollbar.tscn": "5448fa7a0464b0d7cf18a5a01dde998f96f56d5b0123a5b03d8be0869cc5bfd0",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/Battle/BattleMenuBox.gd": "d01947cb671feedc0467069af68c680a94002650bd34e405afc00d44dfc6902b",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/ButtonText.gd": "0b03d5d7982499552d0160e1a7fc6c72110d29030878f3c17b48086fcb8ac763",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/UI/Reusables/Scrollbar.gd": "d93225ed2f66383190e12d57cd1fe5b978ba43b824ffbf3b3893993e0e7fa226",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "source_refs": {
+    "battle": "Nodes/Ui/Battle/Battle.tscn",
+    "items_script": "Nodes/Ui/Battle/ItemsBox.gd",
+    "info_script": "Nodes/Ui/Battle/InfoBox.gd",
+    "cursor_script": "Scripts/UI/cursor.gd",
+    "arrow": "Nodes/Ui/arrow.tscn",
+    "label": "Nodes/Ui/HighlightLabel.tscn",
+    "description": "Nodes/Ui/Description.tscn",
+    "scrollbar": "Nodes/Ui/Reusables/Scrollbar.tscn",
+    "button": "Nodes/Ui/ButtonText.tscn",
+    "inventory": "Scripts/global/Inventory.gd",
+    "item": "Scripts/global/Item.gd",
+    "audio": "Scripts/global/audioManager.gd",
+    "system": "Scripts/UI/Battle/BattleSystem.gd",
+    "save": "Data/save_new_game.yaml",
+    "item_data": "Data/Items/BaseballCap.yaml",
+    "item_text": "Translations/TranslatedText/items - sheet.csv",
+    "menu_text": "Translations/TranslatedText/menus - sheet.csv",
+    "flavor": "Scripts/global/uiManager.gd",
+    "text_tools": "Scripts/global/text_tools.gd",
+    "project": "project.godot",
+    "main_font": "Fonts/EBMain.ttf",
+    "hint_font": "Fonts/BottleRocket.ttf",
+    "main_font_resource": "Fonts/EBMain_la.tres",
+    "hint_font_resource": "Fonts/BottleRocket.tres"
+  },
+  "nodes": {
+    "panel": "ItemsBox",
+    "grid": "ItemsBox/GridContainer",
+    "cursor": "ItemsBox/Arrow",
+    "cursor_back": "ItemsBox/Arrow/ColorRect",
+    "scroll": "ItemsBox/Scrollbar",
+    "info": "InfoBox",
+    "description": "InfoBox/Description",
+    "hint": "InfoBox/PPCost",
+    "hint_margin": "InfoBox/PPCost/MarginContainer",
+    "hint_label": "InfoBox/PPCost/MarginContainer/ButtonText",
+    "party_info": "PlayerInfo/PlayerInfoVbox/PartyInfo",
+    "animation_player": "ItemsBox/AnimationPlayer",
+    "party_vbox": "PlayerInfo/PlayerInfoVbox",
+    "player_info": "PlayerInfo",
+    "equipped": "Equipped_spr",
+    "scroll_background": "ScrollBG",
+    "scroll_thumb": "ScrollBG/Thumb",
+    "scroll_up": "UpArrow/arrow",
+    "scroll_down": "DownArrow/arrow",
+    "desc_hbox": "HBox",
+    "desc_icon": "HBox/TextureRect",
+    "desc_margin": "HBox/MarginContainer",
+    "desc_text": "HBox/MarginContainer/Desc",
+    "cursor_timer": "Timer",
+    "label_prefix": "ItemsBox/GridContainer/Item"
+  },
+  "assets": [
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "id": 1,
+      "name": "box",
+      "output": "battle-preview/box.t3x",
+      "reuse": true,
+      "size": [
+        24,
+        24
+      ],
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png"
+    },
+    {
+      "grid": [
+        3,
+        1
+      ],
+      "id": 2,
+      "name": "cursor",
+      "output": "round-preview/dialogue_cursor.t3x",
+      "reuse": true,
+      "size": [
+        24,
+        8
+      ],
+      "source": "Graphics/UI/Inventory/cursor.png"
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "id": 3,
+      "name": "cap",
+      "output": "items-preview/cap.t3x",
+      "reuse": false,
+      "size": [
+        20,
+        20
+      ],
+      "source": "Graphics/Objects/Items/BaseballCap.png"
+    },
+    {
+      "crop": [
+        2,
+        19,
+        8,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "id": 4,
+      "name": "equipped",
+      "output": "items-preview/equipped.t3x",
+      "reuse": false,
+      "size": [
+        26,
+        27
+      ],
+      "source": "Graphics/UI/Inventory/modifiers.png"
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "id": 5,
+      "name": "icon_frame",
+      "output": "items-preview/icon-frame.t3x",
+      "reuse": false,
+      "size": [
+        7,
+        7
+      ],
+      "source": "Graphics/UI/Inventory/item_icon.png"
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "id": 6,
+      "name": "scroll_bg",
+      "output": "items-preview/scroll-bg.t3x",
+      "reuse": false,
+      "size": [
+        4,
+        4
+      ],
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png"
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "id": 7,
+      "name": "scroll_thumb",
+      "output": "items-preview/scroll-thumb.t3x",
+      "reuse": false,
+      "size": [
+        6,
+        6
+      ],
+      "source": "Graphics/UI/Overworld/flavours/defaultscroll.png"
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "id": 8,
+      "name": "hint_box",
+      "output": "items-preview/hint-box.t3x",
+      "reuse": false,
+      "size": [
+        9,
+        9
+      ],
+      "source": "Graphics/UI/Overworld/flavours/defaultlabel.png"
+    },
+    {
+      "glyph": "L",
+      "grid": [
+        1,
+        1
+      ],
+      "id": 9,
+      "name": "hint_glyph",
+      "output": "items-preview/hint-glyph.t3x",
+      "reuse": false,
+      "size": [
+        16,
+        16
+      ],
+      "source": "Fonts/BottleRocket.ttf"
+    },
+    {
+      "grid": [
+        1,
+        1
+      ],
+      "id": 10,
+      "name": "font",
+      "output": "battle-preview/font.t3x",
+      "reuse": true,
+      "size": [
+        384,
+        144
+      ],
+      "source": "Fonts/EBMain.ttf"
+    },
+    {
+      "grid": [
+        3,
+        1
+      ],
+      "id": 11,
+      "name": "cursor_up",
+      "output": "items-preview/cursor_up.t3x",
+      "quarter_turns": 1,
+      "reuse": false,
+      "size": [
+        24,
+        8
+      ],
+      "source": "Graphics/UI/Inventory/cursor.png"
+    },
+    {
+      "grid": [
+        3,
+        1
+      ],
+      "id": 12,
+      "name": "cursor_down",
+      "output": "items-preview/cursor_down.t3x",
+      "quarter_turns": 3,
+      "reuse": false,
+      "size": [
+        24,
+        8
+      ],
+      "source": "Graphics/UI/Inventory/cursor.png"
+    }
+  ],
+  "asset_roles": {
+    "panel": "box",
+    "cursor": "cursor",
+    "item": "cap",
+    "equipped": "equipped",
+    "icon_frame": "icon_frame",
+    "scroll_background": "scroll_bg",
+    "scroll_thumb": "scroll_thumb",
+    "hint_panel": "hint_box",
+    "hint_glyph": "hint_glyph",
+    "font": "font",
+    "scroll_up": "cursor_up",
+    "scroll_down": "cursor_down"
+  },
+  "reuse": {
+    "box": {
+      "receipt": "romfs/battle-preview/source.json",
+      "name": "box"
+    },
+    "cursor": {
+      "receipt": "romfs/round-preview/source.json",
+      "name": "dialogue_cursor"
+    },
+    "font": {
+      "receipt": "romfs/battle-preview/source.json",
+      "name": "font"
+    }
+  },
+  "layouts": {
+    "panel": {
+      "role": "Panel",
+      "kind": "NinePatch",
+      "resource": "panel",
+      "anchor": [
+        0.5,
+        0
+      ],
+      "flags": 1
+    },
+    "grid": {
+      "role": "Grid",
+      "kind": "Container",
+      "resource": "",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "label": {
+      "role": "ItemLabel",
+      "kind": "Text",
+      "resource": "font",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "equipped": {
+      "role": "Equipped",
+      "kind": "Sprite",
+      "resource": "equipped",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 5
+    },
+    "cursor": {
+      "role": "Cursor",
+      "kind": "Sprite",
+      "resource": "cursor",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 5
+    },
+    "cursor_back": {
+      "role": "Cursor",
+      "kind": "Rectangle",
+      "resource": "",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 9
+    },
+    "scroll": {
+      "role": "Scrollbar",
+      "kind": "Container",
+      "resource": "",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "scroll_background": {
+      "role": "ScrollBackground",
+      "kind": "NinePatch",
+      "resource": "scroll_background",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "scroll_thumb": {
+      "role": "ScrollThumb",
+      "kind": "NinePatch",
+      "resource": "scroll_thumb",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "scroll_up": {
+      "role": "Cursor",
+      "kind": "Sprite",
+      "resource": "scroll_up",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 5
+    },
+    "scroll_down": {
+      "role": "Cursor",
+      "kind": "Sprite",
+      "resource": "scroll_down",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 5
+    },
+    "info": {
+      "role": "InfoPanel",
+      "kind": "NinePatch",
+      "resource": "panel",
+      "anchor": [
+        0.5,
+        1
+      ],
+      "flags": 1
+    },
+    "icon_frame": {
+      "role": "Panel",
+      "kind": "NinePatch",
+      "resource": "icon_frame",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "item": {
+      "role": "ItemIcon",
+      "kind": "Sprite",
+      "resource": "item",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 5
+    },
+    "description": {
+      "role": "Description",
+      "kind": "Text",
+      "resource": "font",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "hint_panel": {
+      "role": "Hint",
+      "kind": "NinePatch",
+      "resource": "hint_panel",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    },
+    "hint_glyph": {
+      "role": "Hint",
+      "kind": "Sprite",
+      "resource": "hint_glyph",
+      "anchor": [
+        0,
+        0
+      ],
+      "flags": 1
+    }
+  },
+  "item": {
+    "party": "ninten",
+    "source_name": "BaseballCap",
+    "definition_id": 1,
+    "owner_id": 1,
+    "instance_id": 1,
+    "flags": 1,
+    "can_use": 1,
+    "slot": "other"
+  },
+  "clips": {
+    "names": [
+      "Open",
+      "Close"
+    ],
+    "player": "animation_player",
+    "properties": {
+      ".:rect_position": "Position",
+      ".:visible": "Visible"
+    },
+    "cursor_idle": "CursorIdle",
+    "cursor_animation": "Idle",
+    "duration": 0.1
+  },
+  "cursor": {
+    "x_expression": "-size.x/6.0",
+    "y_expression": "size.y/2.0",
+    "frame_size": [
+      8,
+      8
+    ],
+    "scroll_inset": 4
+  },
+  "info": {
+    "hide_expression": "_init_pos",
+    "show_expression": "_init_pos - _hide_offset",
+    "property": "rect_position:y",
+    "trans": "QUAD",
+    "ease": "OUT"
+  },
+  "platform": {
+    "viewport": [
+      400,
+      240,
+      0,
+      0
+    ],
+    "scope_action": "ui_scope",
+    "scope_button": 512,
+    "input_adapter": "content/platform-input.json",
+    "normal_color": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "hint_glyph": "L",
+    "hint_size": [
+      16,
+      16
+    ],
+    "hint_offset": [
+      -1,
+      -1
+    ],
+    "hint_patch": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "glyph_origin": [
+      1,
+      1
+    ],
+    "description_line_gap": 1
+  },
+  "probe": {
+    "main_font_size": 16,
+    "main_font_spacing_top": -1,
+    "main_font_spacing_bottom": -1,
+    "hint_antialiased": false,
+    "hint_outline": 1,
+    "hint_spacing_char": -1,
+    "hint_spacing_space": 3,
+    "engine": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8"
+  },
+  "sounds": [
+    {
+      "event": "Open",
+      "key": "cursor2",
+      "audio_id": 1102,
+      "source": "audio"
+    },
+    {
+      "event": "Move",
+      "key": "cursor1",
+      "audio_id": 1101,
+      "source": "audio"
+    },
+    {
+      "event": "Close",
+      "key": "back",
+      "audio_id": 1103,
+      "source": "system"
+    },
+    {
+      "event": "Disabled",
+      "key": "restricted",
+      "audio_id": 1104,
+      "source": "audio"
+    },
+    {
+      "event": "Confirm",
+      "key": "cursor2",
+      "audio_id": 1102,
+      "source": "audio"
+    }
+  ],
+  "texture_links": [
+    {
+      "asset": "panel",
+      "source": "battle",
+      "node": "panel",
+      "property": "texture"
+    },
+    {
+      "asset": "equipped",
+      "source": "label",
+      "node": "equipped",
+      "property": "texture"
+    },
+    {
+      "asset": "icon_frame",
+      "source": "description",
+      "node": "desc_icon",
+      "property": "texture"
+    },
+    {
+      "asset": "scroll_background",
+      "source": "scrollbar",
+      "node": "scroll_background",
+      "property": "texture"
+    },
+    {
+      "asset": "scroll_thumb",
+      "source": "scrollbar",
+      "node": "scroll_thumb",
+      "property": "texture"
+    }
+  ],
+  "source_facts": {
+    "Nodes/Ui/Battle/ItemsBox.gd": [
+      "item.is_battle_usable() and _user.character.can_use_item(item)",
+      "else uiManager.get_flavor_color(3)",
+      "_anim_player.play(\"Open\")",
+      "_anim_player.play(\"Close\")"
+    ],
+    "Scripts/UI/cursor.gd": [
+      "var new_position = menu_item.rect_global_position + cursor_offset + size",
+      "_tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)"
+    ],
+    "Nodes/Ui/Battle/InfoBox.gd": [
+      "var _is_visible := true"
+    ],
+    "Scripts/global/Item.gd": [
+      "self.doses = get_data().get(\"doses\", 1)"
+    ]
+  },
+  "grid": {
+    "columns": 2,
+    "rows": 5
+  }
+}

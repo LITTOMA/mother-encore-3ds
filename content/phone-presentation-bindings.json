@@ -1,0 +1,249 @@
+{
+  "schema": 1,
+  "kind": "encore.phone-presentation.reviewed-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Audio/Sound effects/phonehangup.wav": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145"
+  },
+  "scene": "Nodes/Reusables/phone.tscn",
+  "script": "Maps/Testing/phone.gd",
+  "sprite": {
+    "node": "main",
+    "resource_id": 1,
+    "role": "phone",
+    "path": "phone-preview/phone.t3x",
+    "kind": 1,
+    "source": "Graphics/Character Sprites/Npcs/misc/Phone/main.png",
+    "size": [
+      76,
+      22
+    ],
+    "review": {
+      "position": [
+        0,
+        3
+      ],
+      "texture": {
+        "ExtResource": 2
+      },
+      "hframes": 4
+    }
+  },
+  "audio": {
+    "node": "AudioStreamPlayer2D",
+    "review": {
+      "position": [
+        0,
+        9
+      ],
+      "stream": {
+        "ExtResource": 4
+      },
+      "bus": "SFX"
+    }
+  },
+  "sounds": {
+    "ring": "Audio/Sound effects/phonering.wav",
+    "hangup": "Audio/Sound effects/phonehangup.wav"
+  },
+  "player": {
+    "node": "AnimationPlayer",
+    "review": {
+      "anims/Idle": {
+        "SubResource": 103
+      },
+      "anims/RESET": {
+        "SubResource": 88
+      },
+      "anims/Ring": {
+        "SubResource": 104
+      }
+    }
+  },
+  "clips": [
+    {
+      "role": "idle",
+      "native_kind": 1,
+      "animation": {
+        "name": "Idle",
+        "source": "Nodes/Reusables/phone.tscn",
+        "source_resource_id": 103,
+        "length": 1.0,
+        "loop": false,
+        "step": 0.1,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "main:frame",
+            "interp": 1,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0
+              ],
+              "transitions": [
+                1
+              ],
+              "update": 1,
+              "values": [
+                0
+              ]
+            }
+          }
+        ]
+      },
+      "events": [
+        {
+          "track": 0,
+          "kind": "Frame",
+          "sound": "",
+          "time_encoding": "source"
+        }
+      ]
+    },
+    {
+      "role": "ring",
+      "native_kind": 2,
+      "animation": {
+        "name": "Ring",
+        "source": "Nodes/Reusables/phone.tscn",
+        "source_resource_id": 104,
+        "length": 1.25,
+        "loop": true,
+        "step": 0.0833333,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "main:frame",
+            "interp": 1,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0,
+                0.0833333,
+                0.166667,
+                0.25,
+                0.333333,
+                0.416667,
+                0.5,
+                0.583333
+              ],
+              "transitions": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ],
+              "update": 1,
+              "values": [
+                1,
+                2,
+                3,
+                2,
+                3,
+                2,
+                1,
+                0
+              ]
+            }
+          },
+          {
+            "type": "value",
+            "path": "AudioStreamPlayer2D:playing",
+            "interp": 1,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0.083,
+                0.332
+              ],
+              "transitions": [
+                1,
+                1
+              ],
+              "update": 1,
+              "values": [
+                true,
+                true
+              ]
+            }
+          }
+        ]
+      },
+      "events": [
+        {
+          "track": 0,
+          "kind": "Frame",
+          "sound": "",
+          "time_encoding": "f32"
+        },
+        {
+          "track": 1,
+          "kind": "PlaySound",
+          "sound": "ring",
+          "time_encoding": "f32"
+        }
+      ]
+    }
+  ],
+  "callbacks": {
+    "ring": {
+      "method": "_ring",
+      "review": "\tif _anim_player.current_animation != \"Ring\":\n\t\t_audio.stream = ResourceLoader.load(\"res://Audio/Sound effects/phonering.wav\")\n\t\t_anim_player.play(\"Ring\")\n\n# Override\n"
+    },
+    "use": {
+      "method": "_use_phone",
+      "review": "\t_audio.stream = ResourceLoader.load(\"res://Audio/Sound effects/phonehangup.wav\")\n\t_anim_player.play(\"Idle\")\n\tglobal.set_phone_location(_save_location)\n\tif _is_payphone:\n\t\tif phone_card != null:\n\t\t\t_show_amount_box(true, true)\n\t\t\t_audio.playing = true\n\t\t\tuiManager.open_dialogue_box(_get_right_dialog())\n\t\t\tInventory.reduce_or_drop_item_for_all(phone_card)\n\t\telse:\n\t\t\t_show_amount_box(false, true)\n\t\t\tif globaldata.cash >= 5:\n\t\t\t\t_audio.playing = true\n\t\t\t\tuiManager.open_dialogue_box(_get_right_dialog())\n\t\t\t\tglobaldata.cash -= 5\n\t\t\telse:\n\t\t\t\tuiManager.open_dialogue_box(\"Reusable/payphonenomoney\")\n\telse:\n\t\tuiManager.open_dialogue_box(_get_right_dialog())\n\t\t_audio.playing = true\n\n"
+    }
+  },
+  "declarations": [
+    "onready var _anim_player = $AnimationPlayer",
+    "onready var _audio = $AudioStreamPlayer2D"
+  ],
+  "ring_binding": {
+    "source": "Data/Dialogue/Podunk/cutscenes/carol_call.yaml",
+    "object": "Objects/Phone",
+    "method": "_ring",
+    "flag": "phone_ring",
+    "function_entry": "5",
+    "flag_entry": "7",
+    "review": {
+      "5": {
+        "name": "Carol",
+        "actorsturn": {
+          "carol": {
+            "x": -1,
+            "y": 0,
+            "speed": 0.05
+          }
+        },
+        "objectsfunction": {
+          "Objects/Phone": "_ring"
+        },
+        "autowait": 1,
+        "goto": "6"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_SPEAKER_Carol",
+        "sound": "Female",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_CAROL_CALL_7",
+        "setflags": "phone_ring"
+      }
+    }
+  }
+}

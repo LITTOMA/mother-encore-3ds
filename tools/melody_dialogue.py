@@ -88,60 +88,23 @@ def receipt(ex):
     for path,doc in zip(YAMLS[2:],data['yaml'][2:]):literal_phrase(path,doc)
     return data
 
-def literal_phrase(path,doc):
-    require(path in YAMLS[2:]and isinstance(doc,dict)and list(doc)==['0'],'Literal melody-room graph')
-    phrase=doc['0'];prefix={DEFAULT:'MIMMIE_DOLL_DEFEATED',AFTER:'MIMMIE_DEAD_DOLL',REPEAT:'DOLL'}[path]
-    expected={'text':'DIALOGUE_PODUNK_'+prefix+'_0'}
-    if path!=REPEAT:expected.update(name='DIALOGUE_PODUNK_'+prefix+'_SPEAKER_Mimmie',sound='Kid')
-    require(phrase==expected,'Unknown literal melody-room fields')
-    return phrase
+def literal_phrase(path,doc,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    value=recipe.load(root)
+    recipe.document(value,path,doc)
+    require(list(doc)==['0'],'Literal melody-room graph')
+    return doc['0']
 
-def compile_melody(doc,end_duration):
-    require(isinstance(doc,dict)and list(doc)==['0','3','4'],'Melody phrase graph')
-    require(end_duration>0,'Melody return camera duration')
-    require(doc['0']=={'actors':{'leader':'leader'},'text':'DIALOGUE_PODUNK_DOLLMELODY_0','goto':'3'},'Unknown melody initial phrase')
-    require(set(doc['3'])=={'objectsfunction','wait','autoadvance','caninput','goto','music'}and
-        list(doc['3']['objectsfunction'].items())==[('MusicArea','stop_music_immediately'),('melodyBG','appear')]and
-        doc['3']['wait']==4 and doc['3']['autoadvance']is True and doc['3']['caninput']is False and
-        doc['3']['goto']=='4'and doc['3']['music']=='Melodies/melody1.mp3','Unknown melody timed phrase')
-    require(set(doc['4'])=={'text','soundeffect','objectsfunction','setflags','wait'}and
-        list(doc['4']['objectsfunction'].items())==[('MusicArea','play_music'),('melodyBG','disappear')]and
-        doc['4']['text']=='DIALOGUE_PODUNK_DOLLMELODY_4'and doc['4']['soundeffect']=='M3/heal_se.wav'and
-        doc['4']['setflags']=='doll_melody'and doc['4']['wait']==.6,'Unknown melody final phrase')
-    out=[]
-    def emit(kind,phrase=0,actor='None',**payload):out.append(dict(kind=kind,phrase=phrase,actor=actor,**payload))
-    emit('BeginCutscene');emit('ShowDialogue',dialogue_id=6,flags=1)
-    emit('BindActor',actor='Ninten');emit('ActorPersistent',actor='Ninten');emit('YieldIdle');emit('AwaitDialogue')
-    emit('StartWait',1,duration=doc['3']['wait'])
-    emit('CallObjectDeferred',1,binding='stop_house_music');emit('CallObjectDeferred',1,binding='effect_appear')
-    emit('PlayMusicImmediate',1,resource='res://Audio/Music/'+doc['3']['music']);emit('AwaitTimer',1)
-    emit('ShowDialogue',2,dialogue_id=7,flags=1);emit('StartWait',2,duration=doc['4']['wait'])
-    emit('CallObjectDeferred',2,binding='house_music');emit('CallObjectDeferred',2,binding='effect_disappear')
-    emit('PlaySound',2,resource='res://Audio/Sound effects/'+doc['4']['soundeffect'])
-    emit('SetFlag',2,flag=doc['4']['setflags'],value=1);emit('AwaitDialogue',2,flags=1)
-    emit('StopInteraction',2,flags=1);emit('SetTalker',2);emit('RestoreActor',2,'Ninten')
-    emit('CutsceneEnded',2);emit('DialogueDone',2,duration=end_duration)
-    return out
 
-def compile_guard(doc,end_duration):
-    require(isinstance(doc,dict)and list(doc)==['0','1'],'Mimmie guard phrase graph')
-    require(end_duration>0,'Mimmie guard return camera duration')
-    first=doc['0'];last=doc['1'];speaker='DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_SPEAKER_Mimmie'
-    require(first=={'actors':{'ninten':'leader','mimmie':'Objects/npc2'},'talker':'mimmie','name':speaker,'sound':'Kid',
-        'text':'DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_0','changecam':None,'goto':'1'}and
-        list(first['actors'])==['ninten','mimmie'],'Unknown Mimmie guard initial fields')
-    require(last=={'name':speaker,'sound':'Kid','text':'DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_1',
-        'actorsmove':{'ninten':{'movement':[{'x':0,'y':-12}],'speed':64,'animation':'Walk','type':'step'}}},'Unknown Mimmie guard final fields')
-    out=[]
-    def emit(kind,phrase=0,actor='None',**payload):out.append(dict(kind=kind,phrase=phrase,actor=actor,**payload))
-    emit('BeginCutscene');emit('ShowDialogue',actor='Mimmie',dialogue_id=8)
-    for actor in ('Ninten','Mimmie'):emit('BindActor',actor=actor);emit('ActorPersistent',actor=actor)
-    emit('YieldIdle');emit('SetTalker',actor='Mimmie');emit('ChangeCamera',flags=1);emit('YieldIdle');emit('AwaitDialogue')
-    emit('ShowDialogue',1,'Mimmie',dialogue_id=9);emit('MoveActorPath',1,'Ninten',path=last['actorsmove']['ninten']);emit('AwaitDialogue',1)
-    emit('StopInteraction',1,'Mimmie');emit('SetTalker',1)
-    for actor in ('Ninten','Mimmie'):emit('RestoreActor',1,actor)
-    emit('CutsceneEnded',1);emit('DialogueDone',1,duration=end_duration)
-    return out
+def compile_melody(doc,end_duration,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.execute('melody',doc,end_duration,root)
+
+
+def compile_guard(doc,end_duration,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.execute('guard',doc,end_duration,root)
+
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--godot',type=Path,required=True);a=p.parse_args()

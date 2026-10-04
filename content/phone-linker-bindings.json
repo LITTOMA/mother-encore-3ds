@@ -1,0 +1,291 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "paths": {
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "npc_script": "Scripts/Main/npc.gd",
+    "npc_scene": "Nodes/Reusables/npc.tscn",
+    "animation": "Data/Animations/4dir.yaml",
+    "bus": "Audio/Audio Buses/default_bus_layout.tres",
+    "manager": "Scripts/global/audioManager.gd",
+    "title": "Scripts/UI/Title screen.gd"
+  },
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Audio/Sound effects/bash.mp3": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598",
+    "Audio/Sound effects/bash.mp3.import": "1e3241d9ac7d026dffe39041ac76131052b9eb3ef8f8ca92f816190d095b31d9",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3.import": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03",
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3.import": "e07f81afe34f32ecd03fb1f65a88305b047e208004de2dbf662102c54591302a",
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+    "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+    "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+    "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+    "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+    "Audio/Sound effects/M3/SMAAAASH.wav": "ab087702670dd87d46207b48429b9c9d1fa5daec0f74b0b10c9b1fe0e9a8c47f",
+    "Audio/Sound effects/M3/SMAAAASH.wav.import": "2670b26676ad536fb2d45147a675cee4edbbe640dca449b33de0fa0b35cf331e",
+    "Audio/Music/Melodies/melody1.mp3": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+    "Audio/Music/Melodies/melody1.mp3.import": "3f7d52ded59d4efae922628f9716fd8c1ca7f7d88ba6774b2065095c83ac7f23",
+    "Audio/Sound effects/M3/heal_se.wav": "d8712d29a0ef6feec927753dd897c136ae58e940b6e67b03693ecde2b6345021",
+    "Audio/Sound effects/M3/heal_se.wav.import": "1b82db1b468075e83174548e87a7150b71ca3aa039063f1c47f1d1fdf578256b",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
+    "Audio/Sound effects/phonehangup.wav": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145",
+    "Audio/Sound effects/phonehangup.wav.import": "fdbe75f6e2df204ccc6bd2fa775982d96d8d5a6ce5cbf91517e53a3fbb2b78a4",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc",
+    "Audio/Sound effects/text/Adult.mp3.import": "416f91e675ceb7bdd87850942624389e82e689f7e8bd6e1b74b0ec75454f3487",
+    "Audio/Music/Mother Earth.mp3": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+    "Audio/Music/Mother Earth.mp3.import": "dcc0a020300706b28f4c540a8922eb71f10c58b2bc8f1773efb140c285e18409"
+  },
+  "world": "content/world-program-bindings.json",
+  "house": "content/house-source-bindings.json",
+  "house_presentation": "content/native-house-presentation.json",
+  "house_assets": "content/house-assets.json",
+  "house_receipt": "reports/cloud-world/house-exact.json",
+  "actors": [
+    {
+      "alias": "None",
+      "kind": "none",
+      "reference": ""
+    },
+    {
+      "alias": "Ninten",
+      "kind": "world",
+      "reference": "Ninten"
+    },
+    {
+      "alias": "Carol",
+      "kind": "house",
+      "reference": "Objects/npc"
+    }
+  ],
+  "carol": {
+    "role": "carol",
+    "source": "Objects/npc",
+    "shared_role": "minnie",
+    "shared_source": "Objects/npc3",
+    "shared_actor_index": 4,
+    "actor_stable_id": 6,
+    "actor_index": 5,
+    "execution_kind": 2,
+    "native_yaml_index": 2,
+    "native_animation_index": 1,
+    "directions": [
+      "Down",
+      "Left",
+      "Right",
+      "Up"
+    ],
+    "states": [
+      {
+        "motion": 0,
+        "name": "Idle"
+      },
+      {
+        "motion": 4,
+        "name": "Walk"
+      },
+      {
+        "motion": 5,
+        "name": "Talk"
+      }
+    ],
+    "direction": [
+      0,
+      1
+    ],
+    "sprite_node": "CharacterSprite",
+    "sprite_prefix": "Graphics/Character Sprites/",
+    "sprite_suffix": ".png"
+  },
+  "audio": [
+    {
+      "source": "Audio/Music/Poltergeist.ogg",
+      "pcm": "audio/poltergeist.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 21
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/bash.mp3",
+      "pcm": "audio/bash.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 22
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+      "pcm": "audio/encounter-enemy.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1001
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Music/Battle Encounter/Encounter Boss.mp3",
+      "pcm": "audio/encounter-boss.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1002
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/Cursor 1.mp3",
+      "pcm": "audio/cursor-move.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1101
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/Cursor 2.mp3",
+      "pcm": "audio/cursor-select.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1102
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/M3/curshoriz.wav",
+      "pcm": "audio/cursor-back.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1103
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/M3/bump.wav",
+      "pcm": "audio/cursor-restricted.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1104
+      },
+      "conversion": {
+        "source_sample_rate": 96000,
+        "output_sample_rate": 48000
+      }
+    },
+    {
+      "source": "Audio/Sound effects/M3/SMAAAASH.wav",
+      "pcm": "audio/doll-postwin-smash.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 30
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Music/Melodies/melody1.mp3",
+      "pcm": "audio/doll-melody.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 32
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/M3/heal_se.wav",
+      "pcm": "audio/melody-remembered.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 33
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Music/House.mp3",
+      "pcm": "audio/house-music.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 34
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/phonering.wav",
+      "pcm": "audio/phone-ring.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "room",
+        "source": "res://Audio/Sound effects/phonering.wav"
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/phonehangup.wav",
+      "pcm": "audio/phone-hangup.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "room",
+        "source": "res://Audio/Sound effects/phonehangup.wav"
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/text/Adult.mp3",
+      "pcm": "audio/text-adult.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1201
+      },
+      "conversion": null
+    },
+    {
+      "source": "Audio/Music/Mother Earth.mp3",
+      "pcm": "audio/title-mother-earth.pcm",
+      "gain_db": 0,
+      "identity": {
+        "kind": "stable",
+        "value": 1202
+      },
+      "conversion": null
+    }
+  ],
+  "audio_prefix_count": 12,
+  "sound_roles": {
+    "ring": "Audio/Sound effects/phonering.wav",
+    "hangup": "Audio/Sound effects/phonehangup.wav"
+  },
+  "dialogue_first_id": 12,
+  "room_prefix": {
+    "Resource": 34,
+    "Program": 5,
+    "Binding": 7
+  }
+}

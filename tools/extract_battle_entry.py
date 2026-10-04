@@ -19,6 +19,7 @@ import sys
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 PIN = '7d9246600fffe518408f5830d4848635019005a3'
 BATTLE = 'Nodes/Ui/Battle/Battle.tscn'
 SYSTEM = 'Scripts/UI/Battle/BattleSystem.gd'
@@ -116,6 +117,8 @@ class Extractor:
         return list(struct.unpack('>II', raw[16:24]))
 
     def build(self):
+        from tools.battle_entry_bindings import load as load_bindings,IR as BINDINGS_IR,binding_digest
+        recipe,projected=load_bindings(self)
         battle = self.text(BATTLE)
         system = self.text(SYSTEM)
         ui = self.text('Scripts/global/uiManager.gd')
@@ -160,27 +163,15 @@ class Extractor:
         require(strike['required_weapon'] == 'bat' and split['required_weapon'] == 'slingshot', 'Changed skill requirements')
         require(enemy['boss'] is False and enemy['music'] == '' and enemy['bg'] == 'lamp' and 'battlescript' not in enemy, 'Entry requires additional behavior')
         # All values below are source adapter data, not C++ program constants.
-        transitions = [animation(self.text(TRANSITION),1,TRANSITION,'overlay.Start'),
-                       animation(battle,11,BATTLE,'scene.transitionIn'),
-                       animation(battle,73,BATTLE,'actions.transitionIn'),
-                       animation(self.text(ENEMY_SPRITE),3,ENEMY_SPRITE,'enemy.appear'),
-                       animation(self.text(PARTY_SPRITE),5,PARTY_SPRITE,'party.lookIntoYourSoul')]
+        transitions=projected['animations']
         require([clip['length'] for clip in transitions[:3]] == [1.3,1.9,0.65], 'Changed entry duration')
         method_track = [track for track in transitions[1]['tracks'] if track['type']=='method']
         require(len(method_track)==1 and method_track[0]['keys']['times']==[0,0.15,1.2,1.25,1.35], 'Changed entry event schedule')
         mask = node(self.text(TRANSITION),'Sprite')
         all_layout = {}
-        layout_paths = ['top','bottom','PlayerInfo','PlayerInfo/PlayerInfoVbox','PlayerInfo/PlayerInfoVbox/PartyInfo',
-                        'TargetNameBox','TargetNameBox/Label','ActionMenuBox','ActionMenuBox/Arrow','ActionMenuBox/Arrow/ActionCursor',
-                        'ActionMenuBox/ActionIcons','ActionMenuBox/ActionIcons/BashIcon','ActionMenuBox/ActionIcons/ItemsIcon','ActionMenuBox/ActionIcons/DefendIcon']
-        for path in layout_paths: all_layout[path] = node(battle,path)
+        for path in recipe['scene_layout']: all_layout[path] = node(battle,path)
         plate = self.text(PARTY_PLATE)
-        plate_nodes = {}
-        for match in re.finditer(r'^\[node name="([^"]+)"(?:[^\n]*? parent="([^"]+)")?[^\n]*\]$',plate,re.M):
-            name,parent=match[1],match[2]
-            path='.' if parent is None else name if parent=='.' else parent+'/'+name
-            if path=='.' or path in ['hp_label','pp_label','Name','ContentBattle','ContentBattle/BG','ContentBattle/Counter'] or path.startswith('ContentBattle/Counter/'):
-                plate_nodes[path]=node(plate,path)
+        plate_nodes = {path:node(plate,path)for path in recipe['plate_layout']}
         translations={}
         for path in ['Translations/TranslatedText/battletext - sheet.csv','Translations/TranslatedText/battleskills - sheet.csv','Translations/TranslatedText/battlers - sheet.csv']:
             for row in csv.reader(io.StringIO(self.text(path))):
@@ -243,38 +234,8 @@ class Extractor:
                      'initial_hidden':True,'initial_appear_scale':[0.3,0.2],'initial_flash_modifier':1.0,'final_scale':[1,1]},
             'animations':transitions,
             'presentation':{'asset_recipe_path':'content/battle-assets.json','asset_receipt_path':'romfs/battle-preview/source.json','assets':assets,'scene_nodes':all_layout,'plate_nodes':plate_nodes,'plain_palette_hex':flavor,'translations_en':translations,
-                            'derived_layout':{'method':'Godot 3.6.2 native Control/HBox/VBox/PanelContainer micro-probe; not full source scene',
-                                              'party_info_position':[0,112],'plate_position':[128,132],'plate_size':[65,49],
-                                              'command_icon_positions':[[9,1],[41,1],[73,1]],'cursor_centers':[[17,9],[49,9],[81,9]],
-                                              'party_hidden_position':[128,116],'party_shown_position':[128,96],'party_sprite_size':[64,64]},
-                            'party_sprite':{'source':PARTY_SPRITE,'frame':0,'grid':[10,18],'control_hidden_y':-16,'distance_to_shown':20,'show_tween_seconds':0.12},
-                            'party_transition':{'source_function':'BattleSystem._add_players_and_npc_transitions / _jump_to_battle / _jump_player_to_partyinfo',
-                                                'screen_offset':[0,-4],'crouch_frame_coords':[3,0],'jump_frame_coords':[0,18],
-                                                'squash_scale':[1.1,0.9],'squash_segment_seconds':0.1,'squash_transition':'QUART','squash_ease':'OUT',
-                                                'jump_method_time':0.15,'initial_jump_wait':0.2,'per_member_wait':0.1,
-                                                'jump_start_for_first_party':0.45,'jump_duration':0.6,'jump_up_seconds':0.3,'jump_down_seconds':0.3,'jump_down_delay':0.3,
-                                                'jump_target_x':160.5,'jump_target_y':180,'jump_apex_offset':16,'jump_height_threshold':90,
-                                                'jump_apex_formula':'start_y - (16 + max(0,start_y-90))',
-                                                'x_transition':'LINEAR','y_up_transition':'QUAD','y_up_ease':'OUT','y_down_transition':'QUAD','y_down_ease':'IN',
-                                                'scale_delay':0.3,'scale_duration':0.3,'scale_target':[0.3,2],'scale_transition':'QUART','scale_ease':'IN',
-                                                'arrival_quake_intensity':0.5,'arrival_hide_deferred':True,
-                                                'arrival_quake_base_magnitude':8,
-                                                'arrival_quake_steps':[{'from':0,'to':4,'duration':0.05,'ease':1},{'from':4,'to':-4,'duration':0.1,'ease':0.5},{'from':-2,'to':2,'duration':0.1,'ease':0.5},{'from':2,'to':-2,'duration':0.1,'ease':0.5},{'from':-2,'to':0,'duration':0.15,'ease':0.5}],
-                                                'center_nudge':{'party_count':1,'center_x':160,'distance_lt':4,'offset':16,'duration':0.2,'transition':'BACK','ease':'OUT','random_sign':True}},
-                            'enemy_transition':{'duration':0.25,'transition':'QUAD','ease':'OUT','target':'enemy sprite center',
-                                                'tint_to':[0,0,0,1],'tint_seconds':0.6,'shake_frequency':0.04,'shake_range':[-4,4],
-                                                'per_enemy_delay_numerator':0.2,'shaking_cleared_after_reveal_delay':0.1}},
-            'menu':{'source_indices':[0,3,4],'actions':[{'source_index':0,'id':'Basic','label_key':basic['name'],'icon_asset':'bash_icon'},
-                                                       {'source_index':3,'id':'Items','label_key':'BATTLE_ACTION_ITEMS','icon_asset':'items_icon'},
-                                                       {'source_index':4,'id':'Defend','label_key':'BATTLE_ACTION_DEFEND','icon_asset':'defend_icon'}],
-                    'initial_source_index':0,'hidden_source_indices':[1,2,5],'wrap_around':True,'horizontal_only':True,'cursor_size':[24,12],
-                    'cursor_offset':[12,2],'cursor_anchor_delta':[8,8],'cursor_tween_seconds':float(one(r'const TWEEN_LENGTH := ([0-9.]+)',cursor,'cursor tween')[1]),
-                    'cursor_transition':'QUART','cursor_ease':'OUT','cursor_repeat_delay_seconds':0.05,
-                    'cursor_scale_steps':[{'from':[0.8,1.2],'to':[1.3,0.7],'duration':0.1,'ease':0.25},{'from':[1.3,0.7],'to':[0.8,1.2],'duration':0.03,'ease':0.25},{'from':[0.8,1.3],'to':[1,1],'duration':0.03,'ease':0.25}],
-                    'move_sound_key':'cursor1','select_sound_key':'cursor2','cancel_sound_key':'back',
-                    'input_gate':'cursor.on set only when BattleMenuBox.enter called at scene animation completion',
-                    'cancel_at_first_member':'reset stack and reopen ActionMenuBox, reset selection to Basic',
-                    'confirm_boundary':'emit selected request only; action execution outside this entry slice'},
+                            **{key:projected[key]for key in ('derived_layout','party_sprite','party_transition','enemy_transition')}},
+            'menu':projected['menu'],
             'audio':{'encounter_audio_id':1001,'encounter_source':encounter,'encounter_loop':False,
                      'encounter_trigger':'BattleSystem._ready','overworld_battle_music':True,'pause_overworld_music':False,
                      'battle_music_source':None,'continue_overworld_source':'Audio/Music/Poltergeist.ogg','overworld_loop_offset_seconds':6.382},
@@ -290,6 +251,7 @@ class Extractor:
                          'background':'lamp.bbg all fields; scene_importer.gd; default_shader.tres'},
             'sources':self.sources,
         }
+        result['entry_bindings']={'path':BINDINGS_IR,'sha256':binding_digest()}
         return result
 
 

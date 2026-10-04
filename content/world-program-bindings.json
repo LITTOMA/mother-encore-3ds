@@ -1,0 +1,527 @@
+{
+  "schema": 1,
+  "kind": "encore.world-program-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/Melodies/melody1.mp3": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+    "Audio/Sound effects/M3/heal_se.wav": "d8712d29a0ef6feec927753dd897c136ae58e940b6e67b03693ecde2b6345021",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
+    "Data/Dialogue/Podunk/dollmelody.yaml": "9058f5f24fece54d7446e152830579f763773f312a2be5710c17a9d67c357fd6",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/mimmie.png": "92cc5589bfe0ad56cd4f0e884952f2d3bc923ac57638fe657b7ea9c689a530e1",
+    "Graphics/Character Sprites/Npcs/4dir/minnie.png": "55ede50937e2511bfa27a88ce4660040c2e140886ee107be9260cb830be5338a",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Character Sprites/Npcs/1dir/lamp.png": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Data/Animations/Lamp.yaml": "eb5043e8979cb5ed982ae75a5a95a89ebca765324d564da10759fa27736c66ed",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb"
+  },
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "npc_script": "Scripts/Main/npc.gd",
+  "presentation": "content/native-house-presentation.json",
+  "programs": [
+    {
+      "id": 1,
+      "stage": "initial",
+      "path": "Podunk/cutscenes/lamp_attack",
+      "selector": {
+        "kind": "scene_dialog",
+        "node": "Poltergeist/Cutscene Area"
+      },
+      "labels": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "id": 2,
+      "stage": "attack",
+      "path": "Podunk/cutscenes/doll_attack",
+      "selector": {
+        "kind": "scene_dialog",
+        "node": "Poltergeist/Cutscene Area2"
+      },
+      "labels": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "id": 3,
+      "stage": "postwin",
+      "path": "Podunk/cutscenes/doll_defeated",
+      "selector": {
+        "kind": "battle_win",
+        "program_id": 2,
+        "phrase": "6"
+      },
+      "labels": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "id": 4,
+      "stage": "melody",
+      "path": "Podunk/dollmelody",
+      "selector": {
+        "kind": "scene_dialog",
+        "node": "Objects/npcdoll"
+      },
+      "labels": [
+        "0",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "id": 5,
+      "stage": "guard",
+      "path": "Podunk/cutscenes/mimmie_ignore",
+      "selector": {
+        "kind": "scene_dialog",
+        "node": "Cutscene Area5"
+      },
+      "labels": [
+        "0",
+        "1"
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "id": 1,
+      "alias": "Ninten",
+      "source_alias": "ninten",
+      "node": "leader",
+      "program_id": 1,
+      "resource_role": "primary"
+    },
+    {
+      "id": 2,
+      "alias": "Lamp",
+      "source_alias": "lamp",
+      "node": "Objects/lamp",
+      "program_id": 1,
+      "resource_role": "lamp"
+    },
+    {
+      "id": 3,
+      "alias": "Doll",
+      "source_alias": "doll",
+      "node": "Objects/npcdoll",
+      "program_id": 2,
+      "resource_role": "doll"
+    },
+    {
+      "id": 4,
+      "alias": "Mimmie",
+      "source_alias": "mimmie",
+      "node": "Objects/npc2",
+      "program_id": 2,
+      "resource_role": "mimmie"
+    },
+    {
+      "id": 5,
+      "alias": "Minnie",
+      "source_alias": "minnie",
+      "node": "Objects/npc3",
+      "program_id": 3,
+      "resource_role": "minnie"
+    }
+  ],
+  "npc_profiles": [
+    {
+      "actor_id": 3,
+      "execution_kind": 2,
+      "texture_source": "Graphics/Character Sprites/Npcs/1dir/doll.png",
+      "animation_source": "Data/Animations/Floater.yaml",
+      "receipt": "reports/doll-sequence/native-parser-animation.json",
+      "yaml_index": 3,
+      "animation_index": 2,
+      "phase": "attack",
+      "idle_animation": "Idle",
+      "clips": [
+        {
+          "animation": "Idle",
+          "flags": 4
+        },
+        {
+          "animation": "Float",
+          "flags": 0
+        }
+      ]
+    },
+    {
+      "actor_id": 4,
+      "execution_kind": 3,
+      "texture_source": "Graphics/Character Sprites/Npcs/4dir/mimmie.png",
+      "animation_source": "Data/Animations/4dir.yaml",
+      "receipt": "reports/doll-sequence/native-parser-animation.json",
+      "yaml_index": 2,
+      "animation_index": 1,
+      "phase": "attack",
+      "idle_animation": "Idle",
+      "clips": [
+        {
+          "animation": "Idle",
+          "flags": 0
+        },
+        {
+          "animation": "Walk",
+          "flags": 0
+        },
+        {
+          "animation": "Talk",
+          "flags": 0
+        }
+      ]
+    },
+    {
+      "actor_id": 5,
+      "execution_kind": 3,
+      "texture_source": "Graphics/Character Sprites/Npcs/4dir/minnie.png",
+      "animation_source": "Data/Animations/4dir.yaml",
+      "receipt": "reports/doll-postwin/native-parser-animation.json",
+      "yaml_index": 2,
+      "animation_index": 1,
+      "phase": "postwin",
+      "idle_animation": "Idle",
+      "clips": [
+        {
+          "animation": "Idle",
+          "flags": 0
+        },
+        {
+          "animation": "Walk",
+          "flags": 0
+        },
+        {
+          "animation": "Talk",
+          "flags": 0
+        }
+      ]
+    }
+  ],
+  "audio": [
+    {
+      "id": 32,
+      "path": "Audio/Music/Melodies/melody1.mp3",
+      "selector": {
+        "kind": "music",
+        "program_id": 4,
+        "phrase": "3"
+      }
+    },
+    {
+      "id": 33,
+      "path": "Audio/Sound effects/M3/heal_se.wav",
+      "selector": {
+        "kind": "soundeffect",
+        "program_id": 4,
+        "phrase": "4"
+      }
+    },
+    {
+      "id": 34,
+      "path": "Audio/Music/House.mp3",
+      "selector": {
+        "kind": "scene_loop",
+        "node": "MusicArea"
+      }
+    }
+  ],
+  "initial_bindings": [
+    {
+      "id": 1,
+      "name": "initial_music",
+      "kind": 1,
+      "node": "Poltergeist/MusicArea",
+      "method": "play_music",
+      "program_id": 1,
+      "phrase": "2",
+      "target": "music",
+      "method_source": "Nodes/Overworld/MusicChanger.tscn",
+      "target_binding_id": null
+    },
+    {
+      "id": 2,
+      "name": "periodic_shake",
+      "kind": 3,
+      "node": "Room Shaker",
+      "method": "delayed_start",
+      "program_id": 1,
+      "phrase": "12",
+      "target": "shake_sound",
+      "method_source": "Scripts/Main/roomshaker.gd",
+      "target_binding_id": null
+    }
+  ],
+  "stop_binding": {
+    "id": 3,
+    "name": "stop_shake",
+    "kind": 4,
+    "node": "Room Shaker",
+    "method": "stop_shake",
+    "program_id": 2,
+    "phrase": "6",
+    "target": "binding",
+    "method_source": "Scripts/Main/roomshaker.gd",
+    "target_binding_id": 2
+  },
+  "melody_bindings": [
+    {
+      "id": 4,
+      "name": "stop_house_music",
+      "kind": 5,
+      "node": "MusicArea",
+      "method": "stop_music_immediately",
+      "program_id": 4,
+      "phrase": "3",
+      "target": "house_music",
+      "method_source": "Nodes/Overworld/MusicChanger.tscn",
+      "target_binding_id": null
+    },
+    {
+      "id": 5,
+      "name": "effect_appear",
+      "kind": 6,
+      "node": "melodyBG",
+      "method": "appear",
+      "program_id": 4,
+      "phrase": "3",
+      "target": "effect",
+      "method_source": "Nodes/Ui/effects/melodyBG.gd",
+      "target_binding_id": null
+    },
+    {
+      "id": 6,
+      "name": "house_music",
+      "kind": 1,
+      "node": "MusicArea",
+      "method": "play_music",
+      "program_id": 4,
+      "phrase": "4",
+      "target": "house_music",
+      "method_source": "Nodes/Overworld/MusicChanger.tscn",
+      "target_binding_id": null
+    },
+    {
+      "id": 7,
+      "name": "effect_disappear",
+      "kind": 7,
+      "node": "melodyBG",
+      "method": "disappear",
+      "program_id": 4,
+      "phrase": "4",
+      "target": "effect",
+      "method_source": "Nodes/Ui/effects/melodyBG.gd",
+      "target_binding_id": null
+    }
+  ],
+  "presentation_manifest": "romfs/house-preview/source.json",
+  "effect": {
+    "id": 31,
+    "path": "world-effect/melody.encfx",
+    "source_ir": "content/native-world-effect.json",
+    "scene": "Nodes/Ui/effects/melodyBG.tscn"
+  },
+  "animation": {
+    "sprite_review": "compatibility/reviews/ninten-sprite-v0410.json",
+    "sprite_manifest": "romfs/actor-preview/source.json",
+    "direction_review": "compatibility/reviews/ninten-animation-v0410.json",
+    "actor_script": "Scripts/Main/actor.gd",
+    "npc_scene": "Nodes/Reusables/npc.tscn",
+    "party_source": "Data/Animations/PartyMember.yaml",
+    "directions": [
+      "Down",
+      "Left",
+      "Right",
+      "Up",
+      "DownLeft",
+      "DownRight",
+      "UpLeft",
+      "UpRight"
+    ],
+    "motions": [
+      {
+        "state": 0,
+        "animation": "Idle",
+        "selector": "idle"
+      },
+      {
+        "state": 4,
+        "animation": "Walk",
+        "selector": "movement"
+      },
+      {
+        "state": 5,
+        "animation": "Talk",
+        "selector": "talk"
+      }
+    ],
+    "assets": [
+      {
+        "id": 1,
+        "role": "primary",
+        "path": "actor-preview/ninten-main.t3x",
+        "recipe_key": "texture",
+        "grid": [
+          10,
+          20
+        ]
+      },
+      {
+        "id": 2,
+        "role": "lamp",
+        "path": "actor-preview/lamp.t3x",
+        "recipe_key": "lamp_texture",
+        "grid": [
+          4,
+          1
+        ]
+      },
+      {
+        "id": 3,
+        "role": "emote",
+        "path": "actor-preview/emotes.t3x",
+        "recipe_key": "emote_texture",
+        "grid": [
+          12,
+          12
+        ]
+      },
+      {
+        "id": 4,
+        "role": "shadow",
+        "path": "actor-preview/shadow.t3x",
+        "recipe_key": "shadow_texture",
+        "grid": [
+          1,
+          1
+        ]
+      }
+    ],
+    "base_profiles": [
+      {
+        "actor_id": 1,
+        "execution_kind": 1,
+        "animation_source": "Data/Animations/PartyMember.yaml",
+        "prefix": "",
+        "idle_animation": "Idle",
+        "emote_animation": "surprise",
+        "clips": []
+      },
+      {
+        "actor_id": 2,
+        "execution_kind": 2,
+        "animation_source": "Data/Animations/Lamp.yaml",
+        "prefix": "Lamp",
+        "idle_animation": "Idle",
+        "emote_animation": null,
+        "clips": [
+          {
+            "animation": "Idle",
+            "flags": 4
+          },
+          {
+            "animation": "Open",
+            "flags": 2
+          }
+        ]
+      }
+    ],
+    "actor_walk": {
+      "actor_id": 1,
+      "prefix": "Ninten Actor",
+      "animation": "Walk",
+      "motion": 4,
+      "receipt": "reports/doll-sequence/native-parser-animation.json",
+      "yaml_index": 1,
+      "animation_index": 0
+    },
+    "emotes": [
+      {
+        "animation": "surprise",
+        "phase": "initial",
+        "actor_id": 1,
+        "receipt_key": null
+      },
+      {
+        "animation": "exclamation",
+        "phase": "attack",
+        "actor_id": 4,
+        "receipt_key": "exclamation"
+      },
+      {
+        "animation": "dot",
+        "phase": "postwin",
+        "actor_id": 4,
+        "receipt_key": "dot"
+      }
+    ]
+  },
+  "resource_catalog": "content/native-resource-catalog.json",
+  "encounters": [
+    {
+      "id": 1,
+      "phase": "initial",
+      "actor_id": 2,
+      "program_id": 1,
+      "phrase": "12",
+      "source_ir": "content/native-battle.json",
+      "catalog_id": 3,
+      "resource_path": "data/opening.encbattle"
+    },
+    {
+      "id": 2,
+      "phase": "attack",
+      "actor_id": 3,
+      "program_id": 2,
+      "phrase": "6",
+      "source_ir": "content/doll-entry.json",
+      "catalog_id": 256,
+      "resource_path": "data/doll-entry.encbattle"
+    }
+  ]
+}

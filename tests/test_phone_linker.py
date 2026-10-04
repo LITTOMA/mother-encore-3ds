@@ -30,6 +30,11 @@ class PhoneLinkerTests(unittest.TestCase):
             cls.base_room, _ = Extractor(cls.root).run()
         with patch.object(linker, 'link_house', lambda ex, ir, room: ir), patch.object(pillow, 'append_house', lambda ex, ir, room: ir):
             cls.base_house = build_house(cls.root)
+        # Carol's mapping now comes from reviewed House bindings before the
+        # phone append pass. Project only that documented metadata to the
+        # previous prefix; every other old-field equality remains checked.
+        assert cls.base_house['npcs'][0]['room_actor_index'] == 5
+        cls.base_house['npcs'][0]['room_actor_index'] = linker.NONE
 
     def program(self, identity):
         return next(p for p in self.room['sections']['Program']

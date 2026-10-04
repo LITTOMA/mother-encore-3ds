@@ -2,6 +2,8 @@ name: Verify Encore Native source and shared core
 
 on:
   push:
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
@@ -16,7 +18,7 @@ jobs:
   host:
     name: Host and sanitizers (${{ matrix.compiler }})
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 120
     strategy:
       fail-fast: false
       matrix:
@@ -30,6 +32,7 @@ jobs:
     env:
       CC: ${{ matrix.cc }}
       CXX: ${{ matrix.cxx }}
+      BUILD_JOBS: '2'
       GIT_OPTIONAL_LOCKS: '0'
     steps:
       - uses: actions/checkout@v4
@@ -53,7 +56,9 @@ jobs:
       - name: Regenerate checked resources and run the current shared-core tests
         run: make test
       - name: Run ASan and UBSan with the hosted runner's normal leak checking
-        run: make sanitize
+        # Python tools are not instrumented by this CMake sanitizer build.
+        # Their complete suite runs once in make test for each compiler.
+        run: make sanitize CTEST_ARGS="--label-exclude python_unit"
       - name: Retain failure logs and current build diagnostics
         if: always()
         uses: actions/upload-artifact@v4

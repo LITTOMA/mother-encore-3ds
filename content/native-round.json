@@ -77,8 +77,8 @@
     "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8"
   },
   "dependencies": {
-    "content/native-battle.json": "ff44b8e515dc6e3e61bfb4e0c47df2bcc063e951bf24e927e387aaa0c0d5e924",
-    "content/native-opening.json": "a466ae0f4cb80df3f76e86f52ce9ef69323e96135e9b39ce7ecba09af4f403a8"
+    "content/native-battle.json": "f12bcb6c3187c1a2b775d260b83ef20f60550ec300511e8c3ba0acd5530fa3e7",
+    "content/native-opening.json": "58dcad29cd293936cae4d48c756a2381bd9d4a78d6fd8b8d1e93ec4d2f60a250"
   },
   "skills": [
     {

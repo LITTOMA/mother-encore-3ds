@@ -1,0 +1,2262 @@
+{
+  "schema": 1,
+  "kind": "encore.pillow-source-bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml": "6e100c4ed8dc5cfd1fc6f88bc79ef9198d57c32721c5a9690d38e2e9c59c2f17",
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": "6cc6d9c3c8f7eb2517dd945369b272b315e344e0af5afd0721a6b485894d053a",
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": "0c07ab7c8f6c64708c9f41571429967827ba7ac82d8dc72a156aad84d17cd07a",
+    "Data/Dialogue/Podunk/minnie_run_tutorial.yaml": "e97378db5d1dcd911d0febf1397c8462949c5974f15beef0e176f00266847aa5",
+    "Data/Dialogue/Podunk/minnie_door_open.yaml": "6ceb4598c44bc85803fe05ca43d46cc2ab5e32cc5a8692318bc358431fbf3eff",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Graphics/Character Sprites/Npcs/1dir/pillow.png": "675fe31d2f8d9aa913d85f110a7d8d4cc9abdedde79e5fc7341f039bcf12d901"
+  },
+  "paths": {
+    "attack": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+    "leave": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml",
+    "door": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml",
+    "tutorial": "Data/Dialogue/Podunk/minnie_run_tutorial.yaml",
+    "open": "Data/Dialogue/Podunk/minnie_door_open.yaml"
+  },
+  "documents": {
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "minnie": "Objects/npc3",
+          "pillow": "Objects/pillow"
+        },
+        "actorsdir": {
+          "ninten": {
+            "x": 0,
+            "y": -1
+          },
+          "minnie": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "actorsmove": {
+          "ninten": {
+            "movement": [
+              {
+                "x": 464,
+                "y": 144
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "position"
+          },
+          "pillow": {
+            "movement": [
+              {
+                "x": 468,
+                "y": 81
+              },
+              {
+                "x": 480,
+                "y": 74
+              },
+              {
+                "x": 492,
+                "y": 81
+              },
+              {
+                "x": 500,
+                "y": 95
+              },
+              {
+                "x": 512,
+                "y": 102
+              },
+              {
+                "x": 524,
+                "y": 95
+              },
+              {
+                "x": 528,
+                "y": 88
+              },
+              {
+                "x": 524,
+                "y": 81
+              },
+              {
+                "x": 512,
+                "y": 74
+              },
+              {
+                "x": 500,
+                "y": 81
+              },
+              {
+                "x": 492,
+                "y": 95
+              },
+              {
+                "x": 480,
+                "y": 102
+              },
+              {
+                "x": 468,
+                "y": 95
+              },
+              {
+                "x": 464,
+                "y": 88
+              }
+            ],
+            "speed": 200,
+            "type": "position",
+            "loop": true
+          }
+        },
+        "teleportactors": {
+          "minnie": {
+            "x": 560,
+            "y": 80
+          },
+          "pillow": {
+            "x": 464,
+            "y": 80
+          }
+        },
+        "wait": 2,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1",
+        "actorsanim": {
+          "pillow": {
+            "anim": "Idle"
+          }
+        },
+        "actorsshake": {
+          "minnie": {
+            "x": 1,
+            "length": -1
+          }
+        }
+      },
+      "1": {
+        "actorsemote": {
+          "minnie": "surprise"
+        },
+        "actorsturn": {
+          "minnie": {
+            "y": 1,
+            "speed": 0.15
+          }
+        },
+        "changecam": "minnie",
+        "returncam": 1,
+        "wait": 1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "2",
+        "stopactorsloop": {
+          "minnie": null
+        }
+      },
+      "2": {
+        "talker": "minnie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PILLOW_ATTACK_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PILLOW_ATTACK_2",
+        "goto": "3"
+      },
+      "3": {
+        "name": "Minnie",
+        "actorsjump": {
+          "minnie": {
+            "height": 8,
+            "length": 0.2
+          }
+        },
+        "wait": 0.2,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4"
+      },
+      "4": {
+        "talker": "minnie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_PILLOW_ATTACK_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_PILLOW_ATTACK_4",
+        "actorsjump": {
+          "minnie": {
+            "height": 8,
+            "length": 0.4
+          }
+        },
+        "goto": "5",
+        "actorsshake": {
+          "minnie": {
+            "x": 1,
+            "length": 0.2
+          }
+        }
+      },
+      "5": {
+        "showbox": false,
+        "actorsmove": {
+          "pillow": {
+            "movement": [
+              {
+                "x": 464,
+                "y": 72
+              },
+              {
+                "x": 464,
+                "y": 56
+              }
+            ],
+            "speed": 160,
+            "type": "position"
+          }
+        },
+        "changecam": "pillow",
+        "returncam": 1,
+        "wait": 1.1,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "6",
+        "actorsshake": {
+          "pillow": {
+            "x": 1,
+            "length": 0.8
+          }
+        },
+        "stopactorsloop": {
+          "pillow": null
+        }
+      },
+      "6": {
+        "talker": "pillow",
+        "actorsmove": {
+          "pillow": {
+            "movement": [
+              {
+                "x": 464,
+                "y": 136
+              }
+            ],
+            "speed": 400,
+            "type": "position"
+          }
+        },
+        "setflags": "pillow_attack",
+        "startbattle": {
+          "battlers": [
+            {
+              "pillow": "pillow"
+            }
+          ],
+          "wincutscene": "Podunk/cutscenes/minnie_leave"
+        },
+        "wait": 0.25,
+        "autoadvance": true,
+        "caninput": false
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "minnie": "Objects/npc3"
+        },
+        "actorsjump": {
+          "minnie": {
+            "height": 8,
+            "times": 2
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": 1,
+            "y": -1,
+            "speed": 0.5
+          },
+          "minnie": {
+            "x": 0,
+            "y": 1
+          }
+        },
+        "wait": 0.8,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1"
+      },
+      "1": {
+        "talker": "minnie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_MINNIE_LEAVE_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_MINNIE_LEAVE_1",
+        "goto": "3"
+      },
+      "3": {
+        "showbox": false,
+        "actorsmove": {
+          "minnie": {
+            "movement": [
+              {
+                "x": 560,
+                "y": 144
+              },
+              {
+                "x": 488,
+                "y": 144
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "position"
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": 1,
+            "y": 0,
+            "speed": 0.5
+          }
+        },
+        "wait": 2.5,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "4"
+      },
+      "4": {
+        "name": "DIALOGUE_PODUNK_CUTSCENES_MINNIE_LEAVE_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_MINNIE_LEAVE_4",
+        "goto": "5"
+      },
+      "5": {
+        "showbox": false,
+        "actorsmove": {
+          "minnie": {
+            "movement": [
+              {
+                "wait": 0.3
+              },
+              {
+                "x": 488,
+                "y": 156
+              },
+              {
+                "x": 464,
+                "y": 156
+              },
+              {
+                "x": 464,
+                "y": 200
+              }
+            ],
+            "speed": 64,
+            "animation": "Walk",
+            "type": "position",
+            "queue": true
+          }
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": 0,
+            "y": 1,
+            "speed": 0.6
+          },
+          "minnie": {
+            "x": 0,
+            "y": 1,
+            "speed": 0.1
+          }
+        },
+        "wait": 2,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "6"
+      },
+      "6": {
+        "actorsdir": {
+          "minnie": {
+            "x": 1,
+            "y": 0
+          }
+        },
+        "teleportactors": {
+          "minnie": {
+            "x": 64,
+            "y": 370
+          }
+        },
+        "setflags": "minnie_leave"
+      }
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": {
+      "0": {
+        "actors": {
+          "ninten": "leader",
+          "minnie": "Objects/npc3"
+        },
+        "actorsdir": {
+          "minnie": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "actorsjump": {
+          "minnie": {
+            "height": 8,
+            "times": 2
+          }
+        },
+        "movecam": {
+          "x": 105
+        },
+        "wait": 0.8,
+        "autoadvance": true,
+        "caninput": false,
+        "goto": "1"
+      },
+      "1": {
+        "talker": "minnie",
+        "name": "DIALOGUE_PODUNK_CUTSCENES_MINNIE_DOOR_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_CUTSCENES_MINNIE_DOOR_1",
+        "actorsemote": {
+          "minnie": "sweat"
+        },
+        "actorsturn": {
+          "ninten": {
+            "x": -1,
+            "y": 0,
+            "speed": 0.3
+          }
+        },
+        "goto": "2"
+      },
+      "2": {
+        "showbox": false,
+        "actorsmove": {
+          "minnie": {
+            "movement": [
+              {
+                "x": -24,
+                "y": 0
+              }
+            ],
+            "speed": 32,
+            "animation": "Walk",
+            "type": "step"
+          }
+        },
+        "actorsturn": {
+          "minnie": {
+            "x": 1,
+            "y": 0,
+            "speed": 0.08,
+            "queue": true
+          }
+        },
+        "setflags": "minnie_door",
+        "wait": 1.4,
+        "autoadvance": true,
+        "caninput": false
+      }
+    },
+    "Data/Dialogue/Podunk/minnie_run_tutorial.yaml": {
+      "0": {
+        "name": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_0",
+        "options": {
+          "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_0": "3",
+          "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_1": "7",
+          "cancel": "7"
+        }
+      },
+      "3": {
+        "name": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_3",
+        "goto": "7"
+      },
+      "7": {
+        "name": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_7"
+      }
+    },
+    "Data/Dialogue/Podunk/minnie_door_open.yaml": {
+      "0": {
+        "name": "DIALOGUE_PODUNK_MINNIE_DOOR_OPEN_SPEAKER_Minnie",
+        "sound": "Kid",
+        "text": "DIALOGUE_PODUNK_MINNIE_DOOR_OPEN_0"
+      }
+    }
+  },
+  "facts": {
+    "turn": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "var turner = _actors\\[i\\][\\s\\S]*?var speed = (?P<value>[0-9.]+)",
+      "value": 0.08
+    },
+    "move": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "var cam_pos = global.currentCamera.global_position\\n\\s*var time = (?P<value>[0-9.]+)",
+      "value": 1.0
+    },
+    "jump": {
+      "source": "Scripts/UI/DialogueBox.gd",
+      "pattern": "var jumper = _actors\\[i\\][\\s\\S]*?var speed = (?P<value>[0-9.]+)",
+      "value": 0.2
+    },
+    "loop": {
+      "source": "Scripts/Main/actor.gd",
+      "pattern": "_looping = true\\n\\s*length = (?P<value>[0-9.]+)",
+      "value": 0.1
+    },
+    "repeat": {
+      "source": "Scripts/Main/actor.gd",
+      "pattern": "if times > 1:[\\s\\S]*?create_timer\\((?P<value>[0-9.]+)\\)",
+      "value": 0.1
+    }
+  },
+  "identities": {
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "minnie"
+      ],
+      "value": "Minnie",
+      "category": "actor"
+    },
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+      "path": [
+        "0",
+        "actors",
+        "pillow"
+      ],
+      "value": "Pillow",
+      "category": "actor"
+    },
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::clip::0": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+      "path": [
+        "0",
+        "actorsanim",
+        "pillow",
+        "anim"
+      ],
+      "value": "Pillow Idle",
+      "category": "clip"
+    },
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::clip::1": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+      "path": [
+        "1",
+        "actorsemote",
+        "minnie"
+      ],
+      "value": "surprise",
+      "category": "clip"
+    },
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::text::2": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+      "path": [
+        "2",
+        "text"
+      ],
+      "value": 39,
+      "category": "text"
+    },
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::text::4": {
+      "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml",
+      "path": [
+        "4",
+        "text"
+      ],
+      "value": 40,
+      "category": "text"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml",
+      "path": [
+        "0",
+        "actors",
+        "minnie"
+      ],
+      "value": "Minnie",
+      "category": "actor"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::text::1": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml",
+      "path": [
+        "1",
+        "text"
+      ],
+      "value": 41,
+      "category": "text"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::text::4": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml",
+      "path": [
+        "4",
+        "text"
+      ],
+      "value": 42,
+      "category": "text"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::ninten": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml",
+      "path": [
+        "0",
+        "actors",
+        "ninten"
+      ],
+      "value": "Ninten",
+      "category": "actor"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml",
+      "path": [
+        "0",
+        "actors",
+        "minnie"
+      ],
+      "value": "Minnie",
+      "category": "actor"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::text::1": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml",
+      "path": [
+        "1",
+        "text"
+      ],
+      "value": 43,
+      "category": "text"
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::clip::1": {
+      "source": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml",
+      "path": [
+        "1",
+        "actorsemote",
+        "minnie"
+      ],
+      "value": "sweat",
+      "category": "clip"
+    }
+  },
+  "linears": {
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml": {
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 0,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "0",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "TeleportActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "teleportactors",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "0",
+                "teleportactors",
+                "minnie",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "TeleportActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "teleportactors",
+                "pillow",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "0",
+                "teleportactors",
+                "pillow",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "SetActorDirection",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::ninten"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "actorsdir",
+                "ninten",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "0",
+                "actorsdir",
+                "ninten",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "SetActorDirection",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "actorsdir",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "0",
+                "actorsdir",
+                "minnie",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::ninten"
+          },
+          "path": {
+            "$source": [
+              "0",
+              "actorsmove",
+              "ninten"
+            ]
+          }
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          },
+          "path": {
+            "$source": [
+              "0",
+              "actorsmove",
+              "pillow"
+            ]
+          }
+        },
+        {
+          "kind": "ShakeActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "actorsshake",
+                "minnie",
+                "x"
+              ]
+            },
+            0
+          ],
+          "duration": {
+            "$source": [
+              "0",
+              "actorsshake",
+              "minnie",
+              "length"
+            ]
+          }
+        },
+        {
+          "kind": "AnimateActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          },
+          "clip": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::clip::0"
+          }
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 1,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "1",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "StopActorLoop",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "vector": [
+            0,
+            {
+              "$source": [
+                "1",
+                "actorsturn",
+                "minnie",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$source": [
+              "1",
+              "actorsturn",
+              "minnie",
+              "speed"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "EmoteActor",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "clip": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::clip::1"
+          }
+        },
+        {
+          "kind": "ChangeCamera",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 1,
+          "actor": "None"
+        },
+        {
+          "kind": "ReturnCamera",
+          "phrase": 1,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "1",
+              "returncam"
+            ]
+          }
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 1,
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "dialogue_id": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::text::2"
+          },
+          "flags": 0
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 2,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 3,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "3",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "JumpActor",
+          "phrase": 3,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "value": {
+            "$source": [
+              "3",
+              "actorsjump",
+              "minnie",
+              "height"
+            ]
+          },
+          "duration": {
+            "$source": [
+              "3",
+              "actorsjump",
+              "minnie",
+              "length"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 3,
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 4,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "dialogue_id": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::text::4"
+          },
+          "flags": 0
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 4,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "ShakeActor",
+          "phrase": 4,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "4",
+                "actorsshake",
+                "minnie",
+                "x"
+              ]
+            },
+            0
+          ],
+          "duration": {
+            "$source": [
+              "4",
+              "actorsshake",
+              "minnie",
+              "length"
+            ]
+          }
+        },
+        {
+          "kind": "JumpActor",
+          "phrase": 4,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          },
+          "value": {
+            "$source": [
+              "4",
+              "actorsjump",
+              "minnie",
+              "height"
+            ]
+          },
+          "duration": {
+            "$source": [
+              "4",
+              "actorsjump",
+              "minnie",
+              "length"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 4,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 5,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "5",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "StopActorLoop",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          },
+          "path": {
+            "$source": [
+              "5",
+              "actorsmove",
+              "pillow"
+            ]
+          }
+        },
+        {
+          "kind": "ShakeActor",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          },
+          "vector": [
+            {
+              "$source": [
+                "5",
+                "actorsshake",
+                "pillow",
+                "x"
+              ]
+            },
+            0
+          ],
+          "duration": {
+            "$source": [
+              "5",
+              "actorsshake",
+              "pillow",
+              "length"
+            ]
+          }
+        },
+        {
+          "kind": "ChangeCamera",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 5,
+          "actor": "None"
+        },
+        {
+          "kind": "ReturnCamera",
+          "phrase": 5,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "5",
+              "returncam"
+            ]
+          }
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 5,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 6,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "6",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          },
+          "path": {
+            "$source": [
+              "6",
+              "actorsmove",
+              "pillow"
+            ]
+          }
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 6,
+          "actor": "None",
+          "flag": {
+            "$source": [
+              "6",
+              "setflags"
+            ]
+          },
+          "value": 1
+        },
+        {
+          "kind": "QueueBattle",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 6,
+          "actor": "None"
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 6,
+          "actor": "None"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "ReleaseBattleActor",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 6,
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 6,
+          "actor": "None",
+          "duration": 0
+        },
+        {
+          "kind": "RequestBattle",
+          "phrase": 6,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml::actor::pillow"
+          }
+        }
+      ]
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": {
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 0,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "0",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::ninten"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "actorsturn",
+                "ninten",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "0",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$source": [
+              "0",
+              "actorsturn",
+              "ninten",
+              "speed"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "actorsturn",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "0",
+                "actorsturn",
+                "minnie",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$fact": "turn"
+          },
+          "flags": 0
+        },
+        {
+          "kind": "JumpActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "value": {
+            "$source": [
+              "0",
+              "actorsjump",
+              "minnie",
+              "height"
+            ]
+          },
+          "duration": {
+            "$fact": "jump"
+          },
+          "flags": 1
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "dialogue_id": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::text::1"
+          },
+          "flags": 0
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 2,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "3",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "path": {
+            "$source": [
+              "3",
+              "actorsmove",
+              "minnie"
+            ]
+          }
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::ninten"
+          },
+          "vector": [
+            {
+              "$source": [
+                "3",
+                "actorsturn",
+                "ninten",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "3",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$source": [
+              "3",
+              "actorsturn",
+              "ninten",
+              "speed"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 2,
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 3,
+          "actor": "None",
+          "dialogue_id": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::text::4"
+          },
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 3,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 4,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "5",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 4,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "path": {
+            "$source": [
+              "5",
+              "actorsmove",
+              "minnie"
+            ]
+          }
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 4,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::ninten"
+          },
+          "vector": [
+            {
+              "$source": [
+                "5",
+                "actorsturn",
+                "ninten",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "5",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$source": [
+              "5",
+              "actorsturn",
+              "ninten",
+              "speed"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 4,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "5",
+                "actorsturn",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "5",
+                "actorsturn",
+                "minnie",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$source": [
+              "5",
+              "actorsturn",
+              "minnie",
+              "speed"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 4,
+          "actor": "None"
+        },
+        {
+          "kind": "TeleportActor",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "6",
+                "teleportactors",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "6",
+                "teleportactors",
+                "minnie",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "SetActorDirection",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "6",
+                "actorsdir",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "6",
+                "actorsdir",
+                "minnie",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 5,
+          "actor": "None",
+          "flag": {
+            "$source": [
+              "6",
+              "setflags"
+            ]
+          },
+          "value": 1
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 5,
+          "actor": "None"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 5,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 5,
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 5,
+          "actor": "None",
+          "duration": {
+            "$argument": "end_duration"
+          }
+        }
+      ]
+    },
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": {
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 0,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "0",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "SetActorDirection",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "actorsdir",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "0",
+                "actorsdir",
+                "minnie",
+                "y"
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "JumpActor",
+          "phrase": 0,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          },
+          "value": {
+            "$source": [
+              "0",
+              "actorsjump",
+              "minnie",
+              "height"
+            ]
+          },
+          "duration": {
+            "$fact": "jump"
+          },
+          "flags": 1
+        },
+        {
+          "kind": "MoveCamera",
+          "phrase": 0,
+          "actor": "None",
+          "vector": [
+            {
+              "$source": [
+                "0",
+                "movecam",
+                "x"
+              ]
+            },
+            0
+          ],
+          "duration": {
+            "$fact": "move"
+          },
+          "flags": 1,
+          "target_index": 1
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 0,
+          "actor": "None"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          },
+          "dialogue_id": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::text::1"
+          },
+          "flags": 0
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::ninten"
+          },
+          "vector": [
+            {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "1",
+                "actorsturn",
+                "ninten",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$source": [
+              "1",
+              "actorsturn",
+              "ninten",
+              "speed"
+            ]
+          },
+          "flags": 0
+        },
+        {
+          "kind": "EmoteActor",
+          "phrase": 1,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          },
+          "clip": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::clip::1"
+          }
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "actor": "None"
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 2,
+          "actor": "None",
+          "duration": {
+            "$source": [
+              "2",
+              "wait"
+            ]
+          }
+        },
+        {
+          "kind": "MoveActorPath",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          },
+          "path": {
+            "$source": [
+              "2",
+              "actorsmove",
+              "minnie"
+            ]
+          }
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          },
+          "vector": [
+            {
+              "$source": [
+                "2",
+                "actorsturn",
+                "minnie",
+                "x"
+              ]
+            },
+            {
+              "$source": [
+                "2",
+                "actorsturn",
+                "minnie",
+                "y"
+              ]
+            }
+          ],
+          "duration": {
+            "$source": [
+              "2",
+              "actorsturn",
+              "minnie",
+              "speed"
+            ]
+          },
+          "flags": 1
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 2,
+          "actor": "None",
+          "flag": {
+            "$source": [
+              "2",
+              "setflags"
+            ]
+          },
+          "value": 1
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 2,
+          "actor": "None"
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 2,
+          "actor": "None"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::ninten"
+          }
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 2,
+          "actor": {
+            "$identity": "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml::actor::minnie"
+          }
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 2,
+          "actor": "None"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 2,
+          "actor": "None",
+          "duration": {
+            "$argument": "end_duration"
+          }
+        }
+      ]
+    }
+  },
+  "tutorial": {
+    "identity": "Podunk/minnie_run_tutorial",
+    "commands": [
+      {
+        "kind": "BeginCutscene",
+        "phrase": 0,
+        "actor": "None"
+      },
+      {
+        "kind": "ShowDialogue",
+        "phrase": 0,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Podunk/minnie_run_tutorial.yaml::0",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitChoices",
+        "phrase": 0,
+        "actor": "None",
+        "choice_group": "Podunk/minnie_run_tutorial::0"
+      },
+      {
+        "kind": "ShowDialogue",
+        "phrase": 1,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Podunk/minnie_run_tutorial.yaml::3",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "phrase": 1,
+        "actor": "None"
+      },
+      {
+        "kind": "Jump",
+        "phrase": 1,
+        "actor": "None",
+        "target_label": "7",
+        "target_pc": 6
+      },
+      {
+        "kind": "ShowDialogue",
+        "phrase": 2,
+        "actor": "None",
+        "dialogue_key": "Data/Dialogue/Podunk/minnie_run_tutorial.yaml::7",
+        "flags": 1
+      },
+      {
+        "kind": "AwaitDialogue",
+        "phrase": 2,
+        "actor": "None"
+      },
+      {
+        "kind": "SetTalker",
+        "phrase": 2,
+        "actor": "None"
+      },
+      {
+        "kind": "CutsceneEnded",
+        "phrase": 2,
+        "actor": "None"
+      },
+      {
+        "kind": "DialogueDone",
+        "phrase": 2,
+        "actor": "None",
+        "duration": {
+          "$argument": "end_duration"
+        }
+      }
+    ],
+    "source_labels": [
+      "0",
+      "3",
+      "7"
+    ],
+    "choice_groups": [
+      {
+        "id": "Podunk/minnie_run_tutorial::0",
+        "program_identity": "Podunk/minnie_run_tutorial",
+        "source_label": "0",
+        "program_command_count": 11,
+        "initial_selection": 0,
+        "cancel_target_label": "7",
+        "cancel_target_pc": 6,
+        "options": [
+          {
+            "translation_key": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_0",
+            "text": {
+              "$translation": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_0"
+            },
+            "target_label": "3",
+            "target_pc": 3
+          },
+          {
+            "translation_key": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_1",
+            "text": {
+              "$translation": "DIALOGUE_PODUNK_MINNIE_RUN_TUTORIAL_2-OPT_1"
+            },
+            "target_label": "7",
+            "target_pc": 6
+          }
+        ]
+      }
+    ]
+  },
+  "append": {
+    "prefix_actors": 6,
+    "prefix_battles": 2,
+    "actors": {
+      "None": 65535,
+      "Ninten": 0,
+      "Minnie": 4,
+      "Pillow": 6
+    },
+    "template_profile_index": 2,
+    "profile_id": 7,
+    "profile_index": 6,
+    "actor_id": 7,
+    "actor_index": 6,
+    "binding_kind": 2,
+    "actor_flags": 1,
+    "direction": [
+      0,
+      1
+    ],
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "node": "Objects/pillow",
+    "sprite": "Npcs/1dir/pillow",
+    "name": "pillow",
+    "world_manifest": "romfs/pillow-preview/world-source.json",
+    "attack_receipt": "reports/pillow-sequence/pillow_attack-native.json",
+    "template_receipt": "reports/doll-sequence/native-parser-animation.json",
+    "door_receipt": "reports/pillow-sequence/minnie_door-native.json",
+    "yaml_slot": 3,
+    "animation_slot": 2,
+    "clip_alias": "Pillow Idle",
+    "template_clip": "Doll Idle",
+    "emote": "sweat",
+    "emote_actor": "Minnie",
+    "battle_path": "data/pillow-entry.encbattle",
+    "battle_id": 3,
+    "battle_index": 2,
+    "battle_template": 1,
+    "flag_remove": 4,
+    "battle_enemy": "pillow",
+    "choices_index": 1,
+    "choices_id": "Podunk/minnie_run_tutorial::0",
+    "motion": "Walk",
+    "motion_id": 4,
+    "dialogue_first_id": 39,
+    "text_tables": [
+      "Translations/TranslatedText/dialogue_Podunk - sheet.csv",
+      "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv"
+    ],
+    "voice_pattern": "Audio/Sound effects/text/{sound}.mp3",
+    "dialogue_script": "Scripts/UI/DialogueBox.gd",
+    "actor_script": "Scripts/Main/actor.gd",
+    "idle_animation": "Idle",
+    "source_emotes": [
+      "surprise",
+      "sweat"
+    ],
+    "native_receipts": [
+      {
+        "role": "attack",
+        "emote": "surprise",
+        "path": "reports/pillow-sequence/pillow_attack-native.json"
+      },
+      {
+        "role": "leave",
+        "emote": "surprise",
+        "path": "reports/pillow-sequence/minnie_leave-native.json"
+      },
+      {
+        "role": "door",
+        "emote": "sweat",
+        "path": "reports/pillow-sequence/minnie_door-native.json"
+      }
+    ],
+    "catalog_id": 258
+  }
+}

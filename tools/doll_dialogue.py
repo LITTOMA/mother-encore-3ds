@@ -104,60 +104,10 @@ def receipt(ex):
     for path,parsed in zip([SOURCE,*ANIMATIONS],data['yaml']):require(yaml.safe_load(ex.text(path))==parsed,'Doll native/Python parser mismatch: '+path)
     return data
 
-def compile_dialogue(doc):
-    """Only audited Doll mechanisms; emits fixed DialogueBox handler order."""
-    require(isinstance(doc,dict)and list(doc)==[str(i)for i in range(7)],'Doll phrase graph')
-    result=[]
-    def emit(kind,phrase=0,actor='None',**payload):result.append(dict(kind=kind,phrase=phrase,actor=actor,**payload))
-    emit('BeginCutscene')
-    allowed={'actors','actorsdir','actorsmove','teleportactors','changecam','returncam','wait','autoadvance','caninput','goto','actorsanim','talker','name','sound','text','actorsemote','actorsturn','showbox','actorsjump','actorsshake','objectsfunction','setflags','startbattle'}
-    for i in range(7):
-        p=doc[str(i)];require(not(set(p)-allowed),'Unknown Doll phrase field')
-        require(p.get('goto')==(str(i+1)if i<6 else None),'Doll control flow')
-        if 'text'in p:
-            require(i in(2,4)and p['talker']=='mimmie'and p['sound']=='Kid'and 'wait'not in p,'Doll text mode')
-            emit('ShowDialogue',i,'Mimmie',dialogue_id=2 if i==2 else 3)
-        else:require(p.get('autoadvance')is True and p.get('caninput')is False and 'wait'in p,'Doll wait mode')
-        if 'actors'in p:
-            require(i==0 and list(p['actors'].items())==[('ninten','leader'),('doll','Objects/npcdoll'),('mimmie','Objects/npc2')],'Doll bindings/order')
-            for actor in p['actors']:
-                emit('BindActor',i,actor.title());emit('ActorPersistent',i,actor.title())
-            emit('YieldIdle',i)
-        if 'wait'in p:emit('StartWait',i,duration=p['wait'])
-        if 'showbox'in p:require(p['showbox']is False and 'text'not in p,'Doll showbox mode')
-        if 'objectsfunction'in p:
-            require(p['objectsfunction']=={'Room Shaker':'stop_shake'},'Doll object method');emit('CallObjectDeferred',i,binding=2)
-        if 'talker'in p:emit('SetTalker',i,p['talker'].title())
-        for actor,v in p.get('teleportactors',{}).items():
-            require(set(v)=={'x','y'},'Doll teleport fields');emit('TeleportActor',i,actor.title(),vector=[v['x'],v['y']])
-        for actor,v in p.get('actorsdir',{}).items():
-            require(set(v)=={'x','y'},'Doll direction fields');emit('SetActorDirection',i,actor.title(),vector=[v['x'],v['y']])
-        for actor,v in p.get('actorsmove',{}).items():
-            require(set(v)>={'movement','speed','type'}and not(set(v)-{'movement','speed','type','animation','moonwalk'}),'Doll move fields')
-            require(v['type']in('step','position')and v.get('animation','')in('','Walk')and type(v.get('moonwalk',False))is bool,'Doll move mode')
-            for entry in v['movement']:require(set(entry)in({'x','y'},{'wait'}),'Doll move entry')
-            emit('MoveActorPath',i,actor.title(),path=v)
-        for actor,v in p.get('actorsturn',{}).items():
-            require(set(v)=={'x','y','speed'},'Doll turn fields');emit('TurnActor',i,actor.title(),vector=[v['x'],v['y']],duration=v['speed'])
-        for actor,v in p.get('actorsshake',{}).items():
-            require(set(v)=={'x','length'},'Doll shake fields');emit('ShakeActor',i,actor.title(),vector=[v['x'],0],duration=v['length'])
-        for actor,v in p.get('actorsjump',{}).items():
-            require(set(v)=={'height','length'},'Doll jump fields');emit('JumpActor',i,actor.title(),value=v['height'],duration=v['length'])
-        for actor,v in p.get('actorsanim',{}).items():
-            require(actor=='doll'and v=={'anim':'Float'},'Doll animation');emit('AnimateActor',i,'Doll',clip='Doll Float')
-        for actor,v in p.get('actorsemote',{}).items():
-            require(actor=='mimmie'and v=='exclamation','Doll emote');emit('EmoteActor',i,'Mimmie',clip=v)
-        if 'changecam'in p:emit('ChangeCamera',i,p['changecam'].title());emit('YieldIdle',i)
-        if 'returncam'in p:emit('ReturnCamera',i,duration=p['returncam'])
-        if 'setflags'in p:
-            require(p['setflags']=='doll_attack','Doll flag');emit('SetFlag',i,flag=p['setflags'],value=1)
-        if 'startbattle'in p:
-            require(p['startbattle']=={'battlers':[{'doll':'doll'}],'actorskeep':{'doll':True},'wincutscene':'Podunk/cutscenes/doll_defeated'},'Doll battle specification');emit('QueueBattle',i,'Doll')
-        emit('AwaitDialogue'if 'text'in p else'AwaitTimer',i)
-    emit('StopInteraction',6,'Doll');emit('SetTalker',6)
-    emit('RestoreActor',6,'Ninten');emit('ReleaseBattleActor',6,'Doll');emit('RestoreActor',6,'Mimmie')
-    emit('CutsceneEnded',6);emit('DialogueDone',6);emit('RequestBattle',6,'Doll')
-    return result
+def compile_dialogue(doc,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.execute('doll',doc,root=root)
+
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--godot',type=Path,required=True);a=parser.parse_args()

@@ -1,4 +1,5 @@
 #pragma once
+#include "encore/crc32.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <string>
@@ -29,7 +30,6 @@ struct Content {
     bool load_file(const char* path, std::string& error);
     const std::string& text(uint32_t index) const { return strings.at(index); }
 };
-uint32_t crc32(const uint8_t* bytes, size_t size);
 bool read_file(const char* path, std::vector<uint8_t>& out, size_t limit, std::string& error);
 bool write_file_atomic(const char* path, const std::vector<uint8_t>& data, std::string& error);
 }

@@ -22,11 +22,23 @@ from tools.doll_postwin import return_duration
 REPORT = 'reports/dad-record/command-graph.json'
 OPCODES = {'Jump': 36, 'BranchFlag': 37, 'BranchLeader': 38,
            'AwaitChoices': 39, 'OpenSave': 40, 'AwaitSubmenu': 41}
-CHOICE_ID = 'Reusable/dad_normal::2'
+def source_binding(doc=None, root=ROOT):
+    from tools.programme_lowering_recipe import load, document
+    recipe = load(root)
+    source = recipe['normal_source']
+    if doc is not None:
+        document(recipe, source, doc)
+    metadata = recipe['normal_metadata']
+    nodes = {row['label']: row for row in metadata['nodes']}
+    choices = [row for row in metadata['nodes'] if 'choices' in row]
+    require(len(choices) == 1, 'Unsupported Dad-normal choice topology')
+    choice = choices[0]
+    return metadata, nodes, choice, metadata['identity'] + '::' + choice['label']
 
 
-def compile_graph(doc, end_duration):
+def compile_graph(doc, end_duration, root=ROOT):
     validate_document(NORMAL, doc)
+    binding, nodes, choice, choice_id = source_binding(doc, root)
     require(type(end_duration) in (int, float) and math.isfinite(end_duration) and end_duration > 0,
             'Dad-normal camera return duration')
     commands, labels, noops = [], {}, []
@@ -34,34 +46,39 @@ def compile_graph(doc, end_duration):
     def emit(kind, label, **fields):
         commands.append(dict(kind=kind, source_label=label, phrase=phase_labels.index(label),
                              actor='None', **fields))
-    emit('BeginCutscene', '0')
+    emit('BeginCutscene', binding['entry'])
     for label, phrase in doc.items():
         labels[label] = len(commands)
         if phrase.get('text'):
             emit('ShowDialogue', label, dialogue_key=NORMAL + '::' + label, flags=1)
         if 'unsetflags' in phrase:
             flag = phrase['unsetflags']
-            if flag == 'money_earned':
+            reviewed_noop = nodes[label].get('reviewed_noop')
+            if reviewed_noop is not None:
                 # This one exact source spelling was reviewed against _init_flags
                 # and set_flag. Never turn this into an unknown-flag ignore path.
-                require(label == '2', 'Unknown Dad-normal no-op location')
+                require(flag == reviewed_noop['flag'] and reviewed_noop['source_command'] == 'unsetflags',
+                        'Unknown Dad-normal no-op effect')
                 noops.append(dict(source_label=label, command='unsetflags', value=flag,
                                   before_pc=len(commands), mutation=False, signal=False))
             else:
-                require(label == '4' and flag == 'saved', 'Unknown Dad-normal flag effect')
+                effects = [row for row in nodes[label].get('entry', []) if row['kind'] == 'SetFlag']
+                require(len(effects) == 1 and flag == effects[0]['flag'] and effects[0]['value'] is False,
+                        'Unknown Dad-normal flag effect')
                 # Empty text first shows the already visible box; showbox:false
                 # immediately clears/hides it, disabling physics and input.
                 emit('HideDialogue', label, flags=1)
                 emit('SetFlag', label, flag=flag, value=0)
         if 'save' in phrase:
-            require(label == '4' and phrase['save'] is True and phrase['text'] == ''
+            require(nodes[label].get('suspend_until') == 'submenu_callback' and phrase['save'] is True and phrase['text'] == ''
                     and not phrase['showbox'] and not phrase['caninput'], 'Unknown save suspension')
             emit('OpenSave', label)
             emit('AwaitSubmenu', label)
         elif 'options' in phrase:
             # This is a text-completion gate, not an ordinary accept gate. The
             # scheduler opens choices only after every source WAIT is consumed.
-            emit('AwaitChoices', label, choice_group=CHOICE_ID)
+            require(label == choice['label'], 'Unknown Dad-normal choices')
+            emit('AwaitChoices', label, choice_group=choice_id)
         elif phrase.get('text'):
             emit('AwaitDialogue', label, flags=0)
         if 'if' in phrase:
@@ -81,20 +98,23 @@ def compile_graph(doc, end_duration):
     for command in commands:
         if 'target_label' in command:
             command['target_pc'] = labels[command['target_label']]
-    options = doc['2']['options']
-    choices = dict(id=CHOICE_ID, program_identity='Reusable/dad_normal', source_label='2',
-                   program_command_count=len(commands), initial_selection=0,
+    options = doc[choice['label']]['options']
+    choices = dict(id=choice_id, program_identity=binding['identity'], source_label=choice['label'],
+                   program_command_count=len(commands), initial_selection=choice['initial_selection'],
                    options=[dict(translation_key=k, target_label=v, target_pc=labels[v])
                             for k, v in options.items() if k != 'cancel'],
                    cancel_target_label=options['cancel'], cancel_target_pc=labels[options['cancel']])
-    result = dict(identity='Reusable/dad_normal', source_path=NORMAL, source_labels=phase_labels,
+    result = dict(identity=binding['identity'], source_path=binding['source_path'], source_labels=phase_labels,
                   entry_pc=0, label_to_pc=labels, commands=commands, choice_groups=[choices],
-                  reviewed_noops=noops, clears_phone_location_on_finish=True)
-    validate_graph(result)
+                  reviewed_noops=noops, clears_phone_location_on_finish=binding['clears_phone_location_on_finish'])
+    validate_graph(result, root)
     return result
 
 
-def validate_graph(graph):
+def validate_graph(graph, root=ROOT):
+    binding, nodes, choice, choice_id = source_binding(root=root)
+    require(graph['identity'] == binding['identity'] and graph['source_path'] == binding['source_path']
+            and graph['source_labels'] == list(nodes), 'Unknown Dad-normal source binding')
     commands = graph['commands']
     labels = graph['label_to_pc']
     require(len(commands) > 0 and graph['entry_pc'] == 0, 'Dad-normal entry')
@@ -111,14 +131,20 @@ def validate_graph(graph):
             require(c.get('target_label') in labels and c.get('target_pc') == labels[c['target_label']],
                     'Dad-normal branch target must be a source-label entry')
         if c['kind'] == 'BranchFlag':
-            require(c.get('flag') in ('earned_cash', 'saved') and type(c.get('value')) is int
-                    and c['value'] in (0, 1), 'Unknown Dad-normal flag test')
+            branch = nodes[c['source_label']].get('branch', {})
+            require(branch.get('kind') == 'FlagEquals' and c.get('flag') == branch['flag']
+                    and type(c.get('value')) is int and c['value'] == int(branch['value']),
+                    'Unknown Dad-normal flag test')
         if c['kind'] == 'BranchLeader':
-            require(c.get('leader') in ('lloyd', 'ana', 'teddy', 'pippi'), 'Unknown Dad-normal leader')
+            branch = nodes[c['source_label']].get('branch', {})
+            require(branch.get('kind') == 'LeaderEquals' and c.get('leader') == branch['value'],
+                    'Unknown Dad-normal leader')
     require(len(graph['choice_groups']) == 1, 'Dad-normal choice group count')
     group = graph['choice_groups'][0]
-    require(group['program_command_count'] == len(commands) and len(group['options']) == 2
-            and group['initial_selection'] == 0, 'Dad-normal choice extent/default')
+    require(group['id'] == choice_id and group['program_identity'] == binding['identity']
+            and group['source_label'] == choice['label'] and group['program_command_count'] == len(commands)
+            and len(group['options']) == len(choice['choices']) and group['initial_selection'] == choice['initial_selection'],
+            'Dad-normal choice extent/default')
     for row in group['options']:
         require(row['target_label'] in labels and row['target_pc'] == labels[row['target_label']],
                 'Dad-normal choice target outside program')
@@ -135,7 +161,7 @@ def build(root=ROOT):
     stage = json.loads((root / 'content/phone-stage/dialogue.json').read_text())
     require(stage == phone_build(root), 'Stale/unreviewed phone source stage')
     ex, docs = load_receipt(root)
-    graph = compile_graph(docs[NORMAL], return_duration(ex.text('Scripts/UI/DialogueBox.gd')))
+    graph = compile_graph(docs[NORMAL], return_duration(ex.text('Scripts/UI/DialogueBox.gd')), root)
     texts = [copy.deepcopy(t) for t in stage['texts'] if t['source_path'] == NORMAL]
     kinds = {'Literal': 1, 'PlayerName': 2, 'HintStart': 3, 'HintEnd': 4,
              'EarnedCash': 5, 'BankCash': 6, 'CurrentCash': 7, 'SourceDelay': 8}

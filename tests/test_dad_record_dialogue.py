@@ -98,5 +98,18 @@ class DadRecord(unittest.TestCase):
         g = copy.deepcopy(self.graph); g['commands'][0]['kind'] = 'PretendSuccess'
         with self.assertRaises(ValueError): validate_graph(g)
 
+    def test_graph_must_use_reviewed_source_binding(self):
+        for key in ('identity', 'source_path'):
+            g = copy.deepcopy(self.graph); g[key] = 'unknown'
+            with self.assertRaises(ValueError): validate_graph(g)
+        for key, value in (('id', 'unknown::2'), ('source_label', 'unknown'),
+                           ('initial_selection', 1)):
+            g = copy.deepcopy(self.graph); g['choice_groups'][0][key] = value
+            with self.assertRaises(ValueError): validate_graph(g)
+        for kind, field in (('BranchFlag', 'flag'), ('BranchLeader', 'leader')):
+            g = copy.deepcopy(self.graph)
+            next(c for c in g['commands'] if c['kind'] == kind)[field] = 'unknown'
+            with self.assertRaises(ValueError): validate_graph(g)
+
 
 if __name__ == '__main__': unittest.main()

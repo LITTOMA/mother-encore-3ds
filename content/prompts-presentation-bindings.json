@@ -1,0 +1,1666 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Scripts/UI/NamingScreen/ButtonPrompts.gd": "b0a1398101a8151b51ac6418dafa9d86b8eb4074ed47f3ab136eaee515a86c89",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "bindings": {
+    "source_0": "Fonts/BottleRocket.ttf",
+    "source_1": "Graphics/UI/select_arrow.png",
+    "source_2": "Nodes/Ui/ButtonPrompt.tscn",
+    "source_3": "Scripts/UI/Button Prompt.gd",
+    "source_4": "Scripts/Main/party/Player.gd",
+    "source_5": "Scripts/global/globalData.gd",
+    "source_6": "Maps/podunk/Nintens House.tscn",
+    "source_7": "Nodes/Reusables/npc.tscn",
+    "source_8": "Nodes/Reusables/phone.tscn",
+    "source_9": "Nodes/Overworld/Objects/Openable Door.tscn",
+    "source_10": "Scripts/Main/Openable Door.gd",
+    "source_11": "Maps/Naming screen.tscn",
+    "source_12": "Scripts/UI/NamingScreen/ButtonPrompts.gd",
+    "source_13": "Nodes/Reusables/Player.tscn",
+    "source_14": "LICENSE",
+    "source_15": "Fonts/BottleRocket.tres",
+    "source_16": "Graphics/Objects/Common/Present Box.png",
+    "source_17": "Graphics/Character Sprites/Npcs/4dir/woman.png",
+    "source_18": "project.godot",
+    "node_0": "HBoxContainer",
+    "node_1": "HBoxContainer/Label",
+    "node_2": "Arrow",
+    "node_3": "interact/ButtonPrompt",
+    "node_4": "interact/ButtonPrompt",
+    "node_5": "interact",
+    "node_6": "interact/ButtonPrompt",
+    "node_7": ".",
+    "preview_rows": [
+      [
+        "Present",
+        "Graphics/Objects/Common/Present Box.png",
+        1
+      ],
+      [
+        "NPC",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png",
+        2
+      ]
+    ],
+    "preview_root": "CanvasLayer/ButtonPrompts/",
+    "preview_prompt_suffix": "/ButtonPrompt",
+    "choice_masks": [
+      3,
+      1,
+      2,
+      0
+    ],
+    "choices": [
+      "Both",
+      "Objects",
+      "NPCs",
+      "None"
+    ],
+    "house_target_rows": [
+      [
+        1,
+        "npcs",
+        2
+      ],
+      [
+        2,
+        "openable_doors",
+        1
+      ]
+    ],
+    "phone_kind": 3,
+    "phone_category": 1,
+    "door_origin": 32.0,
+    "color": 4294967295,
+    "resource_root": "house-button-prompts-preview/",
+    "resource_suffix": ".t3x",
+    "accept_name": "accept",
+    "label": "A",
+    "arrow_rotation": 90
+  },
+  "checks": [
+    {
+      "binding": [
+        "source_0"
+      ],
+      "selector": [
+        "source_path",
+        "Fonts/BottleRocket.ttf"
+      ]
+    },
+    {
+      "binding": [
+        "source_1"
+      ],
+      "selector": [
+        "source_path",
+        "Graphics/UI/select_arrow.png"
+      ]
+    },
+    {
+      "binding": [
+        "source_2"
+      ],
+      "selector": [
+        "source_path",
+        "Nodes/Ui/ButtonPrompt.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_3"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/UI/Button Prompt.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_4"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/Main/party/Player.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_5"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/global/globalData.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_6"
+      ],
+      "selector": [
+        "source_path",
+        "Maps/podunk/Nintens House.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_7"
+      ],
+      "selector": [
+        "source_path",
+        "Nodes/Reusables/npc.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_8"
+      ],
+      "selector": [
+        "source_path",
+        "Nodes/Reusables/phone.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_9"
+      ],
+      "selector": [
+        "source_path",
+        "Nodes/Overworld/Objects/Openable Door.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_10"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/Main/Openable Door.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_11"
+      ],
+      "selector": [
+        "source_path",
+        "Maps/Naming screen.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_12"
+      ],
+      "selector": [
+        "source_path",
+        "Scripts/UI/NamingScreen/ButtonPrompts.gd"
+      ]
+    },
+    {
+      "binding": [
+        "source_13"
+      ],
+      "selector": [
+        "source_path",
+        "Nodes/Reusables/Player.tscn"
+      ]
+    },
+    {
+      "binding": [
+        "source_14"
+      ],
+      "selector": [
+        "source_path",
+        "LICENSE"
+      ]
+    },
+    {
+      "binding": [
+        "source_15"
+      ],
+      "selector": [
+        "source_path",
+        "Fonts/BottleRocket.tres"
+      ]
+    },
+    {
+      "binding": [
+        "source_16"
+      ],
+      "selector": [
+        "source_path",
+        "Graphics/Objects/Common/Present Box.png"
+      ]
+    },
+    {
+      "binding": [
+        "source_17"
+      ],
+      "selector": [
+        "source_path",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png"
+      ]
+    },
+    {
+      "binding": [
+        "source_18"
+      ],
+      "selector": [
+        "source_path",
+        "project.godot"
+      ]
+    },
+    {
+      "binding": [
+        "node_0"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/ButtonPrompt.tscn",
+        "HBoxContainer"
+      ]
+    },
+    {
+      "binding": [
+        "node_1"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/ButtonPrompt.tscn",
+        "HBoxContainer/Label"
+      ]
+    },
+    {
+      "binding": [
+        "node_2"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Ui/ButtonPrompt.tscn",
+        "Arrow"
+      ]
+    },
+    {
+      "binding": [
+        "node_3"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Reusables/npc.tscn",
+        "interact/ButtonPrompt"
+      ]
+    },
+    {
+      "binding": [
+        "node_4"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Overworld/Objects/Openable Door.tscn",
+        "interact/ButtonPrompt"
+      ]
+    },
+    {
+      "binding": [
+        "node_5"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Reusables/npc.tscn",
+        "interact"
+      ]
+    },
+    {
+      "binding": [
+        "node_6"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Reusables/phone.tscn",
+        "interact/ButtonPrompt"
+      ]
+    },
+    {
+      "binding": [
+        "node_7"
+      ],
+      "selector": [
+        "node_path",
+        "Nodes/Overworld/Objects/Openable Door.tscn",
+        "."
+      ]
+    },
+    {
+      "binding": [
+        "preview_rows",
+        0,
+        1
+      ],
+      "selector": [
+        "texture",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/Present",
+        "texture"
+      ]
+    },
+    {
+      "binding": [
+        "preview_rows",
+        1,
+        1
+      ],
+      "selector": [
+        "texture",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/NPC",
+        "texture"
+      ]
+    },
+    {
+      "binding": [
+        "preview_rows",
+        0,
+        0
+      ],
+      "selector": [
+        "node_name",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/Present"
+      ]
+    },
+    {
+      "binding": [
+        "preview_rows",
+        1,
+        0
+      ],
+      "selector": [
+        "node_name",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/NPC"
+      ]
+    },
+    {
+      "binding": [
+        "choice_masks"
+      ],
+      "selector": [
+        "prompt_masks",
+        "Scripts/UI/Button Prompt.gd",
+        "^export \\(String, (\"[^\"\\n]+\", \"[^\"\\n]+\")\\) var type",
+        [
+          "regex",
+          "Scripts/global/globalData.gd",
+          "^const BUTTON_PROMPTS := (\\[[^\\n]+\\])",
+          1,
+          "json"
+        ],
+        "button_prompts in \\[type, \"([^\"\\n]+)\"\\]",
+        null
+      ]
+    },
+    {
+      "binding": [
+        "choices"
+      ],
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^const BUTTON_PROMPTS := (\\[[^\\n]+\\])",
+        1,
+        "json"
+      ]
+    },
+    {
+      "binding": [
+        "preview_rows",
+        0,
+        2
+      ],
+      "selector": [
+        "prompt_category",
+        "Scripts/UI/Button Prompt.gd",
+        "^export \\(String, (\"[^\"\\n]+\", \"[^\"\\n]+\")\\) var type",
+        "Maps/Naming screen.tscn",
+        "^export \\(String, \"[^\"\\n]+\", \"[^\"\\n]+\"\\) var type := \"([^\"\\n]+)\"",
+        "CanvasLayer/ButtonPrompts/Present/ButtonPrompt"
+      ]
+    },
+    {
+      "binding": [
+        "preview_rows",
+        1,
+        2
+      ],
+      "selector": [
+        "prompt_category",
+        "Scripts/UI/Button Prompt.gd",
+        "^export \\(String, (\"[^\"\\n]+\", \"[^\"\\n]+\")\\) var type",
+        "Maps/Naming screen.tscn",
+        "^export \\(String, \"[^\"\\n]+\", \"[^\"\\n]+\"\\) var type := \"([^\"\\n]+)\"",
+        "CanvasLayer/ButtonPrompts/NPC/ButtonPrompt"
+      ]
+    },
+    {
+      "binding": [
+        "door_origin"
+      ],
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^\\t\\tobj.position.y = door_offset.y \\+ ([\\d.]+)",
+        1,
+        "number"
+      ]
+    },
+    {
+      "binding": [
+        "label"
+      ],
+      "selector": [
+        "field",
+        [
+          "node",
+          "Nodes/Ui/ButtonPrompt.tscn",
+          "HBoxContainer/Label"
+        ],
+        "text"
+      ]
+    },
+    {
+      "binding": [
+        "arrow_rotation"
+      ],
+      "selector": [
+        "field",
+        [
+          "node",
+          "Nodes/Ui/ButtonPrompt.tscn",
+          "Arrow"
+        ],
+        "rect_rotation"
+      ]
+    },
+    {
+      "binding": [
+        "source_1"
+      ],
+      "selector": [
+        "regex",
+        "Nodes/Ui/ButtonPrompt.tscn",
+        "^\\[ext_resource path=\"res://(Graphics/UI/select_arrow\\.png)\" type=\"Texture\" id=\\d+\\]$",
+        1,
+        "string"
+      ]
+    },
+    {
+      "binding": [
+        "source_16"
+      ],
+      "selector": [
+        "regex",
+        "Maps/Naming screen.tscn",
+        "^\\[ext_resource path=\"res://(Graphics/Objects/Common/Present\\ Box\\.png)\" type=\"Texture\" id=\\d+\\]$",
+        1,
+        "string"
+      ]
+    },
+    {
+      "binding": [
+        "source_17"
+      ],
+      "selector": [
+        "regex",
+        "Maps/Naming screen.tscn",
+        "^\\[ext_resource path=\"res://(Graphics/Character\\ Sprites/Npcs/4dir/woman\\.png)\" type=\"Texture\" id=\\d+\\]$",
+        1,
+        "string"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/ButtonPrompt.tscn",
+        "HBoxContainer"
+      ],
+      "expected": {
+        "margin_left": -64.0,
+        "margin_top": -23.0,
+        "margin_right": 64.0,
+        "margin_bottom": -6.0,
+        "rect_pivot_offset": [
+          64,
+          23
+        ],
+        "alignment": 1
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/ButtonPrompt.tscn",
+        "HBoxContainer/Label"
+      ],
+      "expected": {
+        "margin_left": -4.0,
+        "margin_top": -19.0,
+        "margin_right": 3.0,
+        "margin_bottom": -8.0,
+        "custom_fonts/font": {
+          "ExtResource": 1
+        },
+        "text": "A",
+        "align": 1
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Ui/ButtonPrompt.tscn",
+        "Arrow"
+      ],
+      "expected": {
+        "use_parent_material": true,
+        "margin_left": 7.0,
+        "margin_top": -6.0,
+        "margin_right": 13.0,
+        "margin_bottom": 5.0,
+        "rect_rotation": 90.0,
+        "texture": {
+          "ExtResource": 2
+        },
+        "stretch_mode": 3
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Reusables/npc.tscn",
+        "interact/ButtonPrompt"
+      ],
+      "expected": {
+        "material": {
+          "SubResource": 431
+        },
+        "position": [
+          0,
+          -11
+        ],
+        "type": "NPCs",
+        "offset": [
+          0,
+          -11
+        ]
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Overworld/Objects/Openable Door.tscn",
+        "interact/ButtonPrompt"
+      ],
+      "expected": {
+        "material": {
+          "SubResource": 6
+        },
+        "position": [
+          0,
+          -32
+        ],
+        "offset": [
+          0,
+          -32
+        ],
+        "enabled": false
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Reusables/npc.tscn",
+        "interact"
+      ],
+      "expected": {
+        "position": [
+          0,
+          -10
+        ]
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Reusables/phone.tscn",
+        "interact/ButtonPrompt"
+      ],
+      "expected": {
+        "material": {
+          "SubResource": 105
+        },
+        "position": [
+          1,
+          2
+        ],
+        "offset": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Nodes/Overworld/Objects/Openable Door.tscn",
+        "."
+      ],
+      "expected": {
+        "script": {
+          "ExtResource": 1
+        },
+        "door_offset": [
+          0,
+          -16
+        ]
+      }
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\t_reset_scale()\n\tif !Engine.is_editor_hint():\n\t\thide()\n\t\t_hidden = true\n\t\tset_process(false)\n\t\t_set_key_name()\n\t\tglobal.get_player().connect(\"event_detector_entered\", self, \"_on_player_nearby\", [true])\n\t\tglobal.get_player().connect(\"event_detector_exited\", self, \"_on_player_nearby\", [false])\n\t\t\n\t\tglobal.connect(\"inputs_changed\", self, \"_set_key_name\")\n\t\tglobal.connect(\"locale_changed\", self, \"_set_key_name\")\n\t\tglobal.get_player().connect(\"paused\", self, \"_on_player_toggle_pause\")\n\t\tglobal.get_player().connect(\"unpaused\", self, \"_on_player_toggle_pause\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _process\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _process(delta: float):\n\tposition = offset\n\tif get_parent().get(\"scale\") != null:\n\t\t_reset_scale()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func set_enabled\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_enabled(value: bool, quick := false):\n\tenabled = value\n\t_refresh_visibility(quick)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func force_show\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func force_show(quick := false):\n\t_force_show = true\n\t_force_hide = false\n\t_refresh_visibility(quick)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func force_hide\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func force_hide(quick := false):\n\t_force_hide = true\n\t_force_show = false\n\t_refresh_visibility(quick)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func unforce_show_hide\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func unforce_show_hide(quick := false):\n\t_force_show = false\n\t_force_hide = false\n\t_refresh_visibility(quick)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _on_player_nearby\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_player_nearby(object, value: bool):\n\tif object == get_parent():\n\t\t_player_nearby = value\n\t\t_refresh_visibility()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _on_player_toggle_pause\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_player_toggle_pause():\n\t_refresh_visibility(true)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func press_button\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func press_button():\n\tif _can_show():\n\t\t_hidden = true\n\t\t_pressing_button = true\n\t\t$AnimationPlayer.play(\"Press\")\n\t\tyield($AnimationPlayer,\"animation_finished\")\n\t\t_pressing_button = false\n\t\temit_signal(\"hide\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _reset_scale\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _reset_scale():\n\tposition = offset\n\tposition.x = position.x / get_parent().scale.x\n\tposition.y = position.y / get_parent().scale.y\n\tscale.x = 1.0 / get_parent().scale.x\n\tscale.y = 1.0 / get_parent().scale.y\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _set_key_name\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _set_key_name():\n\t$HBoxContainer/Label.text = TextTools.get_key_name(key)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _refresh_visibility\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _refresh_visibility(quick := false):\n\tif _pressing_button:\n\t\treturn\n\n\tvar should_show: bool = _can_show() and _player_nearby and !global.get_player().is_paused()\n\tshould_show = (should_show or _force_show) and !_force_hide\n\t\n\tif _hidden and should_show:\n\t\t_hidden = false\n\t\t_reset_scale()\n\t\t_set_key_name()\n\t\tif !quick:\n\t\t\t$AnimationPlayer.play(\"Show\")\n\t\telse:\n\t\t\tshow()\n\t\t\t$AnimationPlayer.play(\"Float\")\n\t\n\telif !_hidden and !should_show:\n\t\t_hidden = true\n\t\tif !quick:\n\t\t\t$AnimationPlayer.play(\"Hide\")\n\t\telse:\n\t\t\t$AnimationPlayer.stop()\n\t\t\thide()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/Button Prompt.gd",
+        "^((?:static )?func _on_AnimationPlayer_animation_finished\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_AnimationPlayer_animation_finished(anim_name: String):\n\tif anim_name == \"Show\" and visible:\n\t\t$AnimationPlayer.play(\"Float\")\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\tglobal.currentCamera = camera\n\tfor i in global.partySpace.size():\n\t\tglobal.partySpace.push_front(position)\n\t\tglobal.partySpace.pop_back()\n\t_anim_tree.active = true\n\t_tap_run = false\n\t_crouch = false\n\t_direction = Vector2(0,1)\n\tblend_position(_direction)\n\tset_shadow(\"shadow\")\n\tupdate_party_member()\n\tvar sfx := load(\"res://Audio/Sound effects/Footsteps/%s.mp3\" % run_sound)\n\taudioManager.add_sfx(sfx, \"run\")\n\t_last_step_pos = position\n\t\n\t\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _physics_process\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _physics_process(delta: float):\n\tmatch _state:\n\t\tMOVE:\n\t\t\t_move_state(delta)\n\t\t\n\t\tTELEPORTING:\n\t\t\t_teleport_state(delta)\n\t\t\n\t\tLANDING:\n\t\t\t_landing_state(delta)\n\t\t\n\t\tATTACK_PREP:\n\t\t\t_attack_hold()\n\t\tBOUNCING:\n\t\t\t_bounce_state(delta)\n\t\tCAMERA:\n\t\t\t_controls()\n\t\t\tset_anim_state(\"Idle\")\n\t\t\tif _input_vector != Vector2.ZERO:\n\t\t\t\tblend_position(camera.offset)\n\t\tSOOT:\n\t\t\t_soot_state()\n\t\n\t\n\tif not _state in [MOVE, TELEPORTING, LANDING]:\n\t\t_set_running(false)\n\t\n\tif _state == MOVE or (_state == TELEPORTING and _tp_mode == TPModes.MANUAL):\n\t\t_calculate_steps()\n\tif _is_continuous_damage and !_paused:\n\t\t_knockback = _hit_direct * 50\n\t\tif !_is_invulnerable():\n\t\t\tdamage(_attack_damage, _damage_variance, _hit_direct)\n\t_knockback = _knockback.move_toward(Vector2.ZERO, 200)\n\t\n\tif _debug_speed:\n\t\t_speed = SPEED_DEBUG\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func update_party_member\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func update_party_member():\n\t_party_member = global.party[0]\n\t_refresh_party_member_connections()\n\t_refresh_status()\n\tspritesheet()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _teleport_state\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _teleport_state(delta: float):\n\tif !_paused:\n\t\tvar old_pos := global_position\n\t\t_controls()\n\t\t\n\t\t\n\t\tvar incorrect_inputs := [\n\t\t\t_direction * -1,\n\t\t\t(_direction * -1).rotated(0.25*PI).round(),\n\t\t\t(_direction * -1).rotated(-0.25*PI).round()\n\t\t]\n\t\t\n\t\tif !_tp_take_off_timer_done and _input_vector != Vector2.ZERO and !_input_vector in incorrect_inputs:\n\t\t\tset_direction(_input_vector)\n\t\t\n\t\tif !_tp_max_speed_reached:\n\t\t\tif _speed < TP_SPEED_CAP[_tp_mode]:\n\t\t\t\t_speed += TP_SPEED_UP[_tp_mode]\n\t\t\telif _speed >= TP_SPEED_CAP[_tp_mode]:\n\t\t\t\t_speed = TP_SPEED_CAP[_tp_mode]\n\t\t\t\t_tp_max_speed_reached = true\n\t\t\t\tglobal.party_call(\"play_flash_anim\", \"TeleportPulse\")\n\t\t\t\tglobal.party_call(\"start_creating_afterimage\")\n\t\t\t\tif TP_TIME_TO_TAKE_OFF[_tp_mode] > 0:\n\t\t\t\t\t_tp_take_off_timer.start(TP_TIME_TO_TAKE_OFF[_tp_mode])\n\t\telif _tp_take_off_timer_done:\n\t\t\t_speed = _speed * TP_TAKE_OFF_SPEED_MULTIPLIER[_tp_mode]\n\t\t\n\t\t_velocity = _direction * _speed\n\t\tmove_and_slide(_velocity)\n\t\tset_anim_state(\"Run\")\n\t\t_anim_tree.set(\"parameters/FaintedWalk/TimeScale/scale\", 2)\n\t\t\n\t\tif (_tp_mode == TPModes.MANUAL and Input.is_action_just_pressed(\"ui_toggle\")) \\\n\t\t\t\tor (!_tp_take_off_timer_done and max(abs(old_pos.x - global_position.x), abs(old_pos.y - global_position.y)) <= 1):\n\t\t\t_set_running(false)\n\t\t\t_substantial_movement = false\n\t\t\t_idle = true\n\t\t\t_state = SOOT\n\t\t\t_tp_max_speed_reached = false\n\t\t\t_tp_take_off_timer.stop()\n\t\t\t_anim_state.travel(\"Soot\")\n\t\t\t_tp_crouch_timer.start()\n\t\t\tglobal.party_call(\"play_flash_anim\", \"RESET\")\n\t\t\tglobal.party_call(\"stop_creating_afterimage\")\n\t\t\tcamera.shake_camera(_speed/50.0, 0.4, _direction)\n\t\t\taudioManager.play_sfx(_tp_crash_sound, \"tcrash\")\n\t\t_update_party_positions(old_pos, 0.5)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _landing_state\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _landing_state(delta: float):\n\tvar old_pos := global_position\n\t_speed -= LANDING_SLOWDOWN * delta\n\t_velocity = _direction * _speed\n\tmove_and_slide(_velocity)\n\t_update_party_positions(old_pos)\n\tif _speed <= SPEED_WALKING:\n\t\tglobal.party_call(\"set_collisions\", true)\n\t\t_state = MOVE\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _soot_state\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _soot_state():\n\tif _paused or _tp_crouch_timer.time_left != 0:\n\t\treturn\n\t_controls()\n\tif _input_vector != Vector2.ZERO:\n\t\t_direction = _input_vector\n\t\t_state = MOVE\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _move_state\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _move_state(delta: float):\n\tif !_paused and !global.entering_door:\n\t\t\n\t\t_check_event_collider()\n\t\t\n\t\t_controls()\n\t\t_movement(delta)\n\telse:\n\t\tif audioManager.get_sfx(\"run\") != null and audioManager.get_sfx(\"run\").playing:\n\t\t\taudioManager.get_sfx(\"run\").stop()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _input\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _input(event: InputEvent):\n\tif _paused or _state != MOVE or global.entering_door:\n\t\treturn\n\tif event.is_action_pressed(\"ui_cancel\") and !_climbing and !_spinning:\n\t\tvar action_skills = _get_skills_button_actions()\n\t\tif action_skills.empty():\n\t\t\t_current_skill_action = \"\"\n\t\telif not _current_skill_action in action_skills:\n\t\t\t_current_skill_action = action_skills.front()\n\t\t\n\t\t_do_attack()\n\t\n\tif event.is_action_pressed(\"ui_scope\", true) and !_is_continuous_damage and global.can_pause:\n\t\t_state = CAMERA\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _do_attack\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _do_attack():\n\tmatch _current_skill_action:\n\t\t\"swing\":\n\t\t\t_state = ATTACK\n\t\t\t_crouch = false\n\t\t\t_idle = false\n\t\t\t_tap_run = false\n\t\t\t_set_running(false)\n\t\t\t_walk = false\n\t\t\t_attack_unleash()\n\t\t\n\t\t\"energy_beam\":\n\t\t\t$AimTime.start()\n\t\t\t_state = ATTACK_PREP\n\t\t\t_crouch = false\n\t\t\t_idle = false\n\t\t\t_tap_run = false\n\t\t\t_set_running(false)\n\t\t\t_walk = false\n\t\t\n\t\t\"pkfire\", \"pkfreeze\", \"pkthunder\":\n\t\t\t_anim_state.travel(\"Cast\")\n\t\t\t_state = ATTACK_PREP\n\t\t\t$PKTime.wait_time = 0.733\n\t\t\t$PKTime.start()\n\t\t\t$OutlineAnim.play(\"Flash\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _controls\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _controls():\n\t_input_vector = controlsManager.get_controls_vector()\n\tif _climbing:\n\t\t_input_vector.x = 0\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _move\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _move():\n\t_velocity = _speed * (_direction if _tap_run else _input_vector)\n\t\n\tif _input_vector != Vector2.ZERO:\n\t\t_direction = _input_vector\n\t\teventRayCaster.rotation = _direction.angle() - TAU/4\n\t\temit_signal(\"moved\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _movement\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _movement(delta: float):\n\tif _input_vector != Vector2.ZERO or _tap_run:\n\t\t_move()\n\t\t\n\t\tif _climbing:\n\t\t\t_anim_player.playback_speed = 1\n\t\tif Input.is_action_pressed(\"ui_toggle\") or _tap_run:\n\t\t\tif  Input.is_action_just_pressed(\"ui_toggle\") and !_crouch and !_running and !_climbing:\n\t\t\t\t_crouch = true\n\t\t\t\tif _party_member.has_field_skill(\"teleport\"):\n\t\t\t\t\t_tp_crouch_timer.start()\n\t\t\tif Input.is_action_just_pressed(\"ui_toggle\") and _tap_run:\n\t\t\t\t_tap_run = false\n\t\t\t\t_set_running(false)\n\t\t\tif !_paused and _substantial_movement:\n\t\t\t\t_set_running(true)\n\t\t\tset_anim_state(\"Run\")\n\t\t\t_anim_tree.set(\"parameters/FaintedWalk/TimeScale/scale\", 2)\n\t\t\t_speed = SPEED_RUNNING\n\t\telse:\n\t\t\t_speed = SPEED_WALKING\n\t\t\t_crouch = false\n\t\t\t\n\t\t\tif !_climbing:\n\t\t\t\tset_anim_state(\"Walk\")\n\t\t\t\t_anim_tree.set(\"parameters/FaintedWalk/TimeScale/scale\", 1)\n\t\t\t\n\t\t\tif Input.is_action_just_released(\"ui_toggle\") and !_tap_run:\n\t\t\t\t_set_running(false)\n\t\t\t\n\t\t\tif audioManager.get_sfx(\"run\") and audioManager.get_sfx(\"run\").playing:\n\t\t\t\taudioManager.get_sfx(\"run\").stop() # Nasty fix\n\t\t\n\t\tif _spinning == false:\n\t\t\tblend_position(_direction)\n\telse:\n\t\t_velocity = Vector2.ZERO\n\t\t_walk = false\n\t\tif Input.is_action_just_released(\"ui_toggle\") and _crouch:\n\t\t\t_crouch = false\n\t\t\tif _tp_crouch_timer_done:\n\t\t\t\tstart_teleport(TPModes.MANUAL)\n\t\t\telse:\n\t\t\t\t_speed = SPEED_RUNNING\n\t\t\t\t_tap_run = true\n\t\t\t\t\n\t\t\t\t_velocity = _direction * _speed\n\t\n\tvar oldpos = self.position\n\t_velocity = move_and_slide(_velocity * delta * (_speed/1.7))\n\t_knockback = move_and_slide(_knockback)\n\tif max(round(abs(oldpos.x - position.x)), round(abs(oldpos.y - position.y))) > 0 or abs(_knockback.x) > 0.1 or abs(_knockback.y) > 0.1:\n\t\t_substantial_movement = true\n\t\t_idle = false\n\telse:\n\t\t_substantial_movement = false\n\tif _substantial_movement:\n\t\t_walk = true\n\t\t_crouch = false\n\t\t_update_party_positions(oldpos)\n\t\tif _running and _timer.time_left == 0:\n\t\t\t_timer.start()\n\t\t\tif !_climbing:\n\t\t\t\t$DustCreator.create_dust()\n\telse:\n\t\tset_anim_state(\"Idle\")\n\t\t_walk = false\n\t\t_tap_run = false\n\t\t_set_running(false)\n\t\tif _climbing:\n\t\t\t_anim_player.playback_speed = 0\n\t\tif Input.is_action_just_pressed(\"ui_toggle\") and !_crouch:\n\t\t\temit_signal(\"moved\")\n\t\t\t_crouch = true\n\t\t\tif _party_member.has_field_skill(\"teleport\"):\n\t\t\t\t_tp_crouch_timer.start()\n\t\telif Input.is_action_just_pressed(\"ui_toggle\") and _crouch:\n\t\t\t_crouch = false\n\t\tif _crouch:\n\t\t\t_anim_state.travel(\"Crouch\")\n\t\telse:\n\t\t\tif $BlinkTime.time_left == 0:\n\t\t\t\tif _idle == false or _spinning:\n\t\t\t\t\tset_anim_state(\"Idle\")\n\t\t\t\t\t$BlinkTime.wait_time = 10 + randf()*5\n\t\t\t\t\t$BlinkTime.start()\n\t\t\t\telse:\n\t\t\t\t\tset_anim_state(\"Blink\")\n\tposition = position.round()\n\t\n\tvar can_climb := true\n\tfor i in global.partyObjects:\n\t\tif i.is_climbing():\n\t\t\tcan_climb = false\n\tif can_climb and global.party.size() != 1 and _party_member.has_field_skill(\"relay\"):\n\t\tif Input.is_action_just_pressed(\"ui_focus_next\"):\n\t\t\tswap_spin(1)\n\t\tif Input.is_action_just_pressed(\"ui_focus_prev\"):\n\t\t\tswap_spin(-1)\n\tif Input.is_action_just_pressed(\"ui_accept\") and !_paused and can_interact and !global.entering_door and eventRayCaster.is_colliding():\n\t\tif _crouch:\n\t\t\tuse_telepathy()\n\t\telse:\n\t\t\tinteract_with()\n\n#emits a signal when the EventDetector detects a new object or when an object exits it\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _check_event_collider\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _check_event_collider():\n\t_set_event_collider(eventRayCaster.get_collider())\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _set_event_collider\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _set_event_collider(collide):\n\tif _event_collider == collide:\n\t\treturn\n\t\n\tif collide != null:\n\t\tif !collide.is_connected(\"tree_exited\", self, \"_set_event_collider\"):\n\t\t\tcollide.connect(\"tree_exited\", self, \"_set_event_collider\", [null])\n\t\temit_signal(\"event_detector_entered\", collide)\n\t\n\tif _event_collider != null:\n\t\tif _event_collider.is_connected(\"tree_exited\", self, \"_set_event_collider\"):\n\t\t\t_event_collider.disconnect(\"tree_exited\", self, \"_set_event_collider\")\n\t\temit_signal(\"event_detector_exited\", _event_collider)\n\t\n\t_event_collider = collide\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func interact_with\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func interact_with():\n\tif !uiManager.is_stack_empty():\n\t\treturn\n\t\n\t_set_event_collider(null)\n\tvar collide = eventRayCaster.get_collider()\n\tif collide == null:\n\t\tuiManager.open_dialogue_box(\"Reusable/noproblem\")\n\t\treturn\n\t\n\tif \"interact\" in collide.name: # We probably need a special class for interactions instead of checking for the name\n\t\tvar collided = collide.get_parent()\n\t\tfor c in [collide, collided]:\n\t\t\tif !c.has_method(\"interact\"):\n\t\t\t\tcontinue\n\t\t\tif c.has_method(\"has_dialog\") and !c.has_dialog():\n\t\t\t\treturn\n\t\t\tglobal.party_call(\"try_to_turn\",c)\n\t\t\tc.interact()\n\t\t\tbreak\n\t\tif collide.get_node_or_null(\"ButtonPrompt\"):\n\t\t\tcollide.get_node_or_null(\"ButtonPrompt\").press_button()\n\telif !collide is Area2D:\n\t\tuiManager.open_dialogue_box(\"Reusable/noproblem\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func interact_item_with\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func interact_item_with(item: Item):\n\t_set_event_collider(null)\n\tvar collide = eventRayCaster.get_collider()\n\n\tif collide == null:\n\t\tuiManager.open_dialogue_box(\"Reusable/nothinghappened\")\n\t\treturn\n\t\n\tvar collided = collide.get_parent()\n\tfor c in [collide, collided]:\n\t\tif !c.has_method(\"interact_item\"):\n\t\t\tcontinue\n\t\tglobal.party_call(\"try_to_turn\",c)\n\t\tc.interact_item(item)\n\t\treturn\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func use_telepathy\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func use_telepathy():\n\tif !_can_use_telepathy():\n\t\tuiManager.open_dialogue_box(\"Reusable/nothinghappened\")\n\t\treturn\n\n\t_set_event_collider(null)\n\tvar collide = eventRayCaster.get_collider()\n\tif collide == null:\n\t\tuiManager.open_dialogue_box(\"Reusable/noproblem\")\n\t\treturn\n\n\tvar target = _find_telepathy_target(collide)\n\tif target:\n\t\t_process_telepathy_target(target, collide)\n\telse:\n\t\tuiManager.open_dialogue_box(\"Reusable/nothoughts\")\n\t\t_press_button_prompt(collide)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _find_telepathy_target\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _find_telepathy_target(collide):\n\tvar parent = collide.get_parent()\n\tif parent and parent.has_method(\"telepathy\"):\n\t\treturn parent\n\tif collide.has_method(\"telepathy\"):\n\t\treturn collide\n\treturn null\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _process_telepathy_target\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _process_telepathy_target(target, source):\n\ttry_to_turn(target)\n\tif target.has_thoughts():\n\t\tif target != source:\n\t\t\tuiManager.set_telepathy_effect(true, target)\n\t\ttarget.telepathy()\n\t\t_press_button_prompt(source)\n\t\treturn\n\n\tif target == source:\n\t\tuiManager.open_dialogue_box(\"Reusable/nothoughts\")\n\t\treturn\n\n\tif target.no_problem_thoughts:\n\t\tuiManager.open_dialogue_box(\"Reusable/nothoughts\")\n\telse:\n\t\tuiManager.open_dialogue_box(\"Reusable/straythoughts\")\n\t\t_press_button_prompt(source)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _press_button_prompt\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _press_button_prompt(node):\n\tvar button_prompt = node.get_node_or_null(\"ButtonPrompt\")\n\tif button_prompt:\n\t\tbutton_prompt.press_button()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func spritesheet\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func spritesheet():\n\tvar normal_texture: String = \"res://Graphics/Character Sprites/%s/main.png\" % _party_member.get_sprite()\n\tvar special_texture: String = \"res://Graphics/Character Sprites/%s/special.png\" % _party_member.get_sprite()\n\tvar snow_texture: String = \"res://Graphics/Character Sprites/%sSnow/main.png\" % _party_member.get_sprite()\n\tif ResourceLoader.exists(normal_texture) and sprite.texture.resource_path != normal_texture:\n\t\tif ResourceLoader.exists(special_texture):\n\t\t\t_special.texture = ResourceLoader.load(special_texture)\n\t\tif costume == \"Snow\" and ResourceLoader.exists(snow_texture):\n\t\t\t\tsprite.texture = ResourceLoader.load(snow_texture)\n\t\telse:\n\t\t\tsprite.texture = ResourceLoader.load(normal_texture)\n\t\t$Position/main.offset.y = -$Position/main.texture.get_height()/40 + 14\n\telif not ResourceLoader.exists(normal_texture):\n\t\tsprite.texture = ResourceLoader.load(\"res://Graphics/Character Sprites/Ninten/main.png\")\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func blend_position\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func blend_position(vector2: Vector2):\n\tif vector2 != Vector2.ZERO:\n\t\tfor param in [\"Idle\", \"Blink\", \"Walk/Walk\", \"FaintedIdle\", \"FaintedWalk/FaintedWalk\", \"Down\", \"Crouch\", \"Run/Run\", \"Jump\", \"Bat/Bat\", \"ShootPrep\", \"Cast\", \"CastHold\", \"CastPrep\", \"ShootHold\"]:\n\t\t\tblend_animation(param, vector2)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _attack_hold\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _attack_hold():\n\tvar old_dir = _direction\n\tvar party_lead = _party_member.get_name()\n\tif $AimTime.time_left == 0:\n\t\t_controls()\n\tif _input_vector != Vector2.ZERO:\n\t\tset_direction(_input_vector)\n\tif party_lead == PartyMember.LLOYD:\n\t\t_anim_state.travel(\"ShootHold\")\n\t\tif $AimTime.time_left == 0 and old_dir != _direction:\n\t\t\tcamera.move_offset(Vector2(_direction.x * 30, _direction.y * 20), 0.3)\n\telif party_lead == PartyMember.ANA:\n\t\t_anim_state.travel(\"CastHold\")\n\telif party_lead == PartyMember.TEDDY:\n\t\t_state = MOVE\n\telse:\n\t\t_state = MOVE\n\t\t\n\tif Input.is_action_just_released(\"ui_cancel\"):\n\t\t\n\t\t_attack_unleash()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _attack_unleash\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _attack_unleash():\n\t_state = ATTACK\n\tmatch _current_skill_action:\n\t\t\"swing\":\n\t\t\t$AudioStreamPlayer.stream = load(\"res://Audio/Sound effects/Ninten Bat.mp3\")\n\t\t\t$AudioStreamPlayer.play()\n\t\t\tglobal.start_joy_vibration(0, 0.35, 0, 0.2)\n\t\t\t_anim_state.travel(\"Bat\")\n\t\t\tif _party_member.is_incapacitated():\n\t\t\t\t_anim_tree.set(\"parameters/Bat/TimeScale/scale\", 0.7)\n\t\t\telse:\n\t\t\t\t_anim_tree.set(\"parameters/Bat/TimeScale/scale\", 1)\n\t\t\"energy_beam\":\n\t\t\tblend_animation(\"Shoot\", _direction)\n\t\t\t_anim_state.travel(\"Shoot\")\n\t\t\tcamera.return_offset(0.4)\n\t\t\t$AimTime.stop()\n\t\t\"pkfire\", \"pkfreeze\", \"pkthunder\":\n\t\t\t_anim_state.travel(\"Cast\")\n\t\t\t$OutlineAnim.play(\"Normal\")\n\t\t\t$PKTime.stop()\n\t\t_:\n\t\t\t_state = MOVE\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _attack_animation_finished\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _attack_animation_finished():\n\t$HitboxPivot/BatHitbox/CollisionShape2D.disabled = true\n\t_state = MOVE\n\t_tap_run = false\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func hit_stop\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func hit_stop(length: float, camShake: float, pause := false, timeScale := 0.0, animation := \"\"):\n\tvar oldTimeScale = 1\n\tif animation != \"\":\n\t\toldTimeScale = _anim_tree.get(\"parameters/\" + animation + \"/TimeScale/scale\")\n\t\t_anim_tree.set(\"parameters/\"+ animation +\"/TimeScale/scale\", timeScale)\n\t\n\tif pause:\n\t\tget_tree().paused = true\n\t\n\tif length != 0:\n\t\tif !camera.is_shaking() and camShake != 0:\n\t\t\tcamera.shake_camera(camShake, 0.1, Vector2(1, 0))\n\t\tprint(\"hit stop\")\n\t\tyield(get_tree().create_timer(float(length)), \"timeout\")\n\t\n\tif pause:\n\t\tget_tree().paused = false\n\tif animation != \"\":\n\t\t_anim_tree.set(\"parameters/\"+ animation +\"/TimeScale/scale\", oldTimeScale)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _shoot\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _shoot():\n\tvar b = Beam.instance()\n\tglobal.currentScene.get_node(\"Objects\").add_child(b)\n\tvar beam = b.get_node(\"BeamHead\")\n\tbeam.animationTree.set(\"parameters/_shoot/blend_position\", _direction)\n\tbeam.global_position = $HitboxPivot/BulletSpawn.global_position\n\tbeam.inputVector = _direction\n\tbeam.rotation = $HitboxPivot/BulletSpawn.global_rotation\n\tbeam.animationState.travel(\"shoot\")\n\tb.show()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _cast\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _cast():\n\tvar ini_dir = _direction\n\tvar ini_pos = $HitboxPivot/BulletSpawn.global_position\n\tvar wait = Timer.new()\n\twait.set_wait_time(0.067)\n\twait.set_one_shot(true)\n\tself.add_child(wait)\n\tfor i in 3 :\n\t\tvar pk = Cast.instance()\n\t\tif ini_dir.x != 0:\n\t\t\tpk.position = (ini_pos + (Vector2(30 * i,30 * i) * ini_dir.normalized()))\n\t\telse:\n\t\t\tpk.position = (ini_pos + (Vector2(30 * i,25 * i) * ini_dir.normalized()))\n\t\tglobal.currentScene.get_node(\"Objects\").add_child(pk)\n\t\twait.start()\n\t\tyield(wait, \"timeout\")\n\t\n\twait.queue_free()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func jump\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func jump(height: float, length: float, hide_shadow:= false, anim := \"Jump\", start_crouch_time := 0.1, end_crouch_time := 0.0):\n\t_state = JUMPING\n\tblend_position(_direction)\n\tif start_crouch_time > 0.0:\n\t\t_anim_state.travel(\"Crouch\")\n\t\tyield(get_tree().create_timer(start_crouch_time), \"timeout\")\n\t_anim_state.travel(anim)\n\tif hide_shadow:\n\t\t$Shadow.hide()\n\t\n\tvar tween = create_tween().set_parallel().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)\n\tif anim == \"Jump\":\n\t\ttween.tween_property($Position/main, \"scale\", Vector2(1,1), length) \\\n\t\t\t\t.from(Vector2(0.9, 1.1)).set_delay(0.02)\n\ttween.tween_property($Position, \"position\", Vector2(0,-height), length) \\\n\t\t\t.from(Vector2.ZERO)\n\ttween.chain().tween_property($Position, \"position\", Vector2.ZERO, length*0.75) \\\n\t\t\t.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)\n\tyield(tween, \"finished\")\n\tif hide_shadow:\n\t\t$Shadow.show()\n\tif end_crouch_time > 0.0:\n\t\t_anim_state.travel(\"Crouch\")\n\t\tyield(get_tree().create_timer(end_crouch_time), \"timeout\")\n\temit_signal(\"jump_finished\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func bounce\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func bounce(height, length, anim):\n\t_anim_tree.set(\"parameters/\"+ anim +\"/TimeScale/scale\", 0.0)\n\n\tjump(height, length, false, anim, 0.0, 0.1)\n\t_state = BOUNCING\n\t_anim_tree.active = false\n\tyield(self, \"jump_finished\")\n\t_anim_tree.set(\"parameters/\"+ anim +\"/TimeScale/scale\", 1.0)\n\t_anim_tree.active = true\n\t\n\t_state = MOVE\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _bounce_state\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _bounce_state(delta: float):\n\t_velocity = -_direction * _speed * 0.9\n\tmove_and_slide(_velocity)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func swap_spin\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func swap_spin(dir = 1):\n\t_switching = true\n\t_crouch = false\n\t_current_skill_action = \"\"\n\tyield (_spin(8, 45 * dir, 0.015, dir), \"completed\")\n\t_switching = false\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _spin\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _spin(times, angle, rot_speed, leader_swap = 0):\n\t_spinning = true\n\t_spin_num = 0\n\tvar dir = _direction.round()\n\tfor n in times:\n\t\t_spin_num += 1\n\t\tif _switching and _spin_num == 4:\n\t\t\tmatch leader_swap:\n\t\t\t\t1:\n\t\t\t\t\tglobal.swap_party_forward()\n\t\t\t\t-1:\n\t\t\t\t\tglobal.swap_party_backward()\n\t\t\tglobal.update_party_spritesheets()\n#\t\t\t_switching = false\n\t\tdir = dir.rotated(angle).round()\n\t\tblend_position(dir)\n\t\tyield(get_tree().create_timer(rot_speed),\"timeout\")\n\t_spinning = false\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func rotate_to\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func rotate_to(new_dir: Vector2, rot_speed: float):\n\tnew_dir = new_dir.normalized().round()\n\t_direction = _direction.round()\n\tvar angle = 45 * sign(_direction.angle_to(new_dir))\n\twhile _direction != new_dir:\n\t\t_direction = _direction.rotated(angle).round().normalized().round()\n\t\tblend_position(_direction)\n\t\tyield(get_tree().create_timer(rot_speed),\"timeout\")\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func start_continuous_damage\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func start_continuous_damage(damage: int, damage_variance := 0, hit_direct := Vector2.ZERO, status = null):\n\t.start_continuous_damage(damage, damage_variance, hit_direct, status)\n\t_hit_direct = hit_direct\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func damage\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func damage(damage: int, damage_variance := 0, hit_direct := Vector2.ZERO, cant_kill := true):\n\tcamera.shake_camera(1, 0.2, Vector2(1, 0))\n\tglobal.start_joy_vibration(0, 0.6, 0.8, 0.1)\n\t.damage(damage, damage_variance, hit_direct, cant_kill)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func game_over\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func game_over():\n\tpause()\n\tuiManager.game_over()\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func ladder\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func ladder():\n\t.ladder()\n\t_state = MOVE\n\tif audioManager.get_sfx(\"run\") != null:\n\t\taudioManager.get_sfx(\"run\").stop()\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func unladder\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func unladder():\n\t.unladder()\n\tif _running:\n\t\t_set_running(true)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func set_speed\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_speed(value: float):\n\t_speed = value\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _set_running\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _set_running(enabled: bool):\n\t_running = enabled\n\tif !_paused and _state == MOVE:\n\t\tif enabled and !_climbing:\n\t\t\tvar sfx = load(\"res://Audio/Sound effects/Footsteps/\" + run_sound + \".mp3\")\n\t\t\tif audioManager.get_sfx(\"run\") != null and audioManager.get_sfx(\"run\").stream == sfx:\n\t\t\t\tif !audioManager.get_sfx(\"run\").playing :\n\t\t\t\t\taudioManager.get_sfx(\"run\").play()\n\t\t\telse:\n\t\t\t\taudioManager.play_sfx(sfx, \"run\")\n\tif audioManager.get_sfx(\"run\") != null and audioManager.get_sfx(\"run\").playing and !enabled:\n\t\taudioManager.get_sfx(\"run\").stop()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _start_landing\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _start_landing():\n\tglobal.party_call(\"set_collisions\", false)\n\t_running = true\n\t_state = LANDING\n\t_speed = SPEED_LANDING\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func start_teleport\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func start_teleport(tp_mode: int):\n\t_speed = SPEED_RUNNING\n\t_set_running(true)\n\t_state = TELEPORTING\n\t_tp_crouch_timer_done = false\n\t_tp_max_speed_reached = false\n\t_tp_take_off_timer_done = false\n\t_tp_mode = tp_mode\n\t_velocity = _direction * _speed\n\t$OutlineAnim.play(\"Normal\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func pause\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func pause(stop_running := false, start_idle := true, emit_signal := true):\n\tglobal.party_call(\"pause_flash_anim\")\n\tglobal.party_call(\"stop_creating_afterimage\")\n\tglobal.party_call(\"pause_timers\")\n\t\n\t_anim_play_pause(false, start_idle)\n\t_crouch = false\n\t_walk = false\n\tif !(_state == TELEPORTING and _tp_take_off_timer_done):\n\t\t_state = MOVE\n\t_paused = true\n\tif _tp_take_off_timer:\n\t\t_tp_take_off_timer.stop()\n\t_input_vector = Vector2.ZERO\n\t$AudioStreamPlayer.playing = false\n\t$AudioStreamPlayer.stream_paused = true\n\t$MiscTimer.set_paused(true)\n\tif stop_running or !_tap_run:\n\t\t_tap_run = false\n\t\t_set_running(false)\n\t_set_collision_masks(false)\n\t\n\tif emit_signal: emit_signal(\"paused\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func unpause\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func unpause(emit_signal := true):\n\tif !global.currentScene is AreaRoom:\n\t\treturn\n\t\n\t_anim_play_pause(true)\n\t$AudioStreamPlayer.stream_paused = false\n\t$MiscTimer.set_paused(false)\n\tglobal.party_call(\"resume_flash_anim\")\n\tglobal.party_call(\"resume_timers\")\n\t_paused = false\n\t_set_collision_masks(true)\n\tif _state == TELEPORTING:\n\t\t_start_landing()\n\telse:\n\t\t_state = MOVE\n\t\n\tif emit_signal: emit_signal(\"unpaused\")\n\t_check_event_collider()\n\tif _running:\n\t\t_set_running(true)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func on_dialogue_done\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func on_dialogue_done(result := 0):\n\tunpause()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func exit_camera\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func exit_camera():\n\t_state = MOVE\n\tblend_position(_direction)\n\tset_anim_state(\"Idle\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _set_collision_masks\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _set_collision_masks(enabled: bool):\n\tset_collision_mask_bit(0, enabled)\n\tset_collision_mask_bit(8, enabled)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _on_BlinkTime_timeout\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_BlinkTime_timeout():\n\t_idle = true\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _on_PKTime_timeout\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_PKTime_timeout():\n\tif _state != ATTACK_PREP:\n\t\treturn\n\t\n\tvar skill_actions := _get_skills_button_actions()\n\tvar current_skill_index = skill_actions.find(_current_skill_action)\n\tcurrent_skill_index = (current_skill_index + 1) % skill_actions.size()\n\t_current_skill_action = skill_actions[current_skill_index]\n\tmatch _current_skill_action:\n\t\t\"pkfire\":\n\t\t\t$EffectsAnim.play(\"Fire\")\n\t\t\"pkfreeze\":\n\t\t\t$EffectsAnim.play(\"Freeze\")\n\t\t\"pkthunder\":\n\t\t\t$EffectsAnim.play(\"Thunder\")\n\t$OutlineAnim.play(\"Flash\")\n\t$PKTime.wait_time = 1\n\t$PKTime.start()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _on_OutlineAnim_animation_finished\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_OutlineAnim_animation_finished(anim_name: String):\n\tif anim_name != \"Flash\":\n\t\treturn\n\tmatch _current_skill_action:\n\t\t\"pkfire\":\n\t\t\t$OutlineAnim.play(\"Fire\")\n\t\t\"pkfreeze\":\n\t\t\t$OutlineAnim.play(\"Freeze\")\n\t\t\"pkthunder\":\n\t\t\t$OutlineAnim.play(\"Thunder\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _on_AimTime_timeout\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_AimTime_timeout():\n\tif _state == ATTACK_PREP:\n\t\tcamera.move_offset(Vector2(_direction.x * 30, _direction.y * 20), 0.3)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func set_direction_and_input\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_direction_and_input(new_dir: Vector2):\n\t_input_vector = new_dir\n\tset_direction(new_dir)\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func set_direction\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_direction(new_dir: Vector2):\n\t_direction = new_dir\n\teventRayCaster.rotation = _direction.angle() - TAU/4\n\tblend_position(new_dir)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func set_debug_speed\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_debug_speed(enabled: bool):\n\t_debug_speed = enabled\n\n# Override\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _update_party_positions\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _update_party_positions(oldpos: Vector2, multiplier := 1.0):\n\tvar maxDist = round(max(abs(oldpos.x-self.position.x), abs(oldpos.y-self.position.y)) * multiplier)\n\tfor i in maxDist:\n\t\tglobal.partySpace.push_front(lerp(oldpos, position.round(), (i+1)/maxDist))\n\t\tglobal.partySpace.pop_back()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _on_TPCrouchTime_timeout\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_TPCrouchTime_timeout():\n\tif _crouch:\n\t\t_tp_crouch_timer_done = true\n\t\tglobal.party_call(\"play_flash_anim\", \"TeleportFlash\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _on_TPTakeOffTime_timeout\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_TPTakeOffTime_timeout():\n\tglobal.party_call(\"set_collisions\", false)\n\t_tp_take_off_timer_done = true\n\tuiManager.fix_camera()\n\tyield(get_tree().create_timer(.6), \"timeout\")\n\tpause()\n#\tyield(uiManager.open_teleport(), \"completed\")\n\tcamera.set_current()\n\tcamera.reset()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/party/Player.gd",
+        "^((?:static )?func _turn_to\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _turn_to(which_direction:Vector2,axis_constraints:Dictionary):\n\t_direction = which_direction\n\tif (abs(which_direction.x) > abs(which_direction.y) or !axis_constraints.y) and which_direction.x != 0 and axis_constraints.x:\n\t\t_direction = Vector2(sign(which_direction.x),0)\n\telif axis_constraints.y and which_direction.y != 0:\n\t\t_direction = Vector2(0,sign(which_direction.y))\n\tblend_animation(\"Idle\", _direction)\n\tset_anim_state(\"Idle\")\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _test_all_yaml\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _test_all_yaml():\n\tvar test_dict := {}\n\t\n\tvar types := [\"Animations\", \"Battlers\", \"BattleScripts\", \"BattleSkills\", \"Dialogue\", \"FieldSkills\", \"Items\", \"MapMarkers\", \"NamingSequences\", \"PassiveSkills\", \"Shops\", \"StatusAilments\"]\n\t\n\tfor key in types:\n\t\ttest_dict[key] = {}\n\t\t_load_data(\"res://Data/%s/\" % key, test_dict[key])\n\t\tfor sub_key in test_dict[key]:\n\t\t\tprint(\"== %s ==\" % sub_key)\n\t\t\tprint(test_dict[key][sub_key])\n\t\t\tprint(\"\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _init\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _init():\n\t_init_flags()\n\t\n\tvar to_load := {\n\t\t\"BattleSkills\": _battle_skills,\n\t\t\"FieldSkills\": _field_skills,\n\t\t\"PassiveSkills\": _passive_skills,\n\t\t\"Shops\": _shop_lists,\n\t\t\"Items\": _items,\n\t\t\"StatusAilments\": _status_ailments\n\t}\n\tfor key in to_load:\n\t\t_load_data(\"res://Data/%s/\" % key, to_load[key])\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\tgod_storage = Inventory.new(Inventory.InvType.STORAGE_GOD)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _init_flags\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _init_flags():\n\tvar flag_names := [\n\t\t#===GLOBAL===\n\t\t#Melodies\n\t\t\"doll_melody\",\n\t\t\"canary_melody\",\n\t\t\"monkey_melody\",\n\t\t\"piano_melody\",\n\t\t\"cactus_melody\",\n\t\t\"dragon_melody\",\n\t\t\"eve_melody\",\n\t\t\"grave_melody\",\n\t\t\n\t\t#Abilities\n\t\t\"switch_leader\",\n\t\t\"bat\",\n\t\t\"energy_beam\",\n\t\t\"eagle_feather\",\n\t\t\"encore_tutorial\",\n\t\t\"used_encore\",\n\t\t\n\t\t#Misc\n\t\t\"earned_cash\",\n\t\t\"good_morning\",\n\t\t\"saved\",\n\t\t\n\t\t#Debug\n\t\t\"npc_disappear_1\",\n\t\t\"npc_dialog_1\",\n\t\t\"npc_dialog_2\",\n\t\t\n\t\t#Exploration\n\t\t\"visited_podunk\",\n\t\t\"visited_magicant\",\n\t\t\"visited_merrysville\",\n\t\t\"visited_twinkle_elementary\",\n\t\t\"visited_reindeer\",\n\t\t\"visited_spookane\",\n\t\t\"visited_snowman\",\n\t\t\"visited_yucca\",\n\t\t\"visited_youngtown\",\n\t\t\"visited_ellay\",\n\t\t\"visited_mtitoi\",\n\t\t\n\t\t#Pippi Banter\n\t\t\"pippi_reunion\",\n\t\t\"pippi_met_lloyd\",\n\t\t\"pippi_met_ana\",\n\t\t\"pippi_met_teddy\",\n\t\t\"pippi_rocket\",\n\t\t\n\t\t#Paty Members Visit Magicant\n\t\t\"lloyd_magicant\",\n\t\t\"ana_magicant\",\n\t\t\"teddy_magicant\",\n\t\t\n\t\t#===ACT 1===\n\t\t#Ninten's House\n\t\t\"poltergeist\",\n\t\t\"mimmie_door_opened\",\n\t\t\"doll_attack\",\n\t\t\"pillow_attack\",\n\t\t\"minnie_leave\",\n\t\t\"minnie_door\",\n\t\t\"doll_defeated\",\n\t\t\"phone_ring\",\n\t\t\"talked_to_dad\",\n\t\t\"mimmie_ask_key\",\n\t\t\"carol_ask_key\",\n\t\t\"mick_scratch\",\n\t\t\"mick_telepathy\",\n\t\t\"ninten_basement_door\",\n\t\t\"got_juice\",\n\t\t\"got_diary\",\n\t\t\"got_dog_treats\",\n\t\t\"got_asthma_spray\",\n\t\t\"gave_treats\",\n\t\t\n\t\t#Podunk\n\t\t\"beat_dog_bridge\",\n\t\t\"pippis_mom_call\",\n\t\t\"pippis_mom_help\",\n\t\t\n\t\t#Podunk Cemetery\n\t\t\"disguised_zombie_defeated\",\n\t\t\"cem_roots_grown\",\n\t\t\"got_shovel\",\n\t\t\"returned_shovel\",\n\t\t\n\t\t#Podunk Catacombs\n\t\t\"hidden_entrance_opened\",\n\t\t\"pippi_fight\",\n\t\t\"pippi_fought\",\n\t\t\"pippi_rescued\",\n\t\t\"courage_badge_received\",\n\t\t\"church_door_opened\",\n\t\t\"church_exited\",\n\t\t\n\t\t#Return to podunk\n\t\t\"canary_found\",\n\t\t\"wally_attack\",\n\t\t\"wally_fought\", # duplicated but ANYWAYS we shouldn't touch either of these cuz of backwards compatibility with older saves\n\t\t\"wally_defeat\",\n\t\t\"pippi_reunite\",\n\t\t\"alfred_song\",\n\t\t\"leave_canary_village\",\n\t\t\"pippi_delivered\",\n\t\t\n\t\t#Zoo\n\t\t\"zoo_key_stolen\",\n\t\t\"starman_jr_fought\",\n\t\t\"zoo_freed\",\n\t\t\"monkey_apologize\",\n\t\t\"guard_moved\",\n\t\t\"ninten_family_goodbye\",\n\t\t\n\t\t#===ACT 2===\n\t\t\n\t\t#Magicant\n\t\t\"got_magic_candy\",\n\t\t\"got_magic_ribbon\",\n\t\t\"lent_cash_card\",\n\t\t\"got_big_bag\",\n\t\t\"met_happiness_guy\",\n\t\t\"met_guy_who_talks_about_how_you_cant_part_if_you_havent_met\",\n\t\t\"got_nicknamed\",\n\t\t\"slept_at_spoon_guys_place\",\n\t\t\"guard_riddle_solved\",\n\t\t\"fountain_scouts_met\",\n\t\t\"marys_story_learned\",\n\t\t\"enteredwell\",\n\t\t\"first_flying_man\",\n\t\t\"flying_man_in_party\",\n\t\t\"flying_man_1_joined\",\n\t\t\"flying_man_2_joined\",\n\t\t\"flying_man_3_joined\",\n\t\t\"flying_man_4_joined\",\n\t\t\"flying_man_5_joined\",\n\n\t\t\"onyx_hook_found\",\n\t\t\"fish_attack\",\n\t\t\"fish_defeat\",\n\t\t\n\t\t\"forgotten_man_1\",\n\t\t\"forgotten_man_2\",\n\t\t\"forgotten_man_3\",\n\t\t\"forgotten_man_4\",\n\t\t\"forgotten_man_5\",\n\t\t\n\t\t#Merrysville 1\n\t\t\"roof_door_checked\",\n\t\t\"janitor_cutscene_finished\",\n\t\t\"lloyd_roof_1\",\n\t\t\n\t\t#Sweet's Little Factory\n\t\t\"rat_king_1\",\n\t\t\"rat_king_2\",\n\t\t\"sweet_factory_key_1\",\n\t\t\"got_br_wings\",\n\t\t\"got_br_head\",\n\t\t\"br_progress_1\",\n\t\t\"br_progress_1_arrived\",\n\t\t\"br_wings_attached\",\n\t\t\"br_progress_2\",\n\t\t\"br_progress_2_arrived\",\n\t\t\"br_head_attached\",\n\t\t\"br_progress_3\",\n\t\t\"br_progress_3_arrived\",\n\t\t\"br_finishing_touch\",\n\t\t\"rat_king_attack\",\n\t\t\"rat_king_defeat\",\n\t\t\"rat_king_disappear\",\n\t\t\"bottle_rocket_found\",\n\t\t\"sweet_factory_bomb_chain\",\n\t\t\"sweet_factory_exit_open\",\n\t\t\n\t\t#Merrysville 2\n\t\t\"lloyd_befriended\",\n\t\t\"lab_destroyed\",\n\t\t\"missile_explosion\",\n\t\t\"missile_damage_seen\",\n\t\t\"weird_teacher_appear\",\n\t\t\"weird_teacher_alt_dialogue\",\n\t\t\"weird_teacher_real_rocket_launched\",\n\t\t\"got_factory_pass\",\n\t\t\n\t\t#Duncan's Factory\n\t\t\"guard_dog_beaten\",\n\t\t\"drdistorto_1\",\n\t\t\"drdistorto_2\",\n\t\t\"drdistorto_3\",\n\t\t\"drdistorto_4\",\n\t\t\"computer_left_hacked\",\n\t\t\"computer_right_hacked\",\n\t\t\"computers_all_hacked\",\n\t\t\"franklin_badge_found\",\n\t\t\"drdistorto_attack\",\n\t\t\"drdistorto_defeat\",\n\t\t\"rocket_launched\",\n\t\t\"drdistorto_disappear\",\n\t\t#Merrysville 3\n\t\t\"lloyd_kitchen\",\n\t\t\"fixed_merrysville_road_bridge\",\n\t\t\"lloyd_mom_goodbye\",\n\t\t\"train_to_reindeer\",\n\n\t\t#===ACT 3===\n\n\t\t#Reindeer\n\t\t\"met_arms_dealer\",\n\t\t\"received_swindler_money\",\n\t\t\"donated_to_charity\",\n\t\t\"found_ana_hat\",\n\n\t\t#Magicant\n\t\t\"magicant_second_visit\",\n\t\t\"wally2_attack\",\n\t\t\"wally2_defeat\",\n\t\t\n\t\t#Snowman\n\t\t\"lloyd_asleep\",\n\t\t\"ana_befriended\",\n\t\t\"nancy_attack\",\n\t\t\"nancy_defeat\",\n\t\t\n\t\t#===ACT 4===\n\t\t\n\t\t#Spookane\n\t\t\"magicant_third_visit\",\n\t\t\n\t\t#Yucca Desert\n\t\t\"giantrobot1_attack\",\n\t\t\"giantrobot1_defeat\",\n\t\t\"magicant_fourth_visit\",\n\t\t\n\t\t#Youngtown #Swamp #Ellay #MtItoi\n\t\t\"magicant_fifth_visit\",\n\t\t\"magicant_sixth_visit\"\n\t]\n\t\n\tfor flag in flag_names:\n\t\tflags[flag] = false\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func _load_data\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _load_data(path: String, dest: Dictionary, sub_dir: String = \"\"):\n\tvar dir = Directory.new()\n\tif dir.open(path) != OK:\n\t\tprint(\"An error occurred when trying to access %s.\" % path)\n\t\treturn\n\tdir.list_dir_begin()\n\tvar file_name = dir.get_next()\n\twhile file_name != \"\":\n\t\tif dir.current_is_dir():\n\t\t\tif not file_name in [\".\", \"..\"]:\n\t\t\t\t_load_data(\"%s%s/\" % [path, file_name], dest, \"%s%s/\" % [sub_dir, file_name])\n\t\telse:\n\t\t\tif file_name.ends_with(\".yaml\"):\n\t\t\t\tvar json_data = get_json_data(path + file_name)\n\t\t\t\tdest[sub_dir + file_name.trim_suffix(\".yaml\")] = json_data\n\t\tfile_name = dir.get_next()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func set_flag\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_flag(flag_name: String, value: bool, emit_signal := true):\n\tif flags.has(flag_name):\n\t\tflags[flag_name] = value\n\t\tif emit_signal: global.emit_signal(\"flags_updated\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/global/globalData.gd",
+        "^((?:static )?func set_object_flag\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func set_object_flag(flag_name: String, value: bool, emit_signal := true):\n\tobject_flags[flag_name] = value\n\tif emit_signal: global.emit_signal(\"flags_updated\")\n\n########################### DATA GETTERS ###########################\n\n# AILMENTS\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _set_texture\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _set_texture(tex: Texture):\n\tsprite = tex\n\t$Sprite.texture = sprite\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _set_offset\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _set_offset(off: Vector2):\n\tdoor_offset = off\n\tif Engine.is_editor_hint():\n\t\t_update_positions()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _update_positions\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _update_positions():\n\t$Sprite.position = door_offset\n\tfor obj in [$Area2D, $interact, $StaticBody2D, $NonPlayerStaticBody2D]:\n\t\tobj.position.y = door_offset.y + 32\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\tif Engine.is_editor_hint():\n\t\treturn\n\t_update_positions()\n\t_update_door_state()\n\tglobal.connect(\"flags_updated\", self, \"_update_door_state\")\n\t$AnimationPlayer.play(\"Normal\")\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _update_door_state\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _update_door_state():\n\tif key or blocked or one_way or locked:\n\t\tlock()\n\telse:\n\t\tunlock()\n\tif flag and globaldata.flags.has(flag):\n\t\t_unlocked = globaldata.flags[flag]\n\t\t$interact/ButtonPrompt.enabled = !globaldata.flags[flag]\n\t\t\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _on_Area2D_body_entered\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_Area2D_body_entered(body):\n\t# \"Locked\" property logic\n\tif locked and flag and globaldata.flags[flag]: \n\t\tunlock()\n\t\tlocked = false\n\tif _is_valid_body_in_area() and $Timer.time_left == 0 and _unlocked \\\n\t\t\tand $AnimationPlayer.current_animation == \"Normal\" and !one_way:\n\t\topen()\n\t\n\tif blocked and global.get_player().is_running() and global.get_player().get_direction().y == -1 and !_unlocked:\n\t\tglobal.currentCamera.shake_camera(1, 0.2, Vector2(2,0))\n\t\topen()\n\t\tunlock()\n\t\tblocked = false\n\t\tif flag and globaldata.flags.has(flag):\n\t\t\tglobaldata.flags[flag] = true\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _on_Area2D_body_exited\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_Area2D_body_exited(body):\n\tif global.get_player().is_paused():\n\t\t$AnimationPlayer.play(\"Normal\")\n\telif !_is_valid_body_in_area(body) and _unlocked:\n\t\t$Timer.start()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/Main/Openable Door.gd",
+        "^((?:static )?func _on_Timer_timeout\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_Timer_timeout():\n\tif _is_valid_body_in_area():\n\t\treturn\n\t$AnimationPlayer.play(\"Normal\")\n\tif end_sound != \"None\" and !global.get_player().is_paused():\n\t\tclose()\n\tif one_way: lock(); close()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/NamingScreen/ButtonPrompts.gd",
+        "^((?:static )?func _ready\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _ready():\n\t$Present/ButtonPrompt.force_show()\n\t$NPC/ButtonPrompt.force_hide()\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/NamingScreen/ButtonPrompts.gd",
+        "^((?:static )?func refresh\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func refresh(quick := false):\n\tmatch $ButtonPromptsArrow.cursor_index:\n\t\t0:\n\t\t\t$Present/ButtonPrompt.force_show(quick)\n\t\t\t$NPC/ButtonPrompt.force_show(quick)\n\t\t1:\n\t\t\t$Present/ButtonPrompt.force_show(quick)\n\t\t\t$NPC/ButtonPrompt.force_hide(quick)\n\t\t2:\n\t\t\t$Present/ButtonPrompt.force_hide(quick)\n\t\t\t$NPC/ButtonPrompt.force_show(quick)\n\t\t3:\n\t\t\t$Present/ButtonPrompt.force_hide(quick)\n\t\t\t$NPC/ButtonPrompt.force_hide(quick)\n\n"
+    },
+    {
+      "selector": [
+        "regex",
+        "Scripts/UI/NamingScreen/ButtonPrompts.gd",
+        "^((?:static )?func _on_ButtonPromptsArrow_moved\\([^\\n]*\\):[^\\n]*\\n.*?)(?=^(?:static )?func |\\Z)",
+        1,
+        "string"
+      ],
+      "expected": "func _on_ButtonPromptsArrow_moved(dir):\n\trefresh()\n"
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/Present"
+      ],
+      "expected": {
+        "position": [
+          75,
+          57
+        ],
+        "texture": {
+          "ExtResource": 25
+        },
+        "hframes": 5
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/Present/ButtonPrompt"
+      ],
+      "expected": {
+        "material": {
+          "SubResource": 16
+        },
+        "position": [
+          0,
+          -8
+        ],
+        "offset": [
+          0,
+          -8
+        ]
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/NPC"
+      ],
+      "expected": {
+        "position": [
+          104,
+          50
+        ],
+        "texture": {
+          "ExtResource": 26
+        },
+        "hframes": 5,
+        "vframes": 4,
+        "frame": 1
+      }
+    },
+    {
+      "selector": [
+        "node",
+        "Maps/Naming screen.tscn",
+        "CanvasLayer/ButtonPrompts/NPC/ButtonPrompt"
+      ],
+      "expected": {
+        "material": {
+          "SubResource": 16
+        },
+        "position": [
+          0,
+          -16
+        ],
+        "type": "NPCs",
+        "offset": [
+          0,
+          -16
+        ]
+      }
+    }
+  ]
+}

@@ -149,7 +149,7 @@
     "navigation_uses_caller_repeat": true
   },
   "dependencies": {
-    "content/native-house-presentation.json": "dee92cd2ffc13e39eea0b2ccd38ddac81b4601d1d634111cc19352c29abe504a",
+    "content/native-house-presentation.json": "cb5df794ea64caa7350bbf231e29f7a068b6fe87988ae9010b75f8215587c9b6",
     "romfs/battle-preview/source.json": "f3201b168b8dad120ed65aacab2d71d00b566a2f0c3001a7d8ae8b8dee088c68",
     "romfs/battle-preview/font.t3x": "fe8353da53e311e53d3e0b861e38376cf946f4f1e93c777be47f65ed0e25cf39",
     "romfs/house-preview/cursor.t3x": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"

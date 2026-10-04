@@ -15,10 +15,12 @@ import re
 import shutil
 import struct
 import subprocess
+import sys
 import tempfile
 import zlib
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 HEADER=64
 STRIDE=96
 MAGIC=b'ENCAUD01'
@@ -179,7 +181,11 @@ def stage_files(source):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=['compile','verify'],nargs='?',default='compile');parser.add_argument('--recipe',type=Path,default=ROOT/'content/native-audio.json');parser.add_argument('--upstream',type=Path,default=ROOT/'upstream/MOTHER-Encore');parser.add_argument('--output',type=Path,default=ROOT/'romfs');args=parser.parse_args()
-    recipe=json.loads(args.recipe.read_text());lock=json.loads((ROOT/'upstream.lock').read_text());check(recipe['upstream_commit']==lock['commit'],'Audio recipe/upstream lock mismatch')
+    recipe=json.loads(args.recipe.read_text());
+    if args.recipe.resolve()==(ROOT/'content/native-audio.json').resolve():
+        from tools.phone_linker_bindings import verify_audio
+        verify_audio(recipe,ROOT)
+    lock=json.loads((ROOT/'upstream.lock').read_text());check(recipe['upstream_commit']==lock['commit'],'Audio recipe/upstream lock mismatch')
     if args.action=='verify':
         manifest=json.loads((args.output/'data/opening-audio-manifest.json').read_text())
         check(manifest['recipe_sha256']==sha(json.dumps(recipe,sort_keys=True,separators=(',',':')).encode()),'Audio recipe changed since compilation')

@@ -69,14 +69,15 @@ if(BUILD_TESTING)
     add_dependencies(encore_core_tests encore_content)
     add_test(NAME core COMMAND encore_core_tests ${CMAKE_SOURCE_DIR}/romfs/sandbox.encpak)
     add_test(NAME host_smoke COMMAND encore_host --pack ${CMAKE_SOURCE_DIR}/romfs/sandbox.encpak --smoke)
-    add_test(NAME python_tools COMMAND ${Python3_EXECUTABLE} -m unittest discover -s tests -p test_*.py -v)
+    add_test(NAME python_tools COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/python_suite.py --ctest-dir ${CMAKE_BINARY_DIR})
     set_tests_properties(python_tools PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
     set_tests_properties(core host_smoke python_tools PROPERTIES TIMEOUT 60)
     # The native asset/compiler and corruption suite now includes SDK doubles
     # and source-image verification, plus real temporary Git repositories.
-    # The same aggregate suite exceeded 180s on hosted Clang in run 37128212084;
-    # retain every assertion and a finite budget for the complete suite.
-    set_tests_properties(python_tools PROPERTIES TIMEOUT 300)
+    # Full discovery duplicated the separately registered binding suites and
+    # reached 1800.02s on hosted Clang. python_suite.py partitions by exact
+    # method IDs, retaining new unregistered modules and every subTest.
+    set_tests_properties(python_tools PROPERTIES TIMEOUT 1800)
     add_executable(encore_progression_tests tests/progression_tests.cpp)
     target_link_libraries(encore_progression_tests PRIVATE encore_core)
     add_test(NAME upstream_progression COMMAND encore_progression_tests)
@@ -693,4 +694,80 @@ if(BUILD_TESTING)
  add_test(NAME items_binding_consumer COMMAND encore_items_binding_consumer_tests ${CMAKE_SOURCE_DIR}/build/items-binding-fixtures ${CMAKE_SOURCE_DIR}/romfs/data/opening.encbattle ${CMAKE_SOURCE_DIR}/romfs/data/opening.encround)
  add_test(NAME items_binding_fixtures COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/items_binding_fixtures.py)
  set_tests_properties(items_presentation_bindings items_binding_consumer items_binding_fixtures PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_test(NAME world_program_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_world_program_bindings)
+ set_tests_properties(world_program_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_test(NAME programme_lowering_recipe COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_programme_lowering_recipe)
+ add_test(NAME battle_entry_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_battle_entry_bindings)
+ set_tests_properties(programme_lowering_recipe battle_entry_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_test(NAME ui_presentation_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_ui_presentation_bindings)
+ set_tests_properties(ui_presentation_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_custom_target(encore_entry_binding_fixtures COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tools/battle_entry_bindings.py fixtures --out ${CMAKE_SOURCE_DIR}/build/battle-entry-bindings-fixtures WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+ add_executable(encore_entry_binding_consumer_tests tests/battle_entry_binding_consumer_tests.cpp)
+ target_link_libraries(encore_entry_binding_consumer_tests PRIVATE encore_core)
+ add_dependencies(encore_entry_binding_consumer_tests encore_entry_binding_fixtures)
+ add_test(NAME battle_entry_binding_consumer COMMAND encore_entry_binding_consumer_tests ${CMAKE_SOURCE_DIR}/build/battle-entry-bindings-fixtures ${CMAKE_SOURCE_DIR}/romfs/data/opening.encroom)
+ set_tests_properties(battle_entry_binding_consumer PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_custom_target(encore_house_binding_fixtures COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/house_binding_fixtures.py --prepare-only WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+ add_executable(encore_house_binding_consumer_tests tests/house_binding_consumer_tests.cpp)
+ target_link_libraries(encore_house_binding_consumer_tests PRIVATE encore_core)
+ add_dependencies(encore_house_binding_consumer_tests encore_house_binding_fixtures)
+ add_test(NAME house_source_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_house_source_bindings)
+ add_test(NAME house_binding_consumer COMMAND encore_house_binding_consumer_tests ${CMAKE_SOURCE_DIR}/build/house-binding-fixtures ${CMAKE_SOURCE_DIR}/romfs/data/opening.encroom ${CMAKE_SOURCE_DIR}/romfs/data/opening.encbattle)
+ add_test(NAME house_binding_fixtures COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/house_binding_fixtures.py)
+ set_tests_properties(house_source_bindings house_binding_consumer house_binding_fixtures PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_custom_target(encore_naming_binding_fixtures COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/test_naming_presentation_bindings.py --prepare-only WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+ add_executable(encore_naming_binding_tests tests/naming_presentation_bindings_tests.cpp)
+ target_link_libraries(encore_naming_binding_tests PRIVATE encore_core)
+ add_dependencies(encore_naming_binding_tests encore_naming_binding_fixtures)
+ add_test(NAME naming_presentation_bindings COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/test_naming_presentation_bindings.py)
+ add_test(NAME naming_binding_consumer COMMAND encore_naming_binding_tests ${CMAKE_SOURCE_DIR}/build/naming-bindings-fixtures/default.encnewgame ${CMAKE_SOURCE_DIR}/romfs/data/opening.encsettings)
+ set_tests_properties(naming_presentation_bindings naming_binding_consumer PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_test(NAME phone_linker_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_phone_linker_bindings)
+ set_tests_properties(phone_linker_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_test(NAME pillow_source_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_pillow_source_bindings)
+ set_tests_properties(pillow_source_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()
+
+if(BUILD_TESTING)
+ add_executable(encore_playable_opening_tests tests/playable_opening_tests.cpp)
+ target_link_libraries(encore_playable_opening_tests PRIVATE encore_core)
+ add_test(NAME playable_opening COMMAND encore_playable_opening_tests ${CMAKE_SOURCE_DIR}/romfs/data)
+ set_tests_properties(playable_opening PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
+endif()
+
+# These unittest suites do not invoke the current CMake sanitizer binaries.
+# Normal GCC/Clang jobs run every method once; CI sanitizer jobs can omit only
+# this label while retaining fixture preparers, source CLI and C++ consumers.
+if(BUILD_TESTING)
+ set_tests_properties(
+  python_tools encounter_dependency_manifest battle_round_source_bindings
+  round_recipe_source boss_presentation_bindings phone_presentation_bindings
+  items_presentation_bindings world_program_bindings programme_lowering_recipe
+  battle_entry_bindings ui_presentation_bindings house_source_bindings
+  naming_presentation_bindings phone_linker_bindings pillow_source_bindings
+  PROPERTIES LABELS python_unit)
 endif()

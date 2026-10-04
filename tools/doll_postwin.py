@@ -40,74 +40,10 @@ def receipt(ex):
         require(yaml.safe_load(ex.text(path))==parsed,'Post-win native/Python parser mismatch: '+path)
     return data
 
-def compile_dialogue(doc,end_duration):
-    require(isinstance(doc,dict)and list(doc)==[str(i)for i in range(8)],'Post-win phrase graph')
-    require(end_duration>0,'Post-win camera return duration')
-    result=[]
-    def emit(kind,phrase=0,actor='None',**payload):result.append(dict(kind=kind,phrase=phrase,actor=actor,**payload))
-    emit('BeginCutscene')
-    allowed={'actors','actorsdir','actorsmove','teleportactors','changecam','returncam','wait','autoadvance','caninput','goto','actorsanim','talker','name','sound','text','actorsemote','actorsturn','showbox','actorsjump','actorsshake','setflags','unsetflags','soundeffect','ovbattlemusic'}
-    for i in range(8):
-        p=doc[str(i)]
-        require(isinstance(p,dict)and not(set(p)-allowed),'Unknown post-win phrase field')
-        require(p.get('goto')==(str(i+1)if i<7 else None),'Post-win control flow')
-        if 'text'in p:
-            require(i in(2,7)and p['sound']=='Kid'and 'wait'not in p and p['name']=='DIALOGUE_PODUNK_CUTSCENES_DOLL_DEFEATED_SPEAKER_Mimmie'
-                    and p['text']=='DIALOGUE_PODUNK_CUTSCENES_DOLL_DEFEATED_'+str(i),'Post-win text mode')
-            emit('ShowDialogue',i,'Mimmie',dialogue_id=4 if i==2 else 5)
-        else:
-            require(p.get('autoadvance')is True and p.get('caninput')is False and 'wait'in p,'Post-win wait mode')
-        if 'actors'in p:
-            require(i==0 and list(p['actors'].items())==[('ninten','leader'),('doll','Objects/npcdoll'),('mimmie','Objects/npc2'),('minnie','Objects/npc3')],'Post-win bindings/order')
-            for actor in p['actors']:
-                emit('BindActor',i,actor.title());emit('ActorPersistent',i,actor.title())
-            emit('YieldIdle',i)
-        if 'wait'in p:emit('StartWait',i,duration=p['wait'])
-        if 'showbox'in p:require(i==3 and p['showbox']is False,'Post-win showbox mode')
-        if 'ovbattlemusic'in p:
-            require(i==0 and p['ovbattlemusic']is False,'Post-win music policy');emit('OverworldBattleMusic',i,value=0)
-        if 'soundeffect'in p:
-            require(i==0 and p['soundeffect']=='M3/SMAAAASH.wav','Post-win sound');emit('PlaySound',i,resource='res://'+SOUND)
-        if 'talker'in p:
-            require(i==2 and p['talker']=='mimmie','Post-win talker');emit('SetTalker',i,'Mimmie')
-        for actor,v in p.get('teleportactors',{}).items():
-            require(i==0 and actor=='minnie'and set(v)=={'x','y'},'Post-win teleport fields')
-            emit('TeleportActor',i,actor.title(),vector=[v['x'],v['y']])
-        for actor,v in p.get('actorsdir',{}).items():
-            require(actor in('ninten','mimmie')and set(v)=={'x','y'},'Post-win direction fields')
-            emit('SetActorDirection',i,actor.title(),vector=[v['x'],v['y']])
-        for actor,v in p.get('actorsmove',{}).items():
-            require(actor in('doll','mimmie')and set(v)>={'movement','speed','type'}and not(set(v)-{'movement','speed','type','animation'}),'Post-win move fields')
-            require(v['type']in('step','position')and v.get('animation','')in('','Walk'),'Post-win move mode')
-            require(v['movement']and all(set(e)=={'x','y'}for e in v['movement']),'Post-win move entry')
-            emit('MoveActorPath',i,actor.title(),path=v)
-        for actor,v in p.get('actorsturn',{}).items():
-            require(actor=='ninten'and set(v)=={'x','y','speed'},'Post-win turn fields')
-            emit('TurnActor',i,'Ninten',vector=[v['x'],v['y']],duration=v['speed'])
-        for actor,v in p.get('actorsshake',{}).items():
-            require(i==2 and actor=='mimmie'and set(v)=={'x','length'},'Post-win shake fields')
-            emit('ShakeActor',i,'Mimmie',vector=[v['x'],0],duration=v['length'])
-        for actor,v in p.get('actorsjump',{}).items():
-            require(actor in('doll','mimmie')and set(v)in({'height','speed'},{'height','length'}),'Post-win jump fields')
-            emit('JumpActor',i,actor.title(),value=v['height'],duration=v.get('length',v.get('speed')))
-        for actor,v in p.get('actorsanim',{}).items():
-            require(i==0 and actor=='doll'and v=={'anim':'Idle'},'Post-win animation');emit('AnimateActor',i,'Doll',clip='Doll Idle')
-        for actor,v in p.get('actorsemote',{}).items():
-            require(i==2 and actor=='mimmie'and v=='dot','Post-win emote');emit('EmoteActor',i,'Mimmie',clip='dot')
-        if 'changecam'in p:
-            require((i,p['changecam'])in[(0,'doll'),(2,'mimmie')],'Post-win camera actor')
-            emit('ChangeCamera',i,p['changecam'].title());emit('YieldIdle',i)
-        if 'returncam'in p:emit('ReturnCamera',i,duration=p['returncam'])
-        if 'setflags'in p:
-            require((i,p['setflags'])in[(0,'doll_defeated'),(1,'pillow_attack')],'Post-win flag')
-            emit('SetFlag',i,flag=p['setflags'],value=1)
-        if 'unsetflags'in p:
-            require(i==0 and p['unsetflags']=='poltergeist','Post-win unset flag');emit('SetFlag',i,flag=p['unsetflags'],value=0)
-        emit('AwaitDialogue'if'text'in p else'AwaitTimer',i)
-    emit('StopInteraction',7,'Mimmie');emit('SetTalker',7)
-    for actor in ('Ninten','Doll','Mimmie','Minnie'):emit('RestoreActor',7,actor)
-    emit('CutsceneEnded',7);emit('DialogueDone',7,duration=end_duration)
-    return result
+def compile_dialogue(doc,end_duration,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.execute('postwin',doc,end_duration,root)
+
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--godot',type=Path,required=True);a=parser.parse_args()

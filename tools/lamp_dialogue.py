@@ -76,89 +76,12 @@ def number(value,lo=0,hi=1000):
 def action(kind,phrase=0,actor='None',vector=(0,0),value=0,duration=0,text='',detail=''):
     return dict(kind=kind,phrase=phrase,actor=actor,vector=list(vector),value=value,duration=duration,text=text,detail=detail)
 
-def compile_phrase(phrase,index):
-    if type(index) is not int or not 0<=index<=12: raise ValueError('Invalid lamp phrase index')
-    allowed={'actors','talker','wait','autoadvance','caninput','goto','actorsanim','music','actorsturn','movecam','changecam',
-        'actorsshake','actorsemote','objectsfunction','actorsmove','actorsjump','soundeffect','shakecam','startbattle','ovbattlemusic'}
-    if not isinstance(phrase,dict) or set(phrase)-allowed: raise ValueError('Unsupported lamp dialogue command')
-    if phrase.get('autoadvance') is not True or phrase.get('caninput') is not False or 'wait' not in phrase:
-        raise ValueError('Unsupported lamp phrase input/wait mode')
-    if index<12 and phrase.get('goto')!=str(index+1) or index==12 and 'goto' in phrase:
-        raise ValueError('Unsupported lamp control flow')
-    out=[]
-    def emit(kind,**kwargs): out.append(action(kind,index,**kwargs))
-    if 'actors' in phrase:
-        if index!=0 or phrase['actors']!={'ninten':'leader','lamp':'Objects/lamp'} or list(phrase['actors'])!=['ninten','lamp']:
-            raise ValueError('Unreviewed actor bindings/order')
-        for name,target in phrase['actors'].items():
-            emit('BindActor',actor=name.title(),text=target)
-            emit('ActorPersistent',actor=name.title())
-        emit('YieldIdle')
-    emit('StartWait',duration=number(phrase['wait'],0.001,2))
-    # This order comes from DialogueBox._handle_phrase, never YAML key order.
-    if 'objectsfunction' in phrase:
-        obj=phrase['objectsfunction']
-        valid={'Poltergeist/MusicArea':'play_music','Room Shaker':'delayed_start'}
-        if not isinstance(obj,dict) or len(obj)!=1 or any(valid.get(k)!=v for k,v in obj.items()):
-            raise ValueError('Unreviewed object method/body')
-        for target,method in obj.items(): emit('CallObjectDeferred',text=target,detail=method)
-    if 'ovbattlemusic' in phrase:
-        if phrase['ovbattlemusic'] is not True: raise ValueError('Unreviewed battle music setting')
-        emit('OverworldBattleMusic',value=1)
-    if 'music' in phrase:
-        if phrase['music']!='': raise ValueError('Unreviewed music command')
-        emit('MusicFadeOut',value=0,duration=2)
-    if 'soundeffect' in phrase:
-        if phrase['soundeffect']!='bash.mp3': raise ValueError('Unreviewed sound effect')
-        emit('PlaySound',text='res://Audio/Sound effects/bash.mp3',detail='dialogBoxSound')
-    if 'talker' in phrase:
-        if phrase['talker']!='lamp': raise ValueError('Unreviewed talker')
-        emit('SetTalker',actor='Lamp')
-    if 'actorsmove' in phrase:
-        keys(phrase['actorsmove'],['lamp']); move=phrase['actorsmove']['lamp'];keys(move,['movement','speed','type'])
-        if move['type']!='position' or not isinstance(move['movement'],list) or len(move['movement'])!=1: raise ValueError('Unreviewed actor movement')
-        target=move['movement'][0];keys(target,['x','y'])
-        emit('MoveActor',actor='Lamp',vector=(number(target['x']),number(target['y'])),value=number(move['speed'],1,600),text='position')
-    if 'actorsturn' in phrase:
-        if phrase['actorsturn']!={'ninten':{'x':1,'y':0}}: raise ValueError('Unreviewed actor turn')
-        number(phrase['actorsturn']['ninten']['x'],1,1); number(phrase['actorsturn']['ninten']['y'],0,0)
-        emit('TurnActor',actor='Ninten',vector=(1,0),duration=.08)
-    if 'actorsshake' in phrase:
-        keys(phrase['actorsshake'],['lamp']); shake=phrase['actorsshake']['lamp'];keys(shake,['x','length'])
-        emit('ShakeActor',actor='Lamp',vector=(number(shake['x'],0,2),0),duration=number(shake['length'],.001,1))
-    if 'actorsjump' in phrase:
-        jumps=phrase['actorsjump']
-        if not isinstance(jumps,dict) or len(jumps)!=1 or next(iter(jumps)) not in ['ninten','lamp']: raise ValueError('Unreviewed jumping actor')
-        for name,jump in jumps.items():
-            keys(jump,['height','length'])
-            emit('JumpActor',actor=name.title(),value=number(jump['height'],1,24),duration=number(jump['length'],.001,.35))
-    if 'actorsanim' in phrase:
-        keys(phrase['actorsanim'],['lamp']);anim=phrase['actorsanim']['lamp'];keys(anim,['anim'])
-        if anim['anim'] not in ['Idle','Open']: raise ValueError('Unreviewed lamp animation')
-        emit('AnimateActor',actor='Lamp',value=1,text=anim['anim'])
-    if 'actorsemote' in phrase:
-        if phrase['actorsemote']!={'ninten':'surprise'}: raise ValueError('Unreviewed actor emote')
-        emit('EmoteActor',actor='Ninten',text='surprise')
-    if 'shakecam' in phrase:
-        cam=phrase['shakecam']; keys(cam,['length','size'])
-        if cam['size']!='small': raise ValueError('Unreviewed camera shake size')
-        emit('ShakeCamera',vector=(1,0),value=4,duration=number(cam['length'],.001,.2),text='small')
-    if 'changecam' in phrase:
-        if phrase['changecam']!='lamp': raise ValueError('Unreviewed camera target')
-        emit('ChangeCamera',actor='Lamp');emit('YieldIdle')
-    if 'movecam' in phrase:
-        cam=phrase['movecam'];keys(cam,['x','y','time'])
-        # Reviewed source quirk: `time` is not consumed; only `length` is read.
-        # Accept exactly the original inert value, not an arbitrary ignored key.
-        if type(cam['time']) not in (float,int) or cam['time']!=1: raise ValueError('Unreviewed inert movecam.time')
-        emit('MoveCamera',vector=(number(cam['x']),number(cam['y'])),duration=1,text='sine',detail='out')
-    if 'startbattle' in phrase:
-        if phrase['startbattle']!={'battlers':[{'lamp':'lamp'}],'winflag':'poltergeist'}: raise ValueError('Unreviewed battle specification')
-        emit('QueueBattle',actor='Lamp',text='lamp',detail='poltergeist')
-    emit('AwaitTimer')
-    return out
+def compile_phrase(phrase,index,root=ROOT):
+    from tools import programme_lowering_recipe as recipe
+    return recipe.lamp_phrase(phrase,index,root)
 
-def compile_receipt(data,review):
+
+def compile_receipt(data,review,root=ROOT):
     verify_review(review)
     keys(data,['schema','commit','sources','godot','dialogue','log'])
     if data.get('schema')!=1 or data.get('commit')!=COMMIT or data.get('sources')!=review['sources']:
@@ -168,11 +91,8 @@ def compile_receipt(data,review):
         raise ValueError('Unreviewed Godot parser version')
     doc=data.get('dialogue');keys(doc,[str(i) for i in range(13)])
     if hashlib.sha256(canonical(doc)).hexdigest()!=review['parsed_sha256']: raise ValueError('Changed unreviewed parsed dialogue')
-    result=[action('BeginCutscene')]
-    for i in range(13): result+=compile_phrase(doc[str(i)],i)
-    result += [action('StopInteraction',12,'Lamp'),action('SetTalker',12,'None'),action('RestoreActor',12,'Ninten'),action('ReleaseBattleActor',12,'Lamp'),
-        action('CutsceneEnded',12),action('DialogueDone',12),action('RequestBattle',12,'Lamp',text='lamp',detail='poltergeist')]
-    return result
+    from tools import programme_lowering_recipe as recipe
+    return recipe.execute('lamp',doc,root=root)
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--source',type=Path);p.add_argument('--godot',type=Path);p.add_argument('--receipt',type=Path,default=RECEIPT);p.add_argument('--output',type=Path,default=OUTPUT)

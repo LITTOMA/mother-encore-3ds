@@ -3,6 +3,7 @@
 import argparse,hashlib,json,math,re,struct,sys,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'tools'))
 PIN='7d9246600fffe518408f5830d4848635019005a3'
 SECTION_NAMES=['Strings','Doors','Npcs','Segments','Tokens','Interaction','Boundaries','Resources','Clips','Keys','Parameters','Overrides','Profiles','Dialogues','OpenableDoors','StoryTriggers','StoryConditions']
 FORMATS=[None,'<4I8f6d4f','<8I11fd5I','<6I','<2I','<3f3d4I2d','<3I4f','<7I32s','<5Id3I','<df2fI','<I4f','<5I','<2I4f2I','<4I','<21I21f5d','<3I4f4I','<3I']
@@ -30,6 +31,9 @@ def verify_sources(ir,presentation=None,root=ROOT):
  for path,sha in sources.items():require(safe_path(path)and inventory['files'][path]['sha256']==sha and digest(root/'upstream/MOTHER-Encore'/path)==sha,'Changed source '+path)
  require(set(ir['dependencies'])=={'content/native-opening.json'},'Unknown house dependency')
  for path,sha in ir['dependencies'].items():require(digest(root/path)==sha,'Changed house dependency '+path)
+ from tools.house_source_bindings import check_house
+ check_house(ir,presentation,root)
+
 def lower(ir,presentation=None,root=ROOT,verify_assets=True):
  fields(ir,['schema','kind','commit','scope','sources','dependencies','fade_parameters','npc_parameters','doors','npcs','segments','interaction','boundaries','overrides','dialogues','openable_doors','story_triggers','story_conditions'],'house IR');require(ir['schema']in(4,5,6) and ir['commit']==PIN,'Unreviewed house IR')
  room=json.loads((root/'content/native-opening.json').read_text());require(room['upstream_commit']==ir['commit']and room['rules']==room['capabilities']and room['rules']in(4,5,6,7),'House room rules/pin')

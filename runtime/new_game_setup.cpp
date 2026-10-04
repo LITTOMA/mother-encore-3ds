@@ -46,7 +46,9 @@ bool NewGameSetupData::load(const uint8_t*p,size_t n,std::string&e){
  }
  auto&b=d.presentation;if(r.u32()!=1)return fail(e,"Naming presentation tail schema rejected");
  b.source_width=r.u32();b.source_height=r.u32();b.box=r.u32();b.cursor=r.u32();b.actor=r.u32();b.shadow=r.u32();
- for(auto&v:b.layouts)v=r.u32();for(auto&v:b.texts)v=r.u32();for(auto&v:b.sounds)v=r.u32();
+ for(auto&v:b.layouts)v=r.u32();
+ for(auto&v:b.texts)v=r.u32();
+ for(auto&v:b.sounds)v=r.u32();
  count=r.count(8);for(uint32_t i=0;i<count;++i)b.keyboard.push_back(r.u32());for(auto&v:b.field_bevel)v=r.real();
  auto unique_refs=[](const auto&values,size_t limit){std::set<uint32_t>ids;for(auto v:values)if(v>=limit||!ids.insert(v).second)return false;return true;};
  if(!b.source_width||!b.source_height||b.source_width>1024||b.source_height>1024||!unique_refs(std::array<uint32_t,4>{{b.box,b.cursor,b.actor,b.shadow}},d.resources.size())||!unique_refs(b.layouts,d.layouts.size())||!unique_refs(b.texts,d.texts.size())||!unique_refs(b.sounds,d.sounds.size())||b.keyboard.size()!=d.panels.size()||!unique_refs(b.keyboard,d.resources.size()))return fail(e,"Naming presentation reference rejected");

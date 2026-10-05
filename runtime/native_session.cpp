@@ -37,6 +37,24 @@ bool supported_roster(const NativeSessionData&data,const SessionSnapshot&s){
 const NativeSessionLevel* level_row(const NativeSessionData&data,int64_t level){for(const auto&row:data.levels())if(row.level==level)return &row;return nullptr;}
 bool contains(const std::vector<std::string>&v,const std::string&s){return std::find(v.begin(),v.end(),s)!=v.end();}
 bool supported_inventory(const NativeSessionData&data,ItemView items,const SessionSnapshot&s,std::string&e){
+ if(data.storage_capacity()){
+  if(s.characters[0].inventory.size()>items.metadata().capacity||s.storage.size()>data.storage_capacity())return fail(e,"Native session inventory/storage capacity rejected");
+  std::vector<uint32_t>counts(data.storage_policies().size());
+  auto check=[&](const SessionItem&item,bool stored){
+   size_t at=0;while(at<data.storage_policies().size()&&data.storage_policies()[at].item_id!=item.item_id)++at;
+   if(at==data.storage_policies().size())return fail(e,"Native session unknown storage item");
+   const auto&p=data.storage_policies()[at];uint32_t definition=item_no_index;
+   for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j)if(items.string(items.definition(j).source)==item.item_id){if(definition!=item_no_index)return fail(e,"Native session ambiguous storage definition");definition=j;}
+   if(definition==item_no_index||item.doses!=p.doses||++counts[at]>p.total_count||(stored&&item.equipped))return fail(e,"Native session storage doses/count/equipment rejected");
+   if(item.equipped&&(!(items.definition(definition).flags&uint32_t(ItemDefinitionFlag::Equipment))||std::all_of(p.boosts.begin(),p.boosts.end(),[](int32_t n){return n==0;})))return fail(e,"Native session unsupported storage equipment");
+   if(!p.required){auto a=std::find_if(data.acquisitions().begin(),data.acquisitions().end(),[&](const NativeSessionAcquisition&a){return a.item_id==item.item_id;});if(a==data.acquisitions().end())return fail(e,"Native session storage acquisition binding missing");bool flag=false;for(auto&f:s.flags)if(f.id==a->flag_id)flag=f.value;if(!flag)return fail(e,"Native session storage acquisition flag rejected");}
+   return true;
+  };
+  for(auto&i:s.characters[0].inventory)if(!check(i,false))return false;
+  for(auto&i:s.storage)if(!check(i,true))return false;
+  for(size_t i=0;i<counts.size();++i)if(data.storage_policies()[i].required&&counts[i]!=data.storage_policies()[i].total_count)return fail(e,"Native session required item conservation rejected");
+  return true;
+ }
  const auto&inventory=s.characters[0].inventory;const auto&initial=data.defaults().characters[0].inventory;
  if(initial.size()!=items.count(ItemSection::Instances)||inventory.size()<initial.size()||inventory.size()>items.metadata().capacity)return fail(e,"Native session unsupported inventory size");
  for(size_t i=0;i<initial.size();++i){const auto&item=inventory[i];const auto instance=items.initial_instance(uint32_t(i));
@@ -58,7 +76,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>4||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>5||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -98,6 +116,19 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
    d.acquisitions_.push_back(std::move(policy));
   }
  }
+ if(schema>=5){
+  d.storage_capacity_=r.u32();const auto n=r.count(16);std::set<std::string>unique;
+  if(!d.storage_capacity_||d.storage_capacity_>4096||!n)return fail(e,"Native session storage policy capacity rejected");
+  for(uint32_t i=0;i<n;++i){NativeSessionStoragePolicy p;p.item_id=r.text();p.doses=r.u32();p.total_count=r.u32();const auto required=r.u32();p.required=required!=0;for(auto&b:p.boosts){auto x=r.u32();if(x>65535)return fail(e,"Native session storage boost rejected");b=int32_t(x);}
+   if(p.item_id.empty()||!unique.insert(p.item_id).second||!p.doses||p.doses>65535||p.total_count!=1||required>1)return fail(e,"Native session storage item policy rejected");
+   const auto&initial=d.defaults_.characters[0].inventory;auto item=std::find_if(initial.begin(),initial.end(),[&](const SessionItem&i){return i.item_id==p.item_id;});
+   if(p.required){if(item==initial.end()||item->doses!=p.doses)return fail(e,"Native session required storage item binding rejected");}
+   else{if(item!=initial.end()||std::any_of(p.boosts.begin(),p.boosts.end(),[](int32_t n){return n!=0;}))return fail(e,"Native session acquired storage equipment rejected");auto a=std::find_if(d.acquisitions_.begin(),d.acquisitions_.end(),[&](const NativeSessionAcquisition&a){return a.item_id==p.item_id;});if(a==d.acquisitions_.end()||a->doses!=p.doses||a->max_count!=p.total_count)return fail(e,"Native session storage acquired item binding rejected");}
+   d.storage_policies_.push_back(std::move(p));
+  }
+  for(auto&i:d.defaults_.characters[0].inventory)if(!unique.count(i.item_id))return fail(e,"Native session storage missing initial item");
+  for(auto&a:d.acquisitions_)if(!unique.count(a.item_id))return fail(e,"Native session storage missing acquired item");
+ }
  if(!r.ok||r.n||d.text_speeds_.empty()||d.menu_flavors_.empty()||d.button_prompts_.empty()||!d.supports_settings(d.defaults_.settings))return fail(e,"Native session malformed/trailing settings payload");
  const auto*initial=level_row(d,d.defaults_.characters[0].level);
  const auto&c=d.defaults_.characters[0];if(!initial||c.experience!=initial->minimum_exp||c.hp>initial->stats[0]||c.pp>initial->stats[1]||c.learned_skills!=initial->skills)return fail(e,"Native session initial character disagrees with source rows");
@@ -127,9 +158,10 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
  if(!c.permanent_boosts.empty()||!c.status.empty()||!same_affinities(c.affinity_multipliers,initial.affinity_multipliers))return fail(e,"Native session unsupported permanent boost/status/affinity state");
  const auto*row=level_row(data,c.level);
  if(!row||c.experience<row->minimum_exp||c.experience>=row->next_exp||level_for_experience(room,int32_t(c.experience))!=c.level||row->minimum_exp!=room.experience(row->level-1)||row->next_exp!=room.experience(row->level))return fail(e,"Native session unsupported source progression");
- if(c.hp>row->stats[0]||c.pp>row->stats[1]||c.learned_skills!=row->skills)return fail(e,"Native session HP/PP/skills disagree with source level");
+ std::array<int32_t,7>derived{};if(!native_session_derived_stats(data,items,c,derived,e))return false;
+ if(c.hp>derived[0]||c.pp>derived[1]||c.learned_skills!=row->skills)return fail(e,"Native session HP/PP/skills disagree with source level");
  if(!supported_inventory(data,items,s,e))return false;
- if(!same_items(s.key_items,d.key_items)||!s.storage.empty()||!s.object_flags.empty()||!same_integers(s.keys,d.keys)||!s.rare_drops.empty())return fail(e,"Native session unsupported key/storage/object/counter state");
+ if(!same_items(s.key_items,d.key_items)||(!data.storage_capacity()&&!s.storage.empty())||!s.object_flags.empty()||!same_integers(s.keys,d.keys)||!s.rare_drops.empty())return fail(e,"Native session unsupported key/storage/object/counter state");
  if(s.flags.size()!=room.flag_count()||s.flags.size()!=d.flags.size())return fail(e,"Native session requires the complete story flag registry");
  for(const auto&f:s.flags){auto found=std::find_if(d.flags.begin(),d.flags.end(),[&](const SessionFlag&x){return x.id==f.id;});if(found==d.flags.end())return fail(e,"Native session unknown story flag");bool in_room=false;for(uint32_t i=0;i<room.flag_count();++i)if(room.string(room.flag(i).name_string)==f.id){in_room=true;break;}if(!in_room||(f.value!=found->value&&!contains(data.mutable_flags(),f.id)))return fail(e,"Native session unsupported story flag state");}
  std::set<std::string>seen;for(uint32_t i=0;i<house.count(HouseSection::Npcs);++i){const auto key=house.string(house.npc(i).seen_key);if(!key.empty())seen.emplace(key);}for(uint32_t i=0;i<house.count(HouseSection::Overrides);++i){const auto key=house.string(house.override_dialogue(i).seen_key);if(!key.empty())seen.emplace(key);}for(const auto&f:s.seen_dialogue_flags)if(!seen.count(f.id))return fail(e,"Native session unknown seen dialogue identity");
@@ -142,14 +174,29 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
  e.clear();return true;
 }
 
+bool native_session_derived_stats(const NativeSessionData&data,ItemView items,const SessionCharacter&c,std::array<int32_t,7>&out,std::string&e){
+ const auto*row=level_row(data,c.level);if(!row||!items.valid())return fail(e,"Native session derived stats resource rejected");auto next=row->stats;
+ if(data.storage_capacity()){
+  std::array<int64_t,7>delta{};
+  auto apply=[&](const SessionItem&i,int sign){if(!i.equipped)return true;auto p=std::find_if(data.storage_policies().begin(),data.storage_policies().end(),[&](const NativeSessionStoragePolicy&p){return p.item_id==i.item_id;});if(p==data.storage_policies().end())return false;for(size_t j=0;j<7;++j)delta[j]+=sign*p->boosts[j];return true;};
+  for(auto&i:data.defaults().characters[0].inventory)if(!apply(i,-1))return fail(e,"Native session initial equipment policy missing");
+  std::set<uint32_t>slots;
+  for(auto&i:c.inventory){if(!i.equipped)continue;uint32_t definition=item_no_index;for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j)if(items.string(items.definition(j).source)==i.item_id)definition=j;
+   if(definition==item_no_index||!(items.definition(definition).flags&uint32_t(ItemDefinitionFlag::Equipment))||!slots.insert(items.definition(definition).equipment_slot).second||!apply(i,1))return fail(e,"Native session equipped item/slot rejected");}
+  for(size_t j=0;j<7;++j){auto value=int64_t(next[j])+delta[j];if(value<0||value>INT32_MAX||(j==0&&value==0))return fail(e,"Native session derived stat bounds rejected");next[j]=int32_t(value);}
+ }
+ out=next;e.clear();return true;
+}
+
 bool build_native_session_snapshot(const NativeSessionData&data,RoomView room,HouseView house,RoundView round,ItemView items,const NativeSnapshotInput&input,SessionSnapshot&out,std::string&e){
  if(!data.valid()||!input.stats||!input.inventory||!input.inventory->valid()||!items.valid())return fail(e,"Native session needs explicit live stats and inventory");
  if(!supported_roster(data,input.state))return fail(e,"Native session input character scope rejected");
  if(!validate_session_snapshot(input.state,e))return false;
  if(!supported_inventory(data,items,input.state,e))return false;
+
  for(const auto&skill:input.state.characters[0].learned_skills){bool known=false;for(const auto&row:data.levels())if(contains(row.skills,skill))known=true;if(!known)return fail(e,"Native session persistent skill identity rejected");}
  SessionSnapshot next=input.state;auto&c=next.characters[0];const auto&live=*input.stats;const auto*row=level_row(data,live.level);
- if(!row||row->stats!=std::array<int32_t,7>{{live.maxhp,live.maxpp,live.offense,live.defense,live.speed,live.iq,live.guts}})return fail(e,"Native session live derived stats disagree with source/equipment; unsupported boost");
+ if(!row)return fail(e,"Native session live level row unavailable");
  c.level=live.level;c.experience=live.experience;c.hp=live.hp;c.pp=live.pp;next.cash=live.cash;next.bank=live.bank;next.earned_cash=live.earned_cash;
  // BattleSessionStats historically tracks skills learned during this slice.
  // Keep the external initial list plus that explicit live delta, with no extras.
@@ -158,6 +205,12 @@ bool build_native_session_snapshot(const NativeSessionData&data,RoomView room,Ho
  if(input.inventory->size()>items.metadata().capacity)return fail(e,"Native session live inventory capacity rejected");
  c.inventory.clear();const auto source=input.inventory->content();
  for(uint32_t i=0;i<input.inventory->size();++i){const auto&instance=input.inventory->instance(i);if(instance.definition>=source.count(ItemSection::Definitions)||instance.definition>=items.count(ItemSection::Definitions))return fail(e,"Native session live item definition rejected");const auto definition=source.definition(instance.definition),expected=items.definition(instance.definition);if(source.string(definition.source)!=items.string(expected.source))return fail(e,"Native session live item pack mismatch");c.inventory.push_back({std::string(source.string(definition.source)),instance.equipped!=0,instance.doses,instance.id});}
+ if(data.storage_capacity()){
+  if(!input.storage||!input.storage->valid()||input.storage->capacity()!=data.storage_capacity())return fail(e,"Native session needs explicit live storage");
+  next.storage.clear();const auto source=input.storage->content();
+  for(const auto&instance:input.storage->instances()){if(instance.definition>=source.count(ItemSection::Definitions)||instance.definition>=items.count(ItemSection::Definitions))return fail(e,"Native session stored definition rejected");const auto d=source.definition(instance.definition),expected=items.definition(instance.definition);if(source.string(d.source)!=items.string(expected.source))return fail(e,"Native session stored item pack mismatch");next.storage.push_back({std::string(source.string(d.source)),instance.equipped!=0,instance.doses,instance.id});}
+ }
+ std::array<int32_t,7>expected{};if(!native_session_derived_stats(data,items,c,expected,e)||expected!=std::array<int32_t,7>{{live.maxhp,live.maxpp,live.offense,live.defense,live.speed,live.iq,live.guts}})return fail(e,"Native session live derived stats disagree with source/equipment");
  if(!validate_native_session_snapshot(data,room,house,round,items,next,e))return false;
  out=std::move(next);e.clear();return true;
 }

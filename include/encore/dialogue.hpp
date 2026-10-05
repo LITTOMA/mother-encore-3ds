@@ -15,7 +15,7 @@ enum class DialogueActionKind : uint8_t {
     YieldIdle, AwaitTimer, SetActorDirection, TeleportActor, MoveActorPath, ReturnCamera, SetFlag, ShowDialogue, AwaitDialogue, PlayMusicImmediate, HideDialogue,
     // Program-relative branches and explicit menu suspension. AwaitChoices is
     // passed to the sink to prepare the menu; only a selected callback resumes.
-    Jump, BranchFlag, BranchLeader, AwaitChoices, OpenSave, AwaitSubmenu, StopActorLoop
+    Jump, BranchFlag, BranchLeader, AwaitChoices, OpenSave, AwaitSubmenu, StopActorLoop, OpenStorage
 };
 struct DialogueAction {
     DialogueActionKind kind=DialogueActionKind::BeginCutscene;

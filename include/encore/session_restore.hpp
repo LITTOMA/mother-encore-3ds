@@ -11,6 +11,7 @@ struct PreparedSessionRestore {
     SessionSnapshot state;
     BattleSessionStats stats;
     InventoryState inventory;
+    StorageState storage;
     std::vector<bool> reviewed_flag_mutations; // External NativeSession mutation scope.
     std::vector<bool> story_flags; // Room flag index order, including false values.
     std::set<uint32_t> seen_dialogue_keys; // House string offsets, true values only.

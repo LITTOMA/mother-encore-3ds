@@ -182,6 +182,22 @@
       "import_sha256": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
       "pcm_path": "sound/effects/item-received.pcm",
       "gain_db": 0.0
+    },
+    {
+      "stable_id": 1501,
+      "source_path": "res://Audio/Sound effects/EB/close.wav",
+      "source_sha256": "5238b0dfee0460c7ee219fd4cdc0c39d37829192c7af828429d10b00845efa56",
+      "import_sha256": "eb9a152837ffc1c39af9086767ef2bbc9217eba042bfaf24d360fcf90f8a8324",
+      "pcm_path": "sound/effects/storage-clear.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1502,
+      "source_path": "res://Audio/Sound effects/M3/equip.wav",
+      "source_sha256": "983d985c6ebe738617baae286c4ee5d80202969df66568e8a9588cff00d772f3",
+      "import_sha256": "4e194a671ae807f07f59bae6b328caabe914b5b5803d0e9dcaf0881ad39100ae",
+      "pcm_path": "sound/effects/storage-equip.pcm",
+      "gain_db": 0
     }
   ]
 }

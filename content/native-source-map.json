@@ -539,6 +539,11 @@
       "source": "content/family-followup-bindings.json",
       "selector": "Carol 0→4 / Mimmie 0→7; ShowDialogue→SetFlag→AwaitDialogue",
       "derivation": "Append programs17/18 and text48..53; retain all flag identities/defaults; normal NPC end protocol"
+    },
+    "Storage dialogue": {
+      "source": "content/native-storage-dialogue.json",
+      "selector": "Original choice, hidden submenu callback, dormant phrase2 and goodbye3",
+      "derivation": "Append program19, text67..69; no RNG or gameplay rules change"
     }
   },
   "stable_namespaces": {

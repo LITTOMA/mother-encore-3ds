@@ -15,6 +15,10 @@ public:
  // and commits only a valid, unequipped item with a unique externally owned UID.
  bool can_append(uint32_t definition,uint32_t doses,std::string& error)const;
  bool append(uint32_t definition,uint32_t doses,uint32_t uid,std::string& error);
+ // Source ordinary-inventory transfer primitives preserve opaque saved UIDs.
+ bool erase_uid(uint32_t uid,std::string& error);
+ bool equip_uid(uint32_t uid,bool equipped,std::string& error);
+ const std::vector<ItemInstance>& instances()const{return instances_;}
  const ItemView& content()const{return data_;}
  uint32_t size()const{return uint32_t(instances_.size());}
  const ItemInstance& instance(uint32_t i)const{return instances_.at(i);}

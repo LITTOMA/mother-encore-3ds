@@ -57,7 +57,7 @@ struct Live {
   // must do when starting with the complete restored snapshot.
   for(auto&f:state.seen_dialogue_flags){for(uint32_t key:h.seen_dialogue_keys())if(r.house.view().string(key)==f.id)f.value=true;}
   for(uint32_t key:h.seen_dialogue_keys()){const std::string id(r.house.view().string(key));if(std::none_of(state.seen_dialogue_flags.begin(),state.seen_dialogue_flags.end(),[&](const SessionFlag&f){return f.id==id;}))state.seen_dialogue_flags.push_back({id,true});}
-  SessionSnapshot result;CHECK(build_native_session_snapshot(r.session,r.room.view(),r.house.view(),r.round.view(),r.items.view(),{state,&saved.stats,&saved.inventory},result,error));return result;
+  SessionSnapshot result;CHECK(build_native_session_snapshot(r.session,r.room.view(),r.house.view(),r.round.view(),r.items.view(),{state,&saved.stats,&saved.inventory,&saved.storage},result,error));return result;
  }
 };
 SessionSnapshot post_dad(const Resources&r){

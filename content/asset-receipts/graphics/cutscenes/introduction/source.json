@@ -1,7 +1,7 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "font_catalog": "fonts/introduction/intro.encfont",
-  "generator_sha256": "222bee61a5fbc57b98c9978ca8996a44719cb4b6528c46650ccf5c5956dda04f",
+  "generator_sha256": "29fb0e192be635d2beba9720f7fe3132214ce9e1fd47fb8fd511626dda660766",
   "kind": "encore.introduction-asset-receipt",
   "recipe_sha256": "71f47ace5683e1e2981d51c33708db3b4f9a6515037d6b886275a28e0c948be9",
   "resources": [

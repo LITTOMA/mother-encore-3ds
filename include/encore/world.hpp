@@ -55,6 +55,7 @@ public:
     uint32_t pending_choice_group()const{return choice_group_;}
     bool story_choices_waiting()const{return dialogue_.status()==DialogueStatus::AwaitChoices;}
     bool story_submenu_waiting()const{return dialogue_.status()==DialogueStatus::AwaitSubmenu;}
+    bool take_storage_request(){const bool value=storage_requested_;storage_requested_=false;return value;}
     bool take_save_request(){const bool value=save_requested_;save_requested_=false;return value;}
     bool choose_story_option(uint32_t pc,uint32_t generation);
     bool close_story_submenu(uint32_t generation);
@@ -137,7 +138,7 @@ private:
     std::vector<uint32_t> erased_bodies_;
     bool apply(const DialogueAction& action) override;
     bool branch_condition(const DialogueAction&,bool&) override;
-    uint32_t choice_group_=kRoomNoIndex;bool save_requested_=false;
+    uint32_t choice_group_=kRoomNoIndex;bool save_requested_=false,storage_requested_=false;
     bool fail(const char* message);
     bool flush_deferred();
     bool process_room_shakers(double delta);

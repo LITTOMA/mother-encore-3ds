@@ -28,7 +28,7 @@ const char* suffix(uint32_t role) {
     case ResourceRole::Input:return ".encinput";case ResourceRole::LoadingIndicator:return ".encload";
     case ResourceRole::Introduction:return ".encintro";
     case ResourceRole::HouseInspections:return ".encinspect";
-    case ResourceRole::DrawerProgram:return ".encdrawer";
+    case ResourceRole::DrawerProgram:return ".encdrawer";case ResourceRole::Storage:return ".encstorage";
     }return nullptr;
 }
 bool canonical(const std::string& path) {
@@ -63,7 +63,7 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     ResourceCatalog data;
     bool roots[22]={};
     for(uint32_t i=0;i<count;++i){const auto id=r.integer(),role=r.integer(),size=r.integer(),checksum=r.integer();auto path=r.path();
-        if(!r.ok||role<1||role>27||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
+        if(!r.ok||role<1||role>28||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
         const auto expected=suffix(role);const auto len=std::strlen(expected);
         if(path.size()<=len||path.compare(path.size()-len,len,expected))return fail("Resource catalog binding type rejected");
         for(const auto& prior:data.bindings_)if(prior.id==id||prior.path==path)return fail("Resource catalog duplicate ID/path rejected");

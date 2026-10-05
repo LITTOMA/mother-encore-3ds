@@ -156,7 +156,7 @@ class NativeContentTests(unittest.TestCase):
         self.rejects_ir(lambda d:d['sections']['Experience'][2].update(required_total_exp=1))
 
     def test_periodic_room_shake_source_contract(self):
-        self.assertEqual((self.ir['rules'],self.ir['capabilities']),(7,7))
+        self.assertEqual((self.ir['rules'],self.ir['capabilities']),(7,8))
         binding=self.ir['sections']['Binding'][1]
         self.assertEqual((binding['kind'],binding['value'],binding['duration']),(3,4,5))
         resource=self.ir['sections']['Resource'][binding['target_index']]
@@ -226,7 +226,7 @@ class NativeContentTests(unittest.TestCase):
         for edit in edits:
             with self.subTest(edit=edit):self.rejects_ir(edit)
         leader=self.ir['sections']['Command'][first+4]['target_index']
-        for value in ['Lloyd','lloyd/actor',' lloyd','lloyd-actor','éclair','9lloyd','a'*65]:
+        for value in ['Lloyd','lloyd/actor',' lloyd','lloyd-actor','茅clair','9lloyd','a'*65]:
             with self.subTest(leader=value):self.rejects_ir(lambda d:d['strings'].__setitem__(leader,value))
         # Boolean tests use numeric 0/1; they never accept arbitrary scalar predicates.
         changed=self.changed_ir(command(24,value=0))
@@ -260,14 +260,14 @@ class NativeContentTests(unittest.TestCase):
             self.rejects_ir(lambda d:d.update(rules=rules,capabilities=rules))
 
     def test_revision7_actor_loop_repeat_and_stop_operands(self):
-        self.assertEqual((self.ir['rules'], self.ir['capabilities']), (7, 7))
+        self.assertEqual((self.ir['rules'], self.ir['capabilities']), (7, 8))
         paths=self.ir['sections']['MovementPath']
         loop=next(i for i,p in enumerate(paths)if p['flags']&4)
         self.assertEqual(paths[loop]['entry_count'],14)
         for change in [dict(flags=16),dict(entry_count=17),dict(speed=0)]:
             self.rejects_ir(lambda d: d['sections']['MovementPath'][loop].update(change))
         stop=next(i for i,c in enumerate(self.ir['sections']['Command'])if c['opcode']==42)
-        for change in [dict(opcode=43),dict(actor_index=NO_ACTOR),dict(target_index=0),dict(flags=1),dict(duration=.1),dict(value=1)]:
+        for change in [dict(opcode=44),dict(actor_index=NO_ACTOR),dict(target_index=0),dict(flags=1),dict(duration=.1),dict(value=1)]:
             self.rejects_ir(lambda d: d['sections']['Command'][stop].update(change))
         jump=next(i for i,c in enumerate(self.ir['sections']['Command'])if c['opcode']==12 and c['flags']==1)
         self.rejects_ir(lambda d:d['sections']['Command'][jump].update(flags=16))

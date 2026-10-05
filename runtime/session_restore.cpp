@@ -38,8 +38,9 @@ bool prepare_session_restore(const NativeSessionData&data,RoomView room,
  auto&stats=next.stats;
  stats.level=uint32_t(character.level);stats.experience=uint32_t(character.experience);
  stats.hp=int32_t(character.hp);stats.pp=int32_t(character.pp);
- stats.maxhp=row->stats[0];stats.maxpp=row->stats[1];stats.offense=row->stats[2];
- stats.defense=row->stats[3];stats.speed=row->stats[4];stats.iq=row->stats[5];stats.guts=row->stats[6];
+ std::array<int32_t,7>derived{};if(!native_session_derived_stats(data,items,character,derived,error))return false;
+ stats.maxhp=derived[0];stats.maxpp=derived[1];stats.offense=derived[2];
+ stats.defense=derived[3];stats.speed=derived[4];stats.iq=derived[5];stats.guts=derived[6];
  stats.cash=uint32_t(snapshot.cash);stats.bank=uint32_t(snapshot.bank);stats.earned_cash=uint32_t(snapshot.earned_cash);
  stats.learned_skills=character.learned_skills;
 
@@ -57,6 +58,10 @@ bool prepare_session_restore(const NativeSessionData&data,RoomView room,
  }
  if(!next.inventory.restore(items,instances,error))return false;
 
+ if(data.storage_capacity()){
+  std::vector<ItemInstance>stored;for(const auto&saved:snapshot.storage){uint32_t def=item_no_index;for(uint32_t i=0;i<items.count(ItemSection::Definitions);++i)if(items.string(items.definition(i).source)==saved.item_id)def=i;if(def==item_no_index)return reject(error,"Session restore storage item unavailable");stored.push_back({saved.uid,def,saved.equipped?1u:0u,uint32_t(saved.doses)});}
+  if(!next.storage.restore(items,data.storage_capacity(),stored,error))return false;
+ }
  next.story_flags.reserve(room.flag_count());next.reviewed_flag_mutations.reserve(room.flag_count());
  for(uint32_t i=0;i<room.flag_count();++i){
   const auto name=room.string(room.flag(i).name_string);

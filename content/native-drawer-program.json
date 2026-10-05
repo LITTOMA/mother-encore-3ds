@@ -1,0 +1,254 @@
+{
+  "schema": 1,
+  "kind": "encore.drawer-program.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Complete original Bedside Drawer phrases0..4; singleton Ninten grant/receiver only; no item-use mechanism",
+  "sources": {
+    "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
+    "Audio/Sound effects/Item Received.mp3.import": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Translations/TranslatedText/dialogue_Podunk_non-person text_Ninten's house - sheet.csv": "c554acd6981a3a745d2a948433cdda737d1aa83e4793aa3a067cea9fa9a747fc"
+  },
+  "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+  "inspection_source": "Objects/interact_dialog6",
+  "document": {
+    "0": {
+      "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_0",
+      "if": [
+        {
+          "flags": {
+            "got_asthma_spray": true
+          },
+          "goto": "4"
+        },
+        {
+          "invspace": false,
+          "goto": "3"
+        }
+      ],
+      "goto": "2"
+    },
+    "1": {
+      "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_1",
+      "goto": "2"
+    },
+    "2": {
+      "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_2",
+      "item": "AsthmaSpray",
+      "soundeffect": "Item Received.mp3",
+      "setflags": "got_asthma_spray"
+    },
+    "3": {
+      "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_3"
+    },
+    "4": {
+      "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_4"
+    }
+  },
+  "texts": [
+    {
+      "id": 62,
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_0",
+      "raw": "[@][PartyLead] opened the Bedside drawer."
+    },
+    {
+      "id": 63,
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "label": "1",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_1",
+      "raw": "[@]Inside, there was an Asthma Spray."
+    },
+    {
+      "id": 64,
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "label": "2",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_2",
+      "raw": "[@][ItemReceiver] got an Asthma Spray."
+    },
+    {
+      "id": 65,
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "label": "3",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_3",
+      "raw": "[@]Found an Asthma Spray, but your inventory's full..."
+    },
+    {
+      "id": 66,
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "label": "4",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_4",
+      "raw": "[@]There's nothing much to see here..."
+    }
+  ],
+  "templates": [
+    {
+      "id": 1,
+      "source_item": "AsthmaSpray",
+      "doses": 3,
+      "key_item": false
+    }
+  ],
+  "entry": 0,
+  "phrase_targets": {
+    "0": 0,
+    "1": 5,
+    "2": 8,
+    "3": 14,
+    "4": 17
+  },
+  "commands": [
+    {
+      "opcode": "ShowText",
+      "a": 62,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "AwaitText",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "BranchFlag",
+      "a": "got_asthma_spray",
+      "b": 1,
+      "c": 17,
+      "d": 0
+    },
+    {
+      "opcode": "BranchSpace",
+      "a": 0,
+      "b": 14,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "Jump",
+      "a": 8,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "ShowText",
+      "a": 63,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "AwaitText",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "Jump",
+      "a": 8,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "GrantItem",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "ShowText",
+      "a": 64,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "PlaySound",
+      "a": "Audio/Sound effects/Item Received.mp3",
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "SetFlag",
+      "a": "got_asthma_spray",
+      "b": 1,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "AwaitText",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "End",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "ShowText",
+      "a": 65,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "AwaitText",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "End",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "ShowText",
+      "a": 66,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "AwaitText",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    },
+    {
+      "opcode": "End",
+      "a": 0,
+      "b": 0,
+      "c": 0,
+      "d": 0
+    }
+  ]
+}

@@ -1803,6 +1803,26 @@
       }
     },
     {
+      "key": "@native.item.description/1",
+      "source": "Data/Items/AsthmaSpray.yaml#ASTHMASPRAY_DESC",
+      "line": 2,
+      "values": {
+        "en": "When [Ninten]'s asthma ([Asthma]) kicks in, use this. %s",
+        "fr": "À utiliser si [Ninten] est pris d'une crise d'asthme ([Asthma]). %s",
+        "it": "Usalo quando [Ninten] ha un attacco d'asma ([Asthma]). %s",
+        "ja": "[Ninten]が　[Asthma]ぜんそくになったら\nこれをつかって！　%s",
+        "ko": "[Ninten]의 천식([Asthma])이 재발했을 때 사용해! %s",
+        "es": "Úsalo cuando [Ninten] tenga un ataque de asma ([Asthma]). %s",
+        "es_ES": "Úsalo cuando a [Ninten] le dé un ataque de asma ([Asthma]). %s",
+        "pt_BR": "Quando o [Ninten] tiver uma crise de asma ([Asthma]), use isso. %s",
+        "pl": "Użyj go, gdy [Ninten] dostanie ataku astmy ([Asthma]). %s",
+        "de": "Benutze es, wenn das Asthma ([Asthma]) bei [Ninten] zuschlägt. %s",
+        "ru": "Воспользуйся им, если у [decline:Ninten:M:1] начнётся приступ астмы ([Asthma]). %s",
+        "uk": "Скористуйся ним, якщо у [decline:Ninten:M:1] почнеться астматичний напад ([Asthma]). %s",
+        "zh_Hans_CN": "在[Ninten]的哮喘（[Asthma]）发作时使用。 %s"
+      }
+    },
+    {
       "key": "ACTION_RESULT_FAIL_ANY",
       "source": "Translations/TranslatedText/menus - sheet.csv",
       "line": 372,
@@ -78178,6 +78198,36 @@
       "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml:0:checked native token projection"
     },
     {
+      "identity": "house.expected/124/1",
+      "key": "5/0:0:2/2/0:1/27: opened the Bedside drawer.",
+      "expected": "5/0:0:2/2/0:1/27: opened the Bedside drawer.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/125/1",
+      "key": "5/0:0:1/1/34:Inside, there was an Asthma Spray.",
+      "expected": "5/0:0:1/1/34:Inside, there was an Asthma Spray.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:1:checked native token projection"
+    },
+    {
+      "identity": "house.expected/126/1",
+      "key": "5/0:0:2/2/0:1/21: got an Asthma Spray.",
+      "expected": "5/0:0:2/2/0:1/21: got an Asthma Spray.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:2:checked native token projection"
+    },
+    {
+      "identity": "house.expected/127/1",
+      "key": "5/0:0:1/1/51:Found an Asthma Spray, but your inventory's full...",
+      "expected": "5/0:0:1/1/51:Found an Asthma Spray, but your inventory's full...",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:3:checked native token projection"
+    },
+    {
+      "identity": "house.expected/128/1",
+      "key": "5/0:0:1/1/35:There's nothing much to see here...",
+      "expected": "5/0:0:1/1/35:There's nothing much to see here...",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:4:checked native token projection"
+    },
+    {
       "identity": "house.expected/14/1",
       "key": "5/0:0:2/2/0:1/21: remembered the tune.",
       "expected": "5/0:0:2/2/0:1/21: remembered the tune.",
@@ -78844,6 +78894,36 @@
       "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml:0"
     },
     {
+      "identity": "house/124/1",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_0",
+      "expected": "[@][PartyLead] opened the Bedside drawer.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:0"
+    },
+    {
+      "identity": "house/125/1",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_1",
+      "expected": "[@]Inside, there was an Asthma Spray.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:1"
+    },
+    {
+      "identity": "house/126/1",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_2",
+      "expected": "[@][ItemReceiver] got an Asthma Spray.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:2"
+    },
+    {
+      "identity": "house/127/1",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_3",
+      "expected": "[@]Found an Asthma Spray, but your inventory's full...",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:3"
+    },
+    {
+      "identity": "house/128/1",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_4",
+      "expected": "[@]There's nothing much to see here...",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:4"
+    },
+    {
       "identity": "house/14/1",
       "key": "DIALOGUE_PODUNK_DOLLMELODY_4",
       "expected": "[@][PartyLead] remembered the tune.",
@@ -79174,10 +79254,22 @@
       "origin": "Data/Items/BaseballCap.yaml:description:BASEBALLCAP_DESC"
     },
     {
+      "identity": "item.description/1",
+      "key": "@native.item.description/1",
+      "expected": "When [Ninten]'s asthma ([Asthma]) kicks in, use this. %s",
+      "origin": "Data/Items/AsthmaSpray.yaml:description:ASTHMASPRAY_DESC"
+    },
+    {
       "identity": "item.name/0",
       "key": "BASEBALLCAP_NAME",
       "expected": "Baseball Cap",
       "origin": "Data/Items/BaseballCap.yaml:name"
+    },
+    {
+      "identity": "item.name/1",
+      "key": "ASTHMASPRAY_NAME",
+      "expected": "Asthma Spray",
+      "origin": "Data/Items/AsthmaSpray.yaml:name"
     },
     {
       "identity": "naming.command/1",
@@ -79672,11 +79764,13 @@
     "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
     "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
     "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
     "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
     "Data/BattleSkills/telepathy.yaml": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
     "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
     "Translations/TranslatedText/skills - sheet.de.translation": "845711393be04b34eb754a8886301e6777d691f3303b11535fdd62d03772c2f6",
     "Translations/TranslatedText/skills - sheet.en.translation": "faae6476b34ae826f001095ca605876d96f380ee6fc549087de69286bf5663cf",
@@ -80260,6 +80354,46 @@
       "speaker_key": "",
       "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml",
       "phrase": "0"
+    },
+    {
+      "first": 124,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 125,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_1",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "phrase": "1"
+    },
+    {
+      "first": 126,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_2",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "phrase": "2"
+    },
+    {
+      "first": 127,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_3",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "phrase": "3"
+    },
+    {
+      "first": 128,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_4",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "phrase": "4"
     }
   ],
   "battle_bindings": [

@@ -22,7 +22,7 @@ def finite(v):return isinstance(v,(int,float))and not isinstance(v,bool)and math
 def vector(v,n):require(isinstance(v,list)and len(v)==n and all(finite(x)for x in v),'Invalid vector');return v
 def safe_path(s):return isinstance(s,str)and bool(s)and not s.startswith('/')and ':'not in s and '\\'not in s and all(x not in ('','..','.')for x in s.split('/'))
 def verify_sources(ir,presentation=None,root=ROOT):
- require(ir['schema']in(4,5,6) and ir['kind']=='encore.native-house.source-ir'and ir['commit']==PIN,'Unreviewed house schema/pin')
+ require(ir['schema']in(4,5,6,7) and ir['kind']=='encore.native-house.source-ir'and ir['commit']==PIN,'Unreviewed house schema/pin')
  report=json.loads((root/'reports/house-data/source-review.json').read_text());require(report['commit']==PIN and report['sources']==ir['sources']and report['dependencies']==ir['dependencies'],'House review mismatch')
  inventory=json.loads((root/'compatibility/upstream-inventory.json').read_text());require(inventory['commit']==PIN,'House inventory pin')
  sources=dict(ir['sources'])
@@ -35,7 +35,7 @@ def verify_sources(ir,presentation=None,root=ROOT):
  check_house(ir,presentation,root)
 
 def lower(ir,presentation=None,root=ROOT,verify_assets=True):
- fields(ir,['schema','kind','commit','scope','sources','dependencies','fade_parameters','npc_parameters','doors','npcs','segments','interaction','boundaries','overrides','dialogues','openable_doors','story_triggers','story_conditions'],'house IR');require(ir['schema']in(4,5,6) and ir['commit']==PIN,'Unreviewed house IR')
+ fields(ir,['schema','kind','commit','scope','sources','dependencies','fade_parameters','npc_parameters','doors','npcs','segments','interaction','boundaries','overrides','dialogues','openable_doors','story_triggers','story_conditions'],'house IR');require(ir['schema']in(4,5,6,7) and ir['commit']==PIN,'Unreviewed house IR')
  room=json.loads((root/'content/native-opening.json').read_text());require(room['upstream_commit']==ir['commit']and room['rules']==room['capabilities']and room['rules']in(4,5,6,7),'House room rules/pin')
  actor_count=len(room['sections']['ActorInstance']);program_count=len(room['sections']['Program']);dialogue_ids={d['id']for d in ir['dialogues']}
  for n in ir['npcs']:require(n.get('room_actor_index')==0xffffffff or isinstance(n.get('room_actor_index'),int)and 0<=n['room_actor_index']<actor_count,'House room actor reference')
@@ -93,7 +93,7 @@ def lower(ir,presentation=None,root=ROOT,verify_assets=True):
  t['Strings']=bytes(pool);return t
 
 def encode(t,commit=PIN,version=4):
- require(version in(4,5,6),'House version')
+ require(version in(4,5,6,7),'House version')
  data=bytearray(HEADER)
  for i,name in enumerate(SECTION_NAMES):
   block=t[name]if i==0 else b''.join(struct.pack(FORMATS[i],*r)for r in t[name])
@@ -103,7 +103,7 @@ def encode(t,commit=PIN,version=4):
  struct.pack_into('<8s6I20s12x',data,0,b'ENCHSE01',version,len(data),0,len(STRIDES),version,version,bytes.fromhex(commit));struct.pack_into('<I',data,16,zlib.crc32(data));return bytes(data)
 def parse_pack(blob):
  require(HEADER<=len(blob)<=1024*1024,'House size');magic,version,size,crc,n,caps,rules,commit=struct.unpack_from('<8s6I20s',blob)
- require(magic==b'ENCHSE01'and version==caps==rules and version in(4,5,6) and size==len(blob)and n==len(STRIDES)and not any(blob[52:64]),'House header');copy=bytearray(blob);struct.pack_into('<I',copy,16,0);require(zlib.crc32(copy)==crc,'House CRC');t={};end=HEADER
+ require(magic==b'ENCHSE01'and version==caps==rules and version in(4,5,6,7) and size==len(blob)and n==len(STRIDES)and not any(blob[52:64]),'House header');copy=bytearray(blob);struct.pack_into('<I',copy,16,0);require(zlib.crc32(copy)==crc,'House CRC');t={};end=HEADER
  for i,name in enumerate(SECTION_NAMES):
   kind,stride,off,count,amount=struct.unpack_from('<HHIII',blob,64+i*16);require(kind==i+1 and stride==STRIDES[i]and amount==count*stride,'House directory')
   if count:require(off%4==0 and off>=end and off+amount<=len(blob)and not any(blob[end:off]),'House span');block=blob[off:off+amount];end=off+amount
@@ -112,10 +112,10 @@ def parse_pack(blob):
  require(end==len(blob),'House trailing bytes');validate(t,version);return t
 
 def validate(t,version=4):
- require(version in(4,5,6),'House validation version')
+ require(version in(4,5,6,7),'House validation version')
  p=t['Strings'];require(p and len(p)<=65536 and p[0]==p[-1]==0,'House strings');p.decode('utf-8')
  def string(o):require(isinstance(o,int)and 0<=o<len(p)and(o==0 or p[o-1]==0),'House string offset');end=p.find(b'\0',o);require(0<=end-o<=4096,'House string length');return p[o:end].decode()
- limits={'Doors':(1,32),'Npcs':(1,16),'Segments':(1,128 if version>=6 else 64),'Tokens':(1,256),'Interaction':(1,1),'Boundaries':(0,64),'Resources':(1,64),'Clips':(5,256),'Keys':(1,2048),'Parameters':(len(PARAMETERS),len(PARAMETERS)),'Overrides':(0,128),'Profiles':(1,16),'Dialogues':(1,64),'OpenableDoors':(1,32),'StoryTriggers':(1,64),'StoryConditions':(1,128)}
+ limits={'Doors':(1,32),'Npcs':(1,16),'Segments':(1,256 if version>=7 else 128 if version>=6 else 64),'Tokens':(1,256),'Interaction':(1,1),'Boundaries':(0,64),'Resources':(1,64),'Clips':(5,256),'Keys':(1,2048),'Parameters':(len(PARAMETERS),len(PARAMETERS)),'Overrides':(0,128),'Profiles':(1,16),'Dialogues':(1,128 if version>=7 else 64),'OpenableDoors':(1,32),'StoryTriggers':(1,64),'StoryConditions':(1,128)}
  for k,(lo,hi)in limits.items():require(lo<=len(t[k])<=hi,'House '+k+' capacity')
  for k in ['Doors','Npcs','Segments','Boundaries','Resources','Clips','Profiles','Dialogues','OpenableDoors','StoryTriggers']:
   ids=[x[0]for x in t[k]];require(all(x>0 for x in ids)and len(ids)==len(set(ids)),'House IDs')

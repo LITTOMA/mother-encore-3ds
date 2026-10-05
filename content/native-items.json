@@ -280,11 +280,28 @@
       "max_pp_boost": 0,
       "name": "Baseball Cap",
       "source": "BaseballCap"
+    },
+    {
+      "can_use": 0,
+      "description": "When [Ninten]'s asthma ([Asthma]) kicks in, use this. %s",
+      "equipment_slot": null,
+      "flags": 2,
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "icon": 12,
+      "id": 2,
+      "max_hp_boost": 0,
+      "max_pp_boost": 0,
+      "name": "Asthma Spray",
+      "source": "AsthmaSpray"
     }
   ],
   "dependencies": {
     "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
-    "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c"
+    "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c",
+    "content/asset-receipts/graphics/items/source.json": "c7af22c95eb8b5d9ef194c980239911ce4c03384fc33d040ab590fc9cd4b7244",
+    "content/drawer-item-assets.json": "3d70e219f6b17725756a6c2d804ec3c3d1165341932ca9d67670ee0192432866",
+    "content/native-drawer-item.json": "d869a977ad306af4d939f928665e004792361408236d1209763d3cc2544fc949"
   },
   "initial_inventory": [
     {
@@ -1608,10 +1625,20 @@
       "rows": 1,
       "sha256": "7ada78c4813f2768cdd48e0e749e25c19f35c9222481804a353c9a2970308ee0",
       "width": 24
+    },
+    {
+      "columns": 1,
+      "height": 20,
+      "id": 13,
+      "kind": 1,
+      "path": "graphics/items/asthma-spray.t3x",
+      "rows": 1,
+      "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd",
+      "width": 20
     }
   ],
   "schema": 1,
-  "scope": "Bounded initial single-owner inventory: equipped Baseball Cap, source list/info/cancel/restricted feedback only; no consumable action, random UID creation, saving, or additional inventory source. Pixel geometry retains320x180 with centered-top/bottom anchoring at400x240. Owner/item/instance IDs are deterministic adapter identities. Native L maps original ui_scope left trigger.",
+  "scope": "Bounded initial single-owner inventory: equipped Baseball Cap, source list/info/cancel/restricted feedback only; no consumable action, random UID creation, saving, or additional inventory source. Pixel geometry retains320x180 with centered-top/bottom anchoring at400x240. Owner/item/instance IDs are deterministic adapter identities. Native L maps original ui_scope left trigger.; checked AsthmaSpray acquired definition/icon; raw rich description and consume action explicitly gated",
   "sounds": [
     {
       "audio_id": 1102,

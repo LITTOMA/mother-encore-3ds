@@ -148,6 +148,11 @@
       "id": 26,
       "role": "HouseInspections",
       "path": "data/opening.encinspect"
+    },
+    {
+      "id": 27,
+      "role": "DrawerProgram",
+      "path": "data/opening.encdrawer"
     }
   ],
   "encounters": [

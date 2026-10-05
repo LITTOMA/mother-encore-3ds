@@ -31,6 +31,18 @@ bool InventoryState::can_use(uint32_t i)const{
  const auto& item=instances_[i];const auto d=data_.definition(item.definition);
  return d.can_use&&((d.heal_hp>0&&d.max_hp_boost==0)||(d.heal_pp>0&&d.max_pp_boost==0)||((d.flags&uint32_t(ItemDefinitionFlag::Equipment))&&!item.equipped));
 }
+bool InventoryState::can_append(uint32_t definition,uint32_t doses,std::string&error)const{
+ if(!valid()){error="Inventory append requires checked item content";return false;}
+ if(definition>=data_.count(ItemSection::Definitions)){error="Inventory append unknown definition";return false;}
+ if(!doses||doses>65535){error="Inventory append invalid doses";return false;}
+ if(!has_space()){error="Inventory append capacity exceeded";return false;}
+ error.clear();return true;
+}
+bool InventoryState::append(uint32_t definition,uint32_t doses,uint32_t uid,std::string&error){
+ if(!can_append(definition,doses,error))return false;
+ for(const auto&item:instances_)if(item.id==uid){error="Inventory append duplicate UID";return false;}
+ instances_.push_back(ItemInstance{uid,definition,0,doses});error.clear();return true;
+}
 bool BattleItemsMenu::fail(const char*error){error_=error;return false;}
 bool BattleItemsMenu::initialize(InventoryState& inventory){
  if(!inventory.valid())return fail("Missing checked inventory");

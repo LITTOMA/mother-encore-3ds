@@ -8,7 +8,7 @@ def condition(s):
  # Current CTR reviewed input binding is a gamepad, as existing Pillow frontend.
  return re.sub(r'\[if input:gamepad\](.*?)(?:\[else\](.*?))?\[/if\]',lambda m:m[1],s,flags=re.S)
 def source_plain(s):
- s=condition(unescape(s));s=re.sub(r'\[(?:Ninten|PartyLead)\]','[Ninten]',s,flags=re.I);s=re.sub(r'\[ui_toggle\]','B',s,flags=re.I)
+ s=condition(unescape(s));s=re.sub(r'\[(?:Ninten|PartyLead|ItemReceiver)\]','[Ninten]',s,flags=re.I);s=re.sub(r'\[ui_toggle\]','B',s,flags=re.I)
  s=re.sub(r'\[(?:@|(?:WAIT|W)(?:@|BR)?|BR|/?color|/?c|D(?::[\d.]+)?|DELAY(?::[\d.]+)?)\]','',s,flags=re.I)
  return re.sub(r'\s','',s)
 def native_plain(parts):

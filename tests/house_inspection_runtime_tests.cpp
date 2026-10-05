@@ -8,6 +8,18 @@
 #include <vector>
 using namespace encore::upstream;
 namespace {
+struct Effects:DrawerHost {
+ bool validate_text(uint32_t,std::string&)override{return true;}
+ bool validate_flag(std::string_view,std::string&)override{return true;}
+ bool validate_item(DrawerItemTemplate,std::string_view,std::string&)override{return true;}
+ bool validate_sound(std::string_view,std::string&)override{return true;}
+ bool show_text(uint32_t,std::string&)override{return false;}
+ bool flag(std::string_view,bool&,std::string&)override{return false;}
+ bool inventory_space()const override{return true;}
+ bool grant_item(DrawerItemTemplate,std::string_view,std::string&)override{return true;}
+ bool play_sound(std::string_view,std::string&)override{return true;}
+ bool set_flag(std::string_view,bool,std::string&)override{return false;}
+};
 unsigned checks=0;
 void check(bool ok,const char*why){++checks;if(!ok){std::cerr<<"Inspection runtime check "<<checks<<": "<<why<<'\n';std::exit(1);}}
 uint32_t get(const std::vector<uint8_t>&b,size_t p){return uint32_t(b[p])|(uint32_t(b[p+1])<<8)|(uint32_t(b[p+2])<<16)|(uint32_t(b[p+3])<<24);}
@@ -15,11 +27,13 @@ void put(std::vector<uint8_t>&b,size_t p,uint32_t n){for(unsigned i=0;i<4;++i)b[
 uint32_t crc(const std::vector<uint8_t>&b){uint32_t c=~0u;for(size_t i=0;i<b.size();++i){c^=(i>=16&&i<20)?0:b[i];for(unsigned j=0;j<8;++j)c=(c>>1)^(0xedb88320u&(0u-(c&1)));}return ~c;}
 }
 int main(int argc,char**argv){
- check(argc==5,"inspection, House, Room and font packs required");std::string error;HouseInspectionData inspections;HouseData house;RoomData room;BattleData font;
+ check(argc==5||argc==6,"inspection, House, Room, font and optional Drawer packs required");std::string error;HouseInspectionData inspections;HouseData house;RoomData room;BattleData font;
  check(inspections.load_file(argv[1],error),error.c_str());check(house.load_file(argv[2],error),error.c_str());check(room.load_file(argv[3],error),error.c_str());check(font.load_file(argv[4],error),error.c_str());
+ DrawerProgramData drawer;Effects effects;if(argc==6)check(drawer.load_file(argv[5],error),error.c_str());
  SourceRandom random(41);OpeningWorld world;HousePresentation presentation;HouseRuntime runtime;
  check(world.initialize(room.view()),world.error());world.attach_random(random);check(presentation.begin(house.view(),font.view(),random),presentation.error());check(runtime.initialize(house.view(),world,presentation),runtime.error());
  check(!runtime.inspection_visible(0)&&!runtime.inspection_interaction_supported(0),"unbound inspection is unavailable");
+ if(argc==6){check(!runtime.bind_inspections(inspections.view()),"programme text requires an executable binding");check(runtime.bind_drawer(drawer.view(),effects),runtime.error());}
  check(runtime.bind_inspections(inspections.view()),runtime.error());check(!runtime.inspection_visible(UINT32_MAX),"unknown object unavailable");
  const auto base=inspections.view();const auto object=base.object(0);check(runtime.inspection_visible(0),"original object is visible");
  std::vector<uint8_t>bytes;check(encore::read_file(argv[1],bytes,1024*1024,error),error.c_str());const auto ob=get(bytes,84),ov=get(bytes,100);
@@ -32,15 +46,15 @@ int main(int argc,char**argv){
  if(object.default_dialogue_index!=house_no_index){auto b=bytes;put(b,ob+40,house_no_index);reject_binding(b,"known text cannot become silent unsupported fallback");}
  if(base.count(HouseInspectionSection::Overrides)){auto b=bytes;put(b,ov+4,object.source_path);reject_binding(b,"unknown Room flag rejected");}
  // Runtime support follows every source override, with later entries winning.
- for(uint32_t i=0;i<base.count(HouseInspectionSection::Objects);++i){const auto o=base.object(i);uint32_t selected=o.default_dialogue_index;
+ for(uint32_t i=0;i<base.count(HouseInspectionSection::Objects);++i){const auto o=base.object(i);uint32_t selected=o.default_dialogue_index;auto path=base.string(o.default_dialogue);
   for(uint32_t j=0;j<o.override_count;++j){const auto r=base.override_dialogue(o.first_override+j);check(world.set_story_flag(base.string(r.flag),false,false),"clear source condition");}
-  check(runtime.inspection_interaction_supported(i)==(selected!=house_no_index),"default capability is explicit");
-  for(uint32_t j=0;j<o.override_count;++j){const auto r=base.override_dialogue(o.first_override+j);check(world.set_story_flag(base.string(r.flag),true,false),"set source condition");selected=r.dialogue_index;check(runtime.inspection_interaction_supported(i)==(selected!=house_no_index),"last matching source override controls capability");}
+  check(runtime.inspection_interaction_supported(i)==(selected!=house_no_index||path==drawer.view().string(drawer.view().binding().source_path)),"default capability is explicit");
+  for(uint32_t j=0;j<o.override_count;++j){const auto r=base.override_dialogue(o.first_override+j);check(world.set_story_flag(base.string(r.flag),true,false),"set source condition");selected=r.dialogue_index;path=base.string(r.dialogue);check(runtime.inspection_interaction_supported(i)==(selected!=house_no_index||path==drawer.view().string(drawer.view().binding().source_path)),"last matching source override controls capability");}
  }
  // Isolate one genuine admitted text on the nearest ray, leaving all other
  // inspectors far away. This changes binary geometry, never C++ game content.
  auto isolated=bytes;uint32_t text_object=house_no_index;
- for(uint32_t i=0;i<base.count(HouseInspectionSection::Objects);++i){const auto o=base.object(i);if(text_object==house_no_index&&o.default_dialogue_index!=house_no_index)text_object=i;for(unsigned field:{44u,48u,52u,56u})put(isolated,ob+size_t(i)*76+field,0x47c35000);}
+ for(uint32_t i=0;i<base.count(HouseInspectionSection::Objects);++i){const auto o=base.object(i);if(text_object==house_no_index&&o.default_dialogue_index!=house_no_index)text_object=i;for(unsigned field:{44u,48u,52u,56u})put(isolated,ob+size_t(i)*76+field,0x461c4000);}
  check(text_object!=house_no_index,"source contains complete text inspection");
  const auto p=world.player();auto float_bits=[](float f){uint32_t bits;std::memcpy(&bits,&f,4);return bits;};const auto ray=house.view().interaction();
  for(unsigned field:{44u,52u})put(isolated,ob+size_t(text_object)*76+field,float_bits(p.position.x+ray.ray_origin.x));
@@ -55,8 +69,10 @@ int main(int argc,char**argv){
  uint32_t unsupported_object=house_no_index;
  for(uint32_t i=0;i<base.count(HouseInspectionSection::Objects);++i)if(base.object(i).default_dialogue_index==house_no_index){unsupported_object=i;break;}
  check(unsupported_object!=house_no_index,"source capability boundary exists");
- auto blocked=isolated;OpeningWorld occlusion_world;HousePresentation occlusion_presentation;HouseRuntime occlusion_runtime;SourceRandom occlusion_random(43);
+ auto blocked=isolated;put(blocked,ob+size_t(unsupported_object)*76+8,base.object(unsupported_object).source_path);OpeningWorld occlusion_world;HousePresentation occlusion_presentation;HouseRuntime occlusion_runtime;SourceRandom occlusion_random(43);
  check(occlusion_world.initialize(room.view()),occlusion_world.error());occlusion_world.attach_random(occlusion_random);check(occlusion_presentation.begin(house.view(),font.view(),occlusion_random),occlusion_presentation.error());check(occlusion_runtime.initialize(house.view(),occlusion_world,occlusion_presentation),occlusion_runtime.error());
+ if(argc==6)check(occlusion_runtime.bind_drawer(drawer.view(),effects),occlusion_runtime.error());
+ for(uint32_t i=0;i<base.count(HouseInspectionSection::Objects);++i){const auto o=base.object(i);for(uint32_t j=0;j<o.override_count;++j)check(occlusion_world.set_story_flag(base.string(base.override_dialogue(o.first_override+j).flag),false,false),"clear occlusion condition");}
  const auto start=occlusion_world.player();const Vec2 origin{start.position.x+ray.ray_origin.x,start.position.y+ray.ray_origin.y};
  const float length=std::sqrt(start.direction.x*start.direction.x+start.direction.y*start.direction.y);
  check(length>0,"source initial ray direction valid");const Vec2 direction{start.direction.x/length,start.direction.y/length};

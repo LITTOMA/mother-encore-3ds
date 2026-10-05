@@ -174,6 +174,14 @@
       "import_sha256": "0e2de0762e6defcfba189424106dc08c522a154d12d59d12f1431d4bb1f16c5a",
       "pcm_path": "sound/effects/introduction-thunder.pcm",
       "gain_db": 0.0
+    },
+    {
+      "stable_id": 1401,
+      "source_path": "res://Audio/Sound effects/Item Received.mp3",
+      "source_sha256": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
+      "import_sha256": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+      "pcm_path": "sound/effects/item-received.pcm",
+      "gain_db": 0.0
     }
   ]
 }

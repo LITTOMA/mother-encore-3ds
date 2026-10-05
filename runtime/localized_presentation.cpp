@@ -56,7 +56,7 @@ bool LocalizedPresentation::house(HouseView view,uint32_t first,uint32_t count,s
   }else if(tag=="wait@"||tag=="w@"||tag=="waitbr"||tag=="wbr"){push(true);if(tag.back()=='@')segment.flags|=1;}
   else if(tag=="wait"||tag=="w")token(10);
   else if(tag=="br")token(9);
-  else if(tag=="ninten"||tag=="partylead")token(2);
+  else if(tag=="ninten"||tag=="partylead"||tag=="itemreceiver")token(2); // Checked Drawer frontend admits singleton recipient only.
   else if(tag=="color"||tag=="c"){const auto*hint=catalog.binding("text.hint_color");if(!hint)return fail(e,"Missing source hint color");token(3,std::string(hint->expected));}
   else if(tag=="/color"||tag=="/c")token(4);
   else if(tag=="earnedcash")token(5);

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "f8658ef30ec12829ee8268ee5c871492392ecaf3ba9ca1e92f7c024448c1fc21",
+  "ir_sha256": "13c4b1b6496b10855bdf47918e1cdb42c64a6f50785624da97902752d277639c",
   "sources": {
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
     "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
@@ -32,6 +32,6 @@
     "Last satisfied override wins; no source seen writes",
     "ButtonPrompt inverse-scale keeps authored world offset",
     "Player cardinal turn override respects each source axis constraint; both false retains direction",
-    "Drawer item program retained as explicit capability boundary"
+    "Drawer phrases/effects owned by independent checked programme"
   ]
 }

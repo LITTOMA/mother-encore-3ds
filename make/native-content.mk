@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections
+ continue loading naming settings prompts locale introduction inspections drawer
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -26,6 +26,8 @@ locale: migration
 # Intro admission reads its audio bank and immutable scene/font inputs.
 introduction: audio
 inspections: house
+drawer: house
+session: drawer items
 
 audio:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/restore_audio.py
@@ -55,6 +57,8 @@ house:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/native_house.py compile
 inspections:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection.py compile
+drawer:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/drawer_program.py compile
 items-check:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/items_assets.py verify
 items:

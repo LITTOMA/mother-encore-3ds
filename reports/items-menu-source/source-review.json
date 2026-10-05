@@ -2,7 +2,16 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
     "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
-    "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c"
+    "content/asset-receipts/graphics/battle/round/source.json": "343a2c612a7207427f52fbb41b140f55cc3bcbbd438303337a7d5213b9b0d30c",
+    "content/asset-receipts/graphics/items/source.json": "c7af22c95eb8b5d9ef194c980239911ce4c03384fc33d040ab590fc9cd4b7244",
+    "content/drawer-item-assets.json": "3d70e219f6b17725756a6c2d804ec3c3d1165341932ca9d67670ee0192432866",
+    "content/native-drawer-item.json": "d869a977ad306af4d939f928665e004792361408236d1209763d3cc2544fc949"
+  },
+  "extension": {
+    "capability": "RichDescription disabled plain rendering/action",
+    "receipt": "content/asset-receipts/graphics/items/source.json",
+    "review": "reports/drawer-program/item-source-review.json",
+    "source_ir": "content/native-drawer-item.json"
   },
   "layout_bindings": {
     "cursor": 22,
@@ -16,7 +25,8 @@
   "limits": [
     "No GUI/screenshot capture",
     "No pixel or audibility comparison",
-    "No hardware validation"
+    "No hardware validation",
+    "AsthmaSpray consume/status-healing and rich description unsupported"
   ],
   "native_reference_sha256": "6d1a4162ff12ca5fcbc74084afc48c41656fa4e8744c6968d83417a7cfe20ae6",
   "raw": {
@@ -382,8 +392,9 @@
   "semantics": {
     "close_visibility": "ItemsBox.hide schedules Close then BattleMenuBox.hide immediately hides; retain source clip but do not promise a visible close tween",
     "cursor_position": "Native float vector operations; source centered origin retained with Centered flag; cursor backplate retains show_behind_parent",
-    "description": "Original TextTools.add_line_breaks and strip_bbcode executed with native font in isolated headless helper",
+    "description": "Original TextTools.add_line_breaks and strip_bbcode executed with native font in isolated headless helper for Baseball Cap; AsthmaSpray raw rich description remains explicitly gated",
     "disabled_color": "uiManager.get_flavor_color(3) is one-based NEWCOLOR3",
+    "drawer_extension": "Definition/resource appended from independent source IR and real tex3ds receipt; normal starting instances and UI receipt preserved; acquisition/name/icon supported, consume and rich-description rendering unsupported",
     "hint": "Source ButtonText custom BottleRocket font and native Panel/MarginContainer/Label layout; platform scope labelL rasterized monochrome with source outline1; noGPU raster equality claim",
     "scope_binding": "Source joypadbutton6 left trigger → native3DS L512; explicit adaptation",
     "scroll_arrows": "Source +/-1.5708 rotations mapped to nearest-sampled lossless90-degree per-frame rotation; headless initial single-row scrollbar hidden"

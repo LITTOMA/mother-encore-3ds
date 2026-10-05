@@ -13,7 +13,7 @@ enum class ResourceRole : uint32_t {
     Continue=14, Restore=15, SessionMigration=16, NewGame=17,
     Localization=18, TitleLocale=19, SourceFonts=20, Input=21,
     LoadingIndicator=22, EncounterBattle=23, EncounterRound=24, Introduction=25,
-    HouseInspections=26
+    HouseInspections=26, DrawerProgram=27
 };
 
 class ResourceCatalog {

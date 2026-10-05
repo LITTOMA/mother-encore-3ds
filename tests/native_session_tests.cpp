@@ -69,15 +69,34 @@ int main(int argc,char**argv){
  for(size_t n=0;n<bytes.size();++n)CHECK(!data.load(bytes.data(),n,error));
  CHECK(data.valid()&&data.leader_id()=="ninten");
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}
- for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,4},{20,4},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
+ for(auto entry:std::vector<std::pair<size_t,uint32_t>>{{8,5},{20,5},{8,1},{20,1},{24,0},{36,0xffffffff}}){auto mutation=bytes;put(mutation,entry.first,entry.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));}
  auto trailing=bytes;trailing.push_back(0);fix(trailing);CHECK(!data.load(trailing.data(),trailing.size(),error));CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(validate(good));
  // A schema1/capability1 resource still loads without injecting the new
  // startup roster, as required by the archived rules6 migration resource.
  auto template_state=data.defaults();template_state.characters=data.startup_characters();std::vector<uint8_t>startup_bytes;CHECK(encode_session_save(template_state,data.compatibility(),startup_bytes,error));
  size_t settings_bytes=4+8*data.text_speeds().size()+4+4;for(const auto&v:data.menu_flavors())settings_bytes+=4+v.size();for(const auto&v:data.button_prompts())settings_bytes+=4+v.size();
- auto legacy_resource=bytes;legacy_resource.resize(legacy_resource.size()-settings_bytes-startup_bytes.size()-4);put(legacy_resource,8,1);put(legacy_resource,20,1);fix(legacy_resource);
+ size_t acquisition_bytes=4;for(const auto&policy:data.acquisitions())acquisition_bytes+=4+policy.item_id.size()+8+4+policy.flag_id.size();
+ auto v3_resource=bytes;v3_resource.resize(bytes.size()-acquisition_bytes);put(v3_resource,8,3);put(v3_resource,20,3);fix(v3_resource);NativeSessionData v3;CHECK(v3.load(v3_resource.data(),v3_resource.size(),error));CHECK(v3.acquisitions().empty());
+ auto v2_resource=v3_resource;v2_resource.resize(v2_resource.size()-settings_bytes);put(v2_resource,8,2);put(v2_resource,20,2);fix(v2_resource);NativeSessionData v2;CHECK(v2.load(v2_resource.data(),v2_resource.size(),error));CHECK(v2.acquisitions().empty());
+ auto legacy_resource=bytes;legacy_resource.resize(legacy_resource.size()-acquisition_bytes-settings_bytes-startup_bytes.size()-4);put(legacy_resource,8,1);put(legacy_resource,20,1);fix(legacy_resource);
  NativeSessionData legacy;CHECK(legacy.load(legacy_resource.data(),legacy_resource.size(),error));CHECK(legacy.startup_characters().size()==1);CHECK(legacy.defaults().characters.size()==1);
  std::vector<uint8_t>current_defaults,legacy_defaults;CHECK(encode_session_save(data.defaults(),data.compatibility(),current_defaults,error));CHECK(encode_session_save(legacy.defaults(),legacy.compatibility(),legacy_defaults,error));CHECK(current_defaults==legacy_defaults);
  CHECK(validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),good,error));CHECK(!validate_native_session_snapshot(legacy,room.view(),house.view(),round.view(),items.view(),startup,error));
+ CHECK(data.acquisitions().size()==1);const auto&policy=data.acquisitions()[0];CHECK(policy.max_count==1);
+ auto acquired=good;uint32_t uid=UINT32_MAX;auto used=[&](uint32_t value){for(const auto&c:acquired.characters)for(const auto&item:c.inventory)if(item.uid==value)return true;for(const auto&item:acquired.key_items)if(item.uid==value)return true;return false;};while(used(uid))--uid;
+ acquired.characters[0].inventory.push_back({policy.item_id,false,policy.doses,uid});for(auto&f:acquired.flags)if(f.id==policy.flag_id)f.value=true;CHECK(validate(acquired));
+ CHECK(encode_session_save(acquired,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored));CHECK(restored.characters[0].inventory.back().uid==uid);
+ CHECK(!validate_native_session_snapshot(v3,room.view(),house.view(),round.view(),items.view(),acquired,error));
+ {auto s=acquired;s.characters[0].inventory.back().doses++;CHECK(!validate(s));}
+ {auto s=acquired;s.characters[0].inventory.back().equipped=true;CHECK(!validate(s));}
+ {auto s=acquired;s.characters[0].inventory.back().item_id="unknown";CHECK(!validate(s));}
+ {auto s=acquired;s.characters[0].inventory.back().uid=s.characters[0].inventory.front().uid;CHECK(!validate(s));}
+ {auto s=acquired;auto duplicate=s.characters[0].inventory.back();duplicate.uid=uid-1;s.characters[0].inventory.push_back(duplicate);CHECK(!validate(s));}
+ {auto s=acquired;for(auto&f:s.flags)if(f.id==policy.flag_id)f.value=false;CHECK(!validate(s));}
+ {auto s=acquired;std::swap(s.characters[0].inventory.front(),s.characters[0].inventory.back());CHECK(!validate(s));}
+ uint32_t definition=UINT32_MAX;for(uint32_t i=0;i<items.view().count(ItemSection::Definitions);++i)if(items.view().string(items.view().definition(i).source)==policy.item_id)definition=i;CHECK(definition!=UINT32_MAX);
+ InventoryState acquired_inventory;CHECK(acquired_inventory.initialize(items.view()));CHECK(acquired_inventory.append(definition,policy.doses,uid,error));input.state=good;for(auto&f:input.state.flags)if(f.id==policy.flag_id)f.value=true;input.inventory=&acquired_inventory;CHECK(build());CHECK(output.characters[0].inventory.back().uid==uid&&output.characters[0].inventory.back().doses==policy.doses);
+ for(auto&f:input.state.flags)if(f.id==policy.flag_id)f.value=false;const auto previous_output=output;CHECK(!build());CHECK(output.characters[0].inventory.back().uid==previous_output.characters[0].inventory.back().uid);
+ const size_t policy_at=bytes.size()-acquisition_bytes;for(auto change:std::vector<std::pair<size_t,uint32_t>>{{policy_at,17},{policy_at+8+policy.item_id.size(),0},{policy_at+12+policy.item_id.size(),2}}){auto mutation=bytes;put(mutation,change.first,change.second);fix(mutation);CHECK(!data.load(mutation.data(),mutation.size(),error));CHECK(data.acquisitions()[0].item_id==policy.item_id);}
  std::printf("NativeSession: %u checks; source defaults, actual level2 stats, stable identities, complete snapshot and fail-closed scope\n",checks);
 }

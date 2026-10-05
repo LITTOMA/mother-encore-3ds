@@ -14,6 +14,10 @@ struct NativeSessionLevel {
     std::array<int32_t,7> stats{}; // RoundStat order, including equipped boosts.
     std::vector<std::string> skills;
 };
+struct NativeSessionAcquisition {
+    std::string item_id,flag_id;
+    uint32_t doses=0,max_count=0;
+};
 class NativeSessionData {
 public:
     bool load(const uint8_t*,size_t,std::string&);
@@ -37,6 +41,7 @@ public:
     const std::vector<NativeSessionLevel>& levels()const{return levels_;}
     const std::vector<std::string>& mutable_flags()const{return mutable_flags_;}
     const std::vector<uint32_t>& camera_area_ids()const{return camera_area_ids_;}
+    const std::vector<NativeSessionAcquisition>& acquisitions()const{return acquisitions_;}
 private:
     std::vector<double> text_speeds_;
     std::vector<std::string> menu_flavors_,button_prompts_;
@@ -48,6 +53,7 @@ private:
     std::string saved_flag_,earned_cash_flag_;
     std::vector<std::string>mutable_flags_;
     std::vector<uint32_t>camera_area_ids_;
+    std::vector<NativeSessionAcquisition>acquisitions_;
 };
 
 struct NativeSnapshotInput {

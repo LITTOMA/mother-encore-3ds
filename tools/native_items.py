@@ -177,7 +177,8 @@ def encode(t, commit=PIN):
         off = len(data) if block else 0
         struct.pack_into('<HHIII', data, 64 + i * 16, i + 1, STRIDES[i], off, len(block) // STRIDES[i], len(block))
         data.extend(block)
-    struct.pack_into('<8s6I20s12x', data, 0, b'ENCITM01', 1, len(data), 0, len(STRIDES), 1, 1, bytes.fromhex(commit))
+    capability=2 if any(row[10]&2 for row in t['Definitions']) else 1
+    struct.pack_into('<8s6I20s12x', data, 0, b'ENCITM01', capability, len(data), 0, len(STRIDES), capability, 1, bytes.fromhex(commit))
     struct.pack_into('<I', data, 16, zlib.crc32(data))
     return bytes(data)
 
@@ -185,7 +186,7 @@ def encode(t, commit=PIN):
 def parse_pack(blob):
     require(HEADER <= len(blob) <= 1024 * 1024, 'Items size')
     magic, version, size, crc, n, caps, rules, commit = struct.unpack_from('<8s6I20s', blob)
-    require(magic == b'ENCITM01' and version == caps == rules == 1 and size == len(blob)
+    require(magic == b'ENCITM01' and (version,caps) in ((1,1),(2,2)) and rules == 1 and size == len(blob)
             and n == len(STRIDES) and commit.hex() == PIN and not any(blob[52:64]), 'Items header/pin')
     copy = bytearray(blob)
     struct.pack_into('<I', copy, 16, 0)
@@ -206,6 +207,7 @@ def parse_pack(blob):
         t[name] = bytes(block) if i == 0 else list(struct.iter_unpack(FORMATS[i], block))
     require(end == len(blob), 'Items trailing bytes')
     validate(t)
+    require(caps==2 or not any(row[10]&2 for row in t['Definitions']),'Items rich description capability absent')
     return t
 
 
@@ -248,9 +250,10 @@ def validate(t):
     for d in t['Definitions']:
         require(safe_path(string(d[1])) and string(d[1]) not in sources and string(d[2]) and string(d[3]), 'Items definition strings')
         sources.add(string(d[1]))
-        require((d[4] == NO_INDEX or (d[4] < len(t['Resources']) and t['Resources'][d[4]][2] == 1)) and d[10] & ~1 == 0 and d[11] in (0, 1)
+        require((d[4] == NO_INDEX or (d[4] < len(t['Resources']) and t['Resources'][d[4]][2] == 1)) and d[10] & ~3 == 0 and d[11] in (0, 1)
                 and all(-65535 <= v <= 65535 for v in d[6:10])
                 and ((d[10] & 1 and d[5] < 4) or (not d[10] & 1 and d[5] == NO_INDEX)), 'Items definition')
+        require(not d[10]&2 or (d[10]==2 and d[11]==0 and not any(d[6:10])),'Items unsupported rich/action projection must stay disabled')
     equipped_slots = set()
     for i in t['Instances']:
         require(i[1] < len(t['Definitions']) and i[2] in (0, 1) and 1 <= i[3] <= 65535, 'Items instance')

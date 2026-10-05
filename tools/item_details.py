@@ -15,10 +15,10 @@ from tools.drawer_program import canonical, digest, fields, read_json, write_jso
 IR = 'content/native-item-details.json'
 RECIPE = 'content/item-details-assets.json'
 REVIEW = 'reports/item-details-source/source-review.json'
-RECEIPT = 'content/asset-receipts/graphics/ui/items/details-source.json'
+RECEIPT = 'content/asset-receipts/graphics/ui/item-details/source.json'
 PACK = 'romfs/data/opening.encdetails'
 ICON = 'Graphics/UI/Ailments/Asthma.png'
-OUTPUT = 'graphics/ui/items/asthma-status.t3x'
+OUTPUT = 'graphics/ui/item-details/asthma-status.t3x'
 NAMES = ('Strings', 'Definitions', 'Locales', 'Presentations', 'Tokens', 'Resources', 'Parameters')
 FORMATS = (None, '<5I', '<8I', '<4I', '<4I', '<7I32s2I', '<If')
 STRIDES = (1, 20, 32, 16, 16, 68, 8)

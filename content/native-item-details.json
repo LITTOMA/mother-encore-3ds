@@ -208,7 +208,7 @@
     {
       "id": 1,
       "source": "Graphics/UI/Ailments/Asthma.png",
-      "path": "graphics/ui/items/asthma-status.t3x",
+      "path": "graphics/ui/item-details/asthma-status.t3x",
       "kind": 1,
       "width": 14,
       "height": 12,

@@ -1,5 +1,13 @@
 # Mother: Encore 3DS
 
+## 原作与上游致谢
+
+**Mother: Encore 原作由 Team Encore 开发。本项目是基于原作的非官方 Nintendo 3DS 移植。**
+
+> **上游项目：[Mother: Encore 官方源码](https://github.com/motherencore/MOTHER-Encore-Source-Code)**
+>
+> 游戏的地图、角色、剧情、文本、图像和音乐来自 Mother: Encore 上游项目，相关版权与许可保留原作者及各自权利人的声明。本仓库的 MIT 许可证不重新授权这些游戏内容。详见 [第三方来源与许可](THIRD_PARTY_NOTICES.md)。
+
 Mother: Encore 的原生 Nintendo 3DS 移植，使用 C++17 共享游戏核心和 devkitPro、libctru、Citro2D。项目处于开发阶段，目前支持部分开局流程，尚不能游玩完整游戏。
 
 上屏按 **400×240** 适配，图素保持 1:1；下屏显示开发信息并提供触摸输入。320×180 仅用于可选的原作参考模式。本项目与 Team Encore、Nintendo 无官方隶属关系。

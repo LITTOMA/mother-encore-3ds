@@ -14,7 +14,7 @@ Mother: Encore 的局部原生 Nintendo 3DS 移植。共享 C++17 核心运行�
 | 世界 | 开局房屋内的移动、碰撞、人物动画、房门切换、七种物件调查及床头抽屉领取喷雾 |
 | 剧情 | Lamp、Doll、Pillow / Minnie 支线及已映射的 Carol、电话和 Dad 流程；电话后的 Carol / Mimmie 钥匙提示与重复对话 |
 | 战斗 | 受检遭遇的原版局部规则、回合、敌方回应、奖励与战后演出；不是完整战斗系统 |
-| 菜单与存档 | 局部 Items 菜单、自由行走 START → Pause / Equip 装卸与属性预览、Minnie 普通仓库存取与装备确认、Dad Record、受限 Continue / LOAD；只接受已支持的房屋、进度和格式 |
+| 菜单与存档 | 局部 Items 菜单、自由行走 START → Pause / Goods 的喷雾使用、Equip 装卸与属性预览、Minnie 普通仓库存取与装备确认、Dad Record、受限 Continue / LOAD；只接受已支持的房屋、进度和格式 |
 | 语言 | 英文 `en` 与简体中文 `zh_Hans_CN`；其他语言尚未开放 |
 | 音频 | 资源转换与 NDSP 流式后端已接入；实际可听性未验收 |
 
@@ -22,13 +22,13 @@ LOAD 对未知场景、版本和身份明确拒绝。精确 rules6 历史身份�
 
 Introduction 使用独立 `.encintro`，11 张原版纹理、专用受检字幕字体与原版开场音频。自然播放与原版跳过分别受测；历史动画的 116.5 秒键保留来源记录，因原作长度 116 秒而不触发。房屋建立于门口换场点，玩家按原作淡入信号解锁。
 
-床头抽屉使用独立 `.encdrawer`：完整保留原版调查、已领取、背包满和领取分支；领取前检查容量，物品先入背包，再显示文字、播放原版提示音及设置标记，随后等待确认。喷雾保留三次剂量、原版名称与图标，Record／LOAD 保留物品 UID 和领取标记。Items 二进制 capability2 保留原始描述和未实现的使用动作；独立 `.encdetails` 将已支持的帽子与喷雾描述接入 Items / Minnie 仓库，包含实际昵称、哮喘图标、剂量及属性值。其他物品与使用动作仍明确禁用；Session 资源 v4 增加来源派生的获取策略，存档编码及旧默认值保持原有兼容边界。
+床头抽屉使用独立 `.encdrawer`：完整保留原版调查、已领取、背包满和领取分支；领取前检查容量，物品先入背包，再显示文字、播放原版提示音及设置标记，随后等待确认。喷雾保留三次剂量、原版名称与图标，Record／LOAD 保留物品 UID 和领取标记。战斗 Items 二进制 capability2 保留原始描述，战斗物品动作仍未实现；独立 `.encdetails` 将已支持的帽子与喷雾描述接入 Items / Minnie 仓库，包含实际昵称、哮喘图标、剂量及属性值。野外 Goods → Use 已由独立 `.encuse` 接入喷雾的目标选择、状态恢复、原版恢复 / 无效消息及剂量消耗。目标无哮喘仍消耗；最后一剂删除，清除状态也保留原版 HP 为零时的刷新。Session v6 校验受审剂量范围、状态身份和保存计数，存档编码及旧默认值不变；新的部分剂量和状态需要 Session v6，旧 v5 消费者明确拒绝这些新状态。其他物品、状态战斗效果和战斗使用仍明确拒绝。
 
 Introduction 的音乐、文字音和动画音效在动画开始前一次性校验 PCM，已准备流不重复校验；音频仍使用有界流式缓冲，不改变播放时间或随机数。读取耗时及设备表现尚未验收。
 
 Minnie 在玩偶胜利后的原版 Storage 选择已接入双栏仓库：帽子和已领取喷雾转移保留 UID，装备确认同步角色属性，Record／LOAD 保留实际仓库。独立 `.encstorage` 承载规则与布局；Room 能力 8 增加受检子菜单回调而保持游戏规则 7，Session v5 支持库存守恒和装备派生属性。已支持的帽子与喷雾富文本描述已接入；物品使用与少量装饰仍未完成，详见 [Minnie 仓库](MINNIE_STORAGE.md)。
 
-自由行走时按 START 打开原版六项 Pause 菜单；本切片仅开放 Equip。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
+自由行走时按 START 打开原版六项 Pause 菜单；当前开放 Goods 的喷雾使用与 Equip。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
 
 具体范围见 [启动设置](STARTUP_SETTINGS_CHECKPOINT.md)、[多语言运行时](MULTILINGUAL_RUNTIME.md)、[Continue / LOAD](CONTINUE_LOAD.md) 和 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md) 和 [房屋后续调查与对话](HOUSE_FOLLOWUP.md)。
 

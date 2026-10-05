@@ -30,7 +30,15 @@ class StorageFormat(unittest.TestCase):
     def test_unknown_schema(self):
         with self.assertRaises(ValueError):pack.parse_pack(self.changed_blob(8,struct.pack('<I',2)))
     def test_unknown_capability(self):
-        with self.assertRaises(ValueError):pack.parse_pack(self.changed_blob(20,struct.pack('<I',2)))
+        with self.assertRaises(ValueError):pack.parse_pack(self.changed_blob(20,struct.pack('<I',3)))
+    def test_legacy_capability_keeps_exact_doses(self):
+        t=copy.deepcopy(self.tables)
+        for p in t['Policies']:p[6]=p[2]
+        self.assertEqual(pack.parse_pack(pack.encode(t,caps=1)),t)
+    def test_legacy_cannot_encode_partial_policy(self):
+        with self.assertRaises(ValueError):pack.encode(self.tables,caps=1)
+    def test_capability_stride_mismatch(self):
+        with self.assertRaises(ValueError):pack.parse_pack(self.changed_blob(20,struct.pack('<I',1)))
     def test_unknown_rules(self):
         with self.assertRaises(ValueError):pack.parse_pack(self.changed_blob(24,struct.pack('<I',2)))
     def test_wrong_source_pin(self):
@@ -59,6 +67,8 @@ class StorageFormat(unittest.TestCase):
         with self.assertRaises(ValueError):pack.encode(t)
     def test_unknown_sort_tie(self):self.reject_table('Policies',1,4,self.tables['Policies'][0][4])
     def test_zero_doses(self):self.reject_table('Policies',0,2,0)
+    def test_zero_minimum_doses(self):self.reject_table('Policies',0,6,0)
+    def test_minimum_exceeds_maximum(self):self.reject_table('Policies',0,6,self.tables['Policies'][0][2]+1)
     def test_unknown_conservation_count(self):self.reject_table('Policies',0,3,2)
     def test_zero_storage_capacity(self):self.reject_table('Parameters',0,1,0)
     def test_infinite_parameter(self):self.reject_table('Parameters',0,1,float('inf'))

@@ -214,6 +214,14 @@
       "import_sha256": "ec8c7281ddb3886730d39aa18f8ce194909e089f6ceafa394154032f8dca1bca",
       "pcm_path": "sound/effects/field-menu-close.pcm",
       "gain_db": 0
+    },
+    {
+      "stable_id": 1701,
+      "source_path": "res://Audio/Sound effects/EB/eat.wav",
+      "source_sha256": "11eee267112ad052721ae96c1a4bdd7e589493c7dd57d1327164b330473aeaef",
+      "import_sha256": "df0147fca63e74e0d110b0b47df9acb78a8752c1a643a5dd3a982b4b245f0567",
+      "pcm_path": "sound/effects/item-consume.pcm",
+      "gain_db": 0
     }
   ]
 }

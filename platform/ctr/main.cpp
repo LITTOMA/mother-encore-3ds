@@ -10,6 +10,8 @@
 #include "round_renderer.hpp"
 #include "items_renderer.hpp"
 #include "field_equipment_renderer.hpp"
+#include "field_item_use_renderer.hpp"
+#include "encore/item_use.hpp"
 #include "encore/field_equipment_menu.hpp"
 #include "world_effect_renderer.hpp"
 #include "house_renderer.hpp"
@@ -166,6 +168,9 @@ ItemDetailsRenderer item_details_renderer;
 upstream::FieldEquipmentData field_equipment_data;
 upstream::FieldEquipmentMenu field_equipment_menu;
 FieldEquipmentRenderer field_equipment_renderer;
+upstream::ItemUseData item_use_data;
+upstream::FieldItemUseMenu field_item_use_menu;
+FieldItemUseRenderer field_item_use_renderer;
 encore::ctr::SourceFontRenderer field_counter_font;
 BattleRenderer field_counter_text;
 bool field_equipment_assets_ready=false;
@@ -681,7 +686,7 @@ bool prepare_field_equipment(uint32_t slot,bool none,uint32_t uid,PreparedFieldE
     const auto view=field_equipment_data.view();
     if(!view.valid()||slot>=view.count(FieldSection::Slots)||!session_rewards_valid||!session_state_ready){error="Equipment lacks a checked live session";return false;}
     SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,error))return false;
-    if(snapshot.characters.size()!=1||snapshot.party.size()!=1||snapshot.characters.front().character_id!=view.binding(FieldBinding::Owner)){error="Equipment character scope rejected";return false;}
+    if(snapshot.characters.empty()||snapshot.party.size()!=1||snapshot.party.front()!=snapshot.characters.front().character_id||snapshot.characters.front().character_id!=view.binding(FieldBinding::Owner)){error="Equipment character scope rejected";return false;}
     auto inventory=session_inventory;
     bool cleared=false;
     for(const auto&item:session_inventory.instances())if(item.equipped&&items_data.view().definition(item.definition).equipment_slot==slot){
@@ -719,7 +724,7 @@ bool open_field_equipment(std::string&error){
     FieldEquipmentHost host;
     host.read=[&](FieldEquipmentSnapshot&out,std::string&e){
         SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,e))return false;
-        if(snapshot.characters.size()!=1||snapshot.party.size()!=1){e="Field menu party scope rejected";return false;}
+        if(snapshot.characters.empty()||snapshot.party.size()!=1||snapshot.party.front()!=snapshot.characters.front().character_id){e="Field menu party scope rejected";return false;}
         FieldEquipmentSnapshot next;next.owner=snapshot.characters.front().character_id;next.nickname=snapshot.characters.front().nickname;next.level=session_rewards.level;next.cash=session_rewards.cash;next.inventory=session_inventory;
         next.stats={{session_rewards.maxhp,session_rewards.maxpp,session_rewards.offense,session_rewards.defense,session_rewards.speed,session_rewards.iq,session_rewards.guts}};
         out=std::move(next);e.clear();return true;
@@ -728,6 +733,50 @@ bool open_field_equipment(std::string&error){
     host.commit=[](uint32_t slot,bool none,uint32_t uid,std::string&e){PreparedFieldEquipment candidate;if(!prepare_field_equipment(slot,none,uid,candidate,e))return false;session_inventory=std::move(candidate.inventory);session_rewards=std::move(candidate.stats);return true;};
     if(!field_equipment_menu.initialize(view,std::move(host),locale_selection.code()=="zh_Hans_CN")||!field_equipment_menu.open()){error=field_equipment_menu.error();return false;}
     field_equipment_status.clear();return true;
+}
+
+bool read_field_item_use(upstream::FieldItemUseSnapshot&out,std::string&error){
+    using namespace upstream;
+    SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,error))return false;
+    FieldItemUseSnapshot next;next.owner=native_session_data.leader_id();next.inventory=session_inventory;
+    for(const auto&id:snapshot.party){const auto member=std::find_if(snapshot.characters.begin(),snapshot.characters.end(),[&](const SessionCharacter&c){return c.character_id==id;});
+        if(member==snapshot.characters.end()){error="Items target is absent from live character registry";return false;}std::array<int32_t,7> derived{};if(!native_session_derived_stats(native_session_data,items_data.view(),*member,derived,error))return false;next.party.push_back(*member);next.maximum_hp.push_back(derived[0]);
+    }
+    if(!validate_item_use_snapshot(&item_use_data,next,error))return false;
+    out=std::move(next);return true;
+}
+bool open_field_item_use(std::string&error){
+    using namespace upstream;
+    if(!item_use_data.valid()||!item_use_data.bind_items(items_data.view(),error))return false;
+    for(uint32_t i=uint32_t(FieldItemUseSound::Open);i<=uint32_t(FieldItemUseSound::Close);++i){const auto path=item_use_data.sound(FieldItemUseSound(i));if(!path.empty()&&!prepare_source_audio(std::string(path),error))return false;}
+    // Session admission and consumption must agree before any UI can mutate it.
+    if(native_session_data.consumables().size()!=item_use_data.rules().size()||native_session_data.status_policies().size()!=item_use_data.status_policies().size()){error="Item-use/session capability coverage differs";return false;}
+    for(const auto&rule:item_use_data.rules()){
+        auto p=std::find_if(native_session_data.consumables().begin(),native_session_data.consumables().end(),[&](const NativeSessionConsumable&p){return p.item_id==rule.source;});
+        if(p==native_session_data.consumables().end()||p->max_doses!=rule.max_doses||!prepare_source_audio(rule.success_sound,error)){error="Item-use/session/audio binding rejected: "+error;return false;}
+    }
+    for(const auto&rule:item_use_data.status_policies()){
+        auto p=std::find_if(native_session_data.status_policies().begin(),native_session_data.status_policies().end(),[&](const NativeSessionStatusPolicy&p){return p.id==rule.id;});
+        if(p==native_session_data.status_policies().end()||p->passive_healing!=rule.passive_healing||p->default_saved_turns!=rule.default_saved_turns){error="Item-use/session status policy differs";return false;}
+    }
+    if(!field_item_use_renderer.initialize(&item_use_data,items_data.view(),&field_equipment_renderer,&locale_selection,&item_details_renderer,error))return false;
+    FieldItemUseHost host;host.read=read_field_item_use;
+    host.commit=[](uint32_t uid,std::string_view target,ItemUseResult&result,std::string&e){
+        FieldItemUseSnapshot live;if(!read_field_item_use(live,e))return false;
+        FieldItemUseCandidate candidate;if(!prepare_item_use(&item_use_data,live,uid,target,candidate,e))return false;
+        SessionSnapshot snapshot;if(!collect_session_snapshot(snapshot,e))return false;
+        for(const auto&member:candidate.party){auto at=std::find_if(snapshot.characters.begin(),snapshot.characters.end(),[&](const SessionCharacter&c){return c.character_id==member.character_id;});
+            if(at==snapshot.characters.end()){e="Items commit target registry changed";return false;}at->status=member.status;at->hp=member.hp;
+        }
+        auto stats=session_rewards;
+        const auto owner=std::find_if(candidate.party.begin(),candidate.party.end(),[&](const SessionCharacter&c){return c.character_id==native_session_data.leader_id();});
+        if(owner==candidate.party.end()||owner->hp<0||owner->hp>stats.maxhp){e="Items status refresh HP is outside source maximum";return false;}stats.hp=int32_t(owner->hp);
+        NativeSnapshotInput input;input.state=std::move(snapshot);input.stats=&stats;input.inventory=&candidate.inventory;input.storage=&session_storage;
+        SessionSnapshot checked;if(!build_native_session_snapshot(native_session_data,opening_data.view(),house_data.view(),round_data.view(),items_data.view(),input,checked,e))return false;
+        result=std::move(candidate.result);session_inventory=std::move(candidate.inventory);session_rewards=std::move(stats);session_state=std::move(checked);e.clear();return true;
+    };
+    if(!field_item_use_menu.initialize(&item_use_data,std::move(host),locale_selection.code())||!field_item_use_menu.open()){error=field_item_use_menu.error();return false;}
+    return true;
 }
 
 bool read_prepared_slot(uint32_t slot,upstream::SessionSnapshot&snapshot,upstream::PreparedSessionRestore&prepared,std::string&error){
@@ -808,7 +857,7 @@ bool apply_loaded_slot(uint32_t slot,std::string&error){
     wait_for_gpu_idle();ctr::loading_menu_flavor_select(uint32_t(startup_settings_data.flavor_index(prepared.state.settings.menu_flavor)));
     session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
     battle_random=next_random;generated_uid_ledger=std::move(next_ledger);gameplay_scene.swap(candidate);restore_input_pending=true;
-    dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=upstream::StorageMenu{};field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_status.clear();save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;
+    dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=upstream::StorageMenu{};field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_equipment_status.clear();save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;
     if(!items_menu.initialize(session_inventory)){error=items_menu.error();return false;}
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;audio_player.reset_scene_requests();
     std::string preference_error;remember_slot(slot,preference_error);continue_status="Loaded slot "+std::to_string(slot);if(!preference_error.empty())continue_status+="; preference: "+preference_error;
@@ -840,7 +889,7 @@ bool commit_named_new_game(std::string&error){
     wait_for_gpu_idle();ctr::loading_menu_flavor_select(uint32_t(startup_settings_data.flavor_index(prepared.state.settings.menu_flavor)));
     session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
     battle_random=random;generated_uid_ledger=std::move(pending_new_game.uid_ledger);candidate->world.attach_random(battle_random);candidate->presentation.rebind_random(battle_random);gameplay_scene.swap(candidate);pending_new_game=PendingNewGame{};restore_input_pending=false;last_save_slot=0;
-    dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=upstream::StorageMenu{};field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_status.clear();save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;items_menu.initialize(session_inventory);
+    dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=upstream::StorageMenu{};field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_equipment_status.clear();save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;items_menu.initialize(session_inventory);
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;
     region_music.shutdown();audio_player.reset_scene_requests();
     if(audio_player.available()&&!audio_player.stop_lane(ctr::AudioLane::Effect,error))return false;
@@ -850,7 +899,7 @@ bool reset_development_game(std::string&error){
     cancel_battle_prewarm();
     LoadingScope loading("Starting new game",5);
     if(!ensure_house_graphics(error))return false;
-    wait_for_gpu_idle();restore_input_pending=false;session_rewards_valid=session_state_ready=false;session_inventory.initialize(items_data.view());session_storage.initialize(items_data.view(),native_session_data.storage_capacity());storage_menu=upstream::StorageMenu{};field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_status.clear();storage_open_failed=false;items_menu.initialize(session_inventory);items_status.clear();
+    wait_for_gpu_idle();restore_input_pending=false;session_rewards_valid=session_state_ready=false;session_inventory.initialize(items_data.view());session_storage.initialize(items_data.view(),native_session_data.storage_capacity());storage_menu=upstream::StorageMenu{};field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_equipment_status.clear();storage_open_failed=false;items_menu.initialize(session_inventory);items_status.clear();
     battle_entry=upstream::BattleEntry{};battle_round=upstream::BattleRound{};battle_outcome=upstream::BattleOutcome{};round_presentation=upstream::BattleActionPresentation{};round_ready=false;round_error.clear();
     if(!loading.complete())return false;
     auto fresh=std::make_unique<GameplayScene>();if(!fresh->world.initialize(opening_data.view(),{float(view_width),float(view_height)})){error=fresh->world.error();return false;}gameplay_scene.swap(fresh);if(!loading.complete())return false;
@@ -861,6 +910,7 @@ bool reset_development_game(std::string&error){
 bool begin_battle(std::string&error){
     const auto entry_started=svcGetSystemTick();const auto activity_started=load_activity_revision();
     using namespace upstream;
+    if(session_state_ready&&std::any_of(session_state.characters.begin(),session_state.characters.end(),[&](const SessionCharacter&c){return std::find(session_state.party.begin(),session_state.party.end(),c.character_id)!=session_state.party.end()&&!c.status.empty();})){error="Battle status execution is not admitted; field recovery remains available";return false;}
     const auto room=opening_data.view();
     const auto resource_index=gameplay_scene->world.battle_request().battle_resource_index;
     if(resource_index>=room.resource_count()||room.resource(resource_index).kind!=uint16_t(RoomResourceKind::CheckedBattlePack)){error="Battle request lacks checked resource";return false;}
@@ -1001,7 +1051,7 @@ bool load_house(std::string& error){
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count());
     return true;
 }
-void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
+void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){
@@ -1119,7 +1169,7 @@ void house_bottom(){
     if(save_menu.is_open())scope=save_status.empty()?"Record: choose a slot; B closes":save_status.c_str();
     if(!house_error.empty())scope=house_error.c_str();
     if(!round_error.empty())scope=round_error.c_str();
-    if(field_equipment_menu.visible())scope="Original Pause / Equip; START menu, A choose, B back";
+    if(field_equipment_menu.visible())scope="Original Pause / Items / Equip; START menu, A choose, B back";
     if(!field_equipment_status.empty())scope=field_equipment_status.c_str();
     if(items_menu.active())scope=items_status.empty()?"Inventory: A select, B back, L info":items_status.c_str();
     if(!gameplay_scene->world.healthy())scope=gameplay_scene->world.error();
@@ -1215,7 +1265,7 @@ int main(int argc,char** argv){
        !loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);},"house-metadata")||
        !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
        !loading.step([&]{return item_details_data.load_file(resource_path(ResourceRole::ItemDetails).c_str(),error)&&item_details_data.view().bind_items(items_data.view(),error);},"item-details-metadata")||
-       !loading.step([&]{return field_equipment_data.load_file(resource_path(ResourceRole::FieldEquipment).c_str(),error)&&field_equipment_data.view().bind_items(items_data.view(),error);},"field-equipment-metadata")||
+       !loading.step([&]{return field_equipment_data.load_file(resource_path(ResourceRole::FieldEquipment).c_str(),error)&&field_equipment_data.view().bind_items(items_data.view(),error)&&item_use_data.load_file(resource_path(ResourceRole::ItemUse).c_str(),error)&&item_use_data.bind_items(items_data.view(),error);},"field-equipment-metadata")||
        !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
        !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")||
@@ -1248,12 +1298,12 @@ int main(int argc,char** argv){
     },&input_resume_reset);
     // Content IDs need not fit bit fields; compare the complete owner tuple
     // and issue a session token rather than hashing/packing arbitrary IDs.
-    using InputOwner=std::array<uint32_t,13>;
+    using InputOwner=std::array<uint32_t,14>;
     InputOwner prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
     const auto input_context=[&]()->uint32_t{
         if(!gameplay_scene->world.healthy()||!house_error.empty()||!round_error.empty())return 0;
         const bool battle=in_battle();
-        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase())}};
+        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase()),uint32_t(field_item_use_menu.phase())}};
         if(!have_input_owner||owner!=prior_input_owner){prior_input_owner=owner;have_input_owner=true;if(++input_owner_token==0)++input_owner_token;}
         return input_owner_token;
     };
@@ -1278,12 +1328,13 @@ int main(int argc,char** argv){
         // physics catch-up loop. Changing input ownership quarantines a held
         // touch or stick until release, so transitions cannot inherit gestures.
         const bool field_was_open=field_equipment_menu.visible();
+        const bool field_items_was_open=field_item_use_menu.active();
         const auto field_view=field_equipment_data.view();
         const bool may_open_field=!field_was_open&&!new_game_setup.active()&&!introduction.active()&&!continue_menu.is_open()&&!restore_input_pending&&!in_battle()&&!battle_handoff_pending()&&!storage_menu.active()&&!storage_open_failed&&!save_menu.is_open()&&!save_open_failed&&!dialogue_choices.active()&&house_error.empty()&&round_error.empty()&&gameplay_scene->world.healthy()&&gameplay_scene->world.stage()==upstream::OpeningStage::Walking&&!gameplay_scene->world.house_paused()&&!gameplay_scene->world.cutscene_active()&&!gameplay_scene->house.blocks_player()&&!gameplay_scene->house.entering_door();
         if(may_open_field&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::OpenMask)))){
             wait_for_gpu_idle();
             if(!gameplay_scene->world.pause_for_house())field_equipment_status="Field menu pause rejected";
-            else if(!open_field_equipment(error)){field_equipment_status=error;field_equipment_menu=upstream::FieldEquipmentMenu{};gameplay_scene->world.unpause_from_house();}
+            else if(!open_field_equipment(error)){field_equipment_status=error;field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();gameplay_scene->world.unpause_from_house();}
         }
         const uint32_t sampled_context=input_context();
         circlePosition circle{};hidCircleRead(&circle);
@@ -1429,15 +1480,30 @@ int main(int argc,char** argv){
             }
         }
         if(field_equipment_menu.visible()){
-            const bool allowed=field_was_open&&same_input_owner;
+            const bool allowed=field_was_open&&same_input_owner&&!field_item_use_menu.active();
             if(!field_equipment_menu.input(allowed?navigation.x:0,allowed?navigation.y:0,allowed&&((down&uint32_t(field_view.parameter(upstream::FieldParameter::ConfirmMask)))||native_controls.confirm_pulse),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::CancelMask))),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::ScopeMask))),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::OpenMask))))||!field_equipment_menu.idle_frame(dt)){
-                field_equipment_status=field_equipment_menu.error();field_equipment_menu=upstream::FieldEquipmentMenu{};
+                field_equipment_status=field_equipment_menu.error();field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();
             }
             for(const auto event:field_equipment_menu.take_sounds()){
                 const auto binding=upstream::FieldBinding(uint32_t(upstream::FieldBinding::PauseOpenSound)+uint32_t(event)-1);
                 if(!play_source_audio(std::string(field_view.binding(binding))))field_equipment_status=audio_status.empty()?house_error:audio_status;
             }
             if(!field_equipment_menu.visible()&&!gameplay_scene->world.unpause_from_house())field_equipment_status="Field menu resume rejected";
+        }
+        if(field_equipment_menu.take_items_request()){
+            wait_for_gpu_idle();
+            if(!open_field_item_use(error)){field_equipment_status=error;if(!field_equipment_menu.resume_items_checked())field_equipment_status=field_equipment_menu.error();}
+        }
+        if(field_item_use_menu.active()){
+            const bool allowed=field_items_was_open&&same_input_owner;
+            if(!field_item_use_menu.input(allowed?navigation.x:0,allowed?navigation.y:0,allowed&&((down&uint32_t(field_view.parameter(upstream::FieldParameter::ConfirmMask)))||native_controls.confirm_pulse),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::CancelMask))),allowed&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::ScopeMask))))||!field_item_use_menu.idle_frame(dt)){
+                field_equipment_status=field_item_use_menu.error();field_item_use_menu.close();
+            }
+            for(const auto event:field_item_use_menu.take_sounds()){
+                const auto source=event==upstream::FieldItemUseSound::Heal?field_item_use_menu.last_result().sound_source:item_use_data.sound(event);
+                if(!source.empty()&&!play_source_audio(std::string(source)))field_equipment_status=audio_status.empty()?house_error:audio_status;
+            }
+            if(!field_item_use_menu.active()&&!field_equipment_menu.resume_items_checked())field_equipment_status=field_equipment_menu.error();
         }
         const bool storage_was_open=storage_menu.active();
         if(gameplay_scene->world.take_storage_request()){
@@ -1550,6 +1616,7 @@ int main(int argc,char** argv){
             if(save_menu.is_open()){const auto flavor=save_menu_data.flavor_index(session_state.settings.menu_flavor);C3D_Mtx saved_view;C2D_ViewSave(&saved_view);C2D_ViewTranslate(view_x(),view_y());if(flavor<0||!save_renderer.draw(save_menu,battle_renderer,uint32_t(flavor),float(view_width),float(view_height)))house_error="Save menu renderer rejected checked pose";C2D_ViewRestore(&saved_view);}
             if(storage_menu.active()&&!storage_renderer.draw(storage_menu,battle_renderer,storage_counter_text,float(view_width),float(view_height),view_x(),view_y()))house_error="Storage renderer rejected checked pose";
             if(field_equipment_menu.visible()&&!field_equipment_renderer.draw(field_equipment_menu,battle_renderer,field_counter_text,float(view_width),float(view_height),view_x(),view_y()))field_equipment_status=field_equipment_renderer.error();
+            if(field_item_use_menu.active()&&!field_item_use_renderer.draw(field_item_use_menu,battle_renderer,float(view_width),float(view_height),view_x(),view_y()))field_equipment_status=field_item_use_renderer.error();
             const auto fade=gameplay_scene->house.fade_color();if(fade.w>0)BattleRenderer::draw_rect(view_x(),view_y(),float(view_width),float(view_height),battle_color(fade));
         }
         if(continue_menu.is_open()){

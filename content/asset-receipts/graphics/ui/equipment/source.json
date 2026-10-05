@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "71c5833c1fbd5069648b7f46b8b65f6b4277dc51fd2887ddd0ab61e4f2c4b586",
-  "producer_sha256": "1aa457e42be00d7ba5e693870ade850596f36995ec6b8ad07b4309b179bdb68f",
+  "ir_sha256": "243222932fe34a89f3ad6261b9f1183db10084d2618fc54da73de3e653848338",
+  "producer_sha256": "81ee149940a84a1dc622d7f2d71cc3b4e44a954c7412445175577f4e7d97e957",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "outputs": {
     "graphics/ui/equipment/panel.t3x": {
@@ -121,6 +121,15 @@
       "bytes": 533,
       "sha256": "73c3ef6582834fac73412cd51233277f0c2616746b04d8dbcfffa23a73c71298",
       "crc32": 179462015
+    },
+    "graphics/ui/equipment/items-target-panel.t3x": {
+      "size": [
+        24,
+        33
+      ],
+      "bytes": 8213,
+      "sha256": "514fe4758f27212fd3651c4b9af6a58a0409c28cafe0129876c57e863fc295f8",
+      "crc32": 3880505159
     }
   }
 }

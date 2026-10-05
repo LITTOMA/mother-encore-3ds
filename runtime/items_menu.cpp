@@ -49,6 +49,13 @@ bool InventoryState::erase_uid(uint32_t uid,std::string&error){
  if(at==instances_.end()){error="Inventory transfer missing UID";return false;}
  instances_.erase(at);error.clear();return true;
 }
+bool InventoryState::consume_dose_uid(uint32_t uid,uint32_t expected,std::string&error){
+ if(!valid()){error="Inventory consumption missing content";return false;}
+ auto at=std::find_if(instances_.begin(),instances_.end(),[&](const ItemInstance&i){return i.id==uid;});
+ if(at==instances_.end()||!expected||at->doses!=expected||at->equipped){error="Inventory consumption stale UID/doses/equipment";return false;}
+ if(at->doses>1)--at->doses;else instances_.erase(at);
+ error.clear();return true;
+}
 bool InventoryState::equip_uid(uint32_t uid,bool equipped,std::string&error){
  if(!valid()){error="Inventory equipment missing content";return false;}
  auto at=std::find_if(instances_.begin(),instances_.end(),[&](const ItemInstance&i){return i.id==uid;});

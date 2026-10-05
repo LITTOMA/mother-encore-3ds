@@ -142,6 +142,15 @@ def extract():
     for policy in storage['policies']:
         require(policy['source_item'] in source_initial or any(x['item_id']==policy['source_item'] for x in acquisitions),'Unknown session storage policy')
         storage_policies.append(dict(item_id=policy['source_item'],doses=policy['doses'],total_count=policy['max_count'],required=policy['source_item'] in source_initial,boosts=equipment.get(policy['definition_id'],[0]*7)))
+    from tools.item_use import load as load_use, IR as use_ir
+    item_use=load_use(ROOT);required.append(use_ir)
+    consumables=[]
+    for rule in item_use['rules']:
+        require(not rule['reusable'] and rule['heal_hp']==0 and rule['heal_pp']==0,'Unreviewed session consume side effects')
+        policy=next((p for p in storage_policies if p['item_id']==rule['source']),None)
+        require(policy is not None and not policy['required'] and policy['doses']==rule['max_doses'],'Session consumable/storage binding mismatch')
+        consumables.append(dict(item_id=rule['source'],max_doses=rule['max_doses']))
+    status_policies=[dict(id=p['id'],passive_healing=p['passive_healing'],default_saved_turns=p['default_saved_turns'])for p in item_use['statuses']]
     leader=save['party'][0];require(save['party']==[battle['party']['id']],'Unsupported party/owner')
     character=dict(save[leader]);character.update(overrides[leader])
     require(character['status']==[] and 'permanent_boosts'not in character,'Unreviewed initial modifiers')
@@ -193,7 +202,7 @@ def extract():
     points=[scene['spawn']]+[d['destination']for d in house['doors']]
     cameras=room['sections']['CameraArea'];camera_ids=sorted({min(cameras,key=lambda c:sum((a-b)**2 for a,b in zip(c['center'],point)))['stable_id'] for point in points})
     startup=copy.deepcopy(defaults);startup['characters'],derivation=source_startup_characters(ex,save,overrides,defaults)
-    return dict(schema=5,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
+    return dict(schema=6,consumables=consumables,status_policies=status_policies,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
 
 class Writer:
     def __init__(self):self.raw=bytearray()
@@ -217,7 +226,7 @@ def encode_snapshot(s,c):
     return raw+struct.pack('<I',zlib.crc32(raw))
 
 def encode(r):
-    require(r['schema'] in (1,2,3,4,5),'Unsupported native session schema')
+    require(r['schema'] in (1,2,3,4,5,6),'Unsupported native session schema')
     w=Writer();c=r['compatibility'];w.put('3I',c['content_family'],c['content_revision'],c['rules_revision']);template=encode_snapshot(r['defaults'],c);w.put('I',len(template));w.raw.extend(template)
     w.put('I',len(r['levels']))
     for level in r['levels']:w.put('3I7i',level['level'],level['minimum_exp'],level['next_exp'],*level['stats']);w.array(level['skills'],w.text)
@@ -234,6 +243,11 @@ def encode(r):
         w.put('2I',r['storage_capacity'],len(r['storage_policies']))
         for policy in r['storage_policies']:
             w.text(policy['item_id']);w.put('3I7i',policy['doses'],policy['total_count'],int(policy['required']),*policy['boosts'])
+    if r['schema']>=6:
+        w.put('I',len(r['consumables']))
+        for p in r['consumables']:w.text(p['item_id']);w.put('I',p['max_doses'])
+        w.put('I',len(r['status_policies']))
+        for p in r['status_policies']:w.text(p['id']);w.put('2I',int(p['passive_healing']),p['default_saved_turns'])
     return struct.pack('<8s4I',b'ENCNSESS',r['schema'],24+len(w.raw),zlib.crc32(w.raw),r['schema'])+w.raw
 
 def verify_recipe(r):
@@ -247,7 +261,7 @@ def stage_files(source_root):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('action',choices=['extract','compile','verify'],nargs='?',default='compile');a=ap.parse_args()
-    if a.action=='extract':r=extract();IR.write_text(json.dumps(r,indent=2,ensure_ascii=False)+'\n')
+    if a.action=='extract':r=extract();IR.write_bytes((json.dumps(r,indent=2,ensure_ascii=False)+'\n').encode('utf-8'))
     else:r=read(IR);verify_recipe(r)
     raw=encode(r)
     if a.action=='verify':require(PACK.read_bytes()==raw,'Stale native session pack')

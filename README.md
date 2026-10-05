@@ -17,6 +17,7 @@ Mother: Encore 的原生 Nintendo 3DS 移植，使用 C++17 共享游戏核心�
 - 标题、六字段命名、设置、最终确认，以及原版 Introduction / Mt. Itoi 开场进入房屋。
 - 开局房屋移动、碰撞、交互与局部剧情。
 - 已审查的 Lamp、Doll、Pillow / Minnie 流程及部分原版战斗机制。
+- 房屋内 START → Pause 的物品使用与装备；喷雾按原版三剂消耗、最后删除并显示恢复 / 无效提示。
 - Dad Record，以及受限的 Continue / LOAD。
 - 英文和简体中文。
 

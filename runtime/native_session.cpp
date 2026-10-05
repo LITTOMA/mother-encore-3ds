@@ -36,6 +36,10 @@ bool supported_roster(const NativeSessionData&data,const SessionSnapshot&s){
 }
 const NativeSessionLevel* level_row(const NativeSessionData&data,int64_t level){for(const auto&row:data.levels())if(row.level==level)return &row;return nullptr;}
 bool contains(const std::vector<std::string>&v,const std::string&s){return std::find(v.begin(),v.end(),s)!=v.end();}
+bool supported_doses(const NativeSessionData&data,const SessionItem&item,uint32_t initial){
+ const auto p=std::find_if(data.consumables().begin(),data.consumables().end(),[&](const NativeSessionConsumable&p){return p.item_id==item.item_id;});
+ return p==data.consumables().end()?item.doses==initial:!item.equipped&&item.doses>0&&item.doses<=initial&&initial==p->max_doses;
+}
 bool supported_inventory(const NativeSessionData&data,ItemView items,const SessionSnapshot&s,std::string&e){
  if(data.storage_capacity()){
   if(s.characters[0].inventory.size()>items.metadata().capacity||s.storage.size()>data.storage_capacity())return fail(e,"Native session inventory/storage capacity rejected");
@@ -45,7 +49,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
    if(at==data.storage_policies().size())return fail(e,"Native session unknown storage item");
    const auto&p=data.storage_policies()[at];uint32_t definition=item_no_index;
    for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j)if(items.string(items.definition(j).source)==item.item_id){if(definition!=item_no_index)return fail(e,"Native session ambiguous storage definition");definition=j;}
-   if(definition==item_no_index||item.doses!=p.doses||++counts[at]>p.total_count||(stored&&item.equipped))return fail(e,"Native session storage doses/count/equipment rejected");
+   if(definition==item_no_index||!supported_doses(data,item,p.doses)||++counts[at]>p.total_count||(stored&&item.equipped))return fail(e,"Native session storage doses/count/equipment rejected");
    if(item.equipped&&(!(items.definition(definition).flags&uint32_t(ItemDefinitionFlag::Equipment))||std::all_of(p.boosts.begin(),p.boosts.end(),[](int32_t n){return n==0;})))return fail(e,"Native session unsupported storage equipment");
    if(!p.required){auto a=std::find_if(data.acquisitions().begin(),data.acquisitions().end(),[&](const NativeSessionAcquisition&a){return a.item_id==item.item_id;});if(a==data.acquisitions().end())return fail(e,"Native session storage acquisition binding missing");bool flag=false;for(auto&f:s.flags)if(f.id==a->flag_id)flag=f.value;if(!flag)return fail(e,"Native session storage acquisition flag rejected");}
    return true;
@@ -67,7 +71,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
   if(at==data.acquisitions().size())return fail(e,"Native session unknown acquired item");
   const auto&policy=data.acquisitions()[at];bool definition=false;for(uint32_t j=0;j<items.count(ItemSection::Definitions);++j)if(items.string(items.definition(j).source)==item.item_id)definition=true;
   bool flag=false;for(const auto&f:s.flags)if(f.id==policy.flag_id)flag=f.value;
-  if(!definition||item.equipped||item.doses!=policy.doses||++counts[at]>policy.max_count||!flag)return fail(e,"Native session acquired item doses/equipment/count/flag rejected");
+  if(!definition||item.equipped||!supported_doses(data,item,policy.doses)||++counts[at]>policy.max_count||!flag)return fail(e,"Native session acquired item doses/equipment/count/flag rejected");
  }
  return true;
 }
@@ -76,7 +80,7 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>5||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>6||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -129,6 +133,20 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
   for(auto&i:d.defaults_.characters[0].inventory)if(!unique.count(i.item_id))return fail(e,"Native session storage missing initial item");
   for(auto&a:d.acquisitions_)if(!unique.count(a.item_id))return fail(e,"Native session storage missing acquired item");
  }
+ if(schema>=6){
+  const auto n=r.count(16);std::set<std::string>items;
+  for(uint32_t i=0;i<n;++i){NativeSessionConsumable policy;policy.item_id=r.text();policy.max_doses=r.u32();
+   auto storage=std::find_if(d.storage_policies_.begin(),d.storage_policies_.end(),[&](const NativeSessionStoragePolicy&p){return p.item_id==policy.item_id;});
+   if(policy.item_id.empty()||!items.insert(policy.item_id).second||!policy.max_doses||policy.max_doses>65535||storage==d.storage_policies_.end()||storage->required||storage->doses!=policy.max_doses||std::any_of(storage->boosts.begin(),storage->boosts.end(),[](int32_t n){return n!=0;}))return fail(e,"Native session consumable policy rejected");
+   d.consumables_.push_back(std::move(policy));
+  }
+  const auto statuses=r.count(32);std::set<std::string>ids;
+  for(uint32_t i=0;i<statuses;++i){NativeSessionStatusPolicy policy;policy.id=r.text();const auto passive=r.u32(),turns=r.u32();policy.passive_healing=passive!=0;policy.default_saved_turns=turns;
+   if(policy.id.empty()||!ids.insert(policy.id).second||passive>1||turns>INT32_MAX)return fail(e,"Native session status policy rejected");
+   d.status_policies_.push_back(std::move(policy));
+  }
+  if(d.consumables_.empty()||d.status_policies_.empty())return fail(e,"Native session empty item-use capability rejected");
+ }
  if(!r.ok||r.n||d.text_speeds_.empty()||d.menu_flavors_.empty()||d.button_prompts_.empty()||!d.supports_settings(d.defaults_.settings))return fail(e,"Native session malformed/trailing settings payload");
  const auto*initial=level_row(d,d.defaults_.characters[0].level);
  const auto&c=d.defaults_.characters[0];if(!initial||c.experience!=initial->minimum_exp||c.hp>initial->stats[0]||c.pp>initial->stats[1]||c.learned_skills!=initial->skills)return fail(e,"Native session initial character disagrees with source rows");
@@ -155,7 +173,10 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
  if(s.run_sound!=d.run_sound||s.shadow_effect!=d.shadow_effect||!data.supports_settings(s.settings))return fail(e,"Native session unsupported movement/settings state");
  if(s.rng_policy!=SessionRngPolicy::NotSerialized)return fail(e,"Native session unsupported RNG policy");
  const auto&c=s.characters[0];const auto&initial=d.characters[0];
- if(!c.permanent_boosts.empty()||!c.status.empty()||!same_affinities(c.affinity_multipliers,initial.affinity_multipliers))return fail(e,"Native session unsupported permanent boost/status/affinity state");
+ if(!c.permanent_boosts.empty()||!same_affinities(c.affinity_multipliers,initial.affinity_multipliers))return fail(e,"Native session unsupported permanent boost/affinity state");
+ for(const auto&status:c.status){const auto p=std::find_if(data.status_policies().begin(),data.status_policies().end(),[&](const NativeSessionStatusPolicy&p){return p.id==status.status_id;});
+  if(p==data.status_policies().end()||(!p->passive_healing&&status.passive_healing_turns!=p->default_saved_turns))return fail(e,"Native session unknown status or unsupported saved turn state");
+ }
  const auto*row=level_row(data,c.level);
  if(!row||c.experience<row->minimum_exp||c.experience>=row->next_exp||level_for_experience(room,int32_t(c.experience))!=c.level||row->minimum_exp!=room.experience(row->level-1)||row->next_exp!=room.experience(row->level))return fail(e,"Native session unsupported source progression");
  std::array<int32_t,7>derived{};if(!native_session_derived_stats(data,items,c,derived,e))return false;

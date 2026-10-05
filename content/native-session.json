@@ -1,5 +1,18 @@
 {
-  "schema": 5,
+  "schema": 6,
+  "consumables": [
+    {
+      "item_id": "AsthmaSpray",
+      "max_doses": 3
+    }
+  ],
+  "status_policies": [
+    {
+      "id": "asthma",
+      "passive_healing": false,
+      "default_saved_turns": 0
+    }
+  ],
   "storage_capacity": 64,
   "storage_policies": [
     {
@@ -2427,13 +2440,14 @@
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633"
   },
   "dependencies": {
-    "content/native-opening.json": "91e4a791688eab92428138db6bb3a2dde8b9ed768c92019288c92bafb906b2a3",
-    "content/native-house.json": "480e603d34f9a78519c8d1de4b4f761ea0a19a8ff1b41c673db9f21450d1cdd1",
+    "content/native-opening.json": "4e21a7725e4159bc6c4b9e211861f1dc9c8712c57fa7429e452acebe7c61d3b7",
+    "content/native-house.json": "4066b92e3f2dce4d9e3244d392b3b6d7dc69ee624208510fe199cb26bbb725f5",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
-    "content/native-round.json": "fbf1c23ae75dd8a3d9adb104d7badc3165382325aa148ccf92be17d616a6df02",
-    "content/doll-round.json": "1e7a9607835e6f7d66ab8a0b7b6a54c96fe0c19ac05d926c16065b116aff144e",
+    "content/native-round.json": "7086b1de2b289ebce555b588e383607498196dae47cedc240e3727f6377cb503",
+    "content/doll-round.json": "10127b98fcba55265a33bc43fa8d5c6927af7805523765309ab0617878c45ef1",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
-    "content/native-storage.json": "c4cb1436789597fe592bb50f6e807913e3747aa363adb24b5e7a2771a9f480e2"
+    "content/native-storage.json": "b99710d98dded63e2901882c32e9546db8db85568aff95521de98ca1b564cca9",
+    "content/native-item-use.json": "ab3e92d2ad87d05a3113eacdf7c20e70cc7868918848a6b540ee7432adf0c032"
   }
 }

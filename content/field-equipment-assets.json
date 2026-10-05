@@ -53,6 +53,8 @@
     "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
     "Graphics/UI/Overworld/flavours/defaultbox_inside.png": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433",
     "Graphics/UI/Overworld/flavours/defaultbox_inside.png.import": "fadf883607a0602838c955c34361782d4332dd4f78873d1bc175eeaa3e0f1272",
+    "Graphics/UI/Overworld/flavours/defaultbox_title.png": "32a2df08cbec8c7b9c370c377476910a18f9e074d990b61799b8d4453503b35d",
+    "Graphics/UI/Overworld/flavours/defaultbox_title.png.import": "27b78c0b60186fbcff71763d7f7b9d36ed528c5605baa9dceb3fbbdad09dc3cd",
     "Graphics/UI/Overworld/flavours/defaultempty.png": "33af3d9a91a397b79e67c7500486c5cb85f3d1396ecc1e9a1faa09581de73fdc",
     "Graphics/UI/Overworld/flavours/defaultempty.png.import": "f02a11b08d81c08c255151e3013c5bdbeb542e77a29f202684ee2871ed613949",
     "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
@@ -64,6 +66,7 @@
     "Nodes/Ui/HighlightLabel.gd": "91a1ec1e640166c2e38a6ee8c094042fddc64f165f128bd4aa706b09f29ad367",
     "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
     "Nodes/Ui/Inventory/InventorySelect.gd": "2cb4041595c68c059e2c2bf5bb97836e27965501bb3a061374270480a2d8a738",
+    "Nodes/Ui/Inventory/InventoryUI.tscn": "90bb226c950bb9903db792e51bed1a4f83b79d906917d194ffccbb9d24c7cb07",
     "Nodes/Ui/Inventory/portrait.gd": "8a1fefb969c284cdce60fd1d16ba72237cc50f4601c684a14330799e67a73c78",
     "Nodes/Ui/Inventory/portrait.tscn": "aace988ced4810ca71e57502e6333681dc1290220d37dac7968471de6c0d8c7e",
     "Nodes/Ui/InventorySelect.tscn": "1a58567f9fb6864640cf17f7691a162f51bd32b65553ddff46b4fe6c4d4e607d",
@@ -297,6 +300,21 @@
         1
       ],
       "output": "graphics/ui/equipment/cents.t3x"
+    },
+    {
+      "id": 14,
+      "name": "items-target-panel",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_title.png",
+      "size": [
+        24,
+        33
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/items-target-panel.t3x"
     }
   ],
   "licence_review": "Pinned upstream LICENSE permits game-related modifications; art/font/audio retain upstream notices, not MIT."

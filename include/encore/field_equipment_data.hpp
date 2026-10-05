@@ -16,6 +16,7 @@ struct FieldKey {float time=0,value=0,ease=1;};
 class FieldEquipmentView {
 public:
  bool valid()const{return bytes_!=nullptr;}
+ bool same_content(FieldEquipmentView other)const{return bytes_==other.bytes_&&size_==other.size_;}
  uint32_t count(FieldSection)const;std::string_view string(uint32_t)const;
  float parameter(FieldParameter)const;std::string_view binding(FieldBinding,bool chinese=false)const;
  FieldCommand command(uint32_t)const;FieldSlot slot(uint32_t)const;FieldEquipment equipment(uint32_t)const;

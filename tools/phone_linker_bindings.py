@@ -89,7 +89,8 @@ def audio(root,room,document=None):
  root=Path(root);c,_=load(root,document);ex=Extractor(root);ids={room['strings'][r['path_string']]:r['stable_id']for r in room['sections']['Resource']};room_sources={identity:source for source,identity in ids.items()};assets=[];seen=set();pcm_paths=set();source_paths=set()
  from tools.drawer_audio import bindings as drawer_audio
  from tools.storage_audio import bindings as storage_audio
- for source in c['audio']+introduction_audio(root,c)+drawer_audio(root)+storage_audio(root):
+ from tools.field_audio import bindings as field_audio
+ for source in c['audio']+introduction_audio(root,c)+drawer_audio(root)+storage_audio(root)+field_audio(root):
   ref=source['identity'];identity=ref['value']if ref['kind']=='stable'else ids.get(ref['source']);require(type(identity)is int and identity>0 and identity not in seen,'Unknown/duplicate linked audio identity');seen.add(identity)
   require(source['pcm'] not in pcm_paths and source['source'] not in source_paths,'Duplicate linked audio PCM/source');pcm_paths.add(source['pcm']);source_paths.add(source['source'])
   require(identity not in room_sources or room_sources[identity]=='res://'+source['source'],'Linked audio identity differs from actual Room source')

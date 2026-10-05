@@ -811,6 +811,13 @@ if(BUILD_TESTING)
     add_test(NAME item_details_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_item_details)
     set_tests_properties(item_details item_details_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
 endif()
+if(BUILD_TESTING)
+    add_executable(encore_field_equipment_tests tests/field_equipment_tests.cpp)
+    target_link_libraries(encore_field_equipment_tests PRIVATE encore_core)
+    add_test(NAME field_equipment COMMAND encore_field_equipment_tests ${CMAKE_SOURCE_DIR}/romfs)
+    add_test(NAME field_equipment_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_equipment)
+    set_tests_properties(field_equipment field_equipment_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
+endif()
 include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.

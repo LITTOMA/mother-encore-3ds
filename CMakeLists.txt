@@ -8,6 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
+    runtime/house_inspection_data.cpp
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
     runtime/music_regions.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
     runtime/game.cpp runtime/save.cpp runtime/progression.cpp runtime/movement.cpp runtime/animation.cpp runtime/collision.cpp runtime/world_flags.cpp runtime/world.cpp runtime/opening_trigger.cpp runtime/dialogue.cpp runtime/actor_actions.cpp runtime/cutscene_camera.cpp)
@@ -512,7 +513,7 @@ endif()
 if(BUILD_TESTING)
     add_executable(encore_settings_house_prompts_tests tests/settings-house-prompts.cpp)
     target_link_libraries(encore_settings_house_prompts_tests PRIVATE encore_core)
-    add_test(NAME settings_house_prompts COMMAND encore_settings_house_prompts_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encprompts ${CMAKE_SOURCE_DIR}/romfs/data/opening.enchouse ${CMAKE_SOURCE_DIR}/romfs/data/opening.encphone)
+    add_test(NAME settings_house_prompts COMMAND encore_settings_house_prompts_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encprompts ${CMAKE_SOURCE_DIR}/romfs/data/opening.enchouse ${CMAKE_SOURCE_DIR}/romfs/data/opening.encphone ${CMAKE_SOURCE_DIR}/romfs/data/opening.encinspect)
     add_test(NAME settings_source COMMAND ${Python3_EXECUTABLE} tools/startup_settings_assets.py verify)
     add_test(NAME settings_prompt_source COMMAND ${Python3_EXECUTABLE} tools/house_button_prompt_assets.py verify)
     set_tests_properties(settings_source settings_prompt_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
@@ -769,6 +770,19 @@ if(BUILD_TESTING)
  target_link_libraries(encore_introduction_tests PRIVATE encore_core)
  add_test(NAME original_introduction COMMAND encore_introduction_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encintro)
  set_tests_properties(original_introduction PROPERTIES TIMEOUT 60)
+endif()
+
+# New interaction formats stay in the explicitly requested manual full run.
+if(BUILD_TESTING)
+    add_executable(encore_house_inspection_data_tests tests/house_inspection_data_tests.cpp)
+    target_link_libraries(encore_house_inspection_data_tests PRIVATE encore_core)
+    add_test(NAME house_inspection_data COMMAND encore_house_inspection_data_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encinspect)
+    add_executable(encore_house_inspection_runtime_tests tests/house_inspection_runtime_tests.cpp)
+    target_link_libraries(encore_house_inspection_runtime_tests PRIVATE encore_core)
+    add_test(NAME house_inspection_runtime COMMAND encore_house_inspection_runtime_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encinspect ${CMAKE_SOURCE_DIR}/romfs/data/opening.enchouse ${CMAKE_SOURCE_DIR}/romfs/data/opening.encroom ${CMAKE_SOURCE_DIR}/romfs/data/opening.encbattle)
+    add_test(NAME house_inspection_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_house_inspections)
+    add_test(NAME family_followup_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_family_followup)
+    set_tests_properties(family_followup_source house_inspection_data house_inspection_runtime house_inspection_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
 endif()
 
 # Apply only after every test is registered, including future additions.

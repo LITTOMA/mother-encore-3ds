@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.native-resource-catalog.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Native wiring adapter for the already reviewed opening, Introduction, title, menus and house encounter resources. Relative paths and encounter companions are native bindings; no new upstream gameplay behavior is claimed.",
+  "scope": "Native wiring adapter for the already reviewed opening, Introduction, title, menus and house encounter resources. Relative paths and encounter companions are native bindings; no new upstream gameplay behavior is claimed.; source-bound house object inspections",
   "sources": {
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
@@ -143,6 +143,11 @@
       "id": 25,
       "role": "Introduction",
       "path": "data/opening.encintro"
+    },
+    {
+      "id": 26,
+      "role": "HouseInspections",
+      "path": "data/opening.encinspect"
     }
   ],
   "encounters": [

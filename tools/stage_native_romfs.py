@@ -21,6 +21,8 @@ def main():
     files.update(battle_files(source))
     files.update(round_files(source))
     files.update(house_files(source))
+    from house_inspection import stage_files as inspection_files
+    files.update(inspection_files(source))
     files.update(item_files(source))
     from native_input import stage_files as input_files
     files.update(input_files(source))

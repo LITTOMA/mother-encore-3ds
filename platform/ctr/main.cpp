@@ -86,6 +86,7 @@ upstream::ContinueMenu continue_menu;
 ContinueRenderer continue_renderer;
 upstream::NewGameSetupData new_game_data;
 upstream::StartupSettingsData startup_settings_data;
+upstream::HouseInspectionData house_inspection_data;
 upstream::HouseButtonPromptData house_prompt_data;
 HouseButtonPromptsRenderer house_prompt_renderer;
 upstream::HousePromptObservation house_prompt_observation;
@@ -291,6 +292,10 @@ struct LoadingScope {
         // First-use PCM checking can happen while title/naming music is active.
         // Feed existing queues without advancing game clocks or fade timelines.
         if(audio_player.available()){std::string audio_error;if(!audio_player.pump_streams(audio_error))audio_status=audio_error;}
+        // During the original Introduction, first-use sound checks and the
+        // house handoff must retain the last presented story frame. Nested
+        // loading scopes still validate resources and service NDSP queues.
+        if(introduction.active())return;
         if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))return;
         C2D_TargetClear(loading_top,C2D_Color32(0,0,0,255));C2D_SceneBegin(loading_top);
         C2D_DrawRectSolid(view_x(),view_y(),0,float(view_width),float(view_height),loading_indicator.background_color());
@@ -478,6 +483,8 @@ bool initialize_house_interactions(std::string& error){
     if(!gameplay_scene->presentation.begin(house_data.view(),house_font_data.view(),battle_random)){error=gameplay_scene->presentation.error();return false;}
     bind_localized_house(gameplay_scene->presentation);
     if(!gameplay_scene->house.initialize(house_data.view(),gameplay_scene->world,gameplay_scene->presentation)){error=gameplay_scene->house.error();return false;}
+    if(!house_inspection_data.view().valid()&&!house_inspection_data.load_file(resource_path(ResourceRole::HouseInspections).c_str(),error))return false;
+    if(!gameplay_scene->house.bind_inspections(house_inspection_data.view())){error=gameplay_scene->house.error();return false;}
     if(!house_assets_ready){
         if(!new_game_data.load_file(resource_path(ResourceRole::NewGame).c_str(),error))return false;
         if(!phone_data.load_file(resource_path(ResourceRole::Phone).c_str(),error)||!phone_renderer.load(phone_data.view(),"romfs:/",error))return false;
@@ -485,7 +492,7 @@ bool initialize_house_interactions(std::string& error){
         if(!startup_settings_data.load_file(resource_path(ResourceRole::Settings).c_str(),error))return false;
         if(startup_settings_data.speeds!=native_session_data.text_speeds()||startup_settings_data.flavors!=native_session_data.menu_flavors()||startup_settings_data.prompts!=native_session_data.button_prompts()){error="Startup UI/session setting choices disagree";return false;}
         wait_for_gpu_idle();if(!ctr::loading_menu_flavor_configure(startup_settings_data.skin_paths,startup_settings_data.source_palette,startup_settings_data.palettes,startup_settings_data.palette_threshold,startup_settings_data.default_indices[1])){error="Checked UI palette binding failed";return false;}
-        if(!house_prompt_data.load_file(resource_path(ResourceRole::Prompts).c_str(),error)||!house_prompt_data.validate_bindings(house_data.view(),phone_data.view(),error)||!house_prompt_renderer.load(house_prompt_data,error))return false;
+        if(!house_prompt_data.load_file(resource_path(ResourceRole::Prompts).c_str(),error)||!house_prompt_data.validate_bindings(house_data.view(),phone_data.view(),error,house_inspection_data.view())||!house_prompt_renderer.load(house_prompt_data,error))return false;
         new_game_renderer.bind_prompts(house_prompt_renderer);
         house_assets_ready=true;
     }
@@ -507,7 +514,8 @@ bool update_house_prompt(std::string&error){
  for(const auto&t:house_prompt_data.targets){HousePromptTargetObservation o;o.position=t.position;
   if(t.kind==HousePromptKind::Npc){const auto pose=gameplay_scene->presentation.npc_pose(t.index);o.position=pose.position;o.visible=pose.visible;o.enabled=true;o.supported=gameplay_scene->house.npc_interaction_supported(t.index);}
   else if(t.kind==HousePromptKind::Door){const auto&state=gameplay_scene->house.openable_state(t.index);o.visible=true;o.enabled=!state.unlocked&&!state.action;o.supported=gameplay_scene->house.door_interaction_supported(t.index);}
-  else{o.visible=true;o.enabled=true;o.supported=gameplay_scene->house.phone_interaction_supported(t.index);}
+  else if(t.kind==HousePromptKind::Phone){o.visible=true;o.enabled=true;o.supported=gameplay_scene->house.phone_interaction_supported(t.index);}
+  else{o.visible=gameplay_scene->house.inspection_visible(t.index);o.enabled=true;o.supported=gameplay_scene->house.inspection_interaction_supported(t.index);}
   observation.targets.push_back(o);
  }
  return evaluate_house_button_prompt(house_prompt_data,uint32_t(startup_settings_data.prompt_index(session_state.settings.button_prompts)),observation,house_prompt_pose,error);
@@ -643,6 +651,7 @@ bool apply_loaded_slot(uint32_t slot,std::string&error){
     auto next_random=battle_random;auto next_ledger=generated_uid_ledger;
     const LoadRngClockProvider clocks=[](LoadRngClockSample&sample,std::string&why){const auto unix_now=std::time(nullptr);if(unix_now<0){why="Clock unavailable for source LOAD entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(unix_now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
     if(!loading.step([&]{return apply_load_uid_allocations(next_random,next_ledger,allocations,clocks,error);}))return false;
+    if(!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);
@@ -674,6 +683,7 @@ bool commit_named_new_game(std::string&error){
     if(!loading.step([&]{return new_game_setup.apply(snapshot,native_session_data,error)&&prepare_session_restore(native_session_data,opening_data.view(),house_data.view(),round_data.view(),items_data.view(),house_font_data.view(),snapshot,prepared,error);}))return false;
     std::unique_ptr<GameplayScene>candidate;
     if(!loading.step([&]{return prepare_fresh_house(prepared,restore_data,opening_data.view(),house_data.view(),house_font_data.view(),phone_data.view(),random,{float(view_width),float(view_height)},candidate,error);}))return false;
+    if(!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);

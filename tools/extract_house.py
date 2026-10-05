@@ -69,7 +69,9 @@ def build(root=ROOT):
  ir=dict(schema=4,kind='encore.native-house.source-ir',commit=PIN,scope='Six same-scene house warps; original NPCs and openable doors; Doll attack/post-win/melody, Mimmie exit guard, typed NPC program and repeat-dialogue bindings; recoverable telephone boundaries',sources=ex.sources,dependencies=deps,fade_parameters=fade_parameters,npc_parameters=dict(NpcInteractionReturn=[npc_delay,0,0,0]),doors=doors,npcs=extra.pop('npcs'),segments=segments,interaction=interaction,boundaries=boundaries,overrides=overrides,**extra)
  from tools.link_phone_content import link_house
  from tools.link_pillow_content import append_house
- return append_house(ex,link_house(ex,ir,ir_room),ir_room)
+ from tools.link_family_followup import append_house as append_family_house
+ from tools.link_house_inspections import append_house as append_inspections
+ return append_inspections(ex,append_family_house(ex,append_house(ex,link_house(ex,ir,ir_room),ir_room),ir_room),ir_room)
 def extend_source(ex,house,ir_room,ns,ng,segments,carol,overrides,root_name,ie,area,shape_node,view,radius,ret,b):
  def body(path):
   found=[b['body_id']for b in ir_room['sections']['BodyRule']if ir_room['strings'][b['source_path_string']]==path]

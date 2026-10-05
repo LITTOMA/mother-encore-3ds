@@ -3,6 +3,7 @@
 #include "encore/world.hpp"
 #include "encore/phone_runtime.hpp"
 #include "encore/dialogue_choices.hpp"
+#include "encore/house_inspection_data.hpp"
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
@@ -22,6 +23,9 @@ public:
  bool restore_seen_dialogue(const std::set<uint32_t>&);
  bool set_player_nickname(std::string_view);
  bool bind_phone(PhoneRuntime&);
+ // Cross-pack admission is transactional: a rejected candidate keeps the
+ // previous inspection binding and current interaction intact.
+ bool bind_inspections(HouseInspectionView);
  void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
  bool select_story_option(uint32_t pc,uint32_t generation);
  bool close_story_submenu(uint32_t generation);
@@ -34,6 +38,10 @@ public:
  HousePhase phase()const{return phase_;}
  bool blocks_player()const;
  bool npc_interaction_supported(uint32_t)const;bool door_interaction_supported(uint32_t)const;bool phone_interaction_supported(uint32_t)const;
+ bool inspection_interaction_supported(uint32_t)const;
+ bool inspection_visible(uint32_t)const;
+ Vec2 inspection_position(uint32_t)const;
+ HouseInspectionView inspections()const{return inspections_;}
  bool entering_door()const;
  float fade_alpha()const;
  BattleValue fade_color()const;
@@ -60,6 +68,8 @@ private:
  bool normal_openable(uint32_t index);
  bool interact_openable(uint32_t index);
  bool interact_phone(uint32_t index);
+ bool interact_inspection(uint32_t index);
+ bool resolve_inspection_dialogue(uint32_t,uint32_t&)const;
  uint32_t program_for_path(std::string_view)const;
  bool story_conditions(uint32_t index)const;
  bool sync_npc_visibility();
@@ -72,6 +82,7 @@ private:
  bool begin_door(uint32_t);bool interact();bool finish_door();
  const DialogueChoicesData*choices_data_=nullptr;DialogueChoices*choices_=nullptr;uint32_t choices_generation_=0;
  PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;
+ HouseInspectionView inspections_;
  HouseView content_;OpeningWorld*world_=nullptr;HousePresentation*presentation_=nullptr;
  struct AreaContact {uint8_t kind;uint32_t index;bool entered;};
  std::vector<AreaContact>pending_contacts_;

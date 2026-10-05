@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "f8658ef30ec12829ee8268ee5c871492392ecaf3ba9ca1e92f7c024448c1fc21",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Translations/TranslatedText/dialogue_Podunk_non-person text_Ninten's house - sheet.csv": "c554acd6981a3a745d2a948433cdda737d1aa83e4793aa3a067cea9fa9a747fc",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml": "2ca21079ca52fe65a9c5c5a2e97027134ad6e0fdab0da9bf968fa52e974ba09f",
+    "Data/Dialogue/Reusable/nottime.yaml": "abc69fea985155bbc16f1e6cc5732307c0410bf6eb296d205b5cdc79a241f383",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml": "21339eb0d16d37d7a0395636dd5078c28d76652296a4f5103b093469f3974810",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml": "b5b50deba2216aab659cac7dea5386f692d59d3504b648d595762d04a1d2c166",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml": "3732040066ff94144a48bdbac880eaa888dc2abb3a52ded902082573f1b85cd4",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad"
+  },
+  "mechanisms": [
+    "Inherited Area2D 4x4 shape scaled into world coordinates",
+    "Last satisfied override wins; no source seen writes",
+    "ButtonPrompt inverse-scale keeps authored world offset",
+    "Player cardinal turn override respects each source axis constraint; both false retains direction",
+    "Drawer item program retained as explicit capability boundary"
+  ]
+}

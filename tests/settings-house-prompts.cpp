@@ -11,8 +11,8 @@ void put(std::vector<uint8_t>&b,size_t at,uint32_t v){for(unsigned i=0;i<4;++i)b
 void seal(std::vector<uint8_t>&b){uint32_t c=~0u;for(size_t i=24;i<b.size();++i){c^=b[i];for(unsigned j=0;j<8;++j)c=(c>>1)^(0xedb88320u&uint32_t(-int32_t(c&1)));}put(b,16,~c);}
 unsigned checks=0;void check(bool v,const char*m){++checks;if(!v){std::cerr<<"FAIL: "<<m<<'\n';std::exit(1);}}}
 int main(int argc,char**argv){
- check(argc==4,"prompt/house/phone packs provided");std::string error;HouseButtonPromptData d;HouseData house;PhoneData phone;
- if(!d.load_file(argv[1],error)||!house.load_file(argv[2],error)||!phone.load_file(argv[3],error)||!d.validate_bindings(house.view(),phone.view(),error)){std::cerr<<error<<'\n';return 1;}
+ check(argc==5,"prompt/house/phone/inspection packs provided");std::string error;HouseButtonPromptData d;HouseData house;PhoneData phone;HouseInspectionData inspections;
+ if(!d.load_file(argv[1],error)||!house.load_file(argv[2],error)||!phone.load_file(argv[3],error)||!inspections.load_file(argv[4],error)||!d.validate_bindings(house.view(),phone.view(),error,inspections.view())){std::cerr<<error<<'\n';return 1;}
  check(d.valid()&&d.choice_masks.size()==4&&d.resources.size()==3&&d.previews.size()==2,"checked source geometry/art modes loaded");
  HousePromptObservation o;o.paused=false;for(const auto&t:d.targets)o.targets.push_back({t.position,false,true,true});HousePromptPose pose;
  for(uint32_t i=0;i<d.targets.size();++i){const auto&t=d.targets[i];o.targets[i].visible=true;o.player={t.center.x-d.ray_origin.x,t.center.y+t.extents.y+d.ray_length/2-d.ray_origin.y};o.direction={0,-1};
@@ -30,8 +30,10 @@ int main(int argc,char**argv){
  // Malformed payloads retain a valid CRC, so they exercise semantic validation.
  const size_t resource_count=44+integer(bytes,40)*4;size_t at=resource_count+4;const size_t path=at+4,width=path+integer(bytes,at);for(uint32_t i=0;i<integer(bytes,resource_count);++i)at+=4+integer(bytes,at)+8;const size_t rectangle=at;at+=20;const size_t preview_count=at,preview=at+4;at+=4+integer(bytes,preview_count)*24;const size_t target=at+4,category=target+8,extents=target+16+integer(bytes,target+12)+16;
  const auto rejected=[&](size_t offset,uint32_t value){auto bad=bytes;put(bad,offset,value);seal(bad);check(!d.load(bad.data(),bad.size(),error)&&d.valid(),"valid-CRC malformed payload rejected atomically");};
- rejected(32,0);rejected(24,0x7fc00000u);rejected(36,0);rejected(44,4);rejected(width,0);rejected(rectangle+8,0);rejected(preview,UINT32_MAX);rejected(preview+4,3);rejected(target,4);rejected(category,1);rejected(extents,0);rejected(target+4,UINT32_MAX);
+ rejected(32,0);rejected(24,0x7fc00000u);rejected(36,0);rejected(44,4);rejected(width,0);rejected(rectangle+8,0);rejected(preview,UINT32_MAX);rejected(preview+4,3);rejected(target,5);rejected(category,1);rejected(extents,0);rejected(target+4,UINT32_MAX);
  auto bad_path=bytes;bad_path[path]='/';seal(bad_path);check(!d.load(bad_path.data(),bad_path.size(),error),"absolute resource path rejected");
+ auto legacy_header=bytes;put(legacy_header,8,1);put(legacy_header,20,1);check(!d.load(legacy_header.data(),legacy_header.size(),error),"inspection kind requires explicitly admitted prompt capability 2");
+ check(!d.validate_bindings(house.view(),phone.view(),error),"inspection prompts cannot borrow an absent inspection owner");
  check(!d.validate_bindings(HouseView{},phone.view(),error),"unvalidated cross-pack owner rejected");
  std::cout<<"settings-house-prompts: "<<checks<<" checks passed; "<<d.targets.size()<<" original house targets; static prompt scope\n";
 }

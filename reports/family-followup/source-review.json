@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "whole_handler_approved": false,
+  "sources": {
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
+    "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
+    "Data/Dialogue/Podunk/mimmie_key.yaml": "c0989d81319572e41e8bc00de168133bd6254f1c46f49da50711deb40006abf9",
+    "Data/Dialogue/Podunk/mimmie_key_again.yaml": "b409051db29ade47a736f3d5778f735e137439cb64fc8b79c13e88cc6a2982be",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe"
+  },
+  "ir_sha256": "29d1a2b3fa80cd867666f2ac68a6cbb11a601d2a0ebe8b0c07e6e60bc1448865",
+  "scope": "Two post-Dad key requests and repeats only; no storage/item/Podunk continuation",
+  "semantics": {
+    "phrase_order": "Source text starts before setflags; flag is set before the input gate",
+    "override_order": "Last matching NPC override wins; source order retained",
+    "save_identity": "Existing flag stable IDs and seen keys retained; session mutable flags derive from SetFlag",
+    "termination": "Existing StopInteraction/SetTalker/CutsceneEnded/DialogueDone with source camera return duration"
+  },
+  "unsupported": [
+    "Minnie storage choices",
+    "inventory/item giving",
+    "later family programs"
+  ],
+  "unverified": [
+    "manual test suites",
+    "emulator",
+    "hardware",
+    "audio audibility"
+  ]
+}

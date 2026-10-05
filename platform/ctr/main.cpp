@@ -1152,7 +1152,7 @@ void house_bottom(){
 #if defined(ENCORE_EXPERIMENTAL_GPU_BACKGROUND) && defined(ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS)
         if(battle_renderer.gpu_mapped_texture_active()){
             const auto stats=battle_renderer.gpu_mapped_stats();const auto end=std::strlen(position);
-            std::snprintf(position+end,sizeof(position)-end," %u strips / %u pass\nCPU prep %.1fms submit %.1fms / trig %u",unsigned(battle_renderer.gpu_texture_strips()),battle_renderer.gpu_texture_passes(),compose_ms,background_submit_ms,stats.scalar_trig_calls);
+            std::snprintf(position+end,sizeof(position)-end," %u strips / %u pass\nCPU prep %.1fms submit %.1fms / trig %u",unsigned(battle_renderer.gpu_texture_strips()),battle_renderer.gpu_texture_passes(),compose_ms,background_submit_ms,unsigned(stats.scalar_trig_calls));
         }
 #endif
     }

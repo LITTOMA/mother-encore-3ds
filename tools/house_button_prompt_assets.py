@@ -89,7 +89,8 @@ def build(tex3ds,godot):
  IR.write_text(json.dumps(data,indent=2)+'\n');return data
 
 def encode(d):
- require(d['schema']==2 and d['capability']==2,'Prompt schema');b=bytearray()
+ require(type(d['schema']) is int and type(d['capability']) is int
+         and d['schema']==2 and d['capability']==2,'Prompt schema');b=bytearray()
  def integers(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
  def floats(*v):b.extend(struct.pack('<'+'f'*len(v),*v))
  def text(s):v=s.encode();integers(len(v));b.extend(v)
@@ -99,7 +100,7 @@ def encode(d):
  for p in d['previews']:integers(p['resource'],p['category']);floats(*p['position'],*p['offset'])
  integers(len(d['targets']))
  for t in d['targets']:integers(t['kind'],t['index'],t['category']);text(t['source_path']);floats(*t['position'],*t['center'],*t['extents'],*t['offset'])
- return b'ENCPRMPT'+struct.pack('<4I',1,24+len(b),zlib.crc32(b)&0xffffffff,1)+b
+ return b'ENCPRMPT'+struct.pack('<4I',d['schema'],24+len(b),zlib.crc32(b)&0xffffffff,d['capability'])+b
 
 def verify(d):
  global b;b=checked_bindings()

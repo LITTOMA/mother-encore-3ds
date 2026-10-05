@@ -57,7 +57,7 @@ bool HouseRuntime::set_player_nickname(std::string_view name){
 std::string_view HouseRuntime::player_nickname()const{
  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
 }
-bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::Unsupported||phase_==HousePhase::Error;}
+bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error;}
 bool HouseRuntime::entering_door()const{return phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_);}
 bool HouseRuntime::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
  const auto&room=world_->content();const auto scene=room.scene();
@@ -215,7 +215,7 @@ bool HouseRuntime::story_conditions(uint32_t index)const{
  return true;
 }
 bool HouseRuntime::process_story_requests(){
- if(story_pending()||phase_==HousePhase::Unsupported||phase_==HousePhase::Error)return true;
+ if(story_pending()||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error)return true;
  for(uint32_t i=0;i<story_process_.size();++i)if(story_process_[i]&&idle_frame_>story_ready_idle_[i]){
   story_process_[i]=0;if(!story_conditions(i))continue;
   if(!world_->pause_for_house())return fail("Story trigger pause rejected");
@@ -248,6 +248,35 @@ bool HouseRuntime::bind_phone(PhoneRuntime&phone){
  for(uint32_t i=0;i<room.binding_count();++i){const auto b=room.binding(i);if(b.kind==uint16_t(RoomBindingKind::StartPhoneRing)&&b.target_index>=view.count(PhoneSection::Objects))return fail("Phone scene binding is absent");}
  phone_=&phone;return true;
 }
+bool HouseRuntime::bind_drawer(DrawerProgramView candidate,DrawerHost&effects){
+ auto reject=[&](const char*text){error_=text;return false;};
+ if(!world_||!content_.valid()||!candidate.valid()||phase_!=HousePhase::Idle||story_pending()||presentation_->dialogue_active())return reject("Inspection programme requires an idle scene");
+ if(std::memcmp(candidate.reviewed_commit(),content_.bytes()+32,20))return reject("Inspection programme source pin mismatch");
+ const auto binding=candidate.binding();const auto path=candidate.string(binding.source_path);
+ std::string error;
+ for(uint32_t i=0;i<candidate.count(DrawerSection::Commands);++i){const auto c=candidate.command(i);
+  if(c.opcode==uint32_t(DrawerOpcode::ShowText)){bool found=false;for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d){const auto text=content_.dialogue(d);found|=text.id==c.a&&content_.string(text.source_path)==path;}if(!found)return reject("Inspection programme text/provenance mismatch");}
+  else if(c.opcode==uint32_t(DrawerOpcode::BranchFlag)||c.opcode==uint32_t(DrawerOpcode::SetFlag)){if(!validate_flag(candidate.string(c.a),error))return reject("Inspection programme flag is unregistered");}
+  else if(c.opcode==uint32_t(DrawerOpcode::PlaySound)){if(!effects.validate_sound(candidate.string(c.a),error))return reject("Inspection programme audio is unbound");}
+ }
+ for(uint32_t i=0;i<candidate.count(DrawerSection::Templates);++i){const auto t=candidate.item_template(i);if(!effects.validate_item(t,candidate.string(t.source),error))return reject("Inspection programme grant is unbound");}
+ drawer_=candidate;drawer_effects_=&effects;drawer_runtime_.reset();error_="";return true;
+}
+bool HouseRuntime::validate_text(uint32_t id,std::string&e){
+ for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d){const auto text=content_.dialogue(d);if(text.id==id&&drawer_&&content_.string(text.source_path)==drawer_.string(drawer_.binding().source_path)){e.clear();return true;}}
+ e="Inspection programme text absent";return false;
+}
+bool HouseRuntime::validate_flag(std::string_view name,std::string&e){
+ const auto room=world_->content();for(uint32_t f=0;f<room.flag_count();++f)if(room.string(room.flag(f).name_string)==name){e.clear();return true;}e="Inspection programme flag absent";return false;
+}
+bool HouseRuntime::flag(std::string_view name,bool&value,std::string&e){if(!validate_flag(name,e))return false;value=world_->story_flag(name);return true;}
+bool HouseRuntime::set_flag(std::string_view name,bool value,std::string&e){if(!validate_flag(name,e))return false;if(!world_->set_story_flag(name,value,false)){e="Inspection programme flag write failed";return false;}return true;}
+bool HouseRuntime::show_text(uint32_t id,std::string&e){
+ if(!validate_text(id,e))return false;
+ for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d){const auto text=content_.dialogue(d);if(text.id!=id)continue;
+  if(!presentation_->begin_dialogue(text.first_segment,text.segment_count,player_nickname())){e=presentation_->error();return false;}return true;}
+ e="Inspection programme text absent";return false;
+}
 bool HouseRuntime::bind_inspections(HouseInspectionView candidate){
  auto reject=[&](const char*text){error_=text;return false;};
  if(!world_||!content_.valid()||!candidate.valid()||phase_!=HousePhase::Idle||story_pending()||presentation_->dialogue_active())return reject("House inspection binding requires an idle initialized scene");
@@ -256,6 +285,7 @@ bool HouseRuntime::bind_inspections(HouseInspectionView candidate){
  auto flag_known=[&](std::string_view name){for(uint32_t f=0;f<room.flag_count();++f)if(room.string(room.flag(f).name_string)==name)return true;return false;};
  auto text_valid=[&](uint32_t index,std::string_view path){
   if(index!=house_no_index)return index<content_.count(HouseSection::Dialogues)&&content_.string(content_.dialogue(index).source_path)==path;
+  if(drawer_&&path==drawer_.string(drawer_.binding().source_path))return true;
   // no_index is an explicit unsupported programme boundary, never a fallback
   // for a mismatched index to text already admitted by the selected House.
   for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d)if(content_.string(content_.dialogue(d).source_path)==path)return false;
@@ -271,6 +301,7 @@ bool HouseRuntime::bind_inspections(HouseInspectionView candidate){
    if(!flag_known(candidate.string(rule.flag))||!text_valid(rule.dialogue_index,candidate.string(rule.dialogue)))return reject("House inspection flag/text override binding rejected");
   }
  }
+ if(drawer_){bool found=false;for(uint32_t i=0;i<candidate.count(HouseInspectionSection::Objects);++i){const auto o=candidate.object(i);if(candidate.string(o.source_path)!=drawer_.string(drawer_.binding().inspection_source))continue;found=candidate.string(o.default_dialogue)==drawer_.string(drawer_.binding().source_path);for(uint32_t j=0;j<o.override_count;++j)found|=candidate.string(candidate.override_dialogue(o.first_override+j).dialogue)==drawer_.string(drawer_.binding().source_path);}if(!found)return reject("Inspection programme target absent");}
  inspections_=candidate;error_="";return true;
 }
 bool HouseRuntime::get_phone_flag(uint32_t index,bool&value)const{
@@ -321,7 +352,12 @@ bool HouseRuntime::resolve_inspection_dialogue(uint32_t index,uint32_t&dialogue)
  if(selected==house_no_index||selected>=content_.count(HouseSection::Dialogues))return false;
  dialogue=selected;return true;
 }
-bool HouseRuntime::inspection_interaction_supported(uint32_t i)const{uint32_t dialogue=house_no_index;return resolve_inspection_dialogue(i,dialogue);}
+std::string_view HouseRuntime::inspection_path(uint32_t i)const{
+ if(!inspection_visible(i))return {};const auto o=inspections_.object(i);auto path=inspections_.string(o.default_dialogue);
+ for(uint32_t j=0;j<o.override_count;++j){const auto r=inspections_.override_dialogue(o.first_override+j);if(world_->story_flag(inspections_.string(r.flag)))path=inspections_.string(r.dialogue);}return path;
+}
+bool HouseRuntime::drawer_selected(uint32_t i)const{return drawer_&&inspection_visible(i)&&inspections_.string(inspections_.object(i).source_path)==drawer_.string(drawer_.binding().inspection_source)&&inspection_path(i)==drawer_.string(drawer_.binding().source_path);}
+bool HouseRuntime::inspection_interaction_supported(uint32_t i)const{uint32_t dialogue=house_no_index;return resolve_inspection_dialogue(i,dialogue)||drawer_selected(i);}
 bool HouseRuntime::interact_inspection(uint32_t index){
  if(!inspection_visible(index))return fail("Unbound house inspection interaction");
  const auto object=inspections_.object(index);const auto p=world_->player();uint32_t dialogue=house_no_index;
@@ -330,6 +366,11 @@ bool HouseRuntime::interact_inspection(uint32_t index){
  if(((std::abs(facing.x)>std::abs(facing.y))||!(object.player_turn&2))&&facing.x!=0&&(object.player_turn&1))facing={sign(facing.x),0};else if((object.player_turn&2)&&facing.y!=0)facing={0,sign(facing.y)};else facing=p.direction;
  if(!world_->set_house_direction(facing)||!world_->pause_for_house())return fail("House inspection player turn/pause rejected");
  active_=object.id;
+ if(drawer_selected(index)){
+  phase_=HousePhase::InspectionProgram;
+  if(!drawer_runtime_.start(drawer_,*this,drawer_error_))return fail(drawer_error_.c_str());
+  event(HouseEventKind::DialogueOpened,object.id);return true;
+ }
  if(!resolve_inspection_dialogue(index,dialogue)){phase_=HousePhase::Unsupported;error_="Unported source inspection programme; B returns control";last_safe_position_=p.position;last_safe_direction_=p.direction;return true;}
  const auto text=content_.dialogue(dialogue);
  if(!presentation_->begin_dialogue(text.first_segment,text.segment_count,player_nickname()))return fail("House inspection dialogue rejected");
@@ -476,7 +517,14 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
   if(in&&fade_time_>=door.fade_in_length){fade_time_=door.fade_in_length;event(HouseEventKind::DoorEntered,active_);if(!world_->warp_same_scene(door.destination,door.direction))return fail("Same-scene warp rejected");event(HouseEventKind::PlayerMoved,active_);phase_=HousePhase::WarpAwaitIdle;await_idle_=idle_frame_;}
   else if(!in){if(!door_unpaused_&&old<=door.fade_out_mostly&&fade_time_>door.fade_out_mostly)if(!finish_door())return false;if(fade_time_>=door.fade_out_length){phase_=story_pending()?(story_executing_?HousePhase::StoryRunning:HousePhase::StoryBoundary):HousePhase::Idle;fade_time_=0;}}
  }
- if(phase_==HousePhase::Dialogue){presentation_->input(accept,cancel);if(presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Dialogue unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}}
+ if(phase_==HousePhase::InspectionProgram){
+  presentation_->input(accept,cancel);
+  if(presentation_->dialogue_done()){
+   if(!drawer_runtime_.advance_text(drawer_error_))return fail(drawer_error_.c_str());
+   if(drawer_runtime_.state()==DrawerState::Complete){if(!world_->unpause_from_house())return fail("Inspection programme unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}
+  }
+ }
+ else if(phase_==HousePhase::Dialogue){presentation_->input(accept,cancel);if(presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Dialogue unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}}
  else if((phase_==HousePhase::Idle||(phase_==HousePhase::DoorFadeOut&&door_unpaused_))&&accept&&!story_dialogue_input)return interact();
  return true;
 }

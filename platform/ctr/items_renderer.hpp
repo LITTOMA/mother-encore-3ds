@@ -37,6 +37,9 @@ class ItemsRenderer {
   std::string label;
   if(role==ItemLayoutRole::ItemLabel){const auto slot=slots_[index];const auto instance=menu.inventory().instance(slot);const auto d=data_.definition(instance.definition);label=std::string(data_.string(d.name));if(locale_){std::string error;if(!locale_->catalog()->bound("item.name/"+std::to_string(instance.definition),label,locale_->code(),label,error))return false;}tint=data_.parameter(menu.inventory().can_use(slot)?ItemParameter::NormalColor:ItemParameter::DisabledColor);}
   else if(role==ItemLayoutRole::Description&&menu.inventory().size()){
+   // Rich descriptions retain their original controls in checked resources.
+   // Until the rich consumer is implemented, do not draw raw tags as prose.
+   if(data_.definition(menu.inventory().instance(menu.selection()).definition).flags&uint32_t(ItemDefinitionFlag::RichDescription))return true;
    const auto d=data_.definition(menu.inventory().instance(menu.selection()).definition);std::string localized(data_.string(d.description));if(locale_){std::string error;if(!locale_->catalog()->bound("item.description/"+std::to_string(menu.inventory().instance(menu.selection()).definition),localized,locale_->code(),localized,error))return false;}const std::string_view text(localized);size_t begin=0;
    for(uint32_t line=0;line<l.frame&&begin<text.size();++line){const auto at=text.find('\n',begin);begin=at==std::string_view::npos?text.size():at+1;}
    const auto end=text.find('\n',begin);label=std::string(text.substr(begin,end==std::string_view::npos?text.size()-begin:end-begin));

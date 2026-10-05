@@ -3,7 +3,7 @@
 
 JSON is offline source/IR only. Runtime loads the independent binary bindings;
 dialogue text stays in the existing checked House resource. Drawer item logic is
-retained as an explicit unsupported capability, never flattened into prose.
+owned by its independently checked programme, never flattened into prose.
 """
 from __future__ import annotations
 import argparse, csv, hashlib, io, json, math, re, struct, sys, zlib
@@ -95,7 +95,9 @@ def build(root=ROOT):
         doc = ex.yaml(path)
         if path == DRAWER:
             require(set(doc) == {'0','1','2','3','4'} and doc['0']['if'] == [{'flags':{'got_asthma_spray':True},'goto':'4'}, {'invspace':False,'goto':'3'}] and doc['0']['goto'] == '2' and doc['2']['item'] == 'AsthmaSpray' and doc['2']['setflags'] == 'got_asthma_spray', 'Drawer capability boundary source changed')
-            unsupported.append(dict(source_path=path, source_program=doc, reason='Requires inventory-space branching, item grant, receiver token, item sound and persisted got_asthma_spray flag'))
+            from tools.drawer_program import load as drawer_ir
+            programme=drawer_ir(root)
+            require(programme['source_path']==path and programme['document']==doc,'Drawer programme binding mismatch')
             continue
         require(set(doc) == {'0'} and set(doc['0']) == {'text'}, 'Unknown inspection dialogue command: ' + path)
         raw = tables[doc['0']['text']]
@@ -104,8 +106,9 @@ def build(root=ROOT):
         text_segments(raw)
         texts.append(dict(source_path=path, label='0', translation_key=doc['0']['text'], raw=raw))
     return dict(schema=1, kind='encore.house-inspections.source-ir', commit=PIN,
-        scope='Eight original InteractDialog objects; seven complete literal inspections; Drawer item path explicitly unsupported',
-        sources=ex.sources, objects=objects, texts=texts, unsupported=unsupported)
+        scope='Eight original InteractDialog objects; seven literal inspections and independent checked Drawer programme',
+        sources=ex.sources, objects=objects, texts=texts, unsupported=unsupported,
+        programmes=[dict(source_path=programme['source_path'],inspection_source=programme['inspection_source'],ir_sha256=digest(root/'content/native-drawer-program.json'))])
 
 def load(root=ROOT):
     root = Path(root); ir = read_json(root / IR)
@@ -115,9 +118,17 @@ def load(root=ROOT):
     return ir
 
 def lower(ir, house):
-    fields(ir, ('schema','kind','commit','scope','sources','objects','texts','unsupported'), 'inspection IR')
+    fields(ir, ('schema','kind','commit','scope','sources','objects','texts','unsupported','programmes'), 'inspection IR')
     require(ir['schema'] == 1 and ir['commit'] == PIN and ir['kind'] == 'encore.house-inspections.source-ir', 'Inspection schema/pin')
     require(house['commit'] == PIN, 'Inspection House pin')
+    require(isinstance(ir['programmes'],list),'Inspection programme list')
+    paths=set();owners=set()
+    for row in ir['programmes']:
+        fields(row,('source_path','inspection_source','ir_sha256'),'inspection programme binding')
+        require(safe_path(row['source_path']) and safe_path(row['inspection_source']) and re.fullmatch('[0-9a-f]{64}',row['ir_sha256']) is not None,'Inspection programme identity/hash')
+        require(row['source_path'] not in paths and row['inspection_source'] not in owners,'Duplicate inspection programme binding')
+        require(any(obj['source_path']==row['inspection_source'] and (obj['default_dialogue']==row['source_path'] or any(r['dialogue_path']==row['source_path'] for r in obj['overrides'])) for obj in ir['objects']),'Unbound inspection programme owner')
+        paths.add(row['source_path']);owners.add(row['inspection_source'])
     dialogue_map = {}
     for index, row in enumerate(house['dialogues']):
         # Programme phrases legitimately share a YAML path. Inspections admit
@@ -131,7 +142,10 @@ def lower(ir, house):
     def dialogue(path, supported):
         require(type(supported) is bool and safe_path(path), 'Invalid inspection dialogue binding')
         if not supported:
-            require(path not in dialogue_map, 'Unsupported inspection path accidentally flattened'); return NONE
+            programme=next((row for row in ir['programmes'] if row['source_path']==path),None)
+            require(programme is not None or path not in dialogue_map,'Unsupported inspection path accidentally flattened')
+            if programme is not None:require(len(dialogue_map.get(path,[]))==5,'Missing independent Drawer phrase text')
+            return NONE
         require(path in dialogue_map, 'Missing linked House inspection dialogue: ' + path)
         require(len(dialogue_map[path])==1, 'Ambiguous House inspection dialogue path')
         return dialogue_map[path][0]
@@ -207,7 +221,7 @@ def main():
         if args.action=='extract':
             ir=build(); write_json(ROOT/IR,ir)
             write_json(ROOT/REPORT,dict(schema=1,commit=PIN,ir_sha256=digest(ROOT/IR),sources=ir['sources'],
-                mechanisms=['Inherited Area2D 4x4 shape scaled into world coordinates','Last satisfied override wins; no source seen writes','ButtonPrompt inverse-scale keeps authored world offset','Player cardinal turn override respects each source axis constraint; both false retains direction','Drawer item program retained as explicit capability boundary']))
+                mechanisms=['Inherited Area2D 4x4 shape scaled into world coordinates','Last satisfied override wins; no source seen writes','ButtonPrompt inverse-scale keeps authored world offset','Player cardinal turn override respects each source axis constraint; both false retains direction','Drawer phrases/effects owned by independent checked programme']))
         else:
             ir=load(); tables=lower(ir,read_json(ROOT/'content/native-house.json')); blob=encode(tables); parse_pack(blob)
             if args.action=='compile':

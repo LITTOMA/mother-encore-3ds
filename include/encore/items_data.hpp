@@ -10,7 +10,7 @@ namespace encore::upstream {
 // Execution schema only. Content, bindings, initial state and tuning are external.
 constexpr uint32_t item_no_index=UINT32_MAX;
 enum class ItemSection:uint16_t {Strings=1,Metadata,Definitions,Instances,Resources,Layouts,Parameters,Clips,Tracks,Keys,Sounds};
-enum class ItemDefinitionFlag:uint32_t {Equipment=1};
+enum class ItemDefinitionFlag:uint32_t {Equipment=1,RichDescription=2};
 enum class ItemLayoutFlag:uint32_t {Visible=1,ClipChildren=2,Centered=4,BehindParent=8};
 enum class ItemLayoutRole:uint32_t {Container=1,Panel,Grid,ItemLabel,ItemIcon,Equipped,Cursor,InfoPanel,Description,Scrollbar,ScrollBackground,ScrollThumb,Hint};
 enum class ItemDrawKind:uint32_t {Container=1,Sprite,Rectangle,NinePatch,Text};

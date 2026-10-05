@@ -37,7 +37,7 @@ class ItemsBinaryTests(unittest.TestCase):
         parsed = m.parse_pack(self.blob)
         self.assertEqual(parsed['Metadata'][0][0], self.ir['capacity'])
         self.assertEqual(parsed['Instances'][0][2:], (1, 1))
-        self.assertEqual(len(parsed['Definitions']), 1)
+        self.assertEqual(len(parsed['Definitions']), 2)
         self.assertEqual(len(parsed['Clips']), 3)
 
     def test_every_truncation_and_checksum(self):
@@ -52,7 +52,7 @@ class ItemsBinaryTests(unittest.TestCase):
             m.parse_pack(self.blob + b'\0')
 
     def test_crc_correct_header_directory_and_pin_rejections(self):
-        for offset, value in [(0, 0), (8, 2), (12, 0), (20, 12), (24, 2), (28, 2),
+        for offset, value in [(0, 0), (8, 3), (12, 0), (20, 12), (24, 3), (28, 2),
                               (32, 0), (52, 1), (64, 0), (68, 0), (72, 0xffffffff),
                               (76, 1), (84, m.HEADER), (88, 2)]:
             with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):
@@ -159,6 +159,31 @@ class ItemsBinaryTests(unittest.TestCase):
             (root / resource).write_bytes(b'changed')
             with self.assertRaises(ValueError):
                 m.stage_files(root)
+
+    def test_explicit_rich_capability_and_legacy_plain_data(self):
+        self.assertEqual(struct.unpack_from('<I',self.blob,8)[0],2)
+        self.assertEqual(struct.unpack_from('<I',self.blob,24)[0],2)
+        self.assertEqual(struct.unpack_from('<I',self.blob,28)[0],1)
+        rich=self.tables['Definitions'][1]
+        self.assertEqual((rich[10],rich[11]),(2,0))
+        self.assertEqual(rich[5],m.NO_INDEX)
+        pool=self.tables['Strings'];description=pool[rich[3]:pool.index(0,rich[3])].decode('utf-8')
+        self.assertIn('[Ninten]',description);self.assertIn('[Asthma]',description);self.assertIn('%s',description)
+        legacy=copy.deepcopy(self.tables);legacy['Definitions']=legacy['Definitions'][:1]
+        blob=m.encode(legacy)
+        self.assertEqual(struct.unpack_from('<I',blob,8)[0],1)
+        self.assertEqual(struct.unpack_from('<I',blob,24)[0],1)
+        self.assertEqual(len(m.parse_pack(blob)['Definitions']),1)
+
+    def test_rich_definition_cannot_claim_action_or_old_capability(self):
+        definition=self.section('Definitions')+m.STRIDES[m.SECTION_NAMES.index('Definitions')]
+        for offset,value in ((definition+40,4),(definition+40,3),(definition+44,1),(definition+20,0)):
+            with self.subTest(offset=offset,value=value),self.assertRaises(ValueError):
+                m.parse_pack(self.corrupt(offset,value))
+        for version,caps in ((1,1),(1,2),(2,1),(2,3),(3,2)):
+            bad=bytearray(self.blob);struct.pack_into('<I',bad,8,version);struct.pack_into('<I',bad,24,caps)
+            struct.pack_into('<I',bad,16,0);struct.pack_into('<I',bad,16,zlib.crc32(bad))
+            with self.subTest(version=version,caps=caps),self.assertRaises(ValueError):m.parse_pack(bad)
 
 
 if __name__ == '__main__':

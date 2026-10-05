@@ -10,6 +10,11 @@ public:
  // UID zero is valid for saved instances (the source UID is an unsigned draw).
  bool restore(ItemView,const std::vector<ItemInstance>&,std::string& error);
  bool valid()const{return data_.valid();}
+ bool has_space()const{return valid()&&size()<data_.metadata().capacity;}
+ // Preflight before the caller performs the source UID draw. append checks again
+ // and commits only a valid, unequipped item with a unique externally owned UID.
+ bool can_append(uint32_t definition,uint32_t doses,std::string& error)const;
+ bool append(uint32_t definition,uint32_t doses,uint32_t uid,std::string& error);
  const ItemView& content()const{return data_;}
  uint32_t size()const{return uint32_t(instances_.size());}
  const ItemInstance& instance(uint32_t i)const{return instances_.at(i);}

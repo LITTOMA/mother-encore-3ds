@@ -87,6 +87,7 @@ ContinueRenderer continue_renderer;
 upstream::NewGameSetupData new_game_data;
 upstream::StartupSettingsData startup_settings_data;
 upstream::HouseInspectionData house_inspection_data;
+upstream::DrawerProgramData drawer_program_data;
 upstream::HouseButtonPromptData house_prompt_data;
 HouseButtonPromptsRenderer house_prompt_renderer;
 upstream::HousePromptObservation house_prompt_observation;
@@ -477,6 +478,42 @@ bool resolve_dialogue_value(void*state,upstream::HouseTokenKind kind,std::string
     if(kind==upstream::HouseTokenKind::CurrentCash){value=std::to_string(session_rewards.cash);return true;}
     return false;
 }
+bool play_source_audio(const std::string&,ctr::AudioLane,float,float);
+// Scene-independent effect owner: scene text/flags are handled by HouseRuntime.
+// Every mutation uses stable inventory/RNG owners shared by the actual game.
+class DrawerEffects final:public upstream::DrawerHost {
+ uint32_t definition(std::string_view name)const{const auto items=items_data.view();for(uint32_t i=0;i<items.count(upstream::ItemSection::Definitions);++i)if(items.string(items.definition(i).source)==name)return i;return upstream::item_no_index;}
+public:
+ bool validate_text(uint32_t,std::string&e)override{e="Scene text must be owned by HouseRuntime";return false;}
+ bool validate_flag(std::string_view,std::string&e)override{e="Scene flags must be owned by HouseRuntime";return false;}
+ bool validate_item(upstream::DrawerItemTemplate t,std::string_view name,std::string&e)override{
+  const auto index=definition(name);if(index==upstream::item_no_index||t.key_item){e="Unbound normal inventory grant";return false;}
+  const auto d=items_data.view().definition(index);if(d.flags&uint32_t(upstream::ItemDefinitionFlag::Equipment)){e="Grant defaults are not compatible with item definition";return false;}
+  for(const auto&p:native_session_data.acquisitions())if(p.item_id==name&&p.doses==t.doses&&p.max_count==1){e.clear();return true;}
+  e="Grant is absent from checked session acquisition policy";return false;
+ }
+ bool validate_sound(std::string_view name,std::string&e)override{
+  uint32_t matches=0;for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto a=menu_audio_bank.asset(i);if(a.source_path==name||(a.source_path.substr(0,6)=="res://"&&a.source_path.substr(6)==name))++matches;}
+  if(matches!=1){e="Inspection sound mapping absent/ambiguous";return false;}e.clear();return true;
+ }
+ bool show_text(uint32_t,std::string&e)override{e="Scene text must be owned by HouseRuntime";return false;}
+ bool flag(std::string_view,bool&,std::string&e)override{e="Scene flags must be owned by HouseRuntime";return false;}
+ bool inventory_space()const override{return session_inventory.has_space();}
+ bool grant_item(upstream::DrawerItemTemplate t,std::string_view name,std::string&e)override{
+  if(!validate_item(t,name,e))return false;const auto index=definition(name);
+  if(!session_inventory.can_append(index,t.doses,e))return false;
+  auto random=battle_random;auto ledger=generated_uid_ledger;auto inventory=session_inventory;
+  const upstream::LoadRngClockProvider clock=[](upstream::LoadRngClockSample&sample,std::string&why){const auto now=std::time(nullptr);if(now<0){why="Clock unavailable for source item entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
+  std::vector<upstream::LoadUidAllocation> trace;
+  if(!upstream::apply_load_uid_allocations(random,ledger,{{1,1}},clock,e,&trace)||trace.size()!=1){if(e.empty())e="Source item UID allocation incomplete";return false;}
+  if(!inventory.append(index,t.doses,trace.front().generated_uid,e))return false;
+  // Saved UIDs remain opaque. A collision with a retained UID rejects the
+  // whole transaction rather than adding an invented source random draw.
+  session_inventory=std::move(inventory);battle_random=random;generated_uid_ledger=std::move(ledger);e.clear();return true;
+ }
+ bool play_sound(std::string_view name,std::string&e)override{if(!validate_sound(name,e))return false;if(!play_source_audio(std::string(name),ctr::AudioLane::Effect,0,1)){e=house_error.empty()?audio_status:house_error;return false;}return true;}
+ bool set_flag(std::string_view,bool,std::string&e)override{e="Scene flags must be owned by HouseRuntime";return false;}
+} drawer_effects;
 bool initialize_house_interactions(std::string& error){
     house_error.clear();house_sound_requests=0;
     if(!initialize_localization(error))return false;
@@ -484,7 +521,7 @@ bool initialize_house_interactions(std::string& error){
     bind_localized_house(gameplay_scene->presentation);
     if(!gameplay_scene->house.initialize(house_data.view(),gameplay_scene->world,gameplay_scene->presentation)){error=gameplay_scene->house.error();return false;}
     if(!house_inspection_data.view().valid()&&!house_inspection_data.load_file(resource_path(ResourceRole::HouseInspections).c_str(),error))return false;
-    if(!gameplay_scene->house.bind_inspections(house_inspection_data.view())){error=gameplay_scene->house.error();return false;}
+    if(!drawer_program_data.view().valid()&&!drawer_program_data.load_file(resource_path(ResourceRole::DrawerProgram).c_str(),error))return false;
     if(!house_assets_ready){
         if(!new_game_data.load_file(resource_path(ResourceRole::NewGame).c_str(),error))return false;
         if(!phone_data.load_file(resource_path(ResourceRole::Phone).c_str(),error)||!phone_renderer.load(phone_data.view(),"romfs:/",error))return false;
@@ -496,6 +533,7 @@ bool initialize_house_interactions(std::string& error){
         new_game_renderer.bind_prompts(house_prompt_renderer);
         house_assets_ready=true;
     }
+    if(!gameplay_scene->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!gameplay_scene->house.bind_inspections(house_inspection_data.view())){error=gameplay_scene->house.error();return false;}
     if(!gameplay_scene->phone.initialize(phone_data.view())||!gameplay_scene->house.bind_phone(gameplay_scene->phone)){error=gameplay_scene->house.error();return false;}
     dialogue_choices.close();save_menu.close();save_open_failed=false;
     gameplay_scene->house.bind_choices(choice_data,dialogue_choices);
@@ -551,6 +589,16 @@ bool load_introduction(std::string&error){
 bool begin_introduction(std::string&error){
     if(!pending_new_game.ready||new_game_setup.phase()!=upstream::NamingPhase::Accepted){error="Introduction needs an accepted isolated startup";return false;}
     if(!load_introduction(error)||!introduction_renderer.load(introduction_data,error))return false;
+    // Admit every actual play source before the animation starts. Preparation
+    // keeps bounded stream buffers; it never plays a voice or consumes game RNG.
+    std::vector<std::string> sources{introduction_data.music};for(const auto&p:introduction_data.text_sounds)sources.push_back(p);
+    for(const auto&scene:introduction_data.scenes)for(const auto&event:scene.events)if(event.kind==5)sources.push_back(event.source);
+    std::vector<uint32_t> ids;
+    for(const auto&path:sources){uint32_t matches=0,id=0;for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto a=menu_audio_bank.asset(i);if(a.source_path==path||(a.source_path.substr(0,6)=="res://"&&a.source_path.substr(6)==path)){++matches;id=a.stable_id;}}
+        if(matches!=1){error="Introduction sound mapping absent/ambiguous";introduction_renderer.free();return false;}
+        if(audio_player.available()&&!audio_player.prepared(id)&&std::find(ids.begin(),ids.end(),id)==ids.end())ids.push_back(id);
+    }
+    if(!ids.empty()){LoadingScope loading("Preparing introduction audio",uint32_t(ids.size()));for(auto id:ids)if(!loading.step([&]{return audio_player.prepare(id,error);},"introduction-pcm-admission")){introduction_renderer.free();return false;}if(!loading.finish()){error="Introduction audio preparation incomplete";introduction_renderer.free();return false;}}
     if(!introduction.begin(introduction_data,pending_new_game.random,std::string(locale_selection.code()),float(view_width),float(view_height),error)){introduction_renderer.free();return false;}
     introduction_house_committed=false;introduction_playtime=0;introduction_render_error.clear();error.clear();return true;
 }
@@ -651,7 +699,7 @@ bool apply_loaded_slot(uint32_t slot,std::string&error){
     auto next_random=battle_random;auto next_ledger=generated_uid_ledger;
     const LoadRngClockProvider clocks=[](LoadRngClockSample&sample,std::string&why){const auto unix_now=std::time(nullptr);if(unix_now<0){why="Clock unavailable for source LOAD entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(unix_now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
     if(!loading.step([&]{return apply_load_uid_allocations(next_random,next_ledger,allocations,clocks,error);}))return false;
-    if(!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
+    if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);
@@ -683,7 +731,7 @@ bool commit_named_new_game(std::string&error){
     if(!loading.step([&]{return new_game_setup.apply(snapshot,native_session_data,error)&&prepare_session_restore(native_session_data,opening_data.view(),house_data.view(),round_data.view(),items_data.view(),house_font_data.view(),snapshot,prepared,error);}))return false;
     std::unique_ptr<GameplayScene>candidate;
     if(!loading.step([&]{return prepare_fresh_house(prepared,restore_data,opening_data.view(),house_data.view(),house_font_data.view(),phone_data.view(),random,{float(view_width),float(view_height)},candidate,error);}))return false;
-    if(!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
+    if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);

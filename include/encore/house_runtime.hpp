@@ -4,10 +4,11 @@
 #include "encore/phone_runtime.hpp"
 #include "encore/dialogue_choices.hpp"
 #include "encore/house_inspection_data.hpp"
+#include "encore/drawer_program.hpp"
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
-enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error};
+enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram};
 enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested};
 struct HouseEvent {HouseEventKind kind{};uint32_t object=0;uint64_t physics_tick=0,idle_frame=0;Vec2 position{};};
 struct HouseSoundRequest {uint32_t sound=0;};
@@ -16,7 +17,7 @@ struct HouseOpenableState {
  bool action=false,pending_action=false,pending_normal=false,animation_pending=false,collision_pending=false,collision_value=false,timer_running=false;
  double timer_remaining=0,animation_time=0;
 };
-class HouseRuntime : public PhoneFlagQuery, public PhoneSoundSink {
+class HouseRuntime : public PhoneFlagQuery, public PhoneSoundSink, private DrawerHost {
 public:
  bool initialize(HouseView,OpeningWorld&,HousePresentation&);
  bool rebind_scene(OpeningWorld&,HousePresentation&);
@@ -26,6 +27,9 @@ public:
  // Cross-pack admission is transactional: a rejected candidate keeps the
  // previous inspection binding and current interaction intact.
  bool bind_inspections(HouseInspectionView);
+ // Independent effect programme owns its source identity, inspector and text
+ // refs. Bind before inspections; effects owns inventory/audio, never text/flags.
+ bool bind_drawer(DrawerProgramView,DrawerHost& effects);
  void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
  bool select_story_option(uint32_t pc,uint32_t generation);
  bool close_story_submenu(uint32_t generation);
@@ -70,6 +74,18 @@ private:
  bool interact_phone(uint32_t index);
  bool interact_inspection(uint32_t index);
  bool resolve_inspection_dialogue(uint32_t,uint32_t&)const;
+ std::string_view inspection_path(uint32_t)const;
+ bool drawer_selected(uint32_t)const;
+ bool validate_text(uint32_t,std::string&)override;
+ bool validate_flag(std::string_view,std::string&)override;
+ bool validate_item(DrawerItemTemplate t,std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->validate_item(t,n,e);}
+ bool validate_sound(std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->validate_sound(n,e);}
+ bool show_text(uint32_t,std::string&)override;
+ bool flag(std::string_view,bool&,std::string&)override;
+ bool inventory_space()const override{return drawer_effects_&&drawer_effects_->inventory_space();}
+ bool grant_item(DrawerItemTemplate t,std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->grant_item(t,n,e);}
+ bool play_sound(std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->play_sound(n,e);}
+ bool set_flag(std::string_view,bool,std::string&)override;
  uint32_t program_for_path(std::string_view)const;
  bool story_conditions(uint32_t index)const;
  bool sync_npc_visibility();
@@ -83,6 +99,7 @@ private:
  const DialogueChoicesData*choices_data_=nullptr;DialogueChoices*choices_=nullptr;uint32_t choices_generation_=0;
  PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;
  HouseInspectionView inspections_;
+ DrawerProgramView drawer_;DrawerHost*drawer_effects_=nullptr;DrawerProgramRuntime drawer_runtime_;std::string drawer_error_;
  HouseView content_;OpeningWorld*world_=nullptr;HousePresentation*presentation_=nullptr;
  struct AreaContact {uint8_t kind;uint32_t index;bool entered;};
  std::vector<AreaContact>pending_contacts_;

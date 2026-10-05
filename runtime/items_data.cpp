@@ -71,7 +71,8 @@ ItemSound ItemView::sound_for(ItemSoundEvent event)const{for(uint32_t i=0;i<coun
 bool ItemData::load(const uint8_t*input,size_t size,std::string&error){
  auto fail=[&](const char*message){error=message;return false;};
  if(!input||size<header_size||size>max_bytes)return fail("Items pack size rejected");
- if(std::memcmp(input,"ENCITM01",8)||u32(input+8)!=1||u32(input+12)!=size||u32(input+20)!=section_count||u32(input+24)!=1||u32(input+28)!=1||std::memcmp(input+32,reviewed_pin,20))return fail("Items schema/capability/pin rejected");
+ const auto version=u32(input+8),caps=u32(input+24);
+ if(std::memcmp(input,"ENCITM01",8)||!((version==1&&caps==1)||(version==2&&caps==2))||u32(input+12)!=size||u32(input+20)!=section_count||u32(input+28)!=1||std::memcmp(input+32,reviewed_pin,20))return fail("Items schema/capability/pin rejected");
  for(unsigned i=52;i<64;++i)if(input[i])return fail("Items reserved header bytes set");
  if(crc(input,size)!=u32(input+16))return fail("Items checksum mismatch");
  size_t end=header_size;
@@ -103,7 +104,8 @@ bool ItemData::load(const uint8_t*input,size_t size,std::string&error){
  std::set<std::string_view>sources;
  for(uint32_t i=0;i<n(ItemSection::Definitions);++i){auto d=v.definition(i);
   if(!str(d.source)||!safe_path(v.string(d.source))||!sources.insert(v.string(d.source)).second||!str(d.name)||v.string(d.name).empty()||!str(d.description)||v.string(d.description).empty())return fail("Items definition strings rejected");
-  if((d.icon!=item_no_index&&d.icon>=n(ItemSection::Resources))||(d.flags&~1u)||d.can_use>1||d.heal_hp< -65535||d.heal_hp>65535||d.heal_pp< -65535||d.heal_pp>65535||d.max_hp_boost< -65535||d.max_hp_boost>65535||d.max_pp_boost< -65535||d.max_pp_boost>65535||((d.flags&1u)?d.equipment_slot>=4:d.equipment_slot!=item_no_index))return fail("Items definition rejected");
+  if((d.icon!=item_no_index&&d.icon>=n(ItemSection::Resources))||(d.flags&~(caps==2?3u:1u))||d.can_use>1||d.heal_hp< -65535||d.heal_hp>65535||d.heal_pp< -65535||d.heal_pp>65535||d.max_hp_boost< -65535||d.max_hp_boost>65535||d.max_pp_boost< -65535||d.max_pp_boost>65535||((d.flags&1u)?d.equipment_slot>=4:d.equipment_slot!=item_no_index))return fail("Items definition rejected");
+  if((d.flags&uint32_t(ItemDefinitionFlag::RichDescription))&&(d.can_use||(d.flags&1u)||d.heal_hp||d.heal_pp||d.max_hp_boost||d.max_pp_boost))return fail("Items unsupported rich/action projection must stay disabled");
   if(d.icon!=item_no_index&&v.resource(d.icon).kind!=1)return fail("Items icon resource rejected");
  }
  std::set<uint32_t>equipped;

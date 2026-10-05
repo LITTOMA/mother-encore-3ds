@@ -122,6 +122,18 @@ def extract():
     saved_flag=one(r'globaldata.flags\["([^"]+)"\] = true',source_save,'saved flag')[1]
     required=['content/native-opening.json','content/native-house.json','content/native-battle.json','content/native-items.json','content/native-round.json','content/doll-round.json']
     room,house,battle,items,first,second=[read(ROOT/p) for p in required]
+    from tools.drawer_program import load as load_drawer, IR as drawer_ir
+    drawer=load_drawer(ROOT);required.append(drawer_ir)
+    acquisitions=[]
+    for index,template in enumerate(drawer['templates']):
+        grants=[pc for pc,command in enumerate(drawer['commands']) if command['opcode']=='GrantItem' and command['a']==index]
+        require(len(grants)==1 and not template['key_item'],'Session acquisition requires one reviewed normal-inventory grant')
+        effects=[]
+        for command in drawer['commands'][grants[0]+1:]:
+            if command['opcode']=='AwaitText':break
+            if command['opcode']=='SetFlag':effects.append(command)
+        require(len(effects)==1 and effects[0]['b']==1,'Session acquisition needs one source grant flag')
+        acquisitions.append(dict(item_id=template['source_item'],doses=template['doses'],max_count=len(grants),flag_id=effects[0]['a']))
     leader=save['party'][0];require(save['party']==[battle['party']['id']],'Unsupported party/owner')
     character=dict(save[leader]);character.update(overrides[leader])
     require(character['status']==[] and 'permanent_boosts'not in character,'Unreviewed initial modifiers')
@@ -156,6 +168,7 @@ def extract():
         levels.append(dict(level=level,minimum_exp=room['sections']['Experience'][level-1]['required_total_exp'],next_exp=room['sections']['Experience'][level]['required_total_exp'],stats=values,skills=skills))
     require(levels[0]['stats']==[effective[k]for k in stats] and levels[1]['stats']==[x['after']for x in second['growth']],'Derived stat contract disagrees with live battle resources')
     mutable={saved_flag,first['victory']['earned_cash_flag']}
+    mutable.update(command['a'] for command in drawer['commands'] if command['opcode']=='SetFlag')
     encounter_flag=battle['entry']['first_encounter_flag']
     if encounter_flag in {f['id']for f in flags}:mutable.add(encounter_flag)
     for command in room['sections']['Command']:
@@ -172,7 +185,7 @@ def extract():
     points=[scene['spawn']]+[d['destination']for d in house['doors']]
     cameras=room['sections']['CameraArea'];camera_ids=sorted({min(cameras,key=lambda c:sum((a-b)**2 for a,b in zip(c['center'],point)))['stable_id'] for point in points})
     startup=copy.deepcopy(defaults);startup['characters'],derivation=source_startup_characters(ex,save,overrides,defaults)
-    return dict(schema=3,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
+    return dict(schema=4,acquisitions=acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
 
 class Writer:
     def __init__(self):self.raw=bytearray()
@@ -196,7 +209,7 @@ def encode_snapshot(s,c):
     return raw+struct.pack('<I',zlib.crc32(raw))
 
 def encode(r):
-    require(r['schema'] in (1,2,3),'Unsupported native session schema')
+    require(r['schema'] in (1,2,3,4),'Unsupported native session schema')
     w=Writer();c=r['compatibility'];w.put('3I',c['content_family'],c['content_revision'],c['rules_revision']);template=encode_snapshot(r['defaults'],c);w.put('I',len(template));w.raw.extend(template)
     w.put('I',len(r['levels']))
     for level in r['levels']:w.put('3I7i',level['level'],level['minimum_exp'],level['next_exp'],*level['stats']);w.array(level['skills'],w.text)
@@ -205,6 +218,10 @@ def encode(r):
         startup=encode_snapshot(r['startup'],c);w.put('I',len(startup));w.raw.extend(startup)
     if r['schema']>=3:
         options=r['settings_choices'];w.array(options['speeds'],lambda x:w.put('d',x));w.array(options['flavors'],w.text);w.array(options['prompts'],w.text)
+    if r['schema']>=4:
+        w.put('I',len(r['acquisitions']))
+        for policy in r['acquisitions']:
+            w.text(policy['item_id']);w.put('2I',policy['doses'],policy['max_count']);w.text(policy['flag_id'])
     return struct.pack('<8s4I',b'ENCNSESS',r['schema'],24+len(w.raw),zlib.crc32(w.raw),r['schema'])+w.raw
 
 def verify_recipe(r):

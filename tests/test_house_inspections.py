@@ -45,7 +45,7 @@ class InspectionParserTests(unittest.TestCase):
 
     def test_explicit_unsupported_binding_and_no_flattening(self):
         obj=dict(id=1,source_path='Objects/interact_fixture',position=[0,0],interact_center=[0,0],interact_extents=[4,4],prompt_offset=[0,-5],player_turn=0,collision_mask=1,appear_flag='',disappear_flag='',seen_key='',default_dialogue='Data/Dialogue/item.yaml',default_supported=False,overrides=[])
-        ir=dict(schema=1,kind='encore.house-inspections.source-ir',commit=PIN,scope='fixture',sources={},objects=[obj],texts=[],unsupported=[])
+        ir=dict(schema=1,kind='encore.house-inspections.source-ir',commit=PIN,scope='fixture',sources={},objects=[obj],texts=[],unsupported=[],programmes=[])
         house=dict(commit=PIN,dialogues=[])
         self.assertEqual(lower(ir,house)['Objects'][0][10],NONE)
         house['dialogues']=[dict(source_path='Data/Dialogue/item.yaml')]
@@ -60,5 +60,19 @@ class InspectionParserTests(unittest.TestCase):
         self.assertEqual(lower(ir,house)['Objects'][0][10],0)
         obj['default_supported']=False;obj['unknown']=1
         with self.assertRaises(ValueError):lower(ir,house)
+
+    def test_programme_binding_preserves_command_owned_phrase_text(self):
+        path='Data/Dialogue/item.yaml';owner='Objects/interact_fixture'
+        obj=dict(id=1,source_path=owner,position=[0,0],interact_center=[0,0],interact_extents=[4,4],prompt_offset=[0,-5],player_turn=0,collision_mask=1,appear_flag='',disappear_flag='',seen_key='',default_dialogue=path,default_supported=False,overrides=[])
+        programme=dict(source_path=path,inspection_source=owner,ir_sha256='0'*64)
+        ir=dict(schema=1,kind='encore.house-inspections.source-ir',commit=PIN,scope='fixture',sources={},objects=[obj],texts=[],unsupported=[],programmes=[programme])
+        house=dict(commit=PIN,dialogues=[dict(source_path=path)]*5)
+        self.assertEqual(lower(ir,house)['Objects'][0][10],NONE)
+        bad=copy.deepcopy(ir);bad['programmes']=[]
+        with self.assertRaises(ValueError):lower(bad,house)
+        bad=copy.deepcopy(house);bad['dialogues'].pop()
+        with self.assertRaises(ValueError):lower(ir,bad)
+        bad=copy.deepcopy(ir);bad['objects'][0]['default_supported']=True
+        with self.assertRaises(ValueError):lower(bad,house)
 
 if __name__=='__main__':unittest.main()

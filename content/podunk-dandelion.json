@@ -1,0 +1,7233 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "scene_admitted": false,
+  "capabilities": 3,
+  "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+  "prototype_sha256": "7cde58ce506027741addc994fef0d787b0e9a83e15eb82ae20859fde3c847206",
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+    "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+    "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+    "Scripts/Main/dandelion.gd": "d274557894f379b13a21dfb2c2448b91cf9f3b480a4a28e36341c98a66457b51",
+    "Nodes/Overworld/dandelion.tscn": "b7ee1ad6a15bf5b35f6004e16900808c92c9e8553b4811c1d6ab3c892bac0db5",
+    "Graphics/Objects/Common/DandelionSeed.png": "2323cd921b5fd67ce718652e2e9522a880f165d04e4a14dc5a9fbec11670e1c4"
+  },
+  "spawners": [
+    {
+      "id": 3263908578,
+      "ready": 3194,
+      "node": "BelowPlayer2/Dandelions/Dandelion",
+      "parent": 125922733,
+      "sprite": 2226644972,
+      "notifier": 3990301347,
+      "position": [
+        322.0,
+        562.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          322.0,
+          562.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1687063095,
+      "ready": 3197,
+      "node": "BelowPlayer2/Dandelions/Dandelion2",
+      "parent": 125922733,
+      "sprite": 2310128367,
+      "notifier": 1314261309,
+      "position": [
+        338.0,
+        566.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          338.0,
+          566.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3169809019,
+      "ready": 3200,
+      "node": "BelowPlayer2/Dandelions/Dandelion3",
+      "parent": 125922733,
+      "sprite": 1199815865,
+      "notifier": 1551034425,
+      "position": [
+        337.0,
+        580.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          337.0,
+          580.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2132866814,
+      "ready": 3203,
+      "node": "BelowPlayer2/Dandelions/Dandelion4",
+      "parent": 125922733,
+      "sprite": 1237039142,
+      "notifier": 1924627803,
+      "position": [
+        317.0,
+        577.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          317.0,
+          577.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3165330960,
+      "ready": 3206,
+      "node": "BelowPlayer2/Dandelions/Dandelion5",
+      "parent": 125922733,
+      "sprite": 2705291733,
+      "notifier": 2108646786,
+      "position": [
+        325.0,
+        591.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          325.0,
+          591.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 877901362,
+      "ready": 3209,
+      "node": "BelowPlayer2/Dandelions/Dandelion6",
+      "parent": 125922733,
+      "sprite": 2419874854,
+      "notifier": 4043944789,
+      "position": [
+        297.0,
+        577.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          297.0,
+          577.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 322224169,
+      "ready": 3212,
+      "node": "BelowPlayer2/Dandelions/Dandelion7",
+      "parent": 125922733,
+      "sprite": 402392793,
+      "notifier": 3455402377,
+      "position": [
+        305.0,
+        562.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          305.0,
+          562.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 108172539,
+      "ready": 3215,
+      "node": "BelowPlayer2/Dandelions/Dandelion8",
+      "parent": 125922733,
+      "sprite": 3398380555,
+      "notifier": 1563380581,
+      "position": [
+        308.0,
+        593.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          308.0,
+          593.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3313676950,
+      "ready": 3218,
+      "node": "BelowPlayer2/Dandelions/Dandelion9",
+      "parent": 125922733,
+      "sprite": 2467106652,
+      "notifier": 1583481723,
+      "position": [
+        350.0,
+        211.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          350.0,
+          211.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2459239323,
+      "ready": 3221,
+      "node": "BelowPlayer2/Dandelions/Dandelion10",
+      "parent": 125922733,
+      "sprite": 2788384576,
+      "notifier": 2176297050,
+      "position": [
+        369.0,
+        207.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          369.0,
+          207.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2571870286,
+      "ready": 3224,
+      "node": "BelowPlayer2/Dandelions/Dandelion11",
+      "parent": 125922733,
+      "sprite": 2698081115,
+      "notifier": 1880445705,
+      "position": [
+        347.0,
+        192.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          347.0,
+          192.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4130996428,
+      "ready": 3227,
+      "node": "BelowPlayer2/Dandelions/Dandelion12",
+      "parent": 125922733,
+      "sprite": 3318442296,
+      "notifier": 4209623415,
+      "position": [
+        373.0,
+        222.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          373.0,
+          222.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3892158629,
+      "ready": 3230,
+      "node": "BelowPlayer2/Dandelions/Dandelion13",
+      "parent": 125922733,
+      "sprite": 4011508661,
+      "notifier": 2400950647,
+      "position": [
+        385.0,
+        208.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          385.0,
+          208.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3657778672,
+      "ready": 3233,
+      "node": "BelowPlayer2/Dandelions/Dandelion14",
+      "parent": 125922733,
+      "sprite": 4173069229,
+      "notifier": 681909255,
+      "position": [
+        366.0,
+        191.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          366.0,
+          191.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3103793127,
+      "ready": 3236,
+      "node": "BelowPlayer2/Dandelions/Dandelion15",
+      "parent": 125922733,
+      "sprite": 942966580,
+      "notifier": 2661847312,
+      "position": [
+        502.0,
+        800.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          502.0,
+          800.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 981525569,
+      "ready": 3239,
+      "node": "BelowPlayer2/Dandelions/Dandelion16",
+      "parent": 125922733,
+      "sprite": 1952469229,
+      "notifier": 132378540,
+      "position": [
+        480.0,
+        792.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          480.0,
+          792.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1912275389,
+      "ready": 3242,
+      "node": "BelowPlayer2/Dandelions/Dandelion17",
+      "parent": 125922733,
+      "sprite": 980553619,
+      "notifier": 3129377785,
+      "position": [
+        515.0,
+        773.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          515.0,
+          773.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3275148363,
+      "ready": 3245,
+      "node": "BelowPlayer2/Dandelions/Dandelion18",
+      "parent": 125922733,
+      "sprite": 4139803969,
+      "notifier": 1261543095,
+      "position": [
+        496.0,
+        785.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          496.0,
+          785.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2442512401,
+      "ready": 3248,
+      "node": "BelowPlayer2/Dandelions/Dandelion19",
+      "parent": 125922733,
+      "sprite": 3723456950,
+      "notifier": 2622486364,
+      "position": [
+        481.0,
+        768.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          481.0,
+          768.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1615093397,
+      "ready": 3251,
+      "node": "BelowPlayer2/Dandelions/Dandelion20",
+      "parent": 125922733,
+      "sprite": 431624246,
+      "notifier": 1315859764,
+      "position": [
+        413.0,
+        1102.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          413.0,
+          1102.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4138708647,
+      "ready": 3254,
+      "node": "BelowPlayer2/Dandelions/Dandelion21",
+      "parent": 125922733,
+      "sprite": 3558126826,
+      "notifier": 2923311052,
+      "position": [
+        436.0,
+        1108.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          436.0,
+          1108.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1465720720,
+      "ready": 3257,
+      "node": "BelowPlayer2/Dandelions/Dandelion22",
+      "parent": 125922733,
+      "sprite": 428664449,
+      "notifier": 421263532,
+      "position": [
+        417.0,
+        1120.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          417.0,
+          1120.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 399007796,
+      "ready": 3260,
+      "node": "BelowPlayer2/Dandelions/Dandelion128",
+      "parent": 125922733,
+      "sprite": 3295268687,
+      "notifier": 3549556163,
+      "position": [
+        349.0,
+        1276.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          349.0,
+          1276.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3582953480,
+      "ready": 3263,
+      "node": "BelowPlayer2/Dandelions/Dandelion129",
+      "parent": 125922733,
+      "sprite": 1916950020,
+      "notifier": 3127516863,
+      "position": [
+        362.0,
+        1293.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          362.0,
+          1293.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 447997984,
+      "ready": 3266,
+      "node": "BelowPlayer2/Dandelions/Dandelion131",
+      "parent": 125922733,
+      "sprite": 3658049400,
+      "notifier": 287287794,
+      "position": [
+        675.0,
+        1345.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          675.0,
+          1345.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 480928464,
+      "ready": 3269,
+      "node": "BelowPlayer2/Dandelions/Dandelion132",
+      "parent": 125922733,
+      "sprite": 2449528762,
+      "notifier": 1294502945,
+      "position": [
+        685.0,
+        1358.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          685.0,
+          1358.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4181607907,
+      "ready": 3272,
+      "node": "BelowPlayer2/Dandelions/Dandelion130",
+      "parent": 125922733,
+      "sprite": 3423922311,
+      "notifier": 3644581519,
+      "position": [
+        370.0,
+        1265.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          370.0,
+          1265.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4055596525,
+      "ready": 3275,
+      "node": "BelowPlayer2/Dandelions/Dandelion23",
+      "parent": 125922733,
+      "sprite": 916413691,
+      "notifier": 1893697480,
+      "position": [
+        432.0,
+        1088.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          432.0,
+          1088.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1317270509,
+      "ready": 3278,
+      "node": "BelowPlayer2/Dandelions/Dandelion24",
+      "parent": 125922733,
+      "sprite": 1181373187,
+      "notifier": 3847529963,
+      "position": [
+        685.0,
+        1119.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          685.0,
+          1119.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2099934820,
+      "ready": 3281,
+      "node": "BelowPlayer2/Dandelions/Dandelion25",
+      "parent": 125922733,
+      "sprite": 3383448260,
+      "notifier": 626372262,
+      "position": [
+        669.0,
+        1134.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          669.0,
+          1134.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2291838122,
+      "ready": 3284,
+      "node": "BelowPlayer2/Dandelions/Dandelion26",
+      "parent": 125922733,
+      "sprite": 1335141754,
+      "notifier": 3119463383,
+      "position": [
+        688.0,
+        1136.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          688.0,
+          1136.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1770347640,
+      "ready": 3287,
+      "node": "BelowPlayer2/Dandelions/Dandelion27",
+      "parent": 125922733,
+      "sprite": 845017799,
+      "notifier": 599648484,
+      "position": [
+        704.0,
+        1121.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          704.0,
+          1121.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 508330359,
+      "ready": 3290,
+      "node": "BelowPlayer2/Dandelions/Dandelion28",
+      "parent": 125922733,
+      "sprite": 2137194508,
+      "notifier": 2836481992,
+      "position": [
+        705.0,
+        1104.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          705.0,
+          1104.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3048669357,
+      "ready": 3293,
+      "node": "BelowPlayer2/Dandelions/Dandelion29",
+      "parent": 125922733,
+      "sprite": 1362613606,
+      "notifier": 659266505,
+      "position": [
+        386.0,
+        1984.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          386.0,
+          1984.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 430958621,
+      "ready": 3296,
+      "node": "BelowPlayer2/Dandelions/Dandelion30",
+      "parent": 125922733,
+      "sprite": 2029550884,
+      "notifier": 3239638321,
+      "position": [
+        336.0,
+        1953.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          336.0,
+          1953.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3619231339,
+      "ready": 3299,
+      "node": "BelowPlayer2/Dandelions/Dandelion31",
+      "parent": 125922733,
+      "sprite": 324311058,
+      "notifier": 3289810275,
+      "position": [
+        784.0,
+        1936.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          784.0,
+          1936.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3801148689,
+      "ready": 3302,
+      "node": "BelowPlayer2/Dandelions/Dandelion32",
+      "parent": 125922733,
+      "sprite": 2706256653,
+      "notifier": 1691129868,
+      "position": [
+        765.0,
+        1924.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          765.0,
+          1924.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2342362576,
+      "ready": 3305,
+      "node": "BelowPlayer2/Dandelions/Dandelion33",
+      "parent": 125922733,
+      "sprite": 1245155392,
+      "notifier": 33754755,
+      "position": [
+        799.0,
+        1923.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          799.0,
+          1923.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 6226153,
+      "ready": 3308,
+      "node": "BelowPlayer2/Dandelions/Dandelion34",
+      "parent": 125922733,
+      "sprite": 3111328272,
+      "notifier": 1342196753,
+      "position": [
+        818.0,
+        1934.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          818.0,
+          1934.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1861633462,
+      "ready": 3311,
+      "node": "BelowPlayer2/Dandelions/Dandelion35",
+      "parent": 125922733,
+      "sprite": 4122354556,
+      "notifier": 982083936,
+      "position": [
+        759.0,
+        1933.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          759.0,
+          1933.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2206613656,
+      "ready": 3314,
+      "node": "BelowPlayer2/Dandelions/Dandelion36",
+      "parent": 125922733,
+      "sprite": 870954878,
+      "notifier": 1848886322,
+      "position": [
+        797.0,
+        1939.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          797.0,
+          1939.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2076174700,
+      "ready": 3317,
+      "node": "BelowPlayer2/Dandelions/Dandelion37",
+      "parent": 125922733,
+      "sprite": 4054050326,
+      "notifier": 390829406,
+      "position": [
+        595.0,
+        2372.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          595.0,
+          2372.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1608169857,
+      "ready": 3320,
+      "node": "BelowPlayer2/Dandelions/Dandelion38",
+      "parent": 125922733,
+      "sprite": 1358976434,
+      "notifier": 3538149883,
+      "position": [
+        572.0,
+        2364.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          572.0,
+          2364.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2639658892,
+      "ready": 3323,
+      "node": "BelowPlayer2/Dandelions/Dandelion39",
+      "parent": 125922733,
+      "sprite": 4031112085,
+      "notifier": 4038348668,
+      "position": [
+        576.0,
+        2386.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          576.0,
+          2386.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3569253477,
+      "ready": 3326,
+      "node": "BelowPlayer2/Dandelions/Dandelion40",
+      "parent": 125922733,
+      "sprite": 3121951041,
+      "notifier": 1037572388,
+      "position": [
+        591.0,
+        2352.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          591.0,
+          2352.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1851397858,
+      "ready": 3329,
+      "node": "BelowPlayer2/Dandelions/Dandelion41",
+      "parent": 125922733,
+      "sprite": 843388077,
+      "notifier": 149647969,
+      "position": [
+        609.0,
+        2356.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          609.0,
+          2356.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4281167924,
+      "ready": 3332,
+      "node": "BelowPlayer2/Dandelions/Dandelion42",
+      "parent": 125922733,
+      "sprite": 615120255,
+      "notifier": 4047919289,
+      "position": [
+        558.0,
+        2384.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          558.0,
+          2384.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3634956504,
+      "ready": 3335,
+      "node": "BelowPlayer2/Dandelions/Dandelion43",
+      "parent": 125922733,
+      "sprite": 1205832260,
+      "notifier": 775359923,
+      "position": [
+        -295.0,
+        2332.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -295.0,
+          2332.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3082839715,
+      "ready": 3338,
+      "node": "BelowPlayer2/Dandelions/Dandelion44",
+      "parent": 125922733,
+      "sprite": 593319266,
+      "notifier": 2097065384,
+      "position": [
+        -307.0,
+        2346.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -307.0,
+          2346.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 907808002,
+      "ready": 3341,
+      "node": "BelowPlayer2/Dandelions/Dandelion45",
+      "parent": 125922733,
+      "sprite": 1314939156,
+      "notifier": 3794641827,
+      "position": [
+        -268.0,
+        2341.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -268.0,
+          2341.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1409461376,
+      "ready": 3344,
+      "node": "BelowPlayer2/Dandelions/Dandelion46",
+      "parent": 125922733,
+      "sprite": 3126627092,
+      "notifier": 1078968613,
+      "position": [
+        -286.0,
+        2354.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -286.0,
+          2354.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2401951007,
+      "ready": 3347,
+      "node": "BelowPlayer2/Dandelions/Dandelion47",
+      "parent": 125922733,
+      "sprite": 452903873,
+      "notifier": 551437310,
+      "position": [
+        -531.0,
+        2748.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -531.0,
+          2748.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1550000705,
+      "ready": 3350,
+      "node": "BelowPlayer2/Dandelions/Dandelion48",
+      "parent": 125922733,
+      "sprite": 4242774048,
+      "notifier": 2140984435,
+      "position": [
+        -529.0,
+        2769.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -529.0,
+          2769.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1525376007,
+      "ready": 3353,
+      "node": "BelowPlayer2/Dandelions/Dandelion49",
+      "parent": 125922733,
+      "sprite": 1486310298,
+      "notifier": 2900658587,
+      "position": [
+        -512.0,
+        2753.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -512.0,
+          2753.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 186920454,
+      "ready": 3356,
+      "node": "BelowPlayer2/Dandelions/Dandelion50",
+      "parent": 125922733,
+      "sprite": 1518065623,
+      "notifier": 2076659528,
+      "position": [
+        -513.0,
+        2737.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -513.0,
+          2737.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2454842354,
+      "ready": 3359,
+      "node": "BelowPlayer2/Dandelions/Dandelion51",
+      "parent": 125922733,
+      "sprite": 456031778,
+      "notifier": 4252323597,
+      "position": [
+        -495.0,
+        2754.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -495.0,
+          2754.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3383901011,
+      "ready": 3362,
+      "node": "BelowPlayer2/Dandelions/Dandelion52",
+      "parent": 125922733,
+      "sprite": 2413293518,
+      "notifier": 3116748955,
+      "position": [
+        -499.0,
+        2769.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -499.0,
+          2769.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 301876746,
+      "ready": 3365,
+      "node": "BelowPlayer2/Dandelions/Dandelion53",
+      "parent": 125922733,
+      "sprite": 1433599821,
+      "notifier": 3899132550,
+      "position": [
+        -466.0,
+        2149.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -466.0,
+          2149.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2183486020,
+      "ready": 3368,
+      "node": "BelowPlayer2/Dandelions/Dandelion71",
+      "parent": 125922733,
+      "sprite": 1571094321,
+      "notifier": 2707543213,
+      "position": [
+        -16.0,
+        2832.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -16.0,
+          2832.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1828210161,
+      "ready": 3371,
+      "node": "BelowPlayer2/Dandelions/Dandelion72",
+      "parent": 125922733,
+      "sprite": 3862352877,
+      "notifier": 927539946,
+      "position": [
+        8.0,
+        2848.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          8.0,
+          2848.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4201736689,
+      "ready": 3374,
+      "node": "BelowPlayer2/Dandelions/Dandelion73",
+      "parent": 125922733,
+      "sprite": 2973904459,
+      "notifier": 4209445327,
+      "position": [
+        32.0,
+        2832.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          32.0,
+          2832.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3329402307,
+      "ready": 3377,
+      "node": "BelowPlayer2/Dandelions/Dandelion74",
+      "parent": 125922733,
+      "sprite": 1854028713,
+      "notifier": 544215858,
+      "position": [
+        32.0,
+        2800.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          32.0,
+          2800.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3715363597,
+      "ready": 3380,
+      "node": "BelowPlayer2/Dandelions/Dandelion75",
+      "parent": 125922733,
+      "sprite": 2220741130,
+      "notifier": 2325299733,
+      "position": [
+        0.0,
+        2816.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -1.7881400538044545e-07,
+          2816.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2627898294,
+      "ready": 3383,
+      "node": "BelowPlayer2/Dandelions/Dandelion76",
+      "parent": 125922733,
+      "sprite": 2524646178,
+      "notifier": 2338259597,
+      "position": [
+        93.0,
+        2926.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          93.0,
+          2926.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3933452424,
+      "ready": 3386,
+      "node": "BelowPlayer2/Dandelions/Dandelion77",
+      "parent": 125922733,
+      "sprite": 2614994843,
+      "notifier": 2992376914,
+      "position": [
+        76.0,
+        2941.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          76.0,
+          2941.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 352947285,
+      "ready": 3389,
+      "node": "BelowPlayer2/Dandelions/Dandelion81",
+      "parent": 125922733,
+      "sprite": 2746379732,
+      "notifier": 2178233654,
+      "position": [
+        222.0,
+        3203.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          222.0,
+          3203.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3204496416,
+      "ready": 3392,
+      "node": "BelowPlayer2/Dandelions/Dandelion85",
+      "parent": 125922733,
+      "sprite": 2068633939,
+      "notifier": 341633585,
+      "position": [
+        205.0,
+        3196.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          205.0,
+          3196.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1108534143,
+      "ready": 3395,
+      "node": "BelowPlayer2/Dandelions/Dandelion82",
+      "parent": 125922733,
+      "sprite": 1521999216,
+      "notifier": 3637483298,
+      "position": [
+        204.0,
+        3179.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          204.0,
+          3179.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1687276524,
+      "ready": 3398,
+      "node": "BelowPlayer2/Dandelions/Dandelion83",
+      "parent": 125922733,
+      "sprite": 1446859895,
+      "notifier": 1316657359,
+      "position": [
+        227.0,
+        3182.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          227.0,
+          3182.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4143271120,
+      "ready": 3401,
+      "node": "BelowPlayer2/Dandelions/Dandelion84",
+      "parent": 125922733,
+      "sprite": 745973230,
+      "notifier": 1325642888,
+      "position": [
+        240.0,
+        3200.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          240.0,
+          3200.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4190341237,
+      "ready": 3404,
+      "node": "BelowPlayer2/Dandelions/Dandelion78",
+      "parent": 125922733,
+      "sprite": 3608582145,
+      "notifier": 3686441571,
+      "position": [
+        98.0,
+        2949.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          98.0,
+          2949.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 716968242,
+      "ready": 3407,
+      "node": "BelowPlayer2/Dandelions/Dandelion79",
+      "parent": 125922733,
+      "sprite": 4103666575,
+      "notifier": 1402793657,
+      "position": [
+        113.0,
+        2929.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          113.0,
+          2929.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1456659101,
+      "ready": 3410,
+      "node": "BelowPlayer2/Dandelions/Dandelion80",
+      "parent": 125922733,
+      "sprite": 1624573135,
+      "notifier": 771789347,
+      "position": [
+        82.0,
+        2961.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          82.0,
+          2961.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3087319985,
+      "ready": 3413,
+      "node": "BelowPlayer2/Dandelions/Dandelion54",
+      "parent": 125922733,
+      "sprite": 541547486,
+      "notifier": 1037243667,
+      "position": [
+        -432.0,
+        2156.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -432.0,
+          2156.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3802631739,
+      "ready": 3416,
+      "node": "BelowPlayer2/Dandelions/Dandelion55",
+      "parent": 125922733,
+      "sprite": 387149691,
+      "notifier": 1023608411,
+      "position": [
+        -386.0,
+        2149.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -386.0,
+          2149.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2945154749,
+      "ready": 3419,
+      "node": "BelowPlayer2/Dandelions/Dandelion56",
+      "parent": 125922733,
+      "sprite": 4294856115,
+      "notifier": 996371646,
+      "position": [
+        -210.0,
+        1822.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -210.0,
+          1822.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 930496226,
+      "ready": 3422,
+      "node": "BelowPlayer2/Dandelions/Dandelion57",
+      "parent": 125922733,
+      "sprite": 3142079039,
+      "notifier": 1701766034,
+      "position": [
+        -204.0,
+        1840.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -204.0,
+          1840.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3707430061,
+      "ready": 3425,
+      "node": "BelowPlayer2/Dandelions/Dandelion58",
+      "parent": 125922733,
+      "sprite": 1375387789,
+      "notifier": 1559000193,
+      "position": [
+        -226.0,
+        1838.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -226.0,
+          1838.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3915165062,
+      "ready": 3428,
+      "node": "BelowPlayer2/Dandelions/Dandelion59",
+      "parent": 125922733,
+      "sprite": 904560644,
+      "notifier": 2792870069,
+      "position": [
+        -179.0,
+        1810.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -179.0,
+          1810.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1652399593,
+      "ready": 3431,
+      "node": "BelowPlayer2/Dandelions/Dandelion60",
+      "parent": 125922733,
+      "sprite": 1841906438,
+      "notifier": 1642758259,
+      "position": [
+        -178.0,
+        1842.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -178.0,
+          1842.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 52990997,
+      "ready": 3434,
+      "node": "BelowPlayer2/Dandelions/Dandelion61",
+      "parent": 125922733,
+      "sprite": 716779443,
+      "notifier": 3509569808,
+      "position": [
+        653.0,
+        369.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          653.0,
+          369.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2928747665,
+      "ready": 3437,
+      "node": "BelowPlayer2/Dandelions/Dandelion62",
+      "parent": 125922733,
+      "sprite": 1738898626,
+      "notifier": 649144722,
+      "position": [
+        672.0,
+        349.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          672.0,
+          349.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3805845909,
+      "ready": 3440,
+      "node": "BelowPlayer2/Dandelions/Dandelion63",
+      "parent": 125922733,
+      "sprite": 1890287147,
+      "notifier": 4251410867,
+      "position": [
+        678.0,
+        384.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          678.0,
+          384.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2061470787,
+      "ready": 3443,
+      "node": "BelowPlayer2/Dandelions/Dandelion64",
+      "parent": 125922733,
+      "sprite": 309424345,
+      "notifier": 490620617,
+      "position": [
+        690.0,
+        366.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          690.0,
+          366.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3263625863,
+      "ready": 3446,
+      "node": "BelowPlayer2/Dandelions/Dandelion99",
+      "parent": 125922733,
+      "sprite": 1772909270,
+      "notifier": 2230816142,
+      "position": [
+        1469.0,
+        558.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1469.0,
+          558.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2089775010,
+      "ready": 3449,
+      "node": "BelowPlayer2/Dandelions/Dandelion100",
+      "parent": 125922733,
+      "sprite": 98114627,
+      "notifier": 1841360069,
+      "position": [
+        1507.0,
+        564.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1507.0,
+          564.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1313698883,
+      "ready": 3452,
+      "node": "BelowPlayer2/Dandelions/Dandelion101",
+      "parent": 125922733,
+      "sprite": 173085566,
+      "notifier": 896943738,
+      "position": [
+        1489.0,
+        543.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1489.0,
+          543.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1793015761,
+      "ready": 3455,
+      "node": "BelowPlayer2/Dandelions/Dandelion102",
+      "parent": 125922733,
+      "sprite": 3266213867,
+      "notifier": 3370939847,
+      "position": [
+        1473.0,
+        576.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1473.0,
+          576.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3842923452,
+      "ready": 3458,
+      "node": "BelowPlayer2/Dandelions/Dandelion65",
+      "parent": 125922733,
+      "sprite": 2777208849,
+      "notifier": 614185171,
+      "position": [
+        672.0,
+        372.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          672.0,
+          372.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1636042089,
+      "ready": 3461,
+      "node": "BelowPlayer2/Dandelions/Dandelion66",
+      "parent": 125922733,
+      "sprite": 4271393699,
+      "notifier": 3012854571,
+      "position": [
+        336.0,
+        1840.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          336.0,
+          1840.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 398708294,
+      "ready": 3464,
+      "node": "BelowPlayer2/Dandelions/Dandelion67",
+      "parent": 125922733,
+      "sprite": 1589191601,
+      "notifier": 2448160002,
+      "position": [
+        320.0,
+        1848.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          320.0,
+          1848.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2807624991,
+      "ready": 3467,
+      "node": "BelowPlayer2/Dandelions/Dandelion68",
+      "parent": 125922733,
+      "sprite": 1937151925,
+      "notifier": 3204360872,
+      "position": [
+        353.0,
+        1852.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          353.0,
+          1852.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3473060256,
+      "ready": 3470,
+      "node": "BelowPlayer2/Dandelions/Dandelion69",
+      "parent": 125922733,
+      "sprite": 477396059,
+      "notifier": 1275401201,
+      "position": [
+        480.0,
+        1851.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          480.0,
+          1851.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2638408580,
+      "ready": 3473,
+      "node": "BelowPlayer2/Dandelions/Dandelion70",
+      "parent": 125922733,
+      "sprite": 2215131446,
+      "notifier": 2524787261,
+      "position": [
+        -326.0,
+        1941.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -326.0,
+          1941.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1870371716,
+      "ready": 3476,
+      "node": "BelowPlayer2/Dandelions/Dandelion86",
+      "parent": 125922733,
+      "sprite": 1794333834,
+      "notifier": 67905638,
+      "position": [
+        1328.0,
+        -240.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1328.0,
+          -240.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3909453405,
+      "ready": 3479,
+      "node": "BelowPlayer2/Dandelions/Dandelion89",
+      "parent": 125922733,
+      "sprite": 3277972134,
+      "notifier": 2752101440,
+      "position": [
+        1360.0,
+        -240.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1360.0,
+          -240.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1295568134,
+      "ready": 3482,
+      "node": "BelowPlayer2/Dandelions/Dandelion90",
+      "parent": 125922733,
+      "sprite": 2286187151,
+      "notifier": 219486212,
+      "position": [
+        1376.0,
+        -256.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1376.0,
+          -256.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1068643651,
+      "ready": 3485,
+      "node": "BelowPlayer2/Dandelions/Dandelion91",
+      "parent": 125922733,
+      "sprite": 3913071890,
+      "notifier": 4120400294,
+      "position": [
+        720.0,
+        -624.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          720.0,
+          -624.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1207452308,
+      "ready": 3488,
+      "node": "BelowPlayer2/Dandelions/Dandelion92",
+      "parent": 125922733,
+      "sprite": 1541487907,
+      "notifier": 1016736421,
+      "position": [
+        686.0,
+        -612.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          686.0,
+          -612.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 373078541,
+      "ready": 3491,
+      "node": "BelowPlayer2/Dandelions/Dandelion93",
+      "parent": 125922733,
+      "sprite": 2268361078,
+      "notifier": 4037117186,
+      "position": [
+        712.0,
+        -593.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          712.0,
+          -593.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3300814884,
+      "ready": 3494,
+      "node": "BelowPlayer2/Dandelions/Dandelion94",
+      "parent": 125922733,
+      "sprite": 2844434999,
+      "notifier": 3902466432,
+      "position": [
+        658.0,
+        -301.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          658.0,
+          -301.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3723282771,
+      "ready": 3497,
+      "node": "BelowPlayer2/Dandelions/Dandelion95",
+      "parent": 125922733,
+      "sprite": 3306535241,
+      "notifier": 4071444983,
+      "position": [
+        624.0,
+        -321.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          624.0,
+          -321.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2551377428,
+      "ready": 3500,
+      "node": "BelowPlayer2/Dandelions/Dandelion96",
+      "parent": 125922733,
+      "sprite": 3463611144,
+      "notifier": 1654942442,
+      "position": [
+        340.0,
+        -499.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          340.0,
+          -499.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 827748276,
+      "ready": 3503,
+      "node": "BelowPlayer2/Dandelions/Dandelion103",
+      "parent": 125922733,
+      "sprite": 654285008,
+      "notifier": 412732201,
+      "position": [
+        338.0,
+        -621.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          338.0,
+          -621.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2794795667,
+      "ready": 3506,
+      "node": "BelowPlayer2/Dandelions/Dandelion104",
+      "parent": 125922733,
+      "sprite": 1687430979,
+      "notifier": 885027610,
+      "position": [
+        286.0,
+        -622.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          286.0,
+          -622.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1230042368,
+      "ready": 3509,
+      "node": "BelowPlayer2/Dandelions/Dandelion105",
+      "parent": 125922733,
+      "sprite": 3643611096,
+      "notifier": 3730245873,
+      "position": [
+        284.0,
+        -647.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          284.0,
+          -647.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3996435029,
+      "ready": 3512,
+      "node": "BelowPlayer2/Dandelions/Dandelion106",
+      "parent": 125922733,
+      "sprite": 1036346468,
+      "notifier": 467855122,
+      "position": [
+        319.0,
+        -639.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          319.0,
+          -639.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 377972627,
+      "ready": 3515,
+      "node": "BelowPlayer2/Dandelions/Dandelion109",
+      "parent": 125922733,
+      "sprite": 3039942567,
+      "notifier": 963167959,
+      "position": [
+        19.0,
+        -963.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          19.0,
+          -963.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3026799965,
+      "ready": 3518,
+      "node": "BelowPlayer2/Dandelions/Dandelion110",
+      "parent": 125922733,
+      "sprite": 3764612668,
+      "notifier": 3454773068,
+      "position": [
+        -17.0,
+        -960.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -17.0,
+          -960.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 822089181,
+      "ready": 3521,
+      "node": "BelowPlayer2/Dandelions/Dandelion111",
+      "parent": 125922733,
+      "sprite": 1058354094,
+      "notifier": 1332036006,
+      "position": [
+        0.0,
+        -976.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          -1.7881400538044545e-07,
+          -976.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4283731372,
+      "ready": 3524,
+      "node": "BelowPlayer2/Dandelions/Dandelion112",
+      "parent": 125922733,
+      "sprite": 2438627843,
+      "notifier": 2610359919,
+      "position": [
+        2.0,
+        -947.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1.999999761581421,
+          -947.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2684274321,
+      "ready": 3527,
+      "node": "BelowPlayer2/Dandelions/Dandelion107",
+      "parent": 125922733,
+      "sprite": 1082806124,
+      "notifier": 2354703639,
+      "position": [
+        335.0,
+        -657.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          335.0,
+          -657.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1183714588,
+      "ready": 3530,
+      "node": "BelowPlayer2/Dandelions/Dandelion108",
+      "parent": 125922733,
+      "sprite": 2555960005,
+      "notifier": 1404676782,
+      "position": [
+        308.0,
+        -610.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          308.0,
+          -610.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2200891305,
+      "ready": 3533,
+      "node": "BelowPlayer2/Dandelions/Dandelion97",
+      "parent": 125922733,
+      "sprite": 527623226,
+      "notifier": 1973884154,
+      "position": [
+        301.0,
+        -500.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          301.0,
+          -500.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 416634405,
+      "ready": 3536,
+      "node": "BelowPlayer2/Dandelions/Dandelion98",
+      "parent": 125922733,
+      "sprite": 3956669351,
+      "notifier": 13597680,
+      "position": [
+        327.0,
+        -479.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          327.0,
+          -479.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4285387043,
+      "ready": 3539,
+      "node": "BelowPlayer2/Dandelions/Dandelion87",
+      "parent": 125922733,
+      "sprite": 3926095570,
+      "notifier": 1992329930,
+      "position": [
+        1344.0,
+        -224.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1344.0,
+          -224.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1517613878,
+      "ready": 3542,
+      "node": "BelowPlayer2/Dandelions/Dandelion88",
+      "parent": 125922733,
+      "sprite": 2857399466,
+      "notifier": 1877695923,
+      "position": [
+        1344.0,
+        -256.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1344.0,
+          -256.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2899927228,
+      "ready": 3545,
+      "node": "BelowPlayer2/Dandelions/Dandelion113",
+      "parent": 125922733,
+      "sprite": 1235680667,
+      "notifier": 3901637221,
+      "position": [
+        1683.0,
+        -1228.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1683.0,
+          -1228.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 324053367,
+      "ready": 3548,
+      "node": "BelowPlayer2/Dandelions/Dandelion114",
+      "parent": 125922733,
+      "sprite": 1498714405,
+      "notifier": 3107614937,
+      "position": [
+        1646.0,
+        -1252.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1646.0,
+          -1252.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 328822118,
+      "ready": 3551,
+      "node": "BelowPlayer2/Dandelions/Dandelion115",
+      "parent": 125922733,
+      "sprite": 2361921040,
+      "notifier": 3608204523,
+      "position": [
+        1663.0,
+        -1232.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1663.0,
+          -1232.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1633759931,
+      "ready": 3554,
+      "node": "BelowPlayer2/Dandelions/Dandelion116",
+      "parent": 125922733,
+      "sprite": 2602096713,
+      "notifier": 3018442733,
+      "position": [
+        1680.0,
+        -1264.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1680.0,
+          -1264.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 627066499,
+      "ready": 3557,
+      "node": "BelowPlayer2/Dandelions/Dandelion117",
+      "parent": 125922733,
+      "sprite": 3867103092,
+      "notifier": 3015411307,
+      "position": [
+        1647.0,
+        -1215.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1647.0,
+          -1215.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3500700480,
+      "ready": 3560,
+      "node": "BelowPlayer2/Dandelions/Dandelion118",
+      "parent": 125922733,
+      "sprite": 2946129205,
+      "notifier": 1186678841,
+      "position": [
+        2146.0,
+        -1375.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          2146.0,
+          -1375.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 4257854020,
+      "ready": 3563,
+      "node": "BelowPlayer2/Dandelions/Dandelion123",
+      "parent": 125922733,
+      "sprite": 1440192260,
+      "notifier": 1712000451,
+      "position": [
+        2160.0,
+        -1393.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          2160.0,
+          -1393.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 52001475,
+      "ready": 3566,
+      "node": "BelowPlayer2/Dandelions/Dandelion119",
+      "parent": 125922733,
+      "sprite": 1871948130,
+      "notifier": 3085544049,
+      "position": [
+        2120.0,
+        -1394.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          2120.0,
+          -1394.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1349122593,
+      "ready": 3569,
+      "node": "BelowPlayer2/Dandelions/Dandelion124",
+      "parent": 125922733,
+      "sprite": 1049789736,
+      "notifier": 2717989002,
+      "position": [
+        1437.0,
+        -1498.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1437.0,
+          -1498.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 905560621,
+      "ready": 3572,
+      "node": "BelowPlayer2/Dandelions/Dandelion125",
+      "parent": 125922733,
+      "sprite": 3427554057,
+      "notifier": 1300859563,
+      "position": [
+        1456.0,
+        -1473.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1456.0,
+          -1473.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 573754601,
+      "ready": 3575,
+      "node": "BelowPlayer2/Dandelions/Dandelion126",
+      "parent": 125922733,
+      "sprite": 2667274712,
+      "notifier": 3817190024,
+      "position": [
+        1474.0,
+        -1483.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1474.0,
+          -1483.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3558164491,
+      "ready": 3578,
+      "node": "BelowPlayer2/Dandelions/Dandelion127",
+      "parent": 125922733,
+      "sprite": 1784010011,
+      "notifier": 3436893332,
+      "position": [
+        1423.0,
+        -1481.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1423.0,
+          -1481.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3422957558,
+      "ready": 3581,
+      "node": "BelowPlayer2/Dandelions/Dandelion133",
+      "parent": 125922733,
+      "sprite": 253731361,
+      "notifier": 1926765655,
+      "position": [
+        1023.0,
+        -1550.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1023.0,
+          -1550.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 3932505175,
+      "ready": 3584,
+      "node": "BelowPlayer2/Dandelions/Dandelion134",
+      "parent": 125922733,
+      "sprite": 856665716,
+      "notifier": 779363976,
+      "position": [
+        1005.0,
+        -1570.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1005.0,
+          -1570.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 1964865505,
+      "ready": 3587,
+      "node": "BelowPlayer2/Dandelions/Dandelion135",
+      "parent": 125922733,
+      "sprite": 2477601322,
+      "notifier": 3495116144,
+      "position": [
+        1025.0,
+        -1584.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          1025.0,
+          -1584.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2116922195,
+      "ready": 3590,
+      "node": "BelowPlayer2/Dandelions/Dandelion120",
+      "parent": 125922733,
+      "sprite": 2803817511,
+      "notifier": 1765702158,
+      "position": [
+        2095.0,
+        -1375.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          2095.0,
+          -1375.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2528540064,
+      "ready": 3593,
+      "node": "BelowPlayer2/Dandelions/Dandelion121",
+      "parent": 125922733,
+      "sprite": 820076433,
+      "notifier": 3150600100,
+      "position": [
+        2117.0,
+        -1361.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          2117.0,
+          -1361.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "id": 2700872380,
+      "ready": 3596,
+      "node": "BelowPlayer2/Dandelions/Dandelion122",
+      "parent": 125922733,
+      "sprite": 1280203213,
+      "notifier": 2848778883,
+      "position": [
+        2130.0,
+        -1383.0
+      ],
+      "parent_transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "notifier_transform": [
+        [
+          0.4000000059604645,
+          0.0
+        ],
+        [
+          0.0,
+          0.4000000059604645
+        ],
+        [
+          2130.0,
+          -1383.0
+        ]
+      ],
+      "rect": [
+        [
+          -10.0,
+          -10.0
+        ],
+        [
+          20.0,
+          20.0
+        ]
+      ]
+    }
+  ],
+  "profile": {
+    "id": 2810024773,
+    "source": "Nodes/Overworld/dandelion.tscn",
+    "layer": 1,
+    "mask": 1,
+    "flags": 5,
+    "columns": 2,
+    "rows": 1,
+    "idle": 0,
+    "blown": 1,
+    "collision_offset": [
+      -0.5,
+      -0.5
+    ],
+    "extents": [
+      3.5,
+      3.5
+    ],
+    "sprite_offset": [
+      0.0,
+      0.0
+    ],
+    "sprite_position": [
+      0.0,
+      0.0
+    ],
+    "particle_position": [
+      0.0,
+      -1.0
+    ],
+    "gravity_multiplier": 5.0
+  },
+  "particle_parameters": [
+    {
+      "name": "pause_mode",
+      "kind": 2,
+      "value": 0
+    },
+    {
+      "name": "physics_interpolation_mode",
+      "kind": 2,
+      "value": 1
+    },
+    {
+      "name": "unique_name_in_owner",
+      "kind": 1,
+      "value": false
+    },
+    {
+      "name": "process_priority",
+      "kind": 2,
+      "value": 0
+    },
+    {
+      "name": "visible",
+      "kind": 1,
+      "value": true
+    },
+    {
+      "name": "show_behind_parent",
+      "kind": 1,
+      "value": false
+    },
+    {
+      "name": "light_mask",
+      "kind": 2,
+      "value": 1
+    },
+    {
+      "name": "use_parent_material",
+      "kind": 1,
+      "value": false
+    },
+    {
+      "name": "rotation",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "z_index",
+      "kind": 2,
+      "value": 0
+    },
+    {
+      "name": "z_as_relative",
+      "kind": 1,
+      "value": true
+    },
+    {
+      "name": "emitting",
+      "kind": 1,
+      "value": false
+    },
+    {
+      "name": "amount",
+      "kind": 2,
+      "value": 16
+    },
+    {
+      "name": "lifetime",
+      "kind": 0,
+      "value": 2.0
+    },
+    {
+      "name": "one_shot",
+      "kind": 1,
+      "value": true
+    },
+    {
+      "name": "preprocess",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "speed_scale",
+      "kind": 0,
+      "value": 5.0
+    },
+    {
+      "name": "explosiveness",
+      "kind": 0,
+      "value": 0.800000011920929
+    },
+    {
+      "name": "randomness",
+      "kind": 0,
+      "value": 0.05000000074505806
+    },
+    {
+      "name": "lifetime_randomness",
+      "kind": 0,
+      "value": 0.10000000149011612
+    },
+    {
+      "name": "fixed_fps",
+      "kind": 2,
+      "value": 0
+    },
+    {
+      "name": "fract_delta",
+      "kind": 1,
+      "value": true
+    },
+    {
+      "name": "local_coords",
+      "kind": 1,
+      "value": true
+    },
+    {
+      "name": "draw_order",
+      "kind": 2,
+      "value": 0
+    },
+    {
+      "name": "emission_shape",
+      "kind": 2,
+      "value": 1
+    },
+    {
+      "name": "emission_sphere_radius",
+      "kind": 0,
+      "value": 4.0
+    },
+    {
+      "name": "flag_align_y",
+      "kind": 1,
+      "value": false
+    },
+    {
+      "name": "direction.x",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "direction.y",
+      "kind": 0,
+      "value": -1.0
+    },
+    {
+      "name": "spread",
+      "kind": 0,
+      "value": 100.0
+    },
+    {
+      "name": "gravity.x",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "gravity.y",
+      "kind": 0,
+      "value": -5.0
+    },
+    {
+      "name": "initial_velocity",
+      "kind": 0,
+      "value": 10.0
+    },
+    {
+      "name": "initial_velocity_random",
+      "kind": 0,
+      "value": 0.10000000149011612
+    },
+    {
+      "name": "angular_velocity",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "angular_velocity_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "orbit_velocity",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "orbit_velocity_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "linear_accel",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "linear_accel_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "radial_accel",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "radial_accel_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "tangential_accel",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "tangential_accel_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "damping",
+      "kind": 0,
+      "value": 3.0
+    },
+    {
+      "name": "damping_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "angle",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "angle_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "scale_amount",
+      "kind": 0,
+      "value": 0.5
+    },
+    {
+      "name": "scale_amount_random",
+      "kind": 0,
+      "value": 1.0
+    },
+    {
+      "name": "hue_variation",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "hue_variation_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "anim_speed",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "anim_speed_random",
+      "kind": 0,
+      "value": 0.0
+    },
+    {
+      "name": "anim_offset",
+      "kind": 0,
+      "value": 1.0
+    },
+    {
+      "name": "anim_offset_random",
+      "kind": 0,
+      "value": 1.0
+    }
+  ],
+  "particle_ramp": [
+    [
+      0.7190080285072327,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "material": [
+    0,
+    0,
+    2,
+    1,
+    1
+  ],
+  "pending": [
+    "CPUParticles2D emission/clock/RNG/render backend required before body_entered"
+  ],
+  "source_exited_guard": "if !_current_dandelion: null queue_free error; an existing plant remains"
+}

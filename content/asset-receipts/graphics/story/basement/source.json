@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "27d70eec4d6823e8118f6b24192b5ae3637561bc752f8bcdecc70f019e90cd8d",
+  "producer_sha256": "ae23161af611d63881b432a37f0e42df5c3b44854a0da9bd35212d2d145cc77b",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/story/basement/ninten-cutscene.t3x": {
+      "bytes": 1048597,
+      "sha256": "a0c5a329b27aad8642cee4cbe7b95602e7fa9c9f0dc75de34bbf040b0bd72134",
+      "size": [
+        512,
+        448
+      ]
+    },
+    "graphics/story/basement/briefcase.t3x": {
+      "bytes": 16405,
+      "sha256": "6c9d1fa484bd03a59ed9940e6bb22b7224ebe914b5e6b121a17ad76b1194c771",
+      "size": [
+        120,
+        30
+      ]
+    }
+  }
+}

@@ -11,6 +11,7 @@ EXTENSIONS = {
         '.enclocale', '.encmigration', '.encnewgame', '.encphone',
         '.encprompts', '.encresources', '.encrestore', '.encroom', '.encround',
         '.encsavemenu', '.encsession', '.encsettings', '.enctitlelocale',
+        '.encbasement', '.encbasmanim', '.encsparkles', '.encpsi',
     },
 }
 

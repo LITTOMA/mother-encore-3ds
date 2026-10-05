@@ -25,6 +25,8 @@ struct NativeSessionStoragePolicy {
 };
 struct NativeSessionConsumable {std::string item_id;uint32_t max_doses=0;};
 struct NativeSessionStatusPolicy {std::string id;bool passive_healing=false;int64_t default_saved_turns=0;};
+struct NativeSessionKeyPolicy {std::string item_id,flag_id;uint32_t doses=0,max_count=0;bool required=false;};
+struct NativeSessionSkillPolicy {std::string character_id,skill_id,flag_id;};
 class NativeSessionData {
 public:
     bool load(const uint8_t*,size_t,std::string&);
@@ -53,6 +55,9 @@ public:
     const std::vector<NativeSessionStoragePolicy>& storage_policies()const{return storage_policies_;}
     const std::vector<NativeSessionConsumable>& consumables()const{return consumables_;}
     const std::vector<NativeSessionStatusPolicy>& status_policies()const{return status_policies_;}
+    const std::vector<NativeSessionKeyPolicy>&key_policies()const{return key_policies_;}
+    const std::vector<NativeSessionSkillPolicy>&skill_policies()const{return skill_policies_;}
+    const std::vector<std::string>&skill_order()const{return skill_order_;}
 private:
     std::vector<double> text_speeds_;
     std::vector<std::string> menu_flavors_,button_prompts_;
@@ -68,6 +73,8 @@ private:
     uint32_t storage_capacity_=0;std::vector<NativeSessionStoragePolicy>storage_policies_;
     std::vector<NativeSessionConsumable>consumables_;
     std::vector<NativeSessionStatusPolicy>status_policies_;
+    std::vector<NativeSessionKeyPolicy>key_policies_;
+    std::vector<NativeSessionSkillPolicy>skill_policies_;std::vector<std::string>skill_order_;
 };
 
 struct NativeSnapshotInput {

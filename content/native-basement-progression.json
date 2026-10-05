@@ -1,0 +1,3538 @@
+{
+  "schema": 1,
+  "kind": "encore.basement-progression.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original Mick scratch/Telepathy key chain, kept basement key, diary present and full source dream/learn-LIFEUP graph; no generic VM",
+  "sources": {
+    "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+    "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
+    "Audio/Sound effects/Item Received.mp3.import": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+    "Audio/Sound effects/M3/Dog_whining.wav": "e472611c9399ef97d628f31f2bd81dd5cc8ba4ede703ac117c15e985128b7c17",
+    "Audio/Sound effects/M3/Dog_whining.wav.import": "4c3f61c94e830a5014f1d95096bbfe7d90b8eed09a59de0c91625e0e3debd08e",
+    "Audio/Sound effects/M3/Learned PSI.wav": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04",
+    "Audio/Sound effects/M3/Learned PSI.wav.import": "b7c2531943d39eef28e9d75af3adc510e974bc87e9e503d562cbf654e746de88",
+    "Audio/Sound effects/M3/Woof Woof!.wav": "d68a7b6acc856d591bbaa5e2304f2850adb8ed04f77f4d3cae99605b8bd8ff24",
+    "Audio/Sound effects/M3/Woof Woof!.wav.import": "52c407a76899b15653559e9c33b65cdf0486e72806fe7cbef3fd25351f284d57",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Female.mp3.import": "d82f217dff6f00a7bb65119d02459901999c3ea9a386e91ea37f20b0a2429d7c",
+    "Data/Animations/NintenCutscene.yaml": "5c58c8034f23d8d2d485aaf40efa2dc584962916170db8e42f6281aafb25e2e8",
+    "Data/BattleSkills/lifeUpA.yaml": "9a2196d71255d94998502717254bbb569cb91bb2fb5edec053c15c1b2c1a73d3",
+    "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
+    "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml": "a8e7fd1e2ab459b1aee7edc72ca503e488af8c85c7223178860d5fe996dab9f8",
+    "Data/Dialogue/Podunk/woof.yaml": "bf72427cbb9aaec8f137adc01abecf05a152d9b2259e610ab0e2a80bbee4e7fd",
+    "Data/Dialogue/Podunk/woof_deal.yaml": "0e92387cbb42d0c7d72744e0e33b7ad6fb563a49866398399a324a494312d227",
+    "Data/Dialogue/Podunk/woof_food.yaml": "624ae86db6d352709245f815de6fc5975044b5c3c63255b9d1e04096a3207412",
+    "Data/Dialogue/Podunk/woof_key.yaml": "dbef94b23ad95e5f549cba9507f6b5bd27d09a951824760b3a088e4101aff7a7",
+    "Data/Dialogue/Podunk/woof_secret.yaml": "55b1de9a3aa188caff50d43fdf1eb94702d6ffa4e2f3249afcb4a5aaa686d03a",
+    "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
+    "Data/Dialogue/Reusable/lockopened.yaml": "ed10dc7cda371e34202cd8fddbe84365b3f494e14f6e6b9d303c4c5d6d697930",
+    "Data/FieldSkills/telepathy.yaml": "1529b8c0631d697377eb293e107b37068c03ba8588fdd254b37e33bc22559230",
+    "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+    "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+    "Translations/TranslatedText/dialogue_ItemDialogue - sheet.csv": "af2de174e5c3c6375ee1fb0aeea018660998d76e8825d6f0acb986faa179dce1",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+    "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e"
+  },
+  "key_items": [
+    {
+      "id": 1,
+      "source": "KeyBasement",
+      "doses": 1,
+      "grant": true,
+      "name_key": "KEYBASEMENT_NAME",
+      "names": {
+        "en": "Basement Key",
+        "zh_Hans_CN": "地下室钥匙"
+      },
+      "article_key": "KEYBASEMENT_ART",
+      "articles": {
+        "en": "The ,the ,The ,the ,this ,it,was",
+        "zh_Hans_CN": ",,,,这个,它,是"
+      }
+    },
+    {
+      "id": 2,
+      "source": "GGFDiary",
+      "doses": 1,
+      "grant": true,
+      "name_key": "GGFDIARY_NAME",
+      "names": {
+        "en": "GGF Diary",
+        "zh_Hans_CN": "曾祖父的日记"
+      },
+      "article_key": "GGFDIARY_ART",
+      "articles": {
+        "en": "His ,his ,His ,his ,this ,it,was",
+        "zh_Hans_CN": "他的,他的,他的,他的,这个,它,是"
+      }
+    },
+    {
+      "id": 3,
+      "source": "CashCard",
+      "doses": 1,
+      "grant": false,
+      "name_key": "CASHCARD_NAME",
+      "names": {
+        "en": "Cash Card",
+        "zh_Hans_CN": "金融卡"
+      },
+      "article_key": "CASHCARD_ART",
+      "articles": {
+        "en": "The ,the ,The ,the ,this ,it,was",
+        "zh_Hans_CN": ",,,,这个,它,是"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "character": "ninten",
+      "skill": "lifeUpA",
+      "sort_rank": 55
+    }
+  ],
+  "skill_order": [
+    "courage",
+    "pepTalk",
+    "strike",
+    "curveball",
+    "battingAThousand",
+    "homerun",
+    "bunt",
+    "return",
+    "splitShot",
+    "ricochet",
+    "ballFlame",
+    "ballPoison",
+    "ballWeb",
+    "ballMeteor",
+    "spy",
+    "copyCamera",
+    "stickyMachine",
+    "flameThrower",
+    "hpSucker",
+    "bellGun",
+    "psiCounterUnit",
+    "defenseShower",
+    "shieldKiller",
+    "heavyBazooka",
+    "pray",
+    "meditate",
+    "revenge",
+    "powerSmash",
+    "deadlyBlow",
+    "flex",
+    "toughen",
+    "swearWords",
+    "wordsOfLove",
+    "smoke",
+    "telepathy",
+    "teleportA",
+    "teleportO",
+    "pkFireA",
+    "pkFireB",
+    "pkFireG",
+    "pkFireO",
+    "pkFreezeA",
+    "pkFreezeB",
+    "pkFreezeG",
+    "pkFreezeO",
+    "pkThunderA",
+    "pkThunderB",
+    "pkThunderG",
+    "pkThunderO",
+    "pkBeamA",
+    "pkBeamB",
+    "pkBeamG",
+    "pkBeamO",
+    "pkFlashA",
+    "pkFlashO",
+    "lifeUpA",
+    "lifeUpB",
+    "lifeUpG",
+    "lifeUpO",
+    "healingA",
+    "healingB",
+    "healingG",
+    "healingO",
+    "psiMagnetA",
+    "psiMagnetO",
+    "shieldA",
+    "shieldO",
+    "counterA",
+    "counterO",
+    "psiShieldA",
+    "psiShieldO",
+    "psiCounterA",
+    "psiCounterO",
+    "offenseUpA",
+    "offenseUpO",
+    "offenseDownA",
+    "offenseDownO",
+    "defenseUpA",
+    "defenseUpO",
+    "defenseDownA",
+    "defenseDownO",
+    "speedUpA",
+    "speedUpO",
+    "speedDownA",
+    "speedDownO",
+    "hypnosisA",
+    "hypnosisO",
+    "darknessA",
+    "darknessO",
+    "brainshockA",
+    "brainshockO",
+    "paralysisA",
+    "paralysisO",
+    "shieldOff",
+    "psiBlock",
+    "4thDSlip"
+  ],
+  "mick": {
+    "scene": "Maps/podunk/podunk.tscn",
+    "node": "Objects/NPCS/npc21",
+    "telepathy_skill": "telepathy",
+    "overrides": [
+      {
+        "thoughts": false,
+        "flag": "",
+        "program": "Podunk/woof",
+        "supported": true
+      },
+      {
+        "thoughts": false,
+        "flag": "mick_scratch",
+        "program": "Podunk/woof_secret",
+        "supported": true
+      },
+      {
+        "thoughts": false,
+        "flag": "mick_telepathy",
+        "program": "Podunk/woof_deal",
+        "supported": true
+      },
+      {
+        "thoughts": false,
+        "flag": "got_dog_treats",
+        "program": "Podunk/woof_treats",
+        "supported": false
+      },
+      {
+        "thoughts": false,
+        "flag": "gave_treats",
+        "program": "Podunk/woof_animals",
+        "supported": false
+      },
+      {
+        "thoughts": true,
+        "flag": "",
+        "program": "Podunk/woof_food",
+        "supported": true
+      },
+      {
+        "thoughts": true,
+        "flag": "mick_scratch",
+        "program": "Podunk/woof_key",
+        "supported": true
+      },
+      {
+        "thoughts": true,
+        "flag": "mick_telepathy",
+        "program": "Podunk/woof_food",
+        "supported": true
+      }
+    ]
+  },
+  "door": {
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "node": "Below/Openable Door3",
+    "key_id": 1,
+    "flag": "ninten_basement_door",
+    "remove_key": false,
+    "opened": "Reusable/lockopened",
+    "locked": "Reusable/locklocked"
+  },
+  "present": {
+    "stable_id": 1976823761,
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "node": "Objects/Present1",
+    "key_id": 2,
+    "flag": "got_diary",
+    "dialogue": "Podunk/cutscenes/ggf_diary",
+    "empty": "ItemDialogue/presentempty",
+    "position": [
+      128,
+      1016
+    ],
+    "interaction_scale": [
+      1.5,
+      1.5
+    ],
+    "closed_frame": 0,
+    "opened_frame": 4,
+    "interaction": [
+      127.9999992847445,
+      1016.0000007152555,
+      24.0,
+      24.0
+    ],
+    "policy": {
+      "emit_flag_updated_signal": false,
+      "is_object_flag": false,
+      "reset_when_leaving_area": false,
+      "reset_when_leaving_region": false,
+      "can_pickup": true,
+      "player_turn": 3
+    }
+  },
+  "diary_animations": {
+    "NintenDiarySleep": {
+      "directions": [
+        [
+          0,
+          [
+            16,
+            0.083
+          ],
+          [
+            17,
+            0.083
+          ],
+          [
+            18,
+            0.083
+          ],
+          [
+            19,
+            0.083
+          ],
+          [
+            20,
+            0.083
+          ],
+          [
+            21,
+            0.498
+          ],
+          [
+            22,
+            0.083
+          ],
+          [
+            23,
+            0.083
+          ],
+          [
+            24,
+            0.083
+          ],
+          [
+            25,
+            0.083
+          ],
+          [
+            26,
+            0.581
+          ],
+          [
+            27,
+            0.083
+          ],
+          [
+            28,
+            0.083
+          ],
+          [
+            29,
+            0.083
+          ],
+          [
+            30,
+            0.083
+          ],
+          [
+            31,
+            0.415
+          ],
+          [
+            32,
+            0.083
+          ],
+          [
+            33,
+            0.083
+          ],
+          [
+            34,
+            0.083
+          ],
+          [
+            35,
+            0.498
+          ],
+          [
+            36,
+            0.083
+          ],
+          [
+            37,
+            0.083
+          ],
+          [
+            38,
+            0.083
+          ],
+          [
+            39,
+            0.083
+          ],
+          [
+            40,
+            0.083
+          ],
+          [
+            41,
+            0.083
+          ],
+          [
+            42,
+            0.083
+          ],
+          [
+            43,
+            0.083
+          ],
+          [
+            44,
+            0.498
+          ],
+          [
+            45,
+            0.166
+          ],
+          [
+            46,
+            0.083
+          ],
+          [
+            47,
+            0.083
+          ],
+          [
+            48,
+            0.083
+          ],
+          [
+            49,
+            0.083
+          ],
+          [
+            50,
+            0.083
+          ]
+        ]
+      ],
+      "type": 1
+    },
+    "NintenDiaryWakeUp": {
+      "directions": [
+        [
+          0,
+          [
+            51,
+            0.083
+          ],
+          [
+            52,
+            0.166
+          ],
+          [
+            53,
+            0.581
+          ],
+          [
+            54,
+            0.083
+          ],
+          [
+            55,
+            0.083
+          ],
+          [
+            56,
+            0.083
+          ],
+          [
+            57,
+            0.083
+          ],
+          [
+            58,
+            0.083
+          ],
+          [
+            59,
+            0.415
+          ],
+          [
+            60,
+            0.083
+          ],
+          [
+            61,
+            0.083
+          ],
+          [
+            62,
+            0.083
+          ],
+          [
+            63,
+            0.083
+          ],
+          [
+            64,
+            0.083
+          ],
+          [
+            65,
+            0.166
+          ],
+          [
+            66,
+            0.083
+          ],
+          [
+            67,
+            0.083
+          ],
+          [
+            68,
+            0.1
+          ]
+        ]
+      ],
+      "type": 1
+    }
+  },
+  "white_fade": {
+    "length": 4.41667,
+    "rect": [
+      -64.0,
+      920.0,
+      384.0,
+      224.0
+    ],
+    "keys": [
+      {
+        "time": 0.0,
+        "color": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "time": 3.41667,
+        "color": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "time": 3.66667,
+        "color": [
+          1.0,
+          1.0,
+          1.0,
+          0.156863
+        ]
+      },
+      {
+        "time": 4.16667,
+        "color": [
+          1.0,
+          1.0,
+          1.0,
+          0.156863
+        ]
+      },
+      {
+        "time": 4.41667,
+        "color": [
+          1.0,
+          1.0,
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "hint_color": "ea8b2c",
+  "music": {
+    "schema": 1,
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "sources": {
+      "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+      "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
+      "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+      "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+      "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+      "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+      "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+    },
+    "silence_db": -80.0,
+    "fade_to_seconds": 1.0,
+    "default_stop_seconds": 1.5,
+    "geometry": [
+      129.341,
+      1014.8720000000001,
+      198.659,
+      129.128
+    ],
+    "region": {
+      "id": 2230225359,
+      "source_path": "MusicArea2",
+      "track_id": 34,
+      "volume_db": -5,
+      "fadein_seconds": 1,
+      "fadeout_seconds": 1.5,
+      "appear_flag": "doll_melody",
+      "disappear_flag": "good_morning",
+      "disabled": false,
+      "shape_paths": [
+        "MusicArea2/CollisionShape2D"
+      ]
+    },
+    "additional_regions": [
+      {
+        "region": {
+          "id": 1604477191,
+          "source_path": "MusicArea",
+          "track_id": 34,
+          "volume_db": 0,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "doll_melody",
+          "disappear_flag": "good_morning",
+          "disabled": false,
+          "shape_paths": [
+            "MusicArea/CollisionShape2D"
+          ]
+        },
+        "geometry": [
+          283.99969999999996,
+          416.0,
+          356.0,
+          456.0
+        ],
+        "track": {
+          "stable_id": 34,
+          "source_path": "res://Audio/Music/House.mp3",
+          "source_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+          "import_sha256": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a"
+        },
+        "parent_disappear_flag": "",
+        "source_ordinal": 32514
+      },
+      {
+        "region": {
+          "id": 4092180825,
+          "source_path": "MusicArea3",
+          "track_id": 1806,
+          "volume_db": 0,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "good_morning",
+          "disappear_flag": "",
+          "disabled": false,
+          "shape_paths": [
+            "MusicArea3/CollisionShape2D"
+          ]
+        },
+        "geometry": [
+          283.99969999999996,
+          560.0,
+          356.0,
+          600.0
+        ],
+        "track": {
+          "stable_id": 1806,
+          "source_path": "res://Audio/Music/Good_Morning.mp3",
+          "source_sha256": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+          "import_sha256": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3"
+        },
+        "parent_disappear_flag": "",
+        "source_ordinal": 33200
+      },
+      {
+        "region": {
+          "id": 125807119,
+          "source_path": "Poltergeist/MusicArea",
+          "track_id": 21,
+          "volume_db": 0,
+          "fadein_seconds": 1,
+          "fadeout_seconds": 1.5,
+          "appear_flag": "poltergeist",
+          "disappear_flag": "doll_defeated",
+          "disabled": false,
+          "shape_paths": [
+            "Poltergeist/MusicArea/CollisionShape2D"
+          ]
+        },
+        "geometry": [
+          283.99969999999996,
+          416.0,
+          356.0,
+          456.0
+        ],
+        "track": {
+          "stable_id": 21,
+          "source_path": "res://Audio/Music/Poltergeist.ogg",
+          "source_sha256": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+          "import_sha256": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8"
+        },
+        "parent_disappear_flag": "doll_melody",
+        "source_ordinal": 35710
+      }
+    ],
+    "track": {
+      "stable_id": 34,
+      "source_path": "res://Audio/Music/House.mp3",
+      "source_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+      "import_sha256": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a"
+    },
+    "parent_disappear_flag": "",
+    "source_ordinal": 32851
+  },
+  "texts": [
+    {
+      "id": 70,
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "label": "0",
+      "key": "DIALOGUE_PODUNK_WOOF_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "Woof woof!"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Grrr, my butt is so itchy!)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Stop standing there and lend me a hand!)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "汪汪！"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（呃——，我的屁股好痒啊！）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（别光站在那儿，快帮我一把！）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 71,
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "label": "3",
+      "key": "DIALOGUE_PODUNK_WOOF_3",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": " gave Mick a good scratch!"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "给米克好好挠了挠痒！"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 72,
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "label": "4",
+      "key": "DIALOGUE_PODUNK_WOOF_4",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Ahhh, many thanks.)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Wait a minute, you can understand me?)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(You must have learned "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "Telepathy"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "!)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(That's great and all, but don't you dare use it on me by pressing "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_select"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": " and selecting it within the "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "PSI menu"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": ".)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（啊啊啊，感激不尽。）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（等一下，你能听懂我说话？）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（你一定是学会了"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "心灵感应"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "吧！）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（那倒是挺厉害的，不过你可别通过按"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_select"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "并在"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "PSI菜单"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "里选择它来对我使用哦。）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 73,
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "label": "8",
+      "key": "DIALOGUE_PODUNK_WOOF_8",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(And don't even think of using it by simply holding down "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_toggle"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": " and pressing "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_accept"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": ".)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（而且，按住"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_toggle"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "后再按下"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_accept"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "来使用这个能力的念头更是想都别想。）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 74,
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "label": "9",
+      "key": "DIALOGUE_PODUNK_WOOF_9",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "Whimper..."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "呜呜…"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 75,
+      "source": "Data/Dialogue/Podunk/woof_secret.yaml",
+      "label": "0",
+      "key": "DIALOGUE_PODUNK_WOOF_SECRET_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SECRET_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "Woof woof!"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Don't you dare use "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "Telepathy"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": " on me by pressing "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_select"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": " and selecting it within the "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "PSI menu"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": ".)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(And don't even think of using it by simply holding down "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_toggle"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": " and pressing "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_accept"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": ".)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "汪汪！"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（你可别通过按"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_select"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "并在"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "PSI菜单"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "里选择它来对我使用"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "心灵感应"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "哦。）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（而且，按住"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_toggle"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "后再按下"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_accept"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "来使用这个能力的念头更是想都别想。）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 76,
+      "source": "Data/Dialogue/Podunk/woof_food.yaml",
+      "label": "0",
+      "key": "DIALOGUE_PODUNK_WOOF_FOOD_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_FOOD_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(I hope they make more "
+              },
+              {
+                "kind": "FavoriteFood"
+              },
+              {
+                "kind": "Literal",
+                "text": "...)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（希望他们能再多做些美味的"
+              },
+              {
+                "kind": "FavoriteFood"
+              },
+              {
+                "kind": "Literal",
+                "text": "…）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 77,
+      "source": "Data/Dialogue/Podunk/woof_deal.yaml",
+      "label": "0",
+      "key": "DIALOGUE_PODUNK_WOOF_DEAL_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_DEAL_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(I can smell some Dog Treats in the basement.)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(If you fetch them for me, I'll let you go.)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（我闻到地下室里有一些狗狗零食的味道。）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（你要是帮我把它们拿来，我就放你过去哦。）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 78,
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "label": "0",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(I hope they haven't found out I ate all of the "
+              },
+              {
+                "kind": "FavoriteFood"
+              },
+              {
+                "kind": "Literal",
+                "text": "...)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Hey, are you reading my thoughts?)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Cut it out! That's an invasion of privacy!)"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(Take this and forget what you just heard.)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（但愿他们没发现是我把所有的"
+              },
+              {
+                "kind": "FavoriteFood"
+              },
+              {
+                "kind": "Literal",
+                "text": "给吃光了…）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（嘿，你是在读取我的想法吗？）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（快停下！有点边界感好吗！）"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（给你这个，把你刚才听到的忘掉。）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 79,
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "label": "4",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_4",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "You got the Basement Key."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "你获得了地下室钥匙。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 80,
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "label": "5",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_5",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(I can smell some Dog Treats in the basement.)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（我闻到地下室里有一些狗狗零食的味道。）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 81,
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "label": "6",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_6",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "speakers": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "(If you fetch them for me, I'll let you go.)"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "（你要是帮我把它们拿来，我就放你过去哦。）"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 82,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "0",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_0",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": " opened the present."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "拆开了礼物盒。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 83,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_1",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": " got his "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "Great Grand-Father's Diary"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "!"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "获得了"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "曾祖父的日记"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "！"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 84,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "4",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_4",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "speakers": {
+        "en": "???",
+        "zh_Hans_CN": "？？？"
+      },
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "... Please... come find me..."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "…请你…找到我…"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 85,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "5",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_5",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "speakers": {
+        "en": "???",
+        "zh_Hans_CN": "？？？"
+      },
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "Seek the "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "shell in the cave"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "..."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "如果你要寻求真相…"
+              }
+            ]
+          },
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "就听从指引，找到"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "山洞里的海螺"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "…"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 86,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "6",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_6",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "speakers": {
+        "en": "???",
+        "zh_Hans_CN": "？？？"
+      },
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "Do so, and the wisdom of the world shall be unveiled..."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "这样做的话，世间智慧便会展露无遗…"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 87,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "8",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_8",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "Something awoke inside "
+              },
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "!"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "某种力量在"
+              },
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "体内苏醒了！"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 88,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "9",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_9",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": " learned Lifeup!"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "学会了生命回复！"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 89,
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "label": "10",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_10",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "Press "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_select"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": " and open your "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "PSI"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": " menu to use "
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "Lifeup."
+              },
+              {
+                "kind": "HintEnd"
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "按下"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "InputAction",
+                "action": "ui_select"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "打开你的"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "PSI"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "菜单，即可使用"
+              },
+              {
+                "kind": "HintStart"
+              },
+              {
+                "kind": "Literal",
+                "text": "生命回复"
+              },
+              {
+                "kind": "HintEnd"
+              },
+              {
+                "kind": "Literal",
+                "text": "。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 90,
+      "source": "Data/Dialogue/Reusable/lockopened.yaml",
+      "label": "0",
+      "key": "DIALOGUE_REUSABLE_LOCKOPENED_0",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": " used "
+              },
+              {
+                "kind": "CurrentItemArticle1"
+              },
+              {
+                "kind": "CurrentItemName"
+              },
+              {
+                "kind": "Literal",
+                "text": "."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "PlayerName"
+              },
+              {
+                "kind": "Literal",
+                "text": "使用了"
+              },
+              {
+                "kind": "CurrentItemArticle1"
+              },
+              {
+                "kind": "CurrentItemName"
+              },
+              {
+                "kind": "Literal",
+                "text": "。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 91,
+      "source": "Data/Dialogue/Reusable/locklocked.yaml",
+      "label": "0",
+      "key": "DIALOGUE_REUSABLE_LOCKLOCKED_0",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "It's locked."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "锁住了。"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 92,
+      "source": "Data/Dialogue/ItemDialogue/presentempty.yaml",
+      "label": "0",
+      "key": "DIALOGUE_ITEMDIALOGUE_PRESENTEMPTY_0",
+      "speaker_key": "",
+      "speakers": {
+        "en": "",
+        "zh_Hans_CN": ""
+      },
+      "voice": "",
+      "segments": {
+        "en": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "It's empty..."
+              }
+            ]
+          }
+        ],
+        "zh_Hans_CN": [
+          {
+            "bullet": true,
+            "tokens": [
+              {
+                "kind": "Literal",
+                "text": "是空的…"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "programs": [
+    {
+      "identity": "Podunk/woof",
+      "document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_0",
+          "options": {
+            "DIALOGUE_PODUNK_WOOF_2-OPT_0": "3",
+            "DIALOGUE_PODUNK_WOOF_2-OPT_1": "9",
+            "cancel": "9"
+          },
+          "soundeffect": "M3/Woof Woof!.wav"
+        },
+        "3": {
+          "text": "DIALOGUE_PODUNK_WOOF_3",
+          "goto": "4"
+        },
+        "4": {
+          "name": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_4",
+          "goto": "8"
+        },
+        "8": {
+          "name": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_8",
+          "setflags": "mick_scratch"
+        },
+        "9": {
+          "name": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_9",
+          "soundeffect": "M3/Dog_whining.wav"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 70,
+          "flags": 1
+        },
+        {
+          "kind": "PlaySound",
+          "phrase": 0,
+          "label": "0",
+          "sound_source": "Audio/Sound effects/M3/Woof Woof!.wav"
+        },
+        {
+          "kind": "AwaitChoices",
+          "phrase": 0,
+          "label": "0",
+          "group": "Podunk/woof::0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "label": "3",
+          "text_id": 71,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "label": "3",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 1,
+          "label": "3",
+          "target_label": "4",
+          "target_pc": 7
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 2,
+          "label": "4",
+          "text_id": 72,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 2,
+          "label": "4",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 2,
+          "label": "4",
+          "target_label": "8",
+          "target_pc": 10
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 3,
+          "label": "8",
+          "text_id": 73,
+          "flags": 1
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 3,
+          "label": "8",
+          "flag_id": "mick_scratch",
+          "value": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 3,
+          "label": "8",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 3,
+          "label": "8",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 3,
+          "label": "8"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 3,
+          "label": "8"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 3,
+          "label": "8",
+          "duration": 0.5
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 4,
+          "label": "9",
+          "text_id": 74,
+          "flags": 1
+        },
+        {
+          "kind": "PlaySound",
+          "phrase": 4,
+          "label": "9",
+          "sound_source": "Audio/Sound effects/M3/Dog_whining.wav"
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 4,
+          "label": "9",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 4,
+          "label": "9",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 4,
+          "label": "9"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 4,
+          "label": "9"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 4,
+          "label": "9",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1,
+        "3": 4,
+        "4": 7,
+        "8": 10,
+        "9": 17
+      }
+    },
+    {
+      "identity": "Podunk/woof_secret",
+      "document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_WOOF_SECRET_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_SECRET_0",
+          "soundeffect": "M3/Woof Woof!.wav"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 75,
+          "flags": 1
+        },
+        {
+          "kind": "PlaySound",
+          "phrase": 0,
+          "label": "0",
+          "sound_source": "Audio/Sound effects/M3/Woof Woof!.wav"
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "label": "0",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "label": "0",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1
+      }
+    },
+    {
+      "identity": "Podunk/woof_food",
+      "document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_WOOF_FOOD_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_FOOD_0"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 76,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "label": "0",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "label": "0",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1
+      }
+    },
+    {
+      "identity": "Podunk/woof_deal",
+      "document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_WOOF_DEAL_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_DEAL_0"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 77,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "label": "0",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "label": "0",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1
+      }
+    },
+    {
+      "identity": "Podunk/woof_key",
+      "document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_KEY_0",
+          "goto": "4"
+        },
+        "4": {
+          "text": "DIALOGUE_PODUNK_WOOF_KEY_4",
+          "item": "KeyBasement",
+          "soundeffect": "Item Received.mp3",
+          "goto": "5"
+        },
+        "5": {
+          "name": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_KEY_5",
+          "goto": "6"
+        },
+        "6": {
+          "name": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+          "text": "DIALOGUE_PODUNK_WOOF_KEY_6",
+          "setflags": "mick_telepathy"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 78,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 0,
+          "label": "0",
+          "target_label": "4",
+          "target_pc": 4
+        },
+        {
+          "kind": "GrantKeyItem",
+          "phrase": 1,
+          "label": "4",
+          "key_id": 1
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "label": "4",
+          "text_id": 79,
+          "flags": 1
+        },
+        {
+          "kind": "PlaySound",
+          "phrase": 1,
+          "label": "4",
+          "sound_source": "Audio/Sound effects/Item Received.mp3"
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "label": "4",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 1,
+          "label": "4",
+          "target_label": "5",
+          "target_pc": 9
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 2,
+          "label": "5",
+          "text_id": 80,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 2,
+          "label": "5",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 2,
+          "label": "5",
+          "target_label": "6",
+          "target_pc": 12
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 3,
+          "label": "6",
+          "text_id": 81,
+          "flags": 1
+        },
+        {
+          "kind": "SetFlag",
+          "phrase": 3,
+          "label": "6",
+          "flag_id": "mick_telepathy",
+          "value": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 3,
+          "label": "6",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 3,
+          "label": "6",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 3,
+          "label": "6"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 3,
+          "label": "6"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 3,
+          "label": "6",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1,
+        "4": 4,
+        "5": 9,
+        "6": 12
+      }
+    },
+    {
+      "identity": "Podunk/cutscenes/ggf_diary",
+      "document": {
+        "0": {
+          "actors": {
+            "ninten": "ninten"
+          },
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_0",
+          "goto": "1"
+        },
+        "1": {
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_1",
+          "soundeffect": "Item Received.mp3",
+          "goto": "2"
+        },
+        "2": {
+          "showbox": false,
+          "actorsmove": {
+            "ninten": {
+              "movement": [
+                {
+                  "x": 128,
+                  "y": 1040
+                }
+              ],
+              "speed": 32,
+              "animation": "Walk",
+              "type": "position"
+            }
+          },
+          "actorsturn": {
+            "ninten": {
+              "x": 0,
+              "y": 1,
+              "queue": true
+            }
+          },
+          "wait": 1,
+          "autoadvance": true,
+          "caninput": false,
+          "goto": "3"
+        },
+        "3": {
+          "changecam": "ninten",
+          "returncam": 0.01,
+          "objectsfunction": {
+            "AnimationPlayer": "play_anim",
+            "MusicArea2": "stop_music"
+          },
+          "wait": 7,
+          "autoadvance": true,
+          "caninput": false,
+          "goto": "4",
+          "actorsanim": {
+            "ninten": {
+              "type": 1,
+              "anim": "NintenDiarySleep"
+            }
+          }
+        },
+        "4": {
+          "name": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+          "sound": "Female",
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_4",
+          "objectsfunction": {
+            "melodyBG": "appear"
+          },
+          "wait": 2,
+          "goto": "5"
+        },
+        "5": {
+          "name": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+          "sound": "Female",
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_5",
+          "wait": 2,
+          "goto": "6"
+        },
+        "6": {
+          "name": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+          "sound": "Female",
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_6",
+          "wait": 2,
+          "goto": "7"
+        },
+        "7": {
+          "showbox": false,
+          "wait": 3,
+          "autoadvance": true,
+          "caninput": false,
+          "goto": "8",
+          "actorsanim": {
+            "ninten": {
+              "type": 1,
+              "anim": "NintenDiaryWakeUp"
+            }
+          }
+        },
+        "8": {
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_8",
+          "goto": "9"
+        },
+        "9": {
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_9",
+          "soundeffect": "M3/Learned PSI.wav",
+          "objectsfunction": {
+            "MusicArea2": "play_music",
+            "melodyBG": "disappear"
+          },
+          "wait": 0.6,
+          "goto": "10",
+          "learnskills": {
+            "ninten": "lifeUpA"
+          }
+        },
+        "10": {
+          "text": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_10"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 82,
+          "flags": 1
+        },
+        {
+          "kind": "BindActor",
+          "phrase": 0,
+          "label": "0",
+          "actor_source": "ninten"
+        },
+        {
+          "kind": "ActorPersistent",
+          "phrase": 0,
+          "label": "0",
+          "actor_source": "ninten"
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 0,
+          "label": "0",
+          "target_label": "1",
+          "target_pc": 7
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 1,
+          "label": "1",
+          "text_id": 83,
+          "flags": 1
+        },
+        {
+          "kind": "PlaySound",
+          "phrase": 1,
+          "label": "1",
+          "sound_source": "Audio/Sound effects/Item Received.mp3"
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 1,
+          "label": "1",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 1,
+          "label": "1",
+          "target_label": "2",
+          "target_pc": 11
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 2,
+          "label": "2",
+          "duration": 1
+        },
+        {
+          "kind": "HideDialogue",
+          "phrase": 2,
+          "label": "2",
+          "flags": 1
+        },
+        {
+          "kind": "MoveActor",
+          "phrase": 2,
+          "label": "2",
+          "actor_source": "ninten",
+          "position": [
+            128,
+            1040
+          ],
+          "speed": 32,
+          "animation": "Walk"
+        },
+        {
+          "kind": "TurnActor",
+          "phrase": 2,
+          "label": "2",
+          "actor_source": "ninten",
+          "direction": [
+            0,
+            1
+          ],
+          "queue": true,
+          "duration": 0.2
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 2,
+          "label": "2"
+        },
+        {
+          "kind": "Jump",
+          "phrase": 2,
+          "label": "2",
+          "target_label": "3",
+          "target_pc": 17
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 3,
+          "label": "3",
+          "duration": 7
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "phrase": 3,
+          "label": "3",
+          "object_source": "AnimationPlayer",
+          "method": "play_anim"
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "phrase": 3,
+          "label": "3",
+          "object_source": "MusicArea2",
+          "method": "stop_music"
+        },
+        {
+          "kind": "AnimateSpecialActor",
+          "phrase": 3,
+          "label": "3",
+          "actor_source": "ninten",
+          "animation_source": "NintenDiarySleep",
+          "animation_id": 1
+        },
+        {
+          "kind": "ChangeCamera",
+          "phrase": 3,
+          "label": "3",
+          "actor_source": "ninten"
+        },
+        {
+          "kind": "YieldIdle",
+          "phrase": 3,
+          "label": "3"
+        },
+        {
+          "kind": "ReturnCamera",
+          "phrase": 3,
+          "label": "3",
+          "duration": 0.01
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 3,
+          "label": "3"
+        },
+        {
+          "kind": "Jump",
+          "phrase": 3,
+          "label": "3",
+          "target_label": "4",
+          "target_pc": 26
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 4,
+          "label": "4",
+          "text_id": 84,
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 4,
+          "label": "4",
+          "duration": 2
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "phrase": 4,
+          "label": "4",
+          "object_source": "melodyBG",
+          "method": "appear"
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 4,
+          "label": "4",
+          "flags": 1
+        },
+        {
+          "kind": "Jump",
+          "phrase": 4,
+          "label": "4",
+          "target_label": "5",
+          "target_pc": 31
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 5,
+          "label": "5",
+          "text_id": 85,
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 5,
+          "label": "5",
+          "duration": 2
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 5,
+          "label": "5",
+          "flags": 1
+        },
+        {
+          "kind": "Jump",
+          "phrase": 5,
+          "label": "5",
+          "target_label": "6",
+          "target_pc": 35
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 6,
+          "label": "6",
+          "text_id": 86,
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 6,
+          "label": "6",
+          "duration": 2
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 6,
+          "label": "6",
+          "flags": 1
+        },
+        {
+          "kind": "Jump",
+          "phrase": 6,
+          "label": "6",
+          "target_label": "7",
+          "target_pc": 39
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 7,
+          "label": "7",
+          "duration": 3
+        },
+        {
+          "kind": "HideDialogue",
+          "phrase": 7,
+          "label": "7",
+          "flags": 1
+        },
+        {
+          "kind": "AnimateSpecialActor",
+          "phrase": 7,
+          "label": "7",
+          "actor_source": "ninten",
+          "animation_source": "NintenDiaryWakeUp",
+          "animation_id": 2
+        },
+        {
+          "kind": "AwaitTimer",
+          "phrase": 7,
+          "label": "7"
+        },
+        {
+          "kind": "Jump",
+          "phrase": 7,
+          "label": "7",
+          "target_label": "8",
+          "target_pc": 44
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 8,
+          "label": "8",
+          "text_id": 87,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 8,
+          "label": "8",
+          "flags": 0
+        },
+        {
+          "kind": "Jump",
+          "phrase": 8,
+          "label": "8",
+          "target_label": "9",
+          "target_pc": 47
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 9,
+          "label": "9",
+          "text_id": 88,
+          "flags": 1
+        },
+        {
+          "kind": "StartWait",
+          "phrase": 9,
+          "label": "9",
+          "duration": 0.6
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "phrase": 9,
+          "label": "9",
+          "object_source": "MusicArea2",
+          "method": "play_music"
+        },
+        {
+          "kind": "CallObjectDeferred",
+          "phrase": 9,
+          "label": "9",
+          "object_source": "melodyBG",
+          "method": "disappear"
+        },
+        {
+          "kind": "PlaySound",
+          "phrase": 9,
+          "label": "9",
+          "sound_source": "Audio/Sound effects/M3/Learned PSI.wav"
+        },
+        {
+          "kind": "LearnSkill",
+          "phrase": 9,
+          "label": "9",
+          "skill_id": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 9,
+          "label": "9",
+          "flags": 1
+        },
+        {
+          "kind": "Jump",
+          "phrase": 9,
+          "label": "9",
+          "target_label": "10",
+          "target_pc": 55
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 10,
+          "label": "10",
+          "text_id": 89,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 10,
+          "label": "10",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 10,
+          "label": "10",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 10,
+          "label": "10"
+        },
+        {
+          "kind": "RestoreActor",
+          "phrase": 10,
+          "label": "10",
+          "actor_source": "ninten"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 10,
+          "label": "10"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 10,
+          "label": "10",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1,
+        "1": 7,
+        "2": 11,
+        "3": 17,
+        "4": 26,
+        "5": 31,
+        "6": 35,
+        "7": 39,
+        "8": 44,
+        "9": 47,
+        "10": 55
+      }
+    },
+    {
+      "identity": "Reusable/lockopened",
+      "document": {
+        "0": {
+          "text": "DIALOGUE_REUSABLE_LOCKOPENED_0"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 90,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "label": "0",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "label": "0",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1
+      }
+    },
+    {
+      "identity": "Reusable/locklocked",
+      "document": {
+        "0": {
+          "text": "DIALOGUE_REUSABLE_LOCKLOCKED_0"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 91,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "label": "0",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "label": "0",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1
+      }
+    },
+    {
+      "identity": "ItemDialogue/presentempty",
+      "document": {
+        "0": {
+          "text": "DIALOGUE_ITEMDIALOGUE_PRESENTEMPTY_0"
+        }
+      },
+      "commands": [
+        {
+          "kind": "BeginCutscene",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "ShowDialogue",
+          "phrase": 0,
+          "label": "0",
+          "text_id": 92,
+          "flags": 1
+        },
+        {
+          "kind": "AwaitDialogue",
+          "phrase": 0,
+          "label": "0",
+          "flags": 0
+        },
+        {
+          "kind": "StopInteraction",
+          "phrase": 0,
+          "label": "0",
+          "flags": 1
+        },
+        {
+          "kind": "SetTalker",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "CutsceneEnded",
+          "phrase": 0,
+          "label": "0"
+        },
+        {
+          "kind": "DialogueDone",
+          "phrase": 0,
+          "label": "0",
+          "duration": 0.5
+        }
+      ],
+      "labels": {
+        "0": 1
+      }
+    }
+  ],
+  "choice_groups": [
+    {
+      "id": "Podunk/woof::0",
+      "program_identity": "Podunk/woof",
+      "source_label": "0",
+      "program_command_count": 24,
+      "initial_selection": 0,
+      "options": [
+        {
+          "translation_key": "DIALOGUE_PODUNK_WOOF_2-OPT_0",
+          "text": "Yes",
+          "target_label": "3",
+          "target_pc": 4
+        },
+        {
+          "translation_key": "DIALOGUE_PODUNK_WOOF_2-OPT_1",
+          "text": "No",
+          "target_label": "9",
+          "target_pc": 17
+        }
+      ],
+      "cancel_target_label": "9",
+      "cancel_target_pc": 17
+    }
+  ]
+}

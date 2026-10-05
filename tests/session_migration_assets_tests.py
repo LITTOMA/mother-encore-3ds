@@ -16,8 +16,10 @@ class MigrationAssets(unittest.TestCase):
    return value
   with patch.object(migration,'read',changed):
    with self.assertRaises(ValueError):migration.encode()
+ def test_schema_two_coverage(self):
+  raw=migration.encode();self.assertEqual(int.from_bytes(raw[8:12],'little'),2);self.assertEqual(int.from_bytes(raw[20:24],'little'),2);self.assertEqual(int.from_bytes(raw[24:28],'little'),2)
  def test_unknown_endpoints(self):
-  self.reject_changed_recipe('manifest.json',lambda x:x['to'].update(rules_revision=8))
+  self.reject_changed_recipe('manifest.json',lambda x:x['to'].update(rules_revision=9))
   self.reject_changed_recipe('manifest.json',lambda x:x['from'].update(content_revision=2))
  def test_unknown_or_tampered_frozen_resource(self):
   self.reject_changed_recipe('manifest.json',lambda x:x['files'].update({'other.encsave':'0'*64}))

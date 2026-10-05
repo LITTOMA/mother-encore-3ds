@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "27b488c8d641a2525d55d01a9091681b9970ebfbb627f4f603b201e80be818f7",
+  "producer_sha256": "5cc5f44dddfd9479d2dd5b2d036da0c95fc3cac7a81e12ea3999aa42c07ff68b",
+  "sources": {
+    "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+    "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+  },
+  "scope": "All four actual House MusicChanger regions share one controller, including source parent lifecycle, traversal order and diary explicit calls"
+}

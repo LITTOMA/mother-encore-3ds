@@ -71,6 +71,8 @@ def extract():
  # Typed mappings were checked against source material inheritance and native manifests.
  paths={binding['path']for binding in bindings['skin_bindings']}
  # Save cards retain their per-slot palette and must never join this registry.
+ from tools.field_psi import skin_paths as psi_skin_paths
+ paths.update(psi_skin_paths())
  paths.update(a['path']for a in r['resources'][:3]);r['skin_paths']=sorted(paths)
  r['skin_sha256']={p:sha(ROOT/'romfs'/p)for p in paths if not p.startswith('graphics/ui/settings/')}
  for p in ['Nodes/Ui/Battle/PartyInfoPlate.tscn','Nodes/Ui/DialogueBox.tscn']:ex.data(p)

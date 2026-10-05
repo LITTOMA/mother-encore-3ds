@@ -1,0 +1,2804 @@
+{
+  "schema": 1,
+  "capabilities": 2,
+  "kind": "encore.field-enemy.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+    "Scripts/Main/Basic Enemy.gd": "43aebda6e7412a937c23902fc022e640cfef4396135f5185cb248c418b8dd805",
+    "Nodes/Overworld/Enemies/Basic Enemy.tscn": "5f554fc4ad1fa00da90727bdbc1270db0cc496f1b0ab8d56726bde73593112b5",
+    "Scripts/global/Enemy.gd": "ba81a8f7144dc06cd1674413e5c9b6e670c05aed00c44de98161ad7dda8ebe1b",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Data/BattleSkills/bash.yaml": "ef8f69c8897aa82f91dedf69bc662761f894c75374dca7b5b0a9ef6fa4d4b407",
+    "Data/Battlers/tiger.yaml": "42062204f40781dd48bc1d2c1ac6efbbde4e53c7a6b4edd0fa7fc219399157ae",
+    "Graphics/Character Sprites/Enemies/TigerOV.png": "372ae3d3288e167cd8bbb9f7589f8263b2074ac1cb8926ee8e79b062953e5cf4",
+    "Data/Animations/BasicEnemy.yaml": "b4581c02e9bda475333ad750e01aca7498b6165e51385865e08f63b5b0c7ae96",
+    "Data/Battlers/john.yaml": "950f9f5c9b83f71656aa00951ac406d519fb025a293ace79fd605738084c895e",
+    "Graphics/Character Sprites/Enemies/ElephantOV.png": "b9c4951ac7468ff4bc6577ffb22c0406b72eb96be9db314ea5e605e669112cd7",
+    "Data/Battlers/gorilla.yaml": "35b4d9fe6dfaff42649cc3ada62e5b4a6659332b22865806a8b4d9ec2044af00",
+    "Graphics/Character Sprites/Enemies/GorillaOV.png": "61a5852211e3816ff90bc0184df5768e0c1659a7f570b07436ba2d8c37bcfe7c",
+    "Data/Battlers/hyena.yaml": "00eb047dd34d48b8d17f5c52fbc06e24bf2a505b9f64288dba01ad52b60cc2d3",
+    "Graphics/Character Sprites/Enemies/YeenaOV.png": "969c8bdba9ae2b09399d35f1e087cf54edd53c323c418c1ec2271c161394489a",
+    "Data/Battlers/alligator.yaml": "68902aa16a7e375bd45d80ed00ee12451a18b4ad82841175ca2c5fb0e115f670",
+    "Graphics/Character Sprites/Enemies/AlligatorOV.png": "d630caeb5e4c3f087725c8dc5f5abfe67f8f6d4f79a00e3789b585b787d9a09e",
+    "Data/Battlers/elephant.yaml": "75141f5e830fff357cfec2260118900bcb5d148893a96b6de5e678418697780d",
+    "Data/Battlers/fly.yaml": "21adc47de1f60dcbd9c519957f05299c05bdf47e66238fa5ce0dd2e04c9803e7",
+    "Graphics/Character Sprites/Enemies/FlyOV.png": "2f84fde2381b9ef6d73785ad44c6ed7f1b0f2c8c6925c2670f81b79083cbe421",
+    "Data/Animations/FlyEnemy.yaml": "4951bb8f07888b7e62c94973adbbaec2f5abc612297d6e269ccb44839bc3091f",
+    "Data/Battlers/mrbatty.yaml": "0085e3218de1cbd013f6e2d6798744dcb3b6012fb7cdd9792807baa69a2ae676",
+    "Graphics/Character Sprites/Enemies/MrBattyOV.png": "e6ec0348ec4da9c6be739fb628d33047c5450c2360a7a3d174d4b80c71432481",
+    "Data/Animations/BasicEnemy2F.yaml": "a4bd82d7c19da5c358d8f8b96806c104f3a69d1183aaec12d316b8ecf5811c9c",
+    "Data/Battlers/pseudozombie.yaml": "f0b658d62de8b78b734ee68c885cc9805da2b7a56be7c3dfd3f3bbe32e21eed9",
+    "Graphics/Character Sprites/Enemies/PseudoZombieOV.png": "4093ae43b5ef6dd135f114f9cef385ace8d73cf5065ae47405ade7000ba6a3fc",
+    "Data/Battlers/snake.yaml": "db7e95d683b4244985df5419db16f47f4c1372e43dfe057430bd48d042df8701",
+    "Graphics/Character Sprites/Enemies/SnakeOV.png": "b3a07026d498781df5e97996544090718cd27b1cc5e8d8d2ab19e85059378643",
+    "Data/Battlers/crow.yaml": "448d8930393f656880e2a7bfcf0b2543b88acd40fda0095759088f5032b16b13",
+    "Graphics/Character Sprites/Enemies/CrowOV.png": "dbef702f872faa872a072c047edb15d895ffe8c0f028c2a20c2c657f0c55c228",
+    "Data/Animations/FlyingEnemy8Dir.yaml": "022e12ead874aa6b8a35829504852479b973d81aa9406f71e36e9618497cd586",
+    "Data/Battlers/centipede.yaml": "4012192879cf1d7af1fe60a728e626191223c2d5f46296d350b3ce8e48926183",
+    "Graphics/Character Sprites/Enemies/CentipedeOV.png": "3d9b558a280b41a0e85f29cf2efdceae536be8cf6f921de5d3981c17f19e4c45",
+    "Data/Battlers/hippie.yaml": "e1f082a41893447a9e6f2fcb9766945fe10919b532520bca51aba051ed0fd53b",
+    "Graphics/Character Sprites/Enemies/HippieOV.png": "2ded7047f48880619edfa7e7f9ce997ce8c01cd694abf2b209f0c9e211c8abe7",
+    "Data/Battlers/straydog.yaml": "424b46287cc6bbee0d8940230c4e8def36aff81cbdc3397a02f3880bfd9b5247",
+    "Graphics/Character Sprites/Enemies/StrayDogOV.png": "4863b7d3c1aeb2c50b93771e39771eec5cc244c052f4a87be98825dcfb2cd754"
+  },
+  "provenance": {
+    "native_export_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+    "source_receipt_sha256": "e02373cf52bd5426aa48d88b26fda3fdab9a21987cc42efeb391a29f48bf44f0",
+    "source_files": {
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+      "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+      "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+      "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+      "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+      "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+      "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+      "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+      "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+      "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+      "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+      "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+      "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+      "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+      "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+      "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+      "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+      "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+      "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+      "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+      "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+      "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+      "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+      "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+      "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+      "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+      "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+      "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+      "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+      "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+      "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+      "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+      "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+      "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+      "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+      "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+      "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+      "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+      "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+      "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+      "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+      "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+      "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+      "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+      "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+      "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+      "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+      "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+      "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+      "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+      "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+      "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+      "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+      "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+      "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+      "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+      "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+      "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+      "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+      "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+      "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+      "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+      "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+      "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+      "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+      "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+      "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+      "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+      "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+      "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70"
+    }
+  },
+  "parameters": {
+    "AppearanceModulus": 100,
+    "WanderAxisModulus": 2,
+    "ReadyDirectionMin": -1,
+    "ReadyDirectionMax": 1,
+    "ReadyTimerMin": 0.1,
+    "WanderTimerDeviation": 0.5,
+    "MinMovementLength": 8.0,
+    "MinDisinterestTime": 2.0,
+    "Knockback": 200.0,
+    "KnockbackDeceleration": 7.0,
+    "UnderlevelGap": 10.0,
+    "ExplosionBase": 300.0,
+    "ExplosionModulus": 7.0,
+    "IncapacitatedDivisor": 4.0,
+    "UnderlevelFlashLength": 1,
+    "UnderlevelFlashInterval": 0.08,
+    "UnderlevelFlashDelay": 0.6,
+    "DamageFlashLength": 0.208334,
+    "StunLength": 1.0,
+    "BashPower": 5,
+    "BashVariance": 2,
+    "AdvantageEnemy": -1,
+    "AdvantageNeutral": 0,
+    "AdvantagePlayer": 1,
+    "SafeMargin": 0.4
+  },
+  "profiles": [
+    {
+      "id": 1,
+      "enemy": "tiger",
+      "source": "Data/Battlers/tiger.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/TigerOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        10,
+        165,
+        165,
+        0,
+        0,
+        30,
+        85,
+        41
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 2,
+      "enemy": "john",
+      "source": "Data/Battlers/john.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/ElephantOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        10,
+        175,
+        175,
+        0,
+        0,
+        33,
+        120,
+        99
+      ],
+      "sprite_offset": [
+        0,
+        4
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 3,
+      "enemy": "gorilla",
+      "source": "Data/Battlers/gorilla.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/GorillaOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        10,
+        170,
+        170,
+        0,
+        0,
+        25,
+        90,
+        52
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 4,
+      "enemy": "hyena",
+      "source": "Data/Battlers/hyena.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/YeenaOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        7,
+        140,
+        140,
+        0,
+        0,
+        22,
+        24,
+        20
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 5,
+      "enemy": "alligator",
+      "source": "Data/Battlers/alligator.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/AlligatorOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        9,
+        180,
+        180,
+        0,
+        0,
+        29,
+        79,
+        39
+      ],
+      "sprite_offset": [
+        0,
+        6
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 6,
+      "enemy": "elephant",
+      "source": "Data/Battlers/elephant.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/ElephantOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        10,
+        175,
+        175,
+        0,
+        0,
+        33,
+        120,
+        99
+      ],
+      "sprite_offset": [
+        0,
+        4
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 7,
+      "enemy": "fly",
+      "source": "Data/Battlers/fly.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/FlyOV.png",
+      "animation": "Data/Animations/FlyEnemy.yaml",
+      "stats": [
+        4,
+        60,
+        60,
+        0,
+        0,
+        12,
+        12,
+        1
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 0,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 128,
+      "acceleration": 800,
+      "friction": 800,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {
+        "walkFrequency": 0.5
+      }
+    },
+    {
+      "id": 8,
+      "enemy": "mrbatty",
+      "source": "Data/Battlers/mrbatty.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/MrBattyOV.png",
+      "animation": "Data/Animations/BasicEnemy2F.yaml",
+      "stats": [
+        4,
+        76,
+        76,
+        0,
+        0,
+        18,
+        12,
+        14
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 9,
+      "enemy": "pseudozombie",
+      "source": "Data/Battlers/pseudozombie.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/PseudoZombieOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        5,
+        80,
+        80,
+        0,
+        0,
+        20,
+        16,
+        18
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 10,
+      "enemy": "snake",
+      "source": "Data/Battlers/snake.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/SnakeOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        5,
+        18,
+        18,
+        0,
+        0,
+        8,
+        12,
+        16
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 11,
+      "enemy": "crow",
+      "source": "Data/Battlers/crow.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/CrowOV.png",
+      "animation": "Data/Animations/FlyingEnemy8Dir.yaml",
+      "stats": [
+        4,
+        32,
+        32,
+        0,
+        0,
+        2,
+        9,
+        12
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 12,
+      "enemy": "centipede",
+      "source": "Data/Battlers/centipede.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/CentipedeOV.png",
+      "animation": "Data/Animations/BasicEnemy2F.yaml",
+      "stats": [
+        4,
+        20,
+        20,
+        0,
+        0,
+        12,
+        5,
+        2
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 13,
+      "enemy": "hippie",
+      "source": "Data/Battlers/hippie.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/HippieOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        4,
+        60,
+        60,
+        0,
+        0,
+        14,
+        12,
+        35
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 64,
+      "acceleration": 200,
+      "friction": 200,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {}
+    },
+    {
+      "id": 14,
+      "enemy": "straydog",
+      "source": "Data/Battlers/straydog.yaml",
+      "sprite": "Graphics/Character Sprites/Enemies/StrayDogOV.png",
+      "animation": "Data/Animations/BasicEnemy.yaml",
+      "stats": [
+        5,
+        84,
+        84,
+        0,
+        0,
+        20,
+        8,
+        20
+      ],
+      "sprite_offset": [
+        0,
+        0
+      ],
+      "shadow": 1,
+      "returning": 1,
+      "returning_override": false,
+      "max_distance": 128,
+      "max_speed": 96,
+      "acceleration": 900,
+      "friction": 900,
+      "walk_frequency": 1.0,
+      "wander_radius": 35.2816,
+      "chase_delay": 0.25,
+      "return_delay": 0.5,
+      "ignored_source_spelling": {
+        "walkFrequency": 2
+      }
+    }
+  ],
+  "spawners": [
+    {
+      "id": 3624344452,
+      "node": "Objects/Zoo Enemies/Enemy Spawner",
+      "ready_ordinal": 3863,
+      "profile": 0,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        936.0,
+        -1320.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        887.9999980926514,
+        -1368.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 548312362,
+      "node": "Objects/Zoo Enemies/Enemy Spawner4",
+      "ready_ordinal": 3867,
+      "profile": 1,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        754.0,
+        -1430.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        705.9999980926514,
+        -1478.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1313710606,
+      "node": "Objects/Zoo Enemies/Enemy Spawner5",
+      "ready_ordinal": 3871,
+      "profile": 2,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        690.0,
+        -1262.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        641.9999980926514,
+        -1310.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2240714730,
+      "node": "Objects/Zoo Enemies/Enemy Spawner6",
+      "ready_ordinal": 3875,
+      "profile": 3,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        360.0,
+        -1048.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        311.99999809265137,
+        -1096.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2409184309,
+      "node": "Objects/Zoo Enemies/Enemy Spawner7",
+      "ready_ordinal": 3879,
+      "profile": 3,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        320.0,
+        -1032.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        271.99999809265137,
+        -1080.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2692099118,
+      "node": "Objects/Zoo Enemies/Enemy Spawner8",
+      "ready_ordinal": 3883,
+      "profile": 0,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        -126.0,
+        -870.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -174.00000190734863,
+        -918.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 20474955,
+      "node": "Objects/Zoo Enemies/Enemy Spawner9",
+      "ready_ordinal": 3887,
+      "profile": 2,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        402.0,
+        -774.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        353.99999809265137,
+        -822.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 843863470,
+      "node": "Objects/Zoo Enemies/Enemy Spawner10",
+      "ready_ordinal": 3891,
+      "profile": 4,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        866.0,
+        -774.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        817.9999980926514,
+        -822.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 4051656604,
+      "node": "Objects/Zoo Enemies/Enemy Spawner11",
+      "ready_ordinal": 3895,
+      "profile": 5,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        776.0,
+        -1136.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        727.9999980926514,
+        -1184.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3604888644,
+      "node": "Objects/Zoo Enemies/Enemy Spawner12",
+      "ready_ordinal": 3899,
+      "profile": 4,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        1240.0,
+        -1144.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1191.9999980926514,
+        -1192.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1916515872,
+      "node": "Objects/Zoo Enemies/Enemy Spawner13",
+      "ready_ordinal": 3903,
+      "profile": 0,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        1368.0,
+        -1296.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1319.9999980926514,
+        -1344.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 87495013,
+      "node": "Objects/Zoo Enemies/Enemy Spawner14",
+      "ready_ordinal": 3907,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        1026.0,
+        -1134.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        977.9999980926514,
+        -1182.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3550607237,
+      "node": "Objects/Zoo Enemies/Enemy Spawner19",
+      "ready_ordinal": 3911,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        1090.0,
+        -1134.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1041.9999980926514,
+        -1182.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3082229137,
+      "node": "Objects/Zoo Enemies/Enemy Spawner16",
+      "ready_ordinal": 3915,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        792.0,
+        -1440.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        743.9999980926514,
+        -1488.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 916463920,
+      "node": "Objects/Zoo Enemies/Enemy Spawner17",
+      "ready_ordinal": 3919,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        736.0,
+        -1408.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        687.9999980926514,
+        -1456.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2067847284,
+      "node": "Objects/Zoo Enemies/Enemy Spawner18",
+      "ready_ordinal": 3923,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        1066.0,
+        -1118.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1017.9999980926514,
+        -1166.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3962468616,
+      "node": "Objects/Zoo Enemies/Enemy Spawner15",
+      "ready_ordinal": 3927,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        194.0,
+        -886.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        145.99999809265137,
+        -934.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1569791965,
+      "node": "Objects/Zoo Enemies/Enemy Spawner20",
+      "ready_ordinal": 3931,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        224.0,
+        -888.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        175.99999809265137,
+        -936.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3601082513,
+      "node": "Objects/Zoo Enemies/Enemy Spawner21",
+      "ready_ordinal": 3935,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        176.0,
+        -864.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        127.99999809265137,
+        -912.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2351266580,
+      "node": "Objects/Enemies/Enemy Spawner3",
+      "ready_ordinal": 8126,
+      "profile": 7,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        432.0,
+        4720.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        383.99999809265137,
+        4671.999998092651,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1414098678,
+      "node": "Objects/Enemies/Enemy Spawner12",
+      "ready_ordinal": 8130,
+      "profile": 8,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        872.0,
+        4592.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        823.9999980926514,
+        4543.999998092651,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 4170622534,
+      "node": "Objects/Enemies/Enemy Spawner13",
+      "ready_ordinal": 8134,
+      "profile": 7,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        1112.0,
+        4560.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1063.9999980926514,
+        4511.999998092651,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1580725999,
+      "node": "Objects/Enemies/Enemy Spawner14",
+      "ready_ordinal": 8138,
+      "profile": 7,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        1136.0,
+        4576.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1087.9999980926514,
+        4527.999998092651,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2985199070,
+      "node": "Objects/Enemies/Enemy Spawner15",
+      "ready_ordinal": 8142,
+      "profile": 8,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        1056.0,
+        4760.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1007.9999980926514,
+        4711.999998092651,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1880372952,
+      "node": "Objects/Enemies/Enemy Spawner16",
+      "ready_ordinal": 8146,
+      "profile": 8,
+      "flags": 0,
+      "appearance_rate": 100,
+      "position": [
+        1088.0,
+        4736.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1039.9999980926514,
+        4687.999998092651,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3676769069,
+      "node": "Objects/Enemies/Enemy Spawner57",
+      "ready_ordinal": 8150,
+      "profile": 9,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        480.0,
+        640.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        431.99999809265137,
+        591.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1400429050,
+      "node": "Objects/Enemies/Enemy Spawner19",
+      "ready_ordinal": 8154,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        200.0,
+        976.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        151.99999809265137,
+        927.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2073049730,
+      "node": "Objects/Enemies/Enemy Spawner17",
+      "ready_ordinal": 8158,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 75,
+      "position": [
+        -32.0,
+        568.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -80.0000057220459,
+        519.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2870528191,
+      "node": "Objects/Enemies/Enemy Spawner55",
+      "ready_ordinal": 8162,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 75,
+      "position": [
+        -88.0,
+        576.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -136.00000190734863,
+        527.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3412433593,
+      "node": "Objects/Enemies/Enemy Spawner18",
+      "ready_ordinal": 8166,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 75,
+      "position": [
+        -64.0,
+        560.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -112.00000190734863,
+        511.99999809265137,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3633571565,
+      "node": "Objects/Enemies/Enemy Spawner20",
+      "ready_ordinal": 8170,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1040.0,
+        1168.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        991.9999980926514,
+        1119.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 175521302,
+      "node": "Objects/Enemies/Enemy Spawner35",
+      "ready_ordinal": 8174,
+      "profile": 12,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1312.0,
+        1312.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1263.9999980926514,
+        1263.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2655089029,
+      "node": "Objects/Enemies/Enemy Spawner22",
+      "ready_ordinal": 8178,
+      "profile": 13,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1360.0,
+        736.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1311.9999980926514,
+        687.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1715188136,
+      "node": "Objects/Enemies/Enemy Spawner23",
+      "ready_ordinal": 8182,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1360.0,
+        440.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1311.9999980926514,
+        391.99999809265137,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 4280440245,
+      "node": "Objects/Enemies/Enemy Spawner25",
+      "ready_ordinal": 8186,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1616.0,
+        368.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1567.9999980926514,
+        319.99999809265137,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3534397781,
+      "node": "Objects/Enemies/Enemy Spawner67",
+      "ready_ordinal": 8190,
+      "profile": 13,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1816.0,
+        464.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1767.9999980926514,
+        415.99999809265137,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 4292055551,
+      "node": "Objects/Enemies/Enemy Spawner26",
+      "ready_ordinal": 8194,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1424.0,
+        88.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1375.9999980926514,
+        39.99999809265137,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 10464868,
+      "node": "Objects/Enemies/Enemy Spawner27",
+      "ready_ordinal": 8198,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1296.0,
+        -168.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1247.9999980926514,
+        -216.00000190734863,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2052003785,
+      "node": "Objects/Enemies/Enemy Spawner58",
+      "ready_ordinal": 8202,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1392.0,
+        -936.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1343.9999980926514,
+        -984.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1373037229,
+      "node": "Objects/Enemies/Enemy Spawner59",
+      "ready_ordinal": 8206,
+      "profile": 12,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1840.0,
+        -1176.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1791.9999980926514,
+        -1224.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1715393251,
+      "node": "Objects/Enemies/Enemy Spawner61",
+      "ready_ordinal": 8210,
+      "profile": 9,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        2056.0,
+        -1424.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        2007.9999980926514,
+        -1472.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3242486184,
+      "node": "Objects/Enemies/Enemy Spawner62",
+      "ready_ordinal": 8214,
+      "profile": 13,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1968.0,
+        -1608.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1919.9999980926514,
+        -1656.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3738466366,
+      "node": "Objects/Enemies/Enemy Spawner66",
+      "ready_ordinal": 8218,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        2296.0,
+        -1736.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        2247.9999980926514,
+        -1784.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1615315453,
+      "node": "Objects/Enemies/Enemy Spawner68",
+      "ready_ordinal": 8222,
+      "profile": 13,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        2376.0,
+        -1496.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        2327.9999980926514,
+        -1544.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 903967654,
+      "node": "Objects/Enemies/Enemy Spawner65",
+      "ready_ordinal": 8226,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1416.0,
+        -1504.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        1367.9999980926514,
+        -1552.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2907804625,
+      "node": "Objects/Enemies/Enemy Spawner29",
+      "ready_ordinal": 8230,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        1024.0,
+        -520.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        975.9999980926514,
+        -568.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 4074581584,
+      "node": "Objects/Enemies/Enemy Spawner30",
+      "ready_ordinal": 8234,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        608.0,
+        -360.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        559.9999980926514,
+        -408.00000190734863,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2746070327,
+      "node": "Objects/Enemies/Enemy Spawner31",
+      "ready_ordinal": 8238,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        368.0,
+        -448.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        319.99999809265137,
+        -496.00000190734863,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1301996920,
+      "node": "Objects/Enemies/Enemy Spawner32",
+      "ready_ordinal": 8242,
+      "profile": 13,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -56.0,
+        -488.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -104.0000057220459,
+        -536.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 740040090,
+      "node": "Objects/Enemies/Enemy Spawner33",
+      "ready_ordinal": 8246,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -360.0,
+        -408.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -408.00000190734863,
+        -456.00000190734863,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 762149769,
+      "node": "Objects/Enemies/Enemy Spawner34",
+      "ready_ordinal": 8250,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -496.0,
+        -200.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -544.0000019073486,
+        -248.00000190734863,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1443586388,
+      "node": "Objects/Enemies/Enemy Spawner37",
+      "ready_ordinal": 8254,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        248.0,
+        2642.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        199.99999809265137,
+        2593.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3091692609,
+      "node": "Objects/Enemies/Enemy Spawner38",
+      "ready_ordinal": 8258,
+      "profile": 9,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        40.0,
+        2864.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -8.000005722045898,
+        2815.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3812943489,
+      "node": "Objects/Enemies/Enemy Spawner39",
+      "ready_ordinal": 8262,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        210.0,
+        2652.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        161.99999809265137,
+        2603.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 760671525,
+      "node": "Objects/Enemies/Enemy Spawner40",
+      "ready_ordinal": 8266,
+      "profile": 10,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -256.0,
+        2952.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -304.00000190734863,
+        2903.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 789262778,
+      "node": "Objects/Enemies/Enemy Spawner41",
+      "ready_ordinal": 8270,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -574.0,
+        2778.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -622.0000019073486,
+        2729.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3016593417,
+      "node": "Objects/Enemies/Enemy Spawner54",
+      "ready_ordinal": 8274,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -622.0,
+        2770.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -670.0000019073486,
+        2721.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2990791244,
+      "node": "Objects/Enemies/Enemy Spawner42",
+      "ready_ordinal": 8278,
+      "profile": 13,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -520.0,
+        2416.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -568.0000019073486,
+        2367.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 582637968,
+      "node": "Objects/Enemies/Enemy Spawner45",
+      "ready_ordinal": 8282,
+      "profile": 9,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        -88.0,
+        3464.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -136.00000190734863,
+        3415.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 98703533,
+      "node": "Objects/Enemies/Enemy Spawner47",
+      "ready_ordinal": 8286,
+      "profile": 7,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        128.0,
+        3752.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        79.99999809265137,
+        3703.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3794741467,
+      "node": "Objects/Enemies/Enemy Spawner49",
+      "ready_ordinal": 8290,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        424.0,
+        3480.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        375.99999809265137,
+        3431.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3213490670,
+      "node": "Objects/Enemies/Enemy Spawner56",
+      "ready_ordinal": 8294,
+      "profile": 11,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        456.0,
+        3464.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        407.99999809265137,
+        3415.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2090902736,
+      "node": "Objects/Enemies/Enemy Spawner50",
+      "ready_ordinal": 8298,
+      "profile": 8,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        552.0,
+        3720.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        503.99999809265137,
+        3671.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 2483353001,
+      "node": "Objects/Enemies/Enemy Spawner51",
+      "ready_ordinal": 8302,
+      "profile": 8,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        464.0,
+        3976.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        415.99999809265137,
+        3927.9999980926514,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1011927256,
+      "node": "Objects/Enemies/Enemy Spawner53",
+      "ready_ordinal": 8306,
+      "profile": 7,
+      "flags": 1,
+      "appearance_rate": 100,
+      "position": [
+        240.0,
+        4320.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        191.99999809265137,
+        4271.999998092651,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 1234399726,
+      "node": "Objects/Enemies/Enemy Spawner43",
+      "ready_ordinal": 8310,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        24.0,
+        -904.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -24.000003814697266,
+        -952.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3565966592,
+      "node": "Objects/Enemies/Enemy Spawner44",
+      "ready_ordinal": 8314,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        72.0,
+        -912.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        23.999998092651367,
+        -960.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    },
+    {
+      "id": 3648880429,
+      "node": "Objects/Enemies/Enemy Spawner46",
+      "ready_ordinal": 8318,
+      "profile": 6,
+      "flags": 0,
+      "appearance_rate": 80,
+      "position": [
+        48.0,
+        -920.0
+      ],
+      "initial_direction": [
+        0,
+        0
+      ],
+      "cooldown": 300.0,
+      "visibility_rect": [
+        -5.7220458984375e-06,
+        -968.0000019073486,
+        96.00000381469727,
+        96.00000381469727
+      ]
+    }
+  ],
+  "geometry": [
+    {
+      "id": 1,
+      "role": 1,
+      "ordinal": 0,
+      "mask": 512,
+      "layer": 516,
+      "flags": 0,
+      "offset": [
+        -0.5,
+        3.0
+      ],
+      "rotation": 0,
+      "value": [
+        9.5,
+        3.0
+      ]
+    },
+    {
+      "id": 2,
+      "role": 1,
+      "ordinal": 1,
+      "mask": 512,
+      "layer": 516,
+      "flags": 0,
+      "offset": [
+        -0.5,
+        3.0
+      ],
+      "rotation": 0,
+      "value": [
+        0.0,
+        7.0
+      ]
+    },
+    {
+      "id": 3,
+      "role": 1,
+      "ordinal": 2,
+      "mask": 512,
+      "layer": 516,
+      "flags": 0,
+      "offset": [
+        -0.5,
+        3.0
+      ],
+      "rotation": 0,
+      "value": [
+        -9.5,
+        3.0
+      ]
+    },
+    {
+      "id": 4,
+      "role": 1,
+      "ordinal": 3,
+      "mask": 512,
+      "layer": 516,
+      "flags": 0,
+      "offset": [
+        -0.5,
+        3.0
+      ],
+      "rotation": 0,
+      "value": [
+        0.0,
+        -1.0
+      ]
+    },
+    {
+      "id": 5,
+      "role": 2,
+      "ordinal": 0,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        8.999999999939284
+      ],
+      "rotation": 1.0000000000065512e-05,
+      "value": [
+        0.0,
+        -6.0
+      ]
+    },
+    {
+      "id": 6,
+      "role": 2,
+      "ordinal": 1,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        8.999999999939284
+      ],
+      "rotation": 1.0000000000065512e-05,
+      "value": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "id": 7,
+      "role": 2,
+      "ordinal": 2,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        8.999999999939284
+      ],
+      "rotation": 1.0000000000065512e-05,
+      "value": [
+        -63.9999,
+        10.0006
+      ]
+    },
+    {
+      "id": 8,
+      "role": 2,
+      "ordinal": 3,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        8.999999999939284
+      ],
+      "rotation": 1.0000000000065512e-05,
+      "value": [
+        -39.9994,
+        58.0004
+      ]
+    },
+    {
+      "id": 9,
+      "role": 2,
+      "ordinal": 4,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        8.999999999939284
+      ],
+      "rotation": 1.0000000000065512e-05,
+      "value": [
+        40.0006,
+        57.9996
+      ]
+    },
+    {
+      "id": 10,
+      "role": 2,
+      "ordinal": 5,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        8.999999999939284
+      ],
+      "rotation": 1.0000000000065512e-05,
+      "value": [
+        64.0001,
+        9.99937
+      ]
+    },
+    {
+      "id": 11,
+      "role": 2,
+      "ordinal": 6,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        8.999999999939284
+      ],
+      "rotation": 1.0000000000065512e-05,
+      "value": [
+        8.0,
+        -6.0
+      ]
+    },
+    {
+      "id": 12,
+      "role": 3,
+      "ordinal": 0,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        -8.999999999939284
+      ],
+      "rotation": -3.14159,
+      "value": [
+        0.0,
+        -6.0
+      ]
+    },
+    {
+      "id": 13,
+      "role": 3,
+      "ordinal": 1,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        -8.999999999939284
+      ],
+      "rotation": -3.14159,
+      "value": [
+        -8.0,
+        -6.0
+      ]
+    },
+    {
+      "id": 14,
+      "role": 3,
+      "ordinal": 2,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        -8.999999999939284
+      ],
+      "rotation": -3.14159,
+      "value": [
+        -34.9994,
+        95.0002
+      ]
+    },
+    {
+      "id": 15,
+      "role": 3,
+      "ordinal": 3,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        -8.999999999939284
+      ],
+      "rotation": -3.14159,
+      "value": [
+        37.0006,
+        94.9998
+      ]
+    },
+    {
+      "id": 16,
+      "role": 3,
+      "ordinal": 4,
+      "mask": 0,
+      "layer": 256,
+      "flags": 1,
+      "offset": [
+        -3.305884593011917e-05,
+        -8.999999999939284
+      ],
+      "rotation": -3.14159,
+      "value": [
+        8.0,
+        -6.0
+      ]
+    },
+    {
+      "id": 17,
+      "role": 4,
+      "ordinal": 0,
+      "mask": 1,
+      "layer": 2561,
+      "flags": 1,
+      "offset": [
+        0,
+        3
+      ],
+      "rotation": 0,
+      "value": [
+        7.87464,
+        5.31516
+      ]
+    },
+    {
+      "id": 18,
+      "role": 5,
+      "ordinal": 0,
+      "mask": 62,
+      "layer": 0,
+      "flags": 0,
+      "offset": [
+        0,
+        0.5
+      ],
+      "rotation": 0,
+      "value": [
+        10.0,
+        8.5
+      ]
+    },
+    {
+      "id": 19,
+      "role": 6,
+      "ordinal": 0,
+      "mask": 0,
+      "layer": 0,
+      "flags": 0,
+      "offset": [
+        0,
+        -2
+      ],
+      "rotation": 0,
+      "value": [
+        35.2816,
+        0
+      ]
+    },
+    {
+      "id": 20,
+      "role": 7,
+      "ordinal": 0,
+      "mask": 1537,
+      "layer": 0,
+      "flags": 0,
+      "offset": [
+        0,
+        6
+      ],
+      "rotation": 0,
+      "value": [
+        90,
+        0
+      ]
+    },
+    {
+      "id": 21,
+      "role": 8,
+      "ordinal": 0,
+      "mask": 1537,
+      "layer": 0,
+      "flags": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "value": [
+        0,
+        25
+      ]
+    },
+    {
+      "id": 22,
+      "role": 9,
+      "ordinal": 0,
+      "mask": 0,
+      "layer": 0,
+      "flags": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "value": [
+        -40,
+        -50
+      ]
+    },
+    {
+      "id": 23,
+      "role": 9,
+      "ordinal": 1,
+      "mask": 0,
+      "layer": 0,
+      "flags": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "value": [
+        80,
+        80
+      ]
+    }
+  ],
+  "animations": [
+    {
+      "role": 1,
+      "name": "Flash",
+      "source": "Nodes/Overworld/Enemies/Basic Enemy.tscn",
+      "node": "DamageAnimation",
+      "signal": "animation_finished",
+      "handler": "_on_DamageAnimation_animation_finished",
+      "duration": 0.208334
+    },
+    {
+      "role": 2,
+      "name": "Stun",
+      "source": "Nodes/Overworld/Enemies/Basic Enemy.tscn",
+      "node": "DamageAnimation",
+      "signal": "animation_finished",
+      "handler": "_on_DamageAnimation_animation_finished",
+      "duration": 1.0
+    },
+    {
+      "role": 3,
+      "name": "RESET",
+      "source": "Nodes/Overworld/Enemies/Basic Enemy.tscn",
+      "node": "DamageAnimation",
+      "signal": "animation_finished",
+      "handler": "_on_DamageAnimation_animation_finished",
+      "duration": 0.001
+    }
+  ],
+  "host_requirements": [
+    "Godot move_and_slide with two sequential velocity/knockback passes",
+    "EventDetector player hit and Wander raycast collider identity",
+    "PartyObject contact identity, current player flags and actual roster midpoint",
+    "OnScreenEnemy battle ordering, HP/PP preservation and source advantage",
+    "Source sprite animation/tween/flash feedback",
+    "Typed DamageAnimation completion with playback generation and source idle clock",
+    "Deferred tree exit cancels coroutine subscriptions after same-frame signal continuations"
+  ],
+  "semantics": [
+    "Spawner randi precedes every appearance/attached/cutscene/cooldown gate",
+    "Dynamic factory Ready: direction X then Y rand_range; optional initial timer draw; source initial direction applied after Ready",
+    "Wander timeout calls choose then start_wander (which chooses a second time)",
+    "RETURN source comparator intentionally preserved (greater distance starts wander)",
+    "camel walkFrequency is an exact reviewed nonexistent-property set; walk_frequency retains source default",
+    "Concurrent Hurt awaits any next completed DamageAnimation, including Stun; connected Stun handler precedes all coroutine subscriptions",
+    "queue_free does not cancel same-frame continuations; actual tree exit cancels outstanding awaits without executing them",
+    "Source typed int damage assignment truncates variance before round; final incapacitated val/4 uses integer division",
+    "Basic Enemy exposes _direction but not direction; the factory initial-direction property guard is false",
+    "Enemy ov.returning overrides factory _return during child Ready"
+  ],
+  "unsupported": [],
+  "unverified": [
+    "Manual tests retained but not run",
+    "Native full Podunk scene activation remains fail-closed until all script capabilities and real collision/battle hosts are admitted"
+  ]
+}

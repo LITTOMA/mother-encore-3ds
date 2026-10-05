@@ -4,8 +4,8 @@
 #include <memory>
 namespace encore::ctr {
 enum class MusicRegionServicePhase:uint8_t {Dormant,Preparing,Prepared,Active,Draining};
-// App-lifetime service. It stays Dormant in the current House-only main: no
-// resource reads, buffers or region NDSP calls happen until explicit prepare.
+// App-lifetime service. It stays Dormant until the selected scene explicitly
+// prepares its source-owned music; title metadata loading cannot start voices.
 // The scene factory owns real source-ordered Area callbacks and commit epochs.
 class MusicRegionService final {
 public:
@@ -21,9 +21,16 @@ public:
  bool commit_scene(uint64_t epoch,const AudioPlayer&,std::string&);
  bool area_enter(uint64_t,std::string_view,const upstream::MusicRegionContext&,const AudioPlayer&,std::string&);
  bool area_exit(uint64_t,std::string_view,const upstream::MusicRegionContext&,std::string&);
+ bool play_explicit(uint64_t,std::string_view,const AudioPlayer&,std::string&);
+ bool stop_explicit(uint64_t,std::string_view,double fadeout_seconds,std::string&);
  bool idle_frame(uint64_t,std::string&);
  bool tree_exit(uint64_t,std::string_view,std::string&);
  bool finish_scene(uint64_t,std::string&);
+ bool bind_room_history(upstream::RoomView,std::string&);
+ bool consume_room_history(upstream::RoomView,const std::vector<upstream::OpeningAudioRequest>&,std::string&);
+ // Invoke from AudioPlayer's per-request fade callback, in actual audio
+ // history order. This routes exactly one source child, never both owners.
+ bool route_room_fade(upstream::RoomView,const upstream::OpeningAudioRequest&,AudioPlayer&,std::string&);
  // Call after the existing AudioPlayer consume/update boundary. Dormant and
  // Preparing/Prepared are strict no-ops; no implicit prepare, scene entry or track play.
  bool update(double delta,const AudioPlayer&,std::string&);

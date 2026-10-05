@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "a146c5e4a7ebd50d8c364351ff85c05e46402a98ee4f6c4be05b2cd4c16631dd",
+  "sources": {
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "engine_reference": {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/animated_sprite.cpp",
+    "sha256": "8dc64e924ca6f560f0acaffd43cb86e47a500c8586a03205f026a4445fff0c2e",
+    "review": "set_frame clamps to frame_count-1, int truncates rand_range; float32 timeout loop advances before consuming the next remaining delta; stop retains frame, play resets timeout only on playing-state change; visibility does not gate INTERNAL_PROCESS",
+    "default_speed_scale": 1.0,
+    "default_centered": true,
+    "default_offset": [
+      0,
+      0
+    ]
+  },
+  "semantics": [
+    "Child Ready consumes shared global rand_range even when parent is already opened",
+    "Source random frame is truncated then AnimatedSprite clamps, never modulo",
+    "Source ordered atlas frames and float32 idle clock; hidden nodes still process if playing",
+    "Parent Present opened state stops/hides; unopened shows/plays; stop keeps frame and resume resets timeout"
+  ],
+  "unverified": [
+    "Manual tests not run",
+    "Real tex3ds build pending",
+    "Emulator and hardware visual/timing verification pending"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "1ae95557bc9c046bc705202cf10b923f4b68a5da937205403262157dbafa3881",
+  "capabilities": [
+    "Complete 14 Door source onready/body signal binding",
+    "Source flag assignment without flags_updated",
+    "Signal-driven fade and exact deferred SceneTransition stage ordering",
+    "Source persistence/party/respawn ordering"
+  ],
+  "pending": [
+    "Destination SceneTree/Ready and native Fade must be provided by admitted live backends",
+    "Unused _special_guest AoOni method remains unsupported and rejects if requested",
+    "Nonempty destination init_params unsupported for this source scope"
+  ],
+  "source_review": "Door.gd and SceneTransition.gd audited with global persistence/respawn and native Door geometry. All 14 parameter lists empty. Cutscene entering latch retained. Destination preflight cannot run Ready or RNG; backend admission is required."
+}

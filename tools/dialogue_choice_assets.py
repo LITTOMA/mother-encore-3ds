@@ -91,6 +91,9 @@ def extract():
     from tools.storage_dialogue import load as storage_dialogue
     storage=storage_dialogue();groups.append(storage['choice_group'])
     for path in storage['sources']:ex.data(path)
+    from tools.basement_progression import load as basement_source
+    basement=basement_source(ROOT);groups.extend(basement['choice_groups'])
+    for path in basement['sources']:ex.data(path)
     recipe = dict(schema=1, commit=ex.lock['commit'], sources=ex.sources,
         scope='Original Dad-normal two-option panel; English source; no general dialogue UI translator',
         graph_sha256=hashlib.sha256(json.dumps(graph['program'], sort_keys=True).encode()).hexdigest(),

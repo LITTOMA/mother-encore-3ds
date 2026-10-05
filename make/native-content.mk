@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -17,7 +17,7 @@ catalog encounters: $(CONTENT_TASKS)
 # The room provenance admits the reviewed entry/effect packs. Lamp battle reads
 # the room, while room admission checks the preceding reviewed Lamp pack: do
 # not rewrite that pack concurrently with admission (the existing contract).
-room: audio effects doll-entry pillow-entry
+room: audio effects doll-entry pillow-entry basement basement-actors basement-music
 battle: room
 restore: room house
 items: items-check
@@ -30,10 +30,20 @@ drawer: house
 storage: items
 item-details: items
 field-equipment: items item-details
+field-psi: items
 item-use: items
-session: drawer items storage item-use
+session: drawer items storage item-use basement
 
-audio: item-use
+basement:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/basement_progression.py compile
+sparkles:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/present_sparkles.py verify
+basement-actors:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/basement_actor_assets.py verify
+basement-music:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/basement_music_regions.py compile
+
+audio: item-use basement field-psi
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/restore_audio.py
 bars:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/blackbars_assets.py compile
@@ -67,6 +77,8 @@ storage:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/native_storage.py compile
 item-details:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/item_details.py compile
+field-psi:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_psi.py compile
 field-equipment:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_equipment.py compile
 item-use:

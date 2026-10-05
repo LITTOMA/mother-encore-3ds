@@ -247,7 +247,7 @@ inline bool FieldEquipmentRenderer::draw(const Menu& menu,const BattleRenderer& 
                     else {const auto* icon=layout(state.stats[i]==menu.preview_stats()[i]?Role::BoostEmpty:menu.preview_stats()[i]>state.stats[i]?Role::BoostBetter:Role::BoostLower);if(!icon)return fail("Field equipment boost binding missing");l.kind=uint32_t(Kind::Sprite);l.resource=icon->resource;l.frame=icon->frame;if(!art(l,dx,y))return false;}
                 }break;
             case Role::PauseCursor:
-                if(phase==Phase::Pause&&!menu.items_suspended()){l.rect.x+=menu.cursor_column()*data_.parameter(Parameter::PauseColumnPitch);l.rect.y+=menu.cursor_row()*data_.parameter(Parameter::PauseRowPitch);l.frame=menu.cursor_frame();if(!art(l,dx,y))return false;}break;
+                if(phase==Phase::Pause&&!menu.items_suspended()&&!menu.psi_suspended()){l.rect.x+=menu.cursor_column()*data_.parameter(Parameter::PauseColumnPitch);l.rect.y+=menu.cursor_row()*data_.parameter(Parameter::PauseRowPitch);l.frame=menu.cursor_frame();if(!art(l,dx,y))return false;}break;
             case Role::SlotCursor:
                 if(phase==Phase::Slots){l.rect.y+=menu.cursor_row()*data_.parameter(Parameter::SlotPitch);l.frame=menu.cursor_frame();if(!art(l,dx,y))return false;}break;
             case Role::CandidateCursor:

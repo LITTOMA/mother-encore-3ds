@@ -46,7 +46,7 @@ HouseStoryCondition HouseView::story_condition(uint32_t i)const{auto*p=record(Ho
 bool HouseData::load(const uint8_t*input,size_t size,std::string&error){
  auto fail=[&](const char*s){error=s;return false;};
  if(!input||size<header_bytes||size>max_bytes)return fail("House pack size rejected");
- if(std::memcmp(input,"ENCHSE01",8)||(u32(input+8)!=4&&u32(input+8)!=5&&u32(input+8)!=6&&u32(input+8)!=7)||u32(input+12)!=size||u32(input+20)!=section_count||u32(input+24)!=u32(input+8)||u32(input+28)!=u32(input+8))return fail("House schema/capabilities/rules rejected");
+ if(std::memcmp(input,"ENCHSE01",8)||(u32(input+8)!=4&&u32(input+8)!=5&&u32(input+8)!=6&&u32(input+8)!=7&&u32(input+8)!=8)||u32(input+12)!=size||u32(input+20)!=section_count||u32(input+24)!=u32(input+8)||u32(input+28)!=u32(input+8))return fail("House schema/capabilities/rules rejected");
  for(unsigned i=52;i<64;++i)if(input[i])return fail("House reserved bytes rejected");
  if(crc(input,size)!=u32(input+16))return fail("House CRC mismatch");
  size_t end=header_bytes;
@@ -54,7 +54,7 @@ bool HouseData::load(const uint8_t*input,size_t size,std::string&error){
  if(end!=size)return fail("House trailing bytes rejected");
  HouseView v;v.bytes_=input;v.size_=size;auto count=[&](HouseSection s){return v.count(s);};
  auto capacity=[&](HouseSection s,uint32_t lo,uint32_t hi){return count(s)>=lo&&count(s)<=hi;};
- if(!capacity(HouseSection::Strings,1,65536)||!capacity(HouseSection::Doors,1,32)||!capacity(HouseSection::Npcs,1,16)||!capacity(HouseSection::Segments,1,u32(input+8)>=7?256:u32(input+8)>=6?128:64)||!capacity(HouseSection::Tokens,1,256)||count(HouseSection::Interaction)!=1||!capacity(HouseSection::Boundaries,0,64)||!capacity(HouseSection::Resources,1,64)||!capacity(HouseSection::Clips,5,256)||!capacity(HouseSection::Keys,1,2048)||count(HouseSection::Parameters)!=uint32_t(HouseParameter::Count)-1||!capacity(HouseSection::Overrides,0,128)||!capacity(HouseSection::Profiles,1,16)||!capacity(HouseSection::Dialogues,1,u32(input+8)>=7?128:64)||!capacity(HouseSection::OpenableDoors,1,32)||!capacity(HouseSection::StoryTriggers,1,64)||!capacity(HouseSection::StoryConditions,1,128))return fail("House capacity rejected");
+ if(!capacity(HouseSection::Strings,1,65536)||!capacity(HouseSection::Doors,1,32)||!capacity(HouseSection::Npcs,1,16)||!capacity(HouseSection::Segments,1,u32(input+8)>=7?256:u32(input+8)>=6?128:64)||!capacity(HouseSection::Tokens,1,u32(input+8)>=8?512:256)||count(HouseSection::Interaction)!=1||!capacity(HouseSection::Boundaries,0,64)||!capacity(HouseSection::Resources,1,64)||!capacity(HouseSection::Clips,5,256)||!capacity(HouseSection::Keys,1,2048)||count(HouseSection::Parameters)!=uint32_t(HouseParameter::Count)-1||!capacity(HouseSection::Overrides,0,128)||!capacity(HouseSection::Profiles,1,16)||!capacity(HouseSection::Dialogues,1,u32(input+8)>=7?128:64)||!capacity(HouseSection::OpenableDoors,1,32)||!capacity(HouseSection::StoryTriggers,1,64)||!capacity(HouseSection::StoryConditions,1,128))return fail("House capacity rejected");
  auto*pool=v.record(HouseSection::Strings,0);auto pool_size=count(HouseSection::Strings);if(pool[0]||pool[pool_size-1]||!utf8(pool,pool_size))return fail("House strings rejected");
  auto str=[&](uint32_t o){return o<pool_size&&(o==0||pool[o-1]==0)&&v.string(o).size()<=4096;};auto path=[&](uint32_t o){return str(o)&&safe_path(v.string(o));};
  auto span=[&](uint32_t first,uint32_t n,HouseSection s){return first<=count(s)&&n<=count(s)-first;};
@@ -66,7 +66,7 @@ bool HouseData::load(const uint8_t*input,size_t size,std::string&error){
  for(uint32_t i=0;i<count(HouseSection::Segments);++i){auto s=v.segment(i);if(!str(s.speaker)||!str(s.voice)||(s.voice&&!path(s.voice))||!s.token_count||!span(s.first_token,s.token_count,HouseSection::Tokens)||(s.flags!=3&&s.flags!=5))return fail("House segment rejected");for(uint32_t j=0;j<s.token_count;++j)if(!owned_tokens.insert(s.first_token+j).second)return fail("House token ownership rejected");}
  if(owned_segments.size()!=count(HouseSection::Segments)||owned_tokens.size()!=count(HouseSection::Tokens))return fail("House orphan text rejected");
  for(uint32_t i=0;i<count(HouseSection::Tokens);++i){auto t=v.token(i);
-  if(t.kind<1||t.kind>(u32(input+8)>=6?9u:u32(input+8)>=5?7u:2u)||!str(t.text))return fail("House text token rejected");
+  if(t.kind<1||(t.kind>(u32(input+8)>=6?9u:u32(input+8)>=5?7u:2u)&&!(u32(input+8)==8&&t.kind==11))||!str(t.text))return fail("House text token rejected");
   if(t.kind==1){if(v.string(t.text).empty())return fail("House empty literal");}
   else if(t.kind==3){const auto color=v.string(t.text);if(color.size()!=6)return fail("House color size");for(char ch:color)if(!((ch>='0'&&ch<='9')||(ch>='a'&&ch<='f')||(ch>='A'&&ch<='F')))return fail("House color value");}
   else if(t.kind==8){const auto amount=v.string(t.text);if(amount.empty()||amount.size()>8||amount.front()=='.'||amount.back()=='.')return fail("House delay size");double number=0;bool dot=false,decimal=false;double factor=.1;for(char ch:amount){if(ch=='.'&&!dot){dot=true;continue;}if(ch<'0'||ch>'9')return fail("House delay value");decimal=true;if(dot){number+=(ch-'0')*factor;factor*=.1;}else number=number*10+(ch-'0');}if(!decimal||number<=0||number>3600)return fail("House delay range");}

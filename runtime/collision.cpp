@@ -61,6 +61,11 @@ template<class Shape> void project(const Shape& shape,Vec2 position,Vec2 axis,fl
     }
 }
 template<class Shape> unsigned supports(const Shape& shape,Vec2 position,Vec2 normal,Vec2* output) {
+    if(shape.segment){
+        if(std::abs(dot(shape.normals[0],normal))>0.99998f){output[0]=add(position,shape.vertices[0]);output[1]=add(position,shape.vertices[1]);return 2;}
+        const unsigned index=dot(normal,sub(shape.vertices[1],shape.vertices[0]))>0?1:0;
+        output[0]=add(position,shape.vertices[index]);return 1;
+    }
     std::size_t index=0;float best=-std::numeric_limits<float>::infinity();
     for(std::size_t i=0;i<shape.vertices.size();++i) {
         const float d=dot(normal,shape.vertices[i]);
@@ -118,9 +123,23 @@ template<class Shape> bool solve(const Shape& a,Vec2 position,Vec2 motion,const 
         return true;
     };
     if(cast){const Vec2 n=normalized(motion);if(!test_axis(n)||!test_axis(tangent(n)))return false;}
-    for(Vec2 n:a.normals)if(!test_axis(n))return false;
-    for(Vec2 n:b.normals)if(!test_axis(n))return false;
-    if(safe_margin>0) {
+    if(b.segment){
+        // Godot segment/convex SAT visits the segment axis before each convex
+        // edge, then its two endpoint margin axes in that same edge order.
+        if(!test_axis(b.normals[0]))return false;
+        for(size_t i=0;i<a.normals.size();++i){
+            if(!test_axis(a.normals[i]))return false;
+            if(safe_margin>0)for(Vec2 bv:b.vertices){
+                const Vec2 delta=sub(add(position,a.vertices[i]),bv);
+                if(!test_axis(normalized(delta)))return false;
+                if(cast&&!test_axis(normalized(add(delta,motion))))return false;
+            }
+        }
+    }else{
+        for(Vec2 n:a.normals)if(!test_axis(n))return false;
+        for(Vec2 n:b.normals)if(!test_axis(n))return false;
+    }
+    if(safe_margin>0&&!b.segment) {
         for(Vec2 av:a.vertices)for(Vec2 bv:b.vertices) {
             const Vec2 delta=sub(add(position,av),bv);
             if(!test_axis(normalized(delta)))return false;
@@ -143,10 +162,19 @@ template<class Shape> bool nearby(const Shape& actor,Vec2 position,Vec2 motion,c
     return lo.x<=obstacle.maximum.x&&hi.x>=obstacle.minimum.x&&lo.y<=obstacle.maximum.y&&hi.y>=obstacle.minimum.y;
 }
 struct Motion { Vec2 position{},remainder{},normal{};bool collided=false; };
-template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obstacles,Vec2 from,Vec2 motion,Motion& result,float margin) {
+template<class Shape> void record_query(const Shape& actor,Vec2 position,Vec2 motion,float grow,MotionQueryBounds* bounds){
+    if(!bounds)return;
+    const Vec2 lo{position.x+actor.minimum.x+std::min(0.0f,motion.x)-grow,position.y+actor.minimum.y+std::min(0.0f,motion.y)-grow};
+    const Vec2 hi{position.x+actor.maximum.x+std::max(0.0f,motion.x)+grow,position.y+actor.maximum.y+std::max(0.0f,motion.y)+grow};
+    if(!bounds->initialized){*bounds={lo,hi,true};return;}
+    bounds->minimum.x=std::min(bounds->minimum.x,lo.x);bounds->minimum.y=std::min(bounds->minimum.y,lo.y);
+    bounds->maximum.x=std::max(bounds->maximum.x,hi.x);bounds->maximum.y=std::max(bounds->maximum.y,hi.y);
+}
+template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obstacles,Vec2 from,Vec2 motion,Motion& result,float margin,MotionQueryBounds* queries) {
     const float minimum_depth=margin*0.05f;
     Vec2 position=from;bool recovered=false;
     for(unsigned attempt=0;attempt<4;++attempt) {
+        record_query(actor,position,{},margin,queries);
         Contacts contacts;
         for(const auto& obstacle:obstacles)if(nearby(actor,position,{},obstacle,margin))solve(actor,position,{},obstacle,margin,&contacts);
         if(contacts.overflow)return false;
@@ -162,6 +190,7 @@ template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obs
         if(!bounded(position))return false;
     }
     float safe=1,unsafe=1;
+    record_query(actor,position,motion,margin,queries);
     for(const auto& obstacle:obstacles) {
         if(!nearby(actor,position,motion,obstacle,margin)||!solve(actor,position,motion,obstacle,0))continue;
         if(solve(actor,position,{},obstacle,0)){safe=unsafe=0;break;}
@@ -179,6 +208,7 @@ template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obs
     Vec2 normal{};float best_length=0;
     if(recovered||safe<1) {
         const Vec2 contact_position=add(position,mul(motion,unsafe));
+        record_query(actor,contact_position,{},margin,queries);
         const float allowed_depth=std::min(length(motion),minimum_depth);
         for(const auto& obstacle:obstacles) {
             if(!nearby(actor,contact_position,{},obstacle,margin))continue;
@@ -231,6 +261,36 @@ bool StaticMotionSolver::configure(const ConvexPolygon& actor,const std::vector<
     for(const auto& polygon:obstacles){Shape shape;if(!append(polygon,shape))return false;obstacles_.push_back(shape);}
     margin_=margin;valid_=true;return true;
 }
+bool StaticMotionSolver::prepare_source_obstacle(PointRange points,StaticObstacleKind kind,Shape& result){
+    if(kind==StaticObstacleKind::Convex)return prepare(points,result);
+    const bool segment=kind==StaticObstacleKind::Segment;
+    if((!segment&&kind!=StaticObstacleKind::NativeDegenerateConvex)||(segment?points.size()!=2:points.size()<3||points.size()>64))return false;
+    Shape shape;shape.vertices=points;shape.segment=segment;shape.minimum=shape.maximum=points[0];
+    double area=0;
+    for(size_t i=0;i<points.size();++i){const auto a=points[i],b=points[(i+1)%points.size()];if(!bounded(a))return false;area+=double(a.x)*b.y-double(a.y)*b.x;
+        shape.minimum.x=std::min(shape.minimum.x,a.x);shape.minimum.y=std::min(shape.minimum.y,a.y);shape.maximum.x=std::max(shape.maximum.x,a.x);shape.maximum.y=std::max(shape.maximum.y,a.y);
+    }
+    if(!segment){
+        if(std::abs(area)>epsilon)return false;
+        Vec2 direction{};for(size_t i=1;i<points.size();++i)if(!zero(sub(points[i],points[0]))){direction=sub(points[i],points[0]);break;}
+        for(Vec2 p:points)if(std::abs(cross(direction,sub(p,points[0])))>epsilon)return false;
+    }
+    const auto first=uint32_t(normal_cache_.size());
+    // ConvexPolygonShape2DSW::set_data keeps original order and zero normals.
+    const auto normals=segment?size_t(1):points.size();
+    for(size_t i=0;i<normals;++i)normal_cache_.push_back(normalized(tangent(sub(points[(i+1)%points.size()],points[i]))));
+    shape.normals={nullptr,normal_cache_.data(),first,uint32_t(normals),false};result=shape;return true;
+}
+bool StaticMotionSolver::configure_geometry(const ConvexPolygon& actor,const std::vector<StaticObstacle>& obstacles,float margin){
+    valid_=false;actor_={};obstacles_.clear();vertex_cache_.clear();normal_cache_.clear();content_={};
+    if(!std::isfinite(margin)||margin<0||margin>100||obstacles.size()>4096||actor.vertices.size()>64)return false;
+    size_t total=actor.vertices.size();for(const auto& p:obstacles){if(p.vertices.size()>64)return false;total+=p.vertices.size();}
+    vertex_cache_.reserve(total);normal_cache_.reserve(total);obstacles_.reserve(obstacles.size());
+    auto append=[&](const std::vector<Vec2>& points){const auto first=uint32_t(vertex_cache_.size());vertex_cache_.insert(vertex_cache_.end(),points.begin(),points.end());return PointRange{nullptr,vertex_cache_.data(),first,uint32_t(points.size()),false};};
+    if(!prepare(append(actor.vertices),actor_))return false;
+    for(const auto& polygon:obstacles){Shape shape;if(!prepare_source_obstacle(append(polygon.vertices),polygon.kind,shape))return false;obstacles_.push_back(shape);}
+    margin_=margin;valid_=true;return true;
+}
 bool StaticMotionSolver::configure_room(const RoomView& content,const std::vector<uint32_t>& active,const std::vector<Vec2>& offsets) {
     valid_=false;actor_={};obstacles_.clear();vertex_cache_.clear();normal_cache_.clear();
     if(!content.valid()||active.size()>4096||(!offsets.empty()&&offsets.size()!=content.polygon_count()))return false;
@@ -244,11 +304,19 @@ bool StaticMotionSolver::configure_room(const RoomView& content,const std::vecto
     margin_=content.rule_f32(RoomRuleKey::ActorCollisionSafeMargin);valid_=true;return true;
 }
 bool StaticMotionSolver::slide(Vec2 position,Vec2 velocity,SlideResult& result) const {
+    return slide_impl(position,velocity,result,nullptr);
+}
+bool StaticMotionSolver::slide_with_bounds(Vec2 position,Vec2 velocity,SlideResult& result,MotionQueryBounds& bounds)const{
+    SlideResult candidate;MotionQueryBounds visited;
+    if(!slide_impl(position,velocity,candidate,&visited))return false;
+    result=candidate;bounds=visited;return true;
+}
+bool StaticMotionSolver::slide_impl(Vec2 position,Vec2 velocity,SlideResult& result,MotionQueryBounds* queries) const {
     if(!valid_||!bounded(position)||!bounded(velocity))return false;
     Vec2 motion=mul(velocity,1.0f/60.0f);
     for(unsigned iteration=0;iteration<4;++iteration) {
         Motion moved;
-        if(!move(actor_,obstacles_,position,motion,moved,margin_))return false;
+        if(!move(actor_,obstacles_,position,motion,moved,margin_,queries))return false;
         position=moved.position;
         if(!moved.collided)break;
         motion=projected_slide(moved.remainder,moved.normal);

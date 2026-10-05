@@ -1,0 +1,48 @@
+#include "encore/field_enemy.hpp"
+#include "encore/content.hpp"
+#include "encore/crc32.hpp"
+#include "encore/utf8.hpp"
+#include <algorithm>
+#include <cmath>
+#include <cstring>
+#include <set>
+namespace encore::upstream {
+namespace {
+uint32_t u32(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
+int32_t i32(const uint8_t*p){const auto v=u32(p);int32_t r;std::memcpy(&r,&v,4);return r;}
+float f32(const uint8_t*p){const auto v=u32(p);float r;std::memcpy(&r,&v,4);return r;}
+bool reject(std::string&e,const char*s){e=s;return false;}
+bool path(const std::string&s){return !s.empty()&&s.front()!='/'&&s.find('\\')==s.npos&&s.find(':')==s.npos&&s.find("..") ==s.npos;}
+}
+float FieldEnemyData::parameter(FieldEnemyParameter p)const{const auto i=uint32_t(p);return valid_&&i&&i<=parameters_.size()?parameters_[i-1]:0;}
+const FieldEnemyAnimationBinding* FieldEnemyData::animation(FieldEnemyAnimation kind)const{for(const auto&v:animations_)if(v.kind==kind)return &v;return nullptr;}
+bool FieldEnemyData::load_file(const char*path,std::string&e){std::vector<uint8_t>b;if(!encore::read_file(path,b,2*1024*1024,e))return false;return load(b.data(),b.size(),e);}
+bool FieldEnemyData::load(const uint8_t*p,size_t n,std::string&e){
+ if(!p||n<224||n>2*1024*1024||std::memcmp(p,"ENCFEN01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=2||u32(p+24)!=1||u32(p+28)!=7)return reject(e,"Field Enemy header/version/capability/rules rejected");
+ uint8_t zero[4]{};auto checksum=encore::crc32_update(0xffffffffu,p,16);checksum=encore::crc32_update(checksum,zero,4);checksum=encore::crc32_update(checksum,p+20,n-20)^0xffffffffu;if(checksum!=u32(p+16))return reject(e,"Field Enemy CRC rejected");
+ if(!std::any_of(p+32,p+52,[](uint8_t b){return b!=0;})||!u32(p+52))return reject(e,"Field Enemy source/scene identity missing");
+ for(size_t i=56;i<80;++i)if(p[i])return reject(e,"Field Enemy reserved header rejected");for(size_t i=192;i<224;++i)if(p[i])return reject(e,"Field Enemy reserved directory rejected");
+ const uint32_t strides[]={1,8,100,60,40,44,28};uint32_t offsets[7]{},counts[7]{};size_t end=224;
+ for(size_t k=0;k<7;++k){const auto*r=p+80+k*16;offsets[k]=u32(r+4);counts[k]=u32(r+8);if(u32(r)!=k+1||u32(r+12)!=strides[k]||offsets[k]!=end||counts[k]>65536||uint64_t(counts[k])*strides[k]>n-end)return reject(e,"Field Enemy section bounds/stride/order rejected");end+=size_t(counts[k])*strides[k];}
+ if(end!=n||!counts[0]||counts[1]!=uint32_t(FieldEnemyParameter::SafeMargin)||!counts[2]||counts[2]>256||!counts[3]||counts[3]>4096||!counts[4]||counts[4]>4096||counts[5]!=23||counts[6]!=3)return reject(e,"Field Enemy section counts/trailing data rejected");
+ const char*pool=reinterpret_cast<const char*>(p+offsets[0]);if(pool[0]||pool[counts[0]-1])return reject(e,"Field Enemy string pool rejected");std::set<uint32_t>starts;size_t cursor=0;
+ while(cursor<counts[0]){starts.insert(uint32_t(cursor));size_t stop=cursor;while(stop<counts[0]&&pool[stop])++stop;if(stop==counts[0]||stop-cursor>4096)return reject(e,"Field Enemy unterminated string");std::string_view text(pool+cursor,stop-cursor);size_t at=0;uint32_t cp;while(at<text.size())if(!encore::utf8_next(text,at,cp)||cp<32)return reject(e,"Field Enemy invalid UTF8/control");cursor=stop+1;}
+ auto string=[&](uint32_t offset,std::string&out){if(!starts.count(offset)||!offset)return false;out=pool+offset;return true;};auto finite=[](float v){return std::isfinite(v)&&std::abs(v)<=1000000;};FieldEnemyData next;next.scene_id_=u32(p+52);next.capabilities_=u32(p+20);std::copy(p+32,p+52,next.source_pin_.begin());
+ for(uint32_t i=0;i<counts[1];++i){const auto*r=p+offsets[1]+i*8;if(u32(r)!=i+1||!finite(f32(r+4)))return reject(e,"Field Enemy parameter identity/value rejected");next.parameters_.push_back(f32(r+4));}
+ auto param=[&](FieldEnemyParameter x){return next.parameters_[uint32_t(x)-1];};for(auto x:{FieldEnemyParameter::AppearanceModulus,FieldEnemyParameter::WanderAxisModulus,FieldEnemyParameter::UnderlevelGap,FieldEnemyParameter::ExplosionModulus,FieldEnemyParameter::IncapacitatedDivisor})if(param(x)<1||std::floor(param(x))!=param(x))return reject(e,"Field Enemy integral RNG/rule parameter rejected");
+ for(auto x:{FieldEnemyParameter::MinMovementLength,FieldEnemyParameter::MinDisinterestTime,FieldEnemyParameter::Knockback,FieldEnemyParameter::KnockbackDeceleration,FieldEnemyParameter::UnderlevelFlashLength,FieldEnemyParameter::UnderlevelFlashInterval,FieldEnemyParameter::DamageFlashLength,FieldEnemyParameter::StunLength})if(param(x)<=0)return reject(e,"Field Enemy nonpositive timer/movement parameter rejected");
+ if(param(FieldEnemyParameter::ReadyDirectionMin)>param(FieldEnemyParameter::ReadyDirectionMax)||param(FieldEnemyParameter::ReadyTimerMin)<=0||param(FieldEnemyParameter::WanderTimerDeviation)<0||param(FieldEnemyParameter::UnderlevelFlashDelay)<0||param(FieldEnemyParameter::BashVariance)<0)return reject(e,"Field Enemy interval/variance rejected");
+ std::set<std::string>enemy_names;
+ for(uint32_t i=0;i<counts[2];++i){const auto*r=p+offsets[2]+i*100;FieldEnemyProfile v;v.id=u32(r);if(v.id!=i+1||!string(u32(r+4),v.enemy)||!string(u32(r+8),v.source)||!string(u32(r+12),v.sprite)||!string(u32(r+16),v.animation)||!path(v.enemy)||!path(v.source)||!path(v.sprite)||!path(v.animation)||!enemy_names.insert(v.enemy).second)return reject(e,"Field Enemy profile identities rejected");
+ int32_t*stats[]={&v.level,&v.hp,&v.max_hp,&v.pp,&v.max_pp,&v.defense,&v.experience,&v.cash};for(size_t k=0;k<8;++k){*stats[k]=i32(r+20+k*4);if(*stats[k]<0||*stats[k]>1000000)return reject(e,"Field Enemy stats rejected");}if(!v.level||v.hp>v.max_hp||v.pp>v.max_pp)return reject(e,"Field Enemy HP/PP bounds rejected");
+ for(size_t k=0;k<12;++k)if(!finite(f32(r+52+k*4)))return reject(e,"Field Enemy profile finite values rejected");v.sprite_offset={f32(r+52),f32(r+56)};if((f32(r+60)!=0&&f32(r+60)!=1)||(f32(r+64)!=0&&f32(r+64)!=1))return reject(e,"Field Enemy profile booleans rejected");v.shadow=f32(r+60)!=0;v.returning=f32(r+64)!=0;v.max_distance=f32(r+68);v.max_speed=f32(r+72);v.acceleration=f32(r+76);v.friction=f32(r+80);v.walk_frequency=f32(r+84);v.wander_radius=f32(r+88);v.chase_delay=f32(r+92);v.return_delay=f32(r+96);
+ if(v.max_distance<0||v.max_speed<=0||v.max_speed>1024||v.acceleration<=0||v.friction<=0||v.walk_frequency<0||v.wander_radius<=0||v.chase_delay<=0||v.return_delay<=0)return reject(e,"Field Enemy profile movement/timer bounds rejected");next.profiles_.push_back(std::move(v));}
+ std::set<uint32_t>ids,ordinals;std::set<std::string>nodes;
+ for(uint32_t i=0;i<counts[3];++i){const auto*r=p+offsets[3]+i*60;FieldEnemySpawner v;v.id=u32(r);v.ready_ordinal=u32(r+8);v.profile=u32(r+12);v.flags=u32(r+16);v.appearance_rate=u32(r+20);if(!v.id||!ids.insert(v.id).second||!string(u32(r+4),v.node)||!path(v.node)||!nodes.insert(v.node).second||!ordinals.insert(v.ready_ordinal).second||v.profile>=next.profiles_.size()||v.flags>7||v.appearance_rate>uint32_t(param(FieldEnemyParameter::AppearanceModulus)))return reject(e,"Field Enemy spawner policy rejected");for(size_t k=0;k<9;++k)if(!finite(f32(r+24+k*4)))return reject(e,"Field Enemy spawner finite bounds rejected");v.position={f32(r+24),f32(r+28)};v.initial_direction={f32(r+32),f32(r+36)};v.cooldown=f32(r+40);for(size_t k=0;k<4;++k)v.visibility_rect[k]=f32(r+44+k*4);if(v.cooldown<=0||v.visibility_rect[2]<=0||v.visibility_rect[3]<=0)return reject(e,"Field Enemy spawner cooldown/notifier rejected");next.spawners_.push_back(std::move(v));}
+ std::set<std::string>source_paths;for(uint32_t i=0;i<counts[4];++i){const auto*r=p+offsets[4]+i*40;FieldEnemySource v;if(u32(r)!=i+1||!string(u32(r+4),v.path)||!path(v.path)||!source_paths.insert(v.path).second||!std::any_of(r+8,r+40,[](uint8_t b){return b!=0;}))return reject(e,"Field Enemy source reference rejected");std::memcpy(v.sha256,r+8,32);next.sources_.push_back(std::move(v));}
+ for(const auto&v:next.profiles_)if(!source_paths.count(v.source)||!source_paths.count(v.sprite)||!source_paths.count(v.animation))return reject(e,"Field Enemy dangling source references rejected");
+ uint32_t last_role=0,last_ordinal=0;for(uint32_t i=0;i<counts[5];++i){const auto*r=p+offsets[5]+i*44;FieldEnemyGeometry v;v.id=u32(r);v.role=u32(r+4);v.ordinal=u32(r+8);v.mask=u32(r+12);v.layer=u32(r+16);v.flags=u32(r+20);if(v.id!=i+1||v.role<1||v.role>9||v.mask>0xffff||v.layer>0xffff||v.flags>1||v.role<last_role||(v.role==last_role?v.ordinal!=last_ordinal+1:v.ordinal!=0))return reject(e,"Field Enemy geometry role/order rejected");for(size_t k=0;k<5;++k)if(!finite(f32(r+24+k*4)))return reject(e,"Field Enemy geometry nonfinite rejected");v.offset={f32(r+24),f32(r+28)};v.rotation=f32(r+32);v.value={f32(r+36),f32(r+40)};last_role=v.role;last_ordinal=v.ordinal;next.geometry_.push_back(v);}if(last_role!=9)return reject(e,"Field Enemy geometry incomplete");
+ for(uint32_t i=0;i<counts[6];++i){const auto*r=p+offsets[6]+i*28;FieldEnemyAnimationBinding v;v.kind=FieldEnemyAnimation(u32(r));if(u32(r)!=i+1||!string(u32(r+4),v.name)||!string(u32(r+8),v.source)||!string(u32(r+12),v.node)||!string(u32(r+16),v.signal)||!string(u32(r+20),v.handler)||!path(v.source)||!path(v.node)||!source_paths.count(v.source)||!finite(f32(r+24))||f32(r+24)<=0)return reject(e,"Field Enemy animation binding rejected");v.duration=f32(r+24);if((i==0&&v.duration!=param(FieldEnemyParameter::DamageFlashLength))||(i==1&&v.duration!=param(FieldEnemyParameter::StunLength)))return reject(e,"Field Enemy animation duration binding mismatch");next.animations_.push_back(std::move(v));}
+ next.valid_=true;*this=std::move(next);e.clear();return true;
+}
+}

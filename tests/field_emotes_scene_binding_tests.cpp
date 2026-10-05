@@ -1,0 +1,11 @@
+#include "encore/field_scene_host.hpp"
+#include <algorithm>
+#include <cassert>
+#include <fstream>
+#include <iterator>
+using namespace encore::upstream;
+namespace{std::vector<uint8_t>read(const char*p){std::ifstream f(p,std::ios::binary);return{std::istreambuf_iterator<char>(f),{}};}uint32_t u32(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}}
+// Manual only: lifecycle pack, emote pack, sprite pack. This does not declare
+// all Podunk Ready implemented, nor replace actual GPU/audio Host admission.
+int main(int argc,char**argv){assert(argc==4);std::string e;auto b=read(argv[1]);assert(b.size()>128);FieldIdentity id;id.scene_id=u32(b.data()+36);std::copy_n(b.data()+40,20,id.upstream_commit.begin());std::copy_n(b.data()+60,32,id.source_sha256.begin());FieldSceneData scene;assert(scene.load(b.data(),b.size(),id,e));FieldEmoteData emotes;assert(emotes.load_file(argv[2],e));FieldSpriteData sprites;assert(sprites.load_file(argv[3],e));unsigned count=0,nullable=0;for(const auto&n:emotes.records()){bool found=false;for(uint32_t i=0;i<scene.ready_count();++i){auto row=scene.ready(i);if(row.id!=n.id)continue;found=true;assert(row.role==FieldSceneRole::Emotes&&row.ordinal==n.ready_ordinal&&scene.string(row.node)==n.node);auto script=scene.string(row.script);auto split=script.find("::");assert(split!=script.npos);std::array<uint8_t,32>a{},c{};assert(scene.source_hash(script.substr(0,split),a)&&emotes.source_hash(std::string(script.substr(0,split)),c)&&a==c);}assert(found);++count;if(n.object_id){auto p=sprites.record(n.object_id);assert(p&&p->id==n.parent_id&&p->ready_ordinal>n.ready_ordinal&&p->kind==FieldSpriteKind::Character);}else{++nullable;assert(n.object_path.empty()&&!n.direction_id);}}
+assert(count==71&&nullable==4&&!scene.scene_admitted());std::array<uint8_t,32>h{};assert(!emotes.source_hash("unknown",h));FieldSceneHost unbound;uint32_t object=99;bool exists=true;assert(!unbound.emote_object(emotes.records().front(),exists,object,e));assert(!unbound.emote_sprite_changed(sprites.records().front().id,e));assert(!unbound.idle_emotes(0,e));auto wrong=id;wrong.source_sha256[0]^=1;assert(!scene.load(b.data(),b.size(),wrong,e));}

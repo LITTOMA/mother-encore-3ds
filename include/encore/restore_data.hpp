@@ -20,6 +20,7 @@ struct RestoreNpcEventPosition {
 struct RestoreMusicArea {
  uint32_t id=0,room_resource_index=kRoomNoIndex,room_resource_id=0;
  std::string source_path,resource_path;
+ std::array<uint8_t,32> source_sha256{};
  bool supported=false;
  Vec2 center{},extents{};
  double volume_db=0,fadein_seconds=0,fadeout_seconds=0;

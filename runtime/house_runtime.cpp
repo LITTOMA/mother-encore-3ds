@@ -202,6 +202,22 @@ bool HouseRuntime::advance_openables(double delta){
 }
 bool HouseRuntime::interact_openable(uint32_t index){
  auto& state=openables_[index];const auto data=content_.openable_door(index);if(state.unlocked)return true;
+ if(basement_&&index==basement_door_){
+  const auto&binding=basement_->door();const auto*key=basement_->key_item(binding.key_id);bool owned=false;
+  if(!key||!basement_host_.key_owned(*key,owned,basement_error_))return fail(basement_error_.c_str());
+  if(owned){
+   // Source _use_key: flag write without flags_updated, Action, unlock,
+   // optional inventory removal, then global.item and the feedback programme.
+   if(!world_->set_story_flag(binding.flag,true,false))return fail("Basement door flag write rejected");
+   event(HouseEventKind::OpenableFlagWritten,index);
+   if(!open_openable(index))return false;
+   state.unlocked=true;state.collision_pending=true;state.collision_value=true;
+   event(HouseEventKind::OpenableUnlocked,index);
+   if(binding.remove_key&&!basement_host_.remove_key_item(*key,basement_error_))return fail(basement_error_.c_str());
+   if(!basement_host_.select_key_item(*key,basement_error_))return fail(basement_error_.c_str());
+  }
+  return begin_basement_program(owned?binding.opened:binding.locked,index);
+ }
  if(!content_.string(data.activates_flag).empty()||!content_.string(data.deactivates_flag).empty())return fail("Door flag notification side effects are not implemented");
  if(!world_->pause_for_house())return fail("Door dialogue pause rejected");
  if(!state.blocked||data.blocked_dialogue==house_no_index){phase_=HousePhase::Unsupported;error_="Unported key/item interaction; B returns control";last_safe_position_=world_->player().position;last_safe_direction_=world_->player().direction;return true;}
@@ -240,6 +256,75 @@ bool HouseRuntime::finish_door(){
 }
 uint32_t HouseRuntime::program_for_path(std::string_view path)const{
  const auto room=world_->content();for(uint32_t i=0;i<room.program_count();++i)if(room.string(room.program(i).source_path_string)==path)return i;return house_no_index;
+}
+bool HouseRuntime::bind_basement(const BasementProgressionData&data,const BasementActorData&actors,HouseBasementHost host,std::string&e){
+ auto reject=[&](const char*text){e=text;return false;};
+ if(!world_||!content_.valid()||!data.valid()||!actors.valid()||phase_!=HousePhase::Idle||story_pending()||presentation_->dialogue_active())return reject("Basement binding requires idle initialized House");
+ std::string pin;const char*hex="0123456789abcdef";for(unsigned i=32;i<52;++i){pin+=hex[content_.bytes()[i]>>4];pin+=hex[content_.bytes()[i]&15];}
+ if(!data.bind_reviewed_commit(pin,e)||actors.reviewed_commit()!=pin)return reject("Basement source pin mismatch");
+ if(!host.validate_key_item||!host.key_owned||!host.select_key_item||!host.remove_key_item||!host.grant_key_item||!host.validate_present_sound||!host.present_sound)return reject("Basement effect host incomplete");
+ const auto&door=data.door();const auto&present=data.present();uint32_t target=house_no_index;
+ for(uint32_t i=0;i<openables_.size();++i)if(content_.string(content_.openable_door(i).source_path)==door.node){if(target!=house_no_index)return reject("Ambiguous basement door binding");target=i;}
+ if(target==house_no_index)return reject("Basement door node absent from House");
+ const auto checked=content_.openable_door(target);const auto*key=data.key_item(door.key_id);const auto*item=data.key_item(present.key_id);
+ if(!key||!item||!item->grant||content_.string(checked.key)!=key->source||content_.string(checked.flag)!=door.flag||bool(checked.policy&uint32_t(HouseDoorPolicy::RemoveKey))!=door.remove_key||!content_.string(checked.activates_flag).empty()||!content_.string(checked.deactivates_flag).empty()||(checked.policy&uint32_t(HouseDoorPolicy::Blocked)))return reject("Basement door source binding mismatch");
+ for(const auto&path:{door.opened,door.locked,present.dialogue,present.empty})if(program_for_path(path)==house_no_index)return reject("Basement dialogue programme missing");
+ auto programme_source_matches=[&](std::string_view identity,std::string_view source){
+  const auto room=world_->content();const auto p=room.program(program_for_path(identity));
+  for(uint32_t i=0;i<p.command_count;++i){const auto c=room.command(p.first_command+i);if(c.opcode!=uint16_t(DialogueActionKind::ShowDialogue))continue;
+   for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d){const auto text=content_.dialogue(d);if(text.id==c.target_index&&content_.string(text.source_path)==source)return true;}
+  }return false;
+ };
+ if(!programme_source_matches(door.opened,content_.string(checked.opened_dialogue))||!programme_source_matches(door.locked,content_.string(checked.locked_dialogue)))return reject("Basement lock dialogue source binding mismatch");
+ if(present.is_object_flag||present.reset_when_leaving_area||present.reset_when_leaving_region)return reject("Unsupported basement Present flag lifecycle");
+ if(!validate_flag(door.flag,e)||!validate_flag(present.flag,e))return false;
+ const auto*animation=actors.animation(actors.present_animation_id());const auto*resource=actors.resource(actors.present_resource_id());
+ if(!animation||!resource||animation->resource_id!=resource->id||present.opened_frame>=resource->columns*resource->rows||present.closed_frame>=resource->columns*resource->rows||actors.present_sound_stop()>animation->length)return reject("Basement Present actor binding mismatch");
+ if(!host.validate_key_item(*key,e)||!host.validate_key_item(*item,e)||!host.validate_present_sound(actors,e))return false;
+ basement_=&data;basement_actors_=&actors;basement_host_=std::move(host);basement_door_=target;basement_present_={};basement_sound_playing_=basement_sound_pending_=false;e.clear();return true;
+}
+bool HouseRuntime::begin_basement_program(std::string_view path,uint32_t object){
+ const auto program=program_for_path(path);if(program==house_no_index)return fail("Basement source programme absent");
+ if(!world_->pause_for_house())return fail("Basement programme pause rejected");
+ story_original_npc_=house_no_index;story_executing_=true;active_=object;phase_=HousePhase::StoryRunning;
+ if(!world_->begin_house_program(program))return fail("Basement source programme rejected");
+ event(HouseEventKind::DialogueOpened,object);return true;
+}
+bool HouseRuntime::basement_present_opened()const{return basement_&&world_&&world_->story_flag(basement_->present().flag);}
+uint32_t HouseRuntime::basement_present_frame()const{
+ if(!basement_||!basement_actors_)return 0;
+ if(basement_present_.visible)return basement_actors_->frame(basement_present_.animation_id,basement_present_.elapsed);
+ return basement_present_opened()?basement_->present().opened_frame:basement_->present().closed_frame;
+}
+const BasementActorResource*HouseRuntime::basement_present_resource()const{return basement_actors_?basement_actors_->resource(basement_actors_->present_resource_id()):nullptr;}
+bool HouseRuntime::interact_basement_present(){
+ if(!basement_)return fail("Basement Present is not admitted");
+ if(!basement_->present().can_pickup)return true;
+ const auto&binding=basement_->present();const auto player=world_->player();Vec2 facing{binding.geometry.x-player.position.x,binding.geometry.y-player.position.y};
+ if(((std::abs(facing.x)>std::abs(facing.y))||!(binding.player_turn&2))&&facing.x!=0&&(binding.player_turn&1))facing={sign(facing.x),0};else if((binding.player_turn&2)&&facing.y!=0)facing={0,sign(facing.y)};else facing=player.direction;
+ if(!world_->set_house_direction(facing))return fail("Basement Present turn rejected");
+ // Present._warn_empty opens only the source empty programme. Reinspection
+ // neither restarts the unwrapping track nor constructs another item UID.
+ if(basement_present_opened())return begin_basement_program(binding.empty,binding.stable_id);
+ if(!begin_basement_actor(*basement_actors_,basement_actors_->present_animation_id(),basement_present_,basement_error_))return fail(basement_error_.c_str());
+ basement_sound_pending_=true;
+ const auto*item=basement_->key_item(binding.key_id);
+ if(!item||!basement_host_.grant_key_item(*item,basement_error_))return fail(basement_error_.c_str());
+ if(!world_->set_story_flag(binding.flag,true,binding.emit_flag_updated_signal))return fail("Basement Present flag rejected");
+ // The renderer observes opened=true immediately (Sparkles stop/hide), while
+ // the independent animation retains its source keys and audio stop clock.
+ return begin_basement_program(binding.dialogue,binding.stable_id);
+}
+bool HouseRuntime::advance_basement_present(double delta){
+ if(!basement_||!basement_present_.visible)return true;
+ const auto old=basement_present_.elapsed;
+ // AnimationPlayer.play changes the clip immediately; its time-zero audio
+ // track is applied on the next idle animation update, without advance(0).
+ if(basement_sound_pending_){if(!basement_host_.present_sound(*basement_actors_,true,basement_error_))return fail(basement_error_.c_str());basement_sound_pending_=false;basement_sound_playing_=true;}
+ if(!advance_basement_actor(*basement_actors_,delta,basement_present_,basement_error_))return fail(basement_error_.c_str());
+ if(basement_sound_playing_&&old<basement_actors_->present_sound_stop()&&basement_present_.elapsed>=basement_actors_->present_sound_stop()){
+  if(!basement_host_.present_sound(*basement_actors_,false,basement_error_))return fail(basement_error_.c_str());basement_sound_playing_=false;
+ }return true;
 }
 bool HouseRuntime::bind_phone(PhoneRuntime&phone){
  if(!world_||!phone.valid())return fail("Phone model is not initialized");
@@ -336,7 +421,7 @@ bool HouseRuntime::resolve_npc_dialogue(uint32_t selected,uint32_t&first,uint32_
  return !unsupported&&(count||program!=house_no_index);
 }
 bool HouseRuntime::npc_interaction_supported(uint32_t i)const{uint32_t first=0,count=0,program=0,seen=0;return resolve_npc_dialogue(i,first,count,program,seen);}
-bool HouseRuntime::door_interaction_supported(uint32_t i)const{
+bool HouseRuntime::door_interaction_supported(uint32_t i)const{if(basement_&&i==basement_door_)return true;
  if(!content_.valid()||i>=openables_.size())return false;const auto&state=openables_[i];const auto d=content_.openable_door(i);
  return !state.unlocked&&state.blocked&&d.blocked_dialogue!=house_no_index&&content_.string(d.activates_flag).empty()&&content_.string(d.deactivates_flag).empty();
 }
@@ -390,6 +475,12 @@ bool HouseRuntime::interact(){
  if(phone_)for(uint32_t i=0;i<phone_->view().count(PhoneSection::Objects);++i){const auto object=phone_->view().object(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,object.interact_center,object.interact_extents,distance)&&distance<nearest){selected_phone=i;nearest=distance;selected=selected_door=house_no_index;}}
  uint32_t selected_inspection=house_no_index;
  if(inspections_)for(uint32_t i=0;i<inspections_.count(HouseInspectionSection::Objects);++i){if(!inspection_visible(i))continue;const auto object=inspections_.object(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,object.interact_center,object.interact_extents,distance)&&distance<nearest){selected_inspection=i;nearest=distance;selected=selected_door=selected_phone=house_no_index;}}
+
+ bool selected_present=false;
+ if(basement_){const auto&p=basement_->present();float distance=0;
+  if(ray_rect(origin,direction,rules.ray_length,Vec2{p.interaction.x,p.interaction.y},Vec2{p.interaction.z,p.interaction.w},distance)&&distance<nearest){selected_present=true;nearest=distance;selected=selected_door=selected_phone=selected_inspection=house_no_index;}
+ }
+ if(selected_present)return interact_basement_present();
  // Unsupported inspection programmes still own the nearest hit. Never ray
  // through one to an NPC/door/phone or to another object behind it.
  if(selected_inspection!=house_no_index)return interact_inspection(selected_inspection);
@@ -478,7 +569,7 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
   std::fill(story_process_.begin(),story_process_.end(),0);
   pending_contacts_.clear();
  }
- if(!process_npc_restores())return false;
+ if(!process_npc_restores()||!advance_basement_present(delta))return false;
  if(world_->stage()==OpeningStage::BattleRequested)return true;
  bool story_dialogue_input=false;
  if(world_->stage()==OpeningStage::ScriptRunning){

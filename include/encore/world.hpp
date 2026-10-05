@@ -8,6 +8,9 @@
 #include "encore/persistent_player.hpp"
 #include "encore/room_data.hpp"
 #include "encore/source_random.hpp"
+#include "encore/scene_motion.hpp"
+#include "encore/basement_progression.hpp"
+#include "encore/basement_actor_assets.hpp"
 #include <vector>
 namespace encore::upstream {
 enum class OpeningStage : uint8_t { Walking, ScriptRunning, BattleRequested, Error };
@@ -24,6 +27,8 @@ struct OpeningBattleRequest {
     bool keep_actor_after_battle=false;
     const char* enemy="";const char* win_flag="";
 };
+struct OpeningMusicRegionCall {bool play=false;uint32_t node_string=kRoomNoIndex;double fadeout_seconds=0;};
+using OpeningMusicRegionValidator=std::function<bool(std::string_view,std::string_view,bool,double,std::string&)>;
 struct OpeningSceneCall {uint32_t object=0;};
 struct OpeningTraceEvent { DialogueAction action; uint64_t physics_tick,idle_frame; };
 class OpeningWorld final : private DialogueSink {
@@ -41,6 +46,15 @@ public:
     PersistentPlayerOwner retain_player()const{return persistent_player_;}
     bool retains_existing_player()const{return player_read_only_;}
     bool initialize(const RoomView& content,Vec2 viewport={400,240});
+    // Bind before initialization. The SceneHost owns all referenced data and
+    // backend lifetimes. Initialization cross-checks source pin and scene.
+    bool bind_basement(const BasementProgressionData&,const BasementActorData&,BasementProgressionHost,std::string&);
+    bool bind_music_region_validator(OpeningMusicRegionValidator,std::string&);
+    std::vector<OpeningMusicRegionCall> take_music_region_calls(){auto out=std::move(music_region_calls_);music_region_calls_.clear();return out;}
+    bool bind_scene_motion(const SceneMotionBackend&,std::string&);
+    const BasementActorResource*special_actor_resource(uint32_t index)const;
+    uint32_t special_actor_frame(uint32_t index)const;
+    BattleValue basement_white_fade()const{return white_fade_active_&&basement_.bound()?basement_.data()->white_fade(white_fade_elapsed_):BattleValue{};}
     // Construct on a fresh owner; the caller commits that owner only after all initialization succeeds.
     bool initialize_restored(const RoomView&,const std::vector<bool>& story_flags,const std::vector<bool>&reviewed_mutations,Vec2 position,Vec2 direction,Vec2 viewport={400,240});
     bool accept_battle_entry();
@@ -130,6 +144,8 @@ private:
     std::vector<OpeningEffectRequest> effects_;
     std::vector<bool> story_hides_;
     std::vector<OpeningSceneCall>scene_calls_;
+    OpeningMusicRegionValidator music_region_validator_;
+    std::vector<OpeningMusicRegionCall>music_region_calls_;
     struct FlaggedBody {uint32_t binding=0;FlagLandmarkState state;};
     std::vector<FlaggedBody>flagged_bodies_;
     bool initialize_state(const RoomView&,Vec2 viewport,const std::vector<bool>*story_flags,const std::vector<bool>*reviewed_mutations,Vec2 position,Vec2 direction);
@@ -148,6 +164,10 @@ private:
     RoomView content_;
     Vec2 viewport_{400,240};double last_idle_delta_=0;bool battle_accepted_=false;
     StaticMotionSolver solver_;
+    const SceneMotionBackend*scene_motion_=nullptr;std::string motion_scene_,motion_commit_,host_error_;
+    BasementProgressionConsumer basement_;const BasementActorData*basement_actors_=nullptr;
+    std::vector<BasementActorPlayback>special_actors_;
+    bool white_fade_active_=false;double white_fade_elapsed_=0;
     std::vector<uint32_t> active_polygons_;
     WorldFlags flags_;
     DialoguePlayer dialogue_;

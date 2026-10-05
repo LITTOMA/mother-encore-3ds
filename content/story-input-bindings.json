@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "kind": "encore.story-input.native-adapter",
+  "scope": "3DS labels for source dialogue input actions, cross-bound to the checked FieldEquipment input masks; native adaptation, not upstream joypad keycodes",
+  "bindings": [
+    {
+      "action": "ui_select",
+      "parameter": "OpenMask",
+      "mask": 8,
+      "label": "START"
+    },
+    {
+      "action": "ui_accept",
+      "parameter": "ConfirmMask",
+      "mask": 1,
+      "label": "A"
+    },
+    {
+      "action": "ui_toggle",
+      "parameter": "CancelMask",
+      "mask": 2,
+      "label": "B"
+    }
+  ]
+}

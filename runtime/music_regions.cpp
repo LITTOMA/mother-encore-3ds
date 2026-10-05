@@ -52,7 +52,7 @@ int MusicRegionController::allocate(std::string&e){for(size_t i=0;i<voices_.size
 void MusicRegionController::tween(int slot,float target,double seconds,MusicRegionCurve curve){auto&v=voices_[slot];v.start_db=v.gain_db;v.target_db=target;v.elapsed=0;v.duration=seconds;v.curve=curve;v.tweening=seconds>0;if(!v.tweening)v.gain_db=target;}
 bool MusicRegionController::observe_external_player(MusicExternalPlayer player,std::string&e){
  if(!data_||(!player.present&&player.playing)||(!player.generation&&(player.present||player.playing))||player.generation<external_.generation)return fail(e,"Invalid or stale external music player identity");
- if(player.generation>external_.generation){if(!player.present)return fail(e,"Unknown external music player removal");external_order_=++next_order_;}
+ if(player.generation>external_.generation){if(!player.present)return fail(e,"Unknown external music player removal");if(external_.present)external_history_ambiguous_=true;external_order_=++next_order_;}
  else if(player.present&&!external_.present)return fail(e,"Removed external music identity cannot be reused");
  external_=player;e.clear();return true;
 }
@@ -87,6 +87,30 @@ bool MusicRegionController::enter(uint64_t epoch,std::string_view p,const MusicR
  auto candidate=*this;auto&s=candidate.states_[size_t(i)];s.inside=true;
  if(!s.registered&&!candidate.play(uint32_t(i),e))return false;
  *this=std::move(candidate);e.clear();return true;
+}
+bool MusicRegionController::play_explicit(uint64_t epoch,std::string_view p,std::string&e){
+ if(!data_||!epoch_)return fail(e,"Music region controller has no scene");
+ if(epoch!=epoch_){e.clear();return true;}const int i=region(p);if(i<0)return fail(e,"Unbound explicit music region play");
+ auto next=*this;next.states_[size_t(i)].inside=true;
+ if(!next.play(uint32_t(i),e))return false;
+ *this=std::move(next);e.clear();return true;
+}
+bool MusicRegionController::stop_explicit(uint64_t epoch,std::string_view p,double fade,std::string&e){
+ if(!data_||!epoch_)return fail(e,"Music region controller has no scene");
+ if(epoch!=epoch_){e.clear();return true;}const int i=region(p);if(i<0)return fail(e,"Unbound explicit music region stop");
+ if(!std::isfinite(fade)||fade<0||fade>60)return fail(e,"Invalid explicit music region fade");
+ // stop_music removes registration and attached-player ownership. It does
+ // not change player_inside or discard a pending check_player_and_stop.
+ stop(uint32_t(i),fade);e.clear();return true;
+}
+bool MusicRegionController::fade_index_zero(double duration,bool&external_target,std::string&e){
+ if(!data_||!epoch_||!std::isfinite(duration)||duration<0||duration>60||external_history_ambiguous_)return fail(e,"Indexed music fade has invalid duration or unmapped external child history");
+ int first=-1;uint64_t order=UINT64_MAX;for(size_t i=0;i<voices_.size();++i)if(voices_[i].allocated&&voices_[i].order<order){first=int(i);order=voices_[i].order;}
+ external_target=external_.present&&(first<0||external_order_<order);
+ if(!external_target&&first>=0&&voices_[first].playing){tween(first,data_->silence_db(),duration,MusicRegionCurve::QuartIn);cleanup_waiting_=true;}
+ // With no live child, source _add_at_zero leaves an idle empty player. Its
+ // music_fadeout_obj is a checked no-op, not an arbitrary ignored operation.
+ e.clear();return true;
 }
 bool MusicRegionController::exit(uint64_t epoch,std::string_view p,const MusicRegionContext&c,std::string&e){if(!data_||!epoch_)return fail(e,"Music region controller has no scene");
  if(epoch!=epoch_){e.clear();return true;}int i=region(p);if(i<0)return fail(e,"Unbound music area exit");if(c.is_player&&c.has_collisions&&!c.in_cutscene){states_[i].inside=false;states_[i].pending_exit=true;pending_exits_.push_back(uint32_t(i));}e.clear();return true;}

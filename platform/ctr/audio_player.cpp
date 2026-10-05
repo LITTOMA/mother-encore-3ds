@@ -1,3 +1,4 @@
+#include "room_audio_identity.hpp"
 #include "audio_player.hpp"
 #include <cmath>
 #include <cstdio>
@@ -132,21 +133,21 @@ bool AudioPlayer::stop_lane(AudioLane which,std::string& error){
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
     if(voices_[lane].samples)stop(lane);error.clear();return true;
 }
-bool AudioPlayer::consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error){
+bool AudioPlayer::consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error,const RoomMusicFadeHandler&fade_handler){
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
     if(!room.valid()||consumed_>requests.size()){error="Invalid or reset audio request history";return false;}
     while(consumed_<requests.size()){
         const auto& request=requests[consumed_];
-        if(request.kind==upstream::AudioRequestKind::FadeMusic){if(request.resource_index!=upstream::kRoomNoIndex){error="Fade request has unsupported resource target";return false;}if(!fade_music(request.duration,error))return false;}
+        if(request.kind==upstream::AudioRequestKind::FadeMusic){if(request.resource_index!=upstream::kRoomNoIndex){error="Fade request has unsupported resource target";return false;}if(fade_handler){if(!fade_handler(room,request,error))return false;}else if(!fade_music(request.duration,error))return false;}
         else {
             if(request.kind!=upstream::AudioRequestKind::PlayMusic&&request.kind!=upstream::AudioRequestKind::PlayEffect&&request.kind!=upstream::AudioRequestKind::PlayDialogueMusic&&request.kind!=upstream::AudioRequestKind::StopMusicResource&&request.kind!=upstream::AudioRequestKind::FadeInMusic){error="Unsupported room audio request";return false;}
             if(request.kind!=upstream::AudioRequestKind::FadeInMusic&&(request.duration!=0||request.gain_db!=0)){error="Timed audio playback request is outside audio slice";return false;}
             if(request.resource_index>=room.resource_count()){error="Room audio resource index out of bounds";return false;}
-            const auto resource=room.resource(request.resource_index);upstream::AudioAsset asset;
-            if(resource.kind!=2||!bank_.find(resource.stable_id,asset)||asset.source_sha256!=resource.sha256||asset.source_path!=room.string(resource.path_string)){error="Room/audio bank source identity mismatch";return false;}
+            upstream::AudioAsset asset;
+            if(!resolve_room_audio_asset(room,bank_,request.resource_index,asset,error))return false;
             if(request.kind==upstream::AudioRequestKind::StopMusicResource){
-                for(auto lane:{uint32_t(AudioLane::Music),uint32_t(AudioLane::DialogueMusic)})if(voices_[lane].active&&voices_[lane].asset.stable_id==resource.stable_id)stop(lane);
-            }else if(!play(resource.stable_id,(request.kind==upstream::AudioRequestKind::PlayMusic||request.kind==upstream::AudioRequestKind::FadeInMusic)?AudioLane::Music:request.kind==upstream::AudioRequestKind::PlayDialogueMusic?AudioLane::DialogueMusic:AudioLane::Effect,error,request.gain_db,request.kind==upstream::AudioRequestKind::FadeInMusic?request.duration:0))return false;
+                for(auto lane:{uint32_t(AudioLane::Music),uint32_t(AudioLane::DialogueMusic)})if(voices_[lane].active&&voices_[lane].asset.stable_id==asset.stable_id)stop(lane);
+            }else if(!play(asset.stable_id,(request.kind==upstream::AudioRequestKind::PlayMusic||request.kind==upstream::AudioRequestKind::FadeInMusic)?AudioLane::Music:request.kind==upstream::AudioRequestKind::PlayDialogueMusic?AudioLane::DialogueMusic:AudioLane::Effect,error,request.gain_db,request.kind==upstream::AudioRequestKind::FadeInMusic?request.duration:0))return false;
         }
         ++consumed_;
     }error.clear();return true;

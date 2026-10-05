@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "sources": {
+    "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+    "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+  },
+  "silence_db": -80.0,
+  "fade_to_seconds": 1.0,
+  "default_stop_seconds": 1.5,
+  "geometry": [
+    129.341,
+    1014.8720000000001,
+    198.659,
+    129.128
+  ],
+  "region": {
+    "id": 2230225359,
+    "source_path": "MusicArea2",
+    "track_id": 34,
+    "volume_db": -5,
+    "fadein_seconds": 1,
+    "fadeout_seconds": 1.5,
+    "appear_flag": "doll_melody",
+    "disappear_flag": "good_morning",
+    "disabled": false,
+    "shape_paths": [
+      "MusicArea2/CollisionShape2D"
+    ]
+  },
+  "additional_regions": [
+    {
+      "region": {
+        "id": 1604477191,
+        "source_path": "MusicArea",
+        "track_id": 34,
+        "volume_db": 0,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "doll_melody",
+        "disappear_flag": "good_morning",
+        "disabled": false,
+        "shape_paths": [
+          "MusicArea/CollisionShape2D"
+        ]
+      },
+      "geometry": [
+        283.99969999999996,
+        416.0,
+        356.0,
+        456.0
+      ],
+      "track": {
+        "stable_id": 34,
+        "source_path": "res://Audio/Music/House.mp3",
+        "source_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+        "import_sha256": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a"
+      },
+      "parent_disappear_flag": "",
+      "source_ordinal": 32514
+    },
+    {
+      "region": {
+        "id": 4092180825,
+        "source_path": "MusicArea3",
+        "track_id": 1806,
+        "volume_db": 0,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "good_morning",
+        "disappear_flag": "",
+        "disabled": false,
+        "shape_paths": [
+          "MusicArea3/CollisionShape2D"
+        ]
+      },
+      "geometry": [
+        283.99969999999996,
+        560.0,
+        356.0,
+        600.0
+      ],
+      "track": {
+        "stable_id": 1806,
+        "source_path": "res://Audio/Music/Good_Morning.mp3",
+        "source_sha256": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+        "import_sha256": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3"
+      },
+      "parent_disappear_flag": "",
+      "source_ordinal": 33200
+    },
+    {
+      "region": {
+        "id": 125807119,
+        "source_path": "Poltergeist/MusicArea",
+        "track_id": 21,
+        "volume_db": 0,
+        "fadein_seconds": 1,
+        "fadeout_seconds": 1.5,
+        "appear_flag": "poltergeist",
+        "disappear_flag": "doll_defeated",
+        "disabled": false,
+        "shape_paths": [
+          "Poltergeist/MusicArea/CollisionShape2D"
+        ]
+      },
+      "geometry": [
+        283.99969999999996,
+        416.0,
+        356.0,
+        456.0
+      ],
+      "track": {
+        "stable_id": 21,
+        "source_path": "res://Audio/Music/Poltergeist.ogg",
+        "source_sha256": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+        "import_sha256": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8"
+      },
+      "parent_disappear_flag": "doll_melody",
+      "source_ordinal": 35710
+    }
+  ],
+  "track": {
+    "stable_id": 34,
+    "source_path": "res://Audio/Music/House.mp3",
+    "source_sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "import_sha256": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a"
+  },
+  "parent_disappear_flag": "",
+  "source_ordinal": 32851
+}

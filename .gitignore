@@ -298,3 +298,17 @@ cookies.json
 !/reports/npc-doorway-occlusion/start-and-npc-fix.patch
 
 # Reviewed public-preparation audits and actual validation receipts.
+
+# Reviewed source records required for source-only rebuilds.
+!/reports/basement-progression/source-review.json
+!/reports/basement-actor-assets/source-review.json
+!/reports/basement-music/source-review.json
+!/reports/present-sparkles/source-review.json
+!/reports/field-tint/source-review.json
+!/reports/field-sprite-bridge/source-review.json
+
+!/reports/field-emotes/source-review.json
+
+!/reports/field-psi/
+/reports/field-psi/*
+!/reports/field-psi/source-review.json

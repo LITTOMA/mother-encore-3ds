@@ -173,6 +173,26 @@
       "id": 31,
       "role": "ItemUse",
       "path": "data/opening.encuse"
+    },
+    {
+      "id": 32,
+      "role": "BasementProgression",
+      "path": "data/house.encbasement"
+    },
+    {
+      "id": 33,
+      "role": "BasementActors",
+      "path": "data/house.encbasmanim"
+    },
+    {
+      "id": 34,
+      "role": "MusicRegions",
+      "path": "sound/banks/house.encmusic"
+    },
+    {
+      "id": 35,
+      "role": "PresentSparkles",
+      "path": "data/house.encsparkles"
     }
   ],
   "encounters": [

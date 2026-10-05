@@ -55,6 +55,13 @@ public:
  bool observe_external_player(MusicExternalPlayer,std::string&);
  bool enter(uint64_t,std::string_view,const MusicRegionContext&,std::string&);
  bool exit(uint64_t,std::string_view,const MusicRegionContext&,std::string&);
+ // Direct source play_music/stop_music calls are distinct from Area callbacks:
+ // they run during cutscenes and do not apply appear/disappear flag guards.
+ bool play_explicit(uint64_t,std::string_view,std::string&);
+ bool stop_explicit(uint64_t,std::string_view,double fadeout_seconds,std::string&);
+ // Source global get_audio_player(0) uses earliest surviving child order,
+ // never latest-song order. Reports whether the bounded external owner wins.
+ bool fade_index_zero(double duration,bool&external_target,std::string&);
  bool tree_exit(uint64_t,std::string_view,std::string&);
  bool idle_frame(uint64_t,std::string&);
  // Main audio-manager tweens must be counted for source tween_all_completed.
@@ -71,6 +78,7 @@ private:
  const MusicRegionData*data_=nullptr;uint64_t epoch_=0,next_generation_=0,next_order_=0;
  MusicExternalPlayer external_{};uint64_t external_order_=0;
  bool cleanup_waiting_=false;
+ bool external_history_ambiguous_=false;
  std::vector<MusicRegionVoice>voices_;std::vector<MusicRegionState>states_;
  std::vector<uint32_t>registered_,pending_exits_;
 };

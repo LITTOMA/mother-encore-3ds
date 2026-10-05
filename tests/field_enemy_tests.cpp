@@ -1,0 +1,43 @@
+// Manual only: pinned field factories and strict loading. Not automatic CI.
+#include "encore/field_enemy.hpp"
+#include "encore/content.hpp"
+#include "encore/crc32.hpp"
+#include <cassert>
+#include <cmath>
+#include <cstring>
+#include <limits>
+using namespace encore::upstream;
+static uint32_t get(const std::vector<uint8_t>&b,size_t x){return b[x]|uint32_t(b[x+1])<<8|uint32_t(b[x+2])<<16|uint32_t(b[x+3])<<24;}
+static void put(std::vector<uint8_t>&b,size_t x,uint32_t v){for(size_t i=0;i<4;++i)b[x+i]=uint8_t(v>>(i*8));}
+static void fix(std::vector<uint8_t>&b){put(b,16,0);put(b,16,encore::crc32(b.data(),b.size()));}
+int main(int argc,char**argv){
+ std::string error;std::vector<uint8_t>bytes;assert(encore::read_file(argc>1?argv[1]:"romfs/data/podunk-enemies.encenemy",bytes,2*1024*1024,error));FieldEnemyData data;assert(data.load(bytes.data(),bytes.size(),error));assert(data.spawners().size()==68&&data.profiles().size()==14&&data.geometry().size()==23&&data.capabilities()==2&&data.animations().size()==3);const auto retained=data.spawners().front().id;
+ for(size_t n=0;n<bytes.size();++n){assert(!data.load(bytes.data(),n,error));assert(data.valid()&&data.spawners().front().id==retained);}
+ auto bad=[&](size_t at,uint32_t value){auto b=bytes;put(b,at,value);fix(b);assert(!data.load(b.data(),b.size(),error));assert(data.valid()&&data.spawners().front().id==retained);};
+ for(auto at:{8u,20u,24u,28u})bad(at,99);bad(56,1);bad(80,99);bad(84,0);bad(92,2);bad(192,1);bad(176,99);bad(188,0);
+ const auto parameters=get(bytes,100),profiles=get(bytes,116),spawners=get(bytes,132),sources=get(bytes,148),geometry=get(bytes,164),animations=get(bytes,180);
+ bad(parameters,99);bad(parameters+4,0x7fc00000);bad(profiles+4,UINT32_MAX);bad(profiles+20,UINT32_MAX);bad(profiles+52,0x7f800000);bad(spawners,0);bad(spawners+12,UINT32_MAX);bad(spawners+16,8);bad(spawners+20,UINT32_MAX);bad(sources+4,UINT32_MAX);bad(geometry+4,99);bad(geometry+8,1);bad(geometry+20,2);bad(geometry+24,0x7fc00000);bad(animations,99);bad(animations+4,UINT32_MAX);bad(animations+8,UINT32_MAX);bad(animations+24,0x7fc00000);bad(animations+24,0);
+ SourceRandom random(73);FieldEnemyRuntime runtime;assert(!runtime.initialize(&data,&random,{},error));FieldEnemyContext ctx;ctx.can_pause=true;ctx.highest_party_level=1;unsigned created=0,battles=0,rewards=0;uint64_t played_generation=0;FieldEnemyAnimation played_kind=FieldEnemyAnimation::None;std::vector<bool>queues;std::vector<uint64_t>remaining_waiters;std::vector<FieldEnemyPresentation>events;
+ FieldEnemyHost host;host.context=[&](uint64_t,FieldEnemyContext&out,std::string&){out=ctx;return true;};host.create=[&](uint64_t,const FieldEnemyProfile&,const std::vector<FieldEnemyGeometry>&g,FieldEnemyVector,std::string&){assert(g.size()==23);++created;return true;};host.wander_raycast=[](uint64_t,FieldEnemyVector,bool&hit,std::string&){hit=false;return true;};host.move_and_slide=[](uint64_t,FieldEnemyVector velocity,float dt,FieldEnemyVector&position,FieldEnemyVector&out,std::string&){position.x+=velocity.x*dt;position.y+=velocity.y*dt;out=velocity;return true;};host.roster=[](uint64_t,FieldEnemyRoster,const FieldEnemyInstance&,std::string&){return true;};host.battle=[&](uint64_t,int32_t,const FieldEnemyInstance&,std::string&){++battles;return true;};host.present=[&](uint64_t,FieldEnemyPresentation e,const FieldEnemyInstance&,std::string&){events.push_back(e);return true;};host.animation=[&](uint64_t,const FieldEnemyAnimationBinding&a,uint64_t generation,const FieldEnemyInstance&v,std::string&){assert(a.duration>0&&generation==v.animation_generation);played_kind=a.kind;played_generation=generation;return true;};host.queue_battle=[&](bool value,std::string&){queues.push_back(value);return true;};host.damage_number=[](uint64_t,int32_t,std::string&){return true;};host.reward=[&](int32_t,int32_t,std::string&){++rewards;remaining_waiters.push_back(runtime.enemies().front().damage_waiters.size());return true;};
+ assert(runtime.initialize(&data,&random,host,error));const auto sid=data.spawners().front().id;assert(!runtime.spawner_screen_entered(sid));assert(runtime.ready(sid));assert(!runtime.ready(sid));ctx.cutscene=true;auto draws=random.raw_draw_count();assert(runtime.spawner_screen_entered(sid));assert(random.raw_draw_count()==draws+1&&created==0);ctx.cutscene=false;assert(runtime.spawner_screen_entered(sid));assert(created==1);const auto eid=runtime.enemies().front().id;draws=random.raw_draw_count();assert(runtime.spawner_screen_entered(sid));assert(random.raw_draw_count()==draws+1&&created==1);assert(runtime.screen_entered(eid));assert(runtime.view_entered(eid,true));assert(runtime.blind_entered(eid,true));assert(runtime.blind_exited(eid,true));assert(!runtime.physics_step(eid,std::numeric_limits<float>::quiet_NaN()));ctx.paused=true;assert(runtime.physics_step(eid,0.016f));assert(events.back()==FieldEnemyPresentation::AnimationDisabled);ctx.paused=false;ctx.player_can_see_enemy=true;assert(runtime.contact(eid,true)&&battles==1);ctx.in_battle=false;assert(runtime.die(eid,false));assert(runtime.enemies().front().queued_free&&!runtime.enemies().front().erased);draws=random.raw_draw_count();assert(runtime.spawner_screen_entered(sid));assert(random.raw_draw_count()==draws+1&&created==1);assert(!runtime.idle_step(-1));assert(runtime.end_frame());assert(runtime.enemies().empty());assert(!runtime.activate(eid));
+ // Repeated Hurt restarts Flash but does not lose earlier subscriptions. A
+ // following Stun completes the same awaited signal, handler first, then FIFO.
+ assert(runtime.initialize(&data,&random,host,error));ctx={};ctx.can_pause=true;ctx.highest_party_level=1;ctx.leader_offense=100000;ctx.event_ray_on_player=true;
+ assert(runtime.ready(sid)&&runtime.spawner_screen_entered(sid));const auto victim=runtime.enemies().front().id;assert(runtime.screen_entered(victim));
+ assert(runtime.hurt(victim,FieldEnemyHurt::Fire));const auto old_generation=played_generation;
+ assert(runtime.hurt(victim,FieldEnemyHurt::Fire)&&runtime.hurt(victim,FieldEnemyHurt::Fire));
+ const auto&waiting=runtime.enemies().front().damage_waiters;assert(waiting.size()==3&&waiting[0]<waiting[1]&&waiting[1]<waiting[2]);
+ assert(!runtime.animation_finished(victim,FieldEnemyAnimation::Flash,old_generation));
+ assert(runtime.idle_step(2)&&runtime.enemies().front().damage_waiters.size()==3&&rewards==0);
+ assert(runtime.stun(victim)&&played_kind==FieldEnemyAnimation::Stun&&runtime.enemies().front().damage_waiters.size()==3);
+ draws=random.raw_draw_count();queues.clear();assert(runtime.animation_finished(victim,played_kind,played_generation));assert(random.raw_draw_count()>draws);
+ assert(rewards==3&&queues==std::vector<bool>({false,false,false})&&remaining_waiters==std::vector<uint64_t>({2,1,0}));assert(runtime.enemies().front().queued_free&&!runtime.enemies().front().pending_damage);
+ assert(!runtime.animation_finished(victim,played_kind,played_generation));assert(runtime.end_frame()&&runtime.enemies().empty());
+ // Actual tree termination cancels a suspended yield without inventing reward.
+ assert(runtime.initialize(&data,&random,host,error));assert(runtime.ready(sid)&&runtime.spawner_screen_entered(sid));const auto exiting=runtime.enemies().front().id;assert(runtime.hurt(exiting,FieldEnemyHurt::Fire));queues.clear();const auto old_rewards=rewards;
+ assert(runtime.tree_exiting(exiting,false));assert(queues.empty()&&rewards==old_rewards);assert(!runtime.animation_finished(exiting,played_kind,played_generation));assert(runtime.end_frame()&&runtime.enemies().empty());
+ // Large legal host stats are calculated wide and rejected before state writes.
+ // Incapacitation can reduce the same intermediate to a representable result.
+ auto numeric=bytes;float variance=0,power=999999;uint32_t bits=0;std::memcpy(&bits,&variance,4);put(numeric,parameters+(uint32_t(FieldEnemyParameter::BashVariance)-1)*8+4,bits);std::memcpy(&bits,&power,4);put(numeric,parameters+(uint32_t(FieldEnemyParameter::BashPower)-1)*8+4,bits);fix(numeric);FieldEnemyData wide;assert(wide.load(numeric.data(),numeric.size(),error));
+ assert(runtime.initialize(&wide,&random,host,error));ctx.leader_offense=INT32_MAX;ctx.leader_incapacitated=false;assert(runtime.ready(sid)&&runtime.spawner_screen_entered(sid));const auto edge=runtime.enemies().front().id;queues.clear();const auto hp=runtime.enemies().front().hp;draws=random.raw_draw_count();assert(!runtime.hurt(edge,FieldEnemyHurt::Fire));assert(random.raw_draw_count()==draws+1&&queues.empty()&&runtime.enemies().front().hp==hp);ctx.leader_incapacitated=true;assert(runtime.hurt(edge,FieldEnemyHurt::Fire));
+}

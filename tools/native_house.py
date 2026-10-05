@@ -22,21 +22,23 @@ def finite(v):return isinstance(v,(int,float))and not isinstance(v,bool)and math
 def vector(v,n):require(isinstance(v,list)and len(v)==n and all(finite(x)for x in v),'Invalid vector');return v
 def safe_path(s):return isinstance(s,str)and bool(s)and not s.startswith('/')and ':'not in s and '\\'not in s and all(x not in ('','..','.')for x in s.split('/'))
 def verify_sources(ir,presentation=None,root=ROOT):
- require(ir['schema']in(4,5,6,7) and ir['kind']=='encore.native-house.source-ir'and ir['commit']==PIN,'Unreviewed house schema/pin')
+ require(ir['schema']in(4,5,6,7,8) and ir['kind']=='encore.native-house.source-ir'and ir['commit']==PIN,'Unreviewed house schema/pin')
  report=json.loads((root/'reports/house-data/source-review.json').read_text());require(report['commit']==PIN and report['sources']==ir['sources']and report['dependencies']==ir['dependencies'],'House review mismatch')
  inventory=json.loads((root/'compatibility/upstream-inventory.json').read_text());require(inventory['commit']==PIN,'House inventory pin')
  sources=dict(ir['sources'])
  if presentation is not None:
   require(presentation['commit']==PIN,'Presentation pin');sources.update(presentation['sources'])
  for path,sha in sources.items():require(safe_path(path)and inventory['files'][path]['sha256']==sha and digest(root/'upstream/MOTHER-Encore'/path)==sha,'Changed source '+path)
- require(set(ir['dependencies'])=={'content/native-opening.json'},'Unknown house dependency')
+ expected={'content/native-opening.json'}
+ if ir['schema']==8:expected.update({'content/native-basement-progression.json','content/story-input-bindings.json','tools/story_input_bindings.py','tools/link_basement_content.py'})
+ require(set(ir['dependencies'])==expected,'Unknown house dependency')
  for path,sha in ir['dependencies'].items():require(digest(root/path)==sha,'Changed house dependency '+path)
  from tools.house_source_bindings import check_house
  check_house(ir,presentation,root)
 
 def lower(ir,presentation=None,root=ROOT,verify_assets=True):
- fields(ir,['schema','kind','commit','scope','sources','dependencies','fade_parameters','npc_parameters','doors','npcs','segments','interaction','boundaries','overrides','dialogues','openable_doors','story_triggers','story_conditions'],'house IR');require(ir['schema']in(4,5,6,7) and ir['commit']==PIN,'Unreviewed house IR')
- room=json.loads((root/'content/native-opening.json').read_text());require(room['upstream_commit']==ir['commit']and (room['rules']==room['capabilities'] or (room['rules']==7 and room['capabilities']==8))and room['rules']in(4,5,6,7),'House room rules/pin')
+ fields(ir,['schema','kind','commit','scope','sources','dependencies','fade_parameters','npc_parameters','doors','npcs','segments','interaction','boundaries','overrides','dialogues','openable_doors','story_triggers','story_conditions'],'house IR');require(ir['schema']in(4,5,6,7,8) and ir['commit']==PIN,'Unreviewed house IR')
+ room=json.loads((root/'content/native-opening.json').read_text());require(room['upstream_commit']==ir['commit']and (room['rules']==room['capabilities'] or (room['rules']==7 and room['capabilities']==8) or (room['rules']==8 and room['capabilities']==9))and room['rules']in(4,5,6,7,8),'House room rules/pin')
  actor_count=len(room['sections']['ActorInstance']);program_count=len(room['sections']['Program']);dialogue_ids={d['id']for d in ir['dialogues']}
  for n in ir['npcs']:require(n.get('room_actor_index')==0xffffffff or isinstance(n.get('room_actor_index'),int)and 0<=n['room_actor_index']<actor_count,'House room actor reference')
  for n in ir['npcs']:
@@ -93,7 +95,7 @@ def lower(ir,presentation=None,root=ROOT,verify_assets=True):
  t['Strings']=bytes(pool);return t
 
 def encode(t,commit=PIN,version=4):
- require(version in(4,5,6,7),'House version')
+ require(version in(4,5,6,7,8),'House version')
  data=bytearray(HEADER)
  for i,name in enumerate(SECTION_NAMES):
   block=t[name]if i==0 else b''.join(struct.pack(FORMATS[i],*r)for r in t[name])
@@ -103,7 +105,7 @@ def encode(t,commit=PIN,version=4):
  struct.pack_into('<8s6I20s12x',data,0,b'ENCHSE01',version,len(data),0,len(STRIDES),version,version,bytes.fromhex(commit));struct.pack_into('<I',data,16,zlib.crc32(data));return bytes(data)
 def parse_pack(blob):
  require(HEADER<=len(blob)<=1024*1024,'House size');magic,version,size,crc,n,caps,rules,commit=struct.unpack_from('<8s6I20s',blob)
- require(magic==b'ENCHSE01'and version==caps==rules and version in(4,5,6,7) and size==len(blob)and n==len(STRIDES)and not any(blob[52:64]),'House header');copy=bytearray(blob);struct.pack_into('<I',copy,16,0);require(zlib.crc32(copy)==crc,'House CRC');t={};end=HEADER
+ require(magic==b'ENCHSE01'and version==caps==rules and version in(4,5,6,7,8) and size==len(blob)and n==len(STRIDES)and not any(blob[52:64]),'House header');copy=bytearray(blob);struct.pack_into('<I',copy,16,0);require(zlib.crc32(copy)==crc,'House CRC');t={};end=HEADER
  for i,name in enumerate(SECTION_NAMES):
   kind,stride,off,count,amount=struct.unpack_from('<HHIII',blob,64+i*16);require(kind==i+1 and stride==STRIDES[i]and amount==count*stride,'House directory')
   if count:require(off%4==0 and off>=end and off+amount<=len(blob)and not any(blob[end:off]),'House span');block=blob[off:off+amount];end=off+amount
@@ -112,10 +114,10 @@ def parse_pack(blob):
  require(end==len(blob),'House trailing bytes');validate(t,version);return t
 
 def validate(t,version=4):
- require(version in(4,5,6,7),'House validation version')
+ require(version in(4,5,6,7,8),'House validation version')
  p=t['Strings'];require(p and len(p)<=65536 and p[0]==p[-1]==0,'House strings');p.decode('utf-8')
  def string(o):require(isinstance(o,int)and 0<=o<len(p)and(o==0 or p[o-1]==0),'House string offset');end=p.find(b'\0',o);require(0<=end-o<=4096,'House string length');return p[o:end].decode()
- limits={'Doors':(1,32),'Npcs':(1,16),'Segments':(1,256 if version>=7 else 128 if version>=6 else 64),'Tokens':(1,256),'Interaction':(1,1),'Boundaries':(0,64),'Resources':(1,64),'Clips':(5,256),'Keys':(1,2048),'Parameters':(len(PARAMETERS),len(PARAMETERS)),'Overrides':(0,128),'Profiles':(1,16),'Dialogues':(1,128 if version>=7 else 64),'OpenableDoors':(1,32),'StoryTriggers':(1,64),'StoryConditions':(1,128)}
+ limits={'Doors':(1,32),'Npcs':(1,16),'Segments':(1,256 if version>=7 else 128 if version>=6 else 64),'Tokens':(1,512 if version>=8 else 256),'Interaction':(1,1),'Boundaries':(0,64),'Resources':(1,64),'Clips':(5,256),'Keys':(1,2048),'Parameters':(len(PARAMETERS),len(PARAMETERS)),'Overrides':(0,128),'Profiles':(1,16),'Dialogues':(1,128 if version>=7 else 64),'OpenableDoors':(1,32),'StoryTriggers':(1,64),'StoryConditions':(1,128)}
  for k,(lo,hi)in limits.items():require(lo<=len(t[k])<=hi,'House '+k+' capacity')
  for k in ['Doors','Npcs','Segments','Boundaries','Resources','Clips','Profiles','Dialogues','OpenableDoors','StoryTriggers']:
   ids=[x[0]for x in t[k]];require(all(x>0 for x in ids)and len(ids)==len(set(ids)),'House IDs')
@@ -134,7 +136,7 @@ def validate(t,version=4):
   for j in range(s[3],s[3]+s[4]):require(j not in owned_tokens,'House token ownership');owned_tokens.add(j)
  require(len(owned_segments)==len(t['Segments'])and len(owned_tokens)==len(t['Tokens']),'House orphan text')
  for tok in t['Tokens']:
-  require(tok[0]in(range(1,10)if version>=6 else range(1,8)if version>=5 else[1,2]),'House token opcode')
+  require(tok[0]in(list(range(1,10))+[11]if version==8 else range(1,10)if version>=6 else range(1,8)if version>=5 else[1,2]),'House token opcode')
   value=string(tok[1])
   if tok[0]==1:require(bool(value),'House empty literal')
   elif tok[0]==3:require(len(value)==6 and all(c in'0123456789abcdefABCDEF'for c in value),'House hint color')

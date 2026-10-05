@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "044abf1421c76309e975d8c7ea8502ee0678f8566cfff39d4d8ea5239797e48f",
+  "capabilities": [
+    "original Sprite queue_free in Ready",
+    "complete 135 source VisibilityNotifier bindings",
+    "original parentless instance and parent add_child ordering"
+  ],
+  "pending": [
+    "original CPUParticles emission/clock/RNG/render backend"
+  ],
+  "source_bug_retained": "if !_current_dandelion: null queue_free error; an existing plant remains"
+}

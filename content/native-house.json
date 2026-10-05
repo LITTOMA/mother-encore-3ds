@@ -1,14 +1,26 @@
 {
-  "schema": 7,
+  "schema": 8,
   "kind": "encore.native-house.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Six same-scene house warps; original NPCs and openable doors; Lamp/Doll/melody plus six reviewed Carol/Phone programs; original Area3/4 contact gates; complete reviewed Dad-normal branch/choice/save-continuation graph and all leader texts; original Mom-room warps and optional Pillow/Minnie event chain/tutorial; checked post-phone family key requests and repeats; checked Drawer phrase text with independent effect programme; original Minnie storage choice and callback dialogue",
+  "scope": "Six same-scene house warps; original NPCs and openable doors; Lamp/Doll/melody plus six reviewed Carol/Phone programs; original Area3/4 contact gates; complete reviewed Dad-normal branch/choice/save-continuation graph and all leader texts; original Mom-room warps and optional Pillow/Minnie event chain/tutorial; checked post-phone family key requests and repeats; checked Drawer phrase text with independent effect programme; original Minnie storage choice and callback dialogue; original key/diary dialogues",
   "sources": {
+    "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+    "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+    "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+    "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
     "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
     "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
     "Audio/Sound effects/Item Received.mp3.import": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+    "Audio/Sound effects/M3/Dog_whining.wav": "e472611c9399ef97d628f31f2bd81dd5cc8ba4ede703ac117c15e985128b7c17",
+    "Audio/Sound effects/M3/Dog_whining.wav.import": "4c3f61c94e830a5014f1d95096bbfe7d90b8eed09a59de0c91625e0e3debd08e",
+    "Audio/Sound effects/M3/Learned PSI.wav": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04",
+    "Audio/Sound effects/M3/Learned PSI.wav.import": "b7c2531943d39eef28e9d75af3adc510e974bc87e9e503d562cbf654e746de88",
+    "Audio/Sound effects/M3/Woof Woof!.wav": "d68a7b6acc856d591bbaa5e2304f2850adb8ed04f77f4d3cae99605b8bd8ff24",
+    "Audio/Sound effects/M3/Woof Woof!.wav.import": "52c407a76899b15653559e9c33b65cdf0486e72806fe7cbef3fd25351f284d57",
     "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
     "Audio/Sound effects/Stairs_Down.mp3": "14d839a41c3c033cc3def3234f22d6c7defc22bc1ade34b713eea6b4e360860a",
     "Audio/Sound effects/Stairs_Up.mp3": "13ca833111ca480ab932daa1df15b0d5d14851d7c40f77a7b5db906e01acaa37",
@@ -19,10 +31,14 @@
     "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
     "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc",
     "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Female.mp3.import": "d82f217dff6f00a7bb65119d02459901999c3ea9a386e91ea37f20b0a2429d7c",
     "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
     "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+    "Data/Animations/NintenCutscene.yaml": "5c58c8034f23d8d2d485aaf40efa2dc584962916170db8e42f6281aafb25e2e8",
     "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Data/BattleSkills/lifeUpA.yaml": "9a2196d71255d94998502717254bbb569cb91bb2fb5edec053c15c1b2c1a73d3",
+    "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
     "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
     "Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
     "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
@@ -32,6 +48,7 @@
     "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
     "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
     "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+    "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml": "a8e7fd1e2ab459b1aee7edc72ca503e488af8c85c7223178860d5fe996dab9f8",
     "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
     "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": "0c07ab7c8f6c64708c9f41571429967827ba7ac82d8dc72a156aad84d17cd07a",
     "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": "6cc6d9c3c8f7eb2517dd945369b272b315e344e0af5afd0721a6b485894d053a",
@@ -54,13 +71,22 @@
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml": "21339eb0d16d37d7a0395636dd5078c28d76652296a4f5103b093469f3974810",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml": "2ca21079ca52fe65a9c5c5a2e97027134ad6e0fdab0da9bf968fa52e974ba09f",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
+    "Data/Dialogue/Podunk/woof.yaml": "bf72427cbb9aaec8f137adc01abecf05a152d9b2259e610ab0e2a80bbee4e7fd",
+    "Data/Dialogue/Podunk/woof_deal.yaml": "0e92387cbb42d0c7d72744e0e33b7ad6fb563a49866398399a324a494312d227",
+    "Data/Dialogue/Podunk/woof_food.yaml": "624ae86db6d352709245f815de6fc5975044b5c3c63255b9d1e04096a3207412",
+    "Data/Dialogue/Podunk/woof_key.yaml": "dbef94b23ad95e5f549cba9507f6b5bd27d09a951824760b3a088e4101aff7a7",
+    "Data/Dialogue/Podunk/woof_secret.yaml": "55b1de9a3aa188caff50d43fdf1eb94702d6ffa4e2f3249afcb4a5aaa686d03a",
     "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
     "Data/Dialogue/Reusable/doorblocked.yaml": "d6f8f581ffc9163dc3c145c3aea7e527d568c97388bbf21ab2d4de1970033e64",
     "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
     "Data/Dialogue/Reusable/lockopened.yaml": "ed10dc7cda371e34202cd8fddbe84365b3f494e14f6e6b9d303c4c5d6d697930",
     "Data/Dialogue/Reusable/nottime.yaml": "abc69fea985155bbc16f1e6cc5732307c0410bf6eb296d205b5cdc79a241f383",
     "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+    "Data/FieldSkills/telepathy.yaml": "1529b8c0631d697377eb293e107b37068c03ba8588fdd254b37e33bc22559230",
     "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+    "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
     "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
     "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
     "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
@@ -70,9 +96,13 @@
     "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
     "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
     "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
     "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
     "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
     "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
     "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
@@ -86,13 +116,18 @@
     "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
     "Nodes/Ui/effects/Fade.gd": "8266bf5f24eedd8281be92a04abe8ab988da720189f2bbc90c24656cbb99efaa",
     "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
     "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
     "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
     "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
     "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
     "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
     "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
     "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
     "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
     "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
     "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
@@ -108,20 +143,28 @@
     "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
     "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
     "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
     "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
     "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
     "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
     "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
     "Shaders/Fade.shader": "c5c5b6b5b60c8c4b4fab8a9aa105cfa3777ab88eecf1c1ccdfb591db2245146d",
+    "Translations/TranslatedText/dialogue_ItemDialogue - sheet.csv": "af2de174e5c3c6375ee1fb0aeea018660998d76e8825d6f0acb986faa179dce1",
     "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
     "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
     "Translations/TranslatedText/dialogue_Podunk_non-person text_Ninten's house - sheet.csv": "c554acd6981a3a745d2a948433cdda737d1aa83e4793aa3a067cea9fa9a747fc",
     "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
     "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
   },
   "dependencies": {
-    "content/native-opening.json": "4e21a7725e4159bc6c4b9e211861f1dc9c8712c57fa7429e452acebe7c61d3b7"
+    "content/native-opening.json": "cfa374e2cd991dee4dfa7f482a36ae92c564426e818e02a91a1da50b27e3990c",
+    "content/native-basement-progression.json": "3f35390015cda7e154be812a8ad2c5874ca0b860b216d43400d18695953ba88e",
+    "content/story-input-bindings.json": "4671c7427c76859648bce9c03613331d34f7240448f1bf09e9d76369c119394c",
+    "tools/story_input_bindings.py": "936b4ef9952662eb6f154e6bd1dea9d4d7440f353cb5e8e1fd777c12f56d09ac",
+    "tools/link_basement_content.py": "7dbb9e5fb3afc354f7c6bfc7da3301e667783dfeee1ff75208a0b3063f485f41"
   },
   "fade_parameters": {
     "FadeCuts": [
@@ -2573,6 +2616,710 @@
         }
       ],
       "flags": 5
+    },
+    {
+      "id": 133,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Woof woof!"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 134,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Grrr, my butt is so itchy!)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 135,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Stop standing there and lend me a hand!)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 136,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " gave Mick a good scratch!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 137,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Ahhh, many thanks.)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 138,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Wait a minute, you can understand me?)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 139,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(You must have learned "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "Telepathy"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "!)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 140,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(That's great and all, but don't you dare use it on me by pressing "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "START"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " and selecting it within the "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "PSI menu"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ".)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 141,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(And don't even think of using it by simply holding down "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "B"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " and pressing "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "A"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ".)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 142,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Whimper..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 143,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Woof woof!"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 144,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Don't you dare use "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "Telepathy"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " on me by pressing "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "START"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " and selecting it within the "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "PSI menu"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ".)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 145,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(And don't even think of using it by simply holding down "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "B"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " and pressing "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "A"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": ".)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 146,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(I hope they make more "
+        },
+        {
+          "kind": 11,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "...)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 147,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(I can smell some Dog Treats in the basement.)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 148,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(If you fetch them for me, I'll let you go.)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 149,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(I hope they haven't found out I ate all of the "
+        },
+        {
+          "kind": 11,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "...)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 150,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Hey, are you reading my thoughts?)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 151,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Cut it out! That's an invasion of privacy!)"
+        }
+      ],
+      "flags": 3
+    },
+    {
+      "id": 152,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(Take this and forget what you just heard.)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 153,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "You got the Basement Key."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 154,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(I can smell some Dog Treats in the basement.)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 155,
+      "speaker": "Mick",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "(If you fetch them for me, I'll let you go.)"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 156,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " opened the present."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 157,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " got his "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "Great Grand-Father's Diary"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 158,
+      "speaker": "???",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "... Please... come find me..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 159,
+      "speaker": "???",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Seek the "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "shell in the cave"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 160,
+      "speaker": "???",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Do so, and the wisdom of the world shall be unveiled..."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 161,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Something awoke inside "
+        },
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": "!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 162,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " learned Lifeup!"
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 163,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "Press "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "START"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " and open your "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "PSI"
+        },
+        {
+          "kind": 4,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " menu to use "
+        },
+        {
+          "kind": 3,
+          "text": "ea8b2c"
+        },
+        {
+          "kind": 1,
+          "text": "Lifeup."
+        },
+        {
+          "kind": 4,
+          "text": ""
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 164,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 2,
+          "text": ""
+        },
+        {
+          "kind": 1,
+          "text": " used "
+        },
+        {
+          "kind": 1,
+          "text": "the "
+        },
+        {
+          "kind": 1,
+          "text": "Basement Key"
+        },
+        {
+          "kind": 1,
+          "text": "."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 165,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "It's locked."
+        }
+      ],
+      "flags": 5
+    },
+    {
+      "id": 166,
+      "speaker": "",
+      "voice": "",
+      "tokens": [
+        {
+          "kind": 1,
+          "text": "It's empty..."
+        }
+      ],
+      "flags": 5
     }
   ],
   "interaction": {
@@ -3159,6 +3906,144 @@
       "id": 69,
       "source_path": "Data/Dialogue/Podunk/minnie_storage.yaml",
       "first_segment": 131,
+      "segment_count": 1
+    },
+    {
+      "id": 70,
+      "source_path": "Data/Dialogue/Podunk/woof.yaml",
+      "first_segment": 132,
+      "segment_count": 3
+    },
+    {
+      "id": 71,
+      "source_path": "Data/Dialogue/Podunk/woof.yaml",
+      "first_segment": 135,
+      "segment_count": 1
+    },
+    {
+      "id": 72,
+      "source_path": "Data/Dialogue/Podunk/woof.yaml",
+      "first_segment": 136,
+      "segment_count": 4
+    },
+    {
+      "id": 73,
+      "source_path": "Data/Dialogue/Podunk/woof.yaml",
+      "first_segment": 140,
+      "segment_count": 1
+    },
+    {
+      "id": 74,
+      "source_path": "Data/Dialogue/Podunk/woof.yaml",
+      "first_segment": 141,
+      "segment_count": 1
+    },
+    {
+      "id": 75,
+      "source_path": "Data/Dialogue/Podunk/woof_secret.yaml",
+      "first_segment": 142,
+      "segment_count": 3
+    },
+    {
+      "id": 76,
+      "source_path": "Data/Dialogue/Podunk/woof_food.yaml",
+      "first_segment": 145,
+      "segment_count": 1
+    },
+    {
+      "id": 77,
+      "source_path": "Data/Dialogue/Podunk/woof_deal.yaml",
+      "first_segment": 146,
+      "segment_count": 2
+    },
+    {
+      "id": 78,
+      "source_path": "Data/Dialogue/Podunk/woof_key.yaml",
+      "first_segment": 148,
+      "segment_count": 4
+    },
+    {
+      "id": 79,
+      "source_path": "Data/Dialogue/Podunk/woof_key.yaml",
+      "first_segment": 152,
+      "segment_count": 1
+    },
+    {
+      "id": 80,
+      "source_path": "Data/Dialogue/Podunk/woof_key.yaml",
+      "first_segment": 153,
+      "segment_count": 1
+    },
+    {
+      "id": 81,
+      "source_path": "Data/Dialogue/Podunk/woof_key.yaml",
+      "first_segment": 154,
+      "segment_count": 1
+    },
+    {
+      "id": 82,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 155,
+      "segment_count": 1
+    },
+    {
+      "id": 83,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 156,
+      "segment_count": 1
+    },
+    {
+      "id": 84,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 157,
+      "segment_count": 1
+    },
+    {
+      "id": 85,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 158,
+      "segment_count": 1
+    },
+    {
+      "id": 86,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 159,
+      "segment_count": 1
+    },
+    {
+      "id": 87,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 160,
+      "segment_count": 1
+    },
+    {
+      "id": 88,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 161,
+      "segment_count": 1
+    },
+    {
+      "id": 89,
+      "source_path": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "first_segment": 162,
+      "segment_count": 1
+    },
+    {
+      "id": 90,
+      "source_path": "Data/Dialogue/Reusable/lockopened.yaml",
+      "first_segment": 163,
+      "segment_count": 1
+    },
+    {
+      "id": 91,
+      "source_path": "Data/Dialogue/Reusable/locklocked.yaml",
+      "first_segment": 164,
+      "segment_count": 1
+    },
+    {
+      "id": 92,
+      "source_path": "Data/Dialogue/ItemDialogue/presentempty.yaml",
+      "first_segment": 165,
       "segment_count": 1
     }
   ],

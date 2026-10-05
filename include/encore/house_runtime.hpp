@@ -5,9 +5,19 @@
 #include "encore/dialogue_choices.hpp"
 #include "encore/house_inspection_data.hpp"
 #include "encore/drawer_program.hpp"
+#include "encore/basement_progression.hpp"
+#include "encore/basement_actor_assets.hpp"
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
+// All item identities and sound bindings come from the admitted basement packs.
+// The session host owns keybag mutations and the current-item text context.
+struct HouseBasementHost {
+ std::function<bool(const BasementKeyItem&,std::string&)> validate_key_item,select_key_item,remove_key_item,grant_key_item;
+ std::function<bool(const BasementKeyItem&,bool&,std::string&)> key_owned;
+ std::function<bool(const BasementActorData&,std::string&)> validate_present_sound;
+ std::function<bool(const BasementActorData&,bool,std::string&)> present_sound;
+};
 enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram};
 enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested};
 struct HouseEvent {HouseEventKind kind{};uint32_t object=0;uint64_t physics_tick=0,idle_frame=0;Vec2 position{};};
@@ -30,6 +40,12 @@ public:
  // Independent effect programme owns its source identity, inspector and text
  // refs. Bind before inspections; effects owns inventory/audio, never text/flags.
  bool bind_drawer(DrawerProgramView,DrawerHost& effects);
+ bool bind_basement(const BasementProgressionData&,const BasementActorData&,HouseBasementHost,std::string&);
+ bool basement_bound()const{return basement_!=nullptr;}
+ const BasementActorPlayback&basement_present_playback()const{return basement_present_;}
+ uint32_t basement_present_frame()const;
+ bool basement_present_opened()const;
+ const BasementActorResource*basement_present_resource()const;
  void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
  bool select_story_option(uint32_t pc,uint32_t generation);
  bool close_story_submenu(uint32_t generation);
@@ -72,6 +88,9 @@ private:
  bool normal_openable(uint32_t index);
  bool interact_openable(uint32_t index);
  bool interact_phone(uint32_t index);
+ bool interact_basement_present();
+ bool begin_basement_program(std::string_view,uint32_t);
+ bool advance_basement_present(double);
  bool interact_inspection(uint32_t index);
  bool resolve_inspection_dialogue(uint32_t,uint32_t&)const;
  std::string_view inspection_path(uint32_t)const;
@@ -100,6 +119,8 @@ private:
  PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;
  HouseInspectionView inspections_;
  DrawerProgramView drawer_;DrawerHost*drawer_effects_=nullptr;DrawerProgramRuntime drawer_runtime_;std::string drawer_error_;
+ const BasementProgressionData*basement_=nullptr;const BasementActorData*basement_actors_=nullptr;HouseBasementHost basement_host_;
+ uint32_t basement_door_=house_no_index;BasementActorPlayback basement_present_{};bool basement_sound_playing_=false,basement_sound_pending_=false;std::string basement_error_;
  HouseView content_;OpeningWorld*world_=nullptr;HousePresentation*presentation_=nullptr;
  struct AreaContact {uint8_t kind;uint32_t index;bool entered;};
  std::vector<AreaContact>pending_contacts_;

@@ -28,8 +28,8 @@ class FieldEquipmentFormat(unittest.TestCase):
             for value,expected in zip(actual,source):self.assertAlmostEqual(value,expected,places=5)
         self.assertEqual((ROOT/pack.PACK).read_bytes(),self.blob)
     def test_six_known_commands_goods_and_equipment(self):
-        self.assertEqual([r[3] for r in self.tables['Commands']],[2,0,1,0,0,0])
-        self.rejects('Commands',0,3,1);self.rejects('Commands',0,3,3)
+        self.assertEqual([r[3] for r in self.tables['Commands']],[2,3,1,0,0,0])
+        self.rejects('Commands',0,3,1);self.rejects('Commands',0,3,3);self.rejects('Commands',1,3,2)
     def test_source_slots_and_equipment(self):
         self.assertEqual([s['source'] for s in self.ir['slots']],['weapon','body','arms','other'])
         self.assertEqual(self.ir['equipment'][0]['boosts'],[0,0,0,5,0,0,0])

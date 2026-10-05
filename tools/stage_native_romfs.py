@@ -21,6 +21,12 @@ def main():
     files.update(battle_files(source))
     files.update(round_files(source))
     files.update(house_files(source))
+    from basement_progression import stage_files as basement_files
+    from basement_actor_assets import stage_files as basement_actor_files
+    from basement_music_regions import stage_files as region_files
+    from present_sparkles import stage_files as sparkles_files
+    files.update(sparkles_files(source))
+    files.update(basement_files(source));files.update(basement_actor_files(source));files.update(region_files(source))
     from house_inspection import stage_files as inspection_files
     files.update(inspection_files(source))
     from drawer_program import stage_files as drawer_files
@@ -32,6 +38,8 @@ def main():
     files.update(item_details_files(source))
     from field_equipment import stage_files as field_equipment_files
     files.update(field_equipment_files(source))
+    from field_psi import stage_files as psi_files
+    files.update(psi_files(source))
     from item_use import stage_files as item_use_files
     files.update(item_use_files(source))
     from native_input import stage_files as input_files

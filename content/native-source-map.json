@@ -544,6 +544,11 @@
       "source": "content/native-storage-dialogue.json",
       "selector": "Original choice, hidden submenu callback, dormant phrase2 and goodbye3",
       "derivation": "Append program19, text67..69; no RNG or gameplay rules change"
+    },
+    "Basement original programmes": {
+      "source": "content/native-basement-progression.json",
+      "selector": "Mick source options/thoughts/key grant and complete diary dream/learn graph",
+      "derivation": "Reuse checked Room scheduler; key and skill effects bind independent ENCBASM1"
     }
   },
   "stable_namespaces": {

@@ -4,6 +4,7 @@
 #include <3ds.h>
 #include <array>
 #include <string>
+#include <functional>
 
 namespace encore::ctr {
 enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5 };
@@ -34,7 +35,8 @@ public:
     // Stop all voices/history while preserving checked streams and buffers.
     // Also safe when NDSP was unavailable; does not retry initialization.
     void reset_scene();
-    bool consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error);
+    using RoomMusicFadeHandler=std::function<bool(const upstream::RoomView&,const upstream::OpeningAudioRequest&,std::string&)>;
+    bool consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error,const RoomMusicFadeHandler&fade_handler={});
     bool play(uint32_t stable_audio_id,AudioLane lane,std::string& error,float gain_db=0,double fadein_seconds=0,float pitch=1);
     bool fade_music(double duration,std::string& error);
     bool fade_all_music(double duration,std::string& error);

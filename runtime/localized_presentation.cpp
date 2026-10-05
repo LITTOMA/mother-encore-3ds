@@ -59,12 +59,19 @@ bool LocalizedPresentation::house(HouseView view,uint32_t first,uint32_t count,s
   else if(tag=="ninten"||tag=="partylead"||tag=="itemreceiver")token(2); // Checked Drawer frontend admits singleton recipient only.
   else if(tag=="color"||tag=="c"){const auto*hint=catalog.binding("text.hint_color");if(!hint)return fail(e,"Missing source hint color");token(3,std::string(hint->expected));}
   else if(tag=="/color"||tag=="/c")token(4);
+  else if(tag=="favfood")token(11);
   else if(tag=="earnedcash")token(5);
   else if(tag=="bankcash")token(6);
   else if(tag=="currentcash")token(7);
-  else if(tag=="ui_toggle"){
+  else if(tag=="ui_toggle"||tag=="ui_select"||tag=="ui_accept"){
    // Resolved through the external checked CTR input binding, not translation.
-   const auto*input=catalog.binding("input.ui_toggle");if(!input)return fail(e,"Missing localized CTR toggle binding");token(1,std::string(input->expected));
+   const auto*input=catalog.binding("input."+tag);if(!input)return fail(e,"Missing localized CTR toggle binding");token(1,std::string(input->expected));
+  }else if(tag=="itemname"||tag=="itemart1"){
+   const auto*context=catalog.binding(std::string("house.item.")+(tag=="itemname"?"name/":"article/")+id);
+   if(!context)return fail(e,"Unbound source item text context");
+   std::string value(selection_->text(context->key).text);
+   if(tag=="itemart1"){auto first_comma=value.find(',');if(first_comma==std::string::npos)return fail(e,"Source item article form missing");auto second_comma=value.find(',',first_comma+1);value=value.substr(first_comma+1,second_comma==std::string::npos?std::string::npos:second_comma-first_comma-1);}
+   token(1,std::move(value));
   }else if(tag=="d"||tag=="delay"||tag.rfind("d:",0)==0||tag.rfind("delay:",0)==0){auto colon=tag.find(':');const auto*def=catalog.binding("text.default_delay");const std::string amount=colon==std::string::npos?(def?std::string(def->expected):std::string()):tag.substr(colon+1);char*end=nullptr;double v=std::strtod(amount.c_str(),&end);if(amount.empty()||end!=amount.c_str()+amount.size()||!std::isfinite(v)||v<=0)return fail(e,"Unreviewed source delay form");token(8,amount);}
   else {std::string replacement;if(!plain_tags(text.substr(open,close-open+1),name,replacement,e))return false;token(1,replacement);}
   at=close+1;

@@ -8,7 +8,7 @@
 namespace encore::upstream {
 constexpr uint32_t house_no_index=UINT32_MAX;
 enum class HouseSection:uint16_t {Strings=1,Doors,Npcs,Segments,Tokens,Interaction,Boundaries,Resources,Clips,Keys,Parameters,Overrides,Profiles,Dialogues,OpenableDoors,StoryTriggers,StoryConditions};
-enum class HouseTokenKind:uint32_t {Literal=1,PlayerName=2,Color=3,ColorReset=4,EarnedCash=5,BankCash=6,CurrentCash=7,SourceDelay=8,ForcedNewline=9};
+enum class HouseTokenKind:uint32_t {Literal=1,PlayerName=2,Color=3,ColorReset=4,EarnedCash=5,BankCash=6,CurrentCash=7,SourceDelay=8,ForcedNewline=9,SourceInlineWait=10,FavoriteFood=11};
 enum class HouseSegmentFlag:uint32_t {Bullet=1,Wait=2,End=4};
 enum class HouseBoundaryKind:uint32_t {UnsupportedDoor=1,UnsupportedScene=2};
 enum class HouseClipRole:uint32_t {NpcIdleDown=1,NpcIdleLeft,NpcIdleRight,NpcIdleUp,NpcTalkDown,NpcTalkLeft,NpcTalkRight,NpcTalkUp,DialogueOpen,DialogueClose,NameOpen,NameClose,Cursor,Count};

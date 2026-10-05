@@ -5,6 +5,7 @@
 namespace encore::upstream {
 namespace {
 unsigned direction_index(Vec2 d){if(d.y>0)return d.x<0?4:(d.x>0?5:0);if(d.y<0)return d.x<0?6:(d.x>0?7:3);return d.x<0?1:2;}
+std::string source_commit(const RoomView&v){if(!v.valid())return{};std::string s;const char*h="0123456789abcdef";for(size_t i=56;i<76;++i){s+=h[v.bytes()[i]>>4];s+=h[v.bytes()[i]&15];}return s;}
 }
 OpeningWorld::OpeningWorld():OpeningWorld(PersistentPlayerOwner::create()){}
 OpeningWorld::OpeningWorld(PersistentPlayerOwner owner):persistent_player_(std::move(owner)){
@@ -16,6 +17,21 @@ OpeningWorld::OpeningWorld(RetainPersistentPlayer,const OpeningWorld& active):pe
     error_=persistent_player_?"Retained player requires a scene commit binding":"Persistent player owner is absent";
 }
 bool OpeningWorld::has_cutscene_actors() const {return std::find(actor_bound_.begin(),actor_bound_.end(),uint8_t(1))!=actor_bound_.end();}
+bool OpeningWorld::bind_basement(const BasementProgressionData&data,const BasementActorData&actors,BasementProgressionHost host,std::string&e){
+    if(initialized_||!data.valid()||!actors.valid()||data.reviewed_commit()!=actors.reviewed_commit()){e="Basement binding source/state rejected";return false;}
+    BasementProgressionConsumer candidate;if(!candidate.bind(data,std::move(host),e))return false;
+    basement_=std::move(candidate);basement_actors_=&actors;e.clear();return true;
+}
+bool OpeningWorld::bind_music_region_validator(OpeningMusicRegionValidator validator,std::string&e){
+    if(initialized_||!validator){e="Music region validator state rejected";return false;}music_region_validator_=std::move(validator);e.clear();return true;
+}
+bool OpeningWorld::bind_scene_motion(const SceneMotionBackend&backend,std::string&e){
+    const auto scene=backend.source_scene(),pin=backend.reviewed_commit();
+    if(initialized_||!backend.admitted()||scene.empty()||scene.size()>4096||scene.find("..")!=scene.npos||scene.find('\\')!=scene.npos||pin.size()!=40||std::any_of(pin.begin(),pin.end(),[](char c){return!((c>='0'&&c<='9')||(c>='a'&&c<='f'));})){e="Scene motion binding rejected";return false;}
+    scene_motion_=&backend;motion_scene_=scene;motion_commit_=pin;e.clear();return true;
+}
+const BasementActorResource*OpeningWorld::special_actor_resource(uint32_t i)const{if(!basement_actors_||i>=special_actors_.size()||!special_actors_[i].visible||!actor_bound(i))return nullptr;const auto*a=basement_actors_->animation(special_actors_[i].animation_id);return a?basement_actors_->resource(a->resource_id):nullptr;}
+uint32_t OpeningWorld::special_actor_frame(uint32_t i)const{return special_actor_resource(i)?basement_actors_->frame(special_actors_[i].animation_id,special_actors_[i].elapsed):0;}
 uint32_t OpeningWorld::walk_clip(MotionAnimation animation,Vec2 direction) const {
     const auto scene=content_.scene();const auto profile=content_.actor_profile(content_.actor_instance(scene.player_instance_index).profile_index);
     const auto d=direction_index(direction);
@@ -38,13 +54,27 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     healthy_=initialized_=false;error_="Invalid scene content";
     if(!content.valid())return false;
-    content_=content;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
+    const auto pin=source_commit(content);
+    for(uint32_t i=0;i<content.binding_count();++i)if(content.binding(i).kind==uint16_t(RoomBindingKind::BasementWhiteFade)&&(!basement_.bound()||basement_.data()->reviewed_commit()!=pin))return fail("White fade requires source-bound progression data");
+    for(uint32_t i=0;i<content.binding_count();++i){const auto b=content.binding(i);if(b.kind!=uint16_t(RoomBindingKind::StopMusicRegion)&&b.kind!=uint16_t(RoomBindingKind::PlayMusicRegion))continue;
+        if(!music_region_validator_||!music_region_validator_(content.string(content.scene().source_scene_string),content.string(b.target_index),b.kind==uint16_t(RoomBindingKind::PlayMusicRegion),b.duration,host_error_))return fail("Music region source host binding rejected");
+    }
+    if(scene_motion_&&(!scene_motion_->admitted()||motion_scene_!=content.string(content.scene().source_scene_string)||motion_commit_!=pin))return fail("Scene motion source binding mismatch");
+    for(uint32_t i=0;i<content.command_count();++i){const auto c=content.command(i);if(c.opcode<uint16_t(DialogueActionKind::GrantKeyItem))continue;
+        if(!basement_.bound()||!basement_actors_||basement_.data()->reviewed_commit()!=pin||basement_actors_->reviewed_commit()!=pin)return fail("Typed progression requires source-bound effect host");
+        if(c.opcode==uint16_t(DialogueActionKind::GrantKeyItem)){const auto*k=basement_.data()->key_item(c.target_index);if(!k||!k->grant)return fail("Unknown progression key item identity");}
+        else if(c.opcode==uint16_t(DialogueActionKind::LearnSkill)){if(!basement_.data()->skill(c.target_index))return fail("Unknown progression skill identity");}
+        else if(c.opcode==uint16_t(DialogueActionKind::AnimateSpecialActor)){const auto*a=basement_actors_->animation(c.target_index);if(!a)return fail("Unknown progression special animation identity");const auto*r=basement_actors_->resource(a->resource_id);const auto profile=content.actor_profile(content.actor_instance(c.actor_index).profile_index);const auto path=content.string(content.resource(profile.primary_resource).path_string);if(r->primary_path.empty()||path!=r->primary_path)return fail("Special animation actor source mismatch");}
+        else return fail("Unknown typed progression instruction");
+    }
+    content_=content;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};effects_.clear();story_hides_.clear();scene_calls_.clear();music_region_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
     const auto scene=content.scene();
     if(!flags_.initialize(content))return false;
     if(story_flags){for(uint32_t i=0;i<story_flags->size();++i)if(!flags_.set_story_flag(i,(*story_flags)[i],false).applied)return false;}
     else for(uint32_t i=0;i<scene.initial_flag_count;++i){const auto flag=content.initial_flag(scene.initial_flag_first+i);if(!flags_.set_story_flag(flag.flag_index,flag.value).applied)return false;}
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};audio_.clear();trace_.clear();deferred_.clear();boundaries_.clear();room_shakers_.clear();random_=nullptr;
     actors_.assign(content.actor_instance_count(),ActorActionState{});
+    special_actors_.assign(actors_.size(),BasementActorPlayback{});white_fade_active_=false;white_fade_elapsed_=0;
     actor_visible_.assign(actors_.size(),0);actor_restore_.assign(actors_.size(),0);
     actor_bound_.assign(actors_.size(),0);actor_persistent_.assign(actors_.size(),0);
     inside_trigger_.assign(content.trigger_count(),0);trigger_pending_.assign(content.trigger_count(),0);
@@ -54,7 +84,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     std::vector<uint32_t> active;active.reserve(content.polygon_count());
     for(uint32_t i=0;i<content.polygon_count();++i){bool enabled=false;if(!body_active(content.polygon(i).body_id,flags_,enabled,reviewed_mutations))return fail("Unmapped body activation rule");if(enabled)active.push_back(i);}
     active_polygons_=active;polygon_offsets_.assign(content.polygon_count(),{});erased_bodies_.clear();
-    if(!solver_.configure_room(content,active))return fail("Unsupported collision geometry");
+    if(!scene_motion_&&!solver_.configure_room(content,active))return fail("Unsupported collision geometry");
     persistent_player_.state_->player_=WalkState{};persistent_player_.state_->player_.position=position;persistent_player_.state_->player_.direction=direction;
     persistent_player_.state_->player_.speed=content.rule_f32(RoomRuleKey::WalkSpeed);persistent_player_.state_->player_.animation=story_flags?MotionAnimation::Idle:MotionAnimation(scene.initial_motion_state);
     for(uint32_t i=0;i<actors_.size();++i){
@@ -93,7 +123,7 @@ bool OpeningWorld::advance(WalkInput input) {
         inside_trigger_[i]=overlap;
     }
     input.paused=input.paused||persistent_player_.state_->house_paused_;
-    auto player=persistent_player_.state_->player_;if(!advance_walk(player,input,solver_,content_))return fail("Movement rejected");
+    auto player=persistent_player_.state_->player_;if(!advance_walk(player,input,scene_motion_?static_cast<const MotionSolver&>(*scene_motion_):static_cast<const MotionSolver&>(solver_),content_))return fail("Movement rejected");
     const uint32_t selected=walk_clip(player.animation,player.direction);FrameClip clip;
     if(!content_.frame_clip(selected,clip))return fail("Missing motion animation binding");
     auto playback=persistent_player_.state_->playback_;
@@ -170,7 +200,7 @@ bool OpeningWorld::finish_story_dialogue(bool automatic){
     if(!dialogue_.dialogue_finished(*this,automatic))return fail(dialogue_.error());
     return flush_deferred();
 }
-bool OpeningWorld::complete_actor_restore(uint32_t index){if(!healthy_||index>=actors_.size()||!actor_restore_[index])return false;actor_restore_[index]=0;actor_bound_[index]=0;actor_persistent_[index]=0;persistent_player_.state_->camera_.remove_actor(index);return true;}
+bool OpeningWorld::complete_actor_restore(uint32_t index){if(!healthy_||index>=actors_.size()||!actor_restore_[index])return false;actor_restore_[index]=0;actor_bound_[index]=0;actor_persistent_[index]=0;special_actors_[index]={};persistent_player_.state_->camera_.remove_actor(index);return true;}
 bool OpeningWorld::accept_battle_entry(){if(!healthy_||!battle_.requested||battle_accepted_)return false;battle_accepted_=true;battle_original_direction_=persistent_player_.state_->player_.direction;return true;}
 bool OpeningWorld::pause_for_house(){
     if(!healthy_||stage_!=OpeningStage::Walking)return false;
@@ -202,7 +232,7 @@ bool OpeningWorld::body_enabled(uint32_t body_id)const{
     return false;
 }
 bool OpeningWorld::set_body_enabled(uint32_t body_id,bool enabled){
-    if(!healthy_)return false;
+    if(!healthy_||scene_motion_)return false;
     bool known=false;for(uint32_t i=0;i<content_.polygon_count();++i)if(content_.polygon(i).body_id==body_id){known=true;break;}
     if(!known)return false;
     if(body_enabled(body_id)==enabled)return true;
@@ -218,7 +248,7 @@ bool OpeningWorld::body_visible(uint32_t body_id)const{
     return false;
 }
 bool OpeningWorld::set_body_offset(uint32_t body_id,Vec2 delta){
-    if(!healthy_||!std::isfinite(delta.x)||!std::isfinite(delta.y)||std::abs(delta.x)>1000000||std::abs(delta.y)>1000000)return false;
+    if(!healthy_||scene_motion_||!std::isfinite(delta.x)||!std::isfinite(delta.y)||std::abs(delta.x)>1000000||std::abs(delta.y)>1000000)return false;
     auto offsets=polygon_offsets_;bool found=false,changed=false;
     for(uint32_t i=0;i<content_.polygon_count();++i)if(content_.polygon(i).body_id==body_id){found=true;changed|=offsets[i].x!=delta.x||offsets[i].y!=delta.y;offsets[i]=delta;}
     if(!found)return false;
@@ -286,6 +316,8 @@ bool OpeningWorld::idle_frame(double delta) {
     }
     const uint32_t controlled=content_.scene().player_instance_index;
     for(uint32_t i=0;i<actors_.size();++i)if(i!=controlled||actor_bound_[i])if(!actor_idle_animations(actors_[i],delta))return fail("Actor animation rejected");
+    if(white_fade_active_)white_fade_elapsed_=std::min(double(basement_.data()->fade_length()),white_fade_elapsed_+delta);
+    for(uint32_t i=0;i<special_actors_.size();++i)if(actor_bound_[i]&&special_actors_[i].visible&&!advance_basement_actor(*basement_actors_,delta,special_actors_[i],host_error_))return fail(host_error_.c_str());
     if(was_active&&!dialogue_.idle_process(delta,*this))return fail(dialogue_.error());
     if(!flush_deferred())return false;
     for(uint32_t i=0;i<actors_.size();++i)if(actor_bound_[i]&&!actor_scene_timers(actors_[i],delta))return fail("Actor timer rejected");
@@ -333,6 +365,8 @@ bool OpeningWorld::flush_deferred() {
             uint64_t mask=0;for(uint32_t i=0;i<actor_bound_.size();++i)if(actor_bound_[i])mask|=uint64_t(1)<<i;
             effects_.push_back({binding.kind==uint16_t(RoomBindingKind::WorldEffectAppear),binding.target_index,persistent_player_.state_->camera_.center(),mask,story_talker_.kind==DialogueTalkerKind::OriginalNpc?story_talker_.index:kRoomNoIndex});
         }
+        else if(binding.kind==uint16_t(RoomBindingKind::StopMusicRegion)||binding.kind==uint16_t(RoomBindingKind::PlayMusicRegion)){if(music_region_calls_.size()>=64)return fail("Music region call budget exceeded");music_region_calls_.push_back({binding.kind==uint16_t(RoomBindingKind::PlayMusicRegion),binding.target_index,binding.duration});}
+        else if(binding.kind==uint16_t(RoomBindingKind::BasementWhiteFade)){if(!basement_.bound())return fail("White fade host absent");white_fade_active_=true;white_fade_elapsed_=0;}
         else if(binding.kind==uint16_t(RoomBindingKind::StartPhoneRing)){if(scene_calls_.size()>=64)return fail("Scene call budget exceeded");scene_calls_.push_back({binding.target_index});}
         else if(binding.kind==uint16_t(RoomBindingKind::DelayedUnsupportedBoundary))boundaries_.push_back({action.target_index,binding.duration});
         else return fail("Unsupported object binding kind");
@@ -391,7 +425,10 @@ bool OpeningWorld::apply(const DialogueAction& a) {
 
     case K::ShakeActor:return actor&&actor_shake(*actor,a.vector,a.duration);
     case K::JumpActor:return actor&&actor_jump(*actor,float(a.value),a.duration,a.flags+1);
-    case K::AnimateActor:return actor&&actor_play_clip(*actor,a.target_index);
+    case K::AnimateActor:if(!actor||!actor_play_clip(*actor,a.target_index))return false;special_actors_[a.actor]={};return true;
+    case K::GrantKeyItem:if(!basement_.grant_key_item(a.target_index,host_error_))return fail(host_error_.c_str());return true;
+    case K::LearnSkill:if(!basement_.learn_skill(a.target_index,host_error_))return fail(host_error_.c_str());return true;
+    case K::AnimateSpecialActor:if(!actor||!actor_bound_[a.actor]||!basement_actors_||!begin_basement_actor(*basement_actors_,a.target_index,special_actors_[a.actor],host_error_))return false;return true;
     case K::EmoteActor:return actor&&actor_play_emote(*actor,a.target_index);
     case K::ShakeCamera:return persistent_player_.state_->camera_.shake(a.value,a.duration,a.vector);
     case K::ChangeCamera:if(a.flags&1){follow_actor_=kRoomNoIndex;return persistent_player_.state_->camera_.change_to_dialogue();}if(!actor)return false;follow_actor_=a.actor;return persistent_player_.state_->camera_.change_to_actor(a.actor,actor->position);

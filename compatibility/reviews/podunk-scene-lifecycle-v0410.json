@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "0fb761f7821b5aef2fad014fef732408615f12ce3af216f230505d94a0af9adb",
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "capability": "complete source script roster; FlagLandmark, FlaggableObject base methods, AreaRoom, DebugStart lifecycle only; all 71 Emotes typed onready object bindings",
+  "source_classes": [
+    "FlagLandmark",
+    "FlaggableObject",
+    "AreaRoom",
+    "DebugStartPos",
+    "Emotes"
+  ],
+  "pending_leaf_classes": [
+    "ItemHolder",
+    "Present",
+    "DroppedItem"
+  ],
+  "engine_audit": {
+    "tag": "3.6.2-stable",
+    "node_ready": "scene/main/node.cpp call_multilevel_reversed after children source order",
+    "base_ready": "modules/gdscript/gdscript.cpp _call_multilevel_reversed base before derived"
+  },
+  "claims": {
+    "all_scene_ready": false,
+    "hardware": false,
+    "test_execution": false
+  },
+  "emotes_review": {
+    "instances": 71,
+    "sprite_objects": 67,
+    "nullable_objects": 4,
+    "source": "Nodes/Ui/emotes.tscn::6",
+    "source_order": "child onready resolves immutable parent node; CharacterSprite sprite_changed updates source height/vframes bubble offset synchronously",
+    "callbacks": "checked source direction, texture geometry, animation, audio and publication required",
+    "rendering": "borrow admitted source atlas; 1:1 nearest; actual Canvas parent transform supplied by host"
+  },
+  "dandelion_capabilities": [
+    "Ready source Sprite queued deletion",
+    "source ordered parentless factory and visibility callbacks"
+  ],
+  "dandelion_pending": [
+    "CPUParticles emission backend"
+  ],
+  "typed_bridges_added": [
+    "14 Door onready and actual body-entered signal lifecycle",
+    "146 ButtonPrompt checked signal/animation Ready bridge",
+    "13 DeadBush actual onready, VisibilityNotifier, source animation, prompt and deferred Roots callbacks"
+  ],
+  "dead_bush_review": {
+    "ir_sha256": "ff4fb4f04eacb8b2e73dede649a84feb149b03f739d7874e76ac7964fc0a5e1e",
+    "source_sha256": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "semantics": [
+      "All 13 true source postorder Ready; viewport show/hide continues animation idle while hidden",
+      "New_parent nullable source variable fallback only when null, not blanket missing-node fallback",
+      "Actual source Sprite duplicate -> frame1 -> add_child -> local position assigned sprite.global_position in this exact order",
+      "Hitbox source callback has no bat/visible guard; source geometry owns collision dispatch",
+      "Source Break disables static/hit/interaction shapes; Hidden does not disable Hitbox; Grow re-enables three shapes",
+      "Source flags.get for initial branch; interact flags[bat] must exist; animation_finished flags.has gates BOTH deferred call and queue_free",
+      "Grow coroutine waits for any animation_finished even after interruption; all waiters resume Idle after existing Break handler",
+      "One deferred target is actual CutsceneArea7.check_start, never directly grant shovel or flags"
+    ],
+    "unsupported": [
+      "Complete town activation still requires all other pending source Ready",
+      "CutsceneArea7 typed deferred receiver must actually implement check_start before call is admitted",
+      "Dynamic Roots ownership and parent Canvas transform must be real Host sprite lifecycle, not fake static world coordinates"
+    ]
+  }
+}

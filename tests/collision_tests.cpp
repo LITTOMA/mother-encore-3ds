@@ -74,5 +74,22 @@ int main() {
     // A failed reconfiguration must never silently keep the previous world.
     CHECK(!invalid.configure(hull,{rejected[0]},margin));CHECK(!invalid.slide({},{60,0},moved));
     CHECK(near(moved.position,{1,-1}));
-    std::printf("Static convex collision: %u checks, %u engine-reference cases / %u frames, %zu source house pieces\n",checks,unsigned(collision_reference::cases.size()),frames,house.size());
+    // Manual-only invariants for native hollow segments and source degenerate
+    // convex outlines. These do not claim a new engine-reference oracle.
+    const ConvexPolygon square{{{-1,-1},{1,-1},{1,1},{-1,1}}};
+    const StaticObstacle segment{StaticObstacleKind::Segment,{{4,-8},{4,8}}};
+    CHECK(invalid.configure_geometry(square,{segment},margin));
+    CHECK(invalid.slide({0,0},{600,0},moved));CHECK(moved.position.x<=3&&moved.position.x>0);CHECK(moved.velocity.x==0);
+    CHECK(invalid.slide({8,0},{-600,0},moved));CHECK(moved.position.x>=5&&moved.position.x<8);CHECK(moved.velocity.x==0);
+    CHECK(invalid.slide({0,20},{600,0},moved));CHECK(near(moved.position,{10,20}));CHECK(near(moved.velocity,{600,0}));
+    const StaticObstacle repeated{StaticObstacleKind::NativeDegenerateConvex,{{4,-8},{4,8},{4,8},{4,-8}}};
+    CHECK(invalid.configure_geometry(square,{repeated},margin));
+    CHECK(invalid.slide({0,0},{600,0},moved));CHECK(moved.position.x<=3&&moved.velocity.x==0);
+    CHECK(invalid.slide({0,20},{600,0},moved));CHECK(near(moved.position,{10,20}));
+    CHECK(!invalid.configure_geometry(square,{{StaticObstacleKind::NativeDegenerateConvex,{{0,0},{2,0},{0,2}}}},margin));
+    moved=unchanged;CHECK(!invalid.slide({},{60,0},moved));CHECK(near(moved.position,unchanged.position));
+    CHECK(!invalid.configure_geometry(square,{{StaticObstacleKind(99),{{0,0},{0,1}}}},margin));
+    CHECK(!invalid.configure_geometry(square,{{StaticObstacleKind::Segment,{{0,0},{0,1},{1,1}}}},margin));
+    CHECK(!invalid.configure_geometry(square,{{StaticObstacleKind::Segment,{{0,0},{std::numeric_limits<float>::quiet_NaN(),1}}}},margin));
+    std::printf("Static source collision: %u checks, %u engine-reference cases / %u frames, %zu source house pieces\n",checks,unsigned(collision_reference::cases.size()),frames,house.size());
 }

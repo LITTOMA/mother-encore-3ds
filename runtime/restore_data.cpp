@@ -72,7 +72,7 @@ bool RestoreData::load(const uint8_t*p,size_t n,RoomView room,HouseView house,st
   next.npc_event_positions_.push_back(std::move(v));
  }
  const auto area_count=r.count(128);if(!area_count)return fail(e,"Restore music area coverage missing");std::set<uint32_t>area_ids;std::set<std::string>area_paths;
- for(uint32_t i=0;i<area_count;++i){RestoreMusicArea v;v.id=r.number();v.room_resource_index=r.number();v.room_resource_id=r.number();v.supported=r.boolean();v.source_path=r.text();v.resource_path=r.text();const auto hash=r.hash();v.center=r.vec();v.extents=r.vec();v.volume_db=r.f64();v.fadein_seconds=r.f64();v.fadeout_seconds=r.f64();
+ for(uint32_t i=0;i<area_count;++i){RestoreMusicArea v;v.id=r.number();v.room_resource_index=r.number();v.room_resource_id=r.number();v.supported=r.boolean();v.source_path=r.text();v.resource_path=r.text();const auto hash=r.hash();v.source_sha256=hash;v.center=r.vec();v.extents=r.vec();v.volume_db=r.f64();v.fadein_seconds=r.f64();v.fadeout_seconds=r.f64();
   if(!v.id||!area_ids.insert(v.id).second||!area_paths.insert(v.source_path).second||!path(v.source_path)||v.resource_path.rfind("res://",0)!=0||!path(std::string_view(v.resource_path).substr(6))||!finite(v.center)||!finite(v.extents)||v.extents.x<=0||v.extents.y<=0)return fail(e,"Restore music identity/path/geometry rejected");
   if(!std::isfinite(v.volume_db)||v.volume_db < -100||v.volume_db>24||!std::isfinite(v.fadein_seconds)||v.fadein_seconds<0||v.fadein_seconds>120||!std::isfinite(v.fadeout_seconds)||v.fadeout_seconds<0||v.fadeout_seconds>120)return fail(e,"Restore music volume/fade rejected");
   if(std::all_of(hash.begin(),hash.end(),[](uint8_t b){return !b;}))return fail(e,"Restore music source fingerprint missing");

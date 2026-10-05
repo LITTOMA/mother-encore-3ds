@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1735647691,
+    "source": "Graphics/Objects/Common/Dandelion.png",
+    "path": "graphics/world/podunk/dandelion.t3x",
+    "width": 10,
+    "height": 7,
+    "source_sha256": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "output_sha256": "4fbf3bca5c489aea0a59440e07aa9d35916950cba4de46b08329b4eb76fd58c1"
+  },
+  {
+    "id": 3676319673,
+    "source": "Graphics/Objects/Common/DandelionSeed.png",
+    "path": "graphics/world/podunk/dandelion-seed.t3x",
+    "width": 8,
+    "height": 4,
+    "source_sha256": "2323cd921b5fd67ce718652e2e9522a880f165d04e4a14dc5a9fbec11670e1c4",
+    "output_sha256": "1a6c9a499da3a506399ac6a0c8c44e4566f2763c4fdd2a9035afc8edd3c3334c"
+  }
+]

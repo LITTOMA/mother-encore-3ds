@@ -36,9 +36,28 @@ int main(int argc,char**argv){
  CHECK(room.load_file((root+"/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/opening.enchouse").c_str(),error));
  CHECK(round.load_file((root+"/opening.encround").c_str(),error));CHECK(items.load_file((root+"/opening.encitems").c_str(),error));CHECK(font.load_file((root+"/opening.encbattle").c_str(),error));
  const auto policy=read(root+"/rules6-to7.encmigration");CHECK(migration.load(policy.data(),policy.size(),error));
+ CHECK(migration.legacy_count()==2&&migration.legacy_compatibility(0).rules_revision==6&&migration.legacy_compatibility(1).rules_revision==7&&migration.target_compatibility().rules_revision==8);
  auto bytes=[&](const SessionSnapshot&s,SessionSaveCompatibility c){std::vector<uint8_t>b;CHECK(encode_session_save(s,c,b,error));return b;};
  auto prepare=[&](const std::vector<uint8_t>&b,PreparedSessionRestore&out,bool&changed){return prepare_compatible_session_restore(b.data(),b.size(),migration,data,room.view(),house.view(),round.view(),items.view(),font.view(),out,error,&changed);};
  PreparedSessionRestore prepared;bool migrated=false;
+ // Actual frozen rules7 supports partial source consumables/statuses. Matching
+ // rules6 bytes must not gain that domain merely because rules7 is in the pack.
+ NativeSessionData old7;const std::string legacy7_root=argc>3?argv[3]:"content/legacy-rules7";
+ CHECK(old7.load_file((legacy7_root+"/opening.encsession").c_str(),error));
+ auto seven=old7.defaults();CHECK(!old7.consumables().empty());const auto&dose=old7.consumables().front();bool partial=false;
+ for(auto&i:seven.characters.front().inventory)if(i.item_id==dose.item_id){CHECK(dose.max_doses>1);i.doses=dose.max_doses-1;partial=true;break;}CHECK(partial);
+ auto seven_bytes=bytes(seven,old7.compatibility());SessionSnapshot decoded7;CHECK(migration.decode_legacy(seven_bytes.data(),seven_bytes.size(),decoded7,error));CHECK(bytes(decoded7,old7.compatibility())==seven_bytes);
+ CHECK(prepare(seven_bytes,prepared,migrated)&&migrated);CHECK(bytes(prepared.state,old7.compatibility())==seven_bytes);
+ auto mislabeled=bytes(seven,old.compatibility());CHECK(!migration.decode_legacy(mislabeled.data(),mislabeled.size(),decoded7,error));
+ // No current key/learned-skill scope is accepted with a historical identity.
+ CHECK(!data.key_policies().empty());for(const auto&key:data.key_policies())if(!key.required){auto outside=old7.defaults();outside.key_items.push_back({key.item_id,false,key.doses,17});auto raw=bytes(outside,old7.compatibility());CHECK(!migration.decode_legacy(raw.data(),raw.size(),decoded7,error));break;}
+ // Schema/capability pairs, exact count and ordered historical identities are
+ // separately checked. Corruption must retain the previously admitted bundle.
+ auto bad_count=policy;put(bad_count,24,1);fix(bad_count);CHECK(!migration.load(bad_count.data(),bad_count.size(),error)&&migration.valid());
+ auto bad_target=policy;put(bad_target,36,9);fix(bad_target);CHECK(!migration.load(bad_target.data(),bad_target.size(),error)&&migration.valid());
+ size_t second_at=52;for(unsigned i=0;i<5;++i){CHECK(second_at+4<=policy.size());const auto n=uint32_t(policy[second_at])|uint32_t(policy[second_at+1])<<8|uint32_t(policy[second_at+2])<<16|uint32_t(policy[second_at+3])<<24;second_at+=4+n;}CHECK(second_at+12<policy.size());
+ auto duplicate=policy;put(duplicate,second_at+8,6);fix(duplicate);CHECK(!migration.load(duplicate.data(),duplicate.size(),error)&&migration.valid());
+
  auto saved=old.defaults();auto&c=saved.characters.front();const auto&level=old.levels().back();c.level=level.level;c.experience=level.minimum_exp+1;c.hp=19;c.pp=3;c.learned_skills=level.skills;c.nickname="Ana";c.inventory.front().uid=0;
  saved.key_items.front().uid=UINT32_MAX;saved.player_name="Player";saved.favorite_food="Bread";saved.position_x=148.25;saved.position_y=704.5;saved.direction_x=-std::sqrt(.5);saved.direction_y=std::sqrt(.5);saved.bank=15;saved.cash=UINT32_MAX;saved.earned_cash=7;saved.playtime_seconds=1234.75;saved.saved_at="2026-10-02T08:00:00Z";
  for(auto&f:saved.flags)if(std::find(old.mutable_flags().begin(),old.mutable_flags().end(),f.id)!=old.mutable_flags().end())f.value=true;
@@ -78,7 +97,7 @@ int main(int argc,char**argv){
  CHECK(!prepare(bytes(expanded,old.compatibility()),prepared,migrated));
  (void)new_seen; // A later content revision may bind the added keys via Npcs.
  CHECK(prepare(original,prepared,migrated));
- for(auto identity:std::vector<SessionSaveCompatibility>{{old.compatibility().content_family+1,1,6},{old.compatibility().content_family,2,6},{old.compatibility().content_family,1,5},{old.compatibility().content_family,1,8}}){CHECK(!prepare(bytes(old.defaults(),identity),prepared,migrated));unchanged();}
+ for(auto identity:std::vector<SessionSaveCompatibility>{{old.compatibility().content_family+1,1,6},{old.compatibility().content_family,2,6},{old.compatibility().content_family,1,5},{old.compatibility().content_family,1,9}}){CHECK(!prepare(bytes(old.defaults(),identity),prepared,migrated));unchanged();}
  for(size_t cut:std::vector<size_t>{0,1,8,27,original.size()-1}){std::vector<uint8_t>b(original.begin(),original.begin()+cut);CHECK(!prepare(b,prepared,migrated));unchanged();}
  auto corrupt=original;corrupt.back()^=1;CHECK(!prepare(corrupt,prepared,migrated));unchanged();auto schema=original;put(schema,8,2);put(schema,schema.size()-4,crc(schema.data(),schema.size()-4));CHECK(!prepare(schema,prepared,migrated));unchanged();
  for(size_t at:std::vector<size_t>{0,8,12,16,20,24,32,44,48,52}){auto b=policy;b[at]^=1;if(at>=24)fix(b);CHECK(!migration.load(b.data(),b.size(),error));CHECK(migration.valid());}

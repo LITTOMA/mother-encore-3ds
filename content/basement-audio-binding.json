@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "kind": "encore.basement-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "license_review": "Pinned upstream game audio derivative; retain upstream notices; no MIT relicensing. Source LICENSE review is shared with the reviewed basement actor/progression resources.",
+  "shared_assets": [
+    {
+      "source": "Audio/Sound effects/Item Received.mp3",
+      "identity": {
+        "kind": "stable",
+        "value": 1401
+      },
+      "pcm": "sound/effects/item-received.pcm",
+      "gain_db": 0.0,
+      "conversion": null
+    }
+  ],
+  "assets": [
+    {
+      "source": "Audio/Sound effects/M3/Woof Woof!.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1801
+      },
+      "pcm": "sound/effects/mick-woof.pcm",
+      "gain_db": 0,
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/M3/Dog_whining.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1802
+      },
+      "pcm": "sound/effects/mick-whining.pcm",
+      "gain_db": 0,
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/M3/Learned PSI.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1803
+      },
+      "pcm": "sound/effects/learned-psi.pcm",
+      "gain_db": 0,
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/text/Female.mp3",
+      "identity": {
+        "kind": "stable",
+        "value": 1804
+      },
+      "pcm": "sound/effects/text-female.pcm",
+      "gain_db": 0,
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/Gift Box.mp3",
+      "identity": {
+        "kind": "stable",
+        "value": 1805
+      },
+      "pcm": "sound/effects/present-unwrapped.pcm",
+      "gain_db": 0,
+      "conversion": null
+    }
+  ],
+  "music_assets": [
+    {
+      "source": "Audio/Music/Good_Morning.mp3",
+      "identity": {
+        "kind": "stable",
+        "value": 1806
+      },
+      "pcm": "sound/music/good-morning.pcm",
+      "gain_db": 0,
+      "conversion": null
+    }
+  ]
+}

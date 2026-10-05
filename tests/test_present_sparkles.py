@@ -1,0 +1,22 @@
+"""Manual source/schema checks; not part of automatic builds."""
+import copy,unittest
+from tools import present_sparkles as p
+class PresentSparklesTests(unittest.TestCase):
+ @classmethod
+ def setUpClass(cls):cls.ir=p.load()
+ def test_actual_source_pack(self):
+  self.assertEqual((p.ROOT/p.PACK).read_bytes(),p.encode(self.ir));self.assertEqual(len(self.ir['animation']['frames']),40);self.assertEqual(self.ir['animation']['random_range'],[0,47]);self.assertTrue(self.ir['binding']['ready_before_parent']);self.assertEqual(self.ir['binding']['parent'],'Objects/Present1')
+ def test_reject_unreviewed_schema(self):
+  for key,value in [('commit','0'*40),('schema',2),('engine_reference',{})]:
+   x=copy.deepcopy(self.ir);x[key]=value
+   with self.assertRaises(ValueError):p.validate(x)
+ def test_frame_and_clock_negatives(self):
+  for key,value in [('frames',[[0,0,100000,7]]),('random_range',[-1,47]),('speed',float('nan')),('loop',False),('serialized_frame',999),('pixel_snap',False)]:
+   x=copy.deepcopy(self.ir);x['animation'][key]=value
+   with self.assertRaises(ValueError):p.validate(x)
+ def test_unknown_binding_or_resource(self):
+  x=copy.deepcopy(self.ir);x['binding']['ready_before_parent']=False
+  with self.assertRaises(ValueError):p.validate(x)
+  x=copy.deepcopy(self.ir);x['resource']['output']='../other.t3x'
+  with self.assertRaises(ValueError):p.validate(x)
+if __name__=='__main__':unittest.main()

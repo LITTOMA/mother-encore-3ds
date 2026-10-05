@@ -382,6 +382,12 @@ def verify_room(ir,room,ex):
     for row in ir['initial_bindings']+[ir['stop_binding']]+ir['melody_bindings']:
         require(row['id']<=len(sections['Binding']),'Missing compiled object binding')
         value=sections['Binding'][row['id']-1]
+        if room['capabilities']>=9 and row['kind'] in (1,5):
+            from tools.link_basement_content import lower_music_binding
+            lowered=lower_music_binding(row,ex)
+            require(value['stable_id']==row['id'] and all(value[k]==v for k,v in lowered.items() if k!='target_index'),'Compiled MusicChanger owned-player binding differs')
+            require(strings[value['target_index']]==row['node'],'Compiled MusicChanger source node differs')
+            continue
         require(value['stable_id']==row['id']and value['kind']==row['kind'],'Compiled object stable/method binding mismatch')
         if row['kind']==4:require(value['target_index']==row['target_binding_id']-1,'Compiled stop-shaker target binding mismatch')
         else:

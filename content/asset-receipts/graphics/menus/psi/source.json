@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "59863b35adac30c5370475be25af191445a25eb6936268a6ec3ad5b97b1a31d1",
+  "outputs": {
+    "graphics/menus/psi/1.t3x": {
+      "bytes": 16405,
+      "sha256": "09b96bbac8678144b4943c3122dbc7a269b33eff94a2798e35ad16baf74151c1"
+    },
+    "graphics/menus/psi/2.t3x": {
+      "bytes": 8213,
+      "sha256": "514fe4758f27212fd3651c4b9af6a58a0409c28cafe0129876c57e863fc295f8"
+    },
+    "graphics/menus/psi/3.t3x": {
+      "bytes": 1045,
+      "sha256": "7fe599635657c938405be8493603d1558c4a9ec1c225a0e4d73adf3300434455"
+    },
+    "graphics/menus/psi/10.t3x": {
+      "bytes": 4117,
+      "sha256": "fc0f7a78e16eb7c760926168210828ee36ba92964f7e6764ea5f0df1df8ed688"
+    },
+    "graphics/menus/psi/11.t3x": {
+      "bytes": 4117,
+      "sha256": "f549b767dba681ae9ebe001bf77fb140fe632c17ae4eb7e2c7789bfb7d84b62f"
+    },
+    "graphics/menus/psi/12.t3x": {
+      "bytes": 4117,
+      "sha256": "e84048378fc026fd70cb8461965e3e7cd97580b4be1c2532bcb1b6baf4e78f18"
+    },
+    "graphics/menus/psi/13.t3x": {
+      "bytes": 4117,
+      "sha256": "e7fcbeb709f8872c6ee759cdb1981c1cc37fe36829d431848856221c66096ad4"
+    },
+    "graphics/menus/psi/14.t3x": {
+      "bytes": 4117,
+      "sha256": "fa7441713e5806d5fe0a3a46a7fca5e166019d1b7a7e3af16b464789eb94252f"
+    },
+    "graphics/menus/psi/15.t3x": {
+      "bytes": 4117,
+      "sha256": "31c190b989b7819230276c4789540801bb115d70676438d7cc0c9af73de2afad"
+    },
+    "graphics/menus/psi/16.t3x": {
+      "bytes": 4117,
+      "sha256": "02b9963ed42044b83b1e5d4381e91ec35a83aaac8308bacb8e4247844bf21f43"
+    },
+    "graphics/menus/psi/17.t3x": {
+      "bytes": 4117,
+      "sha256": "842ac58573f2a8c85777c67acad557d42a3e337a016c9cf4dbd6cb311e185f75"
+    },
+    "graphics/menus/psi/18.t3x": {
+      "bytes": 4117,
+      "sha256": "d02f18b3037ae8f55e8267d83fa615eabcfced6bc96ae1a3aa3f6220b619797a"
+    },
+    "graphics/menus/psi/19.t3x": {
+      "bytes": 4117,
+      "sha256": "eda5b3f20d65599b4217e23197b80fb0c906b0bcf8401a4c12eca3d342a80886"
+    }
+  },
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+}

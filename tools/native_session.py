@@ -202,7 +202,31 @@ def extract():
     points=[scene['spawn']]+[d['destination']for d in house['doors']]
     cameras=room['sections']['CameraArea'];camera_ids=sorted({min(cameras,key=lambda c:sum((a-b)**2 for a,b in zip(c['center'],point)))['stable_id'] for point in points})
     startup=copy.deepcopy(defaults);startup['characters'],derivation=source_startup_characters(ex,save,overrides,defaults)
-    return dict(schema=6,consumables=consumables,status_policies=status_policies,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
+    from tools.basement_progression import load as load_basement,IR as basement_ir
+    basement=load_basement(ROOT);required.append(basement_ir)
+    require(room['rules']==8 and room['capabilities']==9,'Session story policy needs source-linked rules8/cap9 Room')
+    for p,h in basement['sources'].items():
+        ex.data(p);require(ex.sources[p]==h,'Basement Session source fingerprint changed: '+p)
+    keys=basement['key_items'];key_policies=[]
+    require(basement['present']['flag'] in {f['id']for f in flags},'Session Present flag unregistered');mutable.add(basement['present']['flag'])
+    key_source=next(p for p in basement['programs']if p['identity']=='Podunk/woof_key')
+    grants=[c for c in key_source['commands']if c['kind']=='GrantKeyItem'];writes=[c for c in key_source['commands']if c['kind']=='SetFlag']
+    require(len(grants)==len(writes)==1 and writes[0]['value']==1,'Session Mick grant provenance changed')
+    for k in keys:
+        if k['grant']:
+            flag= writes[0]['flag_id'] if k['id']==grants[0]['key_id'] else basement['present']['flag'] if k['id']==basement['present']['key_id'] else None
+            require(flag is not None and flag in mutable,'Session key policy lacks mapped source mutation')
+            key_policies.append(dict(item_id=k['source'],flag_id=flag,doses=k['doses'],max_count=1,required=False))
+        else:
+            initial=[i for i in key_items if i['item_id']==k['source']];require(len(initial)==1 and initial[0]['doses']==k['doses'],'Session initial key source changed')
+            key_policies.append(dict(item_id=k['source'],flag_id='',doses=k['doses'],max_count=len(initial),required=True))
+    diary=next(p for p in basement['programs']if p['identity']==basement['present']['dialogue'])
+    learned=[c['skill_id']for c in diary['commands']if c['kind']=='LearnSkill'];require(learned==[p['id']for p in basement['skills']],'Session diary learned skill binding changed')
+    skill_policies=[dict(character_id=p['character'],skill_id=p['skill'],flag_id=basement['present']['flag'])for p in basement['skills']]
+    require(all(p['character_id']==leader and p['flag_id']in mutable for p in skill_policies),'Session story skill owner/flag changed')
+    skill_order=basement['skill_order'];require(all(s in skill_order for row in levels for s in row['skills']),'Session level skill source order missing')
+    for row in levels:row['skills']=sorted(row['skills'],key=skill_order.index)
+    return dict(schema=7,key_policies=key_policies,skill_policies=skill_policies,skill_order=skill_order,consumables=consumables,status_policies=status_policies,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; source-bound basement key/diary and story learned skill; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
 
 class Writer:
     def __init__(self):self.raw=bytearray()
@@ -226,7 +250,7 @@ def encode_snapshot(s,c):
     return raw+struct.pack('<I',zlib.crc32(raw))
 
 def encode(r):
-    require(r['schema'] in (1,2,3,4,5,6),'Unsupported native session schema')
+    require(r['schema'] in (1,2,3,4,5,6,7),'Unsupported native session schema')
     w=Writer();c=r['compatibility'];w.put('3I',c['content_family'],c['content_revision'],c['rules_revision']);template=encode_snapshot(r['defaults'],c);w.put('I',len(template));w.raw.extend(template)
     w.put('I',len(r['levels']))
     for level in r['levels']:w.put('3I7i',level['level'],level['minimum_exp'],level['next_exp'],*level['stats']);w.array(level['skills'],w.text)
@@ -248,6 +272,12 @@ def encode(r):
         for p in r['consumables']:w.text(p['item_id']);w.put('I',p['max_doses'])
         w.put('I',len(r['status_policies']))
         for p in r['status_policies']:w.text(p['id']);w.put('2I',int(p['passive_healing']),p['default_saved_turns'])
+    if r['schema']>=7:
+        w.put('I',len(r['key_policies']))
+        for p in r['key_policies']:w.text(p['item_id']);w.text(p['flag_id']);w.put('3I',p['doses'],p['max_count'],int(p['required']))
+        w.put('I',len(r['skill_policies']))
+        for p in r['skill_policies']:w.text(p['character_id']);w.text(p['skill_id']);w.text(p['flag_id'])
+        w.array(r['skill_order'],w.text)
     return struct.pack('<8s4I',b'ENCNSESS',r['schema'],24+len(w.raw),zlib.crc32(w.raw),r['schema'])+w.raw
 
 def verify_recipe(r):

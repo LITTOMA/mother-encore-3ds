@@ -78246,10 +78246,64 @@
       "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3:checked native token projection"
     },
     {
+      "identity": "house.expected/132/3",
+      "key": "3/4:Mick0:1/1/10:Woof woof!3/4:Mick0:1/1/28:(Grrr, my butt is so itchy!)5/4:Mick0:1/1/41:(Stop standing there and lend me a hand!)",
+      "expected": "3/4:Mick0:1/1/10:Woof woof!3/4:Mick0:1/1/28:(Grrr, my butt is so itchy!)5/4:Mick0:1/1/41:(Stop standing there and lend me a hand!)",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/135/1",
+      "key": "5/0:0:2/2/0:1/26: gave Mick a good scratch!",
+      "expected": "5/0:0:2/2/0:1/26: gave Mick a good scratch!",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:3:checked native token projection"
+    },
+    {
+      "identity": "house.expected/136/4",
+      "key": "3/4:Mick0:1/1/20:(Ahhh, many thanks.)3/4:Mick0:1/1/39:(Wait a minute, you can understand me?)3/4:Mick0:5/1/23:(You must have learned 3/6:ea8b2c1/9:Telepathy4/0:1/2:!)5/4:Mick0:9/1/67:(That's great and all, but don't you dare use it on me by pressing 3/6:ea8b2c1/5:START4/0:1/29: and selecting it within the 3/6:ea8b2c1/8:PSI menu4/0:1/2:.)",
+      "expected": "3/4:Mick0:1/1/20:(Ahhh, many thanks.)3/4:Mick0:1/1/39:(Wait a minute, you can understand me?)3/4:Mick0:5/1/23:(You must have learned 3/6:ea8b2c1/9:Telepathy4/0:1/2:!)5/4:Mick0:9/1/67:(That's great and all, but don't you dare use it on me by pressing 3/6:ea8b2c1/5:START4/0:1/29: and selecting it within the 3/6:ea8b2c1/8:PSI menu4/0:1/2:.)",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:4:checked native token projection"
+    },
+    {
       "identity": "house.expected/14/1",
       "key": "5/0:0:2/2/0:1/21: remembered the tune.",
       "expected": "5/0:0:2/2/0:1/21: remembered the tune.",
       "origin": "Data/Dialogue/Podunk/dollmelody.yaml:4:checked native token projection"
+    },
+    {
+      "identity": "house.expected/140/1",
+      "key": "5/4:Mick0:9/1/57:(And don't even think of using it by simply holding down 3/6:ea8b2c1/1:B4/0:1/14: and pressing 3/6:ea8b2c1/1:A4/0:1/2:.)",
+      "expected": "5/4:Mick0:9/1/57:(And don't even think of using it by simply holding down 3/6:ea8b2c1/1:B4/0:1/14: and pressing 3/6:ea8b2c1/1:A4/0:1/2:.)",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:8:checked native token projection"
+    },
+    {
+      "identity": "house.expected/141/1",
+      "key": "5/4:Mick0:1/1/10:Whimper...",
+      "expected": "5/4:Mick0:1/1/10:Whimper...",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:9:checked native token projection"
+    },
+    {
+      "identity": "house.expected/142/3",
+      "key": "3/4:Mick0:1/1/10:Woof woof!3/4:Mick0:13/1/20:(Don't you dare use 3/6:ea8b2c1/9:Telepathy4/0:1/19: on me by pressing 3/6:ea8b2c1/5:START4/0:1/29: and selecting it within the 3/6:ea8b2c1/8:PSI menu4/0:1/2:.)5/4:Mick0:9/1/57:(And don't even think of using it by simply holding down 3/6:ea8b2c1/1:B4/0:1/14: and pressing 3/6:ea8b2c1/1:A4/0:1/2:.)",
+      "expected": "3/4:Mick0:1/1/10:Woof woof!3/4:Mick0:13/1/20:(Don't you dare use 3/6:ea8b2c1/9:Telepathy4/0:1/19: on me by pressing 3/6:ea8b2c1/5:START4/0:1/29: and selecting it within the 3/6:ea8b2c1/8:PSI menu4/0:1/2:.)5/4:Mick0:9/1/57:(And don't even think of using it by simply holding down 3/6:ea8b2c1/1:B4/0:1/14: and pressing 3/6:ea8b2c1/1:A4/0:1/2:.)",
+      "origin": "Data/Dialogue/Podunk/woof_secret.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/145/1",
+      "key": "5/4:Mick0:3/1/23:(I hope they make more 11/0:1/4:...)",
+      "expected": "5/4:Mick0:3/1/23:(I hope they make more 11/0:1/4:...)",
+      "origin": "Data/Dialogue/Podunk/woof_food.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/146/2",
+      "key": "3/4:Mick0:1/1/46:(I can smell some Dog Treats in the basement.)5/4:Mick0:1/1/44:(If you fetch them for me, I'll let you go.)",
+      "expected": "3/4:Mick0:1/1/46:(I can smell some Dog Treats in the basement.)5/4:Mick0:1/1/44:(If you fetch them for me, I'll let you go.)",
+      "origin": "Data/Dialogue/Podunk/woof_deal.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/148/4",
+      "key": "3/4:Mick0:3/1/48:(I hope they haven't found out I ate all of the 11/0:1/4:...)3/4:Mick0:1/1/35:(Hey, are you reading my thoughts?)3/4:Mick0:1/1/44:(Cut it out! That's an invasion of privacy!)5/4:Mick0:1/1/43:(Take this and forget what you just heard.)",
+      "expected": "3/4:Mick0:3/1/48:(I hope they haven't found out I ate all of the 11/0:1/4:...)3/4:Mick0:1/1/35:(Hey, are you reading my thoughts?)3/4:Mick0:1/1/44:(Cut it out! That's an invasion of privacy!)5/4:Mick0:1/1/43:(Take this and forget what you just heard.)",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:0:checked native token projection"
     },
     {
       "identity": "house.expected/15/1",
@@ -78258,10 +78312,94 @@
       "origin": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml:0:checked native token projection"
     },
     {
+      "identity": "house.expected/152/1",
+      "key": "5/0:0:1/1/25:You got the Basement Key.",
+      "expected": "5/0:0:1/1/25:You got the Basement Key.",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:4:checked native token projection"
+    },
+    {
+      "identity": "house.expected/153/1",
+      "key": "5/4:Mick0:1/1/46:(I can smell some Dog Treats in the basement.)",
+      "expected": "5/4:Mick0:1/1/46:(I can smell some Dog Treats in the basement.)",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:5:checked native token projection"
+    },
+    {
+      "identity": "house.expected/154/1",
+      "key": "5/4:Mick0:1/1/44:(If you fetch them for me, I'll let you go.)",
+      "expected": "5/4:Mick0:1/1/44:(If you fetch them for me, I'll let you go.)",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:6:checked native token projection"
+    },
+    {
+      "identity": "house.expected/155/1",
+      "key": "5/0:0:2/2/0:1/20: opened the present.",
+      "expected": "5/0:0:2/2/0:1/20: opened the present.",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/156/1",
+      "key": "5/0:0:6/2/0:1/9: got his 3/6:ea8b2c1/26:Great Grand-Father's Diary4/0:1/1:!",
+      "expected": "5/0:0:6/2/0:1/9: got his 3/6:ea8b2c1/26:Great Grand-Father's Diary4/0:1/1:!",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:1:checked native token projection"
+    },
+    {
+      "identity": "house.expected/157/1",
+      "key": "5/3:???35:Audio/Sound effects/text/Female.mp32/2/0:1/29:... Please... come find me...",
+      "expected": "5/3:???35:Audio/Sound effects/text/Female.mp32/2/0:1/29:... Please... come find me...",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:4:checked native token projection"
+    },
+    {
+      "identity": "house.expected/158/1",
+      "key": "5/3:???35:Audio/Sound effects/text/Female.mp35/1/9:Seek the 3/6:ea8b2c1/17:shell in the cave4/0:1/3:...",
+      "expected": "5/3:???35:Audio/Sound effects/text/Female.mp35/1/9:Seek the 3/6:ea8b2c1/17:shell in the cave4/0:1/3:...",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:5:checked native token projection"
+    },
+    {
+      "identity": "house.expected/159/1",
+      "key": "5/3:???35:Audio/Sound effects/text/Female.mp31/1/55:Do so, and the wisdom of the world shall be unveiled...",
+      "expected": "5/3:???35:Audio/Sound effects/text/Female.mp31/1/55:Do so, and the wisdom of the world shall be unveiled...",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:6:checked native token projection"
+    },
+    {
       "identity": "house.expected/16/1",
       "key": "5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/29:Please make sure it's dead...",
       "expected": "5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/29:Please make sure it's dead...",
       "origin": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml:1:checked native token projection"
+    },
+    {
+      "identity": "house.expected/160/1",
+      "key": "5/0:0:3/1/23:Something awoke inside 2/0:1/1:!",
+      "expected": "5/0:0:3/1/23:Something awoke inside 2/0:1/1:!",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:8:checked native token projection"
+    },
+    {
+      "identity": "house.expected/161/1",
+      "key": "5/0:0:2/2/0:1/16: learned Lifeup!",
+      "expected": "5/0:0:2/2/0:1/16: learned Lifeup!",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:9:checked native token projection"
+    },
+    {
+      "identity": "house.expected/162/1",
+      "key": "5/0:0:12/1/6:Press 3/6:ea8b2c1/5:START4/0:1/15: and open your 3/6:ea8b2c1/3:PSI4/0:1/13: menu to use 3/6:ea8b2c1/7:Lifeup.4/0:",
+      "expected": "5/0:0:12/1/6:Press 3/6:ea8b2c1/5:START4/0:1/15: and open your 3/6:ea8b2c1/3:PSI4/0:1/13: menu to use 3/6:ea8b2c1/7:Lifeup.4/0:",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:10:checked native token projection"
+    },
+    {
+      "identity": "house.expected/163/1",
+      "key": "5/0:0:5/2/0:1/6: used 1/4:the 1/12:Basement Key1/1:.",
+      "expected": "5/0:0:5/2/0:1/6: used 1/4:the 1/12:Basement Key1/1:.",
+      "origin": "Data/Dialogue/Reusable/lockopened.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/164/1",
+      "key": "5/0:0:1/1/12:It's locked.",
+      "expected": "5/0:0:1/1/12:It's locked.",
+      "origin": "Data/Dialogue/Reusable/locklocked.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/165/1",
+      "key": "5/0:0:1/1/13:It's empty...",
+      "expected": "5/0:0:1/1/13:It's empty...",
+      "origin": "Data/Dialogue/ItemDialogue/presentempty.yaml:0:checked native token projection"
     },
     {
       "identity": "house.expected/17/2",
@@ -78564,6 +78702,18 @@
       "origin": "Data/Dialogue/Podunk/mimmie_key_again.yaml:0:checked native token projection"
     },
     {
+      "identity": "house.item.article/163/1",
+      "key": "KEYBASEMENT_ART",
+      "expected": "The ,the ,The ,the ,this ,it,was",
+      "origin": "Data/Dialogue/Reusable/lockopened.yaml:0:source key context"
+    },
+    {
+      "identity": "house.item.name/163/1",
+      "key": "KEYBASEMENT_NAME",
+      "expected": "Basement Key",
+      "origin": "Data/Dialogue/Reusable/lockopened.yaml:0:source key context"
+    },
+    {
       "identity": "house.speaker/0/4",
       "key": "DIALOGUE_PODUNK_CAROL_PANIC_SPEAKER_Carol",
       "expected": "Carol",
@@ -78588,10 +78738,88 @@
       "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3:name"
     },
     {
+      "identity": "house.speaker/132/3",
+      "key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/136/4",
+      "key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:4:name"
+    },
+    {
+      "identity": "house.speaker/140/1",
+      "key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:8:name"
+    },
+    {
+      "identity": "house.speaker/141/1",
+      "key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:9:name"
+    },
+    {
+      "identity": "house.speaker/142/3",
+      "key": "DIALOGUE_PODUNK_WOOF_SECRET_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof_secret.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/145/1",
+      "key": "DIALOGUE_PODUNK_WOOF_FOOD_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof_food.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/146/2",
+      "key": "DIALOGUE_PODUNK_WOOF_DEAL_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof_deal.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/148/4",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:0:name"
+    },
+    {
       "identity": "house.speaker/15/1",
       "key": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_SPEAKER_Mimmie",
       "expected": "Mimmie",
       "origin": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/153/1",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:5:name"
+    },
+    {
+      "identity": "house.speaker/154/1",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "expected": "Mick",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:6:name"
+    },
+    {
+      "identity": "house.speaker/157/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "expected": "???",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:4:name"
+    },
+    {
+      "identity": "house.speaker/158/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "expected": "???",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:5:name"
+    },
+    {
+      "identity": "house.speaker/159/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "expected": "???",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:6:name"
     },
     {
       "identity": "house.speaker/16/1",
@@ -78978,10 +79206,64 @@
       "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3"
     },
     {
+      "identity": "house/132/3",
+      "key": "DIALOGUE_PODUNK_WOOF_0",
+      "expected": "[@]Woof woof![WAIT@](Grrr, my butt is so itchy!)[WAIT@](Stop standing there and lend me a hand!)",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:0"
+    },
+    {
+      "identity": "house/135/1",
+      "key": "DIALOGUE_PODUNK_WOOF_3",
+      "expected": "[@][Ninten] gave Mick a good scratch!",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:3"
+    },
+    {
+      "identity": "house/136/4",
+      "key": "DIALOGUE_PODUNK_WOOF_4",
+      "expected": "[@](Ahhh, many thanks.)[WAIT@](Wait a minute, you can understand me?)[WAIT@](You must have learned [color]Telepathy[/color]!)[WAIT@](That's great and all, but don't you dare use it on me by pressing [color][ui_select][/color] and selecting it within the [color]PSI menu[/color].)",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:4"
+    },
+    {
       "identity": "house/14/1",
       "key": "DIALOGUE_PODUNK_DOLLMELODY_4",
       "expected": "[@][PartyLead] remembered the tune.",
       "origin": "Data/Dialogue/Podunk/dollmelody.yaml:4"
+    },
+    {
+      "identity": "house/140/1",
+      "key": "DIALOGUE_PODUNK_WOOF_8",
+      "expected": "[@](And don't even think of using it by simply holding down [color][ui_toggle][/color] and pressing [color][ui_accept][/color].)",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:8"
+    },
+    {
+      "identity": "house/141/1",
+      "key": "DIALOGUE_PODUNK_WOOF_9",
+      "expected": "[@]Whimper...",
+      "origin": "Data/Dialogue/Podunk/woof.yaml:9"
+    },
+    {
+      "identity": "house/142/3",
+      "key": "DIALOGUE_PODUNK_WOOF_SECRET_0",
+      "expected": "[@]Woof woof![WAIT@](Don't you dare use [color]Telepathy[/color] on me by pressing [color][ui_select][/color] and selecting it within the [color]PSI menu[/color].)[WAIT@](And don't even think of using it by simply holding down [color][ui_toggle][/color] and pressing [color][ui_accept][/color].)",
+      "origin": "Data/Dialogue/Podunk/woof_secret.yaml:0"
+    },
+    {
+      "identity": "house/145/1",
+      "key": "DIALOGUE_PODUNK_WOOF_FOOD_0",
+      "expected": "[@](I hope they make more [FavFood]...)",
+      "origin": "Data/Dialogue/Podunk/woof_food.yaml:0"
+    },
+    {
+      "identity": "house/146/2",
+      "key": "DIALOGUE_PODUNK_WOOF_DEAL_0",
+      "expected": "[@](I can smell some Dog Treats in the basement.)[WAIT@](If you fetch them for me, I'll let you go.)",
+      "origin": "Data/Dialogue/Podunk/woof_deal.yaml:0"
+    },
+    {
+      "identity": "house/148/4",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_0",
+      "expected": "[@](I hope they haven't found out I ate all of the [FavFood]...)[WAIT@](Hey, are you reading my thoughts?)[WAIT@](Cut it out! That's an invasion of privacy!)[WAIT@](Take this and forget what you just heard.)",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:0"
     },
     {
       "identity": "house/15/1",
@@ -78990,10 +79272,94 @@
       "origin": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml:0"
     },
     {
+      "identity": "house/152/1",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_4",
+      "expected": "[@]You got the Basement Key.",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:4"
+    },
+    {
+      "identity": "house/153/1",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_5",
+      "expected": "[@](I can smell some Dog Treats in the basement.)",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:5"
+    },
+    {
+      "identity": "house/154/1",
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_6",
+      "expected": "[@](If you fetch them for me, I'll let you go.)",
+      "origin": "Data/Dialogue/Podunk/woof_key.yaml:6"
+    },
+    {
+      "identity": "house/155/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_0",
+      "expected": "[@][PartyLead] opened the present.",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:0"
+    },
+    {
+      "identity": "house/156/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_1",
+      "expected": "[@][Ninten] got his [color]Great Grand-Father's Diary[/color]!",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:1"
+    },
+    {
+      "identity": "house/157/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_4",
+      "expected": "[@][Ninten]... Please... come find me...",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:4"
+    },
+    {
+      "identity": "house/158/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_5",
+      "expected": "[@]Seek the [color]shell in the cave[/color]...",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:5"
+    },
+    {
+      "identity": "house/159/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_6",
+      "expected": "[@]Do so, and the wisdom of the world shall be unveiled...",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:6"
+    },
+    {
       "identity": "house/16/1",
       "key": "DIALOGUE_PODUNK_CUTSCENES_MIMMIE_IGNORE_1",
       "expected": "[@]Please make sure it's dead...",
       "origin": "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml:1"
+    },
+    {
+      "identity": "house/160/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_8",
+      "expected": "[@]Something awoke inside [Ninten]!",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:8"
+    },
+    {
+      "identity": "house/161/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_9",
+      "expected": "[@][Ninten] learned Lifeup!",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:9"
+    },
+    {
+      "identity": "house/162/1",
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_10",
+      "expected": "[@]Press [color][ui_select][/color] and open your [color]PSI[/color] menu to use [color]Lifeup.[/color]",
+      "origin": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml:10"
+    },
+    {
+      "identity": "house/163/1",
+      "key": "DIALOGUE_REUSABLE_LOCKOPENED_0",
+      "expected": "[@][PartyLead] used [ItemArt1][ItemName].",
+      "origin": "Data/Dialogue/Reusable/lockopened.yaml:0"
+    },
+    {
+      "identity": "house/164/1",
+      "key": "DIALOGUE_REUSABLE_LOCKLOCKED_0",
+      "expected": "[@]It's locked.",
+      "origin": "Data/Dialogue/Reusable/locklocked.yaml:0"
+    },
+    {
+      "identity": "house/165/1",
+      "key": "DIALOGUE_ITEMDIALOGUE_PRESENTEMPTY_0",
+      "expected": "[@]It's empty...",
+      "origin": "Data/Dialogue/ItemDialogue/presentempty.yaml:0"
     },
     {
       "identity": "house/17/2",
@@ -79296,10 +79662,22 @@
       "origin": "Data/Dialogue/Podunk/mimmie_key_again.yaml:0"
     },
     {
+      "identity": "input.ui_accept",
+      "key": "A",
+      "expected": "A",
+      "origin": "content/story-input-bindings.json:ui_accept"
+    },
+    {
+      "identity": "input.ui_select",
+      "key": "START",
+      "expected": "START",
+      "origin": "content/story-input-bindings.json:ui_select"
+    },
+    {
       "identity": "input.ui_toggle",
       "key": "B",
       "expected": "B",
-      "origin": "content/pillow-input.json:label"
+      "origin": "content/story-input-bindings.json:ui_toggle"
     },
     {
       "identity": "item.description/0",
@@ -79820,6 +80198,15 @@
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
     "Data/Dialogue/Podunk/minnie_storage.yaml": "a5a4a4e85854bdbecf999a887f27abe5238fc3412d42880c566ecbe0255dbcf4",
+    "Data/Dialogue/Podunk/woof.yaml": "bf72427cbb9aaec8f137adc01abecf05a152d9b2259e610ab0e2a80bbee4e7fd",
+    "Data/Dialogue/Podunk/woof_secret.yaml": "55b1de9a3aa188caff50d43fdf1eb94702d6ffa4e2f3249afcb4a5aaa686d03a",
+    "Data/Dialogue/Podunk/woof_food.yaml": "624ae86db6d352709245f815de6fc5975044b5c3c63255b9d1e04096a3207412",
+    "Data/Dialogue/Podunk/woof_deal.yaml": "0e92387cbb42d0c7d72744e0e33b7ad6fb563a49866398399a324a494312d227",
+    "Data/Dialogue/Podunk/woof_key.yaml": "dbef94b23ad95e5f549cba9507f6b5bd27d09a951824760b3a088e4101aff7a7",
+    "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml": "a8e7fd1e2ab459b1aee7edc72ca503e488af8c85c7223178860d5fe996dab9f8",
+    "Data/Dialogue/Reusable/lockopened.yaml": "ed10dc7cda371e34202cd8fddbe84365b3f494e14f6e6b9d303c4c5d6d697930",
+    "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
+    "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
     "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
     "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
     "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
@@ -80473,6 +80860,190 @@
       "speaker_key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
       "source": "Data/Dialogue/Podunk/minnie_storage.yaml",
       "phrase": "3"
+    },
+    {
+      "first": 132,
+      "count": 3,
+      "key": "DIALOGUE_PODUNK_WOOF_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 135,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_WOOF_3",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "phrase": "3"
+    },
+    {
+      "first": 136,
+      "count": 4,
+      "key": "DIALOGUE_PODUNK_WOOF_4",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "phrase": "4"
+    },
+    {
+      "first": 140,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_WOOF_8",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "phrase": "8"
+    },
+    {
+      "first": 141,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_WOOF_9",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof.yaml",
+      "phrase": "9"
+    },
+    {
+      "first": 142,
+      "count": 3,
+      "key": "DIALOGUE_PODUNK_WOOF_SECRET_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_SECRET_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof_secret.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 145,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_WOOF_FOOD_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_FOOD_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof_food.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 146,
+      "count": 2,
+      "key": "DIALOGUE_PODUNK_WOOF_DEAL_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_DEAL_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof_deal.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 148,
+      "count": 4,
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_0",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 152,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_4",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "phrase": "4"
+    },
+    {
+      "first": 153,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_5",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "phrase": "5"
+    },
+    {
+      "first": 154,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_WOOF_KEY_6",
+      "speaker_key": "DIALOGUE_PODUNK_WOOF_KEY_SPEAKER_Mick",
+      "source": "Data/Dialogue/Podunk/woof_key.yaml",
+      "phrase": "6"
+    },
+    {
+      "first": 155,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 156,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_1",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "1"
+    },
+    {
+      "first": 157,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_4",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "4"
+    },
+    {
+      "first": 158,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_5",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "5"
+    },
+    {
+      "first": 159,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_6",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "6"
+    },
+    {
+      "first": 160,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_8",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "8"
+    },
+    {
+      "first": 161,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_9",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "9"
+    },
+    {
+      "first": 162,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_10",
+      "speaker_key": "DIALOGUE_PODUNK_CUTSCENES_GGF_DIARY_SPEAKER_???",
+      "source": "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml",
+      "phrase": "10"
+    },
+    {
+      "first": 163,
+      "count": 1,
+      "key": "DIALOGUE_REUSABLE_LOCKOPENED_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Reusable/lockopened.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 164,
+      "count": 1,
+      "key": "DIALOGUE_REUSABLE_LOCKLOCKED_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Reusable/locklocked.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 165,
+      "count": 1,
+      "key": "DIALOGUE_ITEMDIALOGUE_PRESENTEMPTY_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/ItemDialogue/presentempty.yaml",
+      "phrase": "0"
     }
   ],
   "battle_bindings": [

@@ -78,7 +78,8 @@ def extract():
  bind('text.hint_color',hint,hint,'Scripts/global/text_tools.gd:DIALOG_HINT_COLOR')
  bind('text.default_delay',delay,delay,'Scripts/global/text_tools.gd:_replace_tags:delay')
  adapter=load(BASE/'content/pillow-input.json');require(adapter['action']=='ui_toggle'and adapter['input_type']=='gamepad','CTR toggle adapter changed')
- bind('input.ui_toggle',adapter['label'],adapter['label'],'content/pillow-input.json:label')
+ from tools.story_input_bindings import load as input_bindings
+ for action,label in input_bindings(BASE).items():bind('input.'+action,label,label,'content/story-input-bindings.json:'+action)
  house=house_bindings(records,source,bind,tr)
  from localization_battle import add as battle_bindings
  battles=battle_bindings(records,locales,source,bind,tr)

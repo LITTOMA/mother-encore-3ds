@@ -1,0 +1,3111 @@
+{
+  "schema": 1,
+  "kind": "encore.field-prompts.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "script_sha256": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70"
+  },
+  "proof": {
+    "native_export_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+    "source_receipt_sha256": "e02373cf52bd5426aa48d88b26fda3fdab9a21987cc42efeb391a29f48bf44f0",
+    "source_files": {
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+      "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+      "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+      "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+      "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+      "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+      "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+      "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+      "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+      "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+      "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+      "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+      "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+      "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+      "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+      "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+      "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+      "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+      "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+      "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+      "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+      "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+      "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+      "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+      "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+      "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+      "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+      "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+      "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+      "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+      "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+      "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+      "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+      "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+      "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+      "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+      "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+      "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+      "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+      "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+      "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+      "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+      "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+      "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+      "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+      "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+      "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+      "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+      "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+      "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+      "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+      "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+      "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+      "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+      "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+      "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+      "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+      "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+      "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+      "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+      "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+      "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+      "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+      "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+      "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+      "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+      "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+      "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+      "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+      "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70"
+    }
+  },
+  "art": {
+    "path": "graphics/ui/house-button-prompts/accept.t3x",
+    "width": 12,
+    "height": 21,
+    "sha256": "09a3afeef81068e7510329077fad1d30b0f0d6a807b522c8c7db83e273da1b93",
+    "bytes": 2069,
+    "crc32": 1792288240,
+    "label": "A",
+    "label_crop": [
+      0,
+      0,
+      12,
+      15
+    ],
+    "arrow_crop": [
+      1,
+      15,
+      11,
+      6
+    ],
+    "label_origin": [
+      -1,
+      -1
+    ],
+    "arrow_origin": [
+      -11.0,
+      0
+    ],
+    "label_local": [
+      60.0,
+      3.0
+    ],
+    "layout_sha256": "0834d41bd7911429c608a565b10248f5fa8bf3abaab094aefc903dde3d95987a",
+    "engine_hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8"
+  },
+  "initial": [
+    [
+      7.0,
+      -6.0,
+      0,
+      0
+    ],
+    [
+      -64.0,
+      -23.0,
+      0,
+      0
+    ],
+    [
+      60.0,
+      3.0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0.444,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      0.0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "choices": [
+    "Both",
+    "Objects",
+    "NPCs",
+    "None"
+  ],
+  "records": [
+    {
+      "id": 1990549421,
+      "parent_id": 4287199860,
+      "node": "Objects/Doors/Openable Door/interact/ButtonPrompt",
+      "ready": 3687,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 360211935,
+      "parent_id": 3258700032,
+      "node": "Objects/Doors/Openable Door2/interact/ButtonPrompt",
+      "ready": 3705,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 3145690982,
+      "parent_id": 2574464866,
+      "node": "Objects/Doors/Openable Door3/interact/ButtonPrompt",
+      "ready": 3723,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 369705777,
+      "parent_id": 2490498756,
+      "node": "Objects/Doors/Openable Door4/interact/ButtonPrompt",
+      "ready": 3741,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 370870701,
+      "parent_id": 1727203675,
+      "node": "Objects/Doors/Openable Door8/interact/ButtonPrompt",
+      "ready": 3759,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 776573618,
+      "parent_id": 3924615262,
+      "node": "Objects/Doors/Openable Door9/interact/ButtonPrompt",
+      "ready": 3777,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 2228991758,
+      "parent_id": 2900643330,
+      "node": "Objects/Doors/Openable Door5/interact/ButtonPrompt",
+      "ready": 3795,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 822239842,
+      "parent_id": 3356463081,
+      "node": "Objects/Doors/Openable Door6/interact/ButtonPrompt",
+      "ready": 3813,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 4128204155,
+      "parent_id": 4082791032,
+      "node": "Objects/Doors/Openable Door7/interact/ButtonPrompt",
+      "ready": 3831,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 435278619,
+      "parent_id": 170845948,
+      "node": "Objects/Doors/Openable Door10/interact/ButtonPrompt",
+      "ready": 3849,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": false,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 3535356701,
+      "parent_id": 2377173426,
+      "node": "Objects/Zoo Flag/PresentZoo1/interact/ButtonPrompt",
+      "ready": 3947,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 2175815035,
+      "parent_id": 2363091598,
+      "node": "Objects/Zoo Flag/PresentZoo2/interact/ButtonPrompt",
+      "ready": 3963,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 3717727483,
+      "parent_id": 2261202622,
+      "node": "Objects/Zoo Flag/PresentZoo3/interact/ButtonPrompt",
+      "ready": 3979,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 59125625,
+      "parent_id": 3656088561,
+      "node": "Objects/Zoo Freed Flag/npc2/interact/ButtonPrompt",
+      "ready": 4215,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3422470971,
+      "parent_id": 2709686708,
+      "node": "Objects/Zoo Freed Flag/npc4/interact/ButtonPrompt",
+      "ready": 4242,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3694398174,
+      "parent_id": 1561352607,
+      "node": "Objects/Zoo Freed Flag/npc5/interact/ButtonPrompt",
+      "ready": 4269,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1253862747,
+      "parent_id": 351453001,
+      "node": "Objects/Zoo Freed Flag/npc6/interact/ButtonPrompt",
+      "ready": 4296,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 4148251327,
+      "parent_id": 2771698844,
+      "node": "Objects/Zoo Freed Flag/npc7/interact/ButtonPrompt",
+      "ready": 4323,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3344025286,
+      "parent_id": 402934262,
+      "node": "Objects/Zoo Freed Flag/npc8/interact/ButtonPrompt",
+      "ready": 4350,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1307052704,
+      "parent_id": 3600197231,
+      "node": "Objects/Zoo Freed Flag/npc9/interact/ButtonPrompt",
+      "ready": 4377,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 27938880,
+      "parent_id": 1578793428,
+      "node": "Objects/Zoo Freed Flag/npc10/interact/ButtonPrompt",
+      "ready": 4404,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2274151788,
+      "parent_id": 3241375870,
+      "node": "Objects/Zoo Freed Flag/npc3/interact/ButtonPrompt",
+      "ready": 4431,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 737123803,
+      "parent_id": 2283782854,
+      "node": "Objects/Dead Bushes/Dead Bush/interact/ButtonPrompt",
+      "ready": 4621,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 1389039881,
+      "parent_id": 2852613075,
+      "node": "Objects/Dead Bushes/Dead Bush2/interact/ButtonPrompt",
+      "ready": 4637,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 2447533740,
+      "parent_id": 3197106156,
+      "node": "Objects/Dead Bushes/Dead Bush4/interact/ButtonPrompt",
+      "ready": 4653,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 2035094304,
+      "parent_id": 3739657821,
+      "node": "Objects/Dead Bushes/Dead Bush5/interact/ButtonPrompt",
+      "ready": 4669,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 574255519,
+      "parent_id": 2267293817,
+      "node": "Objects/Dead Bushes/Dead Bush8/interact/ButtonPrompt",
+      "ready": 4685,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 1328297704,
+      "parent_id": 1192712972,
+      "node": "Objects/Dead Bushes/Dead Bush6/interact/ButtonPrompt",
+      "ready": 4701,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 541603647,
+      "parent_id": 2148475892,
+      "node": "Objects/Dead Bushes/Dead Bush7/interact/ButtonPrompt",
+      "ready": 4717,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 2378269208,
+      "parent_id": 1743682312,
+      "node": "Objects/Dead Bushes/Dead Bush15/interact/ButtonPrompt",
+      "ready": 4733,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 38883299,
+      "parent_id": 700505215,
+      "node": "Objects/Dead Bushes/Dead Bush19/interact/ButtonPrompt",
+      "ready": 4749,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 1529375434,
+      "parent_id": 2719276279,
+      "node": "Objects/Dead Bushes/Dead Bush18/interact/ButtonPrompt",
+      "ready": 4765,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 1166098449,
+      "parent_id": 2431587489,
+      "node": "Objects/Dead Bushes/Dead Bush16/interact/ButtonPrompt",
+      "ready": 4781,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 834059776,
+      "parent_id": 3658736994,
+      "node": "Objects/Dead Bushes/Dead Bush21/interact/ButtonPrompt",
+      "ready": 4797,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 3657663225,
+      "parent_id": 3650977305,
+      "node": "Objects/Dead Bushes/Dead Bush17/interact/ButtonPrompt",
+      "ready": 4813,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -23.0
+      ]
+    },
+    {
+      "id": 3465586155,
+      "parent_id": 3766109559,
+      "node": "Objects/Items/Present1/interact/ButtonPrompt",
+      "ready": 4826,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 414419183,
+      "parent_id": 2881951200,
+      "node": "Objects/Items/Present2/interact/ButtonPrompt",
+      "ready": 4842,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 1538620251,
+      "parent_id": 517107246,
+      "node": "Objects/Items/Present3/interact/ButtonPrompt",
+      "ready": 4858,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 3115720694,
+      "parent_id": 2564218891,
+      "node": "Objects/Items/Present4/interact/ButtonPrompt",
+      "ready": 4874,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 4124901584,
+      "parent_id": 1018331322,
+      "node": "Objects/Items/Present5/interact/ButtonPrompt",
+      "ready": 4890,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 4144886148,
+      "parent_id": 2749319100,
+      "node": "Objects/Items/Present6/interact/ButtonPrompt",
+      "ready": 4906,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 3166357023,
+      "parent_id": 1217676129,
+      "node": "Objects/Items/Present7/interact/ButtonPrompt",
+      "ready": 4922,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 2240367325,
+      "parent_id": 2465865883,
+      "node": "Objects/Items/PresentZoo4/interact/ButtonPrompt",
+      "ready": 4938,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 4027347161,
+      "parent_id": 2870390062,
+      "node": "Objects/Items/PresentCem4/interact/ButtonPrompt",
+      "ready": 4954,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 3511437400,
+      "parent_id": 1508696858,
+      "node": "Objects/Items/Item/interact/ButtonPrompt",
+      "ready": 4970,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 2553077325,
+      "parent_id": 1952228109,
+      "node": "Objects/Items/PresentCem5/interact/ButtonPrompt",
+      "ready": 4985,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 1931740644,
+      "parent_id": 3958153994,
+      "node": "Objects/Items/PresentCem3/interact/ButtonPrompt",
+      "ready": 5001,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 425825838,
+      "parent_id": 1062780842,
+      "node": "Objects/Items/PresentCem1/interact/ButtonPrompt",
+      "ready": 5017,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 3198296512,
+      "parent_id": 4113908612,
+      "node": "Objects/Items/PresentCem2/interact/ButtonPrompt",
+      "ready": 5033,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 1078454357,
+      "parent_id": 579094947,
+      "node": "Objects/Items/Item2/interact/ButtonPrompt",
+      "ready": 5049,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 2734747624,
+      "parent_id": 2634139011,
+      "node": "Objects/Items/FavFood/interact/ButtonPrompt",
+      "ready": 5064,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -8.0
+      ]
+    },
+    {
+      "id": 2938111868,
+      "parent_id": 1934429811,
+      "node": "Objects/NPCS/npc12/interact/ButtonPrompt",
+      "ready": 6456,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2614658143,
+      "parent_id": 4238543879,
+      "node": "Objects/NPCS/npc22/interact/ButtonPrompt",
+      "ready": 6483,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 599828707,
+      "parent_id": 2583539006,
+      "node": "Objects/NPCS/npc28/interact/ButtonPrompt",
+      "ready": 6510,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1319225678,
+      "parent_id": 126325223,
+      "node": "Objects/NPCS/npc30/interact/ButtonPrompt",
+      "ready": 6537,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2659112038,
+      "parent_id": 359998206,
+      "node": "Objects/NPCS/npc31/interact/ButtonPrompt",
+      "ready": 6564,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2096942042,
+      "parent_id": 1074646291,
+      "node": "Objects/NPCS/npc32/interact/ButtonPrompt",
+      "ready": 6591,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1139154215,
+      "parent_id": 1662195553,
+      "node": "Objects/NPCS/npc33/interact/ButtonPrompt",
+      "ready": 6618,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2336761283,
+      "parent_id": 1765303519,
+      "node": "Objects/NPCS/npc44/interact/ButtonPrompt",
+      "ready": 6645,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 709069,
+      "parent_id": 2063418617,
+      "node": "Objects/NPCS/npc34/interact/ButtonPrompt",
+      "ready": 6672,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2842083807,
+      "parent_id": 1467547831,
+      "node": "Objects/NPCS/npc36/interact/ButtonPrompt",
+      "ready": 6699,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3879117994,
+      "parent_id": 4179282628,
+      "node": "Objects/NPCS/npc37/interact/ButtonPrompt",
+      "ready": 6726,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 4184266617,
+      "parent_id": 2661890948,
+      "node": "Objects/NPCS/npc38/interact/ButtonPrompt",
+      "ready": 6753,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3712948368,
+      "parent_id": 2016520998,
+      "node": "Objects/NPCS/npc35/interact/ButtonPrompt",
+      "ready": 6780,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 488734093,
+      "parent_id": 2708021898,
+      "node": "Objects/NPCS/npc/interact/ButtonPrompt",
+      "ready": 6807,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 302626029,
+      "parent_id": 2957377589,
+      "node": "Objects/NPCS/npc6/interact/ButtonPrompt",
+      "ready": 6834,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 608845695,
+      "parent_id": 3110195461,
+      "node": "Objects/NPCS/npc7/interact/ButtonPrompt",
+      "ready": 6861,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1805788228,
+      "parent_id": 1356357970,
+      "node": "Objects/NPCS/npc2/interact/ButtonPrompt",
+      "ready": 6888,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 777159610,
+      "parent_id": 2320712783,
+      "node": "Objects/NPCS/npc4/interact/ButtonPrompt",
+      "ready": 6915,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1877063126,
+      "parent_id": 471279526,
+      "node": "Objects/NPCS/npc13/interact/ButtonPrompt",
+      "ready": 6942,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3506669448,
+      "parent_id": 1478957754,
+      "node": "Objects/NPCS/npc43/interact/ButtonPrompt",
+      "ready": 6969,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 86540435,
+      "parent_id": 1147660097,
+      "node": "Objects/NPCS/npc49/interact/ButtonPrompt",
+      "ready": 6996,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1701880139,
+      "parent_id": 926802595,
+      "node": "Objects/NPCS/npc5/interact/ButtonPrompt",
+      "ready": 7023,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3270859630,
+      "parent_id": 1419026008,
+      "node": "Objects/NPCS/npc8/interact/ButtonPrompt",
+      "ready": 7050,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2705722739,
+      "parent_id": 3532325962,
+      "node": "Objects/NPCS/npc9/interact/ButtonPrompt",
+      "ready": 7077,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1080973008,
+      "parent_id": 2559473561,
+      "node": "Objects/NPCS/npc10/interact/ButtonPrompt",
+      "ready": 7104,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2204132183,
+      "parent_id": 3235981247,
+      "node": "Objects/NPCS/npc11/interact/ButtonPrompt",
+      "ready": 7131,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3970601951,
+      "parent_id": 2003459387,
+      "node": "Objects/NPCS/npc14/interact/ButtonPrompt",
+      "ready": 7158,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3135746561,
+      "parent_id": 1725784796,
+      "node": "Objects/NPCS/npc47/interact/ButtonPrompt",
+      "ready": 7185,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 501288681,
+      "parent_id": 872462938,
+      "node": "Objects/NPCS/npc15/interact/ButtonPrompt",
+      "ready": 7212,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2819905886,
+      "parent_id": 2224070631,
+      "node": "Objects/NPCS/npc16/interact/ButtonPrompt",
+      "ready": 7239,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1083996848,
+      "parent_id": 3325418580,
+      "node": "Objects/NPCS/npc29/interact/ButtonPrompt",
+      "ready": 7266,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3322976952,
+      "parent_id": 745676328,
+      "node": "Objects/NPCS/npc48/interact/ButtonPrompt",
+      "ready": 7293,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2686110099,
+      "parent_id": 469883260,
+      "node": "Objects/NPCS/npc19/interact/ButtonPrompt",
+      "ready": 7320,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1251932894,
+      "parent_id": 4002554488,
+      "node": "Objects/NPCS/npc20/interact/ButtonPrompt",
+      "ready": 7347,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 575482444,
+      "parent_id": 1324450760,
+      "node": "Objects/NPCS/npc42/interact/ButtonPrompt",
+      "ready": 7374,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3530278646,
+      "parent_id": 376808147,
+      "node": "Objects/NPCS/npc45/interact/ButtonPrompt",
+      "ready": 7401,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 4239433872,
+      "parent_id": 770425377,
+      "node": "Objects/NPCS/npc41/interact/ButtonPrompt",
+      "ready": 7428,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 366300771,
+      "parent_id": 1289378201,
+      "node": "Objects/NPCS/npc26/interact/ButtonPrompt",
+      "ready": 7455,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2700956841,
+      "parent_id": 3455353622,
+      "node": "Objects/NPCS/npc46/interact/ButtonPrompt",
+      "ready": 7482,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3527021281,
+      "parent_id": 3667425979,
+      "node": "Objects/NPCS/npc21/interact/ButtonPrompt",
+      "ready": 7509,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1532138248,
+      "parent_id": 1642008086,
+      "node": "Objects/NPCS/npc17/interact/ButtonPrompt",
+      "ready": 7539,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 194625192,
+      "parent_id": 1925165477,
+      "node": "Objects/NPCS/npc23/interact/ButtonPrompt",
+      "ready": 7566,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2391376241,
+      "parent_id": 221126352,
+      "node": "Objects/NPCS/npc27/interact/ButtonPrompt",
+      "ready": 7593,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 4038237759,
+      "parent_id": 2234905409,
+      "node": "Objects/NPCS/npc24/interact/ButtonPrompt",
+      "ready": 7620,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 147705518,
+      "parent_id": 3614385560,
+      "node": "Objects/NPCS/npc25/interact/ButtonPrompt",
+      "ready": 7647,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3571275251,
+      "parent_id": 2879500191,
+      "node": "Objects/NPCS/npc18/interact/ButtonPrompt",
+      "ready": 7674,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1587560669,
+      "parent_id": 143745464,
+      "node": "Objects/NPCS/npczombie1/interact/ButtonPrompt",
+      "ready": 7701,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1639985812,
+      "parent_id": 3156490691,
+      "node": "Objects/NPCS/npczombie2/interact/ButtonPrompt",
+      "ready": 7728,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1390739225,
+      "parent_id": 2334972928,
+      "node": "Objects/NPCS/interact_dialog/ButtonPrompt",
+      "ready": 7748,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1039281493,
+      "parent_id": 3176970152,
+      "node": "Objects/NPCS/interact_dialog3/ButtonPrompt",
+      "ready": 7755,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1205836844,
+      "parent_id": 1656075536,
+      "node": "Objects/NPCS/interact_dialog18/ButtonPrompt",
+      "ready": 7762,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 823068338,
+      "parent_id": 853244889,
+      "node": "Objects/NPCS/interact_dialog24/ButtonPrompt",
+      "ready": 7769,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2241030580,
+      "parent_id": 4273269580,
+      "node": "Objects/NPCS/interact_dialog25/ButtonPrompt",
+      "ready": 7776,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3767429763,
+      "parent_id": 1696895848,
+      "node": "Objects/NPCS/interact_dialog30/ButtonPrompt",
+      "ready": 7783,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2858952887,
+      "parent_id": 119262229,
+      "node": "Objects/NPCS/interact_dialog26/ButtonPrompt",
+      "ready": 7790,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3499526892,
+      "parent_id": 3381661828,
+      "node": "Objects/NPCS/interact_dialog29/ButtonPrompt",
+      "ready": 7797,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3917810152,
+      "parent_id": 3203253520,
+      "node": "Objects/NPCS/interact_dialog27/ButtonPrompt",
+      "ready": 7804,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3800672866,
+      "parent_id": 2348149378,
+      "node": "Objects/NPCS/interact_dialog28/ButtonPrompt",
+      "ready": 7811,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 515314714,
+      "parent_id": 181757411,
+      "node": "Objects/NPCS/interact_dialog15/ButtonPrompt",
+      "ready": 7818,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2086847225,
+      "parent_id": 2024923040,
+      "node": "Objects/NPCS/interact_dialog16/ButtonPrompt",
+      "ready": 7825,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 4110046678,
+      "parent_id": 3296881628,
+      "node": "Objects/NPCS/interact_dialog5/ButtonPrompt",
+      "ready": 7832,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1444178654,
+      "parent_id": 1826813236,
+      "node": "Objects/NPCS/interact_dialog7/ButtonPrompt",
+      "ready": 7839,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2275056881,
+      "parent_id": 468009245,
+      "node": "Objects/NPCS/interact_dialog6/ButtonPrompt",
+      "ready": 7846,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1490685900,
+      "parent_id": 1307850720,
+      "node": "Objects/NPCS/interact_dialog4/ButtonPrompt",
+      "ready": 7853,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3807193281,
+      "parent_id": 3459985575,
+      "node": "Objects/NPCS/interact_dialog31/ButtonPrompt",
+      "ready": 7860,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 877308317,
+      "parent_id": 4290735351,
+      "node": "Objects/NPCS/interact_dialog2/ButtonPrompt",
+      "ready": 7867,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3273997176,
+      "parent_id": 4041949190,
+      "node": "Objects/NPCS/interact_dialog20/ButtonPrompt",
+      "ready": 7874,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2196057393,
+      "parent_id": 1801028142,
+      "node": "Objects/NPCS/interact_dialog22/ButtonPrompt",
+      "ready": 7881,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 2441143075,
+      "parent_id": 364753958,
+      "node": "Objects/NPCS/interact_dialog21/ButtonPrompt",
+      "ready": 7888,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3563321167,
+      "parent_id": 1671010274,
+      "node": "Objects/NPCS/interact_dialog23/ButtonPrompt",
+      "ready": 7895,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1465797121,
+      "parent_id": 3826626073,
+      "node": "Objects/NPCS/interact_dialog19/ButtonPrompt",
+      "ready": 7902,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 4225504340,
+      "parent_id": 24290129,
+      "node": "Objects/NPCS/interact_dialog17/ButtonPrompt",
+      "ready": 7909,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": 17587943,
+      "parent_id": 3352768896,
+      "node": "Objects/NPCS/interact_dialog8/ButtonPrompt",
+      "ready": 7916,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -24.0
+      ]
+    },
+    {
+      "id": 3720840520,
+      "parent_id": 1942559679,
+      "node": "Objects/NPCS/interact_dialog9/ButtonPrompt",
+      "ready": 7923,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -24.0
+      ]
+    },
+    {
+      "id": 1956220734,
+      "parent_id": 836216500,
+      "node": "Objects/NPCS/interact_dialog10/ButtonPrompt",
+      "ready": 7930,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -24.0
+      ]
+    },
+    {
+      "id": 3605065134,
+      "parent_id": 3661040495,
+      "node": "Objects/NPCS/interact_dialog11/ButtonPrompt",
+      "ready": 7937,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -24.0
+      ]
+    },
+    {
+      "id": 3514577866,
+      "parent_id": 2697050029,
+      "node": "Objects/NPCS/interact_dialog12/ButtonPrompt",
+      "ready": 7944,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -24.0
+      ]
+    },
+    {
+      "id": 4235070156,
+      "parent_id": 3130764975,
+      "node": "Objects/NPCS/interact_dialog13/ButtonPrompt",
+      "ready": 7951,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -24.0
+      ]
+    },
+    {
+      "id": 1861151647,
+      "parent_id": 1953652580,
+      "node": "Objects/NPCS/interact_dialog14/ButtonPrompt",
+      "ready": 7958,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -24.0
+      ]
+    },
+    {
+      "id": 2416069699,
+      "parent_id": 2033948305,
+      "node": "Objects/NPCS/npc39/interact/ButtonPrompt",
+      "ready": 7972,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1509420614,
+      "parent_id": 4239183915,
+      "node": "Objects/NPCS/npc40/interact/ButtonPrompt",
+      "ready": 7999,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1274140531,
+      "parent_id": 3615934167,
+      "node": "Objects/NPCS/npc3/interact/ButtonPrompt",
+      "ready": 8026,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2124761819,
+      "parent_id": 2263893819,
+      "node": "Objects/NPCS/mom/interact/ButtonPrompt",
+      "ready": 8053,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 4196684888,
+      "parent_id": 3492903349,
+      "node": "Objects/NPCS/mimmie/interact/ButtonPrompt",
+      "ready": 8080,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 368128433,
+      "parent_id": 2786150448,
+      "node": "Objects/NPCS/minnie/interact/ButtonPrompt",
+      "ready": 8107,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 1119538519,
+      "parent_id": 1507919457,
+      "node": "Objects/ATM/interact_dialog/ButtonPrompt",
+      "ready": 8326,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -25.0
+      ]
+    },
+    {
+      "id": 2939472093,
+      "parent_id": 3809307858,
+      "node": "Objects/PayPhone/interact/ButtonPrompt",
+      "ready": 8338,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        1.0,
+        -25.0
+      ]
+    },
+    {
+      "id": 3268382679,
+      "parent_id": 219263649,
+      "node": "Objects/PayPhone2/interact/ButtonPrompt",
+      "ready": 8355,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        1.0,
+        -25.0
+      ]
+    },
+    {
+      "id": 2367327439,
+      "parent_id": 1328172073,
+      "node": "Objects/PayPhone3/interact/ButtonPrompt",
+      "ready": 8372,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        1.0,
+        -25.0
+      ]
+    },
+    {
+      "id": 666006644,
+      "parent_id": 164900066,
+      "node": "Objects/PayPhone4/interact/ButtonPrompt",
+      "ready": 8389,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        1.0,
+        -25.0
+      ]
+    },
+    {
+      "id": 101245940,
+      "parent_id": 4062422804,
+      "node": "Objects/VendingMachine/interact_dialog/ButtonPrompt",
+      "ready": 8405,
+      "category": 1,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "id": 2961418984,
+      "parent_id": 2931063330,
+      "node": "AbovePlayer1/npc/interact/ButtonPrompt",
+      "ready": 8427,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 3999882061,
+      "parent_id": 2919074236,
+      "node": "AboveNPCS/mom/interact/ButtonPrompt",
+      "ready": 8462,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 4166245344,
+      "parent_id": 3548657508,
+      "node": "AboveNPCS/mimmie/interact/ButtonPrompt",
+      "ready": 8489,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    },
+    {
+      "id": 2658466318,
+      "parent_id": 1200059486,
+      "node": "AboveNPCS/minnie/interact/ButtonPrompt",
+      "ready": 8516,
+      "category": 2,
+      "key": "ui_accept",
+      "enabled": true,
+      "offset": [
+        0.0,
+        -11.0
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "role": 1,
+      "name": "Float",
+      "length": 1.0,
+      "loop": true,
+      "tracks": [
+        {
+          "property": 1,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                7,
+                -6,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.5,
+              "ease": 1,
+              "value": [
+                7,
+                -9,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 2,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0.166667,
+              "ease": 1,
+              "value": [
+                -64,
+                -22,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.664,
+              "ease": 1,
+              "value": [
+                -64,
+                -26,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 4,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 5,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 7,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 6,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": 2,
+      "name": "Hide",
+      "length": 0.0833333,
+      "loop": false,
+      "tracks": [
+        {
+          "property": 7,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 5,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 2.5,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 11,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0.083,
+              "ease": 1,
+              "value": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": 3,
+      "name": "Press",
+      "length": 0.333333,
+      "loop": false,
+      "tracks": [
+        {
+          "property": 7,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 5,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "time": 0.166667,
+              "ease": 3,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "time": 0.25,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 8,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                0.0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                1.0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.166667,
+              "ease": 1,
+              "value": [
+                0.0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 1,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                7,
+                -9,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                7,
+                -9,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.166667,
+              "ease": 0.65,
+              "value": [
+                7,
+                -4,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.25,
+              "ease": 0.65,
+              "value": [
+                7,
+                -8,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 9,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "time": 0.166,
+              "ease": 1,
+              "value": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 10,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                0.0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                1.0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.166667,
+              "ease": 1,
+              "value": [
+                1.0,
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.25,
+              "ease": 1,
+              "value": [
+                0.0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 11,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0.249,
+              "ease": 1,
+              "value": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 6,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 4,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 2,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 0.65,
+              "value": [
+                -64,
+                -29,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                -64,
+                -23,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.166,
+              "ease": 0.65,
+              "value": [
+                -64,
+                -17,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.249,
+              "ease": 0.65,
+              "value": [
+                -64,
+                -21,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": 4,
+      "name": "RESET",
+      "length": 0.001,
+      "loop": false,
+      "tracks": [
+        {
+          "property": 3,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                -4,
+                -19,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 4,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 5,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 6,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 1,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                7,
+                -6,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 7,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 8,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                0.0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 9,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 10,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                0.0,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 2,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                -64,
+                -23,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": 5,
+      "name": "Show",
+      "length": 0.333333,
+      "loop": false,
+      "tracks": [
+        {
+          "property": 4,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 2.5,
+              "value": [
+                1,
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "time": 0.166667,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 5,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 1,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 0.65,
+              "value": [
+                7,
+                -24,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.333333,
+              "ease": 0.65,
+              "value": [
+                7,
+                -6,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 6,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 5,
+              "value": [
+                1,
+                1,
+                1,
+                0
+              ]
+            },
+            {
+              "time": 0.0833333,
+              "ease": 1,
+              "value": [
+                1,
+                1,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "property": 7,
+          "update": 1,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "property": 2,
+          "update": 0,
+          "keys": [
+            {
+              "time": 0,
+              "ease": 1,
+              "value": [
+                -64,
+                -29,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.083,
+              "ease": 1,
+              "value": [
+                -64,
+                -27,
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.332,
+              "ease": 1,
+              "value": [
+                -64,
+                -23,
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "semantics": [
+    "146 exact postorder source Ready entries; hide and set_process(false) are retained",
+    "Authoritative paused/settings/input/locale/event detector signals; full force/press state machine",
+    "AnimationPlayer value/method tracks retain source times, ease and idle clock; no synthetic nearby distance",
+    "Current parent scale is read only when source _reset_scale executes; hidden animation remains active"
+  ]
+}

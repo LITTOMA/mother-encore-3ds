@@ -149,7 +149,7 @@ const char* dialogue_action_name(DialogueActionKind kind) {
     static constexpr const char* names[]={"BeginCutscene","BindActor","ActorPersistent","StartWait","MusicFadeOut",
         "SetTalker","CallObjectDeferred","OverworldBattleMusic","PlaySound","MoveActor","TurnActor","ShakeActor",
         "JumpActor","AnimateActor","EmoteActor","ShakeCamera","ChangeCamera","MoveCamera","QueueBattle",
-        "StopInteraction","RestoreActor","ReleaseBattleActor","CutsceneEnded","DialogueDone","RequestBattle","YieldIdle","AwaitTimer","SetActorDirection","TeleportActor","MoveActorPath","ReturnCamera","SetFlag","ShowDialogue","AwaitDialogue","PlayMusicImmediate","HideDialogue","Jump","BranchFlag","BranchLeader","AwaitChoices","OpenSave","AwaitSubmenu","StopActorLoop","OpenStorage"};
+        "StopInteraction","RestoreActor","ReleaseBattleActor","CutsceneEnded","DialogueDone","RequestBattle","YieldIdle","AwaitTimer","SetActorDirection","TeleportActor","MoveActorPath","ReturnCamera","SetFlag","ShowDialogue","AwaitDialogue","PlayMusicImmediate","HideDialogue","Jump","BranchFlag","BranchLeader","AwaitChoices","OpenSave","AwaitSubmenu","StopActorLoop","OpenStorage","GrantKeyItem","LearnSkill","AnimateSpecialActor"};
     const auto i=static_cast<size_t>(kind); return i<sizeof(names)/sizeof(names[0]) ? names[i] : "Unknown";
 }
 }

@@ -1,0 +1,23 @@
+{
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "size": 16,
+  "height": 11,
+  "ascent": 11,
+  "advance": 8,
+  "label": [
+    -4,
+    -20,
+    8,
+    11
+  ]
+}

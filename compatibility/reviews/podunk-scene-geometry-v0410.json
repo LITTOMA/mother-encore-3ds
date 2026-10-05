@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "ir_sha256": "383551e2ea30099be329417d9ac026a3dae25dd30ea698ae40abb3c585726b05",
+  "scene_admitted": false,
+  "review": "Full native geometry only: 902 owners, 941 shape nodes, 158 disabled; actual native PhysicsServer decomposition retained. All ancestor script identities pending; analytic shapes preserved without approximation. CanvasItem includes Control ancestors: native local/global transforms retained; parent composition checked."
+}

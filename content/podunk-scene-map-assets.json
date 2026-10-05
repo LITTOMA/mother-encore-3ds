@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "kind": "encore.field-map.assets",
+  "textures": [
+    {
+      "source_index": 0,
+      "source": "Graphics/Tilesets/TilPodunk.png",
+      "source_sha256": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+      "crop": [
+        0,
+        0,
+        1024,
+        944
+      ],
+      "width": 1024,
+      "height": 944,
+      "group": 0,
+      "frame": 0,
+      "frames": 1,
+      "fps": 0.0,
+      "delay": 0.0,
+      "png": "map-0-0-0.png",
+      "output": "graphics/world/podunk/map-0-0-0.t3x",
+      "output_sha256": "0c25fb2e1ccc24c55402525e6c316a2ea0376339409b1a47cef2acd921e154d0"
+    },
+    {
+      "source_index": 0,
+      "source": "Graphics/Tilesets/TilPodunk.png",
+      "source_sha256": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+      "crop": [
+        1024,
+        0,
+        128,
+        944
+      ],
+      "width": 128,
+      "height": 944,
+      "group": 0,
+      "frame": 0,
+      "frames": 1,
+      "fps": 0.0,
+      "delay": 0.0,
+      "png": "map-0-1024-0.png",
+      "output": "graphics/world/podunk/map-0-1024-0.t3x",
+      "output_sha256": "0e8953c3522aa4bc38e0f30d56a45a1167982c9653a3713a4f7d5597399808e8"
+    },
+    {
+      "source_index": 1,
+      "source": "Graphics/Tilesets/TilPodunkAnim1.png",
+      "source_sha256": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+      "crop": [
+        0,
+        0,
+        224,
+        64
+      ],
+      "width": 224,
+      "height": 64,
+      "group": 2,
+      "frame": 0,
+      "frames": 4,
+      "fps": 4.0,
+      "delay": 0.0,
+      "png": "map-1-0-0.png",
+      "output": "graphics/world/podunk/map-1-0-0.t3x",
+      "output_sha256": "76b13e6022bbd9a496661c646aeb2008346d1a5837746b4e54a1a68aeaebf26e"
+    },
+    {
+      "source_index": 2,
+      "source": "Graphics/Tilesets/TilPodunkAnim2.png",
+      "source_sha256": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+      "crop": [
+        0,
+        0,
+        224,
+        64
+      ],
+      "width": 224,
+      "height": 64,
+      "group": 2,
+      "frame": 1,
+      "frames": 4,
+      "fps": 4.0,
+      "delay": 0.0,
+      "png": "map-2-0-0.png",
+      "output": "graphics/world/podunk/map-2-0-0.t3x",
+      "output_sha256": "4072f0daeaf567990d98ff4673a4bbcdc28e807b39324ccea1f471b17a7b2bba"
+    },
+    {
+      "source_index": 3,
+      "source": "Graphics/Tilesets/TilPodunkAnim3.png",
+      "source_sha256": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+      "crop": [
+        0,
+        0,
+        224,
+        64
+      ],
+      "width": 224,
+      "height": 64,
+      "group": 2,
+      "frame": 2,
+      "frames": 4,
+      "fps": 4.0,
+      "delay": 0.0,
+      "png": "map-3-0-0.png",
+      "output": "graphics/world/podunk/map-3-0-0.t3x",
+      "output_sha256": "4f35d2be1686a10146dadcc2c14380d11812d20c34efd6b9e81d009dc6f1b561"
+    },
+    {
+      "source_index": 4,
+      "source": "Graphics/Tilesets/TilPodunkAnim4.png",
+      "source_sha256": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+      "crop": [
+        0,
+        0,
+        224,
+        64
+      ],
+      "width": 224,
+      "height": 64,
+      "group": 2,
+      "frame": 3,
+      "frames": 4,
+      "fps": 4.0,
+      "delay": 0.0,
+      "png": "map-4-0-0.png",
+      "output": "graphics/world/podunk/map-4-0-0.t3x",
+      "output_sha256": "d5b25a5a982e04f917074439baa1633563210093dceb2bb6c6817dc232357e37"
+    },
+    {
+      "source_index": 5,
+      "source": "Translations/TranslatedTilesets/TilPodunk_translate.png",
+      "source_sha256": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+      "crop": [
+        0,
+        0,
+        704,
+        240
+      ],
+      "width": 704,
+      "height": 240,
+      "group": 6,
+      "frame": 0,
+      "frames": 1,
+      "fps": 0.0,
+      "delay": 0.0,
+      "png": "map-5-0-0.png",
+      "output": "graphics/world/podunk/map-5-0-0.t3x",
+      "output_sha256": "48a4e007e4d70f85e9fed10d0ae5213225775a225b9395bc29516dc35e648cbb"
+    }
+  ]
+}

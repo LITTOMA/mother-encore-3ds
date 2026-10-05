@@ -10,6 +10,7 @@ namespace encore::upstream { namespace {
 uint32_t integer(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
 uint32_t crc(const uint8_t*p,size_t n){uint32_t c=~0u;for(size_t i=0;i<n;++i){c^=p[i];for(int j=0;j<8;++j)c=(c>>1)^(0xedb88320u&uint32_t(-int32_t(c&1)));}return ~c;}
 bool fail(std::string&e,const char*s){e=s;return false;}
+bool identity(std::string_view s){if(s.empty()||s.size()>128)return false;for(char c:s)if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'))return false;return true;}
 struct Reader {
  const uint8_t*p;size_t n;bool ok=true;
  uint32_t u32(){if(n<4){ok=false;return 0;}const auto v=integer(p);p+=4;n-=4;return v;}
@@ -75,12 +76,28 @@ bool supported_inventory(const NativeSessionData&data,ItemView items,const Sessi
  }
  return true;
 }
+bool enabled_flag(const SessionSnapshot&s,const std::string&id){for(const auto&f:s.flags)if(f.id==id)return f.value;return false;}
+bool known_skill(const NativeSessionData&data,const std::string&skill){for(const auto&row:data.levels())if(contains(row.skills,skill))return true;for(const auto&p:data.skill_policies())if(p.skill_id==skill)return true;return false;}
+bool supported_story_keys(const NativeSessionData&data,const SessionSnapshot&s,std::string&e){
+ if(data.key_policies().empty())return same_items(s.key_items,data.defaults().key_items)||fail(e,"Native session legacy key state rejected");
+ std::vector<uint32_t>counts(data.key_policies().size(),0);
+ for(const auto&item:s.key_items){const auto at=std::find_if(data.key_policies().begin(),data.key_policies().end(),[&](const auto&p){return p.item_id==item.item_id;});if(at==data.key_policies().end())return fail(e,"Native session unknown key item");const auto index=size_t(at-data.key_policies().begin());if(item.equipped||item.doses!=at->doses||++counts[index]>at->max_count||(!at->required&&!enabled_flag(s,at->flag_id)))return fail(e,"Native session key doses/count/source flag rejected");}
+ for(size_t i=0;i<counts.size();++i)if(data.key_policies()[i].required&&counts[i]!=data.key_policies()[i].max_count)return fail(e,"Native session required key absent");return true;
+}
+bool supported_story_skills(const NativeSessionData&data,const NativeSessionLevel&row,const SessionSnapshot&s,std::string&e){
+ const auto&c=s.characters[0];if(data.skill_order().empty())return c.learned_skills==row.skills||fail(e,"Native session legacy level skill mismatch");
+ std::set<std::string>unique;size_t previous=0;bool first=true;
+ for(const auto&skill:c.learned_skills){const auto order=std::find(data.skill_order().begin(),data.skill_order().end(),skill);if(order==data.skill_order().end()||!unique.insert(skill).second)return fail(e,"Native session unknown/duplicate skill");const auto rank=size_t(order-data.skill_order().begin());if(!first&&rank<=previous)return fail(e,"Native session skills not source sorted");first=false;previous=rank;
+  if(!contains(row.skills,skill)){const auto p=std::find_if(data.skill_policies().begin(),data.skill_policies().end(),[&](const auto&p){return p.character_id==c.character_id&&p.skill_id==skill;});if(p==data.skill_policies().end()||!enabled_flag(s,p->flag_id))return fail(e,"Native session story skill owner/flag rejected");}
+ }
+ for(const auto&required:row.skills)if(!unique.count(required))return fail(e,"Native session required level skill absent");return true;
+}
 }
 
 bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>session_save_max_bytes)return fail(e,"Native session pack size rejected");
  const auto schema=integer(p+8),capability=integer(p+20);
- if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>6||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
+ if(std::memcmp(p,"ENCNSESS",8)||schema<1||schema>7||schema!=capability||integer(p+12)!=n)return fail(e,"Native session schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Native session CRC mismatch");
  NativeSessionData d;Reader r{p+24,n-24};d.compatibility_={r.u32(),r.u32(),r.u32()};
  const auto template_size=r.count(uint32_t(session_save_max_bytes));
@@ -147,6 +164,27 @@ bool NativeSessionData::load(const uint8_t*p,size_t n,std::string&e){
   }
   if(d.consumables_.empty()||d.status_policies_.empty())return fail(e,"Native session empty item-use capability rejected");
  }
+ if(schema>=7){
+  const auto count=r.count(64);std::set<std::string>keys;
+  if(!count)return fail(e,"Native session empty key policies");
+  for(uint32_t i=0;i<count;++i){NativeSessionKeyPolicy policy;policy.item_id=r.text();policy.flag_id=r.text();policy.doses=r.u32();policy.max_count=r.u32();const auto required=r.u32();policy.required=required!=0;
+   uint32_t initial_count=0;for(const auto&key:d.defaults_.key_items)if(key.item_id==policy.item_id){if(key.equipped||key.doses!=policy.doses)return fail(e,"Native session initial key policy mismatch");++initial_count;}
+   bool source_flag=false;for(const auto&f:d.defaults_.flags)if(f.id==policy.flag_id&&!f.value)source_flag=true;
+   if(!identity(policy.item_id)||!keys.insert(policy.item_id).second||!policy.doses||policy.doses>65535||policy.max_count!=1||required>1||(policy.required?(initial_count!=policy.max_count||!policy.flag_id.empty()):(initial_count||!identity(policy.flag_id)||!source_flag||!contains(d.mutable_flags_,policy.flag_id))))return fail(e,"Native session key policy rejected");
+   d.key_policies_.push_back(std::move(policy));
+  }
+  for(const auto&key:d.defaults_.key_items)if(!keys.count(key.item_id))return fail(e,"Native session initial key policy absent");
+  const auto skills=r.count(64);std::set<std::string>learned;
+  if(!skills)return fail(e,"Native session empty story skill policy");
+  for(uint32_t i=0;i<skills;++i){NativeSessionSkillPolicy policy{r.text(),r.text(),r.text()};bool source_flag=false;for(const auto&f:d.defaults_.flags)if(f.id==policy.flag_id&&!f.value)source_flag=true;
+   if(policy.character_id!=d.leader_id()||!identity(policy.skill_id)||!identity(policy.flag_id)||!learned.insert(policy.skill_id).second||!source_flag||!contains(d.mutable_flags_,policy.flag_id))return fail(e,"Native session story skill policy rejected");
+   d.skill_policies_.push_back(std::move(policy));
+  }
+  const auto ordering=r.count(512);std::set<std::string>order;if(!ordering)return fail(e,"Native session skill order absent");
+  for(uint32_t i=0;i<ordering;++i){auto skill=r.text();if(!identity(skill)||!order.insert(skill).second)return fail(e,"Native session source skill order rejected");d.skill_order_.push_back(std::move(skill));}
+  for(const auto&policy:d.skill_policies_)if(!order.count(policy.skill_id))return fail(e,"Native session story skill order missing");
+  for(const auto&level:d.levels_){size_t previous=0;bool first=true;for(const auto&skill:level.skills){const auto found=std::find(d.skill_order_.begin(),d.skill_order_.end(),skill);if(found==d.skill_order_.end())return fail(e,"Native session level skill order missing");const auto rank=size_t(found-d.skill_order_.begin());if(!first&&rank<=previous)return fail(e,"Native session level skills not source sorted");previous=rank;first=false;}}
+ }
  if(!r.ok||r.n||d.text_speeds_.empty()||d.menu_flavors_.empty()||d.button_prompts_.empty()||!d.supports_settings(d.defaults_.settings))return fail(e,"Native session malformed/trailing settings payload");
  const auto*initial=level_row(d,d.defaults_.characters[0].level);
  const auto&c=d.defaults_.characters[0];if(!initial||c.experience!=initial->minimum_exp||c.hp>initial->stats[0]||c.pp>initial->stats[1]||c.learned_skills!=initial->skills)return fail(e,"Native session initial character disagrees with source rows");
@@ -180,9 +218,11 @@ bool validate_native_session_snapshot(const NativeSessionData&data,RoomView room
  const auto*row=level_row(data,c.level);
  if(!row||c.experience<row->minimum_exp||c.experience>=row->next_exp||level_for_experience(room,int32_t(c.experience))!=c.level||row->minimum_exp!=room.experience(row->level-1)||row->next_exp!=room.experience(row->level))return fail(e,"Native session unsupported source progression");
  std::array<int32_t,7>derived{};if(!native_session_derived_stats(data,items,c,derived,e))return false;
- if(c.hp>derived[0]||c.pp>derived[1]||c.learned_skills!=row->skills)return fail(e,"Native session HP/PP/skills disagree with source level");
+ if(c.hp>derived[0]||c.pp>derived[1])return fail(e,"Native session HP/PP disagree with source level");
+ if(!supported_story_skills(data,*row,s,e))return false;
  if(!supported_inventory(data,items,s,e))return false;
- if(!same_items(s.key_items,d.key_items)||(!data.storage_capacity()&&!s.storage.empty())||!s.object_flags.empty()||!same_integers(s.keys,d.keys)||!s.rare_drops.empty())return fail(e,"Native session unsupported key/storage/object/counter state");
+ if(!supported_story_keys(data,s,e))return false;
+ if((!data.storage_capacity()&&!s.storage.empty())||!s.object_flags.empty()||!same_integers(s.keys,d.keys)||!s.rare_drops.empty())return fail(e,"Native session unsupported key/storage/object/counter state");
  if(s.flags.size()!=room.flag_count()||s.flags.size()!=d.flags.size())return fail(e,"Native session requires the complete story flag registry");
  for(const auto&f:s.flags){auto found=std::find_if(d.flags.begin(),d.flags.end(),[&](const SessionFlag&x){return x.id==f.id;});if(found==d.flags.end())return fail(e,"Native session unknown story flag");bool in_room=false;for(uint32_t i=0;i<room.flag_count();++i)if(room.string(room.flag(i).name_string)==f.id){in_room=true;break;}if(!in_room||(f.value!=found->value&&!contains(data.mutable_flags(),f.id)))return fail(e,"Native session unsupported story flag state");}
  std::set<std::string>seen;for(uint32_t i=0;i<house.count(HouseSection::Npcs);++i){const auto key=house.string(house.npc(i).seen_key);if(!key.empty())seen.emplace(key);}for(uint32_t i=0;i<house.count(HouseSection::Overrides);++i){const auto key=house.string(house.override_dialogue(i).seen_key);if(!key.empty())seen.emplace(key);}for(const auto&f:s.seen_dialogue_flags)if(!seen.count(f.id))return fail(e,"Native session unknown seen dialogue identity");
@@ -215,14 +255,16 @@ bool build_native_session_snapshot(const NativeSessionData&data,RoomView room,Ho
  if(!validate_session_snapshot(input.state,e))return false;
  if(!supported_inventory(data,items,input.state,e))return false;
 
- for(const auto&skill:input.state.characters[0].learned_skills){bool known=false;for(const auto&row:data.levels())if(contains(row.skills,skill))known=true;if(!known)return fail(e,"Native session persistent skill identity rejected");}
+ for(const auto&skill:input.state.characters[0].learned_skills)if(!known_skill(data,skill))return fail(e,"Native session persistent skill identity rejected");
  SessionSnapshot next=input.state;auto&c=next.characters[0];const auto&live=*input.stats;const auto*row=level_row(data,live.level);
  if(!row)return fail(e,"Native session live level row unavailable");
  c.level=live.level;c.experience=live.experience;c.hp=live.hp;c.pp=live.pp;next.cash=live.cash;next.bank=live.bank;next.earned_cash=live.earned_cash;
  // BattleSessionStats historically tracks skills learned during this slice.
- // Keep the external initial list plus that explicit live delta, with no extras.
- c.learned_skills=data.defaults().characters[0].learned_skills;std::set<std::string>unique;
- for(const auto&skill:live.learned_skills){if(!unique.insert(skill).second)return fail(e,"Native session duplicate live skill");if(!contains(c.learned_skills,skill))c.learned_skills.push_back(skill);}
+ // Schema7 preserves acquired story skills from the authoritative snapshot.
+ // Legacy schemas retain the original defaults-plus-live-delta behavior.
+ c.learned_skills=data.skill_order().empty()?data.defaults().characters[0].learned_skills:input.state.characters[0].learned_skills;std::set<std::string>unique;
+ for(const auto&skill:live.learned_skills){if(!unique.insert(skill).second)return fail(e,"Native session duplicate live skill");if(!known_skill(data,skill))return fail(e,"Native session live skill identity rejected");if(!contains(c.learned_skills,skill))c.learned_skills.push_back(skill);}
+ if(!data.skill_order().empty())std::sort(c.learned_skills.begin(),c.learned_skills.end(),[&](const auto&a,const auto&b){return std::find(data.skill_order().begin(),data.skill_order().end(),a)<std::find(data.skill_order().begin(),data.skill_order().end(),b);});
  if(input.inventory->size()>items.metadata().capacity)return fail(e,"Native session live inventory capacity rejected");
  c.inventory.clear();const auto source=input.inventory->content();
  for(uint32_t i=0;i<input.inventory->size();++i){const auto&instance=input.inventory->instance(i);if(instance.definition>=source.count(ItemSection::Definitions)||instance.definition>=items.count(ItemSection::Definitions))return fail(e,"Native session live item definition rejected");const auto definition=source.definition(instance.definition),expected=items.definition(instance.definition);if(source.string(definition.source)!=items.string(expected.source))return fail(e,"Native session live item pack mismatch");c.inventory.push_back({std::string(source.string(definition.source)),instance.equipped!=0,instance.doses,instance.id});}

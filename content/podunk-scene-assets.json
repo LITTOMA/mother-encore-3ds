@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "resources": [
+    {
+      "stable_id": 1036736391,
+      "source": "Graphics/Objects/Grass/Podunk/0.png",
+      "output": "graphics/world/podunk/grass-0.t3x",
+      "width": 96,
+      "height": 24,
+      "columns": 4,
+      "rows": 1,
+      "flags": 0,
+      "source_sha256": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+      "output_sha256": "8cd1a2444a62fe440c3685f3c0f2a0f024484c92ed6915deb6426392ce3258d8"
+    },
+    {
+      "stable_id": 2354410728,
+      "source": "Graphics/Objects/Grass/Podunk/1.png",
+      "output": "graphics/world/podunk/grass-1.t3x",
+      "width": 96,
+      "height": 24,
+      "columns": 4,
+      "rows": 1,
+      "flags": 0,
+      "source_sha256": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+      "output_sha256": "d67346169e16fb741c649bfbc3e853201e00331b24f1795ace08ec415c958d18"
+    }
+  ]
+}

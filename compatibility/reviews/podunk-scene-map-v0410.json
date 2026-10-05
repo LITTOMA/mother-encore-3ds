@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "kind": "encore.field-map.source-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "ir_sha256": "e64588d7761681fa6e49b79b066aafe531c5d8c466156f9e041745d512a37306",
+  "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+  "detail_sha256": "e15f05b8e3a269cf6cc75264a7878b87c431d1afbb21449ae7feb9e1d7bdb53a",
+  "scene_admitted": false,
+  "capabilities": [
+    "complete-native-tilemap-data",
+    "single-atlas-autotile-texture-regions",
+    "native-shape-decomposition",
+    "typed-segments-and-native-degenerate-convex",
+    "conditional-canvas-gates",
+    "nearest-gpu-texture-pages",
+    "animated-texture-clock",
+    "source-local-shape-transforms",
+    "native-concave-bvh-and-pair-identity",
+    "native-sort-array-tie-semantics",
+    "compiled-quadrant-spatial-index"
+  ],
+  "counts": {
+    "tilemaps": 44,
+    "cells": 173211,
+    "draws": 169977,
+    "polygons": 13312,
+    "segments": 473,
+    "degenerate_native_convex": 195,
+    "native_skipped_cells": 3234
+  },
+  "pending": [
+    "whole-scene-event-host",
+    "all-non-tilemap-physics-bodies-and-areas",
+    "source-hierarchy-y-sort-with-dynamic-actors",
+    "Godot-concave-cull-broadphase-contact-order",
+    "unimplemented-source-script-bindings"
+  ],
+  "verification": {
+    "official_native_export": true,
+    "real_tex3ds": true,
+    "host_cpp_compile": true,
+    "normal_format_admission": true,
+    "test_suites": false,
+    "sanitizers": false,
+    "cross_build": false,
+    "emulator": false,
+    "hardware": false
+  }
+}

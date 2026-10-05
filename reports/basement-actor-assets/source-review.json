@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "sources": {
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+    "Data/Animations/NintenCutscene.yaml": "5c58c8034f23d8d2d485aaf40efa2dc584962916170db8e42f6281aafb25e2e8",
+    "Graphics/Character Sprites/Ninten/cutscene.png": "4e6417cf62745d0e652d0b1cee5733a96bdf2236f38b677a0ba6fa0acf741d48",
+    "Graphics/Character Sprites/Ninten/cutscene.png.import": "eb2cec934cc1adfd298d111643c9e187250e140d5293f7ef72fbb4b129103cc3",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+    "Graphics/Objects/Common/Briefcase.png.import": "f3dc75c3716172baae8d53e21de64ec229a32af8878b141e6c50ba8082adf5a8",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498"
+  },
+  "ir_sha256": "27d70eec4d6823e8118f6b24192b5ae3637561bc752f8bcdecc70f019e90cd8d",
+  "semantics": [
+    "CharacterSprite source frame minus one and cumulative source time",
+    "type1 non-looping clips retain final frame; special visibility remains until replaced/restored",
+    "Special child position plus inherited Sprite offset; original PNG lossless nearest sampling",
+    "Present Unwrapped discrete frames and bounded Gift Box audio track"
+  ],
+  "unverified": [
+    "No tests run",
+    "Genuine tex3ds build and rendering integration pending",
+    "Emulator/hardware parity pending"
+  ]
+}

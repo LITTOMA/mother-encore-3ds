@@ -31,5 +31,5 @@ enum class RoomRuleKey : uint16_t {
 };
 enum class RoomScalarType : uint16_t { F32=1, F64=2, U32=3 };
 enum class RoomResourceKind : uint16_t { Texture=1, AudioRequestOnly=2, CheckedBattlePack=3,CheckedWorldEffectPack=4 };
-enum class RoomBindingKind : uint16_t { PlayMusicRequest=1, DelayedUnsupportedBoundary=2, PeriodicCameraShake=3, StopRoomShaker=4,StopMusicResource=5,WorldEffectAppear=6,WorldEffectDisappear=7,StartPhoneRing=8,DeferredFlagBodyDeletion=9 };
+enum class RoomBindingKind : uint16_t { PlayMusicRequest=1, DelayedUnsupportedBoundary=2, PeriodicCameraShake=3, StopRoomShaker=4,StopMusicResource=5,WorldEffectAppear=6,WorldEffectDisappear=7,StartPhoneRing=8,DeferredFlagBodyDeletion=9, BasementWhiteFade=10,StopMusicRegion=11,PlayMusicRegion=12 };
 }

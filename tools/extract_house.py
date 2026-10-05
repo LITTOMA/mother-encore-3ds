@@ -77,7 +77,9 @@ def build(root=ROOT):
  linked=append_family_house(ex,linked,ir_room)
  linked=append_inspections(ex,linked,ir_room)
  linked=append_drawer(ex,linked,ir_room)
- return append_storage(ex,linked,ir_room)
+ linked=append_storage(ex,linked,ir_room)
+ from tools.link_basement_content import append_house as append_basement
+ return append_basement(ex,linked,ir_room)
 def extend_source(ex,house,ir_room,ns,ng,segments,carol,overrides,root_name,ie,area,shape_node,view,radius,ret,b):
  def body(path):
   found=[b['body_id']for b in ir_room['sections']['BodyRule']if ir_room['strings'][b['source_path_string']]==path]

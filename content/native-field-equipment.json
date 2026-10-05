@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.field-equipment.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Original Pause Goods delegation and Equip for singleton Ninten; field item-use submenu owns admitted consumables, UID and seven derived equipment stats remain checked; no battle item-use or broader party capability",
+  "scope": "Original Pause Goods/PSI checked delegation and Equip for singleton Ninten; field item-use submenu owns admitted consumables, UID and seven derived equipment stats remain checked; no battle item-use or broader party capability",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
@@ -250,7 +250,7 @@
         "en": "PSI",
         "zh_Hans_CN": "PSI"
       },
-      "enabled": 0
+      "enabled": 3
     },
     {
       "id": 3,

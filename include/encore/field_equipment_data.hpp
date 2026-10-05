@@ -8,7 +8,7 @@ enum class FieldBinding:uint32_t {PauseTitle=1,EquipTitle,None,Empty,StatMaxHP,S
 enum class FieldLayoutRole:uint32_t {PausePanel=1,PauseInside,PauseTitle,PauseCommand,PauseCash,EquipmentPanel,StatsPanel,Owner,EquipTitle,Portrait,SlotPanel,SlotLabel,SlotItem,ListPanel,ListItem,StatLabel,StatValue,StatProjected,StatIcon,DescriptionPanel,DescriptionText,Cursor,BoostEmpty,BoostBetter,BoostLower,PauseCursor,SlotCursor,CandidateCursor,CashLabel,CashValue,LevelLabel,LevelValue,PortraitEquipped,PortraitSuitable,PortraitBetter,PortraitLower,CashCents,ItemsTargetPanel,ItemsActionPanel};
 enum class FieldClipRole:uint32_t {PauseOpen=1,PauseClose,EquipOpen,EquipClose,DescriptionOpen,DescriptionClose};
 // Encoded source command operation; never infer it from localized labels.
-enum class FieldCommandAction:uint32_t {Restricted=0,Equip=1,Items=2};
+enum class FieldCommandAction:uint32_t {Restricted=0,Equip=1,Items=2,Psi=3};
 struct FieldCommand {uint32_t id=0,en=0,zh=0,enabled=0;FieldCommandAction action()const{return FieldCommandAction(enabled);}};
 struct FieldSlot {uint32_t id=0,source=0,en=0,zh=0;};
 struct FieldEquipment {uint32_t definition=0,source=0,slot=0;std::array<int32_t,7> boosts{};};

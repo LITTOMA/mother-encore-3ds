@@ -90,7 +90,7 @@ bool HousePresentation::append_segment(uint32_t index){
   else if(kind==HouseTokenKind::PlayerName)value=player_name_;
   else if(kind==HouseTokenKind::Color){uint32_t rgb=0;for(char c:token_text){uint32_t digit=c>='0'&&c<='9'?uint32_t(c-'0'):c>='a'&&c<='f'?uint32_t(c-'a'+10):uint32_t(c-'A'+10);rgb=(rgb<<4)|digit;}color=0xff000000u|((rgb>>16)&255u)|(rgb&0xff00u)|((rgb&255u)<<16);continue;}
   else if(kind==HouseTokenKind::ColorReset){color=0xffffffffu;continue;}
-  else if(kind==HouseTokenKind::EarnedCash||kind==HouseTokenKind::BankCash||kind==HouseTokenKind::CurrentCash){if(!text_value_||!text_value_(text_value_state_,kind,value))return fail("Missing checked dialogue value");}
+  else if(kind==HouseTokenKind::EarnedCash||kind==HouseTokenKind::BankCash||kind==HouseTokenKind::CurrentCash||kind==HouseTokenKind::FavoriteFood){if(!text_value_||!text_value_(text_value_state_,kind,value))return fail("Missing checked dialogue value");}
   else if(kind==HouseTokenKind::SourceDelay){
    const std::string amount(token_text);char*end=nullptr;const double number=std::strtod(amount.c_str(),&end);
    if(end!=amount.c_str()+amount.size()||!std::isfinite(number)||number<=0)return fail("Invalid world dialogue delay");

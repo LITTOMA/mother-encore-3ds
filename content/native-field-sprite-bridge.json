@@ -1,0 +1,7283 @@
+{
+  "schema": 1,
+  "kind": "encore.field-sprite-bridge.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "reflector": {
+    "query_path": "FloorReflector",
+    "exists": false
+  },
+  "fallback": "Talk",
+  "textures": [
+    {
+      "id": 3856683197,
+      "path": "Graphics/Character Sprites/Npcs/4dir/woman.png",
+      "size": [
+        105,
+        120
+      ]
+    },
+    {
+      "id": 2424204171,
+      "path": "Graphics/Character Sprites/Lloyd/main.png",
+      "size": [
+        310,
+        560
+      ]
+    },
+    {
+      "id": 244358120,
+      "path": "Graphics/Character Sprites/Npcs/4dir/tiger.png",
+      "size": [
+        165,
+        96
+      ]
+    },
+    {
+      "id": 3384133452,
+      "path": "Graphics/Character Sprites/Npcs/4dir/hyena.png",
+      "size": [
+        135,
+        96
+      ]
+    },
+    {
+      "id": 51480307,
+      "path": "Graphics/Character Sprites/Npcs/4dir/elephant.png",
+      "size": [
+        315,
+        192
+      ]
+    },
+    {
+      "id": 2505047859,
+      "path": "Graphics/Character Sprites/Npcs/4dir/alligator.png",
+      "size": [
+        225,
+        120
+      ]
+    },
+    {
+      "id": 485419817,
+      "path": "Graphics/Character Sprites/Npcs/4dir/gorilla.png",
+      "size": [
+        165,
+        152
+      ]
+    },
+    {
+      "id": 1333359704,
+      "path": "Graphics/Character Sprites/Npcs/4dir/messygirl.png",
+      "size": [
+        105,
+        96
+      ]
+    },
+    {
+      "id": 2972522787,
+      "path": "Graphics/Character Sprites/Npcs/4dir/canaryman.png",
+      "size": [
+        105,
+        148
+      ]
+    },
+    {
+      "id": 3714730020,
+      "path": "Graphics/Character Sprites/Npcs/4dir/canary.png",
+      "size": [
+        90,
+        60
+      ]
+    },
+    {
+      "id": 2075931486,
+      "path": "Graphics/Character Sprites/Npcs/4dir/canaryblue.png",
+      "size": [
+        90,
+        60
+      ]
+    },
+    {
+      "id": 281246239,
+      "path": "Graphics/Character Sprites/CanaryChick/main.png",
+      "size": [
+        120,
+        260
+      ]
+    },
+    {
+      "id": 2022103389,
+      "path": "Graphics/Character Sprites/Npcs/4dir/fatlady.png",
+      "size": [
+        110,
+        116
+      ]
+    },
+    {
+      "id": 4125064633,
+      "path": "Graphics/Character Sprites/Npcs/4dir/maskedguy.png",
+      "size": [
+        95,
+        116
+      ]
+    },
+    {
+      "id": 2955491471,
+      "path": "Graphics/Character Sprites/Npcs/4dir/bluelady.png",
+      "size": [
+        105,
+        120
+      ]
+    },
+    {
+      "id": 2594292570,
+      "path": "Graphics/Character Sprites/Npcs/4dir/blonddude.png",
+      "size": [
+        95,
+        108
+      ]
+    },
+    {
+      "id": 3835542995,
+      "path": "Graphics/Character Sprites/Npcs/4dir/oldredman.png",
+      "size": [
+        95,
+        112
+      ]
+    },
+    {
+      "id": 2098406131,
+      "path": "Graphics/Character Sprites/Npcs/4dir/mouse.png",
+      "size": [
+        100,
+        64
+      ]
+    },
+    {
+      "id": 1396160482,
+      "path": "Graphics/Character Sprites/Npcs/4dir/oldlady.png",
+      "size": [
+        85,
+        104
+      ]
+    },
+    {
+      "id": 10109059,
+      "path": "Graphics/Character Sprites/Npcs/4dir/mustacheguy.png",
+      "size": [
+        115,
+        116
+      ]
+    },
+    {
+      "id": 4276990315,
+      "path": "Graphics/Character Sprites/Npcs/4dir/blondlady.png",
+      "size": [
+        95,
+        112
+      ]
+    },
+    {
+      "id": 3865498072,
+      "path": "Graphics/Character Sprites/Npcs/4dir/coolguy.png",
+      "size": [
+        115,
+        112
+      ]
+    },
+    {
+      "id": 3798456303,
+      "path": "Graphics/Character Sprites/Npcs/4dir/suitguy.png",
+      "size": [
+        95,
+        124
+      ]
+    },
+    {
+      "id": 1302688280,
+      "path": "Graphics/Character Sprites/Npcs/4dir/hoodperson.png",
+      "size": [
+        135,
+        128
+      ]
+    },
+    {
+      "id": 2730002843,
+      "path": "Graphics/Character Sprites/Npcs/4dir/glasseslady.png",
+      "size": [
+        95,
+        116
+      ]
+    },
+    {
+      "id": 2624622755,
+      "path": "Graphics/Character Sprites/Npcs/4dir/oldhatman.png",
+      "size": [
+        115,
+        124
+      ]
+    },
+    {
+      "id": 231054120,
+      "path": "Graphics/Character Sprites/Npcs/4dir/suitwoman.png",
+      "size": [
+        105,
+        124
+      ]
+    },
+    {
+      "id": 1166078448,
+      "path": "Graphics/Character Sprites/Npcs/4dir/disguisedzombie.png",
+      "size": [
+        165,
+        164
+      ]
+    },
+    {
+      "id": 387863154,
+      "path": "Graphics/Character Sprites/Npcs/4dir/pippismom.png",
+      "size": [
+        105,
+        128
+      ]
+    },
+    {
+      "id": 1599430655,
+      "path": "Graphics/Character Sprites/Pippi/main.png",
+      "size": [
+        250,
+        560
+      ]
+    },
+    {
+      "id": 710239437,
+      "path": "Graphics/Character Sprites/Npcs/4dir/dogstray.png",
+      "size": [
+        135,
+        96
+      ]
+    },
+    {
+      "id": 322688433,
+      "path": "Graphics/Character Sprites/Npcs/4dir/mick.png",
+      "size": [
+        75,
+        84
+      ]
+    },
+    {
+      "id": 472340107,
+      "path": "Graphics/Character Sprites/Npcs/4dir/npc.png",
+      "size": [
+        85,
+        108
+      ]
+    },
+    {
+      "id": 226159813,
+      "path": "Graphics/Character Sprites/Npcs/4dir/monkey.png",
+      "size": [
+        115,
+        88
+      ]
+    },
+    {
+      "id": 3825128449,
+      "path": "Graphics/Character Sprites/Npcs/4dir/policeofficer.png",
+      "size": [
+        95,
+        128
+      ]
+    },
+    {
+      "id": 1499455856,
+      "path": "Graphics/Character Sprites/Npcs/4dir/wallyblue.png",
+      "size": [
+        135,
+        132
+      ]
+    },
+    {
+      "id": 2936773983,
+      "path": "Graphics/Character Sprites/Npcs/4dir/gravedigger.png",
+      "size": [
+        105,
+        136
+      ]
+    },
+    {
+      "id": 2781189744,
+      "path": "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png",
+      "size": [
+        125,
+        124
+      ]
+    },
+    {
+      "id": 1697793564,
+      "path": "Graphics/Character Sprites/Npcs/4dir/carol.png",
+      "size": [
+        105,
+        128
+      ]
+    },
+    {
+      "id": 4042718029,
+      "path": "Graphics/Character Sprites/Npcs/4dir/mimmie.png",
+      "size": [
+        85,
+        100
+      ]
+    },
+    {
+      "id": 881656845,
+      "path": "Graphics/Character Sprites/Npcs/4dir/minnie.png",
+      "size": [
+        95,
+        100
+      ]
+    }
+  ],
+  "animations": [
+    {
+      "id": 659687428,
+      "path": "Data/Animations/4dir.yaml",
+      "columns": 5,
+      "rows": 4,
+      "offset": [
+        0,
+        0
+      ],
+      "motions": [
+        {
+          "name": "Idle",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  1
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  6
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  11
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  16
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Talk",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  4
+                ],
+                [
+                  0.30000000000000004,
+                  3
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  9
+                ],
+                [
+                  0.30000000000000004,
+                  8
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  14
+                ],
+                [
+                  0.30000000000000004,
+                  13
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  19
+                ],
+                [
+                  0.30000000000000004,
+                  18
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Walk",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  0
+                ],
+                [
+                  0.2,
+                  1
+                ],
+                [
+                  0.4,
+                  2
+                ],
+                [
+                  0.6000000000000001,
+                  1
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  5
+                ],
+                [
+                  0.2,
+                  6
+                ],
+                [
+                  0.4,
+                  7
+                ],
+                [
+                  0.6000000000000001,
+                  6
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  10
+                ],
+                [
+                  0.2,
+                  11
+                ],
+                [
+                  0.4,
+                  12
+                ],
+                [
+                  0.6000000000000001,
+                  11
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  15
+                ],
+                [
+                  0.2,
+                  16
+                ],
+                [
+                  0.4,
+                  17
+                ],
+                [
+                  0.6000000000000001,
+                  16
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1208535315,
+      "path": "Data/Animations/PartyMember.yaml",
+      "columns": 10,
+      "rows": 20,
+      "offset": [
+        0,
+        1
+      ],
+      "motions": [
+        {
+          "name": "Blink",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  100
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  110
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  120
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  130
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  140
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  150
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  160
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  170
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Crouch",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  3
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  13
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  23
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  33
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  43
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  53
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  63
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  73
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fainted Idle",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  102
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  112
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  122
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  132
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  142
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  152
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  162
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  172
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fainted Walk",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  101
+                ],
+                [
+                  0.2,
+                  102
+                ],
+                [
+                  0.4,
+                  103
+                ],
+                [
+                  0.6000000000000001,
+                  102
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  111
+                ],
+                [
+                  0.2,
+                  112
+                ],
+                [
+                  0.4,
+                  113
+                ],
+                [
+                  0.6000000000000001,
+                  112
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  121
+                ],
+                [
+                  0.2,
+                  122
+                ],
+                [
+                  0.4,
+                  123
+                ],
+                [
+                  0.6000000000000001,
+                  122
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  131
+                ],
+                [
+                  0.2,
+                  132
+                ],
+                [
+                  0.4,
+                  133
+                ],
+                [
+                  0.6000000000000001,
+                  132
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  141
+                ],
+                [
+                  0.2,
+                  142
+                ],
+                [
+                  0.4,
+                  143
+                ],
+                [
+                  0.6000000000000001,
+                  142
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  151
+                ],
+                [
+                  0.2,
+                  152
+                ],
+                [
+                  0.4,
+                  153
+                ],
+                [
+                  0.6000000000000001,
+                  152
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  161
+                ],
+                [
+                  0.2,
+                  162
+                ],
+                [
+                  0.4,
+                  163
+                ],
+                [
+                  0.6000000000000001,
+                  162
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  171
+                ],
+                [
+                  0.2,
+                  172
+                ],
+                [
+                  0.4,
+                  173
+                ],
+                [
+                  0.6000000000000001,
+                  172
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Idle",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  1
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  11
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  21
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  31
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  41
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  51
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  61
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.2,
+              "keys": [
+                [
+                  0.0,
+                  71
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Jump",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  180
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  181
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  182
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  183
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  190
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  191
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  192
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  193
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Run",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  4
+                ],
+                [
+                  0.083,
+                  5
+                ],
+                [
+                  0.166,
+                  6
+                ],
+                [
+                  0.249,
+                  7
+                ],
+                [
+                  0.332,
+                  8
+                ],
+                [
+                  0.41500000000000004,
+                  9
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  14
+                ],
+                [
+                  0.083,
+                  15
+                ],
+                [
+                  0.166,
+                  16
+                ],
+                [
+                  0.249,
+                  17
+                ],
+                [
+                  0.332,
+                  18
+                ],
+                [
+                  0.41500000000000004,
+                  19
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  24
+                ],
+                [
+                  0.083,
+                  25
+                ],
+                [
+                  0.166,
+                  26
+                ],
+                [
+                  0.249,
+                  27
+                ],
+                [
+                  0.332,
+                  28
+                ],
+                [
+                  0.41500000000000004,
+                  29
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  34
+                ],
+                [
+                  0.083,
+                  35
+                ],
+                [
+                  0.166,
+                  36
+                ],
+                [
+                  0.249,
+                  37
+                ],
+                [
+                  0.332,
+                  38
+                ],
+                [
+                  0.41500000000000004,
+                  39
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  44
+                ],
+                [
+                  0.083,
+                  45
+                ],
+                [
+                  0.166,
+                  46
+                ],
+                [
+                  0.249,
+                  47
+                ],
+                [
+                  0.332,
+                  48
+                ],
+                [
+                  0.41500000000000004,
+                  49
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  54
+                ],
+                [
+                  0.083,
+                  55
+                ],
+                [
+                  0.166,
+                  56
+                ],
+                [
+                  0.249,
+                  57
+                ],
+                [
+                  0.332,
+                  58
+                ],
+                [
+                  0.41500000000000004,
+                  59
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  64
+                ],
+                [
+                  0.083,
+                  65
+                ],
+                [
+                  0.166,
+                  66
+                ],
+                [
+                  0.249,
+                  67
+                ],
+                [
+                  0.332,
+                  68
+                ],
+                [
+                  0.41500000000000004,
+                  69
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.49800000000000005,
+              "keys": [
+                [
+                  0.0,
+                  74
+                ],
+                [
+                  0.083,
+                  75
+                ],
+                [
+                  0.166,
+                  76
+                ],
+                [
+                  0.249,
+                  77
+                ],
+                [
+                  0.332,
+                  78
+                ],
+                [
+                  0.41500000000000004,
+                  79
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soot",
+          "loop": false,
+          "directions": [
+            {
+              "vector": [
+                0,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  99
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Down",
+          "loop": false,
+          "directions": [
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  195
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  196
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LookDown",
+          "loop": false,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  104
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  114
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  124
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  134
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LookLeft",
+          "loop": false,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  105
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  115
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  125
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  135
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "LookRight",
+          "loop": false,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  106
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  116
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  126
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.1,
+              "keys": [
+                [
+                  0.0,
+                  136
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Laugh",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                0
+              ],
+              "duration": 0.3,
+              "keys": [
+                [
+                  0.0,
+                  107
+                ],
+                [
+                  0.15,
+                  108
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "GetUp",
+          "loop": false,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  3
+                ],
+                [
+                  0.5,
+                  1
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  13
+                ],
+                [
+                  0.5,
+                  11
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  23
+                ],
+                [
+                  0.5,
+                  21
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  33
+                ],
+                [
+                  0.5,
+                  31
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  43
+                ],
+                [
+                  0.5,
+                  41
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  53
+                ],
+                [
+                  0.5,
+                  51
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  63
+                ],
+                [
+                  0.5,
+                  61
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 1.0,
+              "keys": [
+                [
+                  0.0,
+                  73
+                ],
+                [
+                  0.5,
+                  71
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Talk",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  81
+                ],
+                [
+                  0.30000000000000004,
+                  80
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  83
+                ],
+                [
+                  0.30000000000000004,
+                  82
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  85
+                ],
+                [
+                  0.30000000000000004,
+                  84
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  87
+                ],
+                [
+                  0.30000000000000004,
+                  86
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  91
+                ],
+                [
+                  0.30000000000000004,
+                  90
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  93
+                ],
+                [
+                  0.30000000000000004,
+                  92
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  95
+                ],
+                [
+                  0.30000000000000004,
+                  94
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.4,
+              "keys": [
+                [
+                  0.1,
+                  97
+                ],
+                [
+                  0.30000000000000004,
+                  96
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Walk",
+          "loop": true,
+          "directions": [
+            {
+              "vector": [
+                0,
+                1
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  0
+                ],
+                [
+                  0.2,
+                  1
+                ],
+                [
+                  0.4,
+                  2
+                ],
+                [
+                  0.6000000000000001,
+                  1
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -1,
+                0
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  10
+                ],
+                [
+                  0.2,
+                  11
+                ],
+                [
+                  0.4,
+                  12
+                ],
+                [
+                  0.6000000000000001,
+                  11
+                ]
+              ]
+            },
+            {
+              "vector": [
+                1,
+                0
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  20
+                ],
+                [
+                  0.2,
+                  21
+                ],
+                [
+                  0.4,
+                  22
+                ],
+                [
+                  0.6000000000000001,
+                  21
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0,
+                -1
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  30
+                ],
+                [
+                  0.2,
+                  31
+                ],
+                [
+                  0.4,
+                  32
+                ],
+                [
+                  0.6000000000000001,
+                  31
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  40
+                ],
+                [
+                  0.2,
+                  41
+                ],
+                [
+                  0.4,
+                  42
+                ],
+                [
+                  0.6000000000000001,
+                  41
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  50
+                ],
+                [
+                  0.2,
+                  51
+                ],
+                [
+                  0.4,
+                  52
+                ],
+                [
+                  0.6000000000000001,
+                  51
+                ]
+              ]
+            },
+            {
+              "vector": [
+                -0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  60
+                ],
+                [
+                  0.2,
+                  61
+                ],
+                [
+                  0.4,
+                  62
+                ],
+                [
+                  0.6000000000000001,
+                  61
+                ]
+              ]
+            },
+            {
+              "vector": [
+                0.7071067811865476,
+                -0.7071067811865476
+              ],
+              "duration": 0.8,
+              "keys": [
+                [
+                  0.0,
+                  70
+                ],
+                [
+                  0.2,
+                  71
+                ],
+                [
+                  0.4,
+                  72
+                ],
+                [
+                  0.6000000000000001,
+                  71
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": 2725797372,
+      "parent_id": 3537943183,
+      "ready_ordinal": 3951,
+      "kind": 2,
+      "node": "Objects/Zoo Flag/PresentZoo1/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 3083702026,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 2743369061,
+      "parent_id": 2726839233,
+      "ready_ordinal": 3967,
+      "kind": 2,
+      "node": "Objects/Zoo Flag/PresentZoo2/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 3922523065,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 3784130553,
+      "parent_id": 2843083608,
+      "ready_ordinal": 3983,
+      "kind": 2,
+      "node": "Objects/Zoo Flag/PresentZoo3/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 3142472054,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 812075446,
+      "parent_id": 3081056311,
+      "ready_ordinal": 4209,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc2/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 244358120,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        1.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3956227706,
+      "parent_id": 3081056311,
+      "ready_ordinal": 4227,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc2/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 812075446,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2698878082,
+      "parent_id": 737765147,
+      "ready_ordinal": 4236,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc4/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3384133452,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        1.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2633344775,
+      "parent_id": 737765147,
+      "ready_ordinal": 4254,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc4/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2698878082,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 239937999,
+      "parent_id": 883995461,
+      "ready_ordinal": 4263,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc5/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3384133452,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        1.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1205390238,
+      "parent_id": 883995461,
+      "ready_ordinal": 4281,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc5/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 239937999,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3789151103,
+      "parent_id": 3792487662,
+      "ready_ordinal": 4290,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc6/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 51480307,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        2.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3057237790,
+      "parent_id": 3792487662,
+      "ready_ordinal": 4308,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc6/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3789151103,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 462117545,
+      "parent_id": 981352210,
+      "ready_ordinal": 4317,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc7/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2505047859,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        6.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3335540641,
+      "parent_id": 981352210,
+      "ready_ordinal": 4335,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc7/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 462117545,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3270086966,
+      "parent_id": 3792135288,
+      "ready_ordinal": 4344,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc8/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2505047859,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        6.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3402423587,
+      "parent_id": 3792135288,
+      "ready_ordinal": 4362,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc8/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3270086966,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 321140417,
+      "parent_id": 1815627727,
+      "ready_ordinal": 4371,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc9/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 485419817,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        2.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 503621033,
+      "parent_id": 1815627727,
+      "ready_ordinal": 4389,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc9/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 321140417,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2696499241,
+      "parent_id": 3607004091,
+      "ready_ordinal": 4398,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc10/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 485419817,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        2.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 40729378,
+      "parent_id": 3607004091,
+      "ready_ordinal": 4416,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc10/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2696499241,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1525037970,
+      "parent_id": 311887043,
+      "ready_ordinal": 4425,
+      "kind": 1,
+      "node": "Objects/Zoo Freed Flag/npc3/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 244358120,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0.0,
+        1.0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2662354611,
+      "parent_id": 311887043,
+      "ready_ordinal": 4443,
+      "kind": 2,
+      "node": "Objects/Zoo Freed Flag/npc3/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1525037970,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 143793603,
+      "parent_id": 666332154,
+      "ready_ordinal": 4830,
+      "kind": 2,
+      "node": "Objects/Items/Present1/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 4207594317,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 3614140336,
+      "parent_id": 2958063215,
+      "ready_ordinal": 4846,
+      "kind": 2,
+      "node": "Objects/Items/Present2/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 567912355,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 2504791489,
+      "parent_id": 2226428946,
+      "ready_ordinal": 4862,
+      "kind": 2,
+      "node": "Objects/Items/Present3/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 405201885,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 1179583547,
+      "parent_id": 3397977974,
+      "ready_ordinal": 4878,
+      "kind": 2,
+      "node": "Objects/Items/Present4/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 237552600,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 3539836057,
+      "parent_id": 951565813,
+      "ready_ordinal": 4894,
+      "kind": 2,
+      "node": "Objects/Items/Present5/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 2422520988,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 1172851639,
+      "parent_id": 722365758,
+      "ready_ordinal": 4910,
+      "kind": 2,
+      "node": "Objects/Items/Present6/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 1918076994,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 1098941247,
+      "parent_id": 487827679,
+      "ready_ordinal": 4926,
+      "kind": 2,
+      "node": "Objects/Items/Present7/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 470228174,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 3074363264,
+      "parent_id": 3432066303,
+      "ready_ordinal": 4942,
+      "kind": 2,
+      "node": "Objects/Items/PresentZoo4/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 3144528529,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 3292608360,
+      "parent_id": 2866548460,
+      "ready_ordinal": 4958,
+      "kind": 2,
+      "node": "Objects/Items/PresentCem4/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 1729541840,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 1237212106,
+      "parent_id": 1349820839,
+      "ready_ordinal": 4989,
+      "kind": 2,
+      "node": "Objects/Items/PresentCem5/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 430465604,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 1236765313,
+      "parent_id": 765386674,
+      "ready_ordinal": 5005,
+      "kind": 2,
+      "node": "Objects/Items/PresentCem3/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 4115068959,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 2813250392,
+      "parent_id": 1411963557,
+      "ready_ordinal": 5021,
+      "kind": 2,
+      "node": "Objects/Items/PresentCem1/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 2554781266,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 2077194917,
+      "parent_id": 3238128182,
+      "ready_ordinal": 5037,
+      "kind": 2,
+      "node": "Objects/Items/PresentCem2/SpriteDataFetcher",
+      "target_path": "../Sprite",
+      "target_id": 1513635960,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 4.0,
+      "connections": []
+    },
+    {
+      "id": 344171085,
+      "parent_id": 210571542,
+      "ready_ordinal": 6450,
+      "kind": 1,
+      "node": "Objects/NPCS/npc12/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1333359704,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 26084192,
+      "parent_id": 210571542,
+      "ready_ordinal": 6468,
+      "kind": 2,
+      "node": "Objects/NPCS/npc12/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 344171085,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1035261906,
+      "parent_id": 437553025,
+      "ready_ordinal": 6477,
+      "kind": 1,
+      "node": "Objects/NPCS/npc22/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2972522787,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2005563772,
+      "parent_id": 437553025,
+      "ready_ordinal": 6495,
+      "kind": 2,
+      "node": "Objects/NPCS/npc22/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1035261906,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 931872620,
+      "parent_id": 3173354702,
+      "ready_ordinal": 6504,
+      "kind": 1,
+      "node": "Objects/NPCS/npc28/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1767268816,
+      "parent_id": 3173354702,
+      "ready_ordinal": 6522,
+      "kind": 2,
+      "node": "Objects/NPCS/npc28/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 931872620,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3131937082,
+      "parent_id": 2914925924,
+      "ready_ordinal": 6531,
+      "kind": 1,
+      "node": "Objects/NPCS/npc30/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 915128132,
+      "parent_id": 2914925924,
+      "ready_ordinal": 6549,
+      "kind": 2,
+      "node": "Objects/NPCS/npc30/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3131937082,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 4023476599,
+      "parent_id": 635431345,
+      "ready_ordinal": 6558,
+      "kind": 1,
+      "node": "Objects/NPCS/npc31/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3668614717,
+      "parent_id": 635431345,
+      "ready_ordinal": 6576,
+      "kind": 2,
+      "node": "Objects/NPCS/npc31/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 4023476599,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3185532646,
+      "parent_id": 957371598,
+      "ready_ordinal": 6585,
+      "kind": 1,
+      "node": "Objects/NPCS/npc32/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2764279058,
+      "parent_id": 957371598,
+      "ready_ordinal": 6603,
+      "kind": 2,
+      "node": "Objects/NPCS/npc32/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3185532646,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3218770774,
+      "parent_id": 3434881836,
+      "ready_ordinal": 6612,
+      "kind": 1,
+      "node": "Objects/NPCS/npc33/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 712079273,
+      "parent_id": 3434881836,
+      "ready_ordinal": 6630,
+      "kind": 2,
+      "node": "Objects/NPCS/npc33/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3218770774,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 905088156,
+      "parent_id": 2310498737,
+      "ready_ordinal": 6639,
+      "kind": 1,
+      "node": "Objects/NPCS/npc44/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2075931486,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 367822511,
+      "parent_id": 2310498737,
+      "ready_ordinal": 6657,
+      "kind": 2,
+      "node": "Objects/NPCS/npc44/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 905088156,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3431860216,
+      "parent_id": 1593331002,
+      "ready_ordinal": 6666,
+      "kind": 1,
+      "node": "Objects/NPCS/npc34/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2227649780,
+      "parent_id": 1593331002,
+      "ready_ordinal": 6684,
+      "kind": 2,
+      "node": "Objects/NPCS/npc34/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3431860216,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2831900954,
+      "parent_id": 1229070946,
+      "ready_ordinal": 6693,
+      "kind": 1,
+      "node": "Objects/NPCS/npc36/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 281246239,
+      "setup_animation": 1208535315,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1524637237,
+      "parent_id": 1229070946,
+      "ready_ordinal": 6711,
+      "kind": 2,
+      "node": "Objects/NPCS/npc36/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2831900954,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3922854560,
+      "parent_id": 3703779468,
+      "ready_ordinal": 6720,
+      "kind": 1,
+      "node": "Objects/NPCS/npc37/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2671274324,
+      "parent_id": 3703779468,
+      "ready_ordinal": 6738,
+      "kind": 2,
+      "node": "Objects/NPCS/npc37/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3922854560,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1313378489,
+      "parent_id": 3762327270,
+      "ready_ordinal": 6747,
+      "kind": 1,
+      "node": "Objects/NPCS/npc38/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 281246239,
+      "setup_animation": 1208535315,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3648649873,
+      "parent_id": 3762327270,
+      "ready_ordinal": 6765,
+      "kind": 2,
+      "node": "Objects/NPCS/npc38/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1313378489,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3549322516,
+      "parent_id": 4166134503,
+      "ready_ordinal": 6774,
+      "kind": 1,
+      "node": "Objects/NPCS/npc35/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3714730020,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 882897975,
+      "parent_id": 4166134503,
+      "ready_ordinal": 6792,
+      "kind": 2,
+      "node": "Objects/NPCS/npc35/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3549322516,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2330897344,
+      "parent_id": 2737531792,
+      "ready_ordinal": 6801,
+      "kind": 1,
+      "node": "Objects/NPCS/npc/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3856683197,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1668681361,
+      "parent_id": 2737531792,
+      "ready_ordinal": 6819,
+      "kind": 2,
+      "node": "Objects/NPCS/npc/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2330897344,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 4095763343,
+      "parent_id": 2060673523,
+      "ready_ordinal": 6828,
+      "kind": 1,
+      "node": "Objects/NPCS/npc6/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2022103389,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 542272653,
+      "parent_id": 2060673523,
+      "ready_ordinal": 6846,
+      "kind": 2,
+      "node": "Objects/NPCS/npc6/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 4095763343,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3022355283,
+      "parent_id": 3972185731,
+      "ready_ordinal": 6855,
+      "kind": 1,
+      "node": "Objects/NPCS/npc7/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 4125064633,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3627555307,
+      "parent_id": 3972185731,
+      "ready_ordinal": 6873,
+      "kind": 2,
+      "node": "Objects/NPCS/npc7/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3022355283,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3720151751,
+      "parent_id": 785629885,
+      "ready_ordinal": 6882,
+      "kind": 1,
+      "node": "Objects/NPCS/npc2/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2955491471,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1288276458,
+      "parent_id": 785629885,
+      "ready_ordinal": 6900,
+      "kind": 2,
+      "node": "Objects/NPCS/npc2/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3720151751,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2561978431,
+      "parent_id": 2153161825,
+      "ready_ordinal": 6909,
+      "kind": 1,
+      "node": "Objects/NPCS/npc4/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2594292570,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3128065076,
+      "parent_id": 2153161825,
+      "ready_ordinal": 6927,
+      "kind": 2,
+      "node": "Objects/NPCS/npc4/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2561978431,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3472377784,
+      "parent_id": 853425788,
+      "ready_ordinal": 6936,
+      "kind": 1,
+      "node": "Objects/NPCS/npc13/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3835542995,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2820924873,
+      "parent_id": 853425788,
+      "ready_ordinal": 6954,
+      "kind": 2,
+      "node": "Objects/NPCS/npc13/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3472377784,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2836180318,
+      "parent_id": 2297325680,
+      "ready_ordinal": 6963,
+      "kind": 1,
+      "node": "Objects/NPCS/npc43/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2098406131,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3490064056,
+      "parent_id": 2297325680,
+      "ready_ordinal": 6981,
+      "kind": 2,
+      "node": "Objects/NPCS/npc43/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2836180318,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1313692703,
+      "parent_id": 2259943008,
+      "ready_ordinal": 6990,
+      "kind": 1,
+      "node": "Objects/NPCS/npc49/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2098406131,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 792721430,
+      "parent_id": 2259943008,
+      "ready_ordinal": 7008,
+      "kind": 2,
+      "node": "Objects/NPCS/npc49/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1313692703,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2024413464,
+      "parent_id": 247421948,
+      "ready_ordinal": 7017,
+      "kind": 1,
+      "node": "Objects/NPCS/npc5/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1396160482,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3722175754,
+      "parent_id": 247421948,
+      "ready_ordinal": 7035,
+      "kind": 2,
+      "node": "Objects/NPCS/npc5/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2024413464,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1735370643,
+      "parent_id": 3095582778,
+      "ready_ordinal": 7044,
+      "kind": 1,
+      "node": "Objects/NPCS/npc8/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 10109059,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2687715777,
+      "parent_id": 3095582778,
+      "ready_ordinal": 7062,
+      "kind": 2,
+      "node": "Objects/NPCS/npc8/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1735370643,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1157202574,
+      "parent_id": 2639120905,
+      "ready_ordinal": 7071,
+      "kind": 1,
+      "node": "Objects/NPCS/npc9/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 4276990315,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1936989074,
+      "parent_id": 2639120905,
+      "ready_ordinal": 7089,
+      "kind": 2,
+      "node": "Objects/NPCS/npc9/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1157202574,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1384843958,
+      "parent_id": 3767330517,
+      "ready_ordinal": 7098,
+      "kind": 1,
+      "node": "Objects/NPCS/npc10/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3865498072,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3008003238,
+      "parent_id": 3767330517,
+      "ready_ordinal": 7116,
+      "kind": 2,
+      "node": "Objects/NPCS/npc10/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1384843958,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3848989086,
+      "parent_id": 640399899,
+      "ready_ordinal": 7125,
+      "kind": 1,
+      "node": "Objects/NPCS/npc11/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3798456303,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 484762691,
+      "parent_id": 640399899,
+      "ready_ordinal": 7143,
+      "kind": 2,
+      "node": "Objects/NPCS/npc11/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3848989086,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1197072440,
+      "parent_id": 3150160618,
+      "ready_ordinal": 7152,
+      "kind": 1,
+      "node": "Objects/NPCS/npc14/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1302688280,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2155513874,
+      "parent_id": 3150160618,
+      "ready_ordinal": 7170,
+      "kind": 2,
+      "node": "Objects/NPCS/npc14/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1197072440,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 1801295906,
+      "parent_id": 2899552652,
+      "ready_ordinal": 7179,
+      "kind": 1,
+      "node": "Objects/NPCS/npc47/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2730002843,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3400720593,
+      "parent_id": 2899552652,
+      "ready_ordinal": 7197,
+      "kind": 2,
+      "node": "Objects/NPCS/npc47/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 1801295906,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 243733389,
+      "parent_id": 2442055886,
+      "ready_ordinal": 7206,
+      "kind": 1,
+      "node": "Objects/NPCS/npc15/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2022103389,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2125880334,
+      "parent_id": 2442055886,
+      "ready_ordinal": 7224,
+      "kind": 2,
+      "node": "Objects/NPCS/npc15/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 243733389,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2615452894,
+      "parent_id": 1108292664,
+      "ready_ordinal": 7233,
+      "kind": 1,
+      "node": "Objects/NPCS/npc16/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2624622755,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 418626077,
+      "parent_id": 1108292664,
+      "ready_ordinal": 7251,
+      "kind": 2,
+      "node": "Objects/NPCS/npc16/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2615452894,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3847881361,
+      "parent_id": 372591066,
+      "ready_ordinal": 7260,
+      "kind": 1,
+      "node": "Objects/NPCS/npc29/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 231054120,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2177965184,
+      "parent_id": 372591066,
+      "ready_ordinal": 7278,
+      "kind": 2,
+      "node": "Objects/NPCS/npc29/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3847881361,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2616394293,
+      "parent_id": 1583285329,
+      "ready_ordinal": 7287,
+      "kind": 1,
+      "node": "Objects/NPCS/npc48/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1166078448,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2882886362,
+      "parent_id": 1583285329,
+      "ready_ordinal": 7305,
+      "kind": 2,
+      "node": "Objects/NPCS/npc48/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2616394293,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 536650578,
+      "parent_id": 295780912,
+      "ready_ordinal": 7314,
+      "kind": 1,
+      "node": "Objects/NPCS/npc19/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2624622755,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1191442088,
+      "parent_id": 295780912,
+      "ready_ordinal": 7332,
+      "kind": 2,
+      "node": "Objects/NPCS/npc19/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 536650578,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 4053055213,
+      "parent_id": 549517228,
+      "ready_ordinal": 7341,
+      "kind": 1,
+      "node": "Objects/NPCS/npc20/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 387863154,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2201164712,
+      "parent_id": 549517228,
+      "ready_ordinal": 7359,
+      "kind": 2,
+      "node": "Objects/NPCS/npc20/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 4053055213,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 640608159,
+      "parent_id": 1619841105,
+      "ready_ordinal": 7368,
+      "kind": 1,
+      "node": "Objects/NPCS/npc42/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1599430655,
+      "setup_animation": 1208535315,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 877536213,
+      "parent_id": 1619841105,
+      "ready_ordinal": 7386,
+      "kind": 2,
+      "node": "Objects/NPCS/npc42/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 640608159,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 922019134,
+      "parent_id": 1353618985,
+      "ready_ordinal": 7395,
+      "kind": 1,
+      "node": "Objects/NPCS/npc45/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 387863154,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 4241603030,
+      "parent_id": 1353618985,
+      "ready_ordinal": 7413,
+      "kind": 2,
+      "node": "Objects/NPCS/npc45/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 922019134,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 401365477,
+      "parent_id": 862439573,
+      "ready_ordinal": 7422,
+      "kind": 1,
+      "node": "Objects/NPCS/npc41/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 710239437,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1409553159,
+      "parent_id": 862439573,
+      "ready_ordinal": 7440,
+      "kind": 2,
+      "node": "Objects/NPCS/npc41/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 401365477,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 4056491141,
+      "parent_id": 186301641,
+      "ready_ordinal": 7449,
+      "kind": 1,
+      "node": "Objects/NPCS/npc26/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 387863154,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 4011234863,
+      "parent_id": 186301641,
+      "ready_ordinal": 7467,
+      "kind": 2,
+      "node": "Objects/NPCS/npc26/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 4056491141,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3905057438,
+      "parent_id": 1886998396,
+      "ready_ordinal": 7476,
+      "kind": 1,
+      "node": "Objects/NPCS/npc46/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 387863154,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 238079830,
+      "parent_id": 1886998396,
+      "ready_ordinal": 7494,
+      "kind": 2,
+      "node": "Objects/NPCS/npc46/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3905057438,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2846053938,
+      "parent_id": 3558100305,
+      "ready_ordinal": 7503,
+      "kind": 1,
+      "node": "Objects/NPCS/npc21/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 322688433,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3784555430,
+      "parent_id": 3558100305,
+      "ready_ordinal": 7521,
+      "kind": 2,
+      "node": "Objects/NPCS/npc21/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2846053938,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3092298311,
+      "parent_id": 1396482849,
+      "ready_ordinal": 7533,
+      "kind": 1,
+      "node": "Objects/NPCS/npc17/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 472340107,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 908258986,
+      "parent_id": 1396482849,
+      "ready_ordinal": 7551,
+      "kind": 2,
+      "node": "Objects/NPCS/npc17/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3092298311,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2405354397,
+      "parent_id": 1436332646,
+      "ready_ordinal": 7560,
+      "kind": 1,
+      "node": "Objects/NPCS/npc23/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 226159813,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2966975101,
+      "parent_id": 1436332646,
+      "ready_ordinal": 7578,
+      "kind": 2,
+      "node": "Objects/NPCS/npc23/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2405354397,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2294188302,
+      "parent_id": 2710962482,
+      "ready_ordinal": 7587,
+      "kind": 1,
+      "node": "Objects/NPCS/npc27/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3825128449,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2993030018,
+      "parent_id": 2710962482,
+      "ready_ordinal": 7605,
+      "kind": 2,
+      "node": "Objects/NPCS/npc27/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2294188302,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3889732392,
+      "parent_id": 2677627936,
+      "ready_ordinal": 7614,
+      "kind": 1,
+      "node": "Objects/NPCS/npc24/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 3825128449,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3212683086,
+      "parent_id": 2677627936,
+      "ready_ordinal": 7632,
+      "kind": 2,
+      "node": "Objects/NPCS/npc24/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3889732392,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3583534486,
+      "parent_id": 573786176,
+      "ready_ordinal": 7641,
+      "kind": 1,
+      "node": "Objects/NPCS/npc25/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1499455856,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 974478877,
+      "parent_id": 573786176,
+      "ready_ordinal": 7659,
+      "kind": 2,
+      "node": "Objects/NPCS/npc25/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3583534486,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3785408267,
+      "parent_id": 750705161,
+      "ready_ordinal": 7668,
+      "kind": 1,
+      "node": "Objects/NPCS/npc18/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 3,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 2936773983,
+      "sprite": 2936773983,
+      "initial_animation": 659687428,
+      "setup_texture": 2936773983,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        -17.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3080695218,
+      "parent_id": 750705161,
+      "ready_ordinal": 7686,
+      "kind": 2,
+      "node": "Objects/NPCS/npc18/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3785408267,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 574035507,
+      "parent_id": 439396953,
+      "ready_ordinal": 7695,
+      "kind": 1,
+      "node": "Objects/NPCS/npczombie1/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2781189744,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1755213631,
+      "parent_id": 439396953,
+      "ready_ordinal": 7713,
+      "kind": 2,
+      "node": "Objects/NPCS/npczombie1/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 574035507,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3012271950,
+      "parent_id": 2306419902,
+      "ready_ordinal": 7722,
+      "kind": 1,
+      "node": "Objects/NPCS/npczombie2/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2781189744,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1014177100,
+      "parent_id": 2306419902,
+      "ready_ordinal": 7740,
+      "kind": 2,
+      "node": "Objects/NPCS/npczombie2/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3012271950,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 697159824,
+      "parent_id": 1364807546,
+      "ready_ordinal": 7966,
+      "kind": 1,
+      "node": "Objects/NPCS/npc39/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 226159813,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2305839672,
+      "parent_id": 1364807546,
+      "ready_ordinal": 7984,
+      "kind": 2,
+      "node": "Objects/NPCS/npc39/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 697159824,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3510799728,
+      "parent_id": 2588521589,
+      "ready_ordinal": 7993,
+      "kind": 1,
+      "node": "Objects/NPCS/npc40/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 226159813,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 500125255,
+      "parent_id": 2588521589,
+      "ready_ordinal": 8011,
+      "kind": 2,
+      "node": "Objects/NPCS/npc40/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3510799728,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 156682302,
+      "parent_id": 1108621181,
+      "ready_ordinal": 8020,
+      "kind": 1,
+      "node": "Objects/NPCS/npc3/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 2098406131,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1831256242,
+      "parent_id": 1108621181,
+      "ready_ordinal": 8038,
+      "kind": 2,
+      "node": "Objects/NPCS/npc3/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 156682302,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3732340263,
+      "parent_id": 1689911079,
+      "ready_ordinal": 8047,
+      "kind": 1,
+      "node": "Objects/NPCS/mom/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1697793564,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2353898332,
+      "parent_id": 1689911079,
+      "ready_ordinal": 8065,
+      "kind": 2,
+      "node": "Objects/NPCS/mom/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3732340263,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 174202771,
+      "parent_id": 4052585882,
+      "ready_ordinal": 8074,
+      "kind": 1,
+      "node": "Objects/NPCS/mimmie/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 4042718029,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 805862798,
+      "parent_id": 4052585882,
+      "ready_ordinal": 8092,
+      "kind": 2,
+      "node": "Objects/NPCS/mimmie/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 174202771,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 2884383930,
+      "parent_id": 11687715,
+      "ready_ordinal": 8101,
+      "kind": 1,
+      "node": "Objects/NPCS/minnie/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 881656845,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1049108196,
+      "parent_id": 11687715,
+      "ready_ordinal": 8119,
+      "kind": 2,
+      "node": "Objects/NPCS/minnie/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 2884383930,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 885685508,
+      "parent_id": 1765949197,
+      "ready_ordinal": 8421,
+      "kind": 1,
+      "node": "AbovePlayer1/npc/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 226159813,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1482061914,
+      "parent_id": 1765949197,
+      "ready_ordinal": 8439,
+      "kind": 2,
+      "node": "AbovePlayer1/npc/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 885685508,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3713863481,
+      "parent_id": 1443062110,
+      "ready_ordinal": 8456,
+      "kind": 1,
+      "node": "AboveNPCS/mom/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 1697793564,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 565669150,
+      "parent_id": 1443062110,
+      "ready_ordinal": 8474,
+      "kind": 2,
+      "node": "AboveNPCS/mom/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3713863481,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 3600151640,
+      "parent_id": 3484211041,
+      "ready_ordinal": 8483,
+      "kind": 1,
+      "node": "AboveNPCS/mimmie/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 4042718029,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 2980465387,
+      "parent_id": 3484211041,
+      "ready_ordinal": 8501,
+      "kind": 2,
+      "node": "AboveNPCS/mimmie/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 3600151640,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    },
+    {
+      "id": 383935348,
+      "parent_id": 2951200023,
+      "ready_ordinal": 8510,
+      "kind": 1,
+      "node": "AboveNPCS/minnie/CharacterSprite",
+      "target_path": "",
+      "target_id": 0,
+      "flags": 1,
+      "columns": 5,
+      "rows": 4,
+      "frame": 1,
+      "texture": 3856683197,
+      "sprite": 2424204171,
+      "initial_animation": 0,
+      "setup_texture": 881656845,
+      "setup_animation": 659687428,
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 0,
+      "connections": [
+        [
+          "Talk",
+          "Idle",
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3923681755,
+      "parent_id": 2951200023,
+      "ready_ordinal": 8528,
+      "kind": 2,
+      "node": "AboveNPCS/minnie/SpriteDataFetcher",
+      "target_path": "../CharacterSprite",
+      "target_id": 383935348,
+      "flags": 2,
+      "columns": 0,
+      "rows": 0,
+      "frame": 0,
+      "texture": 0,
+      "sprite": 0,
+      "initial_animation": 0,
+      "setup_texture": 0,
+      "setup_animation": 0,
+      "offset": [
+        0,
+        0
+      ],
+      "extra_offset": [
+        0,
+        0
+      ],
+      "reflect_offset": 3.0,
+      "connections": []
+    }
+  ],
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+    "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/CanaryChick/main.png": "1f74bfc751f5054f9f25ea4604ba9aba12d878561e45a79886e197fc23719879",
+    "Graphics/Character Sprites/Lloyd/main.png": "f66ac54e088cce2b839c23c9403840d40c516991337f86db05102e4fff0eb978",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/alligator.png": "7d2cd906845f11e1b94422aaac17e6d9cb421aaf2e7ce6c4ee3b22b53fbb90f9",
+    "Graphics/Character Sprites/Npcs/4dir/blonddude.png": "a8cd684d50d678121df907aed55e26e80cb6c43ee6814afcb9e392b1e4690900",
+    "Graphics/Character Sprites/Npcs/4dir/blondlady.png": "658e94b771b60c7e75a8b58029346e837e186afe808bef68dd14db676a91276a",
+    "Graphics/Character Sprites/Npcs/4dir/bluelady.png": "5c638478dfc05dc4126d050247e0da7b4fa313f5816cd23a9d3d23c8e9445ba9",
+    "Graphics/Character Sprites/Npcs/4dir/canary.png": "c7100cbcce9e32f1a5032a26622fff21fb7e2344ad227b68a2e1cf69a9e71b9b",
+    "Graphics/Character Sprites/Npcs/4dir/canaryblue.png": "aeddf5a5e10c9cc78260322df68b2c506575f46af375c700f6d2704da3a46ac9",
+    "Graphics/Character Sprites/Npcs/4dir/canaryman.png": "081bc381435dc7245b1c459defd1e70141d67cb6283d074823a9cde0683b49bf",
+    "Graphics/Character Sprites/Npcs/4dir/carol.png": "58a91f79e495c3475564a3afda1364ee768b8c2b94ed54122e50acfac7928bbb",
+    "Graphics/Character Sprites/Npcs/4dir/coolguy.png": "194b08fd405194890d18c0aeb631f7aa5d27acdb0025cd54331558381de2533e",
+    "Graphics/Character Sprites/Npcs/4dir/disguisedzombie.png": "f88c96033a98a18e7d4ea19754b0312ec3bc9f7650cb514a775839188ea36e9d",
+    "Graphics/Character Sprites/Npcs/4dir/dogstray.png": "12971c1bc182ce497f22f865e96a035335c45bbfb104c31d91570ce8b54e5f2f",
+    "Graphics/Character Sprites/Npcs/4dir/elephant.png": "0bd6629afb82a87c257b51c8422153e90fd3569300bfcd3b52e9e21ec8540884",
+    "Graphics/Character Sprites/Npcs/4dir/fatlady.png": "de84b07065d5c57db215ae70dc948b49c78bcbe18ff0c96a48271975c37f2755",
+    "Graphics/Character Sprites/Npcs/4dir/glasseslady.png": "c5f50380d71e7e3c0efbd9d5f12ea5668d26eab51539b06b4c3974013cae9354",
+    "Graphics/Character Sprites/Npcs/4dir/gorilla.png": "602eb11d15a3de97c1b16ed670b17b54b2a9513cc97fda3142ae18debcd729f7",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/hoodperson.png": "5b4a16b78f763696f0a8a462fa74f104f604618972c5508c6a8eba5861a184ea",
+    "Graphics/Character Sprites/Npcs/4dir/hyena.png": "5186539ef7a433e7d0672eb2454fc5c4b0b0a08f70402f7214fc739b23b16e3b",
+    "Graphics/Character Sprites/Npcs/4dir/maskedguy.png": "83c03d9e2849f9a67ece1a6db51e74e3350341fc291e0b187d454f03452a3f55",
+    "Graphics/Character Sprites/Npcs/4dir/messygirl.png": "3abea745e7efea378d532c83c9a63df460e5dde9175c70ca2f9e8d3d5c74c1d3",
+    "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9",
+    "Graphics/Character Sprites/Npcs/4dir/mimmie.png": "92cc5589bfe0ad56cd4f0e884952f2d3bc923ac57638fe657b7ea9c689a530e1",
+    "Graphics/Character Sprites/Npcs/4dir/minnie.png": "55ede50937e2511bfa27a88ce4660040c2e140886ee107be9260cb830be5338a",
+    "Graphics/Character Sprites/Npcs/4dir/monkey.png": "0d70b602fc7d2a920e3014f5ea2ab665ad4dbd4f6876a541fc2518b2c3851b1f",
+    "Graphics/Character Sprites/Npcs/4dir/mouse.png": "e738637c77315d8c16ddde247b8db31af6cf0a0b3fe75bb70f90b8ca7c8e0d02",
+    "Graphics/Character Sprites/Npcs/4dir/mustacheguy.png": "5e19bc1bfd014230ba299e0ce39784562e2815a3c9ae4c8e8849a39c0aad39ce",
+    "Graphics/Character Sprites/Npcs/4dir/npc.png": "172e56347394a281ba7af742d01848a73926ea493b7dacd563215f59bf46fee6",
+    "Graphics/Character Sprites/Npcs/4dir/oldhatman.png": "d77eb08ab03f3e5f1794c705a7e09711c6f6c8df89cfe955466b24124bc6131c",
+    "Graphics/Character Sprites/Npcs/4dir/oldlady.png": "8b07faf532dd1a53b19c86cfddae9f06c3a272d185927fcea85d14de333994c2",
+    "Graphics/Character Sprites/Npcs/4dir/oldredman.png": "64ccbb39711b365103a9912f83a37956f1e3e968fe7a55a0912bb5794a92534b",
+    "Graphics/Character Sprites/Npcs/4dir/pippismom.png": "46fcad47e02f19dc92601d47a6bd702db1c71f38bf2422cf043f0fde91dc43e7",
+    "Graphics/Character Sprites/Npcs/4dir/policeofficer.png": "fa5600004a08992b2cb2006af3a0a092fd45a849467537ac1873f23f39249828",
+    "Graphics/Character Sprites/Npcs/4dir/pseudozombie.png": "f9d6c3784dab61bfdbcb509d78b3bda1ed805e02438cbcdc546f8d51e91d9d2c",
+    "Graphics/Character Sprites/Npcs/4dir/suitguy.png": "f4c9bf5dbec50343e9bab55895e44b59e9b660c4475f71f686f3e64414b1eda2",
+    "Graphics/Character Sprites/Npcs/4dir/suitwoman.png": "349060c9f16cfe8d28ebb8601fee58b96e6fefdba43d3ba47b2097bf57969052",
+    "Graphics/Character Sprites/Npcs/4dir/tiger.png": "6dc4789cd2fbef1cdb28d83a6efe5ec45c6eef1d3eb0f4b8d0ac94d43c3e10f9",
+    "Graphics/Character Sprites/Npcs/4dir/wallyblue.png": "d19c586f698c5a901284aa7a42468c1c6c9008ab44db5df751c83eec209b9172",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Pippi/main.png": "552eaf3a8fa668afe0d3a8bd12ac13b70cf4312fef57a14f8cc8ef254196164f",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/FloorReflector.gd": "a6e09679940ecb8ded44eb498fa725e9561c97830aca1d844aa0ae33e3ba0d92",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_reflection.gd": "34e5f8de756140cf4e2737d93201edc629457d7f605bd79397bf38fb67b7a38a",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70"
+  },
+  "provenance": {
+    "native_export_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+    "source_receipt_sha256": "e02373cf52bd5426aa48d88b26fda3fdab9a21987cc42efeb391a29f48bf44f0",
+    "source_files": {
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+      "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+      "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+      "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+      "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+      "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+      "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+      "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+      "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+      "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+      "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+      "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+      "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+      "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+      "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+      "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+      "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+      "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+      "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+      "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+      "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+      "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+      "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+      "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+      "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+      "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+      "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+      "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+      "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+      "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+      "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+      "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+      "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+      "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+      "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+      "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+      "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+      "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+      "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+      "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+      "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+      "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+      "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+      "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+      "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+      "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+      "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+      "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+      "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+      "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+      "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+      "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+      "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+      "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+      "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+      "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+      "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+      "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+      "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+      "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+      "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+      "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+      "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+      "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+      "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+      "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+      "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+      "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+      "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+      "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70"
+    }
+  },
+  "semantics": [
+    "All 67 CharacterSprite and 83 Fetcher source postorder Ready bindings; no RNG",
+    "Character Ready always creates an AnimationTree; one actual child initializes 4dir before parent setup",
+    "Parent NPC checked set_sprite, set_animation, set_spritesheet, set_sprite_offset order; no second animation VM",
+    "Directional tags append across rebuilds; unknown travel is the explicit source no-op",
+    "Spritesheet auto Y offset truncates and YAML offset adds to current offset; sprite_changed synchronously invokes source emotes connection",
+    "Fetcher resolves nullable target at onready and re-queries a checked current scene every process; absence queues only valid reflection for deferred deletion",
+    "Podunk root FloorReflector absence proved by complete official 8686-node native export; reflective scene requires all explicit typed Host lifecycle callbacks"
+  ],
+  "unsupported": [
+    "Dynamic BasicEnemy/actor factories require a separate complete native postorder/source template admission",
+    "FloorReflector material/reflection draw implementation is an explicit external Host dependency for reflective scenes, never admitted through the Podunk absence fact"
+  ],
+  "unverified": [
+    "Manual tests written, not run",
+    "3DS integration, emulator and hardware pending"
+  ]
+}

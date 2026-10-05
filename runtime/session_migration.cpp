@@ -40,24 +40,40 @@ bool prepare_current(const NativeSessionData&data,RoomView room,HouseView house,
 
 bool SessionMigrationData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>migration_max_bytes)return fail(e,"Session migration pack size rejected");
- if(std::memcmp(p,"ENCMIG01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1)return fail(e,"Session migration schema/size/capability rejected");
+ const auto schema=u32(p+8),cap=u32(p+20);
+ if(std::memcmp(p,"ENCMIG01",8)||u32(p+12)!=n||!((schema==1&&cap==1)||(schema==2&&cap==2)))return fail(e,"Session migration schema/size/capability rejected");
  if(crc(p+24,n-24)!=u32(p+16))return fail(e,"Session migration CRC mismatch");
- Reader r{p+24,n-24};SessionMigrationData next;const auto from=r.identity();next.target_=r.identity();
- // Revision numbers describe this one migration mechanism. Content identities
- // and all game rules/defaults remain in the externally reviewed bundle.
- if(!from.content_family||!from.content_revision||from.rules_revision!=6||next.target_.rules_revision!=7||from.content_family!=next.target_.content_family||from.content_revision!=next.target_.content_revision)return fail(e,"Session migration transition is not reviewed rules6 to rules7");
- next.house_=std::make_unique<HouseData>();next.round_=std::make_unique<BattleRoundData>();next.items_=std::make_unique<ItemData>();
- if(!r.pack(next.legacy_,e)||!r.pack(next.room_,e)||!r.pack(*next.house_,e)||!r.pack(*next.round_,e)||!r.pack(*next.items_,e))return false;
+ Reader r{p+24,n-24};SessionMigrationData next;uint32_t count=1;SessionSaveCompatibility first;
+ if(schema==1){first=r.identity();next.target_=r.identity();}
+ else{count=r.number();next.target_=r.identity();if(count!=2)return fail(e,"Session migration exact historical coverage rejected");}
+ if(!next.target_.content_family||!next.target_.content_revision||next.target_.rules_revision!=(schema==1?7u:8u))return fail(e,"Session migration target transition not reviewed");
+ for(uint32_t i=0;i<count;++i){const auto from=schema==1?first:r.identity();
+  if(!r.ok||from.content_family!=next.target_.content_family||from.content_revision!=next.target_.content_revision||from.rules_revision!=6+i)return fail(e,"Session migration historical endpoint mismatch");
+  auto bundle=std::make_unique<Bundle>();bundle->house=std::make_unique<HouseData>();bundle->round=std::make_unique<BattleRoundData>();bundle->items=std::make_unique<ItemData>();
+  if(!r.pack(bundle->legacy,e)||!r.pack(bundle->room,e)||!r.pack(*bundle->house,e)||!r.pack(*bundle->round,e)||!r.pack(*bundle->items,e))return false;
+  if(!same(from,bundle->legacy.compatibility()))return fail(e,"Session migration nested identity mismatch");
+  if(!validate_native_session_snapshot(bundle->legacy,bundle->room.view(),bundle->house->view(),bundle->round->view(),bundle->items->view(),bundle->legacy.defaults(),e))return false;
+  next.bundles_.push_back(std::move(bundle));
+ }
  if(!r.ok||r.n)return fail(e,"Session migration malformed/trailing payload");
- if(!same(from,next.legacy_.compatibility()))return fail(e,"Session migration legacy identity mismatch");
- if(!validate_native_session_snapshot(next.legacy_,next.room_.view(),next.house_->view(),next.round_->view(),next.items_->view(),next.legacy_.defaults(),e))return false;
  next.valid_=true;*this=std::move(next);e.clear();return true;
 }
 bool SessionMigrationData::load_file(const char*path,std::string&e){std::vector<uint8_t>bytes;return read_bytes(path,migration_max_bytes,bytes,e)&&load(bytes.data(),bytes.size(),e);}
-bool SessionMigrationData::validate_legacy(const SessionSnapshot&s,std::string&e)const{
- if(!valid())return fail(e,"Session migration requires a checked legacy bundle");
- if(!validate_native_session_snapshot(legacy_,room_.view(),house_->view(),round_->view(),items_->view(),s,e)){e="Legacy save outside reviewed rules6 scope: "+e;return false;}return true;
+bool SessionMigrationData::validate_legacy(const SessionSnapshot&s,std::string&e,size_t index)const{
+ if(!valid()||index>=bundles_.size())return fail(e,"Session migration requires an exact checked legacy bundle");
+ const auto&b=*bundles_[index];
+ if(!validate_native_session_snapshot(b.legacy,b.room.view(),b.house->view(),b.round->view(),b.items->view(),s,e)){e="Legacy save outside exact frozen domain: "+e;return false;}return true;
 }
+bool SessionMigrationData::decode_legacy(const uint8_t*p,size_t n,SessionSnapshot&out,std::string&e)const{
+ if(!valid())return fail(e,"Session migration historical bundle unavailable");
+ for(size_t i=0;i<bundles_.size();++i){SessionSnapshot next;if(!decode_session_save(p,n,legacy_compatibility(i),next,e))continue;
+  // Matching identity may never fall through to another, broader domain.
+  if(!validate_legacy(next,e,i))return false;
+  out=std::move(next);e.clear();return true;
+ }
+ e="Save rejected by all exact historical decoders: "+e;return false;
+}
+
 bool prepare_compatible_session_restore(const uint8_t*p,size_t n,
  const SessionMigrationData&migration,const NativeSessionData&data,RoomView room,
  HouseView house,RoundView round,ItemView items,BattleView font,
@@ -66,8 +82,7 @@ bool prepare_compatible_session_restore(const uint8_t*p,size_t n,
  if(decode_session_save(p,n,data.compatibility(),snapshot,e))
   return prepare_current(data,room,house,round,items,font,snapshot,out,e,migrated,false);
  if(!migration.valid()||!same(migration.target_compatibility(),data.compatibility()))return fail(e,"Session migration target compatibility unavailable");
- if(!decode_session_save(p,n,migration.legacy_compatibility(),snapshot,e)){e="Save rejected by current and exact legacy decoders: "+e;return false;}
- if(!migration.validate_legacy(snapshot,e))return false;
+ if(!migration.decode_legacy(p,n,snapshot,e))return false;
  return prepare_current(data,room,house,round,items,font,snapshot,out,e,migrated,true);
 }
 bool read_compatible_session_restore(const char*path,const char*migration_path,

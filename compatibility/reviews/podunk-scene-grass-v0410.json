@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "ir_sha256": "7bacafa3b41b72afaf11818d6b635f5cdb08be1892bee516558ce27746a9acc9",
+  "native_compatible": false,
+  "scope": "Complete source bindings, grass mechanism only; full Podunk scene activation remains blocked",
+  "grass_sources": {
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0"
+  },
+  "source_counts": {
+    "native_nodes": 8686,
+    "tilemaps": 44,
+    "cells": 173211,
+    "script_bindings": 2157
+  },
+  "implemented": [
+    "source postorder grass Ready with shared global seed + two randi calls",
+    "exact source texture variants, notifier geometry and sprite frames",
+    "instanced Area overlap identity, idle timer, concurrent tweens and deferred deletion",
+    "source-owned frame sampling supplied to native renderer"
+  ],
+  "pending": [
+    "1099 remaining script bindings",
+    "complete tile/collision/actor/door field rendering",
+    "native scene activation and devices"
+  ],
+  "runtime_json": false,
+  "tests": "Manual source added; not run",
+  "profile_bytes": 120
+}

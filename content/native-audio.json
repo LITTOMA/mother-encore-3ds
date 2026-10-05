@@ -222,6 +222,62 @@
       "import_sha256": "df0147fca63e74e0d110b0b47df9acb78a8752c1a643a5dd3a982b4b245f0567",
       "pcm_path": "sound/effects/item-consume.pcm",
       "gain_db": 0
+    },
+    {
+      "stable_id": 1801,
+      "source_path": "res://Audio/Sound effects/M3/Woof Woof!.wav",
+      "source_sha256": "d68a7b6acc856d591bbaa5e2304f2850adb8ed04f77f4d3cae99605b8bd8ff24",
+      "import_sha256": "52c407a76899b15653559e9c33b65cdf0486e72806fe7cbef3fd25351f284d57",
+      "pcm_path": "sound/effects/mick-woof.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1802,
+      "source_path": "res://Audio/Sound effects/M3/Dog_whining.wav",
+      "source_sha256": "e472611c9399ef97d628f31f2bd81dd5cc8ba4ede703ac117c15e985128b7c17",
+      "import_sha256": "4c3f61c94e830a5014f1d95096bbfe7d90b8eed09a59de0c91625e0e3debd08e",
+      "pcm_path": "sound/effects/mick-whining.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1803,
+      "source_path": "res://Audio/Sound effects/M3/Learned PSI.wav",
+      "source_sha256": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04",
+      "import_sha256": "b7c2531943d39eef28e9d75af3adc510e974bc87e9e503d562cbf654e746de88",
+      "pcm_path": "sound/effects/learned-psi.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1804,
+      "source_path": "res://Audio/Sound effects/text/Female.mp3",
+      "source_sha256": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+      "import_sha256": "d82f217dff6f00a7bb65119d02459901999c3ea9a386e91ea37f20b0a2429d7c",
+      "pcm_path": "sound/effects/text-female.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1805,
+      "source_path": "res://Audio/Sound effects/Gift Box.mp3",
+      "source_sha256": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "import_sha256": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+      "pcm_path": "sound/effects/present-unwrapped.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1806,
+      "source_path": "res://Audio/Music/Good_Morning.mp3",
+      "source_sha256": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+      "import_sha256": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
+      "pcm_path": "sound/music/good-morning.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 2714075995,
+      "source_path": "res://Audio/Sound effects/EB/heal 1.wav",
+      "source_sha256": "77b3c37bd00af37b736c203855e5c2908dbcfcbae11d0e097e1025f53fff5e36",
+      "import_sha256": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
+      "pcm_path": "sound/effects/field-psi-heal.pcm",
+      "gain_db": 0
     }
   ]
 }

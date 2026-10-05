@@ -21,8 +21,13 @@ bool FieldEquipmentMenu::resume_items_checked(){
  if(!read_snapshot())return false;
  preview_=snapshot_.stats;items_request_=items_suspended_=false;retarget_cursor(true);error_.clear();return true;
 }
+bool FieldEquipmentMenu::resume_psi_checked(){
+ if(!psi_suspended_||items_suspended_||phase_!=FieldEquipmentPhase::Pause||data_.command(command_).action()!=FieldCommandAction::Psi)return fail("Field PSI return state rejected");
+ if(!read_snapshot())return false;
+ preview_=snapshot_.stats;psi_request_=psi_suspended_=false;retarget_cursor(true);error_.clear();return true;
+}
 bool FieldEquipmentMenu::initialize(FieldEquipmentView data,FieldEquipmentHost host,bool chinese){if(!data.valid()||!host.read||!host.preview||!host.commit)return fail("Field equipment requires checked content/host");FieldEquipmentMenu next;next.data_=data;next.host_=std::move(host);next.chinese_=chinese;if(!next.read_snapshot())return fail(next.error());next.preview_=next.snapshot_.stats;*this=std::move(next);return true;}
-bool FieldEquipmentMenu::open(){if(!data_.valid()||!host_.read||active())return fail("Field equipment open state rejected");if(!read_snapshot())return false;command_=slot_=candidate_=offset_=0;items_request_=items_suspended_=false;candidates_.clear();preview_=snapshot_.stats;phase_=FieldEquipmentPhase::PauseOpening;phase_time_=pause_time_=equip_time_=description_time_=0;description_open_=equip_closing_=has_description_=false;description_from_=description_to_=0;cursor_time_=0;retarget_cursor(true);sounds_.clear();sounds_.push_back(FieldEquipmentSound::PauseOpen);error_.clear();return true;}
+bool FieldEquipmentMenu::open(){if(!data_.valid()||!host_.read||active())return fail("Field equipment open state rejected");if(!read_snapshot())return false;command_=slot_=candidate_=offset_=0;items_request_=items_suspended_=psi_request_=psi_suspended_=false;candidates_.clear();preview_=snapshot_.stats;phase_=FieldEquipmentPhase::PauseOpening;phase_time_=pause_time_=equip_time_=description_time_=0;description_open_=equip_closing_=has_description_=false;description_from_=description_to_=0;cursor_time_=0;retarget_cursor(true);sounds_.clear();sounds_.push_back(FieldEquipmentSound::PauseOpen);error_.clear();return true;}
 bool FieldEquipmentMenu::equipment_visible()const{return equip_closing_||phase_==FieldEquipmentPhase::EquipOpening||phase_==FieldEquipmentPhase::Slots||phase_==FieldEquipmentPhase::Candidates;}
 const ItemInstance*FieldEquipmentMenu::equipped_item(uint32_t slot)const{for(const auto&i:snapshot_.inventory.instances())if(i.equipped)for(uint32_t j=0;j<data_.count(FieldSection::Equipment);++j){auto e=data_.equipment(j);if(e.definition==i.definition&&e.slot==slot)return &i;}return nullptr;}
 const ItemInstance*FieldEquipmentMenu::selected_item()const{if(phase_==FieldEquipmentPhase::Candidates)return candidate_<candidates_.size()&&!candidates_[candidate_].none?&candidates_[candidate_].item:nullptr;if(phase_==FieldEquipmentPhase::Slots||phase_==FieldEquipmentPhase::EquipOpening)return equipped_item(slot_);return nullptr;}
@@ -45,12 +50,12 @@ bool FieldEquipmentMenu::enter_candidates(){
 }
 bool FieldEquipmentMenu::input(int x,int y,bool confirm,bool cancel,bool scope,bool pause_toggle){
  if(x<-1||x>1||y<-1||y>1)return fail("Field equipment direction rejected");if(!active())return true;
- if(phase_==FieldEquipmentPhase::PauseClosing||items_suspended_)return true;
+ if(phase_==FieldEquipmentPhase::PauseClosing||items_suspended_||psi_suspended_)return true;
  if(phase_==FieldEquipmentPhase::Pause||phase_==FieldEquipmentPhase::PauseOpening){
   if(cancel||pause_toggle){phase_=FieldEquipmentPhase::PauseClosing;pause_time_=phase_time_=0;sounds_.push_back(FieldEquipmentSound::PauseClose);return true;}
   if(phase_==FieldEquipmentPhase::PauseOpening)return true;
   if(y||x){auto columns=uint32_t(data_.parameter(FieldParameter::PauseColumns)),rows=data_.count(FieldSection::Commands)/columns;auto row=int(command_/columns),col=int(command_%columns);if(y)row=(row+y+int(rows))%int(rows);else col=(col+x+int(columns))%int(columns);auto next=uint32_t(row)*columns+uint32_t(col);if(next!=command_){command_=next;retarget_cursor();sounds_.push_back(FieldEquipmentSound::Move);}}
-  if(confirm){const auto action=data_.command(command_).action();if(action==FieldCommandAction::Restricted){sounds_.push_back(FieldEquipmentSound::Restricted);return true;}if(!read_snapshot())return false;if(action==FieldCommandAction::Items){items_request_=items_suspended_=true;return true;}if(action!=FieldCommandAction::Equip)return fail("Unknown checked Pause command operation");phase_=FieldEquipmentPhase::EquipOpening;phase_time_=equip_time_=0;equip_closing_=false;slot_=candidate_=offset_=0;preview_=snapshot_.stats;retarget_cursor(true);update_description();sounds_.push_back(FieldEquipmentSound::EquipOpen);}return true;
+  if(confirm){const auto action=data_.command(command_).action();if(action==FieldCommandAction::Restricted){sounds_.push_back(FieldEquipmentSound::Restricted);return true;}if(!read_snapshot())return false;if(action==FieldCommandAction::Items){items_request_=items_suspended_=true;return true;}if(action==FieldCommandAction::Psi){psi_request_=psi_suspended_=true;return true;}if(action!=FieldCommandAction::Equip)return fail("Unknown checked Pause command operation");phase_=FieldEquipmentPhase::EquipOpening;phase_time_=equip_time_=0;equip_closing_=false;slot_=candidate_=offset_=0;preview_=snapshot_.stats;retarget_cursor(true);update_description();sounds_.push_back(FieldEquipmentSound::EquipOpen);}return true;
  }
  if(phase_!=FieldEquipmentPhase::EquipOpening&&phase_!=FieldEquipmentPhase::Slots&&phase_!=FieldEquipmentPhase::Candidates)return fail("Field equipment unknown active phase");
  if(cancel){if(phase_==FieldEquipmentPhase::Candidates){phase_=FieldEquipmentPhase::Slots;candidates_.clear();candidate_=offset_=0;retarget_cursor(true);sounds_.push_back(FieldEquipmentSound::Back);return update_preview();}

@@ -2,12 +2,13 @@
 """Source-pinned EBMain remaps; native Godot advances, lossless LA8 pages.
 Does not modify upstream, source ASCII atlas, or locale translations.
 """
-import argparse, collections, hashlib, json, os, re, shutil, struct, subprocess, zlib
+import argparse, collections, hashlib, json, os, re, shutil, struct, subprocess, sys, zlib
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, features, __version__ as pillow_version
 from fontTools import __version__ as fonttools_version
 from fontTools.ttLib import TTFont
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 PAGE=256
 HEADER=struct.Struct('<8s6I')
 
@@ -74,6 +75,15 @@ def compile_fonts(args):
             text=row['values'].get(locale['code'],'') or row['values'].get('en','')
             cps=scalar_text(text);groups[p].update(cps)
             if row['key'] in bindings: priority[p].update(cps)
+    # PSI level symbols are literal source labels outside the CSV catalogue.
+    # Number labels retain the existing BottleRocket renderer and ASCII atlas.
+    from tools.field_psi import font_bindings,load as psi_load
+    psi=psi_load();extra=font_bindings()
+    if psi['source_font'] not in review['sources']:raise ValueError('Unreviewed PSI text font')
+    number=extra.pop(psi['number_font'])
+    if any(any(ord(c)>126 or ord(c)<32 for c in text)for text in number):raise ValueError('PSI number label requires unadmitted glyph')
+    cps=set().union(*(scalar_text(text)for texts in extra.values()for text in texts))
+    for p in groups:groups[p].update(cps)
     requests=[];cmaps={};credits={};chains={}
     for path,cps in groups.items():
         if path not in review['sources']: raise ValueError('Font role is not reviewed: '+path)
@@ -133,7 +143,7 @@ def compile_fonts(args):
     for g in all_glyphs:payload.extend(struct.pack('<6I3f',*(g[k] for k in ('codepoint','page','u','v','width','height','advance','offset_x','offset_y'))))
     binary=HEADER.pack(b'ENCFONT\0',1,len(payload),zlib.crc32(payload),len(faces),len(pages),len(all_glyphs))+payload
     target=out/'source-fonts.encfont';target.write_bytes(binary)
-    receipt={'schema':1,'review':review,'catalog_sha256':sha(cat),'generator_sha256':sha(__file__),'godot_sha256':sha(args.godot),'tex3ds_sha256':sha(args.tex3ds),'pillow_version':pillow_version,'freetype_version':features.version_module('freetype2'),'fonttools_version':fonttools_version,'metrics':metrics,'faces':faces,'pages':pages,'glyphs':all_glyphs,'missing_source_glyphs':missing,'font_embedded_notices':credits,'binary':{'path':target.name,'sha256':sha(target),'bytes':len(binary)},'limits':'EBMain role only; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.'}
+    receipt={'schema':1,'field_psi_sha256':sha(ROOT/'content/native-field-psi.json'),'review':review,'catalog_sha256':sha(cat),'generator_sha256':sha(__file__),'godot_sha256':sha(args.godot),'tex3ds_sha256':sha(args.tex3ds),'pillow_version':pillow_version,'freetype_version':features.version_module('freetype2'),'fonttools_version':fonttools_version,'metrics':metrics,'faces':faces,'pages':pages,'glyphs':all_glyphs,'missing_source_glyphs':missing,'font_embedded_notices':credits,'binary':{'path':target.name,'sha256':sha(target),'bytes':len(binary)},'limits':'EBMain role only; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.'}
     receipt_path=ROOT/'content/asset-receipts/fonts/source.json'
     receipt_path.parent.mkdir(parents=True,exist_ok=True)
     dump(receipt_path,receipt)
@@ -162,6 +172,7 @@ def stage_files(root):
     manifest=json.loads((ROOT/'content/asset-receipts/fonts/source.json').read_bytes())
     if manifest.get('schema')!=1 or manifest.get('review')!=review:
         raise ValueError('Source font manifest review changed')
+    if manifest.get('field_psi_sha256')!=sha(ROOT/'content/native-field-psi.json'):raise ValueError('Source font PSI labels changed; regenerate assets')
     if manifest.get('generator_sha256')!=sha(__file__):
         raise ValueError('Source font generator changed; regenerate assets')
     if manifest.get('catalog_sha256')!=sha(ROOT/'content/native-localization.json'):

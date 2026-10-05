@@ -5,12 +5,12 @@
 
 namespace encore::ctr {
 enum class MusicPreparationStep:uint8_t {Progress,Ready,Failed};
-// Separate, opt-in adapter. Existing AudioPlayer owns NDSP, channels0..3 and
-// global master volume. This object uses only channels4..19 and must shut down
+// Separate, opt-in adapter. Existing AudioPlayer owns NDSP, channels0..5 and
+// global master volume. This object uses only channels6..21 and must shut down
 // before that NDSP owner. It never initializes, exits, or reconfigures NDSP.
 class MusicRegionPlayer {
 public:
- static constexpr uint32_t first_channel=4,maximum_voices=16;
+ static constexpr uint32_t first_channel=6,maximum_voices=16;
  MusicRegionPlayer()=default;~MusicRegionPlayer(){shutdown();}
  MusicRegionPlayer(const MusicRegionPlayer&)=delete;
  MusicRegionPlayer&operator=(const MusicRegionPlayer&)=delete;

@@ -28,11 +28,15 @@ Introduction 的音乐、文字音和动画音效在动画开始前一次性校�
 
 Minnie 在玩偶胜利后的原版 Storage 选择已接入双栏仓库：帽子和已领取喷雾转移保留 UID，装备确认同步角色属性，Record／LOAD 保留实际仓库。独立 `.encstorage` 承载规则与布局；Room 能力 8 增加受检子菜单回调而保持游戏规则 7，Session v5 支持库存守恒和装备派生属性。已支持的帽子与喷雾富文本描述已接入；物品使用与少量装饰仍未完成，详见 [Minnie 仓库](MINNIE_STORAGE.md)。
 
-自由行走时按 START 打开原版六项 Pause 菜单；当前开放 Goods 的喷雾使用与 Equip。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
+自由行走时按 START 打开原版六项 Pause 菜单；当前开放 Goods 的喷雾使用、Equip 和来源 PSI 菜单。PSI 使用实际已学习技能与物品授予技能，显示原版技能、说明与 PP；LifeUpA 以原版 PP、HP、IQ 和同一共享随机流提交治疗。Telepathy 的目标射线、对象思考与场景演出尚未全部准入，当前使用前明确拒绝且不扣 PP。四个原版装备槽使用实际背包 UID，帽子 / None 选择显示七项属性预览，确认才提交库存与派生属性；Record / LOAD 沿用现有装备身份。来源、限制与设备验收步骤见 [野外装备菜单](FIELD_EQUIPMENT.md)。
 
 具体范围见 [启动设置](STARTUP_SETTINGS_CHECKPOINT.md)、[多语言运行时](MULTILINGUAL_RUNTIME.md)、[Continue / LOAD](CONTINUE_LOAD.md) 和 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md) 和 [房屋后续调查与对话](HOUSE_FOLLOWUP.md)。
 
 Doll 的正常战斗画面已接入受检纹理后端：GPU 直接采样两层径向背景并重建有限调色板混合，不生成整帧 CPU 颜色图。后续性能修复将来源图像的旋转同色区域证明接入纹理消费者，直接输出两层原始索引区段，取消该路径的逐条带递归证书和 576 KB 残差表；帧常量及代表采样坐标预先缓存，统计按行汇总。下屏显示 `GPU index runs`、实际绘制区段、次数、CPU 准备 / 提交耗时和采样数。原始缩放、时间、调色板及边界精确后备保持原有行为，Pillow 路径沿用既有后端。真实 Doll 资源的私有主机计量已见 CPU 耗时下降；新构建的模拟器帧率和真机表现尚未验收，见 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md)。
+
+地下室门的保留钥匙、日记 Present、原版睡梦 / LifeUpA 学习图已接入 House / Room 消费者；独立资源承载剧情、特殊人物帧、Sparkles 和 Poltergeist / Good Morning 音乐区域。Session v7 保存实际钥匙 UID、技能和旗标；历史 rules6→7 和 rules7→8 的精确资源身份有独立受检转换。正常领取地下室钥匙需要波克顿屋外的 Mick 交互，因此整个“出门 → Mick → 地下室”流程目前仍未贯通。
+
+完整波克顿地图已经提取独立图层、原生碰撞几何、NPC、敌人、Sprite / Tint、Emotes、草地、Dandelion、门、ButtonPrompt 与 DeadBush 来源资源及运行消费者。完整 2,157 项脚本 Ready 顺序保留；314 个未知叶实例、19 个 Flaggable 派生实例及部分效果 / 剧情依赖仍阻断正式场景准入。这些模块尚未接成实际可玩的波克顿；当前打包只包含已接入 House 的资源。ButtonPrompt 使用来源字体布局和实际 tex3ds 纹理独立绘制 Label / Arrow，保留 Show / Float / Hide / Press、来源信号和设置。
 
 ## 未完成项
 

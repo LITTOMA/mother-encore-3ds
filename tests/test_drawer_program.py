@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Manual-only source graph and ENCDRP01 admission negative coverage."""
-import copy, json, struct, sys, unittest, zlib
+import copy, json, struct, sys, tempfile, unittest, zlib
 from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from tools.drawer_program import ROOT, IR, PATH, SOUND, PIN, HEADER, encode,parse_pack,lower,commands_for,text_segments,validate_document
 from tools.drawer_item import IR as ITEM_IR, OUTPUT, append_item,validate_item,validate_description
+from tools.drawer_audio import bindings as audio_bindings
 
 class DrawerProgramTests(unittest.TestCase):
     def fixture(self):
@@ -103,5 +104,55 @@ class DrawerProgramTests(unittest.TestCase):
             self.assertEqual(definition['description'],item['translations']['en']['description'])
             self.assertEqual(definition['icon'],1)
             with self.assertRaises(ValueError):append_item(Ex(),out)
+
+    def audio_config(self):
+        return dict(schema=1,kind='encore.drawer-audio.source-binding',commit=PIN,license_review='Fixture source licence review',
+                    assets=[dict(source=SOUND,identity=dict(kind='stable',value=1401),pcm='sound/effects/item-received.pcm',gain_db=0.0,conversion=None)])
+
+    def admit_audio(self,config,source_ir=None):
+        ir=source_ir or dict(commit=PIN,commands=[dict(opcode='PlaySound',a=SOUND)],sources={SOUND:'1'*64,SOUND+'.import':'2'*64})
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'content').mkdir()
+            (root/'content/drawer-audio-binding.json').write_text(json.dumps(config),encoding='utf-8')
+            with patch('tools.drawer_audio.load',return_value=ir):return audio_bindings(root)
+
+    def test_audio_checked_source_binding_and_integer_gain(self):
+        config=self.audio_config();self.assertEqual(self.admit_audio(config),config['assets'])
+        config['assets'][0]['gain_db']=0;self.assertEqual(self.admit_audio(config),config['assets'])
+
+    def test_audio_unknown_fields_versions_and_missing_coverage(self):
+        changes=[lambda c:c.update(extra=1),lambda c:c.update(schema=2),lambda c:c.update(schema=True),
+                 lambda c:c.update(kind='unknown'),lambda c:c.update(commit='0'*40),lambda c:c.update(license_review=True),
+                 lambda c:c.update(license_review=' '),lambda c:c.update(assets=[]),lambda c:c.update(assets=True),
+                 lambda c:c['assets'][0].update(extra=1),lambda c:c['assets'][0]['identity'].update(extra=1)]
+        for i,change in enumerate(changes):
+            config=self.audio_config();change(config)
+            with self.subTest(case=i),self.assertRaises(ValueError):self.admit_audio(config)
+        ir=dict(commit=PIN,commands=[dict(opcode='PlaySound',a=SOUND)],sources={SOUND:'1'*64})
+        with self.assertRaises(ValueError):self.admit_audio(self.audio_config(),ir)
+
+    def test_audio_source_identity_duplication_and_unknown_sound(self):
+        for source in ('Audio/Sound effects/Unknown.mp3','Audio/../Sound effects/Item Received.mp3',True,1401,['invalid']):
+            config=self.audio_config();config['assets'][0]['source']=source
+            with self.subTest(source=source),self.assertRaises(ValueError):self.admit_audio(config)
+        for value in (True,1.0,0,-1,2**32,'1401'):
+            config=self.audio_config();config['assets'][0]['identity']['value']=value
+            with self.subTest(value=value),self.assertRaises(ValueError):self.admit_audio(config)
+        config=self.audio_config();config['assets'].append(copy.deepcopy(config['assets'][0]))
+        with self.assertRaises(ValueError):self.admit_audio(config)
+        config=self.audio_config();config['assets'][0]['identity']['kind']='path'
+        with self.assertRaises(ValueError):self.admit_audio(config)
+
+    def test_audio_conversion_gain_and_destination_fail_closed(self):
+        for conversion in (False,0,'pcm16',{},dict(sample_rate=8000)):
+            config=self.audio_config();config['assets'][0]['conversion']=conversion
+            with self.subTest(conversion=conversion),self.assertRaises(ValueError):self.admit_audio(config)
+        for gain in (False,True,1.0,'0',None):
+            config=self.audio_config();config['assets'][0]['gain_db']=gain
+            with self.subTest(gain=gain),self.assertRaises(ValueError):self.admit_audio(config)
+        for pcm in ('sound/effects/../item.pcm','sound/effects//item.pcm','sound/effects/./item.pcm','/sound/effects/item.pcm',
+                    'sound/effects/item.wav','sound/music/item.pcm','sound/effects/bad\n.pcm','sound/effects/item\\file.pcm',True,0,None):
+            config=self.audio_config();config['assets'][0]['pcm']=pcm
+            with self.subTest(pcm=pcm),self.assertRaises(ValueError):self.admit_audio(config)
 
 if __name__=='__main__':unittest.main()

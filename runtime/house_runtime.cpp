@@ -270,11 +270,11 @@ bool HouseRuntime::validate_flag(std::string_view name,std::string&e){
  const auto room=world_->content();for(uint32_t f=0;f<room.flag_count();++f)if(room.string(room.flag(f).name_string)==name){e.clear();return true;}e="Inspection programme flag absent";return false;
 }
 bool HouseRuntime::flag(std::string_view name,bool&value,std::string&e){if(!validate_flag(name,e))return false;value=world_->story_flag(name);return true;}
-bool HouseRuntime::set_flag(std::string_view name,bool value,std::string&e){if(!validate_flag(name,e))return false;if(!world_->set_story_flag(name,value,false)){e="Inspection programme flag write failed";return false;}return true;}
+bool HouseRuntime::set_flag(std::string_view name,bool value,std::string&e){if(!validate_flag(name,e))return false;if(!world_->set_story_flag(name,value,true)){e="Inspection programme flag write failed";return false;}return true;}
 bool HouseRuntime::show_text(uint32_t id,std::string&e){
  if(!validate_text(id,e))return false;
  for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d){const auto text=content_.dialogue(d);if(text.id!=id)continue;
-  if(!presentation_->begin_dialogue(text.first_segment,text.segment_count,player_nickname())){e=presentation_->error();return false;}return true;}
+  if(!presentation_->present_story_dialogue(text.first_segment,text.segment_count,player_nickname())){e=presentation_->error();return false;}return true;}
  e="Inspection programme text absent";return false;
 }
 bool HouseRuntime::bind_inspections(HouseInspectionView candidate){
@@ -518,11 +518,17 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
   else if(!in){if(!door_unpaused_&&old<=door.fade_out_mostly&&fade_time_>door.fade_out_mostly)if(!finish_door())return false;if(fade_time_>=door.fade_out_length){phase_=story_pending()?(story_executing_?HousePhase::StoryRunning:HousePhase::StoryBoundary):HousePhase::Idle;fade_time_=0;}}
  }
  if(phase_==HousePhase::InspectionProgram){
-  presentation_->input(accept,cancel);
-  if(presentation_->dialogue_done()){
-   if(!drawer_runtime_.advance_text(drawer_error_))return fail(drawer_error_.c_str());
-   if(drawer_runtime_.state()==DrawerState::Complete){if(!world_->unpause_from_house())return fail("Inspection programme unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}
+  if(drawer_runtime_.state()==DrawerState::WaitingText){
+   // The source appends subsequent phrases to the existing box. Defer close
+   // until End rather than closing/reopening between the branch and receipt.
+   const bool continues=drawer_.command(drawer_runtime_.pc()).opcode!=uint32_t(DrawerOpcode::End);
+   presentation_->input(accept,cancel,true,continues);
+   if(presentation_->take_dialogue_advance()){
+    if(!drawer_runtime_.advance_text(drawer_error_))return fail(drawer_error_.c_str());
+    if(drawer_runtime_.state()==DrawerState::Complete)presentation_->close_story_dialogue();
+   }
   }
+  if(drawer_runtime_.state()==DrawerState::Complete&&presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Inspection programme unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}
  }
  else if(phase_==HousePhase::Dialogue){presentation_->input(accept,cancel);if(presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Dialogue unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}}
  else if((phase_==HousePhase::Idle||(phase_==HousePhase::DoorFadeOut&&door_unpaused_))&&accept&&!story_dialogue_input)return interact();

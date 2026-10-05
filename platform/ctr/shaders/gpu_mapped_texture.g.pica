@@ -12,7 +12,8 @@
  call corner
  emit
  add r0.x, r0.x, v0.z
- add r1, v1, v2
+ mov r1, v1
+ add r1, r1, v2
  setemit 1
  call corner
  emit
@@ -23,7 +24,8 @@
  call corner
  emit
  add r0.x, r0.x, v0.z
- add r1, v1, v2
+ mov r1, v1
+ add r1, r1, v2
  setemit 0, inv prim
  call corner
  emit

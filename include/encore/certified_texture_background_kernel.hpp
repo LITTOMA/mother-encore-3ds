@@ -71,6 +71,7 @@ private:
             if(x-ex<0||y-ey<0||x+ex>=source.width||y+ey>=source.height)return false;
             const auto xl=uint32_t(x-ex),xh=uint32_t(x+ex),yl=uint32_t(y-ey),yh=uint32_t(y+ey);
             if(xl==xh&&yl==yh)continue;
+            if((xh-xl+1)*(yh-yl+1)>16)return false; // Bound source-index proof work per pixel.
             // A curve can cross a texel boundary without crossing a visible
             // palette region. Admit that rectangle only when every possible
             // source index is identical; no frame color raster is produced.

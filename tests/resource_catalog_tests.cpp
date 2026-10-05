@@ -78,7 +78,25 @@ int main(int argc,char** argv){
  check(!catalog.load_file((fixture_root/"missing.enccatalog").string().c_str(),error),"missing catalog rejected");
  check(catalog.load(blob.data(),blob.size(),error),error);check(catalog.valid(),"loaded catalog valid");
  check(catalog.verify_files(prefix(source_root).c_str(),error),error);
- check(catalog.path(ResourceRole(0)).empty()&&catalog.path(ResourceRole(28)).empty(),"unknown resource roles have no fallback");
+ check(catalog.path(ResourceRole(0)).empty()&&catalog.path(ResourceRole(UINT32_MAX)).empty(),"unknown resource roles have no fallback");
+ // Exercise the consumer lookup for every singleton in the actual checked
+ // catalog, including roots added after Introduction. File verification alone
+ // cannot catch a consumer returning an empty path for a valid resource.
+ size_t root_row=60;unsigned root_bindings=0;
+ for(uint32_t i=0;i<get(blob,52);++i){
+  const auto id=get(blob,root_row),role=get(blob,root_row+4);
+  if(id==role){
+   const auto expected=row_path(blob,root_row);
+   const auto& actual=catalog.path(ResourceRole(role));
+   check(!actual.empty()&&actual==expected,"every admitted singleton resolves its checked startup resource");
+   check(fs::is_regular_file(source_root/actual),"resolved startup resource names an actual RomFS file");
+   ++root_bindings;
+  }
+  root_row+=20+get(blob,root_row+16);
+ }
+ check(root_bindings>=22,"actual root resource consumer coverage is nonempty");
+ check(catalog.path(ResourceRole::EncounterBattle).empty()&&catalog.path(ResourceRole::EncounterRound).empty(),
+       "encounter roles cannot fall back to an arbitrary singleton or encounter path");
  check(catalog.companion_path("unknown.encbattle").empty(),"unknown encounters have no fallback");
  check(catalog.companion_path(catalog.path(ResourceRole::Battle))==catalog.path(ResourceRole::Round),"reviewed root encounter companion is externally bound");
  const auto original_round=catalog.path(ResourceRole::Round);

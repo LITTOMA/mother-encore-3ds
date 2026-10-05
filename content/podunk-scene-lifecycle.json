@@ -14847,7 +14847,7 @@
       "node": "Objects/Critters/bird",
       "name": "bird",
       "ready": 5078,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14857,7 +14857,7 @@
       "node": "Objects/Critters/bird2",
       "name": "bird2",
       "ready": 5086,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14867,7 +14867,7 @@
       "node": "Objects/Critters/bird3",
       "name": "bird3",
       "ready": 5094,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14877,7 +14877,7 @@
       "node": "Objects/Critters/bird4",
       "name": "bird4",
       "ready": 5102,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14887,7 +14887,7 @@
       "node": "Objects/Critters/bird5",
       "name": "bird5",
       "ready": 5110,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14897,7 +14897,7 @@
       "node": "Objects/Critters/bird6",
       "name": "bird6",
       "ready": 5118,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14907,7 +14907,7 @@
       "node": "Objects/Critters/bird7",
       "name": "bird7",
       "ready": 5126,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14917,7 +14917,7 @@
       "node": "Objects/Critters/bird8",
       "name": "bird8",
       "ready": 5134,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14927,7 +14927,7 @@
       "node": "Objects/Critters/bird9",
       "name": "bird9",
       "ready": 5142,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14937,7 +14937,7 @@
       "node": "Objects/Critters/bird10",
       "name": "bird10",
       "ready": 5150,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14947,7 +14947,7 @@
       "node": "Objects/Critters/bird11",
       "name": "bird11",
       "ready": 5158,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14957,7 +14957,7 @@
       "node": "Objects/Critters/bird12",
       "name": "bird12",
       "ready": 5166,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14967,7 +14967,7 @@
       "node": "Objects/Critters/bird13",
       "name": "bird13",
       "ready": 5174,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14977,7 +14977,7 @@
       "node": "Objects/Critters/bird14",
       "name": "bird14",
       "ready": 5182,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14987,7 +14987,7 @@
       "node": "Objects/Critters/bird15",
       "name": "bird15",
       "ready": 5190,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -14997,7 +14997,7 @@
       "node": "Objects/Critters/bird16",
       "name": "bird16",
       "ready": 5198,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15007,7 +15007,7 @@
       "node": "Objects/Critters/bird17",
       "name": "bird17",
       "ready": 5206,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15017,7 +15017,7 @@
       "node": "Objects/Critters/bird18",
       "name": "bird18",
       "ready": 5214,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15027,7 +15027,7 @@
       "node": "Objects/Critters/bird19",
       "name": "bird19",
       "ready": 5222,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15037,7 +15037,7 @@
       "node": "Objects/Critters/bird20",
       "name": "bird20",
       "ready": 5230,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15047,7 +15047,7 @@
       "node": "Objects/Critters/bird21",
       "name": "bird21",
       "ready": 5238,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15057,7 +15057,7 @@
       "node": "Objects/Critters/bird22",
       "name": "bird22",
       "ready": 5246,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15067,7 +15067,7 @@
       "node": "Objects/Critters/bird23",
       "name": "bird23",
       "ready": 5254,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15607,7 +15607,7 @@
       "node": "Objects/Critters/bird24",
       "name": "bird24",
       "ready": 5792,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15617,7 +15617,7 @@
       "node": "Objects/Critters/bird25",
       "name": "bird25",
       "ready": 5800,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15627,7 +15627,7 @@
       "node": "Objects/Critters/bird26",
       "name": "bird26",
       "ready": 5808,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15637,7 +15637,7 @@
       "node": "Objects/Critters/bird27",
       "name": "bird27",
       "ready": 5816,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15647,7 +15647,7 @@
       "node": "Objects/Critters/bird28",
       "name": "bird28",
       "ready": 5824,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15657,7 +15657,7 @@
       "node": "Objects/Critters/bird29",
       "name": "bird29",
       "ready": 5832,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15667,7 +15667,7 @@
       "node": "Objects/Critters/bird30",
       "name": "bird30",
       "ready": 5840,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15677,7 +15677,7 @@
       "node": "Objects/Critters/bird31",
       "name": "bird31",
       "ready": 5848,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15687,7 +15687,7 @@
       "node": "Objects/Critters/bird32",
       "name": "bird32",
       "ready": 5856,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15697,7 +15697,7 @@
       "node": "Objects/Critters/bird33",
       "name": "bird33",
       "ready": 5864,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15707,7 +15707,7 @@
       "node": "Objects/Critters/bird34",
       "name": "bird34",
       "ready": 5872,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15717,7 +15717,7 @@
       "node": "Objects/Critters/bird35",
       "name": "bird35",
       "ready": 5880,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15727,7 +15727,7 @@
       "node": "Objects/Critters/bird36",
       "name": "bird36",
       "ready": 5888,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15737,7 +15737,7 @@
       "node": "Objects/Critters/bird37",
       "name": "bird37",
       "ready": 5896,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15747,7 +15747,7 @@
       "node": "Objects/Critters/bird38",
       "name": "bird38",
       "ready": 5904,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15757,7 +15757,7 @@
       "node": "Objects/Critters/bird39",
       "name": "bird39",
       "ready": 5912,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15767,7 +15767,7 @@
       "node": "Objects/Critters/bird40",
       "name": "bird40",
       "ready": 5920,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15777,7 +15777,7 @@
       "node": "Objects/Critters/bird41",
       "name": "bird41",
       "ready": 5928,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15787,7 +15787,7 @@
       "node": "Objects/Critters/bird42",
       "name": "bird42",
       "ready": 5936,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15797,7 +15797,7 @@
       "node": "Objects/Critters/bird43",
       "name": "bird43",
       "ready": 5944,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15807,7 +15807,7 @@
       "node": "Objects/Critters/bird44",
       "name": "bird44",
       "ready": 5952,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15817,7 +15817,7 @@
       "node": "Objects/Critters/bird45",
       "name": "bird45",
       "ready": 5960,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15827,7 +15827,7 @@
       "node": "Objects/Critters/bird54",
       "name": "bird54",
       "ready": 5968,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15837,7 +15837,7 @@
       "node": "Objects/Critters/bird46",
       "name": "bird46",
       "ready": 5976,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15847,7 +15847,7 @@
       "node": "Objects/Critters/bird47",
       "name": "bird47",
       "ready": 5984,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15857,7 +15857,7 @@
       "node": "Objects/Critters/bird48",
       "name": "bird48",
       "ready": 5992,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15867,7 +15867,7 @@
       "node": "Objects/Critters/bird49",
       "name": "bird49",
       "ready": 6000,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15877,7 +15877,7 @@
       "node": "Objects/Critters/bird50",
       "name": "bird50",
       "ready": 6008,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15887,7 +15887,7 @@
       "node": "Objects/Critters/bird51",
       "name": "bird51",
       "ready": 6016,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15897,7 +15897,7 @@
       "node": "Objects/Critters/bird52",
       "name": "bird52",
       "ready": 6024,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -15907,7 +15907,7 @@
       "node": "Objects/Critters/bird53",
       "name": "bird53",
       "ready": 6032,
-      "role": 0,
+      "role": 24,
       "profile": 4294967295,
       "script": "Scripts/misc/birds.gd",
       "sha256": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34"
@@ -21197,7 +21197,7 @@
       "node": "Music/MusicArea",
       "name": "MusicArea",
       "ready": 8533,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21207,7 +21207,7 @@
       "node": "Music/MusicArea3",
       "name": "MusicArea3",
       "ready": 8535,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21217,7 +21217,7 @@
       "node": "Music/MusicArea5",
       "name": "MusicArea5",
       "ready": 8538,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21227,7 +21227,7 @@
       "node": "Music/MusicArea7",
       "name": "MusicArea7",
       "ready": 8540,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21237,7 +21237,7 @@
       "node": "Music/MusicArea8",
       "name": "MusicArea8",
       "ready": 8542,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21247,7 +21247,7 @@
       "node": "Music/MusicArea9",
       "name": "MusicArea9",
       "ready": 8544,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21257,7 +21257,7 @@
       "node": "Music/MusicArea2",
       "name": "MusicArea2",
       "ready": 8546,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21267,7 +21267,7 @@
       "node": "Music/MusicArea4",
       "name": "MusicArea4",
       "ready": 8548,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21277,7 +21277,7 @@
       "node": "Music/MusicArea6",
       "name": "MusicArea6",
       "ready": 8550,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21287,7 +21287,7 @@
       "node": "Music/MusicArea10",
       "name": "MusicArea10",
       "ready": 8552,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21297,7 +21297,7 @@
       "node": "Music/MusicArea11",
       "name": "MusicArea11",
       "ready": 8554,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21307,7 +21307,7 @@
       "node": "Music/MusicArea12",
       "name": "MusicArea12",
       "ready": 8557,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21317,7 +21317,7 @@
       "node": "Music/MusicArea13",
       "name": "MusicArea13",
       "ready": 8560,
-      "role": 0,
+      "role": 26,
       "profile": 4294967295,
       "script": "Nodes/Overworld/MusicChanger.tscn::3",
       "sha256": "92ca281e41fbaf8d0d4ff55a2ee49edda3c0e27e56cd70ed212fd21a5e98151b"
@@ -21537,7 +21537,7 @@
       "node": "Cutscenes/Cutscene Area2",
       "name": "Cutscene Area2",
       "ready": 8643,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21547,7 +21547,7 @@
       "node": "Cutscenes/Cutscene Area10",
       "name": "Cutscene Area10",
       "ready": 8645,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21557,7 +21557,7 @@
       "node": "Cutscenes/Cutscene Area11",
       "name": "Cutscene Area11",
       "ready": 8647,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21567,7 +21567,7 @@
       "node": "Cutscenes/Cutscene Area13",
       "name": "Cutscene Area13",
       "ready": 8649,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21577,7 +21577,7 @@
       "node": "Cutscenes/Cutscene Area3",
       "name": "Cutscene Area3",
       "ready": 8651,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21587,7 +21587,7 @@
       "node": "Cutscenes/Cutscene Area15",
       "name": "Cutscene Area15",
       "ready": 8653,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21597,7 +21597,7 @@
       "node": "Cutscenes/Cutscene Area4",
       "name": "Cutscene Area4",
       "ready": 8655,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21607,7 +21607,7 @@
       "node": "Cutscenes/Cutscene Area12",
       "name": "Cutscene Area12",
       "ready": 8657,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21617,7 +21617,7 @@
       "node": "Cutscenes/Cutscene Area5",
       "name": "Cutscene Area5",
       "ready": 8659,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21627,7 +21627,7 @@
       "node": "Cutscenes/Cutscene Area8",
       "name": "Cutscene Area8",
       "ready": 8661,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21637,7 +21637,7 @@
       "node": "Cutscenes/Cutscene Area6",
       "name": "Cutscene Area6",
       "ready": 8663,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21647,7 +21647,7 @@
       "node": "Cutscenes/Cutscene Area7",
       "name": "Cutscene Area7",
       "ready": 8665,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21657,7 +21657,7 @@
       "node": "Cutscenes/Cutscene Area9",
       "name": "Cutscene Area9",
       "ready": 8667,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21667,7 +21667,7 @@
       "node": "Cutscenes/Cutscene Area14",
       "name": "Cutscene Area14",
       "ready": 8669,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21677,7 +21677,7 @@
       "node": "Cutscenes/Cutscene Area16",
       "name": "Cutscene Area16",
       "ready": 8671,
-      "role": 0,
+      "role": 23,
       "profile": 4294967295,
       "script": "Scripts/Main/CutsceneArea.gd",
       "sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62"
@@ -21697,7 +21697,7 @@
       "node": "Camareas/CamareaRect/camarea",
       "name": "camarea",
       "ready": 8682,
-      "role": 0,
+      "role": 25,
       "profile": 4294967295,
       "script": "Scripts/Main/camarea.gd",
       "sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799"

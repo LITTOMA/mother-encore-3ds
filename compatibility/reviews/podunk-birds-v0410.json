@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "64a95f12079e47f73e7804ce50071c1df4d83c8d32e1910106e497ddc63ce8f9",
+  "source_review": [
+    "All54 full native Podunk source instances; no proximity invented for actual Area4096/mask0/monitorablefalse",
+    "Original three3x3 PNG Sprite sheets, sourcenearest/no mipmaps/premultfalse, pixel snapping local floor then worldeachvertex",
+    "Exact shared globalrandom randi skin,randf seek,randi facing,randi speed perReady/enter/exit; source Timer survives reprepare",
+    "Source four real signals; hidden scriptprocess does not stop native Timer/AnimationPlayer internalchildren",
+    "Original six AnimationPlayer clips including hop continuous Offset ease .297302 and nearest discrete frames; source always-truthy hopright conditional preserved",
+    "Native AnimationPlayer play/seek,clamp/fposmod,approx key lookup,event key upper bound,endReached/notify,zeroDelta seek endpoint semantics mapped",
+    "Original Timer time_left double/get_time_left float; timeout strictlynegative; nonplayerbody still starts Timer",
+    "Only disabled source Circle Kinematic shape, exact native zero-active-shape wholeworldmotion branch; livehost must reject changedshape or cachedplatformstate",
+    "No rewards or HP/PP behavior; pending full scene/lifecycle/geometry/unsupportedlistener admission"
+  ],
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_source_sha256": {
+    "godot-3.6.2-animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "godot-3.6.2-timer.cpp": "79e2ce272fd56465d8ccc2a5077bf6dc39422cbc588e71ddfab482eb7a33d862",
+    "birds-timer.h": "20a3de2206b528223bd5b1ddf3175dd150e286c305f7ba43857a3dc29e80dd22",
+    "godot-3.6.2-physics_body_2d.cpp": "1a47c0292bd20f92b14262ef0957fd1bf14060e555d072f739242b9e81914ee4",
+    "godot-3.6.2-space_2d_sw.cpp": "a220a6c20f9f97fe1d91816c94ac684573ae77cb6fe85e1d878e1b608973d47e",
+    "birds-math-funcs.h": "32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13",
+    "birds-sprite.cpp": "ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd",
+    "birds-visual-server-canvas.cpp": "f55e0a8f33127b49f5cbad4a47efd3aaf6ea91da6b9a74485e81108e769a50b2",
+    "animation.cpp": "0c49f1f325d040c645b35b0f39d0972ccd7812e0a575b6ad97ba5d9f3de0dd1b"
+  },
+  "pending": [
+    "Actual live geometry, source4 signals, borrowed global player identity/local position, notifier visibility and scene lifetime required",
+    "Source Area layer4096/mask0/monitorablefalse retained; no invented distance/proximity trigger",
+    "Unknown native animation listeners/queues/blends and active Kinematic shape are rejected",
+    "Full Podunk activation remains pending other source consumers"
+  ]
+}

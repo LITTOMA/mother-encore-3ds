@@ -1,0 +1,35 @@
+[
+  {
+    "path": "graphics/objects/birds/0.t3x",
+    "bytes": 16405,
+    "source_sha256": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "output_sha256": "f5b20858b37e99d0119d9e50d2dad03ba0f3acb5024147fd07377715260716c9",
+    "ir_sha256": "64a95f12079e47f73e7804ce50071c1df4d83c8d32e1910106e497ddc63ce8f9",
+    "producer_sha256": "6206a877d5ffcd522280d86acf6a1c178bb9b0031575dd3b638c8a8a709460af",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "path": "graphics/objects/birds/1.t3x",
+    "bytes": 16405,
+    "source_sha256": "0c0f421d08f68334e3d049ea76cd8e2e1ceccb75208305af0e7bd3af928ab39d",
+    "output_sha256": "cbfc433c0b0b49816cc7914614c5c75fad5a26f3de32d957a0512ef5806e500b",
+    "ir_sha256": "64a95f12079e47f73e7804ce50071c1df4d83c8d32e1910106e497ddc63ce8f9",
+    "producer_sha256": "6206a877d5ffcd522280d86acf6a1c178bb9b0031575dd3b638c8a8a709460af",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "path": "graphics/objects/birds/2.t3x",
+    "bytes": 16405,
+    "source_sha256": "50bd41cb803e56552ca9f752520bba63592f32b24fa881e2e0b55bfedc190dce",
+    "output_sha256": "bdcce31f6cc8c109ab62be39162d059207b4d32ec6e4eab76ccfacc7464dd2f3",
+    "ir_sha256": "64a95f12079e47f73e7804ce50071c1df4d83c8d32e1910106e497ddc63ce8f9",
+    "producer_sha256": "6206a877d5ffcd522280d86acf6a1c178bb9b0031575dd3b638c8a8a709460af",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  }
+]

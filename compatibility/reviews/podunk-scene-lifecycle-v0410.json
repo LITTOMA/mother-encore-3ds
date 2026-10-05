@@ -3,7 +3,7 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_admitted": false,
-  "ir_sha256": "d7ba77d26bb92cf93dd46d685d16010f79d06470152eabdaf618e09db3545d9b",
+  "ir_sha256": "fbe055d7de935c844195ff703c3d7c1e7651550ad9cfd7884ee0e01b066e0770",
   "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
   "capability": "complete source script roster; FlagLandmark, FlaggableObject base methods, AreaRoom, DebugStart lifecycle only; all 71 Emotes typed onready object bindings",
   "source_classes": [
@@ -173,6 +173,71 @@
       "pending": [
         "No healing NPC behavior, world flag or new Disappear animation invented: method exists unconnected and no such source clip in actual scene",
         "Live parent changes/rotation/skew or generic colliding butterfly body need next explicit capability, not silent approximation"
+      ]
+    },
+    "native-field-cutscene-area": {
+      "ir_sha256": "95a446efcb806276f07f59dc766a20f3a089129e9b5eacf8f81489f3182d90e4",
+      "role": 23,
+      "count": 15,
+      "semantics": [
+        "All15 actual Podunk instances with inherited defaults, inner-to-outer overrides and full-scene postorder Ready ordinals",
+        "Ready disables script idle process and connects source uiManager battle_to_ov signal, no eager programme start or flag write",
+        "Only exact current global player body enter checks flags and enables process for either result if dialog nonempty",
+        "Idle blocked by cutscene/battle/pause keeps process enabled; first unblocked false flag check disables process without polling",
+        "Appear read defaults false; disappear read is short-circuited when appear false, preserving source read order",
+        "Start admits existing checked Room programme before effects then executes source close command booleans, Player.pause defaults, source dialogue ID and source player completion funcref in order; processing disabled after invocation returns",
+        "Exit while in battle deliberately does not disable; battle_to_ov unconditionally disables without rearming overlapping areas",
+        "No one-shot flag is written by this component; programme effects control repeated trigger, including mick_bark which does not set its disappear flag",
+        "Area layer/mask/monitoring and actual transformed rectangle retained; use original Player body polygon overlap and Godot bilateral OR layer/mask filtering, never replace with a point or investigation ray"
+      ],
+      "pending": [
+        "Programme operations belong to existing checked Room/scene actor host; each unresolved source programme rejects before UI/pause mutation",
+        "No generic Area2D physics emulation or arbitrary unknown source signal listeners"
+      ]
+    },
+    "podunk-birds": {
+      "ir_sha256": "64a95f12079e47f73e7804ce50071c1df4d83c8d32e1910106e497ddc63ce8f9",
+      "role": 24,
+      "count": 54,
+      "semantics": [],
+      "pending": [
+        "Actual live geometry, source4 signals, borrowed global player identity/local position, notifier visibility and scene lifetime required",
+        "Source Area layer4096/mask0/monitorablefalse retained; no invented distance/proximity trigger",
+        "Unknown native animation listeners/queues/blends and active Kinematic shape are rejected",
+        "Full Podunk activation remains pending other source consumers"
+      ]
+    },
+    "podunk-camera-area": {
+      "ir_sha256": "676859a2a0ae5853de717106d9e39cfdc246a29d99803fae5aca8ab6bf0e105e",
+      "role": 25,
+      "count": 1,
+      "semantics": [],
+      "pending": [
+        "Actual admitted current GameCamera owner and live integer limit/camareas writes",
+        "Real Area body_entered/body_exited identity and native idle_frame continuation; no proximity event",
+        "Live ReferenceRect and collision shape/scale viewport values are read when source requests them",
+        "Full GameCamera14/Shaker/MapArrows and other scene families remain independent pending"
+      ]
+    },
+    "native-field-music-changer": {
+      "ir_sha256": "79065ecb3aef9a4b5b382fbccccdbe82a8b590274fec8c2a846873aa37796e71",
+      "role": 26,
+      "count": 13,
+      "semantics": [
+        "All13 real source MusicChanger roots; all are loop-only, non-diegetic and initially enabled, reuse existing real five-track Podunk MusicRegion service",
+        "Fullscene source postorder Ready IDs plus16 native owner children and original engine convex decomposition in owner/shape order; retain parent-hidden physical areas",
+        "Ready/set_disabled modifies get_child(0) only, leaving additional owners unchanged; retain source initial disabled state of all children",
+        "Actual Area-body bilateral OR collision filtering with source Player polygon; never investigation ray/point/AABB-only replacement",
+        "Existing MusicRegionController is the authoritative inside/registration/attached-voice/fade and deferred-idle exit consumer; this bridge owns no second fake audio log or clock",
+        "Body enter guards actual current player/cutscene/battle/flags; exit guards actual current player/collisions/cutscene but not battle; direct Room play/stop bypass Area guards",
+        "Global MusicRegion service idle-frame completion occurs in actual source wait sequence; NDSP update/fades are driven exactly once by app audio owner after source audio request order",
+        "Tree_exiting calls existing source stop semantics; voices survive scene switch until original fade and global tween completion cleanup",
+        "Embedded ENCMUS01 checked source region identities/tuning/shapes cross-match exported geometry and genuine AudioBank source digests; no new audio copies"
+      ],
+      "pending": [
+        "Future intro+loop/diegetic regions or initially disabled nodes require evolved shared real MusicRegion service before admission",
+        "Unknown external idle listeners that interleave unrelated music mutations with the service batch must be rejected by actual scene host admission",
+        "Audio preparation/scene commit/Room history and real NDSP remain mandatory service Host duties, never replaced by successful fake records"
       ]
     }
   }

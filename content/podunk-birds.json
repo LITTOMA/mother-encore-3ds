@@ -1,0 +1,6112 @@
+{
+  "schema": 1,
+  "kind": "encore.field-birds.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "scene_admitted": false,
+  "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+    "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+    "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png.import": "36acda999115670f3a10782c0e7d3678cd461fbaa7f43d04d6fd4968c9b42bb9",
+    "Graphics/Character Sprites/Npcs/misc/birds/1.png": "0c0f421d08f68334e3d049ea76cd8e2e1ceccb75208305af0e7bd3af928ab39d",
+    "Graphics/Character Sprites/Npcs/misc/birds/1.png.import": "f67ae747292a2f249b11681720becc55c95e662916d44ba30324a5e9ee1a99d7",
+    "Graphics/Character Sprites/Npcs/misc/birds/2.png": "50bd41cb803e56552ca9f752520bba63592f32b24fa881e2e0b55bfedc190dce",
+    "Graphics/Character Sprites/Npcs/misc/birds/2.png.import": "5a2fa4eab3a54ce69ce2adfb4246fe8a256ae9bcf7ef416ee3df7aa0d1eef351",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "rules": {
+    "skin_mod": 3,
+    "facing_mod": 2,
+    "facing_value": 1,
+    "speed_base": 150.0,
+    "speed_mod": 50,
+    "seek_factor": 4.0,
+    "flight_z": 1,
+    "right": [
+      1.0,
+      -1.0
+    ],
+    "left": [
+      -1.0,
+      -1.0
+    ],
+    "finished_first_always": true
+  },
+  "profiles": [
+    [
+      {
+        "role": 1,
+        "name": "Idle",
+        "length": 4.0,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 1,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 1.0,
+                "value": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 2.5,
+                "transition": 1.0,
+                "value": [
+                  3,
+                  0
+                ]
+              },
+              {
+                "time": 2.5999999046325684,
+                "transition": 1.0,
+                "value": [
+                  4,
+                  0
+                ]
+              },
+              {
+                "time": 2.700000047683716,
+                "transition": 1.0,
+                "value": [
+                  3,
+                  0
+                ]
+              },
+              {
+                "time": 2.799999952316284,
+                "transition": 1.0,
+                "value": [
+                  4,
+                  0
+                ]
+              },
+              {
+                "time": 3.0,
+                "transition": 1.0,
+                "value": [
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 2,
+        "name": "Fly",
+        "length": 0.4000000059604645,
+        "loop": true,
+        "tracks": [
+          {
+            "property": 1,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 1.0,
+                "value": [
+                  6,
+                  0
+                ]
+              },
+              {
+                "time": 0.10000000149011612,
+                "transition": 1.0,
+                "value": [
+                  7,
+                  0
+                ]
+              },
+              {
+                "time": 0.20000000298023224,
+                "transition": 1.0,
+                "value": [
+                  8,
+                  0
+                ]
+              },
+              {
+                "time": 0.30000001192092896,
+                "transition": 1.0,
+                "value": [
+                  7,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 3,
+        "name": "hop",
+        "length": 0.20000000298023224,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 1,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 0.2973020076751709,
+                "value": [
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 2,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 0.2973020076751709,
+                "value": [
+                  0.0,
+                  -1.0
+                ]
+              },
+              {
+                "time": 0.10000000149011612,
+                "transition": 1.0,
+                "value": [
+                  -1.0,
+                  -1.0
+                ]
+              },
+              {
+                "time": 0.20000000298023224,
+                "transition": 1.0,
+                "value": [
+                  -1.0,
+                  0.0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 4,
+        "name": "hop right",
+        "length": 0.20000000298023224,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 1,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 0.2973020076751709,
+                "value": [
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 2,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 0.2973020076751709,
+                "value": [
+                  -1.0,
+                  -1.0
+                ]
+              },
+              {
+                "time": 0.10000000149011612,
+                "transition": 1.0,
+                "value": [
+                  0.0,
+                  -1.0
+                ]
+              },
+              {
+                "time": 0.20000000298023224,
+                "transition": 1.0,
+                "value": [
+                  0.0,
+                  0.0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 5,
+        "name": "RESET",
+        "length": 0.0010000000474974513,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 1,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 1.0,
+                "value": [
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 2,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 1.0,
+                "value": [
+                  0.0,
+                  0.0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 3,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 1.0,
+                "value": [
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 6,
+        "name": "prepare",
+        "length": 0.20000000298023224,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 1,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.0,
+                "transition": 1.0,
+                "value": [
+                  8,
+                  0
+                ]
+              },
+              {
+                "time": 0.10000000149011612,
+                "transition": 1.0,
+                "value": [
+                  7,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  ],
+  "skins": [
+    {
+      "index": 0,
+      "source": "Graphics/Character Sprites/Npcs/misc/birds/0.png",
+      "path": "graphics/objects/birds/0.t3x",
+      "width": 48,
+      "height": 39
+    },
+    {
+      "index": 1,
+      "source": "Graphics/Character Sprites/Npcs/misc/birds/1.png",
+      "path": "graphics/objects/birds/1.t3x",
+      "width": 48,
+      "height": 39
+    },
+    {
+      "index": 2,
+      "source": "Graphics/Character Sprites/Npcs/misc/birds/2.png",
+      "path": "graphics/objects/birds/2.t3x",
+      "width": 48,
+      "height": 39
+    }
+  ],
+  "records": [
+    {
+      "id": 1055985063,
+      "ready": 5078,
+      "node": "Objects/Critters/bird",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2645261807,
+        3913872404,
+        4127361667,
+        1593938046,
+        3211784962,
+        3043954613,
+        1182193528
+      ],
+      "animation_ready": 5074,
+      "timer_ready": 5077,
+      "position": [
+        312.0,
+        1136.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3146284972,
+      "ready": 5086,
+      "node": "Objects/Critters/bird2",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3298105064,
+        3290117024,
+        117187909,
+        67409166,
+        3941346910,
+        2031390582,
+        3928961725
+      ],
+      "animation_ready": 5082,
+      "timer_ready": 5085,
+      "position": [
+        88.0,
+        2168.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 22454903,
+      "ready": 5094,
+      "node": "Objects/Critters/bird3",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1456752288,
+        1431983029,
+        902474514,
+        3700971081,
+        1252547290,
+        2803100077,
+        384950802
+      ],
+      "animation_ready": 5090,
+      "timer_ready": 5093,
+      "position": [
+        264.0,
+        1864.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2431093527,
+      "ready": 5102,
+      "node": "Objects/Critters/bird4",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3012069310,
+        1757578884,
+        3623582463,
+        3861088632,
+        1472892268,
+        566580709,
+        3060693877
+      ],
+      "animation_ready": 5098,
+      "timer_ready": 5101,
+      "position": [
+        288.0,
+        1856.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 136587537,
+      "ready": 5110,
+      "node": "Objects/Critters/bird5",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1603240021,
+        2407816323,
+        3083203294,
+        128028119,
+        2255698135,
+        2156583,
+        1133494633
+      ],
+      "animation_ready": 5106,
+      "timer_ready": 5109,
+      "position": [
+        304.0,
+        1864.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 228698109,
+      "ready": 5118,
+      "node": "Objects/Critters/bird6",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        4130857304,
+        1834035107,
+        939931796,
+        977629621,
+        2434193553,
+        165765553,
+        4143900687
+      ],
+      "animation_ready": 5114,
+      "timer_ready": 5117,
+      "position": [
+        -208.0,
+        1816.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3128949309,
+      "ready": 5126,
+      "node": "Objects/Critters/bird7",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3659954303,
+        808592420,
+        1364100877,
+        3290788602,
+        2008673110,
+        4278204694,
+        1518102650
+      ],
+      "animation_ready": 5122,
+      "timer_ready": 5125,
+      "position": [
+        -192.0,
+        1832.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1501659968,
+      "ready": 5134,
+      "node": "Objects/Critters/bird8",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        623633233,
+        3279233976,
+        2771423045,
+        1172896820,
+        853298176,
+        2578521924,
+        185519016
+      ],
+      "animation_ready": 5130,
+      "timer_ready": 5133,
+      "position": [
+        0.0,
+        1864.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3905170633,
+      "ready": 5142,
+      "node": "Objects/Critters/bird9",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1780916184,
+        3398332438,
+        4209196778,
+        1617329497,
+        2535931548,
+        1635220644,
+        1997947391
+      ],
+      "animation_ready": 5138,
+      "timer_ready": 5141,
+      "position": [
+        144.0,
+        1824.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2638434535,
+      "ready": 5150,
+      "node": "Objects/Critters/bird10",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2620946161,
+        734832383,
+        1803547995,
+        2613985614,
+        4290122848,
+        4027236207,
+        918632605
+      ],
+      "animation_ready": 5146,
+      "timer_ready": 5149,
+      "position": [
+        480.0,
+        1656.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1822054754,
+      "ready": 5158,
+      "node": "Objects/Critters/bird11",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        4054334358,
+        833716218,
+        1891263007,
+        4088334275,
+        4066886198,
+        3486146956,
+        219924609
+      ],
+      "animation_ready": 5154,
+      "timer_ready": 5157,
+      "position": [
+        192.0,
+        1568.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2976092317,
+      "ready": 5166,
+      "node": "Objects/Critters/bird12",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        4081104082,
+        3066628771,
+        3178866936,
+        3399419534,
+        1406429105,
+        751103332,
+        854444592
+      ],
+      "animation_ready": 5162,
+      "timer_ready": 5165,
+      "position": [
+        336.0,
+        1144.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1130171587,
+      "ready": 5174,
+      "node": "Objects/Critters/bird13",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3783299797,
+        733145956,
+        1986790680,
+        2574823890,
+        1182104879,
+        2882189072,
+        1715133141
+      ],
+      "animation_ready": 5170,
+      "timer_ready": 5173,
+      "position": [
+        288.0,
+        1152.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 4234750419,
+      "ready": 5182,
+      "node": "Objects/Critters/bird14",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        998926510,
+        1825480381,
+        564371536,
+        2154134854,
+        2422615132,
+        4134056154,
+        2951992206
+      ],
+      "animation_ready": 5178,
+      "timer_ready": 5181,
+      "position": [
+        312.0,
+        1160.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1418239347,
+      "ready": 5190,
+      "node": "Objects/Critters/bird15",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2820188718,
+        109045884,
+        2514677541,
+        2674740367,
+        30849033,
+        1066601839,
+        4262462612
+      ],
+      "animation_ready": 5186,
+      "timer_ready": 5189,
+      "position": [
+        264.0,
+        552.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2672090862,
+      "ready": 5198,
+      "node": "Objects/Critters/bird16",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2152333819,
+        321345577,
+        2591907492,
+        1876957753,
+        4274694699,
+        1852346319,
+        3415548915
+      ],
+      "animation_ready": 5194,
+      "timer_ready": 5197,
+      "position": [
+        304.0,
+        568.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2571256033,
+      "ready": 5206,
+      "node": "Objects/Critters/bird17",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2826611532,
+        4247115169,
+        3492248076,
+        604605503,
+        2615997477,
+        1455006003,
+        2425083201
+      ],
+      "animation_ready": 5202,
+      "timer_ready": 5205,
+      "position": [
+        272.0,
+        584.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1345204293,
+      "ready": 5214,
+      "node": "Objects/Critters/bird18",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1314837850,
+        2688670892,
+        647973416,
+        865526175,
+        265104657,
+        2620230343,
+        2201504121
+      ],
+      "animation_ready": 5210,
+      "timer_ready": 5213,
+      "position": [
+        248.0,
+        576.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 415836952,
+      "ready": 5222,
+      "node": "Objects/Critters/bird19",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1354354776,
+        3576412067,
+        376875408,
+        3947432134,
+        2856121343,
+        3133139655,
+        914523176
+      ],
+      "animation_ready": 5218,
+      "timer_ready": 5221,
+      "position": [
+        -480.0,
+        520.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2180967514,
+      "ready": 5230,
+      "node": "Objects/Critters/bird20",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2377480024,
+        883988063,
+        1140284045,
+        2980656854,
+        1796649386,
+        3992524132,
+        2404529855
+      ],
+      "animation_ready": 5226,
+      "timer_ready": 5229,
+      "position": [
+        -544.0,
+        496.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 4054428368,
+      "ready": 5238,
+      "node": "Objects/Critters/bird21",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2710627270,
+        4256667868,
+        1366805196,
+        241459889,
+        1792160172,
+        79538115,
+        3724899304
+      ],
+      "animation_ready": 5234,
+      "timer_ready": 5237,
+      "position": [
+        -528.0,
+        520.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3059359616,
+      "ready": 5246,
+      "node": "Objects/Critters/bird22",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2218638736,
+        2355293474,
+        148242891,
+        4239133132,
+        650121202,
+        4267223849,
+        3946246113
+      ],
+      "animation_ready": 5242,
+      "timer_ready": 5245,
+      "position": [
+        -640.0,
+        480.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3143541860,
+      "ready": 5254,
+      "node": "Objects/Critters/bird23",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2293106101,
+        2954649918,
+        2522468294,
+        3126228372,
+        751153355,
+        4181051616,
+        2230639596
+      ],
+      "animation_ready": 5250,
+      "timer_ready": 5253,
+      "position": [
+        336.0,
+        232.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1800270856,
+      "ready": 5792,
+      "node": "Objects/Critters/bird24",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        292546148,
+        2335362950,
+        863265883,
+        1480659742,
+        1891648582,
+        3822648251,
+        2407590116
+      ],
+      "animation_ready": 5788,
+      "timer_ready": 5791,
+      "position": [
+        440.0,
+        -928.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2487542873,
+      "ready": 5800,
+      "node": "Objects/Critters/bird25",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        640834334,
+        61196165,
+        2462614425,
+        2635682381,
+        998561830,
+        399212078,
+        312289237
+      ],
+      "animation_ready": 5796,
+      "timer_ready": 5799,
+      "position": [
+        464.0,
+        -912.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3002914531,
+      "ready": 5808,
+      "node": "Objects/Critters/bird26",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        194894069,
+        2441511934,
+        90451380,
+        642051452,
+        3698466405,
+        1527036229,
+        86807573
+      ],
+      "animation_ready": 5804,
+      "timer_ready": 5807,
+      "position": [
+        432.0,
+        -904.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 359280320,
+      "ready": 5816,
+      "node": "Objects/Critters/bird27",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2700721914,
+        1148119637,
+        3030268911,
+        1689448560,
+        3086829698,
+        320929309,
+        1081441736
+      ],
+      "animation_ready": 5812,
+      "timer_ready": 5815,
+      "position": [
+        456.0,
+        -896.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 391398823,
+      "ready": 5824,
+      "node": "Objects/Critters/bird28",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2851645138,
+        1339505961,
+        1749607406,
+        3029355540,
+        800047265,
+        3107213952,
+        3618017809
+      ],
+      "animation_ready": 5820,
+      "timer_ready": 5823,
+      "position": [
+        -112.0,
+        -912.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1502878814,
+      "ready": 5832,
+      "node": "Objects/Critters/bird29",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3813027122,
+        366518166,
+        157690326,
+        861791401,
+        3752866435,
+        481846232,
+        1612437608
+      ],
+      "animation_ready": 5828,
+      "timer_ready": 5831,
+      "position": [
+        -128.0,
+        -928.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 4169501585,
+      "ready": 5840,
+      "node": "Objects/Critters/bird30",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2465616759,
+        2827936201,
+        2846632959,
+        598879021,
+        25223496,
+        3621410364,
+        2118185283
+      ],
+      "animation_ready": 5836,
+      "timer_ready": 5839,
+      "position": [
+        -144.0,
+        -904.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1851125989,
+      "ready": 5848,
+      "node": "Objects/Critters/bird31",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2837217348,
+        3001979614,
+        1189238146,
+        1682446839,
+        2335578724,
+        2863287953,
+        485586467
+      ],
+      "animation_ready": 5844,
+      "timer_ready": 5847,
+      "position": [
+        -104.0,
+        -928.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2051884942,
+      "ready": 5856,
+      "node": "Objects/Critters/bird32",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2927797115,
+        741497716,
+        4053240866,
+        1184084985,
+        185105131,
+        399991005,
+        4171195472
+      ],
+      "animation_ready": 5852,
+      "timer_ready": 5855,
+      "position": [
+        240.0,
+        -472.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1784690335,
+      "ready": 5864,
+      "node": "Objects/Critters/bird33",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        980632314,
+        2087601291,
+        1331499770,
+        83930990,
+        3264659898,
+        1447523104,
+        3036445583
+      ],
+      "animation_ready": 5860,
+      "timer_ready": 5863,
+      "position": [
+        264.0,
+        -480.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1209488474,
+      "ready": 5872,
+      "node": "Objects/Critters/bird34",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        979862413,
+        4156948730,
+        3144708903,
+        417439353,
+        1659045143,
+        3222216226,
+        1875962258
+      ],
+      "animation_ready": 5868,
+      "timer_ready": 5871,
+      "position": [
+        1256.0,
+        -1512.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 433317393,
+      "ready": 5880,
+      "node": "Objects/Critters/bird35",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1489360201,
+        4033331782,
+        2916460053,
+        2293569648,
+        3488780339,
+        2912233663,
+        3881541754
+      ],
+      "animation_ready": 5876,
+      "timer_ready": 5879,
+      "position": [
+        1280.0,
+        -1496.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3432308739,
+      "ready": 5888,
+      "node": "Objects/Critters/bird36",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        605591989,
+        3882771520,
+        3313227123,
+        874354882,
+        407085651,
+        2356021222,
+        1398107056
+      ],
+      "animation_ready": 5884,
+      "timer_ready": 5887,
+      "position": [
+        1240.0,
+        -1488.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3293420686,
+      "ready": 5896,
+      "node": "Objects/Critters/bird37",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1973993238,
+        600546323,
+        689366254,
+        2323551805,
+        3636957073,
+        1169197791,
+        1122910894
+      ],
+      "animation_ready": 5892,
+      "timer_ready": 5895,
+      "position": [
+        824.0,
+        -888.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3763378736,
+      "ready": 5904,
+      "node": "Objects/Critters/bird38",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        113216398,
+        2457553629,
+        1705275908,
+        3075209758,
+        4020230997,
+        3790865556,
+        692453432
+      ],
+      "animation_ready": 5900,
+      "timer_ready": 5903,
+      "position": [
+        848.0,
+        -880.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1058773345,
+      "ready": 5912,
+      "node": "Objects/Critters/bird39",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1597681011,
+        279607485,
+        914519090,
+        3334113561,
+        2334539473,
+        258755848,
+        3237343580
+      ],
+      "animation_ready": 5908,
+      "timer_ready": 5911,
+      "position": [
+        808.0,
+        -872.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3533755110,
+      "ready": 5920,
+      "node": "Objects/Critters/bird40",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3572492450,
+        2725763294,
+        1546079563,
+        3930144194,
+        3026634706,
+        4266191266,
+        332502622
+      ],
+      "animation_ready": 5916,
+      "timer_ready": 5919,
+      "position": [
+        840.0,
+        -864.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3936333238,
+      "ready": 5928,
+      "node": "Objects/Critters/bird41",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2003007927,
+        1379717706,
+        1551702474,
+        1531719577,
+        2306441420,
+        1742739773,
+        2999969268
+      ],
+      "animation_ready": 5924,
+      "timer_ready": 5927,
+      "position": [
+        2384.0,
+        -1824.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 822771333,
+      "ready": 5936,
+      "node": "Objects/Critters/bird42",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1886321141,
+        867927354,
+        310613051,
+        2396923995,
+        4082120413,
+        1860434228,
+        822208349
+      ],
+      "animation_ready": 5932,
+      "timer_ready": 5935,
+      "position": [
+        2368.0,
+        -1808.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3754405504,
+      "ready": 5944,
+      "node": "Objects/Critters/bird43",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2470448043,
+        804981844,
+        2474319993,
+        90681884,
+        1527878448,
+        3154123486,
+        273977680
+      ],
+      "animation_ready": 5940,
+      "timer_ready": 5943,
+      "position": [
+        2336.0,
+        -1816.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2498342534,
+      "ready": 5952,
+      "node": "Objects/Critters/bird44",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3137474298,
+        368911482,
+        439766803,
+        2815520376,
+        645634775,
+        2249085608,
+        3938850725
+      ],
+      "animation_ready": 5948,
+      "timer_ready": 5951,
+      "position": [
+        2400.0,
+        -1808.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3656239195,
+      "ready": 5960,
+      "node": "Objects/Critters/bird45",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3807793570,
+        996389736,
+        2405341339,
+        1238383811,
+        1646365792,
+        343642410,
+        3323562280
+      ],
+      "animation_ready": 5956,
+      "timer_ready": 5959,
+      "position": [
+        2464.0,
+        -1688.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 108973762,
+      "ready": 5968,
+      "node": "Objects/Critters/bird54",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        4033411949,
+        2659045453,
+        3848699503,
+        3696145802,
+        3582919723,
+        1760069433,
+        3345414271
+      ],
+      "animation_ready": 5964,
+      "timer_ready": 5967,
+      "position": [
+        2484.0,
+        -1709.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3798305959,
+      "ready": 5976,
+      "node": "Objects/Critters/bird46",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3201451097,
+        3286190581,
+        1475097307,
+        878070006,
+        2903334069,
+        3422633240,
+        2519003283
+      ],
+      "animation_ready": 5972,
+      "timer_ready": 5975,
+      "position": [
+        2420.0,
+        -1709.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1443553311,
+      "ready": 5984,
+      "node": "Objects/Critters/bird47",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        4100520819,
+        1368924707,
+        948422426,
+        2349217625,
+        2607524725,
+        2952929646,
+        2910604929
+      ],
+      "animation_ready": 5980,
+      "timer_ready": 5983,
+      "position": [
+        569.0,
+        -796.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2946043620,
+      "ready": 5992,
+      "node": "Objects/Critters/bird48",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1472851271,
+        1551601268,
+        2745249140,
+        281720583,
+        3245786161,
+        2646443348,
+        3206729958
+      ],
+      "animation_ready": 5988,
+      "timer_ready": 5991,
+      "position": [
+        544.0,
+        -783.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 2794958405,
+      "ready": 6000,
+      "node": "Objects/Critters/bird49",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2561166968,
+        3300697551,
+        3357222959,
+        1328257622,
+        2864718621,
+        2685318150,
+        477837918
+      ],
+      "animation_ready": 5996,
+      "timer_ready": 5999,
+      "position": [
+        586.0,
+        -782.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 186464091,
+      "ready": 6008,
+      "node": "Objects/Critters/bird50",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        1644500973,
+        1020265937,
+        1661276698,
+        3928064638,
+        689386881,
+        653356365,
+        2446935939
+      ],
+      "animation_ready": 6004,
+      "timer_ready": 6007,
+      "position": [
+        617.0,
+        -792.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 3282196944,
+      "ready": 6016,
+      "node": "Objects/Critters/bird51",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        812264143,
+        1980181057,
+        1611699321,
+        2776444702,
+        396888198,
+        1294583087,
+        829230023
+      ],
+      "animation_ready": 6012,
+      "timer_ready": 6015,
+      "position": [
+        262.0,
+        -645.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 692478053,
+      "ready": 6024,
+      "node": "Objects/Critters/bird52",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        2443701096,
+        747727858,
+        4005753823,
+        1661428561,
+        1764323782,
+        2121643046,
+        2759320492
+      ],
+      "animation_ready": 6020,
+      "timer_ready": 6023,
+      "position": [
+        248.0,
+        -625.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": 1591481517,
+      "ready": 6032,
+      "node": "Objects/Critters/bird53",
+      "parent_id": 2538976213,
+      "profile": 0,
+      "children": [
+        3864398134,
+        519154867,
+        3874250161,
+        3286730458,
+        2649504745,
+        2401798270,
+        2347210244
+      ],
+      "animation_ready": 6028,
+      "timer_ready": 6031,
+      "position": [
+        203.0,
+        -637.0
+      ],
+      "parent": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "sprite_position": [
+        0.0,
+        0.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_frame": 0,
+      "flags": 126,
+      "initial_z": 0,
+      "body_layer": 1,
+      "body_mask": 1,
+      "body_radius": 1.0307799577713013,
+      "safe_margin": 0.07999999821186066,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 63.5,
+      "notifier": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "notifier_position": [
+        -2.3841900542720396e-07,
+        -2.3841900542720396e-07
+      ],
+      "notifier_scale": [
+        1.600000023841858,
+        1.600000023841858
+      ],
+      "timer_wait": 3.0,
+      "animation_speed": 1.0,
+      "root_pause": 0,
+      "animation_pause": 0,
+      "timer_pause": 0,
+      "root_priority": 0,
+      "animation_priority": 0,
+      "timer_priority": 0,
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "columns": 3,
+  "rows": 3,
+  "pixel_snap": true,
+  "source_signals": [
+    "signal=\"body_entered\" from=\"Area\" to=\".\" method=\"_on_Area_body_entered\"",
+    "signal=\"animation_finished\" from=\"AnimationPlayer\" to=\".\" method=\"_on_AnimationPlayer_animation_finished\"",
+    "signal=\"screen_entered\" from=\"VisibilityNotifier2D\" to=\".\" method=\"_on_VisibilityNotifier2D_screen_entered\"",
+    "signal=\"screen_exited\" from=\"VisibilityNotifier2D\" to=\".\" method=\"_on_VisibilityNotifier2D_screen_exited\""
+  ],
+  "pending": [
+    "Actual live geometry, source4 signals, borrowed global player identity/local position, notifier visibility and scene lifetime required",
+    "Source Area layer4096/mask0/monitorablefalse retained; no invented distance/proximity trigger",
+    "Unknown native animation listeners/queues/blends and active Kinematic shape are rejected",
+    "Full Podunk activation remains pending other source consumers"
+  ]
+}

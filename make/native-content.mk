@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle field-present field-dropped field-sparkles field-openable field-payphone field-cash-box field-butterfly
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle field-present field-dropped field-sparkles field-openable field-payphone field-cash-box field-butterfly field-cutscene field-birds field-camera-area field-music-changer field-item-definitions
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -30,7 +30,7 @@ drawer: house
 storage: items
 item-details: items
 field-equipment: items item-details
-field-lifecycle: field-interact field-present field-dropped field-sparkles field-openable field-payphone field-butterfly
+field-lifecycle: field-cutscene field-birds field-camera-area field-music-changer field-interact field-present field-dropped field-sparkles field-openable field-payphone field-butterfly
 field-interact:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_interact_dialog.py compile
 field-lifecycle:
@@ -138,3 +138,18 @@ field-cash-box:
 
 field-butterfly:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_butterfly.py compile
+
+field-cutscene:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_cutscene_area.py compile
+
+field-birds:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_birds.py compile
+
+field-camera-area:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_camera_area.py compile
+
+field-music-changer:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_music_changer.py compile
+
+field-item-definitions:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_item_definitions.py compile

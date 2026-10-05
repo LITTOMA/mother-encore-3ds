@@ -10,6 +10,12 @@ void field_scene_host_manual_cases(const std::vector<uint8_t>&bytes,const FieldI
  auto damaged=bytes;damaged[8]^=1;assert(!data.load(damaged.data(),damaged.size(),id,e));assert(data.ready_count()==2157);
  damaged=bytes;damaged.back()^=1;assert(!data.load(damaged.data(),damaged.size(),id,e));assert(data.ready_count()==2157);
  assert(!data.scene_admitted());assert(data.landmark_count()==13);assert(data.flaggable_count()==19);
+ // New typed roles require their declared capability. This header is outside
+ // the section CRC, so lowering it exercises capability admission directly.
+ for(uint32_t capability=1;capability<4;++capability){
+  damaged=bytes;for(unsigned j=0;j<4;++j)damaged[32+j]=uint8_t(capability>>(8*j));
+  assert(!data.load(damaged.data(),damaged.size(),id,e));assert(data.ready_count()==2157);
+ }
  std::map<std::string,bool>normal,objects;for(uint32_t i=0;i<data.visit_count();++i)normal[std::string(data.visit(i).second)]=false;
  normal[std::string(data.string(data.area().flying_flag))]=false;
  std::vector<FieldSceneSignalSlot>slots;std::vector<FieldSceneAreaSlot>area_slots;uint32_t writes=0,emissions=0,teleports=0,queues=0;

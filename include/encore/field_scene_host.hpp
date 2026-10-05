@@ -13,6 +13,11 @@
 #include "encore/field_prompts.hpp"
 #include "encore/field_dead_bush.hpp"
 #include "encore/field_interact_dialog.hpp"
+#include "encore/field_cutscene_area.hpp"
+#include "encore/field_birds.hpp"
+#include "encore/field_camera_area.hpp"
+#include "encore/field_music_changer.hpp"
+
 #include "encore/field_present.hpp"
 #include "encore/field_dropped.hpp"
 #include "encore/field_sparkles.hpp"
@@ -66,6 +71,10 @@ struct FieldSceneConsumers {
  const FieldOpenableDoorData*openable_data=nullptr;FieldOpenableDoorRuntime*openable=nullptr;
  const FieldPayphoneData*payphone_data=nullptr;FieldPayphoneRuntime*payphone=nullptr;
  const FieldButterflyData*butterfly_data=nullptr;FieldButterflyRuntime*butterfly=nullptr;
+ const FieldCutsceneAreaData*cutscene_data=nullptr;FieldCutsceneAreaRuntime*cutscene=nullptr;
+ const FieldBirdData*birds_data=nullptr;FieldBirdRuntime*birds=nullptr;
+ const FieldCameraAreaData*camera_area_data=nullptr;FieldCameraAreaRuntime*camera_area=nullptr;
+ const FieldMusicChangerData*music_data=nullptr;FieldMusicChangerRuntime*music=nullptr;
  const FieldMapView*map=nullptr;const FieldGeometryView*geometry_data=nullptr;FieldGeometrySpace*geometry=nullptr;
 };
 struct FieldSceneScriptAdmission {uint32_t id=0,family=0,capability=0;std::array<uint8_t,32>source_sha{};};

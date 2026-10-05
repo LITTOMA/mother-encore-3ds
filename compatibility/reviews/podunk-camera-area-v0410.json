@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "676859a2a0ae5853de717106d9e39cfdc246a29d99803fae5aca8ab6bf0e105e",
+  "source_review": [
+    "Complete actual Podunk Camarea from official8686-node SceneState export with outer overridingcam_rect_path=.. and typed export Vector2 defaultzero",
+    "Original nullable onready ReferenceRect cache and sourceRect margins1952,1064,2472,1520; actual live values required at resume",
+    "Original Area4096/mask0/monitorablefalse and Rectangle extents98,188,source shape offset334,92 retained without manufactured proximity",
+    "Source real bodyidentity and enters/exits change currentCamera.camareas theninside thenlimitsreset; source reset top,left,right,bottom,camareaoffsetzero order",
+    "Source await actual next SceneTree idle_frame then insidecheck; no generation invalidation or cancelling prior waits on exit/reenter",
+    "Source roundf rectsize; viewportmin applies on actual resume and finalinteger limits truncate; fallback extent excludesCollisionShape scale exactlysource",
+    "Full GameCamera14 remains pending; Host must reject unadmitted actual currentCamera limit/count/offset consumers"
+  ],
+  "pending": [
+    "Actual admitted current GameCamera owner and live integer limit/camareas writes",
+    "Real Area body_entered/body_exited identity and native idle_frame continuation; no proximity event",
+    "Live ReferenceRect and collision shape/scale viewport values are read when source requests them",
+    "Full GameCamera14/Shaker/MapArrows and other scene families remain independent pending"
+  ]
+}

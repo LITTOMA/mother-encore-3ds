@@ -32,6 +32,16 @@ add_library(encore_core
     runtime/field_butterfly.cpp
     runtime/field_butterfly_data.cpp
     runtime/field_sparkles_owner.cpp
+    runtime/field_cutscene_area.cpp
+    runtime/field_cutscene_area_data.cpp
+    runtime/field_birds.cpp
+    runtime/field_birds_data.cpp
+    runtime/field_camera_area.cpp
+    runtime/field_camera_area_data.cpp
+    runtime/field_music_changer.cpp
+    runtime/field_music_changer_data.cpp
+    runtime/field_item_definitions.cpp
+    runtime/field_item_definitions_data.cpp
     runtime/field_interact_dialog.cpp
     runtime/field_interact_dialog_data.cpp
     runtime/field_dead_bush.cpp

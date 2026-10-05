@@ -36,7 +36,7 @@ Doll 的正常战斗画面已接入受检纹理后端：GPU 直接采样两层�
 
 地下室门的保留钥匙、日记 Present、原版睡梦 / LifeUpA 学习图已接入 House / Room 消费者；独立资源承载剧情、特殊人物帧、Sparkles 和 Poltergeist / Good Morning 音乐区域。Session v7 保存实际钥匙 UID、技能和旗标；历史 rules6→7 和 rules7→8 的精确资源身份有独立受检转换。正常领取地下室钥匙需要波克顿屋外的 Mick 交互，因此整个“出门 → Mick → 地下室”流程目前仍未贯通。
 
-完整波克顿地图已经提取独立图层、原生碰撞几何、NPC、敌人、Sprite / Tint、Emotes、草地、Dandelion、门、ButtonPrompt、DeadBush 与 33 个 InteractDialog 来源资源及运行消费者。完整 2,157 项脚本 Ready 顺序保留；礼物 16、拾取物 3、可开启门 10、公用电话 4、Sparkles 22 和蝴蝶 94 已有来源二进制与实际生命周期调度；151 个未知叶实例及部分效果 / 剧情依赖仍阻断正式场景准入。这些模块尚未接成实际可玩的波克顿；当前打包只包含已接入 House 的资源。ButtonPrompt 使用来源字体布局和实际 tex3ds 纹理独立绘制 Label / Arrow，保留 Show / Float / Hide / Press、来源信号和设置。
+完整波克顿地图已经提取独立图层、原生碰撞几何、NPC、敌人、Sprite / Tint、Emotes、草地、Dandelion、门、ButtonPrompt、DeadBush 与 33 个 InteractDialog 来源资源及运行消费者。完整 2,157 项脚本 Ready 顺序保留；礼物 16、拾取物 3、可开启门 10、公用电话 4、Sparkles 22 和蝴蝶 94 已有来源二进制与实际生命周期调度；新增剧情区域 15、鸟 54、镜头限制区域 1 和音乐区域 13 已接入同一来源生命周期；68 个未知叶实例及部分效果 / 剧情依赖仍阻断正式场景准入。独立物品定义资源收录 17 种原版物品和 36 项来源绑定，受检消费者保留实际库存归属、UID（含零）、剂量及共享随机流；完整野外会话与菜单接点尚待集成。这些模块尚未接成实际可玩的波克顿；当前打包只包含已接入 House 的资源。ButtonPrompt 使用来源字体布局和实际 tex3ds 纹理独立绘制 Label / Arrow，保留 Show / Float / Hide / Press、来源信号和设置。
 
 ## 未完成项
 

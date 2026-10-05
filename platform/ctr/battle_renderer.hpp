@@ -178,6 +178,7 @@ public:
     bool gpu_texture_active()const{return gpu_texture_surface_||gpu_mapped_surface_;}
     bool gpu_mapped_texture_active()const{return gpu_mapped_surface_;}
     encore::CertifiedTextureBackgroundKernel::Stats gpu_mapped_stats()const{return gpu_mapped_texture_.stats();}
+    unsigned gpu_texture_passes()const{return gpu_mapped_surface_?gpu_mapped_texture_.draw_passes():1;}
     uint32_t gpu_texture_rows()const{return gpu_row_texture_.accepted_rows();}
     size_t gpu_texture_strips()const{return gpu_mapped_surface_?gpu_mapped_texture_.count():gpu_row_texture_.count();}
     size_t gpu_texture_bytes()const{return gpu_row_texture_.tracked_bytes();}

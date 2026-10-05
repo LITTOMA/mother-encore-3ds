@@ -58,7 +58,14 @@ uint32_t blend(uint32_t b,uint32_t a,float opacity){
     }
     return out|(uint32_t(255*alpha+float(a>>24)*(1-alpha)+0.5f)<<24);
 }
-void compare(const std::vector<Base::Layer>& layers,const std::vector<float>& times,bool all_scalar=false){
+bool zero_delta(const Candidate::Strip& s){
+    return s.delta[0]==0&&s.delta[1]==0&&s.delta[2]==0&&s.delta[3]==0;
+}
+bool empty_stats(const Candidate::Stats& s){
+    return s.linear_pixels==0&&s.scalar_pixels==0&&s.exact_pixels==0&&
+        s.scalar_trig_calls==0&&s.constant_pixels==0&&s.merged_strips==0;
+}
+void compare(const std::vector<Base::Layer>& layers,const std::vector<float>& times,bool all_scalar=false,bool all_uniform=false){
     Base base;Candidate candidate;std::string error;
     require(base.prepare(layers,width,height,error),error.c_str());
     require(Candidate::supported_shape(layers,width,height),"supported non-POT shape");
@@ -69,11 +76,17 @@ void compare(const std::vector<Base::Layer>& layers,const std::vector<float>& ti
     for(float t:times){size_t count=0;Candidate::Stats stats;
         require(candidate.generate(base,t,strips.data(),strips.size(),count,stats),"generate");
         require(count&&count<=area&&stats.linear_pixels+stats.scalar_pixels==area,"complete statistics");
+        require(stats.exact_pixels<=stats.scalar_pixels&&stats.scalar_trig_calls<=3*stats.exact_pixels&&
+            stats.constant_pixels<=area,"bounded exact and constant statistics");
+        require((stats.exact_pixels==0)==(stats.scalar_trig_calls==0),"exact-pixel and trig-call statistics agree");
         if(!all_scalar)require(stats.linear_pixels>0,"ordinary frame uses certified multi-pixel strips");
         require(base.compose(t,0x81234567u,expected.data()),"authoritative compose");
         size_t cursor=0;
         for(size_t i=0;i<count;++i){const auto& s=strips[i];
-            require(s.width&&s.width<=8&&s.y<height&&s.x+s.width<=width,"strip dimensions");
+            require(s.width&&s.y<height&&s.x+s.width<=width,"strip dimensions");
+            // Curved UV secants retain the certified eight-pixel limit. Wider
+            // strips only join identical, fixed two-layer palette samples.
+            require(s.width<=8||zero_delta(s),"wide strip has constant two-layer UVs");
             require(size_t(s.y)*width+s.x==cursor,"ordered exactly-once surface coverage");
             for(uint32_t k=0;k<s.width;++k){uint32_t c[2];
                 const float ratio=(float(k)+0.5f)/float(s.width);
@@ -93,27 +106,39 @@ void compare(const std::vector<Base::Layer>& layers,const std::vector<float>& ti
             std::fprintf(stderr,"time=%.9g pixel=(%zu,%zu) got=%08x expected=%08x\n",double(t),i%width,i/width,actual[i],expected[i]);
             require(false,"nearest-texel and blend parity");
         }
-        if(all_scalar){require(stats.scalar_pixels==area&&stats.linear_pixels==0,"boundary uses exact leaves");
-            require(std::all_of(strips.begin(),strips.begin()+count,[](const Candidate::Strip& s){
-                return s.width==1&&s.delta[0]==0&&s.delta[1]==0&&s.delta[2]==0&&s.delta[3]==0;
-            }),"exact leaf snaps both texel centers");}
+        if(all_scalar){require(stats.scalar_pixels==area&&stats.linear_pixels==0,"boundary uses single-pixel certificates");
+            // Leaves can be coalesced after their original sampled indices
+            // are established; coverage and authoritative parity still apply.
+            require(std::all_of(strips.begin(),strips.begin()+count,zero_delta),"merged leaves retain fixed texel centers");}
+        if(all_uniform){
+            require(count==height&&stats.constant_pixels==area&&stats.merged_strips>0,"uniform source collapses to one strip per row");
+            for(size_t i=0;i<count;++i){const auto& s=strips[i];
+                require(s.y==i&&s.x==0&&s.width==width&&zero_delta(s),"uniform row spans full width with fixed UVs");
+            }
+        }
     }
     for(float t:{std::numeric_limits<float>::quiet_NaN(),std::numeric_limits<float>::infinity(),-std::numeric_limits<float>::infinity(),1e20f}){
-        size_t count=42;Candidate::Stats stats{42,42};
-        require(!candidate.generate(base,t,strips.data(),strips.size(),count,stats)&&count==0&&stats.linear_pixels==0&&stats.scalar_pixels==0,"invalid time clears batch");
+        size_t count=42;Candidate::Stats stats{42,42,42,42,42,42};
+        require(!candidate.generate(base,t,strips.data(),strips.size(),count,stats)&&count==0&&empty_stats(stats),"invalid time clears batch and all statistics");
     }
-    size_t count=42;Candidate::Stats stats{42,42};
-    require(!candidate.generate(base,0,strips.data(),1,count,stats)&&count==0&&stats.linear_pixels==0&&stats.scalar_pixels==0,"capacity clears partial batch");
-    count=42;require(!candidate.generate(base,0,nullptr,strips.size(),count,stats)&&count==0,"null storage");
-    count=42;require(!candidate.generate(base,0,strips.data(),0,count,stats)&&count==0,"zero capacity");
+    size_t count=42;Candidate::Stats stats{42,42,42,42,42,42};
+    require(!candidate.generate(base,0,strips.data(),1,count,stats)&&count==0&&empty_stats(stats),"capacity clears partial batch and all statistics");
+    count=42;stats={42,42,42,42,42,42};
+    require(!candidate.generate(base,0,nullptr,strips.size(),count,stats)&&count==0&&empty_stats(stats),"null storage clears all statistics");
+    count=42;stats={42,42,42,42,42,42};
+    require(!candidate.generate(base,0,strips.data(),0,count,stats)&&count==0&&empty_stats(stats),"zero capacity clears all statistics");
     candidate.clear();require(!candidate.ready()&&!candidate.prepared_bytes(),"clear releases residuals");
-    count=42;require(!candidate.generate(base,0,strips.data(),strips.size(),count,stats)&&count==0,"cleared generation");
+    count=42;stats={42,42,42,42,42,42};
+    require(!candidate.generate(base,0,strips.data(),strips.size(),count,stats)&&count==0&&empty_stats(stats),"cleared generation clears all statistics");
 }
 }
 int main(){
     Sources sources;auto layers=sources.layers();
     compare(layers,{0,0.001f,0.5f,1.25f,12.25f,256,-1.25f});
     auto mapped=layers;sources.fixed_palette(mapped);compare(mapped,{0,1.25f,-3.5f});
+    Sources uniform_sources;uniform_sources.pixels.fill(2);
+    auto uniform_layers=uniform_sources.layers();
+    compare(uniform_layers,{0,0.001f,1.25f,256,2048,-1.25f,-2048},false,true);
     auto boundary=layers;
     for(auto& l:boundary){l.effect_scale=0;l.move_x=-0.5f;l.ping_pong_speed_x=1;}
     // Static barrel coordinates are exactly .5; cancel the first oscillation

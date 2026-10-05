@@ -189,3 +189,37 @@ allowance remains an experimental platform assumption, as with the existing
 row-texture backend. Real console pixel equivalence, visual behavior and FPS
 remain unverified. Manual mechanism positive/negative cases are retained; no
 test suite or sanitizer has been run for this change.
+
+
+## Mapped texture frame-cost follow-up
+
+The reported Citra regression reaches single-digit game FPS even while the
+mapped GPU path is active. The preceding implementation still ran scalar
+cosines at every one-pixel leaf and repeated geometry for three draws.
+
+The source shader first applies static radial distortion, then time-dependent
+X oscillation, Y compression and scrolling before nearest sampling and blending.
+The fixed distortion and trigonometric basis remain prepared once. A summed-area
+source-index proof now accepts uniform swept rectangles in constant work; equal
+adjacent constant source pairs merge into wide strips. Ambiguous leaves reuse
+the existing guarded coordinate bounds and compute original cosines only for
+unresolved axes. These proofs preserve sampled indices; they do not simplify
+the source animation, quantize time or generate a frame color texture. The only
+new prepared storage is four bytes per source palette index, charged to admission.
+
+A generic finite-palette solver additionally admits an exact decomposition
+`C(i,j) = A(i) + B(j) - K * row(i) * column(j)`. It derives every value from loaded
+resources, rejects intermediate saturation, and verifies all palette pairs
+against the original float blend. Two source textures carry RGB and binary
+alpha masks; four TEV stages complete one geometry draw. Other admitted palettes
+retain the exact three-draw backend. The two-texture path saves 1 MiB of actual
+LINEAR allocation while retaining the conservative six-texture budget ceiling.
+No encounter IDs or source colors are embedded in this mechanism.
+
+Lower-screen diagnostics distinguish strip count, selected draw passes, CPU
+coordinate preparation, CPU command submission and original cosine calls.
+Submission includes the preceding Citro2D flush and does not measure GPU
+completion. Manual pixel-parity/negative cases remain available; no automatic
+tests or sanitizer runs are part of this follow-up. Current emulator FPS and
+physical-console equivalence/performance remain unverified until the new
+installable is actually exercised.

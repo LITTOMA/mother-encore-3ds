@@ -1160,11 +1160,12 @@ int main(int argc,char** argv){
     },&input_resume_reset);
     // Content IDs need not fit bit fields; compare the complete owner tuple
     // and issue a session token rather than hashing/packing arbitrary IDs.
-    std::array<uint32_t,11> prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
+    using InputOwner=std::array<uint32_t,12>;
+    InputOwner prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
     const auto input_context=[&]()->uint32_t{
         if(!gameplay_scene->world.healthy()||!house_error.empty()||!round_error.empty())return 0;
         const bool battle=in_battle();
-        const std::array<uint32_t,12> owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u)}};
+        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u)}};
         if(!have_input_owner||owner!=prior_input_owner){prior_input_owner=owner;have_input_owner=true;if(++input_owner_token==0)++input_owner_token;}
         return input_owner_token;
     };

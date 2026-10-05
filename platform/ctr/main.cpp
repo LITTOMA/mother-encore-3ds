@@ -1127,8 +1127,8 @@ int main(int argc,char** argv){
        !loading.step([&]{return load_ui_font_only(error);},"ui-font-textures")||
        !loading.step([&]{return round_data.load_file(resource_path(ResourceRole::Round).c_str(),error);},"round-metadata")||
        !loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);},"house-metadata")||
-       !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
+       !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
        !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")||
        !loading.step([&]{return storage_data.load_file(resource_path(ResourceRole::Storage).c_str(),error)&&storage_data.view().bind_items(items_data.view(),error);},"storage-metadata")||

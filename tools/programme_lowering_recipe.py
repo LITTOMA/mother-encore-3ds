@@ -92,7 +92,7 @@ def checked(value,root=ROOT):
         require(type(fact['pattern'])is str and len(fact['pattern'])<=4096,'Invalid programme fact selector')
         try:raw=one(fact['pattern'],ex.text(fact['source']),'programme source expression',re.M)['value']
         except (re.error,IndexError)as error:raise ValueError('Invalid programme fact selector')from error
-        if fact['type']=='number':require(re.fullmatch('[0-9]+(?:\.[0-9]+)?',raw)and type(fact['value'])in(int,float)and math.isfinite(fact['value'])and float(raw)==fact['value'],'Programme source expression value mismatch')
+        if fact['type']=='number':require(re.fullmatch(r'[0-9]+(?:\.[0-9]+)?',raw)and type(fact['value'])in(int,float)and math.isfinite(fact['value'])and float(raw)==fact['value'],'Programme source expression value mismatch')
         elif fact['type']=='string':require(type(fact['value'])is str and raw==fact['value'],'Programme source string expression mismatch')
         else:require(raw in ['RIGHT','ZERO']and fact['value']==([1,0]if raw=='RIGHT'else[0,0]),'Unsupported mathematical direction constant')
     require(type(value['identities'])is dict,'Invalid programme identity map')

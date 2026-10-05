@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-opening.json": "5f309e82386badd25e7be3401eaccd9f0aa08a3ebea89c8cf5a95cd22e505a6f"
+    "content/native-opening.json": "9f4f620de1a4180fc508604786950f1436bab79d2082279d31ed14d1540801b3"
   },
   "skills": [
     {

@@ -25,7 +25,7 @@ def safe_path(p):return isinstance(p,str) and p and not p.startswith('/') and ':
 def extract():
  ex=Extractor(ROOT);source=ex.text(HOUSE)
  room=read(ROOT/'content/native-opening.json');house=read(ROOT/'content/native-house.json')
- require(room['rules']==room['capabilities']and room['rules']in(6,7)and house['schema']in(6,7),'Restore requires reviewed Room/House6 or7')
+ require((room['rules']==room['capabilities'] or (room['rules']==7 and room['capabilities']==8))and room['rules']in(6,7)and house['schema']in(6,7),'Restore requires reviewed Room/House6 or7')
  flags={room['strings'][f['name_string']]:(i,f['stable_id'])for i,f in enumerate(room['sections']['Flag'])}
  def condition(name,value):
   require(name in flags,'Unknown restore flag '+name);i,identity=flags[name]

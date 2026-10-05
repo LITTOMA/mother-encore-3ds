@@ -14,7 +14,7 @@ Mother: Encore 的局部原生 Nintendo 3DS 移植。共享 C++17 核心运行�
 | 世界 | 开局房屋内的移动、碰撞、人物动画、房门切换、七种物件调查及床头抽屉领取喷雾 |
 | 剧情 | Lamp、Doll、Pillow / Minnie 支线及已映射的 Carol、电话和 Dad 流程；电话后的 Carol / Mimmie 钥匙提示与重复对话 |
 | 战斗 | 受检遭遇的原版局部规则、回合、敌方回应、奖励与战后演出；不是完整战斗系统 |
-| 菜单与存档 | 局部 Items 菜单、Dad Record、受限 Continue / LOAD；只接受已支持的房屋、进度和格式 |
+| 菜单与存档 | 局部 Items 菜单、Minnie 普通仓库存取与装备确认、Dad Record、受限 Continue / LOAD；只接受已支持的房屋、进度和格式 |
 | 语言 | 英文 `en` 与简体中文 `zh_Hans_CN`；其他语言尚未开放 |
 | 音频 | 资源转换与 NDSP 流式后端已接入；实际可听性未验收 |
 
@@ -25,6 +25,8 @@ Introduction 使用独立 `.encintro`，11 张原版纹理、专用受检字幕�
 床头抽屉使用独立 `.encdrawer`：完整保留原版调查、已领取、背包满和领取分支；领取前检查容量，物品先入背包，再显示文字、播放原版提示音及设置标记，随后等待确认。喷雾保留三次剂量、原版名称与图标，Record／LOAD 保留物品 UID 和领取标记。Items 二进制 capability2 明确保留但禁用未实现的富文本描述和使用动作；Session 资源 v4 增加来源派生的获取策略，存档编码及旧默认值保持原有兼容边界。
 
 Introduction 的音乐、文字音和动画音效在动画开始前一次性校验 PCM，已准备流不重复校验；音频仍使用有界流式缓冲，不改变播放时间或随机数。读取耗时及设备表现尚未验收。
+
+Minnie 在玩偶胜利后的原版 Storage 选择已接入双栏仓库：帽子和已领取喷雾转移保留 UID，装备确认同步角色属性，Record／LOAD 保留实际仓库。独立 `.encstorage` 承载规则与布局；Room 能力 8 增加受检子菜单回调而保持游戏规则 7，Session v5 支持库存守恒和装备派生属性。富文本描述、物品使用与少量装饰仍未完成，详见 [Minnie 仓库](MINNIE_STORAGE.md)。
 
 具体范围见 [启动设置](STARTUP_SETTINGS_CHECKPOINT.md)、[多语言运行时](MULTILINGUAL_RUNTIME.md)、[Continue / LOAD](CONTINUE_LOAD.md) 和 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md) 和 [房屋后续调查与对话](HOUSE_FOLLOWUP.md)。
 

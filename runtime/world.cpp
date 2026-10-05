@@ -38,7 +38,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     healthy_=initialized_=false;error_="Invalid scene content";
     if(!content.valid())return false;
-    content_=content;choice_group_=kRoomNoIndex;save_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
+    content_=content;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;persistent_player_.state_->party_leader_.clear();story_talker_={};effects_.clear();story_hides_.clear();scene_calls_.clear();flagged_bodies_.clear();area_music_resource_=kRoomNoIndex;pending_dialogue_id_=kRoomNoIndex;viewport_=viewport;battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;persistent_player_.state_->house_paused_=false;last_idle_delta_=0;
     const auto scene=content.scene();
     if(!flags_.initialize(content))return false;
     if(story_flags){for(uint32_t i=0;i<story_flags->size();++i)if(!flags_.set_story_flag(i,(*story_flags)[i],false).applied)return false;}
@@ -104,7 +104,7 @@ bool OpeningWorld::advance(WalkInput input) {
 bool OpeningWorld::begin_house_program(uint32_t program_index,uint32_t original_npc){
     if(!healthy_||stage_!=OpeningStage::Walking||program_index>=content_.program_count()||dialogue_.active())return false;
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;
-    cutscene_done_=restore_pending_=false;choice_group_=kRoomNoIndex;save_requested_=false;story_hides_.clear();pending_dialogue_id_=kRoomNoIndex;pending_actor_=talker_=kRoomNoActor;
+    cutscene_done_=restore_pending_=false;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;story_hides_.clear();pending_dialogue_id_=kRoomNoIndex;pending_actor_=talker_=kRoomNoActor;
     if(++generation_==0)++generation_;
     story_talker_=original_npc==kRoomNoIndex?DialogueTalker{}:DialogueTalker{DialogueTalkerKind::OriginalNpc,original_npc};
     program_index_=program_index;persistent_player_.state_->house_paused_=false;
@@ -357,7 +357,8 @@ bool OpeningWorld::apply(const DialogueAction& a) {
     case K::ActorPersistent:if(!actor)return false;actor_persistent_[a.actor]=1;return true;
     case K::StartWait:return true;
     case K::AwaitChoices:if(choice_group_!=kRoomNoIndex)return false;choice_group_=a.target_index;return true;
-    case K::OpenSave:if(save_requested_)return false;save_requested_=true;return true;
+    case K::OpenSave:if(save_requested_||storage_requested_)return false;save_requested_=true;return true;
+    case K::OpenStorage:if(save_requested_||storage_requested_)return false;storage_requested_=true;return true;
     case K::SetFlag:return write_story_flag(a.target_index,a.value!=0);
     case K::ShowDialogue:
         if(pending_dialogue_id_!=kRoomNoIndex||(!(a.flags&1)&&!actor))return false;

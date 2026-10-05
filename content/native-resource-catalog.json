@@ -153,6 +153,11 @@
       "id": 27,
       "role": "DrawerProgram",
       "path": "data/opening.encdrawer"
+    },
+    {
+      "id": 28,
+      "role": "Storage",
+      "path": "data/opening.encstorage"
     }
   ],
   "encounters": [

@@ -49,6 +49,7 @@ std::string_view ItemView::string(uint32_t offset)const{
  return end?std::string_view(reinterpret_cast<const char*>(p),size_t(end-p)):std::string_view{};
 }
 ItemMetadata ItemView::metadata()const{auto*p=record(ItemSection::Metadata,0);return p?ItemMetadata{u32(p),u32(p+4),u32(p+8),u32(p+12)}:ItemMetadata{};}
+std::string ItemView::reviewed_commit()const{const char*h="0123456789abcdef";std::string s;if(valid())for(size_t i=32;i<52;++i){s+=h[bytes_[i]>>4];s+=h[bytes_[i]&15];}return s;}
 ItemDefinition ItemView::definition(uint32_t i)const{
  ItemDefinition d;auto*p=record(ItemSection::Definitions,i);if(p)d={u32(p),u32(p+4),u32(p+8),u32(p+12),u32(p+16),u32(p+20),i32(p+24),i32(p+28),i32(p+32),i32(p+36),u32(p+40),u32(p+44)};return d;
 }

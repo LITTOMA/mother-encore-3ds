@@ -560,6 +560,8 @@ class Extractor:
         append_room(self,clip_names,add_clip)
         from tools.link_family_followup import append_room as append_family_room
         append_family_room(self,clip_names,add_clip)
+        from tools.storage_dialogue import append_room as append_storage_room
+        append_storage_room(self)
         for module in ('world_geometry', 'house_layers', 'character_animation', 'lamp_dialogue', 'doll_dialogue', 'doll_postwin', 'melody_dialogue', 'reference_animation', 'scene_data', 'reference_progression', 'upstream', 'map_asset', 'world_program_bindings'):
             self.file('tools/' + module + '.py')
         self.file('tools/extract_native_content.py')
@@ -568,7 +570,7 @@ class Extractor:
         source_map = dict(schema=1, upstream_commit=self.lock['commit'], scope='Existing scoped reviews only; not whole game/scene/script approval',
                           fields=self.mapping, stable_namespaces=dict(body=body_ids, owner=owner_ids,
                               clips={name: index + 1 for name, index in clip_names.items()}))
-        ir = dict(schema=1, family=0x454e0002, rules=7, capabilities=7, scene_id=1,
+        ir = dict(schema=1, family=0x454e0002, rules=7, capabilities=8, scene_id=1,
                   upstream_commit=self.lock['commit'], exporter_version=1, adapter_revision=8,
                   strings=self.strings, sections=s, provenance=dict(sources=self.sources,
                       notes=['Baseline extraction from original source and existing scoped native exports/reviews; no new broad source approval.',

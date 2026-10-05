@@ -43,6 +43,21 @@ bool InventoryState::append(uint32_t definition,uint32_t doses,uint32_t uid,std:
  for(const auto&item:instances_)if(item.id==uid){error="Inventory append duplicate UID";return false;}
  instances_.push_back(ItemInstance{uid,definition,0,doses});error.clear();return true;
 }
+bool InventoryState::erase_uid(uint32_t uid,std::string&error){
+ if(!valid()){error="Inventory transfer missing content";return false;}
+ auto at=std::find_if(instances_.begin(),instances_.end(),[&](const ItemInstance&i){return i.id==uid;});
+ if(at==instances_.end()){error="Inventory transfer missing UID";return false;}
+ instances_.erase(at);error.clear();return true;
+}
+bool InventoryState::equip_uid(uint32_t uid,bool equipped,std::string&error){
+ if(!valid()){error="Inventory equipment missing content";return false;}
+ auto at=std::find_if(instances_.begin(),instances_.end(),[&](const ItemInstance&i){return i.id==uid;});
+ if(at==instances_.end()){error="Inventory equipment missing UID";return false;}
+ const auto d=data_.definition(at->definition);
+ if(!(d.flags&uint32_t(ItemDefinitionFlag::Equipment))){error="Inventory item is not equipment";return false;}
+ if(equipped)for(auto&i:instances_)if(data_.definition(i.definition).equipment_slot==d.equipment_slot)i.equipped=0;
+ at->equipped=equipped?1u:0u;error.clear();return true;
+}
 bool BattleItemsMenu::fail(const char*error){error_=error;return false;}
 bool BattleItemsMenu::initialize(InventoryState& inventory){
  if(!inventory.valid())return fail("Missing checked inventory");

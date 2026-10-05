@@ -38,6 +38,7 @@ public:
  bool valid()const{return bytes_!=nullptr;}explicit operator bool()const{return valid();}
  uint32_t count(ItemSection)const;std::string_view string(uint32_t)const;
  ItemMetadata metadata()const;ItemDefinition definition(uint32_t)const;
+ std::string reviewed_commit()const;
  ItemInstance initial_instance(uint32_t)const;ItemInstance instance(uint32_t i)const{return initial_instance(i);}
  BattleResource resource(uint32_t)const;ItemLayout layout(uint32_t)const;
  BattleValue parameter(ItemParameter)const;ItemClip clip(uint32_t)const;

@@ -71,7 +71,9 @@ class HouseCompilerTests(unittest.TestCase):
   t=h.parse_pack(h.encode(h.lower(ir,self.pres),version=ir['schema']));self.assertEqual(t['Doors'][0][8],221);self.assertEqual(t['Npcs'][0][18],45)
   files=h.stage_files(ROOT/'romfs');self.assertIn(Path('data/opening.enchouse'),files);self.assertEqual(len(files),1+len(self.pres['resources']))
  def test_revision6_delay_newline_tokens_and_legacy_bounds(self):
-  t=h.lower(self.ir,self.pres);self.assertEqual(self.ir['schema'],6)
+  # Keep a bounded historical prefix so token admission is independent of
+  # current House7's additive source dialogues and capacity expansion.
+  t=self.bounded_legacy_tables(47);self.assertEqual(self.ir['schema'],7)
   self.assertEqual(len(t['Segments']),83);self.assertTrue(any(tok[0]==8 for tok in t['Tokens']));self.assertTrue(any(tok[0]==9 for tok in t['Tokens']))
   delay=next(i for i,tok in enumerate(t['Tokens'])if tok[0]==8)
   newline=next(i for i,tok in enumerate(t['Tokens'])if tok[0]==9)
@@ -87,6 +89,26 @@ class HouseCompilerTests(unittest.TestCase):
   with self.assertRaises(h.ContentError):h.parse_pack(h.encode(changed,version=6))
   changed=copy.deepcopy(t);changed['Tokens'][newline][0]=10
   with self.assertRaises(h.ContentError):h.parse_pack(h.encode(changed,version=6))
+ def bounded_legacy_tables(self,dialogue_count):
+  t=h.lower(self.ir,self.pres);last=t['Dialogues'][dialogue_count-1]
+  count=last[2]+last[3];tokens=t['Segments'][count-1][3]+t['Segments'][count-1][4]
+  t['Segments']=t['Segments'][:count];t['Tokens']=t['Tokens'][:tokens];t['Dialogues']=t['Dialogues'][:dialogue_count]
+  for override in t['Overrides']:
+   if override[3]!=0xffffffff and override[3]>=dialogue_count:override[3]=0xffffffff
+  return t
+ def test_revision7_capacity_and_unknown_revision_fail_closed(self):
+  t=h.lower(self.ir,self.pres)
+  self.assertEqual(self.ir['schema'],7)
+  self.assertEqual((len(t['Segments']),len(t['Dialogues'])),(129,66))
+  h.parse_pack(h.encode(t,version=7))
+  with self.assertRaises(h.ContentError):h.parse_pack(h.encode(t,version=6))
+  for section,limit in [('Segments',256),('Dialogues',128),('Tokens',256)]:
+   oversized=copy.deepcopy(t);oversized[section]+=[copy.deepcopy(t[section][0]) for _ in range(limit+1-len(t[section]))]
+   with self.subTest(section=section),self.assertRaisesRegex(h.ContentError,'capacity'):h.parse_pack(h.encode(oversized,version=7))
+  changed=bytearray(h.encode(t,version=7))
+  for offset in (8,24,28):struct.pack_into('<I',changed,offset,8)
+  struct.pack_into('<I',changed,16,0);struct.pack_into('<I',changed,16,zlib.crc32(changed))
+  with self.assertRaises(h.ContentError):h.parse_pack(changed)
  def test_revision4_and5_remain_accepted_without_new_tokens(self):
   # Strip only the appended Dad dialogues/segments, then retain the old token
   # capabilities independently of the new 67-segment capacity requirement.

@@ -36,7 +36,7 @@
  emit
 
  setemit 2, prim
- add position.x, r0.x, -scale.y
+ add position.x, -scale.y, r0.x
  mov position.y, r0.y
  mov tex0.xy, v1.xy
  mov tex1.xy, v1.zw

@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "kind": "encore.native-item-details.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Checked BaseballCap/AsthmaSpray descriptions only; en/zh, nickname, inline asthma and actual doses; no item action",
+  "sources": {
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/Ailments/Ailments.tres": "e130b5e96b2b4333ddcbc84f034f4ca4cbe72f7f4799d8848c01f5e0b966b00b",
+    "Graphics/UI/Ailments/Asthma.png": "4eb4fe2e3f4df16d7cef7dc17115924d21ac53fb36306fc62d70258ca4864ec2",
+    "Graphics/UI/Ailments/Asthma.png.import": "cbee4d16c4540527a3bd3a12884ce5e4640a14dd42b157cf2d9eef8a08e34064",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "dependencies": {
+    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4"
+  },
+  "definitions": [
+    {
+      "id": 0,
+      "source": "BaseballCap",
+      "raw_description": "A hat for baseball players.\nOther @ Defense +5.",
+      "max_doses": 1,
+      "item_value": 5
+    },
+    {
+      "id": 1,
+      "source": "AsthmaSpray",
+      "raw_description": "When [Ninten]'s asthma ([Asthma]) kicks in, use this. %s",
+      "max_doses": 3,
+      "item_value": 0
+    }
+  ],
+  "locales": [
+    {
+      "code": "en",
+      "separator": " ",
+      "total": "%s uses.",
+      "left_singular": "%s use left.",
+      "left_plural": "%s uses left.",
+      "image_measure": "——",
+      "base_color": 4294967295,
+      "hint_color": 4281109482
+    },
+    {
+      "code": "zh_Hans_CN",
+      "separator": "",
+      "total": "可用%s次。",
+      "left_singular": "剩余%s次。",
+      "left_plural": "剩余%s次。",
+      "image_measure": "——",
+      "base_color": 4294967295,
+      "hint_color": 4281109482
+    }
+  ],
+  "presentations": [
+    {
+      "definition": 0,
+      "locale": "en",
+      "raw": "A hat for baseball players.\\nOther @ Defense +[ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "A hat for baseball players.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "Other @ Defense +",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 0,
+      "locale": "zh_Hans_CN",
+      "raw": "一顶棒球手的帽子。[BR]其他@防御力+[ItemValue]。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "一顶棒球手的帽子。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "其他@防御力+",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1,
+      "locale": "en",
+      "raw": "When [Ninten]'s asthma ([Asthma]) kicks in, use this. %s",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "When ",
+          "color": 0
+        },
+        {
+          "kind": "Nickname",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "'s asthma (",
+          "color": 0
+        },
+        {
+          "kind": "InlineImage",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ") kicks in, use this. ",
+          "color": 0
+        },
+        {
+          "kind": "Doses",
+          "value": 0,
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1,
+      "locale": "zh_Hans_CN",
+      "raw": "在[Ninten]的哮喘（[Asthma]）发作时使用。 %s",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "在",
+          "color": 0
+        },
+        {
+          "kind": "Nickname",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "的哮喘（",
+          "color": 0
+        },
+        {
+          "kind": "InlineImage",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "）发作时使用。 ",
+          "color": 0
+        },
+        {
+          "kind": "Doses",
+          "value": 0,
+          "color": 0
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "source": "Graphics/UI/Ailments/Asthma.png",
+      "path": "graphics/ui/items/asthma-status.t3x",
+      "kind": 1,
+      "width": 14,
+      "height": 12,
+      "columns": 1,
+      "rows": 1
+    }
+  ],
+  "parameters": {
+    "LineHeight": 13,
+    "ImageBaseline": 0,
+    "ENNameLimit": 7,
+    "ZHNameLimit": 6
+  }
+}

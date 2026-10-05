@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "6cc26a78ab1a11b851039e2a2b6fd8c0bcdcbcbe3b57a8095e77d2cbc10330ff",
+  "producer_sha256": "de51d7537367e61c932b1983847920995fc7e132cf61b4f8a8088f48188620d2",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/ui/item-details/asthma-status.t3x": {
+      "bytes": 1045,
+      "sha256": "08e919bb8aa5876a9dce6dd1a29addb8a043bcf3e1063ce6770854c42ba0c664",
+      "crc32": 1724363259
+    }
+  }
+}

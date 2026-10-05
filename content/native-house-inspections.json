@@ -1,0 +1,424 @@
+{
+  "schema": 1,
+  "kind": "encore.house-inspections.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Eight original InteractDialog objects; seven complete literal inspections; Drawer item path explicitly unsupported",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Translations/TranslatedText/dialogue_Podunk_non-person text_Ninten's house - sheet.csv": "c554acd6981a3a745d2a948433cdda737d1aa83e4793aa3a067cea9fa9a747fc",
+    "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml": "2ca21079ca52fe65a9c5c5a2e97027134ad6e0fdab0da9bf968fa52e974ba09f",
+    "Data/Dialogue/Reusable/nottime.yaml": "abc69fea985155bbc16f1e6cc5732307c0410bf6eb296d205b5cdc79a241f383",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml": "21339eb0d16d37d7a0395636dd5078c28d76652296a4f5103b093469f3974810",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml": "b5b50deba2216aab659cac7dea5386f692d59d3504b648d595762d04a1d2c166",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml": "3732040066ff94144a48bdbac880eaa888dc2abb3a52ded902082573f1b85cd4",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad"
+  },
+  "objects": [
+    {
+      "id": 1,
+      "source_path": "Objects/interact_dialog",
+      "position": [
+        503.0,
+        349.0
+      ],
+      "interact_center": [
+        503.0,
+        349.0
+      ],
+      "interact_extents": [
+        20.0,
+        8.0
+      ],
+      "prompt_offset": [
+        2.0,
+        -40.0
+      ],
+      "player_turn": 2,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml",
+      "default_supported": true,
+      "overrides": [
+        {
+          "flag": "poltergeist",
+          "dialogue_path": "Data/Dialogue/Reusable/nottime.yaml",
+          "supported": true
+        },
+        {
+          "flag": "doll_defeated",
+          "dialogue_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "source_path": "Objects/interact_dialog3",
+      "position": [
+        584.0,
+        456.0
+      ],
+      "interact_center": [
+        584.0,
+        456.0
+      ],
+      "interact_extents": [
+        20.0,
+        12.0
+      ],
+      "prompt_offset": [
+        0.0,
+        -10.0
+      ],
+      "player_turn": 3,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml",
+      "default_supported": true,
+      "overrides": [
+        {
+          "flag": "poltergeist",
+          "dialogue_path": "Data/Dialogue/Reusable/nottime.yaml",
+          "supported": true
+        },
+        {
+          "flag": "doll_defeated",
+          "dialogue_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "source_path": "Objects/interact_dialog7",
+      "position": [
+        531.0,
+        353.0
+      ],
+      "interact_center": [
+        531.0,
+        353.0
+      ],
+      "interact_extents": [
+        8.0,
+        12.0
+      ],
+      "prompt_offset": [
+        0.0,
+        -32.0
+      ],
+      "player_turn": 2,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml",
+      "default_supported": true,
+      "overrides": [
+        {
+          "flag": "poltergeist",
+          "dialogue_path": "Data/Dialogue/Reusable/nottime.yaml",
+          "supported": true
+        },
+        {
+          "flag": "doll_defeated",
+          "dialogue_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "source_path": "Objects/interact_dialog4",
+      "position": [
+        545.0,
+        454.0
+      ],
+      "interact_center": [
+        545.0,
+        454.0
+      ],
+      "interact_extents": [
+        10.711999893188477,
+        10.479999542236328
+      ],
+      "prompt_offset": [
+        -2.0,
+        -10.0
+      ],
+      "player_turn": 3,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml",
+      "default_supported": true,
+      "overrides": [
+        {
+          "flag": "poltergeist",
+          "dialogue_path": "Data/Dialogue/Reusable/nottime.yaml",
+          "supported": true
+        },
+        {
+          "flag": "doll_defeated",
+          "dialogue_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "source_path": "Objects/interact_dialog6",
+      "position": [
+        416.0,
+        456.0
+      ],
+      "interact_center": [
+        416.0,
+        456.0
+      ],
+      "interact_extents": [
+        12.0,
+        12.0
+      ],
+      "prompt_offset": [
+        -2.0,
+        -10.0
+      ],
+      "player_turn": 0,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "default_supported": false,
+      "overrides": [
+        {
+          "flag": "poltergeist",
+          "dialogue_path": "Data/Dialogue/Reusable/nottime.yaml",
+          "supported": true
+        },
+        {
+          "flag": "doll_defeated",
+          "dialogue_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+          "supported": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "source_path": "Objects/interact_dialog2",
+      "position": [
+        518.0,
+        456.0
+      ],
+      "interact_center": [
+        518.0,
+        456.0
+      ],
+      "interact_extents": [
+        16.18400001525879,
+        15.336000442504883
+      ],
+      "prompt_offset": [
+        2.0,
+        -12.0
+      ],
+      "player_turn": 3,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml",
+      "default_supported": true,
+      "overrides": [
+        {
+          "flag": "poltergeist",
+          "dialogue_path": "Data/Dialogue/Reusable/nottime.yaml",
+          "supported": true
+        },
+        {
+          "flag": "doll_defeated",
+          "dialogue_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "source_path": "Objects/interact_dialog8",
+      "position": [
+        204.0,
+        778.0
+      ],
+      "interact_center": [
+        204.0,
+        778.0
+      ],
+      "interact_extents": [
+        35.31367874145508,
+        21.633480072021484
+      ],
+      "prompt_offset": [
+        3.0,
+        -20.0
+      ],
+      "player_turn": 3,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml",
+      "default_supported": true,
+      "overrides": [
+        {
+          "flag": "poltergeist",
+          "dialogue_path": "Data/Dialogue/Reusable/nottime.yaml",
+          "supported": true
+        },
+        {
+          "flag": "doll_defeated",
+          "dialogue_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml",
+          "supported": true
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "source_path": "Objects/interact_dialog5",
+      "position": [
+        116.0,
+        72.0
+      ],
+      "interact_center": [
+        116.0,
+        72.0
+      ],
+      "interact_extents": [
+        20.0,
+        12.0
+      ],
+      "prompt_offset": [
+        5.0,
+        -18.0
+      ],
+      "player_turn": 3,
+      "collision_mask": 1,
+      "appear_flag": "",
+      "disappear_flag": "",
+      "seen_key": "",
+      "default_dialogue": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml",
+      "default_supported": true,
+      "overrides": []
+    }
+  ],
+  "texts": [
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_PINBOARD_0",
+      "raw": "[@]A mess of notes and newspaper clippings about the George and Maria case.[WAIT@]One note sticks out in particular.[WAIT@](A curiosity the police uncovered was Maria's missing necklace.[WAIT@]It was a family pendant passed down from generation to generation.[WAIT@]She always kept it safe, but when she went missing, the necklace was nowhere to be found.)"
+    },
+    {
+      "source_path": "Data/Dialogue/Reusable/nottime.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_REUSABLE_NOTTIME_0",
+      "raw": "[@]Now's not the time for that!"
+    },
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_OLD_PHOTOS_0",
+      "raw": "[@]Two photographs stand on the drawer.[WAIT@]The first one has your family standing in front of the house.[WAIT@]Everyone's overjoyed beyond words.[WAIT@]The second is an old sepia photo.[WAIT@]A couple standing beside each other with similar glee."
+    },
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_ELECTRIC_GUITAR_0",
+      "raw": "[@]Your electric guitar.[WAIT@]Your old man got you this for Christmas.[WAIT@]Mick sometimes sneaks up to hear you rock out."
+    },
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_NES_0",
+      "raw": "[@]A [Ninten]do Entertainment System.[WAIT@]Inside is a cartridge with a dozen games packed in.[WAIT@]Whoever made this must be really generous."
+    },
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_TV_0",
+      "raw": "[@]TV with a built-in VHS player.[WAIT@]Star Wars, Rambo and a bunch of other movie tapes are scrambled on the floor."
+    },
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_DOWNSTAIRS_TV_0",
+      "raw": "[@]There's a man on the news being interviewed about a recent surge in paranormal activity.[WAIT@]He sure is waving his arms around a lot."
+    },
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml",
+      "label": "0",
+      "translation_key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_MIMMIE_TOYBOX_0",
+      "raw": "[@]A treasure trove of old toys."
+    }
+  ],
+  "unsupported": [
+    {
+      "source_path": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
+      "source_program": {
+        "0": {
+          "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_0",
+          "if": [
+            {
+              "flags": {
+                "got_asthma_spray": true
+              },
+              "goto": "4"
+            },
+            {
+              "invspace": false,
+              "goto": "3"
+            }
+          ],
+          "goto": "2"
+        },
+        "1": {
+          "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_1",
+          "goto": "2"
+        },
+        "2": {
+          "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_2",
+          "item": "AsthmaSpray",
+          "soundeffect": "Item Received.mp3",
+          "setflags": "got_asthma_spray"
+        },
+        "3": {
+          "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_3"
+        },
+        "4": {
+          "text": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_4"
+        }
+      },
+      "reason": "Requires inventory-space branching, item grant, receiver token, item sound and persisted got_asthma_spray flag"
+    }
+  ]
+}

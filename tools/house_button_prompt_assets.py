@@ -48,6 +48,11 @@ func run():
  quit()
 '''
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def inspection_targets():
+ from tools.house_inspection import load
+ ir=load(ROOT)
+ return [dict(kind=4,index=i,category=1,source_path=row['source_path'],position=row['position'],center=row['interact_center'],extents=row['interact_extents'],offset=row['prompt_offset']) for i,row in enumerate(ir['objects'])]
+
 def rect(p):
  x,y=p.get('margin_left',0),p.get('margin_top',0);return [x,y,p.get('margin_right',0)-x,p.get('margin_bottom',0)-y]
 def build(tex3ds,godot):
@@ -79,11 +84,12 @@ def build(tex3ds,godot):
    else:off=node(door,b['node_4'])['offset'];base_y=node(house,row['source_path']).get('door_offset',node(door,b['node_7'])['door_offset'])[1]+b['door_origin'];offset=[off[0],base_y+off[1]]
    targets.append(dict(kind=kind,index=i,category=category,source_path=row['source_path'],position=row['position'],center=row['interact_center'],extents=row['interact_extents'],offset=offset))
  for i,row in enumerate(p['objects']):targets.append(dict(kind=b['phone_kind'],index=i,category=b['phone_category'],source_path=row['source_path'],position=row['position'],center=row['interaction']['center'],extents=row['interaction']['effective_extents'],offset=node(phone,b['node_6'])['offset']))
- data=dict(schema=1,capability=1,commit=ex.lock['commit'],sources=ex.sources,dependencies={p:sha(ROOT/p) for p in ['content/native-house.json','content/phone-stage/presentation.json']},choices=choices,choice_masks=[masks[c] for c in choices],ray_origin=h['interaction']['ray_origin'],ray_length=h['interaction']['ray_length'],collision_mask=h['interaction']['collision_mask'],resources=resources,prompt_rect=[left,top,image.width,image.height],color=b['color'],previews=previews,targets=targets,scope='Static source visible A+arrow pose, CTR A maps ui_accept; current supported NPC/door/phone ray rectangles. Additional occlusion supplied by caller; no general Godot broadphase or Show/Float/Hide/Press choreography.',license_review=json.loads((ROOT/'content/native-save-menu.json').read_text())['licence_review'])
+ targets.extend(inspection_targets())
+ data=dict(schema=2,capability=2,commit=ex.lock['commit'],sources=ex.sources,dependencies={p:sha(ROOT/p) for p in ['content/native-house.json','content/phone-stage/presentation.json','content/native-house-inspections.json']},choices=choices,choice_masks=[masks[c] for c in choices],ray_origin=h['interaction']['ray_origin'],ray_length=h['interaction']['ray_length'],collision_mask=h['interaction']['collision_mask'],resources=resources,prompt_rect=[left,top,image.width,image.height],color=b['color'],previews=previews,targets=targets,scope='Static source visible A+arrow pose, CTR A maps ui_accept; current supported NPC/door/phone/inspection ray rectangles. Additional occlusion supplied by caller; no general Godot broadphase or Show/Float/Hide/Press choreography.',license_review=json.loads((ROOT/'content/native-save-menu.json').read_text())['licence_review'])
  IR.write_text(json.dumps(data,indent=2)+'\n');return data
 
 def encode(d):
- require(d['schema']==1 and d['capability']==1,'Prompt schema');b=bytearray()
+ require(d['schema']==2 and d['capability']==2,'Prompt schema');b=bytearray()
  def integers(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
  def floats(*v):b.extend(struct.pack('<'+'f'*len(v),*v))
  def text(s):v=s.encode();integers(len(v));b.extend(v)
@@ -98,7 +104,7 @@ def encode(d):
 def verify(d):
  global b;b=checked_bindings()
  ex=Extractor(ROOT)
- require(d['schema']==1 and d['capability']==1 and d['commit']==ex.lock['commit'],'Prompt schema/pin mismatch')
+ require(d['schema']==2 and d['capability']==2 and d['commit']==ex.lock['commit'],'Prompt schema/pin mismatch')
  for path,digest in d['sources'].items():require(sha(ex.upstream/path)==digest,'Prompt source changed '+path)
  for path,digest in d['dependencies'].items():require(sha(ROOT/path)==digest,'Prompt dependency changed '+path)
  for r in d['resources']:
@@ -116,6 +122,7 @@ def verify(d):
    else:off=node(door,b['node_4'])['offset'];base_y=node(house,row['source_path']).get('door_offset',node(door,b['node_7'])['door_offset'])[1]+b['door_origin'];offset=[off[0],base_y+off[1]]
    expected.append(dict(kind=kind,index=i,category=category,source_path=row['source_path'],position=row['position'],center=row['interact_center'],extents=row['interact_extents'],offset=offset))
  for i,row in enumerate(p['objects']):expected.append(dict(kind=b['phone_kind'],index=i,category=b['phone_category'],source_path=row['source_path'],position=row['position'],center=row['interaction']['center'],extents=row['interaction']['effective_extents'],offset=node(phone,b['node_6'])['offset']))
+ expected.extend(inspection_targets())
  require(d['targets']==expected,'Prompt source target geometry changed')
  menu=ex.text(b['source_11'])
  for row,name,category in zip(d['previews'],[r[0] for r in b['preview_rows']],[r[2] for r in b['preview_rows']]):require(row['position']==node(menu,b['preview_root']+name)['position'] and row['offset']==node(menu,b['preview_root']+name+b['preview_prompt_suffix'])['offset'] and row['category']==category,'Prompt preview source changed')

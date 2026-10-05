@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
+#include <cstring>
 namespace encore::upstream {
 namespace {
 float sign(float v){return v<0?-1.f:v>0?1.f:0.f;}
@@ -247,6 +248,31 @@ bool HouseRuntime::bind_phone(PhoneRuntime&phone){
  for(uint32_t i=0;i<room.binding_count();++i){const auto b=room.binding(i);if(b.kind==uint16_t(RoomBindingKind::StartPhoneRing)&&b.target_index>=view.count(PhoneSection::Objects))return fail("Phone scene binding is absent");}
  phone_=&phone;return true;
 }
+bool HouseRuntime::bind_inspections(HouseInspectionView candidate){
+ auto reject=[&](const char*text){error_=text;return false;};
+ if(!world_||!content_.valid()||!candidate.valid()||phase_!=HousePhase::Idle||story_pending()||presentation_->dialogue_active())return reject("House inspection binding requires an idle initialized scene");
+ if(std::memcmp(candidate.reviewed_commit(),content_.bytes()+32,20))return reject("House inspection provenance does not match house pack");
+ const auto room=world_->content();
+ auto flag_known=[&](std::string_view name){for(uint32_t f=0;f<room.flag_count();++f)if(room.string(room.flag(f).name_string)==name)return true;return false;};
+ auto text_valid=[&](uint32_t index,std::string_view path){
+  if(index!=house_no_index)return index<content_.count(HouseSection::Dialogues)&&content_.string(content_.dialogue(index).source_path)==path;
+  // no_index is an explicit unsupported programme boundary, never a fallback
+  // for a mismatched index to text already admitted by the selected House.
+  for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d)if(content_.string(content_.dialogue(d).source_path)==path)return false;
+  return true;
+ };
+ for(uint32_t i=0;i<candidate.count(HouseInspectionSection::Objects);++i){const auto object=candidate.object(i);
+  // InteractDialog queues itself free at Ready/flags_updated when hidden.
+  // Nonempty lifecycle conditions need event/deferred-deletion ownership;
+  // this reviewed slice admits only source objects without those conditions.
+  if(!candidate.string(object.appear_flag).empty()||!candidate.string(object.disappear_flag).empty())return reject("House inspection appear/disappear lifecycle is not supported");
+  if(!text_valid(object.default_dialogue_index,candidate.string(object.default_dialogue)))return reject("House inspection default text binding rejected");
+  for(uint32_t j=0;j<object.override_count;++j){const auto rule=candidate.override_dialogue(object.first_override+j);
+   if(!flag_known(candidate.string(rule.flag))||!text_valid(rule.dialogue_index,candidate.string(rule.dialogue)))return reject("House inspection flag/text override binding rejected");
+  }
+ }
+ inspections_=candidate;error_="";return true;
+}
 bool HouseRuntime::get_phone_flag(uint32_t index,bool&value)const{
  if(!phone_||index>=phone_->view().count(PhoneSection::FlagRefs))return false;
  value=world_->story_flag(phone_->view().string(phone_->view().flag_ref(index).identity));return true;
@@ -284,6 +310,33 @@ bool HouseRuntime::door_interaction_supported(uint32_t i)const{
  return !state.unlocked&&state.blocked&&d.blocked_dialogue!=house_no_index&&content_.string(d.activates_flag).empty()&&content_.string(d.deactivates_flag).empty();
 }
 bool HouseRuntime::phone_interaction_supported(uint32_t i)const{uint32_t program=0;return phone_&&phone_->interaction_program(i,*this,program)&&program_for_path(phone_->view().string(program))!=house_no_index;}
+bool HouseRuntime::inspection_visible(uint32_t i)const{return world_&&inspections_.valid()&&i<inspections_.count(HouseInspectionSection::Objects);}
+Vec2 HouseRuntime::inspection_position(uint32_t i)const{return inspection_visible(i)?inspections_.object(i).position:Vec2{};}
+bool HouseRuntime::resolve_inspection_dialogue(uint32_t index,uint32_t&dialogue)const{
+ if(!inspection_visible(index))return false;
+ const auto object=inspections_.object(index);uint32_t selected=object.default_dialogue_index;
+ // InteractDialog._get_right_dialog: all entries execute in source order,
+ // including later matches replacing earlier matches, not first-match wins.
+ for(uint32_t j=0;j<object.override_count;++j){const auto rule=inspections_.override_dialogue(object.first_override+j);if(world_->story_flag(inspections_.string(rule.flag)))selected=rule.dialogue_index;}
+ if(selected==house_no_index||selected>=content_.count(HouseSection::Dialogues))return false;
+ dialogue=selected;return true;
+}
+bool HouseRuntime::inspection_interaction_supported(uint32_t i)const{uint32_t dialogue=house_no_index;return resolve_inspection_dialogue(i,dialogue);}
+bool HouseRuntime::interact_inspection(uint32_t index){
+ if(!inspection_visible(index))return fail("Unbound house inspection interaction");
+ const auto object=inspections_.object(index);const auto p=world_->player();uint32_t dialogue=house_no_index;
+ Vec2 facing{object.position.x-p.position.x,object.position.y-p.position.y};
+ // Actual Player._turn_to overrides party_object's unconstrained base method.
+ if(((std::abs(facing.x)>std::abs(facing.y))||!(object.player_turn&2))&&facing.x!=0&&(object.player_turn&1))facing={sign(facing.x),0};else if((object.player_turn&2)&&facing.y!=0)facing={0,sign(facing.y)};else facing=p.direction;
+ if(!world_->set_house_direction(facing)||!world_->pause_for_house())return fail("House inspection player turn/pause rejected");
+ active_=object.id;
+ if(!resolve_inspection_dialogue(index,dialogue)){phase_=HousePhase::Unsupported;error_="Unported source inspection programme; B returns control";last_safe_position_=p.position;last_safe_direction_=p.direction;return true;}
+ const auto text=content_.dialogue(dialogue);
+ if(!presentation_->begin_dialogue(text.first_segment,text.segment_count,player_nickname()))return fail("House inspection dialogue rejected");
+ // InteractDialog opens a box with no NPC talker and never writes source
+ // seen_dialogue_flags. Repeated inspection must not alter saved NPC history.
+ phase_=HousePhase::Dialogue;event(HouseEventKind::DialogueOpened,object.id);return true;
+}
 bool HouseRuntime::interact(){
  if(world_->player().crouch)return true; // Telepathy is a separate unported action.
  const auto rules=content_.interaction();const auto p=world_->player();const Vec2 origin{p.position.x+rules.ray_origin.x,p.position.y+rules.ray_origin.y};
@@ -294,6 +347,11 @@ bool HouseRuntime::interact(){
  for(uint32_t i=0;i<openables_.size();++i){const auto door=content_.openable_door(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,door.interact_center,door.interact_extents,distance)&&distance<nearest){selected_door=i;selected=house_no_index;nearest=distance;}}
  uint32_t selected_phone=house_no_index;
  if(phone_)for(uint32_t i=0;i<phone_->view().count(PhoneSection::Objects);++i){const auto object=phone_->view().object(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,object.interact_center,object.interact_extents,distance)&&distance<nearest){selected_phone=i;nearest=distance;selected=selected_door=house_no_index;}}
+ uint32_t selected_inspection=house_no_index;
+ if(inspections_)for(uint32_t i=0;i<inspections_.count(HouseInspectionSection::Objects);++i){if(!inspection_visible(i))continue;const auto object=inspections_.object(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,object.interact_center,object.interact_extents,distance)&&distance<nearest){selected_inspection=i;nearest=distance;selected=selected_door=selected_phone=house_no_index;}}
+ // Unsupported inspection programmes still own the nearest hit. Never ray
+ // through one to an NPC/door/phone or to another object behind it.
+ if(selected_inspection!=house_no_index)return interact_inspection(selected_inspection);
  if(selected_phone!=house_no_index)return interact_phone(selected_phone);
  if(selected_door!=house_no_index)return interact_openable(selected_door);
  if(selected==house_no_index)return true;

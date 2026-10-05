@@ -39,9 +39,15 @@ int main(int argc,char** argv){
     const auto missing_root=std::string(argv[1])+"/not-a-directory/";
     init_result=-42;check(!player.initialize(argv[1],missing_root.c_str(),error)&&!player.available(),"NDSP failure explicit before inaccessible PCM assets");check(error.find("NDSP init")!=std::string::npos&&player.dsp_result()==-42,"NDSP failure retained");check(player.submitted_voices()==0&&allocated==0&&exits==0,"unavailable never scans PCM, queues or claims audio");check(!player.play(21,ctr::AudioLane::Music,error),"unavailable playback rejected");
     player.reset_scene();check(!player.available()&&player.dsp_result()==-42&&exits==0&&allocated==0,"unavailable scene reset preserves DSP failure without retry");
-    init_result=0;check(!player.initialize(argv[1],missing_root.c_str(),error)&&error=="Cannot open PCM asset"&&!player.available()&&!ndsp_started&&exits==1&&allocated==0,"playable audio still validates PCM and shuts down DSP on failure");
+    init_result=0;check(player.initialize(argv[1],missing_root.c_str(),error)&&player.available()&&!player.prepared(21),"metadata initialization does not scan unused PCM");
+    check(!player.prepare(21,error)&&error=="Cannot open PCM asset"&&!player.prepared(21),"missing PCM rejected at first preparation");
+    check(!player.play(21,ctr::AudioLane::Music,error)&&player.submitted_voices()==0&&queues[0].empty(),"unvalidated PCM never reaches NDSP");
+    player.shutdown();check(exits==1&&allocated==0&&!ndsp_started,"deferred preparation failure can be cleaned up");
     fail_alloc=true;check(!player.initialize(argv[1],argv[2],error)&&!player.available()&&exits==2,"allocation failure shuts down NDSP");fail_alloc=false;
     check(player.initialize(argv[1],argv[2],error),error.c_str());check(allocated==4*3*2048*2*2,"96KiB four-lane streaming allocation");check(std::abs(master-upstream::audio_linear_gain(-5.93075f))<0.00001,"master gain loaded from bank");
+    check(!player.prepare(12345,error)&&!player.prepared(12345),"unknown preparation identity rejected");
+    check(!player.prepared(21)&&player.prepare(21,error)&&player.prepared(21),"full PCM admission is deferred until requested");
+    check(player.prepare(21,error)&&player.submitted_voices()==0&&queues[0].empty(),"cached preparation has no playback side effects");
     check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(6),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
     upstream::RoomData room;check(room.load_file(argv[3],error),error.c_str());
     std::vector<upstream::OpeningAudioRequest> requests={{upstream::AudioRequestKind::FadeMusic,upstream::kRoomNoIndex,2,0},{upstream::AudioRequestKind::PlayMusic,20,0,2}};

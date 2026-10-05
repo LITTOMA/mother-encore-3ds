@@ -534,6 +534,11 @@
       "source": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml;Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml;Data/Dialogue/Podunk/cutscenes/minnie_door.yaml;Data/Dialogue/Podunk/minnie_run_tutorial.yaml;Data/Dialogue/Podunk/minnie_door_open.yaml",
       "selector": "Original native-parser graphs,14-point loop,queued path,stop_loop,looping shake,repeated jump,strictly source-ordered flags",
       "derivation": "Append actor6/battle3; original Minnie actor4 reused. No fabricated event positions or optional-path prerequisite"
+    },
+    "Family post-phone programs": {
+      "source": "content/family-followup-bindings.json",
+      "selector": "Carol 0→4 / Mimmie 0→7; ShowDialogue→SetFlag→AwaitDialogue",
+      "derivation": "Append programs17/18 and text48..53; retain all flag identities/defaults; normal NPC end protocol"
     }
   },
   "stable_namespaces": {

@@ -558,6 +558,8 @@ class Extractor:
         link_room(self)
         from tools.link_pillow_content import append_room
         append_room(self,clip_names,add_clip)
+        from tools.link_family_followup import append_room as append_family_room
+        append_family_room(self,clip_names,add_clip)
         for module in ('world_geometry', 'house_layers', 'character_animation', 'lamp_dialogue', 'doll_dialogue', 'doll_postwin', 'melody_dialogue', 'reference_animation', 'scene_data', 'reference_progression', 'upstream', 'map_asset', 'world_program_bindings'):
             self.file('tools/' + module + '.py')
         self.file('tools/extract_native_content.py')

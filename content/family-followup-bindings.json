@@ -1,0 +1,432 @@
+{
+  "schema": 1,
+  "kind": "encore.family-followup.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Two post-Dad key requests and repeats only; no storage/item/Podunk continuation",
+  "sources": {
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
+    "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
+    "Data/Dialogue/Podunk/mimmie_key.yaml": "c0989d81319572e41e8bc00de168133bd6254f1c46f49da50711deb40006abf9",
+    "Data/Dialogue/Podunk/mimmie_key_again.yaml": "b409051db29ade47a736f3d5778f735e137439cb64fc8b79c13e88cc6a2982be",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe"
+  },
+  "families": [
+    {
+      "npc": "Objects/npc",
+      "flag": "carol_ask_key",
+      "path": "Data/Dialogue/Podunk/carol_key.yaml",
+      "repeat_path": "Data/Dialogue/Podunk/carol_key_again.yaml",
+      "dialogue_first_id": 48,
+      "program_id": 17,
+      "document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_CAROL_KEY_SPEAKER_Carol",
+          "sound": "Female",
+          "text": "DIALOGUE_PODUNK_CAROL_KEY_0",
+          "goto": "4"
+        },
+        "4": {
+          "name": "DIALOGUE_PODUNK_CAROL_KEY_SPEAKER_Carol",
+          "sound": "Female",
+          "text": "DIALOGUE_PODUNK_CAROL_KEY_4",
+          "setflags": "carol_ask_key"
+        }
+      },
+      "repeat_document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_CAROL_KEY_AGAIN_SPEAKER_Carol",
+          "sound": "Female",
+          "text": "DIALOGUE_PODUNK_CAROL_KEY_AGAIN_0"
+        }
+      },
+      "overrides": [
+        [
+          "doll_melody",
+          "Podunk/carol_call"
+        ],
+        [
+          "phone_ring",
+          "Podunk/carol_phone"
+        ],
+        [
+          "talked_to_dad",
+          "Podunk/carol_key"
+        ],
+        [
+          "carol_ask_key",
+          "Podunk/carol_key_again"
+        ],
+        [
+          "mick_telepathy",
+          "Podunk/carol_got_key"
+        ],
+        [
+          "got_diary",
+          "Podunk/carol_food"
+        ],
+        [
+          "good_morning",
+          "Podunk/carol_rested"
+        ]
+      ]
+    },
+    {
+      "npc": "Objects/npc2",
+      "flag": "mimmie_ask_key",
+      "path": "Data/Dialogue/Podunk/mimmie_key.yaml",
+      "repeat_path": "Data/Dialogue/Podunk/mimmie_key_again.yaml",
+      "dialogue_first_id": 51,
+      "program_id": 18,
+      "document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_MIMMIE_KEY_SPEAKER_Mimmie",
+          "sound": "Kid",
+          "text": "DIALOGUE_PODUNK_MIMMIE_KEY_0",
+          "goto": "7"
+        },
+        "7": {
+          "name": "DIALOGUE_PODUNK_MIMMIE_KEY_SPEAKER_Mimmie",
+          "sound": "Kid",
+          "text": "DIALOGUE_PODUNK_MIMMIE_KEY_7",
+          "setflags": "mimmie_ask_key"
+        }
+      },
+      "repeat_document": {
+        "0": {
+          "name": "DIALOGUE_PODUNK_MIMMIE_KEY_AGAIN_SPEAKER_Mimmie",
+          "sound": "Kid",
+          "text": "DIALOGUE_PODUNK_MIMMIE_KEY_AGAIN_0"
+        }
+      },
+      "overrides": [
+        [
+          "doll_melody",
+          "Podunk/mimmie_dead_doll"
+        ],
+        [
+          "talked_to_dad",
+          "Podunk/mimmie_key"
+        ],
+        [
+          "mimmie_ask_key",
+          "Podunk/mimmie_key_again"
+        ],
+        [
+          "mick_telepathy",
+          "Podunk/mimmie_got_key"
+        ],
+        [
+          "ninten_basement_door",
+          "Podunk/mimmie_open_basement"
+        ],
+        [
+          "got_juice",
+          "Podunk/mimmie_juice"
+        ]
+      ]
+    }
+  ],
+  "texts": [
+    {
+      "id": 48,
+      "source_path": "Data/Dialogue/Podunk/carol_key.yaml",
+      "label": "0",
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "So you're leaving, huh?"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I guess all boys have to leave home someday..."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "If you want to know where I put the "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "Basement Key"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": ", I gave it to "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "Mick."
+            },
+            {
+              "kind": "HintEnd"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Don't tell Mimmie, though."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "source_path": "Data/Dialogue/Podunk/carol_key.yaml",
+      "label": "4",
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I made sure to keep all the Orange Juice away from her."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "source_path": "Data/Dialogue/Podunk/carol_key_again.yaml",
+      "label": "0",
+      "speaker": "Carol",
+      "voice": "Audio/Sound effects/text/Female.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I gave the "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "Basement Key"
+            },
+            {
+              "kind": "HintEnd"
+            },
+            {
+              "kind": "Literal",
+              "text": " to "
+            },
+            {
+              "kind": "HintStart"
+            },
+            {
+              "kind": "Literal",
+              "text": "Mick."
+            },
+            {
+              "kind": "HintEnd"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Don't tell Mimmie, though."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I made sure to keep all the Orange Juice away from her."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "source_path": "Data/Dialogue/Podunk/mimmie_key.yaml",
+      "label": "0",
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "The Basement Key?"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Ah, I see..."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "So you're also after the secret treasure in the basement, aren't you?"
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I'm talking about the lifetime supply of Orange Juice."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Unfortunately, the basement is locked right now."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I tried asking mom where the key is, but she won't tell me."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Maybe she'll listen to you, though. Try asking her."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "source_path": "Data/Dialogue/Podunk/mimmie_key.yaml",
+      "label": "7",
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "If you manage to unlock the basement, I'll find all of the Orange Juice for you."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "source_path": "Data/Dialogue/Podunk/mimmie_key_again.yaml",
+      "label": "0",
+      "speaker": "Mimmie",
+      "voice": "Audio/Sound effects/text/Kid.mp3",
+      "segments": [
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "I tried asking mom where the key is, but she won't tell me."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "Maybe she'll listen to you, though. Try asking her."
+            }
+          ],
+          "wait_for_input": true
+        },
+        {
+          "bullet": true,
+          "tokens": [
+            {
+              "kind": "Literal",
+              "text": "If you manage to unlock the basement, I'll find all of the Orange Juice for you."
+            }
+          ],
+          "wait_for_input": false
+        }
+      ]
+    }
+  ],
+  "hint_color": "ea8b2c",
+  "end_duration": 0.5
+}

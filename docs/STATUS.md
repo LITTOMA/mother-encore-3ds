@@ -11,8 +11,8 @@ Mother: Encore 的局部原生 Nintendo 3DS 移植。共享 C++17 核心运行�
 | 显示与输入 | 默认 **400×240** 上屏适配，图素 1:1；320×180 为显式原作参考模式。下屏用于开发信息和输入 |
 | 启动 | 标题、六字段命名、设置与最终确认；原版 Introduction / Mt. Itoi 字幕、动画、跳过与门口过渡进入房屋 |
 | 数据分离 | 已盘点的开局内容、资源目录、剧情 / 演员 / 遭遇 / 命名 / 菜单及转换绑定已迁入独立来源 / IR 和受检二进制；3DS 使用二进制消费者 |
-| 世界 | 开局房屋内的移动、碰撞、人物动画、房门切换和局部交互 |
-| 剧情 | Lamp、Doll、Pillow / Minnie 支线及已映射的 Carol、电话和 Dad 流程 |
+| 世界 | 开局房屋内的移动、碰撞、人物动画、房门切换、七种物件调查和局部交互 |
+| 剧情 | Lamp、Doll、Pillow / Minnie 支线及已映射的 Carol、电话和 Dad 流程；电话后的 Carol / Mimmie 钥匙提示与重复对话 |
 | 战斗 | 受检遭遇的原版局部规则、回合、敌方回应、奖励与战后演出；不是完整战斗系统 |
 | 菜单与存档 | 局部 Items 菜单、Dad Record、受限 Continue / LOAD；只接受已支持的房屋、进度和格式 |
 | 语言 | 英文 `en` 与简体中文 `zh_Hans_CN`；其他语言尚未开放 |
@@ -22,19 +22,20 @@ LOAD 对未知场景、版本和身份明确拒绝。精确 rules6 历史身份�
 
 Introduction 使用独立 `.encintro`，11 张原版纹理、专用受检字幕字体与原版开场音频。自然播放与原版跳过分别受测；历史动画的 116.5 秒键保留来源记录，因原作长度 116 秒而不触发。房屋建立于门口换场点，玩家按原作淡入信号解锁。
 
-具体范围见 [启动设置](STARTUP_SETTINGS_CHECKPOINT.md)、[多语言运行时](MULTILINGUAL_RUNTIME.md)、[Continue / LOAD](CONTINUE_LOAD.md) 和 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md)。
+具体范围见 [启动设置](STARTUP_SETTINGS_CHECKPOINT.md)、[多语言运行时](MULTILINGUAL_RUNTIME.md)、[Continue / LOAD](CONTINUE_LOAD.md) 和 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md) 和 [房屋后续调查与对话](HOUSE_FOLLOWUP.md)。
 
 ## 未完成项
 
 - 后续内容继续遵守严格程序 / 数据分离；已迁移的开局范围、版本和验收边界见 [内容与绑定迁移](CONTENT_MIGRATION.md)。这不代表未移植地图与机制已经完成。
 - Introduction 的 3DS 实际显示与可听性验收；Podunk 场景激活、后续地图和剧情。
 - 完整战斗、物品使用、队伍与菜单机制。
+- 开场过场读取闪屏：Introduction 活跃期间加载回调已保留剧情画面，停止绘制加载动画，继续资源校验和音频补给；设备显示验收未完成，同步读取停顿仍待优化。
 - 音频实际播放、演出覆盖、全游戏性能和内存验收。
 - Old / New 3DS 真机运行、安装、输入、休眠恢复与存档验收。
 
 ## 验证
 
-手动完整 CI 检查 Linux 共享核心与数据工具，分别使用 GCC、Clang 运行主机测试和 ASan / UBSan，默认保留泄漏检查。另有 Ubuntu runner 任务恢复固定官方 SDK，执行真实 3DSX / CIA 构建与提取资源校验，不上传游戏产物。具体结果以 [Actions](https://github.com/LITTOMA/mother-encore-3ds/actions) 中对应提交的检查为准；工作流配置本身不代表检查通过。
+手动完整 CI 检查 Linux 共享核心与数据工具，分别使用 GCC、Clang 运行主机测试和 ASan / UBSan，默认保留泄漏检查。另有 Ubuntu runner 任务恢复固定官方 SDK，执行真实 3DSX / CIA 构建与提取资源校验，成功后上传 Actions artifact；不创建发行版。具体结果以 [Actions](https://github.com/LITTOMA/mother-encore-3ds/actions) 中对应提交的检查为准；工作流配置本身不代表检查通过。
 
 主机测试、真实交叉构建、打包检查、模拟器和真机是不同验证层次。构建步骤见 [BUILD](BUILD.md)，复现与验证要求见 [TESTING](TESTING.md)。当前 Old / New 3DS 真机验收仍未完成，没有全游戏适配百分比或目标设备帧率保证。
 

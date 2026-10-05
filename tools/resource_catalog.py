@@ -26,12 +26,12 @@ ROLES = {name: index + 1 for index, name in enumerate((
     'Room', 'Blackbars', 'Battle', 'Round', 'House', 'Items', 'Audio', 'Phone',
     'Choices', 'SaveMenu', 'Session', 'Settings', 'Prompts', 'Continue', 'Restore',
     'SessionMigration', 'NewGame', 'Localization', 'TitleLocale', 'SourceFonts',
-    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction'))}
+    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections'))}
 SUFFIXES = dict(zip(ROLES, ('.encroom', '.encbars', '.encbattle', '.encround',
     '.enchouse', '.encitems', '.encaudio', '.encphone', '.encchoices', '.encsavemenu',
     '.encsession', '.encsettings', '.encprompts', '.enccontinue', '.encrestore',
     '.encmigration', '.encnewgame', '.enclocale', '.enctitlelocale', '.encfont',
-    '.encinput', '.encload', '.encbattle', '.encround', '.encintro')))
+    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect')))
 BATTLE_ROLES = {'Battle', 'EncounterBattle'}
 ROUND_ROLES = {'Round', 'EncounterRound'}
 
@@ -85,7 +85,7 @@ def validate_bindings(bindings, encounters):
         fields(row, ('id', 'role', 'path'), 'binding')
         role = row['role']
         require(type(role) is str and role in ROLES and type(row['id']) is int and
-                (row['id'] == ROLES[role] if ROLES[role] <= 22 or role == 'Introduction' else 256 <= row['id'] <= 0xffffffff), 'Unknown binding role/stable ID')
+                (row['id'] == ROLES[role] if ROLES[role] <= 22 or ROLES[role] >= 25 else 256 <= row['id'] <= 0xffffffff), 'Unknown binding role/stable ID')
         require(canonical(row['path']) and row['path'].endswith(SUFFIXES[role]) and len(row['path']) > len(SUFFIXES[role]), 'Unsafe or wrong-type binding path')
         require((ROLES[role] > 22 or role not in names) and row['id'] not in ids and row['path'] not in paths, 'Duplicate binding role/ID/path')
         names.add(role); ids.add(row['id']); paths.add(row['path'])

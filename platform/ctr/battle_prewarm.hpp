@@ -172,6 +172,9 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
     if(!p.renderer.finish_gpu_step(done,p.error)){house_error="Battle prewarm GPU failed: "+p.error;p.status.store(2);return;}
     ++p.gpu_steps;p.max_gpu_ms=std::max(p.max_gpu_ms,double(svcGetSystemTick()-started)/CPU_TICKS_PER_MSEC);
     if(done){
+        // Publish encounter readiness only after its jingle is checked. Deferred
+        // PCM admission must not add a first-use scan to the encounter request.
+        if(audio_player.available()&&!audio_player.prepare(p.battle.view().metadata().encounter_audio,p.error)){house_error="Battle prewarm audio failed: "+p.error;p.status.store(2);return;}
         if(!p.actions.load(p.round.view(),"romfs:/",p.error,true)){house_error="Battle prewarm actions failed: "+p.error;p.status.store(2);return;}
         std::vector<BattleRenderer::IndexedResident>().swap(p.indexed);std::vector<std::string>().swap(p.resident);
         p.retained={p.renderer.prepared_cpu_bytes()+p.metadata_bytes(),p.renderer.admitted_linear_bytes()};

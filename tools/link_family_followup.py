@@ -74,7 +74,9 @@ def load(root=ROOT):
 
 def adopt_sources(ex,data):
     for path,sha in data['sources'].items():
-        ex.text(path) if not path.startswith('Audio/') else ex.data(path)
+        if path.startswith('Audio/'):
+            ex.data(path) if hasattr(ex,'data') else ex.source(path)
+        else: ex.text(path)
         require(ex.sources.get(path,ex.sources.get('upstream/MOTHER-Encore/'+path))==sha,
                 'Family linking source mismatch: '+path)
 
@@ -139,7 +141,7 @@ def append_house(ex,house,room):
 def main():
     p=argparse.ArgumentParser(); p.add_argument('action',choices=['extract','verify']); a=p.parse_args()
     if a.action=='verify': load(); print('Family followup: source/IR admitted'); return
-    data=build(); (ROOT/IR).write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+    data=build(); (ROOT/IR).write_bytes((json.dumps(data,indent=2,ensure_ascii=False)+'\n').encode('utf-8'))
     review=dict(schema=1,commit=PIN,whole_handler_approved=False,sources=data['sources'],ir_sha256=digest(ROOT/IR),
                 scope=data['scope'],semantics={'phrase_order':'Source text starts before setflags; flag is set before the input gate',
                 'override_order':'Last matching NPC override wins; source order retained',
@@ -148,6 +150,6 @@ def main():
                 unsupported=['Minnie storage choices','inventory/item giving','later family programs'],
                 unverified=['manual test suites','emulator','hardware','audio audibility'])
     (ROOT/REVIEW).parent.mkdir(parents=True,exist_ok=True)
-    (ROOT/REVIEW).write_text(json.dumps(review,indent=2)+'\n',encoding='utf-8')
+    (ROOT/REVIEW).write_bytes((json.dumps(review,indent=2)+'\n').encode('utf-8'))
     print('Family followup source IR extracted')
 if __name__=='__main__': main()

@@ -16,7 +16,7 @@
     "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe"
   },
-  "ir_sha256": "29d1a2b3fa80cd867666f2ac68a6cbb11a601d2a0ebe8b0c07e6e60bc1448865",
+  "ir_sha256": "d9c8c8f7347a4958fb44b6f88a147d9fcd03aa4f6f4fc67812accad6ce606b9c",
   "scope": "Two post-Dad key requests and repeats only; no storage/item/Podunk continuation",
   "semantics": {
     "phrase_order": "Source text starts before setflags; flag is set before the input gate",

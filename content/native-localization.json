@@ -78124,10 +78124,58 @@
       "origin": "Data/Dialogue/Podunk/carol_panic.yaml:0:checked native token projection"
     },
     {
+      "identity": "house.expected/102/5",
+      "key": "3/0:0:1/1/72:A mess of notes and newspaper clippings about the George and Maria case.3/0:0:1/1/34:One note sticks out in particular.3/0:0:1/1/63:(A curiosity the police uncovered was Maria's missing necklace.3/0:0:1/1/66:It was a family pendant passed down from generation to generation.5/0:0:1/1/90:She always kept it safe, but when she went missing, the necklace was nowhere to be found.)",
+      "expected": "3/0:0:1/1/72:A mess of notes and newspaper clippings about the George and Maria case.3/0:0:1/1/34:One note sticks out in particular.3/0:0:1/1/63:(A curiosity the police uncovered was Maria's missing necklace.3/0:0:1/1/66:It was a family pendant passed down from generation to generation.5/0:0:1/1/90:She always kept it safe, but when she went missing, the necklace was nowhere to be found.)",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/107/1",
+      "key": "5/0:0:1/1/28:Now's not the time for that!",
+      "expected": "5/0:0:1/1/28:Now's not the time for that!",
+      "origin": "Data/Dialogue/Reusable/nottime.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/108/5",
+      "key": "3/0:0:1/1/36:Two photographs stand on the drawer.3/0:0:1/1/61:The first one has your family standing in front of the house.3/0:0:1/1/34:Everyone's overjoyed beyond words.3/0:0:1/1/33:The second is an old sepia photo.5/0:0:1/1/54:A couple standing beside each other with similar glee.",
+      "expected": "3/0:0:1/1/36:Two photographs stand on the drawer.3/0:0:1/1/61:The first one has your family standing in front of the house.3/0:0:1/1/34:Everyone's overjoyed beyond words.3/0:0:1/1/33:The second is an old sepia photo.5/0:0:1/1/54:A couple standing beside each other with similar glee.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml:0:checked native token projection"
+    },
+    {
       "identity": "house.expected/11/3",
       "key": "3/0:0:1/1/48:There's an old music box hidden inside the doll.3/0:0:2/2/0:1/11: opened it.5/0:0:1/1/30:A broken melody began to play.",
       "expected": "3/0:0:1/1/48:There's an old music box hidden inside the doll.3/0:0:2/2/0:1/11: opened it.5/0:0:1/1/30:A broken melody began to play.",
       "origin": "Data/Dialogue/Podunk/dollmelody.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/113/3",
+      "key": "3/0:0:1/1/21:Your electric guitar.3/0:0:1/1/40:Your old man got you this for Christmas.5/0:0:1/1/46:Mick sometimes sneaks up to hear you rock out.",
+      "expected": "3/0:0:1/1/21:Your electric guitar.3/0:0:1/1/40:Your old man got you this for Christmas.5/0:0:1/1/46:Mick sometimes sneaks up to hear you rock out.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/116/3",
+      "key": "3/0:0:3/1/2:A 2/0:1/24:do Entertainment System.3/0:0:1/1/51:Inside is a cartridge with a dozen games packed in.5/0:0:1/1/42:Whoever made this must be really generous.",
+      "expected": "3/0:0:3/1/2:A 2/0:1/24:do Entertainment System.3/0:0:1/1/51:Inside is a cartridge with a dozen games packed in.5/0:0:1/1/42:Whoever made this must be really generous.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/119/2",
+      "key": "3/0:0:1/1/30:TV with a built-in VHS player.5/0:0:1/1/77:Star Wars, Rambo and a bunch of other movie tapes are scrambled on the floor.",
+      "expected": "3/0:0:1/1/30:TV with a built-in VHS player.5/0:0:1/1/77:Star Wars, Rambo and a bunch of other movie tapes are scrambled on the floor.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/121/2",
+      "key": "3/0:0:1/1/88:There's a man on the news being interviewed about a recent surge in paranormal activity.5/0:0:1/1/40:He sure is waving his arms around a lot.",
+      "expected": "3/0:0:1/1/88:There's a man on the news being interviewed about a recent surge in paranormal activity.5/0:0:1/1/40:He sure is waving his arms around a lot.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/123/1",
+      "key": "5/0:0:1/1/29:A treasure trove of old toys.",
+      "expected": "5/0:0:1/1/29:A treasure trove of old toys.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml:0:checked native token projection"
     },
     {
       "identity": "house.expected/14/1",
@@ -78412,6 +78460,42 @@
       "origin": "Data/Dialogue/Podunk/minnie_door_open.yaml:0:checked native token projection"
     },
     {
+      "identity": "house.expected/83/4",
+      "key": "3/5:Carol35:Audio/Sound effects/text/Female.mp31/1/23:So you're leaving, huh?3/5:Carol35:Audio/Sound effects/text/Female.mp31/1/46:I guess all boys have to leave home someday...3/5:Carol35:Audio/Sound effects/text/Female.mp38/1/36:If you want to know where I put the 3/6:ea8b2c1/12:Basement Key4/0:1/15:, I gave it to 3/6:ea8b2c1/5:Mick.4/0:5/5:Carol35:Audio/Sound effects/text/Female.mp31/1/26:Don't tell Mimmie, though.",
+      "expected": "3/5:Carol35:Audio/Sound effects/text/Female.mp31/1/23:So you're leaving, huh?3/5:Carol35:Audio/Sound effects/text/Female.mp31/1/46:I guess all boys have to leave home someday...3/5:Carol35:Audio/Sound effects/text/Female.mp38/1/36:If you want to know where I put the 3/6:ea8b2c1/12:Basement Key4/0:1/15:, I gave it to 3/6:ea8b2c1/5:Mick.4/0:5/5:Carol35:Audio/Sound effects/text/Female.mp31/1/26:Don't tell Mimmie, though.",
+      "origin": "Data/Dialogue/Podunk/carol_key.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/87/1",
+      "key": "5/5:Carol35:Audio/Sound effects/text/Female.mp31/1/55:I made sure to keep all the Orange Juice away from her.",
+      "expected": "5/5:Carol35:Audio/Sound effects/text/Female.mp31/1/55:I made sure to keep all the Orange Juice away from her.",
+      "origin": "Data/Dialogue/Podunk/carol_key.yaml:4:checked native token projection"
+    },
+    {
+      "identity": "house.expected/88/3",
+      "key": "3/5:Carol35:Audio/Sound effects/text/Female.mp38/1/11:I gave the 3/6:ea8b2c1/12:Basement Key4/0:1/4: to 3/6:ea8b2c1/5:Mick.4/0:3/5:Carol35:Audio/Sound effects/text/Female.mp31/1/26:Don't tell Mimmie, though.5/5:Carol35:Audio/Sound effects/text/Female.mp31/1/55:I made sure to keep all the Orange Juice away from her.",
+      "expected": "3/5:Carol35:Audio/Sound effects/text/Female.mp38/1/11:I gave the 3/6:ea8b2c1/12:Basement Key4/0:1/4: to 3/6:ea8b2c1/5:Mick.4/0:3/5:Carol35:Audio/Sound effects/text/Female.mp31/1/26:Don't tell Mimmie, though.5/5:Carol35:Audio/Sound effects/text/Female.mp31/1/55:I made sure to keep all the Orange Juice away from her.",
+      "origin": "Data/Dialogue/Podunk/carol_key_again.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/91/7",
+      "key": "3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/17:The Basement Key?3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/12:Ah, I see...3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/69:So you're also after the secret treasure in the basement, aren't you?3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/54:I'm talking about the lifetime supply of Orange Juice.3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/48:Unfortunately, the basement is locked right now.3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/59:I tried asking mom where the key is, but she won't tell me.5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/51:Maybe she'll listen to you, though. Try asking her.",
+      "expected": "3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/17:The Basement Key?3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/12:Ah, I see...3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/69:So you're also after the secret treasure in the basement, aren't you?3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/54:I'm talking about the lifetime supply of Orange Juice.3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/48:Unfortunately, the basement is locked right now.3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/59:I tried asking mom where the key is, but she won't tell me.5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/51:Maybe she'll listen to you, though. Try asking her.",
+      "origin": "Data/Dialogue/Podunk/mimmie_key.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/98/1",
+      "key": "5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/80:If you manage to unlock the basement, I'll find all of the Orange Juice for you.",
+      "expected": "5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/80:If you manage to unlock the basement, I'll find all of the Orange Juice for you.",
+      "origin": "Data/Dialogue/Podunk/mimmie_key.yaml:7:checked native token projection"
+    },
+    {
+      "identity": "house.expected/99/3",
+      "key": "3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/59:I tried asking mom where the key is, but she won't tell me.3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/51:Maybe she'll listen to you, though. Try asking her.5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/80:If you manage to unlock the basement, I'll find all of the Orange Juice for you.",
+      "expected": "3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/59:I tried asking mom where the key is, but she won't tell me.3/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/51:Maybe she'll listen to you, though. Try asking her.5/6:Mimmie32:Audio/Sound effects/text/Kid.mp31/1/80:If you manage to unlock the basement, I'll find all of the Orange Juice for you.",
+      "origin": "Data/Dialogue/Podunk/mimmie_key_again.yaml:0:checked native token projection"
+    },
+    {
       "identity": "house.speaker/0/4",
       "key": "DIALOGUE_PODUNK_CAROL_PANIC_SPEAKER_Carol",
       "expected": "Carol",
@@ -78664,16 +78748,100 @@
       "origin": "Data/Dialogue/Podunk/minnie_door_open.yaml:0:name"
     },
     {
+      "identity": "house.speaker/83/4",
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_SPEAKER_Carol",
+      "expected": "Carol",
+      "origin": "Data/Dialogue/Podunk/carol_key.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/87/1",
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_SPEAKER_Carol",
+      "expected": "Carol",
+      "origin": "Data/Dialogue/Podunk/carol_key.yaml:4:name"
+    },
+    {
+      "identity": "house.speaker/88/3",
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_AGAIN_SPEAKER_Carol",
+      "expected": "Carol",
+      "origin": "Data/Dialogue/Podunk/carol_key_again.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/91/7",
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_SPEAKER_Mimmie",
+      "expected": "Mimmie",
+      "origin": "Data/Dialogue/Podunk/mimmie_key.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/98/1",
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_SPEAKER_Mimmie",
+      "expected": "Mimmie",
+      "origin": "Data/Dialogue/Podunk/mimmie_key.yaml:7:name"
+    },
+    {
+      "identity": "house.speaker/99/3",
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_AGAIN_SPEAKER_Mimmie",
+      "expected": "Mimmie",
+      "origin": "Data/Dialogue/Podunk/mimmie_key_again.yaml:0:name"
+    },
+    {
       "identity": "house/0/4",
       "key": "DIALOGUE_PODUNK_CAROL_PANIC_0",
       "expected": "[@]Are you okay, [Ninten]?[WAIT@]What on earth is happening to our home?[WAIT@]I'm so scared...[WAIT@]If only your father were here now...",
       "origin": "Data/Dialogue/Podunk/carol_panic.yaml:0"
     },
     {
+      "identity": "house/102/5",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_PINBOARD_0",
+      "expected": "[@]A mess of notes and newspaper clippings about the George and Maria case.[WAIT@]One note sticks out in particular.[WAIT@](A curiosity the police uncovered was Maria's missing necklace.[WAIT@]It was a family pendant passed down from generation to generation.[WAIT@]She always kept it safe, but when she went missing, the necklace was nowhere to be found.)",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml:0"
+    },
+    {
+      "identity": "house/107/1",
+      "key": "DIALOGUE_REUSABLE_NOTTIME_0",
+      "expected": "[@]Now's not the time for that!",
+      "origin": "Data/Dialogue/Reusable/nottime.yaml:0"
+    },
+    {
+      "identity": "house/108/5",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_OLD_PHOTOS_0",
+      "expected": "[@]Two photographs stand on the drawer.[WAIT@]The first one has your family standing in front of the house.[WAIT@]Everyone's overjoyed beyond words.[WAIT@]The second is an old sepia photo.[WAIT@]A couple standing beside each other with similar glee.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml:0"
+    },
+    {
       "identity": "house/11/3",
       "key": "DIALOGUE_PODUNK_DOLLMELODY_0",
       "expected": "[@]There's an old music box hidden inside the doll.[WAIT@][PartyLead] opened it.[WAIT@]A broken melody began to play.",
       "origin": "Data/Dialogue/Podunk/dollmelody.yaml:0"
+    },
+    {
+      "identity": "house/113/3",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_ELECTRIC_GUITAR_0",
+      "expected": "[@]Your electric guitar.[WAIT@]Your old man got you this for Christmas.[WAIT@]Mick sometimes sneaks up to hear you rock out.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml:0"
+    },
+    {
+      "identity": "house/116/3",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_NES_0",
+      "expected": "[@]A [Ninten]do Entertainment System.[WAIT@]Inside is a cartridge with a dozen games packed in.[WAIT@]Whoever made this must be really generous.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml:0"
+    },
+    {
+      "identity": "house/119/2",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_TV_0",
+      "expected": "[@]TV with a built-in VHS player.[WAIT@]Star Wars, Rambo and a bunch of other movie tapes are scrambled on the floor.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml:0"
+    },
+    {
+      "identity": "house/121/2",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_DOWNSTAIRS_TV_0",
+      "expected": "[@]There's a man on the news being interviewed about a recent surge in paranormal activity.[WAIT@]He sure is waving his arms around a lot.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml:0"
+    },
+    {
+      "identity": "house/123/1",
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_MIMMIE_TOYBOX_0",
+      "expected": "[@]A treasure trove of old toys.",
+      "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml:0"
     },
     {
       "identity": "house/14/1",
@@ -78956,6 +79124,42 @@
       "key": "DIALOGUE_PODUNK_MINNIE_DOOR_OPEN_0",
       "expected": "[@]Woah! You got the door to open![WAIT@]Now hurry up and check if Mimmie's okay!",
       "origin": "Data/Dialogue/Podunk/minnie_door_open.yaml:0"
+    },
+    {
+      "identity": "house/83/4",
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_0",
+      "expected": "[@]So you're leaving, huh?[WAIT@]I guess all boys have to leave home someday...[WAIT@]If you want to know where I put the [color]Basement Key[/color], I gave it to [color]Mick.[/color][WAIT@]Don't tell Mimmie, though.",
+      "origin": "Data/Dialogue/Podunk/carol_key.yaml:0"
+    },
+    {
+      "identity": "house/87/1",
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_4",
+      "expected": "[@]I made sure to keep all the Orange Juice away from her.",
+      "origin": "Data/Dialogue/Podunk/carol_key.yaml:4"
+    },
+    {
+      "identity": "house/88/3",
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_AGAIN_0",
+      "expected": "[@]I gave the [color]Basement Key[/color] to [color]Mick.[/color][WAIT@]Don't tell Mimmie, though.[WAIT@]I made sure to keep all the Orange Juice away from her.",
+      "origin": "Data/Dialogue/Podunk/carol_key_again.yaml:0"
+    },
+    {
+      "identity": "house/91/7",
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_0",
+      "expected": "[@]The Basement Key?[WAIT@]Ah, I see...[WAIT@]So you're also after the secret treasure in the basement, aren't you?[WAIT@]I'm talking about the lifetime supply of Orange Juice.[WAIT@]Unfortunately, the basement is locked right now.[WAIT@]I tried asking mom where the key is, but she won't tell me.[WAIT@]Maybe she'll listen to you, though. Try asking her.",
+      "origin": "Data/Dialogue/Podunk/mimmie_key.yaml:0"
+    },
+    {
+      "identity": "house/98/1",
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_7",
+      "expected": "[@]If you manage to unlock the basement, I'll find all of the Orange Juice for you.",
+      "origin": "Data/Dialogue/Podunk/mimmie_key.yaml:7"
+    },
+    {
+      "identity": "house/99/3",
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_AGAIN_0",
+      "expected": "[@]I tried asking mom where the key is, but she won't tell me.[WAIT@]Maybe she'll listen to you, though. Try asking her.[WAIT@]If you manage to unlock the basement, I'll find all of the Orange Juice for you.",
+      "origin": "Data/Dialogue/Podunk/mimmie_key_again.yaml:0"
     },
     {
       "identity": "input.ui_toggle",
@@ -79456,6 +79660,18 @@
     "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": "0c07ab7c8f6c64708c9f41571429967827ba7ac82d8dc72a156aad84d17cd07a",
     "Data/Dialogue/Podunk/minnie_run_tutorial.yaml": "e97378db5d1dcd911d0febf1397c8462949c5974f15beef0e176f00266847aa5",
     "Data/Dialogue/Podunk/minnie_door_open.yaml": "6ceb4598c44bc85803fe05ca43d46cc2ab5e32cc5a8692318bc358431fbf3eff",
+    "Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
+    "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
+    "Data/Dialogue/Podunk/mimmie_key.yaml": "c0989d81319572e41e8bc00de168133bd6254f1c46f49da50711deb40006abf9",
+    "Data/Dialogue/Podunk/mimmie_key_again.yaml": "b409051db29ade47a736f3d5778f735e137439cb64fc8b79c13e88cc6a2982be",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml": "2ca21079ca52fe65a9c5c5a2e97027134ad6e0fdab0da9bf968fa52e974ba09f",
+    "Data/Dialogue/Reusable/nottime.yaml": "abc69fea985155bbc16f1e6cc5732307c0410bf6eb296d205b5cdc79a241f383",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml": "21339eb0d16d37d7a0395636dd5078c28d76652296a4f5103b093469f3974810",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml": "b5b50deba2216aab659cac7dea5386f692d59d3504b648d595762d04a1d2c166",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml": "3732040066ff94144a48bdbac880eaa888dc2abb3a52ded902082573f1b85cd4",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
     "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
     "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
     "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
@@ -79931,6 +80147,118 @@
       "key": "DIALOGUE_PODUNK_MINNIE_DOOR_OPEN_0",
       "speaker_key": "DIALOGUE_PODUNK_MINNIE_DOOR_OPEN_SPEAKER_Minnie",
       "source": "Data/Dialogue/Podunk/minnie_door_open.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 83,
+      "count": 4,
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_0",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_KEY_SPEAKER_Carol",
+      "source": "Data/Dialogue/Podunk/carol_key.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 87,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_4",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_KEY_SPEAKER_Carol",
+      "source": "Data/Dialogue/Podunk/carol_key.yaml",
+      "phrase": "4"
+    },
+    {
+      "first": 88,
+      "count": 3,
+      "key": "DIALOGUE_PODUNK_CAROL_KEY_AGAIN_0",
+      "speaker_key": "DIALOGUE_PODUNK_CAROL_KEY_AGAIN_SPEAKER_Carol",
+      "source": "Data/Dialogue/Podunk/carol_key_again.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 91,
+      "count": 7,
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_0",
+      "speaker_key": "DIALOGUE_PODUNK_MIMMIE_KEY_SPEAKER_Mimmie",
+      "source": "Data/Dialogue/Podunk/mimmie_key.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 98,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_7",
+      "speaker_key": "DIALOGUE_PODUNK_MIMMIE_KEY_SPEAKER_Mimmie",
+      "source": "Data/Dialogue/Podunk/mimmie_key.yaml",
+      "phrase": "7"
+    },
+    {
+      "first": 99,
+      "count": 3,
+      "key": "DIALOGUE_PODUNK_MIMMIE_KEY_AGAIN_0",
+      "speaker_key": "DIALOGUE_PODUNK_MIMMIE_KEY_AGAIN_SPEAKER_Mimmie",
+      "source": "Data/Dialogue/Podunk/mimmie_key_again.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 102,
+      "count": 5,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_PINBOARD_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 107,
+      "count": 1,
+      "key": "DIALOGUE_REUSABLE_NOTTIME_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Reusable/nottime.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 108,
+      "count": 5,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_OLD_PHOTOS_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 113,
+      "count": 3,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_ELECTRIC_GUITAR_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 116,
+      "count": 3,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_NES_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 119,
+      "count": 2,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_TV_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 121,
+      "count": 2,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_DOWNSTAIRS_TV_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 123,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_MIMMIE_TOYBOX_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml",
       "phrase": "0"
     }
   ],

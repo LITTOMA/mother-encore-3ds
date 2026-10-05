@@ -277,7 +277,9 @@
     "Podunk/cutscenes/minnie_leave",
     "Podunk/cutscenes/pillow_attack",
     "Podunk/cutscenes/minnie_door",
-    "Podunk/minnie_run_tutorial"
+    "Podunk/minnie_run_tutorial",
+    "Podunk/carol_key",
+    "Podunk/mimmie_key"
   ],
   "sections": {
     "Resource": [
@@ -11073,6 +11075,20 @@
         "command_count": 11,
         "phrase_count": 3,
         "source_path_string": 269
+      },
+      {
+        "stable_id": 17,
+        "first_command": 531,
+        "command_count": 10,
+        "phrase_count": 2,
+        "source_path_string": 270
+      },
+      {
+        "stable_id": 18,
+        "first_command": 541,
+        "command_count": 10,
+        "phrase_count": 2,
+        "source_path_string": 271
       }
     ],
     "Command": [
@@ -18509,6 +18525,286 @@
         "value": 0,
         "duration": 0.5,
         "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 0,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 48,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 49,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 31,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 49,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 1,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 19,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 5,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 22,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 23,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0.5,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 0,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 51,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 0,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 32,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 52,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 31,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 48,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 1,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 33,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 19,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 1,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 5,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 22,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0,
+        "auxiliary_index": 4294967295
+      },
+      {
+        "opcode": 23,
+        "actor_index": 65535,
+        "phrase": 1,
+        "target_index": 4294967295,
+        "flags": 0,
+        "vector": [
+          0,
+          0
+        ],
+        "value": 0,
+        "duration": 0.5,
+        "auxiliary_index": 4294967295
       }
     ],
     "Binding": [
@@ -19970,7 +20266,7 @@
       "content/asset-receipts/graphics/ui/house/source.json": "53f5c978d4b7d728dda1bd24303653caeab4b2640aa5e1534ac1941b39ee928f",
       "reports/doll-sequence/native-parser-animation.json": "64dac6443afbd67490d3fbb8616427f310ac34369dad4fa804a04777195a2eef",
       "reports/doll-postwin/native-parser-animation.json": "a27f1abd99a61811fbc6d15a9708c39d1a21815c654aeacc40f23f269e5be2de",
-      "content/native-resource-catalog.json": "116a4e46a720fc7f9dfc0ecfe6b2db172da89c51a0638bf17966f631a78abdbe",
+      "content/native-resource-catalog.json": "13e528ee0cf3c4fbeef5920564f96566ba65d9309f71e3ceffba8276d744f4b4",
       "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
       "content/doll-entry.json": "c8fbae78356ac1e49121e7facbebe839aed2a8282f1aa93a40afcec7b0fe88fd",
       "content/native-world-effect.json": "3c768a5a89d51886180f80c7898472d1d0c56175b5798e3ef4ae979cf30bb4cd",
@@ -20128,6 +20424,13 @@
       "tools/link_pillow_content.py": "1cd363ab8081f9869ef8c3dad70d8aafa8cbedba9da96bf8d5841b03eae8e0c0",
       "tools/pillow_source_bindings.py": "889a83a7f4f562830921de4a730b58083090a79a5b7d426f30b90ba367df4e55",
       "content/pillow-source-bindings.json": "33abfb42daa248c6d2eee8ba026ffb7930b3a4055e28dd89250bb24b87ae5269",
+      "upstream/MOTHER-Encore/Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+      "upstream/MOTHER-Encore/Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
+      "upstream/MOTHER-Encore/Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
+      "upstream/MOTHER-Encore/Data/Dialogue/Podunk/mimmie_key.yaml": "c0989d81319572e41e8bc00de168133bd6254f1c46f49da50711deb40006abf9",
+      "upstream/MOTHER-Encore/Data/Dialogue/Podunk/mimmie_key_again.yaml": "b409051db29ade47a736f3d5778f735e137439cb64fc8b79c13e88cc6a2982be",
+      "content/family-followup-bindings.json": "d9c8c8f7347a4958fb44b6f88a147d9fcd03aa4f6f4fc67812accad6ce606b9c",
+      "tools/link_family_followup.py": "d0bde0150fa01951455d807632b0fe53c298945fd84aba9b2e2631e80de48b24",
       "tools/world_geometry.py": "b6133bc135d9b96d42899e085e4dab95de9a061272609c98deee2566537128e0",
       "tools/house_layers.py": "069ba6a9d2c278357f72067a28cb50a98e15a1867807b4fd3d0609a16ab35a5f",
       "tools/character_animation.py": "05acd6bc776d5654e1fbf48d442b22a574c5e42c7e7144e68090d20d5b13bc4f",
@@ -20141,7 +20444,7 @@
       "tools/upstream.py": "de58abb2f289d282de4c6d5883b2399fb32d59537ee3219acd73fb3ceed86dfe",
       "tools/map_asset.py": "f42c06b290d01258e572038a4d1cd98f3cbe543d777c7c9cec7ed70e7fc7db42",
       "tools/world_program_bindings.py": "066723a4ab3f89f51e499cba96d87bf8718ad6bf8499ab5f35f905d677f24a22",
-      "tools/extract_native_content.py": "9b70b239b6a589410d7d06e25008b1aeb4fbcacb881ef9769f1064f70c12dc3e",
+      "tools/extract_native_content.py": "cb15d6789b091a002f3d55fb9f8135ac13d70376ed49066cdb19a8d82ee4170a",
       "tools/programme_lowering_recipe.py": "98abfe4d45e9bb2f4032fe7646b396b39d1c81bb555d05f938de9ea4c33fefa3",
       "content/programme-lowering-recipe.json": "f4f065067e5c13d0fe77547f8c88f5b3630fbe9794fb822ed66115f4f57e81b0"
     },

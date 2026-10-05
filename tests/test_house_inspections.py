@@ -52,6 +52,12 @@ class InspectionParserTests(unittest.TestCase):
         with self.assertRaises(ValueError):lower(ir,house)
         obj['default_supported']=True;house['dialogues']=[]
         with self.assertRaises(ValueError):lower(ir,house)
+        house['dialogues']=[dict(source_path='Data/Dialogue/item.yaml')]*2
+        with self.assertRaises(ValueError):lower(ir,house)
+        house['dialogues']=[dict(source_path='Data/Dialogue/item.yaml'),
+                           dict(source_path='Data/Dialogue/other.yaml'),
+                           dict(source_path='Data/Dialogue/other.yaml')]
+        self.assertEqual(lower(ir,house)['Objects'][0][10],0)
         obj['default_supported']=False;obj['unknown']=1
         with self.assertRaises(ValueError):lower(ir,house)
 

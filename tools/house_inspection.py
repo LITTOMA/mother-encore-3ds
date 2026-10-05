@@ -120,7 +120,9 @@ def lower(ir, house):
     require(house['commit'] == PIN, 'Inspection House pin')
     dialogue_map = {}
     for index, row in enumerate(house['dialogues']):
-        require(row['source_path'] not in dialogue_map, 'Ambiguous House dialogue path'); dialogue_map[row['source_path']] = index
+        # Programme phrases legitimately share a YAML path. Inspections admit
+        # only a single literal phrase and require uniqueness for their own path.
+        dialogue_map.setdefault(row['source_path'], []).append(index)
     pool = bytearray(b'\0'); offsets = {'':0}
     def string(value):
         require(isinstance(value,str) and '\0' not in value and len(value.encode()) <= 4096, 'Invalid inspection string')
@@ -130,7 +132,9 @@ def lower(ir, house):
         require(type(supported) is bool and safe_path(path), 'Invalid inspection dialogue binding')
         if not supported:
             require(path not in dialogue_map, 'Unsupported inspection path accidentally flattened'); return NONE
-        require(path in dialogue_map, 'Missing linked House inspection dialogue: ' + path); return dialogue_map[path]
+        require(path in dialogue_map, 'Missing linked House inspection dialogue: ' + path)
+        require(len(dialogue_map[path])==1, 'Ambiguous House inspection dialogue path')
+        return dialogue_map[path][0]
     rows = []; overrides = []
     for index, obj in enumerate(ir['objects']):
         fields(obj, ('id','source_path','position','interact_center','interact_extents','prompt_offset','player_turn','collision_mask','appear_flag','disappear_flag','seen_key','default_dialogue','default_supported','overrides'), 'inspection object')

@@ -1,6 +1,6 @@
 {
-  "schema": 1,
-  "capability": 1,
+  "schema": 2,
+  "capability": 2,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "sources": {
     "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
@@ -23,8 +23,9 @@
     "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666"
   },
   "dependencies": {
-    "content/native-house.json": "2c0c937d92cc70a3631b70faed9dbbb4cf34901cd7d8f30900666a6a47a3f5ac",
-    "content/phone-stage/presentation.json": "baf161acb30d6e9947c3aea13703c03ef169072c150244e6c528b0ffb32f84ca"
+    "content/native-house.json": "4d3dc69b36c3ff18ae29b10107d94a8b20b7d61d7de2bb6392de40e42434d0ff",
+    "content/phone-stage/presentation.json": "baf161acb30d6e9947c3aea13703c03ef169072c150244e6c528b0ffb32f84ca",
+    "content/native-house-inspections.json": "f8658ef30ec12829ee8268ee5c871492392ecaf3ba9ca1e92f7c024448c1fc21"
   },
   "choices": [
     "Both",
@@ -295,8 +296,184 @@
         1,
         2
       ]
+    },
+    {
+      "kind": 4,
+      "index": 0,
+      "category": 1,
+      "source_path": "Objects/interact_dialog",
+      "position": [
+        503.0,
+        349.0
+      ],
+      "center": [
+        503.0,
+        349.0
+      ],
+      "extents": [
+        20.0,
+        8.0
+      ],
+      "offset": [
+        2.0,
+        -40.0
+      ]
+    },
+    {
+      "kind": 4,
+      "index": 1,
+      "category": 1,
+      "source_path": "Objects/interact_dialog3",
+      "position": [
+        584.0,
+        456.0
+      ],
+      "center": [
+        584.0,
+        456.0
+      ],
+      "extents": [
+        20.0,
+        12.0
+      ],
+      "offset": [
+        0.0,
+        -10.0
+      ]
+    },
+    {
+      "kind": 4,
+      "index": 2,
+      "category": 1,
+      "source_path": "Objects/interact_dialog7",
+      "position": [
+        531.0,
+        353.0
+      ],
+      "center": [
+        531.0,
+        353.0
+      ],
+      "extents": [
+        8.0,
+        12.0
+      ],
+      "offset": [
+        0.0,
+        -32.0
+      ]
+    },
+    {
+      "kind": 4,
+      "index": 3,
+      "category": 1,
+      "source_path": "Objects/interact_dialog4",
+      "position": [
+        545.0,
+        454.0
+      ],
+      "center": [
+        545.0,
+        454.0
+      ],
+      "extents": [
+        10.711999893188477,
+        10.479999542236328
+      ],
+      "offset": [
+        -2.0,
+        -10.0
+      ]
+    },
+    {
+      "kind": 4,
+      "index": 4,
+      "category": 1,
+      "source_path": "Objects/interact_dialog6",
+      "position": [
+        416.0,
+        456.0
+      ],
+      "center": [
+        416.0,
+        456.0
+      ],
+      "extents": [
+        12.0,
+        12.0
+      ],
+      "offset": [
+        -2.0,
+        -10.0
+      ]
+    },
+    {
+      "kind": 4,
+      "index": 5,
+      "category": 1,
+      "source_path": "Objects/interact_dialog2",
+      "position": [
+        518.0,
+        456.0
+      ],
+      "center": [
+        518.0,
+        456.0
+      ],
+      "extents": [
+        16.18400001525879,
+        15.336000442504883
+      ],
+      "offset": [
+        2.0,
+        -12.0
+      ]
+    },
+    {
+      "kind": 4,
+      "index": 6,
+      "category": 1,
+      "source_path": "Objects/interact_dialog8",
+      "position": [
+        204.0,
+        778.0
+      ],
+      "center": [
+        204.0,
+        778.0
+      ],
+      "extents": [
+        35.31367874145508,
+        21.633480072021484
+      ],
+      "offset": [
+        3.0,
+        -20.0
+      ]
+    },
+    {
+      "kind": 4,
+      "index": 7,
+      "category": 1,
+      "source_path": "Objects/interact_dialog5",
+      "position": [
+        116.0,
+        72.0
+      ],
+      "center": [
+        116.0,
+        72.0
+      ],
+      "extents": [
+        20.0,
+        12.0
+      ],
+      "offset": [
+        5.0,
+        -18.0
+      ]
     }
   ],
-  "scope": "Static source visible A+arrow pose, CTR A maps ui_accept; current supported NPC/door/phone ray rectangles. Additional occlusion supplied by caller; no general Godot broadphase or Show/Float/Hide/Press choreography.",
+  "scope": "Static source visible A+arrow pose, CTR A maps ui_accept; current supported NPC/door/phone/inspection ray rectangles. Additional occlusion supplied by caller; no general Godot broadphase or Show/Float/Hide/Press choreography.",
   "license_review": "Pinned LICENSE permits original art/fonts in this game-related fork; upstream conditions retained, no MIT relicensing."
 }

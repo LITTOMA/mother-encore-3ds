@@ -28,6 +28,8 @@ def main():
     from native_storage import stage_files as storage_data_files
     files.update(storage_data_files(source))
     files.update(item_files(source))
+    from item_details import stage_files as item_details_files
+    files.update(item_details_files(source))
     from native_input import stage_files as input_files
     files.update(input_files(source))
     from native_phone import stage_files as phone_files

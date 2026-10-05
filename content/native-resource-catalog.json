@@ -158,6 +158,11 @@
       "id": 28,
       "role": "Storage",
       "path": "data/opening.encstorage"
+    },
+    {
+      "id": 29,
+      "role": "ItemDetails",
+      "path": "data/opening.encdetails"
     }
   ],
   "encounters": [

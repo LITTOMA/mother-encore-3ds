@@ -159,6 +159,8 @@ upstream::BattleActionPresentation round_presentation;
 upstream::SourceRandom battle_random{0};
 RoundRenderer round_renderer;
 upstream::ItemData items_data;
+upstream::ItemDetailsData item_details_data;
+ItemDetailsRenderer item_details_renderer;
 upstream::InventoryState session_inventory;
 upstream::StorageData storage_data;
 upstream::StorageState session_storage;
@@ -353,7 +355,7 @@ bool select_native_locale(std::string_view code,bool persist,std::string&error){
     if(ok&&reload_title)ok=continue_renderer.load(continue_data,"romfs:/",error);
     if(ok&&persist){::mkdir("sdmc:/3ds",0777);::mkdir("sdmc:/3ds/encore-native",0777);ok=upstream::write_locale_preference(locale_selection,"sdmc:/3ds/encore-native/language.encprefs",error);}
     if(!ok){const std::string problem=error;std::string restore;if(locale_selection.select(previous,restore)){const auto i=locale_catalog.locale_index(previous);if(!locale_font.select_font_at_safe_boundary(locale_catalog.locales()[size_t(i)].font,restore)||!locale_font.admit_selected_font(restore))house_error="Locale rollback failed: "+restore;if(reload_title&&!continue_renderer.load(continue_data,"romfs:/",restore))house_error="Title locale rollback failed: "+restore;}error=problem;return false;}
-    texture_owner_checkpoint("locale-admitted");battle_renderer.attach_source_font(&locale_font);new_game_setup.set_locale(&locale_selection);items_renderer.set_locale(&locale_selection);choice_renderer.set_locale(&locale_selection);bind_localized_house(gameplay_scene->presentation);locale_status.clear();return true;
+    texture_owner_checkpoint("locale-admitted");battle_renderer.attach_source_font(&locale_font);new_game_setup.set_locale(&locale_selection);items_renderer.set_locale(&locale_selection);item_details_renderer.set_locale(locale_selection.code());choice_renderer.set_locale(&locale_selection);bind_localized_house(gameplay_scene->presentation);locale_status.clear();return true;
 }
 bool initialize_localization(std::string&error){
     if(locale_catalog.valid())return select_native_locale(locale_selection.code(),false,error);
@@ -435,7 +437,8 @@ bool ensure_house_graphics(std::string&error){
     wait_for_gpu_idle();LoadingScope loading("Preparing house graphics",4);
     if(!loading.step([&]{return opening_actor.load(opening_data.view(),error);},"room-atlases")||
        !loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error);},"house-atlases")||
-       !loading.step([&]{return items_renderer.load(items_data.view(),"romfs:/",error);},"item-atlases")||
+       !loading.step([&]{if(!items_renderer.load(items_data.view(),"romfs:/",error)||!item_details_renderer.load(item_details_data.view(),items_data.view(),"romfs:/",error))return false;
+           item_details_renderer.set_locale(locale_selection.code());items_renderer.set_details(&item_details_renderer);storage_renderer.set_details(&item_details_renderer);return true;},"item-atlases")||
        !loading.step([&]{
            if(!audio_player.available())return true;
            const auto room=opening_data.view();
@@ -923,7 +926,7 @@ bool load_house(std::string& error){
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count());
     return true;
 }
-void free_house(){cancel_battle_prewarm();std::string ignored;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
+void free_house(){cancel_battle_prewarm();std::string ignored;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){
@@ -1118,7 +1121,7 @@ int main(int argc,char** argv){
     loading_top=top;
     if(!resource_catalog.load_file("romfs:/data/native.encresources",error)||!resource_catalog.verify_files("romfs:/",error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
     if(!loading_indicator.load("romfs:/",resource_catalog.path(ResourceRole::LoadingIndicator).c_str(),error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
-    { LoadingScope loading("Starting game",21);
+    { LoadingScope loading("Starting game",22);
     // Keep checked metadata for saves/reference view, but admit only UI glyph
     // textures. Full encounter preparation belongs to house scene admission.
     if(!loading.step([&]{return load_house(error);},"room-metadata")||
@@ -1128,6 +1131,7 @@ int main(int argc,char** argv){
        !loading.step([&]{return round_data.load_file(resource_path(ResourceRole::Round).c_str(),error);},"round-metadata")||
        !loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);},"house-metadata")||
        !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
+       !loading.step([&]{return item_details_data.load_file(resource_path(ResourceRole::ItemDetails).c_str(),error)&&item_details_data.view().bind_items(items_data.view(),error);},"item-details-metadata")||
        !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
        !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")||
@@ -1427,6 +1431,7 @@ int main(int argc,char** argv){
         const bool draw_house=!new_game_setup.active()&&(!draw_introduction||introduction_house_committed)&&(!continue_menu.is_open()||continue_menu.pose().world_visible);
         PROFILE_MARK(0);
         if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))continue;
+        if(session_state_ready&&!session_state.characters.empty())item_details_renderer.set_nickname(session_state.characters.front().nickname);
         record_entry_presented();locale_font.begin_frame();storage_counter_font.begin_frame();if(draw_introduction&&!introduction_renderer.begin_frame())introduction_render_error="Introduction font frame ownership rejected";
         PROFILE_MARK(1);
         C2D_TargetClear(top,loading_indicator.background_color());C2D_TargetClear(bottom,dark);

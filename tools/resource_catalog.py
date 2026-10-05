@@ -26,12 +26,12 @@ ROLES = {name: index + 1 for index, name in enumerate((
     'Room', 'Blackbars', 'Battle', 'Round', 'House', 'Items', 'Audio', 'Phone',
     'Choices', 'SaveMenu', 'Session', 'Settings', 'Prompts', 'Continue', 'Restore',
     'SessionMigration', 'NewGame', 'Localization', 'TitleLocale', 'SourceFonts',
-    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails'))}
+    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment'))}
 SUFFIXES = dict(zip(ROLES, ('.encroom', '.encbars', '.encbattle', '.encround',
     '.enchouse', '.encitems', '.encaudio', '.encphone', '.encchoices', '.encsavemenu',
     '.encsession', '.encsettings', '.encprompts', '.enccontinue', '.encrestore',
     '.encmigration', '.encnewgame', '.enclocale', '.enctitlelocale', '.encfont',
-    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails')))
+    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield')))
 BATTLE_ROLES = {'Battle', 'EncounterBattle'}
 ROUND_ROLES = {'Round', 'EncounterRound'}
 

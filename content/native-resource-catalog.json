@@ -163,6 +163,11 @@
       "id": 29,
       "role": "ItemDetails",
       "path": "data/opening.encdetails"
+    },
+    {
+      "id": 30,
+      "role": "FieldEquipment",
+      "path": "data/opening.encfield"
     }
   ],
   "encounters": [

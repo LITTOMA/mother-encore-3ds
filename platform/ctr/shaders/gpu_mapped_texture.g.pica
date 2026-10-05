@@ -9,11 +9,12 @@
  ; Integer pixel coordinates times 1/128 or 1/256 are exact binary values.
  ; Transform the left/top and width once; all four original corners retain
  ; exactly the same position, UV endpoints, order and winding.
- mul r0.x, v0.y, scale.y
+ mov r2, v0
+ mul r0.x, scale.y, r2.y
  add r0.x, scale.z, -r0.x
- mul r0.y, v0.x, scale.x
+ mul r0.y, scale.x, r2.x
  add r0.y, scale.w, -r0.y
- mul r0.z, v0.z, scale.x
+ mul r0.z, scale.x, r2.z
  mov position.z, values.w
  mov position.w, values.y
  mov tex0.z, values.x

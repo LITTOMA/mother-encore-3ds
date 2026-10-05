@@ -145,3 +145,47 @@ RNG advance or unqualified hardware claim is part of this checkpoint.
 
 These measurements belong to the scoped checkpoint described above. They do
 not establish current whole-suite, complete-game or physical-hardware validation.
+
+
+## Direct mapped texture sampling
+
+The optional texture backend now admits two repeated barrel layers with the
+existing separable X oscillation / Y compression contract. It is selected by
+loaded capabilities, never an encounter name or a per-battle switch. Pillow's
+existing row-linear backend and 320x180 reference fallback are unchanged.
+
+A prepared eight-pixel secant plan encloses each source coordinate and cached
+trigonometric basis. Frame preparation updates source phases/movement, checks
+all interior pixel centers against that enclosure, and accepts a texture strip
+only when its possible source samples have the same checked source index.
+Unsafe strips subdivide; one-pixel leaves snap the original scalar sample to
+its exact source texel center. Period seams split before GPU normalization;
+non-power-of-two source images are sampled in their padded 256x256 textures.
+No frame color buffer, palette blending loop, texture upload, frame allocation,
+time quantization or RNG calls are part of this direct path.
+
+The fixed palette-row adaptation is applied before GPU texture creation.
+Weighted base palettes and two binary OR/AND corrections reproduce every
+finite palette pair of the existing CPU blend, including the admitted second
+layer opacity. The bounded solver rejects palettes it cannot decompose exactly;
+it does not substitute a quantized hardware alpha. Three draws use identical
+nearest-sampled geometry and restore Citro2D state afterwards.
+
+The batch cap is 32,768 strips and six 256x256 RGBA8 source-derived textures:
+2,883,584 LINEAR bytes. The optional CPU secant plan is 576,000 bytes at400x240;
+it replaces the Doll region certificate table rather than retaining both. The
+encounter LINEAR ceiling is now16 MiB, still constrained by actual free LINEAR
+and atomic admission. Metadata-based reservations include the new allocations
+only for eligible source shapes. Allocation, shape, phase or capacity rejection
+retains the prior checked CPU/span path without a partially rendered frame.
+
+The lower screen reports `GPU mapped textures`, strip count and scalar boundary
+pixel count only when that frame actually selected the direct path. Transition
+mask composition continues to use the existing exact mask/span backend.
+
+CPU coordinate enclosures and finite palette reconstruction do not qualify
+undocumented physical PICA raster/interpolation precision. The additional f24
+allowance remains an experimental platform assumption, as with the existing
+row-texture backend. Real console pixel equivalence, visual behavior and FPS
+remain unverified. Manual mechanism positive/negative cases are retained; no
+test suite or sanitizer has been run for this change.

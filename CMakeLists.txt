@@ -818,6 +818,13 @@ if(BUILD_TESTING)
     add_test(NAME field_equipment_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_field_equipment tests.test_field_audio)
     set_tests_properties(field_equipment field_equipment_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 120)
 endif()
+if(BUILD_TESTING)
+    add_executable(encore_certified_texture_background_tests tests/certified_texture_background_tests.cpp)
+    target_link_libraries(encore_certified_texture_background_tests PRIVATE encore_core)
+    target_compile_options(encore_certified_texture_background_tests PRIVATE $<$<CXX_COMPILER_ID:GNU,Clang>:-ffp-contract=off>)
+    add_test(NAME certified_texture_background COMMAND encore_certified_texture_background_tests)
+    set_tests_properties(certified_texture_background PROPERTIES TIMEOUT 120)
+endif()
 include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.

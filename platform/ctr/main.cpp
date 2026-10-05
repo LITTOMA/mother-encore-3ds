@@ -1141,11 +1141,17 @@ void house_bottom(){
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
         if(battle_renderer.gpu_background_active())backend="GPU spans";
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        if(battle_renderer.gpu_texture_active())backend="GPU texture strips";
+        if(battle_renderer.gpu_texture_active())backend=battle_renderer.gpu_mapped_texture_active()?"GPU mapped textures":"GPU texture strips";
 #endif
 #endif
         const auto used=std::strlen(position);
         std::snprintf(position+used,sizeof(position)-used,"\nBackground: %s",backend);
+#if defined(ENCORE_EXPERIMENTAL_GPU_BACKGROUND) && defined(ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS)
+        if(battle_renderer.gpu_mapped_texture_active()){
+            const auto stats=battle_renderer.gpu_mapped_stats();const auto end=std::strlen(position);
+            std::snprintf(position+end,sizeof(position)-end," %u strips / %u scalar px",unsigned(battle_renderer.gpu_texture_strips()),stats.scalar_pixels);
+        }
+#endif
     }
     // Only changing numeric diagnostics are sampled at10Hz. Error, scope and
     // audio status are checked every frame and update their own cache at once.

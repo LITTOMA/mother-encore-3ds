@@ -12,6 +12,7 @@
 #include "encore/row_linear_background_kernel.hpp"
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
 #include "gpu_row_texture_batch.hpp"
+#include "gpu_mapped_texture_batch.hpp"
 #endif
 #endif
 #include "encore/crc32.hpp"
@@ -91,7 +92,9 @@ private:
     encore::RowLinearBackgroundKernel row_background_;
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
     encore::ctr::GpuRowTextureBatch gpu_row_texture_;
-    bool gpu_texture_surface_=false;
+    encore::CertifiedTextureBackgroundKernel mapped_background_;
+    encore::ctr::GpuMappedTextureBatch gpu_mapped_texture_;
+    bool gpu_texture_surface_=false,gpu_mapped_surface_=false;
 #endif
     bool gpu_surface_=false;size_t gpu_span_count_=0;
     float gpu_time_=0;uint32_t gpu_clear_=0;
@@ -172,9 +175,11 @@ public:
     bool gpu_background_ready()const{return gpu_background_.ready();}
     size_t gpu_background_spans()const{return gpu_span_count_;}
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-    bool gpu_texture_active()const{return gpu_texture_surface_;}
+    bool gpu_texture_active()const{return gpu_texture_surface_||gpu_mapped_surface_;}
+    bool gpu_mapped_texture_active()const{return gpu_mapped_surface_;}
+    encore::CertifiedTextureBackgroundKernel::Stats gpu_mapped_stats()const{return gpu_mapped_texture_.stats();}
     uint32_t gpu_texture_rows()const{return gpu_row_texture_.accepted_rows();}
-    size_t gpu_texture_strips()const{return gpu_row_texture_.count();}
+    size_t gpu_texture_strips()const{return gpu_mapped_surface_?gpu_mapped_texture_.count():gpu_row_texture_.count();}
     size_t gpu_texture_bytes()const{return gpu_row_texture_.tracked_bytes();}
 #endif
     bool gpu_row_linear_ready()const{return row_background_.ready();}
@@ -244,7 +249,7 @@ public:
     void free(){
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        gpu_row_texture_.release();gpu_texture_surface_=false;
+        gpu_row_texture_.release();gpu_mapped_texture_.release();mapped_background_.clear();gpu_texture_surface_=gpu_mapped_surface_=false;
 #endif
         gpu_mask_.release();mask_resource_=UINT32_MAX;gpu_mask_surface_=false;gpu_mask_count_=0;
         gpu_background_.release();row_background_.clear();gpu_surface_=false;gpu_span_count_=0;
@@ -267,6 +272,7 @@ public:
         gpu_background_.swap(other.gpu_background_);swap(row_background_,other.row_background_);swap(gpu_surface_,other.gpu_surface_);swap(gpu_span_count_,other.gpu_span_count_);swap(gpu_time_,other.gpu_time_);swap(gpu_clear_,other.gpu_clear_);
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
         gpu_row_texture_.swap(other.gpu_row_texture_);swap(gpu_texture_surface_,other.gpu_texture_surface_);
+        swap(mapped_background_,other.mapped_background_);gpu_mapped_texture_.swap(other.gpu_mapped_texture_);swap(gpu_mapped_surface_,other.gpu_mapped_surface_);
 #endif
 #endif
     }
@@ -310,13 +316,18 @@ public:
             C3D_TexSetFilter(&surface_texture_,GPU_NEAREST,GPU_NEAREST);C3D_TexSetWrap(&surface_texture_,GPU_CLAMP_TO_EDGE,GPU_CLAMP_TO_EDGE);return true;
         }
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
-        if(background_.region_fast_path())gpu_background_.create();
+        if(background_.region_fast_path()){
+            gpu_background_.create();
+        }
         else if(row_background_.ready()){
             if(!gpu_background_.create(16384))row_background_.clear();
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
             else gpu_row_texture_.create(gpu_layers_,surface_width_,surface_height_);
 #endif
         }
+#ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
+        if(mapped_background_.ready())gpu_mapped_texture_.create(gpu_layers_,surface_width_,surface_height_);
+#endif
 #endif
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
         if(mask_resource_<assets_.size()&&assets_[mask_resource_].mask_plan){
@@ -326,7 +337,7 @@ public:
         }
         admitted_linear_bytes_+=gpu_background_.capacity()*sizeof(encore::ctr::GpuRegionBatch::Span);
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        admitted_linear_bytes_+=gpu_row_texture_.linear_bytes();
+        admitted_linear_bytes_+=gpu_row_texture_.linear_bytes()+gpu_mapped_texture_.linear_bytes();
 #endif
 #endif
         gpu_layers_.clear();deferred_gpu_=false;done=true;return true;
@@ -355,7 +366,7 @@ public:
         bytes+=gpu_mask_.linear_bytes();
         bytes+=gpu_background_.capacity()*sizeof(encore::ctr::GpuRegionBatch::Span);
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        bytes+=gpu_row_texture_.linear_bytes();
+        bytes+=gpu_row_texture_.linear_bytes()+gpu_mapped_texture_.linear_bytes();
 #endif
 #endif
         return bytes;
@@ -364,6 +375,9 @@ public:
         size_t bytes=background_.allocated_bytes()+(surface_.capacity()+surface_offsets_.capacity())*sizeof(uint32_t)+assets_.capacity()*sizeof(Asset)+glyphs_.capacity()*sizeof(Glyph)+background_resources_.capacity()*sizeof(uint32_t)+gpu_layers_.capacity()*sizeof(encore::BackgroundKernel::Layer);
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
         bytes+=row_background_.prepared_bytes();
+#ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
+        bytes+=mapped_background_.prepared_bytes();
+#endif
 #endif
         for(const auto& a:assets_){bytes+=a.palette.capacity()*sizeof(uint32_t)+a.pixels.capacity()+a.texture_bytes.capacity()+a.path.capacity();if(a.all_frames)bytes+=a.all_frames->capacity();
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
@@ -388,7 +402,7 @@ public:
     bool set_background(const std::vector<BackgroundLayer>& layers,std::string& error,const encore::PreparationControl* control=nullptr){
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        gpu_row_texture_.release();gpu_texture_surface_=false;
+        gpu_row_texture_.release();gpu_mapped_texture_.release();mapped_background_.clear();gpu_texture_surface_=gpu_mapped_surface_=false;
 #endif
         gpu_mask_.release();mask_resource_=UINT32_MAX;gpu_mask_surface_=false;gpu_mask_count_=0;
         gpu_background_.release();row_background_.clear();gpu_surface_=false;gpu_span_count_=0;
@@ -428,10 +442,17 @@ public:
         if(!background_.prepare(prepared,surface_width_,surface_height_,error,control))return false;
         if(!background_.prepare_mapped_output(surface_offsets_.data(),surface_offsets_.size(),surface_offsets_.empty()?0:size_t(*std::max_element(surface_offsets_.begin(),surface_offsets_.end()))+1,error))return false;
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
-        // Both optional allocations must succeed; otherwise keep CPU dispatch.
+#ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
+        if(encore::CertifiedTextureBackgroundKernel::supported_shape(prepared,surface_width_,surface_height_))
+            mapped_background_.prepare(background_,surface_width_,surface_height_,control);
+#endif
+        // Optional allocations fail back to the existing exact CPU/span path.
         if(background_.region_fast_path()&&background_.prepare_spans()&&(deferred_gpu_||gpu_background_.create())){
 #ifdef ENCORE_GPU_CERTIFICATE_TABLES
-            background_.prepare_certificates(SIZE_MAX,control); // Optional bounded failure retains dynamic proofs.
+#ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
+            if(!mapped_background_.ready())
+#endif
+            background_.prepare_certificates(SIZE_MAX,control); // Keep dynamic proofs without a duplicate table.
 #endif
         }else if(row_background_.prepare(prepared,surface_width_,surface_height_,control)){
             // Different supported semantics: both layers can oscillate in X.
@@ -441,6 +462,9 @@ public:
             else if(!deferred_gpu_)gpu_row_texture_.create(prepared,surface_width_,surface_height_); // Optional experimental allocation.
 #endif
         }
+#ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
+        if(!deferred_gpu_&&mapped_background_.ready())gpu_mapped_texture_.create(prepared,surface_width_,surface_height_);
+#endif
 #endif
         if(control&&control->stopped()){error="Background preparation cancelled";return false;}
         if(deferred_gpu_)gpu_layers_=std::move(prepared);
@@ -469,7 +493,7 @@ public:
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
         gpu_mask_surface_=gpu_surface_=false;gpu_mask_count_=gpu_span_count_=0;direct_surface_=false;
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        gpu_texture_surface_=false;
+        gpu_texture_surface_=gpu_mapped_surface_=false;
 #endif
         if(resource==mask_resource_&&resource<assets_.size()&&assets_[resource].mask_plan&&gpu_mask_.ready()){
             const auto& plan=*assets_[resource].mask_plan;const auto canvas=plan.canvas();
@@ -489,7 +513,7 @@ public:
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
         gpu_surface_=false;gpu_span_count_=0;gpu_mask_surface_=false;gpu_mask_count_=0;
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        gpu_texture_surface_=false;
+        gpu_texture_surface_=gpu_mapped_surface_=false;
 #endif
 #endif
         for(auto resource:background_resources_)if(!read_frame(assets_[resource],0))return false;
@@ -497,6 +521,10 @@ public:
         // normal transition path retains a linear CPU image for mask blending.
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
+        if(direct_texture&&mapped_background_.ready()&&gpu_mapped_texture_.ready()&&
+           gpu_mapped_texture_.prepare_frame(mapped_background_,background_,time)){
+            gpu_surface_=true;gpu_mapped_surface_=true;gpu_time_=time;gpu_clear_=clear_color;return true;
+        }
         if(direct_texture&&gpu_background_.ready()&&row_background_.ready()&&gpu_row_texture_.ready()&&
            gpu_row_texture_.prepare_frame(row_background_,time)&&
            row_background_.generate_spans(time,gpu_background_.data(),gpu_background_.capacity(),gpu_span_count_,gpu_row_texture_.certified_rows())){
@@ -561,18 +589,23 @@ public:
         }
         if(gpu_surface_){
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-            if(gpu_texture_surface_){
+            if(gpu_mapped_surface_){
+                if(overwrite&&width==400&&height==240&&x==0&&y==0&&gpu_mapped_texture_.ready()){
+                    gpu_mapped_texture_.draw();return;
+                }
+                gpu_mapped_surface_=false;
+            }else if(gpu_texture_surface_){
                 if(overwrite&&width==400&&height==240&&x==0&&y==0&&gpu_row_texture_.ready()&&gpu_background_.ready()){
                     gpu_row_texture_.draw();if(gpu_span_count_)gpu_background_.draw(gpu_span_count_,0,0);return;
                 }
-                gpu_texture_surface_=false;
+                gpu_texture_surface_=gpu_mapped_surface_=false;
             }else
 #endif
             if(overwrite&&width==surface_width_&&height==surface_height_&&gpu_background_.draw(gpu_span_count_,x,y))return;
             // Unexpected draw contract: fall back before submitting a GPU batch.
             gpu_surface_=false;gpu_span_count_=0;gpu_mask_surface_=false;gpu_mask_count_=0;
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        gpu_texture_surface_=false;
+        gpu_texture_surface_=gpu_mapped_surface_=false;
 #endif
             if(background_.compose_mapped(gpu_time_,gpu_clear_,static_cast<uint32_t*>(surface_texture_.data),surface_texture_.size/sizeof(uint32_t))){
                 C3D_TexFlush(&surface_texture_);direct_surface_=true;

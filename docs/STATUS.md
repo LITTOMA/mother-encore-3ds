@@ -32,6 +32,8 @@ Minnie 在玩偶胜利后的原版 Storage 选择已接入双栏仓库：帽子�
 
 具体范围见 [启动设置](STARTUP_SETTINGS_CHECKPOINT.md)、[多语言运行时](MULTILINGUAL_RUNTIME.md)、[Continue / LOAD](CONTINUE_LOAD.md) 和 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md) 和 [房屋后续调查与对话](HOUSE_FOLLOWUP.md)。
 
+Doll 的正常战斗画面已接入受检纹理片段后端：GPU 直接采样两层径向背景并精确重建有限调色板混合，CPU 只生成有界坐标片段及边界回退，不生成整帧颜色图。下屏按实际选中路径显示 `GPU mapped textures`、片段和回退像素数。沿用已有纹理后端开关；Pillow 和入场遮罩路径保持原有机制。新路径的真实设备画面、采样精度与帧率尚未验收，见 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md)。
+
 ## 未完成项
 
 - 后续内容继续遵守严格程序 / 数据分离；已迁移的开局范围、版本和验收边界见 [内容与绑定迁移](CONTENT_MIGRATION.md)。这不代表未移植地图与机制已经完成。

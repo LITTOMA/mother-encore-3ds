@@ -33,7 +33,12 @@ build/ctr/gpu-background-mode.stamp: gpu-background-mode-force
 build/ctr/platform/ctr/main.o: build/ctr/gpu-background-mode.stamp
 ifeq ($(EXPERIMENTAL_GPU_TEXTURE_STRIPS),1)
 CPPFLAGS += -DENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-build/ctr/platform/ctr/main.o: build/ctr/gpu_row_texture_shader.hpp
+build/ctr/platform/ctr/main.o: build/ctr/gpu_row_texture_shader.hpp build/ctr/gpu_mapped_texture_shader.hpp
+build/ctr/gpu_mapped_texture.shbin: platform/ctr/shaders/gpu_mapped_texture.v.pica platform/ctr/shaders/gpu_mapped_texture.g.pica
+	@mkdir -p $(dir $@)
+	$(DEVKITPRO)/tools/bin/picasso -o $@ $^
+build/ctr/gpu_mapped_texture_shader.hpp: build/ctr/gpu_mapped_texture.shbin tools/embed_gpu_mapped_texture.py
+	python3 tools/embed_gpu_mapped_texture.py $< $@
 build/ctr/gpu_row_texture.shbin: platform/ctr/shaders/gpu_row_texture.v.pica platform/ctr/shaders/gpu_row_texture.g.pica
 	@mkdir -p $(dir $@)
 	$(DEVKITPRO)/tools/bin/picasso -o $@ $^

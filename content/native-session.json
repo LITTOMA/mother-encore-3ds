@@ -1,5 +1,13 @@
 {
-  "schema": 3,
+  "schema": 4,
+  "acquisitions": [
+    {
+      "item_id": "AsthmaSpray",
+      "doses": 3,
+      "max_count": 1,
+      "flag_id": "got_asthma_spray"
+    }
+  ],
   "settings_choices": {
     "speeds": [
       0.02,
@@ -2350,6 +2358,7 @@
     "doll_defeated",
     "doll_melody",
     "earned_cash",
+    "got_asthma_spray",
     "mimmie_ask_key",
     "mimmie_door_opened",
     "minnie_door",
@@ -2385,11 +2394,12 @@
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633"
   },
   "dependencies": {
-    "content/native-opening.json": "8173dc4e0330335f38911ed1f7445ef9c4deb80c9056c0a353d4aaacd420f84c",
-    "content/native-house.json": "4d3dc69b36c3ff18ae29b10107d94a8b20b7d61d7de2bb6392de40e42434d0ff",
+    "content/native-opening.json": "9c01acc874de432021d1f3b2fa9a8d5b2bc5537a404a2f353ec7df3f3c9a53b7",
+    "content/native-house.json": "23a6d671bba6f6a50a3410419e524c0b408a8e8ec917bf99071caacd21e61b8c",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-items.json": "bfa229c89756d7abc7d9b42100a005f135bdc4654121ef59e85a53505c5a47d1",
-    "content/native-round.json": "7b28019d91574fbed8f4bb15782e90101b6af4d5bf4010d59ea8ac3a6f4e1b27",
-    "content/doll-round.json": "1673f3ecf5348a49af22235b6e3bd8fdfc8a39fbe1f736dce0333fe86f31e12c"
+    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
+    "content/native-round.json": "4f4175dabf32c900da7c9930e92a1b5b071c23b3c8281604dc20ef78fbe91b27",
+    "content/doll-round.json": "58cf834728c38d674304349866d46a831e7b8146257b1620cacc29dc4008b481",
+    "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806"
   }
 }

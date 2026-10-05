@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe": {
+    "schema": 1,
+    "kind": "encore.drawer-item.asset-recipe",
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "licence_review": "Pinned upstream LICENSE permits game-related forks/modifications; original item art is used by this Mother: Encore port under upstream terms, not relicensed as MIT.",
+    "sources": {
+      "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+      "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+      "Graphics/Objects/Items/AsthmaSpray.png": "459c733d006c90e7f58ec34bf868a14cb3732521042b6acd03e2a148a1e0450d",
+      "Graphics/Objects/Items/AsthmaSpray.png.import": "f685872a1f6b7e99de4ccf5c7fb083bd29d7645806438bcdbfc34faf5c96feee",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+      "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+      "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+      "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+      "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e"
+    },
+    "resource": {
+      "name": "asthma_spray",
+      "source": "Graphics/Objects/Items/AsthmaSpray.png",
+      "size": [
+        20,
+        20
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/items/asthma-spray.t3x",
+      "format": "rgba8",
+      "compression": "none"
+    }
+  },
+  "ir_sha256": "d869a977ad306af4d939f928665e004792361408236d1209763d3cc2544fc949",
+  "producer_sha256": "26319e809c316d1d6a461f48ef2819e06263226c43b2c5f53a89317c32f1e8f6",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "resource": {
+    "id": 1,
+    "path": "graphics/items/asthma-spray.t3x",
+    "kind": 1,
+    "width": 20,
+    "height": 20,
+    "columns": 1,
+    "rows": 1,
+    "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd"
+  },
+  "outputs": {
+    "graphics/items/asthma-spray.t3x": {
+      "bytes": 4117,
+      "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd"
+    }
+  },
+  "limits": "Pinned original lossless icon converted by real tex3ds; rich description/use explicitly unsupported; no hardware claim"
+}

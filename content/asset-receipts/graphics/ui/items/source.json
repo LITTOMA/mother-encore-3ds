@@ -5,7 +5,7 @@
   },
   "limits": "Source-pinned lossless textures and native headless layout/font evidence only; no GPU, emulator, audibility, or hardware claim",
   "native_helper_sha256": "4fd5d06da49e2fe097016b35c767519f4d0e0a222f03ecc90f191ffd90a17796",
-  "native_input_sha256": "364560bd95f48136397aad615b2ed8390ff8015452212781fe29c7e7babb22ce",
+  "native_input_sha256": "d8ba43152dd4af64618065ac68313f24d8a0fe98194ac93606231be7a0c0df61",
   "native_reference_sha256": "6d1a4162ff12ca5fcbc74084afc48c41656fa4e8744c6968d83417a7cfe20ae6",
   "outputs": {
     "cap.t3x": {

@@ -130,6 +130,13 @@ class DrawerProgramTests(unittest.TestCase):
             with self.subTest(case=i),self.assertRaises(ValueError):self.admit_audio(config)
         ir=dict(commit=PIN,commands=[dict(opcode='PlaySound',a=SOUND)],sources={SOUND:'1'*64})
         with self.assertRaises(ValueError):self.admit_audio(self.audio_config(),ir)
+        other='Audio/Sound effects/fixture-other.mp3'
+        ir=dict(commit=PIN,commands=[dict(opcode='PlaySound',a=SOUND),dict(opcode='PlaySound',a=other)],
+                sources={SOUND:'1'*64,SOUND+'.import':'2'*64,other:'3'*64,other+'.import':'4'*64})
+        with self.assertRaises(ValueError):self.admit_audio(self.audio_config(),ir)
+        config=self.audio_config();second=copy.deepcopy(config['assets'][0]);second['source']=other;second['identity']['value']=1402
+        config['assets'].append(second)
+        with self.assertRaises(ValueError):self.admit_audio(config,ir) # Separate source cannot overwrite the same PCM.
 
     def test_audio_source_identity_duplication_and_unknown_sound(self):
         for source in ('Audio/Sound effects/Unknown.mp3','Audio/../Sound effects/Item Received.mp3',True,1401,['invalid']):

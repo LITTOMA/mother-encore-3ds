@@ -1,0 +1,86 @@
+[
+  {
+    "id": 288814501,
+    "path": "graphics/objects/doors/288814501.t3x",
+    "bytes": 8213,
+    "source_sha256": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "output_sha256": "9171a764265cab91f9f3fe2790524e06bd2b954005b1f5bf4c1b86e3ed579488",
+    "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "producer_sha256": "87ffb5607d6e89f42dfa27bbf40f20ce06e7b4c6966280e8a78138e3853d766e",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "id": 2455671415,
+    "path": "graphics/objects/doors/2455671415.t3x",
+    "bytes": 8213,
+    "source_sha256": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "output_sha256": "b261b984191b8151500d08fd5623c6e00c10eebdb33f346aafe9d024ca6a8c22",
+    "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "producer_sha256": "87ffb5607d6e89f42dfa27bbf40f20ce06e7b4c6966280e8a78138e3853d766e",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "id": 17837692,
+    "path": "graphics/objects/doors/17837692.t3x",
+    "bytes": 8213,
+    "source_sha256": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "output_sha256": "c243c41e4d32bf9a2d4b3e1e7eb07b9a82e391e68b6ae05082140277be7d2da2",
+    "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "producer_sha256": "87ffb5607d6e89f42dfa27bbf40f20ce06e7b4c6966280e8a78138e3853d766e",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "id": 553757799,
+    "path": "graphics/objects/doors/553757799.t3x",
+    "bytes": 8213,
+    "source_sha256": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "output_sha256": "cab0a8c3a83d8cf90cbd7c83ef3eb3aeeba58392867401e7e9a9bf6afb394e26",
+    "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "producer_sha256": "87ffb5607d6e89f42dfa27bbf40f20ce06e7b4c6966280e8a78138e3853d766e",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "id": 3417100819,
+    "path": "graphics/objects/doors/3417100819.t3x",
+    "bytes": 8213,
+    "source_sha256": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "output_sha256": "7afce7a27b0e16ade4798e8813c33010ca2bb195721dab65d823eafa30a417ab",
+    "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "producer_sha256": "87ffb5607d6e89f42dfa27bbf40f20ce06e7b4c6966280e8a78138e3853d766e",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "id": 1044936970,
+    "path": "graphics/objects/doors/1044936970.t3x",
+    "bytes": 16405,
+    "source_sha256": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "output_sha256": "bf9ed1e9530d752089aec00ae2f882a7bf590dfc8325bca3d0324a303a5d5e29",
+    "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "producer_sha256": "87ffb5607d6e89f42dfa27bbf40f20ce06e7b4c6966280e8a78138e3853d766e",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  },
+  {
+    "id": 3720749051,
+    "path": "graphics/objects/doors/3720749051.t3x",
+    "bytes": 8213,
+    "source_sha256": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "output_sha256": "0af512bf6e2bcaef5e82818116e60f09096d7112a2dadcb0a02ff3a411fdebed",
+    "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "producer_sha256": "87ffb5607d6e89f42dfa27bbf40f20ce06e7b4c6966280e8a78138e3853d766e",
+    "format": "rgba8",
+    "compression": "none",
+    "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+  }
+]

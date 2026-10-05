@@ -122,6 +122,27 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
       return false;
     }
   }
+  // Retained source closure proves exact scene and script bytes, not just IDs.
+  auto closure = [&](const auto* pack) {
+    std::array<uint8_t,32> hash{};
+    return pack && pack->valid() && pack->source_hash(d.source_scene(),hash) && hash==d.identity().source_sha256;
+  };
+  if ((c.present_data || c.present) && (!c.present || !closure(c.present_data) || !(c.present_data->source_pin()==d.identity().upstream_commit))) {e="Field SceneHost present source binding incomplete";return false;}
+  if ((c.dropped_data || c.dropped) && (!c.dropped || !closure(c.dropped_data) || !(c.dropped_data->source_pin()==d.identity().upstream_commit))) {e="Field SceneHost dropped source binding incomplete";return false;}
+  if ((c.sparkles_data || c.sparkles) && (!c.sparkles || !closure(c.sparkles_data) || !(identity(d.identity(),c.sparkles_data->identity())))) {e="Field SceneHost sparkles source binding incomplete";return false;}
+  if ((c.openable_data || c.openable) && (!c.openable || !closure(c.openable_data) || !(identity(d.identity(),c.openable_data->identity())))) {e="Field SceneHost openable source binding incomplete";return false;}
+  if ((c.payphone_data || c.payphone) && (!c.payphone || !closure(c.payphone_data) || !(c.payphone_data->source_pin()==d.identity().upstream_commit))) {e="Field SceneHost payphone source binding incomplete";return false;}
+  if ((c.butterfly_data || c.butterfly) && (!c.butterfly || !closure(c.butterfly_data) || !(c.butterfly_data->source_pin()==d.identity().upstream_commit))) {e="Field SceneHost butterfly source binding incomplete";return false;}
+  if ((c.present_data || c.dropped_data || c.sparkles_data) &&
+      (!c.present_data || !c.present || !c.dropped_data || !c.dropped || !c.sparkles_data || !c.sparkles || !c.random ||
+       !c.prompt_data || !c.prompt || c.present->content()!=c.present_data || c.dropped->content()!=c.dropped_data ||
+       c.sparkles->data()!=c.sparkles_data || !validate_dropped_present_bridge(*c.present_data,*c.dropped_data,e) ||
+       !validate_sparkles_owner_bridge(*c.sparkles_data,*c.present_data,*c.dropped_data,e))) {
+    if(e.empty())e="Field SceneHost collected object/Sparkles owner bridge incomplete";
+    return false;
+  }
+  if ((c.openable_data || c.payphone_data) && (!c.prompt_data || !c.prompt)) {e="Field SceneHost object prompt bridge missing";return false;}
+  if (c.butterfly_data && !c.random) {e="Field SceneHost Butterfly shared RNG absent";return false;}
   if (c.npc_data && c.sprite_data &&
       !field_sprite_npc_binding(*c.sprite_data, *c.npc_data, e))
     return false;
@@ -255,6 +276,33 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
         return false;
       }
     }
+  }
+  auto exact_leaf = [&](const auto* pack,uint32_t id,uint32_t ready,std::string_view node,FieldSceneRole role) {
+    if(!match(id,ready,node,role))return false;
+    for(uint32_t i=0;i<d.ready_count();++i){auto row=d.ready(i);if(row.id==id){std::array<uint8_t,32> hash{};return pack->source_hash(d.string(row.script),hash)&&hash==row.sha;}}
+    return false;
+  };
+  auto child_prompt = [&](uint32_t child,uint32_t parent,uint32_t ready) {
+    const auto* prompt=c.prompt_data?c.prompt_data->record(child):nullptr;
+    return prompt&&prompt->parent_id==parent&&prompt->ready_ordinal<ready;
+  };
+  if(c.present_data)for(const auto& n:c.present_data->bindings()){
+    if(!exact_leaf(c.present_data,n.id,n.ready_ordinal,n.node,FieldSceneRole::Present)||!child_prompt(n.prompt_id,n.id,n.ready_ordinal)){e="Field SceneHost present Ready/script/child identity differs";return false;}
+  }
+  if(c.dropped_data)for(const auto& n:c.dropped_data->bindings()){
+    if(!exact_leaf(c.dropped_data,n.id,n.ready_ordinal,n.node,FieldSceneRole::DroppedItem)||!child_prompt(n.prompt_id,n.id,n.ready_ordinal)){e="Field SceneHost dropped Ready/script/child identity differs";return false;}
+  }
+  if(c.sparkles_data)for(const auto& n:c.sparkles_data->records()){
+    if(!exact_leaf(c.sparkles_data,n.id,n.ready,n.node,FieldSceneRole::Sparkles)){e="Field SceneHost sparkles Ready/script/child identity differs";return false;}
+  }
+  if(c.openable_data)for(const auto& n:c.openable_data->records()){
+    if(!exact_leaf(c.openable_data,n.id,n.ready,n.node,FieldSceneRole::OpenableDoor)||!child_prompt(n.children[9],n.id,n.ready)){e="Field SceneHost openable Ready/script/child identity differs";return false;}
+  }
+  if(c.payphone_data)for(const auto& n:c.payphone_data->records()){
+    if(!exact_leaf(c.payphone_data,n.id,n.ready_ordinal,n.node,FieldSceneRole::Payphone)||!child_prompt(n.prompt_id,n.id,n.ready_ordinal)){e="Field SceneHost payphone Ready/script/child identity differs";return false;}
+  }
+  if(c.butterfly_data)for(const auto& n:c.butterfly_data->bindings()){
+    if(!exact_leaf(c.butterfly_data,n.id,n.ready_ordinal,n.node,FieldSceneRole::Butterfly)){e="Field SceneHost butterfly Ready/script/child identity differs";return false;}
   }
   if (c.npc_data)
     for (const auto &n : c.npc_data->npcs())
@@ -468,6 +516,8 @@ bool FieldSceneHost::flag_key(uint32_t id, bool &object, std::string &key,
     return false;
   }
   bits = f.flags;
+  // ItemHolder Ready assigns reset_when_leaving_region=false before any leave.
+  for(uint32_t i=0;i<data_->ready_count();++i){auto row=data_->ready(i);if(row.id==id&&(row.role==FieldSceneRole::Present||row.role==FieldSceneRole::DroppedItem)){bits&=~4u;break;}}
   key = std::string(data_->string(f.key));
   object = (bits & 1) != 0;
   if (key.empty()) {
@@ -622,6 +672,35 @@ bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
     return false;
   };
   switch (n.role) {
+  case FieldSceneRole::OpenableDoor:
+    if(!consumers_.openable)return unavailable("OpenableDoor actual source consumer missing");
+    if(!consumers_.openable->instance(n.id)&&!consumers_.openable->create(n.id)){e=consumers_.openable->error();return false;}
+    if(!consumers_.openable->ready(n.id)){e=consumers_.openable->error();return false;}
+    break;
+  case FieldSceneRole::Payphone:
+    if(!consumers_.payphone)return unavailable("Payphone actual source consumer missing");
+    if(!consumers_.payphone->instance(n.id)&&!consumers_.payphone->create(n.id)){e=consumers_.payphone->error();return false;}
+    if(!consumers_.payphone->ready(n.id)){e=consumers_.payphone->error();return false;}
+    break;
+  case FieldSceneRole::Sparkles:
+    if(!consumers_.sparkles)return unavailable("Sparkles actual source consumer missing");
+    if(!consumers_.sparkles->instance(n.id)&&!consumers_.sparkles->create(n.id)){e=consumers_.sparkles->error();return false;}
+    if(!consumers_.sparkles->ready(n.id)){e=consumers_.sparkles->error();return false;}
+    break;
+  case FieldSceneRole::Present:
+    if(!consumers_.present)return unavailable("Present actual inventory/programme consumer missing");
+    if(!host_.connect_area_left(n.id,[this,id=n.id](bool region,std::string&error){return leave_area(id,region,error);},e))return false;
+    if(!consumers_.present->ready_present(n.id,e))return false;
+    break;
+  case FieldSceneRole::DroppedItem:
+    if(!consumers_.dropped)return unavailable("DroppedItem actual inventory/programme consumer missing");
+    if(!host_.connect_area_left(n.id,[this,id=n.id](bool region,std::string&error){return leave_area(id,region,error);},e))return false;
+    if(!consumers_.dropped->ready_item(n.id,e))return false;
+    break;
+  case FieldSceneRole::Butterfly:
+    if(!consumers_.butterfly || !consumers_.random)return unavailable("Butterfly actual scene/shared RNG consumer missing");
+    if(!consumers_.butterfly->ready(n.id,*consumers_.random,e))return false;
+    break;
   case FieldSceneRole::InteractDialog:
     if (!consumers_.interact)
       return unavailable(

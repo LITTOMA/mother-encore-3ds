@@ -1,0 +1,1238 @@
+{
+  "schema": 1,
+  "kind": "encore.field-sparkles.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "scene_admitted": false,
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+    "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+    "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+    "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+  "engine_reference": {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/animated_sprite.cpp",
+    "sha256": "8dc64e924ca6f560f0acaffd43cb86e47a500c8586a03205f026a4445fff0c2e",
+    "review": "set_frame clamps to frame_count-1, int truncates rand_range; float32 timeout loop advances before consuming the next remaining delta; stop retains frame, play resets timeout only on playing-state change; visibility does not gate INTERNAL_PROCESS",
+    "default_speed_scale": 1.0,
+    "default_centered": true,
+    "default_offset": [
+      0,
+      0
+    ]
+  },
+  "random_range": [
+    0.0,
+    47.0
+  ],
+  "texture": {
+    "source": "Graphics/Objects/Common/Sparkles.png",
+    "source_sha256": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "size": [
+      35,
+      7
+    ],
+    "output": "graphics/story/present-sparkles/sparkles.t3x"
+  },
+  "animations": [
+    {
+      "name": "Sparkle On",
+      "speed": 12.0,
+      "loop": true,
+      "frames": [
+        [
+          7,
+          0,
+          7,
+          7
+        ],
+        [
+          14,
+          0,
+          7,
+          7
+        ],
+        [
+          21,
+          0,
+          7,
+          7
+        ],
+        [
+          28,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ],
+        [
+          0,
+          0,
+          7,
+          7
+        ]
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": 762896744,
+      "parent_id": 3537943183,
+      "owner": 1,
+      "ready": 3939,
+      "node": "Objects/Zoo Flag/PresentZoo1/Sparkles",
+      "parent": "Objects/Zoo Flag/PresentZoo1",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          869.0,
+          -1452.0
+        ]
+      ]
+    },
+    {
+      "id": 3036719474,
+      "parent_id": 2726839233,
+      "owner": 1,
+      "ready": 3955,
+      "node": "Objects/Zoo Flag/PresentZoo2/Sparkles",
+      "parent": "Objects/Zoo Flag/PresentZoo2",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1077.0,
+          -1388.0
+        ]
+      ]
+    },
+    {
+      "id": 1185585986,
+      "parent_id": 2843083608,
+      "owner": 1,
+      "ready": 3971,
+      "node": "Objects/Zoo Flag/PresentZoo3/Sparkles",
+      "parent": "Objects/Zoo Flag/PresentZoo3",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1205.0,
+          -1092.0
+        ]
+      ]
+    },
+    {
+      "id": 2503376940,
+      "parent_id": 666332154,
+      "owner": 1,
+      "ready": 4818,
+      "node": "Objects/Items/Present1/Sparkles",
+      "parent": "Objects/Items/Present1",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1821.0,
+          580.0
+        ]
+      ]
+    },
+    {
+      "id": 225237274,
+      "parent_id": 2958063215,
+      "owner": 1,
+      "ready": 4834,
+      "node": "Objects/Items/Present2/Sparkles",
+      "parent": "Objects/Items/Present2",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          -563.0,
+          260.0
+        ]
+      ]
+    },
+    {
+      "id": 3139161249,
+      "parent_id": 2226428946,
+      "owner": 1,
+      "ready": 4850,
+      "node": "Objects/Items/Present3/Sparkles",
+      "parent": "Objects/Items/Present3",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          -435.0,
+          -684.0
+        ]
+      ]
+    },
+    {
+      "id": 579247287,
+      "parent_id": 3397977974,
+      "owner": 1,
+      "ready": 4866,
+      "node": "Objects/Items/Present4/Sparkles",
+      "parent": "Objects/Items/Present4",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2477.0,
+          -1148.0
+        ]
+      ]
+    },
+    {
+      "id": 2750674502,
+      "parent_id": 951565813,
+      "owner": 1,
+      "ready": 4882,
+      "node": "Objects/Items/Present5/Sparkles",
+      "parent": "Objects/Items/Present5",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2445.0,
+          -1404.0
+        ]
+      ]
+    },
+    {
+      "id": 609504432,
+      "parent_id": 722365758,
+      "owner": 1,
+      "ready": 4898,
+      "node": "Objects/Items/Present6/Sparkles",
+      "parent": "Objects/Items/Present6",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1777.0,
+          -61.0
+        ]
+      ]
+    },
+    {
+      "id": 1247209784,
+      "parent_id": 487827679,
+      "owner": 1,
+      "ready": 4914,
+      "node": "Objects/Items/Present7/Sparkles",
+      "parent": "Objects/Items/Present7",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2125.0,
+          1524.0
+        ]
+      ]
+    },
+    {
+      "id": 2564102560,
+      "parent_id": 3432066303,
+      "owner": 1,
+      "ready": 4930,
+      "node": "Objects/Items/PresentZoo4/Sparkles",
+      "parent": "Objects/Items/PresentZoo4",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1093.0,
+          -1556.0
+        ]
+      ]
+    },
+    {
+      "id": 17205702,
+      "parent_id": 2866548460,
+      "owner": 1,
+      "ready": 4946,
+      "node": "Objects/Items/PresentCem4/Sparkles",
+      "parent": "Objects/Items/PresentCem4",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1085.0,
+          4676.0
+        ]
+      ]
+    },
+    {
+      "id": 4018361087,
+      "parent_id": 4080132945,
+      "owner": 2,
+      "ready": 4962,
+      "node": "Objects/Items/Item/Sparkles",
+      "parent": "Objects/Items/Item",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        4.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1436.0,
+          4660.0
+        ]
+      ]
+    },
+    {
+      "id": 66834882,
+      "parent_id": 1349820839,
+      "owner": 1,
+      "ready": 4977,
+      "node": "Objects/Items/PresentCem5/Sparkles",
+      "parent": "Objects/Items/PresentCem5",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1349.0,
+          4500.0
+        ]
+      ]
+    },
+    {
+      "id": 4187518759,
+      "parent_id": 765386674,
+      "owner": 1,
+      "ready": 4993,
+      "node": "Objects/Items/PresentCem3/Sparkles",
+      "parent": "Objects/Items/PresentCem3",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          869.0,
+          4508.0
+        ]
+      ]
+    },
+    {
+      "id": 1069483053,
+      "parent_id": 1411963557,
+      "owner": 1,
+      "ready": 5009,
+      "node": "Objects/Items/PresentCem1/Sparkles",
+      "parent": "Objects/Items/PresentCem1",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          413.0,
+          4396.0
+        ]
+      ]
+    },
+    {
+      "id": 1656400692,
+      "parent_id": 3238128182,
+      "owner": 1,
+      "ready": 5025,
+      "node": "Objects/Items/PresentCem2/Sparkles",
+      "parent": "Objects/Items/PresentCem2",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        5.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          213.0,
+          4596.0
+        ]
+      ]
+    },
+    {
+      "id": 309905852,
+      "parent_id": 3824508883,
+      "owner": 2,
+      "ready": 5041,
+      "node": "Objects/Items/Item2/Sparkles",
+      "parent": "Objects/Items/Item2",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        4.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          1292.0,
+          -1412.0
+        ]
+      ]
+    },
+    {
+      "id": 2776859452,
+      "parent_id": 2256007889,
+      "owner": 2,
+      "ready": 5056,
+      "node": "Objects/Items/FavFood/Sparkles",
+      "parent": "Objects/Items/FavFood",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        4.0,
+        -4.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          3692.0,
+          -2252.0
+        ]
+      ]
+    },
+    {
+      "id": 1250726184,
+      "parent_id": 219276263,
+      "owner": 0,
+      "ready": 8410,
+      "node": "Objects/ZooSignSparkle/Sparkles/Sparkles2",
+      "parent": "Objects/ZooSignSparkle/Sparkles",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        11.0,
+        -18.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          814.0,
+          -1179.0
+        ]
+      ]
+    },
+    {
+      "id": 2629665690,
+      "parent_id": 219276263,
+      "owner": 0,
+      "ready": 8411,
+      "node": "Objects/ZooSignSparkle/Sparkles/Sparkles3",
+      "parent": "Objects/ZooSignSparkle/Sparkles",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        28.0,
+        -7.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          831.0,
+          -1168.0
+        ]
+      ]
+    },
+    {
+      "id": 219276263,
+      "parent_id": 3499278356,
+      "owner": 0,
+      "ready": 8412,
+      "node": "Objects/ZooSignSparkle/Sparkles",
+      "parent": "Objects/ZooSignSparkle",
+      "profile": 0,
+      "frame": 22,
+      "flags": 31,
+      "z_index": 0,
+      "pause_mode": 0,
+      "process_priority": 0,
+      "speed_scale": 1.0,
+      "position": [
+        803.0,
+        -1161.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          803.0,
+          -1161.0
+        ]
+      ]
+    }
+  ],
+  "source_signal_listeners": [],
+  "pending": [
+    "Only Sparkles.gd is admitted; actual ancestor script/material/visibility/process lifetime remains owned by SceneHost",
+    "Full Present/Item/FlagLandmark consumers must invoke real play/stop/visibility setters; no proximity or assumed unopened parent",
+    "Source static Sparkles listener roster is empty; borrowed parent clock admits no dynamic frame/finish listeners, Host must check live signal bus",
+    "Formal Podunk activation still rejects every uncovered Ready mechanism"
+  ]
+}

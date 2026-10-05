@@ -315,3 +315,15 @@ cookies.json
 !/reports/field-psi/
 /reports/field-psi/*
 !/reports/field-psi/source-review.json
+
+# Reviewed source inputs for checked field object resources.
+!/reports/field-present/
+!/reports/field-present/source-review.json
+!/reports/field-dropped/
+!/reports/field-dropped/source-review.json
+!/reports/field-payphone/
+!/reports/field-payphone/source-review.json
+!/reports/field-cash-box/
+!/reports/field-cash-box/source-review.json
+!/reports/field-butterfly/
+!/reports/field-butterfly/source-review.json

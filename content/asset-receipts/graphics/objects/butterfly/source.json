@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "7c46ebe5d8613de4c984781642495b8b55c4fe31be09d2902fe38728ff048ea0",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/objects/butterfly/0.t3x": {
+      "bytes": 2069,
+      "sha256": "eedc42f89604a8d280b5467b87e9c9a9a21adf5a1f8db330cc7d1f4ddaa4ef4e"
+    },
+    "graphics/objects/butterfly/1.t3x": {
+      "bytes": 2069,
+      "sha256": "495ae67cc67bb1dce86660be25ec63007e6dc7ec272a531de4422aa4c5726c14"
+    },
+    "graphics/objects/butterfly/2.t3x": {
+      "bytes": 2069,
+      "sha256": "9fd3b49955fb46f08ab0b89f5dc3153826e516976a2cdab7b9f86d2f7bce1bd2"
+    },
+    "graphics/objects/butterfly/3.t3x": {
+      "bytes": 2069,
+      "sha256": "f953a3d0f8c5c5cf6a590165b1987b766cf57c1bf1cca76ff309c8057a46fe32"
+    },
+    "graphics/objects/butterfly/4.t3x": {
+      "bytes": 2069,
+      "sha256": "0ea444376df1f29f409c2a76a01c6edf9414d2960268e8ca15ed4f58c109171a"
+    }
+  }
+}

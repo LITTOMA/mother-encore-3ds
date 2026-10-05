@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "a1b3d66b7b373a4355f9c7eb306cc55e0ffb7e071609ede90e3eeb8a1713b980",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/objects/dropped/3969821641.t3x": {
+      "bytes": 4117,
+      "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b"
+    },
+    "graphics/objects/dropped/3229455756.t3x": {
+      "bytes": 4117,
+      "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6"
+    },
+    "graphics/objects/dropped/466181776.t3x": {
+      "bytes": 4117,
+      "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "fe340fcc46f59936fc2ba696e2596df673674b7020cdafadba09a3a6338ad612",
+  "source_review": [
+    "All22 real Podunk Sparkles.gd instances and source SceneState overrides; 19 item descendants plus3 nested ZooSign Sparkles",
+    "Original source40 ordered AtlasTexture frames, serializedframe22; shared rand_range0..47 truncation then native clamp",
+    "Godot3.6.2 official AnimatedSprite source SHA8dc64e924ca6f560f0acaffd43cb86e47a500c8586a03205f026a4445fff0c2e reviewed: float32 timeout, loop finished/frame changed synchronous, stop retainsframe, play resets only statechange",
+    "Original local centered offset floors before world transform; visibility does not gate INTERNAL_PROCESS",
+    "Existing genuine House Sparkles atlas reused through exactsource/producer/tex3ds/output receipts",
+    "Single child owner crossbinding: Present16, Dropped3, self3; parent runtime receives Ready once and owns authoritative frame/clock/state; no second RNG or idle",
+    "Every actual source TSCN connection re-expanded; all22 Sparkles have no source outgoing listener; dynamic listeners onborrowed clock require livebus failclosed admission"
+  ],
+  "pending": [
+    "Only Sparkles.gd is admitted; actual ancestor script/material/visibility/process lifetime remains owned by SceneHost",
+    "Full Present/Item/FlagLandmark consumers must invoke real play/stop/visibility setters; no proximity or assumed unopened parent",
+    "Source static Sparkles listener roster is empty; borrowed parent clock admits no dynamic frame/finish listeners, Host must check live signal bus",
+    "Formal Podunk activation still rejects every uncovered Ready mechanism"
+  ],
+  "canvas_reference": {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/drivers/gles3/shaders/canvas.glsl",
+    "sha256": "c9f3c7ca9b83572ca05512c80e9e53db68b7d57b8f4116502c880c07138b3d0c",
+    "semantics": "Source localofs.floor then native floor(outvec+0.5) for eachvertex; fractionalworldscale snaps bothendpoints"
+  }
+}

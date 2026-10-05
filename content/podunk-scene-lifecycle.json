@@ -12297,7 +12297,7 @@
       "node": "Objects/Doors/Openable Door",
       "name": "Openable Door",
       "ready": 3696,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12317,7 +12317,7 @@
       "node": "Objects/Doors/Openable Door2",
       "name": "Openable Door2",
       "ready": 3714,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12337,7 +12337,7 @@
       "node": "Objects/Doors/Openable Door3",
       "name": "Openable Door3",
       "ready": 3732,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12357,7 +12357,7 @@
       "node": "Objects/Doors/Openable Door4",
       "name": "Openable Door4",
       "ready": 3750,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12377,7 +12377,7 @@
       "node": "Objects/Doors/Openable Door8",
       "name": "Openable Door8",
       "ready": 3768,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12397,7 +12397,7 @@
       "node": "Objects/Doors/Openable Door9",
       "name": "Openable Door9",
       "ready": 3786,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12417,7 +12417,7 @@
       "node": "Objects/Doors/Openable Door5",
       "name": "Openable Door5",
       "ready": 3804,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12437,7 +12437,7 @@
       "node": "Objects/Doors/Openable Door6",
       "name": "Openable Door6",
       "ready": 3822,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12457,7 +12457,7 @@
       "node": "Objects/Doors/Openable Door7",
       "name": "Openable Door7",
       "ready": 3840,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12477,7 +12477,7 @@
       "node": "Objects/Doors/Openable Door10",
       "name": "Openable Door10",
       "ready": 3858,
-      "role": 0,
+      "role": 16,
       "profile": 4294967295,
       "script": "Scripts/Main/Openable Door.gd",
       "sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a"
@@ -12687,7 +12687,7 @@
       "node": "Objects/Zoo Flag/PresentZoo1/Sparkles",
       "name": "Sparkles",
       "ready": 3939,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -12727,7 +12727,7 @@
       "node": "Objects/Zoo Flag/PresentZoo1",
       "name": "PresentZoo1",
       "ready": 3953,
-      "role": 8,
+      "role": 20,
       "profile": 0,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -12737,7 +12737,7 @@
       "node": "Objects/Zoo Flag/PresentZoo2/Sparkles",
       "name": "Sparkles",
       "ready": 3955,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -12777,7 +12777,7 @@
       "node": "Objects/Zoo Flag/PresentZoo2",
       "name": "PresentZoo2",
       "ready": 3969,
-      "role": 8,
+      "role": 20,
       "profile": 1,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -12787,7 +12787,7 @@
       "node": "Objects/Zoo Flag/PresentZoo3/Sparkles",
       "name": "Sparkles",
       "ready": 3971,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -12827,7 +12827,7 @@
       "node": "Objects/Zoo Flag/PresentZoo3",
       "name": "PresentZoo3",
       "ready": 3985,
-      "role": 8,
+      "role": 20,
       "profile": 2,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14107,7 +14107,7 @@
       "node": "Objects/Items/Present1/Sparkles",
       "name": "Sparkles",
       "ready": 4818,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14147,7 +14147,7 @@
       "node": "Objects/Items/Present1",
       "name": "Present1",
       "ready": 4832,
-      "role": 8,
+      "role": 20,
       "profile": 3,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14157,7 +14157,7 @@
       "node": "Objects/Items/Present2/Sparkles",
       "name": "Sparkles",
       "ready": 4834,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14197,7 +14197,7 @@
       "node": "Objects/Items/Present2",
       "name": "Present2",
       "ready": 4848,
-      "role": 8,
+      "role": 20,
       "profile": 4,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14207,7 +14207,7 @@
       "node": "Objects/Items/Present3/Sparkles",
       "name": "Sparkles",
       "ready": 4850,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14247,7 +14247,7 @@
       "node": "Objects/Items/Present3",
       "name": "Present3",
       "ready": 4864,
-      "role": 8,
+      "role": 20,
       "profile": 5,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14257,7 +14257,7 @@
       "node": "Objects/Items/Present4/Sparkles",
       "name": "Sparkles",
       "ready": 4866,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14297,7 +14297,7 @@
       "node": "Objects/Items/Present4",
       "name": "Present4",
       "ready": 4880,
-      "role": 8,
+      "role": 20,
       "profile": 6,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14307,7 +14307,7 @@
       "node": "Objects/Items/Present5/Sparkles",
       "name": "Sparkles",
       "ready": 4882,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14347,7 +14347,7 @@
       "node": "Objects/Items/Present5",
       "name": "Present5",
       "ready": 4896,
-      "role": 8,
+      "role": 20,
       "profile": 7,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14357,7 +14357,7 @@
       "node": "Objects/Items/Present6/Sparkles",
       "name": "Sparkles",
       "ready": 4898,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14397,7 +14397,7 @@
       "node": "Objects/Items/Present6",
       "name": "Present6",
       "ready": 4912,
-      "role": 8,
+      "role": 20,
       "profile": 8,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14407,7 +14407,7 @@
       "node": "Objects/Items/Present7/Sparkles",
       "name": "Sparkles",
       "ready": 4914,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14447,7 +14447,7 @@
       "node": "Objects/Items/Present7",
       "name": "Present7",
       "ready": 4928,
-      "role": 8,
+      "role": 20,
       "profile": 9,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14457,7 +14457,7 @@
       "node": "Objects/Items/PresentZoo4/Sparkles",
       "name": "Sparkles",
       "ready": 4930,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14497,7 +14497,7 @@
       "node": "Objects/Items/PresentZoo4",
       "name": "PresentZoo4",
       "ready": 4944,
-      "role": 8,
+      "role": 20,
       "profile": 10,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14507,7 +14507,7 @@
       "node": "Objects/Items/PresentCem4/Sparkles",
       "name": "Sparkles",
       "ready": 4946,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14547,7 +14547,7 @@
       "node": "Objects/Items/PresentCem4",
       "name": "PresentCem4",
       "ready": 4960,
-      "role": 8,
+      "role": 20,
       "profile": 11,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14557,7 +14557,7 @@
       "node": "Objects/Items/Item/Sparkles",
       "name": "Sparkles",
       "ready": 4962,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14577,7 +14577,7 @@
       "node": "Objects/Items/Item",
       "name": "Item",
       "ready": 4975,
-      "role": 8,
+      "role": 21,
       "profile": 12,
       "script": "Scripts/Main/DroppedItem.gd",
       "sha256": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2"
@@ -14587,7 +14587,7 @@
       "node": "Objects/Items/PresentCem5/Sparkles",
       "name": "Sparkles",
       "ready": 4977,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14627,7 +14627,7 @@
       "node": "Objects/Items/PresentCem5",
       "name": "PresentCem5",
       "ready": 4991,
-      "role": 8,
+      "role": 20,
       "profile": 13,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14637,7 +14637,7 @@
       "node": "Objects/Items/PresentCem3/Sparkles",
       "name": "Sparkles",
       "ready": 4993,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14677,7 +14677,7 @@
       "node": "Objects/Items/PresentCem3",
       "name": "PresentCem3",
       "ready": 5007,
-      "role": 8,
+      "role": 20,
       "profile": 14,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14687,7 +14687,7 @@
       "node": "Objects/Items/PresentCem1/Sparkles",
       "name": "Sparkles",
       "ready": 5009,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14727,7 +14727,7 @@
       "node": "Objects/Items/PresentCem1",
       "name": "PresentCem1",
       "ready": 5023,
-      "role": 8,
+      "role": 20,
       "profile": 15,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14737,7 +14737,7 @@
       "node": "Objects/Items/PresentCem2/Sparkles",
       "name": "Sparkles",
       "ready": 5025,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14777,7 +14777,7 @@
       "node": "Objects/Items/PresentCem2",
       "name": "PresentCem2",
       "ready": 5039,
-      "role": 8,
+      "role": 20,
       "profile": 16,
       "script": "Scripts/Main/Present.gd",
       "sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98"
@@ -14787,7 +14787,7 @@
       "node": "Objects/Items/Item2/Sparkles",
       "name": "Sparkles",
       "ready": 5041,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14807,7 +14807,7 @@
       "node": "Objects/Items/Item2",
       "name": "Item2",
       "ready": 5054,
-      "role": 8,
+      "role": 21,
       "profile": 17,
       "script": "Scripts/Main/DroppedItem.gd",
       "sha256": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2"
@@ -14817,7 +14817,7 @@
       "node": "Objects/Items/FavFood/Sparkles",
       "name": "Sparkles",
       "ready": 5056,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -14837,7 +14837,7 @@
       "node": "Objects/Items/FavFood",
       "name": "FavFood",
       "ready": 5069,
-      "role": 8,
+      "role": 21,
       "profile": 18,
       "script": "Scripts/Main/DroppedItem.gd",
       "sha256": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2"
@@ -15077,7 +15077,7 @@
       "node": "Objects/Critters/butterfly",
       "name": "butterfly",
       "ready": 5264,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15087,7 +15087,7 @@
       "node": "Objects/Critters/butterfly2",
       "name": "butterfly2",
       "ready": 5274,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15097,7 +15097,7 @@
       "node": "Objects/Critters/butterfly3",
       "name": "butterfly3",
       "ready": 5284,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15107,7 +15107,7 @@
       "node": "Objects/Critters/butterfly4",
       "name": "butterfly4",
       "ready": 5294,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15117,7 +15117,7 @@
       "node": "Objects/Critters/butterfly5",
       "name": "butterfly5",
       "ready": 5304,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15127,7 +15127,7 @@
       "node": "Objects/Critters/butterfly6",
       "name": "butterfly6",
       "ready": 5314,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15137,7 +15137,7 @@
       "node": "Objects/Critters/butterfly7",
       "name": "butterfly7",
       "ready": 5324,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15147,7 +15147,7 @@
       "node": "Objects/Critters/butterfly8",
       "name": "butterfly8",
       "ready": 5334,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15157,7 +15157,7 @@
       "node": "Objects/Critters/butterfly9",
       "name": "butterfly9",
       "ready": 5344,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15167,7 +15167,7 @@
       "node": "Objects/Critters/butterfly10",
       "name": "butterfly10",
       "ready": 5354,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15177,7 +15177,7 @@
       "node": "Objects/Critters/butterfly11",
       "name": "butterfly11",
       "ready": 5364,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15187,7 +15187,7 @@
       "node": "Objects/Critters/butterfly12",
       "name": "butterfly12",
       "ready": 5374,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15197,7 +15197,7 @@
       "node": "Objects/Critters/butterfly13",
       "name": "butterfly13",
       "ready": 5384,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15207,7 +15207,7 @@
       "node": "Objects/Critters/butterfly14",
       "name": "butterfly14",
       "ready": 5394,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15217,7 +15217,7 @@
       "node": "Objects/Critters/butterfly15",
       "name": "butterfly15",
       "ready": 5404,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15227,7 +15227,7 @@
       "node": "Objects/Critters/butterfly16",
       "name": "butterfly16",
       "ready": 5414,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15237,7 +15237,7 @@
       "node": "Objects/Critters/butterfly17",
       "name": "butterfly17",
       "ready": 5424,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15247,7 +15247,7 @@
       "node": "Objects/Critters/butterfly18",
       "name": "butterfly18",
       "ready": 5434,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15257,7 +15257,7 @@
       "node": "Objects/Critters/butterfly19",
       "name": "butterfly19",
       "ready": 5444,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15267,7 +15267,7 @@
       "node": "Objects/Critters/butterfly20",
       "name": "butterfly20",
       "ready": 5454,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15277,7 +15277,7 @@
       "node": "Objects/Critters/butterfly21",
       "name": "butterfly21",
       "ready": 5464,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15287,7 +15287,7 @@
       "node": "Objects/Critters/butterfly22",
       "name": "butterfly22",
       "ready": 5474,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15297,7 +15297,7 @@
       "node": "Objects/Critters/butterfly23",
       "name": "butterfly23",
       "ready": 5484,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15307,7 +15307,7 @@
       "node": "Objects/Critters/butterfly24",
       "name": "butterfly24",
       "ready": 5494,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15317,7 +15317,7 @@
       "node": "Objects/Critters/butterfly25",
       "name": "butterfly25",
       "ready": 5504,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15327,7 +15327,7 @@
       "node": "Objects/Critters/butterfly26",
       "name": "butterfly26",
       "ready": 5514,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15337,7 +15337,7 @@
       "node": "Objects/Critters/butterfly27",
       "name": "butterfly27",
       "ready": 5524,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15347,7 +15347,7 @@
       "node": "Objects/Critters/butterfly28",
       "name": "butterfly28",
       "ready": 5534,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15357,7 +15357,7 @@
       "node": "Objects/Critters/butterfly29",
       "name": "butterfly29",
       "ready": 5544,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15367,7 +15367,7 @@
       "node": "Objects/Critters/butterfly30",
       "name": "butterfly30",
       "ready": 5554,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15377,7 +15377,7 @@
       "node": "Objects/Critters/butterfly31",
       "name": "butterfly31",
       "ready": 5564,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15387,7 +15387,7 @@
       "node": "Objects/Critters/butterfly32",
       "name": "butterfly32",
       "ready": 5574,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15397,7 +15397,7 @@
       "node": "Objects/Critters/butterfly33",
       "name": "butterfly33",
       "ready": 5584,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15407,7 +15407,7 @@
       "node": "Objects/Critters/butterfly34",
       "name": "butterfly34",
       "ready": 5594,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15417,7 +15417,7 @@
       "node": "Objects/Critters/butterfly35",
       "name": "butterfly35",
       "ready": 5604,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15427,7 +15427,7 @@
       "node": "Objects/Critters/butterfly36",
       "name": "butterfly36",
       "ready": 5614,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15437,7 +15437,7 @@
       "node": "Objects/Critters/butterfly37",
       "name": "butterfly37",
       "ready": 5624,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15447,7 +15447,7 @@
       "node": "Objects/Critters/butterfly38",
       "name": "butterfly38",
       "ready": 5634,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15457,7 +15457,7 @@
       "node": "Objects/Critters/butterfly39",
       "name": "butterfly39",
       "ready": 5644,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15467,7 +15467,7 @@
       "node": "Objects/Critters/butterfly40",
       "name": "butterfly40",
       "ready": 5654,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15477,7 +15477,7 @@
       "node": "Objects/Critters/butterfly41",
       "name": "butterfly41",
       "ready": 5664,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15487,7 +15487,7 @@
       "node": "Objects/Critters/butterfly42",
       "name": "butterfly42",
       "ready": 5674,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15497,7 +15497,7 @@
       "node": "Objects/Critters/butterfly43",
       "name": "butterfly43",
       "ready": 5684,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15507,7 +15507,7 @@
       "node": "Objects/Critters/butterfly44",
       "name": "butterfly44",
       "ready": 5694,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15517,7 +15517,7 @@
       "node": "Objects/Critters/butterfly45",
       "name": "butterfly45",
       "ready": 5704,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15527,7 +15527,7 @@
       "node": "Objects/Critters/butterfly46",
       "name": "butterfly46",
       "ready": 5714,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15537,7 +15537,7 @@
       "node": "Objects/Critters/butterfly47",
       "name": "butterfly47",
       "ready": 5724,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15547,7 +15547,7 @@
       "node": "Objects/Critters/butterfly48",
       "name": "butterfly48",
       "ready": 5734,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15557,7 +15557,7 @@
       "node": "Objects/Critters/butterfly49",
       "name": "butterfly49",
       "ready": 5744,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15567,7 +15567,7 @@
       "node": "Objects/Critters/butterfly50",
       "name": "butterfly50",
       "ready": 5754,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15577,7 +15577,7 @@
       "node": "Objects/Critters/butterfly51",
       "name": "butterfly51",
       "ready": 5764,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15587,7 +15587,7 @@
       "node": "Objects/Critters/butterfly52",
       "name": "butterfly52",
       "ready": 5774,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15597,7 +15597,7 @@
       "node": "Objects/Critters/butterfly53",
       "name": "butterfly53",
       "ready": 5784,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15917,7 +15917,7 @@
       "node": "Objects/Critters/butterfly54",
       "name": "butterfly54",
       "ready": 6042,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15927,7 +15927,7 @@
       "node": "Objects/Critters/butterfly55",
       "name": "butterfly55",
       "ready": 6052,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15937,7 +15937,7 @@
       "node": "Objects/Critters/butterfly56",
       "name": "butterfly56",
       "ready": 6062,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15947,7 +15947,7 @@
       "node": "Objects/Critters/butterfly57",
       "name": "butterfly57",
       "ready": 6072,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15957,7 +15957,7 @@
       "node": "Objects/Critters/butterfly58",
       "name": "butterfly58",
       "ready": 6082,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15967,7 +15967,7 @@
       "node": "Objects/Critters/butterfly59",
       "name": "butterfly59",
       "ready": 6092,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15977,7 +15977,7 @@
       "node": "Objects/Critters/butterfly60",
       "name": "butterfly60",
       "ready": 6102,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15987,7 +15987,7 @@
       "node": "Objects/Critters/butterfly61",
       "name": "butterfly61",
       "ready": 6112,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -15997,7 +15997,7 @@
       "node": "Objects/Critters/butterfly63",
       "name": "butterfly63",
       "ready": 6122,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16007,7 +16007,7 @@
       "node": "Objects/Critters/butterfly64",
       "name": "butterfly64",
       "ready": 6132,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16017,7 +16017,7 @@
       "node": "Objects/Critters/butterfly66",
       "name": "butterfly66",
       "ready": 6142,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16027,7 +16027,7 @@
       "node": "Objects/Critters/butterfly65",
       "name": "butterfly65",
       "ready": 6152,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16037,7 +16037,7 @@
       "node": "Objects/Critters/butterfly62",
       "name": "butterfly62",
       "ready": 6162,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16047,7 +16047,7 @@
       "node": "Objects/Critters/butterfly67",
       "name": "butterfly67",
       "ready": 6172,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16057,7 +16057,7 @@
       "node": "Objects/Critters/butterfly68",
       "name": "butterfly68",
       "ready": 6182,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16067,7 +16067,7 @@
       "node": "Objects/Critters/butterfly69",
       "name": "butterfly69",
       "ready": 6192,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16077,7 +16077,7 @@
       "node": "Objects/Critters/butterfly70",
       "name": "butterfly70",
       "ready": 6202,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16087,7 +16087,7 @@
       "node": "Objects/Critters/butterfly71",
       "name": "butterfly71",
       "ready": 6212,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16097,7 +16097,7 @@
       "node": "Objects/Critters/butterfly72",
       "name": "butterfly72",
       "ready": 6222,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16107,7 +16107,7 @@
       "node": "Objects/Critters/butterfly73",
       "name": "butterfly73",
       "ready": 6232,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16117,7 +16117,7 @@
       "node": "Objects/Critters/butterfly75",
       "name": "butterfly75",
       "ready": 6242,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16127,7 +16127,7 @@
       "node": "Objects/Critters/butterfly76",
       "name": "butterfly76",
       "ready": 6252,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16137,7 +16137,7 @@
       "node": "Objects/Critters/butterfly77",
       "name": "butterfly77",
       "ready": 6262,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16147,7 +16147,7 @@
       "node": "Objects/Critters/butterfly78",
       "name": "butterfly78",
       "ready": 6272,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16157,7 +16157,7 @@
       "node": "Objects/Critters/butterfly79",
       "name": "butterfly79",
       "ready": 6282,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16167,7 +16167,7 @@
       "node": "Objects/Critters/butterfly80",
       "name": "butterfly80",
       "ready": 6292,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16177,7 +16177,7 @@
       "node": "Objects/Critters/butterfly81",
       "name": "butterfly81",
       "ready": 6302,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16187,7 +16187,7 @@
       "node": "Objects/Critters/butterfly82",
       "name": "butterfly82",
       "ready": 6312,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16197,7 +16197,7 @@
       "node": "Objects/Critters/butterfly83",
       "name": "butterfly83",
       "ready": 6322,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16207,7 +16207,7 @@
       "node": "Objects/Critters/butterfly84",
       "name": "butterfly84",
       "ready": 6332,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16217,7 +16217,7 @@
       "node": "Objects/Critters/butterfly85",
       "name": "butterfly85",
       "ready": 6342,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16227,7 +16227,7 @@
       "node": "Objects/Critters/butterfly86",
       "name": "butterfly86",
       "ready": 6352,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16237,7 +16237,7 @@
       "node": "Objects/Critters/butterfly87",
       "name": "butterfly87",
       "ready": 6362,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16247,7 +16247,7 @@
       "node": "Objects/Critters/butterfly74",
       "name": "butterfly74",
       "ready": 6372,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16257,7 +16257,7 @@
       "node": "Objects/Critters/butterfly88",
       "name": "butterfly88",
       "ready": 6382,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16267,7 +16267,7 @@
       "node": "Objects/Critters/butterfly89",
       "name": "butterfly89",
       "ready": 6392,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16277,7 +16277,7 @@
       "node": "Objects/Critters/butterfly90",
       "name": "butterfly90",
       "ready": 6402,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16287,7 +16287,7 @@
       "node": "Objects/Critters/butterfly91",
       "name": "butterfly91",
       "ready": 6412,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16297,7 +16297,7 @@
       "node": "Objects/Critters/butterfly92",
       "name": "butterfly92",
       "ready": 6422,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16307,7 +16307,7 @@
       "node": "Objects/Critters/butterfly93",
       "name": "butterfly93",
       "ready": 6432,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -16317,7 +16317,7 @@
       "node": "Objects/Critters/butterfly94",
       "name": "butterfly94",
       "ready": 6442,
-      "role": 0,
+      "role": 22,
       "profile": 4294967295,
       "script": "Scripts/misc/butterfly.gd",
       "sha256": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2"
@@ -20737,7 +20737,7 @@
       "node": "Objects/PayPhone",
       "name": "PayPhone",
       "ready": 8347,
-      "role": 0,
+      "role": 19,
       "profile": 4294967295,
       "script": "Maps/Testing/phone.gd",
       "sha256": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89"
@@ -20777,7 +20777,7 @@
       "node": "Objects/PayPhone2",
       "name": "PayPhone2",
       "ready": 8364,
-      "role": 0,
+      "role": 19,
       "profile": 4294967295,
       "script": "Maps/Testing/phone.gd",
       "sha256": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89"
@@ -20817,7 +20817,7 @@
       "node": "Objects/PayPhone3",
       "name": "PayPhone3",
       "ready": 8381,
-      "role": 0,
+      "role": 19,
       "profile": 4294967295,
       "script": "Maps/Testing/phone.gd",
       "sha256": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89"
@@ -20857,7 +20857,7 @@
       "node": "Objects/PayPhone4",
       "name": "PayPhone4",
       "ready": 8398,
-      "role": 0,
+      "role": 19,
       "profile": 4294967295,
       "script": "Maps/Testing/phone.gd",
       "sha256": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89"
@@ -20897,7 +20897,7 @@
       "node": "Objects/ZooSignSparkle/Sparkles/Sparkles2",
       "name": "Sparkles2",
       "ready": 8410,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -20907,7 +20907,7 @@
       "node": "Objects/ZooSignSparkle/Sparkles/Sparkles3",
       "name": "Sparkles3",
       "ready": 8411,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"
@@ -20917,7 +20917,7 @@
       "node": "Objects/ZooSignSparkle/Sparkles",
       "name": "Sparkles",
       "ready": 8412,
-      "role": 0,
+      "role": 17,
       "profile": 4294967295,
       "script": "Scripts/misc/sparkles.gd",
       "sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436"

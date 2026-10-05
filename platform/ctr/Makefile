@@ -21,6 +21,7 @@ SOURCES += runtime/basement_progression.cpp runtime/basement_actor_assets.cpp ru
 SOURCES += runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/field_dandelion.cpp
 SOURCES += runtime/field_prompts_data.cpp runtime/field_prompts.cpp \
  runtime/field_psi.cpp runtime/field_psi_data.cpp runtime/field_psi_telepathy.cpp \
+ runtime/field_present.cpp runtime/field_present_data.cpp runtime/field_dropped.cpp runtime/field_dropped_data.cpp runtime/field_sparkles.cpp runtime/field_sparkles_data.cpp runtime/field_openable_door.cpp runtime/field_openable_door_data.cpp runtime/field_payphone.cpp runtime/field_payphone_data.cpp runtime/field_cash_box.cpp runtime/field_cash_box_data.cpp runtime/field_butterfly.cpp runtime/field_butterfly_data.cpp runtime/field_sparkles_owner.cpp \
  runtime/field_interact_dialog.cpp runtime/field_interact_dialog_data.cpp
 SOURCES += runtime/field_dead_bush.cpp runtime/field_dead_bush_data.cpp runtime/field_door.cpp
 SOURCES += runtime/field_emotes_data.cpp runtime/field_emotes.cpp

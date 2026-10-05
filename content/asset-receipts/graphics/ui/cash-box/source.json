@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "624e2c5b22c40db1dd0d89f2961d6ebd6340478e415b861e37bd8efa3e675433",
+  "producer_sha256": "cdbaa2157681b7482f89d2421fbe30770d02b239c68af5a8246151bc8e921c0e",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "textures": [
+    {
+      "output": "graphics/ui/cash-box/defaultbox.t3x",
+      "bytes": 4117,
+      "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
+    },
+    {
+      "output": "graphics/ui/cash-box/cents_white.t3x",
+      "bytes": 533,
+      "sha256": "80352fd022c449d1699a83fbbcbc71aab12c408b200cc9efa42502f3bd18e99c"
+    },
+    {
+      "output": "graphics/ui/cash-box/defaultempty.t3x",
+      "bytes": 4117,
+      "sha256": "fe7878caaa48c7f557f96aefda7fb82118d3f9e9effb00352c61e9341d821b0d"
+    },
+    {
+      "output": "graphics/ui/cash-box/PhoneCard.t3x",
+      "bytes": 4117,
+      "sha256": "e8fb01b105e3a615b326794c34a3dec94f4e73d5729998904d9b59e73c61f4bc"
+    },
+    {
+      "output": "graphics/ui/cash-box/defaultbox_inside.t3x",
+      "bytes": 4117,
+      "sha256": "51ecf4578c9b197f271333d0fffa5f96b7f74e525c2687520cbc6cc20e997e34"
+    }
+  ]
+}

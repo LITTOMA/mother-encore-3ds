@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "3e0dbc6d84e9fa346aa244c54b24ce7355d4874e2bb1257c23a05f1b821a8cd6",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/objects/present/present.t3x": {
+      "bytes": 8213,
+      "sha256": "f1def99f7c79dba2039c13ad8d03d38a9180157f9e527aba68bc027cb726f0b8"
+    }
+  }
+}

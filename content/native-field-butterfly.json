@@ -1,0 +1,6499 @@
+{
+  "schema": 1,
+  "kind": "encore.field-butterfly.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "script": "Scripts/misc/butterfly.gd",
+  "modulus": 5,
+  "pixel_snap": true,
+  "frames": 2,
+  "speed": 30.0,
+  "fly_seek": 0.3,
+  "orbit_seek": 20.0,
+  "assets": [
+    {
+      "id": 0,
+      "source": "Graphics/Character Sprites/Npcs/misc/butterflies/0.png",
+      "path": "graphics/objects/butterfly/0.t3x",
+      "width": 22,
+      "height": 11
+    },
+    {
+      "id": 1,
+      "source": "Graphics/Character Sprites/Npcs/misc/butterflies/1.png",
+      "path": "graphics/objects/butterfly/1.t3x",
+      "width": 22,
+      "height": 11
+    },
+    {
+      "id": 2,
+      "source": "Graphics/Character Sprites/Npcs/misc/butterflies/2.png",
+      "path": "graphics/objects/butterfly/2.t3x",
+      "width": 22,
+      "height": 11
+    },
+    {
+      "id": 3,
+      "source": "Graphics/Character Sprites/Npcs/misc/butterflies/3.png",
+      "path": "graphics/objects/butterfly/3.t3x",
+      "width": 22,
+      "height": 11
+    },
+    {
+      "id": 4,
+      "source": "Graphics/Character Sprites/Npcs/misc/butterflies/4.png",
+      "path": "graphics/objects/butterfly/4.t3x",
+      "width": 22,
+      "height": 11
+    }
+  ],
+  "clips": [
+    {
+      "role": 1,
+      "name": "Fly",
+      "length": 0.333333,
+      "tracks": [
+        {
+          "role": 1,
+          "discrete": true,
+          "keys": [
+            {
+              "time": 0,
+              "transition": 1,
+              "value": [
+                0.0,
+                0
+              ]
+            },
+            {
+              "time": 0.166667,
+              "transition": 1,
+              "value": [
+                1.0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "role": 2,
+      "name": "Flying",
+      "length": 5.2,
+      "tracks": [
+        {
+          "role": 2,
+          "discrete": true,
+          "keys": [
+            {
+              "time": 1.3,
+              "transition": 1,
+              "value": [
+                1.0,
+                0
+              ]
+            },
+            {
+              "time": 3.9,
+              "transition": 1,
+              "value": [
+                0.0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "role": 3,
+          "discrete": false,
+          "keys": [
+            {
+              "time": 0,
+              "transition": -1.2,
+              "value": [
+                0,
+                -16
+              ]
+            },
+            {
+              "time": 1.3,
+              "transition": -1.2,
+              "value": [
+                16,
+                -16
+              ]
+            },
+            {
+              "time": 2.6,
+              "transition": -1.2,
+              "value": [
+                0,
+                -16
+              ]
+            },
+            {
+              "time": 3.9,
+              "transition": -1.2,
+              "value": [
+                -16,
+                -16
+              ]
+            }
+          ]
+        },
+        {
+          "role": 4,
+          "discrete": false,
+          "keys": [
+            {
+              "time": 0,
+              "transition": 1,
+              "value": [
+                0,
+                0
+              ]
+            },
+            {
+              "time": 0.2,
+              "transition": 1,
+              "value": [
+                0,
+                -3
+              ]
+            },
+            {
+              "time": 0.4,
+              "transition": 1,
+              "value": [
+                0,
+                -6
+              ]
+            },
+            {
+              "time": 0.6,
+              "transition": 1,
+              "value": [
+                0,
+                -8
+              ]
+            },
+            {
+              "time": 0.7,
+              "transition": 1,
+              "value": [
+                0,
+                -8
+              ]
+            },
+            {
+              "time": 0.9,
+              "transition": 1,
+              "value": [
+                0,
+                -6
+              ]
+            },
+            {
+              "time": 1.1,
+              "transition": 1,
+              "value": [
+                0,
+                -3
+              ]
+            },
+            {
+              "time": 1.3,
+              "transition": 1,
+              "value": [
+                0,
+                0
+              ]
+            },
+            {
+              "time": 1.5,
+              "transition": 1,
+              "value": [
+                0,
+                3
+              ]
+            },
+            {
+              "time": 1.7,
+              "transition": 1,
+              "value": [
+                0,
+                6
+              ]
+            },
+            {
+              "time": 1.9,
+              "transition": 1,
+              "value": [
+                0,
+                8
+              ]
+            },
+            {
+              "time": 2,
+              "transition": 1,
+              "value": [
+                0,
+                8
+              ]
+            },
+            {
+              "time": 2.2,
+              "transition": 1,
+              "value": [
+                0,
+                6
+              ]
+            },
+            {
+              "time": 2.4,
+              "transition": 1,
+              "value": [
+                0,
+                3
+              ]
+            },
+            {
+              "time": 2.6,
+              "transition": 1,
+              "value": [
+                0,
+                0
+              ]
+            },
+            {
+              "time": 2.8,
+              "transition": 1,
+              "value": [
+                0,
+                -3
+              ]
+            },
+            {
+              "time": 3,
+              "transition": 1,
+              "value": [
+                0,
+                -6
+              ]
+            },
+            {
+              "time": 3.2,
+              "transition": 1,
+              "value": [
+                0,
+                -8
+              ]
+            },
+            {
+              "time": 3.3,
+              "transition": 1,
+              "value": [
+                0,
+                -8
+              ]
+            },
+            {
+              "time": 3.5,
+              "transition": 1,
+              "value": [
+                0,
+                -6
+              ]
+            },
+            {
+              "time": 3.7,
+              "transition": 1,
+              "value": [
+                0,
+                -3
+              ]
+            },
+            {
+              "time": 3.9,
+              "transition": 1,
+              "value": [
+                0,
+                0
+              ]
+            },
+            {
+              "time": 4.1,
+              "transition": 1,
+              "value": [
+                0,
+                3
+              ]
+            },
+            {
+              "time": 4.3,
+              "transition": 1,
+              "value": [
+                0,
+                6
+              ]
+            },
+            {
+              "time": 4.5,
+              "transition": 1,
+              "value": [
+                0,
+                8
+              ]
+            },
+            {
+              "time": 4.6,
+              "transition": 1,
+              "value": [
+                0,
+                8
+              ]
+            },
+            {
+              "time": 4.8,
+              "transition": 1,
+              "value": [
+                0,
+                6
+              ]
+            },
+            {
+              "time": 5,
+              "transition": 1,
+              "value": [
+                0,
+                3
+              ]
+            },
+            {
+              "time": 5.2,
+              "transition": 1,
+              "value": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bindings": [
+    {
+      "id": 4048853028,
+      "node": "Objects/Critters/butterfly",
+      "ready_ordinal": 5264,
+      "timer_id": 2533520867,
+      "timer_ordinal": 5256,
+      "fly_id": 1204031092,
+      "fly_ordinal": 5257,
+      "orbit_id": 3040886708,
+      "orbit_ordinal": 5258,
+      "area_id": 3380433768,
+      "notifier_id": 1217674649,
+      "enabler_id": 1129935401,
+      "position": [
+        900.0,
+        1460.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2311284819,
+      "node": "Objects/Critters/butterfly2",
+      "ready_ordinal": 5274,
+      "timer_id": 610275272,
+      "timer_ordinal": 5266,
+      "fly_id": 2743880768,
+      "fly_ordinal": 5267,
+      "orbit_id": 819807493,
+      "orbit_ordinal": 5268,
+      "area_id": 1369614720,
+      "notifier_id": 692845041,
+      "enabler_id": 3209060024,
+      "position": [
+        872.0,
+        1476.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 71016387,
+      "node": "Objects/Critters/butterfly3",
+      "ready_ordinal": 5284,
+      "timer_id": 1911327423,
+      "timer_ordinal": 5276,
+      "fly_id": 1014051614,
+      "fly_ordinal": 5277,
+      "orbit_id": 2902428612,
+      "orbit_ordinal": 5278,
+      "area_id": 955931289,
+      "notifier_id": 3169593929,
+      "enabler_id": 1132560541,
+      "position": [
+        824.0,
+        1512.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1598808285,
+      "node": "Objects/Critters/butterfly4",
+      "ready_ordinal": 5294,
+      "timer_id": 3906534550,
+      "timer_ordinal": 5286,
+      "fly_id": 840820885,
+      "fly_ordinal": 5287,
+      "orbit_id": 599836984,
+      "orbit_ordinal": 5288,
+      "area_id": 202330554,
+      "notifier_id": 2455459622,
+      "enabler_id": 3637591040,
+      "position": [
+        952.0,
+        1500.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 183016484,
+      "node": "Objects/Critters/butterfly5",
+      "ready_ordinal": 5304,
+      "timer_id": 559663313,
+      "timer_ordinal": 5296,
+      "fly_id": 3076726976,
+      "fly_ordinal": 5297,
+      "orbit_id": 859802548,
+      "orbit_ordinal": 5298,
+      "area_id": 2766115352,
+      "notifier_id": 34185340,
+      "enabler_id": 1193661332,
+      "position": [
+        1032.0,
+        1404.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 4133107959,
+      "node": "Objects/Critters/butterfly6",
+      "ready_ordinal": 5314,
+      "timer_id": 307004366,
+      "timer_ordinal": 5306,
+      "fly_id": 1454486996,
+      "fly_ordinal": 5307,
+      "orbit_id": 3804230892,
+      "orbit_ordinal": 5308,
+      "area_id": 3185461253,
+      "notifier_id": 1076958964,
+      "enabler_id": 3914638731,
+      "position": [
+        952.0,
+        1396.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 285278789,
+      "node": "Objects/Critters/butterfly7",
+      "ready_ordinal": 5324,
+      "timer_id": 2712605072,
+      "timer_ordinal": 5316,
+      "fly_id": 2011244689,
+      "fly_ordinal": 5317,
+      "orbit_id": 3823696712,
+      "orbit_ordinal": 5318,
+      "area_id": 3563651535,
+      "notifier_id": 1215169896,
+      "enabler_id": 151344897,
+      "position": [
+        984.0,
+        1428.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 4011740841,
+      "node": "Objects/Critters/butterfly8",
+      "ready_ordinal": 5334,
+      "timer_id": 3444450951,
+      "timer_ordinal": 5326,
+      "fly_id": 2492033907,
+      "fly_ordinal": 5327,
+      "orbit_id": 2436108286,
+      "orbit_ordinal": 5328,
+      "area_id": 1102550226,
+      "notifier_id": 288778410,
+      "enabler_id": 3696030124,
+      "position": [
+        756.0,
+        1880.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1473732256,
+      "node": "Objects/Critters/butterfly9",
+      "ready_ordinal": 5344,
+      "timer_id": 3027400818,
+      "timer_ordinal": 5336,
+      "fly_id": 2148078421,
+      "fly_ordinal": 5337,
+      "orbit_id": 2172650313,
+      "orbit_ordinal": 5338,
+      "area_id": 673492877,
+      "notifier_id": 3687053184,
+      "enabler_id": 1814205548,
+      "position": [
+        800.0,
+        1852.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 4210722695,
+      "node": "Objects/Critters/butterfly10",
+      "ready_ordinal": 5354,
+      "timer_id": 1975597291,
+      "timer_ordinal": 5346,
+      "fly_id": 4174650510,
+      "fly_ordinal": 5347,
+      "orbit_id": 242291652,
+      "orbit_ordinal": 5348,
+      "area_id": 1830731688,
+      "notifier_id": 4167856088,
+      "enabler_id": 2568268780,
+      "position": [
+        896.0,
+        1796.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1320854191,
+      "node": "Objects/Critters/butterfly11",
+      "ready_ordinal": 5364,
+      "timer_id": 2466941176,
+      "timer_ordinal": 5356,
+      "fly_id": 433764476,
+      "fly_ordinal": 5357,
+      "orbit_id": 1480521488,
+      "orbit_ordinal": 5358,
+      "area_id": 3855543011,
+      "notifier_id": 379153801,
+      "enabler_id": 955184235,
+      "position": [
+        868.0,
+        1844.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1541848828,
+      "node": "Objects/Critters/butterfly12",
+      "ready_ordinal": 5374,
+      "timer_id": 1608731452,
+      "timer_ordinal": 5366,
+      "fly_id": 555194805,
+      "fly_ordinal": 5367,
+      "orbit_id": 3700592865,
+      "orbit_ordinal": 5368,
+      "area_id": 2198555121,
+      "notifier_id": 3764321259,
+      "enabler_id": 341380449,
+      "position": [
+        868.0,
+        1768.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 928439840,
+      "node": "Objects/Critters/butterfly13",
+      "ready_ordinal": 5384,
+      "timer_id": 4192778283,
+      "timer_ordinal": 5376,
+      "fly_id": 1131045184,
+      "fly_ordinal": 5377,
+      "orbit_id": 2360493026,
+      "orbit_ordinal": 5378,
+      "area_id": 536618327,
+      "notifier_id": 248384054,
+      "enabler_id": 11146675,
+      "position": [
+        928.0,
+        1776.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 546424758,
+      "node": "Objects/Critters/butterfly14",
+      "ready_ordinal": 5394,
+      "timer_id": 3952002398,
+      "timer_ordinal": 5386,
+      "fly_id": 3848046450,
+      "fly_ordinal": 5387,
+      "orbit_id": 1091380120,
+      "orbit_ordinal": 5388,
+      "area_id": 2152193676,
+      "notifier_id": 287400143,
+      "enabler_id": 2617848035,
+      "position": [
+        384.0,
+        2328.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2220767756,
+      "node": "Objects/Critters/butterfly15",
+      "ready_ordinal": 5404,
+      "timer_id": 864959820,
+      "timer_ordinal": 5396,
+      "fly_id": 605534521,
+      "fly_ordinal": 5397,
+      "orbit_id": 1189328399,
+      "orbit_ordinal": 5398,
+      "area_id": 826435702,
+      "notifier_id": 3566515487,
+      "enabler_id": 2549463922,
+      "position": [
+        856.0,
+        1168.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 302559031,
+      "node": "Objects/Critters/butterfly16",
+      "ready_ordinal": 5414,
+      "timer_id": 3340228932,
+      "timer_ordinal": 5406,
+      "fly_id": 2126271868,
+      "fly_ordinal": 5407,
+      "orbit_id": 2386761314,
+      "orbit_ordinal": 5408,
+      "area_id": 2293068045,
+      "notifier_id": 3943328329,
+      "enabler_id": 2474713549,
+      "position": [
+        816.0,
+        1204.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1176652386,
+      "node": "Objects/Critters/butterfly17",
+      "ready_ordinal": 5424,
+      "timer_id": 906827226,
+      "timer_ordinal": 5416,
+      "fly_id": 3039704711,
+      "fly_ordinal": 5417,
+      "orbit_id": 1305027554,
+      "orbit_ordinal": 5418,
+      "area_id": 3185673885,
+      "notifier_id": 2845468028,
+      "enabler_id": 4125389701,
+      "position": [
+        1008.0,
+        1072.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3644942147,
+      "node": "Objects/Critters/butterfly18",
+      "ready_ordinal": 5434,
+      "timer_id": 2408971261,
+      "timer_ordinal": 5426,
+      "fly_id": 4217360161,
+      "fly_ordinal": 5427,
+      "orbit_id": 3519723646,
+      "orbit_ordinal": 5428,
+      "area_id": 3350633869,
+      "notifier_id": 3414149174,
+      "enabler_id": 1486071728,
+      "position": [
+        928.0,
+        1072.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3964537892,
+      "node": "Objects/Critters/butterfly19",
+      "ready_ordinal": 5444,
+      "timer_id": 1085967939,
+      "timer_ordinal": 5436,
+      "fly_id": 448339864,
+      "fly_ordinal": 5437,
+      "orbit_id": 421386478,
+      "orbit_ordinal": 5438,
+      "area_id": 3523834053,
+      "notifier_id": 4015475995,
+      "enabler_id": 3402887558,
+      "position": [
+        972.0,
+        1104.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3670851750,
+      "node": "Objects/Critters/butterfly20",
+      "ready_ordinal": 5454,
+      "timer_id": 3282932472,
+      "timer_ordinal": 5446,
+      "fly_id": 3394249056,
+      "fly_ordinal": 5447,
+      "orbit_id": 2487014999,
+      "orbit_ordinal": 5448,
+      "area_id": 1982740615,
+      "notifier_id": 2123989970,
+      "enabler_id": 3042096792,
+      "position": [
+        908.0,
+        1188.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 945608031,
+      "node": "Objects/Critters/butterfly21",
+      "ready_ordinal": 5464,
+      "timer_id": 1709281419,
+      "timer_ordinal": 5456,
+      "fly_id": 2500788335,
+      "fly_ordinal": 5457,
+      "orbit_id": 4016294128,
+      "orbit_ordinal": 5458,
+      "area_id": 2618272101,
+      "notifier_id": 786872185,
+      "enabler_id": 158979819,
+      "position": [
+        692.0,
+        1112.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2692286672,
+      "node": "Objects/Critters/butterfly22",
+      "ready_ordinal": 5474,
+      "timer_id": 3136322955,
+      "timer_ordinal": 5466,
+      "fly_id": 1268979096,
+      "fly_ordinal": 5467,
+      "orbit_id": 2405248801,
+      "orbit_ordinal": 5468,
+      "area_id": 105762609,
+      "notifier_id": 2185524087,
+      "enabler_id": 4173938473,
+      "position": [
+        656.0,
+        368.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1712501121,
+      "node": "Objects/Critters/butterfly23",
+      "ready_ordinal": 5484,
+      "timer_id": 1026181344,
+      "timer_ordinal": 5476,
+      "fly_id": 2848536601,
+      "fly_ordinal": 5477,
+      "orbit_id": 3985807840,
+      "orbit_ordinal": 5478,
+      "area_id": 2188349883,
+      "notifier_id": 1479613457,
+      "enabler_id": 1705798949,
+      "position": [
+        64.0,
+        24.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3072621889,
+      "node": "Objects/Critters/butterfly24",
+      "ready_ordinal": 5494,
+      "timer_id": 825358594,
+      "timer_ordinal": 5486,
+      "fly_id": 480516245,
+      "fly_ordinal": 5487,
+      "orbit_id": 3080309578,
+      "orbit_ordinal": 5488,
+      "area_id": 3112071131,
+      "notifier_id": 1247391450,
+      "enabler_id": 2568061156,
+      "position": [
+        -600.0,
+        420.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2101169943,
+      "node": "Objects/Critters/butterfly25",
+      "ready_ordinal": 5504,
+      "timer_id": 25390815,
+      "timer_ordinal": 5496,
+      "fly_id": 1227561628,
+      "fly_ordinal": 5497,
+      "orbit_id": 2926797473,
+      "orbit_ordinal": 5498,
+      "area_id": 998685250,
+      "notifier_id": 3495890743,
+      "enabler_id": 3989435693,
+      "position": [
+        -612.0,
+        428.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2408840148,
+      "node": "Objects/Critters/butterfly26",
+      "ready_ordinal": 5514,
+      "timer_id": 3608575329,
+      "timer_ordinal": 5506,
+      "fly_id": 796769002,
+      "fly_ordinal": 5507,
+      "orbit_id": 668837032,
+      "orbit_ordinal": 5508,
+      "area_id": 193242619,
+      "notifier_id": 2648125511,
+      "enabler_id": 3673574490,
+      "position": [
+        -600.0,
+        436.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1328711621,
+      "node": "Objects/Critters/butterfly27",
+      "ready_ordinal": 5524,
+      "timer_id": 2090737296,
+      "timer_ordinal": 5516,
+      "fly_id": 3407865399,
+      "fly_ordinal": 5517,
+      "orbit_id": 3768784729,
+      "orbit_ordinal": 5518,
+      "area_id": 2834500323,
+      "notifier_id": 1728366162,
+      "enabler_id": 2899589860,
+      "position": [
+        508.0,
+        756.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1505882934,
+      "node": "Objects/Critters/butterfly28",
+      "ready_ordinal": 5534,
+      "timer_id": 322467309,
+      "timer_ordinal": 5526,
+      "fly_id": 4086358792,
+      "fly_ordinal": 5527,
+      "orbit_id": 1376602753,
+      "orbit_ordinal": 5528,
+      "area_id": 642118348,
+      "notifier_id": 2734478901,
+      "enabler_id": 2668374837,
+      "position": [
+        488.0,
+        764.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3465409229,
+      "node": "Objects/Critters/butterfly29",
+      "ready_ordinal": 5544,
+      "timer_id": 841794954,
+      "timer_ordinal": 5536,
+      "fly_id": 281222691,
+      "fly_ordinal": 5537,
+      "orbit_id": 1708024048,
+      "orbit_ordinal": 5538,
+      "area_id": 1117079770,
+      "notifier_id": 1316256305,
+      "enabler_id": 1321214642,
+      "position": [
+        508.0,
+        772.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3491666652,
+      "node": "Objects/Critters/butterfly30",
+      "ready_ordinal": 5554,
+      "timer_id": 2822698765,
+      "timer_ordinal": 5546,
+      "fly_id": 1981910650,
+      "fly_ordinal": 5547,
+      "orbit_id": 578120781,
+      "orbit_ordinal": 5548,
+      "area_id": 2651824195,
+      "notifier_id": 713279837,
+      "enabler_id": 1262161876,
+      "position": [
+        500.0,
+        784.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1468456701,
+      "node": "Objects/Critters/butterfly31",
+      "ready_ordinal": 5564,
+      "timer_id": 1771954004,
+      "timer_ordinal": 5556,
+      "fly_id": 1830873777,
+      "fly_ordinal": 5557,
+      "orbit_id": 555160239,
+      "orbit_ordinal": 5558,
+      "area_id": 256255605,
+      "notifier_id": 763944003,
+      "enabler_id": 2603352243,
+      "position": [
+        696.0,
+        2292.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3641132542,
+      "node": "Objects/Critters/butterfly32",
+      "ready_ordinal": 5574,
+      "timer_id": 3116352085,
+      "timer_ordinal": 5566,
+      "fly_id": 377710052,
+      "fly_ordinal": 5567,
+      "orbit_id": 1969084783,
+      "orbit_ordinal": 5568,
+      "area_id": 480103713,
+      "notifier_id": 2667938852,
+      "enabler_id": 1042182355,
+      "position": [
+        760.0,
+        2304.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3705953745,
+      "node": "Objects/Critters/butterfly33",
+      "ready_ordinal": 5584,
+      "timer_id": 235224314,
+      "timer_ordinal": 5576,
+      "fly_id": 3283937437,
+      "fly_ordinal": 5577,
+      "orbit_id": 2103340268,
+      "orbit_ordinal": 5578,
+      "area_id": 2756241826,
+      "notifier_id": 2603434440,
+      "enabler_id": 2729935677,
+      "position": [
+        8.0,
+        2840.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 894094774,
+      "node": "Objects/Critters/butterfly34",
+      "ready_ordinal": 5594,
+      "timer_id": 675606620,
+      "timer_ordinal": 5586,
+      "fly_id": 4265622324,
+      "fly_ordinal": 5587,
+      "orbit_id": 4093012860,
+      "orbit_ordinal": 5588,
+      "area_id": 3843705757,
+      "notifier_id": 3973676739,
+      "enabler_id": 3295012651,
+      "position": [
+        24.0,
+        2828.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1560301505,
+      "node": "Objects/Critters/butterfly35",
+      "ready_ordinal": 5604,
+      "timer_id": 825516573,
+      "timer_ordinal": 5596,
+      "fly_id": 1578293831,
+      "fly_ordinal": 5597,
+      "orbit_id": 3454393236,
+      "orbit_ordinal": 5598,
+      "area_id": 2923277047,
+      "notifier_id": 4194306045,
+      "enabler_id": 4210259583,
+      "position": [
+        4.0,
+        2828.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2880341828,
+      "node": "Objects/Critters/butterfly36",
+      "ready_ordinal": 5614,
+      "timer_id": 3705373098,
+      "timer_ordinal": 5606,
+      "fly_id": 2195425357,
+      "fly_ordinal": 5607,
+      "orbit_id": 4128830430,
+      "orbit_ordinal": 5608,
+      "area_id": 3229753748,
+      "notifier_id": 1687189812,
+      "enabler_id": 3142217779,
+      "position": [
+        12.0,
+        2816.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2421098108,
+      "node": "Objects/Critters/butterfly37",
+      "ready_ordinal": 5624,
+      "timer_id": 4070034620,
+      "timer_ordinal": 5616,
+      "fly_id": 1431924524,
+      "fly_ordinal": 5617,
+      "orbit_id": 2548278972,
+      "orbit_ordinal": 5618,
+      "area_id": 2744720281,
+      "notifier_id": 2581280690,
+      "enabler_id": 1620710432,
+      "position": [
+        -504.0,
+        2744.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 366046308,
+      "node": "Objects/Critters/butterfly38",
+      "ready_ordinal": 5634,
+      "timer_id": 3663184061,
+      "timer_ordinal": 5626,
+      "fly_id": 1002608319,
+      "fly_ordinal": 5627,
+      "orbit_id": 2418370008,
+      "orbit_ordinal": 5628,
+      "area_id": 2105787753,
+      "notifier_id": 1781700341,
+      "enabler_id": 263857155,
+      "position": [
+        -524.0,
+        2756.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 379323486,
+      "node": "Objects/Critters/butterfly39",
+      "ready_ordinal": 5644,
+      "timer_id": 1710693383,
+      "timer_ordinal": 5636,
+      "fly_id": 796821628,
+      "fly_ordinal": 5637,
+      "orbit_id": 2407156658,
+      "orbit_ordinal": 5638,
+      "area_id": 1395487216,
+      "notifier_id": 3474936662,
+      "enabler_id": 2249883447,
+      "position": [
+        -516.0,
+        2744.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2192243407,
+      "node": "Objects/Critters/butterfly40",
+      "ready_ordinal": 5654,
+      "timer_id": 318261904,
+      "timer_ordinal": 5646,
+      "fly_id": 3782188293,
+      "fly_ordinal": 5647,
+      "orbit_id": 1263086762,
+      "orbit_ordinal": 5648,
+      "area_id": 4069582095,
+      "notifier_id": 2733123031,
+      "enabler_id": 617043408,
+      "position": [
+        816.0,
+        1796.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3741458817,
+      "node": "Objects/Critters/butterfly41",
+      "ready_ordinal": 5664,
+      "timer_id": 1963745938,
+      "timer_ordinal": 5656,
+      "fly_id": 3594271348,
+      "fly_ordinal": 5657,
+      "orbit_id": 2347624459,
+      "orbit_ordinal": 5658,
+      "area_id": 2120815879,
+      "notifier_id": 1544318968,
+      "enabler_id": 3835697739,
+      "position": [
+        820.0,
+        1892.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 453878804,
+      "node": "Objects/Critters/butterfly42",
+      "ready_ordinal": 5674,
+      "timer_id": 82365140,
+      "timer_ordinal": 5666,
+      "fly_id": 525186563,
+      "fly_ordinal": 5667,
+      "orbit_id": 2831322327,
+      "orbit_ordinal": 5668,
+      "area_id": 2294176656,
+      "notifier_id": 749655147,
+      "enabler_id": 3962577379,
+      "position": [
+        52.0,
+        1784.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.99999713897705,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.99999713897705,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 788260806,
+      "node": "Objects/Critters/butterfly43",
+      "ready_ordinal": 5684,
+      "timer_id": 2493290005,
+      "timer_ordinal": 5676,
+      "fly_id": 2644058236,
+      "fly_ordinal": 5677,
+      "orbit_id": 255634961,
+      "orbit_ordinal": 5678,
+      "area_id": 1240025689,
+      "notifier_id": 920612959,
+      "enabler_id": 3721328480,
+      "position": [
+        -140.0,
+        1668.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2769276760,
+      "node": "Objects/Critters/butterfly44",
+      "ready_ordinal": 5694,
+      "timer_id": 3302991643,
+      "timer_ordinal": 5686,
+      "fly_id": 214198856,
+      "fly_ordinal": 5687,
+      "orbit_id": 3594672231,
+      "orbit_ordinal": 5688,
+      "area_id": 2300795054,
+      "notifier_id": 680844364,
+      "enabler_id": 2239714592,
+      "position": [
+        -108.0,
+        1684.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3887332607,
+      "node": "Objects/Critters/butterfly45",
+      "ready_ordinal": 5704,
+      "timer_id": 1875190253,
+      "timer_ordinal": 5696,
+      "fly_id": 2145740924,
+      "fly_ordinal": 5697,
+      "orbit_id": 2035357374,
+      "orbit_ordinal": 5698,
+      "area_id": 3804214853,
+      "notifier_id": 2119278304,
+      "enabler_id": 3495287860,
+      "position": [
+        -176.0,
+        1720.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1326518183,
+      "node": "Objects/Critters/butterfly46",
+      "ready_ordinal": 5714,
+      "timer_id": 2740989275,
+      "timer_ordinal": 5706,
+      "fly_id": 3757452913,
+      "fly_ordinal": 5707,
+      "orbit_id": 3249505683,
+      "orbit_ordinal": 5708,
+      "area_id": 3399460489,
+      "notifier_id": 3856120658,
+      "enabler_id": 192205013,
+      "position": [
+        -148.0,
+        1708.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3810849647,
+      "node": "Objects/Critters/butterfly47",
+      "ready_ordinal": 5724,
+      "timer_id": 3952725008,
+      "timer_ordinal": 5716,
+      "fly_id": 1670843713,
+      "fly_ordinal": 5717,
+      "orbit_id": 894091068,
+      "orbit_ordinal": 5718,
+      "area_id": 2187400415,
+      "notifier_id": 1417162086,
+      "enabler_id": 2482707793,
+      "position": [
+        -324.0,
+        1896.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2673772533,
+      "node": "Objects/Critters/butterfly48",
+      "ready_ordinal": 5734,
+      "timer_id": 2520709594,
+      "timer_ordinal": 5726,
+      "fly_id": 2336040548,
+      "fly_ordinal": 5727,
+      "orbit_id": 2484806356,
+      "orbit_ordinal": 5728,
+      "area_id": 29354898,
+      "notifier_id": 3973782905,
+      "enabler_id": 3285284765,
+      "position": [
+        -292.0,
+        1904.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1285465502,
+      "node": "Objects/Critters/butterfly49",
+      "ready_ordinal": 5744,
+      "timer_id": 3420398775,
+      "timer_ordinal": 5736,
+      "fly_id": 3525857615,
+      "fly_ordinal": 5737,
+      "orbit_id": 816923318,
+      "orbit_ordinal": 5738,
+      "area_id": 46784054,
+      "notifier_id": 2884884731,
+      "enabler_id": 1784577608,
+      "position": [
+        -124.0,
+        2272.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2703422874,
+      "node": "Objects/Critters/butterfly50",
+      "ready_ordinal": 5754,
+      "timer_id": 1176274256,
+      "timer_ordinal": 5746,
+      "fly_id": 342762383,
+      "fly_ordinal": 5747,
+      "orbit_id": 2158372179,
+      "orbit_ordinal": 5748,
+      "area_id": 3527026543,
+      "notifier_id": 839870174,
+      "enabler_id": 704139755,
+      "position": [
+        96.0,
+        2272.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2107073818,
+      "node": "Objects/Critters/butterfly51",
+      "ready_ordinal": 5764,
+      "timer_id": 673208132,
+      "timer_ordinal": 5756,
+      "fly_id": 1031501484,
+      "fly_ordinal": 5757,
+      "orbit_id": 3213448839,
+      "orbit_ordinal": 5758,
+      "area_id": 2558412711,
+      "notifier_id": 3251169263,
+      "enabler_id": 3923889710,
+      "position": [
+        28.0,
+        2292.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1606882209,
+      "node": "Objects/Critters/butterfly52",
+      "ready_ordinal": 5774,
+      "timer_id": 4155495841,
+      "timer_ordinal": 5766,
+      "fly_id": 926012163,
+      "fly_ordinal": 5767,
+      "orbit_id": 945534231,
+      "orbit_ordinal": 5768,
+      "area_id": 3753643237,
+      "notifier_id": 2060475454,
+      "enabler_id": 3918891165,
+      "position": [
+        -28.0,
+        2324.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2733141979,
+      "node": "Objects/Critters/butterfly53",
+      "ready_ordinal": 5784,
+      "timer_id": 3750519174,
+      "timer_ordinal": 5776,
+      "fly_id": 1187220046,
+      "fly_ordinal": 5777,
+      "orbit_id": 253852925,
+      "orbit_ordinal": 5778,
+      "area_id": 1713379141,
+      "notifier_id": 3111542249,
+      "enabler_id": 856383141,
+      "position": [
+        36.0,
+        2336.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.99999713897705,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.99999713897705,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 138217822,
+      "node": "Objects/Critters/butterfly54",
+      "ready_ordinal": 6042,
+      "timer_id": 1720059416,
+      "timer_ordinal": 6034,
+      "fly_id": 3684096473,
+      "fly_ordinal": 6035,
+      "orbit_id": 3181326058,
+      "orbit_ordinal": 6036,
+      "area_id": 1105748333,
+      "notifier_id": 116319250,
+      "enabler_id": 624690186,
+      "position": [
+        327.0,
+        -640.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3564127501,
+      "node": "Objects/Critters/butterfly55",
+      "ready_ordinal": 6052,
+      "timer_id": 2386307099,
+      "timer_ordinal": 6044,
+      "fly_id": 2016038205,
+      "fly_ordinal": 6045,
+      "orbit_id": 1888472847,
+      "orbit_ordinal": 6046,
+      "area_id": 3332788514,
+      "notifier_id": 511614229,
+      "enabler_id": 1436480902,
+      "position": [
+        303.0,
+        -619.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1789083713,
+      "node": "Objects/Critters/butterfly56",
+      "ready_ordinal": 6062,
+      "timer_id": 957659204,
+      "timer_ordinal": 6054,
+      "fly_id": 3733207235,
+      "fly_ordinal": 6055,
+      "orbit_id": 161528435,
+      "orbit_ordinal": 6056,
+      "area_id": 2321002248,
+      "notifier_id": 3809394956,
+      "enabler_id": 2915515254,
+      "position": [
+        333.0,
+        -614.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1670623500,
+      "node": "Objects/Critters/butterfly57",
+      "ready_ordinal": 6072,
+      "timer_id": 3083658812,
+      "timer_ordinal": 6064,
+      "fly_id": 358148759,
+      "fly_ordinal": 6065,
+      "orbit_id": 2104224865,
+      "orbit_ordinal": 6066,
+      "area_id": 1320846084,
+      "notifier_id": 3759438064,
+      "enabler_id": 720821041,
+      "position": [
+        372.0,
+        -853.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3489047734,
+      "node": "Objects/Critters/butterfly58",
+      "ready_ordinal": 6082,
+      "timer_id": 730613150,
+      "timer_ordinal": 6074,
+      "fly_id": 4246798591,
+      "fly_ordinal": 6075,
+      "orbit_id": 1156507750,
+      "orbit_ordinal": 6076,
+      "area_id": 2052439113,
+      "notifier_id": 3424845750,
+      "enabler_id": 140185988,
+      "position": [
+        463.0,
+        -845.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 4141464067,
+      "node": "Objects/Critters/butterfly59",
+      "ready_ordinal": 6092,
+      "timer_id": 2787070113,
+      "timer_ordinal": 6084,
+      "fly_id": 3999915442,
+      "fly_ordinal": 6085,
+      "orbit_id": 3827255728,
+      "orbit_ordinal": 6086,
+      "area_id": 211123329,
+      "notifier_id": 1614719079,
+      "enabler_id": 3482763304,
+      "position": [
+        408.0,
+        -844.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1993757502,
+      "node": "Objects/Critters/butterfly60",
+      "ready_ordinal": 6102,
+      "timer_id": 4063146124,
+      "timer_ordinal": 6094,
+      "fly_id": 1568486263,
+      "fly_ordinal": 6095,
+      "orbit_id": 1973806758,
+      "orbit_ordinal": 6096,
+      "area_id": 1336283216,
+      "notifier_id": 3152120451,
+      "enabler_id": 1663634712,
+      "position": [
+        568.0,
+        -965.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 983532330,
+      "node": "Objects/Critters/butterfly61",
+      "ready_ordinal": 6112,
+      "timer_id": 3561337686,
+      "timer_ordinal": 6104,
+      "fly_id": 2952884666,
+      "fly_ordinal": 6105,
+      "orbit_id": 1919812095,
+      "orbit_ordinal": 6106,
+      "area_id": 3920654823,
+      "notifier_id": 1313652968,
+      "enabler_id": 2436441338,
+      "position": [
+        440.0,
+        -1199.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 129455933,
+      "node": "Objects/Critters/butterfly63",
+      "ready_ordinal": 6122,
+      "timer_id": 3583407419,
+      "timer_ordinal": 6114,
+      "fly_id": 240203048,
+      "fly_ordinal": 6115,
+      "orbit_id": 394551615,
+      "orbit_ordinal": 6116,
+      "area_id": 1344628935,
+      "notifier_id": 3421883384,
+      "enabler_id": 582905734,
+      "position": [
+        927.0,
+        -1413.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3047036296,
+      "node": "Objects/Critters/butterfly64",
+      "ready_ordinal": 6132,
+      "timer_id": 3087550456,
+      "timer_ordinal": 6124,
+      "fly_id": 9859135,
+      "fly_ordinal": 6125,
+      "orbit_id": 2540520940,
+      "orbit_ordinal": 6126,
+      "area_id": 1595586587,
+      "notifier_id": 4220380078,
+      "enabler_id": 2317243187,
+      "position": [
+        904.0,
+        -1403.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 695087379,
+      "node": "Objects/Critters/butterfly66",
+      "ready_ordinal": 6142,
+      "timer_id": 3174516001,
+      "timer_ordinal": 6134,
+      "fly_id": 1880165727,
+      "fly_ordinal": 6135,
+      "orbit_id": 1303305204,
+      "orbit_ordinal": 6136,
+      "area_id": 1625294099,
+      "notifier_id": 1245245486,
+      "enabler_id": 1486143028,
+      "position": [
+        1674.0,
+        -1240.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 449713943,
+      "node": "Objects/Critters/butterfly65",
+      "ready_ordinal": 6152,
+      "timer_id": 2045098252,
+      "timer_ordinal": 6144,
+      "fly_id": 2518579831,
+      "fly_ordinal": 6145,
+      "orbit_id": 1906046536,
+      "orbit_ordinal": 6146,
+      "area_id": 792150640,
+      "notifier_id": 1119523766,
+      "enabler_id": 145741051,
+      "position": [
+        1425.0,
+        -1333.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2086880462,
+      "node": "Objects/Critters/butterfly62",
+      "ready_ordinal": 6162,
+      "timer_id": 3933887645,
+      "timer_ordinal": 6154,
+      "fly_id": 3000447489,
+      "fly_ordinal": 6155,
+      "orbit_id": 4219606340,
+      "orbit_ordinal": 6156,
+      "area_id": 456979420,
+      "notifier_id": 3889804907,
+      "enabler_id": 3877563749,
+      "position": [
+        425.0,
+        -1195.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3472341384,
+      "node": "Objects/Critters/butterfly67",
+      "ready_ordinal": 6172,
+      "timer_id": 281572018,
+      "timer_ordinal": 6164,
+      "fly_id": 3679049827,
+      "fly_ordinal": 6165,
+      "orbit_id": 4254098329,
+      "orbit_ordinal": 6166,
+      "area_id": 511530322,
+      "notifier_id": 2306161457,
+      "enabler_id": 745357354,
+      "position": [
+        1646.0,
+        -1227.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3347585834,
+      "node": "Objects/Critters/butterfly68",
+      "ready_ordinal": 6182,
+      "timer_id": 2052065963,
+      "timer_ordinal": 6174,
+      "fly_id": 3904048704,
+      "fly_ordinal": 6175,
+      "orbit_id": 899415187,
+      "orbit_ordinal": 6176,
+      "area_id": 3442575588,
+      "notifier_id": 3985581465,
+      "enabler_id": 956800198,
+      "position": [
+        2149.0,
+        -1390.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1186770237,
+      "node": "Objects/Critters/butterfly69",
+      "ready_ordinal": 6192,
+      "timer_id": 5493055,
+      "timer_ordinal": 6184,
+      "fly_id": 2398633064,
+      "fly_ordinal": 6185,
+      "orbit_id": 3829730889,
+      "orbit_ordinal": 6186,
+      "area_id": 1185612504,
+      "notifier_id": 2261810704,
+      "enabler_id": 5960344,
+      "position": [
+        2117.0,
+        -1367.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3118158393,
+      "node": "Objects/Critters/butterfly70",
+      "ready_ordinal": 6202,
+      "timer_id": 2729933832,
+      "timer_ordinal": 6194,
+      "fly_id": 3572775571,
+      "fly_ordinal": 6195,
+      "orbit_id": 1510120311,
+      "orbit_ordinal": 6196,
+      "area_id": 1771845848,
+      "notifier_id": 1461819105,
+      "enabler_id": 3961863190,
+      "position": [
+        2147.0,
+        -1361.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 4003356883,
+      "node": "Objects/Critters/butterfly71",
+      "ready_ordinal": 6212,
+      "timer_id": 398778820,
+      "timer_ordinal": 6204,
+      "fly_id": 3068284943,
+      "fly_ordinal": 6205,
+      "orbit_id": 2113381552,
+      "orbit_ordinal": 6206,
+      "area_id": 2612814961,
+      "notifier_id": 3678889665,
+      "enabler_id": 3666897177,
+      "position": [
+        1454.0,
+        -1480.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2418040945,
+      "node": "Objects/Critters/butterfly72",
+      "ready_ordinal": 6222,
+      "timer_id": 1241117825,
+      "timer_ordinal": 6214,
+      "fly_id": 2749864034,
+      "fly_ordinal": 6215,
+      "orbit_id": 3157489153,
+      "orbit_ordinal": 6216,
+      "area_id": 938410178,
+      "notifier_id": 283834711,
+      "enabler_id": 1304809569,
+      "position": [
+        746.0,
+        -699.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3419462162,
+      "node": "Objects/Critters/butterfly73",
+      "ready_ordinal": 6232,
+      "timer_id": 2942263002,
+      "timer_ordinal": 6224,
+      "fly_id": 535997488,
+      "fly_ordinal": 6225,
+      "orbit_id": 2746831149,
+      "orbit_ordinal": 6226,
+      "area_id": 4040535109,
+      "notifier_id": 3442306819,
+      "enabler_id": 1111533465,
+      "position": [
+        673.0,
+        -695.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1797805767,
+      "node": "Objects/Critters/butterfly75",
+      "ready_ordinal": 6242,
+      "timer_id": 2661855346,
+      "timer_ordinal": 6234,
+      "fly_id": 4140096350,
+      "fly_ordinal": 6235,
+      "orbit_id": 3788705374,
+      "orbit_ordinal": 6236,
+      "area_id": 872504303,
+      "notifier_id": 2681865563,
+      "enabler_id": 3376526612,
+      "position": [
+        642.0,
+        -700.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 851046517,
+      "node": "Objects/Critters/butterfly76",
+      "ready_ordinal": 6252,
+      "timer_id": 3652952167,
+      "timer_ordinal": 6244,
+      "fly_id": 1153883974,
+      "fly_ordinal": 6245,
+      "orbit_id": 195791744,
+      "orbit_ordinal": 6246,
+      "area_id": 3748689034,
+      "notifier_id": 3322331963,
+      "enabler_id": 2145450996,
+      "position": [
+        460.0,
+        -793.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3843892284,
+      "node": "Objects/Critters/butterfly77",
+      "ready_ordinal": 6262,
+      "timer_id": 596740983,
+      "timer_ordinal": 6254,
+      "fly_id": 2897882709,
+      "fly_ordinal": 6255,
+      "orbit_id": 3326248150,
+      "orbit_ordinal": 6256,
+      "area_id": 678426576,
+      "notifier_id": 4151599284,
+      "enabler_id": 967794726,
+      "position": [
+        439.0,
+        -782.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2801439862,
+      "node": "Objects/Critters/butterfly78",
+      "ready_ordinal": 6272,
+      "timer_id": 1792283476,
+      "timer_ordinal": 6264,
+      "fly_id": 1808595787,
+      "fly_ordinal": 6265,
+      "orbit_id": 2951188797,
+      "orbit_ordinal": 6266,
+      "area_id": 817235503,
+      "notifier_id": 2284856637,
+      "enabler_id": 2857456899,
+      "position": [
+        539.0,
+        -779.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3295037914,
+      "node": "Objects/Critters/butterfly79",
+      "ready_ordinal": 6282,
+      "timer_id": 2803599477,
+      "timer_ordinal": 6274,
+      "fly_id": 3738857532,
+      "fly_ordinal": 6275,
+      "orbit_id": 4122911308,
+      "orbit_ordinal": 6276,
+      "area_id": 2430445162,
+      "notifier_id": 4166077807,
+      "enabler_id": 4139332572,
+      "position": [
+        91.0,
+        -698.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2897103087,
+      "node": "Objects/Critters/butterfly80",
+      "ready_ordinal": 6292,
+      "timer_id": 400860595,
+      "timer_ordinal": 6284,
+      "fly_id": 199681436,
+      "fly_ordinal": 6285,
+      "orbit_id": 3579433145,
+      "orbit_ordinal": 6286,
+      "area_id": 161695042,
+      "notifier_id": 3333615314,
+      "enabler_id": 869002420,
+      "position": [
+        117.0,
+        -682.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1323713309,
+      "node": "Objects/Critters/butterfly81",
+      "ready_ordinal": 6302,
+      "timer_id": 3107038570,
+      "timer_ordinal": 6294,
+      "fly_id": 2377860920,
+      "fly_ordinal": 6295,
+      "orbit_id": 2844186530,
+      "orbit_ordinal": 6296,
+      "area_id": 755965064,
+      "notifier_id": 611496856,
+      "enabler_id": 3592173995,
+      "position": [
+        -25.0,
+        -951.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1102346309,
+      "node": "Objects/Critters/butterfly82",
+      "ready_ordinal": 6312,
+      "timer_id": 3262429275,
+      "timer_ordinal": 6304,
+      "fly_id": 3274802404,
+      "fly_ordinal": 6305,
+      "orbit_id": 2345784009,
+      "orbit_ordinal": 6306,
+      "area_id": 2534447142,
+      "notifier_id": 546611634,
+      "enabler_id": 927939155,
+      "position": [
+        21.0,
+        -941.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.999999046325684,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1891949219,
+      "node": "Objects/Critters/butterfly83",
+      "ready_ordinal": 6322,
+      "timer_id": 370849690,
+      "timer_ordinal": 6314,
+      "fly_id": 2531456380,
+      "fly_ordinal": 6315,
+      "orbit_id": 1876918080,
+      "orbit_ordinal": 6316,
+      "area_id": 3624590270,
+      "notifier_id": 3932605076,
+      "enabler_id": 4267114856,
+      "position": [
+        73.0,
+        -1024.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3678032945,
+      "node": "Objects/Critters/butterfly84",
+      "ready_ordinal": 6332,
+      "timer_id": 323346384,
+      "timer_ordinal": 6324,
+      "fly_id": 251049875,
+      "fly_ordinal": 6325,
+      "orbit_id": 2756559146,
+      "orbit_ordinal": 6326,
+      "area_id": 4266220446,
+      "notifier_id": 4210703142,
+      "enabler_id": 2542649445,
+      "position": [
+        32.0,
+        -1010.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -23.99999713897705,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -23.99999713897705,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 248350139,
+      "node": "Objects/Critters/butterfly85",
+      "ready_ordinal": 6342,
+      "timer_id": 2214199654,
+      "timer_ordinal": 6334,
+      "fly_id": 2902305153,
+      "fly_ordinal": 6335,
+      "orbit_id": 2300185487,
+      "orbit_ordinal": 6336,
+      "area_id": 953030022,
+      "notifier_id": 3768024443,
+      "enabler_id": 3965197229,
+      "position": [
+        -210.0,
+        -861.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2052842922,
+      "node": "Objects/Critters/butterfly86",
+      "ready_ordinal": 6352,
+      "timer_id": 2546247005,
+      "timer_ordinal": 6344,
+      "fly_id": 1489084245,
+      "fly_ordinal": 6345,
+      "orbit_id": 3255616552,
+      "orbit_ordinal": 6346,
+      "area_id": 2394847200,
+      "notifier_id": 2566626536,
+      "enabler_id": 58780487,
+      "position": [
+        -178.0,
+        -889.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1372398191,
+      "node": "Objects/Critters/butterfly87",
+      "ready_ordinal": 6362,
+      "timer_id": 2198997119,
+      "timer_ordinal": 6354,
+      "fly_id": 951401784,
+      "fly_ordinal": 6355,
+      "orbit_id": 2521950494,
+      "orbit_ordinal": 6356,
+      "area_id": 2663413683,
+      "notifier_id": 127386467,
+      "enabler_id": 2373140002,
+      "position": [
+        -178.0,
+        -840.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 4024727008,
+      "node": "Objects/Critters/butterfly74",
+      "ready_ordinal": 6372,
+      "timer_id": 2230459533,
+      "timer_ordinal": 6364,
+      "fly_id": 3214656526,
+      "fly_ordinal": 6365,
+      "orbit_id": 3554430419,
+      "orbit_ordinal": 6366,
+      "area_id": 253614238,
+      "notifier_id": 3921168201,
+      "enabler_id": 2115561882,
+      "position": [
+        722.0,
+        -691.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1575909498,
+      "node": "Objects/Critters/butterfly88",
+      "ready_ordinal": 6382,
+      "timer_id": 2824550931,
+      "timer_ordinal": 6374,
+      "fly_id": 1540627918,
+      "fly_ordinal": 6375,
+      "orbit_id": 3772716641,
+      "orbit_ordinal": 6376,
+      "area_id": 1964336185,
+      "notifier_id": 580090742,
+      "enabler_id": 1681038367,
+      "position": [
+        1256.0,
+        -848.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3432597937,
+      "node": "Objects/Critters/butterfly89",
+      "ready_ordinal": 6392,
+      "timer_id": 3692342525,
+      "timer_ordinal": 6384,
+      "fly_id": 1670921130,
+      "fly_ordinal": 6385,
+      "orbit_id": 578462440,
+      "orbit_ordinal": 6386,
+      "area_id": 3926257259,
+      "notifier_id": 979955657,
+      "enabler_id": 1876778862,
+      "position": [
+        1225.0,
+        -824.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3662364740,
+      "node": "Objects/Critters/butterfly90",
+      "ready_ordinal": 6402,
+      "timer_id": 3728077653,
+      "timer_ordinal": 6394,
+      "fly_id": 490854837,
+      "fly_ordinal": 6395,
+      "orbit_id": 840418759,
+      "orbit_ordinal": 6396,
+      "area_id": 1712227458,
+      "notifier_id": 3108267812,
+      "enabler_id": 3799226510,
+      "position": [
+        1279.0,
+        -816.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1290263818,
+      "node": "Objects/Critters/butterfly91",
+      "ready_ordinal": 6412,
+      "timer_id": 2654531550,
+      "timer_ordinal": 6404,
+      "fly_id": 3798210598,
+      "fly_ordinal": 6405,
+      "orbit_id": 201548129,
+      "orbit_ordinal": 6406,
+      "area_id": 3685718712,
+      "notifier_id": 2636346994,
+      "enabler_id": 917467788,
+      "position": [
+        3178.0,
+        -1551.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 1195175624,
+      "node": "Objects/Critters/butterfly92",
+      "ready_ordinal": 6422,
+      "timer_id": 3691645062,
+      "timer_ordinal": 6414,
+      "fly_id": 2559826150,
+      "fly_ordinal": 6415,
+      "orbit_id": 1327720266,
+      "orbit_ordinal": 6416,
+      "area_id": 332173087,
+      "notifier_id": 2638261901,
+      "enabler_id": 823396146,
+      "position": [
+        3204.0,
+        -1565.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 3993756770,
+      "node": "Objects/Critters/butterfly93",
+      "ready_ordinal": 6432,
+      "timer_id": 1207087671,
+      "timer_ordinal": 6424,
+      "fly_id": 1329911229,
+      "fly_ordinal": 6425,
+      "orbit_id": 1562082555,
+      "orbit_ordinal": 6426,
+      "area_id": 1765327773,
+      "notifier_id": 4254503029,
+      "enabler_id": 3896660205,
+      "position": [
+        3254.0,
+        -1707.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    },
+    {
+      "id": 2655679530,
+      "node": "Objects/Critters/butterfly94",
+      "ready_ordinal": 6442,
+      "timer_id": 380924884,
+      "timer_ordinal": 6434,
+      "fly_id": 1463366068,
+      "fly_ordinal": 6435,
+      "orbit_id": 2459612222,
+      "orbit_ordinal": 6436,
+      "area_id": 1739540356,
+      "notifier_id": 1483735976,
+      "enabler_id": 3079082727,
+      "position": [
+        3211.0,
+        -1699.0
+      ],
+      "parent_origin": [
+        0.0,
+        0.0
+      ],
+      "parent_scale": 1.0,
+      "sprite_position": [
+        0.0,
+        -16.0
+      ],
+      "sprite_offset": [
+        0.0,
+        0.0
+      ],
+      "sprite_color": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sprite_frame": 0,
+      "sprite_flip": false,
+      "timer_wait": 1.0,
+      "fly_speed": 1.0,
+      "orbit_speed": 1.0,
+      "area_center": [
+        0.5,
+        0.0
+      ],
+      "area_radius": 15.5,
+      "area_layer": 4096,
+      "area_mask": 0,
+      "area_flags": 1,
+      "notifier": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ],
+      "enabler": [
+        -24.000000953674316,
+        -32.00000023841858,
+        48.00000190734863,
+        32.00000047683716
+      ]
+    }
+  ],
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png.import": "eee95975602fad2857b97b8f63ab9d7ca586fd119eabcc98ddd9992b00202fd3",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/1.png": "b09da680b1dac9622daa8981be83edfd092b89696711c1bbea2ff782171307e5",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/1.png.import": "519118c6f6ba73f493db52bcadfb46f0488e6096ec587ce3179c75782dbaa05b",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/2.png": "155bc47d2bcc67a79b64207b2a932d126e769ce2971e6518d910b77703275f1f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/2.png.import": "569282a6436dc18eb56a25d22fc6dddf5b0dcc710990f3f3f483f06d9c6bad82",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/3.png": "5c191a685dd72555597afe53b722333e7f293df469262628d7c831a2d29dfe40",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/3.png.import": "2e8d6c57fcecf6c031b01ee9f9030b39b6e5523fd5bc65e85ed5db1a96c0c8f9",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/4.png": "f61ddc20ff9791c874bc717b16d3ce44f1a550c541f49fd1c17a0ea22a7b038d",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/4.png.import": "431b4161d23a69f184ac9c9e5ee774471e1e066d7a0b0f6dcf7129e51b925eab",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "provenance": {
+    "native_export_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+    "source_receipt_sha256": "e02373cf52bd5426aa48d88b26fda3fdab9a21987cc42efeb391a29f48bf44f0",
+    "source_files": {
+      "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+      "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+      "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+      "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+      "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+      "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+      "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+      "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+      "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+      "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+      "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+      "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+      "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+      "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+      "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+      "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+      "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+      "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+      "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+      "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+      "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+      "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+      "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+      "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+      "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+      "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+      "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+      "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+      "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+      "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+      "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+      "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+      "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+      "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+      "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+      "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+      "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+      "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+      "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+      "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+      "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+      "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+      "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+      "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+      "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+      "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+      "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+      "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+      "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+      "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+      "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+      "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+      "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+      "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+      "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+      "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+      "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+      "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+      "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+      "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+      "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+      "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+      "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+      "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+      "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+      "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+      "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+      "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+      "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+      "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70"
+    }
+  },
+  "engine": [
+    {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/scene/2d/physics_body_2d.cpp",
+      "sha256": "1a47c0292bd20f92b14262ef0957fd1bf14060e555d072f739242b9e81914ee4"
+    }
+  ],
+  "semantics": [
+    "All94 actual ambient butterflies, complete inner-to-outer instance overrides and true Ready order; no healing/PP/flags exists in this source",
+    "Ready draws global randi modulo5, captures local start position, disables normal process and hides; screen enter draws exactly two global randf for Fly and Flying seek after play",
+    "Source animations update independently in native internal idle node order; ordinary script _process follows internal nodes, move_and_slide selects idle delta outside physics frame",
+    "Source body collision layer/mask zero and disabled shape justify source free movement, not generic KinematicBody replacement; area uses true circle source geometry and layer4096",
+    "PartyMemberPlayer walking contact changes return/input/facing based on current animated Sprite world position; global-player leave uses literal global-position versus local start compare",
+    "Multiple exits share one one-shot Timer and FIFO two-wait coroutines; Timer continues offscreen and is not paused merely by Player pause; second timeout enables local move_toward return",
+    "Loop interpolation keeps source continuous negative-1.2 ease, texture frame and discrete facing key crossing; movement-facing changes persist between discrete animation keys",
+    "VisibilityNotifier and VisibilityEnabler rectangles and source child identities are admitted by live host; two true native clocks are retained"
+  ],
+  "unsupported": [
+    "No healing NPC behavior, world flag or new Disappear animation invented: method exists unconnected and no such source clip in actual scene",
+    "Live parent changes/rotation/skew or generic colliding butterfly body need next explicit capability, not silent approximation"
+  ],
+  "unverified": [
+    "Manual tests not run",
+    "3DS art and integrated scene admission pending"
+  ]
+}

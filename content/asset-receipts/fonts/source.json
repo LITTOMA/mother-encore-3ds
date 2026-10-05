@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "field_psi_sha256": "59863b35adac30c5370475be25af191445a25eb6936268a6ec3ad5b97b1a31d1",
+  "field_cash_box_sha256": "624e2c5b22c40db1dd0d89f2961d6ebd6340478e415b861e37bd8efa3e675433",
   "review": {
     "schema": 1,
     "commit": "7d9246600fffe518408f5830d4848635019005a3",
@@ -18,11 +19,19 @@
       "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
       "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
       "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
-      "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99"
+      "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+      "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4"
+    },
+    "field_cash_box_review": {
+      "resource": "Fonts/EBMain.tres",
+      "source": "Nodes/Ui/CashBox.tscn and Nodes/Ui/PhoneUnitsBox.tscn original fixed font; no locale font replacement",
+      "definition": "Default DynamicFont size 16; top/bottom spacing -1; EBMain.ttf primary, fw9/jaM3/ko/zh_cn fallback order; all five font blobs retain existing reviewed hashes/notices",
+      "glyphs": "Original cash/card integer digits, minus sign and CSV currency symbols; native Godot advances/ascent/height and existing FreeType rasters; no new font or glyph replacement",
+      "validation": "Required genuine font generation checks each scalar; no tests or hardware pixel comparison run"
     }
   },
   "catalog_sha256": "154dc45b3bb247a6990e2bd3b74f93ad5e2aad4f27ac928b63d51cdee10a8d2d",
-  "generator_sha256": "4683684e3fe1e6ce463b49d6d0b2a755cf45498b2558772ccf09ab07300c118f",
+  "generator_sha256": "426c39e93bbcee2f3393ee36072584beea2137b0819411bc05034e4c505a92f8",
   "godot_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "pillow_version": "12.3.0",
@@ -4412,6 +4421,29 @@
           10,
           10
         ]
+      },
+      {
+        "source": "Fonts/EBMain.tres",
+        "size": 16,
+        "ascent": 11,
+        "descent": 1,
+        "height": 12,
+        "advances": [
+          6,
+          3,
+          6,
+          4,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          3,
+          0
+        ]
       }
     ]
   },
@@ -4485,6 +4517,25 @@
       "height": 12,
       "texture_bytes": 655360,
       "fallback_chain": [
+        "Fonts/EBMain_zh_cn.ttf"
+      ]
+    },
+    {
+      "source": "Fonts/EBMain.tres",
+      "legacy_ascii": false,
+      "first_glyph": 4330,
+      "glyph_count": 13,
+      "first_page": 10,
+      "page_count": 1,
+      "ascent": 11,
+      "descent": 1,
+      "height": 12,
+      "texture_bytes": 131072,
+      "fallback_chain": [
+        "Fonts/EBMain.ttf",
+        "Fonts/EBMain_fw9.ttf",
+        "Fonts/EBMain_jaM3.ttf",
+        "Fonts/EBMain_ko.ttf",
         "Fonts/EBMain_zh_cn.ttf"
       ]
     }
@@ -4579,6 +4630,15 @@
       "file_bytes": 131093,
       "crc32": 3643006648,
       "sha256": "712aed3a1872e0dc8fe937e34c0191e268e300c047780150af9606f31da82e2e"
+    },
+    {
+      "path": "ebmain-4-000.t3x",
+      "width": 256,
+      "height": 256,
+      "texture_bytes": 131072,
+      "file_bytes": 131093,
+      "crc32": 3198157450,
+      "sha256": "6207fb327f6a9893ed6d4b9f98aa3ed27045cdd0a954da1230a27c653ba95e41"
     }
   ],
   "glyphs": [
@@ -56541,6 +56601,162 @@
       "offset_x": 0,
       "offset_y": 2,
       "source_face": "Fonts/EBMain_zh_cn.ttf"
+    },
+    {
+      "codepoint": 36,
+      "page": 10,
+      "u": 1,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 45,
+      "page": 10,
+      "u": 9,
+      "v": 1,
+      "width": 3,
+      "height": 6,
+      "advance": 3,
+      "offset_x": 0,
+      "offset_y": 5,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 48,
+      "page": 10,
+      "u": 14,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 49,
+      "page": 10,
+      "u": 22,
+      "v": 1,
+      "width": 4,
+      "height": 10,
+      "advance": 4,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 50,
+      "page": 10,
+      "u": 28,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 51,
+      "page": 10,
+      "u": 36,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 52,
+      "page": 10,
+      "u": 44,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 53,
+      "page": 10,
+      "u": 52,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 54,
+      "page": 10,
+      "u": 60,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 55,
+      "page": 10,
+      "u": 68,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 56,
+      "page": 10,
+      "u": 76,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 57,
+      "page": 10,
+      "u": 84,
+      "v": 1,
+      "width": 6,
+      "height": 10,
+      "advance": 6,
+      "offset_x": 0,
+      "offset_y": 1,
+      "source_face": "Fonts/EBMain.ttf"
+    },
+    {
+      "codepoint": 160,
+      "page": 10,
+      "u": 92,
+      "v": 1,
+      "width": 3,
+      "height": 0,
+      "advance": 3,
+      "offset_x": 0,
+      "offset_y": 11,
+      "source_face": "Fonts/EBMain.ttf"
     }
   ],
   "missing_source_glyphs": [
@@ -56578,6 +56794,12 @@
       "source": "Fonts/EBMain_zh_cn.tres",
       "codepoint": 8294,
       "unicode": "U+2066",
+      "native_advance": 0
+    },
+    {
+      "source": "Fonts/EBMain.tres",
+      "codepoint": 8203,
+      "unicode": "U+200B",
       "native_advance": 0
     }
   ],
@@ -56638,8 +56860,8 @@
   },
   "binary": {
     "path": "source-fonts.encfont",
-    "sha256": "290e78297663bfb87aabc0840d5b7c98900ed93c354e90dd410f19452cc73e69",
-    "bytes": 156539
+    "sha256": "4fe1c3df65e682c87dab6b17d9caa01255fff35915e77bb0da96d5a6e3a77801",
+    "bytes": 157100
   },
   "limits": "EBMain role only; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed."
 }

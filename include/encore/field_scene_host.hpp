@@ -13,6 +13,13 @@
 #include "encore/field_prompts.hpp"
 #include "encore/field_dead_bush.hpp"
 #include "encore/field_interact_dialog.hpp"
+#include "encore/field_present.hpp"
+#include "encore/field_dropped.hpp"
+#include "encore/field_sparkles.hpp"
+#include "encore/field_openable_door.hpp"
+#include "encore/field_payphone.hpp"
+#include "encore/field_butterfly.hpp"
+
 #include <functional>
 #include <unordered_map>
 
@@ -53,6 +60,12 @@ struct FieldSceneConsumers {
  const FieldPromptData*prompt_data=nullptr;FieldPromptRuntime*prompt=nullptr;
  const FieldBushData*bush_data=nullptr;FieldBushRuntime*bush=nullptr;
  const FieldInteractData*interact_data=nullptr;FieldInteractRuntime*interact=nullptr;
+ const FieldPresentData*present_data=nullptr;FieldPresentRuntime*present=nullptr;
+ const FieldDroppedData*dropped_data=nullptr;FieldDroppedRuntime*dropped=nullptr;
+ const FieldSparklesData*sparkles_data=nullptr;FieldSparklesRuntime*sparkles=nullptr;
+ const FieldOpenableDoorData*openable_data=nullptr;FieldOpenableDoorRuntime*openable=nullptr;
+ const FieldPayphoneData*payphone_data=nullptr;FieldPayphoneRuntime*payphone=nullptr;
+ const FieldButterflyData*butterfly_data=nullptr;FieldButterflyRuntime*butterfly=nullptr;
  const FieldMapView*map=nullptr;const FieldGeometryView*geometry_data=nullptr;FieldGeometrySpace*geometry=nullptr;
 };
 struct FieldSceneScriptAdmission {uint32_t id=0,family=0,capability=0;std::array<uint8_t,32>source_sha{};};

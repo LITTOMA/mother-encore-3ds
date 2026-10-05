@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+  "source_review": [
+    "Complete 10 source OpenableDoor Sprite classes, setget texture/offset plus actual postorder Ready",
+    "Two actual native AnimationPlayer profiles; yellow-door local animation overrides kept",
+    "Source three dialogues, 3 sounds, Timer and key/inventory/flags/collision order audited",
+    "Pre-Ready script property setter owns sprite; native quarantined null texture is not authoritative"
+  ],
+  "pending": [
+    "Actual inventory Item identity, source party/key inventories, geometry/Prompt/audio/dialogue hosts must bind before Ready",
+    "Source exported sprite setters execute before Ready; quarantined native null child textures are not authoritative"
+  ]
+}

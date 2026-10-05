@@ -15,6 +15,14 @@
     "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
     "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
     "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
-    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99"
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4"
+  },
+  "field_cash_box_review": {
+    "resource": "Fonts/EBMain.tres",
+    "source": "Nodes/Ui/CashBox.tscn and Nodes/Ui/PhoneUnitsBox.tscn original fixed font; no locale font replacement",
+    "definition": "Default DynamicFont size 16; top/bottom spacing -1; EBMain.ttf primary, fw9/jaM3/ko/zh_cn fallback order; all five font blobs retain existing reviewed hashes/notices",
+    "glyphs": "Original cash/card integer digits, minus sign and CSV currency symbols; native Godot advances/ascent/height and existing FreeType rasters; no new font or glyph replacement",
+    "validation": "Required genuine font generation checks each scalar; no tests or hardware pixel comparison run"
   }
 }

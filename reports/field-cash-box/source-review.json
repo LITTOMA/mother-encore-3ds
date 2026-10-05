@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "624e2c5b22c40db1dd0d89f2961d6ebd6340478e415b861e37bd8efa3e675433",
+  "sources": {
+    "Data/Items/PhoneCard.yaml": "f7b194983181daaee5f0bae4a56d1d5f8aafec473cf469b61593d8d439c280ac",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/Objects/Items/PhoneCard.png": "3f26d2955e8cf7626c57e6f8eb6e5509f92914307f0b1a3ebf32942f3b79f02c",
+    "Graphics/Objects/Items/PhoneCard.png.import": "4bb9b470247a3b7631c78bd25db1208373b21bb09acfea1f7ee5b11eae00625a",
+    "Graphics/UI/Overworld/cents_white.png": "8b0b6c87d050e664e42bbcb4dcc8e27fb381761fcfa117e1c05258aa891533fa",
+    "Graphics/UI/Overworld/cents_white.png.import": "4ff55232382a502fb9c682b07d9e72fd89f666a454ce8d9ecce5cd944ab7ed91",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png.import": "fadf883607a0602838c955c34361782d4332dd4f78873d1bc175eeaa3e0f1272",
+    "Graphics/UI/Overworld/flavours/defaultempty.png": "33af3d9a91a397b79e67c7500486c5cb85f3d1396ecc1e9a1faa09581de73fdc",
+    "Graphics/UI/Overworld/flavours/defaultempty.png.import": "f02a11b08d81c08c255151e3013c5bdbeb542e77a29f202684ee2871ed613949",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/CashBox.tscn": "3de63700dced79e8f907d68d67830ae8ddff609c53810ae2849706cafe6717d1",
+    "Nodes/Ui/PhoneUnitsBox.tscn": "5dea68e0956909f5a2f345835cf5bbad6650a891faaa3c2e0e340166365d9051",
+    "Nodes/Ui/mainCanvasLayer.tscn": "e304065406766cc9e9637008cecfa7f74fa7abae9b9b597f33aaad12d241981f",
+    "Scripts/UI/CashBox.gd": "a2364ce2b39b2d03f4b116d45eb4b0fc1bae8f50228a6ee7ae4855055cb3ec1c",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "semantics": [
+    "Two persistent uiManager CanvasLayer instances, actual cash/Inventory Card values, translated currency labels with empty CSV fallback to English",
+    "Source minimum-size Panel/HBox layout and grow BEGIN preserve right edge; 1:1 viewport right adaptation and source GPU pixel snapping",
+    "Continuous source value tracks use source key transitions, not a linear slide",
+    "CashBox one-shot Timer signal wired; PhoneUnits Timer signal is absent and is not synthesized",
+    "CashBox callbacks bind the frozen payphone independently scheduled .5 then 1 second coroutines"
+  ],
+  "unverified": [
+    "Tests not run",
+    "Main host integration, emulator and hardware pending"
+  ]
+}

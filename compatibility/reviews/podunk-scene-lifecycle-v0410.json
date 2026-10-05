@@ -3,7 +3,7 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_admitted": false,
-  "ir_sha256": "08adb9fe7a29f252809565465f761629fc9e10b1d38ba36d683f914f324274cc",
+  "ir_sha256": "d7ba77d26bb92cf93dd46d685d16010f79d06470152eabdaf618e09db3545d9b",
   "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
   "capability": "complete source script roster; FlagLandmark, FlaggableObject base methods, AreaRoom, DebugStart lifecycle only; all 71 Emotes typed onready object bindings",
   "source_classes": [
@@ -82,5 +82,98 @@
     "pending": [
       "Actual programme/ray/prompt/flags/SceneTree endpoints must be admitted before scene activation"
     ]
+  },
+  "field_object_reviews": {
+    "native-field-present": {
+      "ir_sha256": "3e0dbc6d84e9fa346aa244c54b24ce7355d4874e2bb1257c23a05f1b821a8cd6",
+      "role": 20,
+      "count": 16,
+      "semantics": [
+        "Full Podunk inner-to-outer overrides; true child Ready postorder for sixteen Presents and three typed-pending DroppedItems",
+        "ItemHolder region reset override false; source default object flag is scene name plus short instance name, not full node path",
+        "Child Sparkles Ready consumes shared global RNG even if parent collected flag is true; hidden playing Sparkles idle continues",
+        "Present interact plays Unwrapped before inventory capacity check; keyitem bypass; UID allocation remains typed shared Host with real source clock",
+        "Successful ItemHolder order grant/select current item, collect hook, flag, Sparkles state, Room source dialogue; full path creates unowned Item UID context",
+        "Full/no-item branches await any AnimationPlayer animation_finished then Wrapped; concurrent waiters resume FIFO and lifecycle exit cancels them",
+        "StaticBody layer517 remains blocking after collection; no source collision disabling invented"
+      ],
+      "pending": [
+        "DroppedItem source data preserved; its timer/tween/prompt reparent execution remains explicit typed pending",
+        "Actual inventory item definitions, source Room dialogue, prompt child Ready and tint/fetcher endpoints must be admitted by live SceneHost before activation"
+      ]
+    },
+    "native-field-dropped": {
+      "ir_sha256": "a1b3d66b7b373a4355f9c7eb306cc55e0ffb7e071609ede90e3eeb8a1713b980",
+      "role": 21,
+      "count": 3,
+      "semantics": [
+        "Three actual Podunk DroppedItems with inherited/outer overrides and source child-before-parent Ready, no static replacement",
+        "Child Sparkles Ready consumes the same global RNG before parent collected flag may queue_free; parent hide then one tree idle_frame signal before show",
+        "Inherited ItemHolder grant/UID/global.item/flag/dialogue source order; all paths then start legacy Tween; full path creates an unowned UID item context",
+        "Collection force-show prompt, conditional free or press/connect hide-to-free/reparent/local position; SceneTreeTween captures player destination once and interpolates source quart-out position and quad-in scale",
+        "Disappear coroutine FIFO waiters share one Timer; start5/2/2/3, player pause only pauses Timer; source initial AnimationPlayer speed0 retained; timeout changes speed2/3 and queues deletion",
+        "Timer timeout uses negative time_left, repeating Timer rollover before waiter callbacks; SceneTreeTweens advance after idle node processing; engine Tween/easing review references retained",
+        "Source exit_tree resets consumed flag only when its source property true; queued deletion remains visible until scene host flush lifecycle"
+      ],
+      "pending": [
+        "Real inventory definitions/UID clock/global.item context, source Room dialogue and ButtonPrompt Ready/press/reparent/hide must pass typed live host admission",
+        "Runtime factory set_item outside the three serialized Podunk instances remains explicit unsupported; source built-in Error texture editor fallback is not used in game"
+      ]
+    },
+    "podunk-openable-door": {
+      "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+      "role": 16,
+      "count": 10,
+      "semantics": [],
+      "pending": [
+        "Actual inventory Item identity, source party/key inventories, geometry/Prompt/audio/dialogue hosts must bind before Ready",
+        "Source exported sprite setters execute before Ready; quarantined native null child textures are not authoritative"
+      ]
+    },
+    "podunk-sparkles": {
+      "ir_sha256": "fe340fcc46f59936fc2ba696e2596df673674b7020cdafadba09a3a6338ad612",
+      "role": 17,
+      "count": 22,
+      "semantics": [],
+      "pending": [
+        "Only Sparkles.gd is admitted; actual ancestor script/material/visibility/process lifetime remains owned by SceneHost",
+        "Full Present/Item/FlagLandmark consumers must invoke real play/stop/visibility setters; no proximity or assumed unopened parent",
+        "Source static Sparkles listener roster is empty; borrowed parent clock admits no dynamic frame/finish listeners, Host must check live signal bus",
+        "Formal Podunk activation still rejects every uncovered Ready mechanism"
+      ]
+    },
+    "native-field-payphone": {
+      "ir_sha256": "71919c1ac49818d5c93291029d6232d6ad8e27de24161689803749118705f1a3",
+      "role": 19,
+      "count": 4,
+      "semantics": [
+        "Four actual exterior payphones; base Ready flags check before synchronous flags_updated registration",
+        "PhoneCard party/key inventory search and actual saved UID consumption; storage excluded",
+        "Source hangup stream -> Idle -> save location -> box initial update -> audio -> dialogue -> card reduction/cash subtraction",
+        "Insufficient cash still schedules amount box but plays no sound and spends no cash",
+        "Independent box coroutines update after source 0.5s, then newly created source 1s timer closes while tree paused",
+        "Actual exterior phone has no Ring clip; Ring remains unsupported"
+      ],
+      "pending": []
+    },
+    "native-field-butterfly": {
+      "ir_sha256": "7c46ebe5d8613de4c984781642495b8b55c4fe31be09d2902fe38728ff048ea0",
+      "role": 22,
+      "count": 94,
+      "semantics": [
+        "All94 actual ambient butterflies, complete inner-to-outer instance overrides and true Ready order; no healing/PP/flags exists in this source",
+        "Ready draws global randi modulo5, captures local start position, disables normal process and hides; screen enter draws exactly two global randf for Fly and Flying seek after play",
+        "Source animations update independently in native internal idle node order; ordinary script _process follows internal nodes, move_and_slide selects idle delta outside physics frame",
+        "Source body collision layer/mask zero and disabled shape justify source free movement, not generic KinematicBody replacement; area uses true circle source geometry and layer4096",
+        "PartyMemberPlayer walking contact changes return/input/facing based on current animated Sprite world position; global-player leave uses literal global-position versus local start compare",
+        "Multiple exits share one one-shot Timer and FIFO two-wait coroutines; Timer continues offscreen and is not paused merely by Player pause; second timeout enables local move_toward return",
+        "Loop interpolation keeps source continuous negative-1.2 ease, texture frame and discrete facing key crossing; movement-facing changes persist between discrete animation keys",
+        "VisibilityNotifier and VisibilityEnabler rectangles and source child identities are admitted by live host; two true native clocks are retained"
+      ],
+      "pending": [
+        "No healing NPC behavior, world flag or new Disappear animation invented: method exists unconnected and no such source clip in actual scene",
+        "Live parent changes/rotation/skew or generic colliding butterfly body need next explicit capability, not silent approximation"
+      ]
+    }
   }
 }

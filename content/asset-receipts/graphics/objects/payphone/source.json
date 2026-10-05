@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "71919c1ac49818d5c93291029d6232d6ad8e27de24161689803749118705f1a3",
+  "producer_sha256": "3abfcbc72e83674ae0fbb965b1929d6c68d73dd1cdc49a46fe9805f95ad97acf",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "output": "graphics/objects/payphone.t3x",
+  "bytes": 8213,
+  "sha256": "b7f3e811fcf25f7a44f5dd49fcb039cf742adc596e463dc0d35ca55d74f0dc05"
+}

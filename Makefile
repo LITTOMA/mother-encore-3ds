@@ -6,7 +6,7 @@ CMAKE_ARGS ?=
 BUILD_JOBS ?= 4
 CONTENT_JOBS ?= $(BUILD_JOBS)
 TEX3DS ?= $(DEVKITPRO)/tools/bin/tex3ds
-.PHONY: help content native-content items-assets audio-assets battle-assets round-assets house-assets assets map-assets actor-assets house-layers new-game-assets host test sanitize 3dsx cia cxi 3ds release doctor clean
+.PHONY: help content native-content items-assets item-details-assets field-equipment-assets audio-assets battle-assets round-assets house-assets assets map-assets actor-assets house-layers new-game-assets host test sanitize 3dsx cia cxi 3ds release doctor clean
 help:
 	@echo "make host/test/sanitize | make 3dsx/cia/cxi/3ds/release"
 	@echo "3DS targets require devkitPro 3ds-dev; CIA/CCI also require makerom + bannertool."
@@ -20,6 +20,10 @@ audio-assets:
 	$(PYTHON) tools/audio_asset.py compile
 items-assets:
 	$(PYTHON) tools/items_assets.py compile --tex3ds "$(TEX3DS)"
+item-details-assets:
+	$(PYTHON) tools/item_details.py assets --tex3ds "$(TEX3DS)"
+field-equipment-assets:
+	$(PYTHON) tools/field_equipment.py assets --tex3ds "$(TEX3DS)"
 house-assets:
 	$(PYTHON) tools/house_assets.py compile --tex3ds "$(TEX3DS)"
 round-assets:
@@ -70,6 +74,8 @@ introduction-assets:
 	$(PYTHON) tools/native_battle.py verify
 	$(PYTHON) tools/native_round.py verify
 	$(PYTHON) tools/native_house.py verify
+	$(PYTHON) tools/item_details.py verify
+	$(PYTHON) tools/field_equipment.py verify
 	$(PYTHON) tools/house_assets.py verify
 	$(PYTHON) tools/round_assets.py verify
 	$(PYTHON) tools/audio_asset.py verify

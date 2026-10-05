@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -28,6 +28,8 @@ introduction: audio
 inspections: house
 drawer: house
 storage: items
+item-details: items
+field-equipment: items item-details
 session: drawer items storage
 
 audio:
@@ -62,6 +64,10 @@ drawer:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/drawer_program.py compile
 storage:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/native_storage.py compile
+item-details:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/item_details.py compile
+field-equipment:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_equipment.py compile
 items-check:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/items_assets.py verify
 items:

@@ -30,15 +30,15 @@
     "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270"
   },
   "dependencies": {
-    "content/native-opening.json": "7cbd2700812e32ec935ca2583a5e9f15926c312310b02d207cbe4b0f67a985d7",
-    "content/native-house.json": "84cbde5a56beb3ed455b04e0b181ad5de0cba9b9294eea60c99b91237e41b3c4",
-    "romfs/data/opening.encroom": "1784ac8d4779d43e53430f2bc71c50f3caeed9fb2e241f8682173a8af2421206",
+    "content/native-opening.json": "91e4a791688eab92428138db6bb3a2dde8b9ed768c92019288c92bafb906b2a3",
+    "content/native-house.json": "480e603d34f9a78519c8d1de4b4f761ea0a19a8ff1b41c673db9f21450d1cdd1",
+    "romfs/data/opening.encroom": "2a2cd58ab2c35b4269ae67d4e73ea2619e5e193b0806e37f9c8aaf813e9ff4b9",
     "romfs/data/opening.enchouse": "d5a9c52b3c964d9f25b03c2bc02c597c46489599b78da92ffccf759dc32e9638"
   },
   "fingerprints": {
     "room": {
       "bytes": 65584,
-      "sha256": "1784ac8d4779d43e53430f2bc71c50f3caeed9fb2e241f8682173a8af2421206"
+      "sha256": "2a2cd58ab2c35b4269ae67d4e73ea2619e5e193b0806e37f9c8aaf813e9ff4b9"
     },
     "house": {
       "bytes": 22292,

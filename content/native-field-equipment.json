@@ -1,0 +1,1828 @@
+{
+  "schema": 1,
+  "kind": "encore.field-equipment.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original Pause -> Equip for singleton Ninten and admitted BaseballCap; other known commands disabled; current UID and seven derived stats committed transactionally; no battle item-use or broader party capability",
+  "sources": {
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+    "Audio/Sound effects/EB/close.wav": "5238b0dfee0460c7ee219fd4cdc0c39d37829192c7af828429d10b00845efa56",
+    "Audio/Sound effects/EB/close.wav.import": "eb9a152837ffc1c39af9086767ef2bbc9217eba042bfaf24d360fcf90f8a8324",
+    "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+    "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+    "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+    "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+    "Audio/Sound effects/M3/equip.wav": "983d985c6ebe738617baae286c4ee5d80202969df66568e8a9588cff00d772f3",
+    "Audio/Sound effects/M3/equip.wav.import": "4e194a671ae807f07f59bae6b328caabe914b5b5803d0e9dcaf0881ad39100ae",
+    "Audio/Sound effects/M3/menu_close.wav": "85efc975cc8127461393b35fa30b8a7f884b17a1d1e0ba10863075b78d63c44b",
+    "Audio/Sound effects/M3/menu_close.wav.import": "15e392266c70825cf8af2e04059ae430843b8421ff7b521ea63a752d8bcd389e",
+    "Audio/Sound effects/M3/menu_close2.wav": "d422d84e0a94ee3cef10cf1b2716d423ee7ff8f880fe19b2e75e08a3c639889c",
+    "Audio/Sound effects/M3/menu_close2.wav.import": "ec8c7281ddb3886730d39aa18f8ce194909e089f6ceafa394154032f8dca1bca",
+    "Audio/Sound effects/M3/menu_open.wav": "83223cdddbc5fbc9b80da386498116984e3ba591b205b925f02fff24eaf4b487",
+    "Audio/Sound effects/M3/menu_open.wav.import": "ed14a77347f70116b0521143e87cd2dbfc88283f8183d50a8b155cfd6bf5fb41",
+    "Audio/Sound effects/M3/menu_open2.wav": "dfd2f4e3dbb64188e91fb7aff483983edd7f4a1d6856c54d3ebd9b61b9b89a3d",
+    "Audio/Sound effects/M3/menu_open2.wav.import": "f7e27b0f1293df6119a65ce0bc58915f40337d321f8127b8c2c4a895ed7edfa7",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/EquipMenu/blue_arrow.png": "e34b3f88e1401d8d8ba54d784fdf1ec266449d64a2b61b8ddcc0fcaf08652808",
+    "Graphics/UI/EquipMenu/blue_arrow.png.import": "998b51432649b986517d3ab296ed89a40b26c03df5e165f9e84cb0beca4de9ac",
+    "Graphics/UI/EquipMenu/empty.png": "17912ac1c5a2bde681b097261ed297f7ddc60152b3505d548f27abd090407a9b",
+    "Graphics/UI/EquipMenu/empty.png.import": "c3ccf7bc2b21558731df47a231d303e7ad0746bddf03a88ee400566b835f2530",
+    "Graphics/UI/EquipMenu/red_arrow.png": "5228c5009c7d0ee79c0ff5e9be91ddc6fd24b03d73351b4d64a159c30beccbf0",
+    "Graphics/UI/EquipMenu/red_arrow.png.import": "0ecf7cd079e6aa2ad42cb3c2c0a3b88adb3082475dd82065a1d1262f5d76d6bd",
+    "Graphics/UI/Inventory/characters/ninten.png": "91beffd915870c9879750c4581e592ff1d81f3b4845d387e00547a0f76e5a28f",
+    "Graphics/UI/Inventory/characters/ninten.png.import": "591df18d53cf01a199b2db93f3c5d2d5e26f870923e46912830440a9c06afe6a",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Graphics/UI/Inventory/modifiers.png": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
+    "Graphics/UI/Inventory/modifiers.png.import": "3b670c47f51983c1927c6ed06ad1ef2e5a8f80c998ca37d5f4c9c26b321cbea9",
+    "Graphics/UI/Inventory/modifiers2.png": "01bf0cf517f8fb0ed9211395b3cca4f25b5d389db40dcbda99487272766ff6c7",
+    "Graphics/UI/Inventory/modifiers2.png.import": "91522256a2368f4260619183b4f5ac706ace714c9364e3cd9f24c7e4d9db25c2",
+    "Graphics/UI/Overworld/cents.png": "d9400460a5f28a262b1fce27ab6e46aaa47773d77d90f314489b8cc943a60626",
+    "Graphics/UI/Overworld/cents.png.import": "8462736432e62e5b487cc79b8adced88022716d5d194ed587b66a76861543dd3",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png.import": "fadf883607a0602838c955c34361782d4332dd4f78873d1bc175eeaa3e0f1272",
+    "Graphics/UI/Overworld/flavours/defaultempty.png": "33af3d9a91a397b79e67c7500486c5cb85f3d1396ecc1e9a1faa09581de73fdc",
+    "Graphics/UI/Overworld/flavours/defaultempty.png.import": "f02a11b08d81c08c255151e3013c5bdbeb542e77a29f202684ee2871ed613949",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/CashBoxPause.tscn": "f40e112e1b2a7e18d088ff50932261c657e9e18bdd13bd76e5e28963f9f4cbd5",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Nodes/Ui/EquipMenu/EquipMenuUI.gd": "5de23951f4d1d5ee8b16fb452e9f0c3701e6bf95ae75afa56cba0dc521da7599",
+    "Nodes/Ui/EquipMenu/EquipMenuUI.tscn": "3064ed1d1a2da70bcf266d55c15e139bc4d42225064ef455db3070ecf53f5998",
+    "Nodes/Ui/EquipMenu/StatsLabel.tscn": "166f76eff00d732c91d7e50f55cddcf2a346fab491d13d6019d904a876b4e58e",
+    "Nodes/Ui/HighlightLabel.gd": "91a1ec1e640166c2e38a6ee8c094042fddc64f165f128bd4aa706b09f29ad367",
+    "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
+    "Nodes/Ui/Inventory/InventorySelect.gd": "2cb4041595c68c059e2c2bf5bb97836e27965501bb3a061374270480a2d8a738",
+    "Nodes/Ui/Inventory/portrait.gd": "8a1fefb969c284cdce60fd1d16ba72237cc50f4601c684a14330799e67a73c78",
+    "Nodes/Ui/Inventory/portrait.tscn": "aace988ced4810ca71e57502e6333681dc1290220d37dac7968471de6c0d8c7e",
+    "Nodes/Ui/InventorySelect.tscn": "1a58567f9fb6864640cf17f7691a162f51bd32b65553ddff46b4fe6c4d4e607d",
+    "Nodes/Ui/Pause menu.tscn": "cc4c6237d51f32d93b5f7375ca94fed5a126c6a35884a95e14d2a486810bf9b7",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/controlsManager.gd": "73ffd540c3c95ed9f2d92d57ecbde8fc9c48fa98e683f3641cca5498becddae7",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "dependencies": {
+    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
+    "content/items-presentation-bindings.json": "3d532b1934f5c1c8cf08bf7ccc5199c65b801b8e608a4aa7d2f9b5bb2f5bca59"
+  },
+  "parameters": {
+    "ReferenceWidth": 320,
+    "ReferenceHeight": 180,
+    "PlatformWidth": 400,
+    "PlatformHeight": 240,
+    "PauseColumns": 2,
+    "SlotPitch": 24,
+    "ListPitch": 13,
+    "StatPitch": 12,
+    "CursorMoveSeconds": 0.1,
+    "CursorFps": 5,
+    "CursorFrame0": 0,
+    "CursorFrame1": 1,
+    "CursorFrame2": 2,
+    "CursorFrame3": 1,
+    "MainLineHeight": 12,
+    "NumberLineHeight": 12,
+    "NumberSpacing": -1,
+    "LoopAround": 1,
+    "PauseColumnPitch": 71,
+    "PauseRowPitch": 15,
+    "ListRows": 7,
+    "BoostWeight0": 2,
+    "BoostWeight1": 2,
+    "BoostWeight2": 3,
+    "BoostWeight3": 2,
+    "BoostWeight4": 1,
+    "BoostWeight5": 1,
+    "BoostWeight6": 1,
+    "OpenMask": 8,
+    "ConfirmMask": 1,
+    "CancelMask": 2,
+    "ScopeMask": 512,
+    "OwnerId": 1
+  },
+  "bindings": {
+    "PauseTitle": {
+      "en": "Menu",
+      "zh_Hans_CN": "菜单"
+    },
+    "EquipTitle": {
+      "en": "Equip",
+      "zh_Hans_CN": "装备"
+    },
+    "None": {
+      "en": "None",
+      "zh_Hans_CN": "空"
+    },
+    "Empty": {
+      "en": "______",
+      "zh_Hans_CN": "______"
+    },
+    "StatMaxHP": {
+      "en": "Max. HP",
+      "zh_Hans_CN": "最大HP"
+    },
+    "StatMaxPP": {
+      "en": "Max. PP",
+      "zh_Hans_CN": "最大PP"
+    },
+    "StatOffense": {
+      "en": "Offense",
+      "zh_Hans_CN": "攻击力"
+    },
+    "StatDefense": {
+      "en": "Defense",
+      "zh_Hans_CN": "防御力"
+    },
+    "StatSpeed": {
+      "en": "Speed",
+      "zh_Hans_CN": "速度"
+    },
+    "StatIQ": {
+      "en": "IQ",
+      "zh_Hans_CN": "智力"
+    },
+    "StatGuts": {
+      "en": "Guts",
+      "zh_Hans_CN": "勇气"
+    },
+    "Owner": {
+      "en": "ninten",
+      "zh_Hans_CN": "ninten"
+    },
+    "MainFont": {
+      "en": "Fonts/EBMain_la.tres",
+      "zh_Hans_CN": "Fonts/EBMain_la.tres"
+    },
+    "NumberFont": {
+      "en": "Fonts/BottleRocket.tres",
+      "zh_Hans_CN": "Fonts/BottleRocket.tres"
+    },
+    "PauseOpenSound": {
+      "en": "Audio/Sound effects/M3/menu_open2.wav",
+      "zh_Hans_CN": "Audio/Sound effects/M3/menu_open2.wav"
+    },
+    "PauseCloseSound": {
+      "en": "Audio/Sound effects/M3/menu_close2.wav",
+      "zh_Hans_CN": "Audio/Sound effects/M3/menu_close2.wav"
+    },
+    "EquipOpenSound": {
+      "en": "Audio/Sound effects/M3/menu_open.wav",
+      "zh_Hans_CN": "Audio/Sound effects/M3/menu_open.wav"
+    },
+    "EquipCloseSound": {
+      "en": "Audio/Sound effects/M3/menu_close.wav",
+      "zh_Hans_CN": "Audio/Sound effects/M3/menu_close.wav"
+    },
+    "MoveSound": {
+      "en": "Audio/Sound effects/Cursor 1.mp3",
+      "zh_Hans_CN": "Audio/Sound effects/Cursor 1.mp3"
+    },
+    "ConfirmSound": {
+      "en": "Audio/Sound effects/Cursor 2.mp3",
+      "zh_Hans_CN": "Audio/Sound effects/Cursor 2.mp3"
+    },
+    "RestrictedSound": {
+      "en": "Audio/Sound effects/M3/bump.wav",
+      "zh_Hans_CN": "Audio/Sound effects/M3/bump.wav"
+    },
+    "ClearSound": {
+      "en": "Audio/Sound effects/EB/close.wav",
+      "zh_Hans_CN": "Audio/Sound effects/EB/close.wav"
+    },
+    "EquipSound": {
+      "en": "Audio/Sound effects/M3/equip.wav",
+      "zh_Hans_CN": "Audio/Sound effects/M3/equip.wav"
+    },
+    "BackSound": {
+      "en": "Audio/Sound effects/M3/curshoriz.wav",
+      "zh_Hans_CN": "Audio/Sound effects/M3/curshoriz.wav"
+    },
+    "Level": {
+      "en": "Level",
+      "zh_Hans_CN": "等级"
+    },
+    "CashPattern": {
+      "en": "$ ",
+      "zh_Hans_CN": "$"
+    },
+    "CashRight": {
+      "en": "",
+      "zh_Hans_CN": ""
+    }
+  },
+  "commands": [
+    {
+      "id": 1,
+      "labels": {
+        "en": "Goods",
+        "zh_Hans_CN": "道具"
+      },
+      "enabled": false
+    },
+    {
+      "id": 2,
+      "labels": {
+        "en": "PSI",
+        "zh_Hans_CN": "PSI"
+      },
+      "enabled": false
+    },
+    {
+      "id": 3,
+      "labels": {
+        "en": "Equip",
+        "zh_Hans_CN": "装备"
+      },
+      "enabled": true
+    },
+    {
+      "id": 4,
+      "labels": {
+        "en": "Status",
+        "zh_Hans_CN": "状态"
+      },
+      "enabled": false
+    },
+    {
+      "id": 5,
+      "labels": {
+        "en": "Map",
+        "zh_Hans_CN": "地图"
+      },
+      "enabled": false
+    },
+    {
+      "id": 6,
+      "labels": {
+        "en": "Options",
+        "zh_Hans_CN": "选项"
+      },
+      "enabled": false
+    }
+  ],
+  "slots": [
+    {
+      "id": 1,
+      "source": "weapon",
+      "labels": {
+        "en": "Weapon",
+        "zh_Hans_CN": "武器"
+      }
+    },
+    {
+      "id": 2,
+      "source": "body",
+      "labels": {
+        "en": "Body",
+        "zh_Hans_CN": "身体"
+      }
+    },
+    {
+      "id": 3,
+      "source": "arms",
+      "labels": {
+        "en": "Arms",
+        "zh_Hans_CN": "手臂"
+      }
+    },
+    {
+      "id": 4,
+      "source": "other",
+      "labels": {
+        "en": "Other",
+        "zh_Hans_CN": "其他"
+      }
+    }
+  ],
+  "equipment": [
+    {
+      "definition": 0,
+      "source": "BaseballCap",
+      "slot": 3,
+      "boosts": [
+        0,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "name": "panel",
+      "source": "Graphics/UI/Overworld/flavours/defaultempty.png",
+      "size": [
+        24,
+        24
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/panel.t3x"
+    },
+    {
+      "id": 2,
+      "name": "inside",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside.png",
+      "size": [
+        24,
+        24
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/inside.t3x"
+    },
+    {
+      "id": 3,
+      "name": "description",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "size": [
+        24,
+        24
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/description.t3x"
+    },
+    {
+      "id": 4,
+      "name": "ninten",
+      "source": "Graphics/UI/Inventory/characters/ninten.png",
+      "size": [
+        19,
+        21
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/ninten.t3x"
+    },
+    {
+      "id": 5,
+      "name": "cursor",
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "size": [
+        24,
+        8
+      ],
+      "crop": null,
+      "grid": [
+        3,
+        1
+      ],
+      "output": "graphics/ui/equipment/cursor.t3x"
+    },
+    {
+      "id": 6,
+      "name": "boost-empty",
+      "source": "Graphics/UI/EquipMenu/empty.png",
+      "size": [
+        8,
+        8
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/boost-empty.t3x"
+    },
+    {
+      "id": 7,
+      "name": "boost-better",
+      "source": "Graphics/UI/EquipMenu/red_arrow.png",
+      "size": [
+        8,
+        8
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/boost-better.t3x"
+    },
+    {
+      "id": 8,
+      "name": "boost-lower",
+      "source": "Graphics/UI/EquipMenu/blue_arrow.png",
+      "size": [
+        8,
+        8
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/boost-lower.t3x"
+    },
+    {
+      "id": 9,
+      "name": "portrait-equipped",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "size": [
+        26,
+        27
+      ],
+      "crop": [
+        15,
+        10,
+        9,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/portrait-equipped.t3x"
+    },
+    {
+      "id": 10,
+      "name": "portrait-suitable",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "size": [
+        26,
+        27
+      ],
+      "crop": [
+        0,
+        10,
+        13,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/portrait-suitable.t3x"
+    },
+    {
+      "id": 11,
+      "name": "portrait-better",
+      "source": "Graphics/UI/Inventory/modifiers2.png",
+      "size": [
+        11,
+        14
+      ],
+      "crop": [
+        0,
+        0,
+        11,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/portrait-better.t3x"
+    },
+    {
+      "id": 12,
+      "name": "portrait-lower",
+      "source": "Graphics/UI/Inventory/modifiers2.png",
+      "size": [
+        11,
+        14
+      ],
+      "crop": [
+        0,
+        7,
+        11,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/portrait-lower.t3x"
+    },
+    {
+      "id": 13,
+      "name": "cents",
+      "source": "Graphics/UI/Overworld/cents.png",
+      "size": [
+        9,
+        7
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/equipment/cents.t3x"
+    }
+  ],
+  "layouts": [
+    {
+      "id": 1,
+      "role": "PausePanel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 0,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        7,
+        7,
+        156,
+        66
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 2,
+      "role": "PauseInside",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 1,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        15,
+        15,
+        140,
+        50
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 3,
+      "role": "PauseTitle",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        18,
+        3,
+        120,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 4,
+      "role": "PauseCommand",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        15,
+        15,
+        61,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 5,
+      "role": "PauseCursor",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 4,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        8.666667,
+        17,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 6,
+      "role": "CashLabel",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        16,
+        65,
+        24,
+        12
+      ],
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 7,
+      "role": "CashValue",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        40,
+        65,
+        94,
+        12
+      ],
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 8,
+      "role": "CashCents",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 12,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        134,
+        66,
+        10,
+        9
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 9,
+      "role": "PauseCash",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        144,
+        65,
+        15,
+        12
+      ],
+      "color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 10,
+      "role": "EquipmentPanel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 2,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        28,
+        0,
+        264,
+        133
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 11,
+      "role": "StatsPanel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 1,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        40,
+        23,
+        140,
+        110
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 12,
+      "role": "Owner",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        48,
+        27,
+        66,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 13,
+      "role": "LevelLabel",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        48,
+        40,
+        66,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 14,
+      "role": "LevelValue",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        114,
+        40,
+        26,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 15,
+      "role": "EquipTitle",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        220,
+        5,
+        65,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 16,
+      "role": "Portrait",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 3,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        34,
+        0,
+        21,
+        21
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 17,
+      "role": "SlotPanel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 1,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        186,
+        23,
+        106,
+        110
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 18,
+      "role": "SlotLabel",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        196,
+        30,
+        86,
+        12
+      ],
+      "color": [
+        0.74902,
+        0.705882,
+        0.803922,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 19,
+      "role": "SlotItem",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        201,
+        41,
+        86,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 20,
+      "role": "SlotCursor",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 4,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        194.666667,
+        43,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 21,
+      "role": "ListPanel",
+      "parent": null,
+      "kind": "Rectangle",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        191,
+        29,
+        96,
+        97
+      ],
+      "color": [
+        0.0784314,
+        0.0666667,
+        0.0901961,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 22,
+      "role": "ListItem",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        201,
+        30,
+        81,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 23,
+      "role": "CandidateCursor",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 4,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        194.666667,
+        32,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 24,
+      "role": "StatLabel",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        48,
+        53,
+        69,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 25,
+      "role": "StatValue",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        114,
+        53,
+        26,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 26,
+      "role": "StatProjected",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        151,
+        53,
+        21,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 27,
+      "role": "StatIcon",
+      "parent": null,
+      "kind": "Container",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        143,
+        57,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 28,
+      "role": "BoostEmpty",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 5,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        0,
+        0,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 29,
+      "role": "BoostBetter",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 6,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        0,
+        0,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 30,
+      "role": "BoostLower",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 7,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        0,
+        0,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 31,
+      "role": "DescriptionPanel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 2,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        28,
+        132,
+        264,
+        48
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 32,
+      "role": "DescriptionText",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        66,
+        144,
+        213,
+        28
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 33,
+      "role": "PortraitEquipped",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 8,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        40,
+        1,
+        9,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 34,
+      "role": "PortraitSuitable",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 9,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        38,
+        21,
+        13,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 35,
+      "role": "PortraitBetter",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 10,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        39,
+        1,
+        11,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 36,
+      "role": "PortraitLower",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 11,
+      "frame": 0,
+      "flags": 1,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        39,
+        1,
+        11,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "role": "PauseOpen",
+      "duration": 0.15,
+      "source": "Nodes/Ui/Pause menu.tscn",
+      "source_resource_id": 1,
+      "source_base": 0,
+      "source_values": [
+        -80,
+        2,
+        0
+      ],
+      "keys": [
+        {
+          "time": 0,
+          "value": -80,
+          "ease": 1
+        },
+        {
+          "time": 0.1,
+          "value": 2,
+          "ease": 1
+        },
+        {
+          "time": 0.15,
+          "value": 0,
+          "ease": 0.637281
+        }
+      ]
+    },
+    {
+      "role": "PauseClose",
+      "duration": 0.1,
+      "source": "Nodes/Ui/Pause menu.tscn",
+      "source_resource_id": 3,
+      "source_base": 0,
+      "source_values": [
+        0,
+        -80
+      ],
+      "keys": [
+        {
+          "time": 0,
+          "value": 0,
+          "ease": 0.4
+        },
+        {
+          "time": 0.1,
+          "value": -80,
+          "ease": 0.637281
+        }
+      ]
+    },
+    {
+      "role": "EquipOpen",
+      "duration": 0.15,
+      "source": "Nodes/Ui/EquipMenu/EquipMenuUI.tscn",
+      "source_resource_id": 3,
+      "source_base": 0,
+      "source_values": [
+        -180.0,
+        2.0,
+        0.0
+      ],
+      "keys": [
+        {
+          "time": 0,
+          "value": -180.0,
+          "ease": 1
+        },
+        {
+          "time": 0.1,
+          "value": 2.0,
+          "ease": 1
+        },
+        {
+          "time": 0.15,
+          "value": 0.0,
+          "ease": 1
+        }
+      ]
+    },
+    {
+      "role": "EquipClose",
+      "duration": 0.15,
+      "source": "Nodes/Ui/EquipMenu/EquipMenuUI.tscn",
+      "source_resource_id": 2,
+      "source_base": 0,
+      "source_values": [
+        0.0,
+        -140.0
+      ],
+      "keys": [
+        {
+          "time": 0,
+          "value": 0.0,
+          "ease": 1
+        },
+        {
+          "time": 0.15,
+          "value": -140.0,
+          "ease": 1
+        }
+      ]
+    },
+    {
+      "role": "DescriptionOpen",
+      "duration": 0.15,
+      "source": "Nodes/Ui/EquipMenu/EquipMenuUI.tscn",
+      "source_resource_id": 7,
+      "source_base": 132,
+      "source_values": [
+        180.0,
+        128.0,
+        132.0
+      ],
+      "keys": [
+        {
+          "time": 0,
+          "value": 48.0,
+          "ease": 1
+        },
+        {
+          "time": 0.1,
+          "value": -4.0,
+          "ease": 1
+        },
+        {
+          "time": 0.15,
+          "value": 0.0,
+          "ease": 1
+        }
+      ]
+    },
+    {
+      "role": "DescriptionClose",
+      "duration": 0.15,
+      "source": "Nodes/Ui/EquipMenu/EquipMenuUI.tscn",
+      "source_resource_id": 6,
+      "source_base": 132,
+      "source_values": [
+        132.0,
+        180.0
+      ],
+      "keys": [
+        {
+          "time": 0,
+          "value": 0.0,
+          "ease": 0.4
+        },
+        {
+          "time": 0.15,
+          "value": 48.0,
+          "ease": 1
+        }
+      ]
+    }
+  ]
+}

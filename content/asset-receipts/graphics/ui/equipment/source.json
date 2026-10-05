@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "71c5833c1fbd5069648b7f46b8b65f6b4277dc51fd2887ddd0ab61e4f2c4b586",
+  "producer_sha256": "1aa457e42be00d7ba5e693870ade850596f36995ec6b8ad07b4309b179bdb68f",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/ui/equipment/panel.t3x": {
+      "size": [
+        24,
+        24
+      ],
+      "bytes": 4117,
+      "sha256": "fe7878caaa48c7f557f96aefda7fb82118d3f9e9effb00352c61e9341d821b0d",
+      "crc32": 2243849373
+    },
+    "graphics/ui/equipment/inside.t3x": {
+      "size": [
+        24,
+        24
+      ],
+      "bytes": 4117,
+      "sha256": "51ecf4578c9b197f271333d0fffa5f96b7f74e525c2687520cbc6cc20e997e34",
+      "crc32": 3548482685
+    },
+    "graphics/ui/equipment/description.t3x": {
+      "size": [
+        24,
+        24
+      ],
+      "bytes": 4117,
+      "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+      "crc32": 575863571
+    },
+    "graphics/ui/equipment/ninten.t3x": {
+      "size": [
+        19,
+        21
+      ],
+      "bytes": 4117,
+      "sha256": "fc0f7a78e16eb7c760926168210828ee36ba92964f7e6764ea5f0df1df8ed688",
+      "crc32": 3751087532
+    },
+    "graphics/ui/equipment/cursor.t3x": {
+      "size": [
+        24,
+        8
+      ],
+      "bytes": 1045,
+      "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516",
+      "crc32": 760432535
+    },
+    "graphics/ui/equipment/boost-empty.t3x": {
+      "size": [
+        8,
+        8
+      ],
+      "bytes": 277,
+      "sha256": "2da58ecad65308a176c8bc5ac7773afe8b644aa3ff198ae4371f6580f7a03ef4",
+      "crc32": 3046154333
+    },
+    "graphics/ui/equipment/boost-better.t3x": {
+      "size": [
+        8,
+        8
+      ],
+      "bytes": 277,
+      "sha256": "1c61af5d83722e828868ba18e8ffa37fab1c2006e6765279f39ec8035c6b458a",
+      "crc32": 3342062761
+    },
+    "graphics/ui/equipment/boost-lower.t3x": {
+      "size": [
+        8,
+        8
+      ],
+      "bytes": 277,
+      "sha256": "b01757b1c650eaae05ffdbd76d58e4f64cf66b297c450d00722b3bd151f54144",
+      "crc32": 3474564115
+    },
+    "graphics/ui/equipment/portrait-equipped.t3x": {
+      "size": [
+        9,
+        7
+      ],
+      "bytes": 533,
+      "sha256": "8ab0de938f3909868a026103db01d0e75d788fe0dcedba2dd215d8f08d824b23",
+      "crc32": 1692393067
+    },
+    "graphics/ui/equipment/portrait-suitable.t3x": {
+      "size": [
+        13,
+        7
+      ],
+      "bytes": 533,
+      "sha256": "3a70d257f9e882c455b2d5d917cc3313df6e2577556d0b12a59d94c4c7a29925",
+      "crc32": 264868458
+    },
+    "graphics/ui/equipment/portrait-better.t3x": {
+      "size": [
+        11,
+        7
+      ],
+      "bytes": 533,
+      "sha256": "1715c1810d4bd14634aeb961398cbf948b8960749473f37a6b20fa1237b68e67",
+      "crc32": 315173387
+    },
+    "graphics/ui/equipment/portrait-lower.t3x": {
+      "size": [
+        11,
+        7
+      ],
+      "bytes": 533,
+      "sha256": "ebeb8b771695c08ad9d633231f931cc87f816ffde75e164de3c432fc1d7acb36",
+      "crc32": 2769833859
+    },
+    "graphics/ui/equipment/cents.t3x": {
+      "size": [
+        9,
+        7
+      ],
+      "bytes": 533,
+      "sha256": "73c3ef6582834fac73412cd51233277f0c2616746b04d8dbcfffa23a73c71298",
+      "crc32": 179462015
+    }
+  }
+}

@@ -1,11 +1,13 @@
 #pragma once
 #include "loading_texture.hpp"
 #include "battle_renderer.hpp"
+#include "item_details_renderer.hpp"
 #include "encore/items_menu.hpp"
 #include "encore/localization.hpp"
 class ItemsRenderer {
  struct Asset {encore::ctr::LoadingSpriteSheet sheet=nullptr;uint32_t width=0,height=0,columns=0,rows=0;};
  const encore::upstream::LocaleSelection*locale_=nullptr;
+ const ItemDetailsRenderer*details_=nullptr;
  encore::upstream::ItemView data_;std::vector<Asset>assets_;
  mutable std::vector<encore::upstream::ItemMenuPose>poses_;
  mutable std::vector<float>xs_,ys_;
@@ -37,6 +39,13 @@ class ItemsRenderer {
   std::string label;
   if(role==ItemLayoutRole::ItemLabel){const auto slot=slots_[index];const auto instance=menu.inventory().instance(slot);const auto d=data_.definition(instance.definition);label=std::string(data_.string(d.name));if(locale_){std::string error;if(!locale_->catalog()->bound("item.name/"+std::to_string(instance.definition),label,locale_->code(),label,error))return false;}tint=data_.parameter(menu.inventory().can_use(slot)?ItemParameter::NormalColor:ItemParameter::DisabledColor);}
   else if(role==ItemLayoutRole::Description&&menu.inventory().size()){
+   if(details_){
+    if(l.frame)return true;
+    float bottom=y+h;
+    for(uint32_t i=0;i<poses_.size();++i)if(visible_[i]&&poses_[i].source.parent==l.parent&&poses_[i].source.role==uint32_t(ItemLayoutRole::Description))
+     bottom=std::max(bottom,ys_[i]+poses_[i].offset.y+poses_[i].rect.w*poses_[i].scale.y);
+    return details_->draw(menu.inventory().instance(menu.selection()),font,x,y,w,bottom-y);
+   }
    // Rich descriptions retain their original controls in checked resources.
    // Until the rich consumer is implemented, do not draw raw tags as prose.
    if(data_.definition(menu.inventory().instance(menu.selection()).definition).flags&uint32_t(ItemDefinitionFlag::RichDescription))return true;
@@ -60,6 +69,7 @@ class ItemsRenderer {
  }
 public:
  void set_locale(const encore::upstream::LocaleSelection*value){locale_=value;}
+ void set_details(const ItemDetailsRenderer*value){details_=value;}
  bool load(encore::upstream::ItemView data,const char*root,std::string&error){
   free();if(!data.valid()||!root){error="Missing checked Items assets";return false;}data_=data;assets_.resize(data.count(encore::upstream::ItemSection::Resources));
   for(uint32_t i=0;i<assets_.size();++i){const auto r=data.resource(i);auto&a=assets_[i];a.width=r.width;a.height=r.height;a.columns=r.columns;a.rows=r.rows;

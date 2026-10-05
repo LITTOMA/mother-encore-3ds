@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "6cc26a78ab1a11b851039e2a2b6fd8c0bcdcbcbe3b57a8095e77d2cbc10330ff",
+  "sources": {
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/Ailments/Ailments.tres": "e130b5e96b2b4333ddcbc84f034f4ca4cbe72f7f4799d8848c01f5e0b966b00b",
+    "Graphics/UI/Ailments/Asthma.png": "4eb4fe2e3f4df16d7cef7dc17115924d21ac53fb36306fc62d70258ca4864ec2",
+    "Graphics/UI/Ailments/Asthma.png.import": "cbee4d16c4540527a3bd3a12884ce5e4640a14dd42b157cf2d9eef8a08e34064",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "semantics": [
+    "No use action enabled; item identity, old raw description, flags and save unchanged",
+    "Description.set_item translates and replaces nickname/status/item value, then formats current doses",
+    "Nickname scalar length follows locale LONGEST_POSSIBLE_NAME; en7/zh6",
+    "Doses outside range0..max-1 show original total phrase;0/1/2 show remaining with original plural suffix",
+    "TextTools.add_line_breaks measures inline image as two em dashes; EN ordinary space; ZH empty separator",
+    "Original inline texture uses BitmapFont defaultheight1/ascent1/descent0; Godot3.6.2 default baseline alignment gives lineheight12-imageheight12=0 vertical offset",
+    "Nearest tex3ds conversion; main text EBMain_la; explicit unique casefold mapping fixes original lowercase status path versus titlecase asset"
+  ],
+  "unverified": [
+    "Manual tests not run",
+    "3DS device display/input validation pending"
+  ]
+}

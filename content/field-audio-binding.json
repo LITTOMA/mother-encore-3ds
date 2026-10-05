@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "encore.field-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "license_review": "Original game-related Pause sound derivatives under the pinned upstream LICENSE; source notices retained; no MIT relicensing.",
+  "assets": [
+    {
+      "source": "Audio/Sound effects/M3/menu_open2.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1601
+      },
+      "pcm": "sound/effects/field-menu-open.pcm",
+      "gain_db": 0,
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/M3/menu_close2.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1602
+      },
+      "pcm": "sound/effects/field-menu-close.pcm",
+      "gain_db": 0,
+      "conversion": null
+    }
+  ]
+}

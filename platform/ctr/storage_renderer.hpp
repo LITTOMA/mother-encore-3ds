@@ -1,5 +1,6 @@
 #pragma once
 #include "battle_renderer.hpp"
+#include "item_details_renderer.hpp"
 #include "loading_texture.hpp"
 #include "encore/storage_menu.hpp"
 #include "encore/localization.hpp"
@@ -30,6 +31,7 @@ class StorageRenderer {
     };
     View data_;Items items_;
     const encore::upstream::LocaleSelection* locale_=nullptr;
+    const ItemDetailsRenderer* details_=nullptr;
     std::vector<Asset> assets_,icons_;
     std::vector<Layout> layouts_;
     mutable std::string error_;
@@ -238,6 +240,7 @@ public:
     StorageRenderer& operator=(const StorageRenderer&)=delete;
     ~StorageRenderer(){free();}
     void set_locale(const encore::upstream::LocaleSelection* locale){locale_=locale;}
+    void set_details(const ItemDetailsRenderer* details){details_=details;}
     bool ready()const{return data_.valid();}
     const std::string& error()const{return error_;}
     bool load(View data,Items items,const char* root,std::string& error){
@@ -353,6 +356,11 @@ public:
             }
             if(role==Role::DescriptionText){
                 if(asking||warning||!has_item)continue;
+                if(details_){
+                    const auto instance=menu.storage_panel()?menu.storage().instance(menu.selection()):menu.inventory().instance(menu.selection());
+                    if(!details_->draw(instance,main_font,dx+l.rect.x,dy+l.rect.y,l.rect.z,l.rect.w))return fail(details_->error().c_str());
+                    continue;
+                }
                 if(items_.definition(definition).flags&uint32_t(encore::upstream::ItemDefinitionFlag::RichDescription))continue;
                 std::string description;if(!item_text(definition,true,description)||!text(main_font,l,description,dx,dy,true))return false;continue;
             }

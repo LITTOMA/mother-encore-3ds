@@ -14,6 +14,7 @@ namespace encore {
 // must outlive this kernel, and preparation must be repeated after any change.
 class BackgroundKernel {
     friend class RegionBackgroundKernel;
+    friend class CertifiedTextureBackgroundKernel;
 public:
     struct Source {
         uint32_t width=0,height=0;
@@ -67,6 +68,7 @@ private:
     const uint32_t* output_offsets_=nullptr;
     size_t mapped_output_count_=0;
     size_t size_=0;
+    uint32_t prepared_width_=0,prepared_height_=0;
     struct Range {float lo=0,hi=0;};
     struct BlockBounds {Range u,v,oc,os,cc,cs;};
     struct Block {uint32_t x=0,y=0,width=0,height=0,first_child=0,children=0;BlockBounds layer[2];};
@@ -427,7 +429,7 @@ private:
     }
 
 public:
-    void clear(){fallback_spans_.clear();fallback_span_count_=0;layers_.clear();pair_colors_.clear();mapped_pair_colors_.clear();extended_pair_colors_.clear();mapped_extended_pair_colors_.clear();blocks_.clear();block_roots_.clear();homogeneity_.clear();block_stats_={};mapped_unique_=false;output_width_=0;output_offsets_=nullptr;mapped_output_count_=0;size_=0;}
+    void clear(){fallback_spans_.clear();fallback_span_count_=0;layers_.clear();pair_colors_.clear();mapped_pair_colors_.clear();extended_pair_colors_.clear();mapped_extended_pair_colors_.clear();blocks_.clear();block_roots_.clear();homogeneity_.clear();block_stats_={};mapped_unique_=false;output_width_=0;output_offsets_=nullptr;mapped_output_count_=0;size_=0;prepared_width_=prepared_height_=0;}
     bool fused_pair()const{return !pair_colors_.empty();}
     bool separable_pair()const{return !extended_pair_colors_.empty();}
     bool bounded_pair()const{return fused_pair()&&layers_[0].bounded_x&&layers_[1].bounded_x;}
@@ -466,7 +468,7 @@ public:
         const auto fail=[&](const char* text){error=text;clear();return false;};
         if(layers.empty()||layers.size()>8||!width||width>1024||!height||height>1024)
             return fail("Invalid background kernel dimensions/layers");
-        size_=size_t(width)*height;layers_.reserve(layers.size());
+        size_=size_t(width)*height;prepared_width_=width;prepared_height_=height;layers_.reserve(layers.size());
         for(const auto& layer:layers){
             if(control&&control->stopped())return fail("Background preparation cancelled");
             const auto& src=layer.source;

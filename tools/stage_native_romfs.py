@@ -25,9 +25,7 @@ def main():
     files.update(inspection_files(source))
     from drawer_program import stage_files as drawer_files
     files.update(drawer_files(source))
-    from storage_assets import stage_files as storage_files
     from native_storage import stage_files as storage_data_files
-    files.update(storage_files(source))
     files.update(storage_data_files(source))
     files.update(item_files(source))
     from native_input import stage_files as input_files

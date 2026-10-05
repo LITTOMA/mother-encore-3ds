@@ -94,7 +94,9 @@ def append_item(ex,result):
     # Independent reviewed dependencies preserve the original UI receipt and
     # source prefix. The full extension source ledger is in IR and re-admitted.
     out['dependencies']=dict(out['dependencies'])
-    for path in (IR,RECIPE,REVIEW,RECEIPT):out['dependencies'][path]=digest(Path(ex.root)/path)
+    # The review is re-admitted by load(); resource dependency paths remain in
+    # content/romfs as required by the Items format, rather than weakening it.
+    for path in (IR,RECIPE,RECEIPT):out['dependencies'][path]=digest(Path(ex.root)/path)
     out['scope']+='; checked AsthmaSpray acquired definition/icon; raw rich description and consume action explicitly gated'
     require(out['initial_inventory']==result['initial_inventory'],'Drawer extension changed new-game instances')
     return out

@@ -1,5 +1,5 @@
 #pragma once
-#include "encore/background_kernel.hpp"
+#include "encore/region_background_kernel.hpp"
 #include <memory>
 #include <new>
 
@@ -12,13 +12,14 @@ namespace encore {
 // this plan. Passing the owner at frame time also survives renderer swaps.
 class CertifiedTextureBackgroundKernel {
 public:
-    struct Strip {uint16_t x,y,width,reserved;float uv[4],delta[4];};
-    struct Stats {uint32_t linear_pixels=0,scalar_pixels=0,exact_pixels=0,scalar_trig_calls=0,constant_pixels=0,merged_strips=0;};
+    struct Strip {uint16_t x,y,width,height=1;float uv[4],delta[4];};
+    struct Stats {uint32_t linear_pixels=0,scalar_pixels=0,exact_pixels=0,scalar_trig_calls=0,constant_pixels=0,merged_strips=0,region_pixels=0;};
 private:
     static constexpr uint32_t chunk=8;
     struct Residual {float values[2][6]{};};
     std::unique_ptr<Residual[]> residual_;
     std::unique_ptr<uint32_t[]> representatives_;
+    std::unique_ptr<float[]> representative_uv_;
     size_t representative_count_=0,representative_offset_[2]{};
     uint32_t width_=0,height_=0,columns_=0;
     const void* coordinates_[2]{};
@@ -189,13 +190,14 @@ public:
     }
     static size_t preparation_upper_bound(const std::vector<BackgroundKernel::Layer>& layers,uint32_t w,uint32_t h){
         return supported_shape(layers,w,h)?size_t((w+chunk-1)/chunk)*h*sizeof(Residual)+
-            (layers[0].source.palette_size+layers[1].source.palette_size)*sizeof(uint32_t):0;
+            (layers[0].source.palette_size+layers[1].source.palette_size)*(sizeof(uint32_t)+2*sizeof(float)):0;
     }
-    void clear(){residual_.reset();representatives_.reset();representative_count_=0;representative_offset_[0]=representative_offset_[1]=0;
+    void clear(){residual_.reset();representatives_.reset();representative_uv_.reset();representative_count_=0;representative_offset_[0]=representative_offset_[1]=0;
         width_=height_=columns_=0;coordinates_[0]=coordinates_[1]=nullptr;}
-    bool ready()const{return bool(residual_);}
-    size_t prepared_bytes()const{return ready()?size_t(columns_)*height_*sizeof(Residual)+representative_count_*sizeof(uint32_t):0;}
-    bool prepare(const BackgroundKernel& kernel,uint32_t w,uint32_t h,const PreparationControl* control=nullptr){
+    bool ready()const{return bool(representatives_)&&bool(representative_uv_);}
+    size_t prepared_bytes()const{return ready()?(residual_?size_t(columns_)*height_*sizeof(Residual):0)+representative_count_*(sizeof(uint32_t)+2*sizeof(float)):0;}
+private:
+    bool prepare_impl(const BackgroundKernel& kernel,uint32_t w,uint32_t h,const PreparationControl* control,bool secants){
         clear();if(w!=400||h!=240||kernel.prepared_width_!=w||kernel.prepared_height_!=h||kernel.size_!=size_t(w)*h||kernel.extended_pair_colors_.empty()||kernel.layers_.size()!=2)return false;
         for(const auto& p:kernel.layers_)if(!p.config.barrel||p.config.source.width>256||p.config.source.height>256)return false;
         width_=w;height_=h;columns_=(w+chunk-1)/chunk;
@@ -211,6 +213,13 @@ public:
                 if(position==UINT32_MAX)position=uint32_t(i%source.width)|(uint32_t(i/source.width)<<16);
             }
         }
+        representative_uv_.reset(new(std::nothrow) float[representative_count_*2]);
+        if(!representative_uv_){clear();return false;}
+        for(size_t i=0;i<representative_count_;++i){
+            representative_uv_[i*2]=(float(representatives_[i]&0xffffu)+0.5f)/256;
+            representative_uv_[i*2+1]=1-(float(representatives_[i]>>16)+0.5f)/256;
+        }
+        if(!secants)return true;
         residual_.reset(new(std::nothrow) Residual[size_t(columns_)*h]);if(!residual_){clear();return false;}
         for(uint32_t y=0;y<h;++y){if(control&&control->stopped()){clear();return false;}
             for(uint32_t c=0;c<columns_;++c){const uint32_t x=c*chunk,length=std::min(chunk,w-x);
@@ -225,8 +234,39 @@ public:
         }
         return true;
     }
+public:
+    bool prepare(const BackgroundKernel& kernel,uint32_t w,uint32_t h,const PreparationControl* control=nullptr){
+        return prepare_impl(kernel,w,h,control,true);
+    }
+    bool prepare(const RegionBackgroundKernel& kernel,uint32_t w,uint32_t h,const PreparationControl* control=nullptr){
+        return prepare_impl(static_cast<const BackgroundKernel&>(kernel),w,h,control,!kernel.region_fast_path());
+    }
+    // Source-index runs prove every original nearest sample in a rotated
+    // source region. Fixed representative texels go directly to PICA without
+    // secant recursion, a per-pixel color buffer or per-frame texture upload.
+    bool generate(const RegionBackgroundKernel& kernel,float time,Strip* out,size_t capacity,size_t& count,Stats& stats)const{
+        if(!kernel.region_fast_path())return generate(static_cast<const BackgroundKernel&>(kernel),time,out,capacity,count,stats);
+        count=0;stats={};
+        if(!ready()||!out||!capacity||kernel.size_!=size_t(width_)*height_||kernel.layers_.size()!=2||
+           coordinates_[0]!=kernel.layers_[0].pixels.data()||coordinates_[1]!=kernel.layers_[1].pixels.data())return false;
+        const bool ok=kernel.generate_index_runs(time,[&](uint32_t x,uint32_t y,uint32_t width,uint8_t a,uint8_t b){
+            if(count==capacity)return false;
+            Strip& s=out[count++];s.x=uint16_t(x);s.y=uint16_t(y);s.width=uint16_t(width);s.height=1;
+            const uint8_t indices[]={a,b};
+            for(unsigned n=0;n<2;++n){
+                const float* uv=representative_uv_.get()+(representative_offset_[n]+indices[n])*2;
+                s.uv[n*2]=uv[0];s.uv[n*2+1]=uv[1];
+            }
+            s.delta[0]=s.delta[1]=s.delta[2]=s.delta[3]=0;
+            return true;
+        });
+        if(!ok){count=0;stats={};return false;}
+        stats.linear_pixels=stats.constant_pixels=stats.region_pixels=width_*height_;
+        stats.scalar_trig_calls=uint32_t(kernel.region_stats().trig_calls);
+        return true;
+    }
     bool generate(const BackgroundKernel& kernel,float time,Strip* out,size_t capacity,size_t& count,Stats& stats)const{
-        count=0;stats={};if(!ready()||!out||!capacity||kernel.size_!=size_t(width_)*height_||kernel.layers_.size()!=2||
+        count=0;stats={};if(!ready()||!residual_||!out||!capacity||kernel.size_!=size_t(width_)*height_||kernel.layers_.size()!=2||
             coordinates_[0]!=kernel.layers_[0].pixels.data()||coordinates_[1]!=kernel.layers_[1].pixels.data())return false;
         BackgroundKernel::SeparableFrame frames[2];if(!kernel.prepare_separable_frame(time,frames)||!frames[0].guarded||!frames[1].guarded)return false;
         for(uint32_t y=0;y<height_;++y)for(uint32_t c=0;c<columns_;++c){const uint32_t x=c*chunk;

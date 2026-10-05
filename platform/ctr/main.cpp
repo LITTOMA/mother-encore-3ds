@@ -1144,15 +1144,15 @@ void house_bottom(){
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
         if(battle_renderer.gpu_background_active())backend="GPU spans";
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        if(battle_renderer.gpu_texture_active())backend=battle_renderer.gpu_mapped_texture_active()?"GPU mapped textures":"GPU texture strips";
+        if(battle_renderer.gpu_texture_active())backend=battle_renderer.gpu_mapped_texture_active()?(battle_renderer.gpu_mapped_stats().region_pixels?"GPU index runs":"GPU mapped textures"):"GPU texture strips";
 #endif
 #endif
         const auto used=std::strlen(position);
         std::snprintf(position+used,sizeof(position)-used,"\nBackground: %s",backend);
 #if defined(ENCORE_EXPERIMENTAL_GPU_BACKGROUND) && defined(ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS)
         if(battle_renderer.gpu_mapped_texture_active()){
-            const auto stats=battle_renderer.gpu_mapped_stats();const auto end=std::strlen(position);
-            std::snprintf(position+end,sizeof(position)-end," %u strips / %u pass\nCPU prep %.1fms submit %.1fms / trig %u",unsigned(battle_renderer.gpu_texture_strips()),battle_renderer.gpu_texture_passes(),compose_ms,background_submit_ms,unsigned(stats.scalar_trig_calls));
+            const auto end=std::strlen(position);
+            std::snprintf(position+end,sizeof(position)-end," %u quads / %u pass\nCPU prep %.1fms submit %.1fms / samples %u",unsigned(battle_renderer.gpu_texture_strips()),battle_renderer.gpu_texture_passes(),compose_ms,background_submit_ms,unsigned(battle_renderer.gpu_region_samples()));
         }
 #endif
     }

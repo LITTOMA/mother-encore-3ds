@@ -55,11 +55,13 @@ class RegionBackgroundKernel : public BackgroundKernel {
 
     uint32_t width_=0,height_=0,chunks_=0;
     // Mechanism/memory limits, independent of source content or game tuning.
-    static constexpr uint32_t chunk_size=32;
+    static constexpr uint32_t chunk_size=64;
     static constexpr uint32_t maximum_source_pixels=65536,maximum_components=4096;
 public:
     enum class PreparationStatus { Inactive,Ready,Unsupported,ResourceLimit,AllocationFailure };
-    struct RegionStats {uint64_t samples=0,skipped=0;};
+    struct RegionStats {uint64_t samples=0,skipped=0,trig_calls=0;};
+    struct IndexSpan {uint16_t x=0,y=0,width=0;uint8_t index[2]{};};
+    static_assert(sizeof(IndexSpan)==8,"Source-index span ABI");
 private:
     PreparationStatus preparation_status_=PreparationStatus::Inactive;
     mutable RegionStats stats_{};
@@ -143,12 +145,12 @@ private:
         return fraction>padding&&1-fraction>padding;
     }
     template<bool Oscillate>
-    __attribute__((always_inline)) static inline Sample sample(const SeparableFrame& f,size_t i){
+    __attribute__((always_inline)) static inline Sample sample(const SeparableFrame& f,size_t i,RegionStats& stats){
         const auto& uv=f.coordinates[i];float u=uv.x,v=uv.y,fx,fy;uint32_t x,y;
         if constexpr(Oscillate){
             u+=f.amplitude*(uv.cos_x*f.cosine-uv.sin_x*f.sine);u+=f.move_x;
             if(!guarded_fraction(u,f.error_x,f.float_width,x,fx)){
-                u=uv.x;u+=f.amplitude*std::cos(f.frequency*uv.y+f.phase);u+=f.move_x;
+                u=uv.x;u+=f.amplitude*std::cos(f.frequency*uv.y+f.phase);u+=f.move_x;++stats.trig_calls;
                 const auto scaled=local_scaled(u,f.float_width);x=std::min(uint32_t(scaled),f.width-1);fx=scaled-float(x);
             }
             const auto& c=f.compression_trig[i];
@@ -159,36 +161,54 @@ private:
         }
         v+=f.move_y;
         if(!guarded_fraction(v,f.error_y,f.float_height,y,fy)){
-            v=uv.y;v+=f.compression_amplitude*std::cos(f.compression_frequency*uv.y+f.compression_phase);v+=f.move_y;
+            v=uv.y;v+=f.compression_amplitude*std::cos(f.compression_frequency*uv.y+f.compression_phase);v+=f.move_y;++stats.trig_calls;
             const auto scaled=local_scaled(v,f.float_height);y=std::min(uint32_t(scaled),f.height-1);fy=scaled-float(y);
         }
         return {y*f.width+x,x,y,fx,fy};
     }
-    template<bool Oscillate,bool EmitSpans=false>
-    void compose_row(const SeparableFrame& input,size_t n,uint32_t y,const Reciprocal* certificate=nullptr)const {
-        const SeparableFrame f=input;
-        if constexpr(EmitSpans)span_row_count_[n]=0;
-        auto* out=row_[n].get();const auto& p=layers_[n];
-        const uint32_t factor=row_factor_[n];const float inverse_factor=1.0f/factor;const auto* regions=regions_[n].get();
-        // This additional expression envelope bounds rounding of both endpoint
-        // identity evaluations. It is independent of skipped-pixel count.
+    struct FrameRowContext {
+        const SeparableFrame* frame;
+        const Region* regions;
+        const Slope* slopes;
+        uint32_t factor;
+        float inverse_factor,error,oscillation_scale,compression_scale;
+    };
+    FrameRowContext make_row_context(const SeparableFrame& f,size_t n)const {
+        const auto& p=layers_[n];const uint32_t factor=row_factor_[n];
+        const float inverse_factor=1.0f/factor;
+        // These expressions have the same f32 operation order as the former
+        // row-local computation. The envelope is independent of row/skips.
         const float eps=std::numeric_limits<float>::epsilon();
         const float error_u=2*f.error_x+32*eps*(p.maximum_x+std::abs(f.amplitude)+std::abs(f.move_x)+1);
         const float error_v=2*f.error_y+32*eps*(p.maximum_y+std::abs(f.compression_amplitude)+std::abs(f.move_y)+1);
         const float ex=outward(error_u*f.float_width+32*eps*f.float_width,true);
         const float ey=outward(error_v*(f.float_height*inverse_factor)+32*eps*f.float_height,true);
         const float error=outward(ex+ey+0.0001f,true);
+        return {&f,regions_[n].get(),slopes_[n].get(),factor,inverse_factor,error,
+            f.amplitude*f.float_width,f.compression_amplitude*(f.float_height*inverse_factor)};
+    }
+    template<bool Oscillate,bool EmitSpans=false>
+    void compose_row(const FrameRowContext& context,size_t n,uint32_t y,const Reciprocal* certificate=nullptr)const {
+        const SeparableFrame& f=*context.frame;
+        if constexpr(EmitSpans)span_row_count_[n]=0;
+        auto* out=row_[n].get();
+        const uint32_t factor=context.factor;const float inverse_factor=context.inverse_factor;
+        const auto* regions=context.regions;const float error=context.error;
+        const float eps=std::numeric_limits<float>::epsilon();
+        // Each count is bounded by width_: one actual sample plus skipped
+        // pixels advances the row. Commit the 64-bit totals once per row.
+        uint32_t samples=0,skipped=0;
         for(uint32_t c=0;c<chunks_;++c){
             Reciprocal rates;
             if(certificate)rates=certificate[size_t(y)*chunks_+c];
             else{
-            const auto& s=slopes_[n][size_t(y)*chunks_+c];
-            Range oscillation{};if constexpr(Oscillate)oscillation=scale(subtract(scale(s.oc,f.cosine),scale(s.os,f.sine)),f.amplitude*f.float_width);
-            const Range compression=scale(subtract(scale(s.cc,f.compression_cosine),scale(s.cs,f.compression_sine)),f.compression_amplitude*(f.float_height*inverse_factor));
+            const auto& s=context.slopes[size_t(y)*chunks_+c];
+            Range oscillation{};if constexpr(Oscillate)oscillation=scale(subtract(scale(s.oc,f.cosine),scale(s.os,f.sine)),context.oscillation_scale);
+            const Range compression=scale(subtract(scale(s.cc,f.compression_cosine),scale(s.cs,f.compression_sine)),context.compression_scale);
             const auto magnitude=[](Range r){return std::max(std::abs(r.lo),std::abs(r.hi));};
             const float derivative_error=outward(32*eps*(magnitude(s.u)+magnitude(s.v)+
-                std::abs(f.amplitude*f.float_width)*(magnitude(s.oc)+magnitude(s.os))+
-                std::abs(f.compression_amplitude*(f.float_height*inverse_factor))*(magnitude(s.cc)+magnitude(s.cs))+1),true);
+                std::abs(context.oscillation_scale)*(magnitude(s.oc)+magnitude(s.os))+
+                std::abs(context.compression_scale)*(magnitude(s.cc)+magnitude(s.cs))+1),true);
             const Range a=expand(add(add(s.u,oscillation),compression),derivative_error);
             const Range b=expand(subtract(add(s.v,oscillation),compression),derivative_error);
             rates=reciprocal(a,b);
@@ -196,7 +216,7 @@ private:
             const auto ra0=rates.a0,ra1=rates.a1,rb0=rates.b0,rb1=rates.b1;
             const uint32_t end=std::min(width_,(c+1)*chunk_size);
             for(uint32_t x=c*chunk_size;x<end;){
-                const auto point=sample<Oscillate>(f,size_t(y)*width_+x);const auto color=f.indices[point.texel];++stats_.samples;
+                const auto point=sample<Oscillate>(f,size_t(y)*width_+x,stats_);const auto color=f.indices[point.texel];++samples;
                 const uint32_t tx=point.x,ty=point.y;
                 const uint32_t effective_y=factor==2?ty>>1:ty/factor;
                 const uint32_t subrow=factor==2?ty&1:ty%factor;
@@ -219,19 +239,77 @@ private:
                     if(count&&runs[count-1].color==color)runs[count-1].end=run_end;
                     else runs[count++]={run_end,color};
                 }else std::fill_n(out+x,steps+1,color);
-                stats_.skipped+=steps;x+=steps+1;
+                skipped+=steps;x+=steps+1;
             }
         }
+        stats_.samples+=samples;stats_.skipped+=skipped;
     }
     template<bool Mapped> void compose_runs(const SeparableFrame (&f)[2],uint32_t* output)const {
         stats_={};const auto* colors=Mapped?mapped_extended_pair_colors_.data():extended_pair_colors_.data();
         const size_t stride=layers_[1].config.source.palette_size;
+        const FrameRowContext context[]={make_row_context(f[0],0),make_row_context(f[1],1)};
         for(uint32_t y=0;y<height_;++y){
-            compose_row<true>(f[0],0,y);compose_row<false>(f[1],1,y);
+            compose_row<true>(context[0],0,y);compose_row<false>(context[1],1,y);
             for(uint32_t x=0;x<width_;++x){const size_t i=size_t(y)*width_+x;const auto color=colors[size_t(row_[0][x])*stride+row_[1][x]];
                 if constexpr(Mapped)output[output_offsets_[i]]=color;else output[i]=color;
             }
         }
+    }
+    template<bool Indices,class Emit>bool generate_runs(float time,Emit&& emit)const{
+        stats_={};certificate_used_=false;
+        SeparableFrame f[2];
+        if(!std::isfinite(time)||!span_row_[0]||!span_row_[1]||!regions_ready_||
+            width_>UINT16_MAX||height_>UINT16_MAX||!separable_pair()||!prepare_separable_frame(time,f)||
+            !f[0].guarded||!f[1].guarded)return false;
+        [[maybe_unused]] const size_t stride=layers_[1].config.source.palette_size;
+        [[maybe_unused]] const auto* colors=extended_pair_colors_.data();
+        const Reciprocal* certificate[2]{};
+        if(certificates_[0]&&certificates_[1]){
+            const int a=trig_bucket(f[0].cosine,f[0].sine),b=trig_bucket(f[0].compression_cosine,f[0].compression_sine),c=trig_bucket(f[1].compression_cosine,f[1].compression_sine);
+            if(a>=0&&b>=0&&c>=0){const size_t cells=size_t(chunks_)*height_;certificate[0]=certificates_[0].get()+size_t(a*8+b)*cells;certificate[1]=certificates_[1].get()+size_t(c)*cells;certificate_used_=true;}
+        }
+        const FrameRowContext context[]={make_row_context(f[0],0),make_row_context(f[1],1)};
+        for(uint32_t y=0;y<height_;++y){
+            compose_row<true,true>(context[0],0,y,certificate[0]);compose_row<false,true>(context[1],1,y,certificate[1]);
+            uint32_t a=0,b=0,x=0,run_start=0,run_end=0,run_color=0;
+            uint8_t run_a=0,run_b=0;bool pending=false;
+            while(x<width_){
+                const auto& ra=span_row_[0][a];const auto& rb=span_row_[1][b];
+                const uint32_t end=std::min(ra.end,rb.end);
+                bool same=false;uint32_t color=0;
+                if constexpr(Indices){
+                    same=pending&&run_a==ra.color&&run_b==rb.color;
+                }else{
+                    color=colors[size_t(ra.color)*stride+rb.color];
+                    same=pending&&run_color==color;
+                }
+                if(!same){
+                    if(pending&&!emit(run_start,y,run_end-run_start,run_a,run_b,run_color)){
+                        stats_={};certificate_used_=false;return false;
+                    }
+                    run_start=x;run_a=ra.color;run_b=rb.color;run_color=color;pending=true;
+                }
+                run_end=end;
+                x=end;if(ra.end==end)++a;if(rb.end==end)++b;
+            }
+            if(pending&&!emit(run_start,y,run_end-run_start,run_a,run_b,run_color)){
+                stats_={};certificate_used_=false;return false;
+            }
+        }
+        return true;
+    }
+    template<bool Indices,class Span>bool generate_sparse(float time,Span* output,size_t capacity,size_t& count)const{
+        stats_={};count=0;certificate_used_=false;
+        if(!output||!capacity)return false;
+        const bool success=generate_runs<Indices>(time,[&](uint32_t x,uint32_t y,uint32_t width,uint8_t a,uint8_t b,uint32_t color){
+            if(count==capacity)return false;
+            auto& span=output[count++];span.x=uint16_t(x);span.y=uint16_t(y);span.width=uint16_t(width);
+            if constexpr(Indices){span.index[0]=a;span.index[1]=b;}
+            else span.color=color;
+            return true;
+        });
+        if(!success)count=0;
+        return success;
     }
 public:
     RegionBackgroundKernel()=default;
@@ -323,7 +401,7 @@ public:
     // region preparation is retained. CPU compose paths remain unchanged.
     bool prepare_spans(){
         for(auto& row:span_row_)row.reset();
-        if(!regions_ready_)return false;
+        if(!regions_ready_||width_>UINT16_MAX||height_>UINT16_MAX)return false;
         for(auto& row:span_row_){row.reset(new(std::nothrow) SpanRun[width_]);if(!row){for(auto& other:span_row_)other.reset();return false;}}
         return true;
     }
@@ -331,31 +409,21 @@ public:
     // caller must wait for its previous GPU use. Failure always sets count=0;
     // no partial batch may be submitted. There is no hidden raster fallback.
     template<class Span>bool generate_spans(float time,Span* output,size_t capacity,size_t& count)const{
-        stats_={};count=0;certificate_used_=false;
-        SeparableFrame f[2];
-        if(!std::isfinite(time)||!output||!capacity||!span_row_[0]||!span_row_[1]||!regions_ready_||
-           !separable_pair()||!prepare_separable_frame(time,f)||!f[0].guarded||!f[1].guarded)return false;
-        const size_t stride=layers_[1].config.source.palette_size;const auto* colors=extended_pair_colors_.data();
-        const Reciprocal* certificate[2]{};
-        if(certificates_[0]&&certificates_[1]){
-            const int a=trig_bucket(f[0].cosine,f[0].sine),b=trig_bucket(f[0].compression_cosine,f[0].compression_sine),c=trig_bucket(f[1].compression_cosine,f[1].compression_sine);
-            if(a>=0&&b>=0&&c>=0){const size_t cells=size_t(chunks_)*height_;certificate[0]=certificates_[0].get()+size_t(a*8+b)*cells;certificate[1]=certificates_[1].get()+size_t(c)*cells;certificate_used_=true;}
-        }
-        for(uint32_t y=0;y<height_;++y){
-            compose_row<true,true>(f[0],0,y,certificate[0]);compose_row<false,true>(f[1],1,y,certificate[1]);
-            uint32_t a=0,b=0,x=0;
-            while(x<width_){
-                const auto& ra=span_row_[0][a];const auto& rb=span_row_[1][b];
-                const uint32_t end=std::min(ra.end,rb.end),color=colors[size_t(ra.color)*stride+rb.color];
-                if(count&&output[count-1].y==y&&output[count-1].color==color)output[count-1].width=uint16_t(end-output[count-1].x);
-                else{
-                    if(count==capacity){count=0;return false;}
-                    auto& span=output[count++];span.x=uint16_t(x);span.y=uint16_t(y);span.width=uint16_t(end-x);span.color=color;
-                }
-                x=end;if(ra.end==end)++a;if(rb.end==end)++b;
-            }
-        }
-        return true;
+        return generate_sparse<false>(time,output,capacity,count);
+    }
+    // Exact source identities for a palette-texture GPU consumer. Reuses the
+    // same rotated-region proof, optional certificate and original boundary
+    // samples as compose; no CPU color raster or baked frame palette is made.
+    bool generate_index_spans(float time,IndexSpan* output,size_t capacity,size_t& count)const{
+        return generate_sparse<true>(time,output,capacity,count);
+    }
+    // Zero-copy source-index runs. emit(x,y,width,index0,index1) returns false
+    // on consumer failure. The consumer must then discard its complete batch;
+    // this method clears proof statistics and never emits any CPU frame color.
+    template<class Emit>bool generate_index_runs(float time,Emit&& emit)const{
+        return generate_runs<true>(time,[&](uint32_t x,uint32_t y,uint32_t width,uint8_t a,uint8_t b,uint32_t){
+            return emit(x,y,width,a,b);
+        });
     }
     bool compose(float time,uint32_t clear,uint32_t* output)const {
         stats_={};

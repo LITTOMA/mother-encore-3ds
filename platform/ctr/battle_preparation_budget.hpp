@@ -56,7 +56,6 @@ inline bool estimate(upstream::BattleView view,upstream::RoundView round,unsigne
 #endif
 #if defined(ENCORE_EXPERIMENTAL_GPU_BACKGROUND) && defined(ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS)
     const bool mapped_texture=CertifiedTextureBackgroundKernel::supported_shape(layers,width,height);
-    if(mapped_texture)certificates=false; // This table is not retained by the texture path.
     cpu+=CertifiedTextureBackgroundKernel::preparation_upper_bound(layers,width,height);
 #endif
     cpu+=RegionBackgroundKernel::preparation_upper_bound(layers,width,height,certificates);

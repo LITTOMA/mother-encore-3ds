@@ -224,7 +224,7 @@ public:
     const CertifiedTextureBackgroundKernel::Stats& stats()const{return stats_;}
     size_t linear_bytes()const{size_t bytes=strips_?maximum_strips*sizeof(Strip):0;for(size_t i=0;i<6;++i)if(texture_ready_[i])bytes+=textures_[i].size;return bytes;}
     size_t tracked_bytes()const{return linear_bytes();}
-    bool prepare_frame(const CertifiedTextureBackgroundKernel& kernel,const BackgroundKernel& background,float time){
+    bool prepare_frame(const CertifiedTextureBackgroundKernel& kernel,const RegionBackgroundKernel& background,float time){
         count_=0;stats_={};return ready()&&kernel.generate(background,time,strips_,maximum_strips,count_,stats_);
     }
     bool create(const std::vector<BackgroundKernel::Layer>& layers,uint32_t width,uint32_t height){

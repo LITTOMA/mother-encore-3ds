@@ -1107,8 +1107,8 @@ int main(int argc,char** argv){
        !loading.step([&]{return load_ui_font_only(error);},"ui-font-textures")||
        !loading.step([&]{return round_data.load_file(resource_path(ResourceRole::Round).c_str(),error);},"round-metadata")||
        !loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);},"house-metadata")||
-       !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
+       !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
        !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();

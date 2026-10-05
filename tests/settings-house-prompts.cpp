@@ -26,13 +26,18 @@ int main(int argc,char**argv){
  // A collidable unsupported candidate occludes an otherwise supported one.
  o.targets[0]={d.targets[0].position,true,true,false};o.targets[1]={d.targets[0].position,true,true,true};o.player={d.targets[0].center.x-d.ray_origin.x,d.targets[0].center.y+d.targets[0].extents.y+d.ray_length/2-d.ray_origin.y};o.direction={0,-1};check(evaluate_house_button_prompt(d,0,o,pose,error)&&!pose.visible,"no fallback through unsupported nearest collider");
  o.direction={0,0};check(!evaluate_house_button_prompt(d,0,o,pose,error)&&!pose.visible,"zero direction fails closed");o.direction={0,-1};check(!evaluate_house_button_prompt(d,99,o,pose,error),"unknown choice rejected");o.targets.pop_back();check(!evaluate_house_button_prompt(d,0,o,pose,error),"incomplete observation rejected");
- std::vector<uint8_t>bytes;check(encore::read_file(argv[1],bytes,1024*1024,error),"pack bytes available");for(auto offset:{0u,8u,12u,16u,20u}){auto bad=bytes;bad[offset]^=1;check(!d.load(bad.data(),bad.size(),error)&&d.valid(),"bad header/CRC fails without destroying checked data");}check(!d.load(bytes.data(),bytes.size()-1,error),"truncated pack rejected");
+ std::vector<uint8_t>bytes;check(encore::read_file(argv[1],bytes,1024*1024,error),"pack bytes available");
+ check(integer(bytes,8)==2&&integer(bytes,20)==2,"inspection producer declares schema and capability 2 in its actual binary header");
+ bool has_inspection=false;for(const auto&t:d.targets)has_inspection|=t.kind==HousePromptKind::Inspection;
+ check(has_inspection,"capability 2 successfully loaded actual inspection targets");
+ HouseButtonPromptData checked_v2;check(checked_v2.load(bytes.data(),bytes.size(),error),"version 2 inspection payload loads in production parser");
+ for(auto offset:{0u,8u,12u,16u,20u}){auto bad=bytes;bad[offset]^=1;check(!d.load(bad.data(),bad.size(),error)&&d.valid(),"bad header/CRC fails without destroying checked data");}check(!d.load(bytes.data(),bytes.size()-1,error),"truncated pack rejected");
  // Malformed payloads retain a valid CRC, so they exercise semantic validation.
  const size_t resource_count=44+integer(bytes,40)*4;size_t at=resource_count+4;const size_t path=at+4,width=path+integer(bytes,at);for(uint32_t i=0;i<integer(bytes,resource_count);++i)at+=4+integer(bytes,at)+8;const size_t rectangle=at;at+=20;const size_t preview_count=at,preview=at+4;at+=4+integer(bytes,preview_count)*24;const size_t target=at+4,category=target+8,extents=target+16+integer(bytes,target+12)+16;
  const auto rejected=[&](size_t offset,uint32_t value){auto bad=bytes;put(bad,offset,value);seal(bad);check(!d.load(bad.data(),bad.size(),error)&&d.valid(),"valid-CRC malformed payload rejected atomically");};
  rejected(32,0);rejected(24,0x7fc00000u);rejected(36,0);rejected(44,4);rejected(width,0);rejected(rectangle+8,0);rejected(preview,UINT32_MAX);rejected(preview+4,3);rejected(target,5);rejected(category,1);rejected(extents,0);rejected(target+4,UINT32_MAX);
  auto bad_path=bytes;bad_path[path]='/';seal(bad_path);check(!d.load(bad_path.data(),bad_path.size(),error),"absolute resource path rejected");
- auto legacy_header=bytes;put(legacy_header,8,1);put(legacy_header,20,1);check(!d.load(legacy_header.data(),legacy_header.size(),error),"inspection kind requires explicitly admitted prompt capability 2");
+ auto legacy_header=bytes;put(legacy_header,8,1);put(legacy_header,20,1);check(!d.load(legacy_header.data(),legacy_header.size(),error)&&d.valid()&&d.targets.size()==checked_v2.targets.size(),"inspection kind requires explicitly admitted prompt capability 2; rejected version 1 preserves checked data");
  check(!d.validate_bindings(house.view(),phone.view(),error),"inspection prompts cannot borrow an absent inspection owner");
  check(!d.validate_bindings(HouseView{},phone.view(),error),"unvalidated cross-pack owner rejected");
  std::cout<<"settings-house-prompts: "<<checks<<" checks passed; "<<d.targets.size()<<" original house targets; static prompt scope\n";

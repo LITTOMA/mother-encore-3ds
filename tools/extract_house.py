@@ -73,7 +73,11 @@ def build(root=ROOT):
  from tools.link_house_inspections import append_house as append_inspections
  from tools.link_drawer_content import append_house as append_drawer
  from tools.storage_dialogue import append_house as append_storage
- return append_storage(ex,append_drawer(ex,append_inspections(ex,append_family_house(ex,append_house(ex,link_house(ex,ir,ir_room),ir_room),ir_room),ir_room),ir_room),ir_room),ir_room)
+ linked=append_house(ex,link_house(ex,ir,ir_room),ir_room)
+ linked=append_family_house(ex,linked,ir_room)
+ linked=append_inspections(ex,linked,ir_room)
+ linked=append_drawer(ex,linked,ir_room)
+ return append_storage(ex,linked,ir_room)
 def extend_source(ex,house,ir_room,ns,ng,segments,carol,overrides,root_name,ie,area,shape_node,view,radius,ret,b):
  def body(path):
   found=[b['body_id']for b in ir_room['sections']['BodyRule']if ir_room['strings'][b['source_path_string']]==path]

@@ -312,10 +312,12 @@ struct LoadingScope {
         // First-use PCM checking can happen while title/naming music is active.
         // Feed existing queues without advancing game clocks or fade timelines.
         if(audio_player.available()){std::string audio_error;if(!audio_player.pump_streams(audio_error))audio_status=audio_error;}
-        // During the original Introduction, first-use sound checks and the
-        // house handoff must retain the last presented story frame. Nested
-        // loading scopes still validate resources and service NDSP queues.
-        if(introduction.active())return;
+        // Keep first-use reads out of the playing story and its door fades.
+        // At the final HouseReady boundary the story visuals are retired, but
+        // Introduction stays active until the House reveal completes. Permit
+        // loading frames only while that destination is being prepared; once
+        // committed, preserve the reveal again. Do not advance game clocks.
+        if(introduction.active()&&(!introduction.house_ready()||introduction_house_committed))return;
         if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))return;
         C2D_TargetClear(loading_top,C2D_Color32(0,0,0,255));C2D_SceneBegin(loading_top);
         C2D_DrawRectSolid(view_x(),view_y(),0,float(view_width),float(view_height),loading_indicator.background_color());

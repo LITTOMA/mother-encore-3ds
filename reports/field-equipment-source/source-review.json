@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "35b4519e91ec97ff0b6a4e70bfcfd119e8cad2a1037e6bb50c35179c2bb35b12",
+  "ir_sha256": "71c5833c1fbd5069648b7f46b8b65f6b4277dc51fd2887ddd0ab61e4f2c4b586",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
@@ -84,6 +84,7 @@
   },
   "scope": "Original Pause -> Equip for singleton Ninten and admitted BaseballCap; other known commands disabled; current UID and seven derived stats committed transactionally; no battle item-use or broader party capability",
   "semantics": [
+    "Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets",
     "Pause six commands in original row-major order; only Equip admitted; source cancel/select closes Pause; Equip cancel returns Pause",
     "Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty",
     "Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost",

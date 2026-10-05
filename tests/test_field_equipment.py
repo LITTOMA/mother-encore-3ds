@@ -14,6 +14,10 @@ class FieldEquipmentFormat(unittest.TestCase):
     def rejects(self,section,row,column,value):
         t=copy.deepcopy(self.tables);t[section][row][column]=value
         with self.assertRaises((ValueError,TypeError,struct.error,OverflowError)):pack.encode(t)
+    def test_owner_id_contract(self):
+        row=pack.PARAMETERS.index('OwnerId')
+        self.assertEqual(self.tables['Parameters'][row][1],self.ir['parameters']['OwnerId'])
+        for value in (0,1.5,8193):self.rejects('Parameters',row,1,value)
     def test_source_and_actual_pack(self):
         self.assertEqual(pack.build(),self.ir)
         decoded=pack.parse_pack(self.blob)
@@ -31,8 +35,8 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.assertEqual(self.ir['equipment'][0]['boosts'],[0,0,0,5,0,0,0])
         self.rejects('Equipment',0,2,4)
     def test_unknown_versions_and_capabilities(self):
-        for offset in (8,20,24):
-            with self.subTest(offset=offset),self.assertRaises(ValueError):pack.parse_pack(self.changed(offset,struct.pack('<I',2)))
+        for offset,value in ((8,1),(8,3),(20,2),(24,2)):
+            with self.subTest(offset=offset,value=value),self.assertRaises(ValueError):pack.parse_pack(self.changed(offset,struct.pack('<I',value)))
     def test_corrupt_pin_reserved_crc_and_truncation(self):
         for blob in (self.changed(32,b'\x01'),self.changed(52,b'\x01'),self.blob[:-1],self.blob+b'\0'):
             with self.assertRaises(ValueError):pack.parse_pack(blob)

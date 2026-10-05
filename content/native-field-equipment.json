@@ -84,7 +84,8 @@
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
   },
   "dependencies": {
-    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4"
+    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
+    "content/items-presentation-bindings.json": "3d532b1934f5c1c8cf08bf7ccc5199c65b801b8e608a4aa7d2f9b5bb2f5bca59"
   },
   "parameters": {
     "ReferenceWidth": 320,
@@ -118,7 +119,8 @@
     "OpenMask": 8,
     "ConfirmMask": 1,
     "CancelMask": 2,
-    "ScopeMask": 512
+    "ScopeMask": 512,
+    "OwnerId": 1
   },
   "bindings": {
     "PauseTitle": {

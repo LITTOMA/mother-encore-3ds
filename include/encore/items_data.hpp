@@ -18,6 +18,7 @@ enum class ItemParameter:uint32_t {SourceViewport=1,PlatformViewport,GridShape,L
 enum class ItemClipRole:uint32_t {Open=1,Close,CursorIdle,Count};
 enum class ItemProperty:uint32_t {Position=1,PositionX,PositionY,Scale,Alpha,Visible,Rect,Frame,Offset};
 enum class ItemSoundEvent:uint32_t {Open=1,Move,Close,Disabled,Confirm,Count};
+// owner is a stable numeric adapter identity, not an offset into Strings.
 struct ItemMetadata {uint32_t capacity=0,owner=0,flags=0,reserved=0;};
 struct ItemDefinition {
  uint32_t id=0,source=0,name=0,description=0,icon=item_no_index,equipment_slot=item_no_index;

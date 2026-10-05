@@ -78,7 +78,7 @@ int main(int argc,char** argv){
  check(!catalog.load_file((fixture_root/"missing.enccatalog").string().c_str(),error),"missing catalog rejected");
  check(catalog.load(blob.data(),blob.size(),error),error);check(catalog.valid(),"loaded catalog valid");
  check(catalog.verify_files(prefix(source_root).c_str(),error),error);
- check(catalog.path(ResourceRole(0)).empty()&&catalog.path(ResourceRole(26)).empty(),"unknown resource roles have no fallback");
+ check(catalog.path(ResourceRole(0)).empty()&&catalog.path(ResourceRole(27)).empty(),"unknown resource roles have no fallback");
  check(catalog.companion_path("unknown.encbattle").empty(),"unknown encounters have no fallback");
  check(catalog.companion_path(catalog.path(ResourceRole::Battle))==catalog.path(ResourceRole::Round),"reviewed root encounter companion is externally bound");
  const auto original_round=catalog.path(ResourceRole::Round);

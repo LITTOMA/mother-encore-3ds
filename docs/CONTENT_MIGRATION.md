@@ -70,3 +70,9 @@ Continue、Save 和按钮提示分别使用 `continue-presentation-bindings.json
 加载上限、schema 编号、stride、sentinel、RNG 算法、插值数学、物理帧契约和平台预算属于机制或校验边界。M0 fixture 与上述实际流程分开。绑定迁移不代表完成 Podunk、完整战斗或尚未映射的音频播放；Introduction 的设备显示与声音仍需实测。
 
 电脑上的共享核心正常 / 负向自动测试和同一执行文件的资源变化检查证明核心消费者行为；真实 3DSX / CIA 构建和嵌入资源检查证明交叉构建与打包。它们不能代替模拟器、Old / New 3DS 的画面、声音、输入和存档验收。对应提交的实际检查结果见 PR 与 Actions，原始日志保留在仓库外的私有构建目录。
+
+## 自由行走装备菜单
+
+`native-field-equipment.json` / `field-equipment-assets.json` 从固定上游 Pause / Equip 场景、脚本、动画、翻译、库存与角色属性提取完整局部来源。`field_equipment.py` 普通编译重新对照来源与 IR，编译独立 `data/opening.encfield`（ENCFIE01，格式 / 能力 1），纹理归入 `graphics/ui/equipment`。`field-audio-binding.json` 补入两个原版 Pause 音效，其他菜单音效复用受检音频 bank 的稳定身份；PCM 位于 `sound/effects`。JSON、转换配方及收据均不进入 RomFS。
+
+共享消费者执行六项 Pause 命令的导航、已开放 Equip 的四槽、适用库存与 None、来源七项属性预览及确认。3DS 平台以独立候选库存与既有 Session 派生机制校验后提交，UID、剂量、物品数量、存档编码与随机流保持原有身份。其他命令、队员、装备、物品使用仍受限；具体范围见 [FIELD_EQUIPMENT](FIELD_EQUIPMENT.md)。

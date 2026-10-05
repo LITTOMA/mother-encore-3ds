@@ -84,9 +84,9 @@
   },
   "dependencies": {
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-opening.json": "af7ebfc0f971f6984427158edb107a6b2c8f44533d990d5ad534b0e9a7690f8d",
+    "content/native-opening.json": "91e4a791688eab92428138db6bb3a2dde8b9ed768c92019288c92bafb906b2a3",
     "content/doll-entry.json": "c8fbae78356ac1e49121e7facbebe839aed2a8282f1aa93a40afcec7b0fe88fd",
-    "content/native-round.json": "0fb5584d1c8877a78f757b9636a819eff3bd9a92f792199f604b8361c1e56e51"
+    "content/native-round.json": "fbf1c23ae75dd8a3d9adb104d7badc3165382325aa148ccf92be17d616a6df02"
   },
   "scope": "Doll actions, retained actor, source boss callbacks, live carried session with conditional level2 growth and field Telepathy, typed post-win boundary and pre-return owned area music cleanup",
   "limits": "Host semantic verification only; audited boss audio tracks not yet mapped to audio backend; field Telepathy learned state retained, field menu unavailable"

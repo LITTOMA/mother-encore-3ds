@@ -23,7 +23,7 @@
     "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666"
   },
   "dependencies": {
-    "content/native-house.json": "fc8d17db2106f9e8db389db1994249057ca42b0623a6be2d50183b47d773b95c",
+    "content/native-house.json": "480e603d34f9a78519c8d1de4b4f761ea0a19a8ff1b41c673db9f21450d1cdd1",
     "content/phone-stage/presentation.json": "baf161acb30d6e9947c3aea13703c03ef169072c150244e6c528b0ffb32f84ca",
     "content/native-house-inspections.json": "13c4b1b6496b10855bdf47918e1cdb42c64a6f50785624da97902752d277639c"
   },

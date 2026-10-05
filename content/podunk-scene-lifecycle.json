@@ -19227,7 +19227,7 @@
       "node": "Objects/NPCS/interact_dialog",
       "name": "interact_dialog",
       "ready": 7749,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19247,7 +19247,7 @@
       "node": "Objects/NPCS/interact_dialog3",
       "name": "interact_dialog3",
       "ready": 7756,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19267,7 +19267,7 @@
       "node": "Objects/NPCS/interact_dialog18",
       "name": "interact_dialog18",
       "ready": 7763,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19287,7 +19287,7 @@
       "node": "Objects/NPCS/interact_dialog24",
       "name": "interact_dialog24",
       "ready": 7770,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19307,7 +19307,7 @@
       "node": "Objects/NPCS/interact_dialog25",
       "name": "interact_dialog25",
       "ready": 7777,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19327,7 +19327,7 @@
       "node": "Objects/NPCS/interact_dialog30",
       "name": "interact_dialog30",
       "ready": 7784,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19347,7 +19347,7 @@
       "node": "Objects/NPCS/interact_dialog26",
       "name": "interact_dialog26",
       "ready": 7791,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19367,7 +19367,7 @@
       "node": "Objects/NPCS/interact_dialog29",
       "name": "interact_dialog29",
       "ready": 7798,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19387,7 +19387,7 @@
       "node": "Objects/NPCS/interact_dialog27",
       "name": "interact_dialog27",
       "ready": 7805,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19407,7 +19407,7 @@
       "node": "Objects/NPCS/interact_dialog28",
       "name": "interact_dialog28",
       "ready": 7812,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19427,7 +19427,7 @@
       "node": "Objects/NPCS/interact_dialog15",
       "name": "interact_dialog15",
       "ready": 7819,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19447,7 +19447,7 @@
       "node": "Objects/NPCS/interact_dialog16",
       "name": "interact_dialog16",
       "ready": 7826,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19467,7 +19467,7 @@
       "node": "Objects/NPCS/interact_dialog5",
       "name": "interact_dialog5",
       "ready": 7833,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19487,7 +19487,7 @@
       "node": "Objects/NPCS/interact_dialog7",
       "name": "interact_dialog7",
       "ready": 7840,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19507,7 +19507,7 @@
       "node": "Objects/NPCS/interact_dialog6",
       "name": "interact_dialog6",
       "ready": 7847,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19527,7 +19527,7 @@
       "node": "Objects/NPCS/interact_dialog4",
       "name": "interact_dialog4",
       "ready": 7854,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19547,7 +19547,7 @@
       "node": "Objects/NPCS/interact_dialog31",
       "name": "interact_dialog31",
       "ready": 7861,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19567,7 +19567,7 @@
       "node": "Objects/NPCS/interact_dialog2",
       "name": "interact_dialog2",
       "ready": 7868,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19587,7 +19587,7 @@
       "node": "Objects/NPCS/interact_dialog20",
       "name": "interact_dialog20",
       "ready": 7875,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19607,7 +19607,7 @@
       "node": "Objects/NPCS/interact_dialog22",
       "name": "interact_dialog22",
       "ready": 7882,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19627,7 +19627,7 @@
       "node": "Objects/NPCS/interact_dialog21",
       "name": "interact_dialog21",
       "ready": 7889,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19647,7 +19647,7 @@
       "node": "Objects/NPCS/interact_dialog23",
       "name": "interact_dialog23",
       "ready": 7896,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19667,7 +19667,7 @@
       "node": "Objects/NPCS/interact_dialog19",
       "name": "interact_dialog19",
       "ready": 7903,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19687,7 +19687,7 @@
       "node": "Objects/NPCS/interact_dialog17",
       "name": "interact_dialog17",
       "ready": 7910,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19707,7 +19707,7 @@
       "node": "Objects/NPCS/interact_dialog8",
       "name": "interact_dialog8",
       "ready": 7917,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19727,7 +19727,7 @@
       "node": "Objects/NPCS/interact_dialog9",
       "name": "interact_dialog9",
       "ready": 7924,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19747,7 +19747,7 @@
       "node": "Objects/NPCS/interact_dialog10",
       "name": "interact_dialog10",
       "ready": 7931,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19767,7 +19767,7 @@
       "node": "Objects/NPCS/interact_dialog11",
       "name": "interact_dialog11",
       "ready": 7938,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19787,7 +19787,7 @@
       "node": "Objects/NPCS/interact_dialog12",
       "name": "interact_dialog12",
       "ready": 7945,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19807,7 +19807,7 @@
       "node": "Objects/NPCS/interact_dialog13",
       "name": "interact_dialog13",
       "ready": 7952,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -19827,7 +19827,7 @@
       "node": "Objects/NPCS/interact_dialog14",
       "name": "interact_dialog14",
       "ready": 7959,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -20697,7 +20697,7 @@
       "node": "Objects/ATM/interact_dialog",
       "name": "interact_dialog",
       "ready": 8327,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
@@ -20877,7 +20877,7 @@
       "node": "Objects/VendingMachine/interact_dialog",
       "name": "interact_dialog",
       "ready": 8406,
-      "role": 0,
+      "role": 18,
       "profile": 4294967295,
       "script": "Scripts/Main/Interact Dialog.gd",
       "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"

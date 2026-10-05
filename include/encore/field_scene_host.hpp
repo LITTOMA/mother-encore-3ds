@@ -12,6 +12,7 @@
 #include "encore/field_door.hpp"
 #include "encore/field_prompts.hpp"
 #include "encore/field_dead_bush.hpp"
+#include "encore/field_interact_dialog.hpp"
 #include <functional>
 #include <unordered_map>
 
@@ -51,6 +52,7 @@ struct FieldSceneConsumers {
  const FieldDoorData*door_data=nullptr;FieldDoorRuntime*door=nullptr;
  const FieldPromptData*prompt_data=nullptr;FieldPromptRuntime*prompt=nullptr;
  const FieldBushData*bush_data=nullptr;FieldBushRuntime*bush=nullptr;
+ const FieldInteractData*interact_data=nullptr;FieldInteractRuntime*interact=nullptr;
  const FieldMapView*map=nullptr;const FieldGeometryView*geometry_data=nullptr;FieldGeometrySpace*geometry=nullptr;
 };
 struct FieldSceneScriptAdmission {uint32_t id=0,family=0,capability=0;std::array<uint8_t,32>source_sha{};};

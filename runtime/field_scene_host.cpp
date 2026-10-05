@@ -108,6 +108,20 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
     return false;
   }
 
+  if ((c.interact_data || c.interact) &&
+      (!c.interact || !same_pack(d, c.interact_data) || !c.prompt_data ||
+       !c.prompt)) {
+    e = "Field SceneHost InteractDialog source/prompt consumer incomplete";
+    return false;
+  }
+  if (c.interact_data) {
+    std::array<uint8_t, 32> h{};
+    if (!c.interact_data->source_hash(d.source_scene(), h) ||
+        h != d.identity().source_sha256) {
+      e = "Field SceneHost InteractDialog scene source differs";
+      return false;
+    }
+  }
   if (c.npc_data && c.sprite_data &&
       !field_sprite_npc_binding(*c.sprite_data, *c.npc_data, e))
     return false;
@@ -214,6 +228,34 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
         }
       }
     }
+  if (c.interact_data) {
+    std::array<uint8_t, 32> expected{};
+    if (!c.interact_data->source_hash(c.interact_data->script(), expected)) {
+      e = "Field SceneHost InteractDialog script receipt absent";
+      return false;
+    }
+    for (const auto &n : c.interact_data->records()) {
+      if (!match(n.id, n.ready, n.node, FieldSceneRole::InteractDialog)) {
+        e = "Field SceneHost InteractDialog Ready differs";
+        return false;
+      }
+      bool proof = false;
+      for (uint32_t i = 0; i < d.ready_count(); ++i) {
+        auto row = d.ready(i);
+        if (row.id == n.id) {
+          proof = d.string(row.script) == c.interact_data->script() &&
+                  row.sha == expected;
+          break;
+        }
+      }
+      auto child = c.prompt_data->record(n.prompt);
+      if (!proof || !child || child->parent_id != n.id ||
+          child->ready_ordinal >= n.ready) {
+        e = "Field SceneHost InteractDialog script/child prompt source differs";
+        return false;
+      }
+    }
+  }
   if (c.npc_data)
     for (const auto &n : c.npc_data->npcs())
       if (!match(n.id, n.ready_ordinal, n.node, FieldSceneRole::Npc)) {
@@ -580,6 +622,15 @@ bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
     return false;
   };
   switch (n.role) {
+  case FieldSceneRole::InteractDialog:
+    if (!consumers_.interact)
+      return unavailable(
+          "InteractDialog actual programme/flag/prompt host missing");
+    if (!consumers_.interact->ready(n.id)) {
+      e = consumers_.interact->error();
+      return false;
+    }
+    break;
   case FieldSceneRole::DeadBush:
     if (!consumers_.bush)
       return unavailable(

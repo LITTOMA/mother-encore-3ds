@@ -17,6 +17,8 @@ add_library(encore_core
     runtime/field_psi.cpp
     runtime/field_psi_data.cpp
     runtime/field_psi_telepathy.cpp
+    runtime/field_interact_dialog.cpp
+    runtime/field_interact_dialog_data.cpp
     runtime/field_dead_bush.cpp
     runtime/field_dead_bush_data.cpp
     runtime/field_door.cpp

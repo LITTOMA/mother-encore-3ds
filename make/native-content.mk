@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -30,6 +30,11 @@ drawer: house
 storage: items
 item-details: items
 field-equipment: items item-details
+field-lifecycle: field-interact
+field-interact:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_interact_dialog.py compile
+field-lifecycle:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_scene_host.py compile
 field-psi: items
 item-use: items
 session: drawer items storage item-use basement

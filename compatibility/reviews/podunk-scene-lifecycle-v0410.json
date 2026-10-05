@@ -3,7 +3,7 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_admitted": false,
-  "ir_sha256": "0fb761f7821b5aef2fad014fef732408615f12ce3af216f230505d94a0af9adb",
+  "ir_sha256": "08adb9fe7a29f252809565465f761629fc9e10b1d38ba36d683f914f324274cc",
   "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
   "capability": "complete source script roster; FlagLandmark, FlaggableObject base methods, AreaRoom, DebugStart lifecycle only; all 71 Emotes typed onready object bindings",
   "source_classes": [
@@ -47,7 +47,8 @@
   "typed_bridges_added": [
     "14 Door onready and actual body-entered signal lifecycle",
     "146 ButtonPrompt checked signal/animation Ready bridge",
-    "13 DeadBush actual onready, VisibilityNotifier, source animation, prompt and deferred Roots callbacks"
+    "13 DeadBush actual onready, VisibilityNotifier, source animation, prompt and deferred Roots callbacks",
+    "33 InteractDialog source Ready/flags/prompt/dialogue/item/thought consumers"
   ],
   "dead_bush_review": {
     "ir_sha256": "ff4fb4f04eacb8b2e73dede649a84feb149b03f739d7874e76ac7964fc0a5e1e",
@@ -66,6 +67,20 @@
       "Complete town activation still requires all other pending source Ready",
       "CutsceneArea7 typed deferred receiver must actually implement check_start before call is admitted",
       "Dynamic Roots ownership and parent Canvas transform must be real Host sprite lifecycle, not fake static world coordinates"
+    ]
+  },
+  "interact_dialog_review": {
+    "ir_sha256": "85e9480a3c6dd43d56d66c24f241921f00eddd00e0f0a88635233dbc9584e6e2",
+    "semantics": [
+      "Complete 33 source instances with inner-to-outer overrides and exact postorder Ready",
+      "Ready checks appear/disappear, queues hidden objects for deletion then connects flags_updated synchronously",
+      "Dialogue starts from base; every matching nonempty normal flag overrides in source order; last match wins",
+      "Matching actual item_name opens dialogue; unmatched item has no effect",
+      "Telepathy turns on effect before opening exact thoughts; has_thoughts is source nonempty test",
+      "Button offset source setter forwarded to actual shared Prompt; player axis turn and no_problem flags remain descriptor data"
+    ],
+    "pending": [
+      "Actual programme/ray/prompt/flags/SceneTree endpoints must be admitted before scene activation"
     ]
   }
 }

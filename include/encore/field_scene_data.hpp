@@ -3,7 +3,7 @@
 #include <utility>
 
 namespace encore::upstream {
-enum class FieldSceneRole:uint32_t {Pending,Grass,Npc,EnemySpawner,Tint,CharacterSprite,SpriteFetcher,FlagLandmark,FlaggableDerived,AreaRoom,DebugStart,Emotes,DandelionSpawner,Door,ButtonPrompt,DeadBush};
+enum class FieldSceneRole:uint32_t {Pending,Grass,Npc,EnemySpawner,Tint,CharacterSprite,SpriteFetcher,FlagLandmark,FlaggableDerived,AreaRoom,DebugStart,Emotes,DandelionSpawner,Door,ButtonPrompt,DeadBush,InteractDialog=18};
 struct FieldSceneReady {uint32_t id=0,node=0,name=0,ordinal=0,profile=0,script=0;FieldSceneRole role{};std::array<uint8_t,32>sha{};};
 struct FieldSceneLandmark {uint32_t id=0,appear=0,disappear=0;bool delete_if_hidden=false,initial_visible=true;};
 struct FieldSceneFlaggable {uint32_t id=0,key=0,flags=0,leaf_script=0;};

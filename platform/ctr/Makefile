@@ -21,7 +21,8 @@ SOURCES += runtime/basement_progression.cpp runtime/basement_actor_assets.cpp ru
 SOURCES += runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/field_dandelion.cpp
 SOURCES += runtime/field_prompts_data.cpp runtime/field_prompts.cpp \
  runtime/field_psi.cpp runtime/field_psi_data.cpp runtime/field_psi_telepathy.cpp \
- runtime/field_dead_bush.cpp runtime/field_dead_bush_data.cpp runtime/field_door.cpp
+ runtime/field_interact_dialog.cpp runtime/field_interact_dialog_data.cpp
+SOURCES += runtime/field_dead_bush.cpp runtime/field_dead_bush_data.cpp runtime/field_door.cpp
 SOURCES += runtime/field_emotes_data.cpp runtime/field_emotes.cpp
 SOURCES += runtime/field_sprite_bridge_data.cpp runtime/field_sprite_bridge.cpp runtime/field_sprite_npc_binding.cpp
 SOURCES += runtime/field_data.cpp runtime/field_runtime.cpp runtime/field_map.cpp runtime/field_motion.cpp runtime/field_geometry.cpp runtime/field_geometry_space.cpp runtime/field_npc_data.cpp runtime/field_npc.cpp runtime/field_enemy_data.cpp runtime/field_enemy.cpp runtime/field_tint.cpp

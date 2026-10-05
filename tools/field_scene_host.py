@@ -14,7 +14,7 @@ IR=ROOT/'content/podunk-scene-lifecycle.json'
 REVIEW=ROOT/'compatibility/reviews/podunk-scene-lifecycle-v0410.json'
 OUTPUT=ROOT/'romfs/data/podunk.encfieldscene'
 FORMATS={1:'2I',2:'B',3:'6I32s',4:'4I',5:'4I',6:'6I6f',7:'2I',8:'2I',9:'I',10:'I2f',11:'I32s'}
-ROLES={'Scripts/misc/grass spawner.gd':1,'Scripts/Main/npc.gd':2,'Scripts/Main/Enemy Spawner.gd':3,'Scripts/misc/character_tint.gd':4,'Scripts/Main/character_sprite.gd':5,'Scripts/Main/SpriteDataFetcher.gd':6,'Scripts/Main/Flag Landmarks.gd':7,'Scripts/Main/Present.gd':8,'Scripts/Main/DroppedItem.gd':8,'Scripts/Main/RoomTypes/AreaRoom.gd':9,'Scripts/debug/DebugStartPos.gd':10,'Nodes/Ui/emotes.tscn::6':11,'Scripts/misc/dandelion spawner.gd':12,'Scripts/Main/Door.gd':13,'Scripts/UI/Button Prompt.gd':14,'Scripts/Main/Dead Bush.gd':15}
+ROLES={'Scripts/misc/grass spawner.gd':1,'Scripts/Main/npc.gd':2,'Scripts/Main/Enemy Spawner.gd':3,'Scripts/misc/character_tint.gd':4,'Scripts/Main/character_sprite.gd':5,'Scripts/Main/SpriteDataFetcher.gd':6,'Scripts/Main/Flag Landmarks.gd':7,'Scripts/Main/Present.gd':8,'Scripts/Main/DroppedItem.gd':8,'Scripts/Main/RoomTypes/AreaRoom.gd':9,'Scripts/debug/DebugStartPos.gd':10,'Nodes/Ui/emotes.tscn::6':11,'Scripts/misc/dandelion spawner.gd':12,'Scripts/Main/Door.gd':13,'Scripts/UI/Button Prompt.gd':14,'Scripts/Main/Dead Bush.gd':15,'Scripts/Main/Interact Dialog.gd':18}
 BASE='Scripts/Main/FlaggableObject.gd'
 def extract(native,source):
     d,s=read(native),read(source);grass=read(ROOT/'content/podunk-scene.json')
@@ -71,6 +71,11 @@ def extract(native,source):
     for r,n in zip(rows,bush['records']):require(r['id']==n['id']and r['node']==n['node']and r['ready']==n['ready_ordinal']and r['sha256']==bush['script_sha256'],'DeadBush actual lifecycle mapping changed')
     review['ir_sha256']=sha(IR);review['typed_bridges_added']=[v for v in review['typed_bridges_added']if 'DeadBush'not in v]+['13 DeadBush actual onready, VisibilityNotifier, source animation, prompt and deferred Roots callbacks']
     review['dead_bush_review']=dict(ir_sha256=sha(ROOT/'content/native-field-dead-bush.json'),source_sha256=bush['script_sha256'],semantics=bush['semantics'],unsupported=bush['unsupported'])
+    inter=read(ROOT/'content/native-field-interact-dialog.json');rr=[v for v in updated['roster']if v['role']==18]
+    require(len(rr)==len(inter['records'])==33,'InteractDialog lifecycle source coverage')
+    for row,n in zip(rr,inter['records']):require(row['id']==n['id']and row['node']==n['node']and row['ready']==n['ready']and row['sha256']==inter['sources'][inter['script']],'InteractDialog actual lifecycle mapping changed')
+    review['typed_bridges_added']=[v for v in review['typed_bridges_added']if 'InteractDialog'not in v]+['33 InteractDialog source Ready/flags/prompt/dialogue/item/thought consumers']
+    review['interact_dialog_review']=dict(ir_sha256=sha(ROOT/'content/native-field-interact-dialog.json'),semantics=inter['semantics'],pending=inter['pending'])
     write(REVIEW,review)
 
 def pack(ir):
@@ -95,7 +100,7 @@ def pack(ir):
     result=bytearray(128+24*len(formats));directory=[]
     for k,fmt in formats.items():
         data=b''.join(struct.pack('<'+fmt,*v) for v in rows[k]);directory.append((k,len(rows[k]),struct.calcsize('<'+fmt),len(result),len(data),0));result.extend(data)
-    struct.pack_into('<8s8I',result,0,b'ENCFSCN1',1,128,len(result),len(formats),zlib.crc32(result[128+24*len(formats):]),0x454e001c,1,ir['scene_id'])
+    struct.pack_into('<8s8I',result,0,b'ENCFSCN1',1,128,len(result),len(formats),zlib.crc32(result[128+24*len(formats):]),0x454e001c,2,ir['scene_id'])
     result[40:60]=bytes.fromhex(PIN);result[60:92]=bytes.fromhex(ir['source_sha256']);result[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',result,124,scene)
     for i,v in enumerate(directory):struct.pack_into('<6I',result,128+24*i,*v)
     return bytes(result)

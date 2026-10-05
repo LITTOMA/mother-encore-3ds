@@ -1,0 +1,11 @@
+# Podunk InteractDialog
+
+The source adapter preserves all 33 `Scripts/Main/Interact Dialog.gd` instances in the pinned Podunk scene, including true child-before-parent Ready order, complete inner-to-outer overrides, item-name selectors and all source programme files. JSON is authoring input only; `podunk-interact.encdialog` (ENCFDLG1 schema/capability/rules 1) is the runtime resource.
+
+Ready checks the original appear/disappear flags, sets actual visibility, queues hidden nodes for deletion, and then connects the synchronous flags-updated callback. The base dialogue is replaced by every matching nonempty normal flag in source order; the final match wins. Telepathy first admits the actual programme and then preserves the source effect-before-dialogue order. An unmatched item does nothing. Player axis-facing and `no_problem_thoughts` remain source descriptor values, consumed by the actual player host.
+
+Serialized ButtonPrompt offset setters run during instancing, before the child's Ready. They are not delayed into the parent's Ready. The renderer is the existing checked FieldPrompt GPU consumer; InteractDialog owns no independent art. No fake dialogue text, optional blanket script admission or placeholder visual is used.
+
+The complete scene lifecycle now requires a typed InteractDialog consumer (capability 2). Source scene, script SHA, stable node identity, Ready ordinal and earlier actual child Prompt are cross-checked before activation. All objects must be instantiated by the real scene backend before Ready dispatch. Missing programme/flag/prompt/SceneTree endpoints fail closed. The full exterior scene remains blocked by other pending source roles and is not staged as a partially working town.
+
+Actual source extraction and binary generation succeeded. The two new core translation units and the public checked palette-path API compiled with real devkitARM and `-Werror`. Negative parser and source-callback cases are retained in `manualtests/field_interact_dialog_tests.cpp` for explicit manual execution; they have not been run. No simulator or physical-console gameplay claim is made.

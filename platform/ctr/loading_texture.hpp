@@ -5,6 +5,7 @@
 #include <limits>
 #include <new>
 #include <array>
+#include <cmath>
 #include <string>
 #include <vector>
 #include "encore/load_progress.hpp"
@@ -93,6 +94,34 @@ inline bool loading_menu_flavor_configure(const std::vector<std::string>&paths,c
  using namespace loading_menu_flavor_detail;if(paths.empty()||palettes.empty()||base_index>=palettes.size()||threshold<=0||threshold>1||!loading_menu_flavor_detail::palettes.empty())return false;
  loading_menu_flavor_detail::paths=paths;loading_menu_flavor_detail::source=source;loading_menu_flavor_detail::palettes=palettes;loading_menu_flavor_detail::threshold=threshold;loading_menu_flavor_detail::base_index=base_index;selected=base_index;
  for(auto*sheet:sheets)if(!prepare(sheet))return false;
+ return true;
+}
+// Register additional source-reviewed UI skins before loading their textures.
+// The caller must bind these paths and the complete palette to its checked
+// binary resource. GPU-idle ownership remains with the scene loader.
+inline bool loading_menu_flavor_register_checked_paths(
+ const std::vector<std::string>& additions,
+ const std::array<uint32_t,8>& source,
+ const std::vector<std::array<uint32_t,8>>& palettes,
+ double threshold,uint32_t base_index) {
+ using namespace loading_menu_flavor_detail;
+ if(additions.empty()||loading_menu_flavor_detail::palettes.empty()||
+    source!=loading_menu_flavor_detail::source||
+    palettes!=loading_menu_flavor_detail::palettes||
+    !std::isfinite(threshold)||threshold!=loading_menu_flavor_detail::threshold||
+    base_index!=loading_menu_flavor_detail::base_index)return false;
+ auto next=paths;
+ for(size_t i=0;i<additions.size();++i){
+  const auto&path=additions[i];
+  if(path.compare(0,9,"graphics/")||path.size()<13||
+     path.compare(path.size()-4,4,".t3x")||
+     path.find("..")!=std::string::npos||path.find('\\')!=std::string::npos||
+     std::find(additions.begin(),additions.begin()+i,path)!=additions.begin()+i)return false;
+  if(std::find(next.begin(),next.end(),path)!=next.end())continue;
+  for(const auto*sheet:sheets)if(sheet&&sheet->source_path==path)return false;
+  next.push_back(path);
+ }
+ paths.swap(next);
  return true;
 }
 inline uint32_t loading_menu_flavor_selected(){return loading_menu_flavor_detail::selected;}

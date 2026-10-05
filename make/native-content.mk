@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale
+ continue loading naming settings prompts locale introduction
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -23,6 +23,8 @@ restore: room house
 items: items-check
 # Localization writes its legacy-lane IR; finish frozen migration admission first.
 locale: migration
+# Intro admission reads its audio bank and immutable scene/font inputs.
+introduction: audio
 
 audio:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/restore_audio.py
@@ -77,3 +79,5 @@ catalog:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/resource_catalog.py compile
 encounters:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/encounter_dependencies.py compile
+introduction:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/native_introduction.py compile

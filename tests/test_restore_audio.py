@@ -114,7 +114,7 @@ class RestoreAudioTests(unittest.TestCase):
     def test_output_symlink_escape_is_rejected(self):
         outside = Path(self.temporary.name) / 'outside'
         outside.mkdir()
-        (self.output / 'audio').symlink_to(outside, target_is_directory=True)
+        (self.output / 'sound').symlink_to(outside, target_is_directory=True)
         with self.assertRaisesRegex(audio_asset.AudioError, 'escaped root'):
             self.restore()
         self.assertEqual(list(outside.iterdir()), [])

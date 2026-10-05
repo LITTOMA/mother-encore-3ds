@@ -7,7 +7,7 @@ EXTENSIONS = {
     'fonts': {'.t3x', '.encfont'},
     'data': {
         '.encbars', '.encbattle', '.encchoices', '.enccontinue',
-        '.encfx', '.enchouse', '.encinput', '.encitems', '.encload',
+        '.encfx', '.enchouse', '.encinput', '.encintro', '.encitems', '.encload',
         '.enclocale', '.encmigration', '.encnewgame', '.encphone',
         '.encprompts', '.encresources', '.encrestore', '.encroom', '.encround',
         '.encsavemenu', '.encsession', '.encsettings', '.enctitlelocale',

@@ -10,7 +10,7 @@ if(BUILD_TESTING AND ENCORE_TEST_PARALLEL)
   set_tests_properties(${encore_registered_tests} PROPERTIES RUN_SERIAL TRUE)
   set(encore_parallel_tests
     room_data battle_data audio_data native_session new_game_setup
-    resource_catalog playable_opening
+    resource_catalog playable_opening original_introduction
     encounter_dependency_manifest battle_round_source_bindings round_recipe_source
     boss_presentation_bindings phone_presentation_bindings items_presentation_bindings
     world_program_bindings programme_lowering_recipe battle_entry_bindings

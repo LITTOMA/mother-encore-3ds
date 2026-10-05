@@ -1,7 +1,8 @@
 """Real linked Room/AudioIR equivalence and strict Phone linker recipe checks."""
-import copy,json
+import copy,hashlib,json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 from tools import phone_linker_bindings as recipe
 from tools import link_phone_content as linker,audio_asset
 from tools.extract_native_content import Extractor
@@ -36,4 +37,39 @@ class PhoneLinkerBindingTests(unittest.TestCase):
  def test_ordinary_audio_compile_gate(self):
   audio=copy.deepcopy(self.audio);audio['assets'][0]['pcm_path']='audio/stale.pcm'
   with self.assertRaises(ValueError):recipe.verify_audio(audio,self.root)
+ def intro_document(self):return recipe.read(self.root/self.c['introduction_audio'])
+ def reject_intro(self,change,linked=False):
+  document=copy.deepcopy(self.intro_document());change(document);original=recipe.read;reference=(self.root/self.c['introduction_audio']).resolve()
+  def read(path):return document if Path(path).resolve()==reference else original(path)
+  with patch.object(recipe,'read',side_effect=read),self.assertRaises(ValueError):
+   if linked:recipe.audio(self.root,self.room,self.c)
+   else:recipe.introduction_audio(self.root,self.c)
+ def test_intro_author_rows_and_actual_linked_prefix(self):
+  rows=recipe.introduction_audio(self.root,self.c)
+  self.assertEqual([r['identity']['value']for r in rows],[1301,1302,1303,1304,1305])
+  self.assertTrue(all(r['gain_db']==0 and r['conversion']is None for r in rows))
+  linked=recipe.audio(self.root,self.room,self.c)['assets']
+  self.assertEqual(len(linked),21)
+  self.assertEqual([r['stable_id']for r in linked[-5:]],[1301,1302,1303,1304,1305])
+ def test_intro_schema_pin_unknown_hash_paths_and_gain(self):
+  def row(c):return next(iter(c['audio'].values()))
+  changes=[lambda c:c.update(schema=True),lambda c:c.update(schema=2),lambda c:c.update(commit='0'*40),lambda c:row(c).update(extra=1),lambda c:row(c).update(stable_id=True),lambda c:row(c).update(source_sha256='0'*64),lambda c:row(c).update(import_sha256='0'*64),lambda c:row(c).update(pcm_path='../escaped.pcm'),lambda c:row(c).update(gain_db=True),lambda c:row(c).update(gain_db=1),lambda c:row(c).update(gain_db=float('nan'))]
+  for change in changes:
+   with self.subTest(change=change):self.reject_intro(change)
+  config=copy.deepcopy(self.c);config['introduction_audio']='../outside.json'
+  with self.assertRaises(ValueError):recipe.introduction_audio(self.root,config)
+ def test_intro_duplicate_id_pcm_and_source(self):
+  for field in ('stable_id','pcm_path','source_path'):
+   def change(c,field=field):
+    rows=list(c['audio'].values());rows[1][field]=rows[0][field]
+   with self.subTest(field=field):self.reject_intro(change)
+ def test_intro_cross_phone_id_pcm_and_source_conflict(self):
+  existing=self.c['audio'][0]
+  identity=self.audio['assets'][0]['stable_id']
+  self.reject_intro(lambda c:next(iter(c['audio'].values())).update(stable_id=identity),linked=True)
+  self.reject_intro(lambda c:next(iter(c['audio'].values())).update(pcm_path=existing['pcm']),linked=True)
+  def source_conflict(c):
+   source=existing['source'];row=next(iter(c['audio'].values()));upstream=self.root/'upstream/MOTHER-Encore'
+   row.update(source_path='res://'+source,source_sha256=hashlib.sha256((upstream/source).read_bytes()).hexdigest(),import_sha256=hashlib.sha256((upstream/(source+'.import')).read_bytes()).hexdigest())
+  self.reject_intro(source_conflict,linked=True)
 if __name__=='__main__':unittest.main()

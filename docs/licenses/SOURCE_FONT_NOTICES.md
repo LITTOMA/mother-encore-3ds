@@ -1,6 +1,6 @@
-# 已核对的 EBMain 字体来源
+# 已核对的运行字体来源
 
-以下字体来自固定上游 `7d9246600fffe518408f5830d4848635019005a3`。版权和许可字段读取自原始 TTF 的 `name` 表，与 `content/asset-receipts/fonts/source.json` 一致。
+以下字体来自固定上游 `7d9246600fffe518408f5830d4848635019005a3`。版权和许可字段读取自原始 TTF 的 `name` 表，与 `content/asset-receipts/fonts/source.json` 和 `content/asset-receipts/fonts/introduction/source.json` 一致。
 
 | 上游文件 | SHA-256 | 嵌入版权字串（原样） | 已确认许可范围 |
 |---|---|---|---|
@@ -32,4 +32,18 @@
 
 Latin、日本语、全宽字形的来源文档指向 EarthBound / MOTHER 3 等游戏，其 TTF 没有独立许可字段。本项目保留来源和上游条件，没有独立 Nintendo 授权文件。字体来源与混合字形的授权边界仍需单独确认。
 
-固定上游还包含 BottleRocket、EarthboundZero、Proggy 等其他字体；子模块保留它们并不等于本项目当前运行包使用它们，新增使用必须单独审查。上游游戏素材用途条件与已经核实的 OFL 许可分别保留，不能把整个字体集合概括为一个许可证。
+Introduction 另使用原版 EarthboundZero 与 BottleRocket 定义及其完整 fallback 链；已核对来源如下。Proggy 尚未用于运行资源。上游游戏素材用途条件与已经核实的 OFL 许可分别保留，不能把整个字体集合概括为一个许可证。
+
+
+## Introduction 字体
+
+| 上游文件 | SHA-256 | 嵌入版权字串（原样） | 已确认许可范围 |
+|---|---|---|---|
+| `Fonts/BottleRocket.ttf` | `2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1` | `NintendoTeamEnco` | 无独立许可字段；保留上游来源与用途条件，独立授权未确认 |
+| `Fonts/BottleRocket_ja.ttf` | `79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db` | `NumKadomaMisakiG` | 无独立许可字段；保留上游来源与用途条件，独立授权未确认 |
+| `Fonts/BottleRocket_ko.ttf` | `0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5` | `NintendoQuipleGa` | 无独立许可字段；保留上游来源与用途条件，独立授权未确认 |
+| `Fonts/BottleRocket_zh_cn.otf` | `529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5` | `Copyright (c) 2022, TakWolf (https://takwolf.com), with Reserved Font Name "Fusion Pixel"` | 嵌入 SIL OFL 1.1；完整 Fusion Pixel 声明和许可见上文 |
+| `Fonts/EarthboundZero.ttf` | `decf81bbe4f7c36bb7472be05c00db1dd86739bd14863b53d0d7d79c68315fb8` | `NintendoTeamEnco` | 无独立许可字段；保留上游来源与用途条件，独立授权未确认 |
+| `Fonts/EarthboundZero_zh_cn.otf` | `10ae119fe7d1460444f78a312399bb0962846644cab94a2161456e4a019ac7b1` | `Copyright (c) 2022, TakWolf (https://takwolf.com), with Reserved Font Name "Fusion Pixel"` | 嵌入 SIL OFL 1.1；完整 Fusion Pixel 声明和许可见上文 |
+
+EarthboundZero / BottleRocket 中文字体同样嵌入上文的 Fusion Pixel 完整版权声明、保留字体名和 OFL 1.1 链接，作者与制造者字段为 TakWolf；对应转换资源保留同一声明和完整 OFL 文件。BottleRocket 日文字体的 `NumKadomaMisakiG` 字串保留为原样来源证据，未据此推导独立许可。EBMain 的五项 fallback 来源与许可见首表。

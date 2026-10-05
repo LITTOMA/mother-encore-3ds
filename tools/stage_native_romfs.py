@@ -72,6 +72,10 @@ def main():
             ir=json.loads(IR.read_text());verify_sources(ir)
             if data!=encode(ir):raise ValueError("Stale checked world effect")
         files[path]=data
+    from native_introduction import stage_files as introduction_files
+    from introduction_assets import stage_files as introduction_asset_files
+    files.update(introduction_files(source))
+    files.update(introduction_asset_files(source))
     files.update(catalog_files(source, files))
     from romfs_layout import check_layout
     check_layout(files)

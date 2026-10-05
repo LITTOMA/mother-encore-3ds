@@ -92,7 +92,7 @@ def extract():
     result = dict(schema=1, kind='encore.loading-indicator.source-ir', commit=ex.lock['commit'], sources=ex.sources,
                   scope='Platform loading indicator reuses original Ninten Walk Right. No dedicated production loading sprite was found in the inspected loading paths; original scene transitions use fades.',
                   inspected_loading_paths=inspected,
-                  dependencies={str(REVIEW.relative_to(ROOT)): sha(REVIEW), str(REFERENCE.relative_to(ROOT)): sha(REFERENCE)},
+                  dependencies={REVIEW.relative_to(ROOT).as_posix(): sha(REVIEW), REFERENCE.relative_to(ROOT).as_posix(): sha(REFERENCE)},
                   animation=dict(name=clip['name'], source_resource=f'{SCENE}::{identifier}', length=f32(clip['length']),
                                  loop=True, keys=[dict(time=t, frame=unique.index(frame), source_frame=frame) for t, frame in zip(times, frames)]),
                   texture=dict(path=TEXTURE_PATH, source=TEXTURE, source_grid=grid, source_frames=unique,

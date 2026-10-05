@@ -17,14 +17,14 @@ def integer(v,maximum=2**32-1):require(type(v)is int and 0<=v<=maximum,'Phone li
 
 def load(root,document=None):
  root=Path(root);c=document if document is not None else read(root/IR);ex=Extractor(root)
- fields(c,'schema commit paths sources world house house_presentation house_assets house_receipt dialogue_first_id room_prefix actors carol audio audio_prefix_count sound_roles');require(type(c['schema'])is int and c['schema']==1 and c['commit']==ex.lock['commit'],'Phone linker schema/pin')
+ fields(c,'schema commit paths sources world house house_presentation house_assets house_receipt dialogue_first_id room_prefix actors carol audio audio_prefix_count sound_roles introduction_audio');require(type(c['schema'])is int and c['schema']==1 and c['commit']==ex.lock['commit'],'Phone linker schema/pin')
  fields(c['room_prefix'],'Resource Program Binding')
  for value in c['room_prefix'].values():integer(value,65535)
  fields(c['paths'],'scene npc_script npc_scene animation bus manager title');fields(c['sound_roles'],'ring hangup')
  require(type(c['audio'])is list and c['audio'] and integer(c['audio_prefix_count'],64)<=len(c['audio']),'Phone linker audio scope')
  expected=set(c['paths'].values())|{p for r in c['audio']for p in (r['source'],r['source']+'.import')};require(set(c['sources'])==expected,'Phone linker source coverage')
  for p,d in c['sources'].items():require(hashlib.sha256(ex.data(path(p))).hexdigest()==d,'Stale phone linker source '+p)
- for k in ('world','house','house_presentation','house_assets','house_receipt'):require((root/path(c[k])).is_file(),'Missing phone linker dependency')
+ for k in ('world','house','house_presentation','house_assets','house_receipt','introduction_audio'):require((root/path(c[k])).is_file(),'Missing phone linker dependency')
  # Reuse the checked House source identity projection; do not duplicate its facts.
  from tools.house_source_bindings import load as house_load
  house=house_load(root);require(integer(c['dialogue_first_id'])==min(house['phone']['text_ids'].values()),'Phone text namespace differs');world=read(root/c['world']);require(world['commit']==c['commit'],'Phone world identity pin')
@@ -70,10 +70,26 @@ def load(root,document=None):
  title=ex.text(c['paths']['title']);title_music=one(r'\.stream != load\("res://([^"\n]+)"\)',title,'Title music source')[1];require(title_music in sources,'Phone audio Title stream binding missing')
  return c,actors
 
+def introduction_audio(root, config):
+ # The Intro author document owns these identities; the Phone bank links them.
+ root=Path(root);reference=root/path(config['introduction_audio']);require(reference.resolve().is_relative_to(root.resolve()),'Introduction audio binding escaped root');binding=read(reference);ex=Extractor(root)
+ require(type(binding)is dict and type(binding.get('schema'))is int and binding['schema']==1 and binding.get('kind')=='encore.introduction-bindings' and binding.get('commit')==config['commit'],'Introduction audio binding identity/pin')
+ rows=binding.get('audio');require(type(rows)is dict and rows,'Missing introduction audio roles');result=[];ids=set();pcms=set();sources=set()
+ for role,r in rows.items():
+  require(type(role)is str and role,'Invalid introduction audio role');fields(r,'stable_id source_path source_sha256 import_sha256 pcm_path gain_db')
+  identity=integer(r['stable_id']);require(identity>0 and identity not in ids,'Duplicate/invalid introduction audio ID');ids.add(identity)
+  source=r['source_path'];require(type(source)is str and source.startswith('res://'),'Invalid introduction audio source');relative=path(source[6:]);pcm=path(r['pcm_path'])
+  require(pcm.endswith('.pcm') and pcm not in pcms and relative not in sources,'Duplicate/invalid introduction audio paths');pcms.add(pcm);sources.add(relative)
+  require(type(r['gain_db'])in(int,float) and math.isfinite(r['gain_db']) and -120<=r['gain_db']<=0,'Invalid introduction bank gain')
+  require(hashlib.sha256(ex.data(relative)).hexdigest()==r['source_sha256'] and hashlib.sha256(ex.data(relative+'.import')).hexdigest()==r['import_sha256'],'Stale introduction audio source/import')
+  result.append(dict(source=relative,pcm=pcm,gain_db=r['gain_db'],identity=dict(kind='stable',value=identity),conversion=None))
+ return result
+
 def audio(root,room,document=None):
- root=Path(root);c,_=load(root,document);ex=Extractor(root);ids={room['strings'][r['path_string']]:r['stable_id']for r in room['sections']['Resource']};room_sources={identity:source for source,identity in ids.items()};assets=[];seen=set()
- for source in c['audio']:
+ root=Path(root);c,_=load(root,document);ex=Extractor(root);ids={room['strings'][r['path_string']]:r['stable_id']for r in room['sections']['Resource']};room_sources={identity:source for source,identity in ids.items()};assets=[];seen=set();pcm_paths=set();source_paths=set()
+ for source in c['audio']+introduction_audio(root,c):
   ref=source['identity'];identity=ref['value']if ref['kind']=='stable'else ids.get(ref['source']);require(type(identity)is int and identity>0 and identity not in seen,'Unknown/duplicate linked audio identity');seen.add(identity)
+  require(source['pcm'] not in pcm_paths and source['source'] not in source_paths,'Duplicate linked audio PCM/source');pcm_paths.add(source['pcm']);source_paths.add(source['source'])
   require(identity not in room_sources or room_sources[identity]=='res://'+source['source'],'Linked audio identity differs from actual Room source')
   p=source['source'];ex.data(p);ex.data(p+'.import');r=dict(stable_id=identity,source_path='res://'+p,source_sha256=ex.sources[p],import_sha256=ex.sources[p+'.import'],pcm_path=source['pcm'],gain_db=source['gain_db'])
   if source['conversion']is not None:r['output_sample_rate']=source['conversion']['output_sample_rate']

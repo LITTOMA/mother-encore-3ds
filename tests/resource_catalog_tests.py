@@ -70,6 +70,15 @@ class ResourceCatalogTests(unittest.TestCase):
         self.reject(lambda ir: ir.update(bindings=[]))
         self.reject(lambda ir: ir['bindings'][extra].update(path=next(x['path'] for x in ir['bindings'] if x['role'] == 'Battle')))
 
+    def test_introduction_optional_singleton_and_typed_path(self):
+        index = next(i for i, row in enumerate(self.ir['bindings']) if row['role'] == 'Introduction')
+        self.assertEqual(self.ir['bindings'][index]['id'], 25)
+        for key, value in [('id', 256), ('id', 24), ('path', 'data/opening.encroom'), ('role', 'Unknown')]:
+            self.reject(lambda ir: ir['bindings'][index].update({key: value}))
+        older = copy.deepcopy(self.ir)
+        older['bindings'].pop(index)
+        catalog.validate(older)  # Existing schema1 catalogs remain readable.
+
     def test_bad_paths_suffixes_and_source_declarations(self):
         index = next(i for i, row in enumerate(self.ir['bindings']) if row['role'] == 'Round')
         for path in ('../round.encround', '/round.encround', 'C:/round.encround',

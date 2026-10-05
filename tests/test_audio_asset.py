@@ -54,7 +54,14 @@ class AudioAssetTests(unittest.TestCase):
     def test_source_digest_rejected(self):
         with self.assertRaises(audio.AudioError):audio.verified(ROOT/'upstream/MOTHER-Encore','Audio/Music/Poltergeist.ogg','01'*32)
     def test_actual_manifest_and_source_loop(self):
-        files=audio.stage_files(ROOT/'romfs');bank=audio.parse_bank(files[Path('sound/banks/opening.encaudio')]);self.assertEqual([a['stable_id'] for a in bank['assets']],[21,22,1001,1002,1101,1102,1103,1104,30,32,33,34,36,37,1201,1202])
+        files=audio.stage_files(ROOT/'romfs');bank=audio.parse_bank(files[Path('sound/banks/opening.encaudio')])
+        # Intro appends its own reviewed identities; the original prefix remains stable.
+        prefix=[21,22,1001,1002,1101,1102,1103,1104,30,32,33,34,36,37,1201,1202]
+        self.assertEqual([a['stable_id'] for a in bank['assets'][:16]],prefix)
+        self.assertEqual([a['stable_id'] for a in bank['assets'][16:]],[1301,1302,1303,1304,1305])
+        self.assertEqual(len(bank['assets']),21)
+        intro=json.loads((ROOT/'content/introduction-bindings.json').read_text())['audio']
+        self.assertEqual([(a['stable_id'],a['source_path'],a['pcm_path'],a['gain_db']) for a in bank['assets'][16:]],[(r['stable_id'],r['source_path'],r['pcm_path'],r['gain_db']) for r in intro.values()])
         self.assertEqual(bank['assets'][0]['loop_start'],int(6.382*44100));self.assertTrue(bank['assets'][0]['loop']);self.assertFalse(bank['assets'][1]['loop']);self.assertFalse(bank['assets'][2]['loop'])
         self.assertEqual(bank['assets'][3]['stable_id'],1002);self.assertEqual(bank['assets'][3]['source_path'],'res://Audio/Music/Battle Encounter/Encounter Boss.mp3');self.assertFalse(bank['assets'][3]['loop'])
         for a in bank['assets']:

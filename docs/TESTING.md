@@ -2,7 +2,7 @@
 
 ## 手动全面验证
 
-测试仅在明确手动请求时执行，不随日常开发、提交、PR 更新或 main 合并自动运行。GitHub Actions 只有手动完整入口，覆盖 GCC / Clang、sanitizers 和真实 3DSX / CIA；操作见 [BUILD](BUILD.md)。以下命令保留为手动验证工具，代理不得自动调用。
+测试仅在明确手动请求时执行，不随日常开发、提交、PR 更新或 main 合并自动运行。GitHub Actions 的 `full` 手动模式覆盖 GCC / Clang、sanitizers 和真实 3DSX / CIA；main 更新以及手动 `build` 模式只构建和上传产物，不运行测试。操作见 [BUILD](BUILD.md)。以下命令保留为手动验证工具，代理不得自动调用。
 
 ## 共享核心与工具
 

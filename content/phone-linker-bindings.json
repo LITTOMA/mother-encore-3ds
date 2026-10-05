@@ -287,5 +287,6 @@
     "Resource": 34,
     "Program": 5,
     "Binding": 7
-  }
+  },
+  "introduction_audio": "content/introduction-bindings.json"
 }

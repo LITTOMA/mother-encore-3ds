@@ -19,7 +19,7 @@ std::vector<uint8_t> read_file(const char* path){std::ifstream f(path,std::ios::
 int main(int argc,char** argv){
     check(argc==3,"provide bank path and asset root");std::string error;AudioBank bank;
     const auto bytes=read_file(argv[1]);check(bank.load(bytes.data(),bytes.size(),error),error.c_str());
-    check(bank.count()==16,"external slice bank assets");check(std::abs(bank.silence_db()+80)<0.001,"source silence threshold");
+    check(bank.count()==21,"external slice bank assets");check(std::abs(bank.silence_db()+80)<0.001,"source silence threshold");
     check(bank.asset(12).stable_id==36&&!bank.asset(12).loops()&&bank.asset(13).stable_id==37&&!bank.asset(13).loops()&&bank.asset(14).stable_id==1201&&!bank.asset(14).loops(),"phone ring, hangup and Adult voice appended without renumbering");
     check(bank.asset(15).stable_id==1202&&bank.asset(15).source_path=="res://Audio/Music/Mother Earth.mp3"&&bank.asset(15).sample_rate==44100&&bank.asset(15).channels==2,"source title track appended without quality reduction");
     check(bank.asset(8).stable_id==30&&!bank.asset(8).loops(),"source post-win SMAAAASH one-shot appended");
@@ -27,7 +27,7 @@ int main(int argc,char** argv){
     const auto first=bank.asset(0);check(first.stable_id==21&&first.loops()&&first.loop_start==281446,"source import loop point");
     check(bank.asset(99).stable_id==0,"missing asset empty");AudioAsset a;check(!bank.find(0,a),"missing stable identity");
     for(size_t n=0;n<bytes.size();++n){AudioBank candidate;check(!candidate.load(bytes.data(),n,error),"all truncations rejected");}
-    for(size_t i=0;i<bytes.size();++i){auto changed=bytes;changed[i]^=0x80;check(!bank.load(changed.data(),changed.size(),error),"all one-bit corruptions rejected");check(bank.count()==16,"failed load preserves prior owner");}
+    for(size_t i=0;i<bytes.size();++i){auto changed=bytes;changed[i]^=0x80;check(!bank.load(changed.data(),changed.size(),error),"all one-bit corruptions rejected");check(bank.count()==21,"failed load preserves prior owner");}
     auto reject=[&](size_t offset,uint32_t value,const char* why){auto changed=bytes;put32(changed,offset,value);fix_crc(changed);check(!bank.load(changed.data(),changed.size(),error),why);};
     reject(8,2,"version rejected");reject(20,65,"count rejected");reject(24,95,"stride rejected");reject(28,0,"strings offset rejected");reject(44,1,"header reserved rejected");
     reject(64,0,"zero stable ID rejected");reject(64+96,21,"duplicate stable ID rejected");reject(64+36,0,"invalid rate rejected");reject(64+40,3,"channels rejected");reject(64+40,2u|(2u<<16),"unknown loop flags rejected");reject(64+44,0,"zero frames rejected");reject(64+48,0xffffffffu,"out of range loop rejected");reject(64+52,1,"PCM length mismatch rejected");reject(64+60,0,"string ref rejected");reject(64+64,0xffffffffu,"string overflow rejected");reject(64+80,1,"asset reserved rejected");reject(36,0x7fc00000,"NaN master rejected");reject(40,0,"nonsilent threshold rejected");reject(64+76,0x7f800000,"infinite asset gain rejected");

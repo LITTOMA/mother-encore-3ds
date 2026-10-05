@@ -1,0 +1,8233 @@
+{
+  "binary": {
+    "bytes": 8752,
+    "path": "fonts/introduction/intro.encfont",
+    "sha256": "38a35ecbdadd9303b6b84fdccaf0b38323282ed8f7ec064b9dcf5eedaccb321f"
+  },
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "faces": [
+    {
+      "ascent": 8,
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EarthboundZero.ttf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_top": "-3"
+        }
+      },
+      "descent": 0,
+      "first_glyph": 0,
+      "first_page": 0,
+      "glyph_count": 38,
+      "height": 8,
+      "legacy_ascii": false,
+      "page_count": 1,
+      "source": "Fonts/EB0_la.tres"
+    },
+    {
+      "ascent": 8,
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EarthboundZero_zh_cn.otf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_bottom": "2",
+          "extra_spacing_char": "1",
+          "extra_spacing_top": "-2",
+          "size": "12"
+        }
+      },
+      "descent": 4,
+      "first_glyph": 38,
+      "first_page": 1,
+      "glyph_count": 131,
+      "height": 12,
+      "legacy_ascii": false,
+      "page_count": 1,
+      "source": "Fonts/EB0_zh_cn.tres"
+    },
+    {
+      "ascent": 11,
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_fw9.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_jaM3.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_ko.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_zh_cn.ttf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_bottom": "-1",
+          "extra_spacing_top": "-1"
+        }
+      },
+      "descent": 1,
+      "first_glyph": 169,
+      "first_page": 2,
+      "glyph_count": 52,
+      "height": 12,
+      "legacy_ascii": false,
+      "page_count": 1,
+      "source": "Fonts/EBMain.tres"
+    },
+    {
+      "ascent": 11,
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_ja.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_ko.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_zh_cn.otf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_char": "-1",
+          "extra_spacing_space": "3",
+          "outline_color": "Color( 0, 0, 0, 1 )",
+          "outline_size": "1"
+        }
+      },
+      "descent": 0,
+      "first_glyph": 221,
+      "first_page": 3,
+      "glyph_count": 5,
+      "height": 11,
+      "legacy_ascii": false,
+      "page_count": 1,
+      "source": "Fonts/BottleRocket.tres"
+    },
+    {
+      "ascent": 11,
+      "definition": {
+        "fallback_chain": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_zh_cn.otf"
+          }
+        ],
+        "properties": {
+          "extra_spacing_char": "-1",
+          "extra_spacing_space": "3",
+          "outline_color": "Color( 0, 0, 0, 1 )",
+          "outline_size": "1"
+        }
+      },
+      "descent": 0,
+      "first_glyph": 226,
+      "first_page": 4,
+      "glyph_count": 3,
+      "height": 11,
+      "legacy_ascii": false,
+      "page_count": 1,
+      "source": "Fonts/BottleRocket_zh_cn.tres"
+    }
+  ],
+  "font_embedded_notices": {
+    "Fonts/BottleRocket.ttf": {
+      "0": [
+        "NintendoTeamEnco"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/BottleRocket_ja.ttf": {
+      "0": [
+        "NumKadomaMisakiG"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/BottleRocket_ko.ttf": {
+      "0": [
+        "NintendoQuipleGa"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/BottleRocket_zh_cn.otf": {
+      "0": [
+        "Copyright (c) 2022, TakWolf (https://takwolf.com), with Reserved Font Name \"Fusion Pixel\""
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1"
+      ],
+      "14": [
+        "https://github.com/TakWolf/fusion-pixel-font/blob/master/LICENSE-OFL"
+      ],
+      "8": [
+        "TakWolf"
+      ],
+      "9": [
+        "TakWolf"
+      ]
+    },
+    "Fonts/EBMain.ttf": {
+      "0": [
+        "NintendoTeamEnco"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/EBMain_fw9.ttf": {
+      "0": [
+        "Nintendo"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/EBMain_jaM3.ttf": {
+      "0": [
+        "Nintendo"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/EBMain_ko.ttf": {
+      "0": [
+        "NintendoQuipleGa"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/EBMain_zh_cn.ttf": {
+      "0": [
+        "Copyright (c) 2022, TakWolf (https://takwolf.com), with Reserved Font Name \"Fusion Pixel\""
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1"
+      ],
+      "14": [
+        "https://github.com/TakWolf/fusion-pixel-font/blob/master/LICENSE-OFL"
+      ],
+      "8": [
+        "TakWolf"
+      ],
+      "9": [
+        "TakWolf"
+      ]
+    },
+    "Fonts/EarthboundZero.ttf": {
+      "0": [
+        "NintendoTeamEnco"
+      ],
+      "13": [],
+      "14": [],
+      "8": [],
+      "9": []
+    },
+    "Fonts/EarthboundZero_zh_cn.otf": {
+      "0": [
+        "Copyright (c) 2022, TakWolf (https://takwolf.com), with Reserved Font Name \"Fusion Pixel\""
+      ],
+      "13": [
+        "This Font Software is licensed under the SIL Open Font License, Version 1.1"
+      ],
+      "14": [
+        "https://github.com/TakWolf/fusion-pixel-font/blob/master/LICENSE-OFL"
+      ],
+      "8": [
+        "TakWolf"
+      ],
+      "9": [
+        "TakWolf"
+      ]
+    }
+  },
+  "fonttools_version": "4.61.1",
+  "freetype_version": "2.14.3",
+  "generator_sha256": "222bee61a5fbc57b98c9978ca8996a44719cb4b6528c46650ccf5c5956dda04f",
+  "glyphs": [
+    {
+      "advance": 8,
+      "codepoint": 32,
+      "height": 0,
+      "offset_x": 0,
+      "offset_y": 8,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 1,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 39,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 11,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 44,
+      "height": 3,
+      "offset_x": 0,
+      "offset_y": 5,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 21,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 46,
+      "height": 3,
+      "offset_x": 0,
+      "offset_y": 5,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 31,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 48,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 41,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 49,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 51,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 56,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 61,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 57,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 71,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 65,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 81,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 66,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 91,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 71,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 101,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 72,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 111,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 73,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 121,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 77,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 131,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 83,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 141,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 84,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 151,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 97,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 161,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 98,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 171,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 99,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 181,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 100,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 191,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 101,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 201,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 102,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 211,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 103,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 221,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 104,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 231,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 105,
+      "height": 7,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 241,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 107,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 1,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 108,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 11,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 109,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 21,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 110,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 31,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 111,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 41,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 112,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 51,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 114,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 61,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 115,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 71,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 116,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 81,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 117,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 91,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 118,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 101,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 119,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 111,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 8,
+      "codepoint": 121,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 2,
+      "page": 0,
+      "source_face": "Fonts/EarthboundZero.ttf",
+      "u": 121,
+      "v": 10,
+      "width": 8
+    },
+    {
+      "advance": 7,
+      "codepoint": 32,
+      "height": 0,
+      "offset_x": 0,
+      "offset_y": 8,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 48,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 9,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 50,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 17,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 56,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 25,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 73,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 33,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 80,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 41,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 83,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 0,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 49,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 12,
+      "codepoint": 8230,
+      "height": 4,
+      "offset_x": 0,
+      "offset_y": 4,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 57,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 12290,
+      "height": 4,
+      "offset_x": 0,
+      "offset_y": 6,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 71,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 19968,
+      "height": 4,
+      "offset_x": 0,
+      "offset_y": 4,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 85,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 19976,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 99,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 19978,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 113,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 19981,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 127,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 19990,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 141,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20004,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 155,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20026,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 169,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20029,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 183,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20040,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 197,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20043,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 211,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20052,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 225,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20063,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 239,
+      "v": 1,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20065,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20102,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 15,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20107,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 29,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20110,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 43,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20117,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 57,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20122,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 71,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20154,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 85,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20160,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 99,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20174,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 113,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20182,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 127,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20204,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 141,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20214,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 155,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20219,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 169,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20294,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 183,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20309,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 197,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20570,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 211,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20809,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 225,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20877,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 239,
+      "v": 13,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 20957,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21021,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 15,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21040,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 29,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21051,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 43,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21364,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 57,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21435,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 71,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21448,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 85,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21450,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 99,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21517,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 113,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21518,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 127,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21521,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 141,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 21738,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 155,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22238,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 169,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22269,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 183,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22312,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 197,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22320,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 211,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22827,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 225,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22833,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 239,
+      "v": 25,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22855,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22905,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 15,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22914,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 29,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22919,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 43,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22971,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 57,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 22987,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 71,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 23376,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 85,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 23545,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 99,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 23567,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 113,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 23665,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 127,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24005,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 141,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24049,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 155,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24180,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 169,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24231,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 183,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24320,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 197,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24322,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 211,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24403,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 225,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24418,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 239,
+      "v": 37,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 24433,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 25104,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 15,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 25509,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 29,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 25955,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 43,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 26029,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 57,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 26102,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 71,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 26368,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 85,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 26377,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 99,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 26410,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 113,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 26469,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 127,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 26679,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 141,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 27573,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 155,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 27809,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 169,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 27835,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 183,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 28040,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 197,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 28041,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 211,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 28982,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 225,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 29255,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 239,
+      "v": 49,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 29420,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 29595,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 15,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 30340,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 29,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 30740,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 43,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 31070,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 57,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 31163,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 71,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 31192,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 85,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 31350,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 99,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 31361,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 113,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 31548,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 127,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 31992,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 141,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 32426,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 155,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 32617,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 169,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 32654,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 183,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 32858,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 197,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 33258,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 211,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 33267,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 225,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 34892,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 239,
+      "v": 61,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 35809,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36215,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 15,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36229,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 29,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36394,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 43,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36731,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 57,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36807,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 71,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36825,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 85,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36827,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 99,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36830,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 113,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36879,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 127,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 36893,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 141,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 37027,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 155,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 37324,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 169,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 38215,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 183,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 38388,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 197,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 38452,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 211,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 38543,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 225,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 38706,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 239,
+      "v": 73,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 39134,
+      "height": 11,
+      "offset_x": 0,
+      "offset_y": -1,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 1,
+      "v": 85,
+      "width": 12
+    },
+    {
+      "advance": 12,
+      "codepoint": 65292,
+      "height": 4,
+      "offset_x": 0,
+      "offset_y": 6,
+      "page": 1,
+      "source_face": "Fonts/EarthboundZero_zh_cn.otf",
+      "u": 15,
+      "v": 85,
+      "width": 12
+    },
+    {
+      "advance": 3,
+      "codepoint": 32,
+      "height": 0,
+      "offset_x": 0,
+      "offset_y": 11,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 1,
+      "v": 1,
+      "width": 3
+    },
+    {
+      "advance": 3,
+      "codepoint": 44,
+      "height": 3,
+      "offset_x": 0,
+      "offset_y": 8,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 6,
+      "v": 1,
+      "width": 3
+    },
+    {
+      "advance": 3,
+      "codepoint": 46,
+      "height": 3,
+      "offset_x": 0,
+      "offset_y": 8,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 11,
+      "v": 1,
+      "width": 3
+    },
+    {
+      "advance": 4,
+      "codepoint": 49,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 16,
+      "v": 1,
+      "width": 4
+    },
+    {
+      "advance": 6,
+      "codepoint": 56,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 22,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 57,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 30,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 7,
+      "codepoint": 65,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 38,
+      "v": 1,
+      "width": 7
+    },
+    {
+      "advance": 6,
+      "codepoint": 79,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 47,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 80,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 55,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 6,
+      "codepoint": 84,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 63,
+      "v": 1,
+      "width": 6
+    },
+    {
+      "advance": 5,
+      "codepoint": 97,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 71,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 5,
+      "codepoint": 99,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 78,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 5,
+      "codepoint": 100,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 85,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 5,
+      "codepoint": 101,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 92,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 5,
+      "codepoint": 104,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 99,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 2,
+      "codepoint": 105,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 106,
+      "v": 1,
+      "width": 2
+    },
+    {
+      "advance": 5,
+      "codepoint": 107,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 110,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 2,
+      "codepoint": 108,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 117,
+      "v": 1,
+      "width": 2
+    },
+    {
+      "advance": 8,
+      "codepoint": 109,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 121,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 5,
+      "codepoint": 110,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 131,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 5,
+      "codepoint": 111,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 138,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 4,
+      "codepoint": 114,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 145,
+      "v": 1,
+      "width": 4
+    },
+    {
+      "advance": 5,
+      "codepoint": 115,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 151,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 4,
+      "codepoint": 116,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 158,
+      "v": 1,
+      "width": 4
+    },
+    {
+      "advance": 5,
+      "codepoint": 117,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 164,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 8,
+      "codepoint": 119,
+      "height": 8,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 171,
+      "v": 1,
+      "width": 8
+    },
+    {
+      "advance": 5,
+      "codepoint": 121,
+      "height": 9,
+      "offset_x": 0,
+      "offset_y": 3,
+      "page": 2,
+      "source_face": "Fonts/EBMain.ttf",
+      "u": 181,
+      "v": 1,
+      "width": 5
+    },
+    {
+      "advance": 10,
+      "codepoint": 12290,
+      "height": 5,
+      "offset_x": 0,
+      "offset_y": 6,
+      "page": 2,
+      "source_face": "Fonts/EBMain_jaM3.ttf",
+      "u": 188,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 19968,
+      "height": 6,
+      "offset_x": 0,
+      "offset_y": 5,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 200,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 20102,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 212,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 20107,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 224,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 20110,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 236,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 20811,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 1,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 21040,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 13,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 21457,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 25,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 22269,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 37,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 22806,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 49,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 23567,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 61,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 24180,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 73,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 24231,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 85,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 25925,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 97,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 26102,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 109,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 26469,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 121,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 27874,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 133,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 29983,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 145,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 30340,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 157,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 32654,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 169,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 37066,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 181,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 38215,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 193,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 38388,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 205,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 39039,
+      "height": 10,
+      "offset_x": 0,
+      "offset_y": 1,
+      "page": 2,
+      "source_face": "Fonts/EBMain_zh_cn.ttf",
+      "u": 217,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 10,
+      "codepoint": 65292,
+      "height": 5,
+      "offset_x": 0,
+      "offset_y": 6,
+      "page": 2,
+      "source_face": "Fonts/EBMain_fw9.ttf",
+      "u": 229,
+      "v": 12,
+      "width": 10
+    },
+    {
+      "advance": 8,
+      "codepoint": 83,
+      "height": 8,
+      "offset_x": -1,
+      "offset_y": 4,
+      "page": 3,
+      "source_face": "Fonts/BottleRocket.ttf",
+      "u": 1,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 8,
+      "codepoint": 90,
+      "height": 8,
+      "offset_x": -1,
+      "offset_y": 4,
+      "page": 3,
+      "source_face": "Fonts/BottleRocket.ttf",
+      "u": 13,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 7,
+      "codepoint": 105,
+      "height": 8,
+      "offset_x": -1,
+      "offset_y": 4,
+      "page": 3,
+      "source_face": "Fonts/BottleRocket.ttf",
+      "u": 25,
+      "v": 1,
+      "width": 9
+    },
+    {
+      "advance": 8,
+      "codepoint": 107,
+      "height": 8,
+      "offset_x": -1,
+      "offset_y": 4,
+      "page": 3,
+      "source_face": "Fonts/BottleRocket.ttf",
+      "u": 36,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 8,
+      "codepoint": 112,
+      "height": 8,
+      "offset_x": -1,
+      "offset_y": 4,
+      "page": 3,
+      "source_face": "Fonts/BottleRocket.ttf",
+      "u": 48,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 8,
+      "codepoint": 90,
+      "height": 8,
+      "offset_x": -1,
+      "offset_y": 4,
+      "page": 4,
+      "source_face": "Fonts/BottleRocket.ttf",
+      "u": 1,
+      "v": 1,
+      "width": 10
+    },
+    {
+      "advance": 9,
+      "codepoint": 36339,
+      "height": 9,
+      "offset_x": -1,
+      "offset_y": 3,
+      "page": 4,
+      "source_face": "Fonts/BottleRocket_zh_cn.otf",
+      "u": 13,
+      "v": 1,
+      "width": 11
+    },
+    {
+      "advance": 9,
+      "codepoint": 36807,
+      "height": 9,
+      "offset_x": -1,
+      "offset_y": 3,
+      "page": 4,
+      "source_face": "Fonts/BottleRocket_zh_cn.otf",
+      "u": 26,
+      "v": 1,
+      "width": 11
+    }
+  ],
+  "godot_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "kind": "encore.introduction-font-receipt",
+  "limits": "Original DynamicFont fallback and spacing; every used scalar matched to official Godot 3.6.2 hinted advance/ascent/height; opaque FreeType FT_Get_Advance NORMAL/MONO source settings, spacing and all original text pairs/line widths checked. Pillow/FreeType glyph rasters, no GPU/hardware pixel equivalence claim; original Nintendo-source rights remain unconfirmed. No system or replacement glyphs.",
+  "metrics": {
+    "faces": [
+      {
+        "advances": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "ascent": 8,
+        "char_spacing": 0,
+        "data_settings": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EarthboundZero.ttf"
+          }
+        ],
+        "descent": 0,
+        "height": 8,
+        "pairs": [
+          {
+            "advance": 8,
+            "codepoint": 56,
+            "next": 48
+          },
+          {
+            "advance": 8,
+            "codepoint": 48,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 118
+          },
+          {
+            "advance": 8,
+            "codepoint": 118,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 65,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 77
+          },
+          {
+            "advance": 8,
+            "codepoint": 77,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 44
+          },
+          {
+            "advance": 8,
+            "codepoint": 44,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 65,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 44
+          },
+          {
+            "advance": 8,
+            "codepoint": 44,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 65,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 44
+          },
+          {
+            "advance": 8,
+            "codepoint": 44,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 66,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 98
+          },
+          {
+            "advance": 8,
+            "codepoint": 98,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 103
+          },
+          {
+            "advance": 8,
+            "codepoint": 103,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 71,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 103
+          },
+          {
+            "advance": 8,
+            "codepoint": 103,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 72,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 118
+          },
+          {
+            "advance": 8,
+            "codepoint": 118,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 73,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 49
+          },
+          {
+            "advance": 8,
+            "codepoint": 49,
+            "next": 57
+          },
+          {
+            "advance": 8,
+            "codepoint": 57,
+            "next": 48
+          },
+          {
+            "advance": 8,
+            "codepoint": 48,
+            "next": 48
+          },
+          {
+            "advance": 8,
+            "codepoint": 48,
+            "next": 39
+          },
+          {
+            "advance": 8,
+            "codepoint": 39,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 44
+          },
+          {
+            "advance": 8,
+            "codepoint": 44,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 83,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 118
+          },
+          {
+            "advance": 8,
+            "codepoint": 118,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 84,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 107
+          },
+          {
+            "advance": 8,
+            "codepoint": 107,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 84,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 84,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 39
+          },
+          {
+            "advance": 8,
+            "codepoint": 39,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 71
+          },
+          {
+            "advance": 8,
+            "codepoint": 71,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 103
+          },
+          {
+            "advance": 8,
+            "codepoint": 103,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 84,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 39
+          },
+          {
+            "advance": 8,
+            "codepoint": 39,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 77
+          },
+          {
+            "advance": 8,
+            "codepoint": 77,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 84,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 44
+          },
+          {
+            "advance": 8,
+            "codepoint": 44,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 107
+          },
+          {
+            "advance": 8,
+            "codepoint": 107,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 118
+          },
+          {
+            "advance": 8,
+            "codepoint": 118,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 98
+          },
+          {
+            "advance": 8,
+            "codepoint": 98,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 44
+          },
+          {
+            "advance": 8,
+            "codepoint": 44,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 65
+          },
+          {
+            "advance": 8,
+            "codepoint": 65,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 118
+          },
+          {
+            "advance": 8,
+            "codepoint": 118,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 118
+          },
+          {
+            "advance": 8,
+            "codepoint": 118,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 103
+          },
+          {
+            "advance": 8,
+            "codepoint": 103,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 108
+          },
+          {
+            "advance": 8,
+            "codepoint": 108,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 107
+          },
+          {
+            "advance": 8,
+            "codepoint": 107,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 121
+          },
+          {
+            "advance": 8,
+            "codepoint": 121,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 99
+          },
+          {
+            "advance": 8,
+            "codepoint": 99,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 115
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 44
+          },
+          {
+            "advance": 8,
+            "codepoint": 44,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 115,
+            "next": 117
+          },
+          {
+            "advance": 8,
+            "codepoint": 117,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 102
+          },
+          {
+            "advance": 8,
+            "codepoint": 102,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 77
+          },
+          {
+            "advance": 8,
+            "codepoint": 77,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 73
+          },
+          {
+            "advance": 8,
+            "codepoint": 73,
+            "next": 116
+          },
+          {
+            "advance": 8,
+            "codepoint": 116,
+            "next": 111
+          },
+          {
+            "advance": 8,
+            "codepoint": 111,
+            "next": 105
+          },
+          {
+            "advance": 8,
+            "codepoint": 105,
+            "next": 46
+          },
+          {
+            "advance": 8,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 8,
+            "codepoint": 114,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 104
+          },
+          {
+            "advance": 8,
+            "codepoint": 104,
+            "next": 97
+          },
+          {
+            "advance": 8,
+            "codepoint": 97,
+            "next": 100
+          },
+          {
+            "advance": 8,
+            "codepoint": 100,
+            "next": 32
+          },
+          {
+            "advance": 8,
+            "codepoint": 32,
+            "next": 98
+          },
+          {
+            "advance": 8,
+            "codepoint": 98,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 101
+          },
+          {
+            "advance": 8,
+            "codepoint": 101,
+            "next": 110
+          },
+          {
+            "advance": 8,
+            "codepoint": 110,
+            "next": 0
+          }
+        ],
+        "size": 16,
+        "source": "Fonts/EB0_la.tres",
+        "space_spacing": 0,
+        "texts": [
+          "80 years have passed",
+          "As for Maria,",
+          "As soon as they disappeared,",
+          "At that time,",
+          "But he began an odd",
+          "George returned.",
+          "He never told anyone",
+          "In the early 1900's,",
+          "She never returned.",
+          "The dark shadow formed",
+          "The last incident",
+          "The man's name was George.",
+          "The woman's name was Maria.",
+          "Two years later,",
+          "a dark shadow covered a small",
+          "all by himself.",
+          "as suddenly as he left,",
+          "country town in rural America.",
+          "his wife...",
+          "incidents occured.",
+          "involved the disappearance",
+          "mysteriously at the",
+          "numerous paranormal",
+          "of a young married couple.",
+          "or what he had done.",
+          "since then.",
+          "so did the dark shadow.",
+          "study of psychic powers,",
+          "summit of Mt Itoi.",
+          "where he had been"
+        ],
+        "widths": [
+          160,
+          104,
+          224,
+          104,
+          152,
+          128,
+          160,
+          160,
+          152,
+          176,
+          136,
+          208,
+          216,
+          128,
+          232,
+          120,
+          184,
+          240,
+          88,
+          144,
+          208,
+          152,
+          152,
+          208,
+          160,
+          88,
+          184,
+          192,
+          144,
+          136
+        ]
+      },
+      {
+        "advances": [
+          7,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12
+        ],
+        "ascent": 8,
+        "char_spacing": 1,
+        "data_settings": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EarthboundZero_zh_cn.otf"
+          }
+        ],
+        "descent": 4,
+        "height": 12,
+        "pairs": [
+          {
+            "advance": 7,
+            "codepoint": 50,
+            "next": 48
+          },
+          {
+            "advance": 7,
+            "codepoint": 48,
+            "next": 19990
+          },
+          {
+            "advance": 13,
+            "codepoint": 19990,
+            "next": 32426
+          },
+          {
+            "advance": 13,
+            "codepoint": 32426,
+            "next": 21021
+          },
+          {
+            "advance": 13,
+            "codepoint": 21021,
+            "next": 65292
+          },
+          {
+            "advance": 13,
+            "codepoint": 65292,
+            "next": 19968
+          },
+          {
+            "advance": 13,
+            "codepoint": 19968,
+            "next": 29255
+          },
+          {
+            "advance": 13,
+            "codepoint": 29255,
+            "next": 35809
+          },
+          {
+            "advance": 13,
+            "codepoint": 35809,
+            "next": 24322
+          },
+          {
+            "advance": 13,
+            "codepoint": 24322,
+            "next": 30340
+          },
+          {
+            "advance": 13,
+            "codepoint": 30340,
+            "next": 38452
+          },
+          {
+            "advance": 13,
+            "codepoint": 38452,
+            "next": 24433
+          },
+          {
+            "advance": 13,
+            "codepoint": 24433,
+            "next": 31548
+          },
+          {
+            "advance": 13,
+            "codepoint": 31548,
+            "next": 32617
+          },
+          {
+            "advance": 13,
+            "codepoint": 32617,
+            "next": 20102
+          },
+          {
+            "advance": 12,
+            "codepoint": 20102,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 19976,
+            "next": 22827
+          },
+          {
+            "advance": 13,
+            "codepoint": 22827,
+            "next": 21517
+          },
+          {
+            "advance": 13,
+            "codepoint": 21517,
+            "next": 20026
+          },
+          {
+            "advance": 13,
+            "codepoint": 20026,
+            "next": 20052
+          },
+          {
+            "advance": 13,
+            "codepoint": 20052,
+            "next": 27835
+          },
+          {
+            "advance": 13,
+            "codepoint": 27835,
+            "next": 65292
+          },
+          {
+            "advance": 13,
+            "codepoint": 65292,
+            "next": 22971
+          },
+          {
+            "advance": 13,
+            "codepoint": 22971,
+            "next": 23376
+          },
+          {
+            "advance": 13,
+            "codepoint": 23376,
+            "next": 21517
+          },
+          {
+            "advance": 13,
+            "codepoint": 21517,
+            "next": 20026
+          },
+          {
+            "advance": 13,
+            "codepoint": 20026,
+            "next": 29595
+          },
+          {
+            "advance": 13,
+            "codepoint": 29595,
+            "next": 20029
+          },
+          {
+            "advance": 13,
+            "codepoint": 20029,
+            "next": 20122
+          },
+          {
+            "advance": 13,
+            "codepoint": 20122,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 20004,
+            "next": 24180
+          },
+          {
+            "advance": 13,
+            "codepoint": 24180,
+            "next": 21518
+          },
+          {
+            "advance": 13,
+            "codepoint": 21518,
+            "next": 65292
+          },
+          {
+            "advance": 13,
+            "codepoint": 65292,
+            "next": 19968
+          },
+          {
+            "advance": 13,
+            "codepoint": 19968,
+            "next": 22914
+          },
+          {
+            "advance": 13,
+            "codepoint": 22914,
+            "next": 24403
+          },
+          {
+            "advance": 13,
+            "codepoint": 24403,
+            "next": 24180
+          },
+          {
+            "advance": 13,
+            "codepoint": 24180,
+            "next": 28040
+          },
+          {
+            "advance": 13,
+            "codepoint": 28040,
+            "next": 22833
+          },
+          {
+            "advance": 13,
+            "codepoint": 22833,
+            "next": 26102
+          },
+          {
+            "advance": 13,
+            "codepoint": 26102,
+            "next": 37027
+          },
+          {
+            "advance": 13,
+            "codepoint": 37027,
+            "next": 26679
+          },
+          {
+            "advance": 13,
+            "codepoint": 26679,
+            "next": 65292
+          },
+          {
+            "advance": 12,
+            "codepoint": 65292,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 20052,
+            "next": 27835
+          },
+          {
+            "advance": 13,
+            "codepoint": 27835,
+            "next": 31361
+          },
+          {
+            "advance": 13,
+            "codepoint": 31361,
+            "next": 28982
+          },
+          {
+            "advance": 13,
+            "codepoint": 28982,
+            "next": 22238
+          },
+          {
+            "advance": 13,
+            "codepoint": 22238,
+            "next": 26469
+          },
+          {
+            "advance": 13,
+            "codepoint": 26469,
+            "next": 20102
+          },
+          {
+            "advance": 13,
+            "codepoint": 20102,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 20182,
+            "next": 20174
+          },
+          {
+            "advance": 13,
+            "codepoint": 20174,
+            "next": 26410
+          },
+          {
+            "advance": 13,
+            "codepoint": 26410,
+            "next": 21521
+          },
+          {
+            "advance": 13,
+            "codepoint": 21521,
+            "next": 20219
+          },
+          {
+            "advance": 13,
+            "codepoint": 20219,
+            "next": 20309
+          },
+          {
+            "advance": 13,
+            "codepoint": 20309,
+            "next": 20154
+          },
+          {
+            "advance": 13,
+            "codepoint": 20154,
+            "next": 36879
+          },
+          {
+            "advance": 13,
+            "codepoint": 36879,
+            "next": 38706
+          },
+          {
+            "advance": 13,
+            "codepoint": 38706,
+            "next": 33258
+          },
+          {
+            "advance": 13,
+            "codepoint": 33258,
+            "next": 24049
+          },
+          {
+            "advance": 13,
+            "codepoint": 24049,
+            "next": 21435
+          },
+          {
+            "advance": 13,
+            "codepoint": 21435,
+            "next": 20102
+          },
+          {
+            "advance": 13,
+            "codepoint": 20102,
+            "next": 21738
+          },
+          {
+            "advance": 13,
+            "codepoint": 21738,
+            "next": 37324
+          },
+          {
+            "advance": 13,
+            "codepoint": 37324,
+            "next": 65292
+          },
+          {
+            "advance": 12,
+            "codepoint": 65292,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 20182,
+            "next": 20204
+          },
+          {
+            "advance": 13,
+            "codepoint": 20204,
+            "next": 28040
+          },
+          {
+            "advance": 13,
+            "codepoint": 28040,
+            "next": 22833
+          },
+          {
+            "advance": 13,
+            "codepoint": 22833,
+            "next": 30340
+          },
+          {
+            "advance": 13,
+            "codepoint": 30340,
+            "next": 37027
+          },
+          {
+            "advance": 13,
+            "codepoint": 37027,
+            "next": 19968
+          },
+          {
+            "advance": 13,
+            "codepoint": 19968,
+            "next": 21051
+          },
+          {
+            "advance": 13,
+            "codepoint": 21051,
+            "next": 65292
+          },
+          {
+            "advance": 12,
+            "codepoint": 65292,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 20294,
+            "next": 38543
+          },
+          {
+            "advance": 13,
+            "codepoint": 38543,
+            "next": 21518
+          },
+          {
+            "advance": 13,
+            "codepoint": 21518,
+            "next": 20182
+          },
+          {
+            "advance": 13,
+            "codepoint": 20182,
+            "next": 21364
+          },
+          {
+            "advance": 13,
+            "codepoint": 21364,
+            "next": 24320
+          },
+          {
+            "advance": 13,
+            "codepoint": 24320,
+            "next": 22987
+          },
+          {
+            "advance": 13,
+            "codepoint": 22987,
+            "next": 29420
+          },
+          {
+            "advance": 13,
+            "codepoint": 29420,
+            "next": 33258
+          },
+          {
+            "advance": 13,
+            "codepoint": 33258,
+            "next": 19968
+          },
+          {
+            "advance": 13,
+            "codepoint": 19968,
+            "next": 20154
+          },
+          {
+            "advance": 13,
+            "codepoint": 20154,
+            "next": 36827
+          },
+          {
+            "advance": 13,
+            "codepoint": 36827,
+            "next": 34892
+          },
+          {
+            "advance": 12,
+            "codepoint": 34892,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 21448,
+            "next": 20570
+          },
+          {
+            "advance": 13,
+            "codepoint": 20570,
+            "next": 20102
+          },
+          {
+            "advance": 13,
+            "codepoint": 20102,
+            "next": 20160
+          },
+          {
+            "advance": 13,
+            "codepoint": 20160,
+            "next": 20040
+          },
+          {
+            "advance": 13,
+            "codepoint": 20040,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 22905,
+            "next": 20877
+          },
+          {
+            "advance": 13,
+            "codepoint": 20877,
+            "next": 20063
+          },
+          {
+            "advance": 13,
+            "codepoint": 20063,
+            "next": 27809
+          },
+          {
+            "advance": 13,
+            "codepoint": 27809,
+            "next": 26377
+          },
+          {
+            "advance": 13,
+            "codepoint": 26377,
+            "next": 22238
+          },
+          {
+            "advance": 13,
+            "codepoint": 22238,
+            "next": 26469
+          },
+          {
+            "advance": 13,
+            "codepoint": 26469,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 23545,
+            "next": 80
+          },
+          {
+            "advance": 7,
+            "codepoint": 80,
+            "next": 83
+          },
+          {
+            "advance": 7,
+            "codepoint": 83,
+            "next": 73
+          },
+          {
+            "advance": 7,
+            "codepoint": 73,
+            "next": 30340
+          },
+          {
+            "advance": 13,
+            "codepoint": 30340,
+            "next": 22855
+          },
+          {
+            "advance": 13,
+            "codepoint": 22855,
+            "next": 24322
+          },
+          {
+            "advance": 13,
+            "codepoint": 24322,
+            "next": 30740
+          },
+          {
+            "advance": 13,
+            "codepoint": 30740,
+            "next": 31350
+          },
+          {
+            "advance": 13,
+            "codepoint": 31350,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 26102,
+            "next": 20809
+          },
+          {
+            "advance": 13,
+            "codepoint": 20809,
+            "next": 39134
+          },
+          {
+            "advance": 13,
+            "codepoint": 39134,
+            "next": 36893
+          },
+          {
+            "advance": 13,
+            "codepoint": 36893,
+            "next": 65292
+          },
+          {
+            "advance": 13,
+            "codepoint": 65292,
+            "next": 56
+          },
+          {
+            "advance": 7,
+            "codepoint": 56,
+            "next": 48
+          },
+          {
+            "advance": 7,
+            "codepoint": 48,
+            "next": 24180
+          },
+          {
+            "advance": 13,
+            "codepoint": 24180,
+            "next": 36807
+          },
+          {
+            "advance": 13,
+            "codepoint": 36807,
+            "next": 21435
+          },
+          {
+            "advance": 13,
+            "codepoint": 21435,
+            "next": 20102
+          },
+          {
+            "advance": 13,
+            "codepoint": 20102,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 26368,
+            "next": 21518
+          },
+          {
+            "advance": 13,
+            "codepoint": 21518,
+            "next": 19968
+          },
+          {
+            "advance": 13,
+            "codepoint": 19968,
+            "next": 36215
+          },
+          {
+            "advance": 13,
+            "codepoint": 36215,
+            "next": 20107
+          },
+          {
+            "advance": 13,
+            "codepoint": 20107,
+            "next": 20214
+          },
+          {
+            "advance": 12,
+            "codepoint": 20214,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 28041,
+            "next": 21450
+          },
+          {
+            "advance": 13,
+            "codepoint": 21450,
+            "next": 21040
+          },
+          {
+            "advance": 13,
+            "codepoint": 21040,
+            "next": 20102
+          },
+          {
+            "advance": 13,
+            "codepoint": 20102,
+            "next": 19968
+          },
+          {
+            "advance": 13,
+            "codepoint": 19968,
+            "next": 23545
+          },
+          {
+            "advance": 13,
+            "codepoint": 23545,
+            "next": 24180
+          },
+          {
+            "advance": 13,
+            "codepoint": 24180,
+            "next": 36731
+          },
+          {
+            "advance": 13,
+            "codepoint": 36731,
+            "next": 22827
+          },
+          {
+            "advance": 13,
+            "codepoint": 22827,
+            "next": 22919
+          },
+          {
+            "advance": 13,
+            "codepoint": 22919,
+            "next": 30340
+          },
+          {
+            "advance": 13,
+            "codepoint": 30340,
+            "next": 31163
+          },
+          {
+            "advance": 13,
+            "codepoint": 31163,
+            "next": 22855
+          },
+          {
+            "advance": 13,
+            "codepoint": 22855,
+            "next": 22833
+          },
+          {
+            "advance": 13,
+            "codepoint": 22833,
+            "next": 36394
+          },
+          {
+            "advance": 13,
+            "codepoint": 36394,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 31070,
+            "next": 31192
+          },
+          {
+            "advance": 13,
+            "codepoint": 31192,
+            "next": 22320
+          },
+          {
+            "advance": 13,
+            "codepoint": 22320,
+            "next": 20957
+          },
+          {
+            "advance": 13,
+            "codepoint": 20957,
+            "next": 32858
+          },
+          {
+            "advance": 13,
+            "codepoint": 32858,
+            "next": 25104
+          },
+          {
+            "advance": 13,
+            "codepoint": 25104,
+            "next": 24418
+          },
+          {
+            "advance": 13,
+            "codepoint": 24418,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 32654,
+            "next": 22269
+          },
+          {
+            "advance": 13,
+            "codepoint": 22269,
+            "next": 20065
+          },
+          {
+            "advance": 13,
+            "codepoint": 20065,
+            "next": 38388
+          },
+          {
+            "advance": 13,
+            "codepoint": 38388,
+            "next": 30340
+          },
+          {
+            "advance": 13,
+            "codepoint": 30340,
+            "next": 19968
+          },
+          {
+            "advance": 13,
+            "codepoint": 19968,
+            "next": 24231
+          },
+          {
+            "advance": 13,
+            "codepoint": 24231,
+            "next": 23567
+          },
+          {
+            "advance": 13,
+            "codepoint": 23567,
+            "next": 38215
+          },
+          {
+            "advance": 13,
+            "codepoint": 38215,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 33267,
+            "next": 20110
+          },
+          {
+            "advance": 13,
+            "codepoint": 20110,
+            "next": 20182
+          },
+          {
+            "advance": 13,
+            "codepoint": 20182,
+            "next": 30340
+          },
+          {
+            "advance": 13,
+            "codepoint": 30340,
+            "next": 22971
+          },
+          {
+            "advance": 13,
+            "codepoint": 22971,
+            "next": 23376
+          },
+          {
+            "advance": 13,
+            "codepoint": 23376,
+            "next": 29595
+          },
+          {
+            "advance": 13,
+            "codepoint": 29595,
+            "next": 20029
+          },
+          {
+            "advance": 13,
+            "codepoint": 20029,
+            "next": 20122
+          },
+          {
+            "advance": 13,
+            "codepoint": 20122,
+            "next": 8230
+          },
+          {
+            "advance": 12,
+            "codepoint": 8230,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 36825,
+            "next": 29255
+          },
+          {
+            "advance": 13,
+            "codepoint": 29255,
+            "next": 35809
+          },
+          {
+            "advance": 13,
+            "codepoint": 35809,
+            "next": 24433
+          },
+          {
+            "advance": 13,
+            "codepoint": 24433,
+            "next": 22312
+          },
+          {
+            "advance": 13,
+            "codepoint": 22312,
+            "next": 31992
+          },
+          {
+            "advance": 13,
+            "codepoint": 31992,
+            "next": 20117
+          },
+          {
+            "advance": 13,
+            "codepoint": 20117,
+            "next": 23665
+          },
+          {
+            "advance": 13,
+            "codepoint": 23665,
+            "next": 30340
+          },
+          {
+            "advance": 13,
+            "codepoint": 30340,
+            "next": 23665
+          },
+          {
+            "advance": 13,
+            "codepoint": 23665,
+            "next": 24005
+          },
+          {
+            "advance": 13,
+            "codepoint": 24005,
+            "next": 19978
+          },
+          {
+            "advance": 12,
+            "codepoint": 19978,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 37027,
+            "next": 27573
+          },
+          {
+            "advance": 13,
+            "codepoint": 27573,
+            "next": 26102
+          },
+          {
+            "advance": 13,
+            "codepoint": 26102,
+            "next": 38388
+          },
+          {
+            "advance": 13,
+            "codepoint": 38388,
+            "next": 65292
+          },
+          {
+            "advance": 13,
+            "codepoint": 65292,
+            "next": 36229
+          },
+          {
+            "advance": 13,
+            "codepoint": 36229,
+            "next": 33258
+          },
+          {
+            "advance": 13,
+            "codepoint": 33258,
+            "next": 28982
+          },
+          {
+            "advance": 13,
+            "codepoint": 28982,
+            "next": 20107
+          },
+          {
+            "advance": 13,
+            "codepoint": 20107,
+            "next": 20214
+          },
+          {
+            "advance": 13,
+            "codepoint": 20214,
+            "next": 25509
+          },
+          {
+            "advance": 13,
+            "codepoint": 25509,
+            "next": 36830
+          },
+          {
+            "advance": 13,
+            "codepoint": 36830,
+            "next": 19981
+          },
+          {
+            "advance": 13,
+            "codepoint": 19981,
+            "next": 26029
+          },
+          {
+            "advance": 13,
+            "codepoint": 26029,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 13,
+            "codepoint": 37027,
+            "next": 29255
+          },
+          {
+            "advance": 13,
+            "codepoint": 29255,
+            "next": 35809
+          },
+          {
+            "advance": 13,
+            "codepoint": 35809,
+            "next": 24433
+          },
+          {
+            "advance": 13,
+            "codepoint": 24433,
+            "next": 20063
+          },
+          {
+            "advance": 13,
+            "codepoint": 20063,
+            "next": 38543
+          },
+          {
+            "advance": 13,
+            "codepoint": 38543,
+            "next": 20043
+          },
+          {
+            "advance": 13,
+            "codepoint": 20043,
+            "next": 25955
+          },
+          {
+            "advance": 13,
+            "codepoint": 25955,
+            "next": 21435
+          },
+          {
+            "advance": 13,
+            "codepoint": 21435,
+            "next": 12290
+          },
+          {
+            "advance": 12,
+            "codepoint": 12290,
+            "next": 0
+          }
+        ],
+        "size": 12,
+        "source": "Fonts/EB0_zh_cn.tres",
+        "space_spacing": 0,
+        "texts": [
+          "20世纪初，一片诡异的阴影笼罩了",
+          "丈夫名为乔治，妻子名为玛丽亚。",
+          "两年后，一如当年消失时那样，",
+          "乔治突然回来了。",
+          "他从未向任何人透露自己去了哪里，",
+          "他们消失的那一刻，",
+          "但随后他却开始独自一人进行",
+          "又做了什么。",
+          "她再也没有回来。",
+          "对PSI的奇异研究。",
+          "时光飞逝，80年过去了。",
+          "最后一起事件",
+          "涉及到了一对年轻夫妇的离奇失踪。",
+          "神秘地凝聚成形。",
+          "美国乡间的一座小镇。",
+          "至于他的妻子玛丽亚…",
+          "这片诡影在糸井山的山巅上",
+          "那段时间，超自然事件接连不断。",
+          "那片诡影也随之散去。"
+        ],
+        "widths": [
+          195,
+          194,
+          181,
+          103,
+          207,
+          116,
+          168,
+          77,
+          103,
+          111,
+          143,
+          77,
+          207,
+          103,
+          129,
+          129,
+          155,
+          194,
+          129
+        ]
+      },
+      {
+        "advances": [
+          3,
+          3,
+          3,
+          4,
+          6,
+          6,
+          7,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          5,
+          5,
+          2,
+          5,
+          2,
+          8,
+          5,
+          5,
+          4,
+          5,
+          4,
+          5,
+          8,
+          5,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ],
+        "ascent": 11,
+        "char_spacing": 0,
+        "data_settings": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_fw9.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_jaM3.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_ko.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/EBMain_zh_cn.ttf"
+          }
+        ],
+        "descent": 1,
+        "height": 12,
+        "pairs": [
+          {
+            "advance": 6,
+            "codepoint": 79,
+            "next": 117
+          },
+          {
+            "advance": 5,
+            "codepoint": 117,
+            "next": 116
+          },
+          {
+            "advance": 4,
+            "codepoint": 116,
+            "next": 115
+          },
+          {
+            "advance": 5,
+            "codepoint": 115,
+            "next": 105
+          },
+          {
+            "advance": 2,
+            "codepoint": 105,
+            "next": 100
+          },
+          {
+            "advance": 5,
+            "codepoint": 100,
+            "next": 101
+          },
+          {
+            "advance": 5,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 80
+          },
+          {
+            "advance": 6,
+            "codepoint": 80,
+            "next": 111
+          },
+          {
+            "advance": 5,
+            "codepoint": 111,
+            "next": 100
+          },
+          {
+            "advance": 5,
+            "codepoint": 100,
+            "next": 117
+          },
+          {
+            "advance": 5,
+            "codepoint": 117,
+            "next": 110
+          },
+          {
+            "advance": 5,
+            "codepoint": 110,
+            "next": 107
+          },
+          {
+            "advance": 5,
+            "codepoint": 107,
+            "next": 44
+          },
+          {
+            "advance": 3,
+            "codepoint": 44,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 97
+          },
+          {
+            "advance": 5,
+            "codepoint": 97,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 115
+          },
+          {
+            "advance": 5,
+            "codepoint": 115,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 97
+          },
+          {
+            "advance": 5,
+            "codepoint": 97,
+            "next": 108
+          },
+          {
+            "advance": 2,
+            "codepoint": 108,
+            "next": 108
+          },
+          {
+            "advance": 2,
+            "codepoint": 108,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 116
+          },
+          {
+            "advance": 4,
+            "codepoint": 116,
+            "next": 111
+          },
+          {
+            "advance": 5,
+            "codepoint": 111,
+            "next": 119
+          },
+          {
+            "advance": 8,
+            "codepoint": 119,
+            "next": 110
+          },
+          {
+            "advance": 5,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 105
+          },
+          {
+            "advance": 2,
+            "codepoint": 105,
+            "next": 110
+          },
+          {
+            "advance": 5,
+            "codepoint": 110,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 65
+          },
+          {
+            "advance": 7,
+            "codepoint": 65,
+            "next": 109
+          },
+          {
+            "advance": 8,
+            "codepoint": 109,
+            "next": 101
+          },
+          {
+            "advance": 5,
+            "codepoint": 101,
+            "next": 114
+          },
+          {
+            "advance": 4,
+            "codepoint": 114,
+            "next": 105
+          },
+          {
+            "advance": 2,
+            "codepoint": 105,
+            "next": 99
+          },
+          {
+            "advance": 5,
+            "codepoint": 99,
+            "next": 97
+          },
+          {
+            "advance": 5,
+            "codepoint": 97,
+            "next": 46
+          },
+          {
+            "advance": 3,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 6,
+            "codepoint": 84,
+            "next": 104
+          },
+          {
+            "advance": 5,
+            "codepoint": 104,
+            "next": 101
+          },
+          {
+            "advance": 5,
+            "codepoint": 101,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 121
+          },
+          {
+            "advance": 5,
+            "codepoint": 121,
+            "next": 101
+          },
+          {
+            "advance": 5,
+            "codepoint": 101,
+            "next": 97
+          },
+          {
+            "advance": 5,
+            "codepoint": 97,
+            "next": 114
+          },
+          {
+            "advance": 4,
+            "codepoint": 114,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 105
+          },
+          {
+            "advance": 2,
+            "codepoint": 105,
+            "next": 115
+          },
+          {
+            "advance": 5,
+            "codepoint": 115,
+            "next": 32
+          },
+          {
+            "advance": 3,
+            "codepoint": 32,
+            "next": 49
+          },
+          {
+            "advance": 4,
+            "codepoint": 49,
+            "next": 57
+          },
+          {
+            "advance": 6,
+            "codepoint": 57,
+            "next": 56
+          },
+          {
+            "advance": 6,
+            "codepoint": 56,
+            "next": 56
+          },
+          {
+            "advance": 6,
+            "codepoint": 56,
+            "next": 46
+          },
+          {
+            "advance": 3,
+            "codepoint": 46,
+            "next": 0
+          },
+          {
+            "advance": 10,
+            "codepoint": 25925,
+            "next": 20107
+          },
+          {
+            "advance": 10,
+            "codepoint": 20107,
+            "next": 21457
+          },
+          {
+            "advance": 10,
+            "codepoint": 21457,
+            "next": 29983
+          },
+          {
+            "advance": 10,
+            "codepoint": 29983,
+            "next": 20110
+          },
+          {
+            "advance": 10,
+            "codepoint": 20110,
+            "next": 32654
+          },
+          {
+            "advance": 10,
+            "codepoint": 32654,
+            "next": 22269
+          },
+          {
+            "advance": 10,
+            "codepoint": 22269,
+            "next": 30340
+          },
+          {
+            "advance": 10,
+            "codepoint": 30340,
+            "next": 19968
+          },
+          {
+            "advance": 10,
+            "codepoint": 19968,
+            "next": 24231
+          },
+          {
+            "advance": 10,
+            "codepoint": 24231,
+            "next": 23567
+          },
+          {
+            "advance": 10,
+            "codepoint": 23567,
+            "next": 38215
+          },
+          {
+            "advance": 10,
+            "codepoint": 38215,
+            "next": 65292
+          },
+          {
+            "advance": 10,
+            "codepoint": 65292,
+            "next": 27874
+          },
+          {
+            "advance": 10,
+            "codepoint": 27874,
+            "next": 39039
+          },
+          {
+            "advance": 10,
+            "codepoint": 39039,
+            "next": 20811
+          },
+          {
+            "advance": 10,
+            "codepoint": 20811,
+            "next": 37066
+          },
+          {
+            "advance": 10,
+            "codepoint": 37066,
+            "next": 22806
+          },
+          {
+            "advance": 10,
+            "codepoint": 22806,
+            "next": 12290
+          },
+          {
+            "advance": 10,
+            "codepoint": 12290,
+            "next": 0
+          },
+          {
+            "advance": 10,
+            "codepoint": 26102,
+            "next": 38388
+          },
+          {
+            "advance": 10,
+            "codepoint": 38388,
+            "next": 26469
+          },
+          {
+            "advance": 10,
+            "codepoint": 26469,
+            "next": 21040
+          },
+          {
+            "advance": 10,
+            "codepoint": 21040,
+            "next": 20102
+          },
+          {
+            "advance": 10,
+            "codepoint": 20102,
+            "next": 49
+          },
+          {
+            "advance": 4,
+            "codepoint": 49,
+            "next": 57
+          },
+          {
+            "advance": 6,
+            "codepoint": 57,
+            "next": 56
+          },
+          {
+            "advance": 6,
+            "codepoint": 56,
+            "next": 56
+          },
+          {
+            "advance": 6,
+            "codepoint": 56,
+            "next": 24180
+          },
+          {
+            "advance": 10,
+            "codepoint": 24180,
+            "next": 12290
+          },
+          {
+            "advance": 10,
+            "codepoint": 12290,
+            "next": 0
+          }
+        ],
+        "size": 16,
+        "source": "Fonts/EBMain.tres",
+        "space_spacing": 0,
+        "texts": [
+          "Outside Podunk, a small town in America.",
+          "The year is 1988.",
+          "故事发生于美国的一座小镇，波顿克郊外。",
+          "时间来到了1988年。"
+        ],
+        "widths": [
+          179,
+          76,
+          190,
+          92
+        ]
+      },
+      {
+        "advances": [
+          8,
+          8,
+          7,
+          8,
+          8
+        ],
+        "ascent": 11,
+        "char_spacing": -1,
+        "data_settings": [
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_ja.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_ko.ttf"
+          },
+          {
+            "antialiased": false,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_zh_cn.otf"
+          }
+        ],
+        "descent": 0,
+        "height": 11,
+        "pairs": [
+          {
+            "advance": 7,
+            "codepoint": 83,
+            "next": 107
+          },
+          {
+            "advance": 7,
+            "codepoint": 107,
+            "next": 105
+          },
+          {
+            "advance": 6,
+            "codepoint": 105,
+            "next": 112
+          },
+          {
+            "advance": 8,
+            "codepoint": 112,
+            "next": 0
+          }
+        ],
+        "size": 16,
+        "source": "Fonts/BottleRocket.tres",
+        "space_spacing": 3,
+        "texts": [
+          "Skip"
+        ],
+        "widths": [
+          28
+        ]
+      },
+      {
+        "advances": [
+          8,
+          9,
+          9
+        ],
+        "ascent": 11,
+        "char_spacing": -1,
+        "data_settings": [
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket.ttf"
+          },
+          {
+            "antialiased": true,
+            "hinting": 2,
+            "path": "Fonts/BottleRocket_zh_cn.otf"
+          }
+        ],
+        "descent": 0,
+        "height": 11,
+        "pairs": [
+          {
+            "advance": 8,
+            "codepoint": 36339,
+            "next": 36807
+          },
+          {
+            "advance": 9,
+            "codepoint": 36807,
+            "next": 0
+          }
+        ],
+        "size": 16,
+        "source": "Fonts/BottleRocket_zh_cn.tres",
+        "space_spacing": 3,
+        "texts": [
+          "跳过"
+        ],
+        "widths": [
+          17
+        ]
+      }
+    ],
+    "freetype_metrics_version": "2.12.1",
+    "version": {
+      "build": "official",
+      "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "hex": 198146,
+      "major": 3,
+      "minor": 6,
+      "patch": 2,
+      "status": "stable",
+      "string": "3.6.2-stable (official)",
+      "year": 2025
+    }
+  },
+  "metrics_generator_sha256": "a8b56baa0d7af4f65d6f293fca08117e4ff18840ce9d7aaf9671447e5523cb81",
+  "pages": [
+    {
+      "crc32": 3041185932,
+      "file_bytes": 131093,
+      "height": 256,
+      "path": "face-0-000.t3x",
+      "sha256": "5725498a7963a3d3b3444c1bff8fb51757b35386da3547ee8a0bcdeae0ce9ceb",
+      "texture_bytes": 131072,
+      "width": 256
+    },
+    {
+      "crc32": 3259467180,
+      "file_bytes": 131093,
+      "height": 256,
+      "path": "face-1-000.t3x",
+      "sha256": "e84b84a782a8f4bb733d297e89602bc23fd0dc4375fd12df37f94ea1e627dc65",
+      "texture_bytes": 131072,
+      "width": 256
+    },
+    {
+      "crc32": 1507853976,
+      "file_bytes": 131093,
+      "height": 256,
+      "path": "face-2-000.t3x",
+      "sha256": "85b3788e9458c4bfe8c159f65dbf4a54834dfb7f32d2367e6f46dd5c2bc3c039",
+      "texture_bytes": 131072,
+      "width": 256
+    },
+    {
+      "crc32": 976906061,
+      "file_bytes": 131093,
+      "height": 256,
+      "path": "face-3-000.t3x",
+      "sha256": "5c175c737fecb9f9fa6f1361bcfc975d86e6d1b35802edb2d83eb556d23c32a5",
+      "texture_bytes": 131072,
+      "width": 256
+    },
+    {
+      "crc32": 3619877765,
+      "file_bytes": 131093,
+      "height": 256,
+      "path": "face-4-000.t3x",
+      "sha256": "0a77c6547df50dfd52f69f13376c426ffc0c3a0a7f60a89edad36f0666c64909",
+      "texture_bytes": 131072,
+      "width": 256
+    }
+  ],
+  "pillow_version": "12.3.0",
+  "recipe_sha256": "71f47ace5683e1e2981d51c33708db3b4f9a6515037d6b886275a28e0c948be9",
+  "schema": 1,
+  "sources": {
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Fonts/BottleRocket_zh_cn.tres": "8c0312896267441ebf322e057a8e77d9cbce8c07becadf6c98e31977018e3925",
+    "Fonts/EB0_la.tres": "b4c7df2f04e2909ba2d17dbe7ce7aa2326688af192a152c6433e5934c54aaf49",
+    "Fonts/EB0_zh_cn.tres": "f67f7909436799ea6d9e7c710d0ee7b385508f943f2c67377dde6031d076ba58",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.tres": "eca67a75ba69dc4669db4b4e6c00bf6126a8cb03b5fd54620b7159f69e6de28c",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Fonts/EarthboundZero.ttf": "decf81bbe4f7c36bb7472be05c00db1dd86739bd14863b53d0d7d79c68315fb8",
+    "Fonts/EarthboundZero_zh_cn.otf": "10ae119fe7d1460444f78a312399bb0962846644cab94a2161456e4a019ac7b1",
+    "Graphics/Cutscenes/Intro/Intro_0_1.png": "afbac79b7422c8a16a7b6b8dba94a3274d93b6e0b40f13279e8c864e7e91919d",
+    "Graphics/Cutscenes/Intro/Intro_0_1.png.import": "5ee919045d802f3b155d88d47376f8068f301afed494e28cb7815d4c8541df11",
+    "Graphics/Cutscenes/Intro/Intro_0_2.png": "c6830ca15194d415a3f125f808a6ba8d04b0f5a87f409fb8fe862a7639232bc1",
+    "Graphics/Cutscenes/Intro/Intro_0_2.png.import": "8f3ac6206c231f69194b044b0ec8287b5b6dda08a147066beb1c549a11815322",
+    "Graphics/Cutscenes/Intro/Intro_0_3.png": "014bb639b79ce575f90549a61d4a8c06203187967115a1b23df4f93193deff88",
+    "Graphics/Cutscenes/Intro/Intro_0_3.png.import": "cefd0b765cd4d38dbd693bbfff8e115eb4889635c9429e0096af99d8e03f943a",
+    "Graphics/Cutscenes/Intro/Intro_1_1.png": "8da92986ef00852592f052ed8fc02d8cd95d6ec6c84901d3a36d666e1209620e",
+    "Graphics/Cutscenes/Intro/Intro_1_1.png.import": "33528f298661d73750d6f45f2169f33225b690f28361326bdc0e1d57ce2d2899",
+    "Graphics/Cutscenes/Intro/Intro_1_2.png": "b182d0b3ca134c7595f6573fbf87f73703a95c997355db954a3bc436e26fbd9f",
+    "Graphics/Cutscenes/Intro/Intro_1_2.png.import": "dbfdd6246820ca9768481e7fe0a5dd7e2842a2406076428d9af9050bf8ad6db8",
+    "Graphics/Cutscenes/Intro/Intro_2_1.png": "5d6832008493b872083f8505cce5cf03e76229a1838105f73c5668d0838183a9",
+    "Graphics/Cutscenes/Intro/Intro_2_1.png.import": "b4ae9efad587e67f10eec3f627a71d7eefa8b0b4103949cf4960a11c4a6bd7b4",
+    "Graphics/Cutscenes/Intro/Intro_3_1.png": "246fcfd2b3b9737b8ed0d2c57bc1063e295f7c8e305df5e64d9a54a6b6f97cae",
+    "Graphics/Cutscenes/Intro/Intro_3_1.png.import": "6241781dbcfab5cea2dd6c253f65252aa79b6ccd72f3bb05f92635802e8552be",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png": "8fb27a44804561952eba7fb597ab92661bad58d9de010c8c6e1f48572f5a2148",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Cloud.png.import": "00af8622d149715581e2a35325b1240fdb9cfae53e3dd80b325d0a06f473e84e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png": "b7b8e666e8bd36f8082771ca29e61bb2f1f832ed3d85a3f6b8fa6da91bba590e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_0.png.import": "d77e95b48b9dec58f0c002a01023ccc7845ada4525515f825a8b43ebcb5b9a0e",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png": "a9658ed22996ba2ff3cce686af7c5c7fc59502468c31e2eacb3ffd5be5519253",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_1.png.import": "d7e094d96679a81211c6ed7e778b081745b071ee39b7a2703077885161cfc2ef",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png": "fa45b97d1954ecc774f470426d4199036eee695916439f03f8da3c9f8b2bca47",
+    "Graphics/Cutscenes/Mt Itoi Landscape/Mt_Itoi_Landscape_Sepia.png.import": "fc2e0a6ad496ead5fbb658971987db688069ad4c0a2118ef6317dc86ab02a24b",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Cutscenes/Introduction.tscn": "cbeea01bab3abc567c2f8f9449da19444ad0aa1a487302f784f9fb35cdfd56d9",
+    "Maps/Cutscenes/Mt Itoi Landscape.tscn": "c334e9ab97f842c9b478430b3ca4ecc0958560aaf2dd1710ec9244e885f69340",
+    "Nodes/Reusables/Mt Itoi Cloud.tscn": "15fc4edd806644bf7550adac93a07df9a52dcfb8ff5c5101b8ee8e4006079129",
+    "Nodes/Ui/Skip.tscn": "38c046267f18ef3b95fa0f430700a46b5f87c57efef509ce64e15d73425fd208",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b",
+    "Translations/TranslatedText/story - sheet.csv": "a04d9adba4bb1a9620a65253d65ccdb3307ecce2696dcfda3f9dd4f5f92c0e2c",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+  },
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e"
+}

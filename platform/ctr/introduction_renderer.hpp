@@ -14,6 +14,12 @@ class IntroductionRenderer {
     const upstream::IntroductionData* data_=nullptr;
     std::vector<LoadingSpriteSheet> sheets_;
     SourceFontRenderer body_,hint_;
+    bool visuals_retired_=false;
+    void release_visuals(){
+        for(auto* sheet:sheets_)if(sheet)loading_sprite_sheet_free(sheet);
+        std::vector<LoadingSpriteSheet>().swap(sheets_);
+        std::string ignored;body_.reset_at_safe_boundary(ignored);hint_.reset_at_safe_boundary(ignored);
+    }
     static uint32_t rgba(uint32_t v){return C2D_Color32(v>>24,(v>>16)&255,(v>>8)&255,v&255);}
     static bool verify(const upstream::IntroResource& r,std::string& error){
         const auto path=std::string("romfs:/")+r.path;FILE* f=std::fopen(path.c_str(),"rb");
@@ -57,25 +63,33 @@ public:
         }
         const auto path=std::string("romfs:/")+data.font_catalog;const auto root=path.substr(0,path.rfind('/'));
         if(!body_.load_catalog_at_safe_boundary(path.c_str(),root.c_str(),error)||!hint_.load_catalog_at_safe_boundary(path.c_str(),root.c_str(),error)){free();return false;}
-        data_=&data;error.clear();return true;
+        data_=&data;visuals_retired_=false;error.clear();return true;
     }
     // Admission, font switches and release always occur before FrameBegin.
     bool prepare(const upstream::IntroductionPose& pose,std::string& error){
         if(!data_){error="Introduction renderer is not loaded";return false;}
         if(!pose.scene_visible){error.clear();return true;}
+        if(visuals_retired_){error="Introduction scene visuals were already retired";return false;}
         return body_.select_font_at_safe_boundary(pose.font_source,error)&&body_.admit_selected_font(error)&&hint_.select_font_at_safe_boundary(pose.hint_font_source,error)&&hint_.admit_selected_font(error);
     }
     bool begin_frame(){return body_.begin_frame()&&hint_.begin_frame();}
     void end_frame(){body_.end_frame();hint_.end_frame();}
-    void free(){for(auto* sheet:sheets_)if(sheet)loading_sprite_sheet_free(sheet);sheets_.clear();std::string error;body_.reset_at_safe_boundary(error);hint_.reset_at_safe_boundary(error);data_=nullptr;}
+    // The final source door exposes the house, so scene art/fonts have no more
+    // consumers. Keep checked data for the remaining door-mask overlay.
+    bool retire_scene_visuals(const upstream::IntroductionPose& pose,std::string& error){
+        if(!data_||pose.scene_visible||(pose.phase!=upstream::IntroPhase::DoorOut&&pose.phase!=upstream::IntroPhase::Complete)){error="Introduction visual retirement before final house boundary";return false;}
+        if(!visuals_retired_){release_visuals();visuals_retired_=true;}
+        error.clear();return true;
+    }
+    void free(){release_visuals();data_=nullptr;visuals_retired_=false;}
     bool draw(const upstream::IntroductionPose& pose,float width,float height)const{
-        if(!data_||!pose.scene_visible)return false;
+        if(!data_||visuals_retired_||!pose.scene_visible)return false;
         C2D_DrawRectSolid(0,0,0,width,height,rgba(pose.background_color));
         for(const auto& background:pose.backgrounds)C2D_DrawRectSolid(background.rect.x,background.rect.y,0,background.rect.width,background.rect.height,rgba(background.color));
         for(const auto& image:pose.images){
             if(!image.visible||image.alpha<=0)continue;
             size_t id=0;while(id<data_->resources.size()&&data_->resources[id].path!=image.path)++id;
-            if(id==sheets_.size()||image.frame>=data_->resources[id].frame_count)return false;
+            if(id>=sheets_.size()||image.frame>=data_->resources[id].frame_count)return false;
             const auto& resource=data_->resources[id];const auto atlas=loading_sprite_sheet_get_image(sheets_[id],0);
             Tex3DS_SubTexture sub=*atlas.subtex;const auto w=resource.width/resource.columns,h=resource.height/resource.rows;
             const auto u=image.frame%resource.columns*w,v=image.frame/resource.columns*h;

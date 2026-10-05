@@ -121,9 +121,13 @@ void update_battle_prewarm(bool world_phase,uint64_t frame_gap=0,bool admission=
         std::string error;
         // Component budgets include both the current battle and all incoming
         // candidate owners. The platform's remaining heap is an additional cap.
+        // Cold admission now owns the round atlases as well as procedural GPU
+        // surfaces: the former 6 MiB grant assumed those atlases were loaded
+        // at boot. The fully cold checked Lamp upper bound is 11,273,472 bytes.
+        // Keep a bounded 12 MiB ceiling and the actual-free-LINEAR constraint.
         const size_t current=battle_renderer.prepared_cpu_bytes()+battle_data.resident_bytes()+round_data.resident_bytes();const auto heap=mallinfo();const size_t used=size_t(heap.uordblks);const size_t outside=used>current?used-current:0;
         const size_t total=envGetHeapSize();const size_t available=total>outside+2*1024*1024?total-outside-2*1024*1024:0;
-        const EncounterResidencyBytes budget{std::min<size_t>(28*1024*1024,available),std::min<size_t>(6*1024*1024,size_t(linearSpaceFree())+battle_renderer.prepared_linear_bytes())};
+        const EncounterResidencyBytes budget{std::min<size_t>(28*1024*1024,available),std::min<size_t>(12*1024*1024,size_t(linearSpaceFree())+battle_renderer.prepared_linear_bytes())};
         unproven_active=battle_renderer.fully_resident()?EncounterResidencyBytes{}:EncounterResidencyBytes{current,battle_renderer.prepared_linear_bytes()};
         if(!encounter_admission.declare(declaration,budget,unproven_active,error)){house_error=error;return;}
         for(size_t i=0;i<declaration.encounters.size();++i)if("romfs:/"+declaration.encounters[i].battle_pack==loaded_battle_path&&battle_renderer.fully_resident()){const EncounterResidencyBytes retained{current,battle_renderer.prepared_linear_bytes()};if(!encounter_admission.reserve(i,retained,error)||!encounter_admission.publish({declaration.scene_epoch,i},retained,error)){house_error=error;return;}}

@@ -1309,7 +1309,11 @@ int main(int argc,char** argv){
             else{
                 if(introduction.playtime_started()){if(!introduction_house_committed)introduction_playtime+=real_dt;else if(!world_input)session_state.playtime_seconds+=real_dt;}
                 if(introduction.house_ready()&&!introduction_house_committed){
-                    if(!commit_named_new_game(error))abort_intro();
+                    // No introduction image/font is consumed after this source
+                    // boundary; retain only its final door-overlay data.
+                    wait_for_gpu_idle();
+                    if(!introduction_renderer.retire_scene_visuals(introduction.pose(),error))abort_intro();
+                    else if(!commit_named_new_game(error))abort_intro();
                     else{introduction_house_committed=true;introduction.rebind_random(battle_random);new_game_setup.close();wait_for_gpu_idle();new_game_renderer.free();native_input.reset();menu_navigation.reset();accumulator=0;}
                 }
                 if(introduction.active()&&introduction.pose().scene_visible&&new_game_renderer.ready()){wait_for_gpu_idle();new_game_renderer.free();texture_owner_checkpoint("naming-released");}

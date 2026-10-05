@@ -126,7 +126,7 @@ int main(int argc,char** argv) {
     bad32(program+16,v.string_count(),"program source path index");
     bad32(program+16,0,"program source path empty");
     if(v.program_count()>1)bad32(row(base,RoomSection::Program,1)+16,v.program(0).source_path_string,"duplicate program source path");
-    bad16(command,43,"unknown opcode");bad32(command+12,1,"command flags");bad32(command+40,0,"unexpected auxiliary command field");bad32(command+44,1,"command reserved field");bad32(command+4,kRoomNoIndex,"command phrase out of program");
+    bad16(command,44,"unknown opcode");bad32(command+12,1,"command flags");bad32(command+40,0,"unexpected auxiliary command field");bad32(command+44,1,"command reserved field");bad32(command+4,kRoomNoIndex,"command phrase out of program");
     for(uint32_t i=0;i<v.command_count();++i) {
         const auto c=v.command(i);const auto off=command+size_t(i)*48;
         if(c.actor_index==kRoomNoActor&&c.opcode!=5) {bad16(off+2,0,"unused command actor");break;}
@@ -141,9 +141,9 @@ int main(int argc,char** argv) {
     bad8(row(base,RoomSection::AnimationBinding)+2,6,"unknown animation motion");bad8(row(base,RoomSection::AnimationBinding)+3,8,"unknown animation direction");bad32(row(base,RoomSection::AnimationBinding)+4,kRoomNoIndex,"animation clip reference");
     // Every opcode seen in the actual program rejects unknown flags and
     // fields that its schema does not use; no name-based runtime dispatch.
-    bool opcode_seen[43]{};
+    bool opcode_seen[44]{};
     for(uint32_t i=0;i<v.command_count();++i) {
-        const auto c=v.command(i);check(c.opcode<43,"supported opcode fits coverage table");if(c.opcode>=43)continue;if(opcode_seen[c.opcode])continue;opcode_seen[c.opcode]=true;
+        const auto c=v.command(i);check(c.opcode<44,"supported opcode fits coverage table");if(c.opcode>=44)continue;if(opcode_seen[c.opcode])continue;opcode_seen[c.opcode]=true;
         const auto off=command+size_t(i)*48;
         bad32(off+12,0x80000000u,"each opcode rejects unknown flags");
         bad32(off+40,0,"each opcode rejects unused or invalid auxiliary fields");

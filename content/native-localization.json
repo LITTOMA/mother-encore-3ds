@@ -78228,6 +78228,24 @@
       "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:4:checked native token projection"
     },
     {
+      "identity": "house.expected/129/1",
+      "key": "5/6:Minnie32:Audio/Sound effects/text/Kid.mp31/1/22:What can I do for you?",
+      "expected": "5/6:Minnie32:Audio/Sound effects/text/Kid.mp31/1/22:What can I do for you?",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/130/1",
+      "key": "5/6:Minnie32:Audio/Sound effects/text/Kid.mp31/1/32:DIALOGUE_PODUNK_MINNIE_STORAGE_2",
+      "expected": "5/6:Minnie32:Audio/Sound effects/text/Kid.mp31/1/32:DIALOGUE_PODUNK_MINNIE_STORAGE_2",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:2:checked native token projection"
+    },
+    {
+      "identity": "house.expected/131/1",
+      "key": "5/6:Minnie32:Audio/Sound effects/text/Kid.mp31/1/29:See you later, and take care!",
+      "expected": "5/6:Minnie32:Audio/Sound effects/text/Kid.mp31/1/29:See you later, and take care!",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3:checked native token projection"
+    },
+    {
       "identity": "house.expected/14/1",
       "key": "5/0:0:2/2/0:1/21: remembered the tune.",
       "expected": "5/0:0:2/2/0:1/21: remembered the tune.",
@@ -78550,6 +78568,24 @@
       "key": "DIALOGUE_PODUNK_CAROL_PANIC_SPEAKER_Carol",
       "expected": "Carol",
       "origin": "Data/Dialogue/Podunk/carol_panic.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/129/1",
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
+      "expected": "Minnie",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:0:name"
+    },
+    {
+      "identity": "house.speaker/130/1",
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
+      "expected": "Minnie",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:2:name"
+    },
+    {
+      "identity": "house.speaker/131/1",
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
+      "expected": "Minnie",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3:name"
     },
     {
       "identity": "house.speaker/15/1",
@@ -78922,6 +78958,24 @@
       "key": "DIALOGUE_PODUNK_NON-PERSON_TEXT_NINTEN_S_HOUSE_BEDSIDE_DRAWER_4",
       "expected": "[@]There's nothing much to see here...",
       "origin": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml:4"
+    },
+    {
+      "identity": "house/129/1",
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_0",
+      "expected": "[@]What can I do for you?",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:0"
+    },
+    {
+      "identity": "house/130/1",
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_2",
+      "expected": "DIALOGUE_PODUNK_MINNIE_STORAGE_2",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:2"
+    },
+    {
+      "identity": "house/131/1",
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_3",
+      "expected": "[@]See you later, and take care!",
+      "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3"
     },
     {
       "identity": "house/14/1",
@@ -79765,6 +79819,7 @@
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
+    "Data/Dialogue/Podunk/minnie_storage.yaml": "a5a4a4e85854bdbecf999a887f27abe5238fc3412d42880c566ecbe0255dbcf4",
     "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
     "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
     "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
@@ -80394,6 +80449,30 @@
       "speaker_key": "",
       "source": "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml",
       "phrase": "4"
+    },
+    {
+      "first": 129,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_0",
+      "speaker_key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
+      "source": "Data/Dialogue/Podunk/minnie_storage.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 130,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_2",
+      "speaker_key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
+      "source": "Data/Dialogue/Podunk/minnie_storage.yaml",
+      "phrase": "2"
+    },
+    {
+      "first": 131,
+      "count": 1,
+      "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_3",
+      "speaker_key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
+      "source": "Data/Dialogue/Podunk/minnie_storage.yaml",
+      "phrase": "3"
     }
   ],
   "battle_bindings": [

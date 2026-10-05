@@ -196,6 +196,17 @@ def check_native_layout(spec,request,metric,glyphs):
         require(abs(expected-width)<=.001,'Original line width differs from bounded native renderer '+spec['source'])
 
 
+def storage_counter_lines(project,font_source):
+    # Reuse the admitted original outlined BottleRocket face, not a replacement
+    # font. Storage owns the formatting and capacity in its independent IR.
+    from tools.storage_assets import load as storage_ir
+    storage=storage_ir(Path(project))
+    b=storage['bindings']
+    if font_source!=b['CounterFont']:return set()
+    pattern=b['CounterPattern'];maximum=int(storage['parameters']['StorageCapacity'])
+    require(pattern.count('%s')==2 and 0<maximum<=64,'Storage counter font coverage admission')
+    return {pattern % (str(n),str(maximum))for n in range(maximum+1)}
+
 def compile_fonts(recipe,godot,tex3ds,project=ROOT,recipe_path=RECIPE,build=None):
     from tools.source_fonts import GODOT
     from fontTools import __version__ as fonttools_version
@@ -203,7 +214,7 @@ def compile_fonts(recipe,godot,tex3ds,project=ROOT,recipe_path=RECIPE,build=None
     project=Path(project);texts=validate(recipe,project,recipe_path);upstream=project/'upstream/MOTHER-Encore';build=Path(build or project/'build/introduction-fonts');probe=build/'godot-project';(probe/'Fonts').mkdir(parents=True,exist_ok=True)
     requests=[];required={};cmaps={};credits={}
     for f in font_specs(recipe):
-        cps={ord(c)for same in recipe['fonts']if same['source']==f['source']for key in same['text_keys']for c in texts[key][same['locale']]if ord(c)>=32}|{ord(c)for same in recipe['fonts']if same['source']==f['source']for c in same['extra_characters']};required[f['source']]=cps;requests.append(dict(source=f['source'],codepoints=sorted(cps),texts=sorted({line for same in recipe['fonts']if same['source']==f['source']for key in same['text_keys']for line in texts[key][same['locale']].split('\n')})))
+        cps={ord(c)for same in recipe['fonts']if same['source']==f['source']for key in same['text_keys']for c in texts[key][same['locale']]if ord(c)>=32}|{ord(c)for same in recipe['fonts']if same['source']==f['source']for c in same['extra_characters']};counter=storage_counter_lines(project,f['source']);cps|={ord(c)for line in counter for c in line};required[f['source']]=cps;requests.append(dict(source=f['source'],codepoints=sorted(cps),texts=sorted({line for same in recipe['fonts']if same['source']==f['source']for key in same['text_keys']for line in texts[key][same['locale']].split('\n')}|counter)))
         shutil.copyfile(safe(upstream,f['source']),probe/f['source'])
         for d in f['definition']['fallback_chain']:
             path=d['path'];shutil.copyfile(safe(upstream,path),probe/path)
@@ -285,6 +296,7 @@ def stage_files(root,project=ROOT,recipe_path=RECIPE):
     for spec,face in zip(font_specs(recipe),font['faces']):
         expected={ord(c)for same in recipe['fonts']if same['source']==spec['source']for key in same['text_keys']for c in texts[key][same['locale']]if ord(c)>=32}|{ord(c)for same in recipe['fonts']if same['source']==spec['source']for c in same['extra_characters']}
         rows=font['glyphs'][face['first_glyph']:face['first_glyph']+face['glyph_count']]
+        counter=storage_counter_lines(project,spec['source']);expected|={ord(c)for line in counter for c in line}
         require({g['codepoint']for g in rows}==expected,'Font required glyph coverage changed')
         require(all(g['source_face']in {d['path']for d in spec['definition']['fallback_chain']}for g in rows),'Glyph fallback source changed')
         metrics=font['metrics'];require(type(metrics)is dict and set(metrics)=={'version','faces','freetype_metrics_version'}and len(metrics['faces'])==len(font['faces']),'Incomplete official font metrics')
@@ -293,7 +305,7 @@ def stage_files(root,project=ROOT,recipe_path=RECIPE):
         exact(metric,('source','size','ascent','descent','height','advances','pairs','texts','widths','char_spacing','space_spacing','data_settings'),'native font metric')
         require(metric['source']==spec['source']and metric['size']==int(spec['definition']['properties'].get('size','16'))and all(metric[k]==face[k]for k in ('ascent','descent','height'))and metric['advances']==[g['advance']for g in rows],'Font native metric binding changed')
         expected_lines=sorted({line for same in recipe['fonts']if same['source']==spec['source']for key in same['text_keys']for line in texts[key][same['locale']].split('\n')})
-        check_native_layout(spec,dict(texts=expected_lines),metric,rows)
+        check_native_layout(spec,dict(texts=sorted(set(expected_lines)|counter)),metric,rows)
     require([f['source']for f in font['faces']]==[f['source']for f in font_specs(recipe)]and all(not f['legacy_ascii']for f in font['faces']),'Font source identity changed')
     for spec,face in zip(font_specs(recipe),font['faces']):require(face['definition']==spec['definition'],'Font definition changed')
     for p in font['pages']:

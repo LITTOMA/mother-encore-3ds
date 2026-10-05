@@ -81,7 +81,7 @@ int main(int argc,char**argv){
   [](auto&s){s.characters.front().nickname="TooLongName";},[](auto&s){s.characters.front().nickname="\xc3\xa9";},
   [](auto&s){s.characters.front().nickname="\n";},[](auto&s){s.player_name="\t";},[](auto&s){s.favorite_food="\xc3\xa9";},
   [](auto&s){s.characters.front().inventory.front().item_id="unknown";},[](auto&s){s.characters.front().inventory.front().doses=2;},
-  [](auto&s){s.characters.front().inventory.front().equipped=false;},[](auto&s){s.key_items.front().uid=s.characters.front().inventory.front().uid;},
+  [](auto&s){s.key_items.front().uid=s.characters.front().inventory.front().uid;},
   [](auto&s){s.flags.pop_back();},[](auto&s){s.flags.front().id="unknown";},[](auto&s){s.flags.push_back(s.flags.front());},
   [](auto&s){s.seen_dialogue_flags.push_back({"unknown",true});},[](auto&s){s.encountered.push_back({"unknown",true});},
   [](auto&s){s.position_x=1e6;},[](auto&s){s.direction_x=.5;s.direction_y=.25;},
@@ -109,7 +109,7 @@ int main(int argc,char**argv){
 
  // Derived session round-trips through Record without replaying rewards, healing,
  // reequipping, reallocating IDs, resetting names, or losing retained metadata.
- NativeSnapshotInput live{prepared.state,&prepared.stats,&prepared.inventory};SessionSnapshot recorded;
+ NativeSnapshotInput live{prepared.state,&prepared.stats,&prepared.inventory,&prepared.storage};SessionSnapshot recorded;
  CHECK(build_native_session_snapshot(data,room.view(),house.view(),round.view(),items.view(),live,recorded,error));
  CHECK(encoded(recorded)==original_bytes);
  CHECK(prepare_session_restore(data,room.view(),house.view(),round.view(),items.view(),font.view(),prepared.state,prepared,error));

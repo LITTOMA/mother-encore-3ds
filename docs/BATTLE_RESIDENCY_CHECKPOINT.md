@@ -37,12 +37,23 @@ The current CTR opening profile allows 1,024 resource references, eight backgrou
 layers, bounded checked pack inputs, at most 2 MiB of indexed pixels per asset,
 a 1 MiB transition-plan payload and a 300 KiB transition-batch LINEAR grant.
 Larger future dependencies are explicitly rejected before interactive admission.
+
+The LINEAR grant includes cold battle/round atlases after delayed boot loading.
+The previous 6 MiB grant assumed these textures were already resident and rejects
+the opening cold path. Actual checked RGBA8 backing shapes give a fully cold
+Lamp upper bound of 11,273,472 bytes with all three GPU mechanisms enabled;
+12 MiB remains additionally constrained by actual free platform LINEAR.
+Introduction image/font owners retire at the final source house boundary, before
+house and encounter allocation. Checked intro data and the final door overlay
+remain alive; source clocks and masks continue without replaying scene images.
+This arithmetic is a host allocation diagnostic, not a hardware measurement.
+Manual cold-grant/shortage/diagnostic regression cases are retained, not run.
 The background reservation is calculated from actual dimensions, palettes and
 kernel allocation shapes, not a fixed 400x240 guess. A distinct 512x512/eight-
 color two-layer stress case requires 21,781,920 bytes and is rejected by a
 20 MiB ticket before allocation.
 
-The opening encounter component ceiling is 28 MiB CPU and 6 MiB incremental
+The opening encounter component ceiling is 28 MiB CPU and 12 MiB incremental
 LINEAR, additionally limited by remaining platform heap minus 2 MiB outside
 headroom and actual free LINEAR. The old unproven owner is charged until its
 replacement is committed. Retained texture/batch allocations use actual padded

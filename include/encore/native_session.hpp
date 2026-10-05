@@ -4,6 +4,7 @@
 #include "encore/items_menu.hpp"
 #include "encore/room_data.hpp"
 #include "encore/session_save.hpp"
+#include "encore/storage_menu.hpp"
 #include <array>
 
 namespace encore::upstream {
@@ -17,6 +18,10 @@ struct NativeSessionLevel {
 struct NativeSessionAcquisition {
     std::string item_id,flag_id;
     uint32_t doses=0,max_count=0;
+};
+struct NativeSessionStoragePolicy {
+    std::string item_id;uint32_t doses=0,total_count=0;bool required=false;
+    std::array<int32_t,7> boosts{};
 };
 class NativeSessionData {
 public:
@@ -42,6 +47,8 @@ public:
     const std::vector<std::string>& mutable_flags()const{return mutable_flags_;}
     const std::vector<uint32_t>& camera_area_ids()const{return camera_area_ids_;}
     const std::vector<NativeSessionAcquisition>& acquisitions()const{return acquisitions_;}
+    uint32_t storage_capacity()const{return storage_capacity_;}
+    const std::vector<NativeSessionStoragePolicy>& storage_policies()const{return storage_policies_;}
 private:
     std::vector<double> text_speeds_;
     std::vector<std::string> menu_flavors_,button_prompts_;
@@ -54,6 +61,7 @@ private:
     std::vector<std::string>mutable_flags_;
     std::vector<uint32_t>camera_area_ids_;
     std::vector<NativeSessionAcquisition>acquisitions_;
+    uint32_t storage_capacity_=0;std::vector<NativeSessionStoragePolicy>storage_policies_;
 };
 
 struct NativeSnapshotInput {
@@ -63,6 +71,7 @@ struct NativeSnapshotInput {
     SessionSnapshot state;
     const BattleSessionStats* stats=nullptr;
     const InventoryState* inventory=nullptr;
+    const StorageState* storage=nullptr;
 };
 // Validates a decoded candidate's complete supported content scope. This does
 // not apply it to a world. Settings/modifiers/items beyond this slice fail closed.
@@ -72,4 +81,8 @@ bool validate_native_session_snapshot(const NativeSessionData&,RoomView,HouseVie
 // validates before committing output. The live saved flag is never changed.
 bool build_native_session_snapshot(const NativeSessionData&,RoomView,HouseView,
     RoundView,ItemView,const NativeSnapshotInput&,SessionSnapshot&,std::string&);
+// Resource rows retain the historical initial equipment baseline. This checked
+// calculation subtracts that baseline and adds only current admitted equipment.
+bool native_session_derived_stats(const NativeSessionData&,ItemView,
+    const SessionCharacter&,std::array<int32_t,7>&,std::string&);
 }

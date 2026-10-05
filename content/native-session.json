@@ -1,5 +1,38 @@
 {
-  "schema": 4,
+  "schema": 5,
+  "storage_capacity": 64,
+  "storage_policies": [
+    {
+      "item_id": "BaseballCap",
+      "doses": 1,
+      "total_count": 1,
+      "required": true,
+      "boosts": [
+        0,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "item_id": "AsthmaSpray",
+      "doses": 3,
+      "total_count": 1,
+      "required": false,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
   "acquisitions": [
     {
       "item_id": "AsthmaSpray",
@@ -2394,12 +2427,13 @@
     "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633"
   },
   "dependencies": {
-    "content/native-opening.json": "9c01acc874de432021d1f3b2fa9a8d5b2bc5537a404a2f353ec7df3f3c9a53b7",
-    "content/native-house.json": "23a6d671bba6f6a50a3410419e524c0b408a8e8ec917bf99071caacd21e61b8c",
+    "content/native-opening.json": "7cbd2700812e32ec935ca2583a5e9f15926c312310b02d207cbe4b0f67a985d7",
+    "content/native-house.json": "84cbde5a56beb3ed455b04e0b181ad5de0cba9b9294eea60c99b91237e41b3c4",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
-    "content/native-round.json": "4f4175dabf32c900da7c9930e92a1b5b071c23b3c8281604dc20ef78fbe91b27",
-    "content/doll-round.json": "58cf834728c38d674304349866d46a831e7b8146257b1620cacc29dc4008b481",
-    "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806"
+    "content/native-round.json": "783a28b84964086616cf2fddac4347e20cc483c97f988c577a783f15f7a9afaa",
+    "content/doll-round.json": "5b367b750ef9b51e09adda9bf71c12d61a1570e8c2e839bcacf1cae07c267bff",
+    "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
+    "content/native-storage.json": "c4cb1436789597fe592bb50f6e807913e3747aa363adb24b5e7a2771a9f480e2"
   }
 }

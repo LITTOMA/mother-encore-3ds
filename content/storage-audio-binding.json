@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "encore.storage-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "license_review": "Original game-related menu sound derivatives under the pinned upstream LICENSE, retaining source notices; no MIT relicensing.",
+  "assets": [
+    {
+      "source": "Audio/Sound effects/EB/close.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1501
+      },
+      "pcm": "sound/effects/storage-clear.pcm",
+      "gain_db": 0,
+      "conversion": null
+    },
+    {
+      "source": "Audio/Sound effects/M3/equip.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1502
+      },
+      "pcm": "sound/effects/storage-equip.pcm",
+      "gain_db": 0,
+      "conversion": null
+    }
+  ]
+}

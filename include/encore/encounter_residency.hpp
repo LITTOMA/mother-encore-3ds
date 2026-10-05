@@ -35,13 +35,17 @@ public:
     bool reserve(size_t index,EncounterResidencyBytes peak,std::string& error){
         if(index>=states_.size()||states_[index]!=State::Missing){error="Encounter preparation ticket is stale or already started";return false;}
         auto used=other_live_;for(const auto& r:reserved_){if(r.cpu>budget_.cpu-used.cpu||r.linear>budget_.linear-used.linear){error="Encounter working set accounting overflow";return false;}used.cpu+=r.cpu;used.linear+=r.linear;}
-        if(peak.cpu>budget_.cpu-used.cpu||peak.linear>budget_.linear-used.linear){error="Scene encounter working set exceeds admission budget";return false;}
+        if(peak.cpu>budget_.cpu-used.cpu||peak.linear>budget_.linear-used.linear){error="Scene encounter working set exceeds admission budget ("+std::string(peak.cpu>budget_.cpu-used.cpu?"CPU":"LINEAR")+
+            " requested="+std::to_string(peak.cpu>budget_.cpu-used.cpu?peak.cpu:peak.linear)+
+            " remaining="+std::to_string(peak.cpu>budget_.cpu-used.cpu?budget_.cpu-used.cpu:budget_.linear-used.linear)+")";return false;}
         reserved_[index]=peak;states_[index]=State::Preparing;return true;
     }
     bool revise(EncounterResidencyTicket ticket,EncounterResidencyBytes peak,std::string& error){
         if(ticket.scene_epoch!=declaration_.scene_epoch||ticket.index>=states_.size()||states_[ticket.index]!=State::Preparing){error="Stale encounter reservation cannot change";return false;}
         auto used=other_live_;for(size_t i=0;i<reserved_.size();++i)if(i!=ticket.index){const auto r=reserved_[i];if(r.cpu>budget_.cpu-used.cpu||r.linear>budget_.linear-used.linear){error="Encounter reservation accounting overflow";return false;}used.cpu+=r.cpu;used.linear+=r.linear;}
-        if(peak.cpu>budget_.cpu-used.cpu||peak.linear>budget_.linear-used.linear){error="Scene encounter working set exceeds admission budget";return false;}
+        if(peak.cpu>budget_.cpu-used.cpu||peak.linear>budget_.linear-used.linear){error="Scene encounter working set exceeds admission budget ("+std::string(peak.cpu>budget_.cpu-used.cpu?"CPU":"LINEAR")+
+            " requested="+std::to_string(peak.cpu>budget_.cpu-used.cpu?peak.cpu:peak.linear)+
+            " remaining="+std::to_string(peak.cpu>budget_.cpu-used.cpu?budget_.cpu-used.cpu:budget_.linear-used.linear)+")";return false;}
         reserved_[ticket.index]=peak;return true;
     }
     bool retire_other_live(EncounterResidencyBytes released){

@@ -55,7 +55,7 @@ class NativeSessionTests(unittest.TestCase):
         legacy=native.read(frozen/'native-session.json')
         self.assertEqual(legacy['schema'],1)
         self.assertEqual(native.encode(legacy),(frozen/'opening.encsession').read_bytes())
-        bad=copy.deepcopy(self.recipe);bad['schema']=5
+        bad=copy.deepcopy(self.recipe);bad['schema']=6
         with self.assertRaises(ValueError):native.encode(bad)
     def test_startup_clamps_are_derived_from_serialized_hp_and_equipment(self):
         ex=native.Extractor(native.ROOT);save=ex.yaml('Data/save_new_game.yaml');overrides=ex.yaml('Data/save_overrides.yaml')
@@ -86,6 +86,19 @@ class NativeSessionTests(unittest.TestCase):
         self.assertEqual(old[24:],current[24:len(old)])
         for field,value in [('item_id','unknown'),('doses',0),('max_count',2),('flag_id','unknown')]:
             bad=copy.deepcopy(r);bad['acquisitions'][0][field]=value
+            with self.assertRaises(ValueError):native.verify_recipe(bad)
+    def test_storage_conservation_policy_is_source_derived(self):
+        from tools.storage_assets import load, IR
+        storage=load(native.ROOT);r=self.recipe
+        self.assertEqual(r['schema'],5)
+        self.assertEqual(r['storage_capacity'],storage['parameters']['StorageCapacity'])
+        self.assertEqual(r['dependencies'][IR],hashlib.sha256((native.ROOT/IR).read_bytes()).hexdigest())
+        by_id={p['item_id']:p for p in r['storage_policies']}
+        self.assertEqual(by_id['BaseballCap']['boosts'],[0,0,0,5,0,0,0])
+        self.assertTrue(by_id['BaseballCap']['required'])
+        self.assertFalse(by_id['AsthmaSpray']['required'])
+        for edit in [lambda r:r.update(storage_capacity=99),lambda r:r['storage_policies'].pop(),lambda r:r['storage_policies'][0].update(required=False),lambda r:r['storage_policies'][0]['boosts'].__setitem__(3,6),lambda r:r['storage_policies'][1].update(total_count=2)]:
+            bad=copy.deepcopy(r);edit(bad)
             with self.assertRaises(ValueError):native.verify_recipe(bad)
     def test_recipe_drift_fails_closed(self):
         for edit in [lambda r:r.update(unknown=1),lambda r:r['defaults']['settings'].update(text_speed=.1),lambda r:r['levels'][1]['stats'].__setitem__(3,17),lambda r:r['defaults']['characters'][0]['affinity_multipliers'].clear(),lambda r:r.update(saved_flag='unknown'),lambda r:r['sources'].clear(),lambda r:r['camera_area_ids'].append(2),lambda r:r['startup']['characters'].pop(),lambda r:r['startup']['characters'][1].update(hp=43),lambda r:r['startup']['characters'][2]['inventory'].reverse(),lambda r:r['startup_derivation'][2]['equipment_boosts'].update(defense=3)]:

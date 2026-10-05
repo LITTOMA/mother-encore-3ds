@@ -61,7 +61,7 @@ SCHEMAS = {
 RULE_TYPES = {**{i:1 for i in (1,2,3,4,5,20)}, **{i:2 for i in list(range(6,20))+list(range(21,28))}}
 FORMATS = {'u8':'B','u16':'H','u32':'I','i32':'i','f32':'f','f64':'d','vec2':'2f','hash256':'32s','rule_value':'8s'}
 WIDTHS = {k:struct.calcsize('<'+v) for k,v in FORMATS.items()}
-OPCODES = ['BeginCutscene','BindActor','ActorPersistent','StartWait','MusicFadeOut','SetTalker','CallObjectDeferred','OverworldBattleMusic','PlaySound','MoveActor','TurnActor','ShakeActor','JumpActor','AnimateActor','EmoteActor','ShakeCamera','ChangeCamera','MoveCamera','QueueBattle','StopInteraction','RestoreActor','ReleaseBattleActor','CutsceneEnded','DialogueDone','RequestBattle','YieldIdle','AwaitTimer','SetActorDirection','TeleportActor','MoveActorPath','ReturnCamera','SetFlag','ShowDialogue','AwaitDialogue','PlayMusicImmediate','HideDialogue','Jump','BranchFlag','BranchLeader','AwaitChoices','OpenSave','AwaitSubmenu','StopActorLoop']
+OPCODES = ['BeginCutscene','BindActor','ActorPersistent','StartWait','MusicFadeOut','SetTalker','CallObjectDeferred','OverworldBattleMusic','PlaySound','MoveActor','TurnActor','ShakeActor','JumpActor','AnimateActor','EmoteActor','ShakeCamera','ChangeCamera','MoveCamera','QueueBattle','StopInteraction','RestoreActor','ReleaseBattleActor','CutsceneEnded','DialogueDone','RequestBattle','YieldIdle','AwaitTimer','SetActorDirection','TeleportActor','MoveActorPath','ReturnCamera','SetFlag','ShowDialogue','AwaitDialogue','PlayMusicImmediate','HideDialogue','Jump','BranchFlag','BranchLeader','AwaitChoices','OpenSave','AwaitSubmenu','StopActorLoop','OpenStorage']
 ROOT_FIELDS = {'schema','family','rules','capabilities','scene_id','upstream_commit','exporter_version','adapter_revision','strings','sections','provenance'}
 
 class ContentError(ValueError):
@@ -152,7 +152,8 @@ VALUE_OPS = {7,9,12,15,31,37}
 DURATION_OPS = {3,4,10,11,12,15,17,23,30}
 TARGET_TABLE = {6:'Binding',8:'Resource',13:'Clip',14:'Clip',18:'Battle',24:'Battle',29:'MovementPath',31:'Flag',34:'Resource',37:'Flag'}
 
-def validate_tables(strings, sections, scene_id, rules=RULES):
+def validate_tables(strings, sections, scene_id, rules=RULES, capabilities=None):
+    capabilities=rules if capabilities is None else capabilities
     check(type(strings)is list and 0<len(strings)<=65536,'Invalid string table count')
     check(strings[0]=='','String zero must be empty')
     check(all(type(s)is str for s in strings),'String value is not text')
@@ -326,7 +327,7 @@ def validate_tables(strings, sections, scene_id, rules=RULES):
         check(e['kind']in(0,1),'Unknown movement entry')
         check(e['duration']==0 if e['kind']==0 else e['vector']==[0,0]and 0<e['duration']<=3600,'Invalid movement entry payload')
     for c in sections['Command']:
-        op=c['opcode'];check(0<=op<(len(OPCODES)if rules>=7 else 42 if rules>=6 else 36 if rules>=5 else 35),'Unknown command opcode')
+        op=c['opcode'];check(0<=op<(len(OPCODES)if capabilities==8 else 43 if rules>=7 else 42 if rules>=6 else 36 if rules>=5 else 35),'Unknown command opcode')
         allowed_flags=({12:15,10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=7 else{10:15,17:3,16:1,19:1,32:1,33:7,35:1}if rules>=5 else{16:1,19:1,32:1,33:1}).get(op,0)
         check(c['flags']&~allowed_flags==0 and (op in(37,38)or c['auxiliary_index']==NONE),'Unknown command flags/auxiliary field')
         if op in(16,19,32)and c['flags']&1:
@@ -394,9 +395,9 @@ def validate_tables(strings, sections, scene_id, rules=RULES):
                 target=c['target_index']if op==36 else c['auxiliary_index']
                 check(pc<target<len(cmds),'Branch must target a later command in the same program')
                 check(cmds[target-1]['phrase']!=cmds[target]['phrase'],'Branch must target a phrase entry')
-            if op==40:check(pc+1<len(cmds)and cmds[pc+1]['opcode']==41,'OpenSave requires immediate submenu gate')
-            if op==41:check(pc>0 and cmds[pc-1]['opcode']==40,'Submenu gate requires OpenSave')
-            if 36<=op<=41:check(not pending_timer,'Control transfer has unresolved phrase timer')
+            if op in(40,43):check(pc+1<len(cmds)and cmds[pc+1]['opcode']==41,'OpenSave requires immediate submenu gate')
+            if op==41:check(pc>0 and cmds[pc-1]['opcode']in(40,43),'Submenu gate requires a checked menu request')
+            if (36<=op<=41 or op==43):check(not pending_timer,'Control transfer has unresolved phrase timer')
             if c['opcode']==3:
                 check(not pending_timer,'Overlapping phrase timers');pending_timer=True
             if c['opcode']==26:
@@ -439,14 +440,14 @@ def validate_ir(ir):
     fields(ir,ROOT_FIELDS,'root')
     check(ir['schema']==1 and type(ir['schema'])is int,'Unsupported IR schema')
     check(type(ir['family'])is int and ir['family']==FAMILY,'Unsupported family')
-    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and ir['capabilities']==ir['rules'],'Unsupported rules/capabilities')
+    check(type(ir['rules'])is int and ir['rules']in(4,5,6,7)and type(ir['capabilities'])is int and (ir['capabilities']==ir['rules'] or (ir['rules']==7 and ir['capabilities']==8)),'Unsupported rules/capabilities')
     integer(ir['scene_id'],1,NONE,'scene_id');integer(ir['exporter_version'],1,NONE,'exporter_version');integer(ir['adapter_revision'],1,NONE,'adapter_revision')
     digest_hex(ir['upstream_commit'],40,'upstream_commit')
     check(type(ir['provenance'])is dict and type(ir['provenance'].get('sources'))is dict and ir['provenance']['sources'],'Missing provenance sources')
     for path,digest in ir['provenance']['sources'].items():
         check(type(path)is str and path and not Path(path).is_absolute()and '..'not in Path(path).parts and '\\'not in path,'Unsafe provenance path')
         digest_hex(digest,64,'provenance source hash')
-    validate_tables(ir['strings'],ir['sections'],ir['scene_id'],ir['rules'])
+    validate_tables(ir['strings'],ir['sections'],ir['scene_id'],ir['rules'],ir['capabilities'])
 
 
 def verify_provenance(ir, root=ROOT):
@@ -507,7 +508,7 @@ def parse_pack(data):
     magic,major,minor,header_bytes,file_bytes,endian,target,family,rules,caps,scene_id,directory_offset,directory_count,entry_bytes,checksum,commit,input_sha,exporter_version,adapter_revision,flags,reserved=h
     check(magic==MAGIC and (major,minor)==(1,0),'Unsupported magic/format')
     check(header_bytes==HEADER_BYTES and file_bytes==len(data)and endian==0x01020304,'Header length/endian mismatch')
-    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and caps==rules,'Unsupported target/family/rules/capabilities')
+    check((target,family)==(TARGET,FAMILY)and rules in(4,5,6,7)and (caps==rules or (rules==7 and caps==8)),'Unsupported target/family/rules/capabilities')
     check(any(commit)and any(input_sha),'Missing source fingerprint')
     check(scene_id>0 and exporter_version>0 and adapter_revision>0 and flags==0 and reserved==bytes(8),'Invalid header fields')
     check(directory_offset==HEADER_BYTES and directory_count==len(SCHEMAS)and entry_bytes==DIRECTORY_BYTES,'Invalid section directory')
@@ -550,7 +551,7 @@ def parse_pack(data):
         if kind<=2:continue
         offset,count,_,_=directory[kind]
         sections[name]=[decode_record(name,data,offset+i*stride)for i in range(count)]
-    validate_tables(strings,sections,scene_id,rules)
+    validate_tables(strings,sections,scene_id,rules,caps)
     return {'schema':1,'family':family,'rules':rules,'capabilities':caps,'scene_id':scene_id,'upstream_commit':commit.hex(),'exporter_version':exporter_version,'adapter_revision':adapter_revision,'strings':strings,'sections':sections,'build_input_sha256':input_sha.hex()}
 
 

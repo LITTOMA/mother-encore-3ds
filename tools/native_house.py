@@ -36,7 +36,7 @@ def verify_sources(ir,presentation=None,root=ROOT):
 
 def lower(ir,presentation=None,root=ROOT,verify_assets=True):
  fields(ir,['schema','kind','commit','scope','sources','dependencies','fade_parameters','npc_parameters','doors','npcs','segments','interaction','boundaries','overrides','dialogues','openable_doors','story_triggers','story_conditions'],'house IR');require(ir['schema']in(4,5,6,7) and ir['commit']==PIN,'Unreviewed house IR')
- room=json.loads((root/'content/native-opening.json').read_text());require(room['upstream_commit']==ir['commit']and room['rules']==room['capabilities']and room['rules']in(4,5,6,7),'House room rules/pin')
+ room=json.loads((root/'content/native-opening.json').read_text());require(room['upstream_commit']==ir['commit']and (room['rules']==room['capabilities'] or (room['rules']==7 and room['capabilities']==8))and room['rules']in(4,5,6,7),'House room rules/pin')
  actor_count=len(room['sections']['ActorInstance']);program_count=len(room['sections']['Program']);dialogue_ids={d['id']for d in ir['dialogues']}
  for n in ir['npcs']:require(n.get('room_actor_index')==0xffffffff or isinstance(n.get('room_actor_index'),int)and 0<=n['room_actor_index']<actor_count,'House room actor reference')
  for n in ir['npcs']:

@@ -13,6 +13,7 @@
 #include "house_renderer.hpp"
 #include "phone_renderer.hpp"
 #include "dialogue_choices_renderer.hpp"
+#include "storage_renderer.hpp"
 #include "save_menu_renderer.hpp"
 #include "encore/session_save.hpp"
 #include "encore/session_migration.hpp"
@@ -159,6 +160,13 @@ upstream::SourceRandom battle_random{0};
 RoundRenderer round_renderer;
 upstream::ItemData items_data;
 upstream::InventoryState session_inventory;
+upstream::StorageData storage_data;
+upstream::StorageState session_storage;
+upstream::StorageMenu storage_menu;
+StorageRenderer storage_renderer;
+encore::ctr::SourceFontRenderer storage_counter_font;
+BattleRenderer storage_counter_text;
+bool storage_open_failed=false,storage_assets_ready=false;uint32_t storage_generation=0;
 upstream::BattleItemsMenu items_menu;
 ItemsRenderer items_renderer;
 std::string items_status;
@@ -586,6 +594,19 @@ bool load_introduction(std::string&error){
     if(!introduction_data.locale(std::string(locale_selection.code()))){error="Introduction locale is not supported";return false;}
     error.clear();return true;
 }
+bool open_storage_menu(std::string&error){
+    using namespace upstream;
+    if(!session_rewards_valid||!session_storage.valid()){error="Storage lacks a prepared live session";return false;}
+    if(!storage_assets_ready){
+        LoadingScope loading("Preparing storage",3);
+        if(!loading.step([&]{return storage_renderer.load(storage_data.view(),items_data.view(),"romfs:/",error);},"storage-textures")||
+           !loading.step([&]{return load_introduction(error)&&storage_counter_font.load_catalog_at_safe_boundary((std::string("romfs:/")+introduction_data.font_catalog).c_str(),"romfs:/fonts/introduction/",error)&&storage_counter_font.select_font_at_safe_boundary(storage_data.view().binding(StorageBinding::CounterFont),error)&&storage_counter_font.admit_selected_font(error);},"storage-counter-font")||
+           !loading.step([&]{return storage_menu.initialize(storage_data.view(),session_inventory,session_storage,session_rewards,locale_selection.code()=="zh_Hans_CN");},"storage-model")||!loading.finish())return false;
+        storage_counter_text.attach_source_font(&storage_counter_font);storage_assets_ready=true;
+    }else if(!storage_menu.initialize(storage_data.view(),session_inventory,session_storage,session_rewards,locale_selection.code()=="zh_Hans_CN")){error=storage_menu.error();return false;}
+    storage_renderer.set_locale(&locale_selection);
+    if(!storage_menu.open()){error=storage_menu.error();return false;}return true;
+}
 bool begin_introduction(std::string&error){
     if(!pending_new_game.ready||new_game_setup.phase()!=upstream::NamingPhase::Accepted){error="Introduction needs an accepted isolated startup";return false;}
     if(!load_introduction(error)||!introduction_renderer.load(introduction_data,error))return false;
@@ -631,7 +652,7 @@ bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error
         const std::string id(house_data.view().string(index));auto found=std::find_if(state.seen_dialogue_flags.begin(),state.seen_dialogue_flags.end(),[&](const auto&value){return value.id==id;});if(found==state.seen_dialogue_flags.end())state.seen_dialogue_flags.push_back({id,true});else found->value=true;
     }
     const std::time_t now=std::time(nullptr);if(const auto*value=std::gmtime(&now)){char stamp[32];if(std::strftime(stamp,sizeof(stamp),"%Y-%m-%dT%H:%M:%SZ",value))state.saved_at=stamp;}
-    NativeSnapshotInput input;input.state=std::move(state);input.stats=&session_rewards;input.inventory=&session_inventory;
+    NativeSnapshotInput input;input.state=std::move(state);input.stats=&session_rewards;input.inventory=&session_inventory;input.storage=&session_storage;
     return build_native_session_snapshot(native_session_data,room,house_data.view(),round_data.view(),items_data.view(),input,result,error);
 }
 bool read_prepared_slot(uint32_t slot,upstream::SessionSnapshot&snapshot,upstream::PreparedSessionRestore&prepared,std::string&error){
@@ -710,9 +731,9 @@ bool apply_loaded_slot(uint32_t slot,std::string&error){
     // leave the old scene, inventory, random stream and game files untouched.
     battle_entry=BattleEntry{};battle_round=BattleRound{};battle_outcome=BattleOutcome{};round_presentation=BattleActionPresentation{};round_ready=false;round_error.clear();
     wait_for_gpu_idle();ctr::loading_menu_flavor_select(uint32_t(startup_settings_data.flavor_index(prepared.state.settings.menu_flavor)));
-    session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_state_ready=session_rewards_valid=true;
+    session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
     battle_random=next_random;generated_uid_ledger=std::move(next_ledger);gameplay_scene.swap(candidate);restore_input_pending=true;
-    dialogue_choices.close();save_menu.close();save_open_failed=false;save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;
+    dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=upstream::StorageMenu{};save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;
     if(!items_menu.initialize(session_inventory)){error=items_menu.error();return false;}
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;audio_player.reset_scene_requests();
     std::string preference_error;remember_slot(slot,preference_error);continue_status="Loaded slot "+std::to_string(slot);if(!preference_error.empty())continue_status+="; preference: "+preference_error;
@@ -742,9 +763,9 @@ bool commit_named_new_game(std::string&error){
     // Failures above preserve the prior session, RNG, ledger and every save file.
     battle_entry=BattleEntry{};battle_round=BattleRound{};battle_outcome=BattleOutcome{};round_presentation=BattleActionPresentation{};round_ready=false;round_error.clear();
     wait_for_gpu_idle();ctr::loading_menu_flavor_select(uint32_t(startup_settings_data.flavor_index(prepared.state.settings.menu_flavor)));
-    session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_state_ready=session_rewards_valid=true;
+    session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
     battle_random=random;generated_uid_ledger=std::move(pending_new_game.uid_ledger);candidate->world.attach_random(battle_random);candidate->presentation.rebind_random(battle_random);gameplay_scene.swap(candidate);pending_new_game=PendingNewGame{};restore_input_pending=false;last_save_slot=0;
-    dialogue_choices.close();save_menu.close();save_open_failed=false;save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;items_menu.initialize(session_inventory);
+    dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=upstream::StorageMenu{};save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;items_menu.initialize(session_inventory);
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;
     region_music.shutdown();audio_player.reset_scene_requests();
     if(audio_player.available()&&!audio_player.stop_lane(ctr::AudioLane::Effect,error))return false;
@@ -754,7 +775,7 @@ bool reset_development_game(std::string&error){
     cancel_battle_prewarm();
     LoadingScope loading("Starting new game",5);
     if(!ensure_house_graphics(error))return false;
-    wait_for_gpu_idle();restore_input_pending=false;session_rewards_valid=session_state_ready=false;session_inventory.initialize(items_data.view());items_menu.initialize(session_inventory);items_status.clear();
+    wait_for_gpu_idle();restore_input_pending=false;session_rewards_valid=session_state_ready=false;session_inventory.initialize(items_data.view());session_storage.initialize(items_data.view(),native_session_data.storage_capacity());storage_menu=upstream::StorageMenu{};storage_open_failed=false;items_menu.initialize(session_inventory);items_status.clear();
     battle_entry=upstream::BattleEntry{};battle_round=upstream::BattleRound{};battle_outcome=upstream::BattleOutcome{};round_presentation=upstream::BattleActionPresentation{};round_ready=false;round_error.clear();
     if(!loading.complete())return false;
     auto fresh=std::make_unique<GameplayScene>();if(!fresh->world.initialize(opening_data.view(),{float(view_width),float(view_height)})){error=fresh->world.error();return false;}gameplay_scene.swap(fresh);if(!loading.complete())return false;
@@ -766,7 +787,6 @@ bool begin_battle(std::string&error){
     const auto entry_started=svcGetSystemTick();const auto activity_started=load_activity_revision();
     using namespace upstream;
     const auto room=opening_data.view();
-    if(battle_outcome.phase()==BattleOutcomePhase::Complete||battle_outcome.phase()==BattleOutcomePhase::PostWinRequested){session_rewards=battle_outcome.state();session_rewards_valid=true;}
     const auto resource_index=gameplay_scene->world.battle_request().battle_resource_index;
     if(resource_index>=room.resource_count()||room.resource(resource_index).kind!=uint16_t(RoomResourceKind::CheckedBattlePack)){error="Battle request lacks checked resource";return false;}
     const auto resource=room.resource(resource_index);const std::string path="romfs:/"+std::string(room.string(resource.path_string));
@@ -903,7 +923,7 @@ bool load_house(std::string& error){
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count());
     return true;
 }
-void free_house(){cancel_battle_prewarm();std::string ignored;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
+void free_house(){cancel_battle_prewarm();std::string ignored;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){
@@ -1098,7 +1118,7 @@ int main(int argc,char** argv){
     loading_top=top;
     if(!resource_catalog.load_file("romfs:/data/native.encresources",error)||!resource_catalog.verify_files("romfs:/",error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
     if(!loading_indicator.load("romfs:/",resource_catalog.path(ResourceRole::LoadingIndicator).c_str(),error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
-    { LoadingScope loading("Starting game",19);
+    { LoadingScope loading("Starting game",21);
     // Keep checked metadata for saves/reference view, but admit only UI glyph
     // textures. Full encounter preparation belongs to house scene admission.
     if(!loading.step([&]{return load_house(error);},"room-metadata")||
@@ -1110,7 +1130,9 @@ int main(int argc,char** argv){
        !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
        !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
-       !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")){
+       !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")||
+       !loading.step([&]{return storage_data.load_file(resource_path(ResourceRole::Storage).c_str(),error)&&storage_data.view().bind_items(items_data.view(),error);},"storage-metadata")||
+       !loading.step([&]{return session_storage.initialize(items_data.view(),native_session_data.storage_capacity());},"storage-state")){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();
         error_console(error);romfsExit();gfxExit();return 1;
     }
@@ -1138,11 +1160,12 @@ int main(int argc,char** argv){
     },&input_resume_reset);
     // Content IDs need not fit bit fields; compare the complete owner tuple
     // and issue a session token rather than hashing/packing arbitrary IDs.
-    std::array<uint32_t,11> prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
+    using InputOwner=std::array<uint32_t,12>;
+    InputOwner prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
     const auto input_context=[&]()->uint32_t{
         if(!gameplay_scene->world.healthy()||!house_error.empty()||!round_error.empty())return 0;
         const bool battle=in_battle();
-        const std::array<uint32_t,11> owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase())}};
+        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u)}};
         if(!have_input_owner||owner!=prior_input_owner){prior_input_owner=owner;have_input_owner=true;if(++input_owner_token==0)++input_owner_token;}
         return input_owner_token;
     };
@@ -1220,6 +1243,7 @@ int main(int argc,char** argv){
         }
         if(dialogue_choices.active())navigation_context=4;
         if(save_menu.is_open())navigation_context=5;
+        if(storage_menu.active()||storage_open_failed)navigation_context=6;
         if(continue_menu.is_open()&&!continue_menu.pose().world_visible)navigation_context=1000+uint32_t(continue_menu.phase());
         if(new_game_setup.active())navigation_context=2000+new_game_setup.field_index()+32*uint32_t(new_game_setup.phase());
         const auto navigation=menu_navigation.sample(navigation_context,held_x,held_y,double(elapsed)/1000.0,repeat.x,repeat.y,navigation_context==2||navigation_context>=4);
@@ -1285,7 +1309,11 @@ int main(int argc,char** argv){
             else{
                 if(introduction.playtime_started()){if(!introduction_house_committed)introduction_playtime+=real_dt;else if(!world_input)session_state.playtime_seconds+=real_dt;}
                 if(introduction.house_ready()&&!introduction_house_committed){
-                    if(!commit_named_new_game(error))abort_intro();
+                    // No introduction image/font is consumed after this source
+                    // boundary; retain only its final door-overlay data.
+                    wait_for_gpu_idle();
+                    if(!introduction_renderer.retire_scene_visuals(introduction.pose(),error))abort_intro();
+                    else if(!commit_named_new_game(error))abort_intro();
                     else{introduction_house_committed=true;introduction.rebind_random(battle_random);new_game_setup.close();wait_for_gpu_idle();new_game_renderer.free();native_input.reset();menu_navigation.reset();accumulator=0;}
                 }
                 if(introduction.active()&&introduction.pose().scene_visible&&new_game_renderer.ready()){wait_for_gpu_idle();new_game_renderer.free();texture_owner_checkpoint("naming-released");}
@@ -1302,6 +1330,21 @@ int main(int argc,char** argv){
                     if(event.sound_after_target)play_source_audio(choice_data.sound(event.sound));
                 }else play_source_audio(choice_data.sound(event.sound));
             }
+        }
+        const bool storage_was_open=storage_menu.active();
+        if(gameplay_scene->world.take_storage_request()){
+            storage_generation=gameplay_scene->world.story_generation();
+            if(!open_storage_menu(error)){house_error=error+"; B closes";storage_open_failed=true;}
+        }
+        if(storage_open_failed&&same_input_owner&&(down&KEY_B)){storage_open_failed=false;if(!gameplay_scene->house.close_story_submenu(storage_generation))house_error=gameplay_scene->house.error();}
+        if(storage_menu.active()){
+            const bool allowed=storage_was_open&&same_input_owner;
+            if(!storage_menu.input(allowed?navigation.x:0,allowed?navigation.y:0,allowed&&((down&KEY_A)||native_controls.confirm_pulse),allowed&&(down&KEY_B))||!storage_menu.idle_frame(dt))house_error=storage_menu.error();
+            for(const auto event:storage_menu.take_sounds()){
+                if(event==upstream::StorageSoundEvent::Back){const auto view=items_data.view();play_source_audio(std::string(view.string(view.sound_for(upstream::ItemSoundEvent::Close).path)));}
+                else play_source_audio(std::string(storage_data.view().binding(upstream::StorageBinding(uint32_t(upstream::StorageBinding::MoveSound)+uint32_t(event)-1))));
+            }
+            if(!storage_menu.active()&&!gameplay_scene->house.close_story_submenu(storage_generation))house_error=gameplay_scene->house.error();
         }
         const bool record_was_open=save_menu.is_open();
         if(gameplay_scene->world.take_save_request()){
@@ -1384,7 +1427,7 @@ int main(int argc,char** argv){
         const bool draw_house=!new_game_setup.active()&&(!draw_introduction||introduction_house_committed)&&(!continue_menu.is_open()||continue_menu.pose().world_visible);
         PROFILE_MARK(0);
         if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))continue;
-        record_entry_presented();locale_font.begin_frame();if(draw_introduction&&!introduction_renderer.begin_frame())introduction_render_error="Introduction font frame ownership rejected";
+        record_entry_presented();locale_font.begin_frame();storage_counter_font.begin_frame();if(draw_introduction&&!introduction_renderer.begin_frame())introduction_render_error="Introduction font frame ownership rejected";
         PROFILE_MARK(1);
         C2D_TargetClear(top,loading_indicator.background_color());C2D_TargetClear(bottom,dark);
         C2D_SceneBegin(top);if(draw_house)house_top();PROFILE_MARK(2);
@@ -1396,6 +1439,7 @@ int main(int argc,char** argv){
             if(!house_renderer.draw_dialogue(dialogue_pose,battle_renderer,float(view_width)-canvas.x,float(view_height)-canvas.y,view_x(),view_y()))house_error="World dialogue renderer rejected checked pose";
             if(!choice_renderer.draw(dialogue_choices,battle_renderer,view_x()+dialogue_pose.box.x+dialogue_pose.anchor.x*(view_width-canvas.x),view_y()+dialogue_pose.box.y+dialogue_pose.anchor.y*(view_height-canvas.y)))house_error="Dialogue choices renderer rejected pose";
             if(save_menu.is_open()){const auto flavor=save_menu_data.flavor_index(session_state.settings.menu_flavor);C3D_Mtx saved_view;C2D_ViewSave(&saved_view);C2D_ViewTranslate(view_x(),view_y());if(flavor<0||!save_renderer.draw(save_menu,battle_renderer,uint32_t(flavor),float(view_width),float(view_height)))house_error="Save menu renderer rejected checked pose";C2D_ViewRestore(&saved_view);}
+            if(storage_menu.active()&&!storage_renderer.draw(storage_menu,battle_renderer,storage_counter_text,float(view_width),float(view_height),view_x(),view_y()))house_error="Storage renderer rejected checked pose";
             const auto fade=gameplay_scene->house.fade_color();if(fade.w>0)BattleRenderer::draw_rect(view_x(),view_y(),float(view_width),float(view_height),battle_color(fade));
         }
         if(continue_menu.is_open()){
@@ -1414,7 +1458,7 @@ int main(int argc,char** argv){
         }
         reference_borders();PROFILE_MARK(3);
         C2D_SceneBegin(bottom);house_bottom();ctr::draw_native_input(native_controls.gesture,native_input_data.tuning());PROFILE_MARK(4);
-        C3D_FrameEnd(0);record_entry_submitted();locale_font.end_frame();if(draw_introduction)introduction_renderer.end_frame();PROFILE_MARK(5);qa_record(down);PROFILE_MARK(6);PROFILE_FINISH();
+        C3D_FrameEnd(0);record_entry_submitted();locale_font.end_frame();storage_counter_font.end_frame();if(draw_introduction)introduction_renderer.end_frame();PROFILE_MARK(5);qa_record(down);PROFILE_MARK(6);PROFILE_FINISH();
     }
 #ifdef ENCORE_TEXT_QA
     if(qa_log){std::fclose(qa_log);qa_log=nullptr;}

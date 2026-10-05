@@ -354,7 +354,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     if(!bytes||size<kRoomHeaderBytes+kRoomSectionCount*kRoomDirectoryEntryBytes||size>kMaxRoomBytes) return fail("Room: invalid file size");
     if(std::memcmp(bytes,"ENCRMD01",8)!=0) return fail("Room: invalid magic");
     if(u16(bytes+8)!=1||u16(bytes+10)!=0||u32(bytes+12)!=kRoomHeaderBytes||u32(bytes+16)!=size||u32(bytes+20)!=0x01020304u) return fail("Room: unsupported format/header/endianness");
-    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||u32(bytes+36)!=u32(bytes+32)) return fail("Room: incompatible target/content/rules/capabilities");
+    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7)||(u32(bytes+36)!=u32(bytes+32)&&!(u32(bytes+32)==7&&u32(bytes+36)==8))) return fail("Room: incompatible target/content/rules/capabilities");
     if(!u32(bytes+40)||u32(bytes+44)!=kRoomHeaderBytes||u16(bytes+48)!=kRoomSectionCount||u16(bytes+50)!=kRoomDirectoryEntryBytes) return fail("Room: invalid scene identity/directory");
     if(!u32(bytes+108)||!u32(bytes+112)||u32(bytes+116)||!zero(bytes+120,8)||zero(bytes+56,20)||zero(bytes+76,32)) return fail("Room: invalid provenance/header reserved fields");
     if(room_crc(bytes,size)!=u32(bytes+52)) return fail("Room: CRC mismatch");
@@ -561,7 +561,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         const auto c=v.command(i);const auto* p=v.record(RoomSection::Command,i);
         const bool extended=u32(bytes+32)>=5,branched=u32(bytes+32)>=6;
         const uint32_t allowed_flags=(u32(bytes+32)>=7&&c.opcode==12)?15u:extended?(c.opcode==10?15u:c.opcode==17?3u:c.opcode==33?7u:(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==35)?1u:0u):((c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==33)?1u:0u);
-        if(c.opcode>(u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38)&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
+        if(c.opcode>(u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38)&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
         const bool inherited_actor=(c.flags&1)&&(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==42);
         const bool actor_used=!inherited_actor&&(c.opcode==1||c.opcode==2||(c.opcode>=9&&c.opcode<=14)||c.opcode==16||(c.opcode>=18&&c.opcode<=21)||c.opcode==24||(c.opcode>=27&&c.opcode<=29)||c.opcode==32||c.opcode==42);
         if(actor_used) { if(c.actor_index>=v.actor_instance_count())return fail("Room: invalid command actor reference"); }
@@ -639,14 +639,14 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         for(uint32_t j=0;j<r.command_count;++j) {
             const uint32_t index=r.first_command+j;
             const auto operation=v.command(index);
-            if(operation.opcode>=36&&operation.opcode<=41&&pending_timer)return fail("Room: branch/submenu with active timer");
+            if((operation.opcode>=36&&operation.opcode<=41||operation.opcode==43)&&pending_timer)return fail("Room: branch/submenu with active timer");
             if(operation.opcode==3){if(pending_timer)return fail("Room: overlapping phrase timers");pending_timer=true;}
             if(operation.opcode==26){if(!pending_timer)return fail("Room: timer wait without timer");pending_timer=false;}
             if(operation.opcode==33){if(bool(operation.flags&1)!=pending_timer)return fail("Room: dialogue timer mode mismatch");pending_timer=false;}
             if((operation.opcode==36&&operation.target_index>=r.command_count)||((operation.opcode==37||operation.opcode==38)&&operation.auxiliary_index>=r.command_count))return fail("Room: branch target out of program");
             if(operation.opcode>=36&&operation.opcode<=38){const uint32_t target=operation.opcode==36?operation.target_index:operation.auxiliary_index;if(target<=j||(target&&v.command(r.first_command+target-1).phrase==v.command(r.first_command+target).phrase))return fail("Room: branch must reach forward phrase entry");}
-            if(operation.opcode==40&&(j+1>=r.command_count||v.command(index+1).opcode!=41))return fail("Room: save request lacks submenu wait");
-            if(operation.opcode==41&&(!j||v.command(index-1).opcode!=40))return fail("Room: submenu wait lacks save request");
+            if((operation.opcode==40||operation.opcode==43)&&(j+1>=r.command_count||v.command(index+1).opcode!=41))return fail("Room: save request lacks submenu wait");
+            if(operation.opcode==41&&(!j||(v.command(index-1).opcode!=40&&v.command(index-1).opcode!=43)))return fail("Room: submenu wait lacks save request");
             if(branch_program&&operation.opcode==23&&operation.duration<=0)return fail("Room: branch completion lacks camera timing");
             if(!branch_program&&j+1<r.command_count&&v.command(index).opcode==23&&v.command(index).duration!=0)return fail("Room: nonterminal completion duration");
             if(command_used[index]||v.command(index).phrase>=r.phrase_count)return fail("Room: overlapping commands/invalid phrase");

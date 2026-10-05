@@ -177,7 +177,7 @@ void disk_record(Fixture&f,const NativeSessionData&data,RoundView round,ItemView
  live.cash=uint32_t(f.cash);live.bank=uint32_t(f.bank);live.earned_cash=uint32_t(f.earned_cash);live.learned_skills={std::string(round.string(round.encounter().learned_skill))};
  // This is a bounded post-Doll live stats fixture. Position/flags/seen are
  // collected from this test's actual running world at the Record save request.
- NativeSnapshotInput input;input.stats=&live;input.inventory=&inventory;
+ StorageState storage;check(storage.initialize(items,data.storage_capacity()),"Checked empty Storage initializes for source Record fixture");NativeSnapshotInput input;input.stats=&live;input.inventory=&inventory;input.storage=&storage;
  auto collect=[&](SessionSnapshot&out){
   input.state=data.defaults();const auto player=f.world.player();input.state.position_x=player.position.x;input.state.position_y=player.position.y;input.state.direction_x=player.direction.x;input.state.direction_y=player.direction.y;
   input.state.playtime_seconds=f.frames*dt;input.state.saved_at="2026-10-02T08:20:00Z";input.state.flags.clear();

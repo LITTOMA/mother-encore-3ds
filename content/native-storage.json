@@ -1,0 +1,1510 @@
+{
+  "schema": 1,
+  "kind": "encore.native-storage.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Original ordinary Minnie Storage; singleton Ninten; BaseballCap and acquired AsthmaSpray; transfer/equipment prompts/persistent UID; rich description and god storage unsupported",
+  "sources": {
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+    "Audio/Sound effects/EB/close.wav": "5238b0dfee0460c7ee219fd4cdc0c39d37829192c7af828429d10b00845efa56",
+    "Audio/Sound effects/EB/close.wav.import": "eb9a152837ffc1c39af9086767ef2bbc9217eba042bfaf24d360fcf90f8a8324",
+    "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+    "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+    "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+    "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+    "Audio/Sound effects/M3/equip.wav": "983d985c6ebe738617baae286c4ee5d80202969df66568e8a9588cff00d772f3",
+    "Audio/Sound effects/M3/equip.wav.import": "4e194a671ae807f07f59bae6b328caabe914b5b5803d0e9dcaf0881ad39100ae",
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Graphics/UI/Inventory/characters/ninten.png": "91beffd915870c9879750c4581e592ff1d81f3b4845d387e00547a0f76e5a28f",
+    "Graphics/UI/Inventory/characters/ninten.png.import": "591df18d53cf01a199b2db93f3c5d2d5e26f870923e46912830440a9c06afe6a",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Graphics/UI/Inventory/item_icon.png": "3479bd4197cf02a6997e9947ef8a7882002636adc4a658b7f8ddeeafc8867f5e",
+    "Graphics/UI/Inventory/item_icon.png.import": "153842ae51512b9e3b9fdd87411b5a6a5ed8e08dd629ab42a94afe5699050535",
+    "Graphics/UI/Inventory/modifiers.png": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
+    "Graphics/UI/Inventory/modifiers.png.import": "3b670c47f51983c1927c6ed06ad1ef2e5a8f80c998ca37d5f4c9c26b321cbea9",
+    "Graphics/UI/Inventory/modifiers2.png": "01bf0cf517f8fb0ed9211395b3cca4f25b5d389db40dcbda99487272766ff6c7",
+    "Graphics/UI/Inventory/modifiers2.png.import": "91522256a2368f4260619183b4f5ac706ace714c9364e3cd9f24c7e4d9db25c2",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png.import": "fadf883607a0602838c955c34361782d4332dd4f78873d1bc175eeaa3e0f1272",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_light.png": "fa7660da723aad29d2a58d94ec96550a98ed84bc77787da7c53820e148638699",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_light.png.import": "94f535c9ca875e92884d709c7cf699c6eed3e0ee8341c18b15e58dce28a90703",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png": "016b161a791b5c3cc95db2002921dae062f4b90ca87cdd2e4b7da62cefc72bf3",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png.import": "cec66f58131b9cabd2900bd2fe99af81e0ace80215f081b85e5064ee5a711ccf",
+    "Graphics/UI/Overworld/flavours/defaultempty.png": "33af3d9a91a397b79e67c7500486c5cb85f3d1396ecc1e9a1faa09581de73fdc",
+    "Graphics/UI/Overworld/flavours/defaultempty.png.import": "f02a11b08d81c08c255151e3013c5bdbeb542e77a29f202684ee2871ed613949",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png": "019a1b69d3091aad552390204a6d6250af4ab90a124fc726262554d1fa5fce0d",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png.import": "69a4e9fef64d8d941c7a7bac0c31f991188b0f1fcfbe8b85d8f414349c6bb8aa",
+    "Graphics/UI/dashedline.png": "2493d4e9a1981aec5765052be3b8bde6a1bc4ab02f76dcc46fe448a9afb9b1fd",
+    "Graphics/UI/dashedline.png.import": "43bddfbaf24a0471ac320e5011bd95fc552015c7672f90f0ceb0c0643799a69c",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Nodes/Ui/DescriptionWithYesNo.tscn": "4a525914642d18a759e66a7558d693e9c1d82fb5689e7f9c7120a5e8b27ae0ff",
+    "Nodes/Ui/HighlightLabel.gd": "91a1ec1e640166c2e38a6ee8c094042fddc64f165f128bd4aa706b09f29ad367",
+    "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
+    "Nodes/Ui/Inventory/InventorySelect.gd": "2cb4041595c68c059e2c2bf5bb97836e27965501bb3a061374270480a2d8a738",
+    "Nodes/Ui/Inventory/portrait.gd": "8a1fefb969c284cdce60fd1d16ba72237cc50f4601c684a14330799e67a73c78",
+    "Nodes/Ui/Inventory/portrait.tscn": "aace988ced4810ca71e57502e6333681dc1290220d37dac7968471de6c0d8c7e",
+    "Nodes/Ui/InventorySelect.tscn": "1a58567f9fb6864640cf17f7691a162f51bd32b65553ddff46b4fe6c4d4e607d",
+    "Nodes/Ui/Reusables/Scrollbar.tscn": "5448fa7a0464b0d7cf18a5a01dde998f96f56d5b0123a5b03d8be0869cc5bfd0",
+    "Nodes/Ui/Storage.tscn": "e39a84c699f10eb4f8fbf901f726554666486d7dc11f28aada256c024442de92",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/UI/Reusables/DescriptionModal.gd": "fdcb91e91e48b022bdcfd5048cdfded4bf34987c07eb9c376daff72b32836a4a",
+    "Scripts/UI/Reusables/DescriptionWithYesNo.gd": "7d740c84ef62e563710ccc05c15f706bbc20d998f21fea4483f8615a6c5eeeda",
+    "Scripts/UI/Reusables/ItemListMenu.gd": "e87264436d0de2572200cc6458c1016d043389b5ccf16beadd8543a6b55ca24e",
+    "Scripts/UI/Storage.gd": "a1f0b66b330deab931a868e891d04e73829fbae7028987de218ad60fa8e7c3f9",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "dependencies": {
+    "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4"
+  },
+  "parameters": {
+    "StorageCapacity": 64,
+    "InventoryCapacity": 16,
+    "Rows": 6,
+    "RowPitch": 14,
+    "WarnSeconds": 1,
+    "EquippedScoreDelta": -100000,
+    "LoopAround": 1,
+    "CursorSeconds": 0.2,
+    "ReferenceWidth": 320,
+    "ReferenceHeight": 180,
+    "PlatformWidth": 400,
+    "PlatformHeight": 240,
+    "CursorX": -5,
+    "CursorY": 2,
+    "CursorWidth": 8,
+    "CursorHeight": 8,
+    "CursorFps": 5,
+    "CursorFrame0": 0,
+    "CursorFrame1": 1,
+    "CursorFrame2": 2,
+    "CursorFrame3": 1,
+    "CursorMoveSeconds": 0.1,
+    "BoostWeight0": 2,
+    "BoostWeight1": 2,
+    "BoostWeight2": 3,
+    "BoostWeight3": 2,
+    "BoostWeight4": 1,
+    "BoostWeight5": 1,
+    "BoostWeight6": 1,
+    "TextLineHeight": 12,
+    "CounterCharacterSpacing": -1
+  },
+  "bindings": {
+    "TitleEn": "Storage",
+    "TitleZh": "寄存",
+    "UnequipEn": "Unequip the {item}?",
+    "UnequipZh": "要卸下{item}吗？",
+    "EquipEn": "Equip now?",
+    "EquipZh": "现在要装备吗？",
+    "StorageFullEn": "The storage is full.",
+    "StorageFullZh": "寄存已满。",
+    "InventoryFullEn": "Your inventory is full.",
+    "InventoryFullZh": "你的库存已满。",
+    "YesEn": "Yes",
+    "YesZh": "是",
+    "NoEn": "No",
+    "NoZh": "否",
+    "Owner": "ninten",
+    "CounterPattern": "%s / %s",
+    "CounterFont": "Fonts/BottleRocket.tres",
+    "MainFont": "Fonts/EBMain_la.tres",
+    "MoveSound": "Audio/Sound effects/Cursor 1.mp3",
+    "ConfirmSound": "Audio/Sound effects/Cursor 2.mp3",
+    "RestrictedSound": "Audio/Sound effects/M3/bump.wav",
+    "ClearSound": "Audio/Sound effects/EB/close.wav",
+    "EquipSound": "Audio/Sound effects/M3/equip.wav"
+  },
+  "policies": [
+    {
+      "definition_id": 1,
+      "source_item": "BaseballCap",
+      "doses": 1,
+      "max_count": 1,
+      "sort_rank_en": 210010,
+      "sort_rank_zh": 210010
+    },
+    {
+      "definition_id": 2,
+      "source_item": "AsthmaSpray",
+      "doses": 3,
+      "max_count": 1,
+      "sort_rank_en": 800000,
+      "sort_rank_zh": 800000
+    }
+  ],
+  "equipment": [
+    {
+      "definition_id": 1,
+      "boosts": [
+        0,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "definition_id": 2,
+      "boosts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "translations": {
+    "BaseballCap": {
+      "en": {
+        "name": "Baseball Cap",
+        "sorting_name": "Baseball Cap",
+        "article": "The ,the ,A ,a ,this ,it,was"
+      },
+      "zh_Hans_CN": {
+        "name": "棒球帽",
+        "sorting_name": "棒球帽",
+        "article": ",,,,这个,它,是"
+      }
+    },
+    "AsthmaSpray": {
+      "en": {
+        "name": "Asthma Spray",
+        "sorting_name": "Asthma Spray",
+        "article": "The ,the ,An ,an ,this ,it,was"
+      },
+      "zh_Hans_CN": {
+        "name": "哮喘喷雾",
+        "sorting_name": "哮喘喷雾",
+        "article": ",,,,这个,它,是"
+      }
+    }
+  },
+  "resources": [
+    {
+      "id": 1,
+      "name": "panel",
+      "source": "Graphics/UI/Overworld/flavours/defaultempty.png",
+      "size": [
+        24,
+        24
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/panel.t3x"
+    },
+    {
+      "id": 2,
+      "name": "inside",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside.png",
+      "size": [
+        24,
+        24
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/inside.t3x"
+    },
+    {
+      "id": 3,
+      "name": "description",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "size": [
+        24,
+        24
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/description.t3x"
+    },
+    {
+      "id": 4,
+      "name": "counter",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside_light.png",
+      "size": [
+        5,
+        5
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/counter.t3x"
+    },
+    {
+      "id": 5,
+      "name": "ninten",
+      "source": "Graphics/UI/Inventory/characters/ninten.png",
+      "size": [
+        19,
+        21
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/ninten.t3x"
+    },
+    {
+      "id": 6,
+      "name": "cursor",
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "size": [
+        24,
+        8
+      ],
+      "crop": null,
+      "grid": [
+        3,
+        1
+      ],
+      "output": "graphics/ui/storage/cursor.t3x"
+    },
+    {
+      "id": 7,
+      "name": "equipped",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "size": [
+        26,
+        27
+      ],
+      "crop": [
+        2,
+        19,
+        8,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/equipped.t3x"
+    },
+    {
+      "id": 8,
+      "name": "separator",
+      "source": "Graphics/UI/dashedline.png",
+      "size": [
+        2,
+        8
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/separator.t3x"
+    },
+    {
+      "id": 9,
+      "name": "scroll-bg",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png",
+      "size": [
+        4,
+        4
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/scroll-bg.t3x"
+    },
+    {
+      "id": 10,
+      "name": "scroll-thumb",
+      "source": "Graphics/UI/Overworld/flavours/defaultscroll.png",
+      "size": [
+        6,
+        6
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/scroll-thumb.t3x"
+    },
+    {
+      "id": 11,
+      "name": "icon-frame",
+      "source": "Graphics/UI/Inventory/item_icon.png",
+      "size": [
+        7,
+        7
+      ],
+      "crop": null,
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/icon-frame.t3x"
+    },
+    {
+      "id": 12,
+      "name": "portrait-equipped",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "size": [
+        26,
+        27
+      ],
+      "crop": [
+        15,
+        10,
+        9,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/portrait-equipped.t3x"
+    },
+    {
+      "id": 13,
+      "name": "portrait-suitable",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "size": [
+        26,
+        27
+      ],
+      "crop": [
+        0,
+        10,
+        13,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/portrait-suitable.t3x"
+    },
+    {
+      "id": 14,
+      "name": "portrait-better",
+      "source": "Graphics/UI/Inventory/modifiers2.png",
+      "size": [
+        11,
+        14
+      ],
+      "crop": [
+        0,
+        0,
+        11,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/portrait-better.t3x"
+    },
+    {
+      "id": 15,
+      "name": "portrait-lower",
+      "source": "Graphics/UI/Inventory/modifiers2.png",
+      "size": [
+        11,
+        14
+      ],
+      "crop": [
+        0,
+        7,
+        11,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/portrait-lower.t3x"
+    },
+    {
+      "id": 16,
+      "name": "portrait-full",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "size": [
+        26,
+        27
+      ],
+      "crop": [
+        15,
+        19,
+        9,
+        7
+      ],
+      "grid": [
+        1,
+        1
+      ],
+      "output": "graphics/ui/storage/portrait-full.t3x"
+    }
+  ],
+  "layouts": [
+    {
+      "id": 1,
+      "role": "Panel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 0,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        28,
+        4,
+        264,
+        126
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 2,
+      "role": "OnHandList",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 1,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        28,
+        29,
+        132,
+        101
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "id": 3,
+      "role": "StoredList",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 1,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        160,
+        29,
+        132,
+        101
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "id": 4,
+      "role": "Panel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 3,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        162,
+        12,
+        36,
+        13
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": 5,
+      "role": "Panel",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 1,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        194,
+        4,
+        118,
+        28
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        6,
+        5,
+        6,
+        6
+      ]
+    },
+    {
+      "id": 6,
+      "role": "Title",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        202,
+        12,
+        103,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 7,
+      "role": "Counter",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        164,
+        11,
+        32,
+        11
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 8,
+      "role": "Portrait",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 4,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        34,
+        4,
+        21,
+        21
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 9,
+      "role": "Description",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 2,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        28,
+        132,
+        264,
+        48
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        9,
+        9,
+        9,
+        9
+      ]
+    },
+    {
+      "id": 10,
+      "role": "Prompt",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        66,
+        142,
+        176,
+        28
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 11,
+      "role": "Yes",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        267,
+        142,
+        24,
+        13
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 12,
+      "role": "No",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        267,
+        156,
+        24,
+        13
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 13,
+      "role": "ItemLabel",
+      "parent": 1,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        45,
+        37,
+        97,
+        13
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 14,
+      "role": "ItemLabel",
+      "parent": 2,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        177,
+        37,
+        97,
+        13
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 15,
+      "role": "Cursor",
+      "parent": 1,
+      "kind": "Sprite",
+      "resource": 5,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        34.666666666666664,
+        39,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 16,
+      "role": "Cursor",
+      "parent": 2,
+      "kind": "Sprite",
+      "resource": 5,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        166.66666666666666,
+        39,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 17,
+      "role": "Scrollbar",
+      "parent": 1,
+      "kind": "NinePatch",
+      "resource": 8,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        147,
+        44,
+        4,
+        70
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": 18,
+      "role": "Scrollbar",
+      "parent": 2,
+      "kind": "NinePatch",
+      "resource": 8,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        279,
+        44,
+        4,
+        70
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": 19,
+      "role": "Equipped",
+      "parent": 1,
+      "kind": "Sprite",
+      "resource": 6,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        39,
+        40,
+        8,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 20,
+      "role": "Separator",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 7,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        159,
+        5,
+        2,
+        123
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 21,
+      "role": "ItemIcon",
+      "parent": null,
+      "kind": "Container",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        40,
+        145,
+        20,
+        20
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 22,
+      "role": "IconFrame",
+      "parent": null,
+      "kind": "NinePatch",
+      "resource": 10,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        38,
+        143,
+        24,
+        24
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": 23,
+      "role": "DescriptionText",
+      "parent": null,
+      "kind": "Text",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        66,
+        144,
+        213,
+        28
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 24,
+      "role": "ScrollThumb",
+      "parent": 1,
+      "kind": "NinePatch",
+      "resource": 9,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        146,
+        44,
+        6,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": 25,
+      "role": "ScrollThumb",
+      "parent": 2,
+      "kind": "NinePatch",
+      "resource": 9,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        278,
+        44,
+        6,
+        12
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "id": 26,
+      "role": "Highlight",
+      "parent": 1,
+      "kind": "Rectangle",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        45,
+        37,
+        97,
+        13
+      ],
+      "color": [
+        0.7294117647058823,
+        0.3254901960784314,
+        0.8941176470588236,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 27,
+      "role": "Highlight",
+      "parent": 2,
+      "kind": "Rectangle",
+      "resource": null,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        177,
+        37,
+        97,
+        13
+      ],
+      "color": [
+        0.7294117647058823,
+        0.3254901960784314,
+        0.8941176470588236,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 28,
+      "role": "PortraitEquipped",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 11,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        40,
+        5,
+        9,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 29,
+      "role": "PortraitSuitable",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 12,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        38,
+        25,
+        13,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 30,
+      "role": "PortraitBetter",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 13,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        39,
+        5,
+        11,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 31,
+      "role": "PortraitLower",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 14,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        39,
+        5,
+        11,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 32,
+      "role": "PortraitFull",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 15,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        40,
+        25,
+        9,
+        7
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 33,
+      "role": "QuestionCursor",
+      "parent": null,
+      "kind": "Sprite",
+      "resource": 5,
+      "frame": 0,
+      "flags": 0,
+      "anchor": [
+        0,
+        0
+      ],
+      "rect": [
+        257.6666666666667,
+        143,
+        8,
+        8
+      ],
+      "color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

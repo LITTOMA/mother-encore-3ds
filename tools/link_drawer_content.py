@@ -15,7 +15,7 @@ def append_house(ex,house,room=None):
     require(all(d['source_path']!=ir['source_path'] for d in house['dialogues']),'Drawer source text already linked')
     hint=re.search(r'^const DIALOG_HINT_COLOR := "([0-9a-f]{6})"',ex.text('Scripts/global/text_tools.gd'),re.M)
     require(hint is not None,'Drawer hint color source')
-    out=copy.deepcopy(house)
+    out=copy.deepcopy(house);out['schema']=7
     for row in ir['texts']:
         parts=text_segments(row['raw']);first=len(out['segments'])
         for i,tokens in enumerate(parts):

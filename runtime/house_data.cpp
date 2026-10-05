@@ -46,7 +46,7 @@ HouseStoryCondition HouseView::story_condition(uint32_t i)const{auto*p=record(Ho
 bool HouseData::load(const uint8_t*input,size_t size,std::string&error){
  auto fail=[&](const char*s){error=s;return false;};
  if(!input||size<header_bytes||size>max_bytes)return fail("House pack size rejected");
- if(std::memcmp(input,"ENCHSE01",8)||(u32(input+8)!=4&&u32(input+8)!=5&&u32(input+8)!=6)||u32(input+12)!=size||u32(input+20)!=section_count||u32(input+24)!=u32(input+8)||u32(input+28)!=u32(input+8))return fail("House schema/capabilities/rules rejected");
+ if(std::memcmp(input,"ENCHSE01",8)||(u32(input+8)!=4&&u32(input+8)!=5&&u32(input+8)!=6&&u32(input+8)!=7)||u32(input+12)!=size||u32(input+20)!=section_count||u32(input+24)!=u32(input+8)||u32(input+28)!=u32(input+8))return fail("House schema/capabilities/rules rejected");
  for(unsigned i=52;i<64;++i)if(input[i])return fail("House reserved bytes rejected");
  if(crc(input,size)!=u32(input+16))return fail("House CRC mismatch");
  size_t end=header_bytes;
@@ -54,7 +54,7 @@ bool HouseData::load(const uint8_t*input,size_t size,std::string&error){
  if(end!=size)return fail("House trailing bytes rejected");
  HouseView v;v.bytes_=input;v.size_=size;auto count=[&](HouseSection s){return v.count(s);};
  auto capacity=[&](HouseSection s,uint32_t lo,uint32_t hi){return count(s)>=lo&&count(s)<=hi;};
- if(!capacity(HouseSection::Strings,1,65536)||!capacity(HouseSection::Doors,1,32)||!capacity(HouseSection::Npcs,1,16)||!capacity(HouseSection::Segments,1,u32(input+8)>=6?128:64)||!capacity(HouseSection::Tokens,1,256)||count(HouseSection::Interaction)!=1||!capacity(HouseSection::Boundaries,0,64)||!capacity(HouseSection::Resources,1,64)||!capacity(HouseSection::Clips,5,256)||!capacity(HouseSection::Keys,1,2048)||count(HouseSection::Parameters)!=uint32_t(HouseParameter::Count)-1||!capacity(HouseSection::Overrides,0,128)||!capacity(HouseSection::Profiles,1,16)||!capacity(HouseSection::Dialogues,1,64)||!capacity(HouseSection::OpenableDoors,1,32)||!capacity(HouseSection::StoryTriggers,1,64)||!capacity(HouseSection::StoryConditions,1,128))return fail("House capacity rejected");
+ if(!capacity(HouseSection::Strings,1,65536)||!capacity(HouseSection::Doors,1,32)||!capacity(HouseSection::Npcs,1,16)||!capacity(HouseSection::Segments,1,u32(input+8)>=7?256:u32(input+8)>=6?128:64)||!capacity(HouseSection::Tokens,1,256)||count(HouseSection::Interaction)!=1||!capacity(HouseSection::Boundaries,0,64)||!capacity(HouseSection::Resources,1,64)||!capacity(HouseSection::Clips,5,256)||!capacity(HouseSection::Keys,1,2048)||count(HouseSection::Parameters)!=uint32_t(HouseParameter::Count)-1||!capacity(HouseSection::Overrides,0,128)||!capacity(HouseSection::Profiles,1,16)||!capacity(HouseSection::Dialogues,1,u32(input+8)>=7?128:64)||!capacity(HouseSection::OpenableDoors,1,32)||!capacity(HouseSection::StoryTriggers,1,64)||!capacity(HouseSection::StoryConditions,1,128))return fail("House capacity rejected");
  auto*pool=v.record(HouseSection::Strings,0);auto pool_size=count(HouseSection::Strings);if(pool[0]||pool[pool_size-1]||!utf8(pool,pool_size))return fail("House strings rejected");
  auto str=[&](uint32_t o){return o<pool_size&&(o==0||pool[o-1]==0)&&v.string(o).size()<=4096;};auto path=[&](uint32_t o){return str(o)&&safe_path(v.string(o));};
  auto span=[&](uint32_t first,uint32_t n,HouseSection s){return first<=count(s)&&n<=count(s)-first;};

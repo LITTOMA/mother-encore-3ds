@@ -53,6 +53,18 @@ class WorkflowPolicyTests(unittest.TestCase):
         self.assertIn('${{ github.sha }}', self.workflow['concurrency']['group'])
         self.assertFalse(self.workflow['concurrency']['cancel-in-progress'])
 
+    def test_downloadable_builds_enable_existing_pillow_texture_backend(self):
+        console = self.workflow['jobs']['console']
+        self.assertIn('GPU 1:1:1', console['name'])
+        runs = [step.get('run', '') for step in console['steps']]
+        builds = [run for run in runs if 'make 3dsx ' in run or 'make cia ' in run]
+        self.assertEqual(len(builds), 2)
+        for run in builds:
+            self.assertIn('EXPERIMENTAL_GPU_BACKGROUND=1', run)
+            self.assertIn('EXPERIMENTAL_GPU_CERTIFICATES=1', run)
+            self.assertIn('EXPERIMENTAL_GPU_TEXTURE_STRIPS=1', run)
+        self.assertIn('texture_strips=1', '\n'.join(runs))
+
     def test_full_checks_remain_complete(self):
         self.assertEqual({row['compiler'] for row in self.workflow['jobs']['host']['strategy']['matrix']['include']}, {'gcc', 'clang'})
         host_runs = '\n'.join(step.get('run', '') for step in self.workflow['jobs']['host']['steps'])

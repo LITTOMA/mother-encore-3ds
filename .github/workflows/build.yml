@@ -101,7 +101,7 @@ jobs:
             build/sanitize/CMakeFiles/CMakeConfigureLog.yaml
 
   console:
-    name: Real 3DSX and CIA (GPU 1:1:0)
+    name: Real 3DSX and CIA (GPU 1:1:1)
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 120
@@ -155,14 +155,14 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p build/console-ci
-          make 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0 2>&1 | tee build/console-ci/3dsx.log
+          make 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=1 2>&1 | tee build/console-ci/3dsx.log
       - name: Package the genuine ARM ELF as CIA
         shell: bash
         run: |
           set -o pipefail
           # The preceding full make 3dsx already verified and built this exact
           # checkout. Package its ELF without repeating that phony prerequisite.
-          make cia -o 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=0 2>&1 | tee build/console-ci/cia.log
+          make cia -o 3dsx EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMENTAL_GPU_TEXTURE_STRIPS=1 2>&1 | tee build/console-ci/cia.log
       - name: Extract and compare the actual packaged resources
         run: python tools/ci_console_check.py
       - name: Confirm the readonly upstream and tracked source remain unchanged
@@ -176,7 +176,7 @@ jobs:
           # Uses only the genuine outputs checked above; never rerun make release.
           python tools/release.py
           cp build/console-ci/console-check.json dist/sd/build-receipt.json
-          printf 'Source commit: %s\nRun: %s/%s/actions/runs/%s\nGPU configuration: background=1 certificates=1 texture_strips=0\nScope: cross-build and extracted CIA package; emulator/hardware not run\n' "$GITHUB_SHA" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > dist/sd/BUILD_INFO.txt
+          printf 'Source commit: %s\nRun: %s/%s/actions/runs/%s\nGPU configuration: background=1 certificates=1 texture_strips=1\nScope: cross-build and extracted CIA package; emulator/hardware not run\n' "$GITHUB_SHA" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > dist/sd/BUILD_INFO.txt
           (cd dist/sd && sha256sum 3ds/encore-native/encore-native.3dsx 3ds/encore-native/encore-native.smdh cias/encore-native.cia > SHA256SUMS)
       - name: Upload genuine 3DSX and CIA installable artifacts
         uses: actions/upload-artifact@v4

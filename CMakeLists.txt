@@ -55,6 +55,8 @@ add_library(encore_core
     runtime/field_global_data.cpp runtime/field_global_data_data.cpp
     runtime/global_item_cache.cpp
     runtime/global_yaml_caches.cpp runtime/global_yaml_caches_data.cpp
+    runtime/global_packed_directory.cpp runtime/global_packed_directory_data.cpp
+    runtime/global_yaml_file.cpp runtime/global_yaml_file_data.cpp
     runtime/field_dialogue_ui.cpp
     runtime/field_dialogue_ui_data.cpp
     runtime/field_inventory.cpp

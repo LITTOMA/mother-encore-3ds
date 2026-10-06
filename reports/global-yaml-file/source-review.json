@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "d885b7d279a5f2aa070d268aedd725cf1090bd5d2832bc08f7b006b11f97f6e8",
+  "native_receipt_sha256": "2e59b2bf37cf7fababdbd43060c78c58dd7532f11f6f0235b0dfe98548fd396f",
+  "engine": {
+    "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "sources": {
+      "core/bind/core_bind.h": "f5de9429dfc7867f2c47ee01cc329f685bc7f5baff7a4ecdcebe3d67ebf83ad7",
+      "core/bind/core_bind.cpp": "0f88efc5705d6df8e0891f7f30a3ae2b15e46c9b11fe481989088e0f36e1de6e",
+      "core/os/file_access.cpp": "41dc7fcbdbc3756205e651dde0ebede49705c9747cd1d2078f9e77f3aeda2afc",
+      "core/object.cpp": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+      "core/reference.cpp": "2964d690fffda7df119744278f66df3807bd06d749effe4eb18dbe9bd01048de",
+      "modules/gdscript/gdscript.cpp": "4eef4fbaf0fa4a62c7a40b58b61d685a7fe3e425d67cc529c58f96bdccaf2561",
+      "core/io/file_access_pack.cpp": "6b5879714bcd6056f3a50e396b6789e29bc0eb9a4b6fc7c87171eaf498b7a4d3"
+    }
+  },
+  "dependencies": {
+    "content/native-global-yaml-caches.json": "52e8901e881e59db64f3a2690141f6a05dd0634c7c31cb32983cb14d93bb3106",
+    "reports/global-yaml-caches/native-source.json": "cacaed6206ff6618b3afeb55354d12270630f381beb9ca5776d63f33500b3d99"
+  },
+  "sources": {
+    "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "scope": "Only exact checked six-cache YAML sources; actual File and implicit SmartFileReader references; no whole globaldata Ready"
+}

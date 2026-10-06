@@ -1,0 +1,1915 @@
+{
+  "schema": 1,
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "source_tree_entered": false,
+  "recognized_extensions": [
+    "webm",
+    "ogv",
+    "fnt",
+    "gdshader",
+    "shader",
+    "tscn",
+    "tres",
+    "po",
+    "mo",
+    "anim",
+    "atlastex",
+    "cubemap",
+    "curvetex",
+    "font",
+    "largetex",
+    "lmbake",
+    "material",
+    "mesh",
+    "meshlib",
+    "meshtex",
+    "mp3str",
+    "multimesh",
+    "occ",
+    "oggstr",
+    "phymat",
+    "res",
+    "sample",
+    "scn",
+    "shape",
+    "stylebox",
+    "tex",
+    "theme",
+    "translation",
+    "vs",
+    "world",
+    "image",
+    "crt",
+    "key",
+    "pub",
+    "bmp",
+    "dds",
+    "exr",
+    "jpeg",
+    "jpg",
+    "hdr",
+    "pkm",
+    "png",
+    "pvr",
+    "svg",
+    "tga",
+    "webp",
+    "ttf",
+    "otf",
+    "woff",
+    "woff2",
+    "stex",
+    "tex3d",
+    "texarr",
+    "dds",
+    "pkm",
+    "gdnlib",
+    "gdns",
+    "gd",
+    "gdc",
+    "gde",
+    "pvr"
+  ],
+  "files": [
+    {
+      "source": "Data/BattleSkills/SKILL_FORMAT_DOCUMENTATION.txt",
+      "sha256": "06b640368a007be636596437b4ee3e67fe0eea20e266719099aeca2e4065a6fb",
+      "included": false,
+      "size": 5572
+    },
+    {
+      "source": "Data/BattleSkills/advance_counter.yaml",
+      "sha256": "2a9715586166cef839e33034534bbd2a8df07711e39d40cdfa13416818d984dd",
+      "included": true,
+      "size": 298
+    },
+    {
+      "source": "Data/BattleSkills/approach.yaml",
+      "sha256": "a5abe8963134a3ff4c2d3ebf91b97f18d147068712c0e3118210cb08cab5300f",
+      "included": true,
+      "size": 342
+    },
+    {
+      "source": "Data/BattleSkills/attack.yaml",
+      "sha256": "97d01c135e783f4510b13501fd79b3b0f023297d6c860c3d06ac7db07f1f26ae",
+      "included": true,
+      "size": 354
+    },
+    {
+      "source": "Data/BattleSkills/attack_bat.yaml",
+      "sha256": "99a5757609a6fbf42358aba886f56cc18a00796a4b38eeef8e4fc59307a385a3",
+      "included": true,
+      "size": 356
+    },
+    {
+      "source": "Data/BattleSkills/attack_gun.yaml",
+      "sha256": "5a056f6af1feb011e116cba35d6196b880327bb99024b87cf9fc5515a8dc7cd7",
+      "included": true,
+      "size": 354
+    },
+    {
+      "source": "Data/BattleSkills/attack_slingshot.yaml",
+      "sha256": "ef8e297f7073d77f808ad57745f0c5363d73d740f853cd4cf0eecc4ea0dc9245",
+      "included": true,
+      "size": 342
+    },
+    {
+      "source": "Data/BattleSkills/ballFlame.yaml",
+      "sha256": "655552994dd8411d4e8b3c043f10eb4ef87c0a45f5a166727027a078c08fdc8f",
+      "included": true,
+      "size": 517
+    },
+    {
+      "source": "Data/BattleSkills/bash.yaml",
+      "sha256": "ef8f69c8897aa82f91dedf69bc662761f894c75374dca7b5b0a9ef6fa4d4b407",
+      "included": true,
+      "size": 332
+    },
+    {
+      "source": "Data/BattleSkills/battingAThousand.yaml",
+      "sha256": "571e1f6ff0feb178890a88af1b3d6b46da603bda25e4e997946da4dd3f593210",
+      "included": true,
+      "size": 458
+    },
+    {
+      "source": "Data/BattleSkills/bigGrin.yaml",
+      "sha256": "a300c2986ed3b3de17dcc6f458715e127bbdba0982da8de71b57eef0dd109ee1",
+      "included": true,
+      "size": 297
+    },
+    {
+      "source": "Data/BattleSkills/bite.yaml",
+      "sha256": "57d2c951f47e72379f09d27b2b7467e497be23e337bf674b16b2abba1da7a3f5",
+      "included": true,
+      "size": 341
+    },
+    {
+      "source": "Data/BattleSkills/blindingThrow.yaml",
+      "sha256": "50c3eb41936733fdf2de4c73c90ec9b549f329742e43458452b5c77ac1f07d27",
+      "included": true,
+      "size": 352
+    },
+    {
+      "source": "Data/BattleSkills/boomerangThrow.yaml",
+      "sha256": "8e5269a6fc4fcf55d4e8984e25d07b211c1f59ef50a8657074c13c259eb28a4a",
+      "included": true,
+      "size": 381
+    },
+    {
+      "source": "Data/BattleSkills/brainshockA.yaml",
+      "sha256": "991de48616a6c6b4cd833724a4ddfea3193f3445d401c98f3d4d9f5ff5f040b7",
+      "included": true,
+      "size": 385
+    },
+    {
+      "source": "Data/BattleSkills/brainshockO.yaml",
+      "sha256": "814cf019a90391d0d5cedc4b7298a651cfd71f2bea1f245b04aba4326e4ed8dd",
+      "included": true,
+      "size": 392
+    },
+    {
+      "source": "Data/BattleSkills/brandishPitchfork.yaml",
+      "sha256": "e78432c5256e83c027c67ce78e430495ac209781b2d423290324b32d7485ba60",
+      "included": true,
+      "size": 378
+    },
+    {
+      "source": "Data/BattleSkills/callHelp.yaml",
+      "sha256": "3a6eb617308125558f4423232605a8d57ffb847c07af1084aeb2a6f907cb06dd",
+      "included": true,
+      "size": 318
+    },
+    {
+      "source": "Data/BattleSkills/callHelpDistorto.yaml",
+      "sha256": "dcf1c9b080b35cdf02d07b0aefe3928867d1c59a052af03f086df7a7043835ea",
+      "included": true,
+      "size": 471
+    },
+    {
+      "source": "Data/BattleSkills/callHelpGhosts.yaml",
+      "sha256": "8836718da301816f53a9b81d209879c3f25d1aaada0c7a834d59ee25a682fb7f",
+      "included": true,
+      "size": 448
+    },
+    {
+      "source": "Data/BattleSkills/callHelpRaebYddet.yaml",
+      "sha256": "3a6d8f7d1c67107bf711eafff2870dbad523f32b14d53c0e2bc4729975b9966a",
+      "included": true,
+      "size": 322
+    },
+    {
+      "source": "Data/BattleSkills/callHelpRatKing.yaml",
+      "sha256": "7ab6674a682401eb78f7fa0c9be2bcb13f25c56c30076032c7b69b8772d02897",
+      "included": true,
+      "size": 338
+    },
+    {
+      "source": "Data/BattleSkills/callHelpStarmanJr1.yaml",
+      "sha256": "d0d957dbb27e24fbc77556b5985424f108e6a209a1032036ad861e69c0dcba02",
+      "included": true,
+      "size": 338
+    },
+    {
+      "source": "Data/BattleSkills/callHelpStarmanJr2.yaml",
+      "sha256": "7f743b9cfd90bb6b79746b545e864f485ef8444db02ad1ea1dfe15ace88546a6",
+      "included": true,
+      "size": 340
+    },
+    {
+      "source": "Data/BattleSkills/callHelpStarmanJr3.yaml",
+      "sha256": "c869909be37779ed76e77dfd57c2b17bf73e70ca2765b50400a077d58ad73115",
+      "included": true,
+      "size": 406
+    },
+    {
+      "source": "Data/BattleSkills/callLaunchers.yaml",
+      "sha256": "fe2523203aa6efddc0b4f066f620cbc87ae95d141a064648c0a2e20032ba6035",
+      "included": true,
+      "size": 311
+    },
+    {
+      "source": "Data/BattleSkills/confusion.yaml",
+      "sha256": "33dbc6b4c58d3fef8991c39034666ee3718bd9d49aedd14c86a9cfbffc53138d",
+      "included": true,
+      "size": 341
+    },
+    {
+      "source": "Data/BattleSkills/continuousAttack.yaml",
+      "sha256": "d2adf2a62647460581a8efb3278ff0603543c5e821a620feddc603c896bc5cc4",
+      "included": true,
+      "size": 378
+    },
+    {
+      "source": "Data/BattleSkills/counterA.yaml",
+      "sha256": "a16ad9a507dfdc0bda137a048333d52adfde9ae9ebe37d949c3def8177a2e92c",
+      "included": true,
+      "size": 404
+    },
+    {
+      "source": "Data/BattleSkills/counterO.yaml",
+      "sha256": "1aeb5d8cebe466d9b9f7d689c8e79c8ca7948004c009a20a1e8b4ac41317687a",
+      "included": true,
+      "size": 410
+    },
+    {
+      "source": "Data/BattleSkills/courage.yaml",
+      "sha256": "295d0156e1f69dd0d271f7b5af6934eb5b7a1ff2cbe83f9edaf7bce5e43f09d4",
+      "included": true,
+      "size": 470
+    },
+    {
+      "source": "Data/BattleSkills/criticalthinking.yaml",
+      "sha256": "d1a54ea299973b996c43a75b3da6dbb1c392787a76a68fe420ba78033321c745",
+      "included": true,
+      "size": 384
+    },
+    {
+      "source": "Data/BattleSkills/curveball.yaml",
+      "sha256": "f70bb179b1ef7134c44a99e4e4e4540ca8043d0d24245dd77e8e023ac169fb8e",
+      "included": true,
+      "size": 467
+    },
+    {
+      "source": "Data/BattleSkills/darkness.yaml",
+      "sha256": "02c85e5fa748d139392b4e7470fd65e18745eb7f1ebd2a23de100426fd5c1a47",
+      "included": true,
+      "size": 463
+    },
+    {
+      "source": "Data/BattleSkills/darknessA.yaml",
+      "sha256": "02c85e5fa748d139392b4e7470fd65e18745eb7f1ebd2a23de100426fd5c1a47",
+      "included": true,
+      "size": 463
+    },
+    {
+      "source": "Data/BattleSkills/darknessO.yaml",
+      "sha256": "11f49674ec422d19af75f47d221cbfea7587fa0cd04f31813b1b77fc1e94950c",
+      "included": true,
+      "size": 457
+    },
+    {
+      "source": "Data/BattleSkills/darlingSmile.yaml",
+      "sha256": "b25f21f1aed0eca8ab4b835d5a6731ee4531f0149a01f742605bbd2d1f6903d6",
+      "included": true,
+      "size": 357
+    },
+    {
+      "source": "Data/BattleSkills/defenseDownA.yaml",
+      "sha256": "7cd06b9bce9a9cb292bd7a9c7609114471b55b428845aaa10252a19c05ed4055",
+      "included": true,
+      "size": 503
+    },
+    {
+      "source": "Data/BattleSkills/defenseDownO.yaml",
+      "sha256": "ba5a0d5bbd2244df4dff07b2a86b00a2af3adb3740b3a18d2a7e6d3f22e2243a",
+      "included": true,
+      "size": 510
+    },
+    {
+      "source": "Data/BattleSkills/defenseUpA.yaml",
+      "sha256": "aa5cb358fececde250ad9f70db2bc97370df8dc62f1f600008f956b82dcc2d42",
+      "included": true,
+      "size": 490
+    },
+    {
+      "source": "Data/BattleSkills/dehydratingAttack.yaml",
+      "sha256": "0235519002d755de51807436b712a648c9df6704b76a2c8b46a0adf5d62a4779",
+      "included": true,
+      "size": 343
+    },
+    {
+      "source": "Data/BattleSkills/distortoBoost.yaml",
+      "sha256": "9b64e2760551ebf78e358320f8ea7ad3fbdb74fc9d52e8c7725f33c54fddc9e4",
+      "included": true,
+      "size": 360
+    },
+    {
+      "source": "Data/BattleSkills/do_nothing.yaml",
+      "sha256": "50e1927c23ce89b2ff430531d46d3330f9683f033ad7b596cb6c699c118a0199",
+      "included": true,
+      "size": 313
+    },
+    {
+      "source": "Data/BattleSkills/escapeCrumbs.yaml",
+      "sha256": "4e90392f2d90abbcc6a886fc38020808a5f0917a1c2ae4550d22d3c1ae1ed38e",
+      "included": true,
+      "size": 335
+    },
+    {
+      "source": "Data/BattleSkills/exhaustGas.yaml",
+      "sha256": "488a698caf2456e5678a2dd2d0b48f87ab410ee64add61d91fd0e1eb068944b8",
+      "included": true,
+      "size": 366
+    },
+    {
+      "source": "Data/BattleSkills/explode.yaml",
+      "sha256": "115c872ece07efd99ff0e420e65b280e4e40d5af2e19b55267b32d2ecf4311b6",
+      "included": true,
+      "size": 400
+    },
+    {
+      "source": "Data/BattleSkills/flameBurst.yaml",
+      "sha256": "b34eb1e4fc9a6301388f4e01f1e9c2f4107adb87dcc105e00b5bdbd9d2526b75",
+      "included": true,
+      "size": 408
+    },
+    {
+      "source": "Data/BattleSkills/float.yaml",
+      "sha256": "febabbfa812aeda67aaf4177c99f49abb7c76b038bf418abe0e47429b5966221",
+      "included": true,
+      "size": 290
+    },
+    {
+      "source": "Data/BattleSkills/forgetfulnessFlash.yaml",
+      "sha256": "ce93d953e93c47455f2ce92952583986fb4f27f4568d1ddc4acef5ccfed19725",
+      "included": true,
+      "size": 347
+    },
+    {
+      "source": "Data/BattleSkills/forgetfulnessFlashGuaranteed.yaml",
+      "sha256": "928c0ee8bdfe48dabe47891fd47f6ab122a58c2282248ee87c3fa28de01b24a4",
+      "included": true,
+      "size": 346
+    },
+    {
+      "source": "Data/BattleSkills/frown.yaml",
+      "sha256": "d522bcd5f3a1ed296d346ff0d797307c410f64a47f74f58ac7aa188075a37906",
+      "included": true,
+      "size": 290
+    },
+    {
+      "source": "Data/BattleSkills/getDistracted.yaml",
+      "sha256": "ee73b4155fd008ddafce05c1d553e05fa74f544e94bd681e798fb3063bff81c7",
+      "included": true,
+      "size": 315
+    },
+    {
+      "source": "Data/BattleSkills/guard.yaml",
+      "sha256": "3dd5ab7132619f863332845e7fbcd46b56cc9bf0f32ae2b864fd4b30c38294c0",
+      "included": true,
+      "size": 316
+    },
+    {
+      "source": "Data/BattleSkills/healingA.yaml",
+      "sha256": "b0ede1d9eb906444abffb8b3c195e840f8791c0289bc25798cab461efc13763d",
+      "included": true,
+      "size": 655
+    },
+    {
+      "source": "Data/BattleSkills/healingB.yaml",
+      "sha256": "0a807d72f835975deb2d7f273b64f878f94da2b12692f6139a88fe633bd553bb",
+      "included": true,
+      "size": 655
+    },
+    {
+      "source": "Data/BattleSkills/healingG.yaml",
+      "sha256": "8bbc723259f595f880902bf54e9d77b20766ce2559e20487f24f3c6e8d906d9f",
+      "included": true,
+      "size": 599
+    },
+    {
+      "source": "Data/BattleSkills/healingO.yaml",
+      "sha256": "7c5988bdd991fd27100c35e37e879138ac3f4fb839334002ada8549e95b99003",
+      "included": true,
+      "size": 605
+    },
+    {
+      "source": "Data/BattleSkills/hypnosis.yaml",
+      "sha256": "cc2833321f9ccc777f1b653bf70969b45bd47fc387611388e644f1b4955d065e",
+      "included": true,
+      "size": 487
+    },
+    {
+      "source": "Data/BattleSkills/hypnosisA.yaml",
+      "sha256": "cc2833321f9ccc777f1b653bf70969b45bd47fc387611388e644f1b4955d065e",
+      "included": true,
+      "size": 487
+    },
+    {
+      "source": "Data/BattleSkills/hypnosisO.yaml",
+      "sha256": "4afb575ea79b1a9ce8c9d40ebef5fe27949b3bb3791e014bfb7956acc87dd279",
+      "included": true,
+      "size": 458
+    },
+    {
+      "source": "Data/BattleSkills/hystericalLaugh.yaml",
+      "sha256": "07016277bb8191e1e7d966ab4498a704d65b7b55374c7e3c9a08be588ebe95dc",
+      "included": true,
+      "size": 321
+    },
+    {
+      "source": "Data/BattleSkills/karateChop.yaml",
+      "sha256": "8b71633f38c6712d1126417c59eba35c709f9ecfd5db48a5e26a651b5c0d8a87",
+      "included": true,
+      "size": 351
+    },
+    {
+      "source": "Data/BattleSkills/lastBlow.yaml",
+      "sha256": "cd4336cd4508de75a6d1bb2cefd8f61f5a3558e28abb565544b74525579496ed",
+      "included": true,
+      "size": 367
+    },
+    {
+      "source": "Data/BattleSkills/lifeUpA.yaml",
+      "sha256": "9a2196d71255d94998502717254bbb569cb91bb2fb5edec053c15c1b2c1a73d3",
+      "included": true,
+      "size": 468
+    },
+    {
+      "source": "Data/BattleSkills/lifeUpB.yaml",
+      "sha256": "87ee56449b4962d3dd490cdc6eb077634cab6017a99abe061d4f56687f32ffaa",
+      "included": true,
+      "size": 469
+    },
+    {
+      "source": "Data/BattleSkills/lifeUpG.yaml",
+      "sha256": "4160431eb687ca96c96fa7e2b79f3363a53da840ca975a643bc47fe5690bf211",
+      "included": true,
+      "size": 476
+    },
+    {
+      "source": "Data/BattleSkills/lifeUpO.yaml",
+      "sha256": "cc3db706cc13fb3065a4ad6a911d310891ddfbee26630ec8ab59cce4222c8050",
+      "included": true,
+      "size": 483
+    },
+    {
+      "source": "Data/BattleSkills/meditate.yaml",
+      "sha256": "e736dfabcc20c7374d9ae45ebcccb8f736fd9e985ee8550606ab837696b37bfe",
+      "included": true,
+      "size": 299
+    },
+    {
+      "source": "Data/BattleSkills/mightyRoar.yaml",
+      "sha256": "8dd7d9a7177100283105fd06b26b3ecc78279dd39fbc8aa7a13a55fef5723990",
+      "included": true,
+      "size": 351
+    },
+    {
+      "source": "Data/BattleSkills/mysteriousAction.yaml",
+      "sha256": "1d20378efb8b23cd2b9371588a81a713d198ecb86e32d3484e5ccb7d74b1ca41",
+      "included": true,
+      "size": 327
+    },
+    {
+      "source": "Data/BattleSkills/nastyWords.yaml",
+      "sha256": "dec881867726b34a3691c654313ea4dbe7d213572391dc64330a4b2995ad5bcc",
+      "included": true,
+      "size": 330
+    },
+    {
+      "source": "Data/BattleSkills/nauseousFluid.yaml",
+      "sha256": "cd321fcd0976acf6a05714d11ca30ced2823633959ee868c09d35c20f54896d8",
+      "included": true,
+      "size": 363
+    },
+    {
+      "source": "Data/BattleSkills/nauseousOdor.yaml",
+      "sha256": "f0c7becd6ad6b14fe85d7a8e8d986cbab5035eee6de66b766c574020aacd8378",
+      "included": true,
+      "size": 356
+    },
+    {
+      "source": "Data/BattleSkills/offenseUpA.yaml",
+      "sha256": "14b1fbb71af14be020899469ab4ca32b1c53ac4e8184de9f24e760c68b3f05ae",
+      "included": true,
+      "size": 490
+    },
+    {
+      "source": "Data/BattleSkills/paralysisA.yaml",
+      "sha256": "7e7069e5a025a6b40719fb122f4447723fa378024d97fb115a58401a5b09d2c2",
+      "included": true,
+      "size": 378
+    },
+    {
+      "source": "Data/BattleSkills/paralysisO.yaml",
+      "sha256": "40c877b031aaee80c855a0d23a60c7ae7ce5a671d004757c7d1533e08e3c408b",
+      "included": true,
+      "size": 385
+    },
+    {
+      "source": "Data/BattleSkills/peck.yaml",
+      "sha256": "3ea03689989440b74e3447de4635c4947e0fe277922dbd804615ac615e1377f0",
+      "included": true,
+      "size": 332
+    },
+    {
+      "source": "Data/BattleSkills/pepTalk.yaml",
+      "sha256": "3b8d7c7f71c5ce555ba90f5c36634896cf5bb6de5503af718c27191b1db23255",
+      "included": true,
+      "size": 487
+    },
+    {
+      "source": "Data/BattleSkills/pkBeamA.yaml",
+      "sha256": "3c289f03a9f9ca6924c1d2a656cbb0f2b53b4426e355158f8382003bbc91381a",
+      "included": true,
+      "size": 508
+    },
+    {
+      "source": "Data/BattleSkills/pkBeamAEnemy.yaml",
+      "sha256": "786a56236f2c197394d0d807d088d0ae9a6ea9b5855ba147fd13795e85f07682",
+      "included": true,
+      "size": 507
+    },
+    {
+      "source": "Data/BattleSkills/pkBeamB.yaml",
+      "sha256": "2fe89c0b8318440ef29f1f0bedc9ac67fb76cc05aa3bd5db60b5bd11147cf6b9",
+      "included": true,
+      "size": 495
+    },
+    {
+      "source": "Data/BattleSkills/pkBeamG.yaml",
+      "sha256": "cd4eaab64e2433651264ac717e36942e860bb2e583b7ac3316ced616c4b7439f",
+      "included": true,
+      "size": 526
+    },
+    {
+      "source": "Data/BattleSkills/pkBeamG_StarmanJr.yaml",
+      "sha256": "10f7edb380f1326ba0fb49bc3fabe1136b17c3ad3edfa6bcc703c434f2bb13f4",
+      "included": true,
+      "size": 525
+    },
+    {
+      "source": "Data/BattleSkills/pkBeamO.yaml",
+      "sha256": "e461709d0375c8e9ab47663c1259386c30e5b01a488eb02d316aa1dd505445b7",
+      "included": true,
+      "size": 482
+    },
+    {
+      "source": "Data/BattleSkills/pkFireA.yaml",
+      "sha256": "17a65f1a5c7bd6983064877d99e2af4553a441df2fdbc3b83562ee51ed8fb88b",
+      "included": true,
+      "size": 496
+    },
+    {
+      "source": "Data/BattleSkills/pkFireAEnemy.yaml",
+      "sha256": "cb2ddf7ed98fe3f901cbdedfe1c2d88488d472eeab65300201610f36391744f1",
+      "included": true,
+      "size": 495
+    },
+    {
+      "source": "Data/BattleSkills/pkFireB.yaml",
+      "sha256": "3d09dcfbd4b41171ea4fc5a3c69cacc0f0e5ae26315e633967a3257d7c8585e6",
+      "included": true,
+      "size": 494
+    },
+    {
+      "source": "Data/BattleSkills/pkFireG.yaml",
+      "sha256": "9311ae4c99ec370d0bf8fd4c01fb8f21c26b24b74e3b9a56f758d23f00b2f197",
+      "included": true,
+      "size": 496
+    },
+    {
+      "source": "Data/BattleSkills/pkFireO.yaml",
+      "sha256": "a00ce1a64b46c07df73e621300d96417cd9b2b5a98a095b15cde9b30178a24c1",
+      "included": true,
+      "size": 497
+    },
+    {
+      "source": "Data/BattleSkills/pkFlash.yaml",
+      "sha256": "f867929cde8f4eaf2261633b659d8665d02375950eefb93923b238ed09ab2f5c",
+      "included": true,
+      "size": 544
+    },
+    {
+      "source": "Data/BattleSkills/pkFlashA.yaml",
+      "sha256": "f867929cde8f4eaf2261633b659d8665d02375950eefb93923b238ed09ab2f5c",
+      "included": true,
+      "size": 544
+    },
+    {
+      "source": "Data/BattleSkills/pkFlashO.yaml",
+      "sha256": "5fb65a51fbb135cb4f4f889ffadd9394d0c5bff2d3338edd7c494fc05a431a9b",
+      "included": true,
+      "size": 487
+    },
+    {
+      "source": "Data/BattleSkills/pkFreezeA.yaml",
+      "sha256": "b22430653946d66d888ff132cccc7703aefe2a9098ef8e8ce7cf041036dda4ed",
+      "included": true,
+      "size": 378
+    },
+    {
+      "source": "Data/BattleSkills/pkFreezeB.yaml",
+      "sha256": "b06d8de793dc376242f49761388e1003b920960e2331d89d9897790b297522d2",
+      "included": true,
+      "size": 378
+    },
+    {
+      "source": "Data/BattleSkills/pkFreezeG.yaml",
+      "sha256": "cda628f1f033684fab11b641d2be67a70cd7ccb7f9e3e9344897326dda2fba0c",
+      "included": true,
+      "size": 379
+    },
+    {
+      "source": "Data/BattleSkills/pkFreezeO.yaml",
+      "sha256": "6e2ead733410b257bee38562a2c0ed054e73ebe1c457c9f40496eefbfebb7fa9",
+      "included": true,
+      "size": 380
+    },
+    {
+      "source": "Data/BattleSkills/pkThunderA.yaml",
+      "sha256": "2181d7568e7e5313cd339f49aae32f487c2d16cb53ff87b3d9a7aa506c1fca6b",
+      "included": true,
+      "size": 480
+    },
+    {
+      "source": "Data/BattleSkills/poisonBite.yaml",
+      "sha256": "e4ee85624a538fffd3dac0aa9d2570b75e6682afe4bdc2592eda3ff67834ea0d",
+      "included": true,
+      "size": 392
+    },
+    {
+      "source": "Data/BattleSkills/poisonNeedle.yaml",
+      "sha256": "f47c178ad924a655246a6fd2bbf627ecc42e1b37f62ecba4998c43cadb717f00",
+      "included": true,
+      "size": 368
+    },
+    {
+      "source": "Data/BattleSkills/psiBlock.yaml",
+      "sha256": "910dbb7bb18738864c90e266879b4fc348cdf5b746e8a54adfa054d737a8b767",
+      "included": true,
+      "size": 382
+    },
+    {
+      "source": "Data/BattleSkills/psiCounterA.yaml",
+      "sha256": "9bdea862de5e0b4f083b70c82ce385540cf8c31bf7a73dd3d937598a2ca36839",
+      "included": true,
+      "size": 417
+    },
+    {
+      "source": "Data/BattleSkills/psiCounterO.yaml",
+      "sha256": "fb394ccacb636a02d31d7a493a29cb20f7041758a5cf475e7f32c7999bdcbdd3",
+      "included": true,
+      "size": 423
+    },
+    {
+      "source": "Data/BattleSkills/psiMagnetA.yaml",
+      "sha256": "75ab2fef124eeac67fd48da2e8cc412836d9510beae4e437f8816428a9f90ed3",
+      "included": true,
+      "size": 363
+    },
+    {
+      "source": "Data/BattleSkills/psiMagnetO.yaml",
+      "sha256": "598a8f245ac5cf4b42a4d5f17c9bd53644c16fb7b25ecb81a08bbb3b66896c6c",
+      "included": true,
+      "size": 369
+    },
+    {
+      "source": "Data/BattleSkills/psiShieldA.yaml",
+      "sha256": "e8084cf57febc58fe5ad68cf09266f54831dc6fdb51b1fb69befe3a303f0705b",
+      "included": true,
+      "size": 412
+    },
+    {
+      "source": "Data/BattleSkills/psiShieldO.yaml",
+      "sha256": "cee75206eac5602728092a2ed6682790eba7726ad1295ecfb855405efb4d7565",
+      "included": true,
+      "size": 419
+    },
+    {
+      "source": "Data/BattleSkills/punch.yaml",
+      "sha256": "7a0caa22079bfe1dd7a654c7266d4df89e164869000cac47ee1af3c8021f8b3d",
+      "included": true,
+      "size": 336
+    },
+    {
+      "source": "Data/BattleSkills/rage.yaml",
+      "sha256": "f41ccf9d847789f63571ff29a9fa1339d71c9e717f4ea8d4083a76688e83da23",
+      "included": true,
+      "size": 313
+    },
+    {
+      "source": "Data/BattleSkills/readyForAttack.yaml",
+      "sha256": "defcfbf600cfa977cccfab99120daf3ac908ee9ec52ad7a119d8e7127be263a0",
+      "included": true,
+      "size": 334
+    },
+    {
+      "source": "Data/BattleSkills/recloak.yaml",
+      "sha256": "e00d1496ca9f8c9127b0d07b18691bbd8bd662f185294e2efaa4a9b881d58fb8",
+      "included": true,
+      "size": 307
+    },
+    {
+      "source": "Data/BattleSkills/replenishEnergy.yaml",
+      "sha256": "3d5b686ee8edfe0972bb8a2821ce0133e81f4b7382e0dab41d35d93c60aabdfa",
+      "included": true,
+      "size": 393
+    },
+    {
+      "source": "Data/BattleSkills/ricochet.yaml",
+      "sha256": "fde18f4e905cec8cac67099cfd57046b92aaef52f88222531db61a4bd415cd34",
+      "included": true,
+      "size": 487
+    },
+    {
+      "source": "Data/BattleSkills/robotBash.yaml",
+      "sha256": "fb214d37780ec9495465a2789879567d92e919eb4c2916b30262c17c0e4422f2",
+      "included": true,
+      "size": 351
+    },
+    {
+      "source": "Data/BattleSkills/rocketLaunchBlue.yaml",
+      "sha256": "5f9cc51039e1ce7c5edbb4f893896d16e67226196934c3b3a34617a2947b19f1",
+      "included": true,
+      "size": 432
+    },
+    {
+      "source": "Data/BattleSkills/rocketLaunchRed.yaml",
+      "sha256": "4ca4a4ed2a183e22b117f1d4f4b0d3dbcac2f9140edf8e0a4127a2063bf143e7",
+      "included": true,
+      "size": 437
+    },
+    {
+      "source": "Data/BattleSkills/rope.yaml",
+      "sha256": "73d40adda0a320d022a57aa3e0d8fb1f6b9ea86dd698ebf3d1c14f11d42a3a69",
+      "included": true,
+      "size": 322
+    },
+    {
+      "source": "Data/BattleSkills/runAway.yaml",
+      "sha256": "416e1411d3c5b6babfa6b1ef288f264aa11cd6efa4fc3027ac6c5c89df8080ca",
+      "included": true,
+      "size": 322
+    },
+    {
+      "source": "Data/BattleSkills/runOutOfControl.yaml",
+      "sha256": "193784001b52991b4f6770091dca05b88d13c4a1cdf3b4492ed5797017729a96",
+      "included": true,
+      "size": 366
+    },
+    {
+      "source": "Data/BattleSkills/scratch.yaml",
+      "sha256": "9375594399079f05ffa62d3f9ec41f77da063276f0fc6f99818dafd75ff39847",
+      "included": true,
+      "size": 342
+    },
+    {
+      "source": "Data/BattleSkills/shieldA.yaml",
+      "sha256": "d9218fa150e9e134ecb002a6ee37fc29552c9eaddf8c25610723dc2b6db3bf02",
+      "included": true,
+      "size": 469
+    },
+    {
+      "source": "Data/BattleSkills/shieldO.yaml",
+      "sha256": "063ce58bfb16c0c19edd7d12c3c383a9c480c25f29327988835f419d733167f4",
+      "included": true,
+      "size": 406
+    },
+    {
+      "source": "Data/BattleSkills/shortCircuit.yaml",
+      "sha256": "bff8eeaa2746347da27bf52de1fea571c572a52e77177f601b30c5e7295469a8",
+      "included": true,
+      "size": 396
+    },
+    {
+      "source": "Data/BattleSkills/sowSeeds.yaml",
+      "sha256": "ab043226612b69db02eadfb27d424dce16231754453a3c8ec1d1fb2492d214a5",
+      "included": true,
+      "size": 348
+    },
+    {
+      "source": "Data/BattleSkills/speedUpA.yaml",
+      "sha256": "fdc4602b088de931607c8e047b7503ee9bb0ebd3f14d09b0594f775b13469573",
+      "included": true,
+      "size": 480
+    },
+    {
+      "source": "Data/BattleSkills/splitShot.yaml",
+      "sha256": "efdd73c94385d40a882c9173b15097d5e03591d1f99d9da5655bda580239523b",
+      "included": true,
+      "size": 444
+    },
+    {
+      "source": "Data/BattleSkills/spy.yaml",
+      "sha256": "426408aa90b0772cfa75ef5a1737ee9c7316d901d26c1bd3d901d192c5fb7842",
+      "included": true,
+      "size": 386
+    },
+    {
+      "source": "Data/BattleSkills/stealItem.yaml",
+      "sha256": "8c081676c804cd0cd50a717b2534fe2b9625834011a778ffa5ff42317e9cac12",
+      "included": true,
+      "size": 368
+    },
+    {
+      "source": "Data/BattleSkills/stickySubstance.yaml",
+      "sha256": "6c972cf214770b5835035a393aff9d07ae41f4e404ad33e1da72eba5d5100b00",
+      "included": true,
+      "size": 369
+    },
+    {
+      "source": "Data/BattleSkills/stoneOfOrigin.yaml",
+      "sha256": "d4889b291c71704c2106fe40bfc3a97c81f7a76b1273b134ac16e76d5767d9d0",
+      "included": true,
+      "size": 328
+    },
+    {
+      "source": "Data/BattleSkills/strangeCry.yaml",
+      "sha256": "36df1bbe761358ef7ec5998bcc5854e2b2ea7ce921e455a896c4f5974dcfff78",
+      "included": true,
+      "size": 415
+    },
+    {
+      "source": "Data/BattleSkills/strangeThing.yaml",
+      "sha256": "c1812ce702167cf07dd5917515f3f81441fb9597862032458d2fb5ecac885eca",
+      "included": true,
+      "size": 349
+    },
+    {
+      "source": "Data/BattleSkills/strike.yaml",
+      "sha256": "2249e5e4d4e3113a037ae888a76f8c1af3494a7e156003bc0374f8449e59d53e",
+      "included": true,
+      "size": 512
+    },
+    {
+      "source": "Data/BattleSkills/tackle.yaml",
+      "sha256": "8b82dc31555bdc4f6a3c1843eb8e8a81eb1ded3c2efa7b4f433ab424c7d88078",
+      "included": true,
+      "size": 338
+    },
+    {
+      "source": "Data/BattleSkills/telepathy.yaml",
+      "sha256": "9240e42dd77ef0c7518c47c9c3396889c2a3b65b4b633197edc816646c114066",
+      "included": true,
+      "size": 197
+    },
+    {
+      "source": "Data/BattleSkills/teleportA.yaml",
+      "sha256": "eafecaced6b8e93a37ab5bdab56b0d9382478fc9c623a7fc61e67bfc119203ec",
+      "included": true,
+      "size": 204
+    },
+    {
+      "source": "Data/BattleSkills/teleportO.yaml",
+      "sha256": "5bc81a80411d915bc18c7cad0baae04115a354e86f17ad9044c6148de4a98982",
+      "included": true,
+      "size": 204
+    },
+    {
+      "source": "Data/BattleSkills/threateningWords.yaml",
+      "sha256": "9662a898dcc13001f8b49c28327b04cbb27a0470bf6545e1a00699b76ce467a0",
+      "included": true,
+      "size": 351
+    },
+    {
+      "source": "Data/BattleSkills/tripAndFall.yaml",
+      "sha256": "9d84dfdbdaa4261952b50e4db038576db80d8c6eace03f5ad57116e4264d39a3",
+      "included": true,
+      "size": 379
+    },
+    {
+      "source": "Data/BattleSkills/tripAndFallExplode.yaml",
+      "sha256": "3b051b951e8d46d913feae4e35964c2e8ca6001124b4571f2cdf0297acc54cf1",
+      "included": true,
+      "size": 391
+    },
+    {
+      "source": "Data/BattleSkills/uncloak.yaml",
+      "sha256": "d4d15737a955413219d8d8da769a3a31d01a069f0ac07ca0610d7c6e0eedfd2b",
+      "included": true,
+      "size": 350
+    },
+    {
+      "source": "Data/BattleSkills/useBananaGun.yaml",
+      "sha256": "935284f2d9b894d06e05515d2d2424c905e64edb22dab1c68fd7b43b15331ec8",
+      "included": true,
+      "size": 342
+    },
+    {
+      "source": "Data/BattleSkills/useBomb.yaml",
+      "sha256": "8ab4e88a89db2c5875d86927f2b64e9835545b066d94282442f9c4e5c7aa19da",
+      "included": true,
+      "size": 386
+    },
+    {
+      "source": "Data/BattleSkills/useBombSuper.yaml",
+      "sha256": "3321b95adbf2961f2ac50be43c52fb38729b07c5a5984b32d958a955f27ec249",
+      "included": true,
+      "size": 412
+    },
+    {
+      "source": "Data/BattleSkills/useBottleRocket.yaml",
+      "sha256": "8f97da4686d040172a26726fcf4d5ad57e7b9a14520d850c3856f8516f9e3e14",
+      "included": true,
+      "size": 445
+    },
+    {
+      "source": "Data/BattleSkills/useBottleRocketBig.yaml",
+      "sha256": "c56bc9a0fb3bfed6aa2fc0332aa395bd8c96d09c06c5dad24f4242baa1cd6172",
+      "included": true,
+      "size": 453
+    },
+    {
+      "source": "Data/BattleSkills/useBottleRocketMulti.yaml",
+      "sha256": "b0b9c085de007de5ac485675f63ae7ccf657724ea53e2f192615a0e127eb50a6",
+      "included": true,
+      "size": 465
+    },
+    {
+      "source": "Data/BattleSkills/useBullhorn.yaml",
+      "sha256": "aa004d84b073c82b411d28478df56a78e5611645c1029460d485e77138ded3ac",
+      "included": true,
+      "size": 420
+    },
+    {
+      "source": "Data/BattleSkills/useBullhornFail.yaml",
+      "sha256": "ba979d32a4aade3066fbfca62b589081643ce96270eaebc55d1963dc31164a1a",
+      "included": true,
+      "size": 274
+    },
+    {
+      "source": "Data/BattleSkills/useDefenseShower.yaml",
+      "sha256": "02c0a9ce31c45076f58612a11f40c32a50835c09eeba68967d993ebc6e707c79",
+      "included": true,
+      "size": 406
+    },
+    {
+      "source": "Data/BattleSkills/useFlameThrower.yaml",
+      "sha256": "2dfd349fe1ccd2631212deb7b54a11d816089dfb9ae984960dd2fd7a3b132792",
+      "included": true,
+      "size": 472
+    },
+    {
+      "source": "Data/BattleSkills/useFlashdark.yaml",
+      "sha256": "1bc599f4457441e174f3fdf16ee25c0d456a0cf2ff710f9c90c8596f7856a2f3",
+      "included": true,
+      "size": 340
+    },
+    {
+      "source": "Data/BattleSkills/useFleaBag.yaml",
+      "sha256": "cea497d80833efc10045a2bd82de52e3eb7ee0d6836f23553e16e7579f5fc5a6",
+      "included": true,
+      "size": 338
+    },
+    {
+      "source": "Data/BattleSkills/useInsecticide.yaml",
+      "sha256": "2ec8750a612d7989049c263a05d51d485dee0cac2854e093adb5194818e83e74",
+      "included": true,
+      "size": 356
+    },
+    {
+      "source": "Data/BattleSkills/useRuler.yaml",
+      "sha256": "f93531b5b5e738b9c83ef9d78058fd80bda2702859c4d305414a06f5a2eee1d3",
+      "included": true,
+      "size": 294
+    },
+    {
+      "source": "Data/BattleSkills/useStickyMachine.yaml",
+      "sha256": "e226fa8990ca0edf810a1ddf81cbd22bf78746aaefbb528bd00a0fde73fb754e",
+      "included": true,
+      "size": 392
+    },
+    {
+      "source": "Data/BattleSkills/useSuperSpray.yaml",
+      "sha256": "053f8992c86b431757da431a7ac5ed88a84fbe9743a02b1fefadfeca252ad67e",
+      "included": true,
+      "size": 354
+    },
+    {
+      "source": "Data/BattleSkills/ventOdor.yaml",
+      "sha256": "c0c83aaa615a49f53fd3d9ef961a2397b11411932cf8170c8de1d948200a1ba4",
+      "included": true,
+      "size": 350
+    },
+    {
+      "source": "Data/BattleSkills/walkAway.yaml",
+      "sha256": "c447704a1f92683f69428b91b1786e2cfc3672ed46a38ad7d0e7bf651a34d88d",
+      "included": true,
+      "size": 344
+    },
+    {
+      "source": "Data/BattleSkills/wickedSeed.yaml",
+      "sha256": "fbdf471b231e0efa487e0642f152e0f9cf3ae3f830d21b461e933e23b280bd41",
+      "included": true,
+      "size": 344
+    },
+    {
+      "source": "Data/BattleSkills/yomama.yaml",
+      "sha256": "e8eb96668dd6efdf928df5624d72f69b011efb660c9ae30610eba29b60bd27df",
+      "included": true,
+      "size": 377
+    },
+    {
+      "source": "Data/FieldSkills/energy_beam.yaml",
+      "sha256": "3961655136461f6fcd6393d11258278926f2a08a8580a3a777ab8f7d9ceb1ef6",
+      "included": true,
+      "size": 179
+    },
+    {
+      "source": "Data/FieldSkills/jump.yaml",
+      "sha256": "4776bf182484ca963a4ef11cbe1b2e0b8d3a4dc392640e9bec27b952ed493194",
+      "included": true,
+      "size": 143
+    },
+    {
+      "source": "Data/FieldSkills/pkfire.yaml",
+      "sha256": "13b1b98af2b3247c9a65b55c597b79e4f7a88e98b0c3ed1eb076f79d1340634f",
+      "included": true,
+      "size": 177
+    },
+    {
+      "source": "Data/FieldSkills/pkfreeze.yaml",
+      "sha256": "099762fd625d6b19c5b8f528df6fd35450b08aae0d1a357c89e8fcebbfe97e74",
+      "included": true,
+      "size": 183
+    },
+    {
+      "source": "Data/FieldSkills/pkthunder.yaml",
+      "sha256": "d86efec20bfd05bac7e18cf815ead57e02aca18dfb330ce15f2a34af1b1b5539",
+      "included": true,
+      "size": 186
+    },
+    {
+      "source": "Data/FieldSkills/relay.yaml",
+      "sha256": "926da56bbbefdc992945485923aed00f9b6497dcddd95ca7b871cd880024103a",
+      "included": true,
+      "size": 145
+    },
+    {
+      "source": "Data/FieldSkills/run.yaml",
+      "sha256": "2a9a3d5c972d816f180e5c6115160fdba0f8540a812deb61aa925373c9f83d6a",
+      "included": true,
+      "size": 121
+    },
+    {
+      "source": "Data/FieldSkills/scope.yaml",
+      "sha256": "3e9581e222ac15651eb268b062d069a27e6d185a3f06f98b8f1684ac98eb4d56",
+      "included": true,
+      "size": 125
+    },
+    {
+      "source": "Data/FieldSkills/swing.yaml",
+      "sha256": "e3e770194ec22e76fe75a271f2cda85371cbb3c50277275067fd68d1539bf0aa",
+      "included": true,
+      "size": 161
+    },
+    {
+      "source": "Data/FieldSkills/telepathy.yaml",
+      "sha256": "1529b8c0631d697377eb293e107b37068c03ba8588fdd254b37e33bc22559230",
+      "included": true,
+      "size": 162
+    },
+    {
+      "source": "Data/FieldSkills/teleport.yaml",
+      "sha256": "9ba1414722d2f0b2661b41d758534fe5638f267a877e1f1ed741c17503122e3e",
+      "included": true,
+      "size": 158
+    },
+    {
+      "source": "Data/Items/Antidote.yaml",
+      "sha256": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb",
+      "included": true,
+      "size": 353
+    },
+    {
+      "source": "Data/Items/Apple.yaml",
+      "sha256": "973ba3334d58203c1916b1cfd8fdc7445fea55cb626cbab76a18afc63c62487f",
+      "included": true,
+      "size": 373
+    },
+    {
+      "source": "Data/Items/AppleSlices.yaml",
+      "sha256": "bf48e6a2a7b38c4e18e253a9556c21eac5db229416052aa9752e579070d06a53",
+      "included": true,
+      "size": 366
+    },
+    {
+      "source": "Data/Items/AsthmaSpray.yaml",
+      "sha256": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+      "included": true,
+      "size": 383
+    },
+    {
+      "source": "Data/Items/Banana.yaml",
+      "sha256": "e3b2a4690a88a2f59fdbb1e28f94e6c333652d4a4da1a4d1fb05a0d361de8f95",
+      "included": true,
+      "size": 377
+    },
+    {
+      "source": "Data/Items/BananaGun.yaml",
+      "sha256": "231169d9a61142076f322bc5975f19bbb7ae4ed91147574559881facbb98291d",
+      "included": true,
+      "size": 305
+    },
+    {
+      "source": "Data/Items/BaseballCap.yaml",
+      "sha256": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+      "included": true,
+      "size": 328
+    },
+    {
+      "source": "Data/Items/BaseballCapMr.yaml",
+      "sha256": "db7cb7b27918d03cee1a1cf2c7dfab4bef32dd53de9e6719b7ed19e1b800992c",
+      "included": true,
+      "size": 336
+    },
+    {
+      "source": "Data/Items/BatOld.yaml",
+      "sha256": "a342301d21e930ca575d0b6f89bc47fe6a52fcdc94fa498782006dd74149c1e6",
+      "included": true,
+      "size": 265
+    },
+    {
+      "source": "Data/Items/BatPlastic.yaml",
+      "sha256": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+      "included": true,
+      "size": 357
+    },
+    {
+      "source": "Data/Items/BatTeeBall.yaml",
+      "sha256": "d29ca14749510776e2bf344a9be36ce817891a4cf398314d08e3a0a9dd5b435e",
+      "included": true,
+      "size": 357
+    },
+    {
+      "source": "Data/Items/BatWooden.yaml",
+      "sha256": "30a42c32fd28c3b664c7e00357b57ededa656c5ee091b7d86b85ddd2b81598c6",
+      "included": true,
+      "size": 353
+    },
+    {
+      "source": "Data/Items/BeeStingCake.yaml",
+      "sha256": "f1b4751e374e3848926dd0f83deeca012ced6c1088eeeccfa9a4ffe84ec77ae8",
+      "included": true,
+      "size": 373
+    },
+    {
+      "source": "Data/Items/Berliner.yaml",
+      "sha256": "c5f257bd97bb9c49752213454dbe484fda57cfc09a6260b4e04a105e209f8cb5",
+      "included": true,
+      "size": 334
+    },
+    {
+      "source": "Data/Items/BigBag.yaml",
+      "sha256": "8422864849656bdec0603df581e76eb94ebb4bbbe06d49792e20e1f44ec4d9ad",
+      "included": true,
+      "size": 360
+    },
+    {
+      "source": "Data/Items/Bomb.yaml",
+      "sha256": "b97c5cedc7e5ad9c8d84558d5ace58cf0f86afd4a6bdee4f4dc68291ab6fab25",
+      "included": true,
+      "size": 311
+    },
+    {
+      "source": "Data/Items/BottleRocket.yaml",
+      "sha256": "3a27518f9dce97a154472f43f188224068ae672d44a8f4e2c218cd3b035b2709",
+      "included": true,
+      "size": 351
+    },
+    {
+      "source": "Data/Items/BottleRocketGift.yaml",
+      "sha256": "a7ee738ca379c972fd6db4da42b58dad0eafd598bd188f391f1a2db9c24f6b51",
+      "included": true,
+      "size": 317
+    },
+    {
+      "source": "Data/Items/BottleRocketHead.yaml",
+      "sha256": "fd1ec93f82546e09d12b6248f095aac05a71f2a1987620ae558f0248726b2919",
+      "included": true,
+      "size": 305
+    },
+    {
+      "source": "Data/Items/BottleRocketWings.yaml",
+      "sha256": "cb47c10cdb6cc3db6f6ffdacbd2d36f23719b392c5450dd812e8ebead6961a1c",
+      "included": true,
+      "size": 309
+    },
+    {
+      "source": "Data/Items/Bread.yaml",
+      "sha256": "826a4d65b3acb111ed9d1087fffe5b7c238300814deb3ff14bf38575a235120e",
+      "included": true,
+      "size": 368
+    },
+    {
+      "source": "Data/Items/BrokenTrumpet.yaml",
+      "sha256": "a379d3f8dbed94f54f0d49fc0fc21c19eb85fd042b5c64a3b3e5355971740831",
+      "included": true,
+      "size": 339
+    },
+    {
+      "source": "Data/Items/Bullhorn.yaml",
+      "sha256": "74b81af7dbd76c305fadc06c725599aac2e10acd5bd525c9066a988b72c2ca4e",
+      "included": true,
+      "size": 315
+    },
+    {
+      "source": "Data/Items/CanaryChick.yaml",
+      "sha256": "115a6f05c9f97d273ef257df8a887a6089f98c9180e9d1ab8ed825502d524a7f",
+      "included": true,
+      "size": 285
+    },
+    {
+      "source": "Data/Items/CapsuleDEF.yaml",
+      "sha256": "015a97a72b6ff468bb4201b801c9fde9fc08d50ba751fd429be5e1dd169af699",
+      "included": true,
+      "size": 404
+    },
+    {
+      "source": "Data/Items/CapsuleGUT.yaml",
+      "sha256": "4650024541abcd884acdd85f1735f341a75fb2a8b1320b902727cce6366a181c",
+      "included": true,
+      "size": 397
+    },
+    {
+      "source": "Data/Items/CapsuleHP.yaml",
+      "sha256": "e4c2c77b3cd4d9c76061830cfe3ae7cebc908f1df00c9b2dc5ab61cffc12c723",
+      "included": true,
+      "size": 399
+    },
+    {
+      "source": "Data/Items/CapsuleIQ.yaml",
+      "sha256": "4be4d4fca22df4e67d669cef7f00f2430a44d91a9c5c0ec51bd864fa82fd3874",
+      "included": true,
+      "size": 399
+    },
+    {
+      "source": "Data/Items/CapsuleOFE.yaml",
+      "sha256": "138b3d188d5c916902a4eae6319e5aab0018526699d42310958b8bddabef2629",
+      "included": true,
+      "size": 404
+    },
+    {
+      "source": "Data/Items/CapsulePP.yaml",
+      "sha256": "6cb20586236910a3b56593937c62e0f6af396477e7883843132188f8cfc00db9",
+      "included": true,
+      "size": 392
+    },
+    {
+      "source": "Data/Items/CapsuleSPD.yaml",
+      "sha256": "9b2fa7adee577e69085ab5684ee7b793a3a6648d45699083671ce80e19c33814",
+      "included": true,
+      "size": 404
+    },
+    {
+      "source": "Data/Items/CashCard.yaml",
+      "sha256": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+      "included": true,
+      "size": 325
+    },
+    {
+      "source": "Data/Items/CoinPeace.yaml",
+      "sha256": "8a3c3ceb8e04258bedd63e79b04142d00e145b8efcd9ad249aabdc9fbdf66e00",
+      "included": true,
+      "size": 302
+    },
+    {
+      "source": "Data/Items/CourageBadge.yaml",
+      "sha256": "1eeb936d8035870352fbec221f95a108eb4efe7c47ced8369a7ab24b5d00f5ae",
+      "included": true,
+      "size": 331
+    },
+    {
+      "source": "Data/Items/Croissant.yaml",
+      "sha256": "671f9b0cceb792086ac113e2d52a9f7983d625a1c2a675a034b2dab10b1168f6",
+      "included": true,
+      "size": 339
+    },
+    {
+      "source": "Data/Items/Crumbs.yaml",
+      "sha256": "98ecaf6c7ae61fce59e59e333b8553f111e9b23de417e14d66841a0ea08200d4",
+      "included": true,
+      "size": 303
+    },
+    {
+      "source": "Data/Items/CupOfLifenoodles.yaml",
+      "sha256": "062a4dfb7c33abe0a4df136ed34e86c7f6ab7fe03898127039c37baa1a64a280",
+      "included": true,
+      "size": 434
+    },
+    {
+      "source": "Data/Items/DefenseShower.yaml",
+      "sha256": "eb63a562c4f8ddbdb3698a6d623136ea24a35d593090445ce7080fd038835403",
+      "included": true,
+      "size": 341
+    },
+    {
+      "source": "Data/Items/DogTreats.yaml",
+      "sha256": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
+      "included": true,
+      "size": 277
+    },
+    {
+      "source": "Data/Items/EagleFeather.yaml",
+      "sha256": "69602dc23c3e4821ecd57b70914367225861459f8c9df799fadd4b35598c6b95",
+      "included": true,
+      "size": 289
+    },
+    {
+      "source": "Data/Items/EnergyBeam.yaml",
+      "sha256": "3f69290103fd4c9cf39f8d9be19c41a9604348bf60eee730678b3e4f03ec79e9",
+      "included": true,
+      "size": 300
+    },
+    {
+      "source": "Data/Items/EyeDrops.yaml",
+      "sha256": "07871bb92ce847b86b61a746904d001009ae4828f7d18c8519d99d4b7bdf9579",
+      "included": true,
+      "size": 351
+    },
+    {
+      "source": "Data/Items/FactoryPass.yaml",
+      "sha256": "a535d94f70382bdf6f8b8e638ceafd9c3d735ff71eb4e36ddf0b992737d443e4",
+      "included": true,
+      "size": 285
+    },
+    {
+      "source": "Data/Items/FavFood.yaml",
+      "sha256": "af37bcef1ee7b36397ead1b46723ca54040d2cbb476bc262dbcbc980dd84cd4d",
+      "included": true,
+      "size": 353
+    },
+    {
+      "source": "Data/Items/FleaBag.yaml",
+      "sha256": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
+      "included": true,
+      "size": 310
+    },
+    {
+      "source": "Data/Items/FranklinBadge.yaml",
+      "sha256": "3b89c752071e7851ac0850e325436a62f66da1c0e536ad7341c36a28113c15ad",
+      "included": true,
+      "size": 332
+    },
+    {
+      "source": "Data/Items/FranklinBadge0.8.yaml",
+      "sha256": "2cd032823b4f06f9a1004b828e5d2e341ec83cb65141850b85429a33f8a76492",
+      "included": true,
+      "size": 339
+    },
+    {
+      "source": "Data/Items/FreshMint.yaml",
+      "sha256": "c95fb7c4cad6c39f633076d90f8f8d729acec1baaa164209819d17365862c1ba",
+      "included": true,
+      "size": 355
+    },
+    {
+      "source": "Data/Items/Fries.yaml",
+      "sha256": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+      "included": true,
+      "size": 319
+    },
+    {
+      "source": "Data/Items/GGFDiary.yaml",
+      "sha256": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+      "included": true,
+      "size": 273
+    },
+    {
+      "source": "Data/Items/GlassesCelluloid.yaml",
+      "sha256": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633",
+      "included": true,
+      "size": 345
+    },
+    {
+      "source": "Data/Items/GunStun.yaml",
+      "sha256": "e0526a18a79f1dcd39f437a3e7590bdc8b91f9cf521f0358714354b2be43c013",
+      "included": true,
+      "size": 339
+    },
+    {
+      "source": "Data/Items/Hamburger.yaml",
+      "sha256": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+      "included": true,
+      "size": 339
+    },
+    {
+      "source": "Data/Items/HerbMagic.yaml",
+      "sha256": "9fb6cf6a765467d6228d50cb3f2d6bbe62653f5cbda4711eb5fbce231583c55a",
+      "included": true,
+      "size": 339
+    },
+    {
+      "source": "Data/Items/HerbRed.yaml",
+      "sha256": "f66261045eba9c783a486eb42c6b4cd88444c95cda3eaf5646c8c5758889f36e",
+      "included": true,
+      "size": 277
+    },
+    {
+      "source": "Data/Items/HotDog.yaml",
+      "sha256": "654ec58d8e5b42acf5735a12bfe4a061817058c89b44f68c7f88eefad1a872af",
+      "included": true,
+      "size": 324
+    },
+    {
+      "source": "Data/Items/Insecticide.yaml",
+      "sha256": "fe6f6530b41738fa1f4f2d7ee219bfff6d9a86dbe2a5c313e196375e5f5e2cda",
+      "included": true,
+      "size": 329
+    },
+    {
+      "source": "Data/Items/KeyBasement.yaml",
+      "sha256": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+      "included": true,
+      "size": 337
+    },
+    {
+      "source": "Data/Items/KeyZoo.yaml",
+      "sha256": "e7970dc5523041b6fc2ed84e04eac573fd218dc6b851714df9d4ec86ad927fa7",
+      "included": true,
+      "size": 317
+    },
+    {
+      "source": "Data/Items/KickMeNote.yaml",
+      "sha256": "3d1481a5d1eac9a119e804a1d7d4924bfca03a25c29376a01586596a46d43165",
+      "included": true,
+      "size": 319
+    },
+    {
+      "source": "Data/Items/LastWeapon.yaml",
+      "sha256": "a5a7337b30041caf31d941964a1379ec33d6373eeda8d05c75436e2fde1a4ac4",
+      "included": true,
+      "size": 462
+    },
+    {
+      "source": "Data/Items/LifeUpCream.yaml",
+      "sha256": "038fd486d8ce6b10f1499526d44bf5a319f4f75e2877c42784f067427509e430",
+      "included": true,
+      "size": 342
+    },
+    {
+      "source": "Data/Items/MagicCandy.yaml",
+      "sha256": "170917824e2f5c65da5357b41c521f2ebff40d2b3d70f090b12392c46af1e830",
+      "included": true,
+      "size": 389
+    },
+    {
+      "source": "Data/Items/MapCatacombs.yaml",
+      "sha256": "755ed88258af82c591f605da865db3746dd1b6840f947eba0118bce785a684b1",
+      "included": true,
+      "size": 354
+    },
+    {
+      "source": "Data/Items/MapDuncans.yaml",
+      "sha256": "33a551f11d532f31cb5173c4ba9813b266cdb23ea19faa1aa0459bc9fbe6e4cb",
+      "included": true,
+      "size": 353
+    },
+    {
+      "source": "Data/Items/MapMagicant.yaml",
+      "sha256": "0df4c95baeb9c7dfc6f4546b06c38546ec25cde2136ee7ddf7e74fc81857f5fc",
+      "included": true,
+      "size": 349
+    },
+    {
+      "source": "Data/Items/MapMerrysville.yaml",
+      "sha256": "b728a934df42ddd76997761e48e8f9e87a4ab7161c4e727c262a0faa07358ebc",
+      "included": true,
+      "size": 364
+    },
+    {
+      "source": "Data/Items/MapPodunk.yaml",
+      "sha256": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
+      "included": true,
+      "size": 339
+    },
+    {
+      "source": "Data/Items/MapSweets.yaml",
+      "sha256": "cb9b4fb0ae6aa16219f3851cb90b0375923d481b712105a2f4e722a0c7570a2c",
+      "included": true,
+      "size": 353
+    },
+    {
+      "source": "Data/Items/Milk.yaml",
+      "sha256": "cc1f1c405d9993696d1485dc7787d576a4b31218643e8daea54202e23cce477d",
+      "included": true,
+      "size": 313
+    },
+    {
+      "source": "Data/Items/NobleSeed.yaml",
+      "sha256": "ef2aa470c24586194982356f6f27f2c4d50a053b1d32737a39dd3dd4d09528b7",
+      "included": true,
+      "size": 361
+    },
+    {
+      "source": "Data/Items/Ocarina.yaml",
+      "sha256": "85cdadd465f1e738e0308f3e4b1a60b2c0c5b67370ada588827f4392d303b452",
+      "included": true,
+      "size": 344
+    },
+    {
+      "source": "Data/Items/OnyxHook.yaml",
+      "sha256": "9aa14a14e94bf87ff187b749ebb4df44e0a94657c4384979e51e26fb36840ced",
+      "included": true,
+      "size": 349
+    },
+    {
+      "source": "Data/Items/OrangeJuice.yaml",
+      "sha256": "1843a7480c3f88796f2eaad359bcc763bc6cb188beef6a4b43066c23d63cbf60",
+      "included": true,
+      "size": 348
+    },
+    {
+      "source": "Data/Items/PSIStone.yaml",
+      "sha256": "5ac36fc7954ce692c6b584de15da04e49b90a17b8df28a2c3070d194f5992d1c",
+      "included": true,
+      "size": 366
+    },
+    {
+      "source": "Data/Items/PendantFire.yaml",
+      "sha256": "a82285483eccce6286e0e6f2b1ef06779c0f93293f51fd224b7866850370ac66",
+      "included": true,
+      "size": 343
+    },
+    {
+      "source": "Data/Items/PhoneCard.yaml",
+      "sha256": "f7b194983181daaee5f0bae4a56d1d5f8aafec473cf469b61593d8d439c280ac",
+      "included": true,
+      "size": 347
+    },
+    {
+      "source": "Data/Items/Pretzel.yaml",
+      "sha256": "b12820a812629a8a624db0dbf311b1b6698cd6203f0a027696f640c1729a0b82",
+      "included": true,
+      "size": 329
+    },
+    {
+      "source": "Data/Items/RealRocket.yaml",
+      "sha256": "0cedd3add1d9223b4d1102b249f364a153bbd1138dba3270e93df08bb0a6055f",
+      "included": true,
+      "size": 361
+    },
+    {
+      "source": "Data/Items/RecollectionBell.yaml",
+      "sha256": "a7ebbeb52dcb9ccb95f86f4dcffcf070123d3f8edf586d0fda04a2659f9f7a68",
+      "included": true,
+      "size": 386
+    },
+    {
+      "source": "Data/Items/RedBandana.yaml",
+      "sha256": "078417ad7617a3b02920f8bf4d94559d95b60a4a84a2399c973d63dde74cffdf",
+      "included": true,
+      "size": 323
+    },
+    {
+      "source": "Data/Items/RepelRing.yaml",
+      "sha256": "29a144382e2e0f7c2d87a098ef444ef4b57055e2ab2c549af22575a87a662394",
+      "included": true,
+      "size": 332
+    },
+    {
+      "source": "Data/Items/RingBrass.yaml",
+      "sha256": "2d64a47414c1b2ed20809b08c365cac0df346f0b45727b1024f3fae4ba17f967",
+      "included": true,
+      "size": 302
+    },
+    {
+      "source": "Data/Items/RingCheap.yaml",
+      "sha256": "36caf43735a24b6be6fcb7e8aeee43be1d1b2a46e195e42b96e760fec1789bc7",
+      "included": true,
+      "size": 299
+    },
+    {
+      "source": "Data/Items/Rope.yaml",
+      "sha256": "7252e121869d042980930fd15c9ce06992fc69fd6de5a6e8ceeab05e5bd33787",
+      "included": true,
+      "size": 289
+    },
+    {
+      "source": "Data/Items/Ruler.yaml",
+      "sha256": "5cdbd1620164800dfdb796226910cb1e2fe5450ded63a1e2e2119993015b7c3b",
+      "included": true,
+      "size": 387
+    },
+    {
+      "source": "Data/Items/Shovel.yaml",
+      "sha256": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0",
+      "included": true,
+      "size": 265
+    },
+    {
+      "source": "Data/Items/Slingshot.yaml",
+      "sha256": "8165f9211d9c2716b538e35cab08ee0ef9820505f418e2afe36d4dcfe15f0fca",
+      "included": true,
+      "size": 332
+    },
+    {
+      "source": "Data/Items/SlingshotMetal.yaml",
+      "sha256": "db9cc130df733b216ff04d9b39938d7e8529ac1e72230f3e1af5cda6b0a1b920",
+      "included": true,
+      "size": 354
+    },
+    {
+      "source": "Data/Items/SportsDrink.yaml",
+      "sha256": "09ffeb14d8c25e1b99a9db89877c2ed0a9af435682ccd8953cd27455d53f5b20",
+      "included": true,
+      "size": 349
+    },
+    {
+      "source": "Data/Items/StickyMachine.yaml",
+      "sha256": "e515a1984e6309c6fa80f51bfb4f928a98c5b5731412bb0ea5ccc079149860e7",
+      "included": true,
+      "size": 349
+    },
+    {
+      "source": "Data/Items/TimeMachine.yaml",
+      "sha256": "b385da3ea2e99504c4e02248eea6b9a9891f731d8250257a8bf5f9e1442f927e",
+      "included": true,
+      "size": 366
+    },
+    {
+      "source": "Data/Items/error.yaml",
+      "sha256": "c12385265cccf10f3f7fffe5da475051541a72b72fd2a6069640ce0fbffbf875",
+      "included": true,
+      "size": 262
+    },
+    {
+      "source": "Data/PassiveSkills/absorb_attacks.yaml",
+      "sha256": "2051c10ebf6cca8f87a7f7dc7d605105c1e09970d5a6a98b3401237e58ae2c21",
+      "included": true,
+      "size": 149
+    },
+    {
+      "source": "Data/PassiveSkills/counter.yaml",
+      "sha256": "d5ad14de6795eab0702feb5b9e572903a3f7846e2349fefe7783c187a2f28b68",
+      "included": true,
+      "size": 304
+    },
+    {
+      "source": "Data/PassiveSkills/focus.yaml",
+      "sha256": "25f8a1eba388630e41a0771a0c5b83445a3580e11cdd0037ac31a5c9acd4ce2b",
+      "included": true,
+      "size": 106
+    },
+    {
+      "source": "Data/PassiveSkills/psi_counter.yaml",
+      "sha256": "98d95bcf91458594d774230c54522b4a908f1f297f039647fb9ba224855dfb03",
+      "included": true,
+      "size": 292
+    },
+    {
+      "source": "Data/PassiveSkills/psi_shield.yaml",
+      "sha256": "6ea8932a64bf1ef1229faafe1d265d2ddb31217a31b14326887353f2915b7f35",
+      "included": true,
+      "size": 290
+    },
+    {
+      "source": "Data/PassiveSkills/reflect_beam.yaml",
+      "sha256": "a2fcae7af77d1ebba4782974b6bc97405e48d6d0a7ed0e9ee16d4716db38aeef",
+      "included": true,
+      "size": 229
+    },
+    {
+      "source": "Data/PassiveSkills/reflect_beam_courage.yaml",
+      "sha256": "950f8539e6e7e48ff8e29ba7b983ad82d8af4345cc9e100841ccba80b1d5176d",
+      "included": true,
+      "size": 332
+    },
+    {
+      "source": "Data/PassiveSkills/reflect_lightning.yaml",
+      "sha256": "ad8d2f1e0f5adba8e3203242bb9991fba0262480335e592ed40f37f70a2dccef",
+      "included": true,
+      "size": 220
+    },
+    {
+      "source": "Data/PassiveSkills/return_projectile.yaml",
+      "sha256": "d70c47d7f7d43fd52781dbae5e9d6f8636f4b00bccaec37cac70402b041eb4b0",
+      "included": true,
+      "size": 231
+    },
+    {
+      "source": "Data/PassiveSkills/shield.yaml",
+      "sha256": "416bc81520147668900640e23d2cb750f6993a1b2727b78716b05d28c7109916",
+      "included": true,
+      "size": 327
+    },
+    {
+      "source": "Data/Shops/catacombs_vm.yaml",
+      "sha256": "346931942fa287b0aba4f7c387a89d35ec2896ef0de727210f4d302f038fe01b",
+      "included": true,
+      "size": 39
+    },
+    {
+      "source": "Data/Shops/duncans_factory_vm.yaml",
+      "sha256": "1aedad48b028cd01adb8a64c2ef0bd8161bd23752df9e39e94dd1894b801f6c1",
+      "included": true,
+      "size": 56
+    },
+    {
+      "source": "Data/Shops/magicant_coin_shop.yaml",
+      "sha256": "fe8973920e1142ad10fdf81892a1fbf1c1e4418ae55171f9fbcfd8d240ea5bc5",
+      "included": true,
+      "size": 66
+    },
+    {
+      "source": "Data/Shops/magicant_pendant_shop.yaml",
+      "sha256": "5bc72f5e852779971c33361f3e7e7060918043b131e1ca765f42bd0b073fe9e1",
+      "included": true,
+      "size": 65
+    },
+    {
+      "source": "Data/Shops/magicant_ring_shop.yaml",
+      "sha256": "c13b7a68ea91dff2c600596cb7501271d59e7fb8eede57f6fd96422615947efa",
+      "included": true,
+      "size": 50
+    },
+    {
+      "source": "Data/Shops/merrysville_bakery.yaml",
+      "sha256": "fdafdf007ecfee6e67395b3d114c1d4f79c33e6bc4252d52bf6bbc9790086b86",
+      "included": true,
+      "size": 64
+    },
+    {
+      "source": "Data/Shops/merrysville_drug_store.yaml",
+      "sha256": "dd700720aa0fe89f2393b9d05d3c4a5285308e2c2e04a5cbbeb316d70f82fe36",
+      "included": true,
+      "size": 76
+    },
+    {
+      "source": "Data/Shops/merrysville_sports_store.yaml",
+      "sha256": "2ae631967322369e94131edaa43dfc12202374199e3a1b6f80acc076a4dbc4ef",
+      "included": true,
+      "size": 65
+    },
+    {
+      "source": "Data/Shops/merrysville_variety_goods.yaml",
+      "sha256": "d9478f53f1b3f3650e737f27ff3d936c4627178345406fb5c0db58693a96dd8c",
+      "included": true,
+      "size": 70
+    },
+    {
+      "source": "Data/Shops/podunk_burger_shop.yaml",
+      "sha256": "bde9724a192e3ab0d363b35f2b0e9110f1dc6ec69fd7889bf32f2f38dd205af5",
+      "included": true,
+      "size": 43
+    },
+    {
+      "source": "Data/Shops/podunk_drug_store.yaml",
+      "sha256": "5f26c83ddffd3cab6b2e4cb453d1f94b24aeb313326d30c9b3c8ee1a254e30ae",
+      "included": true,
+      "size": 64
+    },
+    {
+      "source": "Data/Shops/podunk_food_store.yaml",
+      "sha256": "8517482091a5161565699d39340856d94c3f9aece44bcc0aa830b8ec2a14fa78",
+      "included": true,
+      "size": 43
+    },
+    {
+      "source": "Data/Shops/podunk_sports_shop.yaml",
+      "sha256": "aac9321dae825c269d6c5780992f0fb64a3dacc855c284426ffadddc5ce85590",
+      "included": true,
+      "size": 64
+    },
+    {
+      "source": "Data/Shops/sweets_factory_vm.yaml",
+      "sha256": "6ed33c8ca4b04f70d61dc1e30d2cba11f72f9d60ad78105ca3c318242a2e898f",
+      "included": true,
+      "size": 49
+    },
+    {
+      "source": "Data/Shops/weird_teacher_store.yaml",
+      "sha256": "c661b0295069e49d43d0d7ec544f5f9e4ef55673a553298ffe2c8db2b85e0b57",
+      "included": true,
+      "size": 62
+    },
+    {
+      "source": "Data/Shops/zoo_vm.yaml",
+      "sha256": "03d9935d2d1497b51876f7f1425f437cf189702beab8167f3768540703e7b535",
+      "included": true,
+      "size": 37
+    },
+    {
+      "source": "Data/StatusAilments/asthma.yaml",
+      "sha256": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3",
+      "included": true,
+      "size": 708
+    },
+    {
+      "source": "Data/StatusAilments/blinded.yaml",
+      "sha256": "ab07a5b26448eb72d48b38e2c073e0eca4a23aa97a2a5ab1c4ef9d275f9e2ba2",
+      "included": true,
+      "size": 361
+    },
+    {
+      "source": "Data/StatusAilments/burned.yaml",
+      "sha256": "15e20072d035f8fbbf3c269c52741d6cdaa8d69d8670da296b067d6a243ecfa9",
+      "included": true,
+      "size": 309
+    },
+    {
+      "source": "Data/StatusAilments/cold.yaml",
+      "sha256": "42c55d16691b89f7481217e29f513bbd3d206bc1bc8c38212f16865dcdcfb0fd",
+      "included": true,
+      "size": 744
+    },
+    {
+      "source": "Data/StatusAilments/confused.yaml",
+      "sha256": "eaa85743b7461affd7655b1aae1058ec028a2314b359baf6f176a5328c6b9f7b",
+      "included": true,
+      "size": 414
+    },
+    {
+      "source": "Data/StatusAilments/forgetful.yaml",
+      "sha256": "8098162a0c75983f6ab7f3bf413d2ffea93bef9ac4aee5a3e868ee48e0676a74",
+      "included": true,
+      "size": 654
+    },
+    {
+      "source": "Data/StatusAilments/nausea.yaml",
+      "sha256": "254ee14b8b0d2103c9bea8592fdcda5dc910091bbb452b0617a0194b8bbbe40f",
+      "included": true,
+      "size": 502
+    },
+    {
+      "source": "Data/StatusAilments/numb.yaml",
+      "sha256": "abd5680dab41bb83fc1bf8c5753484e0b45f776b0235a0c55d863dd294ef9243",
+      "included": true,
+      "size": 441
+    },
+    {
+      "source": "Data/StatusAilments/poisoned.yaml",
+      "sha256": "30ff7359ecd9aba8ce730362bfa022b3ab50f3842877a92901ac606d10c6f37f",
+      "included": true,
+      "size": 471
+    },
+    {
+      "source": "Data/StatusAilments/psiBlocked.yaml",
+      "sha256": "de859ba3fddb5b70793275a56dbea6082141ed30ee3cb39ec5ea5262c37b7c61",
+      "included": true,
+      "size": 368
+    },
+    {
+      "source": "Data/StatusAilments/rope.yaml",
+      "sha256": "dbac00ee55c7c6e2b74b3bbbae1923a97e8c4a7e4e4c6d27e56a34508eb64ad9",
+      "included": true,
+      "size": 413
+    },
+    {
+      "source": "Data/StatusAilments/sleeping.yaml",
+      "sha256": "b1b87eb0b18cdf8462df32dcc0fd21872002631ded3f7da79647c0ba366e9328",
+      "included": true,
+      "size": 420
+    },
+    {
+      "source": "Data/StatusAilments/stone.yaml",
+      "sha256": "c63692a8e4a4a7853b70f7d35b2f8e98c230e92bf7a197fe3dd98790a0f5f5cc",
+      "included": true,
+      "size": 350
+    },
+    {
+      "source": "Data/StatusAilments/sunstroked.yaml",
+      "sha256": "d91bc017d5005ebf039978b9acdcdc3d0e9fa58da3507af55e39f654df7a199c",
+      "included": true,
+      "size": 597
+    },
+    {
+      "source": "Data/StatusAilments/unconscious.yaml",
+      "sha256": "ab1b9cb054a3494ad557293b4cab1e0bd1abd45474e8c2cdfa61fbeeb8574bbd",
+      "included": true,
+      "size": 302
+    }
+  ]
+}

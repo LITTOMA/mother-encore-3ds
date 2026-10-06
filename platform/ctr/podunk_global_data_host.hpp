@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/field_global_data.hpp"
 #include "encore/global_yaml_caches.hpp"
+#include "encore/global_yaml_file.hpp"
 #include "podunk_inventory_host.hpp"
 namespace encore::ctr {
 // Source globaldata's actual Character Objects / Inventory References. This
@@ -18,6 +19,9 @@ class PodunkGlobalDataHost final {
   upstream::FieldGlobalFlagsRuntime flags_;
   const upstream::FieldGlobalFlagsData *flags_data_ = nullptr;
   upstream::GlobalYamlCachesRuntime yaml_caches_;
+  const upstream::GlobalYamlCachesData *yaml_data_ = nullptr;
+  upstream::GlobalYamlFileHost yaml_files_;
+  upstream::GlobalPackedDirectoryHost cache_directories_;
   uint32_t init_cursor_ = 0;
   bool cache_construction_poisoned_ = false;
   std::map<upstream::FieldObjectId, std::weak_ptr<PodunkItemObject>> items_;
@@ -82,8 +86,44 @@ public:
       cache_construction_poisoned_ = true;
       return false;
     }
+    yaml_data_ = &yaml;
     return true;
   }
+  // Run the original six _load_data calls through actual Directory, File and
+  // SmartFileReader References in this same ObjectDB. Completion belongs only
+  // to this cache prefix; the remaining global constructors/Ready stay pending.
+  bool begin_cache_directory_prefix(const upstream::GlobalPackedDirectoryData &dirs,
+                                    const upstream::GlobalYamlFileData &files,
+                                    std::string &e) {
+    if (!registry_ || !yaml_data_ || init_cursor_ != 1 ||
+        cache_construction_poisoned_)
+      return fail(e, "globalData cache Directory source cursor unavailable");
+    if (!yaml_files_.initialize(files, *yaml_data_, yaml_caches_, *registry_, e) ||
+        !cache_directories_.initialize(dirs, *yaml_data_, yaml_caches_, *registry_,
+          [this](const auto &file, auto &actual, auto &error) {
+            return yaml_files_.actual_yaml_load(file, actual, error);
+          }, e) || !cache_directories_.begin_init_caches(e)) {
+      cache_construction_poisoned_ = true;
+      return false;
+    }
+    return true;
+  }
+  bool step_cache_directory_prefix(std::string &e) {
+    if (init_cursor_ != 1 || cache_construction_poisoned_)
+      return fail(e, "globalData cache Directory source cursor unavailable");
+    if (!cache_directories_.step(e)) {
+      cache_construction_poisoned_ = true;
+      return false;
+    }
+    if (cache_directories_.complete())
+      init_cursor_ = 2;
+    return true;
+  }
+  bool cache_prefix_complete() const {
+    return init_cursor_ == 2 && !cache_construction_poisoned_ &&
+           cache_directories_.complete() && yaml_caches_.init_caches_complete();
+  }
+  auto cache_source_cursor() const { return cache_directories_.cursor(); }
   const auto &yaml_caches() const { return yaml_caches_; }
   bool call_cache_getter(std::string_view method,
                          const std::vector<std::string> &args,

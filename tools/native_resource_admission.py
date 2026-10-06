@@ -55,6 +55,8 @@ SOURCES = (
     'runtime/field_inventory_data.cpp',
     'runtime/field_item_definitions_data.cpp',
     'runtime/global_yaml_caches_data.cpp',
+    'runtime/global_packed_directory_data.cpp',
+    'runtime/global_yaml_file_data.cpp',
     'runtime/field_global_registry_data.cpp',
     'runtime/field_node_recipe_data.cpp',
     'runtime/field_goods_data.cpp',
@@ -76,6 +78,7 @@ def admit(resources, *, global_items=True):
     for header in sorted((ROOT / 'include/encore').glob('*.hpp')):
         common.update(header.name.encode())
         common.update(header.read_bytes())
+    common.update((ROOT / 'runtime/global_yaml_file_hash.hpp').read_bytes())
     directory = Path(os.environ.get('ENCORE_RESOURCE_ADMISSION_CACHE',
                                     str(ROOT / 'build/resource-admission')))
     directory.mkdir(parents=True, exist_ok=True)
@@ -116,7 +119,9 @@ def admit(resources, *, global_items=True):
                     '--global-caches', str(ROOT / 'romfs/data/global.encyamlcaches'),
                     str(ROOT / 'romfs/data/global.encregistry'),
                     str(registry['scene_id']), registry['commit'],
-                    registry['source_sha256'], caches['owner']]
+                    registry['source_sha256'], caches['owner'],
+                    '--global-directory', str(ROOT / 'romfs/data/global.encpackeddir'),
+                    '--global-yaml-file', str(ROOT / 'romfs/data/global.encyamlfile')]
     subprocess.run(command, check=True)
 
 

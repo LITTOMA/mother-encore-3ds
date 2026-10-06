@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "45dde5c2cae942004bdeedc2c47f89630a3115bbf37ea151c16aa77aa9188fcf",
+  "receipt_sha256": "f48729317e917fd16b89cf012e55dcd7b0f20fef50d2b9a88701336ecbe4628b",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_sources": {
+    "core/io/file_access_pack.cpp": "6b5879714bcd6056f3a50e396b6789e29bc0eb9a4b6fc7c87171eaf498b7a4d3",
+    "core/io/file_access_pack.h": "a39ad7a6ee552aaa4a9a7100b6655483df316bb3236ab564592267af43f96003",
+    "core/bind/core_bind.cpp": "0f88efc5705d6df8e0891f7f30a3ae2b15e46c9b11fe481989088e0f36e1de6e",
+    "core/bind/core_bind.h": "f5de9429dfc7867f2c47ee01cc329f685bc7f5baff7a4ecdcebe3d67ebf83ad7",
+    "core/os/dir_access.cpp": "c18ab5334a1a81483d077e3084a2f36b7392ab4af4f298384b3d73cffbe72d5a",
+    "core/reference.cpp": "2964d690fffda7df119744278f66df3807bd06d749effe4eb18dbe9bd01048de",
+    "core/reference.h": "05906b7002691b52cebf1becc17f67822848eb91dec74f6dd1ea2bfa82fe1f1d",
+    "core/map.h": "2cd131edec04b6a6af878819a5a91f6d24fcfdb3fd63bda232716a39462b0711",
+    "core/set.h": "de33efbb8c7d0b9b9f2d35a4c567fcadb69ad61e291b238b9584179ae64b8d87",
+    "core/ustring.cpp": "6f88281940e96bdfe2f39045b97bb97392d8546f893ab3cff57d7950dcc0a1bb",
+    "core/ustring.h": "b8ffc94d8696218ec8f7fbd0c43b7abe0a492e0373c4b76d27bdaca9b4b19ce6",
+    "editor/editor_export.cpp": "51299c8b6804521f99780ed0863ae04e462965d67a85d4a813c11dbbcf19ca20",
+    "editor/editor_file_system.cpp": "b27febc6aaf57be026c8492ca061dedbca94e515edfaadc179b63442a7308e32",
+    "core/project_settings.cpp": "0922d57c07d6d651942ba28cd736796afe363add4510d1f2fdc7802039c8a9d5",
+    "core/io/pck_packer.cpp": "c50da77e9b150e3058e67ccc00a0e3137fb4b1adc609e31f082f4f4bbfd73265"
+  },
+  "source_review": "Actual native PCK conversion and fixed official source semantic audit; no Directory behavior probe"
+}

@@ -82,6 +82,7 @@ public:
  virtual FieldGlobalExternalBinding binding()const=0;
  virtual const char*native_class()const=0;
  virtual const FieldGlobalRegistry*registry()const=0;
+ virtual bool checked_source_hash(std::string_view,std::array<uint8_t,32>&)const=0;
 };
 struct FieldGlobalRegistryHost {
  std::function<bool(FieldObjectId,const FieldGlobalExternalSpec&,std::unique_ptr<FieldGlobalExternalObject>&,std::string&)>construct;

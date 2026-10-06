@@ -348,6 +348,8 @@ def generate(args):
                 print(line.decode('utf-8', errors='replace'), end='', flush=True)
             code = process.wait()
         require(code == 0, 'Isolated generation failed; no outputs published')
+        subprocess.run([sys.executable, 'tools/romfs_layout.py', '--catalog',
+                        str(workspace / 'romfs/data/native.encresources')], cwd=workspace, check=True)
         changed = publish(ROOT, workspace, originals, candidate_outputs(workspace), directory / 'publication.json', args.mode, preimages, tracked)
         write_json(directory / 'result.json', dict(schema=1, mode=args.mode, workers=args.jobs,
                    published=[r['path'] for r in changed], tests_executed=False))

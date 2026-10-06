@@ -12,7 +12,16 @@ class RomFSLayoutTests(unittest.TestCase):
                       'sound/banks/opening.encaudio', 'sound/banks/podunk.encmusic',
                       'fonts/source-fonts.encfont', 'fonts/page.t3x',
                       Path('data/opening.encroom'), 'data/native.encinput', 'data/melody.encfx',
+                      'data/podunk-programmes.encprog', 'data/podunk.encinventory',
                       'licenses/license-sources.json'])
+
+    def test_all_registered_binary_types_have_one_runtime_category(self):
+        from tools.resource_catalog import SUFFIXES
+        from tools.romfs_layout import BANK_TYPES,FONT_TYPES
+        for suffix in set(SUFFIXES.values()):
+            category='sound/banks' if suffix in BANK_TYPES else 'fonts' if suffix in FONT_TYPES else 'data'
+            with self.subTest(suffix=suffix):
+                check_layout([category+'/registered'+suffix])
 
     def test_build_metadata_and_legacy_paths_rejected(self):
         for name in ('actor-preview/ninten.t3x', 'graphics/actor-preview/ninten.t3x',

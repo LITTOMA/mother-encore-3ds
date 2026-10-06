@@ -1,18 +1,20 @@
 """Validate the runtime asset categories before creating a console RomFS."""
 from pathlib import PurePath, PurePosixPath
+if __package__:
+    from .resource_catalog import SUFFIXES
+else:
+    from resource_catalog import SUFFIXES
+
+# Catalog roles are the authoritative binary type registry. A new typed
+# resource must not need a second independent extension list to reach RomFS.
+BANK_TYPES = {SUFFIXES[role] for role in ('Audio', 'MusicRegions')}
+FONT_TYPES = {SUFFIXES['SourceFonts']}
 
 EXTENSIONS = {
     'graphics': {'.t3x', '.bpx'},
-    'sound': {'.pcm', '.encaudio', '.encmusic'},
-    'fonts': {'.t3x', '.encfont'},
-    'data': {
-        '.encbars', '.encbattle', '.encchoices', '.enccontinue',
-        '.encfx', '.enchouse', '.encinput', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield', '.encuse', '.encitems', '.encload',
-        '.enclocale', '.encmigration', '.encnewgame', '.encphone',
-        '.encprompts', '.encresources', '.encrestore', '.encroom', '.encround',
-        '.encsavemenu', '.encsession', '.encsettings', '.enctitlelocale',
-        '.encbasement', '.encbasmanim', '.encsparkles', '.encpsi', '.encinventory',
-    },
+    'sound': {'.pcm'} | BANK_TYPES,
+    'fonts': {'.t3x'} | FONT_TYPES,
+    'data': (set(SUFFIXES.values()) - BANK_TYPES - FONT_TYPES) | {'.encfx', '.encresources'},
 }
 
 
@@ -33,7 +35,7 @@ def check_layout(files):
             raise ValueError('Unclassified runtime resource: ' + name)
         if category == 'sound' and (len(path.parts) < 3 or
                 path.parts[1] not in ('music', 'effects', 'banks') or
-                (path.parts[1] == 'banks') != (path.suffix in ('.encaudio', '.encmusic'))):
+                (path.parts[1] == 'banks') != (path.suffix in BANK_TYPES)):
             raise ValueError('Unclassified sound resource: ' + name)
 
 
@@ -48,3 +50,21 @@ def checked_inventory(root):
     files = {entry.relative_to(root) for entry in entries if entry.is_file()}
     check_layout(files)
     return files
+
+
+def check_catalog(path):
+    if __package__:
+        from .resource_catalog import decode
+    else:
+        from resource_catalog import decode
+    from pathlib import Path
+    catalog=decode(Path(path).read_bytes())
+    check_layout(row['path'] for row in catalog['bindings'])
+    print('Checked registered RomFS categories:',len(catalog['bindings']))
+
+
+if __name__ == '__main__':
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--catalog',required=True)
+    check_catalog(parser.parse_args().catalog)

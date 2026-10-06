@@ -54,6 +54,7 @@ add_library(encore_core
     runtime/field_native_root_data.cpp
     runtime/field_global_data.cpp runtime/field_global_data_data.cpp
     runtime/global_item_cache.cpp
+    runtime/global_yaml_caches.cpp runtime/global_yaml_caches_data.cpp
     runtime/field_dialogue_ui.cpp
     runtime/field_dialogue_ui_data.cpp
     runtime/field_inventory.cpp
@@ -930,6 +931,8 @@ if(BUILD_TESTING)
 endif()
 # Runs only as part of the explicitly requested manual test suite.
 if(BUILD_TESTING)
+    add_executable(encore_global_yaml_caches_manual tests/global_yaml_caches_manual.cpp)
+    target_link_libraries(encore_global_yaml_caches_manual PRIVATE encore_core)
     add_executable(encore_global_item_definitions_manual tests/global_item_definitions_manual.cpp)
     target_link_libraries(encore_global_item_definitions_manual PRIVATE encore_core)
     add_test(NAME global_item_definitions_manual

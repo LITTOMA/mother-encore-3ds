@@ -54,6 +54,9 @@ SOURCES = (
     'runtime/field_programme_data.cpp',
     'runtime/field_inventory_data.cpp',
     'runtime/field_item_definitions_data.cpp',
+    'runtime/global_yaml_caches_data.cpp',
+    'runtime/field_global_registry_data.cpp',
+    'runtime/field_node_recipe_data.cpp',
     'runtime/field_goods_data.cpp',
     'runtime/world_effect_data.cpp',
     'runtime/startup_resource_admission.cpp',
@@ -102,7 +105,18 @@ def admit(resources, *, global_items=True):
         os.replace(pending, executable)
     command = [str(executable), str(resources)]
     if global_items:
-        command += ['--global-items', str(ROOT / 'romfs/data/global.encfielditems')]
+        # Independent reviewed compiler inputs supply the expected Registry
+        # identity; do not trust a candidate resource's own header as its proof.
+        sys.path.insert(0,str(ROOT))
+        from tools.field_global_registry import load as load_registry
+        from tools.global_yaml_caches import load as load_caches
+        registry = load_registry()
+        caches = load_caches()
+        command += ['--global-items', str(ROOT / 'romfs/data/global.encfielditems'),
+                    '--global-caches', str(ROOT / 'romfs/data/global.encyamlcaches'),
+                    str(ROOT / 'romfs/data/global.encregistry'),
+                    str(registry['scene_id']), registry['commit'],
+                    registry['source_sha256'], caches['owner']]
     subprocess.run(command, check=True)
 
 

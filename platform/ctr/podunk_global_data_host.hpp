@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/field_global_data.hpp"
+#include "encore/global_yaml_caches.hpp"
 #include "podunk_inventory_host.hpp"
 namespace encore::ctr {
 // Source globaldata's actual Character Objects / Inventory References. This
@@ -13,6 +14,12 @@ class PodunkGlobalDataHost final {
   const upstream::FieldItemDefinitions *definitions_ = nullptr;
   const PodunkInventoryHost *live_inventory_ = nullptr;
   upstream::GlobalItemCache item_cache_;
+  upstream::FieldGlobalExternalSpec source_spec_;
+  upstream::FieldGlobalFlagsRuntime flags_;
+  const upstream::FieldGlobalFlagsData *flags_data_ = nullptr;
+  upstream::GlobalYamlCachesRuntime yaml_caches_;
+  uint32_t init_cursor_ = 0;
+  bool cache_construction_poisoned_ = false;
   std::map<upstream::FieldObjectId, std::weak_ptr<PodunkItemObject>> items_;
   static bool fail(std::string &e, const char *s) {
     e = s;
@@ -30,8 +37,64 @@ public:
     if (!owner_.construct_members(data, spec, object, registry, error))
       return false;
     registry_ = &registry;
+    source_spec_ = spec;
     return true;
   }
+  // Original _init_flags executes before the six _load_data loops. This is
+  // the real owning constructor prefix, not a Ready or scene admission bit.
+  bool construct_cache_prefix(const upstream::FieldGlobalFlagsData &flags,
+                              const upstream::GlobalYamlCachesData &yaml,
+                              const upstream::FieldItemDefinitions &items,
+                              upstream::FieldGlobalFlagsRuntime::Emit emit,
+                              upstream::GlobalYamlCachesRuntime::Warning warning,
+                              std::string &e) {
+    if (!registry_ || init_cursor_ || flags_data_ ||
+        cache_construction_poisoned_ || item_cache_.definitions())
+      return fail(e, "globalData cache source constructor repeated/unavailable");
+    // Declaration initialization does not insert YAML or grant directory
+    // completion. The following flags mutation has its source _init cursor.
+    if (!initialize_items_cache(items, e) ||
+        !flags_.initialize(flags, source_spec_, std::move(emit), e)) {
+      cache_construction_poisoned_ = true;
+      return false;
+    }
+    flags_data_ = &flags;
+    init_cursor_ = 1;
+    upstream::GlobalYamlItemsPort port;
+    port.actual_cache = &item_cache_;
+    port.insert = [this](const auto &path, const auto &sha, auto &error) {
+      return insert_loaded_item_yaml(path, sha, error);
+    };
+    port.finish = [this](const auto &paths, const auto &proof, auto &error) {
+      return observe_items_directory_complete(paths, proof, error);
+    };
+    auto flags_ready = [this](upstream::GlobalYamlFlagsReceipt &out,
+                              std::string &error) {
+      if (!flags_data_ || init_cursor_ != 1 || cache_construction_poisoned_)
+        return fail(error, "globalData actual _init_flags cursor unavailable");
+      out = {owner_.globaldata_object(), flags_data_, &flags_, init_cursor_};
+      error.clear();
+      return true;
+    };
+    if (!yaml_caches_.initialize(yaml, owner_.globaldata_object(), source_spec_,
+                                 *registry_, owner_, std::move(port),
+                                 std::move(flags_ready), std::move(warning), e)) {
+      cache_construction_poisoned_ = true;
+      return false;
+    }
+    return true;
+  }
+  const auto &yaml_caches() const { return yaml_caches_; }
+  bool call_cache_getter(std::string_view method,
+                         const std::vector<std::string> &args,
+                         std::shared_ptr<upstream::GlobalYamlValue> &out,
+                         std::string &e) {
+    if (cache_construction_poisoned_)
+      return fail(e, "globalData source cache constructor failed");
+    return yaml_caches_.call(method, args, out, e);
+  }
+  upstream::FieldGlobalFlagsRuntime &flags() { return flags_; }
+  const upstream::FieldGlobalFlagsRuntime &flags() const { return flags_; }
   bool initialize_items_cache(const upstream::FieldItemDefinitions &defs,
                               std::string &e) {
     if (!registry_ || !owner_.data())

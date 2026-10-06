@@ -40,6 +40,7 @@ SOURCES += runtime/field_goods.cpp runtime/field_goods_data.cpp runtime/field_gl
 SOURCES += runtime/field_native_root_data.cpp runtime/field_global_data.cpp runtime/field_global_data_data.cpp \
  platform/ctr/podunk_native_root.cpp platform/ctr/podunk_dialogue_root_script.cpp platform/ctr/podunk_dialogue_options_adapter.cpp
 SOURCES += runtime/global_item_cache.cpp
+SOURCES += runtime/global_yaml_caches.cpp runtime/global_yaml_caches_data.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

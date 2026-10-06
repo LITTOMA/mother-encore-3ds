@@ -73,6 +73,16 @@ class FieldGlobalSourceResource:public FieldGlobalExternalObject {
 public:
  virtual const char*resource_class()const=0;
 };
+class FieldGlobalRegistry;
+// Native Reference lifetime is owned by source Ref holders, not the ObjectDB.
+// This is independent of Node lifecycle and Resource loading.
+class FieldGlobalNativeReference {
+public:
+ virtual ~FieldGlobalNativeReference()=default;
+ virtual FieldGlobalExternalBinding binding()const=0;
+ virtual const char*native_class()const=0;
+ virtual const FieldGlobalRegistry*registry()const=0;
+};
 struct FieldGlobalRegistryHost {
  std::function<bool(FieldObjectId,const FieldGlobalExternalSpec&,std::unique_ptr<FieldGlobalExternalObject>&,std::string&)>construct;
 };
@@ -92,6 +102,9 @@ public:
  // by this same registry. No hash IDs or copied metadata proxy nodes.
  bool publish_source_resource(const FieldGlobalExternalSpec&,FieldObjectId,std::unique_ptr<FieldGlobalSourceResource>,std::string&);
  const FieldGlobalSourceResource*source_resource(FieldObjectId)const;
+ bool publish_native_reference(const FieldGlobalExternalSpec&,FieldObjectId,
+                               const std::shared_ptr<FieldGlobalNativeReference>&,std::string&);
+ std::shared_ptr<const FieldGlobalNativeReference>native_reference(FieldObjectId)const;
  bool publish_branch(std::shared_ptr<FieldNodeTreeRuntime>,FieldObjectId,NodeDispatch,std::string&);
  bool attach_scene(FieldObjectId,std::string&);
  // Called by the actual native root only after its real child list changes.
@@ -128,6 +141,8 @@ private:
   std::shared_ptr<FieldNodeTreeRuntime>tree;NodeDispatch dispatch;
   std::unique_ptr<FieldGlobalExternalObject>external;
   const FieldGlobalSourceResource*resource=nullptr;
+  std::weak_ptr<FieldGlobalNativeReference>reference;
+  bool reference_published=false;
   uint32_t definition=0;FieldObjectId external_parent=0;
  };
  bool snapshot(FieldObjectId,FieldGlobalExternalState&,std::string&)const;

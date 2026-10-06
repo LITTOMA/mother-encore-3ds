@@ -22,7 +22,7 @@ bool FieldGlobalRegistry::allocate_fast_name(uint64_t&out,std::string&e){
 }
 bool FieldGlobalRegistry::object_exists(FieldObjectId id)const{
  auto i=objects_.find(id);if(i==objects_.end())return false;
- return bool(i->second.external)||(i->second.tree&&i->second.tree->state(id));
+ return bool(i->second.external)||!i->second.reference.expired()||(i->second.tree&&i->second.tree->state(id));
 }
 std::shared_ptr<FieldNodeTreeRuntime>FieldGlobalRegistry::tree_owner(FieldObjectId id)const{
  auto i=objects_.find(id);return i==objects_.end()||!i->second.tree||!i->second.tree->state(id)?nullptr:i->second.tree;
@@ -30,9 +30,19 @@ std::shared_ptr<FieldNodeTreeRuntime>FieldGlobalRegistry::tree_owner(FieldObject
 const FieldGlobalSourceResource*FieldGlobalRegistry::source_resource(FieldObjectId id)const{
  auto i=objects_.find(id);return i==objects_.end()||!i->second.external||i->second.definition==0?nullptr:i->second.resource;
 }
+std::shared_ptr<const FieldGlobalNativeReference>FieldGlobalRegistry::native_reference(FieldObjectId id)const{
+ auto i=objects_.find(id);return i==objects_.end()?nullptr:i->second.reference.lock();
+}
+bool FieldGlobalRegistry::publish_native_reference(const FieldGlobalExternalSpec&spec,FieldObjectId id,const std::shared_ptr<FieldGlobalNativeReference>&owner,std::string&e){
+ auto i=objects_.find(id);
+ if(!initialized_||poisoned_||!owner||!id||i==objects_.end()||i->second.external||i->second.tree||i->second.reference_published||owner->registry()!=this||!spec.stable_id||spec.role!=5||spec.native_class!="Directory"||spec.native_class!=owner->native_class()||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||spec.script!=spec.source||spec.source_sha!=spec.script_sha||spec.identity.source_sha256!=spec.source_sha||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual native Reference slot/source rejected");
+ auto b=owner->binding();std::array<uint8_t,32>source{};
+ if(!data_->source_hash(spec.source,source)||source!=spec.source_sha||b.object!=id||!b.family||!b.capability||!equal_spec(b.source,spec))return fail(e,"Global native Reference actual owner/domain proof rejected");
+ i->second.reference=owner;i->second.reference_published=true;i->second.definition=spec.stable_id;e.clear();return true;
+}
 bool FieldGlobalRegistry::publish_source_resource(const FieldGlobalExternalSpec&spec,FieldObjectId id,std::unique_ptr<FieldGlobalSourceResource>owner,std::string&e){
  auto i=objects_.find(id);
- if(!initialized_||poisoned_||!owner||i==objects_.end()||i->second.external||i->second.tree||!id||!spec.stable_id||spec.role!=4||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual source Resource slot/identity rejected");
+ if(!initialized_||poisoned_||!owner||i==objects_.end()||i->second.external||i->second.tree||i->second.reference_published||!id||!spec.stable_id||spec.role!=4||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual source Resource slot/identity rejected");
  if((spec.native_class!="PackedScene"&&spec.native_class!="ShaderMaterial")||spec.native_class!=owner->resource_class()||spec.source_sha!=spec.identity.source_sha256||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global source Resource native type/proof rejected");
  auto b=owner->binding();FieldGlobalExternalState s;
  if(b.object!=id||!b.family||!b.capability||!equal_spec(b.source,spec)||!owner->state(s,e)||s.name!=spec.name||s.parent||!s.children.empty()||s.inside||s.ready||s.ui_before_canvas||s.current_scene||s.stable_canvas)return fail(e,"Global source Resource actual non-Node owner rejected");
@@ -78,7 +88,7 @@ bool FieldGlobalRegistry::publish_branch(std::shared_ptr<FieldNodeTreeRuntime>tr
  for(size_t at=0;at<pending.size();++at){
   auto id=pending[at];auto*n=tree->state(id);FieldIdentity identity;
   auto i=objects_.find(id);
-  if(!seen.insert(id).second||!n||!tree->descriptor(id)||!tree->object_identity(id,identity)||identity.upstream_commit!=data_->identity().upstream_commit||i==objects_.end()||i->second.external||(i->second.tree&&i->second.tree!=tree))return fail(e,"Global branch is not actual same-domain checked source objects");
+  if(!seen.insert(id).second||!n||!tree->descriptor(id)||!tree->object_identity(id,identity)||identity.upstream_commit!=data_->identity().upstream_commit||i==objects_.end()||i->second.external||i->second.reference_published||(i->second.tree&&i->second.tree!=tree))return fail(e,"Global branch is not actual same-domain checked source objects");
   for(auto child:n->children){auto*c=tree->state(child);if(!c||c->parent!=id)return fail(e,"Global branch source parent/child mismatch");pending.push_back(child);}
  }
  for(auto id:pending){auto&slot=objects_.at(id);slot.tree=tree;slot.dispatch=dispatch;slot.definition=tree->state(id)->source;}
@@ -215,6 +225,7 @@ bool FieldGlobalRegistry::persistent_reparent(FieldObjectId id,FieldObjectId par
 }
 bool FieldGlobalRegistry::retire_object(FieldObjectId id,std::string&e){
  auto i=objects_.find(id);if(i==objects_.end()||id==root_||id==kernel_)return fail(e,"Global retire unknown/native kernel/root rejected");
+ if(!i->second.reference.expired())return fail(e,"Global retire cannot discard live source Reference");
  if(i->second.tree&&i->second.tree->state(id))return fail(e,"Global retire cannot discard live source node");
  if(i->second.external){FieldGlobalExternalState s;if(!snapshot(id,s,e)||s.inside||s.parent||!s.children.empty())return fail(e,"Global retire actual external owner still attached");}
  for(auto a=autoload_objects_.begin();a!=autoload_objects_.end();){if(a->second==id)a=autoload_objects_.erase(a);else++a;}

@@ -7,6 +7,7 @@
 #include <vector>
 #include "tests/gpu_span_common.hpp"
 #include "encore/region_background_kernel.hpp"
+#include "encore/certified_texture_background_kernel.hpp"
 // Fail only optional arrays: the baseline's vector allocations use ordinary new.
 // Successful allocations/deallocations remain the normal C++ array-new pair.
 static int fail_array=-1,array_calls=0;
@@ -22,6 +23,115 @@ using Kernel=encore::RegionBackgroundKernel;
 std::vector<Kernel::Layer> config(const gpu_span::Content& c,const std::vector<gpu_span::Image>& images){std::vector<Kernel::Layer> out;for(unsigned n=0;n<2;++n)out.push_back(gpu_span::layer<Kernel>(c.data.view().background(n),images[n],c.palette[n]));return out;}
 std::vector<encore::ScalarBackgroundKernel::Layer> scalar_config(const gpu_span::Content& c,const std::vector<gpu_span::Image>& images){std::vector<encore::ScalarBackgroundKernel::Layer> out;for(unsigned n=0;n<2;++n)out.push_back(gpu_span::layer<encore::ScalarBackgroundKernel>(c.data.view().background(n),images[n],c.palette[n]));return out;}
 uint32_t gpu(uint32_t c){return ((c&255)<<24)|((c&0xff00)<<8)|((c>>8)&0xff00)|(c>>24);}
+uint32_t indexed_color(const Kernel::Layer& l,uint8_t index){
+ require(index<l.source.palette_size,"source-index span palette bound");
+ uint32_t c=l.source.palette[index];
+ if(l.palette_shifting){const auto& p=l.palette_source;
+  require(!l.palette_frames&&l.palette_fixed_row<p.height,"source-index fixed palette row");
+  const uint32_t x=std::min(uint32_t(float(c&255u)/255.0f*p.width),p.width-1);
+  c=(p.palette[p.pixels[size_t(l.palette_fixed_row)*p.width+x]]&0xffffffu)|(c&0xff000000u);
+ }
+ return c;
+}
+uint32_t indexed_blend(uint32_t b,uint32_t a,float opacity){
+ const float alpha=float(b>>24)/255*opacity;uint32_t out=0;
+ for(unsigned shift=0;shift<24;shift+=8){const float v=float((b>>shift)&255)*alpha+float((a>>shift)&255)*(1-alpha);out|=uint32_t(v+0.5f)<<shift;}
+ return out|(uint32_t(255*alpha+float(a>>24)*(1-alpha)+0.5f)<<24);
+}
+bool equal_index_span(const Kernel::IndexSpan& a,const Kernel::IndexSpan& b){
+ return a.x==b.x&&a.y==b.y&&a.width==b.width&&a.index[0]==b.index[0]&&a.index[1]==b.index[1];
+}
+void empty_index_state(const Kernel& k){
+ const auto s=k.region_stats();require(!s.samples&&!s.skipped&&!s.trig_calls&&!k.certificate_frame_used(),"failed source-index generation clears diagnostics");
+}
+// Manual sparse-source regression uses the checked original Doll images and
+// an independent scalar oracle; these spans never replace upstream gameplay.
+void compare_index_runs(Kernel& k,encore::ScalarBackgroundKernel& oracle,const std::vector<Kernel::Layer>& layers,uint32_t w,uint32_t h){
+ const size_t area=size_t(w)*h;std::vector<Kernel::IndexSpan> spans(area+2),callback;
+ callback.reserve(area);std::vector<uint32_t> expected(area),actual(area);
+ size_t count=99;
+ require(!k.generate_index_spans(0,spans.data()+1,area,count)&&count==0,"source-index output requires span preparation");empty_index_state(k);
+ require(k.prepare_spans(),"source-index span preparation");
+ for(bool certificates:{false,true}){
+  if(certificates)require(k.prepare_certificates(),"source-index optional certificates");
+  for(float t:{0.f,0.001f,1.25f,60.f,1000.f,-80.71f}){
+   const Kernel::IndexSpan sentinel{65535,65535,65535,{255,255}};
+   spans.front()=sentinel;spans.back()=sentinel;count=99;
+   require(k.generate_index_spans(t,spans.data()+1,area,count)&&count&&count<=area,"source-index bounded generation");
+   require(equal_index_span(spans.front(),sentinel)&&equal_index_span(spans.back(),sentinel),"source-index output sentinels");
+   const auto statistics=k.region_stats();
+   require(statistics.samples+statistics.skipped==2*area&&statistics.trig_calls<=2*statistics.samples,"source-index proof and trig statistics");
+   require(!certificates||k.certificate_frame_used(),"source-index certificate dispatch");
+   size_t cursor=0;
+   for(size_t i=0;i<count;++i){const auto& s=spans[i+1];
+    require(s.width&&s.x+s.width<=w&&s.y<h&&size_t(s.y)*w+s.x==cursor,"source-index ordered exact coverage");
+    if(i){const auto& previous=spans[i];require(previous.y!=s.y||previous.index[0]!=s.index[0]||previous.index[1]!=s.index[1],"adjacent equal source-index pairs coalesced");}
+    const auto color=indexed_blend(indexed_color(layers[1],s.index[1]),indexed_color(layers[0],s.index[0]),layers[1].opacity);
+    std::fill_n(actual.data()+cursor,s.width,color);cursor+=s.width;
+   }
+   require(cursor==area&&oracle.compose(t,0x81234567u,expected.data())&&actual==expected,"source-index spans equal original scalar pixels");pixels+=area;
+   callback.clear();
+   require(k.generate_index_runs(t,[&](uint32_t x,uint32_t y,uint32_t width,uint8_t a,uint8_t b){
+    require(callback.size()<area,"source-index callback bound");callback.push_back({uint16_t(x),uint16_t(y),uint16_t(width),{a,b}});return true;
+   }),"zero-copy source-index runs");
+   require(callback.size()==count,"callback and bounded span count agree");
+   for(size_t i=0;i<count;++i)require(equal_index_span(callback[i],spans[i+1]),"callback and bounded span identities agree");
+   size_t calls=0;
+   require(!k.generate_index_runs(t,[&](uint32_t,uint32_t,uint32_t,uint8_t,uint8_t){++calls;return false;})&&calls==1,"callback refusal stops immediately");empty_index_state(k);
+   count=99;require(!k.generate_index_spans(t,spans.data()+1,1,count)&&count==0,"source-index capacity discards partial batch");empty_index_state(k);
+  }
+ }
+ for(float t:{1000000.f,-1000000.f,std::numeric_limits<float>::infinity(),-std::numeric_limits<float>::infinity(),std::numeric_limits<float>::quiet_NaN()}){
+  count=99;require(!k.generate_index_spans(t,spans.data()+1,area,count)&&count==0,"source-index invalid or unguarded time fails closed");empty_index_state(k);
+  size_t calls=0;require(!k.generate_index_runs(t,[&](uint32_t,uint32_t,uint32_t,uint8_t,uint8_t){++calls;return true;})&&calls==0,"invalid source-index frame emits nothing");empty_index_state(k);
+ }
+ count=99;require(!k.generate_index_spans(0,nullptr,area,count)&&count==0,"null source-index storage");empty_index_state(k);
+ count=99;require(!k.generate_index_spans(0,spans.data()+1,0,count)&&count==0,"zero source-index capacity");empty_index_state(k);
+}
+void compare_native_bridge(const gpu_span::Content& content,const std::vector<Kernel::Layer>& layers){
+ using Bridge=encore::CertifiedTextureBackgroundKernel;
+ constexpr uint32_t w=400,h=240;constexpr size_t area=size_t(w)*h;
+ Kernel kernel;Bridge bridge;encore::ScalarBackgroundKernel oracle;std::string error;
+ require(kernel.prepare(layers,w,h,error)&&kernel.prepare_spans(),"native bridge original region preparation");
+ require(oracle.prepare(content.scalar_layers,w,h,error)&&bridge.prepare(kernel,w,h),"native bridge preparation");
+ const size_t representatives=(layers[0].source.palette_size+layers[1].source.palette_size)*(sizeof(uint32_t)+2*sizeof(float));
+ require(bridge.ready()&&bridge.prepared_bytes()==representatives&&
+  bridge.prepared_bytes()<=Bridge::preparation_upper_bound(layers,w,h),"native bridge retains only representatives, no 576k secant table");
+ std::vector<Bridge::Strip> strips(area);std::vector<Kernel::IndexSpan> indices(area);
+ std::vector<uint32_t> actual(area),expected(area);
+ const auto empty_bridge=[](const Bridge::Stats& s){return !s.linear_pixels&&!s.scalar_pixels&&!s.exact_pixels&&
+  !s.scalar_trig_calls&&!s.constant_pixels&&!s.merged_strips&&!s.region_pixels;};
+ for(float t:{0.f,3.f}){
+  size_t count=0,index_count=0;Bridge::Stats stats;
+  require(kernel.generate_index_spans(t,indices.data(),indices.size(),index_count),"native bridge source-index reference");
+  require(bridge.generate(kernel,t,strips.data(),strips.size(),count,stats)&&count==index_count,"native bridge run count");
+  require(stats.linear_pixels==area&&stats.constant_pixels==area&&stats.region_pixels==area&&
+   stats.scalar_trig_calls==kernel.region_stats().trig_calls,"native bridge truthful region diagnostics");
+  size_t cursor=0;
+  for(size_t i=0;i<count;++i){const auto& s=strips[i];const auto& reference=indices[i];
+   require(s.height==1&&s.delta[0]==0&&s.delta[1]==0&&s.delta[2]==0&&s.delta[3]==0,"native bridge fixed texture coordinates");
+   require(s.x==reference.x&&s.y==reference.y&&s.width==reference.width&&s.width&&
+    s.x+s.width<=w&&s.y<h&&size_t(s.y)*w+s.x==cursor,"native bridge complete run coverage");
+   uint8_t sampled[2];
+   for(unsigned n=0;n<2;++n){const auto& source=layers[n].source;
+    const float x=s.uv[n*2]*256,y=(1-s.uv[n*2+1])*256;
+    require(std::isfinite(x)&&std::isfinite(y)&&x>=0&&y>=0&&x<source.width&&y<source.height,"native bridge bounded representative texel");
+    sampled[n]=source.pixels[size_t(uint32_t(y))*source.width+uint32_t(x)];
+    require(sampled[n]==reference.index[n],"native bridge samples original source-index pair");
+   }
+   const auto color=indexed_blend(indexed_color(layers[1],sampled[1]),indexed_color(layers[0],sampled[0]),layers[1].opacity);
+   std::fill_n(actual.data()+cursor,s.width,color);cursor+=s.width;
+  }
+  require(cursor==area&&oracle.compose(t,0x81234567u,expected.data())&&actual==expected,"native bridge representative pixels equal scalar original");pixels+=area;
+  count=99;stats={99,99,99,99,99,99,99};
+  require(!bridge.generate(kernel,t,strips.data(),1,count,stats)&&count==0&&empty_bridge(stats),"native bridge capacity clears partial batch");
+ }
+ kernel.clear();size_t count=99;Bridge::Stats stats{99,99,99,99,99,99,99};
+ require(!bridge.generate(kernel,0,strips.data(),strips.size(),count,stats)&&count==0&&empty_bridge(stats),"native bridge invalidated source owner fails closed");
+ bridge.clear();require(!bridge.ready()&&!bridge.prepared_bytes(),"native bridge clear releases representatives");
+ count=99;stats={99,99,99,99,99,99,99};
+ require(!bridge.generate(kernel,0,strips.data(),strips.size(),count,stats)&&count==0&&empty_bridge(stats),"cleared native bridge resets output diagnostics");
+}
 void compare(Kernel& candidate,encore::ScalarBackgroundKernel& scalar,uint32_t w,uint32_t h,const std::vector<float>& times,bool mapped_check=true,bool original_dispatch=false){
  const size_t count=size_t(w)*h;const uint32_t tw=w<=512?512:1024,th=h<=256?256:1024;const size_t texture_count=size_t(tw)*th;
  std::vector<uint32_t> a(count),b(count),offsets(count),mapped(texture_count+2),expected(texture_count);std::string error;
@@ -51,6 +161,7 @@ void compare(Kernel& candidate,encore::ScalarBackgroundKernel& scalar,uint32_t w
 }
 int main(){
  gpu_span::Content content;std::string error;require(content.load("romfs",error),error.c_str());const auto layers=config(content,content.source);
+ compare_native_bridge(content,layers);
  for(const auto& size:{std::pair<uint32_t,uint32_t>{400,240},{320,180},{65,33}}){
   Kernel k;encore::ScalarBackgroundKernel oracle;require(k.prepare(layers,size.first,size.second,error),error.c_str());require(k.region_fast_path(),"original source validates diagonal regions");require(k.preparation_status()==Kernel::PreparationStatus::Ready,"ready status");require(oracle.prepare(content.scalar_layers,size.first,size.second,error),error.c_str());
   std::vector<float> times={0,-0.f,1.25f,60.f,1000.f,1000000.f,-1000000.f,std::numeric_limits<float>::denorm_min(),std::numeric_limits<float>::max(),-std::numeric_limits<float>::max(),std::numeric_limits<float>::infinity(),std::numeric_limits<float>::quiet_NaN()};uint32_t rng=0x8f2185u;
@@ -62,8 +173,11 @@ int main(){
    }
   }
   for(unsigned i=0;i<96;++i){rng^=rng<<13;rng^=rng>>17;rng^=rng<<5;times.push_back(i<48?float(i)/60:float(int32_t(rng))/123456);}
-  compare(k,oracle,size.first,size.second,times,true,true);Kernel moved(std::move(k));require(moved.region_fast_path(),"move retains prepared ownership");compare(moved,oracle,size.first,size.second,{1.25f});
+  compare(k,oracle,size.first,size.second,times,true,true);compare_index_runs(k,oracle,layers,size.first,size.second);
+  Kernel moved(std::move(k));require(moved.region_fast_path(),"move retains prepared ownership");compare(moved,oracle,size.first,size.second,{1.25f});
   moved.clear();require(!moved.region_fast_path()&&moved.prepared_bytes()==0,"clear releases optional and baseline storage");
+  std::vector<Kernel::IndexSpan> cleared(size_t(size.first)*size.second);size_t cleared_count=99;
+  require(!moved.generate_index_spans(0,cleared.data(),cleared.size(),cleared_count)&&cleared_count==0,"clear invalidates source-index spans");empty_index_state(moved);
   require(!moved.prepare(layers,0,size.second,error)&&!moved.region_fast_path(),"invalid base preparation fails closed");
  }
  // Every optional nothrow allocation, including last-row failure, must preserve

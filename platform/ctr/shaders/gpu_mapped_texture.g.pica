@@ -6,40 +6,46 @@
 .out tex1 texcoord1
 .entry gmain
 .proc gmain
- mov r0.xy, v0.xy
- mov r1, v1
+ ; Integer pixel coordinates times 1/128 or 1/256 are exact binary values.
+ ; Transform the left/top and width once; all four original corners retain
+ ; exactly the same position, UV endpoints, order and winding.
+ mov r2, v0
+ mul r0.x, scale.y, r2.y
+ add r0.x, scale.z, -r0.x
+ mul r0.y, scale.x, r2.x
+ add r0.y, scale.w, -r0.y
+ mul r0.z, scale.x, r2.z
+ mov position.z, values.w
+ mov position.w, values.y
+ mov tex0.z, values.x
+ mov tex1.z, values.x
+
  setemit 0
- call corner
+ mov position.xy, r0.xy
+ mov tex0.xy, v1.xy
+ mov tex1.xy, v1.zw
  emit
- add r0.x, r0.x, v0.z
+
+ ; Keep the same v1 + v2 operation for the right UV endpoint.
  mov r1, v1
  add r1, r1, v2
  setemit 1
- call corner
- emit
- mov r0.x, v0.x
- mov r1, v1
- add r0.y, values.y, r0.y
- setemit 2, prim
- call corner
- emit
- add r0.x, r0.x, v0.z
- mov r1, v1
- add r1, r1, v2
- setemit 0, inv prim
- call corner
- emit
- end
-.end
-.proc corner
- mul r3.x, scale.y, r0.y
- add position.x, scale.z, -r3.x
- mul r3.y, scale.x, r0.x
- add position.y, scale.w, -r3.y
- mov position.z, values.w
- mov position.w, values.y
+ add position.y, r0.y, -r0.z
  mov tex0.xy, r1.xy
  mov tex1.xy, r1.zw
- mov tex0.z, values.x
- mov tex1.z, values.x
+ emit
+
+ setemit 2, prim
+ add position.x, -scale.y, r0.x
+ mov position.y, r0.y
+ mov tex0.xy, v1.xy
+ mov tex1.xy, v1.zw
+ emit
+
+ setemit 0, inv prim
+ add position.y, r0.y, -r0.z
+ mov tex0.xy, r1.xy
+ mov tex1.xy, r1.zw
+ emit
+ end
 .end

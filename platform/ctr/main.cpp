@@ -193,7 +193,7 @@ std::vector<uint32_t> battle_draw_order;
 unsigned view_width=400,view_height=240;
 bool reference_view=false;
 double shader_time=0;
-double compose_ms=0,upload_ms=0;
+double compose_ms=0,upload_ms=0,background_submit_ms=0;
 #ifdef ENCORE_FRAME_PROFILE
 FrameProfile frame_profile(CPU_TICKS_PER_MSEC);
 bool profile_background_composed=false,profile_background_uploaded=false;
@@ -912,7 +912,7 @@ bool begin_round(){
     return round_ready=true;
 }
 void battle_top(){
-    compose_ms=upload_ms=0;
+    compose_ms=upload_ms=background_submit_ms=0;
     struct IoGuard {uint64_t before=load_activity_revision();~IoGuard(){const auto count=load_activity_revision()-before;if(count){char line[100];const int n=std::snprintf(line,sizeof(line),"ENCORE_BATTLE_RENDER_IO events=%llu\n",(unsigned long long)count);svcOutputDebugString(line,size_t(n));
 #ifdef ENCORE_TEXT_QA
     if(qa_log){std::fprintf(qa_log,"%s",line);std::fflush(qa_log);}
@@ -933,7 +933,10 @@ void battle_top(){
     }else if(!battle_renderer.compose_background(shader_time,battle_color(content.parameter(BattleParameter::BackdropColor)),true))return;
     compose_ms=double(svcGetSystemTick()-compose_start)/CPU_TICKS_PER_MSEC;
     PROFILE_BACKGROUND_DONE();
-    upload_battle_surface();battle_renderer.draw_surface(view_x(),view_y(),view_width,view_height,!battle_entry.mask_active());
+    upload_battle_surface();const auto submit_start=svcGetSystemTick();
+    battle_renderer.draw_surface(view_x(),view_y(),view_width,view_height,!battle_entry.mask_active());
+    // CPU command submission, including the preceding C2D flush; this is not GPU completion time.
+    background_submit_ms=double(svcGetSystemTick()-submit_start)/CPU_TICKS_PER_MSEC;
     }
     const auto return_overlays=round_ready?round_presentation.return_overlays():std::vector<BattleActionPose>{};
     const auto round_overlays=round_ready?round_presentation.overlays():std::vector<BattleActionPose>{};
@@ -1129,7 +1132,7 @@ void house_bottom(){
     }else
 #endif
     text(3,14,143,0.37f,"D-pad: move / choose    A: select\nSELECT: reference view + restart\nExit: title menu",ink,292);
-    char position[160];const auto& player=gameplay_scene->world.player();
+    char position[240];const auto& player=gameplay_scene->world.player();
     if(stage==upstream::OpeningStage::Walking){
         const auto instance=room.actor_instance(scene.player_instance_index);
         std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  frame %u",room.string_data(instance.display_name_string),double(player.position.x),double(player.position.y),unsigned(gameplay_scene->world.animation().frame));
@@ -1141,15 +1144,15 @@ void house_bottom(){
 #ifdef ENCORE_EXPERIMENTAL_GPU_BACKGROUND
         if(battle_renderer.gpu_background_active())backend="GPU spans";
 #ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-        if(battle_renderer.gpu_texture_active())backend=battle_renderer.gpu_mapped_texture_active()?"GPU mapped textures":"GPU texture strips";
+        if(battle_renderer.gpu_texture_active())backend=battle_renderer.gpu_mapped_texture_active()?(battle_renderer.gpu_mapped_stats().region_pixels?"GPU index runs":"GPU mapped textures"):"GPU texture strips";
 #endif
 #endif
         const auto used=std::strlen(position);
         std::snprintf(position+used,sizeof(position)-used,"\nBackground: %s",backend);
 #if defined(ENCORE_EXPERIMENTAL_GPU_BACKGROUND) && defined(ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS)
         if(battle_renderer.gpu_mapped_texture_active()){
-            const auto stats=battle_renderer.gpu_mapped_stats();const auto end=std::strlen(position);
-            std::snprintf(position+end,sizeof(position)-end," %u strips / %u scalar px",unsigned(battle_renderer.gpu_texture_strips()),stats.scalar_pixels);
+            const auto end=std::strlen(position);
+            std::snprintf(position+end,sizeof(position)-end," %u quads / %u pass\nCPU prep %.1fms submit %.1fms / samples %u",unsigned(battle_renderer.gpu_texture_strips()),battle_renderer.gpu_texture_passes(),compose_ms,background_submit_ms,unsigned(battle_renderer.gpu_region_samples()));
         }
 #endif
     }
@@ -1166,7 +1169,7 @@ void house_bottom(){
         const auto label=std::string("L/R: ")+std::string(locale_selection.text("OPTIONS_LANGUAGE").text)+": "+std::string(info.name);
         if(!battle_renderer.draw_text(label.c_str(),14,190,1,1,ink))locale_status=locale_font.last_error();
         if(!locale_status.empty())text(4,14,174,0.30f,locale_status,muted,292);
-    }else text(4,14,192,0.30f,gameplay_scene->world.healthy()?telemetry:gameplay_scene->world.error(),muted,292);
+    }else text(4,14,in_battle()?180:192,0.30f,gameplay_scene->world.healthy()?telemetry:gameplay_scene->world.error(),muted,292);
     text(5,14,212,0.27f,audio_status.empty()?"Audio backend initialized (output unverified)":audio_status,muted,292);
 }
 

@@ -189,3 +189,86 @@ allowance remains an experimental platform assumption, as with the existing
 row-texture backend. Real console pixel equivalence, visual behavior and FPS
 remain unverified. Manual mechanism positive/negative cases are retained; no
 test suite or sanitizer has been run for this change.
+
+
+## Mapped texture frame-cost follow-up
+
+The reported Citra regression reaches single-digit game FPS even while the
+mapped GPU path is active. The preceding implementation still ran scalar
+cosines at every one-pixel leaf and repeated geometry for three draws.
+
+The source shader first applies static radial distortion, then time-dependent
+X oscillation, Y compression and scrolling before nearest sampling and blending.
+The fixed distortion and trigonometric basis remain prepared once. A summed-area
+source-index proof now accepts uniform swept rectangles in constant work; equal
+adjacent constant source pairs merge into wide strips. Ambiguous leaves reuse
+the existing guarded coordinate bounds and compute original cosines only for
+unresolved axes. These proofs preserve sampled indices; they do not simplify
+the source animation, quantize time or generate a frame color texture. The only
+representative identity and cached UV storage use twelve bytes per source palette index, charged to admission.
+
+A generic finite-palette solver additionally admits an exact decomposition
+`C(i,j) = A(i) + B(j) - K * row(i) * column(j)`. It derives every value from loaded
+resources, rejects intermediate saturation, and verifies all palette pairs
+against the original float blend. Two source textures carry RGB and binary
+alpha masks; four TEV stages complete one geometry draw. Other admitted palettes
+retain the exact three-draw backend. The two-texture path saves 1 MiB of actual
+LINEAR allocation while retaining the conservative six-texture budget ceiling.
+No encounter IDs or source colors are embedded in this mechanism.
+
+Lower-screen diagnostics distinguish strip count, selected draw passes, CPU
+coordinate preparation, CPU command submission and original cosine calls.
+Submission includes the preceding Citro2D flush and does not measure GPU
+completion. Manual pixel-parity/negative cases remain available; no automatic
+tests or sanitizer runs are part of this follow-up. Current emulator FPS and
+physical-console equivalence/performance remain unverified until the new
+installable is actually exercised.
+
+
+## Source-index run frame preparation
+
+The user exercised the one-pass follow-up in Citra: FPS remained 6, with
+approximately 143 ms CPU preparation, 3 ms command submission and 28 original
+cosine calls. This is emulator evidence, not physical-console validation.
+Actual ARM disassembly locates repeated recursion, divisions and stack work in
+the old secant certificate path; the hot path already uses hardware VFP.
+
+The texture consumer now uses the existing rotated source-region proof to emit
+two original palette indices per continuous output-row run. Its boundaries are
+derived from the loaded image's connected components and original transformed
+coordinates. Fixed representative texels feed the existing exact palette GPU
+blend. There is no frame color raster, frame texture upload, animation
+quantization or source-content table in C++. Shapes unsupported by this region
+proof retain the previous checked coordinate consumer; incomplete batches are
+never submitted. The native region consumer does not prepare or retain the old
+576,000-byte secant residual table.
+
+Frame invariant error bounds, factor reciprocals and scaled amplitudes are
+computed once per layer instead of once per row. Source representative UVs are
+cached during preparation, charged at twelve bytes per palette index including
+source identity. Sample statistics use bounded 32-bit row accumulation before
+updating the 64-bit frame totals. Original float operation order, rounding
+bounds and exact cosine fallback remain in force. Derivative proofs now use 64-pixel chunks, halving the number of dynamic
+per-chunk calculations and reducing their slope storage. The existing optional
+certificate flag also applies to the index consumer: its 1,935,360-byte table
+replaces the per-chunk derivative arithmetic and four reciprocal divisions.
+For the real Doll source, preparation with and without this table has the same
+8,664,448-byte CPU upper bound because source-component construction is the
+larger temporary allocation. The reservation nevertheless charges certificates
+for every supported source shape; failure keeps the checked dynamic proof.
+
+The lower screen labels this path `GPU index runs` and exposes draw count,
+selected passes, CPU preparation/submission and actual source samples across
+both layers. Region output coverage is distinct from CPU sampling skipped by a
+proof. GPU submission time includes the preceding Citro2D flush and does not
+measure GPU completion.
+
+Private development probes load the real checked Doll battle binary and BPX
+resources and retain raw timings, compiler/header fingerprints and resource
+hashes. They measure the actual GPU-strip generation callback rather than a PC
+game. Host CPU timings are not 3DS FPS. Added manual regressions compare both
+index APIs and the GPU bridge with an independent scalar source oracle, and
+cover capacity, cancellation/clear and invalid-time failures. These regressions
+and sanitizers remain unrun under the manual-test policy. New emulator FPS and
+physical-console fidelity/performance require separate exercise of the final
+installable. Cross-build and packaging evidence is recorded separately.

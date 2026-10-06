@@ -178,6 +178,8 @@ public:
     bool gpu_texture_active()const{return gpu_texture_surface_||gpu_mapped_surface_;}
     bool gpu_mapped_texture_active()const{return gpu_mapped_surface_;}
     encore::CertifiedTextureBackgroundKernel::Stats gpu_mapped_stats()const{return gpu_mapped_texture_.stats();}
+    uint64_t gpu_region_samples()const{return background_.region_stats().samples;}
+    unsigned gpu_texture_passes()const{return gpu_mapped_surface_?gpu_mapped_texture_.draw_passes():1;}
     uint32_t gpu_texture_rows()const{return gpu_row_texture_.accepted_rows();}
     size_t gpu_texture_strips()const{return gpu_mapped_surface_?gpu_mapped_texture_.count():gpu_row_texture_.count();}
     size_t gpu_texture_bytes()const{return gpu_row_texture_.tracked_bytes();}
@@ -449,10 +451,8 @@ public:
         // Optional allocations fail back to the existing exact CPU/span path.
         if(background_.region_fast_path()&&background_.prepare_spans()&&(deferred_gpu_||gpu_background_.create())){
 #ifdef ENCORE_GPU_CERTIFICATE_TABLES
-#ifdef ENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-            if(!mapped_background_.ready())
-#endif
-            background_.prepare_certificates(SIZE_MAX,control); // Keep dynamic proofs without a duplicate table.
+            // The index-run texture consumer shares this same bounded table.
+            background_.prepare_certificates(SIZE_MAX,control);
 #endif
         }else if(row_background_.prepare(prepared,surface_width_,surface_height_,control)){
             // Different supported semantics: both layers can oscillate in X.

@@ -1,0 +1,281 @@
+{
+  "schema": 1,
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "source_scene_entered": false,
+  "original_constructor_entered": false,
+  "pure_sha256": "0e7716aac9d410bf92385d16915249e68121741629f1bea77f6141fbf05d4473",
+  "values": [
+    [
+      "_input_vector",
+      {
+        "kind": 7,
+        "coordinates": [
+          "0000000000000000",
+          "0000000000000000"
+        ]
+      }
+    ],
+    [
+      "_attack_damage",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "_damage_variance",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "_last_step_pos",
+      {
+        "kind": 7,
+        "coordinates": [
+          "0000000000000000",
+          "0000000000000000"
+        ]
+      }
+    ],
+    [
+      "_dist_btwn_steps",
+      {
+        "kind": 3,
+        "f64_le": "0000000000000000"
+      }
+    ],
+    [
+      "_spinning",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_climbing",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_is_continuous_damage",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_steps",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "_paused_anim_state",
+      {
+        "kind": 4,
+        "value": ""
+      }
+    ],
+    [
+      "_direction",
+      {
+        "kind": 7,
+        "coordinates": [
+          "0000000000000000",
+          "0000000000000000"
+        ]
+      }
+    ],
+    [
+      "costume",
+      {
+        "kind": 4,
+        "value": "Normal"
+      }
+    ],
+    [
+      "run_sound",
+      {
+        "kind": 4,
+        "value": "wood"
+      }
+    ],
+    [
+      "can_interact",
+      {
+        "kind": 1,
+        "value": true
+      }
+    ],
+    [
+      "_state",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "_current_skill_action",
+      {
+        "kind": 4,
+        "value": ""
+      }
+    ],
+    [
+      "_knockback",
+      {
+        "kind": 7,
+        "coordinates": [
+          "0000000000000000",
+          "0000000000000000"
+        ]
+      }
+    ],
+    [
+      "_hit_direct",
+      {
+        "kind": 7,
+        "coordinates": [
+          "0000000000000000",
+          "0000000000000000"
+        ]
+      }
+    ],
+    [
+      "_velocity",
+      {
+        "kind": 7,
+        "coordinates": [
+          "0000000000000000",
+          "0000000000000000"
+        ]
+      }
+    ],
+    [
+      "_speed",
+      {
+        "kind": 3,
+        "f64_le": "0000000000005040"
+      }
+    ],
+    [
+      "_walk",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_substantial_movement",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_crouch",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_tap_run",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_running",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_switching",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_spin_num",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "_idle",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_event_collider",
+      {
+        "kind": 0
+      }
+    ],
+    [
+      "_tp_crouch_timer_done",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_tp_max_speed_reached",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_tp_take_off_timer_done",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_tp_mode",
+      {
+        "kind": 2,
+        "value": "-1"
+      }
+    ],
+    [
+      "_paused",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ],
+    [
+      "_debug_speed",
+      {
+        "kind": 1,
+        "value": false
+      }
+    ]
+  ]
+}

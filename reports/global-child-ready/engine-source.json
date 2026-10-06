@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "files": [
+    {
+      "path": "core/engine.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/core/engine.cpp",
+      "sha256": "6a53d9a7ecc743a671a507314fc65ef9a0e0c39131c014a26e532dd224ed5427",
+      "bytes": 8210
+    },
+    {
+      "path": "core/os/input.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/core/os/input.h",
+      "sha256": "af22367d7674e494dbb5b6a1f494f9d0da80dfc8d7a418c0e64decf4ad129fbf",
+      "bytes": 7214
+    },
+    {
+      "path": "core/os/main_loop.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/core/os/main_loop.h",
+      "sha256": "7f9258abdffc2d6b31ba512b4d9345237ac1c09fe05ce07656a9db49bf79da39",
+      "bytes": 3690
+    },
+    {
+      "path": "main/input_default.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/main/input_default.cpp",
+      "sha256": "c07cd47833c2702df6a382e364c4af6286612ba325e937b2a4885fd5ef1d1d5b",
+      "bytes": 46681
+    }
+  ],
+  "visible": 0,
+  "hidden": 1,
+  "mouse_enter": 1002,
+  "engine_initial_scale": 1.0,
+  "review": [
+    "Engine stores float time scale without clamp; actual scheduler must read same owner",
+    "InputDefault mouse button mask and speed tracker begin empty; mouse speed updates only from native mouse events",
+    "3DS backend has no physical mouse; lower touch gesture is not a synthesized mouse event and remains separate",
+    "Node source process/input automatic activation precedes script Ready; Slowmo Ready disables idle only",
+    "WM mouse-enter notification is a native source notification; no 3DS window enter event is fabricated"
+  ]
+}

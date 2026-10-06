@@ -61,6 +61,8 @@ add_library(encore_core
     runtime/field_character_load.cpp runtime/field_character_load_data.cpp
     runtime/global_load_runtime.cpp runtime/global_load_data.cpp
     runtime/field_global_constructor.cpp runtime/field_global_constructor_data.cpp
+    runtime/player_initialization.cpp runtime/player_initialization_data.cpp
+    runtime/global_child_ready.cpp runtime/global_child_ready_data.cpp
     runtime/field_dialogue_ui.cpp
     runtime/field_dialogue_ui_data.cpp
     runtime/field_inventory.cpp

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "7eee3adcc24b1ab957d7cca4a29b783482a7174861ac591c4eea5514af0daa6d",
+  "sources": {
+    "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+    "Scripts/UI/mouse_hider.gd": "aabbedde95fa75cfdf360cc40588a29f3f01e6d1cd7b8b77667d9a1af26bf592",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/global.tscn": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "Scripts/global/Slowmo.tscn": "29947f48e27f4c15b6fda3edc7425ffc78d8fa650db5a08d4d4ac99eee5cccf7",
+    "Scripts/global/MouseHider.tscn": "173f790810a7ba73e48ae28ad1f669f550e6c797abf00a19968371cca0ef6725"
+  },
+  "engine_receipt_sha256": "966c4b0b0177e95f1c4d6cf28300fd22a3e09ab89dc408fed16282442e847a5f",
+  "scope": "Full source Slowmo/MouseHider methods, no whole global Ready; Sfx pitch requires actual audio owner"
+}

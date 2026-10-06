@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "family": 1162739799,
+  "kind": "encore.global-child-ready.source-ir",
+  "identity": {
+    "scene_id": 3724723364,
+    "source_sha256": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
+  },
+  "constructor_ir_sha256": "ab6a4302a455a8495f40c3db8780b2b849541dff35181f9347e2abae216e58b6",
+  "engine_receipt_sha256": "966c4b0b0177e95f1c4d6cf28300fd22a3e09ab89dc408fed16282442e847a5f",
+  "sources": {
+    "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+    "Scripts/UI/mouse_hider.gd": "aabbedde95fa75cfdf360cc40588a29f3f01e6d1cd7b8b77667d9a1af26bf592",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/global.tscn": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "Scripts/global/Slowmo.tscn": "29947f48e27f4c15b6fda3edc7425ffc78d8fa650db5a08d4d4ac99eee5cccf7",
+    "Scripts/global/MouseHider.tscn": "173f790810a7ba73e48ae28ad1f669f550e6c797abf00a19968371cca0ef6725"
+  },
+  "nodes": [
+    {
+      "kind": 1,
+      "id": 336655550,
+      "class_index": 0,
+      "methods": 65,
+      "path": "Slowmo",
+      "script": "Scripts/global/Slowmo.gd",
+      "script_sha256": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+      "fields": [
+        "start_time",
+        "length_ms",
+        "start_value",
+        "with_pitch"
+      ],
+      "methods_source": [
+        "_ready",
+        "start_slowmo",
+        "_process",
+        "circl_ease_in"
+      ],
+      "functions": [
+        {
+          "method": "_ready",
+          "sha256": "13344296f7aeee507f7dd0c0fe687739c905c131e974f5014d08a51e623d31bc"
+        },
+        {
+          "method": "start_slowmo",
+          "sha256": "93a179c837d928605543e55aa2506372b558e9a6453a7e0b1e1bad6edc6f4404"
+        },
+        {
+          "method": "_process",
+          "sha256": "3e352c3bc06451993b109ad98dc14d3c7f23101db28281f7f6e7cd47ad5f0e49"
+        },
+        {
+          "method": "circl_ease_in",
+          "sha256": "7440163d38eb16aaafdca7ea94c45cdb5c2c018900199a2da796238eb3f5e58d"
+        }
+      ]
+    },
+    {
+      "kind": 2,
+      "id": 4126312847,
+      "class_index": 0,
+      "methods": 73,
+      "path": "MouseHider",
+      "script": "Scripts/UI/mouse_hider.gd",
+      "script_sha256": "aabbedde95fa75cfdf360cc40588a29f3f01e6d1cd7b8b77667d9a1af26bf592",
+      "fields": [
+        "_mouse_position",
+        "_mouse_shown_time",
+        "_mouse_hidden_time",
+        "_mouse_idle_time"
+      ],
+      "methods_source": [
+        "_ready",
+        "_notification",
+        "_process",
+        "_input",
+        "_manage_mouse",
+        "set_active"
+      ],
+      "functions": [
+        {
+          "method": "_ready",
+          "sha256": "920dd33d741e487126828cac7966745ffafa6cd5faf0177a700d270d78f5dae4"
+        },
+        {
+          "method": "_notification",
+          "sha256": "df8bd6c49070e8f63326a897d92f469aee7237f3f2c223a4858e807abb3faec2"
+        },
+        {
+          "method": "_process",
+          "sha256": "895ad2606beca7409d438ec3c9cc27a34a5a388b90af9b6c084f2c85c0fc83d2"
+        },
+        {
+          "method": "_input",
+          "sha256": "9e66f55d531f091235d2716fdd00ae5fe7e69310a30ef4aa574795eff60f5406"
+        },
+        {
+          "method": "_manage_mouse",
+          "sha256": "83f9005197f5dc0f96ce82baae092ee134609882d0e46752cdcc8fec640a1637"
+        },
+        {
+          "method": "set_active",
+          "sha256": "86414b8c9690b64e3f2426312847348f8a58ffaaef215c6f5346ce95e37667a6"
+        }
+      ]
+    }
+  ],
+  "policy": {
+    "slow_end": 1.0,
+    "length_scale": 1000.0,
+    "default_pitch": true,
+    "moving_frames": 5.0,
+    "idle_reset": 0.5,
+    "shown_hide": 1.5,
+    "visible": 0,
+    "hidden": 1,
+    "mouse_enter": 1002,
+    "engine_initial_scale": 1.0
+  },
+  "audio_source": "Scripts/global/audioManager.gd",
+  "audio_method": "set_audio_pitch",
+  "semantics": [
+    "Same actual two source Node children; no duplicate ObjectDB allocation",
+    "Actual native Ready automatic idle/input activation is supplied by kernel; this adapter receives ReadyScript only",
+    "Slowmo stores real monotonic milliseconds, starts by scale assignment before enabling process; no RNG",
+    "Circular expression uses endValue as coefficient, not end-start; source overtime computes sqrt then overwrites endValue before publication",
+    "Each pitch-enabled idle publishes engine scale then actual audioManager Sfx children pitch, audio owner absence refuses before start",
+    "Mouse compares last mouse SPEED rather than screen coordinates, reads twice in moving frame; input button branch resets all three timers",
+    "Mouse hidden-motion threshold depends on current delta*5, not accumulated frames count; original order and >= boundaries preserved",
+    "3DS physical touch uses existing NativeInputAdapter gesture endpoint; no mouse movement or mouse-window notification fabricated"
+  ],
+  "scene_admitted": false
+}

@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/field_global_constructor.hpp"
 #include "podunk_native_root.hpp"
+#include "podunk_global_children.hpp"
 namespace encore::ctr {
 // Source script fields are owned here; actual native class notification
 // behavior is supplied by the same source-native owner used by other trees.
@@ -27,7 +28,9 @@ public:
   bool initialize(const upstream::FieldGlobalRegistryData &,
                   upstream::FieldGlobalRegistry &,
                   std::shared_ptr<const upstream::FieldGlobalConstructorData>,
-                  PodunkNativeRoot &, PodunkGlobalNativeOwner &, std::string &);
+                  std::shared_ptr<const upstream::GlobalChildReadyData>,
+                  PodunkNativeRoot &, PodunkGlobalNativeOwner &,
+                  upstream::GlobalChildAudio *, std::string &);
   bool construct(upstream::FieldObjectId,
                  const upstream::FieldGlobalExternalSpec &,
                  std::unique_ptr<upstream::FieldGlobalExternalObject> &,
@@ -39,8 +42,8 @@ public:
   std::shared_ptr<upstream::FieldNodeTreeRuntime> transition_tree() const {
     return transition_;
   }
-  const std::vector<upstream::FieldGlobalConstructorField> *
-      child_fields(upstream::FieldObjectId) const;
+  // Uses the same real Engine/Input clock as the complete scene scheduler.
+  PodunkGlobalChildren &children() { return children_; }
   bool bind_characters(const upstream::FieldGlobalDataRuntime &, std::string &);
 
 private:
@@ -70,9 +73,7 @@ private:
   upstream::FieldGlobalConstructorRuntime core_;
   upstream::FieldGlobalExternalBinding binding_;
   upstream::FieldNativeTimers timers_;
-  std::map<upstream::FieldObjectId,
-           std::vector<upstream::FieldGlobalConstructorField>>
-      child_fields_;
+  PodunkGlobalChildren children_;
   std::map<upstream::FieldObjectId, bool> constructed_;
   GlobalObject *object_ = nullptr;
   upstream::FieldObjectId parent_ = 0;

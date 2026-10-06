@@ -14,6 +14,8 @@ CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room bat
 CONTENT_TASKS += field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
 CONTENT_TASKS += field-native-root field-global-data field-dialogue-root-script
 CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-directory global-yaml-file global-data-constructor field-character-load global-load field-global-constructor
+CONTENT_TASKS += player-initialization global-child-ready
+.PHONY: player-initialization global-child-ready
 .PHONY: global-item-definitions global-yaml-caches global-data-constructor
 .PHONY: field-native-root field-global-data field-dialogue-root-script
 .PHONY: field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
@@ -276,3 +278,9 @@ global-load: global-data-constructor field-character-load field-global-flags glo
 .PHONY: field-global-constructor
 field-global-constructor: field-global-data
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_global_constructor.py compile
+
+player-initialization: global-data-constructor
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_initialization.py compile
+
+global-child-ready: field-global-constructor
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/global_child_ready.py compile

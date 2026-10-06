@@ -63,6 +63,8 @@ SOURCES = (
     'runtime/field_character_load_data.cpp',
     'runtime/global_load_data.cpp',
     'runtime/field_global_constructor_data.cpp',
+    'runtime/player_initialization_data.cpp',
+    'runtime/global_child_ready_data.cpp',
     'runtime/field_native_timer_data.cpp',
     'runtime/field_global_flags_data.cpp',
     'runtime/field_global_registry_data.cpp',
@@ -143,6 +145,8 @@ def admit(resources, *, global_items=True):
         node_constructor = json.loads((ROOT / 'content/native-field-global-constructor.json').read_text())
         command += ['--global-node-constructor', str(ROOT / 'romfs/data/global.encnodeconstructor'),
                     str(node_constructor['scene_id']), node_constructor['source_sha256']]
+        command += ['--player-initialization', str(ROOT / 'romfs/data/player.encinitialization'),
+                    '--global-child-ready', str(ROOT / 'romfs/data/global.encchildready')]
     subprocess.run(command, check=True)
 
 

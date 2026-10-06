@@ -89,9 +89,11 @@ private:
 };
 bool PodunkGlobalHost::initialize(
     const FieldGlobalRegistryData &rd, FieldGlobalRegistry &r,
-    std::shared_ptr<const FieldGlobalConstructorData> d, PodunkNativeRoot &root,
-    PodunkGlobalNativeOwner &native, std::string &e) {
-  if (data_ || !rd.valid() || !d || !d->valid() ||
+    std::shared_ptr<const FieldGlobalConstructorData> d,
+    std::shared_ptr<const GlobalChildReadyData> children, PodunkNativeRoot &root,
+    PodunkGlobalNativeOwner &native, GlobalChildAudio *audio, std::string &e) {
+  if (data_ || !rd.valid() || !d || !d->valid() || !children ||
+      !children->valid() || children->constructor_ir_sha256() != d->ir_sha256() ||
       rd.identity().upstream_commit != d->identity().upstream_commit)
     return fail(e, "global actual constructor source/Registry rejected");
   auto a =
@@ -101,6 +103,8 @@ bool PodunkGlobalHost::initialize(
       a->path != d->scene_source() ||
       a->script_sha != d->identity().source_sha256)
     return fail(e, "global actual autoload descriptor missing");
+  if (!children_.initialize(std::move(children), d, r, audio, e))
+    return false;
   registry_data_ = &rd;
   registry_ = &r;
   data_ = std::move(d);
@@ -177,7 +181,8 @@ PodunkGlobalHost::tree_host(std::shared_ptr<FieldNodeTreeRuntime> tree,
     if (!native_->release(id, b, e))
       return false;
     constructed_.erase(id);
-    child_fields_.erase(id);
+    if (children_.owns(id) && !children_.release(id, e))
+      return false;
     return true;
   };
   return h;
@@ -248,7 +253,8 @@ bool PodunkGlobalHost::construct_source(FieldNodeTreeRuntime &tree,
         [&](const auto &x) { return x.id == d.id && x.script == d.script; });
     if (f == data_->child_fields().end())
       return fail(e, "global source child script constructor unknown");
-    child_fields_.emplace(id, f->fields);
+    if (!children_.construct(tree, id, d, e))
+      return false;
   } else if (!global &&
              (d.id != data_->transition_node().id || d.script_methods))
     return fail(e, "global source new Node script constructor unknown");
@@ -287,10 +293,13 @@ bool PodunkGlobalHost::phase(FieldNodeTreeRuntime &tree, FieldObjectId id,
       if (id == binding_.object)
         return fail(e, "global Ready source first "
                        "_set_localized_default_inputs owner pending");
-      return fail(e, "global Slowmo/MouseHider original Ready owner pending");
+      return children_.script_phase(tree, id, b, p, e);
     }
     return true;
   }
+  if (children_.owns(id) &&
+      (p == FieldTreePhase::Idle || p == FieldTreePhase::Input))
+    return children_.script_phase(tree, id, b, p, e);
   if (p == FieldTreePhase::Idle || p == FieldTreePhase::Physics ||
       p == FieldTreePhase::Input || p == FieldTreePhase::UnhandledInput ||
       p == FieldTreePhase::UnhandledKeyInput)
@@ -328,10 +337,5 @@ GlobalLoadGlobalOwner *PodunkGlobalHost::owner() const { return object_; }
 bool PodunkGlobalHost::bind_characters(const FieldGlobalDataRuntime &c,
                                        std::string &e) {
   return core_.bind_characters(c, e);
-}
-const std::vector<FieldGlobalConstructorField> *
-PodunkGlobalHost::child_fields(FieldObjectId id) const {
-  auto f = child_fields_.find(id);
-  return f == child_fields_.end() ? nullptr : &f->second;
 }
 } // namespace encore::ctr

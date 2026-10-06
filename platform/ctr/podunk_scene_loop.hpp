@@ -81,6 +81,7 @@ private:
   bool release(upstream::FieldObjectId, const upstream::FieldNodeBinding &,
                std::string &);
   bool prepare_leaves(std::string &);
+  bool transition_jobs(float delta, bool paused, std::string &);
   PodunkSceneNativeMechanism *mechanism(
       const upstream::FieldNodeDescriptor &) const;
   PodunkSceneLoopInput input_;

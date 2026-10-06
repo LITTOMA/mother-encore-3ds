@@ -50,7 +50,13 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
   auto &r = *input_.continuation->registry();
   // Reject before allocating nodes or consuming RNG. A missing native class
   // is a concrete dependency, never an empty notification implementation.
-  for (const auto &n : d.tree().records()) {
+  for (const auto &row : d.tree().records()) {
+    // Data rows retain the checked class opcode. Runtime descriptors resolve
+    // its name during instantiation; preflight uses that same schema.
+    auto n = row;
+    if (n.class_index >= d.tree().classes().size())
+      return fail(e, "Scene native class opcode outside checked schema");
+    n.native_class = d.tree().classes()[n.class_index];
     const bool leaf = n.native_class == "Timer" ||
         n.native_class == "AnimatedSprite";
     bool arrows_player = false;
@@ -273,6 +279,7 @@ bool PodunkSceneLoop::idle_frame(uint64_t epoch, float dt, bool paused,
   idle_epoch_ = epoch; idle_delta_ = dt; paused_ = paused; update_pending_ = update;
   if (!input_.player->begin_frame(epoch, dt, 0, paused, update, e) ||
       !input_.tree->process(false, paused, e) ||
+      !transition_jobs(dt, paused, e) ||
       !input_.continuation->registry()->flush_messages(e) ||
       !input_.tree->flush_transform_notifications(e) ||
       !input_.tree->flush_delete_queue(e) || !scripts_.collect_deleted(e)) {
@@ -285,6 +292,22 @@ bool PodunkSceneLoop::idle_frame(uint64_t epoch, float dt, bool paused,
     }
   released_signals_.clear();
   e.clear(); return true;
+}
+bool PodunkSceneLoop::transition_jobs(float dt, bool paused, std::string &e) {
+  // Script _process and native Tween/Timer continuations each advance once.
+  // Only the checked Jump roster owns these delayed jobs.
+  const auto &source = input_.sources->lifecycle();
+  for (uint32_t i = 0; i < source.ready_count(); ++i) {
+    const auto row = source.ready(i);
+    if (row.role != FieldSceneRole::JumpArea) continue;
+    const auto id = input_.tree->source_object(row.id);
+    const auto *node = input_.tree->state(id);
+    if (!node || !node->alive || !node->inside || node->queued) continue;
+    if (!scripts_.transition_native_idle(id, dt,
+          input_.tree->can_process(id, paused), e)) return false;
+  }
+  e.clear();
+  return true;
 }
 bool PodunkSceneLoop::input(uint32_t kind, const PlayerInputEvent &event,
                             bool accept, bool paused, std::string &e) {

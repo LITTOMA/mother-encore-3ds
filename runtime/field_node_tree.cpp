@@ -1,6 +1,8 @@
 #include "encore/field_node_tree.hpp"
 #include "encore/field_node_recipe.hpp"
 #include "encore/field_node_sort.hpp"
+#include "encore/field_sprite_bridge.hpp"
+#include "encore/crc32.hpp"
 #include "encore/utf8.hpp"
 #include <algorithm>
 #include <cmath>
@@ -133,6 +135,41 @@ namespace encore::upstream {
   records.reserve(d.records().size());
   for(const auto&r:d.records())records.push_back(r);
   return instantiate_records(d.identity(),records,d.identity().scene_id,true,out,e);
+ }
+ bool FieldNodeTreeRuntime::instantiate_builtin_source(FieldObjectId caller,
+       const FieldNodeTreeData&checked,const FieldSpriteData&sprites,
+       FieldObjectId&out,std::string&e){
+  out=0;
+  const auto*n=state(caller);const auto*s=source(caller);
+  const auto*r=n?checked.record(n->source):nullptr;
+  const auto*v=n?sprites.record(n->source):nullptr;
+  std::array<uint8_t,32>sha{};
+  if(poisoned_||!root_||!host_.construct_source||!host_.native_allocated||
+     !checked.valid()||!sprites.valid()||!n||!s||!r||!v||n->queued||
+     v->kind!=FieldSpriteKind::Character||r->class_index>=checked.classes().size()||
+     checked.classes()[r->class_index]!="Sprite"||r->script.empty()||
+     !checked.source_hash(r->script,sha)||sha!=r->script_sha||
+     s->descriptor.id!=r->id||s->descriptor.script!=r->script||
+     s->descriptor.script_sha!=sha||s->descriptor.native_class!="Sprite"||
+     s->descriptor.class_index!=r->class_index||s->descriptor.path!=r->path||
+     !equal_identity(s->identity,checked.identity())||
+     sprites.source_pin()!=checked.identity().upstream_commit||
+     sprites.scene_id()!=checked.identity().scene_id)
+   return fail(e,"NodeTree CharacterSprite builtin source caller/proof rejected");
+  // Identity belongs to this source call site, not the global ObjectDB slot.
+  const std::string key=r->path+"#AnimationTree.new";
+  const uint32_t stable=encore::crc32(reinterpret_cast<const uint8_t*>(key.data()),key.size());
+  if(!stable||checked.record(stable)||source_index_.count(stable))
+   return fail(e,"NodeTree builtin source stable identity collision");
+  for(const auto&entry:sources_)if(entry.second.descriptor.id==stable)
+   return fail(e,"NodeTree duplicate builtin source constructor");
+  FieldNodeDescriptor d;d.id=stable;d.index=-1;d.path=key;
+  d.native_class="AnimationTree";
+  d.local=d.world={{{1,0},{0,1},{0,0}}};
+  d.modulate=d.self_modulate={{1,1,1,1}};
+  if(!instantiate_records(s->identity,{d},stable,true,out,e))return false;
+  source_index_.emplace(stable,out);
+  return true;
  }
  bool FieldNodeTreeRuntime::transfer_detached_subtree(FieldNodeTreeRuntime&destination,FieldObjectId first,std::string&e){
   if(&destination==this||!host_.object_domain||host_.object_domain!=destination.host_.object_domain||!host_.enqueue_global||!destination.host_.enqueue_global||poisoned_||destination.poisoned_||driving_||destination.driving_||deleting_||destination.deleting_||flushing_||destination.flushing_||!frames_.empty()||!destination.frames_.empty()||!deletes_.empty()||!destination.deletes_.empty()||!messages_.empty()||!destination.messages_.empty())return fail(e,"NodeTree transfer domain/lifecycle/delete/local message boundary rejected");

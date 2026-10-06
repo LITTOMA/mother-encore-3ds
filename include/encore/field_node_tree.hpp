@@ -8,6 +8,7 @@
 
 namespace encore::upstream {
 class FieldNodeRecipeData;
+class FieldSpriteData;
 using FieldObjectId=uint64_t;
 using FieldTransform=std::array<Vec2,3>;
 using FieldColor=std::array<float,4>;
@@ -127,6 +128,11 @@ public:
  // Complete source recipe, including constructor-owned internal nodes.
  // Creation stays out of tree until the actual deferred add_child executes.
  bool instantiate_recipe(const FieldNodeRecipeData&,FieldObjectId&,std::string&);
+ // The audited CharacterSprite body creates exactly one native AnimationTree.
+ // This derives a constructor descriptor from both checked source packs and
+ // the live caller; it cannot instantiate an arbitrary class or script.
+ bool instantiate_builtin_source(FieldObjectId,const FieldNodeTreeData&,
+                                 const FieldSpriteData&,FieldObjectId&,std::string&);
  // Same live ObjectIDs and bindings, after the actual source remove_child.
  // Global deferred messages retain identity and are not drained/recreated.
  bool transfer_detached_subtree(FieldNodeTreeRuntime&,FieldObjectId,std::string&);

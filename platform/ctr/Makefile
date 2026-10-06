@@ -61,6 +61,7 @@ SOURCES += runtime/player_fetcher.cpp runtime/player_fetcher_data.cpp runtime/pl
 SOURCES += runtime/player_graphics_data.cpp platform/ctr/podunk_player_graphics.cpp platform/ctr/podunk_player_playback.cpp platform/ctr/podunk_player_visual_bundle.cpp platform/ctr/podunk_player_animation.cpp
 SOURCES += runtime/player_visual_scripts.cpp runtime/player_visual_scripts_data.cpp platform/ctr/podunk_player_visual_scripts.cpp platform/ctr/podunk_player_visual_native.cpp
 SOURCES += runtime/field_object_signals.cpp platform/ctr/podunk_player_host.cpp platform/ctr/podunk_player_camera.cpp platform/ctr/podunk_player_effect_owners.cpp platform/ctr/podunk_player_physics_world.cpp
+SOURCES += platform/ctr/podunk_npc_animation.cpp
 SOURCES += runtime/house_status_effects.cpp runtime/house_status_effects_data.cpp \
  runtime/player_child_scripts.cpp runtime/player_child_scripts_data.cpp runtime/player_native_timer_data.cpp \
  platform/ctr/podunk_player_child_scripts.cpp platform/ctr/podunk_player_native_media.cpp

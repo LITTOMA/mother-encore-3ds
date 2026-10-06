@@ -106,7 +106,7 @@ build/ctr/tests/podunk_god_storage_driver.o build/ctr/tests/podunk_god_storage_h
 manual-god-storage: build/ctr/manual/god_storage.3dsx
 build/ctr/manual/god_storage.elf: $(MANUAL_GOD_OBJECTS)
 	@mkdir -p $(dir $@)
-	$(CXX) $(LDFLAGS) $^ $(LDLIBS) -L$(DEVKITPRO)/portlibs/3ds/lib -lmbedcrypto -o $@
+	$(CXX) $(subst $(ROOT)/dist/encore-native.map,$(ROOT)/build/ctr/manual/god_storage.map,$(LDFLAGS)) $^ $(LDLIBS) -L$(DEVKITPRO)/portlibs/3ds/lib -lmbedcrypto -o $@
 build/ctr/manual/god_storage.3dsx: build/ctr/manual/god_storage.elf
 	$(TOOLS)/3dsxtool $< $@
 -include $(MANUAL_GOD_OBJECTS:.o=.d)

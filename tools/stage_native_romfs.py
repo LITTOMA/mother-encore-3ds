@@ -9,7 +9,7 @@ from native_round import stage_files as round_files
 from native_house import stage_files as house_files
 from native_items import stage_files as item_files
 ROOT=Path(__file__).resolve().parents[1]
-def main():
+def stage():
     source=ROOT/'romfs';target=ROOT/'build/ctr/native-romfs'
     from resource_catalog import decode, stage_files as catalog_files
     catalog=decode((source/'data/native.encresources').read_bytes())
@@ -111,4 +111,10 @@ def main():
     if target.exists():shutil.rmtree(target)
     temporary.rename(target)
     print(f'Staged {len(files)} native RomFS files; no M0 fixture')
+
+def main():
+    from content_pipeline import generation_lock, require_no_pending
+    with generation_lock(ROOT):
+        require_no_pending(ROOT)
+        stage()
 if __name__=='__main__':main()

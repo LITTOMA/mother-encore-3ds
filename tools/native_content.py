@@ -452,10 +452,36 @@ def validate_ir(ir):
     for path,digest in ir['provenance']['sources'].items():
         check(type(path)is str and path and not Path(path).is_absolute()and '..'not in Path(path).parts and '\\'not in path,'Unsafe provenance path')
         digest_hex(digest,64,'provenance source hash')
+    projections=ir['provenance'].get('projections',[])
+    check(type(projections)is list and len(projections)<=16,'Invalid provenance projections')
+    paths=set()
+    for record in projections:
+        check(type(record)is dict and set(record)=={'kind','path','identities','sha256'}and record['kind']=='catalog-bindings-v1'and record['path']=='content/native-resource-catalog.json','Unknown provenance projection')
+        ids=record['identities']
+        check(type(ids)is list and ids and all(type(i)is int and 0<i<=NONE for i in ids)and ids==sorted(set(ids)),'Invalid projected binding identities')
+        digest_hex(record['sha256'],64,'projection source hash')
+        check(record['path']not in paths and record['path']not in ir['provenance']['sources'],'Duplicate provenance dependency')
+        paths.add(record['path'])
     validate_tables(ir['strings'],ir['sections'],ir['scene_id'],ir['rules'],ir['capabilities'])
 
 
 def verify_provenance(ir, root=ROOT):
+    from tools.catalog_projection import verify_projection
+    catalog_path='content/native-resource-catalog.json'
+    if ir['rules']>=8:
+        records=[r for r in ir['provenance'].get('projections',[])if r['path']==catalog_path]
+        check(catalog_path in ir['provenance']['sources']or len(records)==1,'Missing encounter catalog provenance')
+        if records:
+            # The scope is derived from this resource's actual consumers, not
+            # a hard-coded encounter list or an optional provenance assertion.
+            from tools.resource_catalog import load_ir,validate
+            catalog=validate(load_ir(root/catalog_path))
+            used={ir['strings'][r['path_string']]for r in ir['sections']['Resource']if r['kind']==3}
+            rows=[r for r in catalog['bindings']if r['path']in used and r['role']in('Battle','EncounterBattle')]
+            check({r['path']for r in rows}==used and records[0]['identities']==sorted(r['id']for r in rows),'Incomplete encounter catalog projection')
+    for record in ir['provenance'].get('projections',[]):
+        try:verify_projection(root,record)
+        except (ValueError,KeyError,TypeError,OSError)as exc:raise ContentError(str(exc))from exc
     if ir['rules']>=7:
         check('content/pillow-source-bindings.json' in ir['provenance']['sources'],'Missing Pillow source binding provenance')
         check('content/programme-lowering-recipe.json' in ir['provenance']['sources'],'Missing programme recipe provenance')

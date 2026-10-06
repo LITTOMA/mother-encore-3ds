@@ -12,6 +12,7 @@ PAGE=256
 RECIPE=ROOT/'content/introduction-assets.json'
 ART_RECEIPT=Path('content/asset-receipts/graphics/cutscenes/introduction/source.json')
 FONT_RECEIPT=Path('content/asset-receipts/fonts/introduction/source.json')
+METRICS_PROBE=ROOT/'tools/godot_exporter/introduction_font_metrics.gd'
 
 
 def require(ok,message):
@@ -169,13 +170,6 @@ class FreeTypeMetrics:
         if hasattr(self,'faces'):self.close()
 
 
-def introduction_metrics_script(base):
-    old='  faces.append({"source":spec.source,"size":font.size,"ascent":font.get_ascent(),"descent":font.get_descent(),"height":font.get_height(),"advances":advances})'
-    new='  var data=[font.font_data]\n  for i in range(font.get_fallback_count()):\n   data.append(font.get_fallback(i))\n  var settings=[]\n  for d in data:\n   settings.append({"path":d.font_path.trim_prefix("res://"),"antialiased":d.antialiased,"hinting":d.hinting})\n  var pairs=[]\n  var widths=[]\n  for text in spec.texts:\n   widths.append(font.get_string_size(text).x)\n   for i in range(text.length()):\n    var cp=text.ord_at(i)\n    var following=text.ord_at(i+1) if i+1<text.length() else 0\n    pairs.append({"codepoint":cp,"next":following,"advance":font.get_char_size(cp,following).x})\n  faces.append({"source":spec.source,"size":font.size,"ascent":font.get_ascent(),"descent":font.get_descent(),"height":font.get_height(),"advances":advances,"pairs":pairs,"texts":spec.texts,"widths":widths,"char_spacing":font.extra_spacing_char,"space_spacing":font.extra_spacing_space,"data_settings":settings})'
-    require(base.count(old)==1,'Native metrics helper changed; review Introduction probe integration')
-    return base.replace(old,new)
-
-
 def check_native_layout(spec,request,metric,glyphs):
     """Every original line and adjacent scalar must fit the bounded renderer."""
     spacing=int(spec['definition']['properties'].get('extra_spacing_char','0'))
@@ -208,7 +202,6 @@ def storage_counter_lines(project,font_source):
     return {pattern % (str(n),str(maximum))for n in range(maximum+1)}
 
 def compile_fonts(recipe,godot,tex3ds,project=ROOT,recipe_path=RECIPE,build=None):
-    from tools.source_fonts import GODOT
     from fontTools import __version__ as fonttools_version
     from fontTools.ttLib import TTFont
     project=Path(project);texts=validate(recipe,project,recipe_path);upstream=project/'upstream/MOTHER-Encore';build=Path(build or project/'build/introduction-fonts');probe=build/'godot-project';(probe/'Fonts').mkdir(parents=True,exist_ok=True)
@@ -220,7 +213,7 @@ def compile_fonts(recipe,godot,tex3ds,project=ROOT,recipe_path=RECIPE,build=None
             path=d['path'];shutil.copyfile(safe(upstream,path),probe/path)
             if path not in cmaps:
                 ft=TTFont(safe(upstream,path));cmaps[path]=ft.getBestCmap();credits[path]={str(i):sorted({n.toUnicode()for n in ft['name'].names if n.nameID==i})for i in (0,8,9,13,14)}
-    write_json(probe/'request.json',requests);(probe/'project.godot').write_text('config_version=4\n',encoding='utf-8');(probe/'metrics.gd').write_text(introduction_metrics_script(GODOT),encoding='utf-8')
+    write_json(probe/'request.json',requests);(probe/'project.godot').write_text('config_version=4\n',encoding='utf-8');(probe/'metrics.gd').write_bytes(METRICS_PROBE.read_bytes())
     run=subprocess.run([str(godot),'--path',str(probe),'-s','metrics.gd'],check=True,capture_output=True,text=True,timeout=90,env=dict(os.environ,XDG_DATA_HOME=str(build/'userdata')));(build/'godot.log').write_text(run.stdout+run.stderr,encoding='utf-8');metrics=read(probe/'metrics.json');require(len(metrics['faces'])==len(requests),'Incomplete native font metrics')
     pages=[];faces=[];glyphs=[];cache={};hinted=FreeTypeMetrics();metrics['freetype_metrics_version']=hinted.version;out=project/'romfs/fonts/introduction';out.mkdir(parents=True,exist_ok=True)
     for index,(spec,request,metric)in enumerate(zip(font_specs(recipe),requests,metrics['faces'])):
@@ -245,7 +238,7 @@ def compile_fonts(recipe,godot,tex3ds,project=ROOT,recipe_path=RECIPE,build=None
             local.append(dict(codepoint=cp,page=first_page+page,u=x,v=y,width=w,height=h,advance=native,offset_x=box[0],offset_y=metric['ascent']+box[1],source_face=data['path']));x+=w+2;rowh=max(rowh,h)
         check_native_layout(spec,request,metric,local);flush();glyphs.extend(local);face=dict(source=spec['source'],legacy_ascii=False,first_glyph=first_glyph,glyph_count=len(local),first_page=first_page,page_count=len(pages)-first_page,ascent=metric['ascent'],descent=metric['descent'],height=metric['height'],definition=spec['definition']);require(face['page_count']*PAGE*PAGE*2<=2*1024*1024,'Font resident budget exceeded');faces.append(face)
     hinted.close();blob=encode_font(faces,pages,glyphs);target=safe(project/'romfs',recipe['font_catalog']);target.write_bytes(blob)
-    receipt=dict(schema=1,kind='encore.introduction-font-receipt',commit=recipe['commit'],recipe_sha256=sha(recipe_path),generator_sha256=sha(__file__),metrics_generator_sha256=sha(ROOT/'tools/source_fonts.py'),godot_sha256=sha(godot),tex3ds_sha256=sha(tex3ds),pillow_version=pillow_version,freetype_version=features.version_module('freetype2'),fonttools_version=fonttools_version,sources=recipe['sources'],metrics=metrics,faces=faces,pages=pages,glyphs=glyphs,font_embedded_notices=credits,binary=dict(path=recipe['font_catalog'],bytes=len(blob),sha256=sha(target)),limits='Original DynamicFont fallback and spacing; every used scalar matched to official Godot 3.6.2 hinted advance/ascent/height; opaque FreeType FT_Get_Advance NORMAL/MONO source settings, spacing and all original text pairs/line widths checked. Pillow/FreeType glyph rasters, no GPU/hardware pixel equivalence claim; original Nintendo-source rights remain unconfirmed. No system or replacement glyphs.')
+    receipt=dict(schema=2,kind='encore.introduction-font-receipt',commit=recipe['commit'],recipe_sha256=sha(recipe_path),generator_sha256=sha(__file__),metrics_probe_sha256=sha(METRICS_PROBE),godot_sha256=sha(godot),tex3ds_sha256=sha(tex3ds),pillow_version=pillow_version,freetype_version=features.version_module('freetype2'),fonttools_version=fonttools_version,sources=recipe['sources'],metrics=metrics,faces=faces,pages=pages,glyphs=glyphs,font_embedded_notices=credits,binary=dict(path=recipe['font_catalog'],bytes=len(blob),sha256=sha(target)),limits='Original DynamicFont fallback and spacing; every used scalar matched to official Godot 3.6.2 hinted advance/ascent/height; opaque FreeType FT_Get_Advance NORMAL/MONO source settings, spacing and all original text pairs/line widths checked. Pillow/FreeType glyph rasters, no GPU/hardware pixel equivalence claim; original Nintendo-source rights remain unconfirmed. No system or replacement glyphs.')
     write_json(project/FONT_RECEIPT,receipt);return receipt
 
 
@@ -281,10 +274,10 @@ def encode_font(faces,pages,glyphs):
 def stage_files(root,project=ROOT,recipe_path=RECIPE):
     root,project=Path(root),Path(project);recipe=read(recipe_path);validate(recipe,project,recipe_path);art=read(project/ART_RECEIPT);font=read(project/FONT_RECEIPT)
     exact(art,('schema','kind','commit','recipe_sha256','generator_sha256','tex3ds_sha256','sources','resources','font_catalog'),'art receipt')
-    exact(font,('schema','kind','commit','recipe_sha256','generator_sha256','metrics_generator_sha256','godot_sha256','tex3ds_sha256','pillow_version','freetype_version','fonttools_version','sources','metrics','faces','pages','glyphs','font_embedded_notices','binary','limits'),'font receipt')
-    for receipt,kind in ((art,'encore.introduction-asset-receipt'),(font,'encore.introduction-font-receipt')):
-        require(type(receipt['schema'])is int and receipt['schema']==1 and receipt['kind']==kind and receipt['commit']==recipe['commit']and receipt['recipe_sha256']==sha(recipe_path)and receipt['generator_sha256']==sha(__file__)and receipt['sources']==recipe['sources'],'Stale/unknown introduction receipt')
-    require(font['metrics_generator_sha256']==sha(ROOT/'tools/source_fonts.py'),'Font metrics generator changed');require(art['font_catalog']==recipe['font_catalog'],'Font catalog binding changed');files={}
+    exact(font,('schema','kind','commit','recipe_sha256','generator_sha256','metrics_probe_sha256','godot_sha256','tex3ds_sha256','pillow_version','freetype_version','fonttools_version','sources','metrics','faces','pages','glyphs','font_embedded_notices','binary','limits'),'font receipt')
+    for receipt,kind,version in ((art,'encore.introduction-asset-receipt',1),(font,'encore.introduction-font-receipt',2)):
+        require(type(receipt['schema'])is int and receipt['schema']==version and receipt['kind']==kind and receipt['commit']==recipe['commit']and receipt['recipe_sha256']==sha(recipe_path)and receipt['generator_sha256']==sha(__file__)and receipt['sources']==recipe['sources'],'Stale/unknown introduction receipt')
+    require(font['metrics_probe_sha256']==sha(METRICS_PROBE),'Font metrics generator changed');require(art['font_catalog']==recipe['font_catalog'],'Font catalog binding changed');files={}
     def checked(path,size,pin,crc=None):
         require(type(size)is int and size>0 and type(pin)is str and re.fullmatch('[0-9a-f]{64}',pin),'Malformed output fingerprint');p=safe(root,path);require(Path(path)not in files,'Duplicate staged output');raw=p.read_bytes();require(len(raw)==size and hashlib.sha256(raw).hexdigest()==pin,'Output size/hash mismatch '+path);require(crc is None or type(crc)is int and zlib.crc32(raw)==crc,'Output CRC mismatch '+path);files[Path(path)]=raw;return raw
     require(type(art['resources'])is list and len(art['resources'])==len(recipe['resources']),'Image receipt coverage mismatch')

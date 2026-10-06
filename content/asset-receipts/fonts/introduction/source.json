@@ -299,7 +299,7 @@
   },
   "fonttools_version": "4.61.1",
   "freetype_version": "2.14.3",
-  "generator_sha256": "29fb0e192be635d2beba9720f7fe3132214ce9e1fd47fb8fd511626dda660766",
+  "generator_sha256": "fd01c56bfc241bbc5008a36ed28f8548424e89372836b0a86c73b95035d0cefd",
   "glyphs": [
     {
       "advance": 8,
@@ -10639,7 +10639,7 @@
       "year": 2025
     }
   },
-  "metrics_generator_sha256": "426c39e93bbcee2f3393ee36072584beea2137b0819411bc05034e4c505a92f8",
+  "metrics_probe_sha256": "3a56db8b4e3e654b9208816643cdcca52371e6a9dfc8a71b1f87692d5af8d42f",
   "pages": [
     {
       "crc32": 3041185932,
@@ -10689,7 +10689,7 @@
   ],
   "pillow_version": "12.3.0",
   "recipe_sha256": "71f47ace5683e1e2981d51c33708db3b4f9a6515037d6b886275a28e0c948be9",
-  "schema": 1,
+  "schema": 2,
   "sources": {
     "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
     "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",

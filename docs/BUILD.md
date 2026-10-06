@@ -26,7 +26,27 @@ python3 tools/ci_bootstrap.py --verify-only
 make native-content
 ```
 
-该目标编译受检的外部游戏内容，不编译 C++。普通构建会验证资源引用与来源，缺失或改变时停止。不要手改 pack、manifest，或以 `extract_native_content.py` 覆盖未经重新审查的 IR。
+该目标在隔离目录中编译受检的外部游戏内容，以至少四个进程执行依赖图，不编译 C++，也不启动测试。它比较已登记的 IR、二进制和来源记录；过期或缺失的受检输入会明确阻断，不会修改 Git 中的文件。缺失的非 Git PCM 仍通过固定来源和转换指纹恢复。本地与 Actions 都使用这个入口。
+
+已审查的输入或转换器修改后，统一更新完整依赖链：
+
+```sh
+make regenerate-content GODOT3=/path/to/Godot-3.6.2 TEX3DS=/path/to/tex3ds PICASSO=/path/to/picasso CONTENT_JOBS=4
+```
+
+显式更新先验证固定上游的全部字节，在独立本地 checkout 中提取已支持的来源、生成 IR、运行真实贴图 / 字体转换器、编译资源，最后生成目录和遭遇指纹。已登记的来源派生和贴图任务与普通编译共享 `make/native-content.mk` / `make/refresh-content.mk` 的依赖顺序；新增生产器必须登记其输入、来源派生或贴图任务及消费者边。来源提取不能批准新上游、未知语义或未支持能力，原有校验继续拒绝这些变化。记录过期不能靠手改 SHA、pack 或 manifest 消除。
+
+入口资源只记录实际引用的三条战斗目录绑定；新增不相关目录条目不再改变入口来源身份。目录仍独立校验全部类型、引用和固定来源，完整目录资源在所有消费者生成完毕后更新。
+
+开场字体直接使用独立的 `tools/godot_exporter/introduction_font_metrics.gd`，来源记录绑定该探针，不再绑定库存等玩法文字生成器，也不再通过替换另一套探针的字符串生成脚本。真实 Godot 字符间距、逐行宽度、字体回退、原始字体属性和固定引擎版本仍须全部核对；旧字体记录版本明确拒绝，必须通过真实转换器重新生成。
+
+任何生产器失败，隔离生成均不发布文件。完整候选通过后，发布前再次核对工作目录输入，更新产物与来源记录并保存恢复日志；发布中断或失败会回滚，尚未恢复的中断会阻断后续生成和 RomFS 暂存。全部原始日志和产物清单位于 `build/content-generation/<run>/`，其中 `result.json` 列出本次发布文件；将完整 IR、受检来源记录、二进制与素材一起审查和提交。转换器源码必须保持最终字节，再生成其来源记录。
+
+强制退出导致未完成的发布时，使用该次实际日志恢复；并发编辑冲突会明确阻断，不能覆盖其他人的修改：
+
+```sh
+python3 tools/content_pipeline.py recover --journal build/content-generation/<run>/publication.json
+```
 
 ## 主机检查
 

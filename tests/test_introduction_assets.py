@@ -88,7 +88,8 @@ class IntroductionAssets(unittest.TestCase):
         binary=A.encode_font(faces,pages,glyphs);p=A.safe(root,self.recipe['font_catalog']);p.write_bytes(binary)
         common=dict(schema=1,commit=self.recipe['commit'],recipe_sha256=A.sha(recipe_path),generator_sha256=A.sha(A.__file__),tex3ds_sha256='0'*64,sources=self.recipe['sources'])
         art=dict(common,kind='encore.introduction-asset-receipt',resources=resources,font_catalog=self.recipe['font_catalog'])
-        font=dict(common,kind='encore.introduction-font-receipt',metrics_generator_sha256=A.sha(ROOT/'tools/source_fonts.py'),godot_sha256='0'*64,pillow_version='test',freetype_version='test',fonttools_version='test',metrics=dict(freetype_metrics_version='2.12.1',version=dict(major=3,minor=6,patch=2,hash='3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8'),faces=native),faces=faces,pages=pages,glyphs=glyphs,font_embedded_notices={},binary=dict(path=self.recipe['font_catalog'],bytes=len(binary),sha256=hashlib.sha256(binary).hexdigest()),limits='stage fixture only')
+        font=dict(common,kind='encore.introduction-font-receipt',metrics_probe_sha256=A.sha(A.METRICS_PROBE),godot_sha256='0'*64,pillow_version='test',freetype_version='test',fonttools_version='test',metrics=dict(freetype_metrics_version='2.12.1',version=dict(major=3,minor=6,patch=2,hash='3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8'),faces=native),faces=faces,pages=pages,glyphs=glyphs,font_embedded_notices={},binary=dict(path=self.recipe['font_catalog'],bytes=len(binary),sha256=hashlib.sha256(binary).hexdigest()),limits='stage fixture only')
+        font['schema']=2
         A.write_json(project/A.ART_RECEIPT,art);A.write_json(project/A.FONT_RECEIPT,font)
         return root,recipe_path,art,font
 
@@ -110,10 +111,13 @@ class IntroductionAssets(unittest.TestCase):
                 with patch.object(A,'validate',return_value=self.texts),patch.object(A,'translations',return_value=self.texts),self.assertRaises((ValueError,OSError)):A.stage_files(root,Path(d),recipe)
 
     def test_stage_receipt_unknown_geometry_and_stale_pin(self):
-        for damage in ('version','unknown','geometry','pin','glyph','pairs','width','probe_version'):
+        for damage in ('version','font_version','probe_hash','legacy_probe','unknown','geometry','pin','glyph','pairs','width','probe_version'):
             with self.subTest(damage=damage),tempfile.TemporaryDirectory(dir=ROOT/'build',prefix='intro-assets-test-')as d:
                 root,recipe,art,font=self.fixture(d)
                 if damage=='version':art['schema']=2
+                elif damage=='font_version':font['schema']=1
+                elif damage=='probe_hash':font['metrics_probe_sha256']='0'*64
+                elif damage=='legacy_probe':font['metrics_generator_sha256']=font.pop('metrics_probe_sha256')
                 elif damage=='unknown':art['extra']=1
                 elif damage=='geometry':art['resources'][-1]['frame_count']=32
                 elif damage=='pin':font['recipe_sha256']='0'*64

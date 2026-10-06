@@ -33,6 +33,7 @@ def append_room(ex,clip_names,add_clip):
  from tools.native_content import OPCODES
  from tools.doll_dialogue import decode
  binding=pillow_bindings(ex.root);a=binding['append'];s=ex.sections;require(len(s['ActorInstance'])==a['prefix_actors'] and len(s['Battle'])==a['prefix_battles'],'Pillow append-only prefix')
+ ex.catalog_bindings('content/native-resource-catalog.json',[a['catalog_id']])
  docs=load_documents(ex);text_rows,translations=texts(ex,docs);ids={t['identity']:t['id']for t in text_rows}
  world=ex.document(a['world_manifest'])
  for path,digest in world['sources'].items():ex.source(path,digest)

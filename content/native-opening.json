@@ -22762,7 +22762,7 @@
       "content/asset-receipts/graphics/ui/house/source.json": "53f5c978d4b7d728dda1bd24303653caeab4b2640aa5e1534ac1941b39ee928f",
       "reports/doll-sequence/native-parser-animation.json": "64dac6443afbd67490d3fbb8616427f310ac34369dad4fa804a04777195a2eef",
       "reports/doll-postwin/native-parser-animation.json": "a27f1abd99a61811fbc6d15a9708c39d1a21815c654aeacc40f23f269e5be2de",
-      "content/native-resource-catalog.json": "28b5434dce47df9b567e108c516f6e1edcff702c4c779f441779fad540595a36",
+      "tools/catalog_projection.py": "116a292c982c60f58869ef05c1ede3b2aa8f32f690ae20225b3cb8e11bf37131",
       "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
       "content/doll-entry.json": "c8fbae78356ac1e49121e7facbebe839aed2a8282f1aa93a40afcec7b0fe88fd",
       "content/native-world-effect.json": "3c768a5a89d51886180f80c7898472d1d0c56175b5798e3ef4ae979cf30bb4cd",
@@ -22951,7 +22951,7 @@
       "romfs/graphics/battle/pillow/pillow-world.t3x": "faf7872097617c11b47b78d9943357d86578dae5a716076f7424412123cbba80",
       "romfs/data/pillow-entry.encbattle": "d496e994932ee8d519fffa002994a896cf5f5e504bbc62523e0cbd32049c30ea",
       "tools/pillow_dialogue.py": "9e33d891c0367b2a77a1966a909228d46618e948ac1d47162dcd3f5846624eee",
-      "tools/link_pillow_content.py": "1cd363ab8081f9869ef8c3dad70d8aafa8cbedba9da96bf8d5841b03eae8e0c0",
+      "tools/link_pillow_content.py": "8e8160f221aaf666838c33df3c3d21f1d4e2f6c80f685dfef28a37c3eb7cbac8",
       "tools/pillow_source_bindings.py": "889a83a7f4f562830921de4a730b58083090a79a5b7d426f30b90ba367df4e55",
       "content/pillow-source-bindings.json": "33abfb42daa248c6d2eee8ba026ffb7930b3a4055e28dd89250bb24b87ae5269",
       "upstream/MOTHER-Encore/Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
@@ -22979,11 +22979,23 @@
       "tools/reference_progression.py": "ffc25fe553691b0c7fa4439529e66cde5216499098417a2dd069a2ce0355f909",
       "tools/upstream.py": "de58abb2f289d282de4c6d5883b2399fb32d59537ee3219acd73fb3ceed86dfe",
       "tools/map_asset.py": "f42c06b290d01258e572038a4d1cd98f3cbe543d777c7c9cec7ed70e7fc7db42",
-      "tools/world_program_bindings.py": "60a97e530218ed92370076b5e11e47115e3497d3a5edea7ce3fee904568148da",
-      "tools/extract_native_content.py": "c2fd456c3a25b0fc42b1e5b76350cf5fdd73034525a6c5228d3f38e25853ed73",
+      "tools/world_program_bindings.py": "017336b34b35cd7c4e0f8f31dee047003020440d49e54804843b72245c3ca072",
+      "tools/extract_native_content.py": "b4486aede8272309c673e881a80b6ddd1dc33eaf4dfd8d779cf834e5d3533bd3",
       "tools/programme_lowering_recipe.py": "98abfe4d45e9bb2f4032fe7646b396b39d1c81bb555d05f938de9ea4c33fefa3",
       "content/programme-lowering-recipe.json": "f4f065067e5c13d0fe77547f8c88f5b3630fbe9794fb822ed66115f4f57e81b0"
     },
+    "projections": [
+      {
+        "kind": "catalog-bindings-v1",
+        "path": "content/native-resource-catalog.json",
+        "identities": [
+          3,
+          256,
+          258
+        ],
+        "sha256": "7728da5419271d5f038208616e85bfb27b8b12cc98ec58b480120edc35d78454"
+      }
+    ],
     "notes": [
       "Baseline extraction from original source and existing scoped native exports/reviews; no new broad source approval.",
       "C++ sources and generated headers are never extraction dependencies.",

@@ -2,6 +2,7 @@
 # Normal compile/verify commands only: texture extraction is an explicit task.
 .DEFAULT_GOAL := native-content
 PYTHON ?= python3
+REFRESH_SOURCES ?= 0
 # Per-invocation identity distinguishes blocked tasks' older diagnostic receipts.
 export ENCORE_CONTENT_RUN_ID := $(shell "$(PYTHON)" -c "import uuid; print(uuid.uuid4().hex)")
 $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
@@ -22,6 +23,7 @@ battle: room
 restore: room house
 items: items-check
 # Localization writes its legacy-lane IR; finish frozen migration admission first.
+migration: session
 locale: migration
 # Intro admission reads its audio bank and immutable scene/font inputs.
 introduction: audio
@@ -210,3 +212,5 @@ field-dialogue-ui: field-node-recipe house
 
 field-inventory: field-item-definitions field-item-details field-payphone field-shop
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_inventory.py compile
+
+include make/refresh-content.mk

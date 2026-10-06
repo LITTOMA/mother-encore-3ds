@@ -271,7 +271,7 @@ def validate(ir,ex):
         require(type(row['execution_kind'])is int and row['execution_kind']==kind and row['phase']==ir['programs'][actor['program_id']-1]['stage'],'Unsupported NPC execution profile/phase')
     require([row['actor_id']for row in ir['npc_profiles']]==sorted(profile_ids),'NPC stable profile order mismatch')
     require(safe(ir['resource_catalog'])and type(ir['encounters'])is list and len(ir['encounters'])==2,'Missing/invalid opening encounter bindings')
-    catalog=ex.document(ir['resource_catalog']);require(catalog['commit']==ir['commit']and catalog['kind']=='encore.native-resource-catalog.source-ir','Unreviewed encounter catalog')
+    catalog=ex.catalog_bindings(ir['resource_catalog'],sorted(row['catalog_id'] for row in ir['encounters']));require(catalog['commit']==ir['commit']and catalog['kind']=='encore.native-resource-catalog.source-ir','Unreviewed encounter catalog')
     for index,row in enumerate(ir['encounters']):
         fields(row,('id','phase','actor_id','program_id','phrase','source_ir','catalog_id','resource_path'))
         require(type(row['id'])is int and row['id']==index+1 and row['phase']==STAGES[index]and row['program_id']==program(ir,row['phase'])['id'],'Unsupported encounter identity/phase/program')

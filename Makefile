@@ -6,6 +6,7 @@ CMAKE_ARGS ?=
 BUILD_JOBS ?= 4
 CONTENT_JOBS ?= $(BUILD_JOBS)
 TEX3DS ?= $(DEVKITPRO)/tools/bin/tex3ds
+PICASSO ?= $(DEVKITPRO)/tools/bin/picasso
 .PHONY: help content native-content items-assets item-details-assets field-equipment-assets audio-assets battle-assets round-assets house-assets assets map-assets actor-assets house-layers new-game-assets host test sanitize 3dsx cia cxi 3ds release doctor clean
 help:
 	@echo "make host/test/sanitize | make 3dsx/cia/cxi/3ds/release"
@@ -13,7 +14,10 @@ help:
 content: native-content
 	$(PYTHON) tools/content_compiler.py
 native-content:
-	+$(MAKE) --no-print-directory -f make/native-content.mk -j$(CONTENT_JOBS) PYTHON="$(PYTHON)" native-content
+	+$(PYTHON) tools/content_pipeline.py check --make "$(MAKE)" --jobs $(CONTENT_JOBS)
+regenerate-content:
+	+$(PYTHON) tools/content_pipeline.py refresh --make "$(MAKE)" --jobs $(CONTENT_JOBS) --godot "$(GODOT3)" --tex3ds "$(TEX3DS)" --picasso "$(PICASSO)"
+.PHONY: regenerate-content
 assets:
 	$(PYTHON) tools/generate_branding.py
 audio-assets:

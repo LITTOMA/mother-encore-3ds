@@ -766,7 +766,7 @@ if(BUILD_TESTING)
 endif()
 
 if(BUILD_TESTING)
- add_test(NAME world_program_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_world_program_bindings)
+ add_test(NAME world_program_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_world_program_bindings tests.test_content_pipeline)
  set_tests_properties(world_program_bindings PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
 

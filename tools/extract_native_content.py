@@ -90,6 +90,7 @@ class Extractor:
         self.root = Path(root)
         self.upstream = self.root / 'upstream/MOTHER-Encore'
         self.sources = {}
+        self.projections = []
         self.mapping = {}
         self.strings = ['']
         self.sections = {name: [] for name in SECTIONS}
@@ -120,6 +121,21 @@ class Extractor:
 
     def document(self, relative, expected=None):
         return json.loads(self.file(relative, expected).read_text(encoding='utf-8'))
+
+    def catalog_bindings(self, relative, identities):
+        from tools.catalog_projection import binding_projection, verify_projection
+        previous = [r for r in self.projections if r['path'] == relative]
+        require(len(previous) <= 1, 'Duplicate catalog projection')
+        if previous:
+            verify_projection(self.root, previous[0])
+            identities = sorted(set(identities) | set(previous[0]['identities']))
+        catalog, record = binding_projection(self.root, relative, identities)
+        self.file('tools/catalog_projection.py')
+        if previous:
+            self.projections[self.projections.index(previous[0])] = record
+        else:
+            self.projections.append(record)
+        return catalog
 
     def source(self, relative, expected=None):
         require(relative in self.inventory['files'], 'Source missing from pinned inventory: ' + relative)
@@ -574,7 +590,7 @@ class Extractor:
                               clips={name: index + 1 for name, index in clip_names.items()}))
         ir = dict(schema=1, family=0x454e0002, rules=8, capabilities=9, scene_id=1,
                   upstream_commit=self.lock['commit'], exporter_version=1, adapter_revision=9,
-                  strings=self.strings, sections=s, provenance=dict(sources=self.sources,
+                  strings=self.strings, sections=s, provenance=dict(sources=self.sources, projections=self.projections,
                       notes=['Baseline extraction from original source and existing scoped native exports/reviews; no new broad source approval.',
                              'C++ sources and generated headers are never extraction dependencies.',
                              'Audio entries are request-only upstream URIs; no audio backend or battle implementation claimed.',

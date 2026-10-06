@@ -65,6 +65,7 @@ SOURCES = (
     'runtime/global_load_data.cpp',
     'runtime/field_global_constructor_data.cpp',
     'runtime/player_initialization_data.cpp',
+    'runtime/player_visual_scripts_data.cpp',
     'runtime/global_child_ready_data.cpp',
     'runtime/field_native_timer_data.cpp',
     'runtime/field_global_flags_data.cpp',
@@ -148,6 +149,7 @@ def admit(resources, *, global_items=True):
                     str(node_constructor['scene_id']), node_constructor['source_sha256']]
         command += ['--player-initialization', str(ROOT / 'romfs/data/player.encinitialization'),
                     '--global-child-ready', str(ROOT / 'romfs/data/global.encchildready')]
+        command += ['--player-visual-scripts', str(ROOT / 'romfs/data/player.encvisualscripts')]
     subprocess.run(command, check=True)
 
 

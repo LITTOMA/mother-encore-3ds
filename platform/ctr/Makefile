@@ -49,6 +49,7 @@ SOURCES += runtime/global_load_runtime.cpp runtime/global_load_data.cpp
 SOURCES += runtime/field_global_constructor.cpp runtime/field_global_constructor_data.cpp platform/ctr/podunk_global_host.cpp
 SOURCES += runtime/player_initialization.cpp runtime/player_initialization_data.cpp
 SOURCES += runtime/global_child_ready.cpp runtime/global_child_ready_data.cpp platform/ctr/podunk_global_children.cpp
+SOURCES += runtime/player_visual_scripts.cpp runtime/player_visual_scripts_data.cpp platform/ctr/podunk_player_visual_scripts.cpp platform/ctr/podunk_player_visual_native.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

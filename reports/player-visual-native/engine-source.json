@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "source": "scene/2d/animated_sprite.cpp",
+      "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "sha256": "8dc64e924ca6f560f0acaffd43cb86e47a500c8586a03205f026a4445fff0c2e",
+      "bytes": 22995,
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/animated_sprite.cpp"
+    },
+    {
+      "source": "scene/2d/sprite.cpp",
+      "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "sha256": "ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd",
+      "bytes": 14056,
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/sprite.cpp"
+    },
+    {
+      "source": "scene/2d/canvas_item.cpp",
+      "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "sha256": "513b9efe70b2003b1ff3e451ac1b07527c3054b1eb81a0faab2ffe3eec0b6286",
+      "bytes": 52006,
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/canvas_item.cpp"
+    },
+    {
+      "source": "scene/2d/node_2d.cpp",
+      "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "sha256": "b23b4474baa0f015e560ce072df745861e6dc9bb7dd388cbe974deb02cc8fd45",
+      "bytes": 14892,
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/2d/node_2d.cpp"
+    },
+    {
+      "source": "core/object.cpp",
+      "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+      "sha256": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+      "bytes": 57985,
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/core/object.cpp"
+    }
+  ],
+  "scope": [
+    "Sprite and AnimatedSprite constructor state from checked Player snapshot",
+    "AnimatedSprite original f32 remaining/timeout loop and frame/animation signal order",
+    "Actual ObjectDB node and Canvas flags for visibility and behind-parent",
+    "Source frame atlas GPU draws; unsupported material/normal/skew rejects"
+  ],
+  "remaining": [
+    "Normal game entry and complete 56-node Player Ready",
+    "Actual source GPU texture owner and scene compositor must supply real loaded resources"
+  ],
+  "tests_executed": false
+}

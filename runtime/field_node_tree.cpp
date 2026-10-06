@@ -207,11 +207,13 @@ namespace encore::upstream {
     if(r.native_generated||!host_.construct_source(id,r,identity,e)){poisoned_=true;return false;}
     auto*actual=live(id);
     if(!actual||actual->parent||actual->inside||actual->ready_notified){poisoned_=true;return fail(e,"NodeTree source constructor changed instance lifecycle");}
-    actual->name=r.name;actual->groups=r.groups;
+    actual->name=r.name;
     if(r.id!=first){actual->parent=created.at(r.parent);nodes_.at(actual->parent).children.push_back(id);}
     if(created.count(r.owner))actual->owner=created.at(r.owner);
     if(created.count(r.canvas_parent))actual->canvas_parent=created.at(r.canvas_parent);
-    for(const auto&g:actual->groups)group_index_[g].push_back(id);
+    // PackedScene adds source groups after native/script construction.
+    // Preserve native internal-process groups already registered by setters.
+    for(const auto&g:r.groups)if(!add_group(id,g,e)){poisoned_=true;return false;}
    }
   }
   ++order_version_;
@@ -731,6 +733,14 @@ namespace encore::upstream {
   n->flags=value?n->flags|2:n->flags&~2u;
   if(!n->inside||(n->canvas_parent&&!visible_in_tree(n->canvas_parent)))return true;
   return visibility_changed(id,value,e);
+ }
+ bool FieldNodeTreeRuntime::set_behind_parent(FieldObjectId id,bool value,std::string&e){
+  auto*n=live(id);
+  if(!n||!(n->flags&1))return fail(e,"NodeTree Canvas draw-behind owner rejected");
+  if(bool(n->flags&8)==value){e.clear();return true;}
+  n->flags=value?n->flags|8:n->flags&~8u;
+  ++order_version_;
+  e.clear();return true;
  }
  bool FieldNodeTreeRuntime::effective_color(FieldObjectId id,FieldColor&out,std::string&e)const{
   auto*n=state(id);

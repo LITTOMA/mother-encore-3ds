@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "format": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739800,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Reusables/Player.tscn",
+  "scene_id": 3168673487,
+  "source_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+  "player_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+  "root": {
+    "id": 3168673487,
+    "script": "Scripts/Main/party/Player.gd",
+    "sha": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b"
+  },
+  "shadow": {
+    "id": 1662475227,
+    "script": "Scripts/Main/Shadow.gd",
+    "sha": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+    "start_member": "start_anim",
+    "start_default": "",
+    "setter": "set_anim",
+    "front_member": "in_front_anims",
+    "front": [
+      "ripple"
+    ],
+    "start": "shadow",
+    "frames_id": 23,
+    "clips": [
+      {
+        "name": "magic",
+        "speed": 8.0,
+        "loop": true,
+        "frames": [
+          {
+            "resource_id": 24,
+            "texture_id": 3698611273,
+            "source": "Graphics/Character Sprites/Magic_Ripple.png",
+            "source_sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+            "rect": [
+              0.0,
+              0.0,
+              17.0,
+              7.0
+            ]
+          },
+          {
+            "resource_id": 25,
+            "texture_id": 3698611273,
+            "source": "Graphics/Character Sprites/Magic_Ripple.png",
+            "source_sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+            "rect": [
+              17.0,
+              0.0,
+              17.0,
+              7.0
+            ]
+          },
+          {
+            "resource_id": 26,
+            "texture_id": 3698611273,
+            "source": "Graphics/Character Sprites/Magic_Ripple.png",
+            "source_sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+            "rect": [
+              34.0,
+              0.0,
+              17.0,
+              7.0
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ripple",
+        "speed": 5.0,
+        "loop": true,
+        "frames": [
+          {
+            "resource_id": 27,
+            "texture_id": 1081723181,
+            "source": "Graphics/Character Sprites/Water_Ripple.png",
+            "source_sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+            "rect": [
+              0.0,
+              0.0,
+              15.0,
+              5.0
+            ]
+          },
+          {
+            "resource_id": 28,
+            "texture_id": 1081723181,
+            "source": "Graphics/Character Sprites/Water_Ripple.png",
+            "source_sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+            "rect": [
+              30.0,
+              0.0,
+              15.0,
+              5.0
+            ]
+          },
+          {
+            "resource_id": 29,
+            "texture_id": 1081723181,
+            "source": "Graphics/Character Sprites/Water_Ripple.png",
+            "source_sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+            "rect": [
+              15.0,
+              0.0,
+              15.0,
+              5.0
+            ]
+          }
+        ]
+      },
+      {
+        "name": "shadow",
+        "speed": 5.0,
+        "loop": true,
+        "frames": [
+          {
+            "resource_id": 30,
+            "texture_id": 1458644887,
+            "source": "Graphics/Character Sprites/Shadow.png",
+            "source_sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+            "rect": [
+              0.0,
+              0.0,
+              15.0,
+              5.0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "bat": {
+    "id": 788955626,
+    "script": "Scripts/misc/NintenBatSwing.gd",
+    "sha": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "special_member": "special",
+    "special_path": "../../SpriteDataFetcher2",
+    "action_getter": "get_current_skill_action",
+    "action_member": "_current_skill_action",
+    "visible_action": "swing",
+    "fetcher_getter": "get_frames",
+    "frame_member": "frame",
+    "fetcher_id": 1822576409,
+    "fetcher_script": "Scripts/Main/SpriteDataFetcher.gd",
+    "fetcher_sha": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "fetcher_path": "../SpecialAnimations",
+    "target_id": 2593045029,
+    "columns": 10,
+    "rows": 10,
+    "initial_frame": 32,
+    "texture_id": 45,
+    "texture": "Graphics/Character Sprites/Ninten/bat_swing.png",
+    "texture_sha256": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898"
+  },
+  "sources": {
+    "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
+    "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+    "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+    "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+    "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+    "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Graphics/Character Sprites/Ninten/bat_swing.png.import": "f7ebfe66ffd174125b8f676fef7136032c143399a762b46dd7568519a9fe9dbf",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2"
+  },
+  "ready_admitted": false
+}

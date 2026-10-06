@@ -99,6 +99,7 @@ public:
   bool directory_open() const { return open_; }
   uint32_t next_role() const { return cursor_; }
   FieldObjectId owner() const { return owner_; }
+  const FieldGlobalRegistry *registry() const { return registry_; }
   const std::vector<std::string> &insertion_order(uint32_t role) const;
   bool poisoned() const { return poisoned_; }
 

@@ -1,4 +1,5 @@
 #include "encore/global_yaml_file.hpp"
+#include "encore/global_load.hpp"
 #include <algorithm>
 namespace encore::upstream {
 namespace {
@@ -56,10 +57,24 @@ GlobalYamlFileReference::~GlobalYamlFileReference() {
     registry_->retire_object(binding_.object, error);
   }
 }
+const GlobalYamlFileRecord *GlobalYamlFileReference::admitted_record(
+    std::string_view path) const {
+  if (!documents_)
+    return data_ ? data_->record(path) : nullptr;
+  if (!documents_->valid() || documents_->ir_sha256() != documents_ir_ ||
+      documents_->file_ir_sha256() != admitted_ir_ || !document_)
+    return nullptr;
+  for (const auto &d : documents_->documents())
+    if (&d.file == document_ && (d.kind == 0 || d.kind == 2) &&
+        path == "res://" + d.file.source)
+      return document_;
+  return nullptr;
+}
 bool GlobalYamlFileReference::available(std::string &e) const {
   if (!data_ || !data_->valid() || data_->ir_sha256() != admitted_ir_ ||
       !registry_ || registry_->poisoned() ||
-      registry_->native_reference(binding_.object).get() != this)
+      registry_->native_reference(binding_.object).get() != this ||
+      (documents_ && (!document_ || !admitted_record("res://" + document_->source))))
     return fail(e, "Actual File Reference owner unavailable");
   return true;
 }
@@ -67,9 +82,9 @@ bool GlobalYamlFileReference::file_exists(std::string_view path, bool &out,
                                           std::string &e) const {
   if (!available(e) || path.substr(0, 6) != "res://")
     return fail(e, "File requires checked source res path");
-  if (!data_->record(path))
+  if (!admitted_record(path))
     return fail(e,
-                "File existence outside complete cache source scope rejected");
+                "File existence outside admitted source scope rejected");
   out = true;
   e.clear();
   return true;
@@ -78,7 +93,7 @@ bool GlobalYamlFileReference::open(std::string_view path, uint32_t mode,
                                    std::string &e) {
   if (!available(e) || mode != 1 || path.substr(0, 6) != "res://")
     return fail(e, "File source READ mode/path rejected");
-  auto *r = data_->record(path);
+  auto *r = admitted_record(path);
   if (!r)
     return fail(e, "File open unknown source rejected before mutation");
   opened_ = nullptr;
@@ -248,7 +263,7 @@ bool GlobalYamlFileHost::initialize(const GlobalYamlFileData &d,
                                     GlobalYamlCachesRuntime &actual,
                                     FieldGlobalRegistry &g, std::string &e) {
   if (data_ || !d.valid() || !c.valid() || g.poisoned() || !actual.owner() ||
-      !g.object_exists(actual.owner()) || actual.poisoned() ||
+      !g.object_exists(actual.owner()) || actual.registry() != &g || actual.poisoned() ||
       d.identity().upstream_commit != c.identity().upstream_commit ||
       d.cache_ir_sha256() != c.ir_sha256())
     return fail(e, "YAML File actual cache/registry prerequisites rejected");
@@ -265,6 +280,11 @@ bool GlobalYamlFileHost::initialize(const GlobalYamlFileData &d,
 bool GlobalYamlFileHost::make_file(
     uint32_t index, std::shared_ptr<GlobalYamlFileReference> &out,
     std::string &e) {
+  return make_document_file(index, nullptr, 0, out, e);
+}
+bool GlobalYamlFileHost::make_document_file(
+    uint32_t index, const GlobalLoadData *documents, uint32_t kind,
+    std::shared_ptr<GlobalYamlFileReference> &out, std::string &e) {
   if (!available(e) || (index != 0 && index != 2) ||
       index >= data_->bindings().size())
     return fail(e, "YAML File constructor source point rejected");
@@ -276,12 +296,25 @@ bool GlobalYamlFileHost::make_file(
   file->registry_ = registry_;
   file->binding_ = {id, data_->bindings()[index], 0x454e0052, 1};
   file->admitted_ir_ = admitted_ir_;
+  if (documents) {
+    file->documents_ = documents;
+    file->documents_ir_ = documents->ir_sha256();
+    for (const auto &d : documents->documents())
+      if (d.kind == kind) file->document_ = &d.file;
+    if (!file->document_ || !file->admitted_record("res://" + file->document_->source))
+      return fail(e, "File typed save document owner rejected");
+  }
   if (!registry_->publish_native_reference(file->binding_.source, id, file, e))
     return false;
   out = std::move(file);
   return true;
 }
 bool GlobalYamlFileHost::make_reader(
+    std::shared_ptr<GlobalYamlSmartReader> &out, std::string &e) {
+  return make_document_reader(nullptr, 0, out, e);
+}
+bool GlobalYamlFileHost::make_document_reader(
+    const GlobalLoadData *documents, uint32_t kind,
     std::shared_ptr<GlobalYamlSmartReader> &out, std::string &e) {
   if (!available(e) || data_->bindings().size() != 3)
     return false;
@@ -298,7 +331,7 @@ bool GlobalYamlFileHost::make_reader(
     return false;
   // GDScript::_new creates its implicit Reference owner BEFORE initializer's
   // _file := File.new(). Neither instance is a Node nor gets a Ready callback.
-  if (!make_file(2, reader->file_, e))
+  if (!make_document_file(2, documents, kind, reader->file_, e))
     return false;
   out = std::move(reader);
   return true;
@@ -306,10 +339,17 @@ bool GlobalYamlFileHost::make_reader(
 bool GlobalYamlFileHost::get_json_data(std::string_view path,
                                        const std::array<uint8_t, 32> &sha,
                                        std::shared_ptr<GlobalYamlValue> &out,
-                                       std::string &e) {
+                                       std::string &e,
+                                       const GlobalLoadData *documents, uint32_t kind) {
   if (!available(e) || busy_ || path.substr(0, 6) != "res://")
     return fail(e, "YAML source load path/reentrancy rejected");
-  auto *record = data_->record(path);
+  const GlobalYamlFileRecord *record = nullptr;
+  if (documents) {
+    for (const auto &d : documents->documents())
+      if (d.kind == kind && path == "res://" + d.file.source) record = &d.file;
+  } else {
+    record = data_->record(path);
+  }
   if (!record || record->sha != sha)
     return fail(e, "YAML source path/SHA not admitted before construction");
   busy_ = true;
@@ -318,7 +358,7 @@ bool GlobalYamlFileHost::get_json_data(std::string_view path,
     ~Guard() { busy = false; }
   } guard{busy_};
   std::shared_ptr<GlobalYamlFileReference> outer;
-  if (!make_file(0, outer, e)) {
+  if (!make_document_file(0, documents, kind, outer, e)) {
     poisoned_ = true;
     return false;
   }
@@ -336,7 +376,7 @@ bool GlobalYamlFileHost::get_json_data(std::string_view path,
   std::shared_ptr<GlobalYamlValue> result;
   {
     std::shared_ptr<GlobalYamlSmartReader> reader;
-    if (!make_reader(reader, e) || !reader->open(path, e)) {
+    if (!make_document_reader(documents, kind, reader, e) || !reader->open(path, e)) {
       poisoned_ = true;
       return false;
     }
@@ -367,6 +407,32 @@ bool GlobalYamlFileHost::get_json_data(std::string_view path,
   // destructor.
   out = std::move(result);
   return true;
+}
+bool GlobalYamlFileHost::actual_global_load(
+    const GlobalLoadData &documents, uint32_t kind,
+    std::shared_ptr<GlobalYamlValue> &out, std::string &e) {
+  if (!available(e) || !documents.valid() || busy_ ||
+      (kind != 0 && kind != 2) ||
+      documents.identity().upstream_commit != data_->identity().upstream_commit ||
+      documents.file_ir_sha256() != admitted_ir_)
+    return fail(e, "Global LOAD typed File scope/pin rejected");
+  for (const auto &path : {data_->owner_source(), data_->parser_source()}) {
+    std::array<uint8_t, 32> a{}, b{};
+    if (!data_->source_hash(path, a) || !documents.source_hash(path, b) || a != b)
+      return fail(e, "Global LOAD actual getter/parser source differs");
+  }
+  const GlobalLoadDocument *document = nullptr;
+  for (const auto &d : documents.documents())
+    if (d.kind == kind) {
+      if (document) return fail(e, "Global LOAD duplicate document cursor");
+      document = &d;
+    }
+  if (!document || !document->file.parsed ||
+      document->getter_source != data_->owner_source() ||
+      document->parser_source != data_->parser_source())
+    return fail(e, "Global LOAD typed source document absent");
+  return get_json_data("res://" + document->file.source, document->file.sha,
+                       out, e, &documents, kind);
 }
 bool GlobalYamlFileHost::actual_yaml_load(const GlobalPackedFile &file,
                                           GlobalYamlCachesRuntime &actual,

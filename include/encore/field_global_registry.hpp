@@ -106,6 +106,7 @@ public:
  bool allocate_object(FieldObjectId&,std::string&);
  bool allocate_fast_name(uint64_t&,std::string&);
  bool object_exists(FieldObjectId)const;
+ const FieldGlobalExternalObject*external_object(FieldObjectId)const;
  std::shared_ptr<FieldNodeTreeRuntime>tree_owner(FieldObjectId)const;
  bool retire_object(FieldObjectId,std::string&);
  // Invoke after actual source Tree deletion flush; removes dead ObjectDB

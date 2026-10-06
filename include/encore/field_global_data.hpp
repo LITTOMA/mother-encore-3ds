@@ -16,6 +16,8 @@ struct FieldGlobalDataReferenceArray {
   std::vector<std::shared_ptr<const FieldGlobalNativeReference>> values;
 };
 class FieldCharacterLoadData;
+class GlobalLoadData;
+class GlobalLoadRuntime;
 struct FieldCharacterLoadState;
 struct FieldCharacterOwnedReference;
 class FieldCharacterEnemySkillReference;
@@ -189,7 +191,17 @@ public:
   bool prefix_complete() const { return prefix_; }
   bool constructor_complete() const;
   bool ready_complete() const;
-  bool load_complete() const { return false; }
+  bool load_complete() const;
+  bool initialize_global_load(const GlobalLoadData &, std::string &);
+  bool global_load_bound_to(const GlobalLoadData &) const;
+  bool assign_global_load_member(std::string_view,
+                                 const std::shared_ptr<GlobalYamlValue> &,
+                                 const std::array<double, 2> *, std::string &);
+  bool global_load_inventory(size_t, FieldObjectId &, std::string &) const;
+  bool load_inventory_owner(FieldObjectId, uint32_t &, std::string &) const;
+  bool publish_global_load_inventory(
+      size_t, const std::vector<FieldGlobalDataItemReference> &, std::string &);
+  bool global_load_normal_flag(std::string_view, bool, std::string &);
   bool initialize_constructor(const GlobalDataConstructorData &, std::string &);
   bool complete_constructor(const FieldGlobalFlagsData &,
                             FieldGlobalFlagsRuntime &,
@@ -238,6 +250,12 @@ public:
                                  std::string &) const;
 
 private:
+  friend class GlobalLoadRuntime;
+  const GlobalLoadData *global_load_data_ = nullptr;
+  std::array<uint8_t, 32> global_load_ir_{};
+  bool global_load_complete_ = false;
+  bool global_load_started_ = false, global_load_poisoned_ = false;
+  FieldObjectId global_load_global_ = 0, global_load_ui_ = 0;
   const GlobalDataConstructorData *constructor_data_ = nullptr;
   std::array<uint8_t, 32> constructor_ir_{}, cache_ir_{}, flags_ir_{};
   FieldGlobalExternalSpec source_spec_;

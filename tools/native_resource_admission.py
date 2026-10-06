@@ -60,6 +60,8 @@ SOURCES = (
     'runtime/field_global_data_data.cpp',
     'runtime/global_data_constructor_data.cpp',
     'runtime/field_character_load_data.cpp',
+    'runtime/global_load_data.cpp',
+    'runtime/field_global_flags_data.cpp',
     'runtime/field_global_registry_data.cpp',
     'runtime/field_node_recipe_data.cpp',
     'runtime/field_goods_data.cpp',
@@ -133,6 +135,8 @@ def admit(resources, *, global_items=True):
         command += ['--global-characters', str(ROOT / 'romfs/data/global.enccharacterload'),
                     str(stable(characters['source_save'])), characters['commit'],
                     characters['sources'][characters['source_save']]]
+        command += ['--global-load', str(ROOT / 'romfs/data/global.encload'),
+                    str(ROOT / 'romfs/data/global.encflags')]
     subprocess.run(command, check=True)
 
 

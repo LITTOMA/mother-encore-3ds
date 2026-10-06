@@ -1,0 +1,3608 @@
+{
+  "schema": 1,
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "source_scene_entered": false,
+  "documents": [
+    {
+      "source": "Data/save_default.yaml",
+      "value": {
+        "kind": 6,
+        "entries": [
+          [
+            "playtime",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "bank",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "cash",
+            {
+              "kind": 2,
+              "value": "100000"
+            }
+          ],
+          [
+            "earned_cash",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "favoritefood",
+            {
+              "kind": 4,
+              "value": "sexy pizza"
+            }
+          ],
+          [
+            "menuflavor",
+            {
+              "kind": 4,
+              "value": "Plain"
+            }
+          ],
+          [
+            "textspeed",
+            {
+              "kind": 3,
+              "f64_le": "7b14ae47e17a943f"
+            }
+          ],
+          [
+            "buttonprompts",
+            {
+              "kind": 4,
+              "value": "Both"
+            }
+          ],
+          [
+            "description",
+            {
+              "kind": 1,
+              "value": true
+            }
+          ],
+          [
+            "runsound",
+            {
+              "kind": 4,
+              "value": "wood"
+            }
+          ],
+          [
+            "keys",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "Catacombs",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "party",
+            {
+              "kind": 5,
+              "values": [
+                {
+                  "kind": 4,
+                  "value": "ninten"
+                }
+              ]
+            }
+          ],
+          [
+            "key_items",
+            {
+              "kind": 5,
+              "values": [
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "Ocarina"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "GGFDiary"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "MapPodunk"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "MapCatacombs"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "MapMagicant"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "MapMerrysville"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "MapSweets"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "MapDuncans"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "BrokenTrumpet"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "CashCard"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "BottleRocketWings"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "BottleRocketHead"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          [
+            "ninten",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": "Ninten"
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Berliner"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Berliner"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Berliner"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Berliner"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Berliner"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Berliner"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Crumbs"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Slingshot"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "BatWooden"
+                            }
+                          ],
+                          [
+                            "equipped",
+                            {
+                              "kind": 1,
+                              "value": true
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "CourageBadge"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Antidote"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "EyeDrops"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "AsthmaSpray"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "BaseballCap"
+                            }
+                          ],
+                          [
+                            "equipped",
+                            {
+                              "kind": 1,
+                              "value": true
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "SlingshotMetal"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 4,
+                        "value": "curveball"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "strike"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "ricochet"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "ballFlame"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "return"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "homerun"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingB"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingG"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingO"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "lifeUpA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "lifeUpB"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "offenseUpA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "speedUpA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "shieldA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "telepathy"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "teleportA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "teleportO"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "20"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "430"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "ana",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": "Ana"
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 4,
+                        "value": "yomama"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "approach"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "attack"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "bash"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "bigGrin"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "bite"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "blindingThrow"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "brandishPitchfork"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "criticalthinking"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "curveball"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "defenseUpA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "escapeCrumbs"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "float"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "getDistracted"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingB"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingG"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "healingO"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "hystericalLaugh"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "karateChop"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "lifeUpA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "lifeUpB"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "lifeUpG"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "lifeUpO"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "meditate"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "mightyRoar"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "mysteriousAction"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "offenseUpA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "peck"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "pkBeamA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "pkBeamB"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "pkBeamG"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "pkBeamO"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "pkFireA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "pkFreezeA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "poisonBite"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "punch"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "rage"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "scratch"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "speedUpA"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "spy"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "swing"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "tackle"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "telepathy"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "ventOdor"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "730"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "lloyd",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": "Lloyd"
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "GunStun"
+                            }
+                          ],
+                          [
+                            "equipped",
+                            {
+                              "kind": 1,
+                              "value": true
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "80"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "teddy",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": "Teddy"
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "Bread"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "80"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "pippi",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": "Pippi"
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "80"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "canarychick",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "flyingman",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "400"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "eve",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "400"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "flags",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "doll_melody",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "canary_melody",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "monkey_melody",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "piano_melody",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "cactus_melody",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "dragon_melody",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "eve_melody",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "grave_melody",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "switch_leader",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "bat",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "energy_beam",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "eagle_feather",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "earned_cash",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "good_morning",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "saved",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "npc_disappear_1",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "npc_dialog_1",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "npc_dialog_2",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "poltergeist",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "mimmie_door_opened",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "doll_attack",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "pillow_attack",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "minnie_leave",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "minnie_door",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "doll_defeated",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "phone_ring",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "talked_to_dad",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "mimmie_ask_key",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "carol_ask_key",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "mick_scratch",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "mick_telepathy",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "ninten_basement_door",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_juice",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_diary",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_dog_treats",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_asthma_spray",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "gave_treats",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "beat_dog_bridge",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "pippis_mom_call",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "pippis_mom_help",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "disguised_zombie_defeated",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "cem_roots_grown",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_shovel",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "returned_shovel",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "hidden_entrance_opened",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "pippi_fought",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "pippi_rescued",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "courage_badge_received",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "church_door_opened",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "church_exited",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "canary_found",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "wally_attack",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "wally_defeat",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "pippi_reunite",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "alfred_song",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "leave_canary_village",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "pippi_delivered",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "zoo_key_stolen",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "zoo_freed",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "monkey_apologize",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "guard_moved",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "ninten_family_goodbye",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_magic_candy",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_magic_ribbon",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "lent_cash_card",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_big_bag",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "met_happiness_guy",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "met_guy_who_talks_about_how_you_cant_part_if_you_havent_met",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_nicknamed",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "slept_at_spoon_guys_place",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "guard_riddle_solved",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "fountain_scouts_met",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "marys_story_learned",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "enteredwell",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "first_flying_man",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "flying_man_in_party",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "flying_man_1_joined",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "flying_man_2_joined",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "flying_man_3_joined",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "flying_man_4_joined",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "flying_man_5_joined",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "forgotten_man_1",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "forgotten_man_2",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "forgotten_man_3",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "forgotten_man_4",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "forgotten_man_5",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "janitor_cutscene_finished",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "lloyd_roof_1",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "lloyd_roof_2",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "rat_king_1",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "rat_king_2",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_br_wings",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_br_head",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_progress_1",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_progress_1_arrived",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_wings_attached",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_progress_2",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_progress_2_arrived",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_head_attached",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_progress_3",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "br_progress_3_arrived",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "rat_king_attack",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "rat_king_defeat",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "rat_king_disappear",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "bottle_rocket_found",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "sweet_factory_exit_open",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "lloyd_befriended",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "lab_destroyed",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "missile_explosion",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "missile_damage_seen",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "weird_teacher_appear",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "weird_teacher_alt_dialogue",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "got_factory_pass",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "drdistorto_1",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "drdistorto_2",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "drdistorto_3",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "drdistorto_4",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "computer_left_hacked",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "computer_right_hacked",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "computers_all_hacked",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "franklin_badge_found",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "drdistorto_attack",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "drdistorto_defeat",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "rocket_launched",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "drdistorto_disappear",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "lloyd_kitchen",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "fixed_merrysville_road_bridge",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "lloyd_mom_goodbye",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "train_to_reindeer",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "magicant_second_visit",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "wally2_attack",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "wally2_defeat",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "anahat_get",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "nancy_attack",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "nancy_defeat",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "magicant_third_visit",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "giantrobot1_attack",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "giantrobot1_defeat",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "magicant_fourth_visit",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "magicant_fifth_visit",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "magicant_sixth_visit",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_podunk",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "visited_magicant",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_merrysville",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_reindeer",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_spookane",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_snowman",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_yucca",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_youngtown",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_ellay",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ],
+                [
+                  "visited_mtitoi",
+                  {
+                    "kind": 1,
+                    "value": false
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "source": "Data/save_new_game.yaml",
+      "value": {
+        "kind": 6,
+        "entries": [
+          [
+            "playtime",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "bank",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "cash",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "earned_cash",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "favoritefood",
+            {
+              "kind": 4,
+              "value": ""
+            }
+          ],
+          [
+            "menuflavor",
+            {
+              "kind": 4,
+              "value": "Plain"
+            }
+          ],
+          [
+            "textspeed",
+            {
+              "kind": 3,
+              "f64_le": "7b14ae47e17a943f"
+            }
+          ],
+          [
+            "buttonprompts",
+            {
+              "kind": 4,
+              "value": "Both"
+            }
+          ],
+          [
+            "description",
+            {
+              "kind": 1,
+              "value": true
+            }
+          ],
+          [
+            "runsound",
+            {
+              "kind": 4,
+              "value": "wood"
+            }
+          ],
+          [
+            "scene",
+            {
+              "kind": 4,
+              "value": "res://Maps/podunk/Nintens House.tscn"
+            }
+          ],
+          [
+            "scenename",
+            {
+              "kind": 4,
+              "value": "Ninten's House"
+            }
+          ],
+          [
+            "dirX",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "dirY",
+            {
+              "kind": 2,
+              "value": "1"
+            }
+          ],
+          [
+            "posX",
+            {
+              "kind": 2,
+              "value": "520"
+            }
+          ],
+          [
+            "posY",
+            {
+              "kind": 2,
+              "value": "404"
+            }
+          ],
+          [
+            "keys",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "Catacombs",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "party",
+            {
+              "kind": 5,
+              "values": [
+                {
+                  "kind": 4,
+                  "value": "ninten"
+                }
+              ]
+            }
+          ],
+          [
+            "key_items",
+            {
+              "kind": 5,
+              "values": [
+                {
+                  "kind": 6,
+                  "entries": [
+                    [
+                      "item_name",
+                      {
+                        "kind": 4,
+                        "value": "CashCard"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ],
+          [
+            "ninten",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": ""
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "BaseballCap"
+                            }
+                          ],
+                          [
+                            "equipped",
+                            {
+                              "kind": 1,
+                              "value": true
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 4,
+                        "value": "strike"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "splitShot"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "ana",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": ""
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "lloyd",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": ""
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "KickMeNote"
+                            }
+                          ],
+                          [
+                            "equipped",
+                            {
+                              "kind": 1,
+                              "value": true
+                            }
+                          ]
+                        ]
+                      },
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "item_name",
+                            {
+                              "kind": 4,
+                              "value": "GlassesCelluloid"
+                            }
+                          ],
+                          [
+                            "equipped",
+                            {
+                              "kind": 1,
+                              "value": true
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 4,
+                        "value": "spy"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "teddy",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": ""
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "pippi",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "nickname",
+                  {
+                    "kind": 4,
+                    "value": ""
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "inventory",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "100"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "canarychick",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "flyingman",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "200"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "eve",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "hp",
+                  {
+                    "kind": 2,
+                    "value": "400"
+                  }
+                ],
+                [
+                  "pp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "source": "Data/save_overrides.yaml",
+      "value": {
+        "kind": 6,
+        "entries": [
+          [
+            "ninten",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "Ninten"
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 4,
+                        "value": "strike"
+                      },
+                      {
+                        "kind": 4,
+                        "value": "splitShot"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "affinity_multipliers",
+                  {
+                    "kind": 6,
+                    "entries": [
+                      [
+                        "asthma",
+                        {
+                          "kind": 2,
+                          "value": "1"
+                        }
+                      ]
+                    ]
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "ana",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "Ana"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "lloyd",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "Lloyd"
+                  }
+                ],
+                [
+                  "learnedSkills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 4,
+                        "value": "spy"
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "teddy",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "Teddy"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "pippi",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "Pippi"
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "canarychick",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "CanaryChick"
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "maxhp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "maxpp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "speed",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "offense",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "defense",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "iq",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "guts",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "boosts",
+                  {
+                    "kind": 6,
+                    "entries": [
+                      [
+                        "maxhp",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "maxpp",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "offense",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "defense",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "speed",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "iq",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "guts",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "untargetable",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "skills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "skill",
+                            {
+                              "kind": 4,
+                              "value": "do_nothing"
+                            }
+                          ],
+                          [
+                            "weight",
+                            {
+                              "kind": 2,
+                              "value": "6"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "flyingman",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "FlyingMan"
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "99"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "maxhp",
+                  {
+                    "kind": 2,
+                    "value": "250"
+                  }
+                ],
+                [
+                  "maxpp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "speed",
+                  {
+                    "kind": 2,
+                    "value": "14"
+                  }
+                ],
+                [
+                  "offense",
+                  {
+                    "kind": 2,
+                    "value": "55"
+                  }
+                ],
+                [
+                  "defense",
+                  {
+                    "kind": 2,
+                    "value": "25"
+                  }
+                ],
+                [
+                  "iq",
+                  {
+                    "kind": 2,
+                    "value": "25"
+                  }
+                ],
+                [
+                  "guts",
+                  {
+                    "kind": 2,
+                    "value": "25"
+                  }
+                ],
+                [
+                  "boosts",
+                  {
+                    "kind": 6,
+                    "entries": [
+                      [
+                        "maxhp",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "maxpp",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "offense",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "defense",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "speed",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "iq",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "guts",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "untargetable",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "skills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "skill",
+                            {
+                              "kind": 4,
+                              "value": "bash"
+                            }
+                          ],
+                          [
+                            "weight",
+                            {
+                              "kind": 2,
+                              "value": "1"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ],
+          [
+            "eve",
+            {
+              "kind": 6,
+              "entries": [
+                [
+                  "name",
+                  {
+                    "kind": 4,
+                    "value": "Eve"
+                  }
+                ],
+                [
+                  "status",
+                  {
+                    "kind": 5,
+                    "values": []
+                  }
+                ],
+                [
+                  "level",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "exp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "maxhp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "maxpp",
+                  {
+                    "kind": 2,
+                    "value": "0"
+                  }
+                ],
+                [
+                  "speed",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "offense",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "defense",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "iq",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "guts",
+                  {
+                    "kind": 2,
+                    "value": "1"
+                  }
+                ],
+                [
+                  "boosts",
+                  {
+                    "kind": 6,
+                    "entries": [
+                      [
+                        "maxhp",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "maxpp",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "offense",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "defense",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "speed",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "iq",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ],
+                      [
+                        "guts",
+                        {
+                          "kind": 2,
+                          "value": "0"
+                        }
+                      ]
+                    ]
+                  }
+                ],
+                [
+                  "untargetable",
+                  {
+                    "kind": 1,
+                    "value": true
+                  }
+                ],
+                [
+                  "skills",
+                  {
+                    "kind": 5,
+                    "values": [
+                      {
+                        "kind": 6,
+                        "entries": [
+                          [
+                            "skill",
+                            {
+                              "kind": 4,
+                              "value": "bash"
+                            }
+                          ],
+                          [
+                            "weight",
+                            {
+                              "kind": 2,
+                              "value": "1"
+                            }
+                          ]
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  ]
+}

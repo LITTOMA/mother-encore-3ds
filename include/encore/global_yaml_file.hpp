@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/global_packed_directory.hpp"
 namespace encore::upstream {
+class GlobalLoadData;
 struct GlobalYamlFileRecord {
   uint32_t role = 0;
   std::string source, bytes;
@@ -57,12 +58,16 @@ private:
   friend class GlobalYamlFileHost;
   friend class GlobalYamlSmartReader;
   const GlobalYamlFileData *data_ = nullptr;
+  const GlobalLoadData *documents_ = nullptr;
+  const GlobalYamlFileRecord *document_ = nullptr;
+  std::array<uint8_t, 32> documents_ir_{};
   FieldGlobalRegistry *registry_ = nullptr;
   FieldGlobalExternalBinding binding_{};
   const GlobalYamlFileRecord *opened_ = nullptr;
   std::array<uint8_t, 32> admitted_ir_{};
   size_t position_ = 0;
   mutable bool eof_ = false;
+  const GlobalYamlFileRecord *admitted_record(std::string_view) const;
   bool available(std::string &) const;
 };
 class GlobalYamlSmartReader final : public FieldGlobalNativeReference {
@@ -110,6 +115,10 @@ public:
   // All three local References retire before actual owning cache insertion.
   bool actual_yaml_load(const GlobalPackedFile &, GlobalYamlCachesRuntime &,
                         std::string &);
+  // Executes the same source File/SmartFileReader call frames for a typed
+  // admitted save document; new-game and arbitrary file sources remain closed.
+  bool actual_global_load(const GlobalLoadData &, uint32_t document_kind,
+                          std::shared_ptr<GlobalYamlValue> &, std::string &);
   bool poisoned() const { return poisoned_; }
 
 private:
@@ -121,7 +130,12 @@ private:
   std::array<uint8_t, 32> admitted_caches_ir_{};
   bool busy_ = false, poisoned_ = false;
   bool get_json_data(std::string_view, const std::array<uint8_t, 32> &,
-                     std::shared_ptr<GlobalYamlValue> &, std::string &);
+                     std::shared_ptr<GlobalYamlValue> &, std::string &,
+                     const GlobalLoadData * = nullptr, uint32_t = 0);
+  bool make_document_file(uint32_t, const GlobalLoadData *, uint32_t,
+                          std::shared_ptr<GlobalYamlFileReference> &, std::string &);
+  bool make_document_reader(const GlobalLoadData *, uint32_t,
+                            std::shared_ptr<GlobalYamlSmartReader> &, std::string &);
   bool available(std::string &) const;
 };
 } // namespace encore::upstream

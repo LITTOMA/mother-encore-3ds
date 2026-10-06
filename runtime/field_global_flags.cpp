@@ -180,6 +180,16 @@ bool FieldGlobalFlagsRuntime::load_profile(size_t profile, std::string &e) {
     return fail(e, "Unknown checked source save profile");
   return load_source(data_->profiles()[profile].flags, e);
 }
+bool FieldGlobalFlagsRuntime::replace_auxiliary(
+    uint32_t role, const FieldFlagDictionary &value, std::string &e) {
+  if (!available(e) || (role != 1 && role != 2) || !valid(value) ||
+      revision_ == std::numeric_limits<uint64_t>::max())
+    return fail(e, "Source auxiliary flag Dictionary assignment rejected");
+  (role == 1 ? state_.objects : state_.seen) = value;
+  ++revision_;
+  e.clear();
+  return true;
+}
 bool FieldGlobalFlagsRuntime::encode_save(std::vector<uint8_t> &out,
                                           std::string &e) const {
   if (!available(e))

@@ -6,6 +6,7 @@
 #include "encore/global_yaml_file.hpp"
 #include "encore/global_data_constructor.hpp"
 #include "encore/field_character_load.hpp"
+#include "encore/global_load.hpp"
 #include <limits>
 #include <iostream>
 
@@ -34,12 +35,13 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
   if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
   if(argc>=18 && std::string(argv[15])!="--global-constructor") return 2;
-  if(argc==23 && std::string(argv[18])!="--global-characters") return 2;
+  if(argc>=23 && std::string(argv[18])!="--global-characters") return 2;
+  if(argc==26 && std::string(argv[23])!="--global-load") return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -103,9 +105,9 @@ int main(int argc, char **argv) {
         std::cerr<<"Global cache/Items independent source entry differs\n";return 1;
       }
     }
+    GlobalYamlFileData files;
     if(argc>=15) {
       GlobalPackedDirectoryData directory;
-      GlobalYamlFileData files;
       if(!directory.load_file(argv[12],caches,registry,error)||
          !files.load_file(argv[14],caches,error)) {
         std::cerr<<"Global source Directory/File resource: "<<error<<'\n';return 1;
@@ -121,7 +123,7 @@ int main(int argc, char **argv) {
          !constructor.load_file(argv[16],members,caches,error)) {
         std::cerr<<"Global complete constructor format: "<<error<<'\n';return 1;
       }
-      if(argc==23) {
+      if(argc>=23) {
         FieldIdentity expected_characters;
         expected_characters.upstream_commit=identity.upstream_commit;
         FieldCharacterLoadData characters;
@@ -131,6 +133,17 @@ int main(int argc, char **argv) {
         if(expected_characters.upstream_commit!=identity.upstream_commit ||
            !characters.load_file(argv[19],expected_characters,error)) {
           std::cerr<<"Global Character LOAD format: "<<error<<'\n';return 1;
+        }
+        if(argc==26) {
+          FieldGlobalFlagsData flags;
+          GlobalLoadData load;
+          if(!flags.load_file(argv[25],error) ||
+             !load.load_file(argv[24],constructor,characters,flags,items,error) ||
+             load.file_ir_sha256()!=files.ir_sha256()) {
+            std::cerr<<"Global cold LOAD format: "<<error<<'\n';return 1;
+          }
+          std::cout<<"Global cold LOAD format admitted: "<<load.steps().size()
+                   <<" source cursors / "<<load.documents().size()<<" documents\n";
         }
         std::cout<<"Global Character LOAD format admitted: "
                  <<characters.rows().size()<<" source owners\n";

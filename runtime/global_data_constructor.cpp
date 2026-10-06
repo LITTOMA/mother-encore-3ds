@@ -1,6 +1,7 @@
 #include "encore/global_data_constructor.hpp"
 #include "encore/field_character_load.hpp"
 #include "encore/field_global_flags.hpp"
+#include "encore/global_load.hpp"
 #include "encore/global_packed_directory.hpp"
 #include <algorithm>
 #include <cmath>
@@ -738,7 +739,7 @@ bool FieldGlobalDataRuntime::read_character_inventory_items(
     FieldObjectId id, std::vector<FieldGlobalDataItemReference> &out,
     std::string &e) const {
   uint32_t declaration = 0;
-  if (!character_inventory_owner(id, declaration, e))
+  if (!load_inventory_owner(id, declaration, e))
     return false;
   auto items = character_items_.find(id);
   std::vector<FieldGlobalDataItemReference> value;
@@ -1140,5 +1141,197 @@ bool FieldGlobalDataRuntime::character_nickname(uint32_t declaration,
   out = b.npc_nickname_prefix + s.name + b.npc_nickname_suffix;
   e.clear();
   return true;
+}
+bool FieldGlobalDataRuntime::initialize_global_load(const GlobalLoadData &d,
+                                                    std::string &e) {
+  if (!ready_complete() || !character_load_available(e) || global_load_data_ ||
+      !d.valid() || d.constructor_ir_sha256() != constructor_ir_ ||
+      d.characters_ir_sha256() != character_load_ir_ ||
+      d.flags_ir_sha256() != flags_ir_ ||
+      d.identity().upstream_commit != data_->identity().upstream_commit)
+    return fail(e, "Global LOAD source dependencies/actual owner rejected");
+  for (const auto &inv : d.inventories()) {
+    FieldGlobalDataMemberState member;
+    if (!read_global_member(inv.member, member, e) || member.adapter != 2 ||
+        member.references.size() != 1)
+      return fail(e, "Global LOAD existing Inventory declaration rejected");
+    auto body =
+        std::find_if(objects_.begin(), objects_.end(), [&](const auto &v) {
+          return v.kind == 2 && v.declaration == inv.id && v.role == inv.role &&
+                 v.object == member.references.front().second;
+        });
+    if (body == objects_.end() || !registry_->native_reference(body->object))
+      return fail(e, "Global LOAD existing Inventory actual Reference missing");
+  }
+  global_load_data_ = &d;
+  global_load_ir_ = d.ir_sha256();
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::global_load_bound_to(
+    const GlobalLoadData &d) const {
+  return ready_complete() && global_load_data_ == &d && d.valid() &&
+         !global_load_poisoned_ && character_load_data_ &&
+         character_load_bound_to(*character_load_data_) &&
+         d.ir_sha256() == global_load_ir_ &&
+         d.constructor_ir_sha256() == constructor_ir_ &&
+         d.characters_ir_sha256() == character_load_ir_ &&
+         d.flags_ir_sha256() == flags_ir_;
+}
+bool FieldGlobalDataRuntime::load_complete() const {
+  return global_load_data_ && global_load_bound_to(*global_load_data_) &&
+         global_load_complete_ &&
+         registry_->object_exists(global_load_global_) &&
+         registry_->object_exists(global_load_ui_);
+}
+bool FieldGlobalDataRuntime::assign_global_load_member(
+    std::string_view name, const std::shared_ptr<GlobalYamlValue> &v,
+    const std::array<double, 2> *vector, std::string &e) {
+  if (!global_load_data_ || !global_load_bound_to(*global_load_data_) ||
+      global_load_complete_ || !v)
+    return fail(e, "Global LOAD actual member owner unavailable");
+  const auto &ds = constructor_data_->declarations();
+  auto d = std::find_if(ds.begin(), ds.end(),
+                        [&](const auto &x) { return x.name == name; });
+  if (d == ds.end() || d->constant ||
+      std::none_of(global_load_data_->assignments().begin(),
+                   global_load_data_->assignments().end(),
+                   [&](const auto &x) { return x.member == name; }))
+    return fail(e, "Global LOAD member is not a source assignment");
+  auto &member = members_[size_t(d - ds.begin())];
+  if (d->kind == 7) {
+    if (!vector || d->adapter || !std::isfinite((*vector)[0]) ||
+        !std::isfinite((*vector)[1]))
+      return fail(e, "Global LOAD Vector2 source conversion rejected");
+    member.vector = *vector;
+  } else if (vector) {
+    return fail(e, "Global LOAD unexpected Vector2 input");
+  } else if (d->adapter == 5) {
+    if (d->kind != 6 || v->kind != 6 || !d->owner_role || d->owner_role > 2 ||
+        !constructor_flags_)
+      return fail(e, "Global LOAD auxiliary flag Dictionary rejected");
+    FieldFlagDictionary flags;
+    for (const auto &x : v->dictionary) {
+      if (!x.second || x.second->kind != 1)
+        return fail(e, "Global LOAD flag value is not source bool");
+      flags.emplace_back(x.first, x.second->boolean);
+    }
+    if (!constructor_flags_->replace_auxiliary(d->owner_role, flags, e))
+      return false;
+  } else if ((d->adapter == 0 || d->adapter == 6) && d->kind == v->kind &&
+             (v->kind == 5 || v->kind == 6)) {
+    // Actual source assignment aliases the parsed mutable collection root.
+    member.value = v;
+  } else if (d->adapter == 0 && d->kind >= 1 && d->kind <= 4) {
+    GlobalYamlValue scalar = *v;
+    if (d->kind == 3 && v->kind == 2) {
+      scalar.kind = 3;
+      scalar.real = double(v->integer);
+    }
+    if (!write_global_scalar(name, scalar, e))
+      return false;
+  } else {
+    return fail(e, "Global LOAD unknown source member type/adapter");
+  }
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::global_load_inventory(size_t index,
+                                                   FieldObjectId &out,
+                                                   std::string &e) const {
+  if (!global_load_data_ || !global_load_bound_to(*global_load_data_) ||
+      index >= global_load_data_->inventories().size())
+    return fail(e, "Global LOAD Inventory cursor unavailable");
+  const auto &inv = global_load_data_->inventories()[index];
+  FieldGlobalDataMemberState member;
+  if (!read_global_member(inv.member, member, e) ||
+      member.references.size() != 1)
+    return fail(e, "Global LOAD existing Inventory member missing");
+  auto body =
+      std::find_if(objects_.begin(), objects_.end(), [&](const auto &v) {
+        return v.kind == 2 && v.declaration == inv.id && v.role == inv.role &&
+               v.object == member.references.front().second;
+      });
+  if (body == objects_.end() || !registry_->native_reference(body->object))
+    return fail(e, "Global LOAD actual Inventory body/Reference missing");
+  out = body->object;
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::load_inventory_owner(FieldObjectId id,
+                                                  uint32_t &out,
+                                                  std::string &e) const {
+  if (character_inventory_owner(id, out, e))
+    return true;
+  if (global_load_data_ && global_load_bound_to(*global_load_data_))
+    for (size_t i = 0; i < global_load_data_->inventories().size(); ++i) {
+      FieldObjectId actual = 0;
+      if (!global_load_inventory(i, actual, e))
+        return false;
+      if (actual == id) {
+        out = global_load_data_->inventories()[i].id;
+        e.clear();
+        return true;
+      }
+    }
+  return fail(e, "Inventory is not an actual admitted LOAD owner");
+}
+bool FieldGlobalDataRuntime::publish_global_load_inventory(
+    size_t index, const std::vector<FieldGlobalDataItemReference> &items,
+    std::string &e) {
+  FieldObjectId id = 0;
+  if (!global_load_inventory(index, id, e) || global_load_complete_)
+    return false;
+  const auto &spec = global_load_data_->inventories()[index];
+  auto body = std::find_if(objects_.begin(), objects_.end(),
+                           [&](const auto &v) { return v.object == id; });
+  const auto &field =
+      character_load_data_->source_bindings().inventory_items_field;
+  auto collection = body->collections.find(field);
+  if (collection == body->collections.end() || !collection->second ||
+      collection->second->kind != 5)
+    return fail(e, "Global LOAD Inventory source _items member missing");
+  auto refs = std::make_shared<FieldGlobalDataReferenceArray>();
+  std::set<FieldObjectId> seen;
+  for (const auto &r : items) {
+    auto actual = registry_->native_reference(r.object);
+    FieldOwnedItem value;
+    std::array<uint8_t, 32> proof{}, expected{};
+    const auto &script = character_load_data_->source_bindings().item_script;
+    if (!actual || !r.actual_owner || !r.source_owner ||
+        r.registry != registry_ || r.owner != spec.id ||
+        !seen.insert(r.object).second || actual.owner_before(r.actual_owner) ||
+        r.actual_owner.owner_before(actual) ||
+        actual.owner_before(r.source_owner) ||
+        r.source_owner.owner_before(actual) ||
+        actual->binding().family != 0x454e0050 ||
+        actual->binding().capability != 2 ||
+        actual->binding().source.script != script ||
+        !actual->checked_source_hash(script, proof) ||
+        !character_load_data_->source_hash(script, expected) ||
+        proof != expected || !r.source_owner->read_item(value, e) ||
+        value.definition != r.value.definition || value.uid != r.value.uid ||
+        value.doses != r.value.doses || value.equipped != r.value.equipped)
+      return fail(e, "Global LOAD Item actual Reference/body/owner rejected");
+    refs->values.push_back(actual);
+  }
+  auto value = std::make_shared<GlobalYamlValue>();
+  value->kind = 5;
+  collection->second = std::move(value);
+  body->reference_arrays[field] = std::move(refs);
+  body->item_objects.clear();
+  for (const auto &r : items)
+    body->item_objects.push_back(r.object);
+  character_items_[id] = items;
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::global_load_normal_flag(std::string_view key,
+                                                     bool value,
+                                                     std::string &e) {
+  if (!global_load_data_ || !global_load_bound_to(*global_load_data_) ||
+      global_load_complete_ || !constructor_flags_)
+    return fail(e, "Global LOAD normal flag owner unavailable");
+  return constructor_flags_->set_normal(key, value, false, e);
 }
 } // namespace encore::upstream

@@ -58,6 +58,10 @@ public:
   // replaces the object/seen dictionaries; extra saved normal keys are a
   // specifically audited source no-op, not a generic unknown-content ignore.
   bool load_source(const FieldFlagProjection &, std::string &);
+  // Source direct assignment of one auxiliary Dictionary; no flag signal or
+  // normal registration/iteration occurs at this cursor.
+  bool replace_auxiliary(uint32_t role, const FieldFlagDictionary &,
+                         std::string &);
   bool load_profile(size_t source_profile, std::string &);
   bool encode_save(std::vector<uint8_t> &, std::string &) const;
   bool restore_save(const uint8_t *, size_t, std::string &);

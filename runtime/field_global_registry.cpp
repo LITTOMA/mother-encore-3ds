@@ -26,6 +26,10 @@ FieldGlobalRegistry::~FieldGlobalRegistry(){
 bool FieldGlobalRegistry::equal_spec(const FieldGlobalExternalSpec&a,const FieldGlobalExternalSpec&b)const{
  return same_identity(a.identity,b.identity)&&a.stable_id==b.stable_id&&a.role==b.role&&a.name==b.name&&a.native_class==b.native_class&&a.source==b.source&&a.script==b.script&&a.source_sha==b.source_sha&&a.script_sha==b.script_sha;
 }
+const FieldGlobalExternalObject *FieldGlobalRegistry::external_object(FieldObjectId id) const {
+ auto i=objects_.find(id);
+ return initialized_&&!poisoned_&&i!=objects_.end()?i->second.external.get():nullptr;
+}
 bool FieldGlobalRegistry::allocate_object(FieldObjectId&out,std::string&e){
  if(!data_||poisoned_||counter_==std::numeric_limits<uint64_t>::max())return fail(e,"Global ObjectDB counter unavailable/overflow");
  out=++counter_;objects_.emplace(out,Object{});e.clear();return true;

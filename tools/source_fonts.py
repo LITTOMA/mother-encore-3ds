@@ -116,6 +116,10 @@ def compile_fonts(args):
         groups[path].update(cps);priority[path].update(cps)
     for path,texts in details_glyph_requests().items():
         cps=set().union(*(scalar_text(t)for t in texts));groups[path].update(cps);priority[path].update(cps)
+    from tools.field_inventory import glyph_requests as inventory_glyph_requests
+    for path,texts in inventory_glyph_requests().items():
+        if path not in review["sources"]:raise ValueError("Unreviewed Inventory font role")
+        cps=set().union(*(scalar_text(t)for t in texts));groups[path].update(cps);priority[path].update(cps)
     requests=[];cmaps={};credits={};chains={};styles={}
 
     for path,cps in groups.items():
@@ -185,7 +189,7 @@ def compile_fonts(args):
     for g in all_glyphs:payload.extend(struct.pack('<6I3f',*(g[k] for k in ('codepoint','page','u','v','width','height','advance','offset_x','offset_y'))))
     binary=HEADER.pack(b'ENCFONT\0',2,len(payload),zlib.crc32(payload),len(faces),len(pages),len(all_glyphs))+payload
     target=out/'source-fonts.encfont';target.write_bytes(binary)
-    receipt={'schema':1,'field_psi_sha256':sha(ROOT/'content/native-field-psi.json'),'field_cash_box_sha256':sha(ROOT/'content/native-field-cash-box.json'),'field_shop_sha256':sha(ROOT/'content/native-field-shop.json'),'field_item_details_sha256':sha(ROOT/'content/native-field-item-details.json'),'source_role_settings':styles,'review':review,'catalog_sha256':sha(cat),'generator_sha256':sha(__file__),'godot_sha256':sha(args.godot),'tex3ds_sha256':sha(args.tex3ds),'pillow_version':pillow_version,'freetype_version':features.version_module('freetype2'),'fonttools_version':fonttools_version,'metrics':metrics,'faces':faces,'pages':pages,'glyphs':all_glyphs,'missing_source_glyphs':missing,'font_embedded_notices':credits,'binary':{'path':target.name,'sha256':sha(target),'bytes':len(binary)},'limits':'Source EBMain and BottleRocket Shop roles; numeric BottleRocket spacing/black outline from reviewed .tres; four-worker genuine tex3ds; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.'}
+    receipt={'schema':1,'field_psi_sha256':sha(ROOT/'content/native-field-psi.json'),'field_cash_box_sha256':sha(ROOT/'content/native-field-cash-box.json'),'field_shop_sha256':sha(ROOT/'content/native-field-shop.json'),'field_item_details_sha256':sha(ROOT/'content/native-field-item-details.json'),'field_inventory_sha256':sha(ROOT/'content/native-field-inventory.json'),'source_role_settings':styles,'review':review,'catalog_sha256':sha(cat),'generator_sha256':sha(__file__),'godot_sha256':sha(args.godot),'tex3ds_sha256':sha(args.tex3ds),'pillow_version':pillow_version,'freetype_version':features.version_module('freetype2'),'fonttools_version':fonttools_version,'metrics':metrics,'faces':faces,'pages':pages,'glyphs':all_glyphs,'missing_source_glyphs':missing,'font_embedded_notices':credits,'binary':{'path':target.name,'sha256':sha(target),'bytes':len(binary)},'limits':'Source EBMain and BottleRocket Shop roles; numeric BottleRocket spacing/black outline from reviewed .tres; four-worker genuine tex3ds; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.'}
     receipt_path=ROOT/'content/asset-receipts/fonts/source.json'
     receipt_path.parent.mkdir(parents=True,exist_ok=True)
     dump(receipt_path,receipt)
@@ -217,6 +221,7 @@ def stage_files(root):
     if manifest.get('field_psi_sha256')!=sha(ROOT/'content/native-field-psi.json'):raise ValueError('Source font PSI labels changed; regenerate assets')
     if manifest.get('field_cash_box_sha256')!=sha(ROOT/'content/native-field-cash-box.json'):raise ValueError('CashBox font bindings changed; regenerate source fonts')
     if manifest.get('field_shop_sha256')!=sha(ROOT/'content/native-field-shop.json')or manifest.get('field_item_details_sha256')!=sha(ROOT/'content/native-field-item-details.json'):raise ValueError('Shop/field-description font bindings changed; regenerate assets')
+    if manifest.get('field_inventory_sha256')!=sha(ROOT/'content/native-field-inventory.json'):raise ValueError('Inventory text bindings changed; regenerate source fonts')
     if manifest.get('generator_sha256')!=sha(__file__):
         raise ValueError('Source font generator changed; regenerate assets')
     if manifest.get('catalog_sha256')!=sha(ROOT/'content/native-localization.json'):

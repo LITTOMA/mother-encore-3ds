@@ -53,6 +53,8 @@ add_library(encore_core
     runtime/field_global_registry_data.cpp
     runtime/field_dialogue_ui.cpp
     runtime/field_dialogue_ui_data.cpp
+    runtime/field_inventory.cpp
+    runtime/field_inventory_data.cpp
     runtime/field_shop.cpp
     runtime/field_shop_data.cpp
     runtime/field_vending_machine.cpp

@@ -363,3 +363,6 @@ cookies.json
 
 !/reports/field-dialogue-ui/
 !/reports/field-dialogue-ui/source-review.json
+
+!/reports/field-inventory/
+!/reports/field-inventory/source-review.json

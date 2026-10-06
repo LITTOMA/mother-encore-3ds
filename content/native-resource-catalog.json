@@ -263,6 +263,11 @@
       "id": 37,
       "role": "FieldProgrammes",
       "path": "data/podunk-programmes.encprog"
+    },
+    {
+      "id": 38,
+      "role": "FieldInventory",
+      "path": "data/podunk.encinventory"
     }
   ],
   "encounters": [

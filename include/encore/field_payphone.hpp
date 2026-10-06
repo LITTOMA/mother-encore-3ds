@@ -28,6 +28,8 @@ private:
  bool valid_=false;uint32_t scene_id_=0,cash_cost_=0,card_max_doses_=0,card_step_=0,idle_frame_=0;float update_seconds_=0,close_seconds_=0;
  std::array<uint8_t,20>pin_{};std::array<uint8_t,32>scene_{},script_{};std::string no_money_,card_name_;FieldPayphoneSound sound_;FieldPayphoneTexture texture_;std::vector<FieldPayphoneDescriptor>records_;std::map<std::string,std::array<uint8_t,32>>sources_;
 };
+// A nonempty checked item name denotes presence. Original Item.get_uid()
+// permits zero; UID zero alone must never mean a missing PhoneCard.
 struct FieldPayphoneCard {uint64_t uid=0;uint32_t doses=0;std::string name;};
 struct FieldPayphoneHost {
  // All callbacks bind checked source node/program/resource identities. This

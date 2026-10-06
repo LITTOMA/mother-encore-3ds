@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle field-present field-dropped field-sparkles field-openable field-payphone field-cash-box field-butterfly field-cutscene field-birds field-camera-area field-music-changer field-item-definitions field-camera-arrows field-scene-actions field-stepping-sounds field-player-transitions field-game-camera field-door-npc field-melody-background field-programmes field-node-tree field-node-recipe field-dialogue-life field-canvas-art field-native-timer field-global-registry field-dialogue-ui field-shop field-vending field-item-details
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle field-present field-dropped field-sparkles field-openable field-payphone field-cash-box field-butterfly field-cutscene field-birds field-camera-area field-music-changer field-item-definitions field-camera-arrows field-scene-actions field-stepping-sounds field-player-transitions field-game-camera field-door-npc field-melody-background field-programmes field-node-tree field-node-recipe field-dialogue-life field-canvas-art field-native-timer field-global-registry field-dialogue-ui field-shop field-vending field-item-details field-inventory
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -207,3 +207,6 @@ field-global-registry:
 
 field-dialogue-ui: field-node-recipe house
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_dialogue_ui.py compile
+
+field-inventory: field-item-definitions field-item-details field-payphone field-shop
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_inventory.py compile

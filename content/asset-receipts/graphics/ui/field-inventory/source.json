@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "135952acf65f4db05ac09a52e86bdbb78156e502ac1a78c6dee4cc249150f29e",
+  "source": "Graphics/UI/Inventory/modifiers.png",
+  "source_sha256": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
+  "output": "graphics/ui/field-inventory/equipped.t3x",
+  "sha256": "20907c33f6fa8deabcd6f6f73d93b0c3200315e57f5b8ac707210079ade3b700",
+  "bytes": 73,
+  "region": [
+    2,
+    19,
+    8,
+    7
+  ],
+  "position": [
+    -6,
+    6
+  ],
+  "nearest": true
+}

@@ -14,15 +14,17 @@ bool MusicRegionPlayer::begin_prepare(const char*bank,const char*root,const upst
  if(prepared_||preparing_||capacity_)return fail(e,"Music region adapter already prepared; use a detached candidate");
  if(!available)return fail(e,"Music region audio unavailable: existing NDSP owner is not initialized");
  if(!root||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region adapter capacity/root");
- if(!bank_.load_file(bank,e)||!regions.matches(bank_,e))return false;
- if(bank_.master_db()!=master||bank_.count()!=regions.tracks().size())return fail(e,"Music region bank/master differs from existing audio owner");
- capacity_=capacity;track_count_=bank_.count();asset_root_=root;
- for(uint32_t i=0;i<track_count_;++i){tracks_[i].asset=bank_.asset(i);total_bytes_+=tracks_[i].asset.pcm_bytes;}
+ std::vector<upstream::AudioAsset> selected;
+ if(!bank_.load_file(bank,e)||!regions.select_assets(bank_,master,uint32_t(tracks_.size()),selected,e))return false;
+ // The shared bank also contains dialogue/menu effects. Only the checked
+ // source region projection belongs to this bounded streaming adapter.
+ capacity_=capacity;track_count_=uint32_t(selected.size());asset_root_=root;
+ for(uint32_t i=0;i<track_count_;++i){tracks_[i].asset=selected[i];total_bytes_+=tracks_[i].asset.pcm_bytes;}
  preparing_=true;e.clear();return true;
 }
 MusicPreparationStep MusicRegionPlayer::prepare_step(uint32_t budget,std::string&e){
  if(prepared_){e.clear();return MusicPreparationStep::Ready;}
- if(!preparing_||!budget||budget>65536){e="Invalid music region preparation state/byte budget";return MusicPreparationStep::Failed;}
+ if(!preparing_||!budget||budget>maximum_prepare_budget){e="Invalid music region preparation state/byte budget";return MusicPreparationStep::Failed;}
  auto abort=[&](const char*message){shutdown();e=message;return MusicPreparationStep::Failed;};
  if(validation_track_<track_count_){
   auto&t=tracks_[validation_track_];const auto&a=t.asset;

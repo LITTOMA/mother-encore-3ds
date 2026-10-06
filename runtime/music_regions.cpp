@@ -43,6 +43,33 @@ bool MusicRegionData::matches(const AudioBank&bank,std::string&e)const{
  if(!valid_||bank.silence_db()!=silence_db_)return fail(e,"Music region/audio bank tuning mismatch");
  for(const auto&t:tracks_){AudioAsset a;if(!bank.find(t.id,a)||a.source_sha256!=t.source_sha||a.source_path!=t.source_path||!a.loops())return fail(e,"Music region/audio source identity or loop mismatch");}e.clear();return true;
 }
+bool MusicRegionData::select_assets(const AudioBank &bank,
+                                    float expected_master_db,
+                                    uint32_t max_tracks,
+                                    std::vector<AudioAsset> &out,
+                                    std::string &error) const {
+  if (!std::isfinite(expected_master_db) ||
+      !std::isfinite(bank.master_db()) ||
+      expected_master_db != bank.master_db())
+    return fail(error, "Music region bank/master differs");
+  if (!max_tracks || tracks_.empty() || tracks_.size() > max_tracks)
+    return fail(error, "Music region selected track capacity exceeded");
+  if (!matches(bank, error))
+    return false;
+  std::vector<AudioAsset> selected;
+  selected.reserve(tracks_.size());
+  for (const auto &track : tracks_) {
+    AudioAsset asset;
+    // matches has checked the same immutable bank, but retain an explicit
+    // lookup guard so a failed projection can never publish a partial list.
+    if (!bank.find(track.id, asset))
+      return fail(error, "Music region selected track absent from bank");
+    selected.push_back(asset);
+  }
+  out.swap(selected);
+  error.clear();
+  return true;
+}
 bool MusicRegionController::initialize(const MusicRegionData&data,uint32_t capacity,std::string&e){if(!data.valid()||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region controller capacity/data");MusicRegionController n;n.data_=&data;n.voices_.resize(capacity);n.states_.resize(data.regions().size());*this=std::move(n);e.clear();return true;}
 bool MusicRegionController::attach_scene(uint64_t epoch,std::string&e){if(!data_||!epoch||epoch<=epoch_)return fail(e,"Invalid music scene epoch");for(auto&s:states_)if(s.registered||s.inside||s.pending_exit)return fail(e,"Previous music scene has not exited");epoch_=epoch;states_.assign(states_.size(),{});registered_.clear();pending_exits_.clear();e.clear();return true;}
 int MusicRegionController::region(std::string_view p)const{if(data_)for(size_t i=0;i<data_->regions().size();++i)if(data_->regions()[i].source_path==p)return int(i);return-1;}

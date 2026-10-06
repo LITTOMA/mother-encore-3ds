@@ -11,6 +11,7 @@ enum class MusicPreparationStep:uint8_t {Progress,Ready,Failed};
 class MusicRegionPlayer {
 public:
  static constexpr uint32_t first_channel=6,maximum_voices=16;
+ static constexpr uint32_t maximum_prepare_budget=65536;
  MusicRegionPlayer()=default;~MusicRegionPlayer(){shutdown();}
  MusicRegionPlayer(const MusicRegionPlayer&)=delete;
  MusicRegionPlayer&operator=(const MusicRegionPlayer&)=delete;

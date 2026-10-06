@@ -20,6 +20,12 @@ public:
  bool load(const uint8_t*,size_t,std::string&);
  bool load_file(const char*,std::string&);
  bool matches(const AudioBank&,std::string&)const;
+ // Select only this checked region scope from a complete audio bank. Asset
+ // string_views borrow bank, whose lifetime must cover their use. Extra bank
+ // sounds are expected; they never occupy the region player's track array.
+ // Failure preserves out, including capacity/master/source mismatches.
+ bool select_assets(const AudioBank&,float expected_master_db,uint32_t max_tracks,
+                    std::vector<AudioAsset>&out,std::string&)const;
  bool valid()const{return valid_;}
  const std::vector<MusicRegionBinding>&regions()const{return regions_;}
  const std::vector<MusicRegionTrack>&tracks()const{return tracks_;}

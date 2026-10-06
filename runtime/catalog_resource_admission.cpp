@@ -271,7 +271,10 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
                           owners->field_details.view(), detail))
     return rejected(error, catalog.path(ResourceRole::FieldItemDetails),
                     detail);
-  if (!owners->music.matches(owners->audio, detail))
+  std::vector<AudioAsset> region_assets;
+  if (!owners->music.select_assets(owners->audio, owners->audio.master_db(),
+                                   MusicRegionController::maximum_voices,
+                                   region_assets, detail))
     return rejected(error, catalog.path(ResourceRole::MusicRegions), detail);
   if (!admit_room_music_bindings(owners->room.view(), owners->basement,
                                  owners->music, detail))

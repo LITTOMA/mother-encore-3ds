@@ -693,7 +693,7 @@ bool ensure_house_music_backend(std::string&error){
     LoadingScope loading("Preparing scene music",1);
     if(!loading.step([&]{
         if(!region_music.begin_prepare(resource_path(ResourceRole::MusicRegions).c_str(),resource_path(ResourceRole::Audio).c_str(),"romfs:/",4,audio_player,error))return false;
-        for(;;){const auto result=ctr::pump_region_music_preparation(region_music,audio_player,128*1024,error);if(result==ctr::MusicPreparationStep::Failed)return false;if(result==ctr::MusicPreparationStep::Ready)return true;report_load_progress(LoadPhase::Scene,region_music.prepared_pcm_bytes(),region_music.total_pcm_bytes());}
+        for(;;){const auto result=ctr::pump_region_music_preparation(region_music,audio_player,ctr::MusicRegionPlayer::maximum_prepare_budget,error);if(result==ctr::MusicPreparationStep::Failed)return false;if(result==ctr::MusicPreparationStep::Ready)return true;report_load_progress(LoadPhase::Scene,region_music.prepared_pcm_bytes(),region_music.total_pcm_bytes());}
     },"owned-music-pcm"))return false;
     return loading.finish();
 }

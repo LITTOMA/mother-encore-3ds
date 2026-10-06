@@ -302,6 +302,18 @@ bool PodunkHouseContinuation::initialize(PodunkHouseContinuationInput input,
     return s.root.construct(id, spec, out, error);
   };
   if (!s.registry.initialize(s.registry_data, std::move(host), e) ||
+      !s.root.bind_parent_observer(
+          [&s](auto parent, auto child, auto &error) {
+            return s.registry.observe_external_parent(parent, child, error);
+          }, e) ||
+      !s.root.bind_child_notifications(
+          [&s](auto child, auto phase, auto &error) {
+            FieldDeferredMessage message;
+            message.object = child;
+            message.kind = FieldDeferredKind::Notification;
+            message.notification = int32_t(phase);
+            return s.registry.dispatch(message, error);
+          }, e) ||
       !s.input.signals->initialize(
           s.registry,
           [this](auto id, auto name, auto &arity, auto &error) {

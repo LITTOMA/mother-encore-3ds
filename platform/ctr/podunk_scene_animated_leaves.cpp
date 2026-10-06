@@ -203,8 +203,9 @@ bool PodunkSceneAnimatedLeaves::phase(FieldObjectId id, FieldTreePhase p,
       playing = v->playing;
     } else {
       FieldSparklesInstance v;
-      if (!sparkles_->snapshot(source, v) || !v.ready)
-        return fail(e, "Sparkles same source script Ready not completed");
+      if (!sparkles_->source_constructed(source) ||
+          !sparkles_->snapshot(source, v))
+        return fail(e, "Sparkles same source constructor not completed");
       playing = v.playing;
     }
     if (!schedule(id, playing, e))

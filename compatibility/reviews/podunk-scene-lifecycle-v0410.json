@@ -3,7 +3,7 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_admitted": false,
-  "ir_sha256": "fbe055d7de935c844195ff703c3d7c1e7651550ad9cfd7884ee0e01b066e0770",
+  "ir_sha256": "2501db01db975867edb44616b50d09fe04fb788e208311697259ce569f23253a",
   "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
   "capability": "complete source script roster; FlagLandmark, FlaggableObject base methods, AreaRoom, DebugStart lifecycle only; all 71 Emotes typed onready object bindings",
   "source_classes": [
@@ -84,7 +84,7 @@
     ]
   },
   "field_object_reviews": {
-    "native-field-present": {
+    "native-field-present:20": {
       "ir_sha256": "3e0dbc6d84e9fa346aa244c54b24ce7355d4874e2bb1257c23a05f1b821a8cd6",
       "role": 20,
       "count": 16,
@@ -102,7 +102,7 @@
         "Actual inventory item definitions, source Room dialogue, prompt child Ready and tint/fetcher endpoints must be admitted by live SceneHost before activation"
       ]
     },
-    "native-field-dropped": {
+    "native-field-dropped:21": {
       "ir_sha256": "a1b3d66b7b373a4355f9c7eb306cc55e0ffb7e071609ede90e3eeb8a1713b980",
       "role": 21,
       "count": 3,
@@ -120,7 +120,7 @@
         "Runtime factory set_item outside the three serialized Podunk instances remains explicit unsupported; source built-in Error texture editor fallback is not used in game"
       ]
     },
-    "podunk-openable-door": {
+    "podunk-openable-door:16": {
       "ir_sha256": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
       "role": 16,
       "count": 10,
@@ -130,7 +130,7 @@
         "Source exported sprite setters execute before Ready; quarantined native null child textures are not authoritative"
       ]
     },
-    "podunk-sparkles": {
+    "podunk-sparkles:17": {
       "ir_sha256": "fe340fcc46f59936fc2ba696e2596df673674b7020cdafadba09a3a6338ad612",
       "role": 17,
       "count": 22,
@@ -142,7 +142,7 @@
         "Formal Podunk activation still rejects every uncovered Ready mechanism"
       ]
     },
-    "native-field-payphone": {
+    "native-field-payphone:19": {
       "ir_sha256": "71919c1ac49818d5c93291029d6232d6ad8e27de24161689803749118705f1a3",
       "role": 19,
       "count": 4,
@@ -156,7 +156,7 @@
       ],
       "pending": []
     },
-    "native-field-butterfly": {
+    "native-field-butterfly:22": {
       "ir_sha256": "7c46ebe5d8613de4c984781642495b8b55c4fe31be09d2902fe38728ff048ea0",
       "role": 22,
       "count": 94,
@@ -175,7 +175,7 @@
         "Live parent changes/rotation/skew or generic colliding butterfly body need next explicit capability, not silent approximation"
       ]
     },
-    "native-field-cutscene-area": {
+    "native-field-cutscene-area:23": {
       "ir_sha256": "95a446efcb806276f07f59dc766a20f3a089129e9b5eacf8f81489f3182d90e4",
       "role": 23,
       "count": 15,
@@ -195,7 +195,7 @@
         "No generic Area2D physics emulation or arbitrary unknown source signal listeners"
       ]
     },
-    "podunk-birds": {
+    "podunk-birds:24": {
       "ir_sha256": "64a95f12079e47f73e7804ce50071c1df4d83c8d32e1910106e497ddc63ce8f9",
       "role": 24,
       "count": 54,
@@ -207,7 +207,7 @@
         "Full Podunk activation remains pending other source consumers"
       ]
     },
-    "podunk-camera-area": {
+    "podunk-camera-area:25": {
       "ir_sha256": "676859a2a0ae5853de717106d9e39cfdc246a29d99803fae5aca8ab6bf0e105e",
       "role": 25,
       "count": 1,
@@ -219,7 +219,7 @@
         "Full GameCamera14/Shaker/MapArrows and other scene families remain independent pending"
       ]
     },
-    "native-field-music-changer": {
+    "native-field-music-changer:26": {
       "ir_sha256": "79065ecb3aef9a4b5b382fbccccdbe82a8b590274fec8c2a846873aa37796e71",
       "role": 26,
       "count": 13,
@@ -238,6 +238,164 @@
         "Future intro+loop/diegetic regions or initially disabled nodes require evolved shared real MusicRegion service before admission",
         "Unknown external idle listeners that interleave unrelated music mutations with the service batch must be rejected by actual scene host admission",
         "Audio preparation/scene commit/Room history and real NDSP remain mandatory service Host duties, never replaced by successful fake records"
+      ]
+    },
+    "podunk-camera-arrows:27": {
+      "ir_sha256": "18327ef7815385ae273feb2646327be5cac1182fb6078098343c293dbeeb51d5",
+      "role": 27,
+      "count": 14,
+      "semantics": [],
+      "pending": [
+        "Actual liveGameCamera, source parent/material/Canvas and OS update_pending/process gates",
+        "Real synchronous AnimationPlayer/AnimatedSprite signals and ordered one-shot frame_changed resync",
+        "No generic input aliases: controlsManager pressed/released direction arrays must preserve source dictionary directions",
+        "Full GameCamera14 and other scene classes independently pending"
+      ]
+    },
+    "native-field-scene-actions:29": {
+      "ir_sha256": "0d706b36df7e2b409502514dbb6ad6d446aade5fc3ddf961ff12a494ba60f1f6",
+      "role": 29,
+      "count": 14,
+      "semantics": [
+        "Actual14 Reparenter and4 EventActivator; source NodePaths cache object identities once in onready/Ready, not re-resolved after removal or renaming",
+        "For each cached object skip known null/newparent-null/equal-parent/no-parent; otherwise immediate remove_child then global FIFO deferred add_child, then mask then layer, with parent property reads in source expression order",
+        "Local transform remains unchanged; actual SceneTree exit/enter, map render depth/inherited visibility/tint and physical quadrant/shape registration must be handled by typed actual scene host",
+        "Reparent targets are six leaf TileMaps and two leaf CollisionPolygon2D (no target-camera/viewport/script descendants); source parents are TileMap/Stone Area2D; no fabricated Camera/PersistTree changes or request_ready",
+        "Godot3.6.2 MessageQueue TYPE_SET uses Object.set without r_valid; no-script CollisionPolygon2D absent collision_mask/layer writes are known source no-ops but still occupy FIFO positions; other unknown property/capability refuses",
+        "EventActivator exact player enter checks flags.has AND state, absent checkflag does not activate; direct activate_event bypasses trigger guard; method call precedes flag-set",
+        "Method present is checked actual SteppingSounds.enable/disable; missing/null/empty method follows source no-call branch, not fabricated generic call; actual stepping consumer admission mandatory",
+        "set_flag changes only existing dictionary key and never creates missing flags; default true remains binary source tuning",
+        "No RNG, timers, cutscene polling or generic GDScript evaluator added; deferred entries use scene-global issued identities and actual source queue flush ordering"
+      ],
+      "pending": [
+        "Scene host without real dynamic TileMap quadrant or CollisionPolygon parent owner detach/attach must refuse reparent plan before first mutation",
+        "Stepping Sounds typed consumer method unavailable rejects prior to source call or subsequent flag write",
+        "Any future Camera/Viewport/Persist subtree, scripted reparented target, arbitrary method or property requires a reviewed typed capability"
+      ]
+    },
+    "native-field-scene-actions:30": {
+      "ir_sha256": "0d706b36df7e2b409502514dbb6ad6d446aade5fc3ddf961ff12a494ba60f1f6",
+      "role": 30,
+      "count": 4,
+      "semantics": [
+        "Actual14 Reparenter and4 EventActivator; source NodePaths cache object identities once in onready/Ready, not re-resolved after removal or renaming",
+        "For each cached object skip known null/newparent-null/equal-parent/no-parent; otherwise immediate remove_child then global FIFO deferred add_child, then mask then layer, with parent property reads in source expression order",
+        "Local transform remains unchanged; actual SceneTree exit/enter, map render depth/inherited visibility/tint and physical quadrant/shape registration must be handled by typed actual scene host",
+        "Reparent targets are six leaf TileMaps and two leaf CollisionPolygon2D (no target-camera/viewport/script descendants); source parents are TileMap/Stone Area2D; no fabricated Camera/PersistTree changes or request_ready",
+        "Godot3.6.2 MessageQueue TYPE_SET uses Object.set without r_valid; no-script CollisionPolygon2D absent collision_mask/layer writes are known source no-ops but still occupy FIFO positions; other unknown property/capability refuses",
+        "EventActivator exact player enter checks flags.has AND state, absent checkflag does not activate; direct activate_event bypasses trigger guard; method call precedes flag-set",
+        "Method present is checked actual SteppingSounds.enable/disable; missing/null/empty method follows source no-call branch, not fabricated generic call; actual stepping consumer admission mandatory",
+        "set_flag changes only existing dictionary key and never creates missing flags; default true remains binary source tuning",
+        "No RNG, timers, cutscene polling or generic GDScript evaluator added; deferred entries use scene-global issued identities and actual source queue flush ordering"
+      ],
+      "pending": [
+        "Scene host without real dynamic TileMap quadrant or CollisionPolygon parent owner detach/attach must refuse reparent plan before first mutation",
+        "Stepping Sounds typed consumer method unavailable rejects prior to source call or subsequent flag write",
+        "Any future Camera/Viewport/Persist subtree, scripted reparented target, arbitrary method or property requires a reviewed typed capability"
+      ]
+    },
+    "native-field-stepping-sounds:31": {
+      "ir_sha256": "d1f06537ceaf9d7dc3deb8072b20264eb2f02159f35811df16722cba19bd6189",
+      "role": 31,
+      "count": 3,
+      "semantics": [
+        "All three actual source areas preserve complete official convex decomposition in shape-owner order; hidden parent does not disable physics",
+        "Actual source body bilateral OR collision filtering (Area layer2048 mask1); PartyObject identity and current global player equality come from real runtime objects",
+        "Entered player/enabled writes actual run_sound before PartyObject Shadow.set_anim; shadow branch remains active when enabled=false",
+        "Exited empty sound/effect does not write; other actual run_sound is used only by subsequent real Player running audio consumer, not immediately played by this area",
+        "EventActivator enable/disable directly changes source enabled without changing physics monitoring or shadow policy",
+        "Stone polygons28/29 may detach/reparent/add back; actual shape-owner host supplies current registered geometry, keeping original stable shape identity and no duplicate Ready",
+        "Host admission validates actual Player runner and PartyObject AnimatedSprite source endpoints before mutations; no second timer/RNG/audio or replacement physics backend"
+      ],
+      "pending": [
+        "Unknown party shadow/effect or footsteps assets require an evolved reviewed endpoint before admission",
+        "Missing real dynamic shape-owner tree backend, actual PartyObject renderer or Player running audio consumer must refuse admission",
+        "Global physics signal order must remain actual source order; this component does not synthesize trigger events from arbitrary ray points"
+      ]
+    },
+    "native-field-player-transitions:32": {
+      "ir_sha256": "f138b21d91d530d0f34057993d467104e73d63c0242f9ee96e4baf5561983953",
+      "role": 32,
+      "count": 14,
+      "semantics": [
+        "Source Shape overlap, bilateral OR masks, actual player identity; no distance fallback",
+        "RayCast lookup uses last physics collider after look_at, never synchronous invented raycast",
+        "JumpArea source multi-point jump signal waits, party stagger and QUART/QUAD animation curves; no invented gravity",
+        "Stairs use frame-count step accumulator, actual party overlap order and running move_and_slide; source dangling body_exited connection has no callable handler",
+        "Godot 3.6.2 Node._ready/GDScript.call_multilevel_reversed invoke ControlledTwoStatesObject before JumpArea: hide tween captures native Sprite scaleONE/position toward ZERO before leaf Ready stores arrow position and sets scaleZERO"
+      ],
+      "pending": []
+    },
+    "native-field-player-transitions:33": {
+      "ir_sha256": "f138b21d91d530d0f34057993d467104e73d63c0242f9ee96e4baf5561983953",
+      "role": 33,
+      "count": 2,
+      "semantics": [
+        "Source Shape overlap, bilateral OR masks, actual player identity; no distance fallback",
+        "RayCast lookup uses last physics collider after look_at, never synchronous invented raycast",
+        "JumpArea source multi-point jump signal waits, party stagger and QUART/QUAD animation curves; no invented gravity",
+        "Stairs use frame-count step accumulator, actual party overlap order and running move_and_slide; source dangling body_exited connection has no callable handler",
+        "Godot 3.6.2 Node._ready/GDScript.call_multilevel_reversed invoke ControlledTwoStatesObject before JumpArea: hide tween captures native Sprite scaleONE/position toward ZERO before leaf Ready stores arrow position and sets scaleZERO"
+      ],
+      "pending": []
+    },
+    "podunk-game-camera:28": {
+      "ir_sha256": "782d0ad6f9e7244705dd416bb01d7ab8f7d6681610b2c90b4d178575787fca38",
+      "role": 28,
+      "count": 14,
+      "semantics": [],
+      "pending": [
+        "Actual admitted ancestors incl JumpArea; active player/UI/input/currentCamera source bus",
+        "Real viewport/native Camera canvas and source global SceneTree tween ordering, dynamic Shaker factory",
+        "MapArrows bridge with actual source visibility/position/input and no duplicated leaf clocks",
+        "Player Camera belongs to a separate source scene and is not admitted by these14 records"
+      ]
+    },
+    "native-field-door-npc:34": {
+      "ir_sha256": "ad10fd66f02bd52d48f41b9e0db1268ee72c2c97503e20e401a7ea07d1dce960",
+      "role": 34,
+      "count": 1,
+      "semantics": [
+        "One actual source DoorNPC root and real transformed body collider layer4096 mask0; bilateral OR Player filtering, not inspection ray",
+        "Ready conditionally prepends default dialogue row then disables process; actual runtime absolute get_path supplied by SceneTree host forms persistent seen keys",
+        "Only actual global player enter with nonempty selected dialogue enables idle process; both flag-check branches do so; no body-exit connection cancels processing",
+        "UI cutscene/battle/pause blocks but retains processing; first unblocked false flags disables, true starts source coroutine then disables immediately",
+        "Start ordered actual Player.try_to_turn(y=true,x=false), pause(source defaults), cutscene=true, blackbars=true, child AudioStreamPlayer.play then SceneTree create_timer(1)",
+        "Actual source audio bus is SFX; disabled-project native export fallback Master is not substituted for the original serialized bus",
+        "SceneTreeTimer pause_process default true, scaled idle clock, strict time_left<0, global insertion FIFO, new timers during traversal wait until next frame; do not replace with actor paused Timer",
+        "On timeout select dialogue anew using then-current flags/seen keys; last matching row overrides prior rows, first unseen or final entry, mark chosen hash then existing Room.open_dialogue_box_and_unpause(actual player completion)",
+        "After invoking asynchronous open_room_and_unpause, immediately set_cutscene(false); existing Room own yielded Ready later restores actual UI cutscene state; do not invent synchronous completion",
+        "Multiple source coroutine waits are independent global tokens; owner freeing invalidates callback instance but SceneTree timer retains global lifetime",
+        "Unknown programme/turn/player pause/blackbar/audio/timer endpoints reject complete plan before first mutation; no generic VM or fake playback record"
+      ],
+      "pending": [
+        "Existing Room programme must admit question playeremote, Adult/Kid/Female/Shy source voices and cleardialog before actual trigger",
+        "Real source child AudioStreamPlayer WAV/bus routing, global SceneTree timer order and actual scene player/blackbars are mandatory typed Host dependencies",
+        "Scene exit/free distinction and source runtime NodePath identity must come from actual tree owner; no hardcoded /root name"
+      ]
+    },
+    "native-field-melody-background:35": {
+      "ir_sha256": "b8ccd742850fe26176347864050cd4258a3fd0888ac46aeb20a00bd807ffe40f",
+      "role": 35,
+      "count": 1,
+      "semantics": [
+        "One actual Podunk melodyBG YSort and its TextureRect/AnimationPlayer source Ready: alpha0 and show even serialized hidden root",
+        "Actual 16x10 nearest tile texture; original STRETCH_TILE generates UV in texture-pixel units and GLES2 forces repeat despite import repeat=false",
+        "Bounded source vertical oscillation cos(2*UV.x +2*cos(2*TIME)) amplitude.5 and scroll -2*TIME; source global renderer TIME, not animation-local clock",
+        "Actual canvas final_modulate multiplies shader output after custom fragment; retain animation color and self-modulate fade alpha",
+        "GPU adapter extends coverage to400x240 preserving original320x180 centered UV origin, pixels1:1;320x180 is explicit reference mode",
+        "Dialogue actor dictionary iteration order is retained including repeated object aliases; after actor loop global talker is queried and moved independently even if same object",
+        "Each move caches actual current parent identity then subtracts current root LOCAL position, immediately remove_child/add_child; no actor active=false assignment (source commented code is not executed)",
+        "Disappearance only after its SceneTreeTween finished: stop animation/reset clock without restoring color; for every cached entry active existence enables true, position plus current root local position, remove root then add cached parent; clear list after loop",
+        "Repeated aliases may produce known Godot parent mismatch remove/add diagnostics; preserve no-effect source operations and continue, never deduplicate or fabricate successful reparent",
+        "create_tween is bound to actual node, source global idle insertion order and Tree lifecycle; tween_property fadeout reads current value when its first source step starts, fadein explicit from0; TRANS_LINEAR with EASE_OUT remains linear",
+        "Multiple concurrent tweens remain independent tokens and property writers in actual scene-global order; animation idle and tween pass clocks remain separate, no per-component bulk advancement",
+        "GPU consumes cached tiled art with at most two 1px vertical strips per column; no CPU frame texture generation, no dynamic whole-surface upload"
+      ],
+      "pending": [
+        "Actual YSort tree reparent/actor local-transform/camera/dialogue dictionary/talker and typed active setters must be admitted before mutations",
+        "Source unknown animation/tween external listeners or arbitrary shader/material features require reviewed typed capabilities",
+        "Cached actor/parent freed during wait follows actual source invalid-object errors; do not silently discard references or restore to invented parents"
       ]
     }
   }

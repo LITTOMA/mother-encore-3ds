@@ -22,12 +22,14 @@ SOURCES += runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/fie
 SOURCES += runtime/field_prompts_data.cpp runtime/field_prompts.cpp \
  runtime/field_psi.cpp runtime/field_psi_data.cpp runtime/field_psi_telepathy.cpp \
  runtime/field_present.cpp runtime/field_present_data.cpp runtime/field_dropped.cpp runtime/field_dropped_data.cpp runtime/field_sparkles.cpp runtime/field_sparkles_data.cpp runtime/field_openable_door.cpp runtime/field_openable_door_data.cpp runtime/field_payphone.cpp runtime/field_payphone_data.cpp runtime/field_cash_box.cpp runtime/field_cash_box_data.cpp runtime/field_butterfly.cpp runtime/field_butterfly_data.cpp runtime/field_sparkles_owner.cpp \
+ runtime/field_game_camera.cpp runtime/field_game_camera_data.cpp runtime/field_door_npc.cpp runtime/field_door_npc_data.cpp runtime/field_melody_background.cpp runtime/field_melody_background_data.cpp \
+ runtime/field_camera_arrows.cpp runtime/field_camera_arrows_data.cpp runtime/field_scene_actions.cpp runtime/field_scene_actions_data.cpp runtime/field_stepping_sounds.cpp runtime/field_stepping_sounds_data.cpp runtime/field_player_transitions.cpp runtime/field_player_transitions_data.cpp \
  runtime/field_cutscene_area.cpp runtime/field_cutscene_area_data.cpp runtime/field_birds.cpp runtime/field_birds_data.cpp runtime/field_camera_area.cpp runtime/field_camera_area_data.cpp runtime/field_music_changer.cpp runtime/field_music_changer_data.cpp runtime/field_item_definitions.cpp runtime/field_item_definitions_data.cpp \
  runtime/field_interact_dialog.cpp runtime/field_interact_dialog_data.cpp
 SOURCES += runtime/field_dead_bush.cpp runtime/field_dead_bush_data.cpp runtime/field_door.cpp
 SOURCES += runtime/field_emotes_data.cpp runtime/field_emotes.cpp
 SOURCES += runtime/field_sprite_bridge_data.cpp runtime/field_sprite_bridge.cpp runtime/field_sprite_npc_binding.cpp
-SOURCES += runtime/field_data.cpp runtime/field_runtime.cpp runtime/field_map.cpp runtime/field_motion.cpp runtime/field_geometry.cpp runtime/field_geometry_space.cpp runtime/field_npc_data.cpp runtime/field_npc.cpp runtime/field_enemy_data.cpp runtime/field_enemy.cpp runtime/field_tint.cpp
+SOURCES += runtime/field_data.cpp runtime/field_runtime.cpp runtime/field_map_space.cpp runtime/field_map.cpp runtime/field_motion.cpp runtime/field_geometry.cpp runtime/field_geometry_space.cpp runtime/field_npc_data.cpp runtime/field_npc.cpp runtime/field_enemy_data.cpp runtime/field_enemy.cpp runtime/field_tint.cpp
 SOURCES += runtime/item_details.cpp runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp runtime/item_use.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin

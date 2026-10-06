@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "b8ccd742850fe26176347864050cd4258a3fd0888ac46aeb20a00bd807ffe40f",
+  "producer_sha256": "7b343a8b1ea0cd02b8ea6fa44ed9abc2c22061fc46c06454b345b69f6bdb64f5",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "source_sha256": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+  "prepared_pixel_sha256": "37ee426d4b53e5446ad3624b2842aac277cd8f8609fcfa7cd24aa75723676505",
+  "outputs": {
+    "graphics/effects/melody-background/tiled.t3x": {
+      "bytes": 16405,
+      "sha256": "245076b12dabea927be20d60e2b1053066a705b487e48380af03466f9125aebd"
+    }
+  }
+}

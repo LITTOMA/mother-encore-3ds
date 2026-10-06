@@ -128,6 +128,77 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
     return pack && pack->valid() && pack->source_hash(d.source_scene(), hash) &&
            hash == d.identity().source_sha256;
   };
+  if ((c.arrows_data || c.arrows) && (!c.arrows || !closure(c.arrows_data) ||
+                                      c.arrows->data() != c.arrows_data)) {
+    e = "Field SceneHost arrows checked runtime/source differs";
+    return false;
+  }
+  if ((c.actions_data || c.actions) &&
+      (!c.actions || !closure(c.actions_data) ||
+       c.actions->content() != c.actions_data)) {
+    e = "Field SceneHost actions checked runtime/source differs";
+    return false;
+  }
+  if ((c.stepping_data || c.stepping) &&
+      (!c.stepping || !closure(c.stepping_data) ||
+       c.stepping->content() != c.stepping_data)) {
+    e = "Field SceneHost stepping checked runtime/source differs";
+    return false;
+  }
+  if ((c.transitions_data || c.transitions) &&
+      (!c.transitions || !closure(c.transitions_data) ||
+       c.transitions->content() != c.transitions_data)) {
+    e = "Field SceneHost transitions checked runtime/source differs";
+    return false;
+  }
+  if ((c.camera_data || c.camera) &&
+      (!c.camera || !closure(c.camera_data) ||
+       c.camera->data() != c.camera_data ||
+       !identity(d.identity(), c.camera_data->identity()))) {
+    e = "Field SceneHost camera checked runtime/source differs";
+    return false;
+  }
+  if ((c.door_npc_data || c.door_npc) &&
+      (!c.door_npc || !closure(c.door_npc_data) ||
+       c.door_npc->content() != c.door_npc_data ||
+       c.door_npc_data->source_pin() != d.identity().upstream_commit)) {
+    e = "Field SceneHost door_npc checked runtime/source differs";
+    return false;
+  }
+  if ((c.melody_data || c.melody) &&
+      (!c.melody || !closure(c.melody_data) ||
+       c.melody->content() != c.melody_data ||
+       c.melody_data->source_pin() != d.identity().upstream_commit)) {
+    e = "Field SceneHost melody checked runtime/source differs";
+    return false;
+  }
+  if (c.camera_data && (!c.random || !c.arrows_data || !c.arrows)) {
+    e = "Field SceneHost camera actual scope/shared RNG missing";
+    return false;
+  }
+  if (c.map_space && (!c.map || c.map_space->source() != c.map)) {
+    e = "Field SceneHost dynamic map resource differs";
+    return false;
+  }
+  if (c.arrows_data && !identity(d.identity(), c.arrows_data->identity())) {
+    e = "Field SceneHost MapArrows source identity differs";
+    return false;
+  }
+  if (c.actions_data &&
+      c.actions_data->source_pin() != d.identity().upstream_commit) {
+    e = "Field SceneHost actions source pin differs";
+    return false;
+  }
+  if (c.stepping_data &&
+      c.stepping_data->source_pin() != d.identity().upstream_commit) {
+    e = "Field SceneHost stepping source pin differs";
+    return false;
+  }
+  if (c.transitions_data &&
+      c.transitions_data->source_pin() != d.identity().upstream_commit) {
+    e = "Field SceneHost transitions source pin differs";
+    return false;
+  }
   if ((c.present_data || c.present) &&
       (!c.present || !closure(c.present_data) ||
        !(c.present_data->source_pin() == d.identity().upstream_commit))) {
@@ -474,6 +545,57 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
         return false;
       }
     }
+  if (c.arrows_data)
+    for (const auto &n : c.arrows_data->records())
+      if (!exact_leaf(c.arrows_data, n.id, n.ready, n.node,
+                      FieldSceneRole::MapArrows)) {
+        e = "Field SceneHost arrows source Ready differs";
+        return false;
+      }
+  if (c.stepping_data)
+    for (const auto &n : c.stepping_data->bindings())
+      if (!exact_leaf(c.stepping_data, n.id, n.ready_ordinal, n.node,
+                      FieldSceneRole::SteppingSounds)) {
+        e = "Field SceneHost stepping source Ready differs";
+        return false;
+      }
+  if (c.actions_data)
+    for (const auto &n : c.actions_data->bindings())
+      if (!exact_leaf(c.actions_data, n.id, n.ready_ordinal, n.node,
+                      n.kind == 1 ? FieldSceneRole::Reparenter
+                                  : FieldSceneRole::EventActivator)) {
+        e = "Field SceneHost actions source Ready differs";
+        return false;
+      }
+  if (c.transitions_data)
+    for (const auto &n : c.transitions_data->records())
+      if (!exact_leaf(c.transitions_data, n.id, n.ready, n.node,
+                      n.kind == 1 ? FieldSceneRole::JumpArea
+                                  : FieldSceneRole::Stairs)) {
+        e = "Field SceneHost transitions source Ready differs";
+        return false;
+      }
+  if (c.camera_data)
+    for (const auto &n : c.camera_data->records())
+      if (!exact_leaf(c.camera_data, n.id, n.ready, n.node,
+                      FieldSceneRole::GameCamera)) {
+        e = "Field SceneHost camera source Ready differs";
+        return false;
+      }
+  if (c.door_npc_data)
+    for (const auto &n : c.door_npc_data->bindings())
+      if (!exact_leaf(c.door_npc_data, n.id, n.ready_ordinal, n.node,
+                      FieldSceneRole::DoorNpc)) {
+        e = "Field SceneHost door_npc source Ready differs";
+        return false;
+      }
+  if (c.melody_data)
+    for (const auto &n : c.melody_data->bindings())
+      if (!exact_leaf(c.melody_data, n.id, n.ready_ordinal, n.node,
+                      FieldSceneRole::MelodyBackground)) {
+        e = "Field SceneHost melody source Ready differs";
+        return false;
+      }
   if (c.npc_data)
     for (const auto &n : c.npc_data->npcs())
       if (!match(n.id, n.ready_ordinal, n.node, FieldSceneRole::Npc)) {
@@ -842,7 +964,8 @@ bool FieldSceneHost::bind_geometry(const FieldSceneReady &n, uint32_t family,
 bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
                               std::string &e) {
   pending = false;
-  uint32_t family = 0x454e001c, capability = 1u << uint32_t(n.role);
+  uint32_t family = 0x454e001c,
+           capability = uint32_t(n.role) < 32 ? 1u << uint32_t(n.role) : 0;
   auto unavailable = [&](const char *why) {
     pending = true;
     e = why;
@@ -920,6 +1043,74 @@ bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
       return unavailable("Butterfly actual scene/shared RNG consumer missing");
     if (!consumers_.butterfly->ready(n.id, *consumers_.random, e))
       return false;
+    break;
+  case FieldSceneRole::GameCamera:
+    if (!consumers_.camera || !consumers_.camera->state(n.id))
+      return unavailable(
+          "GameCamera native descendants not instantiated before Ready");
+    if (!consumers_.camera->ready(n.id)) {
+      e = consumers_.camera->error();
+      return false;
+    }
+    family = 0x454e0031;
+    capability = 3;
+    break;
+  case FieldSceneRole::MelodyBackground:
+    if (!consumers_.melody)
+      return unavailable("MelodyBG actual actor/tree/tween host missing");
+    if (!consumers_.melody->ready(n.id, e))
+      return false;
+    family = 0x454e003a;
+    capability = 1;
+    break;
+  case FieldSceneRole::DoorNpc:
+    if (!consumers_.door_npc)
+      return unavailable("DoorNPC actual Room/audio/timer host missing");
+    if (!consumers_.door_npc->ready(n.id, e))
+      return false;
+    family = 0x454e0038;
+    capability = 1;
+    break;
+  case FieldSceneRole::MapArrows:
+    if (!consumers_.arrows)
+      return unavailable("Actual arrows source host missing");
+    if (!consumers_.arrows->root_state(n.id))
+      return unavailable(
+          "MapArrows source native children/signals missing before Ready");
+    if (!consumers_.arrows->ready(n.id)) {
+      e = consumers_.arrows->error();
+      return false;
+    }
+    family = 0x454e0030;
+    capability = 3;
+    break;
+  case FieldSceneRole::Reparenter:
+  case FieldSceneRole::EventActivator:
+    if (!consumers_.actions)
+      return unavailable("Actual actions source host missing");
+    if (!consumers_.actions->ready(n.id, e))
+      return false;
+    family = 0x454e0036;
+    capability = 1;
+    break;
+  case FieldSceneRole::SteppingSounds:
+    if (!consumers_.stepping)
+      return unavailable("Actual stepping source host missing");
+    if (!consumers_.stepping->ready(n.id, e))
+      return false;
+    family = 0x454e0037;
+    capability = 1;
+    break;
+  case FieldSceneRole::JumpArea:
+  case FieldSceneRole::Stairs:
+    if (!consumers_.transitions)
+      return unavailable("Actual transitions source host missing");
+    if (!consumers_.transitions->ready(n.id)) {
+      e = consumers_.transitions->error();
+      return false;
+    }
+    family = 0x454e0035;
+    capability = 1;
     break;
   case FieldSceneRole::CutsceneArea:
     if (!consumers_.cutscene)

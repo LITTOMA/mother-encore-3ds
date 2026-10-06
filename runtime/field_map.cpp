@@ -125,12 +125,20 @@ bool FieldMapView::spatial_chunks(FieldMapRect area,std::vector<uint32_t>& outpu
 bool FieldMapView::collect_draws(FieldMapRect area,const FieldMapGateQuery& gates,size_t capacity,std::vector<uint32_t>& output,std::string& error) const {
     if(!valid()||!bounds(area)){error="Invalid field map draw query";return false;}std::vector<uint32_t> found;std::vector<uint8_t> enabled(map_count());
     for(uint32_t i=0;i<map_count();++i){bool active;if(!map_active(i,gates,true,active,error))return false;enabled[i]=active;}
+    return collect_draws_masked(area,enabled,capacity,output,error);
+}
+bool FieldMapView::collect_draws_masked(FieldMapRect area,const std::vector<uint8_t>&enabled,size_t capacity,std::vector<uint32_t>&output,std::string&error)const{
+ if(!valid()||!bounds(area)||enabled.size()!=map_count()||std::any_of(enabled.begin(),enabled.end(),[](uint8_t v){return v>1;})){error="Field live map query/mask rejected";return false;}std::vector<uint32_t>found;
     std::vector<uint32_t> candidates;if(!spatial_chunks(area,candidates,error))return false;
     for(uint32_t i:candidates){auto r=record(11,i);if(!enabled[u32(r)]||!intersects(area,{vec(r+28),vec(r+36)}))continue;for(uint32_t j=u32(r+12),end=j+u32(r+16);j<end;++j)if(intersects(area,draw_bounds(draw(j)))){if(found.size()==capacity){error="Field map visible draw capacity exceeded";return false;}found.push_back(j);}}
     output.swap(found);error.clear();return true;
 }
 bool FieldMapView::collision_polygons(FieldMapRect area,uint32_t mask,const FieldMapGateQuery& gates,size_t capacity,std::vector<uint32_t>& output,std::string& error) const {
     if(!valid()||!bounds(area)){error="Invalid field map collision query";return false;}std::vector<uint32_t> found;std::vector<uint8_t> enabled(map_count());for(uint32_t i=0;i<map_count();++i){bool active;if(!map_active(i,gates,false,active,error))return false;enabled[i]=active&&(map(i).layer&mask);}
+    return collision_polygons_masked(area,enabled,capacity,output,error);
+}
+bool FieldMapView::collision_polygons_masked(FieldMapRect area,const std::vector<uint8_t>&enabled,size_t capacity,std::vector<uint32_t>&output,std::string&error)const{
+ if(!valid()||!bounds(area)||enabled.size()!=map_count()||std::any_of(enabled.begin(),enabled.end(),[](uint8_t v){return v>1;})){error="Field live map query/mask rejected";return false;}std::vector<uint32_t>found;
     std::vector<uint32_t> candidates;if(!spatial_chunks(area,candidates,error))return false;
     for(uint32_t i:candidates){auto r=record(11,i);if(!enabled[u32(r)]||!intersects(area,{vec(r+28),vec(r+36)}))continue;for(uint32_t j=u32(r+20),end=j+u32(r+24);j<end;++j)if(intersects(area,polygon(j).bounds)){if(found.size()==capacity){error="Field map collision capacity exceeded";return false;}found.push_back(j);}}
     output.swap(found);error.clear();return true;

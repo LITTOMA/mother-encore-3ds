@@ -8,7 +8,7 @@ $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house items-check items session migration restore \
- continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle field-present field-dropped field-sparkles field-openable field-payphone field-cash-box field-butterfly field-cutscene field-birds field-camera-area field-music-changer field-item-definitions
+ continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle field-present field-dropped field-sparkles field-openable field-payphone field-cash-box field-butterfly field-cutscene field-birds field-camera-area field-music-changer field-item-definitions field-camera-arrows field-scene-actions field-stepping-sounds field-player-transitions field-game-camera field-door-npc field-melody-background
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
@@ -30,7 +30,7 @@ drawer: house
 storage: items
 item-details: items
 field-equipment: items item-details
-field-lifecycle: field-cutscene field-birds field-camera-area field-music-changer field-interact field-present field-dropped field-sparkles field-openable field-payphone field-butterfly
+field-lifecycle: field-melody-background field-game-camera field-door-npc field-camera-arrows field-scene-actions field-stepping-sounds field-player-transitions field-cutscene field-birds field-camera-area field-music-changer field-interact field-present field-dropped field-sparkles field-openable field-payphone field-butterfly
 field-interact:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_interact_dialog.py compile
 field-lifecycle:
@@ -153,3 +153,24 @@ field-music-changer:
 
 field-item-definitions:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_item_definitions.py compile
+
+field-camera-arrows:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_camera_arrows.py compile
+
+field-scene-actions:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_scene_actions.py compile
+
+field-stepping-sounds:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_stepping_sounds.py compile
+
+field-player-transitions:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_player_transitions.py compile
+
+field-game-camera:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_game_camera.py compile
+
+field-door-npc:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_door_npc.py compile
+
+field-melody-background:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_melody_background.py compile

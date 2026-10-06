@@ -32,6 +32,20 @@ add_library(encore_core
     runtime/field_butterfly.cpp
     runtime/field_butterfly_data.cpp
     runtime/field_sparkles_owner.cpp
+    runtime/field_game_camera.cpp
+    runtime/field_game_camera_data.cpp
+    runtime/field_door_npc.cpp
+    runtime/field_door_npc_data.cpp
+    runtime/field_melody_background.cpp
+    runtime/field_melody_background_data.cpp
+    runtime/field_camera_arrows.cpp
+    runtime/field_camera_arrows_data.cpp
+    runtime/field_scene_actions.cpp
+    runtime/field_scene_actions_data.cpp
+    runtime/field_stepping_sounds.cpp
+    runtime/field_stepping_sounds_data.cpp
+    runtime/field_player_transitions.cpp
+    runtime/field_player_transitions_data.cpp
     runtime/field_cutscene_area.cpp
     runtime/field_cutscene_area_data.cpp
     runtime/field_birds.cpp
@@ -49,7 +63,8 @@ add_library(encore_core
     runtime/field_door.cpp
     runtime/field_emotes_data.cpp runtime/field_emotes.cpp
     runtime/field_sprite_bridge_data.cpp runtime/field_sprite_bridge.cpp runtime/field_sprite_npc_binding.cpp
-    runtime/field_data.cpp runtime/field_runtime.cpp runtime/field_map.cpp runtime/field_motion.cpp runtime/field_geometry.cpp runtime/field_geometry_space.cpp runtime/field_npc_data.cpp runtime/field_npc.cpp runtime/field_enemy_data.cpp runtime/field_enemy.cpp runtime/field_tint.cpp
+    runtime/field_data.cpp runtime/field_runtime.cpp runtime/field_map_space.cpp
+    runtime/field_map.cpp runtime/field_motion.cpp runtime/field_geometry.cpp runtime/field_geometry_space.cpp runtime/field_npc_data.cpp runtime/field_npc.cpp runtime/field_enemy_data.cpp runtime/field_enemy.cpp runtime/field_tint.cpp
     runtime/music_regions.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
     runtime/game.cpp runtime/save.cpp runtime/progression.cpp runtime/movement.cpp runtime/animation.cpp runtime/collision.cpp runtime/world_flags.cpp runtime/world.cpp runtime/opening_trigger.cpp runtime/dialogue.cpp runtime/actor_actions.cpp runtime/cutscene_camera.cpp)
 target_include_directories(encore_core PUBLIC include)

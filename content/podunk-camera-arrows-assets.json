@@ -1,0 +1,17 @@
+{
+  "source_sha256": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+  "output_sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516",
+  "bytes": 1045,
+  "ir_sha256": "18327ef7815385ae273feb2646327be5cac1182fb6078098343c293dbeeb51d5",
+  "producer_sha256": "e78d0d9bba1e2652d8a8407df4d81bec688c0745744f6b7203797280367ca4ab",
+  "format": "rgba8",
+  "compression": "none",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "program": {
+    "source_sha256": "6c654ebd2a1828acca33a5342ebe50b41c8aac7aa475ad57eec15f4ac0357e59",
+    "output_sha256": "24ba7af2bbe9913ba99bbb9d17bcef15a9286465723e564171a29b528a877287",
+    "bytes": 280,
+    "crc": 1630809928,
+    "picasso_sha256": "820f26b51fbf3481d7decb4dead58f3f8b7978affb01e43b5e6e72983c1681cb"
+  }
+}

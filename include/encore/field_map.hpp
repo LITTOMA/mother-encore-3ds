@@ -82,6 +82,10 @@ public:
     // Capacity exhaustion reports an error; no partial frame/collision list.
     bool collect_draws(FieldMapRect,const FieldMapGateQuery&,size_t,std::vector<uint32_t>&,std::string&) const;
     bool collision_polygons(FieldMapRect,uint32_t layer_mask,const FieldMapGateQuery&,size_t,std::vector<uint32_t>&,std::string&) const;
+    // Primitive spatial collection after a trusted live scene consumer has
+    // evaluated current canvas ancestry and masks. This grants no Ready role.
+    bool collect_draws_masked(FieldMapRect,const std::vector<uint8_t>&,size_t,std::vector<uint32_t>&,std::string&)const;
+    bool collision_polygons_masked(FieldMapRect,const std::vector<uint8_t>&,size_t,std::vector<uint32_t>&,std::string&)const;
     Vec2 sort_anchor(uint32_t draw_index) const;
     bool start_animation(uint32_t texture_index,FieldMapAnimationState&,std::string&) const;
     // Native AnimatedTexture::_update_proxy: f32 accumulator, strict >,

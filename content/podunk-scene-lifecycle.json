@@ -12837,7 +12837,7 @@
       "node": "Objects/Zoo Flag/Jump Area/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4006,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -12847,7 +12847,7 @@
       "node": "Objects/Zoo Flag/Jump Area/Camera2D",
       "name": "Camera2D",
       "ready": 4007,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -12857,7 +12857,7 @@
       "node": "Objects/Zoo Flag/Jump Area",
       "name": "Jump Area",
       "ready": 4010,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -12867,7 +12867,7 @@
       "node": "Objects/Zoo Flag/Jump Area2/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4031,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -12877,7 +12877,7 @@
       "node": "Objects/Zoo Flag/Jump Area2/Camera2D",
       "name": "Camera2D",
       "ready": 4032,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -12887,7 +12887,7 @@
       "node": "Objects/Zoo Flag/Jump Area2",
       "name": "Jump Area2",
       "ready": 4035,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -12897,7 +12897,7 @@
       "node": "Objects/Zoo Flag/Jump Area3/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4056,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -12907,7 +12907,7 @@
       "node": "Objects/Zoo Flag/Jump Area3/Camera2D",
       "name": "Camera2D",
       "ready": 4057,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -12917,7 +12917,7 @@
       "node": "Objects/Zoo Flag/Jump Area3",
       "name": "Jump Area3",
       "ready": 4060,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -12927,7 +12927,7 @@
       "node": "Objects/Zoo Flag/Jump Area7/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4083,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -12937,7 +12937,7 @@
       "node": "Objects/Zoo Flag/Jump Area7/Camera2D",
       "name": "Camera2D",
       "ready": 4084,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -12947,7 +12947,7 @@
       "node": "Objects/Zoo Flag/Jump Area7",
       "name": "Jump Area7",
       "ready": 4087,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -12957,7 +12957,7 @@
       "node": "Objects/Zoo Flag/Jump Area8/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4110,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -12967,7 +12967,7 @@
       "node": "Objects/Zoo Flag/Jump Area8/Camera2D",
       "name": "Camera2D",
       "ready": 4111,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -12977,7 +12977,7 @@
       "node": "Objects/Zoo Flag/Jump Area8",
       "name": "Jump Area8",
       "ready": 4114,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -12987,7 +12987,7 @@
       "node": "Objects/Zoo Flag/Jump Area6/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4138,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -12997,7 +12997,7 @@
       "node": "Objects/Zoo Flag/Jump Area6/Camera2D",
       "name": "Camera2D",
       "ready": 4139,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13007,7 +13007,7 @@
       "node": "Objects/Zoo Flag/Jump Area6",
       "name": "Jump Area6",
       "ready": 4142,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13017,7 +13017,7 @@
       "node": "Objects/Zoo Flag/Jump Area5/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4166,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13027,7 +13027,7 @@
       "node": "Objects/Zoo Flag/Jump Area5/Camera2D",
       "name": "Camera2D",
       "ready": 4167,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13037,7 +13037,7 @@
       "node": "Objects/Zoo Flag/Jump Area5",
       "name": "Jump Area5",
       "ready": 4170,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13047,7 +13047,7 @@
       "node": "Objects/Zoo Flag/Jump Area4/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4191,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13057,7 +13057,7 @@
       "node": "Objects/Zoo Flag/Jump Area4/Camera2D",
       "name": "Camera2D",
       "ready": 4192,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13067,7 +13067,7 @@
       "node": "Objects/Zoo Flag/Jump Area4",
       "name": "Jump Area4",
       "ready": 4195,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13077,7 +13077,7 @@
       "node": "Objects/Zoo Flag/Stairs",
       "name": "Stairs",
       "ready": 4197,
-      "role": 0,
+      "role": 33,
       "profile": 4294967295,
       "script": "Scripts/Main/Stairs.gd",
       "sha256": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5"
@@ -13087,7 +13087,7 @@
       "node": "Objects/Zoo Flag/Stairs2",
       "name": "Stairs2",
       "ready": 4199,
-      "role": 0,
+      "role": 33,
       "profile": 4294967295,
       "script": "Scripts/Main/Stairs.gd",
       "sha256": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5"
@@ -13667,7 +13667,7 @@
       "node": "Objects/Jump Area/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4469,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13677,7 +13677,7 @@
       "node": "Objects/Jump Area/Camera2D",
       "name": "Camera2D",
       "ready": 4470,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13687,7 +13687,7 @@
       "node": "Objects/Jump Area",
       "name": "Jump Area",
       "ready": 4473,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13697,7 +13697,7 @@
       "node": "Objects/Jump Area2/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4496,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13707,7 +13707,7 @@
       "node": "Objects/Jump Area2/Camera2D",
       "name": "Camera2D",
       "ready": 4497,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13717,7 +13717,7 @@
       "node": "Objects/Jump Area2",
       "name": "Jump Area2",
       "ready": 4500,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13727,7 +13727,7 @@
       "node": "Objects/Jump Area3/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4522,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13737,7 +13737,7 @@
       "node": "Objects/Jump Area3/Camera2D",
       "name": "Camera2D",
       "ready": 4523,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13747,7 +13747,7 @@
       "node": "Objects/Jump Area3",
       "name": "Jump Area3",
       "ready": 4526,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13757,7 +13757,7 @@
       "node": "Objects/Jump Area4/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4548,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13767,7 +13767,7 @@
       "node": "Objects/Jump Area4/Camera2D",
       "name": "Camera2D",
       "ready": 4549,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13777,7 +13777,7 @@
       "node": "Objects/Jump Area4",
       "name": "Jump Area4",
       "ready": 4552,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13787,7 +13787,7 @@
       "node": "Objects/Jump Area5/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4575,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13797,7 +13797,7 @@
       "node": "Objects/Jump Area5/Camera2D",
       "name": "Camera2D",
       "ready": 4576,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13807,7 +13807,7 @@
       "node": "Objects/Jump Area5",
       "name": "Jump Area5",
       "ready": 4579,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -13817,7 +13817,7 @@
       "node": "Objects/Jump Area6/Camera2D/ScopeArrows",
       "name": "ScopeArrows",
       "ready": 4602,
-      "role": 0,
+      "role": 27,
       "profile": 4294967295,
       "script": "Scripts/UI/MapScreen/MapArrows.gd",
       "sha256": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185"
@@ -13827,7 +13827,7 @@
       "node": "Objects/Jump Area6/Camera2D",
       "name": "Camera2D",
       "ready": 4603,
-      "role": 0,
+      "role": 28,
       "profile": 4294967295,
       "script": "Scripts/Main/Camera2D.gd",
       "sha256": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
@@ -13837,7 +13837,7 @@
       "node": "Objects/Jump Area6",
       "name": "Jump Area6",
       "ready": 4606,
-      "role": 0,
+      "role": 32,
       "profile": 4294967295,
       "script": "Scripts/Main/Jump Area.gd",
       "sha256": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514"
@@ -18727,7 +18727,7 @@
       "node": "Objects/NPCS/Door NPC",
       "name": "Door NPC",
       "ready": 7526,
-      "role": 0,
+      "role": 34,
       "profile": 4294967295,
       "script": "Scripts/Main/door_npc.gd",
       "sha256": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f"
@@ -21327,7 +21327,7 @@
       "node": "Events/Reparenter",
       "name": "Reparenter",
       "ready": 8563,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21337,7 +21337,7 @@
       "node": "Events/Reparenter3",
       "name": "Reparenter3",
       "ready": 8565,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21347,7 +21347,7 @@
       "node": "Events/Reparenter2",
       "name": "Reparenter2",
       "ready": 8567,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21357,7 +21357,7 @@
       "node": "Events/Reparenter4",
       "name": "Reparenter4",
       "ready": 8569,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21367,7 +21367,7 @@
       "node": "Events/Reparenter9",
       "name": "Reparenter9",
       "ready": 8571,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21377,7 +21377,7 @@
       "node": "Events/Reparenter10",
       "name": "Reparenter10",
       "ready": 8573,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21387,7 +21387,7 @@
       "node": "Events/Reparenter11",
       "name": "Reparenter11",
       "ready": 8575,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21397,7 +21397,7 @@
       "node": "Events/Reparenter12",
       "name": "Reparenter12",
       "ready": 8577,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21407,7 +21407,7 @@
       "node": "Events/Reparenter5",
       "name": "Reparenter5",
       "ready": 8579,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21417,7 +21417,7 @@
       "node": "Events/Reparenter7",
       "name": "Reparenter7",
       "ready": 8581,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21427,7 +21427,7 @@
       "node": "Events/Reparenter6",
       "name": "Reparenter6",
       "ready": 8583,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21437,7 +21437,7 @@
       "node": "Events/Reparenter8",
       "name": "Reparenter8",
       "ready": 8585,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21447,7 +21447,7 @@
       "node": "Events/Reparenter13",
       "name": "Reparenter13",
       "ready": 8587,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21457,7 +21457,7 @@
       "node": "Events/Reparenter14",
       "name": "Reparenter14",
       "ready": 8589,
-      "role": 0,
+      "role": 29,
       "profile": 4294967295,
       "script": "Scripts/Main/Reparenter.gd",
       "sha256": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5"
@@ -21467,7 +21467,7 @@
       "node": "Events/Event Activator",
       "name": "Event Activator",
       "ready": 8591,
-      "role": 0,
+      "role": 30,
       "profile": 4294967295,
       "script": "Scripts/Main/Event Activator.gd",
       "sha256": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247"
@@ -21477,7 +21477,7 @@
       "node": "Events/Event Activator2",
       "name": "Event Activator2",
       "ready": 8593,
-      "role": 0,
+      "role": 30,
       "profile": 4294967295,
       "script": "Scripts/Main/Event Activator.gd",
       "sha256": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247"
@@ -21487,7 +21487,7 @@
       "node": "Events/Event Activator3",
       "name": "Event Activator3",
       "ready": 8595,
-      "role": 0,
+      "role": 30,
       "profile": 4294967295,
       "script": "Scripts/Main/Event Activator.gd",
       "sha256": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247"
@@ -21497,7 +21497,7 @@
       "node": "Events/Event Activator4",
       "name": "Event Activator4",
       "ready": 8598,
-      "role": 0,
+      "role": 30,
       "profile": 4294967295,
       "script": "Scripts/Main/Event Activator.gd",
       "sha256": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247"
@@ -21507,7 +21507,7 @@
       "node": "Stepping Sounds/Wood",
       "name": "Wood",
       "ready": 8606,
-      "role": 0,
+      "role": 31,
       "profile": 4294967295,
       "script": "Scripts/Main/Stepping Sounds.gd",
       "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
@@ -21517,7 +21517,7 @@
       "node": "Stepping Sounds/Grass",
       "name": "Grass",
       "ready": 8608,
-      "role": 0,
+      "role": 31,
       "profile": 4294967295,
       "script": "Scripts/Main/Stepping Sounds.gd",
       "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
@@ -21527,7 +21527,7 @@
       "node": "Stepping Sounds/Stone",
       "name": "Stone",
       "ready": 8640,
-      "role": 0,
+      "role": 31,
       "profile": 4294967295,
       "script": "Scripts/Main/Stepping Sounds.gd",
       "sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85"
@@ -21687,7 +21687,7 @@
       "node": "melodyBG",
       "name": "melodyBG",
       "ready": 8678,
-      "role": 0,
+      "role": 35,
       "profile": 4294967295,
       "script": "Nodes/Ui/effects/melodyBG.gd",
       "sha256": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b"

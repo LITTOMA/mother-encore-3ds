@@ -14,6 +14,15 @@
 #include "encore/field_dead_bush.hpp"
 #include "encore/field_interact_dialog.hpp"
 #include "encore/field_cutscene_area.hpp"
+#include "encore/field_camera_arrows.hpp"
+#include "encore/field_game_camera.hpp"
+#include "encore/field_door_npc.hpp"
+#include "encore/field_melody_background.hpp"
+#include "encore/field_map_space.hpp"
+#include "encore/field_scene_actions.hpp"
+#include "encore/field_stepping_sounds.hpp"
+#include "encore/field_player_transitions.hpp"
+
 #include "encore/field_birds.hpp"
 #include "encore/field_camera_area.hpp"
 #include "encore/field_music_changer.hpp"
@@ -75,6 +84,14 @@ struct FieldSceneConsumers {
  const FieldBirdData*birds_data=nullptr;FieldBirdRuntime*birds=nullptr;
  const FieldCameraAreaData*camera_area_data=nullptr;FieldCameraAreaRuntime*camera_area=nullptr;
  const FieldMusicChangerData*music_data=nullptr;FieldMusicChangerRuntime*music=nullptr;
+ const FieldCameraArrowsData*arrows_data=nullptr;FieldCameraArrowsRuntime*arrows=nullptr;
+ const FieldSceneActionsData*actions_data=nullptr;FieldSceneActionsRuntime*actions=nullptr;
+ const FieldSteppingSoundsData*stepping_data=nullptr;FieldSteppingSoundsRuntime*stepping=nullptr;
+ const FieldPlayerTransitionsData*transitions_data=nullptr;FieldPlayerTransitionsRuntime*transitions=nullptr;
+ const FieldGameCameraData*camera_data=nullptr;FieldGameCameraRuntime*camera=nullptr;
+ const FieldDoorNpcData*door_npc_data=nullptr;FieldDoorNpcRuntime*door_npc=nullptr;
+ const FieldMelodyBackgroundData*melody_data=nullptr;FieldMelodyBackgroundRuntime*melody=nullptr;
+ FieldMapSpace*map_space=nullptr;
  const FieldMapView*map=nullptr;const FieldGeometryView*geometry_data=nullptr;FieldGeometrySpace*geometry=nullptr;
 };
 struct FieldSceneScriptAdmission {uint32_t id=0,family=0,capability=0;std::array<uint8_t,32>source_sha{};};

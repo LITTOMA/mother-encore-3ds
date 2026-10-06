@@ -334,3 +334,16 @@ cookies.json
 !/reports/field-music-changer/source-review.json
 !/reports/field-item-definitions/
 !/reports/field-item-definitions/source-review.json
+
+!/reports/field-scene-actions/
+!/reports/field-scene-actions/source-review.json
+!/reports/field-stepping-sounds/
+!/reports/field-stepping-sounds/source-review.json
+!/reports/field-player-transitions/
+!/reports/field-player-transitions/source-review.json
+
+!/reports/field-door-npc/
+!/reports/field-door-npc/source-review.json
+
+!/reports/field-melody-background/
+!/reports/field-melody-background/source-review.json

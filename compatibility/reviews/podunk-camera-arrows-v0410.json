@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_admitted": false,
+  "ir_sha256": "18327ef7815385ae273feb2646327be5cac1182fb6078098343c293dbeeb51d5",
+  "source_review": [
+    "All14 MapArrows complete ScopeArrows children:56 AnimatedSprite70 AnimationPlayer; all actual source native tracks and SourceState frame overrides",
+    "Original UP/DOWN/LEFT/RIGHT dictionary order; source dynamic animation_finished connections occur duringReady then source show/hide instant playfromend/scalezero",
+    "Original3atlas regions,4orderedIdleframes [1,2,3,2] from actualnative subresource identity,5fps loop; no inferredAtlasTexture payload",
+    "Point/UnPoint source nearest frame/playing and float32 eased offset; mainComeIn/Out source Arrow positions,rootvisibility and childplaying/frame ordered setters",
+    "UnPoint finished seeks firstother visible+playing Arrow, awaiting its actual nextframe_changed then copiesitscurrentframe, real lifetime/one-shot signalbus required",
+    "Source controlsManager direction arrays and sumsign dictionary membership, sourcebounds truthiness and visibilitysetter logic",
+    "Native continuousproperty accumulations apply afterdiscrete setters; source elapsedclamp/approx key/endnotify/no residualdelta preserved",
+    "Original source fractionalrotations e.g -3.141590118408203, local centered floor then allfour transformedGPUvertices pixel snap",
+    "Original GPU atlas sampling and realPICA textured triangle program, shader is port execution with independent source/format receipt"
+  ],
+  "pending": [
+    "Actual liveGameCamera, source parent/material/Canvas and OS update_pending/process gates",
+    "Real synchronous AnimationPlayer/AnimatedSprite signals and ordered one-shot frame_changed resync",
+    "No generic input aliases: controlsManager pressed/released direction arrays must preserve source dictionary directions",
+    "Full GameCamera14 and other scene classes independently pending"
+  ]
+}

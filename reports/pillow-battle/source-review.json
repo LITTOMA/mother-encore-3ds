@@ -87,10 +87,10 @@
   },
   "dependencies": {
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
-    "content/native-opening.json": "cfa374e2cd991dee4dfa7f482a36ae92c564426e818e02a91a1da50b27e3990c",
-    "content/native-round.json": "afcf57de577107e80a0a44b8bb0aa0e7340a40c8a27b9a4aa398eddb2f22e847",
+    "content/native-opening.json": "6007351250e817d3b7dab754b0cc494b858286e1de7e65ac638969d66f4528b6",
+    "content/native-round.json": "6ff6ba4262077a86ef7d3ad3eecf7dba1fe06a75bbb8ee95ff9986fc6c4e2d37",
     "content/pillow-entry.json": "a2d897659f7e838a48cfcdde25f43744fb92ca1212533ae56363d9e606bff407",
-    "content/doll-round.json": "bd00203e90433e30e909301f53d7db199401e1adab705c3c3f0957dfe9b6f220"
+    "content/doll-round.json": "9863e9593da9fb8bbf18b2356fd169810a1f61d78847a8bb676c541b31eeefcb"
   },
   "scope": "Pinned Pillow tackle/float, ordinary defeat/removal, live session rewards with conditional level2 growth, original minnie_leave post-win boundary; no boss effects or new render path",
   "limits": "Pinned source inspection and inherited mechanisms; this extraction is not a Godot execution or hardware check. Source reference/action comparison must be recorded separately."

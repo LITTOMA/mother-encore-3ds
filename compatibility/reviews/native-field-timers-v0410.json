@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "0c3ed5189ffaf3305b96ec9649fdf4b55f870292b7d04529573dde5aa8612fb7",
+  "engine_sources": {
+    "scene/main/timer.cpp": "79e2ce272fd56465d8ccc2a5077bf6dc39422cbc588e71ddfab482eb7a33d862",
+    "scene/main/timer.h": "20a3de2206b528223bd5b1ddf3175dd150e286c305f7ba43857a3dc29e80dd22"
+  },
+  "native": {
+    "Maps/podunk/podunk.tscn": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+    "Nodes/Ui/DialogueBox.tscn": "bf3b7baba9f880836a5e3ae894a05cb1bb7e45dc83d99dc7b4ee61e8fca3af21"
+  },
+  "semantics": [
+    "Original native Timer only; attached and ancestor scripts retain independent required Ready consumers",
+    "314 actual Timer objects: 310 Podunk and 4 complete original DialogueBox nodes",
+    "Actual internal idle/physics Tree priority order; source pause inheritance; synchronous original timeout reentrancy",
+    "Native single timeout on strictly negative f32 time; repeat overshoot preserved; one-shot stop precedes source signal",
+    "Source initial paused=false is native constructor state; no source resource paused assignment supported"
+  ]
+}

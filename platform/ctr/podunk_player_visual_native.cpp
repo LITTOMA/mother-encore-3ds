@@ -37,11 +37,20 @@ bool PodunkPlayerVisualNative::live(std::string &e) const {
   if(!player_||!data_||!player_->valid()||!data_->valid()||!registry_||registry_->poisoned()||!registry_->object_exists(object_)||!s||!s->alive||s->queued||tree_->object_domain()!=registry_->kernel())return fail(e,"Player native Sprite actual owner expired");
   return true;
 }
+bool PodunkPlayerVisualNative::prepare(const PlayerInitializationData &p,
+    const PlayerVisualScriptsData &d, FieldNodeTreeRuntime &t,
+    FieldGlobalRegistry &r, PodunkPlayerVisualTextures &textures, std::string &e) {
+  if(player_||object_||!p.valid()||!d.valid()||d.player_ir_sha256()!=p.ir_sha256()||
+     !r.root()||r.poisoned()||t.object_domain()!=r.kernel())
+    return fail(e,"Player visual constructor domain rejected");
+  player_=&p;data_=&d;tree_=&t;registry_=&r;textures_=&textures;
+  e.clear();return true;
+}
 bool PodunkPlayerVisualNative::construct(const PlayerInitializationData &p,const PlayerVisualScriptsData &d,
                                         FieldNodeTreeRuntime &t,FieldGlobalRegistry &r,FieldObjectId id,
                                         PodunkPlayerVisualTextures &textures,std::string &e) {
   auto *n=t.state(id);auto *desc=t.descriptor(id);FieldIdentity identity;
-  if(player_||!p.valid()||!d.valid()||d.player_ir_sha256()!=p.ir_sha256()||!n||!desc||!r.object_exists(id)||t.object_domain()!=r.kernel()||!t.object_identity(id,identity)||identity.scene_id!=p.identity().scene_id||identity.source_sha256!=p.identity().source_sha256||identity.upstream_commit!=p.identity().upstream_commit||n->inside||n->parent||!n->name.empty())return fail(e,"Player Sprite requires actual source attachment cursor");
+  if(object_||(player_&&(player_!=&p||data_!=&d||tree_!=&t||registry_!=&r||textures_!=&textures))||!p.valid()||!d.valid()||d.player_ir_sha256()!=p.ir_sha256()||!n||!desc||!r.object_exists(id)||t.object_domain()!=r.kernel()||!t.object_identity(id,identity)||identity.scene_id!=p.identity().scene_id||identity.source_sha256!=p.identity().source_sha256||identity.upstream_commit!=p.identity().upstream_commit||n->inside||n->parent||!n->name.empty())return fail(e,"Player Sprite requires actual source attachment cursor");
   bool shadow=desc->id==d.shadow().id;
   if((!shadow && desc->id!=d.bat().id)||desc->native_class!=(shadow?"AnimatedSprite":"Sprite")||desc->script!=(shadow?d.shadow().script:d.bat().script)||desc->script_sha!=(shadow?d.shadow().script_sha:d.bat().script_sha))return fail(e,"Player native Sprite source identity differs");
   auto nodes=get(p.native_source(),"nodes");Value props;

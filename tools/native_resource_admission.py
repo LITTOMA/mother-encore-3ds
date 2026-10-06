@@ -66,6 +66,8 @@ SOURCES = (
     'runtime/field_global_constructor_data.cpp',
     'runtime/player_initialization_data.cpp',
     'runtime/player_visual_scripts_data.cpp',
+    'runtime/player_graphics_data.cpp',
+    'runtime/player_motion_data.cpp',
     'runtime/player_ready_data.cpp',
     'runtime/player_effects_data.cpp',
     'runtime/global_child_ready_data.cpp',
@@ -153,7 +155,9 @@ def admit(resources, *, global_items=True):
                     '--global-child-ready', str(ROOT / 'romfs/data/global.encchildready')]
         command += ['--player-visual-scripts', str(ROOT / 'romfs/data/player.encvisualscripts'),
                     '--player-ready', str(ROOT / 'romfs/data/player.encready'),
-                    '--player-effects', str(ROOT / 'romfs/data/player.enceffects')]
+                    '--player-effects', str(ROOT / 'romfs/data/player.enceffects'),
+                    '--player-graphics', str(ROOT / 'romfs/data/player.encgraphics'),
+                    '--player-motion', str(ROOT / 'romfs/data/player.encmotion')]
     subprocess.run(command, check=True)
 
 

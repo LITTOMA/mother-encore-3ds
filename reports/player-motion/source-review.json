@@ -1,0 +1,200 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "df4ff9e8b7265cb15c3d4796066086a4d948c1a1b72670af964ecbeca43e88d1",
+  "sources": {
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120"
+  },
+  "methods": [
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_physics_process",
+      "sha256": "616623b7bcc143b04743a6d84e89f3aa928f2d298ce27aeb7ace2f6bfa6498ea"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_move_state",
+      "sha256": "18eba388ff11dba757cc0719977fb50e488e6c6043360b26d8a2e7b1038158ea"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_movement",
+      "sha256": "52d50419ea7b3109efc9f926af9ea1f198e29bfe06f6a55875dea9c94cf8f7c0"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_move",
+      "sha256": "9002fc9d4e6624277a807daa5e81b5247140f2224f916f25da2627a36d95aa7c"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_controls",
+      "sha256": "f7dbccbed36dabf5fc6177e96e44e9bab2dec2c4e88b462fbeffbc2dc071df17"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_set_running",
+      "sha256": "3b9c715eea4e43eaee9e6cb303377046e29474bd33f242441cf0847bc6801215"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_check_event_collider",
+      "sha256": "b53439a490a384cb627b10208ea746377998e4de9d284e2256ea721bda9edb97"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_set_event_collider",
+      "sha256": "36ddee33770cccd61c648504e9e3d8de0d08a2436ad6d354cd59dd94c90fda24"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "interact_with",
+      "sha256": "8d317f25352893463e0499b9f6f1c70a53a175470b4ac7ac762e70e0ca44f528"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "use_telepathy",
+      "sha256": "078809013d6b2b2583eebdcc48b9c206b0380b5ff81237418a77e0d77838f0f1"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_can_use_telepathy",
+      "sha256": "0ebaddb9c4d8a024131d411d7409d8d67dcbb5d3571bf3f0e378ba691bb6357a"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_find_telepathy_target",
+      "sha256": "7321d593ac5a61825f692263a3f71d993aced80c15c71227e31418d3dc88a80c"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_process_telepathy_target",
+      "sha256": "c82b5f25c8b42be7b242796acac479884878b13d27d2c89f782327acc71d720f"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_press_button_prompt",
+      "sha256": "35c709957245183db45ac685c095906f4d4fccb20e3c2412d81eacc0ede36e3e"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_update_party_positions",
+      "sha256": "8589a1c5b2e95d31e69bfb43bc52557422f8295a9ebb955e1debb543ea1b017b"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_input",
+      "sha256": "8f2c4582953188be368e8ea5b499a38259edf96a6e1b7c23f9f781938a31322d"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_get_skills_button_actions",
+      "sha256": "8001bc419a85b9fa1e6d1ae45a0d91af94dad1e76d4ec22fa95d6c502bab6c97"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_do_attack",
+      "sha256": "55843a5a06d3b68130342c319cfda598702ed1ba54792e86611f3f18b7daa25d"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_attack_hold",
+      "sha256": "fc51d8399e19298e835125b1f62f92f94f4cf8e11be315f39cc25b0964a63813"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_attack_unleash",
+      "sha256": "f39c187ccbb5bf5ad521a2ee6d2002be14324dc8e79e174a35d466b179cb82b9"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_attack_animation_finished",
+      "sha256": "5c8a6919f5d6f849bcd4549d2884a4e4e2844d8fe27cbb8827c07eac4d88ab92"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "start_teleport",
+      "sha256": "d55186226d05fbfc4c458e2a6d688a39ccc022243a34f3de4e9677b9973e1c54"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_teleport_state",
+      "sha256": "70bf4fda1be18d9742b364520663c61b2cc4107e94a393dd245c6dff7949bf6e"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_landing_state",
+      "sha256": "cf407e780d21c41fbd0415650afa13003de0dc41f3f368fc074665a44f37dba4"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_soot_state",
+      "sha256": "a5194aae8aefc61c3cd5f1acdcc13d6ae0c7c69d7ab528f6afe7b9986b32b334"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_bounce_state",
+      "sha256": "4b213ffcccebfba5b9a6fa072cb492e85b7f8f1d94fce2ff2c9f91f80a4bdf3e"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_shoot",
+      "sha256": "ec092641e181675e9bcb33d312931c38dfcdc1102e96dc9abbef8808568768d9"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_on_BlinkTime_timeout",
+      "sha256": "e3bc4d842561e53c8fc7f1391a59df325df3b73cb12f544ab6cacf216b704f45"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_on_TPCrouchTime_timeout",
+      "sha256": "5f89e37a57222a34c8776fe4824acb1c607db30b924f3f783d8fd40deed20c0a"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_on_AimTime_timeout",
+      "sha256": "62e3c89208f38b0cbd8f397c539bf3462aee6b5b181777485e8c1a6e5168c5e8"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_cast",
+      "sha256": "174243dee8fae3a6dc1145aafa1bdb383ba90ec5244fcfadc06912d4af58fac9"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_on_TPTakeOffTime_timeout",
+      "sha256": "17f1493fdb0bcaf369fb11dbf7d47f31972f1ba96d2d28d27f1414718baab975"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_on_PKTime_timeout",
+      "sha256": "8eb6d71f072a7ab6fa43302fc16f624c9d4b926bdf1e779499f9aa4f6dc0ecf1"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_calculate_steps",
+      "sha256": "24f0e7f4b1dcaa17186b6097200a0e16d71fe7348022b850e4331334c78f90af"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_on_step_taken",
+      "sha256": "ba8d733aa4c4b4c75524dc756e6f40e99aee8069b015760db7469008bd9e14dd"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_is_invulnerable",
+      "sha256": "c1a4236427b827caabee79701b7bd3d96cc03b11141f00e292e24a5fc31608b2"
+    }
+  ],
+  "execution": "runtime/player_motion.cpp",
+  "scope": "Same actual Player body MOVE, interaction/Telepathy, input/attack state, bounded teleport and physics tail; native owners required, explicit pending factories/coroutines",
+  "pending": [
+    "PKOV full source factory/coroutine",
+    "takeoff .6 SceneTreeTimer/pause/current camera",
+    "PK cycling/Outline callbacks",
+    "jump/swap_spin source native host"
+  ]
+}

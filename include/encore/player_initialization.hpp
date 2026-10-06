@@ -67,6 +67,7 @@ public:
   bool assign_member(std::string_view, const PlayerInitializationMember &,
                      std::string &);
   bool bind_onready(std::string_view, FieldObjectId, std::string &);
+  bool assign_variant_node(std::string_view, FieldObjectId, std::string &);
   const PlayerInitializationData *data() const { return data_; }
   const FieldNodeTreeRuntime *tree() const { return tree_; }
   FieldObjectId object() const { return object_; }

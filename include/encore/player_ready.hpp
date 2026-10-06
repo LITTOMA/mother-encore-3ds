@@ -59,6 +59,7 @@ public:
   bool valid() const { return valid_; }
   const auto &identity() const { return identity_; }
   const auto &ir_sha256() const { return ir_; }
+  const auto &initialization_ir_sha256() const { return initialization_ir_; }
   const std::string &binding(PlayerReadyBinding b) const {
     return bindings_[size_t(b)];
   }

@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "format": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739803,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Reusables/Player.tscn",
+  "scene_id": 3168673487,
+  "source_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+  "visual_ir_sha256": "1c9f324fbd1dfcb6bbbd91759b525125565531684b139fff876f1c876587dcaf",
+  "assets": [
+    {
+      "id": 3698611273,
+      "source": "Graphics/Character Sprites/Magic_Ripple.png",
+      "source_sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+      "import_sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+      "size": [
+        51,
+        7
+      ],
+      "path": "graphics/player/magic_ripple.t3x",
+      "reused": false,
+      "nearest": true,
+      "repeat": false
+    },
+    {
+      "id": 1081723181,
+      "source": "Graphics/Character Sprites/Water_Ripple.png",
+      "source_sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+      "import_sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+      "size": [
+        45,
+        5
+      ],
+      "path": "graphics/player/water_ripple.t3x",
+      "reused": false,
+      "nearest": true,
+      "repeat": false
+    },
+    {
+      "id": 1458644887,
+      "source": "Graphics/Character Sprites/Shadow.png",
+      "source_sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "import_sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+      "size": [
+        15,
+        5
+      ],
+      "path": "graphics/actors/shadow.t3x",
+      "reused": true,
+      "nearest": true,
+      "repeat": false
+    },
+    {
+      "id": 45,
+      "source": "Graphics/Character Sprites/Ninten/bat_swing.png",
+      "source_sha256": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+      "import_sha256": "f7ebfe66ffd174125b8f676fef7136032c143399a762b46dd7568519a9fe9dbf",
+      "size": [
+        640,
+        640
+      ],
+      "path": "graphics/player/bat_swing.t3x",
+      "reused": false,
+      "nearest": true,
+      "repeat": false
+    }
+  ],
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+    "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+    "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+    "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Graphics/Character Sprites/Ninten/bat_swing.png.import": "f7ebfe66ffd174125b8f676fef7136032c143399a762b46dd7568519a9fe9dbf"
+  },
+  "reuse_receipt_sha256": "d91cf8b26ec63deff35db17a2b1f07a808dd25d23459f0c3c9813b613f28905d",
+  "licence_review": "Original art retained under pinned upstream LICENSE; permitted game-related fork/modification, not MIT relicensing."
+}

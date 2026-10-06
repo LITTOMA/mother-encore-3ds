@@ -374,3 +374,11 @@ cookies.json
 /reports/player-effects/*
 !/reports/player-effects/source-review.json
 !/reports/player-effects/engine-source.json
+
+!/reports/player-graphics/
+/reports/player-graphics/*
+!/reports/player-graphics/source-review.json
+
+!/reports/player-motion/
+/reports/player-motion/*
+!/reports/player-motion/source-review.json

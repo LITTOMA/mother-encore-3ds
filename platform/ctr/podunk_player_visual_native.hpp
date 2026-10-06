@@ -16,6 +16,12 @@ public:
 // frames come from the independently checked SpriteFrames source projection.
 class PodunkPlayerVisualNative final : public upstream::PlayerVisualNativeOwner {
 public:
+  // Bind the actual domain before sibling allocation. This creates no Node,
+  // state or Ready receipt; construct still runs at each real source cursor.
+  bool prepare(const upstream::PlayerInitializationData &,
+               const upstream::PlayerVisualScriptsData &,
+               upstream::FieldNodeTreeRuntime &, upstream::FieldGlobalRegistry &,
+               PodunkPlayerVisualTextures &, std::string &);
   bool construct(const upstream::PlayerInitializationData &,
                  const upstream::PlayerVisualScriptsData &,
                  upstream::FieldNodeTreeRuntime &, upstream::FieldGlobalRegistry &,

@@ -1,0 +1,114 @@
+#pragma once
+#include "encore/player_ready.hpp"
+#include "podunk_player_visual_native.hpp"
+
+namespace encore::ctr {
+// Endpoints are concrete, same-ObjectDB native owners. Preflight must examine
+// the actual target/member/method; a callback's presence is not admission.
+class PodunkPlayerAnimationEndpoints {
+public:
+  virtual ~PodunkPlayerAnimationEndpoints() = default;
+  virtual bool admit(upstream::FieldObjectId, std::string_view member,
+                     bool method, std::string &) const = 0;
+  virtual bool disabled(upstream::FieldObjectId, bool, std::string &) = 0;
+  virtual bool audio_playing(upstream::FieldObjectId, bool, std::string &) = 0;
+  virtual PodunkPlayerVisualNative *visual(upstream::FieldObjectId) = 0;
+  virtual bool texture(uint32_t source_resource,
+                       upstream::FieldObjectId &actual_resource,
+                       std::string &) = 0;
+  virtual bool material(uint32_t source_resource,
+                        upstream::FieldObjectId &actual_resource,
+                        std::string &) = 0;
+  virtual bool signal(upstream::FieldObjectId, std::string_view,
+                      std::string_view clip, std::string &) = 0;
+};
+struct PodunkPlayerSpriteState {
+  upstream::FieldObjectId object = 0, texture = 0, material = 0;
+  uint32_t texture_source = 0, material_source = 0, frame = 0, columns = 0,
+           rows = 0;
+  upstream::Vec2 offset{};
+  bool centered = false, flip_h = false, flip_v = false;
+};
+// Owns ordinary Sprite native properties, and the source AnimationPlayer's
+// actual track caches. Canvas values remain in the one actual SceneTree.
+// Shadow/Bat retain their existing native owners; they are never duplicated.
+class PodunkPlayerAnimation {
+public:
+  bool construct(const upstream::PlayerInitializationData &,
+                 const upstream::PlayerReadyData &,
+                 upstream::FieldNodeTreeRuntime &,
+                 upstream::FieldGlobalRegistry &,
+                 upstream::FieldObjectId actual_player,
+                 PodunkPlayerAnimationEndpoints &, std::string &);
+  upstream::PlayerGraphHost graph_host();
+  bool ready(upstream::FieldTreePhase, const upstream::FieldNodeBinding &,
+             std::string &);
+  bool play(std::string_view, std::string &);
+  bool stop(std::string &);
+  bool advance(float actual_delta, bool tree_paused, std::string &);
+  bool process(upstream::FieldTreePhase, float actual_delta, bool tree_paused,
+               std::string &);
+  bool sprite_frame(upstream::FieldObjectId, uint32_t, std::string &);
+  bool sprite_texture(upstream::FieldObjectId, uint32_t, std::string &);
+  bool sprite_offset(upstream::FieldObjectId, upstream::Vec2, std::string &);
+  const PodunkPlayerSpriteState *sprite(upstream::FieldObjectId) const;
+  upstream::FieldObjectId animation_object() const { return animation_; }
+  bool playing() const { return playing_; }
+  float position() const { return position_; }
+
+private:
+  struct Value {
+    uint32_t kind = 0, resource = 0;
+    double number = 0;
+    bool boolean = false;
+    upstream::Vec2 vector{};
+    std::string string;
+  };
+  struct Key {
+    float time = 0, transition = 1;
+    Value value;
+  };
+  struct Track {
+    uint32_t index = 0, update = 0, interpolation = 0;
+    bool method = false, wrap = false, enabled = false;
+    upstream::FieldObjectId target = 0;
+    std::string member, source_path;
+    std::vector<Key> keys;
+  };
+  struct Clip {
+    uint32_t resource = 0;
+    float length = 0;
+    bool loop = false;
+    std::vector<Track> tracks;
+  };
+  bool live(std::string &) const;
+  bool checked_resource(uint32_t source_id, upstream::FieldObjectId actual_id,
+                        bool texture, std::string &) const;
+  bool parse_value(const std::shared_ptr<const upstream::GlobalYamlValue> &,
+                   Value &, std::string &) const;
+  bool begin(std::string &);
+  bool blend(const upstream::PlayerGraphPoint &, float, float, bool, float,
+             std::string &);
+  bool apply(std::string &);
+  bool evaluate(const Clip &, float, float, bool, bool, float, std::string &);
+  bool assign(const Track &, const Value &, std::string &);
+  bool sample(const Clip &, const Track &, float, Value &, bool &,
+              std::string &) const;
+  std::vector<size_t> events(const Clip &, const Track &, float, float) const;
+  const upstream::PlayerInitializationData *data_ = nullptr;
+  upstream::FieldNodeTreeRuntime *tree_ = nullptr;
+  upstream::FieldGlobalRegistry *registry_ = nullptr;
+  PodunkPlayerAnimationEndpoints *endpoints_ = nullptr;
+  upstream::FieldObjectId player_ = 0, animation_ = 0;
+  std::map<std::string, Clip> clips_;
+  std::map<upstream::FieldObjectId, PodunkPlayerSpriteState> sprites_;
+  std::map<std::pair<upstream::FieldObjectId, std::string>,
+           std::pair<const Track *, Value>>
+      pending_;
+  std::vector<std::pair<upstream::FieldObjectId, std::string>> cache_order_;
+  std::string autoplay_, current_;
+  float position_ = 0, speed_ = 1;
+  uint32_t process_mode_ = 0;
+  bool playing_ = false, frame_open_ = false, ready_ = false, poisoned_ = false;
+};
+} // namespace encore::ctr

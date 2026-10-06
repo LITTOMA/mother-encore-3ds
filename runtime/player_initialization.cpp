@@ -181,6 +181,36 @@ bool PlayerInitializationBody::assign_member(
   members_[std::string(name)] = std::move(stored);
   return true;
 }
+bool PlayerInitializationBody::assign_variant_node(std::string_view name,
+                                                   FieldObjectId object,
+                                                   std::string &e) {
+  if (!constructed() || !tree_ || !registry_ || !tree_->state(object_) ||
+      !tree_->state(object_)->alive)
+    return fail(e, "Player variant Node actual body unavailable");
+  auto field = std::find_if(data_->fields().begin(), data_->fields().end(),
+                            [&](const auto &f) { return f.name == name; });
+  if (field == data_->fields().end() || field->adapter || field->kind != 0 ||
+      !field->hint.empty() || !field->value || field->value->kind != 0)
+    return fail(e, "Player variant Node source declaration rejected");
+  if (object) {
+    auto owner = registry_->tree_owner(object);
+    auto state = owner ? owner->state(object) : nullptr;
+    FieldIdentity identity;
+    if (!owner || owner->object_domain() != registry_->kernel() || !state ||
+        !state->alive || !registry_->object_exists(object) ||
+        !owner->object_identity(object, identity) ||
+        identity.upstream_commit != data_->identity().upstream_commit)
+      return fail(e,
+                  "Player variant Node actual same-registry source rejected");
+  }
+  PlayerInitializationMember member;
+  member.kind = object ? 8 : 0;
+  member.object = object;
+  if (!object)
+    member.value = std::make_shared<GlobalYamlValue>();
+  members_[std::string(name)] = std::move(member);
+  return true;
+}
 bool PlayerInitializationBody::bind_onready(std::string_view name,
                                             FieldObjectId object,
                                             std::string &e) {

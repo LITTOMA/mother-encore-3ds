@@ -65,6 +65,8 @@ add_library(encore_core
     runtime/global_child_ready.cpp runtime/global_child_ready_data.cpp
     runtime/player_ready.cpp runtime/player_ready_data.cpp runtime/player_ready_animation.cpp
     runtime/player_effects.cpp runtime/player_effects_data.cpp
+    runtime/player_motion.cpp runtime/player_motion_data.cpp
+    runtime/player_graphics_data.cpp
     runtime/player_visual_scripts.cpp runtime/player_visual_scripts_data.cpp
     runtime/field_dialogue_ui.cpp
     runtime/field_dialogue_ui_data.cpp

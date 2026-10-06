@@ -623,7 +623,13 @@ bool FieldGlobalDataRuntime::character_load_source_hash(
 }
 bool FieldGlobalDataRuntime::initialize_character_load(
     const FieldCharacterLoadData &d, std::string &e) {
-  if (!constructor_complete() || !god_storage_complete_ ||
+  if (!god_storage_complete_ || house_continuation_data_)
+    return fail(e, "Cold Character LOAD requires source GodStorage and no continuation");
+  return bind_character_fields(d, e);
+}
+bool FieldGlobalDataRuntime::bind_character_fields(
+    const FieldCharacterLoadData &d, std::string &e) {
+  if (!constructor_complete() ||
       character_load_data_ || !d.valid() ||
       d.identity().upstream_commit != data_->identity().upstream_commit)
     return fail(e,
@@ -1161,7 +1167,7 @@ bool FieldGlobalDataRuntime::character_nickname(uint32_t declaration,
 }
 bool FieldGlobalDataRuntime::initialize_global_load(const GlobalLoadData &d,
                                                     std::string &e) {
-  if (!ready_complete() || !character_load_available(e) || global_load_data_ ||
+  if (house_continuation_data_ || !ready_complete() || !character_load_available(e) || global_load_data_ ||
       !d.valid() || d.constructor_ir_sha256() != constructor_ir_ ||
       d.characters_ir_sha256() != character_load_ir_ ||
       d.flags_ir_sha256() != flags_ir_ ||
@@ -1291,7 +1297,14 @@ bool FieldGlobalDataRuntime::load_inventory_owner(FieldObjectId id,
         return true;
       }
     }
-  return fail(e, "Inventory is not an actual admitted LOAD owner");
+  if (house_continuation_complete_ && constructor_complete())
+    for (const auto &body : objects_)
+      if (body.kind == 2 && body.object == id && registry_->native_reference(id)) {
+        out = body.declaration;
+        e.clear();
+        return true;
+      }
+  return fail(e, "Inventory is not an actual admitted LOAD/continuation owner");
 }
 bool FieldGlobalDataRuntime::publish_global_load_inventory(
     size_t index, const std::vector<FieldGlobalDataItemReference> &items,

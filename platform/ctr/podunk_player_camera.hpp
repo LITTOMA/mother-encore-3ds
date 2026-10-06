@@ -10,7 +10,11 @@ struct PodunkCameraViewport {
 // These endpoints belong to the actual UI, ordered SignalBus, Input and
 // World2D owners. Native Camera2D transform/state is executed below, not here.
 struct PodunkPlayerCameraPorts {
-  upstream::FieldUiManagerRuntime *ui = nullptr;
+  // The actual existing UI owner may implement a reviewed continuation slice.
+  // Its real ObjectDB identity/source is checked; whole UiManager Ready is not
+  // a prerequisite for source getters or actual signal registration.
+  upstream::FieldGlobalExternalObject *ui = nullptr;
+  const upstream::FieldGlobalRegistryData *ui_namespace = nullptr;
   std::function<bool(upstream::FieldObjectId, bool &, std::string &)> in_battle;
   std::function<bool(upstream::Vec2 &, std::string &)> controls;
   std::function<bool(std::string_view, upstream::PlayerInputQuery, bool &,
@@ -71,6 +75,7 @@ public:
 
 private:
   bool live(std::string &) const;
+  bool actual_ui(std::string &) const;
   bool actual(uint32_t, upstream::FieldObjectId &, std::string &) const;
   bool viewport(std::string &) const;
   bool observe(uint32_t, upstream::FieldGameCameraObservation &, std::string &);

@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <array>
 #include <cstdint>
 #include <string>
 #include <string_view>
@@ -14,7 +15,8 @@ enum class ResourceRole : uint32_t {
     Localization=18, TitleLocale=19, SourceFonts=20, Input=21,
     LoadingIndicator=22, EncounterBattle=23, EncounterRound=24, Introduction=25,
     HouseInspections=26, DrawerProgram=27, Storage=28, ItemDetails=29, FieldEquipment=30, ItemUse=31, BasementProgression=32, BasementActors=33, MusicRegions=34, PresentSparkles=35, FieldPsi=36, FieldProgrammes=37, FieldInventory=38,
-    FieldItemDefinitions=39, FieldItemDetails=40, FieldGoods=41
+    FieldItemDefinitions=39, FieldItemDetails=40, FieldGoods=41,
+    HouseSceneDoor=42, FieldSceneBundle=43
 };
 
 class ResourceCatalog {
@@ -27,10 +29,15 @@ public:
     const std::string& path(ResourceRole) const;
     std::string companion_path(std::string_view battle_path) const;
     bool verify_files(const char* prefix, std::string& error) const;
+    // Read just the selected checked resource; startup need not scan RomFS.
+    bool read_file(ResourceRole, const char* prefix, std::vector<uint8_t>&,
+                   std::string& error) const;
+    const std::array<uint8_t,20>& source_pin() const { return pin_; }
     const std::vector<Binding>& binding_records() const { return bindings_; }
     const std::vector<Encounter>& encounter_records() const { return encounters_; }
 private:
     bool valid_=false;
+    std::array<uint8_t,20> pin_{};
     std::vector<Binding> bindings_;
     std::vector<Encounter> encounters_;
 };

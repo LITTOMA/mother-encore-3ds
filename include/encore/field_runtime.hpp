@@ -19,6 +19,7 @@ struct FieldGrassDraw {
 // an arbitrary player-radius approximation by this consumer.
 class FieldRuntime {
 public:
+ const FieldData*data()const{return data_;}
     bool prepare_grass_slice(const FieldData&,std::string&);
     bool activate_scene(std::string&) const;
     bool execute_grass_ready(uint32_t ready_ordinal,SourceRandom&,std::string&);

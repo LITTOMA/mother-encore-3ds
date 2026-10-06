@@ -18,6 +18,10 @@ struct HouseGlobalStatusBinding {
       probability, healing_key, passive_key, probability_key;
   std::vector<HouseGlobalStatusPolicy> policies;
 };
+struct HouseGlobalAutoloadBinding {
+  uint32_t role = 0;
+  FieldGlobalAutoload source;
+};
 class HouseGlobalBridgeData {
 public:
   bool load(const uint8_t *, size_t, const FieldCharacterLoadData &,
@@ -29,6 +33,10 @@ public:
   const auto &identity() const { return identity_; }
   const auto &ir_sha256() const { return ir_; }
   const auto &leader() const { return leader_; }
+  bool constructor_continuation() const { return constructor_continuation_; }
+  const auto &continuation_autoloads() const { return continuation_autoloads_; }
+  const auto &continuation_scene() const { return continuation_scene_; }
+  const auto &namespace_source() const { return namespace_source_; }
   uint32_t declaration() const { return declaration_; }
   const auto &assignments() const { return assignments_; }
   const auto &status() const { return status_; }
@@ -37,7 +45,7 @@ public:
   const GlobalLoadData *cold() const { return cold_; }
 
 private:
-  bool valid_ = false;
+  bool valid_ = false, constructor_continuation_ = false;
   FieldIdentity identity_{};
   std::array<uint8_t, 32> ir_{}, character_ir_{}, load_ir_{}, definition_ir_{},
       session_ir_{};
@@ -45,6 +53,8 @@ private:
   uint32_t declaration_ = 0;
   std::vector<HouseGlobalAssignment> assignments_;
   HouseGlobalStatusBinding status_;
+  std::string continuation_scene_,namespace_source_;
+  std::vector<HouseGlobalAutoloadBinding> continuation_autoloads_;
   std::map<std::string, std::array<uint8_t, 32>> sources_;
   const FieldCharacterLoadData *chars_ = nullptr;
   const GlobalLoadData *cold_ = nullptr;
@@ -64,10 +74,22 @@ struct HouseGlobalBridgeHost {
                      HouseGlobalStatusObject &, std::string &)>
       new_status;
 };
-// A one-time native continuation transfer into already executed source owners.
+// A one-time native continuation transfer into actual constructed source owners.
 // This does not execute SAVE/LOAD, complete Ready, or advance the RNG stream.
 class HouseGlobalBridgeRuntime {
 public:
+  // Existing House session permits only checked continuation constructors.
+  // Cold project order and all native/script lifecycle gates remain separate.
+  bool construct_continuation_autoload(uint32_t, const HouseGlobalBridgeData &,
+      const NativeSessionData &, RoomView, HouseView, RoundView, ItemView,
+      const SessionSnapshot &, FieldGlobalRegistry &, SourceRandom &,
+      const std::vector<uint32_t> &, std::string &);
+  // Explicit native continuation capability. Executes a real NORMAL Inventory
+  // constructor and binds source fields; never calls cold LOAD or grants Ready.
+  bool prepare_continuation(const HouseGlobalBridgeData &,
+                            FieldGlobalDataRuntime &,
+                            FieldGlobalConstructorRuntime &,
+                            FieldGlobalRegistry &, std::string &);
   bool adopt(const HouseGlobalBridgeData &, const NativeSessionData &, RoomView,
              HouseView, RoundView, ItemView, const SessionSnapshot &,
              const FieldInventoryData &, const FieldItemDefinitions &,
@@ -75,6 +97,9 @@ public:
              FieldGlobalRegistry &, SourceRandom &,
              const std::vector<uint32_t> &, HouseGlobalBridgeHost,
              std::string &);
+  bool binds_source_owners(const FieldGlobalDataRuntime &,
+                          const FieldGlobalConstructorRuntime &,
+                          const FieldGlobalRegistry &) const;
   bool complete() const { return complete_; }
   const FieldInventoryState &inventory_state() const { return inventory_; }
   const auto &items() const { return items_; }
@@ -84,6 +109,10 @@ public:
 
 private:
   bool complete_ = false;
+  const HouseGlobalBridgeData *prepared_data_ = nullptr;
+  FieldGlobalDataRuntime *prepared_core_ = nullptr;
+  FieldGlobalConstructorRuntime *prepared_global_ = nullptr;
+  FieldGlobalRegistry *prepared_registry_ = nullptr;
   FieldGlobalDataRuntime *owner_ = nullptr;
   FieldGlobalRegistry *registry_ = nullptr;
   FieldInventoryState inventory_;

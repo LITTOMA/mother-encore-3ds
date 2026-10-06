@@ -106,6 +106,8 @@ def stage():
     from introduction_assets import stage_files as introduction_asset_files
     files.update(introduction_files(source))
     files.update(introduction_asset_files(source))
+    from podunk_bundle import stage_files as destination_files
+    files.update(destination_files(source))
     files.update(catalog_files(source, files))
     from romfs_layout import check_layout
     check_layout(files)

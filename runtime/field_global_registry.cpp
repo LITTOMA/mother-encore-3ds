@@ -85,7 +85,7 @@ bool FieldGlobalRegistry::publish_native_reference(const FieldGlobalExternalSpec
 bool FieldGlobalRegistry::publish_source_resource(const FieldGlobalExternalSpec&spec,FieldObjectId id,std::unique_ptr<FieldGlobalSourceResource>owner,std::string&e){
  auto i=objects_.find(id);
  if(!initialized_||poisoned_||!owner||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||!id||!spec.stable_id||spec.role!=4||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual source Resource slot/identity rejected");
- const bool player_resource=owner->binding().family==0x454e005f&&owner->binding().capability==1&&(spec.native_class=="StreamTexture"||spec.native_class=="AtlasTexture"||spec.native_class=="ShaderMaterial"||spec.native_class=="AudioStreamSample"||spec.native_class=="AudioStreamMP3");
+ const bool player_resource=owner->binding().family==0x454e005f&&(owner->binding().capability==1||owner->binding().capability==2)&&(spec.native_class=="StreamTexture"||spec.native_class=="AtlasTexture"||spec.native_class=="ShaderMaterial"||spec.native_class=="AudioStreamSample"||spec.native_class=="AudioStreamMP3"||(owner->binding().capability==2&&spec.native_class=="CanvasItemMaterial"));
  const bool player_playback=spec.native_class=="AnimationNodeStateMachinePlayback"&&owner->binding().family==0x454e005a&&owner->binding().capability==1;
  if((spec.native_class!="PackedScene"&&spec.native_class!="ShaderMaterial"&&!player_playback&&!player_resource)||spec.native_class!=owner->resource_class()||spec.source_sha!=spec.identity.source_sha256||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global source Resource native type/proof rejected");
  auto b=owner->binding();FieldGlobalExternalState s;
@@ -153,6 +153,21 @@ bool FieldGlobalRegistry::publish_branch(std::shared_ptr<FieldNodeTreeRuntime>tr
  }
  for(auto id:pending){auto&slot=objects_.at(id);slot.tree=tree;slot.dispatch=dispatch;slot.definition=tree->state(id)->source;}
  e.clear();return true;
+}
+FieldObjectId FieldGlobalRegistry::autoload_object(uint32_t stable) const {
+ const auto i=autoload_objects_.find(stable);
+ return !initialized_||poisoned_||i==autoload_objects_.end()||!external_object(i->second)?0:i->second;
+}
+bool FieldGlobalRegistry::construct_continuation_autoload(const FieldGlobalAutoload &a,std::string &e) {
+ if(!initialized_||poisoned_||autoload_objects_.count(a.id))
+  return fail(e,"House continuation autoload already constructed/unavailable");
+ auto i=std::find_if(data_->autoloads().begin(),data_->autoloads().end(),[&](const auto &x){return x.id==a.id;});
+ if(i==data_->autoloads().end()||i->kind!=a.kind||i->ordinal!=a.ordinal||i->name!=a.name||i->path!=a.path||i->native_class!=a.native_class||i->script!=a.script||i->source_sha!=a.source_sha||i->script_sha!=a.script_sha)
+  return fail(e,"House continuation autoload differs from original project source");
+ FieldGlobalExternalSpec spec;spec.identity=data_->identity();spec.stable_id=i->id;spec.role=3;spec.name=i->name;spec.native_class=i->native_class;spec.source=i->path;spec.script=i->script;spec.source_sha=i->source_sha;spec.script_sha=i->script_sha;
+ FieldObjectId id=0;
+ if(!construct(spec,id,e))return false;
+ autoload_objects_.emplace(a.id,id);e.clear();return true;
 }
 bool FieldGlobalRegistry::construct_autoload(uint32_t stable,std::string&e){
  if(!initialized_||poisoned_||autoload_objects_.count(stable))return fail(e,"Global autoload already constructed/unavailable");

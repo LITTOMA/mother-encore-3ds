@@ -86,7 +86,34 @@ bool PodunkGlobalDataSingleton::enter(FieldObjectId p, std::string &e) {
     return poison(e);
   return true;
 }
+bool PodunkGlobalDataSingleton::bind_continuation(
+    const HouseGlobalBridgeRuntime &bridge,const FieldGlobalConstructorRuntime &global,
+    std::string &e) {
+  FieldGlobalExternalState s;
+  if(continuation_||!state(s,e)||s.parent||s.inside||s.ready||
+      services_.registry->external_object(binding_.object)!=this||
+      !bridge.binds_source_owners(host_.runtime(),global,*services_.registry))
+    return fail(e,"globalData continuation requires completed same source/session owners");
+  continuation_=&bridge;continuation_global_=&global;e.clear();return true;
+}
+bool PodunkGlobalDataSingleton::continuation_native_ready() const {
+  return continuation_ready_&&continuation_&&continuation_global_&&services_.registry&&
+      continuation_->binds_source_owners(host_.runtime(),*continuation_global_,*services_.registry);
+}
+bool PodunkGlobalDataSingleton::adopt_continuation_ready(std::string &e) {
+  FieldGlobalExternalState s;
+  if(!continuation_||!continuation_global_||continuation_ready_||!state(s,e)||
+      !s.inside||s.ready||!parented_||unparented_||
+      !continuation_->binds_source_owners(host_.runtime(),*continuation_global_,*services_.registry)||
+      !native_notification(FieldTreePhase::PostEnterNative,e))
+    return fail(e,"globalData continuation native boundary lacks actual completed import");
+  // Native Node has no additional source _ready body in this explicit import.
+  // Notify the actual kernel boundary; original GodStorage/script Ready is not run.
+  if(!services_.root->node_notification(binding_.object,FieldTreePhase::ReadyNative,e))return poison(e);
+  continuation_ready_=true;e.clear();return true;
+}
 bool PodunkGlobalDataSingleton::ready(std::string &e) {
+  if(continuation_)return fail(e,"globalData cold Ready cannot overwrite existing House continuation");
   FieldGlobalExternalState s;
   if (!state(s, e) || !s.inside || s.ready || !parented_ || unparented_ ||
       !native_notification(FieldTreePhase::PostEnterNative, e)) return false;
@@ -112,6 +139,7 @@ bool PodunkGlobalDataSingleton::exit(std::string &e) {
       !services_.root->node_notification(binding_.object, FieldTreePhase::NodeRemoved, e) ||
       !services_.root->node_notification(binding_.object, FieldTreePhase::ChildExiting, e) ||
       !services_.signal(binding_.object, "tree_exited", e)) return poison(e);
+  continuation_ready_=false;
   return true;
 }
 bool PodunkGlobalDataSingleton::deferred(const FieldDeferredMessage &, std::string &e) {

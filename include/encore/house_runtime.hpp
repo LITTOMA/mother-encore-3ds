@@ -7,6 +7,7 @@
 #include "encore/drawer_program.hpp"
 #include "encore/basement_progression.hpp"
 #include "encore/basement_actor_assets.hpp"
+#include "encore/field_door.hpp"
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
@@ -18,9 +19,10 @@ struct HouseBasementHost {
  std::function<bool(const BasementActorData&,std::string&)> validate_present_sound;
  std::function<bool(const BasementActorData&,bool,std::string&)> present_sound;
 };
-enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram};
-enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested};
+enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram,SceneDoorPending};
+enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested,SceneDoorRequested};
 struct HouseEvent {HouseEventKind kind{};uint32_t object=0;uint64_t physics_tick=0,idle_frame=0;Vec2 position{};};
+struct HouseSceneDoorRequest {uint32_t boundary=house_no_index,door=0;uint64_t player=0;};
 struct HouseSoundRequest {uint32_t sound=0;};
 struct HouseOpenableState {
  bool blocked=false,locked=false,unlocked=false,one_way=false,inside=false,sprite_visible=true,player_disabled=false,nonplayer_disabled=false;
@@ -34,6 +36,9 @@ public:
  bool restore_seen_dialogue(const std::set<uint32_t>&);
  bool set_player_nickname(std::string_view);
  bool bind_phone(PhoneRuntime&);
+ // Requires the same actual Ready Door runtime and an actual player ObjectID.
+ bool bind_scene_doors(const FieldDoorData&,FieldDoorRuntime&,std::function<bool(uint64_t&,std::string&)>,std::string&);
+ std::vector<HouseSceneDoorRequest>take_scene_door_requests(){auto out=std::move(scene_door_requests_);scene_door_requests_.clear();return out;}
  // Cross-pack admission is transactional: a rejected candidate keeps the
  // previous inspection binding and current interaction intact.
  bool bind_inspections(HouseInspectionView);
@@ -114,6 +119,10 @@ private:
  bool deliver_area_contacts();
  bool sync_story_dialogue();bool advance_story_dialogue(bool automatic);bool text_finished();
  bool resolve_npc_dialogue(uint32_t,uint32_t&first,uint32_t&count,uint32_t&program,uint32_t&seen)const;
+ bool request_scene_door(uint32_t);
+ const FieldDoorData*scene_door_data_=nullptr;FieldDoorRuntime*scene_door_runtime_=nullptr;
+ std::function<bool(uint64_t&,std::string&)>scene_door_player_;std::vector<uint32_t>scene_door_ids_;
+ std::vector<HouseSceneDoorRequest>scene_door_requests_;std::string scene_door_error_;
  bool begin_door(uint32_t);bool interact();bool finish_door();
  const DialogueChoicesData*choices_data_=nullptr;DialogueChoices*choices_=nullptr;uint32_t choices_generation_=0;
  PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;

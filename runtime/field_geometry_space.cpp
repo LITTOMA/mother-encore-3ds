@@ -1,7 +1,10 @@
 #include "encore/field_geometry_space.hpp"
+#include "encore/field_global_registry.hpp"
 #include "encore/field_scene_actions.hpp"
+#include "encore/player_initialization.hpp"
 #include <algorithm>
 #include <cmath>
+#include <cstdlib>
 #include <limits>
 
 namespace encore::upstream {
@@ -48,11 +51,14 @@ bool intersects(FieldGeometryBounds a, FieldGeometryBounds b) {
 bool actor_ok(const FieldGeometryActor &a) {
   if (!finite(a.transform))
     return false;
-  if (a.kind == FieldGeometryKind::Circle) {
+  if (a.kind == FieldGeometryKind::Circle ||
+      a.kind == FieldGeometryKind::Capsule) {
     const float x = dot(a.transform.x, a.transform.x),
                 y = dot(a.transform.y, a.transform.y);
     return std::isfinite(a.radius) && a.radius > 0 && x > 0 && x == y &&
-           dot(a.transform.x, a.transform.y) == 0;
+           dot(a.transform.x, a.transform.y) == 0 &&
+           (a.kind != FieldGeometryKind::Capsule ||
+            (std::isfinite(a.extents.y) && a.extents.y >= 0));
   }
   if (a.kind == FieldGeometryKind::Rectangle)
     return finite(a.extents) && a.extents.x > 0 && a.extents.y > 0 &&
@@ -87,7 +93,37 @@ std::vector<Vec2> polygon(const FieldGeometryActor &a) {
     v = xf(a.transform, v);
   return p;
 }
+// Godot 3 Capsule height is the straight middle segment. This exact union of
+// its rectangle and circular caps preserves analytic curves, not tessellation.
+std::vector<FieldGeometryActor> capsule_parts(const FieldGeometryActor &a) {
+  std::vector<FieldGeometryActor> parts;
+  if (a.extents.y > 0) {
+    auto rectangle = a;
+    rectangle.kind = FieldGeometryKind::Rectangle;
+    rectangle.extents = {a.radius, a.extents.y};
+    parts.push_back(std::move(rectangle));
+  }
+  for (float sign : {-1.0f, 1.0f}) {
+    auto cap = a;
+    cap.kind = FieldGeometryKind::Circle;
+    cap.transform.origin = xf(a.transform, {0, sign * a.extents.y});
+    parts.push_back(std::move(cap));
+  }
+  return parts;
+}
 FieldGeometryBounds actor_bounds(const FieldGeometryActor &a) {
+  if (a.kind == FieldGeometryKind::Capsule) {
+    const auto p = capsule_parts(a);
+    auto b = actor_bounds(p.front());
+    for (size_t i = 1; i < p.size(); ++i) {
+      const auto c = actor_bounds(p[i]);
+      b.minimum = {std::min(b.minimum.x, c.minimum.x),
+                   std::min(b.minimum.y, c.minimum.y)};
+      b.maximum = {std::max(b.maximum.x, c.maximum.x),
+                   std::max(b.maximum.y, c.maximum.y)};
+    }
+    return b;
+  }
   if (a.kind == FieldGeometryKind::Circle) {
     const float r = a.radius * length(a.transform.x);
     return {sub(a.transform.origin, {r, r}), add(a.transform.origin, {r, r})};
@@ -103,6 +139,14 @@ FieldGeometryBounds actor_bounds(const FieldGeometryActor &a) {
   return b;
 }
 bool overlap(const FieldGeometryActor &a, const FieldGeometryActor &b) {
+  if (a.kind == FieldGeometryKind::Capsule) {
+    for (const auto &part : capsule_parts(a))
+      if (overlap(part, b))
+        return true;
+    return false;
+  }
+  if (b.kind == FieldGeometryKind::Capsule)
+    return overlap(b, a);
   const bool ca = a.kind == FieldGeometryKind::Circle,
              cb = b.kind == FieldGeometryKind::Circle;
   auto pa = ca ? std::vector<Vec2>{} : polygon(a),
@@ -161,6 +205,25 @@ bool overlap(const FieldGeometryActor &a, const FieldGeometryActor &b) {
 }
 bool ray_shape(const FieldGeometryActor &a, Vec2 from, Vec2 to, float &fraction,
                Vec2 &normal) {
+  if (a.kind == FieldGeometryKind::Capsule) {
+    bool found = false;
+    float best = std::numeric_limits<float>::infinity();
+    Vec2 chosen{};
+    for (const auto &part : capsule_parts(a)) {
+      float t;
+      Vec2 n;
+      if (ray_shape(part, from, to, t, n) && t < best) {
+        best = t;
+        chosen = n;
+        found = true;
+      }
+    }
+    if (found) {
+      fraction = best;
+      normal = chosen;
+    }
+    return found;
+  }
   const auto begin = inverse(a.transform, from), end = inverse(a.transform, to),
              direction = sub(end, begin);
   float t = std::numeric_limits<float>::infinity();
@@ -261,11 +324,16 @@ bool FieldGeometrySpace::keys(FieldGeometryBounds b,
 }
 bool FieldGeometrySpace::configure(const FieldGeometryView &source, float cell,
                                    std::string &error) {
+  if (!dynamic_owners_.empty()) {
+    error = "Field geometry reconfigure while actual dynamic owners remain";
+    return false;
+  }
   if (!source.valid() || !std::isfinite(cell) || cell < 1 || cell > 4096) {
     error = "Field geometry space source/grid rejected";
     return false;
   }
   FieldGeometrySpace c;
+  c.next_rid_ = next_rid_;
   c.source_ = &source;
   c.cell_size_ = cell;
   c.node_instances_.resize(source.node_count());
@@ -284,6 +352,11 @@ bool FieldGeometrySpace::configure(const FieldGeometryView &source, float cell,
     auto o = source.owner(i);
     c.owners_.push_back(
         {o.layer, o.mask, (o.flags & 2) != 0, (o.flags & 4) != 0});
+    if (c.next_rid_ == UINT64_MAX) {
+      error = "Field native Physics RID exhausted";
+      return false;
+    }
+    c.static_rids_.emplace(i, ++c.next_rid_);
   }
   for (uint32_t s = 0; s < source.shape_count(); ++s) {
     auto shape = source.shape(s);
@@ -621,6 +694,23 @@ bool FieldGeometrySpace::live_geometry(const FieldGeometryContact &contact,
                                        FieldGeometryOwner &owner,
                                        FieldGeometryShape &shape,
                                        std::string &error) const {
+  if (contact.actual_owner || contact.actual_shape) {
+    for (const auto &d : dynamic_) {
+      const auto &c = d.contact;
+      if (c.actual_owner == contact.actual_owner &&
+          c.actual_shape == contact.actual_shape && c.part == contact.part &&
+          c.stable_id == contact.stable_id &&
+          c.native_shape_index == contact.native_shape_index) {
+        if (d.disabled || !dynamic_actor(d, actor, error))
+          return false;
+        owner = d.owner;
+        shape = d.shape;
+        return true;
+      }
+    }
+    error = "Field dynamic geometry stale actual ObjectID contact";
+    return false;
+  }
   if (!source_) {
     error = "Field live geometry source unavailable";
     return false;
@@ -639,6 +729,8 @@ bool FieldGeometrySpace::live_geometry(const FieldGeometryContact &contact,
     auto o = source_->owner(c.owner);
     o.layer = owners_[c.owner].layer;
     o.mask = owners_[c.owner].mask;
+    o.flags = (o.flags & ~6u) | (owners_[c.owner].monitoring ? 2u : 0u) |
+              (owners_[c.owner].monitorable ? 4u : 0u);
     actor = entry.actor;
     owner = o;
     shape = source_->shape(c.shape);
@@ -659,6 +751,11 @@ bool FieldGeometrySpace::candidates(FieldGeometryBounds b,
   std::vector<FieldGeometryContact> result;
   for (auto i : indices)
     result.push_back(instances_[i].contact);
+  std::vector<size_t> dyn;
+  if (!query_dynamic(b, filter, capacity - result.size(), dyn, error))
+    return false;
+  for (auto i : dyn)
+    result.push_back(dynamic_[i].contact);
   output = std::move(result);
   return true;
 }
@@ -683,6 +780,21 @@ bool FieldGeometrySpace::overlap_actor(
       }
       result.push_back(instances_[i].contact);
     }
+  std::vector<size_t> dyn;
+  if (!query_dynamic(actor_bounds(actor), filter, dynamic_.size(), dyn, error))
+    return false;
+  for (auto i : dyn) {
+    FieldGeometryActor current;
+    if (!dynamic_actor(dynamic_[i], current, error))
+      return false;
+    if (overlap(actor, current)) {
+      if (result.size() >= capacity) {
+        error = "Field dynamic overlap capacity exceeded";
+        return false;
+      }
+      result.push_back(dynamic_[i].contact);
+    }
+  }
   output = std::move(result);
   error.clear();
   return true;
@@ -732,6 +844,24 @@ bool FieldGeometrySpace::ray(Vec2 from, Vec2 to,
       best = t;
       found = true;
       static_cast<FieldGeometryContact &>(result) = instances_[i].contact;
+      result.position = add(from, mul(sub(to, from), t));
+      result.normal = normal;
+      result.fraction = t;
+    }
+  }
+  std::vector<size_t> dyn;
+  if (!query_dynamic(b, filter, capacity - indices.size(), dyn, error))
+    return false;
+  for (auto i : dyn) {
+    FieldGeometryActor current;
+    if (!dynamic_actor(dynamic_[i], current, error))
+      return false;
+    float t;
+    Vec2 normal;
+    if (ray_shape(current, from, to, t, normal) && t < best) {
+      best = t;
+      found = true;
+      static_cast<FieldGeometryContact &>(result) = dynamic_[i].contact;
       result.position = add(from, mul(sub(to, from), t));
       result.normal = normal;
       result.fraction = t;
@@ -945,6 +1075,510 @@ bool FieldGeometrySpace::live_polygon_parts(uint32_t owner_id,
   disabled = blocked;
   out = std::move(parts);
   e.clear();
+  return true;
+}
+
+namespace {
+using NativeValue = std::shared_ptr<const GlobalYamlValue>;
+NativeValue native_get(NativeValue p, std::string_view k) {
+  return p ? p->get(k) : NativeValue{};
+}
+bool native_text(NativeValue p, std::string &s) {
+  if (!p || p->kind != 4)
+    return false;
+  s = p->string;
+  return true;
+}
+bool native_number(NativeValue p, double &n) {
+  if (!p)
+    return false;
+  if (p->kind == 2) {
+    n = double(p->integer);
+    return true;
+  }
+  if (p->kind == 3) {
+    n = p->real;
+    return std::isfinite(n);
+  }
+  std::string t, v;
+  if (!native_text(native_get(p, "type"), t) || (t != "real" && t != "int64") ||
+      !native_text(native_get(p, "value"), v))
+    return false;
+  char *end = nullptr;
+  n = std::strtod(v.c_str(), &end);
+  return end == v.c_str() + v.size() && std::isfinite(n);
+}
+bool native_integer(NativeValue p, uint32_t &v) {
+  double n;
+  if (!native_number(p, n) || n < 0 || n > double(UINT32_MAX) ||
+      std::floor(n) != n)
+    return false;
+  v = uint32_t(n);
+  return true;
+}
+bool native_bool(NativeValue p, bool &v) {
+  if (!p || p->kind != 1)
+    return false;
+  v = p->boolean;
+  return true;
+}
+bool native_vector(NativeValue p, Vec2 &v) {
+  std::string t;
+  double x, y;
+  if (!native_text(native_get(p, "type"), t) || t != "Vector2" ||
+      !native_number(native_get(p, "x"), x) ||
+      !native_number(native_get(p, "y"), y) || std::abs(x) >= 1000000 ||
+      std::abs(y) >= 1000000)
+    return false;
+  v = {float(x), float(y)};
+  return true;
+}
+bool source_player_node(const PlayerInitializationData &d,
+                        FieldNodeTreeRuntime &t, FieldGlobalRegistry &r,
+                        FieldObjectId id, std::string &e) {
+  const auto *n = t.descriptor(id);
+  const auto *s = t.state(id);
+  FieldIdentity identity;
+  const auto *source = n ? d.recipe().record(n->id) : nullptr;
+  if (!d.valid() || !n || !s || !s->alive || !source ||
+      source->path != n->path || source->native_class != n->native_class ||
+      source->script_sha != n->script_sha || r.tree_owner(id).get() != &t ||
+      !r.object_exists(id) || !t.object_identity(id, identity) ||
+      identity.scene_id != d.recipe().identity().scene_id ||
+      identity.source_sha256 != d.recipe().identity().source_sha256 ||
+      identity.upstream_commit != d.identity().upstream_commit) {
+    e = "Field Player physics actual source node/Registry identity rejected";
+    return false;
+  }
+  return true;
+}
+} // namespace
+bool FieldGeometrySpace::reserve_player_owner(const PlayerInitializationData &d,
+                                              FieldNodeTreeRuntime &t,
+                                              FieldGlobalRegistry &r,
+                                              FieldObjectId object,
+                                              std::string &e) {
+  if (!source_ ||
+      source_->identity().upstream_commit != d.identity().upstream_commit ||
+      !source_player_node(d, t, r, object, e))
+    return false;
+  const auto *n = t.descriptor(object);
+  if (n->native_class != "Area2D" && n->native_class != "KinematicBody2D") {
+    e = "Field dynamic collision native owner class rejected";
+    return false;
+  }
+  auto existing = dynamic_owners_.find(object);
+  if (existing != dynamic_owners_.end()) {
+    if (existing->second.data != &d || existing->second.tree != &t ||
+        existing->second.registry != &r) {
+      e = "Field dynamic collision owner changed";
+      return false;
+    }
+    return true;
+  }
+  if (next_rid_ == UINT64_MAX) {
+    e = "Field native Physics RID allocation exhausted";
+    return false;
+  }
+  dynamic_owners_.emplace(object,
+                          DynamicOwner{&d, &t, &r, object, ++next_rid_});
+  return true;
+}
+bool FieldGeometrySpace::register_player_shape(
+    const PlayerInitializationData &d, FieldNodeTreeRuntime &t,
+    FieldGlobalRegistry &r, FieldObjectId player, FieldObjectId shape,
+    std::string &e) {
+  if (!source_player_node(d, t, r, player, e) ||
+      !source_player_node(d, t, r, shape, e))
+    return false;
+  const auto *root = t.descriptor(player);
+  const auto *sn = t.descriptor(shape);
+  const auto *ss = t.state(shape);
+  if (root->id != d.recipe().identity().scene_id || !ss->inside || !ss->bound ||
+      !sn->script.empty() ||
+      (sn->native_class != "CollisionShape2D" &&
+       sn->native_class != "CollisionPolygon2D")) {
+    e = "Field Player native shape enter lifecycle rejected";
+    return false;
+  }
+  for (const auto &old : dynamic_)
+    if (old.contact.actual_shape == shape) {
+      e = "Field Player shape already registered";
+      return false;
+    }
+  auto nodes = native_get(d.native_source(), "nodes");
+  auto resources = native_get(d.native_source(), "resources");
+  if (!nodes || nodes->kind != 5 || !resources || resources->kind != 5) {
+    e = "Field Player source geometry closure unavailable";
+    return false;
+  }
+  std::vector<DynamicInstance> candidate;
+  for (auto ownerNode : nodes->array) {
+    std::string path, cls;
+    if (!native_text(native_get(ownerNode, "path"), path) ||
+        !native_text(native_get(ownerNode, "class"), cls))
+      return false;
+    if (cls != "Area2D" && cls != "KinematicBody2D")
+      continue;
+    auto sourceOwners = native_get(ownerNode, "physics_shape_owners");
+    if (!sourceOwners || sourceOwners->kind != 5) {
+      e = "Field Player native shape ownership missing";
+      return false;
+    }
+    uint32_t nativeIndex = 0;
+    for (auto so : sourceOwners->array) {
+      std::string shapePath, refType;
+      auto refs = native_get(so, "shapes");
+      if (!native_text(native_get(native_get(so, "owner"), "type"), refType) ||
+          refType != "NodeReference" ||
+          !native_text(native_get(native_get(so, "owner"), "path"),
+                       shapePath) ||
+          !refs || refs->kind != 5) {
+        e = "Field Player source shape owner reference rejected";
+        return false;
+      }
+      if (shapePath != sn->path) {
+        nativeIndex += uint32_t(refs->array.size());
+        continue;
+      }
+      FieldObjectId actualOwner;
+      if (!t.get_node(player, path, actualOwner, e) ||
+          !source_player_node(d, t, r, actualOwner, e))
+        return false;
+      const auto *ownerState = t.state(actualOwner);
+      if (!ownerState->inside || !ownerState->bound ||
+          ss->parent != actualOwner) {
+        e = "Field Player collision owner actual parent/enter mismatch";
+        return false;
+      }
+      auto props = native_get(ownerNode, "properties");
+      uint32_t layer, mask;
+      bool monitoring = false, monitorable = true, disabled, oneWay;
+      double oneWayMargin;
+      if (!native_integer(native_get(props, "collision_layer"), layer) ||
+          !native_integer(native_get(props, "collision_mask"), mask) ||
+          !native_bool(native_get(so, "disabled"), disabled) ||
+          !native_bool(native_get(so, "one_way"), oneWay) || oneWay ||
+          !native_number(native_get(so, "one_way_margin"), oneWayMargin) ||
+          oneWayMargin < 0 || oneWayMargin >= 1000000) {
+        e = "Field Player collision masks/one-way properties rejected";
+        return false;
+      }
+      if (cls == "Area2D") {
+        uint32_t overrideMode;
+        bool audioOverride;
+        if (!native_bool(native_get(props, "monitoring"), monitoring) ||
+            !native_bool(native_get(props, "monitorable"), monitorable) ||
+            !native_integer(native_get(props, "space_override"),
+                            overrideMode) ||
+            overrideMode ||
+            !native_bool(native_get(props, "audio_bus_override"),
+                         audioOverride) ||
+            audioOverride) {
+          e = "Field Player Area override/monitoring mechanism unsupported";
+          return false;
+        }
+      }
+      FieldTransform world;
+      if (!t.world_transform(shape, world, e))
+        return false;
+      for (uint32_t part = 0; part < refs->array.size(); ++part) {
+        uint32_t resourceId;
+        if (!native_integer(native_get(refs->array[part], "id"), resourceId)) {
+          e = "Field Player source shape resource rejected";
+          return false;
+        }
+        NativeValue resource;
+        for (auto v : resources->array) {
+          uint32_t id;
+          if (native_integer(native_get(v, "id"), id) && id == resourceId)
+            resource = v;
+        }
+        std::string resourceClass;
+        if (!native_text(native_get(resource, "class"), resourceClass)) {
+          e = "Field Player shape resource closure missing";
+          return false;
+        }
+        DynamicInstance x;
+        x.data = &d;
+        x.tree = &t;
+        x.registry = &r;
+        x.player = player;
+        x.disabled = disabled;
+        x.contact = {none,
+                     none,
+                     part,
+                     t.descriptor(actualOwner)->id,
+                     nativeIndex + part,
+                     actualOwner,
+                     shape};
+        x.actor.transform = {world[0], world[1], world[2]};
+        x.actor.stable_id = x.contact.stable_id;
+        x.actor.layer = layer;
+        x.actor.mask = mask;
+        x.actor.area = cls == "Area2D";
+        x.actor.monitorable = monitorable;
+        auto p = native_get(resource, "properties");
+        double radius, height;
+        if (resourceClass == "RectangleShape2D") {
+          x.actor.kind = FieldGeometryKind::Rectangle;
+          if (!native_vector(native_get(p, "extents"), x.actor.extents))
+            return false;
+        } else if (resourceClass == "CircleShape2D" ||
+                   resourceClass == "CapsuleShape2D") {
+          if (!native_number(native_get(p, "radius"), radius) || radius <= 0 ||
+              radius >= 1000000)
+            return false;
+          x.actor.radius = float(radius);
+          x.actor.kind = FieldGeometryKind::Circle;
+          if (resourceClass == "CapsuleShape2D") {
+            if (!native_number(native_get(p, "height"), height) || height < 0 ||
+                height >= 1000000)
+              return false;
+            x.actor.kind = FieldGeometryKind::Capsule;
+            x.actor.extents.y = float(height * .5);
+          }
+        } else if (resourceClass == "ConvexPolygonShape2D") {
+          x.actor.kind = FieldGeometryKind::Convex;
+          auto points = native_get(native_get(p, "points"), "value");
+          if (!points || points->kind != 5)
+            return false;
+          for (auto v : points->array) {
+            Vec2 q;
+            if (!native_vector(v, q))
+              return false;
+            x.actor.points.push_back(q);
+          }
+        } else {
+          e = "Field Player native source shape kind unsupported";
+          return false;
+        }
+        if (!actor_ok(x.actor)) {
+          e = "Field Player native shape/transform invalid";
+          return false;
+        }
+        x.owner.kind = x.actor.area ? 4 : 2;
+        x.owner.layer = layer;
+        x.owner.mask = mask;
+        x.owner.flags = (monitoring ? 2u : 0u) | (monitorable ? 4u : 0u);
+        x.shape.kind = uint32_t(x.actor.kind);
+        x.shape.flags = disabled ? 1 : 0;
+        x.shape.part_count = 1;
+        x.shape.owner_margin = float(oneWayMargin);
+        candidate.push_back(std::move(x));
+      }
+      if (!dynamic_owners_.count(actualOwner)) {
+        e = "Field Player collision owner native constructor/RID not executed";
+        return false;
+      }
+      nativeIndex += uint32_t(refs->array.size());
+    }
+  }
+  if (candidate.empty()) {
+    e = "Field Player native shape ownership not found";
+    return false;
+  }
+  dynamic_.insert(dynamic_.end(), candidate.begin(), candidate.end());
+  return true;
+}
+bool FieldGeometrySpace::dynamic_actor(const DynamicInstance &d,
+                                       FieldGeometryActor &a,
+                                       std::string &e) const {
+  if (!d.data ||
+      !source_player_node(*d.data, *d.tree, *d.registry, d.contact.actual_owner,
+                          e) ||
+      !source_player_node(*d.data, *d.tree, *d.registry, d.contact.actual_shape,
+                          e))
+    return false;
+  const auto *o = d.tree->state(d.contact.actual_owner);
+  const auto *s = d.tree->state(d.contact.actual_shape);
+  if (!o->inside || !s->inside || !o->bound || !s->bound ||
+      s->parent != o->object) {
+    e = "Field dynamic collision owner left actual world";
+    return false;
+  }
+  FieldTransform world;
+  if (!d.tree->world_transform(s->object, world, e))
+    return false;
+  a = d.actor;
+  a.transform = {world[0], world[1], world[2]};
+  if (!actor_ok(a)) {
+    e = "Field dynamic collision live transform unsupported";
+    return false;
+  }
+  return true;
+}
+bool FieldGeometrySpace::dynamic_filter(const DynamicInstance &d,
+                                        const FieldGeometryFilter &f) const {
+  if (d.owner.kind == 4 ? !f.areas : !f.bodies)
+    return false;
+  if (f.exclude_stable_id && d.contact.stable_id == f.exclude_stable_id)
+    return false;
+  if (f.monitoring_only && (d.owner.kind != 4 || !(d.owner.flags & 2)))
+    return false;
+  if (f.bilateral_mask)
+    return (d.owner.layer & f.layer_mask) ||
+           (d.owner.mask & f.reciprocal_layer);
+  return (f.monitoring_only || (d.owner.layer & f.layer_mask)) &&
+         (!f.require_reciprocal_mask || (d.owner.mask & f.reciprocal_layer));
+}
+bool FieldGeometrySpace::query_dynamic(FieldGeometryBounds b,
+                                       const FieldGeometryFilter &f, size_t cap,
+                                       std::vector<size_t> &out,
+                                       std::string &e) const {
+  std::vector<size_t> result;
+  for (size_t i = 0; i < dynamic_.size(); ++i) {
+    const auto &d = dynamic_[i];
+    if (d.disabled || !dynamic_filter(d, f))
+      continue;
+    FieldGeometryActor a;
+    if (!dynamic_actor(d, a, e))
+      return false;
+    if (!intersects(b, actor_bounds(a)))
+      continue;
+    if (result.size() >= cap) {
+      e = "Field actual dynamic geometry capacity exceeded";
+      return false;
+    }
+    result.push_back(i);
+  }
+  std::sort(result.begin(), result.end(), [&](size_t a, size_t c) {
+    const auto &x = dynamic_[a].contact, &y = dynamic_[c].contact;
+    return x.actual_owner != y.actual_owner
+               ? x.actual_owner < y.actual_owner
+               : x.native_shape_index < y.native_shape_index;
+  });
+  out = std::move(result);
+  return true;
+}
+bool FieldGeometrySpace::remove_player_shape(FieldObjectId shape,
+                                             std::string &e) {
+  auto old = dynamic_.size();
+  dynamic_.erase(std::remove_if(dynamic_.begin(), dynamic_.end(),
+                                [&](const DynamicInstance &d) {
+                                  return d.contact.actual_shape == shape;
+                                }),
+                 dynamic_.end());
+  if (old == dynamic_.size()) {
+    e = "Field Player shape removal lacks actual registration";
+    return false;
+  }
+  return true;
+}
+bool FieldGeometrySpace::set_player_shape_disabled(FieldObjectId shape,
+                                                   bool value, std::string &e) {
+  bool found = false;
+  for (auto &d : dynamic_)
+    if (d.contact.actual_shape == shape) {
+      d.disabled = value;
+      d.shape.flags = value ? 1 : 0;
+      found = true;
+    }
+  if (!found) {
+    e = "Field Player disabled setter outside actual registered shape";
+    return false;
+  }
+  return true;
+}
+bool FieldGeometrySpace::set_player_collision_mask(FieldObjectId owner,
+                                                   uint32_t bit, bool value,
+                                                   std::string &e) {
+  if (bit >= 32 || !dynamic_owners_.count(owner)) {
+    e = "Field Player native collision mask target rejected";
+    return false;
+  }
+  bool found = false;
+  for (auto &d : dynamic_)
+    if (d.contact.actual_owner == owner && !d.disabled) {
+      if (value)
+        d.owner.mask |= uint32_t(1) << bit;
+      else
+        d.owner.mask &= ~(uint32_t(1) << bit);
+      d.actor.mask = d.owner.mask;
+      found = true;
+    }
+  if (!found) {
+    e = "Field Player native collision mask shape absent";
+    return false;
+  }
+  return true;
+}
+bool FieldGeometrySpace::player_shapes(FieldObjectId owner,
+                                       std::vector<FieldGeometryContact> &out,
+                                       std::string &e) const {
+  std::vector<FieldGeometryContact> result;
+  if (!dynamic_owners_.count(owner)) {
+    e = "Field Player native collision owner unavailable";
+    return false;
+  }
+  for (const auto &d : dynamic_)
+    if (d.contact.actual_owner == owner) {
+      FieldGeometryActor a;
+      if (!dynamic_actor(d, a, e))
+        return false;
+      result.push_back(d.contact);
+    }
+  out = std::move(result);
+  return true;
+}
+bool FieldGeometrySpace::player_owner_rid(FieldObjectId owner,
+                                          FieldPhysicsRid &out,
+                                          std::string &e) const {
+  auto it = dynamic_owners_.find(owner);
+  if (it == dynamic_owners_.end()) {
+    e = "Field Player Physics RID owner absent";
+    return false;
+  }
+  const auto &d = it->second;
+  if (!source_player_node(*d.data, *d.tree, *d.registry, owner, e))
+    return false;
+  out = {this, d.rid};
+  return true;
+}
+bool FieldGeometrySpace::physics_rid(const FieldGeometryContact &c,
+                                     FieldPhysicsRid &out,
+                                     std::string &e) const {
+  if (c.actual_owner)
+    return player_owner_rid(c.actual_owner, out, e);
+  FieldGeometryActor a;
+  FieldGeometryOwner o;
+  FieldGeometryShape s;
+  if (!live_geometry(c, a, o, s, e))
+    return false;
+  auto it = static_rids_.find(c.owner);
+  if (it == static_rids_.end()) {
+    if (next_rid_ == UINT64_MAX) {
+      e = "Field Physics RID exhausted";
+      return false;
+    }
+    it = static_rids_.emplace(c.owner, ++next_rid_).first;
+  }
+  out = {this, it->second};
+  return true;
+}
+bool FieldGeometrySpace::rid_alive(FieldPhysicsRid rid) const {
+  if (rid.space != this || !rid.handle)
+    return false;
+  for (const auto &x : static_rids_)
+    if (x.second == rid.handle)
+      return true;
+  for (const auto &x : dynamic_owners_)
+    if (x.second.rid == rid.handle)
+      return true;
+  return false;
+}
+bool FieldGeometrySpace::retire_player_owner(FieldObjectId owner,
+                                             std::string &e) {
+  if (!dynamic_owners_.count(owner)) {
+    e = "Field Physics native retirement lacks live owner";
+    return false;
+  }
+  for (const auto &x : dynamic_)
+    if (x.contact.actual_owner == owner) {
+      e = "Field Physics owner retirement still has registered shapes";
+      return false;
+    }
+  dynamic_owners_.erase(owner);
   return true;
 }
 

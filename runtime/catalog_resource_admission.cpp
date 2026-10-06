@@ -9,6 +9,7 @@
 #include "encore/dialogue_choices_data.hpp"
 #include "encore/drawer_program.hpp"
 #include "encore/field_goods.hpp"
+#include "encore/field_scene_destination.hpp"
 #include "encore/field_item_admission.hpp"
 #include "encore/field_programme.hpp"
 #include "encore/field_psi.hpp"
@@ -88,6 +89,7 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
   CatalogResourceAdmissionReport result;
   std::set<ResourceRole> singleton_roles;
   bool restore = false;
+  bool scene_door=false,scene_bundle=false;
   for (const auto &binding : catalog.binding_records()) {
     const std::string absolute = prefix + binding.path;
     std::string detail;
@@ -221,6 +223,12 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
     case ResourceRole::FieldGoods:
       accepted = owners->goods.load_file(absolute.c_str(), detail);
       break;
+    case ResourceRole::HouseSceneDoor:
+      if(scene_door)return rejected(error,binding.path,"Duplicate House Door owner");
+      scene_door=true;continue;
+    case ResourceRole::FieldSceneBundle:
+      if(scene_bundle)return rejected(error,binding.path,"Duplicate destination owner");
+      scene_bundle=true;continue;
     default:
       return rejected(error, binding.path, "Unknown catalog resource role");
     }
@@ -251,6 +259,12 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
     return rejected(error, restore_path, detail);
   ++result.bindings;
   ++result.singleton_formats;
+  if(!scene_door||!scene_bundle)return rejected(error,"destination","Required source Door/bundle absent");
+  FieldSceneDestinationData destination;
+  if(!destination.load(catalog,root,owners->room.view(),detail)||
+     !destination.bundle().verify_files(prefix,detail))
+    return rejected(error,catalog.path(ResourceRole::FieldSceneBundle),detail);
+  result.bindings+=2;result.singleton_formats+=2;
   ResourceRole failed = ResourceRole::Room;
   const StartupResourceBindings bindings{owners->settings,
                                          owners->session,

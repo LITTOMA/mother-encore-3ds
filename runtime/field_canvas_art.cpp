@@ -37,6 +37,7 @@ void FieldCanvasArtRuntime::clear() {
   source_ = nullptr;
   tree_ = nullptr;
   host_ = {};
+  foreign_ = nullptr;
   owners_.clear();
   slots_.clear();
 }
@@ -134,6 +135,13 @@ bool FieldCanvasArtRuntime::command(FieldObjectId object,
                                     std::string &e) {
   auto *s = tree_->state(object);
   if (!s || !s->alive || !s->inside)
+    return true;
+  FieldIdentity identity{};
+  if (!tree_->object_identity(object, identity))
+    return fail(e, "Canvas command actual identity unavailable");
+  // Foreign nodes have already been admitted by their actual typed owner;
+  // they emit their own real GPU draw at the same slot in the compositor.
+  if (!same(identity, data_->identity()))
     return true;
   const auto *r = data_->record(s->source);
   if (!r)
@@ -243,6 +251,7 @@ bool FieldCanvasArtRuntime::collect(std::vector<FieldCanvasDraw> &out,
   std::vector<FieldObjectId> roots;
   std::set<FieldObjectId> seen;
   std::vector<FieldObjectId> ordered;
+  std::map<FieldObjectId, std::pair<FieldIdentity, bool>> foreign_nodes;
   std::function<bool(FieldObjectId)> visit = [&](FieldObjectId id) {
     auto *s = tree_->state(id);
     if (!s || !s->alive)
@@ -262,9 +271,15 @@ bool FieldCanvasArtRuntime::collect(std::vector<FieldCanvasDraw> &out,
     if (!(s->flags & 1) || !s->inside)
       continue;
     FieldIdentity identity{};
-    if (!tree_->object_identity(id, identity) ||
-        !same(identity, data_->identity()))
-      return fail(e, "Canvas dynamic instance scene identity rejected");
+    if (!tree_->object_identity(id, identity))
+      return fail(e, "Canvas dynamic instance scene identity unavailable");
+    if (!same(identity, data_->identity())) {
+      const auto *d = tree_->descriptor(id); bool drawable = false;
+      if (!d || !foreign_ ||
+          !foreign_->admit(id, *d, identity, *tree_, drawable, e))
+        return fail(e, "Canvas dynamic instance actual foreign owner rejected");
+      foreign_nodes.emplace(id, std::make_pair(identity, drawable));
+    }
     if (s->canvas_parent && seen.count(s->canvas_parent))
       children[s->canvas_parent].push_back(id);
     else
@@ -342,10 +357,16 @@ bool FieldCanvasArtRuntime::collect(std::vector<FieldCanvasDraw> &out,
     if (!descriptor)
       return fail(e, "Canvas ordered native descriptor missing");
     slot.object = id;
+    auto foreign = foreign_nodes.find(id);
+    if (foreign != foreign_nodes.end()) {
+      slot.foreign = true; slot.identity = foreign->second.first;
+      slot.foreign_drawable = foreign->second.second;
+    } else slot.identity = data_->identity();
     slot.source = s->source;
     slot.class_index = descriptor->class_index;
     slot.flags = s->flags;
     slot.order = slots.size();
+    slot.native_order = slot.order;
     if (!tree_->world_transform(id, slot.world, e) ||
         !tree_->effective_color(id, slot.color, e) ||
         !tree_->effective_z(id, slot.z, e))
@@ -380,5 +401,10 @@ bool FieldCanvasArtRuntime::collect(std::vector<FieldCanvasDraw> &out,
   out = std::move(next);
   e.clear();
   return true;
+}
+bool FieldCanvasArtRuntime::bind_foreign(FieldCanvasForeignOwner &owner,
+                                       std::string &e) {
+  if (!ready() || foreign_) return fail(e, "Canvas foreign owner binding state rejected");
+  foreign_ = &owner; e.clear(); return true;
 }
 } // namespace encore::upstream

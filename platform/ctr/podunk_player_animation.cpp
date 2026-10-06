@@ -63,7 +63,7 @@ bool reference(const Raw &v, uint32_t &id) {
   std::string t;
   return text(get(v, "type"), t) &&
          (t == "ResourceReference" || t == "Resource") &&
-         uint(get(v, "id"), id) && id;
+         uint(get(v, "id"), id);
 }
 Raw array(const Raw &v, std::string_view tag) {
   std::string t;
@@ -140,10 +140,52 @@ bool resource_owner(const PlayerInitializationData &d,
     return fail(e, "Player native resource source ownership differs");
   return true;
 }
+bool resource_owner(const PlayerEffectsData &d, uint32_t effect,
+                    const FieldGlobalRegistry &registry, uint32_t source_id,
+                    FieldObjectId actual_id, uint32_t kind, std::string &e) {
+  auto resources = get(d.native(effect), "resources");
+  Raw record;
+  if (!resources || resources->kind != 5)
+    return fail(e, "Player native resource projection unavailable");
+  for (const auto &r : resources->array) {
+    uint32_t id = 0;
+    if (!uint(get(r, "id"), id))
+      return fail(e, "Player native resource identity malformed");
+    if (id == source_id)
+      record = r;
+  }
+  std::string cls, path;
+  if (!record || !text(get(record, "class"), cls) ||
+      !text(get(record, "path"), path) ||
+      (kind == 1   ? cls != "StreamTexture"
+       : kind == 0 ? (cls != "ShaderMaterial" && cls != "CanvasItemMaterial")
+                   : cls != "AudioStreamMP3"))
+    return fail(e, "Player native resource class unsupported");
+  const auto *owner = registry.source_resource(actual_id);
+  if (!owner || !registry.object_exists(actual_id) ||
+      cls != owner->resource_class())
+    return fail(e, "Player native resource actual owning class differs");
+  auto binding = owner->binding();
+  if (binding.object != actual_id ||
+      binding.source.identity.upstream_commit != d.identity().upstream_commit)
+    return fail(e, "Player native resource owning pin differs");
+  if (path.empty())
+    path = d.recipe(effect)->source_scene();
+  if (path.rfind("res://", 0) == 0)
+    path.erase(0, 6);
+  auto internal = path.find("::");
+  if (internal != std::string::npos)
+    path.resize(internal);
+  std::array<uint8_t, 32> sha{};
+  if (!d.source_hash(path, sha) || binding.source.source != path ||
+      binding.source.source_sha != sha)
+    return fail(e, "Player native resource source ownership differs");
+  return true;
+}
 } // namespace
 bool PodunkPlayerAnimation::live(std::string &e) const {
   auto s = tree_ ? tree_->state(animation_) : nullptr;
-  if (!data_ || poisoned_ || !registry_ || registry_->poisoned() || !s ||
+  if ((!data_ && !effects_data_) || poisoned_ || !registry_ || registry_->poisoned() || !s ||
       !s->alive || s->queued || !registry_->object_exists(animation_) ||
       registry_->tree_owner(animation_).get() != tree_ ||
       tree_->object_domain() != registry_->kernel())
@@ -153,8 +195,9 @@ bool PodunkPlayerAnimation::live(std::string &e) const {
 bool PodunkPlayerAnimation::checked_resource(uint32_t source,
                                              FieldObjectId actual, bool texture,
                                              std::string &e) const {
-  return data_ && registry_ &&
-         resource_owner(*data_, *registry_, source, actual, texture, e);
+  if (!registry_) return false;
+  if (effects_data_) return resource_owner(*effects_data_, effect_kind_, *registry_, source, actual, texture, e);
+  return data_ && resource_owner(*data_, *registry_, source, actual, texture, e);
 }
 bool PodunkPlayerAnimation::parse_value(const Raw &r, Value &v,
                                         std::string &e) const {
@@ -254,11 +297,43 @@ bool PodunkPlayerAnimation::construct_one(
       actual.source_sha256 != d.identity().source_sha256 ||
       r.tree_owner(player).get() != &t || t.object_domain() != r.kernel())
     return fail(e, "Player AnimationPlayer source ObjectDB binding rejected");
+  return construct_snapshot(&d, &g, nullptr, 0, d.recipe(), d.native_source(), t, r, player, id, main, port, e);
+}
+bool PodunkPlayerAnimation::construct_effect(
+    const PlayerEffectsData &effects, uint32_t kind,
+    FieldNodeTreeRuntime &tree, FieldGlobalRegistry &registry,
+    FieldObjectId root, FieldObjectId animation,
+    PodunkPlayerAnimationEndpoints &port, std::string &e) {
+  auto recipe=effects.recipe(kind);auto native=effects.native(kind);
+  FieldIdentity identity{};
+  if(!effects.valid()||!recipe||!native||!tree.object_identity(root,identity)||
+     identity.scene_id!=recipe->identity().scene_id||
+     identity.source_sha256!=recipe->identity().source_sha256||
+     identity.upstream_commit!=recipe->identity().upstream_commit||
+     registry.tree_owner(root).get()!=&tree||tree.object_domain()!=registry.kernel()||
+     children_.count(animation))return fail(e,"Effect AnimationPlayer actual instance/source differs");
+  auto child=std::make_unique<PodunkPlayerAnimation>();
+  child->sprite_owner_=this;
+  if(!child->construct_snapshot(nullptr,nullptr,&effects,kind,*recipe,native,tree,registry,root,animation,false,port,e))return false;
+  children_.emplace(animation,std::move(child));e.clear();return true;
+}
+bool PodunkPlayerAnimation::construct_snapshot(
+    const PlayerInitializationData *initial,const PlayerReadyData *graph,
+    const PlayerEffectsData *effects,uint32_t effect,
+    const FieldNodeRecipeData &recipe,Raw native,
+    FieldNodeTreeRuntime &t,FieldGlobalRegistry &r,FieldObjectId player,
+    FieldObjectId id,bool main,PodunkPlayerAnimationEndpoints &port,std::string &e) {
+  if(data_||effects_data_||!recipe.valid()||!native||!sprite_owner_)
+    return fail(e,"AnimationPlayer checked native snapshot unavailable/repeated");
+  auto checked=[&](uint32_t source,FieldObjectId actual,uint32_t kind,std::string&error){
+    return effects?resource_owner(*effects,effect,r,source,actual,kind,error):
+       initial&&resource_owner(*initial,r,source,actual,kind,error);
+  };
   auto desc = t.descriptor(id);
   if (!desc || desc->native_class != "AnimationPlayer" || !desc->script.empty())
     return fail(e, "Player AnimationPlayer native class/script rejected");
-  auto nodes = get(d.native_source(), "nodes"),
-       resources = get(d.native_source(), "resources");
+  auto nodes = get(native, "nodes"),
+       resources = get(native, "resources");
   if (!nodes || nodes->kind != 5 || !resources || resources->kind != 5)
     return fail(e, "Player animation native snapshot unavailable");
   std::map<uint32_t, Raw> source_resources;
@@ -273,7 +348,7 @@ bool PodunkPlayerAnimation::construct_one(
     if (!text(get(v, "path"), p) || !source_nodes.emplace(p, v).second)
       return fail(e, "Player animation native node identity rejected");
   }
-  auto rec = d.recipe().record(desc->id);
+  auto rec = recipe.record(desc->id);
   if (!rec || !source_nodes.count(rec->path))
     return fail(e, "Player animation source node absent");
   auto props = get(source_nodes.at(rec->path), "properties");
@@ -378,7 +453,7 @@ bool PodunkPlayerAnimation::construct_one(
           if (!(is_stream ? port.stream(k.value.resource, resource, e)
                           : port.texture(k.value.resource, resource, e)) ||
               !resource ||
-              !resource_owner(d, r, k.value.resource, resource,
+              !checked( k.value.resource, resource,
                               is_stream ? 2u : 1u, e))
             return fail(
                 e, "Player animation Texture actual Resource owner absent");
@@ -417,14 +492,15 @@ bool PodunkPlayerAnimation::construct_one(
         if (target->native_class != "Sprite")
           return fail(e, "Player animation Sprite property class rejected");
         if (!port.visual(track.target) && !sprites.count(track.target)) {
-          auto rr = d.recipe().record(target->id);
+          auto rr = recipe.record(target->id);
           if (!rr || !source_nodes.count(rr->path))
             return fail(e, "Player Sprite checked source absent");
           auto sp = get(source_nodes.at(rr->path), "properties");
           PodunkPlayerSpriteState s;
           s.object = track.target;
           bool region = false;
-          if (!reference(get(sp, "texture"), s.texture_source) ||
+          auto texture = get(sp, "texture");
+          if (!texture || (texture->kind != 0 && !reference(texture, s.texture_source)) ||
               !uint(get(sp, "hframes"), s.columns) ||
               !uint(get(sp, "vframes"), s.rows) || !s.columns || !s.rows ||
               uint64_t(s.columns) * s.rows > UINT32_MAX ||
@@ -435,17 +511,17 @@ bool PodunkPlayerAnimation::construct_one(
               !boolean(get(sp, "flip_h"), s.flip_h) ||
               !boolean(get(sp, "flip_v"), s.flip_v) ||
               !boolean(get(sp, "region_enabled"), region) || region ||
-              !port.texture(s.texture_source, s.texture, e) || !s.texture ||
-              !resource_owner(d, r, s.texture_source, s.texture, true, e))
+              (texture->kind != 0 && (!port.texture(s.texture_source, s.texture, e) || !s.texture ||
+              !checked(s.texture_source, s.texture, true, e))))
             return fail(e, "Player Sprite source state/resource rejected");
           auto material = get(sp, "material");
           if (material && material->kind != 0 &&
               !reference(material, s.material_source))
             return fail(e, "Player Sprite material source rejected");
-          if (s.material_source &&
+          if (material && material->kind != 0 &&
               (!port.material(s.material_source, s.material, e) ||
                !s.material ||
-               !resource_owner(d, r, s.material_source, s.material, false, e)))
+               !checked( s.material_source, s.material, false, e)))
             return fail(e, "Player Sprite actual ShaderMaterial owner absent");
           sprites.emplace(s.object, s);
         }
@@ -492,8 +568,8 @@ bool PodunkPlayerAnimation::construct_one(
   }
   if (clips.empty() || (!autoplay_.empty() && !clips.count(autoplay_)))
     return fail(e, "Player AnimationPlayer autoplay clip unavailable");
-  if (main)
-    for (auto &s : g.states())
+  if (main && graph)
+    for (auto &s : graph->states())
       for (auto &p : s.points) {
         auto c = clips.find(p.clip);
         if (c == clips.end() || c->second.resource != p.clip_id ||
@@ -538,7 +614,9 @@ bool PodunkPlayerAnimation::construct_one(
   for (const auto &bucket : buckets)
     cache_order_.insert(cache_order_.end(), bucket.begin(), bucket.end());
   process_mode_ = mode;
-  data_ = &d;
+  data_ = initial;
+  effects_data_ = effects;
+  effect_kind_ = effect;
   tree_ = &t;
   registry_ = &r;
   player_ = player;
@@ -549,6 +627,17 @@ bool PodunkPlayerAnimation::construct_one(
   speed_ = float(speed);
   e.clear();
   return true;
+}
+bool PodunkPlayerAnimation::construct_native_sprite(const PodunkPlayerSpriteState&s,std::string&e) {
+  if(!s.object||!s.columns||!s.rows||uint64_t(s.columns)*s.rows<=s.frame||sprites_.count(s.object)||!std::isfinite(s.offset.x)||!std::isfinite(s.offset.y))return fail(e,"Actual native Sprite construction malformed/repeated");
+  sprites_.emplace(s.object,s);e.clear();return true;
+}
+bool PodunkPlayerAnimation::release_effect(FieldObjectId animation,std::string&e) {
+  auto i=children_.find(animation);
+  if(i==children_.end()||!i->second->effects_data_||!registry_||!i->second->tree_->state(animation)||i->second->tree_->state(animation)->inside)return fail(e,"Effect clock release precedes actual Node deletion");
+  children_.erase(i);
+  for(auto s=sprites_.begin();s!=sprites_.end();) { if(!registry_->object_exists(s->first))s=sprites_.erase(s);else ++s; }
+  e.clear();return true;
 }
 const PodunkPlayerSpriteState *
 PodunkPlayerAnimation::sprite(FieldObjectId id) const {
@@ -901,9 +990,9 @@ bool PodunkPlayerAnimation::ready(FieldTreePhase phase,
       binding.native_class != "AnimationPlayer" ||
       binding.class_index != tree_->descriptor(animation_)->class_index ||
       binding.script_sha != tree_->descriptor(animation_)->script_sha ||
-      binding.identity.scene_id != data_->identity().scene_id ||
-      binding.identity.source_sha256 != data_->identity().source_sha256 ||
-      binding.identity.upstream_commit != data_->identity().upstream_commit)
+      binding.identity.scene_id != (effects_data_?effects_data_->recipe(effect_kind_)->identity():data_->identity()).scene_id ||
+      binding.identity.source_sha256 != (effects_data_?effects_data_->recipe(effect_kind_)->identity():data_->identity()).source_sha256 ||
+      binding.identity.upstream_commit != (effects_data_?effects_data_->recipe(effect_kind_)->identity():data_->identity()).upstream_commit)
     return fail(e,
                 "Player AnimationPlayer actual Native Ready cursor rejected");
   ready_ = true;

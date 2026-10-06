@@ -1,10 +1,13 @@
 #pragma once
 #include "encore/field_geometry.hpp"
+#include "encore/field_node_tree.hpp"
 #include <unordered_map>
 #include <unordered_set>
 
 namespace encore::upstream {
 class FieldSceneActionsData;
+class PlayerInitializationData;
+class FieldGlobalRegistry;
 struct FieldGeometryBounds {
   Vec2 minimum{}, maximum{};
 };
@@ -28,6 +31,9 @@ struct FieldGeometryFilter {
 struct FieldGeometryContact {
   uint32_t owner = 0, shape = 0, part = 0, stable_id = 0,
            native_shape_index = 0;
+  // Zero for the immutable world pack. Dynamic source instances retain their
+  // real ObjectDB identities instead of posing as indices into that pack.
+  FieldObjectId actual_owner = 0, actual_shape = 0;
 };
 struct FieldGeometryRayHit : FieldGeometryContact {
   Vec2 position{}, normal{};
@@ -75,6 +81,28 @@ public:
   bool live_geometry(const FieldGeometryContact &, FieldGeometryActor &,
                      FieldGeometryOwner &, FieldGeometryShape &,
                      std::string &) const;
+  bool register_player_shape(const PlayerInitializationData &,
+                             FieldNodeTreeRuntime &, FieldGlobalRegistry &,
+                             FieldObjectId player, FieldObjectId shape,
+                             std::string &);
+  bool reserve_player_owner(const PlayerInitializationData &,
+                            FieldNodeTreeRuntime &, FieldGlobalRegistry &,
+                            FieldObjectId owner, std::string &);
+  bool physics_rid(const FieldGeometryContact &, FieldPhysicsRid &,
+                   std::string &) const;
+  bool player_owner_rid(FieldObjectId owner, FieldPhysicsRid &,
+                        std::string &) const;
+  bool rid_alive(FieldPhysicsRid) const;
+  bool rid_issued(FieldPhysicsRid rid) const {
+    return rid.space == this && rid.handle && rid.handle <= next_rid_;
+  }
+  bool retire_player_owner(FieldObjectId owner, std::string &);
+  bool remove_player_shape(FieldObjectId shape, std::string &);
+  bool set_player_shape_disabled(FieldObjectId shape, bool, std::string &);
+  bool set_player_collision_mask(FieldObjectId owner, uint32_t bit, bool,
+                                 std::string &);
+  bool player_shapes(FieldObjectId owner, std::vector<FieldGeometryContact> &,
+                     std::string &) const;
   const FieldGeometryView *source() const { return source_; }
   bool candidates(FieldGeometryBounds, const FieldGeometryFilter &, size_t,
                   std::vector<FieldGeometryContact> &, std::string &) const;
@@ -88,7 +116,9 @@ public:
                         std::string &) const;
   bool ray(Vec2 from, Vec2 to, const FieldGeometryFilter &, size_t,
            bool &collided, FieldGeometryRayHit &, std::string &) const;
-  size_t indexed_instance_count() const { return instances_.size(); }
+  size_t indexed_instance_count() const {
+    return instances_.size() + dynamic_.size();
+  }
 
 private:
   struct NodeState {
@@ -109,6 +139,23 @@ private:
          ownership_override = false;
     std::vector<int64_t> cells;
   };
+  struct DynamicInstance {
+    const PlayerInitializationData *data = nullptr;
+    FieldNodeTreeRuntime *tree = nullptr;
+    FieldGlobalRegistry *registry = nullptr;
+    FieldObjectId player = 0;
+    FieldGeometryContact contact{};
+    FieldGeometryActor actor{};
+    FieldGeometryOwner owner{};
+    FieldGeometryShape shape{};
+    bool disabled = false;
+  };
+  bool dynamic_actor(const DynamicInstance &, FieldGeometryActor &,
+                     std::string &) const;
+  bool dynamic_filter(const DynamicInstance &,
+                      const FieldGeometryFilter &) const;
+  bool query_dynamic(FieldGeometryBounds, const FieldGeometryFilter &, size_t,
+                     std::vector<size_t> &, std::string &) const;
   bool refresh(const std::vector<uint32_t> &node_indices, std::string &);
   bool rebuild_instance(uint32_t, std::string &);
   bool admit_leaf_polygon(const FieldSceneActionsData &, uint32_t,
@@ -132,5 +179,16 @@ private:
   std::unordered_map<uint32_t, uint32_t> ids_;
   std::unordered_map<int64_t, std::vector<uint32_t>> grid_;
   std::unordered_set<uint32_t> unresolved_;
+  std::vector<DynamicInstance> dynamic_;
+  struct DynamicOwner {
+    const PlayerInitializationData *data = nullptr;
+    FieldNodeTreeRuntime *tree = nullptr;
+    FieldGlobalRegistry *registry = nullptr;
+    FieldObjectId object = 0;
+    uint64_t rid = 0;
+  };
+  std::map<FieldObjectId, DynamicOwner> dynamic_owners_;
+  mutable std::map<uint32_t, uint64_t> static_rids_;
+  mutable uint64_t next_rid_ = 0;
 };
 } // namespace encore::upstream

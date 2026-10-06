@@ -30,6 +30,98 @@ std::shared_ptr<GlobalYamlValue> boolean(bool b) {
   return p;
 }
 } // namespace
+bool HouseGlobalBridgeRuntime::construct_continuation_autoload(
+    uint32_t stable, const HouseGlobalBridgeData &data,
+    const NativeSessionData &session, RoomView room, HouseView house,
+    RoundView round, ItemView legacy, const SessionSnapshot &save,
+    FieldGlobalRegistry &registry, SourceRandom &played,
+    const std::vector<uint32_t> &ledger, std::string &e) {
+  if (prepared_data_ || complete_ || !data.valid() ||
+      !data.constructor_continuation() || !registry.data() ||
+      registry.poisoned() ||
+      registry.data()->identity().upstream_commit != data.identity().upstream_commit)
+    return fail(e,"House continuation checked registry/source owner unavailable");
+  if (!validate_native_session_snapshot(session,room,house,round,legacy,save,e))
+    return false;
+  auto scene=save.scene_id;
+  if (scene.compare(0,6,"res://")==0) scene.erase(0,6);
+  std::array<uint8_t,32> project{};
+  if (scene!=data.continuation_scene() || save.characters.size()!=1 ||
+      save.characters.front().character_id!=data.leader() ||
+      save.party!=std::vector<std::string>{data.leader()} ||
+      !data.source_hash(data.namespace_source(),project) ||
+      project!=registry.data()->identity().source_sha256)
+    return fail(e,"House continuation actual session/namespace identity differs");
+  std::set<uint32_t> exclusions(ledger.begin(),ledger.end());
+  if (exclusions.size()!=ledger.size())
+    return fail(e,"House continuation actual UID exclusion ledger duplicates");
+  auto excluded=[&](const auto &items){for(const auto &i:items)if(!exclusions.count(i.uid))return false;return true;};
+  if (!excluded(save.characters.front().inventory) || !excluded(save.key_items) || !excluded(save.storage))
+    return fail(e,"House continuation existing item UID absent from live ledger");
+  const auto &allowed=data.continuation_autoloads();
+  for(const auto &a:allowed) {
+    if((a.role==2&&a.source.id!=registry.data()->global_autoload()) ||
+       (a.role==3&&a.source.id!=registry.data()->ui_autoload()))
+      return fail(e,"House continuation source singleton role differs");
+  }
+  auto selected=std::find_if(allowed.begin(),allowed.end(),[&](const auto &x){return x.source.id==stable;});
+  if (selected==allowed.end())
+    return fail(e,"House continuation autoload is outside checked source scope");
+  for(auto i=allowed.begin();i!=selected;++i)
+    if(!registry.autoload_object(i->source.id))
+      return fail(e,"House continuation earlier actual constructor pending");
+  const auto random_state=played.state(),draws=played.raw_draw_count();
+  const auto before=ledger;
+  if (!registry.construct_continuation_autoload(selected->source,e)) return false;
+  if (played.state()!=random_state || played.raw_draw_count()!=draws || ledger!=before) {
+    registry.poisoned_=true;
+    return fail(e,"House continuation constructor changed played RNG/UID ledger");
+  }
+  e.clear();return true;
+}
+bool HouseGlobalBridgeRuntime::prepare_continuation(
+    const HouseGlobalBridgeData &data, FieldGlobalDataRuntime &core,
+    FieldGlobalConstructorRuntime &global, FieldGlobalRegistry &registry,
+    std::string &e) {
+  if (prepared_data_ || complete_ || !data.valid() ||
+      !data.constructor_continuation() || !data.characters() ||
+      !core.constructor_complete() || core.registry_ != &registry ||
+      !registry.external_object(core.globaldata_object()) || !global.data() ||
+      !registry.external_object(global.owner()) || registry.poisoned() ||
+      core.global_load_data_ || core.global_load_started_ ||
+      core.global_load_complete_ || core.house_continuation_data_ ||
+      global.data()->identity().upstream_commit != data.identity().upstream_commit)
+    return fail(e, "House continuation requires actual source constructors before cold LOAD");
+  auto body = std::find_if(core.objects_.begin(), core.objects_.end(),
+      [&](const auto &o) { return o.kind == 1 && o.role == 0 &&
+                                o.declaration == data.declaration(); });
+  if (body == core.objects_.end() || !registry.object_exists(body->object) || !core.constructed_body_alive(body->object))
+    return fail(e, "House continuation actual leader constructor absent");
+  std::shared_ptr<const GlobalLoadObjectArray> party, npcs;
+  if (!global.array(FieldGlobalMemberRole::Party, party, e) ||
+      !global.array(FieldGlobalMemberRole::PartyNpcs, npcs, e) ||
+      !party || !npcs || !npcs->values.empty() ||
+      (!party->values.empty() && party->values != std::vector<FieldObjectId>{body->object}))
+    return fail(e, "House continuation target source party contains foreign objects");
+  if (!core.character_load_data_ && !core.bind_character_fields(*data.characters(), e))
+    return false;
+  if (core.character_load_data_ != data.characters())
+    return fail(e, "House continuation Character field owner differs");
+  // Same source Inventory.new(NORMAL) constructor, without serialized Item
+  // defaults, LOAD, clock/RNG calls or synthetic source lifecycle completion.
+  if (!body->inventory) {
+    FieldCharacterLoadState state;
+    if (!core.read_character_load(data.declaration(), state, e) ||
+        !core.new_character_inventory(data.declaration(), state.inventory, e))
+      return false;
+    state.write = FieldCharacterLoadWrite::Inventory;
+    if (!core.publish_character_load(state, e)) return false;
+  }
+  core.house_continuation_data_ = &data;
+  prepared_data_ = &data; prepared_core_ = &core;
+  prepared_global_ = &global; prepared_registry_ = &registry;
+  e.clear(); return true;
+}
 bool HouseGlobalBridgeRuntime::adopt(
     const HouseGlobalBridgeData &data, const NativeSessionData &session,
     RoomView room, HouseView house, RoundView round, ItemView legacy,
@@ -38,17 +130,23 @@ bool HouseGlobalBridgeRuntime::adopt(
     FieldGlobalConstructorRuntime &global, FieldGlobalRegistry &registry,
     SourceRandom &played, const std::vector<uint32_t> &ledger,
     HouseGlobalBridgeHost host, std::string &e) {
-  if (complete_ || !data.valid() || !core.ready_complete() ||
-      !core.load_complete() || core.registry_ != &registry || !global.data() ||
+  const bool continuation = data.constructor_continuation() &&
+      prepared_data_ == &data && prepared_core_ == &core &&
+      prepared_global_ == &global && prepared_registry_ == &registry &&
+      core.house_continuation_data_ == &data && core.constructor_complete() &&
+      !core.global_load_started_ && !core.global_load_complete_;
+  const bool legacy_completed = !data.constructor_continuation() && core.ready_complete() && core.load_complete();
+  if (complete_ || !data.valid() || (!continuation && !legacy_completed) ||
+      core.registry_ != &registry || !global.data() ||
       !registry.external_object(global.owner()) ||
       core.character_load_data_ != data.characters() ||
-      core.global_load_data_ != data.cold() || !host.adopt_item ||
+      (!continuation && core.global_load_data_ != data.cold()) || !host.adopt_item ||
       !host.new_status || !inventory.valid() || !defs.valid() ||
       !inventory.bind_definitions(defs, e) ||
       data.identity().upstream_commit != inventory.source_pin() ||
       defs.source_pin() != inventory.source_pin())
     return fail(e,
-                "House continuation requires actual completed target owners");
+                "House continuation requires actual prepared source owners");
   if (!validate_native_session_snapshot(session, room, house, round, legacy,
                                         save, e))
     return false;
@@ -382,17 +480,23 @@ bool HouseGlobalBridgeRuntime::adopt(
   std::shared_ptr<const GlobalLoadObjectArray> party, npcs;
   if (!global.array(FieldGlobalMemberRole::Party, party, e) ||
       !global.array(FieldGlobalMemberRole::PartyNpcs, npcs, e) ||
-      party->values != std::vector<FieldObjectId>{char_it->object} ||
-      !npcs->values.empty())
+      (party->values != std::vector<FieldObjectId>{char_it->object} &&
+       !(continuation && party->values.empty())) || !npcs->values.empty())
     return fail(e, "House continuation target actual party Arrays differ");
   if (played.state() != random_state || played.raw_draw_count() != draws ||
       ledger != old_ledger)
     return fail(e, "House continuation factory advanced played RNG/UID ledger");
+  if (continuation && party->values.empty()) {
+    if (!global.bind_characters(core, e) ||
+        !global.append_array(FieldGlobalMemberRole::Party, char_it->object, e))
+      return false;
+  }
   // Everything above was staged. Keep existing actual Character/Inventory IDs;
   // do not modify any constructor, cold LOAD or Ready completion flags.
   core.objects_.swap(objects);
   core.members_.swap(members);
   core.character_items_.swap(references);
+  if (continuation) core.house_continuation_complete_ = true;
   *core.constructor_flags_ = std::move(flags);
   inventory_ = std::move(projected);
   items_ = std::move(all_items);
@@ -405,6 +509,30 @@ bool HouseGlobalBridgeRuntime::adopt(
   complete_ = true;
   e.clear();
   return true;
+}
+bool HouseGlobalBridgeRuntime::binds_source_owners(
+    const FieldGlobalDataRuntime &core, const FieldGlobalConstructorRuntime &global,
+    const FieldGlobalRegistry &registry) const {
+  if (!complete_ || owner_!=&core || registry_!=&registry ||
+      prepared_core_!=&core || prepared_global_!=&global ||
+      prepared_registry_!=&registry || !prepared_data_ ||
+      !prepared_data_->constructor_continuation() ||
+      core.house_continuation_data_!=prepared_data_ ||
+      !core.house_continuation_complete_ || !core.constructor_complete() ||
+      core.registry()!=&registry || registry.poisoned() ||
+      !registry.external_object(core.globaldata_object()) ||
+      !registry.external_object(global.owner()) ||
+      core.global_load_started_ || core.global_load_complete_)
+    return false;
+  std::shared_ptr<const GlobalLoadObjectArray> party,npcs;std::string e;
+  if(!global.array(FieldGlobalMemberRole::Party,party,e)||
+      !global.array(FieldGlobalMemberRole::PartyNpcs,npcs,e)||
+      !party||!npcs||party->values.size()!=1||!npcs->values.empty())return false;
+  auto character=std::find_if(core.objects_.begin(),core.objects_.end(),
+      [&](const auto &o){return o.kind==1&&o.role==0&&o.declaration==prepared_data_->declaration();});
+  return character!=core.objects_.end()&&party->values.front()==character->object&&
+      core.constructed_body_alive(character->object)&&
+      registry.native_reference(character->inventory)!=nullptr;
 }
 bool HouseGlobalBridgeRuntime::actual_inventory_owner(uint32_t id,
                                                       FieldObjectId &out,

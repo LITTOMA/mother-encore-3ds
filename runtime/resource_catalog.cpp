@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <cstring>
 #include <utility>
+#include <algorithm>
 
 namespace encore::upstream { namespace {
 constexpr size_t catalog_limit=16384;
@@ -35,6 +36,8 @@ const char* suffix(uint32_t role) {
     case ResourceRole::FieldItemDefinitions:return ".encfielditems";
     case ResourceRole::FieldItemDetails:return ".encfielddetails";
     case ResourceRole::FieldGoods:return ".encgoods";
+    case ResourceRole::HouseSceneDoor:return ".encdoor";
+    case ResourceRole::FieldSceneBundle:return ".encbundle";
     case ResourceRole::BasementProgression:return ".encbasement";case ResourceRole::BasementActors:return ".encbasmanim";case ResourceRole::MusicRegions:return ".encmusic";case ResourceRole::PresentSparkles:return ".encsparkles";
     }return nullptr;
 }
@@ -66,12 +69,13 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
         if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Resource catalog source pin rejected");}
     Reader r{p+52,n-52};const auto count=r.integer(),pairs=r.integer();
-    constexpr uint32_t last_role=uint32_t(ResourceRole::FieldGoods);
+    constexpr uint32_t last_role=uint32_t(ResourceRole::FieldSceneBundle);
     if(count<last_role-2||count>128||pairs<1||pairs>32)return fail("Resource catalog role/encounter count rejected");
     ResourceCatalog data;
+    std::copy_n(p+32,20,data.pin_.begin());
     bool roots[last_role]={};
     for(uint32_t i=0;i<count;++i){const auto id=r.integer(),role=r.integer(),size=r.integer(),checksum=r.integer();auto path=r.path();
-        if(!r.ok||role<1||role>41||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
+        if(!r.ok||role<1||role>last_role||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
         const auto expected=suffix(role);const auto len=std::strlen(expected);
         if(path.size()<=len||path.compare(path.size()-len,len,expected))return fail("Resource catalog binding type rejected");
         for(const auto& prior:data.bindings_)if(prior.id==id||prior.path==path)return fail("Resource catalog duplicate ID/path rejected");
@@ -126,5 +130,17 @@ bool ResourceCatalog::verify_files(const char* prefix,std::string& error)const {
         const bool closed=std::fclose(file)==0;
         if(!good||!closed||count!=binding.size||~value!=binding.crc){error="Catalog-bound resource size/checksum rejected: "+binding.path;return false;}
     }error.clear();return true;
+}
+bool ResourceCatalog::read_file(ResourceRole role,const char* prefix,
+                               std::vector<uint8_t>& owner,std::string& error)const {
+    if(!valid_||!prefix||!*prefix){error="Catalog selected read requires a valid owner and root";return false;}
+    const Binding* selected=nullptr;
+    for(const auto& binding:bindings_)if(binding.id==uint32_t(role)&&binding.role==role)selected=&binding;
+    if(!selected){error="Catalog singleton resource absent";return false;}
+    std::string root=prefix;if(root.back()!='/'&&root.back()!='\\')root+='/';
+    std::vector<uint8_t> candidate;
+    if(!encore::read_file((root+selected->path).c_str(),candidate,selected->size,error))return false;
+    if(candidate.size()!=selected->size||~encore::crc32_update(~0u,candidate.data(),candidate.size())!=selected->crc){error="Catalog selected resource size/checksum rejected: "+selected->path;return false;}
+    owner=std::move(candidate);error.clear();return true;
 }
 }

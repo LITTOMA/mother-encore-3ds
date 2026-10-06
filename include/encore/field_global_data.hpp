@@ -19,6 +19,7 @@ class FieldCharacterLoadData;
 class GlobalLoadData;
 class GlobalLoadRuntime;
 class HouseGlobalBridgeRuntime;
+class HouseGlobalBridgeData;
 struct FieldGlobalDataNodeArray {
   std::vector<FieldObjectId> values;
 };
@@ -199,6 +200,8 @@ public:
   bool constructor_complete() const;
   bool ready_complete() const;
   bool load_complete() const;
+  bool house_continuation_prepared() const { return house_continuation_data_ != nullptr; }
+  bool house_continuation_complete() const { return house_continuation_complete_; }
   bool initialize_global_load(const GlobalLoadData &, std::string &);
   bool global_load_bound_to(const GlobalLoadData &) const;
   bool assign_global_load_member(std::string_view,
@@ -259,6 +262,9 @@ public:
 private:
   friend class GlobalLoadRuntime;
   friend class HouseGlobalBridgeRuntime;
+  const HouseGlobalBridgeData *house_continuation_data_ = nullptr;
+  bool house_continuation_complete_ = false;
+  bool bind_character_fields(const FieldCharacterLoadData &, std::string &);
   const GlobalLoadData *global_load_data_ = nullptr;
   std::array<uint8_t, 32> global_load_ir_{};
   bool global_load_complete_ = false;

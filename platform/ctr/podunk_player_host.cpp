@@ -64,7 +64,7 @@ bool PodunkPlayerHost::owns(FieldObjectId id) const {
          services_.registry->tree_owner(id).get() == tree_.get();
 }
 bool PodunkPlayerHost::native_world(std::string_view c) const {
-  return c == "Area2D" || c == "CollisionShape2D" ||
+  return c == "KinematicBody2D" || c == "Area2D" || c == "CollisionShape2D" ||
          c == "CollisionPolygon2D" || c == "Camera2D";
 }
 bool PodunkPlayerHost::prepare(PodunkPlayerSources s, PodunkPlayerServices h,

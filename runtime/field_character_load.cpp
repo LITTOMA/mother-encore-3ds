@@ -63,7 +63,7 @@ bool FieldCharacterLoadRuntime::initialize(
     GlobalYamlCachesRuntime &caches, GlobalItemCache &items, SourceRandom &rng,
     std::vector<uint32_t> &ledger, LoadRngClockProvider clock,
     FieldCharacterLoadHost host, std::string &e) {
-  if (data_ || !d.valid() || !owner_data.valid() ||
+  if (data_ || owner.house_continuation_prepared() || !d.valid() || !owner_data.valid() ||
       !owner.character_load_bound_to(d) || !owner.globaldata_object() ||
       !owner.god_storage_complete() ||
       caches.owner() != owner.globaldata_object() ||

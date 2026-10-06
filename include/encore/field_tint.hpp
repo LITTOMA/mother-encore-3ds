@@ -32,6 +32,7 @@ enum class FieldTintEventKind:uint8_t {Ready,SelfModulate,ChangedTint,Connect};
 struct FieldTintEvent {FieldTintEventKind kind{};uint32_t sender=0,target=0;FieldTintColor color{};};
 class FieldTintRuntime {
 public:
+ const FieldTintData*data()const{return data_;}
  bool initialize(const FieldTintData&,FieldTintHost,std::string&);
  // Scene instance ID equals its source descriptor; enemy/actor instance IDs
  // come from the existing authoritative factory, never generated here.

@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <cstdlib>
 #include <set>
 namespace encore::upstream {
 namespace {
@@ -26,6 +27,14 @@ uint32_t crc(const uint8_t *p, size_t n) {
 }
 bool hash(const std::array<uint8_t, 32> &h) {
   return std::any_of(h.begin(), h.end(), [](uint8_t x) { return x; });
+}
+bool native_number(const std::shared_ptr<GlobalYamlValue>&v,float&out) {
+  if(!v)return false;
+  if(v->kind==2){out=float(v->integer);return std::isfinite(out);}
+  auto type=v->get("type"),value=v->get("value");
+  if(!type||type->kind!=4||(type->string!="int64"&&type->string!="real")||!value||value->kind!=4||value->string.empty())return false;
+  char*end=nullptr;double n=std::strtod(value->string.c_str(),&end);out=float(n);
+  return end==value->string.c_str()+value->string.size()&&std::isfinite(out);
 }
 bool path(std::string_view p, std::string_view prefix,
           std::string_view suffix) {
@@ -122,9 +131,9 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
                                const PlayerInitializationData &init,
                                const PlayerGraphicsData &gfx, std::string &e) {
   if (!init.valid() || !gfx.valid() || !p || n < 128 || n > 4 * 1024 * 1024 ||
-      std::memcmp(p, "ENCPRES1", 8) || u32(p + 8) != 1 || u32(p + 12) != 128 ||
+      std::memcmp(p, "ENCPRES1", 8) || (u32(p + 8) != 1 && u32(p + 8) != 2) || u32(p + 12) != 128 ||
       u32(p + 16) != n || u32(p + 20) != crc(p + 128, n - 128) ||
-      u32(p + 24) != 0x454e005f || u32(p + 28) != 1 || u32(p + 32) != 1 ||
+      u32(p + 24) != 0x454e005f || u32(p + 28) != u32(p + 8) || u32(p + 32) != 1 ||
       u32(p + 124))
     return fail(e, "Player resources header/version/capability rejected");
   const auto &id = init.identity();
@@ -135,6 +144,7 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
     return fail(e, "Player resources source scene differs");
   PlayerResourcesData d;
   d.identity_ = id;
+  d.capability_=u32(p+28);
   std::copy(p + 92, p + 124, d.ir_.begin());
   if (!hash(d.ir_))
     return fail(e, "Player resources missing IR hash");
@@ -143,6 +153,15 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
   d.gfx_ir_ = r.h();
   if (d.init_ir_ != init.ir_sha256() || d.gfx_ir_ != gfx.ir_sha256())
     return fail(e, "Player resources source dependency differs");
+  if(d.capability_==2) {
+    d.effects_ir_=r.h(); auto maps=r.u();
+    if(!maps||maps>4096) return fail(e,"Effect resource mapping count rejected");
+    std::set<std::pair<uint32_t,uint32_t>> source_ids; std::set<uint32_t> target_ids;
+    for(uint32_t i=0;i<maps&&r.ok;++i){ PlayerEffectResource x; x.effect=r.u();x.source_id=r.u();x.resource_id=r.u();
+      if(x.effect>1||!source_ids.emplace(x.effect,x.source_id).second||!target_ids.insert(x.resource_id).second) return fail(e,"Effect resource mapping identity rejected");
+      d.effect_resources_.push_back(x);
+    }
+  }
   auto count = r.u();
   if (!count || count > 4096)
     return fail(e, "Player resources source closure count rejected");
@@ -227,7 +246,7 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
     for (auto &v : a.rect)
       v = r.f();
     auto pc = r.u();
-    if (a.kind < 1 || a.kind > 3 || local > 3 || !ids.insert(a.id).second ||
+    if (a.kind < 1 || a.kind > (d.capability_==2?4u:3u) || local > 3 || !ids.insert(a.id).second ||
         a.source.empty() || pc > 4)
       return fail(e, "Player native resource schema rejected");
     if (a.kind < 3) {
@@ -237,7 +256,8 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
           a.rect[0] + a.rect[2] > im->width ||
           a.rect[1] + a.rect[3] > im->height)
         return fail(e, "Player Atlas/native texture region rejected");
-    } else if (a.texture || a.shader < 1 || a.shader > 2 || pc != 4)
+    } else if ((a.kind==3 && (a.texture || a.shader < 1 || a.shader > 2 || pc != 4)) ||
+               (a.kind==4 && (a.texture || a.local || a.instanced || a.shader!=3 || pc!=2)))
       return fail(e, "Player material kernel/schema rejected");
     for (uint32_t j = 0; j < pc && r.ok; ++j) {
       PlayerResourceParameter v;
@@ -246,7 +266,7 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
       v.name = r.s();
       for (auto &f : v.value)
         f = r.f();
-      const uint32_t expected = a.shader == 1 ? (j < 2 ? 2 : 1)
+      const uint32_t expected = a.shader==3 ? 4 : a.shader == 1 ? (j < 2 ? 2 : 1)
                                               : (j == 0   ? 2
                                                  : j == 1 ? 1
                                                  : j == 2 ? 4
@@ -357,7 +377,15 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
       if (found == d.audios_.end())
         return fail(e, "Player constructor Audio Resource missing");
     }
-  if (expected_resources != d.resources_.size() ||
+  for(const auto&m:d.effect_resources_) {
+    auto a=d.resource(m.resource_id);
+    if(!a) return fail(e,"Effect mapped actual Resource missing");
+    // Baseline source indices cannot be reused for a different PackedScene resource.
+    for(const auto&actual:actual_resources->array) {
+      const auto i=actual->get("id"); if(i&&i->kind==2&&uint64_t(i->integer)==m.resource_id) return fail(e,"Effect resource aliases Player source index");
+    }
+  }
+  if (expected_resources + d.effect_resources_.size() != d.resources_.size() ||
       expected_audio != d.audios_.size())
     return fail(
         e, "Player native Resource closure contains unknown/missing record");
@@ -366,6 +394,46 @@ bool PlayerResourcesData::load(const uint8_t *p, size_t n,
   e.clear();
   return true;
 }
+
+const PlayerResource* PlayerResourcesData::effect_resource(uint32_t effect,uint32_t source) const {
+  if(!valid_)return nullptr;
+  for(const auto&m:effect_resources_)if(m.effect==effect&&m.source_id==source)return resource(m.resource_id);
+  return nullptr;
+}
+const FieldIdentity* PlayerResourcesData::effect_identity(uint32_t effect) const {
+  auto i=effect_identities_.find(effect);return effects_bound_&&i!=effect_identities_.end()?&i->second:nullptr;
+}
+bool PlayerResourcesData::bind_effects(const PlayerEffectsData&effects,std::string&e) {
+  if(!valid_||capability_!=2||!effects.valid()||effects.ir_sha256()!=effects_ir_||effects.identity().upstream_commit!=identity_.upstream_commit)
+    return fail(e,"Effect resources actual source dependency differs");
+  std::map<uint32_t,FieldIdentity> identities;size_t expected=0;
+  for(uint32_t k=0;k<2;++k) {
+    auto recipe=effects.recipe(k);auto native=effects.native(k);auto resources=native?native->get("resources"):nullptr;
+    if(!recipe||!resources||resources->kind!=5)return fail(e,"Effect resources actual native graph absent");
+    identities.emplace(k,recipe->identity());
+    for(const auto&v:resources->array) {
+      auto cls=v?v->get("class"):nullptr;auto source_id=v?v->get("id"):nullptr;auto path=v?v->get("path"):nullptr;
+      if(!cls||cls->kind!=4||!source_id||source_id->kind!=2||source_id->integer<0||uint64_t(source_id->integer)>UINT32_MAX||!path||path->kind!=4)return fail(e,"Effect actual resource record malformed");
+      uint32_t kind=cls->string=="StreamTexture"?1:cls->string=="ShaderMaterial"?3:cls->string=="CanvasItemMaterial"?4:0;
+      if(!kind){if(cls->string!="Shader"&&cls->string!="Animation")return fail(e,"Unknown effect actual Resource class");continue;}
+      ++expected;auto a=effect_resource(k,uint32_t(source_id->integer));
+      if(!a||a->kind!=kind||a->instanced!=(kind==3&&path->string.empty()))return fail(e,"Effect native Resource coverage/local policy differs");
+      if(kind==1) {auto im=image(a->texture);if(!im||path->string!="res://"+im->source||a->source!=im->source)return fail(e,"Effect texture source differs");}
+      else {
+        std::string source=path->string.empty()?a->source:path->string.substr(6);auto sep=source.find("::");if(sep!=source.npos)source.resize(sep);
+        if(a->source!=source)return fail(e,"Effect material source differs");
+        auto props=v->get("properties");auto local=props?props->get("resource_local_to_scene"):nullptr;
+        if(!local||local->kind!=1||local->boolean!=a->local)return fail(e,"Effect material actual native local policy differs");
+        if(kind==4)for(const auto&p:a->parameters){auto actual=props->get(p.name);float n=0;if(!native_number(actual,n)||n!=p.value[0])return fail(e,"Effect CanvasItemMaterial actual parameter differs");}
+      }
+      std::array<uint8_t,32> proof{};auto entry=sources_.find(a->source);
+      if(!effects.source_hash(a->source,proof)||entry==sources_.end()||entry->second!=proof)return fail(e,"Effect resource source proof differs");
+    }
+  }
+  if(expected!=effect_resources_.size())return fail(e,"Effect Resource graph contains unknown/missing bindings");
+  effect_identities_=std::move(identities);effects_bound_=true;e.clear();return true;
+}
+
 bool PlayerResourcesData::load_file(const char *path,
                                     const PlayerInitializationData &init,
                                     const PlayerGraphicsData &gfx,

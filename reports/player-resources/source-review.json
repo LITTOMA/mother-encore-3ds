@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "0801b9c330531506a1231fbd253744580034f08f9bd0e0da5b2e55d7006279bb",
+  "ir_sha256": "fe0d1ae76daa5da599b333e9d97222d785d66dd54df37a0513d79590e631d223",
   "sources": {
     "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
     "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
@@ -40,7 +40,17 @@
     "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
     "Audio/Sound effects/Ninten Bat.mp3.import": "cc27908cd9c7db05cec03e65118b8a9f9257e5e4bc7aa326efe7b935b16a2f0b",
     "Audio/Sound effects/EB/tcrash.wav": "6bc353a536933880e9bd358e76f94a09e7c1602ae29a989c5a47357f595498e7",
-    "Audio/Sound effects/EB/tcrash.wav.import": "6a2d3146dae8e06c8ded56eea44cd786c06b3d13a5d9cd0621fa13aa9a09cf48"
+    "Audio/Sound effects/EB/tcrash.wav.import": "6a2d3146dae8e06c8ded56eea44cd786c06b3d13a5d9cd0621fa13aa9a09cf48",
+    "Nodes/Reusables/Effects/After Image.tscn": "a245a3f70f3d8dd5ef3392ffe9d9681cca947143500d5f61569f2065d836512a",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Nodes/Reusables/Effects/Dust.tscn": "13219e6f0da5090db70de12b43bbed4945229fc3db307f97abc88d6e1e4d29d9",
+    "Graphics/VFX/Running Dust.png": "399eb12436ae94a509eccc6e042e3bcd590e4bf08be39c8441649cab412ac984",
+    "Graphics/VFX/Running Dust.png.import": "bfa437f19d604dbf124323ccc75ece55180e6fea13d59e500a0c56d4e99b0426",
+    "Scripts/misc/AfterImageCreator.gd": "44ef601a4b969553b707a7a05100c747b8cb7d2f161486232a119dbf5fc95dd3",
+    "Scripts/misc/DustCreator.gd": "5c48002707bb12c27d79041f812636731099879fae1c6caec066d3fc4807d410",
+    "Scripts/misc/After Image.gd": "44becf40f6191694b6c2dd24f126a108aa22ff03fddd19f9e510ac85d3925b8f",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Nodes/Reusables/Effects/AfterImageCreator.tscn": "6e7436316f5ced4d3d9ef8f1416cfa7b2cd860ca739e1534369c3a00fe10122e"
   },
   "execution": "platform/ctr/podunk_player_resources.cpp",
   "semantics": [

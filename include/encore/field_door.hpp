@@ -76,6 +76,8 @@ public:
  bool idle_frame(std::string&);bool fade_in_done(std::string&);bool deferred_commit(std::string&);bool tree_changed(std::string&);bool fade_out_mostly_done(std::string&);
  // Source helper is uncalled in the pinned project; explicitly unavailable.
  bool special_guest(uint32_t,std::string&);
+ const FieldDoorData*data()const{return data_;}
+ bool source_ready(uint32_t id)const{for(auto ready:ready_)if(ready==id)return phase_!=FieldDoorPhase::Poisoned;return false;}
  FieldDoorPhase phase()const{return phase_;}uint32_t active_door()const{return active_.id;}
 private:
  const FieldDoorData*data_=nullptr;FieldDoorHost host_;std::vector<uint32_t>ready_;FieldDoorDescriptor active_{};FieldDoorCandidate candidate_{};

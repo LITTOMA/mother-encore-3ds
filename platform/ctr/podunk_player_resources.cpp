@@ -126,7 +126,7 @@ struct PodunkPlayerResources::State {
     return data && data->valid() && data->ir_sha256() == ir && registry &&
            !registry->poisoned() &&
            (audio ? (pcm && pcm->size() == audio_binding.bytes)
-                  : (resource.kind == 3 ||
+                  : (resource.kind >= 3 ||
                      (image && image->sheet && image->sheet->texture.data)));
   }
 };
@@ -234,7 +234,7 @@ bool PodunkPlayerResources::publish(std::shared_ptr<State> s,
   s->data = data_;
   s->ir = ir_;
   s->registry = registry_;
-  s->binding = {id, spec, 0x454e005f, 1};
+  s->binding = {id, spec, 0x454e005f, data_->capability()};
   if (!registry_->publish_source_resource(
           spec, id, std::make_unique<Owner>(s, native), e)) {
     std::string ignored;
@@ -260,9 +260,14 @@ bool PodunkPlayerResources::construct_resource(uint32_t source_id,
     if (!player || !tree || !tree->state(player) ||
         !registry_->object_exists(player) ||
         !tree->object_identity(player, actual) ||
-        (actual.scene_id != data_->identity().scene_id ||
-         actual.source_sha256 != data_->identity().source_sha256 ||
-         actual.upstream_commit != data_->identity().upstream_commit))
+        !([&]{
+          if(actual.scene_id==data_->identity().scene_id && actual.source_sha256==data_->identity().source_sha256 && actual.upstream_commit==data_->identity().upstream_commit) return true;
+          for(const auto&m:data_->effect_resources()) if(m.resource_id==source_id) {
+            auto proof=data_->effect_identity(m.effect);
+            return proof&&actual.scene_id==proof->scene_id&&actual.source_sha256==proof->source_sha256&&actual.upstream_commit==proof->upstream_commit;
+          }
+          return false;
+        }()))
       return fail(e, "Player local material requires actual player Node owner");
   } else if (player)
     return fail(
@@ -300,11 +305,18 @@ bool PodunkPlayerResources::construct_resource(uint32_t source_id,
   if (!publish(s,
                r->kind == 1   ? "StreamTexture"
                : r->kind == 2 ? "AtlasTexture"
+               : r->kind == 4 ? "CanvasItemMaterial"
                               : "ShaderMaterial",
                source, out, e))
     return false;
   resources_.emplace(key, s);
   return true;
+}
+bool PodunkPlayerResources::construct_effect_resource(uint32_t effect,uint32_t source,upstream::FieldObjectId root,upstream::FieldObjectId&out,std::string&e) {
+  if(!live(e)||!data_->effects_bound()) return fail(e,"Effect resource source binding absent");
+  auto r=data_->effect_resource(effect,source);auto proof=data_->effect_identity(effect);auto tree=registry_->tree_owner(root);upstream::FieldIdentity actual;
+  if(!r||!proof||!tree||!tree->object_identity(root,actual)||!registry_->object_exists(root)||actual.scene_id!=proof->scene_id||actual.source_sha256!=proof->source_sha256||actual.upstream_commit!=proof->upstream_commit) return fail(e,"Effect resource actual PackedScene root differs");
+  return construct_resource(r->id,r->instanced?root:0,out,e);
 }
 bool PodunkPlayerResources::construct_audio(uint32_t id,
                                             upstream::FieldObjectId &out,
@@ -415,7 +427,7 @@ bool PodunkPlayerResources::texture(upstream::FieldObjectId id, C2D_Image &out,
   auto s = owned(id, e);
   if (!s)
     return false;
-  if (s->audio || s->resource.kind == 3 || !s->image)
+  if (s->audio || s->resource.kind >= 3 || !s->image)
     return fail(e, "Player Resource is not actual Texture");
   auto im = loading_sprite_sheet_get_image(s->image->sheet, 0);
   out = {im.tex, &s->region};

@@ -81,9 +81,30 @@ public:
                : fail(e, "global actual staged root parent differs");
   }
   bool ready(std::string &e) override {
+    if(h_.continuation_)return fail(e,"global cold Ready cannot replay over House continuation");
     return h_.tree_->ready_entered_branch(e);
   }
-  bool exit(std::string &e) override { return h_.tree_->exit(e); }
+  bool continuation_native_ready() const override {
+    return h_.continuation_ready_&&h_.continuation_&&h_.continuation_characters_&&
+        h_.continuation_->binds_source_owners(*h_.continuation_characters_,h_.core_,*h_.registry_);
+  }
+  bool adopt_continuation_ready(std::string &e) override {
+    FieldGlobalExternalState s;
+    if(!h_.continuation_||!h_.continuation_characters_||h_.continuation_ready_||
+        !h_.state(s,e)||!s.inside||s.ready||s.parent!=h_.registry_->root()||
+        h_.root_->external_parent(h_.binding_.object)!=s.parent||
+        !h_.continuation_->binds_source_owners(*h_.continuation_characters_,h_.core_,*h_.registry_))
+      return fail(e,"global continuation native boundary lacks actual completed import");
+    const auto *d=h_.tree_->descriptor(h_.binding_.object);FieldNodeBinding b;
+    if(!d||!h_.bind(*h_.tree_,h_.binding_.object,*d,b,e)||
+        !h_.native_->adopt_continuation_ready(*h_.tree_,h_.binding_.object,b,
+           *h_.continuation_,*h_.continuation_characters_,h_.core_,e))return false;
+    h_.continuation_ready_=true;e.clear();return true;
+  }
+  bool exit(std::string &e) override {
+    if(!h_.tree_->exit(e))return false;
+    h_.continuation_ready_=false;return true;
+  }
 
 private:
   PodunkGlobalHost &h_;
@@ -301,6 +322,7 @@ bool PodunkGlobalHost::phase(FieldNodeTreeRuntime &tree, FieldObjectId id,
     return true;
   }
   if (p == FieldTreePhase::ReadyScript) {
+    if(continuation_)return fail(e,"global source Ready remains pending during House continuation");
     if (d->script_methods & 1u) {
       if (id == binding_.object) {
         if (!ready_ || !ready_->binds(core_, *registry_))
@@ -352,9 +374,19 @@ bool PodunkGlobalHost::bind_characters(const FieldGlobalDataRuntime &c,
                                        std::string &e) {
   return core_.bind_characters(c, e);
 }
+bool PodunkGlobalHost::bind_continuation(const HouseGlobalBridgeRuntime &bridge,
+    const FieldGlobalDataRuntime &characters,std::string &e) {
+  const auto *node=tree_?tree_->state(binding_.object):nullptr;
+  if(continuation_||ready_||!object_||construction_failed_||!node||node->inside||
+      node->parent||parent_||node->ready_notified||
+      registry_->external_object(binding_.object)!=object_||
+      !bridge.binds_source_owners(characters,core_,*registry_))
+    return fail(e,"global continuation requires completed same source/session owners");
+  continuation_=&bridge;continuation_characters_=&characters;e.clear();return true;
+}
 bool PodunkGlobalHost::bind_ready(PodunkGlobalReady &ready, std::string &e) {
   const auto *node = tree_ ? tree_->state(binding_.object) : nullptr;
-  if (ready_ || !object_ || construction_failed_ || !node || node->inside ||
+  if (ready_ || continuation_ || !object_ || construction_failed_ || !node || node->inside ||
       node->ready_notified || !ready.binds(core_, *registry_))
     return fail(e, "global Ready source caller requires the same cold owner");
   ready_ = &ready;

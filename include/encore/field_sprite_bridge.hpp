@@ -66,6 +66,7 @@ struct FieldSpriteHost {
 };
 class FieldSpriteRuntime {
 public:
+ const FieldSpriteData*data()const{return data_;}
  bool initialize(const FieldSpriteData&,FieldSpriteHost,std::string&);bool create(uint32_t);bool ready(uint32_t);
  // Invoke from source parent NPC _update_sprite_and_animations / Create.
  bool parent_setup(uint32_t);bool set_sprite(uint32_t,uint32_t);bool set_animation(uint32_t,uint32_t,const std::vector<FieldSpriteConnection>&);

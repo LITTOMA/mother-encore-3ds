@@ -1,0 +1,556 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "packs": [
+    {
+      "role": 1,
+      "name": "BattleBackgroundResources",
+      "path": "data/global.encbgresources",
+      "producer": "field_battle_bg_resources",
+      "ir": "content/field-battle-bg-resources.json"
+    },
+    {
+      "role": 2,
+      "name": "CharacterLoad",
+      "path": "data/global.enccharacterload",
+      "producer": "field_character_load",
+      "ir": "content/native-field-character-load.json"
+    },
+    {
+      "role": 3,
+      "name": "GlobalChildReady",
+      "path": "data/global.encchildready",
+      "producer": "global_child_ready",
+      "ir": "content/native-global-child-ready.json"
+    },
+    {
+      "role": 4,
+      "name": "GlobalDataConstructor",
+      "path": "data/global.encconstructor",
+      "producer": "global_data_constructor",
+      "ir": "content/native-global-data-constructor.json"
+    },
+    {
+      "role": 5,
+      "name": "GlobalDataMembers",
+      "path": "data/global.encdata",
+      "producer": "field_global_data",
+      "ir": "content/native-global-data.json"
+    },
+    {
+      "role": 6,
+      "name": "GlobalItemDefinitions",
+      "path": "data/global.encfielditems",
+      "producer": "global_item_definitions",
+      "ir": "content/native-global-item-definitions.json"
+    },
+    {
+      "role": 7,
+      "name": "GlobalFlags",
+      "path": "data/global.encflags",
+      "producer": "field_global_flags",
+      "ir": "content/native-global-flags.json"
+    },
+    {
+      "role": 8,
+      "name": "GlobalLoad",
+      "path": "data/global.encload",
+      "producer": "global_load",
+      "ir": "content/native-global-load.json"
+    },
+    {
+      "role": 9,
+      "name": "NativeRoot",
+      "path": "data/global.encnativeroot",
+      "producer": "field_native_root",
+      "ir": "content/field-native-root.json"
+    },
+    {
+      "role": 10,
+      "name": "GlobalNodeConstructor",
+      "path": "data/global.encnodeconstructor",
+      "producer": "field_global_constructor",
+      "ir": "content/native-field-global-constructor.json"
+    },
+    {
+      "role": 11,
+      "name": "PackedDirectory",
+      "path": "data/global.encpackeddir",
+      "producer": "global_packed_directory",
+      "ir": "content/native-global-packed-directory.json"
+    },
+    {
+      "role": 12,
+      "name": "GlobalReady",
+      "path": "data/global.encready",
+      "producer": "global_ready",
+      "ir": "content/native-global-ready.json"
+    },
+    {
+      "role": 13,
+      "name": "GlobalRegistry",
+      "path": "data/global.encregistry",
+      "producer": "field_global_registry",
+      "ir": "content/field-global-registry.json"
+    },
+    {
+      "role": 14,
+      "name": "UiManager",
+      "path": "data/global.encuimanager",
+      "producer": "field_ui_manager",
+      "ir": "content/field-ui-manager.json"
+    },
+    {
+      "role": 15,
+      "name": "UiPreloads",
+      "path": "data/global.encuipreloads",
+      "producer": "field_ui_preloads",
+      "ir": "content/field-ui-preloads.json"
+    },
+    {
+      "role": 16,
+      "name": "YamlCaches",
+      "path": "data/global.encyamlcaches",
+      "producer": "global_yaml_caches",
+      "ir": "content/native-global-yaml-caches.json"
+    },
+    {
+      "role": 17,
+      "name": "YamlFile",
+      "path": "data/global.encyamlfile",
+      "producer": "global_yaml_file",
+      "ir": "content/native-global-yaml-file.json"
+    },
+    {
+      "role": 18,
+      "name": "HouseGlobalBridge",
+      "path": "data/house.encglobalbridge",
+      "producer": "house_global_bridge",
+      "ir": "content/native-house-global-bridge.json"
+    },
+    {
+      "role": 19,
+      "name": "UiContinuation",
+      "path": "data/house.encuicontinuation",
+      "producer": "house_ui_continuation",
+      "ir": "content/native-house-ui-continuation.json"
+    },
+    {
+      "role": 20,
+      "name": "PlayerChildScripts",
+      "path": "data/player.encchildren",
+      "producer": "player_child_scripts",
+      "ir": "content/native-player-child-scripts.json"
+    },
+    {
+      "role": 21,
+      "name": "PlayerEffects",
+      "path": "data/player.enceffects",
+      "producer": "player_effects",
+      "ir": "content/native-player-effects.json"
+    },
+    {
+      "role": 22,
+      "name": "PlayerFetcher",
+      "path": "data/player.encfetcher",
+      "producer": "player_fetcher",
+      "ir": "content/native-player-fetcher.json"
+    },
+    {
+      "role": 23,
+      "name": "PlayerGraphics",
+      "path": "data/player.encgraphics",
+      "producer": "player_graphics",
+      "ir": "content/native-player-graphics.json"
+    },
+    {
+      "role": 24,
+      "name": "PlayerInitialization",
+      "path": "data/player.encinitialization",
+      "producer": "player_initialization",
+      "ir": "content/native-player-initialization.json"
+    },
+    {
+      "role": 25,
+      "name": "PlayerMotion",
+      "path": "data/player.encmotion",
+      "producer": "player_motion",
+      "ir": "content/native-player-motion.json"
+    },
+    {
+      "role": 26,
+      "name": "PlayerReady",
+      "path": "data/player.encready",
+      "producer": "player_ready",
+      "ir": "content/native-player-ready.json"
+    },
+    {
+      "role": 27,
+      "name": "PlayerResources",
+      "path": "data/player.encresources",
+      "producer": "player_resources",
+      "ir": "content/native-player-resources.json"
+    },
+    {
+      "role": 28,
+      "name": "PlayerVisualScripts",
+      "path": "data/player.encvisualscripts",
+      "producer": "player_visual_scripts",
+      "ir": "content/native-player-visual-scripts.json"
+    },
+    {
+      "role": 29,
+      "name": "Butterfly",
+      "path": "data/podunk-butterflies.encfly",
+      "producer": "field_butterfly",
+      "ir": "content/native-field-butterfly.json"
+    },
+    {
+      "role": 30,
+      "name": "CutsceneArea",
+      "path": "data/podunk-cutscene-areas.encarea",
+      "producer": "field_cutscene_area",
+      "ir": "content/native-field-cutscene-area.json"
+    },
+    {
+      "role": 31,
+      "name": "DeadBush",
+      "path": "data/podunk-dead-bush.encbush",
+      "producer": "field_dead_bush",
+      "ir": "content/native-field-dead-bush.json"
+    },
+    {
+      "role": 32,
+      "name": "DialogueAudio",
+      "path": "data/podunk-dialogue-audio.encdaudio",
+      "producer": "field_dialogue_audio",
+      "ir": "content/native-field-dialogue-audio.json"
+    },
+    {
+      "role": 33,
+      "name": "DialogueLifecycle",
+      "path": "data/podunk-dialogue-lifecycle.encdlife",
+      "producer": "field_dialogue_lifecycle",
+      "ir": "content/native-field-dialogue-lifecycle.json"
+    },
+    {
+      "role": 34,
+      "name": "DialogueRootScript",
+      "path": "data/podunk-dialogue-root-script.encdroot",
+      "producer": "field_dialogue_root_script",
+      "ir": "content/native-field-dialogue-root-script.json"
+    },
+    {
+      "role": 35,
+      "name": "DialogueUi",
+      "path": "data/podunk-dialogue-ui.encdui",
+      "producer": "field_dialogue_ui",
+      "ir": "content/native-field-dialogue-ui.json"
+    },
+    {
+      "role": 36,
+      "name": "DialogueVisual",
+      "path": "data/podunk-dialogue-visual.encdvisual",
+      "producer": "field_dialogue_visual",
+      "ir": "content/native-field-dialogue-visual.json"
+    },
+    {
+      "role": 37,
+      "name": "DoorNpc",
+      "path": "data/podunk-door-npc.encdoor",
+      "producer": "field_door_npc",
+      "ir": "content/native-field-door-npc.json"
+    },
+    {
+      "role": 38,
+      "name": "DroppedItem",
+      "path": "data/podunk-dropped.encdrop",
+      "producer": "field_dropped",
+      "ir": "content/native-field-dropped.json"
+    },
+    {
+      "role": 39,
+      "name": "Emotes",
+      "path": "data/podunk-emotes.encemote",
+      "producer": "field_emotes",
+      "ir": "content/native-field-emotes.json"
+    },
+    {
+      "role": 40,
+      "name": "Enemy",
+      "path": "data/podunk-enemies.encenemy",
+      "producer": "field_enemy",
+      "ir": "content/native-field-enemy.json"
+    },
+    {
+      "role": 41,
+      "name": "InteractDialog",
+      "path": "data/podunk-interact.encdialog",
+      "producer": "field_interact_dialog",
+      "ir": "content/native-field-interact-dialog.json"
+    },
+    {
+      "role": 42,
+      "name": "MelodyBackground",
+      "path": "data/podunk-melody-background.encmelody",
+      "producer": "field_melody_background",
+      "ir": "content/native-field-melody-background.json"
+    },
+    {
+      "role": 43,
+      "name": "MusicChanger",
+      "path": "data/podunk-music-changers.encmarea",
+      "producer": "field_music_changer",
+      "ir": "content/native-field-music-changer.json"
+    },
+    {
+      "role": 44,
+      "name": "Npc",
+      "path": "data/podunk-npcs.encnpc",
+      "producer": "field_npc",
+      "ir": "content/native-field-npc.json"
+    },
+    {
+      "role": 45,
+      "name": "PlayerTransitions",
+      "path": "data/podunk-player-transitions.encplayer",
+      "producer": "field_player_transitions",
+      "ir": "content/native-field-player-transitions.json"
+    },
+    {
+      "role": 46,
+      "name": "Present",
+      "path": "data/podunk-presents.encpresent",
+      "producer": "field_present",
+      "ir": "content/native-field-present.json"
+    },
+    {
+      "role": 47,
+      "name": "Programme",
+      "path": "data/podunk-programmes.encprog",
+      "producer": "field_programme",
+      "ir": "content/native-field-programme.json"
+    },
+    {
+      "role": 48,
+      "name": "Prompt",
+      "path": "data/podunk-prompts.encfieldprompt",
+      "producer": "field_prompts",
+      "ir": "content/native-field-prompts.json"
+    },
+    {
+      "role": 49,
+      "name": "SceneActions",
+      "path": "data/podunk-scene-actions.encsact",
+      "producer": "field_scene_actions",
+      "ir": "content/native-field-scene-actions.json"
+    },
+    {
+      "role": 50,
+      "name": "SpriteBridge",
+      "path": "data/podunk-sprites.encsprite",
+      "producer": "field_sprite_bridge",
+      "ir": "content/native-field-sprite-bridge.json"
+    },
+    {
+      "role": 51,
+      "name": "SteppingSounds",
+      "path": "data/podunk-stepping-sounds.encsteps",
+      "producer": "field_stepping_sounds",
+      "ir": "content/native-field-stepping-sounds.json"
+    },
+    {
+      "role": 52,
+      "name": "CharacterTint",
+      "path": "data/podunk-tint.enctint",
+      "producer": "field_tint",
+      "ir": "content/native-field-tint.json"
+    },
+    {
+      "role": 53,
+      "name": "CameraArrows",
+      "path": "data/podunk.encarrows",
+      "producer": "field_camera_arrows",
+      "ir": "content/podunk-camera-arrows.json"
+    },
+    {
+      "role": 54,
+      "name": "Birds",
+      "path": "data/podunk.encbirds",
+      "producer": "field_birds",
+      "ir": "content/podunk-birds.json"
+    },
+    {
+      "role": 55,
+      "name": "CameraArea",
+      "path": "data/podunk.enccamarea",
+      "producer": "field_camera_area",
+      "ir": "content/podunk-camera-area.json"
+    },
+    {
+      "role": 56,
+      "name": "CanvasArt",
+      "path": "data/podunk.enccanvasart",
+      "producer": "field_canvas_art",
+      "ir": "content/podunk-canvas-art.json"
+    },
+    {
+      "role": 57,
+      "name": "Dandelion",
+      "path": "data/podunk.encdandelion",
+      "producer": "field_dandelion",
+      "ir": "content/podunk-dandelion.json"
+    },
+    {
+      "role": 58,
+      "name": "Door",
+      "path": "data/podunk.encdoor",
+      "producer": "field_door",
+      "ir": "content/podunk-door.json"
+    },
+    {
+      "role": 59,
+      "name": "Grass",
+      "path": "data/podunk.encfield",
+      "producer": "podunk_scene",
+      "ir": "content/podunk-scene.json"
+    },
+    {
+      "role": 60,
+      "name": "FieldItemDetails",
+      "path": "data/podunk.encfielddetails",
+      "producer": "field_item_details",
+      "ir": "content/native-field-item-details.json"
+    },
+    {
+      "role": 61,
+      "name": "Geometry",
+      "path": "data/podunk.encfieldgeometry",
+      "producer": "field_geometry",
+      "ir": "content/podunk-scene-geometry.json"
+    },
+    {
+      "role": 62,
+      "name": "FieldItemDefinitions",
+      "path": "data/podunk.encfielditems",
+      "producer": "field_item_definitions",
+      "ir": "content/native-field-item-definitions.json"
+    },
+    {
+      "role": 63,
+      "name": "Map",
+      "path": "data/podunk.encfieldmap",
+      "producer": "podunk_map",
+      "ir": "content/podunk-scene-map.json"
+    },
+    {
+      "role": 64,
+      "name": "SceneLifecycle",
+      "path": "data/podunk.encfieldscene",
+      "producer": "field_scene_host",
+      "ir": "content/podunk-scene-lifecycle.json"
+    },
+    {
+      "role": 65,
+      "name": "GameCamera",
+      "path": "data/podunk.encgamecamera",
+      "producer": "field_game_camera",
+      "ir": "content/podunk-game-camera.json"
+    },
+    {
+      "role": 66,
+      "name": "Goods",
+      "path": "data/podunk.encgoods",
+      "producer": "field_goods",
+      "ir": "content/native-field-goods.json"
+    },
+    {
+      "role": 67,
+      "name": "Inventory",
+      "path": "data/podunk.encinventory",
+      "producer": "field_inventory",
+      "ir": "content/native-field-inventory.json"
+    },
+    {
+      "role": 68,
+      "name": "NodeTree",
+      "path": "data/podunk.encnodetree",
+      "producer": "field_node_tree",
+      "ir": "content/podunk-node-tree.json"
+    },
+    {
+      "role": 69,
+      "name": "OpenableDoor",
+      "path": "data/podunk.encopenable",
+      "producer": "field_openable_door",
+      "ir": "content/podunk-openable-door.json"
+    },
+    {
+      "role": 70,
+      "name": "Payphone",
+      "path": "data/podunk.encpayphone",
+      "producer": "field_payphone",
+      "ir": "content/native-field-payphone.json"
+    },
+    {
+      "role": 71,
+      "name": "Sparkles",
+      "path": "data/podunk.encsparkles",
+      "producer": "field_sparkles",
+      "ir": "content/podunk-sparkles.json"
+    },
+    {
+      "role": 72,
+      "name": "NativeTimers",
+      "path": "data/podunk.enctimers",
+      "producer": "field_native_timer",
+      "ir": "content/native-field-timers.json"
+    },
+    {
+      "role": 73,
+      "name": "VendingMachine",
+      "path": "data/podunk.encvending",
+      "producer": "field_vending_machine",
+      "ir": "content/native-field-vending-machine.json"
+    },
+    {
+      "role": 74,
+      "name": "DialogueNodeRecipe",
+      "path": "data/dialogue.encnoderecipe",
+      "producer": "field_node_recipe",
+      "ir": "content/dialogue-node-recipe.json"
+    },
+    {
+      "role": 75,
+      "name": "Shop",
+      "path": "data/zoo.encshop",
+      "producer": "field_shop",
+      "ir": "content/native-field-shop.json"
+    },
+    {
+      "role": 76,
+      "name": "HouseExitDoor",
+      "path": "data/house.encdoor",
+      "producer": "house_exit_door",
+      "ir": "content/native-house-exit-door.json"
+    },
+    {
+      "role": 77,
+      "name": "HouseStatusEffects",
+      "path": "data/house.encstatuseffects",
+      "producer": "house_status_effects",
+      "ir": "content/native-house-status-effects.json"
+    }
+  ],
+  "extra_inputs": [
+    "content/podunk-scene-assets.json",
+    "content/podunk-scene-map-assets.json",
+    "content/native-audio.json",
+    "content/podunk-audio.json",
+    "content/podunk-music.json",
+    "content/asset-receipts/audio/opening.json",
+    "content/asset-receipts/audio/podunk.json"
+  ],
+  "admission_ready": false
+}

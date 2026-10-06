@@ -18,6 +18,14 @@ public:
   virtual bool enter(upstream::FieldObjectId parent, std::string &) = 0;
   virtual bool ready(std::string &) = 0;
   virtual bool exit(std::string &) = 0;
+  // Explicit native continuation import of an already running session. This
+  // does not execute a cold source _ready or grant source script readiness.
+  // Ordinary add_child and project startup never call this operation.
+  virtual bool adopt_continuation_ready(std::string &error) {
+    error = "External owner has no audited existing-session continuation";
+    return false;
+  }
+  virtual bool continuation_native_ready() const { return false; }
 };
 struct PodunkRootViewportState {
   bool initialized = false, inside = false, ready = false, active = false,
@@ -62,6 +70,7 @@ public:
   bool initialize_tree(std::string &);
   bool finalize_tree(std::string &);
   bool add_child(upstream::FieldObjectId, std::string &);
+  bool add_continuation_child(upstream::FieldObjectId, std::string &);
   bool remove_child(upstream::FieldObjectId, std::string &);
   bool move_child(upstream::FieldObjectId, int32_t, std::string &);
   bool node_notification(upstream::FieldObjectId, upstream::FieldTreePhase,
@@ -128,5 +137,6 @@ private:
   bool finish_root_ready(std::string &);
   bool actual_external(upstream::FieldObjectId, External *&,
                        upstream::FieldGlobalExternalState &, std::string &);
+  bool attach_child(upstream::FieldObjectId, bool continuation, std::string &);
 };
 } // namespace encore::ctr

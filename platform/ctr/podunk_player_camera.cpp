@@ -74,6 +74,37 @@ bool PodunkPlayerCamera::live(std::string &e) const {
     return fail(e, "Player Camera actual native owner unavailable");
   return true;
 }
+bool PodunkPlayerCamera::actual_ui(std::string &e) const {
+  const auto *ns = ports_.ui_namespace;
+  if (!registry_ || !data_ || !ports_.ui || !ns || !ns->valid() ||
+      ns->identity().upstream_commit != data_->identity().upstream_commit)
+    return fail(e, "Player Camera actual UI namespace/source unavailable");
+  const auto binding = ports_.ui->binding();
+  const auto &spec = binding.source;
+  const auto &autoloads = ns->autoloads();
+  const auto expected =
+      std::find_if(autoloads.begin(), autoloads.end(),
+                   [&](const auto &a) { return a.id == ns->ui_autoload(); });
+  FieldGlobalExternalState state;
+  std::array<uint8_t, 32> proof{};
+  if (expected == autoloads.end() || !binding.object ||
+      registry_->external_object(binding.object) != ports_.ui ||
+      !identity(spec.identity, ns->identity()) || spec.role != 3 ||
+      spec.stable_id != expected->id || spec.name != expected->name ||
+      spec.native_class != expected->native_class ||
+      spec.source != expected->path || spec.script != expected->script ||
+      spec.source_sha != expected->source_sha ||
+      spec.script_sha != expected->script_sha ||
+      !ns->source_hash(spec.script, proof) || proof != spec.script_sha ||
+      !ports_.ui->state(state, e) || !state.inside ||
+      state.parent != registry_->root())
+    return fail(e,
+                "Player Camera actual UI identity/attachment/source rejected");
+  // No Ready bit is synthesized or required. The concrete callback must read
+  // this owning UI's real battlefield state, including transition boundaries.
+  e.clear();
+  return true;
+}
 bool PodunkPlayerCamera::deferred(const FieldDeferredMessage &m,
                                   std::string &e) {
   if (!live(e) || m.object != object_ || m.kind != FieldDeferredKind::Call ||
@@ -302,8 +333,7 @@ bool PodunkPlayerCamera::select(uint32_t source, std::string &e) {
 bool PodunkPlayerCamera::begin_frame(uint64_t epoch, bool paused,
                                      std::string &e) {
   frame_valid_ = false;
-  if (!live(e) || !epoch || epoch <= epoch_ || !ports_.ui ||
-      registry_->external_object(ports_.ui->binding().object) != ports_.ui ||
+  if (!live(e) || !epoch || epoch <= epoch_ || !actual_ui(e) ||
       !ports_.in_battle || !ports_.controls || !ports_.input ||
       !ports_.in_battle(ports_.ui->binding().object, frame_.in_battle, e) ||
       !ports_.controls(frame_.controls, e) || !finite(frame_.controls) ||
@@ -430,8 +460,7 @@ bool PodunkPlayerCamera::rebind_tree(FieldNodeTreeRuntime &t, std::string &e) {
 FieldGameCameraHost PodunkPlayerCamera::source_host() {
   FieldGameCameraHost h;
   h.bind = [this](const FieldGameCameraData &d, std::string &e) {
-    if (!live(e) || &d != &data_->camera() || !ports_.ui ||
-        registry_->external_object(ports_.ui->binding().object) != ports_.ui ||
+    if (!live(e) || &d != &data_->camera() || !actual_ui(e) ||
         !ports_.connect_player || !ports_.listeners_admitted ||
         !ports_.geometry_admitted || !ports_.native_current ||
         !ports_.make_current)
@@ -449,7 +478,8 @@ FieldGameCameraHost PodunkPlayerCamera::source_host() {
   h.connect_player = [this](uint32_t id, std::function<bool()> stop,
                             std::function<bool()> pause, std::string &e) {
     FieldObjectId player = 0;
-    return live(e) && id == native_.id && global_player(player, e) &&
+    return live(e) && actual_ui(e) && id == native_.id &&
+           global_player(player, e) &&
            ports_.connect_player(object_, player, ports_.ui->binding().object,
                                  data_->camera(), std::move(stop),
                                  std::move(pause), e);
@@ -488,6 +518,8 @@ FieldGameCameraHost PodunkPlayerCamera::source_host() {
     return ok;
   };
   h.info_plates_hide = [this](std::string &e) {
+    if (!actual_ui(e))
+      return false;
     return ports_.info_plates_hide
                ? ports_.info_plates_hide(ports_.ui->binding().object, e)
                : fail(e, "Camera actual UI info plates owner pending");

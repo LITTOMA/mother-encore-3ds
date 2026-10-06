@@ -1,7 +1,7 @@
 {
-  "schema": 1,
-  "format": 1,
-  "capability": 1,
+  "schema": 2,
+  "format": 2,
+  "capability": 2,
   "rules": 1,
   "family": 1162739807,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
@@ -10,6 +10,34 @@
   "source_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
   "initialization_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
   "graphics_ir_sha256": "54bd9bf182f5762d08687ecc98bde972dad88e0a2270952f476a2374c54f5f86",
+  "effects_ir_sha256": "84970c16fb6e40579e769bc932d3fc01cd7e36a14d4157129e7d9e03cf2ffdf7",
+  "effect_resources": [
+    {
+      "effect": 0,
+      "source_id": 0,
+      "resource_id": 2802197216
+    },
+    {
+      "effect": 0,
+      "source_id": 2,
+      "resource_id": 1980729369
+    },
+    {
+      "effect": 0,
+      "source_id": 5,
+      "resource_id": 192068900
+    },
+    {
+      "effect": 1,
+      "source_id": 0,
+      "resource_id": 1143976587
+    },
+    {
+      "effect": 1,
+      "source_id": 1,
+      "resource_id": 531576326
+    }
+  ],
   "images": [
     {
       "id": 122296163,
@@ -153,6 +181,18 @@
         640
       ],
       "path": "graphics/player/resource-4168475363.t3x",
+      "reused": false
+    },
+    {
+      "id": 2271392734,
+      "source": "Graphics/VFX/Running Dust.png",
+      "source_sha256": "399eb12436ae94a509eccc6e042e3bcd590e4bf08be39c8441649cab412ac984",
+      "import_sha256": "bfa437f19d604dbf124323ccc75ece55180e6fea13d59e500a0c56d4e99b0426",
+      "size": [
+        112,
+        16
+      ],
+      "path": "graphics/player/resource-2271392734.t3x",
       "reused": false
     }
   ],
@@ -793,6 +833,199 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2802197216,
+      "kind": 3,
+      "source": "Shaders/Flash.tres",
+      "texture": 0,
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "local": true,
+      "instanced": false,
+      "shader": 1,
+      "parameters": [
+        {
+          "role": 1,
+          "name": "flash_color",
+          "kind": 2,
+          "value": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "role": 2,
+          "name": "glow_color",
+          "kind": 2,
+          "value": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "role": 3,
+          "name": "flash_modifier",
+          "kind": 1,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "role": 4,
+          "name": "glow_modifier",
+          "kind": 1,
+          "value": [
+            0.444,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1980729369,
+      "kind": 1,
+      "source": "Graphics/Character Sprites/Ninten/main.png",
+      "texture": 3107534691,
+      "rect": [
+        0,
+        0,
+        310,
+        580
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 192068900,
+      "kind": 3,
+      "source": "Nodes/Reusables/Effects/After Image.tscn",
+      "texture": 0,
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "local": true,
+      "instanced": true,
+      "shader": 1,
+      "parameters": [
+        {
+          "role": 1,
+          "name": "flash_color",
+          "kind": 2,
+          "value": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "role": 2,
+          "name": "glow_color",
+          "kind": 2,
+          "value": [
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "role": 3,
+          "name": "flash_modifier",
+          "kind": 1,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "role": 4,
+          "name": "glow_modifier",
+          "kind": 1,
+          "value": [
+            0.444,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1143976587,
+      "kind": 4,
+      "source": "Nodes/Reusables/Effects/Dust.tscn",
+      "texture": 0,
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 3,
+      "parameters": [
+        {
+          "role": 1,
+          "name": "blend_mode",
+          "kind": 4,
+          "value": [
+            1.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "role": 2,
+          "name": "light_mode",
+          "kind": 4,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 531576326,
+      "kind": 1,
+      "source": "Graphics/VFX/Running Dust.png",
+      "texture": 2271392734,
+      "rect": [
+        0,
+        0,
+        112,
+        16
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
     }
   ],
   "nodes": [
@@ -875,7 +1108,17 @@
     "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
     "Audio/Sound effects/Ninten Bat.mp3.import": "cc27908cd9c7db05cec03e65118b8a9f9257e5e4bc7aa326efe7b935b16a2f0b",
     "Audio/Sound effects/EB/tcrash.wav": "6bc353a536933880e9bd358e76f94a09e7c1602ae29a989c5a47357f595498e7",
-    "Audio/Sound effects/EB/tcrash.wav.import": "6a2d3146dae8e06c8ded56eea44cd786c06b3d13a5d9cd0621fa13aa9a09cf48"
+    "Audio/Sound effects/EB/tcrash.wav.import": "6a2d3146dae8e06c8ded56eea44cd786c06b3d13a5d9cd0621fa13aa9a09cf48",
+    "Nodes/Reusables/Effects/After Image.tscn": "a245a3f70f3d8dd5ef3392ffe9d9681cca947143500d5f61569f2065d836512a",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Nodes/Reusables/Effects/Dust.tscn": "13219e6f0da5090db70de12b43bbed4945229fc3db307f97abc88d6e1e4d29d9",
+    "Graphics/VFX/Running Dust.png": "399eb12436ae94a509eccc6e042e3bcd590e4bf08be39c8441649cab412ac984",
+    "Graphics/VFX/Running Dust.png.import": "bfa437f19d604dbf124323ccc75ece55180e6fea13d59e500a0c56d4e99b0426",
+    "Scripts/misc/AfterImageCreator.gd": "44ef601a4b969553b707a7a05100c747b8cb7d2f161486232a119dbf5fc95dd3",
+    "Scripts/misc/DustCreator.gd": "5c48002707bb12c27d79041f812636731099879fae1c6caec066d3fc4807d410",
+    "Scripts/misc/After Image.gd": "44becf40f6191694b6c2dd24f126a108aa22ff03fddd19f9e510ac85d3925b8f",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Nodes/Reusables/Effects/AfterImageCreator.tscn": "6e7436316f5ced4d3d9ef8f1416cfa7b2cd860ca739e1534369c3a00fe10122e"
   },
   "unsupported": [
     "Non-neutral outline/flash draw kernel pending; parameters are owned and checked, never ignored",

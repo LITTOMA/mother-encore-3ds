@@ -81,10 +81,11 @@ bool HouseGlobalBridgeData::load(const uint8_t *p, size_t n,
       !session.valid() || std::memcmp(p, "ENCHGB01", 8) || u32(p + 8) != 1 ||
       u32(p + 12) != 128 || u32(p + 16) != n ||
       u32(p + 20) != crc(p + 128, n - 128) || u32(p + 24) != 0x454e0060 ||
-      u32(p + 28) != 1 || u32(p + 32) != 1 || u32(p + 124))
+      (u32(p + 28) != 1 && u32(p + 28) != 2) || u32(p + 32) != 1 || u32(p + 124))
     return fail(
         e, "House continuation format/version/capability/rules/CRC rejected");
   HouseGlobalBridgeData d;
+  d.constructor_continuation_ = u32(p + 28) == 2;
   d.identity_.scene_id = u32(p + 36);
   std::copy(p + 40, p + 60, d.identity_.upstream_commit.begin());
   std::copy(p + 60, p + 92, d.identity_.source_sha256.begin());
@@ -189,6 +190,24 @@ bool HouseGlobalBridgeData::load(const uint8_t *p, size_t n,
     auto h = d.sources_.find(a.source);
     if (h == d.sources_.end() || h->second != a.sha)
       return fail(e, "House continuation Status YAML proof missing");
+  }
+  if (d.constructor_continuation_) {
+    d.continuation_scene_=r.text();d.namespace_source_=r.text();
+    if(d.continuation_scene_.empty()||!d.sources_.count(d.continuation_scene_)||d.namespace_source_.empty()||!d.sources_.count(d.namespace_source_))
+      return fail(e,"House continuation actual scene source absent");
+    k=r.count(3);
+    if(k!=3)return fail(e,"House continuation constructor source scope incomplete");
+    uint32_t previous=0;std::set<uint32_t>ids;
+    for(uint32_t i=0;i<k;++i){
+      HouseGlobalAutoloadBinding a;a.role=r.u();a.source.id=r.u();a.source.kind=r.u();a.source.ordinal=r.u();
+      a.source.name=r.text();a.source.path=r.text();a.source.native_class=r.text();a.source.script=r.text();a.source.source_sha=r.hash();a.source.script_sha=r.hash();
+      const auto source=d.sources_.find(a.source.path),script=d.sources_.find(a.source.script);
+      if(a.role!=i+1||!a.source.id||!ids.insert(a.source.id).second||a.source.kind!=2||
+          (i&&a.source.ordinal<=previous)||a.source.name.empty()||a.source.native_class.empty()||
+          source==d.sources_.end()||script==d.sources_.end()||source->second!=a.source.source_sha||script->second!=a.source.script_sha)
+        return fail(e,"House continuation constructor role/order/source proof rejected");
+      previous=a.source.ordinal;d.continuation_autoloads_.push_back(std::move(a));
+    }
   }
   if (!r.ok || r.n || !d.sources_.count(s.script))
     return fail(e, "House continuation malformed/trailing binary");

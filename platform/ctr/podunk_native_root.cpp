@@ -477,6 +477,14 @@ bool PodunkNativeRoot::actual_external(FieldObjectId id, External *&out,
   return true;
 }
 bool PodunkNativeRoot::add_child(FieldObjectId id, std::string &e) {
+  return attach_child(id, false, e);
+}
+bool PodunkNativeRoot::add_continuation_child(FieldObjectId id,
+                                             std::string &e) {
+  return attach_child(id, true, e);
+}
+bool PodunkNativeRoot::attach_child(FieldObjectId id, bool continuation,
+                                    std::string &e) {
   if (!state_.inside || state_.failed || state_.blocked ||
       !registry_->object_exists(id) || id == root_ || id == kernel_ ||
       std::find(state_.children.begin(), state_.children.end(), id) !=
@@ -486,6 +494,9 @@ bool PodunkNativeRoot::add_child(FieldObjectId id, std::string &e) {
                                     : registry_->tree_owner(id);
   External *external = nullptr;
   FieldGlobalExternalState prior;
+  if (continuation && (tree || !state_.ready_notified ||
+                       !external_.count(id)))
+    return fail(e, "Native continuation requires an external session owner and ready root");
   if (tree) {
     auto *s = tree->state(id);
     if (tree->object_domain() != kernel_ || tree->root() != id || !s ||
@@ -526,9 +537,14 @@ bool PodunkNativeRoot::add_child(FieldObjectId id, std::string &e) {
     if (!external->object->state(now, e) || now.parent != root_ ||
         !now.inside || !known_nodes_.count(id) ||
         !entered_notified_.count(id) ||
-        (state_.ready_notified && !external->lifecycle->ready(e)))
+        (state_.ready_notified &&
+         !(continuation ? external->lifecycle->adopt_continuation_ready(e)
+                        : external->lifecycle->ready(e))))
       return poison(e, e);
-    if (!external->object->state(now, e) || now.ready != state_.ready_notified)
+    if (!external->object->state(now, e) ||
+        (continuation
+             ? (now.ready || !external->lifecycle->continuation_native_ready())
+             : now.ready != state_.ready_notified))
       return poison("Native root external child did not execute source Ready",
                     e);
   } else {

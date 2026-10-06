@@ -57,8 +57,8 @@ bool HouseRuntime::set_player_nickname(std::string_view name){
 std::string_view HouseRuntime::player_nickname()const{
  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
 }
-bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error;}
-bool HouseRuntime::entering_door()const{return phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_);}
+bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error||phase_==HousePhase::SceneDoorPending;}
+bool HouseRuntime::entering_door()const{return phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::SceneDoorPending;}
 bool HouseRuntime::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
  const auto&room=world_->content();const auto scene=room.scene();
  const Vec2 rect[4]={{center.x-extents.x,center.y-extents.y},{center.x+extents.x,center.y-extents.y},{center.x+extents.x,center.y+extents.y},{center.x-extents.x,center.y+extents.y}};
@@ -135,6 +135,7 @@ bool HouseRuntime::deliver_area_contacts(){
    if(!world_->pause_for_house())return fail("Door pause rejected");
    event(HouseEventKind::Paused,c.index);
   }else if(c.kind==2&&!blocks_player()&&!entering_door()){
+   if(scene_door_data_&&c.index<scene_door_ids_.size()&&scene_door_ids_[c.index]){if(!request_scene_door(c.index))return false;continue;}
    active_=c.index;phase_=HousePhase::Unsupported;error_="Unported source route; B returns to the last safe point";
    if(!world_->pause_for_house())return fail("Boundary pause rejected");
   }
@@ -231,7 +232,7 @@ bool HouseRuntime::story_conditions(uint32_t index)const{
  return true;
 }
 bool HouseRuntime::process_story_requests(){
- if(story_pending()||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error)return true;
+ if(story_pending()||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error||phase_==HousePhase::SceneDoorPending)return true;
  for(uint32_t i=0;i<story_process_.size();++i)if(story_process_[i]&&idle_frame_>story_ready_idle_[i]){
   story_process_[i]=0;if(!story_conditions(i))continue;
   if(!world_->pause_for_house())return fail("Story trigger pause rejected");

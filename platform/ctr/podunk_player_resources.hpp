@@ -17,6 +17,8 @@ public:
   bool construct_resource(uint32_t source_id,
                           upstream::FieldObjectId actual_player,
                           upstream::FieldObjectId &, std::string &);
+  bool construct_effect_resource(uint32_t effect,uint32_t source_id,
+      upstream::FieldObjectId effect_root,upstream::FieldObjectId&,std::string&);
   bool construct_audio(uint32_t source_id, upstream::FieldObjectId &,
                        std::string &);
   bool resolve(const upstream::PlayerInitializationField &,

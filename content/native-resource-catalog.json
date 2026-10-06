@@ -288,6 +288,16 @@
       "id": 41,
       "role": "FieldGoods",
       "path": "data/podunk.encgoods"
+    },
+    {
+      "id": 42,
+      "role": "HouseSceneDoor",
+      "path": "data/house.encdoor"
+    },
+    {
+      "id": 43,
+      "role": "FieldSceneBundle",
+      "path": "data/podunk.encbundle"
     }
   ],
   "encounters": [

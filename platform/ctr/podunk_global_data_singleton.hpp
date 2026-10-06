@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/global_data_constructor.hpp"
+#include "encore/house_global_bridge.hpp"
 #include "podunk_global_data_host.hpp"
 #include "podunk_native_root.hpp"
 namespace encore::ctr {
@@ -41,6 +42,11 @@ public:
   bool native_notification(upstream::FieldTreePhase, std::string &) override;
   bool enter(upstream::FieldObjectId, std::string &) override;
   bool ready(std::string &) override;
+  bool bind_continuation(const upstream::HouseGlobalBridgeRuntime &,
+                         const upstream::FieldGlobalConstructorRuntime &,
+                         std::string &);
+  bool adopt_continuation_ready(std::string &) override;
+  bool continuation_native_ready() const override;
   bool exit(std::string &) override;
   bool deferred(const upstream::FieldDeferredMessage &, std::string &) override;
   bool persist_append(upstream::FieldObjectId, std::string &) override;
@@ -52,6 +58,9 @@ private:
   upstream::FieldGlobalExternalBinding binding_{};
   PodunkGlobalDataSingletonData data_;
   PodunkGlobalDataSingletonServices services_;
+  const upstream::HouseGlobalBridgeRuntime *continuation_ = nullptr;
+  const upstream::FieldGlobalConstructorRuntime *continuation_global_ = nullptr;
+  bool continuation_ready_ = false;
   bool initialized_ = false, parented_ = false, unparented_ = false, failed_ = false;
   bool fail(std::string &, const char *) const;
   bool poison(std::string &);

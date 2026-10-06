@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/player_ready.hpp"
+#include "encore/player_effects.hpp"
 #include "podunk_player_visual_native.hpp"
 
 namespace encore::ctr {
@@ -57,6 +58,10 @@ public:
                  upstream::FieldGlobalRegistry &,
                  upstream::FieldObjectId actual_player,
                  PodunkPlayerAnimationEndpoints &, std::string &);
+  bool construct_effect(const upstream::PlayerEffectsData&,uint32_t kind,
+      upstream::FieldNodeTreeRuntime&,upstream::FieldGlobalRegistry&,
+      upstream::FieldObjectId root,upstream::FieldObjectId animation,
+      PodunkPlayerAnimationEndpoints&,std::string&);
   upstream::PlayerGraphHost graph_host();
   bool ready(upstream::FieldTreePhase, const upstream::FieldNodeBinding &,
              std::string &);
@@ -77,6 +82,8 @@ public:
   bool process(upstream::FieldObjectId animation, upstream::FieldTreePhase,
                float actual_delta, bool tree_paused, std::string &);
   std::vector<upstream::FieldObjectId> animation_objects() const;
+  bool construct_native_sprite(const PodunkPlayerSpriteState&,std::string&);
+  bool release_effect(upstream::FieldObjectId animation,std::string&);
   bool sprite_frame(upstream::FieldObjectId, uint32_t, std::string &);
   bool sprite_texture(upstream::FieldObjectId, uint32_t, std::string &);
   bool sprite_offset(upstream::FieldObjectId, upstream::Vec2, std::string &);
@@ -119,6 +126,12 @@ private:
                      upstream::FieldObjectId player,
                      upstream::FieldObjectId animation, bool main,
                      PodunkPlayerAnimationEndpoints &, std::string &);
+  bool construct_snapshot(const upstream::PlayerInitializationData*,
+      const upstream::PlayerReadyData*,const upstream::PlayerEffectsData*,uint32_t,
+      const upstream::FieldNodeRecipeData&,std::shared_ptr<const upstream::GlobalYamlValue>,
+      upstream::FieldNodeTreeRuntime&,upstream::FieldGlobalRegistry&,
+      upstream::FieldObjectId,upstream::FieldObjectId,bool,
+      PodunkPlayerAnimationEndpoints&,std::string&);
   PodunkPlayerAnimation *for_animation(upstream::FieldObjectId);
   PodunkPlayerAnimation *sprite_owner_ = nullptr;
   bool checked_resource(uint32_t source_id, upstream::FieldObjectId actual_id,
@@ -134,6 +147,8 @@ private:
   bool sample(const Clip &, const Track &, float, Value &, bool &,
               std::string &) const;
   std::vector<size_t> events(const Clip &, const Track &, float, float) const;
+  const upstream::PlayerEffectsData *effects_data_ = nullptr;
+  uint32_t effect_kind_ = 0;
   const upstream::PlayerInitializationData *data_ = nullptr;
   upstream::FieldNodeTreeRuntime *tree_ = nullptr;
   upstream::FieldGlobalRegistry *registry_ = nullptr;

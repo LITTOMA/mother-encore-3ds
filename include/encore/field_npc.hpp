@@ -61,6 +61,7 @@ struct FieldNpcHost {
 };
 class FieldNpcRuntime {
 public:
+ const FieldNpcData*data()const{return data_;}
  bool initialize(const FieldNpcData*,SourceRandom*,FieldNpcHost,std::string&);
  bool ready(uint32_t);bool recheck_flags(uint32_t);bool visibility_changed(uint32_t);bool screen_entered(uint32_t);bool screen_exited(uint32_t);
  bool has_dialog(uint32_t,bool thoughts,bool&);bool interact(uint32_t);bool telepathy(uint32_t);bool stop_interaction(uint32_t);

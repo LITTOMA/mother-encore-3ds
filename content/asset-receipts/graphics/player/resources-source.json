@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "producer_sha256": "d2add01d392fc855ba89d8625b693ba73af9cf014727c38434788967f4b064b0",
-  "ir_sha256": "0801b9c330531506a1231fbd253744580034f08f9bd0e0da5b2e55d7006279bb",
+  "producer_sha256": "b1f5f705283727138db6d40c897beebd5c474efb97fca23e5e25fbee6bbb77e9",
+  "ir_sha256": "fe0d1ae76daa5da599b333e9d97222d785d66dd54df37a0513d79590e631d223",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "workers": 4,
   "outputs": [
@@ -77,6 +77,12 @@
       "bytes": 4194325,
       "output_sha256": "4de09df797b9cf45250d8ecb0087dc4fe618b085d6f23223a10b08ff447c73cb",
       "path": "graphics/player/resource-4168475363.t3x"
+    },
+    {
+      "id": 2271392734,
+      "bytes": 8213,
+      "output_sha256": "a071fb75b30615a116185b414f47c41f3624685e2bf2857c41a87f4cf8d70ea5",
+      "path": "graphics/player/resource-2271392734.t3x"
     }
   ],
   "audios": [

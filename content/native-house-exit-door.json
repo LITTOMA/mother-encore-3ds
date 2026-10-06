@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "scene_id": 2561235290,
+  "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Nodes/Ui/effects/Fade.gd": "8266bf5f24eedd8281be92a04abe8ab988da720189f2bbc90c24656cbb99efaa",
+    "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/Door_Short.mp3.import": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
+    "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
+    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31"
+  },
+  "scene_admitted": false,
+  "capabilities": 3,
+  "ground_offset": 7.0,
+  "none": "None",
+  "records": [
+    {
+      "id": 1812921732,
+      "ready": 0,
+      "node": "Doors/Podunk",
+      "marker": 1310672520,
+      "audio": 2024568748,
+      "shape": 3428483983,
+      "layer": 256,
+      "mask": 0,
+      "flags": 357,
+      "pause_mode": 2,
+      "target_name": "podunk/podunk",
+      "target_path": "Maps/podunk/podunk.tscn",
+      "sound": "Audio/Sound effects/M3/door_open.wav",
+      "end_sound": "None",
+      "in_anim": "Circle Focus",
+      "out_anim": "Circle Focus",
+      "flag": "good_morning",
+      "target": [
+        8,
+        -32
+      ],
+      "direction": [
+        0,
+        1
+      ],
+      "speeds": [
+        1.5,
+        1.5
+      ],
+      "music_fade": 0.8,
+      "in_color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "out_color": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "body_transform": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          112,
+          824
+        ]
+      ],
+      "marker_transform": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          136,
+          828
+        ]
+      ],
+      "shape_offset": [
+        4,
+        4
+      ],
+      "extents": [
+        4,
+        4
+      ]
+    }
+  ],
+  "audio": [
+    {
+      "id": 2024568748,
+      "source": "Audio/Sound effects/Door_Short.mp3",
+      "bus": "SFX"
+    }
+  ],
+  "targets": [
+    {
+      "id": 1812921732,
+      "path": "Maps/podunk/podunk.tscn"
+    }
+  ]
+}

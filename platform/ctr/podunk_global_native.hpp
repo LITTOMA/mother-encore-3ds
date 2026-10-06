@@ -13,6 +13,10 @@ public:
   bool phase(upstream::FieldNodeTreeRuntime &, upstream::FieldObjectId,
              const upstream::FieldNodeBinding &, upstream::FieldTreePhase,
              std::string &) override;
+  bool adopt_continuation_ready(upstream::FieldNodeTreeRuntime &,
+      upstream::FieldObjectId,const upstream::FieldNodeBinding &,
+      const upstream::HouseGlobalBridgeRuntime &,const upstream::FieldGlobalDataRuntime &,
+      const upstream::FieldGlobalConstructorRuntime &,std::string &) override;
   bool input_registration(upstream::FieldObjectId, uint32_t, bool,
                           std::string &) override;
   bool release(upstream::FieldObjectId, const upstream::FieldNodeBinding &,
@@ -40,7 +44,7 @@ private:
     uint32_t source = 0;
     upstream::FieldIdentity identity{};
     std::string native;
-    bool entered = false, post_entered = false, ready = false;
+    bool entered = false, post_entered = false, ready = false, continuation_ready = false;
     upstream::FieldTransform last_world{};
     std::vector<Connection> connections;
   };

@@ -187,6 +187,25 @@ class PodunkHouseGlobalBridge {
   }
 
 public:
+  bool construct_continuation_autoload(
+      uint32_t stable, const upstream::HouseGlobalBridgeData &data,
+      const upstream::NativeSessionData &session, upstream::RoomView room,
+      upstream::HouseView house, upstream::RoundView round, upstream::ItemView legacy,
+      const upstream::SessionSnapshot &save, upstream::FieldGlobalRegistry &registry,
+      upstream::SourceRandom &played, const std::vector<uint32_t> &ledger,
+      std::string &e) {
+    if (attempted_) return fail(e,"House continuation owner adoption already attempted");
+    return core_.construct_continuation_autoload(stable,data,session,room,house,
+        round,legacy,save,registry,played,ledger,e);
+  }
+  bool prepare_continuation(const upstream::HouseGlobalBridgeData &data,
+                            PodunkGlobalDataHost &characters,
+                            upstream::FieldGlobalConstructorRuntime &global,
+                            upstream::FieldGlobalRegistry &registry,
+                            std::string &e) {
+    if (attempted_) return fail(e, "House continuation already attempted");
+    return core_.prepare_continuation(data, characters.runtime(), global, registry, e);
+  }
   bool adopt(const upstream::HouseGlobalBridgeData &data,
              const upstream::NativeSessionData &session,
              upstream::RoomView room, upstream::HouseView house,

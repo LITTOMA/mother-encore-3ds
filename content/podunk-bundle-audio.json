@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "bus_source": "Audio/Audio Buses/default_bus_layout.tres",
+  "bus_sha256": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+  "manager_source": "Scripts/global/audioManager.gd",
+  "manager_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+  "assets": [
+    {
+      "stable_id": 3673269909,
+      "source_path": "res://Audio/Sound effects/Barrel Coffin Explode.mp3",
+      "source_sha256": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+      "import_sha256": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+      "pcm_path": "sound/effects/dead-bush.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 458463090,
+      "source_path": "res://Audio/Sound effects/Shock.mp3",
+      "source_sha256": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "import_sha256": "34f9e10222fe1e0b237645308336000d84e930d0083ec176e6d7f21308068da2",
+      "pcm_path": "sound/effects/emote-458463090.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 2209671527,
+      "source_path": "res://Audio/Sound effects/Laugh Small.mp3",
+      "source_sha256": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "import_sha256": "91d8169b6f20249aea1a9766b3fb383db9b1345730ac15177db3373a291b49a4",
+      "pcm_path": "sound/effects/emote-2209671527.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 130294754,
+      "source_path": "res://Audio/Sound effects/bash.mp3",
+      "source_sha256": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598",
+      "import_sha256": "1e3241d9ac7d026dffe39041ac76131052b9eb3ef8f8ca92f816190d095b31d9",
+      "pcm_path": "sound/effects/openable-door/130294754.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1456608675,
+      "source_path": "res://Audio/Sound effects/M3/door_open.wav",
+      "source_sha256": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
+      "import_sha256": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31",
+      "pcm_path": "sound/effects/openable-door/1456608675.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1988640769,
+      "source_path": "res://Audio/Sound effects/Door_Short.mp3",
+      "source_sha256": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "import_sha256": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
+      "pcm_path": "sound/effects/openable-door/1988640769.pcm",
+      "gain_db": 0
+    }
+  ]
+}

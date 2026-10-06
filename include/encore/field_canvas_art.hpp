@@ -94,9 +94,21 @@ struct FieldCanvasOrderSlot {
   FieldObjectId object = 0;
   uint32_t source = 0, class_index = 0, flags = 0;
   int32_t z = 0;
-  uint64_t order = 0;
+  uint64_t order = 0, native_order = 0;
   FieldTransform world{};
   FieldColor color{};
+  FieldIdentity identity{};
+  bool foreign = false, foreign_drawable = false;
+};
+// Implemented by an actual owning source consumer. Containers and drawable
+// nodes keep their original identities and participate in the same tree order.
+// This grants neither constructor nor Ready and is not a callback roster.
+class FieldCanvasForeignOwner {
+public:
+  virtual ~FieldCanvasForeignOwner() = default;
+  virtual bool admit(FieldObjectId, const FieldNodeDescriptor &,
+                     const FieldIdentity &, const FieldNodeTreeRuntime &,
+                     bool &drawable, std::string &) const = 0;
 };
 struct FieldCanvasArtHost {
   // Each dynamic appearance must bind the actual consumer, source node and
@@ -112,6 +124,7 @@ class FieldCanvasArtRuntime {
 public:
   bool initialize(const FieldCanvasArtData &, const FieldNodeTreeData &,
                   FieldNodeTreeRuntime &, FieldCanvasArtHost, std::string &);
+  bool bind_foreign(FieldCanvasForeignOwner &, std::string &);
   // Generates one ordered command stream; platform draws defaults or invokes
   // the typed shader owner's renderer at the same z/tree slot. No frame logic.
   bool collect(std::vector<FieldCanvasDraw> &, std::string &);
@@ -127,6 +140,7 @@ private:
   const FieldNodeTreeData *source_ = nullptr;
   FieldNodeTreeRuntime *tree_ = nullptr;
   FieldCanvasArtHost host_;
+  FieldCanvasForeignOwner *foreign_ = nullptr;
   std::map<FieldObjectId, FieldObjectId> owners_;
   std::vector<FieldCanvasOrderSlot> slots_;
   bool bind(const FieldCanvasRecord &, FieldObjectId, FieldObjectId &,

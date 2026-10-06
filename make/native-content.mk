@@ -15,6 +15,18 @@ CONTENT_TASKS += field-goods field-global-flags field-dialogue-visual field-dial
 CONTENT_TASKS += field-native-root field-global-data field-dialogue-root-script
 CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-directory global-yaml-file global-data-constructor field-character-load global-load field-global-constructor
 CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge player-child-scripts house-status-effects
+CONTENT_TASKS += house-ui-continuation house-exit-door
+DESTINATION_INPUT_TASKS := $(CONTENT_TASKS)
+CONTENT_TASKS += scene-bundle
+.PHONY: scene-bundle
+scene-bundle: $(DESTINATION_INPUT_TASKS)
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/podunk_bundle.py restore --logs build/content-logs/scene-audio
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/podunk_bundle.py compile
+.PHONY: house-ui-continuation house-exit-door
+house-ui-continuation: field-ui-manager
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_ui_continuation.py compile
+house-exit-door:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_exit_door.py compile
 .PHONY: player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge
 .PHONY: global-item-definitions global-yaml-caches global-data-constructor
 .PHONY: field-native-root field-global-data field-dialogue-root-script
@@ -306,7 +318,7 @@ global-ready: field-global-constructor player-initialization global-load input
 player-fetcher: player-initialization field-node-tree field-global-constructor
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_fetcher.py compile
 
-player-resources: player-initialization player-graphics
+player-resources: player-initialization player-graphics player-effects
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_resources.py compile
 
 player-child-scripts: player-initialization player-ready field-game-camera field-camera-arrows
@@ -317,5 +329,5 @@ house-status-effects: house-global-bridge player-ready
 
 .PHONY: player-child-scripts house-status-effects
 
-house-global-bridge: global-load field-character-load session
+house-global-bridge: global-load field-character-load field-global-registry session
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_global_bridge.py compile

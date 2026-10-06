@@ -98,6 +98,7 @@ public:
 struct FieldGlobalRegistryHost {
  std::function<bool(FieldObjectId,const FieldGlobalExternalSpec&,std::unique_ptr<FieldGlobalExternalObject>&,std::string&)>construct;
 };
+class HouseGlobalBridgeRuntime;
 class FieldGlobalRegistry {
 public:
  ~FieldGlobalRegistry();
@@ -131,6 +132,8 @@ public:
  bool observe_external_parent(FieldObjectId parent,FieldObjectId child,std::string&);
  bool detach_scene(FieldObjectId,std::string&);
  bool persistent_reparent(FieldObjectId,FieldObjectId,std::string&);
+ const FieldGlobalRegistryData*data()const{return data_;}
+ FieldObjectId autoload_object(uint32_t)const;
  bool construct_autoload(uint32_t,std::string&);
  bool attach_autoload(uint32_t,std::string&);
  bool select_current_scene(FieldNodeTreeRuntime&,FieldObjectId,std::string&);
@@ -165,6 +168,8 @@ private:
   bool reference_published=false;
   uint32_t definition=0;FieldObjectId external_parent=0;
  };
+ friend class HouseGlobalBridgeRuntime;
+ bool construct_continuation_autoload(const FieldGlobalAutoload&,std::string&);
  bool snapshot(FieldObjectId,FieldGlobalExternalState&,std::string&)const;
  bool construct(const FieldGlobalExternalSpec&,FieldObjectId&,std::string&);
  bool equal_spec(const FieldGlobalExternalSpec&,const FieldGlobalExternalSpec&)const;

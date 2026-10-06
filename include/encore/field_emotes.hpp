@@ -42,6 +42,7 @@ struct FieldEmoteHost {
 };
 class FieldEmoteRuntime {
 public:
+ const FieldEmoteData*data()const{return data_;}
  bool initialize(const FieldEmoteData&,FieldEmoteHost,std::string&);bool create(uint32_t);bool ready(uint32_t);
  bool set_bubble_offset(uint32_t);bool sprite_changed(uint32_t source_sprite);
  bool play(uint32_t,uint32_t clip);bool play(uint32_t,const std::string&);bool idle_frame(uint32_t,float);bool seek(uint32_t,float,bool update);bool stop(uint32_t,bool reset=true);

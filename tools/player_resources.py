@@ -7,6 +7,7 @@ from tools.podunk_scene import PIN,read,sha,require,decode
 from tools.extract_battle_entry import Extractor,properties
 from tools.player_initialization import load as initial,IR as INIT
 from tools.player_graphics import load as graphics,outputs as graphics_outputs,IR as GFX
+from tools.player_effects import load as effects,IR as EFFECTS
 IR=ROOT/'content/native-player-resources.json';REVIEW=ROOT/'reports/player-resources/source-review.json'
 RECEIPT=ROOT/'content/asset-receipts/graphics/player/resources-source.json';PACK=ROOT/'romfs/data/player.encresources';FAMILY=0x454e005f
 
@@ -66,8 +67,30 @@ def derive():
    if texture!=0xffffffff:
     r=next(a for a in rows if a['id']==texture);require(r['rect'][2]%cols==r['rect'][3]%rs==0 and 0<=frame<cols*rs,'Player frame grid outside source')
    nodes.append(dict(path=n['path'],texture=texture,material=material,columns=cols,rows=rs,frame=frame))
+ effects_data=effects();effect_rows=[]
+ for effect,native_effect in enumerate(effects_data['native']):
+  effect_scene=effects_data['recipes'][effect]['scene'];ex.text(effect_scene)
+  for a in native_effect['resources']:
+   cls=a['class'];row=None;rid=stable('effect:'+str(effect)+':'+str(a['id']))
+   if cls=='StreamTexture':
+    im=image(a['path'][6:]);row=dict(id=rid,kind=1,source=im['source'],texture=im['id'],rect=[0,0,*im['size']],local=False,instanced=False,shader=0,parameters=[])
+   elif cls=='ShaderMaterial':
+    props=decode(a['properties']);require(props['script']is None and props['render_priority']==0 and props['resource_local_to_scene'],'Unknown effect material native properties')
+    template=ex.text('Shaders/Flash.tres');v=properties(re.split(r'^\[resource\]\n',template,flags=re.M)[1]);roles=['flash_color','glow_color','flash_modifier','glow_modifier'];params=[]
+    for j,key in enumerate(roles):
+     val=v['shader_param/'+key];params.append(dict(role=j+1,name=key,kind=2 if isinstance(val,list)else 1,value=val if isinstance(val,list)else[float(val),0,0,0]))
+    row=dict(id=rid,kind=3,source='Shaders/Flash.tres'if a['path']else effect_scene,texture=0,rect=[0,0,0,0],local=True,instanced=not bool(a['path']),shader=1,parameters=params)
+   elif cls=='CanvasItemMaterial':
+    props=decode(a['properties']);require(set(props)=={'resource_local_to_scene','resource_name','render_priority','next_pass','blend_mode','light_mode','particles_animation','script'} and not props['resource_local_to_scene'] and props['resource_name']=='' and props['render_priority']==0 and props['next_pass']is None and props['particles_animation']is False and props['script']is None,'Unknown effect CanvasItemMaterial native properties')
+    require(props['blend_mode']==1 and props['light_mode']==0,'Unaudited effect CanvasItemMaterial blend/light')
+    params=[dict(role=j+1,name=key,kind=4,value=[float(props[key]),0,0,0])for j,key in enumerate(['blend_mode','light_mode'])]
+    row=dict(id=rid,kind=4,source=effect_scene,texture=0,rect=[0,0,0,0],local=False,instanced=False,shader=3,parameters=params)
+   elif cls not in('Shader','Animation'):raise ValueError('Unknown effect resource '+cls)
+   if row is not None:
+    rows.append(row);effect_rows.append(dict(effect=effect,source_id=a['id'],resource_id=rid))
+ for source,h in effects_data['sources'].items():require(sha(ROOT/'upstream/MOTHER-Encore'/source)==h,'Effect source changed');ex.sources[source]=h
  require(len(rows)==len({a['id']for a in rows}),'Native Player resource ID collision')
- return dict(schema=1,format=1,capability=1,rules=1,family=FAMILY,commit=PIN,scene=d['scene'],scene_id=d['scene_id'],source_sha256=d['source_sha256'],initialization_ir_sha256=sha(INIT),graphics_ir_sha256=sha(GFX),images=list(images.values()),audios=audios,resources=rows,nodes=nodes,sources=ex.sources,unsupported=['Non-neutral outline/flash draw kernel pending; parameters are owned and checked, never ignored','Unknown textures, node resource classes and out-of-source material parameters reject','Complete PackedScene factories remain their actual owner obligation'])
+ return dict(schema=2,format=2,capability=2,rules=1,family=FAMILY,commit=PIN,scene=d['scene'],scene_id=d['scene_id'],source_sha256=d['source_sha256'],initialization_ir_sha256=sha(INIT),graphics_ir_sha256=sha(GFX),effects_ir_sha256=sha(EFFECTS),effect_resources=effect_rows,images=list(images.values()),audios=audios,resources=rows,nodes=nodes,sources=ex.sources,unsupported=['Non-neutral outline/flash draw kernel pending; parameters are owned and checked, never ignored','Unknown textures, node resource classes and out-of-source material parameters reject','Complete PackedScene factories remain their actual owner obligation'])
 def load():
  d=read(IR);r=read(REVIEW);require(d==derive()and r['ir_sha256']==sha(IR)and r['sources']==d['sources'],'Player resources review/dependency differs');return d
 
@@ -96,7 +119,9 @@ def encode(d,o):
  def f(*v):b.extend(struct.pack('<'+'f'*len(v),*v))
  def s(v):z=v.encode();u(len(z));b.extend(z)
  def h(v):b.extend(bytes.fromhex(v))
- h(d['initialization_ir_sha256']);h(d['graphics_ir_sha256']);u(len(d['sources']))
+ h(d['initialization_ir_sha256']);h(d['graphics_ir_sha256']);h(d['effects_ir_sha256']);u(len(d['effect_resources']))
+ for a in d['effect_resources']:u(a['effect'],a['source_id'],a['resource_id'])
+ u(len(d['sources']))
  for p,v in sorted(d['sources'].items()):s(p);h(v)
  u(len(d['images']))
  for a,v in zip(d['images'],o):u(a['id'],*a['size'],v['bytes']);s(a['source']);s(a['path']);h(a['source_sha256']);h(a['import_sha256']);h(v['output_sha256'])
@@ -108,7 +133,7 @@ def encode(d,o):
   for p in a['parameters']:u(p['role'],p['kind']);s(p['name']);f(*p['value'])
  u(len(d['nodes']))
  for n in d['nodes']:s(n['path']);u(n['texture'],n['material'],n['columns'],n['rows'],n['frame'])
- struct.pack_into('<8s8I',b,0,b'ENCPRES1',1,128,len(b),zlib.crc32(b[128:]),FAMILY,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
+ struct.pack_into('<8s8I',b,0,b'ENCPRES1',d['format'],128,len(b),zlib.crc32(b[128:]),FAMILY,d['capability'],d['rules'],d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
 def compile_pack():
  d=load();raw=encode(d,outputs(d));PACK.parent.mkdir(parents=True,exist_ok=True);PACK.write_bytes(raw);return raw
 

@@ -20,6 +20,8 @@
 #include "encore/house_global_bridge.hpp"
 #include "encore/player_child_scripts.hpp"
 #include "encore/house_status_effects.hpp"
+#include "encore/house_ui_continuation.hpp"
+#include "encore/field_door.hpp"
 #include "encore/global_child_ready.hpp"
 #include <limits>
 #include <iostream>
@@ -49,7 +51,7 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36 && argc!=40 && argc!=42 && argc!=44 && argc!=46 && argc!=51 && argc!=53 && argc!=55 && argc!=57 && argc!=59) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36 && argc!=40 && argc!=42 && argc!=44 && argc!=46 && argc!=51 && argc!=53 && argc!=55 && argc!=57 && argc!=59 && argc!=64 && argc!=68) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
   if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
@@ -68,6 +70,8 @@ int main(int argc, char **argv) {
   if(argc>=55 && std::string(argv[53])!="--house-global-bridge") return 2;
   if(argc>=57 && std::string(argv[55])!="--player-child-scripts") return 2;
   if(argc>=59 && std::string(argv[57])!="--house-status-effects") return 2;
+  if(argc>=64 && std::string(argv[59])!="--house-ui-continuation") return 2;
+  if(argc>=68 && std::string(argv[64])!="--house-exit-door") return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -211,8 +215,8 @@ int main(int argc, char **argv) {
       std::cout<<"Player visual script format admitted: "<<visual.shadow().animations.size()<<" original clips\n";
     }
     PlayerReadyData ready;
+    PlayerEffectsData effects;
     if(argc>=40) {
-      PlayerEffectsData effects;
       if(!ready.load_file(argv[37],player,error) || !effects.load_file(argv[39],player,error)) {
         std::cerr<<"Player Ready/effects format/source: "<<error<<'\n';return 1;
       }
@@ -250,7 +254,8 @@ int main(int argc, char **argv) {
     }
     if(argc>=53) {
       PlayerResourcesData resources;
-      if(!resources.load_file(argv[52],player,graphics,error)) {
+      if(!resources.load_file(argv[52],player,graphics,error) ||
+         (resources.capability()==2 && !resources.bind_effects(effects,error))) {
         std::cerr<<"Player native Resource format/source: "<<error<<'\n';return 1;
       }
       std::cout<<"Player native Resource format admitted: "<<resources.images().size()<<" textures / "<<resources.audios().size()<<" audio payloads\n";
@@ -277,6 +282,27 @@ int main(int argc, char **argv) {
         std::cerr<<"House Status effects format/source: "<<error<<'\n';return 1;
       }
       std::cout<<"House Status effects format admitted: "<<effects.policies().size()<<" source policies\n";
+    }
+    if(argc>=64) {
+      FieldIdentity expected_ui;
+      expected_ui.upstream_commit=identity.upstream_commit;
+      FieldUiManagerData ui; HouseUiContinuationData continuation;
+      if(!number(argv[62],expected_ui.scene_id)||!hex(argv[63],expected_ui.source_sha256))return 2;
+      if(!ui.load_file(argv[61],expected_ui,error)||
+         !continuation.load_file(argv[60],ui,error)) {
+        std::cerr<<"House UI continuation format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"House UI continuation format admitted; lifecycle not executed\n";
+    }
+    if(argc>=68) {
+      FieldIdentity expected_house;
+      expected_house.upstream_commit=identity.upstream_commit;
+      FieldDoorData door;
+      if(!number(argv[66],expected_house.scene_id)||!hex(argv[67],expected_house.source_sha256))return 2;
+      if(!door.load_file(argv[65],expected_house,error)) {
+        std::cerr<<"House exit Door format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"House exit Door format admitted; destination not activated\n";
     }
     std::cout<<"Global YAML source formats admitted: "<<caches.records().size()
              <<" source records / "<<caches.getters().size()<<" getters\n";

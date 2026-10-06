@@ -13,6 +13,7 @@ add_library(encore_core
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
     runtime/basement_progression.cpp runtime/basement_actor_assets.cpp runtime/present_sparkles.cpp
     runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/field_dandelion.cpp
+    runtime/podunk_bundle.cpp runtime/field_scene_sources.cpp runtime/field_scene_destination.cpp
     runtime/field_prompts_data.cpp runtime/field_prompts.cpp
     runtime/field_psi.cpp
     runtime/field_psi_data.cpp
@@ -73,6 +74,7 @@ add_library(encore_core
     runtime/player_fetcher.cpp runtime/player_fetcher_data.cpp
     runtime/player_resources_data.cpp
     runtime/house_global_bridge.cpp runtime/house_global_bridge_data.cpp
+    runtime/house_ui_continuation_data.cpp runtime/house_scene_door.cpp
     runtime/house_status_effects.cpp runtime/house_status_effects_data.cpp
     runtime/player_child_scripts.cpp runtime/player_child_scripts_data.cpp
     runtime/player_native_timer_data.cpp

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "30eaff642d15e05607634cca77ee7a306e997ff4fc29e43e38b5cdf86c57af72",
+  "ir_sha256": "8d8698c3b6e057bc8c150edb588aee3f670cc0a646092791814d6117d6aed455",
   "sources": {
     "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
     "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
@@ -108,7 +108,10 @@
     "Data/Items/StickyMachine.yaml": "e515a1984e6309c6fa80f51bfb4f928a98c5b5731412bb0ea5ccc079149860e7",
     "Data/Items/TimeMachine.yaml": "b385da3ea2e99504c4e02248eea6b9a9891f731d8250257a8bf5f9e1442f927e",
     "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
-    "Data/StatusAilments/asthma.yaml": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3"
+    "Data/StatusAilments/asthma.yaml": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Scripts/global/global.tscn": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
   },
   "dependencies": {
     "character": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
@@ -118,9 +121,9 @@
   },
   "scope": {
     "uid": "Adopt existing native session UID and explicit doses without invoking Item.new defaults or init_from_serialized. Allocate a real source Reference in the target registry only.",
-    "rng": "Actual target bootstrap uses a separate random candidate and ledger preseeded with current session UIDs. Adoption neither reads nor advances the played SourceRandom; target GodStorage and inactive Item collisions are rejected.",
+    "rng": "Actual target source constructors and cache Directory loops complete without source Ready or cold LOAD. No GodStorage or inactive-character Item constructors are required for this continuation. Existing actual target Item collisions are still rejected; adoption neither reads nor advances the played SourceRandom and preserves the live UID exclusion ledger.",
     "playtime": "The source integer counter receives complete elapsed seconds; the native fractional remainder stays owned by the bridge and is available for save/export.",
-    "scope": "Current validated singleton House state, same Ninten/KEY/STORAGE References after real target Ready; no cold LOAD replay, no Ready receipt, no arbitrary party/state admission."
+    "scope": "Current validated singleton House state, same actual Ninten Character and KEY/STORAGE constructor References. Explicit capability2 prepares NORMAL Inventory from checked source defaults, before any cold LOAD; source fields/status/Items/party adopt live House state without granting source Ready, GodStorage, cold-LOAD completion or arbitrary party/state admission. Inactive characters remain real constructor bodies, never cold-default gameplay substitutes."
   },
   "ready_admitted": false
 }

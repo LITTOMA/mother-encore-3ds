@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/field_global_constructor.hpp"
+#include "encore/house_global_bridge.hpp"
 #include "podunk_native_root.hpp"
 #include "podunk_global_children.hpp"
 namespace encore::ctr {
@@ -16,6 +17,12 @@ public:
   virtual bool phase(upstream::FieldNodeTreeRuntime &, upstream::FieldObjectId,
                      const upstream::FieldNodeBinding &,
                      upstream::FieldTreePhase, std::string &) = 0;
+  virtual bool adopt_continuation_ready(upstream::FieldNodeTreeRuntime &,
+      upstream::FieldObjectId,const upstream::FieldNodeBinding &,
+      const upstream::HouseGlobalBridgeRuntime &,const upstream::FieldGlobalDataRuntime &,
+      const upstream::FieldGlobalConstructorRuntime &,std::string &error) {
+    error="Global native owner has no audited continuation body";return false;
+  }
   virtual bool input_registration(upstream::FieldObjectId, uint32_t, bool,
                                   std::string &) = 0;
   virtual bool release(upstream::FieldObjectId,
@@ -48,6 +55,8 @@ public:
   bool bind_characters(const upstream::FieldGlobalDataRuntime &, std::string &);
   // Attach the actual source method cursor before the native Tree enters.
   bool bind_ready(PodunkGlobalReady &, std::string &);
+  bool bind_continuation(const upstream::HouseGlobalBridgeRuntime &,
+                         const upstream::FieldGlobalDataRuntime &,std::string &);
 
 private:
   class GlobalObject;
@@ -72,6 +81,9 @@ private:
   PodunkNativeRoot *root_ = nullptr;
   PodunkGlobalNativeOwner *native_ = nullptr;
   PodunkGlobalReady *ready_ = nullptr;
+  const upstream::HouseGlobalBridgeRuntime *continuation_ = nullptr;
+  const upstream::FieldGlobalDataRuntime *continuation_characters_ = nullptr;
+  bool continuation_ready_ = false;
   std::shared_ptr<const upstream::FieldGlobalConstructorData> data_;
   std::shared_ptr<upstream::FieldNodeTreeRuntime> tree_, transition_;
   upstream::FieldGlobalConstructorRuntime core_;

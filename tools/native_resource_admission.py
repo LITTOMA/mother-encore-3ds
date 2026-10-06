@@ -16,6 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = (
     'tools/native_resource_admission.cpp',
     'runtime/catalog_resource_admission.cpp',
+    'runtime/podunk_bundle.cpp',
+    'runtime/field_scene_destination.cpp',
     'runtime/resource_catalog.cpp',
     'runtime/file_io.cpp',
     'runtime/content.cpp',
@@ -76,6 +78,9 @@ SOURCES = (
     'runtime/player_resources_data.cpp',
     'runtime/house_global_bridge_data.cpp',
     'runtime/house_status_effects_data.cpp',
+    'runtime/house_ui_continuation_data.cpp',
+    'runtime/field_ui_manager_data.cpp',
+    'runtime/field_door.cpp',
     'runtime/player_child_scripts_data.cpp',
     'runtime/player_native_timer_data.cpp',
     'runtime/field_game_camera_data.cpp',
@@ -177,6 +182,12 @@ def admit(resources, *, global_items=True):
         command += ['--house-global-bridge', str(ROOT / 'romfs/data/house.encglobalbridge'),
                     '--player-child-scripts', str(ROOT / 'romfs/data/player.encchildren'),
                     '--house-status-effects', str(ROOT / 'romfs/data/house.encstatuseffects')]
+        ui = json.loads((ROOT / 'content/field-ui-manager.json').read_text(encoding='utf-8'))
+        house = json.loads((ROOT / 'content/native-house-exit-door.json').read_text(encoding='utf-8'))
+        command += ['--house-ui-continuation', str(ROOT / 'romfs/data/house.encuicontinuation'),
+                    str(ROOT / 'romfs/data/global.encuimanager'), str(ui['scene_id']), ui['source_sha256'],
+                    '--house-exit-door', str(ROOT / 'romfs/data/house.encdoor'),
+                    str(house['scene_id']), house['source_sha256']]
     subprocess.run(command, check=True)
 
 

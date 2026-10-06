@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "family": 1162739812,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "owner": "Scripts/global/uiManager.gd",
+  "scene_id": 1436111134,
+  "source_sha256": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+  "ui_ir_sha256": "ecc95b9364a8a69a9ab56a963cf6fd4b2f1925f1d37a524649625591a9d71596",
+  "sources": {
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca"
+  },
+  "fields": [
+    {
+      "role": 1,
+      "member": "_in_battle",
+      "initial": false
+    },
+    {
+      "role": 2,
+      "member": "_pause_menu_active",
+      "initial": false
+    },
+    {
+      "role": 3,
+      "member": "_cutscene",
+      "initial": false
+    }
+  ],
+  "methods": [
+    {
+      "role": 1,
+      "name": "is_in_battle",
+      "sha": "6539d4f9dd411fca1c5d707fcd0e2c5151004c58913e07c7354fdc2b3a21197b"
+    },
+    {
+      "role": 2,
+      "name": "is_pause_menu_active",
+      "sha": "af61edd4939c3d214db7b7a598f3b68f4f3f1cfdb9f78453872aa7f89e82e850"
+    },
+    {
+      "role": 3,
+      "name": "is_in_cutscene",
+      "sha": "c816c1e3ea1cea39e866a8007abcba4eb9f74f4a52e58daefa912fbf41ec00a9"
+    },
+    {
+      "role": 4,
+      "name": "set_cutscene",
+      "sha": "4ae8d68e6539870f7c1b0e8dcebf51c170044c0460b286a78e16fcb60d5877f3"
+    },
+    {
+      "role": 5,
+      "name": "info_plates_hide",
+      "sha": "22d6fae3504c8f81d9634d31e6a8d4dabb26874919025a2ad46c0c0d8c9c2b91"
+    },
+    {
+      "role": 6,
+      "name": "start_battle",
+      "sha": "2208c24525621fbc91b51b9185c0b7a217334f437152a79766e106403085827e"
+    },
+    {
+      "role": 7,
+      "name": "_on_battle_ended",
+      "sha": "7bf7e042c6de96dd0f15b939d5de17f628e9be188105134802ad119b6aa742ab"
+    },
+    {
+      "role": 8,
+      "name": "open_commands_menu",
+      "sha": "100fa619f87fb15c7792973f5f558666651b670791e40a6e8ceb0ed610c0a3ac"
+    },
+    {
+      "role": 9,
+      "name": "close_commands_menu",
+      "sha": "ee96535c307b8e57c7c04a981a65fcb608130d906f999eb42d90356c1326c317"
+    },
+    {
+      "role": 10,
+      "name": "open_dialogue_box",
+      "sha": "7f06a516fd3115790a503e7213b8ccdbc9df81dd1abd11e79ccdd989efb26a90"
+    }
+  ],
+  "signals": [
+    {
+      "role": 1,
+      "name": "menu_flavor_updated",
+      "arity": 0
+    },
+    {
+      "role": 2,
+      "name": "ov_to_battle",
+      "arity": 0
+    },
+    {
+      "role": 3,
+      "name": "battle_to_ov",
+      "arity": 0
+    }
+  ],
+  "scope": [
+    "Real existing House battle/menu/story owners; no source constructor or seven UI factories replayed",
+    "BattleEnded event clears source battlefield state, including PostWinRequested; ReturnStarted dispatches actual battle_to_ov",
+    "Cutscene setter is an actual source method on this owning state; House dialogue/story getter remains live",
+    "Whole UiManager _ready, stableCanvas construction, generic menus and unsupported party-info owner remain pending"
+  ],
+  "scene_admitted": false
+}

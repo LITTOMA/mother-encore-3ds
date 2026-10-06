@@ -98,6 +98,7 @@ bool PodunkGlobalNative::phase(FieldNodeTreeRuntime &t, FieldObjectId id,
       return fail(e, "global native exit cursor rejected");
     n.entered = false;
     n.post_entered = false;
+    n.continuation_ready = false;
     break;
   case FieldTreePhase::TransformChanged:
   case FieldTreePhase::LocalTransformChanged:
@@ -163,6 +164,26 @@ bool PodunkGlobalNative::phase(FieldNodeTreeRuntime &t, FieldObjectId id,
   }
   e.clear();
   return true;
+}
+bool PodunkGlobalNative::adopt_continuation_ready(
+    FieldNodeTreeRuntime &t,FieldObjectId id,const FieldNodeBinding &b,
+    const HouseGlobalBridgeRuntime &bridge,const FieldGlobalDataRuntime &characters,
+    const FieldGlobalConstructorRuntime &global,std::string &e) {
+  auto i=objects_.find(id);const auto *s=t.state(id);const auto *d=t.descriptor(id);
+  FieldIdentity source;
+  if(!data_||!registry_||!root_||!bridge.binds_source_owners(characters,global,*registry_)||
+      id!=global.owner()||i==objects_.end()||!s||!d||!s->alive||!s->inside||
+      s->ready_notified||!s->ready_first||!i->second.entered||!i->second.post_entered||
+      i->second.ready||i->second.continuation_ready||i->second.native!="Node2D"||
+      registry_->tree_owner(id).get()!=&t||t.object_domain()!=registry_->kernel()||
+      !t.object_identity(id,source)||!same(source,i->second.identity)||
+      d->id!=i->second.source||b.stable_id!=d->id||b.native_class!=d->native_class||
+      b.script_sha!=d->script_sha||!root_->external_parent(id))
+    return fail(e,"global native continuation actual Node2D/source/import boundary rejected");
+  // Node2D has no additional native READY body. This is explicit native
+  // continuation admission, separate from source Node ready_notified/_ready.
+  if(!root_->node_notification(id,FieldTreePhase::ReadyNative,e))return false;
+  i->second.continuation_ready=true;e.clear();return true;
 }
 bool PodunkGlobalNative::input_registration(FieldObjectId id, uint32_t kind,
                                             bool active, std::string &e) {

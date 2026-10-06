@@ -75,6 +75,11 @@ SOURCES = (
     'runtime/player_fetcher_data.cpp',
     'runtime/player_resources_data.cpp',
     'runtime/house_global_bridge_data.cpp',
+    'runtime/house_status_effects_data.cpp',
+    'runtime/player_child_scripts_data.cpp',
+    'runtime/player_native_timer_data.cpp',
+    'runtime/field_game_camera_data.cpp',
+    'runtime/field_camera_arrows_data.cpp',
     'runtime/field_node_tree_data.cpp',
     'runtime/field_native_timer_data.cpp',
     'runtime/field_global_flags_data.cpp',
@@ -169,7 +174,9 @@ def admit(resources, *, global_items=True):
                     str(ROOT / 'romfs/data/podunk.encnodetree'),
                     str(tree['scene_id']), tree['source_sha256']]
         command += ['--player-resources', str(ROOT / 'romfs/data/player.encresources')]
-        command += ['--house-global-bridge', str(ROOT / 'romfs/data/house.encglobalbridge')]
+        command += ['--house-global-bridge', str(ROOT / 'romfs/data/house.encglobalbridge'),
+                    '--player-child-scripts', str(ROOT / 'romfs/data/player.encchildren'),
+                    '--house-status-effects', str(ROOT / 'romfs/data/house.encstatuseffects')]
     subprocess.run(command, check=True)
 
 

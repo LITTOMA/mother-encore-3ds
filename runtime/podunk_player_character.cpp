@@ -97,12 +97,22 @@ bool PodunkPlayerCharacter::empty_status(FieldObjectId id,
   e.clear();
   return true;
 }
+bool PodunkPlayerCharacter::bind_status_effects(
+    const HouseStatusEffectsRuntime &statuses, std::string &e) {
+  if (!core_ || !registry_ || statuses_ || !statuses.binds(*core_, *registry_))
+    return fail(e, "Player Character Status consumer differs from actual owner");
+  statuses_ = &statuses;
+  e.clear();
+  return true;
+}
 bool PodunkPlayerCharacter::character_effect(FieldObjectId id,
                                              std::string_view effect, bool &out,
                                              std::string &e) const {
   if (!ready_ || effect != ready_->binding(PlayerReadyBinding::SweatEffect))
     return fail(e,
                 "Player Character effect query outside checked Ready caller");
+  if (statuses_)
+    return statuses_->boolean_effect(id, HouseStatusBoolean::Sweat, out, e);
   if (!empty_status(id, e))
     return false;
   // The source boolean OR starts false. Empty actual _status means no get_data
@@ -132,6 +142,8 @@ bool PodunkPlayerCharacter::get_sprite(FieldObjectId id, std::string &out,
 }
 bool PodunkPlayerCharacter::is_incapacitated(FieldObjectId id, bool &out,
                                              std::string &e) const {
+  if (statuses_)
+    return statuses_->boolean_effect(id, HouseStatusBoolean::Incapacitated, out, e);
   if (!empty_status(id, e))
     return false;
   out = false;

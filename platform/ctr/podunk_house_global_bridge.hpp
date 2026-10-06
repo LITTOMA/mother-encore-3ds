@@ -2,6 +2,7 @@
 #include "encore/house_global_bridge.hpp"
 #include "podunk_inventory_host.hpp"
 #include "podunk_global_data_host.hpp"
+#include "encore/house_status_effects.hpp"
 namespace encore::ctr {
 // Concrete target-object adoption. Original session gameplay/RNG stays live;
 // callers bootstrap the separate target with the same UID exclusion ledger.
@@ -261,6 +262,51 @@ public:
         !i->second->object.tree->state(id))
       return fail(e, "House continuation Status actual owner unavailable");
     out = i->second->fields;
+    e.clear();
+    return true;
+  }
+  bool status_data(upstream::FieldObjectId character,
+                   upstream::FieldObjectId id,
+                   upstream::HouseStatusActualData &out,
+                   std::string &e) const {
+    using namespace upstream;
+    auto i = statuses_.find(id);
+    if (!core_.complete() || !data_ || !registry_ || !globaldata_ ||
+        i == statuses_.end() || registry_->poisoned() ||
+        globaldata_->runtime().registry() != registry_ ||
+        registry_->tree_owner(id) != i->second->object.tree)
+      return fail(e, "Status.get_data actual continuation owner unavailable");
+    FieldGlobalDataMemberState array;
+    if (!globaldata_->runtime().read_constructed_member(
+            character, data_->characters()->source_bindings().status, array, e))
+      return false;
+    if (!array.node_array ||
+        std::count(array.node_array->values.begin(),
+                   array.node_array->values.end(), id) != 1)
+      return fail(e, "Status.get_data not owned by actual Character Array");
+    auto node = i->second->object.tree->state(id);
+    const auto &binding = data_->status();
+    auto ailment = i->second->fields.find(binding.ailment);
+    auto times = i->second->fields.find(binding.times_field);
+    if (!node || !node->alive || node->queued || !node->bound ||
+        ailment == i->second->fields.end() || !ailment->second ||
+        ailment->second->kind != 4 ||
+        ailment->second->string != i->second->object.ailment ||
+        times == i->second->fields.end() || !times->second ||
+        times->second->kind != 2 ||
+        times->second->integer != i->second->object.times)
+      return fail(e, "Status.get_data actual script fields rejected");
+    HouseStatusActualData next;
+    next.registry = registry_;
+    next.tree = i->second->object.tree;
+    next.object = id;
+    next.ailment = ailment->second->string;
+    next.times = times->second->integer;
+    if (!globaldata_->call_cache_getter(binding.getter, {next.ailment},
+                                        next.data, e) ||
+        !next.data || next.data->kind != 6)
+      return fail(e, "Status.get_data actual source Dictionary unavailable");
+    out = std::move(next);
     e.clear();
     return true;
   }

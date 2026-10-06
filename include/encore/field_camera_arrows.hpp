@@ -40,13 +40,30 @@ struct FieldCameraArrowsHost {
  std::function<bool(uint32_t,uint64_t,std::string&)>cancel_frame_changed;
  std::function<bool(std::vector<Vec2>&pressed,std::vector<Vec2>&released,std::string&)>control_directions;
 };
+// Borrow the one actual native AnimationPlayer/AnimatedSprite service. IDs here
+// are checked descriptor keys, resolved by that owner to actual ObjectDB nodes.
+// Script-only mode never creates leaf state or advances native clocks.
+class FieldCameraArrowsNativeOwner {
+public:
+ virtual ~FieldCameraArrowsNativeOwner()=default;
+ virtual bool bind(const FieldCameraArrowsData&,std::string&)=0;
+ virtual bool root(uint32_t,bool&visible,Vec2&position,std::string&)const=0;
+ virtual bool sprite(uint32_t,FieldArrowSpriteState&,std::string&)const=0;
+ virtual bool play(uint32_t,std::string_view,float speed,bool from_end,std::string&)=0;
+ virtual bool assigned(uint32_t,std::string&,std::string&)const=0;
+ virtual bool frame(uint32_t,int32_t,std::string&)=0;
+ virtual bool visible(uint32_t,bool,std::string&)=0;
+};
 struct FieldArrowDraw {uint32_t id=0,frame=0;bool visible=false,pixel_snap=false;std::array<Vec2,4>world_vertices{};std::array<float,4>color{};};
 class FieldCameraArrowsRuntime {
 public:
- bool initialize(const FieldCameraArrowsData&,FieldCameraArrowsHost,std::string&);bool create(uint32_t);bool ready(uint32_t);bool show(uint32_t);bool hide(uint32_t);bool handle_input_events(uint32_t);bool point_directions(uint32_t,const std::vector<Vec2>&);bool unpoint_directions(uint32_t,const std::vector<Vec2>&);bool point_dir_sum(uint32_t,Vec2);bool set_offset(uint32_t,Vec2);bool set_bounds(uint32_t,Vec2);bool set_arrow_visible(uint32_t,Vec2,bool);bool global_position(uint32_t,Vec2);bool on_animation_finished(uint32_t,uint32_t);bool resume_frame(uint64_t);bool idle_leaf(uint32_t,float);bool exit_tree(uint32_t);bool draw(uint32_t,FieldArrowDraw&);
+ bool initialize(const FieldCameraArrowsData&,FieldCameraArrowsHost,std::string&);
+ bool initialize_borrowed(const FieldCameraArrowsData&,FieldCameraArrowsHost,FieldCameraArrowsNativeOwner&,std::string&);
+ bool borrowed_native()const{return native_!=nullptr;}bool create(uint32_t);bool ready(uint32_t);bool show(uint32_t);bool hide(uint32_t);bool handle_input_events(uint32_t);bool point_directions(uint32_t,const std::vector<Vec2>&);bool unpoint_directions(uint32_t,const std::vector<Vec2>&);bool point_dir_sum(uint32_t,Vec2);bool set_offset(uint32_t,Vec2);bool set_bounds(uint32_t,Vec2);bool set_arrow_visible(uint32_t,Vec2,bool);bool global_position(uint32_t,Vec2);bool on_animation_finished(uint32_t,uint32_t);bool resume_frame(uint64_t);bool idle_leaf(uint32_t,float);bool exit_tree(uint32_t);bool draw(uint32_t,FieldArrowDraw&);
  const FieldArrowRootState*root_state(uint32_t)const;const FieldArrowSpriteState*sprite_state(uint32_t)const;const FieldArrowPlayerState*player_state(uint32_t)const;const FieldCameraArrowsData*data()const{return data_;}const std::string&error()const{return error_;}
 private:
  struct Wait {uint32_t sender=0,receiver=0,root=0;};
+ FieldCameraArrowsNativeOwner*native_=nullptr;
  const FieldCameraArrowsData*data_=nullptr;FieldCameraArrowsHost host_;std::map<uint32_t,FieldArrowRootState>roots_;std::map<uint32_t,FieldArrowSpriteState>sprites_;std::map<uint32_t,FieldArrowPlayerState>players_;std::map<uint64_t,Wait>waits_;uint64_t next_wait_=1;uint32_t last_ready_=0;bool had_ready_=false,poisoned_=false;std::string error_;
  bool fail(const char*);FieldArrowRootState*get(uint32_t,bool ready=true);bool observe(uint32_t,FieldArrowObservation&);bool publish(FieldArrowRootState&);bool publish(FieldArrowSpriteState&);bool refresh(FieldArrowRootState&,bool);bool visibility(FieldArrowRootState&);bool directions(uint32_t,const std::vector<Vec2>&,uint32_t);bool play(uint32_t,uint32_t,float scale=1,bool from_end=false);bool animate(FieldArrowPlayerState&,float);bool apply(FieldArrowPlayerState&,const FieldArrowClip&,const FieldArrowTrack&,float,float);bool write(FieldArrowPlayerState&,uint32_t,FieldArrowProperty,Vec2);bool frame(uint32_t,int32_t);bool playing(uint32_t,bool);bool sprite_idle(FieldArrowSpriteState&,float);float duration(uint32_t)const;
 };

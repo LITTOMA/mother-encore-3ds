@@ -382,3 +382,10 @@ cookies.json
 !/reports/player-motion/
 /reports/player-motion/*
 !/reports/player-motion/source-review.json
+
+!/reports/player-child-scripts/
+/reports/player-child-scripts/*
+!/reports/player-child-scripts/source-review.json
+!/reports/house-status-effects/
+/reports/house-status-effects/*
+!/reports/house-status-effects/source-review.json

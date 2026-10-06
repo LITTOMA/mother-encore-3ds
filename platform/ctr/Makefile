@@ -58,6 +58,9 @@ SOURCES += runtime/global_ready_data.cpp platform/ctr/podunk_global_ready.cpp pl
 SOURCES += runtime/player_fetcher.cpp runtime/player_fetcher_data.cpp runtime/player_resources_data.cpp runtime/house_global_bridge.cpp runtime/house_global_bridge_data.cpp platform/ctr/podunk_player_resources.cpp platform/ctr/podunk_player_fetcher.cpp
 SOURCES += runtime/player_graphics_data.cpp platform/ctr/podunk_player_graphics.cpp platform/ctr/podunk_player_playback.cpp platform/ctr/podunk_player_visual_bundle.cpp platform/ctr/podunk_player_animation.cpp
 SOURCES += runtime/player_visual_scripts.cpp runtime/player_visual_scripts_data.cpp platform/ctr/podunk_player_visual_scripts.cpp platform/ctr/podunk_player_visual_native.cpp
+SOURCES += runtime/house_status_effects.cpp runtime/house_status_effects_data.cpp \
+ runtime/player_child_scripts.cpp runtime/player_child_scripts_data.cpp runtime/player_native_timer_data.cpp \
+ platform/ctr/podunk_player_child_scripts.cpp platform/ctr/podunk_player_native_media.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

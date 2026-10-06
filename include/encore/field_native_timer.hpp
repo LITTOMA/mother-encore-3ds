@@ -2,6 +2,7 @@
 #include "encore/field_node_tree.hpp"
 #include <map>
 namespace encore::upstream {
+class PlayerInitializationData;
 struct FieldNativeTimerDescriptor {
   FieldIdentity identity{};
   uint32_t id = 0, mode = 0, flags = 0;
@@ -12,6 +13,9 @@ class FieldNativeTimerData {
 public:
   bool load(const uint8_t *, size_t, std::string &);
   bool load_file(const char *, std::string &);
+  // Complete source Timer closure from the already checked Player recipe.
+  // No arbitrary descriptor or script/native Ready approval is exposed.
+  bool load_player(const PlayerInitializationData &, std::string &);
   bool valid() const { return valid_; }
   const FieldNativeTimerDescriptor *record(const FieldIdentity &,
                                            uint32_t) const;

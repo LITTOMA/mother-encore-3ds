@@ -61,6 +61,7 @@ public:
   bool ready(upstream::FieldTreePhase, const upstream::FieldNodeBinding &,
              std::string &);
   bool play(std::string_view, std::string &);
+  bool play(std::string_view, float custom_speed, bool from_end, std::string &);
   bool stop(std::string &);
   bool advance(float actual_delta, bool tree_paused, std::string &);
   bool process(upstream::FieldTreePhase, float actual_delta, bool tree_paused,
@@ -68,6 +69,10 @@ public:
   bool ready(upstream::FieldObjectId animation, upstream::FieldTreePhase,
              const upstream::FieldNodeBinding &, std::string &);
   bool play(upstream::FieldObjectId animation, std::string_view, std::string &);
+  bool play(upstream::FieldObjectId animation, std::string_view,
+            float custom_speed, bool from_end, std::string &);
+  bool assigned(upstream::FieldObjectId animation, std::string &,
+                std::string &) const;
   bool stop(upstream::FieldObjectId animation, std::string &);
   bool process(upstream::FieldObjectId animation, upstream::FieldTreePhase,
                float actual_delta, bool tree_paused, std::string &);
@@ -143,7 +148,7 @@ private:
       pending_;
   std::vector<std::pair<upstream::FieldObjectId, std::string>> cache_order_;
   std::string autoplay_, current_;
-  float position_ = 0, speed_ = 1;
+  float position_ = 0, speed_ = 1, custom_speed_ = 1;
   uint32_t process_mode_ = 0;
   bool playing_ = false, frame_open_ = false, ready_ = false, poisoned_ = false;
 };

@@ -912,10 +912,22 @@ bool PodunkPlayerAnimation::ready(FieldTreePhase phase,
   return true;
 }
 bool PodunkPlayerAnimation::play(std::string_view name, std::string &e) {
-  if (!live(e) || !ready_ || frame_open_ || !clips_.count(std::string(name)))
+  return play(name, 1, false, e);
+}
+bool PodunkPlayerAnimation::play(std::string_view name, float custom_speed,
+                                 bool from_end, std::string &e) {
+  if (!live(e) || !ready_ || frame_open_ || !std::isfinite(custom_speed) ||
+      !clips_.count(std::string(name)))
     return fail(e, "Player AnimationPlayer actual play rejected");
+  const auto &clip = clips_.at(std::string(name));
+  if (current_ != name)
+    position_ = from_end ? clip.length : 0;
+  else if (from_end && position_ == 0)
+    position_ = clip.length;
+  else if (!from_end && position_ == clip.length)
+    position_ = 0;
   current_ = std::string(name);
-  position_ = 0;
+  custom_speed_ = custom_speed;
   playing_ = true;
   if (!tree_->add_group(animation_,
                         process_mode_ ? "idle_process_internal"
@@ -946,14 +958,16 @@ bool PodunkPlayerAnimation::advance(float delta, bool paused, std::string &e) {
   if (!playing_ || !tree_->can_process(animation_, paused))
     return true;
   auto &c = clips_.at(current_);
-  float step = delta * speed_, next = position_ + step;
+  float step = delta * speed_ * custom_speed_, next = position_ + step;
+  const bool backwards = std::signbit(step);
+  const float previous = position_;
   if (!std::isfinite(next))
     return fail(e, "Player AnimationPlayer clock overflow");
   if (c.loop) {
     float looped = fpos(next, c.length);
     next = looped == 0 && next != 0 ? c.length : looped;
   } else {
-    next = std::min(next, c.length);
+    next = std::max(0.0f, std::min(next, c.length));
     step = next - position_;
   }
   if (!evaluate(c, next, step, false, false, 1, e)) {
@@ -961,7 +975,8 @@ bool PodunkPlayerAnimation::advance(float delta, bool paused, std::string &e) {
     return false;
   }
   position_ = next;
-  if (!c.loop && next == c.length) {
+  if (!c.loop &&
+      ((!backwards && next == c.length) || (backwards && next == 0))) {
     playing_ = false;
     if (!tree_->remove_group(animation_,
                              process_mode_ ? "idle_process_internal"
@@ -970,7 +985,9 @@ bool PodunkPlayerAnimation::advance(float delta, bool paused, std::string &e) {
       poisoned_ = true;
       return false;
     }
-    return endpoints_->signal(animation_, "animation_finished", current_, e);
+    if ((!backwards && previous < c.length) || (backwards && previous > 0))
+      return endpoints_->signal(animation_, "animation_finished", current_, e);
+    return true;
   }
   return true;
 }
@@ -1006,6 +1023,23 @@ bool PodunkPlayerAnimation::play(FieldObjectId id, std::string_view clip,
   auto own = for_animation(id);
   return own ? own->play(clip, e)
              : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::play(FieldObjectId id, std::string_view clip,
+                                 float speed, bool from_end, std::string &e) {
+  auto own = for_animation(id);
+  return own ? own->play(clip, speed, from_end, e)
+             : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::assigned(FieldObjectId id, std::string &name,
+                                     std::string &e) const {
+  const auto i = children_.find(id);
+  const auto *own = id == animation_       ? this
+                    : i == children_.end() ? nullptr
+                                           : i->second.get();
+  if (!own || !own->live(e))
+    return fail(e, "Player native AnimationPlayer assigned owner absent");
+  name = own->current_;
+  return true;
 }
 bool PodunkPlayerAnimation::stop(FieldObjectId id, std::string &e) {
   auto own = for_animation(id);

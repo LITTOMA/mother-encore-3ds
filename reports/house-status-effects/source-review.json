@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "72c160f1848778052512d724dafff0d3e29a6a91866e92548236031d7451f4e7",
+  "sources": {
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Data/StatusAilments/asthma.yaml": "6f2485b55a9b01c6cd8bdaaed248683c22eebc912c9445437d3193659fa754c3",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34"
+  },
+  "methods": {
+    "get_status_effects": "5a58fc88e8d04e859cce84a28ae2c1dab1de47d8a0bc66196ac52d0ce714c46e",
+    "_pick_status_effects": "c9ee09eaef0e47b33844746aae30fb2cd7f1aa826f01a98a90f74b8451142fc7",
+    "get_combined_status_effect": "f0f8f7c7fd6c91856d8c78e49c685f71a4f8dabf4c1807ba914226efac272988",
+    "is_incapacitated": "27244338738bd3de7228df957533711791f67715540d1a5fc6c84081b8056238"
+  },
+  "scope": "Actual saved House asthma Node owners and their complete original cache Dictionary. Only source boolean OR sweat/incap queries; no battle status executor or Ready receipt."
+}

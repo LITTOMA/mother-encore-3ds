@@ -14,7 +14,7 @@ CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room bat
 CONTENT_TASKS += field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
 CONTENT_TASKS += field-native-root field-global-data field-dialogue-root-script
 CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-directory global-yaml-file global-data-constructor field-character-load global-load field-global-constructor
-CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge
+CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge player-child-scripts house-status-effects
 .PHONY: player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge
 .PHONY: global-item-definitions global-yaml-caches global-data-constructor
 .PHONY: field-native-root field-global-data field-dialogue-root-script
@@ -308,6 +308,14 @@ player-fetcher: player-initialization field-node-tree field-global-constructor
 
 player-resources: player-initialization player-graphics
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_resources.py compile
+
+player-child-scripts: player-initialization player-ready field-game-camera field-camera-arrows
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_child_scripts.py compile
+
+house-status-effects: house-global-bridge player-ready
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_status_effects.py compile
+
+.PHONY: player-child-scripts house-status-effects
 
 house-global-bridge: global-load field-character-load session
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_global_bridge.py compile

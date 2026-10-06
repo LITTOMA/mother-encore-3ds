@@ -72,6 +72,9 @@ add_library(encore_core
     runtime/player_fetcher.cpp runtime/player_fetcher_data.cpp
     runtime/player_resources_data.cpp
     runtime/house_global_bridge.cpp runtime/house_global_bridge_data.cpp
+    runtime/house_status_effects.cpp runtime/house_status_effects_data.cpp
+    runtime/player_child_scripts.cpp runtime/player_child_scripts_data.cpp
+    runtime/player_native_timer_data.cpp
     runtime/player_graphics_data.cpp
     runtime/player_visual_scripts.cpp runtime/player_visual_scripts_data.cpp
     runtime/field_dialogue_ui.cpp

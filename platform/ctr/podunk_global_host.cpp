@@ -1,4 +1,5 @@
 #include "podunk_global_host.hpp"
+#include "podunk_global_ready.hpp"
 #include <algorithm>
 namespace encore::ctr {
 using namespace upstream;
@@ -133,13 +134,24 @@ PodunkGlobalHost::tree_host(std::shared_ptr<FieldNodeTreeRuntime> tree,
     if (preallocated && !first_allocation_) {
       first_allocation_ = true;
       id = binding_.object;
-      return registry_->object_exists(id);
+      return registry_->allocation_pending(id);
     }
     return registry_->allocate_object(id, e);
   };
   h.allocate_fast_name = [this](uint64_t &id, std::string &e) {
     return registry_->allocate_fast_name(id, e);
   };
+  h.native_allocated =
+      [this, weak = std::weak_ptr<FieldNodeTreeRuntime>(tree)](FieldObjectId id, const FieldNodeDescriptor &,
+                   const FieldIdentity &, std::string &e) {
+        auto actual = weak.lock();
+        if (!actual) return fail(e, "global native allocation Tree expired");
+        return registry_->publish_allocated_node(
+            std::move(actual), id,
+            [this](const FieldDeferredMessage &m, std::string &err) {
+              return deferred(m, err);
+            }, e);
+      };
   h.construct_source =
       [this, actual_tree](FieldObjectId id, const FieldNodeDescriptor &d,
                           const FieldIdentity &i, std::string &e) {
@@ -191,7 +203,7 @@ bool PodunkGlobalHost::construct(
     FieldObjectId id, const FieldGlobalExternalSpec &s,
     std::unique_ptr<FieldGlobalExternalObject> &out, std::string &e) {
   if (!data_ || construction_failed_ || object_ ||
-      !registry_->object_exists(id) ||
+      !registry_->allocation_pending(id) ||
       s.stable_id != registry_data_->global_autoload() ||
       !data_->bind_registry(s, e))
     return fail(e, "global constructor actual source object rejected");
@@ -290,9 +302,11 @@ bool PodunkGlobalHost::phase(FieldNodeTreeRuntime &tree, FieldObjectId id,
   }
   if (p == FieldTreePhase::ReadyScript) {
     if (d->script_methods & 1u) {
-      if (id == binding_.object)
-        return fail(e, "global Ready source first "
-                       "_set_localized_default_inputs owner pending");
+      if (id == binding_.object) {
+        if (!ready_ || !ready_->binds(core_, *registry_))
+          return fail(e, "global Ready actual source caller missing");
+        return ready_->source_ready(tree, id, b, e);
+      }
       return children_.script_phase(tree, id, b, p, e);
     }
     return true;
@@ -337,5 +351,14 @@ GlobalLoadGlobalOwner *PodunkGlobalHost::owner() const { return object_; }
 bool PodunkGlobalHost::bind_characters(const FieldGlobalDataRuntime &c,
                                        std::string &e) {
   return core_.bind_characters(c, e);
+}
+bool PodunkGlobalHost::bind_ready(PodunkGlobalReady &ready, std::string &e) {
+  const auto *node = tree_ ? tree_->state(binding_.object) : nullptr;
+  if (ready_ || !object_ || construction_failed_ || !node || node->inside ||
+      node->ready_notified || !ready.binds(core_, *registry_))
+    return fail(e, "global Ready source caller requires the same cold owner");
+  ready_ = &ready;
+  e.clear();
+  return true;
 }
 } // namespace encore::ctr

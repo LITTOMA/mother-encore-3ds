@@ -14,8 +14,8 @@ CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room bat
 CONTENT_TASKS += field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
 CONTENT_TASKS += field-native-root field-global-data field-dialogue-root-script
 CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-directory global-yaml-file global-data-constructor field-character-load global-load field-global-constructor
-CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion
-.PHONY: player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion
+CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources
+.PHONY: player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources
 .PHONY: global-item-definitions global-yaml-caches global-data-constructor
 .PHONY: field-native-root field-global-data field-dialogue-root-script
 .PHONY: field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
@@ -299,3 +299,12 @@ player-graphics: player-visual-scripts
 
 player-motion: player-initialization player-ready
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_motion.py compile
+
+global-ready: field-global-constructor player-initialization global-load input
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/global_ready.py compile
+
+player-fetcher: player-initialization field-node-tree field-global-constructor
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_fetcher.py compile
+
+player-resources: player-initialization player-graphics
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_resources.py compile

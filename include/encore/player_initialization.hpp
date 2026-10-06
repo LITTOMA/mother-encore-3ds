@@ -106,6 +106,7 @@ public:
                   PlayerInitializationHost, std::string &);
   bool run(std::string &);
   bool complete() const { return complete_ && !poisoned_; }
+  const PlayerInitializationData *data() const { return data_; }
   FieldObjectId player() const { return player_; }
 
 private:

@@ -1,0 +1,885 @@
+{
+  "schema": 1,
+  "format": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739807,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Reusables/Player.tscn",
+  "scene_id": 3168673487,
+  "source_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+  "initialization_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+  "graphics_ir_sha256": "54bd9bf182f5762d08687ecc98bde972dad88e0a2270952f476a2374c54f5f86",
+  "images": [
+    {
+      "id": 122296163,
+      "source": "Graphics/VFX/AnaPSISparks.png",
+      "source_sha256": "c7b9bacef7ea276641c25830cda411989191f50346954b565901ab0c63d86a68",
+      "import_sha256": "e1fa49c0de6917c0937258541fbc95942d95808fe0e4f5d2b15d3771e6399049",
+      "size": [
+        180,
+        135
+      ],
+      "path": "graphics/player/resource-122296163.t3x",
+      "reused": false
+    },
+    {
+      "id": 3107534691,
+      "source": "Graphics/Character Sprites/Ninten/main.png",
+      "source_sha256": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+      "import_sha256": "26679ede556b6d516e35824e952c32ac0657c622951eb88559d447164cd756fb",
+      "size": [
+        310,
+        580
+      ],
+      "path": "graphics/actors/ninten-main.t3x",
+      "reused": true
+    },
+    {
+      "id": 1119682299,
+      "source": "Graphics/Other/emotes/emotes.png",
+      "source_sha256": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "import_sha256": "da3aa2e8441cc3db6c48a3d525232493ae027034ffb8e6c0e99faae9f872324b",
+      "size": [
+        372,
+        384
+      ],
+      "path": "graphics/actors/emotes.t3x",
+      "reused": true
+    },
+    {
+      "id": 692482190,
+      "source": "Graphics/Character Sprites/Magic_Ripple.png",
+      "source_sha256": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+      "import_sha256": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+      "size": [
+        51,
+        7
+      ],
+      "path": "graphics/player/magic_ripple.t3x",
+      "reused": true
+    },
+    {
+      "id": 4255225894,
+      "source": "Graphics/Character Sprites/Water_Ripple.png",
+      "source_sha256": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+      "import_sha256": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+      "size": [
+        45,
+        5
+      ],
+      "path": "graphics/player/water_ripple.t3x",
+      "reused": true
+    },
+    {
+      "id": 1317508460,
+      "source": "Graphics/Character Sprites/Shadow.png",
+      "source_sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "import_sha256": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+      "size": [
+        15,
+        5
+      ],
+      "path": "graphics/actors/shadow.t3x",
+      "reused": true
+    },
+    {
+      "id": 3485896102,
+      "source": "Graphics/Character Sprites/Sweat_drop.png",
+      "source_sha256": "89c899a00b9b6c69888618ce62d2b5c7bbb50411663e9d6f6316ce1152316164",
+      "import_sha256": "b57537b53196dbf16c34745651c8aa2b88575f7c86093f47ac565db7243b19b4",
+      "size": [
+        288,
+        32
+      ],
+      "path": "graphics/player/resource-3485896102.t3x",
+      "reused": false
+    },
+    {
+      "id": 2751338057,
+      "source": "Graphics/Character Sprites/Ninten/special.png",
+      "source_sha256": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+      "import_sha256": "0ec506b39c6dc52b0d9f9184efd47e54050518097e3841d5b1de2a869e660fd1",
+      "size": [
+        640,
+        640
+      ],
+      "path": "graphics/player/resource-2751338057.t3x",
+      "reused": false
+    },
+    {
+      "id": 2782160856,
+      "source": "Graphics/Character Sprites/Ninten/bat_swing.png",
+      "source_sha256": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+      "import_sha256": "f7ebfe66ffd174125b8f676fef7136032c143399a762b46dd7568519a9fe9dbf",
+      "size": [
+        640,
+        640
+      ],
+      "path": "graphics/player/bat_swing.t3x",
+      "reused": true
+    },
+    {
+      "id": 3516114529,
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "source_sha256": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+      "import_sha256": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+      "size": [
+        24,
+        8
+      ],
+      "path": "graphics/player/resource-3516114529.t3x",
+      "reused": false
+    },
+    {
+      "id": 4265933975,
+      "source": "Graphics/Character Sprites/Ana/special.png",
+      "source_sha256": "bb6e22d5f67239a71871c1f881fb4285bdba17208af17453748d942ea7b0b344",
+      "import_sha256": "37d5c4ea45434715677b1d68b5094b4157d0c1206a7990cc3680e84c75fb7a7c",
+      "size": [
+        640,
+        640
+      ],
+      "path": "graphics/player/resource-4265933975.t3x",
+      "reused": false
+    },
+    {
+      "id": 4168475363,
+      "source": "Graphics/Character Sprites/Lloyd/special.png",
+      "source_sha256": "e4253fbd3d651fc9cc3d3e48e5d409fa8869452372f8ab17d5d2e789ef98ac99",
+      "import_sha256": "2a367ccd69507ea2e3bdc63ded0700932d1cb2b1b118a1d5936aafee879846d1",
+      "size": [
+        640,
+        640
+      ],
+      "path": "graphics/player/resource-4168475363.t3x",
+      "reused": false
+    }
+  ],
+  "audios": [
+    {
+      "loop": false,
+      "id": 15,
+      "native": "AudioStreamMP3",
+      "source": "Audio/Sound effects/Laugh Small.mp3",
+      "source_sha256": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "import_sha256": "91d8169b6f20249aea1a9766b3fb383db9b1345730ac15177db3373a291b49a4",
+      "path": "sound/effects/player-2958539110.pcm"
+    },
+    {
+      "loop": true,
+      "id": 18,
+      "native": "AudioStreamMP3",
+      "source": "Audio/Sound effects/Shock.mp3",
+      "source_sha256": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "import_sha256": "34f9e10222fe1e0b237645308336000d84e930d0083ec176e6d7f21308068da2",
+      "path": "sound/effects/player-431886036.pcm"
+    },
+    {
+      "loop": false,
+      "id": 394,
+      "native": "AudioStreamMP3",
+      "source": "Audio/Sound effects/Ninten Bat.mp3",
+      "source_sha256": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+      "import_sha256": "cc27908cd9c7db05cec03e65118b8a9f9257e5e4bc7aa326efe7b935b16a2f0b",
+      "path": "sound/effects/player-890270501.pcm"
+    },
+    {
+      "loop": false,
+      "id": 3506099269,
+      "native": "AudioStreamSample",
+      "source": "Audio/Sound effects/EB/tcrash.wav",
+      "source_sha256": "6bc353a536933880e9bd358e76f94a09e7c1602ae29a989c5a47357f595498e7",
+      "import_sha256": "6a2d3146dae8e06c8ded56eea44cd786c06b3d13a5d9cd0621fa13aa9a09cf48",
+      "path": "sound/effects/player-3506099269.pcm"
+    }
+  ],
+  "resources": [
+    {
+      "id": 0,
+      "kind": 1,
+      "source": "Graphics/VFX/AnaPSISparks.png",
+      "texture": 122296163,
+      "rect": [
+        0,
+        0,
+        180,
+        135
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 1,
+      "kind": 3,
+      "source": "Nodes/Reusables/Player.tscn",
+      "texture": 0,
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "local": true,
+      "instanced": false,
+      "shader": 1,
+      "parameters": [
+        {
+          "role": 1,
+          "name": "flash_color",
+          "kind": 2,
+          "value": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "role": 2,
+          "name": "glow_color",
+          "kind": 2,
+          "value": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "role": 3,
+          "name": "flash_modifier",
+          "kind": 1,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "role": 4,
+          "name": "glow_modifier",
+          "kind": 1,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "kind": 1,
+      "source": "Graphics/Character Sprites/Ninten/main.png",
+      "texture": 3107534691,
+      "rect": [
+        0,
+        0,
+        310,
+        580
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 5,
+      "kind": 1,
+      "source": "Graphics/Other/emotes/emotes.png",
+      "texture": 1119682299,
+      "rect": [
+        0,
+        0,
+        372,
+        384
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 24,
+      "kind": 2,
+      "source": "Nodes/Reusables/Shadow.tscn",
+      "texture": 692482190,
+      "rect": [
+        0,
+        0,
+        17,
+        7
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 25,
+      "kind": 2,
+      "source": "Nodes/Reusables/Shadow.tscn",
+      "texture": 692482190,
+      "rect": [
+        17,
+        0,
+        17,
+        7
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 26,
+      "kind": 2,
+      "source": "Nodes/Reusables/Shadow.tscn",
+      "texture": 692482190,
+      "rect": [
+        34,
+        0,
+        17,
+        7
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 27,
+      "kind": 2,
+      "source": "Nodes/Reusables/Shadow.tscn",
+      "texture": 4255225894,
+      "rect": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 28,
+      "kind": 2,
+      "source": "Nodes/Reusables/Shadow.tscn",
+      "texture": 4255225894,
+      "rect": [
+        30,
+        0,
+        15,
+        5
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 29,
+      "kind": 2,
+      "source": "Nodes/Reusables/Shadow.tscn",
+      "texture": 4255225894,
+      "rect": [
+        15,
+        0,
+        15,
+        5
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 30,
+      "kind": 2,
+      "source": "Nodes/Reusables/Shadow.tscn",
+      "texture": 1317508460,
+      "rect": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 33,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 34,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        32,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 35,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        64,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 36,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        96,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 37,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        128,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 38,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        160,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 39,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        192,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 40,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        224,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 41,
+      "kind": 2,
+      "source": "Nodes/Reusables/Sweatdrops.tscn",
+      "texture": 3485896102,
+      "rect": [
+        256,
+        0,
+        32,
+        32
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 42,
+      "kind": 3,
+      "source": "Nodes/Reusables/Player.tscn",
+      "texture": 0,
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 2,
+      "parameters": [
+        {
+          "role": 1,
+          "name": "color",
+          "kind": 2,
+          "value": [
+            0.972549,
+            0.54902,
+            0.0941176,
+            1
+          ]
+        },
+        {
+          "role": 2,
+          "name": "width",
+          "kind": 1,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "role": 3,
+          "name": "pattern",
+          "kind": 4,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "role": 4,
+          "name": "inside",
+          "kind": 3,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "kind": 1,
+      "source": "Graphics/Character Sprites/Ninten/special.png",
+      "texture": 2751338057,
+      "rect": [
+        0,
+        0,
+        640,
+        640
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 45,
+      "kind": 1,
+      "source": "Graphics/Character Sprites/Ninten/bat_swing.png",
+      "texture": 2782160856,
+      "rect": [
+        0,
+        0,
+        640,
+        640
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 54,
+      "kind": 2,
+      "source": "Nodes/Ui/MapScreen/MapArrows.tscn",
+      "texture": 3516114529,
+      "rect": [
+        0,
+        0,
+        8,
+        8
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 55,
+      "kind": 2,
+      "source": "Nodes/Ui/MapScreen/MapArrows.tscn",
+      "texture": 3516114529,
+      "rect": [
+        8,
+        0,
+        8,
+        8
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 56,
+      "kind": 2,
+      "source": "Nodes/Ui/MapScreen/MapArrows.tscn",
+      "texture": 3516114529,
+      "rect": [
+        16,
+        0,
+        8,
+        8
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 77,
+      "kind": 1,
+      "source": "Graphics/Character Sprites/Ana/special.png",
+      "texture": 4265933975,
+      "rect": [
+        0,
+        0,
+        640,
+        640
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 155,
+      "kind": 1,
+      "source": "Graphics/Character Sprites/Lloyd/special.png",
+      "texture": 4168475363,
+      "rect": [
+        0,
+        0,
+        640,
+        640
+      ],
+      "local": false,
+      "instanced": false,
+      "shader": 0,
+      "parameters": []
+    },
+    {
+      "id": 398,
+      "kind": 3,
+      "source": "Nodes/Reusables/Player.tscn",
+      "texture": 0,
+      "rect": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "local": true,
+      "instanced": true,
+      "shader": 1,
+      "parameters": [
+        {
+          "role": 1,
+          "name": "flash_color",
+          "kind": 2,
+          "value": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "role": 2,
+          "name": "glow_color",
+          "kind": 2,
+          "value": [
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "role": 3,
+          "name": "flash_modifier",
+          "kind": 1,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "role": 4,
+          "name": "glow_modifier",
+          "kind": 1,
+          "value": [
+            0.0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "path": "Effects",
+      "texture": 0,
+      "material": 4294967295,
+      "columns": 4,
+      "rows": 3,
+      "frame": 0
+    },
+    {
+      "path": "Position/main",
+      "texture": 3,
+      "material": 398,
+      "columns": 10,
+      "rows": 20,
+      "frame": 11
+    },
+    {
+      "path": "Position/main/emotes",
+      "texture": 5,
+      "material": 4294967295,
+      "columns": 12,
+      "rows": 12,
+      "frame": 64
+    },
+    {
+      "path": "SpecialAnimations",
+      "texture": 44,
+      "material": 42,
+      "columns": 10,
+      "rows": 10,
+      "frame": 4
+    },
+    {
+      "path": "SpecialAnimations/NintenBat",
+      "texture": 45,
+      "material": 4294967295,
+      "columns": 10,
+      "rows": 10,
+      "frame": 32
+    }
+  ],
+  "sources": {
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Graphics/VFX/AnaPSISparks.png": "c7b9bacef7ea276641c25830cda411989191f50346954b565901ab0c63d86a68",
+    "Graphics/VFX/AnaPSISparks.png.import": "e1fa49c0de6917c0937258541fbc95942d95808fe0e4f5d2b15d3771e6399049",
+    "Graphics/Character Sprites/Ninten/main.png.import": "26679ede556b6d516e35824e952c32ac0657c622951eb88559d447164cd756fb",
+    "Graphics/Other/emotes/emotes.png.import": "da3aa2e8441cc3db6c48a3d525232493ae027034ffb8e6c0e99faae9f872324b",
+    "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
+    "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",
+    "Graphics/Character Sprites/Magic_Ripple.png.import": "db04dbcea89b075a1cdf4943c1e0f46b06ee399296113e8fdf480abd0b35af6e",
+    "Graphics/Character Sprites/Water_Ripple.png": "c097be9be08bcabc7299f72ba4c56ffcf65380a6fc0f2c024c82344fae101df6",
+    "Graphics/Character Sprites/Water_Ripple.png.import": "167a7eb9fad3c439a76b596842e4c5108874f8a59fc20aa4158d26146c7b3878",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+    "Nodes/Reusables/Sweatdrops.tscn": "770e43a7852e0896fee0c3ebdbd7d7204200495a5f0aa6a8dd426cbd6cd7275a",
+    "Graphics/Character Sprites/Sweat_drop.png": "89c899a00b9b6c69888618ce62d2b5c7bbb50411663e9d6f6316ce1152316164",
+    "Graphics/Character Sprites/Sweat_drop.png.import": "b57537b53196dbf16c34745651c8aa2b88575f7c86093f47ac565db7243b19b4",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Graphics/Character Sprites/Ninten/special.png": "af1354ee190e769abeb5d31dfc9b151d7a5fa20d2b19ba6b83c6d6e8a6e2fda9",
+    "Graphics/Character Sprites/Ninten/special.png.import": "0ec506b39c6dc52b0d9f9184efd47e54050518097e3841d5b1de2a869e660fd1",
+    "Graphics/Character Sprites/Ninten/bat_swing.png": "78adfa332ce6a3fd0984ad4da5f4dd6e4cc5b4bfde69bb7f10e198c056c5e898",
+    "Graphics/Character Sprites/Ninten/bat_swing.png.import": "f7ebfe66ffd174125b8f676fef7136032c143399a762b46dd7568519a9fe9dbf",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Graphics/Character Sprites/Ana/special.png": "bb6e22d5f67239a71871c1f881fb4285bdba17208af17453748d942ea7b0b344",
+    "Graphics/Character Sprites/Ana/special.png.import": "37d5c4ea45434715677b1d68b5094b4157d0c1206a7990cc3680e84c75fb7a7c",
+    "Graphics/Character Sprites/Lloyd/special.png": "e4253fbd3d651fc9cc3d3e48e5d409fa8869452372f8ab17d5d2e789ef98ac99",
+    "Graphics/Character Sprites/Lloyd/special.png.import": "2a367ccd69507ea2e3bdc63ded0700932d1cb2b1b118a1d5936aafee879846d1",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Laugh Small.mp3.import": "91d8169b6f20249aea1a9766b3fb383db9b1345730ac15177db3373a291b49a4",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/Shock.mp3.import": "34f9e10222fe1e0b237645308336000d84e930d0083ec176e6d7f21308068da2",
+    "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
+    "Audio/Sound effects/Ninten Bat.mp3.import": "cc27908cd9c7db05cec03e65118b8a9f9257e5e4bc7aa326efe7b935b16a2f0b",
+    "Audio/Sound effects/EB/tcrash.wav": "6bc353a536933880e9bd358e76f94a09e7c1602ae29a989c5a47357f595498e7",
+    "Audio/Sound effects/EB/tcrash.wav.import": "6a2d3146dae8e06c8ded56eea44cd786c06b3d13a5d9cd0621fa13aa9a09cf48"
+  },
+  "unsupported": [
+    "Non-neutral outline/flash draw kernel pending; parameters are owned and checked, never ignored",
+    "Unknown textures, node resource classes and out-of-source material parameters reject",
+    "Complete PackedScene factories remain their actual owner obligation"
+  ]
+}

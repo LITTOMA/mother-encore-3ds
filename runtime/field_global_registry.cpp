@@ -38,6 +38,16 @@ bool FieldGlobalRegistry::allocate_fast_name(uint64_t&out,std::string&e){
  if(!data_||poisoned_||fast_counter_==std::numeric_limits<uint64_t>::max())return fail(e,"Global native name counter unavailable/overflow");
  out=++fast_counter_;e.clear();return true;
 }
+bool FieldGlobalRegistry::allocation_pending(FieldObjectId id)const{
+ auto i=objects_.find(id);
+ return data_&&!poisoned_&&id&&i!=objects_.end()&&!i->second.external&&!i->second.native&&!i->second.tree&&!i->second.reference_published&&!i->second.definition;
+}
+bool FieldGlobalRegistry::publish_allocated_node(std::shared_ptr<FieldNodeTreeRuntime>tree,FieldObjectId id,NodeDispatch dispatch,std::string&e){
+ if(!initialized_||poisoned_||!tree||!dispatch||!allocation_pending(id)||tree->object_domain()!=kernel_)return fail(e,"Global native allocation slot/source domain rejected");
+ const auto*n=tree->state(id);const auto*d=tree->descriptor(id);FieldIdentity identity;
+ if(!n||!n->alive||n->parent||n->owner||n->canvas_parent||n->inside||n->ready_notified||n->bound||n->queued||!n->name.empty()||!n->children.empty()||!d||d->id!=n->source||d->native_class.empty()||!tree->object_identity(id,identity)||identity.upstream_commit!=data_->identity().upstream_commit)return fail(e,"Global native allocation must precede script construction and parenting");
+ auto&slot=objects_.at(id);slot.tree=std::move(tree);slot.dispatch=std::move(dispatch);slot.definition=d->id;e.clear();return true;
+}
 bool FieldGlobalRegistry::object_exists(FieldObjectId id)const{
  auto i=objects_.find(id);if(i==objects_.end())return false;
  return bool(i->second.external)||(i->second.native&&i->second.native->alive())||!i->second.reference.expired()||(i->second.tree&&i->second.tree->state(id));
@@ -64,7 +74,7 @@ bool FieldGlobalRegistry::publish_native_reference(const FieldGlobalExternalSpec
  auto i=objects_.find(id);
  if(!initialized_||poisoned_||!owner||!id||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||owner->registry()!=this||!spec.stable_id||spec.role!=5||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||spec.script!=spec.source||spec.source_sha!=spec.script_sha||spec.identity.source_sha256!=spec.source_sha||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual native Reference slot/source rejected");
  auto type=owner->native_class();auto b=owner->binding();
- const bool supported=(spec.native_class=="Reference"&&b.family==0x454e0050&&b.capability==2)||(((spec.native_class=="Reference"&&b.family==0x454e0053)||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052))&&b.capability==1);
+ const bool supported=(spec.native_class=="Reference"&&b.family==0x454e0050&&b.capability==2)||(((spec.native_class=="Reference"&&b.family==0x454e0053)||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052)||(spec.native_class=="File"&&b.family==0x454e005d))&&b.capability==1);
  std::array<uint8_t,32>source{},namespace_source{};
  if(!type||spec.native_class!=type||!supported||!owner->checked_source_hash(spec.source,source)||source!=spec.source_sha||b.object!=id||!equal_spec(b.source,spec))return fail(e,"Global native Reference actual owner/domain proof rejected");
  // Nested source classes have their own checked resource closure. Namespace
@@ -75,8 +85,9 @@ bool FieldGlobalRegistry::publish_native_reference(const FieldGlobalExternalSpec
 bool FieldGlobalRegistry::publish_source_resource(const FieldGlobalExternalSpec&spec,FieldObjectId id,std::unique_ptr<FieldGlobalSourceResource>owner,std::string&e){
  auto i=objects_.find(id);
  if(!initialized_||poisoned_||!owner||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||!id||!spec.stable_id||spec.role!=4||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual source Resource slot/identity rejected");
+ const bool player_resource=owner->binding().family==0x454e005f&&owner->binding().capability==1&&(spec.native_class=="StreamTexture"||spec.native_class=="AtlasTexture"||spec.native_class=="ShaderMaterial"||spec.native_class=="AudioStreamSample"||spec.native_class=="AudioStreamMP3");
  const bool player_playback=spec.native_class=="AnimationNodeStateMachinePlayback"&&owner->binding().family==0x454e005a&&owner->binding().capability==1;
- if((spec.native_class!="PackedScene"&&spec.native_class!="ShaderMaterial"&&!player_playback)||spec.native_class!=owner->resource_class()||spec.source_sha!=spec.identity.source_sha256||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global source Resource native type/proof rejected");
+ if((spec.native_class!="PackedScene"&&spec.native_class!="ShaderMaterial"&&!player_playback&&!player_resource)||spec.native_class!=owner->resource_class()||spec.source_sha!=spec.identity.source_sha256||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global source Resource native type/proof rejected");
  auto b=owner->binding();FieldGlobalExternalState s;
  if(b.object!=id||!b.family||!b.capability||!equal_spec(b.source,spec)||!owner->state(s,e)||s.name!=spec.name||s.parent||!s.children.empty()||s.inside||s.ready||s.ui_before_canvas||s.current_scene||s.stable_canvas)return fail(e,"Global source Resource actual non-Node owner rejected");
  i->second.resource=owner.get();i->second.external=std::move(owner);i->second.definition=spec.stable_id;e.clear();return true;

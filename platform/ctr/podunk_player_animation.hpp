@@ -12,6 +12,20 @@ public:
                      bool method, std::string &) const = 0;
   virtual bool disabled(upstream::FieldObjectId, bool, std::string &) = 0;
   virtual bool audio_playing(upstream::FieldObjectId, bool, std::string &) = 0;
+  virtual bool audio_stream(upstream::FieldObjectId, uint32_t source_resource,
+                            std::string &) = 0;
+  virtual bool animated_frame(upstream::FieldObjectId, uint32_t,
+                              std::string &) = 0;
+  virtual bool animated_playing(upstream::FieldObjectId, bool,
+                                std::string &) = 0;
+  virtual bool native_offset(upstream::FieldObjectId, upstream::Vec2,
+                             std::string &) = 0;
+  virtual bool shader_number(upstream::FieldObjectId actual_sprite,
+                             std::string_view parameter, double,
+                             std::string &) = 0;
+  virtual bool shader_color(upstream::FieldObjectId actual_sprite,
+                            std::string_view parameter, upstream::FieldColor,
+                            std::string &) = 0;
   virtual PodunkPlayerVisualNative *visual(upstream::FieldObjectId) = 0;
   virtual bool texture(uint32_t source_resource,
                        upstream::FieldObjectId &actual_resource,
@@ -19,6 +33,9 @@ public:
   virtual bool material(uint32_t source_resource,
                         upstream::FieldObjectId &actual_resource,
                         std::string &) = 0;
+  virtual bool stream(uint32_t source_resource,
+                      upstream::FieldObjectId &actual_resource,
+                      std::string &) = 0;
   virtual bool signal(upstream::FieldObjectId, std::string_view,
                       std::string_view clip, std::string &) = 0;
 };
@@ -48,6 +65,13 @@ public:
   bool advance(float actual_delta, bool tree_paused, std::string &);
   bool process(upstream::FieldTreePhase, float actual_delta, bool tree_paused,
                std::string &);
+  bool ready(upstream::FieldObjectId animation, upstream::FieldTreePhase,
+             const upstream::FieldNodeBinding &, std::string &);
+  bool play(upstream::FieldObjectId animation, std::string_view, std::string &);
+  bool stop(upstream::FieldObjectId animation, std::string &);
+  bool process(upstream::FieldObjectId animation, upstream::FieldTreePhase,
+               float actual_delta, bool tree_paused, std::string &);
+  std::vector<upstream::FieldObjectId> animation_objects() const;
   bool sprite_frame(upstream::FieldObjectId, uint32_t, std::string &);
   bool sprite_texture(upstream::FieldObjectId, uint32_t, std::string &);
   bool sprite_offset(upstream::FieldObjectId, upstream::Vec2, std::string &);
@@ -62,6 +86,7 @@ private:
     double number = 0;
     bool boolean = false;
     upstream::Vec2 vector{};
+    upstream::FieldColor color{};
     std::string string;
   };
   struct Key {
@@ -82,6 +107,15 @@ private:
     std::vector<Track> tracks;
   };
   bool live(std::string &) const;
+  bool construct_one(const upstream::PlayerInitializationData &,
+                     const upstream::PlayerReadyData &,
+                     upstream::FieldNodeTreeRuntime &,
+                     upstream::FieldGlobalRegistry &,
+                     upstream::FieldObjectId player,
+                     upstream::FieldObjectId animation, bool main,
+                     PodunkPlayerAnimationEndpoints &, std::string &);
+  PodunkPlayerAnimation *for_animation(upstream::FieldObjectId);
+  PodunkPlayerAnimation *sprite_owner_ = nullptr;
   bool checked_resource(uint32_t source_id, upstream::FieldObjectId actual_id,
                         bool texture, std::string &) const;
   bool parse_value(const std::shared_ptr<const upstream::GlobalYamlValue> &,
@@ -102,6 +136,8 @@ private:
   upstream::FieldObjectId player_ = 0, animation_ = 0;
   std::map<std::string, Clip> clips_;
   std::map<upstream::FieldObjectId, PodunkPlayerSpriteState> sprites_;
+  std::map<upstream::FieldObjectId, std::unique_ptr<PodunkPlayerAnimation>>
+      children_;
   std::map<std::pair<upstream::FieldObjectId, std::string>,
            std::pair<const Track *, Value>>
       pending_;

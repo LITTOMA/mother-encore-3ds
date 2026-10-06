@@ -187,6 +187,7 @@ public:
   const auto &items() const { return items_; }
   const auto &prefix_state() const { return state_; }
   const auto *data() const { return data_; }
+  const FieldGlobalRegistry *registry() const { return registry_; }
   FieldObjectId globaldata_object() const { return owner_; }
   bool prefix_complete() const { return prefix_; }
   bool constructor_complete() const;

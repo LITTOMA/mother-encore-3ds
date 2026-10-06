@@ -70,6 +70,12 @@ public:
   bool live_polygon_parts(uint32_t actual_owner, uint32_t shape, bool &attached,
                           bool &disabled, std::vector<std::vector<Vec2>> &,
                           std::string &) const;
+  // Resolve one current contact to its actual analytic/polygon shape. The
+  // contact must still name the same enabled, admitted live shape instance.
+  bool live_geometry(const FieldGeometryContact &, FieldGeometryActor &,
+                     FieldGeometryOwner &, FieldGeometryShape &,
+                     std::string &) const;
+  const FieldGeometryView *source() const { return source_; }
   bool candidates(FieldGeometryBounds, const FieldGeometryFilter &, size_t,
                   std::vector<FieldGeometryContact> &, std::string &) const;
   bool overlap_actor(const FieldGeometryActor &, const FieldGeometryFilter &,

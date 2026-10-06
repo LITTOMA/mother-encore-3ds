@@ -203,6 +203,7 @@ namespace encore::upstream {
     identity,r,recipe
    }
    );
+   if(host_.native_allocated&&!host_.native_allocated(id,r,identity,e)){poisoned_=true;return false;}
    if(host_.construct_source){
     if(r.native_generated||!host_.construct_source(id,r,identity,e)){poisoned_=true;return false;}
     auto*actual=live(id);

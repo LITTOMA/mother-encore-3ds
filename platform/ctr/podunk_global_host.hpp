@@ -3,6 +3,7 @@
 #include "podunk_native_root.hpp"
 #include "podunk_global_children.hpp"
 namespace encore::ctr {
+class PodunkGlobalReady;
 // Source script fields are owned here; actual native class notification
 // behavior is supplied by the same source-native owner used by other trees.
 class PodunkGlobalNativeOwner {
@@ -45,6 +46,8 @@ public:
   // Uses the same real Engine/Input clock as the complete scene scheduler.
   PodunkGlobalChildren &children() { return children_; }
   bool bind_characters(const upstream::FieldGlobalDataRuntime &, std::string &);
+  // Attach the actual source method cursor before the native Tree enters.
+  bool bind_ready(PodunkGlobalReady &, std::string &);
 
 private:
   class GlobalObject;
@@ -68,6 +71,7 @@ private:
   upstream::FieldGlobalRegistry *registry_ = nullptr;
   PodunkNativeRoot *root_ = nullptr;
   PodunkGlobalNativeOwner *native_ = nullptr;
+  PodunkGlobalReady *ready_ = nullptr;
   std::shared_ptr<const upstream::FieldGlobalConstructorData> data_;
   std::shared_ptr<upstream::FieldNodeTreeRuntime> tree_, transition_;
   upstream::FieldGlobalConstructorRuntime core_;

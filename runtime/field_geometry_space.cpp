@@ -616,6 +616,38 @@ bool FieldGeometrySpace::query_instances(FieldGeometryBounds b,
   error.clear();
   return true;
 }
+bool FieldGeometrySpace::live_geometry(const FieldGeometryContact &contact,
+                                       FieldGeometryActor &actor,
+                                       FieldGeometryOwner &owner,
+                                       FieldGeometryShape &shape,
+                                       std::string &error) const {
+  if (!source_) {
+    error = "Field live geometry source unavailable";
+    return false;
+  }
+  for (const auto &entry : instances_) {
+    const auto &c = entry.contact;
+    if (c.owner != contact.owner || c.shape != contact.shape ||
+        c.part != contact.part || c.stable_id != contact.stable_id ||
+        c.native_shape_index != contact.native_shape_index)
+      continue;
+    if (entry.deleted || entry.disabled || !entry.resolved || c.owner == none ||
+        c.owner >= owners_.size()) {
+      error = "Field live geometry disabled/deleted/unadmitted";
+      return false;
+    }
+    auto o = source_->owner(c.owner);
+    o.layer = owners_[c.owner].layer;
+    o.mask = owners_[c.owner].mask;
+    actor = entry.actor;
+    owner = o;
+    shape = source_->shape(c.shape);
+    error.clear();
+    return true;
+  }
+  error = "Field live geometry stale/unknown contact";
+  return false;
+}
 bool FieldGeometrySpace::candidates(FieldGeometryBounds b,
                                     const FieldGeometryFilter &filter,
                                     size_t capacity,

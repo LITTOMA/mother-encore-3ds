@@ -100,7 +100,7 @@ float fpos(float t, float l) {
 }
 bool resource_owner(const PlayerInitializationData &d,
                     const FieldGlobalRegistry &registry, uint32_t source_id,
-                    FieldObjectId actual_id, bool texture, std::string &e) {
+                    FieldObjectId actual_id, uint32_t kind, std::string &e) {
   auto resources = get(d.native_source(), "resources");
   Raw record;
   if (!resources || resources->kind != 5)
@@ -115,7 +115,9 @@ bool resource_owner(const PlayerInitializationData &d,
   std::string cls, path;
   if (!record || !text(get(record, "class"), cls) ||
       !text(get(record, "path"), path) ||
-      (texture ? cls != "StreamTexture" : cls != "ShaderMaterial"))
+      (kind == 1   ? cls != "StreamTexture"
+       : kind == 0 ? cls != "ShaderMaterial"
+                   : cls != "AudioStreamMP3"))
     return fail(e, "Player native resource class unsupported");
   const auto *owner = registry.source_resource(actual_id);
   if (!owner || !registry.object_exists(actual_id) ||
@@ -158,6 +160,10 @@ bool PodunkPlayerAnimation::parse_value(const Raw &r, Value &v,
                                         std::string &e) const {
   if (!r)
     return fail(e, "Player animation value absent");
+  if (r->kind == 0) {
+    v.kind = 0;
+    return true;
+  }
   if (r->kind == 1) {
     v.kind = 1;
     v.boolean = r->boolean;
@@ -183,6 +189,17 @@ bool PodunkPlayerAnimation::parse_value(const Raw &r, Value &v,
       return fail(e, "Player animation vector malformed");
     return true;
   }
+  if (t == "Color") {
+    v.kind = 7;
+    const char *fields[] = {"r", "g", "b", "a"};
+    for (size_t i = 0; i < 4; ++i) {
+      double n = 0;
+      if (!number(get(r, fields[i]), n) || !std::isfinite(float(n)))
+        return fail(e, "Player animation Color malformed");
+      v.color[i] = float(n);
+    }
+    return true;
+  }
   if (t == "ResourceReference") {
     v.kind = 6;
     if (!reference(r, v.resource))
@@ -195,8 +212,41 @@ bool PodunkPlayerAnimation::construct(
     const PlayerInitializationData &d, const PlayerReadyData &g,
     FieldNodeTreeRuntime &t, FieldGlobalRegistry &r, FieldObjectId player,
     PodunkPlayerAnimationEndpoints &port, std::string &e) {
+  FieldObjectId main = 0;
+  if (!t.get_node(player, g.binding(PlayerReadyBinding::AnimationPath), main,
+                  e))
+    return false;
+  sprite_owner_ = this;
+  if (!construct_one(d, g, t, r, player, main, true, port, e))
+    return false;
+  for (const auto &record : d.recipe().records()) {
+    if (record.native_class != "AnimationPlayer")
+      continue;
+    FieldObjectId id = 0;
+    if (!t.get_node(player, record.path, id, e)) {
+      poisoned_ = true;
+      return false;
+    }
+    if (id == main)
+      continue;
+    auto child = std::make_unique<PodunkPlayerAnimation>();
+    child->sprite_owner_ = this;
+    if (!child->construct_one(d, g, t, r, player, id, false, port, e)) {
+      poisoned_ = true;
+      return false;
+    }
+    children_.emplace(id, std::move(child));
+  }
+  return true;
+}
+bool PodunkPlayerAnimation::construct_one(
+    const PlayerInitializationData &d, const PlayerReadyData &g,
+    FieldNodeTreeRuntime &t, FieldGlobalRegistry &r, FieldObjectId player,
+    FieldObjectId id, bool main, PodunkPlayerAnimationEndpoints &port,
+    std::string &e) {
   FieldIdentity actual{};
   if (data_ || !d.valid() || !g.valid() ||
+      g.initialization_ir_sha256() != d.ir_sha256() ||
       g.identity().upstream_commit != d.identity().upstream_commit ||
       g.identity().source_sha256 != d.identity().source_sha256 ||
       !t.object_identity(player, actual) ||
@@ -204,9 +254,6 @@ bool PodunkPlayerAnimation::construct(
       actual.source_sha256 != d.identity().source_sha256 ||
       r.tree_owner(player).get() != &t || t.object_domain() != r.kernel())
     return fail(e, "Player AnimationPlayer source ObjectDB binding rejected");
-  FieldObjectId id = 0;
-  if (!t.get_node(player, g.binding(PlayerReadyBinding::AnimationPath), id, e))
-    return false;
   auto desc = t.descriptor(id);
   if (!desc || desc->native_class != "AnimationPlayer" || !desc->script.empty())
     return fail(e, "Player AnimationPlayer native class/script rejected");
@@ -249,7 +296,7 @@ bool PodunkPlayerAnimation::construct(
     return fail(e, "Player AnimationPlayer blend-time source unsupported");
   // Build a candidate completely before publishing the owning service.
   std::map<std::string, Clip> clips;
-  std::map<FieldObjectId, PodunkPlayerSpriteState> sprites;
+  auto &sprites = sprite_owner_->sprites_;
   for (const auto &entry : props->dictionary) {
     if (entry.first.rfind("anims/", 0) != 0)
       continue;
@@ -287,8 +334,7 @@ bool PodunkPlayerAnimation::construct(
       if (!t.get_node(root, node, track.target, e))
         return false;
       if (!track.method) {
-        if (colon == std::string::npos ||
-            path.find(':', colon + 1) != std::string::npos)
+        if (colon == std::string::npos)
           return fail(e, "Player animation property subpath unsupported");
         track.member = path.substr(colon + 1);
       } else if (colon != std::string::npos)
@@ -302,7 +348,7 @@ bool PodunkPlayerAnimation::construct(
           times->array.size() != transitions->array.size() ||
           times->array.empty() ||
           (!track.method &&
-           (!uint(pair(keys, "update"), track.update) || track.update > 1)))
+           (!uint(pair(keys, "update"), track.update) || track.update > 2)))
         return fail(e, "Player animation key schema unsupported");
       for (size_t i = 0; i < times->array.size(); ++i) {
         Key k;
@@ -328,8 +374,12 @@ bool PodunkPlayerAnimation::construct(
           return false;
         if (k.value.kind == 6) {
           FieldObjectId resource = 0;
-          if (!port.texture(k.value.resource, resource, e) || !resource ||
-              !resource_owner(d, r, k.value.resource, resource, true, e))
+          bool is_stream = track.member == "stream";
+          if (!(is_stream ? port.stream(k.value.resource, resource, e)
+                          : port.texture(k.value.resource, resource, e)) ||
+              !resource ||
+              !resource_owner(d, r, k.value.resource, resource,
+                              is_stream ? 2u : 1u, e))
             return fail(
                 e, "Player animation Texture actual Resource owner absent");
         }
@@ -341,15 +391,26 @@ bool PodunkPlayerAnimation::construct(
       bool canvas = track.member == "visible" || track.member == "position" ||
                     track.member == "rotation_degrees" ||
                     track.member == "show_behind_parent";
+      bool shader = track.member.rfind("material:shader_param/", 0) == 0;
       bool sprite_property =
-          track.member == "frame" || track.member == "texture";
+          target->native_class == "Sprite" &&
+          (track.member == "frame" || track.member == "texture" ||
+           track.member == "offset" || shader);
+      bool animated = target->native_class == "AnimatedSprite" &&
+                      (track.member == "frame" || track.member == "playing" ||
+                       track.member == "offset");
       if (canvas && !(t.state(track.target)->flags & 1u))
         return fail(e, "Player animation Canvas target class rejected");
       if (!track.method && !canvas && !sprite_property &&
-          track.member != "disabled" && track.member != "playing")
+          track.member != "disabled" && track.member != "playing" &&
+          track.member != "offset" && track.member != "modulate" &&
+          track.member != "stream" && !animated && !shader)
         return fail(e, "Player animation unsupported property target");
       if (!track.method &&
-          (track.member == "disabled" || track.member == "playing") &&
+          (track.member == "disabled" || track.member == "playing" ||
+           track.member == "stream" ||
+           (!sprite_property && track.member == "offset") || animated ||
+           shader) &&
           !port.admit(track.target, track.member, false, e))
         return false;
       if (sprite_property) {
@@ -397,12 +458,18 @@ bool PodunkPlayerAnimation::construct(
               track.member == "show_behind_parent" ||
               track.member == "disabled" || track.member == "playing")
             ok = v.kind == 1;
-          else if (track.member == "position")
+          else if (track.member == "position" || track.member == "offset")
             ok = v.kind == 5;
           else if (track.member == "rotation_degrees")
             ok = v.kind == 2 || v.kind == 3;
           else if (track.member == "texture")
             ok = v.kind == 6;
+          else if (track.member == "stream")
+            ok = v.kind == 0 || v.kind == 6;
+          else if (track.member == "modulate")
+            ok = v.kind == 7;
+          else if (shader)
+            ok = v.kind == 2 || v.kind == 3 || v.kind == 7;
           else if (track.member == "frame")
             ok = v.kind == 2 && v.number >= 0 && v.number <= UINT32_MAX &&
                  std::floor(v.number) == v.number;
@@ -425,13 +492,14 @@ bool PodunkPlayerAnimation::construct(
   }
   if (clips.empty() || (!autoplay_.empty() && !clips.count(autoplay_)))
     return fail(e, "Player AnimationPlayer autoplay clip unavailable");
-  for (auto &s : g.states())
-    for (auto &p : s.points) {
-      auto c = clips.find(p.clip);
-      if (c == clips.end() || c->second.resource != p.clip_id ||
-          c->second.length != p.length || c->second.loop != p.loop)
-        return fail(e, "Player graph/source clip cross-binding differs");
-    }
+  if (main)
+    for (auto &s : g.states())
+      for (auto &p : s.points) {
+        auto c = clips.find(p.clip);
+        if (c == clips.end() || c->second.resource != p.clip_id ||
+            c->second.length != p.length || c->second.loop != p.loop)
+          return fail(e, "Player graph/source clip cross-binding differs");
+      }
   // Native NodePath hash, then native HashMap bucket traversal. This audited
   // source fits the engine's initial eight buckets (no resize). Game target
   // strings and insertion order are read from the complete source resource.
@@ -443,8 +511,10 @@ bool PodunkPlayerAnimation::construct(
         continue;
       uint32_t hash = 0;
       size_t start = 0;
+      bool subpath = false;
       for (size_t i = 0; i <= track.source_path.size(); ++i) {
-        if (i != track.source_path.size() && track.source_path[i] != '/' &&
+        if (i != track.source_path.size() &&
+            (subpath || track.source_path[i] != '/') &&
             track.source_path[i] != ':')
           continue;
         uint32_t h = 5381;
@@ -456,6 +526,8 @@ bool PodunkPlayerAnimation::construct(
           h = h * 33 + ch;
         }
         hash ^= h;
+        if (i < track.source_path.size() && track.source_path[i] == ':')
+          subpath = true;
         start = i + 1;
       }
       auto &bucket = buckets[hash & 7];
@@ -473,22 +545,24 @@ bool PodunkPlayerAnimation::construct(
   animation_ = id;
   endpoints_ = &port;
   clips_ = std::move(clips);
-  sprites_ = std::move(sprites);
+
   speed_ = float(speed);
   e.clear();
   return true;
 }
 const PodunkPlayerSpriteState *
 PodunkPlayerAnimation::sprite(FieldObjectId id) const {
-  auto i = sprites_.find(id);
-  return i == sprites_.end() ? nullptr : &i->second;
+  auto &sprites = sprite_owner_ ? sprite_owner_->sprites_ : sprites_;
+  auto i = sprites.find(id);
+  return i == sprites.end() ? nullptr : &i->second;
 }
 bool PodunkPlayerAnimation::sprite_frame(FieldObjectId id, uint32_t f,
                                          std::string &e) {
   if (!live(e))
     return false;
-  auto i = sprites_.find(id);
-  if (i == sprites_.end()) {
+  auto &sprites = sprite_owner_ ? sprite_owner_->sprites_ : sprites_;
+  auto i = sprites.find(id);
+  if (i == sprites.end()) {
     auto v = endpoints_->visual(id);
     return v ? v->set_frame(f, e)
              : fail(e, "Player Sprite actual frame owner absent");
@@ -502,9 +576,10 @@ bool PodunkPlayerAnimation::sprite_texture(FieldObjectId id, uint32_t source,
                                            std::string &e) {
   if (!live(e))
     return false;
-  auto i = sprites_.find(id);
+  auto &sprites = sprite_owner_ ? sprite_owner_->sprites_ : sprites_;
+  auto i = sprites.find(id);
   FieldObjectId resource = 0;
-  if (i == sprites_.end() || !endpoints_->texture(source, resource, e) ||
+  if (i == sprites.end() || !endpoints_->texture(source, resource, e) ||
       !resource || !checked_resource(source, resource, true, e))
     return fail(e, "Player Sprite actual texture owner absent");
   i->second.texture = resource;
@@ -515,8 +590,9 @@ bool PodunkPlayerAnimation::sprite_offset(FieldObjectId id, Vec2 v,
                                           std::string &e) {
   if (!live(e))
     return false;
-  auto i = sprites_.find(id);
-  if (i == sprites_.end() || !std::isfinite(v.x) || !std::isfinite(v.y))
+  auto &sprites = sprite_owner_ ? sprite_owner_->sprites_ : sprites_;
+  auto i = sprites.find(id);
+  if (i == sprites.end() || !std::isfinite(v.x) || !std::isfinite(v.y))
     return fail(e, "Player Sprite native offset owner/value rejected");
   i->second.offset = v;
   return true;
@@ -527,6 +603,36 @@ bool PodunkPlayerAnimation::assign(const Track &t, const Value &v,
   if (!s || !s->alive || s->queued ||
       registry_->tree_owner(t.target).get() != tree_)
     return fail(e, "Player animation live target expired");
+  if (t.member == "modulate" && v.kind == 7)
+    return tree_->set_modulate(t.target, v.color, false, e);
+  if (t.member.rfind("material:shader_param/", 0) == 0) {
+    auto param = t.member.substr(22);
+    if (param.empty() || param.find(':') != std::string::npos)
+      return fail(e, "Player shader parameter subpath unsupported");
+    if (v.kind == 7)
+      return endpoints_->shader_color(t.target, param, v.color, e);
+    if (v.kind == 2 || v.kind == 3)
+      return endpoints_->shader_number(t.target, param, v.number, e);
+  }
+  if (t.member == "offset" && v.kind == 5) {
+    auto owned = sprite(t.target);
+    return owned ? sprite_offset(t.target, v.vector, e)
+                 : endpoints_->native_offset(t.target, v.vector, e);
+  }
+  if (t.member == "stream" && (v.kind == 0 || v.kind == 6))
+    return endpoints_->audio_stream(t.target, v.kind == 6 ? v.resource : 0, e);
+  auto desc = tree_->descriptor(t.target);
+  if (desc && desc->native_class == "AnimatedSprite") {
+    if (t.member == "frame" && (v.kind == 2 || v.kind == 3) && v.number >= 0 &&
+        v.number <= UINT32_MAX) {
+      auto visual = endpoints_->visual(t.target);
+      return visual
+                 ? visual->set_frame(uint32_t(v.number), e)
+                 : endpoints_->animated_frame(t.target, uint32_t(v.number), e);
+    }
+    if (t.member == "playing" && v.kind == 1)
+      return endpoints_->animated_playing(t.target, v.boolean, e);
+  }
   if (t.member == "visible" && v.kind == 1)
     return tree_->set_visible(t.target, v.boolean, e);
   if (t.member == "show_behind_parent" && v.kind == 1) {
@@ -661,7 +767,10 @@ bool PodunkPlayerAnimation::sample(const Clip &c, const Track &t, float time,
   } else if (out.kind == 5)
     out.vector = {a.value.vector.x + (b.vector.x - a.value.vector.x) * ratio,
                   a.value.vector.y + (b.vector.y - a.value.vector.y) * ratio};
-  else if (out.kind != 1 && out.kind != 6)
+  else if (out.kind == 7) {
+    for (size_t i = 0; i < 4; ++i)
+      out.color[i] = a.value.color[i] + (b.color[i] - a.value.color[i]) * ratio;
+  } else if (out.kind != 1 && out.kind != 6)
     return fail(
         e, "Player animation continuous nonnumeric interpolation unsupported");
   return true;
@@ -689,19 +798,21 @@ bool PodunkPlayerAnimation::evaluate(const Clip &c, float time, float step,
       }
       continue;
     }
-    if (t.update == 1 && (graph || step != 0)) {
+    if (t.update != 0 && (graph || step != 0)) {
       for (size_t i : events(c, t, time, step))
         if (!assign(t, t.keys[i].value, e))
           return false;
       continue;
     }
+    if (t.update == 2)
+      continue;
     Value value;
     bool has = false;
     if (!sample(c, t, time, value, has, e))
       return false;
     if (!has)
       continue;
-    if (!graph || t.update == 1) {
+    if (!graph || t.update != 0) {
       if (!assign(t, value, e))
         return false;
     } else {
@@ -723,7 +834,11 @@ bool PodunkPlayerAnimation::evaluate(const Clip &c, float time, float step,
         } else if (a.kind == 5)
           value.vector = {a.vector.x + (value.vector.x - a.vector.x) * weight,
                           a.vector.y + (value.vector.y - a.vector.y) * weight};
-        else if (a.kind == 1 || a.kind == 6)
+        else if (a.kind == 7) {
+          for (size_t i = 0; i < 4; ++i)
+            value.color[i] =
+                a.color[i] + (value.color[i] - a.color[i]) * weight;
+        } else if (a.kind == 1 || a.kind == 6)
           value = a;
         else if (weight < 1)
           return fail(e, "Player graph nonnumeric blend unsupported");
@@ -866,5 +981,41 @@ bool PodunkPlayerAnimation::process(FieldTreePhase phase, float delta,
     return fail(e,
                 "Player AnimationPlayer source process notification rejected");
   return advance(delta, paused, e);
+}
+PodunkPlayerAnimation *PodunkPlayerAnimation::for_animation(FieldObjectId id) {
+  if (id == animation_)
+    return this;
+  auto i = children_.find(id);
+  return i == children_.end() ? nullptr : i->second.get();
+}
+std::vector<FieldObjectId> PodunkPlayerAnimation::animation_objects() const {
+  std::vector<FieldObjectId> out{animation_};
+  for (const auto &p : children_)
+    out.push_back(p.first);
+  return out;
+}
+bool PodunkPlayerAnimation::ready(FieldObjectId id, FieldTreePhase phase,
+                                  const FieldNodeBinding &binding,
+                                  std::string &e) {
+  auto own = for_animation(id);
+  return own ? own->ready(phase, binding, e)
+             : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::play(FieldObjectId id, std::string_view clip,
+                                 std::string &e) {
+  auto own = for_animation(id);
+  return own ? own->play(clip, e)
+             : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::stop(FieldObjectId id, std::string &e) {
+  auto own = for_animation(id);
+  return own ? own->stop(e)
+             : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::process(FieldObjectId id, FieldTreePhase phase,
+                                    float delta, bool paused, std::string &e) {
+  auto own = for_animation(id);
+  return own ? own->process(phase, delta, paused, e)
+             : fail(e, "Player native AnimationPlayer actual owner absent");
 }
 } // namespace encore::ctr

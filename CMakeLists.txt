@@ -66,6 +66,11 @@ add_library(encore_core
     runtime/player_ready.cpp runtime/player_ready_data.cpp runtime/player_ready_animation.cpp
     runtime/player_effects.cpp runtime/player_effects_data.cpp
     runtime/player_motion.cpp runtime/player_motion_data.cpp
+    runtime/podunk_player_kinematic.cpp runtime/podunk_player_kinematic_solver.cpp
+    runtime/podunk_player_character.cpp
+    runtime/global_ready_data.cpp
+    runtime/player_fetcher.cpp runtime/player_fetcher_data.cpp
+    runtime/player_resources_data.cpp
     runtime/player_graphics_data.cpp
     runtime/player_visual_scripts.cpp runtime/player_visual_scripts_data.cpp
     runtime/field_dialogue_ui.cpp

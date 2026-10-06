@@ -104,6 +104,9 @@ public:
  using NodeDispatch=std::function<bool(const FieldDeferredMessage&,std::string&)>;
  bool initialize(const FieldGlobalRegistryData&,FieldGlobalRegistryHost,std::string&);
  bool allocate_object(FieldObjectId&,std::string&);
+ // An allocated slot is not a live Object; constructors must publish its owner.
+ bool allocation_pending(FieldObjectId)const;
+ bool publish_allocated_node(std::shared_ptr<FieldNodeTreeRuntime>,FieldObjectId,NodeDispatch,std::string&);
  bool allocate_fast_name(uint64_t&,std::string&);
  bool object_exists(FieldObjectId)const;
  const FieldGlobalExternalObject*external_object(FieldObjectId)const;

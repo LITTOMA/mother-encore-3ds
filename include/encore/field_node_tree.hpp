@@ -60,6 +60,9 @@ struct FieldNodeTreeHost {
  // The actual global ObjectDB allocator is shared across old/new scenes and
  // dynamic factories. Stable source IDs are not runtime ObjectIDs.
  std::function<bool(FieldObjectId&,std::string&)>allocate_object;
+ // Register the actual native node before source script construction. This
+ // never supplies script fields, parentage, Enter or Ready notifications.
+ std::function<bool(FieldObjectId,const FieldNodeDescriptor&,const FieldIdentity&,std::string&)>native_allocated;
  // Source script attachment, before instance name/groups/parent/owner. The
  // concrete source owner admits ordered properties and inherited constructors.
  // New owning initialization APIs require this callback; it never grants Ready.

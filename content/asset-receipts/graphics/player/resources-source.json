@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "producer_sha256": "d2add01d392fc855ba89d8625b693ba73af9cf014727c38434788967f4b064b0",
+  "ir_sha256": "0801b9c330531506a1231fbd253744580034f08f9bd0e0da5b2e55d7006279bb",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "workers": 4,
+  "outputs": [
+    {
+      "id": 122296163,
+      "bytes": 262165,
+      "output_sha256": "07e11b8d91b3a179e8c6732b4603a188c1e85db5c84259e724cff80b9b0b74b1",
+      "path": "graphics/player/resource-122296163.t3x"
+    },
+    {
+      "id": 3107534691,
+      "bytes": 2097173,
+      "output_sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
+      "path": "graphics/actors/ninten-main.t3x"
+    },
+    {
+      "id": 1119682299,
+      "bytes": 1048597,
+      "output_sha256": "65b5b99815f10ed402ce9abf2de91d7e4f98158258bfa481a8a1d6bd447cf362",
+      "path": "graphics/actors/emotes.t3x"
+    },
+    {
+      "id": 692482190,
+      "bytes": 2069,
+      "output_sha256": "5fa8d0f93510a317fafc5b8824ffa268247ccbc8fbe498aad30699faff47e60f",
+      "path": "graphics/player/magic_ripple.t3x"
+    },
+    {
+      "id": 4255225894,
+      "bytes": 2069,
+      "output_sha256": "d4de20a9b4619fa0efa2f61d9c573841f3136402a2ef3c1e77f7896207523530",
+      "path": "graphics/player/water_ripple.t3x"
+    },
+    {
+      "id": 1317508460,
+      "bytes": 533,
+      "output_sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85",
+      "path": "graphics/actors/shadow.t3x"
+    },
+    {
+      "id": 3485896102,
+      "bytes": 65557,
+      "output_sha256": "e3a84e86efebdd87c0554b45bb4ae2fd4667ebbe4ced2038c6b252a37d225026",
+      "path": "graphics/player/resource-3485896102.t3x"
+    },
+    {
+      "id": 2751338057,
+      "bytes": 4194325,
+      "output_sha256": "d776a7f066996394d15a8b0cd7b14a2840f97311ad5d679a16317329fca8ecb1",
+      "path": "graphics/player/resource-2751338057.t3x"
+    },
+    {
+      "id": 2782160856,
+      "bytes": 4194325,
+      "output_sha256": "28ae80e41c28153a6ba4dab2b924bdbf857861e35d42e6d7da81704af96c88fc",
+      "path": "graphics/player/bat_swing.t3x"
+    },
+    {
+      "id": 3516114529,
+      "bytes": 1045,
+      "output_sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516",
+      "path": "graphics/player/resource-3516114529.t3x"
+    },
+    {
+      "id": 4265933975,
+      "bytes": 4194325,
+      "output_sha256": "8abb36956e38073cd7ed89cb71ed743265f7cbf3635138d6152f373f2c54a743",
+      "path": "graphics/player/resource-4265933975.t3x"
+    },
+    {
+      "id": 4168475363,
+      "bytes": 4194325,
+      "output_sha256": "4de09df797b9cf45250d8ecb0087dc4fe618b085d6f23223a10b08ff447c73cb",
+      "path": "graphics/player/resource-4168475363.t3x"
+    }
+  ],
+  "audios": [
+    {
+      "id": 15,
+      "path": "sound/effects/player-2958539110.pcm",
+      "bytes": 57788,
+      "output_sha256": "ac69600e953bc437c444f36044b4dd2d91eb5f4552bc276356f0acae8444b822",
+      "rate": 44100,
+      "channels": 1,
+      "frames": 28894,
+      "format": 16,
+      "loop": false
+    },
+    {
+      "id": 18,
+      "path": "sound/effects/player-431886036.pcm",
+      "bytes": 271872,
+      "output_sha256": "fbc79abae6c8cf3321ac152580bf09cf529535b04a36b9c18926b0d8380501a4",
+      "rate": 44100,
+      "channels": 2,
+      "frames": 67968,
+      "format": 16,
+      "loop": true
+    },
+    {
+      "id": 394,
+      "path": "sound/effects/player-890270501.pcm",
+      "bytes": 77824,
+      "output_sha256": "a02fda3b93502221bbdd35bdc3b7086b797dd501aa69d0872511d158f7c4e143",
+      "rate": 44100,
+      "channels": 1,
+      "frames": 38912,
+      "format": 16,
+      "loop": false
+    },
+    {
+      "id": 3506099269,
+      "path": "sound/effects/player-3506099269.pcm",
+      "bytes": 44896,
+      "output_sha256": "93366149f37acc99303157c76e9f44aa15de6ee63220ee245d39a04395d884ac",
+      "rate": 22050,
+      "channels": 2,
+      "frames": 11224,
+      "format": 16,
+      "loop": false
+    }
+  ],
+  "ffmpeg_sha256": "4dee476fa932662ce7ff2b6e53356ec5f6173505df6d4fed8bc87583187be59e",
+  "ffprobe_sha256": "7c18cde78071383c0244bd454599bb9a43687bb334fd871586739f8261658d00"
+}

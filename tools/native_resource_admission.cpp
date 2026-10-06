@@ -14,6 +14,9 @@
 #include "encore/player_effects.hpp"
 #include "encore/player_graphics.hpp"
 #include "encore/player_motion.hpp"
+#include "encore/global_ready.hpp"
+#include "encore/player_fetcher.hpp"
+#include "encore/player_resources.hpp"
 #include "encore/global_child_ready.hpp"
 #include <limits>
 #include <iostream>
@@ -43,7 +46,7 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36 && argc!=40 && argc!=42 && argc!=44) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36 && argc!=40 && argc!=42 && argc!=44 && argc!=46 && argc!=51 && argc!=53) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
   if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
@@ -55,7 +58,10 @@ int main(int argc, char **argv) {
   if(argc>=36 && std::string(argv[34])!="--player-visual-scripts") return 2;
   if(argc>=40 && (std::string(argv[36])!="--player-ready" || std::string(argv[38])!="--player-effects")) return 2;
   if(argc>=42 && std::string(argv[40])!="--player-graphics") return 2;
-  if(argc==44 && std::string(argv[42])!="--player-motion") return 2;
+  if(argc>=44 && std::string(argv[42])!="--player-motion") return 2;
+  if(argc>=46 && std::string(argv[44])!="--global-ready") return 2;
+  if(argc>=51 && std::string(argv[46])!="--player-fetcher") return 2;
+  if(argc==53 && std::string(argv[51])!="--player-resources") return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -130,6 +136,7 @@ int main(int argc, char **argv) {
                <<directory.files().size()<<" PCK files / "<<directory.directories().size()
                <<" directories / "<<files.records().size()<<" YAML documents\n";
     }
+    GlobalLoadData load;
     GlobalDataConstructorData constructor;
     if(argc>=18) {
       FieldGlobalDataData members;
@@ -150,7 +157,6 @@ int main(int argc, char **argv) {
         }
         if(argc>=26) {
           FieldGlobalFlagsData flags;
-          GlobalLoadData load;
           if(!flags.load_file(argv[25],error) ||
              !load.load_file(argv[24],constructor,characters,flags,items,error) ||
              load.file_ir_sha256()!=files.ir_sha256()) {
@@ -205,19 +211,42 @@ int main(int argc, char **argv) {
       }
       std::cout<<"Player Ready/effects formats admitted: "<<ready.states().size()<<" graph states / "<<effects.creators().size()<<" creators\n";
     }
+    PlayerGraphicsData graphics;
     if(argc>=42) {
-      PlayerGraphicsData graphics;
       if(!graphics.load_file(argv[41],visual,error)) {
         std::cerr<<"Player GPU image format/source: "<<error<<'\n';return 1;
       }
       std::cout<<"Player GPU image format admitted: "<<graphics.assets().size()<<" images\n";
     }
-    if(argc==44) {
+    if(argc>=44) {
       PlayerMotionData motion;
       if(!motion.load_file(argv[43],player,ready,error)) {
         std::cerr<<"Player motion format/source: "<<error<<'\n';return 1;
       }
       std::cout<<"Player motion format admitted\n";
+    }
+    if(argc>=46) {
+      GlobalReadyData global_ready;
+      if(!global_ready.load_file(argv[45],node_constructor,player,load,error)) {
+        std::cerr<<"Global Ready format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"Global Ready format admitted: "<<global_ready.policy().steps.size()<<" original cursors\n";
+    }
+    if(argc>=51) {
+      FieldIdentity scene;scene.upstream_commit=identity.upstream_commit;
+      FieldNodeTreeData scene_tree;PlayerFetcherData fetcher;
+      if(!number(argv[49],scene.scene_id)||!hex(argv[50],scene.source_sha256))return 2;
+      if(!scene_tree.load_file(argv[48],scene,error)||!fetcher.load_file(argv[47],player,scene_tree,node_constructor,error)) {
+        std::cerr<<"Player SpriteDataFetcher format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"Player SpriteDataFetcher format admitted: "<<fetcher.records().size()<<" actual script instances\n";
+    }
+    if(argc==53) {
+      PlayerResourcesData resources;
+      if(!resources.load_file(argv[52],player,graphics,error)) {
+        std::cerr<<"Player native Resource format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"Player native Resource format admitted: "<<resources.images().size()<<" textures / "<<resources.audios().size()<<" audio payloads\n";
     }
     std::cout<<"Global YAML source formats admitted: "<<caches.records().size()
              <<" source records / "<<caches.getters().size()<<" getters\n";

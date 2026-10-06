@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "format": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739805,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "owner": "Scripts/global/global.gd",
+  "scene_id": 3724723364,
+  "source_sha256": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+  "sources": {
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
+  },
+  "dependencies": {
+    "constructor_ir_sha256": "ab6a4302a455a8495f40c3db8780b2b849541dff35181f9347e2abae216e58b6",
+    "player_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+    "load_ir_sha256": "5a76b2cd8c576fc41bb3100ee56d0cb0bed0609019554e41f84bea4ea0154138",
+    "input_ir_sha256": "9aba5c9a5e7863dc18129a819c87a1d0120b15c40c4910c9831490735a1e90cb"
+  },
+  "methods": {
+    "_ready": {
+      "body_sha256": "050ce98cd59888bdd00c3dd5750022026a32d705142ee0a0b2a25bb11fd49d5d",
+      "body": "\t_set_localized_default_inputs()\n\t_load_settings()\n\tpartySpace.resize(255)\n\tadd_child(scene_transition)\n\t_init_player()\n\t_load_default_save()\n"
+    },
+    "_set_localized_default_inputs": {
+      "body_sha256": "7588597c3ff8e1ca848bf5b844859afba99c63c90c87fa4f9ed68a1ed7b88f83",
+      "body": "\tvar actions := [\"ui_accept\", \"ui_cancel\", \"ui_select\", \"ui_focus_prev\", \"ui_focus_next\"]\n\tvar all_layouts := {\n\t\t\"QWERTY\": \"ZXCAS\", \"AZERTY\": \"WXCQS\", \"BÉPO\": \"ZYXAU\", \"QWERTZ\": \"YXCAS\",\n\t\t\"QZERTY\": \"WXCAS\", \"DVORAK\": \";QJAO\", \"COLEMAK\": \"ZXCAR\", \"NEO\": \"ZXCUI\"\n\t}\n\t\n\tvar user_layout_type := OS.get_latin_keyboard_variant()\n\tif user_layout_type in [\"QWERTY\", \"ERROR\"]:\n\t\t# workaround for BÉPO layout not recognized natively\n\t\tvar os_layout_index := OS.keyboard_get_current_layout()\n\t\tvar os_layout_name := OS.keyboard_get_layout_name(os_layout_index).to_upper()\n\t\tif (\"BÉPO\" in os_layout_name or \"BEPO\" in os_layout_name) \\\n\t\t\tor (OS.keyboard_get_layout_language(os_layout_index) == \"fr\" and (\"FRANCE\" in os_layout_name) and not (\"AZERTY\" in os_layout_name)):\n\t\t\tuser_layout_type = \"BÉPO\"\n\t\telse:\n\t\t\tuser_layout_type = \"QWERTY\"\n\t\n\tfor i in actions.size():\n\t\tvar events := InputMap.get_action_list(actions[i])\n\t\tfor event in events:\n\t\t\tif event is InputEventKey:\n\t\t\t\tevent.scancode = ord(all_layouts[user_layout_type][i])\n"
+    },
+    "_load_settings": {
+      "body_sha256": "d95c058de4306f9fe1015c89c8a5c319faf651e08d0bf000a43e532a53ba04b8",
+      "body": "\tvar save_file := File.new()\n\tif not save_file.file_exists(\"user://settings.save\"):\n\t\t_set_language_default()\n\t\treturn\n\t\n\tsave_file.open_encrypted_with_pass(\"user://settings.save\", File.READ,\"ENCORE\")\n\t\n\tvar save_data = parse_json(save_file.get_line())\n\tsave_file.close()\n\t\n\tvar language = save_data.get(\"language\", \"en\")\n\tvar win_size = save_data.get(\"winsize\", 3)\n\tvar fullscreen = save_data.get(\"fullscreen\", false)\n\tvar master_volume = save_data.get(\"mastervolume\", 0)\n\tvar music_volume = save_data.get(\"musicvolume\", 0)\n\tvar sfx_volume = save_data.get(\"sfxvolume\", 0)\n\tvar int_scaling = save_data.get(\"integerscaling\", false)\n\t_deserialize_inputs(save_data.get(\"inputmap\", null))\n\tglobaldata.rumble = save_data.get(\"rumble\", true)\n\tglobaldata.buttons_style = save_data.get(\"buttonsStyle\", globaldata.BtnStyles.DETECT)\n\tglobaldata.save_file = int(save_data.get(\"savefile\", 0))\n\tOS.vsync_enabled = save_data.get(\"vsync\", true)\n\t\n\tif language in get_supported_languages() and language in TranslationServer.get_loaded_locales():\n\t\tTranslationServer.set_locale(language)\n\telse:\n\t\t_set_language_default()\n\t\n\tset_win_size(win_size, fullscreen)\n\tIntegerResolutionHandler.set_active(int_scaling)\n\tset_master_volume(master_volume)\n\tset_music_volume(music_volume)\n\tset_sfx_volume(sfx_volume)\n"
+    },
+    "_set_language_default": {
+      "body_sha256": "61ce490e7b5663aa2ae929bafdde49786536779c2fb77314fad1cd2cefcb0518",
+      "body": "\tprint(\"OS locale code: %s\" % OS.get_locale())\n\tif OS.get_locale_language() == \"es\":\n\t\tif OS.get_locale() in [\"es\", \"es_ES\", \"es_GQ\", \"es_IC\"]:\n\t\t\tprint(\"Switching to Spain Spanish\")\n\t\t\tTranslationServer.set_locale(\"es_ES\")\n\t\telse:\n\t\t\tprint(\"Switching to American Spanish\")\n\t\t\tTranslationServer.set_locale(\"es\")\n\telse:\n\t\tvar language_code := tr(\"LANGUAGE_CODE\")\n\t\tif !language_code in get_supported_languages():\n\t\t\tlanguage_code = LANGUAGE_DEFAULT\n\t\tTranslationServer.set_locale(language_code)\n"
+    },
+    "_init_player": {
+      "body_sha256": "60379de7247978c48a7cb512e24c9e1fb38bcb64720a4303f8276538e6aecfb5",
+      "body": "\tvar root := get_tree().get_root()\n\tcurrentScene = root.get_child(root.get_child_count() - 1)\n\tif partyObjects.size() > 0:\n\t\treturn\n\tparty.append(globaldata.characters.ninten)\n\tvar player: PartyMemberPlayer = load(\"res://Nodes/Reusables/Player.tscn\").instance()\n\tplayer.name = \"player\"\n\tplayer.position = Vector2.ZERO\n\tpartyObjects = [player]\n\tvar parent_node := get_current_scene_player_node()\n\tif parent_node:\n\t\tparent_node.add_child(player)\n\telse:\n\t\tcurrentScene.add_child(player)\n\t\tplayer.hide()\n\t\tplayer.connect(\"ready\", player, \"pause\", [], CONNECT_ONESHOT)\n\tcreate_party_followers(false)\n\tset_respawn()\n"
+    },
+    "_load_default_save": {
+      "body_sha256": "b02cbf859d7e9cd6d5b75244d0c348cc486d3335117a136ae9c3e1c4f413bedf",
+      "body": "\tvar save_data: Dictionary = globaldata.get_json_data(SAVE_DEFAULT_PATH)\n\t_load_dict_to_game(save_data, false)\n"
+    }
+  },
+  "settings_file": {
+    "id": 3781245196,
+    "name": "_load_settings.File",
+    "native": "File"
+  },
+  "policy": {
+    "party_space": 255,
+    "source_settings_path": "user://settings.save",
+    "native_settings_path": "sdmc:/3ds/encore-native/settings.save",
+    "locale_preference_path": "sdmc:/3ds/encore-native/language.encprefs",
+    "slot_preference_path": "sdmc:/3ds/encore-native/settings.encprefs",
+    "language_default": "en",
+    "languages": [
+      "en",
+      "fr",
+      "it",
+      "ja",
+      "ko",
+      "es",
+      "es_ES",
+      "pt_BR",
+      "pl",
+      "de",
+      "ru",
+      "uk",
+      "zh_Hans_CN"
+    ],
+    "source_save_slot_member": "save_file",
+    "input_path": "data/native.encinput",
+    "input_sha256": "3232f5fbc8a34f863e4e9b47322ccb2248766a66dc9953392032e74ed0b615db",
+    "input_bytes": 88,
+    "input_crc32": 1545227600,
+    "steps": [
+      {
+        "kind": 1,
+        "source": "_set_localized_default_inputs()"
+      },
+      {
+        "kind": 2,
+        "source": "_load_settings()"
+      },
+      {
+        "kind": 3,
+        "source": "partySpace.resize(255)"
+      },
+      {
+        "kind": 4,
+        "source": "add_child(scene_transition)"
+      },
+      {
+        "kind": 5,
+        "source": "_init_player()"
+      },
+      {
+        "kind": 6,
+        "source": "_load_default_save()"
+      }
+    ],
+    "encrypted_settings_capability": 0
+  },
+  "adaptation": {
+    "localized_inputs": "Physical 3DS HID uses the existing checked NativeInputAdapter; no InputEventKey exists to remap. Configure the actual borrowed adapter from the exact native resource.",
+    "locale": "Read the actual native persisted locale and apply the existing GPU-safe select_native_locale service, then verify the SAME LocaleSelection owner. Missing native preference retains an already source-supported/native-ready selection; otherwise source LANGUAGE_DEFAULT.",
+    "slot": "Read actual native slot metadata into the borrowed UI slot owner only; no game snapshot/globalData save-file assignment is inferred.",
+    "settings": "An existing mapped source settings.save is rejected: encrypted JSON/audio bus/window/InputMap/rumble/button-style complete branch is not migrated. Native two preferences plus SessionSettings are not that branch."
+  },
+  "scene_ready_admitted": false
+}

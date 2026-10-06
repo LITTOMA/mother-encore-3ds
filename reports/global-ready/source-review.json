@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "ada25fa939fd380f1a2bf45ed3079b93dd1e7e190e3e692d5974ac9bc96af63e",
+  "sources": {
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
+  },
+  "dependencies": {
+    "constructor_ir_sha256": "ab6a4302a455a8495f40c3db8780b2b849541dff35181f9347e2abae216e58b6",
+    "player_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+    "load_ir_sha256": "5a76b2cd8c576fc41bb3100ee56d0cb0bed0609019554e41f84bea4ea0154138",
+    "input_ir_sha256": "9aba5c9a5e7863dc18129a819c87a1d0120b15c40c4910c9831490735a1e90cb"
+  },
+  "scope": "Actual six-step global Ready executor, native Node owner, exact missing-encrypted-settings branch with separately persisted 3DS locale/slot adaptation",
+  "encrypted_settings_admitted": false,
+  "scene_ready_admitted": false
+}

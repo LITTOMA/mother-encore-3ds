@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_source": {
+    "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/core/object.cpp",
+    "sha256": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+    "constructor_registration_line": 1936
+  },
+  "behavior": "ObjectDB registers the native object before script construction. Reserved identifiers are not live objects. Source tree nodes publish their actual owner before construct_source; parenting and Enter/Ready remain later operations.",
+  "implementation": [
+    "runtime/field_global_registry.cpp",
+    "runtime/field_node_tree.cpp",
+    "platform/ctr/podunk_global_host.cpp"
+  ],
+  "resource_formats_changed": false,
+  "scene_ready_granted": false
+}

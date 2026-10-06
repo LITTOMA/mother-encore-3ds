@@ -71,6 +71,10 @@ SOURCES = (
     'runtime/player_ready_data.cpp',
     'runtime/player_effects_data.cpp',
     'runtime/global_child_ready_data.cpp',
+    'runtime/global_ready_data.cpp',
+    'runtime/player_fetcher_data.cpp',
+    'runtime/player_resources_data.cpp',
+    'runtime/field_node_tree_data.cpp',
     'runtime/field_native_timer_data.cpp',
     'runtime/field_global_flags_data.cpp',
     'runtime/field_global_registry_data.cpp',
@@ -157,7 +161,13 @@ def admit(resources, *, global_items=True):
                     '--player-ready', str(ROOT / 'romfs/data/player.encready'),
                     '--player-effects', str(ROOT / 'romfs/data/player.enceffects'),
                     '--player-graphics', str(ROOT / 'romfs/data/player.encgraphics'),
-                    '--player-motion', str(ROOT / 'romfs/data/player.encmotion')]
+                    '--player-motion', str(ROOT / 'romfs/data/player.encmotion'),
+                    '--global-ready', str(ROOT / 'romfs/data/global.encready')]
+        tree = json.loads((ROOT / 'content/podunk-node-tree.json').read_text())
+        command += ['--player-fetcher', str(ROOT / 'romfs/data/player.encfetcher'),
+                    str(ROOT / 'romfs/data/podunk.encnodetree'),
+                    str(tree['scene_id']), tree['source_sha256']]
+        command += ['--player-resources', str(ROOT / 'romfs/data/player.encresources')]
     subprocess.run(command, check=True)
 
 

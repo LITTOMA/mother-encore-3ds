@@ -138,6 +138,11 @@ struct FieldShopHost {
       commit;
   std::function<bool(const std::string &, std::string &)> sound;
   std::function<bool(const std::string &, std::string &)> close;
+  // Optional ObjectDB slice. Called once in source offer order before Ready
+  // and RNG commit. A false return must discard its temporary References.
+  // Pure-value consumers do not claim this actual Reference capability.
+  std::function<bool(const std::vector<FieldOwnedItem> &, std::string &)>
+      source_items{};
 };
 class FieldShopRuntime {
 public:

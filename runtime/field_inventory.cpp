@@ -840,7 +840,8 @@ bool FieldInventoryRuntime::use(uint32_t uid, uint32_t action,
   auto *p = i ? data_->policy(i->definition) : nullptr;
   if (!p || action >= p->actions.size() ||
       p->actions[action].function != FieldItemFunction::Use ||
-      !p->use_allowed || owner != data_->role(0)->id)
+      !p->use_allowed ||
+      (owner != data_->role(0)->id && owner != data_->role(1)->id))
     return fail(e, "Inventory source use-item action rejected");
   FieldInventoryResult out;
   out.performed = true;

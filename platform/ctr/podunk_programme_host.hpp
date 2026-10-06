@@ -17,6 +17,11 @@ struct PodunkProgrammeOps {
   std::function<bool(std::string_view, std::string &)> admit_audio, play_audio;
   std::function<bool(const upstream::FieldProgrammeText &, std::string &)>
       admit_text;
+  // Actual ShowDialogue notification, after that same source printer accepts
+  // the checked span. Preflight must never assign/play the phrase's stream.
+  std::function<bool(const upstream::FieldProgrammeText &, uint64_t,
+                     std::string &)>
+      presented_text;
   std::function<bool(std::string &, std::string &)> player_name;
   std::function<bool(const upstream::DialogueAction &,
                      const upstream::FieldProgrammeContext &, std::string &)>
@@ -47,6 +52,7 @@ class PodunkProgrammeHost final {
   upstream::FieldTelepathyRuntime telepathy_;
   PodunkProgrammeOps ops_{};
   bool prepared_ = false, active_ = false;
+  bool source_cursor_owned_ = false;
   uint32_t choice_group_ = upstream::kRoomNoIndex, generation_ = 0;
   static bool fail(std::string &e, const char *m) {
     e = m;
@@ -162,12 +168,15 @@ class PodunkProgrammeHost final {
     case K::ShowDialogue: {
       upstream::HouseDialogue h;
       std::string name;
-      if (!house_text(a.target_index, h) || !ops_.player_name(name, e))
+      const auto *text = data_->text(a.target_index);
+      if (!text || !ctx.dialogue_object || !house_text(a.target_index, h))
+        return fail(e, "Podunk actual presented text/dialogue owner absent");
+      if (!ops_.player_name(name, e))
         return false;
       if (!presentation_->present_story_dialogue(h.first_segment,
                                                  h.segment_count, name))
         return fail(e, presentation_->error());
-      return true;
+      return ops_.presented_text(*text, ctx.dialogue_object, e);
     }
     case K::PlaySound: {
       const auto *s = data_->sound(a.target_index);
@@ -220,7 +229,8 @@ public:
       return fail(e, "Podunk source programme resources/owner mismatch");
     if (!ops.flag || !ops.actual_path || !ops.seen || !ops.mark_seen ||
         !ops.admit_session_scene || !ops.admit_key || !ops.admit_audio ||
-        !ops.play_audio || !ops.admit_text || !ops.player_name ||
+        !ops.play_audio || !ops.admit_text || !ops.presented_text ||
+        !ops.player_name ||
         !ops.admit_lifecycle || !ops.apply_lifecycle || !ops.open_dialogue ||
         !ops.admit_dialogue_ready || !ops.close_commands_for_telepathy)
       return fail(
@@ -325,6 +335,7 @@ public:
   void reset() {
     programme_.cancel();
     prepared_ = active_ = false;
+    source_cursor_owned_ = false;
     data_ = nullptr;
     basement_ = nullptr;
     tree_data_ = nullptr;
@@ -355,7 +366,10 @@ public:
     if (!live(e))
       return false;
     generation_ = generation;
-    return programme_.start_selected_npc(id, program, thoughts, generation, e);
+    if (!programme_.start_selected_npc(id, program, thoughts, generation, e))
+      return false;
+    source_cursor_owned_ = false;
+    return true;
   }
   bool dialogue_ready(uint64_t object, uint32_t generation, std::string &e) {
     return live(e) && programme_.dialogue_ready(object, generation, e);
@@ -391,6 +405,10 @@ public:
              std::string &e) {
     if (!live(e))
       return false;
+    if (source_cursor_owned_ && programme_.scheduler().status() ==
+                                    upstream::DialogueStatus::AwaitChoices &&
+        (input.horizontal || input.vertical || dt != 0))
+      return fail(e, "Podunk source Cursor owns direction and arrow clocks");
     if (programme_.scheduler().status() ==
         upstream::DialogueStatus::AwaitChoices) {
       if (choices_->phase() == upstream::DialogueChoicesPhase::WaitingText) {
@@ -437,6 +455,26 @@ public:
         return fail(e, programme_.scheduler().error());
     }
     return true;
+  }
+  // Called from the original DialogueBox input owner only after its source
+  // animation/WaitTimer/can-input gates. The real Cursor has already handled
+  // direction and repeat; confirmation/cancel still use the existing checked
+  // programme target and source post-target InputSound order.
+  bool source_cursor_input(uint64_t actual_dialogue, uint32_t generation,
+                           int32_t index, bool confirm, bool cancel,
+                           std::string &e) {
+    if (!live(e) || !actual_dialogue || !generation ||
+        generation != generation_ ||
+        programme_.context().dialogue_object != actual_dialogue ||
+        programme_.scheduler().status() !=
+            upstream::DialogueStatus::AwaitChoices ||
+        !choices_ || !choices_->active())
+      return fail(e, "Podunk stale/nonactive actual source Cursor input");
+    if (!ops_.admit_dialogue_ready(actual_dialogue, generation, e) ||
+        !choices_->source_cursor_selection(index, e))
+      return false;
+    source_cursor_owned_ = true;
+    return input({0, 0, confirm, cancel}, 0, e);
   }
   const upstream::FieldProgrammeRuntime &programme() const {
     return programme_;

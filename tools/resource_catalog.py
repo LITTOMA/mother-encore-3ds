@@ -26,12 +26,12 @@ ROLES = {name: index + 1 for index, name in enumerate((
     'Room', 'Blackbars', 'Battle', 'Round', 'House', 'Items', 'Audio', 'Phone',
     'Choices', 'SaveMenu', 'Session', 'Settings', 'Prompts', 'Continue', 'Restore',
     'SessionMigration', 'NewGame', 'Localization', 'TitleLocale', 'SourceFonts',
-    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment', 'ItemUse', 'BasementProgression', 'BasementActors', 'MusicRegions', 'PresentSparkles', 'FieldPsi', 'FieldProgrammes', 'FieldInventory'))}
+    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment', 'ItemUse', 'BasementProgression', 'BasementActors', 'MusicRegions', 'PresentSparkles', 'FieldPsi', 'FieldProgrammes', 'FieldInventory', 'FieldItemDefinitions', 'FieldItemDetails', 'FieldGoods'))}
 SUFFIXES = dict(zip(ROLES, ('.encroom', '.encbars', '.encbattle', '.encround',
     '.enchouse', '.encitems', '.encaudio', '.encphone', '.encchoices', '.encsavemenu',
     '.encsession', '.encsettings', '.encprompts', '.enccontinue', '.encrestore',
     '.encmigration', '.encnewgame', '.enclocale', '.enctitlelocale', '.encfont',
-    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield', '.encuse', '.encbasement', '.encbasmanim', '.encmusic', '.encsparkles', '.encpsi', '.encprog', '.encinventory')))
+    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield', '.encuse', '.encbasement', '.encbasmanim', '.encmusic', '.encsparkles', '.encpsi', '.encprog', '.encinventory', '.encfielditems', '.encfielddetails', '.encgoods')))
 BATTLE_ROLES = {'Battle', 'EncounterBattle'}
 ROUND_ROLES = {'Round', 'EncounterRound'}
 
@@ -79,7 +79,8 @@ def validate(ir):
 
 
 def validate_bindings(bindings, encounters):
-    require(type(bindings) is list and 22 <= len(bindings) <= 128, 'Incomplete catalog role coverage')
+    required = {name for name in ROLES if name not in ('EncounterBattle', 'EncounterRound')}
+    require(type(bindings) is list and len(required) <= len(bindings) <= 128, 'Incomplete catalog role coverage')
     names, ids, paths = set(), set(), set()
     for row in bindings:
         fields(row, ('id', 'role', 'path'), 'binding')
@@ -89,7 +90,7 @@ def validate_bindings(bindings, encounters):
         require(canonical(row['path']) and row['path'].endswith(SUFFIXES[role]) and len(row['path']) > len(SUFFIXES[role]), 'Unsafe or wrong-type binding path')
         require((ROLES[role] > 22 or role not in names) and row['id'] not in ids and row['path'] not in paths, 'Duplicate binding role/ID/path')
         names.add(role); ids.add(row['id']); paths.add(row['path'])
-    require({name for name in names if ROLES[name] <= 22} == {name for name in ROLES if ROLES[name] <= 22}, 'Incomplete catalog roles')
+    require(required <= names, 'Incomplete catalog startup roles: ' + ', '.join(sorted(required - names)))
     require(type(encounters) is list and 1 <= len(encounters) <= 32, 'Incomplete encounter coverage')
     binding_roles = {row['id']: row['role'] for row in bindings}
     battles, rounds = set(), set()

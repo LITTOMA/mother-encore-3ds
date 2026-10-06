@@ -11,6 +11,8 @@ CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room bat
  round doll-round pillow-round house items-check items session migration restore \
  continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment item-use basement basement-actors basement-music sparkles field-psi field-interact field-lifecycle field-present field-dropped field-sparkles field-openable field-payphone field-cash-box field-butterfly field-cutscene field-birds field-camera-area field-music-changer field-item-definitions field-camera-arrows field-scene-actions field-stepping-sounds field-player-transitions field-game-camera field-door-npc field-melody-background field-programmes field-node-tree field-node-recipe field-dialogue-life field-canvas-art field-native-timer field-global-registry field-dialogue-ui field-shop field-vending field-item-details field-inventory
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
+CONTENT_TASKS += field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
+.PHONY: field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
 native-content: catalog encounters
 	@echo "CONTENT RUN $(ENCORE_CONTENT_RUN_ID) complete"
 # Both final fingerprints must observe a complete generation, never partial writes.
@@ -212,5 +214,23 @@ field-dialogue-ui: field-node-recipe house
 
 field-inventory: field-item-definitions field-item-details field-payphone field-shop
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_inventory.py compile
+
+field-goods: field-inventory
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_goods.py compile
+field-global-flags:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_global_flags.py compile
+field-dialogue-visual: field-node-recipe field-camera-arrows field-game-camera
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_dialogue_visual.py compile
+field-dialogue-audio: field-node-recipe audio
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_dialogue_audio.py compile
+field-ui-manager:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_ui_manager.py compile
+field-battle-bg-resources:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_battle_bg_resources.py compile
+field-ui-preloads: field-ui-manager field-node-recipe
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_ui_preloads.py compile
+
+# The audio bank links Goods source sounds in both check and refresh modes.
+audio: field-goods
 
 include make/refresh-content.mk

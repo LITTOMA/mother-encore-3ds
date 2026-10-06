@@ -21,6 +21,10 @@ public:
  // the presenter's real completion callback. No synthesized accept is needed.
  bool prepare(const DialogueChoicesData&,uint32_t group,std::string_view program_identity,uint32_t command_count,std::string&);
  bool text_completed(std::string&);
+ // A checked original Cursor owns movement/sound/tween/time in a composed
+ // scene. Copy only its current visible option index for source target lookup.
+ // This does not advance the legacy arrow, enqueue an event or consume input.
+ bool source_cursor_selection(int32_t index,std::string&);
  // Directions are already press/repeat-adapted by the caller. This class owns
  // no filesystem, save operation, platform input polling or MenuRepeat.
  bool step(double dt,const DialogueChoicesInput&,std::string&);

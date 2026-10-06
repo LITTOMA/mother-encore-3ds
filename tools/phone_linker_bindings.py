@@ -94,7 +94,8 @@ def audio(root,room,document=None):
  from tools.basement_audio import bindings as basement_audio
  from tools.field_psi import audio_bindings as psi_audio
  from tools.shop_audio import bindings as shop_audio
- for source in c['audio']+introduction_audio(root,c)+drawer_audio(root)+storage_audio(root)+field_audio(root)+item_use_audio(root)+basement_audio(root)+psi_audio()+shop_audio(root):
+ from tools.goods_audio import bindings as goods_audio
+ for source in c['audio']+introduction_audio(root,c)+drawer_audio(root)+storage_audio(root)+field_audio(root)+item_use_audio(root)+basement_audio(root)+psi_audio()+shop_audio(root)+goods_audio(root):
   ref=source['identity'];identity=ref['value']if ref['kind']=='stable'else ids.get(ref['source']);require(type(identity)is int and identity>0 and identity not in seen,'Unknown/duplicate linked audio identity');seen.add(identity)
   require(source['pcm'] not in pcm_paths and source['source'] not in source_paths,'Duplicate linked audio PCM/source');pcm_paths.add(source['pcm']);source_paths.add(source['source'])
   require(identity not in room_sources or room_sources[identity]=='res://'+source['source'],'Linked audio identity differs from actual Room source')

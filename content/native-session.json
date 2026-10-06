@@ -2628,12 +2628,12 @@
     "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e"
   },
   "dependencies": {
-    "content/native-opening.json": "fe230562cdeb4ab9ae3abd5472e7f469cd89dc871b05fe08850e292dfd70c7d3",
-    "content/native-house.json": "81a7fa9f4bcee35ea52669a2e6b8f4ac7af2f0b3eee0b040d83dada793c6ca8e",
+    "content/native-opening.json": "7465d226ae3a8e8ee404be64668edba67fbc390c81e00c04471ed098ac11f474",
+    "content/native-house.json": "fba1a433cc91e2cbc7c4b951188bb01a329322b76ddae401a887793b86a9d75d",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
-    "content/native-round.json": "9edf8f7b7aa964184a4451f011faee67bf4459e59bed69fd1b60948055db7bbd",
-    "content/doll-round.json": "fdfd271e75df3ba8d9b4efb58f37f1e7e29ee94b817500f14472974cdd63a4a2",
+    "content/native-round.json": "57e6b40e6925fcf49623ab990e51d61c15e119598ad21ce37f21ef248e8d6337",
+    "content/doll-round.json": "03c5634f15f305657c5c623c52567c492b6fa3749c321e97eac7d2b1d786e37b",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
     "content/native-storage.json": "b99710d98dded63e2901882c32e9546db8db85568aff95521de98ca1b564cca9",
     "content/native-item-use.json": "ab3e92d2ad87d05a3113eacdf7c20e70cc7868918848a6b540ee7432adf0c032",

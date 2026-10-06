@@ -5,6 +5,14 @@
 #include "encore/localization.hpp"
 #include <set>
 namespace encore::upstream {
+class FieldDialogueVisualData;
+class FieldDialogueAudioData;
+class FieldNativeTimerData;
+struct FieldDialogueUiOwnershipRoster {
+  const FieldDialogueVisualData *visual = nullptr;
+  const FieldDialogueAudioData *audio = nullptr;
+  const FieldNativeTimerData *timers = nullptr;
+};
 enum class FieldDialogueUiKind : uint32_t {
   Pending,
   CanvasLayer,
@@ -158,6 +166,10 @@ public:
                   HouseView, FieldNodeTreeRuntime &, FieldDialogueUiHost,
                   std::string &);
   bool attach(FieldObjectId, std::string &);
+  // Full recipe composition supplies actual independently checked owners for
+  // every foreign native body. This grants no foreign lifecycle notification.
+  bool attach(FieldObjectId, const FieldDialogueUiOwnershipRoster &,
+              std::string &);
   bool admits_native(FieldObjectId, std::string &) const;
   bool enter_native(FieldObjectId, std::string &);
   bool ready_native(FieldObjectId, std::string &);
@@ -199,6 +211,8 @@ private:
   FieldDialogueUiHost host_{};
   std::map<FieldObjectId, Instance> instances_;
   std::map<FieldObjectId, FieldObjectId> owners_;
+  bool attach_owned(FieldObjectId, const FieldDialogueUiOwnershipRoster *,
+                    std::string &);
   Instance *instance(FieldObjectId);
   const Instance *instance(FieldObjectId) const;
   bool layout(Instance &, std::string &);

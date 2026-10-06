@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "kind": "encore.field-dialogue-audio.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Ui/DialogueBox.tscn",
+  "scene_id": 2406403304,
+  "source_sha256": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+  "recipe_sha256": "ca209a79f1c3b7aff9e90a4a363e33aac17e28063ea3fb9df04a7e61491b191f",
+  "native_sha256": "bf3b7baba9f880836a5e3ae894a05cb1bb7e45dc83d99dc7b4ee61e8fca3af21",
+  "bank_source_sha256": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910",
+  "nodes": [
+    {
+      "id": 3265432023,
+      "parent": 2406403304,
+      "ready": 28,
+      "pause": 0,
+      "priority": 0,
+      "node": "AudioStreamPlayer",
+      "stream": 1303,
+      "volume_db": 0.0,
+      "pitch": 1.0,
+      "autoplay": false,
+      "paused": false,
+      "mix_target": 0,
+      "bus": "SFX",
+      "native_unconfigured_bus": "Master"
+    },
+    {
+      "id": 3454379311,
+      "parent": 2406403304,
+      "ready": 29,
+      "pause": 0,
+      "priority": 0,
+      "node": "SoundEffect",
+      "stream": 1303,
+      "volume_db": 0.0,
+      "pitch": 1.0,
+      "autoplay": false,
+      "paused": false,
+      "mix_target": 0,
+      "bus": "SFX",
+      "native_unconfigured_bus": "Master"
+    },
+    {
+      "id": 2568907891,
+      "parent": 2406403304,
+      "ready": 30,
+      "pause": 0,
+      "priority": 0,
+      "node": "InputSound",
+      "stream": 1102,
+      "volume_db": 0.0,
+      "pitch": 1.0,
+      "autoplay": false,
+      "paused": false,
+      "mix_target": 0,
+      "bus": "SFX",
+      "native_unconfigured_bus": "Master"
+    }
+  ],
+  "assets": [
+    {
+      "id": 22,
+      "source": "res://Audio/Sound effects/bash.mp3",
+      "sha256": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598"
+    },
+    {
+      "id": 1001,
+      "source": "res://Audio/Music/Battle Encounter/Encounter Enemy.mp3",
+      "sha256": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918"
+    },
+    {
+      "id": 1002,
+      "source": "res://Audio/Music/Battle Encounter/Encounter Boss.mp3",
+      "sha256": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03"
+    },
+    {
+      "id": 1101,
+      "source": "res://Audio/Sound effects/Cursor 1.mp3",
+      "sha256": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f"
+    },
+    {
+      "id": 1102,
+      "source": "res://Audio/Sound effects/Cursor 2.mp3",
+      "sha256": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83"
+    },
+    {
+      "id": 32,
+      "source": "res://Audio/Music/Melodies/melody1.mp3",
+      "sha256": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6"
+    },
+    {
+      "id": 34,
+      "source": "res://Audio/Music/House.mp3",
+      "sha256": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7"
+    },
+    {
+      "id": 1201,
+      "source": "res://Audio/Sound effects/text/Adult.mp3",
+      "sha256": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc"
+    },
+    {
+      "id": 1202,
+      "source": "res://Audio/Music/Mother Earth.mp3",
+      "sha256": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f"
+    },
+    {
+      "id": 1301,
+      "source": "res://Audio/Music/Mother_Earth_Piano.mp3",
+      "sha256": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d"
+    },
+    {
+      "id": 1303,
+      "source": "res://Audio/Sound effects/text/Kid.mp3",
+      "sha256": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f"
+    },
+    {
+      "id": 1401,
+      "source": "res://Audio/Sound effects/Item Received.mp3",
+      "sha256": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96"
+    },
+    {
+      "id": 1804,
+      "source": "res://Audio/Sound effects/text/Female.mp3",
+      "sha256": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5"
+    },
+    {
+      "id": 1805,
+      "source": "res://Audio/Sound effects/Gift Box.mp3",
+      "sha256": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01"
+    },
+    {
+      "id": 1806,
+      "source": "res://Audio/Music/Good_Morning.mp3",
+      "sha256": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c"
+    }
+  ],
+  "pitch_range": [
+    0.85,
+    1.0
+  ],
+  "text_prefix": "res://Audio/Sound effects/text/",
+  "extension": ".mp3",
+  "finished": "finished",
+  "source_silence_db": -80.0,
+  "fade_stop_frames": 128,
+  "fade_replace_frames": 512,
+  "sources": {
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "Audio/Sound effects/bash.mp3": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03",
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Music/Melodies/melody1.mp3": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+    "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+    "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc",
+    "Audio/Music/Mother Earth.mp3": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+    "Audio/Music/Mother_Earth_Piano.mp3": "953256afe2ed7f56fc80f4dcf5d038456718acd6a9324c5fdd9952bb35fd539d",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
+    "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c"
+  },
+  "engine": {
+    "version": "3.6.2-stable",
+    "repo": "godotengine/godot",
+    "proofs": {
+      "audio_stream_player.cpp": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+      "audio_stream_player.h": "1465843e77369e84bfb18cf06c9d4224aae6a72a0b5b4e88f55956cd19898b57",
+      "audio_stream_mp3.cpp": "08870cd0d7d944db0b339026c2609e56d7a2a598af732c39fd6c5157cd06c0c5"
+    }
+  },
+  "scene_admitted": false,
+  "pending": [
+    "Real NDSP DSP service/checked independent PCM voices and actual source bus/AudioServer callback owner required",
+    "Only genuinely converted bank filenames are supported; unknown filenames reject before replacing a live stream",
+    "Source MP3 seek at/past duration wraps to frame0; source playback position uses decoder frames, not audible hardware position",
+    "Physical voices lease channels20/21; third simultaneous playback explicitly rejects hardware exhaustion, never steals music",
+    "Native asynchronous seek/stop and finished run at actual audio-mix/internal-process boundaries; no elapsed game-clock simulation"
+  ]
+}

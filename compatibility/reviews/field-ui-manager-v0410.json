@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "encore.field-ui-manager.source-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "ecc95b9364a8a69a9ab56a963cf6fd4b2f1925f1d37a524649625591a9d71596",
+  "recipes_sha256": "cc6fca2ab1b2d32ddf83f283f941265644eab9dd478c505b0a09071097a544b5",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_sources": {
+    "control.cpp": "48b5ead083050c90441cc532506279852cab9cda86473fcc63090d3476ba7ec3",
+    "math_funcs.cpp": "9684f720bd5576d4fc51c103d9b6ca8d641ad84bb3f768ddca83368b552e484d",
+    "math_funcs.h": "32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13",
+    "random_pcg.cpp": "bf1b4e5417b6b9402977a67e661a3583a1582adefab929493f824977bcba842a",
+    "random_pcg.h": "78df30f09c976fb5250134b44fd3dd4552c399bf350bca9776423e7b2078f017",
+    "scroll_container.cpp": "dcaa64580486dcfe768e8195d044a6cd24028efe39685744ee92eb77e3dcba1a"
+  },
+  "source_scope": "All nine original UI source trees, 1564 native nodes; 20 source preload declarations and source onready7; source OS PCG randomize/menu palette methods. No native UI or unimplemented source Ready approval.",
+  "float_evidence": "Native general JSON.print truncates fractional scalars to six decimals; exact .17f exporter values converted to original float32 are preserved. Evidence checks accept only <=0.500001e-6 quantization; no geometry values approximated.",
+  "internal_scrollbars": "Official ScrollContainer constructor creates HScrollBar _h_scroll and VScrollBar _v_scroll, matching all three source-native instances. Constructor-owned children retained once with source owner empty.",
+  "casefold_aliases": "Original PNG requested names have uniquely matching source inventory canonical PNGs (12 in Pause menu). Quarantine copies exact original bytes under requested alias; actual asset conversion uses canonical sources; upstream untouched.",
+  "pending": [
+    "Native UI/source Ready body consumers",
+    "Additional original preload full PackedScene recipes",
+    "Ready tail add_to_canvas/Fade/deferred Camera"
+  ],
+  "native_control_zero_stretch": "Official Control::set_stretch_ratio assigns p_ratio without positivity rejection; one source Pause-menu VBox has exact zero. New recipe cap4 admits finite nonnegative ratios, cap3 unchanged.",
+  "shader_distance_threshold": "All eight original source shader branches compared and equal; threshold extracted to binary float, format2; no game threshold literal in C++.",
+  "runtime_prefix": "Actual20preload owners (missing recipes explicitly pending), onready7 checked factory, source shared randomize/menu shader/signal, exact same-pin owned50 background factory dictionary then real Registry.create_stable_canvas. Ready tail seven UI add_to_canvas/Fade/deferredCamera remains pending."
+}

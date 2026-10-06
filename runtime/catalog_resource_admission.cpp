@@ -1,0 +1,301 @@
+#include "encore/catalog_resource_admission.hpp"
+#include "encore/audio_data.hpp"
+#include "encore/basement_actor_assets.hpp"
+#include "encore/basement_progression.hpp"
+#include "encore/battle_data.hpp"
+#include "encore/battle_round_data.hpp"
+#include "encore/blackbars.hpp"
+#include "encore/continue_menu_data.hpp"
+#include "encore/dialogue_choices_data.hpp"
+#include "encore/drawer_program.hpp"
+#include "encore/field_goods.hpp"
+#include "encore/field_item_admission.hpp"
+#include "encore/field_programme.hpp"
+#include "encore/field_psi.hpp"
+#include "encore/house_button_prompts.hpp"
+#include "encore/house_inspection_data.hpp"
+#include "encore/introduction.hpp"
+#include "encore/item_use.hpp"
+#include "encore/loading_indicator_data.hpp"
+#include "encore/localization.hpp"
+#include "encore/music_regions.hpp"
+#include "encore/native_input.hpp"
+#include "encore/native_session.hpp"
+#include "encore/new_game_setup.hpp"
+#include "encore/phone_data.hpp"
+#include "encore/present_sparkles.hpp"
+#include "encore/restore_data.hpp"
+#include "encore/room_music_admission.hpp"
+#include "encore/save_menu_data.hpp"
+#include "encore/session_migration.hpp"
+#include "encore/source_font.hpp"
+#include "encore/startup_resource_admission.hpp"
+#include "encore/title_locale_data.hpp"
+#include "encore/world_effect_data.hpp"
+#include <memory>
+#include <set>
+namespace encore::upstream {
+namespace {
+bool rejected(std::string &error, const std::string &path,
+              const std::string &reason) {
+  error = path + ": " + (reason.empty() ? "typed resource rejected" : reason);
+  return false;
+}
+template <class T> bool decode(const std::string &path, std::string &error) {
+  T owner;
+  return owner.load_file(path.c_str(), error);
+}
+// These owners alone must survive the traversal, because their immutable
+// views participate in actual later cross-resource binding. Large encounter
+// packs and unrelated metadata are loaded one at a time and then released.
+struct Owners {
+  RoomData room;
+  HouseData house;
+  ItemData items;
+  PhoneData phone;
+  NativeSessionData session;
+  StartupSettingsData settings;
+  HouseButtonPromptData prompts;
+  HouseInspectionData inspections;
+  StorageData storage;
+  ItemDetailsData legacy_details, field_details;
+  ItemUseData item_use;
+  FieldEquipmentData equipment;
+  FieldItemDefinitions definitions;
+  FieldInventoryData inventory;
+  FieldGoodsData goods;
+  BasementProgressionData basement;
+  MusicRegionData music;
+  AudioBank audio;
+};
+} // namespace
+bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
+                                    const char *root, std::string &error,
+                                    CatalogResourceAdmissionReport *report) {
+  if (!root || !*root || !catalog.valid()) {
+    error = "Catalog format admission requires a valid catalog and actual root";
+    return false;
+  }
+  if (!catalog.verify_files(root, error))
+    return false;
+  std::string prefix = root;
+  if (prefix.back() != '/' && prefix.back() != '\\')
+    prefix += '/';
+  auto owners = std::make_unique<Owners>();
+  CatalogResourceAdmissionReport result;
+  std::set<ResourceRole> singleton_roles;
+  bool restore = false;
+  for (const auto &binding : catalog.binding_records()) {
+    const std::string absolute = prefix + binding.path;
+    std::string detail;
+    bool accepted = false;
+    switch (binding.role) {
+    case ResourceRole::Room:
+      accepted = owners->room.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Blackbars:
+      accepted = decode<Blackbars>(absolute, detail);
+      break;
+    case ResourceRole::Battle:
+      accepted = decode<BattleData>(absolute, detail);
+      break;
+    case ResourceRole::Round:
+      accepted = decode<BattleRoundData>(absolute, detail);
+      break;
+    case ResourceRole::House:
+      accepted = owners->house.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Items:
+      accepted = owners->items.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Audio:
+      accepted = owners->audio.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Phone:
+      accepted = owners->phone.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Choices:
+      accepted = decode<DialogueChoicesData>(absolute, detail);
+      break;
+    case ResourceRole::SaveMenu:
+      accepted = decode<SaveMenuData>(absolute, detail);
+      break;
+    case ResourceRole::Session:
+      accepted = owners->session.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Settings:
+      accepted = owners->settings.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Prompts:
+      accepted = owners->prompts.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::Continue:
+      accepted = decode<ContinueMenuData>(absolute, detail);
+      break;
+    case ResourceRole::Restore:
+      // Deferred, not accepted: the real loader requires BOTH original views.
+      if (restore)
+        return rejected(error, binding.path, "Duplicate restore owner");
+      restore = true;
+      continue;
+    case ResourceRole::SessionMigration:
+      accepted = decode<SessionMigrationData>(absolute, detail);
+      break;
+    case ResourceRole::NewGame:
+      accepted = decode<NewGameSetupData>(absolute, detail);
+      break;
+    case ResourceRole::Localization:
+      accepted = decode<LocaleCatalog>(absolute, detail);
+      break;
+    case ResourceRole::TitleLocale:
+      accepted = decode<TitleLocaleData>(absolute, detail);
+      break;
+    case ResourceRole::SourceFonts: {
+      encore::SourceFontCatalog fonts;
+      accepted = fonts.load(absolute.c_str(), detail);
+      break;
+    }
+    case ResourceRole::Input:
+      accepted = decode<NativeInputData>(absolute, detail);
+      break;
+    case ResourceRole::LoadingIndicator:
+      accepted = decode<LoadingIndicatorData>(absolute, detail);
+      break;
+    case ResourceRole::EncounterBattle:
+      accepted = decode<BattleData>(absolute, detail);
+      break;
+    case ResourceRole::EncounterRound:
+      accepted = decode<BattleRoundData>(absolute, detail);
+      break;
+    case ResourceRole::Introduction:
+      accepted = decode<IntroductionData>(absolute, detail);
+      break;
+    case ResourceRole::HouseInspections:
+      accepted = owners->inspections.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::DrawerProgram:
+      accepted = decode<DrawerProgramData>(absolute, detail);
+      break;
+    case ResourceRole::Storage:
+      accepted = owners->storage.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::ItemDetails:
+      accepted = owners->legacy_details.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::FieldEquipment:
+      accepted = owners->equipment.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::ItemUse:
+      accepted = owners->item_use.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::BasementProgression:
+      accepted = owners->basement.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::BasementActors:
+      accepted = decode<BasementActorData>(absolute, detail);
+      break;
+    case ResourceRole::MusicRegions:
+      accepted = owners->music.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::PresentSparkles:
+      accepted = decode<PresentSparklesData>(absolute, detail);
+      break;
+    case ResourceRole::FieldPsi:
+      accepted = decode<FieldPsiData>(absolute, detail);
+      break;
+    case ResourceRole::FieldProgrammes:
+      accepted = decode<FieldProgrammeData>(absolute, detail);
+      break;
+    case ResourceRole::FieldInventory:
+      accepted = owners->inventory.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::FieldItemDefinitions:
+      accepted = owners->definitions.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::FieldItemDetails:
+      accepted = owners->field_details.load_file(absolute.c_str(), detail);
+      break;
+    case ResourceRole::FieldGoods:
+      accepted = owners->goods.load_file(absolute.c_str(), detail);
+      break;
+    default:
+      return rejected(error, binding.path, "Unknown catalog resource role");
+    }
+    if (!accepted)
+      return rejected(error, binding.path, detail);
+    ++result.bindings;
+    if (binding.role == ResourceRole::EncounterBattle)
+      ++result.encounter_battles;
+    else if (binding.role == ResourceRole::EncounterRound)
+      ++result.encounter_rounds;
+    else {
+      if (!singleton_roles.insert(binding.role).second)
+        return rejected(error, binding.path, "Duplicate singleton owner");
+      ++result.singleton_formats;
+    }
+  }
+  // No catalog order assumption: Room and House views remain backed by their
+  // actual owners until Restore's cross-packet SHA/rules checks finish.
+  if (!restore)
+    return rejected(error, catalog.path(ResourceRole::Restore),
+                    "Required Restore resource absent");
+  RestoreData restore_owner;
+  std::string detail;
+  const auto &restore_path = catalog.path(ResourceRole::Restore);
+  if (!restore_owner.load_file((prefix + restore_path).c_str(),
+                               owners->room.view(), owners->house.view(),
+                               detail))
+    return rejected(error, restore_path, detail);
+  ++result.bindings;
+  ++result.singleton_formats;
+  ResourceRole failed = ResourceRole::Room;
+  const StartupResourceBindings bindings{owners->settings,
+                                         owners->session,
+                                         owners->prompts,
+                                         owners->item_use,
+                                         owners->house.view(),
+                                         owners->phone.view(),
+                                         owners->inspections.view(),
+                                         owners->items.view(),
+                                         owners->storage.view(),
+                                         owners->legacy_details.view()};
+  if (!admit_startup_resource_bindings(bindings, detail, &failed))
+    return rejected(error, catalog.path(failed), detail);
+  if (!owners->inventory.bind_definitions(owners->definitions, detail))
+    return rejected(error, catalog.path(ResourceRole::FieldInventory), detail);
+  if (!owners->goods.bind_inventory(owners->inventory, detail))
+    return rejected(error, catalog.path(ResourceRole::FieldGoods), detail);
+  HouseItemDetailsBindings field_details;
+  if (!field_details.bind(owners->definitions, owners->items.view(),
+                          owners->equipment.view(),
+                          owners->field_details.view(), detail))
+    return rejected(error, catalog.path(ResourceRole::FieldItemDetails),
+                    detail);
+  if (!owners->music.matches(owners->audio, detail))
+    return rejected(error, catalog.path(ResourceRole::MusicRegions), detail);
+  if (!admit_room_music_bindings(owners->room.view(), owners->basement,
+                                 owners->music, detail))
+    return rejected(error, catalog.path(ResourceRole::Room), detail);
+  // This real checked child binary is owned by Room, not a catalog role.
+  // Loading its format does not start the effect animation or allocate GPU.
+  auto room = owners->room.view();
+  for (uint32_t i = 0; i < room.resource_count(); ++i) {
+    const auto resource = room.resource(i);
+    if (resource.kind != uint16_t(RoomResourceKind::CheckedWorldEffectPack))
+      continue;
+    const std::string path(room.string(resource.path_string));
+    if (!decode<WorldEffectData>(prefix + path, detail))
+      return rejected(error, path, detail);
+    ++result.room_effects;
+  }
+  if (result.bindings != catalog.binding_records().size()) {
+    error = "Catalog contains a resource that did not undergo typed format "
+            "admission";
+    return false;
+  }
+  if (report)
+    *report = result;
+  error.clear();
+  return true;
+}
+} // namespace encore::upstream

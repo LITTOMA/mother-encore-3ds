@@ -3,12 +3,17 @@
 export ENCORE_GENERATION_REFRESH := $(REFRESH_SOURCES)
 .PHONY: source-fonts
 catalog: source-fonts
-source-fonts: locale field-psi field-cash-box field-shop field-item-details field-inventory
+source-fonts: locale field-psi field-cash-box field-shop field-item-details field-inventory field-goods
 source-fonts:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/content_pipeline.py fonts
 
 ifeq ($(REFRESH_SOURCES),1)
+.PHONY: source-dialogue-audio
+field-dialogue-audio: source-dialogue-audio
+source-dialogue-audio: field-node-recipe audio
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/relink_dialogue_audio.py
 SOURCE_ART_TASKS := $(addprefix source-art-,canvas doll pillow item-details field-equipment field-item-details sparkles basement-actors storage drawer-item shop cash-box payphone vending introduction)
+SOURCE_ART_TASKS += source-art-goods
 .PHONY: $(SOURCE_ART_TASKS)
 $(SOURCE_ART_TASKS): source-art-%:
 	$(CONTENT_RUNNER) source-art-$* -- "$(PYTHON)" tools/content_pipeline.py asset --producer $*
@@ -18,6 +23,8 @@ pillow-entry: source-art-pillow
 item-details: source-art-item-details
 field-equipment: source-art-field-equipment
 field-item-details: source-art-field-item-details
+field-goods: source-art-goods
+source-art-goods: field-inventory
 sparkles: source-art-sparkles
 basement-actors: source-art-basement-actors
 storage: source-art-storage
@@ -34,6 +41,7 @@ source-art-vending: field-shop
 source-art-canvas: field-node-tree
 .PHONY: source-linked source-round source-doll-round source-pillow-round source-session source-restore source-naming source-prompts source-introduction
 room house audio: source-linked
+source-linked: field-goods
 round: source-round
 doll-round: source-doll-round
 pillow-round: source-pillow-round

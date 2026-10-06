@@ -101,6 +101,15 @@ int main(int argc,char** argv){
  check(catalog.companion_path(catalog.path(ResourceRole::Battle))==catalog.path(ResourceRole::Round),"reviewed root encounter companion is externally bound");
  const auto original_round=catalog.path(ResourceRole::Round);
  auto reject=[&](const std::vector<uint8_t>& bad,const char* why){check(!catalog.load(bad.data(),bad.size(),error),why);check(!error.empty(),"failed loads explain rejection");check(catalog.valid()&&catalog.path(ResourceRole::Round)==original_round,"failed catalog load preserves prior binding");};
+ // Remove each actual startup singleton, including PSI, while preserving a
+ // structurally valid directory and CRC. Missing roles must fail at admission.
+ for(uint32_t role=1;role<=uint32_t(ResourceRole::FieldGoods);++role){
+  if(role==uint32_t(ResourceRole::EncounterBattle)||role==uint32_t(ResourceRole::EncounterRound))continue;
+  auto missing=blob;const auto at=row(missing,ResourceRole(role));
+  missing.erase(missing.begin()+at,missing.begin()+at+20+get(missing,at+16));
+  put(missing,52,get(missing,52)-1);fix(missing);
+  reject(missing,"every required startup singleton must be present");
+ }
  for(size_t n=0;n<blob.size();++n){check(!catalog.load(blob.data(),n,error),"every truncated catalog rejected");check(catalog.path(ResourceRole::Round)==original_round,"truncation cannot replace valid catalog");}
  check(!catalog.load(nullptr,blob.size(),error),"null catalog rejected");
  auto bad=blob;bad.back()^=1;reject(bad,"payload corruption rejected");
@@ -108,6 +117,12 @@ int main(int argc,char** argv){
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{8,0},{8,2},{12,uint32_t(blob.size()+1)},{20,0},{20,2},{24,1},{28,1},{52,0},{52,129},{56,0},{56,33}}){bad=blob;put(bad,edit.first,edit.second);if(edit.first!=12)fix(bad);reject(bad,"unknown header or record count rejected");}
  bad=blob;bad[32]^=1;fix(bad);reject(bad,"unreviewed upstream pin rejected");
  const auto round_row=row(blob,ResourceRole::Round),battle_row=row(blob,ResourceRole::Battle);
+ for(auto role:{ResourceRole::FieldItemDefinitions,ResourceRole::FieldItemDetails,ResourceRole::FieldGoods}){
+  const auto at=row(blob,role);check(catalog.path(role)==row_path(blob,at),"new inventory resources resolve actual typed paths");
+  bad=blob;put(bad,at+4,42);fix(bad);reject(bad,"unknown next inventory role rejected");
+  bad=blob;put(bad,at,0);fix(bad);reject(bad,"new inventory stable identity rejected");
+  bad=blob;path(bad,role,"data/wrong.encroom");reject(bad,"new inventory wrong binary type rejected");
+ }
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{round_row,0},{round_row,uint32_t(ResourceRole::Battle)},{round_row+4,0},{round_row+4,26},{round_row+4,uint32_t(ResourceRole::Battle)},{round_row+8,0},{round_row+8,16*1024*1024+1},{round_row+16,0},{round_row+16,UINT32_MAX}}){bad=blob;put(bad,edit.first,edit.second);fix(bad);reject(bad,"unknown or duplicate id/role, unsupported size or path span rejected");}
  for(const auto& unsafe:std::vector<std::string>{"../data/round.encround","data/../round.encround","/data/round.encround","C:/round.encround","data\\round.encround","data//round.encround","data/./round.encround","data/round.encbattle","data/round.encround/","data/round.encround?x","data/\xc3\xa9.encround"}){bad=blob;path(bad,ResourceRole::Round,unsafe);reject(bad,"noncanonical or wrong typed resource path rejected");}
  bad=blob;path(bad,ResourceRole::EncounterBattle,catalog.path(ResourceRole::Battle));reject(bad,"duplicate catalog path rejected");

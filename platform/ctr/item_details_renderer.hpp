@@ -1,6 +1,7 @@
 #pragma once
 #include "battle_renderer.hpp"
 #include "encore/item_details.hpp"
+#include "encore/field_item_admission.hpp"
 #include "loading_texture.hpp"
 #include <algorithm>
 #include <array>
@@ -97,6 +98,7 @@ class ItemDetailsRenderer {
     uint32_t width = 0, height = 0;
   };
   View data_;
+  const encore::upstream::HouseItemDetailsBindings *house_bindings_ = nullptr;
   std::vector<Asset> assets_;
   std::string locale_, nickname_;
   mutable std::string error_;
@@ -167,13 +169,24 @@ public:
       return false;
     return load_checked(data, root, error);
   }
+  bool load_house_field(View data,
+                        const encore::upstream::HouseItemDetailsBindings &bindings,
+                        const char *root, std::string &error) {
+    if (!root || !*root || !bindings.matches(data)) {
+      error = "House description requires admitted original bindings";
+      return false;
+    }
+    return load_checked(data, root, error, &bindings);
+  }
 
 private:
-  bool load_checked(View data, const char *root, std::string &error) {
+  bool load_checked(View data, const char *root, std::string &error,
+                    const encore::upstream::HouseItemDetailsBindings *bindings = nullptr) {
     if (!data.verify_resources(root, error))
       return false;
     ItemDetailsRenderer candidate;
     candidate.data_ = data;
+    candidate.house_bindings_ = bindings;
     candidate.assets_.resize(
         data.count(encore::upstream::ItemDetailsSection::Resources));
     for (uint32_t i = 0; i < candidate.assets_.size(); ++i) {
@@ -224,6 +237,7 @@ private:
     }
     C3D_FrameSync();
     std::swap(data_, candidate.data_);
+    std::swap(house_bindings_, candidate.house_bindings_);
     assets_.swap(candidate.assets_);
     error_.clear();
     return true;
@@ -258,12 +272,18 @@ public:
         encore::ctr::loading_sprite_sheet_free(asset.sheet);
     assets_.clear();
     data_ = {};
+    house_bindings_ = nullptr;
     error_.clear();
   }
   bool draw(encore::upstream::ItemInstance instance, const BattleRenderer &font,
             float x, float y, float width, float height) const {
-    if (data_.field_family())
-      return fail("Field item IDs require draw_field");
+    if (data_.field_family()) {
+      uint32_t original = 0;
+      if (!house_bindings_ || !house_bindings_->matches(data_) ||
+          !house_bindings_->source_definition(instance.definition, original, error_))
+        return fail("House item description identity mapping rejected");
+      return draw_field(original, instance.doses, font, x, y, width, height);
+    }
     return draw_field(instance.definition, instance.doses, font, x, y, width,
                       height);
   }

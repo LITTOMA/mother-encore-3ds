@@ -13,6 +13,8 @@
 #include "field_item_use_renderer.hpp"
 #include "field_psi_renderer.hpp"
 #include "podunk_programme_host.hpp"
+#include "encore/field_item_admission.hpp"
+#include "encore/field_goods.hpp"
 #include "encore/item_use.hpp"
 #include "encore/field_equipment_menu.hpp"
 #include "world_effect_renderer.hpp"
@@ -50,6 +52,8 @@
 #include "encore/battle_outcome.hpp"
 #include "audio_player.hpp"
 #include "music_region_service.hpp"
+#include "encore/room_music_admission.hpp"
+#include "encore/startup_resource_admission.hpp"
 #include "house_music_host.hpp"
 #include "basement_actor_renderer.hpp"
 #include "present_sparkles_renderer.hpp"
@@ -177,6 +181,8 @@ upstream::SourceRandom battle_random{0};
 RoundRenderer round_renderer;
 upstream::ItemData items_data;
 upstream::ItemDetailsData item_details_data;
+upstream::ItemDetailsData field_item_details_data;
+upstream::HouseItemDetailsBindings house_item_details_bindings;
 ItemDetailsRenderer item_details_renderer;
 upstream::FieldEquipmentData field_equipment_data;
 upstream::FieldEquipmentMenu field_equipment_menu;
@@ -185,6 +191,9 @@ upstream::ItemUseData item_use_data;
 upstream::FieldItemUseMenu field_item_use_menu;
 FieldItemUseRenderer field_item_use_renderer;
 upstream::FieldProgrammeData field_programme_data;
+upstream::FieldItemDefinitions field_item_definitions;
+upstream::FieldInventoryData field_inventory_data;
+upstream::FieldGoodsData field_goods_data;
 encore::ctr::PodunkProgrammeHost podunk_programme_host;
 upstream::FieldPsiData field_psi_data;
 upstream::FieldPsiMenu field_psi_menu;
@@ -472,7 +481,7 @@ bool ensure_house_graphics(std::string&error){
     wait_for_gpu_idle();LoadingScope loading("Preparing house graphics",4);
     if(!loading.step([&]{return opening_actor.load(opening_data.view(),error);},"room-atlases")||
        !loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error);},"house-atlases")||
-       !loading.step([&]{if(!items_renderer.load(items_data.view(),"romfs:/",error)||!item_details_renderer.load(item_details_data.view(),items_data.view(),"romfs:/",error))return false;
+       !loading.step([&]{if(!items_renderer.load(items_data.view(),"romfs:/",error)||!item_details_renderer.load_house_field(field_item_details_data.view(),house_item_details_bindings,"romfs:/",error))return false;
            item_details_renderer.set_locale(locale_selection.code());items_renderer.set_details(&item_details_renderer);storage_renderer.set_details(&item_details_renderer);return true;},"item-atlases")||
        !loading.step([&]{
            if(!audio_player.available())return true;
@@ -564,20 +573,23 @@ public:
 bool bind_basement_house(GameplayScene&,upstream::SourceRandom&,std::string&);
 bool initialize_house_interactions(std::string& error){
     house_error.clear();house_sound_requests=0;
+    if(!house_inspection_data.view().valid()&&!house_inspection_data.load_file(resource_path(ResourceRole::HouseInspections).c_str(),error))return false;
+    if(!drawer_program_data.view().valid()&&!drawer_program_data.load_file(resource_path(ResourceRole::DrawerProgram).c_str(),error))return false;
+    if(!house_assets_ready&&(!phone_data.load_file(resource_path(ResourceRole::Phone).c_str(),error)||
+       !startup_settings_data.load_file(resource_path(ResourceRole::Settings).c_str(),error)||
+       !house_prompt_data.load_file(resource_path(ResourceRole::Prompts).c_str(),error)))return false;
+    if(!upstream::admit_startup_resource_bindings({startup_settings_data,native_session_data,house_prompt_data,item_use_data,
+       house_data.view(),phone_data.view(),house_inspection_data.view(),items_data.view(),storage_data.view(),item_details_data.view()},error))return false;
     if(!initialize_localization(error))return false;
     if(!gameplay_scene->presentation.begin(house_data.view(),house_font_data.view(),battle_random)){error=gameplay_scene->presentation.error();return false;}
     bind_localized_house(gameplay_scene->presentation);
     if(!gameplay_scene->house.initialize(house_data.view(),gameplay_scene->world,gameplay_scene->presentation)){error=gameplay_scene->house.error();return false;}
-    if(!house_inspection_data.view().valid()&&!house_inspection_data.load_file(resource_path(ResourceRole::HouseInspections).c_str(),error))return false;
-    if(!drawer_program_data.view().valid()&&!drawer_program_data.load_file(resource_path(ResourceRole::DrawerProgram).c_str(),error))return false;
     if(!house_assets_ready){
         if(!new_game_data.load_file(resource_path(ResourceRole::NewGame).c_str(),error))return false;
-        if(!phone_data.load_file(resource_path(ResourceRole::Phone).c_str(),error)||!phone_renderer.load(phone_data.view(),"romfs:/",error))return false;
-        if(!choice_data.load_file(resource_path(ResourceRole::Choices).c_str(),error)||!choice_renderer.load(choice_data,"romfs:/",error)||!save_menu_data.load_file(resource_path(ResourceRole::SaveMenu).c_str(),error)||!save_renderer.load(save_menu_data,"romfs:/",error)||!menu_audio_bank.load_file(resource_path(ResourceRole::Audio).c_str(),error)||!native_session_data.load_file(resource_path(ResourceRole::Session).c_str(),error))return false;
-        if(!startup_settings_data.load_file(resource_path(ResourceRole::Settings).c_str(),error))return false;
-        if(startup_settings_data.speeds!=native_session_data.text_speeds()||startup_settings_data.flavors!=native_session_data.menu_flavors()||startup_settings_data.prompts!=native_session_data.button_prompts()){error="Startup UI/session setting choices disagree";return false;}
+        if(!phone_renderer.load(phone_data.view(),"romfs:/",error))return false;
+        if(!choice_data.load_file(resource_path(ResourceRole::Choices).c_str(),error)||!choice_renderer.load(choice_data,"romfs:/",error)||!save_menu_data.load_file(resource_path(ResourceRole::SaveMenu).c_str(),error)||!save_renderer.load(save_menu_data,"romfs:/",error)||!menu_audio_bank.load_file(resource_path(ResourceRole::Audio).c_str(),error))return false;
         wait_for_gpu_idle();if(!ctr::loading_menu_flavor_configure(startup_settings_data.skin_paths,startup_settings_data.source_palette,startup_settings_data.palettes,startup_settings_data.palette_threshold,startup_settings_data.default_indices[1])){error="Checked UI palette binding failed";return false;}
-        if(!house_prompt_data.load_file(resource_path(ResourceRole::Prompts).c_str(),error)||!house_prompt_data.validate_bindings(house_data.view(),phone_data.view(),error,house_inspection_data.view())||!house_prompt_renderer.load(house_prompt_data,error))return false;
+        if(!house_prompt_renderer.load(house_prompt_data,error))return false;
         new_game_renderer.bind_prompts(house_prompt_renderer);
         house_assets_ready=true;
     }
@@ -659,10 +671,7 @@ bool bind_basement_world(GameplayScene&scene,std::string&error){
     upstream::BasementProgressionHost host;host.validate_key_item=validate_basement_key;host.grant_key_item=grant_basement_key;host.validate_skill=validate_basement_skill;host.learn_skill=learn_basement_skill;
     if(!scene.world.bind_basement(basement_data,basement_actor_data,std::move(host),error))return false;
     return scene.world.bind_music_region_validator([](std::string_view source,std::string_view node,bool play,double duration,std::string&e){
-        const auto&m=basement_data.music();
-        if(source!=m.scene){e="Region method bound to a different source scene";return false;}
-        const auto p=std::find_if(house_music_data.regions().begin(),house_music_data.regions().end(),[&](const auto&r){return r.source_path==node;});
-        if(p==house_music_data.regions().end()||(play?duration!=0:(duration!=m.default_stop_seconds&&duration!=0))){e="Region method source/default duration differs";return false;}e.clear();return true;
+        return upstream::validate_room_music_region_call(source,node,play,duration,basement_data,house_music_data,e);
     },error);
 }
 bool bind_basement_house(GameplayScene&scene,upstream::SourceRandom&random,std::string&error){
@@ -1414,12 +1423,12 @@ int main(int argc,char** argv){
        !loading.step([&]{return round_data.load_file(resource_path(ResourceRole::Round).c_str(),error);},"round-metadata")||
        !loading.step([&]{return house_data.load_file(resource_path(ResourceRole::House).c_str(),error);},"house-metadata")||
        !loading.step([&]{return items_data.load_file(resource_path(ResourceRole::Items).c_str(),error);},"item-metadata")||
-       !loading.step([&]{return item_details_data.load_file(resource_path(ResourceRole::ItemDetails).c_str(),error)&&item_details_data.view().bind_items(items_data.view(),error);},"item-details-metadata")||
-       !loading.step([&]{return field_equipment_data.load_file(resource_path(ResourceRole::FieldEquipment).c_str(),error)&&field_equipment_data.view().bind_items(items_data.view(),error)&&item_use_data.load_file(resource_path(ResourceRole::ItemUse).c_str(),error)&&item_use_data.bind_items(items_data.view(),error)&&field_psi_data.load_file(resource_path(ResourceRole::FieldPsi).c_str(),error);},"field-equipment-metadata")||
+       !loading.step([&]{return item_details_data.load_file(resource_path(ResourceRole::ItemDetails).c_str(),error);},"item-details-metadata")||
+       !loading.step([&]{return field_equipment_data.load_file(resource_path(ResourceRole::FieldEquipment).c_str(),error)&&field_item_definitions.load_file(resource_path(ResourceRole::FieldItemDefinitions).c_str(),error)&&field_item_details_data.load_file(resource_path(ResourceRole::FieldItemDetails).c_str(),error)&&house_item_details_bindings.bind(field_item_definitions,items_data.view(),field_equipment_data.view(),field_item_details_data.view(),error)&&field_inventory_data.load_file(resource_path(ResourceRole::FieldInventory).c_str(),error)&&field_inventory_data.bind_definitions(field_item_definitions,error)&&field_goods_data.load_file(resource_path(ResourceRole::FieldGoods).c_str(),error)&&field_goods_data.bind_inventory(field_inventory_data,error)&&item_use_data.load_file(resource_path(ResourceRole::ItemUse).c_str(),error)&&field_psi_data.load_file(resource_path(ResourceRole::FieldPsi).c_str(),error);},"field-equipment-metadata")||
+       !loading.step([&]{return storage_data.load_file(resource_path(ResourceRole::Storage).c_str(),error);},"storage-metadata")||
        !loading.step([&]{return initialize_house_interactions(error);},"menus-localization-session")||
        !loading.step([&]{return session_inventory.initialize(items_data.view());},"inventory")||
        !loading.step([&]{return items_menu.initialize(session_inventory);},"item-menu")||
-       !loading.step([&]{return storage_data.load_file(resource_path(ResourceRole::Storage).c_str(),error)&&storage_data.view().bind_items(items_data.view(),error);},"storage-metadata")||
        !loading.step([&]{return session_storage.initialize(items_data.view(),native_session_data.storage_capacity());},"storage-state")){
         free_house();free_debug_text();C2D_Fini();C3D_Fini();
         error_console(error);romfsExit();gfxExit();return 1;

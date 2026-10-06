@@ -68,6 +68,18 @@ int main(int argc, char **argv) {
   normal->items.push_back({hp->id, 0, hp->doses, false});
   assert(runtime.initialize(data, definitions, s, e));
   FieldInventoryResult result;
+  // Source ActionSelect emits KEY CashCard unchanged, including owner/UID.
+  const auto key_holder =
+      std::find_if(runtime.state().items.inventories.begin(),
+                   runtime.state().items.inventories.end(),
+                   [&](const auto &i) { return i.owner == data.role(1)->id; });
+  assert(key_holder != runtime.state().items.inventories.end() &&
+         !key_holder->items.empty());
+  const auto key_item = key_holder->items.front();
+  assert(runtime.use(key_item.uid, 0, result, e) && result.events.size() == 1 &&
+         result.events.front().target == data.role(1)->id &&
+         result.events.front().item.uid == key_item.uid);
+
   int64_t before = runtime.state().hp;
   assert(runtime.consume(0, 0, data.role(0)->id, result, e));
   assert(result.removed && runtime.state().hp == before + hp->boost[0] &&

@@ -13,20 +13,23 @@ enum class ResourceRole : uint32_t {
     Continue=14, Restore=15, SessionMigration=16, NewGame=17,
     Localization=18, TitleLocale=19, SourceFonts=20, Input=21,
     LoadingIndicator=22, EncounterBattle=23, EncounterRound=24, Introduction=25,
-    HouseInspections=26, DrawerProgram=27, Storage=28, ItemDetails=29, FieldEquipment=30, ItemUse=31, BasementProgression=32, BasementActors=33, MusicRegions=34, PresentSparkles=35, FieldPsi=36, FieldProgrammes=37, FieldInventory=38
+    HouseInspections=26, DrawerProgram=27, Storage=28, ItemDetails=29, FieldEquipment=30, ItemUse=31, BasementProgression=32, BasementActors=33, MusicRegions=34, PresentSparkles=35, FieldPsi=36, FieldProgrammes=37, FieldInventory=38,
+    FieldItemDefinitions=39, FieldItemDetails=40, FieldGoods=41
 };
 
 class ResourceCatalog {
 public:
+    struct Binding { uint32_t id; ResourceRole role; std::string path; uint32_t size, crc; };
+    struct Encounter { uint32_t battle, round; };
     bool load(const uint8_t*, size_t, std::string&);
     bool load_file(const char*, std::string&);
     bool valid() const { return valid_; }
     const std::string& path(ResourceRole) const;
     std::string companion_path(std::string_view battle_path) const;
     bool verify_files(const char* prefix, std::string& error) const;
+    const std::vector<Binding>& binding_records() const { return bindings_; }
+    const std::vector<Encounter>& encounter_records() const { return encounters_; }
 private:
-    struct Binding { uint32_t id; ResourceRole role; std::string path; uint32_t size, crc; };
-    struct Encounter { uint32_t battle, round; };
     bool valid_=false;
     std::vector<Binding> bindings_;
     std::vector<Encounter> encounters_;

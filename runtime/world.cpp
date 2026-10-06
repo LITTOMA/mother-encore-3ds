@@ -57,7 +57,12 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
     const auto pin=source_commit(content);
     for(uint32_t i=0;i<content.binding_count();++i)if(content.binding(i).kind==uint16_t(RoomBindingKind::BasementWhiteFade)&&(!basement_.bound()||basement_.data()->reviewed_commit()!=pin))return fail("White fade requires source-bound progression data");
     for(uint32_t i=0;i<content.binding_count();++i){const auto b=content.binding(i);if(b.kind!=uint16_t(RoomBindingKind::StopMusicRegion)&&b.kind!=uint16_t(RoomBindingKind::PlayMusicRegion))continue;
-        if(!music_region_validator_||!music_region_validator_(content.string(content.scene().source_scene_string),content.string(b.target_index),b.kind==uint16_t(RoomBindingKind::PlayMusicRegion),b.duration,host_error_))return fail("Music region source host binding rejected");
+        if(!music_region_validator_)return fail("Music region source host binding absent");
+        host_error_.clear();
+        if(!music_region_validator_(content.string(content.scene().source_scene_string),content.string(b.target_index),b.kind==uint16_t(RoomBindingKind::PlayMusicRegion),b.duration,host_error_)) {
+            const auto reason=std::string("Music region source host binding rejected: ")+host_error_;
+            return fail(reason.c_str());
+        }
     }
     if(scene_motion_&&(!scene_motion_->admitted()||motion_scene_!=content.string(content.scene().source_scene_string)||motion_commit_!=pin))return fail("Scene motion source binding mismatch");
     for(uint32_t i=0;i<content.command_count();++i){const auto c=content.command(i);if(c.opcode<uint16_t(DialogueActionKind::GrantKeyItem))continue;

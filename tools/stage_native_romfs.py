@@ -30,6 +30,12 @@ def stage():
     files.update(programme_files(source))
     from field_inventory import stage_files as inventory_files
     files.update(inventory_files(source))
+    from field_item_definitions import stage_files as field_definition_files
+    from field_item_details import stage_files as field_detail_files
+    from field_goods import stage_files as goods_files
+    files.update(field_definition_files(source))
+    files.update(field_detail_files(source))
+    files.update(goods_files(source))
     files.update(basement_files(source));files.update(basement_actor_files(source));files.update(region_files(source))
     from house_inspection import stage_files as inspection_files
     files.update(inspection_files(source))

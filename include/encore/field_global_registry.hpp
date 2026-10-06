@@ -67,6 +67,12 @@ public:
  virtual bool persist_append(FieldObjectId,std::string&)=0;
  virtual bool assign_stable_canvas(FieldObjectId,std::string&)=0;
 };
+// Actual non-Node Resource owner. A PackedScene retains its checked complete
+// recipe; this interface never grants native/script lifecycle admission.
+class FieldGlobalSourceResource:public FieldGlobalExternalObject {
+public:
+ virtual const char*resource_class()const=0;
+};
 struct FieldGlobalRegistryHost {
  std::function<bool(FieldObjectId,const FieldGlobalExternalSpec&,std::unique_ptr<FieldGlobalExternalObject>&,std::string&)>construct;
 };
@@ -84,6 +90,8 @@ public:
  size_t collect_dead_tree_objects();
  // Register only actual checked Tree objects whose ObjectIDs were allocated
  // by this same registry. No hash IDs or copied metadata proxy nodes.
+ bool publish_source_resource(const FieldGlobalExternalSpec&,FieldObjectId,std::unique_ptr<FieldGlobalSourceResource>,std::string&);
+ const FieldGlobalSourceResource*source_resource(FieldObjectId)const;
  bool publish_branch(std::shared_ptr<FieldNodeTreeRuntime>,FieldObjectId,NodeDispatch,std::string&);
  bool attach_scene(FieldObjectId,std::string&);
  bool detach_scene(FieldObjectId,std::string&);
@@ -91,6 +99,10 @@ public:
  bool construct_autoload(uint32_t,std::string&);
  bool attach_autoload(uint32_t,std::string&);
  bool select_current_scene(FieldNodeTreeRuntime&,FieldObjectId,std::string&);
+ // Observe the actual source global assignment before root.add_child/Ready.
+ bool observe_global_current_scene(FieldObjectId,std::string&);
+ // Source SceneTree.set_current_scene occurs later, after persistent moves.
+ bool observe_tree_current_scene(FieldObjectId,std::string&);
  bool create_stable_canvas(FieldObjectId&,std::string&);
  bool lookup_absolute(std::string_view,FieldObjectId&,std::string&)const;
  bool resolve_path(FieldObjectId,std::string_view,FieldObjectId&,std::string&)const;
@@ -102,12 +114,14 @@ public:
  FieldObjectId root()const{return root_;}FieldObjectId kernel()const{return kernel_;}
  FieldObjectId stable_canvas()const{return stable_canvas_;}
  FieldObjectId current_scene()const{return current_scene_;}
+ FieldObjectId tree_current_scene()const{return tree_current_scene_;}
  size_t object_count()const{return objects_.size();}
  bool poisoned()const{return poisoned_;}
 private:
  struct Object {
   std::shared_ptr<FieldNodeTreeRuntime>tree;NodeDispatch dispatch;
   std::unique_ptr<FieldGlobalExternalObject>external;
+  const FieldGlobalSourceResource*resource=nullptr;
   uint32_t definition=0;FieldObjectId external_parent=0;
  };
  bool snapshot(FieldObjectId,FieldGlobalExternalState&,std::string&)const;
@@ -118,7 +132,7 @@ private:
  std::map<uint32_t,FieldObjectId>autoload_objects_;
  std::deque<FieldDeferredMessage>messages_;
  uint64_t counter_=0,fast_counter_=0;
- FieldObjectId kernel_=0,root_=0,current_scene_=0,stable_canvas_=0;
+ FieldObjectId kernel_=0,root_=0,current_scene_=0,tree_current_scene_=0,stable_canvas_=0;
  bool initialized_=false,poisoned_=false,flushing_=false;
 };
 }

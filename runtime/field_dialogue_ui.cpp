@@ -1,5 +1,8 @@
 #include "encore/field_dialogue_ui.hpp"
 #include "encore/battle_entry.hpp"
+#include "encore/field_dialogue_audio.hpp"
+#include "encore/field_dialogue_visual.hpp"
+#include "encore/field_native_timer.hpp"
 #include "encore/utf8.hpp"
 #include <algorithm>
 #include <cmath>
@@ -67,28 +70,94 @@ bool FieldDialogueUiRuntime::initialize(const FieldDialogueUiData &data,
   return true;
 }
 bool FieldDialogueUiRuntime::attach(FieldObjectId root, std::string &e) {
+  return attach_owned(root, nullptr, e);
+}
+bool FieldDialogueUiRuntime::attach(
+    FieldObjectId root, const FieldDialogueUiOwnershipRoster &roster,
+    std::string &e) {
+  return attach_owned(root, &roster, e);
+}
+bool FieldDialogueUiRuntime::attach_owned(
+    FieldObjectId root, const FieldDialogueUiOwnershipRoster *roster,
+    std::string &e) {
   if (!data_ || !root || instances_.count(root) || instances_.size() >= 64)
     return reject(e, "Dialogue UI actual factory ownership rejected");
+  if (roster && (!roster->visual || !roster->audio || !roster->timers ||
+                 !roster->visual->valid() || !roster->audio->valid() ||
+                 !roster->timers->valid() ||
+                 roster->visual->recipe_sha() != recipe_->ir_sha256() ||
+                 roster->audio->recipe_sha() != recipe_->ir_sha256()))
+    return reject(e,
+                  "Dialogue UI complete typed native ownership roster absent");
+  if (roster) {
+    for (auto identity : {roster->visual->identity(), roster->audio->identity()})
+      if (identity.scene_id != data_->identity().scene_id ||
+          identity.upstream_commit != data_->identity().upstream_commit ||
+          identity.source_sha256 != data_->identity().source_sha256)
+        return reject(e, "Dialogue UI foreign ownership scene identity differs");
+  }
   Instance i;
   i.root = root;
+  const auto own_count = size_t(std::count_if(
+      data_->nodes().begin(), data_->nodes().end(), [](const auto &node) {
+        return node.kind != FieldDialogueUiKind::Pending;
+      }));
   std::vector<FieldObjectId> pending{root};
+  std::set<uint32_t> seen;
   while (!pending.empty()) {
     const auto id = pending.back();
     pending.pop_back();
     const auto *n = tree_->state(id);
     const auto *d = tree_->descriptor(id);
+    const auto *source = d ? recipe_->record(d->id) : nullptr;
     FieldIdentity identity{};
-    if (!n || !n->alive || !d || !tree_->object_identity(id, identity) ||
+    if (!n || !n->alive || !d || !source ||
+        !tree_->object_identity(id, identity) ||
         identity.scene_id != data_->identity().scene_id ||
         identity.upstream_commit != data_->identity().upstream_commit ||
         identity.source_sha256 != data_->identity().source_sha256 ||
-        !data_->node(n->source) || !i.ids.emplace(n->source, id).second ||
+        d->native_class != source->native_class ||
+        d->script_sha != source->script_sha || d->parent != source->parent ||
+        d->ready != source->ready || !seen.insert(n->source).second ||
         owners_.count(id))
       return reject(e,
                     "Dialogue UI actual ObjectDB/factory provenance rejected");
+    const auto *own = data_->node(n->source);
+    const bool supported = own && own->kind != FieldDialogueUiKind::Pending;
+    unsigned count = supported ? 1 : 0;
+    if (roster) {
+      const auto *visual = roster->visual->node(n->source);
+      const auto *audio = roster->audio->node(n->source);
+      const auto *timer = roster->timers->record(identity, n->source);
+      if (visual) {
+        if (visual->parent != d->parent || visual->ready != d->ready ||
+            visual->native_class != d->native_class ||
+            visual->script != d->script)
+          return reject(e, "Dialogue UI foreign Visual source differs");
+        ++count;
+      }
+      if (audio) {
+        if (audio->parent != d->parent || audio->ready != d->ready ||
+            d->native_class != "AudioStreamPlayer" || !d->script.empty())
+          return reject(e, "Dialogue UI foreign Audio source differs");
+        ++count;
+      }
+      if (timer) {
+        if (d->native_class != "Timer" || timer->script_sha != d->script_sha)
+          return reject(e, "Dialogue UI foreign Timer source differs");
+        ++count;
+      }
+    }
+    if (count != 1)
+      return reject(
+          e, "Dialogue UI native ownership coverage missing or overlapping");
+    if (supported)
+      i.ids.emplace(n->source, id);
     pending.insert(pending.end(), n->children.rbegin(), n->children.rend());
   }
-  if (i.ids.size() != data_->nodes().size() ||
+  if (seen.size() !=
+          (roster ? recipe_->records().size() : own_count) ||
+      i.ids.size() != own_count ||
       !i.ids.count(data_->identity().scene_id) ||
       i.ids.at(data_->identity().scene_id) != root)
     return reject(e, "Dialogue UI actual full factory incomplete");

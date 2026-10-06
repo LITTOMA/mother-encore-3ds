@@ -27,6 +27,17 @@ bool FieldGlobalRegistry::object_exists(FieldObjectId id)const{
 std::shared_ptr<FieldNodeTreeRuntime>FieldGlobalRegistry::tree_owner(FieldObjectId id)const{
  auto i=objects_.find(id);return i==objects_.end()||!i->second.tree||!i->second.tree->state(id)?nullptr:i->second.tree;
 }
+const FieldGlobalSourceResource*FieldGlobalRegistry::source_resource(FieldObjectId id)const{
+ auto i=objects_.find(id);return i==objects_.end()||!i->second.external||i->second.definition==0?nullptr:i->second.resource;
+}
+bool FieldGlobalRegistry::publish_source_resource(const FieldGlobalExternalSpec&spec,FieldObjectId id,std::unique_ptr<FieldGlobalSourceResource>owner,std::string&e){
+ auto i=objects_.find(id);
+ if(!initialized_||poisoned_||!owner||i==objects_.end()||i->second.external||i->second.tree||!id||!spec.stable_id||spec.role!=4||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual source Resource slot/identity rejected");
+ if((spec.native_class!="PackedScene"&&spec.native_class!="ShaderMaterial")||spec.native_class!=owner->resource_class()||spec.source_sha!=spec.identity.source_sha256||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global source Resource native type/proof rejected");
+ auto b=owner->binding();FieldGlobalExternalState s;
+ if(b.object!=id||!b.family||!b.capability||!equal_spec(b.source,spec)||!owner->state(s,e)||s.name!=spec.name||s.parent||!s.children.empty()||s.inside||s.ready||s.ui_before_canvas||s.current_scene||s.stable_canvas)return fail(e,"Global source Resource actual non-Node owner rejected");
+ i->second.resource=owner.get();i->second.external=std::move(owner);i->second.definition=spec.stable_id;e.clear();return true;
+}
 bool FieldGlobalRegistry::construct(const FieldGlobalExternalSpec&spec,FieldObjectId&out,std::string&e){
  if(!host_.construct)return fail(e,"Global actual external owner constructor missing");
  FieldObjectId id=0;if(!allocate_object(id,e))return false;
@@ -125,6 +136,20 @@ bool FieldGlobalRegistry::select_current_scene(FieldNodeTreeRuntime&tree,FieldOb
  if(!snapshot(root_,viewport,e)||viewport.children.empty()||viewport.children.back()!=id||!snapshot(g->second,global,e)||global.current_scene!=id||!snapshot(id,scene,e)||scene.parent!=root_||!scene.inside)return fail(e,"Global source currentScene must equal actual last Viewport child/typed global state");
  if(current_scene_&&current_scene_!=id&&object_exists(current_scene_))return fail(e,"Global previous source scene free boundary pending");
  current_scene_=id;e.clear();return true;
+}
+bool FieldGlobalRegistry::observe_global_current_scene(FieldObjectId id,std::string&e){
+ auto i=objects_.find(id);auto global=autoload_objects_.find(data_?data_->global_autoload():0);
+ if(!initialized_||poisoned_||i==objects_.end()||!i->second.tree||global==autoload_objects_.end())return fail(e,"Global source currentScene candidate/owner unavailable");
+ const auto*node=i->second.tree->state(id);FieldGlobalExternalState state;
+ if(!node||node->parent||!snapshot(global->second,state,e)||state.current_scene!=id)return fail(e,"Global source currentScene actual assignment not observed");
+ // The source assignment precedes candidate add_child and Ready. The port
+ // must not impose inside-tree or native SceneTree.current_scene here.
+ current_scene_=id;e.clear();return true;
+}
+bool FieldGlobalRegistry::observe_tree_current_scene(FieldObjectId id,std::string&e){
+ auto i=objects_.find(id);FieldGlobalExternalState kernel,scene;
+ if(!initialized_||poisoned_||id!=current_scene_||i==objects_.end()||!i->second.tree||!snapshot(kernel_,kernel,e)||kernel.current_scene!=id||!snapshot(id,scene,e)||!scene.inside||scene.parent!=root_)return fail(e,"Global actual SceneTree current scene assignment pending");
+ tree_current_scene_=id;e.clear();return true;
 }
 bool FieldGlobalRegistry::create_stable_canvas(FieldObjectId&out,std::string&e){
  if(!initialized_||poisoned_||stable_canvas_||!current_scene_)return fail(e,"Global source mainCanvas creation boundary unavailable");

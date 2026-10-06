@@ -1,0 +1,600 @@
+{
+  "schema": 1,
+  "kind": "encore.field-ui-manager.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Scripts/global/uiManager.gd",
+  "scene_id": 1436111134,
+  "source_sha256": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+  "sources": {
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Nodes/Ui/GameOver.tscn": "12cf56288d7149c5b7f5cb405824393053ea83530f6cd9313bd7aab8e20893ca",
+    "Nodes/Ui/Pause menu.tscn": "cc4c6237d51f32d93b5f7375ca94fed5a126c6a35884a95e14d2a486810bf9b7",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/Battle/BattleDialogueBox.tscn": "f8ab52a6550c1a429e802594fd9617cff56a7da7bdc071df3f642aa459a4f69b",
+    "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+    "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
+    "Nodes/Ui/ATM/ATM Menu.tscn": "ecaf36a0d2c075787dbf28703a4f7547dc72ff4ad7da92e734bea2159c81e6dc",
+    "Nodes/Ui/CashBox.tscn": "3de63700dced79e8f907d68d67830ae8ddff609c53810ae2849706cafe6717d1",
+    "Nodes/Ui/PhoneUnitsBox.tscn": "5dea68e0956909f5a2f345835cf5bbad6650a891faaa3c2e0e340166365d9051",
+    "Nodes/Ui/KeyCount.tscn": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
+    "Nodes/Ui/Shop/ShopUI.tscn": "ba7a3307a43a3cf0d5899f0ffd6986c6d78aca3ab11b92a9731c0acc253fac9f",
+    "Nodes/Ui/Storage.tscn": "e39a84c699f10eb4f8fbf901f726554666486d7dc11f28aada256c024442de92",
+    "Maps/SaveSelect.tscn": "cd754211dc3bda6d3bd8afa8c1d1daca74f6d60946e32f9a5909e1d929d5b458",
+    "Nodes/Ui/OcarinaScreen/OcarinaScreen.tscn": "413aa322c08ccfaf856ded7f61c6461189230931642f62eda9621b95cb63044b",
+    "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+    "Nodes/Ui/MapScreen/MapScreen.tscn": "54954ff6eaa5ea46c8caa03d084461978f77a596f7047068fadb6e60d5d5562c",
+    "Maps/misc/TrainCutscene.tscn": "d33a2f19a9bc2158669aea5f606080b9f29251c08bb9c7dec0e02aec78c24bc6",
+    "Nodes/Ui/PartyInfo.tscn": "7628826725a82c025207d40996c2c195b628cfd67fc6b9ee4c89fd9ae96599dd",
+    "Nodes/Ui/Battle/Battle Transition.tscn": "392290f15f3ea5e6ef855f3a8fa78720c718e71cd56470d15dde008192da4848",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/Overworld/cents_white.png": "8b0b6c87d050e664e42bbcb4dcc8e27fb381761fcfa117e1c05258aa891533fa",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Scripts/UI/CashBox.gd": "a2364ce2b39b2d03f4b116d45eb4b0fc1bae8f50228a6ee7ae4855055cb3ec1c",
+    "Graphics/Objects/Items/PhoneCard.png": "3f26d2955e8cf7626c57e6f8eb6e5509f92914307f0b1a3ebf32942f3b79f02c",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433",
+    "Graphics/UI/Overworld/flavours/defaultempty.png": "33af3d9a91a397b79e67c7500486c5cb85f3d1396ecc1e9a1faa09581de73fdc",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/UI/Misc/key_icon.png": "00225160a0e692b0765f33a4a6021ed2849edd0a25566a0641ffc6d6b5072033",
+    "Scripts/UI/KeyNumber.gd": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a",
+    "Fonts/HitNumber.tres": "a5dc45e581a98dbbd4498c6aea51d807cc53727ca3620a0023e2994395dbd6a1",
+    "Graphics/UI/Battle/hit_number.png": "68e34a644687b719d7af43bcccab1340baa9076b545f415017630eae2cc1325e",
+    "Graphics/UI/Battle/hp_pp_numbers.png": "b049dc27660d35a837bacb1ced15171876b389e863a63e707d0dafbdd4e7287c",
+    "Graphics/UI/Battle/info_plate_bg_battle.png": "a274306d7797a2cb0c9a296c610061a8d6690e59b011d9abaaa4f386da6d0e0f",
+    "Graphics/UI/Battle/info_plate_bg_menus.png": "9bf47ec8de4d1c24ff5fdf118a4d48d56c81f53f1d4c9d321daefae4ab620d93",
+    "Graphics/UI/Battle/info_plate_counter_bg.png": "8a024af6dde38ace443b6fec4dc87832a631557991768199a2b0e7f2867ed0c2",
+    "Graphics/UI/Battle/info_plate_counter_bg_greyed.png": "e64b62244ad2a4bc890832bb6cc97cf485ba6baf63aca81fbadeb160e4885732",
+    "Graphics/UI/Battle/info_plate_frame.png": "8197c5b812d54ad5ba4fdfa21548650cd9dab4f2f66163062271aa6425d25fff",
+    "Graphics/UI/Battle/info_plate_highlight.png": "40b20ef8429449fe042a13e6ec5449b54a3240c9ed93d155dfb6f27c6a7550cb",
+    "Graphics/UI/Battle/info_plate_highlight_black.png": "d601bdf77b608c1902635fa877eff9abf4ae4304f6f30396f0a887d987fd3c7d",
+    "Graphics/UI/Battle/label_hp.png": "892919e65839ac857e6334c03c75f8d3a818e5146bd29ced26ce3f04da5274e3",
+    "Graphics/UI/Battle/label_pp.png": "7581ee7a53dcebb86be3ffd7755972b1c82b6d605f823457d2e48a09f35c394d",
+    "Nodes/Ui/Battle/PartyInfoPlate.tscn": "68c3b317655f77cf0461efaa47e9a427d081614ad124a1aa87f66af86147db9f",
+    "Scripts/UI/Battle/PartyInfoPlate.gd": "cf56bdb73b03cb2333fc229fe72c8306ce1d9276296e50c551c564099527920d",
+    "Scripts/UI/PartyInfo.gd": "f871c5d1ebbb77a057c56249bd5386adeba87c26984d75c1466b267cb25b4ac4",
+    "addons/BitmapFontCutterPlus/cutter.gd": "f7c9715dde0045d6ab6585262805108550da6ce3d9392380c9239eb887dc99ef",
+    "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Items/BatWooden.png": "5938ffd9718531cbafb4b1b6ca03d9a31b3639644f131d1e4eb2566138926b50",
+    "Graphics/UI/ATM/select_arrow_gray_animated.png": "737f30f1b993c032a6c2eba0b7c256d1d1d8bb1235f1f6d7c1d6b7458a0604ec",
+    "Graphics/UI/Ailments/Asthma_monospace.png": "531bd4dd804512a0845e2dbd1c27c37e57656d713e2aebbfa97469685e41f7df",
+    "Graphics/UI/Ailments/Blinded_monospace.png": "e2293e7786dd8977368b897e9d62676aed1ee7d7406b4615423ff8b6b4c32508",
+    "Graphics/UI/Ailments/Burned.png": "189e3551b1ec5c3d8de576dd479cfbf3dbfde4eba9ca0ed66cce2326afe75236",
+    "Graphics/UI/Ailments/Cold.png": "0552499d88b8a11bf88b810f6a057260fbe78cd07c5cb6f7af25153c6ff2002e",
+    "Graphics/UI/Ailments/Confused_monospace.png": "73f3601fec13b7a08e6a5c1d54a826af1dacccd291a129e5d6a20d4b4f55e119",
+    "Graphics/UI/Ailments/Forgetful_monospace.png": "a97b8083f2388564a754f5129a0feb56c427afd03d8c4716617da78eca4d7997",
+    "Graphics/UI/Ailments/Mushroomized.png": "60c3f7f777c416e6eebdaf1ecab40d2df22d95500f7662c2f3b58b154f2e1b6b",
+    "Graphics/UI/Ailments/Nausea_monospace.png": "115ee06fcc1e2baa8df9744414b61aaa7036900e9aa9a2bac4a1ba1bb6473748",
+    "Graphics/UI/Ailments/Numb_monospace.png": "970b27a66eb5d6f1eb1d3715d6b43a50e56b27a19d82be4247d6c72cec0388d6",
+    "Graphics/UI/Ailments/Poisoned_monospace.png": "a68746500fcb40c8859126cb3ea6c32005f402aab8a9e52e68702355a47d9219",
+    "Graphics/UI/Ailments/Sleeping_monospace.png": "bb1f6fbfe0ac2376b7e1007fd38a6eb9ae71bfbd4f8898dc00c2a904326384fa",
+    "Graphics/UI/Ailments/Sunstroked_monospace.png": "75b373b34266fb306c3b14b061668d57110a70a2bb1919d2b69b72a9499242fb",
+    "Graphics/UI/EquipMenu/empty.png": "17912ac1c5a2bde681b097261ed297f7ddc60152b3505d548f27abd090407a9b",
+    "Graphics/UI/Inventory/character-bar.png": "234d437434c74f78e5d3c80487d75a51afe128f041db324169425ca7914948a7",
+    "Graphics/UI/Inventory/characters/key.png": "2ba2b8265006d8a297ea08d61431790e605fa7ad71bae068092a9662d0a89ff8",
+    "Graphics/UI/Inventory/characters/ninten.png": "91beffd915870c9879750c4581e592ff1d81f3b4845d387e00547a0f76e5a28f",
+    "Graphics/UI/Inventory/characters/teddy.png": "2b0886c3486b0599fb59cdccaf6486395e9546ac77a37441040b4838e38fc18c",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/item_icon.png": "3479bd4197cf02a6997e9947ef8a7882002636adc4a658b7f8ddeeafc8867f5e",
+    "Graphics/UI/Inventory/modifiers.png": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
+    "Graphics/UI/Inventory/modifiers2.png": "01bf0cf517f8fb0ed9211395b3cca4f25b5d389db40dcbda99487272766ff6c7",
+    "Graphics/UI/Inventory/stats_menu.png": "95367a17d3997a9083967313e8fa9a277a5c4cc2b3a2634da906bcedd46a597a",
+    "Graphics/UI/Options/control_button.png": "5d1df2669f5d975578ad208d7f1949651316389f4f27f31d6f19a803d6ca2e00",
+    "Graphics/UI/Options/controls_kbd.png": "092b87208484daea2129176270db4377082f1399fa656e4edfa329478712099b",
+    "Graphics/UI/Options/controls_pad.png": "fb2d85ed878759fe5f1cf3ff7e7c0e5fb176b1f0998e8f5cfe787db316c4e5d7",
+    "Graphics/UI/Options/volume_slider.png": "6b1a953d6e9b9fa15b80728de6651fb6e17bf2f203b0b37dadd47b081a7e04d8",
+    "Graphics/UI/Overworld/cents.png": "d9400460a5f28a262b1fce27ab6e46aaa47773d77d90f314489b8cc943a60626",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png": "016b161a791b5c3cc95db2002921dae062f4b90ca87cdd2e4b7da62cefc72bf3",
+    "Graphics/UI/Overworld/flavours/defaultbox_title.png": "32a2df08cbec8c7b9c370c377476910a18f9e074d990b61799b8d4453503b35d",
+    "Graphics/UI/Overworld/flavours/defaultlabel.png": "2584ab1f8114d7d75e11271fa9d0801b352f334e35389c2a08ff104605d914cf",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png": "019a1b69d3091aad552390204a6d6250af4ab90a124fc726262554d1fa5fce0d",
+    "Graphics/UI/Overworld/note.png": "65e7ae3dfdbb057b11ba358f88ef6e1fef2fa834d32f77b6bec8428f355d0771",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/ButtonText.tscn": "1694e72e90585ec4cdf0b0967624ddf32ac996b29e1f4c62ab1045eb46f382d4",
+    "Nodes/Ui/CashBoxPause.tscn": "f40e112e1b2a7e18d088ff50932261c657e9e18bdd13bd76e5e28963f9f4cbd5",
+    "Nodes/Ui/CostLabel.tscn": "5e9de0ea2636eee1c23b004060ea6506ce924df51697e30191ebcd206d3336dd",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Nodes/Ui/EquipMenu/EquipMenuUI.gd": "5de23951f4d1d5ee8b16fb452e9f0c3701e6bf95ae75afa56cba0dc521da7599",
+    "Nodes/Ui/EquipMenu/EquipMenuUI.tscn": "3064ed1d1a2da70bcf266d55c15e139bc4d42225064ef455db3070ecf53f5998",
+    "Nodes/Ui/EquipMenu/StatsLabel.tscn": "166f76eff00d732c91d7e50f55cddcf2a346fab491d13d6019d904a876b4e58e",
+    "Nodes/Ui/HighlightLabel.gd": "91a1ec1e640166c2e38a6ee8c094042fddc64f165f128bd4aa706b09f29ad367",
+    "Nodes/Ui/HighlightLabel.tscn": "d13e527d5e508881d969eec68b7d3a5669d9994e5ec18dd86dfe12c270e1428d",
+    "Nodes/Ui/Indicator.tscn": "5271027816940051a232cc84d3d1c965e6f6ea83bbe90fafb4036f1a7d2674eb",
+    "Nodes/Ui/Inventory/ActionSelect.gd": "3cd54d9a8c6dae90c08de99422c5059a925e922dba6deacb739db88e9a19a5cd",
+    "Nodes/Ui/Inventory/ConfirmationSelect.gd": "adc3c9abd86d39a221a80424fe2d4ab091b91189efd93da1ae91233048c8e7e0",
+    "Nodes/Ui/Inventory/DialogBox.gd": "5500fba810f1e9d6733f0667ab5cdd651104d973f8e18adf9754b9e8915221bb",
+    "Nodes/Ui/Inventory/InventorySelect.gd": "2cb4041595c68c059e2c2bf5bb97836e27965501bb3a061374270480a2d8a738",
+    "Nodes/Ui/Inventory/InventoryUI.tscn": "90bb226c950bb9903db792e51bed1a4f83b79d906917d194ffccbb9d24c7cb07",
+    "Nodes/Ui/Inventory/SortTypeSelect.gd": "ede1d08cee14e598c1a3f9c55b29a50416861aad62008dd20ad4127d730aabd4",
+    "Nodes/Ui/Inventory/Stats.gd": "ee09001ed65bb9eb7824e3095ec1f1cad650b0bc083762abc74379535fb8d5db",
+    "Nodes/Ui/Inventory/Stats.tscn": "18571b0d75f2f6f6c635f253df7ef1b0d089b0e8b327d648a421eec66c61ceb8",
+    "Nodes/Ui/Inventory/StatsBar.gd": "fcf7d3c1e598b9e8f26a8b77fe0451fa6f21004e5a5c0a8198a530871cc1ac78",
+    "Nodes/Ui/Inventory/TargetCharaSelect.gd": "09c958e188afc50247b8ed755465768e68728ef624fe43dc0afae83eac98d6c3",
+    "Nodes/Ui/Inventory/portrait.gd": "8a1fefb969c284cdce60fd1d16ba72237cc50f4601c684a14330799e67a73c78",
+    "Nodes/Ui/Inventory/portrait.tscn": "aace988ced4810ca71e57502e6333681dc1290220d37dac7968471de6c0d8c7e",
+    "Nodes/Ui/InventorySelect.tscn": "1a58567f9fb6864640cf17f7691a162f51bd32b65553ddff46b4fe6c4d4e607d",
+    "Nodes/Ui/Options/ControlsUI.tscn": "eeb66987778109208be9a8ab6482a66e50ed052b503df5c74555d7619f376719",
+    "Nodes/Ui/Options/DialogWindow.tscn": "8f8c2f46a9c1ba00103ff193489ae40037199bdbe756661f1546f1c166e2bf28",
+    "Nodes/Ui/Options/OptionsSwitch.tscn": "124cb91f74a7964d3039e643dfb830b26c934d1cd9350544a89d62a8abcdd045",
+    "Nodes/Ui/Options/OptionsUI.tscn": "bb7471abaecf77d65ad1a498c03304f5284dc171dc012148be6ab150c0367444",
+    "Nodes/Ui/Options/ReusableOptionList.tscn": "c54e74c7f2281b8164393c4ce8f37548fbdd2fa407e4295a65a0ea17e6d65da5",
+    "Nodes/Ui/Options/VolumeSlider.tscn": "7b802615c0f0c6846d75efedc0335fa669ec471972b661736a69aba8dea02517",
+    "Nodes/Ui/PSIMenu/PSIMenuUI.tscn": "ad94525a24521dc944f09bb49c858c2f50740fde9a8271189b034924e47b97b6",
+    "Nodes/Ui/PSISelect.tscn": "dfe35c52affbfe0692d1814f006a5721b82406bcfc814e364a26f662f4ded25f",
+    "Nodes/Ui/PSISkillLine.tscn": "73482cd2b06f8451f721aef8c278414e6d09c7250819fb71a0bee9114d376e43",
+    "Nodes/Ui/Reusables/Scrollbar.tscn": "5448fa7a0464b0d7cf18a5a01dde998f96f56d5b0123a5b03d8be0869cc5bfd0",
+    "Nodes/Ui/SkillsMenuUI.tscn": "5908cc9d18e648728034d95bf26d8e2bd74b8d337645382bd254371d53d45f4d",
+    "Nodes/Ui/StatsMenuUI.tscn": "2f227b691a555928da1d6fad7d33f800bf0921f90ddc92be05332994e46168bd",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/ButtonText.gd": "0b03d5d7982499552d0160e1a7fc6c72110d29030878f3c17b48086fcb8ac763",
+    "Scripts/UI/CostLabel.gd": "70ad8b24a77c8bddc5fd4acffb7bb18b91684091fcb949105dba51fb632dad85",
+    "Scripts/UI/Indicator.gd": "1cda14ca3873eaec8f7a345950d60d85dee2e096f2d444c775d2890b9161e1f3",
+    "Scripts/UI/Inventory/InventoryUI.gd": "8d3381024230c304281ebef680e3e26e43e48d3f1ec286b7e76a0d9120d576bd",
+    "Scripts/UI/NamingScreen/ButtonPrompts.gd": "b0a1398101a8151b51ac6418dafa9d86b8eb4074ed47f3ab136eaee515a86c89",
+    "Scripts/UI/NamingScreen/Flavors.gd": "efd38a4072b59fbcdcc171e27c93226659a07fb0c8cbac7cf1d11eb184b1fd54",
+    "Scripts/UI/NamingScreen/TextSpeed.gd": "ac6e7d08c2c4baa3c315b3d905610d7f056dd77958fa4a33c96889a2a2b449ba",
+    "Scripts/UI/Options/ControlButton.gd": "e4675908fc9ceaf634f338a0b2051d92b5d4227812d1ce8f1d4ed2ccdbfc5291",
+    "Scripts/UI/Options/ControlsUI.gd": "b3861f5125664b685a71cca3b5381601a84b0e1acb15edb584e3e1ed4214d6b8",
+    "Scripts/UI/Options/DialogWindow.gd": "5f12c56ac0a30da491aa348d88cbb9a61f14e6d34bd92fdbefe3b6f32f19d76c",
+    "Scripts/UI/Options/OptionsSwitch.gd": "a389f0cec2e40519cd1c64f81e085a711b11fb88d3f372201160ed221db95f63",
+    "Scripts/UI/Options/OptionsUI.gd": "3a7ed05264be2144d8e70fac35ba882ef5593eaa6bce013db916c98c6c529b31",
+    "Scripts/UI/Options/ReusableOptionList.gd": "6cad019d7a8a1ecc8d2d6f1fd726fb1dbecc938411b2395e1090c180c5888d03",
+    "Scripts/UI/Options/VolumeSlider.gd": "de04b623a7a816a85f7d45d2d08bdac0c7df405efaae0112c2675df6d9f72cdf",
+    "Scripts/UI/PSIMenuUI.gd": "988484bff6163bd514de96cf231163939d1a35b7c6d1ebb08dd9cc5c259fac29",
+    "Scripts/UI/PSISelect.gd": "f9214e3146d03d71f1f73442e22d04d167703ef5530bbbc9f68f5a937e89aeb2",
+    "Scripts/UI/PSISkillLine.gd": "60dd6c6df7e5eedd96d221f6f8fe68d2826ccda64a92a056ab87e6f5c770476f",
+    "Scripts/UI/Pausemenu.gd": "118f19d419a89ec09916961b92322f67ce032b44aa8215f9509d31088b421ca2",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/UI/Reusables/Scrollbar.gd": "d93225ed2f66383190e12d57cd1fe5b978ba43b824ffbf3b3893993e0e7fa226",
+    "Scripts/UI/SkillsMenuUI.gd": "0715893ec8b354f412d10986898b0589d5f9db86688ee36432d6c619ff9ae278",
+    "Scripts/UI/TargetCharacter.gd": "b4499f5793964e8a7f6aae6554a0720c46c33925a5bfb16db233f039ae01455e",
+    "Scripts/UI/colorRectFlavor.gd": "aa54241880f05f6efaa4cc7d1996eac12b3c1749a739482976fd4bc3af59d82a",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/UI/statsmenu.gd": "b9422300dd119188b9ae195138f81040327855dacf226c1736a74d801c87537f",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Graphics/UI/Maps/map_reticle.png": "8dd190c6146ca4609257c4efd7a2721ca15c055fe7fd5070659446646f25ebcd",
+    "Graphics/UI/Maps/player_map_locator.png": "e507f7f17fc1998040dfaa1323bc5410d62e5c92b6a91d40223aef8a79065470",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/UI/MapScreen/MapScreen.gd": "3d6bc422458e3bb8862522ce7d991ebef847618fe30dc5a0ac39c9e358c2f4d6",
+    "Nodes/Ui/effects/Fade.gd": "8266bf5f24eedd8281be92a04abe8ab988da720189f2bbc90c24656cbb99efaa",
+    "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f",
+    "Shaders/Fade.shader": "c5c5b6b5b60c8c4b4fab8a9aa105cfa3777ab88eecf1c1ccdfb591db2245146d",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa"
+  },
+  "recipes_sha256": "cc6fca2ab1b2d32ddf83f283f941265644eab9dd478c505b0a09071097a544b5",
+  "recipes_count": 9,
+  "preloads": [
+    {
+      "id": 1470070940,
+      "name": "GameOverRes",
+      "path": "Nodes/Ui/GameOver.tscn",
+      "onready": false,
+      "sha": "12cf56288d7149c5b7f5cb405824393053ea83530f6cd9313bd7aab8e20893ca",
+      "native": "PackedScene"
+    },
+    {
+      "id": 817650320,
+      "name": "CommandsMenuRes",
+      "path": "Nodes/Ui/Pause menu.tscn",
+      "onready": true,
+      "sha": "cc4c6237d51f32d93b5f7375ca94fed5a126c6a35884a95e14d2a486810bf9b7",
+      "native": "PackedScene"
+    },
+    {
+      "id": 4232330153,
+      "name": "DialogueBoxRes",
+      "path": "Nodes/Ui/DialogueBox.tscn",
+      "onready": false,
+      "sha": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+      "native": "PackedScene"
+    },
+    {
+      "id": 948415168,
+      "name": "BattleDialogueBoxRes",
+      "path": "Nodes/Ui/Battle/BattleDialogueBox.tscn",
+      "onready": false,
+      "sha": "f8ab52a6550c1a429e802594fd9617cff56a7da7bdc071df3f642aa459a4f69b",
+      "native": "PackedScene"
+    },
+    {
+      "id": 2938609518,
+      "name": "BattleSceneRes",
+      "path": "Nodes/Ui/Battle/Battle.tscn",
+      "onready": false,
+      "sha": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c",
+      "native": "PackedScene"
+    },
+    {
+      "id": 385753305,
+      "name": "BlackBarsRes",
+      "path": "Nodes/Ui/Blackbars.tscn",
+      "onready": false,
+      "sha": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
+      "native": "PackedScene"
+    },
+    {
+      "id": 3176472579,
+      "name": "ATMMenuRes",
+      "path": "Nodes/Ui/ATM/ATM Menu.tscn",
+      "onready": false,
+      "sha": "ecaf36a0d2c075787dbf28703a4f7547dc72ff4ad7da92e734bea2159c81e6dc",
+      "native": "PackedScene"
+    },
+    {
+      "id": 1186441048,
+      "name": "CashBoxRes",
+      "path": "Nodes/Ui/CashBox.tscn",
+      "onready": false,
+      "sha": "3de63700dced79e8f907d68d67830ae8ddff609c53810ae2849706cafe6717d1",
+      "native": "PackedScene"
+    },
+    {
+      "id": 349367132,
+      "name": "PhoneUnitsBoxRes",
+      "path": "Nodes/Ui/PhoneUnitsBox.tscn",
+      "onready": false,
+      "sha": "5dea68e0956909f5a2f345835cf5bbad6650a891faaa3c2e0e340166365d9051",
+      "native": "PackedScene"
+    },
+    {
+      "id": 3126994652,
+      "name": "KeyIndicatorRes",
+      "path": "Nodes/Ui/KeyCount.tscn",
+      "onready": false,
+      "sha": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
+      "native": "PackedScene"
+    },
+    {
+      "id": 2296429875,
+      "name": "ShopRes",
+      "path": "Nodes/Ui/Shop/ShopUI.tscn",
+      "onready": false,
+      "sha": "ba7a3307a43a3cf0d5899f0ffd6986c6d78aca3ab11b92a9731c0acc253fac9f",
+      "native": "PackedScene"
+    },
+    {
+      "id": 1678422274,
+      "name": "StorageRes",
+      "path": "Nodes/Ui/Storage.tscn",
+      "onready": false,
+      "sha": "e39a84c699f10eb4f8fbf901f726554666486d7dc11f28aada256c024442de92",
+      "native": "PackedScene"
+    },
+    {
+      "id": 2481180749,
+      "name": "SaveSelectRes",
+      "path": "Maps/SaveSelect.tscn",
+      "onready": false,
+      "sha": "cd754211dc3bda6d3bd8afa8c1d1daca74f6d60946e32f9a5909e1d929d5b458",
+      "native": "PackedScene"
+    },
+    {
+      "id": 3914538893,
+      "name": "OcarinaScreenRes",
+      "path": "Nodes/Ui/OcarinaScreen/OcarinaScreen.tscn",
+      "onready": false,
+      "sha": "413aa322c08ccfaf856ded7f61c6461189230931642f62eda9621b95cb63044b",
+      "native": "PackedScene"
+    },
+    {
+      "id": 1240036446,
+      "name": "KeyboardRes",
+      "path": "Maps/Naming screen.tscn",
+      "onready": false,
+      "sha": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
+      "native": "PackedScene"
+    },
+    {
+      "id": 2136657767,
+      "name": "MapScreenRes",
+      "path": "Nodes/Ui/MapScreen/MapScreen.tscn",
+      "onready": false,
+      "sha": "54954ff6eaa5ea46c8caa03d084461978f77a596f7047068fadb6e60d5d5562c",
+      "native": "PackedScene"
+    },
+    {
+      "id": 649653204,
+      "name": "TrainCutsceneRes",
+      "path": "Maps/misc/TrainCutscene.tscn",
+      "onready": false,
+      "sha": "d33a2f19a9bc2158669aea5f606080b9f29251c08bb9c7dec0e02aec78c24bc6",
+      "native": "PackedScene"
+    },
+    {
+      "id": 4182747994,
+      "name": "PartyInfoRes",
+      "path": "Nodes/Ui/PartyInfo.tscn",
+      "onready": false,
+      "sha": "7628826725a82c025207d40996c2c195b628cfd67fc6b9ee4c89fd9ae96599dd",
+      "native": "PackedScene"
+    },
+    {
+      "id": 3945265893,
+      "name": "BattleTransitionRes",
+      "path": "Nodes/Ui/Battle/Battle Transition.tscn",
+      "onready": false,
+      "sha": "392290f15f3ea5e6ef855f3a8fa78720c718e71cd56470d15dde008192da4848",
+      "native": "PackedScene"
+    },
+    {
+      "id": 1242437236,
+      "name": "_menu_flavor_shader",
+      "path": "Shaders/MenuFlavors.tres",
+      "onready": false,
+      "sha": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+      "native": "ShaderMaterial"
+    }
+  ],
+  "onready": [
+    {
+      "name": "_cash",
+      "resource": 1186441048,
+      "native": "CanvasLayer",
+      "recipe": 1388081237
+    },
+    {
+      "name": "_phone_units",
+      "resource": 349367132,
+      "native": "CanvasLayer",
+      "recipe": 3613075622
+    },
+    {
+      "name": "_key",
+      "resource": 3126994652,
+      "native": "CanvasLayer",
+      "recipe": 3807560134
+    },
+    {
+      "name": "_party_info_view",
+      "resource": 4182747994,
+      "native": "CanvasLayer",
+      "recipe": 1201561039
+    },
+    {
+      "name": "_black_bars",
+      "resource": 385753305,
+      "native": "CanvasLayer",
+      "recipe": 2108598386
+    },
+    {
+      "name": "_commands_menu",
+      "resource": 817650320,
+      "native": "CanvasLayer",
+      "recipe": 3055614344
+    },
+    {
+      "name": "_map_screen",
+      "resource": 2136657767,
+      "native": "Control",
+      "recipe": 2662697287
+    }
+  ],
+  "flavors": [
+    "Plain",
+    "Mint",
+    "Strawberry",
+    "Banana",
+    "Peanut",
+    "Grape",
+    "Melon"
+  ],
+  "palette": [
+    [
+      15987444,
+      12563661,
+      8023174,
+      1315095,
+      12211172,
+      14077663,
+      3352899,
+      16722015
+    ],
+    [
+      11141105,
+      5023920,
+      6123429,
+      2296868,
+      9723898,
+      6931396,
+      3545134,
+      16722015
+    ],
+    [
+      16753333,
+      14971017,
+      12075610,
+      3543317,
+      3129436,
+      15631257,
+      5185045,
+      16722015
+    ],
+    [
+      16765266,
+      13922860,
+      11359535,
+      2230791,
+      14176547,
+      14715703,
+      3938836,
+      16722015
+    ],
+    [
+      16419410,
+      12732220,
+      10039601,
+      3347994,
+      13182759,
+      14180678,
+      4401186,
+      16722015
+    ],
+    [
+      15381503,
+      10906054,
+      4676769,
+      1514290,
+      14563733,
+      12156630,
+      3024707,
+      11808045
+    ],
+    [
+      8511598,
+      4961127,
+      9845064,
+      2691100,
+      16732021,
+      11060329,
+      3547430,
+      11808045
+    ]
+  ],
+  "shader_defaults": {
+    "OLDCOLOR1": [
+      0.952941,
+      0.94902,
+      0.956863,
+      1.0
+    ],
+    "NEWCOLOR1": [
+      0.635294,
+      0.941176,
+      0.972549,
+      1.0
+    ],
+    "OLDCOLOR2": [
+      0.74902,
+      0.705882,
+      0.803922,
+      1.0
+    ],
+    "NEWCOLOR2": [
+      0.54902,
+      0.686275,
+      0.941176,
+      1.0
+    ],
+    "OLDCOLOR3": [
+      0.478431,
+      0.423529,
+      0.52549,
+      1.0
+    ],
+    "NEWCOLOR3": [
+      0.482353,
+      0.545098,
+      0.8,
+      1.0
+    ],
+    "OLDCOLOR4": [
+      0.0784314,
+      0.0666667,
+      0.0901961,
+      1.0
+    ],
+    "NEWCOLOR4": [
+      0.192157,
+      0.0745098,
+      0.0196078,
+      1.0
+    ],
+    "OLDCOLOR5": [
+      0.729412,
+      0.32549,
+      0.894118,
+      1.0
+    ],
+    "NEWCOLOR5": [
+      0.819608,
+      0.713726,
+      0.129412,
+      1.0
+    ],
+    "OLDCOLOR6": [
+      0.839216,
+      0.807843,
+      0.87451,
+      1.0
+    ],
+    "NEWCOLOR6": [
+      0.639216,
+      0.85098,
+      0.92549,
+      1.0
+    ],
+    "OLDCOLOR7": [
+      0.2,
+      0.160784,
+      0.262745,
+      1.0
+    ],
+    "NEWCOLOR7": [
+      0.235294,
+      0.105882,
+      0.0784314,
+      1.0
+    ],
+    "OLDCOLOR8": [
+      0.705882,
+      0.176471,
+      0.176471,
+      1.0
+    ],
+    "NEWCOLOR8": [
+      0.223529,
+      0.74902,
+      0.0117647,
+      1.0
+    ]
+  },
+  "color_distance_threshold": 0.01,
+  "functions": [
+    {
+      "name": "_ready",
+      "sha": "acd4223459da8ac1214ad7151df2401ca24543f0896f63964ef92aefec0b7cea"
+    },
+    {
+      "name": "set_menu_flavors",
+      "sha": "1ba7da9d1d0ec4497fe84645eca75118581060c5ff5251a81d1e0762c8da4e1f"
+    },
+    {
+      "name": "_load_battle_bgs",
+      "sha": "ee602cad6d3434ef553dd4ea0af2533ae3b499a22765a0dbf6e5cffac3351079"
+    },
+    {
+      "name": "_add_to_canvas",
+      "sha": "19ddfb4325d12da0b78222eeaa34236487bde6f1dacdcf712f485874a6be28e8"
+    },
+    {
+      "name": "add_ui",
+      "sha": "83f54120d960c6f35e88e780bad51e74c35eb744b1de7e68756a6c5303f2d65d"
+    }
+  ],
+  "scene_admitted": false,
+  "pending": [
+    "Missing PackedScene preloads need complete checked recipes, not source hash proxies",
+    "Complete original50 PackedScene directory resources use actual typed owners before stableCanvas; native BG instance/rendering remains pending",
+    "Every native UI constructor/Ready/layout/script requires its typed actual owner",
+    "Ready tail source seven add_to_canvas/Fade/camera remains pending until those native/script consumers complete"
+  ]
+}

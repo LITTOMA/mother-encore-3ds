@@ -7,11 +7,13 @@ namespace encore::ctr {
 // substituted with an unrelated source, even in the new scope.
 inline bool resolve_audio_source_identity(uint32_t capability,const upstream::RoomResource&resource,std::string_view path,const upstream::AudioBank&bank,upstream::AudioAsset&output,std::string&error){
  auto fail=[&](){error="Room/audio bank source identity mismatch";return false;};
- if(capability<1||capability>9||resource.kind!=2||!resource.stable_id||path.empty())return fail();upstream::AudioAsset candidate;
+ if(capability<1||capability>9||resource.kind!=2||!resource.stable_id||path.empty())return fail();
+ upstream::AudioAsset candidate;
  if(bank.find(resource.stable_id,candidate)){
   if(candidate.source_path!=path||candidate.source_sha256!=resource.sha256)return fail();
  }else{
-  if(capability!=9)return fail();uint32_t matches=0;
+  if(capability!=9)return fail();
+  uint32_t matches=0;
   for(uint32_t i=0;i<bank.count();++i){const auto asset=bank.asset(i);if(asset.source_path==path){if(asset.source_sha256!=resource.sha256)return fail();candidate=asset;++matches;}}
   if(matches!=1)return fail();
  }

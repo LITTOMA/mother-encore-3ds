@@ -12,7 +12,10 @@ void check(bool value,const char*label){++checks;if(!value){okay=false;std::fpri
 bool near(float a,float b){return std::abs(a-b)<.001f;}
 std::vector<DialogueChoicesEvent>drain(DialogueChoices&m){std::vector<DialogueChoicesEvent>out;DialogueChoicesEvent e;while(m.poll_event(e))out.push_back(e);return out;}
 uint32_t crc(const uint8_t*p,size_t n){uint32_t c=~0u;while(n--){c^=*p++;for(unsigned i=0;i<8;++i)c=(c>>1)^(0xedb88320u&uint32_t(-int32_t(c&1)));}return ~c;}
-void put(std::vector<uint8_t>&b,size_t offset,uint32_t value){for(unsigned i=0;i<4;++i)b[offset+i]=uint8_t(value>>(8*i));}
+void put(std::vector<uint8_t>&b,size_t offset,uint32_t value){
+ if(offset>b.size()||b.size()-offset<4){check(false,"manual mutation offset outside resource");return;}
+ for(unsigned i=0;i<4;++i)b[offset+i]=uint8_t(value>>(8*i));
+}
 void repair(std::vector<uint8_t>&b){put(b,12,uint32_t(b.size()));put(b,16,crc(b.data()+24,b.size()-24));}
 size_t find(const std::vector<uint8_t>&b,const std::string&s){return size_t(std::search(b.begin(),b.end(),s.begin(),s.end())-b.begin());}
 }

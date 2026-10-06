@@ -260,6 +260,11 @@
       "path": "data/house.encsparkles"
     },
     {
+      "id": 36,
+      "role": "FieldPsi",
+      "path": "data/field.encpsi"
+    },
+    {
       "id": 37,
       "role": "FieldProgrammes",
       "path": "data/podunk-programmes.encprog"
@@ -268,6 +273,21 @@
       "id": 38,
       "role": "FieldInventory",
       "path": "data/podunk.encinventory"
+    },
+    {
+      "id": 39,
+      "role": "FieldItemDefinitions",
+      "path": "data/podunk.encfielditems"
+    },
+    {
+      "id": 40,
+      "role": "FieldItemDetails",
+      "path": "data/podunk.encfielddetails"
+    },
+    {
+      "id": 41,
+      "role": "FieldGoods",
+      "path": "data/podunk.encgoods"
     }
   ],
   "encounters": [

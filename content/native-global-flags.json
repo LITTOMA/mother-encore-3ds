@@ -1,0 +1,1115 @@
+{
+  "schema": 1,
+  "kind": "encore.global-flags.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "family": 1162739783,
+  "owner": "Scripts/global/globalData.gd",
+  "sources": {
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_default.yaml": "b975d721c64db8e9bb7e785ed71de4d56a6c0ee914ab6230e28f0cc50e19ae33",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f"
+  },
+  "registered": [
+    {
+      "name": "doll_melody",
+      "initial": false
+    },
+    {
+      "name": "canary_melody",
+      "initial": false
+    },
+    {
+      "name": "monkey_melody",
+      "initial": false
+    },
+    {
+      "name": "piano_melody",
+      "initial": false
+    },
+    {
+      "name": "cactus_melody",
+      "initial": false
+    },
+    {
+      "name": "dragon_melody",
+      "initial": false
+    },
+    {
+      "name": "eve_melody",
+      "initial": false
+    },
+    {
+      "name": "grave_melody",
+      "initial": false
+    },
+    {
+      "name": "switch_leader",
+      "initial": false
+    },
+    {
+      "name": "bat",
+      "initial": false
+    },
+    {
+      "name": "energy_beam",
+      "initial": false
+    },
+    {
+      "name": "eagle_feather",
+      "initial": false
+    },
+    {
+      "name": "encore_tutorial",
+      "initial": false
+    },
+    {
+      "name": "used_encore",
+      "initial": false
+    },
+    {
+      "name": "earned_cash",
+      "initial": false
+    },
+    {
+      "name": "good_morning",
+      "initial": false
+    },
+    {
+      "name": "saved",
+      "initial": false
+    },
+    {
+      "name": "npc_disappear_1",
+      "initial": false
+    },
+    {
+      "name": "npc_dialog_1",
+      "initial": false
+    },
+    {
+      "name": "npc_dialog_2",
+      "initial": false
+    },
+    {
+      "name": "visited_podunk",
+      "initial": false
+    },
+    {
+      "name": "visited_magicant",
+      "initial": false
+    },
+    {
+      "name": "visited_merrysville",
+      "initial": false
+    },
+    {
+      "name": "visited_twinkle_elementary",
+      "initial": false
+    },
+    {
+      "name": "visited_reindeer",
+      "initial": false
+    },
+    {
+      "name": "visited_spookane",
+      "initial": false
+    },
+    {
+      "name": "visited_snowman",
+      "initial": false
+    },
+    {
+      "name": "visited_yucca",
+      "initial": false
+    },
+    {
+      "name": "visited_youngtown",
+      "initial": false
+    },
+    {
+      "name": "visited_ellay",
+      "initial": false
+    },
+    {
+      "name": "visited_mtitoi",
+      "initial": false
+    },
+    {
+      "name": "pippi_reunion",
+      "initial": false
+    },
+    {
+      "name": "pippi_met_lloyd",
+      "initial": false
+    },
+    {
+      "name": "pippi_met_ana",
+      "initial": false
+    },
+    {
+      "name": "pippi_met_teddy",
+      "initial": false
+    },
+    {
+      "name": "pippi_rocket",
+      "initial": false
+    },
+    {
+      "name": "lloyd_magicant",
+      "initial": false
+    },
+    {
+      "name": "ana_magicant",
+      "initial": false
+    },
+    {
+      "name": "teddy_magicant",
+      "initial": false
+    },
+    {
+      "name": "poltergeist",
+      "initial": false
+    },
+    {
+      "name": "mimmie_door_opened",
+      "initial": false
+    },
+    {
+      "name": "doll_attack",
+      "initial": false
+    },
+    {
+      "name": "pillow_attack",
+      "initial": false
+    },
+    {
+      "name": "minnie_leave",
+      "initial": false
+    },
+    {
+      "name": "minnie_door",
+      "initial": false
+    },
+    {
+      "name": "doll_defeated",
+      "initial": false
+    },
+    {
+      "name": "phone_ring",
+      "initial": false
+    },
+    {
+      "name": "talked_to_dad",
+      "initial": false
+    },
+    {
+      "name": "mimmie_ask_key",
+      "initial": false
+    },
+    {
+      "name": "carol_ask_key",
+      "initial": false
+    },
+    {
+      "name": "mick_scratch",
+      "initial": false
+    },
+    {
+      "name": "mick_telepathy",
+      "initial": false
+    },
+    {
+      "name": "ninten_basement_door",
+      "initial": false
+    },
+    {
+      "name": "got_juice",
+      "initial": false
+    },
+    {
+      "name": "got_diary",
+      "initial": false
+    },
+    {
+      "name": "got_dog_treats",
+      "initial": false
+    },
+    {
+      "name": "got_asthma_spray",
+      "initial": false
+    },
+    {
+      "name": "gave_treats",
+      "initial": false
+    },
+    {
+      "name": "beat_dog_bridge",
+      "initial": false
+    },
+    {
+      "name": "pippis_mom_call",
+      "initial": false
+    },
+    {
+      "name": "pippis_mom_help",
+      "initial": false
+    },
+    {
+      "name": "disguised_zombie_defeated",
+      "initial": false
+    },
+    {
+      "name": "cem_roots_grown",
+      "initial": false
+    },
+    {
+      "name": "got_shovel",
+      "initial": false
+    },
+    {
+      "name": "returned_shovel",
+      "initial": false
+    },
+    {
+      "name": "hidden_entrance_opened",
+      "initial": false
+    },
+    {
+      "name": "pippi_fight",
+      "initial": false
+    },
+    {
+      "name": "pippi_fought",
+      "initial": false
+    },
+    {
+      "name": "pippi_rescued",
+      "initial": false
+    },
+    {
+      "name": "courage_badge_received",
+      "initial": false
+    },
+    {
+      "name": "church_door_opened",
+      "initial": false
+    },
+    {
+      "name": "church_exited",
+      "initial": false
+    },
+    {
+      "name": "canary_found",
+      "initial": false
+    },
+    {
+      "name": "wally_attack",
+      "initial": false
+    },
+    {
+      "name": "wally_fought",
+      "initial": false
+    },
+    {
+      "name": "wally_defeat",
+      "initial": false
+    },
+    {
+      "name": "pippi_reunite",
+      "initial": false
+    },
+    {
+      "name": "alfred_song",
+      "initial": false
+    },
+    {
+      "name": "leave_canary_village",
+      "initial": false
+    },
+    {
+      "name": "pippi_delivered",
+      "initial": false
+    },
+    {
+      "name": "zoo_key_stolen",
+      "initial": false
+    },
+    {
+      "name": "starman_jr_fought",
+      "initial": false
+    },
+    {
+      "name": "zoo_freed",
+      "initial": false
+    },
+    {
+      "name": "monkey_apologize",
+      "initial": false
+    },
+    {
+      "name": "guard_moved",
+      "initial": false
+    },
+    {
+      "name": "ninten_family_goodbye",
+      "initial": false
+    },
+    {
+      "name": "got_magic_candy",
+      "initial": false
+    },
+    {
+      "name": "got_magic_ribbon",
+      "initial": false
+    },
+    {
+      "name": "lent_cash_card",
+      "initial": false
+    },
+    {
+      "name": "got_big_bag",
+      "initial": false
+    },
+    {
+      "name": "met_happiness_guy",
+      "initial": false
+    },
+    {
+      "name": "met_guy_who_talks_about_how_you_cant_part_if_you_havent_met",
+      "initial": false
+    },
+    {
+      "name": "got_nicknamed",
+      "initial": false
+    },
+    {
+      "name": "slept_at_spoon_guys_place",
+      "initial": false
+    },
+    {
+      "name": "guard_riddle_solved",
+      "initial": false
+    },
+    {
+      "name": "fountain_scouts_met",
+      "initial": false
+    },
+    {
+      "name": "marys_story_learned",
+      "initial": false
+    },
+    {
+      "name": "enteredwell",
+      "initial": false
+    },
+    {
+      "name": "first_flying_man",
+      "initial": false
+    },
+    {
+      "name": "flying_man_in_party",
+      "initial": false
+    },
+    {
+      "name": "flying_man_1_joined",
+      "initial": false
+    },
+    {
+      "name": "flying_man_2_joined",
+      "initial": false
+    },
+    {
+      "name": "flying_man_3_joined",
+      "initial": false
+    },
+    {
+      "name": "flying_man_4_joined",
+      "initial": false
+    },
+    {
+      "name": "flying_man_5_joined",
+      "initial": false
+    },
+    {
+      "name": "onyx_hook_found",
+      "initial": false
+    },
+    {
+      "name": "fish_attack",
+      "initial": false
+    },
+    {
+      "name": "fish_defeat",
+      "initial": false
+    },
+    {
+      "name": "forgotten_man_1",
+      "initial": false
+    },
+    {
+      "name": "forgotten_man_2",
+      "initial": false
+    },
+    {
+      "name": "forgotten_man_3",
+      "initial": false
+    },
+    {
+      "name": "forgotten_man_4",
+      "initial": false
+    },
+    {
+      "name": "forgotten_man_5",
+      "initial": false
+    },
+    {
+      "name": "roof_door_checked",
+      "initial": false
+    },
+    {
+      "name": "janitor_cutscene_finished",
+      "initial": false
+    },
+    {
+      "name": "lloyd_roof_1",
+      "initial": false
+    },
+    {
+      "name": "rat_king_1",
+      "initial": false
+    },
+    {
+      "name": "rat_king_2",
+      "initial": false
+    },
+    {
+      "name": "sweet_factory_key_1",
+      "initial": false
+    },
+    {
+      "name": "got_br_wings",
+      "initial": false
+    },
+    {
+      "name": "got_br_head",
+      "initial": false
+    },
+    {
+      "name": "br_progress_1",
+      "initial": false
+    },
+    {
+      "name": "br_progress_1_arrived",
+      "initial": false
+    },
+    {
+      "name": "br_wings_attached",
+      "initial": false
+    },
+    {
+      "name": "br_progress_2",
+      "initial": false
+    },
+    {
+      "name": "br_progress_2_arrived",
+      "initial": false
+    },
+    {
+      "name": "br_head_attached",
+      "initial": false
+    },
+    {
+      "name": "br_progress_3",
+      "initial": false
+    },
+    {
+      "name": "br_progress_3_arrived",
+      "initial": false
+    },
+    {
+      "name": "br_finishing_touch",
+      "initial": false
+    },
+    {
+      "name": "rat_king_attack",
+      "initial": false
+    },
+    {
+      "name": "rat_king_defeat",
+      "initial": false
+    },
+    {
+      "name": "rat_king_disappear",
+      "initial": false
+    },
+    {
+      "name": "bottle_rocket_found",
+      "initial": false
+    },
+    {
+      "name": "sweet_factory_bomb_chain",
+      "initial": false
+    },
+    {
+      "name": "sweet_factory_exit_open",
+      "initial": false
+    },
+    {
+      "name": "lloyd_befriended",
+      "initial": false
+    },
+    {
+      "name": "lab_destroyed",
+      "initial": false
+    },
+    {
+      "name": "missile_explosion",
+      "initial": false
+    },
+    {
+      "name": "missile_damage_seen",
+      "initial": false
+    },
+    {
+      "name": "weird_teacher_appear",
+      "initial": false
+    },
+    {
+      "name": "weird_teacher_alt_dialogue",
+      "initial": false
+    },
+    {
+      "name": "weird_teacher_real_rocket_launched",
+      "initial": false
+    },
+    {
+      "name": "got_factory_pass",
+      "initial": false
+    },
+    {
+      "name": "guard_dog_beaten",
+      "initial": false
+    },
+    {
+      "name": "drdistorto_1",
+      "initial": false
+    },
+    {
+      "name": "drdistorto_2",
+      "initial": false
+    },
+    {
+      "name": "drdistorto_3",
+      "initial": false
+    },
+    {
+      "name": "drdistorto_4",
+      "initial": false
+    },
+    {
+      "name": "computer_left_hacked",
+      "initial": false
+    },
+    {
+      "name": "computer_right_hacked",
+      "initial": false
+    },
+    {
+      "name": "computers_all_hacked",
+      "initial": false
+    },
+    {
+      "name": "franklin_badge_found",
+      "initial": false
+    },
+    {
+      "name": "drdistorto_attack",
+      "initial": false
+    },
+    {
+      "name": "drdistorto_defeat",
+      "initial": false
+    },
+    {
+      "name": "rocket_launched",
+      "initial": false
+    },
+    {
+      "name": "drdistorto_disappear",
+      "initial": false
+    },
+    {
+      "name": "lloyd_kitchen",
+      "initial": false
+    },
+    {
+      "name": "fixed_merrysville_road_bridge",
+      "initial": false
+    },
+    {
+      "name": "lloyd_mom_goodbye",
+      "initial": false
+    },
+    {
+      "name": "train_to_reindeer",
+      "initial": false
+    },
+    {
+      "name": "met_arms_dealer",
+      "initial": false
+    },
+    {
+      "name": "received_swindler_money",
+      "initial": false
+    },
+    {
+      "name": "donated_to_charity",
+      "initial": false
+    },
+    {
+      "name": "found_ana_hat",
+      "initial": false
+    },
+    {
+      "name": "magicant_second_visit",
+      "initial": false
+    },
+    {
+      "name": "wally2_attack",
+      "initial": false
+    },
+    {
+      "name": "wally2_defeat",
+      "initial": false
+    },
+    {
+      "name": "lloyd_asleep",
+      "initial": false
+    },
+    {
+      "name": "ana_befriended",
+      "initial": false
+    },
+    {
+      "name": "nancy_attack",
+      "initial": false
+    },
+    {
+      "name": "nancy_defeat",
+      "initial": false
+    },
+    {
+      "name": "magicant_third_visit",
+      "initial": false
+    },
+    {
+      "name": "giantrobot1_attack",
+      "initial": false
+    },
+    {
+      "name": "giantrobot1_defeat",
+      "initial": false
+    },
+    {
+      "name": "magicant_fourth_visit",
+      "initial": false
+    },
+    {
+      "name": "magicant_fifth_visit",
+      "initial": false
+    },
+    {
+      "name": "magicant_sixth_visit",
+      "initial": false
+    }
+  ],
+  "profiles": [
+    {
+      "source": "Data/save_new_game.yaml",
+      "normal": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "objects": [],
+      "seen": []
+    },
+    {
+      "source": "Data/save_default.yaml",
+      "normal": [
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "objects": [],
+      "seen": []
+    }
+  ],
+  "policy": {
+    "normal_set": "registered-only",
+    "object_set": "insert",
+    "source_load": "replace-dynamic-project-registered",
+    "seen_set": "actual-dialogue-key",
+    "emit": "after-write-even-unchanged"
+  },
+  "scope": [
+    "All original registered flags, including source unfinished future-area declarations; declaring a flag does not admit that area",
+    "Only boolean flags/object_flags/seen_dialogue_flags save projection; no scene/party/inventory/save-slot schema replacement",
+    "Source setter unknown normal key is a known no-op; dynamic object and actual path-qualified seen keys are preserved",
+    "Flag emission belongs to the real global signal owner; this consumer never approves global or globaldata Ready"
+  ]
+}

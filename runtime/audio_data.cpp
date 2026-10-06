@@ -99,6 +99,7 @@ bool AudioFrameCursor::reset(uint32_t frames,uint32_t loop_start,bool loops){
     if(!frames||(loops&&loop_start>=frames)||(!loops&&loop_start!=0))return false;
     frames_=frames;loop_start_=loop_start;loops_=loops;position_=0;return true;
 }
+bool AudioFrameCursor::seek(uint32_t position){if(!frames_||position>frames_)return false;position_=position;return true;}
 uint32_t AudioFrameCursor::take(uint32_t maximum,uint32_t& first){
     if(position_==frames_&&loops_)position_=loop_start_;
     first=position_;const uint32_t n=std::min(maximum,frames_-position_);position_+=n;return n;
@@ -119,6 +120,7 @@ bool AudioPcmStream::open(const AudioAsset& a,const char* path,std::string& erro
 }
 void AudioPcmStream::close(){if(file_)std::fclose(file_);file_=nullptr;}
 bool AudioPcmStream::rewind(){return file_&&cursor_.reset(frames_,loop_start_,loops_);}
+bool AudioPcmStream::seek(uint32_t position){if(!file_||position>frames_)return false;const uint64_t offset=uint64_t(position)*channels_*2;if(offset>uint64_t(std::numeric_limits<long>::max()))return false;const auto old=std::ftell(file_);if(old<0)return false;if(std::fseek(file_,long(offset),SEEK_SET)!=0){std::fseek(file_,old,SEEK_SET);return false;}if(!cursor_.seek(position)){std::fseek(file_,old,SEEK_SET);return false;}return true;}
 bool AudioPcmStream::read(int16_t* output,uint32_t capacity,uint32_t& frames,std::string& error){
     frames=0;if(!file_||!output||!capacity){error="Invalid PCM read";return false;}
     while(frames<capacity){uint32_t first=0;const uint32_t n=cursor_.take(capacity-frames,first);if(!n)break;

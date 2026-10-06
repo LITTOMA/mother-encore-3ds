@@ -15,7 +15,7 @@
     "tools/menu_audio_binding.py": "e62bd2de48cea6a4822773246a8582ce20f4db45118be13dede21935266e87ac",
     "content/native-dialogue-choices.json": "44635e532e9acb1ae9b08c58348b927fbe1fe44f245e4430b91ad306f337f8cf",
     "content/phone-linker-bindings.json": "4d6f102b366141f9adff47aee73f5e2b955aba7cfb0ad632b2a4c9f6a4db2b7a",
-    "tools/phone_linker_bindings.py": "e0781044e3b22cd19c4db42d127593c4c8a3aa89e82275a2e36f11494ea04bd6"
+    "tools/phone_linker_bindings.py": "a12a0278ffa10e9d6169e5de31654626a3b4da99c82183b586d37232b1cf45e5"
   },
   "sources": {
     "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
@@ -158,12 +158,16 @@
     "Audio/Sound effects/EB/heal 1.wav.import": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
     "Audio/Sound effects/M3/register.wav": "356263c925d453dd648a773559f91edba5111db2d72db43184d101bd620a2124",
     "Audio/Sound effects/M3/register.wav.import": "b8de48d630df47305149c77c93c4a5d84542a51fbc22af1fbb21c1a0b6be4ddf",
+    "Audio/Sound effects/M3/menu_open.wav": "83223cdddbc5fbc9b80da386498116984e3ba591b205b925f02fff24eaf4b487",
+    "Audio/Sound effects/M3/menu_open.wav.import": "ed14a77347f70116b0521143e87cd2dbfc88283f8183d50a8b155cfd6bf5fb41",
+    "Audio/Sound effects/M3/menu_close.wav": "85efc975cc8127461393b35fa30b8a7f884b17a1d1e0ba10863075b78d63c44b",
+    "Audio/Sound effects/M3/menu_close.wav.import": "15e392266c70825cf8af2e04059ae430843b8421ff7b521ea63a752d8bcd389e",
     "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699"
   },
   "outputs": {
-    "content/native-opening.json": "fe230562cdeb4ab9ae3abd5472e7f469cd89dc871b05fe08850e292dfd70c7d3",
-    "content/native-house.json": "81a7fa9f4bcee35ea52669a2e6b8f4ac7af2f0b3eee0b040d83dada793c6ca8e",
-    "content/native-audio.json": "7339a9fada8b0077f08cefaefbff0391248ec6b56d20e9eba43a7fc17b8e619a"
+    "content/native-opening.json": "7465d226ae3a8e8ee404be64668edba67fbc390c81e00c04471ed098ac11f474",
+    "content/native-house.json": "fba1a433cc91e2cbc7c4b951188bb01a329322b76ddae401a887793b86a9d75d",
+    "content/native-audio.json": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910"
   },
   "stable_namespaces": {
     "preserved_program_ids": [

@@ -131,7 +131,8 @@ bool AudioPlayer::fade_all_music(double duration,std::string& error){
 bool AudioPlayer::stop_lane(AudioLane which,std::string& error){
     const auto lane=uint32_t(which);if(lane>=lane_count){error="Unsupported audio stop lane";return false;}
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
-    if(voices_[lane].samples)stop(lane);error.clear();return true;
+    if(voices_[lane].samples)stop(lane);
+    error.clear();return true;
 }
 bool AudioPlayer::consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error,const RoomMusicFadeHandler&fade_handler){
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}

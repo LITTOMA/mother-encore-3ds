@@ -37,6 +37,7 @@ class AudioFrameCursor {
 public:
     bool reset(uint32_t frames,uint32_t loop_start,bool loops);
     uint32_t take(uint32_t maximum,uint32_t& first);
+    bool seek(uint32_t position);
     uint32_t position() const { return position_; }
 private:
     uint32_t frames_=0,loop_start_=0,position_=0; bool loops_=false;
@@ -52,6 +53,8 @@ public:
     // Capacity and returned count are stereo/mono FRAMES, not scalar samples.
     bool read(int16_t* output,uint32_t capacity,uint32_t& frames,std::string& error);
     bool rewind();
+    // Frame position. Failure preserves the previous cursor and file handle.
+    bool seek(uint32_t position);
     bool is_open() const {return file_!=nullptr;}
 private:
     FILE* file_=nullptr;

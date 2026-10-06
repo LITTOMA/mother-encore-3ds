@@ -117,6 +117,8 @@ bool FieldShopRuntime::open(const std::string &name, std::string &e) {
                        data_->policy(data_->offers()[n])->doses, false});
   FieldShopResult result;
   result.action = FieldShopAction::Ready;
+  if (host_.source_items && !host_.source_items(preview, e))
+    return false;
   if (!host_.commit(s, s, result, e))
     return false;
   *random_ = r;

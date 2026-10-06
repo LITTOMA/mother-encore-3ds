@@ -101,11 +101,11 @@ namespace encore::upstream {
    return !s.empty()&&s!="."&&s!=".."&&s.find_first_of("/:\\") ==s.npos;
   }
   bool native_canvas(uint32_t i){
-   return i!=0&&i!=6&&i!=8&&i!=14&&i!=23&&i!=25;
+   return i!=0&&i!=6&&i!=8&&i!=14&&i!=23&&i!=25&&i!=43&&i!=44;
   }
   // Class names form the native structural schema, not game-content bindings.
   const char*native_classes[]={
-   "Node","Node2D","Sprite","VisibilityNotifier2D","Position2D","CollisionShape2D","AnimationPlayer","Area2D","Timer","KinematicBody2D","VisibilityEnabler2D","TextureRect","HBoxContainer","Label","AudioStreamPlayer","RayCast2D","AnimatedSprite","StaticBody2D","CollisionPolygon2D","TileMap","YSort","Camera2D","AudioStreamPlayer2D","Tween","ReferenceRect","CanvasLayer","Control","NinePatchRect","GridContainer","RichTextLabel","VScrollBar"
+   "Node","Node2D","Sprite","VisibilityNotifier2D","Position2D","CollisionShape2D","AnimationPlayer","Area2D","Timer","KinematicBody2D","VisibilityEnabler2D","TextureRect","HBoxContainer","Label","AudioStreamPlayer","RayCast2D","AnimatedSprite","StaticBody2D","CollisionPolygon2D","TileMap","YSort","Camera2D","AudioStreamPlayer2D","Tween","ReferenceRect","CanvasLayer","Control","NinePatchRect","GridContainer","RichTextLabel","VScrollBar","PanelContainer","ColorRect","CenterContainer","MarginContainer","VBoxContainer","TextureButton","ScrollContainer","HScrollBar","TextureProgress","Panel","Path2D","PathFollow2D","WorldEnvironment","ParallaxBackground","ParallaxLayer"
   }
   ;
  }
@@ -162,7 +162,7 @@ namespace encore::upstream {
   }
   ;
   if(!p||n<128||n>32*1024*1024)return reject("NodeRecipe size rejected");
-  if(std::memcmp(p,"ENCFNRC1",8)||word(p+8)!=1||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e003d||word(p+28)!=3||!word(p+32)||word(p+32)>100000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("NodeRecipe identity/version/capability rejected");
+  if(std::memcmp(p,"ENCFNRC1",8)||word(p+8)!=1||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e003d||(word(p+28)!=3&&word(p+28)!=4&&word(p+28)!=5)||!word(p+32)||word(p+32)>100000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("NodeRecipe identity/version/capability rejected");
   if(crc(p+128,n-128)!=word(p+20)||std::all_of(p+92,p+124,[](uint8_t v){
    return !v;
   }
@@ -176,7 +176,7 @@ namespace encore::upstream {
   ;
   d.scene_=r.text();
   auto count=r.integer();
-  if(!r.ok||!path(d.scene_)||count!=std::size(native_classes))return reject("NodeRecipe native class schema rejected");
+  if(!r.ok||!path(d.scene_)||count!=(word(p+28)==3?31:word(p+28)==4?43:std::size(native_classes)))return reject("NodeRecipe native class schema rejected");
   for(uint32_t i=0;i<count;++i){
    auto s=r.text();
    if(s!=native_classes[i])return reject("NodeRecipe class opcode rejected");
@@ -267,17 +267,17 @@ namespace encore::upstream {
   for(uint32_t i=0;i<layer_count;++i){
    FieldRecipeCanvasLayer c;c.id=r.integer();c.layer=r.signed_integer();auto follow=r.integer(),custom=r.integer();c.world_2d_binding=r.integer();auto visible=r.integer();c.follow_viewport=follow!=0;c.custom_viewport=custom!=0;c.visible=visible!=0;c.follow_scale=r.scalar();for(auto&v:c.transform)v=r.vector();c.offset=r.vector();c.rotation=r.scalar();c.scale=r.vector();
    auto node=d.record(c.id);
-   if(!r.ok||!node||node->class_index!=25||follow>1||custom||c.world_2d_binding||visible>1||!d.layers_.emplace(c.id,c).second)return reject("NodeRecipe CanvasLayer source/external binding rejected");
+   if(!r.ok||!node||(node->class_index!=25&&node->class_index!=44)||follow>1||custom||c.world_2d_binding||visible>1||!d.layers_.emplace(c.id,c).second)return reject("NodeRecipe CanvasLayer source/external binding rejected");
   }
   auto control_count=r.integer();
   if(!r.ok||control_count>word(p+32))return reject("NodeRecipe Control count rejected");
   for(uint32_t i=0;i<control_count;++i){
    FieldRecipeControl c;c.id=r.integer();auto clip=r.integer();c.clip=clip!=0;c.mouse=r.integer();c.focus=r.integer();for(auto&v:c.grow)v=r.signed_integer();for(auto&v:c.size_flags)v=r.integer();for(auto&v:c.anchors)v=r.scalar();for(auto&v:c.margins)v=r.scalar();c.position=r.vector();c.size=r.vector();c.scale=r.vector();c.rotation=r.scalar();c.pivot=r.vector();c.min_size=r.vector();c.stretch=r.scalar();auto node=d.record(c.id);
-   if(!r.ok||!node||!(node->class_index==11||node->class_index==12||node->class_index==13||node->class_index==24||node->class_index>=26)||clip>1||c.mouse>2||c.focus>2||c.grow[0]<0||c.grow[0]>2||c.grow[1]<0||c.grow[1]>2||c.size_flags[0]>15||c.size_flags[1]>15||c.size.x<0||c.size.y<0||c.min_size.x<0||c.min_size.y<0||c.stretch<=0||!d.controls_.emplace(c.id,c).second)return reject("NodeRecipe Control source/layout rejected");
+   if(!r.ok||!node||!(node->class_index==11||node->class_index==12||node->class_index==13||node->class_index==24||(node->class_index>=26&&node->class_index<=40))||clip>1||c.mouse>2||c.focus>2||c.grow[0]<0||c.grow[0]>2||c.grow[1]<0||c.grow[1]>2||c.size_flags[0]>15||c.size_flags[1]>15||c.size.x<0||c.size.y<0||c.min_size.x<0||c.min_size.y<0||(word(p+28)==3?c.stretch<=0:c.stretch<0)||!d.controls_.emplace(c.id,c).second)return reject("NodeRecipe Control source/layout rejected");
   }
   for(const auto&node:d.records_){
-   bool control=node.class_index==11||node.class_index==12||node.class_index==13||node.class_index==24||node.class_index>=26;
-   if((node.class_index==25)!=bool(d.layers_.count(node.id))||control!=bool(d.controls_.count(node.id)))return reject("NodeRecipe native owner properties missing");
+   bool control=node.class_index==11||node.class_index==12||node.class_index==13||node.class_index==24||(node.class_index>=26&&node.class_index<=40);
+   if((node.class_index==25||node.class_index==44)!=bool(d.layers_.count(node.id))||control!=bool(d.controls_.count(node.id)))return reject("NodeRecipe native owner properties missing");
   }
   if(!r.ok||r.at!=n||!d.source_hash(d.scene_,h)||h!=id.source_sha256)return reject("NodeRecipe trailing/source rejected");
   for(const auto&a:d.records_)if(!a.script.empty()){

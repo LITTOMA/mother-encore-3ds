@@ -32,6 +32,9 @@ const char* suffix(uint32_t role) {
     case ResourceRole::ItemDetails:return ".encdetails";
     case ResourceRole::FieldEquipment:return ".encfield";case ResourceRole::FieldPsi:return ".encpsi";case ResourceRole::FieldProgrammes:return ".encprog";case ResourceRole::FieldInventory:return ".encinventory";
     case ResourceRole::ItemUse:return ".encuse";
+    case ResourceRole::FieldItemDefinitions:return ".encfielditems";
+    case ResourceRole::FieldItemDetails:return ".encfielddetails";
+    case ResourceRole::FieldGoods:return ".encgoods";
     case ResourceRole::BasementProgression:return ".encbasement";case ResourceRole::BasementActors:return ".encbasmanim";case ResourceRole::MusicRegions:return ".encmusic";case ResourceRole::PresentSparkles:return ".encsparkles";
     }return nullptr;
 }
@@ -63,18 +66,21 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
         if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Resource catalog source pin rejected");}
     Reader r{p+52,n-52};const auto count=r.integer(),pairs=r.integer();
-    if(count<22||count>128||pairs<1||pairs>32)return fail("Resource catalog role/encounter count rejected");
+    constexpr uint32_t last_role=uint32_t(ResourceRole::FieldGoods);
+    if(count<last_role-2||count>128||pairs<1||pairs>32)return fail("Resource catalog role/encounter count rejected");
     ResourceCatalog data;
-    bool roots[22]={};
+    bool roots[last_role]={};
     for(uint32_t i=0;i<count;++i){const auto id=r.integer(),role=r.integer(),size=r.integer(),checksum=r.integer();auto path=r.path();
-        if(!r.ok||role<1||role>38||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
+        if(!r.ok||role<1||role>41||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
         const auto expected=suffix(role);const auto len=std::strlen(expected);
         if(path.size()<=len||path.compare(path.size()-len,len,expected))return fail("Resource catalog binding type rejected");
         for(const auto& prior:data.bindings_)if(prior.id==id||prior.path==path)return fail("Resource catalog duplicate ID/path rejected");
-        if(role<=22)roots[role-1]=true;
+        if(role!=uint32_t(ResourceRole::EncounterBattle)&&role!=uint32_t(ResourceRole::EncounterRound))roots[role-1]=true;
         data.bindings_.push_back({id,static_cast<ResourceRole>(role),std::move(path),size,checksum});
     }
-    for(bool present:roots)if(!present)return fail("Resource catalog missing required role");
+    for(uint32_t role=1;role<=last_role;++role)
+        if(role!=uint32_t(ResourceRole::EncounterBattle)&&role!=uint32_t(ResourceRole::EncounterRound)&&!roots[role-1])
+            return fail("Resource catalog missing required startup role");
     auto binding=[&](uint32_t id)->const Binding*{for(const auto& row:data.bindings_)if(row.id==id)return &row;return nullptr;};
     for(uint32_t i=0;i<pairs;++i){const auto battle=r.integer(),round=r.integer();
         const auto* b=binding(battle);const auto* v=binding(round);

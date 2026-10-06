@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "kind": "encore.field-battle-bg-resources.source-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "0dd492851fe778764abdfa7ee5623d76e3b10f995c2f16f744a362e20d8909ee",
+  "source_importer": "addons/distortionator_integration/scene_importer.gd",
+  "source_functions": [
+    "_import_scene",
+    "uiManager._load_battle_bgs"
+  ],
+  "scope": "All original50 Directory-selected .bbg.import files, 288 full native nodes, complete PackedScene SceneState properties/connections and typed shared resource graphs; real PNG payloads are original inventory files",
+  "resource_graph": "119 ShaderMaterial,74 StreamTexture,50 StyleBoxEmpty,50 Shader; full shader source and material parameters retained",
+  "source_only": "Source-only EditorPlugin registers original3.6.2 importer; actual ResourceImporterScene uses original .bbg.import options and saves native .scn. Export then ResourceLoader.load50 and holds all strong PackedScene references; native scene.instance stays outside Tree; game Ready/idle/physics/animation never executes.",
+  "ownership": "Registry owns50 actual immutable PackedScene Resource objects, each holding checked full source graph and original texture codec bytes. Native GPU/material/BackBufferCopy instance consumers remain pending; resources do not enter SceneTree.",
+  "pending": [
+    "No blanket native class/script Ready or scene compatibility approval",
+    "UiManager actual preloads outside first9 and native UI bodies still need complete consumers"
+  ],
+  "resource_aliases": "Actual imported/load result:236 distinct source resource aliases among293 resource rows; Shader shared across50; eight StreamTexture aliases reused;50 embedded StyleBoxEmpty are distinct after import save/load. Source ObjectIDs only express alias relation, never used as runtime ObjectIDs or stable saves.",
+  "source_host_binding": "Original uiManager._load_battle_bgs source bytes/hash are part of checked source proof; actual typed owner dictionary and same ObjectDB domain required before stableCanvas"
+}

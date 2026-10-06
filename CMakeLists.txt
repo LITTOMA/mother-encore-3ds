@@ -55,6 +55,13 @@ add_library(encore_core
     runtime/field_dialogue_ui_data.cpp
     runtime/field_inventory.cpp
     runtime/field_inventory_data.cpp
+    runtime/field_goods.cpp runtime/field_goods_data.cpp
+    runtime/field_global_flags.cpp runtime/field_global_flags_data.cpp
+    runtime/field_dialogue_visual.cpp runtime/field_dialogue_visual_data.cpp
+    runtime/field_dialogue_audio.cpp runtime/field_dialogue_audio_data.cpp
+    runtime/field_ui_manager.cpp runtime/field_ui_manager_data.cpp
+    runtime/field_battle_bg_resources.cpp runtime/field_battle_bg_data.cpp
+    runtime/field_ui_preloads.cpp runtime/field_ui_preloads_data.cpp
     runtime/field_shop.cpp
     runtime/field_shop_data.cpp
     runtime/field_vending_machine.cpp
@@ -76,6 +83,9 @@ add_library(encore_core
     runtime/field_music_changer.cpp
     runtime/field_music_changer_data.cpp
     runtime/field_item_definitions.cpp
+    runtime/field_item_admission.cpp
+    runtime/room_music_admission.cpp
+    runtime/startup_resource_admission.cpp runtime/catalog_resource_admission.cpp
     runtime/field_item_definitions_data.cpp
     runtime/field_interact_dialog.cpp
     runtime/field_interact_dialog_data.cpp
@@ -679,6 +689,18 @@ endif()
 
 if(BUILD_TESTING)
  add_executable(encore_resource_catalog_tests tests/resource_catalog_tests.cpp)
+ add_executable(encore_startup_resource_admission_tests tests/startup_resource_admission_tests.cpp)
+ target_link_libraries(encore_startup_resource_admission_tests PRIVATE encore_core)
+ add_test(NAME startup_resource_bindings COMMAND encore_startup_resource_admission_tests ${CMAKE_SOURCE_DIR}/romfs)
+ add_executable(encore_catalog_resource_admission_manual tests/catalog_resource_admission_manual.cpp)
+ target_link_libraries(encore_catalog_resource_admission_manual PRIVATE encore_core)
+ add_test(NAME catalog_resource_formats COMMAND encore_catalog_resource_admission_manual ${CMAKE_SOURCE_DIR}/romfs/data/native.encresources ${CMAKE_SOURCE_DIR}/romfs)
+ add_executable(encore_room_music_admission_tests tests/room_music_admission_tests.cpp)
+ target_link_libraries(encore_room_music_admission_tests PRIVATE encore_core)
+ add_test(NAME room_music_admission COMMAND encore_room_music_admission_tests ${CMAKE_SOURCE_DIR}/romfs)
+ add_executable(encore_field_item_admission_tests tests/field_item_admission_tests.cpp)
+ target_link_libraries(encore_field_item_admission_tests PRIVATE encore_core)
+ add_test(NAME field_item_admission COMMAND encore_field_item_admission_tests ${CMAKE_SOURCE_DIR}/romfs/data/podunk.encfielditems ${CMAKE_SOURCE_DIR}/romfs/data/opening.encitems ${CMAKE_SOURCE_DIR}/romfs/data/opening.encfield ${CMAKE_SOURCE_DIR}/romfs/data/podunk.encfielddetails)
  target_link_libraries(encore_resource_catalog_tests PRIVATE encore_core)
  add_test(NAME resource_catalog COMMAND encore_resource_catalog_tests ${CMAKE_SOURCE_DIR}/romfs/data/native.encresources ${CMAKE_SOURCE_DIR}/romfs ${CMAKE_BINARY_DIR}/resource-catalog-fixture)
  add_test(NAME resource_catalog_sources COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/resource_catalog_tests.py)

@@ -1,0 +1,11 @@
+#include "encore/field_ui_manager.hpp"
+#include <cassert>
+#include <algorithm>
+#include <fstream>
+#include <iterator>
+using namespace encore::upstream;
+static uint32_t word(const uint8_t*p){return uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;}
+static void store(std::vector<uint8_t>&b,size_t p,uint32_t v){for(unsigned i=0;i<4;++i)b[p+i]=uint8_t(v>>(8*i));}
+static void crc(std::vector<uint8_t>&b){uint32_t c=~0u;for(size_t p=128;p<b.size();++p){c^=b[p];for(unsigned i=0;i<8;++i)c=(c>>1)^((c&1)?0xedb88320u:0u);}store(b,20,~c);}
+static size_t threshold_offset(const std::vector<uint8_t>&b){size_t p=128;auto u=[&](){assert(p+4<=b.size());auto v=word(b.data()+p);p+=4;return v;};auto text=[&](){auto n=u();assert(n<=b.size()-p);p+=n;};text();auto count=u();for(uint32_t i=0;i<count;++i){u();u();text();text();text();p+=32;}count=u();for(uint32_t i=0;i<count;++i){text();text();u();u();}count=u();for(uint32_t i=0;i<count;++i){text();p+=32;}p+=16*16;assert(p+4<=b.size());return p;}
+int main(int argc,char**argv){assert(argc==2);std::ifstream f(argv[1],std::ios::binary);std::vector<uint8_t>b((std::istreambuf_iterator<char>(f)),{});assert(b.size()>128);FieldIdentity id;id.scene_id=word(b.data()+36);std::copy_n(b.data()+40,20,id.upstream_commit.begin());std::copy_n(b.data()+60,32,id.source_sha256.begin());FieldUiManagerData data;std::string error;assert(data.load(b.data(),b.size(),id,error));assert(data.instances().size()==7&&data.preloads().size()==20);auto old=id;old.scene_id^=1;assert(!data.load(b.data(),b.size(),old,error));for(size_t at:{size_t(8),size_t(24),size_t(28),size_t(32),size_t(124)}){auto bad=b;store(bad,at,999);assert(!data.load(bad.data(),bad.size(),id,error));}auto threshold=threshold_offset(b);for(uint32_t value:{0u,0x80000000u,0x7fc00000u,0x7f800000u,0xbf800000u,0x40400000u}){auto invalid=b;store(invalid,threshold,value);crc(invalid);assert(!data.load(invalid.data(),invalid.size(),id,error));}auto bad=b;bad.push_back(0);store(bad,16,uint32_t(bad.size()));crc(bad);assert(!data.load(bad.data(),bad.size(),id,error));bad=b;bad[128]^=1;assert(!data.load(bad.data(),bad.size(),id,error));for(size_t n=0;n<128;++n)assert(!data.load(b.data(),n,id,error));assert(data.valid());}

@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "c955ae3ae2e589873ac1dceec9bc292a2e18984a71e93742b322889031854865",
+  "recipe_sha256": "ca209a79f1c3b7aff9e90a4a363e33aac17e28063ea3fb9df04a7e61491b191f",
+  "producer_sha256": "501e30ccbd6a5b285f6a94699a5289fc4314be66f9fddae11af76110d9d7a90c",
+  "engine": {
+    "audio_stream_player.cpp": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+    "audio_stream_player.h": "1465843e77369e84bfb18cf06c9d4224aae6a72a0b5b4e88f55956cd19898b57",
+    "audio_stream_mp3.cpp": "08870cd0d7d944db0b339026c2609e56d7a2a598af732c39fd6c5157cd06c0c5"
+  },
+  "source_streams": 15,
+  "scope": "Three actual AudioStreamPlayer native bodies and source stream/character endpoints; no DialogueBox script Ready grant"
+}

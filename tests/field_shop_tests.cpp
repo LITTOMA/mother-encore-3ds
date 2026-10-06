@@ -132,3 +132,61 @@ void manual_field_shop_decoder_cases(const std::vector<uint8_t> &shop,
   trailing.push_back(0);
   assert(!v.load(trailing.data(), trailing.size(), e));
 }
+
+// Optional live Reference construction happens in the same isolated UID/RNG
+// preview transaction. A constructor failure must not publish Ready or RNG.
+void manual_field_shop_source_items_transaction_cases(
+    const FieldShopData &data, const FieldItemDefinitions &defs,
+    SourceRandom &random, uint32_t source_member) {
+  FieldShopSnapshot live;
+  live.items.inventories.push_back({source_member, 0, {}});
+  live.items.party_order = live.natural_order = {source_member};
+  std::vector<uint32_t> ledger;
+  uint32_t constructed = 0, committed = 0;
+  bool reject = true;
+  std::string error;
+  FieldShopHost host;
+  host.bind = [&](const auto &d, const auto &i, std::string &) {
+    return &d == &data && &i == &defs;
+  };
+  host.read = [&](auto &out, std::string &) {
+    out = live;
+    return true;
+  };
+  host.commit = [&](const auto &, const auto &, const auto &r, std::string &) {
+    assert(r.action == FieldShopAction::Ready);
+    ++committed;
+    return true;
+  };
+  host.sound = [](const auto &, std::string &) { return true; };
+  host.close = [](const auto &, std::string &) { return true; };
+  host.source_items = [&](const auto &preview, std::string &e) {
+    ++constructed;
+    assert(preview.size() == data.offers().size());
+    for (size_t n = 0; n < preview.size(); ++n) {
+      const auto *policy = data.policy(data.offers()[n]);
+      assert(policy && preview[n].definition == policy->id &&
+             preview[n].doses == policy->doses && !preview[n].equipped);
+    }
+    if (reject) {
+      e = "actual temporary Item constructor failed";
+      return false;
+    }
+    return true;
+  };
+  LoadRngClockProvider clock = [](auto &out, std::string &) {
+    out = {1700000000, 2000000};
+    return true;
+  };
+  FieldShopRuntime shop;
+  assert(shop.initialize(data, defs, random, ledger, clock, host, error));
+  const auto before = random.state(), draws = random.raw_draw_count();
+  assert(!shop.open(data.name(), error));
+  assert(constructed == 1 && committed == 0 && ledger.empty() &&
+         random.state() == before && random.raw_draw_count() == draws &&
+         shop.phase() == FieldShopPhase::Closed);
+  reject = false;
+  assert(shop.open(data.name(), error));
+  assert(constructed == 2 && committed == 1 &&
+         ledger.size() == data.offers().size());
+}

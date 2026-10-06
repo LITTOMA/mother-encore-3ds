@@ -15,6 +15,13 @@ bool DialogueChoices::text_completed(std::string&e){
  if(phase_!=DialogueChoicesPhase::WaitingText){e="Dialogue choices require pending text completion";return false;}
  const auto&r=group()->options[selected_].rect;arrow_x_={r.x,r.x,0,0};arrow_y_={r.y,r.y,0,0};arrow_time_=0;phase_=DialogueChoicesPhase::Active;e.clear();return true;
 }
+bool DialogueChoices::source_cursor_selection(int32_t index,std::string&e){
+ if(!active()||!data_||!data_->valid()||!group()||index<0||
+    uint32_t(index)>=group()->options.size()||uint32_t(index)>=data_->child_count()){
+  e="Dialogue source Cursor selection is not an active visible option";return false;
+ }
+ selected_=uint32_t(index);e.clear();return true;
+}
 bool DialogueChoices::step(double dt,const DialogueChoicesInput&i,std::string&e){
  if(!std::isfinite(dt)||dt<0||dt>1||i.horizontal<-1||i.horizontal>1||i.vertical<-1||i.vertical>1){e="Invalid dialogue choice frame/input";return false;}
  if(events_.size()>64){e="Dialogue choice events must be drained";return false;}

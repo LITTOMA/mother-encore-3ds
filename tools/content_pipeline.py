@@ -273,6 +273,7 @@ ASSET_PRODUCERS = {
     'payphone': ('field_payphone', 'compile', 'pack'),
     'vending': ('field_vending_machine', 'compile', 'pack'),
     'introduction': ('introduction_assets', 'compile', 'stage'),
+    'goods': ('field_goods', 'assets', 'goods'),
 }
 
 
@@ -284,7 +285,9 @@ def asset_step(name):
     sys.path.insert(0, str(ROOT))
     module = importlib.import_module('tools.' + module_name)
     def check():
-        if check_kind == 'canvas':
+        if check_kind == 'goods':
+            module.stage_files(ROOT / 'romfs')
+        elif check_kind == 'canvas':
             module.checked_assets(module.load(), ROOT / 'romfs')
         elif check_kind == 'entry':
             module.compile_pack(module.read_json(module.IR_PATH))
@@ -332,6 +335,7 @@ def generate(args):
             ['git', 'ls-files', '-z'], cwd=ROOT).split(b'\0') if p}
         write_json(directory / 'inputs.json', originals)
         environment = dict(os.environ, ENCORE_CONTENT_LOG_DIR=str(directory / 'jobs'),
+                           ENCORE_RESOURCE_ADMISSION_CACHE=str(ROOT / 'build/resource-admission'),
                            ENCORE_GENERATION_GODOT=str(Path(args.godot).resolve()) if args.godot else '',
                            ENCORE_GENERATION_PICASSO=str(Path(args.picasso).resolve()) if args.picasso else '',
                            ENCORE_GENERATION_TEX3DS=str(Path(args.tex3ds).resolve()) if args.tex3ds else '')
@@ -350,6 +354,11 @@ def generate(args):
         require(code == 0, 'Isolated generation failed; no outputs published')
         subprocess.run([sys.executable, 'tools/romfs_layout.py', '--catalog',
                         str(workspace / 'romfs/data/native.encresources')], cwd=workspace, check=True)
+        # Match the real game loaders before publishing a new binary closure.
+        # This does not execute gameplay, fixtures or a test suite.
+        subprocess.run([sys.executable, 'tools/native_resource_admission.py',
+                        str(workspace / 'romfs')], cwd=workspace,
+                       env=environment, check=True)
         changed = publish(ROOT, workspace, originals, candidate_outputs(workspace), directory / 'publication.json', args.mode, preimages, tracked)
         write_json(directory / 'result.json', dict(schema=1, mode=args.mode, workers=args.jobs,
                    published=[r['path'] for r in changed], tests_executed=False))

@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "4ee5b2a4247b68fae645cc18a561dac9203498cd1243c5849da8d592b902a32e",
+  "textures": [
+    {
+      "name": "bar",
+      "output": "graphics/ui/field-goods/bar.t3x",
+      "bytes": 149,
+      "width": 81,
+      "height": 26,
+      "sha256": "dca7f8f779793056796223c2de13c0754854c75ecadefa0a3092f0f8f2bdf08a",
+      "source": "Graphics/UI/Inventory/character-bar.png",
+      "source_sha256": "234d437434c74f78e5d3c80487d75a51afe128f041db324169425ca7914948a7"
+    },
+    {
+      "name": "inside",
+      "output": "graphics/ui/field-goods/inside.t3x",
+      "bytes": 137,
+      "width": 24,
+      "height": 24,
+      "sha256": "ef1f54db27588e907254c5d16d06fcb4e8437c49ebc79992dbe083cee24a2fa4",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside.png",
+      "source_sha256": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433"
+    },
+    {
+      "name": "ninten",
+      "output": "graphics/ui/field-goods/ninten.t3x",
+      "bytes": 381,
+      "width": 19,
+      "height": 21,
+      "sha256": "bb3e12ad6a6d75a11f1b67abd917ca311ee33d09373699e26fb30d7ee6cfbfdc",
+      "source": "Graphics/UI/Inventory/characters/ninten.png",
+      "source_sha256": "91beffd915870c9879750c4581e592ff1d81f3b4845d387e00547a0f76e5a28f"
+    },
+    {
+      "name": "ninten-hl",
+      "output": "graphics/ui/field-goods/ninten-hl.t3x",
+      "bytes": 405,
+      "width": 21,
+      "height": 22,
+      "sha256": "189a02f6cc4c0e3a55850733f99a483f513bdeceb52c7992ffb346cc40a066d3",
+      "source": "Graphics/UI/Inventory/characters/ninten_hl.png",
+      "source_sha256": "aa01f8bf69820d38fb3e069958fc05c9128ee03e2f0a1ac0fd3794f5deaa4658"
+    },
+    {
+      "name": "key",
+      "output": "graphics/ui/field-goods/key.t3x",
+      "bytes": 261,
+      "width": 19,
+      "height": 21,
+      "sha256": "9937f541729b3a2e8effaa333fa43e416598ec884608d73469dc87ea5a1c6386",
+      "source": "Graphics/UI/Inventory/characters/key.png",
+      "source_sha256": "2ba2b8265006d8a297ea08d61431790e605fa7ad71bae068092a9662d0a89ff8"
+    },
+    {
+      "name": "key-hl",
+      "output": "graphics/ui/field-goods/key-hl.t3x",
+      "bytes": 277,
+      "width": 21,
+      "height": 22,
+      "sha256": "2345c760126f6324f3e2d422dc5bb87bdf7e4b1e02fd2d8aa3faf376f833ca19",
+      "source": "Graphics/UI/Inventory/characters/key_hl.png",
+      "source_sha256": "e359f5c181d6a07235088f67fd63e71a25b2182350d3b924d1bfae57f6626d49"
+    },
+    {
+      "name": "stats",
+      "output": "graphics/ui/field-goods/stats.t3x",
+      "bytes": 509,
+      "width": 255,
+      "height": 48,
+      "sha256": "07e182f79ab181cdf40c2eab805a961699c059a4256f535a5692fb0144de07df",
+      "source": "Graphics/UI/Inventory/stats_menu.png",
+      "source_sha256": "95367a17d3997a9083967313e8fa9a277a5c4cc2b3a2634da906bcedd46a597a"
+    },
+    {
+      "name": "up",
+      "output": "graphics/ui/field-goods/up.t3x",
+      "bytes": 81,
+      "width": 7,
+      "height": 9,
+      "sha256": "7d8cd0b7479133688de60c4c17cd77e78b51d4e14b6cae90db905a2e5c001df1",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "source_sha256": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975"
+    },
+    {
+      "name": "down",
+      "output": "graphics/ui/field-goods/down.t3x",
+      "bytes": 81,
+      "width": 7,
+      "height": 9,
+      "sha256": "740b7d24b6b2c00034d0dd6f4572a04e5c143ef50cab5c79e01ddcc35c6ed761",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "source_sha256": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975"
+    },
+    {
+      "name": "indicator",
+      "output": "graphics/ui/field-goods/indicator.t3x",
+      "bytes": 69,
+      "width": 6,
+      "height": 11,
+      "sha256": "aedb94141a3564e3ecb27760a194514f47d116b0162fe0f25ec890419e1c3e62",
+      "source": "Graphics/UI/select_arrow.png",
+      "source_sha256": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc"
+    },
+    {
+      "name": "scroll-bg",
+      "output": "graphics/ui/field-goods/scroll-bg.t3x",
+      "bytes": 41,
+      "width": 4,
+      "height": 4,
+      "sha256": "59a113e0a2013d6421ab0f6c81dae3cc10e3bae82d1b9a1f188f2049f42cd274",
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png",
+      "source_sha256": "016b161a791b5c3cc95db2002921dae062f4b90ca87cdd2e4b7da62cefc72bf3"
+    },
+    {
+      "name": "scroll-thumb",
+      "output": "graphics/ui/field-goods/scroll-thumb.t3x",
+      "bytes": 65,
+      "width": 6,
+      "height": 6,
+      "sha256": "d262ce0bb60965d737cd88c97a93339d6519c97e01bddfb5aa245c5da6277caf",
+      "source": "Graphics/UI/Overworld/flavours/defaultscroll.png",
+      "source_sha256": "019a1b69d3091aad552390204a6d6250af4ab90a124fc726262554d1fa5fce0d"
+    },
+    {
+      "name": "cursor0",
+      "output": "graphics/ui/field-goods/cursor0.t3x",
+      "bytes": 57,
+      "width": 8,
+      "height": 8,
+      "sha256": "b82500a210c83cd13a34545292b8eae3d21993a498fa567b01632f07d08405cb",
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "source_sha256": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af"
+    },
+    {
+      "name": "cursor1",
+      "output": "graphics/ui/field-goods/cursor1.t3x",
+      "bytes": 57,
+      "width": 8,
+      "height": 8,
+      "sha256": "bc1cc4b3bc0d09749a143d56fc625811cee181e7e9eefde2a85688d4ccd6a33b",
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "source_sha256": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af"
+    },
+    {
+      "name": "cursor2",
+      "output": "graphics/ui/field-goods/cursor2.t3x",
+      "bytes": 57,
+      "width": 8,
+      "height": 8,
+      "sha256": "5fb76d8fbf3225160ba38ebae55a647c73d88d9eeb7a295ad42523f59a427631",
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "source_sha256": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af"
+    },
+    {
+      "name": "equipped",
+      "output": "graphics/ui/field-goods/equipped.t3x",
+      "bytes": 73,
+      "width": 8,
+      "height": 7,
+      "sha256": "20907c33f6fa8deabcd6f6f73d93b0c3200315e57f5b8ac707210079ade3b700",
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "source_sha256": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975"
+    }
+  ]
+}

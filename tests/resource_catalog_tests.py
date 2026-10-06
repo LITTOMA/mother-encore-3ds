@@ -70,14 +70,25 @@ class ResourceCatalogTests(unittest.TestCase):
         self.reject(lambda ir: ir.update(bindings=[]))
         self.reject(lambda ir: ir['bindings'][extra].update(path=next(x['path'] for x in ir['bindings'] if x['role'] == 'Battle')))
 
-    def test_introduction_optional_singleton_and_typed_path(self):
+    def test_introduction_required_singleton_and_typed_path(self):
         index = next(i for i, row in enumerate(self.ir['bindings']) if row['role'] == 'Introduction')
         self.assertEqual(self.ir['bindings'][index]['id'], 25)
         for key, value in [('id', 256), ('id', 24), ('path', 'data/opening.encroom'), ('role', 'Unknown')]:
             self.reject(lambda ir: ir['bindings'][index].update({key: value}))
         older = copy.deepcopy(self.ir)
         older['bindings'].pop(index)
-        catalog.validate(older)  # Existing schema1 catalogs remain readable.
+        # Current startup consumes Introduction unconditionally. A structurally
+        # readable old directory must not be accepted as its complete resource set.
+        with self.assertRaises(ValueError):
+            catalog.validate(older)
+
+    def test_every_current_startup_singleton_is_required(self):
+        for role in catalog.ROLES:
+            if role in ('EncounterBattle', 'EncounterRound'):
+                continue
+            with self.subTest(role=role):
+                self.reject(lambda ir: ir['bindings'].__setitem__(
+                    slice(None), [row for row in ir['bindings'] if row['role'] != role]))
 
     def test_bad_paths_suffixes_and_source_declarations(self):
         index = next(i for i, row in enumerate(self.ir['bindings']) if row['role'] == 'Round')

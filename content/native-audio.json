@@ -286,6 +286,22 @@
       "import_sha256": "b8de48d630df47305149c77c93c4a5d84542a51fbc22af1fbb21c1a0b6be4ddf",
       "pcm_path": "sound/effects/shop-register.pcm",
       "gain_db": 0
+    },
+    {
+      "stable_id": 1901,
+      "source_path": "res://Audio/Sound effects/M3/menu_open.wav",
+      "source_sha256": "83223cdddbc5fbc9b80da386498116984e3ba591b205b925f02fff24eaf4b487",
+      "import_sha256": "ed14a77347f70116b0521143e87cd2dbfc88283f8183d50a8b155cfd6bf5fb41",
+      "pcm_path": "sound/effects/goods-open.pcm",
+      "gain_db": 0
+    },
+    {
+      "stable_id": 1902,
+      "source_path": "res://Audio/Sound effects/M3/menu_close.wav",
+      "source_sha256": "85efc975cc8127461393b35fa30b8a7f884b17a1d1e0ba10863075b78d63c44b",
+      "import_sha256": "15e392266c70825cf8af2e04059ae430843b8421ff7b521ea63a752d8bcd389e",
+      "pcm_path": "sound/effects/goods-close.pcm",
+      "gain_db": 0
     }
   ]
 }

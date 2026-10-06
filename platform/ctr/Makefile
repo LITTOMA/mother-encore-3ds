@@ -31,6 +31,12 @@ SOURCES += runtime/field_emotes_data.cpp runtime/field_emotes.cpp
 SOURCES += runtime/field_sprite_bridge_data.cpp runtime/field_sprite_bridge.cpp runtime/field_sprite_npc_binding.cpp
 SOURCES += runtime/field_data.cpp runtime/field_runtime.cpp runtime/field_map_space.cpp runtime/field_map.cpp runtime/field_motion.cpp runtime/field_geometry.cpp runtime/field_geometry_space.cpp runtime/field_npc_data.cpp runtime/field_npc.cpp runtime/field_enemy_data.cpp runtime/field_enemy.cpp runtime/field_tint.cpp
 SOURCES += runtime/item_details.cpp runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp runtime/item_use.cpp
+SOURCES += runtime/field_item_admission.cpp runtime/room_music_admission.cpp platform/ctr/podunk_ui_host.cpp
+SOURCES += runtime/startup_resource_admission.cpp
+SOURCES += runtime/field_goods.cpp runtime/field_goods_data.cpp runtime/field_global_flags.cpp runtime/field_global_flags_data.cpp \
+ runtime/field_dialogue_visual.cpp runtime/field_dialogue_visual_data.cpp runtime/field_dialogue_audio.cpp runtime/field_dialogue_audio_data.cpp \
+ runtime/field_ui_manager.cpp runtime/field_ui_manager_data.cpp runtime/field_battle_bg_resources.cpp runtime/field_battle_bg_data.cpp \
+ runtime/field_ui_preloads.cpp runtime/field_ui_preloads_data.cpp platform/ctr/field_dialogue_audio_player.cpp platform/ctr/podunk_dialogue_host.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

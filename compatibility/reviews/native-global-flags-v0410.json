@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "29172f7c0352f981d4a9ba0c1b5aa768b1a058be890944274f8c735b64085a31",
+  "sources": {
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+    "Data/save_default.yaml": "b975d721c64db8e9bb7e785ed71de4d56a6c0ee914ab6230e28f0cc50e19ae33",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f"
+  },
+  "scope": [
+    "All original registered flags, including source unfinished future-area declarations; declaring a flag does not admit that area",
+    "Only boolean flags/object_flags/seen_dialogue_flags save projection; no scene/party/inventory/save-slot schema replacement",
+    "Source setter unknown normal key is a known no-op; dynamic object and actual path-qualified seen keys are preserved",
+    "Flag emission belongs to the real global signal owner; this consumer never approves global or globaldata Ready"
+  ]
+}

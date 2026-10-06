@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "kind": "encore.field-game-camera.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Ui/DialogueBox.tscn",
+  "scene_id": 2406403304,
+  "source_sha256": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+  "native_sha256": "bf3b7baba9f880836a5e3ae894a05cb1bb7e45dc83d99dc7b4ee61e8fca3af21",
+  "scene_admitted": false,
+  "sources": {
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaulttag.png": "4f2aae1377c38297537a8cbbc7bbfec14b7b5bf13129877ddd8a4e724b631a9e",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da"
+  },
+  "constants": {
+    "CAM_LIMIT": 50.0,
+    "BUTTON_PROMPTS_DELAY": 1.0,
+    "QUICK_SCOPE_DURATION": 0.3,
+    "SCOPE_MOVE_SPEED": 2.0,
+    "SCOPE_VERTICAL_LIMIT": 90.0,
+    "SCOPE_HORIZONTAL_LIMIT": 160.0,
+    "MIN_SHAKE_MAGNITUDE": 1.0,
+    "MIN_SHAKE_TIME": 0.2,
+    "SHAKE_STEP_TIME": 0.02
+  },
+  "tuning": [
+    50.0,
+    2.0,
+    90.0,
+    160.0,
+    0.02,
+    0.3,
+    1.0,
+    0.1,
+    1.0,
+    1.0,
+    0.5,
+    1.0,
+    0.5,
+    1,
+    1.0,
+    1
+  ],
+  "player_states": [
+    3,
+    2
+  ],
+  "animation_lengths": [
+    0.6000000238418579,
+    0.20000000298023224,
+    0.0010000000474974513
+  ],
+  "shake_direction": [
+    1,
+    1
+  ],
+  "shake_side_amplitude": [
+    1,
+    1
+  ],
+  "scope_action": "ui_scope",
+  "records": [
+    {
+      "id": 3117544875,
+      "ready": 45,
+      "node": "Camera2D",
+      "parent_id": 2406403304,
+      "arrows_id": 3405313814,
+      "animation_id": 1295067073,
+      "animation_ready": 34,
+      "area_id": 1454644408,
+      "shape_id": 1201501901,
+      "position": [
+        0.0,
+        0.0
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "zoom": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "flags": 14,
+      "limits": [
+        -10000000,
+        -10000000,
+        10000000,
+        10000000
+      ],
+      "z": -5,
+      "pause": 2,
+      "priority": 0,
+      "physics_interpolation": 0,
+      "area_position": [
+        0.0,
+        0.0
+      ],
+      "area_scale": [
+        1.0,
+        1.0
+      ],
+      "shape_position": [
+        -0.5,
+        0.5
+      ],
+      "shape_scale": [
+        1.0,
+        1.0
+      ],
+      "shape_extents": [
+        161.5,
+        91.5
+      ],
+      "area_layer": 256,
+      "area_mask": 256,
+      "area_flags": 3
+    }
+  ],
+  "pending": [
+    "Actual admitted ancestors incl JumpArea; active player/UI/input/currentCamera source bus",
+    "Real viewport/native Camera canvas and source global SceneTree tween ordering, dynamic Shaker factory",
+    "MapArrows bridge with actual source visibility/position/input and no duplicated leaf clocks",
+    "Player Camera belongs to a separate source scene and is not admitted by this DialogueBox camera record"
+  ]
+}

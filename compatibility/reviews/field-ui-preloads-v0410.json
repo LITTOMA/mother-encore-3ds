@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "kind": "encore.field-ui-preloads.source-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "dfc726d0cc6697ab6e6bbca6a8fb8692eae2e927c8d87ca675dc8ae65ffcaf80",
+  "source_scope": "All12 UiManager remaining preload resources; complete11 source trees1161 nodes plus borrowed existing47Dialogue. No script/Ready/idle/physics executed. Original native properties/resource graphs retained as checked structural binary TLV.",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "capability5": "Recipe source schema append WorldEnvironment/ParallaxBackground/ParallaxLayer only, previous cap3/cap4 unchanged; no native Ready/render approval. ParallaxBackground exact CanvasLayer source fields retained.",
+  "environment_basis": "GameOver Environment.sky_orientation exact Basis columns source-exported without angle/polygon approximation.",
+  "dialogue_owner": "Existing dialogue-node-recipe.json47 actual checked object borrowed; resource ownership/source/pin/IR/count exact checks, no fake copy.",
+  "pending": [
+    "Immutable full PackedScene loading does not grant native/script Ready",
+    "WorldEnvironment/Parallax source values retained; native rendering/lifecycle adapter remains pending",
+    "Dialogue47 actual owner is borrowed with exact source/pin/IR identity; never duplicate factory resource"
+  ],
+  "original_wiring": "All quarantine-original script attachments and signal connections retained in full native graph source proof; no generic dispatch or silent ignored connection.",
+  "source_only_imports": "All11 native and structure exports completed; seven editor imports timed out95s but later complete source exports passed. Raw failure/import/export logs retained privately; no claim all import steps succeeded."
+}

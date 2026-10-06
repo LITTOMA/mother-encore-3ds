@@ -43,6 +43,9 @@ public:
     bool stop_lane(AudioLane,std::string& error);
     bool update(double delta,std::string& error);
     bool available() const{return ready_;}
+    // Borrow only this live NDSP owner and its checked immutable bank.
+    const upstream::AudioBank* checked_bank() const{return ready_?&bank_:nullptr;}
+    const std::string& asset_root() const{return asset_root_;}
     MusicObservation observe_music() const;
     // Loading cooperation only: feed existing queues and observe natural ends.
     // No elapsed game/fade time, volume mix writes, new voice or init retry.

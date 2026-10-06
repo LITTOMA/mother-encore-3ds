@@ -1,4 +1,6 @@
 #pragma once
+#include "encore/house_global_bridge.hpp"
+#include "podunk_inventory_host.hpp"
 #include "podunk_global_data_host.hpp"
 namespace encore::ctr {
 // Concrete target-object adoption. Original session gameplay/RNG stays live;

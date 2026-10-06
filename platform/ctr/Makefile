@@ -12,7 +12,7 @@ ROOT := $(CURDIR)
 CTRULIB := $(DEVKITPRO)/libctru
 CXX := $(DEVKITARM)/bin/arm-none-eabi-g++
 ARCH := -march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
-CPPFLAGS := -D__3DS__ -I$(ROOT)/include -I$(CTRULIB)/include $(EXTRA_CPPFLAGS)
+CPPFLAGS := -D__3DS__ -I$(ROOT)/include -I$(CTRULIB)/include -I$(ROOT)/build/ctr $(EXTRA_CPPFLAGS)
 CXXFLAGS := $(ARCH) -std=gnu++17 -O2 -g -Wall -Wextra -Wpedantic -mword-relocations -ffunction-sections -fdata-sections -fno-exceptions -fno-rtti
 LDFLAGS := $(ARCH) -specs=3dsx.specs -g -Wl,--gc-sections,-Map,$(ROOT)/dist/encore-native.map
 LDLIBS := -L$(CTRULIB)/lib -lcitro2d -lcitro3d -lctru -lm
@@ -56,10 +56,10 @@ gpu-background-mode-force:
 build/ctr/gpu-background-mode.stamp: gpu-background-mode-force
 	@mkdir -p $(dir $@)
 	@printf '%s\n' '$(EXPERIMENTAL_GPU_BACKGROUND):$(EXPERIMENTAL_GPU_CERTIFICATES):$(EXPERIMENTAL_GPU_TEXTURE_STRIPS)' | cmp -s - $@ || printf '%s\n' '$(EXPERIMENTAL_GPU_BACKGROUND):$(EXPERIMENTAL_GPU_CERTIFICATES):$(EXPERIMENTAL_GPU_TEXTURE_STRIPS)' > $@
-build/ctr/platform/ctr/main.o: build/ctr/gpu-background-mode.stamp
+GPU_SHADER_HEADERS :=
 ifeq ($(EXPERIMENTAL_GPU_TEXTURE_STRIPS),1)
 CPPFLAGS += -DENCORE_EXPERIMENTAL_GPU_TEXTURE_STRIPS
-build/ctr/platform/ctr/main.o: build/ctr/gpu_row_texture_shader.hpp build/ctr/gpu_mapped_texture_shader.hpp
+GPU_SHADER_HEADERS += build/ctr/gpu_row_texture_shader.hpp build/ctr/gpu_mapped_texture_shader.hpp
 build/ctr/gpu_mapped_texture.shbin: platform/ctr/shaders/gpu_mapped_texture.v.pica platform/ctr/shaders/gpu_mapped_texture.g.pica
 	@mkdir -p $(dir $@)
 	$(DEVKITPRO)/tools/bin/picasso -o $@ $^
@@ -73,11 +73,11 @@ build/ctr/gpu_row_texture_shader.hpp: build/ctr/gpu_row_texture.shbin tools/embe
 endif
 
 ifeq ($(EXPERIMENTAL_GPU_BACKGROUND),1)
-CPPFLAGS += -DENCORE_EXPERIMENTAL_GPU_BACKGROUND -I$(ROOT)/build/ctr
+CPPFLAGS += -DENCORE_EXPERIMENTAL_GPU_BACKGROUND
 ifeq ($(EXPERIMENTAL_GPU_CERTIFICATES),1)
 CPPFLAGS += -DENCORE_GPU_CERTIFICATE_TABLES
 endif
-build/ctr/platform/ctr/main.o: build/ctr/gpu_region_shader.hpp
+GPU_SHADER_HEADERS += build/ctr/gpu_region_shader.hpp
 build/ctr/gpu_region.shbin: platform/ctr/shaders/gpu_direct_region.v.pica platform/ctr/shaders/gpu_direct_region.g.pica
 	@mkdir -p $(dir $@)
 	$(TOOLS)/picasso -o $@ $^
@@ -89,7 +89,11 @@ all: $(APP).3dsx
 stage-romfs:
 	python3 tools/stage_native_romfs.py
 build/ctr/platform/ctr/main.o: CXXFLAGS += -ffp-contract=off
-build/ctr/%.o: %.cpp
+# Headers can be included through renderer/host headers by any platform TU.
+# Generate them before all compilation, including a clean build and opt-in
+# drivers. Compiler .d files retain precise header-change rebuild dependencies.
+# GPU mode changes affect every TU compiled with these definitions.
+build/ctr/%.o: %.cpp build/ctr/gpu-background-mode.stamp | $(GPU_SHADER_HEADERS)
 	@mkdir -p $(dir $@)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@
 $(APP).elf: $(OBJECTS)

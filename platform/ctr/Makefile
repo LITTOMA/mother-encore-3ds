@@ -112,5 +112,20 @@ build/ctr/manual/god_storage.elf: $(MANUAL_GOD_OBJECTS) platform/ctr/Makefile
 	$(CXX) $(subst $(ROOT)/dist/encore-native.map,$(ROOT)/build/ctr/manual/god_storage.map,$(LDFLAGS)) $(MANUAL_GOD_OBJECTS) $(LDLIBS) -L$(DEVKITPRO)/portlibs/3ds/lib -lmbedcrypto -o $@
 build/ctr/manual/god_storage.3dsx: build/ctr/manual/god_storage.elf
 	$(TOOLS)/3dsxtool $< $@
+# Opt-in actual cache constructor driver. Compilation never executes it.
+MANUAL_CACHE_SOURCES := tests/cache_constructor_manual.cpp \
+ manualtests/global_yaml_caches_tests.cpp manualtests/global_packed_directory_tests.cpp \
+ tests/global_yaml_file_format_manual.cpp tests/global_yaml_file_reference_manual.cpp
+MANUAL_CACHE_DRIVER_OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(MANUAL_CACHE_SOURCES))
+MANUAL_CACHE_OBJECTS := $(filter-out build/ctr/platform/ctr/main.o,$(OBJECTS)) $(MANUAL_CACHE_DRIVER_OBJECTS)
+$(MANUAL_CACHE_DRIVER_OBJECTS): CPPFLAGS += -I$(ROOT) -I$(DEVKITPRO)/portlibs/3ds/include
+.PHONY: manual-cache-constructor
+manual-cache-constructor: build/ctr/manual/cache_constructor.3dsx
+build/ctr/manual/cache_constructor.elf: $(MANUAL_CACHE_OBJECTS) platform/ctr/Makefile
+	@mkdir -p $(dir $@)
+	$(CXX) $(subst $(ROOT)/dist/encore-native.map,$(ROOT)/build/ctr/manual/cache_constructor.map,$(LDFLAGS)) $(MANUAL_CACHE_OBJECTS) $(LDLIBS) -L$(DEVKITPRO)/portlibs/3ds/lib -lmbedcrypto -o $@
+build/ctr/manual/cache_constructor.3dsx: build/ctr/manual/cache_constructor.elf
+	$(TOOLS)/3dsxtool $< $@
+-include $(MANUAL_CACHE_DRIVER_OBJECTS:.o=.d)
 -include $(MANUAL_GOD_OBJECTS:.o=.d)
 -include $(OBJECTS:.o=.d)

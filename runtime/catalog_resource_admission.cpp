@@ -276,8 +276,8 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
                                    MusicRegionController::maximum_voices,
                                    region_assets, detail))
     return rejected(error, catalog.path(ResourceRole::MusicRegions), detail);
-  if (!admit_room_music_bindings(owners->room.view(), owners->basement,
-                                 owners->music, detail))
+  if (!admit_house_music_bindings(owners->room.view(), restore_owner,
+                                  owners->basement, owners->music, detail))
     return rejected(error, catalog.path(ResourceRole::Room), detail);
   // This real checked child binary is owned by Room, not a catalog role.
   // Loading its format does not start the effect animation or allocate GPU.

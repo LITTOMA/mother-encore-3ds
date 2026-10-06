@@ -2,10 +2,10 @@
 #include "encore/fresh_house.hpp"
 #include "encore/basement_progression.hpp"
 #include "music_region_service.hpp"
+#include "encore/room_music_admission.hpp"
 #include <algorithm>
 #include <cmath>
 #include <memory>
-#include <set>
 namespace encore::ctr {
 // Per-scene owner. Preparation and Fresh SceneReady only admit a candidate;
 // activate is the explicit post-scene-swap boundary that changes audio state.
@@ -14,7 +14,6 @@ class HouseMusicHost final {
  struct State {upstream::FreshHouseState*scene=nullptr;MusicRegionService*service=nullptr;const AudioPlayer*audio=nullptr;std::vector<Contact>contacts;bool ready=false,active=false;uint64_t epoch=0;};
  std::shared_ptr<State>state_;
  static bool fail(std::string&e,const char*s){e=s;return false;}
- static bool flag_exists(upstream::RoomView room,std::string_view name){if(name.empty())return true;for(uint32_t i=0;i<room.flag_count();++i)if(room.string(room.flag(i).name_string)==name)return true;return false;}
  static bool overlaps(upstream::RoomView room,upstream::Vec2 player,const upstream::BattleValue&g){
   const auto scene=room.scene();const upstream::Vec2 rect[]={{g.x-g.z,g.y-g.w},{g.x+g.z,g.y-g.w},{g.x+g.z,g.y+g.w},{g.x-g.z,g.y+g.w}};
   auto separated=[&](upstream::Vec2 axis){float amin=INFINITY,amax=-INFINITY,bmin=INFINITY,bmax=-INFINITY;
@@ -35,20 +34,12 @@ class HouseMusicHost final {
  }
 public:
  bool prepare(upstream::FreshHouseState&scene,const upstream::RestoreData&restore,const upstream::MusicRegionData&music,const upstream::BasementProgressionData&geometry,MusicRegionService&service,const AudioPlayer&audio,std::string&e){
-  if(state_||!scene.world.healthy()||!restore.valid()||!music.valid()||!geometry.valid()||music.regions().size()!=geometry.music_regions().size()||restore.music_areas().size()!=music.regions().size())return fail(e,"House music candidate resources rejected");
-  const auto room=scene.world.content();const auto rs=room.scene();if(rs.actor_hull_count<3)return fail(e,"House music player hull unavailable");
-  const char*hex="0123456789abcdef";std::string pin;for(size_t i=56;i<76;++i){pin+=hex[room.bytes()[i]>>4];pin+=hex[room.bytes()[i]&15];}
-  if(!geometry.bind_reviewed_commit(pin,e))return false;
+  if(state_||!scene.world.healthy())return fail(e,"House music candidate owner rejected");
+  const auto room=scene.world.content();
+  if(!upstream::admit_house_music_bindings(room,restore,geometry,music,e))return false;
   auto candidate=std::make_shared<State>();candidate->scene=&scene;candidate->service=&service;candidate->audio=&audio;
-  std::set<uint32_t>ordinals;
   for(const auto&g:geometry.music_regions()){
-   if(room.string(rs.source_scene_string)!=g.scene||!flag_exists(room,g.parent_disappear_flag)||!ordinals.insert(g.source_ordinal).second)return fail(e,"House music scene/lifecycle binding rejected");
    const auto binding=std::find_if(music.regions().begin(),music.regions().end(),[&](const auto&r){return r.source_path==g.node;});
-   if(binding==music.regions().end()||binding->id!=g.region_id||binding->track_id!=g.track_id||binding->volume_db!=g.volume_db||binding->fadein_seconds!=g.fadein_seconds||binding->fadeout_seconds!=g.fadeout_seconds||!flag_exists(room,binding->appear_flag)||!flag_exists(room,binding->disappear_flag))return fail(e,"House music region identity/tuning rejected");
-   const auto track=std::find_if(music.tracks().begin(),music.tracks().end(),[&](const auto&t){return t.id==g.track_id;});const auto area=std::find_if(restore.music_areas().begin(),restore.music_areas().end(),[&](const auto&a){return a.source_path==g.node;});
-   if(track==music.tracks().end()||area==restore.music_areas().end()||track->source_path!=g.music||area->resource_path!=g.music||area->source_sha256!=track->source_sha||float(area->center.x)!=g.geometry.x||float(area->center.y)!=g.geometry.y||float(area->extents.x)!=g.geometry.z||float(area->extents.y)!=g.geometry.w||float(area->volume_db)!=g.volume_db||float(area->fadein_seconds)!=g.fadein_seconds||float(area->fadeout_seconds)!=g.fadeout_seconds)return fail(e,"House restore/music source geometry rejected");
-   std::vector<std::pair<std::string,bool>>expected;if(!g.parent_disappear_flag.empty())expected.emplace_back(g.parent_disappear_flag,false);if(!binding->appear_flag.empty())expected.emplace_back(binding->appear_flag,true);if(!binding->disappear_flag.empty())expected.emplace_back(binding->disappear_flag,false);
-   if(expected.size()!=area->conditions.size())return fail(e,"House restore music flag coverage rejected");for(size_t i=0;i<expected.size();++i)if(expected[i].first!=area->conditions[i].flag_name||expected[i].second!=area->conditions[i].expected_value)return fail(e,"House restore music flag binding rejected");
    candidate->contacts.push_back({&g,&*binding,false,false});
   }
   std::sort(candidate->contacts.begin(),candidate->contacts.end(),[](const Contact&a,const Contact&b){return a.geometry->source_ordinal<b.geometry->source_ordinal;});

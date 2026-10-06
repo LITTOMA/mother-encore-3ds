@@ -1,0 +1,259 @@
+{
+  "schema": 1,
+  "kind": "encore.field-global-registry.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "project.godot",
+  "scene_id": 2159025043,
+  "source_sha256": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+  "sources": {
+    "Nodes/Ui/mainCanvasLayer.tscn": "e304065406766cc9e9637008cecfa7f74fa7abae9b9b597f33aaad12d241981f",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Scripts/global/Cache.tscn": "556e40d57c33812a8fbdb10336fb22ed45fb24c1386c0f22f044087d66d6323b",
+    "Scripts/global/cacheLoader.gd": "ab2743fd3155d30e2b02762524405fae1b118b315a40d99da8cc44c2e4d6b2f1",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/global.tscn": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/MBGLoader.gd": "fb8893f903aa271f3989e6d86c298451a5c07e369fa528f2c035ced42dfa7dc8",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "addons/ZoneLoadingSystem/scripts/background_loader.gd": "b523644a977166abf2ce743b808cc7cdc32c81a7f0c740bd8d2ff4bb341451c4",
+    "Nodes/Ui/audioManager.tscn": "27d6595c0a9d97c6c112e7edf94635a2188394bd50c4df013aa6a29e17b20c8a",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/controlsManager.tscn": "641f5ad0d7084d6b5308eb263714987ac2a4b7df45c8368241ca0520d6094054",
+    "Scripts/global/controlsManager.gd": "73ffd540c3c95ed9f2d92d57ecbde8fc9c48fa98e683f3641cca5498becddae7",
+    "addons/integer_resolution_handler/integer_resolution_handler.gd": "c4d6a928ed297b0b20393d9402d9dff2aee26311310b4867950cf98132fc6a1b",
+    "Scripts/global/ECSInterpreter.gd": "c823bf4b32e9d4057268002eb341ca78ed92a35f16e54b643a861a01f8485bbd",
+    "Scripts/global/debug.tscn": "3a602bb95be29646eb8d576c0e034ac778e278d8c27eb11217342b504e53c5c7",
+    "Scripts/global/debug.gd": "59332ecf5520f9ecca66683973c7a6ef91b659144215e4df9efe30e0c1827b7a",
+    "Maps/Disclaimer.tscn": "4a1b7977046ffc83a8097a1c063312b05e9116a224a8966c18885d3e90d9fe2e",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270"
+  },
+  "root_name": "root",
+  "root_native": "Viewport",
+  "kernel_native": "SceneTree",
+  "initial_object_counter": 1,
+  "initial_fast_name_counter": 1,
+  "main_scene": "Maps/Disclaimer.tscn",
+  "player_parents": [
+    "YSort",
+    "Objects"
+  ],
+  "autoloads": [
+    {
+      "id": 935146950,
+      "name": "Cache",
+      "kind": 2,
+      "ordinal": 0,
+      "path": "Scripts/global/Cache.tscn",
+      "native_class": "Node",
+      "source_sha256": "556e40d57c33812a8fbdb10336fb22ed45fb24c1386c0f22f044087d66d6323b",
+      "script": "Scripts/global/cacheLoader.gd",
+      "script_sha256": "ab2743fd3155d30e2b02762524405fae1b118b315a40d99da8cc44c2e4d6b2f1"
+    },
+    {
+      "id": 497498568,
+      "name": "globaldata",
+      "kind": 2,
+      "ordinal": 1,
+      "path": "Scripts/global/globalData.gd",
+      "native_class": "Node",
+      "source_sha256": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+      "script": "Scripts/global/globalData.gd",
+      "script_sha256": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+    },
+    {
+      "id": 3753035487,
+      "name": "global",
+      "kind": 2,
+      "ordinal": 2,
+      "path": "Scripts/global/global.tscn",
+      "native_class": "Node2D",
+      "source_sha256": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+      "script": "Scripts/global/global.gd",
+      "script_sha256": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
+    },
+    {
+      "id": 1843994105,
+      "name": "MbgLoader",
+      "kind": 1,
+      "ordinal": 3,
+      "path": "Scripts/global/MBGLoader.gd",
+      "native_class": "Node",
+      "source_sha256": "fb8893f903aa271f3989e6d86c298451a5c07e369fa528f2c035ced42dfa7dc8",
+      "script": "Scripts/global/MBGLoader.gd",
+      "script_sha256": "fb8893f903aa271f3989e6d86c298451a5c07e369fa528f2c035ced42dfa7dc8"
+    },
+    {
+      "id": 1895509937,
+      "name": "uiManager",
+      "kind": 2,
+      "ordinal": 4,
+      "path": "Scripts/global/uiManager.gd",
+      "native_class": "Node",
+      "source_sha256": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+      "script": "Scripts/global/uiManager.gd",
+      "script_sha256": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b"
+    },
+    {
+      "id": 2730427179,
+      "name": "BackgroundLoader",
+      "kind": 2,
+      "ordinal": 5,
+      "path": "addons/ZoneLoadingSystem/scripts/background_loader.gd",
+      "native_class": "Node",
+      "source_sha256": "b523644a977166abf2ce743b808cc7cdc32c81a7f0c740bd8d2ff4bb341451c4",
+      "script": "addons/ZoneLoadingSystem/scripts/background_loader.gd",
+      "script_sha256": "b523644a977166abf2ce743b808cc7cdc32c81a7f0c740bd8d2ff4bb341451c4"
+    },
+    {
+      "id": 3055402626,
+      "name": "audioManager",
+      "kind": 2,
+      "ordinal": 6,
+      "path": "Nodes/Ui/audioManager.tscn",
+      "native_class": "Control",
+      "source_sha256": "27d6595c0a9d97c6c112e7edf94635a2188394bd50c4df013aa6a29e17b20c8a",
+      "script": "Scripts/global/audioManager.gd",
+      "script_sha256": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c"
+    },
+    {
+      "id": 1179710525,
+      "name": "controlsManager",
+      "kind": 2,
+      "ordinal": 7,
+      "path": "Scripts/global/controlsManager.tscn",
+      "native_class": "Node",
+      "source_sha256": "641f5ad0d7084d6b5308eb263714987ac2a4b7df45c8368241ca0520d6094054",
+      "script": "Scripts/global/controlsManager.gd",
+      "script_sha256": "73ffd540c3c95ed9f2d92d57ecbde8fc9c48fa98e683f3641cca5498becddae7"
+    },
+    {
+      "id": 937469479,
+      "name": "IntegerResolutionHandler",
+      "kind": 2,
+      "ordinal": 8,
+      "path": "addons/integer_resolution_handler/integer_resolution_handler.gd",
+      "native_class": "Node",
+      "source_sha256": "c4d6a928ed297b0b20393d9402d9dff2aee26311310b4867950cf98132fc6a1b",
+      "script": "addons/integer_resolution_handler/integer_resolution_handler.gd",
+      "script_sha256": "c4d6a928ed297b0b20393d9402d9dff2aee26311310b4867950cf98132fc6a1b"
+    },
+    {
+      "id": 3950038055,
+      "name": "ECSInterpreter",
+      "kind": 2,
+      "ordinal": 9,
+      "path": "Scripts/global/ECSInterpreter.gd",
+      "native_class": "Node",
+      "source_sha256": "c823bf4b32e9d4057268002eb341ca78ed92a35f16e54b643a861a01f8485bbd",
+      "script": "Scripts/global/ECSInterpreter.gd",
+      "script_sha256": "c823bf4b32e9d4057268002eb341ca78ed92a35f16e54b643a861a01f8485bbd"
+    },
+    {
+      "id": 2914535895,
+      "name": "Debug",
+      "kind": 2,
+      "ordinal": 10,
+      "path": "Scripts/global/debug.tscn",
+      "native_class": "Node2D",
+      "source_sha256": "3a602bb95be29646eb8d576c0e034ac778e278d8c27eb11217342b504e53c5c7",
+      "script": "Scripts/global/debug.gd",
+      "script_sha256": "59332ecf5520f9ecca66683973c7a6ef91b659144215e4df9efe30e0c1827b7a"
+    }
+  ],
+  "ui_autoload": 1895509937,
+  "global_autoload": 3753035487,
+  "functions": [
+    {
+      "source": "Scripts/global/global.gd",
+      "method": "_init_player",
+      "sha256": "62e9c141bf963c48cff80ff140d00345399cd85838d40db3caa6f6e284841f99",
+      "line": 55
+    },
+    {
+      "source": "Scripts/global/global.gd",
+      "method": "add_persistent",
+      "sha256": "357992f35539387f97872c2ff2d90f018e1b2edb7997146ff7f8c8c4f5f8f452",
+      "line": 106
+    },
+    {
+      "source": "Scripts/global/global.gd",
+      "method": "get_current_scene_player_node",
+      "sha256": "7fddea654f91f29cf4dba5722fc154837ed5d81f1564a8078f3f238d5f4ee266",
+      "line": 115
+    },
+    {
+      "source": "Scripts/global/uiManager.gd",
+      "method": "_ready",
+      "sha256": "acd4223459da8ac1214ad7151df2401ca24543f0896f63964ef92aefec0b7cea",
+      "line": 69
+    },
+    {
+      "source": "Scripts/global/uiManager.gd",
+      "method": "add_ui",
+      "sha256": "83f54120d960c6f35e88e780bad51e74c35eb744b1de7e68756a6c5303f2d65d",
+      "line": 107
+    },
+    {
+      "source": "Scripts/global/SceneTransition.gd",
+      "method": "_deferred_goto_scene",
+      "sha256": "d805af8fcf2f80ed3067beed035325c26d4e5a4de12631409e40a1e7f58cec61",
+      "line": 7
+    }
+  ],
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_sources": {
+    "core/message_queue.cpp": "73f9c4d593d62fd1b5dfe227ea5c941bb8be2c3ae562e172432ec8c9c0bdf9b3",
+    "core/object.cpp": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+    "scene/main/node.cpp": "0c2e3230b37644c8496f5b1aee59f428de6a497a380c247613c489e44cd508a9",
+    "scene/main/scene_tree.cpp": "a1ac9f2da5a1046d1c468fd463de4907f535f124952b137d69fb39ef8b14b3b4"
+  },
+  "canvas_scene": "Nodes/Ui/mainCanvasLayer.tscn",
+  "canvas": {
+    "id": 185010707,
+    "name": "CanvasLayer",
+    "class_index": 25,
+    "pause": 0,
+    "priority": 0,
+    "groups": [],
+    "layer": 4,
+    "visible": true,
+    "follow_viewport": false,
+    "follow_scale": 1.0,
+    "transform": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "offset": [
+      0.0,
+      0.0
+    ],
+    "rotation": 0.0,
+    "scale": [
+      1.0,
+      1.0
+    ],
+    "source_sha256": "e304065406766cc9e9637008cecfa7f74fa7abae9b9b597f33aaad12d241981f"
+  },
+  "native_sha256": "b5b3b5eb08858121ecd758cfc56b423d83ffbd20542170de3c46ca697a41d1b8",
+  "tree_export_sha256": "4c1bf21407a6a2d32a84229fa9d9e7b51dbb9344daa2bdcd8fdf48bdc91b2dad",
+  "source_receipt_sha256": "1766985ddef1acdb3d4f43833875f185ca843ebdce5ceb21230f4ef6f88a4b05",
+  "exporter_sha256": "40811f3f43b485b1861b35ed4c77546ca49fc6bb27d2ca49f0e4231999c2a268",
+  "scene_admitted": false,
+  "pending": [
+    "Autoload constructors/Ready require actual typed source owners; namespace declaration is not execution",
+    "UiManager source onready7 and randomize/menu_flavors/battlebg preceding mainCanvas create must actually complete",
+    "External Viewport actual 3DS dimensions/canvas/world binding must come from live native owner",
+    "SceneTransition player/leave/free/followers/flags/waits still require complete mapped source consumer",
+    "Persistent same-ObjectID subtree transfer implemented; SceneTransition source ordering/await and typed native owner dispatch still require actual host"
+  ]
+}

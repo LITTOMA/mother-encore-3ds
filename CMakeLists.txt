@@ -49,6 +49,8 @@ add_library(encore_core
     runtime/field_canvas_art_data.cpp
     runtime/field_native_timer.cpp
     runtime/field_native_timer_data.cpp
+    runtime/field_global_registry.cpp
+    runtime/field_global_registry_data.cpp
     runtime/field_shop.cpp
     runtime/field_shop_data.cpp
     runtime/field_vending_machine.cpp

@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "0d4b6e7e0510130d57fe39d3f0714d8704a60460f623e58bb72aa478e64f0363",
+  "scope": "Actual global ObjectDB monotonic allocation, native fast-name sequence, project autoload namespace and constructor ordering, full original mainCanvas CanvasLayer recipe, shared deferred FIFO, source currentScene/persistent canvas ownership. Same-domain detached complete subtree transfer preserves actual ObjectID/binding/first-Ready. Original autoload constructors/Ready and complete SceneTransition ordering remain pending until actual typed adapters execute.",
+  "scene_admitted": false,
+  "format": "ENCFGRG1 schema1 cap3 family0x454e0042",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_sources": {
+    "core/message_queue.cpp": "73f9c4d593d62fd1b5dfe227ea5c941bb8be2c3ae562e172432ec8c9c0bdf9b3",
+    "core/object.cpp": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+    "scene/main/node.cpp": "0c2e3230b37644c8496f5b1aee59f428de6a497a380c247613c489e44cd508a9",
+    "scene/main/scene_tree.cpp": "a1ac9f2da5a1046d1c468fd463de4907f535f124952b137d69fb39ef8b14b3b4"
+  },
+  "mapped_consumers": [
+    "FieldGlobalRegistryData",
+    "FieldGlobalRegistry",
+    "FieldNodeRecipeData",
+    "FieldNodeTreeRuntime global queue delegation and same-domain live subtree transfer"
+  ],
+  "pending": [
+    "Autoload constructors/Ready require actual typed source owners; namespace declaration is not execution",
+    "UiManager source onready7 and randomize/menu_flavors/battlebg preceding mainCanvas create must actually complete",
+    "External Viewport actual 3DS dimensions/canvas/world binding must come from live native owner",
+    "SceneTransition player/leave/free/followers/flags/waits still require complete mapped source consumer",
+    "Persistent same-ObjectID subtree transfer implemented; SceneTransition source ordering/await and typed native owner dispatch still require actual host"
+  ]
+}

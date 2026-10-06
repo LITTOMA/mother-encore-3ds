@@ -55,6 +55,8 @@ struct FieldDeferredMessage {
  std::string member;int32_t notification=0;std::vector<FieldDeferredValue>args;
 };
 struct FieldNodeTreeHost {
+ // Actual global registry SceneTree ObjectID; zero is independent mode.
+ FieldObjectId object_domain=0;
  // The actual global ObjectDB allocator is shared across old/new scenes and
  // dynamic factories. Stable source IDs are not runtime ObjectIDs.
  std::function<bool(FieldObjectId&,std::string&)>allocate_object;
@@ -62,6 +64,10 @@ struct FieldNodeTreeHost {
  std::function<bool(FieldObjectId,const FieldNodeDescriptor&,FieldNodeBinding&,std::string&)>bind;
  std::function<bool(FieldObjectId,const FieldNodeBinding&,FieldTreePhase,std::string&)>dispatch;
  std::function<bool(const FieldDeferredMessage&,std::string&)>deferred;
+ // Bind both to the same actual global MessageQueue, or neither for an
+ // independent source kernel. Partial binding is rejected at initialize.
+ std::function<bool(FieldDeferredMessage,std::string&)>enqueue_global;
+ std::function<bool(std::string&)>flush_global;
  std::function<bool(FieldObjectId)>object_exists;
  // Register exactly with the actual Viewport's input group, never a fake ID.
  std::function<bool(FieldObjectId,uint32_t,bool,std::string&)>input_registration;
@@ -103,6 +109,10 @@ public:
  // Complete source recipe, including constructor-owned internal nodes.
  // Creation stays out of tree until the actual deferred add_child executes.
  bool instantiate_recipe(const FieldNodeRecipeData&,FieldObjectId&,std::string&);
+ // Same live ObjectIDs and bindings, after the actual source remove_child.
+ // Global deferred messages retain identity and are not drained/recreated.
+ bool transfer_detached_subtree(FieldNodeTreeRuntime&,FieldObjectId,std::string&);
+ FieldObjectId object_domain()const{return host_.object_domain;}
  bool set_owner(FieldObjectId,FieldObjectId,std::string&);
  bool set_local(FieldObjectId,const FieldTransform&,std::string&);
  bool world_transform(FieldObjectId,FieldTransform&,std::string&);

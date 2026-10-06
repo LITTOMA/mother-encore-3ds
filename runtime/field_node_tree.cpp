@@ -66,6 +66,8 @@ namespace encore::upstream {
  bool FieldNodeTreeRuntime::initialize(const FieldNodeTreeData&d,FieldNodeTreeHost h,std::string&e){
   if(!d.valid()||!h.allocate_object||!h.allocate_fast_name||!h.bind||!h.dispatch||!h.deferred||!h.object_exists||!h.input_registration||!h.external_pause_process||!h.release)return fail(e,"NodeTree live typed host incomplete");
   if(!nodes_.empty())return fail(e,"NodeTree live ownership already initialized");
+  if(h.enqueue_global&&!h.object_domain)return fail(e,"NodeTree global ObjectDB domain missing");
+  if(bool(h.enqueue_global)!=bool(h.flush_global))return fail(e,"NodeTree partial global MessageQueue binding rejected");
   host_=std::move(h);
   FieldObjectId id=0;
   if(!instantiate(d,d.identity().scene_id,id,e))return false;
@@ -89,6 +91,30 @@ namespace encore::upstream {
   records.reserve(d.records().size());
   for(const auto&r:d.records())records.push_back(r);
   return instantiate_records(d.identity(),records,d.identity().scene_id,true,out,e);
+ }
+ bool FieldNodeTreeRuntime::transfer_detached_subtree(FieldNodeTreeRuntime&destination,FieldObjectId first,std::string&e){
+  if(&destination==this||!host_.object_domain||host_.object_domain!=destination.host_.object_domain||!host_.enqueue_global||!destination.host_.enqueue_global||poisoned_||destination.poisoned_||driving_||destination.driving_||deleting_||destination.deleting_||flushing_||destination.flushing_||!frames_.empty()||!destination.frames_.empty()||!deletes_.empty()||!destination.deletes_.empty()||!messages_.empty()||!destination.messages_.empty())return fail(e,"NodeTree transfer domain/lifecycle/delete/local message boundary rejected");
+  auto*root=live(first);auto*target_root=destination.live(destination.root_);
+  if(!root||first==root_||root->parent||root->inside||!target_root||!destination.source(destination.root_))return fail(e,"NodeTree transfer requires actual detached subtree and destination kernel");
+  std::vector<FieldObjectId>pending{first};std::set<FieldObjectId>seen;
+  for(size_t at=0;at<pending.size();++at){
+   auto id=pending[at];auto*n=live(id);auto*owned=source(id);
+   if(!seen.insert(id).second||!n||!owned||n->inside||n->blocked||n->queued||transform_index_.count(id)||destination.nodes_.count(id)||destination.sources_.count(id)||destination.source_index_.count(n->source))return fail(e,"NodeTree transfer complete subtree/state/source-index conflict rejected");
+   if(owned->identity.upstream_commit!=destination.source(destination.root_)->identity.upstream_commit)return fail(e,"NodeTree transfer original source pin mismatch");
+   for(auto child:n->children){auto*c=live(child);if(!c||c->parent!=id)return fail(e,"NodeTree transfer source child topology mismatch");pending.push_back(child);}
+  }
+  for(auto id:pending){auto*n=live(id);if((n->owner&&!seen.count(n->owner))||(n->canvas_parent&&!seen.count(n->canvas_parent)))return fail(e,"NodeTree transfer retains foreign owner/canvas ancestor");}
+  // No callbacks are emitted here: remove_child already emitted source exit,
+  // and the subsequent actual add_child performs enter with ready_first kept.
+  for(auto id:pending){
+   auto node=nodes_.extract(id);auto owned=sources_.extract(id);
+   const auto source_id=node.mapped().source;
+   for(const auto&g:node.mapped().groups){auto i=group_index_.find(g);if(i!=group_index_.end())i->second.erase(std::remove(i->second.begin(),i->second.end(),id),i->second.end());destination.group_index_[g].push_back(id);}
+   auto original=source_index_.find(source_id);
+   if(original!=source_index_.end()&&original->second==id){destination.source_index_.emplace(source_id,id);source_index_.erase(original);}
+   destination.nodes_.insert(std::move(node));destination.sources_.insert(std::move(owned));
+  }
+  ++order_version_;++destination.order_version_;e.clear();return true;
  }
  bool FieldNodeTreeRuntime::instantiate_records(const FieldIdentity&identity,const std::vector<FieldNodeDescriptor>&records,uint32_t first,bool recipe,FieldObjectId&out,std::string&e){
   if(poisoned_||!host_.allocate_object||!host_.allocate_fast_name)return fail(e,"NodeTree dynamic source/host rejected");
@@ -759,10 +785,12 @@ namespace encore::upstream {
    if(auto*f=std::get_if<Vec2>(&v);f&&(!std::isfinite(f->x)||!std::isfinite(f->y)))return fail(e,"NodeTree deferred nonfinite vector");
    if(auto*s=std::get_if<std::string>(&v);s&&(s->size()>65536||s->find('\0')!=s->npos))return fail(e,"NodeTree deferred string rejected");
   }
+  if(host_.enqueue_global)return host_.enqueue_global(std::move(m),e);
   messages_.push_back(std::move(m));
   return true;
  }
  bool FieldNodeTreeRuntime::flush_messages(std::string&e){
+  if(host_.flush_global)return host_.flush_global(e);
   if(poisoned_||flushing_)return fail(e,"NodeTree reentrant/poisoned message flush rejected");
   flushing_=true;
   size_t done=0;

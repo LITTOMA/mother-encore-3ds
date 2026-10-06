@@ -34,6 +34,16 @@ bool symbol(std::string_view s) {
       return false;
   return true;
 }
+bool translation_key(std::string_view s) {
+  // CSV option keys use a hyphen before OPT; source labels and language IDs
+  // remain ordinary symbols. This is a key grammar, not a general path rule.
+  if (s.empty()) return false;
+  for (auto c : s)
+    if (!(c == '-' || c == '_' || (c >= 'a' && c <= 'z') ||
+          (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')))
+      return false;
+  return true;
+}
 struct Reader {
   const uint8_t *p;
   size_t n, at = 64;
@@ -409,12 +419,14 @@ bool FieldProgrammeData::load(const uint8_t *p, size_t n, std::string &e) {
         !path(c.program) || !symbol(c.label) || !options ||
         c.initial_selection >= options)
       return reject("Field programme choice schema");
+    std::set<std::string> option_keys;
     for (uint32_t j = 0; j < options; ++j) {
       FieldProgrammeOption o;
       o.key = r.text();
       o.target_pc = r.integer();
       auto langs = r.count(16);
-      if (!symbol(o.key) || !langs)
+      if (!r.ok || !translation_key(o.key) ||
+          !option_keys.insert(o.key).second || !langs)
         return reject("Field programme choice translation key");
       for (uint32_t q = 0; q < langs; ++q) {
         auto lang = r.text();

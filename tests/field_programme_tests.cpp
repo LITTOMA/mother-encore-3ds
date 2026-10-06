@@ -30,6 +30,22 @@ int main() {
   std::string error;
   auto pack = bytes("romfs/data/podunk-programmes.encprog");
   assert(data.load(pack.data(), pack.size(), error));
+  // Original CSV option keys contain -OPT_; they are not script symbols.
+  const auto *choice = data.choice(0);
+  assert(choice && !choice->options.empty());
+  const auto key = choice->options.front().key;
+  const auto hyphen = key.find('-');
+  assert(hyphen != key.npos);
+  const auto found = std::search(pack.begin(), pack.end(), key.begin(), key.end());
+  assert(found != pack.end());
+  const auto offset = size_t(found - pack.begin());
+  for (auto invalid : {'/', '.', ':', ' ', '\n'}) {
+    auto invalid_key = pack;
+    invalid_key[offset + hyphen] = uint8_t(invalid);
+    repair(invalid_key);
+    assert(!data.load(invalid_key.data(), invalid_key.size(), error));
+    assert(data.valid() && data.choice(0)->options.front().key == key);
+  }
   assert(basement.load_file("romfs/data/house.encbasement", error));
   auto before = data.program_count();
   assert(before > 0);

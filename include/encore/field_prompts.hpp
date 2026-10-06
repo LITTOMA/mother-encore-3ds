@@ -122,6 +122,7 @@ struct FieldPromptHost {
 };
 class FieldPromptRuntime {
 public:
+ const FieldPromptData*data()const{return data_;}
   bool initialize(const FieldPromptData &, FieldPromptHost, std::string &);
   bool create(uint32_t);
   bool ready(uint32_t);

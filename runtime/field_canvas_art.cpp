@@ -38,6 +38,7 @@ void FieldCanvasArtRuntime::clear() {
   tree_ = nullptr;
   host_ = {};
   foreign_ = nullptr;
+  native_ = nullptr;
   owners_.clear();
   slots_.clear();
 }
@@ -130,6 +131,14 @@ bool FieldCanvasArtRuntime::initialize(const FieldCanvasArtData &d,
   e.clear();
   return true;
 }
+bool FieldCanvasArtRuntime::bind_native(FieldCanvasNativeOwner &owner,
+                                        std::string &e) {
+  if (!data_ || native_ || owner.canvas_data() != data_ ||
+      owner.canvas_tree() != tree_)
+    return fail(e, "Canvas native Sprite owner differs from actual data/Tree");
+  native_ = &owner;
+  return true;
+}
 bool FieldCanvasArtRuntime::command(FieldObjectId object,
                                     std::vector<FieldCanvasDraw> &out,
                                     std::string &e) {
@@ -161,6 +170,8 @@ bool FieldCanvasArtRuntime::command(FieldObjectId object,
   a.centered = r->centered;
   a.flip_h = r->flip_h;
   a.flip_v = r->flip_v;
+  if (!r->kind && native_ && !native_->sprite_snapshot(object, a, e))
+    return false;
   if (r->owner != FieldCanvasOwner::Native &&
       !host_.appearance(*r, object, owner, a, e))
     return false;

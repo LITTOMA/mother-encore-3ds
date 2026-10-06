@@ -26,7 +26,7 @@ bool FieldBushRuntime::initialize(const FieldBushData &d, FieldBushHost h,
     return false;
   data_ = &d;
   host_ = std::move(h);
-  instances_.clear();
+  instances_.clear();pending_source_constructor_.clear();
   last_ready_ = 0;
   had_ready_ = false;
   poisoned_ = false;
@@ -54,7 +54,7 @@ FieldBushInstance *FieldBushRuntime::get(uint32_t id, bool require_ready) {
 bool FieldBushRuntime::publish(FieldBushInstance &s) {
   return callback(host_.publish(s.id, s, error_));
 }
-bool FieldBushRuntime::create(uint32_t id) {
+bool FieldBushRuntime::create(uint32_t id,bool source_constructor) {
   if (!data_ || poisoned_ || instances_.count(id))
     return fail("DeadBush create source missing/duplicate");
   auto d = data_->record(id);
@@ -69,6 +69,7 @@ bool FieldBushRuntime::create(uint32_t id) {
   s.hit_disabled = (d->flags & 128) != 0;
   s.interact_disabled = (d->flags & 256) != 0;
   instances_.emplace(id, std::move(s));
+ if(source_constructor){pending_source_constructor_.insert(id);return true;}
   return callback(host_.connect_hitbox(
       id, [this, id](uint32_t area) { return hitbox_entered(id, area); },
       error_));
@@ -80,6 +81,7 @@ bool FieldBushRuntime::ready(uint32_t id) {
   auto d = data_->record(id);
   if (had_ready_ && d->ready_ordinal <= last_ready_)
     return fail("DeadBush Ready violates actual postorder");
+  if(pending_source_constructor_.count(id)){if(!callback(host_.connect_hitbox(id,[this,id](uint32_t area){return hitbox_entered(id,area);},error_)))return false;pending_source_constructor_.erase(id);}
   bool exists = false;
   // The onready variables resolve before source _ready. Null New_parent is
   // resolved only at the source fallback at the END of _ready.

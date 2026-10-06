@@ -3,6 +3,7 @@
 #include <array>
 #include <functional>
 #include <map>
+#include <set>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -61,8 +62,10 @@ struct FieldInteractState {
 };
 class FieldInteractRuntime {
 public:
+ const FieldInteractData*data()const{return data_;}
   bool initialize(const FieldInteractData &, FieldInteractHost, std::string &);
-  bool instantiate(uint32_t);
+  bool instantiate(uint32_t,bool source_constructor=false);
+  bool complete_source_constructor(uint32_t);
   bool ready(uint32_t);
   bool flags_updated(uint32_t);
   bool interact(uint32_t);
@@ -76,6 +79,7 @@ public:
 private:
   const FieldInteractData *data_ = nullptr;
   FieldInteractHost host_;
+  std::set<uint32_t> pending_source_constructor_;
   std::map<uint32_t, FieldInteractState> states_;
   bool poisoned_ = false, had_ready_ = false;
   uint32_t last_ready_ = 0;

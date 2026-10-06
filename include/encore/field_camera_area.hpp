@@ -2,6 +2,7 @@
 #include "encore/field_data.hpp"
 #include <functional>
 #include <map>
+#include <set>
 namespace encore::upstream {
 enum class FieldCameraLimit:uint32_t {Top,Left,Right,Bottom};
 struct FieldCameraAreaDescriptor {
@@ -38,9 +39,10 @@ struct FieldCameraAreaHost {
 };
 class FieldCameraAreaRuntime {
 public:
- bool initialize(const FieldCameraAreaData&,FieldCameraAreaHost,std::string&);bool create(uint32_t);bool ready(uint32_t);bool body_enter(uint32_t,uint64_t);bool body_exit(uint32_t,uint64_t);bool resume_idle(uint64_t);bool get_size(uint32_t,Vec2&);bool get_area_global_position(uint32_t,Vec2&);bool exit_tree(uint32_t);
+ bool initialize(const FieldCameraAreaData&,FieldCameraAreaHost,std::string&);bool create(uint32_t,bool source_constructor=false);bool ready(uint32_t);bool body_enter(uint32_t,uint64_t);bool body_exit(uint32_t,uint64_t);bool resume_idle(uint64_t);bool get_size(uint32_t,Vec2&);bool get_area_global_position(uint32_t,Vec2&);bool exit_tree(uint32_t);
  const FieldCameraAreaState*state(uint32_t)const;const FieldCameraAreaData*data()const{return data_;}const std::string&error()const{return error_;}
 private:
+ std::set<uint32_t> pending_source_constructor_;
  const FieldCameraAreaData*data_=nullptr;FieldCameraAreaHost host_;std::map<uint32_t,FieldCameraAreaState>states_;std::map<uint64_t,uint32_t>awaits_;uint64_t next_await_=1;uint32_t last_ready_=0;bool had_ready_=false,poisoned_=false;std::string error_;
  FieldCameraAreaState*get(uint32_t,bool ready=true);bool fail(const char*);bool observe(FieldCameraAreaState&,FieldCameraAreaObservation&);bool reset();bool limit(FieldCameraLimit,double);bool size(const FieldCameraAreaObservation&,Vec2&);
 };

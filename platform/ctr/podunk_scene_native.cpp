@@ -327,6 +327,15 @@ bool PodunkSceneNative::construct(FieldObjectId id,
     if (!a || a->kind != 0 || !material(id, *a, e))
       return fail(e, "Scene native Sprite source/material rejected: " + d.path +
                          ": " + e);
+    n.sprite.texture = a->texture;
+    n.sprite.hframes = a->hframes;
+    n.sprite.vframes = a->vframes;
+    n.sprite.frame = a->frame;
+    n.sprite.offset = a->offset;
+    n.sprite.size = a->size;
+    n.sprite.centered = a->centered;
+    n.sprite.flip_h = a->flip_h;
+    n.sprite.flip_v = a->flip_v;
   }
   instances_.emplace(id, n);
   source_objects_.emplace(d.id, id);
@@ -356,7 +365,8 @@ bool PodunkSceneNative::finish_factory(std::string &e) {
     if (owns(d) && !source_objects_.count(d.id))
       return fail(e, "Scene native factory omitted source node: " + d.path);
   }
-  if (!canvas_.initialize(*art_, *data_, *tree_, art_host_, e))
+  if (!canvas_.initialize(*art_, *data_, *tree_, art_host_, e) ||
+      !canvas_.bind_native(*this, e))
     return false;
   finished_ = true;
   e.clear();
@@ -501,6 +511,76 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
   // their actual parent/path/order/visibility state is maintained by Tree.
   e.clear();
   return true;
+}
+bool PodunkSceneNative::sprite_snapshot(FieldObjectId id,
+                                        FieldCanvasAppearance &out,
+                                        std::string &e) const {
+  const FieldNodeDescriptor *d;
+  const FieldNodeState *s;
+  const auto i = instances_.find(id);
+  if (i == instances_.end() || i->second.kind != Kind::Sprite ||
+      !actual(id, d, s, e) || !art_->record(d->id))
+    return fail(e, "Scene native Sprite snapshot has no same live body");
+  out = i->second.sprite;
+  e.clear();
+  return true;
+}
+bool PodunkSceneNative::sprite_publish(FieldObjectId id,
+                                       const FieldCanvasAppearance &value,
+                                       std::string &e) {
+  const FieldNodeDescriptor *d;
+  const FieldNodeState *s;
+  auto i = instances_.find(id);
+  if (i == instances_.end() || i->second.kind != Kind::Sprite ||
+      !actual(id, d, s, e) || !art_->record(d->id))
+    return fail(e, "Scene native Sprite publication has no same live body");
+  if (value.action != FieldCanvasAction::Default ||
+      (value.texture && !art_->texture(value.texture)) ||
+      !value.hframes || !value.vframes || value.hframes > 1024 ||
+      value.vframes > 1024 || value.frame >= value.hframes * value.vframes ||
+      !std::isfinite(value.offset.x) || !std::isfinite(value.offset.y) ||
+      !std::isfinite(value.size.x) || !std::isfinite(value.size.y) ||
+      value.size.x < 0 || value.size.y < 0)
+    return fail(e, "Scene native Sprite property pose/actual GPU asset rejected");
+  // This is the completed native property pose supplied by the source owner.
+  // Rendering action, visibility and setter invocation history are separate.
+  i->second.sprite = value;
+  e.clear();
+  return true;
+}
+bool PodunkSceneNative::bind_sprite_signals(FieldObjectSignals &signals,
+                                           std::string &e) {
+  if (!data_ || sprite_signals_ || signals.registry() != registry_ ||
+      registry_->poisoned())
+    return fail(e, "Native Sprite signals require same actual ObjectDB bus");
+  sprite_signals_ = &signals;
+  e.clear();
+  return true;
+}
+bool PodunkSceneNative::sprite_set_frame(FieldObjectId id, uint32_t frame,
+                                        std::string &e) {
+  FieldCanvasAppearance state;
+  if (!sprite_snapshot(id, state, e))
+    return false;
+  if (!sprite_signals_ || sprite_signals_->registry() != registry_ ||
+      frame >= state.hframes * state.vframes)
+    return fail(e, "Native Sprite frame setter/same signal bus rejected");
+  instances_.at(id).sprite.frame = frame;
+  // Godot 3.6.2 Sprite::set_frame emits even if the numeric frame is unchanged.
+  return sprite_signals_->emit(id, "frame_changed", {}, e);
+}
+bool PodunkSceneNative::sprite_set_texture(FieldObjectId id, uint32_t texture,
+                                          std::string &e) {
+  FieldCanvasAppearance state;
+  if (!sprite_snapshot(id, state, e))
+    return false;
+  if (state.texture == texture)
+    return true;
+  if (!sprite_signals_ || sprite_signals_->registry() != registry_ ||
+      (texture && !art_->texture(texture)))
+    return fail(e, "Native Sprite texture setter/actual GPU asset rejected");
+  instances_.at(id).sprite.texture = texture;
+  return sprite_signals_->emit(id, "texture_changed", {}, e);
 }
 bool PodunkSceneNative::set_disabled(FieldObjectId id, bool value,
                                      std::string &e) {
@@ -797,6 +877,8 @@ bool PodunkSceneNative::shutdown(std::string &e) {
   geometry_ = nullptr;
   art_ = nullptr;
   materials_ = nullptr;
+  sprite_signals_ = nullptr;
+  animated_leaves_ = nullptr;
   world_ = nullptr;
   finished_ = false;
   draw_started_ = false;

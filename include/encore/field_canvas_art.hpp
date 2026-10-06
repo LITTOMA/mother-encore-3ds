@@ -110,6 +110,16 @@ public:
                      const FieldIdentity &, const FieldNodeTreeRuntime &,
                      bool &drawable, std::string &) const = 0;
 };
+// Real native Sprite state; this is independent of scripted appearance/shader
+// ownership and does not grant construction or Ready.
+class FieldCanvasNativeOwner {
+public:
+  virtual ~FieldCanvasNativeOwner() = default;
+  virtual const FieldCanvasArtData *canvas_data() const = 0;
+  virtual const FieldNodeTreeRuntime *canvas_tree() const = 0;
+  virtual bool sprite_snapshot(FieldObjectId, FieldCanvasAppearance &,
+                               std::string &) const = 0;
+};
 struct FieldCanvasArtHost {
   // Each dynamic appearance must bind the actual consumer, source node and
   // script digest. Delegation is explicit and never erases shader ownership.
@@ -125,6 +135,7 @@ public:
   bool initialize(const FieldCanvasArtData &, const FieldNodeTreeData &,
                   FieldNodeTreeRuntime &, FieldCanvasArtHost, std::string &);
   bool bind_foreign(FieldCanvasForeignOwner &, std::string &);
+  bool bind_native(FieldCanvasNativeOwner &, std::string &);
   // Generates one ordered command stream; platform draws defaults or invokes
   // the typed shader owner's renderer at the same z/tree slot. No frame logic.
   bool collect(std::vector<FieldCanvasDraw> &, std::string &);
@@ -141,6 +152,7 @@ private:
   FieldNodeTreeRuntime *tree_ = nullptr;
   FieldCanvasArtHost host_;
   FieldCanvasForeignOwner *foreign_ = nullptr;
+  FieldCanvasNativeOwner *native_ = nullptr;
   std::map<FieldObjectId, FieldObjectId> owners_;
   std::vector<FieldCanvasOrderSlot> slots_;
   bool bind(const FieldCanvasRecord &, FieldObjectId, FieldObjectId &,

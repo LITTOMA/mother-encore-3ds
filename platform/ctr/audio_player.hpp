@@ -5,6 +5,7 @@
 #include <array>
 #include <string>
 #include <functional>
+#include <memory>
 
 namespace encore::ctr {
 enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5 };
@@ -30,6 +31,10 @@ public:
     AudioPlayer(const AudioPlayer&)=delete;
     AudioPlayer& operator=(const AudioPlayer&)=delete;
     bool initialize(const char* bank_path,const char* asset_root,std::string& error);
+    // Additional checked scene metadata borrows the existing DSP/voices. It
+    // does not reset playback, read PCM or introduce another frame clock.
+    bool include_bank(std::shared_ptr<const upstream::AudioBank>,std::string&);
+    bool source_asset(std::string_view,upstream::AudioAsset&,std::string&)const;
     // Opening a stream performs its complete size/CRC validation once. Metadata
     // admission and NDSP initialization do not read unused PCM payloads.
     bool prepare(uint32_t stable_audio_id,std::string& error);
@@ -71,11 +76,14 @@ private:
         bool active=false,fading=false,stop_after_fade=false;
     };
     bool prepare_index(uint32_t index,std::string& error);
+    upstream::AudioAsset asset(uint32_t index)const;
+    uint32_t asset_count()const;
     bool refill(uint32_t lane,std::string& error);
     void stop(uint32_t lane);
     void retire_music_player();
     void mix(uint32_t lane);
     upstream::AudioBank bank_;
+    std::vector<std::shared_ptr<const upstream::AudioBank>> scene_banks_;
     std::string asset_root_;
     std::array<upstream::AudioPcmStream,64> streams_;
     std::array<Voice,lane_count> voices_;

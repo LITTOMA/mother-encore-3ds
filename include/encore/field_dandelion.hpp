@@ -36,6 +36,8 @@ struct FieldDandelionHost {
 };
 class FieldDandelionRuntime {
 public:
+ const FieldDandelionData*data()const{return data_;}
+ bool source_body_unready(uint32_t id)const{if(!data_||spawners_.size()!=data_->spawner_count())return false;for(size_t i=0;i<spawners_.size();++i)if(data_->spawner(uint32_t(i)).id==id)return !spawners_[i].ready&&!spawners_[i].poisoned;return false;}
  bool initialize(const FieldDandelionData&,FieldDandelionHost,std::string&);
  bool ready(uint32_t,std::string&);bool screen_entered(uint32_t,std::string&);bool screen_exited(uint32_t,std::string&);
  bool body_entered(uint64_t,bool actual_party_player,std::string&);

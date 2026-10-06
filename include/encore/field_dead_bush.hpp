@@ -3,6 +3,7 @@
 #include <array>
 #include <functional>
 #include <map>
+#include <set>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -62,9 +63,11 @@ struct FieldBushHost {
 };
 class FieldBushRuntime {
 public:
- bool initialize(const FieldBushData&,FieldBushHost,std::string&);bool create(uint32_t);bool ready(uint32_t);bool viewport(uint32_t,bool);bool grow(uint32_t);bool interact(uint32_t);bool hitbox_entered(uint32_t,uint32_t);bool idle_frame(uint32_t,float);bool seek(uint32_t,float,bool);bool commit_deleted(uint32_t);
+ const FieldBushData*data()const{return data_;}
+ bool initialize(const FieldBushData&,FieldBushHost,std::string&);bool create(uint32_t,bool source_constructor=false);bool ready(uint32_t);bool viewport(uint32_t,bool);bool grow(uint32_t);bool interact(uint32_t);bool hitbox_entered(uint32_t,uint32_t);bool idle_frame(uint32_t,float);bool seek(uint32_t,float,bool);bool commit_deleted(uint32_t);
  const FieldBushInstance*instance(uint32_t)const;const std::string&error()const{return error_;}
 private:
+ std::set<uint32_t> pending_source_constructor_;
  const FieldBushData*data_=nullptr;FieldBushHost host_;std::map<uint32_t,FieldBushInstance>instances_;std::string error_;uint32_t last_ready_=0;bool had_ready_=false,poisoned_=false;
  bool fail(const char*);bool callback(bool);FieldBushInstance*get(uint32_t,bool ready=true);bool publish(FieldBushInstance&);bool play(FieldBushInstance&,FieldBushClipRole);bool apply(FieldBushInstance&,FieldBushProperty,uint32_t);bool finished(FieldBushInstance&,FieldBushClipRole);
 };

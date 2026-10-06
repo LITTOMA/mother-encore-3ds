@@ -2,6 +2,7 @@
 #include "encore/field_data.hpp"
 #include <functional>
 #include <map>
+#include <set>
 namespace encore::upstream {
 enum class FieldOpenableClipRole:uint32_t {Action=1,Normal,Reset};
 enum class FieldOpenableProperty:uint32_t {SpriteVisible=1,BodyDisabled,NonPlayerDisabled,AudioPlaying};
@@ -72,11 +73,13 @@ struct FieldOpenableHost {
 };
 class FieldOpenableDoorRuntime {
 public:
- bool initialize(const FieldOpenableDoorData&,FieldOpenableHost,std::string&);bool create(uint32_t);bool ready(uint32_t);bool update_state(uint32_t);
+ const FieldOpenableDoorData*data()const{return data_;}
+ bool initialize(const FieldOpenableDoorData&,FieldOpenableHost,std::string&);bool create(uint32_t,bool source_constructor=false);bool ready(uint32_t);bool update_state(uint32_t);
  bool body_entered(uint32_t,uint64_t);bool body_exited(uint32_t,uint64_t);bool timer_timeout(uint32_t);bool idle_frame(uint32_t,float);
  bool lock(uint32_t);bool unlock(uint32_t);bool open(uint32_t);bool close(uint32_t);bool interact(uint32_t);bool interact_item(uint32_t,uint64_t);
  const FieldOpenableInstance*instance(uint32_t)const;const std::string&error()const{return error_;}
 private:
+ std::set<uint32_t> pending_source_constructor_;
  const FieldOpenableDoorData*data_=nullptr;FieldOpenableHost host_;std::map<uint32_t,FieldOpenableInstance>instances_;std::string error_;bool poisoned_=false,had_ready_=false;uint32_t last_ready_=0;
  bool fail(const char*);bool callback(bool);FieldOpenableInstance*get(uint32_t,bool ready=true);bool publish(FieldOpenableInstance&);bool play(FieldOpenableInstance&,FieldOpenableClipRole);bool valid_body(uint32_t,uint64_t,bool&);bool assign_audio(FieldOpenableInstance&,std::string_view,bool);bool use_key(FieldOpenableInstance&,uint64_t);bool dialogue(FieldOpenableInstance&,uint32_t);bool apply(FieldOpenableInstance&,FieldOpenableProperty,bool);bool deferred(FieldOpenableInstance&,bool);
 };

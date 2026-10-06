@@ -3,6 +3,7 @@
 #include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <algorithm>
 
 namespace encore::ctr {
 namespace {
@@ -49,23 +50,57 @@ void AudioPlayer::shutdown(){
     ndsp_initialized_=ready_=false;
     for(auto& v:voices_){if(v.samples)linearFree(v.samples);v=Voice{};}
     for(auto& stream:streams_)stream.close();
+    scene_banks_.clear();
     asset_root_.clear();
 }
 bool AudioPlayer::prepare_index(uint32_t index,std::string& error){
     if(streams_[index].is_open()){error.clear();return true;}
-    const auto asset=bank_.asset(index);const auto path=asset_root_+std::string(asset.pcm_path);
+    const auto asset=this->asset(index);const auto path=asset_root_+std::string(asset.pcm_path);
     // AudioPcmStream::open checks every byte before publishing its file handle.
     // Missing/truncated/corrupt payloads cannot reach an NDSP wave queue.
     return streams_[index].open(asset,path.c_str(),error);
 }
 bool AudioPlayer::prepare(uint32_t id,std::string& error){
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
-    for(uint32_t i=0;i<bank_.count();++i)if(bank_.asset(i).stable_id==id)return prepare_index(i,error);
+    for(uint32_t i=0;i<asset_count();++i)if(asset(i).stable_id==id)return prepare_index(i,error);
     error="Audio resource is absent from bank";return false;
 }
 bool AudioPlayer::prepared(uint32_t id)const{
-    if(ready_)for(uint32_t i=0;i<bank_.count();++i)if(bank_.asset(i).stable_id==id)return streams_[i].is_open();
+    if(ready_)for(uint32_t i=0;i<asset_count();++i)if(asset(i).stable_id==id)return streams_[i].is_open();
     return false;
+}
+uint32_t AudioPlayer::asset_count()const{
+    uint32_t n=bank_.count();
+    for(const auto& bank:scene_banks_)n+=bank->count();
+    return n;
+}
+upstream::AudioAsset AudioPlayer::asset(uint32_t i)const{
+    if(i<bank_.count())return bank_.asset(i);
+    i-=bank_.count();
+    for(const auto& bank:scene_banks_){if(i<bank->count())return bank->asset(i);i-=bank->count();}
+    return {};
+}
+bool AudioPlayer::include_bank(std::shared_ptr<const upstream::AudioBank> b,std::string& e){
+    if(!ready_||!b||!b->count()){e="Scene audio metadata/DSP owner unavailable";return false;}
+    if(std::find(scene_banks_.begin(),scene_banks_.end(),b)!=scene_banks_.end()){e.clear();return true;}
+    const auto count=asset_count();
+    if(b->count()>streams_.size()-count){e="Scene audio stream capacity exhausted";return false;}
+    for(uint32_t j=0;j<b->count();++j){const auto next=b->asset(j);
+        for(uint32_t i=0;i<count;++i)if(asset(i).stable_id==next.stable_id){
+            e="Scene audio ID already belongs to an existing bank";return false;
+        }
+    }
+    scene_banks_.push_back(std::move(b));e.clear();return true;
+}
+bool AudioPlayer::source_asset(std::string_view source,upstream::AudioAsset& out,std::string& e)const{
+    if(source.substr(0,6)=="res://")source.remove_prefix(6);
+    uint32_t matches=0;
+    for(uint32_t i=0;i<asset_count();++i){auto a=asset(i);auto name=a.source_path;
+        if(name.substr(0,6)=="res://")name.remove_prefix(6);
+        if(name==source){out=a;++matches;}
+    }
+    if(matches!=1){e="Scene audio source absent or ambiguous";return false;}
+    e.clear();return true;
 }
 void AudioPlayer::reset_scene(){
     // The immutable checked bank and open streams belong to the application,
@@ -105,8 +140,8 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
     const uint32_t lane=uint32_t(which);if(lane>=lane_count){error="Unsupported audio lane";return false;}
     if(which==AudioLane::Music&&music_generation_==UINT64_MAX){error="Music observation identity exhausted";return false;}
     if(which==AudioLane::Music&&!music_player_present_&&music_player_identity_==UINT64_MAX){error="Bounded Music player identity exhausted";return false;}
-    uint32_t index=0;while(index<bank_.count()&&bank_.asset(index).stable_id!=id)++index;
-    if(index==bank_.count()){error="Audio resource is absent from bank";return false;}
+    uint32_t index=0;while(index<asset_count()&&asset(index).stable_id!=id)++index;
+    if(index==asset_count()){error="Audio resource is absent from bank";return false;}
     for(uint32_t i=0;i<lane_count;++i)if(i!=lane&&voices_[i].active&&voices_[i].asset_index==index){error="Concurrent playback of one PCM asset across lanes is outside audio slice";return false;}
     if(!prepare_index(index,error))return false; // Preserve a live voice when preparation fails.
     auto& voice=voices_[lane];
@@ -115,7 +150,7 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
         if(!voice.samples){error="Audio auxiliary streaming-buffer allocation failed";return false;}
         ndspChnReset(hardware_channel(lane));
     }
-    stop(lane);voice.waves={};voice.asset=bank_.asset(index);voice.asset_index=index;
+    stop(lane);voice.waves={};voice.asset=asset(index);voice.asset_index=index;
     if(!streams_[index].rewind()){error="Cannot rewind audio stream";return false;}
     voice.fade.reset(fadein_seconds>0?bank_.silence_db():voice.asset.gain_db+gain_db);voice.active=true;voice.stop_after_fade=false;
     if(fadein_seconds>0){voice.fade.start(voice.asset.gain_db+gain_db,fadein_seconds,true);voice.fading=true;}

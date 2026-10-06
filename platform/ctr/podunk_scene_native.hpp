@@ -2,6 +2,7 @@
 #include "encore/field_canvas_art.hpp"
 #include "encore/field_geometry_space.hpp"
 #include "encore/field_map_space.hpp"
+#include "encore/field_object_signals.hpp"
 #include "encore/field_scene_host.hpp"
 #include "podunk_native_root.hpp"
 #include "podunk_player_physics_world.hpp"
@@ -34,7 +35,7 @@ public:
 // Owns native bodies, shapes and GPU pages for the full checked scene. Script
 // construction/Ready, timers, audio and animated sprites have other typed
 // owners; this class never grants those classes an empty native admission.
-class PodunkSceneNative {
+class PodunkSceneNative final : public upstream::FieldCanvasNativeOwner {
 public:
   PodunkSceneNative();
   ~PodunkSceneNative();
@@ -62,6 +63,22 @@ public:
                     PodunkConcretePlayerEffectOwners &,
                     const upstream::PlayerEffectsData &, std::string &);
   bool phase(upstream::FieldObjectId, upstream::FieldTreePhase, std::string &);
+  const upstream::FieldCanvasArtData *canvas_data() const override {
+    return art_;
+  }
+  const upstream::FieldNodeTreeRuntime *canvas_tree() const override {
+    return tree_;
+  }
+  bool sprite_snapshot(upstream::FieldObjectId,
+                       upstream::FieldCanvasAppearance &,
+                       std::string &) const override;
+  // Complete native property pose. Source setter signals are emitted only by
+  // the explicit setter endpoints, never guessed from a pose difference.
+  bool sprite_publish(upstream::FieldObjectId,
+                      const upstream::FieldCanvasAppearance &, std::string &);
+  bool bind_sprite_signals(upstream::FieldObjectSignals &, std::string &);
+  bool sprite_set_frame(upstream::FieldObjectId, uint32_t, std::string &);
+  bool sprite_set_texture(upstream::FieldObjectId, uint32_t, std::string &);
   bool set_disabled(upstream::FieldObjectId, bool, std::string &);
   bool set_collision(upstream::FieldObjectId, uint32_t layer, uint32_t mask,
                      std::string &);
@@ -85,6 +102,7 @@ private:
     bool entered = false, ready = false, bound = false, disabled = false,
          monitored = false, synchronized = false, space_disabled = false;
     upstream::FieldTransform space_local{};
+    upstream::FieldCanvasAppearance sprite{};
   };
   bool actual(upstream::FieldObjectId, const upstream::FieldNodeDescriptor *&,
               const upstream::FieldNodeState *&, std::string &) const;
@@ -100,6 +118,7 @@ private:
   const upstream::FieldCanvasArtData *art_ = nullptr;
   upstream::FieldCanvasArtHost art_host_;
   PodunkSceneMaterialOwner *materials_ = nullptr;
+  upstream::FieldObjectSignals *sprite_signals_ = nullptr;
   PodunkPlayerPhysicsWorld *world_ = nullptr;
   std::unique_ptr<FieldMapRenderer> map_gpu_;
   std::unique_ptr<FieldCanvasArtRenderer> art_gpu_;

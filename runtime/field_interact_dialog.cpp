@@ -48,15 +48,25 @@ bool FieldInteractRuntime::initialize(const FieldInteractData &d,
   e.clear();
   return true;
 }
-bool FieldInteractRuntime::instantiate(uint32_t id) {
+bool FieldInteractRuntime::instantiate(uint32_t id,bool source_constructor) {
   auto *s = live(id, false);
   if (!s || s->instantiated || s->ready)
     return fail("InteractDialog duplicate/late instancing");
+  if(source_constructor){s->instantiated=true;pending_source_constructor_.insert(id);return true;}
   const auto &d = *data_->record(id);
   if ((d.flags & 16) && !callback(host_.apply_serialized_offset(
                             d.prompt, d.button_offset, error_)))
     return false;
   s->instantiated = true;
+  return true;
+}
+bool FieldInteractRuntime::complete_source_constructor(uint32_t id) {
+  auto*s=live(id,false);
+  if(!s||!s->instantiated||s->ready||!pending_source_constructor_.count(id))
+    return fail("InteractDialog source constructor completion rejected");
+  const auto&d=*data_->record(id);
+  if((d.flags&16)&&!callback(host_.apply_serialized_offset(d.prompt,d.button_offset,error_)))return false;
+  pending_source_constructor_.erase(id);
   return true;
 }
 bool FieldInteractRuntime::flags_updated(uint32_t id) {
@@ -87,7 +97,7 @@ bool FieldInteractRuntime::flags_updated(uint32_t id) {
 }
 bool FieldInteractRuntime::ready(uint32_t id) {
   auto *s = live(id, false);
-  if (!s || !s->instantiated || s->ready)
+  if (!s || !s->instantiated || s->ready || pending_source_constructor_.count(id))
     return fail("InteractDialog Ready ownership rejected");
   const auto &d = *data_->record(id);
   if (had_ready_ && d.ready <= last_ready_)

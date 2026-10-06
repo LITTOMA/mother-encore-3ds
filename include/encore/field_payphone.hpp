@@ -59,6 +59,7 @@ struct FieldPayphoneHost {
 struct FieldPayphoneInstance {uint32_t id=0;bool ready=false,visible=true,queued=false,deleted=false;};
 class FieldPayphoneRuntime {
 public:
+ const FieldPayphoneData*data()const{return data_;}
  bool initialize(const FieldPayphoneData&,FieldPayphoneHost,std::string&);bool create(uint32_t);bool ready(uint32_t);bool flags_updated(uint32_t);bool interact(uint32_t);bool interact_item(uint32_t,uint64_t);bool idle_frame(float);bool commit_deleted(uint32_t);
  const FieldPayphoneInstance*instance(uint32_t)const;const std::string&error()const{return error_;}
 private:

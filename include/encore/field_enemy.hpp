@@ -77,6 +77,8 @@ struct FieldEnemyHost {
 };
 class FieldEnemyRuntime {
 public:
+ const FieldEnemyData*data()const{return data_;}
+ bool source_body_unready(uint32_t id)const{if(!data_||spawners_.size()!=data_->spawners().size())return false;for(size_t i=0;i<spawners_.size();++i)if(data_->spawners()[i].id==id)return !spawners_[i].ready&&spawners_[i].alive&&!spawners_[i].queued_free;return false;}
  bool initialize(const FieldEnemyData*,SourceRandom*,FieldEnemyHost,std::string&);
  bool ready(uint32_t spawner_id);bool spawner_screen_entered(uint32_t spawner_id);bool spawner_tree_exited(uint32_t spawner_id);bool end_frame();
  bool tree_exiting(uint64_t,bool changing_parents=false);bool screen_entered(uint64_t);bool screen_exited(uint64_t);bool view_entered(uint64_t,bool player);bool view_exited(uint64_t,bool player);bool blind_entered(uint64_t,bool player);bool blind_exited(uint64_t,bool player);

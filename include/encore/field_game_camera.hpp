@@ -3,6 +3,7 @@
 #include "encore/source_random.hpp"
 #include <functional>
 #include <map>
+#include <set>
 namespace encore::upstream {
 enum class FieldCameraTuning:size_t {Limit,ScopeSpeed,ScopeVertical,ScopeHorizontal,ShakeInterval,ScopeReturn,ReturnTime,ShakeFinalTime,ShakeMagnitude,ShakeLength,ShakeWeight,ShakeMinimum,ShakeSmall,ShakeLast,ShakeDirect,ShakeSide};
 enum class FieldCameraProperty:uint32_t {Position,GlobalPosition,BaseOffset,ShakeOffset};
@@ -51,13 +52,14 @@ struct FieldGameCameraHost {
 };
 class FieldGameCameraRuntime {
 public:
- bool initialize(const FieldGameCameraData&,SourceRandom&,FieldGameCameraHost,std::string&);bool create(uint32_t);bool ready(uint32_t);bool idle(uint32_t,float);bool physics(uint32_t,float);bool input(uint32_t);bool animation_idle(uint32_t,float);bool player_pause(uint32_t);bool scoping_start(uint32_t);bool scoping_stop(uint32_t);bool scoping_process(uint32_t);bool native_update(uint32_t);
+ bool initialize(const FieldGameCameraData&,SourceRandom&,FieldGameCameraHost,std::string&);bool create(uint32_t,bool source_constructor=false);bool ready(uint32_t);bool idle(uint32_t,float);bool physics(uint32_t,float);bool input(uint32_t);bool animation_idle(uint32_t,float);bool player_pause(uint32_t);bool scoping_start(uint32_t);bool scoping_stop(uint32_t);bool scoping_process(uint32_t);bool native_update(uint32_t);
  bool set_position(uint32_t,Vec2,bool global=false);bool set_limit(uint32_t,FieldCameraLimit,int32_t);bool adjust_camareas(uint32_t,int64_t,int64_t&);bool set_camarea_offset(uint32_t,Vec2);bool get_offset_with_camerea_offset(uint32_t,Vec2&);bool reset(uint32_t);bool set_current(uint32_t);
  bool move_camera(uint32_t,Vec2,float,uint64_t&,uint32_t transition=1,uint32_t ease=1);bool move_offset(uint32_t,Vec2,float,uint64_t&);bool return_camera(uint32_t,float,uint64_t&);bool return_offset(uint32_t,float,uint64_t&);bool step_tween(uint64_t,float);bool return_camera(uint32_t id,uint64_t&token){return return_camera(id,float(tuning(FieldCameraTuning::ReturnTime)),token);}bool return_offset(uint32_t id,uint64_t&token){return return_offset(id,float(tuning(FieldCameraTuning::ReturnTime)),token);}
  bool shake_camera(uint32_t,double magnitude,double length,Vec2 direction,double interval,double weight,bool diminish,uint64_t&);bool shake_camera(uint32_t,uint64_t&);bool shaker_physics(uint64_t,float);bool pause_shaker(uint64_t);bool stop_shaker(uint64_t);bool shaker_deleted(uint64_t);bool set_shake_side_amplitude(uint64_t,Vec2);bool resume_shake_idle(uint64_t);bool exit_tree(uint32_t);
  const FieldGameCameraState*state(uint32_t)const;const std::map<uint64_t,FieldCameraTweenState>&tweens()const{return tweens_;}const std::map<uint64_t,FieldCameraShakerState>&shakers()const{return shakers_;}const std::string&error()const{return error_;}
  const FieldGameCameraData*data()const{return data_;}
 private:
+ std::set<uint32_t> pending_source_constructor_;
  const FieldGameCameraData*data_=nullptr;SourceRandom*random_=nullptr;FieldGameCameraHost host_;std::map<uint32_t,FieldGameCameraState>states_;std::map<uint64_t,FieldCameraTweenState>tweens_;std::map<uint64_t,FieldCameraShakerState>shakers_;uint64_t next_=1;uint32_t last_ready_=0;bool had_ready_=false,poisoned_=false;std::string error_;
  FieldGameCameraState*get(uint32_t,bool ready=true);bool fail(const char*);bool observe(uint32_t,FieldGameCameraObservation&);bool publish(FieldGameCameraState&);bool kill_shared(FieldGameCameraState&,bool running_only);bool tween(FieldGameCameraState&,std::vector<FieldCameraTweenTrack>,float,uint32_t,uint32_t,uint32_t,uint64_t&);bool property(FieldGameCameraState&,FieldCameraProperty,Vec2);bool read_property(FieldGameCameraState&,FieldCameraProperty,Vec2&);bool play_animation(FieldGameCameraState&,uint32_t);bool complete_tween(FieldCameraTweenState&);double tuning(FieldCameraTuning k)const{return data_->tuning(k);}
 };

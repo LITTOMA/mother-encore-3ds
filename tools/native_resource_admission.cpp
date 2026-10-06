@@ -5,6 +5,7 @@
 #include "encore/global_yaml_caches.hpp"
 #include "encore/global_yaml_file.hpp"
 #include "encore/global_data_constructor.hpp"
+#include "encore/field_character_load.hpp"
 #include <limits>
 #include <iostream>
 
@@ -33,11 +34,12 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
   if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
-  if(argc==18 && std::string(argv[15])!="--global-constructor") return 2;
+  if(argc>=18 && std::string(argv[15])!="--global-constructor") return 2;
+  if(argc==23 && std::string(argv[18])!="--global-characters") return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -112,12 +114,26 @@ int main(int argc, char **argv) {
                <<directory.files().size()<<" PCK files / "<<directory.directories().size()
                <<" directories / "<<files.records().size()<<" YAML documents\n";
     }
-    if(argc==18) {
+    if(argc>=18) {
       FieldGlobalDataData members;
       GlobalDataConstructorData constructor;
       if(!members.load_file(argv[17],identity,error)||
          !constructor.load_file(argv[16],members,caches,error)) {
         std::cerr<<"Global complete constructor format: "<<error<<'\n';return 1;
+      }
+      if(argc==23) {
+        FieldIdentity expected_characters;
+        expected_characters.upstream_commit=identity.upstream_commit;
+        FieldCharacterLoadData characters;
+        if(!number(argv[20],expected_characters.scene_id)||
+           !hex(argv[21],expected_characters.upstream_commit)||
+           !hex(argv[22],expected_characters.source_sha256)) return 2;
+        if(expected_characters.upstream_commit!=identity.upstream_commit ||
+           !characters.load_file(argv[19],expected_characters,error)) {
+          std::cerr<<"Global Character LOAD format: "<<error<<'\n';return 1;
+        }
+        std::cout<<"Global Character LOAD format admitted: "
+                 <<characters.rows().size()<<" source owners\n";
       }
       std::cout<<"Global complete constructor format admitted: "
                <<constructor.declarations().size()<<" declarations / "

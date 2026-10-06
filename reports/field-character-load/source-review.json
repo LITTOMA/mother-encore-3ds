@@ -1,0 +1,32 @@
+{
+  "schema": 2,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
+  "sources": {
+    "Data/save_default.yaml": "b975d721c64db8e9bb7e785ed71de4d56a6c0ee914ab6230e28f0cc50e19ae33",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Scripts/UI/Battle/EnemySkill.gd": "152280867468742f87b0212237d27df4c28ec7717217fbcf6cb72663363236c6",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/PartyNPC.gd": "36b19f7fe73d01097371d788587685ea1ea1869dc0fa7014a97da7e79d25b925",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "engine": {
+    "tag": "3.6.2-stable",
+    "gdscript_functions_sha256": "ded4a283e0d876f43e5315bea2f5c543c3893b027eea56c9e344b33095fca2d2",
+    "scalar_lerp": "double",
+    "sort_helper": "include/encore/field_node_sort.hpp"
+  },
+  "scope": "Actual cold save_default eight-character LOAD only; empty source Status arrays; no whole global Ready/save/load admission",
+  "mapped_execution": {
+    "declarations": "Character14, PartyMember5 including inv alias, PartyNPC2, Inventory2, Item4, EnemySkill4; all actual declared defaults",
+    "collections": "Ordered sparse permanent dictionary preserved separately from seven-stat projection; learned skills, affinities, inventories and NPC skills preserve actual source order",
+    "cursor": "PartyMember Inventory-before-name and setter/signal order; inherited Character then NPC skills filter/new/append; serialized Item left-to-right eager UID fallback before allocation",
+    "native_reference": "Item and EnemySkill actual script adapters are separate stable IDs; implicit native Reference",
+    "source_boundary": "Selected actual default save has empty Status arrays and positive serialized doses; no dynamic Status constructors, whole LOAD, normal new-game or whole Ready admission"
+  }
+}

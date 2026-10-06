@@ -1,4 +1,5 @@
 #include "encore/global_data_constructor.hpp"
+#include "encore/field_character_load.hpp"
 #include "encore/field_global_flags.hpp"
 #include "encore/global_packed_directory.hpp"
 #include <algorithm>
@@ -77,11 +78,16 @@ class ActualInventory final : public FieldGlobalNativeReference {
   FieldGlobalDataRuntime *core_;
   FieldGlobalRegistry *registry_;
   FieldGlobalExternalBinding binding_;
+  bool character_load_ = false;
 
 public:
   ActualInventory(FieldGlobalDataRuntime &c, FieldGlobalRegistry &r,
-                  FieldObjectId id, FieldGlobalExternalSpec s)
-      : core_(&c), registry_(&r), binding_{id, std::move(s), 0x454e0053, 1} {}
+                  FieldObjectId id, FieldGlobalExternalSpec s,
+                  bool loaded = false)
+      : core_(&c), registry_(&r),
+        binding_{id, std::move(s), loaded ? 0x454e0050u : 0x454e0053u,
+                 loaded ? 2u : 1u},
+        character_load_(loaded) {}
   ~ActualInventory() override {
     if (registry_) {
       std::string e;
@@ -93,7 +99,8 @@ public:
   const FieldGlobalRegistry *registry() const override { return registry_; }
   bool checked_source_hash(std::string_view p,
                            std::array<uint8_t, 32> &h) const override {
-    return core_ && core_->constructor_source_hash(p, h);
+    return core_ && (character_load_ ? core_->character_load_source_hash(p, h)
+                                     : core_->constructor_source_hash(p, h));
   }
 };
 } // namespace
@@ -542,11 +549,22 @@ bool FieldGlobalDataRuntime::read_constructed_member(
     auto collection = o->collections.find(field->name);
     if (collection != o->collections.end())
       value.value = collection->second;
+    auto references = o->reference_arrays.find(field->name);
+    if (references != o->reference_arrays.end() && references->second) {
+      value.reference_array = references->second;
+      for (const auto &reference : references->second->values) {
+        if (!reference ||
+            !registry_->native_reference(reference->binding().object))
+          return fail(e, "Character source collection Reference is dead");
+        value.references.emplace_back("", reference->binding().object);
+      }
+    }
     if (o->kind == 2 && field->kind == 3) {
       for (auto item : o->item_objects) {
         if (!registry_->native_reference(item))
           return fail(e, "globalData Inventory member Item Reference dead");
-        value.references.emplace_back("", item);
+        if (!value.reference_array)
+          value.references.emplace_back("", item);
       }
     } else if (!value.value)
       return fail(e, "globalData actual source collection owner unavailable");
@@ -568,6 +586,558 @@ bool FieldGlobalDataRuntime::read_constructed_member(
   } else
     return fail(e, "globalData source member native type unsupported");
   out = std::move(value);
+  e.clear();
+  return true;
+}
+
+bool FieldGlobalDataRuntime::character_load_available(std::string &e) const {
+  if (!constructor_available(e) || !character_load_data_ ||
+      !character_load_data_->valid() ||
+      character_load_data_->ir_sha256() != character_load_ir_)
+    return fail(e, "Actual Character LOAD resource/owner unavailable");
+  return true;
+}
+bool FieldGlobalDataRuntime::character_load_bound_to(
+    const FieldCharacterLoadData &d) const {
+  std::string e;
+  return character_load_available(e) && character_load_data_ == &d;
+}
+bool FieldGlobalDataRuntime::character_load_source_hash(
+    std::string_view p, std::array<uint8_t, 32> &h) const {
+  std::string e;
+  return character_load_available(e) && character_load_data_->source_hash(p, h);
+}
+bool FieldGlobalDataRuntime::initialize_character_load(
+    const FieldCharacterLoadData &d, std::string &e) {
+  if (!constructor_complete() || !god_storage_complete_ ||
+      character_load_data_ || !d.valid() ||
+      d.identity().upstream_commit != data_->identity().upstream_commit)
+    return fail(e,
+                "Actual Character LOAD requires completed source construction");
+  const auto &b = d.source_bindings();
+  if (b.stat_fields.size() != d.stats().size() ||
+      b.inventory_defaults.empty() || b.character_defaults.empty() ||
+      b.member_defaults.empty() || b.npc_defaults.empty())
+    return fail(e, "Character LOAD member/default source bindings missing");
+  std::array<uint8_t, 32> x{}, y{};
+  for (const auto &o : constructor_data_->objects()) {
+    if (!d.source_hash(o.script, x) ||
+        !constructor_data_->source_hash(o.script, y) || x != y)
+      return fail(e, "Character LOAD constructor script source differs");
+    if (o.kind != 1)
+      continue;
+    const auto &specific = o.role == 0 ? b.member_defaults : b.npc_defaults;
+    for (const auto *fields : {&b.character_defaults, &specific})
+      for (const auto &field : *fields) {
+        auto actual =
+            std::find_if(o.defaults.begin(), o.defaults.end(),
+                         [&](const auto &v) { return v.name == field.name; });
+        if (actual == o.defaults.end() || !equal(*actual, field))
+          return fail(e, "Character LOAD actual declaration default differs");
+      }
+  }
+  for (const auto &field : data_->normal_inventory_defaults()) {
+    auto actual =
+        std::find_if(b.inventory_defaults.begin(), b.inventory_defaults.end(),
+                     [&](const auto &v) { return v.name == field.name; });
+    if (actual == b.inventory_defaults.end() || !equal(*actual, field))
+      return fail(e, "Character LOAD NORMAL Inventory source defaults differ");
+  }
+  size_t index = 0;
+  for (const auto &o : constructor_data_->objects()) {
+    if (o.kind != 1)
+      continue;
+    if (index >= d.rows().size() || d.rows()[index].id != o.id ||
+        d.rows()[index].role != o.role || d.rows()[index].name != o.name)
+      return fail(e, "Character LOAD ordered dictionary membership differs");
+    ++index;
+  }
+  if (index != d.rows().size())
+    return fail(e, "Character LOAD contains foreign dictionary member");
+  character_load_data_ = &d;
+  character_load_ir_ = d.ir_sha256();
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::character_inventory_owner(FieldObjectId id,
+                                                       uint32_t &out,
+                                                       std::string &e) const {
+  if (!character_load_available(e))
+    return false;
+  for (const auto &p : character_inventory_cursors_)
+    if (p.second == id && registry_->native_reference(id)) {
+      out = p.first;
+      e.clear();
+      return true;
+    }
+  return fail(e, "Character Inventory is not from the actual LOAD cursor");
+}
+bool FieldGlobalDataRuntime::new_character_inventory(
+    uint32_t declaration, FieldCharacterOwnedReference &out, std::string &e) {
+  if (!character_load_available(e) || out.object || out.actual_owner ||
+      character_inventory_cursors_.count(declaration))
+    return fail(e,
+                "Character Inventory source cursor already consumed/foreign");
+  auto body =
+      std::find_if(objects_.begin(), objects_.end(), [&](const auto &v) {
+        return v.kind == 1 && v.declaration == declaration && v.role == 0;
+      });
+  if (body == objects_.end() || body->inventory)
+    return fail(e, "Character NORMAL Inventory requires actual PartyMember");
+  const auto &b = character_load_data_->source_bindings();
+  FieldObjectId id = 0;
+  if (!registry_->allocate_object(id, e))
+    return false;
+  FieldGlobalDataObject inventory;
+  inventory.object = id;
+  inventory.declaration = declaration;
+  inventory.kind = 2;
+  inventory.role = b.normal_inventory_type;
+  inventory.fields = b.inventory_defaults;
+  for (const auto &f : inventory.fields)
+    if (f.kind == 3 || f.kind == 4) {
+      auto v = std::make_shared<GlobalYamlValue>();
+      v->kind = f.kind == 3 ? 5 : 6;
+      inventory.collections.emplace(f.name, std::move(v));
+    }
+  auto type = std::find_if(
+      inventory.fields.begin(), inventory.fields.end(),
+      [&](const auto &f) { return f.name == b.inventory_type_field; });
+  if (type == inventory.fields.end() || type->kind != 2) {
+    registry_->retire_object(id, e);
+    poisoned_ = true;
+    return fail(e, "Character NORMAL Inventory type field missing");
+  }
+  type->integer_value = b.normal_inventory_type;
+  objects_.push_back(std::move(inventory));
+  FieldGlobalExternalSpec spec;
+  spec.identity = character_load_data_->identity();
+  spec.stable_id = declaration;
+  spec.role = 5;
+  spec.name = b.inventory;
+  spec.native_class = "Reference";
+  spec.source = spec.script = b.inventory_script;
+  if (!character_load_data_->source_hash(spec.source, spec.source_sha)) {
+    poisoned_ = true;
+    return fail(e, "NORMAL Inventory constructor proof missing");
+  }
+  spec.script_sha = spec.identity.source_sha256 = spec.source_sha;
+  auto reference =
+      std::make_shared<ActualInventory>(*this, *registry_, id, spec, true);
+  if (!registry_->publish_native_reference(spec, id, reference, e)) {
+    poisoned_ = true;
+    return false;
+  }
+  inventory_references_.push_back(reference);
+  character_inventory_cursors_.emplace(declaration, id);
+  out = {registry_, id, reference};
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::read_character_inventory_items(
+    FieldObjectId id, std::vector<FieldGlobalDataItemReference> &out,
+    std::string &e) const {
+  uint32_t declaration = 0;
+  if (!character_inventory_owner(id, declaration, e))
+    return false;
+  auto items = character_items_.find(id);
+  std::vector<FieldGlobalDataItemReference> value;
+  if (items != character_items_.end())
+    value = items->second;
+  for (auto &item : value) {
+    auto native = registry_->native_reference(item.object);
+    FieldOwnedItem actual;
+    if (!native || !item.source_owner ||
+        native.owner_before(item.actual_owner) ||
+        item.actual_owner.owner_before(native) ||
+        native.owner_before(item.source_owner) ||
+        item.source_owner.owner_before(native) ||
+        !item.source_owner->read_item(actual, e))
+      return fail(
+          e, "Character actual Inventory Item Reference ownership differs");
+    item.value = actual;
+  }
+  out = std::move(value);
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::read_character_load(uint32_t declaration,
+                                                 FieldCharacterLoadState &out,
+                                                 std::string &e) const {
+  if (!character_load_available(e))
+    return false;
+  auto body =
+      std::find_if(objects_.begin(), objects_.end(), [&](const auto &v) {
+        return v.kind == 1 && v.declaration == declaration;
+      });
+  if (body == objects_.end() || !registry_->object_exists(body->object))
+    return fail(e, "Character LOAD actual Object body absent");
+  const auto &b = character_load_data_->source_bindings();
+  FieldCharacterLoadState s;
+  s.object = body->object;
+  s.declaration = declaration;
+  s.role = body->role;
+  auto field = [&](const std::string &name, uint32_t kind) {
+    auto found = std::find_if(
+        body->fields.begin(), body->fields.end(),
+        [&](const auto &v) { return v.name == name && v.kind == kind; });
+    return found == body->fields.end() ? nullptr : &*found;
+  };
+  auto number = [&](const std::string &name, int64_t &v) {
+    auto f = field(name, 2);
+    if (!f)
+      return false;
+    v = f->integer_value;
+    return true;
+  };
+  auto text = [&](const std::string &name, std::string &v) {
+    auto f = field(name, 1);
+    if (!f)
+      return false;
+    v = f->string_value;
+    return true;
+  };
+  if (!text(b.name, s.name) || !number(b.level, s.level) ||
+      !number(b.exp, s.exp) || !number(b.hp, s.hp) || !number(b.pp, s.pp))
+    return fail(e, "Character actual scalar source binding differs");
+  for (const auto &name : b.stat_fields) {
+    int64_t v = 0;
+    if (!number(name, v))
+      return fail(e, "Character actual stat field missing");
+    s.stats.push_back(v);
+  }
+  auto collection = [&](const std::string &name, uint32_t kind) {
+    auto f = body->collections.find(name);
+    return f != body->collections.end() && f->second && f->second->kind == kind
+               ? f->second
+               : std::shared_ptr<GlobalYamlValue>{};
+  };
+  auto status = collection(b.status, 5);
+  if (!status || !status->array.empty())
+    return fail(e, "Character LOAD nonempty Status is not a cold capability");
+  s.permanent.resize(s.stats.size());
+  if (s.role == 0) {
+    if (!text(b.nickname, s.nickname))
+      return fail(e, "Character actual nickname field missing");
+    if (body->inventory) {
+      for (const auto &r : inventory_references_)
+        if (r->binding().object == body->inventory)
+          s.inventory = {registry_, body->inventory, r};
+      if (!s.inventory.object ||
+          !read_character_inventory_items(body->inventory, s.items, e))
+        return false;
+    }
+    auto skills = collection(b.learned_skills, 5);
+    auto boosts = collection(b.permanent_boosts, 6);
+    auto affinities = collection(b.affinities, 6);
+    if (!skills || !boosts || !affinities)
+      return fail(e, "PartyMember actual collection source fields missing");
+    for (const auto &v : skills->array) {
+      if (!v || v->kind != 4)
+        return fail(e, "Actual learned skill is not String");
+      s.skills.push_back(v->string);
+    }
+    for (const auto &v : boosts->dictionary) {
+      if (!v.second || v.second->kind != 2)
+        return fail(e, "Actual permanent boost is not integer");
+      s.permanent_fields.emplace_back(v.first, v.second->integer);
+      auto p = std::find(character_load_data_->stats().begin(),
+                         character_load_data_->stats().end(), v.first);
+      if (p != character_load_data_->stats().end())
+        s.permanent[size_t(p - character_load_data_->stats().begin())] =
+            v.second->integer;
+    }
+    for (const auto &v : affinities->dictionary) {
+      if (!v.second || (v.second->kind != 2 && v.second->kind != 3))
+        return fail(e, "Actual affinity multiplier is not numeric");
+      s.affinities.emplace_back(v.first, v.second->kind == 2
+                                             ? double(v.second->integer)
+                                             : v.second->real);
+    }
+  } else {
+    auto untargetable = field(b.untargetable, 6);
+    if (!untargetable)
+      return fail(e, "PartyNPC source targetable field missing");
+    s.untargetable = untargetable->integer_value != 0;
+    auto refs = body->reference_arrays.find(b.npc_skills);
+    if (refs != body->reference_arrays.end() && refs->second)
+      for (const auto &native : refs->second->values) {
+        const auto id = native->binding().object;
+        auto r = character_enemy_skills_.find(id);
+        auto actual = registry_->native_reference(id);
+        if (r == character_enemy_skills_.end() || !actual ||
+            actual.owner_before(r->second) || r->second.owner_before(actual))
+          return fail(e, "PartyNPC actual EnemySkill Reference owner differs");
+        s.enemy_skills.push_back(
+            {registry_, id,
+             std::const_pointer_cast<FieldCharacterEnemySkillReference>(
+                 r->second),
+             r->second});
+      }
+  }
+  out = std::move(s);
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::publish_character_load(
+    const FieldCharacterLoadState &s, std::string &e) {
+  if (!character_load_available(e))
+    return false;
+  auto body =
+      std::find_if(objects_.begin(), objects_.end(), [&](const auto &v) {
+        return v.kind == 1 && v.declaration == s.declaration &&
+               v.object == s.object && v.role == s.role;
+      });
+  if (body == objects_.end() || !registry_->object_exists(s.object))
+    return fail(e,
+                "Character source publication targets foreign actual Object");
+  const auto &b = character_load_data_->source_bindings();
+  if (s.stats.size() != b.stat_fields.size() ||
+      s.permanent.size() != b.stat_fields.size() ||
+      std::any_of(s.stats.begin(), s.stats.end(),
+                  [](int64_t v) { return v < 0 || v > 2147483647; }) ||
+      std::any_of(s.permanent.begin(), s.permanent.end(),
+                  [](int64_t v) { return v < 0 || v > 2147483647; }) ||
+      s.level < 0 || s.level > 2147483647 || s.exp < 0 || s.exp > 2147483647 ||
+      s.hp < 0 || s.hp > 2147483647 || s.pp < 0 || s.pp > 2147483647)
+    return fail(e, "Character LOAD live scalar/storage bounds rejected");
+  auto scalar = [&](const std::string &name, uint32_t kind,
+                    const std::string &text, int64_t n) {
+    auto f = std::find_if(
+        body->fields.begin(), body->fields.end(),
+        [&](const auto &v) { return v.name == name && v.kind == kind; });
+    if (f == body->fields.end())
+      return false;
+    if (kind == 1)
+      f->string_value = text;
+    else
+      f->integer_value = n;
+    return true;
+  };
+  auto assign = [&](const std::string &name,
+                    std::shared_ptr<GlobalYamlValue> value) {
+    auto old = body->collections.find(name);
+    if (old == body->collections.end() || !old->second ||
+        old->second->kind != value->kind)
+      return false;
+    old->second = std::move(value);
+    return true;
+  };
+  auto array = std::make_shared<GlobalYamlValue>();
+  array->kind = 5;
+  auto dictionary = std::make_shared<GlobalYamlValue>();
+  dictionary->kind = 6;
+  bool ok = false;
+  using W = FieldCharacterLoadWrite;
+  switch (s.write) {
+  case W::Name:
+    ok = scalar(b.name, 1, s.name, 0);
+    break;
+  case W::Exp:
+    ok = scalar(b.exp, 2, {}, s.exp);
+    break;
+  case W::Level:
+    ok = scalar(b.level, 2, {}, s.level);
+    break;
+  case W::Hp:
+    ok = scalar(b.hp, 2, {}, s.hp);
+    break;
+  case W::Pp:
+    ok = scalar(b.pp, 2, {}, s.pp);
+    break;
+  case W::Stat:
+    if (s.stat_index < b.stat_fields.size() && s.stat_index < s.stats.size())
+      ok = scalar(b.stat_fields[s.stat_index], 2, {}, s.stats[s.stat_index]);
+    break;
+  case W::Nickname:
+    if (s.role == 0)
+      ok = scalar(b.nickname, 1, s.nickname, 0);
+    break;
+  case W::Untargetable:
+    if (s.role == 1)
+      ok = scalar(b.untargetable, 6, {}, s.untargetable);
+    break;
+  case W::Status:
+    if (s.status.empty())
+      ok = assign(b.status, array);
+    break;
+  case W::LearnedSkills:
+  case W::SortSkills:
+    if (s.role != 0)
+      break;
+    for (const auto &v : s.skills) {
+      auto item = std::make_shared<GlobalYamlValue>();
+      item->kind = 4;
+      item->string = v;
+      array->array.push_back(item);
+    }
+    if (s.write == W::LearnedSkills)
+      ok = assign(b.learned_skills, array);
+    else {
+      auto old = body->collections.find(b.learned_skills);
+      if (old != body->collections.end() && old->second &&
+          old->second->kind == 5) {
+        old->second->array = std::move(array->array);
+        ok = true;
+      }
+    }
+    if (ok)
+      body->learned_skills = s.skills;
+    break;
+  case W::PermanentBoosts:
+    if (s.role != 0)
+      break;
+    for (const auto &v : s.permanent_fields) {
+      auto item = std::make_shared<GlobalYamlValue>();
+      item->kind = 2;
+      item->integer = v.second;
+      dictionary->dictionary.emplace_back(v.first, item);
+    }
+    ok = assign(b.permanent_boosts, dictionary);
+    if (ok && s.permanent.size() == body->permanent.size())
+      std::copy(s.permanent.begin(), s.permanent.end(),
+                body->permanent.begin());
+    break;
+  case W::Affinities:
+    if (s.role != 0)
+      break;
+    for (const auto &v : s.affinities) {
+      if (!std::isfinite(v.second))
+        return fail(e, "Character affinity is not finite");
+      auto item = std::make_shared<GlobalYamlValue>();
+      item->kind = 3;
+      item->real = v.second;
+      dictionary->dictionary.emplace_back(v.first, item);
+    }
+    ok = assign(b.affinities, dictionary);
+    if (ok) {
+      body->affinities.clear();
+      for (const auto &v : s.affinities)
+        body->affinities.emplace(v);
+    }
+    break;
+  case W::Inventory: {
+    if (s.role != 0 || s.inventory.registry != registry_ ||
+        !s.inventory.object || !s.inventory.actual_owner)
+      break;
+    auto native = registry_->native_reference(s.inventory.object);
+    uint32_t declaration = 0;
+    if (!native || native.owner_before(s.inventory.actual_owner) ||
+        s.inventory.actual_owner.owner_before(native) ||
+        !character_inventory_owner(s.inventory.object, declaration, e) ||
+        declaration != s.declaration)
+      break;
+    auto inv =
+        std::find_if(objects_.begin(), objects_.end(), [&](const auto &v) {
+          return v.kind == 2 && v.object == s.inventory.object;
+        });
+    if (inv == objects_.end())
+      break;
+    std::set<FieldObjectId> ids;
+    for (const auto &r : s.items) {
+      auto n = registry_->native_reference(r.object);
+      FieldOwnedItem actual;
+      if (!n || !r.actual_owner || !r.source_owner || r.registry != registry_ ||
+          r.owner != s.declaration || !ids.insert(r.object).second ||
+          n.owner_before(r.actual_owner) || r.actual_owner.owner_before(n) ||
+          n.owner_before(r.source_owner) || r.source_owner.owner_before(n) ||
+          !r.source_owner->read_item(actual, e) ||
+          actual.definition != r.value.definition ||
+          actual.uid != r.value.uid || actual.doses != r.value.doses ||
+          actual.equipped != r.value.equipped)
+        return fail(e, "Character loaded Item is not same actual Reference");
+    }
+    auto existing = inv->collections.find(b.inventory_items_field);
+    if (existing == inv->collections.end() || !existing->second ||
+        existing->second->kind != 5)
+      break;
+    existing->second = array;
+    auto actual_array = std::make_shared<FieldGlobalDataReferenceArray>();
+    for (const auto &r : s.items)
+      actual_array->values.push_back(registry_->native_reference(r.object));
+    inv->reference_arrays[b.inventory_items_field] = std::move(actual_array);
+    inv->item_objects.clear();
+    for (const auto &r : s.items)
+      inv->item_objects.push_back(r.object);
+    character_items_[s.inventory.object] = s.items;
+    body->inventory = s.inventory.object;
+    ok = true;
+    break;
+  }
+  case W::NpcSkillsReset:
+    if (s.role == 1 && s.enemy_skills.empty()) {
+      ok = assign(b.npc_skills, array);
+      if (ok) {
+        auto old = body->reference_arrays.find(b.npc_skills);
+        if (old != body->reference_arrays.end() && old->second)
+          for (const auto &r : old->second->values)
+            character_enemy_skills_.erase(r->binding().object);
+        body->reference_arrays[b.npc_skills] =
+            std::make_shared<FieldGlobalDataReferenceArray>();
+      }
+    }
+    break;
+  case W::NpcSkillAppend: {
+    if (s.role != 1 || s.enemy_skills.empty())
+      break;
+    auto found = body->reference_arrays.find(b.npc_skills);
+    if (found == body->reference_arrays.end() || !found->second)
+      break;
+    auto &refs = found->second->values;
+    if (refs.size() + 1 != s.enemy_skills.size())
+      break;
+    for (size_t i = 0; i < refs.size(); ++i)
+      if (refs[i]->binding().object != s.enemy_skills[i].object)
+        return fail(e, "EnemySkill array source order differs");
+    const auto &r = s.enemy_skills.back();
+    auto native = registry_->native_reference(r.object);
+    std::array<uint8_t, 32> proof{}, expected{};
+    if (!native || r.registry != registry_ || !r.actual_owner ||
+        !r.enemy_skill_owner || native.owner_before(r.actual_owner) ||
+        r.actual_owner.owner_before(native) ||
+        native.owner_before(r.enemy_skill_owner) ||
+        r.enemy_skill_owner.owner_before(native) ||
+        native->binding().family != 0x454e0050 ||
+        native->binding().capability != 2 ||
+        native->binding().source.script != b.enemy_skill_script ||
+        !native->checked_source_hash(b.enemy_skill_script, proof) ||
+        !character_load_data_->source_hash(b.enemy_skill_script, expected) ||
+        proof != expected || character_enemy_skills_.count(r.object))
+      return fail(e, "EnemySkill actual constructor/Reference proof differs");
+    refs.push_back(native);
+    character_enemy_skills_.emplace(r.object, r.enemy_skill_owner);
+    ok = true;
+    break;
+  }
+  default:
+    break;
+  }
+  if (!ok)
+    return fail(e, "Character LOAD source assignment/type/owner rejected");
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::character_nickname(uint32_t declaration,
+                                                std::string &out,
+                                                std::string &e) const {
+  FieldCharacterLoadState s;
+  if (!read_character_load(declaration, s, e))
+    return false;
+  if (s.role == 0) {
+    out = s.nickname;
+    e.clear();
+    return true;
+  }
+  // The admitted cold PartyNPC names are ASCII. Other Unicode casing requires
+  // its own audited Godot String consumer rather than an invented conversion.
+  for (auto &c : s.name) {
+    if (static_cast<unsigned char>(c) >= 128)
+      return fail(e, "PartyNPC source nickname Unicode uppercase unsupported");
+    if (c >= 'a' && c <= 'z')
+      c = char(c - 'a' + 'A');
+  }
+  const auto &b = character_load_data_->source_bindings();
+  out = b.npc_nickname_prefix + s.name + b.npc_nickname_suffix;
   e.clear();
   return true;
 }

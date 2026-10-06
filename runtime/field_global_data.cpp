@@ -13,6 +13,8 @@ bool same(const FieldOwnedItem &a, const FieldOwnedItem &b) {
 }
 } // namespace
 FieldGlobalDataRuntime::~FieldGlobalDataRuntime() {
+  character_items_.clear();
+  character_enemy_skills_.clear();
   god_items_.clear();
   items_.clear();
   inventory_references_.clear();

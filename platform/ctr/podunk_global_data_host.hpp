@@ -160,6 +160,7 @@ public:
            cache_directories_.complete() && yaml_caches_.init_caches_complete();
   }
   auto cache_source_cursor() const { return cache_directories_.cursor(); }
+  auto &yaml_caches() { return yaml_caches_; }
   const auto &yaml_caches() const { return yaml_caches_; }
   bool call_cache_getter(std::string_view method,
                          const std::vector<std::string> &args,
@@ -184,6 +185,7 @@ public:
                                std::string &e) {
     return item_cache_.insert_loaded_yaml(source, hash, e);
   }
+  auto &items_cache() { return item_cache_; }
   const auto &items_cache() const { return item_cache_; }
   bool observe_items_directory_complete(
       const std::vector<std::pair<std::string, std::array<uint8_t, 32>>> &paths,
@@ -213,6 +215,7 @@ public:
               defs, registry, stable_owner, item, error))
         return false;
       out = {&registry, item->object, stable_owner, {}, item};
+      out.source_owner = item;
       items_[item->object] = item;
       return true;
     };
@@ -370,6 +373,7 @@ public:
     error.clear();
     return true;
   }
+  auto &runtime() { return owner_; }
   const auto &runtime() const { return owner_; }
   bool bind_live_inventory(const PodunkInventoryHost &inventory,
                            std::string &error) {

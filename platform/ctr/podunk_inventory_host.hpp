@@ -1,6 +1,7 @@
 #pragma once
 #include "audio_player.hpp"
 #include "encore/field_global_registry.hpp"
+#include "encore/field_character_load.hpp"
 #include "encore/global_item_cache.hpp"
 #include "encore/field_openable_door.hpp"
 #include "field_goods_renderer.hpp"
@@ -12,27 +13,50 @@ namespace encore::ctr {
 // The source inventory and global.item keep the same object alive. Its handle
 // comes from the process ObjectDB allocator; UID zero remains a valid item.
 class PodunkInventoryHost;
-struct PodunkItemObject final : upstream::FieldGlobalNativeReference {
+struct PodunkItemObject final : upstream::FieldGlobalDataItemSourceReference {
 private:
   friend class PodunkInventoryHost;
   upstream::FieldGlobalRegistry *allocator_ = nullptr;
   upstream::FieldObjectId allocated_ = 0;
   const upstream::FieldItemDefinitions *source_definitions_ = nullptr;
+  const upstream::FieldCharacterLoadData *source_character_load_ = nullptr;
+  std::array<uint8_t,32> character_ir_{};
   upstream::FieldGlobalExternalBinding source_binding_{};
   std::array<uint8_t,32> source_proof_{};
   bool constructing_=false;
-  int32_t constructor_doses_=0;
+  int64_t constructor_doses_=0;
 
 public:
   upstream::FieldGlobalExternalBinding binding() const override { return source_binding_; }
   const char *native_class() const override { return "Reference"; }
   const upstream::FieldGlobalRegistry *registry() const override { return allocator_; }
   bool checked_source_hash(std::string_view path, std::array<uint8_t,32> &out) const override {
+    if (source_character_load_)
+      return source_character_load_->valid() &&
+             source_character_load_->ir_sha256() == character_ir_ &&
+             source_binding_.family == 0x454e0050 && source_binding_.capability == 2 &&
+             source_character_load_->identity().upstream_commit == source_binding_.source.identity.upstream_commit &&
+             path == source_binding_.source.script &&
+             source_character_load_->source_hash(path,out) && out == source_proof_;
     return source_definitions_ && source_definitions_->valid() &&
            source_definitions_->global_constructor_scope() &&
            source_definitions_->source_pin() == source_binding_.source.identity.upstream_commit &&
            path == source_binding_.source.script &&
            source_definitions_->source_hash(std::string(path),out) && out == source_proof_;
+  }
+  bool read_item(upstream::FieldOwnedItem &out, std::string &e) const override {
+    if (!allocator_ || !allocated_ || allocated_ != object || constructing_ ||
+        !source_definitions_ || !source_definitions_->valid() ||
+        !source_definitions_->definition(value.definition)) {
+      e = "Actual Item constructor/body unavailable"; return false;
+    }
+    std::array<uint8_t,32> proof{};
+    auto actual = allocator_->native_reference(object);
+    if (!actual || actual.get() != static_cast<const upstream::FieldGlobalNativeReference *>(this) ||
+        !checked_source_hash(source_binding_.source.script,proof)) {
+      e = "Actual Item Reference/source ownership rejected"; return false;
+    }
+    out = value; e.clear(); return true;
   }
   PodunkItemObject() = default;
   PodunkItemObject(const PodunkItemObject &) = delete;
@@ -301,6 +325,55 @@ public:
     out = std::move(actual);
     e.clear();
     return true;
+  }
+  // Serialized LOAD evaluated the four arguments (including eager UID
+  // fallback) before Item.new. This factory performs no RNG or cache lookup.
+  // The cold capability contains explicit positive doses, so the original
+  // doses == -1 branch is not entered here.
+  static bool construct_loaded_global_item(
+      const upstream::FieldCharacterLoadData &source,
+      const upstream::FieldItemDefinitions &defs,
+      upstream::FieldGlobalRegistry &registry, uint32_t owner,
+      const upstream::FieldOwnedItem &value,
+      std::shared_ptr<PodunkItemObject> &out, std::string &e) {
+    const auto &binding = source.source_bindings();
+    const auto *definition = defs.definition(value.definition);
+    std::array<uint8_t,32> a{},b{};
+    if (out || !owner || !source.valid() || !defs.valid() ||
+        !defs.global_constructor_scope() || !definition ||
+        !binding.item_constructor_id || binding.item_native != "Reference" ||
+        source.identity().upstream_commit != defs.source_pin() ||
+        !source.source_hash(binding.item_script,a) ||
+        !defs.source_hash(binding.item_script,b) || a != b ||
+        value.doses == UINT32_MAX)
+      return fail(e,"Character LOAD actual Item source/arguments rejected");
+    upstream::FieldObjectId id = 0;
+    if (!registry.allocate_object(id,e)) return false;
+    auto item = std::make_shared<PodunkItemObject>();
+    item->allocator_ = &registry;
+    item->object = item->allocated_ = id;
+    item->owner = owner;
+    item->source_definitions_ = &defs;
+    item->source_character_load_ = &source;
+    item->character_ir_ = source.ir_sha256();
+    item->source_proof_ = a;
+    upstream::FieldGlobalExternalSpec spec;
+    spec.identity.upstream_commit = source.identity().upstream_commit;
+    spec.identity.scene_id = spec.stable_id = binding.item_constructor_id;
+    spec.identity.source_sha256 = spec.source_sha = spec.script_sha = a;
+    spec.role = 5; spec.native_class = binding.item_native;
+    spec.source = spec.script = binding.item_script;
+    item->source_binding_ = {id,spec,0x454e0050,2};
+    item->constructing_ = true;
+    if (!registry.publish_native_reference(spec,id,item,e)) return false;
+    // Source _init's four assignments, after implicit Reference allocation.
+    item->value.definition = value.definition;
+    item->value.equipped = value.equipped;
+    item->value.uid = value.uid;
+    item->value.doses = value.doses;
+    item->constructor_doses_ = int64_t(value.doses);
+    item->constructing_ = false;
+    out = std::move(item); e.clear(); return true;
   }
   static bool publish_global_item_reference(
       const std::shared_ptr<PodunkItemObject> &item,

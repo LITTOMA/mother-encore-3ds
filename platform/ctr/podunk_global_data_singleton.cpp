@@ -1,4 +1,5 @@
 #include "podunk_global_data_singleton.hpp"
+#include "podunk_character_load_host.hpp"
 namespace encore::ctr {
 using namespace upstream;
 bool PodunkGlobalDataSingleton::fail(std::string &e, const char *s) const {

@@ -10,11 +10,21 @@ class GlobalPackedDirectoryHost;
 class FieldGlobalFlagsData;
 class FieldGlobalFlagsRuntime;
 struct GlobalYamlValue;
+struct FieldGlobalDataReferenceArray {
+  // The source Array owns its References. Borrowers keep this exact Array
+  // root alive across replacement/reset, rather than keeping bare ObjectIDs.
+  std::vector<std::shared_ptr<const FieldGlobalNativeReference>> values;
+};
+class FieldCharacterLoadData;
+struct FieldCharacterLoadState;
+struct FieldCharacterOwnedReference;
+class FieldCharacterEnemySkillReference;
 struct FieldGlobalDataMemberState {
   uint32_t kind = 0, adapter = 0;
   std::shared_ptr<const GlobalYamlValue> value;
   std::array<double, 2> vector{};
   std::vector<std::pair<std::string, FieldObjectId>> references;
+  std::shared_ptr<const FieldGlobalDataReferenceArray> reference_array;
   uint32_t owner_role = 0;
   const FieldGlobalFlagsRuntime *flags = nullptr;
   GlobalYamlCachesRuntime *caches = nullptr;
@@ -89,6 +99,12 @@ struct FieldGlobalDataObject {
   std::map<std::string, double> affinities;
   std::array<int64_t, 7> permanent{};
   std::map<std::string, std::shared_ptr<GlobalYamlValue>> collections{};
+  std::map<std::string, std::shared_ptr<FieldGlobalDataReferenceArray>>
+      reference_arrays{};
+};
+class FieldGlobalDataItemSourceReference : public FieldGlobalNativeReference {
+public:
+  virtual bool read_item(FieldOwnedItem &, std::string &) const = 0;
 };
 struct FieldGlobalDataItemReference {
   FieldGlobalRegistry *registry = nullptr;
@@ -96,6 +112,7 @@ struct FieldGlobalDataItemReference {
   uint32_t owner = 0;
   FieldOwnedItem value;
   std::shared_ptr<void> actual_owner;
+  std::shared_ptr<const FieldGlobalDataItemSourceReference> source_owner{};
 };
 // The platform factory must be the real Item Reference constructor, not a
 // source-admission callback. The provided platform adapter validates its
@@ -202,6 +219,23 @@ public:
   bool constructed_body_alive(FieldObjectId) const;
   bool constructor_source_hash(std::string_view,
                                std::array<uint8_t, 32> &) const;
+  bool initialize_character_load(const FieldCharacterLoadData &, std::string &);
+  bool character_load_bound_to(const FieldCharacterLoadData &) const;
+  bool character_load_source_hash(std::string_view,
+                                  std::array<uint8_t, 32> &) const;
+  bool read_character_load(uint32_t declaration, FieldCharacterLoadState &,
+                           std::string &) const;
+  bool character_nickname(uint32_t declaration, std::string &,
+                          std::string &) const;
+  bool publish_character_load(const FieldCharacterLoadState &, std::string &);
+  bool new_character_inventory(uint32_t declaration,
+                               FieldCharacterOwnedReference &, std::string &);
+  bool character_inventory_owner(FieldObjectId, uint32_t &,
+                                 std::string &) const;
+  bool
+  read_character_inventory_items(FieldObjectId,
+                                 std::vector<FieldGlobalDataItemReference> &,
+                                 std::string &) const;
 
 private:
   const GlobalDataConstructorData *constructor_data_ = nullptr;
@@ -235,5 +269,14 @@ private:
   FieldObjectId god_storage_object_ = 0;
   std::string god_storage_member_;
   std::vector<FieldGlobalDataItemReference> god_items_;
+  const FieldCharacterLoadData *character_load_data_ = nullptr;
+  std::array<uint8_t, 32> character_load_ir_{};
+  std::map<FieldObjectId, std::vector<FieldGlobalDataItemReference>>
+      character_items_;
+  std::map<FieldObjectId,
+           std::shared_ptr<const FieldCharacterEnemySkillReference>>
+      character_enemy_skills_;
+  std::map<uint32_t, FieldObjectId> character_inventory_cursors_;
+  bool character_load_available(std::string &) const;
 };
 } // namespace encore::upstream

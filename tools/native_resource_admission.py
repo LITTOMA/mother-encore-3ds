@@ -59,6 +59,7 @@ SOURCES = (
     'runtime/global_yaml_file_data.cpp',
     'runtime/field_global_data_data.cpp',
     'runtime/global_data_constructor_data.cpp',
+    'runtime/field_character_load_data.cpp',
     'runtime/field_global_registry_data.cpp',
     'runtime/field_node_recipe_data.cpp',
     'runtime/field_goods_data.cpp',
@@ -126,6 +127,12 @@ def admit(resources, *, global_items=True):
                     '--global-yaml-file', str(ROOT / 'romfs/data/global.encyamlfile'),
                     '--global-constructor', str(ROOT / 'romfs/data/global.encconstructor'),
                     str(ROOT / 'romfs/data/global.encdata')]
+        from tools.field_character_load import derive as derive_characters
+        from tools.podunk_scene import stable
+        characters = derive_characters()
+        command += ['--global-characters', str(ROOT / 'romfs/data/global.enccharacterload'),
+                    str(stable(characters['source_save'])), characters['commit'],
+                    characters['sources'][characters['source_save']]]
     subprocess.run(command, check=True)
 
 

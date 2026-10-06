@@ -60,9 +60,9 @@ bool FieldGlobalRegistry::publish_native_reference(const FieldGlobalExternalSpec
  auto i=objects_.find(id);
  if(!initialized_||poisoned_||!owner||!id||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||owner->registry()!=this||!spec.stable_id||spec.role!=5||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||spec.script!=spec.source||spec.source_sha!=spec.script_sha||spec.identity.source_sha256!=spec.source_sha||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual native Reference slot/source rejected");
  auto type=owner->native_class();auto b=owner->binding();
- const bool supported=(spec.native_class=="Reference"&&b.family==0x454e0053)||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052);
+ const bool supported=(spec.native_class=="Reference"&&b.family==0x454e0050&&b.capability==2)||(((spec.native_class=="Reference"&&b.family==0x454e0053)||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052))&&b.capability==1);
  std::array<uint8_t,32>source{},namespace_source{};
- if(!type||spec.native_class!=type||!supported||b.capability!=1||!owner->checked_source_hash(spec.source,source)||source!=spec.source_sha||b.object!=id||!equal_spec(b.source,spec))return fail(e,"Global native Reference actual owner/domain proof rejected");
+ if(!type||spec.native_class!=type||!supported||!owner->checked_source_hash(spec.source,source)||source!=spec.source_sha||b.object!=id||!equal_spec(b.source,spec))return fail(e,"Global native Reference actual owner/domain proof rejected");
  // Nested source classes have their own checked resource closure. Namespace
  // declarations need not duplicate every nested script dependency.
  if(data_->source_hash(spec.source,namespace_source)&&namespace_source!=source)return fail(e,"Global native Reference conflicts with namespace source");

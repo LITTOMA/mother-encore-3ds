@@ -1,0 +1,1460 @@
+{
+  "schema": 2,
+  "format": 2,
+  "capability": 2,
+  "rules": 1,
+  "bindings": {
+    "name": "_name",
+    "level": "_level",
+    "exp": "_exp",
+    "hp": "_hp",
+    "pp": "_pp",
+    "status": "_status",
+    "nickname": "_nickname",
+    "learned_skills": "_learned_skills",
+    "permanent_boosts": "_permanent_boosts",
+    "affinities": "_affinity_multipliers",
+    "inventory": "_inventory",
+    "inventory_getter": "inv",
+    "inventory_getter_method": "get_inventory",
+    "untargetable": "_untargetable",
+    "npc_skills": "_skills",
+    "stat_fields": [
+      "_maxhp",
+      "_maxpp",
+      "_offense",
+      "_defense",
+      "_speed",
+      "_iq",
+      "_guts"
+    ],
+    "character_script": "Scripts/global/Character.gd",
+    "member_script": "Scripts/global/PartyMember.gd",
+    "npc_script": "Scripts/global/PartyNPC.gd",
+    "inventory_script": "Scripts/global/Inventory.gd",
+    "enemy_skill_script": "Scripts/UI/Battle/EnemySkill.gd",
+    "character_defaults": [
+      {
+        "name": "_name",
+        "kind": 1,
+        "value": ""
+      },
+      {
+        "name": "_level",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_exp",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_status",
+        "kind": 3,
+        "value": ""
+      },
+      {
+        "name": "_hp",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_maxhp",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_pp",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_maxpp",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_offense",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_defense",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_speed",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_iq",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_guts",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_affinity_multipliers",
+        "kind": 4,
+        "value": ""
+      }
+    ],
+    "member_defaults": [
+      {
+        "name": "_nickname",
+        "kind": 1,
+        "value": ""
+      },
+      {
+        "name": "_learned_skills",
+        "kind": 3,
+        "value": ""
+      },
+      {
+        "name": "_inventory",
+        "kind": 5,
+        "value": ""
+      },
+      {
+        "name": "_permanent_boosts",
+        "kind": 4,
+        "value": ""
+      },
+      {
+        "name": "inv",
+        "kind": 5,
+        "value": ""
+      }
+    ],
+    "npc_defaults": [
+      {
+        "name": "_untargetable",
+        "kind": 6,
+        "value": 0
+      },
+      {
+        "name": "_skills",
+        "kind": 3,
+        "value": ""
+      }
+    ],
+    "inventory_defaults": [
+      {
+        "name": "_type",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "_items",
+        "kind": 3,
+        "value": ""
+      }
+    ],
+    "enemy_skill_defaults": [
+      {
+        "name": "skill_id",
+        "kind": 1,
+        "value": ""
+      },
+      {
+        "name": "weight",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "cooldown",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "remaining_cooldown",
+        "kind": 2,
+        "value": 0
+      }
+    ],
+    "inventory_type_field": "_type",
+    "inventory_items_field": "_items",
+    "normal_inventory_type": 0,
+    "enemy_id_field": "skill_id",
+    "enemy_weight_field": "weight",
+    "enemy_cooldown_field": "cooldown",
+    "enemy_remaining_field": "remaining_cooldown",
+    "enemy_constructor_defaults": [
+      {
+        "name": "skill_id",
+        "kind": 1,
+        "value": "bash"
+      },
+      {
+        "name": "weight",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "cooldown",
+        "kind": 2,
+        "value": 0
+      }
+    ],
+    "npc_nickname_prefix": "[tr:NAME_",
+    "npc_nickname_suffix": "]",
+    "member_load_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "character_load_order": [
+      2,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      4
+    ],
+    "npc_load_order": [
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "item_argument_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "item_script": "Scripts/global/Item.gd",
+    "item_native": "Reference",
+    "enemy_skill_native": "Reference",
+    "enemy_skill_id": 4052466252,
+    "item_constructor_id": 3845225610,
+    "item_defaults": [
+      {
+        "name": "item_name",
+        "kind": 1,
+        "value": ""
+      },
+      {
+        "name": "uid",
+        "kind": 2,
+        "value": 0
+      },
+      {
+        "name": "equipped",
+        "kind": 6,
+        "value": 0
+      },
+      {
+        "name": "doses",
+        "kind": 2,
+        "value": 0
+      }
+    ],
+    "item_name_field": "item_name",
+    "item_uid_field": "uid",
+    "item_equipped_field": "equipped",
+    "item_doses_field": "doses"
+  },
+  "kind": "encore.field-character-load.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "family": 1162739792,
+  "rows": [
+    {
+      "id": 2199921697,
+      "name": "ninten",
+      "role": 0,
+      "display_name": "Ninten",
+      "nickname": "Ninten",
+      "level": 20,
+      "exp": 0,
+      "hp": 430,
+      "pp": 100,
+      "status": [],
+      "inventory": [
+        {
+          "name": "Berliner",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Berliner",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Berliner",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Berliner",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Berliner",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Berliner",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Crumbs",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Slingshot",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "BatWooden",
+          "equipped": true,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "CourageBadge",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Antidote",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "EyeDrops",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "AsthmaSpray",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "BaseballCap",
+          "equipped": true,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "SlingshotMetal",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        }
+      ],
+      "skills": [
+        "curveball",
+        "strike",
+        "ricochet",
+        "ballFlame",
+        "return",
+        "homerun",
+        "healingA",
+        "healingB",
+        "healingG",
+        "healingO",
+        "lifeUpA",
+        "lifeUpB",
+        "offenseUpA",
+        "speedUpA",
+        "shieldA",
+        "telepathy",
+        "teleportA",
+        "teleportO",
+        "splitShot"
+      ],
+      "npc_skills": [],
+      "untargetable": false,
+      "affinities": [
+        [
+          "asthma",
+          1
+        ]
+      ],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [
+        [
+          60,
+          88,
+          121,
+          160,
+          205,
+          254,
+          308,
+          365,
+          425,
+          487,
+          550
+        ],
+        [
+          25,
+          38,
+          54,
+          73,
+          94,
+          118,
+          144,
+          171,
+          200,
+          230,
+          260
+        ],
+        [
+          10,
+          21,
+          34,
+          49,
+          66,
+          85,
+          106,
+          128,
+          152,
+          176,
+          200
+        ],
+        [
+          7,
+          11,
+          16,
+          21,
+          28,
+          36,
+          44,
+          52,
+          61,
+          71,
+          80
+        ],
+        [
+          6,
+          10,
+          15,
+          21,
+          28,
+          35,
+          43,
+          52,
+          61,
+          70,
+          80
+        ],
+        [
+          5,
+          11,
+          18,
+          26,
+          36,
+          47,
+          58,
+          70,
+          83,
+          97,
+          110
+        ],
+        [
+          8,
+          10,
+          13,
+          17,
+          20,
+          25,
+          29,
+          34,
+          39,
+          44,
+          50
+        ]
+      ],
+      "npc_stats": []
+    },
+    {
+      "id": 2945149221,
+      "name": "ana",
+      "role": 0,
+      "display_name": "Ana",
+      "nickname": "Ana",
+      "level": 1,
+      "exp": 0,
+      "hp": 1,
+      "pp": 730,
+      "status": [],
+      "inventory": [
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        }
+      ],
+      "skills": [
+        "yomama",
+        "approach",
+        "attack",
+        "bash",
+        "bigGrin",
+        "bite",
+        "blindingThrow",
+        "brandishPitchfork",
+        "criticalthinking",
+        "curveball",
+        "defenseUpA",
+        "escapeCrumbs",
+        "float",
+        "getDistracted",
+        "healingA",
+        "healingB",
+        "healingG",
+        "healingO",
+        "hystericalLaugh",
+        "karateChop",
+        "lifeUpA",
+        "lifeUpB",
+        "lifeUpG",
+        "lifeUpO",
+        "meditate",
+        "mightyRoar",
+        "mysteriousAction",
+        "offenseUpA",
+        "peck",
+        "pkBeamA",
+        "pkBeamB",
+        "pkBeamG",
+        "pkBeamO",
+        "pkFireA",
+        "pkFreezeA",
+        "poisonBite",
+        "punch",
+        "rage",
+        "scratch",
+        "speedUpA",
+        "spy",
+        "swing",
+        "tackle",
+        "telepathy",
+        "ventOdor"
+      ],
+      "npc_skills": [],
+      "untargetable": false,
+      "affinities": [],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [
+        [
+          40,
+          65,
+          95,
+          130,
+          170,
+          214,
+          263,
+          314,
+          368,
+          424,
+          480
+        ],
+        [
+          30,
+          47,
+          69,
+          93,
+          122,
+          153,
+          187,
+          223,
+          261,
+          300,
+          340
+        ],
+        [
+          6,
+          12,
+          19,
+          27,
+          37,
+          47,
+          59,
+          71,
+          84,
+          97,
+          140
+        ],
+        [
+          3,
+          6,
+          11,
+          16,
+          21,
+          28,
+          34,
+          42,
+          49,
+          57,
+          65
+        ],
+        [
+          8,
+          12,
+          18,
+          24,
+          31,
+          40,
+          48,
+          58,
+          67,
+          78,
+          88
+        ],
+        [
+          8,
+          14,
+          22,
+          31,
+          41,
+          52,
+          65,
+          78,
+          91,
+          106,
+          120
+        ],
+        [
+          6,
+          8,
+          10,
+          13,
+          16,
+          19,
+          23,
+          27,
+          31,
+          35,
+          40
+        ]
+      ],
+      "npc_stats": []
+    },
+    {
+      "id": 2962709063,
+      "name": "lloyd",
+      "role": 0,
+      "display_name": "Lloyd",
+      "nickname": "Lloyd",
+      "level": 1,
+      "exp": 0,
+      "hp": 80,
+      "pp": 0,
+      "status": [],
+      "inventory": [
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "GunStun",
+          "equipped": true,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        }
+      ],
+      "skills": [
+        "spy"
+      ],
+      "npc_skills": [],
+      "untargetable": false,
+      "affinities": [],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [
+        [
+          80,
+          109,
+          145,
+          186,
+          234,
+          286,
+          343,
+          404,
+          467,
+          533,
+          600
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          6,
+          10,
+          16,
+          22,
+          29,
+          36,
+          44,
+          53,
+          61,
+          70
+        ],
+        [
+          10,
+          14,
+          20,
+          26,
+          34,
+          42,
+          50,
+          60,
+          69,
+          80,
+          90
+        ],
+        [
+          10,
+          15,
+          21,
+          27,
+          35,
+          44,
+          53,
+          63,
+          73,
+          84,
+          95
+        ],
+        [
+          10,
+          18,
+          29,
+          41,
+          54,
+          69,
+          86,
+          103,
+          122,
+          141,
+          160
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "npc_stats": []
+    },
+    {
+      "id": 2506104336,
+      "name": "teddy",
+      "role": 0,
+      "display_name": "Teddy",
+      "nickname": "Teddy",
+      "level": 1,
+      "exp": 0,
+      "hp": 80,
+      "pp": 0,
+      "status": [],
+      "inventory": [
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        },
+        {
+          "name": "Bread",
+          "equipped": false,
+          "doses": 1,
+          "has_uid": false,
+          "uid": 0
+        }
+      ],
+      "skills": [],
+      "npc_skills": [],
+      "untargetable": false,
+      "affinities": [],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [
+        [
+          80,
+          111,
+          150,
+          195,
+          245,
+          302,
+          363,
+          429,
+          497,
+          568,
+          640
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          20,
+          34,
+          51,
+          71,
+          92,
+          115,
+          140,
+          166,
+          193,
+          220
+        ],
+        [
+          10,
+          16,
+          22,
+          30,
+          40,
+          50,
+          61,
+          72,
+          85,
+          97,
+          110
+        ],
+        [
+          10,
+          15,
+          21,
+          29,
+          38,
+          48,
+          58,
+          69,
+          81,
+          93,
+          105
+        ],
+        [
+          3,
+          8,
+          14,
+          21,
+          29,
+          37,
+          47,
+          57,
+          68,
+          79,
+          90
+        ],
+        [
+          8,
+          11,
+          14,
+          19,
+          23,
+          29,
+          34,
+          40,
+          47,
+          53,
+          60
+        ]
+      ],
+      "npc_stats": []
+    },
+    {
+      "id": 2753520836,
+      "name": "pippi",
+      "role": 0,
+      "display_name": "Pippi",
+      "nickname": "Pippi",
+      "level": 1,
+      "exp": 0,
+      "hp": 80,
+      "pp": 0,
+      "status": [],
+      "inventory": [],
+      "skills": [],
+      "npc_skills": [],
+      "untargetable": false,
+      "affinities": [],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [
+        [
+          80,
+          111,
+          150,
+          195,
+          245,
+          302,
+          363,
+          429,
+          497,
+          568,
+          640
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          20,
+          34,
+          51,
+          71,
+          92,
+          115,
+          140,
+          166,
+          193,
+          220
+        ],
+        [
+          10,
+          16,
+          22,
+          30,
+          40,
+          50,
+          61,
+          72,
+          85,
+          97,
+          110
+        ],
+        [
+          10,
+          15,
+          21,
+          29,
+          38,
+          48,
+          58,
+          69,
+          81,
+          93,
+          105
+        ],
+        [
+          3,
+          8,
+          14,
+          21,
+          29,
+          37,
+          47,
+          57,
+          68,
+          79,
+          90
+        ],
+        [
+          8,
+          11,
+          14,
+          19,
+          23,
+          29,
+          34,
+          40,
+          47,
+          53,
+          60
+        ]
+      ],
+      "npc_stats": []
+    },
+    {
+      "id": 2967978339,
+      "name": "canarychick",
+      "role": 1,
+      "display_name": "CanaryChick",
+      "nickname": "CanaryChick",
+      "level": 1,
+      "exp": 0,
+      "hp": 1,
+      "pp": 0,
+      "status": [],
+      "inventory": [],
+      "skills": [],
+      "npc_skills": [
+        {
+          "skill": "do_nothing",
+          "weight": 6,
+          "cooldown": 0
+        }
+      ],
+      "untargetable": true,
+      "affinities": [],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [],
+      "npc_stats": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 3406660883,
+      "name": "flyingman",
+      "role": 1,
+      "display_name": "FlyingMan",
+      "nickname": "FlyingMan",
+      "level": 99,
+      "exp": 0,
+      "hp": 400,
+      "pp": 0,
+      "status": [],
+      "inventory": [],
+      "skills": [],
+      "npc_skills": [
+        {
+          "skill": "bash",
+          "weight": 1,
+          "cooldown": 0
+        }
+      ],
+      "untargetable": true,
+      "affinities": [],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [],
+      "npc_stats": [
+        250,
+        0,
+        55,
+        25,
+        14,
+        25,
+        25
+      ]
+    },
+    {
+      "id": 1855627552,
+      "name": "eve",
+      "role": 1,
+      "display_name": "Eve",
+      "nickname": "Eve",
+      "level": 1,
+      "exp": 0,
+      "hp": 400,
+      "pp": 0,
+      "status": [],
+      "inventory": [],
+      "skills": [],
+      "npc_skills": [
+        {
+          "skill": "bash",
+          "weight": 1,
+          "cooldown": 0
+        }
+      ],
+      "untargetable": true,
+      "affinities": [],
+      "permanent": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "permanent_fields": [],
+      "targets": [],
+      "npc_stats": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "stat_order": [
+    "maxhp",
+    "maxpp",
+    "offense",
+    "defense",
+    "speed",
+    "iq",
+    "guts"
+  ],
+  "hp": "hp",
+  "pp": "pp",
+  "source_slots": [
+    "weapon",
+    "body",
+    "arms",
+    "other"
+  ],
+  "npc_skill_getter": "does_battle_skill_exist",
+  "skill_order": [
+    "courage",
+    "pepTalk",
+    "strike",
+    "curveball",
+    "battingAThousand",
+    "homerun",
+    "bunt",
+    "return",
+    "splitShot",
+    "ricochet",
+    "ballFlame",
+    "ballPoison",
+    "ballWeb",
+    "ballMeteor",
+    "spy",
+    "copyCamera",
+    "stickyMachine",
+    "flameThrower",
+    "hpSucker",
+    "bellGun",
+    "psiCounterUnit",
+    "defenseShower",
+    "shieldKiller",
+    "heavyBazooka",
+    "pray",
+    "meditate",
+    "revenge",
+    "powerSmash",
+    "deadlyBlow",
+    "flex",
+    "toughen",
+    "swearWords",
+    "wordsOfLove",
+    "smoke",
+    "telepathy",
+    "teleportA",
+    "teleportO",
+    "pkFireA",
+    "pkFireB",
+    "pkFireG",
+    "pkFireO",
+    "pkFreezeA",
+    "pkFreezeB",
+    "pkFreezeG",
+    "pkFreezeO",
+    "pkThunderA",
+    "pkThunderB",
+    "pkThunderG",
+    "pkThunderO",
+    "pkBeamA",
+    "pkBeamB",
+    "pkBeamG",
+    "pkBeamO",
+    "pkFlashA",
+    "pkFlashO",
+    "lifeUpA",
+    "lifeUpB",
+    "lifeUpG",
+    "lifeUpO",
+    "healingA",
+    "healingB",
+    "healingG",
+    "healingO",
+    "psiMagnetA",
+    "psiMagnetO",
+    "shieldA",
+    "shieldO",
+    "counterA",
+    "counterO",
+    "psiShieldA",
+    "psiShieldO",
+    "psiCounterA",
+    "psiCounterO",
+    "offenseUpA",
+    "offenseUpO",
+    "offenseDownA",
+    "offenseDownO",
+    "defenseUpA",
+    "defenseUpO",
+    "defenseDownA",
+    "defenseDownO",
+    "speedUpA",
+    "speedUpO",
+    "speedDownA",
+    "speedDownO",
+    "hypnosisA",
+    "hypnosisO",
+    "darknessA",
+    "darknessO",
+    "brainshockA",
+    "brainshockO",
+    "paralysisA",
+    "paralysisO",
+    "shieldOff",
+    "psiBlock",
+    "4thDSlip"
+  ],
+  "exp_floors": [
+    0,
+    9,
+    27,
+    60,
+    112,
+    189,
+    294,
+    432,
+    607,
+    825,
+    1089,
+    1404,
+    1774,
+    2205,
+    2700,
+    3264,
+    3901,
+    4617,
+    5415,
+    6300,
+    7276,
+    8349,
+    9522,
+    10800,
+    12187,
+    13689,
+    15309,
+    17052,
+    18922,
+    20925
+  ],
+  "sources": {
+    "Data/save_default.yaml": "b975d721c64db8e9bb7e785ed71de4d56a6c0ee914ab6230e28f0cc50e19ae33",
+    "Data/save_overrides.yaml": "e931d00914766047d39a6a749559c94360286605cc153d76604bea43e9487b47",
+    "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
+    "Scripts/UI/Battle/EnemySkill.gd": "152280867468742f87b0212237d27df4c28ec7717217fbcf6cb72663363236c6",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/PartyNPC.gd": "36b19f7fe73d01097371d788587685ea1ea1869dc0fa7014a97da7e79d25b925",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "cold_status_only": true,
+  "whole_global_ready": false,
+  "whole_load": false,
+  "source_save": "Data/save_default.yaml"
+}

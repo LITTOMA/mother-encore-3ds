@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import json
 """Build a cached offline format-admission tool; use actual console-core loaders.
 
 This is a producer contract check of real resource bytes, not a test suite or a

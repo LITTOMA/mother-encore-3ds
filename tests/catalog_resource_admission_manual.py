@@ -42,6 +42,14 @@ def main():
         rows.append((at, path))
         at += 20 + length
     target_catalog = fixture / 'data/native.encresources'
+    # Catalog-bound metadata is unchanged and passes its fingerprints. A
+    # renderer texture omitted by staging must still fail typed admission.
+    texture = fixture / 'graphics/story/present-sparkles/sparkles.t3x'
+    original_texture = texture.read_bytes()
+    texture.unlink()
+    subprocess.run([str(harness), str(target_catalog), str(fixture),
+                    'graphics/story/present-sparkles/sparkles.t3x'], check=True)
+    texture.write_bytes(original_texture)
     for offset, name in rows:
         pack = fixture / name
         original = pack.read_bytes()

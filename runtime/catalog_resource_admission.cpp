@@ -33,6 +33,7 @@
 #include "encore/title_locale_data.hpp"
 #include "encore/world_effect_data.hpp"
 #include <memory>
+#include <cstdio>
 #include <set>
 namespace encore::upstream {
 namespace {
@@ -67,6 +68,8 @@ struct Owners {
   BasementProgressionData basement;
   MusicRegionData music;
   AudioBank audio;
+  BasementActorData basement_actors;
+  PresentSparklesData sparkles;
 };
 } // namespace
 bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
@@ -192,13 +195,13 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
       accepted = owners->basement.load_file(absolute.c_str(), detail);
       break;
     case ResourceRole::BasementActors:
-      accepted = decode<BasementActorData>(absolute, detail);
+      accepted = owners->basement_actors.load_file(absolute.c_str(), detail);
       break;
     case ResourceRole::MusicRegions:
       accepted = owners->music.load_file(absolute.c_str(), detail);
       break;
     case ResourceRole::PresentSparkles:
-      accepted = decode<PresentSparklesData>(absolute, detail);
+      accepted = owners->sparkles.load_file(absolute.c_str(), detail);
       break;
     case ResourceRole::FieldPsi:
       accepted = decode<FieldPsiData>(absolute, detail);
@@ -279,6 +282,30 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
   if (!admit_house_music_bindings(owners->room.view(), restore_owner,
                                   owners->basement, owners->music, detail))
     return rejected(error, catalog.path(ResourceRole::Room), detail);
+  // Collect the exact texture paths that the House renderers will open,
+  // independently of the staging producers' output lists. This is offline
+  // resource admission only; do not add this traversal to game startup.
+  std::set<std::string> house_textures;
+  const auto house = owners->house.view();
+  for (uint32_t i = 0; i < house.count(HouseSection::Resources); ++i)
+    house_textures.emplace(house.string(house.resource(i).path));
+  for (uint32_t i = 0; i < owners->room.view().resource_count(); ++i) {
+    const auto resource = owners->room.view().resource(i);
+    if (resource.kind == uint16_t(RoomResourceKind::Texture))
+      house_textures.emplace(owners->room.view().string(resource.path_string));
+  }
+  for (const auto &resource : owners->basement_actors.resources()) {
+    house_textures.insert(resource.path);
+    if (!resource.primary_path.empty()) house_textures.insert(resource.primary_path);
+  }
+  house_textures.insert(owners->sparkles.texture_path());
+  for (const auto &texture : house_textures) {
+    FILE *file = std::fopen((prefix + texture).c_str(), "rb");
+    if (!file) return rejected(error, texture, "Referenced House texture absent from actual RomFS root");
+    const bool readable = std::fgetc(file) != EOF && !std::ferror(file);
+    std::fclose(file);
+    if (!readable) return rejected(error, texture, "Referenced House texture empty or unreadable");
+  }
   // This real checked child binary is owned by Room, not a catalog role.
   // Loading its format does not start the effect animation or allocate GPU.
   auto room = owners->room.view();

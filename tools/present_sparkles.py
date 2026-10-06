@@ -62,7 +62,11 @@ def verify_receipt(root=ROOT):
  root=Path(root);ir=load(root);r=read_json(root/RECEIPT);fields(r,('schema','commit','ir_sha256','producer_sha256','tex3ds_sha256','outputs'),'Sparkles asset receipt');path=ir['resource']['output'];require(r['schema']==1 and r['commit']==PIN and r['ir_sha256']==digest(root/IR)and r['producer_sha256']==digest(root/'tools/present_sparkles.py')and re.fullmatch('[0-9a-f]{64}',r['tex3ds_sha256'])and set(r['outputs'])=={path},'Sparkles conversion identity');o=r['outputs'][path];fields(o,('bytes','sha256','size'),'Sparkles output');p=root/'romfs'/path;require(o['bytes']>0 and p.stat().st_size==o['bytes']and digest(p)==o['sha256']and o['size']==ir['resource']['size'],'Sparkles texture receipt');return r
 
 def stage_files(source):
- verify_receipt();blob=encode(load());require((Path(source)/'data/house.encsparkles').read_bytes()==blob,'Stale Sparkles binary');return {Path('data/house.encsparkles'):blob}
+ receipt=verify_receipt();ir=load();blob=encode(ir);source=Path(source)
+ require((source/'data/house.encsparkles').read_bytes()==blob,'Stale Sparkles binary')
+ path=Path(ir['resource']['output']);texture=(source/path).read_bytes();expected=receipt['outputs'][path.as_posix()]
+ require(len(texture)==expected['bytes'] and hashlib.sha256(texture).hexdigest()==expected['sha256'],'Staged Sparkles texture differs from genuine conversion')
+ return {Path('data/house.encsparkles'):blob,path:texture}
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','assets','verify']);p.add_argument('--tex3ds');a=p.parse_args()

@@ -23,6 +23,82 @@ def embedded_romfs(blob):
     return blob[romfs:]
 
 
+def embedded_files(blob):
+    """Read the 3DSX level-3 tree using libctru's romfs_header/dir/file layout.
+
+    3dsxtool embeds this filesystem directly, without CIA's IVFC wrapper.
+    Follow names and table offsets, never search for coincidental payload bytes.
+    """
+    raw = memoryview(embedded_romfs(blob))
+    if len(raw) < 40:
+        raise ValueError('Truncated embedded RomFS header')
+    header, dh, dhs, dt, dts, fh, fhs, ft, fts, data = struct.unpack_from('<10I', raw)
+    if header != 40 or not (40 <= dh <= dh + dhs <= dt <= dt + dts <=
+                            fh <= fh + fhs <= ft <= ft + fts <= data <= len(raw)):
+        raise ValueError('Invalid embedded RomFS table bounds')
+
+    def records(start, length, directory):
+        result = {}
+        offset = 0
+        size, fmt = (24, '<6I') if directory else (32, '<IIQQII')
+        while offset < length:
+            if length - offset < size:
+                raise ValueError('Truncated embedded RomFS entry')
+            fields = struct.unpack_from(fmt, raw, start + offset)
+            name_size = fields[-1]
+            end = offset + size + name_size
+            padded = (end + 3) & ~3
+            if name_size % 2 or padded > length:
+                raise ValueError('Invalid embedded RomFS name bounds')
+            name = bytes(raw[start + offset + size:start + end]).decode('utf-16le')
+            if (not name and not (directory and offset == 0)) or any(
+                    c in name for c in '/\\:\0') or name in ('.', '..'):
+                raise ValueError('Unsafe embedded RomFS name')
+            if any(raw[start + end:start + padded]):
+                raise ValueError('Invalid embedded RomFS name padding')
+            result[offset] = (fields, name)
+            offset = padded
+        return result
+
+    dirs, files = records(dt, dts, True), records(ft, fts, False)
+    if 0 not in dirs or dirs[0][1] or dirs[0][0][0] != 0:
+        raise ValueError('Invalid embedded RomFS root')
+    sentinel = 0xffffffff
+    pending, seen_dirs, seen_files, result = [(0, '', 0)], set(), set(), {}
+    while pending:
+        index, prefix, parent = pending.pop()
+        if index not in dirs or index in seen_dirs:
+            raise ValueError('Invalid or cyclic embedded RomFS directory')
+        fields, name = dirs[index]
+        if fields[0] != parent:
+            raise ValueError('Embedded RomFS directory parent differs')
+        seen_dirs.add(index)
+        path = prefix + name + ('/' if name else '')
+        child = fields[2]
+        siblings = set()
+        while child != sentinel:
+            if child not in dirs or child in siblings:
+                raise ValueError('Invalid or cyclic embedded RomFS sibling')
+            siblings.add(child)
+            pending.append((child, path, index))
+            child = dirs[child][0][1]
+        child = fields[3]
+        while child != sentinel:
+            if child not in files or child in seen_files:
+                raise ValueError('Invalid or cyclic embedded RomFS file')
+            record, name = files[child]
+            begin, size = data + record[2], record[3]
+            relative = path + name
+            if record[0] != index or begin > len(raw) or size > len(raw) - begin or relative in result:
+                raise ValueError('Invalid embedded RomFS file ownership/bounds')
+            seen_files.add(child)
+            result[relative] = raw[begin:begin + size]
+            child = record[1]
+    if len(seen_dirs) != len(dirs) or len(seen_files) != len(files):
+        raise ValueError('Unreachable embedded RomFS entries')
+    return result
+
+
 def check(project, output):
     import resource_catalog
     from romfs_layout import checked_inventory
@@ -30,9 +106,18 @@ def check(project, output):
     output.mkdir(parents=True, exist_ok=True)
     dist, stage = project / 'dist', project / 'build/ctr/native-romfs'
     blob = (dist / 'encore-native.3dsx').read_bytes()
-    romfs = embedded_romfs(blob)
+    embedded = embedded_files(blob)
     resource_catalog.stage_files(stage)
     expected = checked_inventory(stage)
+    if set(embedded) != {path.as_posix() for path in expected}:
+        raise ValueError('3DSX RomFS file paths differ from checked staging')
+    for relative in expected:
+        if embedded[relative.as_posix()] != (stage / relative).read_bytes():
+            raise ValueError('3DSX RomFS file bytes differ: ' + str(relative))
+    # Same typed House texture-reference traversal that guards staging. This
+    # verifies actual staged paths rather than trusting a producer's file list.
+    from native_resource_admission import admit
+    admit(stage, global_items=False)
     ctrtool = shutil.which('ctrtool')
     if not ctrtool:
         raise ValueError('CTRTool unavailable; CIA extraction cannot be checked')
@@ -58,12 +143,6 @@ def check(project, output):
             if (stage / relative).read_bytes() != (extracted / relative).read_bytes():
                 raise ValueError('CIA RomFS bytes differ: ' + str(relative))
         resource_catalog.stage_files(extracted)
-        catalog = (stage / 'data/native.encresources').read_bytes()
-        if catalog not in romfs:
-            raise ValueError('3DSX embedded RomFS lacks the checked resource catalog')
-        for row in resource_catalog.decode(catalog)['bindings']:
-            if (stage / row['path']).read_bytes() not in romfs:
-                raise ValueError('3DSX lacks checked catalog resource: ' + row['path'])
     artifacts = {}
     for extension in ('elf', '3dsx', 'cia', 'smdh'):
         path = dist / ('encore-native.' + extension)
@@ -72,7 +151,7 @@ def check(project, output):
     receipt = dict(source_commit=subprocess.check_output(
         ['git', 'rev-parse', 'HEAD'], cwd=project, text=True).strip(),
         staged_files=len(expected), artifacts=artifacts,
-        scope='Real ARM build and CIA extraction; emulator and hardware not run')
+        scope='Real ARM build, full 3DSX file-tree/bytes and CIA extraction; emulator and hardware not run')
     (output / 'console-check.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print(json.dumps(receipt, indent=2))
 

@@ -114,6 +114,11 @@ def stage():
     temporary.mkdir(parents=True)
     for path,data in files.items():
         out=temporary/path;out.parent.mkdir(parents=True,exist_ok=True);out.write_bytes(data)
+    # Admit the actual candidate tree, not only the producer's source directory.
+    # The real typed readers independently follow renderer texture references.
+    # Failure preserves the previous staged tree; no constructor or test runs.
+    from native_resource_admission import admit
+    admit(temporary, global_items=False)
     if target.exists():shutil.rmtree(target)
     temporary.rename(target)
     print(f'Staged {len(files)} native RomFS files; no M0 fixture')

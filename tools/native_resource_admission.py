@@ -66,7 +66,7 @@ SOURCES = (
 )
 
 
-def admit(resources):
+def admit(resources, *, global_items=True):
     compiler = os.environ.get('HOST_CXX', 'c++')
     version = subprocess.check_output([compiler, '--version'])
     common = hashlib.sha256(version + Path(__file__).read_bytes())
@@ -100,8 +100,10 @@ def admit(resources):
         pending = executable.with_suffix('.pending')
         subprocess.run([compiler, *map(str, objects), '-Wl,--gc-sections', '-o', str(pending)], check=True)
         os.replace(pending, executable)
-    subprocess.run([str(executable), str(resources), '--global-items',
-                    str(ROOT / 'romfs/data/global.encfielditems')], check=True)
+    command = [str(executable), str(resources)]
+    if global_items:
+        command += ['--global-items', str(ROOT / 'romfs/data/global.encfielditems')]
+    subprocess.run(command, check=True)
 
 
 if __name__ == '__main__':

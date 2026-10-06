@@ -57,6 +57,8 @@ SOURCES = (
     'runtime/global_yaml_caches_data.cpp',
     'runtime/global_packed_directory_data.cpp',
     'runtime/global_yaml_file_data.cpp',
+    'runtime/field_global_data_data.cpp',
+    'runtime/global_data_constructor_data.cpp',
     'runtime/field_global_registry_data.cpp',
     'runtime/field_node_recipe_data.cpp',
     'runtime/field_goods_data.cpp',
@@ -121,7 +123,9 @@ def admit(resources, *, global_items=True):
                     str(registry['scene_id']), registry['commit'],
                     registry['source_sha256'], caches['owner'],
                     '--global-directory', str(ROOT / 'romfs/data/global.encpackeddir'),
-                    '--global-yaml-file', str(ROOT / 'romfs/data/global.encyamlfile')]
+                    '--global-yaml-file', str(ROOT / 'romfs/data/global.encyamlfile'),
+                    '--global-constructor', str(ROOT / 'romfs/data/global.encconstructor'),
+                    str(ROOT / 'romfs/data/global.encdata')]
     subprocess.run(command, check=True)
 
 

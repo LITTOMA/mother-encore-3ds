@@ -31,6 +31,42 @@ class PodunkGlobalDataHost final {
   }
 
 public:
+  bool initialize_source_constructor(const upstream::GlobalDataConstructorData &data,
+                                     std::string &e) {
+    return owner_.initialize_constructor(data, e);
+  }
+  bool complete_source_constructor(std::string &e) {
+    if (!flags_data_ || !yaml_data_ || !cache_prefix_complete())
+      return fail(e, "globalData actual constructor cache prefix unfinished");
+    return owner_.complete_constructor(*flags_data_, flags_, *yaml_data_,
+                                       yaml_caches_, cache_directories_, item_cache_, e);
+  }
+  bool source_stage_parent(const upstream::FieldGlobalExternalBinding &b,
+                           upstream::FieldObjectId p, std::string &e) {
+    return owner_.source_stage_parent(b, p, e);
+  }
+  bool source_enter(const upstream::FieldGlobalExternalBinding &b,
+                    upstream::FieldObjectId p, std::string &e) {
+    return owner_.source_enter(b, p, e);
+  }
+  bool source_begin_ready(const upstream::FieldGlobalExternalBinding &b,
+                          upstream::FieldObjectId p, std::string &e) {
+    return owner_.source_begin_ready(b, p, e);
+  }
+  bool source_finish_ready(const upstream::FieldGlobalExternalBinding &b,
+                           upstream::FieldObjectId p, std::string &e) {
+    return owner_.source_finish_ready(b, p, e);
+  }
+  bool source_exit(const upstream::FieldGlobalExternalBinding &b,
+                   upstream::FieldObjectId p, std::string &e) {
+    return owner_.source_exit(b, p, e);
+  }
+  bool source_state(upstream::FieldGlobalExternalState &s, std::string &e) const {
+    return owner_.source_state(s, e);
+  }
+  bool menu_flavor(std::string &s, std::string &e) const {
+    return owner_.menu_flavor(s, e);
+  }
   bool construct_members(const upstream::FieldGlobalDataData &data,
                          const upstream::FieldGlobalExternalSpec &spec,
                          upstream::FieldObjectId object,

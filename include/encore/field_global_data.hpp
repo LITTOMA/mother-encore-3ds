@@ -3,6 +3,23 @@
 #include "encore/field_inventory.hpp"
 #include "encore/global_item_cache.hpp"
 namespace encore::upstream {
+class GlobalDataConstructorData;
+class GlobalYamlCachesData;
+class GlobalYamlCachesRuntime;
+class GlobalPackedDirectoryHost;
+class FieldGlobalFlagsData;
+class FieldGlobalFlagsRuntime;
+struct GlobalYamlValue;
+struct FieldGlobalDataMemberState {
+  uint32_t kind = 0, adapter = 0;
+  std::shared_ptr<const GlobalYamlValue> value;
+  std::array<double, 2> vector{};
+  std::vector<std::pair<std::string, FieldObjectId>> references;
+  uint32_t owner_role = 0;
+  const FieldGlobalFlagsRuntime *flags = nullptr;
+  GlobalYamlCachesRuntime *caches = nullptr;
+  GlobalItemCache *items = nullptr;
+};
 struct FieldGlobalDataDefault {
   std::string name, string_value;
   uint32_t kind = 0;
@@ -71,6 +88,7 @@ struct FieldGlobalDataObject {
   std::vector<std::string> learned_skills;
   std::map<std::string, double> affinities;
   std::array<int64_t, 7> permanent{};
+  std::map<std::string, std::shared_ptr<GlobalYamlValue>> collections{};
 };
 struct FieldGlobalDataItemReference {
   FieldGlobalRegistry *registry = nullptr;
@@ -89,10 +107,13 @@ using FieldGlobalDataItemFactory =
 using FieldGlobalDataStatSignal = std::function<bool(
     FieldObjectId, const std::string &, int64_t, int64_t, std::string &)>;
 struct FieldGlobalDataGodItemFactory {
-  std::function<bool(const FieldItemDefinitions&,FieldGlobalRegistry&,uint32_t,
-                     FieldGlobalDataItemReference&,std::string&)>reserve;
-  std::function<bool(const FieldItemDefinitions&,const FieldOwnedItem&,
-                     GlobalItemCache&,FieldGlobalDataItemReference&,std::string&)>initialize;
+  std::function<bool(const FieldItemDefinitions &, FieldGlobalRegistry &,
+                     uint32_t, FieldGlobalDataItemReference &, std::string &)>
+      reserve;
+  std::function<bool(const FieldItemDefinitions &, const FieldOwnedItem &,
+                     GlobalItemCache &, FieldGlobalDataItemReference &,
+                     std::string &)>
+      initialize;
 };
 class FieldGlobalDataRuntime {
 public:
@@ -127,15 +148,15 @@ public:
   // Call only at globaldata._ready's Inventory.new(STORAGE_GOD) cursor after
   // the actual Items-cache insertion owner has finished. The other source
   // caches/Ready owners remain independently required, not auto-admitted here.
-  bool construct_god_storage(GlobalItemCache &,const std::string &locale,
-                             SourceRandom &,std::vector<uint32_t>&,
-                             LoadRngClockProvider,FieldGlobalDataGodItemFactory,
-                             std::string &);
-  bool god_storage_complete()const{return god_storage_complete_;}
-  const auto&god_storage_items()const{return god_items_;}
+  bool construct_god_storage(GlobalItemCache &, const std::string &locale,
+                             SourceRandom &, std::vector<uint32_t> &,
+                             LoadRngClockProvider,
+                             FieldGlobalDataGodItemFactory, std::string &);
+  bool god_storage_complete() const { return god_storage_complete_; }
+  const auto &god_storage_items() const { return god_items_; }
   bool read_reference_member(FieldObjectId actual_globaldata,
-                             const std::string&source_member,
-                             FieldObjectId&out,std::string&)const;
+                             const std::string &source_member,
+                             FieldObjectId &out, std::string &) const;
   // After actual Inventory/global.item owners accept the same References,
   // this construction cursor releases temporary Ref ownership, as source
   // inv_content does. It keeps only allocation trace, never immortal Items.
@@ -149,11 +170,59 @@ public:
   const auto *data() const { return data_; }
   FieldObjectId globaldata_object() const { return owner_; }
   bool prefix_complete() const { return prefix_; }
-  bool constructor_complete() const { return false; }
-  bool ready_complete() const { return false; }
+  bool constructor_complete() const;
+  bool ready_complete() const;
   bool load_complete() const { return false; }
+  bool initialize_constructor(const GlobalDataConstructorData &, std::string &);
+  bool complete_constructor(const FieldGlobalFlagsData &,
+                            FieldGlobalFlagsRuntime &,
+                            const GlobalYamlCachesData &,
+                            GlobalYamlCachesRuntime &,
+                            const GlobalPackedDirectoryHost &,
+                            GlobalItemCache &, std::string &);
+  bool source_stage_parent(const FieldGlobalExternalBinding &, FieldObjectId,
+                           std::string &);
+  bool source_enter(const FieldGlobalExternalBinding &, FieldObjectId,
+                    std::string &);
+  bool source_begin_ready(const FieldGlobalExternalBinding &, FieldObjectId,
+                          std::string &);
+  bool source_finish_ready(const FieldGlobalExternalBinding &, FieldObjectId,
+                           std::string &);
+  bool source_exit(const FieldGlobalExternalBinding &, FieldObjectId,
+                   std::string &);
+  bool source_state(FieldGlobalExternalState &, std::string &) const;
+  bool read_global_member(std::string_view, FieldGlobalDataMemberState &,
+                          std::string &) const;
+  bool read_constructed_member(FieldObjectId, std::string_view,
+                               FieldGlobalDataMemberState &,
+                               std::string &) const;
+  bool write_global_scalar(std::string_view, const GlobalYamlValue &,
+                           std::string &);
+  bool menu_flavor(std::string &, std::string &) const;
+  bool constructed_body_alive(FieldObjectId) const;
+  bool constructor_source_hash(std::string_view,
+                               std::array<uint8_t, 32> &) const;
 
 private:
+  const GlobalDataConstructorData *constructor_data_ = nullptr;
+  std::array<uint8_t, 32> constructor_ir_{}, cache_ir_{}, flags_ir_{};
+  FieldGlobalExternalSpec source_spec_;
+  FieldObjectId source_parent_ = 0;
+  bool constructor_closed_ = false, source_inside_ = false,
+       source_ready_ = false;
+  bool source_ready_started_ = false, source_ready_first_ = true;
+  std::vector<FieldGlobalDataMemberState> members_;
+  std::vector<std::shared_ptr<FieldGlobalNativeReference>>
+      inventory_references_;
+  const FieldGlobalFlagsData *constructor_flags_data_ = nullptr;
+  FieldGlobalFlagsRuntime *constructor_flags_ = nullptr;
+  const GlobalYamlCachesData *constructor_cache_data_ = nullptr;
+  GlobalYamlCachesRuntime *constructor_caches_ = nullptr;
+  const GlobalPackedDirectoryHost *constructor_directories_ = nullptr;
+  GlobalItemCache *constructor_items_ = nullptr;
+  bool constructor_available(std::string &) const;
+  bool source_binding(const FieldGlobalExternalBinding &, std::string &) const;
+  bool publish_inventory_body(FieldObjectId, std::string &);
   const FieldGlobalDataData *data_ = nullptr;
   FieldGlobalRegistry *registry_ = nullptr;
   std::array<uint8_t, 32> admitted_ir_{};
@@ -162,9 +231,9 @@ private:
   std::vector<FieldGlobalDataObject> objects_;
   std::vector<FieldGlobalDataItemReference> items_;
   FieldInventoryState state_;
-  bool god_storage_complete_=false;
-  FieldObjectId god_storage_object_=0;
+  bool god_storage_complete_ = false;
+  FieldObjectId god_storage_object_ = 0;
   std::string god_storage_member_;
-  std::vector<FieldGlobalDataItemReference>god_items_;
+  std::vector<FieldGlobalDataItemReference> god_items_;
 };
 } // namespace encore::upstream

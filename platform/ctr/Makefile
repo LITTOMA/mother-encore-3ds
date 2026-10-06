@@ -43,6 +43,7 @@ SOURCES += runtime/global_item_cache.cpp
 SOURCES += runtime/global_yaml_caches.cpp runtime/global_yaml_caches_data.cpp
 SOURCES += runtime/global_packed_directory.cpp runtime/global_packed_directory_data.cpp
 SOURCES += runtime/global_yaml_file.cpp runtime/global_yaml_file_data.cpp
+SOURCES += runtime/global_data_constructor.cpp runtime/global_data_constructor_data.cpp platform/ctr/podunk_global_data_singleton.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

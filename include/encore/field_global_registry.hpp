@@ -74,6 +74,17 @@ public:
  virtual const char*resource_class()const=0;
 };
 class FieldGlobalRegistry;
+// A real source Object, separately owned from Node and Reference lifetimes.
+// Its adapter reads the same allocated source body; it never supplies Ready.
+class FieldGlobalNativeObject {
+public:
+ virtual ~FieldGlobalNativeObject()=default;
+ virtual FieldGlobalExternalBinding binding()const=0;
+ virtual const char*native_class()const=0;
+ virtual const FieldGlobalRegistry*registry()const=0;
+ virtual bool checked_source_hash(std::string_view,std::array<uint8_t,32>&)const=0;
+ virtual bool alive()const=0;
+};
 // Native Reference lifetime is owned by source Ref holders, not the ObjectDB.
 // This is independent of Node lifecycle and Resource loading.
 class FieldGlobalNativeReference {
@@ -89,6 +100,7 @@ struct FieldGlobalRegistryHost {
 };
 class FieldGlobalRegistry {
 public:
+ ~FieldGlobalRegistry();
  using NodeDispatch=std::function<bool(const FieldDeferredMessage&,std::string&)>;
  bool initialize(const FieldGlobalRegistryData&,FieldGlobalRegistryHost,std::string&);
  bool allocate_object(FieldObjectId&,std::string&);
@@ -103,6 +115,8 @@ public:
  // by this same registry. No hash IDs or copied metadata proxy nodes.
  bool publish_source_resource(const FieldGlobalExternalSpec&,FieldObjectId,std::unique_ptr<FieldGlobalSourceResource>,std::string&);
  const FieldGlobalSourceResource*source_resource(FieldObjectId)const;
+ bool publish_native_object(const FieldGlobalExternalSpec&,FieldObjectId,
+                            std::unique_ptr<FieldGlobalNativeObject>,std::string&);
  bool publish_native_reference(const FieldGlobalExternalSpec&,FieldObjectId,
                                const std::shared_ptr<FieldGlobalNativeReference>&,std::string&);
  std::shared_ptr<const FieldGlobalNativeReference>native_reference(FieldObjectId)const;
@@ -141,6 +155,7 @@ private:
  struct Object {
   std::shared_ptr<FieldNodeTreeRuntime>tree;NodeDispatch dispatch;
   std::unique_ptr<FieldGlobalExternalObject>external;
+  std::unique_ptr<FieldGlobalNativeObject>native;
   const FieldGlobalSourceResource*resource=nullptr;
   std::weak_ptr<FieldGlobalNativeReference>reference;
   bool reference_published=false;

@@ -102,6 +102,8 @@ public:
   bool drive(std::string &);
   bool complete() const;
   bool poisoned() const { return poisoned_; }
+  const GlobalPackedDirectoryData *data() const { return data_; }
+  const GlobalYamlCachesRuntime *cache_runtime() const { return caches_; }
   GlobalPackedDirectoryCursor cursor() const;
 
 private:

@@ -1,0 +1,683 @@
+{
+  "schema": 1,
+  "engine": {
+    "major": 3,
+    "minor": 6,
+    "patch": 2,
+    "hex": 198146,
+    "status": "stable",
+    "build": "official",
+    "year": 2025,
+    "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+    "string": "3.6.2-stable (official)"
+  },
+  "source_scene_entered": false,
+  "original_constructor_entered": false,
+  "pure_sha256": "3c8fc4f02e39b1bdde28125e4f67d978d1c256650559af05ba16c6d2675fc66f",
+  "values": [
+    [
+      "BtnStyles",
+      {
+        "kind": 6,
+        "entries": [
+          [
+            "NINTENDO",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "PLAYSTATION",
+            {
+              "kind": 2,
+              "value": "1"
+            }
+          ],
+          [
+            "XBOX",
+            {
+              "kind": 2,
+              "value": "2"
+            }
+          ],
+          [
+            "DETECT",
+            {
+              "kind": 2,
+              "value": "3"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "KEYBOARD",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "GAMEPAD",
+      {
+        "kind": 2,
+        "value": "1"
+      }
+    ],
+    [
+      "SKILL_GUARD",
+      {
+        "kind": 4,
+        "value": "guard"
+      }
+    ],
+    [
+      "SKILL_BASH",
+      {
+        "kind": 4,
+        "value": "bash"
+      }
+    ],
+    [
+      "SKILL_ATTACK",
+      {
+        "kind": 4,
+        "value": "attack"
+      }
+    ],
+    [
+      "SKILL_SPY",
+      {
+        "kind": 4,
+        "value": "spy"
+      }
+    ],
+    [
+      "SKILL_TELEPATHY",
+      {
+        "kind": 4,
+        "value": "telepathy"
+      }
+    ],
+    [
+      "SKILL_TELEPORT_A",
+      {
+        "kind": 4,
+        "value": "teleportA"
+      }
+    ],
+    [
+      "ALLOWED_KEYS",
+      {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 2,
+            "value": "16777232"
+          },
+          {
+            "kind": 2,
+            "value": "16777234"
+          },
+          {
+            "kind": 2,
+            "value": "16777231"
+          },
+          {
+            "kind": 2,
+            "value": "16777233"
+          },
+          {
+            "kind": 2,
+            "value": "16777345"
+          },
+          {
+            "kind": 2,
+            "value": "16777346"
+          },
+          {
+            "kind": 2,
+            "value": "16777347"
+          },
+          {
+            "kind": 2,
+            "value": "16777348"
+          },
+          {
+            "kind": 2,
+            "value": "16777349"
+          },
+          {
+            "kind": 2,
+            "value": "16777350"
+          },
+          {
+            "kind": 2,
+            "value": "16777351"
+          },
+          {
+            "kind": 2,
+            "value": "16777352"
+          },
+          {
+            "kind": 2,
+            "value": "16777353"
+          },
+          {
+            "kind": 2,
+            "value": "16777354"
+          },
+          {
+            "kind": 2,
+            "value": "16777355"
+          },
+          {
+            "kind": 2,
+            "value": "16777356"
+          },
+          {
+            "kind": 2,
+            "value": "16777357"
+          },
+          {
+            "kind": 2,
+            "value": "16777358"
+          },
+          {
+            "kind": 2,
+            "value": "16777359"
+          },
+          {
+            "kind": 2,
+            "value": "32"
+          },
+          {
+            "kind": 2,
+            "value": "16777217"
+          },
+          {
+            "kind": 2,
+            "value": "16777218"
+          },
+          {
+            "kind": 2,
+            "value": "16777220"
+          },
+          {
+            "kind": 2,
+            "value": "16777221"
+          },
+          {
+            "kind": 2,
+            "value": "16777223"
+          },
+          {
+            "kind": 2,
+            "value": "16777224"
+          },
+          {
+            "kind": 2,
+            "value": "16777225"
+          },
+          {
+            "kind": 2,
+            "value": "16777229"
+          },
+          {
+            "kind": 2,
+            "value": "16777230"
+          },
+          {
+            "kind": 2,
+            "value": "16777235"
+          },
+          {
+            "kind": 2,
+            "value": "16777236"
+          },
+          {
+            "kind": 2,
+            "value": "16777237"
+          },
+          {
+            "kind": 2,
+            "value": "16777238"
+          },
+          {
+            "kind": 2,
+            "value": "16777239"
+          },
+          {
+            "kind": 2,
+            "value": "16777240"
+          },
+          {
+            "kind": 2,
+            "value": "16777260"
+          },
+          {
+            "kind": 2,
+            "value": "16777261"
+          },
+          {
+            "kind": 2,
+            "value": "16777262"
+          },
+          {
+            "kind": 2,
+            "value": "16777244"
+          },
+          {
+            "kind": 2,
+            "value": "16777245"
+          },
+          {
+            "kind": 2,
+            "value": "16777246"
+          },
+          {
+            "kind": 2,
+            "value": "16777247"
+          },
+          {
+            "kind": 2,
+            "value": "16777248"
+          },
+          {
+            "kind": 2,
+            "value": "16777249"
+          },
+          {
+            "kind": 2,
+            "value": "16777250"
+          },
+          {
+            "kind": 2,
+            "value": "16777251"
+          },
+          {
+            "kind": 2,
+            "value": "16777252"
+          },
+          {
+            "kind": 2,
+            "value": "16777253"
+          },
+          {
+            "kind": 2,
+            "value": "16777254"
+          },
+          {
+            "kind": 2,
+            "value": "16777255"
+          },
+          {
+            "kind": 2,
+            "value": "16777256"
+          },
+          {
+            "kind": 2,
+            "value": "16777257"
+          },
+          {
+            "kind": 2,
+            "value": "16777258"
+          },
+          {
+            "kind": 2,
+            "value": "16777259"
+          }
+        ]
+      }
+    ],
+    [
+      "TEXT_SPEEDS",
+      {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 3,
+            "f64_le": "7b14ae47e17a943f"
+          },
+          {
+            "kind": 3,
+            "f64_le": "79e9263108ac9c3f"
+          },
+          {
+            "kind": 3,
+            "f64_le": "ec51b81e85eba13f"
+          }
+        ]
+      }
+    ],
+    [
+      "TEXT_SPEEDS_NAMES",
+      {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 4,
+            "value": "FAST"
+          },
+          {
+            "kind": 4,
+            "value": "MEDIUM"
+          },
+          {
+            "kind": 4,
+            "value": "SLOW"
+          }
+        ]
+      }
+    ],
+    [
+      "BUTTON_PROMPTS",
+      {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 4,
+            "value": "Both"
+          },
+          {
+            "kind": 4,
+            "value": "Objects"
+          },
+          {
+            "kind": 4,
+            "value": "NPCs"
+          },
+          {
+            "kind": 4,
+            "value": "None"
+          }
+        ]
+      }
+    ],
+    [
+      "FLAVORS",
+      {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 4,
+            "value": "Plain"
+          },
+          {
+            "kind": 4,
+            "value": "Mint"
+          },
+          {
+            "kind": 4,
+            "value": "Strawberry"
+          },
+          {
+            "kind": 4,
+            "value": "Banana"
+          },
+          {
+            "kind": 4,
+            "value": "Peanut"
+          },
+          {
+            "kind": 4,
+            "value": "Grape"
+          },
+          {
+            "kind": 4,
+            "value": "Melon"
+          }
+        ]
+      }
+    ],
+    [
+      "LANG_ALT",
+      {
+        "kind": 4,
+        "value": "upupdodolerilericaac"
+      }
+    ],
+    [
+      "save_file",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "playtime",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "win_size",
+      {
+        "kind": 2,
+        "value": "3"
+      }
+    ],
+    [
+      "master_volume",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "music_volume",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "sfx_volume",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "earned_cash",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "cash",
+      {
+        "kind": 2,
+        "value": "10000"
+      }
+    ],
+    [
+      "bank",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "respawn_point",
+      {
+        "kind": 7,
+        "coordinates": [
+          "0000000000000000",
+          "0000000000000000"
+        ]
+      }
+    ],
+    [
+      "respawn_run_sound",
+      {
+        "kind": 4,
+        "value": "wood"
+      }
+    ],
+    [
+      "respawn_shadow_effect",
+      {
+        "kind": 4,
+        "value": "shadow"
+      }
+    ],
+    [
+      "respawn_scene",
+      {
+        "kind": 4,
+        "value": ""
+      }
+    ],
+    [
+      "description",
+      {
+        "kind": 1,
+        "value": true
+      }
+    ],
+    [
+      "rumble",
+      {
+        "kind": 1,
+        "value": true
+      }
+    ],
+    [
+      "favorite_food",
+      {
+        "kind": 4,
+        "value": "Oreos"
+      }
+    ],
+    [
+      "menu_flavor",
+      {
+        "kind": 4,
+        "value": "Plain"
+      }
+    ],
+    [
+      "text_speed",
+      {
+        "kind": 3,
+        "f64_le": "7b14ae47e17a943f"
+      }
+    ],
+    [
+      "button_prompts",
+      {
+        "kind": 4,
+        "value": "Both"
+      }
+    ],
+    [
+      "player_name",
+      {
+        "kind": 4,
+        "value": ""
+      }
+    ],
+    [
+      "rare_drops",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "buttons_style",
+      {
+        "kind": 2,
+        "value": "3"
+      }
+    ],
+    [
+      "encountered",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "device",
+      {
+        "kind": 2,
+        "value": "0"
+      }
+    ],
+    [
+      "_battle_skills",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "_field_skills",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "_passive_skills",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "_items",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "_status_ailments",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "_shop_lists",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "keys",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "object_flags",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "seen_dialogue_flags",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ],
+    [
+      "flags",
+      {
+        "kind": 6,
+        "entries": []
+      }
+    ]
+  ]
+}

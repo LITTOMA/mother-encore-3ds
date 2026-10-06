@@ -1,0 +1,2116 @@
+{
+  "schema": 1,
+  "kind": "encore.global-data-constructor.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "family": 1162739795,
+  "owner": "Scripts/global/globalData.gd",
+  "source_sha256": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+  "scene_id": 937399213,
+  "sources": {
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/PartyNPC.gd": "36b19f7fe73d01097371d788587685ea1ea1869dc0fa7014a97da7e79d25b925",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b"
+  },
+  "declarations": [
+    {
+      "name": "BtnStyles",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "BtnStyles",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": [
+          [
+            "NINTENDO",
+            {
+              "kind": 2,
+              "value": "0"
+            }
+          ],
+          [
+            "PLAYSTATION",
+            {
+              "kind": 2,
+              "value": "1"
+            }
+          ],
+          [
+            "XBOX",
+            {
+              "kind": 2,
+              "value": "2"
+            }
+          ],
+          [
+            "DETECT",
+            {
+              "kind": 2,
+              "value": "3"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "name": "KEYBOARD",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "KEYBOARD",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "GAMEPAD",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "GAMEPAD",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "1"
+      }
+    },
+    {
+      "name": "SKILL_GUARD",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "\"guard\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "guard"
+      }
+    },
+    {
+      "name": "SKILL_BASH",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "\"bash\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "bash"
+      }
+    },
+    {
+      "name": "SKILL_ATTACK",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "\"attack\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "attack"
+      }
+    },
+    {
+      "name": "SKILL_SPY",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "\"spy\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "spy"
+      }
+    },
+    {
+      "name": "SKILL_TELEPATHY",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "\"telepathy\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "telepathy"
+      }
+    },
+    {
+      "name": "SKILL_TELEPORT_A",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "\"teleportA\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "teleportA"
+      }
+    },
+    {
+      "name": "ALLOWED_KEYS",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "[KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_KP_MULTIPLY, KEY_KP_DIVIDE, KEY_KP_SUBTRACT, KEY_KP_PERIOD, KEY_KP_ADD, KEY_KP_0, KEY_KP_1, KEY_KP_2, KEY_KP_3, KEY_KP_4, KEY_KP_5, KEY_KP_6, KEY_KP_7, KEY_KP_8, KEY_KP_9, KEY_SPACE, KEY_ESCAPE, KEY_TAB, KEY_BACKSPACE, KEY_ENTER, KEY_INSERT, KEY_DELETE, KEY_PAUSE, KEY_HOME, KEY_END, KEY_PAGEUP, KEY_PAGEDOWN, KEY_SHIFT, KEY_CONTROL, KEY_META, KEY_ALT, KEY_SUPER_L, KEY_SUPER_R, KEY_MENU, KEY_F1, KEY_F2, KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12, KEY_F13, KEY_F14, KEY_F15, KEY_F16]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 5,
+      "value": {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 2,
+            "value": "16777232"
+          },
+          {
+            "kind": 2,
+            "value": "16777234"
+          },
+          {
+            "kind": 2,
+            "value": "16777231"
+          },
+          {
+            "kind": 2,
+            "value": "16777233"
+          },
+          {
+            "kind": 2,
+            "value": "16777345"
+          },
+          {
+            "kind": 2,
+            "value": "16777346"
+          },
+          {
+            "kind": 2,
+            "value": "16777347"
+          },
+          {
+            "kind": 2,
+            "value": "16777348"
+          },
+          {
+            "kind": 2,
+            "value": "16777349"
+          },
+          {
+            "kind": 2,
+            "value": "16777350"
+          },
+          {
+            "kind": 2,
+            "value": "16777351"
+          },
+          {
+            "kind": 2,
+            "value": "16777352"
+          },
+          {
+            "kind": 2,
+            "value": "16777353"
+          },
+          {
+            "kind": 2,
+            "value": "16777354"
+          },
+          {
+            "kind": 2,
+            "value": "16777355"
+          },
+          {
+            "kind": 2,
+            "value": "16777356"
+          },
+          {
+            "kind": 2,
+            "value": "16777357"
+          },
+          {
+            "kind": 2,
+            "value": "16777358"
+          },
+          {
+            "kind": 2,
+            "value": "16777359"
+          },
+          {
+            "kind": 2,
+            "value": "32"
+          },
+          {
+            "kind": 2,
+            "value": "16777217"
+          },
+          {
+            "kind": 2,
+            "value": "16777218"
+          },
+          {
+            "kind": 2,
+            "value": "16777220"
+          },
+          {
+            "kind": 2,
+            "value": "16777221"
+          },
+          {
+            "kind": 2,
+            "value": "16777223"
+          },
+          {
+            "kind": 2,
+            "value": "16777224"
+          },
+          {
+            "kind": 2,
+            "value": "16777225"
+          },
+          {
+            "kind": 2,
+            "value": "16777229"
+          },
+          {
+            "kind": 2,
+            "value": "16777230"
+          },
+          {
+            "kind": 2,
+            "value": "16777235"
+          },
+          {
+            "kind": 2,
+            "value": "16777236"
+          },
+          {
+            "kind": 2,
+            "value": "16777237"
+          },
+          {
+            "kind": 2,
+            "value": "16777238"
+          },
+          {
+            "kind": 2,
+            "value": "16777239"
+          },
+          {
+            "kind": 2,
+            "value": "16777240"
+          },
+          {
+            "kind": 2,
+            "value": "16777260"
+          },
+          {
+            "kind": 2,
+            "value": "16777261"
+          },
+          {
+            "kind": 2,
+            "value": "16777262"
+          },
+          {
+            "kind": 2,
+            "value": "16777244"
+          },
+          {
+            "kind": 2,
+            "value": "16777245"
+          },
+          {
+            "kind": 2,
+            "value": "16777246"
+          },
+          {
+            "kind": 2,
+            "value": "16777247"
+          },
+          {
+            "kind": 2,
+            "value": "16777248"
+          },
+          {
+            "kind": 2,
+            "value": "16777249"
+          },
+          {
+            "kind": 2,
+            "value": "16777250"
+          },
+          {
+            "kind": 2,
+            "value": "16777251"
+          },
+          {
+            "kind": 2,
+            "value": "16777252"
+          },
+          {
+            "kind": 2,
+            "value": "16777253"
+          },
+          {
+            "kind": 2,
+            "value": "16777254"
+          },
+          {
+            "kind": 2,
+            "value": "16777255"
+          },
+          {
+            "kind": 2,
+            "value": "16777256"
+          },
+          {
+            "kind": 2,
+            "value": "16777257"
+          },
+          {
+            "kind": 2,
+            "value": "16777258"
+          },
+          {
+            "kind": 2,
+            "value": "16777259"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TEXT_SPEEDS",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "[0.02, 0.028, 0.035]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 5,
+      "value": {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 3,
+            "f64_le": "7b14ae47e17a943f"
+          },
+          {
+            "kind": 3,
+            "f64_le": "79e9263108ac9c3f"
+          },
+          {
+            "kind": 3,
+            "f64_le": "ec51b81e85eba13f"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TEXT_SPEEDS_NAMES",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "[\"FAST\", \"MEDIUM\", \"SLOW\"]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 5,
+      "value": {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 4,
+            "value": "FAST"
+          },
+          {
+            "kind": 4,
+            "value": "MEDIUM"
+          },
+          {
+            "kind": 4,
+            "value": "SLOW"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BUTTON_PROMPTS",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "[\"Both\", \"Objects\", \"NPCs\", \"None\"]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 5,
+      "value": {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 4,
+            "value": "Both"
+          },
+          {
+            "kind": 4,
+            "value": "Objects"
+          },
+          {
+            "kind": 4,
+            "value": "NPCs"
+          },
+          {
+            "kind": 4,
+            "value": "None"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FLAVORS",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "[\"Plain\", \"Mint\", \"Strawberry\", \"Banana\", \"Peanut\", \"Grape\", \"Melon\"]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 5,
+      "value": {
+        "kind": 5,
+        "values": [
+          {
+            "kind": 4,
+            "value": "Plain"
+          },
+          {
+            "kind": 4,
+            "value": "Mint"
+          },
+          {
+            "kind": 4,
+            "value": "Strawberry"
+          },
+          {
+            "kind": 4,
+            "value": "Banana"
+          },
+          {
+            "kind": 4,
+            "value": "Peanut"
+          },
+          {
+            "kind": 4,
+            "value": "Grape"
+          },
+          {
+            "kind": 4,
+            "value": "Melon"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LANG_ALT",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "\"upupdodolerilericaac\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "upupdodolerilericaac"
+      }
+    },
+    {
+      "name": "save_file",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "0",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "playtime",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "0",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "win_size",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "3",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "3"
+      }
+    },
+    {
+      "name": "master_volume",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "0",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "music_volume",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "0",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "sfx_volume",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "0",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "earned_cash",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "0",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "cash",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "10000",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "10000"
+      }
+    },
+    {
+      "name": "bank",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "0",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "respawn_point",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "Vector2.ZERO",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 7,
+      "vector": [
+        "0000000000000000",
+        "0000000000000000"
+      ]
+    },
+    {
+      "name": "respawn_run_sound",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "\"wood\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "wood"
+      }
+    },
+    {
+      "name": "respawn_shadow_effect",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "\"shadow\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "shadow"
+      }
+    },
+    {
+      "name": "respawn_scene",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "\"\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": ""
+      }
+    },
+    {
+      "name": "description",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "true",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 1,
+      "value": {
+        "kind": 1,
+        "value": true
+      }
+    },
+    {
+      "name": "rumble",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "true",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 1,
+      "value": {
+        "kind": 1,
+        "value": true
+      }
+    },
+    {
+      "name": "favorite_food",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "\"Oreos\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "Oreos"
+      }
+    },
+    {
+      "name": "menu_flavor",
+      "type_hint": "String",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "FLAVORS[0]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "Plain"
+      }
+    },
+    {
+      "name": "text_speed",
+      "type_hint": "float",
+      "setter": "_set_text_speed",
+      "getter": "_get_text_speed",
+      "constant": false,
+      "expression": "TEXT_SPEEDS[0]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 3,
+      "value": {
+        "kind": 3,
+        "f64_le": "7b14ae47e17a943f"
+      }
+    },
+    {
+      "name": "button_prompts",
+      "type_hint": "String",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "BUTTON_PROMPTS[0]",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": "Both"
+      }
+    },
+    {
+      "name": "player_name",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "\"\"",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 4,
+      "value": {
+        "kind": 4,
+        "value": ""
+      }
+    },
+    {
+      "name": "rare_drops",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "{}",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "buttons_style",
+      "type_hint": "int",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "BtnStyles.DETECT",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "3"
+      }
+    },
+    {
+      "name": "encountered",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "{}",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "device",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "KEYBOARD",
+      "adapter": 0,
+      "owner_role": 0,
+      "kind": 2,
+      "value": {
+        "kind": 2,
+        "value": "0"
+      }
+    },
+    {
+      "name": "characters",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "@characters",
+      "adapter": 1,
+      "owner_role": 0,
+      "kind": 9,
+      "references": [
+        [
+          "ninten",
+          2199921697
+        ],
+        [
+          "ana",
+          2945149221
+        ],
+        [
+          "lloyd",
+          2962709063
+        ],
+        [
+          "teddy",
+          2506104336
+        ],
+        [
+          "pippi",
+          2753520836
+        ],
+        [
+          "canarychick",
+          2967978339
+        ],
+        [
+          "flyingman",
+          3406660883
+        ],
+        [
+          "eve",
+          1855627552
+        ]
+      ]
+    },
+    {
+      "name": "key_items",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "Inventory.new(Inventory.InvType.KEY)",
+      "adapter": 2,
+      "owner_role": 0,
+      "kind": 8,
+      "reference_id": 3775113632
+    },
+    {
+      "name": "storage",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "Inventory.new(Inventory.InvType.STORAGE)",
+      "adapter": 2,
+      "owner_role": 0,
+      "kind": 8,
+      "reference_id": 2403163011
+    },
+    {
+      "name": "god_storage",
+      "type_hint": "Inventory",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "null",
+      "adapter": 3,
+      "owner_role": 0,
+      "kind": 0,
+      "value": {
+        "kind": 0
+      }
+    },
+    {
+      "name": "_battle_skills",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "{}",
+      "adapter": 4,
+      "owner_role": 0,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "_field_skills",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "{}",
+      "adapter": 4,
+      "owner_role": 1,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "_passive_skills",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "{}",
+      "adapter": 4,
+      "owner_role": 2,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "_items",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "{}",
+      "adapter": 4,
+      "owner_role": 4,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "_status_ailments",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "{}",
+      "adapter": 4,
+      "owner_role": 5,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "_shop_lists",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": true,
+      "expression": "{}",
+      "adapter": 4,
+      "owner_role": 3,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "keys",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "{}",
+      "adapter": 6,
+      "owner_role": 0,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "object_flags",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "{}",
+      "adapter": 5,
+      "owner_role": 1,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "seen_dialogue_flags",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "{}",
+      "adapter": 5,
+      "owner_role": 2,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    },
+    {
+      "name": "flags",
+      "type_hint": "",
+      "setter": "",
+      "getter": "",
+      "constant": false,
+      "expression": "{}",
+      "adapter": 5,
+      "owner_role": 0,
+      "kind": 6,
+      "value": {
+        "kind": 6,
+        "entries": []
+      }
+    }
+  ],
+  "objects": [
+    {
+      "id": 2199921697,
+      "kind": 1,
+      "role": 0,
+      "name": "ninten",
+      "native": "Object",
+      "script": "Scripts/global/PartyMember.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_nickname",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_learned_skills",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_inventory",
+          "kind": 5,
+          "value": ""
+        },
+        {
+          "name": "_permanent_boosts",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "inv",
+          "kind": 5,
+          "value": ""
+        }
+      ],
+      "getters": [
+        [
+          "inv",
+          "get_inventory"
+        ]
+      ]
+    },
+    {
+      "id": 2945149221,
+      "kind": 1,
+      "role": 0,
+      "name": "ana",
+      "native": "Object",
+      "script": "Scripts/global/PartyMember.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_nickname",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_learned_skills",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_inventory",
+          "kind": 5,
+          "value": ""
+        },
+        {
+          "name": "_permanent_boosts",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "inv",
+          "kind": 5,
+          "value": ""
+        }
+      ],
+      "getters": [
+        [
+          "inv",
+          "get_inventory"
+        ]
+      ]
+    },
+    {
+      "id": 2962709063,
+      "kind": 1,
+      "role": 0,
+      "name": "lloyd",
+      "native": "Object",
+      "script": "Scripts/global/PartyMember.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_nickname",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_learned_skills",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_inventory",
+          "kind": 5,
+          "value": ""
+        },
+        {
+          "name": "_permanent_boosts",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "inv",
+          "kind": 5,
+          "value": ""
+        }
+      ],
+      "getters": [
+        [
+          "inv",
+          "get_inventory"
+        ]
+      ]
+    },
+    {
+      "id": 2506104336,
+      "kind": 1,
+      "role": 0,
+      "name": "teddy",
+      "native": "Object",
+      "script": "Scripts/global/PartyMember.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_nickname",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_learned_skills",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_inventory",
+          "kind": 5,
+          "value": ""
+        },
+        {
+          "name": "_permanent_boosts",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "inv",
+          "kind": 5,
+          "value": ""
+        }
+      ],
+      "getters": [
+        [
+          "inv",
+          "get_inventory"
+        ]
+      ]
+    },
+    {
+      "id": 2753520836,
+      "kind": 1,
+      "role": 0,
+      "name": "pippi",
+      "native": "Object",
+      "script": "Scripts/global/PartyMember.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_nickname",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_learned_skills",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_inventory",
+          "kind": 5,
+          "value": ""
+        },
+        {
+          "name": "_permanent_boosts",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "inv",
+          "kind": 5,
+          "value": ""
+        }
+      ],
+      "getters": [
+        [
+          "inv",
+          "get_inventory"
+        ]
+      ]
+    },
+    {
+      "id": 2967978339,
+      "kind": 1,
+      "role": 1,
+      "name": "canarychick",
+      "native": "Object",
+      "script": "Scripts/global/PartyNPC.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_untargetable",
+          "kind": 6,
+          "value": 0
+        },
+        {
+          "name": "_skills",
+          "kind": 3,
+          "value": ""
+        }
+      ],
+      "getters": []
+    },
+    {
+      "id": 3406660883,
+      "kind": 1,
+      "role": 1,
+      "name": "flyingman",
+      "native": "Object",
+      "script": "Scripts/global/PartyNPC.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_untargetable",
+          "kind": 6,
+          "value": 0
+        },
+        {
+          "name": "_skills",
+          "kind": 3,
+          "value": ""
+        }
+      ],
+      "getters": []
+    },
+    {
+      "id": 1855627552,
+      "kind": 1,
+      "role": 1,
+      "name": "eve",
+      "native": "Object",
+      "script": "Scripts/global/PartyNPC.gd",
+      "fields": [
+        {
+          "name": "_name",
+          "kind": 1,
+          "value": ""
+        },
+        {
+          "name": "_level",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_exp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_status",
+          "kind": 3,
+          "value": ""
+        },
+        {
+          "name": "_hp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxhp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_pp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_maxpp",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_offense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_defense",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_speed",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_iq",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_guts",
+          "kind": 2,
+          "value": 0
+        },
+        {
+          "name": "_affinity_multipliers",
+          "kind": 4,
+          "value": ""
+        },
+        {
+          "name": "_untargetable",
+          "kind": 6,
+          "value": 0
+        },
+        {
+          "name": "_skills",
+          "kind": 3,
+          "value": ""
+        }
+      ],
+      "getters": []
+    },
+    {
+      "id": 3775113632,
+      "kind": 2,
+      "role": 1,
+      "name": "key_items",
+      "native": "Reference",
+      "script": "Scripts/global/Inventory.gd",
+      "getters": [],
+      "fields": [
+        {
+          "name": "_type",
+          "kind": 2,
+          "value": 1
+        },
+        {
+          "name": "_items",
+          "kind": 3,
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": 2403163011,
+      "kind": 2,
+      "role": 2,
+      "name": "storage",
+      "native": "Reference",
+      "script": "Scripts/global/Inventory.gd",
+      "getters": [],
+      "fields": [
+        {
+          "name": "_type",
+          "kind": 2,
+          "value": 2
+        },
+        {
+          "name": "_items",
+          "kind": 3,
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "constructor_steps": [
+    {
+      "kind": 1,
+      "role": 0,
+      "method": "_init_flags",
+      "member": "",
+      "argument": ""
+    },
+    {
+      "kind": 2,
+      "role": 0,
+      "method": "_load_data",
+      "member": "_battle_skills",
+      "argument": "res://Data/BattleSkills/"
+    },
+    {
+      "kind": 2,
+      "role": 1,
+      "method": "_load_data",
+      "member": "_field_skills",
+      "argument": "res://Data/FieldSkills/"
+    },
+    {
+      "kind": 2,
+      "role": 2,
+      "method": "_load_data",
+      "member": "_passive_skills",
+      "argument": "res://Data/PassiveSkills/"
+    },
+    {
+      "kind": 2,
+      "role": 3,
+      "method": "_load_data",
+      "member": "_shop_lists",
+      "argument": "res://Data/Shops/"
+    },
+    {
+      "kind": 2,
+      "role": 4,
+      "method": "_load_data",
+      "member": "_items",
+      "argument": "res://Data/Items/"
+    },
+    {
+      "kind": 2,
+      "role": 5,
+      "method": "_load_data",
+      "member": "_status_ailments",
+      "argument": "res://Data/StatusAilments/"
+    }
+  ],
+  "ready_steps": [
+    {
+      "kind": 3,
+      "role": 3,
+      "method": "_init_god_storage",
+      "member": "god_storage",
+      "argument": ""
+    }
+  ],
+  "text_speed": {
+    "member": "text_speed",
+    "constant_name": "TEXT_SPEEDS",
+    "setter": "_set_text_speed",
+    "getter": "_get_text_speed",
+    "threshold": 0.0,
+    "fallback_divisor": 2,
+    "closest_initial": 0.0,
+    "delta_initial": 1.0,
+    "comparison": 1,
+    "speeds": [
+      "7b14ae47e17a943f",
+      "79e9263108ac9c3f",
+      "ec51b81e85eba13f"
+    ]
+  },
+  "menu_flavor_member": "menu_flavor",
+  "legacy_ir_sha256": "cd0cd6114b028322e0c6f4c6a6f90edebcc9e13144a10f26427e4ff0bf6d641b",
+  "cache_ir_sha256": "52e8901e881e59db64f3a2690141f6a05dd0634c7c31cb32983cb14d93bb3106",
+  "engine_review_sha256": "99220096efebf992f6deb8d77eb2a49c3ae167cf908602b1699f88554b64c1bd",
+  "native_receipt_sha256": "ada2a73dd2b70a08403f5b59055d33d04b993ebacdf70060a8cd818bd84db16a",
+  "source_functions": [
+    "PartyMember.new({}) skips conditional initializer",
+    "PartyNPC.new({}, {}) calls both empty guarded initializers",
+    "Inventory.new(KEY/STORAGE,[]) sets type only",
+    "_init_flags then actual six Directory loops, closure owner required",
+    "_ready creates actual STORAGE_GOD Inventory after complete Items cache"
+  ],
+  "gameplay_methods_admitted": false
+}

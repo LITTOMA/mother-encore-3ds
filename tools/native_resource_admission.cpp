@@ -4,6 +4,7 @@
 #include "encore/field_item_definitions.hpp"
 #include "encore/global_yaml_caches.hpp"
 #include "encore/global_yaml_file.hpp"
+#include "encore/global_data_constructor.hpp"
 #include <limits>
 #include <iostream>
 
@@ -32,10 +33,11 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
-  if(argc==15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
+  if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
+  if(argc==18 && std::string(argv[15])!="--global-constructor") return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -99,7 +101,7 @@ int main(int argc, char **argv) {
         std::cerr<<"Global cache/Items independent source entry differs\n";return 1;
       }
     }
-    if(argc==15) {
+    if(argc>=15) {
       GlobalPackedDirectoryData directory;
       GlobalYamlFileData files;
       if(!directory.load_file(argv[12],caches,registry,error)||
@@ -109,6 +111,17 @@ int main(int argc, char **argv) {
       std::cout<<"Global source Directory/File formats admitted: "
                <<directory.files().size()<<" PCK files / "<<directory.directories().size()
                <<" directories / "<<files.records().size()<<" YAML documents\n";
+    }
+    if(argc==18) {
+      FieldGlobalDataData members;
+      GlobalDataConstructorData constructor;
+      if(!members.load_file(argv[17],identity,error)||
+         !constructor.load_file(argv[16],members,caches,error)) {
+        std::cerr<<"Global complete constructor format: "<<error<<'\n';return 1;
+      }
+      std::cout<<"Global complete constructor format admitted: "
+               <<constructor.declarations().size()<<" declarations / "
+               <<constructor.objects().size()<<" owned member objects\n";
     }
     std::cout<<"Global YAML source formats admitted: "<<caches.records().size()
              <<" source records / "<<caches.getters().size()<<" getters\n";

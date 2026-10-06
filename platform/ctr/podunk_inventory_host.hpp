@@ -12,15 +12,28 @@ namespace encore::ctr {
 // The source inventory and global.item keep the same object alive. Its handle
 // comes from the process ObjectDB allocator; UID zero remains a valid item.
 class PodunkInventoryHost;
-struct PodunkItemObject {
+struct PodunkItemObject final : upstream::FieldGlobalNativeReference {
 private:
   friend class PodunkInventoryHost;
   upstream::FieldGlobalRegistry *allocator_ = nullptr;
   upstream::FieldObjectId allocated_ = 0;
+  const upstream::FieldItemDefinitions *source_definitions_ = nullptr;
+  upstream::FieldGlobalExternalBinding source_binding_{};
+  std::array<uint8_t,32> source_proof_{};
   bool constructing_=false;
   int32_t constructor_doses_=0;
 
 public:
+  upstream::FieldGlobalExternalBinding binding() const override { return source_binding_; }
+  const char *native_class() const override { return "Reference"; }
+  const upstream::FieldGlobalRegistry *registry() const override { return allocator_; }
+  bool checked_source_hash(std::string_view path, std::array<uint8_t,32> &out) const override {
+    return source_definitions_ && source_definitions_->valid() &&
+           source_definitions_->global_constructor_scope() &&
+           source_definitions_->source_pin() == source_binding_.source.identity.upstream_commit &&
+           path == source_binding_.source.script &&
+           source_definitions_->source_hash(std::string(path),out) && out == source_proof_;
+  }
   PodunkItemObject() = default;
   PodunkItemObject(const PodunkItemObject &) = delete;
   PodunkItemObject &operator=(const PodunkItemObject &) = delete;
@@ -289,6 +302,29 @@ public:
     e.clear();
     return true;
   }
+  static bool publish_global_item_reference(
+      const std::shared_ptr<PodunkItemObject> &item,
+      const upstream::FieldItemDefinitions &defs, std::string &e) {
+    if (!item || !item->allocator_ || item->allocated_ != item->object ||
+        !defs.valid() || !defs.global_constructor_scope() ||
+        defs.constructor_sources().empty() || item->source_definitions_)
+      return fail(e,"Global Item actual Reference source owner rejected");
+    const auto &script = defs.constructor_sources().front();
+    upstream::FieldGlobalExternalSpec spec;
+    spec.identity.upstream_commit = defs.source_pin();
+    spec.identity.scene_id = defs.god_storage_id();
+    if (!defs.source_hash(script,spec.identity.source_sha256))
+      return fail(e,"Global Item actual constructor source proof absent");
+    spec.stable_id = defs.god_storage_id();
+    spec.role = 5;
+    spec.native_class = "Reference";
+    spec.source = spec.script = script;
+    spec.source_sha = spec.script_sha = spec.identity.source_sha256;
+    item->source_definitions_ = &defs;
+    item->source_proof_ = spec.script_sha;
+    item->source_binding_ = {item->object,spec,0x454e0053,1};
+    return item->allocator_->publish_native_reference(spec,item->object,item,e);
+  }
   // Full source cache construction only, separate from scoped Goods. Native
   // Reference reservation precedes _init default-argument UID execution.
   static bool reserve_god_storage_item(
@@ -306,6 +342,8 @@ public:
     actual->allocator_ = &registry;
     actual->owner = owner;
     actual->constructing_ = true;
+    if (!publish_global_item_reference(actual, defs, e))
+      return false;
     out = std::move(actual);
     e.clear();
     return true;

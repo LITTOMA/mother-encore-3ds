@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "4c127ee0f6f5aab993b6769b6d1270ce1e7b6cc4c65892adedd809f68c751005",
+  "native_receipt_sha256": "ada2a73dd2b70a08403f5b59055d33d04b993ebacdf70060a8cd818bd84db16a",
+  "exporter_sha256": "8301f240e6a829abef08a880847fe3102c2087645f0e6decbb3fe75ab0e56779",
+  "sources": {
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/PartyNPC.gd": "36b19f7fe73d01097371d788587685ea1ea1869dc0fa7014a97da7e79d25b925",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b"
+  },
+  "capability": 1,
+  "gameplay_methods_admitted": false
+}

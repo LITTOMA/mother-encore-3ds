@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "files": [
+    {
+      "source": "scene/main/node.cpp",
+      "sha256": "0c2e3230b37644c8496f5b1aee59f428de6a497a380c247613c489e44cd508a9",
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/main/node.cpp",
+      "first_line": 188,
+      "excerpt": "void Node::_propagate_ready() {\n\tdata.ready_notified = true;\n\tdata.blocked++;\n\tfor (int i = 0; i < data.children.size(); i++) {\n\t\tdata.children[i]->_propagate_ready();\n\t}\n\tdata.blocked--;\n\n\tnotification(NOTIFICATION_POST_ENTER_TREE);\n\n\tif (data.ready_first) {\n\t\tdata.ready_first = false;\n\t\tnotification(NOTIFICATION_READY);\n\t\temit_signal(SceneStringNames::get_singleton()->ready);\n\t}\n}\n\nvoid Node::_propagate_physics_interpolated(bool p_interpolated) {\n\tswitch (data.physics_interpolation_mode) {\n\t\tcase PHYSICS_INTERPOLATION_MODE_INHERIT:\n\t\t\t// keep the parent p_interpolated\n\t\t\tbreak;\n\t\tcase PHYSICS_INTERPOLATION_MODE_OFF: {\n\t\t\tp_interpolated = false;\n\t\t} break;\n\t\tcase PHYSICS_INTERPOLATION_MODE_ON: {\n\t\t\tp_interpolated = true;\n\t\t} break;\n\t}\n\n\t// no change? no need to propagate further\n\tif (data.physics_interpolated == p_interpolated) {\n\t\treturn;\n\t}\n\n\tdata.physics_interpolated = p_interpolated;"
+    },
+    {
+      "source": "modules/gdscript/gdscript_compiler.cpp",
+      "sha256": "22d5afdcfce49cd20609c45a9b12a50e7b6c76d85daf63d10f3a08e428daae05",
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/modules/gdscript/gdscript_compiler.cpp",
+      "first_line": 1657,
+      "excerpt": "\t/* Parse initializer -if applies- */\n\n\tbool is_initializer = !p_for_ready && !p_func;\n\n\tif (is_initializer || (p_func && String(p_func->name) == \"_init\")) {\n\t\t//parse initializer for class members\n\t\tif (!p_func && p_class->extends_used && p_script->native.is_null()) {\n\t\t\t//call implicit parent constructor\n\t\t\tcodegen.opcodes.push_back(GDScriptFunction::OPCODE_CALL_SELF_BASE);\n\t\t\tcodegen.opcodes.push_back(codegen.get_name_map_pos(\"_init\"));\n\t\t\tcodegen.opcodes.push_back(0);\n\t\t\tcodegen.opcodes.push_back((GDScriptFunction::ADDR_TYPE_STACK << GDScriptFunction::ADDR_BITS) | 0);\n\t\t}\n\t\tError err = _parse_block(codegen, p_class->initializer, stack_level);\n\t\tif (err) {\n\t\t\treturn err;\n\t\t}\n\t\tis_initializer = true;\n\t}\n\n\tif (p_for_ready || (p_func && String(p_func->name) == \"_ready\")) {\n\t\t//parse initializer for class members\n\t\tif (p_class->ready->statements.size()) {\n\t\t\tError err = _parse_block(codegen, p_class->ready, stack_level);\n\t\t\tif (err) {\n\t\t\t\treturn err;\n\t\t\t}\n\t\t}\n\t}\n\n\t/* Parse default argument code -if applies- */\n\n\tVector<int> defarg_addr;\n\tStringName func_name;\n\n\tif (p_func) {"
+    },
+    {
+      "source": "modules/gdscript/gdscript.cpp",
+      "sha256": "4eef4fbaf0fa4a62c7a40b58b61d685a7fe3e425d67cc529c58f96bdccaf2561",
+      "url": "https://github.com/godotengine/godot/blob/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/modules/gdscript/gdscript.cpp",
+      "first_line": 101,
+      "excerpt": "\tinstance->members.resize(member_indices.size());\n\tinstance->script = Ref<GDScript>(this);\n\tinstance->owner = p_owner;\n#ifdef DEBUG_ENABLED\n\t//needed for hot reloading\n\tfor (Map<StringName, MemberInfo>::Element *E = member_indices.front(); E; E = E->next()) {\n\t\tinstance->member_indices_cache[E->key()] = E->get().index;\n\t}\n#endif\n\tinstance->owner->set_script_instance(instance);\n\n\t/* STEP 2, INITIALIZE AND CONSTRUCT */\n\n\tGDScriptLanguage::singleton->lock.lock();\n\tinstances.insert(instance->owner);\n\tGDScriptLanguage::singleton->lock.unlock();\n\n\tif (p_argcount < 0) {\n\t\treturn instance;\n\t}\n\tinitializer->call(instance, p_args, p_argcount, r_error);\n\n\tif (r_error.error != Variant::CallError::CALL_OK) {\n\t\tinstance->script = Ref<GDScript>();\n\t\tinstance->owner->set_script_instance(nullptr);\n#ifndef NO_THREADS\n\t\tGDScriptLanguage::singleton->lock.lock();\n#endif\n\t\tinstances.erase(p_owner);\n#ifndef NO_THREADS\n\t\tGDScriptLanguage::singleton->lock.unlock();\n#endif\n\n\t\tERR_FAIL_V_MSG(nullptr, \"Error constructing a GDScriptInstance.\");\n\t}\n\t//@TODO make thread safe"
+    }
+  ],
+  "native_ready": {
+    "post_enter_each_entry": true,
+    "ready_notified_before_children": true,
+    "ready_body_and_signal_first_only": true,
+    "exit_rearms_ready": false,
+    "request_ready_rearms": true
+  },
+  "source_globaldata_callbacks_absent": [
+    "_enter_tree",
+    "_exit_tree",
+    "_process",
+    "_physics_process",
+    "_notification"
+  ],
+  "constructor_assignment": "GDScript class initializer targets ADDR_TYPE_MEMBER directly; local direct accesses bypass external setget",
+  "behaviour_probe_executed": false
+}

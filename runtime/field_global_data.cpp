@@ -15,6 +15,7 @@ bool same(const FieldOwnedItem &a, const FieldOwnedItem &b) {
 FieldGlobalDataRuntime::~FieldGlobalDataRuntime() {
   god_items_.clear();
   items_.clear();
+  inventory_references_.clear();
   if (registry_) {
     std::string error;
     for (auto i = objects_.rbegin(); i != objects_.rend(); ++i)
@@ -37,6 +38,7 @@ bool FieldGlobalDataRuntime::construct_members(
   admitted_ir_ = data.ir_sha256();
   registry_ = &registry;
   owner_ = actual;
+  source_spec_ = spec;
   for (const auto &row : data.declarations()) {
     FieldObjectId id = 0;
     if (!registry.allocate_object(id, e)) {
@@ -53,6 +55,7 @@ bool FieldGlobalDataRuntime::object_exists(FieldObjectId id) const {
   if (!id || poisoned_ || !data_ || !data_->valid() ||
       data_->ir_sha256() != admitted_ir_)
     return false;
+  if(constructor_data_ && (!registry_ || !registry_->object_exists(id)))return false;
   for (const auto &o : objects_)
     if (o.object == id)
       return true;
@@ -117,6 +120,8 @@ bool FieldGlobalDataRuntime::load_inventory_prefix(
     std::vector<uint32_t> &ledger, LoadRngClockProvider clock,
     FieldGlobalDataItemFactory factory, FieldGlobalDataStatSignal signal,
     std::string &e) {
+  if(constructor_data_)
+    return fail(e,"Legacy inventory prefix cannot replace complete globalData source LOAD");
   if (!data_ || poisoned_ || prefix_ || !factory || !signal ||
       !data_->valid() || data_->ir_sha256() != admitted_ir_ ||
       !data_->bind_inventory(inv, defs, e))
@@ -373,6 +378,9 @@ bool FieldGlobalDataRuntime::construct_god_storage(
     std::vector<uint32_t> &ledger, LoadRngClockProvider clock,
     FieldGlobalDataGodItemFactory factory, std::string &e) {
   const auto *defs = cache.definitions();
+  if(constructor_data_ && (!constructor_complete() || !source_inside_ ||
+     !source_ready_started_ || source_ready_ || constructor_items_!=&cache))
+    return fail(e,"GodStorage must execute at actual full globalData Ready cursor");
   if (!data_ || !registry_ || poisoned_ || god_storage_complete_ ||
       !cache.directory_admitted() || cache.owner() != owner_ || !defs || !clock ||
       !factory.reserve || !factory.initialize ||
@@ -465,6 +473,7 @@ bool FieldGlobalDataRuntime::construct_god_storage(
   for (const auto &i : next)
     object.item_objects.push_back(i.object);
   objects_.push_back(std::move(object));
+  if (constructor_data_ && !publish_inventory_body(inventory,e)) return abort();
   god_items_ = std::move(next);
   random = next_random;
   ledger = std::move(next_ledger);

@@ -550,6 +550,19 @@ bool FieldGlobalDataRuntime::read_constructed_member(
     auto collection = o->collections.find(field->name);
     if (collection != o->collections.end())
       value.value = collection->second;
+    auto nodes = o->node_arrays.find(field->name);
+    if (nodes != o->node_arrays.end() && nodes->second) {
+      if (field->kind != 3 || !value.value || value.value->kind != 5 ||
+          !value.value->array.empty())
+        return fail(e, "Character source Node Array storage is ambiguous");
+      value.node_array = nodes->second;
+      for (auto node : nodes->second->values) {
+        auto tree = registry_->tree_owner(node);
+        if (!tree || !tree->state(node))
+          return fail(e, "Character source Node Array contains dead owner");
+        value.references.emplace_back("", node);
+      }
+    }
     auto references = o->reference_arrays.find(field->name);
     if (references != o->reference_arrays.end() && references->second) {
       value.reference_array = references->second;
@@ -813,6 +826,10 @@ bool FieldGlobalDataRuntime::read_character_load(uint32_t declaration,
                ? f->second
                : std::shared_ptr<GlobalYamlValue>{};
   };
+  auto actual_status_nodes = body->node_arrays.find(b.status);
+  if (actual_status_nodes != body->node_arrays.end() && actual_status_nodes->second &&
+      !actual_status_nodes->second->values.empty())
+    return fail(e, "Character cold LOAD cannot consume live Status Node Array");
   auto status = collection(b.status, 5);
   if (!status || !status->array.empty())
     return fail(e, "Character LOAD nonempty Status is not a cold capability");

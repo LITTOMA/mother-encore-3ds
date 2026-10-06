@@ -3,6 +3,7 @@
 #include "encore/field_global_registry.hpp"
 #include "encore/field_character_load.hpp"
 #include "encore/global_item_cache.hpp"
+#include "encore/house_global_bridge.hpp"
 #include "encore/field_openable_door.hpp"
 #include "field_goods_renderer.hpp"
 #include <memory>
@@ -34,7 +35,8 @@ public:
     if (source_character_load_)
       return source_character_load_->valid() &&
              source_character_load_->ir_sha256() == character_ir_ &&
-             source_binding_.family == 0x454e0050 && source_binding_.capability == 2 &&
+             ((source_binding_.family == 0x454e0050 && source_binding_.capability == 2) ||
+              (source_binding_.family == 0x454e0060 && source_binding_.capability == 1)) &&
              source_character_load_->identity().upstream_commit == source_binding_.source.identity.upstream_commit &&
              path == source_binding_.source.script &&
              source_character_load_->source_hash(path,out) && out == source_proof_;
@@ -372,6 +374,43 @@ public:
     item->value.uid = value.uid;
     item->value.doses = value.doses;
     item->constructor_doses_ = int64_t(value.doses);
+    item->constructing_ = false;
+    out = std::move(item); e.clear(); return true;
+  }
+  // Native continuation adoption is not serialized LOAD. The UID and doses
+  // are already live; only the target ObjectDB Reference is newly allocated.
+  static bool adopt_existing_session_item(
+      const upstream::HouseGlobalBridgeData &bridge,
+      const upstream::FieldItemDefinitions &defs,
+      upstream::FieldGlobalRegistry &registry, uint32_t owner,
+      const upstream::FieldOwnedItem &value,
+      std::shared_ptr<PodunkItemObject> &out, std::string &e) {
+    const auto *source = bridge.characters();
+    if (!source || !bridge.valid() || out || !owner || !defs.valid() ||
+        !defs.global_constructor_scope() || !defs.definition(value.definition) ||
+        value.doses == UINT32_MAX || source->identity().upstream_commit != defs.source_pin())
+      return fail(e, "House continuation actual Item migration arguments rejected");
+    const auto &b = source->source_bindings();
+    std::array<uint8_t,32> proof{}, expected{};
+    if (!bridge.source_hash(b.item_script, proof) ||
+        !defs.source_hash(b.item_script, expected) || proof != expected)
+      return fail(e, "House continuation actual Item source proof differs");
+    upstream::FieldObjectId id = 0;
+    if (!registry.allocate_object(id,e)) return false;
+    auto item = std::make_shared<PodunkItemObject>();
+    item->allocator_ = &registry; item->object = item->allocated_ = id;
+    item->owner = owner; item->source_definitions_ = &defs;
+    item->source_character_load_ = source; item->character_ir_ = source->ir_sha256();
+    item->source_proof_ = proof;
+    upstream::FieldGlobalExternalSpec spec;
+    spec.identity.upstream_commit = source->identity().upstream_commit;
+    spec.identity.scene_id = spec.stable_id = b.item_constructor_id;
+    spec.identity.source_sha256 = spec.source_sha = spec.script_sha = proof;
+    spec.role = 5; spec.native_class = b.item_native; spec.source = spec.script = b.item_script;
+    item->source_binding_ = {id,spec,0x454e0060,1};
+    item->constructing_ = true;
+    if (!registry.publish_native_reference(spec,id,item,e)) return false;
+    item->value = value; item->constructor_doses_ = value.doses;
     item->constructing_ = false;
     out = std::move(item); e.clear(); return true;
   }

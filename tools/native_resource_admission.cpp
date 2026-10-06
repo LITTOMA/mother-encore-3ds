@@ -17,6 +17,7 @@
 #include "encore/global_ready.hpp"
 #include "encore/player_fetcher.hpp"
 #include "encore/player_resources.hpp"
+#include "encore/house_global_bridge.hpp"
 #include "encore/global_child_ready.hpp"
 #include <limits>
 #include <iostream>
@@ -46,7 +47,7 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36 && argc!=40 && argc!=42 && argc!=44 && argc!=46 && argc!=51 && argc!=53) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36 && argc!=40 && argc!=42 && argc!=44 && argc!=46 && argc!=51 && argc!=53 && argc!=55) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
   if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
@@ -61,7 +62,8 @@ int main(int argc, char **argv) {
   if(argc>=44 && std::string(argv[42])!="--player-motion") return 2;
   if(argc>=46 && std::string(argv[44])!="--global-ready") return 2;
   if(argc>=51 && std::string(argv[46])!="--player-fetcher") return 2;
-  if(argc==53 && std::string(argv[51])!="--player-resources") return 2;
+  if(argc>=53 && std::string(argv[51])!="--player-resources") return 2;
+  if(argc==55 && std::string(argv[53])!="--house-global-bridge") return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -136,6 +138,7 @@ int main(int argc, char **argv) {
                <<directory.files().size()<<" PCK files / "<<directory.directories().size()
                <<" directories / "<<files.records().size()<<" YAML documents\n";
     }
+    FieldCharacterLoadData characters;
     GlobalLoadData load;
     GlobalDataConstructorData constructor;
     if(argc>=18) {
@@ -147,7 +150,7 @@ int main(int argc, char **argv) {
       if(argc>=23) {
         FieldIdentity expected_characters;
         expected_characters.upstream_commit=identity.upstream_commit;
-        FieldCharacterLoadData characters;
+
         if(!number(argv[20],expected_characters.scene_id)||
            !hex(argv[21],expected_characters.upstream_commit)||
            !hex(argv[22],expected_characters.source_sha256)) return 2;
@@ -241,12 +244,20 @@ int main(int argc, char **argv) {
       }
       std::cout<<"Player SpriteDataFetcher format admitted: "<<fetcher.records().size()<<" actual script instances\n";
     }
-    if(argc==53) {
+    if(argc>=53) {
       PlayerResourcesData resources;
       if(!resources.load_file(argv[52],player,graphics,error)) {
         std::cerr<<"Player native Resource format/source: "<<error<<'\n';return 1;
       }
       std::cout<<"Player native Resource format admitted: "<<resources.images().size()<<" textures / "<<resources.audios().size()<<" audio payloads\n";
+    }
+    if(argc==55) {
+      NativeSessionData session;HouseGlobalBridgeData bridge;
+      if(!session.load_file((root+catalog.path(ResourceRole::Session)).c_str(),error) ||
+         !bridge.load_file(argv[54],characters,load,session,error)) {
+        std::cerr<<"House continuation format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"House continuation format admitted: "<<bridge.assignments().size()<<" source member mappings\n";
     }
     std::cout<<"Global YAML source formats admitted: "<<caches.records().size()
              <<" source records / "<<caches.getters().size()<<" getters\n";

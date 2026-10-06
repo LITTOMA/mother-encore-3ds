@@ -18,6 +18,10 @@ struct FieldGlobalDataReferenceArray {
 class FieldCharacterLoadData;
 class GlobalLoadData;
 class GlobalLoadRuntime;
+class HouseGlobalBridgeRuntime;
+struct FieldGlobalDataNodeArray {
+  std::vector<FieldObjectId> values;
+};
 struct FieldCharacterLoadState;
 struct FieldCharacterOwnedReference;
 class FieldCharacterEnemySkillReference;
@@ -27,6 +31,7 @@ struct FieldGlobalDataMemberState {
   std::array<double, 2> vector{};
   std::vector<std::pair<std::string, FieldObjectId>> references;
   std::shared_ptr<const FieldGlobalDataReferenceArray> reference_array;
+  std::shared_ptr<const FieldGlobalDataNodeArray> node_array;
   uint32_t owner_role = 0;
   const FieldGlobalFlagsRuntime *flags = nullptr;
   GlobalYamlCachesRuntime *caches = nullptr;
@@ -97,6 +102,7 @@ struct FieldGlobalDataObject {
   // Object; these are not references to an IR descriptor's containers.
   std::vector<FieldGlobalDataDefault> fields;
   std::vector<FieldObjectId> item_objects;
+  std::map<std::string, std::shared_ptr<FieldGlobalDataNodeArray>> node_arrays{};
   std::vector<std::string> learned_skills;
   std::map<std::string, double> affinities;
   std::array<int64_t, 7> permanent{};
@@ -252,6 +258,7 @@ public:
 
 private:
   friend class GlobalLoadRuntime;
+  friend class HouseGlobalBridgeRuntime;
   const GlobalLoadData *global_load_data_ = nullptr;
   std::array<uint8_t, 32> global_load_ir_{};
   bool global_load_complete_ = false;

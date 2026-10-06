@@ -89,7 +89,8 @@ bool PodunkPlayerCharacter::empty_status(FieldObjectId id,
   // Check all actual representations. A saved projection cannot substitute for
   // the owned source Array, nor may any populated Node handles be discarded.
   if (!status.value->array.empty() || !status.references.empty() ||
-      (status.reference_array && !status.reference_array->values.empty()))
+      (status.reference_array && !status.reference_array->values.empty()) ||
+      (status.node_array && !status.node_array->values.empty()))
     return fail(e, "Player Character nonempty Status Array requires actual "
                    "Status Node owner: Character=" +
                        std::to_string(id) + " field=" + field);

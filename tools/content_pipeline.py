@@ -118,8 +118,20 @@ def snapshot(root, workspace, names):
     # Source admission deliberately rejects symlink/loose-file checkouts.
     # Clone locally on every platform; --shared reads the existing object DB,
     # never fetches or changes the original pinned checkout.
-    subprocess.run(['git', '-c', 'core.autocrlf=false', 'clone', '--quiet', '--shared',
-                    '--no-checkout', str(upstream), str(target)], check=True)
+    shared = subprocess.run(['git', '-c', 'core.autocrlf=false', 'clone', '--quiet', '--shared',
+                             '--no-checkout', str(upstream), str(target)])
+    if shared.returncode:
+        # Deeply nested local verification clones can exceed Git's alternate
+        # object-store limit. Local upload-pack gives this snapshot its own
+        # shallow object database; it never contacts the official remote or
+        # modifies the source checkout. Pin and full inventory remain mandatory.
+        print('Shared local source clone failed; constructing independent pinned local objects', flush=True)
+        if target.exists():
+            require(not target.is_symlink() and target.resolve().is_relative_to(workspace.resolve()),
+                    'Unsafe partial source clone')
+            shutil.rmtree(target)
+        subprocess.run(['git', '-c', 'core.autocrlf=false', 'clone', '--quiet', '--no-local',
+                        '--depth', '1', '--no-checkout', str(upstream), str(target)], check=True)
     # Retain the already verified official source identity in the local clone;
     # cloning from a local object database itself assigns a local origin URL.
     subprocess.run(['git', '-C', str(target), 'remote', 'set-url', 'origin',

@@ -193,7 +193,8 @@ void HousePresentation::input(bool accept,bool cancel,bool defer_close,bool conf
  else if(finished_){if(defer_close){advance_requested_=true;if(confirm_next)audio_.push_back({HouseAudioKind::Confirm,{},1});}else close();}else if(stopped_){stopped_=false;audio_.push_back({HouseAudioKind::Confirm,{},1});}
 }
 bool HousePresentation::begin_npc_dialogue(uint32_t i,uint32_t first,uint32_t count,std::string_view name,Vec2 player){
- if(i>=npcs_.size()||!begin_dialogue(first,count,name)||!begin_npc_interaction(i,player))return false;npc_=i;return true;
+ if(i>=npcs_.size()||!begin_dialogue(first,count,name)||!begin_npc_interaction(i,player))return false;
+ npc_=i;return true;
 }
 bool HousePresentation::begin_npc_interaction(uint32_t i,Vec2 player){
  if(i>=npcs_.size()||!finite(player))return fail("Invalid original NPC talker");
@@ -201,7 +202,8 @@ bool HousePresentation::begin_npc_interaction(uint32_t i,Vec2 player){
 }
 bool HousePresentation::set_npc_talking(uint32_t i,bool talking){if(i>=npcs_.size())return fail("Unknown original NPC talker");npcs_[i].story_talking=talking;return true;}
 bool HousePresentation::stop_npc_interaction(uint32_t i){
- if(i>=npcs_.size())return fail("Unknown stopped NPC");auto&s=npcs_[i];s.story_talking=false;
+ if(i>=npcs_.size())return fail("Unknown stopped NPC");
+ auto&s=npcs_[i];s.story_talking=false;
  if(!(content_.npc(i).flags&1)){s.return_pending=true;s.return_timer=content_.parameter(HouseParameter::NpcInteractionReturn).x;}
  return true;
 }
@@ -271,6 +273,12 @@ WorldDialoguePose HousePresentation::dialogue_pose()const{
   p.lines.push_back(std::move(display_line));
  }
  return p;
+}
+HouseSourceTextState HousePresentation::source_text_state()const{
+ HouseSourceTextState out;out.active=active_;out.visible_characters=visible_;out.choice_rows=choice_rows_;
+ if(!active_||lines_.empty())return out;
+ for(uint32_t i=0;i<=loaded_line_&&i<lines_.size();++i){const auto&line=lines_[i];out.lines.push_back({line.text,line.colors,line.bullet,line.wait});}
+ return out;
 }
 std::vector<HouseAudioEvent>HousePresentation::take_audio_events(){auto result=std::move(audio_);audio_.clear();return result;}
 }

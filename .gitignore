@@ -360,3 +360,6 @@ cookies.json
 
 !/reports/field-dialogue-lifecycle/
 !/reports/field-dialogue-lifecycle/source-review.json
+
+!/reports/field-dialogue-ui/
+!/reports/field-dialogue-ui/source-review.json

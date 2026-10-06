@@ -12,6 +12,10 @@ struct LocalizedHouseSpan {std::string speaker,word_separator,bullet;uint32_t ma
 using HouseLocaleResolver=bool(*)(void*,HouseView,uint32_t,uint32_t,std::string_view,LocalizedHouseSpan&,std::string&);
 using HouseGlyphAdvance=bool(*)(void*,uint32_t,float&);
 struct HouseTextLine {std::string text;float y=0;bool bullet=false;std::vector<uint32_t>colors;};
+// Read-only state from the actual current source printer. Invisible delay cells
+// remain logical U32 cells and are never printed as zero-byte font glyphs.
+struct HouseSourceTextLine { std::u32string cells; std::vector<uint32_t>colors; bool bullet=false,wait=false; };
+struct HouseSourceTextState { bool active=false; uint32_t visible_characters=0,choice_rows=0; std::vector<HouseSourceTextLine>lines; };
 struct WorldDialoguePose {
  bool visible=false,name_visible=false,cursor_visible=false,text_visible=false;uint32_t box_resource=house_no_index,name_resource=house_no_index,cursor_resource=house_no_index,cursor_frame=0;
  BattleValue box{},name{},clip{},text_layout{},bullet_layout{},name_label{},cursor{};Vec2 anchor{};float cursor_rotation=0;std::string speaker,bullet;std::vector<HouseTextLine>lines;
@@ -70,6 +74,7 @@ public:
  bool dialogue_closing()const{return closing_;}uint32_t visible_characters()const{return visible_;}
  uint32_t current_segment()const{return segment_;}bool talking()const{return talking_;}
  HouseNpcPose npc_pose(uint32_t)const;HouseDoorPose openable_door_pose(uint32_t,bool visible)const;WorldDialoguePose dialogue_pose()const;
+ HouseSourceTextState source_text_state() const;
  std::vector<HouseAudioEvent>take_audio_events();
  HouseKey sample(HouseClipRole,double,uint32_t previous_frame=0)const;
  const char*error()const{return error_;}

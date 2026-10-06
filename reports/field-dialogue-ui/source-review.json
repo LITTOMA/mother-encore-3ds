@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "624c7477c1fd7ddffab0f97cda15d2f556b17cd7e08fb08c1ff920116c3850c7",
+  "producer_sha256": "428e8fa74c828aa38e48424bf4d0465b2ee81f7a79e82f10062598946dce8a42",
+  "exporter_sha256": "caef119b78c460fd54433ffe76bdb0c1880e4cc00e3516205b51f1ae089ee434",
+  "sources": {
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaulttag.png": "4f2aae1377c38297537a8cbbc7bbfec14b7b5bf13129877ddd8a4e724b631a9e",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac"
+  },
+  "scope": [
+    "Native-only metadata was read without scene ENTER/Ready; source scripts were quarantined, and it never grants gameplay Ready",
+    "Native CanvasLayer/17 Control widgets/two source AnimationPlayers only: 20 of 47 actual nodes. Other 27 nodes retain pending capabilities",
+    "Actual DynamicFont glyphs, HousePresentation text printing/TextTools/locale/source tag semantics, DialogueChoices and original textures are borrowed with provenance; no duplicate content or fonts",
+    "Animation value tracks operate real source Control state and emit actual source AnimationPlayer signals only through native internal process order",
+    "Root DialogueBox script/Camera/cursor/Timer/audio and singleton endpoints remain independent required consumers. Unknown scripts/methods/extra effect rendering reject before admission"
+  ]
+}

@@ -1,0 +1,1532 @@
+{
+  "schema": 1,
+  "kind": "encore.field-dialogue-ui.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Ui/DialogueBox.tscn",
+  "scene_id": 2406403304,
+  "scene_sha256": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+  "family": 1162739777,
+  "recipe_ir_sha256": "ca209a79f1c3b7aff9e90a4a363e33aac17e28063ea3fb9df04a7e61491b191f",
+  "house_ir_sha256": "a30127f9074586f86d1b3178b73c9890b1a4948f8c2d17be601f01624b121792",
+  "native_sha256": "bf3b7baba9f880836a5e3ae894a05cb1bb7e45dc83d99dc7b4ee61e8fca3af21",
+  "metadata_sha256": "d17d5820e3640d39440f72839978f1c27f10651ac6f19f13a799279a7f21247f",
+  "exporter_sha256": "caef119b78c460fd54433ffe76bdb0c1880e4cc00e3516205b51f1ae089ee434",
+  "sources": {
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaulttag.png": "4f2aae1377c38297537a8cbbc7bbfec14b7b5bf13129877ddd8a4e724b631a9e",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac"
+  },
+  "nodes": [
+    {
+      "id": 2406403304,
+      "parent": 0,
+      "ready": 46,
+      "node": ".",
+      "native_class": "CanvasLayer",
+      "script": "Scripts/UI/DialogueBox.gd",
+      "role": 1,
+      "kind": 1
+    },
+    {
+      "id": 590639956,
+      "parent": 2406403304,
+      "ready": 24,
+      "node": "Dialoguebox",
+      "native_class": "NinePatchRect",
+      "script": "",
+      "role": 2,
+      "kind": 3
+    },
+    {
+      "id": 595623521,
+      "parent": 590639956,
+      "ready": 3,
+      "node": "Dialoguebox/Arrow",
+      "native_class": "AnimatedSprite",
+      "script": "Scripts/UI/cursor.gd",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 4208419471,
+      "parent": 595623521,
+      "ready": 0,
+      "node": "Dialoguebox/Arrow/Sprite",
+      "native_class": "Sprite",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 2646165824,
+      "parent": 595623521,
+      "ready": 1,
+      "node": "Dialoguebox/Arrow/AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3765870318,
+      "parent": 595623521,
+      "ready": 2,
+      "node": "Dialoguebox/Arrow/Timer",
+      "native_class": "Timer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 2749157936,
+      "parent": 590639956,
+      "ready": 7,
+      "node": "Dialoguebox/Cursor_Down",
+      "native_class": "AnimatedSprite",
+      "script": "Scripts/UI/cursor.gd",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 139349389,
+      "parent": 2749157936,
+      "ready": 4,
+      "node": "Dialoguebox/Cursor_Down/Sprite",
+      "native_class": "Sprite",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 2154834780,
+      "parent": 2749157936,
+      "ready": 5,
+      "node": "Dialoguebox/Cursor_Down/AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 1117056902,
+      "parent": 2749157936,
+      "ready": 6,
+      "node": "Dialoguebox/Cursor_Down/Timer",
+      "native_class": "Timer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 1547641433,
+      "parent": 590639956,
+      "ready": 14,
+      "node": "Dialoguebox/Options",
+      "native_class": "GridContainer",
+      "script": "",
+      "role": 9,
+      "kind": 4
+    },
+    {
+      "id": 1042072675,
+      "parent": 1547641433,
+      "ready": 8,
+      "node": "Dialoguebox/Options/Option1",
+      "native_class": "Label",
+      "script": "",
+      "role": 10,
+      "kind": 6
+    },
+    {
+      "id": 2599077864,
+      "parent": 1547641433,
+      "ready": 9,
+      "node": "Dialoguebox/Options/Option2",
+      "native_class": "Label",
+      "script": "",
+      "role": 11,
+      "kind": 6
+    },
+    {
+      "id": 1261183016,
+      "parent": 1547641433,
+      "ready": 10,
+      "node": "Dialoguebox/Options/Option3",
+      "native_class": "Label",
+      "script": "",
+      "role": 12,
+      "kind": 6
+    },
+    {
+      "id": 1306973911,
+      "parent": 1547641433,
+      "ready": 11,
+      "node": "Dialoguebox/Options/Option4",
+      "native_class": "Label",
+      "script": "",
+      "role": 13,
+      "kind": 6
+    },
+    {
+      "id": 2232168516,
+      "parent": 1547641433,
+      "ready": 12,
+      "node": "Dialoguebox/Options/Option5",
+      "native_class": "Label",
+      "script": "",
+      "role": 14,
+      "kind": 6
+    },
+    {
+      "id": 2647782291,
+      "parent": 1547641433,
+      "ready": 13,
+      "node": "Dialoguebox/Options/Option6",
+      "native_class": "Label",
+      "script": "",
+      "role": 15,
+      "kind": 6
+    },
+    {
+      "id": 3451010809,
+      "parent": 590639956,
+      "ready": 20,
+      "node": "Dialoguebox/ClipBox",
+      "native_class": "Control",
+      "script": "",
+      "role": 5,
+      "kind": 2
+    },
+    {
+      "id": 2424223072,
+      "parent": 3451010809,
+      "ready": 19,
+      "node": "Dialoguebox/ClipBox/HBoxContainer",
+      "native_class": "HBoxContainer",
+      "script": "",
+      "role": 6,
+      "kind": 5
+    },
+    {
+      "id": 1578216556,
+      "parent": 2424223072,
+      "ready": 16,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/DippinDots",
+      "native_class": "RichTextLabel",
+      "script": "",
+      "role": 8,
+      "kind": 7
+    },
+    {
+      "id": 327544620,
+      "parent": 1578216556,
+      "ready": 15,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/DippinDots/@@2",
+      "native_class": "VScrollBar",
+      "script": "",
+      "role": 17,
+      "kind": 8
+    },
+    {
+      "id": 19063755,
+      "parent": 2424223072,
+      "ready": 18,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/Dialogue",
+      "native_class": "RichTextLabel",
+      "script": "",
+      "role": 7,
+      "kind": 7
+    },
+    {
+      "id": 2467094246,
+      "parent": 19063755,
+      "ready": 17,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/Dialogue/@@3",
+      "native_class": "VScrollBar",
+      "script": "",
+      "role": 16,
+      "kind": 8
+    },
+    {
+      "id": 2109953538,
+      "parent": 590639956,
+      "ready": 23,
+      "node": "Dialoguebox/Namebox",
+      "native_class": "NinePatchRect",
+      "script": "",
+      "role": 3,
+      "kind": 3
+    },
+    {
+      "id": 184208280,
+      "parent": 2109953538,
+      "ready": 22,
+      "node": "Dialoguebox/Namebox/ClipBox",
+      "native_class": "Control",
+      "script": "",
+      "role": 18,
+      "kind": 2
+    },
+    {
+      "id": 691797382,
+      "parent": 184208280,
+      "ready": 21,
+      "node": "Dialoguebox/Namebox/ClipBox/Name",
+      "native_class": "Label",
+      "script": "",
+      "role": 4,
+      "kind": 6
+    },
+    {
+      "id": 821758871,
+      "parent": 2406403304,
+      "ready": 25,
+      "node": "AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 19,
+      "kind": 9
+    },
+    {
+      "id": 1513585325,
+      "parent": 2406403304,
+      "ready": 26,
+      "node": "NameAnim",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 20,
+      "kind": 9
+    },
+    {
+      "id": 1489904582,
+      "parent": 2406403304,
+      "ready": 27,
+      "node": "Timer",
+      "native_class": "Timer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3265432023,
+      "parent": 2406403304,
+      "ready": 28,
+      "node": "AudioStreamPlayer",
+      "native_class": "AudioStreamPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3454379311,
+      "parent": 2406403304,
+      "ready": 29,
+      "node": "SoundEffect",
+      "native_class": "AudioStreamPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 2568907891,
+      "parent": 2406403304,
+      "ready": 30,
+      "node": "InputSound",
+      "native_class": "AudioStreamPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3409658098,
+      "parent": 2406403304,
+      "ready": 31,
+      "node": "WaitTimer",
+      "native_class": "Timer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3117544875,
+      "parent": 2406403304,
+      "ready": 45,
+      "node": "Camera2D",
+      "native_class": "Camera2D",
+      "script": "Scripts/Main/Camera2D.gd",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 1454644408,
+      "parent": 3117544875,
+      "ready": 33,
+      "node": "Camera2D/Area2D",
+      "native_class": "Area2D",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 1201501901,
+      "parent": 1454644408,
+      "ready": 32,
+      "node": "Camera2D/Area2D/CollisionShape2D",
+      "native_class": "CollisionShape2D",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 1295067073,
+      "parent": 3117544875,
+      "ready": 34,
+      "node": "Camera2D/ArrowsAnim",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3405313814,
+      "parent": 3117544875,
+      "ready": 44,
+      "node": "Camera2D/ScopeArrows",
+      "native_class": "Node2D",
+      "script": "Scripts/UI/MapScreen/MapArrows.gd",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3779319206,
+      "parent": 3405313814,
+      "ready": 36,
+      "node": "Camera2D/ScopeArrows/arrowR",
+      "native_class": "AnimatedSprite",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 2879652911,
+      "parent": 3779319206,
+      "ready": 35,
+      "node": "Camera2D/ScopeArrows/arrowR/AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 1055705887,
+      "parent": 3405313814,
+      "ready": 38,
+      "node": "Camera2D/ScopeArrows/arrowL",
+      "native_class": "AnimatedSprite",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3444891084,
+      "parent": 1055705887,
+      "ready": 37,
+      "node": "Camera2D/ScopeArrows/arrowL/AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 3676534421,
+      "parent": 3405313814,
+      "ready": 40,
+      "node": "Camera2D/ScopeArrows/arrowU",
+      "native_class": "AnimatedSprite",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 4070840599,
+      "parent": 3676534421,
+      "ready": 39,
+      "node": "Camera2D/ScopeArrows/arrowU/AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 512545310,
+      "parent": 3405313814,
+      "ready": 42,
+      "node": "Camera2D/ScopeArrows/arrowD",
+      "native_class": "AnimatedSprite",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 377010792,
+      "parent": 512545310,
+      "ready": 41,
+      "node": "Camera2D/ScopeArrows/arrowD/AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    },
+    {
+      "id": 941453825,
+      "parent": 3405313814,
+      "ready": 43,
+      "node": "Camera2D/ScopeArrows/AnimationPlayer",
+      "native_class": "AnimationPlayer",
+      "script": "",
+      "role": 0,
+      "kind": 0
+    }
+  ],
+  "controls": [
+    {
+      "id": 590639956,
+      "flags": 1,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "font": "",
+      "texture": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "material": "Shaders/MenuFlavors.tres",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 1547641433,
+      "flags": 1,
+      "align": 0,
+      "valign": 0,
+      "columns": 3,
+      "hseparation": 12,
+      "vseparation": 4,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 1042072675,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        14
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "Option1",
+      "bbcode": ""
+    },
+    {
+      "id": 2599077864,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        14
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "Option2",
+      "bbcode": ""
+    },
+    {
+      "id": 1261183016,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        14
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "Option3",
+      "bbcode": ""
+    },
+    {
+      "id": 1306973911,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        14
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "Option4",
+      "bbcode": ""
+    },
+    {
+      "id": 2232168516,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        14
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "Option5",
+      "bbcode": ""
+    },
+    {
+      "id": 2647782291,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        14
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "Option6",
+      "bbcode": ""
+    },
+    {
+      "id": 3451010809,
+      "flags": 1,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 2424223072,
+      "flags": 1,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 1578216556,
+      "flags": 11,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "\n@ \n\n@ ",
+      "bbcode": "\n[right]@ [/right]\n\n[right]@ [/right]"
+    },
+    {
+      "id": 327544620,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        12,
+        12
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "",
+      "texture": "",
+      "material": "",
+      "range": [
+        0.0,
+        100.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 19063755,
+      "flags": 11,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain_la.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "\nWhats your opinion on Dialog boxes ?\n",
+      "bbcode": "\nWhats your opinion on [tornado radius=3 freq=-4]Dialog boxes [/tornado]?\n"
+    },
+    {
+      "id": 2467094246,
+      "flags": 0,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        12,
+        12
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "",
+      "texture": "",
+      "material": "",
+      "range": [
+        0.0,
+        100.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 2109953538,
+      "flags": 1,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        14,
+        15,
+        15,
+        14
+      ],
+      "font": "",
+      "texture": "Graphics/UI/Overworld/flavours/defaulttag.png",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 184208280,
+      "flags": 1,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 0,
+      "font_height": 0,
+      "font_ascent": 0,
+      "font_descent": 0,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        0
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "",
+      "bbcode": ""
+    },
+    {
+      "id": 691797382,
+      "flags": 1,
+      "align": 0,
+      "valign": 0,
+      "columns": 0,
+      "hseparation": 0,
+      "vseparation": 0,
+      "line_separation": 3,
+      "font_height": 12,
+      "font_ascent": 11,
+      "font_descent": 1,
+      "visible_characters": -1,
+      "minimum": [
+        0,
+        14
+      ],
+      "patch": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "font": "Fonts/EBMain.tres",
+      "texture": "",
+      "material": "",
+      "range": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "style": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text": "Sans",
+      "bbcode": ""
+    }
+  ],
+  "animations": [
+    {
+      "owner": 821758871,
+      "target": 590639956,
+      "clip": {
+        "name": "Close",
+        "source": "Nodes/Ui/DialogueBox.tscn",
+        "source_resource_id": 1,
+        "length": 0.3,
+        "loop": false,
+        "step": 0.05,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "Dialoguebox:rect_position",
+            "interp": 2,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0,
+                0.15
+              ],
+              "transitions": [
+                0.63728,
+                2.54913
+              ],
+              "update": 0,
+              "values": [
+                [
+                  28,
+                  120
+                ],
+                [
+                  28,
+                  180
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "owner": 821758871,
+      "target": 590639956,
+      "clip": {
+        "name": "Open",
+        "source": "Nodes/Ui/DialogueBox.tscn",
+        "source_resource_id": 2,
+        "length": 0.3,
+        "loop": false,
+        "step": 0.05,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "Dialoguebox:rect_position",
+            "interp": 2,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0,
+                0.3
+              ],
+              "transitions": [
+                0.25,
+                0.25
+              ],
+              "update": 0,
+              "values": [
+                [
+                  28,
+                  180
+                ],
+                [
+                  28,
+                  120
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "owner": 821758871,
+      "target": 590639956,
+      "clip": {
+        "name": "RESET",
+        "source": "Nodes/Ui/DialogueBox.tscn",
+        "source_resource_id": 6,
+        "length": 0.001,
+        "loop": false,
+        "step": 0.1,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "Dialoguebox:rect_position",
+            "interp": 1,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0
+              ],
+              "transitions": [
+                1
+              ],
+              "update": 0,
+              "values": [
+                [
+                  28,
+                  180
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "owner": 1513585325,
+      "target": 2109953538,
+      "clip": {
+        "name": "Close",
+        "source": "Nodes/Ui/DialogueBox.tscn",
+        "source_resource_id": 3,
+        "length": 0.3,
+        "loop": false,
+        "step": 0.05,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "Dialoguebox/Namebox:rect_position",
+            "interp": 2,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0,
+                0.1
+              ],
+              "transitions": [
+                0.420448,
+                0.420448
+              ],
+              "update": 0,
+              "values": [
+                [
+                  8,
+                  -15
+                ],
+                [
+                  8,
+                  0
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "owner": 1513585325,
+      "target": 2109953538,
+      "clip": {
+        "name": "Open",
+        "source": "Nodes/Ui/DialogueBox.tscn",
+        "source_resource_id": 4,
+        "length": 0.3,
+        "loop": false,
+        "step": 0.05,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "Dialoguebox/Namebox:rect_position",
+            "interp": 2,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0,
+                0.2
+              ],
+              "transitions": [
+                0.34151,
+                2.54912
+              ],
+              "update": 0,
+              "values": [
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  -15
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "owner": 1513585325,
+      "target": 2109953538,
+      "clip": {
+        "name": "RESET",
+        "source": "Nodes/Ui/DialogueBox.tscn",
+        "source_resource_id": 5,
+        "length": 0.001,
+        "loop": false,
+        "step": 0.1,
+        "tracks": [
+          {
+            "type": "value",
+            "path": "Dialoguebox/Namebox:rect_position",
+            "interp": 1,
+            "loop_wrap": true,
+            "imported": false,
+            "enabled": true,
+            "keys": {
+              "times": [
+                0
+              ],
+              "transitions": [
+                1
+              ],
+              "update": 0,
+              "values": [
+                [
+                  8,
+                  0
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "borrowed_resources": [
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "columns": 1,
+      "height": 24,
+      "id": 3,
+      "kind": 1,
+      "path": "graphics/ui/house/dialogue_box.t3x",
+      "role": "dialogue_box",
+      "rows": 1,
+      "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
+      "width": 24
+    },
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaulttag.png",
+      "columns": 1,
+      "height": 42,
+      "id": 4,
+      "kind": 1,
+      "path": "graphics/ui/house/name_box.t3x",
+      "role": "name_box",
+      "rows": 1,
+      "sha256": "04ba759f658b1cf9fc26b194c26ca492303d2243fd8b09c4bc443bd44628e300",
+      "width": 42
+    }
+  ],
+  "display": [
+    320,
+    180,
+    0.5,
+    1
+  ],
+  "name_tween": [
+    20,
+    0.2,
+    4,
+    47.0
+  ],
+  "signals": [
+    "animation_started",
+    "animation_finished",
+    "item_rect_changed",
+    "changed",
+    "value_changed"
+  ],
+  "markers": [
+    "​",
+    "⁣"
+  ],
+  "scope": [
+    "Native-only metadata was read without scene ENTER/Ready; source scripts were quarantined, and it never grants gameplay Ready",
+    "Native CanvasLayer/17 Control widgets/two source AnimationPlayers only: 20 of 47 actual nodes. Other 27 nodes retain pending capabilities",
+    "Actual DynamicFont glyphs, HousePresentation text printing/TextTools/locale/source tag semantics, DialogueChoices and original textures are borrowed with provenance; no duplicate content or fonts",
+    "Animation value tracks operate real source Control state and emit actual source AnimationPlayer signals only through native internal process order",
+    "Root DialogueBox script/Camera/cursor/Timer/audio and singleton endpoints remain independent required consumers. Unknown scripts/methods/extra effect rendering reject before admission"
+  ]
+}

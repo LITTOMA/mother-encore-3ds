@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "ab6a4302a455a8495f40c3db8780b2b849541dff35181f9347e2abae216e58b6",
+  "sources": {
+    "Scripts/global/global.tscn": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "Scripts/global/MouseHider.tscn": "173f790810a7ba73e48ae28ad1f669f550e6c797abf00a19968371cca0ef6725",
+    "Scripts/UI/mouse_hider.gd": "aabbedde95fa75cfdf360cc40588a29f3f01e6d1cd7b8b77667d9a1af26bf592",
+    "Scripts/global/Slowmo.tscn": "29947f48e27f4c15b6fda3edc7425ffc78d8fa650db5a08d4d4ac99eee5cccf7",
+    "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270"
+  },
+  "scope": "Actual global declaration/constant source closure and four-node native PackedScene constructor; SceneTransition.new blank native Node",
+  "native_sha256": "a24266ea7a985deb3906ce6aca8a9775990e9f9695db8081572965103d315967",
+  "tree_sha256": "8cc5ee91c15ffbade0779d915370c55606bbbbda5ab011fdd939aabf4ae6d81d",
+  "source_receipt_sha256": "a0da169fd00053d9603eae72729d0ea82c7a6ad5c0c5980929fd0374941d5d32",
+  "scene_admitted": false
+}

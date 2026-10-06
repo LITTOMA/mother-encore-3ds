@@ -61,6 +61,8 @@ SOURCES = (
     'runtime/global_data_constructor_data.cpp',
     'runtime/field_character_load_data.cpp',
     'runtime/global_load_data.cpp',
+    'runtime/field_global_constructor_data.cpp',
+    'runtime/field_native_timer_data.cpp',
     'runtime/field_global_flags_data.cpp',
     'runtime/field_global_registry_data.cpp',
     'runtime/field_node_recipe_data.cpp',
@@ -137,6 +139,9 @@ def admit(resources, *, global_items=True):
                     characters['sources'][characters['source_save']]]
         command += ['--global-load', str(ROOT / 'romfs/data/global.encload'),
                     str(ROOT / 'romfs/data/global.encflags')]
+        node_constructor = json.loads((ROOT / 'content/native-field-global-constructor.json').read_text())
+        command += ['--global-node-constructor', str(ROOT / 'romfs/data/global.encnodeconstructor'),
+                    str(node_constructor['scene_id']), node_constructor['source_sha256']]
     subprocess.run(command, check=True)
 
 

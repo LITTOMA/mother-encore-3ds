@@ -201,7 +201,8 @@ bool PodunkNativeRoot::stage_child(FieldObjectId id, std::string &e) {
       id == kernel_ || external_parent(id))
     return fail(
         e, "Native root original out-of-tree child staging boundary rejected");
-  auto tree = registry_->tree_owner(id);
+  auto tree = external_.count(id) ? std::shared_ptr<FieldNodeTreeRuntime>()
+                                    : registry_->tree_owner(id);
   External *external = nullptr;
   FieldGlobalExternalState prior;
   if (tree) {
@@ -337,7 +338,8 @@ bool PodunkNativeRoot::initialize_project_tree(std::string &e) {
   ++state_.blocked; // Original root Enter traversal blocks child-list mutation.
   for (size_t i = 0; i < state_.children.size(); ++i) {
     const auto id = state_.children[i];
-    auto tree = registry_->tree_owner(id);
+    auto tree = external_.count(id) ? std::shared_ptr<FieldNodeTreeRuntime>()
+                                    : registry_->tree_owner(id);
     External *owner = nullptr;
     FieldGlobalExternalState observed;
     if (tree) {
@@ -363,7 +365,8 @@ bool PodunkNativeRoot::initialize_project_tree(std::string &e) {
   ++state_.blocked;
   for (size_t i = 0; i < state_.children.size(); ++i) {
     const auto id = state_.children[i];
-    auto tree = registry_->tree_owner(id);
+    auto tree = external_.count(id) ? std::shared_ptr<FieldNodeTreeRuntime>()
+                                    : registry_->tree_owner(id);
     External *owner = nullptr;
     FieldGlobalExternalState observed;
     if (tree) {
@@ -400,7 +403,7 @@ bool PodunkNativeRoot::register_external_child(
       b.source.identity.upstream_commit != data_->identity().upstream_commit ||
       !b.family || !b.capability || external_.count(b.object) ||
       !object.state(state, e) || state.name != b.source.name || state.parent ||
-      state.inside || state.ready || !state.children.empty())
+      state.inside || state.ready)
     return fail(e, "Native root actual external source constructor rejected");
   auto a =
       std::find_if(source_->autoloads().begin(), source_->autoloads().end(),
@@ -411,6 +414,39 @@ bool PodunkNativeRoot::register_external_child(
       a->source_sha != b.source.source_sha)
     return fail(
         e, "Native root external child original autoload binding rejected");
+  auto tree = registry_->tree_owner(b.object);
+  if (!state.children.empty() || tree) {
+    FieldIdentity identity;
+    const auto *n = tree ? tree->state(b.object) : nullptr;
+    const auto *d = tree ? tree->descriptor(b.object) : nullptr;
+    if (b.source.stable_id != source_->global_autoload() ||
+        b.family != 0x454e0055 || b.capability != 1 || !tree ||
+        tree->root() != b.object || tree->object_domain() != kernel_ ||
+        !n || !d || !tree->object_identity(b.object, identity) ||
+        identity.upstream_commit != b.source.identity.upstream_commit ||
+        identity.source_sha256 != b.source.source_sha ||
+        d->native_class != b.source.native_class ||
+        d->script != b.source.script || d->script_sha != b.source.script_sha ||
+        n->name != state.name || n->parent || n->inside ||
+        n->ready_notified || n->children != state.children)
+      return fail(e, "Native root actual global constructor branch differs");
+    std::vector<FieldObjectId> pending{b.object};
+    std::set<FieldObjectId> seen;
+    for (size_t at = 0; at < pending.size(); ++at) {
+      const auto id = pending[at];const auto *actual = tree->state(id);
+      FieldIdentity original;
+      if (!seen.insert(id).second || registry_->tree_owner(id) != tree ||
+          !actual || actual->inside || actual->ready_notified ||
+          !tree->object_identity(id, original) || !same(original, identity))
+        return fail(e, "Native root global constructor foreign/entered child");
+      for (auto child : actual->children) {
+        const auto *c = tree->state(child);
+        if (!c || c->parent != id)
+          return fail(e, "Native root global constructor child parent differs");
+        pending.push_back(child);
+      }
+    }
+  }
   external_.emplace(b.object, External{&object, &lifecycle, b});
   e.clear();
   return true;
@@ -440,7 +476,8 @@ bool PodunkNativeRoot::add_child(FieldObjectId id, std::string &e) {
       std::find(state_.children.begin(), state_.children.end(), id) !=
           state_.children.end())
     return fail(e, "Native root actual add_child source boundary rejected");
-  auto tree = registry_->tree_owner(id);
+  auto tree = external_.count(id) ? std::shared_ptr<FieldNodeTreeRuntime>()
+                                    : registry_->tree_owner(id);
   External *external = nullptr;
   FieldGlobalExternalState prior;
   if (tree) {
@@ -509,7 +546,8 @@ bool PodunkNativeRoot::remove_child(FieldObjectId id, std::string &e) {
       position == state_.children.end())
     return fail(e, "Native root remove_child actual source parent rejected");
 
-  auto tree = registry_->tree_owner(id);
+  auto tree = external_.count(id) ? std::shared_ptr<FieldNodeTreeRuntime>()
+                                    : registry_->tree_owner(id);
   if (tree) {
     if (!tree->exit(e))
       return poison(e, e);
@@ -582,7 +620,8 @@ bool PodunkNativeRoot::move_child(FieldObjectId id, int32_t index,
     e.clear();
     return true;
   }
-  auto tree = registry_->tree_owner(id);
+  auto tree = external_.count(id) ? std::shared_ptr<FieldNodeTreeRuntime>()
+                                    : registry_->tree_owner(id);
   External *owner = nullptr;
   FieldGlobalExternalState actual;
   if (tree && !child_notification_)

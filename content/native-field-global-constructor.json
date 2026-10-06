@@ -1,0 +1,685 @@
+{
+  "schema": 1,
+  "format": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739797,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "owner": "Scripts/global/global.gd",
+  "scene": "Scripts/global/global.tscn",
+  "source_sha256": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+  "scene_id": 3724723364,
+  "declarations": [
+    {
+      "name": "party",
+      "type_hint": "",
+      "kind": 5,
+      "value": [],
+      "role": 1
+    },
+    {
+      "name": "partyNpcs",
+      "type_hint": "",
+      "kind": 5,
+      "value": [],
+      "role": 2
+    },
+    {
+      "name": "partySpace",
+      "type_hint": "",
+      "kind": 5,
+      "value": [],
+      "role": 3
+    },
+    {
+      "name": "partyObjects",
+      "type_hint": "",
+      "kind": 5,
+      "value": [],
+      "role": 4
+    },
+    {
+      "name": "_persist_array",
+      "type_hint": "",
+      "kind": 5,
+      "value": [],
+      "role": 5
+    },
+    {
+      "name": "currentScene",
+      "type_hint": "Node",
+      "kind": 0,
+      "value": null,
+      "role": 6
+    },
+    {
+      "name": "currentCamera",
+      "type_hint": "GameCamera",
+      "kind": 0,
+      "value": null,
+      "role": 7
+    },
+    {
+      "name": "scene_transition",
+      "type_hint": "",
+      "kind": 8,
+      "value": "Scripts/global/SceneTransition.gd",
+      "role": 8
+    },
+    {
+      "name": "item",
+      "type_hint": "Item",
+      "kind": 0,
+      "value": null,
+      "role": 9
+    },
+    {
+      "name": "talker",
+      "type_hint": "KinematicBody2D",
+      "kind": 0,
+      "value": null,
+      "role": 10
+    },
+    {
+      "name": "in_cutscene",
+      "type_hint": "",
+      "kind": 1,
+      "value": false,
+      "role": 11
+    },
+    {
+      "name": "can_pause",
+      "type_hint": "",
+      "kind": 1,
+      "value": true,
+      "role": 12
+    },
+    {
+      "name": "entering_door",
+      "type_hint": "",
+      "kind": 1,
+      "value": false,
+      "role": 13
+    },
+    {
+      "name": "_phone_location",
+      "type_hint": "",
+      "kind": 4,
+      "value": "",
+      "role": 14
+    }
+  ],
+  "constants": [
+    {
+      "name": "GAME_VERSION",
+      "kind": 4,
+      "value": "0.4.1.0"
+    },
+    {
+      "name": "ACT",
+      "kind": 2,
+      "value": 2
+    },
+    {
+      "name": "LANGUAGES",
+      "kind": 5,
+      "value": [
+        "en",
+        "fr",
+        "it",
+        "ja",
+        "ko",
+        "es",
+        "es_ES",
+        "pt_BR",
+        "pl",
+        "de",
+        "ru",
+        "uk",
+        "zh_Hans_CN"
+      ]
+    },
+    {
+      "name": "LANGUAGES_DISABLED",
+      "kind": 5,
+      "value": []
+    },
+    {
+      "name": "LANGUAGE_DEFAULT",
+      "kind": 4,
+      "value": "en"
+    },
+    {
+      "name": "SAVE_NEW_GAME_PATH",
+      "kind": 4,
+      "value": "res://Data/save_new_game.yaml"
+    },
+    {
+      "name": "SAVE_DEFAULT_PATH",
+      "kind": 4,
+      "value": "res://Data/save_default.yaml"
+    },
+    {
+      "name": "POSSIBLE_PLAYABLE_MEMBERS",
+      "kind": 5,
+      "value": [
+        "ninten",
+        "ana",
+        "lloyd",
+        "teddy",
+        "pippi"
+      ]
+    }
+  ],
+  "signals": [
+    "cutscene_ended",
+    "flags_updated",
+    "locale_changed",
+    "inputs_changed",
+    "settings_changed",
+    "party_changed",
+    "scene_changed"
+  ],
+  "child_defaults": [
+    {
+      "id": 336655550,
+      "script": "Scripts/global/Slowmo.gd",
+      "fields": [
+        {
+          "name": "start_time",
+          "type_hint": "",
+          "kind": 0,
+          "value": null
+        },
+        {
+          "name": "length_ms",
+          "type_hint": "",
+          "kind": 0,
+          "value": null
+        },
+        {
+          "name": "start_value",
+          "type_hint": "",
+          "kind": 0,
+          "value": null
+        },
+        {
+          "name": "with_pitch",
+          "type_hint": "bool",
+          "kind": 1,
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": 4126312847,
+      "script": "Scripts/UI/mouse_hider.gd",
+      "fields": [
+        {
+          "name": "_mouse_position",
+          "type_hint": "",
+          "kind": 7,
+          "value": [
+            0,
+            0
+          ]
+        },
+        {
+          "name": "_mouse_shown_time",
+          "type_hint": "",
+          "kind": 3,
+          "value": 0.0
+        },
+        {
+          "name": "_mouse_hidden_time",
+          "type_hint": "",
+          "kind": 3,
+          "value": 0.0
+        },
+        {
+          "name": "_mouse_idle_time",
+          "type_hint": "",
+          "kind": 3,
+          "value": 0.0
+        }
+      ]
+    }
+  ],
+  "recipe": {
+    "schema": 1,
+    "kind": "encore.field-node-recipe.source-ir",
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scene": "Scripts/global/global.tscn",
+    "scene_id": 1778710872,
+    "source_sha256": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "sources": {
+      "Scripts/global/global.tscn": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+      "Scripts/global/MouseHider.tscn": "173f790810a7ba73e48ae28ad1f669f550e6c797abf00a19968371cca0ef6725",
+      "Scripts/UI/mouse_hider.gd": "aabbedde95fa75cfdf360cc40588a29f3f01e6d1cd7b8b77667d9a1af26bf592",
+      "Scripts/global/Slowmo.tscn": "29947f48e27f4c15b6fda3edc7425ffc78d8fa650db5a08d4d4ac99eee5cccf7",
+      "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+      "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
+    },
+    "native_sha256": "a24266ea7a985deb3906ce6aca8a9775990e9f9695db8081572965103d315967",
+    "tree_export_sha256": "8cc5ee91c15ffbade0779d915370c55606bbbbda5ab011fdd939aabf4ae6d81d",
+    "source_receipt_sha256": "a0da169fd00053d9603eae72729d0ea82c7a6ad5c0c5980929fd0374941d5d32",
+    "case_aliases": {},
+    "exporter_sha256": "d32fb3679db920f886e46f0ed69f7baa80930d63e6e26d172d85f018c6322b2e",
+    "classes": [
+      "Node",
+      "Node2D",
+      "Sprite",
+      "VisibilityNotifier2D",
+      "Position2D",
+      "CollisionShape2D",
+      "AnimationPlayer",
+      "Area2D",
+      "Timer",
+      "KinematicBody2D",
+      "VisibilityEnabler2D",
+      "TextureRect",
+      "HBoxContainer",
+      "Label",
+      "AudioStreamPlayer",
+      "RayCast2D",
+      "AnimatedSprite",
+      "StaticBody2D",
+      "CollisionPolygon2D",
+      "TileMap",
+      "YSort",
+      "Camera2D",
+      "AudioStreamPlayer2D",
+      "Tween",
+      "ReferenceRect",
+      "CanvasLayer",
+      "Control",
+      "NinePatchRect",
+      "GridContainer",
+      "RichTextLabel",
+      "VScrollBar",
+      "PanelContainer",
+      "ColorRect",
+      "CenterContainer",
+      "MarginContainer",
+      "VBoxContainer",
+      "TextureButton",
+      "ScrollContainer",
+      "HScrollBar",
+      "TextureProgress",
+      "Panel",
+      "Path2D",
+      "PathFollow2D"
+    ],
+    "script_methods": [
+      "_ready",
+      "_enter_tree",
+      "_exit_tree",
+      "_input",
+      "_unhandled_input",
+      "_unhandled_key_input",
+      "_process",
+      "_physics_process"
+    ],
+    "script_null_overrides": {},
+    "records": [
+      {
+        "native_generated": false,
+        "id": 1778710872,
+        "node": ".",
+        "name": "Node2D",
+        "class_index": 1,
+        "native_class": "Node2D",
+        "parent": 0,
+        "owner": 0,
+        "canvas_parent": 0,
+        "index": -1,
+        "pause": 2,
+        "priority": 0,
+        "flags": 67,
+        "z": 0,
+        "light_mask": 1,
+        "local": [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "world": [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "modulate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "self_modulate": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "groups": [],
+        "script": "Scripts/global/global.gd",
+        "script_sha": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "script_methods": 9,
+        "ready": 3
+      },
+      {
+        "native_generated": false,
+        "id": 4153358996,
+        "node": "Playtimer",
+        "name": "Playtimer",
+        "class_index": 8,
+        "native_class": "Timer",
+        "parent": 1778710872,
+        "owner": 1778710872,
+        "canvas_parent": 0,
+        "index": 0,
+        "pause": 0,
+        "priority": 0,
+        "flags": 0,
+        "z": 0,
+        "light_mask": 0,
+        "local": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "world": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "modulate": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "self_modulate": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "groups": [],
+        "script": "",
+        "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+        "script_methods": 0,
+        "ready": 0
+      },
+      {
+        "native_generated": false,
+        "id": 336655550,
+        "node": "Slowmo",
+        "name": "Slowmo",
+        "class_index": 0,
+        "native_class": "Node",
+        "parent": 1778710872,
+        "owner": 1778710872,
+        "canvas_parent": 0,
+        "index": 1,
+        "pause": 0,
+        "priority": 0,
+        "flags": 0,
+        "z": 0,
+        "light_mask": 0,
+        "local": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "world": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "modulate": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "self_modulate": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "groups": [],
+        "script": "Scripts/global/Slowmo.gd",
+        "script_sha": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+        "script_methods": 65,
+        "ready": 1
+      },
+      {
+        "native_generated": false,
+        "id": 4126312847,
+        "node": "MouseHider",
+        "name": "MouseHider",
+        "class_index": 0,
+        "native_class": "Node",
+        "parent": 1778710872,
+        "owner": 1778710872,
+        "canvas_parent": 0,
+        "index": 2,
+        "pause": 0,
+        "priority": 0,
+        "flags": 0,
+        "z": 0,
+        "light_mask": 0,
+        "local": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "world": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "modulate": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "self_modulate": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "groups": [],
+        "script": "Scripts/UI/mouse_hider.gd",
+        "script_sha": "aabbedde95fa75cfdf360cc40588a29f3f01e6d1cd7b8b77667d9a1af26bf592",
+        "script_methods": 73,
+        "ready": 2
+      }
+    ],
+    "controls": [],
+    "canvas_layers": [],
+    "scene_admitted": false,
+    "pending": [
+      "Native CanvasLayer external Viewport/World2D must be supplied by real host at ENTER",
+      "Every native class and inherited script requires actual typed owner callbacks",
+      "RichTextLabel native VScrollBar children retained; no fake Control Ready/layout/render approval",
+      "Source timers/animations/fonts/audio/signals owned by independent checked consumers"
+    ]
+  },
+  "timer": {
+    "id": 4153358996,
+    "scene": 1778710872,
+    "scene_sha": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "mode": 1,
+    "wait": 1.0,
+    "flags": 0,
+    "script_sha": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "transition": {
+    "source": "Scripts/global/SceneTransition.gd",
+    "id": 3130296412,
+    "native": "Node",
+    "name": "",
+    "script_methods": 0,
+    "descriptor": {
+      "native_generated": false,
+      "id": 3130296412,
+      "node": ".",
+      "name": "",
+      "class_index": 0,
+      "native_class": "Node",
+      "parent": 0,
+      "owner": 0,
+      "canvas_parent": 0,
+      "index": -1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "Scripts/global/SceneTransition.gd",
+      "script_sha": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+      "script_methods": 0,
+      "ready": 0
+    }
+  },
+  "ready_steps": [
+    "_set_localized_default_inputs()",
+    "_load_settings()",
+    "partySpace.resize(255)",
+    "add_child(scene_transition)",
+    "_init_player()",
+    "_load_default_save()"
+  ],
+  "sources": {
+    "Scripts/global/global.tscn": "ad0c1a311c7f71b5baace992eea9e7b4c02e0c86185b12fb6229e8447a86dc16",
+    "Scripts/global/MouseHider.tscn": "173f790810a7ba73e48ae28ad1f669f550e6c797abf00a19968371cca0ef6725",
+    "Scripts/UI/mouse_hider.gd": "aabbedde95fa75cfdf360cc40588a29f3f01e6d1cd7b8b77667d9a1af26bf592",
+    "Scripts/global/Slowmo.tscn": "29947f48e27f4c15b6fda3edc7425ffc78d8fa650db5a08d4d4ac99eee5cccf7",
+    "Scripts/global/Slowmo.gd": "0e0f358342b9fca753e74f8ee51a8d3f0d945e15676fbafa6cf5063d20eb17a8",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270"
+  },
+  "scene_admitted": false,
+  "pending": [
+    "First Ready _set_localized_default_inputs and following _load_settings/_init_player require actual independent owners",
+    "Slowmo and MouseHider source Ready/process are retained, not constructor admission of their later actions"
+  ]
+}

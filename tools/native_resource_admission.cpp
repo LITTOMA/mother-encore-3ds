@@ -7,6 +7,7 @@
 #include "encore/global_data_constructor.hpp"
 #include "encore/field_character_load.hpp"
 #include "encore/global_load.hpp"
+#include "encore/field_global_constructor.hpp"
 #include <limits>
 #include <iostream>
 
@@ -35,13 +36,14 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
   if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
   if(argc>=18 && std::string(argv[15])!="--global-constructor") return 2;
   if(argc>=23 && std::string(argv[18])!="--global-characters") return 2;
-  if(argc==26 && std::string(argv[23])!="--global-load") return 2;
+  if(argc>=26 && std::string(argv[23])!="--global-load") return 2;
+  if(argc==30 && std::string(argv[26])!="--global-node-constructor") return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -134,7 +136,7 @@ int main(int argc, char **argv) {
            !characters.load_file(argv[19],expected_characters,error)) {
           std::cerr<<"Global Character LOAD format: "<<error<<'\n';return 1;
         }
-        if(argc==26) {
+        if(argc>=26) {
           FieldGlobalFlagsData flags;
           GlobalLoadData load;
           if(!flags.load_file(argv[25],error) ||
@@ -151,6 +153,20 @@ int main(int argc, char **argv) {
       std::cout<<"Global complete constructor format admitted: "
                <<constructor.declarations().size()<<" declarations / "
                <<constructor.objects().size()<<" owned member objects\n";
+    }
+    if(argc==30) {
+      FieldGlobalConstructorData node_constructor;
+      FieldIdentity expected_node;
+      expected_node.upstream_commit=identity.upstream_commit;
+      if(!number(argv[28],expected_node.scene_id)||!hex(argv[29],expected_node.source_sha256))return 2;
+      const FieldGlobalAutoload *source=nullptr;
+      for(const auto &a:registry.autoloads())if(a.id==registry.global_autoload())source=&a;
+      FieldGlobalExternalSpec node_spec;
+      if(source){node_spec.identity=registry.identity();node_spec.stable_id=source->id;node_spec.role=3;node_spec.name=source->name;node_spec.native_class=source->native_class;node_spec.source=source->path;node_spec.script=source->script;node_spec.source_sha=source->source_sha;node_spec.script_sha=source->script_sha;}
+      if(!source||!node_constructor.load_file(argv[27],expected_node,error)||!node_constructor.bind_registry(node_spec,error)){
+        std::cerr<<"Global Node constructor format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"Global Node constructor format admitted: "<<node_constructor.recipe().records().size()<<" source native nodes\n";
     }
     std::cout<<"Global YAML source formats admitted: "<<caches.records().size()
              <<" source records / "<<caches.getters().size()<<" getters\n";

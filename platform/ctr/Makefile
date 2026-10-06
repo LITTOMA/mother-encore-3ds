@@ -46,6 +46,7 @@ SOURCES += runtime/global_yaml_file.cpp runtime/global_yaml_file_data.cpp
 SOURCES += runtime/global_data_constructor.cpp runtime/global_data_constructor_data.cpp platform/ctr/podunk_global_data_singleton.cpp
 SOURCES += runtime/field_character_load.cpp runtime/field_character_load_data.cpp
 SOURCES += runtime/global_load_runtime.cpp runtime/global_load_data.cpp
+SOURCES += runtime/field_global_constructor.cpp runtime/field_global_constructor_data.cpp platform/ctr/podunk_global_host.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

@@ -13,7 +13,7 @@ CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room bat
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 CONTENT_TASKS += field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
 CONTENT_TASKS += field-native-root field-global-data field-dialogue-root-script
-CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-directory global-yaml-file global-data-constructor field-character-load global-load
+CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-directory global-yaml-file global-data-constructor field-character-load global-load field-global-constructor
 .PHONY: global-item-definitions global-yaml-caches global-data-constructor
 .PHONY: field-native-root field-global-data field-dialogue-root-script
 .PHONY: field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
@@ -272,3 +272,7 @@ field-character-load: global-item-definitions global-data-constructor
 .PHONY: global-load
 global-load: global-data-constructor field-character-load field-global-flags global-yaml-file global-item-definitions
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/global_load.py compile
+
+.PHONY: field-global-constructor
+field-global-constructor: field-global-data
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_global_constructor.py compile

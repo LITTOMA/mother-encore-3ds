@@ -214,7 +214,7 @@ bool FieldPresentRuntime::idle_frame(double delta, bool processing,
   for (auto &s : states_) {
     if (!s.alive)
       continue;
-    if (s.child_ready && s.sparkle_playing) {
+    if (!sparkles_owner_ && s.child_ready && s.sparkle_playing) {
       float remaining = float(delta);
       while (remaining) {
         if (s.sparkle_timeout <= 0) {
@@ -235,6 +235,65 @@ bool FieldPresentRuntime::idle_frame(double delta, bool processing,
       return false;
   }
   e.clear();
+  return true;
+}
+bool FieldPresentRuntime::bind_sparkles_leaf_owner(
+    FieldPresentSparklesLeafOwner &owner, std::string &e) {
+  if (!data_ || sparkles_owner_) {
+    e = "Present native Sparkles owner already bound/uninitialized";
+    return false;
+  }
+  for (const auto &b : data_->bindings())
+    if (!owner.admit(*data_, b, e))
+      return false;
+  sparkles_owner_ = &owner;
+  return true;
+}
+bool FieldPresentRuntime::idle_sparkles_leaf(uint32_t child, double delta,
+                                             bool processing, std::string &e) {
+  if (!data_ || !sparkles_owner_ || !std::isfinite(delta) || delta < 0 ||
+      delta > 1) {
+    e = "Present native Sparkles leaf delta/owner rejected";
+    return false;
+  }
+  const FieldPresentBinding *b = nullptr;
+  for (const auto &v : data_->bindings())
+    if (v.sparkles_id == child) {
+      b = &v;
+      break;
+    }
+  auto *s = b ? mutable_state(b->id) : nullptr;
+  if (!b || !s || !s->alive || !s->child_ready ||
+      !sparkles_owner_->admit(*data_, *b, e)) {
+    e = "Present actual live Sparkles child rejected";
+    return false;
+  }
+  if (!processing || !s->sparkle_playing)
+    return true;
+  float remaining = float(delta);
+  while (remaining) {
+    if (s->sparkle_timeout <= 0) {
+      s->sparkle_timeout = float(
+          1.0 / double(float(data_->sparkle_speed() * data_->sparkle_scale())));
+      const bool finished =
+          s->sparkle_frame >= data_->sparkle_frames().size() - 1;
+      s->sparkle_frame = finished ? 0 : s->sparkle_frame + 1;
+      if (finished &&
+          !sparkles_owner_->signal(
+              child, FieldPresentSparklesEvent::AnimationFinished, e))
+        return false;
+      if (!sparkles_owner_->signal(child,
+                                   FieldPresentSparklesEvent::FrameChanged, e))
+        return false;
+    }
+    const float step = std::min(remaining, s->sparkle_timeout);
+    if (!std::isfinite(step) || step < 0) {
+      e = "Present Sparkles reentrant native clock rejected";
+      return false;
+    }
+    remaining -= step;
+    s->sparkle_timeout -= step;
+  }
   return true;
 }
 bool FieldPresentRuntime::area_left(bool region_changed, std::string &e) {

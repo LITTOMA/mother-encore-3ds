@@ -1022,7 +1022,7 @@ bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
   case FieldSceneRole::Sparkles:
     if (!consumers_.sparkles)
       return unavailable("Sparkles actual source consumer missing");
-    if (!consumers_.sparkles->instance(n.id) &&
+    if (!consumers_.sparkles->source_constructed(n.id) &&
         !consumers_.sparkles->create(n.id)) {
       e = consumers_.sparkles->error();
       return false;
@@ -1337,6 +1337,33 @@ bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
     return false;
   admissions_.emplace(
       n.id, FieldSceneScriptAdmission{n.id, family, capability, n.sha});
+  return true;
+}
+bool FieldSceneHost::construct_camera_arrows(uint32_t id, std::string &e) {
+  if (!data_ || poisoned_ || !consumers_.arrows || !consumers_.arrows_data ||
+      consumers_.arrows->data() != consumers_.arrows_data ||
+      !consumers_.arrows_data->record(id) ||
+      consumers_.arrows->root_state(id)) {
+    e = "MapArrows actual source constructor owner rejected";
+    return false;
+  }
+  bool found = false;
+  for (uint32_t i = 0; i < data_->ready_count(); ++i) {
+    const auto row = data_->ready(i);
+    if (row.id == id && row.role == FieldSceneRole::MapArrows &&
+        row.sha == consumers_.arrows_data->script_sha()) {
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    e = "MapArrows constructor is outside actual source roster";
+    return false;
+  }
+  if (!consumers_.arrows->create_source_constructor(id)) {
+    e = consumers_.arrows->error();
+    return false;
+  }
   return true;
 }
 bool FieldSceneHost::ready_next(std::string &e) {

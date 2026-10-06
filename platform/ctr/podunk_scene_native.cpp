@@ -1,4 +1,5 @@
 #include "podunk_scene_native.hpp"
+#include "podunk_scene_animated_leaves.hpp"
 #include "field_canvas_art_renderer.hpp"
 #include "podunk_player_effect_owners.hpp"
 // This existing primitive's compact statements predate this owner. Keep its
@@ -361,6 +362,15 @@ bool PodunkSceneNative::finish_factory(std::string &e) {
   e.clear();
   return true;
 }
+bool PodunkSceneNative::bind_animated_leaves(PodunkSceneAnimatedLeaves &owner,
+                                             std::string &e) {
+  if (!finished_ || animated_leaves_ || owner.tree() != tree_ ||
+      owner.registry() != registry_ || owner.source() != data_)
+    return fail(
+        e, "Scene native animated leaves require same actual source owner");
+  animated_leaves_ = &owner;
+  return true;
+}
 bool PodunkSceneNative::bind_foreign(PodunkPlayerHost &player,
                                      const PlayerInitializationData &initial,
                                      PodunkConcretePlayerEffectOwners &effects,
@@ -617,6 +627,8 @@ bool PodunkSceneNative::begin_draw(uint64_t epoch, float delta,
   draw_epoch_ = epoch;
   draw_started_ = true;
   art_gpu_->begin_frame();
+  if (animated_leaves_ && !animated_leaves_->begin_draw(epoch, e))
+    return false;
   e.clear();
   return true;
 }
@@ -637,12 +649,30 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
     uint32_t index;
     FieldColor color;
     bool foreign = false;
+    bool animated = false;
   };
   std::vector<Command> commands;
   std::map<FieldObjectId, FieldCanvasOrderSlot> slots;
   std::vector<FieldCanvasOrderSlot> foreign_slots;
+  std::vector<FieldObjectId> animated_slots;
   for (const auto &s : canvas_.canvas_order()) {
     slots.emplace(s.object, s);
+    const auto *n = tree_->descriptor(s.object);
+    if (!s.foreign && n && n->native_class == "AnimatedSprite") {
+      if (!animated_leaves_ || !animated_leaves_->owns(s.object) ||
+          !animated_leaves_->drawable(s.object))
+        return fail(
+            e, "Scene native AnimatedSprite has no actual source leaf owner");
+      commands.push_back({s.z,
+                          s.native_order,
+                          0,
+                          false,
+                          uint32_t(animated_slots.size()),
+                          {},
+                          false,
+                          true});
+      animated_slots.push_back(s.object);
+    }
     if (s.foreign && s.foreign_drawable) {
       commands.push_back({s.z,
                           s.native_order,
@@ -699,7 +729,11 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
       return materials_->draw(a, c, w, h, error);
     };
   for (const auto &c : commands) {
-    if (c.foreign) {
+    if (c.animated) {
+      if (!animated_leaves_ ||
+          !animated_leaves_->draw(animated_slots.at(c.index), camera, e))
+        return false;
+    } else if (c.foreign) {
       if (!foreign_ || !foreign_->draw(foreign_slots.at(c.index),
                                        viewport.canvas, art_->pixel_snap(), e))
         return false;

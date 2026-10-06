@@ -50,6 +50,7 @@ public:
  bool set_frame(uint32_t,int32_t);bool speed_scale(uint32_t,float);bool play(uint32_t,bool backwards=false);bool stop(uint32_t);bool visibility(uint32_t,bool);bool idle_frame(uint32_t,float);bool destroy(uint32_t);
  // Borrowed children expose only authoritative parent snapshots. idle_frame
  // and generic setters reject those IDs: their one owner advances/changes them.
+ bool source_constructed(uint32_t id)const{return created_.count(id)!=0;}
  bool snapshot(uint32_t,FieldSparklesInstance&);bool draw(uint32_t,FieldSparklesDraw&);const FieldSparklesInstance*instance(uint32_t)const;const std::string&error()const{return error_;}const FieldSparklesData*data()const{return data_;}
 private:
  const FieldSparklesData*data_=nullptr;SourceRandom*random_=nullptr;FieldSparklesHost host_;std::map<uint32_t,FieldSparklesInstance>instances_;std::string error_;bool poisoned_=false,had_ready_=false;uint32_t last_ready_=0;

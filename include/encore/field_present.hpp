@@ -46,15 +46,25 @@ struct FieldPresentState {
 };
 // Scene scheduler invokes child/parent Ready at the actual published postorder,
 // never an eager bundle that changes interleaved NPC/Enemy shared RNG draws.
+enum class FieldPresentSparklesEvent { FrameChanged, AnimationFinished };
+class FieldPresentSparklesLeafOwner {
+public:
+ virtual ~FieldPresentSparklesLeafOwner()=default;
+ virtual bool admit(const FieldPresentData&,const FieldPresentBinding&,std::string&)const=0;
+ virtual bool signal(uint32_t child,FieldPresentSparklesEvent,std::string&)=0;
+};
 class FieldPresentRuntime {
 public:
  bool initialize(const FieldPresentData&,FieldPresentHost,std::string&);
  bool ready_sparkles(uint32_t child,SourceRandom&,std::string&);bool ready_present(uint32_t parent,std::string&);
  bool interact(uint32_t,std::string&);bool area_left(bool region_changed,std::string&);bool exit_tree(uint32_t,std::string&);
  bool idle_frame(double delta,bool tree_idle_processing,std::string&);
+ bool bind_sparkles_leaf_owner(FieldPresentSparklesLeafOwner&,std::string&);
+ bool idle_sparkles_leaf(uint32_t child,double delta,bool can_process,std::string&);
  const FieldPresentState*state(uint32_t)const;const FieldPresentData*content()const{return data_;}
 private:
  FieldPresentState*mutable_state(uint32_t);bool update_state(FieldPresentState&,const FieldPresentBinding&,std::string&);bool play(FieldPresentState&,bool wrapped,std::string&);bool animate(FieldPresentState&,const FieldPresentBinding&,float,std::string&);
+ FieldPresentSparklesLeafOwner*sparkles_owner_=nullptr;
  const FieldPresentData*data_=nullptr;FieldPresentHost host_;std::vector<FieldPresentState>states_;
 };
 }

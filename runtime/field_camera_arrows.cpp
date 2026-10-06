@@ -25,12 +25,78 @@ bool FieldCameraArrowsRuntime::initialize_borrowed(const FieldCameraArrowsData&d
  native_=&native;return true;
 }
 float FieldCameraArrowsRuntime::duration(uint32_t id)const{auto*s=data_->sprite(id);return float(1.0/double(s->animation_speed*s->speed_scale));}
-bool FieldCameraArrowsRuntime::create(uint32_t id){if(!data_||poisoned_||roots_.count(id))return fail("MapArrows create rejected");auto*d=data_->record(id);if(!d)return fail("MapArrows source root rejected");FieldArrowRootState r;r.id=id;r.visible=d->visible;r.position=d->position;roots_.emplace(id,r);if(native_)return publish(roots_.at(id));for(auto aid:d->arrows){auto*a=data_->sprite(aid);FieldArrowSpriteState s;s.id=aid;s.position=a->position;s.offset=a->offset;s.frame=a->frame;s.visible=a->flags&1;s.playing=a->flags&2;s.timeout=s.playing?duration(aid):0;sprites_.emplace(aid,s);if(!publish(sprites_.at(aid)))return false;}for(const auto&p:data_->players()){auto*a=data_->sprite(p.target_root);if(p.target_root!=id&&(!a||a->root_id!=id))continue;FieldArrowPlayerState s;s.id=p.id;players_.emplace(p.id,s);}return publish(roots_.at(id));}
-bool FieldCameraArrowsRuntime::ready(uint32_t id){auto*r=get(id,false);if(!r)return false;auto*d=data_->record(id);if(r->ready||(had_ready_&&d->ready<=last_ready_))return fail("MapArrows source Ready order rejected");FieldArrowObservation o;if(!observe(id,o)||!o.descendants_ready)return fail("MapArrows source native child Ready missing");r->ready=true;
- // Original Dictionary.values order UP,DOWN,LEFT,RIGHT. Connections are made
- // here during source _ready, not earlier while the factory tree is created.
- for(auto aid:d->arrows){auto*p=data_->player_for_target(aid);if(!host_.connect_animation_finished(p->id,[this,id=aid](uint32_t role){return on_animation_finished(id,role);},error_)){poisoned_=true;return false;}}
- r->show_arrows=r->visible;had_ready_=true;last_ready_=d->ready;return refresh(*r,true);
+bool FieldCameraArrowsRuntime::create(uint32_t id) {
+  return create_body(id, true);
+}
+bool FieldCameraArrowsRuntime::create_source_constructor(uint32_t id) {
+  return create_body(id, false);
+}
+bool FieldCameraArrowsRuntime::create_body(uint32_t id, bool publish_native) {
+  if (!data_ || poisoned_ || roots_.count(id))
+    return fail("MapArrows create rejected");
+  auto *d = data_->record(id);
+  if (!d)
+    return fail("MapArrows source root rejected");
+  FieldArrowRootState r;
+  r.id = id;
+  r.visible = d->visible;
+  r.position = d->position;
+  roots_.emplace(id, r);
+  if (native_)
+    return !publish_native || publish(roots_.at(id));
+  for (auto aid : d->arrows) {
+    auto *a = data_->sprite(aid);
+    FieldArrowSpriteState s;
+    s.id = aid;
+    s.position = a->position;
+    s.offset = a->offset;
+    s.frame = a->frame;
+    s.visible = a->flags & 1;
+    s.playing = a->flags & 2;
+    s.timeout = s.playing ? duration(aid) : 0;
+    sprites_.emplace(aid, s);
+    if (publish_native && !publish(sprites_.at(aid)))
+      return false;
+  }
+  for (const auto &p : data_->players()) {
+    auto *a = data_->sprite(p.target_root);
+    if (p.target_root != id && (!a || a->root_id != id))
+      continue;
+    FieldArrowPlayerState s;
+    s.id = p.id;
+    players_.emplace(p.id, s);
+  }
+  return !publish_native || publish(roots_.at(id));
+}
+bool FieldCameraArrowsRuntime::ready(uint32_t id) {
+  auto *r = get(id, false);
+  if (!r)
+    return false;
+  auto *d = data_->record(id);
+  if (r->ready || (had_ready_ && d->ready <= last_ready_))
+    return fail("MapArrows source Ready order rejected");
+  FieldArrowObservation o;
+  if (!observe(id, o) || !o.descendants_ready)
+    return fail("MapArrows source native child Ready missing");
+  r->ready = true;
+  // Original Dictionary.values order UP,DOWN,LEFT,RIGHT. Connections are made
+  // here during source _ready, not earlier while the factory tree is created.
+  for (auto aid : d->arrows) {
+    auto *p = data_->player_for_target(aid);
+    if (!host_.connect_animation_finished(
+            p->id,
+            [this, id = aid](uint32_t role) {
+              return on_animation_finished(id, role);
+            },
+            error_)) {
+      poisoned_ = true;
+      return false;
+    }
+  }
+  r->show_arrows = r->visible;
+  had_ready_ = true;
+  last_ready_ = d->ready;
+  return refresh(*r, true);
 }
 bool FieldCameraArrowsRuntime::play(uint32_t id,uint32_t role,float scale,bool from_end){auto i=players_.find(id);auto*d=data_->player(id);if(poisoned_||!d||(!native_&&(i==players_.end()||!i->second.alive))||!std::isfinite(scale)||scale<0||scale>1024)return fail("MapArrows play rejected");auto*c=data_->clip(d->profile,role);if(!c)return fail("MapArrows clip rejected");if(native_)return native_->play(id,c->name,scale,from_end,error_)||(poisoned_=true,false);auto&s=i->second;if(s.assigned!=role)s.time=from_end?c->length:0;else if(from_end&&s.time==0)s.time=c->length;else if(!from_end&&s.time==c->length)s.time=0;s.assigned=role;s.scale=scale;s.playing=true;if(!host_.animation_signal(id,true,role,error_)){poisoned_=true;return false;}return true;}
 bool FieldCameraArrowsRuntime::refresh(FieldArrowRootState&r,bool instant){auto*p=data_->player_for_target(r.id);if(!play(p->id,r.show_arrows?1:2,instant?0:1,instant))return false;return publish(r);}

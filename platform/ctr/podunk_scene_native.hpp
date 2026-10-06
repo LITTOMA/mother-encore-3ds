@@ -13,6 +13,7 @@ namespace encore::ctr {
 class PodunkPlayerHost;
 class PodunkConcretePlayerEffectOwners;
 class PodunkPlayerCanvasForeign;
+class PodunkSceneAnimatedLeaves;
 struct PodunkSceneMaterialState {
   upstream::FieldObjectId material = 0;
   std::string shader_source;
@@ -55,6 +56,7 @@ public:
   bool bind(upstream::FieldObjectId, const upstream::FieldNodeBinding &,
             std::string &);
   bool finish_factory(std::string &);
+  bool bind_animated_leaves(PodunkSceneAnimatedLeaves &, std::string &);
   bool bind_foreign(PodunkPlayerHost &,
                     const upstream::PlayerInitializationData &,
                     PodunkConcretePlayerEffectOwners &,
@@ -102,6 +104,7 @@ private:
   std::unique_ptr<FieldMapRenderer> map_gpu_;
   std::unique_ptr<FieldCanvasArtRenderer> art_gpu_;
   std::unique_ptr<PodunkPlayerCanvasForeign> foreign_;
+  PodunkSceneAnimatedLeaves *animated_leaves_ = nullptr;
   upstream::FieldCanvasArtRuntime canvas_;
   std::map<upstream::FieldObjectId, Instance> instances_;
   std::map<uint32_t, upstream::FieldObjectId> source_objects_;

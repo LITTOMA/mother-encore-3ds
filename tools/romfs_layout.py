@@ -17,8 +17,28 @@ EXTENSIONS = {
     'data': (set(SUFFIXES.values()) - BANK_TYPES - FONT_TYPES) | {'.encfx', '.encresources'},
 }
 
+# FieldSceneBundle owns its internal typed packs, which are selected through
+# that checked bundle rather than separate top-level catalog entries. Derive
+# their categories from the same producer recipe used to build/admit it.
+def bundle_extensions():
+    from pathlib import Path
+    import json
+    recipe = json.loads((Path(__file__).resolve().parents[1] /
+                         'content/podunk-bundle-recipe.json').read_text(encoding='utf-8'))
+    result = {}
+    for row in recipe['packs']:
+        path = PurePosixPath(row['path'])
+        if path.parts[0] != 'data' or not path.suffix:
+            raise ValueError('Invalid typed bundle pack category: ' + row['path'])
+        result.setdefault('data', set()).add(path.suffix)
+    result['shaders'] = {'.shbin'}
+    return result
+
 
 def check_layout(files):
+    types = {k: set(v) for k, v in EXTENSIONS.items()}
+    for category, suffixes in bundle_extensions().items():
+        types.setdefault(category, set()).update(suffixes)
     for entry in files:
         name = entry.as_posix() if isinstance(entry, PurePath) else str(entry)
         path = PurePosixPath(name)
@@ -31,7 +51,7 @@ def check_layout(files):
         if category == 'licenses':
             # release_notices separately checks the exact notice list and bytes.
             continue
-        if category not in EXTENSIONS or path.suffix not in EXTENSIONS[category]:
+        if category not in types or path.suffix not in types[category]:
             raise ValueError('Unclassified runtime resource: ' + name)
         if category == 'sound' and (len(path.parts) < 3 or
                 path.parts[1] not in ('music', 'effects', 'banks') or

@@ -13,6 +13,7 @@ bool same(const FieldOwnedItem &a, const FieldOwnedItem &b) {
 }
 } // namespace
 FieldGlobalDataRuntime::~FieldGlobalDataRuntime() {
+  god_items_.clear();
   items_.clear();
   if (registry_) {
     std::string error;
@@ -58,6 +59,7 @@ bool FieldGlobalDataRuntime::object_exists(FieldObjectId id) const {
   for (const auto &i : items_)
     if (i.object == id && i.registry == registry_ && i.actual_owner)
       return true;
+  for(const auto&i:god_items_)if(i.object==id&&i.registry==registry_&&i.actual_owner)return true;
   return false;
 }
 bool FieldGlobalDataRuntime::read_constructed_object(FieldObjectId id,
@@ -363,6 +365,128 @@ bool FieldGlobalDataRuntime::load_inventory_prefix(
   random = candidate_random;
   ledger.swap(candidate_ledger);
   prefix_ = true;
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::construct_god_storage(
+    GlobalItemCache &cache, const std::string &locale, SourceRandom &random,
+    std::vector<uint32_t> &ledger, LoadRngClockProvider clock,
+    FieldGlobalDataGodItemFactory factory, std::string &e) {
+  const auto *defs = cache.definitions();
+  if (!data_ || !registry_ || poisoned_ || god_storage_complete_ ||
+      !cache.directory_admitted() || cache.owner() != owner_ || !defs || !clock ||
+      !factory.reserve || !factory.initialize ||
+      defs->source_pin() != data_->identity().upstream_commit)
+    return fail(e, "GodStorage actual source cache/Ready cursor unavailable");
+  if (std::find(defs->constructor_sources().begin(),
+                defs->constructor_sources().end(),
+                data_->owner_source()) == defs->constructor_sources().end())
+    return fail(e, "GodStorage globalData cache constructor identity absent");
+  std::array<uint8_t, 32> a{}, b{};
+  for (const auto &path : defs->constructor_sources())
+    if (!data_->source_hash(path, a) || !defs->source_hash(path, b) || a != b)
+      return fail(e, "GodStorage source constructor proof differs");
+  for (const auto &r : defs->definitions())
+    if (!r.sorting_translations.count(locale))
+      return fail(e, "GodStorage source sort locale unsupported");
+  FieldObjectId inventory = 0;
+  if (!registry_->allocate_object(inventory, e))
+    return false;
+  auto next_random = random;
+  auto next_ledger = ledger;
+  std::vector<FieldGlobalDataItemReference> next;
+  auto abort = [&]() {
+    next.clear();
+    std::string ignored;
+    registry_->retire_object(inventory, ignored);
+    poisoned_ = true;
+    return false;
+  };
+  // Godot GDScript::_new allocates native Reference/ObjectDB first, then
+  // calls the initializer/default UID expression. Saved explicit UID
+  // argument expressions use a different earlier argument-evaluation cursor.
+  for (auto id : cache.insertion_order()) {
+    const auto *d = defs->definition(id);
+    FieldGlobalDataItemReference item;
+    if (!d ||
+        !factory.reserve(*defs, *registry_, defs->god_storage_id(), item, e))
+      return abort();
+    // Keep the reserved Reference alive throughout default-argument execution.
+    next.push_back(item);
+    std::vector<LoadUidAllocation> draw;
+    if (!apply_load_uid_allocations(next_random, next_ledger,
+                                    {{defs->god_storage_id(), 1}}, clock, e,
+                                    &draw))
+      return abort();
+    FieldOwnedItem value{d->id, draw.front().generated_uid, d->doses, false};
+    if (!factory.initialize(*defs, value, cache, item, e))
+      return abort();
+    next.pop_back();
+    if (!item.object || item.registry != registry_ || !item.actual_owner ||
+        item.owner != defs->god_storage_id() || !same(item.value, value)) {
+      e = "GodStorage actual Item Reference factory identity rejected";
+      return abort();
+    }
+    for (const auto &o : objects_)
+      if (o.object == item.object) {
+        e = "GodStorage Item aliases existing Object";
+        return abort();
+      }
+    if (item.object == inventory) {
+      e = "GodStorage Item aliases Inventory Reference";
+      return abort();
+    }
+    for (const auto &o : next)
+      if (o.object == item.object) {
+        e = "GodStorage duplicate Item Object";
+        return abort();
+      }
+    next.push_back(std::move(item));
+  }
+  // Reviewed source comparator is total for the admitted locale: loader
+  // rejects equal score+translated-name pairs. Thus std::sort yields the
+  // exact Godot sort_custom order without assuming stability on ties.
+  std::sort(next.begin(), next.end(), [&](const auto &a, const auto &b) {
+    const auto *x = defs->definition(a.value.definition);
+    const auto *y = defs->definition(b.value.definition);
+    return x->unequipped_sort_score != y->unequipped_sort_score
+               ? x->unequipped_sort_score > y->unequipped_sort_score
+               : x->sorting_translations.at(locale) <
+                     y->sorting_translations.at(locale);
+  });
+  FieldGlobalDataObject object;
+  object.object = inventory;
+  object.declaration = defs->god_storage_id();
+  object.kind = 2;
+  object.role = defs->god_storage_role();
+  object.fields = {
+      {defs->god_storage_type_field(), "", 2, int64_t(object.role)},
+      {defs->god_storage_items_field(), "", 3, 0}};
+  for (const auto &i : next)
+    object.item_objects.push_back(i.object);
+  objects_.push_back(std::move(object));
+  god_items_ = std::move(next);
+  random = next_random;
+  ledger = std::move(next_ledger);
+  // globaldata._ready assigns this member only AFTER Inventory.new returns.
+  god_storage_member_ = defs->god_storage_member();
+  god_storage_object_ = inventory;
+  god_storage_complete_ = true;
+  e.clear();
+  return true;
+}
+bool FieldGlobalDataRuntime::read_reference_member(FieldObjectId actual,
+                                                   const std::string &member,
+                                                   FieldObjectId &out,
+                                                   std::string &e) const {
+  if (!data_ || !data_->valid() || data_->ir_sha256() != admitted_ir_ ||
+      poisoned_ || actual != owner_ || !actual || !god_storage_complete_ ||
+      member != god_storage_member_ || !god_storage_object_ ||
+      !object_exists(god_storage_object_))
+    return fail(
+        e,
+        "globalData source Reference member absent/unassigned/foreign owner");
+  out = god_storage_object_;
   e.clear();
   return true;
 }

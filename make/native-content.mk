@@ -13,6 +13,8 @@ CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room bat
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 CONTENT_TASKS += field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
 CONTENT_TASKS += field-native-root field-global-data field-dialogue-root-script
+CONTENT_TASKS += global-item-definitions
+.PHONY: global-item-definitions
 .PHONY: field-native-root field-global-data field-dialogue-root-script
 .PHONY: field-goods field-global-flags field-dialogue-visual field-dialogue-audio field-ui-manager field-battle-bg-resources field-ui-preloads
 native-content: catalog encounters
@@ -216,6 +218,9 @@ field-native-root: field-global-registry
 
 field-global-data: field-inventory field-item-definitions
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_global_data.py compile
+
+global-item-definitions:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/global_item_definitions.py compile
 
 field-dialogue-root-script: field-node-recipe field-dialogue-life field-dialogue-ui
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_dialogue_root_script.py compile

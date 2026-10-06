@@ -53,6 +53,7 @@ add_library(encore_core
     runtime/field_global_registry_data.cpp
     runtime/field_native_root_data.cpp
     runtime/field_global_data.cpp runtime/field_global_data_data.cpp
+    runtime/global_item_cache.cpp
     runtime/field_dialogue_ui.cpp
     runtime/field_dialogue_ui_data.cpp
     runtime/field_inventory.cpp
@@ -927,6 +928,19 @@ if(BUILD_TESTING)
     add_test(NAME certified_texture_background COMMAND encore_certified_texture_background_tests)
     set_tests_properties(certified_texture_background PROPERTIES TIMEOUT 120)
 endif()
+# Runs only as part of the explicitly requested manual test suite.
+if(BUILD_TESTING)
+    add_executable(encore_global_item_definitions_manual tests/global_item_definitions_manual.cpp)
+    target_link_libraries(encore_global_item_definitions_manual PRIVATE encore_core)
+    add_test(NAME global_item_definitions_manual
+        COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/global_item_definitions_manual.py
+            --loader $<TARGET_FILE:encore_global_item_definitions_manual>
+            --global-pack ${CMAKE_SOURCE_DIR}/romfs/data/global.encfielditems
+            --scoped-pack ${CMAKE_SOURCE_DIR}/romfs/data/podunk.encfielditems
+            --work ${CMAKE_BINARY_DIR}/global-items-manual)
+    set_tests_properties(global_item_definitions_manual PROPERTIES TIMEOUT 60)
+endif()
+
 include(cmake/TestParallelism.cmake)
 
 # Resource writers finish before compilation or fixture preparers read packs.

@@ -1,6 +1,7 @@
 #pragma once
 #include "audio_player.hpp"
 #include "encore/field_global_registry.hpp"
+#include "encore/global_item_cache.hpp"
 #include "encore/field_openable_door.hpp"
 #include "field_goods_renderer.hpp"
 #include <memory>
@@ -16,6 +17,8 @@ private:
   friend class PodunkInventoryHost;
   upstream::FieldGlobalRegistry *allocator_ = nullptr;
   upstream::FieldObjectId allocated_ = 0;
+  bool constructing_=false;
+  int32_t constructor_doses_=0;
 
 public:
   PodunkItemObject() = default;
@@ -283,6 +286,53 @@ public:
     actual->owner = owner;
     actual->value = item;
     out = std::move(actual);
+    e.clear();
+    return true;
+  }
+  // Full source cache construction only, separate from scoped Goods. Native
+  // Reference reservation precedes _init default-argument UID execution.
+  static bool reserve_god_storage_item(
+      const upstream::FieldItemDefinitions &defs,
+      upstream::FieldGlobalRegistry &registry, uint32_t owner,
+      std::shared_ptr<PodunkItemObject> &out, std::string &e) {
+    if (!defs.valid() || !defs.global_constructor_scope() ||
+        owner != defs.god_storage_id())
+      return fail(e, "GodStorage source Reference reservation rejected");
+    upstream::FieldObjectId id = 0;
+    if (!registry.allocate_object(id, e))
+      return false;
+    auto actual = std::make_shared<PodunkItemObject>();
+    actual->object = actual->allocated_ = id;
+    actual->allocator_ = &registry;
+    actual->owner = owner;
+    actual->constructing_ = true;
+    out = std::move(actual);
+    e.clear();
+    return true;
+  }
+  static bool
+  initialize_god_storage_item(const std::shared_ptr<PodunkItemObject> &item,
+                              const upstream::FieldItemDefinitions &defs,
+                              const upstream::FieldOwnedItem &value,
+                              upstream::GlobalItemCache &cache,
+                              std::string &e) {
+    const auto *d = defs.definition(value.definition);
+    if (!item || !item->allocator_ ||
+        !check_source_item(item, *item->allocator_) || !item->constructing_ ||
+        item->owner != defs.god_storage_id() || cache.definitions() != &defs ||
+        !d || value.doses != d->doses || value.equipped)
+      return fail(e, "GodStorage actual Item initializer rejected");
+    // Source _init writes item_name, equipped, uid, then doses=-1, then
+    // get_data() mutates THIS cache record's string id before resolving doses.
+    item->value.definition = value.definition;
+    item->value.equipped = value.equipped;
+    item->value.uid = value.uid;
+    item->constructor_doses_ = -1;
+    if (cache.get_item_data(value.definition) != d)
+      return fail(e, "GodStorage actual cache dose lookup rejected");
+    item->value.doses = d->doses;
+    item->constructor_doses_ = int32_t(d->doses);
+    item->constructing_ = false;
     e.clear();
     return true;
   }

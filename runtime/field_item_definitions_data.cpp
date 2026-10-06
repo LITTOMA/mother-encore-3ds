@@ -2,6 +2,7 @@
 #include "encore/utf8.hpp"
 #include <algorithm>
 #include <cstring>
+#include <cmath>
 #include <fstream>
 #include <set>
 #include <tuple>
@@ -172,13 +173,14 @@ bool FieldItemDefinitions::load(const uint8_t *p, size_t n, std::string &e) {
     return false;
   };
   if (!p || n < 64 || n > 4 * 1024 * 1024 || std::memcmp(p, "ENCFIT01", 8) ||
-      u32(p + 8) != 2 || u32(p + 12) != n || u32(p + 16) != crc(p, n) ||
-      u32(p + 20) != 2 || u32(p + 24) != 1 ||
+      (u32(p + 8) != 2 && u32(p + 8) != 3) || u32(p + 12) != n || u32(p + 16) != crc(p, n) ||
+      u32(p + 20) != u32(p + 8) || u32(p + 24) != 1 ||
       (!u32(p + 28) || u32(p + 28) > 4096) ||
-      (!u32(p + 52) || u32(p + 52) > 4096) || !u32(p + 56) ||
+      ((u32(p + 8)==2 && !u32(p + 52)) || u32(p + 52) > 4096 || (u32(p + 8)==3 && u32(p + 52))) || !u32(p + 56) ||
       u32(p + 56) > 4096 || u32(p + 60))
     return fail("Field item schema/capabilities/rules/CRC rejected");
   FieldItemDefinitions d;
+  d.format_=u32(p+8);
   std::copy_n(p + 32, 20, d.pin_.begin());
   if (std::all_of(d.pin_.begin(), d.pin_.end(), [](uint8_t b) { return !b; }))
     return fail("Field item source pin absent");
@@ -203,12 +205,26 @@ bool FieldItemDefinitions::load(const uint8_t *p, size_t n, std::string &e) {
   uint64_t total = 0;
   for (auto &value : expected_coverage) {
     value = r.number();
-    if (!value || value > 4096)
+    if ((d.format_==2 && !value) || value > 4096)
       return fail("Field item source coverage capacity rejected");
     total += value;
   }
   if (!r.ok || total != u32(p + 52))
     return fail("Field item source coverage/header mismatch");
+  if (d.format_ == 3) {
+    d.god_storage_id_ = r.number();
+    d.god_storage_role_ = r.number();
+    d.god_storage_member_ = r.text();
+    d.god_storage_type_field_ = r.text();
+    d.god_storage_items_field_ = r.text();
+    if (!d.god_storage_id_ || d.god_storage_role_ >= 4 ||
+        !d.unbounded(d.god_storage_role_) || d.god_storage_member_.empty() ||
+        d.god_storage_type_field_.empty() || d.god_storage_items_field_.empty())
+      return fail("Global GodStorage source policy rejected");
+    r.texts(d.constructor_sources_);
+    if (d.constructor_sources_.size() != 3)
+      return fail("Global constructor source count rejected");
+  }
   std::set<uint32_t> ids;
   std::set<std::string> names;
   std::set<std::pair<uint32_t, uint32_t>> legacy;
@@ -246,7 +262,7 @@ bool FieldItemDefinitions::load(const uint8_t *p, size_t n, std::string &e) {
         !path(a.source) || a.item_name.empty() ||
         !names.insert(a.item_name).second || a.name_key.empty() ||
         a.sorting_key.empty() || a.description_key.empty() ||
-        a.article_key.empty() || !a.transform.empty() || actions > 256 ||
+        a.article_key.empty() || (d.format_==2 && !a.transform.empty()) || actions > 256 ||
         (a.legacy_domain == 2 && !a.keyitem()) ||
         (a.legacy_domain == 1 && a.keyitem()))
       return fail("Field item complete source definition rejected");
@@ -257,9 +273,73 @@ bool FieldItemDefinitions::load(const uint8_t *p, size_t n, std::string &e) {
       action.pending = r.boolean();
       action.name = r.text();
       action.textfail = r.text();
-      if (!r.ok || fn < 1 || fn > 3 || !action.pending)
+      if (!r.ok || fn < 1 || fn > (d.format_==3 ? 4u : 3u) || !action.pending)
         return fail("Field item unknown executable action rejected");
       a.actions.push_back(std::move(action));
+    }
+    if (d.format_ == 3) {
+      a.unequipped_sort_score = r.signed_number();
+      auto locales = r.number();
+      if (!locales || locales > 64)
+        return fail("Global item sorting locales rejected");
+      for (uint32_t j = 0; j < locales; ++j) {
+        auto locale = r.text(), text = r.text();
+        if (locale.empty() || text.empty() ||
+            !a.sorting_translations.emplace(locale, text).second)
+          return fail("Global item sorting translation rejected");
+      }
+      auto fields = r.number();
+      if (fields > 64)
+        return fail("Global item pending metadata capacity rejected");
+      for (uint32_t j = 0; j < fields; ++j) {
+        FieldItemPendingValue v;
+        v.field = r.number();
+        v.kind = r.number();
+        v.key = r.text();
+        v.text = r.text();
+        v.integer = r.signed_number();
+        auto lo = r.number(), hi = r.number();
+        uint64_t bits = uint64_t(lo) | uint64_t(hi) << 32;
+        std::memcpy(&v.real, &bits, 8);
+        bool shape = false;
+        switch (v.field) {
+        case 1:
+          shape = (v.key == "skill" || v.key == "dialog") && v.kind == 1;
+          shape = shape || (v.key == "target_type" && v.kind == 2) ||
+                  (v.key == "reusable" && v.kind == 3);
+          break;
+        case 2:
+        case 7:
+        case 8:
+        case 9:
+        case 11:
+          shape = v.key.empty() && v.kind == 1;
+          break;
+        case 3:
+          shape = v.key.empty() && v.kind == 3;
+          break;
+        case 4:
+          shape = !v.key.empty() && v.kind == 2;
+          break;
+        case 5:
+        case 6:
+          shape = v.kind == 1;
+          break;
+        case 10:
+          shape = !v.key.empty() && v.kind == 4;
+          break;
+        default:
+          break;
+        }
+        if (!r.ok || !shape || !std::isfinite(v.real) ||
+            (v.kind == 1 && (v.text.empty() || v.integer || v.real)) ||
+            (v.kind != 1 && !v.text.empty()) ||
+            (v.kind == 3 && (v.integer < 0 || v.integer > 1)) ||
+            (v.kind != 4 && v.real) ||
+            (v.kind == 4 && (v.integer || v.real < 0)))
+          return fail("Global item unknown pending metadata rejected");
+        a.pending_metadata.push_back(std::move(v));
+      }
     }
     d.definitions_.push_back(std::move(a));
   }
@@ -317,6 +397,30 @@ bool FieldItemDefinitions::load(const uint8_t *p, size_t n, std::string &e) {
     if (b.kind == FieldItemBindingKind::Programme &&
         !d.source_hash("Data/Dialogue/" + b.program + ".yaml", h))
       return fail("Field item programme proof absent");
+  }
+  if (d.format_ == 3) {
+    for (const auto &source : d.constructor_sources_)
+      if (!path(source) || !d.source_hash(source, h))
+        return fail("Global constructor source proof absent");
+    std::map<std::string, std::set<std::pair<int32_t, std::string>>> sort_keys;
+    const auto &first = d.definitions_.front().sorting_translations;
+    for (const auto &a : d.definitions_) {
+      if (a.legacy_domain || a.legacy_id ||
+          a.sorting_translations.size() != first.size())
+        return fail("Global item constructor domain/locales rejected");
+      if (!a.transform.empty() && !d.definition(a.transform))
+        return fail("Global item unknown transform target rejected");
+      for (const auto &text : a.sorting_translations)
+        if (!first.count(text.first) ||
+            !sort_keys[text.first]
+                 .emplace(a.unequipped_sort_score, text.second)
+                 .second)
+          return fail("Global item ambiguous source sort comparator rejected");
+      std::set<std::pair<uint32_t, std::string>> fields;
+      for (const auto &v : a.pending_metadata)
+        if (!fields.emplace(v.field, v.key).second)
+          return fail("Global item duplicate pending metadata rejected");
+    }
   }
   d.valid_ = true;
   *this = std::move(d);

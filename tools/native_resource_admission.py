@@ -100,7 +100,8 @@ def admit(resources):
         pending = executable.with_suffix('.pending')
         subprocess.run([compiler, *map(str, objects), '-Wl,--gc-sections', '-o', str(pending)], check=True)
         os.replace(pending, executable)
-    subprocess.run([str(executable), str(resources)], check=True)
+    subprocess.run([str(executable), str(resources), '--global-items',
+                    str(ROOT / 'romfs/data/global.encfielditems')], check=True)
 
 
 if __name__ == '__main__':

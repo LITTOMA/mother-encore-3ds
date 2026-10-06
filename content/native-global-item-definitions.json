@@ -1,0 +1,4877 @@
+{
+  "schema": 1,
+  "kind": "encore.global-item-definitions.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "definitions": [
+    {
+      "id": 2069767250,
+      "source": "Data/Items/Antidote.yaml",
+      "item_name": "Antidote",
+      "name_key": "ANTIDOTE_NAME",
+      "sorting_key": "ANTIDOTE_SORT",
+      "description_key": "ANTIDOTE_DESC",
+      "article_key": "ANTIDOTE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 20,
+      "value": 10,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [
+        "poisoned"
+      ],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 800000,
+      "sorting_translations": {
+        "en": "Antidote",
+        "zh_CN": "解毒药"
+      }
+    },
+    {
+      "id": 992649429,
+      "source": "Data/Items/Apple.yaml",
+      "item_name": "Apple",
+      "name_key": "APPLE_NAME",
+      "sorting_key": "APPLE_SORT",
+      "description_key": "APPLE_DESC",
+      "article_key": "APPLE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 60,
+      "value": 30,
+      "slot": "",
+      "transform": "AppleSlices",
+      "heal_hp": 50,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "APPLE_ACT1",
+          "textfail": "",
+          "pending": true
+        },
+        {
+          "function": 4,
+          "name": "APPLE_ACT2",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000050,
+      "sorting_translations": {
+        "en": "APPLE_SORT",
+        "zh_CN": "APPLE_SORT"
+      }
+    },
+    {
+      "id": 2998878215,
+      "source": "Data/Items/AppleSlices.yaml",
+      "item_name": "AppleSlices",
+      "name_key": "APPLESLICES_NAME",
+      "sorting_key": "APPLESLICES_SORT",
+      "description_key": "APPLESLICES_DESC",
+      "article_key": "APPLESLICES_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 20,
+      "value": 10,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 15,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": true,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "APPLESLICES_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000015,
+      "sorting_translations": {
+        "en": "APPLESLICES_SORT",
+        "zh_CN": "APPLESLICES_SORT"
+      }
+    },
+    {
+      "id": 2003622725,
+      "source": "Data/Items/AsthmaSpray.yaml",
+      "item_name": "AsthmaSpray",
+      "name_key": "ASTHMASPRAY_NAME",
+      "sorting_key": "ASTHMASPRAY_SORT",
+      "description_key": "ASTHMASPRAY_DESC",
+      "article_key": "ASTHMASPRAY_ART",
+      "keyitem": false,
+      "doses": 3,
+      "cost": 20,
+      "value": 2,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [
+        "asthma"
+      ],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 800000,
+      "sorting_translations": {
+        "en": "Asthma Spray",
+        "zh_CN": "哮喘喷雾"
+      }
+    },
+    {
+      "id": 3977459814,
+      "source": "Data/Items/Banana.yaml",
+      "item_name": "Banana",
+      "name_key": "BANANA_NAME",
+      "sorting_key": "BANANA_SORT",
+      "description_key": "BANANA_DESC",
+      "article_key": "BANANA_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 80,
+      "value": 40,
+      "slot": "",
+      "transform": "BananaGun",
+      "heal_hp": 60,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "BANANA_ACT1",
+          "textfail": "",
+          "pending": true
+        },
+        {
+          "function": 4,
+          "name": "BANANA_ACT2",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000060,
+      "sorting_translations": {
+        "en": "BANANA_SORT",
+        "zh_CN": "BANANA_SORT"
+      }
+    },
+    {
+      "id": 3213103965,
+      "source": "Data/Items/BananaGun.yaml",
+      "item_name": "BananaGun",
+      "name_key": "GUNBANANA_NAME",
+      "sorting_key": "GUNBANANA_SORT",
+      "description_key": "GUNBANANA_DESC",
+      "article_key": "GUNBANANA_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 60,
+      "value": 30,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "useBananaGun",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "GUNBANANA_SORT",
+        "zh_CN": "GUNBANANA_SORT"
+      }
+    },
+    {
+      "id": 1562639846,
+      "source": "Data/Items/BaseballCap.yaml",
+      "item_name": "BaseballCap",
+      "name_key": "BASEBALLCAP_NAME",
+      "sorting_key": "BASEBALLCAP_SORT",
+      "description_key": "BASEBALLCAP_DESC",
+      "article_key": "BASEBALLCAP_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 60,
+      "value": 30,
+      "slot": "other",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "ninten"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 210010,
+      "sorting_translations": {
+        "en": "Baseball Cap",
+        "zh_CN": "棒球帽"
+      }
+    },
+    {
+      "id": 115973633,
+      "source": "Data/Items/BaseballCapMr.yaml",
+      "item_name": "BaseballCapMr",
+      "name_key": "BASEBALLCAPMR_NAME",
+      "sorting_key": "BASEBALLCAPMR_SORT",
+      "description_key": "BASEBALLCAPMR_DESC",
+      "article_key": "BASEBALLCAPMR_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 120,
+      "value": 60,
+      "slot": "other",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "ninten"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 210020,
+      "sorting_translations": {
+        "en": "BASEBALLCAPMR_SORT",
+        "zh_CN": "BASEBALLCAPMR_SORT"
+      }
+    },
+    {
+      "id": 2407311233,
+      "source": "Data/Items/BatOld.yaml",
+      "item_name": "BatOld",
+      "name_key": "BATOLD_NAME",
+      "sorting_key": "BATOLD_SORT",
+      "description_key": "BATOLD_DESC",
+      "article_key": "BATOLD_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Old Bat",
+        "zh_CN": "陈旧球棒"
+      }
+    },
+    {
+      "id": 2507041487,
+      "source": "Data/Items/BatPlastic.yaml",
+      "item_name": "BatPlastic",
+      "name_key": "BATPLASTIC_NAME",
+      "sorting_key": "BATPLASTIC_SORT",
+      "description_key": "BATPLASTIC_DESC",
+      "article_key": "BATPLASTIC_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 100,
+      "value": 50,
+      "slot": "weapon",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "ninten",
+        "pippi"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 2,
+          "key": "",
+          "kind": 1,
+          "text": "attack_bat",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 240009,
+      "sorting_translations": {
+        "en": "Bat Plastic",
+        "zh_CN": "塑料球棒"
+      }
+    },
+    {
+      "id": 3024195401,
+      "source": "Data/Items/BatTeeBall.yaml",
+      "item_name": "BatTeeBall",
+      "name_key": "BATTEEBALL_NAME",
+      "sorting_key": "BATTEEBALL_SORT",
+      "description_key": "BATTEEBALL_DESC",
+      "article_key": "BATTEEBALL_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 250,
+      "value": 125,
+      "slot": "weapon",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        15,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "ninten",
+        "pippi"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 2,
+          "key": "",
+          "kind": 1,
+          "text": "attack_bat",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 240045,
+      "sorting_translations": {
+        "en": "BATTEEBALL_SORT",
+        "zh_CN": "BATTEEBALL_SORT"
+      }
+    },
+    {
+      "id": 4255014040,
+      "source": "Data/Items/BatWooden.yaml",
+      "item_name": "BatWooden",
+      "name_key": "BATWOODEN_NAME",
+      "sorting_key": "BATWOODEN_SORT",
+      "description_key": "BATWOODEN_DESC",
+      "article_key": "BATWOODEN_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 200,
+      "value": 100,
+      "slot": "weapon",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "ninten",
+        "pippi"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 2,
+          "key": "",
+          "kind": 1,
+          "text": "attack_bat",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 240030,
+      "sorting_translations": {
+        "en": "Bat Wooden",
+        "zh_CN": "木制球棒"
+      }
+    },
+    {
+      "id": 4202602109,
+      "source": "Data/Items/BeeStingCake.yaml",
+      "item_name": "BeeStingCake",
+      "name_key": "BEESTINGCAKE_NAME",
+      "sorting_key": "BEESTINGCAKE_SORT",
+      "description_key": "BEESTINGCAKE_DESC",
+      "article_key": "BEESTINGCAKE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 200,
+      "value": 100,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 60,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": true,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "BEESTINGCAKE_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000060,
+      "sorting_translations": {
+        "en": "BEESTINGCAKE_SORT",
+        "zh_CN": "BEESTINGCAKE_SORT"
+      }
+    },
+    {
+      "id": 2640568987,
+      "source": "Data/Items/Berliner.yaml",
+      "item_name": "Berliner",
+      "name_key": "BERLINER_NAME",
+      "sorting_key": "BERLINER_SORT",
+      "description_key": "BERLINER_DESC",
+      "article_key": "BERLINER_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 90,
+      "value": 45,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 75,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "BERLINER_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000075,
+      "sorting_translations": {
+        "en": "BERLINER_SORT",
+        "zh_CN": "BERLINER_SORT"
+      }
+    },
+    {
+      "id": 142467571,
+      "source": "Data/Items/BigBag.yaml",
+      "item_name": "BigBag",
+      "name_key": "BIGBAG_NAME",
+      "sorting_key": "BIGBAG_SORT",
+      "description_key": "BIGBAG_DESC",
+      "article_key": "BIGBAG_ART",
+      "keyitem": false,
+      "doses": 10,
+      "cost": 0,
+      "value": 15,
+      "slot": "",
+      "transform": "HerbMagic",
+      "heal_hp": 40,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000040,
+      "sorting_translations": {
+        "en": "Big Bag",
+        "zh_CN": "大袋子"
+      }
+    },
+    {
+      "id": 3386691901,
+      "source": "Data/Items/Bomb.yaml",
+      "item_name": "Bomb",
+      "name_key": "BOMB_NAME",
+      "sorting_key": "BOMB_SORT",
+      "description_key": "BOMB_DESC",
+      "article_key": "BOMB_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 380,
+      "value": 140,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "useBomb",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Bomb",
+        "zh_CN": "炸弹"
+      }
+    },
+    {
+      "id": 3657787691,
+      "source": "Data/Items/BottleRocket.yaml",
+      "item_name": "BottleRocket",
+      "name_key": "BOTTLEROCKET_NAME",
+      "sorting_key": "BOTTLEROCKET_SORT",
+      "description_key": "BOTTLEROCKET_DESC",
+      "article_key": "BOTTLEROCKET_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 360,
+      "value": 100,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "useBottleRocket",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Bottle Rocket",
+        "zh_CN": "瓶装火箭"
+      }
+    },
+    {
+      "id": 4133523169,
+      "source": "Data/Items/BottleRocketGift.yaml",
+      "item_name": "BottleRocketGift",
+      "name_key": "BOTTLEROCKETGIFT_NAME",
+      "sorting_key": "BOTTLEROCKETGIFT_SORT",
+      "description_key": "BOTTLEROCKETGIFT_DESC",
+      "article_key": "BOTTLEROCKETGIFT_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "BOTTLEROCKETGIFT_SORT",
+        "zh_CN": "BOTTLEROCKETGIFT_SORT"
+      }
+    },
+    {
+      "id": 2495936236,
+      "source": "Data/Items/BottleRocketHead.yaml",
+      "item_name": "BottleRocketHead",
+      "name_key": "BOTTLEROCKETHEAD_NAME",
+      "sorting_key": "BOTTLEROCKETHEAD_SORT",
+      "description_key": "BOTTLEROCKETHEAD_DESC",
+      "article_key": "BOTTLEROCKETHEAD_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "BOTTLEROCKETHEAD_SORT",
+        "zh_CN": "BOTTLEROCKETHEAD_SORT"
+      }
+    },
+    {
+      "id": 659601235,
+      "source": "Data/Items/BottleRocketWings.yaml",
+      "item_name": "BottleRocketWings",
+      "name_key": "BOTTLEROCKETWINGS_NAME",
+      "sorting_key": "BOTTLEROCKETWINGS_SORT",
+      "description_key": "BOTTLEROCKETWINGS_DESC",
+      "article_key": "BOTTLEROCKETWINGS_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "BOTTLEROCKETWINGS_SORT",
+        "zh_CN": "BOTTLEROCKETWINGS_SORT"
+      }
+    },
+    {
+      "id": 3374808184,
+      "source": "Data/Items/Bread.yaml",
+      "item_name": "Bread",
+      "name_key": "BREAD_NAME",
+      "sorting_key": "BREAD_SORT",
+      "description_key": "BREAD_DESC",
+      "article_key": "BREAD_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 20,
+      "value": 10,
+      "slot": "",
+      "transform": "Crumbs",
+      "heal_hp": 15,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "BREAD_ACT1",
+          "textfail": "",
+          "pending": true
+        },
+        {
+          "function": 4,
+          "name": "BREAD_ACT2",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000015,
+      "sorting_translations": {
+        "en": "Bread",
+        "zh_CN": "面包"
+      }
+    },
+    {
+      "id": 1038103345,
+      "source": "Data/Items/BrokenTrumpet.yaml",
+      "item_name": "BrokenTrumpet",
+      "name_key": "BROKENTRUMPET_NAME",
+      "sorting_key": "BROKENTRUMPET_SORT",
+      "description_key": "BROKENITEM_DESC",
+      "article_key": "BROKENTRUMPET_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "DefenseShower",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 3,
+          "key": "",
+          "kind": 3,
+          "text": "",
+          "integer": 1,
+          "real": 0.0
+        },
+        {
+          "field": 4,
+          "key": "lloyd",
+          "kind": 2,
+          "text": "",
+          "integer": 5,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "BROKENTRUMPET_SORT",
+        "zh_CN": "BROKENTRUMPET_SORT"
+      }
+    },
+    {
+      "id": 4202408667,
+      "source": "Data/Items/Bullhorn.yaml",
+      "item_name": "Bullhorn",
+      "name_key": "BULLHORN_NAME",
+      "sorting_key": "BULLHORN_SORT",
+      "description_key": "BULLHORN_DESC",
+      "article_key": "BULLHORN_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "useBullhorn",
+          "integer": 0,
+          "real": 0.0
+        },
+        {
+          "field": 1,
+          "key": "reusable",
+          "kind": 3,
+          "text": "",
+          "integer": 1,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Bullhorn",
+        "zh_CN": "扩音喇叭"
+      }
+    },
+    {
+      "id": 3523869713,
+      "source": "Data/Items/CanaryChick.yaml",
+      "item_name": "CanaryChick",
+      "name_key": "CANARYCHICK_NAME",
+      "sorting_key": "CANARYCHICK_SORT",
+      "description_key": "CANARYCHICK_DESC",
+      "article_key": "CANARYCHICK_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Canary Chick",
+        "zh_CN": "金丝雀雏鸟"
+      }
+    },
+    {
+      "id": 702762067,
+      "source": "Data/Items/CapsuleDEF.yaml",
+      "item_name": "CapsuleDEF",
+      "name_key": "CAPSULEDEF_NAME",
+      "sorting_key": "CAPSULEDEF_SORT",
+      "description_key": "CAPSULEDEF_DESC",
+      "article_key": "CAPSULEDEF_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana",
+        "lloyd"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CAPSULEDEF_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CAPSULE",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300006,
+      "sorting_translations": {
+        "en": "Capsule Defense",
+        "zh_CN": "防御胶囊"
+      }
+    },
+    {
+      "id": 2323865356,
+      "source": "Data/Items/CapsuleGUT.yaml",
+      "item_name": "CapsuleGUT",
+      "name_key": "CAPSULEGUT_NAME",
+      "sorting_key": "CAPSULEGUT_SORT",
+      "description_key": "CAPSULEGUT_DESC",
+      "article_key": "CAPSULEGUT_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CAPSULEGUT_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CAPSULE",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300003,
+      "sorting_translations": {
+        "en": "Capsule Guts",
+        "zh_CN": "勇气胶囊"
+      }
+    },
+    {
+      "id": 165225433,
+      "source": "Data/Items/CapsuleHP.yaml",
+      "item_name": "CapsuleHP",
+      "name_key": "CAPSULEHP_NAME",
+      "sorting_key": "CAPSULEHP_SORT",
+      "description_key": "CAPSULEHP_DESC",
+      "article_key": "CAPSULEHP_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana",
+        "lloyd"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CAPSULEHP_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CAPSULE",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300006,
+      "sorting_translations": {
+        "en": "Capsule HP",
+        "zh_CN": "HP胶囊"
+      }
+    },
+    {
+      "id": 3001947281,
+      "source": "Data/Items/CapsuleIQ.yaml",
+      "item_name": "CapsuleIQ",
+      "name_key": "CAPSULEIQ_NAME",
+      "sorting_key": "CAPSULEIQ_SORT",
+      "description_key": "CAPSULEIQ_DESC",
+      "article_key": "CAPSULEIQ_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana",
+        "lloyd"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CAPSULEIQ_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CAPSULE",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300003,
+      "sorting_translations": {
+        "en": "Capsule IQ",
+        "zh_CN": "智力胶囊"
+      }
+    },
+    {
+      "id": 1417994452,
+      "source": "Data/Items/CapsuleOFE.yaml",
+      "item_name": "CapsuleOFE",
+      "name_key": "CAPSULEOFE_NAME",
+      "sorting_key": "CAPSULEOFE_SORT",
+      "description_key": "CAPSULEOFE_DESC",
+      "article_key": "CAPSULEOFE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana",
+        "lloyd"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CAPSULEOFE_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CAPSULE",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300009,
+      "sorting_translations": {
+        "en": "Capsule Offense",
+        "zh_CN": "攻击胶囊"
+      }
+    },
+    {
+      "id": 3085826515,
+      "source": "Data/Items/CapsulePP.yaml",
+      "item_name": "CapsulePP",
+      "name_key": "CAPSULEPP_NAME",
+      "sorting_key": "CAPSULEPP_SORT",
+      "description_key": "CAPSULEPP_DESC",
+      "article_key": "CAPSULEPP_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CAPSULEPP_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CAPSULE",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300006,
+      "sorting_translations": {
+        "en": "Capsule PP",
+        "zh_CN": "PP胶囊"
+      }
+    },
+    {
+      "id": 1802804110,
+      "source": "Data/Items/CapsuleSPD.yaml",
+      "item_name": "CapsuleSPD",
+      "name_key": "CAPSULESPD_NAME",
+      "sorting_key": "CAPSULESPD_SORT",
+      "description_key": "CAPSULESPD_DESC",
+      "article_key": "CAPSULESPD_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana",
+        "lloyd"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CAPSULESPD_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CAPSULE",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300003,
+      "sorting_translations": {
+        "en": "Capsule Speed",
+        "zh_CN": "速度胶囊"
+      }
+    },
+    {
+      "id": 3344933240,
+      "source": "Data/Items/CashCard.yaml",
+      "item_name": "CashCard",
+      "name_key": "CASHCARD_NAME",
+      "sorting_key": "CASHCARD_SORT",
+      "description_key": "CASHCARD_DESC",
+      "article_key": "CASHCARD_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Cash Card",
+        "zh_CN": "金融卡"
+      }
+    },
+    {
+      "id": 1024274990,
+      "source": "Data/Items/CoinPeace.yaml",
+      "item_name": "CoinPeace",
+      "name_key": "COINPEACE_NAME",
+      "sorting_key": "COINPEACE_SORT",
+      "description_key": "COINPEACE_DESC",
+      "article_key": "COINPEACE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 260,
+      "value": 130,
+      "slot": "other",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        8,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 210016,
+      "sorting_translations": {
+        "en": "Coin Peace",
+        "zh_CN": "和平硬币"
+      }
+    },
+    {
+      "id": 3020660183,
+      "source": "Data/Items/CourageBadge.yaml",
+      "item_name": "CourageBadge",
+      "name_key": "COURAGEBADGE_NAME",
+      "sorting_key": "COURAGEBADGE_SORT",
+      "description_key": "COURAGEBADGE_DESC",
+      "article_key": "COURAGEBADGE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 5,
+          "key": "0",
+          "kind": 1,
+          "text": "reflect_beam_courage",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 400000,
+      "sorting_translations": {
+        "en": "Badge Courage",
+        "zh_CN": "勇气徽章"
+      }
+    },
+    {
+      "id": 892771927,
+      "source": "Data/Items/Croissant.yaml",
+      "item_name": "Croissant",
+      "name_key": "CROISSANT_NAME",
+      "sorting_key": "CROISSANT_SORT",
+      "description_key": "CROISSANT_DESC",
+      "article_key": "CROISSANT_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 60,
+      "value": 30,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 50,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CROISSANT_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000050,
+      "sorting_translations": {
+        "en": "CROISSANT_SORT",
+        "zh_CN": "CROISSANT_SORT"
+      }
+    },
+    {
+      "id": 3415494293,
+      "source": "Data/Items/Crumbs.yaml",
+      "item_name": "Crumbs",
+      "name_key": "CRUMBS_NAME",
+      "sorting_key": "CRUMBS_SORT",
+      "description_key": "CRUMBS_DESC",
+      "article_key": "CRUMBS_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 5,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "escapeCrumbs",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Crumbs",
+        "zh_CN": "面包屑"
+      }
+    },
+    {
+      "id": 2196091797,
+      "source": "Data/Items/CupOfLifenoodles.yaml",
+      "item_name": "CupOfLifenoodles",
+      "name_key": "CUPOFLIFENOODLES_NAME",
+      "sorting_key": "CUPOFLIFENOODLES_SORT",
+      "description_key": "CUPOFLIFENOODLES_DESC",
+      "article_key": "CUPOFLIFENOODLES_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 1780,
+      "value": 890,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [
+        "all"
+      ],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "CUPOFLIFENOODLES_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 6,
+          "key": "0",
+          "kind": 1,
+          "text": "heal_on_revive",
+          "integer": 0,
+          "real": 0.0
+        },
+        {
+          "field": 6,
+          "key": "1",
+          "kind": 1,
+          "text": "target_unconscious",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 800000,
+      "sorting_translations": {
+        "en": "CUPOFLIFENOODLES_SORT",
+        "zh_CN": "CUPOFLIFENOODLES_SORT"
+      }
+    },
+    {
+      "id": 971185976,
+      "source": "Data/Items/DefenseShower.yaml",
+      "item_name": "DefenseShower",
+      "name_key": "DEFENSESHOWER_NAME",
+      "sorting_key": "DEFENSESHOWER_SORT",
+      "description_key": "DEFENSESHOWER_DESC",
+      "article_key": "DEFENSESHOWER_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 7,
+          "key": "",
+          "kind": 1,
+          "text": "useDefenseShower",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "DEFENSESHOWER_SORT",
+        "zh_CN": "DEFENSESHOWER_SORT"
+      }
+    },
+    {
+      "id": 376042505,
+      "source": "Data/Items/DogTreats.yaml",
+      "item_name": "DogTreats",
+      "name_key": "DOGTREATS_NAME",
+      "sorting_key": "DOGTREATS_SORT",
+      "description_key": "DOGTREATS_DESC",
+      "article_key": "DOGTREATS_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Dog Treats",
+        "zh_CN": "狗狗零食"
+      }
+    },
+    {
+      "id": 5178864,
+      "source": "Data/Items/EagleFeather.yaml",
+      "item_name": "EagleFeather",
+      "name_key": "EAGLEFEATHER_NAME",
+      "sorting_key": "EAGLEFEATHER_SORT",
+      "description_key": "EAGLEFEATHER_DESC",
+      "article_key": "EAGLEFEATHER_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Eagle's Feather",
+        "zh_CN": "鹰羽"
+      }
+    },
+    {
+      "id": 3536404853,
+      "source": "Data/Items/EnergyBeam.yaml",
+      "item_name": "EnergyBeam",
+      "name_key": "ENERGYBEAM_NAME",
+      "sorting_key": "ENERGYBEAM_SORT",
+      "description_key": "ENERGYBEAM_DESC",
+      "article_key": "ENERGYBEAM_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Energy Beam",
+        "zh_CN": "能量光束"
+      }
+    },
+    {
+      "id": 2999736868,
+      "source": "Data/Items/error.yaml",
+      "item_name": "error",
+      "name_key": "ERROR_NAME",
+      "sorting_key": "ERROR_SORT",
+      "description_key": "ERROR_DESC",
+      "article_key": "ERROR_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 400000,
+      "sorting_translations": {
+        "en": "Error",
+        "zh_CN": "错误"
+      }
+    },
+    {
+      "id": 1866834746,
+      "source": "Data/Items/EyeDrops.yaml",
+      "item_name": "EyeDrops",
+      "name_key": "EYEDROPS_NAME",
+      "sorting_key": "EYEDROPS_SORT",
+      "description_key": "EYEDROPS_DESC",
+      "article_key": "EYEDROPS_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 18,
+      "value": 9,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [
+        "blinded"
+      ],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 800000,
+      "sorting_translations": {
+        "en": "Eye Drops",
+        "zh_CN": "眼药水"
+      }
+    },
+    {
+      "id": 4250717507,
+      "source": "Data/Items/FactoryPass.yaml",
+      "item_name": "FactoryPass",
+      "name_key": "FACTORYPASS_NAME",
+      "sorting_key": "FACTORYPASS_SORT",
+      "description_key": "FACTORYPASS_DESC",
+      "article_key": "FACTORYPASS_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Pass",
+        "zh_CN": "通行许可证"
+      }
+    },
+    {
+      "id": 4274522818,
+      "source": "Data/Items/FavFood.yaml",
+      "item_name": "FavFood",
+      "name_key": "FAVFOOD_NAME",
+      "sorting_key": "FAVFOOD_SORT",
+      "description_key": "FAVFOOD_DESC",
+      "article_key": "FAVFOOD_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 3800,
+      "value": 1900,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 999,
+      "heal_pp": 999,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": true,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "FAVFOOD_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 900999,
+      "sorting_translations": {
+        "en": "FAVFOOD_SORT",
+        "zh_CN": "FAVFOOD_SORT"
+      }
+    },
+    {
+      "id": 2199275525,
+      "source": "Data/Items/FleaBag.yaml",
+      "item_name": "FleaBag",
+      "name_key": "FLEABAG_NAME",
+      "sorting_key": "FLEABAG_SORT",
+      "description_key": "FLEABAG_DESC",
+      "article_key": "FLEABAG_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 15,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "useFleaBag",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Flea Bag",
+        "zh_CN": "跳蚤虱子"
+      }
+    },
+    {
+      "id": 3309372232,
+      "source": "Data/Items/FranklinBadge.yaml",
+      "item_name": "FranklinBadge",
+      "name_key": "FRANKLINBADGE_NAME",
+      "sorting_key": "FRANKLINBADGE_SORT",
+      "description_key": "FRANKLINBADGE_DESC",
+      "article_key": "FRANKLINBADGE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 5,
+          "key": "0",
+          "kind": 1,
+          "text": "reflect_lightning",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 400000,
+      "sorting_translations": {
+        "en": "Badge Franklin",
+        "zh_CN": "富兰克林徽章"
+      }
+    },
+    {
+      "id": 558193557,
+      "source": "Data/Items/FranklinBadge0.8.yaml",
+      "item_name": "FranklinBadge0.8",
+      "name_key": "FRANKLINBADGE0.8_NAME",
+      "sorting_key": "FRANKLINBADGE0.8_SORT",
+      "description_key": "FRANKLINBADGE0.8_DESC",
+      "article_key": "FRANKLINBADGE0.8_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 5,
+          "key": "0",
+          "kind": 1,
+          "text": "reflect_beam",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 400000,
+      "sorting_translations": {
+        "en": "Badge Franklin v0.8",
+        "zh_CN": "富兰克林徽章 v0.8"
+      }
+    },
+    {
+      "id": 1142474753,
+      "source": "Data/Items/FreshMint.yaml",
+      "item_name": "FreshMint",
+      "name_key": "FRESHMINT_NAME",
+      "sorting_key": "FRESHMINT_SORT",
+      "description_key": "FRESHMINT_DESC",
+      "article_key": "FRESHMINT_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 32,
+      "value": 16,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [
+        "nausea"
+      ],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 800000,
+      "sorting_translations": {
+        "en": "Fresh Mint",
+        "zh_CN": "新鲜薄荷"
+      }
+    },
+    {
+      "id": 1748623541,
+      "source": "Data/Items/Fries.yaml",
+      "item_name": "Fries",
+      "name_key": "FRIES_NAME",
+      "sorting_key": "FRIES_SORT",
+      "description_key": "FRIES_DESC",
+      "article_key": "FRIES_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 20,
+      "value": 10,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 20,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "FRIES_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000020,
+      "sorting_translations": {
+        "en": "Fries",
+        "zh_CN": "炸薯条"
+      }
+    },
+    {
+      "id": 2706441889,
+      "source": "Data/Items/GGFDiary.yaml",
+      "item_name": "GGFDiary",
+      "name_key": "GGFDIARY_NAME",
+      "sorting_key": "GGFDIARY_SORT",
+      "description_key": "GGFDIARY_DESC",
+      "article_key": "GGFDIARY_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "GGF Diary",
+        "zh_CN": "曾祖父的日记"
+      }
+    },
+    {
+      "id": 1831805704,
+      "source": "Data/Items/GlassesCelluloid.yaml",
+      "item_name": "GlassesCelluloid",
+      "name_key": "GLASSESCELLULOID_NAME",
+      "sorting_key": "GLASSESCELLULOID_SORT",
+      "description_key": "GLASSESCELLULOID_DESC",
+      "article_key": "GLASSESCELLULOID_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 60,
+      "value": 30,
+      "slot": "other",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        3,
+        0,
+        3,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 210009,
+      "sorting_translations": {
+        "en": "GLASSESCELLULOID_SORT",
+        "zh_CN": "GLASSESCELLULOID_SORT"
+      }
+    },
+    {
+      "id": 731484006,
+      "source": "Data/Items/GunStun.yaml",
+      "item_name": "GunStun",
+      "name_key": "GUNSTUN_NAME",
+      "sorting_key": "GUNSTUN_SORT",
+      "description_key": "GUNSTUN_DESC",
+      "article_key": "GUNSTUN_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 300,
+      "value": 150,
+      "slot": "weapon",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        25,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 2,
+          "key": "",
+          "kind": 1,
+          "text": "attack_gun",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 240075,
+      "sorting_translations": {
+        "en": "Gun Stun",
+        "zh_CN": "电击枪"
+      }
+    },
+    {
+      "id": 3883871197,
+      "source": "Data/Items/Hamburger.yaml",
+      "item_name": "Hamburger",
+      "name_key": "HAMBURGER_NAME",
+      "sorting_key": "HAMBURGER_SORT",
+      "description_key": "HAMBURGER_DESC",
+      "article_key": "HAMBURGER_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 30,
+      "value": 15,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 50,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "HAMBURGER_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000050,
+      "sorting_translations": {
+        "en": "Hamburger",
+        "zh_CN": "汉堡包"
+      }
+    },
+    {
+      "id": 642955859,
+      "source": "Data/Items/HerbMagic.yaml",
+      "item_name": "HerbMagic",
+      "name_key": "HERBMAGIC_NAME",
+      "sorting_key": "HERBMAGIC_SORT",
+      "description_key": "HERBMAGIC_DESC",
+      "article_key": "HERBMAGIC_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 30,
+      "value": 15,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 40,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "HERBMAGIC_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000040,
+      "sorting_translations": {
+        "en": "Herb Magic",
+        "zh_CN": "魔法药草"
+      }
+    },
+    {
+      "id": 2585824241,
+      "source": "Data/Items/HerbRed.yaml",
+      "item_name": "HerbRed",
+      "name_key": "HERBRED_NAME",
+      "sorting_key": "HERBRED_SORT",
+      "description_key": "HERBRED_DESC",
+      "article_key": "HERBRED_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 5,
+      "value": 2,
+      "slot": "",
+      "transform": "HerbMagic",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 400000,
+      "sorting_translations": {
+        "en": "Herb Red",
+        "zh_CN": "红色药草"
+      }
+    },
+    {
+      "id": 2847505533,
+      "source": "Data/Items/HotDog.yaml",
+      "item_name": "HotDog",
+      "name_key": "HOTDOG_NAME",
+      "sorting_key": "HOTDOG_SORT",
+      "description_key": "HOTDOG_DESC",
+      "article_key": "HOTDOG_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 25,
+      "value": 17,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 35,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "HOTDOG_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000035,
+      "sorting_translations": {
+        "en": "Hot Dog",
+        "zh_CN": "热狗"
+      }
+    },
+    {
+      "id": 3212071289,
+      "source": "Data/Items/Insecticide.yaml",
+      "item_name": "Insecticide",
+      "name_key": "INSECTICIDE_NAME",
+      "sorting_key": "INSECTICIDE_SORT",
+      "description_key": "INSECTICIDE_DESC",
+      "article_key": "INSECTICIDE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 250,
+      "value": 125,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "useInsecticide",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Spray Bug",
+        "zh_CN": "杀虫剂喷雾"
+      }
+    },
+    {
+      "id": 2447421994,
+      "source": "Data/Items/KeyBasement.yaml",
+      "item_name": "KeyBasement",
+      "name_key": "KEYBASEMENT_NAME",
+      "sorting_key": "KEYBASEMENT_SORT",
+      "description_key": "KEYBASEMENT_DESC",
+      "article_key": "KEYBASEMENT_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Key Basement",
+        "zh_CN": "地下室钥匙"
+      }
+    },
+    {
+      "id": 3336228670,
+      "source": "Data/Items/KeyZoo.yaml",
+      "item_name": "KeyZoo",
+      "name_key": "KEYZOO_NAME",
+      "sorting_key": "KEYZOO_SORT",
+      "description_key": "KEYZOO_DESC",
+      "article_key": "KEYZOO_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Key Zoo",
+        "zh_CN": "动物园钥匙"
+      }
+    },
+    {
+      "id": 1296112797,
+      "source": "Data/Items/KickMeNote.yaml",
+      "item_name": "KickMeNote",
+      "name_key": "KICKMENOTE_NAME",
+      "sorting_key": "KICKMENOTE_SORT",
+      "description_key": "KICKMENOTE_DESC",
+      "article_key": "KICKMENOTE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 1,
+      "slot": "body",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 229998,
+      "sorting_translations": {
+        "en": "KICKMENOTE_SORT",
+        "zh_CN": "KICKMENOTE_SORT"
+      }
+    },
+    {
+      "id": 1574139731,
+      "source": "Data/Items/LastWeapon.yaml",
+      "item_name": "LastWeapon",
+      "name_key": "LASTWEAPON_NAME",
+      "sorting_key": "LASTWEAPON_SORT",
+      "description_key": "LASTWEAPON_DESC",
+      "article_key": "LASTWEAPON_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 1024,
+      "value": 524,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "dialog",
+          "kind": 1,
+          "text": "ItemDialogue/lastweapon",
+          "integer": 0,
+          "real": 0.0
+        },
+        {
+          "field": 1,
+          "key": "target_type",
+          "kind": 2,
+          "text": "",
+          "integer": 6,
+          "real": 0.0
+        },
+        {
+          "field": 1,
+          "key": "reusable",
+          "kind": 3,
+          "text": "",
+          "integer": 1,
+          "real": 0.0
+        },
+        {
+          "field": 8,
+          "key": "",
+          "kind": 1,
+          "text": "ItemDialogue/lastweapon",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 500000,
+      "sorting_translations": {
+        "en": "Last Weapon",
+        "zh_CN": "终极武器"
+      }
+    },
+    {
+      "id": 3164729604,
+      "source": "Data/Items/LifeUpCream.yaml",
+      "item_name": "LifeUpCream",
+      "name_key": "LIFEUPCREAM_NAME",
+      "sorting_key": "LIFEUPCREAM_SORT",
+      "description_key": "LIFEUPCREAM_DESC",
+      "article_key": "LIFEUPCREAM_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 200,
+      "value": 100,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 200,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000200,
+      "sorting_translations": {
+        "en": "Life Up Cream",
+        "zh_CN": "生命回复乳霜"
+      }
+    },
+    {
+      "id": 3861091280,
+      "source": "Data/Items/MagicCandy.yaml",
+      "item_name": "MagicCandy",
+      "name_key": "MAGICCANDY_NAME",
+      "sorting_key": "MAGICCANDY_SORT",
+      "description_key": "MAGICCANDY_DESC",
+      "article_key": "MAGICCANDY_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5
+      ],
+      "can_use": [],
+      "can_consume": [
+        "lloyd"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "MAGICCANDY_ACT1",
+          "textfail": "ACTION_RESULT_FAIL_CANDY",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 300005,
+      "sorting_translations": {
+        "en": "Magic Candy",
+        "zh_CN": "魔法糖果"
+      }
+    },
+    {
+      "id": 4290312845,
+      "source": "Data/Items/MapCatacombs.yaml",
+      "item_name": "MapCatacombs",
+      "name_key": "MAPCATACOMBS_NAME",
+      "sorting_key": "MAPCATACOMBS_SORT",
+      "description_key": "MAPCATACOMBS_DESC",
+      "article_key": "MAPCATACOMBS_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 9,
+          "key": "",
+          "kind": 1,
+          "text": "Catacombs",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "MAPCATACOMBS_SORT",
+        "zh_CN": "MAPCATACOMBS_SORT"
+      }
+    },
+    {
+      "id": 3478267035,
+      "source": "Data/Items/MapDuncans.yaml",
+      "item_name": "MapDuncans",
+      "name_key": "MAPDUNCANS_NAME",
+      "sorting_key": "MAPDUNCANS_SORT",
+      "description_key": "MAPDUNCANS_DESC",
+      "article_key": "MAPDUNCANS_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 9,
+          "key": "",
+          "kind": 1,
+          "text": "Duncan's Factory",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "MAPDUNCANS_SORT",
+        "zh_CN": "MAPDUNCANS_SORT"
+      }
+    },
+    {
+      "id": 2057191559,
+      "source": "Data/Items/MapMagicant.yaml",
+      "item_name": "MapMagicant",
+      "name_key": "MAPMAGICANT_NAME",
+      "sorting_key": "MAPMAGICANT_SORT",
+      "description_key": "MAPMAGICANT_DESC",
+      "article_key": "MAPMAGICANT_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 9,
+          "key": "",
+          "kind": 1,
+          "text": "Magicant",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "MAPMAGICANT_SORT",
+        "zh_CN": "MAPMAGICANT_SORT"
+      }
+    },
+    {
+      "id": 757086875,
+      "source": "Data/Items/MapMerrysville.yaml",
+      "item_name": "MapMerrysville",
+      "name_key": "MAPMERRYSVILLE_NAME",
+      "sorting_key": "MAPMERRYSVILLE_SORT",
+      "description_key": "MAPMERRYSVILLE_DESC",
+      "article_key": "MAPMERRYSVILLE_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 9,
+          "key": "",
+          "kind": 1,
+          "text": "Merrysville",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "MAPMERRYSVILLE_SORT",
+        "zh_CN": "MAPMERRYSVILLE_SORT"
+      }
+    },
+    {
+      "id": 2924180695,
+      "source": "Data/Items/MapPodunk.yaml",
+      "item_name": "MapPodunk",
+      "name_key": "MAPPODUNK_NAME",
+      "sorting_key": "MAPPODUNK_SORT",
+      "description_key": "MAPPODUNK_DESC",
+      "article_key": "MAPPODUNK_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 9,
+          "key": "",
+          "kind": 1,
+          "text": "Podunk",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Map Podunk",
+        "zh_CN": "波顿克地图"
+      }
+    },
+    {
+      "id": 820347708,
+      "source": "Data/Items/MapSweets.yaml",
+      "item_name": "MapSweets",
+      "name_key": "MAPSWEETS_NAME",
+      "sorting_key": "MAPSWEETS_SORT",
+      "description_key": "MAPSWEETS_DESC",
+      "article_key": "MAPSWEETS_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 9,
+          "key": "",
+          "kind": 1,
+          "text": "Sweet Little Factory",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "MAPSWEETS_SORT",
+        "zh_CN": "MAPSWEETS_SORT"
+      }
+    },
+    {
+      "id": 2328641121,
+      "source": "Data/Items/Milk.yaml",
+      "item_name": "Milk",
+      "name_key": "MILK_NAME",
+      "sorting_key": "MILK_SORT",
+      "description_key": "MILK_DESC",
+      "article_key": "MILK_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 15,
+      "value": 7,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 20,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "MILK_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000020,
+      "sorting_translations": {
+        "en": "Milk",
+        "zh_CN": "牛奶"
+      }
+    },
+    {
+      "id": 426266996,
+      "source": "Data/Items/NobleSeed.yaml",
+      "item_name": "NobleSeed",
+      "name_key": "NOBLESEED_NAME",
+      "sorting_key": "NOBLESEED_SORT",
+      "description_key": "NOBLESEED_DESC",
+      "article_key": "NOBLESEED_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 55,
+      "value": 15,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [
+        "confused"
+      ],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 800000,
+      "sorting_translations": {
+        "en": "Noble Seed",
+        "zh_CN": "高贵种子"
+      }
+    },
+    {
+      "id": 2605678243,
+      "source": "Data/Items/Ocarina.yaml",
+      "item_name": "Ocarina",
+      "name_key": "OCARINA_NAME",
+      "sorting_key": "OCARINA_SORT",
+      "description_key": "OCARINA_DESC",
+      "article_key": "OCARINA_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 8,
+          "key": "",
+          "kind": 1,
+          "text": "ItemDialogue/ocarina",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Ocarina of Hope",
+        "zh_CN": "希望之笛"
+      }
+    },
+    {
+      "id": 2388872744,
+      "source": "Data/Items/OnyxHook.yaml",
+      "item_name": "OnyxHook",
+      "name_key": "ONYXHOOK_NAME",
+      "sorting_key": "ONYXHOOK_SORT",
+      "description_key": "ONYXHOOK_DESC",
+      "article_key": "ONYXHOOK_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 8,
+          "key": "",
+          "kind": 1,
+          "text": "ItemDialogue/onyxhook",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Onyx Hook",
+        "zh_CN": "缟玛瑙钩"
+      }
+    },
+    {
+      "id": 4259926314,
+      "source": "Data/Items/OrangeJuice.yaml",
+      "item_name": "OrangeJuice",
+      "name_key": "ORANGEJUICE_NAME",
+      "sorting_key": "ORANGEJUICE_SORT",
+      "description_key": "ORANGEJUICE_DESC",
+      "article_key": "ORANGEJUICE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 10,
+      "value": 5,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 10,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "ORANGEJUICE_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000010,
+      "sorting_translations": {
+        "en": "Orange Juice",
+        "zh_CN": "橙汁"
+      }
+    },
+    {
+      "id": 2450611426,
+      "source": "Data/Items/PendantFire.yaml",
+      "item_name": "PendantFire",
+      "name_key": "PENDANTFIRE_NAME",
+      "sorting_key": "PENDANTFIRE_SORT",
+      "description_key": "PENDANTFIRE_DESC",
+      "article_key": "PENDANTFIRE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 700,
+      "value": 350,
+      "slot": "body",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 10,
+          "key": "fire",
+          "kind": 4,
+          "text": "",
+          "integer": 0,
+          "real": 0.5
+        }
+      ],
+      "unequipped_sort_score": 230010,
+      "sorting_translations": {
+        "en": "Pendant Fire",
+        "zh_CN": "火焰吊坠"
+      }
+    },
+    {
+      "id": 3385744587,
+      "source": "Data/Items/PhoneCard.yaml",
+      "item_name": "PhoneCard",
+      "name_key": "PHONECARD_NAME",
+      "sorting_key": "PHONECARD_SORT",
+      "description_key": "PHONECARD_DESC",
+      "article_key": "PHONECARD_ART",
+      "keyitem": false,
+      "doses": 10,
+      "cost": 250,
+      "value": 2,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 500000,
+      "sorting_translations": {
+        "en": "Telephone Card",
+        "zh_CN": "电话卡"
+      }
+    },
+    {
+      "id": 4261161829,
+      "source": "Data/Items/Pretzel.yaml",
+      "item_name": "Pretzel",
+      "name_key": "PRETZEL_NAME",
+      "sorting_key": "PRETZEL_SORT",
+      "description_key": "PRETZEL_DESC",
+      "article_key": "PRETZEL_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 50,
+      "value": 25,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 40,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "PRETZEL_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000040,
+      "sorting_translations": {
+        "en": "PRETZEL_SORT",
+        "zh_CN": "PRETZEL_SORT"
+      }
+    },
+    {
+      "id": 3763278268,
+      "source": "Data/Items/PSIStone.yaml",
+      "item_name": "PSIStone",
+      "name_key": "PSISTONE_NAME",
+      "sorting_key": "PSISTONE_SORT",
+      "description_key": "PSISTONE_DESC",
+      "article_key": "PSISTONE_ART",
+      "keyitem": false,
+      "doses": 5,
+      "cost": 0,
+      "value": 40,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 20,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [
+        "ninten",
+        "ana"
+      ],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "PSISTONE_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 900020,
+      "sorting_translations": {
+        "en": "PSI Stone",
+        "zh_CN": "灵能力石"
+      }
+    },
+    {
+      "id": 308045117,
+      "source": "Data/Items/RealRocket.yaml",
+      "item_name": "RealRocket",
+      "name_key": "REALROCKET_NAME",
+      "sorting_key": "REALROCKET_SORT",
+      "description_key": "REALROCKET_DESC",
+      "article_key": "REALROCKET_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 3485,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 11,
+          "key": "",
+          "kind": 1,
+          "text": "Merrysville/TwinkleElementary/weird_teacher_real_rocket",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 400000,
+      "sorting_translations": {
+        "en": "Real Rocket",
+        "zh_CN": "标准火箭"
+      }
+    },
+    {
+      "id": 3113965463,
+      "source": "Data/Items/RecollectionBell.yaml",
+      "item_name": "RecollectionBell",
+      "name_key": "RECOLLECTIONBELL_NAME",
+      "sorting_key": "RECOLLECTIONBELL_SORT",
+      "description_key": "RECOLLECTIONBELL_DESC",
+      "article_key": "RECOLLECTIONBELL_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 30,
+      "value": 15,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [
+        "forgetful"
+      ],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 800000,
+      "sorting_translations": {
+        "en": "Recollection Bell",
+        "zh_CN": "回忆之铃"
+      }
+    },
+    {
+      "id": 1127690439,
+      "source": "Data/Items/RedBandana.yaml",
+      "item_name": "RedBandana",
+      "name_key": "REDBANDANA_NAME",
+      "sorting_key": "REDBANDANA_SORT",
+      "description_key": "REDBANDANA_DESC",
+      "article_key": "REDBANDANA_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 40,
+      "value": 20,
+      "slot": "body",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "ninten"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 230006,
+      "sorting_translations": {
+        "en": "Red Bandana",
+        "zh_CN": "红色方巾"
+      }
+    },
+    {
+      "id": 713569119,
+      "source": "Data/Items/RepelRing.yaml",
+      "item_name": "RepelRing",
+      "name_key": "REPELRING_NAME",
+      "sorting_key": "REPELRING_SORT",
+      "description_key": "REPELRING_DESC",
+      "article_key": "REPELRING_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 160,
+      "value": 80,
+      "slot": "arms",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 10,
+          "key": "flee",
+          "kind": 4,
+          "text": "",
+          "integer": 0,
+          "real": 2.0
+        }
+      ],
+      "unequipped_sort_score": 220000,
+      "sorting_translations": {
+        "en": "Repel Ring",
+        "zh_CN": "排斥指环"
+      }
+    },
+    {
+      "id": 2102673306,
+      "source": "Data/Items/RingBrass.yaml",
+      "item_name": "RingBrass",
+      "name_key": "RINGBRASS_NAME",
+      "sorting_key": "RINGBRASS_SORT",
+      "description_key": "RINGBRASS_DESC",
+      "article_key": "RINGBRASS_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 460,
+      "value": 230,
+      "slot": "arms",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 220020,
+      "sorting_translations": {
+        "en": "Ring Brass",
+        "zh_CN": "黄铜指环"
+      }
+    },
+    {
+      "id": 624857565,
+      "source": "Data/Items/RingCheap.yaml",
+      "item_name": "RingCheap",
+      "name_key": "RINGCHEAP_NAME",
+      "sorting_key": "RINGCHEAP_SORT",
+      "description_key": "RINGCHEAP_DESC",
+      "article_key": "RINGCHEAP_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 98,
+      "value": 49,
+      "slot": "arms",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 220010,
+      "sorting_translations": {
+        "en": "RINGCHEAP_SORT",
+        "zh_CN": "RINGCHEAP_SORT"
+      }
+    },
+    {
+      "id": 1608170892,
+      "source": "Data/Items/Rope.yaml",
+      "item_name": "Rope",
+      "name_key": "ROPE_NAME",
+      "sorting_key": "ROPE_SORT",
+      "description_key": "ROPE_DESC",
+      "article_key": "ROPE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 30,
+      "value": 15,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "rope",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Rope",
+        "zh_CN": "绳索"
+      }
+    },
+    {
+      "id": 256723214,
+      "source": "Data/Items/Ruler.yaml",
+      "item_name": "Ruler",
+      "name_key": "RULER_NAME",
+      "sorting_key": "RULER_SORT",
+      "description_key": "RULER_DESC",
+      "article_key": "RULER_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 22,
+      "value": 11,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 2,
+          "name": "INVENTORY_ACTION_USE",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 1,
+          "key": "skill",
+          "kind": 1,
+          "text": "useRuler",
+          "integer": 0,
+          "real": 0.0
+        },
+        {
+          "field": 1,
+          "key": "reusable",
+          "kind": 3,
+          "text": "",
+          "integer": 1,
+          "real": 0.0
+        },
+        {
+          "field": 8,
+          "key": "",
+          "kind": 1,
+          "text": "ItemDialogue/ruler",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 600000,
+      "sorting_translations": {
+        "en": "Ruler",
+        "zh_CN": "尺子"
+      }
+    },
+    {
+      "id": 34071592,
+      "source": "Data/Items/Shovel.yaml",
+      "item_name": "Shovel",
+      "name_key": "SHOVEL_NAME",
+      "sorting_key": "SHOVEL_SORT",
+      "description_key": "SHOVEL_DESC",
+      "article_key": "SHOVEL_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Shovel",
+        "zh_CN": "铲子"
+      }
+    },
+    {
+      "id": 738237698,
+      "source": "Data/Items/Slingshot.yaml",
+      "item_name": "Slingshot",
+      "name_key": "SLINGSHOT_NAME",
+      "sorting_key": "SLINGSHOT_SORT",
+      "description_key": "SLINGSHOT_DESC",
+      "article_key": "SLINGSHOT_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 160,
+      "value": 80,
+      "slot": "weapon",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 2,
+          "key": "",
+          "kind": 1,
+          "text": "attack_slingshot",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 240024,
+      "sorting_translations": {
+        "en": "Slingshot",
+        "zh_CN": "弹弓"
+      }
+    },
+    {
+      "id": 1393774499,
+      "source": "Data/Items/SlingshotMetal.yaml",
+      "item_name": "SlingshotMetal",
+      "name_key": "SLINGSHOTMETAL_NAME",
+      "sorting_key": "SLINGSHOTMETAL_SORT",
+      "description_key": "SLINGSHOTMETAL_DESC",
+      "article_key": "SLINGSHOTMETAL_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 260,
+      "value": 130,
+      "slot": "weapon",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 3,
+          "name": "",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 2,
+          "key": "",
+          "kind": 1,
+          "text": "attack_slingshot",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 240054,
+      "sorting_translations": {
+        "en": "SLINGSHOTMETAL_SORT",
+        "zh_CN": "SLINGSHOTMETAL_SORT"
+      }
+    },
+    {
+      "id": 2244732371,
+      "source": "Data/Items/SportsDrink.yaml",
+      "item_name": "SportsDrink",
+      "name_key": "SPORTSDRINK_NAME",
+      "sorting_key": "SPORTSDRINK_SORT",
+      "description_key": "SPORTSDRINK_DESC",
+      "article_key": "SPORTSDRINK_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 75,
+      "value": 37,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 70,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": true,
+      "target_all": false,
+      "reusable": false,
+      "actions": [
+        {
+          "function": 1,
+          "name": "SPORTSDRINK_ACT1",
+          "textfail": "",
+          "pending": true
+        }
+      ],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [],
+      "unequipped_sort_score": 1000070,
+      "sorting_translations": {
+        "en": "Sports Drink",
+        "zh_CN": "运动饮料"
+      }
+    },
+    {
+      "id": 559309319,
+      "source": "Data/Items/StickyMachine.yaml",
+      "item_name": "StickyMachine",
+      "name_key": "STICKYMACHINE_NAME",
+      "sorting_key": "STICKYMACHINE_SORT",
+      "description_key": "STICKYMACHINE_DESC",
+      "article_key": "STICKYMACHINE_ART",
+      "keyitem": true,
+      "doses": 1,
+      "cost": 3200,
+      "value": 1600,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [
+        "lloyd"
+      ],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 7,
+          "key": "",
+          "kind": 1,
+          "text": "useStickyMachine",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 100000,
+      "sorting_translations": {
+        "en": "Sticky Machine",
+        "zh_CN": "黏合装置"
+      }
+    },
+    {
+      "id": 1919279575,
+      "source": "Data/Items/TimeMachine.yaml",
+      "item_name": "TimeMachine",
+      "name_key": "TIMEMACHINE_NAME",
+      "sorting_key": "TIMEMACHINE_SORT",
+      "description_key": "TIMEMACHINE_DESC",
+      "article_key": "TIMEMACHINE_ART",
+      "keyitem": false,
+      "doses": 1,
+      "cost": 2775,
+      "value": 0,
+      "slot": "",
+      "transform": "",
+      "heal_hp": 0,
+      "heal_pp": 0,
+      "boost": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "can_use": [],
+      "can_consume": [],
+      "status_heals": [],
+      "is_food": false,
+      "target_all": false,
+      "reusable": false,
+      "actions": [],
+      "legacy_domain": 0,
+      "legacy_id": 0,
+      "pending_metadata": [
+        {
+          "field": 11,
+          "key": "",
+          "kind": 1,
+          "text": "Merrysville/TwinkleElementary/weird_teacher_time_machine",
+          "integer": 0,
+          "real": 0.0
+        }
+      ],
+      "unequipped_sort_score": 400000,
+      "sorting_translations": {
+        "en": "TIMEMACHINE_SORT",
+        "zh_CN": "TIMEMACHINE_SORT"
+      }
+    }
+  ],
+  "policy": {
+    "capacities": [
+      16,
+      0,
+      64,
+      99
+    ],
+    "unbounded_mask": 10,
+    "default_doses": 1,
+    "dose_step": 1,
+    "dose_drop_threshold": 1,
+    "uid_protocol": 7
+  },
+  "sources": {
+    "Data/Items/Antidote.yaml": "277cc60694c95e266ce0b406c7d74992c4fcf39ffdb130d96d04fde7a00ec7eb",
+    "Data/Items/Apple.yaml": "973ba3334d58203c1916b1cfd8fdc7445fea55cb626cbab76a18afc63c62487f",
+    "Data/Items/AppleSlices.yaml": "bf48e6a2a7b38c4e18e253a9556c21eac5db229416052aa9752e579070d06a53",
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/Banana.yaml": "e3b2a4690a88a2f59fdbb1e28f94e6c333652d4a4da1a4d1fb05a0d361de8f95",
+    "Data/Items/BananaGun.yaml": "231169d9a61142076f322bc5975f19bbb7ae4ed91147574559881facbb98291d",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/Items/BaseballCapMr.yaml": "db7cb7b27918d03cee1a1cf2c7dfab4bef32dd53de9e6719b7ed19e1b800992c",
+    "Data/Items/BatOld.yaml": "a342301d21e930ca575d0b6f89bc47fe6a52fcdc94fa498782006dd74149c1e6",
+    "Data/Items/BatPlastic.yaml": "7e290100a607a7ea558603babaacd221a115e8487a74a122eebf00e3262cf731",
+    "Data/Items/BatTeeBall.yaml": "d29ca14749510776e2bf344a9be36ce817891a4cf398314d08e3a0a9dd5b435e",
+    "Data/Items/BatWooden.yaml": "30a42c32fd28c3b664c7e00357b57ededa656c5ee091b7d86b85ddd2b81598c6",
+    "Data/Items/BeeStingCake.yaml": "f1b4751e374e3848926dd0f83deeca012ced6c1088eeeccfa9a4ffe84ec77ae8",
+    "Data/Items/Berliner.yaml": "c5f257bd97bb9c49752213454dbe484fda57cfc09a6260b4e04a105e209f8cb5",
+    "Data/Items/BigBag.yaml": "8422864849656bdec0603df581e76eb94ebb4bbbe06d49792e20e1f44ec4d9ad",
+    "Data/Items/Bomb.yaml": "b97c5cedc7e5ad9c8d84558d5ace58cf0f86afd4a6bdee4f4dc68291ab6fab25",
+    "Data/Items/BottleRocket.yaml": "3a27518f9dce97a154472f43f188224068ae672d44a8f4e2c218cd3b035b2709",
+    "Data/Items/BottleRocketGift.yaml": "a7ee738ca379c972fd6db4da42b58dad0eafd598bd188f391f1a2db9c24f6b51",
+    "Data/Items/BottleRocketHead.yaml": "fd1ec93f82546e09d12b6248f095aac05a71f2a1987620ae558f0248726b2919",
+    "Data/Items/BottleRocketWings.yaml": "cb47c10cdb6cc3db6f6ffdacbd2d36f23719b392c5450dd812e8ebead6961a1c",
+    "Data/Items/Bread.yaml": "826a4d65b3acb111ed9d1087fffe5b7c238300814deb3ff14bf38575a235120e",
+    "Data/Items/BrokenTrumpet.yaml": "a379d3f8dbed94f54f0d49fc0fc21c19eb85fd042b5c64a3b3e5355971740831",
+    "Data/Items/Bullhorn.yaml": "74b81af7dbd76c305fadc06c725599aac2e10acd5bd525c9066a988b72c2ca4e",
+    "Data/Items/CanaryChick.yaml": "115a6f05c9f97d273ef257df8a887a6089f98c9180e9d1ab8ed825502d524a7f",
+    "Data/Items/CapsuleDEF.yaml": "015a97a72b6ff468bb4201b801c9fde9fc08d50ba751fd429be5e1dd169af699",
+    "Data/Items/CapsuleGUT.yaml": "4650024541abcd884acdd85f1735f341a75fb2a8b1320b902727cce6366a181c",
+    "Data/Items/CapsuleHP.yaml": "e4c2c77b3cd4d9c76061830cfe3ae7cebc908f1df00c9b2dc5ab61cffc12c723",
+    "Data/Items/CapsuleIQ.yaml": "4be4d4fca22df4e67d669cef7f00f2430a44d91a9c5c0ec51bd864fa82fd3874",
+    "Data/Items/CapsuleOFE.yaml": "138b3d188d5c916902a4eae6319e5aab0018526699d42310958b8bddabef2629",
+    "Data/Items/CapsulePP.yaml": "6cb20586236910a3b56593937c62e0f6af396477e7883843132188f8cfc00db9",
+    "Data/Items/CapsuleSPD.yaml": "9b2fa7adee577e69085ab5684ee7b793a3a6648d45699083671ce80e19c33814",
+    "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+    "Data/Items/CoinPeace.yaml": "8a3c3ceb8e04258bedd63e79b04142d00e145b8efcd9ad249aabdc9fbdf66e00",
+    "Data/Items/CourageBadge.yaml": "1eeb936d8035870352fbec221f95a108eb4efe7c47ced8369a7ab24b5d00f5ae",
+    "Data/Items/Croissant.yaml": "671f9b0cceb792086ac113e2d52a9f7983d625a1c2a675a034b2dab10b1168f6",
+    "Data/Items/Crumbs.yaml": "98ecaf6c7ae61fce59e59e333b8553f111e9b23de417e14d66841a0ea08200d4",
+    "Data/Items/CupOfLifenoodles.yaml": "062a4dfb7c33abe0a4df136ed34e86c7f6ab7fe03898127039c37baa1a64a280",
+    "Data/Items/DefenseShower.yaml": "eb63a562c4f8ddbdb3698a6d623136ea24a35d593090445ce7080fd038835403",
+    "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
+    "Data/Items/EagleFeather.yaml": "69602dc23c3e4821ecd57b70914367225861459f8c9df799fadd4b35598c6b95",
+    "Data/Items/EnergyBeam.yaml": "3f69290103fd4c9cf39f8d9be19c41a9604348bf60eee730678b3e4f03ec79e9",
+    "Data/Items/EyeDrops.yaml": "07871bb92ce847b86b61a746904d001009ae4828f7d18c8519d99d4b7bdf9579",
+    "Data/Items/FactoryPass.yaml": "a535d94f70382bdf6f8b8e638ceafd9c3d735ff71eb4e36ddf0b992737d443e4",
+    "Data/Items/FavFood.yaml": "af37bcef1ee7b36397ead1b46723ca54040d2cbb476bc262dbcbc980dd84cd4d",
+    "Data/Items/FleaBag.yaml": "e5b1ab1c860a40fb10a64ce3636c6023aeef35068875760d2d521ea1df4252b5",
+    "Data/Items/FranklinBadge.yaml": "3b89c752071e7851ac0850e325436a62f66da1c0e536ad7341c36a28113c15ad",
+    "Data/Items/FranklinBadge0.8.yaml": "2cd032823b4f06f9a1004b828e5d2e341ec83cb65141850b85429a33f8a76492",
+    "Data/Items/FreshMint.yaml": "c95fb7c4cad6c39f633076d90f8f8d729acec1baaa164209819d17365862c1ba",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Data/Items/GlassesCelluloid.yaml": "29f171c3960db6d36601490740ce0c740671f2bb763eea470e34bbe2f8ca1633",
+    "Data/Items/GunStun.yaml": "e0526a18a79f1dcd39f437a3e7590bdc8b91f9cf521f0358714354b2be43c013",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Data/Items/HerbMagic.yaml": "9fb6cf6a765467d6228d50cb3f2d6bbe62653f5cbda4711eb5fbce231583c55a",
+    "Data/Items/HerbRed.yaml": "f66261045eba9c783a486eb42c6b4cd88444c95cda3eaf5646c8c5758889f36e",
+    "Data/Items/HotDog.yaml": "654ec58d8e5b42acf5735a12bfe4a061817058c89b44f68c7f88eefad1a872af",
+    "Data/Items/Insecticide.yaml": "fe6f6530b41738fa1f4f2d7ee219bfff6d9a86dbe2a5c313e196375e5f5e2cda",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+    "Data/Items/KeyZoo.yaml": "e7970dc5523041b6fc2ed84e04eac573fd218dc6b851714df9d4ec86ad927fa7",
+    "Data/Items/KickMeNote.yaml": "3d1481a5d1eac9a119e804a1d7d4924bfca03a25c29376a01586596a46d43165",
+    "Data/Items/LastWeapon.yaml": "a5a7337b30041caf31d941964a1379ec33d6373eeda8d05c75436e2fde1a4ac4",
+    "Data/Items/LifeUpCream.yaml": "038fd486d8ce6b10f1499526d44bf5a319f4f75e2877c42784f067427509e430",
+    "Data/Items/MagicCandy.yaml": "170917824e2f5c65da5357b41c521f2ebff40d2b3d70f090b12392c46af1e830",
+    "Data/Items/MapCatacombs.yaml": "755ed88258af82c591f605da865db3746dd1b6840f947eba0118bce785a684b1",
+    "Data/Items/MapDuncans.yaml": "33a551f11d532f31cb5173c4ba9813b266cdb23ea19faa1aa0459bc9fbe6e4cb",
+    "Data/Items/MapMagicant.yaml": "0df4c95baeb9c7dfc6f4546b06c38546ec25cde2136ee7ddf7e74fc81857f5fc",
+    "Data/Items/MapMerrysville.yaml": "b728a934df42ddd76997761e48e8f9e87a4ab7161c4e727c262a0faa07358ebc",
+    "Data/Items/MapPodunk.yaml": "a0a9b41e46eef76044809dc698abc1afc1dab534b4dcb7e37563ea01e54afe43",
+    "Data/Items/MapSweets.yaml": "cb9b4fb0ae6aa16219f3851cb90b0375923d481b712105a2f4e722a0c7570a2c",
+    "Data/Items/Milk.yaml": "cc1f1c405d9993696d1485dc7787d576a4b31218643e8daea54202e23cce477d",
+    "Data/Items/NobleSeed.yaml": "ef2aa470c24586194982356f6f27f2c4d50a053b1d32737a39dd3dd4d09528b7",
+    "Data/Items/Ocarina.yaml": "85cdadd465f1e738e0308f3e4b1a60b2c0c5b67370ada588827f4392d303b452",
+    "Data/Items/OnyxHook.yaml": "9aa14a14e94bf87ff187b749ebb4df44e0a94657c4384979e51e26fb36840ced",
+    "Data/Items/OrangeJuice.yaml": "1843a7480c3f88796f2eaad359bcc763bc6cb188beef6a4b43066c23d63cbf60",
+    "Data/Items/PSIStone.yaml": "5ac36fc7954ce692c6b584de15da04e49b90a17b8df28a2c3070d194f5992d1c",
+    "Data/Items/PendantFire.yaml": "a82285483eccce6286e0e6f2b1ef06779c0f93293f51fd224b7866850370ac66",
+    "Data/Items/PhoneCard.yaml": "f7b194983181daaee5f0bae4a56d1d5f8aafec473cf469b61593d8d439c280ac",
+    "Data/Items/Pretzel.yaml": "b12820a812629a8a624db0dbf311b1b6698cd6203f0a027696f640c1729a0b82",
+    "Data/Items/RealRocket.yaml": "0cedd3add1d9223b4d1102b249f364a153bbd1138dba3270e93df08bb0a6055f",
+    "Data/Items/RecollectionBell.yaml": "a7ebbeb52dcb9ccb95f86f4dcffcf070123d3f8edf586d0fda04a2659f9f7a68",
+    "Data/Items/RedBandana.yaml": "078417ad7617a3b02920f8bf4d94559d95b60a4a84a2399c973d63dde74cffdf",
+    "Data/Items/RepelRing.yaml": "29a144382e2e0f7c2d87a098ef444ef4b57055e2ab2c549af22575a87a662394",
+    "Data/Items/RingBrass.yaml": "2d64a47414c1b2ed20809b08c365cac0df346f0b45727b1024f3fae4ba17f967",
+    "Data/Items/RingCheap.yaml": "36caf43735a24b6be6fcb7e8aeee43be1d1b2a46e195e42b96e760fec1789bc7",
+    "Data/Items/Rope.yaml": "7252e121869d042980930fd15c9ce06992fc69fd6de5a6e8ceeab05e5bd33787",
+    "Data/Items/Ruler.yaml": "5cdbd1620164800dfdb796226910cb1e2fe5450ded63a1e2e2119993015b7c3b",
+    "Data/Items/Shovel.yaml": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0",
+    "Data/Items/Slingshot.yaml": "8165f9211d9c2716b538e35cab08ee0ef9820505f418e2afe36d4dcfe15f0fca",
+    "Data/Items/SlingshotMetal.yaml": "db9cc130df733b216ff04d9b39938d7e8529ac1e72230f3e1af5cda6b0a1b920",
+    "Data/Items/SportsDrink.yaml": "09ffeb14d8c25e1b99a9db89877c2ed0a9af435682ccd8953cd27455d53f5b20",
+    "Data/Items/StickyMachine.yaml": "e515a1984e6309c6fa80f51bfb4f928a98c5b5731412bb0ea5ccc079149860e7",
+    "Data/Items/TimeMachine.yaml": "b385da3ea2e99504c4e02248eea6b9a9891f731d8250257a8bf5f9e1442f927e",
+    "Data/Items/error.yaml": "c12385265cccf10f3f7fffe5da475051541a72b72fd2a6069640ce0fbffbf875",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e"
+  },
+  "sort_policy": {
+    "scores": {
+      "HP_RECOVER": 1000000,
+      "PP_RECOVER": 900000,
+      "STATUS_HEALS": 800000,
+      "CONSUMABLE": 700000,
+      "BATTLE_ITEMS": 600000,
+      "USABLE": 500000,
+      "OTHERS": 400000,
+      "BOOSTS": 300000,
+      "UNEQUIPPED": 200000,
+      "EQUIPPED": 100000,
+      "KEY": 100000
+    },
+    "coefficients": {
+      "maxhp": 2,
+      "maxpp": 2,
+      "offense": 3,
+      "defense": 2,
+      "speed": 1,
+      "iq": 1,
+      "guts": 1
+    },
+    "slots": [
+      "weapon",
+      "body",
+      "arms",
+      "other"
+    ],
+    "slot_step": 10000
+  },
+  "constructor_sources": [
+    "Scripts/global/Item.gd",
+    "Scripts/global/Inventory.gd",
+    "Scripts/global/globalData.gd"
+  ],
+  "god_storage": {
+    "id": 566345938,
+    "member": "god_storage",
+    "role": 3,
+    "type_field": "_type",
+    "items_field": "_items"
+  },
+  "scope": "All literal definitions and complete Item.new/GodStorage construction only; optional gameplay metadata and actions remain pending; Directory insertion order must be supplied by the actual cache owner"
+}

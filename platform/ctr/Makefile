@@ -39,6 +39,7 @@ SOURCES += runtime/field_goods.cpp runtime/field_goods_data.cpp runtime/field_gl
  runtime/field_ui_preloads.cpp runtime/field_ui_preloads_data.cpp platform/ctr/field_dialogue_audio_player.cpp platform/ctr/podunk_dialogue_host.cpp
 SOURCES += runtime/field_native_root_data.cpp runtime/field_global_data.cpp runtime/field_global_data_data.cpp \
  platform/ctr/podunk_native_root.cpp platform/ctr/podunk_dialogue_root_script.cpp platform/ctr/podunk_dialogue_options_adapter.cpp
+SOURCES += runtime/global_item_cache.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native
@@ -95,4 +96,18 @@ $(APP).smdh: assets/icon.png
 	$(TOOLS)/smdhtool --create "Encore Native Preview" "Mother Encore port development" "Encore Native contributors" $< $@
 $(APP).3dsx: $(APP).elf $(APP).smdh stage-romfs $(wildcard romfs/graphics/world/house-map/*) $(wildcard romfs/graphics/actors/*) $(wildcard romfs/graphics/world/house-layers/*) $(wildcard romfs/data/*)
 	$(TOOLS)/3dsxtool $(APP).elf $@ --smdh=$(APP).smdh --romfs=$(ROOT)/build/ctr/native-romfs
+# Explicit constructor verification binary, never a default build/artifact.
+# Building this target does not execute tests. Source packs/YAML directory and
+# expected source identity are supplied as explicit arguments when run manually.
+MANUAL_GOD_OBJECTS := $(filter-out build/ctr/platform/ctr/main.o,$(OBJECTS)) \
+ build/ctr/tests/podunk_god_storage_driver.o build/ctr/tests/podunk_god_storage_host_manual.o
+build/ctr/tests/podunk_god_storage_driver.o build/ctr/tests/podunk_god_storage_host_manual.o: CPPFLAGS += -I$(ROOT) -I$(DEVKITPRO)/portlibs/3ds/include
+.PHONY: manual-god-storage
+manual-god-storage: build/ctr/manual/god_storage.3dsx
+build/ctr/manual/god_storage.elf: $(MANUAL_GOD_OBJECTS)
+	@mkdir -p $(dir $@)
+	$(CXX) $(LDFLAGS) $^ $(LDLIBS) -L$(DEVKITPRO)/portlibs/3ds/lib -lmbedcrypto -o $@
+build/ctr/manual/god_storage.3dsx: build/ctr/manual/god_storage.elf
+	$(TOOLS)/3dsxtool $< $@
+-include $(MANUAL_GOD_OBJECTS:.o=.d)
 -include $(OBJECTS:.o=.d)

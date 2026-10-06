@@ -23,7 +23,7 @@ bool FieldItemDefinitionsRuntime::initialize(const FieldItemDefinitions &d,
                                              LoadRngClockProvider clock,
                                              FieldItemDefinitionsHost h,
                                              std::string &e) {
-  if (!d.valid() || !clock || !h.bind || !h.read || !h.commit)
+  if (!d.valid() || d.global_constructor_scope() || !clock || !h.bind || !h.read || !h.commit)
     return fail(e, "Field items complete source host/clock required");
   std::set<uint32_t> ids;
   for (auto uid : ledger)

@@ -17,6 +17,8 @@ make sanitize
 
 ASan / UBSan 在 GCC、Clang 上运行，保持泄漏检查。若 sanitizer 在进入程序前启动失败，应保留日志并用独立程序验证工具链环境；不能据此将游戏测试记为通过或关闭检查。
 
+完整物品构造的手动全面测试包括 cap3 实际 C++ 加载器，以及重新计算 CRC 后的未知动作、元数据、格式、能力和规则负例。它们仅由手动 `make test` 调用。库存 Reference 的正例另依赖 3DS 原生宿主；显式 `make -f platform/ctr/Makefile -j4 manual-god-storage` 只生成验证用 3DSX，不执行用例，也不加入默认安装包或 Actions artifact。此目标使用 SDK portlibs 的 mbedcrypto 做原始 YAML SHA256 比对。运行时须提供固定上游的实际物品目录、独立期望身份及对应资源，参数见 `tests/podunk_god_storage_driver.cpp`；它验证独立构造游标，不替代完整全局 Ready 或正常游戏流程验收。
+
 ## 上游行为对照
 
 `upstream.lock` 和 `compatibility/` 固定真实来源和已审查机制。独立 Godot 3.6.2 对照及保留的参考数据用于检查位置、速度、动画、旗标、动作完成和 Timer / idle / physics 顺序。

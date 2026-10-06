@@ -3,15 +3,16 @@
 #include "podunk_inventory_host.hpp"
 namespace encore::ctr {
 // Source globaldata's actual Character Objects / Inventory References. This
-// owns the selected declaration slice and LOAD prefix, never the YAML caches,
-// remaining character initializers or GodStorage Ready. No legacy Session
-// flags/items are promoted to a complete globaldata owner.
+// owns the selected declarations, LOAD prefix, and Items/GodStorage constructor
+// consumers. Remaining caches/characters and the full Ready traversal still
+// require their actual source owners; legacy Session data is not substituted.
 class PodunkGlobalDataHost final {
   upstream::FieldGlobalDataRuntime owner_;
   upstream::FieldGlobalRegistry *registry_ = nullptr;
   const upstream::FieldInventoryData *inventory_ = nullptr;
   const upstream::FieldItemDefinitions *definitions_ = nullptr;
   const PodunkInventoryHost *live_inventory_ = nullptr;
+  upstream::GlobalItemCache item_cache_;
   std::map<upstream::FieldObjectId, std::weak_ptr<PodunkItemObject>> items_;
   static bool fail(std::string &e, const char *s) {
     e = s;
@@ -30,6 +31,68 @@ public:
       return false;
     registry_ = &registry;
     return true;
+  }
+  bool initialize_items_cache(const upstream::FieldItemDefinitions &defs,
+                              std::string &e) {
+    if (!registry_ || !owner_.data())
+      return fail(e, "Actual globalData owner required for Items cache");
+    if (defs.source_pin() != owner_.data()->identity().upstream_commit)
+      return fail(e, "Global Items foreign upstream source");
+    return item_cache_.initialize(defs, owner_.globaldata_object(), e);
+  }
+  bool insert_loaded_item_yaml(const std::string &source,
+                               const std::array<uint8_t, 32> &hash,
+                               std::string &e) {
+    return item_cache_.insert_loaded_yaml(source, hash, e);
+  }
+  const auto &items_cache() const { return item_cache_; }
+  bool observe_items_directory_complete(
+      const std::vector<std::pair<std::string, std::array<uint8_t, 32>>> &paths,
+      const std::array<uint8_t, 32> &closure_proof, std::string &e) {
+    return item_cache_.observe_directory_complete(paths, closure_proof, e);
+  }
+  bool read_reference_member(upstream::FieldObjectId actual_globaldata,
+                             const std::string &source_member,
+                             upstream::FieldObjectId &out,
+                             std::string &e) const {
+    return owner_.read_reference_member(actual_globaldata, source_member, out,
+                                        e);
+  }
+  bool construct_god_storage(const std::string &locale,
+                             upstream::SourceRandom &random,
+                             std::vector<uint32_t> &ledger,
+                             upstream::LoadRngClockProvider clock,
+                             std::string &e) {
+    upstream::FieldGlobalDataGodItemFactory factory;
+    factory.reserve = [this](const auto &defs, auto &registry,
+                             uint32_t stable_owner,
+                             upstream::FieldGlobalDataItemReference &out,
+                             std::string &error) {
+      std::shared_ptr<PodunkItemObject> item;
+      if (&registry != registry_ ||
+          !PodunkInventoryHost::reserve_god_storage_item(
+              defs, registry, stable_owner, item, error))
+        return false;
+      out = {&registry, item->object, stable_owner, {}, item};
+      items_[item->object] = item;
+      return true;
+    };
+    factory.initialize = [this](const auto &defs, const auto &value,
+                                auto &cache,
+                                upstream::FieldGlobalDataItemReference &ref,
+                                std::string &error) {
+      auto found = items_.find(ref.object);
+      auto item = found == items_.end() ? nullptr : found->second.lock();
+      if (!item || ref.registry != registry_ ||
+          ref.actual_owner.get() != item.get() ||
+          !PodunkInventoryHost::initialize_god_storage_item(item, defs, value,
+                                                            cache, error))
+        return false;
+      ref.value = item->value;
+      return true;
+    };
+    return owner_.construct_god_storage(item_cache_, locale, random, ledger,
+                                        std::move(clock), factory, e);
   }
   bool load_inventory_prefix(const upstream::FieldInventoryData &data,
                              const upstream::FieldItemDefinitions &definitions,
@@ -193,7 +256,7 @@ public:
     upstream::FieldGlobalDataObject current;
     if (!owner_.read_constructed_object(object, current, error))
       return false;
-    if (!owner_.prefix_complete()) {
+    if (!owner_.prefix_complete() || (item_cache_.definitions() && current.declaration==item_cache_.definitions()->god_storage_id() && owner_.god_storage_complete())) {
       // stat_changed is synchronous. HP/MAXHP etc. have already been written;
       // nickname/skills/affinities still have their real constructor defaults
       // until execution reaches their later assignments. Do not substitute the

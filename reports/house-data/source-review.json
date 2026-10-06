@@ -119,9 +119,9 @@
     "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
   },
   "dependencies": {
-    "content/native-opening.json": "91e4a791688eab92428138db6bb3a2dde8b9ed768c92019288c92bafb906b2a3"
+    "content/native-opening.json": "4e21a7725e4159bc6c4b9e211861f1dc9c8712c57fa7429e452acebe7c61d3b7"
   },
-  "ir_sha256": "480e603d34f9a78519c8d1de4b4f761ea0a19a8ff1b41c673db9f21450d1cdd1",
+  "ir_sha256": "4066b92e3f2dce4d9e3244d392b3b6d7dc69ee624208510fe199cb26bbb725f5",
   "mechanisms": [
     "ancestor-scaled door shape and target minus (0,7)",
     "same scene preserves rewards and flags",

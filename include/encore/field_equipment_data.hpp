@@ -5,9 +5,11 @@ namespace encore::upstream {
 enum class FieldSection:uint16_t {Strings=1,Parameters,Bindings,Commands,Slots,Equipment,Resources,Layouts,Clips,Keys};
 enum class FieldParameter:uint32_t {ReferenceWidth=1,ReferenceHeight,PlatformWidth,PlatformHeight,PauseColumns,SlotPitch,ListPitch,StatPitch,CursorMoveSeconds,CursorFps,CursorFrame0,CursorFrame1,CursorFrame2,CursorFrame3,MainLineHeight,NumberLineHeight,NumberSpacing,LoopAround,PauseColumnPitch,PauseRowPitch,ListRows,BoostWeight0,BoostWeight1,BoostWeight2,BoostWeight3,BoostWeight4,BoostWeight5,BoostWeight6,OpenMask,ConfirmMask,CancelMask,ScopeMask,OwnerId};
 enum class FieldBinding:uint32_t {PauseTitle=1,EquipTitle,None,Empty,StatMaxHP,StatMaxPP,StatOffense,StatDefense,StatSpeed,StatIQ,StatGuts,Owner,MainFont,NumberFont,PauseOpenSound,PauseCloseSound,EquipOpenSound,EquipCloseSound,MoveSound,ConfirmSound,RestrictedSound,ClearSound,EquipSound,BackSound,Level,CashPattern,CashRight};
-enum class FieldLayoutRole:uint32_t {PausePanel=1,PauseInside,PauseTitle,PauseCommand,PauseCash,EquipmentPanel,StatsPanel,Owner,EquipTitle,Portrait,SlotPanel,SlotLabel,SlotItem,ListPanel,ListItem,StatLabel,StatValue,StatProjected,StatIcon,DescriptionPanel,DescriptionText,Cursor,BoostEmpty,BoostBetter,BoostLower,PauseCursor,SlotCursor,CandidateCursor,CashLabel,CashValue,LevelLabel,LevelValue,PortraitEquipped,PortraitSuitable,PortraitBetter,PortraitLower,CashCents};
+enum class FieldLayoutRole:uint32_t {PausePanel=1,PauseInside,PauseTitle,PauseCommand,PauseCash,EquipmentPanel,StatsPanel,Owner,EquipTitle,Portrait,SlotPanel,SlotLabel,SlotItem,ListPanel,ListItem,StatLabel,StatValue,StatProjected,StatIcon,DescriptionPanel,DescriptionText,Cursor,BoostEmpty,BoostBetter,BoostLower,PauseCursor,SlotCursor,CandidateCursor,CashLabel,CashValue,LevelLabel,LevelValue,PortraitEquipped,PortraitSuitable,PortraitBetter,PortraitLower,CashCents,ItemsTargetPanel,ItemsActionPanel};
 enum class FieldClipRole:uint32_t {PauseOpen=1,PauseClose,EquipOpen,EquipClose,DescriptionOpen,DescriptionClose};
-struct FieldCommand {uint32_t id=0,en=0,zh=0,enabled=0;};
+// Encoded source command operation; never infer it from localized labels.
+enum class FieldCommandAction:uint32_t {Restricted=0,Equip=1,Items=2};
+struct FieldCommand {uint32_t id=0,en=0,zh=0,enabled=0;FieldCommandAction action()const{return FieldCommandAction(enabled);}};
 struct FieldSlot {uint32_t id=0,source=0,en=0,zh=0;};
 struct FieldEquipment {uint32_t definition=0,source=0,slot=0;std::array<int32_t,7> boosts{};};
 struct FieldResource {BattleResource image{};uint32_t file_bytes=0,crc32=0;};

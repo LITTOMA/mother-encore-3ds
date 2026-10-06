@@ -168,6 +168,11 @@
       "id": 30,
       "role": "FieldEquipment",
       "path": "data/opening.encfield"
+    },
+    {
+      "id": 31,
+      "role": "ItemUse",
+      "path": "data/opening.encuse"
     }
   ],
   "encounters": [

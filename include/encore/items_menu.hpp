@@ -17,6 +17,9 @@ public:
  bool append(uint32_t definition,uint32_t doses,uint32_t uid,std::string& error);
  // Source ordinary-inventory transfer primitives preserve opaque saved UIDs.
  bool erase_uid(uint32_t uid,std::string& error);
+ // Source reduce_or_drop_item: decrement a retained UID, erase the last dose.
+ // The checked consumption resource owns admission and reusable policy.
+ bool consume_dose_uid(uint32_t uid,uint32_t expected_doses,std::string& error);
  bool equip_uid(uint32_t uid,bool equipped,std::string& error);
  const std::vector<ItemInstance>& instances()const{return instances_;}
  const ItemView& content()const{return data_;}

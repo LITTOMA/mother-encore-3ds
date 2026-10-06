@@ -26,6 +26,9 @@ public:
  bool open();
  bool input(int x,int y,bool confirm,bool cancel,bool scope=false,bool pause_toggle=false);
  bool idle_frame(double);
+ bool take_items_request(){const bool value=items_request_;items_request_=false;return value;}
+ bool items_suspended()const{return items_suspended_;}
+ bool resume_items_checked();
  bool active()const{return phase_!=FieldEquipmentPhase::Closed;}
  bool visible()const{return active();}
  bool equipment_visible()const;
@@ -67,6 +70,7 @@ private:
  FieldEquipmentPhase phase_=FieldEquipmentPhase::Closed;
  uint32_t command_=0,slot_=0,candidate_=0,offset_=0;
  bool chinese_=false,description_open_=false,equip_closing_=false;
+ bool items_request_=false,items_suspended_=false;
  bool has_description_=false;ItemInstance description_item_{};
  float phase_time_=0,pause_time_=0,equip_time_=0,description_time_=0;
  float description_from_=0,description_to_=0;

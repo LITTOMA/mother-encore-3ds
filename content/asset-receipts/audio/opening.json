@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "e2ab5b71ef7d65cfc79e309ec49e5e809e301a590de2eb69d34141e809849a66",
+  "recipe_sha256": "4b07d793a533d66621e59a45e19e2ba9972285819ffee25dd5a60f422061988d",
   "ffmpeg_version": "ffmpeg version 7.1.5 Copyright (c) 2000-2026 the FFmpeg developers\nbuilt with gcc 12 (Debian 12.2.0-14+deb12u1)\nconfiguration: --prefix=/opt/encore-ffmpeg --disable-doc --disable-everything --enable-ffmpeg --enable-ffprobe --enable-protocol=file --enable-demuxer='ogg,wav,mp3' --enable-decoder='vorbis,mp3float,pcm_s16le,pcm_s24le,pcm_u8,pcm_f32le' --enable-encoder=pcm_s16le --enable-muxer=pcm_s16le --enable-filter='aresample,aformat,anull'\nlibavutil      59. 39.100 / 59. 39.100\nlibavcodec     61. 19.101 / 61. 19.101\nlibavformat    61.  7.103 / 61.  7.103\nlibavdevice    61.  3.100 / 61.  3.100\nlibavfilter    10.  5.100 / 10.  5.100\nlibswscale      8.  3.100 /  8.  3.100\nlibswresample   5.  3.100 /  5.  3.100\n",
   "ffmpeg_sha256": "4dee476fa932662ce7ff2b6e53356ec5f6173505df6d4fed8bc87583187be59e",
   "assets": [
@@ -41,7 +41,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/0.pcm"
+        "/tmp/encore-audio-hb2ij2hm/0.pcm"
       ]
     },
     {
@@ -80,7 +80,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/1.pcm"
+        "/tmp/encore-audio-hb2ij2hm/1.pcm"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/2.pcm"
+        "/tmp/encore-audio-hb2ij2hm/2.pcm"
       ]
     },
     {
@@ -158,7 +158,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/3.pcm"
+        "/tmp/encore-audio-hb2ij2hm/3.pcm"
       ]
     },
     {
@@ -197,7 +197,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/4.pcm"
+        "/tmp/encore-audio-hb2ij2hm/4.pcm"
       ]
     },
     {
@@ -236,7 +236,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/5.pcm"
+        "/tmp/encore-audio-hb2ij2hm/5.pcm"
       ]
     },
     {
@@ -275,7 +275,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/6.pcm"
+        "/tmp/encore-audio-hb2ij2hm/6.pcm"
       ]
     },
     {
@@ -316,7 +316,7 @@
         "1",
         "-ar",
         "48000",
-        "/tmp/encore-audio-0q5wimxv/7.pcm"
+        "/tmp/encore-audio-hb2ij2hm/7.pcm"
       ]
     },
     {
@@ -355,7 +355,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/8.pcm"
+        "/tmp/encore-audio-hb2ij2hm/8.pcm"
       ]
     },
     {
@@ -394,7 +394,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/9.pcm"
+        "/tmp/encore-audio-hb2ij2hm/9.pcm"
       ]
     },
     {
@@ -433,7 +433,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/10.pcm"
+        "/tmp/encore-audio-hb2ij2hm/10.pcm"
       ]
     },
     {
@@ -472,7 +472,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/11.pcm"
+        "/tmp/encore-audio-hb2ij2hm/11.pcm"
       ]
     },
     {
@@ -511,7 +511,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/12.pcm"
+        "/tmp/encore-audio-hb2ij2hm/12.pcm"
       ]
     },
     {
@@ -550,7 +550,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/13.pcm"
+        "/tmp/encore-audio-hb2ij2hm/13.pcm"
       ]
     },
     {
@@ -589,7 +589,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/14.pcm"
+        "/tmp/encore-audio-hb2ij2hm/14.pcm"
       ]
     },
     {
@@ -628,7 +628,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/15.pcm"
+        "/tmp/encore-audio-hb2ij2hm/15.pcm"
       ]
     },
     {
@@ -667,7 +667,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/16.pcm"
+        "/tmp/encore-audio-hb2ij2hm/16.pcm"
       ]
     },
     {
@@ -706,7 +706,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/17.pcm"
+        "/tmp/encore-audio-hb2ij2hm/17.pcm"
       ]
     },
     {
@@ -745,7 +745,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/18.pcm"
+        "/tmp/encore-audio-hb2ij2hm/18.pcm"
       ]
     },
     {
@@ -784,7 +784,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/19.pcm"
+        "/tmp/encore-audio-hb2ij2hm/19.pcm"
       ]
     },
     {
@@ -823,7 +823,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/20.pcm"
+        "/tmp/encore-audio-hb2ij2hm/20.pcm"
       ]
     },
     {
@@ -862,7 +862,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/21.pcm"
+        "/tmp/encore-audio-hb2ij2hm/21.pcm"
       ]
     },
     {
@@ -901,7 +901,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/22.pcm"
+        "/tmp/encore-audio-hb2ij2hm/22.pcm"
       ]
     },
     {
@@ -940,7 +940,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/23.pcm"
+        "/tmp/encore-audio-hb2ij2hm/23.pcm"
       ]
     },
     {
@@ -979,7 +979,7 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/24.pcm"
+        "/tmp/encore-audio-hb2ij2hm/24.pcm"
       ]
     },
     {
@@ -1018,15 +1018,54 @@
         "-bitexact",
         "-threads",
         "1",
-        "/tmp/encore-audio-0q5wimxv/25.pcm"
+        "/tmp/encore-audio-hb2ij2hm/25.pcm"
+      ]
+    },
+    {
+      "stable_id": 1701,
+      "source_sha256": "11eee267112ad052721ae96c1a4bdd7e589493c7dd57d1327164b330473aeaef",
+      "sample_rate": 44100,
+      "channels": 1,
+      "loop": false,
+      "frames": 22050,
+      "loop_start": 0,
+      "pcm_bytes": 44100,
+      "pcm_crc32": 2653762681,
+      "pcm_path": "sound/effects/item-consume.pcm",
+      "source_path": "res://Audio/Sound effects/EB/eat.wav",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "df0147fca63e74e0d110b0b47df9acb78a8752c1a643a5dd3a982b4b245f0567",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "e7dba08c5885bef7319a1d46aa750a19e71742203ca2273f0853c897878dbff5",
+      "command": [
+        "/opt/encore-ffmpeg/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "/storage-final-88cb99f/upstream/MOTHER-Encore/Audio/Sound effects/EB/eat.wav",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1",
+        "/tmp/encore-audio-hb2ij2hm/26.pcm"
       ]
     }
   ],
   "files": [
     {
       "path": "sound/banks/opening.encaudio",
-      "size": 4489,
-      "sha256": "882a0027ad9b30abe602e3e90086b2155b0941acc7d7a179771b27f61cdb073e"
+      "size": 4653,
+      "sha256": "d8ab4a45c7a993fbc32e9cf01b8f22b8dc64ea76289d1cbb7ddef08ec724e3a8"
     },
     {
       "path": "sound/effects/bash.pcm",
@@ -1087,6 +1126,11 @@
       "path": "sound/effects/introduction-thunder.pcm",
       "size": 338100,
       "sha256": "46113def40102327d47df699af3fa141b4843649ab030a3418467631bfb2e072"
+    },
+    {
+      "path": "sound/effects/item-consume.pcm",
+      "size": 44100,
+      "sha256": "e7dba08c5885bef7319a1d46aa750a19e71742203ca2273f0853c897878dbff5"
     },
     {
       "path": "sound/effects/item-received.pcm",

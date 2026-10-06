@@ -80,6 +80,10 @@ def build(root=ROOT):
     menus=table(ex,'Translations/TranslatedText/menus - sheet.csv');items=table(ex,'Translations/TranslatedText/items - sheet.csv')
     native_items=read_json(Path(root)/'content/native-items.json');defs=native_items['definitions']
     require([(d['id'],d['source']) for d in defs]==[(1,'BaseballCap'),(2,'AsthmaSpray')],'Storage unsupported item definitions')
+    from tools.item_use import load as load_item_use
+    item_use=load_item_use(root)
+    reduction=re.findall(r'func reduce_or_drop_item\(item: Item\) -> bool:\n\tif item.doses > (\d+):\n\t\titem.doses -= (\d+)',inventory)
+    require(len(reduction)==1 and reduction[0][0]==reduction[0][1]=='1','Storage dose reduction source changed')
     policies=[];equipment=[];translations={};articles=[]
     for d in defs:
         doc=ex.yaml('Data/Items/'+d['source']+'.yaml')
@@ -95,7 +99,12 @@ def build(root=ROOT):
             require(doc['can_use']==['ninten'] and doc['slot']=='other','Storage equipment ownership/slot changed')
             score=200000+10000+total
         else:raise ValueError('Unreviewed Storage sorting category')
-        policies.append(dict(definition_id=d['id'],source_item=d['source'],doses=doc.get('doses',1),max_count=1,sort_rank_en=score,sort_rank_zh=score))
+        doses=doc.get('doses',1);minimum=doses
+        use_rules=[r for r in item_use['rules'] if r['source']==d['source']]
+        if use_rules:
+            require(len(use_rules)==1 and use_rules[0]['max_doses']==doses and not use_rules[0]['reusable'],'Storage consumable source binding changed')
+            minimum=int(reduction[0][0])
+        policies.append(dict(definition_id=d['id'],source_item=d['source'],doses=doses,min_doses=minimum,max_count=1,sort_rank_en=score,sort_rank_zh=score))
         equipment.append(dict(definition_id=d['id'],boosts=boosts))
         translations[d['source']]={lang:{k:items[doc[k]][col] for k in ('name','sorting_name','article')} for lang,col in [('en','en'),('zh_Hans_CN','zh_CN')]}
         articles.append({lang:translations[d['source']][lang]['article'].split(',')[1] for lang in ('en','zh_Hans_CN')})
@@ -165,7 +174,7 @@ def build(root=ROOT):
             # Parent provides checked pane ownership. Rectangles remain absolute
             # source viewport coordinates; renderer must not add the parent rect.
             l['parent']=1 if l['rect'][0]<160 else 2
-    return dict(schema=1,kind='encore.native-storage.source-ir',commit=PIN,scope='Original ordinary Minnie Storage; singleton Ninten; BaseballCap and acquired AsthmaSpray; transfer/equipment prompts/persistent UID; rich description and god storage unsupported',sources=dict(sorted(ex.sources.items())),dependencies={'content/native-items.json':digest(Path(root)/'content/native-items.json')},parameters=params,bindings=binding,policies=policies,equipment=equipment,translations=translations,resources=resources,layouts=layouts)
+    return dict(schema=1,kind='encore.native-storage.source-ir',commit=PIN,scope='Original ordinary Minnie Storage; singleton Ninten; BaseballCap and acquired partially consumed AsthmaSpray; transfer/equipment prompts/persistent UID; rich description and god storage unsupported',sources=dict(sorted(ex.sources.items())),dependencies={'content/native-items.json':digest(Path(root)/'content/native-items.json'),'content/native-item-use.json':digest(Path(root)/'content/native-item-use.json')},parameters=params,bindings=binding,policies=policies,equipment=equipment,translations=translations,resources=resources,layouts=layouts)
 
 def recipe(ir):
     return dict(schema=1,kind='encore.storage.asset-recipe',commit=PIN,sources=ir['sources'],resources=ir['resources'],licence_review='Pinned upstream LICENSE permits game-related forks/modifications; original art remains under upstream terms, not MIT.')

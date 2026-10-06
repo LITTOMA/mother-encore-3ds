@@ -6,7 +6,7 @@ enum class StorageSection:uint16_t {Strings=1,Policies,Parameters,Bindings,Resou
 enum class StorageParameter:uint32_t {StorageCapacity=1,InventoryCapacity,Rows,RowPitch,WarnSeconds,EquippedScoreDelta,LoopAround,CursorSeconds,ReferenceWidth,ReferenceHeight,PlatformWidth,PlatformHeight,CursorX,CursorY,CursorWidth,CursorHeight,CursorFps,CursorFrame0,CursorFrame1,CursorFrame2,CursorFrame3,CursorMoveSeconds,BoostWeight0,BoostWeight1,BoostWeight2,BoostWeight3,BoostWeight4,BoostWeight5,BoostWeight6,TextLineHeight,CounterCharacterSpacing};
 enum class StorageLayoutRole:uint32_t {Container=1,Panel,OnHandList,StoredList,Title,Counter,Portrait,ItemLabel,Cursor,Description,Prompt,Yes,No,Separator,Scrollbar,Equipped,ItemIcon,IconFrame,DescriptionText,ScrollThumb,Highlight,PortraitEquipped,PortraitSuitable,PortraitBetter,PortraitLower,PortraitFull,QuestionCursor};
 enum class StorageBinding:uint32_t {TitleEn=1,TitleZh,UnequipEn,UnequipZh,EquipEn,EquipZh,StorageFullEn,StorageFullZh,InventoryFullEn,InventoryFullZh,YesEn,YesZh,NoEn,NoZh,Owner,MoveSound,ConfirmSound,RestrictedSound,ClearSound,EquipSound,CounterPattern,CounterFont,MainFont};
-struct StoragePolicy {uint32_t definition=0,source=0,doses=0,max_count=0,rank_en=0,rank_zh=0;};
+struct StoragePolicy {uint32_t definition=0,source=0,doses=0,max_count=0,rank_en=0,rank_zh=0,min_doses=0;};
 struct StorageEquipment {uint32_t definition=0;std::array<int32_t,7> boosts{};};
 class StorageView {
 public:

@@ -90,7 +90,7 @@ class NativeSessionTests(unittest.TestCase):
     def test_storage_conservation_policy_is_source_derived(self):
         from tools.storage_assets import load, IR
         storage=load(native.ROOT);r=self.recipe
-        self.assertEqual(r['schema'],5)
+        self.assertEqual(r['schema'],6)
         self.assertEqual(r['storage_capacity'],storage['parameters']['StorageCapacity'])
         self.assertEqual(r['dependencies'][IR],hashlib.sha256((native.ROOT/IR).read_bytes()).hexdigest())
         by_id={p['item_id']:p for p in r['storage_policies']}

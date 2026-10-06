@@ -934,13 +934,13 @@
   ],
   "dependencies": {
     "content/asset-receipts/graphics/battle/lamp/source.json": "35cbc4f2c2aca78037503a6057b7e13ca17e0c970dc809b50ca026f1f44a875c",
-    "content/doll-round.json": "1e7a9607835e6f7d66ab8a0b7b6a54c96fe0c19ac05d926c16065b116aff144e",
+    "content/doll-round.json": "10127b98fcba55265a33bc43fa8d5c6927af7805523765309ab0617878c45ef1",
     "content/naming-presentation-bindings.json": "360ac753aff3c6a9de5866e25c17c9e5b138e0843d202df0e6617f83ddc064a9",
-    "content/native-opening.json": "91e4a791688eab92428138db6bb3a2dde8b9ed768c92019288c92bafb906b2a3",
-    "content/native-round.json": "fbf1c23ae75dd8a3d9adb104d7badc3165382325aa148ccf92be17d616a6df02",
+    "content/native-opening.json": "4e21a7725e4159bc6c4b9e211861f1dc9c8712c57fa7429e452acebe7c61d3b7",
+    "content/native-round.json": "7086b1de2b289ebce555b588e383607498196dae47cedc240e3727f6377cb503",
     "content/native-save-menu.json": "b218ea6d27f378d59413eebff938b8ef3cc0d9ec5e65124deb2efa210ecfa0db",
-    "content/native-session.json": "b2a92406ac8517218dba1416e8c1aa9eff38d4ab24e3a497f7ec68d3605f3623",
-    "content/pillow-round.json": "07b578bcc7d656650e7c06426f51d94852c688777fe0f388ccf04f717225c387"
+    "content/native-session.json": "716bae7c646fd74baad373dbb8aa35d02733983c5e56e07cc731c4e9be3a8980",
+    "content/pillow-round.json": "feff1681dcf1b90426c7b9c29db1f05fc17542459365dbc7cd2ca196548eedfe"
   },
   "error_duration": 2.0,
   "field_assets": [

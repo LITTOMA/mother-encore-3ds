@@ -16,7 +16,7 @@ bool utf8(std::string_view s){size_t i=0;while(i<s.size()){uint32_t c=uint8_t(s[
 uint32_t StorageView::count(StorageSection s)const{const auto k=uint32_t(s);return valid()&&k>=1&&k<=7?u32(bytes_+64+(k-1)*16+8):0;}
 const uint8_t*StorageView::record(StorageSection s,uint32_t i)const{if(!valid()||i>=count(s))return nullptr;const auto*p=bytes_+64+(uint32_t(s)-1)*16;return bytes_+u32(p+4)+size_t(i)*u32(p+12);}
 std::string_view StorageView::string(uint32_t i)const{const auto*p=record(StorageSection::Strings,i);if(!p||(i&&p[-1]))return {};const auto*end=bytes_+u32(bytes_+68)+count(StorageSection::Strings);const auto*q=std::find(p,end,uint8_t(0));return {reinterpret_cast<const char*>(p),size_t(q-p)};}
-StoragePolicy StorageView::policy(uint32_t i)const{StoragePolicy v;const auto*p=record(StorageSection::Policies,i);if(p)v={u32(p),u32(p+4),u32(p+8),u32(p+12),u32(p+16),u32(p+20)};return v;}
+StoragePolicy StorageView::policy(uint32_t i)const{StoragePolicy v;const auto*p=record(StorageSection::Policies,i);if(p)v={u32(p),u32(p+4),u32(p+8),u32(p+12),u32(p+16),u32(p+20),u32(bytes_+20)==2?u32(p+24):u32(p+8)};return v;}
 StorageEquipment StorageView::equipment(uint32_t i)const{StorageEquipment v;const auto*p=record(StorageSection::Equipment,i);if(p){v.definition=u32(p);for(size_t j=0;j<7;++j)v.boosts[j]=int32_t(u32(p+4+j*4));}return v;}
 float StorageView::parameter(StorageParameter k)const{for(uint32_t i=0;i<count(StorageSection::Parameters);++i){const auto*p=record(StorageSection::Parameters,i);if(u32(p)==uint32_t(k))return real(p+4);}return 0;}
 std::string_view StorageView::binding(StorageBinding k)const{for(uint32_t i=0;i<count(StorageSection::Bindings);++i){const auto*p=record(StorageSection::Bindings,i);if(u32(p)==uint32_t(k))return string(u32(p+4));}return {};}
@@ -30,16 +30,16 @@ bool StorageView::bind_items(ItemView items,std::string&e)const{
  e.clear();return true;
 }
 bool StorageData::load(const uint8_t*p,size_t n,std::string&e){
- if(!p||n<176||n>8*1024*1024||std::memcmp(p,"ENCSTG01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1||u32(p+24)!=1||u32(p+28)!=7||u32(p+16)!=crc(p,n))return reject(e,"Storage header/version/CRC rejected");
+ if(!p||n<176||n>8*1024*1024||std::memcmp(p,"ENCSTG01",8)||u32(p+8)!=1||u32(p+12)!=n||(u32(p+20)!=1&&u32(p+20)!=2)||u32(p+24)!=1||u32(p+28)!=7||u32(p+16)!=crc(p,n))return reject(e,"Storage header/version/CRC rejected");
  for(size_t i=52;i<64;++i)if(p[i])return reject(e,"Storage reserved header rejected");bool pin=false;for(size_t i=32;i<52;++i)pin|=p[i]!=0;if(!pin)return reject(e,"Storage missing reviewed source pin");
- const uint32_t strides[]={1,24,8,8,60,84,32};size_t end=176;
+ const uint32_t strides[]={1,u32(p+20)==2?28u:24u,8,8,60,84,32};size_t end=176;
  for(uint32_t i=0;i<7;++i){const auto*d=p+64+i*16;const auto count=u32(d+8);const size_t aligned=(end+3)&~size_t(3);for(size_t j=end;j<aligned;++j)if(j>=n||p[j])return reject(e,"Storage directory alignment padding rejected");end=aligned;if(u32(d)!=i+1||u32(d+4)!=end||u32(d+12)!=strides[i]||count>65536||size_t(count)*strides[i]>n-end)return reject(e,"Storage directory rejected");end+=size_t(count)*strides[i];}if(end!=n)return reject(e,"Storage trailing bytes rejected");
  StorageView v;v.bytes_=p;v.size_=n;std::set<uint32_t>strings;auto count=v.count(StorageSection::Strings);if(!count||p[u32(p+68)+count-1]!=0)return reject(e,"Storage strings rejected");
  for(uint32_t i=0;i<count;){strings.insert(i);const auto s=v.string(i);if(s.size()>4096||!utf8(s))return reject(e,"Storage UTF-8/control bytes rejected");i+=uint32_t(s.size())+1;}
  auto validstr=[&](uint32_t at){return strings.count(at)!=0&&!v.string(at).empty();};
  std::set<uint32_t>defs,rank_en,rank_zh;
  if(!v.count(StorageSection::Policies)||v.count(StorageSection::Policies)>16)return reject(e,"Storage policy count rejected");
- for(uint32_t i=0;i<v.count(StorageSection::Policies);++i){auto a=v.policy(i);if(!defs.insert(a.definition).second||!validstr(a.source)||!safe_path(v.string(a.source))||!a.doses||a.doses>65535||a.max_count!=1||!a.rank_en||a.rank_en>2000000||!a.rank_zh||a.rank_zh>2000000||!rank_en.insert(a.rank_en).second||!rank_zh.insert(a.rank_zh).second)return reject(e,"Storage item policy rejected");}
+ for(uint32_t i=0;i<v.count(StorageSection::Policies);++i){auto a=v.policy(i);if(!defs.insert(a.definition).second||!validstr(a.source)||!safe_path(v.string(a.source))||!a.doses||a.doses>65535||!a.min_doses||a.min_doses>a.doses||a.max_count!=1||!a.rank_en||a.rank_en>2000000||!a.rank_zh||a.rank_zh>2000000||!rank_en.insert(a.rank_en).second||!rank_zh.insert(a.rank_zh).second)return reject(e,"Storage item policy rejected");}
  if(v.count(StorageSection::Parameters)!=31||v.count(StorageSection::Bindings)!=23)return reject(e,"Storage parameter/binding count rejected");
  for(uint32_t i=0;i<31;++i){const auto*r=v.record(StorageSection::Parameters,i);if(u32(r)!=i+1||!std::isfinite(real(r+4)))return reject(e,"Storage parameter rejected");}
  auto boundedint=[&](StorageParameter k,float lo,float hi){const auto x=v.parameter(k);return x>=lo&&x<=hi&&x==std::floor(x);};

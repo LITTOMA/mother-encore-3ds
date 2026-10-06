@@ -129,6 +129,18 @@ public:
     void set_locale(const encore::upstream::LocaleSelection* locale){locale_=locale;}
     void set_details(const ItemDetailsRenderer* details){details_=details;}
     bool ready()const{return data_.valid();}
+    View content()const{return data_;}
+    bool borrowed_rect(Role role,encore::upstream::BattleValue& out)const{const auto* item=layout(role);if(!ready()||!item)return fail("Borrowed field art binding missing");out=item->rect;return true;}
+    // Borrow already admitted source art. The application keeps this renderer
+    // alive while the submenu uses it; no second texture owner is introduced.
+    bool draw_borrowed_art(Role role,encore::upstream::BattleValue rect,uint32_t frame,float left,float top,float width,float height,const encore::upstream::BattleValue* checked_patch=nullptr)const{
+        if(!ready()||width<=0||height<=0)return fail("Borrowed field art is unavailable");
+        const auto* source=layout(role);if(!source)return fail("Borrowed field art role missing");
+        auto item=*source;item.rect=rect;item.frame=frame;
+        if(checked_patch){const float values[]={checked_patch->x,checked_patch->y,checked_patch->z,checked_patch->w};for(size_t i=0;i<4;++i){if(!std::isfinite(values[i])||values[i]<0||values[i]>UINT32_MAX||std::floor(values[i])!=values[i])return fail("Borrowed field patch rejected");item.patch[i]=uint32_t(values[i]);}}
+        clip_left_=left;clip_top_=top;clip_right_=left+width;clip_bottom_=top+height;
+        return art(item,0,0);
+    }
     const std::string& error()const{return error_;}
     bool load(View data,encore::upstream::ItemView items,const char* root,std::string& error){
         error.clear();if(!data.valid()||!items.valid()||!root||!*root||!data.bind_items(items,error)){if(error.empty())error="Field equipment requires checked content";return false;}
@@ -137,7 +149,7 @@ public:
         candidate.assets_.resize(data.count(encore::upstream::FieldSection::Resources));
         for(uint32_t i=0;i<candidate.assets_.size();++i){const auto r=data.resource(i);if(!acquire(candidate.assets_[i],r.image,data.string(r.image.path),root,error))return false;}
         for(uint32_t i=0;i<data.count(encore::upstream::FieldSection::Layouts);++i){const auto l=data.layout(i);
-            if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::CashCents)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
+            if(l.parent!=none||l.role<uint32_t(Role::PausePanel)||l.role>uint32_t(Role::ItemsActionPanel)||l.kind<uint32_t(Kind::Container)||l.kind>uint32_t(Kind::Text)||(l.flags&~(uint32_t(encore::upstream::ItemLayoutFlag::Centered)|uint32_t(encore::upstream::ItemLayoutFlag::Visible)))){error="Unsupported field equipment layout operation";return false;}
             candidate.layouts_.push_back(l);
         }
         C3D_FrameSync();std::swap(data_,candidate.data_);std::swap(items_,candidate.items_);assets_.swap(candidate.assets_);layouts_.swap(candidate.layouts_);error_.clear();return true;
@@ -190,6 +202,7 @@ inline bool FieldEquipmentRenderer::draw(const Menu& menu,const BattleRenderer& 
         if(role==Role::BoostEmpty||role==Role::BoostBetter||role==Role::BoostLower||role==Role::Cursor)continue;
         const float y=pause?pause_y:equip_y;
         switch(role){
+            case Role::ItemsTargetPanel:case Role::ItemsActionPanel:break;
             case Role::PauseTitle:case Role::EquipTitle:
                 if(!text(main_font,l,data_.binding(role==Role::PauseTitle?Binding::PauseTitle:Binding::EquipTitle,chinese),dx,y))return false;break;
             case Role::PauseCommand:
@@ -234,7 +247,7 @@ inline bool FieldEquipmentRenderer::draw(const Menu& menu,const BattleRenderer& 
                     else {const auto* icon=layout(state.stats[i]==menu.preview_stats()[i]?Role::BoostEmpty:menu.preview_stats()[i]>state.stats[i]?Role::BoostBetter:Role::BoostLower);if(!icon)return fail("Field equipment boost binding missing");l.kind=uint32_t(Kind::Sprite);l.resource=icon->resource;l.frame=icon->frame;if(!art(l,dx,y))return false;}
                 }break;
             case Role::PauseCursor:
-                if(phase==Phase::Pause){l.rect.x+=menu.cursor_column()*data_.parameter(Parameter::PauseColumnPitch);l.rect.y+=menu.cursor_row()*data_.parameter(Parameter::PauseRowPitch);l.frame=menu.cursor_frame();if(!art(l,dx,y))return false;}break;
+                if(phase==Phase::Pause&&!menu.items_suspended()){l.rect.x+=menu.cursor_column()*data_.parameter(Parameter::PauseColumnPitch);l.rect.y+=menu.cursor_row()*data_.parameter(Parameter::PauseRowPitch);l.frame=menu.cursor_frame();if(!art(l,dx,y))return false;}break;
             case Role::SlotCursor:
                 if(phase==Phase::Slots){l.rect.y+=menu.cursor_row()*data_.parameter(Parameter::SlotPitch);l.frame=menu.cursor_frame();if(!art(l,dx,y))return false;}break;
             case Role::CandidateCursor:

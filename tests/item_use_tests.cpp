@@ -1,0 +1,45 @@
+#include "encore/item_use.hpp"
+#include "encore/content.hpp"
+#include "encore/crc32.hpp"
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <limits>
+using namespace encore::upstream;
+static unsigned checks=0;
+#define CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"Field consume manual check failed at %d: %s (%s)\n",__LINE__,#x,error.c_str());std::exit(1);}}while(0)
+static uint32_t get(const std::vector<uint8_t>&b,size_t n){return b[n]|uint32_t(b[n+1])<<8|uint32_t(b[n+2])<<16|uint32_t(b[n+3])<<24;}
+static void put(std::vector<uint8_t>&b,size_t n,uint32_t v){for(unsigned i=0;i<4;++i)b[n+i]=uint8_t(v>>(i*8));}
+static void fix(std::vector<uint8_t>&b){put(b,16,0);put(b,16,encore::crc32(b.data(),b.size()));}
+static size_t section(const std::vector<uint8_t>&b,uint32_t i){return get(b,64+(i-1)*16+4);}
+int main(int argc,char**argv){
+ const std::string root=argc>1?argv[1]:"romfs";std::string error;ItemData items;ItemUseData data;std::vector<uint8_t>bytes;
+ CHECK(items.load_file((root+"/data/opening.encitems").c_str(),error));CHECK(encore::read_file((root+"/data/opening.encuse").c_str(),bytes,1024*1024,error));CHECK(data.load(bytes.data(),bytes.size(),error));CHECK(data.bind_items(items.view(),error));CHECK(data.rules().size()==1);CHECK(data.status_policies().size()==1);
+ const auto rule=data.rules()[0];const auto policy=data.status_policies()[0];CHECK(!rule.reusable&&!policy.passive_healing&&!policy.persistent&&policy.default_saved_turns==0);
+ FieldItemUseSnapshot state;state.owner=data.targets()[0];CHECK(state.inventory.initialize(items.view()));CHECK(state.inventory.append(rule.definition,rule.max_doses,UINT32_MAX,error));SessionCharacter c;c.character_id=state.owner;c.nickname="CUSTOM";c.hp=10;c.pp=7;c.status.push_back({rule.status,0});state.party.push_back(c);state.maximum_hp={80};
+ CHECK(validate_item_use_snapshot(&data,state,error));FieldItemUseCandidate next;CHECK(prepare_item_use(&data,state,UINT32_MAX,state.owner,next,error));CHECK(next.result.healed&&!next.result.removed&&next.result.doses_remaining==rule.max_doses-1);CHECK(next.party[0].status.empty());CHECK(state.party[0].status.size()==1);CHECK(next.result.sound_source==rule.success_sound&&next.result.message_key==rule.heal_message);CHECK(next.party[0].hp==c.hp&&next.party[0].pp==c.pp);CHECK(next.inventory.instances().back().id==UINT32_MAX);
+ auto hp_zero=state;hp_zero.party[0].hp=0;FieldItemUseCandidate hp_candidate;CHECK(prepare_item_use(&data,hp_zero,UINT32_MAX,state.owner,hp_candidate,error));CHECK(hp_candidate.party[0].hp==std::min<int64_t>(policy.refresh_hp_value,hp_zero.maximum_hp[0]));hp_zero.party[0].status.clear();CHECK(prepare_item_use(&data,hp_zero,UINT32_MAX,state.owner,hp_candidate,error));CHECK(hp_candidate.party[0].hp==0&&!hp_candidate.result.healed);
+ state.inventory=next.inventory;state.party=next.party;CHECK(prepare_item_use(&data,state,UINT32_MAX,state.owner,next,error));CHECK(!next.result.healed&&next.result.sound_source.empty()&&next.result.message_key==rule.fail_message);CHECK(next.result.doses_remaining==rule.max_doses-2);state.inventory=next.inventory;state.party=next.party;CHECK(prepare_item_use(&data,state,UINT32_MAX,state.owner,next,error));CHECK(next.result.removed&&next.result.doses_remaining==0);CHECK(next.inventory.size()+1==state.inventory.size());CHECK(next.party[0].inventory.size()==next.inventory.size());
+ // Detached output and input remain intact when UID, effect, target, ownership,
+ // duplicate/unknown status, malformed nickname or source dose are unsupported.
+ const auto retained_size=next.inventory.size();next.result.nickname="retained";
+ auto rejected=[&](const FieldItemUseSnapshot&s,uint32_t uid,std::string_view target){CHECK(!prepare_item_use(&data,s,uid,target,next,error));CHECK(next.inventory.size()==retained_size&&next.result.nickname=="retained");};
+ rejected(state,123,state.owner);rejected(state,UINT32_MAX,"unknown");rejected(state,state.inventory.instance(0).id,state.owner);
+ auto invalid=state;invalid.owner="unknown";rejected(invalid,UINT32_MAX,state.owner);invalid=state;invalid.party[0].status={{"unknown",0}};rejected(invalid,UINT32_MAX,state.owner);invalid=state;invalid.party[0].status={{rule.status,0},{rule.status,0}};rejected(invalid,UINT32_MAX,state.owner);invalid=state;invalid.party[0].status={{rule.status,1}};rejected(invalid,UINT32_MAX,state.owner);invalid=state;invalid.party[0].nickname=std::string("\xff");rejected(invalid,UINT32_MAX,state.owner);
+ invalid=state;invalid.maximum_hp.clear();rejected(invalid,UINT32_MAX,state.owner);invalid=state;invalid.maximum_hp[0]=0;rejected(invalid,UINT32_MAX,state.owner);invalid=state;invalid.party[0].hp=invalid.maximum_hp[0]+1;rejected(invalid,UINT32_MAX,state.owner);invalid=state;auto instances=invalid.inventory.instances();instances.back().doses=rule.max_doses+1;CHECK(invalid.inventory.restore(items.view(),instances,error));rejected(invalid,UINT32_MAX,state.owner);
+ // Real UI sequence, source no-effect consumption, target/action cancellation,
+ // last-dose removal and message acknowledgement do not create repeated commits.
+ FieldItemUseSnapshot current;current.owner=data.targets()[0];CHECK(current.inventory.initialize(items.view()));CHECK(current.inventory.append(rule.definition,rule.max_doses,0,error));c.status.clear();current.party={c};current.maximum_hp=state.maximum_hp;unsigned commits=0;bool refuse=false;
+ FieldItemUseHost host;host.read=[&](FieldItemUseSnapshot&s,std::string&e){s=current;e.clear();return true;};host.commit=[&](uint32_t uid,std::string_view target,ItemUseResult&r,std::string&e){if(refuse){e="Injected transactional rejection";return false;}FieldItemUseCandidate candidate;if(!prepare_item_use(&data,current,uid,target,candidate,e))return false;current.inventory=std::move(candidate.inventory);current.party=std::move(candidate.party);r=std::move(candidate.result);++commits;return true;};
+ FieldItemUseMenu menu;CHECK(menu.initialize(&data,host));CHECK(menu.open());CHECK(menu.input(0,0,true,false));CHECK(menu.phase()==FieldItemUsePhase::Items);CHECK(menu.input(1,0,false,false));CHECK(menu.input(0,0,true,false));CHECK(menu.phase()==FieldItemUsePhase::Action);CHECK(menu.input(0,0,true,false));CHECK(menu.phase()==FieldItemUsePhase::Targets);CHECK(menu.input(0,0,false,true));CHECK(menu.phase()==FieldItemUsePhase::Action&&commits==0);CHECK(menu.input(0,0,false,true));CHECK(menu.phase()==FieldItemUsePhase::Items&&commits==0);
+ CHECK(menu.input(0,0,true,false));CHECK(menu.input(0,0,true,false));refuse=true;CHECK(!menu.input(0,0,true,false));CHECK(commits==0&&current.inventory.instances().back().doses==rule.max_doses);refuse=false;CHECK(menu.input(0,0,true,false));CHECK(menu.phase()==FieldItemUsePhase::Message&&commits==1);CHECK(menu.message()=="CUSTOM does not have asthma.");CHECK(menu.set_locale("zh_Hans_CN"));CHECK(menu.message()==u8"CUSTOM并未患有哮喘。");CHECK(menu.input(0,0,false,true));CHECK(menu.phase()==FieldItemUsePhase::Items&&commits==1);CHECK(!menu.set_locale("unreviewed"));CHECK(!menu.input(2,0,false,false));CHECK(!menu.idle_frame(std::numeric_limits<double>::quiet_NaN()));CHECK(menu.input(0,0,false,true));CHECK(!menu.active());
+ // Every malformed binary reload preserves the previous checked data.
+ const auto retained_commit=data.reviewed_commit();auto reject_edit=[&](size_t at,uint32_t value){auto b=bytes;put(b,at,value);fix(b);CHECK(!data.load(b.data(),b.size(),error));CHECK(data.valid()&&data.reviewed_commit()==retained_commit&&data.rules()[0].source==rule.source);};
+ for(auto p:std::vector<std::pair<size_t,uint32_t>>{{0,0},{8,2},{12,0},{20,9},{24,2},{28,2},{52,1},{64,0},{68,0},{72,UINT32_MAX},{76,0}})reject_edit(p.first,p.second);
+ const auto rules=section(bytes,2),statuses=section(bytes,3),targets=section(bytes,4),locales=section(bytes,5),layouts=section(bytes,6),parameters=section(bytes,7),sounds=section(bytes,8);
+ for(auto p:std::vector<std::pair<size_t,uint32_t>>{{rules+4,UINT32_MAX},{rules+8,0},{rules+12,0},{rules+16,2},{rules+32,1},{rules+36,1},{statuses+8,1},{statuses+12,1},{statuses+16,0},{targets,0},{locales+20,get(bytes,locales)},{locales+12,0},{layouts,99},{layouts+12,0},{layouts+20,0x7fc00000},{parameters+4,0},{sounds,99},{sounds+4,UINT32_MAX},{sounds+5*8+4,get(bytes,sounds+4)}})reject_edit(p.first,p.second);
+ for(size_t n=0;n<bytes.size();++n){CHECK(!data.load(bytes.data(),n,error));CHECK(data.valid());}
+ auto b=bytes;b.back()^=1;CHECK(!data.load(b.data(),b.size(),error));b=bytes;std::fill(b.begin()+32,b.begin()+52,0);fix(b);CHECK(!data.load(b.data(),b.size(),error));b=bytes;b.push_back(0);put(b,12,uint32_t(b.size()));fix(b);CHECK(!data.load(b.data(),b.size(),error));
+ ItemUseData foreign;b=bytes;b[32]^=1;fix(b);CHECK(foreign.load(b.data(),b.size(),error));CHECK(!foreign.bind_items(items.view(),error));CHECK(!data.load_file("missing-field-use-resource",error));CHECK(data.valid());
+ std::printf("Field consume: %u manual checks; UID dose/drop, source status/no-effect, UI cancel/return and transactional negative formats\n",checks);
+}

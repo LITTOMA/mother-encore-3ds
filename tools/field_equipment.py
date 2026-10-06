@@ -2,14 +2,14 @@
 """Pinned Pause -> Equip frontend, original texture recipe and ENCFIE01.
 
 JSON is offline source IR. This slice grants only singleton Ninten equipment;
-known Pause commands other than Equip are represented but explicitly disabled.
+Pause Goods delegates to the checked field item-use consumer; other known commands stay restricted.
 """
 from __future__ import annotations
 import argparse,csv,io,math,re,struct,subprocess,sys,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-from tools.extract_battle_entry import Extractor,PIN,require,node,animation
+from tools.extract_battle_entry import Extractor,PIN,require,node,animation,properties
 from tools.drawer_program import canonical,digest,fields,read_json,write_json,safe_path
 IR='content/native-field-equipment.json'
 RECIPE='content/field-equipment-assets.json'
@@ -23,10 +23,10 @@ STRIDES=(1,8,12,16,16,40,68,84,16,12)
 HEADER=224
 PARAMETERS=('ReferenceWidth','ReferenceHeight','PlatformWidth','PlatformHeight','PauseColumns','SlotPitch','ListPitch','StatPitch','CursorMoveSeconds','CursorFps','CursorFrame0','CursorFrame1','CursorFrame2','CursorFrame3','MainLineHeight','NumberLineHeight','NumberSpacing','LoopAround','PauseColumnPitch','PauseRowPitch','ListRows','BoostWeight0','BoostWeight1','BoostWeight2','BoostWeight3','BoostWeight4','BoostWeight5','BoostWeight6','OpenMask','ConfirmMask','CancelMask','ScopeMask','OwnerId')
 BINDINGS=('PauseTitle','EquipTitle','None','Empty','StatMaxHP','StatMaxPP','StatOffense','StatDefense','StatSpeed','StatIQ','StatGuts','Owner','MainFont','NumberFont','PauseOpenSound','PauseCloseSound','EquipOpenSound','EquipCloseSound','MoveSound','ConfirmSound','RestrictedSound','ClearSound','EquipSound','BackSound','Level','CashPattern','CashRight')
-ROLES=('PausePanel','PauseInside','PauseTitle','PauseCommand','PauseCash','EquipmentPanel','StatsPanel','Owner','EquipTitle','Portrait','SlotPanel','SlotLabel','SlotItem','ListPanel','ListItem','StatLabel','StatValue','StatProjected','StatIcon','DescriptionPanel','DescriptionText','Cursor','BoostEmpty','BoostBetter','BoostLower','PauseCursor','SlotCursor','CandidateCursor','CashLabel','CashValue','LevelLabel','LevelValue','PortraitEquipped','PortraitSuitable','PortraitBetter','PortraitLower','CashCents')
+ROLES=('PausePanel','PauseInside','PauseTitle','PauseCommand','PauseCash','EquipmentPanel','StatsPanel','Owner','EquipTitle','Portrait','SlotPanel','SlotLabel','SlotItem','ListPanel','ListItem','StatLabel','StatValue','StatProjected','StatIcon','DescriptionPanel','DescriptionText','Cursor','BoostEmpty','BoostBetter','BoostLower','PauseCursor','SlotCursor','CandidateCursor','CashLabel','CashValue','LevelLabel','LevelValue','PortraitEquipped','PortraitSuitable','PortraitBetter','PortraitLower','CashCents','ItemsTargetPanel','ItemsActionPanel')
 CLIPS=('PauseOpen','PauseClose','EquipOpen','EquipClose','DescriptionOpen','DescriptionClose')
 STATS=('maxhp','maxpp','offense','defense','speed','iq','guts')
-ASSETS=(('panel','Graphics/UI/Overworld/flavours/defaultempty.png',None,[1,1]),('inside','Graphics/UI/Overworld/flavours/defaultbox_inside.png',None,[1,1]),('description','Graphics/UI/Overworld/flavours/defaultbox.png',None,[1,1]),('ninten','Graphics/UI/Inventory/characters/ninten.png',None,[1,1]),('cursor','Graphics/UI/Inventory/cursor.png',None,[3,1]),('boost-empty','Graphics/UI/EquipMenu/empty.png',None,[1,1]),('boost-better','Graphics/UI/EquipMenu/red_arrow.png',None,[1,1]),('boost-lower','Graphics/UI/EquipMenu/blue_arrow.png',None,[1,1]),('portrait-equipped','Graphics/UI/Inventory/modifiers.png',[15,10,9,7],[1,1]),('portrait-suitable','Graphics/UI/Inventory/modifiers.png',[0,10,13,7],[1,1]),('portrait-better','Graphics/UI/Inventory/modifiers2.png',[0,0,11,7],[1,1]),('portrait-lower','Graphics/UI/Inventory/modifiers2.png',[0,7,11,7],[1,1]),('cents','Graphics/UI/Overworld/cents.png',None,[1,1]))
+ASSETS=(('panel','Graphics/UI/Overworld/flavours/defaultempty.png',None,[1,1]),('inside','Graphics/UI/Overworld/flavours/defaultbox_inside.png',None,[1,1]),('description','Graphics/UI/Overworld/flavours/defaultbox.png',None,[1,1]),('ninten','Graphics/UI/Inventory/characters/ninten.png',None,[1,1]),('cursor','Graphics/UI/Inventory/cursor.png',None,[3,1]),('boost-empty','Graphics/UI/EquipMenu/empty.png',None,[1,1]),('boost-better','Graphics/UI/EquipMenu/red_arrow.png',None,[1,1]),('boost-lower','Graphics/UI/EquipMenu/blue_arrow.png',None,[1,1]),('portrait-equipped','Graphics/UI/Inventory/modifiers.png',[15,10,9,7],[1,1]),('portrait-suitable','Graphics/UI/Inventory/modifiers.png',[0,10,13,7],[1,1]),('portrait-better','Graphics/UI/Inventory/modifiers2.png',[0,0,11,7],[1,1]),('portrait-lower','Graphics/UI/Inventory/modifiers2.png',[0,7,11,7],[1,1]),('cents','Graphics/UI/Overworld/cents.png',None,[1,1]),('items-target-panel','Graphics/UI/Overworld/flavours/defaultbox_title.png',None,[1,1]))
 KINDS=('Container','Sprite','Rectangle','NinePatch','Text')
 
 def table(ex,path):
@@ -42,8 +42,8 @@ def build(root=ROOT):
     ps=ex.text('Scripts/UI/Pausemenu.gd');es=ex.text('Nodes/Ui/EquipMenu/EquipMenuUI.gd')
     inv=ex.text('Scripts/global/Inventory.gd');party=ex.text('Scripts/global/PartyMember.gd')
     cursor=ex.text('Scripts/UI/cursor.gd');arrow=ex.text('Nodes/Ui/arrow.tscn')
-    for path in ('Scripts/global/Item.gd','Scripts/global/Character.gd','Scripts/global/uiManager.gd','Scripts/global/controlsManager.gd','Nodes/Ui/HighlightLabel.tscn','Nodes/Ui/HighlightLabel.gd','Nodes/Ui/InventorySelect.tscn','Nodes/Ui/Inventory/InventorySelect.gd','Nodes/Ui/Inventory/portrait.tscn','Nodes/Ui/Inventory/portrait.gd','Nodes/Ui/EquipMenu/StatsLabel.tscn','Nodes/Ui/CashBoxPause.tscn','Nodes/Ui/Description.tscn','Scripts/UI/Reusables/Description.gd','project.godot','LICENSE'):ex.text(path)
-    for snippet in ('event.is_action_pressed("ui_select")','2: #Equip','$EquipMenuUI.open(global.get_party_in_natural_order()[0])','_arrow.set_cursor_from_index(0, false)','audioManager.play_sfx_by_name("menu_open2", "menu_open")','audioManager.play_sfx_by_name("menu_close2", "menu_close")'):
+    for path in ('Scripts/global/Item.gd','Scripts/global/Character.gd','Scripts/global/uiManager.gd','Scripts/global/controlsManager.gd','Nodes/Ui/HighlightLabel.tscn','Nodes/Ui/HighlightLabel.gd','Nodes/Ui/InventorySelect.tscn','Nodes/Ui/Inventory/InventorySelect.gd','Nodes/Ui/Inventory/portrait.tscn','Nodes/Ui/Inventory/portrait.gd','Nodes/Ui/EquipMenu/StatsLabel.tscn','Nodes/Ui/CashBoxPause.tscn','Nodes/Ui/Description.tscn','Nodes/Ui/Inventory/InventoryUI.tscn','Scripts/UI/Reusables/Description.gd','project.godot','LICENSE'):ex.text(path)
+    for snippet in ('event.is_action_pressed("ui_select")','0: #Goods','$InventoryUI.open(global.get_party_in_natural_order()[0])','_on_submenu_back():','2: #Equip','$EquipMenuUI.open(global.get_party_in_natural_order()[0])','_arrow.set_cursor_from_index(0, false)','audioManager.play_sfx_by_name("menu_open2", "menu_open")','audioManager.play_sfx_by_name("menu_close2", "menu_close")'):
         require(snippet in ps,'Field Pause source changed: '+snippet)
     for snippet in ('_current_character.get_items_for_slot( _get_current_slot(), true, false).empty()','var items = _current_character.get_items_for_slot(current_slot, true, true)','if _current_character.get_equipped_item(current_slot) or items.empty():','_item_list.append("")','_current_character.unequip_slot(_get_current_slot())','_current_character.equip_item(_get_selected_item())','current_value - equipped_item_boost.get(stat, 0) + selected_item_boost.get(stat, 0)','projected_value == current_value','_cursor_list.cursor_index = 0','anim_to_play = "Open"','audioManager.play_sfx_by_name("clear", "menu")','audioManager.play_sfx_by_name("equip", "menu")'):
         require(snippet in es,'Field Equip source changed: '+snippet)
@@ -87,7 +87,7 @@ def build(root=ROOT):
     commands=[]
     for i,(name,key) in enumerate(zip(('Goods','PSI','Equip','Status','Map','Options'),('MENU_GOODS','MENU_PSI','MENU_EQUIP','MENU_STATUS','MENU_MAP','MENU_OPTIONS'))):
         require(node(pause,'menu/Commands/Items/'+name)['text']==key,'Field command translation binding')
-        commands.append(dict(id=i+1,labels=text(key),enabled=i==2))
+        commands.append(dict(id=i+1,labels=text(key),enabled=(2 if i==0 else 1 if i==2 else 0)))
     slots=[dict(id=i+1,source=source,labels=text('EQUIP_'+source.upper())) for i,source in enumerate(('weapon','body','arms','other'))]
     for part in ('SlotArrow','ItemListPanel/ItemArrow'):
         require(node(equip,'EquipMenu/Box/Panels/Slots/'+part)['loop_around'],'Field slot/list wrapping changed')
@@ -112,18 +112,25 @@ def build(root=ROOT):
     layout('BoostEmpty','Sprite',[0,0,8,8],5);layout('BoostBetter','Sprite',[0,0,8,8],6);layout('BoostLower','Sprite',[0,0,8,8],7)
     layout('DescriptionPanel','NinePatch',[28,132,264,48],2,[8]*4);layout('DescriptionText','Text',[66,144,213,28])
     for role,rect,res in [('PortraitEquipped',[40,1,9,7],8),('PortraitSuitable',[38,21,13,7],9),('PortraitBetter',[39,1,11,7],10),('PortraitLower',[39,1,11,7],11)]:layout(role,'Sprite',rect,res)
+    source_target=node(ex.text('Nodes/Ui/Inventory/InventoryUI.tscn'),'ActionSelect/TargetCharaSelect')
+    layout('ItemsTargetPanel','NinePatch',[0,0,source_target['margin_right']-source_target['margin_left'],source_target['margin_bottom']],len(ASSETS)-1,[source_target['patch_margin_'+side] for side in ('left','top','right','bottom')])
+    inventory_scene=ex.text('Nodes/Ui/Inventory/InventoryUI.tscn')
+    style_body=re.search(r'^\[sub_resource type="StyleBoxTexture" id=17\]\n(.*?)(?=^\[)',inventory_scene,re.M|re.S)[1]
+    require('region_rect = Rect2( 0, 0, 24, 24 )' in style_body,'Field Items source style region changed')
+    source_style=properties('\n'.join(line for line in style_body.splitlines() if line.startswith('margin_')))
+    layout('ItemsActionPanel','NinePatch',[0,0,source_target['margin_right']-source_target['margin_left'],source_target['margin_bottom']],2,[int(source_style['margin_'+side]) for side in ('left','top','right','bottom')])
     clips=[]
     for role,scene,path,rid,target,base in [('PauseOpen',pause,pause_path,1,'menu:rect_position',0),('PauseClose',pause,pause_path,3,'menu:rect_position',0),('EquipOpen',equip,equip_path,3,'EquipMenu/Box:rect_position:y',0),('EquipClose',equip,equip_path,2,'EquipMenu/Box:rect_position:y',0),('DescriptionOpen',equip,equip_path,7,'../EquipMenu/Description:rect_position:y',132),('DescriptionClose',equip,equip_path,6,'../EquipMenu/Description:rect_position:y',132)]:
         a=animation(scene,rid,path,role);tracks=[track for track in a['tracks'] if track['path']==target]
         require(len(tracks)==1 and tracks[0]['type']=='value' and tracks[0]['interp']==1 and tracks[0]['keys']['update']==0,'Field animation source mapping')
         keys=tracks[0]['keys'];values=[v[1] if isinstance(v,list) else v for v in keys['values']]
         clips.append(dict(role=role,duration=a['length'],source=path,source_resource_id=rid,source_base=base,source_values=values,keys=[dict(time=t,value=v-base,ease=e) for t,v,e in zip(keys['times'],values,keys['transitions'])]))
-    return dict(schema=1,kind='encore.field-equipment.source-ir',commit=PIN,scope='Original Pause -> Equip for singleton Ninten and admitted BaseballCap; other known commands disabled; current UID and seven derived stats committed transactionally; no battle item-use or broader party capability',sources=dict(sorted(ex.sources.items())),dependencies={p:digest(root/p) for p in ('content/native-items.json','content/items-presentation-bindings.json')},parameters=params,bindings=bindings,commands=commands,slots=slots,equipment=[dict(definition=0,source='BaseballCap',slot=3,boosts=boosts)],resources=resources,layouts=layouts,clips=clips)
+    return dict(schema=1,kind='encore.field-equipment.source-ir',commit=PIN,scope='Original Pause Goods delegation and Equip for singleton Ninten; field item-use submenu owns admitted consumables, UID and seven derived equipment stats remain checked; no battle item-use or broader party capability',sources=dict(sorted(ex.sources.items())),dependencies={p:digest(root/p) for p in ('content/native-items.json','content/items-presentation-bindings.json')},parameters=params,bindings=bindings,commands=commands,slots=slots,equipment=[dict(definition=0,source='BaseballCap',slot=3,boosts=boosts)],resources=resources,layouts=layouts,clips=clips)
 
 def recipe(ir):return dict(schema=1,kind='encore.field-equipment.asset-recipe',commit=PIN,sources=ir['sources'],resources=ir['resources'],licence_review='Pinned upstream LICENSE permits game-related modifications; art/font/audio retain upstream notices, not MIT.')
 def extract(root=ROOT):
     root=Path(root);ir=build(root);write_json(root/IR,ir);write_json(root/RECIPE,recipe(ir))
-    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; only Equip admitted; source cancel/select closes Pause; Equip cancel returns Pause','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['Other Pause commands','Other characters/equipment/items','Battle item action and asthma statuses','Character tabs/backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
+    write_json(root/REVIEW,dict(schema=1,commit=PIN,ir_sha256=digest(root/IR),sources=ir['sources'],scope=ir['scope'],semantics=['Stable numeric OwnerId and source party name come from the checked Items identity adapter; they are separate from string-pool offsets','Pause six commands in original row-major order; typed Goods and Equip operations admitted; Goods suspends Pause and checked return refreshes current inventory; source cancel/select closes Pause','Four original slots; empty unsuitable slot restricted; candidates suitable unequipped in inventory order; None last iff slot equipped or candidate list empty','Confirm equipment/None by persistent UID without consuming or recreating items; seven projected stats current minus slot boost plus selected boost','Original EBMain/BottleRocket faces, source numeric spacing, original PNG textures, 5fps 0/1/2/1 cursor and0.1sec quart-out movement; Pause cash uses EBMain right alignment and source black text','Source Y animation keys/easing retained; description absolute132px normalized to relative offsets, source timeline remains in IR','Source320x180 rectangles at1:1 centered for400x240; bounded singleton auto-size adaptation recorded explicitly; no claim of exact Godot container pixel parity','Native START/A/B/L masks map source select/accept/cancel/scope; no keycode copied into C++','English source U+200B right-currency placeholder is explicitly rendered empty; no new glyph invented'],unsupported=['PSI, Status, Map and Options Pause commands','Other characters/equipment/items','Battle item actions; field Use is separately admitted by the checked ItemUse resource','Character tabs/backing ornaments and Pause info plates/audio muffle remain outside this slice'],unverified=['Tests retained but not run','Emulator and physical3DS visual/input/audio/save acceptance pending']))
     return ir
 
 def load(root=ROOT):
@@ -173,7 +180,7 @@ def lower(ir,receipt):
     out['Strings']=bytes(pool);validate(out);return out
 
 def encode(t):
-    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',2,0,0,1,1,len(NAMES),bytes.fromhex(PIN))
+    validate(t);blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCFIE01',2,0,0,2,1,len(NAMES),bytes.fromhex(PIN))
     for i,name in enumerate(NAMES):
         while len(blob)%4:blob.append(0)
         data=t[name] if i==0 else b''.join(struct.pack(FORMATS[i],*r) for r in t[name]);struct.pack_into('<4I',blob,64+i*16,i+1,len(blob),len(t[name]),STRIDES[i]);blob.extend(data)
@@ -182,15 +189,15 @@ def encode(t):
 def parse_pack(blob):
     require(isinstance(blob,(bytes,bytearray)) and HEADER<=len(blob)<=1024*1024,'Field pack size')
     magic,schema,size,crc,caps,rules,count,pin=struct.unpack_from('<8s6I20s',blob)
-    require(magic==b'ENCFIE01' and schema==2 and caps==rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
+    require(magic==b'ENCFIE01' and schema==2 and caps in (1,2) and rules==1 and size==len(blob) and count==len(NAMES) and pin.hex()==PIN and not any(blob[52:64]),'Field version/capabilities/pin')
     c=bytearray(blob);c[16:20]=b'\0'*4;require(zlib.crc32(c)&NIL==crc,'Field pack CRC');out={};end=HEADER
     for i,name in enumerate(NAMES):
         kind,start,num,stride=struct.unpack_from('<4I',blob,64+i*16)
         require(kind==i+1 and stride==STRIDES[i] and start==(end+3)//4*4 and not any(blob[end:start]) and start+num*stride<=len(blob),'Field directory/overlap')
         data=blob[start:start+num*stride];out[name]=bytes(data) if i==0 else [list(struct.unpack_from(FORMATS[i],data,j*stride)) for j in range(num)];end=start+num*stride
-    require(end==len(blob),'Field trailing data');validate(out);return out
+    require(end==len(blob),'Field trailing data');validate(out,caps);return out
 
-def validate(t):
+def validate(t,caps=2):
     fields(t,NAMES,'Field sections');pool=t['Strings'];require(type(pool) is bytes and 0<len(pool)<=65536 and pool[0]==pool[-1]==0,'Field string pool');starts=set();p=0
     while p<len(pool):starts.add(p);end=pool.find(b'\0',p);require(end>=p,'Field unterminated string');pool[p:end].decode('utf-8');p=end+1
     def string(offset):require(type(offset) is int and offset in starts,'Field string reference');return pool[offset:pool.index(0,offset)].decode('utf-8')
@@ -214,7 +221,7 @@ def validate(t):
         require(all(len(v)<=4096 for v in values),'Field binding text size')
         if 12<=i+1<=24:require(values[0]==values[1] and safe_path(values[0]),'Field path binding')
         else:require(all(not any(c in v for c in '\n\r[]{}') for v in values),'Field text controls')
-    for i,c in enumerate(t['Commands']):require(len(c)==4 and c[0]==i+1 and string(c[1]) and string(c[2]) and c[3]==int(i==2),'Field command grants')
+    for i,c in enumerate(t['Commands']):require(len(c)==4 and c[0]==i+1 and string(c[1]) and string(c[2]) and c[3]==(1 if i==2 else 2 if i==0 and caps==2 else 0),'Field command grants')
     slot_names=set()
     for i,s in enumerate(t['Slots']):require(len(s)==4 and s[0]==i+1 and safe_path(string(s[1])) and string(s[1]) not in slot_names and string(s[2]) and string(s[3]),'Field slot identity');slot_names.add(string(s[1]))
     for e in t['Equipment']:require(len(e)==10 and integer(e[0],0,15) and safe_path(string(e[1])) and integer(e[2],0,3) and all(integer(v,-65535,65535) for v in e[3:]),'Field equipment policy')
@@ -226,7 +233,7 @@ def validate(t):
         require(len(l)==21 and l[0]==i+1 and integer(l[1],1,len(ROLES)) and l[1] not in roles and l[2]==NIL and integer(l[3],1,len(KINDS)) and (l[4]==NIL or integer(l[4],0,len(t['Resources'])-1)) and integer(l[5],0,1023) and l[6]==1 and all(finite(v) for v in l[7:17]) and l[11]>=0 and l[12]>=0 and all(0<=v<=1 for v in l[13:17]) and all(integer(v,0,64) for v in l[17:]),'Field layout');roles.add(l[1])
         if l[3] in (2,4):require(l[4]!=NIL and l[5]<t['Resources'][l[4]][5]*t['Resources'][l[4]][6],'Field texture layout')
         else:require(l[4]==NIL,'Field nontexture resource')
-    required=set(range(1,len(ROLES)+1))-{22};require(required<=roles,'Field missing layout role')
+    required=set(range(1,len(ROLES)+(1 if caps==2 else -1)))-{22};require(required<=roles,'Field missing layout role')
     end=0
     for i,c in enumerate(t['Clips']):
         require(len(c)==4 and c[0]==i+1 and c[1]==end and integer(c[2],2,8) and finite(c[3]) and 0<c[3]<=2 and c[1]+c[2]<=len(t['Keys']),'Field animation clip');previous=-1
@@ -235,7 +242,7 @@ def validate(t):
     require(end==len(t['Keys']),'Field orphan animation keys')
 
 def compile_pack(root=ROOT):
-    root=Path(root);ir=load(root);receipt=verify_receipt(ir,root);blob=encode(lower(ir,receipt));parse_pack(blob);target=root/PACK;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(blob);print('Field equipment compile: %d checked bytes; six known commands / Equip only'%len(blob))
+    root=Path(root);ir=load(root);receipt=verify_receipt(ir,root);blob=encode(lower(ir,receipt));parse_pack(blob);target=root/PACK;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(blob);print('Field equipment compile: %d checked bytes; six known commands / checked Goods delegation and Equip'%len(blob))
 def stage_files(source):
     source=Path(source);ir=load();receipt=verify_receipt(ir,ROOT,source);blob=(source/'data/opening.encfield').read_bytes();require(blob==encode(lower(ir,receipt)),'Field staged pack differs from source');parse_pack(blob);return {Path('data/opening.encfield'):blob,**{Path(r['output']):(source/r['output']).read_bytes() for r in ir['resources']}}
 def main():

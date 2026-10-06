@@ -10,7 +10,7 @@ from tools.storage_assets import IR,ROLES,PARAMETERS,BINDINGS,load,verify_receip
 PACK='romfs/data/opening.encstorage'
 NIL=0xffffffff
 NAMES=['Strings','Policies','Parameters','Bindings','Resources','Layouts','Equipment']
-FORMATS=[None,'<6I','<If','<2I','<7I32s','<7I10f4I','<I7i']
+FORMATS=[None,'<7I','<If','<2I','<7I32s','<7I10f4I','<I7i']
 STRIDES=[1]+[struct.calcsize(f) for f in FORMATS[1:]]
 HEADER=64+16*len(NAMES)
 KINDS=['Container','Sprite','Rectangle','NinePatch','Text']
@@ -25,11 +25,11 @@ def lower(ir,receipt):
         if v not in offsets:offsets[v]=len(pool);pool.extend(v.encode()+b'\0')
         return offsets[v]
     for p in ir['policies']:
-        fields(p,('definition_id','source_item','doses','max_count','sort_rank_en','sort_rank_zh'),'Storage policy')
+        fields(p,('definition_id','source_item','doses','min_doses','max_count','sort_rank_en','sort_rank_zh'),'Storage policy')
         # IR retains stable definition identity; the pack addresses the checked
         # immutable native Items prefix (id1/id2 -> index0/index1).
         require(p['definition_id'] in (1,2),'Storage stable Items identity')
-        out['Policies'].append([p['definition_id']-1,string(p['source_item']),p['doses'],p['max_count'],p['sort_rank_en'],p['sort_rank_zh']])
+        out['Policies'].append([p['definition_id']-1,string(p['source_item']),p['doses'],p['max_count'],p['sort_rank_en'],p['sort_rank_zh'],p['min_doses']])
     out['Parameters']=[[i+1,ir['parameters'][name]] for i,name in enumerate(PARAMETERS)]
     out['Bindings']=[[i+1,string(ir['bindings'][name])] for i,name in enumerate(BINDINGS)]
     for r in ir['resources']:
@@ -45,28 +45,35 @@ def lower(ir,receipt):
         require(e['definition_id'] in (1,2),'Storage equipment stable identity');out['Equipment'].append([e['definition_id']-1,*e['boosts']])
     out['Strings']=bytes(pool);validate(out);return out
 
-def encode(t,pin=PIN):
-    validate(t);require(pin==PIN,'Unreviewed Storage pin')
-    blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCSTG01',1,1,0,1,1,7,bytes.fromhex(pin))
+def encode(t,pin=PIN,caps=2):
+    validate(t,caps);require(pin==PIN,'Unreviewed Storage pin')
+    formats=list(FORMATS);formats[1]='<6I' if caps==1 else '<7I'
+    strides=[1]+[struct.calcsize(f) for f in formats[1:]]
+    blob=bytearray(HEADER);struct.pack_into('<8s6I20s12x',blob,0,b'ENCSTG01',1,1,0,caps,1,7,bytes.fromhex(pin))
     for i,n in enumerate(NAMES):
         while len(blob)%4:blob.append(0)
-        data=t[n] if i==0 else b''.join(struct.pack(FORMATS[i],*r) for r in t[n])
-        struct.pack_into('<4I',blob,64+i*16,i+1,len(blob),len(t[n]),STRIDES[i]);blob.extend(data)
+        data=t[n] if i==0 else b''.join(struct.pack(formats[i],*(r[:6] if i==1 and caps==1 else r)) for r in t[n])
+        struct.pack_into('<4I',blob,64+i*16,i+1,len(blob),len(t[n]),strides[i]);blob.extend(data)
     struct.pack_into('<I',blob,12,len(blob));struct.pack_into('<I',blob,16,zlib.crc32(blob)&NIL);return bytes(blob)
 
 def parse_pack(blob):
     require(isinstance(blob,(bytes,bytearray)) and HEADER<=len(blob)<=8*1024*1024,'Storage binary size')
     magic,schema,size,crc,caps,rules,count,pin=struct.unpack_from('<8s6I20s',blob)
-    require(magic==b'ENCSTG01' and schema==caps==rules==1 and count==7 and size==len(blob) and pin.hex()==PIN and not any(blob[52:64]),'Storage header/version/pin')
+    require(magic==b'ENCSTG01' and schema==rules==1 and caps in (1,2) and count==7 and size==len(blob) and pin.hex()==PIN and not any(blob[52:64]),'Storage header/version/pin')
+    formats=list(FORMATS);formats[1]='<6I' if caps==1 else '<7I'
+    strides=[1]+[struct.calcsize(f) for f in formats[1:]]
     copy=bytearray(blob);copy[16:20]=b'\0'*4;require(zlib.crc32(copy)&NIL==crc,'Storage CRC')
     out={};end=HEADER
     for i,n in enumerate(NAMES):
         kind,start,num,stride=struct.unpack_from('<4I',blob,64+i*16)
-        require(kind==i+1 and stride==STRIDES[i] and start==(end+3)//4*4 and not any(blob[end:start]) and start+num*stride<=len(blob),'Storage section directory')
-        data=blob[start:start+num*stride];out[n]=bytes(data) if i==0 else [list(struct.unpack_from(FORMATS[i],data,j*stride)) for j in range(num)];end=start+num*stride
-    require(end==len(blob),'Storage trailing bytes');validate(out);return out
+        require(kind==i+1 and stride==strides[i] and start==(end+3)//4*4 and not any(blob[end:start]) and start+num*stride<=len(blob),'Storage section directory')
+        data=blob[start:start+num*stride];out[n]=bytes(data) if i==0 else [list(struct.unpack_from(formats[i],data,j*stride)) for j in range(num)];end=start+num*stride
+    if caps==1:
+        for p in out['Policies']:p.append(p[2])
+    require(end==len(blob),'Storage trailing bytes');validate(out,caps);return out
 
-def validate(t):
+def validate(t,caps=2):
+    require(caps in (1,2),'Storage unsupported capability')
     fields(t,NAMES,'Storage sections');pool=t['Strings'];require(isinstance(pool,bytes) and 0<len(pool)<=1024*1024 and pool[0]==pool[-1]==0,'Storage string pool')
     starts=set();off=0
     while off<len(pool):
@@ -78,7 +85,7 @@ def validate(t):
     require(0<len(t['Policies'])<=16 and len(t['Equipment'])==len(t['Policies']) and len(t['Resources'])<=64 and len(t['Layouts'])<=128,'Storage section capacity')
     ids=set();sources=set();scores=[set(),set()]
     for p in t['Policies']:
-        require(len(p)==6 and integer(p[0],0) and p[0] not in ids and safe_path(string(p[1])) and string(p[1]) not in sources and integer(p[2],1,65535) and p[3]==1 and integer(p[4],1,2000000) and integer(p[5],1,2000000),'Storage policy')
+        require(len(p)==7 and integer(p[0],0) and p[0] not in ids and safe_path(string(p[1])) and string(p[1]) not in sources and integer(p[2],1,65535) and p[3]==1 and integer(p[4],1,2000000) and integer(p[5],1,2000000) and integer(p[6],1,p[2]) and (caps==2 or p[6]==p[2]),'Storage policy')
         ids.add(p[0]);sources.add(string(p[1]))
         for i in range(2):require(p[4+i] not in scores[i],'Storage unsupported equal-score sort');scores[i].add(p[4+i])
     params={}

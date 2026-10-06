@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "kind": "encore.item-use-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "license_review": "Pinned upstream game audio derivative; retain upstream notices; no MIT relicensing.",
+  "assets": [
+    {
+      "source": "Audio/Sound effects/EB/eat.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1701
+      },
+      "pcm": "sound/effects/item-consume.pcm",
+      "gain_db": 0,
+      "conversion": null
+    }
+  ]
+}

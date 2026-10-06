@@ -76,6 +76,7 @@ introduction-assets:
 	$(PYTHON) tools/native_house.py verify
 	$(PYTHON) tools/item_details.py verify
 	$(PYTHON) tools/field_equipment.py verify
+	$(PYTHON) tools/item_use.py verify
 	$(PYTHON) tools/house_assets.py verify
 	$(PYTHON) tools/round_assets.py verify
 	$(PYTHON) tools/audio_asset.py verify

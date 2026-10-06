@@ -38,8 +38,10 @@ struct MusicRegionContext {
  bool is_player=true,in_cutscene=false,in_battle=false,has_collisions=true;
  std::function<bool(std::string_view)> flag;
 };
-// A coordinator-issued monotonic identity for the latest non-region music
-// player. Report creation in original global-manager order, not based on gain.
+// A coordinator-issued monotonic object identity for the observed non-region
+// music player. Replacing its stream or stopping it does not mint an identity.
+// Report actual removal before a replacement; playback counters are not IDs.
+// Report creation in original global-manager order, not based on gain.
 // Notifications do not touch NDSP; staged scene preparation must not emit them.
 struct MusicExternalPlayer {uint64_t generation=0;bool present=false,playing=false;};
 enum class MusicRegionCurve:uint8_t{None,Linear,QuartIn,QuartOut};

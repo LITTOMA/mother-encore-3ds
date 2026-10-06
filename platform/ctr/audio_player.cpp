@@ -14,6 +14,8 @@ MusicObservation AudioPlayer::observe_music() const {
     const auto& music=voices_[uint32_t(AudioLane::Music)];
     const auto& dialogue=voices_[uint32_t(AudioLane::DialogueMusic)];
     MusicObservation out;out.generation=music_generation_;out.asset_id=music.asset.stable_id;
+    out.player_identity=music_player_identity_;out.retired_player_identity=retired_music_player_identity_;
+    out.present=ready_&&music_player_present_;
     out.available=ready_;out.playing=ready_&&music.active;
     out.tweening=out.playing&&music.fading&&music.fade.active();
     out.dialogue_music_playing=ready_&&dialogue.active;
@@ -42,6 +44,7 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     ready_=true;error.clear();return true;
 }
 void AudioPlayer::shutdown(){
+    retire_music_player();
     if(ndsp_initialized_){for(uint32_t i=0;i<lane_count;++i)if(i<4||voices_[i].samples)ndspChnWaveBufClear(hardware_channel(i));ndspExit();}
     ndsp_initialized_=ready_=false;
     for(auto& v:voices_){if(v.samples)linearFree(v.samples);v=Voice{};}
@@ -68,10 +71,18 @@ void AudioPlayer::reset_scene(){
     // The immutable checked bank and open streams belong to the application,
     // not a gameplay scene. Stop NDSP before clearing its wave-buffer objects.
     if(ndsp_initialized_)for(uint32_t i=0;i<lane_count;++i)if(i<4||voices_[i].samples)ndspChnWaveBufClear(hardware_channel(i));
+    retire_music_player();
     for(auto& voice:voices_){auto* samples=voice.samples;voice=Voice{};voice.samples=samples;}
     consumed_=0;submitted_=completed_=queued_frames_=0;
 }
 void AudioPlayer::stop(uint32_t lane){ndspChnWaveBufClear(hardware_channel(lane));voices_[lane].active=false;voices_[lane].fading=false;}
+void AudioPlayer::retire_music_player(){
+    // Retirement belongs to this bounded backend's completion/reset boundary.
+    // It does not construct a source _add_at_zero replacement or claim global
+    // deferred deletion/tween order across the independent region owners.
+    if(music_player_present_)retired_music_player_identity_=music_player_identity_;
+    music_player_present_=false;
+}
 void AudioPlayer::mix(uint32_t lane){float volumes[12]{};const float gain=upstream::audio_linear_gain(voices_[lane].fade.db());volumes[0]=gain;volumes[1]=gain;ndspChnSetMix(hardware_channel(lane),volumes);}
 bool AudioPlayer::refill(uint32_t lane,std::string& error){
     auto& voice=voices_[lane];if(!voice.active)return true;bool queued=false;
@@ -85,7 +96,7 @@ bool AudioPlayer::refill(uint32_t lane,std::string& error){
         if(R_FAILED(flushed)){error="Audio DSP cache flush failed";stop(lane);return false;}
         ndspChnWaveBufAdd(hardware_channel(lane),&wave);queued=true;queued_frames_+=frames;
     }
-    if(!queued){voice.active=false;voice.fading=false;++completed_;}return true;
+    if(!queued){voice.active=false;voice.fading=false;++completed_;if(lane==uint32_t(AudioLane::Music))retire_music_player();}return true;
 }
 bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain_db,double fadein_seconds,float pitch){
     if(!std::isfinite(gain_db)||gain_db<-120||gain_db>24||!std::isfinite(fadein_seconds)||fadein_seconds<0||fadein_seconds>60){error="Invalid audio gain/fade";return false;}
@@ -93,6 +104,7 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
     const uint32_t lane=uint32_t(which);if(lane>=lane_count){error="Unsupported audio lane";return false;}
     if(which==AudioLane::Music&&music_generation_==UINT64_MAX){error="Music observation identity exhausted";return false;}
+    if(which==AudioLane::Music&&!music_player_present_&&music_player_identity_==UINT64_MAX){error="Bounded Music player identity exhausted";return false;}
     uint32_t index=0;while(index<bank_.count()&&bank_.asset(index).stable_id!=id)++index;
     if(index==bank_.count()){error="Audio resource is absent from bank";return false;}
     for(uint32_t i=0;i<lane_count;++i)if(i!=lane&&voices_[i].active&&voices_[i].asset_index==index){error="Concurrent playback of one PCM asset across lanes is outside audio slice";return false;}
@@ -110,13 +122,13 @@ bool AudioPlayer::play(uint32_t id,AudioLane which,std::string& error,float gain
     ndspChnSetInterp(hardware_channel(lane),NDSP_INTERP_POLYPHASE);
     ndspChnSetRate(hardware_channel(lane),float(voice.asset.sample_rate)*pitch);
     ndspChnSetFormat(hardware_channel(lane),voice.asset.channels==2?NDSP_FORMAT_STEREO_PCM16:NDSP_FORMAT_MONO_PCM16);
-    mix(lane);if(!refill(lane,error))return false;++submitted_;if(which==AudioLane::Music)++music_generation_;error.clear();return true;
+    mix(lane);if(!refill(lane,error))return false;++submitted_;if(which==AudioLane::Music){if(!music_player_present_){++music_player_identity_;music_player_present_=true;}++music_generation_;}error.clear();return true;
 }
 bool AudioPlayer::fade_music(double duration,std::string& error){
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
     if(!std::isfinite(duration)||duration<0){error="Invalid music fade duration";return false;}
     auto& voice=voices_[uint32_t(AudioLane::Music)];
-    if(voice.active){voice.fade.start(bank_.silence_db(),duration);voice.fading=true;voice.stop_after_fade=true;if(duration==0)stop(uint32_t(AudioLane::Music));}
+    if(voice.active){voice.fade.start(bank_.silence_db(),duration);voice.fading=true;voice.stop_after_fade=true;if(duration==0){stop(uint32_t(AudioLane::Music));retire_music_player();}}
     error.clear();return true;
 }
 bool AudioPlayer::fade_all_music(double duration,std::string& error){
@@ -124,7 +136,7 @@ bool AudioPlayer::fade_all_music(double duration,std::string& error){
     if(!std::isfinite(duration)||duration<0||duration>60){error="Invalid music fade duration";return false;}
     for(auto lane:{uint32_t(AudioLane::Music),uint32_t(AudioLane::DialogueMusic)}){
         auto& voice=voices_[lane];
-        if(voice.active){voice.fade.start(bank_.silence_db(),duration);voice.fading=true;voice.stop_after_fade=true;if(duration==0)stop(lane);}
+        if(voice.active){voice.fade.start(bank_.silence_db(),duration);voice.fading=true;voice.stop_after_fade=true;if(duration==0){stop(lane);if(lane==uint32_t(AudioLane::Music))retire_music_player();}}
     }
     error.clear();return true;
 }
@@ -162,7 +174,7 @@ bool AudioPlayer::update(double delta,std::string& error){
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
     if(!std::isfinite(delta)||delta<0){error="Invalid audio frame delta";return false;}
     for(uint32_t i=0;i<lane_count;++i){auto& v=voices_[i];if(!v.active)continue;
-        if(v.fading){v.fade.advance(delta);mix(i);if(!v.fade.active()){v.fading=false;if(v.stop_after_fade){stop(i);continue;}}}
+        if(v.fading){v.fade.advance(delta);mix(i);if(!v.fade.active()){v.fading=false;if(v.stop_after_fade){stop(i);if(i==uint32_t(AudioLane::Music))retire_music_player();continue;}}}
         if(!refill(i,error))return false;
     }error.clear();return true;
 }

@@ -35,6 +35,20 @@ int main(int argc,char**argv){check(argc==3,"pack+bank arguments");auto bytes=re
  check(revisit.enter(2,"Music/MusicArea3",ctx,e)&&active(revisit)==2,"same song reuses existing source first match after notification");
  check(revisit.observe_external_player({2,false,false},e)&&!revisit.observe_external_player({2,true,true},e),"removed external identity cannot be resurrected");
  check(!revisit.attach_scene(1,e),"scene epoch cannot regress and accept an old scene callback");
+ // audioManager.play_music replaces a stream on the same child. Repeated
+ // observations, including an idle stopped child, cannot change child order.
+ MusicRegionController replay;
+ check(replay.initialize(d,8,e)&&replay.observe_external_player({1,true,true},e)&&replay.attach_scene(1,e)&&replay.enter(1,"Music/MusicArea",ctx,e),"external child precedes region child");
+ bool external_target=false;
+ check(replay.observe_external_player({1,true,true},e)&&replay.fade_index_zero(1,external_target,e)&&external_target,"same-child stream replacement preserves indexed fade target");
+ check(replay.observe_external_player({1,true,false},e)&&replay.fade_index_zero(1,external_target,e)&&external_target,"stop preserves the idle source child and its order");
+ check(replay.observe_external_player({1,true,true},e)&&replay.fade_index_zero(1,external_target,e)&&external_target,"replay on the same child does not poison indexed fades");
+ check(replay.observe_external_player({1,false,false},e)&&replay.observe_external_player({2,true,true},e)&&replay.fade_index_zero(1,external_target,e)&&!external_target,"explicit remove then create puts replacement after surviving region child");
+ check(!replay.observe_external_player({2,false,true},e),"absent child cannot be playing");
+ check(!replay.observe_external_player({1,true,true},e),"retired child cannot replace the current child");
+ MusicRegionController unknown_history;
+ check(unknown_history.initialize(d,8,e)&&unknown_history.attach_scene(1,e)&&unknown_history.observe_external_player({1,true,true},e)&&unknown_history.observe_external_player({2,true,true},e),"unmapped overlapping external child history recorded");
+ check(!unknown_history.fade_index_zero(1,external_target,e),"missing removal proof still rejects indexed fade");
  check(!c.advance(-1,false,e)&&!c.advance(INFINITY,false,e),"invalid timing rejected");check(!c.enter(1,"Music/Unknown",ctx,e),"unknown binding rejected");check(c.enter(999,"Music/Unknown",ctx,e),"stale scene callbacks ignored before path lookup");
  std::cout<<"Music regions PASS "<<checks<<" checks; controller and parser only, no audible output\n";
 }

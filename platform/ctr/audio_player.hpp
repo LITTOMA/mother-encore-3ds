@@ -8,13 +8,16 @@
 
 namespace encore::ctr {
 enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5 };
-// Read-only snapshot of the existing bounded Music owner, not a inferred
-// source-player graph. generation identifies a successful Music start and never
-// resets across scene stop/reset/reinitialize; inactive snapshots retain it.
+// Read-only snapshot of the bounded Music lane, not the source cold-Ready
+// AudioPlayers child list. Its owner is published on first successful playback.
+// generation counts successful starts; player_identity identifies the retained
+// instance independently. Stop keeps that instance; removal records its exact
+// identity. Counters never reset across scene reset or backend reinitialization.
 struct MusicObservation {
     uint64_t generation=0;
+    uint64_t player_identity=0,retired_player_identity=0;
     uint32_t asset_id=0;
-    bool available=false,playing=false,tweening=false;
+    bool available=false,present=false,playing=false,tweening=false;
     bool dialogue_music_playing=false,any_music_tweening=false;
     float master_db=0;
 };
@@ -70,6 +73,7 @@ private:
     bool prepare_index(uint32_t index,std::string& error);
     bool refill(uint32_t lane,std::string& error);
     void stop(uint32_t lane);
+    void retire_music_player();
     void mix(uint32_t lane);
     upstream::AudioBank bank_;
     std::string asset_root_;
@@ -78,6 +82,8 @@ private:
     Result dsp_result_=0;
     bool ndsp_initialized_=false,ready_=false;
     uint64_t music_generation_=0;
+    uint64_t music_player_identity_=0,retired_music_player_identity_=0;
+    bool music_player_present_=false;
     size_t consumed_=0;
     uint32_t submitted_=0,completed_=0,queued_frames_=0;
 };

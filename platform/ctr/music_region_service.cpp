@@ -6,7 +6,7 @@ struct MusicRegionService::State {
  upstream::MusicRegionData data;
  upstream::MusicRegionController controller;
  MusicRegionPlayer player;
- uint64_t external_generation=0;
+  MusicObservation external_owner;
  size_t consumed_history=0,history_size=0;uint32_t history_crc=0;std::string history_scene;
 };
 MusicRegionService::MusicRegionService()=default;
@@ -36,20 +36,44 @@ MusicPreparationStep MusicRegionService::prepare_step(uint32_t budget,std::strin
  return result;
 }
 bool MusicRegionService::cancel_preparation(std::string&e){if(phase_!=MusicRegionServicePhase::Dormant&&phase_!=MusicRegionServicePhase::Preparing&&phase_!=MusicRegionServicePhase::Prepared)return fail(e,"Cannot cancel committed region music; deliver source exits");shutdown();e.clear();return true;}
-bool MusicRegionService::observe(upstream::MusicRegionController&controller,uint64_t&known,const MusicObservation&s,std::string&e){
+bool MusicRegionService::observe(upstream::MusicRegionController&controller,MusicObservation&known,const MusicObservation&s,std::string&e){
  if(!s.available)return fail(e,"Music region service lost its NDSP owner");
- if(s.generation<known)return fail(e,"Existing music owner generation regressed");
- if(s.playing){if(!s.generation)return fail(e,"Playing external music has no observed identity");if(!controller.observe_external_player({s.generation,true,true},e))return false;known=s.generation;}
- else if(known){if(!controller.observe_external_player({known,false,false},e))return false;}
+  if(s.generation<known.generation||s.player_identity<known.player_identity||s.retired_player_identity<known.retired_player_identity)return fail(e,"Existing music owner sequence regressed");
+  if(s.retired_player_identity>s.player_identity||
+     (!s.player_identity&&(s.present||s.generation||s.retired_player_identity))||
+     (s.player_identity&&!s.generation)||
+     (s.present&&(!s.generation||s.retired_player_identity==s.player_identity))||
+     (!s.present&&s.player_identity!=s.retired_player_identity)||
+     (s.playing&&(!s.present||!s.asset_id))||(s.tweening&&!s.playing))
+    return fail(e,"Invalid bounded Music player lifecycle snapshot");
+  const bool replaced=s.player_identity!=known.player_identity;
+  if(replaced&&known.player_identity){
+    // A later successful start is not proof that the old source instance died.
+    // Only AudioPlayer's explicit retirement receipt permits remove -> create.
+    // More than one missed incarnation has an unmapped global child order.
+    if(known.player_identity==UINT64_MAX||s.player_identity!=known.player_identity+1||s.generation<=known.generation||
+       s.retired_player_identity<known.player_identity)
+      return fail(e,"Unobserved bounded Music player creation/removal history");
+  }
+  if(known.present&&(replaced||!s.present))
+    if(!controller.observe_external_player({known.player_identity,false,false},e))return false;
+  if(s.present){
+    if(!replaced&&!known.present)return fail(e,"Retired bounded Music identity cannot be reused");
+    // Controller generation is its source-player identity. Playback sequence
+    // deliberately stays outside the child graph, so stream replacement never
+    // manufactures an additional child or clears a genuine ambiguity.
+    if(!controller.observe_external_player({s.player_identity,true,s.playing},e))return false;
+  }
+  known=s;
  e.clear();return true;
 }
 bool MusicRegionService::commit_scene(uint64_t epoch,const AudioPlayer&owner,std::string&e){
  if(!state_||(phase_!=MusicRegionServicePhase::Prepared&&phase_!=MusicRegionServicePhase::Draining))return fail(e,"Music region scene is not prepared or still owns active areas");
  const auto snapshot=owner.observe_music();
  if(snapshot.dialogue_music_playing)return fail(e,"Music region external DialogueMusic player is outside the mapped handoff");
- auto next=state_->controller;auto generation=state_->external_generation;
+ auto next=state_->controller;auto generation=state_->external_owner;
  if(!observe(next,generation,snapshot,e)||!next.attach_scene(epoch,e))return false;
- state_->controller=std::move(next);state_->external_generation=generation;state_->consumed_history=state_->history_size=state_->history_crc=0;state_->history_scene.clear();phase_=MusicRegionServicePhase::Active;e.clear();return true;
+ state_->controller=std::move(next);state_->external_owner=generation;state_->consumed_history=state_->history_size=state_->history_crc=0;state_->history_scene.clear();phase_=MusicRegionServicePhase::Active;e.clear();return true;
 }
 bool MusicRegionService::bind_room_history(upstream::RoomView room,std::string&e){
  if(!state_||phase_!=MusicRegionServicePhase::Active||!room.valid()||room.byte_size()<128||state_->history_size)return fail(e,"Region music history owner rejected");
@@ -74,10 +98,10 @@ bool MusicRegionService::route_room_fade(upstream::RoomView room,const upstream:
  const auto*p=room.bytes()+52;const auto crc=uint32_t(p[0])|uint32_t(p[1])<<8|uint32_t(p[2])<<16|uint32_t(p[3])<<24;if(crc!=state_->history_crc)return fail(e,"Indexed source music room changed");
  bool source=false;for(uint32_t c=0;c<room.command_count();++c){const auto command=room.command(c);if(command.opcode==uint16_t(upstream::DialogueActionKind::MusicFadeOut)&&command.phrase==r.phrase&&command.duration==r.duration&&command.value==0){source=true;break;}}if(!source)return fail(e,"Indexed fade does not match a reviewed source command");
  const auto snapshot=owner.observe_music();if(snapshot.dialogue_music_playing)return fail(e,"Indexed source fade has unmapped external DialogueMusic child order");
- auto next=state_->controller;auto generation=state_->external_generation;bool external=false;
+ auto next=state_->controller;auto generation=state_->external_owner;bool external=false;
  if(!observe(next,generation,snapshot,e)||!next.fade_index_zero(r.duration,external,e))return false;
  if(external&&!owner.fade_music(r.duration,e))return false;
- state_->controller=std::move(next);state_->external_generation=generation;e.clear();return true;
+ state_->controller=std::move(next);state_->external_owner=generation;e.clear();return true;
 }
 bool MusicRegionService::area_enter(uint64_t epoch,std::string_view path,const upstream::MusicRegionContext&context,const AudioPlayer&owner,std::string&e){
  if(!state_)return fail(e,"Music region Area event has no prepared service");
@@ -85,9 +109,9 @@ bool MusicRegionService::area_enter(uint64_t epoch,std::string_view path,const u
  if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Music region Area enter outside active scene");
  const auto snapshot=owner.observe_music();
  if(snapshot.dialogue_music_playing&&context.is_player&&!context.in_cutscene&&!context.in_battle)return fail(e,"Music region external DialogueMusic player is outside the mapped handoff");
- auto next=state_->controller;auto generation=state_->external_generation;
+ auto next=state_->controller;auto generation=state_->external_owner;
  if(!observe(next,generation,snapshot,e)||!next.enter(epoch,path,context,e))return false;
- state_->controller=std::move(next);state_->external_generation=generation;e.clear();return true;
+ state_->controller=std::move(next);state_->external_owner=generation;e.clear();return true;
 }
 bool MusicRegionService::play_explicit(uint64_t epoch,std::string_view path,const AudioPlayer&owner,std::string&e){
  if(!state_)return fail(e,"Explicit music region play has no prepared service");
@@ -95,9 +119,9 @@ bool MusicRegionService::play_explicit(uint64_t epoch,std::string_view path,cons
  if(phase_!=MusicRegionServicePhase::Active)return fail(e,"Explicit music region play outside active scene");
  const auto snapshot=owner.observe_music();
  if(snapshot.dialogue_music_playing)return fail(e,"Music region external DialogueMusic player is outside the mapped handoff");
- auto next=state_->controller;auto generation=state_->external_generation;
+ auto next=state_->controller;auto generation=state_->external_owner;
  if(!observe(next,generation,snapshot,e)||!next.play_explicit(epoch,path,e))return false;
- state_->controller=std::move(next);state_->external_generation=generation;e.clear();return true;
+ state_->controller=std::move(next);state_->external_owner=generation;e.clear();return true;
 }
 bool MusicRegionService::stop_explicit(uint64_t epoch,std::string_view path,double fade,std::string&e){
  if(!state_)return fail(e,"Explicit music region stop has no prepared service");
@@ -119,7 +143,7 @@ bool MusicRegionService::update(double delta,const AudioPlayer&owner,std::string
  if(phase_==MusicRegionServicePhase::Dormant||phase_==MusicRegionServicePhase::Preparing||phase_==MusicRegionServicePhase::Prepared){e.clear();return true;}
  if(!std::isfinite(delta)||delta<0)return fail(e,"Invalid music region service delta");
  const auto snapshot=owner.observe_music();
- if(!observe(state_->controller,state_->external_generation,snapshot,e)||
+ if(!observe(state_->controller,state_->external_owner,snapshot,e)||
     !state_->controller.advance(delta,snapshot.any_music_tweening,e)||!state_->player.sync(state_->controller,e))return false;
  if(phase_==MusicRegionServicePhase::Draining){bool allocated=false;for(const auto&v:state_->controller.voices())allocated|=v.allocated;if(!allocated)phase_=MusicRegionServicePhase::Prepared;}
  e.clear();return true;

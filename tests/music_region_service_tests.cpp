@@ -74,15 +74,25 @@ int main(int argc,char**argv){
  const auto busy_mutations=mutations+owner_calls,busy_opens=file_opens;check(!complete_prepare(service,argv[3],argv[4],argv[5],8,owner,e)&&mutations+owner_calls==busy_mutations&&file_opens==busy_opens,"new preparation cannot replace live service");
  check(service.tree_exit(1,"Music/MusicArea",e)&&service.tree_exit(1,"Music/MusicArea3",e)&&service.finish_scene(1,e),"actual tree exit order enters Draining");
  check(service.update(0,owner,e)&&service.phase()==ctr::MusicRegionServicePhase::Draining&&!queues[4].empty(),"Draining retains queued fading voice instead of immediate shutdown");
- check(owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().generation>house_generation,"new House playback has fresh monotonic identity");
- check(service.commit_scene(2,owner,e)&&service.area_enter(2,"Music/MusicArea",ctx,owner,e)&&service.update(0,owner,e),"quick scene return keeps source old fade and new external order");
- check(service.live_voice_count()==2&&queues[4].size()==3&&queues[5].size()==3,"old region phase and new same-song voice coexist across scene commit");
+ const auto house_identity=owner.observe_music().player_identity;
+ check(owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().generation>house_generation&&owner.observe_music().player_identity==house_identity,"House replay advances playback sequence while retaining actual child identity");
+ check(service.commit_scene(2,owner,e)&&service.area_enter(2,"Music/MusicArea",ctx,owner,e)&&service.update(0,owner,e),"quick scene return preserves source child order across stream replacement");
+ // The same external child still precedes the surviving region child. The
+ // source latest-player lookup therefore reuses the region stream without
+ // creating another copy merely because House music was restarted.
+ check(service.live_voice_count()==1&&service.submitted_voices()==1&&queues[4].size()==3&&queues[5].empty(),"same-child replay neither reorders children nor duplicates region playback");
  check(service.area_enter(1,"Music/Unknown",ctx,owner,e),"old epoch event ignored before source lookup");
  check(service.tree_exit(2,"Music/MusicArea",e)&&service.finish_scene(2,e)&&service.update(.75,owner,e)&&service.phase()==ctr::MusicRegionServicePhase::Draining,"half fade keeps Draining");
  check(service.update(.75,owner,e)&&service.phase()==ctr::MusicRegionServicePhase::Prepared&&service.live_voice_count()==0&&queues[4].empty()&&queues[5].empty()&&!queues[0].empty(),"fade completion returns resident service to Prepared preserving House");
  check(service.cancel_preparation(e)&&service.phase()==ctr::MusicRegionServicePhase::Dormant,"prepared cache can be discarded safely");
  const auto previous=owner.observe_music().generation;owner.shutdown();check(!owner.observe_music().available&&!owner.observe_music().playing&&owner.observe_music().generation==previous,"shutdown observation truthful without identity reuse");
- check(owner.initialize(argv[1],argv[2],e)&&owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().generation>previous,"reinitialize does not reuse identity");owner.shutdown();
+ check(owner.initialize(argv[1],argv[2],e)&&owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().generation>previous,"reinitialize does not reuse playback sequence");
+ const auto retained=owner.observe_music();
+ check(retained.present&&retained.player_identity>house_identity,"new backend playback publishes a fresh bounded instance");
+ check(owner.stop_lane(ctr::AudioLane::Music,e)&&owner.observe_music().present&&!owner.observe_music().playing&&owner.observe_music().player_identity==retained.player_identity,"source stop keeps the same idle instance");
+ check(owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().player_identity==retained.player_identity&&owner.observe_music().generation>retained.generation,"playing a stopped instance reuses its identity");
+ check(owner.fade_music(0,e)&&!owner.observe_music().present&&owner.observe_music().retired_player_identity==retained.player_identity,"completed fade records exact instance removal");
+ check(owner.play(34,ctr::AudioLane::Music,e)&&owner.observe_music().player_identity>retained.player_identity,"play after actual removal publishes a new instance");owner.shutdown();
  check(linear_bytes==0,"all owner and service buffers released");
  std::cout<<"Music production service/observation PASS "<<checks<<" checks; real API under NDSP double, no audible output claim\n";
 }

@@ -45,7 +45,7 @@ public:
 private:
  struct State;std::unique_ptr<State>state_;
  MusicRegionServicePhase phase_=MusicRegionServicePhase::Dormant;
- static bool observe(upstream::MusicRegionController&,uint64_t&known_generation,const MusicObservation&,std::string&);
+ static bool observe(upstream::MusicRegionController&,MusicObservation&known_owner,const MusicObservation&,std::string&);
 };
 // Explicit loading-loop cooperation. Only old streaming queues move; no world
 // tick, fade advance, new Music identity or gain write is performed. The pure

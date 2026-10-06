@@ -42,7 +42,7 @@ bool MusicRegionService::observe(upstream::MusicRegionController&controller,Musi
   if(s.retired_player_identity>s.player_identity||
      (!s.player_identity&&(s.present||s.generation||s.retired_player_identity))||
      (s.player_identity&&!s.generation)||
-     (s.present&&(!s.generation||s.retired_player_identity==s.player_identity))||
+     (s.present&&(!s.generation||s.retired_player_identity!=s.player_identity-1))||
      (!s.present&&s.player_identity!=s.retired_player_identity)||
      (s.playing&&(!s.present||!s.asset_id))||(s.tweening&&!s.playing))
     return fail(e,"Invalid bounded Music player lifecycle snapshot");
@@ -50,8 +50,10 @@ bool MusicRegionService::observe(upstream::MusicRegionController&controller,Musi
   if(replaced&&known.player_identity){
     // A later successful start is not proof that the old source instance died.
     // Only AudioPlayer's explicit retirement receipt permits remove -> create.
-    // More than one missed incarnation has an unmapped global child order.
-    if(known.player_identity==UINT64_MAX||s.player_identity!=known.player_identity+1||s.generation<=known.generation||
+    // This single lane mints an identity only after retiring its predecessor.
+    // The high-water mark proves skipped instances are dead; Prepared scenes
+    // need not observe every intervening title replay to retain live order.
+    if(s.generation<=known.generation||
        s.retired_player_identity<known.player_identity)
       return fail(e,"Unobserved bounded Music player creation/removal history");
   }

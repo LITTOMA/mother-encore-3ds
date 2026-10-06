@@ -56,6 +56,7 @@ SOURCES = (
     'runtime/field_inventory_data.cpp',
     'runtime/field_item_definitions_data.cpp',
     'runtime/global_yaml_caches_data.cpp',
+    'runtime/global_yaml_caches.cpp',
     'runtime/global_packed_directory_data.cpp',
     'runtime/global_yaml_file_data.cpp',
     'runtime/field_global_data_data.cpp',

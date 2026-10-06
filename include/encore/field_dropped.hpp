@@ -20,6 +20,14 @@ private:
  bool valid_=false;std::array<uint8_t,20>pin_{};std::string scene_,script_,empty_,sparkles_path_;FieldDroppedRules rules_{};uint32_t sparkles_width_=0,sparkles_height_=0,sparkles_bytes_=0,sparkles_crc_=0;float sparkles_speed_=0,sparkles_scale_=0,random_low_=0,random_high_=0;std::vector<PresentSparklesFrame>sparkles_frames_;std::vector<FieldPresentItem>items_;std::vector<FieldDroppedAsset>assets_;std::vector<FieldDroppedBinding>bindings_;
 };
 bool validate_dropped_present_bridge(const FieldPresentData&,const FieldDroppedData&,std::string&);
+enum class FieldDroppedSparklesEvent { FrameChanged, AnimationFinished };
+class FieldDroppedSparklesLeafOwner {
+public:
+ virtual ~FieldDroppedSparklesLeafOwner() = default;
+ virtual bool admit(const FieldDroppedData &, const FieldDroppedBinding &,
+                    std::string &) const = 0;
+ virtual bool signal(uint32_t, FieldDroppedSparklesEvent, std::string &) = 0;
+};
 struct FieldDroppedHost{
  std::function<bool(const FieldDroppedBinding&,std::string&)>admit_ready,admit_interaction;
  std::function<bool(const FieldDroppedBinding&,bool&,std::string&)>read_flag;
@@ -53,10 +61,13 @@ public:
  // Call idle_node for each source leaf in the scene-wide actual node order.
  // SceneTreeTween collection steps follow nodes in global tween creation order.
  bool idle_signal(std::string&);bool idle_node(uint32_t leaf,double delta,bool processing,std::string&);bool collect_step(uint32_t,uint64_t order,double delta,bool processing,std::string&);
+ bool bind_sparkles_leaf_owner(FieldDroppedSparklesLeafOwner &,std::string &);
+ bool idle_sparkles_leaf(uint32_t,double delta,bool processing,std::string &);
  bool area_left(bool region_changed,std::string&);bool exit_tree(uint32_t,std::string&);
  const FieldDroppedState*state(uint32_t)const;const FieldDroppedData*content()const{return data_;}
 private:
  FieldDroppedState*mutable_state(uint32_t);bool queue(FieldDroppedState&,std::string&);bool collect(FieldDroppedState&,const FieldDroppedBinding&,std::string&);bool timer(FieldDroppedState&,std::string&);
  const FieldDroppedData*data_=nullptr;FieldDroppedHost host_;std::vector<FieldDroppedState>states_;
+ FieldDroppedSparklesLeafOwner *sparkles_owner_ = nullptr;
 };
 }

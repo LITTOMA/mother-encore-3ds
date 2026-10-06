@@ -11,7 +11,8 @@ namespace encore::ctr {
 // Native leaf adapter borrowing the source consumers' actual single bodies and
 // clocks. It never creates a second arrow, sparkle or animation state.
 class PodunkSceneAnimatedLeaves final
-    : public upstream::FieldPresentSparklesLeafOwner {
+    : public upstream::FieldPresentSparklesLeafOwner,
+      public upstream::FieldDroppedSparklesLeafOwner {
 public:
   PodunkSceneAnimatedLeaves();
   ~PodunkSceneAnimatedLeaves();
@@ -44,6 +45,11 @@ public:
              const upstream::FieldPresentBinding &,
              std::string &) const override;
   bool signal(uint32_t, upstream::FieldPresentSparklesEvent,
+              std::string &) override;
+  bool admit(const upstream::FieldDroppedData &,
+             const upstream::FieldDroppedBinding &,
+             std::string &) const override;
+  bool signal(uint32_t, upstream::FieldDroppedSparklesEvent,
               std::string &) override;
   upstream::FieldNodeTreeRuntime *tree() const { return tree_; }
   const upstream::FieldGlobalRegistry *registry() const { return registry_; }

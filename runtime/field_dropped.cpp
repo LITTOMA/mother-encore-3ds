@@ -28,12 +28,74 @@ bool FieldDroppedRuntime::idle_signal(std::string&e){if(!data_){e="Dropped idle 
 bool FieldDroppedRuntime::timer(FieldDroppedState&s,std::string&e){auto pending=std::move(s.disappear_waiters);s.disappear_waiters.clear();for(auto phase:pending){if(phase>=4){e="Dropped unknown timer coroutine";return false;}if(phase==3){if(!queue(s,e))return false;continue;}if(phase==0){s.blink_playing=true;s.blink_time=0;}else s.blink_speed=data_->rules().speeds[phase-1];s.timer_wait=data_->rules().timers[phase+1];s.timer_left=s.timer_wait;s.timer_running=true;s.disappear_waiters.push_back(phase+1);}return true;}
 bool FieldDroppedRuntime::idle_node(uint32_t id,double delta,bool processing,std::string&e){if(!data_||!delta_valid(delta)){e="Dropped idle node delta/source";return false;}for(const auto&b:data_->bindings()){
  unsigned role=id==b.sparkles_id?1:id==b.tween_id?2:id==b.timer_id?3:id==b.animation_id?4:0;if(!role)continue;auto*s=mutable_state(b.id);if(!s||!s->alive){e.clear();return true;}if((role==1&&!s->child_ready)||(role!=1&&!s->parent_ready)){e="Dropped idle node not source Ready";return false;}if(!processing){e.clear();return true;}
- if(role==1){float left=float(delta);while(left){if(s->sparkles_timeout<=0){s->sparkles_timeout=float(1.0/double(float(data_->sparkles_speed()*data_->sparkles_scale())));s->sparkles_frame=s->sparkles_frame>=data_->sparkles_frames().size()-1?0:s->sparkles_frame+1;}auto step=std::min(left,s->sparkles_timeout);left-=step;s->sparkles_timeout-=step;}}
+ if(role==1){if(sparkles_owner_){e="Dropped Sparkles clock belongs to actual native leaf";return false;}float left=float(delta);while(left){if(s->sparkles_timeout<=0){s->sparkles_timeout=float(1.0/double(float(data_->sparkles_speed()*data_->sparkles_scale())));s->sparkles_frame=s->sparkles_frame>=data_->sparkles_frames().size()-1?0:s->sparkles_frame+1;}auto step=std::min(left,s->sparkles_timeout);left-=step;s->sparkles_timeout-=step;}}
  else if(role==2&&s->tween_active){for(auto&rotation:s->rotations)if(!rotation.finished){const float next=float(rotation.elapsed+float(delta));rotation.elapsed=std::min(next,data_->rules().rotation_duration);rotation.finished=next>data_->rules().rotation_duration;s->sprite_rotation=elastic_out(rotation.elapsed,data_->rules().rotation_from,data_->rules().rotation_to,data_->rules().rotation_duration);}s->rotations.erase(std::remove_if(s->rotations.begin(),s->rotations.end(),[](const auto&j){return j.finished;}),s->rotations.end());if(s->rotations.empty())s->tween_active=false;}
  else if(role==3&&s->timer_running&&!s->timer_paused){s->timer_left-=double(float(delta));if(s->timer_left<0){s->timer_left+=s->timer_wait;if(!timer(*s,e))return false;}}
  else if(role==4&&s->blink_playing){const float advance=float(float(delta)*s->blink_speed);{s->blink_time=std::fmod(float(s->blink_time+advance),data_->rules().blink_length);for(const auto&key:data_->rules().blink_keys)if(key.time<=s->blink_time)s->sprite_visible=key.visible;}}
  e.clear();return true;
  }e="Unknown Dropped idle leaf source ID";return false;
+}
+bool FieldDroppedRuntime::bind_sparkles_leaf_owner(
+    FieldDroppedSparklesLeafOwner &owner, std::string &e) {
+  if (!data_ || sparkles_owner_) {
+    e = "Dropped native Sparkles ownership already bound/uninitialized";
+    return false;
+  }
+  for (const auto &binding : data_->bindings())
+    if (!owner.admit(*data_, binding, e))
+      return false;
+  sparkles_owner_ = &owner;
+  e.clear();
+  return true;
+}
+bool FieldDroppedRuntime::idle_sparkles_leaf(uint32_t child, double delta,
+                                           bool processing, std::string &e) {
+  if (!data_ || !sparkles_owner_ || !std::isfinite(delta) || delta < 0 ||
+      delta > 1) {
+    e = "Dropped native Sparkles leaf delta/owner rejected";
+    return false;
+  }
+  const FieldDroppedBinding *binding = nullptr;
+  for (const auto &candidate : data_->bindings())
+    if (candidate.sparkles_id == child) {
+      binding = &candidate;
+      break;
+    }
+  auto *state = binding ? mutable_state(binding->id) : nullptr;
+  if (!binding || !state || !state->alive || !state->child_ready ||
+      !sparkles_owner_->admit(*data_, *binding, e)) {
+    e = "Dropped actual live Sparkles child rejected";
+    return false;
+  }
+  if (!processing) {
+    e.clear();
+    return true;
+  }
+  float remaining = float(delta);
+  while (remaining) {
+    if (state->sparkles_timeout <= 0) {
+      state->sparkles_timeout = float(
+          1.0 / double(float(data_->sparkles_speed() * data_->sparkles_scale())));
+      const bool finished =
+          state->sparkles_frame >= data_->sparkles_frames().size() - 1;
+      state->sparkles_frame = finished ? 0 : state->sparkles_frame + 1;
+      if (finished && !sparkles_owner_->signal(
+                          child, FieldDroppedSparklesEvent::AnimationFinished,e))
+        return false;
+      if (!sparkles_owner_->signal(child,
+                                    FieldDroppedSparklesEvent::FrameChanged,e))
+        return false;
+    }
+    const float step = std::min(remaining, state->sparkles_timeout);
+    if (!std::isfinite(step) || step < 0) {
+      e = "Dropped Sparkles reentrant native clock rejected";
+      return false;
+    }
+    remaining -= step;
+    state->sparkles_timeout -= step;
+  }
+  e.clear();
+  return true;
 }
 bool FieldDroppedRuntime::collect_step(uint32_t id,uint64_t order,double delta,bool processing,std::string&e){auto*s=mutable_state(id);if(!data_||!s||!s->parent_ready||!delta_valid(delta)){e="Dropped collection source clock";return false;}auto j=std::find_if(s->collects.begin(),s->collects.end(),[&](const auto&job){return job.order==order;});if(j==s->collects.end()){e="Unknown Dropped source collection tween";return false;}if(!s->alive||j->finished||!processing){e.clear();return true;}if(!j->started){j->started=true;j->from=s->position;}j->elapsed=float(j->elapsed+float(delta));const auto&r=data_->rules();if(!j->position_done&&j->elapsed>=r.position_delay){const auto time=std::min(float(j->elapsed-r.position_delay),r.position_duration);j->position_done=time>=r.position_duration;const float w=j->position_done?1:quart_out(time/r.position_duration);s->position=j->position_done?j->target:Vec2{j->from.x+(j->target.x-j->from.x)*w,j->from.y+(j->target.y-j->from.y)*w};if(!point_valid(s->position)||!host_.publish_position(id,s->position,e))return false;}if(!j->scale_done){const float time=std::min(j->elapsed,r.scale_duration),normal=time/r.scale_duration,w=normal*normal;j->scale_done=time>=r.scale_duration;s->scale=j->scale_done?r.scale_to:Vec2{r.scale_from.x+(r.scale_to.x-r.scale_from.x)*w,r.scale_from.y+(r.scale_to.y-r.scale_from.y)*w};if(!point_valid(s->scale)||!host_.publish_scale(id,s->scale,e))return false;}if(j->position_done&&j->scale_done){j->finished=true;if(!queue(*s,e))return false;}e.clear();return true;}
 bool FieldDroppedRuntime::area_left(bool region_changed,std::string&e){(void)region_changed;if(!data_){e="Dropped area source unbound";return false;}for(const auto&s:states_)if(s.alive&&s.parent_ready){const auto&b=*data_->binding(s.id);if(b.reset_area()&&!host_.write_flag(b,false,e))return false;}e.clear();return true;}

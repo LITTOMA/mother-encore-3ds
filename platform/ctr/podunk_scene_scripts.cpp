@@ -631,6 +631,22 @@ bool PodunkSceneScripts::phase(FieldObjectId id,
       }
       return true;
     }
+    if (p == FieldTreePhase::Idle &&
+        v->source.role == FieldSceneRole::JumpArea) {
+      if (!consumers_.transitions->process_source(v->source.id, dt)) {
+        e = consumers_.transitions->error();
+        return false;
+      }
+      return true;
+    }
+    if (p == FieldTreePhase::Physics &&
+        v->source.role == FieldSceneRole::Stairs) {
+      if (!consumers_.transitions->physics_source(v->source.id, dt)) {
+        e = consumers_.transitions->error();
+        return false;
+      }
+      return true;
+    }
     // These are ordinary source callbacks. Internal animation/timer leaves
     // retain the concrete native owner's sole clock, not a second idle_leaf.
     if (p == FieldTreePhase::Idle) {
@@ -810,6 +826,35 @@ bool PodunkSceneScripts::npc_interact(FieldObjectId id, bool telepathy,
   if (!ok)
     e = consumers_.npc->error();
   return ok;
+}
+bool PodunkSceneScripts::transition_accept(FieldObjectId id, bool pressed,
+                                           std::string &e) {
+  Instance *v = nullptr;
+  if (!actual(id, v, e) || !v->ready ||
+      v->source.role != FieldSceneRole::JumpArea || !tree_->state(id)->inside)
+    return fail(e, "SceneScripts actual Jump input owner/lifecycle rejected");
+  if (pressed && !consumers_.transitions->accept_source(v->source.id)) {
+    e = consumers_.transitions->error();
+    return false;
+  }
+  e.clear();
+  return true;
+}
+bool PodunkSceneScripts::transition_native_idle(FieldObjectId id, double dt,
+                                                bool processing,
+                                                std::string &e) {
+  Instance *v = nullptr;
+  if (!actual(id, v, e) || !v->ready ||
+      v->source.role != FieldSceneRole::JumpArea || !tree_->state(id)->inside)
+    return fail(
+        e, "SceneScripts actual Jump native clock owner/lifecycle rejected");
+  if (!consumers_.transitions->idle_native_source(v->source.id, dt,
+                                                  processing)) {
+    e = consumers_.transitions->error();
+    return false;
+  }
+  e.clear();
+  return true;
 }
 bool PodunkSceneScripts::landmark_recheck(FieldObjectId id, std::string &e) {
   Instance *v = nullptr;

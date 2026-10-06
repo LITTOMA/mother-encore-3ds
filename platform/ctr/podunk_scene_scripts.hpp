@@ -52,6 +52,12 @@ public:
   bool npc_screen(upstream::FieldObjectId, bool entered, std::string &);
   bool npc_interact(upstream::FieldObjectId, bool telepathy, std::string &);
   bool landmark_recheck(upstream::FieldObjectId, std::string &);
+  // Input owner supplies the real event's source action-pressed result. Generic
+  // Input phases cannot manufacture an acceptance from an unrelated event.
+  bool transition_accept(upstream::FieldObjectId, bool source_action_pressed,
+                         std::string &);
+  bool transition_native_idle(upstream::FieldObjectId, double, bool can_process,
+                              std::string &);
   bool object_for_source(uint32_t, upstream::FieldObjectId &,
                          std::string &) const;
   bool admission(upstream::FieldObjectId,

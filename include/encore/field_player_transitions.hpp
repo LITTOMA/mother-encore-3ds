@@ -183,6 +183,14 @@ public:
   bool accept();
   bool physics_step(float);
   bool idle_frame(double, bool source_node_processing = true);
+  // Actual source node callbacks, preserving source traversal/order. accept is
+  // invoked only for a real action-pressed event; no synthetic polling.
+  bool accept_source(uint32_t);
+  bool physics_source(uint32_t, float);
+  bool process_source(uint32_t, double);
+  // Sole native timer/tween/animation schedule for this checked owner. Ordinary
+  // _process never advances these jobs; legacy idle_frame retains both passes.
+  bool idle_native_source(uint32_t, double, bool source_node_processing = true);
   bool actor_action_done(uint32_t);
   const auto &instances() const { return instances_; }
   const std::string &error() const { return error_; }
@@ -215,6 +223,10 @@ private:
   std::vector<VisualTask> visuals_;
   std::string error_;
   bool fail(const char *);
+  bool source_node(uint32_t, uint32_t kind);
+  bool accept_impl(uint32_t);
+  bool physics_impl(float, uint32_t);
+  bool idle_impl(double, bool, uint32_t, bool source_process);
   bool context(FieldTransitionContext &);
   bool command(FieldTransitionCommand);
   FieldTransitionInstance *instance(uint32_t);

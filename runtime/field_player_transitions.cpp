@@ -432,12 +432,44 @@ bool FieldPlayerTransitionsRuntime::start_party_actor(PartyStart &s) {
   s.wait = p(FieldTransitionParameter::PartyStagger);
   return true;
 }
-bool FieldPlayerTransitionsRuntime::accept() {
+bool FieldPlayerTransitionsRuntime::source_node(uint32_t id, uint32_t kind) {
+  auto *d = data_ ? data_->record(id) : nullptr;
+  auto *s = instance(id);
+  if (!id || !d || d->kind != kind || !s || !s->ready || !error_.empty())
+    return fail("Transition source node/type/lifecycle rejected");
+  return true;
+}
+bool FieldPlayerTransitionsRuntime::accept_source(uint32_t id) {
+  return source_node(id, 1) && accept_impl(id);
+}
+bool FieldPlayerTransitionsRuntime::physics_source(uint32_t id, float dt) {
+  return source_node(id, 2) && physics_impl(dt, id);
+}
+bool FieldPlayerTransitionsRuntime::process_source(uint32_t id, double dt) {
+  if (!source_node(id, 1) || !std::isfinite(dt) || dt < 0 || dt > 60)
+    return fail("Transition source process identity/delta rejected");
+  FieldTransitionContext c;
+  if (!context(c))
+    return false;
+  auto *s = instance(id);
+  const auto &r = *data_->record(id);
+  bool nearby = false;
+  if (!ray(r, c, nearby))
+    return false;
+  return !nearby || update(*s, c);
+}
+bool FieldPlayerTransitionsRuntime::idle_native_source(uint32_t id, double dt,
+                                                       bool processing) {
+  return source_node(id, 1) && idle_impl(dt, processing, id, false);
+}
+bool FieldPlayerTransitionsRuntime::accept() { return accept_impl(0); }
+bool FieldPlayerTransitionsRuntime::accept_impl(uint32_t source) {
   FieldTransitionContext c;
   if (!context(c))
     return false;
   for (auto &s : instances_)
-    if (s.ready && data_->record(s.id)->kind == 1) {
+    if ((!source || s.id == source) && s.ready &&
+        data_->record(s.id)->kind == 1) {
       const auto &r = *data_->record(s.id);
       if (!context(c))
         return false;
@@ -563,6 +595,9 @@ bool FieldPlayerTransitionsRuntime::actor_action_done(uint32_t id) {
   return true;
 }
 bool FieldPlayerTransitionsRuntime::physics_step(float dt) {
+  return physics_impl(dt, 0);
+}
+bool FieldPlayerTransitionsRuntime::physics_impl(float dt, uint32_t source) {
   if (!std::isfinite(dt) || dt <= 0 || dt > 1)
     return fail("Transition physics delta rejected");
   FieldTransitionContext c;
@@ -571,7 +606,8 @@ bool FieldPlayerTransitionsRuntime::physics_step(float dt) {
   if (!c.substantial_movement || !c.walking)
     return true;
   for (auto &s : instances_)
-    if (s.ready && data_->record(s.id)->kind == 2) {
+    if ((!source || s.id == source) && s.ready &&
+        data_->record(s.id)->kind == 2) {
       const auto &r = *data_->record(s.id);
       const float dir = (r.flags & 2) ? -1 : 1;
       const bool horizontal = (r.flags & 1) != 0;
@@ -609,6 +645,11 @@ bool FieldPlayerTransitionsRuntime::physics_step(float dt) {
   return true;
 }
 bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
+  return idle_impl(dt, processing, 0, true);
+}
+bool FieldPlayerTransitionsRuntime::idle_impl(double dt, bool processing,
+                                              uint32_t source,
+                                              bool source_process) {
   if (!std::isfinite(dt) || dt < 0 || dt > 60)
     return fail("Transition idle delta rejected");
   FieldTransitionContext c;
@@ -617,7 +658,7 @@ bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
   // SceneTreeTimer defaults process_always=true even when inherited Node
   // processing pauses.
   for (auto &s : instances_)
-    if (s.ready) {
+    if ((!source || s.id == source) && s.ready) {
       bool reset = false;
       for (auto &wait : s.run_inside_waiters) {
         wait -= dt;
@@ -640,13 +681,14 @@ bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
       }
     }
   for (auto &s : starts_)
-    if (s.next < s.actors.size()) {
+    if ((!source || s.transition == source) && s.next < s.actors.size()) {
       s.wait -= dt;
       if (s.wait < 0 && !start_party_actor(s))
         return false;
     }
   for (auto &s : instances_)
-    if (s.pending_state && s.prompt_target_scale.x == 1) {
+    if ((!source || s.id == source) && s.pending_state &&
+        s.prompt_target_scale.x == 1) {
       s.pending_state = false;
       const auto &r = *data_->record(s.id);
       if (!command({FieldTransitionCommandKind::StateChanged,
@@ -657,7 +699,7 @@ bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
         return false;
     }
   for (auto &v : visuals_)
-    if (!v.done && !v.animated) {
+    if ((!source || v.transition == source) && !v.done && !v.animated) {
       v.time += dt;
       if (v.time >= p(FieldTransitionParameter::CrouchSeconds)) {
         v.animated = true;
@@ -679,12 +721,13 @@ bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
   if (!processing)
     return true;
   for (auto &s : instances_)
-    if (s.ready && data_->record(s.id)->kind == 1) {
+    if ((!source || s.id == source) && s.ready &&
+        data_->record(s.id)->kind == 1) {
       const auto &r = *data_->record(s.id);
       bool nearby = false;
-      if (!ray(r, c, nearby))
+      if (source_process && !ray(r, c, nearby))
         return false;
-      if (nearby && !update(s, c))
+      if (source_process && nearby && !update(s, c))
         return false;
       s.prompt_time += dt;
       const auto v = quart(
@@ -718,7 +761,7 @@ bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
       }
     }
   for (auto &v : visuals_)
-    if (!v.done && v.animated) {
+    if ((!source || v.transition == source) && !v.done && v.animated) {
       v.time += dt;
       const auto &r = *data_->record(v.transition);
       const double length = p(FieldTransitionParameter::JumpSeconds),
@@ -759,7 +802,8 @@ bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
     }
   for (size_t i = 0; i < tasks_.size(); ++i) {
     auto &t = tasks_[i];
-    if (t.done || !t.started || t.waiting_signal)
+    if ((source && t.transition != source) || t.done || !t.started ||
+        t.waiting_signal)
       continue;
     t.time += dt;
     const auto total = p(FieldTransitionParameter::PathDelay) +
@@ -779,14 +823,22 @@ bool FieldPlayerTransitionsRuntime::idle_frame(double dt, bool processing) {
   }
 
   tasks_.erase(std::remove_if(tasks_.begin(), tasks_.end(),
-                              [](const auto &t) { return t.done; }),
+                              [source](const auto &t) {
+                                return (!source || t.transition == source) &&
+                                       t.done;
+                              }),
                tasks_.end());
-  starts_.erase(
-      std::remove_if(starts_.begin(), starts_.end(),
-                     [](const auto &s) { return s.next >= s.actors.size(); }),
-      starts_.end());
+  starts_.erase(std::remove_if(starts_.begin(), starts_.end(),
+                               [source](const auto &s) {
+                                 return (!source || s.transition == source) &&
+                                        s.next >= s.actors.size();
+                               }),
+                starts_.end());
   visuals_.erase(std::remove_if(visuals_.begin(), visuals_.end(),
-                                [](const auto &v) { return v.done; }),
+                                [source](const auto &v) {
+                                  return (!source || v.transition == source) &&
+                                         v.done;
+                                }),
                  visuals_.end());
   return true;
 }

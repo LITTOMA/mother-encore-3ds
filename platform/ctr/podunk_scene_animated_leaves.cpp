@@ -155,7 +155,8 @@ bool PodunkSceneAnimatedLeaves::finish_factory(std::string &e) {
   for (const auto &s : sparkles_data_->records())
     if (!resolve(s.id, out, e))
       return false;
-  if (!present_->bind_sparkles_leaf_owner(*this, e))
+  if (!present_->bind_sparkles_leaf_owner(*this, e) ||
+      !dropped_->bind_sparkles_leaf_owner(*this, e))
     return false;
   finished_ = true;
   return true;
@@ -236,7 +237,7 @@ bool PodunkSceneAnimatedLeaves::phase(FieldObjectId id, FieldTreePhase p,
     case FieldSparklesOwner::Present:
       return present_->idle_sparkles_leaf(source, dt, true, e);
     case FieldSparklesOwner::Dropped:
-      return dropped_->idle_node(source, dt, true, e);
+      return dropped_->idle_sparkles_leaf(source, dt, true, e);
     }
     return fail(e, "Unknown native Sparkles source owner");
   case FieldTreePhase::ExitNative:
@@ -348,6 +349,32 @@ bool PodunkSceneAnimatedLeaves::signal(uint32_t child,
                             ? FieldSparklesSignal::FrameChanged
                             : FieldSparklesSignal::AnimationFinished,
                         e);
+}
+bool PodunkSceneAnimatedLeaves::admit(const FieldDroppedData &data,
+                                      const FieldDroppedBinding &binding,
+                                      std::string &e) const {
+  FieldObjectId id = 0;
+  if (!dropped_ || dropped_->content() != &data ||
+      data.binding(binding.id) != &binding ||
+      !resolve(binding.sparkles_id, id, e))
+    return fail(e, "Dropped native Sparkles actual data/child rejected");
+  const auto *source = sparkles_data_->record(binding.sparkles_id);
+  return source && source->owner == FieldSparklesOwner::Dropped &&
+                 source->parent_id == binding.id
+             ? true
+             : fail(e, "Dropped native Sparkles authoritative parent differs");
+}
+bool PodunkSceneAnimatedLeaves::signal(uint32_t child,
+                                      FieldDroppedSparklesEvent event,
+                                      std::string &e) {
+  if (event != FieldDroppedSparklesEvent::FrameChanged &&
+      event != FieldDroppedSparklesEvent::AnimationFinished)
+    return fail(e, "Unknown Dropped native event");
+  return sparkle_signal(child,
+                         event == FieldDroppedSparklesEvent::FrameChanged
+                             ? FieldSparklesSignal::FrameChanged
+                             : FieldSparklesSignal::AnimationFinished,
+                         e);
 }
 bool PodunkSceneAnimatedLeaves::begin_draw(uint64_t epoch, std::string &e) {
   if (!finished_ || !epoch || (draw_started_ && epoch <= draw_epoch_))

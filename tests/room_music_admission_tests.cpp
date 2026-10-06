@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
   check(progression.load_file((root + "data/house.encbasement").c_str(), error));
   check(music.load_file((root + "sound/banks/house.encmusic").c_str(), error));
   check(admit_room_music_bindings(room.view(), progression, music, error));
-  check(house.load_file((root + "data/house.enchouse").c_str(), error));
+  check(house.load_file((root + "data/opening.enchouse").c_str(), error));
   check(restore.load_file((root + "data/opening.encrestore").c_str(), room.view(), house.view(), error));
   check(admit_house_music_bindings(room.view(), restore, progression, music, error));
   RestoreData absent_restore;

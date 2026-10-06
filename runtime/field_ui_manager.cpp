@@ -31,6 +31,28 @@ FieldColor FieldUiMenuShader::shade(FieldColor color)const{
  // Source shader uses four-component Euclidean distance and ordered else-if.
  for(size_t i=0;i<8;++i){float sum=0;for(size_t k=0;k<4;++k){float v=color[k]-old_[i][k];sum+=v*v;}if(std::sqrt(sum)<data_->color_distance_threshold())return new_[i];}return color;
 }
+bool FieldUiManagerData::method_hash(std::string_view name,std::array<uint8_t,32>&out)const{
+ auto found=functions_.find(std::string(name));
+ if(!valid_||found==functions_.end())return false;
+ out=found->second;return true;
+}
+bool FieldUiManagerRuntime::checked_menu_shader(const FieldUiMenuShader*&out,std::string&e)const{
+ if(!data_||!registry_||fields_cursor_!=data_->preloads().size()||!shader_)return fail(e,"UiManager actual constructor ShaderMaterial pending");
+ const auto binding=shader_->binding();
+ const auto preload=std::find_if(data_->preloads().begin(),data_->preloads().end(),[&](const auto&p){return p.id==binding.source.stable_id;});
+ if(preload==data_->preloads().end()||preload->onready||preload->native_class!="ShaderMaterial"||preload->path!=binding.source.source||preload->sha!=binding.source.source_sha||binding.source.native_class!=preload->native_class||binding.source.name!=preload->name||binding.family!=binding_.family||binding.capability!=binding_.capability||binding.source.identity.upstream_commit!=data_->identity().upstream_commit||binding.source.identity.scene_id!=preload->id||binding.source.identity.source_sha256!=preload->sha||!binding.object||registry_->source_resource(binding.object)!=shader_)return fail(e,"UiManager constructor ShaderMaterial actual ObjectDB/source differs");
+ FieldGlobalExternalState state;if(!shader_->state(state,e))return false;
+ out=shader_;e.clear();return true;
+}
+bool FieldUiManagerRuntime::set_menu_flavors(std::string_view flavor,std::string&e){
+ const FieldUiMenuShader*actual=nullptr;std::array<uint8_t,32>method;
+ if(!checked_menu_shader(actual,e)||!data_->method_hash("set_menu_flavors",method)||std::all_of(method.begin(),method.end(),[](uint8_t b){return b==0;})||!host_.emit_menu_flavor_updated)return fail(e,"UiManager source set_menu_flavors owner/method/signal absent");
+ auto found=std::find(data_->flavors().begin(),data_->flavors().end(),flavor);
+ const int32_t index=found==data_->flavors().end()?-1:static_cast<int32_t>(found-data_->flavors().begin());
+ // The source writes all eight NEWCOLOR parameters before emitting the signal.
+ if(!shader_->set_flavor(index,e))return false;
+ return host_.emit_menu_flavor_updated(e);
+}
 bool FieldUiManagerRuntime::initialize(const FieldUiManagerData&d,FieldGlobalRegistry&r,SourceRandom&random,FieldGlobalExternalBinding b,FieldUiManagerHost h,std::string&e){
  if(data_||!d.valid()||!b.object||!b.source.stable_id||b.source.role!=3||b.source.script!=d.source_script()||b.source.script_sha!=d.identity().source_sha256||b.source.identity.upstream_commit!=d.identity().upstream_commit||b.source.native_class!="Node"||b.family!=0x454e0045||b.capability!=1||!h.tree||h.tree->object_domain()!=r.kernel()||!h.dispatch)return fail(e,"UiManager actual source/autoload/Tree domain rejected");
  data_=&d;registry_=&r;random_=&random;binding_=std::move(b);host_=std::move(h);e.clear();return true;
@@ -77,7 +99,7 @@ bool FieldUiManagerRuntime::advance_ready(std::string&e){
   }ready_cursor_=1;
  }
  if(ready_cursor_==1){uint64_t seconds=0,ticks=0;if(!host_.clock||!host_.clock(seconds,ticks,e))return fail(e,"UiManager native randomize OS clock pending");random_->seed((seconds+ticks)*random_->state()+UINT64_C(1442695040888963407));ready_cursor_=2;}
- if(ready_cursor_==2){std::string flavor;if(!shader_||!host_.menu_flavor||!host_.menu_flavor(flavor,e))return fail(e,"UiManager actual globaldata/menu shader pending");auto i=std::find(data_->flavors().begin(),data_->flavors().end(),flavor);int32_t index=i==data_->flavors().end()?-1:static_cast<int32_t>(i-data_->flavors().begin());if(!shader_->set_flavor(index,e)||!host_.emit_menu_flavor_updated||!host_.emit_menu_flavor_updated(e))return false;ready_cursor_=3;}
+ if(ready_cursor_==2){std::string flavor;if(!host_.menu_flavor||!host_.menu_flavor(flavor,e))return fail(e,"UiManager actual globaldata/menu shader pending");if(!set_menu_flavors(flavor,e))return false;ready_cursor_=3;}
  if(ready_cursor_==3){
   std::array<uint8_t,32>source;
   if(!host_.backgrounds||host_.backgrounds->object_domain()!=registry_->kernel()||host_.backgrounds->identity().upstream_commit!=data_->identity().upstream_commit||!host_.backgrounds->source_hash(data_->source_script(),source)||source!=data_->identity().source_sha256)return fail(e,"UiManager original source directory/typed background loader pending");

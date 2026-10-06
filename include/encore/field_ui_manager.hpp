@@ -13,6 +13,7 @@ public:
  const std::string&source_script()const{return script_;}
  const std::vector<FieldUiPreload>&preloads()const{return preloads_;}
  const std::vector<FieldUiInstance>&instances()const{return instances_;}
+ bool method_hash(std::string_view,std::array<uint8_t,32>&)const;
  const FieldNodeRecipeData*recipe(std::string_view)const;
  const FieldNodeRecipeData*recipe(uint32_t)const;
  const std::vector<std::string>&flavors()const{return flavors_;}
@@ -82,6 +83,9 @@ public:
  bool entered(FieldObjectId,std::string&);
  bool exited(std::string&);
  bool initialize_fields(std::string&);
+ // Source callable after field construction; neither Tree entry nor Ready is required.
+ bool set_menu_flavors(std::string_view,std::string&);
+ bool checked_menu_shader(const FieldUiMenuShader*&,std::string&)const;
  bool advance_ready(std::string&);
  uint32_t ready_cursor()const{return ready_cursor_;}
  const std::map<std::string,FieldObjectId>&instance_objects()const{return instances_;}

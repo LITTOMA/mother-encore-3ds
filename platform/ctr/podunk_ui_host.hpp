@@ -105,6 +105,10 @@ public:
   // Called by the actual Viewport add_child/exit path, never by a guessed ID.
   bool entered(upstream::FieldObjectId parent, std::string &);
   bool advance_ready(std::string &);
+  // Actual global.LOAD source call before UiManager Ready. This changes the
+  // same Registry-owned ShaderMaterial that later UI nodes share.
+  bool set_menu_flavors(std::string_view, std::string &);
+  bool menu_shader(const upstream::FieldUiMenuShader *&, std::string &) const;
   bool exited(std::string &);
   bool state(upstream::FieldGlobalExternalState &, std::string &) const;
   bool bind(upstream::FieldObjectId, const upstream::FieldNodeDescriptor &,

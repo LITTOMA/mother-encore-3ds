@@ -142,9 +142,9 @@ bool PodunkUiHost::construct(FieldObjectId id, const FieldGlobalExternalSpec &s,
     auto *owner = ui();
     FieldGlobalExternalState state;
     if (!owner || !services_.signals || !owner->state(state, e) ||
-        !state.inside)
+        state.name != owner->binding().source.name)
       return fail(e,
-                  "UI actual source emitter/inside menu signal owner pending");
+                  "UI actual constructed source emitter/menu signal owner pending");
     return services_.signals->menu_flavor_updated(ui_object_, e);
   };
   FieldGlobalExternalBinding binding;
@@ -263,6 +263,18 @@ bool PodunkUiHost::flavor(std::string &out, std::string &e) const {
     return fail(
         e, "UI menu-flavor getter actual completed globaldata object absent");
   return services_.globaldata->menu_flavor(out, e);
+}
+bool PodunkUiHost::set_menu_flavors(std::string_view flavor, std::string &e) {
+  auto *owner = ui();
+  if (!owner || owner->binding().object != ui_object_ || !registry_->object_exists(ui_object_))
+    return fail(e, "UI source menu flavor call actual constructed owner absent");
+  return owner->set_menu_flavors(flavor, e);
+}
+bool PodunkUiHost::menu_shader(const FieldUiMenuShader *&out, std::string &e) const {
+  auto *owner = ui();
+  if (!owner || owner->binding().object != ui_object_)
+    return fail(e, "UI source menu shader actual constructed owner absent");
+  return owner->checked_menu_shader(out, e);
 }
 bool PodunkUiHost::entered(FieldObjectId parent, std::string &e) {
   auto *owner = ui();

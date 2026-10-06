@@ -17,7 +17,8 @@ def extract():
  from tools.field_openable_door import load as doors
  from tools.field_payphone import load as phones
  from tools.basement_progression import load as basement
- packs=[present(),dropped(),doors(),phones(),basement()];paths=['content/native-field-present.json','content/native-field-dropped.json','content/podunk-openable-door.json','content/native-field-payphone.json','content/native-basement-progression.json'];ex=Extractor(ROOT)
+ from tools.field_shop import load as shop
+ shop_data=shop();packs=[present(),dropped(),doors(),phones(),basement(),shop_data];paths=['content/native-field-present.json','content/native-field-dropped.json','content/podunk-openable-door.json','content/native-field-payphone.json','content/native-basement-progression.json','content/native-field-shop.json'];ex=Extractor(ROOT)
  for d in packs:
   require(d['commit']==PIN,'Foreign source definition binding')
   for p,h in d['sources'].items():ex.data(p);require(ex.sources[p]==h,'Changed scoped item source '+p)
@@ -45,6 +46,8 @@ def extract():
  initial=ex.yaml('Data/save_new_game.yaml')
  for n in initial['key_items']:bind(6,stable('Data/save_new_game.yaml/key_items/'+n['item_name']),'','key_items',n['item_name'],5)
  for k in b['key_items']:names.add(k['source'])
+ names.update(x['definition']['id'] if 'id' in x['definition'] else Path(x['source']).stem for x in shop_data['supplemental_definitions'])
+ for extra in shop_data['supplemental_definitions']:require(ex.yaml(extra['source'])==extra['definition'],'Changed supplemental Shop item definition')
  defs=[]
  for name in sorted(names):
   source='Data/Items/'+name+'.yaml';raw=ex.yaml(source);required=set('name sorting_name description article keyitem cost value transform slot HPrecover PPrecover boost'.split());optional=set('actions doses can_use can_consume is_food target_all status_heals reusable'.split());require(required<=set(raw)<=required|optional,'Unknown item field '+name);require(set(raw['boost'])==set(STATS),'Unknown item stat tuning '+name)
@@ -55,7 +58,7 @@ def extract():
   defs.append(dict(id=stable(source),source=source,item_name=name,name_key=raw['name'],sorting_key=raw['sorting_name'],description_key=raw['description'],article_key=raw['article'],keyitem=raw['keyitem'],doses=raw.get('doses',default_doses),cost=raw['cost'],value=raw['value'],slot=raw['slot'],transform=raw['transform'],heal_hp=raw['HPrecover'],heal_pp=raw['PPrecover'],boost=[raw['boost'][s]for s in STATS],can_use=raw.get('can_use',[]),can_consume=raw.get('can_consume',[]),status_heals=raw.get('status_heals',[]),is_food=raw.get('is_food',False),target_all=raw.get('target_all',False),reusable=raw.get('reusable',False),actions=actions,legacy_domain=1 if old else 2 if key else 0,legacy_id=old['id']if old else key['id']if key else 0))
  lookup={d['item_name']:d['id']for d in defs}
  for binding in bindings:binding['definition']=lookup.get(binding.pop('item'),0)
- d=dict(schema=1,kind='encore.field-item-definitions.source-ir',commit=PIN,definitions=defs,bindings=bindings,policy=dict(capacities=[capacities[0],0,capacities[1],capacities[2]],unbounded_mask=10,default_doses=default_doses,dose_step=step,dose_drop_threshold=threshold,uid_protocol=7),sources=dict(sorted(ex.sources.items())),dependencies=dependencies,semantics=['Actual 17 YAML definitions: literal content and typed pending actions are not replaced with AsthmaSpray','ItemHolder success routes key inventory or first party inventory with space; full inventory creates a transient Item/global.item UID','Every default construction reseeds the shared Godot PCG using source clock expression; generated-only UID ledger persists across scenes; zero is a valid uint32 draw','Saved UID eager fallback uses existing checked LOAD implementation; explicit UID construction does not generate another default','Ownership and transfer retain original UID and doses; source removal clears equipped; party/key lookups exclude storage','Mick key grant is bound to actual woof_key phrase4; flags remain the original programme responsibility'],unverified=['Manual tests not executed','Session/menu/Host integration pending','Emulator and hardware unverified'])
+ d=dict(schema=1,kind='encore.field-item-definitions.source-ir',commit=PIN,definitions=defs,bindings=bindings,policy=dict(capacities=[capacities[0],0,capacities[1],capacities[2]],unbounded_mask=10,default_doses=default_doses,dose_step=step,dose_drop_threshold=threshold,uid_protocol=7),sources=dict(sorted(ex.sources.items())),dependencies=dependencies,semantics=['Actual 19 YAML definitions, including original zoo_vm SportsDrink/EyeDrops: literal content and typed pending actions are not replaced with AsthmaSpray','ItemHolder success routes key inventory or first party inventory with space; full inventory creates a transient Item/global.item UID','Every default construction reseeds the shared Godot PCG using source clock expression; generated-only UID ledger persists across scenes; zero is a valid uint32 draw','Saved UID eager fallback uses existing checked LOAD implementation; explicit UID construction does not generate another default','Ownership and transfer retain original UID and doses; source removal clears equipped; party/key lookups exclude storage','Mick key grant is bound to actual woof_key phrase4; flags remain the original programme responsibility'],unverified=['Manual tests not executed','Session/menu/Host integration pending','Emulator and hardware unverified'])
  validate(d);write(IR,d);write(REVIEW,dict(schema=1,commit=PIN,ir_sha256=sha(IR),sources=d['sources'],dependencies=dependencies,semantics=d['semantics'],unverified=d['unverified']));return d
 def validate(d):
  require(set(d)==set('schema kind commit definitions bindings policy sources dependencies semantics unverified'.split())and d['schema']==1 and d['kind']=='encore.field-item-definitions.source-ir'and d['commit']==PIN,'Unknown item definition IR')
@@ -73,7 +76,7 @@ def validate(d):
   require(type(b['node'])is str and b['node'] and type(b['scene'])is str and bool(b['scene'])==(b['kind']!=6)and all(type(b[k])is str for k in ('program','label')),'Invalid item source node/scene')
   require(bool(b['program'])==bool(b['label'])==(b['kind']==5),'Invalid typed grant phrase binding')
   if b['kind']==5:require(next(x for x in d['definitions']if x['id']==b['definition'])['keyitem'],'Ordinary item not reviewed as typed key grant')
- require(len(d['definitions'])==17 and [sum(b['kind']==k for b in d['bindings'])for k in range(1,7)]==[17,3,10,4,1,1],'Incomplete scoped item mechanism coverage');return d
+ require(len(d['definitions'])==19 and [sum(b['kind']==k for b in d['bindings'])for k in range(1,7)]==[17,3,10,4,1,1],'Incomplete scoped item mechanism coverage');return d
 def load():
  d=validate(read(IR));r=read(REVIEW);require(r['ir_sha256']==sha(IR)and r['commit']==PIN and r['sources']==d['sources']and r['dependencies']==d['dependencies'],'Item semantic review stale');ex=Extractor(ROOT)
  for p,h in d['sources'].items():ex.data(p);require(ex.sources[p]==h,'Changed source item '+p)

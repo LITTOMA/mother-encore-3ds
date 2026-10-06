@@ -676,7 +676,7 @@ public:
             if(!encore::utf8_next(input,cursor,codepoint))return 0;
             if(codepoint=='\n'){longest=std::max(longest,width);width=0;continue;}
             if(source_font_&&source_font_->handles(codepoint)){
-                float advance=0;if(!source_font_->glyph_advance(codepoint,advance))return 0;width+=advance;
+                float advance=0;if(!source_font_->glyph_advance(codepoint,advance))return 0;width+=advance+source_font_->following_spacing(codepoint,cursor<input.size()&&input[cursor]!='\n');
             }else{const auto* g=glyph(codepoint);if(!g)return 0;width+=g->advance;}
         }
         return std::max(longest,width);
@@ -693,7 +693,7 @@ public:
             if(codepoint=='\n'){if(!face)return false;x=origin_x;y+=face->height*scale_y;continue;}
             if(source_font_&&source_font_->handles(codepoint)){
                 const auto* g=source_font_->glyph(codepoint);if(!g||!source_font_->draw_glyph(*g,x,y,scale_x,scale_y,color,depth))return false;
-                x+=g->advance*scale_x;continue;
+                x+=(g->advance+source_font_->following_spacing(codepoint,cursor<input.size()&&input[cursor]!='\n'))*scale_x;continue;
             }
             const auto* g=glyph(codepoint);if(!g||!g->advance)return false;
             if(g->width&&g->height&&!draw_region(g->resource,g->u,g->v,g->width,g->height,x+g->offset_x*scale_x,y+g->offset_y*scale_y,
@@ -714,7 +714,7 @@ public:
             if(codepoint=='\n'){if(!face)return false;x=origin_x;y+=face->height;continue;}
             if(source_font_&&source_font_->handles(codepoint)){
                 const auto* g=source_font_->glyph(codepoint);if(!g||!source_font_->draw_glyph_clipped(*g,x,y,left,top,right,bottom,color))return false;
-                x+=g->advance;continue;
+                x+=g->advance+source_font_->following_spacing(codepoint,cursor<input.size()&&input[cursor]!='\n');continue;
             }
             const auto* g=glyph(codepoint);if(!g||!g->advance)return false;
             const float gx=std::floor(x+g->offset_x+.5f),gy=std::floor(y+g->offset_y+.5f);

@@ -57,7 +57,11 @@ def extract(native,source,detail,upstream):
     require(grass['commit']==PIN and grass['export_sha256']==sha(native) and grass['source_sha256']==sources[SCENE],'Geometry lifecycle identity mismatch')
     bindings={b['node']:b for b in grass['pending']}
     for b in grass['grass']:bindings[b['node']]={'script':'Scripts/misc/grass spawner.gd','source_sha256':sources['Scripts/misc/grass spawner.gd'],'ready_ordinal':b['ready_ordinal']}
-    # The reviewed lifecycle producer already resolves script instance overrides.
+    from tools.field_script_bindings import actual_scripts
+    actual,nulls,_=actual_scripts(native,source)
+    require(len(nulls)==1 and len(actual)==2156,'Actual geometry script assignment coverage differs')
+    bindings={p:dict(script=v[0],source_sha256=v[1]) for p,v in actual.items()}
+    # Original explicit-null overrides are applied before physics admission.
     children={p:[] for p in nm}
     for p in nm:
         if p!='.':children[parent(p)].append(p)

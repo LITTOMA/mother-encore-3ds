@@ -16,7 +16,13 @@
     "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
     "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
     "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
-    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4"
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/BottleRocket_align.tres": "eed151d57b696b3ff2d03fad41dccbb8cd2890f92ab0f4f3dd4fe96b9789a203",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5"
   },
   "field_cash_box_review": {
     "resource": "Fonts/EBMain.tres",
@@ -24,5 +30,17 @@
     "definition": "Default DynamicFont size 16; top/bottom spacing -1; EBMain.ttf primary, fw9/jaM3/ko/zh_cn fallback order; all five font blobs retain existing reviewed hashes/notices",
     "glyphs": "Original cash/card integer digits, minus sign and CSV currency symbols; native Godot advances/ascent/height and existing FreeType rasters; no new font or glyph replacement",
     "validation": "Required genuine font generation checks each scalar; no tests or hardware pixel comparison run"
+  },
+  "field_shop_review": {
+    "resources": [
+      "Fonts/EBMain.tres",
+      "Fonts/EBMain_la.tres",
+      "Fonts/BottleRocket_align.tres",
+      "Fonts/BottleRocket.tres"
+    ],
+    "source": "ShopUI.tscn title/main/price/cash roles; original glyph sources only",
+    "definition": "BottleRocket .tres subresource font order retained; black outline1; numeric price font top spacing-1; cash char spacing-1 space spacing3. Source native Godot advance/ascent checked. LA8 raster stores black outline and white glyph pixels; no hardware pixel equivalence claimed.",
+    "glyphs": "19 exact source item descriptions/names/articles, Shop confirmation text and actual numeric labels; extra controls remain parser-owned; literal Hamburger 99% retained",
+    "permission": "Original embedded font notices and pinned upstream permission retained; no imported developer fonts"
   }
 }

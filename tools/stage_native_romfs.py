@@ -26,6 +26,8 @@ def main():
     from basement_music_regions import stage_files as region_files
     from present_sparkles import stage_files as sparkles_files
     files.update(sparkles_files(source))
+    from field_programme import stage_files as programme_files
+    files.update(programme_files(source))
     files.update(basement_files(source));files.update(basement_actor_files(source));files.update(region_files(source))
     from house_inspection import stage_files as inspection_files
     files.update(inspection_files(source))

@@ -1,0 +1,1667 @@
+{
+  "schema": 1,
+  "kind": "encore.field-shop.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "name": "zoo_vm",
+  "offers": [
+    3883871197,
+    2244732371,
+    1866834746
+  ],
+  "policies": [
+    {
+      "id": 2003622725,
+      "source": "Data/Items/AsthmaSpray.yaml",
+      "name": "AsthmaSpray",
+      "doses": 3,
+      "cost": 20,
+      "value": 2,
+      "key": false,
+      "name_key": "ASTHMASPRAY_NAME",
+      "description_key": "ASTHMASPRAY_DESC",
+      "article_key": "ASTHMASPRAY_ART",
+      "slot": "",
+      "sha256": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3"
+    },
+    {
+      "id": 1562639846,
+      "source": "Data/Items/BaseballCap.yaml",
+      "name": "BaseballCap",
+      "doses": 1,
+      "cost": 60,
+      "value": 30,
+      "key": false,
+      "name_key": "BASEBALLCAP_NAME",
+      "description_key": "BASEBALLCAP_DESC",
+      "article_key": "BASEBALLCAP_ART",
+      "slot": "other",
+      "sha256": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7"
+    },
+    {
+      "id": 702762067,
+      "source": "Data/Items/CapsuleDEF.yaml",
+      "name": "CapsuleDEF",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": false,
+      "name_key": "CAPSULEDEF_NAME",
+      "description_key": "CAPSULEDEF_DESC",
+      "article_key": "CAPSULEDEF_ART",
+      "slot": "",
+      "sha256": "015a97a72b6ff468bb4201b801c9fde9fc08d50ba751fd429be5e1dd169af699"
+    },
+    {
+      "id": 165225433,
+      "source": "Data/Items/CapsuleHP.yaml",
+      "name": "CapsuleHP",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": false,
+      "name_key": "CAPSULEHP_NAME",
+      "description_key": "CAPSULEHP_DESC",
+      "article_key": "CAPSULEHP_ART",
+      "slot": "",
+      "sha256": "e4c2c77b3cd4d9c76061830cfe3ae7cebc908f1df00c9b2dc5ab61cffc12c723"
+    },
+    {
+      "id": 3001947281,
+      "source": "Data/Items/CapsuleIQ.yaml",
+      "name": "CapsuleIQ",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": false,
+      "name_key": "CAPSULEIQ_NAME",
+      "description_key": "CAPSULEIQ_DESC",
+      "article_key": "CAPSULEIQ_ART",
+      "slot": "",
+      "sha256": "4be4d4fca22df4e67d669cef7f00f2430a44d91a9c5c0ec51bd864fa82fd3874"
+    },
+    {
+      "id": 1417994452,
+      "source": "Data/Items/CapsuleOFE.yaml",
+      "name": "CapsuleOFE",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": false,
+      "name_key": "CAPSULEOFE_NAME",
+      "description_key": "CAPSULEOFE_DESC",
+      "article_key": "CAPSULEOFE_ART",
+      "slot": "",
+      "sha256": "138b3d188d5c916902a4eae6319e5aab0018526699d42310958b8bddabef2629"
+    },
+    {
+      "id": 3085826515,
+      "source": "Data/Items/CapsulePP.yaml",
+      "name": "CapsulePP",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": false,
+      "name_key": "CAPSULEPP_NAME",
+      "description_key": "CAPSULEPP_DESC",
+      "article_key": "CAPSULEPP_ART",
+      "slot": "",
+      "sha256": "6cb20586236910a3b56593937c62e0f6af396477e7883843132188f8cfc00db9"
+    },
+    {
+      "id": 1802804110,
+      "source": "Data/Items/CapsuleSPD.yaml",
+      "name": "CapsuleSPD",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": false,
+      "name_key": "CAPSULESPD_NAME",
+      "description_key": "CAPSULESPD_DESC",
+      "article_key": "CAPSULESPD_ART",
+      "slot": "",
+      "sha256": "9b2fa7adee577e69085ab5684ee7b793a3a6648d45699083671ce80e19c33814"
+    },
+    {
+      "id": 3344933240,
+      "source": "Data/Items/CashCard.yaml",
+      "name": "CashCard",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": true,
+      "name_key": "CASHCARD_NAME",
+      "description_key": "CASHCARD_DESC",
+      "article_key": "CASHCARD_ART",
+      "slot": "",
+      "sha256": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb"
+    },
+    {
+      "id": 5178864,
+      "source": "Data/Items/EagleFeather.yaml",
+      "name": "EagleFeather",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": true,
+      "name_key": "EAGLEFEATHER_NAME",
+      "description_key": "EAGLEFEATHER_DESC",
+      "article_key": "EAGLEFEATHER_ART",
+      "slot": "",
+      "sha256": "69602dc23c3e4821ecd57b70914367225861459f8c9df799fadd4b35598c6b95"
+    },
+    {
+      "id": 1866834746,
+      "source": "Data/Items/EyeDrops.yaml",
+      "name": "EyeDrops",
+      "doses": 1,
+      "cost": 18,
+      "value": 9,
+      "key": false,
+      "name_key": "EYEDROPS_NAME",
+      "description_key": "EYEDROPS_DESC",
+      "article_key": "EYEDROPS_ART",
+      "slot": "",
+      "sha256": "07871bb92ce847b86b61a746904d001009ae4828f7d18c8519d99d4b7bdf9579"
+    },
+    {
+      "id": 4274522818,
+      "source": "Data/Items/FavFood.yaml",
+      "name": "FavFood",
+      "doses": 1,
+      "cost": 3800,
+      "value": 1900,
+      "key": false,
+      "name_key": "FAVFOOD_NAME",
+      "description_key": "FAVFOOD_DESC",
+      "article_key": "FAVFOOD_ART",
+      "slot": "",
+      "sha256": "af37bcef1ee7b36397ead1b46723ca54040d2cbb476bc262dbcbc980dd84cd4d"
+    },
+    {
+      "id": 1748623541,
+      "source": "Data/Items/Fries.yaml",
+      "name": "Fries",
+      "doses": 1,
+      "cost": 20,
+      "value": 10,
+      "key": false,
+      "name_key": "FRIES_NAME",
+      "description_key": "FRIES_DESC",
+      "article_key": "FRIES_ART",
+      "slot": "",
+      "sha256": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f"
+    },
+    {
+      "id": 2706441889,
+      "source": "Data/Items/GGFDiary.yaml",
+      "name": "GGFDiary",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": true,
+      "name_key": "GGFDIARY_NAME",
+      "description_key": "GGFDIARY_DESC",
+      "article_key": "GGFDIARY_ART",
+      "slot": "",
+      "sha256": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e"
+    },
+    {
+      "id": 3883871197,
+      "source": "Data/Items/Hamburger.yaml",
+      "name": "Hamburger",
+      "doses": 1,
+      "cost": 30,
+      "value": 15,
+      "key": false,
+      "name_key": "HAMBURGER_NAME",
+      "description_key": "HAMBURGER_DESC",
+      "article_key": "HAMBURGER_ART",
+      "slot": "",
+      "sha256": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0"
+    },
+    {
+      "id": 2447421994,
+      "source": "Data/Items/KeyBasement.yaml",
+      "name": "KeyBasement",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": true,
+      "name_key": "KEYBASEMENT_NAME",
+      "description_key": "KEYBASEMENT_DESC",
+      "article_key": "KEYBASEMENT_ART",
+      "slot": "",
+      "sha256": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e"
+    },
+    {
+      "id": 3385744587,
+      "source": "Data/Items/PhoneCard.yaml",
+      "name": "PhoneCard",
+      "doses": 10,
+      "cost": 250,
+      "value": 2,
+      "key": false,
+      "name_key": "PHONECARD_NAME",
+      "description_key": "PHONECARD_DESC",
+      "article_key": "PHONECARD_ART",
+      "slot": "",
+      "sha256": "f7b194983181daaee5f0bae4a56d1d5f8aafec473cf469b61593d8d439c280ac"
+    },
+    {
+      "id": 34071592,
+      "source": "Data/Items/Shovel.yaml",
+      "name": "Shovel",
+      "doses": 1,
+      "cost": 0,
+      "value": 0,
+      "key": true,
+      "name_key": "SHOVEL_NAME",
+      "description_key": "SHOVEL_DESC",
+      "article_key": "SHOVEL_ART",
+      "slot": "",
+      "sha256": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0"
+    },
+    {
+      "id": 2244732371,
+      "source": "Data/Items/SportsDrink.yaml",
+      "name": "SportsDrink",
+      "doses": 1,
+      "cost": 75,
+      "value": 37,
+      "key": false,
+      "name_key": "SPORTSDRINK_NAME",
+      "description_key": "SPORTSDRINK_DESC",
+      "article_key": "SPORTSDRINK_ART",
+      "slot": "",
+      "sha256": "09ffeb14d8c25e1b99a9db89877c2ed0a9af435682ccd8953cd27455d53f5b20"
+    }
+  ],
+  "supplemental_definitions": [
+    {
+      "source": "Data/Items/EyeDrops.yaml",
+      "definition": {
+        "name": "EYEDROPS_NAME",
+        "sorting_name": "EYEDROPS_SORT",
+        "description": "EYEDROPS_DESC",
+        "article": "EYEDROPS_ART",
+        "keyitem": false,
+        "cost": 18,
+        "value": 9,
+        "actions": [
+          {
+            "name": "INVENTORY_ACTION_USE",
+            "function": "consume"
+          }
+        ],
+        "transform": "",
+        "slot": "",
+        "status_heals": [
+          "blinded"
+        ],
+        "HPrecover": 0,
+        "PPrecover": 0,
+        "boost": {
+          "maxhp": 0,
+          "maxpp": 0,
+          "offense": 0,
+          "defense": 0,
+          "speed": 0,
+          "iq": 0,
+          "guts": 0
+        }
+      }
+    },
+    {
+      "source": "Data/Items/SportsDrink.yaml",
+      "definition": {
+        "name": "SPORTSDRINK_NAME",
+        "sorting_name": "SPORTSDRINK_SORT",
+        "description": "SPORTSDRINK_DESC",
+        "article": "SPORTSDRINK_ART",
+        "keyitem": false,
+        "cost": 75,
+        "value": 37,
+        "actions": [
+          {
+            "name": "SPORTSDRINK_ACT1",
+            "function": "consume"
+          }
+        ],
+        "is_food": true,
+        "transform": "",
+        "slot": "",
+        "HPrecover": 70,
+        "PPrecover": 0,
+        "boost": {
+          "maxhp": 0,
+          "maxpp": 0,
+          "offense": 0,
+          "defense": 0,
+          "speed": 0,
+          "iq": 0,
+          "guts": 0
+        }
+      }
+    }
+  ],
+  "texts": [
+    {
+      "key": "ASTHMASPRAY_ART",
+      "en": "The ,the ,An ,an ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "ASTHMASPRAY_DESC",
+      "en": "When [Ninten]'s asthma ([Asthma]) kicks in, use this. %s",
+      "zh": "在[Ninten]的哮喘（[Asthma]）发作时使用。 %s"
+    },
+    {
+      "key": "ASTHMASPRAY_NAME",
+      "en": "Asthma Spray",
+      "zh": "哮喘喷雾"
+    },
+    {
+      "key": "BASEBALLCAP_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "BASEBALLCAP_DESC",
+      "en": "A hat for baseball players.\\nOther @ Defense +[ItemValue].",
+      "zh": "一顶棒球手的帽子。[BR]其他@防御力+[ItemValue]。"
+    },
+    {
+      "key": "BASEBALLCAP_NAME",
+      "en": "Baseball Cap",
+      "zh": "棒球帽"
+    },
+    {
+      "key": "CAPSULEDEF_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "CAPSULEDEF_DESC",
+      "en": "Increases your Defense by [ItemValue].",
+      "zh": "将你的防御力提高[ItemValue]点。"
+    },
+    {
+      "key": "CAPSULEDEF_NAME",
+      "en": "Defense Capsule",
+      "zh": "防御胶囊"
+    },
+    {
+      "key": "CAPSULEHP_ART",
+      "en": "The ,the ,An ,an ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "CAPSULEHP_DESC",
+      "en": "Increases your maximum HP by [ItemValue].",
+      "zh": "将你的最大HP值提高[ItemValue]点。"
+    },
+    {
+      "key": "CAPSULEHP_NAME",
+      "en": "HP Capsule",
+      "zh": "HP胶囊"
+    },
+    {
+      "key": "CAPSULEIQ_ART",
+      "en": "The ,the ,An ,an ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "CAPSULEIQ_DESC",
+      "en": "Increases your IQ by [ItemValue].",
+      "zh": "将你的智力值提高[ItemValue]点。"
+    },
+    {
+      "key": "CAPSULEIQ_NAME",
+      "en": "IQ Capsule",
+      "zh": "智力胶囊"
+    },
+    {
+      "key": "CAPSULEOFE_ART",
+      "en": "The ,the ,An ,an ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "CAPSULEOFE_DESC",
+      "en": "Increases your Offense by [ItemValue].",
+      "zh": "将你的攻击力提高[ItemValue]点。"
+    },
+    {
+      "key": "CAPSULEOFE_NAME",
+      "en": "Offense Capsule",
+      "zh": "攻击胶囊"
+    },
+    {
+      "key": "CAPSULEPP_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "CAPSULEPP_DESC",
+      "en": "Increases your maximum PP by [ItemValue].",
+      "zh": "将你的最大PP值提高[ItemValue]点。"
+    },
+    {
+      "key": "CAPSULEPP_NAME",
+      "en": "PP Capsule",
+      "zh": "PP胶囊"
+    },
+    {
+      "key": "CAPSULESPD_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "CAPSULESPD_DESC",
+      "en": "Increases your Speed by [ItemValue].",
+      "zh": "将你的速度值提高[ItemValue]点。"
+    },
+    {
+      "key": "CAPSULESPD_NAME",
+      "en": "Speed Capsule",
+      "zh": "速度胶囊"
+    },
+    {
+      "key": "CASHCARD_ART",
+      "en": "The ,the ,The ,the ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "CASHCARD_DESC",
+      "en": "Use it for all your banking needs.",
+      "zh": "用于满足你所有银行业务的相关需求。"
+    },
+    {
+      "key": "CASHCARD_NAME",
+      "en": "Cash Card",
+      "zh": "金融卡"
+    },
+    {
+      "key": "EAGLEFEATHER_ART",
+      "en": "The ,the ,The ,the ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "EAGLEFEATHER_DESC",
+      "en": "A feather dropped by a bald eagle.\\nIt gives you the power to jump long distances.",
+      "zh": "一根由白头鹰掉落的羽毛。[BR]它能赋予你远距离跳跃的能力。"
+    },
+    {
+      "key": "EAGLEFEATHER_NAME",
+      "en": "Eagle's Feather",
+      "zh": "鹰羽"
+    },
+    {
+      "key": "EYEDROPS_ART",
+      "en": "The ,the ,Some ,some ,these ,them,were",
+      "zh": ",,一些,一些,这些,它们,是"
+    },
+    {
+      "key": "EYEDROPS_DESC",
+      "en": "Cures blindness ([Blinded]).",
+      "zh": "治愈失明（[Blinded]）。"
+    },
+    {
+      "key": "EYEDROPS_NAME",
+      "en": "Eye Drops",
+      "zh": "眼药水"
+    },
+    {
+      "key": "FAVFOOD_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "FAVFOOD_DESC",
+      "en": "Recovers all HP and PP for everyone.",
+      "zh": "回复所有人全部的HP值和PP值。"
+    },
+    {
+      "key": "FAVFOOD_NAME",
+      "en": "[FAVFOOD]",
+      "zh": "[FAVFOOD]"
+    },
+    {
+      "key": "FRIES_ART",
+      "en": "The ,the ,Some ,some ,these ,them,were",
+      "zh": ",,一些,一些,这些,它们,是"
+    },
+    {
+      "key": "FRIES_DESC",
+      "en": "Can be eaten with or without ketchup.\\nRestores [ItemValue] HP.",
+      "zh": "可以蘸或者不蘸番茄酱使用。[BR]回复[ItemValue]点HP。"
+    },
+    {
+      "key": "FRIES_NAME",
+      "en": "Fries",
+      "zh": "炸薯条"
+    },
+    {
+      "key": "GGFDIARY_ART",
+      "en": "His ,his ,His ,his ,this ,it,was",
+      "zh": "他的,他的,他的,他的,这个,它,是"
+    },
+    {
+      "key": "GGFDIARY_DESC",
+      "en": "It is old, ragged and filled with entries.",
+      "zh": "它陈旧且残破，上面写满了文字。"
+    },
+    {
+      "key": "GGFDIARY_NAME",
+      "en": "GGF Diary",
+      "zh": "曾祖父的日记"
+    },
+    {
+      "key": "HAMBURGER_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "HAMBURGER_DESC",
+      "en": "99% Beef.\\nRestores [ItemValue] HP.",
+      "zh": "含量99%的牛肉。[BR]回复[ItemValue]点HP。"
+    },
+    {
+      "key": "HAMBURGER_NAME",
+      "en": "Hamburger",
+      "zh": "汉堡包"
+    },
+    {
+      "key": "KEYBASEMENT_ART",
+      "en": "The ,the ,The ,the ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "KEYBASEMENT_DESC",
+      "en": "Mick was carrying this.\\nIt's the key for your house's basement.",
+      "zh": "这是你家地下室的钥匙。[BR]米克之前一直拿着它。"
+    },
+    {
+      "key": "KEYBASEMENT_NAME",
+      "en": "Basement Key",
+      "zh": "地下室钥匙"
+    },
+    {
+      "key": "MENU_NO",
+      "en": "No",
+      "zh": "否"
+    },
+    {
+      "key": "MENU_YES",
+      "en": "Yes",
+      "zh": "是"
+    },
+    {
+      "key": "PHONECARD_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "PHONECARD_DESC",
+      "en": "You can make calls on public phones with it.\\n%s",
+      "zh": "你可以用它来拨打公共电话。\\n%s"
+    },
+    {
+      "key": "PHONECARD_NAME",
+      "en": "Telephone Card",
+      "zh": "电话卡"
+    },
+    {
+      "key": "SHOP_ASK_BUY",
+      "en": "Buy {i3}{item}?",
+      "zh": "要购买{i3}{item}吗？"
+    },
+    {
+      "key": "SHOP_ASK_SELL",
+      "en": "Sell your {item}?",
+      "zh": "要出售你的{item}吗？"
+    },
+    {
+      "key": "SHOP_ASK_SELL_FOR_CASH",
+      "en": "You don't have enough cash.\\nSell something?",
+      "zh": "你没有足够的现金。\\n要出售些物品吗？"
+    },
+    {
+      "key": "SHOP_BUY",
+      "en": "Buy",
+      "zh": "购买"
+    },
+    {
+      "key": "SHOP_SELL",
+      "en": "Sell",
+      "zh": "出售"
+    },
+    {
+      "key": "SHOP_SHOP",
+      "en": "Shop",
+      "zh": "商店"
+    },
+    {
+      "key": "SHOVEL_ART",
+      "en": "The ,the ,The ,the ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "SHOVEL_DESC",
+      "en": "Woah! You somehow got this shovel.\\nYou should give it back to its owner.",
+      "zh": "哇哦！你居然找到了这把铲子。[BR]或许你应该将它还给失主。"
+    },
+    {
+      "key": "SHOVEL_NAME",
+      "en": "Shovel",
+      "zh": "铲子"
+    },
+    {
+      "key": "SPORTSDRINK_ART",
+      "en": "The ,the ,A ,a ,this ,it,was",
+      "zh": ",,,,这个,它,是"
+    },
+    {
+      "key": "SPORTSDRINK_DESC",
+      "en": "Can reinvigorate you when tired.\\nRestores [ItemValue] HP.",
+      "zh": "可以在你疲劳时恢复些许活力。[BR]回复[ItemValue]点HP。"
+    },
+    {
+      "key": "SPORTSDRINK_NAME",
+      "en": "Sports Drink",
+      "zh": "运动饮料"
+    },
+    {
+      "key": "TRANSACTION_FULL",
+      "en": "Your inventory is full.",
+      "zh": "你的库存已满。"
+    },
+    {
+      "key": "WORD_SEPARATOR",
+      "en": " ",
+      "zh": " "
+    }
+  ],
+  "sounds": [
+    "Audio/Sound effects/Cursor 1.mp3",
+    "Audio/Sound effects/Cursor 2.mp3",
+    "Audio/Sound effects/M3/bump.wav",
+    "Audio/Sound effects/M3/curshoriz.wav",
+    "Audio/Sound effects/M3/register.wav"
+  ],
+  "lines": 6,
+  "cash_digits": 6,
+  "warning_seconds": 1.0,
+  "can_sell": true,
+  "buy_loop": true,
+  "sell_loop": true,
+  "text_keys": [
+    "SHOP_SHOP",
+    "SHOP_BUY",
+    "SHOP_SELL",
+    "SHOP_ASK_BUY",
+    "SHOP_ASK_SELL",
+    "SHOP_ASK_SELL_FOR_CASH",
+    "TRANSACTION_FULL",
+    "MENU_YES",
+    "MENU_NO"
+  ],
+  "panels": [
+    {
+      "node": "ShopBox/Header",
+      "rect": [
+        0,
+        0,
+        156.0,
+        31.0
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "texture": 0
+    },
+    {
+      "node": "ShopBox/Header/Title",
+      "rect": [
+        82.0,
+        0,
+        156.0,
+        28.0
+      ],
+      "patch": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "texture": 1
+    },
+    {
+      "node": "ShopBox/BuyMenu",
+      "rect": [
+        0,
+        25.0,
+        156.0,
+        126.0
+      ],
+      "patch": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "texture": 2
+    },
+    {
+      "node": "ShopBox/SellMenu",
+      "rect": [
+        0,
+        25.0,
+        156.0,
+        126.0
+      ],
+      "patch": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "texture": 2
+    },
+    {
+      "node": "CharacterSelect",
+      "rect": [
+        28.0,
+        4.0,
+        123.0,
+        32.0
+      ],
+      "patch": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "texture": 0
+    },
+    {
+      "node": "BuySellDialog",
+      "rect": [
+        28.0,
+        35.0,
+        123.0,
+        83.0
+      ],
+      "patch": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "texture": 2
+    },
+    {
+      "node": "DescBox",
+      "rect": [
+        28.0,
+        132.0,
+        292.0,
+        180.0
+      ],
+      "patch": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "texture": 2
+    },
+    {
+      "node": "Cash",
+      "rect": [
+        15.0,
+        8.0,
+        71.0,
+        21.0
+      ],
+      "patch": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "texture": 3
+    }
+  ],
+  "layout": [
+    136.0,
+    4.0,
+    292.0,
+    130.0,
+    0,
+    0,
+    0,
+    0,
+    13.0,
+    1,
+    14.0,
+    10.0,
+    86.0,
+    36.0,
+    4.0,
+    0,
+    25.0,
+    28.0,
+    1,
+    10.0,
+    6.0,
+    -7.0,
+    -6.0,
+    0,
+    6.0,
+    24.0,
+    30.0,
+    0,
+    3.0,
+    213.0,
+    29.0,
+    0,
+    3.0,
+    163.0,
+    29.0,
+    12,
+    13,
+    -5,
+    2,
+    11,
+    15,
+    187,
+    15,
+    -1.0,
+    95.0,
+    122.0,
+    14.0
+  ],
+  "aux": [
+    [
+      13.0,
+      0,
+      50.0,
+      12.0
+    ],
+    [
+      0,
+      3.0,
+      12.0,
+      12.0
+    ],
+    [
+      51.0,
+      11.0,
+      52.0,
+      12.0
+    ],
+    [
+      141.0,
+      6.0,
+      149.0,
+      94.0
+    ],
+    [
+      2.00002,
+      9.0,
+      -2.0,
+      -9.0
+    ],
+    [
+      -1.0,
+      0,
+      1.0,
+      12.0
+    ],
+    [
+      2,
+      2,
+      2,
+      2
+    ],
+    [
+      2,
+      2,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      8.0
+    ],
+    [
+      0,
+      -8.0,
+      0,
+      0
+    ],
+    [
+      12,
+      12.0,
+      4,
+      3
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      0.729412,
+      0.32549,
+      0.894118,
+      1.0
+    ],
+    [
+      1,
+      1,
+      0,
+      2
+    ],
+    [
+      2,
+      0,
+      2,
+      0
+    ],
+    [
+      0,
+      -1.0,
+      57.0,
+      11.0
+    ],
+    [
+      -1.5708,
+      1.5708,
+      0,
+      4
+    ],
+    [
+      1.0,
+      0,
+      155.0,
+      4.0
+    ],
+    [
+      0.772549,
+      0.772549,
+      0.772549,
+      1.0
+    ]
+  ],
+  "fonts": [
+    "Fonts/EBMain.tres",
+    "Fonts/EBMain_la.tres",
+    "Fonts/BottleRocket_align.tres",
+    "Fonts/BottleRocket.tres"
+  ],
+  "textures": [
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaultempty.png",
+      "path": "graphics/ui/shop/0.t3x",
+      "width": 24,
+      "height": 24,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside.png",
+      "path": "graphics/ui/shop/1.t3x",
+      "width": 24,
+      "height": 24,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaultbox.png",
+      "path": "graphics/ui/shop/2.t3x",
+      "width": 24,
+      "height": 24,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside_light.png",
+      "path": "graphics/ui/shop/3.t3x",
+      "width": 5,
+      "height": 5,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/item_icon.png",
+      "path": "graphics/ui/shop/4.t3x",
+      "width": 7,
+      "height": 7,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/cursor.png",
+      "path": "graphics/ui/shop/5.t3x",
+      "width": 24,
+      "height": 8,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/UI/ATM/dollar_left.png",
+      "path": "graphics/ui/shop/6.t3x",
+      "width": 12,
+      "height": 9,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/UI/ATM/dollar_right.png",
+      "path": "graphics/ui/shop/7.t3x",
+      "width": 1,
+      "height": 1,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/UI/Inventory/modifiers.png",
+      "path": "graphics/ui/shop/8.t3x",
+      "width": 26,
+      "height": 27,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png",
+      "path": "graphics/ui/shop/9.t3x",
+      "width": 4,
+      "height": 4,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Overworld/flavours/defaultscroll.png",
+      "path": "graphics/ui/shop/10.t3x",
+      "width": 6,
+      "height": 6,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/Objects/Items/AsthmaSpray.png",
+      "path": "graphics/ui/shop/11.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/BaseballCap.png",
+      "path": "graphics/ui/shop/12.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/CapsuleDEF.png",
+      "path": "graphics/ui/shop/13.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/CapsuleHP.png",
+      "path": "graphics/ui/shop/14.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/CapsuleIQ.png",
+      "path": "graphics/ui/shop/15.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/CapsuleOFE.png",
+      "path": "graphics/ui/shop/16.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/CapsulePP.png",
+      "path": "graphics/ui/shop/17.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/CapsuleSPD.png",
+      "path": "graphics/ui/shop/18.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/CashCard.png",
+      "path": "graphics/ui/shop/19.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/EagleFeather.png",
+      "path": "graphics/ui/shop/20.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/EyeDrops.png",
+      "path": "graphics/ui/shop/21.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/FavFood.png",
+      "path": "graphics/ui/shop/22.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/Fries.png",
+      "path": "graphics/ui/shop/23.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/GGFDiary.png",
+      "path": "graphics/ui/shop/24.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/Hamburger.png",
+      "path": "graphics/ui/shop/25.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/KeyBasement.png",
+      "path": "graphics/ui/shop/26.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/PhoneCard.png",
+      "path": "graphics/ui/shop/27.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/Shovel.png",
+      "path": "graphics/ui/shop/28.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/Objects/Items/SportsDrink.png",
+      "path": "graphics/ui/shop/29.t3x",
+      "width": 20,
+      "height": 20,
+      "flavor": false
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/ninten.png",
+      "path": "graphics/ui/shop/30.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/ana.png",
+      "path": "graphics/ui/shop/31.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/lloyd.png",
+      "path": "graphics/ui/shop/32.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/teddy.png",
+      "path": "graphics/ui/shop/33.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/pippi.png",
+      "path": "graphics/ui/shop/34.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/flyingman.png",
+      "path": "graphics/ui/shop/35.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/eve.png",
+      "path": "graphics/ui/shop/36.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/canarychick.png",
+      "path": "graphics/ui/shop/37.t3x",
+      "width": 19,
+      "height": 21,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/ninten_hl.png",
+      "path": "graphics/ui/shop/38.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/ana_hl.png",
+      "path": "graphics/ui/shop/39.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/lloyd_hl.png",
+      "path": "graphics/ui/shop/40.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/teddy_hl.png",
+      "path": "graphics/ui/shop/41.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/pippi_hl.png",
+      "path": "graphics/ui/shop/42.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/flyingman_hl.png",
+      "path": "graphics/ui/shop/43.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/eve_hl.png",
+      "path": "graphics/ui/shop/44.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    },
+    {
+      "source": "Graphics/UI/Inventory/characters/canarychick_hl.png",
+      "path": "graphics/ui/shop/45.t3x",
+      "width": 21,
+      "height": 22,
+      "flavor": true
+    }
+  ],
+  "roles": {
+    "icon_panel": 4,
+    "cursor": 5,
+    "dollar_left": 6,
+    "dollar_right": 7,
+    "modifiers": 8,
+    "scroll_bg": 9,
+    "scroll_thumb": 10,
+    "item:2003622725": 11,
+    "item:1562639846": 12,
+    "item:702762067": 13,
+    "item:165225433": 14,
+    "item:3001947281": 15,
+    "item:1417994452": 16,
+    "item:3085826515": 17,
+    "item:1802804110": 18,
+    "item:3344933240": 19,
+    "item:5178864": 20,
+    "item:1866834746": 21,
+    "item:4274522818": 22,
+    "item:1748623541": 23,
+    "item:2706441889": 24,
+    "item:3883871197": 25,
+    "item:2447421994": 26,
+    "item:3385744587": 27,
+    "item:34071592": 28,
+    "item:2244732371": 29
+  },
+  "portraits": [
+    {
+      "character": "NINTEN",
+      "texture": 30
+    },
+    {
+      "character": "ANA",
+      "texture": 31
+    },
+    {
+      "character": "LLOYD",
+      "texture": 32
+    },
+    {
+      "character": "TEDDY",
+      "texture": 33
+    },
+    {
+      "character": "PIPPI",
+      "texture": 34
+    },
+    {
+      "character": "FLYING_MAN",
+      "texture": 35
+    },
+    {
+      "character": "EVE",
+      "texture": 36
+    },
+    {
+      "character": "CANARY_CHICK",
+      "texture": 37
+    },
+    {
+      "character": "NINTEN",
+      "texture": 38
+    },
+    {
+      "character": "ANA",
+      "texture": 39
+    },
+    {
+      "character": "LLOYD",
+      "texture": 40
+    },
+    {
+      "character": "TEDDY",
+      "texture": 41
+    },
+    {
+      "character": "PIPPI",
+      "texture": 42
+    },
+    {
+      "character": "FLYING_MAN",
+      "texture": 43
+    },
+    {
+      "character": "EVE",
+      "texture": 44
+    },
+    {
+      "character": "CANARY_CHICK",
+      "texture": 45
+    }
+  ],
+  "cursor": {
+    "frames": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "speed": 5.0,
+    "size": [
+      8,
+      8
+    ]
+  },
+  "portrait_limit": 4,
+  "source_colors": [
+    [
+      243,
+      242,
+      244,
+      255
+    ],
+    [
+      191,
+      180,
+      205,
+      255
+    ],
+    [
+      122,
+      108,
+      134,
+      255
+    ],
+    [
+      20,
+      17,
+      23,
+      255
+    ],
+    [
+      186,
+      83,
+      228,
+      255
+    ],
+    [
+      214,
+      206,
+      223,
+      255
+    ],
+    [
+      51,
+      41,
+      67,
+      255
+    ],
+    [
+      180,
+      45,
+      45,
+      255
+    ]
+  ],
+  "threshold": 0.01,
+  "sources": {
+    "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+    "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+    "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+    "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+    "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+    "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+    "Audio/Sound effects/M3/register.wav": "356263c925d453dd648a773559f91edba5111db2d72db43184d101bd620a2124",
+    "Audio/Sound effects/M3/register.wav.import": "b8de48d630df47305149c77c93c4a5d84542a51fbc22af1fbb21c1a0b6be4ddf",
+    "Data/Dialogue/Reusable/vendingmachine.yaml": "d1065cac0cf97a4b4f804b7ba240436389f6091a40aecc3e6610eb6a5659f2b6",
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/Items/CapsuleDEF.yaml": "015a97a72b6ff468bb4201b801c9fde9fc08d50ba751fd429be5e1dd169af699",
+    "Data/Items/CapsuleHP.yaml": "e4c2c77b3cd4d9c76061830cfe3ae7cebc908f1df00c9b2dc5ab61cffc12c723",
+    "Data/Items/CapsuleIQ.yaml": "4be4d4fca22df4e67d669cef7f00f2430a44d91a9c5c0ec51bd864fa82fd3874",
+    "Data/Items/CapsuleOFE.yaml": "138b3d188d5c916902a4eae6319e5aab0018526699d42310958b8bddabef2629",
+    "Data/Items/CapsulePP.yaml": "6cb20586236910a3b56593937c62e0f6af396477e7883843132188f8cfc00db9",
+    "Data/Items/CapsuleSPD.yaml": "9b2fa7adee577e69085ab5684ee7b793a3a6648d45699083671ce80e19c33814",
+    "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+    "Data/Items/EagleFeather.yaml": "69602dc23c3e4821ecd57b70914367225861459f8c9df799fadd4b35598c6b95",
+    "Data/Items/EyeDrops.yaml": "07871bb92ce847b86b61a746904d001009ae4828f7d18c8519d99d4b7bdf9579",
+    "Data/Items/FavFood.yaml": "af37bcef1ee7b36397ead1b46723ca54040d2cbb476bc262dbcbc980dd84cd4d",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+    "Data/Items/PhoneCard.yaml": "f7b194983181daaee5f0bae4a56d1d5f8aafec473cf469b61593d8d439c280ac",
+    "Data/Items/Shovel.yaml": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0",
+    "Data/Items/SportsDrink.yaml": "09ffeb14d8c25e1b99a9db89877c2ed0a9af435682ccd8953cd27455d53f5b20",
+    "Data/Shops/zoo_vm.yaml": "03d9935d2d1497b51876f7f1425f437cf189702beab8167f3768540703e7b535",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket_align.tres": "eed151d57b696b3ff2d03fad41dccbb8cd2890f92ab0f4f3dd4fe96b9789a203",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/Objects/Items/AsthmaSpray.png": "459c733d006c90e7f58ec34bf868a14cb3732521042b6acd03e2a148a1e0450d",
+    "Graphics/Objects/Items/AsthmaSpray.png.import": "f685872a1f6b7e99de4ccf5c7fb083bd29d7645806438bcdbfc34faf5c96feee",
+    "Graphics/Objects/Items/BaseballCap.png": "a488850070f306cce6fe08fc1546de558fb18873153dd2f80cf9944897308b05",
+    "Graphics/Objects/Items/BaseballCap.png.import": "079064d87a125b57b2871ebe4c7409a9d93cc0c41052e844e39d22167b00749e",
+    "Graphics/Objects/Items/CapsuleDEF.png": "854aa84423200ecf47ef19dd359ca511e8f3af4d6e50904abb901f0a47c5bb54",
+    "Graphics/Objects/Items/CapsuleDEF.png.import": "33db2662cccc0ec2cebf74a066c7996a6fe72c4380e2fbaeac25d67b8bfbcaac",
+    "Graphics/Objects/Items/CapsuleHP.png": "4bc7cfd0fdd8af54f0ef20e68a31996448d7c43c8cf7751311cf051165a67e89",
+    "Graphics/Objects/Items/CapsuleHP.png.import": "673f91a7a501a1a8f8ea4e3b8724c83b5168d91e81a886e007c351eee0084459",
+    "Graphics/Objects/Items/CapsuleIQ.png": "92e10c8c0afcf46c15d394745180cb0bb8c6d0201827bd700cabc1b352c47113",
+    "Graphics/Objects/Items/CapsuleIQ.png.import": "89cc9e74ab0571955e7ecb057a2c4bc9ebbad5eb67f3307a6989bfad7616bd0d",
+    "Graphics/Objects/Items/CapsuleOFE.png": "f5a08b57bdce0905f3638b3dd7e29dd4536161a8e8a509311d5abf76d44765d4",
+    "Graphics/Objects/Items/CapsuleOFE.png.import": "1cd517f2e0fea1a2e269652c3bf32b7c81155aa250b2aaba36071a5b9fe0badb",
+    "Graphics/Objects/Items/CapsulePP.png": "475715818f4c67cc82293ae32cba93e30a3b265909c12fab168a58bb4dcd7d97",
+    "Graphics/Objects/Items/CapsulePP.png.import": "82e1d6ccaa140bf83dd59c7b4c99ad4161cde0333a4dc16e56b85242f03dc0f4",
+    "Graphics/Objects/Items/CapsuleSPD.png": "207fcf323c32d92b58b5fa40e6ab3683cf324383643d6092b087b6ec93c63c0d",
+    "Graphics/Objects/Items/CapsuleSPD.png.import": "906ec5163ec7e39e8e3623f7b2463c63272b0ea9a6b0f3961957bc12a937decf",
+    "Graphics/Objects/Items/CashCard.png": "b34927962acf94a27fed0e67a71f69d89d8a0086e1d3f21d42eb0158693be7b8",
+    "Graphics/Objects/Items/CashCard.png.import": "ad0e711e7e6e9cb2646c6d3cab2c36265ef816aeced91175d19b9f5c4d2b3462",
+    "Graphics/Objects/Items/EagleFeather.png": "cf887134d0c3c397ea91c8da2a966594bcea2a9821e48f4e364e63af728e5b7d",
+    "Graphics/Objects/Items/EagleFeather.png.import": "55a1efce73d97297315e94ffebbe554b2db3bfe29e18a6b26208dac6f18a91bd",
+    "Graphics/Objects/Items/EyeDrops.png": "6239029aec483837f57583967e8135ba24f61a4b63f7d094b7843ddff9202547",
+    "Graphics/Objects/Items/EyeDrops.png.import": "28bc44b05e98565185fc9fc200cc5e65d671256f261a9e3dfdb84c669e8c53a2",
+    "Graphics/Objects/Items/FavFood.png": "fc596bb3bfc9a2f0b2eade8671d042f7feeff8ec5d592c4bfa9bd18997dc3726",
+    "Graphics/Objects/Items/FavFood.png.import": "ba4275a73d6a08c178bb45b13e89c664eb054919b748e86af70d544f97f8ccaf",
+    "Graphics/Objects/Items/Fries.png": "50f96264a490157ea0e9b35277d36fbbd2080fd980f8f93dd840f16c4663a734",
+    "Graphics/Objects/Items/Fries.png.import": "8dd355fb888c040dc815aa76afd5ebbe854ead1408e486f6eaedd9eef25aa2e0",
+    "Graphics/Objects/Items/GGFDiary.png": "bef0ee790d6fdac93ec6eae58954eb7a5888eafec53640fb649f6814f293172f",
+    "Graphics/Objects/Items/GGFDiary.png.import": "f01dea3689047b54a82ec6bf9b46f9f1770c43bf241d84b37dd4e6e504964c63",
+    "Graphics/Objects/Items/Hamburger.png": "fe2a015fface4bec3ce379523b36510f8ed9d39d874d171308201ebb756aa567",
+    "Graphics/Objects/Items/Hamburger.png.import": "b34814940107169922557173f32b25963326508afee2f77215d02d1e4c394bc2",
+    "Graphics/Objects/Items/KeyBasement.png": "532a9c60ccfbe68fcc55e710dc62715d25f70cb621bc46a05fbd96c17aae426f",
+    "Graphics/Objects/Items/KeyBasement.png.import": "21f68cc49807b93abb65404558384e1edc0d0a0abcbdf096328e2f61a05a794d",
+    "Graphics/Objects/Items/PhoneCard.png": "3f26d2955e8cf7626c57e6f8eb6e5509f92914307f0b1a3ebf32942f3b79f02c",
+    "Graphics/Objects/Items/PhoneCard.png.import": "4bb9b470247a3b7631c78bd25db1208373b21bb09acfea1f7ee5b11eae00625a",
+    "Graphics/Objects/Items/Shovel.png": "1139cb42931979e3c1198860e1488c5c31489db9580623e26da53e04cf89ff4d",
+    "Graphics/Objects/Items/Shovel.png.import": "c52a814d094d7364bfe6f114137bef50a57b3b0c093563e095e0015e753da067",
+    "Graphics/Objects/Items/SportsDrink.png": "8a85ac4d9c18338e131bc89cb1f6ed06f62df4f6b9d01386bf6777c88e25094e",
+    "Graphics/Objects/Items/SportsDrink.png.import": "e5b2b01ee6a2b7264b285a823d798d830aba9d47ac23dc85d27ee5b9ba3ce0df",
+    "Graphics/UI/ATM/dollar_left.png": "53d8314b7b1c7aa67a99ecc4902225d650ecc2a12b15345bccbbb0d466813020",
+    "Graphics/UI/ATM/dollar_left.png.import": "5440bca2dc96485f1012da37c2fe68ea231c4b5e3f61e642bca34dcdce35300f",
+    "Graphics/UI/ATM/dollar_right.png": "c5a7cd2e6d37ac50bc1d00bf9145f23408d1c8a160332c843dd9d0131e1f0237",
+    "Graphics/UI/ATM/dollar_right.png.import": "133ab24210403d97478787ac899af7d5b33baa9d8fc2a95e445c46f7ab454d80",
+    "Graphics/UI/Inventory/characters/ana.png": "1b6e1dd96d6ba4063e898459b56eff88f949b5bea60f159e1d5639a350f97463",
+    "Graphics/UI/Inventory/characters/ana.png.import": "32f1a9983fb27fe254eeeeedd20136cb89e2ddba81abb4f67f664584d113382b",
+    "Graphics/UI/Inventory/characters/ana_hl.png": "b3c374f3b11c9ea4a3d6bad32251b794fe2239e247388cf49ba1c3f80c6d7255",
+    "Graphics/UI/Inventory/characters/ana_hl.png.import": "d4f26ade52bd5901ec94c615fce7a1b629cb593a74b5fda76a0436e9bd11f698",
+    "Graphics/UI/Inventory/characters/canarychick.png": "2667f1519cd437543b3b28eb5f24ea795a56e4cc514bec4bd7279855b25f94b4",
+    "Graphics/UI/Inventory/characters/canarychick.png.import": "0aa3982ea3fcaf210fd0ea5fde845c9b1d2fe663f02a8e6eb1a1be5c891eb666",
+    "Graphics/UI/Inventory/characters/canarychick_hl.png": "2ec403edd1b545564f18fa6e6ea3adebb09180139a06711694139ac49113d678",
+    "Graphics/UI/Inventory/characters/canarychick_hl.png.import": "d15437d5ce5f1db6f1c9fff6acfa04217d89921948cf29b96fd053e0d73325a6",
+    "Graphics/UI/Inventory/characters/eve.png": "3e405e19368521e86742f30055d728708cad705375b8fe10590aa7245a5b6005",
+    "Graphics/UI/Inventory/characters/eve.png.import": "d1f9c123a96051e140f0ec89cbb651656e7bd314d46b3a12645b131dfae2cfee",
+    "Graphics/UI/Inventory/characters/eve_hl.png": "50feb0c86b66e5ea8f3e9e9f2f26cd590e190b283f2773ddf6803a34e1fbdf9f",
+    "Graphics/UI/Inventory/characters/eve_hl.png.import": "efebd3e86421d1e803787c001fc689874808aab230493a5c2f6e65d5cda21c58",
+    "Graphics/UI/Inventory/characters/flyingman.png": "3e405e19368521e86742f30055d728708cad705375b8fe10590aa7245a5b6005",
+    "Graphics/UI/Inventory/characters/flyingman.png.import": "62676fe8366aa5e8899f115c193bda7d31cbdd939d82b33da25949378a328df8",
+    "Graphics/UI/Inventory/characters/flyingman_hl.png": "50feb0c86b66e5ea8f3e9e9f2f26cd590e190b283f2773ddf6803a34e1fbdf9f",
+    "Graphics/UI/Inventory/characters/flyingman_hl.png.import": "4ecdca9e82e08477e23b3309ac8458509324b0899bf37298244f73cdc21dc290",
+    "Graphics/UI/Inventory/characters/lloyd.png": "05a1602950e42c5faafea26f19df74794f345132543036bf82d40d63b54d180c",
+    "Graphics/UI/Inventory/characters/lloyd.png.import": "a4e9a3b028d353506c258fd2cb0ce15b3e88c419a32ae4b0f0372cfffd883cec",
+    "Graphics/UI/Inventory/characters/lloyd_hl.png": "1871fc97d45377e87920ab6b2ad868ee03f16ebe8dcc91b08066aa12d6fd9a0d",
+    "Graphics/UI/Inventory/characters/lloyd_hl.png.import": "74459b1c8d1b3c543581a696bca09837a750bc036f725847d72d8e267b873363",
+    "Graphics/UI/Inventory/characters/ninten.png": "91beffd915870c9879750c4581e592ff1d81f3b4845d387e00547a0f76e5a28f",
+    "Graphics/UI/Inventory/characters/ninten.png.import": "591df18d53cf01a199b2db93f3c5d2d5e26f870923e46912830440a9c06afe6a",
+    "Graphics/UI/Inventory/characters/ninten_hl.png": "aa01f8bf69820d38fb3e069958fc05c9128ee03e2f0a1ac0fd3794f5deaa4658",
+    "Graphics/UI/Inventory/characters/ninten_hl.png.import": "bff9ce5eef6d5564d89912eb7116a896e9f515639dd7d1024ab60dac8f845c4c",
+    "Graphics/UI/Inventory/characters/pippi.png": "1edb8d523b6e08ad8d7beb1ed00ec491eb5a08f0f8eefd744cfedc385154fa46",
+    "Graphics/UI/Inventory/characters/pippi.png.import": "5618b61e6e72844cc7ae1c5c196ed9bba305a24be7c94a3d15d91ce4b1061793",
+    "Graphics/UI/Inventory/characters/pippi_hl.png": "5e0d23676bef3135989695dad7d2f207a042cffabf9a9f91b5941501e7bc37dd",
+    "Graphics/UI/Inventory/characters/pippi_hl.png.import": "233497fcf16b9d8a05d03bf6cb213057b53396a7f58fde57ef45f6fed75efe63",
+    "Graphics/UI/Inventory/characters/teddy.png": "2b0886c3486b0599fb59cdccaf6486395e9546ac77a37441040b4838e38fc18c",
+    "Graphics/UI/Inventory/characters/teddy.png.import": "f4bbde6d5a62924319c3f066403dbaac19776b68adf6b9a83dce4e0e9f12665c",
+    "Graphics/UI/Inventory/characters/teddy_hl.png": "e903769507511cc7804ffcd6a6d782dc58d41efd44292256f6777de266d8ccd9",
+    "Graphics/UI/Inventory/characters/teddy_hl.png.import": "c312e8136e82e110c52187d470e2f3c520eb45231ddf3c4ba97312945ab87ba9",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+    "Graphics/UI/Inventory/item_icon.png": "3479bd4197cf02a6997e9947ef8a7882002636adc4a658b7f8ddeeafc8867f5e",
+    "Graphics/UI/Inventory/item_icon.png.import": "153842ae51512b9e3b9fdd87411b5a6a5ed8e08dd629ab42a94afe5699050535",
+    "Graphics/UI/Inventory/modifiers.png": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
+    "Graphics/UI/Inventory/modifiers.png.import": "3b670c47f51983c1927c6ed06ad1ef2e5a8f80c998ca37d5f4c9c26b321cbea9",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaultbox.png.import": "c26172327877fe597813aa7125dbc23358206573867d9f032bb7a20b550fc763",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png": "eeb6ee91503c440ffe8a04340eef3646306c6ac4179d3bf1f748d8cd0a7aa433",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside.png.import": "fadf883607a0602838c955c34361782d4332dd4f78873d1bc175eeaa3e0f1272",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_light.png": "fa7660da723aad29d2a58d94ec96550a98ed84bc77787da7c53820e148638699",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_light.png.import": "94f535c9ca875e92884d709c7cf699c6eed3e0ee8341c18b15e58dce28a90703",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png": "016b161a791b5c3cc95db2002921dae062f4b90ca87cdd2e4b7da62cefc72bf3",
+    "Graphics/UI/Overworld/flavours/defaultbox_inside_scrollbar.png.import": "cec66f58131b9cabd2900bd2fe99af81e0ace80215f081b85e5064ee5a711ccf",
+    "Graphics/UI/Overworld/flavours/defaultempty.png": "33af3d9a91a397b79e67c7500486c5cb85f3d1396ecc1e9a1faa09581de73fdc",
+    "Graphics/UI/Overworld/flavours/defaultempty.png.import": "f02a11b08d81c08c255151e3013c5bdbeb542e77a29f202684ee2871ed613949",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png": "019a1b69d3091aad552390204a6d6250af4ab90a124fc726262554d1fa5fce0d",
+    "Graphics/UI/Overworld/flavours/defaultscroll.png.import": "69a4e9fef64d8d941c7a7bac0c31f991188b0f1fcfbe8b85d8f414349c6bb8aa",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Nodes/Ui/DescriptionWithYesNo.tscn": "4a525914642d18a759e66a7558d693e9c1d82fb5689e7f9c7120a5e8b27ae0ff",
+    "Nodes/Ui/HighlightLabel.gd": "91a1ec1e640166c2e38a6ee8c094042fddc64f165f128bd4aa706b09f29ad367",
+    "Nodes/Ui/Indicator.tscn": "5271027816940051a232cc84d3d1c965e6f6ea83bbe90fafb4036f1a7d2674eb",
+    "Nodes/Ui/Inventory/portrait.tscn": "aace988ced4810ca71e57502e6333681dc1290220d37dac7968471de6c0d8c7e",
+    "Nodes/Ui/Reusables/Scrollbar.tscn": "5448fa7a0464b0d7cf18a5a01dde998f96f56d5b0123a5b03d8be0869cc5bfd0",
+    "Nodes/Ui/Shop/CashBoxShop.tscn": "cfb4c31a4b75f9935c9da90adf01937da0fed8dcaeccf588c1aedd530d5a31f4",
+    "Nodes/Ui/Shop/ShopUI.tscn": "ba7a3307a43a3cf0d5899f0ffd6986c6d78aca3ab11b92a9731c0acc253fac9f",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/UI/Reusables/DescriptionModal.gd": "fdcb91e91e48b022bdcfd5048cdfded4bf34987c07eb9c376daff72b32836a4a",
+    "Scripts/UI/Reusables/DescriptionWithYesNo.gd": "7d740c84ef62e563710ccc05c15f706bbc20d998f21fea4483f8615a6c5eeeda",
+    "Scripts/UI/Reusables/ItemListMenu.gd": "e87264436d0de2572200cc6458c1016d043389b5ccf16beadd8543a6b55ca24e",
+    "Scripts/UI/Reusables/Scrollbar.gd": "d93225ed2f66383190e12d57cd1fe5b978ba43b824ffbf3b3893993e0e7fa226",
+    "Scripts/UI/Shop/ShopUI.gd": "30306e59379e7869ddc554d4eab3e5aa2cabfc5fd980419da1357083bc233f38",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "semantics": [
+    "Source zoo_vm offers in order; normal null-shop dialogue permits selling",
+    "Opening constructs three Item preview UIDs and reseeds shared source RNG; each purchase constructs one different UID",
+    "Exact selected natural-order member inventory; no first-available substitution",
+    "Full inventory warns for source 1s without blocking item cursor; cash shortage yes enters sell",
+    "Resale multiplies source value by actual doses and drop clears equipped; callback returns last purchased name or empty",
+    "Original equipment purchase branches unreachable for this three nonequipment offer set; future equip offers rejected",
+    "Descriptions retain source controls and require checked TextTools/ItemDetails composition; no fake generic labels"
+  ],
+  "unverified": [
+    "Manual tests not run",
+    "Shared item/Session extensions and Main/SceneHost integration pending",
+    "Emulator/hardware unverified"
+  ]
+}

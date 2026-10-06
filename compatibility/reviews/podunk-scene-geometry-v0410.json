@@ -3,7 +3,20 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
-  "ir_sha256": "383551e2ea30099be329417d9ac026a3dae25dd30ea698ae40abb3c585726b05",
+  "ir_sha256": "edf53c9f6ed028c85e30a4b5ae059208557f89417ddaf6cf97951a0e80a8a903",
   "scene_admitted": false,
-  "review": "Full native geometry only: 902 owners, 941 shape nodes, 158 disabled; actual native PhysicsServer decomposition retained. All ancestor script identities pending; analytic shapes preserved without approximation. CanvasItem includes Control ancestors: native local/global transforms retained; parent composition checked."
+  "review": "Full native geometry only: 902 owners, 941 shape nodes, 158 disabled; actual native PhysicsServer decomposition retained. All ancestor script identities pending; analytic shapes preserved without approximation. CanvasItem includes Control ancestors: native local/global transforms retained; parent composition checked.",
+  "script_assignment_review": {
+    "producer_sha256": "7fee0e38c5d3fa1213694ff259a8fb861df526b83edceec5ac31fa50daa3a699",
+    "explicit_null_overrides": {
+      "Objects/VendingMachine/interact_dialog": {
+        "previous_script": "Scripts/Main/Interact Dialog.gd",
+        "source": "Nodes/Reusables/VendingMachineExterior.tscn",
+        "source_sha256": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+        "declaration": "[node name=\"interact_dialog\" parent=\".\" instance=ExtResource( 1 )]"
+      }
+    },
+    "actual_geometry_scripts": 393,
+    "semantics": "Actual source instance script=null removes the inherited InteractDialog binding before physics admission; no default script callback is approved"
+  }
 }

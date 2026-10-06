@@ -12,6 +12,7 @@
 #include "field_equipment_renderer.hpp"
 #include "field_item_use_renderer.hpp"
 #include "field_psi_renderer.hpp"
+#include "podunk_programme_host.hpp"
 #include "encore/item_use.hpp"
 #include "encore/field_equipment_menu.hpp"
 #include "world_effect_renderer.hpp"
@@ -183,6 +184,8 @@ FieldEquipmentRenderer field_equipment_renderer;
 upstream::ItemUseData item_use_data;
 upstream::FieldItemUseMenu field_item_use_menu;
 FieldItemUseRenderer field_item_use_renderer;
+upstream::FieldProgrammeData field_programme_data;
+encore::ctr::PodunkProgrammeHost podunk_programme_host;
 upstream::FieldPsiData field_psi_data;
 upstream::FieldPsiMenu field_psi_menu;
 FieldPsiRenderer field_psi_renderer;
@@ -903,11 +906,11 @@ bool open_field_psi(std::string&error){
   session_state=std::move(checked);session_rewards=std::move(stats);battle_random=candidate.random;result=std::move(candidate);e.clear();return true;
  };
  host.measure=[](std::string_view text,float width,float&measured,float&height,float&line,std::string&e){return FieldPsiRenderer::measure(battle_renderer,field_equipment_renderer,text,width,measured,height,line,e);};
- // Full Player cached-ray, NPC thought programme and world Tween endpoints
- // are required together. The current House adapter does not admit these yet.
- host.admit_telepathy=[](std::string&e){e="Telepathy live source ray/NPC/effect capability is pending";return false;};
- host.close_commands_for_telepathy=[](std::string&e){e="Telepathy commands endpoint not admitted";return false;};
- host.telepathy=[](std::string&e){e="Telepathy world endpoint not admitted";return false;};
+ // The Podunk owner delegates only after complete source scene/Tree Ready.
+ // A dormant owner rejects target admission before the PSI PP commit.
+ host.admit_telepathy=[](std::string&e){return podunk_programme_host.admit_telepathy(e);};
+ host.close_commands_for_telepathy=[](std::string&e){return podunk_programme_host.close_commands_for_telepathy(e);};
+ host.telepathy=[](std::string&e){return podunk_programme_host.telepathy(e);};
  if(!field_psi_menu.initialize(&field_psi_data,std::move(host),locale_selection.code())||!field_psi_menu.open()){error=field_psi_menu.error();return false;}return true;
 }
 
@@ -1183,6 +1186,7 @@ void reference_borders(){
 }
 
 bool load_house(std::string& error){
+    if(!field_programme_data.load_file(resource_path(ResourceRole::FieldProgrammes).c_str(),error))return false;
     if(!opening_data.load_file(resource_path(ResourceRole::Room).c_str(),error)||!world_blackbars.load_file(resource_path(ResourceRole::Blackbars).c_str(),error))return false;
     if(!basement_data.load_file(resource_path(ResourceRole::BasementProgression).c_str(),error)||!basement_actor_data.load_file(resource_path(ResourceRole::BasementActors).c_str(),error)||!present_sparkles_data.load_file(resource_path(ResourceRole::PresentSparkles).c_str(),error)||!house_music_data.load_file(resource_path(ResourceRole::MusicRegions).c_str(),error)||!native_session_data.load_file(resource_path(ResourceRole::Session).c_str(),error)||!bind_basement_world(*gameplay_scene,error))return false;
     const auto room=opening_data.view();
@@ -1190,7 +1194,7 @@ bool load_house(std::string& error){
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count());
     return true;
 }
-void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_psi_menu=upstream::FieldPsiMenu{};field_psi_renderer.free();field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();basement_actor_renderer.free();present_sparkles_renderer.free();basement_graphics_ready=false;field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();if(house_music_host){house_music_host->finish(ignored);house_music_host.reset();}region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
+void free_house(){podunk_programme_host.reset();field_programme_data=upstream::FieldProgrammeData{};cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_psi_menu=upstream::FieldPsiMenu{};field_psi_renderer.free();field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();basement_actor_renderer.free();present_sparkles_renderer.free();basement_graphics_ready=false;field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();if(house_music_host){house_music_host->finish(ignored);house_music_host.reset();}region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){

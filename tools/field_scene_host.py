@@ -14,7 +14,7 @@ IR=ROOT/'content/podunk-scene-lifecycle.json'
 REVIEW=ROOT/'compatibility/reviews/podunk-scene-lifecycle-v0410.json'
 OUTPUT=ROOT/'romfs/data/podunk.encfieldscene'
 FORMATS={1:'2I',2:'B',3:'6I32s',4:'4I',5:'4I',6:'6I6f',7:'2I',8:'2I',9:'I',10:'I2f',11:'I32s'}
-ROLES={'Scripts/misc/grass spawner.gd':1,'Scripts/Main/npc.gd':2,'Scripts/Main/Enemy Spawner.gd':3,'Scripts/misc/character_tint.gd':4,'Scripts/Main/character_sprite.gd':5,'Scripts/Main/SpriteDataFetcher.gd':6,'Scripts/Main/Flag Landmarks.gd':7,'Scripts/Main/Present.gd':20,'Scripts/Main/DroppedItem.gd':21,'Scripts/Main/RoomTypes/AreaRoom.gd':9,'Scripts/debug/DebugStartPos.gd':10,'Nodes/Ui/emotes.tscn::6':11,'Scripts/misc/dandelion spawner.gd':12,'Scripts/Main/Door.gd':13,'Scripts/UI/Button Prompt.gd':14,'Scripts/Main/Dead Bush.gd':15,'Scripts/Main/Interact Dialog.gd':18,'Scripts/Main/Openable Door.gd':16,'Scripts/misc/sparkles.gd':17,'Maps/Testing/phone.gd':19,'Scripts/misc/butterfly.gd':22,'Scripts/Main/CutsceneArea.gd':23,'Scripts/misc/birds.gd':24,'Scripts/Main/camarea.gd':25,'Nodes/Overworld/MusicChanger.tscn::3':26,'Scripts/UI/MapScreen/MapArrows.gd':27,'Scripts/Main/Reparenter.gd':29,'Scripts/Main/Event Activator.gd':30,'Scripts/Main/Stepping Sounds.gd':31,'Scripts/Main/Jump Area.gd':32,'Scripts/Main/Stairs.gd':33,'Scripts/Main/Camera2D.gd':28,'Scripts/Main/door_npc.gd':34,'Nodes/Ui/effects/melodyBG.gd':35}
+ROLES={'Scripts/misc/grass spawner.gd':1,'Scripts/Main/npc.gd':2,'Scripts/Main/Enemy Spawner.gd':3,'Scripts/misc/character_tint.gd':4,'Scripts/Main/character_sprite.gd':5,'Scripts/Main/SpriteDataFetcher.gd':6,'Scripts/Main/Flag Landmarks.gd':7,'Scripts/Main/Present.gd':20,'Scripts/Main/DroppedItem.gd':21,'Scripts/Main/RoomTypes/AreaRoom.gd':9,'Scripts/debug/DebugStartPos.gd':10,'Nodes/Ui/emotes.tscn::6':11,'Scripts/misc/dandelion spawner.gd':12,'Scripts/Main/Door.gd':13,'Scripts/UI/Button Prompt.gd':14,'Scripts/Main/Dead Bush.gd':15,'Scripts/Main/Interact Dialog.gd':18,'Scripts/Main/Openable Door.gd':16,'Scripts/misc/sparkles.gd':17,'Maps/Testing/phone.gd':19,'Scripts/misc/butterfly.gd':22,'Scripts/Main/CutsceneArea.gd':23,'Scripts/misc/birds.gd':24,'Scripts/Main/camarea.gd':25,'Nodes/Overworld/MusicChanger.tscn::3':26,'Scripts/UI/MapScreen/MapArrows.gd':27,'Scripts/Main/Reparenter.gd':29,'Scripts/Main/Event Activator.gd':30,'Scripts/Main/Stepping Sounds.gd':31,'Scripts/Main/Jump Area.gd':32,'Scripts/Main/Stairs.gd':33,'Scripts/Main/Camera2D.gd':28,'Scripts/Main/door_npc.gd':34,'Nodes/Ui/effects/melodyBG.gd':35,'Scripts/Main/VendingMachine.gd':36}
 BASE='Scripts/Main/FlaggableObject.gd'
 def extract(native,source):
     d,s=read(native),read(source);grass=read(ROOT/'content/podunk-scene.json')
@@ -39,6 +39,11 @@ def extract(native,source):
     for p,h in sources.items():require(h==inv[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'Changed lifecycle source '+p)
     roster=[];landmarks=[];flags=[];debug=[];rooms=[]
     bindings=list(grass['pending'])+[dict(stable_id=b['stable_id'],node=b['node'],script='Scripts/misc/grass spawner.gd',source_sha256=sources['Scripts/misc/grass spawner.gd'],ready_ordinal=b['ready_ordinal']) for b in grass['grass']]
+    from tools.field_script_bindings import actual_scripts
+    actual,nulls,_=actual_scripts(native,source)
+    bindings=[b for b in bindings if b['node'] in actual]
+    require(len(bindings)==len(actual)==2156 and len(nulls)==1,'Actual script assignment coverage differs')
+    for b in bindings:require((b['script'],b['source_sha256'])==actual[b['node']],'Lifecycle actual script identity differs')
     for b in sorted(bindings,key=lambda x:x['ready_ordinal']):
         p=b['node'];n=nodes[p];props=overrides.get(p,{});role=ROLES.get(b['script'],0);profile=0xffffffff
         if role==7:
@@ -60,7 +65,7 @@ def extract(native,source):
     text=(ROOT/'upstream/MOTHER-Encore/Scripts/global/globalData.gd').read_text(encoding='utf-8')
     raw=re.search(r'var flag_names := \[(.*?)\n\s*\]',text,re.S)[1];raw=re.sub(r'#.*','',raw);registry=re.findall(r'"([^"]+)"',raw)
     require(len(registry)==len(set(registry)) and len(registry)>100,'Source normal flag registry rejected')
-    require(len(roster)==2157 and len(landmarks)==13 and len(flags)==19 and len(rooms)==1 and len(debug)==1,'Lifecycle coverage differs')
+    require(len(roster)==2156 and len(landmarks)==13 and len(flags)==19 and len(rooms)==1 and len(debug)==1,'Lifecycle coverage differs')
     embedded={a['script']:a['embedded_script']['sha256'] for a in s['script_attachments'] if '::' in a['script']}
     for n in roster:
         if '::' in n['script']:require(n['sha256']==embedded[n['script']],'Embedded lifecycle source proof differs')
@@ -72,14 +77,15 @@ def extract(native,source):
     review['ir_sha256']=sha(IR);review['typed_bridges_added']=[v for v in review['typed_bridges_added']if 'DeadBush'not in v]+['13 DeadBush actual onready, VisibilityNotifier, source animation, prompt and deferred Roots callbacks']
     review['dead_bush_review']=dict(ir_sha256=sha(ROOT/'content/native-field-dead-bush.json'),source_sha256=bush['script_sha256'],semantics=bush['semantics'],unsupported=bush['unsupported'])
     inter=read(ROOT/'content/native-field-interact-dialog.json');rr=[v for v in updated['roster']if v['role']==18]
-    require(len(rr)==len(inter['records'])==33,'InteractDialog lifecycle source coverage')
+    require(len(rr)==len(inter['records'])==32,'InteractDialog lifecycle source coverage')
     for row,n in zip(rr,inter['records']):require(row['id']==n['id']and row['node']==n['node']and row['ready']==n['ready']and row['sha256']==inter['sources'][inter['script']],'InteractDialog actual lifecycle mapping changed')
-    review['typed_bridges_added']=[v for v in review['typed_bridges_added']if 'InteractDialog'not in v]+['33 InteractDialog source Ready/flags/prompt/dialogue/item/thought consumers']
+    review['typed_bridges_added']=[v for v in review['typed_bridges_added']if 'InteractDialog'not in v]+['32 InteractDialog source Ready/flags/prompt/dialogue/item/thought consumers']
     review['interact_dialog_review']=dict(ir_sha256=sha(ROOT/'content/native-field-interact-dialog.json'),semantics=inter['semantics'],pending=inter['pending'])
-    families=[('native-field-present',20,'holders','ready_ordinal',16),('native-field-dropped',21,'bindings','ready_ordinal',3),('podunk-openable-door',16,'records','ready',10),('podunk-sparkles',17,'records','ready',22),('native-field-payphone',19,'records','ready_ordinal',4),('native-field-butterfly',22,'bindings','ready_ordinal',94),('native-field-cutscene-area',23,'bindings','ready_ordinal',15),('podunk-birds',24,'records','ready',54),('podunk-camera-area',25,'records','ready',1),('native-field-music-changer',26,'bindings','ready_ordinal',13),('podunk-camera-arrows',27,'records','ready',14),('native-field-scene-actions',29,'bindings','ready_ordinal',14),('native-field-scene-actions',30,'bindings','ready_ordinal',4),('native-field-stepping-sounds',31,'bindings','ready_ordinal',3),('native-field-player-transitions',32,'records','ready',14),('native-field-player-transitions',33,'records','ready',2),('podunk-game-camera',28,'records','ready',14),('native-field-door-npc',34,'bindings','ready_ordinal',1),('native-field-melody-background',35,'bindings','ready_ordinal',1)]
+    families=[('native-field-present',20,'holders','ready_ordinal',16),('native-field-dropped',21,'bindings','ready_ordinal',3),('podunk-openable-door',16,'records','ready',10),('podunk-sparkles',17,'records','ready',22),('native-field-payphone',19,'records','ready_ordinal',4),('native-field-butterfly',22,'bindings','ready_ordinal',94),('native-field-cutscene-area',23,'bindings','ready_ordinal',15),('podunk-birds',24,'records','ready',54),('podunk-camera-area',25,'records','ready',1),('native-field-music-changer',26,'bindings','ready_ordinal',13),('podunk-camera-arrows',27,'records','ready',14),('native-field-scene-actions',29,'bindings','ready_ordinal',14),('native-field-scene-actions',30,'bindings','ready_ordinal',4),('native-field-stepping-sounds',31,'bindings','ready_ordinal',3),('native-field-player-transitions',32,'records','ready',14),('native-field-player-transitions',33,'records','ready',2),('podunk-game-camera',28,'records','ready',14),('native-field-door-npc',34,'bindings','ready_ordinal',1),('native-field-melody-background',35,'bindings','ready_ordinal',1),('native-field-vending-machine',36,'bindings','ready_ordinal',1)]
     proofs={}
     for name,role,records_key,ordinal_key,count in families:
         family=read(ROOT/'content'/f'{name}.json');actual=[row for row in updated['roster']if row['role']==role]
+        if role==36:family=dict(family,bindings=[dict(id=family['id'],node=family['node'],ready_ordinal=family['ready_ordinal'])])
         if name in ('native-field-scene-actions','native-field-player-transitions'):family=dict(family,**{records_key:[n for n in family[records_key]if n['kind']==(1 if role in (29,32)else 2)]})
         require(family['commit']==PIN and family['scene']==SCENE and len(actual)==len(family[records_key])==count,'Lifecycle family source coverage '+name)
         for row,n in zip(actual,family[records_key]):
@@ -113,7 +119,7 @@ def pack(ir):
     result=bytearray(128+24*len(formats));directory=[]
     for k,fmt in formats.items():
         data=b''.join(struct.pack('<'+fmt,*v) for v in rows[k]);directory.append((k,len(rows[k]),struct.calcsize('<'+fmt),len(result),len(data),0));result.extend(data)
-    struct.pack_into('<8s8I',result,0,b'ENCFSCN1',1,128,len(result),len(formats),zlib.crc32(result[128+24*len(formats):]),0x454e001c,5,ir['scene_id'])
+    struct.pack_into('<8s8I',result,0,b'ENCFSCN1',1,128,len(result),len(formats),zlib.crc32(result[128+24*len(formats):]),0x454e001c,6,ir['scene_id'])
     result[40:60]=bytes.fromhex(PIN);result[60:92]=bytes.fromhex(ir['source_sha256']);result[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',result,124,scene)
     for i,v in enumerate(directory):struct.pack_into('<6I',result,128+24*i,*v)
     return bytes(result)

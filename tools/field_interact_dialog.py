@@ -33,6 +33,10 @@ def source_instances(native,receipt,upstream):
    name=re.search(r'\bname="([^"]+)"',a['node_declaration'])[1];parent=re.search(r'\bparent="([^"]+)"',a['node_declaration'])
    local='.' if parent is None else name if parent[1]=='.' else parent[1]+'/'+name;path=root if local=='.' else local if root=='.' else root+'/'+local
    require(path in names,'Unresolved InteractDialog binding '+path);bindings[path]=a['script']
+ from tools.field_script_bindings import actual_scripts
+ actual,nulls,_=actual_scripts(native,receipt)
+ require(len(nulls)==1 and len(actual)==2156,'InteractDialog actual script assignments differ')
+ bindings={p:v[0]for p,v in actual.items()}
  children={p:[] for p in names}
  for path in names:
   if path!='.':children[path.rsplit('/',1)[0] if '/' in path else '.'].append(path)
@@ -44,7 +48,7 @@ def source_instances(native,receipt,upstream):
  for path in sorted(bindings,key=lambda p:ordinal[p]):
   if bindings[path] not in (SCRIPT,):continue
   out.append(dict(stable_id=stable(path),node=path,ready_ordinal=ordinal[path],script=bindings[path],overrides=overrides[path],native=names[path],children=[names[p] for p in children[path]]))
- require(len(out)==33,'Podunk InteractDialog binding loss');return out,names,resources,dict(native_export_sha256=sha(native),source_receipt_sha256=sha(receipt),source_files={name:r['sha256'] for name,r in s['files'].items()})
+ require(len(out)==32,'Podunk InteractDialog binding loss');return out,names,resources,dict(native_export_sha256=sha(native),source_receipt_sha256=sha(receipt),source_files={name:r['sha256'] for name,r in s['files'].items()})
 
 def build(records,nodes,resources,provenance):
  ex=Extractor(ROOT);ex.sources.update(provenance['source_files']);text=ex.text(SCRIPT)
@@ -65,7 +69,7 @@ def build(records,nodes,resources,provenance):
   out.append(dict(id=a['stable_id'],node=p,ready=a['ready_ordinal'],prompt_id=stable(prompt),dialogue=program,thoughts=thoughts,key_item=key,appear=o.get('appear_flag',''),disappear=o.get('disappear_flag',''),no_problem=o.get('no_problem_thoughts',True),turn=turn,button_offset=offset,initial_visible=np['visible'],offset_assigned='button_offset'in o,choices=choices))
  return dict(schema=1,kind='encore.field-interact-dialog.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),script=SCRIPT,records=out,sources=dict(sorted(ex.sources.items())),provenance=provenance,producer_sha256=sha(Path(__file__)),semantics=['Complete 33 source instances with inner-to-outer overrides and exact postorder Ready','Ready checks appear/disappear, queues hidden objects for deletion then connects flags_updated synchronously','Dialogue starts from base; every matching nonempty normal flag overrides in source order; last match wins','Matching actual item_name opens dialogue; unmatched item has no effect','Telepathy turns on effect before opening exact thoughts; has_thoughts is source nonempty test','Button offset source setter forwarded to actual shared Prompt; player axis turn and no_problem flags remain descriptor data'],pending=['Actual programme/ray/prompt/flags/SceneTree endpoints must be admitted before scene activation'])
 def validate(d):
- require(d['schema']==1 and d['kind']=='encore.field-interact-dialog.source-ir'and d['commit']==PIN and d['scene']==SCENE and d['script']==SCRIPT and len(d['records'])==33,'Unknown InteractDialog source schema')
+ require(d['schema']==1 and d['kind']=='encore.field-interact-dialog.source-ir'and d['commit']==PIN and d['scene']==SCENE and d['script']==SCRIPT and len(d['records'])==32,'Unknown InteractDialog source schema')
  require(d['producer_sha256']==sha(Path(__file__)),'Changed InteractDialog producer')
  require(set(d)==set('schema kind commit scene scene_id script records sources provenance producer_sha256 semantics pending'.split()),'Unknown InteractDialog IR fields')
  require(d['scene_id']==stable('.')and set(d['provenance'])=={'native_export_sha256','source_receipt_sha256','source_files'},'InteractDialog provenance identity')
@@ -96,7 +100,7 @@ def encode(d):
   for f,p in v['choices']:text(f);text(p)
  header=bytearray(struct.pack('<8s6I20s12x',b'ENCFDLG1',1,64+len(b),0,1,1,d['scene_id'],bytes.fromhex(PIN)));header.extend(b);struct.pack_into('<I',header,16,zlib.crc32(header));return bytes(header)
 def compile_pack():
- d=read(IR);review=read(REVIEW);require(review['commit']==PIN and review['ir_sha256']==sha(IR)and review['semantics']==d['semantics'],'InteractDialog semantic review changed');raw=encode(d);PACK.parent.mkdir(parents=True,exist_ok=True);PACK.write_bytes(raw);print('InteractDialog binary:',len(raw),'bytes; 33 source objects')
+ d=read(IR);review=read(REVIEW);require(review['commit']==PIN and review['ir_sha256']==sha(IR)and review['semantics']==d['semantics'],'InteractDialog semantic review changed');raw=encode(d);PACK.parent.mkdir(parents=True,exist_ok=True);PACK.write_bytes(raw);print('InteractDialog binary:',len(raw),'bytes; 32 source objects')
 def stage_files(source):
  b=(Path(source)/'data/podunk-interact.encdialog').read_bytes();require(b==encode(read(IR)),'Stale InteractDialog pack');return{Path('data/podunk-interact.encdialog'):b}
 def main():

@@ -18,6 +18,7 @@
 #include "encore/field_game_camera.hpp"
 #include "encore/field_door_npc.hpp"
 #include "encore/field_melody_background.hpp"
+#include "encore/field_vending_machine.hpp"
 #include "encore/field_map_space.hpp"
 #include "encore/field_scene_actions.hpp"
 #include "encore/field_stepping_sounds.hpp"
@@ -91,6 +92,7 @@ struct FieldSceneConsumers {
  const FieldGameCameraData*camera_data=nullptr;FieldGameCameraRuntime*camera=nullptr;
  const FieldDoorNpcData*door_npc_data=nullptr;FieldDoorNpcRuntime*door_npc=nullptr;
  const FieldMelodyBackgroundData*melody_data=nullptr;FieldMelodyBackgroundRuntime*melody=nullptr;
+ const FieldVendingData*vending_data=nullptr;FieldVendingRuntime*vending=nullptr;
  FieldMapSpace*map_space=nullptr;
  const FieldMapView*map=nullptr;const FieldGeometryView*geometry_data=nullptr;FieldGeometrySpace*geometry=nullptr;
 };

@@ -38,6 +38,17 @@ add_library(encore_core
     runtime/field_door_npc_data.cpp
     runtime/field_melody_background.cpp
     runtime/field_melody_background_data.cpp
+    runtime/field_programme.cpp
+    runtime/field_programme_data.cpp
+    runtime/field_node_tree.cpp
+    runtime/field_node_tree_data.cpp
+    runtime/field_node_recipe_data.cpp
+    runtime/field_dialogue_lifecycle.cpp
+    runtime/field_dialogue_lifecycle_data.cpp
+    runtime/field_shop.cpp
+    runtime/field_shop_data.cpp
+    runtime/field_vending_machine.cpp
+    runtime/field_vending_machine_data.cpp
     runtime/field_camera_arrows.cpp
     runtime/field_camera_arrows_data.cpp
     runtime/field_scene_actions.cpp

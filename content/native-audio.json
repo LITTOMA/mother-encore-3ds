@@ -278,6 +278,14 @@
       "import_sha256": "b06c91fd531323aaf9e0b07ffe328e23b9be47dd7c31a821b207b325b1b7ed80",
       "pcm_path": "sound/effects/field-psi-heal.pcm",
       "gain_db": 0
+    },
+    {
+      "stable_id": 243144772,
+      "source_path": "res://Audio/Sound effects/M3/register.wav",
+      "source_sha256": "356263c925d453dd648a773559f91edba5111db2d72db43184d101bd620a2124",
+      "import_sha256": "b8de48d630df47305149c77c93c4a5d84542a51fbc22af1fbb21c1a0b6be4ddf",
+      "pcm_path": "sound/effects/shop-register.pcm",
+      "gain_db": 0
     }
   ]
 }

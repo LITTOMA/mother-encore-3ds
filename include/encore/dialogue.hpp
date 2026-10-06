@@ -44,9 +44,24 @@ enum class DialogueStatus : uint8_t { Idle, AwaitActor, AwaitIdle, AwaitTimer, A
 // Executes the checked instruction table selected by the scene pack. This is not
 // M0's fixture VM or a general GDScript/YAML interpreter. Actor motion is
 // nonblocking and owned by the world, never advanced inside this scheduler.
+// Immutable checked source table, owned by the caller for the scheduler lifetime.
+// Both RoomData and independent FieldProgrammeData retain source provenance;
+// a mutable or unchecked command vector is not a valid implementation.
+class DialogueProgrammeSource {
+public:
+    virtual ~DialogueProgrammeSource()=default;
+    virtual bool valid()const=0;
+    virtual uint32_t program_count()const=0;
+    virtual RoomProgram program(uint32_t)const=0;
+    virtual RoomCommand command(uint32_t)const=0;
+    virtual uint32_t flag_count()const=0;
+    virtual uint32_t string_count()const=0;
+    virtual std::string_view string(uint32_t)const=0;
+};
 class DialoguePlayer {
 public:
     bool start(const RoomView& content,uint32_t program_index,DialogueSink& sink,uint32_t generation=1);
+    bool start(const DialogueProgrammeSource& content,uint32_t program_index,DialogueSink& sink,uint32_t generation=1);
     bool actor_ready(DialogueActor actor, uint32_t generation, DialogueSink& sink);
     // SceneTree emits idle_frame before internal idle processing. Call once
     // before actor idle callbacks, then idle_process at WaitTimer's phase.
@@ -66,7 +81,7 @@ public:
     uint32_t next_command_index()const{return uint32_t(pc_); }
     double wait_remaining() const { return timer_active_ ? timer_ : 0; }
     bool active() const;
-    bool has_next_phrase()const{if(!content_.valid()||program_index_>=content_.program_count())return false;const auto p=content_.program(program_index_);return pc_<p.command_count&&content_.command(p.first_command+uint32_t(pc_)).phrase!=phrase_;}
+    bool has_next_phrase()const{if(!source_valid()||program_index_>=source_program_count())return false;const auto p=source_program(program_index_);return pc_<p.command_count&&source_command(p.first_command+uint32_t(pc_)).phrase!=phrase_;}
     bool input_allowed()const{return status_==DialogueStatus::AwaitDialogue&&text_input_enabled_&&(!text_minimum_wait_||!timer_active_); }
     bool auto_advance_ready()const{return text_auto_advance_&&input_allowed();}
     const char* error() const { return error_; }
@@ -75,6 +90,14 @@ private:
     bool fail(const char* message);
     DialogueStatus status_=DialogueStatus::Idle;
     DialogueActor expected_actor_=kRoomNoActor;
+    bool source_valid()const{return independent_?independent_->valid():content_.valid();}
+    uint32_t source_program_count()const{return independent_?independent_->program_count():content_.program_count();}
+    RoomProgram source_program(uint32_t i)const{return independent_?independent_->program(i):content_.program(i);}
+    RoomCommand source_command(uint32_t i)const{return independent_?independent_->command(i):content_.command(i);}
+    uint32_t source_flag_count()const{return independent_?independent_->flag_count():content_.flag_count();}
+    uint32_t source_string_count()const{return independent_?independent_->string_count():content_.string_count();}
+    std::string_view source_string(uint32_t i)const{return independent_?independent_->string(i):content_.string(i);}
+    const DialogueProgrammeSource*independent_=nullptr;
     RoomView content_;
     uint32_t program_index_=kRoomNoIndex;
     size_t pc_=0;

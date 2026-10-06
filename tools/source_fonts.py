@@ -4,6 +4,7 @@ Does not modify upstream, source ASCII atlas, or locale translations.
 """
 import argparse, collections, hashlib, json, os, re, shutil, struct, subprocess, sys, zlib
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 from PIL import Image, ImageDraw, ImageFont, features, __version__ as pillow_version
 from fontTools import __version__ as fonttools_version
 from fontTools.ttLib import TTFont
@@ -22,10 +23,17 @@ def scalar_text(text):
     return {ord(c) for c in text if ord(c)>=32 and ord(c)!=127}
 
 def resource(root,path):
-    text=(root/path).read_text()
-    ext={i:f for f,i in re.findall(r'\[ext_resource path="res://([^"]+)"[^\n]*id=(\d+)\]',text)}
-    chain=[ext[i] for i in re.findall(r'(?:font_data|fallback/\d+) = ExtResource\( (\d+) \)',text)]
-    return chain
+    text=(root/path).read_text();ext={i:f for f,i in re.findall(r'\[ext_resource path="res://([^"]+)"[^\n]*id=(\d+)\]',text)}
+    sub={i:f for i,f in re.findall(r'\[sub_resource type="DynamicFontData" id=(\d+)\]\s+antialiased = false\s+font_path = "res://([^"]+)"',text)}
+    refs=re.findall(r'(?:font_data|fallback/\d+) = (ExtResource|SubResource)\( (\d+) \)',text)
+    if not refs:raise ValueError('Unsupported source font resource chain')
+    return [(ext if kind=='ExtResource'else sub)[i]for kind,i in refs]
+def settings(root,path):
+    text=(root/path).read_text();out={}
+    for key,default in (('outline_size',0),('extra_spacing_char',0),('extra_spacing_space',0)):
+        match=re.findall(r'^'+key+r' = (-?\d+)$',text,re.M);out[key]=int(match[0])if match else default
+    if out['outline_size']and 'outline_color = Color( 0, 0, 0, 1 )'not in text:raise ValueError('Unsupported source font outline color')
+    return out
 
 GODOT='''extends SceneTree
 func _init():
@@ -42,9 +50,18 @@ func _init():
  for spec in request:
   var font=load("res://"+spec.source)
   var advances=[]
+  var next_advances=[]
+  var double_widths=[]
+  var contextual_pairs=[]
   for cp in spec.codepoints:
    advances.append(font.get_char_size(int(cp)).x)
-  faces.append({"source":spec.source,"size":font.size,"ascent":font.get_ascent(),"descent":font.get_descent(),"height":font.get_height(),"advances":advances})
+   next_advances.append(font.get_char_size(int(cp),int(cp)).x)
+   double_widths.append(font.get_string_size(char(cp)+char(cp)).x)
+   if "BottleRocket" in spec.source:
+    var row=[]
+    for next_cp in spec.codepoints: row.append(font.get_char_size(int(cp),int(next_cp)).x)
+    contextual_pairs.append(row)
+  faces.append({"source":spec.source,"size":font.size,"ascent":font.get_ascent(),"descent":font.get_descent(),"height":font.get_height(),"advances":advances,"next_advances":next_advances,"double_widths":double_widths,"contextual_pairs":contextual_pairs})
  var output=File.new()
  if output.open("res://metrics.json",File.WRITE)!=OK:
   quit(3)
@@ -89,10 +106,21 @@ def compile_fonts(args):
         if path not in review['sources']:raise ValueError('Unreviewed CashBox font resource')
         cps=set().union(*(scalar_text(text)for text in texts))
         groups[path].update(cps);priority[path].update(cps)
-    requests=[];cmaps={};credits={};chains={}
+    from tools.field_shop import glyph_requests as shop_glyph_requests
+    from tools.field_item_details import glyph_requests as details_glyph_requests
+    for path,text in shop_glyph_requests().items():
+        if path not in review['sources']:raise ValueError('Unreviewed Shop font role')
+        # Actual BottleRocket roles draw integer prices/cash; their currency is
+        # a checked Sprite, while names/prompt/description use original EBMain.
+        cps=scalar_text('0123456789-+ ' if 'BottleRocket' in path else text)
+        groups[path].update(cps);priority[path].update(cps)
+    for path,texts in details_glyph_requests().items():
+        cps=set().union(*(scalar_text(t)for t in texts));groups[path].update(cps);priority[path].update(cps)
+    requests=[];cmaps={};credits={};chains={};styles={}
+
     for path,cps in groups.items():
         if path not in review['sources']: raise ValueError('Font role is not reviewed: '+path)
-        chains[path]=resource(root,path)
+        chains[path]=resource(root,path);styles[path]=settings(root,path)
         shutil.copyfile(root/path,project/path)
         for p in chains[path]:
             if p not in review['sources']: raise ValueError('Fallback not reviewed: '+p)
@@ -104,27 +132,32 @@ def compile_fonts(args):
     dump(project/'request.json',requests);(project/'project.godot').write_text('config_version=4\n');(project/'metrics.gd').write_text(GODOT)
     result=subprocess.run([args.godot,'--path',str(project),'-s','metrics.gd'],text=True,capture_output=True,check=True,timeout=90,env=dict(os.environ,XDG_DATA_HOME=str(build/'userdata')))
     (build/'godot.log').write_text(result.stdout+result.stderr);metrics=json.loads((project/'metrics.json').read_text())
-    pages=[];faces=[];all_glyphs=[];missing=[];bitmaps={}
+    pages=[];faces=[];all_glyphs=[];missing=[];bitmaps={};conversions=[]
     for request,metric in zip(requests,metrics['faces']):
         path=request['source'];gid=len(all_glyphs);pid=len(pages);glyphs=[]
         native=dict(zip(request['codepoints'],metric['advances']))
+        for cp,a,next_a,double in zip(request['codepoints'],metric['advances'],metric['next_advances'],metric['double_widths']):
+            spacing=0 if cp==32 else styles[path]['extra_spacing_char']
+            if metric['contextual_pairs']:
+                row=metric['contextual_pairs'][request['codepoints'].index(cp)]
+                if any(abs(value-(a+spacing))>.001 for value in row):raise ValueError('Unsupported source numeric font kerning: '+path)
+            if abs(next_a-(a+spacing))>.001 or abs(double-(2*a+spacing))>.001:raise ValueError('Unsupported native contextual font advance: '+path+' U+%04X'%cp)
         order=sorted(request['codepoints'],key=lambda cp:(cp not in priority[path],cp))
         image=None;x=y=rowh=0;localpage=-1
         def flush():
             if image is None:return
             stem='ebmain-%d-%03d'%(len(faces),localpage);png=build/(stem+'.png');target=out/(stem+'.t3x')
             image.save(png)
-            subprocess.run([args.tex3ds,'-f','la8','-z','none','-o',str(target),str(png)],check=True,capture_output=True)
-            raw=target.read_bytes();pages.append({'path':target.name,'width':PAGE,'height':PAGE,'texture_bytes':PAGE*PAGE*2,'file_bytes':len(raw),'crc32':zlib.crc32(raw),'sha256':sha(target)})
+            pages.append({'path':target.name,'width':PAGE,'height':PAGE,'texture_bytes':PAGE*PAGE*2});conversions.append((png,target,pages[-1]))
         for cp in order:
             face=next((p for p in chains[path] if cp in cmaps[p]),None)
             if face is None:
                 missing.append({'source':path,'codepoint':cp,'unicode':'U+%04X'%cp,'native_advance':native[cp]});continue
             key=(face,metric['size'])
             if key not in bitmaps:bitmaps[key]=ImageFont.truetype(str(root/face),metric['size'])
-            font=bitmaps[key];character=chr(cp);advance=float(font.getlength(character))
+            font=bitmaps[key];character=chr(cp);advance=float(font.getlength(character))+(styles[path]['extra_spacing_space']+styles[path]['extra_spacing_char']if character==' 'else 0)
             if abs(advance-native[cp])>.001:raise ValueError('Advance differs from native Godot: %s U+%04X Pillow=%s Godot=%s'%(path,cp,advance,native[cp]))
-            bbox=font.getbbox(character,anchor='ls');w=bbox[2]-bbox[0];h=bbox[3]-bbox[1]
+            outline=styles[path]['outline_size'];bbox=font.getbbox(character,anchor='ls',stroke_width=outline);w=bbox[2]-bbox[0];h=bbox[3]-bbox[1]
             if w>PAGE-2 or h>PAGE-2 or w<0 or h<0:raise ValueError('Unbounded source glyph')
             if image is None:
                 image=Image.new('RGBA',(PAGE,PAGE),(255,255,255,0));localpage+=1;x=y=rowh=1
@@ -132,23 +165,27 @@ def compile_fonts(args):
             if y+h+1>PAGE:
                 flush();image=Image.new('RGBA',(PAGE,PAGE),(255,255,255,0));localpage+=1;x=y=rowh=1
             # Baseline anchor matches Godot's font-ascent origin, including fallback.
-            if w and h:ImageDraw.Draw(image).text((x-bbox[0],y-bbox[1]),character,font=font,anchor='ls',fill=(255,255,255,255))
+            if w and h:ImageDraw.Draw(image).text((x-bbox[0],y-bbox[1]),character,font=font,anchor='ls',fill=(255,255,255,255),stroke_width=outline,stroke_fill=(0,0,0,255))
             glyphs.append({'codepoint':cp,'page':pid+localpage,'u':x,'v':y,'width':w,'height':h,'advance':native[cp],'offset_x':bbox[0],'offset_y':metric['ascent']+bbox[1],'source_face':face})
             x+=w+2;rowh=max(rowh,h)
         flush();glyphs.sort(key=lambda g:g['codepoint']);all_glyphs.extend(glyphs)
-        faces.append({'source':path,'legacy_ascii':path==review['legacy_ascii_resource'],'first_glyph':gid,'glyph_count':len(glyphs),'first_page':pid,'page_count':len(pages)-pid,'ascent':metric['ascent'],'descent':metric['descent'],'height':metric['height'],'texture_bytes':sum(p['texture_bytes'] for p in pages[pid:]),'fallback_chain':chains[path]})
+        faces.append({'source':path,'legacy_ascii':path==review['legacy_ascii_resource'],'first_glyph':gid,'glyph_count':len(glyphs),'first_page':pid,'page_count':len(pages)-pid,'ascent':metric['ascent'],'descent':metric['descent'],'height':metric['height'],'spacing_char':styles[path]['extra_spacing_char'],'spacing_space':styles[path]['extra_spacing_space'],'texture_bytes':sum(p['texture_bytes'] for p in pages[pid:]),'fallback_chain':chains[path]})
         if faces[-1]['texture_bytes']>2*1024*1024:raise ValueError('Selected face exceeds admitted 2 MiB budget')
+    def convert(job):
+        png,target,page=job;subprocess.run([args.tex3ds,'-f','la8','-z','none','-o',str(target),str(png)],check=True,capture_output=True)
+        raw=target.read_bytes();page.update(file_bytes=len(raw),crc32=zlib.crc32(raw),sha256=sha(target))
+    with ThreadPoolExecutor(max_workers=4)as pool:list(pool.map(convert,conversions))
     payload=bytearray()
     def string(value):
         raw=value.encode('ascii');payload.extend(struct.pack('<I',len(raw)));payload.extend(raw)
     for f in faces:
-        string(f['source']);payload.extend(struct.pack('<5I3f',int(f['legacy_ascii']),f['first_glyph'],f['glyph_count'],f['first_page'],f['page_count'],f['ascent'],f['descent'],f['height']))
+        string(f['source']);payload.extend(struct.pack('<5I5f',int(f['legacy_ascii']),f['first_glyph'],f['glyph_count'],f['first_page'],f['page_count'],f['ascent'],f['descent'],f['height'],f['spacing_char'],f['spacing_space']))
     for p in pages:
         string(p['path']);payload.extend(struct.pack('<5I',p['width'],p['height'],p['texture_bytes'],p['file_bytes'],p['crc32']))
     for g in all_glyphs:payload.extend(struct.pack('<6I3f',*(g[k] for k in ('codepoint','page','u','v','width','height','advance','offset_x','offset_y'))))
-    binary=HEADER.pack(b'ENCFONT\0',1,len(payload),zlib.crc32(payload),len(faces),len(pages),len(all_glyphs))+payload
+    binary=HEADER.pack(b'ENCFONT\0',2,len(payload),zlib.crc32(payload),len(faces),len(pages),len(all_glyphs))+payload
     target=out/'source-fonts.encfont';target.write_bytes(binary)
-    receipt={'schema':1,'field_psi_sha256':sha(ROOT/'content/native-field-psi.json'),'field_cash_box_sha256':sha(ROOT/'content/native-field-cash-box.json'),'review':review,'catalog_sha256':sha(cat),'generator_sha256':sha(__file__),'godot_sha256':sha(args.godot),'tex3ds_sha256':sha(args.tex3ds),'pillow_version':pillow_version,'freetype_version':features.version_module('freetype2'),'fonttools_version':fonttools_version,'metrics':metrics,'faces':faces,'pages':pages,'glyphs':all_glyphs,'missing_source_glyphs':missing,'font_embedded_notices':credits,'binary':{'path':target.name,'sha256':sha(target),'bytes':len(binary)},'limits':'EBMain role only; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.'}
+    receipt={'schema':1,'field_psi_sha256':sha(ROOT/'content/native-field-psi.json'),'field_cash_box_sha256':sha(ROOT/'content/native-field-cash-box.json'),'field_shop_sha256':sha(ROOT/'content/native-field-shop.json'),'field_item_details_sha256':sha(ROOT/'content/native-field-item-details.json'),'source_role_settings':styles,'review':review,'catalog_sha256':sha(cat),'generator_sha256':sha(__file__),'godot_sha256':sha(args.godot),'tex3ds_sha256':sha(args.tex3ds),'pillow_version':pillow_version,'freetype_version':features.version_module('freetype2'),'fonttools_version':fonttools_version,'metrics':metrics,'faces':faces,'pages':pages,'glyphs':all_glyphs,'missing_source_glyphs':missing,'font_embedded_notices':credits,'binary':{'path':target.name,'sha256':sha(target),'bytes':len(binary)},'limits':'Source EBMain and BottleRocket Shop roles; numeric BottleRocket spacing/black outline from reviewed .tres; four-worker genuine tex3ds; no new fonts or invented glyph replacements. Native Godot 3.6.2 advances checked for every included glyph; baseline from native ascent. Glyph pixels are Pillow/FreeType rasters; no rendered Godot/GPU pixel or hardware comparison claimed. Missing source glyphs are not encoded and reject at lookup. All assets remain game-related derivatives, not MIT-relicensed.'}
     receipt_path=ROOT/'content/asset-receipts/fonts/source.json'
     receipt_path.parent.mkdir(parents=True,exist_ok=True)
     dump(receipt_path,receipt)
@@ -179,6 +216,7 @@ def stage_files(root):
         raise ValueError('Source font manifest review changed')
     if manifest.get('field_psi_sha256')!=sha(ROOT/'content/native-field-psi.json'):raise ValueError('Source font PSI labels changed; regenerate assets')
     if manifest.get('field_cash_box_sha256')!=sha(ROOT/'content/native-field-cash-box.json'):raise ValueError('CashBox font bindings changed; regenerate source fonts')
+    if manifest.get('field_shop_sha256')!=sha(ROOT/'content/native-field-shop.json')or manifest.get('field_item_details_sha256')!=sha(ROOT/'content/native-field-item-details.json'):raise ValueError('Shop/field-description font bindings changed; regenerate assets')
     if manifest.get('generator_sha256')!=sha(__file__):
         raise ValueError('Source font generator changed; regenerate assets')
     if manifest.get('catalog_sha256')!=sha(ROOT/'content/native-localization.json'):
@@ -201,7 +239,7 @@ def stage_files(root):
     raw=output(binary['path'],binary['sha256'],binary['bytes'])
     if len(raw)<HEADER.size: raise ValueError('Truncated staged source font pack')
     magic,version,length,crc,nf,np,ng=HEADER.unpack_from(raw)
-    if (magic!=b'ENCFONT\0' or version!=1 or length!=len(raw)-HEADER.size or crc!=zlib.crc32(raw[HEADER.size:]) or nf!=len(manifest['faces']) or np!=len(manifest['pages']) or ng!=len(manifest['glyphs'])):
+    if (magic!=b'ENCFONT\0' or version not in (1,2) or length!=len(raw)-HEADER.size or crc!=zlib.crc32(raw[HEADER.size:]) or nf!=len(manifest['faces']) or np!=len(manifest['pages']) or ng!=len(manifest['glyphs'])):
         raise ValueError('Staged source font header/count/CRC mismatch')
     for page in manifest['pages']:
         output(page['path'],page['sha256'],page['file_bytes'],page['crc32'])

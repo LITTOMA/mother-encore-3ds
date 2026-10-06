@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "kind": "encore.shop-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "license_review": "Pinned upstream LICENSE permits game-related forks/modifications; original audio retains upstream terms, not MIT.",
+  "shared_assets": [
+    {
+      "source": "Audio/Sound effects/Cursor 1.mp3",
+      "identity": {
+        "kind": "stable",
+        "value": 1101
+      }
+    },
+    {
+      "source": "Audio/Sound effects/Cursor 2.mp3",
+      "identity": {
+        "kind": "stable",
+        "value": 1102
+      }
+    },
+    {
+      "source": "Audio/Sound effects/M3/bump.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1104
+      }
+    },
+    {
+      "source": "Audio/Sound effects/M3/curshoriz.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 1103
+      }
+    }
+  ],
+  "assets": [
+    {
+      "source": "Audio/Sound effects/M3/register.wav",
+      "identity": {
+        "kind": "stable",
+        "value": 243144772
+      },
+      "pcm": "sound/effects/shop-register.pcm",
+      "gain_db": 0,
+      "conversion": null
+    }
+  ]
+}

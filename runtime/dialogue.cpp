@@ -12,8 +12,13 @@ bool DialoguePlayer::fail(const char* message) {
 }
 bool DialoguePlayer::start(const RoomView& content,uint32_t program_index,DialogueSink& sink,uint32_t generation) {
     if(status_!=DialogueStatus::Idle || generation==0 || !content.valid() || program_index>=content.program_count()) return false;
-    content_=content;program_index_=program_index;
+    content_=content;independent_=nullptr;program_index_=program_index;
     generation_=generation; status_=DialogueStatus::Running; return resume(sink);
+}
+bool DialoguePlayer::start(const DialogueProgrammeSource& content,uint32_t program_index,DialogueSink& sink,uint32_t generation) {
+    if(status_!=DialogueStatus::Idle||generation==0||!content.valid()||program_index>=content.program_count())return false;
+    independent_=&content;content_={};program_index_=program_index;
+    generation_=generation;status_=DialogueStatus::Running;return resume(sink);
 }
 bool DialoguePlayer::actor_ready(DialogueActor actor, uint32_t generation, DialogueSink& sink) {
     // An old scene's queued actor_ready must never resume a new scene's task.
@@ -57,7 +62,7 @@ bool DialoguePlayer::dialogue_finished(DialogueSink& sink,bool automatic) {
 }
 bool DialoguePlayer::choices_selected(uint32_t target_pc,uint32_t generation,DialogueSink& sink) {
     if(generation!=generation_ || status_!=DialogueStatus::AwaitChoices ||
-       target_pc>=content_.program(program_index_).command_count)return false;
+       target_pc>=source_program(program_index_).command_count)return false;
     pc_=target_pc;status_=DialogueStatus::Running;return resume(sink);
 }
 bool DialoguePlayer::submenu_closed(uint32_t generation,DialogueSink& sink) {
@@ -69,9 +74,9 @@ void DialoguePlayer::cancel() {
 }
 bool DialoguePlayer::resume(DialogueSink& sink) {
     constexpr size_t budget=32;
-    const auto program=content_.program(program_index_);
+    const auto program=source_program(program_index_);
     for(size_t n=0;n<budget && pc_<program.command_count;++n) {
-        const auto raw=content_.command(program.first_command+uint32_t(pc_++));
+        const auto raw=source_command(program.first_command+uint32_t(pc_++));
         DialogueAction action;
         action.kind=static_cast<DialogueActionKind>(raw.opcode);action.actor=raw.actor_index;
         action.phrase=raw.phrase;action.target_index=raw.target_index;action.auxiliary_index=raw.auxiliary_index;
@@ -84,9 +89,9 @@ bool DialoguePlayer::resume(DialogueSink& sink) {
         if(action.kind==DialogueActionKind::BranchFlag || action.kind==DialogueActionKind::BranchLeader) {
             if(action.auxiliary_index>=program.command_count)return fail("Dialogue branch outside program");
             if(action.kind==DialogueActionKind::BranchFlag) {
-                if(action.target_index>=content_.flag_count() || (action.value!=0&&action.value!=1))
+                if(action.target_index>=source_flag_count() || (action.value!=0&&action.value!=1))
                     return fail("Invalid dialogue flag condition");
-            } else if(action.target_index>=content_.string_count() || content_.string(action.target_index).empty()) {
+            } else if(action.target_index>=source_string_count() || source_string(action.target_index).empty()) {
                 return fail("Invalid dialogue leader condition");
             }
             bool matched=false;

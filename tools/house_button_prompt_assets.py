@@ -135,8 +135,22 @@ def stage_files(source_root):
   path=Path(r['path']);raw=(root/path).read_bytes();require(hashlib.sha256(raw).hexdigest()==r['sha256'],'Staged prompt texture mismatch');files[path]=raw
  return files
 
+def relink_source_bindings():
+ previous=json.loads(IR.read_text())
+ expected={'content/native-house.json','content/phone-stage/presentation.json',
+           'content/native-house-inspections.json'}
+ require(set(previous['dependencies'])==expected,'Unknown prompt binding dependency')
+ candidate=dict(previous,dependencies={path:sha(ROOT/path)for path in previous['dependencies']})
+ verify(candidate)
+ require(encode(candidate)==encode(previous),
+         'Prompt semantics changed; actual asset/source review required')
+ IR.write_bytes((json.dumps(candidate,ensure_ascii=False,indent=2)+'\n').encode('utf-8'))
+ print('Relinked unchanged prompt semantics from current checked source')
+
 def main():
- p=argparse.ArgumentParser();p.add_argument('action',choices=['assets','compile','verify']);p.add_argument('--tex3ds',type=Path);p.add_argument('--godot',type=Path);a=p.parse_args();d=build(a.tex3ds,a.godot) if a.action=='assets' else json.loads(IR.read_text());verify(d);blob=encode(d)
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['assets','bindings','compile','verify']);p.add_argument('--tex3ds',type=Path);p.add_argument('--godot',type=Path);a=p.parse_args()
+ if a.action=='bindings':relink_source_bindings();return
+ d=build(a.tex3ds,a.godot) if a.action=='assets' else json.loads(IR.read_text());verify(d);blob=encode(d)
  if a.action=='verify':require(PACK.read_bytes()==blob,'Prompt pack stale')
  else:PACK.write_bytes(blob)
  REPORT.mkdir(parents=True,exist_ok=True);(REPORT/'build.json').write_text(json.dumps(dict(bytes=len(blob),sha256=hashlib.sha256(blob).hexdigest(),scope=d['scope']),indent=2)+'\n');print('House prompts:',len(blob),'bytes')

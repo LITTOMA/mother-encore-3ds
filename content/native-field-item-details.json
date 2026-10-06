@@ -1,0 +1,1368 @@
+{
+  "schema": 1,
+  "kind": "encore.native-field-item-details.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "All 19 source item descriptions and existing icon PNGs, stable field definition identities; use actions remain independently pending",
+  "sources": {
+    "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+    "Data/Items/BaseballCap.yaml": "ac92c015108cb74e38fe489dee3e8e9ba67fbedd28afb7f2dae2564dd27662c7",
+    "Data/Items/CapsuleDEF.yaml": "015a97a72b6ff468bb4201b801c9fde9fc08d50ba751fd429be5e1dd169af699",
+    "Data/Items/CapsuleHP.yaml": "e4c2c77b3cd4d9c76061830cfe3ae7cebc908f1df00c9b2dc5ab61cffc12c723",
+    "Data/Items/CapsuleIQ.yaml": "4be4d4fca22df4e67d669cef7f00f2430a44d91a9c5c0ec51bd864fa82fd3874",
+    "Data/Items/CapsuleOFE.yaml": "138b3d188d5c916902a4eae6319e5aab0018526699d42310958b8bddabef2629",
+    "Data/Items/CapsulePP.yaml": "6cb20586236910a3b56593937c62e0f6af396477e7883843132188f8cfc00db9",
+    "Data/Items/CapsuleSPD.yaml": "9b2fa7adee577e69085ab5684ee7b793a3a6648d45699083671ce80e19c33814",
+    "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+    "Data/Items/EagleFeather.yaml": "69602dc23c3e4821ecd57b70914367225861459f8c9df799fadd4b35598c6b95",
+    "Data/Items/EyeDrops.yaml": "07871bb92ce847b86b61a746904d001009ae4828f7d18c8519d99d4b7bdf9579",
+    "Data/Items/FavFood.yaml": "af37bcef1ee7b36397ead1b46723ca54040d2cbb476bc262dbcbc980dd84cd4d",
+    "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+    "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+    "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+    "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+    "Data/Items/PhoneCard.yaml": "f7b194983181daaee5f0bae4a56d1d5f8aafec473cf469b61593d8d439c280ac",
+    "Data/Items/Shovel.yaml": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0",
+    "Data/Items/SportsDrink.yaml": "09ffeb14d8c25e1b99a9db89877c2ed0a9af435682ccd8953cd27455d53f5b20",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/Objects/Items/AsthmaSpray.png": "459c733d006c90e7f58ec34bf868a14cb3732521042b6acd03e2a148a1e0450d",
+    "Graphics/Objects/Items/AsthmaSpray.png.import": "f685872a1f6b7e99de4ccf5c7fb083bd29d7645806438bcdbfc34faf5c96feee",
+    "Graphics/Objects/Items/BaseballCap.png": "a488850070f306cce6fe08fc1546de558fb18873153dd2f80cf9944897308b05",
+    "Graphics/Objects/Items/BaseballCap.png.import": "079064d87a125b57b2871ebe4c7409a9d93cc0c41052e844e39d22167b00749e",
+    "Graphics/Objects/Items/CapsuleDEF.png": "854aa84423200ecf47ef19dd359ca511e8f3af4d6e50904abb901f0a47c5bb54",
+    "Graphics/Objects/Items/CapsuleDEF.png.import": "33db2662cccc0ec2cebf74a066c7996a6fe72c4380e2fbaeac25d67b8bfbcaac",
+    "Graphics/Objects/Items/CapsuleHP.png": "4bc7cfd0fdd8af54f0ef20e68a31996448d7c43c8cf7751311cf051165a67e89",
+    "Graphics/Objects/Items/CapsuleHP.png.import": "673f91a7a501a1a8f8ea4e3b8724c83b5168d91e81a886e007c351eee0084459",
+    "Graphics/Objects/Items/CapsuleIQ.png": "92e10c8c0afcf46c15d394745180cb0bb8c6d0201827bd700cabc1b352c47113",
+    "Graphics/Objects/Items/CapsuleIQ.png.import": "89cc9e74ab0571955e7ecb057a2c4bc9ebbad5eb67f3307a6989bfad7616bd0d",
+    "Graphics/Objects/Items/CapsuleOFE.png": "f5a08b57bdce0905f3638b3dd7e29dd4536161a8e8a509311d5abf76d44765d4",
+    "Graphics/Objects/Items/CapsuleOFE.png.import": "1cd517f2e0fea1a2e269652c3bf32b7c81155aa250b2aaba36071a5b9fe0badb",
+    "Graphics/Objects/Items/CapsulePP.png": "475715818f4c67cc82293ae32cba93e30a3b265909c12fab168a58bb4dcd7d97",
+    "Graphics/Objects/Items/CapsulePP.png.import": "82e1d6ccaa140bf83dd59c7b4c99ad4161cde0333a4dc16e56b85242f03dc0f4",
+    "Graphics/Objects/Items/CapsuleSPD.png": "207fcf323c32d92b58b5fa40e6ab3683cf324383643d6092b087b6ec93c63c0d",
+    "Graphics/Objects/Items/CapsuleSPD.png.import": "906ec5163ec7e39e8e3623f7b2463c63272b0ea9a6b0f3961957bc12a937decf",
+    "Graphics/Objects/Items/CashCard.png": "b34927962acf94a27fed0e67a71f69d89d8a0086e1d3f21d42eb0158693be7b8",
+    "Graphics/Objects/Items/CashCard.png.import": "ad0e711e7e6e9cb2646c6d3cab2c36265ef816aeced91175d19b9f5c4d2b3462",
+    "Graphics/Objects/Items/EagleFeather.png": "cf887134d0c3c397ea91c8da2a966594bcea2a9821e48f4e364e63af728e5b7d",
+    "Graphics/Objects/Items/EagleFeather.png.import": "55a1efce73d97297315e94ffebbe554b2db3bfe29e18a6b26208dac6f18a91bd",
+    "Graphics/Objects/Items/EyeDrops.png": "6239029aec483837f57583967e8135ba24f61a4b63f7d094b7843ddff9202547",
+    "Graphics/Objects/Items/EyeDrops.png.import": "28bc44b05e98565185fc9fc200cc5e65d671256f261a9e3dfdb84c669e8c53a2",
+    "Graphics/Objects/Items/FavFood.png": "fc596bb3bfc9a2f0b2eade8671d042f7feeff8ec5d592c4bfa9bd18997dc3726",
+    "Graphics/Objects/Items/FavFood.png.import": "ba4275a73d6a08c178bb45b13e89c664eb054919b748e86af70d544f97f8ccaf",
+    "Graphics/Objects/Items/Fries.png": "50f96264a490157ea0e9b35277d36fbbd2080fd980f8f93dd840f16c4663a734",
+    "Graphics/Objects/Items/Fries.png.import": "8dd355fb888c040dc815aa76afd5ebbe854ead1408e486f6eaedd9eef25aa2e0",
+    "Graphics/Objects/Items/GGFDiary.png": "bef0ee790d6fdac93ec6eae58954eb7a5888eafec53640fb649f6814f293172f",
+    "Graphics/Objects/Items/GGFDiary.png.import": "f01dea3689047b54a82ec6bf9b46f9f1770c43bf241d84b37dd4e6e504964c63",
+    "Graphics/Objects/Items/Hamburger.png": "fe2a015fface4bec3ce379523b36510f8ed9d39d874d171308201ebb756aa567",
+    "Graphics/Objects/Items/Hamburger.png.import": "b34814940107169922557173f32b25963326508afee2f77215d02d1e4c394bc2",
+    "Graphics/Objects/Items/KeyBasement.png": "532a9c60ccfbe68fcc55e710dc62715d25f70cb621bc46a05fbd96c17aae426f",
+    "Graphics/Objects/Items/KeyBasement.png.import": "21f68cc49807b93abb65404558384e1edc0d0a0abcbdf096328e2f61a05a794d",
+    "Graphics/Objects/Items/PhoneCard.png": "3f26d2955e8cf7626c57e6f8eb6e5509f92914307f0b1a3ebf32942f3b79f02c",
+    "Graphics/Objects/Items/PhoneCard.png.import": "4bb9b470247a3b7631c78bd25db1208373b21bb09acfea1f7ee5b11eae00625a",
+    "Graphics/Objects/Items/Shovel.png": "1139cb42931979e3c1198860e1488c5c31489db9580623e26da53e04cf89ff4d",
+    "Graphics/Objects/Items/Shovel.png.import": "c52a814d094d7364bfe6f114137bef50a57b3b0c093563e095e0015e753da067",
+    "Graphics/Objects/Items/SportsDrink.png": "8a85ac4d9c18338e131bc89cb1f6ed06f62df4f6b9d01386bf6777c88e25094e",
+    "Graphics/Objects/Items/SportsDrink.png.import": "e5b2b01ee6a2b7264b285a823d798d830aba9d47ac23dc85d27ee5b9ba3ce0df",
+    "Graphics/UI/Ailments/Ailments.tres": "e130b5e96b2b4333ddcbc84f034f4ca4cbe72f7f4799d8848c01f5e0b966b00b",
+    "Graphics/UI/Ailments/Asthma.png": "4eb4fe2e3f4df16d7cef7dc17115924d21ac53fb36306fc62d70258ca4864ec2",
+    "Graphics/UI/Ailments/Asthma.png.import": "cbee4d16c4540527a3bd3a12884ce5e4640a14dd42b157cf2d9eef8a08e34064",
+    "Graphics/UI/Ailments/Blinded.png": "bb05c1ff656bd717793e08722813339b94318ca1d433635e1b71d52b9881bb21",
+    "Graphics/UI/Ailments/Blinded.png.import": "4e3ccffd453197d0226b7f979e84b098061cb7902e7d9930c1b27cb89bca3629",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Ui/Description.tscn": "3b545cfad2de9565f1ce592991066d649e6c2d2de0433397189292b3f890d229",
+    "Scripts/UI/Reusables/Description.gd": "8d201cdfda978e7f25a856907bfdcfc32c090396ab129184d3232d6542a12551",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+    "Translations/TranslatedText/menus - sheet.csv": "3dcc6d531d7e594bdb805d567ebecdbfa2325dccb71eea8fe60a2f9ed4f3317b"
+  },
+  "dependencies": {
+    "content/native-field-item-definitions.json": "ecc0027fee5c2f30ff0ac05024906546a93732a44cabdf2195a4a07d2ed1978e"
+  },
+  "definitions": [
+    {
+      "id": 2003622725,
+      "source": "Data/Items/AsthmaSpray.yaml",
+      "raw_description": "ASTHMASPRAY_DESC",
+      "max_doses": 3,
+      "item_value": 0,
+      "item_icon": 2
+    },
+    {
+      "id": 1562639846,
+      "source": "Data/Items/BaseballCap.yaml",
+      "raw_description": "BASEBALLCAP_DESC",
+      "max_doses": 1,
+      "item_value": 5,
+      "item_icon": 3
+    },
+    {
+      "id": 702762067,
+      "source": "Data/Items/CapsuleDEF.yaml",
+      "raw_description": "CAPSULEDEF_DESC",
+      "max_doses": 1,
+      "item_value": 3,
+      "item_icon": 4
+    },
+    {
+      "id": 165225433,
+      "source": "Data/Items/CapsuleHP.yaml",
+      "raw_description": "CAPSULEHP_DESC",
+      "max_doses": 1,
+      "item_value": 3,
+      "item_icon": 5
+    },
+    {
+      "id": 3001947281,
+      "source": "Data/Items/CapsuleIQ.yaml",
+      "raw_description": "CAPSULEIQ_DESC",
+      "max_doses": 1,
+      "item_value": 3,
+      "item_icon": 6
+    },
+    {
+      "id": 1417994452,
+      "source": "Data/Items/CapsuleOFE.yaml",
+      "raw_description": "CAPSULEOFE_DESC",
+      "max_doses": 1,
+      "item_value": 3,
+      "item_icon": 7
+    },
+    {
+      "id": 3085826515,
+      "source": "Data/Items/CapsulePP.yaml",
+      "raw_description": "CAPSULEPP_DESC",
+      "max_doses": 1,
+      "item_value": 3,
+      "item_icon": 8
+    },
+    {
+      "id": 1802804110,
+      "source": "Data/Items/CapsuleSPD.yaml",
+      "raw_description": "CAPSULESPD_DESC",
+      "max_doses": 1,
+      "item_value": 3,
+      "item_icon": 9
+    },
+    {
+      "id": 3344933240,
+      "source": "Data/Items/CashCard.yaml",
+      "raw_description": "CASHCARD_DESC",
+      "max_doses": 1,
+      "item_value": 0,
+      "item_icon": 10
+    },
+    {
+      "id": 5178864,
+      "source": "Data/Items/EagleFeather.yaml",
+      "raw_description": "EAGLEFEATHER_DESC",
+      "max_doses": 1,
+      "item_value": 0,
+      "item_icon": 11
+    },
+    {
+      "id": 1866834746,
+      "source": "Data/Items/EyeDrops.yaml",
+      "raw_description": "EYEDROPS_DESC",
+      "max_doses": 1,
+      "item_value": 0,
+      "item_icon": 12
+    },
+    {
+      "id": 4274522818,
+      "source": "Data/Items/FavFood.yaml",
+      "raw_description": "FAVFOOD_DESC",
+      "max_doses": 1,
+      "item_value": 999,
+      "item_icon": 13
+    },
+    {
+      "id": 1748623541,
+      "source": "Data/Items/Fries.yaml",
+      "raw_description": "FRIES_DESC",
+      "max_doses": 1,
+      "item_value": 20,
+      "item_icon": 14
+    },
+    {
+      "id": 2706441889,
+      "source": "Data/Items/GGFDiary.yaml",
+      "raw_description": "GGFDIARY_DESC",
+      "max_doses": 1,
+      "item_value": 0,
+      "item_icon": 15
+    },
+    {
+      "id": 3883871197,
+      "source": "Data/Items/Hamburger.yaml",
+      "raw_description": "HAMBURGER_DESC",
+      "max_doses": 1,
+      "item_value": 50,
+      "item_icon": 16
+    },
+    {
+      "id": 2447421994,
+      "source": "Data/Items/KeyBasement.yaml",
+      "raw_description": "KEYBASEMENT_DESC",
+      "max_doses": 1,
+      "item_value": 0,
+      "item_icon": 17
+    },
+    {
+      "id": 3385744587,
+      "source": "Data/Items/PhoneCard.yaml",
+      "raw_description": "PHONECARD_DESC",
+      "max_doses": 10,
+      "item_value": 0,
+      "item_icon": 18
+    },
+    {
+      "id": 34071592,
+      "source": "Data/Items/Shovel.yaml",
+      "raw_description": "SHOVEL_DESC",
+      "max_doses": 1,
+      "item_value": 0,
+      "item_icon": 19
+    },
+    {
+      "id": 2244732371,
+      "source": "Data/Items/SportsDrink.yaml",
+      "raw_description": "SPORTSDRINK_DESC",
+      "max_doses": 1,
+      "item_value": 70,
+      "item_icon": 20
+    }
+  ],
+  "locales": [
+    {
+      "code": "en",
+      "separator": " ",
+      "total": "%s uses.",
+      "left_singular": "%s use left.",
+      "left_plural": "%s uses left.",
+      "image_measure": "——",
+      "base_color": 4294967295,
+      "hint_color": 4281109482
+    },
+    {
+      "code": "zh_Hans_CN",
+      "separator": "",
+      "total": "可用%s次。",
+      "left_singular": "剩余%s次。",
+      "left_plural": "剩余%s次。",
+      "image_measure": "——",
+      "base_color": 4294967295,
+      "hint_color": 4281109482
+    }
+  ],
+  "presentations": [
+    {
+      "definition": 2003622725,
+      "locale": "en",
+      "raw": "When [Ninten]'s asthma ([Asthma]) kicks in, use this. %s",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "When ",
+          "color": 0
+        },
+        {
+          "kind": "Nickname",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "'s asthma (",
+          "color": 0
+        },
+        {
+          "kind": "InlineImage",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ") kicks in, use this. ",
+          "color": 0
+        },
+        {
+          "kind": "Doses",
+          "value": 0,
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 2003622725,
+      "locale": "zh_Hans_CN",
+      "raw": "在[Ninten]的哮喘（[Asthma]）发作时使用。 %s",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "在",
+          "color": 0
+        },
+        {
+          "kind": "Nickname",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "的哮喘（",
+          "color": 0
+        },
+        {
+          "kind": "InlineImage",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "）发作时使用。 ",
+          "color": 0
+        },
+        {
+          "kind": "Doses",
+          "value": 0,
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1562639846,
+      "locale": "en",
+      "raw": "A hat for baseball players.\\nOther @ Defense +[ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "A hat for baseball players.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "Other @ Defense +",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1562639846,
+      "locale": "zh_Hans_CN",
+      "raw": "一顶棒球手的帽子。[BR]其他@防御力+[ItemValue]。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "一顶棒球手的帽子。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "其他@防御力+",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 702762067,
+      "locale": "en",
+      "raw": "Increases your Defense by [ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Increases your Defense by ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 702762067,
+      "locale": "zh_Hans_CN",
+      "raw": "将你的防御力提高[ItemValue]点。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "将你的防御力提高",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 165225433,
+      "locale": "en",
+      "raw": "Increases your maximum HP by [ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Increases your maximum HP by ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 165225433,
+      "locale": "zh_Hans_CN",
+      "raw": "将你的最大HP值提高[ItemValue]点。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "将你的最大HP值提高",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3001947281,
+      "locale": "en",
+      "raw": "Increases your IQ by [ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Increases your IQ by ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3001947281,
+      "locale": "zh_Hans_CN",
+      "raw": "将你的智力值提高[ItemValue]点。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "将你的智力值提高",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1417994452,
+      "locale": "en",
+      "raw": "Increases your Offense by [ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Increases your Offense by ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1417994452,
+      "locale": "zh_Hans_CN",
+      "raw": "将你的攻击力提高[ItemValue]点。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "将你的攻击力提高",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3085826515,
+      "locale": "en",
+      "raw": "Increases your maximum PP by [ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Increases your maximum PP by ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3085826515,
+      "locale": "zh_Hans_CN",
+      "raw": "将你的最大PP值提高[ItemValue]点。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "将你的最大PP值提高",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1802804110,
+      "locale": "en",
+      "raw": "Increases your Speed by [ItemValue].",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Increases your Speed by ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ".",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1802804110,
+      "locale": "zh_Hans_CN",
+      "raw": "将你的速度值提高[ItemValue]点。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "将你的速度值提高",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3344933240,
+      "locale": "en",
+      "raw": "Use it for all your banking needs.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Use it for all your banking needs.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3344933240,
+      "locale": "zh_Hans_CN",
+      "raw": "用于满足你所有银行业务的相关需求。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "用于满足你所有银行业务的相关需求。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 5178864,
+      "locale": "en",
+      "raw": "A feather dropped by a bald eagle.\\nIt gives you the power to jump long distances.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "A feather dropped by a bald eagle.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "It gives you the power to jump long distances.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 5178864,
+      "locale": "zh_Hans_CN",
+      "raw": "一根由白头鹰掉落的羽毛。[BR]它能赋予你远距离跳跃的能力。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "一根由白头鹰掉落的羽毛。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "它能赋予你远距离跳跃的能力。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1866834746,
+      "locale": "en",
+      "raw": "Cures blindness ([Blinded]).",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Cures blindness (",
+          "color": 0
+        },
+        {
+          "kind": "InlineImage",
+          "value": 1,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": ").",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1866834746,
+      "locale": "zh_Hans_CN",
+      "raw": "治愈失明（[Blinded]）。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "治愈失明（",
+          "color": 0
+        },
+        {
+          "kind": "InlineImage",
+          "value": 1,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "）。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 4274522818,
+      "locale": "en",
+      "raw": "Recovers all HP and PP for everyone.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Recovers all HP and PP for everyone.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 4274522818,
+      "locale": "zh_Hans_CN",
+      "raw": "回复所有人全部的HP值和PP值。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "回复所有人全部的HP值和PP值。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1748623541,
+      "locale": "en",
+      "raw": "Can be eaten with or without ketchup.\\nRestores [ItemValue] HP.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Can be eaten with or without ketchup.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "Restores ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": " HP.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 1748623541,
+      "locale": "zh_Hans_CN",
+      "raw": "可以蘸或者不蘸番茄酱使用。[BR]回复[ItemValue]点HP。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "可以蘸或者不蘸番茄酱使用。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "回复",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点HP。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 2706441889,
+      "locale": "en",
+      "raw": "It is old, ragged and filled with entries.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "It is old, ragged and filled with entries.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 2706441889,
+      "locale": "zh_Hans_CN",
+      "raw": "它陈旧且残破，上面写满了文字。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "它陈旧且残破，上面写满了文字。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3883871197,
+      "locale": "en",
+      "raw": "99% Beef.\\nRestores [ItemValue] HP.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "99% Beef.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "Restores ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": " HP.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3883871197,
+      "locale": "zh_Hans_CN",
+      "raw": "含量99%的牛肉。[BR]回复[ItemValue]点HP。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "含量99%的牛肉。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "回复",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点HP。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 2447421994,
+      "locale": "en",
+      "raw": "Mick was carrying this.\\nIt's the key for your house's basement.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Mick was carrying this.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "It's the key for your house's basement.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 2447421994,
+      "locale": "zh_Hans_CN",
+      "raw": "这是你家地下室的钥匙。[BR]米克之前一直拿着它。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "这是你家地下室的钥匙。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "米克之前一直拿着它。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3385744587,
+      "locale": "en",
+      "raw": "You can make calls on public phones with it.\\n%s",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "You can make calls on public phones with it.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Doses",
+          "value": 0,
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 3385744587,
+      "locale": "zh_Hans_CN",
+      "raw": "你可以用它来拨打公共电话。\\n%s",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "你可以用它来拨打公共电话。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Doses",
+          "value": 0,
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 34071592,
+      "locale": "en",
+      "raw": "Woah! You somehow got this shovel.\\nYou should give it back to its owner.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Woah! You somehow got this shovel.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "You should give it back to its owner.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 34071592,
+      "locale": "zh_Hans_CN",
+      "raw": "哇哦！你居然找到了这把铲子。[BR]或许你应该将它还给失主。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "哇哦！你居然找到了这把铲子。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "或许你应该将它还给失主。",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 2244732371,
+      "locale": "en",
+      "raw": "Can reinvigorate you when tired.\\nRestores [ItemValue] HP.",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "Can reinvigorate you when tired.",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "Restores ",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": " HP.",
+          "color": 0
+        }
+      ]
+    },
+    {
+      "definition": 2244732371,
+      "locale": "zh_Hans_CN",
+      "raw": "可以在你疲劳时恢复些许活力。[BR]回复[ItemValue]点HP。",
+      "tokens": [
+        {
+          "kind": "Text",
+          "value": "可以在你疲劳时恢复些许活力。",
+          "color": 0
+        },
+        {
+          "kind": "Newline",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "回复",
+          "color": 0
+        },
+        {
+          "kind": "ItemValue",
+          "value": 0,
+          "color": 0
+        },
+        {
+          "kind": "Text",
+          "value": "点HP。",
+          "color": 0
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "source": "Graphics/UI/Ailments/Asthma.png",
+      "path": "graphics/ui/field-item-details/asthma-status.t3x",
+      "kind": 1,
+      "width": 14,
+      "height": 12,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 2,
+      "source": "Graphics/UI/Ailments/Blinded.png",
+      "path": "graphics/ui/field-item-details/blinded-status.t3x",
+      "kind": 1,
+      "width": 17,
+      "height": 12,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 3,
+      "source": "Graphics/Objects/Items/AsthmaSpray.png",
+      "path": "graphics/ui/field-item-details/asthmaspray.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 4,
+      "source": "Graphics/Objects/Items/BaseballCap.png",
+      "path": "graphics/ui/field-item-details/baseballcap.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 5,
+      "source": "Graphics/Objects/Items/CapsuleDEF.png",
+      "path": "graphics/ui/field-item-details/capsuledef.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 6,
+      "source": "Graphics/Objects/Items/CapsuleHP.png",
+      "path": "graphics/ui/field-item-details/capsulehp.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 7,
+      "source": "Graphics/Objects/Items/CapsuleIQ.png",
+      "path": "graphics/ui/field-item-details/capsuleiq.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 8,
+      "source": "Graphics/Objects/Items/CapsuleOFE.png",
+      "path": "graphics/ui/field-item-details/capsuleofe.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 9,
+      "source": "Graphics/Objects/Items/CapsulePP.png",
+      "path": "graphics/ui/field-item-details/capsulepp.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 10,
+      "source": "Graphics/Objects/Items/CapsuleSPD.png",
+      "path": "graphics/ui/field-item-details/capsulespd.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 11,
+      "source": "Graphics/Objects/Items/CashCard.png",
+      "path": "graphics/ui/field-item-details/cashcard.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 12,
+      "source": "Graphics/Objects/Items/EagleFeather.png",
+      "path": "graphics/ui/field-item-details/eaglefeather.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 13,
+      "source": "Graphics/Objects/Items/EyeDrops.png",
+      "path": "graphics/ui/field-item-details/eyedrops.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 14,
+      "source": "Graphics/Objects/Items/FavFood.png",
+      "path": "graphics/ui/field-item-details/favfood.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 15,
+      "source": "Graphics/Objects/Items/Fries.png",
+      "path": "graphics/ui/field-item-details/fries.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 16,
+      "source": "Graphics/Objects/Items/GGFDiary.png",
+      "path": "graphics/ui/field-item-details/ggfdiary.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 17,
+      "source": "Graphics/Objects/Items/Hamburger.png",
+      "path": "graphics/ui/field-item-details/hamburger.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 18,
+      "source": "Graphics/Objects/Items/KeyBasement.png",
+      "path": "graphics/ui/field-item-details/keybasement.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 19,
+      "source": "Graphics/Objects/Items/PhoneCard.png",
+      "path": "graphics/ui/field-item-details/phonecard.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 20,
+      "source": "Graphics/Objects/Items/Shovel.png",
+      "path": "graphics/ui/field-item-details/shovel.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    },
+    {
+      "id": 21,
+      "source": "Graphics/Objects/Items/SportsDrink.png",
+      "path": "graphics/ui/field-item-details/sportsdrink.t3x",
+      "kind": 1,
+      "width": 20,
+      "height": 20,
+      "columns": 1,
+      "rows": 1
+    }
+  ],
+  "parameters": {
+    "LineHeight": 13,
+    "ImageBaseline": 0,
+    "ENNameLimit": 7,
+    "ZHNameLimit": 6
+  }
+}

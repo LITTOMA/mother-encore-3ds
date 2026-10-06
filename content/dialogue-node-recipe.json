@@ -1,0 +1,3868 @@
+{
+  "schema": 1,
+  "kind": "encore.field-node-recipe.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Ui/DialogueBox.tscn",
+  "scene_id": 2406403304,
+  "source_sha256": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+  "sources": {
+    "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+    "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+    "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+    "Fonts/EBMain_fw9.ttf": "72dfce0af15df8de28ef581def64dad6abfff808dd0b7ebdeb1eb1a4de5cfcdc",
+    "Fonts/EBMain_jaM3.ttf": "f3dd8efc820ea5243b86827e0faf8b27e4366436af0f7a7719bedafcbc4d9089",
+    "Fonts/EBMain_ko.ttf": "275fb7e6c6534823ddfc194b55c9a5c2184779c7db78b3b36d1439b3ef036411",
+    "Fonts/EBMain_la.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+    "Fonts/EBMain_zh_cn.ttf": "187143504eba58eab01fac1e661dda24f49873a2dbf74edb61dbb34b774f2e99",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/Overworld/flavours/defaultbox.png": "6619de192c886807770e56da4f7a8410d905479ce9915242bb6a03a89d8630dd",
+    "Graphics/UI/Overworld/flavours/defaulttag.png": "4f2aae1377c38297537a8cbbc7bbfec14b7b5bf13129877ddd8a4e724b631a9e",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+    "Shaders/MenuFlavors.tres": "4fa434ec67ea8d3cdb43f86ca1d8beaa1b389f6934d5217bf810a3a23b4c8c01",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5"
+  },
+  "native_sha256": "bf3b7baba9f880836a5e3ae894a05cb1bb7e45dc83d99dc7b4ee61e8fca3af21",
+  "tree_export_sha256": "6d2fea982814ecee986971e79b6d070de71b7b70c8e61c7ab2e7c3d451398f66",
+  "source_receipt_sha256": "be439ade9504fd2a4d42f4c2c9581e60a648d74dca87e9bee88d1ce847c3be1c",
+  "exporter_sha256": "7d6ff099080f770c3679f7cc5e27e7fcfad16601417d7709564ed3c0762ba0ae",
+  "classes": [
+    "Node",
+    "Node2D",
+    "Sprite",
+    "VisibilityNotifier2D",
+    "Position2D",
+    "CollisionShape2D",
+    "AnimationPlayer",
+    "Area2D",
+    "Timer",
+    "KinematicBody2D",
+    "VisibilityEnabler2D",
+    "TextureRect",
+    "HBoxContainer",
+    "Label",
+    "AudioStreamPlayer",
+    "RayCast2D",
+    "AnimatedSprite",
+    "StaticBody2D",
+    "CollisionPolygon2D",
+    "TileMap",
+    "YSort",
+    "Camera2D",
+    "AudioStreamPlayer2D",
+    "Tween",
+    "ReferenceRect",
+    "CanvasLayer",
+    "Control",
+    "NinePatchRect",
+    "GridContainer",
+    "RichTextLabel",
+    "VScrollBar"
+  ],
+  "script_methods": [
+    "_ready",
+    "_enter_tree",
+    "_exit_tree",
+    "_input",
+    "_unhandled_input",
+    "_unhandled_key_input",
+    "_process",
+    "_physics_process"
+  ],
+  "script_null_overrides": {},
+  "records": [
+    {
+      "native_generated": false,
+      "id": 2406403304,
+      "node": ".",
+      "name": "Dialogue",
+      "class_index": 25,
+      "native_class": "CanvasLayer",
+      "parent": 0,
+      "owner": 0,
+      "canvas_parent": 0,
+      "index": -1,
+      "pause": 2,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "Scripts/UI/DialogueBox.gd",
+      "script_sha": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+      "script_methods": 137,
+      "ready": 46
+    },
+    {
+      "native_generated": false,
+      "id": 590639956,
+      "node": "Dialoguebox",
+      "name": "Dialoguebox",
+      "class_index": 27,
+      "native_class": "NinePatchRect",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 99,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          28.0,
+          180.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          28.0,
+          180.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 24
+    },
+    {
+      "native_generated": false,
+      "id": 595623521,
+      "node": "Dialoguebox/Arrow",
+      "name": "Arrow",
+      "class_index": 16,
+      "native_class": "AnimatedSprite",
+      "parent": 590639956,
+      "owner": 2406403304,
+      "canvas_parent": 590639956,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          -0.0,
+          1.0
+        ],
+        [
+          108.0,
+          42.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          136.0,
+          222.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [
+        "idle_process_internal"
+      ],
+      "script": "Scripts/UI/cursor.gd",
+      "script_sha": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+      "script_methods": 137,
+      "ready": 3
+    },
+    {
+      "native_generated": false,
+      "id": 4208419471,
+      "node": "Dialoguebox/Arrow/Sprite",
+      "name": "Sprite",
+      "class_index": 2,
+      "native_class": "Sprite",
+      "parent": 595623521,
+      "owner": 595623521,
+      "canvas_parent": 595623521,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          136.0,
+          222.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 0
+    },
+    {
+      "native_generated": false,
+      "id": 2646165824,
+      "node": "Dialoguebox/Arrow/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 595623521,
+      "owner": 595623521,
+      "canvas_parent": 0,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 1
+    },
+    {
+      "native_generated": false,
+      "id": 3765870318,
+      "node": "Dialoguebox/Arrow/Timer",
+      "name": "Timer",
+      "class_index": 8,
+      "native_class": "Timer",
+      "parent": 595623521,
+      "owner": 595623521,
+      "canvas_parent": 0,
+      "index": 2,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 2
+    },
+    {
+      "native_generated": false,
+      "id": 2749157936,
+      "node": "Dialoguebox/Cursor_Down",
+      "name": "Cursor_Down",
+      "class_index": 16,
+      "native_class": "AnimatedSprite",
+      "parent": 590639956,
+      "owner": 2406403304,
+      "canvas_parent": 590639956,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          -3.6199901387590216e-06,
+          1.0
+        ],
+        [
+          -1.0,
+          -3.6199901387590216e-06
+        ],
+        [
+          249.0,
+          53.0
+        ]
+      ],
+      "world": [
+        [
+          -3.6199901387590216e-06,
+          1.0
+        ],
+        [
+          -1.0,
+          -3.6199901387590216e-06
+        ],
+        [
+          277.0,
+          233.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [
+        "idle_process_internal"
+      ],
+      "script": "Scripts/UI/cursor.gd",
+      "script_sha": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+      "script_methods": 137,
+      "ready": 7
+    },
+    {
+      "native_generated": false,
+      "id": 139349389,
+      "node": "Dialoguebox/Cursor_Down/Sprite",
+      "name": "Sprite",
+      "class_index": 2,
+      "native_class": "Sprite",
+      "parent": 2749157936,
+      "owner": 2749157936,
+      "canvas_parent": 2749157936,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          -3.6199901387590216e-06,
+          1.0
+        ],
+        [
+          -1.0,
+          -3.6199901387590216e-06
+        ],
+        [
+          277.0,
+          233.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 4
+    },
+    {
+      "native_generated": false,
+      "id": 2154834780,
+      "node": "Dialoguebox/Cursor_Down/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 2749157936,
+      "owner": 2749157936,
+      "canvas_parent": 0,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 5
+    },
+    {
+      "native_generated": false,
+      "id": 1117056902,
+      "node": "Dialoguebox/Cursor_Down/Timer",
+      "name": "Timer",
+      "class_index": 8,
+      "native_class": "Timer",
+      "parent": 2749157936,
+      "owner": 2749157936,
+      "canvas_parent": 0,
+      "index": 2,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 6
+    },
+    {
+      "native_generated": false,
+      "id": 1547641433,
+      "node": "Dialoguebox/Options",
+      "name": "Options",
+      "class_index": 28,
+      "native_class": "GridContainer",
+      "parent": 590639956,
+      "owner": 2406403304,
+      "canvas_parent": 590639956,
+      "index": 2,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          52.0,
+          38.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          80.0,
+          218.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 14
+    },
+    {
+      "native_generated": false,
+      "id": 1042072675,
+      "node": "Dialoguebox/Options/Option1",
+      "name": "Option1",
+      "class_index": 13,
+      "native_class": "Label",
+      "parent": 1547641433,
+      "owner": 2406403304,
+      "canvas_parent": 1547641433,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          80.0,
+          218.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 8
+    },
+    {
+      "native_generated": false,
+      "id": 2599077864,
+      "node": "Dialoguebox/Options/Option2",
+      "name": "Option2",
+      "class_index": 13,
+      "native_class": "Label",
+      "parent": 1547641433,
+      "owner": 2406403304,
+      "canvas_parent": 1547641433,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          72.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          152.0,
+          218.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 9
+    },
+    {
+      "native_generated": false,
+      "id": 1261183016,
+      "node": "Dialoguebox/Options/Option3",
+      "name": "Option3",
+      "class_index": 13,
+      "native_class": "Label",
+      "parent": 1547641433,
+      "owner": 2406403304,
+      "canvas_parent": 1547641433,
+      "index": 2,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          144.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          224.0,
+          218.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 10
+    },
+    {
+      "native_generated": false,
+      "id": 1306973911,
+      "node": "Dialoguebox/Options/Option4",
+      "name": "Option4",
+      "class_index": 13,
+      "native_class": "Label",
+      "parent": 1547641433,
+      "owner": 2406403304,
+      "canvas_parent": 1547641433,
+      "index": 3,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          16.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          80.0,
+          234.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 11
+    },
+    {
+      "native_generated": false,
+      "id": 2232168516,
+      "node": "Dialoguebox/Options/Option5",
+      "name": "Option5",
+      "class_index": 13,
+      "native_class": "Label",
+      "parent": 1547641433,
+      "owner": 2406403304,
+      "canvas_parent": 1547641433,
+      "index": 4,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          72.0,
+          31.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          152.0,
+          249.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 12
+    },
+    {
+      "native_generated": false,
+      "id": 2647782291,
+      "node": "Dialoguebox/Options/Option6",
+      "name": "Option6",
+      "class_index": 13,
+      "native_class": "Label",
+      "parent": 1547641433,
+      "owner": 2406403304,
+      "canvas_parent": 1547641433,
+      "index": 5,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          144.0,
+          31.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          224.0,
+          249.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 13
+    },
+    {
+      "native_generated": false,
+      "id": 3451010809,
+      "node": "Dialoguebox/ClipBox",
+      "name": "ClipBox",
+      "class_index": 26,
+      "native_class": "Control",
+      "parent": 590639956,
+      "owner": 2406403304,
+      "canvas_parent": 590639956,
+      "index": 3,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          5.0,
+          6.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          33.0,
+          186.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 20
+    },
+    {
+      "native_generated": false,
+      "id": 2424223072,
+      "node": "Dialoguebox/ClipBox/HBoxContainer",
+      "name": "HBoxContainer",
+      "class_index": 12,
+      "native_class": "HBoxContainer",
+      "parent": 3451010809,
+      "owner": 2406403304,
+      "canvas_parent": 3451010809,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.0,
+          -13.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          35.0,
+          173.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 19
+    },
+    {
+      "native_generated": false,
+      "id": 1578216556,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/DippinDots",
+      "name": "DippinDots",
+      "class_index": 29,
+      "native_class": "RichTextLabel",
+      "parent": 2424223072,
+      "owner": 2406403304,
+      "canvas_parent": 2424223072,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          35.0,
+          173.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 16
+    },
+    {
+      "native_generated": true,
+      "id": 327544620,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/DippinDots/@@2",
+      "name": "@@2",
+      "class_index": 30,
+      "native_class": "VScrollBar",
+      "parent": 1578216556,
+      "owner": 0,
+      "canvas_parent": 1578216556,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          35.0,
+          173.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 15
+    },
+    {
+      "native_generated": false,
+      "id": 19063755,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/Dialogue",
+      "name": "Dialogue",
+      "class_index": 29,
+      "native_class": "RichTextLabel",
+      "parent": 2424223072,
+      "owner": 2406403304,
+      "canvas_parent": 2424223072,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          10.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          45.0,
+          173.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 18
+    },
+    {
+      "native_generated": true,
+      "id": 2467094246,
+      "node": "Dialoguebox/ClipBox/HBoxContainer/Dialogue/@@3",
+      "name": "@@3",
+      "class_index": 30,
+      "native_class": "VScrollBar",
+      "parent": 19063755,
+      "owner": 0,
+      "canvas_parent": 19063755,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 65,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          45.0,
+          173.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 17
+    },
+    {
+      "native_generated": false,
+      "id": 2109953538,
+      "node": "Dialoguebox/Namebox",
+      "name": "Namebox",
+      "class_index": 27,
+      "native_class": "NinePatchRect",
+      "parent": 590639956,
+      "owner": 2406403304,
+      "canvas_parent": 590639956,
+      "index": 4,
+      "pause": 0,
+      "priority": 0,
+      "flags": 75,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          8.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          36.0,
+          180.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 23
+    },
+    {
+      "native_generated": false,
+      "id": 184208280,
+      "node": "Dialoguebox/Namebox/ClipBox",
+      "name": "ClipBox",
+      "class_index": 26,
+      "native_class": "Control",
+      "parent": 2109953538,
+      "owner": 2406403304,
+      "canvas_parent": 2109953538,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          36.0,
+          180.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 22
+    },
+    {
+      "native_generated": false,
+      "id": 691797382,
+      "node": "Dialoguebox/Namebox/ClipBox/Name",
+      "name": "Name",
+      "class_index": 13,
+      "native_class": "Label",
+      "parent": 184208280,
+      "owner": 2406403304,
+      "canvas_parent": 184208280,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          5.0,
+          3.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          41.0,
+          183.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 21
+    },
+    {
+      "native_generated": false,
+      "id": 821758871,
+      "node": "AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 25
+    },
+    {
+      "native_generated": false,
+      "id": 1513585325,
+      "node": "NameAnim",
+      "name": "NameAnim",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 2,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 26
+    },
+    {
+      "native_generated": false,
+      "id": 1489904582,
+      "node": "Timer",
+      "name": "Timer",
+      "class_index": 8,
+      "native_class": "Timer",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 3,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 27
+    },
+    {
+      "native_generated": false,
+      "id": 3265432023,
+      "node": "AudioStreamPlayer",
+      "name": "AudioStreamPlayer",
+      "class_index": 14,
+      "native_class": "AudioStreamPlayer",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 4,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 28
+    },
+    {
+      "native_generated": false,
+      "id": 3454379311,
+      "node": "SoundEffect",
+      "name": "SoundEffect",
+      "class_index": 14,
+      "native_class": "AudioStreamPlayer",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 5,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 29
+    },
+    {
+      "native_generated": false,
+      "id": 2568907891,
+      "node": "InputSound",
+      "name": "InputSound",
+      "class_index": 14,
+      "native_class": "AudioStreamPlayer",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 6,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 30
+    },
+    {
+      "native_generated": false,
+      "id": 3409658098,
+      "node": "WaitTimer",
+      "name": "WaitTimer",
+      "class_index": 8,
+      "native_class": "Timer",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 7,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 31
+    },
+    {
+      "native_generated": false,
+      "id": 3117544875,
+      "node": "Camera2D",
+      "name": "Camera2D",
+      "class_index": 21,
+      "native_class": "Camera2D",
+      "parent": 2406403304,
+      "owner": 2406403304,
+      "canvas_parent": 0,
+      "index": 8,
+      "pause": 2,
+      "priority": 0,
+      "flags": 323,
+      "z": -5,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "Scripts/Main/Camera2D.gd",
+      "script_sha": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+      "script_methods": 201,
+      "ready": 45
+    },
+    {
+      "native_generated": false,
+      "id": 1454644408,
+      "node": "Camera2D/Area2D",
+      "name": "Area2D",
+      "class_index": 7,
+      "native_class": "Area2D",
+      "parent": 3117544875,
+      "owner": 3117544875,
+      "canvas_parent": 3117544875,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 323,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 33
+    },
+    {
+      "native_generated": false,
+      "id": 1201501901,
+      "node": "Camera2D/Area2D/CollisionShape2D",
+      "name": "CollisionShape2D",
+      "class_index": 5,
+      "native_class": "CollisionShape2D",
+      "parent": 1454644408,
+      "owner": 3117544875,
+      "canvas_parent": 1454644408,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 577,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          -0.0,
+          1.0
+        ],
+        [
+          -0.5,
+          0.5
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          -0.5,
+          0.5
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 32
+    },
+    {
+      "native_generated": false,
+      "id": 1295067073,
+      "node": "Camera2D/ArrowsAnim",
+      "name": "ArrowsAnim",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 3117544875,
+      "owner": 3117544875,
+      "canvas_parent": 0,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 34
+    },
+    {
+      "native_generated": false,
+      "id": 3405313814,
+      "node": "Camera2D/ScopeArrows",
+      "name": "ScopeArrows",
+      "class_index": 1,
+      "native_class": "Node2D",
+      "parent": 3117544875,
+      "owner": 3117544875,
+      "canvas_parent": 3117544875,
+      "index": 2,
+      "pause": 0,
+      "priority": 0,
+      "flags": 1,
+      "z": 10,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          -0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [],
+      "script": "Scripts/UI/MapScreen/MapArrows.gd",
+      "script_sha": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+      "script_methods": 1,
+      "ready": 44
+    },
+    {
+      "native_generated": false,
+      "id": 3779319206,
+      "node": "Camera2D/ScopeArrows/arrowR",
+      "name": "arrowR",
+      "class_index": 16,
+      "native_class": "AnimatedSprite",
+      "parent": 3405313814,
+      "owner": 3405313814,
+      "canvas_parent": 3405313814,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          -0.0,
+          1.0
+        ],
+        [
+          180.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          180.0,
+          0.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [
+        "idle_process_internal"
+      ],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 36
+    },
+    {
+      "native_generated": false,
+      "id": 2879652911,
+      "node": "Camera2D/ScopeArrows/arrowR/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 3779319206,
+      "owner": 3405313814,
+      "canvas_parent": 0,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 35
+    },
+    {
+      "native_generated": false,
+      "id": 1055705887,
+      "node": "Camera2D/ScopeArrows/arrowL",
+      "name": "arrowL",
+      "class_index": 16,
+      "native_class": "AnimatedSprite",
+      "parent": 3405313814,
+      "owner": 3405313814,
+      "canvas_parent": 3405313814,
+      "index": 1,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          -1.0,
+          -2.5351816930196946e-06
+        ],
+        [
+          2.5351816930196946e-06,
+          -1.0
+        ],
+        [
+          -180.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          -1.0,
+          -2.5351816930196946e-06
+        ],
+        [
+          2.5351816930196946e-06,
+          -1.0
+        ],
+        [
+          -180.0,
+          0.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [
+        "idle_process_internal"
+      ],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 38
+    },
+    {
+      "native_generated": false,
+      "id": 3444891084,
+      "node": "Camera2D/ScopeArrows/arrowL/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 1055705887,
+      "owner": 3405313814,
+      "canvas_parent": 0,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 37
+    },
+    {
+      "native_generated": false,
+      "id": 3676534421,
+      "node": "Camera2D/ScopeArrows/arrowU",
+      "name": "arrowU",
+      "class_index": 16,
+      "native_class": "AnimatedSprite",
+      "parent": 3405313814,
+      "owner": 3405313814,
+      "canvas_parent": 3405313814,
+      "index": 2,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          -3.6199901387590216e-06,
+          -1.0
+        ],
+        [
+          1.0,
+          -3.6199901387590216e-06
+        ],
+        [
+          0.0,
+          -100.0
+        ]
+      ],
+      "world": [
+        [
+          -3.6199901387590216e-06,
+          -1.0
+        ],
+        [
+          1.0,
+          -3.6199901387590216e-06
+        ],
+        [
+          0.0,
+          -100.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [
+        "idle_process_internal"
+      ],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 40
+    },
+    {
+      "native_generated": false,
+      "id": 4070840599,
+      "node": "Camera2D/ScopeArrows/arrowU/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 3676534421,
+      "owner": 3405313814,
+      "canvas_parent": 0,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 39
+    },
+    {
+      "native_generated": false,
+      "id": 512545310,
+      "node": "Camera2D/ScopeArrows/arrowD",
+      "name": "arrowD",
+      "class_index": 16,
+      "native_class": "AnimatedSprite",
+      "parent": 3405313814,
+      "owner": 3405313814,
+      "canvas_parent": 3405313814,
+      "index": 3,
+      "pause": 0,
+      "priority": 0,
+      "flags": 67,
+      "z": 0,
+      "light_mask": 1,
+      "local": [
+        [
+          -3.6199901387590216e-06,
+          1.0
+        ],
+        [
+          -1.0,
+          -3.6199901387590216e-06
+        ],
+        [
+          0.0,
+          100.0
+        ]
+      ],
+      "world": [
+        [
+          -3.6199901387590216e-06,
+          1.0
+        ],
+        [
+          -1.0,
+          -3.6199901387590216e-06
+        ],
+        [
+          0.0,
+          100.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "groups": [
+        "idle_process_internal"
+      ],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 42
+    },
+    {
+      "native_generated": false,
+      "id": 377010792,
+      "node": "Camera2D/ScopeArrows/arrowD/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 512545310,
+      "owner": 3405313814,
+      "canvas_parent": 0,
+      "index": 0,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 41
+    },
+    {
+      "native_generated": false,
+      "id": 941453825,
+      "node": "Camera2D/ScopeArrows/AnimationPlayer",
+      "name": "AnimationPlayer",
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "parent": 3405313814,
+      "owner": 3405313814,
+      "canvas_parent": 0,
+      "index": 4,
+      "pause": 0,
+      "priority": 0,
+      "flags": 0,
+      "z": 0,
+      "light_mask": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "groups": [],
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "script_methods": 0,
+      "ready": 43
+    }
+  ],
+  "controls": [
+    {
+      "id": 590639956,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        28.0,
+        180.0,
+        292.0,
+        239.0
+      ],
+      "position": [
+        28.0,
+        180.0
+      ],
+      "size": [
+        264.0,
+        59.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        1.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 1547641433,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        52.0,
+        38.0,
+        255.0,
+        50.0
+      ],
+      "position": [
+        52.0,
+        38.0
+      ],
+      "size": [
+        203.0,
+        12.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        0.0,
+        0.0
+      ],
+      "size_flags": [
+        1.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 1,
+      "focus": 0
+    },
+    {
+      "id": 1042072675,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        0.0,
+        0.0,
+        60.0,
+        12.0
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        60.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        60.0,
+        10.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        3.0,
+        4.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 2599077864,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        72.0,
+        0.0,
+        132.0,
+        12.0
+      ],
+      "position": [
+        72.0,
+        0.0
+      ],
+      "size": [
+        60.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        60.0,
+        10.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        3.0,
+        4.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 1261183016,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        144.0,
+        0.0,
+        204.0,
+        12.0
+      ],
+      "position": [
+        144.0,
+        0.0
+      ],
+      "size": [
+        60.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        60.0,
+        10.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        3.0,
+        4.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 1306973911,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        0.0,
+        16.0,
+        60.0,
+        28.0
+      ],
+      "position": [
+        0.0,
+        16.0
+      ],
+      "size": [
+        60.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        60.0,
+        10.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        3.0,
+        4.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 2232168516,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        72.0,
+        31.0,
+        132.0,
+        43.0
+      ],
+      "position": [
+        72.0,
+        31.0
+      ],
+      "size": [
+        60.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        60.0,
+        10.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        3.0,
+        4.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 2647782291,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        144.0,
+        31.0,
+        204.0,
+        43.0
+      ],
+      "position": [
+        144.0,
+        31.0
+      ],
+      "size": [
+        60.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        60.0,
+        10.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        3.0,
+        4.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 3451010809,
+      "anchors": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "margins": [
+        5.0,
+        6.0,
+        0.0,
+        53.0
+      ],
+      "position": [
+        5.0,
+        6.0
+      ],
+      "size": [
+        0.0,
+        47.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        1.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": true,
+      "mouse": 0,
+      "focus": 0
+    },
+    {
+      "id": 2424223072,
+      "anchors": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "margins": [
+        2.0,
+        -13.0,
+        -7.0,
+        28.0
+      ],
+      "position": [
+        2.0,
+        -13.0
+      ],
+      "size": [
+        0.0,
+        41.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        1.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 1,
+      "focus": 0
+    },
+    {
+      "id": 1578216556,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        0.0,
+        0.0,
+        10.0,
+        60.0
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        10.0,
+        60.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        10.0,
+        60.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        1.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": true,
+      "mouse": 0,
+      "focus": 0
+    },
+    {
+      "id": 327544620,
+      "anchors": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "margins": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        12.0,
+        12.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        0.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 0,
+      "focus": 0
+    },
+    {
+      "id": 19063755,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        10.0,
+        0.0,
+        250.0,
+        60.0
+      ],
+      "position": [
+        10.0,
+        0.0
+      ],
+      "size": [
+        240.0,
+        60.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        235.0,
+        60.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        3.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 0,
+      "focus": 0
+    },
+    {
+      "id": 2467094246,
+      "anchors": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "margins": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        12.0,
+        12.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        0.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 0,
+      "focus": 0
+    },
+    {
+      "id": 2109953538,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        8.0,
+        0.0,
+        50.0,
+        47.0
+      ],
+      "position": [
+        8.0,
+        0.0
+      ],
+      "size": [
+        42.0,
+        47.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        1.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    },
+    {
+      "id": 184208280,
+      "anchors": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "margins": [
+        0.0,
+        0.0,
+        -15.0,
+        0.0
+      ],
+      "position": [
+        0.0,
+        0.0
+      ],
+      "size": [
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        0.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        1.0,
+        1.0
+      ],
+      "stretch": 1.0,
+      "clip": true,
+      "mouse": 0,
+      "focus": 0
+    },
+    {
+      "id": 691797382,
+      "anchors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "margins": [
+        5.0,
+        3.0,
+        27.0,
+        17.0
+      ],
+      "position": [
+        5.0,
+        3.0
+      ],
+      "size": [
+        22.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "rotation": 0.0,
+      "pivot": [
+        0.0,
+        0.0
+      ],
+      "min_size": [
+        22.0,
+        0.0
+      ],
+      "grow": [
+        1.0,
+        1.0
+      ],
+      "size_flags": [
+        1.0,
+        4.0
+      ],
+      "stretch": 1.0,
+      "clip": false,
+      "mouse": 2,
+      "focus": 0
+    }
+  ],
+  "canvas_layers": [
+    {
+      "id": 2406403304,
+      "visible": true,
+      "world_2d_binding": 0,
+      "layer": 4,
+      "follow_viewport": false,
+      "follow_scale": 1.0,
+      "transform": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "offset": [
+        0.0,
+        0.0
+      ],
+      "rotation": 0.0,
+      "scale": [
+        1.0,
+        1.0
+      ],
+      "custom_viewport": false
+    }
+  ],
+  "scene_admitted": false,
+  "pending": [
+    "Native CanvasLayer external Viewport/World2D must be supplied by real host at ENTER",
+    "Every native class and inherited script requires actual typed owner callbacks",
+    "RichTextLabel native VScrollBar children retained; no fake Control Ready/layout/render approval",
+    "Source timers/animations/fonts/audio/signals owned by independent checked consumers"
+  ]
+}

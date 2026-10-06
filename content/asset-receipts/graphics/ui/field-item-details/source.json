@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "b09188373506881d8681e1e08de128c1614cc0914359a9aa5642861eb05dfcac",
+  "producer_sha256": "378f62305ba60ce1c9261826d4415e4f8a5667a2e567bc9f4683e53b8310018a",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "outputs": {
+    "graphics/ui/field-item-details/asthma-status.t3x": {
+      "bytes": 1045,
+      "sha256": "08e919bb8aa5876a9dce6dd1a29addb8a043bcf3e1063ce6770854c42ba0c664",
+      "crc32": 1724363259
+    },
+    "graphics/ui/field-item-details/blinded-status.t3x": {
+      "bytes": 2069,
+      "sha256": "b4b77495688305e6a07ddd91cf8f4c40ae8de5606f685469590abf62e25b9eec",
+      "crc32": 3538207980
+    },
+    "graphics/ui/field-item-details/asthmaspray.t3x": {
+      "bytes": 4117,
+      "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd",
+      "crc32": 1751432948
+    },
+    "graphics/ui/field-item-details/baseballcap.t3x": {
+      "bytes": 4117,
+      "sha256": "c348428f72a469e12e0fac00567142d7a4c396197c73c7b28d469c20b52141f7",
+      "crc32": 4004747473
+    },
+    "graphics/ui/field-item-details/capsuledef.t3x": {
+      "bytes": 4117,
+      "sha256": "4c14b510755d8f981a7dc56573f815aeb2527388dfcd34b3e2bafb9ae904f800",
+      "crc32": 3859579343
+    },
+    "graphics/ui/field-item-details/capsulehp.t3x": {
+      "bytes": 4117,
+      "sha256": "7db5101a8abc54a4b74e5547c247b8b4cbe17b5e695d6c0e9b32c35f630eb142",
+      "crc32": 306692725
+    },
+    "graphics/ui/field-item-details/capsuleiq.t3x": {
+      "bytes": 4117,
+      "sha256": "8db1ddb1649f5b6a61fae0c0e4bd1e65929861183dafb9ef9764a028412529f1",
+      "crc32": 3543602786
+    },
+    "graphics/ui/field-item-details/capsuleofe.t3x": {
+      "bytes": 4117,
+      "sha256": "c2fb878e5a3d5563391ef84f3ef2f6e207238b3c2072b4f1571e7b92a20266fb",
+      "crc32": 1148693993
+    },
+    "graphics/ui/field-item-details/capsulepp.t3x": {
+      "bytes": 4117,
+      "sha256": "14a51a41097165c99e43cc4d55f57781bbccb02b046b2534488e26e6b2e0c6f0",
+      "crc32": 1320668032
+    },
+    "graphics/ui/field-item-details/capsulespd.t3x": {
+      "bytes": 4117,
+      "sha256": "96615c10feb5d309fe8bab412daf8184e33dc7bf5f7df0654d51dc2d7b764473",
+      "crc32": 1990557895
+    },
+    "graphics/ui/field-item-details/cashcard.t3x": {
+      "bytes": 4117,
+      "sha256": "8252d0cd0ece22a5e84047a2d727063ec73510e760b82e6056599a4aaf7819f7",
+      "crc32": 3995486731
+    },
+    "graphics/ui/field-item-details/eaglefeather.t3x": {
+      "bytes": 4117,
+      "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6",
+      "crc32": 307310163
+    },
+    "graphics/ui/field-item-details/eyedrops.t3x": {
+      "bytes": 4117,
+      "sha256": "09898e21981eb7508b1fd07d7787988ccd70ed76da08cb77601239c9e8491049",
+      "crc32": 3169279623
+    },
+    "graphics/ui/field-item-details/favfood.t3x": {
+      "bytes": 4117,
+      "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead",
+      "crc32": 2740292247
+    },
+    "graphics/ui/field-item-details/fries.t3x": {
+      "bytes": 4117,
+      "sha256": "582dc546bb5783a74dcb388122c0509f28ea6f11b7c68d276444be4b26404eb6",
+      "crc32": 3998317564
+    },
+    "graphics/ui/field-item-details/ggfdiary.t3x": {
+      "bytes": 4117,
+      "sha256": "de24fc5f30cad37ea26082bf4ef6f7b9b0bb731056d7b497464a4cb5c2590fbe",
+      "crc32": 2094781572
+    },
+    "graphics/ui/field-item-details/hamburger.t3x": {
+      "bytes": 4117,
+      "sha256": "e6f4e6874992bcac7e7a3b6c84e9b14c87c466e23adf69a813e8a3af4d218859",
+      "crc32": 145298222
+    },
+    "graphics/ui/field-item-details/keybasement.t3x": {
+      "bytes": 4117,
+      "sha256": "3f0b09eb22ff4491059c6714505ebe8279a969f6984f87d45f42fd55c5dc26c6",
+      "crc32": 789632635
+    },
+    "graphics/ui/field-item-details/phonecard.t3x": {
+      "bytes": 4117,
+      "sha256": "e8fb01b105e3a615b326794c34a3dec94f4e73d5729998904d9b59e73c61f4bc",
+      "crc32": 4069363358
+    },
+    "graphics/ui/field-item-details/shovel.t3x": {
+      "bytes": 4117,
+      "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b",
+      "crc32": 2607666783
+    },
+    "graphics/ui/field-item-details/sportsdrink.t3x": {
+      "bytes": 4117,
+      "sha256": "6a6318acd974342714f78d2a5f0ad80fc0777009656ead09f57b531498704d59",
+      "crc32": 2014016947
+    }
+  }
+}

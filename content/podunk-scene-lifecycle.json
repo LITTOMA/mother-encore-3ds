@@ -20873,21 +20873,11 @@
       "sha256": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2"
     },
     {
-      "id": 4062422804,
-      "node": "Objects/VendingMachine/interact_dialog",
-      "name": "interact_dialog",
-      "ready": 8406,
-      "role": 18,
-      "profile": 4294967295,
-      "script": "Scripts/Main/Interact Dialog.gd",
-      "sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406"
-    },
-    {
       "id": 1242185967,
       "node": "Objects/VendingMachine",
       "name": "VendingMachine",
       "ready": 8409,
-      "role": 0,
+      "role": 36,
       "profile": 4294967295,
       "script": "Scripts/Main/VendingMachine.gd",
       "sha256": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d"

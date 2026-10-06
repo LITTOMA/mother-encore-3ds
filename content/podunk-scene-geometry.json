@@ -71899,8 +71899,8 @@
       "ready": 8406,
       "flags": 1,
       "class_name": "Area2D",
-      "script": "Scripts/Main/Interact Dialog.gd",
-      "script_sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+      "script": "",
+      "script_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
       "local_transform": [
         [
           1.0,

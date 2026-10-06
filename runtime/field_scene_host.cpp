@@ -589,6 +589,27 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
         e = "Field SceneHost door_npc source Ready differs";
         return false;
       }
+  if ((c.vending_data || c.vending) &&
+      (!c.vending || !c.vending_data || !c.vending_data->valid() ||
+       c.vending->data() != c.vending_data || !c.geometry_data ||
+       !c.geometry || !c.prompt_data || !c.prompt ||
+       c.vending_data->scene_id() != d.identity().scene_id ||
+       c.vending_data->source_pin() != d.identity().upstream_commit ||
+       c.vending_data->scene_hash() != d.identity().source_sha256)) {
+    e = "Field SceneHost Vending actual initialized geometry/prompt/source missing";
+    return false;
+  }
+  if (c.vending_data) {
+    const auto &n = c.vending_data->descriptor();
+    std::array<uint8_t,32> source{};
+    if (!match(n.id,n.ready,n.node,FieldSceneRole::VendingMachine) ||
+        !d.source_hash(n.script_source,source) ||
+        source != c.vending_data->script_hash() ||
+        !c.vending_data->bind_geometry(*c.geometry_data,e)) {
+      if (e.empty()) e = "Field SceneHost Vending source roster differs";
+      return false;
+    }
+  }
   if (c.melody_data)
     for (const auto &n : c.melody_data->bindings())
       if (!exact_leaf(c.melody_data, n.id, n.ready_ordinal, n.node,
@@ -1054,6 +1075,15 @@ bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
     }
     family = 0x454e0031;
     capability = 3;
+    break;
+  case FieldSceneRole::VendingMachine:
+    if (!consumers_.vending || !consumers_.vending_data ||
+        consumers_.vending->data() != consumers_.vending_data)
+      return unavailable("Vending actual typed interaction host missing");
+    // The original Vending leaf defines interact/_end, no _ready. Its typed
+    // runtime was already bound to actual Shop, Player, Area and Prompt.
+    family = 0x454e003b;
+    capability = 1;
     break;
   case FieldSceneRole::MelodyBackground:
     if (!consumers_.melody)

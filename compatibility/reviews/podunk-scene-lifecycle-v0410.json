@@ -3,7 +3,7 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_admitted": false,
-  "ir_sha256": "2501db01db975867edb44616b50d09fe04fb788e208311697259ce569f23253a",
+  "ir_sha256": "076ef09da5f5d8ef0f538eb1673dbd5caa46f6d76172f7af023c0462cfcf91c5",
   "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
   "capability": "complete source script roster; FlagLandmark, FlaggableObject base methods, AreaRoom, DebugStart lifecycle only; all 71 Emotes typed onready object bindings",
   "source_classes": [
@@ -48,7 +48,7 @@
     "14 Door onready and actual body-entered signal lifecycle",
     "146 ButtonPrompt checked signal/animation Ready bridge",
     "13 DeadBush actual onready, VisibilityNotifier, source animation, prompt and deferred Roots callbacks",
-    "33 InteractDialog source Ready/flags/prompt/dialogue/item/thought consumers"
+    "32 InteractDialog source Ready/flags/prompt/dialogue/item/thought consumers"
   ],
   "dead_bush_review": {
     "ir_sha256": "ff4fb4f04eacb8b2e73dede649a84feb149b03f739d7874e76ac7964fc0a5e1e",
@@ -70,7 +70,7 @@
     ]
   },
   "interact_dialog_review": {
-    "ir_sha256": "85e9480a3c6dd43d56d66c24f241921f00eddd00e0f0a88635233dbc9584e6e2",
+    "ir_sha256": "5ea5a83a76c42af724076a14fcc1abfdab3f3de33125974c43ed052abb0939b3",
     "semantics": [
       "Complete 33 source instances with inner-to-outer overrides and exact postorder Ready",
       "Ready checks appear/disappear, queues hidden objects for deletion then connects flags_updated synchronously",
@@ -397,6 +397,20 @@
         "Source unknown animation/tween external listeners or arbitrary shader/material features require reviewed typed capabilities",
         "Cached actor/parent freed during wait follows actual source invalid-object errors; do not silently discard references or restore to invented parents"
       ]
+    },
+    "native-field-vending-machine:36": {
+      "ir_sha256": "3ff88c7f352beef4d78111162a234c01a1922b127c5ec9a27f9c755d360f0694",
+      "role": 36,
+      "count": 1,
+      "semantics": [
+        "Exactly one original Podunk VendingMachine; root Sprite no _ready callback",
+        "interact sets current shop then opens original dialogue, phrase1 actual null shop suspends/resumes existing dialogue callback",
+        "_end unpauses actual controlled player; does not write flags or fake shop success",
+        "Source main Sprite no shader; real nearest 1:1 PNG and single application of actual child local position/offset",
+        "Source null interact_dialog is geometry only; ancestor Vending typed interaction and existing checked ButtonPrompt own behavior",
+        "Source Prompt white flash/glow default modifier0 handled by checked existing FieldPrompt shader bridge"
+      ],
+      "pending": []
     }
   }
 }

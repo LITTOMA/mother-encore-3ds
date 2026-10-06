@@ -36,7 +36,7 @@ Doll 的正常战斗画面已接入受检纹理后端：GPU 直接采样两层�
 
 地下室门的保留钥匙、日记 Present、原版睡梦 / LifeUpA 学习图已接入 House / Room 消费者；独立资源承载剧情、特殊人物帧、Sparkles 和 Poltergeist / Good Morning 音乐区域。Session v7 保存实际钥匙 UID、技能和旗标；历史 rules6→7 和 rules7→8 的精确资源身份有独立受检转换。正常领取地下室钥匙需要波克顿屋外的 Mick 交互，因此整个“出门 → Mick → 地下室”流程目前仍未贯通。
 
-完整波克顿地图已经提取独立图层、原生碰撞几何、NPC、敌人、Sprite / Tint、Emotes、草地、Dandelion、门、ButtonPrompt、DeadBush 与 33 个 InteractDialog 来源资源及运行消费者。完整 2,157 项脚本 Ready 顺序保留；礼物 16、拾取物 3、可开启门 10、公用电话 4、Sparkles 22 和蝴蝶 94 已有来源二进制与实际生命周期调度；新增剧情区域 15、鸟 54、镜头限制区域 1 和音乐区域 13 已接入同一来源生命周期；镜头与四向提示 14 组、桥梁重挂接 14、事件激活 4、脚步区域 3、跳跃区域 14、楼梯 2、DoorNPC 1 与 MelodyBG 1 已加入受检生命周期；尚余 VendingMachine 1 个未知叶实例，完整场景树、玩家、原生节点演出和剧情 Host 仍阻断正式场景准入。独立物品定义资源收录 17 种原版物品和 36 项来源绑定，受检消费者保留实际库存归属、UID（含零）、剂量及共享随机流；完整野外会话与菜单接点尚待集成。这些模块尚未接成实际可玩的波克顿；当前打包只包含已接入 House 的资源。ButtonPrompt 使用来源字体布局和实际 tex3ds 纹理独立绘制 Label / Arrow，保留 Show / Float / Hide / Press、来源信号和设置。
+完整波克顿地图已经提取独立图层、原生碰撞几何、NPC、敌人、Sprite / Tint、Emotes、草地、Dandelion、门、ButtonPrompt、DeadBush 与 32 个 InteractDialog 来源资源及运行消费者。依据原版 `script = null` 覆写修正后，实际 2,156 项脚本 Ready 顺序保留；礼物 16、拾取物 3、可开启门 10、公用电话 4、Sparkles 22 和蝴蝶 94 已有来源二进制与实际生命周期调度；新增剧情区域 15、鸟 54、镜头限制区域 1 和音乐区域 13 已接入同一来源生命周期；镜头与四向提示 14 组、桥梁重挂接 14、事件激活 4、脚步区域 3、跳跃区域 14、楼梯 2、DoorNPC 1 与 MelodyBG 1 已加入受检生命周期；售货机已加入受检互动消费者；无脚本的互动 Area 不再伪造 Ready。独立完整 SceneTree 资源保存 8,686 原生节点的结构、实际脚本、变换、分组和延迟消息；原生节点演出、玩家和剧情 Host 仍阻断正式场景准入。独立物品定义资源收录 19 种原版物品和 36 项来源绑定，受检消费者保留实际库存归属、UID（含零）、剂量及共享随机流；完整野外会话与菜单接点尚待集成。这些模块尚未接成实际可玩的波克顿；当前打包只包含已接入 House 的资源。ButtonPrompt 使用来源字体布局和实际 tex3ds 纹理独立绘制 Label / Arrow，保留 Show / Float / Hide / Press、来源信号和设置。
 
 ## 未完成项
 
@@ -54,3 +54,7 @@ Doll 的正常战斗画面已接入受检纹理后端：GPU 直接采样两层�
 主机测试、真实交叉构建、打包检查、模拟器和真机是不同验证层次。构建步骤见 [BUILD](BUILD.md)，复现与验证要求见 [TESTING](TESTING.md)。当前 Old / New 3DS 真机验收仍未完成，没有全游戏适配百分比或目标设备帧率保证。
 
 后续顺序见 [开发计划](DEVELOPMENT_PLAN.md)。
+
+Mick 五个已支持原版程序已编译为独立资源，复用共享 DialoguePlayer 和 3DS 实际宿主；入口加载该资源，Telepathy 在完整场景及实际 NPC／DialogueBox Ready 前拒绝消费 PP。原版 Zoo 商品买卖、售货机、19 种物品的两种语言描述和图标已有受检资源／消费者，价格字体保留源字符间距与空格间距（ENCFONT v2）。它们仍待完整野外 UI、库存和会话接点，未声明商店或屋外路线已经可玩。
+
+构建证据：`4f6bc65c` 在 [run 37394490265](https://github.com/LITTOMA/mother-encore-3ds/actions/runs/37394490265) 完成真实 ARM、3DSX、CIA、实际 RomFS 提取与比对、源树只读检查并上传 artifact 11382861957。主机／sanitizer 测试按请求跳过；模拟器与真机结果未验收。新候选仍需其自身的构建证据。

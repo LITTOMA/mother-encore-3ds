@@ -280,9 +280,23 @@ def stage_files(root):
  for p,v in r['outputs'].items():
   path=Path(p);require(not path.is_absolute()and'..'not in path.parts,'Unsafe name resource');raw=(Path(root)/path).read_bytes();require(hashlib.sha256(raw).hexdigest()==v['sha256'],'Staged naming texture mismatch');files[path]=raw
  return files
+def relink_source_bindings():
+ # Geometry and textures remain the actual reviewed engine/tool outputs.
+ # Only source-keyed battle names and their dependency closure are rederived.
+ # Full verify rejects any source/layout/art drift before writing this IR.
+ previous=read_json(IR);ex,current,_=base();resolve_bindings(ex,current)
+ candidate=dict(previous,dependencies=current['dependencies'],
+                bindings=current['bindings'],sources=current['sources'])
+ verify(candidate)
+ require(encode(candidate)==encode(previous),
+         'Name binding semantics changed; actual asset/source review required')
+ write_json(IR,candidate)
+ print('Relinked unchanged naming semantics from current checked source')
+
 if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','compile','verify']);ap.add_argument('--tex3ds');ap.add_argument('--godot');a=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','bindings','compile','verify']);ap.add_argument('--tex3ds');ap.add_argument('--godot');a=ap.parse_args()
  if a.action=='assets':extract_assets(Path(a.tex3ds),Path(a.godot))
+ elif a.action=='bindings':relink_source_bindings()
  else:
   r=read_json(IR);verify(r);raw=encode(r)
   if a.action=='compile':PACK.write_bytes(raw)

@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "3ff88c7f352beef4d78111162a234c01a1922b127c5ec9a27f9c755d360f0694",
+  "producer_sha256": "24bbf6771d0f7ba1fea7026432fe08f8dd0e015f117b25b6dfb9f7861b4daf83",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "path": "graphics/objects/vending-machine.t3x",
+  "bytes": 16405,
+  "sha256": "1fa27a6601f552a8fe6178dbb40cf0d1e185ac285ce03c8ae87ff88764002252"
+}

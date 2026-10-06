@@ -88,8 +88,24 @@ bool FieldGlobalRegistry::construct(const FieldGlobalExternalSpec&spec,FieldObje
  auto binding=owner->binding();
  if(binding.object!=id||!binding.family||!binding.capability||!equal_spec(binding.source,spec)){objects_.erase(id);return fail(e,"Global external owner source/family receipt rejected");}
  FieldGlobalExternalState state;
- if(!owner->state(state,e)||state.name!=spec.name||state.parent||!state.children.empty()||state.inside||state.ready){objects_.erase(id);return fail(e,"Global external constructor must expose actual out-of-tree pending state");}
- auto&slot=objects_.at(id);slot.external=std::move(owner);slot.definition=spec.stable_id;out=id;return true;
+ if(!owner->state(state,e)||state.name!=spec.name||state.parent||state.inside||state.ready){objects_.erase(id);return fail(e,"Global external constructor must expose actual out-of-tree pending state");}
+ auto&slot=objects_.at(id);
+ if(!state.children.empty()||slot.tree){
+  // The original global.tscn constructor owns a complete checked native
+  // branch. Its external script object and NodeTree share this same ObjectID,
+  // rather than publishing a second synthetic root or a child-list receipt.
+  FieldIdentity identity;const auto*n=slot.tree?slot.tree->state(id):nullptr;
+  const auto*d=slot.tree?slot.tree->descriptor(id):nullptr;
+  if(!data_||spec.role!=3||spec.stable_id!=data_->global_autoload()||binding.family!=0x454e0055||binding.capability!=1||!slot.tree||slot.tree->root()!=id||slot.tree->object_domain()!=kernel_||!n||!d||!slot.tree->object_identity(id,identity)||identity.upstream_commit!=spec.identity.upstream_commit||identity.source_sha256!=spec.source_sha||d->native_class!=spec.native_class||d->script!=spec.script||d->script_sha!=spec.script_sha||n->name!=state.name||n->parent||n->inside||n->ready_notified||n->children!=state.children){poisoned_=true;return fail(e,"Global external constructor actual source branch differs");}
+  std::vector<FieldObjectId>pending{id};std::set<FieldObjectId>seen;
+  for(size_t at=0;at<pending.size();++at){
+   const auto object=pending[at];const auto i=objects_.find(object);
+   const auto*actual=slot.tree->state(object);FieldIdentity original;
+   if(!seen.insert(object).second||i==objects_.end()||i->second.tree!=slot.tree||i->second.external||i->second.native||i->second.reference_published||!actual||actual->inside||actual->ready_notified||!slot.tree->object_identity(object,original)||(original.scene_id!=identity.scene_id||original.upstream_commit!=identity.upstream_commit||original.source_sha256!=identity.source_sha256)){poisoned_=true;return fail(e,"Global external constructor contains foreign or entered children");}
+   for(auto child:actual->children){const auto*c=slot.tree->state(child);if(!c||c->parent!=object){poisoned_=true;return fail(e,"Global external constructor source child parent differs");}pending.push_back(child);}
+  }
+ }
+ slot.external=std::move(owner);slot.definition=spec.stable_id;out=id;return true;
 }
 bool FieldGlobalRegistry::initialize(const FieldGlobalRegistryData&d,FieldGlobalRegistryHost h,std::string&e){
  if(data_||!d.valid()||!h.construct)return fail(e,"Global registry data/typed host/initial ownership rejected");

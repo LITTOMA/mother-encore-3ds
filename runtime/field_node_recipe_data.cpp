@@ -101,11 +101,11 @@ namespace encore::upstream {
    return !s.empty()&&s!="."&&s!=".."&&s.find_first_of("/:\\") ==s.npos;
   }
   bool native_canvas(uint32_t i){
-   return i!=0&&i!=6&&i!=8&&i!=14&&i!=23&&i!=25&&i!=43&&i!=44;
+   return i!=0&&i!=6&&i!=8&&i!=14&&i!=23&&i!=25&&i!=43&&i!=44&&i!=46;
   }
   // Class names form the native structural schema, not game-content bindings.
   const char*native_classes[]={
-   "Node","Node2D","Sprite","VisibilityNotifier2D","Position2D","CollisionShape2D","AnimationPlayer","Area2D","Timer","KinematicBody2D","VisibilityEnabler2D","TextureRect","HBoxContainer","Label","AudioStreamPlayer","RayCast2D","AnimatedSprite","StaticBody2D","CollisionPolygon2D","TileMap","YSort","Camera2D","AudioStreamPlayer2D","Tween","ReferenceRect","CanvasLayer","Control","NinePatchRect","GridContainer","RichTextLabel","VScrollBar","PanelContainer","ColorRect","CenterContainer","MarginContainer","VBoxContainer","TextureButton","ScrollContainer","HScrollBar","TextureProgress","Panel","Path2D","PathFollow2D","WorldEnvironment","ParallaxBackground","ParallaxLayer"
+   "Node","Node2D","Sprite","VisibilityNotifier2D","Position2D","CollisionShape2D","AnimationPlayer","Area2D","Timer","KinematicBody2D","VisibilityEnabler2D","TextureRect","HBoxContainer","Label","AudioStreamPlayer","RayCast2D","AnimatedSprite","StaticBody2D","CollisionPolygon2D","TileMap","YSort","Camera2D","AudioStreamPlayer2D","Tween","ReferenceRect","CanvasLayer","Control","NinePatchRect","GridContainer","RichTextLabel","VScrollBar","PanelContainer","ColorRect","CenterContainer","MarginContainer","VBoxContainer","TextureButton","ScrollContainer","HScrollBar","TextureProgress","Panel","Path2D","PathFollow2D","WorldEnvironment","ParallaxBackground","ParallaxLayer","AnimationTree"
   }
   ;
  }
@@ -162,7 +162,7 @@ namespace encore::upstream {
   }
   ;
   if(!p||n<128||n>32*1024*1024)return reject("NodeRecipe size rejected");
-  if(std::memcmp(p,"ENCFNRC1",8)||word(p+8)!=1||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e003d||(word(p+28)!=3&&word(p+28)!=4&&word(p+28)!=5)||!word(p+32)||word(p+32)>100000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("NodeRecipe identity/version/capability rejected");
+  if(std::memcmp(p,"ENCFNRC1",8)||word(p+8)!=1||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e003d||(word(p+28)!=3&&word(p+28)!=4&&word(p+28)!=5&&word(p+28)!=6)||!word(p+32)||word(p+32)>100000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("NodeRecipe identity/version/capability rejected");
   if(crc(p+128,n-128)!=word(p+20)||std::all_of(p+92,p+124,[](uint8_t v){
    return !v;
   }
@@ -176,7 +176,7 @@ namespace encore::upstream {
   ;
   d.scene_=r.text();
   auto count=r.integer();
-  if(!r.ok||!path(d.scene_)||count!=(word(p+28)==3?31:word(p+28)==4?43:std::size(native_classes)))return reject("NodeRecipe native class schema rejected");
+  if(!r.ok||!path(d.scene_)||count!=(word(p+28)==3?31:word(p+28)==4?43:word(p+28)==5?46:std::size(native_classes)))return reject("NodeRecipe native class schema rejected");
   for(uint32_t i=0;i<count;++i){
    auto s=r.text();
    if(s!=native_classes[i])return reject("NodeRecipe class opcode rejected");

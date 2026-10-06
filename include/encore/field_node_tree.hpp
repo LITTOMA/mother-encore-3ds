@@ -38,7 +38,7 @@ enum class FieldTreePhase:uint32_t {
  PostEnterNative,ReadyNative,ReadyScript,ReadySignal,
  ExitScript,TreeExiting,ExitNative,NodeRemoved,ChildExiting,TreeExited,
  VisibilityChanged,Hide,TransformChanged,LocalTransformChanged,Parented,Unparented,ChildMoved,Deleting,
- Idle,Physics,IdleInternal,PhysicsInternal,Input,UnhandledInput,UnhandledKeyInput
+ Idle,Physics,IdleInternal,PhysicsInternal,Input,UnhandledInput,UnhandledKeyInput,PathChanged
 };
 // A live source adapter owns the native subclass and every inherited script.
 // None of these receipts approve an arbitrary node, missing callback or script.
@@ -60,6 +60,10 @@ struct FieldNodeTreeHost {
  // The actual global ObjectDB allocator is shared across old/new scenes and
  // dynamic factories. Stable source IDs are not runtime ObjectIDs.
  std::function<bool(FieldObjectId&,std::string&)>allocate_object;
+ // Source script attachment, before instance name/groups/parent/owner. The
+ // concrete source owner admits ordered properties and inherited constructors.
+ // New owning initialization APIs require this callback; it never grants Ready.
+ std::function<bool(FieldObjectId,const FieldNodeDescriptor&,const FieldIdentity&,std::string&)>construct_source;
  std::function<bool(uint64_t&,std::string&)>allocate_fast_name;
  std::function<bool(FieldObjectId,const FieldNodeDescriptor&,FieldNodeBinding&,std::string&)>bind;
  std::function<bool(FieldObjectId,const FieldNodeBinding&,FieldTreePhase,std::string&)>dispatch;
@@ -89,6 +93,11 @@ struct FieldNodeState {
 class FieldNodeTreeRuntime {
 public:
  bool initialize(const FieldNodeTreeData&,FieldNodeTreeHost,std::string&);
+ bool initialize_recipe(const FieldNodeRecipeData&,FieldNodeTreeHost,std::string&);
+ // One checked source .new() descriptor; actual Node name stays empty until
+ // source set_name/add_child. This is not arbitrary class/script evaluation.
+ bool initialize_source_node(const FieldIdentity&,const FieldNodeDescriptor&,FieldNodeTreeHost,std::string&);
+ bool set_name(FieldObjectId,std::string_view,std::string&);
  const FieldNodeState*state(FieldObjectId)const;
  const FieldNodeDescriptor*descriptor(FieldObjectId)const;
  bool object_identity(FieldObjectId,FieldIdentity&)const;

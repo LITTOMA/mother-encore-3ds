@@ -76,6 +76,48 @@ namespace encore::upstream {
   e.clear();
   return true;
  }
+ bool FieldNodeTreeRuntime::initialize_recipe(const FieldNodeRecipeData&d,FieldNodeTreeHost h,std::string&e){
+  if(!d.valid()||!h.construct_source||!h.allocate_object||!h.allocate_fast_name||!h.bind||!h.dispatch||!h.deferred||!h.object_exists||!h.input_registration||!h.external_pause_process||!h.release)return fail(e,"NodeTree source recipe constructor host incomplete");
+  if(root_||!nodes_.empty()||poisoned_)return fail(e,"NodeTree source recipe already owns objects");
+  if((h.enqueue_global&&!h.object_domain)||bool(h.enqueue_global)!=bool(h.flush_global))return fail(e,"NodeTree source recipe global queue/domain rejected");
+  // Internal native children must be allocated inside their actual parent's
+  // native constructor, before script attachment. This capability does not
+  // substitute a later record allocation for that original constructor.
+  for(const auto&r:d.records())if(r.native_generated)return fail(e,"NodeTree source constructor internal native child unsupported");
+  host_=std::move(h);FieldObjectId id=0;
+  if(!instantiate_recipe(d,id,e))return false;
+  root_=id;for(const auto&v:nodes_)source_index_.emplace(v.second.source,v.first);
+  e.clear();return true;
+ }
+ bool FieldNodeTreeRuntime::initialize_source_node(const FieldIdentity&identity,const FieldNodeDescriptor&r,FieldNodeTreeHost h,std::string&e){
+  const auto zero=[](const auto&a){return std::all_of(a.begin(),a.end(),[](uint8_t v){return v==0;});};
+  if(!identity.scene_id||zero(identity.upstream_commit)||zero(identity.source_sha256)||r.id!=identity.scene_id||r.path!="."||!r.name.empty()||r.parent||r.owner||r.canvas_parent||r.index!=-1||r.class_index||r.native_class!="Node"||r.native_generated||r.pause||r.flags||r.priority||r.z||r.ready||r.script.empty()||zero(r.script_sha)||!r.groups.empty()||!finite(r.local)||!finite(r.world)||!finite(r.modulate)||!finite(r.self_modulate))return fail(e,"NodeTree standalone source Node constructor descriptor rejected");
+  if(!h.construct_source||!h.allocate_object||!h.allocate_fast_name||!h.bind||!h.dispatch||!h.deferred||!h.object_exists||!h.input_registration||!h.external_pause_process||!h.release)return fail(e,"NodeTree standalone source Node constructor host incomplete");
+  if(root_||!nodes_.empty()||poisoned_)return fail(e,"NodeTree standalone source Node already owns objects");
+  if((h.enqueue_global&&!h.object_domain)||bool(h.enqueue_global)!=bool(h.flush_global))return fail(e,"NodeTree standalone source Node queue/domain rejected");
+  host_=std::move(h);FieldObjectId id=0;
+  if(!instantiate_records(identity,{r},r.id,true,id,e))return false;
+  root_=id;source_index_.emplace(r.id,id);e.clear();return true;
+ }
+ bool FieldNodeTreeRuntime::set_name(FieldObjectId id,std::string_view name,std::string&e){
+  auto*n=live(id);
+  // The currently mapped source call renames a detached Player instance. Live
+  // parent uniqueness, unique-name-in-owner and SceneTree rename signals need
+  // their own source consumers; never silently skip those mechanisms.
+  if(poisoned_||!n||n->inside||n->parent||n->blocked||n->queued||!text(name)||name=="."||name==".."||name.find_first_of(".:@/\\")!=name.npos)return fail(e,"NodeTree detached source name boundary rejected");
+  n->name=std::string(name);
+  std::function<bool(FieldObjectId)>notify=[&](FieldObjectId object){
+   auto*current=live(object);if(!current)return fail(e,"NodeTree source path notification object disappeared");
+   if(!emit(object,FieldTreePhase::PathChanged,e))return false;
+   current=live(object);if(!current)return fail(e,"NodeTree source path notification deleted owner");
+   ++current->blocked;const auto children=current->children;
+   for(auto child:children)if(!notify(child)){if(auto*alive=live(object))--alive->blocked;return false;}
+   if(auto*alive=live(object))--alive->blocked;
+   return true;
+  };
+  if(!notify(id)){poisoned_=true;return false;}
+  ++order_version_;e.clear();return true;
+ }
  bool FieldNodeTreeRuntime::instantiate(const FieldNodeTreeData&d,uint32_t first,FieldObjectId&out,std::string&e){
   if(!d.valid()||!d.record(first))return fail(e,"NodeTree dynamic source root missing");
   auto records=d.records();
@@ -130,7 +172,7 @@ namespace encore::upstream {
    FieldNodeState n;
    n.object=id;
    n.source=r.id;
-   n.name=r.name;
+   n.name=host_.construct_source?std::string():r.name;
    if(r.native_generated){
     if(!recipe||r.native_class!="VScrollBar"||!created.count(r.parent)||sources_.at(created.at(r.parent)).descriptor.native_class!="RichTextLabel"){
      poisoned_=true;return fail(e,"NodeTree original internal constructor owner rejected");
@@ -147,20 +189,30 @@ namespace encore::upstream {
    n.world=r.world;
    n.modulate=r.modulate;
    n.self_modulate=r.self_modulate;
-   n.groups=r.groups;
+   if(!host_.construct_source)n.groups=r.groups;
    n.world_dirty=true;
-   if(r.id!=first){
+   if(r.id!=first&&!host_.construct_source){
     n.parent=created.at(r.parent);
     nodes_.at(n.parent).children.push_back(id);
    }
-   if(created.count(r.owner))n.owner=created.at(r.owner);
-   if(created.count(r.canvas_parent))n.canvas_parent=created.at(r.canvas_parent);
+   if(!host_.construct_source&&created.count(r.owner))n.owner=created.at(r.owner);
+   if(!host_.construct_source&&created.count(r.canvas_parent))n.canvas_parent=created.at(r.canvas_parent);
    for(const auto&g:n.groups)group_index_[g].push_back(id);
    nodes_.emplace(id,std::move(n));
    sources_.emplace(id,OwnedSource{
     identity,r,recipe
    }
    );
+   if(host_.construct_source){
+    if(r.native_generated||!host_.construct_source(id,r,identity,e)){poisoned_=true;return false;}
+    auto*actual=live(id);
+    if(!actual||actual->parent||actual->inside||actual->ready_notified){poisoned_=true;return fail(e,"NodeTree source constructor changed instance lifecycle");}
+    actual->name=r.name;actual->groups=r.groups;
+    if(r.id!=first){actual->parent=created.at(r.parent);nodes_.at(actual->parent).children.push_back(id);}
+    if(created.count(r.owner))actual->owner=created.at(r.owner);
+    if(created.count(r.canvas_parent))actual->canvas_parent=created.at(r.canvas_parent);
+    for(const auto&g:actual->groups)group_index_[g].push_back(id);
+   }
   }
   ++order_version_;
   if(!created.count(first)){poisoned_=true;return fail(e,"NodeTree complete factory root missing");}

@@ -191,7 +191,7 @@ namespace encore::upstream {
   return host_.dispatch(id,binding,p,e);
  }
  bool FieldNodeTreeRuntime::enter(std::string&e){
-  if(poisoned_||driving_||!frames_.empty()||!live(root_)||live(root_)->inside)return fail(e,"NodeTree enter state rejected");
+  if(poisoned_||driving_||!frames_.empty()||split_lifecycle_!=SplitLifecycle::None||!live(root_)||live(root_)->inside)return fail(e,"NodeTree enter state rejected");
   frames_.push_back({
    root_,1,0,0
   }
@@ -202,8 +202,31 @@ namespace encore::upstream {
   );
   return drive(e);
  }
+ void FieldNodeTreeRuntime::complete_split_lifecycle(){
+  if(!frames_.empty())return;
+  if(split_lifecycle_==SplitLifecycle::Entering)split_lifecycle_=SplitLifecycle::AwaitingReady;
+  else if(split_lifecycle_==SplitLifecycle::Readying)split_lifecycle_=SplitLifecycle::None;
+ }
+ bool FieldNodeTreeRuntime::enter_branch_only(std::string&e){
+  if(poisoned_||driving_||!frames_.empty()||split_lifecycle_!=SplitLifecycle::None||!live(root_)||live(root_)->inside)return fail(e,"NodeTree split Enter state rejected");
+  split_lifecycle_=SplitLifecycle::Entering;
+  frames_.push_back({root_,0,0,0});
+  if(!drive(e))return false;
+  complete_split_lifecycle();
+  return true;
+ }
+ bool FieldNodeTreeRuntime::ready_entered_branch(std::string&e){
+  if(poisoned_||driving_||!frames_.empty()||split_lifecycle_!=SplitLifecycle::AwaitingReady||!live(root_)||!live(root_)->inside)return fail(e,"NodeTree split Ready requires completed actual Enter");
+  split_lifecycle_=SplitLifecycle::Readying;
+  frames_.push_back({root_,1,0,0});
+  if(!drive(e))return false;
+  complete_split_lifecycle();
+  return true;
+ }
  bool FieldNodeTreeRuntime::exit(std::string&e){
   if(poisoned_||driving_||!frames_.empty()||!live(root_)||!live(root_)->inside)return fail(e,"NodeTree exit state rejected");
+  // A branch removed during its parent's Enter need never receive Ready.
+  split_lifecycle_=SplitLifecycle::None;
   frames_.push_back({
    root_,2,0,0
   }
@@ -212,7 +235,9 @@ namespace encore::upstream {
  }
  bool FieldNodeTreeRuntime::resume_lifecycle(std::string&e){
   if(poisoned_||driving_)return fail(e,"NodeTree lifecycle state rejected");
-  return drive(e);
+  if(!drive(e))return false;
+  complete_split_lifecycle();
+  return true;
  }
  bool FieldNodeTreeRuntime::branch(FieldObjectId id,uint32_t mode,std::string&e){
   auto saved=std::move(frames_);

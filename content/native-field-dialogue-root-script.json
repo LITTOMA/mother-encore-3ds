@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "kind": "encore.field-dialogue-root-script.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Ui/DialogueBox.tscn",
+  "scene_id": 2406403304,
+  "scene_sha256": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+  "recipe_sha256": "ca209a79f1c3b7aff9e90a4a363e33aac17e28063ea3fb9df04a7e61491b191f",
+  "lifecycle_sha256": "07a40aeb5ff5d0e29a2ade05fbc4f67ed919119de0381f71b6b76cba3fd6c871",
+  "actions": [
+    "ui_accept",
+    "ui_cancel",
+    "ui_toggle"
+  ],
+  "defaults": {
+    "_speed_multiplier_from_input": 1.0,
+    "_speed_multiplier_from_tags": 1.0,
+    "_dialog": {},
+    "_curr_phrase": {},
+    "_phrase_num": "0",
+    "_segment_num": 0,
+    "_stopped": false,
+    "_finished": true,
+    "_auto_advance": false,
+    "_t": 0.0,
+    "_actors": {},
+    "_item_not_given": false,
+    "_options_count": 0,
+    "_options": [],
+    "_dialog_response": 0,
+    "_can_input": true,
+    "_set_respawn": false,
+    "_dialogue_box_shown": false,
+    "_name_box_shown": false,
+    "_queued_battle": false,
+    "_post_battle_cutscenes": {},
+    "_battle_win_flag": ""
+  },
+  "constructor_resource": "Nodes/Reusables/actor.tscn",
+  "bullet_format": "[right]%s[/right]",
+  "bullet_key": "SYMBOL_BULLET_MAIN",
+  "references": [
+    {
+      "path": "Dialoguebox/Namebox/ClipBox/Name",
+      "id": 691797382,
+      "native_class": "Label"
+    },
+    {
+      "path": "Dialoguebox/Options",
+      "id": 1547641433,
+      "native_class": "GridContainer"
+    },
+    {
+      "path": "Camera2D",
+      "id": 3117544875,
+      "native_class": "Camera2D"
+    },
+    {
+      "path": "Dialoguebox",
+      "id": 590639956,
+      "native_class": "NinePatchRect"
+    },
+    {
+      "path": "Dialoguebox/ClipBox/HBoxContainer/Dialogue",
+      "id": 19063755,
+      "native_class": "RichTextLabel"
+    },
+    {
+      "path": "Dialoguebox/ClipBox/HBoxContainer/DippinDots",
+      "id": 1578216556,
+      "native_class": "RichTextLabel"
+    },
+    {
+      "path": "Dialoguebox/Cursor_Down",
+      "id": 2749157936,
+      "native_class": "AnimatedSprite"
+    }
+  ],
+  "open_animation": "Open",
+  "options_id": 1547641433,
+  "cursor_reset": 0,
+  "sources": {
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49"
+  },
+  "wait_method": "_on_WaitTimer_timeout",
+  "name_method": "_set_nametag",
+  "wait_signal": "timeout",
+  "scene_admitted": false,
+  "pending": [
+    "Programme executes reviewed phrase commands and lifecycle executes actual begin/end; this owner does not interpret GDScript",
+    "Actor preload, translated bullet, native AnimationPlayer observation, real signals and actual shared physics/input dispatch are required"
+  ]
+}

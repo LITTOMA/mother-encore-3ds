@@ -94,6 +94,9 @@ public:
  const FieldGlobalSourceResource*source_resource(FieldObjectId)const;
  bool publish_branch(std::shared_ptr<FieldNodeTreeRuntime>,FieldObjectId,NodeDispatch,std::string&);
  bool attach_scene(FieldObjectId,std::string&);
+ // Called by the actual native root only after its real child list changes.
+ // Makes the source parent visible to NodePath lookup before Enter/Ready.
+ bool observe_external_parent(FieldObjectId parent,FieldObjectId child,std::string&);
  bool detach_scene(FieldObjectId,std::string&);
  bool persistent_reparent(FieldObjectId,FieldObjectId,std::string&);
  bool construct_autoload(uint32_t,std::string&);
@@ -103,6 +106,9 @@ public:
  bool observe_global_current_scene(FieldObjectId,std::string&);
  // Source SceneTree.set_current_scene occurs later, after persistent moves.
  bool observe_tree_current_scene(FieldObjectId,std::string&);
+ // Original SceneTree.add_current_scene assigns native identity before
+ // out-of-tree root.add_child; global.currentScene is assigned later in Ready.
+ bool observe_bootstrap_tree_current_scene(FieldObjectId,std::string&);
  bool create_stable_canvas(FieldObjectId&,std::string&);
  bool lookup_absolute(std::string_view,FieldObjectId&,std::string&)const;
  bool resolve_path(FieldObjectId,std::string_view,FieldObjectId&,std::string&)const;

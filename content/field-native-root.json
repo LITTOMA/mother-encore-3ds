@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "kind": "encore.native-root.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "scene": "project.godot",
+  "scene_id": 2159025043,
+  "source_sha256": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+  "registry_ir_sha256": "0d4b6e7e0510130d57fe39d3f0714d8704a60460f623e58bb72aa478e64f0363",
+  "engine_sources": {
+    "scene/main/scene_tree.cpp": "a1ac9f2da5a1046d1c468fd463de4907f535f124952b137d69fb39ef8b14b3b4",
+    "scene/main/node.cpp": "0c2e3230b37644c8496f5b1aee59f428de6a497a380c247613c489e44cd508a9",
+    "scene/main/viewport.cpp": "6eb44227474694932b3ad8f093b032f47f95f1c1ed364c742a3662bd33044ef7",
+    "scene/2d/canvas_item.cpp": "513b9efe70b2003b1ff3e451ac1b07527c3054b1eb81a0faab2ffe3eec0b6286",
+    "scene/main/canvas_layer.cpp": "ca3605772782436adc42772b7c99c5b92c040638aba6ae5933c8727f9652313e",
+    "main/main.cpp": "20c117f289323e57ae534303274ab2e5769580821756c52126bc5d429e2f0f59"
+  },
+  "root_name": "root",
+  "root_native": "Viewport",
+  "kernel_native": "SceneTree",
+  "clear_color": [
+    0.109804,
+    0.109804,
+    0.109804,
+    1.0
+  ],
+  "handle_input_locally": false,
+  "audio_listener": true,
+  "audio_listener_2d": true,
+  "viewport_internal_physics": true,
+  "adapter_scope": [
+    "actual ObjectDB SceneTree/Viewport owners",
+    "source ordered root add/remove/move child with actual Tree lifecycle",
+    "actual SceneTree.current_scene separate from global.currentScene",
+    "Citro2D target and affine root Canvas",
+    "actual viewport input registration"
+  ],
+  "pending": [
+    "Unknown autoload/native child lifecycle fails closed",
+    "3D scene/camera/listener/rendering require separate source consumer",
+    "Viewport GUI tooltip/object-picking/internal physics traversal require actual adapter",
+    "SceneTree pause notifications require complete source native dispatcher",
+    "Original Main::start stages all 11 autoloads and main scene before whole-root Enter/Ready; per-autoload immediate Ready is not original cold startup"
+  ]
+}

@@ -705,6 +705,101 @@ bool FieldDialogueUiRuntime::update_scroll(Instance &i, uint32_t source,
     }
   return reject(e, "Dialogue UI original RichText scrollbar absent");
 }
+bool FieldDialogueUiRuntime::option_children(
+    Instance &i, std::array<FieldObjectId, 6> &objects, std::string &e) const {
+  const auto *source = data_->role(FieldDialogueUiRole::Options);
+  const auto found = source ? i.controls.find(source->id) : i.controls.end();
+  const auto *grid = found == i.controls.end()
+                         ? nullptr
+                         : tree_->state(found->second.object);
+  if (!source || !grid || !grid->alive || !grid->inside ||
+      !grid->ready_notified || !found->second.entered || !found->second.ready ||
+      grid->source != source->id || grid->children.size() != objects.size())
+    return reject(e, "Dialogue option Grid actual native Ready absent");
+  for (size_t j = 0; j < objects.size(); ++j) {
+    const auto *label = data_->role(FieldDialogueUiRole(
+        uint32_t(FieldDialogueUiRole::Option1) + j));
+    const auto c = label ? i.controls.find(label->id) : i.controls.end();
+    const auto *state = c == i.controls.end()
+                            ? nullptr
+                            : tree_->state(c->second.object);
+    if (!label || label->kind != FieldDialogueUiKind::Label ||
+        label->parent != source->id || !state || !state->alive ||
+        !state->inside || !state->ready_notified || !c->second.entered ||
+        !c->second.ready || state->source != label->id ||
+        state->parent != grid->object || grid->children[j] != state->object)
+      return reject(e, "Dialogue option Label source child/Ready differs");
+    objects[j] = state->object;
+  }
+  e.clear();
+  return true;
+}
+bool FieldDialogueUiRuntime::prepare_choice_labels(
+    FieldObjectId root, const DialogueChoices &choices,
+    const LocaleSelection *locale, std::string &e) {
+  auto *i = instance(root);
+  const auto *g = choices.group();
+  const auto *d = choices.data();
+  const auto *grid = data_ ? data_->role(FieldDialogueUiRole::Options) : nullptr;
+  const auto *control = grid ? data_->control(grid->id) : nullptr;
+  std::array<FieldObjectId, 6> objects{};
+  if (!i || i->root != root || !choices.active() || !g || !d || !d->valid() ||
+      g->options.empty() || g->options.size() > 3 || !control ||
+      d->columns() != control->columns || d->child_count() != objects.size() ||
+      !option_children(*i, objects, e))
+    return reject(e, "Dialogue source option preparation outside ready Mick scope");
+  // Resolve all real glyph metrics before changing any source Label. This
+  // rejects missing resources/unsupported text without partial visibility.
+  std::array<std::string, 6> text;
+  std::array<Vec2, 6> minimum{};
+  for (size_t j = 0; j < g->options.size(); ++j) {
+    const auto *state = tree_->state(objects[j]);
+    const auto *c = data_->control(state->source);
+    const auto *r = recipe_->control(state->source);
+    Vec2 measured{};
+    text[j] = locale
+                  ? std::string(locale->text(g->options[j].translation_key).text)
+                  : g->options[j].text;
+    if (!c || !r || c->font.empty() ||
+        !host_.font_minimum(c->font, text[j], measured, e) ||
+        !finite(measured) || measured.x < 0 || measured.y <= 0)
+      return reject(e, "Dialogue option source font/glyph admission rejected");
+    minimum[j] = {std::max(r->min_size.x, measured.x),
+                  std::max(r->min_size.y, measured.y)};
+  }
+  // Source first hides all children; text/set_name/show then occurs only for
+  // the reviewed visibleOptions in their original dictionary order.
+  for (auto object : objects) {
+    i->controls.at(tree_->state(object)->source).visible = false;
+    if (!tree_->set_visible(object, false, e))
+      return false;
+  }
+  for (size_t j = 0; j < g->options.size(); ++j) {
+    auto &c = i->controls.at(tree_->state(objects[j])->source);
+    c.text = text[j];
+    c.minimum = minimum[j];
+    if (!host_.rename(c.object, c.text, e))
+      return false;
+    c.visible = true;
+    if (!tree_->set_visible(c.object, true, e))
+      return false;
+  }
+  return layout(*i, e) && queue_sort(*i, grid->id, e);
+}
+bool FieldDialogueUiRuntime::hide_choice_labels(FieldObjectId root,
+                                               std::string &e) {
+  auto *i = instance(root);
+  std::array<FieldObjectId, 6> objects{};
+  if (!i || i->root != root || !option_children(*i, objects, e))
+    return reject(e, "Dialogue source option hide owner absent");
+  for (auto object : objects) {
+    i->controls.at(tree_->state(object)->source).visible = false;
+    if (!tree_->set_visible(object, false, e))
+      return false;
+  }
+  const auto *grid = data_->role(FieldDialogueUiRole::Options);
+  return layout(*i, e) && queue_sort(*i, grid->id, e);
+}
 bool FieldDialogueUiRuntime::sync_choices(FieldObjectId root,
                                           const DialogueChoices &choices,
                                           const LocaleSelection *locale,
@@ -929,12 +1024,16 @@ FieldDialogueUiRuntime::option_labels(FieldObjectId root) const {
   const auto &grid =
       i->controls.at(data_->role(FieldDialogueUiRole::Options)->id);
   const auto &box = i->controls.at(data_->role(FieldDialogueUiRole::Box)->id);
+  // Source may prepare Label visibility while Options and its Canvas parents
+  // remain hidden. Local Label flags alone are not a drawable Canvas receipt.
+  if (!tree_->visible_in_tree(grid.object))
+    return out;
   for (unsigned j = 0; j < 6; ++j) {
     auto c = i->controls.at(data_
                                 ->role(FieldDialogueUiRole(
                                     uint32_t(FieldDialogueUiRole::Option1) + j))
                                 ->id);
-    if (!c.visible)
+    if (!c.visible || !tree_->visible_in_tree(c.object))
       continue;
     c.rect.x += grid.rect.x + box.rect.x;
     c.rect.y += grid.rect.y + box.rect.y;

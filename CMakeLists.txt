@@ -51,6 +51,8 @@ add_library(encore_core
     runtime/field_native_timer_data.cpp
     runtime/field_global_registry.cpp
     runtime/field_global_registry_data.cpp
+    runtime/field_native_root_data.cpp
+    runtime/field_global_data.cpp runtime/field_global_data_data.cpp
     runtime/field_dialogue_ui.cpp
     runtime/field_dialogue_ui_data.cpp
     runtime/field_inventory.cpp

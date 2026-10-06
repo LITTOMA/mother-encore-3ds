@@ -37,6 +37,8 @@ SOURCES += runtime/field_goods.cpp runtime/field_goods_data.cpp runtime/field_gl
  runtime/field_dialogue_visual.cpp runtime/field_dialogue_visual_data.cpp runtime/field_dialogue_audio.cpp runtime/field_dialogue_audio_data.cpp \
  runtime/field_ui_manager.cpp runtime/field_ui_manager_data.cpp runtime/field_battle_bg_resources.cpp runtime/field_battle_bg_data.cpp \
  runtime/field_ui_preloads.cpp runtime/field_ui_preloads_data.cpp platform/ctr/field_dialogue_audio_player.cpp platform/ctr/podunk_dialogue_host.cpp
+SOURCES += runtime/field_native_root_data.cpp runtime/field_global_data.cpp runtime/field_global_data_data.cpp \
+ platform/ctr/podunk_native_root.cpp platform/ctr/podunk_dialogue_root_script.cpp platform/ctr/podunk_dialogue_options_adapter.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

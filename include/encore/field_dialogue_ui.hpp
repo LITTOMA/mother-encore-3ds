@@ -181,6 +181,13 @@ public:
   // Borrow the existing source text printer, including tags, locale and shared
   // RNG.
   bool sync_text(FieldObjectId, const HousePresentation &, std::string &);
+  // Original _add_dialog_options first hides/relabels/shows the six actual
+  // Label children, without showing their Grid or moving/enabling the Cursor.
+  // The root script owns the later Arrow/show/on/index and Grid/show sequence.
+  bool prepare_choice_labels(FieldObjectId, const DialogueChoices &,
+                             const LocaleSelection *, std::string &);
+  // Original selected-option path hides each Label, leaving Grid unchanged.
+  bool hide_choice_labels(FieldObjectId, std::string &);
   bool sync_choices(FieldObjectId, const DialogueChoices &,
                     const LocaleSelection *, std::string &);
   bool pose(FieldObjectId, WorldDialoguePose &, std::string &) const;
@@ -219,6 +226,8 @@ private:
   bool queue_sort(Instance &, uint32_t, std::string &);
   bool position(Instance &, uint32_t, Vec2, std::string &);
   bool font_size(Instance &, uint32_t, std::string &);
+  bool option_children(Instance &, std::array<FieldObjectId, 6> &,
+                       std::string &) const;
   bool update_scroll(Instance &, uint32_t, uint32_t, std::string &);
   bool scalar_sample(const FieldDialogueClip &, float, Vec2 &,
                      std::string &) const;

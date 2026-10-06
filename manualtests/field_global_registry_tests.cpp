@@ -20,5 +20,9 @@ int main(int argc,char**argv){
  assert(!d.load(b.data(),127,id,e));
  auto foreign=id;foreign.scene_id^=1;assert(!d.load(b.data(),b.size(),foreign,e));
  FieldGlobalRegistry registry;assert(!registry.initialize(d,{},e));
+ assert(!registry.observe_external_parent(1,2,e));
+ assert(!registry.observe_external_parent(0,2,e));
+ assert(!registry.observe_bootstrap_tree_current_scene(0,e));
+ assert(!registry.observe_bootstrap_tree_current_scene(1,e));
  std::puts("manual registry parser checks passed");
 }

@@ -34,12 +34,22 @@ void field_node_tree_manual(const char*pack,const FieldIdentity&id){
  host.input_registration=[](FieldObjectId,uint32_t,bool,std::string&){return false;};
  host.external_pause_process=[](FieldObjectId){return false;};
  host.release=[](FieldObjectId,const FieldNodeBinding&,std::string&){return false;};
+ auto split_host=host;
  FieldNodeTreeRuntime tree;assert(tree.initialize(d,std::move(host),error));assert(tree.object_count()==original);
  FieldObjectId target=0;assert(tree.get_node(tree.root(),".",target,error)&&target==tree.root());
  assert(!tree.get_node(tree.root(),"",target,error));assert(!tree.get_node(tree.root(),"%unreviewed",target,error));
  assert(!tree.get_node(tree.root(),"/root",target,error));assert(!tree.set_owner(tree.root(),tree.root(),error));
  assert(!tree.enter(error)&&tree.lifecycle_pending()&&!dispatches);
  assert(!tree.resume_lifecycle(error)&&!dispatches);
+ // Source startup cannot skip a missing native owner by issuing Ready first,
+ // retrying Enter, or switching the incomplete split traversal to enter().
+ FieldNodeTreeRuntime split;assert(split.initialize(d,std::move(split_host),error));
+ assert(!split.ready_entered_branch(error)&&!split.lifecycle_pending());
+ assert(!split.enter_branch_only(error)&&split.lifecycle_pending()&&!dispatches);
+ assert(!split.ready_entered_branch(error)&&!dispatches);
+ assert(!split.enter_branch_only(error)&&!dispatches);
+ assert(!split.enter(error)&&!dispatches);
+ assert(!split.resume_lifecycle(error)&&split.lifecycle_pending()&&!dispatches);
  assert(!tree.process(false,false,error));assert(!d.scene_admitted());
  FieldDeferredMessage unknown;unknown.object=1;unknown.kind=static_cast<FieldDeferredKind>(3);
  assert(!tree.enqueue(unknown,error));unknown.kind=FieldDeferredKind::Set;unknown.member="x";

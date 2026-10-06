@@ -109,6 +109,19 @@ bool FieldGlobalRegistry::attach_autoload(uint32_t stable,std::string&e){
  if(!snapshot(root_,viewport,e)||std::count(viewport.children.begin(),viewport.children.end(),i->second)!=1||!snapshot(i->second,node,e)||node.parent!=root_||!node.inside)return fail(e,"Global autoload add_child did not enter actual native owner");
  e.clear();return true;
 }
+bool FieldGlobalRegistry::observe_external_parent(FieldObjectId parent,FieldObjectId child,std::string&e){
+ auto i=objects_.find(child);auto root=objects_.find(root_);
+ if(!initialized_||poisoned_||!child||child==root_||child==kernel_||i==objects_.end()||!i->second.tree||root==objects_.end()||!root->second.external||i->second.tree->object_domain()!=kernel_||i->second.tree->root()!=child)return fail(e,"Global actual external parent source Tree/root binding rejected");
+ auto*n=i->second.tree->state(child);FieldIdentity identity;FieldGlobalExternalState viewport;
+ if(!n||!n->alive||n->parent||!i->second.tree->object_identity(child,identity)||identity.upstream_commit!=data_->identity().upstream_commit||!snapshot(root_,viewport,e))return fail(e,"Global actual external parent source object rejected");
+ auto count=std::count(viewport.children.begin(),viewport.children.end(),child);
+ if(parent){
+  if(parent!=root_||count!=1||(i->second.external_parent&&i->second.external_parent!=parent))return fail(e,"Global external parent not backed by actual native child insertion");
+ }else{
+  if(i->second.external_parent!=root_||count||n->inside)return fail(e,"Global external parent clear precedes actual native removal/exit");
+ }
+ i->second.external_parent=parent;e.clear();return true;
+}
 bool FieldGlobalRegistry::attach_scene(FieldObjectId id,std::string&e){
  if(!initialized_||poisoned_||!object_exists(id)||id==root_||id==kernel_)return fail(e,"Global scene attach object unavailable");
  auto i=objects_.find(id);if(!i->second.tree||i->second.tree->state(id)->parent||i->second.external_parent)return fail(e,"Global source scene is already parented/not a Tree root");
@@ -151,6 +164,17 @@ bool FieldGlobalRegistry::observe_tree_current_scene(FieldObjectId id,std::strin
  if(!initialized_||poisoned_||id!=current_scene_||i==objects_.end()||!i->second.tree||!snapshot(kernel_,kernel,e)||kernel.current_scene!=id||!snapshot(id,scene,e)||!scene.inside||scene.parent!=root_)return fail(e,"Global actual SceneTree current scene assignment pending");
  tree_current_scene_=id;e.clear();return true;
 }
+bool FieldGlobalRegistry::observe_bootstrap_tree_current_scene(FieldObjectId id,std::string&e){
+ auto i=objects_.find(id);FieldGlobalExternalState kernel,viewport;
+ if(!initialized_||poisoned_||current_scene_||tree_current_scene_||i==objects_.end()||!i->second.tree||i->second.external_parent||i->second.tree->root()!=id||i->second.tree->object_domain()!=kernel_||i->second.tree->lifecycle_pending()||!snapshot(kernel_,kernel,e)||kernel.current_scene!=id||!snapshot(root_,viewport,e)||viewport.inside||viewport.ready||viewport.children.size()!=data_->autoloads().size())return fail(e,"Global original bootstrap SceneTree assignment boundary rejected");
+ const auto*n=i->second.tree->state(id);FieldIdentity identity;std::array<uint8_t,32>sha;
+ if(!n||!n->alive||n->parent||n->inside||n->ready_notified||!i->second.tree->object_identity(id,identity)||identity.upstream_commit!=data_->identity().upstream_commit||!data_->source_hash(data_->main_scene(),sha)||identity.source_sha256!=sha)return fail(e,"Global bootstrap original main scene source rejected");
+ for(size_t at=0;at<data_->autoloads().size();++at){
+  auto a=autoload_objects_.find(data_->autoloads()[at].id);FieldGlobalExternalState state;
+  if(a==autoload_objects_.end()||viewport.children[at]!=a->second||!snapshot(a->second,state,e)||state.parent!=root_||state.inside||state.ready)return fail(e,"Global bootstrap complete source autoload staging order rejected");
+ }
+ tree_current_scene_=id;e.clear();return true;
+}
 bool FieldGlobalRegistry::create_stable_canvas(FieldObjectId&out,std::string&e){
  if(!initialized_||poisoned_||stable_canvas_||!current_scene_)return fail(e,"Global source mainCanvas creation boundary unavailable");
  auto u=autoload_objects_.find(data_->ui_autoload()),g=autoload_objects_.find(data_->global_autoload());
@@ -161,9 +185,12 @@ bool FieldGlobalRegistry::create_stable_canvas(FieldObjectId&out,std::string&e){
  if(!source->instantiate_recipe(data_->canvas_recipe(),canvas,e)||!publish_branch(source,canvas,dispatch,e))return false;
  // This is the original immediate add_child, followed by append (not dedup)
  // to the real global persistent array, then assignment of the same instance.
+ // Cold-start main has entered but not reached its own Ready. Node::_set_tree
+ // propagates Ready only when the actual parent.ready_notified is already true.
  if(!source->add_child(current_scene_,canvas,e))return false;
  auto*n=source->state(canvas);
- if(!n||n->parent!=current_scene_||!n->inside||!n->ready_notified)return fail(e,"Global mainCanvas actual native enter/Ready pending");
+ auto*parent=source->state(current_scene_);
+ if(!n||!parent||n->parent!=current_scene_||!n->inside||n->ready_notified!=parent->ready_notified)return fail(e,"Global mainCanvas actual parent-dependent Enter/Ready differs");
  if(!objects_.at(g->second).external->persist_append(canvas,e)||!objects_.at(u->second).external->assign_stable_canvas(canvas,e))return false;
  if(!snapshot(u->second,ui,e)||ui.stable_canvas!=canvas)return fail(e,"Global UiManager did not retain actual persistent mainCanvas ObjectID");
  stable_canvas_=canvas;out=canvas;e.clear();return true;

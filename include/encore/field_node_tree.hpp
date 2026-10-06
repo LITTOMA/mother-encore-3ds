@@ -97,6 +97,10 @@ public:
  bool get_node(FieldObjectId,std::string_view,FieldObjectId&,std::string&)const;
  bool get_path_to(FieldObjectId,FieldObjectId,std::string&,std::string&)const;
  bool enter(std::string&);bool resume_lifecycle(std::string&);
+ // Original project startup enters every staged branch before any Ready.
+ // These calls retain the same live objects, source bodies and failure cursor.
+ bool enter_branch_only(std::string&);
+ bool ready_entered_branch(std::string&);
  bool lifecycle_pending()const{return !frames_.empty();}
  bool exit(std::string&);
  bool request_ready(FieldObjectId,std::string&);
@@ -167,5 +171,8 @@ private:
  std::list<FieldObjectId>transforms_;
  std::map<FieldObjectId,std::list<FieldObjectId>::iterator>transform_index_;
  bool flushing_=false,deleting_=false,driving_=false,poisoned_=false;
+ enum class SplitLifecycle {None,Entering,AwaitingReady,Readying};
+ SplitLifecycle split_lifecycle_=SplitLifecycle::None;
+ void complete_split_lifecycle();
 };
 }

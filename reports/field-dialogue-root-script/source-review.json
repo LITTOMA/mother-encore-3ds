@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "e24ac78aaaa268a4f396111d2ccf09fdfc63444dce4ac3a49c6d7156c43222ce",
+  "producer_sha256": "84089b54d111652165d1472f902d77d6c18c87c1f7d92681c4a1253ecdd68fb8",
+  "sources": {
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49"
+  },
+  "scope": "Source constructor, onready resolution, sole existing printer physics, action gates and actual Cursor bridge; no automatic scene Ready"
+}

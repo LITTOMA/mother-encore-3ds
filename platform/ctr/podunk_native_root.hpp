@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/field_map.hpp"
 #include "encore/field_native_root.hpp"
+#include "encore/field_object_signals.hpp"
 #include "podunk_ui_host.hpp"
 #include <citro2d.h>
 #include <set>
@@ -77,6 +78,10 @@ public:
                           std::string &);
   bool input_objects(uint32_t, std::vector<upstream::FieldObjectId> &,
                      std::string &) const;
+  bool bind_object_signals(upstream::FieldObjectSignals &, std::string &);
+  bool signal_declaration(upstream::FieldObjectId, std::string_view, uint32_t &, std::string &) const;
+  bool disconnect_signal(bool kernel, std::string_view, upstream::FieldObjectId,
+                         std::string_view, std::string &);
   bool connect_signal(bool kernel, std::string signal, upstream::FieldObjectId,
                       std::string method, std::string &);
   bool enqueue(upstream::FieldDeferredMessage, std::string &);
@@ -96,11 +101,6 @@ private:
     PodunkExternalNodeLifecycle *lifecycle = nullptr;
     upstream::FieldGlobalExternalBinding binding;
   };
-  struct Connection {
-    bool kernel = false;
-    std::string signal, method;
-    upstream::FieldObjectId target = 0;
-  };
   const upstream::FieldNativeRootData *data_ = nullptr;
   const upstream::FieldGlobalRegistryData *source_ = nullptr;
   upstream::FieldGlobalRegistry *registry_ = nullptr;
@@ -115,7 +115,7 @@ private:
   PodunkRootViewportState state_;
   std::map<upstream::FieldObjectId, External> external_;
   std::array<std::set<upstream::FieldObjectId>, 3> input_;
-  std::vector<Connection> connections_;
+  upstream::FieldObjectSignals *signals_ = nullptr;
   ParentObserver parent_observer_;
   ChildNotification child_notification_;
   std::set<upstream::FieldObjectId> known_nodes_, entered_notified_,

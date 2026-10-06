@@ -389,3 +389,7 @@ cookies.json
 !/reports/house-status-effects/
 /reports/house-status-effects/*
 !/reports/house-status-effects/source-review.json
+
+!/reports/field-object-signals/
+/reports/field-object-signals/*
+!/reports/field-object-signals/source-review.json

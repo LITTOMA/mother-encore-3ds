@@ -51,6 +51,7 @@ add_library(encore_core
     runtime/field_native_timer_data.cpp
     runtime/field_global_registry.cpp
     runtime/field_global_registry_data.cpp
+    runtime/field_object_signals.cpp
     runtime/field_native_root_data.cpp
     runtime/field_global_data.cpp runtime/field_global_data_data.cpp
     runtime/global_item_cache.cpp

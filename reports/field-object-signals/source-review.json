@@ -1,0 +1,42 @@
+{
+  "kind": "encore.field-object-signals.source-review",
+  "engine_ref": "3.6.2-stable",
+  "engine_sources": {
+    "core/object.cpp": {
+      "sha256": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/core/object.cpp"
+    },
+    "core/object.h": {
+      "sha256": "47e2e30d76c93182ac6a5900df8a652d01b4b1f8e513c375d6060b869dcb4562",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/core/object.h"
+    },
+    "core/string_name.h": {
+      "sha256": "60831230eb71515167dff67eabb59df11230cc63918ce268c96aa47ea5c68f4c",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/core/string_name.h"
+    },
+    "scene/main/node.cpp": {
+      "sha256": "0c2e3230b37644c8496f5b1aee59f428de6a497a380c247613c489e44cd508a9",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/main/node.cpp"
+    }
+  },
+  "semantics": [
+    "Actual ObjectDB target and interned-method ordering; snapshot each emission before callbacks.",
+    "CONNECT_DEFERRED enqueues the existing registry MessageQueue; synchronous callbacks dispatch through the same ObjectDB.",
+    "Reference-counted duplicate connects preserve original connection flags and binds; disconnect decrements original count.",
+    "CONNECT_ONESHOT disconnects after all callbacks, retaining connections during nested emission.",
+    "Node duplication copies only persistent Node-target connections, remapping actual duplicate Node identities; bound Variant values retain original references.",
+    "Blocked emission does not dispatch or remove connections; deleted targets do not dispatch."
+  ],
+  "integration": {
+    "native_root": "Actual SceneTree and root Viewport declarations, connections and notifications use the same dispatcher.",
+    "player_host": "Same currentScene tree, existing character, animation, timer, audio, collision and resource owners; no replacement ObjectDB or simulation loop.",
+    "camera": "Original native Camera2D and source Camera script share transforms and actual root Viewport connections."
+  },
+  "verification": {
+    "tests_executed": false,
+    "sanitizers_executed": false,
+    "emulator": false,
+    "hardware": false
+  },
+  "remaining": "Normal House door transition, full outdoor scene assembly, dynamic physics and effect factories are still unfinished; no outdoor-playable claim."
+}

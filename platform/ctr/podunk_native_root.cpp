@@ -135,46 +135,52 @@ bool PodunkNativeRoot::actual_target(std::string &e) const {
   e.clear();
   return true;
 }
+bool PodunkNativeRoot::bind_object_signals(FieldObjectSignals &signals, std::string &e) {
+  if (!data_ || signals_ || signals.registry() != registry_ || state_.inside ||
+      state_.failed || !registry_->object_exists(kernel_) ||
+      !registry_->object_exists(root_))
+    return fail(e, "Native root shared signal ObjectDB binding rejected");
+  signals_ = &signals; e.clear(); return true;
+}
+bool PodunkNativeRoot::signal_declaration(FieldObjectId emitter,
+                                          std::string_view signal,
+                                          uint32_t &arity, std::string &e) const {
+  if (!data_ || state_.failed || !registry_->object_exists(emitter))
+    return fail(e, "Native root signal source object unavailable");
+  if (emitter == kernel_) {
+    if (signal == "tree_changed") arity = 0;
+    else if (signal == "node_added" || signal == "node_removed") arity = 1;
+    else return fail(e, "Unknown native SceneTree signal");
+  } else if (emitter == root_) {
+    if (signal == "tree_entered" || signal == "tree_exiting" ||
+        signal == "tree_exited" || signal == "ready" || signal == "size_changed") arity = 0;
+    else if (signal == "child_entered_tree" || signal == "child_exiting_tree") arity = 1;
+    else return fail(e, "Unknown native root Viewport signal");
+  } else return fail(e, "Native root signal belongs to another owner");
+  e.clear(); return true;
+}
 bool PodunkNativeRoot::connect_signal(bool kernel, std::string signal,
                                       FieldObjectId target, std::string method,
                                       std::string &e) {
-  const bool known =
-      kernel
-          ? (signal == "tree_changed" || signal == "node_added" ||
-             signal == "node_removed")
-          : (signal == "tree_entered" || signal == "tree_exiting" ||
-             signal == "tree_exited" || signal == "ready" ||
-             signal == "child_entered_tree" || signal == "child_exiting_tree");
-  if (!data_ || !known || !registry_->object_exists(target) || method.empty() ||
-      method.find('\0') != method.npos || state_.failed)
-    return fail(e, "Native root actual signal receiver/signature rejected");
-  if (std::any_of(connections_.begin(), connections_.end(), [&](const auto &c) {
-        return c.kernel == kernel && c.signal == signal && c.target == target &&
-               c.method == method;
-      }))
-    return fail(e, "Native root duplicate source signal connection");
-  connections_.push_back(
-      {kernel, std::move(signal), std::move(method), target});
-  e.clear();
-  return true;
+  uint32_t arity = 0; const auto emitter = kernel ? kernel_ : root_;
+  if (!signals_ || !signal_declaration(emitter, signal, arity, e))
+    return fail(e, "Native root actual shared signal dispatcher missing");
+  return signals_->connect(emitter, signal, target, method, 0, {}, e);
+}
+bool PodunkNativeRoot::disconnect_signal(bool kernel, std::string_view signal,
+                                         FieldObjectId target, std::string_view method,
+                                         std::string &e) {
+  if (!signals_) return fail(e, "Native root actual shared signal dispatcher missing");
+  return signals_->disconnect(kernel ? kernel_ : root_, signal, target, method, e);
 }
 bool PodunkNativeRoot::emit(bool kernel, std::string_view signal,
                             FieldObjectId arg, std::string &e) {
-  const auto listeners = connections_;
-  for (const auto &c : listeners) {
-    if (c.kernel != kernel || c.signal != signal ||
-        !registry_->object_exists(c.target))
-      continue;
-    FieldDeferredMessage call;
-    call.object = c.target;
-    call.member = c.method;
-    if (arg)
-      call.args.emplace_back(FieldObjectRef{arg});
-    if (!registry_->dispatch(call, e))
-      return false;
-  }
-  e.clear();
-  return true;
+  const auto emitter = kernel ? kernel_ : root_; uint32_t arity = 0;
+  if (!signal_declaration(emitter, signal, arity, e)) return false;
+  if (!signals_) { e.clear(); return true; } // No connect can succeed before binding.
+  std::vector<FieldDeferredValue> args;
+  if (arg) args.emplace_back(FieldObjectRef{arg});
+  return signals_->emit(emitter, signal, args, e);
 }
 bool PodunkNativeRoot::bind_parent_observer(ParentObserver observer,
                                             std::string &e) {

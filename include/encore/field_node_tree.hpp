@@ -48,7 +48,9 @@ struct FieldNodeBinding {
  std::string native_class;
 };
 struct FieldObjectRef {FieldObjectId id=0;};
-using FieldDeferredValue=std::variant<std::monostate,bool,int64_t,double,std::string,Vec2,FieldObjectRef>;
+// Opaque PhysicsSpace identity; a Node ObjectID is never a physics RID.
+struct FieldPhysicsRid { const void *space = nullptr; uint64_t handle = 0; };
+using FieldDeferredValue=std::variant<std::monostate,bool,int64_t,double,std::string,Vec2,FieldObjectRef,FieldColor,FieldPhysicsRid>;
 enum class FieldDeferredKind:uint32_t {Call,Set,Notification};
 struct FieldDeferredMessage {
  FieldObjectId object=0;FieldDeferredKind kind=FieldDeferredKind::Call;

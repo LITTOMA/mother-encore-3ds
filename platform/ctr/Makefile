@@ -104,9 +104,9 @@ MANUAL_GOD_OBJECTS := $(filter-out build/ctr/platform/ctr/main.o,$(OBJECTS)) \
 build/ctr/tests/podunk_god_storage_driver.o build/ctr/tests/podunk_god_storage_host_manual.o: CPPFLAGS += -I$(ROOT) -I$(DEVKITPRO)/portlibs/3ds/include
 .PHONY: manual-god-storage
 manual-god-storage: build/ctr/manual/god_storage.3dsx
-build/ctr/manual/god_storage.elf: $(MANUAL_GOD_OBJECTS)
+build/ctr/manual/god_storage.elf: $(MANUAL_GOD_OBJECTS) platform/ctr/Makefile
 	@mkdir -p $(dir $@)
-	$(CXX) $(subst $(ROOT)/dist/encore-native.map,$(ROOT)/build/ctr/manual/god_storage.map,$(LDFLAGS)) $^ $(LDLIBS) -L$(DEVKITPRO)/portlibs/3ds/lib -lmbedcrypto -o $@
+	$(CXX) $(subst $(ROOT)/dist/encore-native.map,$(ROOT)/build/ctr/manual/god_storage.map,$(LDFLAGS)) $(MANUAL_GOD_OBJECTS) $(LDLIBS) -L$(DEVKITPRO)/portlibs/3ds/lib -lmbedcrypto -o $@
 build/ctr/manual/god_storage.3dsx: build/ctr/manual/god_storage.elf
 	$(TOOLS)/3dsxtool $< $@
 -include $(MANUAL_GOD_OBJECTS:.o=.d)

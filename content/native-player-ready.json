@@ -1,0 +1,2102 @@
+{
+  "schema": 1,
+  "kind": "encore.player-ready.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "family": 1162739802,
+  "initialization_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+  "sources": {
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
+  },
+  "method_proofs": [
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_ready",
+      "sha256": "ff49d11e8d4ea4a3e89bfb031766273e1d5e6a436c766fab50667024959092d7"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "update_party_member",
+      "sha256": "c480bda79a62a78f1840fd08d301a434d926a62a55709d745f9166e177530168"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_refresh_party_member_connections",
+      "sha256": "3ba5ddc23a1fe3294d4ddad1018d08302b231136ce1045a51acc89480440739c"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_refresh_status",
+      "sha256": "8d8a8e55d3134b80febb1e7e846af69744d09ef0befc474ff076b3a78aed6d17"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "blend_animation",
+      "sha256": "10a5533e52062cb459080551b925d3f3c06ef823f8855cfbec1b45c13f0e8fd1"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "set_anim_state",
+      "sha256": "84eba2c47c862dec34c7b30b3ed0b5c15b2cc1d65bc3b6a6dbaed66a68e1e3be"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_ready",
+      "sha256": "5173fa6c14083ccb2604d33ea55d8b4aaba997bbb20e657ecedbbaf2a374ff7a"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "update_party_member",
+      "sha256": "6b8f493c1dff1a2bcd23ab90080d729869382be45f05cb3ad25574873032c3a5"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "spritesheet",
+      "sha256": "61d5539b414d33e56631dd51bc225787fe7fb6d371f962ac19f8d2000d052dd5"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "blend_position",
+      "sha256": "6570ea47862ea70e129f822d0823e7b482fd753d0df3db14010cc635d397b0bb"
+    }
+  ],
+  "bindings": {
+    "climbing": "_climbing",
+    "party_member": "_party_member",
+    "steps": "_steps",
+    "tap_run": "_tap_run",
+    "crouch": "_crouch",
+    "direction": "_direction",
+    "last_step": "_last_step_pos",
+    "run_sound": "run_sound",
+    "costume": "costume",
+    "party_signal": "party_changed",
+    "update_method": "update_party_member",
+    "status_signal": "status_changed",
+    "refresh_method": "_refresh_status",
+    "sweat_effect": "overworld_sweat",
+    "shadow_animation": "shadow",
+    "sweat_path": "Sweatdrops",
+    "sprite_path": "Position/main",
+    "special_path": "SpecialAnimations",
+    "camera_path": "Camera2D",
+    "tree_path": "AnimationTree",
+    "animation_path": "AnimationPlayer",
+    "normal_format": "res://Graphics/Character Sprites/%s/main.png",
+    "special_format": "res://Graphics/Character Sprites/%s/special.png",
+    "snow_format": "res://Graphics/Character Sprites/%sSnow/main.png",
+    "fallback_texture": "res://Graphics/Character Sprites/Ninten/main.png",
+    "snow_costume": "Snow",
+    "footsteps_format": "res://Audio/Sound effects/Footsteps/%s.mp3",
+    "footsteps_voice": "run",
+    "blend_format": "parameters/%s/blend_position"
+  },
+  "blend_names": [
+    "Idle",
+    "Blink",
+    "Walk/Walk",
+    "FaintedIdle",
+    "FaintedWalk/FaintedWalk",
+    "Down",
+    "Crouch",
+    "Run/Run",
+    "Jump",
+    "Bat/Bat",
+    "ShootPrep",
+    "Cast",
+    "CastHold",
+    "CastPrep",
+    "ShootHold"
+  ],
+  "direction": [
+    0,
+    1
+  ],
+  "party_space_size": 255,
+  "height_divisor": 40,
+  "height_offset": 14,
+  "start": "Idle",
+  "incapacitated_rules": [
+    [
+      "Walk",
+      "Walk"
+    ],
+    [
+      "Run",
+      "Walk"
+    ],
+    [
+      "Blink",
+      "Idle"
+    ],
+    [
+      "Crouch",
+      "Idle"
+    ]
+  ],
+  "fainted_prefix": "Fainted",
+  "process_mode": 1,
+  "playback_resource": 399,
+  "states": [
+    {
+      "name": "Bat",
+      "position": [
+        -155.7480010986328,
+        175.5260009765625
+      ],
+      "parameter": "parameters/Bat/Bat/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "parameters/Bat/TimeScale/scale",
+      "scale": 1.0,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Attack Down",
+          "node_id": 205,
+          "clip_id": 63,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Attack Up",
+          "node_id": 206,
+          "clip_id": 68,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Attack Right",
+          "node_id": 207,
+          "clip_id": 67,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Attack Left",
+          "node_id": 208,
+          "clip_id": 66,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Attack DownRight",
+          "node_id": 209,
+          "clip_id": 65,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Attack DownLeft",
+          "node_id": 210,
+          "clip_id": 64,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Attack UpRight",
+          "node_id": 211,
+          "clip_id": 70,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Attack UpLeft",
+          "node_id": 212,
+          "clip_id": 69,
+          "length": 0.3333329856395721,
+          "loop": false
+        }
+      ]
+    },
+    {
+      "name": "Blink",
+      "position": [
+        353.7879943847656,
+        -98.27469635009766
+      ],
+      "parameter": "parameters/Blink/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Blink Down",
+          "node_id": 215,
+          "clip_id": 71,
+          "length": 20.0,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Blink Right",
+          "node_id": 216,
+          "clip_id": 75,
+          "length": 20.0,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Blink Left",
+          "node_id": 217,
+          "clip_id": 74,
+          "length": 20.0,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Blink DownLeft",
+          "node_id": 218,
+          "clip_id": 72,
+          "length": 20.0,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Blink DownRight",
+          "node_id": 219,
+          "clip_id": 73,
+          "length": 20.0,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Idle Up",
+          "node_id": 220,
+          "clip_id": 132,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Idle UpRight",
+          "node_id": 221,
+          "clip_id": 134,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Idle UpLeft",
+          "node_id": 222,
+          "clip_id": 133,
+          "length": 0.1000000014901161,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "Cast",
+      "position": [
+        -28.05069923400879,
+        -46.67060089111328
+      ],
+      "parameter": "parameters/Cast/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Cast Down",
+          "node_id": 224,
+          "clip_id": 76,
+          "length": 0.2666670083999634,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Cast Up",
+          "node_id": 225,
+          "clip_id": 82,
+          "length": 0.2666670083999634,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Cast Right",
+          "node_id": 226,
+          "clip_id": 81,
+          "length": 0.2666670083999634,
+          "loop": false
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Cast Left",
+          "node_id": 227,
+          "clip_id": 80,
+          "length": 0.2666670083999634,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Cast DownRight",
+          "node_id": 228,
+          "clip_id": 79,
+          "length": 0.2666670083999634,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Cast DownLeft",
+          "node_id": 229,
+          "clip_id": 78,
+          "length": 0.2666670083999634,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Cast UpRight",
+          "node_id": 230,
+          "clip_id": 84,
+          "length": 0.2666670083999634,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Cast UpLeft",
+          "node_id": 231,
+          "clip_id": 83,
+          "length": 0.2666670083999634,
+          "loop": false
+        }
+      ]
+    },
+    {
+      "name": "CastHold",
+      "position": [
+        -207.0,
+        32.5974006652832
+      ],
+      "parameter": "parameters/CastHold/blend_position",
+      "initial": [
+        0.6011030077934265,
+        -0.7070310115814209
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "CastHold Down",
+          "node_id": 233,
+          "clip_id": 85,
+          "length": 0.2000000029802322,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "CastHold Up",
+          "node_id": 234,
+          "clip_id": 90,
+          "length": 0.2000000029802322,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "CastHold Right",
+          "node_id": 235,
+          "clip_id": 89,
+          "length": 0.2000000029802322,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "CastHold Left",
+          "node_id": 236,
+          "clip_id": 88,
+          "length": 0.2000000029802322,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "CastHold DownRight",
+          "node_id": 237,
+          "clip_id": 87,
+          "length": 0.2000000029802322,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "CastHold DownLeft",
+          "node_id": 238,
+          "clip_id": 86,
+          "length": 0.2000000029802322,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "CastHold UpRight",
+          "node_id": 239,
+          "clip_id": 92,
+          "length": 0.2000000029802322,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "CastHold UpLeft",
+          "node_id": 240,
+          "clip_id": 91,
+          "length": 0.2000000029802322,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "CastPrep",
+      "position": [
+        -62.035301208496094,
+        93.05999755859375
+      ],
+      "parameter": "parameters/CastPrep/blend_position",
+      "initial": [
+        -0.6979169845581055,
+        -0.6132810115814209
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "CastPrep Down",
+          "node_id": 242,
+          "clip_id": 93,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "CastPrep Up",
+          "node_id": 243,
+          "clip_id": 98,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "CastPrep Right",
+          "node_id": 244,
+          "clip_id": 97,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "CastPrep Left",
+          "node_id": 245,
+          "clip_id": 96,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "CastPrep DownRight",
+          "node_id": 246,
+          "clip_id": 95,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "CastPrep DownLeft",
+          "node_id": 247,
+          "clip_id": 94,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "CastPrep UpRight",
+          "node_id": 248,
+          "clip_id": 100,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "CastPrep UpLeft",
+          "node_id": 249,
+          "clip_id": 99,
+          "length": 0.0666666999459267,
+          "loop": false
+        }
+      ]
+    },
+    {
+      "name": "Crouch",
+      "position": [
+        628.3629760742188,
+        49.51409912109375
+      ],
+      "parameter": "parameters/Crouch/blend_position",
+      "initial": [
+        0.6996170282363892,
+        0.713388979434967
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Crouch Down",
+          "node_id": 251,
+          "clip_id": 101,
+          "length": 0.0833332985639572,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Crouch Up",
+          "node_id": 252,
+          "clip_id": 106,
+          "length": 0.0833332985639572,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Crouch Right",
+          "node_id": 253,
+          "clip_id": 105,
+          "length": 0.0833332985639572,
+          "loop": false
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Crouch Left",
+          "node_id": 254,
+          "clip_id": 104,
+          "length": 0.0833332985639572,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Crouch DownRight",
+          "node_id": 255,
+          "clip_id": 103,
+          "length": 0.0833332985639572,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Crouch DownLeft",
+          "node_id": 256,
+          "clip_id": 102,
+          "length": 0.0833332985639572,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Crouch UpLeft",
+          "node_id": 257,
+          "clip_id": 107,
+          "length": 0.0833332985639572,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Crouch UpRight",
+          "node_id": 258,
+          "clip_id": 108,
+          "length": 0.0833332985639572,
+          "loop": false
+        }
+      ]
+    },
+    {
+      "name": "Down",
+      "position": [
+        15.288000106811523,
+        -172.94900512695312
+      ],
+      "parameter": "parameters/Down/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Down Left",
+          "node_id": 260,
+          "clip_id": 109,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Down Right",
+          "node_id": 261,
+          "clip_id": 110,
+          "length": 0.1000000014901161,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "FaintedIdle",
+      "position": [
+        491.6510009765625,
+        257.6730041503906
+      ],
+      "parameter": "parameters/FaintedIdle/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Fainted Idle Down",
+          "node_id": 263,
+          "clip_id": 111,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Fainted Idle Right",
+          "node_id": 264,
+          "clip_id": 115,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Fainted Idle Left",
+          "node_id": 265,
+          "clip_id": 114,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Fainted Idle Up",
+          "node_id": 266,
+          "clip_id": 116,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Fainted Idle UpRight",
+          "node_id": 267,
+          "clip_id": 118,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Fainted Idle UpLeft",
+          "node_id": 268,
+          "clip_id": 117,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Fainted Idle DownRight",
+          "node_id": 269,
+          "clip_id": 113,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Fainted Idle DownLeft",
+          "node_id": 270,
+          "clip_id": 112,
+          "length": 0.1000000014901161,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "FaintedWalk",
+      "position": [
+        805.7570190429688,
+        266.6499938964844
+      ],
+      "parameter": "parameters/FaintedWalk/FaintedWalk/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "parameters/FaintedWalk/TimeScale/scale",
+      "scale": 1.0,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Fainted Walk Down",
+          "node_id": 273,
+          "clip_id": 119,
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Fainted Walk Up",
+          "node_id": 274,
+          "clip_id": 124,
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Fainted Walk Right",
+          "node_id": 275,
+          "clip_id": 123,
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Fainted Walk Left",
+          "node_id": 276,
+          "clip_id": 122,
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Fainted Walk DownRight",
+          "node_id": 277,
+          "clip_id": 121,
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Fainted Walk DownLeft",
+          "node_id": 278,
+          "clip_id": 120,
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Fainted Walk UpRight",
+          "node_id": 279,
+          "clip_id": 126,
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Fainted Walk UpLeft",
+          "node_id": 280,
+          "clip_id": 125,
+          "length": 1.2000000476837158,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "Idle",
+      "position": [
+        288.9200134277344,
+        114.93499755859375
+      ],
+      "parameter": "parameters/Idle/blend_position",
+      "initial": [
+        0.0078684100881219,
+        0.9169489741325378
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Idle Down",
+          "node_id": 283,
+          "clip_id": 127,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Idle Left",
+          "node_id": 284,
+          "clip_id": 130,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Idle Right",
+          "node_id": 285,
+          "clip_id": 131,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Idle Up",
+          "node_id": 286,
+          "clip_id": 132,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Idle UpRight",
+          "node_id": 287,
+          "clip_id": 134,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Idle UpLeft",
+          "node_id": 288,
+          "clip_id": 133,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Idle DownLeft",
+          "node_id": 289,
+          "clip_id": 128,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Idle DownRight",
+          "node_id": 290,
+          "clip_id": 129,
+          "length": 0.1000000014901161,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "Jump",
+      "position": [
+        684.166015625,
+        -31.378400802612305
+      ],
+      "parameter": "parameters/Jump/blend_position",
+      "initial": [
+        0.001831530011259,
+        0.9798759818077087
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Jump Down",
+          "node_id": 292,
+          "clip_id": 135,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Jump Up",
+          "node_id": 293,
+          "clip_id": 140,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Jump Right",
+          "node_id": 294,
+          "clip_id": 139,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Jump Left",
+          "node_id": 295,
+          "clip_id": 138,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Jump DownRight",
+          "node_id": 296,
+          "clip_id": 137,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Jump DownLeft",
+          "node_id": 297,
+          "clip_id": 136,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Jump UpLeft",
+          "node_id": 298,
+          "clip_id": 141,
+          "length": 0.1000000014901161,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Jump UpRight",
+          "node_id": 299,
+          "clip_id": 142,
+          "length": 0.1000000014901161,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "Run",
+      "position": [
+        942.7570190429688,
+        137.78599548339844
+      ],
+      "parameter": "parameters/Run/Run/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "parameters/Run/TimeScale/scale",
+      "scale": 1.0,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Run Down",
+          "node_id": 302,
+          "clip_id": 145,
+          "length": 0.5,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Run Up",
+          "node_id": 303,
+          "clip_id": 150,
+          "length": 0.5,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Run Right",
+          "node_id": 304,
+          "clip_id": 149,
+          "length": 0.5,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Run Left",
+          "node_id": 305,
+          "clip_id": 148,
+          "length": 0.5,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Run DownRight",
+          "node_id": 306,
+          "clip_id": 147,
+          "length": 0.5,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Run DownLeft",
+          "node_id": 307,
+          "clip_id": 146,
+          "length": 0.5,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Run UpLeft",
+          "node_id": 308,
+          "clip_id": 151,
+          "length": 0.5,
+          "loop": true
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Run UpRight",
+          "node_id": 309,
+          "clip_id": 152,
+          "length": 0.5,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "Scared",
+      "position": [
+        231.08999633789062,
+        -114.2969970703125
+      ],
+      "parameter": "",
+      "initial": [
+        0,
+        0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0,
+            0
+          ],
+          "clip": "Scared",
+          "node_id": 311,
+          "clip_id": 153,
+          "length": 0.1000000014901161,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "Shoot",
+      "position": [
+        337.7879943847656,
+        380.2900085449219
+      ],
+      "parameter": "parameters/Shoot/blend_position",
+      "initial": [
+        -0.0763949006795883,
+        -0.2811590135097504
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Shoot Left",
+          "node_id": 313,
+          "clip_id": 158,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Shoot Down",
+          "node_id": 314,
+          "clip_id": 154,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Shoot Right",
+          "node_id": 315,
+          "clip_id": 159,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Shoot Up",
+          "node_id": 316,
+          "clip_id": 160,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Shoot UpLeft",
+          "node_id": 317,
+          "clip_id": 161,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "Shoot UpRight",
+          "node_id": 318,
+          "clip_id": 162,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Shoot DownRight",
+          "node_id": 319,
+          "clip_id": 157,
+          "length": 0.3333329856395721,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "Shoot DownLeft",
+          "node_id": 320,
+          "clip_id": 156,
+          "length": 0.3333329856395721,
+          "loop": false
+        }
+      ]
+    },
+    {
+      "name": "ShootHold",
+      "position": [
+        103.73799896240234,
+        405.4809875488281
+      ],
+      "parameter": "parameters/ShootHold/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "ShootHold Down",
+          "node_id": 322,
+          "clip_id": 163,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "ShootHold Up",
+          "node_id": 323,
+          "clip_id": 168,
+          "length": 0.1333329975605011,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "ShootHold Right",
+          "node_id": 324,
+          "clip_id": 167,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "ShootHold Left",
+          "node_id": 325,
+          "clip_id": 166,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "ShootHold DownLeft",
+          "node_id": 326,
+          "clip_id": 164,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "ShootHold DownRight",
+          "node_id": 327,
+          "clip_id": 165,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "ShootHold UpRight",
+          "node_id": 328,
+          "clip_id": 170,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "ShootHold UpLeft",
+          "node_id": 329,
+          "clip_id": 169,
+          "length": 0.0666666999459267,
+          "loop": false
+        }
+      ]
+    },
+    {
+      "name": "ShootPrep",
+      "position": [
+        -28.05069923400879,
+        250.03599548339844
+      ],
+      "parameter": "parameters/ShootPrep/blend_position",
+      "initial": [
+        0.0,
+        0.0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "ShootPrep Down",
+          "node_id": 331,
+          "clip_id": 171,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "ShootPrep Up",
+          "node_id": 332,
+          "clip_id": 176,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "ShootPrep Right",
+          "node_id": 333,
+          "clip_id": 175,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "ShootPrep Left",
+          "node_id": 334,
+          "clip_id": 174,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "ShootPrep DownRight",
+          "node_id": 335,
+          "clip_id": 173,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            0.699999988079071
+          ],
+          "clip": "ShootPrep DownLeft",
+          "node_id": 336,
+          "clip_id": 172,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "ShootPrep UpRight",
+          "node_id": 337,
+          "clip_id": 178,
+          "length": 0.0666666999459267,
+          "loop": false
+        },
+        {
+          "position": [
+            -0.6000000238418579,
+            -0.699999988079071
+          ],
+          "clip": "ShootPrep UpLeft",
+          "node_id": 338,
+          "clip_id": 177,
+          "length": 0.0666666999459267,
+          "loop": false
+        }
+      ]
+    },
+    {
+      "name": "Soot",
+      "position": [
+        630.885986328125,
+        -204.9949951171875
+      ],
+      "parameter": "",
+      "initial": [
+        0,
+        0
+      ],
+      "scale_parameter": "",
+      "scale": 1,
+      "points": [
+        {
+          "position": [
+            0,
+            0
+          ],
+          "clip": "Soot",
+          "node_id": 339,
+          "clip_id": 179,
+          "length": 0.1000000014901161,
+          "loop": true
+        }
+      ]
+    },
+    {
+      "name": "Walk",
+      "position": [
+        628.3170166015625,
+        143.64100646972656
+      ],
+      "parameter": "parameters/Walk/Walk/blend_position",
+      "initial": [
+        -0.1776819974184036,
+        -0.0891088992357254
+      ],
+      "scale_parameter": "parameters/Walk/TimeScale/scale",
+      "scale": 1.0,
+      "points": [
+        {
+          "position": [
+            -0.699999988079071,
+            0.699999988079071
+          ],
+          "clip": "Walk DownLeft",
+          "node_id": 343,
+          "clip_id": 181,
+          "length": 0.800000011920929,
+          "loop": true
+        },
+        {
+          "position": [
+            -0.699999988079071,
+            -0.699999988079071
+          ],
+          "clip": "Walk UpLeft",
+          "node_id": 344,
+          "clip_id": 186,
+          "length": 0.800000011920929,
+          "loop": true
+        },
+        {
+          "position": [
+            0.699999988079071,
+            -0.699999988079071
+          ],
+          "clip": "Walk UpRight",
+          "node_id": 345,
+          "clip_id": 187,
+          "length": 0.800000011920929,
+          "loop": true
+        },
+        {
+          "position": [
+            0.699999988079071,
+            0.699999988079071
+          ],
+          "clip": "Walk DownRight",
+          "node_id": 346,
+          "clip_id": 182,
+          "length": 0.800000011920929,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            1.0
+          ],
+          "clip": "Walk Down",
+          "node_id": 347,
+          "clip_id": 180,
+          "length": 0.800000011920929,
+          "loop": true
+        },
+        {
+          "position": [
+            -1.0,
+            0.0
+          ],
+          "clip": "Walk Left",
+          "node_id": 348,
+          "clip_id": 183,
+          "length": 0.800000011920929,
+          "loop": true
+        },
+        {
+          "position": [
+            0.0,
+            -1.0
+          ],
+          "clip": "Walk Up",
+          "node_id": 349,
+          "clip_id": 185,
+          "length": 0.800000011920929,
+          "loop": true
+        },
+        {
+          "position": [
+            1.0,
+            0.0
+          ],
+          "clip": "Walk Right",
+          "node_id": 350,
+          "clip_id": 184,
+          "length": 0.800000011920929,
+          "loop": true
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "Shoot",
+      "target": "Idle",
+      "mode": 2,
+      "priority": 1,
+      "auto": true,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "Crouch",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Crouch",
+      "target": "Idle",
+      "mode": 2,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "Blink",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Blink",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "ShootPrep",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "ShootPrep",
+      "target": "ShootHold",
+      "mode": 2,
+      "priority": 1,
+      "auto": true,
+      "disabled": false
+    },
+    {
+      "source": "ShootHold",
+      "target": "Shoot",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Cast",
+      "target": "Idle",
+      "mode": 2,
+      "priority": 1,
+      "auto": true,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "CastPrep",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "CastPrep",
+      "target": "CastHold",
+      "mode": 2,
+      "priority": 1,
+      "auto": true,
+      "disabled": false
+    },
+    {
+      "source": "CastHold",
+      "target": "Cast",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Crouch",
+      "target": "Jump",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Jump",
+      "target": "Crouch",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "ShootHold",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "ShootPrep",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "FaintedIdle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "FaintedIdle",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "Bat",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Bat",
+      "target": "Idle",
+      "mode": 2,
+      "priority": 1,
+      "auto": true,
+      "disabled": false
+    },
+    {
+      "source": "FaintedIdle",
+      "target": "FaintedWalk",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "FaintedWalk",
+      "target": "FaintedIdle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Soot",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "Soot",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Scared",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "Scared",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Crouch",
+      "target": "Run",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Run",
+      "target": "Soot",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Walk",
+      "target": "Run",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Run",
+      "target": "Walk",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Walk",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "Walk",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "ShootPrep",
+      "target": "Shoot",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Shoot",
+      "target": "Walk",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Shoot",
+      "target": "FaintedWalk",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Shoot",
+      "target": "ShootPrep",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Down",
+      "target": "Idle",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    },
+    {
+      "source": "Idle",
+      "target": "Down",
+      "mode": 0,
+      "priority": 1,
+      "auto": false,
+      "disabled": false
+    }
+  ],
+  "whole_player_ready": false
+}

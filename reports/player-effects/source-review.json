@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "84970c16fb6e40579e769bc932d3fc01cd7e36a14d4157129e7d9e03cf2ffdf7",
+  "scope": "Full Player AfterImageCreator/DustCreator source onready/factory/timer/cleanup. Complete native 2+4 effect trees; unknown native/script owner rejects factory.",
+  "engine_source_sha256": "2d397fd7ebd8e2c1fa3e7f970ff8729bc6becd8d3cbd496987389031920df902",
+  "review": [
+    "Godot double round uses ::round; SourceRandom performs exactly two global rand_range calls in source x/y order",
+    "Sprite.duplicate default USE_INSTANCING|SIGNALS|GROUPS|SCRIPTS retains the original four-node main/emotes/AnimationPlayer/Audio subtree, with no fake cropped Sprite replacement",
+    "Source add_child precedes Dust random draws; CharacterTint actual Ready resolves all target NodePaths",
+    "ONEshot disconnect occurs after synchronous callbacks in Object::emit_signal",
+    "AnimationPlayer and GPU material/texture owners are explicit prerequisites, no callback absence grants Ready",
+    "Actual Player inherited AfterImageCreator/Timer native descriptor embedded independently and cross-bound to Player source scene; no static Podunk Timer proxy"
+  ]
+}

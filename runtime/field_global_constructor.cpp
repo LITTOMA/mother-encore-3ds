@@ -1,5 +1,6 @@
 #include "encore/field_global_constructor.hpp"
 #include <algorithm>
+#include <cmath>
 namespace encore::upstream {
 namespace {
 bool fail(std::string &e, const char *s) {
@@ -25,7 +26,10 @@ bool FieldGlobalConstructorRuntime::initialize(
     auto role = FieldGlobalMemberRole(f.role);
     switch (f.kind) {
     case FieldGlobalLiteralKind::StringArray:
-      arrays_[role] = std::make_shared<GlobalLoadObjectArray>();
+      if (role == FieldGlobalMemberRole::PartySpace)
+        party_space_ = std::make_shared<FieldGlobalPartySpaceArray>();
+      else
+        arrays_[role] = std::make_shared<GlobalLoadObjectArray>();
       break;
     case FieldGlobalLiteralKind::Null:
       objects_[role] = 0;
@@ -106,6 +110,42 @@ bool FieldGlobalConstructorRuntime::assign_array(FieldGlobalMemberRole role,
   auto root = std::make_shared<GlobalLoadObjectArray>();
   root->values = std::move(v);
   arrays_[role] = std::move(root);
+  return true;
+}
+bool FieldGlobalConstructorRuntime::party_space(
+    std::shared_ptr<const FieldGlobalPartySpaceArray> &out,
+    std::string &e) const {
+  if (!live(e) || !party_space_)
+    return fail(e, "Global PartySpace actual Array missing");
+  out = party_space_;
+  return true;
+}
+bool FieldGlobalConstructorRuntime::resize_party_space(size_t size,
+                                                       std::string &e) {
+  if (!live(e) || !party_space_ || size > party_space_->values.max_size())
+    return fail(e, "Global PartySpace resize rejected");
+  party_space_->values.resize(size);
+  return true;
+}
+bool FieldGlobalConstructorRuntime::push_front_party_space(Vec2 value,
+                                                           std::string &e) {
+  if (!live(e) || !party_space_ || !std::isfinite(value.x) ||
+      !std::isfinite(value.y) ||
+      party_space_->values.size() == party_space_->values.max_size())
+    return fail(e, "Global PartySpace Vector2 append rejected");
+  party_space_->values.insert(party_space_->values.begin(), {true, value});
+  return true;
+}
+bool FieldGlobalConstructorRuntime::pop_back_party_space(
+    FieldGlobalPartySpaceValue &out, std::string &e) {
+  if (!live(e) || !party_space_)
+    return fail(e, "Global PartySpace actual Array missing");
+  if (party_space_->values.empty()) {
+    out = {};
+    return true;
+  }
+  out = party_space_->values.back();
+  party_space_->values.pop_back();
   return true;
 }
 bool FieldGlobalConstructorRuntime::object(FieldGlobalMemberRole role,

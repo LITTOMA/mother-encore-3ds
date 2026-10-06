@@ -1,0 +1,2456 @@
+{
+  "schema": 1,
+  "kind": "encore.player-effects.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "family": 1162739801,
+  "player_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+  "scene": "Nodes/Reusables/Player.tscn",
+  "scene_id": 3168673487,
+  "source_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+  "sources": {
+    "Scripts/misc/AfterImageCreator.gd": "44ef601a4b969553b707a7a05100c747b8cb7d2f161486232a119dbf5fc95dd3",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "Scripts/misc/DustCreator.gd": "5c48002707bb12c27d79041f812636731099879fae1c6caec066d3fc4807d410",
+    "Nodes/Reusables/Effects/After Image.tscn": "a245a3f70f3d8dd5ef3392ffe9d9681cca947143500d5f61569f2065d836512a",
+    "Scripts/misc/After Image.gd": "44becf40f6191694b6c2dd24f126a108aa22ff03fddd19f9e510ac85d3925b8f",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+    "Nodes/Reusables/Effects/Dust.tscn": "13219e6f0da5090db70de12b43bbed4945229fc3db307f97abc88d6e1e4d29d9",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Graphics/VFX/Running Dust.png": "399eb12436ae94a509eccc6e042e3bcd590e4bf08be39c8441649cab412ac984",
+    "Nodes/Reusables/Effects/AfterImageCreator.tscn": "6e7436316f5ced4d3d9ef8f1416cfa7b2cd860ca739e1534369c3a00fe10122e",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d"
+  },
+  "creators": [
+    {
+      "kind": 0,
+      "id": 3557368890,
+      "path": "AfterImageCreator",
+      "native": "Node",
+      "script": "Scripts/misc/AfterImageCreator.gd",
+      "script_sha": "44ef601a4b969553b707a7a05100c747b8cb7d2f161486232a119dbf5fc95dd3",
+      "resource_member": "AfterImage",
+      "scene": "Nodes/Reusables/Effects/After Image.tscn",
+      "methods": [
+        "create_after_image",
+        "set_interval",
+        "start_creating",
+        "stop_creating",
+        "_on_Timer_timeout"
+      ],
+      "timer_member": "timer",
+      "timer_path": "Timer",
+      "sprite_member": "sprite",
+      "sprite_path": "../Position/main",
+      "sprite_export": "spritePath",
+      "parent_hops": 2,
+      "timeout_method": "_on_Timer_timeout"
+    },
+    {
+      "kind": 1,
+      "id": 1477093832,
+      "path": "DustCreator",
+      "native": "Node2D",
+      "script": "Scripts/misc/DustCreator.gd",
+      "script_sha": "5c48002707bb12c27d79041f812636731099879fae1c6caec066d3fc4807d410",
+      "resource_member": "Dust",
+      "scene": "Nodes/Reusables/Effects/Dust.tscn",
+      "methods": [
+        "create_dust",
+        "_destroy_dust"
+      ],
+      "scene_member": "currentScene",
+      "objects_path": "Objects",
+      "rng_bounds": [
+        -3.0,
+        3.0
+      ],
+      "party_depth": 0.01,
+      "party_member": "party",
+      "animation_path": "AnimationPlayer",
+      "animation": "Dusty",
+      "finished_signal": "animation_finished",
+      "finished_method": "_destroy_dust",
+      "connect_flag": "CONNECT_ONESHOT",
+      "created_member": "_created_dusts"
+    }
+  ],
+  "policy": {
+    "after_animation": "Fadeout",
+    "after_animation_path": "AnimationPlayer",
+    "after_finished_method": "_on_AnimationPlayer_animation_finished",
+    "copied_members": [
+      "texture",
+      "hframes",
+      "vframes",
+      "offset",
+      "frame"
+    ],
+    "tint_targets_member": "sprite_paths",
+    "tint_script": "Scripts/misc/character_tint.gd",
+    "tint_paths": [
+      "../Sprite"
+    ],
+    "tint_default": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "after_finished_signal": "animation_finished"
+  },
+  "timer": {
+    "id": 2861660784,
+    "scene": 3168673487,
+    "mode": 1,
+    "flags": 1,
+    "wait": 0.20000000298023224,
+    "scene_sha": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+    "script_sha": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "recipes": [
+    {
+      "schema": 1,
+      "kind": "encore.field-node-recipe.source-ir",
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "scene": "Nodes/Reusables/Effects/After Image.tscn",
+      "scene_id": 3745125537,
+      "source_sha256": "a245a3f70f3d8dd5ef3392ffe9d9681cca947143500d5f61569f2065d836512a",
+      "sources": {
+        "Nodes/Reusables/Effects/After Image.tscn": "a245a3f70f3d8dd5ef3392ffe9d9681cca947143500d5f61569f2065d836512a",
+        "Scripts/misc/After Image.gd": "44becf40f6191694b6c2dd24f126a108aa22ff03fddd19f9e510ac85d3925b8f",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9"
+      },
+      "native_sha256": "23c693d50f4dadf25a2198ad3dc6374e427e406b2e40ae5707f954747a91e7b7",
+      "tree_export_sha256": "0cc33c319218c216a70a9f6615f2800e2052f996b151d0f356cf8809254579d5",
+      "source_receipt_sha256": "366bb67144c03a5cbdb3faaf996f13d1bde3130dec473e1e6554786182195c3b",
+      "case_aliases": {},
+      "exporter_sha256": "d32fb3679db920f886e46f0ed69f7baa80930d63e6e26d172d85f018c6322b2e",
+      "classes": [
+        "Node",
+        "Node2D",
+        "Sprite",
+        "VisibilityNotifier2D",
+        "Position2D",
+        "CollisionShape2D",
+        "AnimationPlayer",
+        "Area2D",
+        "Timer",
+        "KinematicBody2D",
+        "VisibilityEnabler2D",
+        "TextureRect",
+        "HBoxContainer",
+        "Label",
+        "AudioStreamPlayer",
+        "RayCast2D",
+        "AnimatedSprite",
+        "StaticBody2D",
+        "CollisionPolygon2D",
+        "TileMap",
+        "YSort",
+        "Camera2D",
+        "AudioStreamPlayer2D",
+        "Tween",
+        "ReferenceRect",
+        "CanvasLayer",
+        "Control",
+        "NinePatchRect",
+        "GridContainer",
+        "RichTextLabel",
+        "VScrollBar",
+        "PanelContainer",
+        "ColorRect",
+        "CenterContainer",
+        "MarginContainer",
+        "VBoxContainer",
+        "TextureButton",
+        "ScrollContainer",
+        "HScrollBar",
+        "TextureProgress",
+        "Panel",
+        "Path2D",
+        "PathFollow2D"
+      ],
+      "script_methods": [
+        "_ready",
+        "_enter_tree",
+        "_exit_tree",
+        "_input",
+        "_unhandled_input",
+        "_unhandled_key_input",
+        "_process",
+        "_physics_process"
+      ],
+      "script_null_overrides": {},
+      "records": [
+        {
+          "native_generated": false,
+          "id": 3745125537,
+          "node": ".",
+          "name": "AfterImage",
+          "class_index": 2,
+          "native_class": "Sprite",
+          "parent": 0,
+          "owner": 0,
+          "canvas_parent": 0,
+          "index": -1,
+          "pause": 0,
+          "priority": 0,
+          "flags": 99,
+          "z": 0,
+          "light_mask": 1,
+          "local": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "world": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "modulate": [
+            1.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "self_modulate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "groups": [],
+          "script": "Scripts/misc/After Image.gd",
+          "script_sha": "44becf40f6191694b6c2dd24f126a108aa22ff03fddd19f9e510ac85d3925b8f",
+          "script_methods": 1,
+          "ready": 1
+        },
+        {
+          "native_generated": false,
+          "id": 1707488914,
+          "node": "AnimationPlayer",
+          "name": "AnimationPlayer",
+          "class_index": 6,
+          "native_class": "AnimationPlayer",
+          "parent": 3745125537,
+          "owner": 3745125537,
+          "canvas_parent": 0,
+          "index": 0,
+          "pause": 0,
+          "priority": 0,
+          "flags": 0,
+          "z": 0,
+          "light_mask": 0,
+          "local": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "world": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "modulate": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "self_modulate": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "groups": [],
+          "script": "",
+          "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+          "script_methods": 0,
+          "ready": 0
+        }
+      ],
+      "controls": [],
+      "canvas_layers": [],
+      "scene_admitted": false,
+      "pending": [
+        "Native CanvasLayer external Viewport/World2D must be supplied by real host at ENTER",
+        "Every native class and inherited script requires actual typed owner callbacks",
+        "RichTextLabel native VScrollBar children retained; no fake Control Ready/layout/render approval",
+        "Source timers/animations/fonts/audio/signals owned by independent checked consumers"
+      ]
+    },
+    {
+      "schema": 1,
+      "kind": "encore.field-node-recipe.source-ir",
+      "commit": "7d9246600fffe518408f5830d4848635019005a3",
+      "scene": "Nodes/Reusables/Effects/Dust.tscn",
+      "scene_id": 1855370400,
+      "source_sha256": "13219e6f0da5090db70de12b43bbed4945229fc3db307f97abc88d6e1e4d29d9",
+      "sources": {
+        "Nodes/Reusables/Effects/Dust.tscn": "13219e6f0da5090db70de12b43bbed4945229fc3db307f97abc88d6e1e4d29d9",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Graphics/VFX/Running Dust.png": "399eb12436ae94a509eccc6e042e3bcd590e4bf08be39c8441649cab412ac984"
+      },
+      "native_sha256": "953f66849f61b410dffb930b2aff5fc08a735809d02161c9fb86e7e2a0338b86",
+      "tree_export_sha256": "3ae150e916364b561862ed4a47147c0069fde1ee9b28a1a9214ddd71227ae7da",
+      "source_receipt_sha256": "36f54a934ea08966e685879da8ae2b438444bf1457b78d0e65344d3e1f0dfd6e",
+      "case_aliases": {},
+      "exporter_sha256": "d32fb3679db920f886e46f0ed69f7baa80930d63e6e26d172d85f018c6322b2e",
+      "classes": [
+        "Node",
+        "Node2D",
+        "Sprite",
+        "VisibilityNotifier2D",
+        "Position2D",
+        "CollisionShape2D",
+        "AnimationPlayer",
+        "Area2D",
+        "Timer",
+        "KinematicBody2D",
+        "VisibilityEnabler2D",
+        "TextureRect",
+        "HBoxContainer",
+        "Label",
+        "AudioStreamPlayer",
+        "RayCast2D",
+        "AnimatedSprite",
+        "StaticBody2D",
+        "CollisionPolygon2D",
+        "TileMap",
+        "YSort",
+        "Camera2D",
+        "AudioStreamPlayer2D",
+        "Tween",
+        "ReferenceRect",
+        "CanvasLayer",
+        "Control",
+        "NinePatchRect",
+        "GridContainer",
+        "RichTextLabel",
+        "VScrollBar",
+        "PanelContainer",
+        "ColorRect",
+        "CenterContainer",
+        "MarginContainer",
+        "VBoxContainer",
+        "TextureButton",
+        "ScrollContainer",
+        "HScrollBar",
+        "TextureProgress",
+        "Panel",
+        "Path2D",
+        "PathFollow2D"
+      ],
+      "script_methods": [
+        "_ready",
+        "_enter_tree",
+        "_exit_tree",
+        "_input",
+        "_unhandled_input",
+        "_unhandled_key_input",
+        "_process",
+        "_physics_process"
+      ],
+      "script_null_overrides": {},
+      "records": [
+        {
+          "native_generated": false,
+          "id": 1855370400,
+          "node": ".",
+          "name": "Dust",
+          "class_index": 2,
+          "native_class": "Sprite",
+          "parent": 0,
+          "owner": 0,
+          "canvas_parent": 0,
+          "index": -1,
+          "pause": 0,
+          "priority": 0,
+          "flags": 67,
+          "z": 0,
+          "light_mask": 1,
+          "local": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "world": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "modulate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "self_modulate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "groups": [],
+          "script": "",
+          "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+          "script_methods": 0,
+          "ready": 3
+        },
+        {
+          "native_generated": false,
+          "id": 467417603,
+          "node": "Sprite",
+          "name": "Sprite",
+          "class_index": 2,
+          "native_class": "Sprite",
+          "parent": 1855370400,
+          "owner": 1855370400,
+          "canvas_parent": 1855370400,
+          "index": 0,
+          "pause": 0,
+          "priority": 0,
+          "flags": 99,
+          "z": 0,
+          "light_mask": 1,
+          "local": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "world": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "modulate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "self_modulate": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "groups": [],
+          "script": "",
+          "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+          "script_methods": 0,
+          "ready": 0
+        },
+        {
+          "native_generated": false,
+          "id": 2719889531,
+          "node": "AnimationPlayer",
+          "name": "AnimationPlayer",
+          "class_index": 6,
+          "native_class": "AnimationPlayer",
+          "parent": 1855370400,
+          "owner": 1855370400,
+          "canvas_parent": 0,
+          "index": 1,
+          "pause": 0,
+          "priority": 0,
+          "flags": 0,
+          "z": 0,
+          "light_mask": 0,
+          "local": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "world": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "modulate": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "self_modulate": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "groups": [],
+          "script": "",
+          "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+          "script_methods": 0,
+          "ready": 1
+        },
+        {
+          "native_generated": false,
+          "id": 3406922413,
+          "node": "CharacterTint",
+          "name": "CharacterTint",
+          "class_index": 0,
+          "native_class": "Node",
+          "parent": 1855370400,
+          "owner": 1855370400,
+          "canvas_parent": 0,
+          "index": 2,
+          "pause": 0,
+          "priority": 0,
+          "flags": 0,
+          "z": 0,
+          "light_mask": 0,
+          "local": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "world": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "modulate": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "self_modulate": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "groups": [],
+          "script": "Scripts/misc/character_tint.gd",
+          "script_sha": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+          "script_methods": 1,
+          "ready": 2
+        }
+      ],
+      "controls": [],
+      "canvas_layers": [],
+      "scene_admitted": false,
+      "pending": [
+        "Native CanvasLayer external Viewport/World2D must be supplied by real host at ENTER",
+        "Every native class and inherited script requires actual typed owner callbacks",
+        "RichTextLabel native VScrollBar children retained; no fake Control Ready/layout/render approval",
+        "Source timers/animations/fonts/audio/signals owned by independent checked consumers"
+      ]
+    }
+  ],
+  "native": [
+    {
+      "schema": 1,
+      "coverage": "native_instantiated_data_with_raw_scene_states",
+      "native_compatible": false,
+      "godot": {
+        "major": 3,
+        "minor": 6,
+        "patch": 2,
+        "hex": 198146,
+        "status": "stable",
+        "build": "official",
+        "year": 2025,
+        "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+        "string": "3.6.2-stable (official)"
+      },
+      "source": "res://Nodes/Reusables/Effects/After Image.tscn",
+      "nodes": [
+        {
+          "path": ".",
+          "name": "AfterImage",
+          "class": "Sprite",
+          "properties": {
+            "_import_path": {
+              "type": "NodePath",
+              "value": ""
+            },
+            "pause_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "physics_interpolation_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "unique_name_in_owner": false,
+            "process_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "visible": true,
+            "modulate": {
+              "type": "Color",
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0
+            },
+            "self_modulate": {
+              "type": "Color",
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "show_behind_parent": false,
+            "light_mask": {
+              "type": "int64",
+              "value": "1"
+            },
+            "material": {
+              "type": "ResourceReference",
+              "id": 5
+            },
+            "use_parent_material": false,
+            "position": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            },
+            "rotation": 0,
+            "scale": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 1
+            },
+            "z_index": {
+              "type": "int64",
+              "value": "0"
+            },
+            "z_as_relative": true,
+            "texture": {
+              "type": "ResourceReference",
+              "id": 2
+            },
+            "normal_map": null,
+            "centered": true,
+            "offset": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            },
+            "flip_h": false,
+            "flip_v": false,
+            "hframes": {
+              "type": "int64",
+              "value": "10"
+            },
+            "vframes": {
+              "type": "int64",
+              "value": "20"
+            },
+            "frame": {
+              "type": "int64",
+              "value": "0"
+            },
+            "region_enabled": false,
+            "region_rect": {
+              "type": "Rect2",
+              "position": {
+                "type": "Vector2",
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "type": "Vector2",
+                "x": 0,
+                "y": 0
+              }
+            },
+            "region_filter_clip": false,
+            "script": null
+          },
+          "world_transform": {
+            "type": "Transform2D",
+            "x": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 0
+            },
+            "y": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 1
+            },
+            "origin": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            }
+          }
+        },
+        {
+          "path": "AnimationPlayer",
+          "name": "AnimationPlayer",
+          "class": "AnimationPlayer",
+          "properties": {
+            "_import_path": {
+              "type": "NodePath",
+              "value": ""
+            },
+            "pause_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "physics_interpolation_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "unique_name_in_owner": false,
+            "process_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "root_node": {
+              "type": "NodePath",
+              "value": ".."
+            },
+            "autoplay": "",
+            "reset_on_save": true,
+            "playback_process_mode": {
+              "type": "int64",
+              "value": "1"
+            },
+            "playback_default_blend_time": 0,
+            "playback_speed": 1,
+            "method_call_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "anims/Fadeout": {
+              "type": "ResourceReference",
+              "id": 3
+            },
+            "anims/RESET": {
+              "type": "ResourceReference",
+              "id": 4
+            },
+            "blend_times": {
+              "type": "Array",
+              "value": []
+            },
+            "script": null
+          }
+        }
+      ],
+      "resources": [
+        {
+          "id": 0,
+          "class": "ShaderMaterial",
+          "path": "res://Shaders/Flash.tres",
+          "properties": {
+            "resource_local_to_scene": true,
+            "resource_name": "",
+            "render_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "shader": {
+              "type": "ResourceReference",
+              "id": 1
+            },
+            "script": null
+          }
+        },
+        {
+          "id": 1,
+          "class": "Shader",
+          "path": "res://Shaders/Flash.tres::9",
+          "properties": {
+            "resource_local_to_scene": false,
+            "resource_name": "",
+            "code": "",
+            "custom_defines": "",
+            "script": null
+          }
+        },
+        {
+          "id": 2,
+          "class": "StreamTexture",
+          "path": "res://Graphics/Character Sprites/Ninten/main.png",
+          "payload": "external codec; original bytes tracked in source.json",
+          "size": {
+            "type": "Vector2",
+            "x": 310,
+            "y": 580
+          }
+        },
+        {
+          "id": 3,
+          "class": "Animation",
+          "path": "res://Nodes/Reusables/Effects/After Image.tscn::1",
+          "properties": {
+            "resource_local_to_scene": false,
+            "resource_name": "Fadeout",
+            "length": 0.25,
+            "loop": false,
+            "step": 0.041667,
+            "tracks/0/type": "value",
+            "tracks/0/path": {
+              "type": "NodePath",
+              "value": ".:material:shader_param/flash_color"
+            },
+            "tracks/0/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/0/loop_wrap": true,
+            "tracks/0/imported": false,
+            "tracks/0/enabled": true,
+            "tracks/0/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0,
+                      0.25
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1,
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "Color",
+                        "r": 0.207843,
+                        "g": 0.807843,
+                        "b": 0.92549,
+                        "a": 1
+                      },
+                      {
+                        "type": "Color",
+                        "r": 0.152941,
+                        "g": 0.156863,
+                        "b": 0.301961,
+                        "a": 1
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/1/type": "value",
+            "tracks/1/path": {
+              "type": "NodePath",
+              "value": ".:material:shader_param/flash_modifier"
+            },
+            "tracks/1/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/1/loop_wrap": true,
+            "tracks/1/imported": false,
+            "tracks/1/enabled": true,
+            "tracks/1/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/2/type": "value",
+            "tracks/2/path": {
+              "type": "NodePath",
+              "value": ".:modulate"
+            },
+            "tracks/2/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/2/loop_wrap": true,
+            "tracks/2/imported": false,
+            "tracks/2/enabled": true,
+            "tracks/2/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0,
+                      0.208333,
+                      0.25
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1,
+                      1,
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 0
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/3/type": "value",
+            "tracks/3/path": {
+              "type": "NodePath",
+              "value": ".:visible"
+            },
+            "tracks/3/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/3/loop_wrap": true,
+            "tracks/3/imported": false,
+            "tracks/3/enabled": true,
+            "tracks/3/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0,
+                      0.25
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1,
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      true,
+                      false
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "1"
+                  }
+                ]
+              ]
+            },
+            "script": null
+          }
+        },
+        {
+          "id": 4,
+          "class": "Animation",
+          "path": "res://Nodes/Reusables/Effects/After Image.tscn::2",
+          "properties": {
+            "resource_local_to_scene": false,
+            "resource_name": "",
+            "length": 0.001,
+            "loop": false,
+            "step": 0.1,
+            "tracks/0/type": "value",
+            "tracks/0/path": {
+              "type": "NodePath",
+              "value": ".:material:shader_param/glow_modifier"
+            },
+            "tracks/0/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/0/loop_wrap": true,
+            "tracks/0/imported": false,
+            "tracks/0/enabled": true,
+            "tracks/0/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/1/type": "value",
+            "tracks/1/path": {
+              "type": "NodePath",
+              "value": ".:material:shader_param/flash_color"
+            },
+            "tracks/1/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/1/loop_wrap": true,
+            "tracks/1/imported": false,
+            "tracks/1/enabled": true,
+            "tracks/1/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/2/type": "value",
+            "tracks/2/path": {
+              "type": "NodePath",
+              "value": ".:material:shader_param/flash_modifier"
+            },
+            "tracks/2/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/2/loop_wrap": true,
+            "tracks/2/imported": false,
+            "tracks/2/enabled": true,
+            "tracks/2/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/3/type": "value",
+            "tracks/3/path": {
+              "type": "NodePath",
+              "value": ".:modulate"
+            },
+            "tracks/3/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/3/loop_wrap": true,
+            "tracks/3/imported": false,
+            "tracks/3/enabled": true,
+            "tracks/3/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 0
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/4/type": "value",
+            "tracks/4/path": {
+              "type": "NodePath",
+              "value": ".:visible"
+            },
+            "tracks/4/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/4/loop_wrap": true,
+            "tracks/4/imported": false,
+            "tracks/4/enabled": true,
+            "tracks/4/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      true
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "script": null
+          }
+        },
+        {
+          "id": 5,
+          "class": "ShaderMaterial",
+          "path": "",
+          "properties": {
+            "resource_local_to_scene": true,
+            "resource_name": "",
+            "render_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "shader": {
+              "type": "ResourceReference",
+              "id": 1
+            },
+            "script": null
+          }
+        }
+      ],
+      "scene_states": [
+        {
+          "source": "res://Nodes/Reusables/Effects/After Image.tscn",
+          "nodes": [
+            {
+              "path": ".",
+              "class": "Sprite",
+              "name": "AfterImage",
+              "owner": "",
+              "sibling_index": -1,
+              "groups": {
+                "type": "PoolStringArray",
+                "value": []
+              },
+              "instance": null,
+              "properties": {
+                "modulate": {
+                  "type": "Color",
+                  "r": 1,
+                  "g": 1,
+                  "b": 1,
+                  "a": 0
+                },
+                "material": {
+                  "type": "ResourceReference",
+                  "id": 0
+                },
+                "texture": {
+                  "type": "ResourceReference",
+                  "id": 2
+                },
+                "hframes": {
+                  "type": "int64",
+                  "value": "10"
+                },
+                "vframes": {
+                  "type": "int64",
+                  "value": "20"
+                },
+                "script": null
+              }
+            },
+            {
+              "path": "./AnimationPlayer",
+              "class": "AnimationPlayer",
+              "name": "AnimationPlayer",
+              "owner": ".",
+              "sibling_index": -1,
+              "groups": {
+                "type": "PoolStringArray",
+                "value": []
+              },
+              "instance": null,
+              "properties": {
+                "anims/Fadeout": {
+                  "type": "ResourceReference",
+                  "id": 3
+                },
+                "anims/RESET": {
+                  "type": "ResourceReference",
+                  "id": 4
+                }
+              }
+            }
+          ],
+          "connections": []
+        }
+      ],
+      "not_executed": [
+        "_ready",
+        "_process",
+        "_physics_process",
+        "animation playback"
+      ],
+      "blockers": [
+        "script mechanism/default bindings",
+        "runtime factories",
+        "signals",
+        "method tracks"
+      ]
+    },
+    {
+      "schema": 1,
+      "coverage": "native_instantiated_data_with_raw_scene_states",
+      "native_compatible": false,
+      "godot": {
+        "major": 3,
+        "minor": 6,
+        "patch": 2,
+        "hex": 198146,
+        "status": "stable",
+        "build": "official",
+        "year": 2025,
+        "hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+        "string": "3.6.2-stable (official)"
+      },
+      "source": "res://Nodes/Reusables/Effects/Dust.tscn",
+      "nodes": [
+        {
+          "path": ".",
+          "name": "Dust",
+          "class": "Sprite",
+          "properties": {
+            "_import_path": {
+              "type": "NodePath",
+              "value": ""
+            },
+            "pause_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "physics_interpolation_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "unique_name_in_owner": false,
+            "process_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "visible": true,
+            "modulate": {
+              "type": "Color",
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "self_modulate": {
+              "type": "Color",
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "show_behind_parent": false,
+            "light_mask": {
+              "type": "int64",
+              "value": "1"
+            },
+            "material": null,
+            "use_parent_material": false,
+            "position": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            },
+            "rotation": 0,
+            "scale": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 1
+            },
+            "z_index": {
+              "type": "int64",
+              "value": "0"
+            },
+            "z_as_relative": true,
+            "texture": null,
+            "normal_map": null,
+            "centered": true,
+            "offset": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            },
+            "flip_h": false,
+            "flip_v": false,
+            "hframes": {
+              "type": "int64",
+              "value": "7"
+            },
+            "vframes": {
+              "type": "int64",
+              "value": "1"
+            },
+            "frame": {
+              "type": "int64",
+              "value": "0"
+            },
+            "region_enabled": false,
+            "region_rect": {
+              "type": "Rect2",
+              "position": {
+                "type": "Vector2",
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "type": "Vector2",
+                "x": 0,
+                "y": 0
+              }
+            },
+            "region_filter_clip": false,
+            "script": null
+          },
+          "world_transform": {
+            "type": "Transform2D",
+            "x": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 0
+            },
+            "y": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 1
+            },
+            "origin": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            }
+          }
+        },
+        {
+          "path": "Sprite",
+          "name": "Sprite",
+          "class": "Sprite",
+          "properties": {
+            "_import_path": {
+              "type": "NodePath",
+              "value": ""
+            },
+            "pause_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "physics_interpolation_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "unique_name_in_owner": false,
+            "process_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "visible": true,
+            "modulate": {
+              "type": "Color",
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "self_modulate": {
+              "type": "Color",
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "show_behind_parent": false,
+            "light_mask": {
+              "type": "int64",
+              "value": "1"
+            },
+            "material": {
+              "type": "ResourceReference",
+              "id": 0
+            },
+            "use_parent_material": false,
+            "position": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            },
+            "rotation": 0,
+            "scale": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 1
+            },
+            "z_index": {
+              "type": "int64",
+              "value": "0"
+            },
+            "z_as_relative": true,
+            "texture": {
+              "type": "ResourceReference",
+              "id": 1
+            },
+            "normal_map": null,
+            "centered": true,
+            "offset": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            },
+            "flip_h": false,
+            "flip_v": false,
+            "hframes": {
+              "type": "int64",
+              "value": "7"
+            },
+            "vframes": {
+              "type": "int64",
+              "value": "1"
+            },
+            "frame": {
+              "type": "int64",
+              "value": "0"
+            },
+            "region_enabled": false,
+            "region_rect": {
+              "type": "Rect2",
+              "position": {
+                "type": "Vector2",
+                "x": 0,
+                "y": 0
+              },
+              "size": {
+                "type": "Vector2",
+                "x": 0,
+                "y": 0
+              }
+            },
+            "region_filter_clip": false,
+            "script": null
+          },
+          "world_transform": {
+            "type": "Transform2D",
+            "x": {
+              "type": "Vector2",
+              "x": 1,
+              "y": 0
+            },
+            "y": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 1
+            },
+            "origin": {
+              "type": "Vector2",
+              "x": 0,
+              "y": 0
+            }
+          }
+        },
+        {
+          "path": "AnimationPlayer",
+          "name": "AnimationPlayer",
+          "class": "AnimationPlayer",
+          "properties": {
+            "_import_path": {
+              "type": "NodePath",
+              "value": ""
+            },
+            "pause_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "physics_interpolation_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "unique_name_in_owner": false,
+            "process_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "root_node": {
+              "type": "NodePath",
+              "value": ".."
+            },
+            "autoplay": "",
+            "reset_on_save": true,
+            "playback_process_mode": {
+              "type": "int64",
+              "value": "1"
+            },
+            "playback_default_blend_time": 0,
+            "playback_speed": 1,
+            "method_call_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "anims/Dusty": {
+              "type": "ResourceReference",
+              "id": 2
+            },
+            "anims/RESET": {
+              "type": "ResourceReference",
+              "id": 3
+            },
+            "blend_times": {
+              "type": "Array",
+              "value": []
+            },
+            "script": null
+          }
+        },
+        {
+          "path": "CharacterTint",
+          "name": "CharacterTint",
+          "class": "Node",
+          "properties": {
+            "_import_path": {
+              "type": "NodePath",
+              "value": ""
+            },
+            "pause_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "physics_interpolation_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "unique_name_in_owner": false,
+            "process_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "script": null
+          }
+        }
+      ],
+      "resources": [
+        {
+          "id": 0,
+          "class": "CanvasItemMaterial",
+          "path": "res://Nodes/Reusables/Effects/Dust.tscn::3",
+          "properties": {
+            "resource_local_to_scene": false,
+            "resource_name": "",
+            "render_priority": {
+              "type": "int64",
+              "value": "0"
+            },
+            "next_pass": null,
+            "blend_mode": {
+              "type": "int64",
+              "value": "1"
+            },
+            "light_mode": {
+              "type": "int64",
+              "value": "0"
+            },
+            "particles_animation": false,
+            "script": null
+          }
+        },
+        {
+          "id": 1,
+          "class": "StreamTexture",
+          "path": "res://Graphics/VFX/Running Dust.png",
+          "payload": "external codec; original bytes tracked in source.json",
+          "size": {
+            "type": "Vector2",
+            "x": 112,
+            "y": 16
+          }
+        },
+        {
+          "id": 2,
+          "class": "Animation",
+          "path": "res://Nodes/Reusables/Effects/Dust.tscn::1",
+          "properties": {
+            "resource_local_to_scene": false,
+            "resource_name": "Dusty",
+            "length": 0.583333,
+            "loop": false,
+            "step": 0.083333,
+            "tracks/0/type": "value",
+            "tracks/0/path": {
+              "type": "NodePath",
+              "value": ".:modulate"
+            },
+            "tracks/0/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/0/loop_wrap": true,
+            "tracks/0/imported": false,
+            "tracks/0/enabled": true,
+            "tracks/0/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0,
+                      0.583333
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1,
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      },
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 0
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/1/type": "value",
+            "tracks/1/path": {
+              "type": "NodePath",
+              "value": "Sprite:frame"
+            },
+            "tracks/1/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/1/loop_wrap": true,
+            "tracks/1/imported": false,
+            "tracks/1/enabled": true,
+            "tracks/1/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0,
+                      0.083333,
+                      0.166667,
+                      0.25,
+                      0.333333,
+                      0.416667,
+                      0.5
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1,
+                      1,
+                      1,
+                      1,
+                      1,
+                      1,
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "int64",
+                        "value": "0"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "1"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "2"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "3"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "4"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "5"
+                      },
+                      {
+                        "type": "int64",
+                        "value": "6"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "1"
+                  }
+                ]
+              ]
+            },
+            "script": null
+          }
+        },
+        {
+          "id": 3,
+          "class": "Animation",
+          "path": "res://Nodes/Reusables/Effects/Dust.tscn::2",
+          "properties": {
+            "resource_local_to_scene": false,
+            "resource_name": "",
+            "length": 0.001,
+            "loop": false,
+            "step": 0.1,
+            "tracks/0/type": "value",
+            "tracks/0/path": {
+              "type": "NodePath",
+              "value": ".:frame"
+            },
+            "tracks/0/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/0/loop_wrap": true,
+            "tracks/0/imported": false,
+            "tracks/0/enabled": true,
+            "tracks/0/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "int64",
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/1/type": "value",
+            "tracks/1/path": {
+              "type": "NodePath",
+              "value": ".:modulate"
+            },
+            "tracks/1/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/1/loop_wrap": true,
+            "tracks/1/imported": false,
+            "tracks/1/enabled": true,
+            "tracks/1/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "Color",
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "tracks/2/type": "value",
+            "tracks/2/path": {
+              "type": "NodePath",
+              "value": "Sprite:frame"
+            },
+            "tracks/2/interp": {
+              "type": "int64",
+              "value": "1"
+            },
+            "tracks/2/loop_wrap": true,
+            "tracks/2/imported": false,
+            "tracks/2/enabled": true,
+            "tracks/2/keys": {
+              "type": "Dictionary",
+              "pairs": [
+                [
+                  "times",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      0
+                    ]
+                  }
+                ],
+                [
+                  "transitions",
+                  {
+                    "type": "PoolRealArray",
+                    "value": [
+                      1
+                    ]
+                  }
+                ],
+                [
+                  "values",
+                  {
+                    "type": "Array",
+                    "value": [
+                      {
+                        "type": "int64",
+                        "value": "0"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "update",
+                  {
+                    "type": "int64",
+                    "value": "0"
+                  }
+                ]
+              ]
+            },
+            "script": null
+          }
+        }
+      ],
+      "scene_states": [
+        {
+          "source": "res://Nodes/Reusables/Effects/Dust.tscn",
+          "nodes": [
+            {
+              "path": ".",
+              "class": "Sprite",
+              "name": "Dust",
+              "owner": "",
+              "sibling_index": -1,
+              "groups": {
+                "type": "PoolStringArray",
+                "value": []
+              },
+              "instance": null,
+              "properties": {
+                "hframes": {
+                  "type": "int64",
+                  "value": "7"
+                }
+              }
+            },
+            {
+              "path": "./Sprite",
+              "class": "Sprite",
+              "name": "Sprite",
+              "owner": ".",
+              "sibling_index": -1,
+              "groups": {
+                "type": "PoolStringArray",
+                "value": []
+              },
+              "instance": null,
+              "properties": {
+                "material": {
+                  "type": "ResourceReference",
+                  "id": 0
+                },
+                "texture": {
+                  "type": "ResourceReference",
+                  "id": 1
+                },
+                "hframes": {
+                  "type": "int64",
+                  "value": "7"
+                }
+              }
+            },
+            {
+              "path": "./AnimationPlayer",
+              "class": "AnimationPlayer",
+              "name": "AnimationPlayer",
+              "owner": ".",
+              "sibling_index": -1,
+              "groups": {
+                "type": "PoolStringArray",
+                "value": []
+              },
+              "instance": null,
+              "properties": {
+                "anims/Dusty": {
+                  "type": "ResourceReference",
+                  "id": 2
+                },
+                "anims/RESET": {
+                  "type": "ResourceReference",
+                  "id": 3
+                }
+              }
+            },
+            {
+              "path": "./CharacterTint",
+              "class": "Node",
+              "name": "CharacterTint",
+              "owner": ".",
+              "sibling_index": -1,
+              "groups": {
+                "type": "PoolStringArray",
+                "value": []
+              },
+              "instance": null,
+              "properties": {
+                "script": null,
+                "sprite_paths": {
+                  "type": "Array",
+                  "value": [
+                    {
+                      "type": "NodePath",
+                      "value": "../Sprite"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "connections": []
+        }
+      ],
+      "not_executed": [
+        "_ready",
+        "_process",
+        "_physics_process",
+        "animation playback"
+      ],
+      "blockers": [
+        "script mechanism/default bindings",
+        "runtime factories",
+        "signals",
+        "method tracks"
+      ]
+    }
+  ],
+  "signals": [
+    [
+      {
+        "source": "Nodes/Reusables/Effects/After Image.tscn",
+        "line": 135,
+        "declaration": "[connection signal=\"animation_finished\" from=\"AnimationPlayer\" to=\".\" method=\"_on_AnimationPlayer_animation_finished\"]"
+      }
+    ],
+    []
+  ],
+  "functions": [
+    {
+      "source": "Scripts/misc/AfterImageCreator.gd",
+      "method": "create_after_image",
+      "sha": "272642990c13a8833d8a83aeabd39f1c96b46ee5e6c4556625a76c99e6c5ab8f"
+    },
+    {
+      "source": "Scripts/misc/AfterImageCreator.gd",
+      "method": "set_interval",
+      "sha": "c658c979eb5cd99145b01dc9829a20ab1b55902b6c108f137eada4d0d988393b"
+    },
+    {
+      "source": "Scripts/misc/AfterImageCreator.gd",
+      "method": "start_creating",
+      "sha": "145af3ea6f61208125171dacb25dc13825c9c3e55452a1bd7df31f0aa1e851a3"
+    },
+    {
+      "source": "Scripts/misc/AfterImageCreator.gd",
+      "method": "stop_creating",
+      "sha": "e792f53657108b800406c79ec9fc431e211907a24a0b46df6bf80bcc4ee058aa"
+    },
+    {
+      "source": "Scripts/misc/AfterImageCreator.gd",
+      "method": "_on_Timer_timeout",
+      "sha": "ae2bffd19d3bed6398b86b2823484f5b9b96a65f8ed2a356d6b3e5d35ca215b6"
+    },
+    {
+      "source": "Scripts/misc/DustCreator.gd",
+      "method": "create_dust",
+      "sha": "cea85c3b9ec2e8843fceeebbbdecfd129dad38be1bdc09f6524ad100f21e8787"
+    },
+    {
+      "source": "Scripts/misc/DustCreator.gd",
+      "method": "_destroy_dust",
+      "sha": "31fbb41a536fda983491c576b9c12ccbf115fcf045ee798d86fcd080d8041c45"
+    },
+    {
+      "source": "Scripts/misc/After Image.gd",
+      "method": "_ready",
+      "sha": "8c117fb06592e116bffe66398d8d265d49d57cc4b1f569443144cd19a785876b"
+    },
+    {
+      "source": "Scripts/misc/After Image.gd",
+      "method": "set_texture",
+      "sha": "c3f8fac4d0aa42aa721a84d875b92f8745da3ac62cd9f3aac7921fad0da3a4cd"
+    },
+    {
+      "source": "Scripts/misc/After Image.gd",
+      "method": "_on_AnimationPlayer_animation_finished",
+      "sha": "fe37037402177e3d4ed978412afb2c8f3c41490186890b9e14dfa51f3275d678"
+    },
+    {
+      "source": "Scripts/misc/character_tint.gd",
+      "method": "_ready",
+      "sha": "a2f2712134dadb5a1b49f90ea0b77c0d2363b1f12fa916f747e569204f990e42"
+    },
+    {
+      "source": "Scripts/misc/character_tint.gd",
+      "method": "_set_targets",
+      "sha": "082b4b98b695479ec3efb262679c9413eab0af24776dc976ffc32ccc773c906a"
+    },
+    {
+      "source": "Scripts/misc/character_tint.gd",
+      "method": "connect_tint",
+      "sha": "0e35097edff27206e17102a20350876734b7f903d09a00e328bd96f2b8e70736"
+    },
+    {
+      "source": "Scripts/misc/character_tint.gd",
+      "method": "set_tint",
+      "sha": "d550d4f0cbb552a71bf0ea2a4bec450a01a65147ad11131c8a8d9e4ba1989321"
+    }
+  ],
+  "scene_admitted": false,
+  "pending": [
+    "Actual native Node/Canvas/Sprite lifecycle remains same SceneTree owner",
+    "Sprite.duplicate default complete four-node Player sprite/emotes subtree needs real duplicate owner; no cropped Sprite copy",
+    "Actual AnimationPlayer and material/texture owners must accept all checked properties/tracks before effect instance enters",
+    "Dust source currentScene/Objects parent and actual live party supplied by same global owner"
+  ]
+}

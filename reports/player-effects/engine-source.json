@@ -1,0 +1,29 @@
+{
+  "commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "files": [
+    {
+      "source": "modules/gdscript/gdscript_functions.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/modules/gdscript/gdscript_functions.cpp",
+      "sha256": "ded4a283e0d876f43e5315bea2f5c543c3893b027eea56c9e344b33095fca2d2",
+      "bytes": 56657
+    },
+    {
+      "source": "core/math/math_funcs.h",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/core/math/math_funcs.h",
+      "sha256": "32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13",
+      "bytes": 19178
+    },
+    {
+      "source": "scene/main/node.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/scene/main/node.cpp",
+      "sha256": "0c2e3230b37644c8496f5b1aee59f428de6a497a380c247613c489e44cd508a9",
+      "bytes": 95163
+    },
+    {
+      "source": "core/object.cpp",
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8/core/object.cpp",
+      "sha256": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6",
+      "bytes": 57985
+    }
+  ]
+}

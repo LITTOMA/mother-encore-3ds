@@ -10,6 +10,8 @@
 #include "encore/field_global_constructor.hpp"
 #include "encore/player_initialization.hpp"
 #include "encore/player_visual_scripts.hpp"
+#include "encore/player_ready.hpp"
+#include "encore/player_effects.hpp"
 #include "encore/global_child_ready.hpp"
 #include <limits>
 #include <iostream>
@@ -39,7 +41,7 @@ bool number(const char *text,uint32_t &out) {
 }
 int main(int argc, char **argv) {
   using namespace encore::upstream;
-  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36) return 2;
+  if (argc!=2 && argc!=4 && argc!=11 && argc!=15 && argc!=18 && argc!=23 && argc!=26 && argc!=30 && argc!=34 && argc!=36 && argc!=40) return 2;
   if (argc>=4 && std::string(argv[2])!="--global-items") return 2;
   if (argc>=11 && std::string(argv[4])!="--global-caches") return 2;
   if(argc>=15 && (std::string(argv[11])!="--global-directory" || std::string(argv[13])!="--global-yaml-file")) return 2;
@@ -48,7 +50,8 @@ int main(int argc, char **argv) {
   if(argc>=26 && std::string(argv[23])!="--global-load") return 2;
   if(argc>=30 && std::string(argv[26])!="--global-node-constructor") return 2;
   if(argc>=34 && (std::string(argv[30])!="--player-initialization" || std::string(argv[32])!="--global-child-ready")) return 2;
-  if(argc==36 && std::string(argv[34])!="--player-visual-scripts") return 2;
+  if(argc>=36 && std::string(argv[34])!="--player-visual-scripts") return 2;
+  if(argc==40 && (std::string(argv[36])!="--player-ready" || std::string(argv[38])!="--player-effects")) return 2;
   const std::string root = std::string(argv[1]) + "/";
   std::string error;
   ResourceCatalog catalog;
@@ -183,12 +186,20 @@ int main(int argc, char **argv) {
       std::cout<<"Player/global child formats admitted: "<<player.recipe().records().size()
                <<" native Player nodes / "<<children.nodes().size()<<" global scripts\n";
     }
-    if(argc==36) {
+    if(argc>=36) {
       PlayerVisualScriptsData visual;
       if(!visual.load_file(argv[35],player,error)) {
         std::cerr<<"Player visual script format/source: "<<error<<'\n';return 1;
       }
       std::cout<<"Player visual script format admitted: "<<visual.shadow().animations.size()<<" original clips\n";
+    }
+    if(argc==40) {
+      PlayerReadyData ready;
+      PlayerEffectsData effects;
+      if(!ready.load_file(argv[37],player,error) || !effects.load_file(argv[39],player,error)) {
+        std::cerr<<"Player Ready/effects format/source: "<<error<<'\n';return 1;
+      }
+      std::cout<<"Player Ready/effects formats admitted: "<<ready.states().size()<<" graph states / "<<effects.creators().size()<<" creators\n";
     }
     std::cout<<"Global YAML source formats admitted: "<<caches.records().size()
              <<" source records / "<<caches.getters().size()<<" getters\n";

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "e2e41adc8887370d9968716a2244c8217477d7f42f7439af32a5c98e3644a280",
+  "sources": {
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
+  },
+  "methods": [
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_ready",
+      "sha256": "ff49d11e8d4ea4a3e89bfb031766273e1d5e6a436c766fab50667024959092d7"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "update_party_member",
+      "sha256": "c480bda79a62a78f1840fd08d301a434d926a62a55709d745f9166e177530168"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_refresh_party_member_connections",
+      "sha256": "3ba5ddc23a1fe3294d4ddad1018d08302b231136ce1045a51acc89480440739c"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_refresh_status",
+      "sha256": "8d8a8e55d3134b80febb1e7e846af69744d09ef0befc474ff076b3a78aed6d17"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "blend_animation",
+      "sha256": "10a5533e52062cb459080551b925d3f3c06ef823f8855cfbec1b45c13f0e8fd1"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "set_anim_state",
+      "sha256": "84eba2c47c862dec34c7b30b3ed0b5c15b2cc1d65bc3b6a6dbaed66a68e1e3be"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_ready",
+      "sha256": "5173fa6c14083ccb2604d33ea55d8b4aaba997bbb20e657ecedbbaf2a374ff7a"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "update_party_member",
+      "sha256": "6b8f493c1dff1a2bcd23ab90080d729869382be45f05cb3ad25574873032c3a5"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "spritesheet",
+      "sha256": "61d5539b414d33e56631dd51bc225787fe7fb6d371f962ac19f8d2000d052dd5"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "blend_position",
+      "sha256": "6570ea47862ea70e129f822d0823e7b482fd753d0df3db14010cc635d397b0bb"
+    }
+  ],
+  "scope": "Base then derived actual Ready body, discrete Player graph with zero crossfade; no generic AnimationTree, whole Player/native subtree Ready pending",
+  "execution": "runtime/player_ready.cpp and runtime/player_ready_animation.cpp",
+  "engine_tag": "3.6.2-stable",
+  "engine_sources": {
+    "scene/animation/animation_node_state_machine.cpp": "08cd288491d7d26a878cb648236c0c3634b8c8b380b6ec0f93a13767f5edf15d",
+    "scene/animation/animation_blend_space_2d.cpp": "b69dc753037f04c3d81a7a9cecb4c156b0a8cb1dc41f9da3d48478da7134ca71",
+    "scene/animation/animation_blend_tree.cpp": "103331401ae49fe2dfc33dcc4724cdac4ab4f8db52b1ad37f84c2006a02e1610",
+    "scene/animation/animation_tree.cpp": "879954bec8eca3940381b87382a4e1aa423c759e2de805787064e026ec5176e9"
+  }
+}

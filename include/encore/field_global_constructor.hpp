@@ -80,6 +80,15 @@ private:
   FieldNativeTimerData timers_;
   FieldNodeDescriptor transition_;
 };
+// PartySpace stores Variant nil/Vector2 entries, never ObjectIDs. Its root
+// remains shared across resize/push_front/pop_back, as the source Array does.
+struct FieldGlobalPartySpaceValue {
+  bool is_vector = false;
+  Vec2 vector{};
+};
+struct FieldGlobalPartySpaceArray {
+  std::vector<FieldGlobalPartySpaceValue> values;
+};
 // Owns the actual source Array roots. Saved IDs, Item UIDs and ObjectIDs are
 // separate domains; append never allocates or replaces an Item/Character.
 class FieldGlobalConstructorRuntime {
@@ -93,6 +102,11 @@ public:
   bool append_array(FieldGlobalMemberRole, FieldObjectId, std::string &);
   bool assign_array(FieldGlobalMemberRole, std::vector<FieldObjectId>,
                     std::string &);
+  bool party_space(std::shared_ptr<const FieldGlobalPartySpaceArray> &,
+                   std::string &) const;
+  bool resize_party_space(size_t, std::string &);
+  bool push_front_party_space(Vec2, std::string &);
+  bool pop_back_party_space(FieldGlobalPartySpaceValue &, std::string &);
   bool object(FieldGlobalMemberRole, FieldObjectId &, std::string &) const;
   bool set_object(FieldGlobalMemberRole, FieldObjectId, std::string &);
   bool boolean(FieldGlobalMemberRole, bool &, std::string &) const;
@@ -119,6 +133,7 @@ private:
   FieldObjectId owner_ = 0;
   std::map<FieldGlobalMemberRole, std::shared_ptr<GlobalLoadObjectArray>>
       arrays_;
+  std::shared_ptr<FieldGlobalPartySpaceArray> party_space_;
   std::map<FieldGlobalMemberRole, FieldObjectId> objects_;
   std::map<FieldGlobalMemberRole, bool> booleans_;
   std::map<FieldGlobalMemberRole, std::string> strings_;

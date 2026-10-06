@@ -64,12 +64,19 @@ public:
                  FieldGlobalRegistry &, ResourceLoader, std::string &);
   bool member(std::string_view, PlayerInitializationMember &,
               std::string &) const;
+  bool assign_member(std::string_view, const PlayerInitializationMember &,
+                     std::string &);
+  bool bind_onready(std::string_view, FieldObjectId, std::string &);
+  const PlayerInitializationData *data() const { return data_; }
+  const FieldNodeTreeRuntime *tree() const { return tree_; }
   FieldObjectId object() const { return object_; }
   bool constructed() const { return complete_ && !poisoned_; }
 
 private:
   const PlayerInitializationData *data_ = nullptr;
   FieldNodeTreeRuntime *tree_ = nullptr;
+  const FieldGlobalDataRuntime *characters_ = nullptr;
+  FieldGlobalRegistry *registry_ = nullptr;
   FieldObjectId object_ = 0;
   bool complete_ = false, poisoned_ = false;
   std::map<std::string, PlayerInitializationMember> members_;

@@ -1,5 +1,6 @@
 #include "encore/player_initialization.hpp"
 #include <algorithm>
+#include <cmath>
 namespace encore::upstream {
 namespace {
 bool fail(std::string &e, const char *s) {
@@ -90,6 +91,8 @@ bool PlayerInitializationBody::construct(const PlayerInitializationData &d,
   // after it. Name/groups/owner are not observed by these source declarations.
   data_ = &d;
   tree_ = &t;
+  characters_ = &c;
+  registry_ = &r;
   object_ = id;
   for (const auto &f : d.fields()) {
     PlayerInitializationMember v;
@@ -137,6 +140,112 @@ bool PlayerInitializationBody::member(std::string_view name,
     return fail(e, "Player unknown source member");
   out = it->second;
   return true;
+}
+bool PlayerInitializationBody::assign_member(
+    std::string_view name, const PlayerInitializationMember &value,
+    std::string &e) {
+  PlayerInitializationMember old;
+  if (!member(name, old, e) || !registry_ || !characters_)
+    return false;
+  auto field = std::find_if(data_->fields().begin(), data_->fields().end(),
+                            [&](const auto &f) { return f.name == name; });
+  if (field == data_->fields().end() || value.kind != field->kind)
+    return fail(e, "Player assignment source member/type rejected");
+  if (field->adapter == 1) {
+    FieldGlobalDataObject character;
+    if (!value.object || !registry_->object_exists(value.object) ||
+        !characters_->constructed_body_alive(value.object) ||
+        !characters_->read_constructed_object(value.object, character, e) ||
+        character.kind != 1 || character.role != 0)
+      return fail(e, "Player assignment actual PartyMember body rejected");
+  } else if (field->adapter == 2) {
+    // Mutable resource semantics are not granted by a constructor declaration.
+    if (value.object != old.object)
+      return fail(e, "Player source audio resource assignment pending");
+  } else if (field->kind == 7) {
+    if (!std::isfinite(value.vector[0]) || !std::isfinite(value.vector[1]) ||
+        value.object || value.value)
+      return fail(e, "Player assignment Vector2 rejected");
+  } else if (field->kind == 8) {
+    // Untyped/null Node fields may reference only this actual source subtree.
+    if (value.object &&
+        (!tree_->state(value.object) || !tree_->state(value.object)->alive))
+      return fail(e, "Player assignment actual node unavailable");
+  } else if (!value.value || value.value->kind != field->kind || value.object ||
+             (value.value->kind == 3 && !std::isfinite(value.value->real))) {
+    return fail(e, "Player assignment scalar value/type rejected");
+  }
+  auto stored = value;
+  if (value.value)
+    stored.value = std::make_shared<GlobalYamlValue>(*value.value);
+  members_[std::string(name)] = std::move(stored);
+  return true;
+}
+bool PlayerInitializationBody::bind_onready(std::string_view name,
+                                            FieldObjectId object,
+                                            std::string &e) {
+  if (!constructed() || !tree_ || !registry_ || !object ||
+      !tree_->state(object_) || !tree_->state(object_)->inside ||
+      !tree_->state(object_)->alive || members_.count(std::string(name)))
+    return fail(e, "Player onready actual cursor/reentry rejected");
+  auto rows = data_->onready_source();
+  if (!rows || rows->kind != 5)
+    return fail(e, "Player onready source unavailable");
+  for (const auto &row : rows->array) {
+    auto n = row->get("name"), kind = row->get("kind");
+    if (!n || !kind || n->kind != 4 || kind->kind != 2 || n->string != name)
+      continue;
+    if (kind->integer == 1) {
+      auto path = row->get("path"), id = row->get("node_id");
+      FieldObjectId actual = 0;
+      if (!path || path->kind != 4 || !id || id->kind != 2 ||
+          !tree_->get_node(object_, path->string, actual, e) ||
+          actual != object)
+        return fail(e, "Player onready actual relative child rejected");
+      auto state = tree_->state(object);
+      auto desc = tree_->descriptor(object);
+      FieldIdentity identity;
+      if (!state || !desc || !state->alive || !state->inside ||
+          desc->id != uint32_t(id->integer) ||
+          !tree_->object_identity(object, identity) ||
+          identity.scene_id != data_->recipe().identity().scene_id ||
+          identity.source_sha256 != data_->recipe().identity().source_sha256 ||
+          identity.upstream_commit != data_->identity().upstream_commit)
+        return fail(e, "Player onready child source owner rejected");
+    } else if (kind->integer == 2 || kind->integer == 3) {
+      auto native = row->get("native");
+      auto resource = registry_->source_resource(object);
+      if (!native || native->kind != 4 || !resource ||
+          native->string != resource->resource_class())
+        return fail(e, "Player onready actual Resource owner pending");
+      auto binding = resource->binding();
+      if (binding.object != object || binding.source.identity.upstream_commit !=
+                                          data_->identity().upstream_commit)
+        return fail(e, "Player onready Resource source pin rejected");
+      if (kind->integer == 2) {
+        auto path = row->get("resource");
+        std::array<uint8_t, 32> sha{};
+        if (!path || path->kind != 4 ||
+            !data_->source_hash(path->string, sha) ||
+            binding.source.source != path->string ||
+            binding.source.source_sha != sha)
+          return fail(e, "Player onready PackedScene source rejected");
+      } else if (binding.source.identity.scene_id !=
+                     data_->recipe().identity().scene_id ||
+                 binding.source.identity.source_sha256 !=
+                     data_->recipe().identity().source_sha256) {
+        return fail(e, "Player onready playback actual scene owner rejected");
+      }
+    } else {
+      return fail(e, "Player onready unsupported source expression");
+    }
+    PlayerInitializationMember member;
+    member.kind = 8;
+    member.object = object;
+    members_.emplace(std::string(name), std::move(member));
+    return true;
+  }
+  return fail(e, "Player onready unknown source declaration");
 }
 bool PlayerInitializationRuntime::initialize(const PlayerInitializationData &d,
                                              FieldGlobalConstructorRuntime &g,

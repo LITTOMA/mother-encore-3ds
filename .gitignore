@@ -366,3 +366,11 @@ cookies.json
 
 !/reports/field-inventory/
 !/reports/field-inventory/source-review.json
+
+!/reports/player-ready/
+/reports/player-ready/*
+!/reports/player-ready/source-review.json
+!/reports/player-effects/
+/reports/player-effects/*
+!/reports/player-effects/source-review.json
+!/reports/player-effects/engine-source.json

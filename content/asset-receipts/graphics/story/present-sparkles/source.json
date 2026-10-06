@@ -2,7 +2,7 @@
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "ir_sha256": "a146c5e4a7ebd50d8c364351ff85c05e46402a98ee4f6c4be05b2cd4c16631dd",
-  "producer_sha256": "310db5f426f90bd7849e5655dbe0faa22fcdf705290af176839532603c897cd8",
+  "producer_sha256": "9f3c71e387c959ea39c9c8920850071b89c5a70c66f430219d392101b04cca05",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "outputs": {
     "graphics/story/present-sparkles/sparkles.t3x": {

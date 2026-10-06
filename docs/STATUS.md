@@ -53,6 +53,8 @@ Doll 的正常战斗画面已接入受检纹理后端：GPU 直接采样两层�
 
 ## 验证
 
+Sparkles 纹理暂存遗漏已修正：此前 `.encsparkles` 动画资源被打包，但其引用的 `sparkles.t3x` 未被加入 RomFS，导致开场进入房屋时无法打开纹理。收集函数现同时返回经实际转换记录核对的纹理；暂存候选发布前，共享加载器按 Room、House、地下室人物和 Sparkles 的二进制纹理引用核对实际文件。3DSX 打包核对读取 libctru 格式的完整目录、文件名和内容，与实际暂存树逐文件比较；CIA 保留实际解包比对。相关手动负向用例已补充但未运行。此改动不增加游戏内检查，不代表 GPU 分配或模拟器、真机进入房屋已验收。
+
 手动完整 CI 检查 Linux 共享核心与数据工具，分别使用 GCC、Clang 运行主机测试和 ASan / UBSan，默认保留泄漏检查。另有 Ubuntu runner 任务恢复固定官方 SDK，执行真实 3DSX / CIA 构建与提取资源校验，成功后上传 Actions artifact；不创建发行版。具体结果以 [Actions](https://github.com/LITTOMA/mother-encore-3ds/actions) 中对应提交的检查为准；工作流配置本身不代表检查通过。
 
 主机测试、真实交叉构建、打包检查、模拟器和真机是不同验证层次。构建步骤见 [BUILD](BUILD.md)，复现与验证要求见 [TESTING](TESTING.md)。当前 Old / New 3DS 真机验收仍未完成，没有全游戏适配百分比或目标设备帧率保证。

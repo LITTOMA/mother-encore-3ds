@@ -30,8 +30,8 @@
     "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89"
   },
   "dependencies": {
-    "content\\podunk-scene-lifecycle.json": "076ef09da5f5d8ef0f538eb1673dbd5caa46f6d76172f7af023c0462cfcf91c5",
-    "content\\native-global-data-constructor.json": "4c127ee0f6f5aab993b6769b6d1270ce1e7b6cc4c65892adedd809f68c751005"
+    "content/podunk-scene-lifecycle.json": "076ef09da5f5d8ef0f538eb1673dbd5caa46f6d76172f7af023c0462cfcf91c5",
+    "content/native-global-data-constructor.json": "4c127ee0f6f5aab993b6769b6d1270ce1e7b6cc4c65892adedd809f68c751005"
   },
   "party_member": {
     "name": "flyingman",

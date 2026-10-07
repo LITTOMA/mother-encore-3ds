@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "df85803515aa4a6faddb9b157816fec7e83c603dc0d9b7810ea70fe35b020029",
+  "ir_sha256": "ad4fd5dea0837d6c7d72db1524ec60387de41f446b0f81a115c1b1233db42282",
   "sources": {
     "Graphics/Battle BGS/BG_2.mbg": "57f7957e5261b5dcf21647aba98a5b9c7955d006805ab1e8a87a4468ce2a2248",
     "Graphics/Battle BGS/BG_3.mbg": "f1f3d032390418cbd29c708c2779640ca8fcf67a7d076d907b7fe7d61774cd77",
@@ -1797,8 +1797,8 @@
     "tools/house_status_effects.py": "39e828b3b2411fc8f1c6a858a914dce7f189ac4eac2f2f4e839fc746759b1b9e",
     "content/podunk-scene-audio.json": "31f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a",
     "tools/field_scene_audio.py": "bb04ee0bcd5884efc85bc054a6f7463ab9eb660cbbde80f93c248b6c186c9b80",
-    "content/native-field-scene-signal-callbacks.json": "fa6978fa75865af97d8e303f739c8a791083a620f323b9ee0ddc1945fb7cb6fa",
-    "tools/field_scene_signal_callbacks.py": "d853c10017cb0a3d9034263b26d3dab3d8781a2b91bd1e5eabd536d829150545",
+    "content/native-field-scene-signal-callbacks.json": "fa17335bdcecc2a545e5dba55f861b8b826dcf6dc5c8a239457106cad45a7724",
+    "tools/field_scene_signal_callbacks.py": "2b0fc97cd5becdc22c34581647e14cc9063b73d4ee6366365e947c15d50d6104",
     "content/native-field-visibility.json": "7edad2357ae92f33bfc225f46a536e5ca8f11735ae91ab9c128e4ab1b88c6b62",
     "tools/field_visibility.py": "69d9bc0d133f484150831b1f4379a2213fb797f6d35bd95d4d2eb1123c1f6734",
     "content/podunk-npc-world.json": "5864fcdcdc501f770cf494198a88d3163b287fbbb1b14a0d874d81bb6b12e825",

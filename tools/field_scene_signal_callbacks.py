@@ -94,7 +94,7 @@ def derive(engine_proof=None, engine_path=None, object_path=None):
                 method='_on_anim_finished',leaf_sha=row['sha256'],method_sha=row['sha256'],arguments=2))
     return dict(schema=1,format=2,capability=2,rules=1,family=0x454e0068,commit=PIN,
         scene=lifecycle['scene'],scene_id=lifecycle['scene_id'],source_sha256=lifecycle['source_sha256'],
-        sources=sources,dependencies={str(LIFECYCLE.relative_to(ROOT)):sha(LIFECYCLE),str(CONSTRUCTOR.relative_to(ROOT)):sha(CONSTRUCTOR)},
+        sources=sources,dependencies={LIFECYCLE.relative_to(ROOT).as_posix():sha(LIFECYCLE),CONSTRUCTOR.relative_to(ROOT).as_posix():sha(CONSTRUCTOR)},
         party_member=dict(name=members[0],declaration=member_id,constructor_sha256=sha(CONSTRUCTOR)),
         engine=engine_proof,symbols=signals,callbacks=callbacks,
         wait_source='Scripts/UI/MapScreen/MapArrows.gd',wait_sha=sources['Scripts/UI/MapScreen/MapArrows.gd'],

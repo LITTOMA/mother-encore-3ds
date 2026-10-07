@@ -113,6 +113,7 @@ enum class PodunkPackRole : uint32_t {
   HouseInteract = 105,
   HouseInspectionRoom = 106,
   HouseInspectionReentry = 107,
+  HouseInspectionRestore = 108,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

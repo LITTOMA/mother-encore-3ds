@@ -23,6 +23,7 @@ SOURCES += runtime/podunk_bundle.cpp runtime/field_scene_sources.cpp runtime/fie
 SOURCES += runtime/house_reentry_data.cpp platform/ctr/podunk_house_return.cpp platform/ctr/podunk_outdoor_door.cpp
 SOURCES += runtime/house_return_sources.cpp
 SOURCES += runtime/house_return_button_prompt.cpp runtime/house_return_controls.cpp runtime/house_return_inspection_programme.cpp
+SOURCES += runtime/house_inspection_restore.cpp
 SOURCES += platform/ctr/house_return_button_prompt_native.cpp platform/ctr/house_return_controls.cpp
 SOURCES += platform/ctr/house_return_prompt_material.cpp
 SOURCES += platform/ctr/house_return_gui_native.cpp

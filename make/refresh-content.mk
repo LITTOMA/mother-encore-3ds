@@ -33,6 +33,7 @@ house-return-controls: source-house-return-controls
 house-return-interact: source-house-return-interact
 house-return-inspection: source-house-return-inspection
 house-inspection-reentry: source-house-inspection-reentry
+house-inspection-restore: source-house-inspection-restore
 .PHONY: source-house-return-button-prompt source-house-return-controls source-house-return-interact source-house-return-inspection source-house-inspection-reentry
 source-house-return-button-prompt: house-node-tree field-prompts prompt-native
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_button_prompt.py extract
@@ -44,6 +45,9 @@ source-house-return-inspection: room house drawer house-return-interact
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_inspection_programme.py extract
 source-house-inspection-reentry: house-return-inspection field-door house-geometry house-node-tree
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection_reentry.py extract
+.PHONY: source-house-inspection-restore
+source-house-inspection-restore: restore house-inspection-reentry house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection_restore.py extract
 house-node-tree: source-house-node-tree
 source-house-node-tree: house-geometry
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_node_tree.py extract

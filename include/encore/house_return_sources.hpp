@@ -12,6 +12,7 @@
 #include "encore/house_return_button_prompt.hpp"
 #include "encore/house_return_controls.hpp"
 #include "encore/house_return_inspection_programme.hpp"
+#include "encore/house_inspection_restore.hpp"
 
 namespace encore::upstream {
 // One immutable, cross-bound destination owner. Admission does not allocate
@@ -36,6 +37,7 @@ public:
   const HouseReturnControlsData &controls()const{return controls_;}
   const FieldInteractData &interact()const{return interact_;}
   const HouseReturnInspectionProgrammes &inspections()const{return inspections_;}
+  const HouseInspectionRestoreData &inspection_restore()const{return inspection_restore_;}
   static bool admit_interact(const FieldInteractData&,const FieldNodeTreeData&,std::string&);
   // The complete tree owns the TileMaps' authoritative local/world matrices.
   // Only IDs already bound to a loaded reentry certificate can resolve here.
@@ -58,5 +60,6 @@ private:
   HouseReturnControlsData controls_;
   FieldInteractData interact_;
   HouseReturnInspectionProgrammes inspections_;
+  HouseInspectionRestoreData inspection_restore_;
 };
 } // namespace encore::upstream

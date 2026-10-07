@@ -751,6 +751,13 @@
       "producer": "house_inspection_reentry",
       "ir": "content/native-house-inspection-reentry.json",
       "path": "data/house-return.encreentry"
+    },
+    {
+      "role": 108,
+      "name": "HouseInspectionRestore",
+      "producer": "house_inspection_restore",
+      "ir": "content/native-house-inspection-restore.json",
+      "path": "data/house-return.encrestore"
     }
   ],
   "extra_inputs": [

@@ -244,7 +244,7 @@ bool HouseReturnSources::load(const PodunkBundleData &bundle,
                               const std::string &romfs_root,
                               const FieldDoorData &doors, RoomView room,
                               HouseView house, DrawerProgramView drawer, std::string &error) {
-  if (!bundle.valid() || bundle.packs().size() != uint32_t(PodunkPackRole::HouseInspectionReentry) ||
+  if (!bundle.valid() || bundle.packs().size() != uint32_t(PodunkPackRole::HouseInspectionRestore) ||
       !doors.valid() || !same(bundle.identity(), doors.identity()) ||
       bundle.source_scene() != doors.source_scene())
     return fail(error, "House return requires the actual complete outdoor bundle and Door");
@@ -306,9 +306,12 @@ bool HouseReturnSources::load(const PodunkBundleData &bundle,
   const auto*control_entry=bundle.entry(PodunkPackRole::HouseControls);
   const auto*interact_entry=bundle.entry(PodunkPackRole::HouseInteract);
   const auto*return_entry=bundle.entry(PodunkPackRole::HouseInspectionReentry);
-  if(!prompt_entry||!control_entry||!interact_entry||!return_entry||
+  const auto*inspection_entry=bundle.entry(PodunkPackRole::HouseInspectionRoom);
+  const auto*restore_entry=bundle.entry(PodunkPackRole::HouseInspectionRestore);
+  if(!prompt_entry||!control_entry||!interact_entry||!return_entry||!inspection_entry||!restore_entry||
       !same(prompt_entry->identity,tree->identity)||!same(control_entry->identity,tree->identity)||
-      !same(interact_entry->identity,tree->identity)||!same(return_entry->identity,reentry->identity))
+      !same(interact_entry->identity,tree->identity)||!same(return_entry->identity,reentry->identity)||
+      !same(restore_entry->identity,tree->identity))
     return fail(error,"House Prompt/Control/Interact/return Room source identity differs");
   if(!read(bundle,PodunkPackRole::HouseButtonPrompt,romfs_root,bytes,error)||
       !candidate.button_prompts_.load(bytes.data(),bytes.size(),candidate.tree_,tree->ir_sha256,error)||
@@ -328,6 +331,23 @@ bool HouseReturnSources::load(const PodunkBundleData &bundle,
       !return_reentry.load(bytes.data(),bytes.size(),doors,candidate.inspections_.view(),house,error)||
       !cross_bind(return_reentry,candidate.geometry_,candidate.tree_,error))return false;
   candidate.reentry_=std::move(return_reentry);
+  HouseInspectionRestoreBindings restore_bindings;
+  restore_bindings.room=candidate.inspections_.view();
+  restore_bindings.house=house;
+  restore_bindings.doors=&doors;
+  restore_bindings.reentry=&candidate.reentry_;
+  restore_bindings.tree=&candidate.tree_;
+  restore_bindings.reentry_bytes=bytes.data();
+  restore_bindings.reentry_size=bytes.size();
+  restore_bindings.room_ir_sha=inspection_entry->ir_sha256;
+  restore_bindings.tree_ir_sha=tree->ir_sha256;
+  // Preserve the admitted Reentry bytes until the Restore loader has checked
+  // their exact fingerprint against the actual parsed destination owner.
+  std::vector<uint8_t> restore_bytes;
+  if(!read(bundle,PodunkPackRole::HouseInspectionRestore,romfs_root,restore_bytes,error)||
+      !candidate.inspection_restore_.load(restore_bytes.data(),restore_bytes.size(),restore_bindings,error)||
+      candidate.inspection_restore_.ir_sha256()!=restore_entry->ir_sha256)
+    return fail(error,"House inspection Restore source/dependency binding differs");
   if (candidate.canvas_.source_scene() != candidate.tree_.source_scene() ||
       candidate.canvas_.tree_ir_sha() != tree->ir_sha256)
     return fail(error, "House Canvas complete tree authoring/source binding differs");

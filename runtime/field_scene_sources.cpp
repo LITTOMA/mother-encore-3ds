@@ -136,6 +136,23 @@ bool FieldSceneSources::load(const PodunkBundleData &bundle,
                      signals_, e)) {
     failed_ = true; e = "Scene signal callback source: " + e; return false;
   }
+  std::vector<uint8_t> visibility_bytes;
+  if (!bundle.read(PodunkPackRole::SceneVisibility, root, visibility_bytes, e) ||
+      !visibility_.load(visibility_bytes.data(), visibility_bytes.size(), tree_, e)) {
+    failed_ = true; e = "Scene native visibility source: " + e; return false;
+  }
+  std::vector<uint8_t> npc_world_bytes;
+  if (!bundle.read(PodunkPackRole::SceneNpcWorld, root, npc_world_bytes, e) ||
+      !npc_world_.load(npc_world_bytes.data(), npc_world_bytes.size(),
+                       tree_, npc_, geometry_, e)) {
+    failed_ = true; e = "Scene NPC native world source: " + e; return false;
+  }
+  std::vector<uint8_t> prompt_native_bytes;
+  if (!bundle.read(PodunkPackRole::ScenePromptNative, root, prompt_native_bytes, e) ||
+      !prompt_native_.load(prompt_native_bytes.data(), prompt_native_bytes.size(),
+                          tree_, prompt_, e)) {
+    failed_ = true; e = "Scene Prompt native source: " + e; return false;
+  }
   const auto expected = bundle.identity();
   auto same = [&](const FieldIdentity &id) {
     return id.scene_id == expected.scene_id &&
@@ -145,7 +162,9 @@ bool FieldSceneSources::load(const PodunkBundleData &bundle,
   if (!same(map_.identity()) || !same(geometry_.identity()) ||
       !same(lifecycle_.identity()) || !same(tree_.identity()) ||
       !same(canvas_.identity()) || !same(audio_.identity()) ||
-      !same(signals_.identity()) || map_.source_scene() != bundle.source_scene() ||
+      !same(signals_.identity()) || !same(visibility_.identity()) ||
+      !same(npc_world_.identity()) || !same(prompt_native_.identity()) ||
+      map_.source_scene() != bundle.source_scene() ||
       geometry_.source_scene() != bundle.source_scene() ||
       lifecycle_.source_scene() != bundle.source_scene() ||
       tree_.source_scene() != bundle.source_scene() ||

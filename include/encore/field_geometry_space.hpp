@@ -54,8 +54,12 @@ struct FieldGeometryNodeUpdate {
 // SceneHost supplies live native adapter results; there is no blanket script
 // approval. A source-compatible Circle remains analytic. Unsupported live
 // transforms or kinds return an error and preserve the last space/query result.
+class FieldNpcRuntime;
 class FieldGeometrySpace {
 public:
+  bool apply_npc_interaction(const FieldNpcRuntime &, uint32_t,
+                             FieldNodeTreeRuntime &, FieldGlobalRegistry &,
+                             std::string &);
   bool configure(const FieldGeometryView &, float grid_cell_size,
                  std::string &);
   // Caller is the trusted checked adapter registry, after actual source and
@@ -172,6 +176,7 @@ private:
   std::vector<NodeState> nodes_;
   std::vector<OwnerState> owners_;
   std::vector<bool> disabled_;
+  std::map<uint32_t, Vec2> npc_rectangle_extents_;
   std::vector<Instance> instances_;
   std::vector<std::vector<uint32_t>> node_instances_, children_,
       owner_instances_;

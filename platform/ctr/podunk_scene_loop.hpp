@@ -7,6 +7,10 @@
 #include "podunk_player_host.hpp"
 
 namespace encore::ctr {
+class PodunkSceneVisibility;
+class PodunkSceneNpcWorld;
+class PodunkPromptNative;
+class PodunkButterflyAnimation;
 // Source-specific native mechanisms (audio, animation and visibility) join
 // the same tree. Their concrete state owner must supply every operation;
 // this interface grants no constructor or lifecycle admission itself.
@@ -31,6 +35,10 @@ struct PodunkSceneLoopInput {
   PodunkHouseContinuation *continuation = nullptr;
   std::shared_ptr<upstream::FieldNodeTreeRuntime> tree;
   PodunkSceneNative *native = nullptr;
+  PodunkSceneVisibility *visibility = nullptr;
+  PodunkSceneNpcWorld *npc_world = nullptr;
+  PodunkPromptNative *prompts = nullptr;
+  PodunkButterflyAnimation *butterfly_animation = nullptr;
   PodunkPlayerHost *player = nullptr;
   PodunkPlayerPhysicsWorld *physics = nullptr;
   upstream::FieldMapSpace *map = nullptr;

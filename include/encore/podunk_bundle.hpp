@@ -85,6 +85,9 @@ enum class PodunkPackRole : uint32_t {
   HouseStatusEffects = 77,
   SceneNativeAudio = 78,
   SceneSignalCallbacks = 79,
+  SceneVisibility = 80,
+  SceneNpcWorld = 81,
+  ScenePromptNative = 82,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

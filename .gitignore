@@ -412,6 +412,12 @@ cookies.json
 !/reports/field-scene-audio/
 /reports/field-scene-audio/*
 !/reports/field-scene-audio/source-review.json
+!/reports/field-npc-world/
+/reports/field-npc-world/*
+!/reports/field-npc-world/source-review.json
+!/reports/prompt-native/
+/reports/prompt-native/*
+!/reports/prompt-native/source-review.json
 !/reports/field-scene-signal-callbacks/
 /reports/field-scene-signal-callbacks/*
 !/reports/field-scene-signal-callbacks/source-review.json

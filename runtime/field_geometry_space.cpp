@@ -1,4 +1,5 @@
 #include "encore/field_geometry_space.hpp"
+#include "encore/field_npc.hpp"
 #include "encore/field_global_registry.hpp"
 #include "encore/field_scene_actions.hpp"
 #include "encore/player_initialization.hpp"
@@ -406,6 +407,9 @@ bool FieldGeometrySpace::rebuild_instance(uint32_t i, std::string &error) {
                 nodes_[shape.node].local);
   entry.actor.radius = primitive.parameters[0];
   entry.actor.extents = {primitive.parameters[0], primitive.parameters[1]};
+  auto npc_extents = npc_rectangle_extents_.find(entry.contact.shape);
+  if (npc_extents != npc_rectangle_extents_.end())
+    entry.actor.extents = npc_extents->second;
   entry.actor.stable_id = entry.contact.stable_id;
   if (primitive.kind == FieldGeometryKind::Convex)
     for (uint32_t j = 0; j < primitive.point_count; ++j)
@@ -1582,4 +1586,91 @@ bool FieldGeometrySpace::retire_player_owner(FieldObjectId owner,
   return true;
 }
 
+bool FieldGeometrySpace::apply_npc_interaction(const FieldNpcRuntime &runtime,
+                                               uint32_t id,
+                                               FieldNodeTreeRuntime &tree,
+                                               FieldGlobalRegistry &registry,
+                                               std::string &e) {
+  const auto *d = runtime.data();
+  const FieldNpcDescriptor *desc = nullptr;
+  const FieldNpcInstance *body = nullptr;
+  if (d)
+    for (const auto &v : d->npcs())
+      if (v.id == id)
+        desc = &v;
+  for (const auto &v : runtime.npcs())
+    if (v.id == id && !v.destroyed)
+      body = &v;
+  if (!source_ || !d || !desc || !body || !body->ready ||
+      body->geometry.size() != 9 ||
+      d->source_pin() != source_->identity().upstream_commit) {
+    e = "NPC interaction shape actual runtime/source unavailable";
+    return false;
+  }
+  auto actual = tree.source_object(id);
+  auto state = tree.state(actual);
+  auto node = tree.descriptor(actual);
+  if (!state || !state->alive || !state->inside || !state->bound || !node ||
+      node->path != desc->node || registry.tree_owner(actual).get() != &tree) {
+    e = "NPC interaction shape actual ObjectDB owner unavailable";
+    return false;
+  }
+  const auto &g = body->geometry[1];
+  const auto &original = desc->geometry[1];
+  if (g.role != 2 || g.kind != 1 || original.role != 2 || original.kind != 1 ||
+      !std::isfinite(g.value.x) || !std::isfinite(g.value.y) ||
+      g.value.x <= 0 || g.value.y <= 0 || g.value.x > 1000000 ||
+      g.value.y > 1000000) {
+    e = "NPC interaction rectangle source role/value rejected";
+    return false;
+  }
+  uint32_t shape = none;
+  for (uint32_t i = 0; i < source_->shape_count(); ++i) {
+    auto sh = source_->shape(i);
+    auto n = source_->node(sh.node);
+    auto p = source_->geometry(sh.part_first);
+    auto owner = source_->node(source_->owner(sh.owner).node);
+    if (source_->string(n.path).compare(0, desc->node.size() + 1,
+                                        desc->node + "/") != 0 ||
+        p.kind != FieldGeometryKind::Rectangle || sh.part_count != 1)
+      continue;
+    auto candidate = tree.source_object(n.stable_id);
+    auto actualShape = tree.state(candidate);
+    if (!actualShape || !actualShape->alive || !actualShape->inside ||
+        !actualShape->bound || registry.tree_owner(candidate).get() != &tree)
+      continue;
+    if (p.parameters[0] != original.value.x ||
+        p.parameters[1] != original.value.y ||
+        source_->owner(sh.owner).layer != original.layer ||
+        source_->owner(sh.owner).mask != original.mask)
+      continue;
+    // Distinguish the interaction rectangle from other same-sized shapes by its
+    // actual source world offset and owner relation, before any runtime resize.
+    if (sh.world.origin.x - desc->position.x != original.offset.x ||
+        sh.world.origin.y - desc->position.y != original.offset.y ||
+        owner.parent == none || source_->node(owner.parent).stable_id != id)
+      continue;
+    if (shape != none) {
+      e = "NPC interaction source shape identity ambiguous";
+      return false;
+    }
+    shape = i;
+  }
+  if (shape == none) {
+    e = "NPC interaction source rectangle absent";
+    return false;
+  }
+  auto old = npc_rectangle_extents_.find(shape);
+  const bool had = old != npc_rectangle_extents_.end();
+  Vec2 previous = had ? old->second : Vec2{};
+  npc_rectangle_extents_[shape] = g.value;
+  if (!refresh({source_->shape(shape).node}, e)) {
+    if (had)
+      npc_rectangle_extents_[shape] = previous;
+    else
+      npc_rectangle_extents_.erase(shape);
+    return false;
+  }
+  return true;
+}
 } // namespace encore::upstream

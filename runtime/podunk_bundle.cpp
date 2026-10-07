@@ -191,7 +191,10 @@ const Schema schemas[] = {
     {"ENCSHP01", 1, 0, 1, 1},          {"ENCFDOR1", 1, 1162739743, 3, 1},
     {"ENCHSE01", 1, 0x454e0062, 1, 1},
     {"ENCSAUD1", 1, 0x454e0067, 1, 1},
-    {"ENCSIG01", 2, 0x454e0068, 2, 1}};
+    {"ENCSIG01", 2, 0x454e0068, 2, 1},
+    {"ENCFVS01", 1, 0x454e0069, 1, 1},
+    {"ENCNPCW1", 1, 0x454e006a, 1, 1},
+    {"ENCPRN01", 1, 0x454e006b, 1, 1}};
 const PodunkPackRole script_schemas[] = {PodunkPackRole::Grass,
                                          PodunkPackRole::Npc,
                                          PodunkPackRole::Enemy,

@@ -555,6 +555,27 @@
       "path": "data/podunk.encsignals",
       "producer": "field_scene_signal_callbacks",
       "ir": "content/native-field-scene-signal-callbacks.json"
+    },
+    {
+      "role": 80,
+      "name": "SceneVisibility",
+      "path": "data/podunk.encvisibility",
+      "producer": "field_visibility",
+      "ir": "content/native-field-visibility.json"
+    },
+    {
+      "role": 81,
+      "name": "SceneNpcWorld",
+      "path": "data/podunk.encnpcworld",
+      "producer": "field_npc_world",
+      "ir": "content/podunk-npc-world.json"
+    },
+    {
+      "role": 82,
+      "name": "ScenePromptNative",
+      "path": "data/podunk.encpromptnative",
+      "producer": "prompt_native",
+      "ir": "content/native-prompt-native.json"
     }
   ],
   "extra_inputs": [

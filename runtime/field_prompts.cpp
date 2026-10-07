@@ -127,7 +127,7 @@ bool FieldPromptRuntime::play(FieldPromptInstance &s,
   s.clip = role;
   s.playing = true;
   s.started = true;
-  return true;
+  return !host_.native_animation || host_.native_animation(s.id, role, 1, error_);
 }
 bool FieldPromptRuntime::refresh(FieldPromptInstance &s, bool quick) {
   if (s.pressing)
@@ -162,6 +162,8 @@ bool FieldPromptRuntime::refresh(FieldPromptInstance &s, bool quick) {
         return false;
     } else {
       s.playing = false;
+      if (host_.native_animation && !host_.native_animation(s.id, s.clip, 3, error_))
+        return false;
       s.elapsed = 0;
       s.properties[6][0] = 0;
       if (!host_.visibility(s.id, false, error_))
@@ -321,6 +323,8 @@ bool FieldPromptRuntime::idle_frame(uint32_t id, float dt) {
   if (from < c->length && to == c->length) {
     s->playing = false;
     const auto role = c->role;
+    if (host_.native_animation && !host_.native_animation(s->id, role, 2, error_))
+      return false;
     if (role == FieldPromptClipRole::Show && s->visible()) {
       if (!play(*s, FieldPromptClipRole::Float))
         return false;

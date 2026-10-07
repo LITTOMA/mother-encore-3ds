@@ -1,0 +1,5088 @@
+{
+  "schema": 1,
+  "format": 1,
+  "family": 1162739818,
+  "capability": 1,
+  "rules": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+  "tree_ir_sha256": "8f6ac6436ad79c5cef04ab428d4896d7cf19aa7f2ab9a294d8e43de3a590406e",
+  "npc_ir_sha256": "213492605031b9f76033441d27fef550583df0191344dbe65bd84d94d67e5b7a",
+  "sources": {
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+  },
+  "engine": {
+    "ray_cast_2d.cpp": {
+      "sha256": "e5d45bad9be81505c7f3e21699d14091fb5f80e3790b8f32617dda12a1f26cc6",
+      "source": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/2d/ray_cast_2d.cpp"
+    },
+    "physics_body_2d.cpp": {
+      "sha256": "1a47c0292bd20f92b14262ef0957fd1bf14060e555d072f739242b9e81914ee4",
+      "source": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/2d/physics_body_2d.cpp"
+    }
+  },
+  "zero_cast": [
+    0,
+    0.01
+  ],
+  "callbacks": [
+    {
+      "op": 1,
+      "method": "_on_Timer_timeout",
+      "arity": 0
+    },
+    {
+      "op": 2,
+      "method": "return_to_init_dir",
+      "arity": 0
+    },
+    {
+      "op": 3,
+      "method": "_on_ViewArea_body_entered",
+      "arity": 1
+    },
+    {
+      "op": 4,
+      "method": "_on_ViewArea_body_exited",
+      "arity": 1
+    },
+    {
+      "op": 5,
+      "method": "_on_NearPlayerArea_body_entered",
+      "arity": 1
+    },
+    {
+      "op": 6,
+      "method": "_on_NearPlayerArea_body_exited",
+      "arity": 1
+    },
+    {
+      "op": 7,
+      "method": "_on_VisibilityNotifier2D_screen_entered",
+      "arity": 0
+    },
+    {
+      "op": 8,
+      "method": "_on_VisibilityNotifier2D_screen_exited",
+      "arity": 0
+    },
+    {
+      "op": 9,
+      "method": "stop_interaction",
+      "arity": 0
+    },
+    {
+      "op": 10,
+      "method": "interact",
+      "arity": 0
+    },
+    {
+      "op": 11,
+      "method": "telepathy",
+      "arity": 0
+    },
+    {
+      "op": 12,
+      "method": "update_visibility_changed",
+      "arity": 0
+    },
+    {
+      "op": 13,
+      "method": "_on_npc_tree_exiting",
+      "arity": 0
+    }
+  ],
+  "visibility_signal": "visibility_changed",
+  "bodies": [
+    {
+      "id": 3081056311,
+      "path": "Objects/Zoo Freed Flag/npc2",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 491539348,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 737765147,
+      "path": "Objects/Zoo Freed Flag/npc4",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1539660374,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 883995461,
+      "path": "Objects/Zoo Freed Flag/npc5",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1741543744,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3792487662,
+      "path": "Objects/Zoo Freed Flag/npc6",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1525396701,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 981352210,
+      "path": "Objects/Zoo Freed Flag/npc7",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1152322969,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3792135288,
+      "path": "Objects/Zoo Freed Flag/npc8",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 224629614,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1815627727,
+      "path": "Objects/Zoo Freed Flag/npc9",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2809110163,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3607004091,
+      "path": "Objects/Zoo Freed Flag/npc10",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1957608729,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 311887043,
+      "path": "Objects/Zoo Freed Flag/npc3",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1181252394,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1055985063,
+      "path": "Objects/Critters/bird",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1593938046,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3146284972,
+      "path": "Objects/Critters/bird2",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 67409166,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 22454903,
+      "path": "Objects/Critters/bird3",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3700971081,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2431093527,
+      "path": "Objects/Critters/bird4",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3861088632,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 136587537,
+      "path": "Objects/Critters/bird5",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 128028119,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 228698109,
+      "path": "Objects/Critters/bird6",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 977629621,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3128949309,
+      "path": "Objects/Critters/bird7",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3290788602,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1501659968,
+      "path": "Objects/Critters/bird8",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1172896820,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3905170633,
+      "path": "Objects/Critters/bird9",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1617329497,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2638434535,
+      "path": "Objects/Critters/bird10",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2613985614,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1822054754,
+      "path": "Objects/Critters/bird11",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4088334275,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2976092317,
+      "path": "Objects/Critters/bird12",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3399419534,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1130171587,
+      "path": "Objects/Critters/bird13",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2574823890,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4234750419,
+      "path": "Objects/Critters/bird14",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2154134854,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1418239347,
+      "path": "Objects/Critters/bird15",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2674740367,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2672090862,
+      "path": "Objects/Critters/bird16",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1876957753,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2571256033,
+      "path": "Objects/Critters/bird17",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 604605503,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1345204293,
+      "path": "Objects/Critters/bird18",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 865526175,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 415836952,
+      "path": "Objects/Critters/bird19",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3947432134,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2180967514,
+      "path": "Objects/Critters/bird20",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2980656854,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4054428368,
+      "path": "Objects/Critters/bird21",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 241459889,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3059359616,
+      "path": "Objects/Critters/bird22",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4239133132,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3143541860,
+      "path": "Objects/Critters/bird23",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3126228372,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4048853028,
+      "path": "Objects/Critters/butterfly",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1306210413,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2311284819,
+      "path": "Objects/Critters/butterfly2",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2835867521,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 71016387,
+      "path": "Objects/Critters/butterfly3",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3832520932,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1598808285,
+      "path": "Objects/Critters/butterfly4",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3122227095,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 183016484,
+      "path": "Objects/Critters/butterfly5",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3095726478,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4133107959,
+      "path": "Objects/Critters/butterfly6",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1342586846,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 285278789,
+      "path": "Objects/Critters/butterfly7",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 599490672,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4011740841,
+      "path": "Objects/Critters/butterfly8",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 52143619,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1473732256,
+      "path": "Objects/Critters/butterfly9",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2152071400,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4210722695,
+      "path": "Objects/Critters/butterfly10",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 573831958,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1320854191,
+      "path": "Objects/Critters/butterfly11",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1053116869,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1541848828,
+      "path": "Objects/Critters/butterfly12",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1613738929,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 928439840,
+      "path": "Objects/Critters/butterfly13",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1568629475,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 546424758,
+      "path": "Objects/Critters/butterfly14",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1973237199,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2220767756,
+      "path": "Objects/Critters/butterfly15",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3015688833,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 302559031,
+      "path": "Objects/Critters/butterfly16",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2718764620,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1176652386,
+      "path": "Objects/Critters/butterfly17",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3912674617,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3644942147,
+      "path": "Objects/Critters/butterfly18",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3225969467,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3964537892,
+      "path": "Objects/Critters/butterfly19",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2817748531,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3670851750,
+      "path": "Objects/Critters/butterfly20",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1906168451,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 945608031,
+      "path": "Objects/Critters/butterfly21",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2399563193,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2692286672,
+      "path": "Objects/Critters/butterfly22",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3800934712,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1712501121,
+      "path": "Objects/Critters/butterfly23",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3181777484,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3072621889,
+      "path": "Objects/Critters/butterfly24",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3602698770,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2101169943,
+      "path": "Objects/Critters/butterfly25",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2781837725,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2408840148,
+      "path": "Objects/Critters/butterfly26",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4139133714,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1328711621,
+      "path": "Objects/Critters/butterfly27",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2474733638,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1505882934,
+      "path": "Objects/Critters/butterfly28",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2977335937,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3465409229,
+      "path": "Objects/Critters/butterfly29",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2600221253,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3491666652,
+      "path": "Objects/Critters/butterfly30",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3892003951,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1468456701,
+      "path": "Objects/Critters/butterfly31",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2756045623,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3641132542,
+      "path": "Objects/Critters/butterfly32",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3409396722,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3705953745,
+      "path": "Objects/Critters/butterfly33",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1716368417,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 894094774,
+      "path": "Objects/Critters/butterfly34",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3482694068,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1560301505,
+      "path": "Objects/Critters/butterfly35",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1454131641,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2880341828,
+      "path": "Objects/Critters/butterfly36",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 508482775,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2421098108,
+      "path": "Objects/Critters/butterfly37",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3997749251,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 366046308,
+      "path": "Objects/Critters/butterfly38",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 378080702,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 379323486,
+      "path": "Objects/Critters/butterfly39",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2608057895,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2192243407,
+      "path": "Objects/Critters/butterfly40",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2804698131,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3741458817,
+      "path": "Objects/Critters/butterfly41",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 503579526,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 453878804,
+      "path": "Objects/Critters/butterfly42",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 149695282,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 788260806,
+      "path": "Objects/Critters/butterfly43",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2040028397,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2769276760,
+      "path": "Objects/Critters/butterfly44",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3895252885,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3887332607,
+      "path": "Objects/Critters/butterfly45",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3347177279,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1326518183,
+      "path": "Objects/Critters/butterfly46",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4016573364,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3810849647,
+      "path": "Objects/Critters/butterfly47",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1074501620,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2673772533,
+      "path": "Objects/Critters/butterfly48",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2619491591,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1285465502,
+      "path": "Objects/Critters/butterfly49",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3038445057,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2703422874,
+      "path": "Objects/Critters/butterfly50",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1701268081,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2107073818,
+      "path": "Objects/Critters/butterfly51",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 577702726,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1606882209,
+      "path": "Objects/Critters/butterfly52",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3758693086,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2733141979,
+      "path": "Objects/Critters/butterfly53",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2729520691,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1800270856,
+      "path": "Objects/Critters/bird24",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1480659742,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2487542873,
+      "path": "Objects/Critters/bird25",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2635682381,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3002914531,
+      "path": "Objects/Critters/bird26",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 642051452,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 359280320,
+      "path": "Objects/Critters/bird27",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1689448560,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 391398823,
+      "path": "Objects/Critters/bird28",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3029355540,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1502878814,
+      "path": "Objects/Critters/bird29",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 861791401,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4169501585,
+      "path": "Objects/Critters/bird30",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 598879021,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1851125989,
+      "path": "Objects/Critters/bird31",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1682446839,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2051884942,
+      "path": "Objects/Critters/bird32",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1184084985,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1784690335,
+      "path": "Objects/Critters/bird33",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 83930990,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1209488474,
+      "path": "Objects/Critters/bird34",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 417439353,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 433317393,
+      "path": "Objects/Critters/bird35",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2293569648,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3432308739,
+      "path": "Objects/Critters/bird36",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 874354882,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3293420686,
+      "path": "Objects/Critters/bird37",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2323551805,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3763378736,
+      "path": "Objects/Critters/bird38",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3075209758,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1058773345,
+      "path": "Objects/Critters/bird39",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3334113561,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3533755110,
+      "path": "Objects/Critters/bird40",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3930144194,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3936333238,
+      "path": "Objects/Critters/bird41",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1531719577,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 822771333,
+      "path": "Objects/Critters/bird42",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2396923995,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3754405504,
+      "path": "Objects/Critters/bird43",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 90681884,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2498342534,
+      "path": "Objects/Critters/bird44",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2815520376,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3656239195,
+      "path": "Objects/Critters/bird45",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1238383811,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 108973762,
+      "path": "Objects/Critters/bird54",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3696145802,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3798305959,
+      "path": "Objects/Critters/bird46",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 878070006,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1443553311,
+      "path": "Objects/Critters/bird47",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2349217625,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2946043620,
+      "path": "Objects/Critters/bird48",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 281720583,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2794958405,
+      "path": "Objects/Critters/bird49",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1328257622,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 186464091,
+      "path": "Objects/Critters/bird50",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3928064638,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3282196944,
+      "path": "Objects/Critters/bird51",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2776444702,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 692478053,
+      "path": "Objects/Critters/bird52",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1661428561,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1591481517,
+      "path": "Objects/Critters/bird53",
+      "layer": 1,
+      "mask": 1,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3286730458,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 138217822,
+      "path": "Objects/Critters/butterfly54",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2991253915,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3564127501,
+      "path": "Objects/Critters/butterfly55",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1581989684,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1789083713,
+      "path": "Objects/Critters/butterfly56",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2290650781,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1670623500,
+      "path": "Objects/Critters/butterfly57",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 929346254,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3489047734,
+      "path": "Objects/Critters/butterfly58",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 396001949,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4141464067,
+      "path": "Objects/Critters/butterfly59",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4056952991,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1993757502,
+      "path": "Objects/Critters/butterfly60",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 333433651,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 983532330,
+      "path": "Objects/Critters/butterfly61",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2826642578,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 129455933,
+      "path": "Objects/Critters/butterfly63",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4095784352,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3047036296,
+      "path": "Objects/Critters/butterfly64",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2886617913,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 695087379,
+      "path": "Objects/Critters/butterfly66",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 298293983,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 449713943,
+      "path": "Objects/Critters/butterfly65",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2468496154,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2086880462,
+      "path": "Objects/Critters/butterfly62",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2240945531,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3472341384,
+      "path": "Objects/Critters/butterfly67",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 728653052,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3347585834,
+      "path": "Objects/Critters/butterfly68",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2720747788,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1186770237,
+      "path": "Objects/Critters/butterfly69",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1237156291,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3118158393,
+      "path": "Objects/Critters/butterfly70",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3373546794,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4003356883,
+      "path": "Objects/Critters/butterfly71",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4271843798,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2418040945,
+      "path": "Objects/Critters/butterfly72",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2379659512,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3419462162,
+      "path": "Objects/Critters/butterfly73",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 807607595,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1797805767,
+      "path": "Objects/Critters/butterfly75",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4137740910,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 851046517,
+      "path": "Objects/Critters/butterfly76",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2300311107,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3843892284,
+      "path": "Objects/Critters/butterfly77",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3091593620,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2801439862,
+      "path": "Objects/Critters/butterfly78",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1772865585,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3295037914,
+      "path": "Objects/Critters/butterfly79",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2973948225,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2897103087,
+      "path": "Objects/Critters/butterfly80",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 16245604,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1323713309,
+      "path": "Objects/Critters/butterfly81",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3525713063,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1102346309,
+      "path": "Objects/Critters/butterfly82",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2039643554,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1891949219,
+      "path": "Objects/Critters/butterfly83",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3173789719,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3678032945,
+      "path": "Objects/Critters/butterfly84",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 641448325,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 248350139,
+      "path": "Objects/Critters/butterfly85",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1450322022,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2052842922,
+      "path": "Objects/Critters/butterfly86",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 335316700,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1372398191,
+      "path": "Objects/Critters/butterfly87",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3133975175,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 4024727008,
+      "path": "Objects/Critters/butterfly74",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2831728747,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1575909498,
+      "path": "Objects/Critters/butterfly88",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4085866676,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3432597937,
+      "path": "Objects/Critters/butterfly89",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3764647076,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3662364740,
+      "path": "Objects/Critters/butterfly90",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2165994342,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1290263818,
+      "path": "Objects/Critters/butterfly91",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2299111564,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 1195175624,
+      "path": "Objects/Critters/butterfly92",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1154287742,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 3993756770,
+      "path": "Objects/Critters/butterfly93",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3248079233,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 2655679530,
+      "path": "Objects/Critters/butterfly94",
+      "layer": 0,
+      "mask": 0,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1485870207,
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "id": 210571542,
+      "path": "Objects/NPCS/npc12",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3605293603,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 437553025,
+      "path": "Objects/NPCS/npc22",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2994534219,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3173354702,
+      "path": "Objects/NPCS/npc28",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2582580673,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2914925924,
+      "path": "Objects/NPCS/npc30",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 460372135,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 635431345,
+      "path": "Objects/NPCS/npc31",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 475342382,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 957371598,
+      "path": "Objects/NPCS/npc32",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1173311912,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3434881836,
+      "path": "Objects/NPCS/npc33",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 449177302,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2310498737,
+      "path": "Objects/NPCS/npc44",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 205036772,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1593331002,
+      "path": "Objects/NPCS/npc34",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2165008853,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1229070946,
+      "path": "Objects/NPCS/npc36",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4126255292,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3703779468,
+      "path": "Objects/NPCS/npc37",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 337295208,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3762327270,
+      "path": "Objects/NPCS/npc38",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2479709958,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 4166134503,
+      "path": "Objects/NPCS/npc35",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2889673484,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2737531792,
+      "path": "Objects/NPCS/npc",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3693372407,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2060673523,
+      "path": "Objects/NPCS/npc6",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1707724210,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3972185731,
+      "path": "Objects/NPCS/npc7",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3694989334,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 785629885,
+      "path": "Objects/NPCS/npc2",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4079262879,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2153161825,
+      "path": "Objects/NPCS/npc4",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1503202233,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 853425788,
+      "path": "Objects/NPCS/npc13",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3330456810,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2297325680,
+      "path": "Objects/NPCS/npc43",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2033955149,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2259943008,
+      "path": "Objects/NPCS/npc49",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 273410771,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 247421948,
+      "path": "Objects/NPCS/npc5",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 354334989,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3095582778,
+      "path": "Objects/NPCS/npc8",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2976993524,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2639120905,
+      "path": "Objects/NPCS/npc9",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3180207898,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3767330517,
+      "path": "Objects/NPCS/npc10",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2942569587,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 640399899,
+      "path": "Objects/NPCS/npc11",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3224016222,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3150160618,
+      "path": "Objects/NPCS/npc14",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2568077429,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2899552652,
+      "path": "Objects/NPCS/npc47",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 535612618,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2442055886,
+      "path": "Objects/NPCS/npc15",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2620504972,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1108292664,
+      "path": "Objects/NPCS/npc16",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2532282043,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 372591066,
+      "path": "Objects/NPCS/npc29",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 938701897,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1583285329,
+      "path": "Objects/NPCS/npc48",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1816255147,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 295780912,
+      "path": "Objects/NPCS/npc19",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 896103575,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 549517228,
+      "path": "Objects/NPCS/npc20",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4198360408,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1619841105,
+      "path": "Objects/NPCS/npc42",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 104285322,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1353618985,
+      "path": "Objects/NPCS/npc45",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2851675337,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 862439573,
+      "path": "Objects/NPCS/npc41",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 19867542,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 186301641,
+      "path": "Objects/NPCS/npc26",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2670910741,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1886998396,
+      "path": "Objects/NPCS/npc46",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3183698195,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3558100305,
+      "path": "Objects/NPCS/npc21",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4291582612,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1396482849,
+      "path": "Objects/NPCS/npc17",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 545608802,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1436332646,
+      "path": "Objects/NPCS/npc23",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1151338320,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2710962482,
+      "path": "Objects/NPCS/npc27",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4167870053,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2677627936,
+      "path": "Objects/NPCS/npc24",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1586000577,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 573786176,
+      "path": "Objects/NPCS/npc25",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 969251252,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 750705161,
+      "path": "Objects/NPCS/npc18",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 460911753,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 439396953,
+      "path": "Objects/NPCS/npczombie1",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2621520009,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2306419902,
+      "path": "Objects/NPCS/npczombie2",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 766063911,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1364807546,
+      "path": "Objects/NPCS/npc39",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2584693381,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2588521589,
+      "path": "Objects/NPCS/npc40",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 1414990439,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1108621181,
+      "path": "Objects/NPCS/npc3",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3194950279,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1689911079,
+      "path": "Objects/NPCS/mom",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3660168067,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 4052585882,
+      "path": "Objects/NPCS/mimmie",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 494434402,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 11687715,
+      "path": "Objects/NPCS/minnie",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 2341638564,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1765949197,
+      "path": "AbovePlayer1/npc",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 4124820873,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 1443062110,
+      "path": "AboveNPCS/mom",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 552039948,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 3484211041,
+      "path": "AboveNPCS/mimmie",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 9728501,
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "id": 2951200023,
+      "path": "AboveNPCS/minnie",
+      "layer": 573,
+      "mask": 1597,
+      "safe_margin": 0.07999999821186066,
+      "platform_leave": 0,
+      "shapes": [
+        {
+          "id": 3613733418,
+          "disabled": false
+        }
+      ]
+    }
+  ],
+  "rays": [
+    {
+      "id": 3410649291,
+      "path": "Objects/Zoo Flag/Jump Area/RayCast2D",
+      "parent": 3276706321,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 913642325,
+      "path": "Objects/Zoo Flag/Jump Area2/RayCast2D",
+      "parent": 3511689392,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 3962302692,
+      "path": "Objects/Zoo Flag/Jump Area3/RayCast2D",
+      "parent": 783732192,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 3424847005,
+      "path": "Objects/Zoo Flag/Jump Area7/RayCast2D",
+      "parent": 2891496816,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 1478020508,
+      "path": "Objects/Zoo Flag/Jump Area8/RayCast2D",
+      "parent": 308816611,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 2305194665,
+      "path": "Objects/Zoo Flag/Jump Area6/RayCast2D",
+      "parent": 2114285700,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 3765055969,
+      "path": "Objects/Zoo Flag/Jump Area5/RayCast2D",
+      "parent": 329647682,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 3517467537,
+      "path": "Objects/Zoo Flag/Jump Area4/RayCast2D",
+      "parent": 248392072,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 1501527754,
+      "path": "Objects/Zoo Freed Flag/npc2/RayCast2D",
+      "parent": 3081056311,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3103496033,
+      "path": "Objects/Zoo Freed Flag/npc4/RayCast2D",
+      "parent": 737765147,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 927786302,
+      "path": "Objects/Zoo Freed Flag/npc5/RayCast2D",
+      "parent": 883995461,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3888364187,
+      "path": "Objects/Zoo Freed Flag/npc6/RayCast2D",
+      "parent": 3792487662,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 265187510,
+      "path": "Objects/Zoo Freed Flag/npc7/RayCast2D",
+      "parent": 981352210,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1871779828,
+      "path": "Objects/Zoo Freed Flag/npc8/RayCast2D",
+      "parent": 3792135288,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3636424645,
+      "path": "Objects/Zoo Freed Flag/npc9/RayCast2D",
+      "parent": 1815627727,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2597717286,
+      "path": "Objects/Zoo Freed Flag/npc10/RayCast2D",
+      "parent": 3607004091,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 80326034,
+      "path": "Objects/Zoo Freed Flag/npc3/RayCast2D",
+      "parent": 311887043,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2617103398,
+      "path": "Objects/Jump Area/RayCast2D",
+      "parent": 1768826684,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 1461476447,
+      "path": "Objects/Jump Area2/RayCast2D",
+      "parent": 1068331448,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 521959467,
+      "path": "Objects/Jump Area3/RayCast2D",
+      "parent": 1985545981,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 3736394100,
+      "path": "Objects/Jump Area4/RayCast2D",
+      "parent": 2625411066,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 3236428763,
+      "path": "Objects/Jump Area5/RayCast2D",
+      "parent": 531456607,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 3092649110,
+      "path": "Objects/Jump Area6/RayCast2D",
+      "parent": 1367377724,
+      "mask": 1,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": 2820881611,
+      "path": "Objects/NPCS/npc12/RayCast2D",
+      "parent": 210571542,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 4214787355,
+      "path": "Objects/NPCS/npc22/RayCast2D",
+      "parent": 437553025,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2764816068,
+      "path": "Objects/NPCS/npc28/RayCast2D",
+      "parent": 3173354702,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2681356494,
+      "path": "Objects/NPCS/npc30/RayCast2D",
+      "parent": 2914925924,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 753968787,
+      "path": "Objects/NPCS/npc31/RayCast2D",
+      "parent": 635431345,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2050161905,
+      "path": "Objects/NPCS/npc32/RayCast2D",
+      "parent": 957371598,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 4219715508,
+      "path": "Objects/NPCS/npc33/RayCast2D",
+      "parent": 3434881836,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 863066775,
+      "path": "Objects/NPCS/npc44/RayCast2D",
+      "parent": 2310498737,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3928401873,
+      "path": "Objects/NPCS/npc34/RayCast2D",
+      "parent": 1593331002,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3430415788,
+      "path": "Objects/NPCS/npc36/RayCast2D",
+      "parent": 1229070946,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1632494785,
+      "path": "Objects/NPCS/npc37/RayCast2D",
+      "parent": 3703779468,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3074512990,
+      "path": "Objects/NPCS/npc38/RayCast2D",
+      "parent": 3762327270,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1198803478,
+      "path": "Objects/NPCS/npc35/RayCast2D",
+      "parent": 4166134503,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1626907797,
+      "path": "Objects/NPCS/npc/RayCast2D",
+      "parent": 2737531792,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3697750625,
+      "path": "Objects/NPCS/npc6/RayCast2D",
+      "parent": 2060673523,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2325388226,
+      "path": "Objects/NPCS/npc7/RayCast2D",
+      "parent": 3972185731,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1712191197,
+      "path": "Objects/NPCS/npc2/RayCast2D",
+      "parent": 785629885,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 152882033,
+      "path": "Objects/NPCS/npc4/RayCast2D",
+      "parent": 2153161825,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2046425020,
+      "path": "Objects/NPCS/npc13/RayCast2D",
+      "parent": 853425788,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1893618520,
+      "path": "Objects/NPCS/npc43/RayCast2D",
+      "parent": 2297325680,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3671548490,
+      "path": "Objects/NPCS/npc49/RayCast2D",
+      "parent": 2259943008,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 691586827,
+      "path": "Objects/NPCS/npc5/RayCast2D",
+      "parent": 247421948,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3868231178,
+      "path": "Objects/NPCS/npc8/RayCast2D",
+      "parent": 3095582778,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 125363546,
+      "path": "Objects/NPCS/npc9/RayCast2D",
+      "parent": 2639120905,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2041734977,
+      "path": "Objects/NPCS/npc10/RayCast2D",
+      "parent": 3767330517,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 4032179203,
+      "path": "Objects/NPCS/npc11/RayCast2D",
+      "parent": 640399899,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2143652336,
+      "path": "Objects/NPCS/npc14/RayCast2D",
+      "parent": 3150160618,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1316657445,
+      "path": "Objects/NPCS/npc47/RayCast2D",
+      "parent": 2899552652,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3989162004,
+      "path": "Objects/NPCS/npc15/RayCast2D",
+      "parent": 2442055886,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 104087736,
+      "path": "Objects/NPCS/npc16/RayCast2D",
+      "parent": 1108292664,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2276387150,
+      "path": "Objects/NPCS/npc29/RayCast2D",
+      "parent": 372591066,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3432664759,
+      "path": "Objects/NPCS/npc48/RayCast2D",
+      "parent": 1583285329,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3598401604,
+      "path": "Objects/NPCS/npc19/RayCast2D",
+      "parent": 295780912,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2201501110,
+      "path": "Objects/NPCS/npc20/RayCast2D",
+      "parent": 549517228,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3713886956,
+      "path": "Objects/NPCS/npc42/RayCast2D",
+      "parent": 1619841105,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1419109932,
+      "path": "Objects/NPCS/npc45/RayCast2D",
+      "parent": 1353618985,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3699790734,
+      "path": "Objects/NPCS/npc41/RayCast2D",
+      "parent": 862439573,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3930448010,
+      "path": "Objects/NPCS/npc26/RayCast2D",
+      "parent": 186301641,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2704973927,
+      "path": "Objects/NPCS/npc46/RayCast2D",
+      "parent": 1886998396,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 473581459,
+      "path": "Objects/NPCS/npc21/RayCast2D",
+      "parent": 3558100305,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 942448935,
+      "path": "Objects/NPCS/npc17/RayCast2D",
+      "parent": 1396482849,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 4275913594,
+      "path": "Objects/NPCS/npc23/RayCast2D",
+      "parent": 1436332646,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 4134987817,
+      "path": "Objects/NPCS/npc27/RayCast2D",
+      "parent": 2710962482,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 699623047,
+      "path": "Objects/NPCS/npc24/RayCast2D",
+      "parent": 2677627936,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 4012842941,
+      "path": "Objects/NPCS/npc25/RayCast2D",
+      "parent": 573786176,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3553304705,
+      "path": "Objects/NPCS/npc18/RayCast2D",
+      "parent": 750705161,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 192613313,
+      "path": "Objects/NPCS/npczombie1/RayCast2D",
+      "parent": 439396953,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2460716465,
+      "path": "Objects/NPCS/npczombie2/RayCast2D",
+      "parent": 2306419902,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 4250561361,
+      "path": "Objects/NPCS/npc39/RayCast2D",
+      "parent": 1364807546,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2161737873,
+      "path": "Objects/NPCS/npc40/RayCast2D",
+      "parent": 2588521589,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3841117880,
+      "path": "Objects/NPCS/npc3/RayCast2D",
+      "parent": 1108621181,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3254943551,
+      "path": "Objects/NPCS/mom/RayCast2D",
+      "parent": 1689911079,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3086582650,
+      "path": "Objects/NPCS/mimmie/RayCast2D",
+      "parent": 4052585882,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1183714174,
+      "path": "Objects/NPCS/minnie/RayCast2D",
+      "parent": 11687715,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 2155947266,
+      "path": "AbovePlayer1/npc/RayCast2D",
+      "parent": 1765949197,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 1736344368,
+      "path": "AboveNPCS/mom/RayCast2D",
+      "parent": 1443062110,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3498693660,
+      "path": "AboveNPCS/mimmie/RayCast2D",
+      "parent": 3484211041,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    },
+    {
+      "id": 3880598201,
+      "path": "AboveNPCS/minnie/RayCast2D",
+      "parent": 2951200023,
+      "mask": 1537,
+      "enabled": true,
+      "exclude": true,
+      "bodies": true,
+      "areas": false,
+      "cast": [
+        0.0,
+        25.0
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": 3081056311,
+      "collider": 491539348,
+      "interact": 1148087992,
+      "near": 3047060752,
+      "view": 4267886062,
+      "wander": 1205157802,
+      "ray": 1501527754,
+      "timer": 3127558874,
+      "shadow": 2273836481,
+      "sprite": 812075446
+    },
+    {
+      "id": 737765147,
+      "collider": 1539660374,
+      "interact": 2532678450,
+      "near": 1018418688,
+      "view": 410380271,
+      "wander": 875050768,
+      "ray": 3103496033,
+      "timer": 803006928,
+      "shadow": 3875355251,
+      "sprite": 2698878082
+    },
+    {
+      "id": 883995461,
+      "collider": 1741543744,
+      "interact": 571760557,
+      "near": 1443052350,
+      "view": 3723453139,
+      "wander": 3507053277,
+      "ray": 927786302,
+      "timer": 4224474635,
+      "shadow": 1700568420,
+      "sprite": 239937999
+    },
+    {
+      "id": 3792487662,
+      "collider": 1525396701,
+      "interact": 4112464220,
+      "near": 1812745232,
+      "view": 558343820,
+      "wander": 4162122372,
+      "ray": 3888364187,
+      "timer": 4230417662,
+      "shadow": 4187552703,
+      "sprite": 3789151103
+    },
+    {
+      "id": 981352210,
+      "collider": 1152322969,
+      "interact": 1532913199,
+      "near": 3555259023,
+      "view": 180497651,
+      "wander": 3248791637,
+      "ray": 265187510,
+      "timer": 4065858799,
+      "shadow": 2237313947,
+      "sprite": 462117545
+    },
+    {
+      "id": 3792135288,
+      "collider": 224629614,
+      "interact": 3834986308,
+      "near": 2777808234,
+      "view": 61568148,
+      "wander": 763801184,
+      "ray": 1871779828,
+      "timer": 355279383,
+      "shadow": 885398492,
+      "sprite": 3270086966
+    },
+    {
+      "id": 1815627727,
+      "collider": 2809110163,
+      "interact": 3573660987,
+      "near": 1728851795,
+      "view": 835547421,
+      "wander": 3534328153,
+      "ray": 3636424645,
+      "timer": 2821421363,
+      "shadow": 522676011,
+      "sprite": 321140417
+    },
+    {
+      "id": 3607004091,
+      "collider": 1957608729,
+      "interact": 2293734925,
+      "near": 3329666250,
+      "view": 3229729829,
+      "wander": 1614048592,
+      "ray": 2597717286,
+      "timer": 3868380607,
+      "shadow": 1972860313,
+      "sprite": 2696499241
+    },
+    {
+      "id": 311887043,
+      "collider": 1181252394,
+      "interact": 1177167759,
+      "near": 1689679371,
+      "view": 3800825258,
+      "wander": 16780675,
+      "ray": 80326034,
+      "timer": 1120150176,
+      "shadow": 3095668191,
+      "sprite": 1525037970
+    },
+    {
+      "id": 210571542,
+      "collider": 3605293603,
+      "interact": 2093378501,
+      "near": 3737878917,
+      "view": 631095595,
+      "wander": 1742048982,
+      "ray": 2820881611,
+      "timer": 2044802088,
+      "shadow": 3799340793,
+      "sprite": 344171085
+    },
+    {
+      "id": 437553025,
+      "collider": 2994534219,
+      "interact": 1593747988,
+      "near": 685567318,
+      "view": 2432268157,
+      "wander": 104474460,
+      "ray": 4214787355,
+      "timer": 2210201652,
+      "shadow": 3358636379,
+      "sprite": 1035261906
+    },
+    {
+      "id": 3173354702,
+      "collider": 2582580673,
+      "interact": 410590818,
+      "near": 2288184814,
+      "view": 2068656953,
+      "wander": 2414849050,
+      "ray": 2764816068,
+      "timer": 336539532,
+      "shadow": 3567083224,
+      "sprite": 931872620
+    },
+    {
+      "id": 2914925924,
+      "collider": 460372135,
+      "interact": 284588775,
+      "near": 2208637788,
+      "view": 866854187,
+      "wander": 2579760721,
+      "ray": 2681356494,
+      "timer": 1653971708,
+      "shadow": 2610756320,
+      "sprite": 3131937082
+    },
+    {
+      "id": 635431345,
+      "collider": 475342382,
+      "interact": 400906315,
+      "near": 3658798506,
+      "view": 4099273989,
+      "wander": 3717390562,
+      "ray": 753968787,
+      "timer": 1069843868,
+      "shadow": 2668843700,
+      "sprite": 4023476599
+    },
+    {
+      "id": 957371598,
+      "collider": 1173311912,
+      "interact": 3537265502,
+      "near": 1315594611,
+      "view": 1540048910,
+      "wander": 1746106768,
+      "ray": 2050161905,
+      "timer": 3211996510,
+      "shadow": 1194232888,
+      "sprite": 3185532646
+    },
+    {
+      "id": 3434881836,
+      "collider": 449177302,
+      "interact": 1288332588,
+      "near": 1939549951,
+      "view": 4279986712,
+      "wander": 2056413750,
+      "ray": 4219715508,
+      "timer": 1452216503,
+      "shadow": 1213545952,
+      "sprite": 3218770774
+    },
+    {
+      "id": 2310498737,
+      "collider": 205036772,
+      "interact": 3929771301,
+      "near": 1669673825,
+      "view": 3574986404,
+      "wander": 1350741395,
+      "ray": 863066775,
+      "timer": 3182103143,
+      "shadow": 695720926,
+      "sprite": 905088156
+    },
+    {
+      "id": 1593331002,
+      "collider": 2165008853,
+      "interact": 3924638160,
+      "near": 1490576116,
+      "view": 1955540345,
+      "wander": 1766523909,
+      "ray": 3928401873,
+      "timer": 1767249895,
+      "shadow": 3249552111,
+      "sprite": 3431860216
+    },
+    {
+      "id": 1229070946,
+      "collider": 4126255292,
+      "interact": 3495663167,
+      "near": 3751799815,
+      "view": 1375849514,
+      "wander": 1620002045,
+      "ray": 3430415788,
+      "timer": 1792532073,
+      "shadow": 3374049238,
+      "sprite": 2831900954
+    },
+    {
+      "id": 3703779468,
+      "collider": 337295208,
+      "interact": 3571918588,
+      "near": 1842152711,
+      "view": 1570301911,
+      "wander": 3108344590,
+      "ray": 1632494785,
+      "timer": 1048720725,
+      "shadow": 4223194242,
+      "sprite": 3922854560
+    },
+    {
+      "id": 3762327270,
+      "collider": 2479709958,
+      "interact": 3961733497,
+      "near": 3703312918,
+      "view": 2674553961,
+      "wander": 1844290052,
+      "ray": 3074512990,
+      "timer": 2401172848,
+      "shadow": 2495279397,
+      "sprite": 1313378489
+    },
+    {
+      "id": 4166134503,
+      "collider": 2889673484,
+      "interact": 2113654229,
+      "near": 1383720086,
+      "view": 1946022822,
+      "wander": 2708712265,
+      "ray": 1198803478,
+      "timer": 4212891904,
+      "shadow": 955952980,
+      "sprite": 3549322516
+    },
+    {
+      "id": 2737531792,
+      "collider": 3693372407,
+      "interact": 3357339897,
+      "near": 1953787033,
+      "view": 525081825,
+      "wander": 13606274,
+      "ray": 1626907797,
+      "timer": 1996392882,
+      "shadow": 3933859515,
+      "sprite": 2330897344
+    },
+    {
+      "id": 2060673523,
+      "collider": 1707724210,
+      "interact": 2412243147,
+      "near": 2719529260,
+      "view": 2840474793,
+      "wander": 1114877766,
+      "ray": 3697750625,
+      "timer": 1484021863,
+      "shadow": 54081365,
+      "sprite": 4095763343
+    },
+    {
+      "id": 3972185731,
+      "collider": 3694989334,
+      "interact": 2995200240,
+      "near": 2298907287,
+      "view": 2673768261,
+      "wander": 3551228079,
+      "ray": 2325388226,
+      "timer": 1228318416,
+      "shadow": 2123548067,
+      "sprite": 3022355283
+    },
+    {
+      "id": 785629885,
+      "collider": 4079262879,
+      "interact": 3753369184,
+      "near": 828649820,
+      "view": 2404978754,
+      "wander": 828575689,
+      "ray": 1712191197,
+      "timer": 281665002,
+      "shadow": 4083262009,
+      "sprite": 3720151751
+    },
+    {
+      "id": 2153161825,
+      "collider": 1503202233,
+      "interact": 1553641412,
+      "near": 3776521929,
+      "view": 2003604669,
+      "wander": 448500953,
+      "ray": 152882033,
+      "timer": 3551239160,
+      "shadow": 4117933357,
+      "sprite": 2561978431
+    },
+    {
+      "id": 853425788,
+      "collider": 3330456810,
+      "interact": 2332661187,
+      "near": 1683620012,
+      "view": 1376828003,
+      "wander": 4207648132,
+      "ray": 2046425020,
+      "timer": 4167468266,
+      "shadow": 2470813984,
+      "sprite": 3472377784
+    },
+    {
+      "id": 2297325680,
+      "collider": 2033955149,
+      "interact": 531975463,
+      "near": 4288810661,
+      "view": 358558436,
+      "wander": 3654944003,
+      "ray": 1893618520,
+      "timer": 1091935552,
+      "shadow": 620087158,
+      "sprite": 2836180318
+    },
+    {
+      "id": 2259943008,
+      "collider": 273410771,
+      "interact": 4272927493,
+      "near": 1483120070,
+      "view": 816242315,
+      "wander": 42826508,
+      "ray": 3671548490,
+      "timer": 4184924102,
+      "shadow": 1228418724,
+      "sprite": 1313692703
+    },
+    {
+      "id": 247421948,
+      "collider": 354334989,
+      "interact": 830180333,
+      "near": 1537830095,
+      "view": 2578105430,
+      "wander": 288413274,
+      "ray": 691586827,
+      "timer": 447089280,
+      "shadow": 3748461230,
+      "sprite": 2024413464
+    },
+    {
+      "id": 3095582778,
+      "collider": 2976993524,
+      "interact": 1996582911,
+      "near": 4172373220,
+      "view": 3047434302,
+      "wander": 401531824,
+      "ray": 3868231178,
+      "timer": 2008368668,
+      "shadow": 1274674152,
+      "sprite": 1735370643
+    },
+    {
+      "id": 2639120905,
+      "collider": 3180207898,
+      "interact": 1848307996,
+      "near": 3157946461,
+      "view": 1639893897,
+      "wander": 737444326,
+      "ray": 125363546,
+      "timer": 2463816,
+      "shadow": 3856886646,
+      "sprite": 1157202574
+    },
+    {
+      "id": 3767330517,
+      "collider": 2942569587,
+      "interact": 1673026317,
+      "near": 2640794552,
+      "view": 1294477079,
+      "wander": 1418032695,
+      "ray": 2041734977,
+      "timer": 3364798403,
+      "shadow": 539051564,
+      "sprite": 1384843958
+    },
+    {
+      "id": 640399899,
+      "collider": 3224016222,
+      "interact": 2566196159,
+      "near": 1059130769,
+      "view": 36519360,
+      "wander": 1855829431,
+      "ray": 4032179203,
+      "timer": 3722526382,
+      "shadow": 1060962919,
+      "sprite": 3848989086
+    },
+    {
+      "id": 3150160618,
+      "collider": 2568077429,
+      "interact": 2679188471,
+      "near": 820113224,
+      "view": 3663800729,
+      "wander": 29661993,
+      "ray": 2143652336,
+      "timer": 2732898268,
+      "shadow": 450272396,
+      "sprite": 1197072440
+    },
+    {
+      "id": 2899552652,
+      "collider": 535612618,
+      "interact": 827346812,
+      "near": 2390736543,
+      "view": 202113778,
+      "wander": 1110062800,
+      "ray": 1316657445,
+      "timer": 1550664834,
+      "shadow": 3254054400,
+      "sprite": 1801295906
+    },
+    {
+      "id": 2442055886,
+      "collider": 2620504972,
+      "interact": 3077633238,
+      "near": 1016511064,
+      "view": 1117799328,
+      "wander": 2535660491,
+      "ray": 3989162004,
+      "timer": 1311936856,
+      "shadow": 96087923,
+      "sprite": 243733389
+    },
+    {
+      "id": 1108292664,
+      "collider": 2532282043,
+      "interact": 2608499544,
+      "near": 848920750,
+      "view": 1423426348,
+      "wander": 1157650608,
+      "ray": 104087736,
+      "timer": 3248102338,
+      "shadow": 2720310407,
+      "sprite": 2615452894
+    },
+    {
+      "id": 372591066,
+      "collider": 938701897,
+      "interact": 3266225378,
+      "near": 853026014,
+      "view": 1872687215,
+      "wander": 2382904381,
+      "ray": 2276387150,
+      "timer": 874479541,
+      "shadow": 267915746,
+      "sprite": 3847881361
+    },
+    {
+      "id": 1583285329,
+      "collider": 1816255147,
+      "interact": 2222026967,
+      "near": 1684034152,
+      "view": 2657002847,
+      "wander": 2429514218,
+      "ray": 3432664759,
+      "timer": 1469861986,
+      "shadow": 2930986431,
+      "sprite": 2616394293
+    },
+    {
+      "id": 295780912,
+      "collider": 896103575,
+      "interact": 2914417669,
+      "near": 141828696,
+      "view": 1822530981,
+      "wander": 3086719660,
+      "ray": 3598401604,
+      "timer": 1202475233,
+      "shadow": 2108091622,
+      "sprite": 536650578
+    },
+    {
+      "id": 549517228,
+      "collider": 4198360408,
+      "interact": 3878680776,
+      "near": 3717270765,
+      "view": 2605846700,
+      "wander": 1890685702,
+      "ray": 2201501110,
+      "timer": 3680083231,
+      "shadow": 2018363077,
+      "sprite": 4053055213
+    },
+    {
+      "id": 1619841105,
+      "collider": 104285322,
+      "interact": 2687708745,
+      "near": 1582813693,
+      "view": 3943166390,
+      "wander": 2978541544,
+      "ray": 3713886956,
+      "timer": 1783054260,
+      "shadow": 2233189576,
+      "sprite": 640608159
+    },
+    {
+      "id": 1353618985,
+      "collider": 2851675337,
+      "interact": 624507583,
+      "near": 502398808,
+      "view": 58155335,
+      "wander": 814896778,
+      "ray": 1419109932,
+      "timer": 1931999012,
+      "shadow": 3014598785,
+      "sprite": 922019134
+    },
+    {
+      "id": 862439573,
+      "collider": 19867542,
+      "interact": 1736016834,
+      "near": 1149966304,
+      "view": 840196001,
+      "wander": 661941764,
+      "ray": 3699790734,
+      "timer": 3868737012,
+      "shadow": 1336929818,
+      "sprite": 401365477
+    },
+    {
+      "id": 186301641,
+      "collider": 2670910741,
+      "interact": 4040682772,
+      "near": 4178581302,
+      "view": 4219719988,
+      "wander": 2672413284,
+      "ray": 3930448010,
+      "timer": 2523196971,
+      "shadow": 1988012066,
+      "sprite": 4056491141
+    },
+    {
+      "id": 1886998396,
+      "collider": 3183698195,
+      "interact": 724565672,
+      "near": 3728430613,
+      "view": 2794355899,
+      "wander": 458063102,
+      "ray": 2704973927,
+      "timer": 3889730359,
+      "shadow": 1745380040,
+      "sprite": 3905057438
+    },
+    {
+      "id": 3558100305,
+      "collider": 4291582612,
+      "interact": 3978943886,
+      "near": 1384627438,
+      "view": 3307514419,
+      "wander": 1622569979,
+      "ray": 473581459,
+      "timer": 40923809,
+      "shadow": 2158881223,
+      "sprite": 2846053938
+    },
+    {
+      "id": 1396482849,
+      "collider": 545608802,
+      "interact": 3850107795,
+      "near": 1490770049,
+      "view": 2242036738,
+      "wander": 1984031158,
+      "ray": 942448935,
+      "timer": 3579849287,
+      "shadow": 3116830444,
+      "sprite": 3092298311
+    },
+    {
+      "id": 1436332646,
+      "collider": 1151338320,
+      "interact": 1699419240,
+      "near": 3899041685,
+      "view": 4202866810,
+      "wander": 2439646547,
+      "ray": 4275913594,
+      "timer": 3205890158,
+      "shadow": 808206488,
+      "sprite": 2405354397
+    },
+    {
+      "id": 2710962482,
+      "collider": 4167870053,
+      "interact": 630305702,
+      "near": 4160109658,
+      "view": 738486931,
+      "wander": 4284173613,
+      "ray": 4134987817,
+      "timer": 418085504,
+      "shadow": 275482291,
+      "sprite": 2294188302
+    },
+    {
+      "id": 2677627936,
+      "collider": 1586000577,
+      "interact": 3963454871,
+      "near": 433668273,
+      "view": 2655016967,
+      "wander": 2595684083,
+      "ray": 699623047,
+      "timer": 500517018,
+      "shadow": 130582770,
+      "sprite": 3889732392
+    },
+    {
+      "id": 573786176,
+      "collider": 969251252,
+      "interact": 3874468158,
+      "near": 3358294424,
+      "view": 1042121857,
+      "wander": 4061801448,
+      "ray": 4012842941,
+      "timer": 2383118198,
+      "shadow": 3701435636,
+      "sprite": 3583534486
+    },
+    {
+      "id": 750705161,
+      "collider": 460911753,
+      "interact": 505311147,
+      "near": 4006915389,
+      "view": 477047631,
+      "wander": 3754165743,
+      "ray": 3553304705,
+      "timer": 3135923551,
+      "shadow": 1383454130,
+      "sprite": 3785408267
+    },
+    {
+      "id": 439396953,
+      "collider": 2621520009,
+      "interact": 2082995570,
+      "near": 3274916151,
+      "view": 1205610417,
+      "wander": 3480832119,
+      "ray": 192613313,
+      "timer": 3538759155,
+      "shadow": 3301928544,
+      "sprite": 574035507
+    },
+    {
+      "id": 2306419902,
+      "collider": 766063911,
+      "interact": 3653232798,
+      "near": 338379162,
+      "view": 2688669667,
+      "wander": 2681273723,
+      "ray": 2460716465,
+      "timer": 2195212534,
+      "shadow": 3436957128,
+      "sprite": 3012271950
+    },
+    {
+      "id": 1364807546,
+      "collider": 2584693381,
+      "interact": 2681237855,
+      "near": 1335482472,
+      "view": 512264291,
+      "wander": 3513198206,
+      "ray": 4250561361,
+      "timer": 1237281767,
+      "shadow": 238672096,
+      "sprite": 697159824
+    },
+    {
+      "id": 2588521589,
+      "collider": 1414990439,
+      "interact": 92993516,
+      "near": 1780596736,
+      "view": 1848885875,
+      "wander": 1201014552,
+      "ray": 2161737873,
+      "timer": 2625686939,
+      "shadow": 2657223877,
+      "sprite": 3510799728
+    },
+    {
+      "id": 1108621181,
+      "collider": 3194950279,
+      "interact": 824397948,
+      "near": 539450813,
+      "view": 4122688123,
+      "wander": 1578870770,
+      "ray": 3841117880,
+      "timer": 1070090049,
+      "shadow": 2150018714,
+      "sprite": 156682302
+    },
+    {
+      "id": 1689911079,
+      "collider": 3660168067,
+      "interact": 2473946177,
+      "near": 3499625507,
+      "view": 349515601,
+      "wander": 2726776992,
+      "ray": 3254943551,
+      "timer": 1825546305,
+      "shadow": 1094582669,
+      "sprite": 3732340263
+    },
+    {
+      "id": 4052585882,
+      "collider": 494434402,
+      "interact": 3728898714,
+      "near": 611434843,
+      "view": 3169102842,
+      "wander": 797102667,
+      "ray": 3086582650,
+      "timer": 956248827,
+      "shadow": 868901829,
+      "sprite": 174202771
+    },
+    {
+      "id": 11687715,
+      "collider": 2341638564,
+      "interact": 2217274178,
+      "near": 3634022456,
+      "view": 3044730183,
+      "wander": 3023269571,
+      "ray": 1183714174,
+      "timer": 2942339235,
+      "shadow": 4005876853,
+      "sprite": 2884383930
+    },
+    {
+      "id": 1765949197,
+      "collider": 4124820873,
+      "interact": 3542173506,
+      "near": 1566906322,
+      "view": 2247863814,
+      "wander": 1651482145,
+      "ray": 2155947266,
+      "timer": 2342223896,
+      "shadow": 877875873,
+      "sprite": 885685508
+    },
+    {
+      "id": 1443062110,
+      "collider": 552039948,
+      "interact": 3420908210,
+      "near": 3250440957,
+      "view": 1611753230,
+      "wander": 4167290455,
+      "ray": 1736344368,
+      "timer": 3178756274,
+      "shadow": 2690226179,
+      "sprite": 3713863481
+    },
+    {
+      "id": 3484211041,
+      "collider": 9728501,
+      "interact": 2390697960,
+      "near": 4051063057,
+      "view": 3756109626,
+      "wander": 168539730,
+      "ray": 3498693660,
+      "timer": 2924033458,
+      "shadow": 2422277956,
+      "sprite": 3600151640
+    },
+    {
+      "id": 2951200023,
+      "collider": 3613733418,
+      "interact": 369636637,
+      "near": 810217793,
+      "view": 2370810699,
+      "wander": 1859796207,
+      "ray": 3880598201,
+      "timer": 214036728,
+      "shadow": 3151682148,
+      "sprite": 383935348
+    }
+  ],
+  "admission_ready": false
+}

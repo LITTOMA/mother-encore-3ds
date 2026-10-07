@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "kind": "encore.field-visibility.semantic-review",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "7edad2357ae92f33bfc225f46a536e5ca8f11735ae91ab9c128e4ab1b88c6b62",
+  "format": 1,
+  "family": 1162739817,
+  "capability": 1,
+  "rules": 1,
+  "engine_sources": {
+    "visibility_notifier_2d.cpp": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/scene/2d/visibility_notifier_2d.cpp",
+      "sha256": "954d01b94e3c6ad848b6718796f63b2181d37a2859a69e23ecbec7e6de4b7849",
+      "bytes": 12547
+    },
+    "world_2d.cpp": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/scene/resources/world_2d.cpp",
+      "sha256": "a9fe9dff611065ecdca3bdcd2cc84df010d57f5e920e5869e98e87ff76513d52",
+      "bytes": 13166
+    },
+    "rect2.h": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/core/math/rect2.h",
+      "sha256": "3eab30b289e5293c559707bf50ae984451f3b2cb71280e5204a23fea112039cf",
+      "bytes": 12732
+    },
+    "list.h": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/core/list.h",
+      "sha256": "f4e0535e82a663854c461cddde575037234d852948daab0cfaa5b6c03e4b5216",
+      "bytes": 14674
+    }
+  },
+  "reviewed": [
+    "Complete native 1650 notifier/enabler closure from official quarantined Godot3.6.2 native export",
+    "All 2884 original PackedScene screen signal connections mapped to existing six typed script adapters",
+    "World2D spatial signed truncation, inclusive cells, packed unsigned CellKey ordering and enter-before-exit iteration",
+    "All actual Enabler source instance boundaries; only188 Butterfly AnimationPlayers are tracked, no NPC CharacterSprite child scene traversal",
+    "Enabler native source Ready connection flags/reference count, native active property, tree_exiting oneshot cleanup and exit restoration",
+    "Native Canvas hidden state does not exclude World2D notifiers; exact source rect/world transform retained"
+  ],
+  "not_admitted": [
+    "Full scene Ready or playable conclusion",
+    "Unknown viewport/editor mode or arbitrary new native tracked classes",
+    "Dynamic factory notifier recipes outside this static scene closure"
+  ]
+}

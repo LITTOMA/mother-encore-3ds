@@ -15,6 +15,9 @@ add_library(encore_core
     runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/field_dandelion.cpp
     runtime/podunk_bundle.cpp runtime/field_scene_sources.cpp runtime/field_scene_destination.cpp
     runtime/field_scene_audio_data.cpp runtime/field_scene_signal_callbacks_data.cpp
+    runtime/field_visibility_data.cpp
+    runtime/field_npc_world_data.cpp runtime/field_npc_world_motion.cpp
+    runtime/prompt_native_data.cpp
     runtime/field_prompts_data.cpp runtime/field_prompts.cpp
     runtime/field_psi.cpp
     runtime/field_psi_data.cpp

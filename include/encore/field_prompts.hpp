@@ -119,6 +119,8 @@ struct FieldPromptHost {
   // visibility_changed/hide signals. publish must not duplicate these signals.
   std::function<bool(uint32_t, bool, std::string &)> visibility;
   std::function<bool(uint32_t, std::string &)> hide_signal;
+  // Actual native AP endpoint: 1=play, 2=finished, 3=stop. No second clock.
+  std::function<bool(uint32_t, FieldPromptClipRole, uint32_t, std::string &)> native_animation;
 };
 class FieldPromptRuntime {
 public:

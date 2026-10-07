@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "61ffed51c5f8ef31955009dcde54532cb017a0935f84a9cd8309f9924ab9d1ea",
+  "engine_sources": {
+    "godot-3.6.2-animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "scene-gui-box_container.cpp": "574a21b17e19c739dc9df95b276bf444bc24bdb85aa3d13a9445e1b86cb1ebe6",
+    "scene-gui-label.cpp": "054562ca81216ddca8e95e218cf20a7cc5ba838530f20a6037c9573f67ee4284"
+  },
+  "semantics": [
+    "Same typed Prompt core owns all five clip clocks; native AP runs that owner only in its actual IdleInternal phase",
+    "HBox center alignment uses the actual selected source-font width and minimum height; no fixed A label replacement",
+    "Source Label has no inherited Flash material; source Arrow inherits the parent Flash shader",
+    "Native leaf bindings cross-check actual scene/tree/native class/parent and actual ObjectDB identity; no script Ready is synthesized"
+  ]
+}

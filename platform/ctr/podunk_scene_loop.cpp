@@ -1,5 +1,9 @@
 #include "podunk_scene_loop.hpp"
 #include "podunk_player_physics_world.hpp"
+#include "podunk_scene_visibility.hpp"
+#include "podunk_scene_npc_world.hpp"
+#include "podunk_prompt_native.hpp"
+#include "podunk_butterfly_animation.hpp"
 #include <algorithm>
 #include <cmath>
 
@@ -40,13 +44,23 @@ PodunkSceneNativeMechanism *PodunkSceneLoop::mechanism(
 bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
   if (attempted_ || !input.sources || !input.sources->valid() ||
       !input.continuation || !input.continuation->initialized() || !input.tree ||
-      input.tree->object_count() || !input.native || !input.player ||
+      input.tree->object_count() || !input.native || !input.visibility ||
+      !input.npc_world || !input.prompts || !input.butterfly_animation || !input.player ||
       !input.physics || !input.map || !input.geometry || input.asset_root.empty() ||
       !input.source_signals || !input.source_methods || !input.source_method_owned ||
       !input.allocation_observed)
     return fail(e, "Scene loop requires actual checked destination and session owners");
   attempted_ = true;
   input_ = std::move(input);
+  if (std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
+                 input_.visibility) != 1 ||
+      std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
+                 input_.npc_world) != 1 ||
+      std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
+                 input_.prompts) != 1 ||
+      std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
+                 input_.butterfly_animation) != 1)
+    return fail(e, "Scene visibility, NPC world, prompts and Butterfly animation must join the unique native mechanism roster");
   auto &d = *input_.sources;
   auto &r = *input_.continuation->registry();
   // Reject before allocating nodes or consuming RNG. A missing native class
@@ -127,7 +141,11 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
   if (!input_.tree->initialize(d.tree(), std::move(host), e) ||
       !timers_.finish_factory(e) || !animated_.finish_factory(e) ||
       !input_.native->finish_factory(e) ||
-      !input_.native->bind_animated_leaves(animated_, e)) {
+      !input_.visibility->finish_factory(e) ||
+      !input_.prompts->finish_factory(e) ||
+      !input_.butterfly_animation->finish_factory(e) ||
+      !input_.native->bind_animated_leaves(animated_, e) ||
+      !input_.native->bind_canvas_leaf(*input_.prompts, e)) {
     poisoned_ = true;
     return false;
   }
@@ -260,7 +278,10 @@ bool PodunkSceneLoop::activate_after_player(std::string &e) {
   const auto player=input_.player->body().object();
   const auto *state=input_.tree->state(player);
   if (!state || !state->alive || !state->inside || !state->ready_notified ||
-      !input_.native->activate_monitors(scripts_.lifecycle(), *input_.physics, e)) {
+      !input_.npc_world->activate_geometry(scripts_.lifecycle(), e) ||
+      !input_.native->activate_monitors(scripts_.lifecycle(), *input_.physics, e) ||
+      !input_.tree->flush_transform_notifications(e) ||
+      !input_.visibility->update_world(0, e)) {
     poisoned_=true; return false;
   }
   monitors_ready_=true;
@@ -296,6 +317,7 @@ bool PodunkSceneLoop::idle_frame(uint64_t epoch, float dt, bool paused,
       !transition_jobs(dt, paused, e) ||
       !input_.continuation->registry()->flush_messages(e) ||
       !input_.tree->flush_transform_notifications(e) ||
+      !input_.visibility->update_world(epoch, e) ||
       !input_.tree->flush_delete_queue(e) || !scripts_.collect_deleted(e)) {
     poisoned_ = true; return false;
   }
@@ -371,6 +393,8 @@ bool PodunkSceneLoop::deferred(const FieldDeferredMessage &m, std::string &e) {
   }
   if (input_.physics->handles_callback(m)) return input_.physics->deferred(m, e);
   if (input_.player->owns(m.object)) return input_.player->deferred(m, e);
+  if (input_.visibility->handles_method(m)) return input_.visibility->deferred(m,e);
+  if (input_.npc_world->handles_callback(m)) return input_.npc_world->deferred(m,e);
   // A native body can also be a scripted receiver. Route only an explicitly
   // owned source method before its native property's dispatcher.
   if (input_.source_method_owned(m)) return input_.source_methods(m,e);
@@ -412,6 +436,10 @@ bool PodunkSceneLoop::signal_declaration(FieldObjectId id, std::string_view name
        (d->native_class == "AnimatedSprite" && name == "animation_finished"))) {
     arity = 0; e.clear(); return true;
   }
+  if (input_.visibility->owns(id))
+    return input_.visibility->signal_declaration(id, name, arity, e);
+  if (input_.prompts->owns(id))
+    return input_.prompts->declaration(id, name, arity, e);
   return input_.source_signals(id, name, arity, e);
 }
 } // namespace encore::ctr

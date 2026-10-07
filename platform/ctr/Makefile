@@ -21,6 +21,10 @@ SOURCES += runtime/basement_progression.cpp runtime/basement_actor_assets.cpp ru
 SOURCES += runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/field_dandelion.cpp
 SOURCES += runtime/podunk_bundle.cpp runtime/field_scene_sources.cpp runtime/field_scene_destination.cpp platform/ctr/podunk_scene_native.cpp platform/ctr/podunk_scene_timers.cpp
 SOURCES += runtime/field_scene_audio_data.cpp runtime/field_scene_signal_callbacks_data.cpp platform/ctr/podunk_scene_audio.cpp platform/ctr/podunk_scene_signal_callbacks.cpp platform/ctr/podunk_scene_operations.cpp
+SOURCES += runtime/field_visibility_data.cpp platform/ctr/podunk_scene_visibility.cpp
+SOURCES += runtime/field_npc_world_data.cpp runtime/field_npc_world_motion.cpp platform/ctr/podunk_scene_npc_world.cpp
+SOURCES += runtime/prompt_native_data.cpp platform/ctr/podunk_prompt_native.cpp
+SOURCES += platform/ctr/podunk_butterfly_animation.cpp
 SOURCES += runtime/house_ui_continuation_data.cpp runtime/house_scene_door.cpp platform/ctr/house_ui_continuation.cpp platform/ctr/podunk_house_continuation.cpp platform/ctr/podunk_scene_animated_leaves.cpp platform/ctr/podunk_scene_scripts.cpp platform/ctr/podunk_scene_consumers.cpp platform/ctr/podunk_scene_loop.cpp
 SOURCES += runtime/field_prompts_data.cpp runtime/field_prompts.cpp \
  runtime/field_psi.cpp runtime/field_psi_data.cpp runtime/field_psi_telepathy.cpp \

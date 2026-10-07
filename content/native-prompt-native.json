@@ -1,0 +1,4772 @@
+{
+  "schema": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739819,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "tree_sha256": "8f6ac6436ad79c5cef04ab428d4896d7cf19aa7f2ab9a294d8e43de3a590406e",
+  "prompt_sha256": "42ecbe30d3dfe1dd882245fea419ae3794c485a20e4d261172e38d2827ba1062",
+  "sources": {
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b"
+  },
+  "settings_member": "button_prompts",
+  "paused_member": "_paused",
+  "font": "Fonts/BottleRocket.tres",
+  "internal_group": "idle_process_internal",
+  "started_signal": "animation_started",
+  "finished_signal": "animation_finished",
+  "box_size": [
+    128.0,
+    17.0
+  ],
+  "box_alignment": 1,
+  "label_alignment": 1,
+  "arrow_rotation": 90.0,
+  "arrow_stretch": 3,
+  "controls": [
+    {
+      "role": 1,
+      "position": [
+        -64.0,
+        -23.0
+      ],
+      "size": [
+        128.0,
+        17.0
+      ],
+      "text": ""
+    },
+    {
+      "role": 2,
+      "position": [
+        -4.0,
+        -19.0
+      ],
+      "size": [
+        7.0,
+        11.0
+      ],
+      "text": "A"
+    },
+    {
+      "role": 3,
+      "position": [
+        7.0,
+        -6.0
+      ],
+      "size": [
+        6.0,
+        11.0
+      ],
+      "text": ""
+    }
+  ],
+  "inputs": [
+    {
+      "action": "ui_select",
+      "parameter": "OpenMask",
+      "mask": 8,
+      "label": "START",
+      "parameter_id": 29
+    },
+    {
+      "action": "ui_accept",
+      "parameter": "ConfirmMask",
+      "mask": 1,
+      "label": "A",
+      "parameter_id": 30
+    },
+    {
+      "action": "ui_toggle",
+      "parameter": "CancelMask",
+      "mask": 2,
+      "label": "B",
+      "parameter_id": 31
+    }
+  ],
+  "adapter_sha256": "4671c7427c76859648bce9c03613331d34f7240448f1bf09e9d76369c119394c",
+  "equipment_sha256": "baebe4aa3fc0465a31e547efcd0c33936a56bbb3807491bbe721ee5a6ec60c37",
+  "records": [
+    {
+      "id": 552652382,
+      "prompt": 1990549421,
+      "parent": 1990549421,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 547559299,
+      "prompt": 1990549421,
+      "parent": 552652382,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1117367226,
+      "prompt": 1990549421,
+      "parent": 1990549421,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2627752219,
+      "prompt": 1990549421,
+      "parent": 1990549421,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 812734941,
+      "prompt": 360211935,
+      "parent": 360211935,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 791214490,
+      "prompt": 360211935,
+      "parent": 812734941,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3428665966,
+      "prompt": 360211935,
+      "parent": 360211935,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1392253734,
+      "prompt": 360211935,
+      "parent": 360211935,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3204273324,
+      "prompt": 3145690982,
+      "parent": 3145690982,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door3/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4036984729,
+      "prompt": 3145690982,
+      "parent": 3204273324,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door3/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 43136739,
+      "prompt": 3145690982,
+      "parent": 3145690982,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door3/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4187615234,
+      "prompt": 3145690982,
+      "parent": 3145690982,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door3/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3227973859,
+      "prompt": 369705777,
+      "parent": 369705777,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2060812243,
+      "prompt": 369705777,
+      "parent": 3227973859,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1834672469,
+      "prompt": 369705777,
+      "parent": 369705777,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3055904677,
+      "prompt": 369705777,
+      "parent": 369705777,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1903609214,
+      "prompt": 370870701,
+      "parent": 370870701,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door8/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2584179799,
+      "prompt": 370870701,
+      "parent": 1903609214,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door8/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 566858694,
+      "prompt": 370870701,
+      "parent": 370870701,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door8/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 700847145,
+      "prompt": 370870701,
+      "parent": 370870701,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door8/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2159026340,
+      "prompt": 776573618,
+      "parent": 776573618,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door9/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1464306983,
+      "prompt": 776573618,
+      "parent": 2159026340,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door9/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 676951850,
+      "prompt": 776573618,
+      "parent": 776573618,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door9/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3405876802,
+      "prompt": 776573618,
+      "parent": 776573618,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door9/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 259598300,
+      "prompt": 2228991758,
+      "parent": 2228991758,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door5/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3953037210,
+      "prompt": 2228991758,
+      "parent": 259598300,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door5/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 255448565,
+      "prompt": 2228991758,
+      "parent": 2228991758,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door5/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 224072514,
+      "prompt": 2228991758,
+      "parent": 2228991758,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door5/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1119747209,
+      "prompt": 822239842,
+      "parent": 822239842,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door6/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3413083288,
+      "prompt": 822239842,
+      "parent": 1119747209,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door6/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3314898929,
+      "prompt": 822239842,
+      "parent": 822239842,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door6/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3699679071,
+      "prompt": 822239842,
+      "parent": 822239842,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door6/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3131520057,
+      "prompt": 4128204155,
+      "parent": 4128204155,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door7/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1130109286,
+      "prompt": 4128204155,
+      "parent": 3131520057,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door7/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3972133623,
+      "prompt": 4128204155,
+      "parent": 4128204155,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door7/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2801576245,
+      "prompt": 4128204155,
+      "parent": 4128204155,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door7/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2834558009,
+      "prompt": 435278619,
+      "parent": 435278619,
+      "role": 1,
+      "path": "Objects/Doors/Openable Door10/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3923346446,
+      "prompt": 435278619,
+      "parent": 2834558009,
+      "role": 2,
+      "path": "Objects/Doors/Openable Door10/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3601944976,
+      "prompt": 435278619,
+      "parent": 435278619,
+      "role": 3,
+      "path": "Objects/Doors/Openable Door10/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1689209740,
+      "prompt": 435278619,
+      "parent": 435278619,
+      "role": 4,
+      "path": "Objects/Doors/Openable Door10/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2988764543,
+      "prompt": 3535356701,
+      "parent": 3535356701,
+      "role": 1,
+      "path": "Objects/Zoo Flag/PresentZoo1/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2485644399,
+      "prompt": 3535356701,
+      "parent": 2988764543,
+      "role": 2,
+      "path": "Objects/Zoo Flag/PresentZoo1/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3781652558,
+      "prompt": 3535356701,
+      "parent": 3535356701,
+      "role": 3,
+      "path": "Objects/Zoo Flag/PresentZoo1/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4129672264,
+      "prompt": 3535356701,
+      "parent": 3535356701,
+      "role": 4,
+      "path": "Objects/Zoo Flag/PresentZoo1/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1533935719,
+      "prompt": 2175815035,
+      "parent": 2175815035,
+      "role": 1,
+      "path": "Objects/Zoo Flag/PresentZoo2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3350809428,
+      "prompt": 2175815035,
+      "parent": 1533935719,
+      "role": 2,
+      "path": "Objects/Zoo Flag/PresentZoo2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3658291783,
+      "prompt": 2175815035,
+      "parent": 2175815035,
+      "role": 3,
+      "path": "Objects/Zoo Flag/PresentZoo2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3160552654,
+      "prompt": 2175815035,
+      "parent": 2175815035,
+      "role": 4,
+      "path": "Objects/Zoo Flag/PresentZoo2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1510291004,
+      "prompt": 3717727483,
+      "parent": 3717727483,
+      "role": 1,
+      "path": "Objects/Zoo Flag/PresentZoo3/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2541013720,
+      "prompt": 3717727483,
+      "parent": 1510291004,
+      "role": 2,
+      "path": "Objects/Zoo Flag/PresentZoo3/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1444857073,
+      "prompt": 3717727483,
+      "parent": 3717727483,
+      "role": 3,
+      "path": "Objects/Zoo Flag/PresentZoo3/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3005340546,
+      "prompt": 3717727483,
+      "parent": 3717727483,
+      "role": 4,
+      "path": "Objects/Zoo Flag/PresentZoo3/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3570371500,
+      "prompt": 59125625,
+      "parent": 59125625,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2829383082,
+      "prompt": 59125625,
+      "parent": 3570371500,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3965949947,
+      "prompt": 59125625,
+      "parent": 59125625,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2631195975,
+      "prompt": 59125625,
+      "parent": 59125625,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2116748410,
+      "prompt": 3422470971,
+      "parent": 3422470971,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3681632767,
+      "prompt": 3422470971,
+      "parent": 2116748410,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1035835639,
+      "prompt": 3422470971,
+      "parent": 3422470971,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4225284726,
+      "prompt": 3422470971,
+      "parent": 3422470971,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1225128080,
+      "prompt": 3694398174,
+      "parent": 3694398174,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc5/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 369626259,
+      "prompt": 3694398174,
+      "parent": 1225128080,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc5/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 844546301,
+      "prompt": 3694398174,
+      "parent": 3694398174,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc5/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2717675652,
+      "prompt": 3694398174,
+      "parent": 3694398174,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc5/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2033658576,
+      "prompt": 1253862747,
+      "parent": 1253862747,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc6/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2083243121,
+      "prompt": 1253862747,
+      "parent": 2033658576,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc6/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1309500303,
+      "prompt": 1253862747,
+      "parent": 1253862747,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc6/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2022103572,
+      "prompt": 1253862747,
+      "parent": 1253862747,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc6/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2547713643,
+      "prompt": 4148251327,
+      "parent": 4148251327,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc7/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1124367632,
+      "prompt": 4148251327,
+      "parent": 2547713643,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc7/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 840956632,
+      "prompt": 4148251327,
+      "parent": 4148251327,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc7/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 520886358,
+      "prompt": 4148251327,
+      "parent": 4148251327,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc7/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1266441526,
+      "prompt": 3344025286,
+      "parent": 3344025286,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc8/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 911786452,
+      "prompt": 3344025286,
+      "parent": 1266441526,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc8/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2536046933,
+      "prompt": 3344025286,
+      "parent": 3344025286,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc8/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3996544975,
+      "prompt": 3344025286,
+      "parent": 3344025286,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc8/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 283839838,
+      "prompt": 1307052704,
+      "parent": 1307052704,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc9/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1858230879,
+      "prompt": 1307052704,
+      "parent": 283839838,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc9/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1897933016,
+      "prompt": 1307052704,
+      "parent": 1307052704,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc9/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3794223620,
+      "prompt": 1307052704,
+      "parent": 1307052704,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc9/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2454269243,
+      "prompt": 27938880,
+      "parent": 27938880,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc10/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3853717210,
+      "prompt": 27938880,
+      "parent": 2454269243,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc10/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1529888623,
+      "prompt": 27938880,
+      "parent": 27938880,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc10/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 718343722,
+      "prompt": 27938880,
+      "parent": 27938880,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc10/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 783994665,
+      "prompt": 2274151788,
+      "parent": 2274151788,
+      "role": 1,
+      "path": "Objects/Zoo Freed Flag/npc3/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1400780992,
+      "prompt": 2274151788,
+      "parent": 783994665,
+      "role": 2,
+      "path": "Objects/Zoo Freed Flag/npc3/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1596871841,
+      "prompt": 2274151788,
+      "parent": 2274151788,
+      "role": 3,
+      "path": "Objects/Zoo Freed Flag/npc3/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1517482651,
+      "prompt": 2274151788,
+      "parent": 2274151788,
+      "role": 4,
+      "path": "Objects/Zoo Freed Flag/npc3/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2870504770,
+      "prompt": 737123803,
+      "parent": 737123803,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3931639247,
+      "prompt": 737123803,
+      "parent": 2870504770,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2735770834,
+      "prompt": 737123803,
+      "parent": 737123803,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2255423849,
+      "prompt": 737123803,
+      "parent": 737123803,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1626091155,
+      "prompt": 1389039881,
+      "parent": 1389039881,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 889204979,
+      "prompt": 1389039881,
+      "parent": 1626091155,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3431070310,
+      "prompt": 1389039881,
+      "parent": 1389039881,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 954275057,
+      "prompt": 1389039881,
+      "parent": 1389039881,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2611516364,
+      "prompt": 2447533740,
+      "parent": 2447533740,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1401419116,
+      "prompt": 2447533740,
+      "parent": 2611516364,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1148010014,
+      "prompt": 2447533740,
+      "parent": 2447533740,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 21723070,
+      "prompt": 2447533740,
+      "parent": 2447533740,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4207155170,
+      "prompt": 2035094304,
+      "parent": 2035094304,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush5/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2465200043,
+      "prompt": 2035094304,
+      "parent": 4207155170,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush5/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2679284872,
+      "prompt": 2035094304,
+      "parent": 2035094304,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush5/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1890361508,
+      "prompt": 2035094304,
+      "parent": 2035094304,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush5/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2639000685,
+      "prompt": 574255519,
+      "parent": 574255519,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush8/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1516479865,
+      "prompt": 574255519,
+      "parent": 2639000685,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush8/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 504123245,
+      "prompt": 574255519,
+      "parent": 574255519,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush8/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4000573419,
+      "prompt": 574255519,
+      "parent": 574255519,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush8/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1104320058,
+      "prompt": 1328297704,
+      "parent": 1328297704,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush6/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2102401434,
+      "prompt": 1328297704,
+      "parent": 1104320058,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush6/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1281537538,
+      "prompt": 1328297704,
+      "parent": 1328297704,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush6/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1440076808,
+      "prompt": 1328297704,
+      "parent": 1328297704,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush6/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 554661105,
+      "prompt": 541603647,
+      "parent": 541603647,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush7/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1265066922,
+      "prompt": 541603647,
+      "parent": 554661105,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush7/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1291065666,
+      "prompt": 541603647,
+      "parent": 541603647,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush7/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3825074620,
+      "prompt": 541603647,
+      "parent": 541603647,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush7/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3408414524,
+      "prompt": 2378269208,
+      "parent": 2378269208,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush15/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2652373216,
+      "prompt": 2378269208,
+      "parent": 3408414524,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush15/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 176391516,
+      "prompt": 2378269208,
+      "parent": 2378269208,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush15/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1030797470,
+      "prompt": 2378269208,
+      "parent": 2378269208,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush15/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 96434403,
+      "prompt": 38883299,
+      "parent": 38883299,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush19/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1682934747,
+      "prompt": 38883299,
+      "parent": 96434403,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush19/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3080627937,
+      "prompt": 38883299,
+      "parent": 38883299,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush19/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3666618212,
+      "prompt": 38883299,
+      "parent": 38883299,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush19/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1740437291,
+      "prompt": 1529375434,
+      "parent": 1529375434,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush18/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 578225171,
+      "prompt": 1529375434,
+      "parent": 1740437291,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush18/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 601300842,
+      "prompt": 1529375434,
+      "parent": 1529375434,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush18/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3561244514,
+      "prompt": 1529375434,
+      "parent": 1529375434,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush18/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3438562941,
+      "prompt": 1166098449,
+      "parent": 1166098449,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush16/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4194780657,
+      "prompt": 1166098449,
+      "parent": 3438562941,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush16/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3152712805,
+      "prompt": 1166098449,
+      "parent": 1166098449,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush16/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2293605088,
+      "prompt": 1166098449,
+      "parent": 1166098449,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush16/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3192878974,
+      "prompt": 834059776,
+      "parent": 834059776,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush21/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1554364969,
+      "prompt": 834059776,
+      "parent": 3192878974,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush21/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2688474198,
+      "prompt": 834059776,
+      "parent": 834059776,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush21/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2975920419,
+      "prompt": 834059776,
+      "parent": 834059776,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush21/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1627081502,
+      "prompt": 3657663225,
+      "parent": 3657663225,
+      "role": 1,
+      "path": "Objects/Dead Bushes/Dead Bush17/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 351577933,
+      "prompt": 3657663225,
+      "parent": 1627081502,
+      "role": 2,
+      "path": "Objects/Dead Bushes/Dead Bush17/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1464130850,
+      "prompt": 3657663225,
+      "parent": 3657663225,
+      "role": 3,
+      "path": "Objects/Dead Bushes/Dead Bush17/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 103228454,
+      "prompt": 3657663225,
+      "parent": 3657663225,
+      "role": 4,
+      "path": "Objects/Dead Bushes/Dead Bush17/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 901579314,
+      "prompt": 3465586155,
+      "parent": 3465586155,
+      "role": 1,
+      "path": "Objects/Items/Present1/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 831364342,
+      "prompt": 3465586155,
+      "parent": 901579314,
+      "role": 2,
+      "path": "Objects/Items/Present1/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1400664038,
+      "prompt": 3465586155,
+      "parent": 3465586155,
+      "role": 3,
+      "path": "Objects/Items/Present1/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3070202481,
+      "prompt": 3465586155,
+      "parent": 3465586155,
+      "role": 4,
+      "path": "Objects/Items/Present1/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 858910543,
+      "prompt": 414419183,
+      "parent": 414419183,
+      "role": 1,
+      "path": "Objects/Items/Present2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3345856434,
+      "prompt": 414419183,
+      "parent": 858910543,
+      "role": 2,
+      "path": "Objects/Items/Present2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2905386425,
+      "prompt": 414419183,
+      "parent": 414419183,
+      "role": 3,
+      "path": "Objects/Items/Present2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1123497779,
+      "prompt": 414419183,
+      "parent": 414419183,
+      "role": 4,
+      "path": "Objects/Items/Present2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 835092131,
+      "prompt": 1538620251,
+      "parent": 1538620251,
+      "role": 1,
+      "path": "Objects/Items/Present3/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1495935385,
+      "prompt": 1538620251,
+      "parent": 835092131,
+      "role": 2,
+      "path": "Objects/Items/Present3/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3334263326,
+      "prompt": 1538620251,
+      "parent": 1538620251,
+      "role": 3,
+      "path": "Objects/Items/Present3/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3515834204,
+      "prompt": 1538620251,
+      "parent": 1538620251,
+      "role": 4,
+      "path": "Objects/Items/Present3/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 187331427,
+      "prompt": 3115720694,
+      "parent": 3115720694,
+      "role": 1,
+      "path": "Objects/Items/Present4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3120170861,
+      "prompt": 3115720694,
+      "parent": 187331427,
+      "role": 2,
+      "path": "Objects/Items/Present4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 616504140,
+      "prompt": 3115720694,
+      "parent": 3115720694,
+      "role": 3,
+      "path": "Objects/Items/Present4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3206138833,
+      "prompt": 3115720694,
+      "parent": 3115720694,
+      "role": 4,
+      "path": "Objects/Items/Present4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2455905203,
+      "prompt": 4124901584,
+      "parent": 4124901584,
+      "role": 1,
+      "path": "Objects/Items/Present5/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3994153594,
+      "prompt": 4124901584,
+      "parent": 2455905203,
+      "role": 2,
+      "path": "Objects/Items/Present5/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 689610870,
+      "prompt": 4124901584,
+      "parent": 4124901584,
+      "role": 3,
+      "path": "Objects/Items/Present5/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3975122668,
+      "prompt": 4124901584,
+      "parent": 4124901584,
+      "role": 4,
+      "path": "Objects/Items/Present5/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3154553625,
+      "prompt": 4144886148,
+      "parent": 4144886148,
+      "role": 1,
+      "path": "Objects/Items/Present6/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3072774499,
+      "prompt": 4144886148,
+      "parent": 3154553625,
+      "role": 2,
+      "path": "Objects/Items/Present6/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 738910452,
+      "prompt": 4144886148,
+      "parent": 4144886148,
+      "role": 3,
+      "path": "Objects/Items/Present6/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3760914127,
+      "prompt": 4144886148,
+      "parent": 4144886148,
+      "role": 4,
+      "path": "Objects/Items/Present6/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2717367731,
+      "prompt": 3166357023,
+      "parent": 3166357023,
+      "role": 1,
+      "path": "Objects/Items/Present7/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1644653293,
+      "prompt": 3166357023,
+      "parent": 2717367731,
+      "role": 2,
+      "path": "Objects/Items/Present7/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2953741688,
+      "prompt": 3166357023,
+      "parent": 3166357023,
+      "role": 3,
+      "path": "Objects/Items/Present7/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 460961039,
+      "prompt": 3166357023,
+      "parent": 3166357023,
+      "role": 4,
+      "path": "Objects/Items/Present7/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2433187811,
+      "prompt": 2240367325,
+      "parent": 2240367325,
+      "role": 1,
+      "path": "Objects/Items/PresentZoo4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2074832497,
+      "prompt": 2240367325,
+      "parent": 2433187811,
+      "role": 2,
+      "path": "Objects/Items/PresentZoo4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3218806785,
+      "prompt": 2240367325,
+      "parent": 2240367325,
+      "role": 3,
+      "path": "Objects/Items/PresentZoo4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3523054596,
+      "prompt": 2240367325,
+      "parent": 2240367325,
+      "role": 4,
+      "path": "Objects/Items/PresentZoo4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1862288863,
+      "prompt": 4027347161,
+      "parent": 4027347161,
+      "role": 1,
+      "path": "Objects/Items/PresentCem4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1992340674,
+      "prompt": 4027347161,
+      "parent": 1862288863,
+      "role": 2,
+      "path": "Objects/Items/PresentCem4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 990426027,
+      "prompt": 4027347161,
+      "parent": 4027347161,
+      "role": 3,
+      "path": "Objects/Items/PresentCem4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3001464591,
+      "prompt": 4027347161,
+      "parent": 4027347161,
+      "role": 4,
+      "path": "Objects/Items/PresentCem4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3345865355,
+      "prompt": 3511437400,
+      "parent": 3511437400,
+      "role": 1,
+      "path": "Objects/Items/Item/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3728522241,
+      "prompt": 3511437400,
+      "parent": 3345865355,
+      "role": 2,
+      "path": "Objects/Items/Item/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2732606235,
+      "prompt": 3511437400,
+      "parent": 3511437400,
+      "role": 3,
+      "path": "Objects/Items/Item/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1445350942,
+      "prompt": 3511437400,
+      "parent": 3511437400,
+      "role": 4,
+      "path": "Objects/Items/Item/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3894840852,
+      "prompt": 2553077325,
+      "parent": 2553077325,
+      "role": 1,
+      "path": "Objects/Items/PresentCem5/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 32333762,
+      "prompt": 2553077325,
+      "parent": 3894840852,
+      "role": 2,
+      "path": "Objects/Items/PresentCem5/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3112348764,
+      "prompt": 2553077325,
+      "parent": 2553077325,
+      "role": 3,
+      "path": "Objects/Items/PresentCem5/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3336076458,
+      "prompt": 2553077325,
+      "parent": 2553077325,
+      "role": 4,
+      "path": "Objects/Items/PresentCem5/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4275643757,
+      "prompt": 1931740644,
+      "parent": 1931740644,
+      "role": 1,
+      "path": "Objects/Items/PresentCem3/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1871926502,
+      "prompt": 1931740644,
+      "parent": 4275643757,
+      "role": 2,
+      "path": "Objects/Items/PresentCem3/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1738022208,
+      "prompt": 1931740644,
+      "parent": 1931740644,
+      "role": 3,
+      "path": "Objects/Items/PresentCem3/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 336218123,
+      "prompt": 1931740644,
+      "parent": 1931740644,
+      "role": 4,
+      "path": "Objects/Items/PresentCem3/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1527038327,
+      "prompt": 425825838,
+      "parent": 425825838,
+      "role": 1,
+      "path": "Objects/Items/PresentCem1/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3155210228,
+      "prompt": 425825838,
+      "parent": 1527038327,
+      "role": 2,
+      "path": "Objects/Items/PresentCem1/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3086462285,
+      "prompt": 425825838,
+      "parent": 425825838,
+      "role": 3,
+      "path": "Objects/Items/PresentCem1/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2300632819,
+      "prompt": 425825838,
+      "parent": 425825838,
+      "role": 4,
+      "path": "Objects/Items/PresentCem1/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2613701532,
+      "prompt": 3198296512,
+      "parent": 3198296512,
+      "role": 1,
+      "path": "Objects/Items/PresentCem2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3959817535,
+      "prompt": 3198296512,
+      "parent": 2613701532,
+      "role": 2,
+      "path": "Objects/Items/PresentCem2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 643663110,
+      "prompt": 3198296512,
+      "parent": 3198296512,
+      "role": 3,
+      "path": "Objects/Items/PresentCem2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2556124416,
+      "prompt": 3198296512,
+      "parent": 3198296512,
+      "role": 4,
+      "path": "Objects/Items/PresentCem2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1205844129,
+      "prompt": 1078454357,
+      "parent": 1078454357,
+      "role": 1,
+      "path": "Objects/Items/Item2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 399606024,
+      "prompt": 1078454357,
+      "parent": 1205844129,
+      "role": 2,
+      "path": "Objects/Items/Item2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1416203161,
+      "prompt": 1078454357,
+      "parent": 1078454357,
+      "role": 3,
+      "path": "Objects/Items/Item2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3898124295,
+      "prompt": 1078454357,
+      "parent": 1078454357,
+      "role": 4,
+      "path": "Objects/Items/Item2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4127254039,
+      "prompt": 2734747624,
+      "parent": 2734747624,
+      "role": 1,
+      "path": "Objects/Items/FavFood/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2497886016,
+      "prompt": 2734747624,
+      "parent": 4127254039,
+      "role": 2,
+      "path": "Objects/Items/FavFood/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3867810185,
+      "prompt": 2734747624,
+      "parent": 2734747624,
+      "role": 3,
+      "path": "Objects/Items/FavFood/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2545706875,
+      "prompt": 2734747624,
+      "parent": 2734747624,
+      "role": 4,
+      "path": "Objects/Items/FavFood/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3484872645,
+      "prompt": 2938111868,
+      "parent": 2938111868,
+      "role": 1,
+      "path": "Objects/NPCS/npc12/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 545568215,
+      "prompt": 2938111868,
+      "parent": 3484872645,
+      "role": 2,
+      "path": "Objects/NPCS/npc12/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2934263795,
+      "prompt": 2938111868,
+      "parent": 2938111868,
+      "role": 3,
+      "path": "Objects/NPCS/npc12/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3349621973,
+      "prompt": 2938111868,
+      "parent": 2938111868,
+      "role": 4,
+      "path": "Objects/NPCS/npc12/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2548514780,
+      "prompt": 2614658143,
+      "parent": 2614658143,
+      "role": 1,
+      "path": "Objects/NPCS/npc22/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 955778465,
+      "prompt": 2614658143,
+      "parent": 2548514780,
+      "role": 2,
+      "path": "Objects/NPCS/npc22/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 654708448,
+      "prompt": 2614658143,
+      "parent": 2614658143,
+      "role": 3,
+      "path": "Objects/NPCS/npc22/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 780003292,
+      "prompt": 2614658143,
+      "parent": 2614658143,
+      "role": 4,
+      "path": "Objects/NPCS/npc22/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2488432758,
+      "prompt": 599828707,
+      "parent": 599828707,
+      "role": 1,
+      "path": "Objects/NPCS/npc28/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2944965282,
+      "prompt": 599828707,
+      "parent": 2488432758,
+      "role": 2,
+      "path": "Objects/NPCS/npc28/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1280173042,
+      "prompt": 599828707,
+      "parent": 599828707,
+      "role": 3,
+      "path": "Objects/NPCS/npc28/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2898268306,
+      "prompt": 599828707,
+      "parent": 599828707,
+      "role": 4,
+      "path": "Objects/NPCS/npc28/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4120991020,
+      "prompt": 1319225678,
+      "parent": 1319225678,
+      "role": 1,
+      "path": "Objects/NPCS/npc30/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3654658092,
+      "prompt": 1319225678,
+      "parent": 4120991020,
+      "role": 2,
+      "path": "Objects/NPCS/npc30/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 155748210,
+      "prompt": 1319225678,
+      "parent": 1319225678,
+      "role": 3,
+      "path": "Objects/NPCS/npc30/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 798565042,
+      "prompt": 1319225678,
+      "parent": 1319225678,
+      "role": 4,
+      "path": "Objects/NPCS/npc30/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 281307399,
+      "prompt": 2659112038,
+      "parent": 2659112038,
+      "role": 1,
+      "path": "Objects/NPCS/npc31/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3847253318,
+      "prompt": 2659112038,
+      "parent": 281307399,
+      "role": 2,
+      "path": "Objects/NPCS/npc31/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 4003846399,
+      "prompt": 2659112038,
+      "parent": 2659112038,
+      "role": 3,
+      "path": "Objects/NPCS/npc31/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1427233381,
+      "prompt": 2659112038,
+      "parent": 2659112038,
+      "role": 4,
+      "path": "Objects/NPCS/npc31/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2779367941,
+      "prompt": 2096942042,
+      "parent": 2096942042,
+      "role": 1,
+      "path": "Objects/NPCS/npc32/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1050425883,
+      "prompt": 2096942042,
+      "parent": 2779367941,
+      "role": 2,
+      "path": "Objects/NPCS/npc32/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1544868059,
+      "prompt": 2096942042,
+      "parent": 2096942042,
+      "role": 3,
+      "path": "Objects/NPCS/npc32/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3597740220,
+      "prompt": 2096942042,
+      "parent": 2096942042,
+      "role": 4,
+      "path": "Objects/NPCS/npc32/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1938536508,
+      "prompt": 1139154215,
+      "parent": 1139154215,
+      "role": 1,
+      "path": "Objects/NPCS/npc33/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 953019799,
+      "prompt": 1139154215,
+      "parent": 1938536508,
+      "role": 2,
+      "path": "Objects/NPCS/npc33/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2487554653,
+      "prompt": 1139154215,
+      "parent": 1139154215,
+      "role": 3,
+      "path": "Objects/NPCS/npc33/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1125746054,
+      "prompt": 1139154215,
+      "parent": 1139154215,
+      "role": 4,
+      "path": "Objects/NPCS/npc33/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1276229207,
+      "prompt": 2336761283,
+      "parent": 2336761283,
+      "role": 1,
+      "path": "Objects/NPCS/npc44/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 324049930,
+      "prompt": 2336761283,
+      "parent": 1276229207,
+      "role": 2,
+      "path": "Objects/NPCS/npc44/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3642236586,
+      "prompt": 2336761283,
+      "parent": 2336761283,
+      "role": 3,
+      "path": "Objects/NPCS/npc44/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 414082786,
+      "prompt": 2336761283,
+      "parent": 2336761283,
+      "role": 4,
+      "path": "Objects/NPCS/npc44/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2424857371,
+      "prompt": 709069,
+      "parent": 709069,
+      "role": 1,
+      "path": "Objects/NPCS/npc34/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1572672908,
+      "prompt": 709069,
+      "parent": 2424857371,
+      "role": 2,
+      "path": "Objects/NPCS/npc34/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 760139940,
+      "prompt": 709069,
+      "parent": 709069,
+      "role": 3,
+      "path": "Objects/NPCS/npc34/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1480219810,
+      "prompt": 709069,
+      "parent": 709069,
+      "role": 4,
+      "path": "Objects/NPCS/npc34/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1555603440,
+      "prompt": 2842083807,
+      "parent": 2842083807,
+      "role": 1,
+      "path": "Objects/NPCS/npc36/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4233050495,
+      "prompt": 2842083807,
+      "parent": 1555603440,
+      "role": 2,
+      "path": "Objects/NPCS/npc36/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 592640444,
+      "prompt": 2842083807,
+      "parent": 2842083807,
+      "role": 3,
+      "path": "Objects/NPCS/npc36/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2841655164,
+      "prompt": 2842083807,
+      "parent": 2842083807,
+      "role": 4,
+      "path": "Objects/NPCS/npc36/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4008586627,
+      "prompt": 3879117994,
+      "parent": 3879117994,
+      "role": 1,
+      "path": "Objects/NPCS/npc37/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3446083129,
+      "prompt": 3879117994,
+      "parent": 4008586627,
+      "role": 2,
+      "path": "Objects/NPCS/npc37/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3568344484,
+      "prompt": 3879117994,
+      "parent": 3879117994,
+      "role": 3,
+      "path": "Objects/NPCS/npc37/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 812070121,
+      "prompt": 3879117994,
+      "parent": 3879117994,
+      "role": 4,
+      "path": "Objects/NPCS/npc37/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 6250142,
+      "prompt": 4184266617,
+      "parent": 4184266617,
+      "role": 1,
+      "path": "Objects/NPCS/npc38/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1815704804,
+      "prompt": 4184266617,
+      "parent": 6250142,
+      "role": 2,
+      "path": "Objects/NPCS/npc38/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1229366524,
+      "prompt": 4184266617,
+      "parent": 4184266617,
+      "role": 3,
+      "path": "Objects/NPCS/npc38/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3753879005,
+      "prompt": 4184266617,
+      "parent": 4184266617,
+      "role": 4,
+      "path": "Objects/NPCS/npc38/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2543023368,
+      "prompt": 3712948368,
+      "parent": 3712948368,
+      "role": 1,
+      "path": "Objects/NPCS/npc35/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1009393087,
+      "prompt": 3712948368,
+      "parent": 2543023368,
+      "role": 2,
+      "path": "Objects/NPCS/npc35/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 345495286,
+      "prompt": 3712948368,
+      "parent": 3712948368,
+      "role": 3,
+      "path": "Objects/NPCS/npc35/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3641532467,
+      "prompt": 3712948368,
+      "parent": 3712948368,
+      "role": 4,
+      "path": "Objects/NPCS/npc35/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2887764362,
+      "prompt": 488734093,
+      "parent": 488734093,
+      "role": 1,
+      "path": "Objects/NPCS/npc/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1917978875,
+      "prompt": 488734093,
+      "parent": 2887764362,
+      "role": 2,
+      "path": "Objects/NPCS/npc/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2681842310,
+      "prompt": 488734093,
+      "parent": 488734093,
+      "role": 3,
+      "path": "Objects/NPCS/npc/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 16231939,
+      "prompt": 488734093,
+      "parent": 488734093,
+      "role": 4,
+      "path": "Objects/NPCS/npc/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1763948509,
+      "prompt": 302626029,
+      "parent": 302626029,
+      "role": 1,
+      "path": "Objects/NPCS/npc6/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2557423013,
+      "prompt": 302626029,
+      "parent": 1763948509,
+      "role": 2,
+      "path": "Objects/NPCS/npc6/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2128849948,
+      "prompt": 302626029,
+      "parent": 302626029,
+      "role": 3,
+      "path": "Objects/NPCS/npc6/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2586966495,
+      "prompt": 302626029,
+      "parent": 302626029,
+      "role": 4,
+      "path": "Objects/NPCS/npc6/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 645478440,
+      "prompt": 608845695,
+      "parent": 608845695,
+      "role": 1,
+      "path": "Objects/NPCS/npc7/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 329174391,
+      "prompt": 608845695,
+      "parent": 645478440,
+      "role": 2,
+      "path": "Objects/NPCS/npc7/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2121911695,
+      "prompt": 608845695,
+      "parent": 608845695,
+      "role": 3,
+      "path": "Objects/NPCS/npc7/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2750648076,
+      "prompt": 608845695,
+      "parent": 608845695,
+      "role": 4,
+      "path": "Objects/NPCS/npc7/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2411002362,
+      "prompt": 1805788228,
+      "parent": 1805788228,
+      "role": 1,
+      "path": "Objects/NPCS/npc2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2289043484,
+      "prompt": 1805788228,
+      "parent": 2411002362,
+      "role": 2,
+      "path": "Objects/NPCS/npc2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3391895926,
+      "prompt": 1805788228,
+      "parent": 1805788228,
+      "role": 3,
+      "path": "Objects/NPCS/npc2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1412578978,
+      "prompt": 1805788228,
+      "parent": 1805788228,
+      "role": 4,
+      "path": "Objects/NPCS/npc2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 548151992,
+      "prompt": 777159610,
+      "parent": 777159610,
+      "role": 1,
+      "path": "Objects/NPCS/npc4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2447703835,
+      "prompt": 777159610,
+      "parent": 548151992,
+      "role": 2,
+      "path": "Objects/NPCS/npc4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1596167578,
+      "prompt": 777159610,
+      "parent": 777159610,
+      "role": 3,
+      "path": "Objects/NPCS/npc4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4132146172,
+      "prompt": 777159610,
+      "parent": 777159610,
+      "role": 4,
+      "path": "Objects/NPCS/npc4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 732854280,
+      "prompt": 1877063126,
+      "parent": 1877063126,
+      "role": 1,
+      "path": "Objects/NPCS/npc13/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4037097545,
+      "prompt": 1877063126,
+      "parent": 732854280,
+      "role": 2,
+      "path": "Objects/NPCS/npc13/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3043005202,
+      "prompt": 1877063126,
+      "parent": 1877063126,
+      "role": 3,
+      "path": "Objects/NPCS/npc13/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 729750658,
+      "prompt": 1877063126,
+      "parent": 1877063126,
+      "role": 4,
+      "path": "Objects/NPCS/npc13/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2506225833,
+      "prompt": 3506669448,
+      "parent": 3506669448,
+      "role": 1,
+      "path": "Objects/NPCS/npc43/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 132125965,
+      "prompt": 3506669448,
+      "parent": 2506225833,
+      "role": 2,
+      "path": "Objects/NPCS/npc43/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1013496435,
+      "prompt": 3506669448,
+      "parent": 3506669448,
+      "role": 3,
+      "path": "Objects/NPCS/npc43/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2728894910,
+      "prompt": 3506669448,
+      "parent": 3506669448,
+      "role": 4,
+      "path": "Objects/NPCS/npc43/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2751029791,
+      "prompt": 86540435,
+      "parent": 86540435,
+      "role": 1,
+      "path": "Objects/NPCS/npc49/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 518859387,
+      "prompt": 86540435,
+      "parent": 2751029791,
+      "role": 2,
+      "path": "Objects/NPCS/npc49/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1895936256,
+      "prompt": 86540435,
+      "parent": 86540435,
+      "role": 3,
+      "path": "Objects/NPCS/npc49/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1424052708,
+      "prompt": 86540435,
+      "parent": 86540435,
+      "role": 4,
+      "path": "Objects/NPCS/npc49/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2283523911,
+      "prompt": 1701880139,
+      "parent": 1701880139,
+      "role": 1,
+      "path": "Objects/NPCS/npc5/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2247574772,
+      "prompt": 1701880139,
+      "parent": 2283523911,
+      "role": 2,
+      "path": "Objects/NPCS/npc5/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2977194503,
+      "prompt": 1701880139,
+      "parent": 1701880139,
+      "role": 3,
+      "path": "Objects/NPCS/npc5/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2267521961,
+      "prompt": 1701880139,
+      "parent": 1701880139,
+      "role": 4,
+      "path": "Objects/NPCS/npc5/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 559729463,
+      "prompt": 3270859630,
+      "parent": 3270859630,
+      "role": 1,
+      "path": "Objects/NPCS/npc8/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2032642114,
+      "prompt": 3270859630,
+      "parent": 559729463,
+      "role": 2,
+      "path": "Objects/NPCS/npc8/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2181059515,
+      "prompt": 3270859630,
+      "parent": 3270859630,
+      "role": 3,
+      "path": "Objects/NPCS/npc8/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2421850185,
+      "prompt": 3270859630,
+      "parent": 3270859630,
+      "role": 4,
+      "path": "Objects/NPCS/npc8/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2521625286,
+      "prompt": 2705722739,
+      "parent": 2705722739,
+      "role": 1,
+      "path": "Objects/NPCS/npc9/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3877209649,
+      "prompt": 2705722739,
+      "parent": 2521625286,
+      "role": 2,
+      "path": "Objects/NPCS/npc9/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1632519283,
+      "prompt": 2705722739,
+      "parent": 2705722739,
+      "role": 3,
+      "path": "Objects/NPCS/npc9/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2975795306,
+      "prompt": 2705722739,
+      "parent": 2705722739,
+      "role": 4,
+      "path": "Objects/NPCS/npc9/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1263946298,
+      "prompt": 1080973008,
+      "parent": 1080973008,
+      "role": 1,
+      "path": "Objects/NPCS/npc10/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 104967620,
+      "prompt": 1080973008,
+      "parent": 1263946298,
+      "role": 2,
+      "path": "Objects/NPCS/npc10/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2426191432,
+      "prompt": 1080973008,
+      "parent": 1080973008,
+      "role": 3,
+      "path": "Objects/NPCS/npc10/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 43464513,
+      "prompt": 1080973008,
+      "parent": 1080973008,
+      "role": 4,
+      "path": "Objects/NPCS/npc10/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4116132991,
+      "prompt": 2204132183,
+      "parent": 2204132183,
+      "role": 1,
+      "path": "Objects/NPCS/npc11/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1406019463,
+      "prompt": 2204132183,
+      "parent": 4116132991,
+      "role": 2,
+      "path": "Objects/NPCS/npc11/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1773935513,
+      "prompt": 2204132183,
+      "parent": 2204132183,
+      "role": 3,
+      "path": "Objects/NPCS/npc11/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3616335212,
+      "prompt": 2204132183,
+      "parent": 2204132183,
+      "role": 4,
+      "path": "Objects/NPCS/npc11/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4187174911,
+      "prompt": 3970601951,
+      "parent": 3970601951,
+      "role": 1,
+      "path": "Objects/NPCS/npc14/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 430095134,
+      "prompt": 3970601951,
+      "parent": 4187174911,
+      "role": 2,
+      "path": "Objects/NPCS/npc14/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3426995087,
+      "prompt": 3970601951,
+      "parent": 3970601951,
+      "role": 3,
+      "path": "Objects/NPCS/npc14/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 592274824,
+      "prompt": 3970601951,
+      "parent": 3970601951,
+      "role": 4,
+      "path": "Objects/NPCS/npc14/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1048771115,
+      "prompt": 3135746561,
+      "parent": 3135746561,
+      "role": 1,
+      "path": "Objects/NPCS/npc47/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1535238948,
+      "prompt": 3135746561,
+      "parent": 1048771115,
+      "role": 2,
+      "path": "Objects/NPCS/npc47/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 914752253,
+      "prompt": 3135746561,
+      "parent": 3135746561,
+      "role": 3,
+      "path": "Objects/NPCS/npc47/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 378773497,
+      "prompt": 3135746561,
+      "parent": 3135746561,
+      "role": 4,
+      "path": "Objects/NPCS/npc47/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2590742259,
+      "prompt": 501288681,
+      "parent": 501288681,
+      "role": 1,
+      "path": "Objects/NPCS/npc15/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 789404829,
+      "prompt": 501288681,
+      "parent": 2590742259,
+      "role": 2,
+      "path": "Objects/NPCS/npc15/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 48500618,
+      "prompt": 501288681,
+      "parent": 501288681,
+      "role": 3,
+      "path": "Objects/NPCS/npc15/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2060810411,
+      "prompt": 501288681,
+      "parent": 501288681,
+      "role": 4,
+      "path": "Objects/NPCS/npc15/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2612800420,
+      "prompt": 2819905886,
+      "parent": 2819905886,
+      "role": 1,
+      "path": "Objects/NPCS/npc16/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4160161108,
+      "prompt": 2819905886,
+      "parent": 2612800420,
+      "role": 2,
+      "path": "Objects/NPCS/npc16/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1465571786,
+      "prompt": 2819905886,
+      "parent": 2819905886,
+      "role": 3,
+      "path": "Objects/NPCS/npc16/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 449883612,
+      "prompt": 2819905886,
+      "parent": 2819905886,
+      "role": 4,
+      "path": "Objects/NPCS/npc16/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4160207899,
+      "prompt": 1083996848,
+      "parent": 1083996848,
+      "role": 1,
+      "path": "Objects/NPCS/npc29/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2716190122,
+      "prompt": 1083996848,
+      "parent": 4160207899,
+      "role": 2,
+      "path": "Objects/NPCS/npc29/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 921356208,
+      "prompt": 1083996848,
+      "parent": 1083996848,
+      "role": 3,
+      "path": "Objects/NPCS/npc29/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 184799771,
+      "prompt": 1083996848,
+      "parent": 1083996848,
+      "role": 4,
+      "path": "Objects/NPCS/npc29/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2195698945,
+      "prompt": 3322976952,
+      "parent": 3322976952,
+      "role": 1,
+      "path": "Objects/NPCS/npc48/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3686132185,
+      "prompt": 3322976952,
+      "parent": 2195698945,
+      "role": 2,
+      "path": "Objects/NPCS/npc48/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2274909269,
+      "prompt": 3322976952,
+      "parent": 3322976952,
+      "role": 3,
+      "path": "Objects/NPCS/npc48/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 911840728,
+      "prompt": 3322976952,
+      "parent": 3322976952,
+      "role": 4,
+      "path": "Objects/NPCS/npc48/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2758712437,
+      "prompt": 2686110099,
+      "parent": 2686110099,
+      "role": 1,
+      "path": "Objects/NPCS/npc19/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2909651094,
+      "prompt": 2686110099,
+      "parent": 2758712437,
+      "role": 2,
+      "path": "Objects/NPCS/npc19/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2447197304,
+      "prompt": 2686110099,
+      "parent": 2686110099,
+      "role": 3,
+      "path": "Objects/NPCS/npc19/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1499908274,
+      "prompt": 2686110099,
+      "parent": 2686110099,
+      "role": 4,
+      "path": "Objects/NPCS/npc19/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2322015482,
+      "prompt": 1251932894,
+      "parent": 1251932894,
+      "role": 1,
+      "path": "Objects/NPCS/npc20/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 362864157,
+      "prompt": 1251932894,
+      "parent": 2322015482,
+      "role": 2,
+      "path": "Objects/NPCS/npc20/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 4016143894,
+      "prompt": 1251932894,
+      "parent": 1251932894,
+      "role": 3,
+      "path": "Objects/NPCS/npc20/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3063523785,
+      "prompt": 1251932894,
+      "parent": 1251932894,
+      "role": 4,
+      "path": "Objects/NPCS/npc20/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1604195742,
+      "prompt": 575482444,
+      "parent": 575482444,
+      "role": 1,
+      "path": "Objects/NPCS/npc42/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2073268545,
+      "prompt": 575482444,
+      "parent": 1604195742,
+      "role": 2,
+      "path": "Objects/NPCS/npc42/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 956882043,
+      "prompt": 575482444,
+      "parent": 575482444,
+      "role": 3,
+      "path": "Objects/NPCS/npc42/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2448482695,
+      "prompt": 575482444,
+      "parent": 575482444,
+      "role": 4,
+      "path": "Objects/NPCS/npc42/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1386938441,
+      "prompt": 3530278646,
+      "parent": 3530278646,
+      "role": 1,
+      "path": "Objects/NPCS/npc45/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1105236261,
+      "prompt": 3530278646,
+      "parent": 1386938441,
+      "role": 2,
+      "path": "Objects/NPCS/npc45/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2452673112,
+      "prompt": 3530278646,
+      "parent": 3530278646,
+      "role": 3,
+      "path": "Objects/NPCS/npc45/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1429850,
+      "prompt": 3530278646,
+      "parent": 3530278646,
+      "role": 4,
+      "path": "Objects/NPCS/npc45/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 283963525,
+      "prompt": 4239433872,
+      "parent": 4239433872,
+      "role": 1,
+      "path": "Objects/NPCS/npc41/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1202358465,
+      "prompt": 4239433872,
+      "parent": 283963525,
+      "role": 2,
+      "path": "Objects/NPCS/npc41/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 769004733,
+      "prompt": 4239433872,
+      "parent": 4239433872,
+      "role": 3,
+      "path": "Objects/NPCS/npc41/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 460627471,
+      "prompt": 4239433872,
+      "parent": 4239433872,
+      "role": 4,
+      "path": "Objects/NPCS/npc41/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 19904845,
+      "prompt": 366300771,
+      "parent": 366300771,
+      "role": 1,
+      "path": "Objects/NPCS/npc26/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3768578558,
+      "prompt": 366300771,
+      "parent": 19904845,
+      "role": 2,
+      "path": "Objects/NPCS/npc26/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1975655868,
+      "prompt": 366300771,
+      "parent": 366300771,
+      "role": 3,
+      "path": "Objects/NPCS/npc26/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1751906148,
+      "prompt": 366300771,
+      "parent": 366300771,
+      "role": 4,
+      "path": "Objects/NPCS/npc26/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1402862373,
+      "prompt": 2700956841,
+      "parent": 2700956841,
+      "role": 1,
+      "path": "Objects/NPCS/npc46/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2313052857,
+      "prompt": 2700956841,
+      "parent": 1402862373,
+      "role": 2,
+      "path": "Objects/NPCS/npc46/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 852147672,
+      "prompt": 2700956841,
+      "parent": 2700956841,
+      "role": 3,
+      "path": "Objects/NPCS/npc46/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2031191278,
+      "prompt": 2700956841,
+      "parent": 2700956841,
+      "role": 4,
+      "path": "Objects/NPCS/npc46/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2576834236,
+      "prompt": 3527021281,
+      "parent": 3527021281,
+      "role": 1,
+      "path": "Objects/NPCS/npc21/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1495108183,
+      "prompt": 3527021281,
+      "parent": 2576834236,
+      "role": 2,
+      "path": "Objects/NPCS/npc21/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1637224701,
+      "prompt": 3527021281,
+      "parent": 3527021281,
+      "role": 3,
+      "path": "Objects/NPCS/npc21/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1013689654,
+      "prompt": 3527021281,
+      "parent": 3527021281,
+      "role": 4,
+      "path": "Objects/NPCS/npc21/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 160250525,
+      "prompt": 1532138248,
+      "parent": 1532138248,
+      "role": 1,
+      "path": "Objects/NPCS/npc17/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4022385015,
+      "prompt": 1532138248,
+      "parent": 160250525,
+      "role": 2,
+      "path": "Objects/NPCS/npc17/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1827250050,
+      "prompt": 1532138248,
+      "parent": 1532138248,
+      "role": 3,
+      "path": "Objects/NPCS/npc17/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3238670357,
+      "prompt": 1532138248,
+      "parent": 1532138248,
+      "role": 4,
+      "path": "Objects/NPCS/npc17/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2101438436,
+      "prompt": 194625192,
+      "parent": 194625192,
+      "role": 1,
+      "path": "Objects/NPCS/npc23/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3502086109,
+      "prompt": 194625192,
+      "parent": 2101438436,
+      "role": 2,
+      "path": "Objects/NPCS/npc23/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3096572735,
+      "prompt": 194625192,
+      "parent": 194625192,
+      "role": 3,
+      "path": "Objects/NPCS/npc23/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 51892892,
+      "prompt": 194625192,
+      "parent": 194625192,
+      "role": 4,
+      "path": "Objects/NPCS/npc23/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3414651235,
+      "prompt": 2391376241,
+      "parent": 2391376241,
+      "role": 1,
+      "path": "Objects/NPCS/npc27/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 200022317,
+      "prompt": 2391376241,
+      "parent": 3414651235,
+      "role": 2,
+      "path": "Objects/NPCS/npc27/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 4180739135,
+      "prompt": 2391376241,
+      "parent": 2391376241,
+      "role": 3,
+      "path": "Objects/NPCS/npc27/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 635713036,
+      "prompt": 2391376241,
+      "parent": 2391376241,
+      "role": 4,
+      "path": "Objects/NPCS/npc27/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1322364092,
+      "prompt": 4038237759,
+      "parent": 4038237759,
+      "role": 1,
+      "path": "Objects/NPCS/npc24/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3028654728,
+      "prompt": 4038237759,
+      "parent": 1322364092,
+      "role": 2,
+      "path": "Objects/NPCS/npc24/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2310406263,
+      "prompt": 4038237759,
+      "parent": 4038237759,
+      "role": 3,
+      "path": "Objects/NPCS/npc24/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 38371763,
+      "prompt": 4038237759,
+      "parent": 4038237759,
+      "role": 4,
+      "path": "Objects/NPCS/npc24/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 86534253,
+      "prompt": 147705518,
+      "parent": 147705518,
+      "role": 1,
+      "path": "Objects/NPCS/npc25/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 692615998,
+      "prompt": 147705518,
+      "parent": 86534253,
+      "role": 2,
+      "path": "Objects/NPCS/npc25/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 999753189,
+      "prompt": 147705518,
+      "parent": 147705518,
+      "role": 3,
+      "path": "Objects/NPCS/npc25/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2934168946,
+      "prompt": 147705518,
+      "parent": 147705518,
+      "role": 4,
+      "path": "Objects/NPCS/npc25/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 240884829,
+      "prompt": 3571275251,
+      "parent": 3571275251,
+      "role": 1,
+      "path": "Objects/NPCS/npc18/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1444118556,
+      "prompt": 3571275251,
+      "parent": 240884829,
+      "role": 2,
+      "path": "Objects/NPCS/npc18/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3246292798,
+      "prompt": 3571275251,
+      "parent": 3571275251,
+      "role": 3,
+      "path": "Objects/NPCS/npc18/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3474397375,
+      "prompt": 3571275251,
+      "parent": 3571275251,
+      "role": 4,
+      "path": "Objects/NPCS/npc18/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3016436217,
+      "prompt": 1587560669,
+      "parent": 1587560669,
+      "role": 1,
+      "path": "Objects/NPCS/npczombie1/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 741350196,
+      "prompt": 1587560669,
+      "parent": 3016436217,
+      "role": 2,
+      "path": "Objects/NPCS/npczombie1/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2668133104,
+      "prompt": 1587560669,
+      "parent": 1587560669,
+      "role": 3,
+      "path": "Objects/NPCS/npczombie1/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 306300263,
+      "prompt": 1587560669,
+      "parent": 1587560669,
+      "role": 4,
+      "path": "Objects/NPCS/npczombie1/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2359330032,
+      "prompt": 1639985812,
+      "parent": 1639985812,
+      "role": 1,
+      "path": "Objects/NPCS/npczombie2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2527227939,
+      "prompt": 1639985812,
+      "parent": 2359330032,
+      "role": 2,
+      "path": "Objects/NPCS/npczombie2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1732093428,
+      "prompt": 1639985812,
+      "parent": 1639985812,
+      "role": 3,
+      "path": "Objects/NPCS/npczombie2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2450494545,
+      "prompt": 1639985812,
+      "parent": 1639985812,
+      "role": 4,
+      "path": "Objects/NPCS/npczombie2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3276409683,
+      "prompt": 1390739225,
+      "parent": 1390739225,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 347791483,
+      "prompt": 1390739225,
+      "parent": 3276409683,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 474249316,
+      "prompt": 1390739225,
+      "parent": 1390739225,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2045023227,
+      "prompt": 1390739225,
+      "parent": 1390739225,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1017612921,
+      "prompt": 1039281493,
+      "parent": 1039281493,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog3/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3302234748,
+      "prompt": 1039281493,
+      "parent": 1017612921,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog3/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2031151132,
+      "prompt": 1039281493,
+      "parent": 1039281493,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog3/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2808830676,
+      "prompt": 1039281493,
+      "parent": 1039281493,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog3/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3943002478,
+      "prompt": 1205836844,
+      "parent": 1205836844,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog18/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2864603851,
+      "prompt": 1205836844,
+      "parent": 3943002478,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog18/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3789493258,
+      "prompt": 1205836844,
+      "parent": 1205836844,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog18/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2100583905,
+      "prompt": 1205836844,
+      "parent": 1205836844,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog18/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4285660292,
+      "prompt": 823068338,
+      "parent": 823068338,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog24/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4034238129,
+      "prompt": 823068338,
+      "parent": 4285660292,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog24/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 4132931765,
+      "prompt": 823068338,
+      "parent": 823068338,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog24/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4024220921,
+      "prompt": 823068338,
+      "parent": 823068338,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog24/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 135930197,
+      "prompt": 2241030580,
+      "parent": 2241030580,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog25/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 558600157,
+      "prompt": 2241030580,
+      "parent": 135930197,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog25/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2678330669,
+      "prompt": 2241030580,
+      "parent": 2241030580,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog25/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2623477392,
+      "prompt": 2241030580,
+      "parent": 2241030580,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog25/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1548346891,
+      "prompt": 3767429763,
+      "parent": 3767429763,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog30/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3807228914,
+      "prompt": 3767429763,
+      "parent": 1548346891,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog30/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 507931501,
+      "prompt": 3767429763,
+      "parent": 3767429763,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog30/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 212117414,
+      "prompt": 3767429763,
+      "parent": 3767429763,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog30/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1448522049,
+      "prompt": 2858952887,
+      "parent": 2858952887,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog26/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1112795488,
+      "prompt": 2858952887,
+      "parent": 1448522049,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog26/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2814061289,
+      "prompt": 2858952887,
+      "parent": 2858952887,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog26/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3845486772,
+      "prompt": 2858952887,
+      "parent": 2858952887,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog26/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3002082191,
+      "prompt": 3499526892,
+      "parent": 3499526892,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog29/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 728491273,
+      "prompt": 3499526892,
+      "parent": 3002082191,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog29/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2927876649,
+      "prompt": 3499526892,
+      "parent": 3499526892,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog29/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3658731100,
+      "prompt": 3499526892,
+      "parent": 3499526892,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog29/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2068911981,
+      "prompt": 3917810152,
+      "parent": 3917810152,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog27/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2666750660,
+      "prompt": 3917810152,
+      "parent": 2068911981,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog27/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3526730554,
+      "prompt": 3917810152,
+      "parent": 3917810152,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog27/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1969886451,
+      "prompt": 3917810152,
+      "parent": 3917810152,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog27/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2679560334,
+      "prompt": 3800672866,
+      "parent": 3800672866,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog28/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1600117250,
+      "prompt": 3800672866,
+      "parent": 2679560334,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog28/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2313939855,
+      "prompt": 3800672866,
+      "parent": 3800672866,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog28/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3932637881,
+      "prompt": 3800672866,
+      "parent": 3800672866,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog28/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1823373379,
+      "prompt": 515314714,
+      "parent": 515314714,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog15/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3009718477,
+      "prompt": 515314714,
+      "parent": 1823373379,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog15/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3292793238,
+      "prompt": 515314714,
+      "parent": 515314714,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog15/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 153352229,
+      "prompt": 515314714,
+      "parent": 515314714,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog15/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 984153693,
+      "prompt": 2086847225,
+      "parent": 2086847225,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog16/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 317320679,
+      "prompt": 2086847225,
+      "parent": 984153693,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog16/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 4129467729,
+      "prompt": 2086847225,
+      "parent": 2086847225,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog16/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3048584164,
+      "prompt": 2086847225,
+      "parent": 2086847225,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog16/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2943316095,
+      "prompt": 4110046678,
+      "parent": 4110046678,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog5/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 96889908,
+      "prompt": 4110046678,
+      "parent": 2943316095,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog5/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2756401217,
+      "prompt": 4110046678,
+      "parent": 4110046678,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog5/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4036064487,
+      "prompt": 4110046678,
+      "parent": 4110046678,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog5/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 966914727,
+      "prompt": 1444178654,
+      "parent": 1444178654,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog7/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1469355716,
+      "prompt": 1444178654,
+      "parent": 966914727,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog7/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1376188654,
+      "prompt": 1444178654,
+      "parent": 1444178654,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog7/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1533890272,
+      "prompt": 1444178654,
+      "parent": 1444178654,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog7/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1103864079,
+      "prompt": 2275056881,
+      "parent": 2275056881,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog6/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3738938500,
+      "prompt": 2275056881,
+      "parent": 1103864079,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog6/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 860880918,
+      "prompt": 2275056881,
+      "parent": 2275056881,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog6/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 652757853,
+      "prompt": 2275056881,
+      "parent": 2275056881,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog6/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1394787013,
+      "prompt": 1490685900,
+      "parent": 1490685900,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog4/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 483235016,
+      "prompt": 1490685900,
+      "parent": 1394787013,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog4/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2161169683,
+      "prompt": 1490685900,
+      "parent": 1490685900,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog4/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2306357927,
+      "prompt": 1490685900,
+      "parent": 1490685900,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog4/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3802942883,
+      "prompt": 3807193281,
+      "parent": 3807193281,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog31/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3401055404,
+      "prompt": 3807193281,
+      "parent": 3802942883,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog31/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2737006059,
+      "prompt": 3807193281,
+      "parent": 3807193281,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog31/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 632774543,
+      "prompt": 3807193281,
+      "parent": 3807193281,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog31/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1855152267,
+      "prompt": 877308317,
+      "parent": 877308317,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog2/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1964259670,
+      "prompt": 877308317,
+      "parent": 1855152267,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog2/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2049274929,
+      "prompt": 877308317,
+      "parent": 877308317,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog2/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3285328819,
+      "prompt": 877308317,
+      "parent": 877308317,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog2/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1611157465,
+      "prompt": 3273997176,
+      "parent": 3273997176,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog20/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2699848694,
+      "prompt": 3273997176,
+      "parent": 1611157465,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog20/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 883819944,
+      "prompt": 3273997176,
+      "parent": 3273997176,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog20/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 482474811,
+      "prompt": 3273997176,
+      "parent": 3273997176,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog20/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 273849103,
+      "prompt": 2196057393,
+      "parent": 2196057393,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog22/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 516441290,
+      "prompt": 2196057393,
+      "parent": 273849103,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog22/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1921797560,
+      "prompt": 2196057393,
+      "parent": 2196057393,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog22/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 852478379,
+      "prompt": 2196057393,
+      "parent": 2196057393,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog22/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 343742431,
+      "prompt": 2441143075,
+      "parent": 2441143075,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog21/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 294790001,
+      "prompt": 2441143075,
+      "parent": 343742431,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog21/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 976762765,
+      "prompt": 2441143075,
+      "parent": 2441143075,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog21/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 924029188,
+      "prompt": 2441143075,
+      "parent": 2441143075,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog21/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2942752025,
+      "prompt": 3563321167,
+      "parent": 3563321167,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog23/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3069772101,
+      "prompt": 3563321167,
+      "parent": 2942752025,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog23/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 544454838,
+      "prompt": 3563321167,
+      "parent": 3563321167,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog23/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 75908465,
+      "prompt": 3563321167,
+      "parent": 3563321167,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog23/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 685301382,
+      "prompt": 1465797121,
+      "parent": 1465797121,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog19/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2382961221,
+      "prompt": 1465797121,
+      "parent": 685301382,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog19/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2636010439,
+      "prompt": 1465797121,
+      "parent": 1465797121,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog19/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3238345931,
+      "prompt": 1465797121,
+      "parent": 1465797121,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog19/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 133913930,
+      "prompt": 4225504340,
+      "parent": 4225504340,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog17/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3791571815,
+      "prompt": 4225504340,
+      "parent": 133913930,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog17/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1772237761,
+      "prompt": 4225504340,
+      "parent": 4225504340,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog17/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2337154840,
+      "prompt": 4225504340,
+      "parent": 4225504340,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog17/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2631094332,
+      "prompt": 17587943,
+      "parent": 17587943,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog8/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3955546227,
+      "prompt": 17587943,
+      "parent": 2631094332,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog8/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2426843556,
+      "prompt": 17587943,
+      "parent": 17587943,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog8/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3227843592,
+      "prompt": 17587943,
+      "parent": 17587943,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog8/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 16470252,
+      "prompt": 3720840520,
+      "parent": 3720840520,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog9/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1785484944,
+      "prompt": 3720840520,
+      "parent": 16470252,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog9/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 791460640,
+      "prompt": 3720840520,
+      "parent": 3720840520,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog9/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2566398432,
+      "prompt": 3720840520,
+      "parent": 3720840520,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog9/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2615711720,
+      "prompt": 1956220734,
+      "parent": 1956220734,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog10/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2152014707,
+      "prompt": 1956220734,
+      "parent": 2615711720,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog10/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3431116004,
+      "prompt": 1956220734,
+      "parent": 1956220734,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog10/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 855608293,
+      "prompt": 1956220734,
+      "parent": 1956220734,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog10/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2837769535,
+      "prompt": 3605065134,
+      "parent": 3605065134,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog11/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 596938334,
+      "prompt": 3605065134,
+      "parent": 2837769535,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog11/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 4068786984,
+      "prompt": 3605065134,
+      "parent": 3605065134,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog11/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 612401572,
+      "prompt": 3605065134,
+      "parent": 3605065134,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog11/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 660670163,
+      "prompt": 3514577866,
+      "parent": 3514577866,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog12/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1407970287,
+      "prompt": 3514577866,
+      "parent": 660670163,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog12/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 731443151,
+      "prompt": 3514577866,
+      "parent": 3514577866,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog12/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2828821800,
+      "prompt": 3514577866,
+      "parent": 3514577866,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog12/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2204643222,
+      "prompt": 4235070156,
+      "parent": 4235070156,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog13/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2495966851,
+      "prompt": 4235070156,
+      "parent": 2204643222,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog13/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3802568029,
+      "prompt": 4235070156,
+      "parent": 4235070156,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog13/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 4011069549,
+      "prompt": 4235070156,
+      "parent": 4235070156,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog13/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4032178059,
+      "prompt": 1861151647,
+      "parent": 1861151647,
+      "role": 1,
+      "path": "Objects/NPCS/interact_dialog14/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 632707484,
+      "prompt": 1861151647,
+      "parent": 4032178059,
+      "role": 2,
+      "path": "Objects/NPCS/interact_dialog14/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1786888963,
+      "prompt": 1861151647,
+      "parent": 1861151647,
+      "role": 3,
+      "path": "Objects/NPCS/interact_dialog14/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2495985835,
+      "prompt": 1861151647,
+      "parent": 1861151647,
+      "role": 4,
+      "path": "Objects/NPCS/interact_dialog14/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 410604806,
+      "prompt": 2416069699,
+      "parent": 2416069699,
+      "role": 1,
+      "path": "Objects/NPCS/npc39/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1403859987,
+      "prompt": 2416069699,
+      "parent": 410604806,
+      "role": 2,
+      "path": "Objects/NPCS/npc39/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3993613449,
+      "prompt": 2416069699,
+      "parent": 2416069699,
+      "role": 3,
+      "path": "Objects/NPCS/npc39/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3165286501,
+      "prompt": 2416069699,
+      "parent": 2416069699,
+      "role": 4,
+      "path": "Objects/NPCS/npc39/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2751975963,
+      "prompt": 1509420614,
+      "parent": 1509420614,
+      "role": 1,
+      "path": "Objects/NPCS/npc40/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1904141687,
+      "prompt": 1509420614,
+      "parent": 2751975963,
+      "role": 2,
+      "path": "Objects/NPCS/npc40/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3820661621,
+      "prompt": 1509420614,
+      "parent": 1509420614,
+      "role": 3,
+      "path": "Objects/NPCS/npc40/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1818884240,
+      "prompt": 1509420614,
+      "parent": 1509420614,
+      "role": 4,
+      "path": "Objects/NPCS/npc40/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2773154470,
+      "prompt": 1274140531,
+      "parent": 1274140531,
+      "role": 1,
+      "path": "Objects/NPCS/npc3/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 38282422,
+      "prompt": 1274140531,
+      "parent": 2773154470,
+      "role": 2,
+      "path": "Objects/NPCS/npc3/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2277750880,
+      "prompt": 1274140531,
+      "parent": 1274140531,
+      "role": 3,
+      "path": "Objects/NPCS/npc3/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2319582965,
+      "prompt": 1274140531,
+      "parent": 1274140531,
+      "role": 4,
+      "path": "Objects/NPCS/npc3/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2296339993,
+      "prompt": 2124761819,
+      "parent": 2124761819,
+      "role": 1,
+      "path": "Objects/NPCS/mom/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 67127705,
+      "prompt": 2124761819,
+      "parent": 2296339993,
+      "role": 2,
+      "path": "Objects/NPCS/mom/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3615627292,
+      "prompt": 2124761819,
+      "parent": 2124761819,
+      "role": 3,
+      "path": "Objects/NPCS/mom/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1981098852,
+      "prompt": 2124761819,
+      "parent": 2124761819,
+      "role": 4,
+      "path": "Objects/NPCS/mom/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1762222783,
+      "prompt": 4196684888,
+      "parent": 4196684888,
+      "role": 1,
+      "path": "Objects/NPCS/mimmie/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1085403373,
+      "prompt": 4196684888,
+      "parent": 1762222783,
+      "role": 2,
+      "path": "Objects/NPCS/mimmie/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1803803133,
+      "prompt": 4196684888,
+      "parent": 4196684888,
+      "role": 3,
+      "path": "Objects/NPCS/mimmie/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3710183189,
+      "prompt": 4196684888,
+      "parent": 4196684888,
+      "role": 4,
+      "path": "Objects/NPCS/mimmie/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1616215168,
+      "prompt": 368128433,
+      "parent": 368128433,
+      "role": 1,
+      "path": "Objects/NPCS/minnie/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 628445177,
+      "prompt": 368128433,
+      "parent": 1616215168,
+      "role": 2,
+      "path": "Objects/NPCS/minnie/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1822104080,
+      "prompt": 368128433,
+      "parent": 368128433,
+      "role": 3,
+      "path": "Objects/NPCS/minnie/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1554932662,
+      "prompt": 368128433,
+      "parent": 368128433,
+      "role": 4,
+      "path": "Objects/NPCS/minnie/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2764544804,
+      "prompt": 1119538519,
+      "parent": 1119538519,
+      "role": 1,
+      "path": "Objects/ATM/interact_dialog/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3073776666,
+      "prompt": 1119538519,
+      "parent": 2764544804,
+      "role": 2,
+      "path": "Objects/ATM/interact_dialog/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1936866438,
+      "prompt": 1119538519,
+      "parent": 1119538519,
+      "role": 3,
+      "path": "Objects/ATM/interact_dialog/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1592629649,
+      "prompt": 1119538519,
+      "parent": 1119538519,
+      "role": 4,
+      "path": "Objects/ATM/interact_dialog/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 803292928,
+      "prompt": 2939472093,
+      "parent": 2939472093,
+      "role": 1,
+      "path": "Objects/PayPhone/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3951948586,
+      "prompt": 2939472093,
+      "parent": 803292928,
+      "role": 2,
+      "path": "Objects/PayPhone/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 2422388892,
+      "prompt": 2939472093,
+      "parent": 2939472093,
+      "role": 3,
+      "path": "Objects/PayPhone/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3177048333,
+      "prompt": 2939472093,
+      "parent": 2939472093,
+      "role": 4,
+      "path": "Objects/PayPhone/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3594953236,
+      "prompt": 3268382679,
+      "parent": 3268382679,
+      "role": 1,
+      "path": "Objects/PayPhone2/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 3035279368,
+      "prompt": 3268382679,
+      "parent": 3594953236,
+      "role": 2,
+      "path": "Objects/PayPhone2/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1826389114,
+      "prompt": 3268382679,
+      "parent": 3268382679,
+      "role": 3,
+      "path": "Objects/PayPhone2/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2611159704,
+      "prompt": 3268382679,
+      "parent": 3268382679,
+      "role": 4,
+      "path": "Objects/PayPhone2/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 3976703780,
+      "prompt": 2367327439,
+      "parent": 2367327439,
+      "role": 1,
+      "path": "Objects/PayPhone3/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 831350238,
+      "prompt": 2367327439,
+      "parent": 3976703780,
+      "role": 2,
+      "path": "Objects/PayPhone3/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3010078278,
+      "prompt": 2367327439,
+      "parent": 2367327439,
+      "role": 3,
+      "path": "Objects/PayPhone3/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2487840677,
+      "prompt": 2367327439,
+      "parent": 2367327439,
+      "role": 4,
+      "path": "Objects/PayPhone3/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 1138396928,
+      "prompt": 666006644,
+      "parent": 666006644,
+      "role": 1,
+      "path": "Objects/PayPhone4/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 44231146,
+      "prompt": 666006644,
+      "parent": 1138396928,
+      "role": 2,
+      "path": "Objects/PayPhone4/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 3909187143,
+      "prompt": 666006644,
+      "parent": 666006644,
+      "role": 3,
+      "path": "Objects/PayPhone4/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 353864019,
+      "prompt": 666006644,
+      "parent": 666006644,
+      "role": 4,
+      "path": "Objects/PayPhone4/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 4140856272,
+      "prompt": 101245940,
+      "parent": 101245940,
+      "role": 1,
+      "path": "Objects/VendingMachine/interact_dialog/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 2212895115,
+      "prompt": 101245940,
+      "parent": 4140856272,
+      "role": 2,
+      "path": "Objects/VendingMachine/interact_dialog/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1549377780,
+      "prompt": 101245940,
+      "parent": 101245940,
+      "role": 3,
+      "path": "Objects/VendingMachine/interact_dialog/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 1428655055,
+      "prompt": 101245940,
+      "parent": 101245940,
+      "role": 4,
+      "path": "Objects/VendingMachine/interact_dialog/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 442461695,
+      "prompt": 2961418984,
+      "parent": 2961418984,
+      "role": 1,
+      "path": "AbovePlayer1/npc/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 811341553,
+      "prompt": 2961418984,
+      "parent": 442461695,
+      "role": 2,
+      "path": "AbovePlayer1/npc/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 379586755,
+      "prompt": 2961418984,
+      "parent": 2961418984,
+      "role": 3,
+      "path": "AbovePlayer1/npc/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3260186622,
+      "prompt": 2961418984,
+      "parent": 2961418984,
+      "role": 4,
+      "path": "AbovePlayer1/npc/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 874464551,
+      "prompt": 3999882061,
+      "parent": 3999882061,
+      "role": 1,
+      "path": "AboveNPCS/mom/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 1398122036,
+      "prompt": 3999882061,
+      "parent": 874464551,
+      "role": 2,
+      "path": "AboveNPCS/mom/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 1259152070,
+      "prompt": 3999882061,
+      "parent": 3999882061,
+      "role": 3,
+      "path": "AboveNPCS/mom/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3353144603,
+      "prompt": 3999882061,
+      "parent": 3999882061,
+      "role": 4,
+      "path": "AboveNPCS/mom/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 2569708174,
+      "prompt": 4166245344,
+      "parent": 4166245344,
+      "role": 1,
+      "path": "AboveNPCS/mimmie/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 310074066,
+      "prompt": 4166245344,
+      "parent": 2569708174,
+      "role": 2,
+      "path": "AboveNPCS/mimmie/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 4093026331,
+      "prompt": 4166245344,
+      "parent": 4166245344,
+      "role": 3,
+      "path": "AboveNPCS/mimmie/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 2203869654,
+      "prompt": 4166245344,
+      "parent": 4166245344,
+      "role": 4,
+      "path": "AboveNPCS/mimmie/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    },
+    {
+      "id": 538025910,
+      "prompt": 2658466318,
+      "parent": 2658466318,
+      "role": 1,
+      "path": "AboveNPCS/minnie/interact/ButtonPrompt/HBoxContainer",
+      "native_class": "HBoxContainer"
+    },
+    {
+      "id": 4264495420,
+      "prompt": 2658466318,
+      "parent": 538025910,
+      "role": 2,
+      "path": "AboveNPCS/minnie/interact/ButtonPrompt/HBoxContainer/Label",
+      "native_class": "Label"
+    },
+    {
+      "id": 308032807,
+      "prompt": 2658466318,
+      "parent": 2658466318,
+      "role": 3,
+      "path": "AboveNPCS/minnie/interact/ButtonPrompt/Arrow",
+      "native_class": "TextureRect"
+    },
+    {
+      "id": 3791584886,
+      "prompt": 2658466318,
+      "parent": 2658466318,
+      "role": 4,
+      "path": "AboveNPCS/minnie/interact/ButtonPrompt/AnimationPlayer",
+      "native_class": "AnimationPlayer"
+    }
+  ]
+}

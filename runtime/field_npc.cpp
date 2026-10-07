@@ -16,6 +16,11 @@ float FieldNpcRuntime::parameter(FieldNpcParameter p)const{return data_->paramet
 const FieldNpcDescriptor&FieldNpcRuntime::descriptor(const FieldNpcInstance&v)const{return data_->npcs()[v.index];}
 FieldNpcInstance*FieldNpcRuntime::instance(uint32_t id){for(auto&v:npcs_)if(v.id==id&&!v.destroyed)return &v;fail("Unknown/destroyed Field NPC identity");return nullptr;}
 bool FieldNpcRuntime::context(uint32_t id,FieldNpcContext&out){return host_.context(id,out,error_)&&(finite(out.player)||fail("Field NPC host player position rejected"));}
+bool FieldNpcRuntime::ready_context(uint32_t id,FieldNpcReadyContext&out){
+ if(host_.ready_context)return host_.ready_context(id,out,error_);
+ FieldNpcContext legacy;if(!context(id,legacy))return false;
+ out.ancestor_visible=legacy.ancestor_visible;out.debug_build=legacy.debug_build;return true;
+}
 bool FieldNpcRuntime::flag(const std::string&name,bool&out){if(name.empty()){out=true;return true;}return host_.flag(name,out,error_);}
 bool FieldNpcRuntime::appear(const FieldNpcDescriptor&d,bool&out){bool on=true,off=false;if(!flag(d.appear,on))return false;if(!d.disappear.empty()&&!flag(d.disappear,off))return false;out=on&&!off;return true;}
 bool FieldNpcRuntime::present(FieldNpcInstance&v,FieldNpcPresentation op){return host_.present(v.id,op,descriptor(v),v,error_);}
@@ -30,9 +35,9 @@ bool FieldNpcRuntime::select(FieldNpcInstance&v,bool thoughts,const FieldNpcDial
  }return true;
 }
 bool FieldNpcRuntime::has_dialog(uint32_t id,bool thoughts,bool&out){auto*v=instance(id);if(!v)return false;const FieldNpcDialogue*d=nullptr;if(!select(*v,thoughts,d))return false;out=d!=nullptr&&!d->program.empty();return true;}
-bool FieldNpcRuntime::visibility_changed(uint32_t id){auto*v=instance(id);if(!v)return false;FieldNpcContext ctx;if(!context(id,ctx))return false;bool dialog=false;if(!has_dialog(id,false,dialog))return false;const bool actual=v->visible&&ctx.ancestor_visible;v->collision_enabled=actual;v->interact_enabled=actual&&dialog;v->physics=actual;return present(*v,FieldNpcPresentation::Visibility);}
+bool FieldNpcRuntime::visibility_changed(uint32_t id){auto*v=instance(id);if(!v)return false;FieldNpcReadyContext ctx;if(!ready_context(id,ctx))return false;bool dialog=false;if(!has_dialog(id,false,dialog))return false;const bool actual=v->visible&&ctx.ancestor_visible;v->collision_enabled=actual;v->interact_enabled=actual&&dialog;v->physics=actual;return present(*v,FieldNpcPresentation::Visibility);}
 bool FieldNpcRuntime::recheck_flags(uint32_t id){auto*v=instance(id);if(!v)return false;if(!appear(descriptor(*v),v->visible))return false;return visibility_changed(id);}
-bool FieldNpcRuntime::ready(uint32_t id){auto*v=instance(id);if(!v||v->ready)return fail("Field NPC duplicate/unknown Ready rejected");const auto&d=descriptor(*v);if(had_ready_&&d.ready_ordinal<=last_ready_)return fail("Field NPC source Ready order rejected");last_ready_=d.ready_ordinal;had_ready_=true;FieldNpcContext ctx;if(!context(id,ctx))return false;v->position=d.position;v->input=d.direction;v->geometry=d.geometry;
+bool FieldNpcRuntime::ready(uint32_t id){auto*v=instance(id);if(!v||v->ready)return fail("Field NPC duplicate/unknown Ready rejected");const auto&d=descriptor(*v);if(had_ready_&&d.ready_ordinal<=last_ready_)return fail("Field NPC source Ready order rejected");last_ready_=d.ready_ordinal;had_ready_=true;FieldNpcReadyContext ctx;if(!ready_context(id,ctx))return false;v->position=d.position;v->input=d.direction;v->geometry=d.geometry;
  if(d.has(FieldNpcFlag::Debug)&&!ctx.debug_build){v->queued_free=true;if(!present(*v,FieldNpcPresentation::QueueFree))return false;}
  v->ready=true;if(!recheck_flags(id))return false;
  for(const auto&event:d.event_positions){if(event.flag.empty())continue;bool enabled=false;if(!flag(event.flag,enabled))return false;if(enabled)v->position=event.position;}

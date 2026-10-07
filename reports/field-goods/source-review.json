@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "4ee5b2a4247b68fae645cc18a561dac9203498cd1243c5849da8d592b902a32e",
+  "ir_sha256": "b103e2ee03e8596b4c273704b1134025032d4db5f2340146fafb2af1b21ba36c",
   "sources": {
     "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
     "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
@@ -408,7 +408,7 @@
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
   },
   "dependencies": {
-    "content/native-field-inventory.json": "135952acf65f4db05ac09a52e86bdbb78156e502ac1a78c6dee4cc249150f29e"
+    "content/native-field-inventory.json": "c573d1710d610844341832c84e16023932b6187abb20d40cbfe2b4293d9e9a40"
   },
   "semantics": [
     "Singleton normal Goods exposes Ninten and KEY; source include_storage=false and Give requires more than one member",

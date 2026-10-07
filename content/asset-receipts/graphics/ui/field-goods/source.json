@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "4ee5b2a4247b68fae645cc18a561dac9203498cd1243c5849da8d592b902a32e",
+  "ir_sha256": "b103e2ee03e8596b4c273704b1134025032d4db5f2340146fafb2af1b21ba36c",
   "textures": [
     {
       "name": "bar",

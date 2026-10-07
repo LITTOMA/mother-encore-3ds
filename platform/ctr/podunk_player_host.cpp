@@ -383,7 +383,11 @@ bool PodunkPlayerHost::finish_factory(std::string &e) {
   };
   motion.animation_current = [this](FieldObjectId id, std::string &v,
                                     std::string &x) {
-    return animation_.assigned(id, v, x);
+    bool playing; float position, length;
+    if (!animation_.playback_snapshot(id, v, playing, position, length, x))
+      return false;
+    if (!playing) v.clear();
+    return true;
   };
   motion.incapacitated = [this](FieldObjectId id, bool &v, std::string &x) {
     return character_.is_incapacitated(id, v, x);
@@ -848,7 +852,49 @@ bool PodunkPlayerHost::release(FieldObjectId id, std::string &e) {
   objects_.erase(id);
   return true;
 }
+bool PodunkPlayerHost::method_owned(const FieldDeferredMessage &m) const {
+  if (!sources_.ready || !sources_.motion || m.kind != FieldDeferredKind::Call ||
+      m.object != body_.object() || !body_.constructed()) return false;
+  return m.member == sources_.ready->binding(PlayerReadyBinding::UpdateMethod) ||
+         m.member == sources_.ready->binding(PlayerReadyBinding::RefreshMethod) ||
+         m.member == sources_.motion->text(PlayerMotionText::ColliderMethod);
+}
+bool PodunkPlayerHost::source_method(const FieldDeferredMessage &m, std::string &e) {
+  if (!live(e) || !assembled_ || !method_owned(m))
+    return fail(e, "Player source method lacks same actual checked owner");
+  if (m.member == sources_.ready->binding(PlayerReadyBinding::UpdateMethod)) {
+    if (!m.args.empty()) return fail(e, "Player party update source method arity rejected");
+    return ready_.update_party_member(e);
+  }
+  if (m.member == sources_.ready->binding(PlayerReadyBinding::RefreshMethod)) {
+    if (!m.args.empty()) return fail(e, "Player status refresh source method arity rejected");
+    return ready_.refresh_status(e);
+  }
+  // Actual tree_exited connection supplies [null]; _set_event_collider has
+  // one required Variant argument. A bound null must not become ObjectID 0
+  // with an invented non-null identity.
+  if (m.args.size()!=1 || !std::holds_alternative<std::monostate>(m.args.front()))
+    return fail(e, "Player collider exit source null argument rejected");
+  return motion_.set_event_collider(0,e);
+}
+bool PodunkPlayerHost::declaration(FieldObjectId id, std::string_view name,
+                                  uint32_t &arity, std::string &e) const {
+  if (!tree_ || id != body_.object() || !body_.constructed() ||
+      services_.registry->tree_owner(id).get()!=tree_.get() || !sources_.motion)
+    return fail(e,"Player source signal actual instance unavailable");
+  if(sources_.motion->business_bindings()) {
+    for(const auto &signal:sources_.motion->signals()) if(name==signal.first){arity=signal.second;e.clear();return true;}
+    return fail(e,"Unknown Player source signal declaration rejected");
+  }
+  for (auto role : {PlayerMotionText::EnteredSignal,PlayerMotionText::ExitedSignal})
+    if(name==sources_.motion->text(role)){arity=1;e.clear();return true;}
+  for(auto role : {PlayerMotionText::MovedSignal,PlayerMotionText::PausedSignal,
+                   PlayerMotionText::UnpausedSignal})
+    if(name==sources_.motion->text(role)){arity=0;e.clear();return true;}
+  return fail(e,"Unknown Player source signal declaration rejected");
+}
 bool PodunkPlayerHost::deferred(const FieldDeferredMessage &m, std::string &e) {
+  if(method_owned(m)) return source_method(m,e);
   if (!live(e) || !assembled_ || m.object != body_.object() ||
       m.kind != FieldDeferredKind::Call || !m.args.empty() ||
       !admit(m.object, m.member, true, e))

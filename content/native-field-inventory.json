@@ -1963,7 +1963,7 @@
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
   },
   "dependencies": {
-    "content/native-field-item-definitions.json": "ecc0027fee5c2f30ff0ac05024906546a93732a44cabdf2195a4a07d2ed1978e",
+    "content/native-field-item-definitions.json": "73edae643e47c5f604ac07b97009d16f922d0509e28e1fe7e2ccb8fe0874fa83",
     "content/native-item-use.json": "ab3e92d2ad87d05a3113eacdf7c20e70cc7868918848a6b540ee7432adf0c032"
   },
   "semantics": [

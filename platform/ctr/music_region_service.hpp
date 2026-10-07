@@ -3,6 +3,12 @@
 #include "music_region_player.hpp"
 #include <memory>
 namespace encore::ctr {
+struct MusicSourcePlayer {
+ uint32_t kind=0,asset_id=0;
+ uint64_t player_identity=0,order=0;
+ bool playing=false,tweening=false;
+ float volume_db=0;
+};
 enum class MusicRegionServicePhase:uint8_t {Dormant,Preparing,Prepared,Active,Draining};
 // App-lifetime service. It stays Dormant until the selected scene explicitly
 // prepares its source-owned music; title metadata loading cannot start voices.
@@ -14,11 +20,14 @@ public:
  MusicRegionService&operator=(const MusicRegionService&)=delete;
  bool begin_prepare(const char*regions,const char*bank,const char*root,uint32_t capacity,
               const AudioPlayer&,std::string&);
+ bool begin_prepare(const upstream::MusicRegionData&,const char*bank,const char*root,uint32_t capacity,const AudioPlayer&,std::string&);
+ const upstream::MusicRegionData*content()const;
  MusicPreparationStep prepare_step(uint32_t byte_budget,std::string&);
  uint64_t prepared_pcm_bytes()const;
  uint64_t total_pcm_bytes()const;
  bool cancel_preparation(std::string&);
  bool commit_scene(uint64_t epoch,const AudioPlayer&,std::string&);
+ bool handoff_scene(MusicRegionService&prepared,uint64_t epoch,const AudioPlayer&,std::string&);
  bool area_enter(uint64_t,std::string_view,const upstream::MusicRegionContext&,const AudioPlayer&,std::string&);
  bool area_exit(uint64_t,std::string_view,const upstream::MusicRegionContext&,std::string&);
  bool play_explicit(uint64_t,std::string_view,const AudioPlayer&,std::string&);
@@ -42,6 +51,8 @@ public:
  uint32_t live_voice_count()const;
  uint32_t submitted_voices()const;
  uint32_t buffer_bytes()const;
+ bool registered_regions(std::vector<uint64_t>&,std::string&)const;
+ bool source_players(const AudioPlayer&,std::vector<MusicSourcePlayer>&,std::string&)const;
 private:
  struct State;std::unique_ptr<State>state_;
  MusicRegionServicePhase phase_=MusicRegionServicePhase::Dormant;

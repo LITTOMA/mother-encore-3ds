@@ -68,6 +68,7 @@ public:
   bool play(std::string_view, std::string &);
   bool play(std::string_view, float custom_speed, bool from_end, std::string &);
   bool stop(std::string &);
+  bool stop(bool reset,std::string &);
   bool advance(float actual_delta, bool tree_paused, std::string &);
   bool process(upstream::FieldTreePhase, float actual_delta, bool tree_paused,
                std::string &);
@@ -79,6 +80,8 @@ public:
   bool assigned(upstream::FieldObjectId animation, std::string &,
                 std::string &) const;
   bool stop(upstream::FieldObjectId animation, std::string &);
+  bool stop(upstream::FieldObjectId animation,bool reset,std::string &);
+  bool playback_snapshot(upstream::FieldObjectId,std::string &assigned,bool &playing,float &position,float &length,std::string&)const;
   bool process(upstream::FieldObjectId animation, upstream::FieldTreePhase,
                float actual_delta, bool tree_paused, std::string &);
   std::vector<upstream::FieldObjectId> animation_objects() const;

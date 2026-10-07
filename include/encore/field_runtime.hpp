@@ -26,9 +26,20 @@ public:
     bool screen_entered(uint32_t stable_id,std::string&);
     bool screen_exited(uint32_t stable_id,std::string&);
     uint64_t grass_instance(uint32_t stable_id) const;
-    bool body_entered(uint64_t instance_id,uint32_t body_id,float global_x,bool grass_visible,std::string&);
-    bool body_exited(uint64_t instance_id,uint32_t body_id,std::string&);
-    bool set_body_global_x(uint32_t body_id,float global_x,std::string&);
+    bool body_entered(uint64_t instance_id,uint64_t body_id,float global_x,bool grass_visible,std::string&);
+    bool body_exited(uint64_t instance_id,uint64_t body_id,std::string&,bool timer_exists=true);
+    bool set_body_global_x(uint64_t body_id,float global_x,std::string&);
+    // Native factory aliases this same source body. Aggregate compatibility
+    // clocks skip these instances; each actual native leaf is clocked by Tree.
+    bool bind_native_instance(uint32_t stable_id,uint64_t actual_area,Vec2 world,std::string&);
+    bool publish_native_instance(uint32_t stable_id,uint64_t actual_area,std::string&);
+    bool native_position(uint64_t,Vec2,std::string&);
+    bool native_pose(uint64_t,FieldGrassDraw&,bool&physics,bool&graph,bool&timer,double&left,std::string&);
+    bool native_physics(uint64_t,float,std::string&);
+    bool native_graph(uint64_t,std::string&);
+    bool native_timer(uint64_t,double,bool&timeout,std::string&);
+    bool native_scale(uint64_t,float,bool deactivate,std::string&);
+    bool retire_native_instance(uint64_t,std::string&);
     bool physics_tick(float delta,std::string&);
     bool idle_tick(double delta,std::string&);
     void flush_deferred();
@@ -36,12 +47,13 @@ public:
     void clear();
     uint32_t ready_grass_count() const { return next_ready_; }
 private:
-    struct Body { uint32_t stable_id=0;float x=0; };
+    struct Body { uint64_t stable_id=0;float x=0; };
     struct Tween { double time=0,duration=0;bool deactivate=false; };
     struct GrassState {
         uint64_t instance_id=0;
         bool ready=false,alive=false,flip=false,animation_active=false,physics_active=false;
-        bool timer_running=false;
+        bool timer_running=false,native_owned=false;
+        Vec2 native_world{};
         uint32_t texture_index=0;uint16_t frame=0,desired_frame=0;
         double timer_left=0;
         float scale_y=1;
@@ -56,6 +68,7 @@ private:
     const FieldData* data_=nullptr;
     std::vector<GrassState> grass_;
     std::vector<Retired> deferred_;
+    std::vector<Retired> native_pending_;
     uint32_t next_ready_=0;
     uint64_t next_instance_=1;
 };

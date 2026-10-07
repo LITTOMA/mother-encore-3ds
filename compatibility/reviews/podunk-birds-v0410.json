@@ -3,7 +3,7 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_admitted": false,
-  "ir_sha256": "64a95f12079e47f73e7804ce50071c1df4d83c8d32e1910106e497ddc63ce8f9",
+  "ir_sha256": "73dd5aede25b4b498b812563a8cdcd068f645eb02e9e5e12891dff795d71bd34",
   "source_review": [
     "All54 full native Podunk source instances; no proximity invented for actual Area4096/mask0/monitorablefalse",
     "Original three3x3 PNG Sprite sheets, sourcenearest/no mipmaps/premultfalse, pixel snapping local floor then worldeachvertex",
@@ -13,7 +13,8 @@
     "Native AnimationPlayer play/seek,clamp/fposmod,approx key lookup,event key upper bound,endReached/notify,zeroDelta seek endpoint semantics mapped",
     "Original Timer time_left double/get_time_left float; timeout strictlynegative; nonplayerbody still starts Timer",
     "Only disabled source Circle Kinematic shape, exact native zero-active-shape wholeworldmotion branch; livehost must reject changedshape or cachedplatformstate",
-    "No rewards or HP/PP behavior; pending full scene/lifecycle/geometry/unsupportedlistener admission"
+    "No rewards or HP/PP behavior; pending full scene/lifecycle/geometry/unsupportedlistener admission",
+    "Format2/cap4 preserves all four exact checked source child-role/signal/method connections for actual SceneTree/SignalBus execution; no source Ready permission is added"
   ],
   "engine_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
   "engine_source_sha256": {

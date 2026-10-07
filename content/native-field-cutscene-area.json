@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.field-cutscene-area.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
@@ -17,6 +17,7 @@
   ],
   "completion": "on_dialogue_done",
   "battle_signal": "battle_to_ov",
+  "battle_method": "_stop_process",
   "connections": [
     {
       "signal": "body_entered",

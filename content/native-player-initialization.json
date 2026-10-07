@@ -13,6 +13,7 @@
     "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
     "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
     "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
     "Audio/Sound effects/EB/tcrash.wav": "6bc353a536933880e9bd358e76f94a09e7c1602ae29a989c5a47357f595498e7",
     "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
     "Audio/Sound effects/Ninten Bat.mp3": "d2043204c6e6c9a85aa0bb1a061b9d5f5c8aff08f6fdea623a2346fbeedb9f50",
@@ -31,7 +32,6 @@
     "Graphics/VFX/AnaPSISparks.png": "c7b9bacef7ea276641c25830cda411989191f50346954b565901ab0c63d86a68",
     "Nodes/Reusables/Effects/AfterImageCreator.tscn": "6e7436316f5ced4d3d9ef8f1416cfa7b2cd860ca739e1534369c3a00fe10122e",
     "Nodes/Reusables/Overlap/Hitbox.tscn": "8b380458e73b6e5e7b8c34035ee4a26e47e36ee4d2527aaad5f8610f27267a23",
-    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
     "Nodes/Reusables/Shadow.tscn": "bf37c22dc26ceaa76c378a92e901e9d1b6ccd89b2378f9de31a384a2513f2b3b",
     "Nodes/Reusables/Sweatdrops.tscn": "770e43a7852e0896fee0c3ebdbd7d7204200495a5f0aa6a8dd426cbd6cd7275a",
     "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
@@ -55,7 +55,7 @@
   "tree_sha256": "426f646c34963189f73d8684a956f9e65adc2c5786001951e339a124d4c9a645",
   "source_receipt_sha256": "5a5f1417a4397938fecdb87c4524a6ebc73a020eb5cd672020fe1f83084330f6",
   "declarations_sha256": "ccf6dfd0e565d8a69869aaa3bddb703b98e53cfb4ea0be281789bb9d926ccc6d",
-  "constructor_ir_sha256": "4c127ee0f6f5aab993b6769b6d1270ce1e7b6cc4c65892adedd809f68c751005",
+  "constructor_ir_sha256": "174dbb4a0d474971f05b5a1cdc0a11088e4762cd16533e19ad2a3bd251f06c3d",
   "fields": [
     {
       "source": "Scripts/Main/party/party_object.gd",

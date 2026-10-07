@@ -9,6 +9,7 @@
 namespace encore::upstream {
 class FieldNodeRecipeData;
 class FieldSpriteData;
+class FieldDoorData;
 using FieldObjectId=uint64_t;
 using FieldTransform=std::array<Vec2,3>;
 using FieldColor=std::array<float,4>;
@@ -104,6 +105,8 @@ public:
  // source set_name/add_child. This is not arbitrary class/script evaluation.
  bool initialize_source_node(const FieldIdentity&,const FieldNodeDescriptor&,FieldNodeTreeHost,std::string&);
  bool set_name(FieldObjectId,std::string_view,std::string&);
+ // Audited AudioStreamPlayer.new; the source host must own its native defaults.
+ bool instantiate_audio_source(const FieldIdentity&,const FieldNodeDescriptor&,FieldObjectId&,std::string&);
  const FieldNodeState*state(FieldObjectId)const;
  const FieldNodeDescriptor*descriptor(FieldObjectId)const;
  bool object_identity(FieldObjectId,FieldIdentity&)const;
@@ -128,6 +131,11 @@ public:
  // Complete source recipe, including constructor-owned internal nodes.
  // Creation stays out of tree until the actual deferred add_child executes.
  bool instantiate_recipe(const FieldNodeRecipeData&,FieldObjectId&,std::string&);
+ // The existing native House owns its full execution. Materialize only its
+ // checked Door continuation and the three source children observed by Door.
+ // ObjectIDs come from this same ObjectDB; this grants no source Ready.
+ bool initialize_door_continuation(const FieldDoorData&,uint32_t,
+                                  FieldNodeTreeHost,std::string&);
  // The audited CharacterSprite body creates exactly one native AnimationTree.
  // This derives a constructor descriptor from both checked source packs and
  // the live caller; it cannot instantiate an arbitrary class or script.
@@ -145,6 +153,7 @@ public:
  bool force_update_transform(FieldObjectId,std::string&);
  bool flush_transform_notifications(std::string&);
  bool set_visible(FieldObjectId,bool,std::string&);
+ bool set_z_index(FieldObjectId,int32_t,std::string&);
  bool set_behind_parent(FieldObjectId,bool,std::string&);
  bool visible_in_tree(FieldObjectId)const;
  bool effective_color(FieldObjectId,FieldColor&,std::string&)const;

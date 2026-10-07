@@ -89,6 +89,10 @@ public:
                    bool tree_paused, bool update_pending, std::string &);
   bool input(const upstream::PlayerInputEvent &, std::string &);
   bool deferred(const upstream::FieldDeferredMessage &, std::string &);
+  bool method_owned(const upstream::FieldDeferredMessage &) const;
+  bool source_method(const upstream::FieldDeferredMessage &, std::string &);
+  bool declaration(upstream::FieldObjectId, std::string_view, uint32_t &,
+                   std::string &) const;
   bool draw(upstream::FieldObjectId, const upstream::FieldTransform &,
             bool pixel_snap, std::string &);
   bool release(upstream::FieldObjectId, std::string &);

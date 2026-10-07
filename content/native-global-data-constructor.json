@@ -2101,7 +2101,7 @@
     ]
   },
   "menu_flavor_member": "menu_flavor",
-  "legacy_ir_sha256": "cd0cd6114b028322e0c6f4c6a6f90edebcc9e13144a10f26427e4ff0bf6d641b",
+  "legacy_ir_sha256": "48735b076f56923ca8434668eddc61a85094f12e1e894a2dac3d72312d9bf5d4",
   "cache_ir_sha256": "52e8901e881e59db64f3a2690141f6a05dd0634c7c31cb32983cb14d93bb3106",
   "engine_review_sha256": "99220096efebf992f6deb8d77eb2a49c3ae167cf908602b1699f88554b64c1bd",
   "native_receipt_sha256": "ada2a73dd2b70a08403f5b59055d33d04b993ebacdf70060a8cd818bd84db16a",

@@ -1,0 +1,5322 @@
+{
+  "schema": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739824,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/podunk.tscn",
+  "scene_id": 2561235290,
+  "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+  "sources": {
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+    "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+    "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+    "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+    "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+    "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+    "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+    "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+    "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+    "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+    "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+    "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+    "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+    "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+    "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+    "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+    "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+    "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+    "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+    "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+    "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+    "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+    "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+    "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+    "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+    "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+    "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+    "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+    "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Graphics/UI/Battle/targetCursor.png.import": "98ca8ee62ee06c86d0d7a3c2b0b81efb3c1927d7c91df674448d02f6187d7320",
+    "Scripts/Main/Switches/ControlledObject.gd": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d",
+    "Scripts/Main/Switches/ControlledTwoStatesObject.gd": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee",
+    "Scripts/Main/party/party_follower.gd": "d972fc68dc41fc8d55550786b167a91f119b0a2fcba45174c7019df0e30b5550",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Graphics/Character Sprites/Npcs/misc/birds/0.png.import": "36acda999115670f3a10782c0e7d3678cd461fbaa7f43d04d6fd4968c9b42bb9",
+    "Graphics/Character Sprites/Npcs/misc/birds/1.png": "0c0f421d08f68334e3d049ea76cd8e2e1ceccb75208305af0e7bd3af928ab39d",
+    "Graphics/Character Sprites/Npcs/misc/birds/1.png.import": "f67ae747292a2f249b11681720becc55c95e662916d44ba30324a5e9ee1a99d7",
+    "Graphics/Character Sprites/Npcs/misc/birds/2.png": "50bd41cb803e56552ca9f752520bba63592f32b24fa881e2e0b55bfedc190dce",
+    "Graphics/Character Sprites/Npcs/misc/birds/2.png.import": "5a2fa4eab3a54ce69ce2adfb4246fe8a256ae9bcf7ef416ee3df7aa0d1eef351",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Data/Dialogue/ItemDialogue/eaglefeather.yaml": "bbf44a24981af0fb453559986284f583d8c134240248aa542ae607bff6774324",
+    "Data/Dialogue/ItemDialogue/itemcheck.yaml": "0dc7d9664d1c530e7be9384371159e7e0bedd58e126e3e71e3bbadb244ac6c51",
+    "Data/Dialogue/ItemDialogue/itemfull.yaml": "5143202ccf3ab17c303de414049bf7a0d7fe7e885ac6c99643a98b1732a285d6",
+    "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
+    "Data/Items/EagleFeather.yaml": "69602dc23c3e4821ecd57b70914367225861459f8c9df799fadd4b35598c6b95",
+    "Data/Items/FavFood.yaml": "af37bcef1ee7b36397ead1b46723ca54040d2cbb476bc262dbcbc980dd84cd4d",
+    "Data/Items/Shovel.yaml": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0",
+    "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+    "Graphics/Objects/Items/EagleFeather.png": "cf887134d0c3c397ea91c8da2a966594bcea2a9821e48f4e364e63af728e5b7d",
+    "Graphics/Objects/Items/EagleFeather.png.import": "55a1efce73d97297315e94ffebbe554b2db3bfe29e18a6b26208dac6f18a91bd",
+    "Graphics/Objects/Items/FavFood.png": "fc596bb3bfc9a2f0b2eade8671d042f7feeff8ec5d592c4bfa9bd18997dc3726",
+    "Graphics/Objects/Items/FavFood.png.import": "ba4275a73d6a08c178bb45b13e89c664eb054919b748e86af70d544f97f8ccaf",
+    "Graphics/Objects/Items/Shovel.png": "1139cb42931979e3c1198860e1488c5c31489db9580623e26da53e04cf89ff4d",
+    "Graphics/Objects/Items/Shovel.png.import": "c52a814d094d7364bfe6f114137bef50a57b3b0c093563e095e0015e753da067",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Audio/Sound effects/phonehangup.wav": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145",
+    "Audio/Sound effects/phonehangup.wav.import": "fdbe75f6e2df204ccc6bd2fa775982d96d8d5a6ce5cbf91517e53a3fbb2b78a4",
+    "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+    "Data/Dialogue/Reusable/payphonenomoney.yaml": "97faf27ac7db082b467d2505471844f163c0407d97329a779a96b08f630ba24f",
+    "Data/Items/PhoneCard.yaml": "f7b194983181daaee5f0bae4a56d1d5f8aafec473cf469b61593d8d439c280ac",
+    "Graphics/Objects/Common/Exterior Payphone.png.import": "6354253dacabf47d93a792152533e5ab25925b0e472650540a1e17cc81ee65d7",
+    "Nodes/Reusables/payphone.tscn": "80f1e9f9d8a43fde707475631c747553e1827c5d7ecc8f00175b2dd6b2438450",
+    "Nodes/Ui/CashBox.tscn": "3de63700dced79e8f907d68d67830ae8ddff609c53810ae2849706cafe6717d1",
+    "Nodes/Ui/PhoneUnitsBox.tscn": "5dea68e0956909f5a2f345835cf5bbad6650a891faaa3c2e0e340166365d9051",
+    "Scripts/UI/CashBox.gd": "a2364ce2b39b2d03f4b116d45eb4b0fc1bae8f50228a6ee7ae4855055cb3ec1c",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Graphics/UI/melody bg.png.import": "541a55a1ebcf3d2b2fff92f7e25de2976c6d23059beb24c00e1b4067f772c5e8"
+  },
+  "dependencies": {
+    "content/podunk-node-tree.json": "8f6ac6436ad79c5cef04ab428d4896d7cf19aa7f2ab9a294d8e43de3a590406e",
+    "content/podunk-game-camera.json": "782d0ad6f9e7244705dd416bb01d7ab8f7d6681610b2c90b4d178575787fca38",
+    "content/native-field-player-transitions.json": "9a32af96f65f93941965e1e714bbf6b729ff2b4e23c7deed36214a2e0bfd600c",
+    "content/podunk-birds.json": "73dd5aede25b4b498b812563a8cdcd068f645eb02e9e5e12891dff795d71bd34",
+    "content/native-field-dropped.json": "a1b3d66b7b373a4355f9c7eb306cc55e0ffb7e071609ede90e3eeb8a1713b980",
+    "content/native-field-payphone.json": "71919c1ac49818d5c93291029d6232d6ad8e27de24161689803749118705f1a3",
+    "content/native-field-melody-background.json": "b8ccd742850fe26176347864050cd4258a3fd0888ac46aeb20a00bd807ffe40f",
+    "content/podunk-camera-arrows.json": "18327ef7815385ae273feb2646327be5cac1182fb6078098343c293dbeeb51d5",
+    "content/native-field-npc.json": "213492605031b9f76033441d27fef550583df0191344dbe65bd84d94d67e5b7a",
+    "content/native-field-butterfly.json": "22e2a023f8d24210c7a685641ffe538e8cd3d7c418a626cbbc445af86ccc1d0a",
+    "content/native-prompt-native.json": "61ffed51c5f8ef31955009dcde54532cb017a0935f84a9cd8309f9924ab9d1ea",
+    "content/native-scene-clip-native.json": "f4785fe02468dd1ca24c3ee75fdcf91ccc2ee3b07d4e4d81f19bc9fca95867f8"
+  },
+  "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+  "engine_sha256": {
+    "godot-3.6.2-animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "game-camera-camera_2d.cpp": "56fabb50e0df1de2b79fc100197731f78a8d31c1f8e0e8cf8a34393e8cd5726e"
+  },
+  "symbols": [
+    "idle_process_internal",
+    "animation_started",
+    "animation_finished",
+    "size_changed",
+    "_update_scroll"
+  ],
+  "records": [
+    {
+      "id": 3447179695,
+      "parent": 3276706321,
+      "owner": 3447179695,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 3551440894,
+      "parent": 3447179695,
+      "owner": 3447179695,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3592314512,
+      "parent": 3276706321,
+      "owner": 3276706321,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area/AnimationPlayer",
+      "target": 1967625466,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 2835830333,
+      "parent": 3511689392,
+      "owner": 2835830333,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area2/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 2421351675,
+      "parent": 2835830333,
+      "owner": 2835830333,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area2/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 577302902,
+      "parent": 3511689392,
+      "owner": 3511689392,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area2/AnimationPlayer",
+      "target": 3712841114,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 1883981402,
+      "parent": 783732192,
+      "owner": 1883981402,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area3/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 621571822,
+      "parent": 1883981402,
+      "owner": 1883981402,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area3/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1918482966,
+      "parent": 783732192,
+      "owner": 783732192,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area3/AnimationPlayer",
+      "target": 1871680614,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 2065574871,
+      "parent": 2891496816,
+      "owner": 2065574871,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area7/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 3163522075,
+      "parent": 2065574871,
+      "owner": 2065574871,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area7/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3739682372,
+      "parent": 2891496816,
+      "owner": 2891496816,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area7/AnimationPlayer",
+      "target": 678282287,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 1032191920,
+      "parent": 308816611,
+      "owner": 1032191920,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area8/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 2891548808,
+      "parent": 1032191920,
+      "owner": 1032191920,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area8/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4033269097,
+      "parent": 308816611,
+      "owner": 308816611,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area8/AnimationPlayer",
+      "target": 2654467140,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 4118620209,
+      "parent": 2114285700,
+      "owner": 4118620209,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area6/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 1554684477,
+      "parent": 4118620209,
+      "owner": 4118620209,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area6/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2210170936,
+      "parent": 2114285700,
+      "owner": 2114285700,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area6/AnimationPlayer",
+      "target": 4099041989,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 453015918,
+      "parent": 329647682,
+      "owner": 453015918,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area5/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 2964975151,
+      "parent": 453015918,
+      "owner": 453015918,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area5/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 500296007,
+      "parent": 329647682,
+      "owner": 329647682,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area5/AnimationPlayer",
+      "target": 335925765,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 1112495717,
+      "parent": 248392072,
+      "owner": 1112495717,
+      "kind": 9,
+      "path": "Objects/Zoo Flag/Jump Area4/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 1260230091,
+      "parent": 1112495717,
+      "owner": 1112495717,
+      "kind": 1,
+      "path": "Objects/Zoo Flag/Jump Area4/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4265625532,
+      "parent": 248392072,
+      "owner": 248392072,
+      "kind": 2,
+      "path": "Objects/Zoo Flag/Jump Area4/AnimationPlayer",
+      "target": 927304898,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 3704395774,
+      "parent": 1768826684,
+      "owner": 3704395774,
+      "kind": 9,
+      "path": "Objects/Jump Area/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 2619324513,
+      "parent": 3704395774,
+      "owner": 3704395774,
+      "kind": 1,
+      "path": "Objects/Jump Area/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 716616971,
+      "parent": 1768826684,
+      "owner": 1768826684,
+      "kind": 2,
+      "path": "Objects/Jump Area/AnimationPlayer",
+      "target": 3622348351,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 2386145056,
+      "parent": 1068331448,
+      "owner": 2386145056,
+      "kind": 9,
+      "path": "Objects/Jump Area2/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 2779251721,
+      "parent": 2386145056,
+      "owner": 2386145056,
+      "kind": 1,
+      "path": "Objects/Jump Area2/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4280133854,
+      "parent": 1068331448,
+      "owner": 1068331448,
+      "kind": 2,
+      "path": "Objects/Jump Area2/AnimationPlayer",
+      "target": 534355994,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 980170499,
+      "parent": 1985545981,
+      "owner": 980170499,
+      "kind": 9,
+      "path": "Objects/Jump Area3/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 849273246,
+      "parent": 980170499,
+      "owner": 980170499,
+      "kind": 1,
+      "path": "Objects/Jump Area3/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2756510245,
+      "parent": 1985545981,
+      "owner": 1985545981,
+      "kind": 2,
+      "path": "Objects/Jump Area3/AnimationPlayer",
+      "target": 915182812,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 2747516099,
+      "parent": 2625411066,
+      "owner": 2747516099,
+      "kind": 9,
+      "path": "Objects/Jump Area4/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 1859662917,
+      "parent": 2747516099,
+      "owner": 2747516099,
+      "kind": 1,
+      "path": "Objects/Jump Area4/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2950513943,
+      "parent": 2625411066,
+      "owner": 2625411066,
+      "kind": 2,
+      "path": "Objects/Jump Area4/AnimationPlayer",
+      "target": 2728601097,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 661066231,
+      "parent": 531456607,
+      "owner": 661066231,
+      "kind": 9,
+      "path": "Objects/Jump Area5/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 2436556731,
+      "parent": 661066231,
+      "owner": 661066231,
+      "kind": 1,
+      "path": "Objects/Jump Area5/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 891379006,
+      "parent": 531456607,
+      "owner": 531456607,
+      "kind": 2,
+      "path": "Objects/Jump Area5/AnimationPlayer",
+      "target": 3341770451,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 101661378,
+      "parent": 1367377724,
+      "owner": 101661378,
+      "kind": 9,
+      "path": "Objects/Jump Area6/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 2,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": false,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": -5,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": true,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 0,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 64.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": true,
+        "editor_draw_drag_margin": false,
+        "script": null,
+        "__meta__": {
+          "type": "Dictionary",
+          "pairs": [
+            [
+              "_edit_lock_",
+              true
+            ]
+          ]
+        }
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 1246802373,
+      "parent": 101661378,
+      "owner": 101661378,
+      "kind": 1,
+      "path": "Objects/Jump Area6/Camera2D/ArrowsAnim",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Come In",
+          "length": 0.6000000238418579,
+          "loop": false
+        },
+        {
+          "name": "Come Out",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 1,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3647158412,
+      "parent": 1367377724,
+      "owner": 1367377724,
+      "kind": 2,
+      "path": "Objects/Jump Area6/AnimationPlayer",
+      "target": 630004425,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Arrow",
+          "length": 1.1666699647903442,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Arrow"
+    },
+    {
+      "id": 1059917111,
+      "parent": 4080132945,
+      "owner": 4080132945,
+      "kind": 8,
+      "path": "Objects/Items/Item/Tween",
+      "target": 1999195323,
+      "class": "Tween",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 0,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "repeat": false,
+        "playback_process_mode": 1,
+        "playback_speed": 1.0,
+        "playback/active": false,
+        "playback/repeat": false,
+        "playback/speed": 1.0,
+        "script": null
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 83533071,
+      "parent": 4080132945,
+      "owner": 4080132945,
+      "kind": 4,
+      "path": "Objects/Items/Item/AnimationPlayer",
+      "target": 1999195323,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "blink",
+          "length": 0.4000000059604645,
+          "loop": true
+        }
+      ],
+      "speed": 0.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "blink"
+    },
+    {
+      "id": 884605586,
+      "parent": 3824508883,
+      "owner": 3824508883,
+      "kind": 8,
+      "path": "Objects/Items/Item2/Tween",
+      "target": 3481587703,
+      "class": "Tween",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 0,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "repeat": false,
+        "playback_process_mode": 1,
+        "playback_speed": 1.0,
+        "playback/active": false,
+        "playback/repeat": false,
+        "playback/speed": 1.0,
+        "script": null
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 3022327839,
+      "parent": 3824508883,
+      "owner": 3824508883,
+      "kind": 4,
+      "path": "Objects/Items/Item2/AnimationPlayer",
+      "target": 3481587703,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "blink",
+          "length": 0.4000000059604645,
+          "loop": true
+        }
+      ],
+      "speed": 0.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "blink"
+    },
+    {
+      "id": 3105593456,
+      "parent": 2256007889,
+      "owner": 2256007889,
+      "kind": 8,
+      "path": "Objects/Items/FavFood/Tween",
+      "target": 538594275,
+      "class": "Tween",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 0,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "repeat": false,
+        "playback_process_mode": 1,
+        "playback_speed": 1.0,
+        "playback/active": false,
+        "playback/repeat": false,
+        "playback/speed": 1.0,
+        "script": null
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 1670240160,
+      "parent": 2256007889,
+      "owner": 2256007889,
+      "kind": 4,
+      "path": "Objects/Items/FavFood/AnimationPlayer",
+      "target": 538594275,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "blink",
+          "length": 0.4000000059604645,
+          "loop": true
+        }
+      ],
+      "speed": 0.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "blink"
+    },
+    {
+      "id": 3211784962,
+      "parent": 1055985063,
+      "owner": 1055985063,
+      "kind": 3,
+      "path": "Objects/Critters/bird/AnimationPlayer",
+      "target": 2645261807,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3941346910,
+      "parent": 3146284972,
+      "owner": 3146284972,
+      "kind": 3,
+      "path": "Objects/Critters/bird2/AnimationPlayer",
+      "target": 3298105064,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1252547290,
+      "parent": 22454903,
+      "owner": 22454903,
+      "kind": 3,
+      "path": "Objects/Critters/bird3/AnimationPlayer",
+      "target": 1456752288,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1472892268,
+      "parent": 2431093527,
+      "owner": 2431093527,
+      "kind": 3,
+      "path": "Objects/Critters/bird4/AnimationPlayer",
+      "target": 3012069310,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2255698135,
+      "parent": 136587537,
+      "owner": 136587537,
+      "kind": 3,
+      "path": "Objects/Critters/bird5/AnimationPlayer",
+      "target": 1603240021,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2434193553,
+      "parent": 228698109,
+      "owner": 228698109,
+      "kind": 3,
+      "path": "Objects/Critters/bird6/AnimationPlayer",
+      "target": 4130857304,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2008673110,
+      "parent": 3128949309,
+      "owner": 3128949309,
+      "kind": 3,
+      "path": "Objects/Critters/bird7/AnimationPlayer",
+      "target": 3659954303,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 853298176,
+      "parent": 1501659968,
+      "owner": 1501659968,
+      "kind": 3,
+      "path": "Objects/Critters/bird8/AnimationPlayer",
+      "target": 623633233,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2535931548,
+      "parent": 3905170633,
+      "owner": 3905170633,
+      "kind": 3,
+      "path": "Objects/Critters/bird9/AnimationPlayer",
+      "target": 1780916184,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4290122848,
+      "parent": 2638434535,
+      "owner": 2638434535,
+      "kind": 3,
+      "path": "Objects/Critters/bird10/AnimationPlayer",
+      "target": 2620946161,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4066886198,
+      "parent": 1822054754,
+      "owner": 1822054754,
+      "kind": 3,
+      "path": "Objects/Critters/bird11/AnimationPlayer",
+      "target": 4054334358,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1406429105,
+      "parent": 2976092317,
+      "owner": 2976092317,
+      "kind": 3,
+      "path": "Objects/Critters/bird12/AnimationPlayer",
+      "target": 4081104082,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1182104879,
+      "parent": 1130171587,
+      "owner": 1130171587,
+      "kind": 3,
+      "path": "Objects/Critters/bird13/AnimationPlayer",
+      "target": 3783299797,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2422615132,
+      "parent": 4234750419,
+      "owner": 4234750419,
+      "kind": 3,
+      "path": "Objects/Critters/bird14/AnimationPlayer",
+      "target": 998926510,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 30849033,
+      "parent": 1418239347,
+      "owner": 1418239347,
+      "kind": 3,
+      "path": "Objects/Critters/bird15/AnimationPlayer",
+      "target": 2820188718,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4274694699,
+      "parent": 2672090862,
+      "owner": 2672090862,
+      "kind": 3,
+      "path": "Objects/Critters/bird16/AnimationPlayer",
+      "target": 2152333819,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2615997477,
+      "parent": 2571256033,
+      "owner": 2571256033,
+      "kind": 3,
+      "path": "Objects/Critters/bird17/AnimationPlayer",
+      "target": 2826611532,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 265104657,
+      "parent": 1345204293,
+      "owner": 1345204293,
+      "kind": 3,
+      "path": "Objects/Critters/bird18/AnimationPlayer",
+      "target": 1314837850,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2856121343,
+      "parent": 415836952,
+      "owner": 415836952,
+      "kind": 3,
+      "path": "Objects/Critters/bird19/AnimationPlayer",
+      "target": 1354354776,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1796649386,
+      "parent": 2180967514,
+      "owner": 2180967514,
+      "kind": 3,
+      "path": "Objects/Critters/bird20/AnimationPlayer",
+      "target": 2377480024,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1792160172,
+      "parent": 4054428368,
+      "owner": 4054428368,
+      "kind": 3,
+      "path": "Objects/Critters/bird21/AnimationPlayer",
+      "target": 2710627270,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 650121202,
+      "parent": 3059359616,
+      "owner": 3059359616,
+      "kind": 3,
+      "path": "Objects/Critters/bird22/AnimationPlayer",
+      "target": 2218638736,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 751153355,
+      "parent": 3143541860,
+      "owner": 3143541860,
+      "kind": 3,
+      "path": "Objects/Critters/bird23/AnimationPlayer",
+      "target": 2293106101,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1891648582,
+      "parent": 1800270856,
+      "owner": 1800270856,
+      "kind": 3,
+      "path": "Objects/Critters/bird24/AnimationPlayer",
+      "target": 292546148,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 998561830,
+      "parent": 2487542873,
+      "owner": 2487542873,
+      "kind": 3,
+      "path": "Objects/Critters/bird25/AnimationPlayer",
+      "target": 640834334,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3698466405,
+      "parent": 3002914531,
+      "owner": 3002914531,
+      "kind": 3,
+      "path": "Objects/Critters/bird26/AnimationPlayer",
+      "target": 194894069,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3086829698,
+      "parent": 359280320,
+      "owner": 359280320,
+      "kind": 3,
+      "path": "Objects/Critters/bird27/AnimationPlayer",
+      "target": 2700721914,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 800047265,
+      "parent": 391398823,
+      "owner": 391398823,
+      "kind": 3,
+      "path": "Objects/Critters/bird28/AnimationPlayer",
+      "target": 2851645138,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3752866435,
+      "parent": 1502878814,
+      "owner": 1502878814,
+      "kind": 3,
+      "path": "Objects/Critters/bird29/AnimationPlayer",
+      "target": 3813027122,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 25223496,
+      "parent": 4169501585,
+      "owner": 4169501585,
+      "kind": 3,
+      "path": "Objects/Critters/bird30/AnimationPlayer",
+      "target": 2465616759,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2335578724,
+      "parent": 1851125989,
+      "owner": 1851125989,
+      "kind": 3,
+      "path": "Objects/Critters/bird31/AnimationPlayer",
+      "target": 2837217348,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 185105131,
+      "parent": 2051884942,
+      "owner": 2051884942,
+      "kind": 3,
+      "path": "Objects/Critters/bird32/AnimationPlayer",
+      "target": 2927797115,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3264659898,
+      "parent": 1784690335,
+      "owner": 1784690335,
+      "kind": 3,
+      "path": "Objects/Critters/bird33/AnimationPlayer",
+      "target": 980632314,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1659045143,
+      "parent": 1209488474,
+      "owner": 1209488474,
+      "kind": 3,
+      "path": "Objects/Critters/bird34/AnimationPlayer",
+      "target": 979862413,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3488780339,
+      "parent": 433317393,
+      "owner": 433317393,
+      "kind": 3,
+      "path": "Objects/Critters/bird35/AnimationPlayer",
+      "target": 1489360201,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 407085651,
+      "parent": 3432308739,
+      "owner": 3432308739,
+      "kind": 3,
+      "path": "Objects/Critters/bird36/AnimationPlayer",
+      "target": 605591989,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3636957073,
+      "parent": 3293420686,
+      "owner": 3293420686,
+      "kind": 3,
+      "path": "Objects/Critters/bird37/AnimationPlayer",
+      "target": 1973993238,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4020230997,
+      "parent": 3763378736,
+      "owner": 3763378736,
+      "kind": 3,
+      "path": "Objects/Critters/bird38/AnimationPlayer",
+      "target": 113216398,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2334539473,
+      "parent": 1058773345,
+      "owner": 1058773345,
+      "kind": 3,
+      "path": "Objects/Critters/bird39/AnimationPlayer",
+      "target": 1597681011,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3026634706,
+      "parent": 3533755110,
+      "owner": 3533755110,
+      "kind": 3,
+      "path": "Objects/Critters/bird40/AnimationPlayer",
+      "target": 3572492450,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2306441420,
+      "parent": 3936333238,
+      "owner": 3936333238,
+      "kind": 3,
+      "path": "Objects/Critters/bird41/AnimationPlayer",
+      "target": 2003007927,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 4082120413,
+      "parent": 822771333,
+      "owner": 822771333,
+      "kind": 3,
+      "path": "Objects/Critters/bird42/AnimationPlayer",
+      "target": 1886321141,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1527878448,
+      "parent": 3754405504,
+      "owner": 3754405504,
+      "kind": 3,
+      "path": "Objects/Critters/bird43/AnimationPlayer",
+      "target": 2470448043,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 645634775,
+      "parent": 2498342534,
+      "owner": 2498342534,
+      "kind": 3,
+      "path": "Objects/Critters/bird44/AnimationPlayer",
+      "target": 3137474298,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1646365792,
+      "parent": 3656239195,
+      "owner": 3656239195,
+      "kind": 3,
+      "path": "Objects/Critters/bird45/AnimationPlayer",
+      "target": 3807793570,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3582919723,
+      "parent": 108973762,
+      "owner": 108973762,
+      "kind": 3,
+      "path": "Objects/Critters/bird54/AnimationPlayer",
+      "target": 4033411949,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2903334069,
+      "parent": 3798305959,
+      "owner": 3798305959,
+      "kind": 3,
+      "path": "Objects/Critters/bird46/AnimationPlayer",
+      "target": 3201451097,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2607524725,
+      "parent": 1443553311,
+      "owner": 1443553311,
+      "kind": 3,
+      "path": "Objects/Critters/bird47/AnimationPlayer",
+      "target": 4100520819,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 3245786161,
+      "parent": 2946043620,
+      "owner": 2946043620,
+      "kind": 3,
+      "path": "Objects/Critters/bird48/AnimationPlayer",
+      "target": 1472851271,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2864718621,
+      "parent": 2794958405,
+      "owner": 2794958405,
+      "kind": 3,
+      "path": "Objects/Critters/bird49/AnimationPlayer",
+      "target": 2561166968,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 689386881,
+      "parent": 186464091,
+      "owner": 186464091,
+      "kind": 3,
+      "path": "Objects/Critters/bird50/AnimationPlayer",
+      "target": 1644500973,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 396888198,
+      "parent": 3282196944,
+      "owner": 3282196944,
+      "kind": 3,
+      "path": "Objects/Critters/bird51/AnimationPlayer",
+      "target": 812264143,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1764323782,
+      "parent": 692478053,
+      "owner": 692478053,
+      "kind": 3,
+      "path": "Objects/Critters/bird52/AnimationPlayer",
+      "target": 2443701096,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2649504745,
+      "parent": 1591481517,
+      "owner": 1591481517,
+      "kind": 3,
+      "path": "Objects/Critters/bird53/AnimationPlayer",
+      "target": 3864398134,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Fly",
+          "length": 0.4000000059604645,
+          "loop": true
+        },
+        {
+          "name": "Idle",
+          "length": 4.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        },
+        {
+          "name": "hop",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "hop right",
+          "length": 0.20000000298023224,
+          "loop": false
+        },
+        {
+          "name": "prepare",
+          "length": 0.20000000298023224,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 1787146612,
+      "parent": 506933837,
+      "owner": 506933837,
+      "kind": 5,
+      "path": "Objects/PayPhone/AnimationPlayer",
+      "target": 1370541361,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Idle",
+          "length": 1.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Idle"
+    },
+    {
+      "id": 4193830326,
+      "parent": 4068010527,
+      "owner": 4068010527,
+      "kind": 5,
+      "path": "Objects/PayPhone2/AnimationPlayer",
+      "target": 1153202663,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Idle",
+          "length": 1.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Idle"
+    },
+    {
+      "id": 3650535516,
+      "parent": 1374492449,
+      "owner": 1374492449,
+      "kind": 5,
+      "path": "Objects/PayPhone3/AnimationPlayer",
+      "target": 1924861608,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Idle",
+          "length": 1.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Idle"
+    },
+    {
+      "id": 2444632169,
+      "parent": 3432120793,
+      "owner": 3432120793,
+      "kind": 5,
+      "path": "Objects/PayPhone4/AnimationPlayer",
+      "target": 4060883113,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Idle",
+          "length": 1.0,
+          "loop": false
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": "Idle"
+    },
+    {
+      "id": 2547861648,
+      "parent": 2014946982,
+      "owner": 2014946982,
+      "kind": 10,
+      "path": "Cutscenes/Intro Cutscene/Camera2D",
+      "target": 0,
+      "class": "Camera2D",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 0,
+        "physics_interpolation_mode": 0,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "position": [
+          0.0,
+          0.0
+        ],
+        "rotation": 0.0,
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "z_index": 0,
+        "z_as_relative": true,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "anchor_mode": 1,
+        "rotating": false,
+        "current": false,
+        "zoom": [
+          1.0,
+          1.0
+        ],
+        "process_mode": 1,
+        "limit_left": -10000000,
+        "limit_top": -10000000,
+        "limit_right": 10000000,
+        "limit_bottom": 10000000,
+        "limit_smoothed": false,
+        "drag_margin_h_enabled": false,
+        "drag_margin_v_enabled": false,
+        "smoothing_enabled": false,
+        "smoothing_speed": 5.0,
+        "offset_h": 0.0,
+        "offset_v": 0.0,
+        "drag_margin_left": 0.20000000298023224,
+        "drag_margin_top": 0.20000000298023224,
+        "drag_margin_right": 0.20000000298023224,
+        "drag_margin_bottom": 0.20000000298023224,
+        "editor_draw_screen": true,
+        "editor_draw_limits": false,
+        "editor_draw_drag_margin": false,
+        "script": null
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 110757125,
+      "parent": 2014946982,
+      "owner": 2014946982,
+      "kind": 6,
+      "path": "Cutscenes/Intro Cutscene/AnimationPlayer",
+      "target": 0,
+      "class": "AnimationPlayer",
+      "clips": [],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 2179046065,
+      "parent": 3428391558,
+      "owner": 3428391558,
+      "kind": 12,
+      "path": "melodyBG/BG",
+      "target": 2179046065,
+      "class": "TextureRect",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 0,
+        "physics_interpolation_mode": 1,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 0.4379099905490875,
+          "g": 0.5649710297584534,
+          "b": 0.9426379799842834,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": {
+          "type": "ResourceReference",
+          "id": 830
+        },
+        "use_parent_material": false,
+        "anchor_left": 0.0,
+        "anchor_top": 0.0,
+        "anchor_right": 0.0,
+        "anchor_bottom": 0.0,
+        "margin_left": -160.0,
+        "margin_top": -90.0,
+        "margin_right": 160.0,
+        "margin_bottom": 90.0,
+        "grow_horizontal": 1,
+        "grow_vertical": 1,
+        "rect_min_size": [
+          0.0,
+          0.0
+        ],
+        "rect_rotation": 0.0,
+        "rect_scale": [
+          1.0,
+          1.0
+        ],
+        "rect_pivot_offset": [
+          0.0,
+          0.0
+        ],
+        "rect_clip_content": false,
+        "hint_tooltip": "",
+        "focus_neighbour_left": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_neighbour_top": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_neighbour_right": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_neighbour_bottom": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_next": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_previous": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_mode": 0,
+        "mouse_filter": 1,
+        "mouse_default_cursor_shape": 0,
+        "input_pass_on_modal_close_click": true,
+        "size_flags_horizontal": 1,
+        "size_flags_vertical": 1,
+        "size_flags_stretch_ratio": 1.0,
+        "theme": null,
+        "theme_type_variation": "",
+        "texture": {
+          "type": "ResourceReference",
+          "id": 832
+        },
+        "expand": true,
+        "stretch_mode": 2,
+        "flip_h": false,
+        "flip_v": false,
+        "script": null
+      },
+      "active_clip": ""
+    },
+    {
+      "id": 3012009339,
+      "parent": 3428391558,
+      "owner": 3428391558,
+      "kind": 7,
+      "path": "melodyBG/AnimationPlayer",
+      "target": 2179046065,
+      "class": "AnimationPlayer",
+      "clips": [
+        {
+          "name": "Melody",
+          "length": 1.2000000476837158,
+          "loop": true
+        },
+        {
+          "name": "RESET",
+          "length": 0.0010000000474974513,
+          "loop": false
+        }
+      ],
+      "speed": 1.0,
+      "method_mode": 0,
+      "properties": {},
+      "active_clip": ""
+    },
+    {
+      "id": 171564720,
+      "parent": 1011257558,
+      "owner": 1011257558,
+      "kind": 11,
+      "path": "Camareas/CamareaRect",
+      "target": 0,
+      "class": "ReferenceRect",
+      "clips": [],
+      "speed": 0,
+      "method_mode": 0,
+      "properties": {
+        "_import_path": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "pause_mode": 0,
+        "physics_interpolation_mode": 1,
+        "unique_name_in_owner": false,
+        "process_priority": 0,
+        "visible": true,
+        "modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "self_modulate": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "a": 1.0
+        },
+        "show_behind_parent": false,
+        "light_mask": 1,
+        "material": null,
+        "use_parent_material": false,
+        "anchor_left": 0.0,
+        "anchor_top": 0.0,
+        "anchor_right": 0.0,
+        "anchor_bottom": 0.0,
+        "margin_left": 1952.0,
+        "margin_top": 1064.0,
+        "margin_right": 2472.0,
+        "margin_bottom": 1520.0,
+        "grow_horizontal": 1,
+        "grow_vertical": 1,
+        "rect_min_size": [
+          0.0,
+          0.0
+        ],
+        "rect_rotation": 0.0,
+        "rect_scale": [
+          1.0,
+          1.0
+        ],
+        "rect_pivot_offset": [
+          0.0,
+          0.0
+        ],
+        "rect_clip_content": false,
+        "hint_tooltip": "",
+        "focus_neighbour_left": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_neighbour_top": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_neighbour_right": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_neighbour_bottom": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_next": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_previous": {
+          "type": "NodePath",
+          "value": ""
+        },
+        "focus_mode": 0,
+        "mouse_filter": 0,
+        "mouse_default_cursor_shape": 0,
+        "input_pass_on_modal_close_click": true,
+        "size_flags_horizontal": 1,
+        "size_flags_vertical": 1,
+        "size_flags_stretch_ratio": 1.0,
+        "theme": null,
+        "theme_type_variation": "",
+        "border_color": {
+          "type": "Color",
+          "r": 1.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 1.0
+        },
+        "border_width": 1.0,
+        "editor_only": true,
+        "script": null
+      },
+      "active_clip": ""
+    }
+  ]
+}

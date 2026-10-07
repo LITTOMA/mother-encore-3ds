@@ -505,6 +505,21 @@ bool FieldGlobalDataRuntime::write_global_scalar(std::string_view name,
   e.clear();
   return true;
 }
+bool FieldGlobalDataRuntime::write_source_vector(std::string_view name,
+                                                 Vec2 value, std::string &e) {
+  if (!constructor_available(e) || !std::isfinite(value.x) ||
+      !std::isfinite(value.y))
+    return fail(e, "globalData source Vector2 owner/range rejected");
+  const auto &ds = constructor_data_->declarations();
+  auto i = std::find_if(ds.begin(), ds.end(),
+                        [&](const auto &d) { return d.name == name; });
+  if (i == ds.end() || i->constant || i->adapter != 0 || i->kind != 7 ||
+      !i->setter.empty())
+    return fail(e, "globalData source Vector2 field rejected");
+  members_[size_t(i - ds.begin())].vector = {value.x, value.y};
+  e.clear();
+  return true;
+}
 bool FieldGlobalDataRuntime::menu_flavor(std::string &out,
                                          std::string &e) const {
   FieldGlobalDataMemberState v;

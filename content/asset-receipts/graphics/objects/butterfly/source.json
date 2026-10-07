@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "7c46ebe5d8613de4c984781642495b8b55c4fe31be09d2902fe38728ff048ea0",
+  "recipe_sha256": "22e2a023f8d24210c7a685641ffe538e8cd3d7c418a626cbbc445af86ccc1d0a",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "outputs": {
     "graphics/objects/butterfly/0.t3x": {

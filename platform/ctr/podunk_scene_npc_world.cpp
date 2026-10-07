@@ -123,6 +123,14 @@ bool PodunkSceneNpcWorld::owns(const FieldNodeDescriptor &d) const {
 bool PodunkSceneNpcWorld::owns(FieldObjectId id) const {
   return instances_.count(id) != 0;
 }
+bool PodunkSceneNpcWorld::native_entered(FieldObjectId id, std::string &e) const {
+  const auto v = instances_.find(id);
+  const auto *state = tree_ ? tree_->state(id) : nullptr;
+  if (v == instances_.end() || v->second.is_ray || !v->second.entered ||
+      !state || !state->alive || !state->inside || !state->bound || !actual(id, e))
+    return fail(e, "NPC script Ready requires actual entered native body");
+  e.clear(); return true;
+}
 bool PodunkSceneNpcWorld::native_ready(FieldObjectId id, std::string &e) const {
   auto v = instances_.find(id);
   auto s = tree_ ? tree_->state(id) : nullptr;
@@ -468,6 +476,15 @@ bool PodunkSceneNpcWorld::npc_present(uint32_t id, FieldNpcPresentation op,
 }
 FieldNpcHost PodunkSceneNpcWorld::source_host() {
   auto h = ports_.source;
+  h.ready_context=[this](uint32_t stable,FieldNpcReadyContext &out,std::string &e){
+    FieldObjectId object=0;
+    if(!source(stable,object,e))return false;
+    const auto *node=tree_->state(object);
+    if(!node||!node->inside||!node->ready_notified)
+      return fail(e,"NPC Ready visibility requires actual entered source body");
+    out.ancestor_visible=!node->canvas_parent||tree_->visible_in_tree(node->canvas_parent);
+    out.debug_build=ports_.actual_debug_build;e.clear();return true;
+  };
   h.flag = [this](const std::string &key, bool &value, std::string &e) {
     bool present = false;
     if (!ports_.characters->flags().read(false, key, present, value, e))

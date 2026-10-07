@@ -597,6 +597,34 @@
       "path": "data/podunk.encclipnative",
       "producer": "scene_clip_native",
       "ir": "content/native-scene-clip-native.json"
+    },
+    {
+      "role": 86,
+      "name": "SceneLeafNative",
+      "path": "data/podunk.encleafnative",
+      "producer": "scene_leaf_native",
+      "ir": "content/native-scene-leaf-native.json"
+    },
+    {
+      "role": 87,
+      "name": "GrassNative",
+      "path": "data/grass.encnative",
+      "producer": "grass_native",
+      "ir": "content/native-grass.json"
+    },
+    {
+      "role": 88,
+      "name": "PlayerPreloadScenes",
+      "path": "data/player.encpreloadscenes",
+      "producer": "player_preload_scenes",
+      "ir": "content/native-player-preload-scenes.json"
+    },
+    {
+      "role": 89,
+      "name": "NamedSfx",
+      "path": "data/audio-manager.encnamedsfx",
+      "producer": "player_named_sfx",
+      "ir": "content/native-player-named-sfx.json"
     }
   ],
   "extra_inputs": [

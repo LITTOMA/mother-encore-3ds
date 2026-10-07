@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "95a446efcb806276f07f59dc766a20f3a089129e9b5eacf8f81489f3182d90e4",
+  "ir_sha256": "e22954e180d0023e7db08492823e96672c7b1d3bd4a51fbcd10a2d7f6be083aa",
   "sources": {
     "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
     "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",

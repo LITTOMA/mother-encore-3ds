@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "1c9f324fbd1dfcb6bbbd91759b525125565531684b139fff876f1c876587dcaf",
+  "ir_sha256": "5983aaf3c12294556dc41a98a9f0a5c29d6a2512dc297b3857d3d521d153e1fc",
   "sources": {
     "Scripts/Main/Shadow.gd": "354094e5ce3fc8bfcfb500785cb00f67a9c3a5f16b14e830451b346f2305acae",
     "Scripts/misc/NintenBatSwing.gd": "d56820f5c71843f601895bd53cd42d53f0321451188ac08a55e0ab47c35d752a",

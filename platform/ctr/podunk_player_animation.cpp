@@ -1031,11 +1031,13 @@ bool PodunkPlayerAnimation::play(std::string_view name, float custom_speed,
   }
   return true;
 }
-bool PodunkPlayerAnimation::stop(std::string &e) {
+bool PodunkPlayerAnimation::stop(std::string &e) { return stop(true, e); }
+bool PodunkPlayerAnimation::stop(bool reset, std::string &e) {
   if (!live(e) || frame_open_)
     return false;
   playing_ = false;
-  position_ = 0;
+  if (reset)
+    position_ = 0;
   return tree_->remove_group(
       animation_,
       process_mode_ ? "idle_process_internal" : "physics_process_internal", e);
@@ -1134,6 +1136,29 @@ bool PodunkPlayerAnimation::stop(FieldObjectId id, std::string &e) {
   auto own = for_animation(id);
   return own ? own->stop(e)
              : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::stop(FieldObjectId id, bool reset, std::string &e) {
+  auto own = for_animation(id);
+  return own ? own->stop(reset, e)
+             : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::playback_snapshot(FieldObjectId id,
+                                              std::string &assigned,
+                                              bool &playing, float &position,
+                                              float &length,
+                                              std::string &e) const {
+  const auto i = children_.find(id);
+  const auto *own = id == animation_       ? this
+                    : i == children_.end() ? nullptr
+                                           : i->second.get();
+  if (!own || !own->live(e))
+    return fail(e, "Player native AnimationPlayer snapshot owner absent");
+  assigned = own->current_;
+  playing = own->playing_;
+  position = own->position_;
+  auto clip = own->clips_.find(assigned);
+  length = clip == own->clips_.end() ? 0 : clip->second.length;
+  return true;
 }
 bool PodunkPlayerAnimation::process(FieldObjectId id, FieldTreePhase phase,
                                     float delta, bool paused, std::string &e) {

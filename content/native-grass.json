@@ -1,0 +1,566 @@
+{
+  "schema": 1,
+  "format": 1,
+  "family": 1162739825,
+  "capability": 1,
+  "rules": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Nodes/Overworld/Grass/grass.tscn",
+  "scene_id": 3973736062,
+  "source_sha256": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+  "sources": {
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+    "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+    "scene/animation/scene_tree_tween.cpp": "c0272f420342bf8606602c31ea935d9d05b6093190a77128889ec362483693a4",
+    "scene/animation/scene_tree_tween.h": "5b83aae7581d3ad61e723904ac3dba65054d6da48f66edc6a1cdb6391218a2f5",
+    "modules/gdscript/gdscript_function.cpp": "fbf428dcba723ba9bee9aa6b74ed1c69ddec9dec950174bfd5d1367332c91df4",
+    "scene/main/scene_tree.cpp": "a1ac9f2da5a1046d1c468fd463de4907f535f124952b137d69fb39ef8b14b3b4"
+  },
+  "engine": {
+    "scene/animation/scene_tree_tween.cpp": {
+      "sha256": "c0272f420342bf8606602c31ea935d9d05b6093190a77128889ec362483693a4",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/animation/scene_tree_tween.cpp"
+    },
+    "scene/animation/scene_tree_tween.h": {
+      "sha256": "5b83aae7581d3ad61e723904ac3dba65054d6da48f66edc6a1cdb6391218a2f5",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/animation/scene_tree_tween.h"
+    },
+    "modules/gdscript/gdscript_function.cpp": {
+      "sha256": "fbf428dcba723ba9bee9aa6b74ed1c69ddec9dec950174bfd5d1367332c91df4",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/modules/gdscript/gdscript_function.cpp"
+    },
+    "scene/main/scene_tree.cpp": {
+      "sha256": "a1ac9f2da5a1046d1c468fd463de4907f535f124952b137d69fb39ef8b14b3b4",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/main/scene_tree.cpp"
+    }
+  },
+  "records": [
+    {
+      "id": 3973736062,
+      "parent": 0,
+      "owner": 0,
+      "canvas_parent": 0,
+      "class_index": 7,
+      "native_class": "Area2D",
+      "ready": 5,
+      "pause": 0,
+      "flags": 339,
+      "light_mask": 1,
+      "script_methods": 129,
+      "index": -1,
+      "priority": 0,
+      "z": 0,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "node": ".",
+      "name": "Grass",
+      "script": "Scripts/misc/grass.gd",
+      "script_sha": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+      "groups": [],
+      "native_generated": false
+    },
+    {
+      "id": 224923312,
+      "parent": 3973736062,
+      "owner": 3973736062,
+      "canvas_parent": 3973736062,
+      "class_index": 5,
+      "native_class": "CollisionShape2D",
+      "ready": 0,
+      "pause": 0,
+      "flags": 577,
+      "light_mask": 1,
+      "script_methods": 0,
+      "index": 0,
+      "priority": 0,
+      "z": 0,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          -0.0,
+          1.0
+        ],
+        [
+          0.0,
+          7.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          7.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "node": "CollisionShape2D",
+      "name": "CollisionShape2D",
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "groups": [],
+      "native_generated": false
+    },
+    {
+      "id": 3967085947,
+      "parent": 3973736062,
+      "owner": 3973736062,
+      "canvas_parent": 3973736062,
+      "class_index": 2,
+      "native_class": "Sprite",
+      "ready": 1,
+      "pause": 0,
+      "flags": 83,
+      "light_mask": 1,
+      "script_methods": 0,
+      "index": 1,
+      "priority": 0,
+      "z": 0,
+      "local": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "world": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "self_modulate": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "node": "Sprite",
+      "name": "Sprite",
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "groups": [],
+      "native_generated": false
+    },
+    {
+      "id": 434099206,
+      "parent": 3973736062,
+      "owner": 3973736062,
+      "canvas_parent": 0,
+      "class_index": 6,
+      "native_class": "AnimationPlayer",
+      "ready": 2,
+      "pause": 0,
+      "flags": 0,
+      "light_mask": 0,
+      "script_methods": 0,
+      "index": 2,
+      "priority": 0,
+      "z": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "node": "AnimationPlayer",
+      "name": "AnimationPlayer",
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "groups": [],
+      "native_generated": false
+    },
+    {
+      "id": 3479336759,
+      "parent": 3973736062,
+      "owner": 3973736062,
+      "canvas_parent": 0,
+      "class_index": 46,
+      "native_class": "AnimationTree",
+      "ready": 3,
+      "pause": 0,
+      "flags": 0,
+      "light_mask": 0,
+      "script_methods": 0,
+      "index": 3,
+      "priority": 0,
+      "z": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "node": "AnimationTree",
+      "name": "AnimationTree",
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "groups": [],
+      "native_generated": false
+    },
+    {
+      "id": 2507178350,
+      "parent": 3973736062,
+      "owner": 3973736062,
+      "canvas_parent": 0,
+      "class_index": 8,
+      "native_class": "Timer",
+      "ready": 4,
+      "pause": 0,
+      "flags": 0,
+      "light_mask": 0,
+      "script_methods": 0,
+      "index": 4,
+      "priority": 0,
+      "z": 0,
+      "local": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "world": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "self_modulate": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "node": "Timer",
+      "name": "Timer",
+      "script": "",
+      "script_sha": "0000000000000000000000000000000000000000000000000000000000000000",
+      "groups": [],
+      "native_generated": false
+    }
+  ],
+  "classes": [
+    "Node",
+    "Node2D",
+    "Sprite",
+    "VisibilityNotifier2D",
+    "Position2D",
+    "CollisionShape2D",
+    "AnimationPlayer",
+    "Area2D",
+    "Timer",
+    "KinematicBody2D",
+    "VisibilityEnabler2D",
+    "TextureRect",
+    "HBoxContainer",
+    "Label",
+    "AudioStreamPlayer",
+    "RayCast2D",
+    "AnimatedSprite",
+    "StaticBody2D",
+    "CollisionPolygon2D",
+    "TileMap",
+    "YSort",
+    "Camera2D",
+    "AudioStreamPlayer2D",
+    "Tween",
+    "ReferenceRect",
+    "CanvasLayer",
+    "Control",
+    "NinePatchRect",
+    "GridContainer",
+    "RichTextLabel",
+    "VScrollBar",
+    "PanelContainer",
+    "ColorRect",
+    "CenterContainer",
+    "MarginContainer",
+    "VBoxContainer",
+    "TextureButton",
+    "ScrollContainer",
+    "HScrollBar",
+    "TextureProgress",
+    "Panel",
+    "Path2D",
+    "PathFollow2D",
+    "WorldEnvironment",
+    "ParallaxBackground",
+    "ParallaxLayer",
+    "AnimationTree"
+  ],
+  "controls": [],
+  "canvas_layers": [],
+  "profile": {
+    "stable_id": 2300467995,
+    "texture_first": 0,
+    "texture_count": 2,
+    "collision_layer": 2816,
+    "collision_mask": 256,
+    "frames": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "sprite_offset": [
+      0,
+      -12
+    ],
+    "collision_offset": [
+      0,
+      7
+    ],
+    "collision_extents": [
+      9,
+      4
+    ],
+    "idle_delay": 2,
+    "enter_tween": 0.1,
+    "exit_tween": 0.2,
+    "squash": 0.8,
+    "blend_divisor": 8,
+    "flags": 0,
+    "blend_points": [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "blend_frames": [
+      2,
+      3,
+      1
+    ]
+  },
+  "field_ir_sha256": "7bacafa3b41b72afaf11818d6b635f5cdb08be1892bee516558ce27746a9acc9",
+  "native_sha256": "8e7b47e18222ecaa0364b96baa8898f1f20be58eeef42c56008417fb077acf27",
+  "tree_export_sha256": "a5039ca1dade34b60d5dcaf5822a1d9354841211bf9185f8a8cc729e7f6edc24",
+  "exporter_sha256": "fd7dfc650f98fafea559a4e037d2ddfa836cddc2a06edf7cf3c89664cb8a364f",
+  "script": "Scripts/misc/grass.gd",
+  "connections": [
+    {
+      "emitter": 3973736062,
+      "receiver": 3973736062,
+      "signal": "body_entered",
+      "method": "_on_Grass_body_entered",
+      "kind": 1
+    },
+    {
+      "emitter": 3973736062,
+      "receiver": 3973736062,
+      "signal": "body_exited",
+      "method": "_on_Grass_body_exited",
+      "kind": 2
+    },
+    {
+      "emitter": 3973736062,
+      "receiver": 3973736062,
+      "signal": "tree_exiting",
+      "method": "_on_Grass_tree_exiting",
+      "kind": 4
+    },
+    {
+      "emitter": 2507178350,
+      "receiver": 3973736062,
+      "signal": "timeout",
+      "method": "_on_Timer_timeout",
+      "kind": 3
+    }
+  ],
+  "nodes": [
+    3973736062,
+    224923312,
+    3967085947,
+    434099206,
+    3479336759,
+    2507178350
+  ],
+  "monitoring": true,
+  "monitorable": false,
+  "disabled": false,
+  "centered": true,
+  "tween_source": "scene/animation/scene_tree_tween.cpp",
+  "tween_signal": "finished",
+  "scene_admitted": false
+}

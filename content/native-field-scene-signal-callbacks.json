@@ -31,12 +31,12 @@
   },
   "dependencies": {
     "content/podunk-scene-lifecycle.json": "076ef09da5f5d8ef0f538eb1673dbd5caa46f6d76172f7af023c0462cfcf91c5",
-    "content/native-global-data-constructor.json": "4c127ee0f6f5aab993b6769b6d1270ce1e7b6cc4c65892adedd809f68c751005"
+    "content/native-global-data-constructor.json": "174dbb4a0d474971f05b5a1cdc0a11088e4762cd16533e19ad2a3bd251f06c3d"
   },
   "party_member": {
     "name": "flyingman",
     "declaration": 3406660883,
-    "constructor_sha256": "4c127ee0f6f5aab993b6769b6d1270ce1e7b6cc4c65892adedd809f68c751005"
+    "constructor_sha256": "174dbb4a0d474971f05b5a1cdc0a11088e4762cd16533e19ad2a3bd251f06c3d"
   },
   "engine": {
     "gdscript_function.cpp": "fbf428dcba723ba9bee9aa6b74ed1c69ddec9dec950174bfd5d1367332c91df4",

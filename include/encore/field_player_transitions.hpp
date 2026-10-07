@@ -47,11 +47,18 @@ struct FieldTransitionDescriptor {
   std::vector<Vec2> points;
   std::vector<FieldTransitionArrowKey> offset_keys, rotation_keys;
 };
+struct FieldTransitionSourceBindings {
+  std::string state_signal, ground_path, ground_method, shadow_path, prompt_member;
+  uint32_t state_arguments = 0;
+  float ground_multiplier = 0;
+};
 class FieldPlayerTransitionsData {
 public:
   bool load(const uint8_t *, size_t, std::string &);
   bool load_file(const char *, std::string &);
   bool valid() const { return valid_; }
+  uint32_t capability() const { return capability_; }
+  const FieldTransitionSourceBindings &bindings() const { return bindings_; }
   uint32_t scene_id() const { return scene_; }
   const auto &source_pin() const { return pin_; }
   const auto &source_scene() const { return source_scene_; }
@@ -75,6 +82,8 @@ public:
 
 private:
   bool valid_ = false;
+  uint32_t capability_ = 1;
+  FieldTransitionSourceBindings bindings_;
   uint32_t scene_ = 0;
   std::array<uint8_t, 20> pin_{};
   std::array<float, 22> parameters_{};
@@ -192,6 +201,8 @@ public:
   // _process never advances these jobs; legacy idle_frame retains both passes.
   bool idle_native_source(uint32_t, double, bool source_node_processing = true);
   bool actor_action_done(uint32_t);
+  bool bind_native_animation(std::function<bool(uint32_t,std::string&)>,std::string&);
+  bool animation_native_source(uint32_t,double);
   const auto &instances() const { return instances_; }
   const std::string &error() const { return error_; }
 
@@ -217,6 +228,7 @@ private:
   };
   const FieldPlayerTransitionsData *data_ = nullptr;
   FieldPlayerTransitionsHost host_;
+  std::function<bool(uint32_t,std::string&)>native_animation_;
   std::vector<FieldTransitionInstance> instances_;
   std::vector<JumpTask> tasks_;
   std::vector<PartyStart> starts_;

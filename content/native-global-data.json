@@ -1093,8 +1093,8 @@
     }
   ],
   "dependencies": {
-    "content/native-field-inventory.json": "135952acf65f4db05ac09a52e86bdbb78156e502ac1a78c6dee4cc249150f29e",
-    "content/native-field-item-definitions.json": "ecc0027fee5c2f30ff0ac05024906546a93732a44cabdf2195a4a07d2ed1978e"
+    "content/native-field-inventory.json": "c573d1710d610844341832c84e16023932b6187abb20d40cbfe2b4293d9e9a40",
+    "content/native-field-item-definitions.json": "73edae643e47c5f604ac07b97009d16f922d0509e28e1fe7e2ccb8fe0874fa83"
   },
   "sources": {
     "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",

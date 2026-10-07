@@ -7,6 +7,7 @@
 namespace encore::upstream {
 class FieldSceneActionsData;
 class PlayerInitializationData;
+class GrassNativeData;
 class FieldGlobalRegistry;
 struct FieldGeometryBounds {
   Vec2 minimum{}, maximum{};
@@ -85,6 +86,10 @@ public:
   bool live_geometry(const FieldGeometryContact &, FieldGeometryActor &,
                      FieldGeometryOwner &, FieldGeometryShape &,
                      std::string &) const;
+  // Observe a real dynamic player shape, including its disabled property.
+  // This never enables a shape or admits it to overlap queries.
+  bool player_shape_snapshot(const FieldGeometryContact&,FieldGeometryActor&,
+      FieldGeometryOwner&,FieldGeometryShape&,bool &disabled,std::string&)const;
   bool register_player_shape(const PlayerInitializationData &,
                              FieldNodeTreeRuntime &, FieldGlobalRegistry &,
                              FieldObjectId player, FieldObjectId shape,
@@ -92,6 +97,11 @@ public:
   bool reserve_player_owner(const PlayerInitializationData &,
                             FieldNodeTreeRuntime &, FieldGlobalRegistry &,
                             FieldObjectId owner, std::string &);
+  bool reserve_grass_owner(const GrassNativeData &, FieldNodeTreeRuntime &,
+                           FieldGlobalRegistry &, FieldObjectId, std::string &);
+  bool register_grass_shape(const GrassNativeData &, FieldNodeTreeRuntime &,
+                            FieldGlobalRegistry &, FieldObjectId area,
+                            FieldObjectId shape, std::string &);
   bool physics_rid(const FieldGeometryContact &, FieldPhysicsRid &,
                    std::string &) const;
   bool player_owner_rid(FieldObjectId owner, FieldPhysicsRid &,
@@ -153,6 +163,7 @@ private:
     FieldGeometryOwner owner{};
     FieldGeometryShape shape{};
     bool disabled = false;
+    const GrassNativeData *grass = nullptr;
   };
   bool dynamic_actor(const DynamicInstance &, FieldGeometryActor &,
                      std::string &) const;
@@ -191,6 +202,7 @@ private:
     FieldGlobalRegistry *registry = nullptr;
     FieldObjectId object = 0;
     uint64_t rid = 0;
+    const GrassNativeData *grass = nullptr;
   };
   std::map<FieldObjectId, DynamicOwner> dynamic_owners_;
   mutable std::map<uint32_t, uint64_t> static_rids_;

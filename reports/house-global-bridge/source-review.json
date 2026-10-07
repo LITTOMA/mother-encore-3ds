@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "8d8698c3b6e057bc8c150edb588aee3f670cc0a646092791814d6117d6aed455",
+  "ir_sha256": "bd774721dcf8a285a29dd5dbaca9658724cf3d215ecc4bde05fea3fabc3b2075",
   "sources": {
     "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
     "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
@@ -115,7 +115,7 @@
   },
   "dependencies": {
     "character": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
-    "load": "5a76b2cd8c576fc41bb3100ee56d0cb0bed0609019554e41f84bea4ea0154138",
+    "load": "e994c1715229ccf59818071dd1e9c04a882e76707845859081166baaa233d7c1",
     "definitions": "6bb623f7bf7ebc7f4f1655296199d0595b8b640b804f5fe983d5bb0a9855287c",
     "session": "0918eaee2ab15430e8507445f22598e51eca504970e5514baeef8de655c6e44f"
   },

@@ -1,4 +1,5 @@
 #include "podunk_player_physics_world.hpp"
+#include "encore/grass_native.hpp"
 #include <algorithm>
 #include <cmath>
 
@@ -202,6 +203,16 @@ bool PodunkPlayerPhysicsWorld::disabled(FieldObjectId id, bool v,
   n->second.disabled = v;
   return true;
 }
+bool PodunkPlayerPhysicsWorld::shape_disabled(FieldObjectId id,bool &out,std::string &e)const{
+  auto it=natives_.find(id);const auto *node=tree_?tree_->state(id):nullptr;
+  const auto *d=tree_?tree_->descriptor(id):nullptr;
+  if(poisoned_||!registry_||it==natives_.end()||!node||!node->alive||node->queued||!d||
+     !registry_->object_exists(id)||registry_->tree_owner(id).get()!=tree_||
+     d->id!=it->second.stable||d->native_class!=it->second.klass||
+     (it->second.klass!="CollisionShape2D"&&it->second.klass!="CollisionPolygon2D"))
+    return fail(e,"Player collision property requires the same actual live native shape");
+  out=it->second.disabled;e.clear();return true;
+}
 bool PodunkPlayerPhysicsWorld::set_collision_mask(FieldObjectId owner,
                                                   uint32_t bit, bool v,
                                                   std::string &e) {
@@ -297,6 +308,11 @@ bool PodunkPlayerPhysicsWorld::admit_static_monitor(FieldObjectId id,
   e.clear();
   return true;
 }
+bool PodunkPlayerPhysicsWorld::admit_grass_monitor(const GrassNativeData&data,FieldObjectId id,const FieldGeometryContact&contact,std::string&e){
+ auto tree=registry_?registry_->tree_owner(id):nullptr;const auto*n=tree?tree->descriptor(id):nullptr;const auto*s=tree?tree->state(id):nullptr;FieldIdentity identity;FieldGeometryActor actor;FieldGeometryOwner owner;FieldGeometryShape shape;
+ if(!data_||!data.valid()||monitors_.count(id)||flushing_||locked_||!tree||tree.get()!=tree_||!n||!s||!s->inside||!s->bound||!s->ready_notified||contact.actual_owner!=id||n->id!=data.node(GrassNativeRole::Area)||!data.native_matches(*n)||!tree->object_identity(id,identity)||identity.scene_id!=data.identity().scene_id||identity.source_sha256!=data.identity().source_sha256||identity.upstream_commit!=data.identity().upstream_commit||!space_->live_geometry(contact,actor,owner,shape,e)||owner.kind!=4||actor.kind!=FieldGeometryKind::Rectangle||owner.layer!=data.profile().collision_layer||owner.mask!=data.profile().collision_mask||owner.flags!=((data.monitoring()?2u:0u)|(data.monitorable()?4u:0u)))return fail(e,"Grass actual PhysicsWorld source/Ready/Rectangle monitor rejected");
+ monitors_.emplace(id,Monitor{data.monitoring(),true,{},{}});grass_monitors_.emplace(id,contact);e.clear();return true;
+}
 bool PodunkPlayerPhysicsWorld::static_monitor_exit(FieldObjectId id,
                                                    std::string &e) {
   if (natives_.count(id) || !monitors_.count(id) || flushing_ || locked_)
@@ -304,6 +320,7 @@ bool PodunkPlayerPhysicsWorld::static_monitor_exit(FieldObjectId id,
   if (!clear_monitor(id, e))
     return false;
   monitors_.erase(id);
+  grass_monitors_.erase(id);
   for (auto i = pairs_.begin(); i != pairs_.end();)
     if (i->watcher == id)
       i = pairs_.erase(i);
@@ -393,6 +410,15 @@ bool PodunkPlayerPhysicsWorld::collect(std::set<Pair> &out, std::string &e) {
         }
       }
     }
+  }
+  for(const auto&entry:grass_monitors_){
+    FieldGeometryActor actor;FieldGeometryOwner owner;FieldGeometryShape shape;
+    if(!space_->live_geometry(entry.second,actor,owner,shape,e))return false;
+    if(!(owner.flags&2))continue;
+    FieldGeometryFilter filter;filter.bodies=true;filter.areas=false;filter.bilateral_mask=true;filter.layer_mask=owner.mask;filter.reciprocal_layer=owner.layer;
+    std::vector<FieldGeometryContact>hits;
+    if(!space_->overlap_actor(actor,filter,space_->indexed_instance_count(),hits,e))return false;
+    for(const auto&hit:hits){FieldObjectId other=0;FieldPhysicsRid rid;if(!target(hit,other,e)||!space_->physics_rid(hit,rid,e))return false;if(other==entry.first)continue;result.insert(Pair{entry.first,other,rid,hit.native_shape_index,entry.second.native_shape_index,false});}
   }
   out = std::move(result);
   return true;

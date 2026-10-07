@@ -2,17 +2,29 @@
 #include "encore/field_global_registry.hpp"
 #include "encore/field_object_signals.hpp"
 #include "encore/field_scene_sources.hpp"
+#include "encore/grass_native.hpp"
 #include <map>
 namespace encore::ctr {
-// Ready uses the checked FieldData template without allocating dynamic nodes.
-// This factory is required only when actual screen entry instantiates the
-// source grass subtree; it owns each created Area/Timer/Tween through tree
-// deletion.
+class PodunkSceneCanvasLeaf;
+// Original onready preload owns a checked PackedScene before spawner Ready.
+// The same concrete factory owns dynamic native/source nodes through deletion.
 class PodunkSceneGrassFactory : public upstream::FieldGlobalSourceResource {
 public:
   virtual const upstream::FieldGlobalRegistry *registry() const = 0;
   virtual const upstream::FieldData *source_data() const = 0;
   virtual const upstream::FieldNodeRecipeData &recipe() const = 0;
+  virtual PodunkSceneCanvasLeaf *canvas_leaf() = 0;
+  virtual bool owns(const upstream::FieldNodeDescriptor &) const = 0;
+  virtual bool owns(upstream::FieldObjectId) const = 0;
+  virtual bool native_construct(upstream::FieldObjectId,const upstream::FieldNodeDescriptor&,const upstream::FieldIdentity&,std::string&) = 0;
+  virtual bool construct_source(upstream::FieldObjectId,const upstream::FieldNodeDescriptor&,const upstream::FieldIdentity&,std::string&) = 0;
+  virtual bool bind(upstream::FieldObjectId,upstream::FieldNodeBinding&,std::string&) = 0;
+  virtual bool phase(upstream::FieldObjectId,upstream::FieldTreePhase,float,bool,std::string&) = 0;
+  virtual bool signal_declaration(upstream::FieldObjectId,std::string_view,uint32_t&,std::string&) const = 0;
+  virtual bool handles_callback(const upstream::FieldDeferredMessage&) const = 0;
+  virtual bool tween_frame(uint64_t,float,bool,std::string&) = 0;
+  virtual bool release(upstream::FieldObjectId,std::string&) = 0;
+  virtual bool admit_canvas(upstream::FieldObjectId,const upstream::FieldNodeDescriptor&,const upstream::FieldIdentity&,const upstream::FieldNodeTreeRuntime&,bool&drawable,std::string&) const = 0;
   virtual bool screen_entered(upstream::FieldObjectId, uint32_t,
                               std::string &) = 0;
   virtual bool screen_exited(upstream::FieldObjectId, uint32_t,

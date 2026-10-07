@@ -236,6 +236,7 @@ public:
   bool read_constructed_member(FieldObjectId, std::string_view,
                                FieldGlobalDataMemberState &,
                                std::string &) const;
+  bool write_source_vector(std::string_view, Vec2, std::string &);
   bool write_global_scalar(std::string_view, const GlobalYamlValue &,
                            std::string &);
   bool menu_flavor(std::string &, std::string &) const;

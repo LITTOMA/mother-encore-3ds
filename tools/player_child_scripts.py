@@ -17,6 +17,19 @@ PACK=ROOT/'romfs/data/player.encchildren'
 FAMILY=0x454e0061
 EMOTE='Nodes/Ui/emotes.tscn::6';TINT='Scripts/misc/character_tint.gd'
 
+def camera_connections(ex):
+ code=ex.text(gc.SCRIPT)
+ calls=re.findall(r'^\s*(uiManager|global\.get_player\(\))\.connect\("([^"\n]+)", self, "([^"\n]+)"\)',code,re.M)
+ require(len(calls)==2 and [x[0]for x in calls]==['uiManager','global.get_player()'],'Unknown Camera source connection owner/order')
+ return[dict(role=i+1,signal=x[1],method=x[2])for i,x in enumerate(calls)]
+
+def refresh_connections():
+ d=load(check_connections=False);ex=Extractor(ROOT)
+ for f,h in d['sources'].items():ex.data(f);require(ex.sources[f]==h,'Player child source closure changed '+f)
+ d.update(schema=2,format=2,capability=2,camera_connections=camera_connections(ex))
+ write(IR,d);r=read(REVIEW);r.update(ir_sha256=sha(IR),camera_connection_review='Both exact original Camera Ready connections are retained with actual owner role and method; no new Ready capability')
+ write(REVIEW,r)
+
 def extract():
  p=player_load();ready=read(READY_IR);require(ready['initialization_ir_sha256']==sha(PLAYER_IR),'Player Ready source differs');oldcam=gc.load();oldarrow=ar.load();ex=Extractor(ROOT)
  ns={n['path']:decode(n['properties'])for n in p['native_snapshot']['nodes']};rs={r['id']:r for r in p['native_snapshot']['resources']};nodes={n['node']:n for n in p['records']}
@@ -71,11 +84,13 @@ def extract():
  em=rows[0];ep=decl[em['path']];tpaths=[x['value']for x in decl[rows[1]['path']]['sprite_paths']]
  d=dict(schema=1,format=1,capability=1,rules=1,family=FAMILY,commit=PIN,scene=p['scene'],scene_id=p['scene_id'],source_sha256=p['source_sha256'],player_ir_sha256=sha(PLAYER_IR),ready_ir_sha256=sha(READY_IR),rows=rows,emote=dict(object_path=ep['objectPath']['value'],animation_path='AnimationPlayer',sensitive_clips=json.loads(re.search(r'anim_name in (\[[^\n]+\])',code)[1]),padding=padding,negative_scale=-1,other_scale=1,direction_method='get_direction',direction_member=direction[1],signal='animation_started',method='_on_AnimationPlayer_animation_started'),tint=dict(paths=tpaths,color=[1,1,1,1],signal='changed_tint',method='set_tint'),camera_process_mode=ns[path]['process_mode'],camera=camera,arrows=arrows,assets=read(ar.ASSETS),sources=ex.sources,ready_admitted=False,pending=['Native Camera viewport/SourceTween/Shaker must be provided by actual source owners; missing endpoints reject','Native sprite and AnimationPlayer clocks belong to the unique actual Player native service','No other Player or scene script is admitted'])
  require(d['camera_process_mode']==1,'Player native Camera process mode differs')
+ d.update(schema=2,format=2,capability=2,camera_connections=camera_connections(ex))
  write(IR,d);write(REVIEW,dict(schema=1,commit=PIN,ir_sha256=sha(IR),sources=ex.sources,embedded_block_sha256=embedded['sha256'],scope='All four actual remaining Player script instances; exact source native camera/arrow data in existing checked schemas; no native lifecycle approval',ready_admitted=False))
 
-def load():
+def load(check_connections=True):
  d=read(IR);r=read(REVIEW);require(d['commit']==PIN and d['family']==FAMILY and r['ir_sha256']==sha(IR)and d['player_ir_sha256']==sha(PLAYER_IR)and d['ready_ir_sha256']==sha(READY_IR),'Player child source/dependency proof differs');ex=Extractor(ROOT)
  for f,h in d['sources'].items():ex.data(f);require(ex.sources[f]==h,'Changed Player child source '+f)
+ if check_connections:require(d['schema']==2 and d['format']==2 and d['capability']==2 and d['camera_connections']==camera_connections(ex),'Player Camera source connections differ')
  require(sha(ROOT/'romfs'/d['arrows']['asset']['path'])==d['assets']['output_sha256']and sha(ROOT/'romfs'/d['arrows']['program']['path'])==d['assets']['program']['output_sha256'],'Actual converted arrows asset differs');return d
 
 def encode(d):
@@ -87,18 +102,21 @@ def encode(d):
  t(d['scene']);h(d['player_ir_sha256']);h(d['ready_ir_sha256']);u(len(d['rows']))
  for r in d['rows']:u(r['role'],r['id'],r['ready']);t(r['path']);t(r['native_class']);t(r['script']);h(r['script_sha256'])
  em=d['emote'];[t(em[k])for k in ['object_path','animation_path','direction_method','direction_member','signal','method']];u(len(em['sensitive_clips']));[t(s)for s in em['sensitive_clips']];f(em['padding'],em['negative_scale'],em['other_scale']);ti=d['tint'];f(*ti['color']);t(ti['signal']);t(ti['method']);u(len(ti['paths']));[t(s)for s in ti['paths']];u(d['camera_process_mode'])
+ u(len(d['camera_connections']))
+ for c in d['camera_connections']:u(c['role']);t(c['signal']);t(c['method'])
  for raw in [gc.encode(d['camera']),ar.encode(d['arrows'],d['assets'])]:
   raw=bytearray(raw);raw[92:124]=bytes.fromhex(sha(IR));u(len(raw));b.extend(raw)
  u(len(d['sources']))
  for s,v in d['sources'].items():t(s);h(v)
- struct.pack_into('<8s8I',b,0,b'ENCPSCR1',1,128,len(b),zlib.crc32(b[128:]),FAMILY,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
+ struct.pack_into('<8s8I',b,0,b'ENCPSCR1',2,128,len(b),zlib.crc32(b[128:]),FAMILY,2,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
 
 def stage_files(root):
  raw=encode(load());p=Path('data/player.encchildren');require((Path(root)/p).read_bytes()==raw,'Staged Player child scripts differ');return{p:raw}
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify']);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify','refresh-connections']);a=p.parse_args()
  try:
   if a.action=='extract':extract()
+  elif a.action=='refresh-connections':refresh_connections()
   else:
    raw=encode(load())
    if a.action=='compile':PACK.parent.mkdir(parents=True,exist_ok=True);PACK.write_bytes(raw)

@@ -169,6 +169,8 @@ def node_rows(native,tree,proof,ex):
 
 def extract(native_path,tree_path,source_path,values_path):
     ex,fields,onready,constants,policy,body=source();pure,_=pure_source();values=read(values_path)
+    reviewed_engine=read(REVIEW)
+    require(reviewed_engine['commit']==PIN and reviewed_engine['family']==FAMILY and len(reviewed_engine['engine_sources'])==2, 'Player reviewed engine evidence changed')
     require(values['schema']==1 and not values['source_scene_entered']and not values['original_constructor_entered']and values['pure_sha256']==hashlib.sha256(pure.encode()).hexdigest(),'Changed pure source Player declarations')
     require([values['engine'].get(k)for k in ['major','minor','patch','status']]==[3,6,2,'stable'],'Player declaration source engine changed')
     native=read(native_path);tree=read(tree_path);proof=read(source_path)
@@ -186,6 +188,13 @@ def extract(native_path,tree_path,source_path,values_path):
     ex.text('LICENSE')
     write(NATIVE,values)
     write(IR,dict(schema=1,kind='encore.player-initialization.source-ir',commit=PIN,family=FAMILY,scene=SCENE,scene_id=stable('.'),source_sha256=ex.sources[SCENE],owner=GLOBAL,player_script=PLAYER,base_script=BASE,sources=ex.sources,native_sha256=sha(native_path),tree_sha256=sha(tree_path),source_receipt_sha256=sha(source_path),declarations_sha256=sha(NATIVE),constructor_ir_sha256=sha(ROOT/'content/native-global-data-constructor.json'),fields=fields,onready=onready,init_policy=policy,init_method_sha256=hashlib.sha256(body.encode()).hexdigest(),classes=CLASSES,records=records,native_snapshot=native,script_null_overrides=nulls,ready_admitted=False,pending=['Actual script construction attachment cursor before child allocation','Every Player child native/script constructor and Ready owner','Actual AnimationTree/StateMachinePlayback runtime','AfterImage/Dust/Sweat/Beam/PKOV source consumers','Actual source audio ResourceLoader and player footsteps SFX lane','Original inherited onready/Ready and status/party synchronous connections']))
+    derived=read(IR)
+    write(REVIEW,dict(schema=1,commit=PIN,family=FAMILY,ir_sha256=sha(IR),
+                     scope='Exact source Player declarations and global._init_player order; no native/script Ready admission',
+                     source_count=len(derived['sources']),node_count=len(derived['records']),pending=derived['pending'],
+                     engine_sources=reviewed_engine['engine_sources'],
+                     root_script_property_cursor=reviewed_engine['root_script_property_cursor']))
+
 
 def load():
     d=read(IR);review=read(REVIEW);inv=read(ROOT/'compatibility/upstream-inventory.json')['files']

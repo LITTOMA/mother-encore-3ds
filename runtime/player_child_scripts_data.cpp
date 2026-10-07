@@ -110,9 +110,9 @@ bool PlayerChildScriptsData::load(const uint8_t *p, size_t n,
                                   std::string &e) {
   *this = PlayerChildScriptsData{};
   if (!player.valid() || !ready.valid() || !p || n < 128 || n > 8000000 ||
-      std::memcmp(p, "ENCPSCR1", 8) || u32(p + 8) != 1 || u32(p + 12) != 128 ||
+      std::memcmp(p, "ENCPSCR1", 8) || u32(p + 8) != 2 || u32(p + 12) != 128 ||
       u32(p + 16) != n || u32(p + 20) != crc(p + 128, n - 128) ||
-      u32(p + 24) != 0x454e0061 || u32(p + 28) != 1 || u32(p + 32) != 1 ||
+      u32(p + 24) != 0x454e0061 || u32(p + 28) != 2 || u32(p + 32) != 1 ||
       u32(p + 124) != 0)
     return fail(e, "Player child scripts format/capability/CRC rejected");
   identity_ = player.identity();
@@ -187,6 +187,17 @@ bool PlayerChildScriptsData::load(const uint8_t *p, size_t n,
   for (uint32_t i = 0; i < paths; ++i)
     tint_.paths.push_back(r.s());
   camera_process_mode_ = r.u();
+  const auto connection_count=r.count(2);
+  if(connection_count!=2)return fail(e,"Player Camera two actual source connections required");
+  std::set<std::string> camera_methods;
+  for(uint32_t i=0;i<connection_count;++i){
+    PlayerCameraSourceConnection c;c.role=r.u();c.signal=r.s();c.method=r.s();
+    if(c.role!=i+1||c.signal.empty()||c.method.empty()||
+       !camera_methods.insert(c.method).second||
+       c.signal.find_first_of("./:\\")!=c.signal.npos||c.method.find_first_of("./:\\")!=c.method.npos)
+      return fail(e,"Player Camera source connection role/symbol rejected");
+    camera_connections_.push_back(std::move(c));
+  }
   if (clips == 0 || emote_.object_path.empty() ||
       emote_.animation_path.empty() || emote_.signal.empty() ||
       emote_.method.empty() || emote_.direction_method.empty() ||

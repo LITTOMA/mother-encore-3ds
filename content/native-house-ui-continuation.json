@@ -8,7 +8,26 @@
   "ui_ir_sha256": "ecc95b9364a8a69a9ab56a963cf6fd4b2f1925f1d37a524649625591a9d71596",
   "sources": {
     "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
-    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca"
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/KeyNumber.gd": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a",
+    "Nodes/Ui/KeyCount.tscn": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
+  },
+  "key_policy": {
+    "member": "keys",
+    "default_count": 0,
+    "initial_open": false,
+    "scene": "Nodes/Ui/KeyCount.tscn",
+    "script": "Scripts/UI/KeyNumber.gd",
+    "enemy_member": "_onScreenEnemies",
+    "enemy_initial_count": 0,
+    "house_scene": "Maps/podunk/Nintens House.tscn"
+  },
+  "stack_policy": {
+    "member": "_ui_stack",
+    "initial_count": 0,
+    "dialogue_script": "Scripts/UI/DialogueBox.gd"
   },
   "fields": [
     {
@@ -77,6 +96,46 @@
       "role": 10,
       "name": "open_dialogue_box",
       "sha": "7f06a516fd3115790a503e7213b8ccdbc9df81dd1abd11e79ccdd989efb26a90"
+    },
+    {
+      "role": 11,
+      "name": "get_key_count",
+      "sha": "9b49689a9307a8dcb157ec29bcee6edcf7ab26aba1694b5d26b8d6792de383cf"
+    },
+    {
+      "role": 12,
+      "name": "update_key_indicator",
+      "sha": "ae563285c9dc7a2fc69a79447aa1edf495b51358e297a281762647a2bdf5166c"
+    },
+    {
+      "role": 13,
+      "name": "close",
+      "sha": "f846e6c3c0d112451a7f08232b1c572427e0f4ae1c139acf01dd00b579239162"
+    },
+    {
+      "role": 14,
+      "name": "clear_on_screen_enemies",
+      "sha": "d848d0c6c21a069a1b9e22048c5b8aa6276c2abe768bba638c84e4535446e553"
+    },
+    {
+      "role": 15,
+      "name": "is_stack_empty",
+      "sha": "c2613777abd87f31e98e1c79cd3deacfc4377bae54343ec1a7aa0fab3184a2a1"
+    },
+    {
+      "role": 16,
+      "name": "add_ui",
+      "sha": "83f54120d960c6f35e88e780bad51e74c35eb744b1de7e68756a6c5303f2d65d"
+    },
+    {
+      "role": 17,
+      "name": "remove_ui",
+      "sha": "4b1be0398b8f1408cd6abeda1aca175f69033d88223ea05b4e14757653c9be96"
+    },
+    {
+      "role": 18,
+      "name": "_close_dialog_box",
+      "sha": "1ac23d1cdde170c9e47606654875e10a2d7300167f7be41d5903e8490ce9ec24"
     }
   ],
   "signals": [

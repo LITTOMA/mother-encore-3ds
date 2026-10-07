@@ -91,7 +91,11 @@ namespace encore::upstream {
   root_=id;for(const auto&v:nodes_)source_index_.emplace(v.second.source,v.first);
   e.clear();return true;
  }
- bool FieldNodeTreeRuntime::initialize_source_node(const FieldIdentity&identity,const FieldNodeDescriptor&r,FieldNodeTreeHost h,std::string&e){
+ bool FieldNodeTreeRuntime::instantiate_audio_source(const FieldIdentity&identity,const FieldNodeDescriptor&r,FieldObjectId&out,std::string&e){
+ if(poisoned_||!host_.construct_source||!host_.native_allocated||!identity.scene_id||std::all_of(identity.upstream_commit.begin(),identity.upstream_commit.end(),[](uint8_t v){return !v;})||std::all_of(identity.source_sha256.begin(),identity.source_sha256.end(),[](uint8_t v){return !v;})||r.id!=identity.scene_id||r.path!="."||!r.name.empty()||r.parent||r.owner||r.canvas_parent||r.index!=-1||r.class_index!=14||r.native_class!="AudioStreamPlayer"||r.native_generated||r.pause||r.flags||r.priority||r.z||r.ready||!r.script.empty()||!std::all_of(r.script_sha.begin(),r.script_sha.end(),[](uint8_t v){return !v;})||!r.groups.empty()||!finite(r.local)||!finite(r.world)||!finite(r.modulate)||!finite(r.self_modulate))return fail(e,"NodeTree audited native AudioStreamPlayer.new rejected");
+ return instantiate_records(identity,{r},r.id,false,out,e);
+}
+bool FieldNodeTreeRuntime::initialize_source_node(const FieldIdentity&identity,const FieldNodeDescriptor&r,FieldNodeTreeHost h,std::string&e){
   const auto zero=[](const auto&a){return std::all_of(a.begin(),a.end(),[](uint8_t v){return v==0;});};
   if(!identity.scene_id||zero(identity.upstream_commit)||zero(identity.source_sha256)||r.id!=identity.scene_id||r.path!="."||!r.name.empty()||r.parent||r.owner||r.canvas_parent||r.index!=-1||r.class_index||r.native_class!="Node"||r.native_generated||r.pause||r.flags||r.priority||r.z||r.ready||r.script.empty()||zero(r.script_sha)||!r.groups.empty()||!finite(r.local)||!finite(r.world)||!finite(r.modulate)||!finite(r.self_modulate))return fail(e,"NodeTree standalone source Node constructor descriptor rejected");
   if(!h.construct_source||!h.allocate_object||!h.allocate_fast_name||!h.bind||!h.dispatch||!h.deferred||!h.object_exists||!h.input_registration||!h.external_pause_process||!h.release)return fail(e,"NodeTree standalone source Node constructor host incomplete");
@@ -763,6 +767,12 @@ namespace encore::upstream {
   }
   --n->blocked;
   return true;
+ }
+ bool FieldNodeTreeRuntime::set_z_index(FieldObjectId id,int32_t value,std::string&e){
+  auto*n=live(id);
+  if(!n || !(n->flags&1) || value < -4096 || value > 4096)
+   return fail(e,"NodeTree actual CanvasItem z_index rejected");
+  n->z=value;e.clear();return true;
  }
  bool FieldNodeTreeRuntime::set_visible(FieldObjectId id,bool value,std::string&e){
   auto*n=live(id);

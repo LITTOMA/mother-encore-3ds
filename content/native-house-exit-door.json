@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 3,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/Nintens House.tscn",
   "scene_id": 2561235290,
@@ -16,10 +16,32 @@
     "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
     "Audio/Sound effects/Door_Short.mp3.import": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
     "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
-    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31"
+    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193"
   },
   "scene_admitted": false,
-  "capabilities": 3,
+  "capabilities": 5,
+  "body_method": "_on_Door_body_entered",
+  "continuation": {
+    "region": "Podunk",
+    "root_name": "Ninten's House",
+    "area_left": "area_left",
+    "door_signals": [
+      "entered",
+      "moved_player",
+      "done"
+    ],
+    "scene_changed": "scene_changed",
+    "area_script": "Scripts/Main/RoomTypes/AreaRoom.gd",
+    "empty_params": true,
+    "area_listeners": [],
+    "item_reset_area": false,
+    "region_changed": false
+  },
   "ground_offset": 7.0,
   "none": "None",
   "records": [

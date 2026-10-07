@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "ir_sha256": "538248a037d33f1276c95a7ff515eee9014ec9e42e51bd92f5b87bb43ebc05be",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_sha256": {
+    "godot-3.6.2-animation_player.cpp": "72c1a32819a8d2b7cd1464d7f14057ebea3db4513f615d6fa594e6ce071e4e51",
+    "game-camera-camera_2d.cpp": "56fabb50e0df1de2b79fc100197731f78a8d31c1f8e0e8cf8a34393e8cd5726e"
+  },
+  "semantics": [
+    "Actual 91-AP disjoint complement of existing 581 typed native AP; complete stable source identities, no count-only admission",
+    "Existing typed owner remains unique clip clock; native AP emits source signals/internal membership",
+    "Empty Intro source clip library is genuinely empty; unknown play rejected",
+    "ReferenceRect source editor_only=true has no in-game border draw",
+    "Source Camera2D properties retain defaults and distinguish 14 script Cameras from one plain Intro camera",
+    "Original GameCamera construction/Ready does not call dynamic Shaker or SceneTreeTween branches; native capability checks occur at actual branch invocation, never default success",
+    "Dropped animation/Tween start notifications register existing core playback in native internal group without a second clock",
+    "Camera no-drag/no-smoothing selection is shared by actual scene/Player native owners; source global.currentCamera remains independent"
+  ]
+}

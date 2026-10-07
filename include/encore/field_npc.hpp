@@ -40,6 +40,7 @@ struct FieldNpcInstance {
 };
 enum class FieldNpcTimer:uint8_t {SetWanderWait,StartWander,StopWander,ReturnDirection};
 enum class FieldNpcPresentation:uint8_t {Pose,Visibility,Blend,Motion,Frame,Create,QueueFree};
+struct FieldNpcReadyContext {bool ancestor_visible=true,debug_build=false;};
 struct FieldNpcHost {
  std::function<bool(uint32_t,FieldNpcContext&,std::string&)>context;
  std::function<bool(const std::string&,bool&,std::string&)>flag;
@@ -58,6 +59,7 @@ struct FieldNpcHost {
  // SetWanderWait changes wait_time without restarting time_left; Start/Stop
  // match the native Timer. ReturnDirection creates a separate SceneTreeTimer.
  std::function<bool(uint32_t,FieldNpcTimer,double,uint64_t,std::string&)>timer;
+ std::function<bool(uint32_t,FieldNpcReadyContext&,std::string&)> ready_context;
 };
 class FieldNpcRuntime {
 public:
@@ -71,6 +73,6 @@ public:
  const std::vector<FieldNpcInstance>&npcs()const{return npcs_;}const std::string&error()const{return error_;}
 private:
  const FieldNpcData*data_=nullptr;SourceRandom*random_=nullptr;FieldNpcHost host_;std::vector<FieldNpcInstance>npcs_;uint64_t next_waiter_=1;uint32_t last_ready_=0;bool had_ready_=false;std::string error_;
- bool fail(const char*);FieldNpcInstance*instance(uint32_t);const FieldNpcDescriptor&descriptor(const FieldNpcInstance&)const;bool context(uint32_t,FieldNpcContext&);bool flag(const std::string&,bool&);bool appear(const FieldNpcDescriptor&,bool&);bool select(FieldNpcInstance&,bool,const FieldNpcDialogue*&);bool investigate(uint32_t,bool);bool move(FieldNpcInstance&);bool motion(FieldNpcInstance&,const std::string&);bool present(FieldNpcInstance&,FieldNpcPresentation);bool return_timer(FieldNpcInstance&);float parameter(FieldNpcParameter)const;
+ bool fail(const char*);FieldNpcInstance*instance(uint32_t);const FieldNpcDescriptor&descriptor(const FieldNpcInstance&)const;bool context(uint32_t,FieldNpcContext&);bool ready_context(uint32_t,FieldNpcReadyContext&);bool flag(const std::string&,bool&);bool appear(const FieldNpcDescriptor&,bool&);bool select(FieldNpcInstance&,bool,const FieldNpcDialogue*&);bool investigate(uint32_t,bool);bool move(FieldNpcInstance&);bool motion(FieldNpcInstance&,const std::string&);bool present(FieldNpcInstance&,FieldNpcPresentation);bool return_timer(FieldNpcInstance&);float parameter(FieldNpcParameter)const;
 };
 }

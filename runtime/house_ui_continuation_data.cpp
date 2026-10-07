@@ -82,10 +82,10 @@ bool HouseUiContinuationData::load(const uint8_t *p, size_t n,
   if (valid_)
     return fail(e, "House UI policy owner cannot be replaced");
   if (!p || !ui.valid() || n < 128 || n > 65536 ||
-      std::memcmp(p, "ENCHUIC1", 8) || word(p + 8) != 1 ||
+      std::memcmp(p, "ENCHUIC1", 8) || (word(p + 8) < 1 || word(p + 8) > 3) ||
       word(p + 12) != 128 || word(p + 16) != n ||
       word(p + 20) != crc32(p + 128, n - 128) || word(p + 24) != 0x454e0064 ||
-      word(p + 28) != 1 || word(p + 32) != 1 || word(p + 124))
+      word(p + 28) != word(p+8) || word(p + 32) != 1 || word(p + 124))
     return fail(e, "House UI header/CRC/format/capability rejected");
   HouseUiContinuationData d;
   d.identity_.scene_id = word(p + 36);
@@ -97,13 +97,14 @@ bool HouseUiContinuationData::load(const uint8_t *p, size_t n,
       d.identity_.upstream_commit != expected.upstream_commit ||
       d.identity_.source_sha256 != expected.source_sha256 || !nonzero(d.ir_))
     return fail(e, "House UI actual independent source identity rejected");
+  d.capability_=word(p+28);d.key_policy_=d.capability_>=2;
   Reader r{p, n};
   d.ui_ir_ = r.bytes<32>();
   d.script_ = r.text();
   if (!nonzero(d.ui_ir_) || d.script_ != ui.source_script())
     return fail(e, "House UI independent source owner rejected");
   auto count = r.u();
-  if (count != 2)
+  if (count != (d.capability_==3?6u:d.key_policy_?5u:2u))
     return fail(e, "House UI complete source closure rejected");
   for (uint32_t i = 0; i < count; ++i) {
     auto path = r.text();
@@ -133,7 +134,7 @@ bool HouseUiContinuationData::load(const uint8_t *p, size_t n,
     d.fields_.push_back(std::move(f));
   }
   count = r.u();
-  if (count != 10)
+  if (count != (d.capability_==3?18u:d.key_policy_?14u:10u))
     return fail(e, "House UI source method roster rejected");
   names.clear();
   for (uint32_t i = 0; i < count; ++i) {
@@ -157,6 +158,23 @@ bool HouseUiContinuationData::load(const uint8_t *p, size_t n,
     if (s.role != i + 1 || s.arity || !names.insert(s.name).second)
       return fail(e, "House UI native source signal arity rejected");
     d.signals_.push_back(std::move(s));
+  }
+  if(d.key_policy_){
+    d.key_member_=r.text();d.key_default_=r.u();auto initial=r.u();
+    d.key_open_=initial!=0;d.key_scene_=r.text();d.key_script_=r.text();
+    d.enemy_member_=r.text();auto enemies=r.u();d.house_scene_=r.text();
+    std::array<uint8_t,32> expected_key{};
+    if(d.key_member_.empty()||d.enemy_member_.empty()||enemies!=0||d.sources_.count(d.house_scene_)!=1||d.key_default_!=0||initial!=0||
+       !ui.source_hash(d.key_scene_,expected_key)||
+       d.sources_.find(d.key_scene_)==d.sources_.end()||
+       d.sources_.at(d.key_scene_)!=expected_key||
+       d.sources_.find(d.key_script_)==d.sources_.end())
+      return fail(e,"House key indicator original resource/closed state rejected");
+  }
+  if(d.capability_==3){
+    auto member=r.text();auto initial=r.u();auto dialogue=r.text();
+    if(member.empty()||initial!=0||d.sources_.count(dialogue)!=1||!d.method(15)||!d.method(16)||!d.method(17)||!d.method(18))
+      return fail(e,"House UI original stack/close source policy rejected");
   }
   if (!r.ok || r.at != n)
     return fail(e, "House UI truncated/trailing resource rejected");

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "7c46ebe5d8613de4c984781642495b8b55c4fe31be09d2902fe38728ff048ea0",
+  "ir_sha256": "22e2a023f8d24210c7a685641ffe538e8cd3d7c418a626cbbc445af86ccc1d0a",
   "sources": {
     "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
     "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
@@ -149,7 +149,8 @@
     "PartyMemberPlayer walking contact changes return/input/facing based on current animated Sprite world position; global-player leave uses literal global-position versus local start compare",
     "Multiple exits share one one-shot Timer and FIFO two-wait coroutines; Timer continues offscreen and is not paused merely by Player pause; second timeout enables local move_toward return",
     "Loop interpolation keeps source continuous negative-1.2 ease, texture frame and discrete facing key crossing; movement-facing changes persist between discrete animation keys",
-    "VisibilityNotifier and VisibilityEnabler rectangles and source child identities are admitted by live host; two true native clocks are retained"
+    "VisibilityNotifier and VisibilityEnabler rectangles and source child identities are admitted by live host; two true native clocks are retained",
+    "Original Sprite/MoveArea body_entered and body_exited symbols are extracted from the actual scene and source receiver functions, without inventing new signals"
   ],
   "unsupported": [
     "No healing NPC behavior, world flag or new Disappear animation invented: method exists unconnected and no such source clip in actual scene",

@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "ff4fb4f04eacb8b2e73dede649a84feb149b03f739d7874e76ac7964fc0a5e1e",
-  "producer_sha256": "47682fd4bb6570a6cb60e457f7f4ec0fa9a1d04921d3b94b0bde7b2de3930f46",
+  "ir_sha256": "599921b3b4aa8e6d7f2c26e35a34679447c06ca303557f10b021a351f7dbb8a7",
+  "producer_sha256": "439d01c110e2070c802067cbbad9484fbed4d3ac985a40ee1b4a47cb12997efb",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "output": "graphics/objects/dead-bush.t3x",
   "bytes": 262165,

@@ -29,6 +29,7 @@ struct IntroductionPose {
 };
 struct IntroKey {float time=0;std::array<float,4> value{};float transition=1;};
 struct IntroTrack {uint32_t target=0,index=0,property=0,discrete=0;std::vector<IntroKey>keys;};
+std::array<float,4> sample_intro_track(const IntroTrack&,double);
 struct IntroClip {float length=0;std::vector<IntroTrack>tracks;};
 struct IntroEvent {float time=0;uint32_t kind=0,arg=0;std::string source,name;};
 struct IntroResource {std::string path,source,sha256;uint32_t width=0,height=0,columns=0,rows=0,frame_count=0,source_width=0,source_height=0,trim_x=0,trim_y=0,bytes=0,crc32=0;};

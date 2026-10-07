@@ -14,8 +14,8 @@
     "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34"
   },
   "dependencies": {
-    "bridge": "8d8698c3b6e057bc8c150edb588aee3f670cc0a646092791814d6117d6aed455",
-    "ready": "e2e41adc8887370d9968716a2244c8217477d7f42f7439af32a5c98e3644a280"
+    "bridge": "bd774721dcf8a285a29dd5dbaca9658724cf3d215ecc4bde05fea3fabc3b2075",
+    "ready": "36f6feed2937e409f4dbf0e633fb1e60751f2131d17f36cd7f845e76bb612eb7"
   },
   "methods": {
     "get_status_effects": "5a58fc88e8d04e859cce84a28ae2c1dab1de47d8a0bc66196ac52d0ce714c46e",

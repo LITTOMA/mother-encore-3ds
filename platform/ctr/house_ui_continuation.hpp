@@ -6,6 +6,7 @@
 #include "encore/house_runtime.hpp"
 #include "encore/house_ui_continuation.hpp"
 #include "podunk_native_root.hpp"
+namespace encore::upstream { class FieldGlobalDataRuntime; }
 namespace encore::ctr {
 // Borrow the running House session. These are its existing objects, not copies.
 struct HouseUiContinuationSources {
@@ -62,6 +63,10 @@ public:
   bool rebind_scene(const upstream::OpeningWorld &,
                     const upstream::HouseRuntime &,
                     const upstream::HousePresentation &, std::string &);
+  bool source_stack_empty(upstream::FieldObjectId,bool&,std::string&)const;
+  bool source_clear_on_screen_enemies(std::string &);
+  bool source_update_key_indicator(const upstream::FieldGlobalDataRuntime &,
+                                   std::string_view region,std::string &);
   bool full_source_ready() const { return false; }
 
 private:
@@ -77,6 +82,8 @@ private:
   bool inside_ = false, cutscene_ = false;
   bool source_cutscene_observed_ = false, awaiting_entry_ = false;
   bool native_ready_ = false;
+  bool key_open_=false;
+  std::vector<upstream::FieldObjectId> on_screen_enemies_;
   uint32_t story_generation_ = 0;
   bool dialogue_at_source_event_ = false, story_at_source_event_ = false;
   size_t outcome_cursor_ = 0;

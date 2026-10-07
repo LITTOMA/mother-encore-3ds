@@ -20,14 +20,17 @@ struct FieldBirdDescriptor {
  std::array<Vec2,3>parent{};std::array<float,4>notifier{},modulate{},self_modulate{},sprite_modulate{},sprite_self_modulate{};std::string node;
 };
 struct FieldBirdRules {uint32_t skin_mod=0,facing_mod=0,facing_value=0,speed_mod=0;float speed_base=0,seek_factor=0;Vec2 right{},left{};int32_t flight_z=0;};
+struct FieldBirdConnection {uint32_t role=0,child=0;std::string signal,method;};
 class FieldBirdData {
 public:
  bool load(const uint8_t*,size_t,const FieldIdentity&,std::string&);bool load_file(const char*,const FieldIdentity&,std::string&);bool valid()const{return valid_;}bool scene_admitted()const{return false;}
  FieldIdentity identity()const{return identity_;}const std::string&source_scene()const{return scene_;}const std::string&script()const{return script_;}const std::array<uint8_t,32>&script_sha()const{return script_sha_;}
  uint32_t columns()const{return columns_;}uint32_t rows()const{return rows_;}bool pixel_snap()const{return pixel_snap_;}const FieldBirdRules&rules()const{return rules_;}
+ const std::vector<FieldBirdConnection>&connections()const{return connections_;}
  const std::vector<FieldBirdDescriptor>&records()const{return records_;}const FieldBirdDescriptor*record(uint32_t)const;const FieldBirdClip*clip(uint32_t profile,FieldBirdClipRole)const;const FieldBirdSkin*skin(uint32_t)const;const std::vector<FieldBirdSkin>&skins()const{return skins_;}
  bool source_hash(std::string_view,std::array<uint8_t,32>&)const;
 private:
+ std::vector<FieldBirdConnection>connections_;
  bool valid_=false,pixel_snap_=false;FieldIdentity identity_{};std::string scene_,script_;std::array<uint8_t,32>script_sha_{};uint32_t columns_=0,rows_=0;FieldBirdRules rules_{};std::vector<FieldBirdDescriptor>records_;std::vector<std::vector<FieldBirdClip>>profiles_;std::vector<FieldBirdSkin>skins_;std::map<std::string,std::array<uint8_t,32>>sources_;
 };
 struct FieldBirdState {

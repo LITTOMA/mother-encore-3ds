@@ -1,4 +1,6 @@
 #pragma once
+#include "encore/scene_leaf_native.hpp"
+#include "encore/grass_native.hpp"
 #include "encore/field_scene_host.hpp"
 #include "encore/field_canvas_art.hpp"
 #include "encore/field_native_timer.hpp"
@@ -69,6 +71,8 @@ public:
   const AudioServerData &audio_server() const { return audio_server_; }
   const FieldSceneMaterialsData &materials() const { return materials_; }
   const SceneClipNativeData &clips() const { return clips_; }
+  const SceneLeafNativeData &leaves() const { return leaves_; }
+  const GrassNativeData &grass_native() const { return grass_native_; }
 private:
   FieldData grass_;
   FieldNpcData npc_;
@@ -113,6 +117,8 @@ private:
   AudioServerData audio_server_;
   FieldSceneMaterialsData materials_;
   SceneClipNativeData clips_;
+  SceneLeafNativeData leaves_;
+  GrassNativeData grass_native_;
   bool loaded_ = false, failed_ = false;
 };
 } // namespace encore::upstream

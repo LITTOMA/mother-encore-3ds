@@ -45,14 +45,19 @@
     "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
     "Graphics/Objects/Common/Vending Machine Exterior.png.import": "2332d3b934223a853b00fbf5be5a9407615754870a93226c0071941c1924d1a7",
     "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+    "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png.import": "84bae636c8b17c6458746f5deffd4049b42a457e91e15e1012cca675e41aeff4",
     "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+    "Graphics/Objects/Doors/Podunk_Church_Door.png.import": "852682b2a86c5b72db55d199c4a1d0864ce7bd7375a6d57042cbf35d0506cecd",
     "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+    "Graphics/Objects/Doors/Podunk_Shop_Door.png.import": "4aacf6ba5e0c2230cd3d24c3461113862c89b0e4a12ad64c2f5c6cdc2ad90d12",
     "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+    "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png.import": "f5f0bf1544d4d1af1ae25543ad5aa99e27e8c9bee46176666892006a99326b81",
     "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
     "Graphics/Objects/Doors/Podunk_White_Door.png.import": "79c5843295fa8315c36cbaaa76830fc063efcacd93d88292d576d048b47ab86a",
     "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
     "Graphics/Objects/Doors/Podunk_Yellow_Door.png.import": "120d60884596215d8a15989207e42e33762a131bb799d8262f938026d1397e2a",
     "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+    "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png.import": "abcf1484967d8618f4cf19c38497d0705b1780af61ef90e23cdb8e4d0c431c99",
     "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
     "Graphics/Objects/Grass/Podunk/0.png.import": "7f4dd5f8d1449eb8797d210d0d8a61f23de9f8518caff118a48fd3cb9c67d4ed",
     "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
@@ -52706,6 +52711,61 @@
       "repeat": false
     },
     {
+      "id": 627,
+      "source": "Graphics/Objects/Doors/Podunk_Shop_Door.png",
+      "path": "graphics/sprites/canvas-art/627.t3x",
+      "size": [
+        32,
+        48
+      ],
+      "nearest": true,
+      "repeat": false
+    },
+    {
+      "id": 628,
+      "source": "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png",
+      "path": "graphics/sprites/canvas-art/628.t3x",
+      "size": [
+        32,
+        48
+      ],
+      "nearest": true,
+      "repeat": false
+    },
+    {
+      "id": 629,
+      "source": "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png",
+      "path": "graphics/sprites/canvas-art/629.t3x",
+      "size": [
+        32,
+        48
+      ],
+      "nearest": true,
+      "repeat": false
+    },
+    {
+      "id": 630,
+      "source": "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png",
+      "path": "graphics/sprites/canvas-art/630.t3x",
+      "size": [
+        34,
+        48
+      ],
+      "nearest": true,
+      "repeat": false
+    },
+    {
+      "id": 631,
+      "source": "Graphics/Objects/Doors/Podunk_Church_Door.png",
+      "path": "graphics/sprites/canvas-art/631.t3x",
+      "size": [
+        32,
+        48
+      ],
+      "nearest": true,
+      "repeat": false
+    },
+    {
       "id": 633,
       "source": "Graphics/Character Sprites/Npcs/1dir/doll.png",
       "path": "graphics/sprites/canvas-art/633.t3x",
@@ -52887,7 +52947,8 @@
     "Continuous visible nestedYSort collection relative origin; approximateY comparison with collection index, behind-parent order and ascending source z buckets",
     "Typed appearance owner required for dynamic normal sprites; Character/Grass/Prompt/Melody/Outline delegate actual existing consumer, never default-shader substitution",
     "Structural CanvasArt resource admits no Ready callback and no complete Podunk scene",
-    "All visible actual Canvas slots including independent TileMap/Label/AnimatedSprite are exported for host z/order stream merging"
+    "All visible actual Canvas slots including independent TileMap/Label/AnimatedSprite are exported for host z/order stream merging",
+    "Openable source exported Sprite setters close all seven actual StreamTexture assets before Ready; no Node layout or native execution approval changes"
   ],
   "unverified": [
     "Manual tests not executed",

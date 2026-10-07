@@ -27,10 +27,21 @@ public:
   const auto &signals() const { return signals_; }
   const HouseUiSourceMethod *method(uint32_t) const;
   const HouseUiSourceSignal *signal(uint32_t) const;
+  uint32_t capability()const{return capability_;}
+  bool stack_continuation()const{return capability_==3;}
+  bool key_indicator() const { return key_policy_; }
+  const auto &key_member() const { return key_member_; }
+  int64_t key_default_count() const { return key_default_; }
+  const auto &enemy_member()const{return enemy_member_;}
+  const auto &house_scene()const{return house_scene_;}
+  bool key_initial_open() const { return key_open_; }
   bool source_hash(std::string_view, std::array<uint8_t, 32> &) const;
 
 private:
-  bool valid_ = false;
+  uint32_t capability_=0;
+  bool valid_ = false, key_policy_=false,key_open_=false;
+  std::string key_member_,key_scene_,key_script_,enemy_member_,house_scene_;
+  int64_t key_default_=0;
   FieldIdentity identity_{};
   std::array<uint8_t, 32> ir_{}, ui_ir_{};
   std::string script_;

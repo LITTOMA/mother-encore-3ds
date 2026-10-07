@@ -51,6 +51,21 @@ public:
  // new exit waits are left pending until the following call.
  bool idle(upstream::MusicRegionContext context,std::string&e){if(!state_||!state_->active)return fail(e,"House music idle has no active source scene");if(!state_->service->idle_frame(state_->epoch,e))return false;return contacts(context,e);}
  bool finish(std::string&e){if(!state_){e.clear();return true;}auto&s=*state_;if(s.active){for(auto&c:s.contacts)if(!c.retired){if(!s.service->tree_exit(s.epoch,c.geometry->node,e))return false;c.retired=true;}if(!s.service->finish_scene(s.epoch,e))return false;s.active=false;}state_.reset();e.clear();return true;}
+ // Continue the actual old House MusicChanger list in its original append
+ // order. These handles identify existing source contacts in this owner.
+ bool music_changers(std::vector<uint64_t>&out,std::string&e)const{
+  if(!state_||!state_->active)return fail(e,"House source musicChangers owner is inactive");
+  if(!state_->service->registered_regions(out,e))return false;
+  for(auto id:out)if(std::none_of(state_->contacts.begin(),state_->contacts.end(),[&](const auto&c){return !c.retired&&c.binding->id==id;}))
+   return fail(e,"House source musicChangers has a foreign contact");
+  e.clear();return true;
+ }
+ bool stop_music(uint64_t id,float seconds,std::string&e){
+  if(!state_||!state_->active)return fail(e,"House MusicChanger stop lacks its actual scene");
+  auto i=std::find_if(state_->contacts.begin(),state_->contacts.end(),[&](const auto&c){return !c.retired&&c.binding->id==id;});
+  if(i==state_->contacts.end())return fail(e,"House MusicChanger stop targets a different source contact");
+  return state_->service->stop_explicit(state_->epoch,i->geometry->node,seconds,e);
+ }
  bool active()const{return state_&&state_->active;}uint64_t epoch()const{return state_?state_->epoch:0;}
 };
 }

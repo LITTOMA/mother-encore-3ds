@@ -48,6 +48,17 @@ def source_instances(native,receipt,upstream):
  require(len(out)==13,'Podunk DeadBush binding loss');return out,names,resources,dict(native_export_sha256=sha(native),source_receipt_sha256=sha(receipt),source_files={name:r['sha256'] for name,r in s['files'].items()})
 
 def ident(kind,value):return int.from_bytes(hashlib.sha256((kind+':'+value).encode()).digest()[:4],'little')
+def connection_symbols(records,nodes,scene,script):
+ ready=re.findall(r'visibilityNotifier\.connect\("([^" ]+)", self, "([^" ]+)"\)',script)
+ require(len(ready)==2,'Bush viewport ready connections')
+ hit=re.findall(r'\[connection signal="([^"]+)" from="Hitbox" to="\." method="([^"]+)"\]',scene)
+ require(len(hit)==1 and re.search(r'^func '+re.escape(hit[0][1])+r'\(area\):',script,re.M),'Bush PackedScene Hitbox source binding')
+ out=[]
+ for row in records:
+  for role,(signal,method) in enumerate(ready,1):out.append(dict(node=row['id'],role=role,emitter=row['notifier_id'],arguments=0,signal=signal,method=method))
+  path=row['node']+'/Hitbox';require(path in nodes,'Bush actual hitbox emitter');out.append(dict(node=row['id'],role=3,emitter=stable(path),arguments=1,signal=hit[0][0],method=hit[0][1]))
+ return out
+
 def build(records,nodes,provenance):
  ex=Extractor(ROOT);scene=ex.text(SOURCE);script=ex.text(SCRIPT);ex.text('Scripts/Main/CutsceneArea.gd');global_source=ex.text('Scripts/global/global.gd');global_data=ex.text('Scripts/global/globalData.gd');ex.text('LICENSE')
  require(re.findall(r'^func ([A-Za-z_]+)\(',script,re.M)==['_ready','grow','interact','_on_Hitbox_area_entered','_on_AnimationPlayer_animation_finished'],'Changed DeadBush methods')
@@ -83,10 +94,10 @@ def build(records,nodes,provenance):
   require(sp['rotation']==0 and not sp['region_enabled'] and sp['material']is None,'Unreviewed bush source Sprite transform/material')
   out.append(dict(id=rec['stable_id'],parent_id=stable(parent),ready_ordinal=rec['ready_ordinal'],node=p,sprite_id=stable(p+'/Sprite'),notifier_id=stable(p+'/VisibilityNotifier2D'),notifier_rect=notifier['rect'],notifier_position=notifier['position'],notifier_scale=notifier['scale'],prompt_id=stable(p+'/interact/ButtonPrompt'),body_shape_id=stable(p+'/StaticBody2D/CollisionShape2D'),hit_shape_id=stable(p+'/Hitbox/CollisionShape2D'),interact_shape_id=stable(p+'/interact/CollisionShape2D'),new_parent_id=stable(new),new_parent_path=np['value']if np is not None else '',called_id=stable(called)if called else 0,called_path=cp['value']if cp is not None else '',call_kind=kind,call_method=method,flag=v.get('flag',''),disappear_flag=v.get('object_function_disappear_flag',''),flags=flags,columns=sp['hframes'],rows=sp['vframes'],frame=sp['frame'],sprite_position=sp['position'],sprite_offset=sp['offset'],sprite_scale=sp['scale'],hit_layer=node(scene,'Hitbox').get('collision_layer',1),hit_mask=node(scene,'Hitbox').get('collision_mask',1),hit_monitorable=node(scene,'Hitbox').get('monitorable',True)))
  for p,h in provenance['source_files'].items():ex.data(p);require(ex.sources[p]==h,'Changed bush complete native source closure')
- return dict(schema=1,kind='encore.field-dead-bush.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),scene_sha256=ex.sources[SCENE],script_sha256=ex.sources[SCRIPT],texture=dict(source=texture,output='graphics/objects/dead-bush.t3x',size=size),sound=dict(id=ident('field-dead-bush-sound',sound),source=sound,pcm='sound/effects/dead-bush.pcm',gain_db=audio.get('volume_db',0),bus=audio.get('bus','Master')),roots_frame=int(re.search(r'Roots.frame = (\d+)',script)[1]),vibration=vibr,vibration_gate=gate,vibration_default=default,bat_flag=bat,dialogues=dialogue,clips=clips,records=out,sources=dict(sorted(ex.sources.items())),provenance=provenance,semantics=['All 13 true source postorder Ready; viewport show/hide continues animation idle while hidden','New_parent nullable source variable fallback only when null, not blanket missing-node fallback','Actual source Sprite duplicate -> frame1 -> add_child -> local position assigned sprite.global_position in this exact order','Hitbox source callback has no bat/visible guard; source geometry owns collision dispatch','Source Break disables static/hit/interaction shapes; Hidden does not disable Hitbox; Grow re-enables three shapes','Source flags.get for initial branch; interact flags[bat] must exist; animation_finished flags.has gates BOTH deferred call and queue_free','Grow coroutine waits for any animation_finished even after interruption; all waiters resume Idle after existing Break handler','One deferred target is actual CutsceneArea7.check_start, never directly grant shovel or flags'],unsupported=['Complete town activation still requires all other pending source Ready','CutsceneArea7 typed deferred receiver must actually implement check_start before call is admitted','Dynamic Roots ownership and parent Canvas transform must be real Host sprite lifecycle, not fake static world coordinates'],license_review='Pinned upstream LICENSE permits game-related fork assets; original art and sound retain upstream terms.',unverified=['No tests run','Integration/emulator/hardware unverified'])
+ return dict(schema=2,connections=connection_symbols(out,nodes,scene,script),kind='encore.field-dead-bush.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),scene_sha256=ex.sources[SCENE],script_sha256=ex.sources[SCRIPT],texture=dict(source=texture,output='graphics/objects/dead-bush.t3x',size=size),sound=dict(id=ident('field-dead-bush-sound',sound),source=sound,pcm='sound/effects/dead-bush.pcm',gain_db=audio.get('volume_db',0),bus=audio.get('bus','Master')),roots_frame=int(re.search(r'Roots.frame = (\d+)',script)[1]),vibration=vibr,vibration_gate=gate,vibration_default=default,bat_flag=bat,dialogues=dialogue,clips=clips,records=out,sources=dict(sorted(ex.sources.items())),provenance=provenance,semantics=['All 13 true source postorder Ready; viewport show/hide continues animation idle while hidden','New_parent nullable source variable fallback only when null, not blanket missing-node fallback','Actual source Sprite duplicate -> frame1 -> add_child -> local position assigned sprite.global_position in this exact order','Hitbox source callback has no bat/visible guard; source geometry owns collision dispatch','Source Break disables static/hit/interaction shapes; Hidden does not disable Hitbox; Grow re-enables three shapes','Source flags.get for initial branch; interact flags[bat] must exist; animation_finished flags.has gates BOTH deferred call and queue_free','Grow coroutine waits for any animation_finished even after interruption; all waiters resume Idle after existing Break handler','One deferred target is actual CutsceneArea7.check_start, never directly grant shovel or flags'],unsupported=['Complete town activation still requires all other pending source Ready','CutsceneArea7 typed deferred receiver must actually implement check_start before call is admitted','Dynamic Roots ownership and parent Canvas transform must be real Host sprite lifecycle, not fake static world coordinates'],license_review='Pinned upstream LICENSE permits game-related fork assets; original art and sound retain upstream terms.',unverified=['No tests run','Integration/emulator/hardware unverified'])
 
 def validate(d):
- require(d['schema']==1 and d['kind']=='encore.field-dead-bush.source-ir' and d['commit']==PIN and d['scene']==SCENE and d['scene_id']==stable('.') and len(d['records'])==13,'DeadBush source identity/coverage')
+ require(d['schema']==2 and d['kind']=='encore.field-dead-bush.source-ir' and d['commit']==PIN and d['scene']==SCENE and d['scene_id']==stable('.') and len(d['records'])==13,'DeadBush source identity/coverage')
  require(d['scene_sha256']==d['sources'][SCENE] and d['script_sha256']==d['sources'][SCRIPT] and {a['name']for a in d['clips']}=={'Break','Grow','Hidden','Idle','RESET'},'DeadBush exact source class/clips')
  ids=set();last=-1
  for r in d['records']:
@@ -100,6 +111,9 @@ def validate(d):
    require(t['role']in(1,2,3,4,5)and t['role']not in used and t['update']in(0,1)and (t['update']!=0 or len(t['keys'])==1),'Bush property/update');used.add(t['role']);last=-1
    for k in t['keys']:
     require(type(k['value'])is int and math.isfinite(k['time'])and last<=k['time']<=c['length']and (0<=k['value']<d['records'][0]['columns']*d['records'][0]['rows']if t['role']==1 else k['value']in(0,1)),'Bush bounded source key');last=k['time']
+ require(len(d['connections'])==len(d['records'])*3,'Bush connection coverage');seen=set()
+ for c in d['connections']:
+  require(set(c)=={'node','role','emitter','arguments','signal','method'} and c['role']in(1,2,3) and (c['node'],c['role'])not in seen and c['arguments']==(1 if c['role']==3 else 0) and c['signal'] and c['method'],'Bush source connection');seen.add((c['node'],c['role']))
  return d
 
 def load():
@@ -127,7 +141,9 @@ def encode(d,receipt):
   u(*(r[k]for k in ('id','parent_id','ready_ordinal','sprite_id','prompt_id','body_shape_id','hit_shape_id','interact_shape_id','new_parent_id','called_id','call_kind','flags','columns','rows','frame','hit_layer','hit_mask')),int(r['hit_monitorable']),r['notifier_id']);f(*r['sprite_position'],*r['sprite_offset'],*r['sprite_scale'],*r['notifier_rect'][0],*r['notifier_rect'][1],*r['notifier_position'],*r['notifier_scale']);s(r['node']);s(r['new_parent_path']);s(r['called_path']);s(r['call_method']);s(r['flag']);s(r['disappear_flag'])
  u(len(d['sources']))
  for p,h in d['sources'].items():s(p);out.extend(bytes.fromhex(h))
- struct.pack_into('<8s6I20sII4x',out,0,b'ENCDBSH1',1,len(out),0,1,1,len(d['records']),bytes.fromhex(PIN),d['scene_id'],len(d['sources']));struct.pack_into('<I',out,16,zlib.crc32(out)&0xffffffff);return bytes(out)
+ u(len(d['connections']))
+ for c in d['connections']:u(c['node'],c['role'],c['emitter'],c['arguments']);s(c['signal']);s(c['method'])
+ struct.pack_into('<8s6I20sII4x',out,0,b'ENCDBSH1',2,len(out),0,2,1,len(d['records']),bytes.fromhex(PIN),d['scene_id'],len(d['sources']));struct.pack_into('<I',out,16,zlib.crc32(out)&0xffffffff);return bytes(out)
 
 def compile_pack():
  d=load();raw=encode(d,texture_receipt(d));PACK.parent.mkdir(parents=True,exist_ok=True);PACK.write_bytes(raw);return raw

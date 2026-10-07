@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/field_scene_audio.hpp"
+#include "encore/player_named_sfx.hpp"
 #include "podunk_player_native_media.hpp"
 #include "podunk_scene_loop.hpp"
 namespace encore::ctr {
@@ -37,6 +38,13 @@ public:
                upstream::FieldNodeTreeRuntime &,
                upstream::FieldGlobalRegistry &, AudioPlayer &,
                PodunkSceneAudioHost, std::string &);
+  bool prepare_named(const upstream::PlayerNamedSfxData &,
+                     upstream::FieldNodeTreeRuntime &,
+                     upstream::FieldGlobalRegistry &, AudioPlayer &,
+                     PodunkPlayerMediaHost, std::string &);
+  bool construct_named(upstream::FieldObjectId,
+                       const upstream::FieldNodeDescriptor &,
+                       const upstream::FieldIdentity &, std::string &);
   bool owns(const upstream::FieldNodeDescriptor &) const override;
   bool owns(upstream::FieldObjectId) const override;
   bool construct(upstream::FieldObjectId, const upstream::FieldNodeDescriptor &,
@@ -89,6 +97,8 @@ private:
     std::vector<Output> outputs, previous;
   };
   bool live(std::string &) const;
+  const upstream::FieldSceneAudioStream *stream_binding(uint32_t) const;
+  bool construct_voice(upstream::FieldObjectId, const upstream::FieldSceneAudioNode &, std::string &);
   Voice *voice(upstream::FieldObjectId, std::string &);
   bool asset(uint32_t, upstream::AudioAsset &, std::string &) const;
   bool internal(Voice &, bool, std::string &);
@@ -100,6 +110,7 @@ private:
   void free_voice(Voice &);
   void release_channel(Voice &);
   const upstream::FieldSceneAudioData *data_ = nullptr;
+  const upstream::PlayerNamedSfxData *named_ = nullptr;
   upstream::FieldNodeTreeRuntime *tree_ = nullptr;
   upstream::FieldGlobalRegistry *registry_ = nullptr;
   AudioPlayer *audio_ = nullptr;

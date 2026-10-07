@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.field-player-transitions.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
@@ -2004,6 +2004,7 @@
     "RayCast lookup uses last physics collider after look_at, never synchronous invented raycast",
     "JumpArea source multi-point jump signal waits, party stagger and QUART/QUAD animation curves; no invented gravity",
     "Stairs use frame-count step accumulator, actual party overlap order and running move_and_slide; source dangling body_exited connection has no callable handler",
+    "Constructor binding does not query Player; live callbacks read same source Player body, native ground CollisionShape position multiplier, shadow and settings; state_changed emits even with silent=true after original tween",
     "Godot 3.6.2 Node._ready/GDScript.call_multilevel_reversed invoke ControlledTwoStatesObject before JumpArea: hide tween captures native Sprite scaleONE/position toward ZERO before leaf Ready stores arrow position and sets scaleZERO"
   ],
   "unverified": [
@@ -2011,6 +2012,15 @@
     "Main/SceneHost/camera/player/renderer integration pending",
     "Emulator and hardware unverified"
   ],
+  "bindings": {
+    "state_signal": "state_changed",
+    "state_arguments": 2,
+    "ground_method": "get_ground_position",
+    "ground_path": "CollisionShape2D",
+    "ground_multiplier": 2.0,
+    "shadow_path": "Shadow",
+    "prompt_member": "button_prompts"
+  },
   "required_sources": [
     "Scripts/Main/Jump Area.gd",
     "Scripts/Main/Stairs.gd",

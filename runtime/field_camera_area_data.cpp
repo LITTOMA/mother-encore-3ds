@@ -25,7 +25,7 @@ bool FieldCameraAreaData::load_file(const char*p,const FieldIdentity&id,std::str
 bool FieldCameraAreaData::load(const uint8_t*p,size_t n,const FieldIdentity&id,std::string&e){
  auto reject=[&](const char*s){e=s;return false;};
  if(!p||n<128||n>4*1024*1024)return reject("Camarea size rejected");
- if(std::memcmp(p,"ENCFCAA1",8)||word(p+8)!=1||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e0023||word(p+28)!=3||!word(p+32)||word(p+32)>10000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("Camarea identity/version/capability rejected");
+ if(std::memcmp(p,"ENCFCAA1",8)||word(p+8)!=2||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e0023||word(p+28)!=4||!word(p+32)||word(p+32)>10000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("Camarea identity/version/capability rejected");
  if(crc(p+128,n-128)!=word(p+20)||std::all_of(p+92,p+124,[](uint8_t v){return !v;}))return reject("Camarea CRC/IR rejected");
  FieldCameraAreaData d;d.identity_=id;Reader r{p,n};d.scene_=r.text();d.script_=r.text();for(auto&v:d.reset_)v=r.signed_integer();if(!r.ok||!path(d.scene_)||!path(d.script_)||d.reset_[0]>=d.reset_[3]||d.reset_[1]>=d.reset_[2])return reject("Camarea source/reset limits rejected");
  std::set<uint32_t>ids,children;std::set<std::string>nodes;uint32_t previous=0;
@@ -33,6 +33,12 @@ bool FieldCameraAreaData::load(const uint8_t*p,size_t n,const FieldIdentity&id,s
   if(!r.ok||!a.id||!a.parent_id||!a.shape_id||a.id==a.parent_id||a.id==a.shape_id||!ids.insert(a.id).second||!children.insert(a.shape_id).second||!nodes.insert(a.node).second||!path(a.node)||(i&&a.ready<=previous)||a.flags>15||a.pause>2||a.scale.x<=0||a.scale.y<=0||a.shape_scale.x<=0||a.shape_scale.y<=0||a.extents.x<=0||a.extents.y<=0||a.world[0].y||a.world[1].x||a.world[0].x<=0||a.world[1].y<=0||a.shape_world[0].y||a.shape_world[1].x||a.shape_world[0].x<=0||a.shape_world[1].y<=0||a.reference_exists!=(a.reference_id!=0)||a.reference_exists!=!a.reference_node.empty()||(a.reference_exists&&(!path(a.reference_node)||a.reference_path.empty()))||a.reference_path.find(':')!=a.reference_path.npos||a.reference_path.find('\\')!=a.reference_path.npos)return reject("Camarea instance/reference/geometry rejected");
   previous=a.ready;d.records_.push_back(std::move(a));}
  for(auto v:children){if(ids.count(v))return reject("Camarea root/shape alias rejected");}
+ auto count=r.integer();if(!r.ok||count!=2)return reject("Camarea connection count rejected");
+ std::set<std::string>signals,methods;
+ for(uint32_t i=0;i<count;++i){FieldCameraAreaConnection c;c.role=r.integer();c.signal=r.text();c.method=r.text();
+  auto symbol=[](const std::string &s){return !s.empty()&&s.size()<=256&&(s[0]=='_'||(s[0]>='a'&&s[0]<='z')||(s[0]>='A'&&s[0]<='Z'))&&std::all_of(s.begin(),s.end(),[](char x){return x=='_'||(x>='a'&&x<='z')||(x>='A'&&x<='Z')||(x>='0'&&x<='9');});};
+  if(!r.ok||c.role!=i+1||!symbol(c.signal)||!symbol(c.method)||!signals.insert(c.signal).second||!methods.insert(c.method).second)return reject("Camarea source connection rejected");
+  d.connections_.push_back(std::move(c));}
  auto proofs=r.integer();if(!r.ok||!proofs||proofs>10000)return reject("Camarea proof count rejected");for(uint32_t i=0;i<proofs;++i){auto name=r.text();auto h=r.hash();if(!r.ok||!path(name)||!d.sources_.emplace(name,h).second)return reject("Camarea source proof rejected");}
  std::array<uint8_t,32>h{};if(!r.ok||r.at!=n||!d.source_hash(d.scene_,h)||h!=id.source_sha256||!d.source_hash(d.script_,d.script_sha_))return reject("Camarea source/trailing rejected");d.valid_=true;*this=std::move(d);e.clear();return true;
 }

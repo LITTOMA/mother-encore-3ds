@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "3bb10ab1173257471997d28239c2cd13546009b8241125f3a8b22d3bb047aad2",
+  "sources": {
+    "Audio/Sound effects/Lloyd Beam.mp3": "85a69e04cd24a96309cadde339a36aed0a679a428ae7f56f309fd03052486556",
+    "Graphics/VFX/LloydLaser.png": "3aaa218bcd092a73701d09a761988fe3820a56fb64415977faecabc3eafbf97b",
+    "Nodes/Reusables/Overlap/Beam.tscn": "902e1eb1692e08742ba5ad504a4492afc6ecaf797cd494a91d85aa260ce89b98",
+    "Nodes/Reusables/Overlap/BeamHead.tscn": "31dfd2f360663041284775b61d4ead66d9663b9725b2f5d2cc5d91136827c259",
+    "Nodes/Reusables/Overlap/BeamTrail.tscn": "2d7f7196e0411acd1b1e3dbfd95d7d4803ca01ab3edbcdcc7e0311ed15023002",
+    "Scripts/Main/Beam.gd": "2181221b72a8cab5e321770573a5aa15caffc2f433438601161a2aed4ccf2799",
+    "Scripts/Main/BeamTrail.gd": "3d32b0822d462c80ae97d77fffa7db81ff23c10c680802e9a31a5e9e9adcdaae",
+    "Audio/Sound effects/Ana PSI Fire.mp3": "9869a0e1a437cbc3fdbae3c6c65c9e3af2b92cb5e0759d1d0dbd967290526df1",
+    "Graphics/VFX/AnaOVpkfire.png": "1489051adb77b51a3112a1eb4ac37e4bf019a4806d54636b609c4f4cc69c227b",
+    "Nodes/Reusables/Overlap/PKOV.tscn": "c135bff48d428b75e8b190369f50528ade046fcd8483e414c772878e3814b777",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Scripts/Main/AnaPKOV.gd": "bbe6587eae0281994e1bd0913327349477adab7f04760026a7a80bed35b82bb9",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9"
+  },
+  "exporter_sha256": "d32fb3679db920f886e46f0ed69f7baa80930d63e6e26d172d85f018c6322b2e",
+  "recipes_helper_sha256": "0899a78a707191d12d56a2e8f480bd27d0428d21a831c605df4c3c14f19f1bab",
+  "instantiated": false,
+  "ready_granted": false
+}

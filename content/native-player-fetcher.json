@@ -8,7 +8,7 @@
   "scene": "Nodes/Reusables/Player.tscn",
   "scene_id": 3168673487,
   "source_sha256": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
-  "player_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+  "player_ir_sha256": "15825fddcd42e0744027b76cbd9994feb643f3f8f4c3e5a6977460be1eb42016",
   "global_ir_sha256": "ab6a4302a455a8495f40c3db8780b2b849541dff35181f9347e2abae216e58b6",
   "tree_ir_sha256": "8f6ac6436ad79c5cef04ab428d4896d7cf19aa7f2ab9a294d8e43de3a590406e",
   "script": "Scripts/Main/SpriteDataFetcher.gd",

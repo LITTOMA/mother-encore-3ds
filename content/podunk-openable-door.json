@@ -1,5 +1,18 @@
 {
   "schema": 1,
+  "format": 2,
+  "area_connections": [
+    {
+      "role": 1,
+      "signal": "body_entered",
+      "method": "_on_Area2D_body_entered"
+    },
+    {
+      "role": 2,
+      "signal": "body_exited",
+      "method": "_on_Area2D_body_exited"
+    }
+  ],
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_id": 2561235290,

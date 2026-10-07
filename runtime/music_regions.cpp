@@ -72,6 +72,19 @@ bool MusicRegionData::select_assets(const AudioBank &bank,
 }
 bool MusicRegionController::initialize(const MusicRegionData&data,uint32_t capacity,std::string&e){if(!data.valid()||!capacity||capacity>maximum_voices)return fail(e,"Invalid music region controller capacity/data");MusicRegionController n;n.data_=&data;n.voices_.resize(capacity);n.states_.resize(data.regions().size());*this=std::move(n);e.clear();return true;}
 bool MusicRegionController::attach_scene(uint64_t epoch,std::string&e){if(!data_||!epoch||epoch<=epoch_)return fail(e,"Invalid music scene epoch");for(auto&s:states_)if(s.registered||s.inside||s.pending_exit)return fail(e,"Previous music scene has not exited");epoch_=epoch;states_.assign(states_.size(),{});registered_.clear();pending_exits_.clear();e.clear();return true;}
+bool MusicRegionController::can_handoff(const MusicRegionData&data,uint64_t epoch,std::string&e)const{
+ if(!data_||!data.valid()||!epoch||epoch<=epoch_)return fail(e,"Music scene handoff source/epoch rejected");
+ if(data.silence_db()!=data_->silence_db()||data.fade_to_seconds()!=data_->fade_to_seconds())return fail(e,"Music handoff global tween tuning differs");
+ for(const auto&s:states_)if(s.registered||s.inside||s.pending_exit)return fail(e,"Music handoff preceding source Area exits are incomplete");
+ e.clear();return true;
+}
+bool MusicRegionController::handoff(const MusicRegionData&data,uint64_t epoch,std::string&e){
+ if(!can_handoff(data,epoch,e))return false;
+ // The source global Music children, their order and active tweens outlive
+ // scene nodes. Rebinding regions must not reset or recreate those children.
+ data_=&data;epoch_=epoch;states_.assign(data.regions().size(),{});
+ registered_.clear();pending_exits_.clear();e.clear();return true;
+}
 int MusicRegionController::region(std::string_view p)const{if(data_)for(size_t i=0;i<data_->regions().size();++i)if(data_->regions()[i].source_path==p)return int(i);return-1;}
 int MusicRegionController::latest()const{int result=-1;uint64_t order=0;for(size_t i=0;i<voices_.size();++i)if(voices_[i].allocated&&voices_[i].order>order){result=int(i);order=voices_[i].order;}return result;}
 int MusicRegionController::song(uint32_t track)const{int result=-1;uint64_t order=UINT64_MAX;for(size_t i=0;i<voices_.size();++i)if(voices_[i].allocated&&voices_[i].track_id==track&&voices_[i].order<order){result=int(i);order=voices_[i].order;}return result;}

@@ -20,9 +20,12 @@ struct FieldBushDescriptor {
  uint32_t id=0,parent_id=0,ready_ordinal=0,sprite_id=0,prompt_id=0,body_shape_id=0,hit_shape_id=0,interact_shape_id=0,new_parent_id=0,called_id=0,flags=0,columns=0,rows=0,frame=0,hit_layer=0,hit_mask=0,notifier_id=0;
  bool hit_monitorable=false;FieldBushDeferredKind call_kind{};Vec2 sprite_position{},sprite_offset{},sprite_scale{},notifier_rect_position{},notifier_rect_size{},notifier_position{},notifier_scale{};std::string node,new_parent_path,called_path,call_method,flag,disappear_flag;
 };
+struct FieldBushConnection { uint32_t node=0,role=0,emitter=0,arguments=0;std::string signal,method; };
 class FieldBushData {
 public:
  bool load(const uint8_t*,size_t,std::string&);bool load_file(const char*,std::string&);bool valid()const{return valid_;}
+ uint32_t capability()const{return capability_;}
+ const std::vector<FieldBushConnection>&connections()const{return connections_;}
  uint32_t scene_id()const{return scene_id_;}const std::array<uint8_t,20>&source_pin()const{return pin_;}const std::array<uint8_t,32>&scene_hash()const{return scene_;}const std::array<uint8_t,32>&script_hash()const{return script_;}
  const std::vector<FieldBushDescriptor>&records()const{return records_;}const FieldBushDescriptor*record(uint32_t)const;const FieldBushClip*clip(FieldBushClipRole)const;
  const FieldBushDialogue&dialogue(bool bat)const{return dialogues_.at(bat?0:1);}const std::string&bat_flag()const{return bat_flag_;}const FieldBushSound&sound()const{return sound_;}
@@ -30,6 +33,7 @@ public:
  uint32_t width()const{return width_;}uint32_t height()const{return height_;}const std::string&texture_source()const{return texture_source_;}const std::string&texture_path()const{return texture_path_;}const std::array<uint8_t,32>&texture_hash()const{return texture_;}
  bool source_hash(std::string_view,std::array<uint8_t,32>&)const;
 private:
+ uint32_t capability_=0;std::vector<FieldBushConnection>connections_;
  bool valid_=false;uint32_t scene_id_=0,width_=0,height_=0,roots_frame_=0,vibration_device_=0;std::array<float,3>vibration_{};std::array<uint8_t,20>pin_{};std::array<uint8_t,32>scene_{},script_{},texture_{};
  bool vibration_default_=false;std::string texture_source_,texture_path_,bat_flag_,vibration_gate_;FieldBushSound sound_;std::vector<FieldBushDescriptor>records_;std::vector<FieldBushClip>clips_;std::vector<FieldBushDialogue>dialogues_;std::map<std::string,std::array<uint8_t,32>>sources_;
 };

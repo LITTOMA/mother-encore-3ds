@@ -160,6 +160,7 @@ public:
            cache_directories_.complete() && yaml_caches_.init_caches_complete();
   }
   auto cache_source_cursor() const { return cache_directories_.cursor(); }
+  const upstream::GlobalYamlCachesData *yaml_cache_data() const { return yaml_data_; }
   auto &yaml_caches() { return yaml_caches_; }
   const auto &yaml_caches() const { return yaml_caches_; }
   bool call_cache_getter(std::string_view method,

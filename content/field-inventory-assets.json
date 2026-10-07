@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "135952acf65f4db05ac09a52e86bdbb78156e502ac1a78c6dee4cc249150f29e",
+  "ir_sha256": "c573d1710d610844341832c84e16023932b6187abb20d40cbfe2b4293d9e9a40",
   "source": "Graphics/UI/Inventory/modifiers.png",
   "source_sha256": "7fa2ffa20e936b2cca1c4f1b324ea27a2163d5018e3a557c01f2f88dd2d5f975",
   "output": "graphics/ui/field-inventory/equipped.t3x",

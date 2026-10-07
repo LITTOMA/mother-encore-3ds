@@ -1,10 +1,14 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "4f859e1b87afc4b32b56e4f9400f0eec021f51171d9e5fba22c834196ef66430",
+  "ir_sha256": "f5b3d3b03db1ac1ec52680700021e9f49c3cf0ea85794d54e87e91b2e777bdc1",
   "sources": {
     "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
-    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca"
+    "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+    "Scripts/UI/KeyNumber.gd": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a",
+    "Nodes/Ui/KeyCount.tscn": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
+    "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
   },
   "scope": [
     "Real existing House battle/menu/story owners; no source constructor or seven UI factories replayed",

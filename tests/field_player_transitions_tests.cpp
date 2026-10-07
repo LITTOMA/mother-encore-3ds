@@ -91,10 +91,12 @@ int main(int argc, char **argv) {
   auto bad = c;
   bad.party[0].body_geometry[0].area = true;
   c = bad;
-  assert(!missing.initialize(d, h, e));
+  assert(missing.initialize(d, h, e));
+  assert(!missing.process_source(d.records().front().id, .01));
   c.party[0].body_geometry[0].area = false;
   c.player = 999;
-  assert(!missing.initialize(d, h, e));
+  assert(missing.initialize(d, h, e));
+  assert(!missing.process_source(d.records().front().id, .01));
   c.player = 1;
   assert(missing.initialize(d, h, e));
   assert(!missing.ready(999));
@@ -106,6 +108,23 @@ int main(int argc, char **argv) {
     auto b = raw;
     patch(b, offset, 99999);
     assert(!d.load(b.data(), b.size(), e) && d.valid());
+  }
+  if (d.capability() == 2) {
+    assert(d.bindings().state_arguments == 2 && !d.bindings().state_signal.empty());
+    // Read the variable-length source suffix rather than assuming game strings.
+    const auto &binding = d.bindings();
+    size_t suffix = 4 + binding.state_signal.size() + 4 +
+        4 + binding.ground_method.size() + 4 + binding.ground_path.size() + 4 +
+        4 + binding.shadow_path.size() + 4 + binding.prompt_member.size();
+    const size_t arity = raw.size() - suffix + 4 + binding.state_signal.size();
+    auto invalid = raw;
+    patch(invalid, arity, 99);
+    assert(!d.load(invalid.data(), invalid.size(), e) && d.valid());
+    const size_t factor = arity + 4 + 4 + binding.ground_method.size() +
+        4 + binding.ground_path.size();
+    invalid = raw;
+    patch(invalid, factor, 0);
+    assert(!d.load(invalid.data(), invalid.size(), e) && d.valid());
   }
   auto b = raw;
   patch(b, 64, 0);

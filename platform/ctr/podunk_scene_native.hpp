@@ -15,6 +15,7 @@ class PodunkPlayerHost;
 class PodunkConcretePlayerEffectOwners;
 class PodunkPlayerCanvasForeign;
 class PodunkSceneAnimatedLeaves;
+class PodunkSceneGrassFactory;
 // Actual native Control leaves join the existing Canvas order; their source
 // owner executes construction and draws its own real GPU assets. No separate
 // overlay pass or frame clock is introduced.
@@ -87,6 +88,7 @@ public:
                     float, std::string &);
   bool bind_animated_leaves(PodunkSceneAnimatedLeaves &, std::string &);
   bool bind_canvas_leaf(PodunkSceneCanvasLeaf &, std::string &);
+  bool bind_grass(PodunkSceneGrassFactory &, std::string &);
   bool bind_foreign(PodunkPlayerHost &,
                     const upstream::PlayerInitializationData &,
                     PodunkConcretePlayerEffectOwners &,
@@ -153,6 +155,7 @@ private:
   std::unique_ptr<FieldMapRenderer> map_gpu_;
   std::unique_ptr<FieldCanvasArtRenderer> art_gpu_;
   std::unique_ptr<PodunkPlayerCanvasForeign> foreign_;
+  PodunkSceneGrassFactory *grass_ = nullptr;
   PodunkSceneAnimatedLeaves *animated_leaves_ = nullptr;
   std::vector<PodunkSceneCanvasLeaf *> canvas_leaves_;
   upstream::FieldCanvasArtRuntime canvas_;

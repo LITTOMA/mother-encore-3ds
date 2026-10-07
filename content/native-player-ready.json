@@ -3,7 +3,7 @@
   "kind": "encore.player-ready.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "family": 1162739802,
-  "initialization_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
+  "initialization_ir_sha256": "15825fddcd42e0744027b76cbd9994feb643f3f8f4c3e5a6977460be1eb42016",
   "sources": {
     "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
     "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",

@@ -72,6 +72,11 @@ public:
   upstream::FieldObjectId object() const { return object_; }
   upstream::Vec2 display_offset() const { return display_offset_; }
   bool native_ready() const { return ready_; }
+  bool native_snapshot(upstream::FieldGameCameraState&,std::string&)const;
+  bool native_select(bool,std::string&);
+  bool source_observation(upstream::FieldGameCameraObservation&,std::string&);
+  const upstream::FieldGlobalRegistry*registry()const{return registry_;}
+  const upstream::FieldNodeTreeRuntime*tree()const{return tree_;}
 
 private:
   bool live(std::string &) const;

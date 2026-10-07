@@ -60,6 +60,8 @@ public:
  bool initialize(const MusicRegionData&,uint32_t voice_capacity,std::string&);
  // Call only after prior scene's tree_exit callbacks; voices survive the switch.
  bool attach_scene(uint64_t scene_epoch,std::string&);
+ bool can_handoff(const MusicRegionData&,uint64_t,std::string&)const;
+ bool handoff(const MusicRegionData&,uint64_t,std::string&);
  bool observe_external_player(MusicExternalPlayer,std::string&);
  bool enter(uint64_t,std::string_view,const MusicRegionContext&,std::string&);
  bool exit(uint64_t,std::string_view,const MusicRegionContext&,std::string&);
@@ -78,6 +80,9 @@ public:
  const std::vector<MusicRegionState>&regions()const{return states_;}
  uint64_t scene_epoch()const{return epoch_;}
  uint32_t capacity()const{return uint32_t(voices_.size());}
+ const std::vector<uint32_t>&registered_indices()const{return registered_;}
+ MusicExternalPlayer external_child()const{return external_;}
+ uint64_t external_child_order()const{return external_order_;}
 private:
  int region(std::string_view)const;int latest()const;int song(uint32_t)const;
  bool play(uint32_t,std::string&);

@@ -496,15 +496,14 @@ bool PodunkSceneScripts::bind(FieldObjectId id, const FieldNodeDescriptor &d,
   return true;
 }
 bool PodunkSceneScripts::grass_preload(std::string &e) const {
-  // Source preload is observed only by instance() at screen entry. The checked
-  // profile/texture recipe is the native template, without allocating a tree,
-  // drawing random values, or requiring a dynamic instance backend at Ready.
+  // Source onready preload requires the actual checked PackedScene owner.
   const auto *d = consumers_.grass_data;
   if (!d || !d->valid() || !consumers_.grass || consumers_.grass->data() != d ||
       !d->profile_count() || !d->texture_count() ||
       d->identity().upstream_commit !=
           sources_->tree().identity().upstream_commit)
     return fail(e, "Grass checked typed preload/actual runtime owner missing");
+  if (!grass_dynamic_factory(e)) return false;
   e.clear();
   return true;
 }

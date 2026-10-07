@@ -1,4 +1,5 @@
 #include "encore/field_global_registry.hpp"
+#include "encore/player_named_sfx.hpp"
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -73,14 +74,15 @@ bool FieldGlobalRegistry::publish_native_object(const FieldGlobalExternalSpec&sp
 }
 bool FieldGlobalRegistry::publish_native_reference(const FieldGlobalExternalSpec&spec,FieldObjectId id,const std::shared_ptr<FieldGlobalNativeReference>&owner,std::string&e){
  auto i=objects_.find(id);
- if(!initialized_||poisoned_||!owner||!id||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||owner->registry()!=this||!spec.stable_id||spec.role!=5||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||(spec.native_class=="SceneTreeTimer"?(!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;})):(spec.script!=spec.source||spec.source_sha!=spec.script_sha))||spec.identity.source_sha256!=spec.source_sha||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual native Reference slot/source rejected");
+ if(!initialized_||poisoned_||!owner||!id||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||owner->registry()!=this||!spec.stable_id||spec.role!=5||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||((spec.native_class=="SceneTreeTimer"||spec.native_class=="SceneTreeTween"||spec.native_class=="PropertyTweener")?(!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;})):(spec.script!=spec.source||spec.source_sha!=spec.script_sha))||spec.identity.source_sha256!=spec.source_sha||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual native Reference slot/source rejected");
  auto type=owner->native_class();auto b=owner->binding();
- const bool supported=(spec.native_class=="SceneTreeTimer"&&b.family==0x454e006c&&b.capability==1)||(spec.native_class=="GDScriptFunctionState"&&b.family==0x454e0068&&b.capability==1)||(spec.native_class=="Reference"&&b.family==0x454e0050&&b.capability==2)||(((spec.native_class=="Reference"&&(b.family==0x454e0053||b.family==0x454e0060))||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052)||(spec.native_class=="File"&&b.family==0x454e005d))&&b.capability==1);
+ const bool supported=(spec.native_class=="SceneTreeTimer"&&b.family==0x454e006c&&b.capability==1)||(spec.native_class=="GDScriptFunctionState"&&b.family==0x454e0068&&b.capability==1)||((spec.native_class=="SceneTreeTween"||spec.native_class=="PropertyTweener"||spec.native_class=="GDScriptFunctionState")&&b.family==0x454e0071&&b.capability==1)||(spec.native_class=="Reference"&&b.family==0x454e0050&&b.capability==2)||(((spec.native_class=="Reference"&&(b.family==0x454e0053||b.family==0x454e0060))||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052)||(spec.native_class=="File"&&b.family==0x454e005d))&&b.capability==1);
  std::array<uint8_t,32>source{},namespace_source{};
  if(!type||spec.native_class!=type||!supported||!owner->checked_source_hash(spec.source,source)||source!=spec.source_sha||b.object!=id||!equal_spec(b.source,spec))return fail(e,"Global native Reference actual owner/domain proof rejected");
  // Nested source classes have their own checked resource closure. Namespace
  // declarations need not duplicate every nested script dependency.
  if(spec.native_class=="SceneTreeTimer"){if(spec.source!="scene/main/scene_tree.cpp"||!data_->engine_hash(spec.source,namespace_source)||namespace_source!=source)return fail(e,"Global SceneTreeTimer conflicts with checked native engine source");}
+ else if((spec.native_class=="SceneTreeTween"||spec.native_class=="PropertyTweener")&&(spec.source!="scene/animation/scene_tree_tween.cpp"||(data_->engine_hash(spec.source,namespace_source)&&namespace_source!=source)))return fail(e,"Global Grass tween conflicts with checked native engine source");
  else if(data_->source_hash(spec.source,namespace_source)&&namespace_source!=source)return fail(e,"Global native Reference conflicts with namespace source");
  i->second.reference=owner;i->second.reference_published=true;i->second.definition=spec.stable_id;e.clear();return true;
 }
@@ -88,8 +90,9 @@ bool FieldGlobalRegistry::publish_source_resource(const FieldGlobalExternalSpec&
  auto i=objects_.find(id);
  if(!initialized_||poisoned_||!owner||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||!id||!spec.stable_id||spec.role!=4||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual source Resource slot/identity rejected");
  const bool player_resource=owner->binding().family==0x454e005f&&(owner->binding().capability==1||owner->binding().capability==2)&&(spec.native_class=="StreamTexture"||spec.native_class=="AtlasTexture"||spec.native_class=="ShaderMaterial"||spec.native_class=="AudioStreamSample"||spec.native_class=="AudioStreamMP3"||(owner->binding().capability==2&&spec.native_class=="CanvasItemMaterial"));
+ const bool named_resource=owner->binding().family==0x454e0073&&owner->binding().capability==1&&(spec.native_class=="AudioStreamSample"||spec.native_class=="AudioStreamMP3");
  const bool player_playback=spec.native_class=="AnimationNodeStateMachinePlayback"&&owner->binding().family==0x454e005a&&owner->binding().capability==1;
- if((spec.native_class!="PackedScene"&&spec.native_class!="ShaderMaterial"&&!player_playback&&!player_resource)||spec.native_class!=owner->resource_class()||spec.source_sha!=spec.identity.source_sha256||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global source Resource native type/proof rejected");
+ if((spec.native_class!="PackedScene"&&spec.native_class!="ShaderMaterial"&&!player_playback&&!player_resource&&!named_resource)||spec.native_class!=owner->resource_class()||spec.source_sha!=spec.identity.source_sha256||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global source Resource native type/proof rejected");
  auto b=owner->binding();FieldGlobalExternalState s;
  if(b.object!=id||!b.family||!b.capability||!equal_spec(b.source,spec)||!owner->state(s,e)||s.name!=spec.name||s.parent||!s.children.empty()||s.inside||s.ready||s.ui_before_canvas||s.current_scene||s.stable_canvas)return fail(e,"Global source Resource actual non-Node owner rejected");
  i->second.resource=owner.get();i->second.external=std::move(owner);i->second.definition=spec.stable_id;e.clear();return true;
@@ -110,7 +113,7 @@ bool FieldGlobalRegistry::construct(const FieldGlobalExternalSpec&spec,FieldObje
   // rather than publishing a second synthetic root or a child-list receipt.
   FieldIdentity identity;const auto*n=slot.tree?slot.tree->state(id):nullptr;
   const auto*d=slot.tree?slot.tree->descriptor(id):nullptr;
-  if(!data_||spec.role!=3||spec.stable_id!=data_->global_autoload()||binding.family!=0x454e0055||binding.capability!=1||!slot.tree||slot.tree->root()!=id||slot.tree->object_domain()!=kernel_||!n||!d||!slot.tree->object_identity(id,identity)||identity.upstream_commit!=spec.identity.upstream_commit||identity.source_sha256!=spec.source_sha||d->native_class!=spec.native_class||d->script!=spec.script||d->script_sha!=spec.script_sha||n->name!=state.name||n->parent||n->inside||n->ready_notified||n->children!=state.children){poisoned_=true;return fail(e,"Global external constructor actual source branch differs");}
+  if(!data_||spec.role!=3||!((spec.stable_id==data_->global_autoload()&&binding.family==0x454e0055&&binding.capability==1)||(binding.family==0x454e0073&&binding.capability==1&&slot.tree&&slot.tree->object_count()==4&&std::any_of(data_->autoloads().begin(),data_->autoloads().end(),[&](const auto&a){return a.id==spec.stable_id&&a.path==spec.source&&a.source_sha==spec.source_sha&&a.script==spec.script&&a.script_sha==spec.script_sha&&a.native_class==spec.native_class;})))||!slot.tree||slot.tree->root()!=id||slot.tree->object_domain()!=kernel_||!n||!d||!slot.tree->object_identity(id,identity)||identity.upstream_commit!=spec.identity.upstream_commit||identity.source_sha256!=spec.source_sha||d->native_class!=spec.native_class||d->script!=spec.script||d->script_sha!=spec.script_sha||n->name!=state.name||n->parent||n->inside||n->ready_notified||n->children!=state.children){poisoned_=true;return fail(e,"Global external constructor actual source branch differs");}
   std::vector<FieldObjectId>pending{id};std::set<FieldObjectId>seen;
   for(size_t at=0;at<pending.size();++at){
    const auto object=pending[at];const auto i=objects_.find(object);
@@ -180,6 +183,24 @@ bool FieldGlobalRegistry::construct_autoload(uint32_t stable,std::string&e){
  for(const auto&a:data_->autoloads())if(a.ordinal<i->ordinal&&!autoload_objects_.count(a.id))return fail(e,"Global earlier autoload actual constructor pending");
  FieldGlobalExternalSpec spec;spec.identity=data_->identity();spec.stable_id=i->id;spec.role=3;spec.name=i->name;spec.native_class=i->native_class;spec.source=i->path;spec.script=i->script;spec.source_sha=i->source_sha;spec.script_sha=i->script_sha;
  FieldObjectId id=0;if(!construct(spec,id,e))return false;autoload_objects_.emplace(stable,id);e.clear();return true;
+}
+bool FieldGlobalRegistry::construct_audio_continuation_autoload(const PlayerNamedSfxData &d,std::string &e){
+ if(!initialized_||poisoned_||!data_||!d.valid()||!d.recipe().valid()||
+    d.identity().upstream_commit!=data_->identity().upstream_commit)
+  return fail(e,"Audio continuation source/Registry is unavailable");
+ const auto *root=d.recipe().record(d.identity().scene_id);
+ auto row=std::find_if(data_->autoloads().begin(),data_->autoloads().end(),
+  [&](const auto &a){return a.path==d.recipe().source_scene();});
+ if(!root||root->parent||root->path!="."||row==data_->autoloads().end()||
+    row->native_class!=root->native_class||row->script!=root->script||
+    row->script_sha!=root->script_sha||row->source_sha!=d.identity().source_sha256||
+    autoload_objects_.count(row->id)||!external_object(root_))
+  return fail(e,"Audio continuation differs from its complete checked autoload recipe");
+ std::array<uint8_t,32>source{},script{};
+ if(!d.recipe().source_hash(row->path,source)||source!=row->source_sha||
+    !d.recipe().source_hash(row->script,script)||script!=row->script_sha)
+  return fail(e,"Audio continuation recipe/source closure differs from namespace");
+ return construct_continuation_autoload(*row,e);
 }
 bool FieldGlobalRegistry::attach_autoload(uint32_t stable,std::string&e){
  auto i=autoload_objects_.find(stable);

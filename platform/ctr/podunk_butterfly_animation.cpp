@@ -126,7 +126,7 @@ bool PodunkButterflyAnimation::source_ready(const FieldButterflyBinding &b, std:
   const auto body = tree_->source_object(b.id);
   const auto *node = tree_->state(body);
   if (data_->binding(b.id) != &b || runtime_->content() != data_ || !node ||
-      !node->inside || !node->ready_notified || !world_->native_ready(body, e))
+      !node->inside || !node->ready_notified || !world_->native_entered(body, e))
     return fail(e, "Butterfly source Ready requires same actual Kinematic body");
   for (auto leaf : {b.fly_id, b.orbit_id}) {
     const auto &p = players_.at(leaf);
@@ -143,7 +143,7 @@ bool PodunkButterflyAnimation::publish(const FieldButterflyBinding &b,
       runtime_->content() != data_)
     return fail(e, "Butterfly publisher foreign source/runtime state");
   const auto body = tree_->source_object(b.id);
-  if (!world_->native_ready(body, e) || !world_->publish_position(b.id, runtime_->world_position(b.id), e) ||
+  if (!world_->native_entered(body, e) || !world_->publish_position(b.id, runtime_->world_position(b.id), e) ||
       !tree_->set_process(body, false, s.process, e) || !tree_->set_visible(body, s.visible, e))
     return false;
   return sync(players_.at(b.fly_id), e) && sync(players_.at(b.orbit_id), e);

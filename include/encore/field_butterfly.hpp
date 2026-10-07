@@ -5,6 +5,7 @@
 #include <map>
 #include <array>
 namespace encore::upstream {
+struct FieldButterflyConnection{uint32_t role=0;std::string signal,method;};
 struct FieldButterflyKey{float time=0,transition=0;Vec2 value{};};
 struct FieldButterflyTrack{uint32_t role=0;bool discrete=false;std::vector<FieldButterflyKey>keys;};
 struct FieldButterflyClip{uint32_t role=0;std::string name;float length=0;std::vector<FieldButterflyTrack>tracks;};
@@ -18,7 +19,9 @@ public:
  const std::vector<FieldButterflyBinding>&bindings()const{return bindings_;}const FieldButterflyBinding*binding(uint32_t)const;const std::vector<FieldButterflyAsset>&assets()const{return assets_;}const FieldButterflyAsset*asset(uint32_t)const;const FieldButterflyClip*clip(uint32_t role)const;
  bool pixel_snap()const{return pixel_snap_;}uint32_t modulus()const{return modulus_;}uint32_t frames()const{return frames_;}float speed()const{return speed_;}double fly_seek()const{return fly_seek_;}double orbit_seek()const{return orbit_seek_;}
  bool source_hash(std::string_view,std::array<uint8_t,32>&)const;
+ const std::vector<FieldButterflyConnection>&connections()const{return connections_;}
 private:
+ std::vector<FieldButterflyConnection>connections_;
  std::map<std::string,std::array<uint8_t,32>>sources_;
  bool valid_=false,pixel_snap_=false;std::array<uint8_t,20>pin_{};std::string scene_,script_;uint32_t modulus_=0,frames_=0;float speed_=0;double fly_seek_=0,orbit_seek_=0;std::vector<FieldButterflyBinding>bindings_;std::vector<FieldButterflyAsset>assets_;std::vector<FieldButterflyClip>clips_;
 };

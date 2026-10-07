@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 3,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
   "scene_id": 2561235290,
@@ -148,7 +148,8 @@
     "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f"
   },
   "scene_admitted": false,
-  "capabilities": 3,
+  "capabilities": 5,
+  "body_method": "_on_Door_body_entered",
   "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
   "ground_offset": 7.0,
   "none": "None",

@@ -2,6 +2,7 @@
 #include "encore/field_node_recipe.hpp"
 #include <memory>
 namespace encore::upstream {
+class PlayerNamedSfxData;
 struct FieldGlobalAutoload {
  uint32_t id=0,kind=0,ordinal=0;
  std::string name,path,native_class,script;
@@ -136,6 +137,9 @@ public:
  const FieldGlobalRegistryData*data()const{return data_;}
  FieldObjectId autoload_object(uint32_t)const;
  bool construct_autoload(uint32_t,std::string&);
+ // Existing-session audio continuation only. This retains the cold project
+ // constructor order and grants no source/native Ready to the new owner.
+ bool construct_audio_continuation_autoload(const PlayerNamedSfxData&,std::string&);
  bool attach_autoload(uint32_t,std::string&);
  bool select_current_scene(FieldNodeTreeRuntime&,FieldObjectId,std::string&);
  // Observe the actual source global assignment before root.add_child/Ready.

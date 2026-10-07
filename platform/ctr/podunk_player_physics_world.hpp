@@ -27,6 +27,7 @@ public:
   bool phase(upstream::FieldObjectId, upstream::FieldTreePhase, float, bool,
              std::string &) override;
   bool disabled(upstream::FieldObjectId, bool, std::string &) override;
+  bool shape_disabled(upstream::FieldObjectId,bool&,std::string&)const;
   bool release(upstream::FieldObjectId, std::string &) override;
   bool set_collision_mask(upstream::FieldObjectId, uint32_t, bool,
                           std::string &);
@@ -40,6 +41,9 @@ public:
   bool admit_static_monitor(upstream::FieldObjectId, uint32_t owner_index,
                             std::string &);
   bool static_monitor_exit(upstream::FieldObjectId, std::string &);
+  bool admit_grass_monitor(const upstream::GrassNativeData &,
+                           upstream::FieldObjectId,
+                           const upstream::FieldGeometryContact &, std::string &);
   // The one real physics frame owner samples after step and flushes the queued
   // monitor callbacks at PhysicsServer::flush_queries, before the next frame's
   // SceneTree physics processing. No dt or independent timer is maintained.
@@ -99,6 +103,7 @@ private:
   SourceObject source_;
   std::map<upstream::FieldObjectId, Native> natives_;
   std::map<upstream::FieldObjectId, Monitor> monitors_;
+  std::map<upstream::FieldObjectId, upstream::FieldGeometryContact> grass_monitors_;
   std::set<Pair> pairs_, pending_;
   uint64_t epoch_ = 0;
   bool sampled_ = false, flushing_ = false, locked_ = false, poisoned_ = false;

@@ -69,10 +69,10 @@ bool PlayerMotionData::load(const uint8_t *p, size_t n,
                             const PlayerInitializationData &init,
                             const PlayerReadyData &ready, std::string &e) {
   if (!init.valid() || !ready.valid() || !p || n < 128 || n > 1024 * 1024 ||
-      std::memcmp(p, "ENCPMOV1", 8) || word(p + 8) != 1 ||
+      std::memcmp(p, "ENCPMOV1", 8) || (word(p + 8) != 1 && word(p + 8) != 2) ||
       word(p + 12) != 128 || word(p + 16) != n ||
       word(p + 20) != crc32(p + 128, n - 128) || word(p + 24) != 0x454e005c ||
-      word(p + 28) != 1 || word(p + 32) != 1 ||
+      word(p + 28) != word(p + 8) || word(p + 32) != 1 ||
       word(p + 36) != init.identity().scene_id ||
       !std::equal(p + 40, p + 60, init.identity().upstream_commit.begin()) ||
       !std::equal(p + 60, p + 92, init.identity().source_sha256.begin()) ||
@@ -80,6 +80,7 @@ bool PlayerMotionData::load(const uint8_t *p, size_t n,
     return fail(e, "Player motion format/capability/rules/source rejected");
   PlayerMotionData d;
   d.identity_ = init.identity();
+  d.capability_ = word(p + 28);
   std::copy_n(p + 92, 32, d.ir_.begin());
   Reader r{p, n};
   if (r.bytes<32>() != init.ir_sha256() || r.bytes<32>() != ready.ir_sha256())
@@ -157,6 +158,105 @@ bool PlayerMotionData::load(const uint8_t *p, size_t n,
   }
   for (auto &name : d.names_)
     name = r.text();
+if (d.capability_ == 2) {
+  strings(d.business_);
+  std::set<std::string> unique;
+  for (const auto &v : d.business_)
+    if (!unique.insert(v).second)
+      r.ok = false;
+  auto signal_count = r.u();
+  if (!signal_count || signal_count > 64)
+    return fail(e, "Player source signal schema rejected");
+  unique.clear();
+  for (uint32_t i = 0; i < signal_count; ++i) {
+    auto name = r.text();
+    auto args = r.u();
+    if (args > 1 || !unique.insert(name).second)
+      r.ok = false;
+    d.signals_.emplace_back(std::move(name), args);
+  }
+}
+if (d.capability_ == 2) {
+  auto &p = d.lifecycle_;
+  p.paused_animation = r.text();
+  p.takeoff_timer = r.text();
+  p.collision_path = r.text();
+  p.collision_native = r.text();
+  p.pause_flash = r.text();
+  p.resume_flash = r.text();
+  p.pause_timers = r.text();
+  p.resume_timers = r.text();
+  auto field_exists = [&](const std::string &name, uint32_t kind) {
+    for (const auto &f : init.fields())
+      if (f.name == name && f.kind == kind)
+        return true;
+    return false;
+  };
+  bool shape = false;
+  if (p.collision_native != "CollisionShape2D" &&
+      p.collision_native != "CollisionPolygon2D")
+    return fail(e, "Player collision native class rejected");
+  for (const auto &v : init.recipe().records())
+    if (v.path == p.collision_path &&
+        v.class_index < init.recipe().classes().size() &&
+        init.recipe().classes()[v.class_index] == p.collision_native)
+      shape = true;
+  bool takeoff = false;
+  auto onready = init.onready_source();
+  if (onready && onready->kind == 5)
+    for (const auto &row : onready->array) {
+      auto name = row->get("name"), path = row->get("path");
+      if (name && path && name->kind == 4 && path->kind == 4 &&
+          name->string == p.takeoff_timer &&
+          path->string == d.node(PlayerMotionNode::TakeoffTimer))
+        takeoff = true;
+    }
+  if (!field_exists(p.paused_animation, 4))
+    return fail(e, "Player pause source String declaration rejected");
+  if (!takeoff)
+    return fail(e, "Player pause source onready timer rejected");
+  if (!shape)
+    return fail(e, "Player pause source native collision rejected");
+  auto loops = r.u();
+  if (!loops || loops > 64)
+    return fail(e, "Player pause loop schema rejected");
+  std::set<std::string> unique;
+  for (uint32_t i = 0; i < loops; ++i) {
+    auto name = r.text();
+    auto parameter = r.text();
+    bool found = false;
+    for (const auto &state : ready.states())
+      if (state.name == name && state.scale_parameter == parameter)
+        found = true;
+    if (!found || !unique.insert(name).second)
+      r.ok = false;
+    p.looped_animations.emplace_back(std::move(name), std::move(parameter));
+  }
+  auto flashes = r.u();
+  if (!flashes || flashes > 64)
+    return fail(e, "Player pausable Flash schema rejected");
+  unique.clear();
+  for (uint32_t i = 0; i < flashes; ++i) {
+    auto name = r.text();
+    if (!unique.insert(name).second)
+      r.ok = false;
+    p.pausable_flash.push_back(std::move(name));
+  }
+  auto masks = r.u();
+  if (!masks || masks > 32)
+    return fail(e, "Player collision mask schema rejected");
+  std::set<uint32_t> bits;
+  for (uint32_t i = 0; i < masks; ++i) {
+    auto bit = r.u();
+    if (bit >= 32 || !bits.insert(bit).second)
+      r.ok = false;
+    p.collision_masks.push_back(bit);
+  }
+  p.paused_scale = r.f();
+  p.playing_scale = r.f();
+  if (p.paused_scale < 0 || p.playing_scale <= p.paused_scale)
+    r.ok = false;
+}
   auto positive = [&](PlayerMotionNumber role) { return d.number(role) > 0; };
   if (!positive(PlayerMotionNumber::MovementDivisor) ||
       !positive(PlayerMotionNumber::StepDistance) ||

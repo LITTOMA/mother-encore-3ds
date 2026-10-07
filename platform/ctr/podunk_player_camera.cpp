@@ -74,6 +74,22 @@ bool PodunkPlayerCamera::live(std::string &e) const {
     return fail(e, "Player Camera actual native owner unavailable");
   return true;
 }
+bool PodunkPlayerCamera::native_snapshot(FieldGameCameraState&out,std::string&e)const{
+  if (!live(e)) return false;
+  out = native_;
+  e.clear();
+  return true;
+}
+bool PodunkPlayerCamera::native_select(bool current,std::string&e){
+  if (!live(e)) return false;
+  native_.current = current;
+  if (children_->camera().state(native_.id) &&
+      !children_->camera().native_current_changed(native_.id, current)) {
+    e = children_->camera().error();
+    return false;
+  }
+  return current&&entered_?update_native(e):true;
+}
 bool PodunkPlayerCamera::actual_ui(std::string &e) const {
   const auto *ns = ports_.ui_namespace;
   if (!registry_ || !data_ || !ports_.ui || !ns || !ns->valid() ||
@@ -609,4 +625,9 @@ FieldGameCameraHost PodunkPlayerCamera::source_host() {
   };
   return h;
 }
+
+bool PodunkPlayerCamera::source_observation(FieldGameCameraObservation &out, std::string &e) {
+  return observe(native_.id, out, e);
+}
+
 } // namespace encore::ctr

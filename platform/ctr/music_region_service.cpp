@@ -1,5 +1,6 @@
 #include "music_region_service.hpp"
 #include <cmath>
+#include <algorithm>
 namespace encore::ctr {
 namespace {bool fail(std::string&e,const char*m){e=m;return false;}}
 struct MusicRegionService::State {
@@ -16,12 +17,39 @@ uint64_t MusicRegionService::scene_epoch()const{return state_?state_->controller
 uint32_t MusicRegionService::live_voice_count()const{uint32_t count=0;if(state_)for(const auto&v:state_->controller.voices())count+=v.allocated&&v.playing;return count;}
 uint32_t MusicRegionService::submitted_voices()const{return state_?state_->player.submitted_voices():0;}
 uint32_t MusicRegionService::buffer_bytes()const{return state_?state_->player.buffer_bytes():0;}
+bool MusicRegionService::registered_regions(std::vector<uint64_t>&out,std::string&e)const{
+ if(!state_||phase_!=MusicRegionServicePhase::Active)return fail(e,"Source musicChangers lacks its active scene owner");
+ std::vector<uint64_t>next;
+ for(auto i:state_->controller.registered_indices()){
+  if(i>=state_->data.regions().size()||!state_->controller.regions()[i].registered)
+   return fail(e,"Source musicChangers registration differs from live controller");
+  next.push_back(state_->data.regions()[i].id);
+ }
+ out=std::move(next);e.clear();return true;
+}
+bool MusicRegionService::source_players(const AudioPlayer&owner,std::vector<MusicSourcePlayer>&out,std::string&e)const{
+ if(!state_||(phase_!=MusicRegionServicePhase::Active&&phase_!=MusicRegionServicePhase::Draining&&phase_!=MusicRegionServicePhase::Prepared))return fail(e,"Music source graph lacks its played controller");
+ const auto actual=owner.observe_music();const auto external=state_->controller.external_child();
+ if(!actual.available||actual.player_identity!=state_->external_owner.player_identity||actual.present!=external.present||actual.playing!=external.playing)return fail(e,"Music source child observation precedes actual backend observation");
+ std::vector<MusicSourcePlayer>next;
+ if(external.present)next.push_back({1,actual.asset_id,external.generation,state_->controller.external_child_order(),actual.playing,actual.tweening,actual.volume_db});
+ for(const auto&v:state_->controller.voices())if(v.allocated)next.push_back({2,v.track_id,v.generation,v.order,v.playing,v.tweening,v.gain_db});
+ std::sort(next.begin(),next.end(),[](const auto&a,const auto&b){return a.order<b.order;});
+ for(size_t i=0;i<next.size();++i)if(!next[i].player_identity||!next[i].order||(i&&next[i-1].order==next[i].order))return fail(e,"Music actual source child identity/order duplicate");
+ out.swap(next);e.clear();return true;
+}
 bool MusicRegionService::begin_prepare(const char*regions,const char*bank,const char*root,uint32_t capacity,const AudioPlayer&owner,std::string&e){
+ upstream::MusicRegionData data;if(!data.load_file(regions,e))return false;
+ return begin_prepare(data,bank,root,capacity,owner,e);
+}
+const upstream::MusicRegionData*MusicRegionService::content()const{return state_?&state_->data:nullptr;}
+bool MusicRegionService::begin_prepare(const upstream::MusicRegionData&data,const char*bank,const char*root,uint32_t capacity,const AudioPlayer&owner,std::string&e){
  if(state_)return fail(e,"Music region service already prepared; preserve the live owner");
  const auto snapshot=owner.observe_music();
  if(!snapshot.available)return fail(e,"Music region service unavailable: existing NDSP owner is not initialized");
- auto candidate=std::make_unique<State>();
- if(!candidate->data.load_file(regions,e)||!candidate->controller.initialize(candidate->data,capacity,e)||
+ if(!data.valid())return fail(e,"Music region preparation needs actual loaded source data");
+ auto candidate=std::make_unique<State>();candidate->data=data;
+ if(!candidate->controller.initialize(candidate->data,capacity,e)||
     !candidate->player.begin_prepare(bank,root,candidate->data,capacity,snapshot.available,snapshot.master_db,e))return false;
  state_=std::move(candidate);phase_=MusicRegionServicePhase::Preparing;e.clear();return true;
 }
@@ -76,6 +104,19 @@ bool MusicRegionService::commit_scene(uint64_t epoch,const AudioPlayer&owner,std
  auto next=state_->controller;auto generation=state_->external_owner;
  if(!observe(next,generation,snapshot,e)||!next.attach_scene(epoch,e))return false;
  state_->controller=std::move(next);state_->external_owner=generation;state_->consumed_history=state_->history_size=state_->history_crc=0;state_->history_scene.clear();phase_=MusicRegionServicePhase::Active;e.clear();return true;
+}
+bool MusicRegionService::handoff_scene(MusicRegionService&candidate,uint64_t epoch,const AudioPlayer&owner,std::string&e){
+ if(&candidate==this||!state_||phase_!=MusicRegionServicePhase::Draining||!candidate.state_||candidate.phase_!=MusicRegionServicePhase::Prepared)return fail(e,"Music source handoff needs preceding exited scene and detached prepared candidate");
+ if(state_->controller.capacity()!=candidate.state_->controller.capacity()||!state_->controller.can_handoff(candidate.state_->data,epoch,e))return false;
+ auto next=state_->controller;auto known=state_->external_owner;
+ const auto snapshot=owner.observe_music();
+ if(snapshot.dialogue_music_playing)return fail(e,"Music source handoff has unmapped DialogueMusic child");
+ if(!observe(next,known,snapshot,e)||!state_->player.adopt_prepared_tracks(candidate.state_->player,e))return false;
+ state_->data=candidate.state_->data;
+ if(!next.handoff(state_->data,epoch,e))return false;
+ state_->controller=std::move(next);state_->external_owner=known;
+ state_->consumed_history=state_->history_size=state_->history_crc=0;state_->history_scene.clear();
+ phase_=MusicRegionServicePhase::Active;candidate.shutdown();e.clear();return true;
 }
 bool MusicRegionService::bind_room_history(upstream::RoomView room,std::string&e){
  if(!state_||phase_!=MusicRegionServicePhase::Active||!room.valid()||room.byte_size()<128||state_->history_size)return fail(e,"Region music history owner rejected");

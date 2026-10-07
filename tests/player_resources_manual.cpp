@@ -59,9 +59,15 @@ int main(int argc, char **argv) {
                                     visual, e));
   PlayerResourcesData data;
   bool accepted = data.load_file(argv[3], player, graphics, e);
+  if(accepted && data.capability()==2) {
+    PlayerEffectsData effects;
+    accepted=effects.load_file((root+"/data/player.enceffects").c_str(),player,e) && data.bind_effects(effects,e);
+  }
   if (!std::strcmp(argv[1], "--expect-reject")) {
     MANUAL_REQUIRE(!accepted);
-    MANUAL_REQUIRE(!data.valid());
+    // A cross-binding failure preserves a valid reader object but cannot
+    // obtain the independent effect factory capability.
+    MANUAL_REQUIRE(!data.valid() || !data.effects_bound());
     return 0;
   }
   MANUAL_REQUIRE(accepted);

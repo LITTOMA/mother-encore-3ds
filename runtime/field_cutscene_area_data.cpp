@@ -32,11 +32,11 @@ bool FieldCutsceneAreaData::load_file(const char*p,std::string&e){
 bool FieldCutsceneAreaData::source_hash(std::string_view path_,std::array<uint8_t,32>&out)const{auto i=sources_.find(std::string(path_));if(i==sources_.end())return false;out=i->second;return true;}
 bool FieldCutsceneAreaData::load(const uint8_t*p,size_t n,std::string&e){
  auto reject=[&](const char*m){e=m;return false;};if(!p||n<64||n>4*1024*1024)return reject("CutsceneArea pack size");
- if(std::memcmp(p,"ENCCSA01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1||u32(p+24)!=1||!u32(p+28)||u32(p+28)>4096||u32(p+16)!=crc(p,n))return reject("CutsceneArea header/version/capability/rules/CRC");
+ if(std::memcmp(p,"ENCCSA01",8)||(u32(p+8)!=1&&u32(p+8)!=2)||u32(p+12)!=n||u32(p+20)!=(u32(p+8)==2?2u:1u)||u32(p+24)!=1||!u32(p+28)||u32(p+28)>4096||u32(p+16)!=crc(p,n))return reject("CutsceneArea header/version/capability/rules/CRC");
  for(size_t i=52;i<64;++i)if(p[i])return reject("CutsceneArea reserved header");
  FieldCutsceneAreaData d;std::copy(p+32,p+52,d.pin_.begin());if(std::all_of(d.pin_.begin(),d.pin_.end(),[](uint8_t b){return!b;}))return reject("CutsceneArea source pin absent");
- Reader r{p,n};d.scene_=r.text();d.script_=r.text();for(auto&v:d.policy_.close)v=r.boolean();for(auto&v:d.policy_.pause)v=r.boolean();d.policy_.completion=r.text();d.policy_.battle_signal=r.text();
- if(!r.ok||!path(d.scene_)||!path(d.script_)||!symbol(d.policy_.completion)||!symbol(d.policy_.battle_signal))return reject("CutsceneArea source policy/lifecycle");
+ Reader r{p,n};d.scene_=r.text();d.script_=r.text();for(auto&v:d.policy_.close)v=r.boolean();for(auto&v:d.policy_.pause)v=r.boolean();d.policy_.completion=r.text();d.policy_.battle_signal=r.text();if(u32(p+8)==2)d.policy_.battle_method=r.text();
+ if(!r.ok||!path(d.scene_)||!path(d.script_)||!symbol(d.policy_.completion)||!symbol(d.policy_.battle_signal)||(u32(p+8)==2&&!symbol(d.policy_.battle_method)))return reject("CutsceneArea source policy/lifecycle");
  auto count=r.integer();if(count!=2)return reject("CutsceneArea connection capability");std::set<uint32_t>roles;std::set<std::string>signals;
  for(uint32_t i=0;i<count;++i){FieldCutsceneAreaConnection c;c.role=r.integer();c.signal=r.text();c.method=r.text();if(!r.ok||c.role!=i+1||!roles.insert(c.role).second||!signals.insert(c.signal).second||!symbol(c.signal)||!symbol(c.method))return reject("CutsceneArea source signal role/identity");d.policy_.connections.push_back(std::move(c));}
  count=r.integer();if(count!=u32(p+28))return reject("CutsceneArea source instance count");std::set<uint32_t>ids,ordinals;std::set<std::string>nodes;uint32_t previous=0;

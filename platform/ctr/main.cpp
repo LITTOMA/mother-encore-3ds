@@ -55,6 +55,8 @@
 #include "encore/room_music_admission.hpp"
 #include "encore/startup_resource_admission.hpp"
 #include "house_music_host.hpp"
+#include "podunk_house_exit.hpp"
+#include "podunk_house_door_fade.hpp"
 #include "basement_actor_renderer.hpp"
 #include "present_sparkles_renderer.hpp"
 #include "encore/battle_entry.hpp"
@@ -220,6 +222,20 @@ ctr::AudioPlayer audio_player;
 // No inferred Podunk entry, startup resource scan or early House music change.
 ctr::MusicRegionService region_music;
 std::unique_ptr<ctr::HouseMusicHost> house_music_host;
+upstream::FieldSceneDestinationData podunk_destination;
+upstream::FieldObjectSignals podunk_signals;
+upstream::SessionSnapshot podunk_house_snapshot;
+std::unique_ptr<ctr::PodunkHouseExit> podunk_exit;
+ctr::PodunkHouseDoorFade podunk_door_fade;
+ctr::MusicRegionService podunk_prepared_music;
+upstream::PlayerMotionData podunk_motion_input;
+std::shared_ptr<upstream::AudioBank> podunk_music_bank;
+upstream::Vec2 podunk_controls{};
+u32 podunk_down=0,podunk_held=0,podunk_up=0;
+uint64_t podunk_idle_epoch=0,podunk_physics_epoch=0,podunk_scene_epoch=0;
+bool podunk_retired_house=false,podunk_prepare_attempted=false,podunk_deferred=false;
+void house_camera(float&,float&);
+void close_podunk();
 std::string audio_status;
 std::vector<std::string> battle_paths;
 std::vector<uint32_t> battle_draw_order;
@@ -778,6 +794,131 @@ bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error
     NativeSnapshotInput input;input.state=std::move(state);input.stats=&session_rewards;input.inventory=&session_inventory;input.storage=&session_storage;
     return build_native_session_snapshot(native_session_data,room,house_data.view(),round_data.view(),items_data.view(),input,result,error);
 }
+// Destination ownership is tied to the currently played House. Metadata alone
+// executes no script, takes no entropy and cannot switch the current scene.
+bool podunk_exit_near(std::string&e){
+ using namespace upstream;e.clear();
+ if(podunk_exit||podunk_prepare_attempted||podunk_retired_house)return false;
+ if(gameplay_scene->house.phase()!=HousePhase::Idle||gameplay_scene->world.stage()!=OpeningStage::Walking||gameplay_scene->world.cutscene_active())return false;
+ if(!podunk_destination.valid()&&!podunk_destination.load(resource_catalog,"romfs:/",opening_data.view(),e))return false;
+ const auto&doors=podunk_destination.exit();const auto p=gameplay_scene->world.player().position;
+ const auto room=opening_data.view();const auto scene=room.scene();
+ float hull=0;for(uint32_t i=0;i<scene.actor_hull_count;++i){const auto v=room.vertex(scene.actor_hull_first+i);hull=std::max(hull,std::max(std::abs(v.x),std::abs(v.y)));}
+ // Prepare before the very next native House overlap query. This margin is
+ // derived from the actual source movement and actor hull, never a new trigger.
+ const float speed=std::max(room.rule_f32(RoomRuleKey::RunSpeed),gameplay_scene->world.player().speed);
+ const float margin=hull+speed*speed/(room.rule_f32(RoomRuleKey::MovementDivisor)*60.f*60.f);
+ for(uint32_t i=0;i<doors.door_count();++i){const auto d=doors.door(i);const auto&t=d.body_transform;
+  const Vec2 c{t.origin.x+t.x.x*d.shape_offset.x+t.y.x*d.shape_offset.y,t.origin.y+t.x.y*d.shape_offset.x+t.y.y*d.shape_offset.y};
+  const Vec2 r{std::abs(t.x.x)*d.extents.x+std::abs(t.y.x)*d.extents.y,std::abs(t.x.y)*d.extents.x+std::abs(t.y.y)*d.extents.y};
+  if(std::abs(p.x-c.x)<=r.x+margin&&std::abs(p.y-c.y)<=r.y+margin){e.clear();return true;}
+ }
+ e.clear();return false;
+}
+bool prepare_podunk_exit(std::string&e){
+ using namespace upstream;
+ if(podunk_prepare_attempted||podunk_exit||!podunk_destination.valid()){e="House exit preparation owner repeated/missing";return false;}
+ podunk_prepare_attempted=true;
+ if(!collect_session_snapshot(podunk_house_snapshot,e))return false;
+ if(region_music.scene_epoch()==UINT64_MAX){e="House scene epoch exhausted";return false;}
+ podunk_scene_epoch=region_music.scene_epoch()+1;
+ if(!podunk_door_fade.initialize(house_data.view(),podunk_destination.exit(),introduction_data,e))return false;
+ ctr::PodunkHouseExitInput input;
+ auto&c=input.continuation;
+ c.destination=&podunk_destination;c.romfs_root="romfs:/";c.house=gameplay_scene.get();
+ c.battle=&battle_entry;c.outcome=&battle_outcome;c.commands=&field_equipment_menu;
+ c.session=&native_session_data;c.room=opening_data.view();c.house_data=house_data.view();c.round=round_data.view();c.legacy_items=items_data.view();
+ c.snapshot=&podunk_house_snapshot;c.played_random=&battle_random;c.uid_ledger=&generated_uid_ledger;
+ c.target=loading_top;c.audio=&audio_player;c.signals=&podunk_signals;
+ c.clock=[](LoadRngClockSample&sample,std::string&e){const auto now=std::time(nullptr);if(now<0){e="Native House continuation clock unavailable";return false;}sample.unix_seconds=uint64_t(now);sample.ticks_usec=uint64_t(double(svcGetSystemTick()-load_epoch_tick)*1000.0/CPU_TICKS_PER_MSEC);e.clear();return true;};
+ c.locale=[](std::string&out,std::string&e){out=std::string(locale_selection.code());if(out.empty()){e="Actual locale owner missing";return false;}e.clear();return true;};
+ input.controls=[](Vec2&out,std::string&e){out=podunk_controls;e.clear();return true;};
+ input.query_input=[](std::string_view action,PlayerInputQuery query,bool&out,std::string&e){
+  u32 mask=0;const std::pair<PlayerMotionText,u32>bindings[]={{PlayerMotionText::CancelAction,KEY_B},{PlayerMotionText::ScopeAction,KEY_Y},{PlayerMotionText::ToggleAction,KEY_B},{PlayerMotionText::AcceptAction,KEY_A},{PlayerMotionText::NextAction,KEY_R},{PlayerMotionText::PreviousAction,KEY_L}};
+  const auto*motion=podunk_exit?podunk_exit->motion_data():nullptr;if(!motion){e="Actual Player motion input owner missing";return false;}
+  for(const auto&b:bindings)if(action==motion->text(b.first)){mask=b.second;break;}
+  if(!mask){e="Source Player input action has no 3DS button mapping";return false;}
+  out=((query==PlayerInputQuery::Held?podunk_held:query==PlayerInputQuery::JustPressed?podunk_down:podunk_up)&mask)!=0;e.clear();return true;
+ };
+ input.camera_ports.controls=input.controls;input.camera_ports.input=input.query_input;
+ input.viewport={{float(view_width),float(view_height)},reference_view};
+ input.equipment=field_equipment_data.view();input.font=&locale_font;
+ input.music=&region_music;input.scene_epoch=podunk_scene_epoch;input.geometry_grid_size=32;
+ input.music_service.admit_service=[](const FieldMusicChangerData&data,uint64_t epoch,std::string&e){
+  if(epoch!=podunk_scene_epoch||podunk_music_bank){e="Outdoor music preparation owner repeated";return false;}
+  for(const auto&asset:podunk_destination.bundle().assets())if((asset.kind==uint32_t(PodunkAssetKind::AudioBank)||asset.kind==uint32_t(PodunkAssetKind::MusicBank))){
+   auto bank=std::make_shared<AudioBank>();if(!bank->load_file((std::string("romfs:/")+asset.path).c_str(),e))return false;
+   std::string admission;if(data.music().matches(*bank,admission)){if(podunk_music_bank){e="Ambiguous outdoor music bank";return false;}podunk_music_bank=std::move(bank);}
+  }
+  if(!podunk_music_bank||!data.matches_service(data.music(),*podunk_music_bank,e)){if(e.empty())e="Outdoor source music bank missing";return false;}
+  std::string bank_path;for(const auto&asset:podunk_destination.bundle().assets())if((asset.kind==uint32_t(PodunkAssetKind::AudioBank)||asset.kind==uint32_t(PodunkAssetKind::MusicBank))){
+   AudioBank bank;if(!bank.load_file((std::string("romfs:/")+asset.path).c_str(),e))return false;std::string ignored;if(data.music().matches(bank,ignored)){bank_path="romfs:/"+asset.path;break;}
+  }
+  if(!audio_player.include_bank(podunk_music_bank,e)||!podunk_prepared_music.begin_prepare(data.music(),bank_path.c_str(),"romfs:/",4,audio_player,e))return false;
+  for(;;){auto result=ctr::pump_region_music_preparation(podunk_prepared_music,audio_player,ctr::MusicRegionPlayer::maximum_prepare_budget,e);if(result==ctr::MusicPreparationStep::Failed)return false;if(result==ctr::MusicPreparationStep::Ready)break;report_load_progress(LoadPhase::Scene,podunk_prepared_music.prepared_pcm_bytes(),podunk_prepared_music.total_pcm_bytes());}
+  return data.matches_service(*podunk_prepared_music.content(),*podunk_music_bank,e);
+ };
+ input.music_service.area_enter=[](uint64_t epoch,std::string_view path,const MusicRegionContext&context,std::string&e){return region_music.area_enter(epoch,path,context,audio_player,e);};
+ input.music_service.area_exit=[](uint64_t epoch,std::string_view path,const MusicRegionContext&context,std::string&e){return region_music.area_exit(epoch,path,context,e);};
+ input.music_service.play_explicit=[](uint64_t epoch,std::string_view path,std::string&e){return region_music.play_explicit(epoch,path,audio_player,e);};
+ input.music_service.stop_explicit=[](uint64_t epoch,std::string_view path,double seconds,std::string&e){return region_music.stop_explicit(epoch,path,seconds,e);};
+ input.music_service.tree_exit=[](uint64_t epoch,std::string_view path,std::string&e){return region_music.tree_exit(epoch,path,e);};
+ input.music_service.idle_frame=[](uint64_t epoch,std::string&e){return region_music.idle_frame(epoch,e);};
+ input.house_door.fade=[](bool in,std::string_view name,const std::array<float,4>&color,float speed,std::string&e){
+  if(!podunk_exit||!podunk_exit->house_door()){e="Actual House Door fade owner missing";return false;}
+  Vec2 focus;if(podunk_retired_house){if(!podunk_exit->player_view_position(focus,e))return false;}else{float x=0,y=0;house_camera(x,y);const auto p=gameplay_scene->world.player().position;focus={p.x-x+view_width*.5f,p.y-y+view_height*.5f};}
+  podunk_door_fade.focus(focus);return podunk_door_fade.start(podunk_exit->house_door()->active_door(),in,name,color,speed,e);
+ };
+ input.house_door.pause_player=[](uint64_t id,bool stop,bool idle,std::string&e){
+  if(!podunk_exit||id!=podunk_exit->player_object()||podunk_retired_house||stop||!idle){e="Initial Door pause does not target the running House player";return false;}
+  if(!gameplay_scene->world.pause_for_house()){e="Running House player pause failed";return false;}
+  e.clear();return true;
+ };
+ input.house_door.music_changers=[](std::vector<uint64_t>&out,std::string&e){
+  if(!house_music_host){e="Running House musicChangers owner missing";return false;}
+  return house_music_host->music_changers(out,e);
+ };
+ input.house_door.stop_music=[](uint64_t id,float seconds,std::string&e){
+  if(!house_music_host){e="Running House MusicChanger stop owner missing";return false;}
+  return house_music_host->stop_music(id,seconds,e);
+ };
+ input.house_door.fade_cut=[](std::string&e){return podunk_door_fade.cut(e);};
+ input.house_door.schedule_deferred=[](uint32_t,std::string&e){if(podunk_deferred){e="House scene commit already queued";return false;}podunk_deferred=true;e.clear();return true;};
+ input.house_door.scene_step=[](FieldDoorSceneStep step,const FieldDoorCandidate&,uint64_t,Vec2,Vec2,std::string&e){
+  if(step!=FieldDoorSceneStep::FreeOldScene){e="House scene operation lacks its concrete native owner";return false;}
+  if(podunk_retired_house||!house_music_host){e="Old House scene owner already retired";return false;}
+  if(!house_music_host->finish(e)||!region_music.handoff_scene(podunk_prepared_music,podunk_scene_epoch,audio_player,e))return false;
+  house_music_host.reset();cancel_battle_prewarm();wait_for_gpu_idle();
+  house_renderer.free();opening_actor.free();basement_actor_renderer.free();present_sparkles_renderer.free();room_draw_items.clear();
+  podunk_retired_house=true;e.clear();return true;
+ };
+ auto candidate=std::make_unique<ctr::PodunkHouseExit>();
+ if(!candidate->prepare(std::move(input),e))return false;
+ podunk_exit=std::move(candidate);
+ // Preparation pumps the existing audio queues. Observe their actual state
+ // without advancing game time before audManager borrows the same voices.
+ if(!region_music.update(0,audio_player,e)||!podunk_exit->construct(e)||!podunk_exit->bind_house(gameplay_scene->house,e))return false;
+ e.clear();return true;
+}
+void close_podunk(){
+ std::string ignored;if(podunk_exit){if(podunk_exit->ready())podunk_exit->end(ignored);podunk_exit.reset();}
+ podunk_prepared_music.shutdown();podunk_music_bank.reset();podunk_destination=upstream::FieldSceneDestinationData{};podunk_motion_input=upstream::PlayerMotionData{};
+ podunk_door_fade=ctr::PodunkHouseDoorFade{};podunk_signals=upstream::FieldObjectSignals{};
+ podunk_retired_house=podunk_prepare_attempted=podunk_deferred=false;podunk_idle_epoch=podunk_physics_epoch=podunk_scene_epoch=0;
+}
+bool advance_podunk_door(upstream::FieldDoorPhase initial,float delta,std::string&e){
+ using upstream::FieldDoorPhase;
+ if(!podunk_exit){e.clear();return true;}
+ // A deferred SceneTransition runs after the frame that scheduled it; native
+ // Tree mutations then produce the actual tree_changed waiter notification.
+ if(podunk_deferred&&initial==FieldDoorPhase::Deferred){podunk_deferred=false;if(!podunk_exit->deferred_commit(e)||!podunk_exit->tree_changed(e))return false;}
+ else if(initial==FieldDoorPhase::BodyIdle||initial==FieldDoorPhase::SceneIdle||initial==FieldDoorPhase::PartyIdle){if(!podunk_exit->door_idle(e))return false;}
+ bool incoming=false,outgoing=false;
+ if(!podunk_door_fade.frame(++podunk_idle_epoch,delta,incoming,outgoing,e))return false;
+ if(incoming&&!podunk_exit->fade_in_done(e))return false;
+ if(outgoing&&!podunk_exit->fade_out_mostly_done(e))return false;
+ e.clear();return true;
+}
 // Prepare equipment in independent state; the platform commits only after the
 // shared session contract accepts all inventory identities and derived stats.
 struct PreparedFieldEquipment {
@@ -1203,7 +1344,7 @@ bool load_house(std::string& error){
     room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count());
     return true;
 }
-void free_house(){podunk_programme_host.reset();field_programme_data=upstream::FieldProgrammeData{};cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_psi_menu=upstream::FieldPsiMenu{};field_psi_renderer.free();field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();basement_actor_renderer.free();present_sparkles_renderer.free();basement_graphics_ready=false;field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();if(house_music_host){house_music_host->finish(ignored);house_music_host.reset();}region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
+void free_house(){close_podunk();podunk_programme_host.reset();field_programme_data=upstream::FieldProgrammeData{};cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_item_use_menu.close();field_psi_menu=upstream::FieldPsiMenu{};field_psi_renderer.free();field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();basement_actor_renderer.free();present_sparkles_renderer.free();basement_graphics_ready=false;field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();if(house_music_host){house_music_host->finish(ignored);house_music_host.reset();}region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){
@@ -1458,12 +1599,12 @@ int main(int argc,char** argv){
     },&input_resume_reset);
     // Content IDs need not fit bit fields; compare the complete owner tuple
     // and issue a session token rather than hashing/packing arbitrary IDs.
-    using InputOwner=std::array<uint32_t,15>;
+    using InputOwner=std::array<uint32_t,16>;
     InputOwner prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
     const auto input_context=[&]()->uint32_t{
         if(!gameplay_scene->world.healthy()||!house_error.empty()||!round_error.empty())return 0;
         const bool battle=in_battle();
-        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase()),uint32_t(field_item_use_menu.phase()),uint32_t(field_psi_menu.phase())}};
+        const InputOwner owner{{uint32_t(podunk_retired_house),uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase()),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase()),uint32_t(field_item_use_menu.phase()),uint32_t(field_psi_menu.phase())}};
         if(!have_input_owner||owner!=prior_input_owner){prior_input_owner=owner;have_input_owner=true;if(++input_owner_token==0)++input_owner_token;}
         return input_owner_token;
     };
@@ -1477,7 +1618,7 @@ int main(int argc,char** argv){
         hidScanInput();u32 down=hidKeysDown(),held=hidKeysHeld();
         // START is not a global quit shortcut: UI editing must not discard the
         // pending session. Normal exit is the explicit title-menu request.
-        if((down&KEY_SELECT)&&!introduction.active()){
+        if((down&KEY_SELECT)&&!introduction.active()&&!podunk_exit){
             wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();reference_view=!reference_view;const auto native=battle_data.view().parameter(upstream::BattleParameter::CanvasSize);view_width=reference_view?unsigned(native.x):400;view_height=reference_view?unsigned(native.y):240;loaded_battle_path.clear();world_effect_assets_ready=false;
             if(!reset_development_game(error)||!open_continue(error))break;last=osGetTime();accumulator=0;
         }
@@ -1491,7 +1632,7 @@ int main(int argc,char** argv){
         const bool field_items_was_open=field_item_use_menu.active();
         const bool field_psi_was_open=field_psi_menu.active();
         const auto field_view=field_equipment_data.view();
-        const bool may_open_field=!field_was_open&&!new_game_setup.active()&&!introduction.active()&&!continue_menu.is_open()&&!restore_input_pending&&!in_battle()&&!battle_handoff_pending()&&!storage_menu.active()&&!storage_open_failed&&!save_menu.is_open()&&!save_open_failed&&!dialogue_choices.active()&&house_error.empty()&&round_error.empty()&&gameplay_scene->world.healthy()&&gameplay_scene->world.stage()==upstream::OpeningStage::Walking&&!gameplay_scene->world.house_paused()&&!gameplay_scene->world.cutscene_active()&&!gameplay_scene->house.blocks_player()&&!gameplay_scene->house.entering_door();
+        const bool may_open_field=!podunk_retired_house&&!field_was_open&&!new_game_setup.active()&&!introduction.active()&&!continue_menu.is_open()&&!restore_input_pending&&!in_battle()&&!battle_handoff_pending()&&!storage_menu.active()&&!storage_open_failed&&!save_menu.is_open()&&!save_open_failed&&!dialogue_choices.active()&&house_error.empty()&&round_error.empty()&&gameplay_scene->world.healthy()&&gameplay_scene->world.stage()==upstream::OpeningStage::Walking&&!gameplay_scene->world.house_paused()&&!gameplay_scene->world.cutscene_active()&&!gameplay_scene->house.blocks_player()&&!gameplay_scene->house.entering_door();
         if(may_open_field&&(down&uint32_t(field_view.parameter(upstream::FieldParameter::OpenMask)))){
             wait_for_gpu_idle();
             if(!gameplay_scene->world.pause_for_house())field_equipment_status="Field menu pause rejected";
@@ -1508,9 +1649,18 @@ int main(int argc,char** argv){
         const double dt=double(float(real_dt*time_scale));
         accumulator+=std::min<uint64_t>(elapsed,100)*60;
         const bool intro_active_at_frame_start=introduction.active();
-        const bool world_visible=!new_game_setup.active()&&(!introduction.active()||introduction_house_committed)&&(!continue_menu.is_open()||continue_menu.pose().world_visible);
+        const bool world_visible=!podunk_retired_house&&!new_game_setup.active()&&(!introduction.active()||introduction_house_committed)&&(!continue_menu.is_open()||continue_menu.pose().world_visible);
         const bool world_input=world_visible&&!field_equipment_menu.visible()&&!restore_input_pending&&(!introduction.active()||introduction.house_unpaused());
+        podunk_controls=input_context()==sampled_context?upstream::Vec2{float(native_controls.direction.x),float(native_controls.direction.y)}:upstream::Vec2{};
+        podunk_down=down;podunk_held=held;podunk_up=hidKeysUp();
+        const auto podunk_door_initial=podunk_exit?podunk_exit->house_door()->phase():upstream::FieldDoorPhase::Idle;
+        if(world_input&&house_error.empty()&&!podunk_exit){
+            const bool near=podunk_exit_near(error);
+            if(!error.empty())house_error=error;
+            else if(near){LoadingScope loading("Leaving house",1);if(!loading.step([&]{return prepare_podunk_exit(error);},"source-house-to-outdoor")||!loading.finish())house_error=error;}
+        }
         while(accumulator>=1000){
+            if(podunk_retired_house){if(podunk_exit&&podunk_exit->ready()&&house_error.empty()&&!podunk_exit->physics_frame(++podunk_physics_epoch,float(time_scale/60.0),false,error))house_error=error;accumulator-=1000;continue;}
             if(!world_visible){accumulator-=1000;continue;}
             upstream::WalkInput input;
             input.x=int8_t(input_context()==sampled_context?native_controls.direction.x:0);
@@ -1524,7 +1674,7 @@ int main(int argc,char** argv){
             accumulator-=1000;
         }
         gameplay_scene->world.attach_random(battle_random);
-        shader_time+=dt;if((world_input||field_equipment_menu.visible())&&session_state_ready)session_state.playtime_seconds+=dt;
+        shader_time+=dt;if((world_input||field_equipment_menu.visible()||(podunk_retired_house&&podunk_exit&&podunk_exit->ready()&&house_error.empty()))&&session_state_ready)session_state.playtime_seconds+=dt;
         if(world_visible&&gameplay_scene->world.healthy())gameplay_scene->world.idle_frame(dt);
         if(world_visible&&house_error.empty()&&!gameplay_scene->presentation.idle_frame(dt))house_error=gameplay_scene->presentation.error();
         if(world_visible&&house_error.empty()&&!gameplay_scene->house.idle_frame(dt,world_input&&((down&KEY_A)!=0||(input_context()==sampled_context&&native_controls.confirm_pulse)),world_input&&(down&KEY_B)!=0))house_error=gameplay_scene->house.error();
@@ -1760,7 +1910,15 @@ int main(int argc,char** argv){
                 if(battle_handoff_pending()){session_rewards=battle_outcome.state();session_rewards_valid=true;}
             }
         }
-        if(!gameplay_scene->world.end_scene_frame())house_error=gameplay_scene->world.error();
+        if(podunk_exit&&house_error.empty()){
+            if(!advance_podunk_door(podunk_door_initial,float(dt),error))house_error=error;
+            if(podunk_retired_house&&podunk_exit->ready()&&house_error.empty()){
+                upstream::PlayerInputEvent event;const std::pair<upstream::PlayerMotionText,u32>bindings[]={{upstream::PlayerMotionText::CancelAction,KEY_B},{upstream::PlayerMotionText::ScopeAction,KEY_Y},{upstream::PlayerMotionText::ToggleAction,KEY_B},{upstream::PlayerMotionText::AcceptAction,KEY_A},{upstream::PlayerMotionText::NextAction,KEY_R},{upstream::PlayerMotionText::PreviousAction,KEY_L}};
+                for(const auto&b:bindings)if(down&b.second)event.pressed.push_back(podunk_motion_input.text(b.first));
+                if(!podunk_exit->input(0,event,(down&KEY_A)!=0,false,error)||!podunk_exit->idle_frame(podunk_idle_epoch,float(dt),false,true,error))house_error=error;
+            }
+        }
+        if(!podunk_retired_house&&!gameplay_scene->world.end_scene_frame())house_error=gameplay_scene->world.error();
         if(house_music_host&&house_music_host->active()){
             if(world_visible&&!house_music_host->idle(house_music_context(),error))audio_status=error;
             for(const auto&call:gameplay_scene->world.take_music_region_calls()){
@@ -1782,18 +1940,18 @@ int main(int argc,char** argv){
         }else if(in_battle()&&battle_entry.encounter_audio_pending())battle_entry.take_encounter_audio();
         if(!region_music.update(dt,audio_player,error))audio_status=error;
         if(frame_load_generation!=loading_generation){last=osGetTime();accumulator=0;native_input.reset();menu_navigation.reset();}
-        if(!update_house_prompt(error))house_error=error;
+        if(!podunk_retired_house&&!update_house_prompt(error))house_error=error;
         upstream::IntroductionPose intro_pose;
         bool draw_introduction=introduction.active();
         if(draw_introduction){intro_pose=introduction.pose();if(!introduction_renderer.prepare(intro_pose,error)){abort_intro();draw_introduction=false;}}
-        const bool draw_house=!new_game_setup.active()&&(!draw_introduction||introduction_house_committed)&&(!continue_menu.is_open()||continue_menu.pose().world_visible);
+        const bool draw_house=!podunk_retired_house&&!new_game_setup.active()&&(!draw_introduction||introduction_house_committed)&&(!continue_menu.is_open()||continue_menu.pose().world_visible);
         PROFILE_MARK(0);
         if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))continue;
         if(session_state_ready&&!session_state.characters.empty())item_details_renderer.set_nickname(session_state.characters.front().nickname);
         record_entry_presented();locale_font.begin_frame();storage_counter_font.begin_frame();field_counter_font.begin_frame();if(draw_introduction&&!introduction_renderer.begin_frame())introduction_render_error="Introduction font frame ownership rejected";
         PROFILE_MARK(1);
         C2D_TargetClear(top,loading_indicator.background_color());C2D_TargetClear(bottom,dark);
-        C2D_SceneBegin(top);if(draw_house)house_top();PROFILE_MARK(2);
+        C2D_SceneBegin(top);if(draw_house)house_top();if(podunk_retired_house&&podunk_exit&&podunk_exit->ready()&&house_error.empty()&&!podunk_exit->draw(podunk_idle_epoch,float(dt),float(shader_time),error))house_error=error;PROFILE_MARK(2);
         if(in_battle())battle_top();
         else if(draw_house){
             const auto canvas=house_data.view().parameter(upstream::HouseParameter::DisplayReference);
@@ -1822,8 +1980,9 @@ int main(int argc,char** argv){
             if(!introduction_renderer.draw_overlay(intro_pose))introduction_render_error="Introduction door renderer rejected checked pose";
             C2D_ViewRestore(&saved);
         }
+        if(podunk_exit&&!podunk_door_fade.draw(view_x(),view_y(),float(view_width),float(view_height),error))house_error=error;
         reference_borders();PROFILE_MARK(3);
-        C2D_SceneBegin(bottom);house_bottom();ctr::draw_native_input(native_controls.gesture,native_input_data.tuning());PROFILE_MARK(4);
+        C2D_SceneBegin(bottom);if(podunk_retired_house){text(0,14,9,.48f,"PODUNK",accent,292);text(1,14,49,.4f,house_error.empty()?"Original outdoor scene\nD-pad: move / A: interact":house_error,ink,292);}else house_bottom();ctr::draw_native_input(native_controls.gesture,native_input_data.tuning());PROFILE_MARK(4);
         C3D_FrameEnd(0);record_entry_submitted();locale_font.end_frame();storage_counter_font.end_frame();field_counter_font.end_frame();if(draw_introduction)introduction_renderer.end_frame();PROFILE_MARK(5);qa_record(down);PROFILE_MARK(6);PROFILE_FINISH();
     }
 #ifdef ENCORE_TEXT_QA

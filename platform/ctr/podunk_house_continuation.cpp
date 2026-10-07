@@ -1,6 +1,7 @@
 #include "podunk_house_continuation.hpp"
 #include "encore/global_load.hpp"
 #include "encore/player_ready.hpp"
+#include "podunk_named_sfx.hpp"
 #include <algorithm>
 #include <cstdio>
 
@@ -53,6 +54,8 @@ struct PodunkHouseContinuation::State {
   PodunkGlobalNative native;
   PodunkGlobalHost global;
   PodunkGlobalDataFactory data_factory;
+  std::unique_ptr<PodunkNamedSfx> named;
+  uint32_t named_source=0;
   FieldGlobalRegistry registry;
   PodunkHouseGlobalBridge bridge;
   HouseStatusEffectsRuntime status_runtime;
@@ -250,6 +253,8 @@ bool PodunkHouseContinuation::construct(
   if (!state_ || spec.role != 3)
     return fail(e, "Continuation actual autoload factory scope rejected");
   auto &s = *state_;
+  if(s.named&&spec.stable_id==s.named_source)
+    return s.named->construct(id,spec,out,e);
   const auto &rows = s.bridge_data.continuation_autoloads();
   auto row = std::find_if(rows.begin(), rows.end(), [&](const auto &a) {
     return a.source.id == spec.stable_id;
@@ -270,7 +275,7 @@ bool PodunkHouseContinuation::construct(
       s.input.commands,      &s.input.house->world,
       &s.input.house->house, &s.input.house->presentation};
   if (!ui->initialize(s.continuation_ui, s.registry_data, s.registry, s.root,
-                      *s.input.signals, {id, spec, 0x454e0064, 1}, models, e))
+                      *s.input.signals, {id, spec, 0x454e0064, s.continuation_ui->capability()}, models, e))
     return false;
   s.ui = ui.get();
   out = std::move(ui);
@@ -416,6 +421,8 @@ bool PodunkHouseContinuation::signal_declaration(FieldObjectId id,
   const auto &s = *state_;
   if (id == s.registry.kernel() || id == s.registry.root())
     return s.root.signal_declaration(id, name, arity, e);
+  if(s.named&&(id==s.named->object()||s.registry.tree_owner(id)==s.named->tree()))
+    return s.named->signal_declaration(id,name,arity,e);
   const auto *object = s.registry.external_object(id);
   if (object) {
     const auto binding = object->binding();
@@ -471,6 +478,24 @@ bool PodunkHouseContinuation::bind_scene_signal_declarations(
 bool PodunkHouseContinuation::initialized() const {
   return state_ && state_->complete && !state_->registry.poisoned();
 }
+bool PodunkHouseContinuation::bind_named_sfx(std::shared_ptr<const PlayerNamedSfxData> data,
+    PodunkAudioServer &server,MusicRegionService &music,std::string &e){
+  if(!initialized()||!data||!data->valid()||state_->named)
+    return fail(e,"Continuation named SFX factory source/session rejected");
+  auto &s=*state_;const auto *root=data->recipe().record(data->identity().scene_id);
+  auto row=std::find_if(s.registry_data.autoloads().begin(),s.registry_data.autoloads().end(),
+    [&](const auto &a){return a.path==data->recipe().source_scene();});
+  if(!root||row==s.registry_data.autoloads().end()||row->script!=root->script||
+     row->script_sha!=root->script_sha||row->native_class!=root->native_class||
+     row->source_sha!=data->identity().source_sha256||s.registry.autoload_object(row->id))
+    return fail(e,"Continuation named SFX actual autoload source differs");
+  s.named=std::make_unique<PodunkNamedSfx>();s.named_source=row->id;
+  if(!s.named->prepare(data,s.registry,s.root,*s.input.signals,server,*s.input.audio,music,e)||
+     !s.registry.construct_audio_continuation_autoload(*data,e)||
+     !s.root.add_child(s.registry.autoload_object(row->id),e))return false;
+  e.clear();return true;
+}
+PodunkNamedSfx *PodunkHouseContinuation::named_sfx(){return initialized()?state_->named.get():nullptr;}
 FieldGlobalRegistry *PodunkHouseContinuation::registry() {
   return initialized() ? &state_->registry : nullptr;
 }

@@ -68,7 +68,13 @@ def extract(native):
   name=texture['source']+'.import';text_import=(ROOT/'upstream/MOTHER-Encore'/name).read_text(encoding='utf-8');require(all(v in text_import for v in ['flags/filter=false','flags/mipmaps=false','process/premult_alpha=false']),'Unreviewed Door texture flags');sources[name]=inv[name]['sha256']
  for name,h in sources.items():require(h==inv[name]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/name),'Changed OpenableDoor source '+name)
  height=float(re.search(r'door_offset.y \+ ([0-9]+)',text)[1]);shake=[float(v.strip()) for v in re.search(r'shake_camera\(([^,]+), ([^,]+), Vector2\(([^)]+)\)\)',text).groups()[:2]];shake.extend(float(v.strip()) for v in re.search(r'shake_camera\([^\n]+Vector2\(([^)]+)\)',text)[1].split(','));run_y=float(re.search(r'get_direction\(\).y == (-?[0-9]+)',text)[1])
- write(IR,dict(schema=1,commit=PIN,scene=SCENE,scene_id=stable('.'),source_sha256=sources[SCENE],sources=sources,scene_admitted=False,native_sha256=sha(native),none=defaults['sound'] if defaults['sound']=='None' else 'None',initial_unlocked=default('_unlocked'),child_height=height,shake=shake,run_y=run_y,bash=bash,records=records,clips=clips,textures=textures,sounds=[dict(id=stable(s),source=s,pcm='sound/effects/openable-door/'+str(stable(s))+'.pcm') for s in sounds],dialogs=dialogs,pending=['Actual inventory Item identity, source party/key inventories, geometry/Prompt/audio/dialogue hosts must bind before Ready','Source exported sprite setters execute before Ready; quarantined native null child textures are not authoritative']))
+ area_connections=[]
+ scene_text=(ROOT/'upstream/MOTHER-Encore'/'Nodes/Overworld/Objects/Openable Door.tscn').read_text(encoding='utf-8')
+ for role,signal in enumerate(['body_entered','body_exited'],1):
+  match=re.findall(r'\[connection signal="'+signal+r'" from="Area2D" to="\." method="([^"]+)"\]',scene_text)
+  require(len(match)==1 and re.search(r'^func '+re.escape(match[0])+r'\(body\):',text,re.M),'OpenableDoor Area source connection absent/changed')
+  area_connections.append(dict(role=role,signal=signal,method=match[0]))
+ write(IR,dict(schema=1,format=2,area_connections=area_connections,commit=PIN,scene=SCENE,scene_id=stable('.'),source_sha256=sources[SCENE],sources=sources,scene_admitted=False,native_sha256=sha(native),none=defaults['sound'] if defaults['sound']=='None' else 'None',initial_unlocked=default('_unlocked'),child_height=height,shake=shake,run_y=run_y,bash=bash,records=records,clips=clips,textures=textures,sounds=[dict(id=stable(s),source=s,pcm='sound/effects/openable-door/'+str(stable(s))+'.pcm') for s in sounds],dialogs=dialogs,pending=['Actual inventory Item identity, source party/key inventories, geometry/Prompt/audio/dialogue hosts must bind before Ready','Source exported sprite setters execute before Ready; quarantined native null child textures are not authoritative']))
 def assets(ir,tex3ds=None):
  if tex3ds:
   from PIL import Image
@@ -108,7 +114,9 @@ def pack(d,receipts):
   for a in n['dialogs']:s(a)
  u(len(d['sources']))
  for p,h in d['sources'].items():s(p);out.extend(bytes.fromhex(h))
- struct.pack_into('<8s8I',out,0,b'ENCFOPN1',1,128,len(out),0,0x454e0020,3,len(d['records']),d['scene_id']);out[40:60]=bytes.fromhex(PIN);out[60:92]=bytes.fromhex(d['source_sha256']);out[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',out,20,zlib.crc32(out[128:]));return bytes(out)
+ u(len(d['area_connections']))
+ for a in d['area_connections']:u(a['role']);s(a['signal']);s(a['method'])
+ struct.pack_into('<8s8I',out,0,b'ENCFOPN1',2,128,len(out),0,0x454e0020,3,len(d['records']),d['scene_id']);out[40:60]=bytes.fromhex(PIN);out[60:92]=bytes.fromhex(d['source_sha256']);out[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',out,20,zlib.crc32(out[128:]));return bytes(out)
 def load():
  d=read(IR);r=read(REVIEW);inv=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(d['schema']==1 and d['commit']==PIN and d['scene']==SCENE and not d['scene_admitted'] and r['ir_sha256']==sha(IR) and r['commit']==PIN,'OpenableDoor semantic review missing/stale')
  for p,h in d['sources'].items():require(h==inv[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'OpenableDoor source differs '+p)
@@ -121,7 +129,7 @@ def stage_files(source):
  return out
 def main():
  p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify']);p.add_argument('--native',type=Path);p.add_argument('--tex3ds',type=Path);a=p.parse_args()
- if a.action=='extract':require(a.native,'Official complete native export required');extract(a.native);return
+ if a.action=='extract':require(a.native,'Official complete native export required');extract(a.native);r=read(REVIEW);r['ir_sha256']=sha(IR);r['source_review']=[v for v in r['source_review'] if not v.startswith('Two original Area2D')]+['Two original Area2D body signals and receiver method names extracted from the complete source Openable Door scene; format2 preserves format1 read compatibility'];write(REVIEW,r);return
  d=load();r=assets(d,a.tex3ds);raw=pack(d,r)
  if a.action=='verify':require(read(ASSETS)==r and OUT.read_bytes()==raw,'OpenableDoor assets/data differ')
  else:write(ASSETS,r);OUT.parent.mkdir(parents=True,exist_ok=True);OUT.write_bytes(raw)

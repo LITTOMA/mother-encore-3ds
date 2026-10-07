@@ -50,10 +50,29 @@ def extract(native):
  require('2d/snapping/use_gpu_pixel_snap=true' in (ROOT/'upstream/MOTHER-Encore/project.godot').read_text(),'Birds unreviewed pixel snapping');
  for p in [SCRIPT,PROTOTYPE,'LICENSE','project.godot']:sources[p]=inv[p]['sha256']
  for p,h in sources.items():require(h==inv[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'Changed Bird source '+p)
- write(IR,dict(schema=1,kind='encore.field-birds.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),source_sha256=sources[SCENE],scene_admitted=False,native_sha256=sha(native),sources=sources,rules=dict(skin_mod=skin,facing_mod=facing,facing_value=facing_value,speed_base=float(base),speed_mod=int(mod),seek_factor=seek,flight_z=flight_z,right=[fx[0],fy],left=[fx[1],fy],finished_first_always=True),profiles=profiles,skins=skins,records=records,columns=s['hframes'],rows=s['vframes'],pixel_snap=True,source_signals=signals,pending=['Actual live geometry, source4 signals, borrowed global player identity/local position, notifier visibility and scene lifetime required','Source Area layer4096/mask0/monitorablefalse retained; no invented distance/proximity trigger','Unknown native animation listeners/queues/blends and active Kinematic shape are rejected','Full Podunk activation remains pending other source consumers']))
+ write(IR,dict(schema=2,kind='encore.field-birds.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),source_sha256=sources[SCENE],scene_admitted=False,native_sha256=sha(native),sources=sources,rules=dict(skin_mod=skin,facing_mod=facing,facing_value=facing_value,speed_base=float(base),speed_mod=int(mod),seek_factor=seek,flight_z=flight_z,right=[fx[0],fy],left=[fx[1],fy],finished_first_always=True),profiles=profiles,skins=skins,records=records,columns=s['hframes'],rows=s['vframes'],pixel_snap=True,source_signals=signals,connections=connections({'source_signals':signals}),pending=['Actual live geometry, source4 signals, borrowed global player identity/local position, notifier visibility and scene lifetime required','Source Area layer4096/mask0/monitorablefalse retained; no invented distance/proximity trigger','Unknown native animation listeners/queues/blends and active Kinematic shape are rejected','Full Podunk activation remains pending other source consumers']))
+
+def connections(d):
+ raw=(ROOT/'upstream/MOTHER-Encore'/PROTOTYPE).read_text(encoding='utf8')
+ actual=re.findall(r'^\[connection ([^\n]+)\]',raw,re.M)
+ require(actual==d['source_signals'] and len(actual)==4,'Bird actual source connections differ')
+ result=[];role={'Area':1,'AnimationPlayer':4,'VisibilityNotifier2D':5}
+ for i,line in enumerate(actual):
+  props=dict(re.findall(r'([A-Za-z_]+)="([^"\n]*)"',line))
+  require(set(props)=={'signal','from','to','method'} and props['to']=='.' and props['from'] in role,'Unknown Bird source connection shape')
+  result.append(dict(role=i+1,child=role[props['from']],signal=props['signal'],method=props['method']))
+ return result
+
+def refresh_connections():
+ d=read(IR);review=read(REVIEW);require(review['ir_sha256']==sha(IR),'Bird previous review differs')
+ inv=read(ROOT/'compatibility/upstream-inventory.json')['files']
+ for p,h in d['sources'].items():require(h==inv[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'Changed bird source '+p)
+ d['schema']=2;d['connections']=connections(d);write(IR,d)
+ review['ir_sha256']=sha(IR);review['source_review'].append('Format2/cap4 preserves all four exact checked source child-role/signal/method connections for actual SceneTree/SignalBus execution; no source Ready permission is added')
+ write(REVIEW,review)
 
 def load():
- d=read(IR);r=read(REVIEW);inv=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(d['schema']==1 and d['commit']==PIN and d['scene']==SCENE and not d['scene_admitted'] and r['commit']==PIN and r['ir_sha256']==sha(IR),'Bird semantic review absent/stale')
+ d=read(IR);r=read(REVIEW);inv=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(d['schema']==2 and d['connections']==connections(d) and d['commit']==PIN and d['scene']==SCENE and not d['scene_admitted'] and r['commit']==PIN and r['ir_sha256']==sha(IR),'Bird semantic review absent/stale')
  for p,h in d['sources'].items():require(h==inv[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'Changed bird source '+p)
  return d
 
@@ -86,9 +105,11 @@ def encode(d,receipts):
  for a,r in zip(d['skins'],receipts):u(a['index'],a['width'],a['height']);t(a['source']);t(a['path']);b.extend(bytes.fromhex(r['source_sha256']+r['output_sha256']))
  for n in d['records']:
   u(n['id'],n['ready'],n['parent_id'],n['profile'],*n['children'],n['animation_ready'],n['timer_ready'],n['sprite_frame'],n['flags'],n['body_layer'],n['body_mask'],n['area_layer'],n['area_mask'],n['root_pause'],n['animation_pause'],n['timer_pause']);i(n['initial_z'],n['root_priority'],n['animation_priority'],n['timer_priority']);f(n['body_radius'],n['safe_margin'],n['area_radius'],n['timer_wait'],n['animation_speed'],*n['position'],*[v for row in n['parent'] for v in row],*n['sprite_position'],*n['sprite_offset'],*n['area_center'],*n['notifier'],*n['notifier_position'],*n['notifier_scale'],*n['modulate'],*n['self_modulate'],*n['sprite_modulate'],*n['sprite_self_modulate']);t(n['node'])
+ u(len(d['connections']))
+ for c in d['connections']:u(c['role'],c['child']);t(c['signal']);t(c['method'])
  u(len(d['sources']))
  for p,h in d['sources'].items():t(p);b.extend(bytes.fromhex(h))
- struct.pack_into('<8s8I',b,0,b'ENCFBRD1',1,128,len(b),0,0x454e0022,3,len(d['records']),d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',b,20,zlib.crc32(b[128:]));return bytes(b)
+ struct.pack_into('<8s8I',b,0,b'ENCFBRD1',2,128,len(b),0,0x454e0022,4,len(d['records']),d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',b,20,zlib.crc32(b[128:]));return bytes(b)
 
 def stage_files(source):
  d=load();r=assets(d);raw=encode(d,r);source=Path(source);require((source/'data/podunk.encbirds').read_bytes()==raw,'Bird stagedpack differs');out={Path('data/podunk.encbirds'):raw}
@@ -96,7 +117,8 @@ def stage_files(source):
  return out
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify']);p.add_argument('--native',type=Path);p.add_argument('--tex3ds',type=Path);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify','refresh-connections']);p.add_argument('--native',type=Path);p.add_argument('--tex3ds',type=Path);a=p.parse_args()
+ if a.action=='refresh-connections':refresh_connections();return
  if a.action=='extract':require(a.native,'Explicit complete native export required');extract(a.native);return
  d=load();r=assets(d,a.tex3ds);raw=encode(d,r)
  if a.action=='verify':require(read(ASSETS)==r and OUT.read_bytes()==raw,'Bird assets/data differ')

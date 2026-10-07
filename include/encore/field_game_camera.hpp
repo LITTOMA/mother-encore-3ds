@@ -57,6 +57,7 @@ public:
  bool move_camera(uint32_t,Vec2,float,uint64_t&,uint32_t transition=1,uint32_t ease=1);bool move_offset(uint32_t,Vec2,float,uint64_t&);bool return_camera(uint32_t,float,uint64_t&);bool return_offset(uint32_t,float,uint64_t&);bool step_tween(uint64_t,float);bool return_camera(uint32_t id,uint64_t&token){return return_camera(id,float(tuning(FieldCameraTuning::ReturnTime)),token);}bool return_offset(uint32_t id,uint64_t&token){return return_offset(id,float(tuning(FieldCameraTuning::ReturnTime)),token);}
  bool shake_camera(uint32_t,double magnitude,double length,Vec2 direction,double interval,double weight,bool diminish,uint64_t&);bool shake_camera(uint32_t,uint64_t&);bool shaker_physics(uint64_t,float);bool pause_shaker(uint64_t);bool stop_shaker(uint64_t);bool shaker_deleted(uint64_t);bool set_shake_side_amplitude(uint64_t,Vec2);bool resume_shake_idle(uint64_t);bool exit_tree(uint32_t);
  const FieldGameCameraState*state(uint32_t)const;const std::map<uint64_t,FieldCameraTweenState>&tweens()const{return tweens_;}const std::map<uint64_t,FieldCameraShakerState>&shakers()const{return shakers_;}const std::string&error()const{return error_;}
+ bool native_current_changed(uint32_t,bool);
  const FieldGameCameraData*data()const{return data_;}
 private:
  std::set<uint32_t> pending_source_constructor_;

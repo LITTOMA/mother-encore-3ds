@@ -20,20 +20,31 @@ bool FieldDroppedRuntime::interact(uint32_t id,std::string&e){auto*s=mutable_sta
  else{if(s->rotations.size()>=4096){e="Dropped source rotation structural limit";return false;}s->rotations.push_back({});if(!host_.select_item(*item,false,e)||!host_.dialogue(b->full,e))return false;}
  // DroppedItem._check_item resumes after inherited source dialogue call and
  // activates every existing legacy Tween, without resetting their clocks.
- s->tween_active=true;e.clear();return true;
+ s->tween_active=true;
+ if(native_leaves_&&!native_leaves_(b->tween_id,true,e))return false;
+ e.clear();return true;
 }
 bool FieldDroppedRuntime::disappear(uint32_t id,std::string&e){auto*s=mutable_state(id);if(!data_||!s||!s->alive||!s->parent_ready){e="Dropped disappear source lifecycle";return false;}if(s->disappear_waiters.size()>=4096){e="Dropped timer coroutine structural limit";return false;}s->timer_wait=data_->rules().timers[0];s->timer_left=s->timer_wait;s->timer_running=true;bool paused=false;if(!host_.player_paused(paused,e))return false;if(paused)s->timer_paused=true;s->disappear_waiters.push_back(0);e.clear();return true;}
 bool FieldDroppedRuntime::player_pause(bool paused,std::string&e){if(!data_){e="Dropped pause unbound";return false;}for(auto&s:states_)if(s.alive&&s.parent_ready)s.timer_paused=paused;e.clear();return true;}
 bool FieldDroppedRuntime::idle_signal(std::string&e){if(!data_){e="Dropped idle signal unbound";return false;}for(auto&s:states_)if(s.alive&&s.show_wait){s.show_wait=false;s.visible=true;}e.clear();return true;}
-bool FieldDroppedRuntime::timer(FieldDroppedState&s,std::string&e){auto pending=std::move(s.disappear_waiters);s.disappear_waiters.clear();for(auto phase:pending){if(phase>=4){e="Dropped unknown timer coroutine";return false;}if(phase==3){if(!queue(s,e))return false;continue;}if(phase==0){s.blink_playing=true;s.blink_time=0;}else s.blink_speed=data_->rules().speeds[phase-1];s.timer_wait=data_->rules().timers[phase+1];s.timer_left=s.timer_wait;s.timer_running=true;s.disappear_waiters.push_back(phase+1);}return true;}
+bool FieldDroppedRuntime::timer(FieldDroppedState&s,std::string&e){auto pending=std::move(s.disappear_waiters);s.disappear_waiters.clear();for(auto phase:pending){if(phase>=4){e="Dropped unknown timer coroutine";return false;}if(phase==3){if(!queue(s,e))return false;continue;}if(phase==0){s.blink_playing=true;s.blink_time=0;
+ if(native_leaves_&&!native_leaves_(data_->binding(s.id)->animation_id,true,e))return false;
+ }else s.blink_speed=data_->rules().speeds[phase-1];s.timer_wait=data_->rules().timers[phase+1];s.timer_left=s.timer_wait;s.timer_running=true;s.disappear_waiters.push_back(phase+1);}return true;}
 bool FieldDroppedRuntime::idle_node(uint32_t id,double delta,bool processing,std::string&e){if(!data_||!delta_valid(delta)){e="Dropped idle node delta/source";return false;}for(const auto&b:data_->bindings()){
  unsigned role=id==b.sparkles_id?1:id==b.tween_id?2:id==b.timer_id?3:id==b.animation_id?4:0;if(!role)continue;auto*s=mutable_state(b.id);if(!s||!s->alive){e.clear();return true;}if((role==1&&!s->child_ready)||(role!=1&&!s->parent_ready)){e="Dropped idle node not source Ready";return false;}if(!processing){e.clear();return true;}
  if(role==1){if(sparkles_owner_){e="Dropped Sparkles clock belongs to actual native leaf";return false;}float left=float(delta);while(left){if(s->sparkles_timeout<=0){s->sparkles_timeout=float(1.0/double(float(data_->sparkles_speed()*data_->sparkles_scale())));s->sparkles_frame=s->sparkles_frame>=data_->sparkles_frames().size()-1?0:s->sparkles_frame+1;}auto step=std::min(left,s->sparkles_timeout);left-=step;s->sparkles_timeout-=step;}}
- else if(role==2&&s->tween_active){for(auto&rotation:s->rotations)if(!rotation.finished){const float next=float(rotation.elapsed+float(delta));rotation.elapsed=std::min(next,data_->rules().rotation_duration);rotation.finished=next>data_->rules().rotation_duration;s->sprite_rotation=elastic_out(rotation.elapsed,data_->rules().rotation_from,data_->rules().rotation_to,data_->rules().rotation_duration);}s->rotations.erase(std::remove_if(s->rotations.begin(),s->rotations.end(),[](const auto&j){return j.finished;}),s->rotations.end());if(s->rotations.empty())s->tween_active=false;}
+ else if(role==2&&s->tween_active){for(auto&rotation:s->rotations)if(!rotation.finished){const float next=float(rotation.elapsed+float(delta));rotation.elapsed=std::min(next,data_->rules().rotation_duration);rotation.finished=next>data_->rules().rotation_duration;s->sprite_rotation=elastic_out(rotation.elapsed,data_->rules().rotation_from,data_->rules().rotation_to,data_->rules().rotation_duration);}s->rotations.erase(std::remove_if(s->rotations.begin(),s->rotations.end(),[](const auto&j){return j.finished;}),s->rotations.end());if(s->rotations.empty()){s->tween_active=false;
+ if(native_leaves_&&!native_leaves_(b.tween_id,false,e))return false;
+ }}
  else if(role==3&&s->timer_running&&!s->timer_paused){s->timer_left-=double(float(delta));if(s->timer_left<0){s->timer_left+=s->timer_wait;if(!timer(*s,e))return false;}}
  else if(role==4&&s->blink_playing){const float advance=float(float(delta)*s->blink_speed);{s->blink_time=std::fmod(float(s->blink_time+advance),data_->rules().blink_length);for(const auto&key:data_->rules().blink_keys)if(key.time<=s->blink_time)s->sprite_visible=key.visible;}}
  e.clear();return true;
  }e="Unknown Dropped idle leaf source ID";return false;
+}
+bool FieldDroppedRuntime::bind_native_leaves(
+    std::function<bool(uint32_t,bool,std::string&)> fn,std::string&e) {
+  if(native_leaves_||!fn){e="Dropped native leaf owner already bound/missing";return false;}
+  native_leaves_=std::move(fn);e.clear();return true;
 }
 bool FieldDroppedRuntime::bind_sparkles_leaf_owner(
     FieldDroppedSparklesLeafOwner &owner, std::string &e) {

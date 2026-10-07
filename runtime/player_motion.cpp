@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
+#include <utility>
 namespace encore::upstream {
 namespace {
 using F = PlayerMotionField;
@@ -12,6 +13,17 @@ using R = PlayerMotionNode;
 bool fail(std::string &e, const char *s) {
   e = s;
   return false;
+}
+// An unexecuted future branch is not a normal MOVE initialization gate.
+// Invoking that exact source operation still requires its actual owner.
+template <class F, class... Args>
+bool branch(const F &f, const char *operation, std::string &e, Args &&...args) {
+  if (!f) {
+    e = std::string("Player actual source branch service unavailable: ") +
+        operation;
+    return false;
+  }
+  return f(std::forward<Args>(args)..., e);
 }
 bool zero(Vec2 v) { return v.x == 0 && v.y == 0; }
 bool equal(Vec2 a, Vec2 b) { return a.x == b.x && a.y == b.y; }
@@ -41,11 +53,9 @@ bool PlayerMotionRuntime::initialize(
       !h.move_and_slide || !h.ray_rotation || !h.cached_ray || !h.emit ||
       !h.collider_connected || !h.collider_connection || !h.collider_info ||
       !h.is_climbing || !h.has_skill || !h.button_skills || !h.damage_effects ||
-      !h.damage || !h.audio_resource || !h.audio_voice || !h.audio_play ||
+      !h.audio_resource || !h.audio_voice || !h.audio_play ||
       !h.audio_stop || !h.timer_left || !h.timer_start || !h.timer_wait ||
-      !h.animation_speed || !h.animation_current || !h.dust || !h.swap_spin ||
-      !h.ui_stack_empty || !h.dialogue || !h.party_turn || !h.interact ||
-      !h.player_turn || !h.telepathy || !h.press_prompt || !h.telepathy_effect)
+      !h.animation_current || !h.dust)
     return fail(e, "Player motion source/actual service set incomplete");
   data_ = &d;
   body_ = &b;
@@ -186,6 +196,178 @@ bool PlayerMotionRuntime::controls(std::string &e) {
   if (climb)
     v.x = 0;
   return set_vector(F::Input, v, e);
+}
+bool PlayerMotionRuntime::anim_play_pause(bool playing, bool idle,
+                                          std::string &e) {
+  if (!live(e) || !data_->business_bindings())
+    return fail(e, "Player pause source policy unavailable");
+  bool climb;
+  if (!boolean(F::Climbing, climb, e))
+    return false;
+  const auto &p = data_->lifecycle();
+  if (climb) {
+    FieldObjectId animation;
+    if (!node(R::AnimationPlayer, animation, e) ||
+        !branch(host_.animation_speed, "climbing pause", e, animation,
+                playing ? p.playing_scale : p.paused_scale))
+      return false;
+  } else if (idle && !ready_->set_anim_state(data_->text(T::IdleAnimation), e))
+    return false;
+  PlayerInitializationMember member;
+  if (!body_->member(p.paused_animation, member, e) || member.kind != 4 ||
+      !member.value)
+    return fail(e, "Player paused animation actual String unavailable");
+  auto paused = member.value->string;
+  const std::string current = playing ? paused : graph_->current();
+  auto loop =
+      std::find_if(p.looped_animations.begin(), p.looped_animations.end(),
+                   [&](const auto &v) { return v.first == current; });
+  if (loop != p.looped_animations.end() && (playing || paused.empty())) {
+    if (!graph_->set_scale(
+            loop->second, float(playing ? p.playing_scale : p.paused_scale), e))
+      return false;
+    auto value = std::make_shared<GlobalYamlValue>();
+    value->kind = 4;
+    value->string = playing ? std::string{} : current;
+    PlayerInitializationMember next;
+    next.kind = 4;
+    next.value = value;
+    if (!body_->assign_member(p.paused_animation, next, e))
+      return false;
+  }
+  return true;
+}
+bool PlayerMotionRuntime::collision_masks(bool enabled, std::string &e) {
+  if (!data_->business_bindings())
+    return fail(e, "Player collision mask source policy unavailable");
+  for (auto bit : data_->lifecycle().collision_masks)
+    if (!branch(host_.collision_mask, "collision mask", e, bit, enabled))
+      return false;
+  return true;
+}
+bool PlayerMotionRuntime::pause(bool stop_running, bool start_idle,
+                                bool emit_signal, std::string &e) {
+  if (!live(e) || !data_->business_bindings())
+    return fail(e, "Player source pause policy unavailable");
+  const auto &p = data_->lifecycle();
+  if (!branch(host_.party_call, "pause Flash", e, p.pause_flash,
+              std::vector<FieldDeferredValue>{}) ||
+      !branch(host_.party_call, "stop AfterImage", e,
+              data_->text(T::AfterimageStopMethod),
+              std::vector<FieldDeferredValue>{}) ||
+      !branch(host_.party_call, "pause party timers", e, p.pause_timers,
+              std::vector<FieldDeferredValue>{}) ||
+      !anim_play_pause(false, start_idle, e) ||
+      !set_boolean(F::Crouch, false, e) || !set_boolean(F::Walking, false, e))
+    return false;
+  int64_t state;
+  bool done;
+  if (!integer(F::State, state, e) || !boolean(F::TakeoffDone, done, e))
+    return false;
+  if (!(state == data_->state(S::Teleporting) && done) &&
+      !set_integer(F::State, data_->state(S::Move), e))
+    return false;
+  if (!set_boolean(F::Paused, true, e))
+    return false;
+  PlayerInitializationMember timer;
+  if (!body_->member(p.takeoff_timer, timer, e) ||
+      (timer.kind != 8 && timer.kind != 0))
+    return fail(e, "Player takeoff timer actual owner unavailable");
+  if (timer.object &&
+      !branch(host_.timer_stop, "takeoff timer stop", e, timer.object))
+    return false;
+  FieldObjectId audio, misc;
+  if (!set_vector(F::Input, {}, e) || !node(R::AudioPlayer, audio, e) ||
+      !branch(host_.media_playing, "audio playing", e, audio, false) ||
+      !branch(host_.media_paused, "audio stream paused", e, audio, true) ||
+      !node(R::MiscTimer, misc, e) ||
+      !branch(host_.timer_paused, "MiscTimer paused", e, misc, true))
+    return false;
+  bool tap;
+  if (!boolean(F::TapRun, tap, e))
+    return false;
+  if ((stop_running || !tap) &&
+      (!set_boolean(F::TapRun, false, e) || !set_running(false, e)))
+    return false;
+  return collision_masks(false, e) &&
+         (!emit_signal ||
+          host_.emit(body_->object(), data_->text(T::PausedSignal), {}, e));
+}
+bool PlayerMotionRuntime::unpause(bool emit_signal, std::string &e) {
+  if (!live(e) || !data_->business_bindings())
+    return fail(e, "Player source unpause policy unavailable");
+  bool area;
+  if (!branch(host_.current_scene_area, "current AreaRoom", e, area))
+    return false;
+  if (!area)
+    return true;
+  FieldObjectId audio, misc;
+  const auto &p = data_->lifecycle();
+  if (!anim_play_pause(true, false, e) || !node(R::AudioPlayer, audio, e) ||
+      !branch(host_.media_paused, "audio stream paused", e, audio, false) ||
+      !node(R::MiscTimer, misc, e) ||
+      !branch(host_.timer_paused, "MiscTimer paused", e, misc, false) ||
+      !branch(host_.party_call, "resume Flash", e, p.resume_flash,
+              std::vector<FieldDeferredValue>{}) ||
+      !branch(host_.party_call, "resume party timers", e, p.resume_timers,
+              std::vector<FieldDeferredValue>{}) ||
+      !set_boolean(F::Paused, false, e) || !collision_masks(true, e))
+    return false;
+  int64_t state;
+  if (!integer(F::State, state, e))
+    return false;
+  if (state == data_->state(S::Teleporting)) {
+    if (!branch(host_.party_call, "landing collisions", e,
+                data_->text(T::CollisionsMethod),
+                std::vector<FieldDeferredValue>{false}) ||
+        !set_boolean(F::Running, true, e) ||
+        !set_integer(F::State, data_->state(S::Landing), e) ||
+        !set_number(F::Speed, data_->number(N::LandingSpeed), e))
+      return false;
+  } else if (!set_integer(F::State, data_->state(S::Move), e))
+    return false;
+  if (emit_signal &&
+      !host_.emit(body_->object(), data_->text(T::UnpausedSignal), {}, e))
+    return false;
+  FieldObjectId ray, collider;
+  if (!node(R::EventRay, ray, e) || !host_.cached_ray(ray, collider, e) ||
+      !set_event_collider(collider, e))
+    return false;
+  bool running;
+  if (!boolean(F::Running, running, e))
+    return false;
+  return !running || set_running(true, e);
+}
+bool PlayerMotionRuntime::collisions(bool enabled, std::string &e) {
+  if (!live(e) || !data_->business_bindings())
+    return fail(e, "Player collision source policy unavailable");
+  FieldObjectId shape;
+  if (!tree_->get_node(body_->object(), data_->lifecycle().collision_path,
+                       shape, e))
+    return false;
+  return branch(host_.shape_disabled, "source collisions", e, shape, !enabled);
+}
+bool PlayerMotionRuntime::direction_and_input(Vec2 direction, std::string &e) {
+  if (!live(e) || !finite(direction) || !set_vector(F::Input, direction, e) ||
+      !set_vector(F::Direction, direction, e))
+    return false;
+  FieldObjectId ray;
+  return node(R::EventRay, ray, e) &&
+         host_.ray_rotation(ray,
+                            float(std::atan2(direction.y, direction.x) -
+                                  data_->number(N::RayAngleOffset)),
+                            e) &&
+         ready_->blend_position(direction, e);
+}
+bool PlayerMotionRuntime::exit_camera(std::string &e) {
+  Vec2 direction;
+  return live(e) && set_integer(F::State, data_->state(S::Move), e) &&
+         vector(F::Direction, direction, e) &&
+         ready_->blend_position(direction, e) &&
+         ready_->set_anim_state(data_->text(T::IdleAnimation), e);
+}
+bool PlayerMotionRuntime::update_party_member(std::string &e) {
+  return live(e) && ready_->update_party_member(e);
 }
 bool PlayerMotionRuntime::stop_run(std::string &e) {
   PlayerAudioVoice v;
@@ -342,7 +524,7 @@ bool PlayerMotionRuntime::movement(float dt, std::string &e) {
         !boolean(F::Running, running, e) || !boolean(F::Paused, paused, e) ||
         !boolean(F::Substantial, substantial, e) || !boolean(F::TapRun, tap, e))
       return false;
-    if (climb && !host_.animation_speed(anim, 1, e))
+    if (climb && !branch(host_.animation_speed,"animation_speed",e,anim, 1))
       return false;
     if (held || tap) {
       if (pressed && !crouch && !running && !climb) {
@@ -434,7 +616,7 @@ bool PlayerMotionRuntime::movement(float dt, std::string &e) {
     if (!ready_->set_anim_state(data_->text(T::IdleAnimation), e) ||
         !set_boolean(F::Walking, false, e) ||
         !set_boolean(F::TapRun, false, e) || !set_running(false, e) ||
-        (climb && !host_.animation_speed(anim, 0, e)) ||
+        (climb && !branch(host_.animation_speed,"animation_speed",e,anim, 0)) ||
         !boolean(F::Crouch, crouch, e))
       return false;
     if (pressed && !crouch) {
@@ -491,7 +673,7 @@ bool PlayerMotionRuntime::movement(float dt, std::string &e) {
       bool next, prev;
       if (!action(T::NextAction, PlayerInputQuery::JustPressed, next, e) ||
           !action(T::PreviousAction, PlayerInputQuery::JustPressed, prev, e) ||
-          (next && !host_.swap_spin(1, e)) || (prev && !host_.swap_spin(-1, e)))
+          (next && !branch(host_.swap_spin,"swap_spin",e,1)) || (prev && !branch(host_.swap_spin,"swap_spin",e,-1)))
         return false;
     }
   }
@@ -523,13 +705,13 @@ bool PlayerMotionRuntime::press_prompt(FieldObjectId source, std::string &e) {
     if (!c || !c->alive)
       return fail(e, "Player prompt actual child unavailable");
     if (c->name == data_->text(T::PromptPath))
-      return host_.press_prompt(child, e);
+      return branch(host_.press_prompt,"press_prompt",e,child);
   }
   return true;
 }
 bool PlayerMotionRuntime::interact_with(std::string &e) {
   bool empty;
-  if (!live(e) || !host_.ui_stack_empty(empty, e))
+  if (!live(e) || !branch(host_.ui_stack_empty,"ui_stack_empty",e,empty))
     return false;
   if (!empty)
     return true;
@@ -539,7 +721,7 @@ bool PlayerMotionRuntime::interact_with(std::string &e) {
   if (!node(R::EventRay, ray, e) || !host_.cached_ray(ray, collider, e))
     return false;
   if (!collider)
-    return host_.dialogue(data_->text(T::NoProblemDialogue), e);
+    return branch(host_.dialogue,"dialogue",e,data_->text(T::NoProblemDialogue));
   PlayerColliderInfo info;
   if (!host_.collider_info(collider, info, e))
     return false;
@@ -554,13 +736,13 @@ bool PlayerMotionRuntime::interact_with(std::string &e) {
         continue;
       if (c.has_dialog && !c.dialog)
         return true;
-      if (!host_.party_turn(target, e) || !host_.interact(target, e))
+      if (!branch(host_.party_turn,"party_turn",e,target) || !branch(host_.interact,"interact",e,target))
         return false;
       break;
     }
     return press_prompt(collider, e);
   }
-  return info.area || host_.dialogue(data_->text(T::NoProblemDialogue), e);
+  return info.area || branch(host_.dialogue,"dialogue",e,data_->text(T::NoProblemDialogue));
 }
 bool PlayerMotionRuntime::use_telepathy(std::string &e) {
   FieldObjectId character, ray, collider;
@@ -570,32 +752,49 @@ bool PlayerMotionRuntime::use_telepathy(std::string &e) {
   if (!host_.has_skill(character, data_->text(T::TelepathySkill), skill, e))
     return false;
   if (!skill)
-    return host_.dialogue(data_->text(T::NothingDialogue), e);
+    return branch(host_.dialogue,"dialogue",e,data_->text(T::NothingDialogue));
   if (!set_event_collider(0, e) || !node(R::EventRay, ray, e) ||
       !host_.cached_ray(ray, collider, e))
     return false;
   if (!collider)
-    return host_.dialogue(data_->text(T::NoProblemDialogue), e);
+    return branch(host_.dialogue,"dialogue",e,data_->text(T::NoProblemDialogue));
   PlayerColliderInfo c, p;
   if (!host_.collider_info(collider, c, e) ||
       (c.parent && !host_.collider_info(c.parent, p, e)))
     return false;
   FieldObjectId target = p.telepathy ? c.parent : (c.telepathy ? collider : 0);
   if (!target)
-    return host_.dialogue(data_->text(T::NoThoughtsDialogue), e) &&
+    return branch(host_.dialogue,"dialogue",e,data_->text(T::NoThoughtsDialogue)) &&
            press_prompt(collider, e);
   auto &info = target == collider ? c : p;
-  if (!host_.player_turn(target, e))
+  if (!branch(host_.player_turn,"player_turn",e,target))
     return false;
   if (info.has_thoughts) {
-    if (target != collider && !host_.telepathy_effect(target, true, e))
+    if (target != collider && !branch(host_.telepathy_effect,"telepathy_effect",e,target, true))
       return false;
-    return host_.telepathy(target, e) && press_prompt(collider, e);
+    return branch(host_.telepathy,"telepathy",e,target) && press_prompt(collider, e);
   }
   if (target == collider || info.no_problem_thoughts)
-    return host_.dialogue(data_->text(T::NoThoughtsDialogue), e);
-  return host_.dialogue(data_->text(T::StrayThoughtsDialogue), e) &&
+    return branch(host_.dialogue,"dialogue",e,data_->text(T::NoThoughtsDialogue));
+  return branch(host_.dialogue,"dialogue",e,data_->text(T::StrayThoughtsDialogue)) &&
          press_prompt(collider, e);
+}
+bool PlayerMotionRuntime::turn_to(Vec2 relative,bool axis_x,bool axis_y,std::string &e) {
+  if(!live(e)||!finite(relative)) return false;
+  if(!axis_x&&!axis_y) return true;
+  Vec2 direction=relative;
+  auto sign=[](float value){return value>0?1.0f:value<0?-1.0f:0.0f;};
+  if((std::abs(relative.x)>std::abs(relative.y)||!axis_y)&&relative.x!=0&&axis_x)
+    direction={sign(relative.x),0};
+  else if(axis_y&&relative.y!=0)direction={0,sign(relative.y)};
+  if(!set_vector(F::Direction,direction,e))return false;
+  // Source _turn_to blends only Idle, then calls the original state adapter.
+  auto states=graph_->data();
+  if(!states)return fail(e,"Player source Idle graph missing");
+  auto idle=std::find_if(states->states().begin(),states->states().end(),[&](const auto &state){return state.name==data_->text(T::IdleAnimation);});
+  if(idle==states->states().end())return fail(e,"Player source Idle blend state missing");
+  if(!zero(direction)&&!graph_->set_blend(idle->parameter,direction,e))return false;
+  return ready_->set_anim_state(data_->text(T::IdleAnimation),e);
 }
 bool PlayerMotionRuntime::calculate_steps(std::string &e) {
   Vec2 previous;
@@ -630,7 +829,7 @@ bool PlayerMotionRuntime::calculate_steps(std::string &e) {
     if (steps == std::numeric_limits<int64_t>::min() && v.steps == -1)
       return fail(e, "Player source damage modulo overflow");
     if (steps % v.steps == 0 &&
-        !host_.damage(v.value, v.variation, {}, true, e))
+        !branch(host_.damage,"damage",e,v.value, v.variation, Vec2{}, true))
       return false;
   }
   return true;
@@ -666,7 +865,7 @@ bool PlayerMotionRuntime::physics_tail(std::string &e) {
       int64_t value, variance;
       if (!integer(F::AttackDamage, value, e) ||
           !integer(F::DamageVariance, variance, e) ||
-          !host_.damage(value, variance, hit, true, e))
+          !branch(host_.damage,"damage",e,value, variance, hit, true))
         return false;
     }
   }

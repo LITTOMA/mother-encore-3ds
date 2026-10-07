@@ -17,7 +17,23 @@ CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-direct
 CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge player-child-scripts house-status-effects
 CONTENT_TASKS += house-ui-continuation house-exit-door
 CONTENT_TASKS += scene-effects field-scene-audio field-scene-signals field-visibility field-npc-world field-prompts prompt-native
-CONTENT_TASKS += audio-server scene-materials scene-clip-native field-emotes field-dead-bush
+CONTENT_TASKS += player-named-sfx
+.PHONY: player-named-sfx
+player-named-sfx: audio
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_named_sfx.py restore
+	"$(PYTHON)" tools/player_named_sfx.py compile
+CONTENT_TASKS += player-preload-scenes
+.PHONY: player-preload-scenes
+player-preload-scenes: player-initialization
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/player_preload_scenes.py compile
+
+CONTENT_TASKS += audio-server scene-materials scene-clip-native field-emotes field-dead-bush scene-leaf-native grass-native
+.PHONY: grass-native
+grass-native: field-lifecycle field-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/grass_native.py compile
+.PHONY: scene-leaf-native
+scene-leaf-native: field-node-tree field-game-camera field-player-transitions field-birds field-dropped field-payphone field-melody-background
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/scene_leaf_native.py compile
 .PHONY: field-emotes field-dead-bush
 field-emotes:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_emotes.py compile

@@ -4,6 +4,7 @@
 #include <utility>
 
 namespace encore::upstream {
+enum class FieldDoorSignal:uint32_t;
 struct FieldDoorDescriptor {
  uint32_t id=0,ready=0,node=0,marker=0,audio=0,shape=0,layer=0,mask=0,flags=0,pause_mode=0;
  uint32_t target_name=0,target_path=0,sound=0,end_sound=0,in_anim=0,out_anim=0,flag=0;
@@ -19,6 +20,15 @@ public:
  uint32_t door_count()const;FieldDoorDescriptor door(uint32_t)const;bool find(uint32_t,FieldDoorDescriptor&)const;
  FieldDoorAudio audio(uint32_t)const;bool source_hash(std::string_view,std::array<uint8_t,32>&)const;
  std::string_view script()const;std::array<uint8_t,32>script_sha()const;std::string_view none()const;float ground_offset()const;
+ uint32_t capability()const;std::string_view body_method()const;
+ // Normal legacy-scene continuation facts, present in format2 and later.
+ bool house_continuation()const;
+ std::string_view old_region()const;std::string_view old_root_name()const;
+ std::string_view area_left_signal()const;
+ std::string_view door_signal(FieldDoorSignal)const;
+ std::string_view scene_changed_signal()const;
+ bool empty_destination_parameters()const;
+ bool old_area_has_listeners()const;
 private:
  bool admit(std::vector<uint8_t>&&,const FieldIdentity&,std::string&);uint32_t count(uint32_t)const;const uint8_t*record(uint32_t,uint32_t)const;std::vector<uint8_t>bytes_;
 };

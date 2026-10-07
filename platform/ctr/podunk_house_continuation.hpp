@@ -2,6 +2,7 @@
 #include "encore/field_scene_destination.hpp"
 #include "encore/fresh_house.hpp"
 #include "encore/house_status_effects.hpp"
+#include "encore/player_named_sfx.hpp"
 #include "house_ui_continuation.hpp"
 #include "podunk_global_data_singleton.hpp"
 #include "podunk_global_native.hpp"
@@ -9,6 +10,9 @@
 
 namespace encore::ctr {
 class AudioPlayer;
+class PodunkNamedSfx;
+class PodunkAudioServer;
+class MusicRegionService;
 // Borrow the actual running House models and gameplay entropy. The caller
 // keeps these owners alive until the same UI has rebound to its new scene.
 struct PodunkHouseContinuationInput {
@@ -46,6 +50,8 @@ public:
   PodunkHouseContinuation &operator=(const PodunkHouseContinuation &) = delete;
   bool initialize(PodunkHouseContinuationInput, std::string &);
   bool initialized() const;
+  bool bind_named_sfx(std::shared_ptr<const upstream::PlayerNamedSfxData>,PodunkAudioServer&,MusicRegionService&,std::string&);
+  PodunkNamedSfx *named_sfx();
   upstream::FieldGlobalRegistry *registry();
   PodunkNativeRoot *native_root();
   PodunkGlobalHost *global();

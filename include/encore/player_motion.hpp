@@ -183,9 +183,22 @@ enum class PlayerMotionNumber : size_t {
   RayAngleOffset,
   Count
 };
+enum class PlayerMotionBusiness : size_t {
+  Usable, Flag, BattleSkill, SkillButton, EnableSkill, CanUse,
+  GetFieldSkill, GetAllFieldSkills, GetItemData,
+  DamageSteps, DamageValue, DamageVariation, Count
+};
 struct PlayerTeleportMode {
   int64_t id = 0;
   double acceleration = 0, cap = 0, takeoff = 0, multiplier = 0;
+};
+struct PlayerMotionLifecyclePolicy {
+  std::string paused_animation, takeoff_timer, collision_path, collision_native;
+  std::string pause_flash, resume_flash, pause_timers, resume_timers;
+  std::vector<std::pair<std::string,std::string>> looped_animations;
+  std::vector<std::string> pausable_flash;
+  std::vector<uint32_t> collision_masks;
+  double paused_scale=0,playing_scale=0;
 };
 class PlayerMotionData {
 public:
@@ -205,12 +218,20 @@ public:
   }
   const std::string &text(PlayerMotionText v) const { return text_[size_t(v)]; }
   double number(PlayerMotionNumber v) const { return numbers_[size_t(v)]; }
+  bool business_bindings() const { return capability_ == 2; }
+  const std::string &business(PlayerMotionBusiness role) const { return business_[size_t(role)]; }
+  const auto &signals() const { return signals_; }
+  const auto &lifecycle() const { return lifecycle_; }
   const auto &teleport_modes() const { return modes_; }
   int64_t manual_teleport() const { return manual_; }
   const auto &attack_character_names() const { return names_; }
 
 private:
   bool valid_ = false;
+  uint32_t capability_ = 1;
+  std::array<std::string,size_t(PlayerMotionBusiness::Count)> business_{};
+  std::vector<std::pair<std::string,uint32_t>> signals_;
+  PlayerMotionLifecyclePolicy lifecycle_;
   FieldIdentity identity_{};
   std::array<uint8_t, 32> ir_{};
   std::array<std::string, size_t(PlayerMotionField::Count)> fields_{};
@@ -308,6 +329,9 @@ struct PlayerMotionHost {
   std::function<bool(std::string &)> bat_feedback;
   std::function<bool(FieldObjectId, std::string_view, std::string &)>
       audio_play_resource;
+  std::function<bool(FieldObjectId,bool,std::string&)> timer_paused, media_playing, media_paused;
+  std::function<bool(uint32_t,bool,std::string&)> collision_mask;
+  std::function<bool(bool&,std::string&)> current_scene_area;
   // All callbacks are actual owners. This preflight rejects a missing typed
   // special-state owner before entering any coroutine or attack mutation.
   std::function<bool(std::string_view, std::string &)> admit_special;
@@ -336,6 +360,13 @@ public:
   bool input(const PlayerInputEvent &, std::string &);
   bool set_event_collider(FieldObjectId, std::string &);
   bool interact_with(std::string &);
+  bool turn_to(Vec2 actual_relative,bool axis_x,bool axis_y,std::string &);
+  bool pause(bool stop_running,bool start_idle,bool emit_signal,std::string&);
+  bool unpause(bool emit_signal,std::string&);
+  bool collisions(bool,std::string&);
+  bool direction_and_input(Vec2,std::string&);
+  bool exit_camera(std::string&);
+  bool update_party_member(std::string&);
   bool use_telepathy(std::string &);
   bool start_teleport(int64_t, std::string &);
   bool native_callback(std::string_view, std::string &);
@@ -362,6 +393,8 @@ private:
   bool node(PlayerMotionNode, FieldObjectId &, std::string &) const;
   bool action(PlayerMotionText, PlayerInputQuery, bool &, std::string &) const;
   bool controls(std::string &);
+  bool anim_play_pause(bool,bool,std::string&);
+  bool collision_masks(bool,std::string&);
   bool move_state(float, std::string &);
   bool movement(float, std::string &);
   bool set_running(bool, std::string &);

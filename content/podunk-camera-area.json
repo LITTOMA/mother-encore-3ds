@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.field-camera-area.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
@@ -224,5 +224,17 @@
     "Real Area body_entered/body_exited identity and native idle_frame continuation; no proximity event",
     "Live ReferenceRect and collision shape/scale viewport values are read when source requests them",
     "Full GameCamera14/Shaker/MapArrows and other scene families remain independent pending"
+  ],
+  "connections": [
+    {
+      "role": 1,
+      "signal": "body_entered",
+      "method": "_on_camarea_body_entered"
+    },
+    {
+      "role": 2,
+      "signal": "body_exited",
+      "method": "_on_camarea_body_exited"
+    }
   ]
 }

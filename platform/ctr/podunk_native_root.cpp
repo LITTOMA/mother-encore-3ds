@@ -425,8 +425,9 @@ bool PodunkNativeRoot::register_external_child(
     FieldIdentity identity;
     const auto *n = tree ? tree->state(b.object) : nullptr;
     const auto *d = tree ? tree->descriptor(b.object) : nullptr;
-    if (b.source.stable_id != source_->global_autoload() ||
-        b.family != 0x454e0055 || b.capability != 1 || !tree ||
+    const bool global_branch=b.source.stable_id==source_->global_autoload()&&b.family==0x454e0055&&b.capability==1;
+    const bool named_audio_branch=b.family==0x454e0073&&b.capability==1&&tree&&tree->object_count()==4;
+    if ((!global_branch&&!named_audio_branch) || !tree ||
         tree->root() != b.object || tree->object_domain() != kernel_ ||
         !n || !d || !tree->object_identity(b.object, identity) ||
         identity.upstream_commit != b.source.identity.upstream_commit ||

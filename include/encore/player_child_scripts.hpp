@@ -21,6 +21,10 @@ struct PlayerTintPolicy {
   std::string signal, method;
   std::vector<std::string> paths;
 };
+struct PlayerCameraSourceConnection {
+  uint32_t role=0; // 1 actual UiManager, 2 actual Player.
+  std::string signal,method;
+};
 class PlayerChildScriptsData {
 public:
   bool load(const uint8_t *, size_t, const PlayerInitializationData &,
@@ -36,6 +40,7 @@ public:
   const auto &emote() const { return emote_; }
   const auto &tint() const { return tint_; }
   const auto &camera() const { return camera_; }
+  const auto &camera_connections()const{return camera_connections_;}
   const auto &arrows() const { return arrows_; }
   uint32_t camera_process_mode() const { return camera_process_mode_; }
   bool source_hash(std::string_view, std::array<uint8_t, 32> &) const;
@@ -48,6 +53,7 @@ private:
   std::vector<PlayerChildScriptRecord> records_;
   PlayerEmotePolicy emote_;
   PlayerTintPolicy tint_;
+  std::vector<PlayerCameraSourceConnection> camera_connections_;
   uint32_t camera_process_mode_ = 0;
   FieldGameCameraData camera_;
   FieldCameraArrowsData arrows_;

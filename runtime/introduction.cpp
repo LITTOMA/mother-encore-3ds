@@ -42,6 +42,7 @@ float ease(float t,float c){t=std::clamp(t,0.f,1.f);if(c>0)return c<1?1-std::pow
 std::array<float,4>sample(const IntroTrack&t,double time){size_t at=0;while(at+1<t.keys.size()&&t.keys[at+1].time<=time)++at;auto v=t.keys[at].value;if(!t.discrete&&at+1<t.keys.size()&&time>=t.keys[at].time){const auto&b=t.keys[at+1];const float f=ease(float((time-t.keys[at].time)/(b.time-t.keys[at].time)),t.keys[at].transition);for(size_t i=0;i<4;++i)v[i]+=(b.value[i]-v[i])*f;}return v;}
 std::u32string spaceless(const std::string&s){std::u32string v,out;utf8_decode(s,v);for(auto cp:v)if(cp!=' '&&cp!='\n')out.push_back(cp);return out;}
 }
+std::array<float,4> sample_intro_track(const IntroTrack&t,double time){return sample(t,time);}
 bool IntroductionData::load(const uint8_t*p,size_t n,std::string&e){
  if(!p||n<24||n>1024*1024||std::memcmp(p,"ENCINTRO",8)||integer(p+8)!=1||integer(p+12)!=n||integer(p+20)!=1)return fail(e,"Introduction schema/size/capability rejected");
  if(crc(p+24,n-24)!=integer(p+16))return fail(e,"Introduction CRC rejected");

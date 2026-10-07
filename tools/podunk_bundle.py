@@ -39,7 +39,11 @@ def sources(d):
     if key=='sources'and isinstance(value,dict):
      for p,h in value.items():
       if isinstance(h,str)and re.fullmatch('[0-9a-f]{64}',h):
-       require(p not in result or result[p]==h,'Source identity alias '+p);result[p]=h
+       engine=v.get('engine',{}).get(p) if isinstance(v.get('engine',{}),dict) else None
+       if engine is not None:
+        require(isinstance(engine,dict) and engine.get('sha256')==h and engine.get('url')=='https://github.com/godotengine/godot/blob/3.6.2-stable/'+p,'Engine source namespace/proof differs '+p)
+       else:
+        require(p not in result or result[p]==h,'Source identity alias '+p);result[p]=h
     elif key!='engine':visit(value)
   elif isinstance(v,list):
    for a in v:visit(a)
@@ -71,7 +75,7 @@ def checked_pack(spec):
  if not 0x454e0000<=family<=0x454effff:family=0 # original magic-only formats have no numeric family
  capability=struct.unpack_from('<I',raw,family_offset+4)[0]if family and (block or family_offset==20)else struct.unpack_from('<I',raw,20)[0]
  if raw[:8]==b'ENCFID01':capability=struct.unpack_from('<I',raw,24)[0]
- if raw[:8]in(b'ENCSIG01',b'ENCPRN01',b'ENCSCL01'):capability=struct.unpack_from('<I',raw,12)[0]
+ if raw[:8]in(b'ENCSIG01',b'ENCPRN01',b'ENCSCL01',b'ENCSLN01'):capability=struct.unpack_from('<I',raw,12)[0]
  require(0<capability<65536,'Capability schema '+spec['path'])
  ss=sources(d);scene=d.get('scene',d.get('source_save',d.get('owner',d.get('script',''))))
  scene=scene or read(RECIPE)['scene']
@@ -171,7 +175,7 @@ def checked_audio():
  return out
 
 def derive():
- recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==85,'Bundle recipe scope')
+ recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==89,'Bundle recipe scope')
  with concurrent.futures.ThreadPoolExecutor(max_workers=4)as pool:rows=list(pool.map(one_pack,recipe['packs']))
  packs=[];assets=checked_audio();inputs={RECIPE.relative_to(ROOT).as_posix():sha(RECIPE)};all_sources={}
  for entry,staged,d in rows:

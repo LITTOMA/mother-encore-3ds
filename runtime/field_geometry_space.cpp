@@ -1,4 +1,5 @@
 #include "encore/field_geometry_space.hpp"
+#include "encore/grass_native.hpp"
 #include "encore/field_npc.hpp"
 #include "encore/field_global_registry.hpp"
 #include "encore/field_scene_actions.hpp"
@@ -1157,6 +1158,17 @@ bool source_player_node(const PlayerInitializationData &d,
   return true;
 }
 } // namespace
+bool FieldGeometrySpace::reserve_grass_owner(const GrassNativeData&d,FieldNodeTreeRuntime&t,FieldGlobalRegistry&r,FieldObjectId object,std::string&e){
+ const auto*n=t.descriptor(object);const auto*s=t.state(object);FieldIdentity id;
+ if(!source_||!d.valid()||!n||!s||!s->alive||n->id!=d.node(GrassNativeRole::Area)||!d.native_matches(*n)||r.tree_owner(object).get()!=&t||!r.object_exists(object)||!t.object_identity(object,id)||id.scene_id!=d.identity().scene_id||id.source_sha256!=d.identity().source_sha256||id.upstream_commit!=d.identity().upstream_commit||source_->identity().upstream_commit!=id.upstream_commit||dynamic_owners_.count(object)||next_rid_==UINT64_MAX){e="Grass actual native Area/RID source allocation rejected";return false;}
+ DynamicOwner o;o.tree=&t;o.registry=&r;o.object=object;o.rid=++next_rid_;o.grass=&d;dynamic_owners_.emplace(object,o);return true;
+}
+bool FieldGeometrySpace::register_grass_shape(const GrassNativeData&d,FieldNodeTreeRuntime&t,FieldGlobalRegistry&r,FieldObjectId area,FieldObjectId shape,std::string&e){
+ const auto*o=t.state(area);const auto*s=t.state(shape);const auto*n=t.descriptor(shape);auto owner=dynamic_owners_.find(area);
+ if(!d.valid()||owner==dynamic_owners_.end()||owner->second.grass!=&d||owner->second.tree!=&t||owner->second.registry!=&r||!o||!s||!n||!o->inside||!s->inside||!o->bound||!s->bound||!o->ready_notified||!s->ready_notified||s->parent!=area||n->id!=d.node(GrassNativeRole::Shape)||!d.native_matches(*n)||r.tree_owner(shape).get()!=&t){e="Grass actual native shape/Ready/parent rejected";return false;}
+ for(const auto&v:dynamic_)if(v.contact.actual_shape==shape){e="Grass source shape registered twice";return false;}
+ FieldTransform world;if(!t.world_transform(shape,world,e))return false;DynamicInstance v;v.grass=&d;v.tree=&t;v.registry=&r;v.player=area;v.disabled=d.disabled();v.contact={none,none,0,d.node(GrassNativeRole::Area),0,area,shape};v.actor.kind=FieldGeometryKind::Rectangle;v.actor.transform={world[0],world[1],world[2]};v.actor.extents=d.profile().collision_extents;v.actor.stable_id=v.contact.stable_id;v.actor.layer=d.profile().collision_layer;v.actor.mask=d.profile().collision_mask;v.actor.area=true;v.actor.monitorable=d.monitorable();v.owner.kind=4;v.owner.layer=v.actor.layer;v.owner.mask=v.actor.mask;v.owner.flags=(d.monitoring()?2u:0u)|(d.monitorable()?4u:0u);v.shape.kind=uint32_t(v.actor.kind);v.shape.flags=v.disabled?1u:0u;v.shape.part_count=1;if(!actor_ok(v.actor)){e="Grass exact Rectangle native matrix invalid";return false;}dynamic_.push_back(v);return true;
+}
 bool FieldGeometrySpace::reserve_player_owner(const PlayerInitializationData &d,
                                               FieldNodeTreeRuntime &t,
                                               FieldGlobalRegistry &r,
@@ -1388,7 +1400,12 @@ bool FieldGeometrySpace::register_player_shape(
 bool FieldGeometrySpace::dynamic_actor(const DynamicInstance &d,
                                        FieldGeometryActor &a,
                                        std::string &e) const {
-  if (!d.data ||
+  if (d.grass) {
+    FieldIdentity identity;
+    const auto *owner=d.tree->descriptor(d.contact.actual_owner);
+    const auto *shape=d.tree->descriptor(d.contact.actual_shape);
+    if(!d.grass->valid()||!d.registry||d.registry->tree_owner(d.contact.actual_owner).get()!=d.tree||d.registry->tree_owner(d.contact.actual_shape).get()!=d.tree||!owner||!shape||!d.grass->native_matches(*owner)||!d.grass->native_matches(*shape)||!d.tree->object_identity(d.contact.actual_owner,identity)||identity.scene_id!=d.grass->identity().scene_id||identity.source_sha256!=d.grass->identity().source_sha256||identity.upstream_commit!=d.grass->identity().upstream_commit){e="Grass dynamic native collision identity differs";return false;}
+  } else if (!d.data ||
       !source_player_node(*d.data, *d.tree, *d.registry, d.contact.actual_owner,
                           e) ||
       !source_player_node(*d.data, *d.tree, *d.registry, d.contact.actual_shape,
@@ -1507,6 +1524,19 @@ bool FieldGeometrySpace::set_player_collision_mask(FieldObjectId owner,
   }
   return true;
 }
+bool FieldGeometrySpace::player_shape_snapshot(const FieldGeometryContact &contact,
+    FieldGeometryActor &actor,FieldGeometryOwner &owner,FieldGeometryShape &shape,
+    bool &disabled,std::string &e)const{
+  if(!contact.actual_owner||!contact.actual_shape){e="Player shape snapshot requires actual ObjectIDs";return false;}
+  for(const auto &d:dynamic_){const auto &c=d.contact;
+    if(c.actual_owner==contact.actual_owner&&c.actual_shape==contact.actual_shape&&
+       c.part==contact.part&&c.stable_id==contact.stable_id&&c.native_shape_index==contact.native_shape_index){
+      if(d.grass||!d.data||!dynamic_actor(d,actor,e))return false;
+      owner=d.owner;shape=d.shape;disabled=d.disabled;e.clear();return true;
+    }
+  }
+  e="Player shape snapshot has a stale actual shape contact";return false;
+}
 bool FieldGeometrySpace::player_shapes(FieldObjectId owner,
                                        std::vector<FieldGeometryContact> &out,
                                        std::string &e) const {
@@ -1534,7 +1564,10 @@ bool FieldGeometrySpace::player_owner_rid(FieldObjectId owner,
     return false;
   }
   const auto &d = it->second;
-  if (!source_player_node(*d.data, *d.tree, *d.registry, owner, e))
+  if (d.grass) {
+    const auto*n=d.tree->descriptor(owner);FieldIdentity identity;
+    if(!n||n->id!=d.grass->node(GrassNativeRole::Area)||!d.grass->native_matches(*n)||d.registry->tree_owner(owner).get()!=d.tree||!d.registry->object_exists(owner)||!d.tree->object_identity(owner,identity)||identity.scene_id!=d.grass->identity().scene_id||identity.source_sha256!=d.grass->identity().source_sha256||identity.upstream_commit!=d.grass->identity().upstream_commit){e="Grass native Physics RID same source owner unavailable";return false;}
+  } else if (!d.data || !source_player_node(*d.data, *d.tree, *d.registry, owner, e))
     return false;
   out = {this, d.rid};
   return true;

@@ -21,7 +21,7 @@ MusicObservation AudioPlayer::observe_music() const {
     out.tweening=out.playing&&music.fading&&music.fade.active();
     out.dialogue_music_playing=ready_&&dialogue.active;
     out.any_music_tweening=out.tweening||(out.dialogue_music_playing&&dialogue.fading&&dialogue.fade.active());
-    out.master_db=bank_.master_db();return out;
+    out.master_db=bank_.master_db();out.volume_db=music.fade.db();return out;
 }
 
 bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string& error){
@@ -44,12 +44,24 @@ bool AudioPlayer::initialize(const char* bank_path,const char* root,std::string&
     }
     ready_=true;error.clear();return true;
 }
+bool AudioPlayer::lease_native_channel(uint64_t object,const void* owner,int& channel,std::string&e){
+    if(!ready_||!object||!owner){e="Native audio lease requires live DSP and actual Node owner";return false;}
+    for(size_t i=0;i<native_leases_.size();++i)if(native_leases_[i].object==object){if(native_leases_[i].owner!=owner){e="Native audio Node has another channel owner";return false;}channel=int(26+i);e.clear();return true;}
+    for(size_t i=0;i<native_leases_.size();++i)if(!native_leases_[i].object){native_leases_[i]={object,owner};channel=int(26+i);e.clear();return true;}
+    e="All six shared native NDSP channels occupied";return false;
+}
+bool AudioPlayer::release_native_channel(uint64_t object,const void* owner,int channel,std::string&e){
+    if(channel<26||channel>31||!object||!owner){e="Native audio lease release range/owner rejected";return false;}
+    auto& lease=native_leases_[size_t(channel-26)];if(lease.object!=object||lease.owner!=owner){e="Native audio channel lease ownership mismatch";return false;}
+    lease={};e.clear();return true;
+}
 void AudioPlayer::shutdown(){
     retire_music_player();
     if(ndsp_initialized_){for(uint32_t i=0;i<lane_count;++i)if(i<4||voices_[i].samples)ndspChnWaveBufClear(hardware_channel(i));ndspExit();}
     ndsp_initialized_=ready_=false;
     for(auto& v:voices_){if(v.samples)linearFree(v.samples);v=Voice{};}
     for(auto& stream:streams_)stream.close();
+    native_leases_={};
     scene_banks_.clear();
     asset_root_.clear();
 }

@@ -26,7 +26,7 @@ SOURCES += runtime/field_npc_world_data.cpp runtime/field_npc_world_motion.cpp p
 SOURCES += runtime/prompt_native_data.cpp platform/ctr/podunk_prompt_native.cpp
 SOURCES += platform/ctr/podunk_butterfly_animation.cpp
 SOURCES += runtime/field_scene_tree_timer.cpp platform/ctr/podunk_npc_return_timer.cpp
-SOURCES += runtime/scene_clip_native_data.cpp platform/ctr/podunk_scene_clip_native.cpp
+SOURCES += runtime/scene_leaf_native_data.cpp runtime/grass_native_data.cpp runtime/scene_clip_native_data.cpp platform/ctr/podunk_scene_clip_native.cpp platform/ctr/podunk_house_door_fade.cpp platform/ctr/podunk_scene_grass.cpp platform/ctr/podunk_scene_leaf_native.cpp platform/ctr/podunk_scene_cameras.cpp
 SOURCES += runtime/audio_server_data.cpp runtime/audio_server.cpp platform/ctr/podunk_audio_server.cpp
 SOURCES += runtime/field_scene_materials_data.cpp platform/ctr/podunk_scene_materials.cpp
 SOURCES += platform/ctr/podunk_butterfly_timers.cpp
@@ -75,6 +75,9 @@ SOURCES += platform/ctr/podunk_npc_animation.cpp
 SOURCES += runtime/house_status_effects.cpp runtime/house_status_effects_data.cpp \
  runtime/player_child_scripts.cpp runtime/player_child_scripts_data.cpp runtime/player_native_timer_data.cpp \
  platform/ctr/podunk_player_child_scripts.cpp platform/ctr/podunk_player_native_media.cpp
+SOURCES += runtime/player_preload_scenes_data.cpp platform/ctr/podunk_player_preload_scenes.cpp platform/ctr/podunk_house_exit.cpp platform/ctr/podunk_player_scene_services.cpp platform/ctr/podunk_house_door_continuation.cpp runtime/field_node_tree_door.cpp
+SOURCES += runtime/player_named_sfx_data.cpp platform/ctr/podunk_named_sfx.cpp
+SOURCES += platform/ctr/podunk_ready_native_bridges.cpp platform/ctr/podunk_ready_interaction_bridges.cpp platform/ctr/podunk_ready_transition_bridge.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

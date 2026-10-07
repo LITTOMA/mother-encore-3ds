@@ -91,6 +91,10 @@ enum class PodunkPackRole : uint32_t {
   AudioServer = 83,
   SceneMaterials = 84,
   SceneClipNative = 85,
+  SceneLeafNative = 86,
+  GrassNative = 87,
+  PlayerPreloadScenes = 88,
+  NamedSfx = 89,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

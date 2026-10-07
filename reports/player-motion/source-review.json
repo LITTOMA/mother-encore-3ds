@@ -1,13 +1,20 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "df4ff9e8b7265cb15c3d4796066086a4d948c1a1b72670af964ecbeca43e88d1",
+  "ir_sha256": "a2c33a17f7559a1445e0f7cbb1fba2a934bea626f2414d07db7f3bd713fb1c01",
   "sources": {
     "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
     "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
-    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120"
+    "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+    "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590"
   },
   "methods": [
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_turn_to",
+      "sha256": "bd35aeb87a8ad75b1d65a63ea3c9188c485b6a63a902011623878c68fbe8c5e0"
+    },
     {
       "source": "Scripts/Main/party/Player.gd",
       "method": "_physics_process",
@@ -175,6 +182,11 @@
     },
     {
       "source": "Scripts/Main/party/party_object.gd",
+      "method": "try_to_turn",
+      "sha256": "b98bb4e026a5715ae24bd0dab0d37c2f47ebf3b10619b54687b6caad3b5acba2"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
       "method": "_calculate_steps",
       "sha256": "24f0e7f4b1dcaa17186b6097200a0e16d71fe7348022b850e4331334c78f90af"
     },
@@ -187,10 +199,110 @@
       "source": "Scripts/Main/party/party_object.gd",
       "method": "_is_invulnerable",
       "sha256": "c1a4236427b827caabee79701b7bd3d96cc03b11141f00e292e24a5fc31608b2"
+    },
+    {
+      "source": "Scripts/global/PartyMember.gd",
+      "method": "has_skill",
+      "sha256": "98112d746f121535bafff63709abab2ba3d2716814e06ab594d6583c54f08794"
+    },
+    {
+      "source": "Scripts/global/PartyMember.gd",
+      "method": "has_field_skill",
+      "sha256": "a6878b72e065bcc08c15f1ffcafb9f166a4dbff47742e2cffe98b1ad7436900b"
+    },
+    {
+      "source": "Scripts/global/PartyMember.gd",
+      "method": "_get_battle_skills_from_inv",
+      "sha256": "ef82cfea45c7a6e5b82398018d4d6ae7568f9bf2a68d7313f16577039b4cd72c"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "pause",
+      "sha256": "704dafd88c6386e04cf3fa044a7025695f53919b6c326a7fe38fd8f04dc67559"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "unpause",
+      "sha256": "5eb662742a5c39f4f102dd9753ab4c162e819b07abe30eb13dcd1352265df561"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "exit_camera",
+      "sha256": "650b863ed208debb9e8935b857deb5428466302273326e9480c9237d55b529d5"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "set_direction_and_input",
+      "sha256": "ed61b37a442e5a4888b6af31d0a3a25a8de13732fa4ecd11c388218b72a3d498"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "set_direction",
+      "sha256": "10377731e8860e6e6da855aa460911acc14142078e9a5909f764c7dad83e754a"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_set_collision_masks",
+      "sha256": "4b1d02285a56cac5f2eb2b0e5453a1fbf25ce9d6c8bd8f86f5d5b5fd7d19320b"
+    },
+    {
+      "source": "Scripts/Main/party/Player.gd",
+      "method": "_start_landing",
+      "sha256": "993b4bc2213688971a0727ec4ef3bc65310378e80d792f934e670f6559e4b289"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "_anim_play_pause",
+      "sha256": "9b7e307ebab0dae8138d6bae2410bae5145fde75ff87518e4ff55dd7f80e599a"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "pause_flash_anim",
+      "sha256": "ac1599444dfffdf75ca037eb8d70515eade05a84712dfc53029445274fc83450"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "resume_flash_anim",
+      "sha256": "d45c350f669c6161207d91051a41566ba7e721401881d120403f4bf3efabf7c4"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "set_collisions",
+      "sha256": "f9821f0f141b3a8a6e0aa80b3f3934ed73035a0d397767eb5229e5ff84c44da8"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "pause_timers",
+      "sha256": "b691d9be42e49179dc1e896bc6f7ab778d0c9ee60ccc0914801e9177fc986b1b"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "resume_timers",
+      "sha256": "9221eaef41fb407ca6ba7d0dccf4eda24d2143c59fd1fe16417410bbec70453d"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "stop_creating_afterimage",
+      "sha256": "7ccfc998513486ff169b240e40bc61111f89265b5dcc1429f10aee728ee7e082"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "get_shadow",
+      "sha256": "0184f0ebc64c60a1e0028c6ce518bf03e7230e2648bf211266e13729c5635a81"
+    },
+    {
+      "source": "Scripts/Main/party/party_object.gd",
+      "method": "set_idle",
+      "sha256": "4c5f26bf3d0aea48d5150dd7a117a06e80f07e2ab13ab22e418d3872dac915c0"
+    },
+    {
+      "source": "Scripts/global/global.gd",
+      "method": "set_respawn",
+      "sha256": "07735829b5db6a8e8c5fa8102590315dca78b7e95ef4d32414d98461234eb281"
     }
   ],
   "execution": "runtime/player_motion.cpp",
-  "scope": "Same actual Player body MOVE, interaction/Telepathy, input/attack state, bounded teleport and physics tail; native owners required, explicit pending factories/coroutines",
+  "scope": "Same actual Player body MOVE, interaction/Telepathy, input/attack state, bounded teleport and physics tail; source PartyMember learned/item/field-skill dictionaries and cache getter effects; exact singleton-party pause/unpause/Flash/timers/audio/masks and Door direction/respawn; native owners required, explicit pending factories/coroutines",
   "pending": [
     "PKOV full source factory/coroutine",
     "takeoff .6 SceneTreeTimer/pause/current camera",

@@ -429,3 +429,17 @@ reports/audio-server/*
 !/reports/scene-clip-native/
 /reports/scene-clip-native/*
 !/reports/scene-clip-native/source-review.json
+
+!/reports/scene-leaf-native/
+/reports/scene-leaf-native/*
+!/reports/scene-leaf-native/source-review.json
+
+!/reports/grass-native/
+/reports/grass-native/*
+!/reports/grass-native/source-review.json
+
+!reports/player-preload-scenes/
+!reports/player-preload-scenes/source-review.json
+
+!reports/player-named-sfx/
+!reports/player-named-sfx/source-review.json

@@ -65,8 +65,7 @@ bool FieldPlayerTransitionsRuntime::context(FieldTransitionContext &c) {
   for (const auto &a : c.party) {
     if (!a.id || !ids.insert(a.id).second || a.kind < 1 || a.kind > 2 ||
         (a.kind == 1 && a.id != c.player) || !finite(a.position) ||
-        !finite(a.direction) || !finite(a.shadow_position) ||
-        (a.valid && (a.body_geometry.empty() || a.area_geometry.empty())))
+        !finite(a.direction) || !finite(a.shadow_position))
       return fail("Transition actual actor/shape bindings rejected");
     for (const auto &g : a.body_geometry)
       if (g.area || g.stable_id != a.id)
@@ -112,12 +111,7 @@ bool FieldPlayerTransitionsRuntime::initialize(
     s.arrow_rotation = r.sprite_rotation;
     instances_.push_back(s);
   }
-  FieldTransitionContext c;
-  if (!context(c)) {
-    e = error_;
-    data_ = nullptr;
-    return false;
-  }
+  // Source binding precedes Player construction; live queries belong to callbacks.
   e.clear();
   return true;
 }
@@ -151,8 +145,10 @@ bool FieldPlayerTransitionsRuntime::update(FieldTransitionInstance &s,
   }
   s.prompt_target_scale = show ? Vec2{1, 1} : Vec2{};
   s.prompt_time = 0;
-  if (show)
+  if (show) {
     s.arrow_playing = true;
+    if(native_animation_&&!native_animation_(s.id,error_))return false;
+  }
   return command({FieldTransitionCommandKind::CanInteract, s.id, c.player,
                   uint32_t(!(s.inside && skill && enabled))});
 }
@@ -194,6 +190,9 @@ bool FieldPlayerTransitionsRuntime::contacts(const FieldGeometrySpace &space) {
   FieldTransitionContext c;
   if (!context(c))
     return false;
+  for (const auto &a : c.party)
+    if (a.valid && (a.body_geometry.empty() || a.area_geometry.empty()))
+      return fail("Transition contacts require actual native actor geometry snapshot");
   std::map<uint32_t, std::vector<uint32_t>> hits;
   FieldGeometryFilter f;
   f.bodies = false;
@@ -457,6 +456,19 @@ bool FieldPlayerTransitionsRuntime::process_source(uint32_t id, double dt) {
   if (!ray(r, c, nearby))
     return false;
   return !nearby || update(*s, c);
+}
+bool FieldPlayerTransitionsRuntime::bind_native_animation(
+    std::function<bool(uint32_t,std::string&)>fn,std::string&e){
+  if(native_animation_||!fn){e="Transition native animation owner already bound/missing";return false;}
+  native_animation_=std::move(fn);e.clear();return true;
+}
+bool FieldPlayerTransitionsRuntime::animation_native_source(uint32_t id,double dt){
+  auto*s=instance(id);auto*r=data_?data_->record(id):nullptr;
+  if(!native_animation_||!s||!r||r->kind!=1||!s->ready||!std::isfinite(dt)||dt<0||dt>60)return fail("Transition native AP owner/delta rejected");
+  if(!s->arrow_playing)return true;
+  s->animation_time+=dt;s->arrow_offset=sample(r->offset_keys,s->animation_time,r->arrow_length);
+  s->arrow_rotation=sample(r->rotation_keys,s->animation_time,r->arrow_length).x*float(3.14159265358979323846/180.0);
+  return command({FieldTransitionCommandKind::ArrowAnimation,s->id,r->sprite_id,0,s->arrow_offset,{},s->arrow_rotation});
 }
 bool FieldPlayerTransitionsRuntime::idle_native_source(uint32_t id, double dt,
                                                        bool processing) {
@@ -735,7 +747,7 @@ bool FieldPlayerTransitionsRuntime::idle_impl(double dt, bool processing,
       s.arrow_position =
           lerp(s.prompt_from_position, s.prompt_target_position, v);
       s.arrow_scale = lerp(s.prompt_from_scale, s.prompt_target_scale, v);
-      if (s.arrow_playing) {
+      if (s.arrow_playing && !native_animation_) {
         s.animation_time += dt;
         s.arrow_offset =
             sample(r.offset_keys, s.animation_time, r.arrow_length);
@@ -745,8 +757,9 @@ bool FieldPlayerTransitionsRuntime::idle_impl(double dt, bool processing,
       }
       if (!command({FieldTransitionCommandKind::ArrowPose, s.id, r.sprite_id, 0,
                     s.arrow_position, s.arrow_scale, s.arrow_rotation}) ||
-          !command({FieldTransitionCommandKind::ArrowAnimation, s.id,
-                    r.sprite_id, 0, s.arrow_offset}))
+          (!native_animation_ &&
+           !command({FieldTransitionCommandKind::ArrowAnimation, s.id,
+                     r.sprite_id, 0, s.arrow_offset})))
         return false;
       if (s.pending_state &&
           (s.prompt_target_scale.x == 1 ||

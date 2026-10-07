@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "f138b21d91d530d0f34057993d467104e73d63c0242f9ee96e4baf5561983953",
+  "ir_sha256": "9a32af96f65f93941965e1e714bbf6b729ff2b4e23c7deed36214a2e0bfd600c",
   "sources": {
     "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
     "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
@@ -138,6 +138,7 @@
     "RayCast lookup uses last physics collider after look_at, never synchronous invented raycast",
     "JumpArea source multi-point jump signal waits, party stagger and QUART/QUAD animation curves; no invented gravity",
     "Stairs use frame-count step accumulator, actual party overlap order and running move_and_slide; source dangling body_exited connection has no callable handler",
+    "Constructor binding does not query Player; live callbacks read same source Player body, native ground CollisionShape position multiplier, shadow and settings; state_changed emits even with silent=true after original tween",
     "Godot 3.6.2 Node._ready/GDScript.call_multilevel_reversed invoke ControlledTwoStatesObject before JumpArea: hide tween captures native Sprite scaleONE/position toward ZERO before leaf Ready stores arrow position and sets scaleZERO"
   ],
   "unverified": [

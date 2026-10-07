@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "constructor_ir_sha256": "ab6a4302a455a8495f40c3db8780b2b849541dff35181f9347e2abae216e58b6",
-    "player_ir_sha256": "2b04664c04109e4b4c23e14ff5730dd7c990e212cb297ac9f41e9a338039f23b",
-    "load_ir_sha256": "5a76b2cd8c576fc41bb3100ee56d0cb0bed0609019554e41f84bea4ea0154138",
+    "player_ir_sha256": "15825fddcd42e0744027b76cbd9994feb643f3f8f4c3e5a6977460be1eb42016",
+    "load_ir_sha256": "e994c1715229ccf59818071dd1e9c04a882e76707845859081166baaa233d7c1",
     "input_ir_sha256": "9aba5c9a5e7863dc18129a819c87a1d0120b15c40c4910c9831490735a1e90cb"
   },
   "methods": {

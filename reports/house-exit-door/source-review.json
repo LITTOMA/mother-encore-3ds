@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "992db5c279850bfc2548bda9bc07260ecdf601e51f356d66e67bd0fd4bea57b8",
+  "ir_sha256": "14dce6593a624ee7fca17295b504a6fee0b555791465fb39d9f424ddcad54752",
   "sources": {
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
     "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
@@ -14,15 +14,20 @@
     "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
     "Audio/Sound effects/Door_Short.mp3.import": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
     "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
-    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31"
+    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193"
   },
-  "producer_sha256": "4522e17a955181e002af901336073286fc7bb44daa1624728cb5ea0907c20c70",
+  "producer_sha256": "99fa446bae29f6ba9903b4e4e5001eb749665639e604744badc66dc1f8cdc433",
   "dependencies": {
-    "tools/field_door.py": "ba03640ae8a42fde18905d714b361d4b6220f6fcd977cb6f10f132e018ec3544",
+    "tools/field_door.py": "ed99fb4537a5e990a035fcde97a391df756a3094989156a64975d17e4542d040",
     "tools/podunk_scene.py": "0bbb90f8edd3cd8a96b0b860c8e42ec8d428d917fa008a84c28b163be6fe80b3",
     "tools/extract_battle_entry.py": "012af6b357236aa9bf39fbe804406903696ee783001d9465a431ab442dfeec73"
   },
-  "executor": "ENCFDOR1 format1 family001f capability3",
+  "executor": "ENCFDOR1 format3 family001f capability5",
   "scope": "Only original normal House Doors/Podunk. ready=0 is single-pack ordering, never a full-scene Ready certificate.",
   "semantics": [
     "Inherited Area2D native defaults monitoring=true/visible=true, explicit layer/mask/monitorable/pause_mode and native RectangleShape2D.",

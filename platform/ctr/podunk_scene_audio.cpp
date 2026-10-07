@@ -113,9 +113,10 @@ PodunkSceneAudio::~PodunkSceneAudio() {
   shutdown(e);
 }
 bool PodunkSceneAudio::live(std::string &e) const {
-  return data_ && data_->valid() && data_->ir_sha() == ir_ && tree_ &&
+  return ((data_ && data_->valid() && data_->ir_sha() == ir_ && channel_owner == this) ||
+                  (named_ && named_->valid() && named_->ir_sha256() == ir_)) && tree_ &&
                  registry_ && audio_ && audio_->available() &&
-                 channel_owner == this
+                 registry_->data()
              ? true
              : fail(e, "Scene audio actual DSP/source owner unavailable");
 }
@@ -123,7 +124,7 @@ bool PodunkSceneAudio::prepare(const FieldSceneAudioData &d,
                                FieldNodeTreeRuntime &t, FieldGlobalRegistry &r,
                                AudioPlayer &a, PodunkSceneAudioHost h,
                                std::string &e) {
-  if (data_ || !d.valid() || !a.available() ||
+  if (data_ || named_ || !d.valid() || !a.available() ||
       (channel_owner && channel_owner != this) ||
       !h.server.add_audio_callback || !h.server.remove_audio_callback ||
       !h.server.bus_gain || !h.server.connect_bus_layout ||
@@ -184,7 +185,89 @@ bool PodunkSceneAudio::prepare(const FieldSceneAudioData &d,
   tree_paused_ = false;
   return true;
 }
+bool PodunkSceneAudio::prepare_named(const PlayerNamedSfxData &d,
+                                     FieldNodeTreeRuntime &t,
+                                     FieldGlobalRegistry &r, AudioPlayer &a,
+                                     PodunkPlayerMediaHost h, std::string &e) {
+  if (data_ || named_ || !d.valid() || !a.available() ||
+      t.object_domain() != r.kernel() || !h.add_audio_callback ||
+      !h.remove_audio_callback || !h.bus_gain || !h.connect_bus_layout ||
+      !h.disconnect_bus_layout || !h.emit)
+    return fail(e,
+                "Named SFX checked actual AudioServer/source ownership absent");
+  std::ifstream f(a.asset_root() + d.bank_path(),
+                  std::ios::binary | std::ios::ate);
+  if (!f || f.tellg() < 64 || f.tellg() > 65536)
+    return fail(e, "Named SFX bank missing/oversized");
+  std::vector<uint8_t> b(static_cast<size_t>(f.tellg()));
+  f.seekg(0);
+  if (!f.read(reinterpret_cast<char *>(b.data()), b.size()) ||
+      sha256(b.data(), b.size()) != d.bank_sha256())
+    return fail(e, "Named SFX bank fingerprint mismatch");
+  auto bank = std::make_shared<AudioBank>();
+  if (!bank->load(b.data(), b.size(), e))
+    return false;
+  for (auto &v : d.streams()) {
+    AudioAsset asset;
+    if (!bank->find(v.audio.asset_id, asset) &&
+        !a.checked_asset(v.audio.asset_id, asset, e))
+      return false;
+    if (asset.source_path != "res://" + v.audio.source ||
+        asset.source_sha256 != v.audio.source_sha)
+      return fail(e, "Named SFX actual stream bank/source mismatch");
+  }
+  uint32_t present = 0;
+  for (uint32_t i = 0; i < bank->count(); ++i) {
+    AudioAsset asset;
+    std::string absent;
+    auto expected = bank->asset(i);
+    if (!a.checked_asset(expected.stable_id, asset, absent))
+      continue;
+    if (asset.source_path != expected.source_path ||
+        asset.source_sha256 != expected.source_sha256 ||
+        asset.pcm_path != expected.pcm_path ||
+        asset.pcm_crc != expected.pcm_crc || asset.frames != expected.frames ||
+        asset.flags != expected.flags ||
+        asset.sample_rate != expected.sample_rate ||
+        asset.channels != expected.channels ||
+        asset.loop_start != expected.loop_start ||
+        asset.pcm_bytes != expected.pcm_bytes ||
+        asset.gain_db != expected.gain_db)
+      return fail(e, "Named SFX existing converted asset changed");
+    ++present;
+  }
+  if (present && present != bank->count())
+    return fail(e, "Named SFX partial bank overlap");
+  if (!present && !a.include_bank(bank, e))
+    return false;
+  named_ = &d;
+  ir_ = d.ir_sha256();
+  tree_ = &t;
+  registry_ = &r;
+  audio_ = &a;
+  host_.server = std::move(h);
+  bank_ = std::move(bank);
+  return true;
+}
+const FieldSceneAudioStream *
+PodunkSceneAudio::stream_binding(uint32_t id) const {
+  if (data_)
+    return data_->stream(id);
+  auto *v = named_ ? named_->stream(id) : nullptr;
+  return v ? &v->audio : nullptr;
+}
+bool PodunkSceneAudio::construct_named(FieldObjectId id,
+                                       const FieldNodeDescriptor &n,
+                                       const FieldIdentity &identity,
+                                       std::string &e) {
+  if (!named_ || !live(e) || !owns(n) ||
+      !same(identity, named_->voice_identity()) || owns(id) ||
+      registry_->tree_owner(id).get() != tree_ || !registry_->object_exists(id))
+    return fail(e, "Named SFX actual .new native object/source differs");
+  return construct_voice(id, named_->prototype(), e);
+}
 bool PodunkSceneAudio::owns(const FieldNodeDescriptor &n) const {
+  if(named_)return n.id==named_->voice_descriptor().id && n.native_class==named_->voice_descriptor().native_class && n.script.empty() && n.class_index==named_->voice_descriptor().class_index;
   auto *s = data_ ? data_->node(n.id) : nullptr;
   return s && n.path == s->path && n.script.empty();
 }
@@ -206,7 +289,7 @@ PodunkSceneAudio::Voice *PodunkSceneAudio::voice(FieldObjectId id,
 }
 bool PodunkSceneAudio::asset(uint32_t source, AudioAsset &out,
                              std::string &e) const {
-  auto *s = data_->stream(source);
+  auto *s = stream_binding(source);
   if (!s)
     return fail(e, "Scene audio unknown source stream");
   if (!audio_->checked_asset(s->asset_id, out, e) ||
@@ -221,7 +304,10 @@ bool PodunkSceneAudio::construct(FieldObjectId id, const FieldNodeDescriptor &n,
   if (!live(e) || !owns(n) || !same(identity, data_->identity()) || owns(id) ||
       !registry_->object_exists(id) || registry_->tree_owner(id).get() != tree_)
     return fail(e, "Scene audio native allocated/source constructor mismatch");
-  const auto *s = data_->node(n.id);
+  return construct_voice(id,*data_->node(n.id),e);
+}
+bool PodunkSceneAudio::construct_voice(FieldObjectId id,const FieldSceneAudioNode&source,std::string&e){
+  const auto *s=&source;
   Voice v;
   v.source = s;
   v.state.object = id;
@@ -263,13 +349,13 @@ bool PodunkSceneAudio::bind(FieldObjectId id, FieldNodeBinding &b,
   auto *n = tree_->descriptor(id);
   if (!v || !n || n->id != v->source->id || !owns(*n))
     return fail(e, "Scene audio actual node binding");
-  b.identity = data_->identity();
+  b.identity = data_?data_->identity():named_->voice_identity();
   b.stable_id = n->id;
   b.class_index = n->class_index;
   b.script_sha = n->script_sha;
   b.native_class =
       v->source->kind == 1 ? "AudioStreamPlayer" : "AudioStreamPlayer2D";
-  b.family = 0x454e0067;
+  b.family = data_?0x454e0067:0x454e0073;
   b.capability = 1;
   return true;
 }
@@ -293,6 +379,10 @@ bool PodunkSceneAudio::queued(const Voice &v) const {
 void PodunkSceneAudio::release_channel(Voice &v) {
   if (v.channel >= 0 && audio_ && audio_->available())
     ndspChnWaveBufClear(v.channel);
+  if (v.channel >= 0 && audio_ && audio_->available()) {
+    std::string error;
+    audio_->release_native_channel(v.state.object, this, v.channel, error);
+  }
   for (auto &x : leases_)
     if (x == v.state.object)
       x = 0;
@@ -320,9 +410,14 @@ bool PodunkSceneAudio::reserve(Voice &v, std::string &e) {
       linearAlloc(buffer_count * block_frames * 2 * sizeof(int16_t)));
   if (!p)
     return fail(e, "Scene audio actual DSP allocation failed");
+  int channel = -1;
+  if (!audio_->lease_native_channel(v.state.object, this, channel, e)) {
+    linearFree(p);
+    return false;
+  }
   v.samples = p;
   leases_[i] = v.state.object;
-  v.channel = int(26 + i);
+  v.channel = channel;
   ndspChnReset(v.channel);
   ndspChnSetFormat(v.channel, NDSP_FORMAT_STEREO_PCM16);
   ndspChnSetInterp(v.channel, NDSP_INTERP_POLYPHASE);
@@ -396,7 +491,7 @@ bool PodunkSceneAudio::play(FieldObjectId id, double from, std::string &e) {
     return fail(e, "Scene audio play position rejected");
   if (!v->state.source_stream)
     return true;
-  const auto *binding = data_->stream(v->state.source_stream);
+  const auto *binding = stream_binding(v->state.source_stream);
   if (!binding || (binding->native_class == "AudioStreamSample" && from != 0))
     return fail(
         e, "Scene sample nonzero start needs reviewed native seek semantics");
@@ -447,7 +542,7 @@ bool PodunkSceneAudio::seek(FieldObjectId id, double from, std::string &e) {
   if (!v || !std::isfinite(from) || from < 0 || from > double(UINT32_MAX))
     return fail(e, "Scene audio seek position rejected");
   if (v->state.source_stream) {
-    const auto *binding = data_->stream(v->state.source_stream);
+    const auto *binding = stream_binding(v->state.source_stream);
     if (!binding || (binding->native_class == "AudioStreamSample" && from != 0))
       return fail(e,
                   "Scene sample nonzero seek needs reviewed native semantics");
@@ -831,6 +926,7 @@ bool PodunkSceneAudio::shutdown(std::string &e) {
   if (channel_owner == this)
     channel_owner = nullptr;
   data_ = nullptr;
+  named_ = nullptr;
   tree_ = nullptr;
   registry_ = nullptr;
   audio_ = nullptr;

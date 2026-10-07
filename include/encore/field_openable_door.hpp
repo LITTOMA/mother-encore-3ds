@@ -11,6 +11,7 @@ struct FieldOpenableClip {FieldOpenableClipRole role{};std::string name;float le
 struct FieldOpenableTexture {uint32_t id=0;std::string source,path;std::array<float,4>region{};std::array<uint8_t,32>source_sha{},output_sha{};};
 struct FieldOpenableSound {uint32_t id=0;std::string source,pcm;std::array<uint8_t,32>sha{};};
 struct FieldOpenableDialogue {std::string program,source,key,en,zh_cn;std::array<uint8_t,32>source_sha{};};
+struct FieldOpenableAreaConnection {uint32_t role=0;std::string signal,method;};
 // Child indices are schema roles: sprite, area, interact, body, nonplayer,
 // bodyShape, nonplayerShape, areaShape, interactShape, prompt, audio, timer, anim.
 struct FieldOpenableDescriptor {
@@ -28,9 +29,11 @@ public:
  const std::string&none()const{return none_;}const std::string&bash()const{return bash_;}bool initial_unlocked()const{return initial_unlocked_;}
  float child_height()const{return child_height_;}const std::array<float,4>&shake()const{return shake_;}float run_y()const{return run_y_;}
  bool source_hash(std::string_view,std::array<uint8_t,32>&)const;
+ const auto&area_connections()const{return area_connections_;}
 private:
  bool valid_=false,initial_unlocked_=false;FieldIdentity identity_{};std::string scene_,script_,none_,bash_;std::array<uint8_t,32>script_sha_{};float child_height_=0,run_y_=0;std::array<float,4>shake_{};
  std::vector<FieldOpenableDescriptor>records_;std::vector<std::vector<FieldOpenableClip>>profiles_;std::vector<FieldOpenableTexture>textures_;std::vector<FieldOpenableSound>sounds_;std::vector<FieldOpenableDialogue>dialogues_;std::map<std::string,std::array<uint8_t,32>>sources_;
+ std::vector<FieldOpenableAreaConnection>area_connections_;
 };
 struct FieldOpenableInstance {
  uint32_t id=0;bool ready=false,unlocked=false,blocked=false,locked=false,sprite_visible=false,body_disabled=false,nonplayer_disabled=false,playing=false,started=false,timer_running=false;

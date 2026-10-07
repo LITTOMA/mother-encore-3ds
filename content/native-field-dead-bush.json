@@ -1,5 +1,319 @@
 {
-  "schema": 1,
+  "schema": 2,
+  "connections": [
+    {
+      "node": 4172441786,
+      "role": 1,
+      "emitter": 2743682052,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 4172441786,
+      "role": 2,
+      "emitter": 2743682052,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 4172441786,
+      "role": 3,
+      "emitter": 1618305011,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 2680996413,
+      "role": 1,
+      "emitter": 2684586280,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 2680996413,
+      "role": 2,
+      "emitter": 2684586280,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 2680996413,
+      "role": 3,
+      "emitter": 960773841,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 482021219,
+      "role": 1,
+      "emitter": 1614666725,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 482021219,
+      "role": 2,
+      "emitter": 1614666725,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 482021219,
+      "role": 3,
+      "emitter": 391786133,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 3081801818,
+      "role": 1,
+      "emitter": 2807940582,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 3081801818,
+      "role": 2,
+      "emitter": 2807940582,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 3081801818,
+      "role": 3,
+      "emitter": 1297612255,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 3589039046,
+      "role": 1,
+      "emitter": 641633255,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 3589039046,
+      "role": 2,
+      "emitter": 641633255,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 3589039046,
+      "role": 3,
+      "emitter": 3187038866,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 4049662983,
+      "role": 1,
+      "emitter": 2576648088,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 4049662983,
+      "role": 2,
+      "emitter": 2576648088,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 4049662983,
+      "role": 3,
+      "emitter": 1551961315,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 1833277587,
+      "role": 1,
+      "emitter": 2277266124,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 1833277587,
+      "role": 2,
+      "emitter": 2277266124,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 1833277587,
+      "role": 3,
+      "emitter": 2680122233,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 3308366515,
+      "role": 1,
+      "emitter": 1243669970,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 3308366515,
+      "role": 2,
+      "emitter": 1243669970,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 3308366515,
+      "role": 3,
+      "emitter": 124473369,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 2903972970,
+      "role": 1,
+      "emitter": 2836597675,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 2903972970,
+      "role": 2,
+      "emitter": 2836597675,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 2903972970,
+      "role": 3,
+      "emitter": 2482157214,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 1507577231,
+      "role": 1,
+      "emitter": 1427490599,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 1507577231,
+      "role": 2,
+      "emitter": 1427490599,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 1507577231,
+      "role": 3,
+      "emitter": 352624575,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 3485876928,
+      "role": 1,
+      "emitter": 3224544193,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 3485876928,
+      "role": 2,
+      "emitter": 3224544193,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 3485876928,
+      "role": 3,
+      "emitter": 1518839539,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 836532460,
+      "role": 1,
+      "emitter": 2936636420,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 836532460,
+      "role": 2,
+      "emitter": 2936636420,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 836532460,
+      "role": 3,
+      "emitter": 4124419332,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    },
+    {
+      "node": 644383942,
+      "role": 1,
+      "emitter": 2097255033,
+      "arguments": 0,
+      "signal": "screen_entered",
+      "method": "show"
+    },
+    {
+      "node": 644383942,
+      "role": 2,
+      "emitter": 2097255033,
+      "arguments": 0,
+      "signal": "screen_exited",
+      "method": "hide"
+    },
+    {
+      "node": 644383942,
+      "role": 3,
+      "emitter": 928666883,
+      "arguments": 1,
+      "signal": "area_entered",
+      "method": "_on_Hitbox_area_entered"
+    }
+  ],
   "kind": "encore.field-dead-bush.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",

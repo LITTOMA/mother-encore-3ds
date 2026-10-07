@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "kind": "encore.field-birds.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
@@ -6108,5 +6108,31 @@
     "Source Area layer4096/mask0/monitorablefalse retained; no invented distance/proximity trigger",
     "Unknown native animation listeners/queues/blends and active Kinematic shape are rejected",
     "Full Podunk activation remains pending other source consumers"
+  ],
+  "connections": [
+    {
+      "role": 1,
+      "child": 1,
+      "signal": "body_entered",
+      "method": "_on_Area_body_entered"
+    },
+    {
+      "role": 2,
+      "child": 4,
+      "signal": "animation_finished",
+      "method": "_on_AnimationPlayer_animation_finished"
+    },
+    {
+      "role": 3,
+      "child": 5,
+      "signal": "screen_entered",
+      "method": "_on_VisibilityNotifier2D_screen_entered"
+    },
+    {
+      "role": 4,
+      "child": 5,
+      "signal": "screen_exited",
+      "method": "_on_VisibilityNotifier2D_screen_exited"
+    }
   ]
 }

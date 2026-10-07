@@ -20,7 +20,7 @@ struct MusicObservation {
     uint32_t asset_id=0;
     bool available=false,present=false,playing=false,tweening=false;
     bool dialogue_music_playing=false,any_music_tweening=false;
-    float master_db=0;
+    float master_db=0,volume_db=0;
 };
 // Bounded slice adapter: independent area music, named dialogue SFX, musical
 // jingle and dialogue music voices. It is not the full Godot audio graph.
@@ -52,6 +52,10 @@ public:
     bool fade_all_music(double duration,std::string& error);
     bool stop_lane(AudioLane,std::string& error);
     bool update(double delta,std::string& error);
+    // Shared native AudioStreamPlayer leases, distinct from bounded AudioLane.
+    // Same live DSP owner arbitrates channels 26..31 for real source Nodes.
+    bool lease_native_channel(uint64_t object,const void* owner,int& channel,std::string&);
+    bool release_native_channel(uint64_t object,const void* owner,int channel,std::string&);
     bool available() const{return ready_;}
     // Borrow only this live NDSP owner and its checked immutable bank.
     const upstream::AudioBank* checked_bank() const{return ready_?&bank_:nullptr;}
@@ -89,6 +93,8 @@ private:
     std::string asset_root_;
     std::array<upstream::AudioPcmStream,64> streams_;
     std::array<Voice,lane_count> voices_;
+    struct NativeLease {uint64_t object=0;const void* owner=nullptr;};
+    std::array<NativeLease,6> native_leases_{};
     Result dsp_result_=0;
     bool ndsp_initialized_=false,ready_=false;
     uint64_t music_generation_=0;

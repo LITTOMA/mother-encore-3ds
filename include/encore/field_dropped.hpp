@@ -61,6 +61,7 @@ public:
  // Call idle_node for each source leaf in the scene-wide actual node order.
  // SceneTreeTween collection steps follow nodes in global tween creation order.
  bool idle_signal(std::string&);bool idle_node(uint32_t leaf,double delta,bool processing,std::string&);bool collect_step(uint32_t,uint64_t order,double delta,bool processing,std::string&);
+ bool bind_native_leaves(std::function<bool(uint32_t,bool,std::string&)>,std::string&);
  bool bind_sparkles_leaf_owner(FieldDroppedSparklesLeafOwner &,std::string &);
  bool idle_sparkles_leaf(uint32_t,double delta,bool processing,std::string &);
  bool area_left(bool region_changed,std::string&);bool exit_tree(uint32_t,std::string&);
@@ -69,5 +70,6 @@ private:
  FieldDroppedState*mutable_state(uint32_t);bool queue(FieldDroppedState&,std::string&);bool collect(FieldDroppedState&,const FieldDroppedBinding&,std::string&);bool timer(FieldDroppedState&,std::string&);
  const FieldDroppedData*data_=nullptr;FieldDroppedHost host_;std::vector<FieldDroppedState>states_;
  FieldDroppedSparklesLeafOwner *sparkles_owner_ = nullptr;
+ std::function<bool(uint32_t,bool,std::string&)> native_leaves_;
 };
 }

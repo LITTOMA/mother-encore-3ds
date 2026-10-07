@@ -2,6 +2,7 @@
 #include "encore/music_regions.hpp"
 #include <3ds.h>
 #include <array>
+#include <memory>
 
 namespace encore::ctr {
 enum class MusicPreparationStep:uint8_t {Progress,Ready,Failed};
@@ -25,6 +26,7 @@ public:
  bool preparing()const{return preparing_;}
  uint64_t prepared_pcm_bytes()const{return verified_bytes_;}
  uint64_t total_pcm_bytes()const{return total_bytes_;}
+ bool adopt_prepared_tracks(MusicRegionPlayer&,std::string&);
  bool sync(const upstream::MusicRegionController&,std::string&);
  void shutdown();
  bool prepared()const{return prepared_;}
@@ -33,9 +35,10 @@ public:
 private:
  static constexpr uint32_t buffer_count=3,buffer_frames=2048;
  struct Track{upstream::AudioAsset asset{};FILE*file=nullptr;};
- struct Voice{uint64_t generation=0;uint32_t track=0;bool active=false;
+ struct Voice{uint64_t generation=0;uint32_t track=0,channel=UINT32_MAX;bool active=false;
   upstream::AudioFrameCursor cursor;std::array<ndspWaveBuf,buffer_count>waves{};int16_t*samples=nullptr;};
  bool refill(uint32_t,std::string&);void stop(uint32_t);
+ std::vector<std::unique_ptr<upstream::AudioBank>> adopted_banks_;
  upstream::AudioBank bank_;std::array<Track,16>tracks_{};
  std::array<Voice,maximum_voices>voices_{};uint32_t capacity_=0,track_count_=0,submitted_=0;
  const upstream::MusicRegionController*owner_=nullptr;

@@ -9,12 +9,15 @@ struct FieldCameraAreaDescriptor {
  uint32_t id=0,ready=0,parent_id=0,shape_id=0,reference_id=0,flags=0,layer=0,mask=0,pause=0;int32_t priority=0;bool reference_exists=false;
  Vec2 position{},scale{},shape_position{},shape_scale{},extents{},camera_offset{};std::array<Vec2,3>world{},shape_world{};std::array<float,4>reference_margins{};std::string node,reference_path,reference_node;
 };
+struct FieldCameraAreaConnection {uint32_t role=0;std::string signal,method;};
 class FieldCameraAreaData {
 public:
  bool load(const uint8_t*,size_t,const FieldIdentity&,std::string&);bool load_file(const char*,const FieldIdentity&,std::string&);bool valid()const{return valid_;}bool scene_admitted()const{return false;}
  FieldIdentity identity()const{return identity_;}const std::string&source_scene()const{return scene_;}const std::string&script()const{return script_;}const std::array<uint8_t,32>&script_sha()const{return script_sha_;}const std::array<int32_t,4>&reset_limits()const{return reset_;}
+ const std::vector<FieldCameraAreaConnection>&connections()const{return connections_;}
  const std::vector<FieldCameraAreaDescriptor>&records()const{return records_;}const FieldCameraAreaDescriptor*record(uint32_t)const;bool source_hash(std::string_view,std::array<uint8_t,32>&)const;
 private:
+ std::vector<FieldCameraAreaConnection>connections_;
  bool valid_=false;FieldIdentity identity_{};std::string scene_,script_;std::array<uint8_t,32>script_sha_{};std::array<int32_t,4>reset_{};std::vector<FieldCameraAreaDescriptor>records_;std::map<std::string,std::array<uint8_t,32>>sources_;
 };
 struct FieldCameraAreaObservation {

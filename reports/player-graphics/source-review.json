@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "54bd9bf182f5762d08687ecc98bde972dad88e0a2270952f476a2374c54f5f86",
+  "ir_sha256": "54dea552df38d6d74ce4567dedbc6b1ced69764ceae3b2cf41b9d95ce87c00af",
   "sources": {
     "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
     "Graphics/Character Sprites/Magic_Ripple.png": "b362bbc2bff443da732e2840d96c6b4007e7d12e955fa1373ebf3f91b61f25f0",

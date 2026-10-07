@@ -1,5 +1,7 @@
 #include "house_ui_continuation.hpp"
 #include <algorithm>
+#include "encore/global_yaml_caches.hpp"
+#include "encore/field_global_data.hpp"
 namespace encore::ctr {
 using namespace upstream;
 namespace {
@@ -22,7 +24,7 @@ bool HouseUiContinuation::initialize(
       std::find_if(ns.autoloads().begin(), ns.autoloads().end(),
                    [&](const auto &v) { return v.id == ns.ui_autoload(); });
   if (data_ || !d || !d->valid() || !ns.valid() || a == ns.autoloads().end() ||
-      !b.object || b.family != 0x454e0064 || b.capability != 1 ||
+      !b.object || b.family != 0x454e0064 || b.capability != d->capability() ||
       b.source.role != 3 || b.source.stable_id != a->id ||
       !same(b.source.identity, ns.identity()) ||
       d->identity().upstream_commit != ns.identity().upstream_commit ||
@@ -57,6 +59,7 @@ bool HouseUiContinuation::initialize(
   binding_ = std::move(b);
   sources_ = s;
   cutscene_ = data_->fields()[2].initial;
+  key_open_=data_->key_initial_open();
   source_cutscene_observed_ = true;
   story_generation_ = sources_.world->story_generation();
   outcome_cursor_ = sources_.outcome->events().size();
@@ -173,6 +176,18 @@ bool HouseUiContinuation::exit(std::string &e) {
   native_ready_ = false;
   e.clear();
   return true;
+}
+bool HouseUiContinuation::source_stack_empty(FieldObjectId id,bool &out,std::string &e)const{
+  bool battle=false,cutscene=false;
+  if(!actual(id,e)||!native_ready_||!data_->stack_continuation()||
+     !source_is_in_battle(id,battle,e)||!source_is_in_cutscene(id,cutscene,e))return false;
+  // This continuation borrows the completed House UI. Source battle and
+  // dialogue owners remove their entries on completion; future stack owners
+  // need their own native add/remove bridge before this observer can admit them.
+  if(battle||cutscene||sources_.dialogue->dialogue_active()||sources_.house->story_pending()||
+     sources_.commands->phase()!=FieldEquipmentPhase::Closed)
+    return fail(e,"House UI stack observation requires its actual completed closed owners");
+  out=true;e.clear();return true;
 }
 bool HouseUiContinuation::source_is_in_battle(FieldObjectId id, bool &out,
                                               std::string &e) const {
@@ -316,5 +331,30 @@ bool HouseUiContinuation::rebind_scene(const OpeningWorld &w,
   sources_.dialogue = &p;
   e.clear();
   return true;
+}
+bool HouseUiContinuation::source_update_key_indicator(
+    const FieldGlobalDataRuntime&globaldata,std::string_view region,std::string&e){
+  if(!actual(binding_.object,e)||!native_ready_||!data_->key_indicator()||region.empty())
+    return fail(e,"House key indicator lacks actual live UI/region/source policy");
+  FieldGlobalDataMemberState keys;
+  if(!globaldata.read_global_member(data_->key_member(),keys,e))return false;
+  if(!keys.value||keys.value->kind!=6)
+    return fail(e,"House key indicator actual globaldata.keys is not a Dictionary");
+  auto value=keys.value->get(region);int64_t count=data_->key_default_count();
+  if(value){if(value->kind!=2)return fail(e,"Regional key count is not an integer");count=value->integer;}
+  if(count>0||key_open_)
+    return fail(e,"KeyNumber open/animated close needs its actual native UI owner");
+  // Source KeyNumber.close returns immediately when the same continued UI
+  // has never opened. The running House has no key-count drawing owner;
+  // this admitted branch preserves that real closed state, with no tween.
+  e.clear();return true;
+}
+bool HouseUiContinuation::source_clear_on_screen_enemies(std::string&e){
+ bool in_battle=false;
+ if(!actual(binding_.object,e)||!native_ready_||!data_->key_indicator()||
+    sources_.world->content().string(sources_.world->content().scene().source_scene_string)!=data_->house_scene()||
+    !source_is_in_battle(binding_.object,in_battle,e)||in_battle||!on_screen_enemies_.empty())
+   return fail(e,"House source enemy clearing lacks its actual completed empty owner");
+ on_screen_enemies_.clear();e.clear();return true;
 }
 } // namespace encore::ctr

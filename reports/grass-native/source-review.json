@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "661f9fc9f30a145d41b93ca4ac86ad49d624f97cb123bc9c045d1c049469ed47",
+  "sources": {
+    "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+    "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+    "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+    "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+    "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0"
+  },
+  "engine": {
+    "scene/animation/scene_tree_tween.cpp": {
+      "sha256": "c0272f420342bf8606602c31ea935d9d05b6093190a77128889ec362483693a4",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/animation/scene_tree_tween.cpp"
+    },
+    "scene/animation/scene_tree_tween.h": {
+      "sha256": "5b83aae7581d3ad61e723904ac3dba65054d6da48f66edc6a1cdb6391218a2f5",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/animation/scene_tree_tween.h"
+    },
+    "modules/gdscript/gdscript_function.cpp": {
+      "sha256": "fbf428dcba723ba9bee9aa6b74ed1c69ddec9dec950174bfd5d1367332c91df4",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/modules/gdscript/gdscript_function.cpp"
+    },
+    "scene/main/scene_tree.cpp": {
+      "sha256": "a1ac9f2da5a1046d1c468fd463de4907f535f124952b137d69fb39ef8b14b3b4",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/main/scene_tree.cpp"
+    }
+  },
+  "exporter_sha256": "fd7dfc650f98fafea559a4e037d2ddfa836cddc2a06edf7cf3c89664cb8a364f",
+  "source_ready_granted": false
+}

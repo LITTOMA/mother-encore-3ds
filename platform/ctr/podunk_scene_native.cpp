@@ -1,5 +1,6 @@
 #include "podunk_scene_native.hpp"
 #include "podunk_scene_animated_leaves.hpp"
+#include "podunk_scene_scripts.hpp"
 #include "field_canvas_art_renderer.hpp"
 #include "podunk_player_effect_owners.hpp"
 #include <algorithm>
@@ -39,6 +40,7 @@ public:
                             FieldNodeTreeRuntime &tree)
       : player_(player), initial_(initial), effects_(effects),
         effect_data_(effect_data), registry_(registry), tree_(tree) {}
+  void bind_grass(PodunkSceneGrassFactory *owner) { grass_ = owner; }
   bool sources(std::string &e) const {
     if (!initial_.valid() || !effect_data_.valid() ||
         effect_data_.player_ir_sha256() != initial_.ir_sha256() ||
@@ -67,6 +69,8 @@ public:
         s->binding.script_sha != d.script_sha || !s->binding.family ||
         !s->binding.capability)
       return fail(e, "Canvas foreign actual live source binding rejected");
+    if (grass_ && grass_->owns(id))
+      return grass_->admit_canvas(id, d, identity, tree, drawable, e);
     const FieldNodeRecipeData *recipe = nullptr;
     if (same(identity, initial_.recipe().identity())) {
       if (!player_.owns(id) || !player_.ready_complete() ||
@@ -104,6 +108,12 @@ public:
         !admit(slot.object, *d, slot.identity, tree_, drawable, e) ||
         !drawable || !slot.foreign_drawable)
       return fail(e, "Canvas foreign GPU slot source ownership rejected");
+    if (grass_ && grass_->owns(slot.object)) {
+      auto *leaf = grass_->canvas_leaf();
+      if (!leaf || !leaf->owns_drawable(slot.object))
+        return fail(e, "Grass foreign native slot has no actual GPU leaf");
+      return leaf->draw_leaf(slot, viewport, snap, e);
+    }
     if (same(slot.identity, initial_.recipe().identity()))
       return player_.draw(slot.object, viewport, snap, e);
     if (!translation(viewport))
@@ -112,6 +122,7 @@ public:
   }
 
 private:
+  PodunkSceneGrassFactory *grass_ = nullptr;
   PodunkPlayerHost &player_;
   const PlayerInitializationData &initial_;
   PodunkConcretePlayerEffectOwners &effects_;
@@ -391,6 +402,15 @@ bool PodunkSceneNative::bind_canvas_leaf(PodunkSceneCanvasLeaf &owner,
     return fail(e,"Canvas leaf must borrow the same actual tree/ObjectDB once");
   canvas_leaves_.push_back(&owner); e.clear(); return true;
 }
+bool PodunkSceneNative::bind_grass(PodunkSceneGrassFactory &owner, std::string &e) {
+  auto *leaf = owner.canvas_leaf();
+  if (!finished_ || grass_ || !leaf || owner.registry() != registry_ ||
+      leaf->canvas_tree() != tree_ || leaf->canvas_registry() != registry_)
+    return fail(e, "Grass foreign compositor requires the same actual tree and GPU owner");
+  grass_ = &owner;
+  if (foreign_) foreign_->bind_grass(grass_);
+  e.clear(); return true;
+}
 bool PodunkSceneNative::bind_foreign(PodunkPlayerHost &player,
                                      const PlayerInitializationData &initial,
                                      PodunkConcretePlayerEffectOwners &effects,
@@ -400,6 +420,7 @@ bool PodunkSceneNative::bind_foreign(PodunkPlayerHost &player,
     return fail(e, "Scene native foreign owner binding cursor rejected");
   auto owner = std::make_unique<PodunkPlayerCanvasForeign>(
       player, initial, effects, data, *registry_, *tree_);
+  owner->bind_grass(grass_);
   if (!owner->sources(e) || !canvas_.bind_foreign(*owner, e))
     return false;
   foreign_ = std::move(owner);
@@ -947,6 +968,7 @@ bool PodunkSceneNative::shutdown(std::string &e) {
   map_gpu_.reset();
   canvas_.clear();
   foreign_.reset();
+  grass_ = nullptr;
   canvas_leaves_.clear();
   instances_.clear();
   source_objects_.clear();

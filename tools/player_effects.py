@@ -37,6 +37,7 @@ def prepare(directory):
 
 def extract(directory):
  ex=Extractor(ROOT);player=read(PLAYER);require(player['commit']==PIN and player['ready_admitted']is False,'Actual Player source prerequisite rejected')
+ reviewed=read(REVIEW);require(reviewed['schema']==1 and reviewed['commit']==PIN and re.fullmatch('[0-9a-f]{64}',reviewed['engine_source_sha256']), 'Effect reviewed engine evidence changed')
  creators=[]
  for kind,path in enumerate(CREATORS):
   source=ex.text(path);rows=[r for r in player['records']if r['script']==path];require(len(rows)==1,'Complete actual Player creator attachment required')
@@ -67,6 +68,10 @@ def extract(directory):
   text=ex.text(path)
   for m in re.finditer(r'^func (\w+)\([^\n]*\n.*?(?=^func |\Z)',text,re.M|re.S):functions.append(dict(source=path,method=m[1],sha=hashlib.sha256(m[0].encode()).hexdigest()))
  write(IR,dict(schema=1,kind='encore.player-effects.source-ir',commit=PIN,family=FAMILY,player_ir_sha256=sha(PLAYER),scene=player['scene'],scene_id=player['scene_id'],source_sha256=player['source_sha256'],sources=ex.sources,creators=creators,policy=policy,timer=timer,recipes=recipes,native=native,signals=signals,functions=functions,scene_admitted=False,pending=['Actual native Node/Canvas/Sprite lifecycle remains same SceneTree owner','Sprite.duplicate default complete four-node Player sprite/emotes subtree needs real duplicate owner; no cropped Sprite copy','Actual AnimationPlayer and material/texture owners must accept all checked properties/tracks before effect instance enters','Dust source currentScene/Objects parent and actual live party supplied by same global owner']))
+ derived=read(IR)
+ write(REVIEW,dict(schema=1,commit=PIN,ir_sha256=sha(IR),scope=reviewed['scope'],
+                   engine_source_sha256=reviewed['engine_source_sha256'],review=reviewed['review']))
+
 
 def load():
  d=read(IR);r=read(REVIEW);inv=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(d['schema']==1 and d['commit']==PIN and d['family']==FAMILY and not d['scene_admitted']and d['player_ir_sha256']==sha(PLAYER)and r['ir_sha256']==sha(IR),'Player effect review/dependency rejected')

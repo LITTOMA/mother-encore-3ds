@@ -28,7 +28,29 @@ def derive():
  require('func _on_battle_ended(result: int, battle_ui: Node):\n\t'+fields[0]['member']+' = false' in text,'Changed original battlefield end assignment')
  for name in ['start_battle','_on_battle_ended','open_commands_menu','close_commands_menu','open_dialogue_box']:
   f=re.search(r'^func '+name+r'\([^\n]*\n.*?(?=^func |\Z)',text,re.M|re.S);require(f,'Missing original UI event body');methods.append(dict(role=len(methods)+1,name=name,sha=hashlib.sha256(f[0].encode()).hexdigest()))
- return dict(schema=1,family=FAMILY,commit=PIN,owner=owner,scene_id=ui['scene_id'],source_sha256=ui['source_sha256'],ui_ir_sha256=sha(UI),sources=ex.sources,fields=fields,methods=methods,signals=signals,scope=['Real existing House battle/menu/story owners; no source constructor or seven UI factories replayed','BattleEnded event clears source battlefield state, including PostWinRequested; ReturnStarted dispatches actual battle_to_ov','Cutscene setter is an actual source method on this owning state; House dialogue/story getter remains live','Whole UiManager _ready, stableCanvas construction, generic menus and unsupported party-info owner remain pending'],scene_admitted=False)
+ # Door continuation executes the real zero-key branch, retaining the
+ # existing KeyNumber closed state rather than replaying UiManager._ready.
+ key_scene='Nodes/Ui/KeyCount.tscn';key_script='Scripts/UI/KeyNumber.gd'
+ key_text=ex.text(key_script);key_resource=ex.text(key_scene)
+ require('script = ExtResource( 2 )' in key_resource and 'res://'+key_script in key_resource,'Changed KeyCount native script binding')
+ for role,name,body in [(11,'get_key_count',text),(12,'update_key_indicator',text),(13,'close',key_text)]:
+  f=re.search(r'^func '+name+r'\([^\n]*\n.*?(?=^func |\Z)',body,re.M|re.S);require(f,'Missing actual key indicator method');methods.append(dict(role=role,name=name,sha=hashlib.sha256(f[0].encode()).hexdigest()))
+ getter=re.search(r'globaldata\.(\w+)\.get\(global\.currentScene\.get_region_name\(\), (\d+)\)',text);require(getter and int(getter[2])==0,'Unknown source regional key lookup')
+ require('if get_key_count() <= 0:\n\t\t_key.close()\n\telse:\n\t\t_key.open()'in text,'Unknown key indicator source branch')
+ require('var _is_open = false' in key_text and 'func close():\n\tif !_is_open:\n\t\treturn' in key_text,'Unknown KeyNumber source close guard')
+ enemy_method=re.search(r'^func clear_on_screen_enemies\([^\n]*\n.*?(?=^func |\Z)',text,re.M|re.S);require(enemy_method and '_onScreenEnemies.clear()'in enemy_method[0] and 'var _onScreenEnemies := []'in text,'Unknown source on-screen enemy clearing')
+ methods.append(dict(role=14,name='clear_on_screen_enemies',sha=hashlib.sha256(enemy_method[0].encode()).hexdigest()))
+ stack=re.search(r'^var (\w+) := \[\]$',text,re.M);require(stack and stack[1]=='_ui_stack','Unknown source UI stack declaration')
+ require('func is_stack_empty() -> bool:\n\treturn '+stack[1]+'.size() == 0' in text and stack[1]+'.push_front(ui)'in text and stack[1]+'.erase(ui)'in text,'Unknown UI stack getter/push/erase')
+ dialogue_script='Scripts/UI/DialogueBox.gd';dialogue=ex.text(dialogue_script)
+ require('uiManager.remove_ui(self)'in dialogue,'Source DialogueBox close no longer removes its UI entry')
+ for role,name,body in [(15,'is_stack_empty',text),(16,'add_ui',text),(17,'remove_ui',text),(18,'_close_dialog_box',dialogue)]:
+  f=re.search(r'^func '+name+r'\([^\n]*\n.*?(?=^func |\Z)',body,re.M|re.S);require(f,'Missing actual source stack lifecycle');methods.append(dict(role=role,name=name,sha=hashlib.sha256(f[0].encode()).hexdigest()))
+ stack_policy=dict(member=stack[1],initial_count=0,dialogue_script=dialogue_script)
+ house_scene='Maps/podunk/Nintens House.tscn';house_source=ex.text(house_scene)
+ require('EnemySpawner'not in house_source and 'BasicEnemy'not in house_source,'House now has an unported overworld enemy owner')
+ key_policy=dict(member=getter[1],default_count=int(getter[2]),initial_open=False,scene=key_scene,script=key_script,enemy_member='_onScreenEnemies',enemy_initial_count=0,house_scene=house_scene)
+ return dict(schema=1,family=FAMILY,commit=PIN,owner=owner,scene_id=ui['scene_id'],source_sha256=ui['source_sha256'],ui_ir_sha256=sha(UI),sources=ex.sources,key_policy=key_policy,stack_policy=stack_policy,fields=fields,methods=methods,signals=signals,scope=['Real existing House battle/menu/story owners; no source constructor or seven UI factories replayed','BattleEnded event clears source battlefield state, including PostWinRequested; ReturnStarted dispatches actual battle_to_ov','Cutscene setter is an actual source method on this owning state; House dialogue/story getter remains live','Whole UiManager _ready, stableCanvas construction, generic menus and unsupported party-info owner remain pending'],scene_admitted=False)
 
 def extract():
  d=derive();write(IR,d);write(REVIEW,dict(schema=1,commit=PIN,ir_sha256=sha(IR),sources=d['sources'],scope=d['scope']))
@@ -47,7 +69,9 @@ def encode(d):
  for x in d['methods']:u(x['role']);t(x['name']);b.extend(bytes.fromhex(x['sha']))
  u(len(d['signals']))
  for x in d['signals']:u(x['role'],x['arity']);t(x['name'])
- struct.pack_into('<8s8I',b,0,b'ENCHUIC1',1,128,len(b),zlib.crc32(b[128:]),FAMILY,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
+ t(d['key_policy']['member']);u(d['key_policy']['default_count'],int(d['key_policy']['initial_open']));t(d['key_policy']['scene']);t(d['key_policy']['script']);t(d['key_policy']['enemy_member']);u(d['key_policy']['enemy_initial_count']);t(d['key_policy']['house_scene'])
+ t(d['stack_policy']['member']);u(d['stack_policy']['initial_count']);t(d['stack_policy']['dialogue_script'])
+ struct.pack_into('<8s8I',b,0,b'ENCHUIC1',3,128,len(b),zlib.crc32(b[128:]),FAMILY,3,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('action',choices=['extract','compile','verify']);a=p.parse_args()

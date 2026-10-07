@@ -1,5 +1,19 @@
 {
   "schema": 1,
+  "format": 2,
+  "capability": 2,
+  "connections": [
+    {
+      "role": 1,
+      "signal": "body_entered",
+      "method": "_on_Area_body_entered"
+    },
+    {
+      "role": 2,
+      "signal": "body_exited",
+      "method": "_on_Area_body_exited"
+    }
+  ],
   "kind": "encore.field-butterfly.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "scene": "Maps/podunk/podunk.tscn",
@@ -6486,7 +6500,8 @@
     "PartyMemberPlayer walking contact changes return/input/facing based on current animated Sprite world position; global-player leave uses literal global-position versus local start compare",
     "Multiple exits share one one-shot Timer and FIFO two-wait coroutines; Timer continues offscreen and is not paused merely by Player pause; second timeout enables local move_toward return",
     "Loop interpolation keeps source continuous negative-1.2 ease, texture frame and discrete facing key crossing; movement-facing changes persist between discrete animation keys",
-    "VisibilityNotifier and VisibilityEnabler rectangles and source child identities are admitted by live host; two true native clocks are retained"
+    "VisibilityNotifier and VisibilityEnabler rectangles and source child identities are admitted by live host; two true native clocks are retained",
+    "Original Sprite/MoveArea body_entered and body_exited symbols are extracted from the actual scene and source receiver functions, without inventing new signals"
   ],
   "unsupported": [
     "No healing NPC behavior, world flag or new Disappear animation invented: method exists unconnected and no such source clip in actual scene",

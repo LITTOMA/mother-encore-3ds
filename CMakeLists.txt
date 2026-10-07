@@ -20,6 +20,11 @@ add_library(encore_core
     runtime/prompt_native_data.cpp
     runtime/field_scene_tree_timer.cpp
     runtime/scene_clip_native_data.cpp
+    runtime/scene_leaf_native_data.cpp
+    runtime/grass_native_data.cpp
+    runtime/player_preload_scenes_data.cpp
+  runtime/player_named_sfx_data.cpp
+  runtime/field_node_tree_door.cpp
     runtime/audio_server_data.cpp
     runtime/audio_server.cpp
     runtime/field_scene_materials_data.cpp

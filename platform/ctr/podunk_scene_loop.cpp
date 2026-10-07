@@ -1,3 +1,4 @@
+#include "podunk_house_door_continuation.hpp"
 #include "podunk_scene_loop.hpp"
 #include "podunk_player_physics_world.hpp"
 #include "podunk_scene_visibility.hpp"
@@ -8,6 +9,8 @@
 #include "podunk_butterfly_timers.hpp"
 #include "podunk_scene_clip_native.hpp"
 #include "podunk_audio_server.hpp"
+#include "podunk_scene_leaf_native.hpp"
+#include "podunk_scene_cameras.hpp"
 #include <algorithm>
 #include <cmath>
 
@@ -81,7 +84,7 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
       input.tree->object_count() || !input.native || !input.visibility ||
       !input.npc_world || !input.prompts || !input.butterfly_animation ||
       !input.return_timers || !input.butterfly_timers || !input.clip_native ||
-      !input.audio_server || !input.player ||
+      !input.audio_server || !input.leaf_native || !input.cameras || !input.grass || !input.player ||
       !input.physics || !input.map || !input.geometry || input.asset_root.empty() ||
       !input.source_signals || !input.source_methods || !input.source_method_owned ||
       !input.allocation_observed)
@@ -98,7 +101,9 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
       std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
                  input_.butterfly_animation) != 1 ||
       std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
-                 input_.clip_native) != 1)
+                 input_.clip_native) != 1 ||
+      std::count(input_.mechanisms.begin(), input_.mechanisms.end(), input_.leaf_native) != 1 ||
+      std::count(input_.mechanisms.begin(), input_.mechanisms.end(), input_.cameras) != 1)
     return fail(e, "Scene visibility, NPC world, prompts, Butterfly and clip animation owners must join the unique native mechanism roster");
   auto &d = *input_.sources;
   auto &r = *input_.continuation->registry();
@@ -146,6 +151,8 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
   };
   host.construct_source = [this](auto id, const auto &n, const auto &identity,
                                  auto &error) {
+    if (input_.grass->owns(id))
+      return input_.grass->construct_source(id, n, identity, error);
     if (input_.player->source_candidate(n.id))
       return input_.player->construct_source(id, n, identity, error);
     if (n.script.empty()) { error.clear(); return true; }
@@ -184,8 +191,11 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
       !input_.butterfly_animation->finish_factory(e) ||
       !input_.butterfly_timers->finish_factory(e) ||
       !input_.clip_native->finish_factory(e) ||
+      !input_.leaf_native->finish_factory(e) || !input_.cameras->finish_factory(e) ||
       !input_.native->bind_animated_leaves(animated_, e) ||
-      !input_.native->bind_canvas_leaf(*input_.prompts, e)) {
+      !input_.native->bind_canvas_leaf(*input_.prompts, e) ||
+      !input_.native->bind_canvas_leaf(*input_.leaf_native, e) ||
+      !input_.native->bind_grass(*input_.grass, e)) {
     poisoned_ = true;
     return false;
   }
@@ -214,6 +224,7 @@ bool PodunkSceneLoop::native_allocated(FieldObjectId id,
   if (!r.publish_allocated_node(input_.tree, id,
       [this](const auto &message, auto &error) { return deferred(message, error); }, e))
     return false;
+  if (input_.grass->owns(d)) return input_.grass->native_construct(id, d, identity, e);
   if (input_.player->source_candidate(d.id)) return true;
   if (!input_.allocation_observed(id, d, identity, e)) return false;
   if (!prepare_leaves(e)) return false;
@@ -233,6 +244,8 @@ bool PodunkSceneLoop::native_allocated(FieldObjectId id,
 }
 bool PodunkSceneLoop::bind(FieldObjectId id, const FieldNodeDescriptor &d,
                            FieldNodeBinding &out, std::string &e) {
+  if (input_.house_door_continuation && input_.house_door_continuation->owns(id)) return input_.house_door_continuation->bind(id,out,e);
+  if (input_.grass->owns(id)) return input_.grass->bind(id, out, e);
   if (input_.player->source_candidate(d.id)) return input_.player->bind(id, d, out, e);
   FieldNodeBinding native;
   if (input_.native->owns(id)) {
@@ -262,6 +275,10 @@ bool PodunkSceneLoop::dispatch(FieldObjectId id, const FieldNodeBinding &b,
       p == FieldTreePhase::ChildEntered || p == FieldTreePhase::ChildExiting ||
       p == FieldTreePhase::ReadyNative || p == FieldTreePhase::ReadyScript)
     if (!root.node_notification(id, p, e)) return false;
+  if (input_.house_door_continuation && input_.house_door_continuation->owns(id))
+    return input_.house_door_continuation->phase(id,p,p==FieldTreePhase::Physics?physics_delta_:idle_delta_,paused_,update_pending_,e);
+  if (input_.grass->owns(id))
+    return input_.grass->phase(id, p, p == FieldTreePhase::PhysicsInternal || p == FieldTreePhase::Physics ? physics_delta_ : idle_delta_, paused_, e);
   if (input_.player->owns(id)) return input_.player->phase(id, b, p, e);
   if (source_phase(p)) {
     if (!n->script.empty())
@@ -337,7 +354,7 @@ bool PodunkSceneLoop::physics_frame(uint64_t epoch, float dt, bool paused,
   if (!ready() || !epoch || epoch <= physics_epoch_ || !step_delta(dt))
     return fail(e, "Scene actual physics cursor rejected");
   physics_epoch_ = epoch; physics_delta_ = dt; paused_ = paused;
-  if (!input_.player->begin_frame(epoch, 0, dt, paused, update_pending_, e) ||
+  if (!input_.player->begin_frame(++player_frame_cursor_, 0, dt, paused, update_pending_, e) ||
       (physics_sampled_ && !input_.physics->flush_queries(e)) ||
       !input_.tree->process(true, paused, e) ||
       !input_.continuation->registry()->flush_messages(e) ||
@@ -353,7 +370,7 @@ bool PodunkSceneLoop::idle_frame(uint64_t epoch, float dt, bool paused,
   if (!ready() || !epoch || epoch <= idle_epoch_ || !step_delta(dt))
     return fail(e, "Scene actual idle cursor rejected");
   idle_epoch_ = epoch; idle_delta_ = dt; paused_ = paused; update_pending_ = update;
-  if (!input_.player->begin_frame(epoch, dt, 0, paused, update, e) ||
+  if (!input_.player->begin_frame(++player_frame_cursor_, dt, 0, paused, update, e) ||
       !input_.tree->process(false, paused, e) ||
       !transition_jobs(dt, paused, e) ||
       !input_.continuation->registry()->flush_messages(e) ||
@@ -370,7 +387,8 @@ bool PodunkSceneLoop::idle_frame(uint64_t epoch, float dt, bool paused,
   released_signals_.clear();
   // SceneTreeTimer's native list follows idle delete processing. It uses this
   // exact global idle cursor; Node Timers retain their own original phase.
-  if (!input_.return_timers->idle(epoch, dt, paused, e)) {
+  if (!input_.grass->tween_frame(epoch, dt, paused, e) ||
+      !input_.return_timers->idle(epoch, dt, paused, e)) {
     poisoned_ = true; return false;
   }
   e.clear(); return true;
@@ -421,7 +439,8 @@ bool PodunkSceneLoop::input(uint32_t kind, const PlayerInputEvent &event,
 }
 bool PodunkSceneLoop::draw(uint64_t epoch, float dt, float shader_time, std::string &e) {
   if (!ready() || !step_delta(dt)) return fail(e, "Scene draw before actual Ready");
-  if (!animated_.begin_draw(epoch, e) || !input_.native->begin_draw(epoch, dt, shader_time, e)) return false;
+  // Native composition owns the one draw boundary, including animated leaves.
+  if (!input_.native->begin_draw(epoch, dt, shader_time, e)) return false;
   return input_.native->draw([this](uint32_t source) {
     return scripts_.lifecycle().gate(source);
   }, e);
@@ -437,8 +456,11 @@ bool PodunkSceneLoop::deferred(const FieldDeferredMessage &m, std::string &e) {
       return fail(e, "Scene external native notification unsupported");
     return dispatch(m.object, s->binding, p, e);
   }
+  if (input_.house_door_continuation && input_.house_door_continuation->owns(m.object)) return input_.house_door_continuation->deferred(m,e);
   if (input_.audio_server->handles_layout(m)) return input_.audio_server->layout_callback(m,e);
   if (input_.physics->handles_callback(m)) return input_.physics->deferred(m, e);
+  if (input_.grass->handles_callback(m)) return input_.grass->deferred(m, e);
+  if (input_.player->method_owned(m)) return input_.player->source_method(m, e);
   if (input_.player->owns(m.object)) return input_.player->deferred(m, e);
   if (input_.visibility->handles_method(m)) return input_.visibility->deferred(m,e);
   if (input_.butterfly_timers->handles_method(m)) return input_.butterfly_timers->deferred(m,e);
@@ -455,6 +477,15 @@ bool PodunkSceneLoop::deferred(const FieldDeferredMessage &m, std::string &e) {
 }
 bool PodunkSceneLoop::release(FieldObjectId id, const FieldNodeBinding &b,
                               std::string &e) {
+  if (input_.house_door_continuation && input_.house_door_continuation->owns(id)){
+    if(!input_.house_door_continuation->release(id,e))return false;
+    released_signals_.push_back(id);e.clear();return true;
+  }
+  if (input_.grass->owns(id)) {
+    if (!input_.grass->release(id, e)) return false;
+    released_signals_.push_back(id);
+    e.clear(); return true;
+  }
   if (input_.player->owns(id)) return input_.player->release(id, e);
   if (scripts_.owns(id) && !scripts_.release(id, b, e)) return false;
   const auto *d = input_.tree->descriptor(id);
@@ -467,15 +498,30 @@ bool PodunkSceneLoop::release(FieldObjectId id, const FieldNodeBinding &b,
 }
 bool PodunkSceneLoop::signal_declaration(FieldObjectId id, std::string_view name,
                                         uint32_t &arity, std::string &e) const {
+  if (input_.house_door_continuation && input_.house_door_continuation->owns(id))return input_.house_door_continuation->declaration(id,name,arity,e);
   if (input_.audio_server && id == input_.audio_server->binding().object)
     return input_.audio_server->signal_declaration(id, name, arity, e);
   // SceneTreeTimer is an actual Reference, so it must be resolved before the
   // Node-only declaration guard below.
   if (input_.return_timers && input_.return_timers->owns(id))
     return input_.return_timers->signal_declaration(id, name, arity, e);
+  if (input_.grass && input_.grass->owns(id))
+    return input_.grass->signal_declaration(id, name, arity, e);
   const auto *d = input_.tree ? input_.tree->descriptor(id) : nullptr;
   if (!d || input_.continuation->registry()->tree_owner(id) != input_.tree)
     return fail(e, "Scene signal lacks actual owning node");
+  if (input_.player && input_.player->owns(id))
+    return input_.player->declaration(id, name, arity, e);
+  if (d->native_class == "Area2D" && input_.native->owns(id)) {
+    if (name == "body_entered" || name == "body_exited" ||
+        name == "area_entered" || name == "area_exited") {
+      arity = 1; e.clear(); return true;
+    }
+    if (name == "body_shape_entered" || name == "body_shape_exited" ||
+        name == "area_shape_entered" || name == "area_shape_exited") {
+      arity = 4; e.clear(); return true;
+    }
+  }
   if (name == "tree_entered" || name == "tree_exiting" || name == "tree_exited" ||
       name == "ready") { arity = 0; e.clear(); return true; }
   if (name == "child_entered_tree" || name == "child_exiting_tree") {
@@ -496,6 +542,8 @@ bool PodunkSceneLoop::signal_declaration(FieldObjectId id, std::string_view name
     return input_.visibility->signal_declaration(id, name, arity, e);
   if (input_.prompts->owns(id))
     return input_.prompts->declaration(id, name, arity, e);
+  if (input_.leaf_native->owns(id))
+    return input_.leaf_native->declaration(id, name, arity, e);
   if (input_.clip_native->owns(id))
     return input_.clip_native->declaration(id, name, arity, e);
   return input_.source_signals(id, name, arity, e);

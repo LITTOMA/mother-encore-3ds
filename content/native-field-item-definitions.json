@@ -1526,7 +1526,7 @@
   "dependencies": {
     "content/native-field-present.json": "3e0dbc6d84e9fa346aa244c54b24ce7355d4874e2bb1257c23a05f1b821a8cd6",
     "content/native-field-dropped.json": "a1b3d66b7b373a4355f9c7eb306cc55e0ffb7e071609ede90e3eeb8a1713b980",
-    "content/podunk-openable-door.json": "7e402c220c4134ed02e1b0989912b512ff3db7e84dcc6da9d80d74c673ffeae7",
+    "content/podunk-openable-door.json": "639f54c87b2fc6118326a512f08ab1950d5345ca1605625546a3bd648d04b46f",
     "content/native-field-payphone.json": "71919c1ac49818d5c93291029d6232d6ad8e27de24161689803749118705f1a3",
     "content/native-basement-progression.json": "3f35390015cda7e154be812a8ad2c5874ca0b860b216d43400d18695953ba88e",
     "content/native-field-shop.json": "9de782230aa2002e89ce35bc58aff6e77482c2f87b7d71b2801e93f0665a91ff",

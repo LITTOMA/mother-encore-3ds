@@ -188,6 +188,17 @@ bool FieldSceneSources::load(const PodunkBundleData &bundle,
       !clips_.load(clip_bytes.data(), clip_bytes.size(), tree_, openable_, present_, emote_, bush_, e)) {
     failed_ = true; e = "Scene native animation clip source: " + e; return false;
   }
+  std::vector<uint8_t> leaf_bytes;
+  const SceneLeafNativeSources leaf_sources{tree_, camera_, transitions_, birds_, dropped_, payphone_, melody_};
+  if (!bundle.read(PodunkPackRole::SceneLeafNative, root, leaf_bytes, e) ||
+      !leaves_.load(leaf_bytes.data(), leaf_bytes.size(), leaf_sources, e)) {
+    failed_ = true; e = "Scene native leaf source: " + e; return false;
+  }
+  std::vector<uint8_t> grass_bytes;
+  if (!bundle.read(PodunkPackRole::GrassNative, root, grass_bytes, e) ||
+      !grass_native_.load(grass_bytes.data(), grass_bytes.size(), grass_, tree_, e)) {
+    failed_ = true; e = "Scene Grass native source: " + e; return false;
+  }
   loaded_ = true;
   e.clear();
   return true;

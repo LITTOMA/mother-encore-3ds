@@ -7,6 +7,7 @@ struct PodunkNpcWorldPorts {
   // Actual UI/Programme owners provide these source methods. World operations
   // below are owned here and never forwarded to fabricated collision ports.
   upstream::FieldNpcHost source;
+  bool actual_debug_build=false;
   upstream::PlayerInitializationBody *player = nullptr;
   upstream::FieldGlobalConstructorRuntime *global = nullptr;
   PodunkGlobalDataHost *characters = nullptr;
@@ -31,6 +32,8 @@ public:
   bool activate_geometry(upstream::FieldSceneHost &, std::string &);
   bool owns(const upstream::FieldNodeDescriptor &) const override;
   bool owns(upstream::FieldObjectId) const override;
+  // Source Ready precedes native Ready on the same body; children already ran.
+  bool native_entered(upstream::FieldObjectId, std::string &) const;
   bool native_ready(upstream::FieldObjectId, std::string &) const;
   bool construct(upstream::FieldObjectId, const upstream::FieldNodeDescriptor &,
                  const upstream::FieldIdentity &, std::string &) override;

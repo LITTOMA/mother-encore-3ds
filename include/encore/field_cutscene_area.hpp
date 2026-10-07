@@ -7,7 +7,7 @@ namespace encore::upstream {
 struct FieldCutsceneAreaConnection { uint32_t role=0;std::string signal,method; };
 struct FieldCutsceneAreaPolicy {
  std::array<bool,4>close{};std::array<bool,3>pause{};
- std::string completion,battle_signal;std::vector<FieldCutsceneAreaConnection>connections;
+ std::string completion,battle_signal,battle_method;std::vector<FieldCutsceneAreaConnection>connections;
 };
 struct FieldCutsceneAreaBinding {
  uint32_t id=0,ready_ordinal=0,shape_id=0,collision_layer=0,collision_mask=0,flags=0;

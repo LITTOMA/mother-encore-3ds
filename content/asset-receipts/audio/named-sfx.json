@@ -1,0 +1,252 @@
+{
+  "schema": 1,
+  "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "c17d1d579b2de6b1b2b5afad2c2ea0083c2be595bac2830bc6bde29fc9108abb",
+  "ir_sha256": "7252fe83a932b8a617eef73fc7d00e11dc91a82f1f123756cb208958513e2cd0",
+  "bank": "sound/banks/named-sfx.encaudio",
+  "assets": [
+    {
+      "stable_id": 3333094761,
+      "source_sha256": "af5b7dda9cf5fbce60165c6bcce1cb097d301de4a5749129eacf1c9a3fcd71a3",
+      "sample_rate": 44100,
+      "channels": 1,
+      "loop": false,
+      "frames": 9146,
+      "loop_start": 0,
+      "pcm_bytes": 18292,
+      "pcm_crc32": 3614569583,
+      "pcm_path": "sound/effects/named-3333094761.pcm",
+      "source_path": "res://Audio/Sound effects/EB/dodge.wav",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "671d23908b363f59953cf8fcbf2eb9becf35746b21101da48536a085e97a8891",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "ecf1b73409afc107672344101274f8f92935f4d1d0b2e3e3d4493b8dc8bfcfe0"
+    },
+    {
+      "stable_id": 1103769193,
+      "source_sha256": "c070165d744d0e8cb7611bb4d7341cf29fcc9b111e85085081cce206c5f02cb9",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": false,
+      "frames": 31334,
+      "loop_start": 0,
+      "pcm_bytes": 125336,
+      "pcm_crc32": 866855291,
+      "pcm_path": "sound/effects/named-1103769193.pcm",
+      "source_path": "res://Audio/Sound effects/Save.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "c552ec18fd471c4f104e649d9bd7c40bbe72741414f3557bc74cdd0dea485aa7",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "b3f4329d98be379f777c9a5472256cacd53560e6067d68c0590557a0334dc6b5"
+    },
+    {
+      "stable_id": 1152974177,
+      "source_sha256": "05ca6ec15c2d720ca2e3bcfda149bd4f316aa08b5fc2906f37608040b73c370f",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 2313576429,
+      "pcm_path": "sound/effects/named-1152974177.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/soil.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "ecb810068eb333417272394709ffaaf0c1c43ab8b7ad78d4c83e28caa1f5ce65",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "582fd76c9d0aba6a22df11ffacf1f6586871601738aa10b94e63bc73cec65bc7"
+    },
+    {
+      "stable_id": 2085542988,
+      "source_sha256": "9749eb5e420e4b2d1302563acc0c9fe3ff9dc8c27f39158df0dcf0bfc90c0f08",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 2510573460,
+      "pcm_path": "sound/effects/named-2085542988.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/metal.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "f52c32810995f3d7b0430a76383f534b3b78eef06c09b2d6bae973519c2e745e",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "cd8a8cc3b3111ae9ce8dcd023b3246fcd943a8e5b7bcf6b967494890e80e9a68"
+    },
+    {
+      "stable_id": 834825354,
+      "source_sha256": "35c3a78c72642ed6ec0304b11d0d7eb4ee20f1a1bd9bb6dc126c4042a3729b41",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 2136257246,
+      "pcm_path": "sound/effects/named-834825354.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/stone.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "9ee30a92340dc5d544932eccac1b3534ba46042809bc3ae45f9c127f9a8dd1c7",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "1f6afb347aff38865ba6315f5b3ca89d8a560010b187e3e471070a4b6418cece"
+    },
+    {
+      "stable_id": 972225861,
+      "source_sha256": "0251df40717d5e8acd1d7b63b1e478546b25a3c6fdd2aee01abe249a14629fb6",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 2495232944,
+      "pcm_path": "sound/effects/named-972225861.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/sand.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "fc37fe0b8dd50d346b85cd96ef86816505d7efd714f5b298ec7d6614344113e1",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "61885ef0694e25ca854da24d4c1746d7a961905e4013f51496dbf3a9351be9d0"
+    },
+    {
+      "stable_id": 2544657704,
+      "source_sha256": "4c6d4e6e8419cb5cee0adf98507b2d8c7ca05215f7f5b21390ccd30243542b6b",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 1097986366,
+      "pcm_path": "sound/effects/named-2544657704.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/cave.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "7cdf3d0ade83a10e4f5f3aa1892d3905e45e06a6471b7a758d450958972f5fbc",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "a42edc06a6acff945df1debb8ada1a06248da3c941f365877fbb99ed0842564f"
+    },
+    {
+      "stable_id": 106331722,
+      "source_sha256": "7614585066b8ae4cda645ac3400d030a84811333dfa2584d28e40737ee282878",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 3308980912,
+      "pcm_path": "sound/effects/named-106331722.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/grass.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "ea3d7337fe44219395518f304a553526de4196f9065050c41346200205838bf1",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "c76d87dcbc27e25ef8de51169e308869bd05d06d4c44646b50f37d1c86e15e1d"
+    },
+    {
+      "stable_id": 651909959,
+      "source_sha256": "f3e46107c46cc7793037c53e7918fcb522f62744b1ea856d5af48f41dae18759",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 1980950540,
+      "pcm_path": "sound/effects/named-651909959.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/wood.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "7432781d0e277badbe86f1f16fc54be9ff0eefb6913c51d3b5de3489fdd14664",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "ae31a3f6020c85125eb9aeb30a2b7a47dfcb1071fc98dd770017c3116d2f1088"
+    },
+    {
+      "stable_id": 2242605484,
+      "source_sha256": "c643c5539b9f28cb21113a8e1943e8d038227b3037f2fbfd2ae883f1243b2d82",
+      "sample_rate": 44100,
+      "channels": 2,
+      "loop": true,
+      "frames": 17640,
+      "loop_start": 0,
+      "pcm_bytes": 70560,
+      "pcm_crc32": 2728468392,
+      "pcm_path": "sound/effects/named-2242605484.pcm",
+      "source_path": "res://Audio/Sound effects/Footsteps/water.mp3",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "a1c4591dfc0919cc27881aa7dc6d7e3ab0cbfe4056c8eba2d4fd0827060c7cc4"
+    }
+  ],
+  "files": [
+    {
+      "path": "sound/effects/named-3333094761.pcm",
+      "size": 18292,
+      "sha256": "ecf1b73409afc107672344101274f8f92935f4d1d0b2e3e3d4493b8dc8bfcfe0"
+    },
+    {
+      "path": "sound/effects/named-1103769193.pcm",
+      "size": 125336,
+      "sha256": "b3f4329d98be379f777c9a5472256cacd53560e6067d68c0590557a0334dc6b5"
+    },
+    {
+      "path": "sound/effects/named-1152974177.pcm",
+      "size": 70560,
+      "sha256": "582fd76c9d0aba6a22df11ffacf1f6586871601738aa10b94e63bc73cec65bc7"
+    },
+    {
+      "path": "sound/effects/named-2085542988.pcm",
+      "size": 70560,
+      "sha256": "cd8a8cc3b3111ae9ce8dcd023b3246fcd943a8e5b7bcf6b967494890e80e9a68"
+    },
+    {
+      "path": "sound/effects/named-834825354.pcm",
+      "size": 70560,
+      "sha256": "1f6afb347aff38865ba6315f5b3ca89d8a560010b187e3e471070a4b6418cece"
+    },
+    {
+      "path": "sound/effects/named-972225861.pcm",
+      "size": 70560,
+      "sha256": "61885ef0694e25ca854da24d4c1746d7a961905e4013f51496dbf3a9351be9d0"
+    },
+    {
+      "path": "sound/effects/named-2544657704.pcm",
+      "size": 70560,
+      "sha256": "a42edc06a6acff945df1debb8ada1a06248da3c941f365877fbb99ed0842564f"
+    },
+    {
+      "path": "sound/effects/named-106331722.pcm",
+      "size": 70560,
+      "sha256": "c76d87dcbc27e25ef8de51169e308869bd05d06d4c44646b50f37d1c86e15e1d"
+    },
+    {
+      "path": "sound/effects/named-651909959.pcm",
+      "size": 70560,
+      "sha256": "ae31a3f6020c85125eb9aeb30a2b7a47dfcb1071fc98dd770017c3116d2f1088"
+    },
+    {
+      "path": "sound/effects/named-2242605484.pcm",
+      "size": 70560,
+      "sha256": "a1c4591dfc0919cc27881aa7dc6d7e3ab0cbfe4056c8eba2d4fd0827060c7cc4"
+    },
+    {
+      "path": "sound/banks/named-sfx.encaudio",
+      "size": 1808,
+      "sha256": "698790b2551e927ee6969a28227396287e7a291ccbfc8f7972460e3b6507b940"
+    }
+  ],
+  "decoder": {
+    "version": "ffmpeg version 7.1.5 Copyright (c) 2000-2026 the FFmpeg developers\nbuilt with gcc 12 (Debian 12.2.0-14+deb12u1)\nconfiguration: --prefix=/opt/encore-ffmpeg --disable-doc --disable-everything --enable-ffmpeg --enable-ffprobe --enable-protocol=file --enable-demuxer='ogg,wav,mp3' --enable-decoder='vorbis,mp3float,pcm_s16le,pcm_s24le,pcm_u8,pcm_f32le' --enable-encoder=pcm_s16le --enable-muxer=pcm_s16le --enable-filter='aresample,aformat,anull'\nlibavutil      59. 39.100 / 59. 39.100\nlibavcodec     61. 19.101 / 61. 19.101\nlibavformat    61.  7.103 / 61.  7.103\nlibavdevice    61.  3.100 / 61.  3.100\nlibavfilter    10.  5.100 / 10.  5.100\nlibswscale      8.  3.100 /  8.  3.100\nlibswresample   5.  3.100 /  5.  3.100\n",
+    "sha256": "4dee476fa932662ce7ff2b6e53356ec5f6173505df6d4fed8bc87583187be59e"
+  },
+  "source_only": true,
+  "hardware_verified": false
+}

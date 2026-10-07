@@ -15,6 +15,9 @@ class PodunkNpcReturnTimers;
 class PodunkButterflyTimers;
 class PodunkSceneClipNative;
 class PodunkAudioServer;
+class PodunkSceneLeafNative;
+class PodunkSceneCameras;
+class PodunkHouseDoorContinuation;
 // Source-specific native mechanisms (audio, animation and visibility) join
 // the same tree. Their concrete state owner must supply every operation;
 // this interface grants no constructor or lifecycle admission itself.
@@ -47,6 +50,9 @@ struct PodunkSceneLoopInput {
   PodunkButterflyTimers *butterfly_timers = nullptr;
   PodunkSceneClipNative *clip_native = nullptr;
   PodunkAudioServer *audio_server = nullptr;
+  PodunkSceneLeafNative *leaf_native = nullptr;
+  PodunkSceneCameras *cameras = nullptr;
+  PodunkHouseDoorContinuation *house_door_continuation = nullptr;
   PodunkPlayerHost *player = nullptr;
   PodunkPlayerPhysicsWorld *physics = nullptr;
   upstream::FieldMapSpace *map = nullptr;
@@ -123,6 +129,8 @@ private:
   std::vector<upstream::FieldObjectId> released_signals_;
   float idle_delta_ = 0, physics_delta_ = 0;
   uint64_t physics_epoch_ = 0, idle_epoch_ = 0;
+  // Player callbacks share this dispatch sequence; engine phase cursors stay separate.
+  uint64_t player_frame_cursor_ = 0;
   bool attempted_ = false, constructed_ = false, attached_ = false,
        leaves_prepared_ = false, source_ready_ = false, monitors_ready_ = false,
        paused_ = false, update_pending_ = false,

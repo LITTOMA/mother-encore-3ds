@@ -118,13 +118,14 @@ bool FieldPlayerTransitionsData::load(const uint8_t *p, size_t n,
     return false;
   };
   if (!p || n < 64 || n > 4 * 1024 * 1024 || std::memcmp(p, "ENCFPT01", 8) ||
-      u32(p + 8) != 1 || u32(p + 12) != n || u32(p + 16) != crc(p, n) ||
-      u32(p + 20) != 1 || u32(p + 24) != 1 || !u32(p + 28) ||
+      (u32(p + 8) != 1 && u32(p + 8) != 2) || u32(p + 12) != n || u32(p + 16) != crc(p, n) ||
+      u32(p + 20) != u32(p + 8) || u32(p + 24) != 1 || !u32(p + 28) ||
       (!u32(p + 52) || u32(p + 52) > 4096) ||
       (!u32(p + 56) || u32(p + 56) > 8192) || u32(p + 60))
     return fail("Transition schema/capabilities/rules/CRC rejected");
   FieldPlayerTransitionsData d;
   d.scene_ = u32(p + 28);
+  d.capability_ = u32(p + 20);
   std::copy_n(p + 32, 20, d.pin_.begin());
   if (std::all_of(d.pin_.begin(), d.pin_.end(), [](uint8_t v) { return !v; }))
     return fail("Transition source pin absent");
@@ -266,6 +267,20 @@ bool FieldPlayerTransitionsData::load(const uint8_t *p, size_t n,
     std::array<uint8_t, 32> h{};
     if (!path(name) || !r.hash(h) || !d.sources_.emplace(name, h).second)
       return fail("Transition source proof rejected");
+  }
+  if (d.capability_ == 2) {
+    d.bindings_.state_signal = r.text();
+    d.bindings_.state_arguments = r.number();
+    d.bindings_.ground_method = r.text();
+    d.bindings_.ground_path = r.text();
+    d.bindings_.ground_multiplier = r.real();
+    d.bindings_.shadow_path = r.text();
+    d.bindings_.prompt_member = r.text();
+    if (!path(d.bindings_.state_signal) || d.bindings_.state_arguments != 2 ||
+        !path(d.bindings_.ground_method) || !path(d.bindings_.ground_path) ||
+        d.bindings_.ground_multiplier <= 0 || !path(d.bindings_.shadow_path) ||
+        !path(d.bindings_.prompt_member))
+      return fail("Transition native Ready source bindings rejected");
   }
   if (!r.ok || r.at != n)
     return fail("Transition truncated/trailing data rejected");

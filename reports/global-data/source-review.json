@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "cd0cd6114b028322e0c6f4c6a6f90edebcc9e13144a10f26427e4ff0bf6d641b",
+  "ir_sha256": "48735b076f56923ca8434668eddc61a85094f12e1e894a2dac3d72312d9bf5d4",
   "sources": {
     "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
     "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
@@ -391,8 +391,8 @@
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
   },
   "dependencies": {
-    "content/native-field-inventory.json": "135952acf65f4db05ac09a52e86bdbb78156e502ac1a78c6dee4cc249150f29e",
-    "content/native-field-item-definitions.json": "ecc0027fee5c2f30ff0ac05024906546a93732a44cabdf2195a4a07d2ed1978e"
+    "content/native-field-inventory.json": "c573d1710d610844341832c84e16023932b6187abb20d40cbfe2b4293d9e9a40",
+    "content/native-field-item-definitions.json": "73edae643e47c5f604ac07b97009d16f922d0509e28e1fe7e2ccb8fe0874fa83"
   },
   "policy": {
     "uid": "eager-clock-randomize-unique-before-item-object",

@@ -27,7 +27,7 @@ bool FieldBirdData::load_file(const char*p,const FieldIdentity&id,std::string&e)
 bool FieldBirdData::load(const uint8_t*p,size_t n,const FieldIdentity&id,std::string&e){
  auto reject=[&](const char*s){e=s;return false;};
  if(!p||n<128||n>4*1024*1024)return reject("Bird size rejected");
- if(std::memcmp(p,"ENCFBRD1",8)||word(p+8)!=1||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e0022||word(p+28)!=3||!word(p+32)||word(p+32)>10000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("Bird identity/version/capability rejected");
+ if(std::memcmp(p,"ENCFBRD1",8)||word(p+8)!=2||word(p+12)!=128||word(p+16)!=n||word(p+24)!=0x454e0022||word(p+28)!=4||!word(p+32)||word(p+32)>10000||!id.scene_id||word(p+36)!=id.scene_id||std::memcmp(p+40,id.upstream_commit.data(),20)||std::memcmp(p+60,id.source_sha256.data(),32)||word(p+124))return reject("Bird identity/version/capability rejected");
  if(crc(p+128,n-128)!=word(p+20)||std::all_of(p+92,p+124,[](uint8_t v){return !v;}))return reject("Bird CRC/IR rejected");
  FieldBirdData d;d.identity_=id;Reader r{p,n};d.scene_=r.text();d.script_=r.text();auto&z=d.rules_;z.skin_mod=r.integer();z.facing_mod=r.integer();z.facing_value=r.integer();z.speed_mod=r.integer();bool always=r.boolean();z.speed_base=r.scalar();z.seek_factor=r.scalar();z.right=r.vector();z.left=r.vector();z.flight_z=r.signed_integer();d.columns_=r.integer();d.rows_=r.integer();d.pixel_snap_=r.boolean();auto profiles=r.integer();
  if(!r.ok||!path(d.scene_)||!path(d.script_)||!always||!z.skin_mod||z.skin_mod>256||!z.facing_mod||z.facing_value>=z.facing_mod||!z.speed_mod||z.speed_mod>65536||z.speed_base<=0||z.speed_base+z.speed_mod>=1000000||z.seek_factor<=0||z.seek_factor>65536||z.flight_z< -4096||z.flight_z>4096||!d.columns_||!d.rows_||d.columns_>256||d.rows_>256||!profiles||profiles>256)return reject("Bird rules/source grid rejected");
@@ -45,6 +45,13 @@ bool FieldBirdData::load(const uint8_t*p,size_t n,const FieldIdentity&id,std::st
   for(auto v:a.children){if(!v||v==a.id||v==a.parent_id||!children.insert(v).second)return reject("Bird duplicate source child rejected");}
   previous=a.ready;d.records_.push_back(std::move(a));}
  for(auto v:children){if(ids.count(v))return reject("Bird root/child alias rejected");}
+ auto signals=r.integer();if(!r.ok||signals!=4)return reject("Bird source connection closure rejected");
+ std::set<std::pair<uint32_t,std::string>>unique_connections;
+ for(uint32_t i=0;i<signals;++i){FieldBirdConnection c;c.role=r.integer();c.child=r.integer();c.signal=r.text();c.method=r.text();
+  const uint32_t expected_child=i==0?1:i==1?4:5;
+  auto symbol=[](std::string_view value){return !value.empty()&&value.size()<256&&std::all_of(value.begin(),value.end(),[](char x){return (x>='a'&&x<='z')||(x>='A'&&x<='Z')||(x>='0'&&x<='9')||x=='_';});};
+  if(!r.ok||c.role!=i+1||c.child!=expected_child||!symbol(c.signal)||!symbol(c.method)||!unique_connections.emplace(c.child,c.signal).second)return reject("Bird source connection role/signature rejected");
+  d.connections_.push_back(std::move(c));}
  auto proofs=r.integer();if(!r.ok||!proofs||proofs>10000)return reject("Bird proof count rejected");for(uint32_t i=0;i<proofs;++i){auto name=r.text();auto h=r.hash();if(!r.ok||!path(name)||!d.sources_.emplace(name,h).second)return reject("Bird duplicate proof rejected");}
  std::array<uint8_t,32>h{};if(!r.ok||r.at!=n||!d.source_hash(d.scene_,h)||h!=id.source_sha256||!d.source_hash(d.script_,d.script_sha_))return reject("Bird source closure/trailing rejected");for(const auto&s:d.skins_)if(!d.source_hash(s.source,h)||h!=s.source_sha)return reject("Bird texture proof rejected");d.valid_=true;*this=std::move(d);e.clear();return true;
 }

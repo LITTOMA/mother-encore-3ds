@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "field_goods_sha256": "4ee5b2a4247b68fae645cc18a561dac9203498cd1243c5849da8d592b902a32e",
+  "field_goods_sha256": "b103e2ee03e8596b4c273704b1134025032d4db5f2340146fafb2af1b21ba36c",
   "field_goods_producer_sha256": "183a121ed0cea854c3f760267b790a5ddbf72f37116957da363ada88f6f7f84c",
   "field_psi_sha256": "59863b35adac30c5370475be25af191445a25eb6936268a6ec3ad5b97b1a31d1",
   "field_cash_box_sha256": "624e2c5b22c40db1dd0d89f2961d6ebd6340478e415b861e37bd8efa3e675433",
   "field_shop_sha256": "9de782230aa2002e89ce35bc58aff6e77482c2f87b7d71b2801e93f0665a91ff",
-  "field_item_details_sha256": "b09188373506881d8681e1e08de128c1614cc0914359a9aa5642861eb05dfcac",
-  "field_inventory_sha256": "135952acf65f4db05ac09a52e86bdbb78156e502ac1a78c6dee4cc249150f29e",
+  "field_item_details_sha256": "75806d5a0a86a7f90699ea8cb4e734d266eb1879725852dfbbecc73a8842ba0a",
+  "field_inventory_sha256": "c573d1710d610844341832c84e16023932b6187abb20d40cbfe2b4293d9e9a40",
   "source_role_settings": {
     "Fonts/EBMain_la.tres": {
       "outline_size": 0,

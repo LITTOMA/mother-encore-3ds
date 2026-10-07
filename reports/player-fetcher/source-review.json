@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "bb1cd67301e40f5ee9ca36c460af08f21a32856245dde21a783c799e2d4fc0e4",
+  "ir_sha256": "e548f4a4693c9af983aacf1466f443200b78fbee22b06c7a360662a42198f631",
   "sources": {
     "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
     "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",

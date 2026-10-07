@@ -48,7 +48,7 @@ scene-clip-native: field-node-tree field-openable field-present field-emotes fie
 audio-server:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/audio_server.py compile
 CONTENT_TASKS += dialogue-actor-resource
-CONTENT_TASKS += house-reentry house-geometry house-node-tree house-return-ladder field-door
+CONTENT_TASKS += house-reentry house-geometry house-node-tree house-return-ladder house-return-npc house-return-npc-world house-return-timers house-return-visibility house-return-sprite field-door
 .PHONY: house-reentry house-geometry house-node-tree house-return-ladder field-door
 house-geometry:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_geometry.py compile
@@ -60,6 +60,19 @@ house-reentry: room house field-door house-geometry house-node-tree
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_reentry.py compile
 house-return-ladder: house-node-tree house-geometry player-initialization player-ready player-motion
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_ladder.py compile
+.PHONY: house-return-npc house-return-npc-world
+house-return-npc: house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_npc.py compile
+house-return-npc-world: house-node-tree house-geometry house-return-npc
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_npc_world.py compile
+.PHONY: house-return-timers house-return-visibility
+house-return-timers: house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_timers.py compile
+house-return-visibility: house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_visibility.py compile
+.PHONY: house-return-sprite
+house-return-sprite: house-node-tree house-return-npc
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_sprite.py compile
 .PHONY: dialogue-actor-resource
 dialogue-actor-resource:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/dialogue_actor_resource.py compile

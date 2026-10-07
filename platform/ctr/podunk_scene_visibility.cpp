@@ -1,4 +1,5 @@
 #include "podunk_scene_visibility.hpp"
+#include "house_return_npc_runtime.hpp"
 #include <algorithm>
 #include <cmath>
 #include <climits>
@@ -15,6 +16,69 @@ bool PodunkSceneVisibility::prepare(const FieldVisibilityData&data,const FieldNo
  if(data_||!data.valid()||!source.valid()||!same(data.identity(),source.identity())||signals.registry()!=&registry||(tree.object_domain()&&tree.object_domain()!=viewport.kernel_object())||(!tree.object_domain()&&tree.object_count())||viewport.kernel_object()!=registry.kernel()||!registry.object_exists(viewport.viewport_object())||!native.animation_active)return fail(e,"Scene visibility requires actual same-world Tree/Viewport/AnimationPlayer owners");
  data_=&data;source_=&source;tree_=&tree;registry_=&registry;signals_=&signals;viewport_=&viewport;scripts_=&scripts;consumers_=consumers;native_=std::move(native);return true;
 }
+bool PodunkSceneVisibility::prepare_house(const HouseReturnSources&sources,
+    FieldNodeTreeRuntime&tree,FieldGlobalRegistry&registry,FieldObjectSignals&signals,
+    PodunkNativeRoot&viewport,HouseReturnNpcRuntime&npcs,
+    PodunkSceneNativeMechanism*animations,std::string&e){
+ const auto&data=sources.visibility();const auto&source=sources.tree();
+ if(data_||!sources.valid()||!data.valid()||!source.valid()||
+    !same(data.identity(),source.identity())||!sources.npcs().valid()||!sources.npc_world().valid()||
+    npcs.tree()!=&tree||npcs.runtime().data()!=&sources.npcs()||
+    signals.registry()!=&registry||(tree.object_domain()&&tree.object_domain()!=viewport.kernel_object())||
+    (!tree.object_domain()&&tree.object_count())||viewport.kernel_object()!=registry.kernel()||
+    !registry.object_exists(viewport.viewport_object()))
+   return fail(e,"House visibility lacks actual checked House NPC/Tree/Viewport owners");
+ for(const auto&r:data.records()){
+   const auto*d=source.record(r.id);const auto*parent=source.record(r.parent);
+   const FieldNpcDescriptor*npc=nullptr;for(const auto&n:sources.npcs().npcs())if(n.id==r.parent)npc=&n;
+   if(!d||!parent||!npc||npc->node!=parent->path||parent->native_class!="KinematicBody2D"||
+      d->parent!=r.parent||d->path!=r.path||d->ready!=r.ready||!d->script.empty()||
+      (r.kind==1?d->native_class!="VisibilityNotifier2D":r.kind!=2||d->native_class!="VisibilityEnabler2D"))
+     return fail(e,"House visibility native record/NPC parent source differs");
+   for(const auto&q:r.tracked){const auto*t=source.record(q.id);
+     if(!animations||q.kind!=1||!t||t->native_class!="AnimationPlayer")
+       return fail(e,"House visibility tracked native class has no concrete AnimationPlayer owner");
+   }
+ }
+ for(const auto&d:source.records())
+   if((d.native_class=="VisibilityNotifier2D"||d.native_class=="VisibilityEnabler2D")&&!data.record(d.id))
+     return fail(e,"House visibility resource omits a complete-tree native notifier/enabler");
+ for(const auto&c:data.connections()){
+   const auto*target=source.record(c.target);const auto*emitter=data.record(c.emitter);
+   const auto*link=sources.npc_world().npc(c.target);const FieldNpcWorldCallback*callback=nullptr;
+   for(const auto&method:sources.npc_world().callbacks())if(method.op==(c.signal==1?7u:8u))callback=&method;
+   if(c.adapter!=2||(c.signal!=1&&c.signal!=2)||!target||!emitter||!link||
+      emitter->parent!=c.target||target->native_class!="KinematicBody2D"||
+      target->script!=c.script||target->script_sha!=c.script_sha||!callback||
+      callback->method!=c.method||callback->arity)
+     return fail(e,"House visibility callback lacks actual checked NPC source method/connection");
+ }
+ data_=&data;source_=&source;tree_=&tree;registry_=&registry;signals_=&signals;viewport_=&viewport;
+ house_sources_=&sources;house_npcs_=&npcs;house_animations_=animations;
+ e.clear();return true;
+}
+bool PodunkSceneVisibility::house_npc_receipt(uint32_t stable,FieldObjectId object,
+    bool ready,std::string&e)const{
+ const auto*d=tree_?tree_->descriptor(object):nullptr;const auto*s=tree_?tree_->state(object):nullptr;FieldIdentity identity;
+ if(!house_sources_||!house_sources_->valid()||!house_npcs_||house_npcs_->tree()!=tree_||
+    house_npcs_->runtime().data()!=&house_sources_->npcs()||!house_npcs_->runtime().error().empty()||
+    !object||!d||!s||!s->alive||d->id!=stable||d->native_class!="KinematicBody2D"||
+    !registry_->object_exists(object)||registry_->tree_owner(object).get()!=tree_||
+    !tree_->object_identity(object,identity)||!same(identity,source_->identity())||
+    tree_->source_object(stable)!=object||!house_npcs_->owns(object)){
+   e="House visibility NPC callback has no actual source/core/ObjectDB owner";return false;
+ }
+ const auto*original=source_->record(stable);const FieldNpcDescriptor*source=nullptr;
+ const FieldNpcInstance*instance=nullptr;
+ for(const auto&n:house_sources_->npcs().npcs())if(n.id==stable)source=&n;
+ for(const auto&n:house_npcs_->runtime().npcs())if(n.id==stable)instance=&n;
+ if(!original||!source||!instance||source->node!=d->path||original->script!=d->script||
+    original->script_sha!=d->script_sha||instance->destroyed||
+    (ready&&(!s->inside||!s->bound||!s->ready_notified||!instance->ready))){
+   e="House visibility actual NPC source/lifecycle receipt differs";return false;
+ }
+ e.clear();return true;
+}
 bool PodunkSceneVisibility::owns(const FieldNodeDescriptor&d)const{return data_&&data_->record(d.id)&&(d.native_class=="VisibilityNotifier2D"||d.native_class=="VisibilityEnabler2D");}
 bool PodunkSceneVisibility::owns(FieldObjectId id)const{return instances_.count(id)!=0;}
 bool PodunkSceneVisibility::construct(FieldObjectId id,const FieldNodeDescriptor&d,const FieldIdentity&i,std::string&e){
@@ -22,11 +86,21 @@ bool PodunkSceneVisibility::construct(FieldObjectId id,const FieldNodeDescriptor
  if(failed_||!r||!actual||actual->id!=d.id||instances_.count(id)||objects_.count(d.id)||!d.script.empty()||!same(i,data_->identity())||d.path!=r->path||d.parent!=r->parent||!owns(d)||!registry_->object_exists(id)||tree_->object_domain()!=registry_->kernel()||registry_->tree_owner(id).get()!=tree_)return fail(e,"Visibility constructor source/native object mismatch");
  Instance x;x.source=r;x.binding={i,d.id,d.class_index,0x454e0069,1,d.script_sha,d.native_class};instances_.emplace(id,std::move(x));objects_.emplace(d.id,id);return tree_->set_transform_notification(id,false,true,e);
 }
-bool PodunkSceneVisibility::actual(FieldObjectId id,Instance*&out,std::string&e){auto it=instances_.find(id);if(failed_||it==instances_.end()||!tree_->state(id)||!tree_->state(id)->alive||!registry_->object_exists(id))return fail(e,"Visibility live native owner rejected");out=&it->second;return true;}
+bool PodunkSceneVisibility::actual(FieldObjectId id,Instance*&out,std::string&e){auto it=instances_.find(id);if(failed_||it==instances_.end()||!tree_->state(id)||!tree_->state(id)->alive||!registry_->object_exists(id))return fail(e,"Visibility live native owner rejected");
+ if(house_sources_){const auto*d=tree_->descriptor(id);FieldIdentity identity;
+   const auto*original=d?source_->record(d->id):nullptr;
+   if(!house_sources_->valid()||data_!=&house_sources_->visibility()||source_!=&house_sources_->tree()||
+      !d||!original||registry_->tree_owner(id).get()!=tree_||tree_->object_domain()!=registry_->kernel()||
+      !tree_->object_identity(id,identity)||!same(identity,data_->identity())||
+      d->id!=it->second.source->id||tree_->source_object(d->id)!=id||
+      d->path!=original->path||d->native_class!=original->native_class||!d->script.empty())
+     return fail(e,"House visibility actual native descriptor/Tree identity differs");
+ }
+ out=&it->second;return true;}
 bool PodunkSceneVisibility::bind(FieldObjectId id,FieldNodeBinding&b,std::string&e){Instance*x=nullptr;if(!actual(id,x,e))return false;b=x->binding;return true;}
 bool PodunkSceneVisibility::finish_factory(std::string&e){
  if(failed_||!data_||finished_||instances_.size()!=data_->records().size())return fail(e,"Visibility full native factory not allocated");
- for(size_t i=0;i<data_->connections().size();++i){const auto&c=data_->connections()[i];auto from=objects_.find(c.emitter);auto to=tree_->source_object(c.target);const auto*d=tree_->descriptor(to);if(from==objects_.end()||!d||d->script!=c.script||d->script_sha!=c.script_sha||!registry_->object_exists(to)||!signals_->connect(from->second,screen_signal(c.signal),to,c.method,FieldSignalPersist,{},e))return fail(e,"Visibility actual source signal connection rejected");connections_.insert(i);auto old=methods_.find({to,c.method});if(old!=methods_.end()){const auto&previous=data_->connections()[old->second];if(previous.adapter!=c.adapter||previous.signal!=c.signal)return fail(e,"Visibility ambiguous source callback binding");}else methods_.emplace(std::make_pair(to,c.method),i);}
+ for(size_t i=0;i<data_->connections().size();++i){const auto&c=data_->connections()[i];auto from=objects_.find(c.emitter);auto to=tree_->source_object(c.target);const auto*d=tree_->descriptor(to);if(house_sources_&&!house_npc_receipt(c.target,to,false,e))return false;if(from==objects_.end()||!d||d->script!=c.script||d->script_sha!=c.script_sha||!registry_->object_exists(to)||!signals_->connect(from->second,screen_signal(c.signal),to,c.method,FieldSignalPersist,{},e))return fail(e,"Visibility actual source signal connection rejected");connections_.insert(i);auto old=methods_.find({to,c.method});if(old!=methods_.end()){const auto&previous=data_->connections()[old->second];if(previous.adapter!=c.adapter||previous.signal!=c.signal)return fail(e,"Visibility ambiguous source callback binding");}else methods_.emplace(std::make_pair(to,c.method),i);}
  finished_=true;return true;
 }
 bool PodunkSceneVisibility::range(const FieldMapRect&r,Range&o,std::string&e)const{
@@ -39,6 +113,17 @@ bool PodunkSceneVisibility::world_rect(FieldObjectId id,FieldMapRect&out,std::st
 bool PodunkSceneVisibility::change_cells(FieldObjectId id,const Range&r,bool add,std::string&e){for(int64_t x=r.x0;x<=r.x1;++x)for(int64_t y=r.y0;y<=r.y1;++y){auto k=key(int32_t(x),int32_t(y));if(add){++cells_[k][id];}else{auto c=cells_.find(k);if(c==cells_.end()||!c->second.count(id))return fail(e,"Visibility spatial index removal missing");auto q=c->second.find(id);if(!--q->second)c->second.erase(q);if(c->second.empty())cells_.erase(c);}}changed_=true;return true;}
 bool PodunkSceneVisibility::transform_changed(FieldObjectId id,std::string&e){Instance*x=nullptr;FieldMapRect r;Range next;if(!actual(id,x,e))return false;if(!x->inside)return true;if(!world_rect(id,r,e)||!range(r,next,e))return false;if(equal(r,x->world_rect))return true;if(!change_cells(id,next,true,e)||!change_cells(id,x->cells,false,e))return false;x->cells=next;x->world_rect=r;return true;}
 bool PodunkSceneVisibility::change_tracked(const Instance&x,FieldObjectId id,uint32_t kind,bool enabled,std::string&e){
+ if(house_sources_){
+   if(kind!=1)return fail(e,"House visibility Enabler tracked class is unsupported");
+   if(!(x.source->flags&1))return true;
+   const auto*d=tree_->descriptor(id);const auto*s=tree_->state(id);FieldIdentity identity;
+   if(!house_animations_||!house_animations_->owns(id)||!d||!s||!s->alive||!s->inside||!s->bound||
+      d->native_class!="AnimationPlayer"||registry_->tree_owner(id).get()!=tree_||!registry_->object_exists(id)||
+      !tree_->object_identity(id,identity)||!same(identity,data_->identity()))
+     return fail(e,"House visibility Enabler lacks its actual native AnimationPlayer owner/binding");
+   FieldDeferredMessage m;m.object=id;m.member="set_active";m.args={enabled};
+   return house_animations_->deferred(m,e);
+ }
  if(kind==1){if(!(x.source->flags&1))return true;return native_.animation_active(id,enabled,e);}
  return fail(e,"Visibility enabler native tracked class not implemented");
 }
@@ -63,6 +148,16 @@ bool PodunkSceneVisibility::is_on_screen(FieldObjectId id,bool&on,std::string&e)
 bool PodunkSceneVisibility::handles_method(const FieldDeferredMessage&m)const{if(m.kind!=FieldDeferredKind::Call)return false;if(owns(m.object)&&m.member=="_node_removed")return true;if(parents_.count(m.object)&&(m.member=="set_process"||m.member=="set_physics_process"))return true;return methods_.count({m.object,m.member})!=0;}
 bool PodunkSceneVisibility::source_callback(const FieldVisibilityConnection&c,FieldObjectId object,std::string&e){
  const auto*d=tree_->descriptor(object);if(!d||d->id!=c.target||d->script!=c.script||d->script_sha!=c.script_sha)return fail(e,"Visibility source callback owner mismatch");const bool enter=c.signal==1;
+ if(house_sources_){
+   const auto emitter=objects_.find(c.emitter);
+   if(c.adapter!=2||(c.signal!=1&&c.signal!=2)||emitter==objects_.end()||
+      !house_npc_receipt(c.target,object,true,e)||
+      !signals_->emitting_to(emitter->second,screen_signal(c.signal),object,c.method))
+     return fail(e,"House visibility NPC callback lacks actual Ready/screen signal emission frame");
+   FieldDeferredMessage m;m.object=object;m.member=c.method;
+   if(!house_npcs_->handles_callback(m))return fail(e,"House visibility callback has no concrete NPC method consumer");
+   return house_npcs_->deferred(m,e);
+ }
  switch(c.adapter){
  case 1:return scripts_->grass_screen(object,enter,e);
  case 2:return scripts_->npc_screen(object,enter,e);
@@ -74,6 +169,17 @@ bool PodunkSceneVisibility::source_callback(const FieldVisibilityConnection&c,Fi
 }
 bool PodunkSceneVisibility::deferred(const FieldDeferredMessage&m,std::string&e){
  if(failed_||!handles_method(m))return fail(e,"Visibility method/source endpoint rejected");
+ if(house_sources_&&m.member=="_node_removed"&&owns(m.object)){
+   const auto*ref=m.args.size()==1?std::get_if<FieldObjectRef>(&m.args[0]):nullptr;
+   if(!ref||!signals_->emitting_to(ref->id,"tree_exiting",m.object,m.member))
+     return fail(e,"House visibility native removal lacks actual tracked tree_exiting signal");
+ }
+ if(house_sources_&&parents_.count(m.object)&&(m.member=="set_process"||m.member=="set_physics_process")){
+   const auto*d=tree_->descriptor(m.object);
+   if(!d||!house_npc_receipt(d->id,m.object,true,e)||
+      !signals_->emitting_to(m.object,"ready",m.object,m.member))
+     return fail(e,"House visibility parent setter lacks actual NPC ready signal");
+ }
  if(m.member=="_node_removed"&&owns(m.object)){Instance*x=nullptr;if(!actual(m.object,x,e)||m.args.size()!=1||!std::holds_alternative<FieldObjectRef>(m.args[0]))return fail(e,"Visibility removal bind rejected");auto id=std::get<FieldObjectRef>(m.args[0]).id;auto q=x->tracked.find(id);if(q==x->tracked.end())return fail(e,"Visibility removal not tracked");if(!x->enabler_visible&&!change_tracked(*x,id,q->second,true,e))return false;x->tracked.erase(q);return true;}
  if(parents_.count(m.object)&&(m.member=="set_process"||m.member=="set_physics_process")){if(m.args.size()!=1||!std::holds_alternative<bool>(m.args[0]))return fail(e,"Visibility parent ready setter arguments rejected");return tree_->set_process(m.object,m.member=="set_physics_process",std::get<bool>(m.args[0]),e);}
  const auto*d=tree_->descriptor(m.object);if(!d||!m.args.empty())return fail(e,"Visibility source callback arguments rejected");auto method=methods_.find({m.object,m.member});if(method==methods_.end())return fail(e,"Visibility source callback not recorded");return source_callback(data_->connections()[method->second],m.object,e);

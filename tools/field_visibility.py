@@ -11,9 +11,9 @@ FLAGS=['pause_animations','freeze_bodies','pause_particles','pause_animated_spri
 # Typed script adapters, independent from script filenames stored in the IR.
 SCRIPTS={'Scripts/misc/grass spawner.gd':1,'Scripts/Main/npc.gd':2,'Scripts/misc/butterfly.gd':3,'Scripts/misc/dandelion spawner.gd':4,'Scripts/misc/birds.gd':5,'Scripts/Main/Enemy Spawner.gd':6}
 
-def extract(native,engine):
- d=read(native);tree=read(TREE);inventory=read(ROOT/'compatibility/upstream-inventory.json')['files'];nm={n['path']:n for n in d['nodes']};rm={r['id']:r for r in d['resources']};states={s['source'][6:]:s for s in d['scene_states']};tr={r['node']:r for r in tree['records']}
- require(d['source']=='res://'+SCENE and len(nm)==len(tr)==8686 and sha(native)==tree['native_sha256'] and not d['native_compatible'],'Visibility requires full official native export')
+def extract(native,engine,*,tree_path=TREE,scene=SCENE,node_count=8686,node_id=stable,ir_path=IR):
+ d=read(native);tree=read(tree_path);inventory=read(ROOT/'compatibility/upstream-inventory.json')['files'];nm={n['path']:n for n in d['nodes']};rm={r['id']:r for r in d['resources']};states={s['source'][6:]:s for s in d['scene_states']};tr={r['node']:r for r in tree['records']}
+ require(d['source']=='res://'+scene and tree['scene']==scene and len(nm)==len(tr)==node_count and sha(native)==tree['native_sha256'] and not d['native_compatible'],'Visibility requires full official native export')
  engine=Path(engine);proof=read(engine/'engine-source.json');sources=dict(tree['sources']);roots=[]
  for p,v in proof.items():
   if isinstance(v,dict) and 'sha256'in v:require(sha(engine/p)==v['sha256'],'Changed official engine source '+p)
@@ -28,7 +28,7 @@ def extract(native,engine):
   roots.append((root,file))
   for n in states[file]['nodes']:
    if n['instance']is not None:visit(local_path(root,n['path']),rm[n['instance']['id']]['path'][6:])
- visit('.',SCENE);boundaries={r for r,f in roots};children={p:[]for p in nm}
+ visit('.',scene);boundaries={r for r,f in roots};children={p:[]for p in nm}
  for p in nm:
   if p!='.':children[p.rsplit('/',1)[0]if'/'in p else'.'].append(p)
  rows=[];visibility={p for p,n in nm.items()if n['class']in['VisibilityNotifier2D','VisibilityEnabler2D']}
@@ -40,12 +40,12 @@ def extract(native,engine):
   tracked=[]
   def find(q):
    c=nm[q]['class'];k={'AnimationPlayer':1,'AnimatedSprite':2,'RigidBody2D':3,'Particles2D':4}.get(c)
-   if k:tracked.append(dict(id=stable(q),kind=k,node=q))
+   if k:tracked.append(dict(id=node_id(q),kind=k,node=q))
    for child in children[q]:
     if child not in boundaries:find(child)
   if kind==2:find(scope)
   rect=prop['rect'][0]+prop['rect'][1];require(rect[2]>=0 and rect[3]>=0,'Negative source visibility rect')
-  rows.append(dict(id=stable(p),parent=stable(parent),scope=stable(scope),kind=kind,ready=tr[p]['ready'],node=p,rect=rect,flags=sum(int(prop[k])<<i for i,k in enumerate(FLAGS))if kind==2 else 0,tracked=tracked))
+  rows.append(dict(id=node_id(p),parent=node_id(parent),scope=node_id(scope),kind=kind,ready=tr[p]['ready'],node=p,rect=rect,flags=sum(int(prop[k])<<i for i,k in enumerate(FLAGS))if kind==2 else 0,tracked=tracked))
  links=[];seen=set()
  for root,file in roots:
   text=(ROOT/'upstream/MOTHER-Encore'/file).read_text(encoding='utf8')
@@ -56,20 +56,20 @@ def extract(native,engine):
    target=local_path(root,params['to']);require(target in tr and params['signal']in['screen_entered','screen_exited']and not re.search(r'\b(?:binds|flags)=',line),'Unknown visibility source connection')
    script=tr[target]['script'];adapter=SCRIPTS.get(script);require(adapter,'Unknown visibility source script '+script)
    require(re.search(r'^func\s+'+re.escape(params['method'])+r'\s*\(\s*\)',(ROOT/'upstream/MOTHER-Encore'/script).read_text(),re.M),'Unknown visibility source callback')
-   key=(stable(emitter),stable(target),params['signal'],params['method'])
+   key=(node_id(emitter),node_id(target),params['signal'],params['method'])
    if key in seen:continue
    seen.add(key);links.append(dict(emitter=key[0],target=key[1],signal=key[2],method=key[3],adapter=adapter,script=script,script_sha=tr[target]['script_sha'],source=file,source_sha=inventory[file]['sha256']))
  require(len(rows)==len(visibility)and rows,'Missing native visibility closure')
  for p,h in sources.items():require(h==inventory[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'Visibility upstream source changed '+p)
  scan=int(re.search(r'visible_cells > (\d+)',w)[1])
- write(IR,dict(schema=1,kind='encore.field-visibility.source-ir',commit=PIN,scene=SCENE,scene_id=tree['scene_id'],source_sha256=tree['source_sha256'],tree_ir_sha256=sha(TREE),native_sha256=sha(native),sources=sources,engine_sources=proof,cell_size=cell,scan_cutoff=scan,flags=FLAGS,records=rows,connections=links,scene_admitted=False,semantics=['Signed integer truncation into inclusive World2D cells; not exact rectangle intersections','Actual native ObjectID order within spatial cells and viewport removal map; additions before exits','screen_entered before Enabler enable; viewport_exited before screen_exited before disable','Instanced source scene boundaries excluded from Enabler child traversal','Original source callback methods dispatch only the existing unique typed runtime'],pending=['Actual dynamic grass/enemy native factories must join their separate checked recipe visibility scope','No arbitrary viewport/editor mode, RigidBody/Particles implementation, or script VM admission']))
+ write(ir_path,dict(schema=1,kind='encore.field-visibility.source-ir',commit=PIN,scene=scene,scene_id=tree['scene_id'],source_sha256=tree['source_sha256'],tree_ir_sha256=sha(tree_path),native_sha256=sha(native),sources=sources,engine_sources=proof,cell_size=cell,scan_cutoff=scan,flags=FLAGS,records=rows,connections=links,scene_admitted=False,semantics=['Signed integer truncation into inclusive World2D cells; not exact rectangle intersections','Actual native ObjectID order within spatial cells and viewport removal map; additions before exits','screen_entered before Enabler enable; viewport_exited before screen_exited before disable','Instanced source scene boundaries excluded from Enabler child traversal','Original source callback methods dispatch only the existing unique typed runtime'],pending=['Actual dynamic grass/enemy native factories must join their separate checked recipe visibility scope','No arbitrary viewport/editor mode, RigidBody/Particles implementation, or script VM admission']))
 
 def load():
  d=read(IR);r=read(REVIEW);inventory=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(d['schema']==1 and d['commit']==PIN and d['scene']==SCENE and not d['scene_admitted'] and sha(IR)==r['ir_sha256'] and r['commit']==PIN and d['tree_ir_sha256']==sha(TREE)and d['flags']==FLAGS,'Visibility source review stale')
  for p,h in d['sources'].items():require(h==inventory[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'Visibility changed source '+p)
  return d
 
-def encode(d):
+def encode(d,ir_path=IR):
  b=bytearray(128)
  def u(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
  def t(v):x=v.encode();u(len(x));b.extend(x)
@@ -82,7 +82,7 @@ def encode(d):
   u(r['emitter'],r['target'],r['adapter'],1 if r['signal']=='screen_entered'else 2);t(r['method']);t(r['script']);b.extend(bytes.fromhex(r['script_sha']))
  u(len(d['sources']))
  for p,h in d['sources'].items():t(p);b.extend(bytes.fromhex(h))
- struct.pack_into('<8s8I',b,0,b'ENCFVS01',1,128,len(b),zlib.crc32(b[128:]),0x454e0069,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=hashlib.sha256(IR.read_bytes()).digest();return bytes(b)
+ struct.pack_into('<8s8I',b,0,b'ENCFVS01',1,128,len(b),zlib.crc32(b[128:]),0x454e0069,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=hashlib.sha256(ir_path.read_bytes()).digest();return bytes(b)
 
 def stage_files(source):
  raw=encode(load());require((Path(source)/'data/podunk.encvisibility').read_bytes()==raw,'Visibility staged binary differs');return {Path('data/podunk.encvisibility'):raw}

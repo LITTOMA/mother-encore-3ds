@@ -77,14 +77,15 @@ def checked_pack(spec):
  if raw[:8]==b'ENCFID01':capability=struct.unpack_from('<I',raw,24)[0]
  if raw[:8]in(b'ENCSIG01',b'ENCPRN01',b'ENCSCL01',b'ENCSLN01'):capability=struct.unpack_from('<I',raw,12)[0]
  require(0<capability<65536,'Capability schema '+spec['path'])
- ss=sources(d);scene=d.get('scene',d.get('source_save',d.get('owner',d.get('script',''))))
+ context=m.bundle_context(d)if hasattr(m,'bundle_context')else d
+ ss=sources(d);scene=context.get('scene',context.get('source_save',context.get('owner',context.get('script',''))))
  scene=scene or read(RECIPE)['scene']
- source=d.get('source_sha256',d.get('scene_sha256',ss.get(scene,d.get('script_sha256'))))
+ source=context.get('source_sha256',context.get('scene_sha256',ss.get(scene,context.get('script_sha256'))))
  if not source and not block:
   source=ss.get(scene)
   if not source:
    context=read(ROOT/'content/podunk-scene.json');require(scene==context['scene'],'No checked context '+spec['path']);source=context['source_sha256']
- sid=d.get('scene_id',stable('.')if scene==read(RECIPE)['scene']else int.from_bytes(hashlib.sha256(scene.encode()).digest()[:4],'little'))
+ sid=context.get('scene_id',stable('.')if scene==read(RECIPE)['scene']else int.from_bytes(hashlib.sha256(scene.encode()).digest()[:4],'little'))
  if block:
   sid=struct.unpack_from('<I',raw,36)[0];source=raw[pin+20:pin+52].hex()
  require(sid and re.fullmatch('[0-9a-f]{64}',source),'Actual identity '+spec['path'])
@@ -175,8 +176,8 @@ def checked_audio():
  return out
 
 def derive():
- recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==94,'Bundle recipe scope')
- require([r['role']for r in recipe['packs']]==list(range(1,95))and len({r['name']for r in recipe['packs']})==94 and len({r['path']for r in recipe['packs']})==94,'Bundle role identity/coverage')
+ recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==99,'Bundle recipe scope')
+ require([r['role']for r in recipe['packs']]==list(range(1,100))and len({r['name']for r in recipe['packs']})==99 and len({r['path']for r in recipe['packs']})==99,'Bundle role identity/coverage')
  with concurrent.futures.ThreadPoolExecutor(max_workers=4)as pool:rows=list(pool.map(one_pack,recipe['packs']))
  packs=[];assets=checked_audio();inputs={RECIPE.relative_to(ROOT).as_posix():sha(RECIPE)};all_sources={}
  for entry,staged,d in rows:

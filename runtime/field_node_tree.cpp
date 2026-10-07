@@ -73,7 +73,10 @@ namespace encore::upstream {
   if(bool(h.enqueue_global)!=bool(h.flush_global))return fail(e,"NodeTree partial global MessageQueue binding rejected");
   host_=std::move(h);
   FieldObjectId id=0;
-  if(!instantiate(d,d.identity().scene_id,id,e))return false;
+  publishing_initial_sources_=true;
+  const bool instantiated=instantiate(d,d.identity().scene_id,id,e);
+  publishing_initial_sources_=false;
+  if(!instantiated)return false;
   root_=id;
   for(const auto&v:nodes_)source_index_.emplace(v.second.source,v.first);
   e.clear();
@@ -88,7 +91,10 @@ namespace encore::upstream {
   // substitute a later record allocation for that original constructor.
   for(const auto&r:d.records())if(r.native_generated)return fail(e,"NodeTree source constructor internal native child unsupported");
   host_=std::move(h);FieldObjectId id=0;
-  if(!instantiate_recipe(d,id,e))return false;
+  publishing_initial_sources_=true;
+  const bool instantiated=instantiate_recipe(d,id,e);
+  publishing_initial_sources_=false;
+  if(!instantiated)return false;
   root_=id;for(const auto&v:nodes_)source_index_.emplace(v.second.source,v.first);
   e.clear();return true;
  }
@@ -103,7 +109,10 @@ bool FieldNodeTreeRuntime::initialize_source_node(const FieldIdentity&identity,c
   if(root_||!nodes_.empty()||poisoned_)return fail(e,"NodeTree standalone source Node already owns objects");
   if((h.enqueue_global&&!h.object_domain)||bool(h.enqueue_global)!=bool(h.flush_global))return fail(e,"NodeTree standalone source Node queue/domain rejected");
   host_=std::move(h);FieldObjectId id=0;
-  if(!instantiate_records(identity,{r},r.id,true,id,e))return false;
+  publishing_initial_sources_=true;
+  const bool instantiated=instantiate_records(identity,{r},r.id,true,id,e);
+  publishing_initial_sources_=false;
+  if(!instantiated)return false;
   root_=id;source_index_.emplace(r.id,id);e.clear();return true;
  }
  bool FieldNodeTreeRuntime::set_name(FieldObjectId id,std::string_view name,std::string&e){
@@ -247,6 +256,11 @@ bool FieldNodeTreeRuntime::initialize_source_node(const FieldIdentity&identity,c
     identity,r,recipe
    }
    );
+   // Native construction may resolve this actual, already allocated source
+   // object. Publish before _init without declaring it bound, entered or Ready.
+   // Dynamic PackedScene instances outside initialization retain their existing
+   // instance-local mapping and do not replace canonical source identities.
+   if(publishing_initial_sources_)source_index_.emplace(r.id,id);
    if(host_.native_allocated&&!host_.native_allocated(id,r,identity,e)){poisoned_=true;return false;}
    if(host_.construct_source){
     if(r.native_generated||!host_.construct_source(id,r,identity,e)){poisoned_=true;return false;}

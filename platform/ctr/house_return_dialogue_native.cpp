@@ -1,4 +1,5 @@
 #include "house_return_dialogue_native.hpp"
+#include "house_return_npc_runtime.hpp"
 #include <algorithm>
 #include <set>
 
@@ -156,6 +157,14 @@ bool HouseReturnDialogueNativeOwner::prepare(HouseReturnDialogueNativeInput in,
   uint32_t index=0,actual_source=0;
   if(!actor(id,index,actual_source,error)||actual_source!=source)
    return reject(error,"House StopTalker callback received another source body");
+  if(npc_source_){
+   if(!npc_source_->owns(id)||!npc_source_->stop_interaction(id,error))return false;
+   // The real NPC owns its SceneTreeTimer return waiter. Projection here must
+   // not schedule HousePresentation's separate legacy return countdown.
+   return (in_.house->presentation.set_npc_talking(index,false)&&
+           in_.house->world.set_story_talking(false))||
+       reject(error,"House source StopTalker projection rejected its actual NPC");
+  }
   return in_.house->presentation.stop_npc_interaction(index)||
       reject(error,"House original StopTalker consumer rejected its actual NPC");
  };
@@ -195,9 +204,71 @@ bool HouseReturnDialogueNativeOwner::set_talking(FieldObjectId id,bool talking,
     c.talker!=id||!s.ui->source_dialogue_state(ui,e)||ui.talker!=id||
     !actor(id,index,source,e)||c.original_npc!=index)
   return reject(e,"House talking callback is outside its actual Root/printer/talker source frame");
+ if(npc_source_&&(!npc_source_->owns(id)||!npc_source_->set_talking(id,talking,e)))return false;
  return (in_.house->presentation.set_npc_talking(index,talking)&&
          in_.house->world.set_story_talking(talking))||
       reject(e,"House actual talking source consumer rejected");
+}
+bool HouseReturnDialogueNativeOwner::bind_npc_source(HouseReturnNpcRuntime&source,std::string&e){
+ PodunkMickHouseNativeState s;
+ if(npc_source_||!programme_bound_||callback_depth_||selected_||!state(s,e)||
+    in_.house->house.programme_owner()!=in_.driver||
+    s.callback_depth||s.callback_receiver||s.input_live||s.notifying||s.printer_owner||
+    s.pending_messages||s.business_pending||!s.objects.empty()||!s.wait_connections.empty()||
+    !source.source_frame_closed()||source.house()!=in_.house||source.tree()!=in_.tree.get()||
+    source.registry()!=owners_.registry||source.native_dialogue()!=this||!source.sources()||
+    &source.sources()->reentry()!=in_.source||&source.sources()->tree()!=in_.source_tree||
+    source.runtime().data()!=&source.sources()->npcs()||!source.runtime().error().empty()||
+    !in_.driver->source_frame_closed(in_.house->world,e))
+  return reject(e,"House NPC borrower bind requires the same real Ready owner and closed source boundary");
+ for(const auto&v:source.runtime().npcs()){
+  const auto object=in_.tree->source_object(v.id);
+  const auto*n=in_.tree->state(object);
+  if(!v.ready||v.destroyed||v.queued_free||!object||!source.owns(object)||
+     !n||!n->inside||!n->bound||!n->ready_notified||n->ready_first)
+   return reject(e,"House NPC borrower lacks an actual full-tree Ready script receiver");
+ }
+ npc_source_=&source;e.clear();return true;
+}
+bool HouseReturnDialogueNativeOwner::admit_npc_programme(const HouseReturnNpcRuntime&source,
+    const HouseSourceNpcProgramme&r,std::string&e)const{
+ PodunkMickHouseNativeState s;
+ if(npc_source_!=&source||!programme_bound_||selected_||callback_depth_||!state(s,e)||
+    r.source!=&source.runtime()||r.tree!=in_.tree.get()||r.tree_data!=in_.source_tree||
+    r.registry!=owners_.registry||r.reentry!=in_.source||r.doors!=in_.doors||r.thoughts||
+    !source.owns(r.object)||!in_.driver->source_frame_closed(in_.house->world,e)||
+    !in_.house->house.admit_source_npc_programme(r,e))
+  return reject(e,"House NPC native admission borrowed another live programme/source receiver");
+ HouseSourceNpcProgramme actual;
+ if(!source.programme_input(r.object,r.programme,false,actual,e)||
+    actual.source_id!=r.source_id||actual.original_npc!=r.original_npc)
+  return reject(e,"House NPC native admission is outside its actual source programme callback");
+ auto next=in_.driver->context();
+ next.dialogue=0;next.talker=r.object;next.programme=r.programme;next.original_npc=r.original_npc;
+ next.generation=in_.house->world.source_generation()+1;if(!next.generation)++next.generation;
+ const auto p=next.room.program(next.programme);
+ if(!p.stable_id||!p.command_count||p.first_command>next.room.command_count()||
+    p.command_count>next.room.command_count()-p.first_command)
+  return reject(e,"House NPC native programme command span is invalid");
+ const auto rng=owners_.random->state(),draws=owners_.random->raw_draw_count();
+ const auto ledger=*owners_.uid_ledger;
+ for(uint32_t pc=0;pc<p.command_count;++pc){
+  const auto command=next.room.command(p.first_command+pc);
+  if(command.opcode==uint16_t(DialogueActionKind::AwaitChoices)){
+   if(!owners_.choice_data->validate_program(command.target_index,
+        next.room.string(p.source_path_string),p.command_count,e))return false;
+   const auto&group=owners_.choice_data->groups()[command.target_index];
+   auto phrase=[&](uint32_t target){return target>pc&&target<p.command_count&&
+       next.room.command(p.first_command+target-1).phrase!=next.room.command(p.first_command+target).phrase;};
+   if(!phrase(group.cancel_target_pc))return reject(e,"House NPC choice cancel is not an actual source forward phrase");
+   for(const auto&option:group.options)if(!phrase(option.target_pc))
+    return reject(e,"House NPC choice target is not an actual source forward phrase");
+  }
+  if(!admit_command(next,pc,command,e))return false;
+ }
+ if(rng!=owners_.random->state()||draws!=owners_.random->raw_draw_count()||ledger!=*owners_.uid_ledger)
+  return reject(e,"House NPC native source admission changed the actual entropy/UID owners");
+ e.clear();return true;
 }
 bool HouseReturnDialogueNativeOwner::observe(const HouseReturnDialogueContext &c,
     HouseReturnDialogueReceipt &out,std::string &e)const{

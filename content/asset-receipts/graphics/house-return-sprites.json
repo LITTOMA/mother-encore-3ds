@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "recipe_sha256": "483f1b450b190587dcf4e5418d98d3489a8699b2b5ed4b9fe2da442d572c8322",
+  "producer_sha256": "9a038310a00fb14da44361ee35c90191fbd2bb7e8cca881b5f9f0a08b0bbc87c",
+  "npc_receipt_sha256": "d1c3874daa8b2abc703870bfd8c81b3eb34a87db1a7579cbd9fc2dfa7de23a75",
+  "existing_receipt_sha256": "2767ae69e65f30e4b8b3f45fff1d420f7ea242b9302b54c0dc0f9a68f1fb218a",
+  "license_sha256": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+  "license_review": "Pinned LICENSE permits repository graphics for game-related forks, modifications and translations. These NPC sprites are used only by this Mother: Encore 3DS port and retain upstream asset conditions; no unrelated redistribution or relicensing.",
+  "outputs": {
+    "graphics/npcs/9bbb5525eed64bfd.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/4dir/woman.png",
+      "source_sha256": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "size": [
+        105,
+        120
+      ],
+      "texture_id": 3856683197,
+      "bytes": 65557,
+      "sha256": "793b7da462e4311934acbf58ebbeccbe615a3d76a5660e029676fb21f3b26b8d",
+      "origin": "podunk-npc",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    },
+    "graphics/npcs/e74e5674486d55fb.t3x": {
+      "source": "Graphics/Character Sprites/Lloyd/main.png",
+      "source_sha256": "f66ac54e088cce2b839c23c9403840d40c516991337f86db05102e4fff0eb978",
+      "size": [
+        310,
+        560
+      ],
+      "texture_id": 2424204171,
+      "bytes": 2097173,
+      "sha256": "0cf7237b0f6760e753a84304057bb1407fae8de68047f0ed7673f166412f37da",
+      "origin": "source-conversion",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    },
+    "graphics/npcs/7bc4d2743151d101.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/4dir/carol.png",
+      "source_sha256": "58a91f79e495c3475564a3afda1364ee768b8c2b94ed54122e50acfac7928bbb",
+      "size": [
+        105,
+        128
+      ],
+      "texture_id": 1697793564,
+      "bytes": 65557,
+      "sha256": "45e1b646ef539899a42bb6578fb315405d136413d7bcb4d41660ee7032123a2c",
+      "origin": "house-npc",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    },
+    "graphics/npcs/f3d8bde280d016f8.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/4dir/mimmie.png",
+      "source_sha256": "92cc5589bfe0ad56cd4f0e884952f2d3bc923ac57638fe657b7ea9c689a530e1",
+      "size": [
+        85,
+        100
+      ],
+      "texture_id": 4042718029,
+      "bytes": 65557,
+      "sha256": "ded975d36226afa1798ceff196fc3fb5c28d6556c10182944573fe00a459196b",
+      "origin": "house-npc",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    },
+    "graphics/npcs/a4366f1e7a1e3c9f.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/4dir/minnie.png",
+      "source_sha256": "55ede50937e2511bfa27a88ce4660040c2e140886ee107be9260cb830be5338a",
+      "size": [
+        95,
+        100
+      ],
+      "texture_id": 881656845,
+      "bytes": 65557,
+      "sha256": "87ccf2743042ee1061f8960f47159629cedd45c39d90975e9acd2c0d4e05613e",
+      "origin": "house-npc",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    },
+    "graphics/npcs/8992e96e40782df8.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/1dir/pillow.png",
+      "source_sha256": "675fe31d2f8d9aa913d85f110a7d8d4cc9abdedde79e5fc7341f039bcf12d901",
+      "size": [
+        68,
+        22
+      ],
+      "texture_id": 63714827,
+      "bytes": 16405,
+      "sha256": "faf7872097617c11b47b78d9943357d86578dae5a716076f7424412123cbba80",
+      "origin": "house-npc",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    },
+    "graphics/npcs/3d7f7c472a94c1c6.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/1dir/lamp.png",
+      "source_sha256": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+      "size": [
+        68,
+        22
+      ],
+      "texture_id": 322133577,
+      "bytes": 16405,
+      "sha256": "aecc093a963e7e5ee1544f8091ea5cd8efebe82b47189c8d2d1caea1f204ff03",
+      "origin": "house-npc",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    },
+    "graphics/npcs/b53796084393faff.t3x": {
+      "source": "Graphics/Character Sprites/Npcs/1dir/doll.png",
+      "source_sha256": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+      "size": [
+        68,
+        22
+      ],
+      "texture_id": 2458204395,
+      "bytes": 16405,
+      "sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6",
+      "origin": "house-npc",
+      "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+      "conversion": [
+        "-f",
+        "rgba8",
+        "-z",
+        "none"
+      ]
+    }
+  }
+}

@@ -1,4 +1,5 @@
 #pragma once
+#include "encore/field_node_tree.hpp"
 #include "encore/house_data.hpp"
 #include "encore/world.hpp"
 #include "encore/phone_runtime.hpp"
@@ -8,10 +9,27 @@
 #include "encore/basement_progression.hpp"
 #include "encore/basement_actor_assets.hpp"
 #include "encore/field_door.hpp"
+#include "encore/field_npc.hpp"
+#include "encore/house_reentry.hpp"
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
 class HouseRuntime;
+class FieldGlobalRegistry;
+// Borrowed actual source caller. Neither this receipt nor admission executes
+// a constructor/Ready or replaces the existing Room VM.
+struct HouseSourceNpcProgramme {
+ const FieldNpcRuntime*source=nullptr;
+ const FieldNodeTreeRuntime*tree=nullptr;
+ const FieldNodeTreeData*tree_data=nullptr;
+ const FieldGlobalRegistry*registry=nullptr;
+ const HouseReentryData*reentry=nullptr;
+ const FieldDoorData*doors=nullptr;
+ HouseView house{};
+ FieldObjectId object=0;
+ uint32_t source_id=0,original_npc=house_no_index,programme=house_no_index;
+ bool thoughts=false;
+};
 enum class HouseProgrammePhase:uint8_t {Closed,Opening,WaitingReady,Starting,Running,Failed};
 // Read from the actual native programme owner. A default receipt cannot admit
 // a closed source frame or grant responsibility for the printer/VM.
@@ -61,6 +79,10 @@ public:
  bool unbind_programme_owner(HouseProgrammeOwner&,std::string&);
  const HouseProgrammeOwner*programme_owner()const{return programme_owner_;}
  bool observe_programme_owner(HouseProgrammeState&state,std::string&error)const{return programme_state(state,error);}
+ // npc.gd's already selected ordinary programme enters the SAME request lease.
+ // The caller has performed its source mark_seen/pauseForInteract before open.
+ bool admit_source_npc_programme(const HouseSourceNpcProgramme&,std::string&)const;
+ bool request_source_npc_programme(const HouseSourceNpcProgramme&,std::string&);
  bool restore_seen_dialogue(const std::set<uint32_t>&);
  bool set_player_nickname(std::string_view);
  bool bind_phone(PhoneRuntime&);

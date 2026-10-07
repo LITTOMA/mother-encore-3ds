@@ -381,6 +381,9 @@ public:
   bool projectile_shoot(std::string &);
   bool projectile_cast(std::string &);
   bool healthy() const { return data_ && !poisoned_; }
+  bool source_paused(bool &value, std::string &error) const {
+    return boolean(PlayerMotionField::Paused, value, error);
+  }
 
 private:
   bool ladder_sources(std::string &) const;

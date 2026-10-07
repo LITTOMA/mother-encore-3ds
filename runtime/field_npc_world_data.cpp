@@ -77,6 +77,51 @@ bool same(const FieldIdentity &a, const FieldIdentity &b) {
   return a.scene_id == b.scene_id && a.upstream_commit == b.upstream_commit &&
          a.source_sha256 == b.source_sha256;
 }
+bool source_geometry(const FieldNodeTreeData &tree,
+                     const FieldGeometryView &geometry) {
+  // Geometry and the complete SceneTree are independent resource schemas.
+  // Their resource IDs need not match; actual source nodes and transforms do.
+  const auto t = tree.identity(), g = geometry.identity();
+  if (t.upstream_commit != g.upstream_commit ||
+      t.source_sha256 != g.source_sha256 ||
+      tree.source_scene() != geometry.source_scene()) return false;
+  for (uint32_t i = 0; i < geometry.node_count(); ++i) {
+    const auto node = geometry.node(i);
+    const auto *actual = tree.record(node.stable_id);
+    const auto parent = node.parent == UINT32_MAX ? 0u :
+                        geometry.node(node.parent).stable_id;
+    if (!actual || actual->class_index >= tree.classes().size() ||
+        actual->path != geometry.string(node.path) || actual->parent != parent ||
+        tree.classes()[actual->class_index] != geometry.string(node.class_name) ||
+        actual->script != geometry.string(node.script) ||
+        actual->script_sha != node.script_sha256) return false;
+    const Vec2 local[] = {node.local.x, node.local.y, node.local.origin};
+    const Vec2 world[] = {node.world.x, node.world.y, node.world.origin};
+    for (unsigned j = 0; j < 3; ++j)
+      if (actual->local[j].x != local[j].x || actual->local[j].y != local[j].y ||
+          actual->world[j].x != world[j].x || actual->world[j].y != world[j].y)
+        return false;
+  }
+  return true;
+}
+bool npc_source(const FieldNodeTreeData &tree, const FieldNpcData &npc) {
+  if (npc.scene_id() != tree.identity().scene_id ||
+      npc.source_pin() != tree.identity().upstream_commit) return false;
+  bool scene = false;
+  for (const auto &source : npc.sources())
+    if (source.path == tree.source_scene())
+      scene = source.sha256 == tree.identity().source_sha256;
+  if (!scene) return false;
+  for (const auto &record : npc.npcs()) {
+    const auto *node = tree.record(record.id);
+    if (!node || node->path != record.node || node->script.empty()) return false;
+    bool script = false;
+    for (const auto &source : npc.sources())
+      if (source.path == node->script) script = source.sha256 == node->script_sha;
+    if (!script) return false;
+  }
+  return true;
+}
 } // namespace
 
 const FieldNpcWorldBody *FieldNpcWorldData::body(uint32_t id) const {
@@ -141,8 +186,8 @@ bool FieldNpcWorldData::load(const uint8_t *p, size_t n,
   d.identity_.scene_id = u(p + 36);
   std::copy(p + 40, p + 60, d.identity_.upstream_commit.begin());
   std::copy(p + 60, p + 92, d.identity_.source_sha256.begin());
-  if (!same(d.identity_, t.identity()) || !same(d.identity_, g.identity()) ||
-      d.identity_.upstream_commit != npc.source_pin() || u(p + 124) ||
+  if (!same(d.identity_, t.identity()) || !source_geometry(t, g) ||
+      !npc_source(t, npc) || u(p + 124) ||
       std::all_of(p + 92, p + 124, [](uint8_t v) { return !v; }))
     return fail("NPC world source identity/IR");
   Reader r{p, n};

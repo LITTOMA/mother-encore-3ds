@@ -1,5 +1,6 @@
 #include "encore/house_runtime.hpp"
 #include "encore/house_presentation.hpp"
+#include "encore/field_global_registry.hpp"
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -136,6 +137,78 @@ bool HouseRuntime::request_programme(uint32_t programme,uint32_t npc){
   return fail(programme_error_.empty()?"House programme request did not retain actual native Ready wait":programme_error_.c_str());
  programme_lease_=after.request_generation;requested_programme_=programme;
  return true;
+}
+bool HouseRuntime::admit_source_npc_programme(const HouseSourceNpcProgramme&r,std::string&e)const{
+ auto reject=[&](const char*message){e=message;return false;};
+ if(!programme_owner_||!world_||!presentation_||phase_!=HousePhase::Idle||
+    story_executing_||story_pending()||programme_lease_||entering_door()||
+    world_->stage()!=OpeningStage::Walking||!world_->healthy()||r.thoughts||
+    !r.source||!r.source->data()||!r.source->data()->valid()||!r.source->error().empty()||
+    !r.tree||!r.tree_data||!r.tree_data->valid()||!r.registry||
+    !r.reentry||!r.reentry->valid()||!r.doors||
+    r.house.bytes()!=content_.bytes()||r.house.byte_size()!=content_.byte_size()||
+    r.original_npc>=content_.count(HouseSection::Npcs)||
+    r.programme>=world_->content().program_count())
+  return reject("House source NPC programme requires an ordinary actual idle owner/caller");
+ HouseProgrammeState owner;
+ if(!programme_state(owner,e)||owner.phase!=HouseProgrammePhase::Closed||!owner.native_closed)
+  return reject("House source NPC programme requires actual closed native/World ownership");
+ if(!r.reentry->matches(*r.doors,world_->content(),content_,e))return false;
+ const auto identity=r.tree_data->identity();FieldIdentity actual;
+ const auto*n=r.tree->state(r.object);const auto*d=r.tree->descriptor(r.object);
+ const auto*checked=r.tree_data->record(r.source_id);
+ const auto*data=r.source->data();
+ if(!r.object||!n||!d||!checked||!n->alive||!n->inside||!n->bound||n->queued||
+    !n->ready_notified||n->ready_first||d->id!=r.source_id||
+    r.tree->source_object(r.source_id)!=r.object||
+    r.registry->tree_owner(r.object).get()!=r.tree||r.registry->current_scene()!=r.tree->root()||
+    r.tree->object_domain()!=r.registry->kernel()||
+    !r.tree->object_identity(r.object,actual)||actual.scene_id!=identity.scene_id||
+    actual.upstream_commit!=identity.upstream_commit||actual.source_sha256!=identity.source_sha256||
+    identity.upstream_commit!=r.reentry->identity().upstream_commit||
+    r.tree_data->source_scene()!=r.reentry->target_scene()||
+    data->scene_id()!=identity.scene_id||data->source_pin()!=identity.upstream_commit||
+    checked->path!=d->path||checked->script!=d->script||checked->script_sha!=d->script_sha)
+  return reject("House source NPC programme borrowed another actual full-tree/Registry body");
+ const FieldNpcDescriptor*npc=nullptr;const FieldNpcInstance*instance=nullptr;
+ for(const auto&v:data->npcs())if(v.id==r.source_id)npc=&v;
+ for(const auto&v:r.source->npcs())if(v.id==r.source_id)instance=&v;
+ bool script=false;for(const auto&s:data->sources())if(s.path==d->script&&s.sha256==d->script_sha)script=true;
+ if(!npc||!instance||!instance->ready||instance->destroyed||instance->queued_free||
+    instance->index>=data->npcs().size()||data->npcs()[instance->index].id!=r.source_id||
+    npc->node!=d->path||npc->ready_ordinal!=d->ready||!script)
+  return reject("House source NPC programme has no real Ready script/data receiver");
+ const HouseReentryActor*actor=nullptr;
+ for(const auto&a:r.reentry->actors())if(a.house_index==r.original_npc){
+  if(actor)return reject("House source NPC original actor mapping is ambiguous");
+  actor=&a;
+ }
+ const auto original=content_.npc(r.original_npc);const auto room=world_->content();
+ if(!actor||actor->node!=d->path||actor->body!=original.body_id||
+    original.room_actor_index!=actor->room_index||actor->room_index>=room.actor_instance_count()||
+    room.actor_instance(actor->room_index).stable_id!=actor->id||
+    content_.string(original.source_path)!=npc->node)
+  return reject("House source NPC programme lost its actual House/Room actor mapping");
+ const auto path=room.string(room.program(r.programme).source_path_string);
+ bool row=false;for(const auto&v:npc->dialogues)if(!v.thoughts&&v.program==path)row=true;
+ if(path.empty()||!row)return reject("House source NPC programme is outside its actual dialogue data");
+ e.clear();return true;
+}
+bool HouseRuntime::request_source_npc_programme(const HouseSourceNpcProgramme&r,std::string&e){
+ if(!admit_source_npc_programme(r,e))return false;
+ const FieldNpcInstance*instance=nullptr;
+ for(const auto&v:r.source->npcs())if(v.id==r.source_id)instance=&v;
+ if(!instance||!instance->pause_for_interact){e="House source NPC open preceded its actual interaction source prefix";return false;}
+ // Source UI pause and native Ready still belong to their real consumers.
+ // This core gate preserves the original House input/physics ownership until
+ // the asynchronous source programme starts; it does not start that VM early.
+ if(!world_->pause_for_house()){e="House source NPC actual World pause rejected";return false;}
+ story_original_npc_=r.original_npc;story_executing_=true;phase_=HousePhase::StoryRunning;
+ if(!request_programme(r.programme,r.original_npc)){
+  e=error_;return false;
+ }
+ active_=r.original_npc;event(HouseEventKind::DialogueOpened,active_);
+ e.clear();return true;
 }
 bool HouseRuntime::native_programme_complete(bool&complete){
  complete=false;

@@ -100,6 +100,11 @@ enum class PodunkPackRole : uint32_t {
   HouseGeometry = 92,
   HouseNodeTree = 93,
   HouseReturnLadder = 94,
+  HouseNpc = 95,
+  HouseNpcWorld = 96,
+  HouseNativeTimers = 97,
+  HouseVisibility = 98,
+  HouseSprites = 99,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

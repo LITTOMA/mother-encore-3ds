@@ -660,6 +660,41 @@
       "path": "data/house-return-ladder.encladder",
       "producer": "house_return_ladder",
       "ir": "content/native-house-return-ladder.json"
+    },
+    {
+      "role": 95,
+      "name": "HouseNpc",
+      "path": "data/house-return-npcs.encnpc",
+      "producer": "house_return_npc",
+      "ir": "content/native-house-return-npc.json"
+    },
+    {
+      "role": 96,
+      "name": "HouseNpcWorld",
+      "path": "data/house-return.encnpcworld",
+      "producer": "house_return_npc_world",
+      "ir": "content/native-house-return-npc-world.json"
+    },
+    {
+      "role": 97,
+      "name": "HouseNativeTimers",
+      "path": "data/house-return.enctimers",
+      "producer": "house_return_timers",
+      "ir": "content/native-house-return-timers.json"
+    },
+    {
+      "role": 98,
+      "name": "HouseVisibility",
+      "path": "data/house-return.encvisibility",
+      "producer": "house_return_visibility",
+      "ir": "content/native-house-return-visibility.json"
+    },
+    {
+      "role": 99,
+      "name": "HouseSprites",
+      "producer": "house_return_sprite",
+      "ir": "content/native-house-return-sprite.json",
+      "path": "data/house-return-sprites.encsprite"
     }
   ],
   "extra_inputs": [

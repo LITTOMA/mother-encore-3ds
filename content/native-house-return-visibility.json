@@ -1,0 +1,466 @@
+{
+  "schema": 1,
+  "kind": "encore.field-visibility.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "scene_id": 2861651240,
+  "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+  "tree_ir_sha256": "2f00ad4969256d37bad977fee9ff52a16443158c3b603c16aae787ed7d3fc978",
+  "native_sha256": "db04af6a239a5ecefef23162089cf6679e83a60792608a1ec646537aa9a88fd9",
+  "sources": {
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+    "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+    "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+    "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+    "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b"
+  },
+  "engine_sources": {
+    "visibility_notifier_2d.cpp": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/scene/2d/visibility_notifier_2d.cpp",
+      "sha256": "954d01b94e3c6ad848b6718796f63b2181d37a2859a69e23ecbec7e6de4b7849",
+      "bytes": 12547
+    },
+    "world_2d.cpp": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/scene/resources/world_2d.cpp",
+      "sha256": "a9fe9dff611065ecdca3bdcd2cc84df010d57f5e920e5869e98e87ff76513d52",
+      "bytes": 13166
+    },
+    "rect2.h": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/core/math/rect2.h",
+      "sha256": "3eab30b289e5293c559707bf50ae984451f3b2cb71280e5204a23fea112039cf",
+      "bytes": 12732
+    },
+    "list.h": {
+      "url": "https://raw.githubusercontent.com/godotengine/godot/3.6.2-stable/core/list.h",
+      "sha256": "f4e0535e82a663854c461cddde575037234d852948daab0cfaa5b6c03e4b5216",
+      "bytes": 14674
+    }
+  },
+  "cell_size": 100,
+  "scan_cutoff": 10000,
+  "flags": [
+    "pause_animations",
+    "freeze_bodies",
+    "pause_particles",
+    "pause_animated_sprites",
+    "process_parent",
+    "physics_process_parent"
+  ],
+  "records": [
+    {
+      "id": 1923915395,
+      "parent": 671299040,
+      "scope": 671299040,
+      "kind": 1,
+      "ready": 99,
+      "node": "Objects/npc/VisibilityNotifier2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 0,
+      "tracked": []
+    },
+    {
+      "id": 2730487422,
+      "parent": 671299040,
+      "scope": 671299040,
+      "kind": 2,
+      "ready": 100,
+      "node": "Objects/npc/VisibilityEnabler2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 9,
+      "tracked": []
+    },
+    {
+      "id": 3617712324,
+      "parent": 951827542,
+      "scope": 951827542,
+      "kind": 1,
+      "ready": 126,
+      "node": "Objects/npc2/VisibilityNotifier2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 0,
+      "tracked": []
+    },
+    {
+      "id": 3842134475,
+      "parent": 951827542,
+      "scope": 951827542,
+      "kind": 2,
+      "ready": 127,
+      "node": "Objects/npc2/VisibilityEnabler2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 9,
+      "tracked": []
+    },
+    {
+      "id": 3569844680,
+      "parent": 471086556,
+      "scope": 471086556,
+      "kind": 1,
+      "ready": 153,
+      "node": "Objects/npc3/VisibilityNotifier2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 0,
+      "tracked": []
+    },
+    {
+      "id": 1819000015,
+      "parent": 471086556,
+      "scope": 471086556,
+      "kind": 2,
+      "ready": 154,
+      "node": "Objects/npc3/VisibilityEnabler2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 9,
+      "tracked": []
+    },
+    {
+      "id": 1955220750,
+      "parent": 1935630852,
+      "scope": 1935630852,
+      "kind": 1,
+      "ready": 180,
+      "node": "Objects/pillow/VisibilityNotifier2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 0,
+      "tracked": []
+    },
+    {
+      "id": 4292932794,
+      "parent": 1935630852,
+      "scope": 1935630852,
+      "kind": 2,
+      "ready": 181,
+      "node": "Objects/pillow/VisibilityEnabler2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 9,
+      "tracked": []
+    },
+    {
+      "id": 1865617042,
+      "parent": 300508307,
+      "scope": 300508307,
+      "kind": 1,
+      "ready": 279,
+      "node": "Objects/lamp/VisibilityNotifier2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 0,
+      "tracked": []
+    },
+    {
+      "id": 3783407967,
+      "parent": 300508307,
+      "scope": 300508307,
+      "kind": 2,
+      "ready": 280,
+      "node": "Objects/lamp/VisibilityEnabler2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 9,
+      "tracked": []
+    },
+    {
+      "id": 729089808,
+      "parent": 2424272169,
+      "scope": 2424272169,
+      "kind": 1,
+      "ready": 306,
+      "node": "Objects/npcdoll/VisibilityNotifier2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 0,
+      "tracked": []
+    },
+    {
+      "id": 2570364191,
+      "parent": 2424272169,
+      "scope": 2424272169,
+      "kind": 2,
+      "ready": 307,
+      "node": "Objects/npcdoll/VisibilityEnabler2D",
+      "rect": [
+        -10.0,
+        -10.0,
+        20.0,
+        20.0
+      ],
+      "flags": 9,
+      "tracked": []
+    }
+  ],
+  "connections": [
+    {
+      "emitter": 1923915395,
+      "target": 671299040,
+      "signal": "screen_entered",
+      "method": "_on_VisibilityNotifier2D_screen_entered",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 1923915395,
+      "target": 671299040,
+      "signal": "screen_exited",
+      "method": "_on_VisibilityNotifier2D_screen_exited",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 3617712324,
+      "target": 951827542,
+      "signal": "screen_entered",
+      "method": "_on_VisibilityNotifier2D_screen_entered",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 3617712324,
+      "target": 951827542,
+      "signal": "screen_exited",
+      "method": "_on_VisibilityNotifier2D_screen_exited",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 3569844680,
+      "target": 471086556,
+      "signal": "screen_entered",
+      "method": "_on_VisibilityNotifier2D_screen_entered",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 3569844680,
+      "target": 471086556,
+      "signal": "screen_exited",
+      "method": "_on_VisibilityNotifier2D_screen_exited",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 1955220750,
+      "target": 1935630852,
+      "signal": "screen_entered",
+      "method": "_on_VisibilityNotifier2D_screen_entered",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 1955220750,
+      "target": 1935630852,
+      "signal": "screen_exited",
+      "method": "_on_VisibilityNotifier2D_screen_exited",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 1865617042,
+      "target": 300508307,
+      "signal": "screen_entered",
+      "method": "_on_VisibilityNotifier2D_screen_entered",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 1865617042,
+      "target": 300508307,
+      "signal": "screen_exited",
+      "method": "_on_VisibilityNotifier2D_screen_exited",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 729089808,
+      "target": 2424272169,
+      "signal": "screen_entered",
+      "method": "_on_VisibilityNotifier2D_screen_entered",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    },
+    {
+      "emitter": 729089808,
+      "target": 2424272169,
+      "signal": "screen_exited",
+      "method": "_on_VisibilityNotifier2D_screen_exited",
+      "adapter": 2,
+      "script": "Scripts/Main/npc.gd",
+      "script_sha": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "source": "Nodes/Reusables/npc.tscn",
+      "source_sha": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15"
+    }
+  ],
+  "scene_admitted": false,
+  "semantics": [
+    "Signed integer truncation into inclusive World2D cells; not exact rectangle intersections",
+    "Actual native ObjectID order within spatial cells and viewport removal map; additions before exits",
+    "screen_entered before Enabler enable; viewport_exited before screen_exited before disable",
+    "Instanced source scene boundaries excluded from Enabler child traversal",
+    "Original source callback methods dispatch only the existing unique typed runtime"
+  ],
+  "pending": [
+    "Actual native animation owners are required for Enabler state changes",
+    "Actual House NPC source consumers and complete House lifecycle remain required"
+  ],
+  "project_settings": {
+    "sources": {
+      "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+    },
+    "name": "world/2d/cell_size",
+    "value": 100,
+    "uses_engine_default": true
+  }
+}

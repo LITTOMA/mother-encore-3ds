@@ -199,6 +199,9 @@ private:
  std::map<FieldObjectId,FieldNodeState>nodes_;
  std::map<FieldObjectId,OwnedSource>sources_;
  std::map<uint32_t,FieldObjectId>source_index_;
+ // Only initial factory allocation publishes its canonical source lookup.
+ // This is object identity, independent of source/native Enter and Ready.
+ bool publishing_initial_sources_=false;
  std::map<std::string,std::vector<FieldObjectId>>group_index_;
  struct GroupCache {uint64_t version=0;std::vector<FieldObjectId>ordered;};
  mutable std::map<std::string,GroupCache>group_cache_;

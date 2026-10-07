@@ -3,7 +3,9 @@
 #include "podunk_native_root.hpp"
 #include "podunk_scene_loop.hpp"
 #include <set>
+namespace encore::upstream {class HouseReturnSources;}
 namespace encore::ctr {
+class HouseReturnNpcRuntime;
 // Borrow the unique native AnimationPlayer state. Enabler set_active does not
 // stop/reset/seek an animation or introduce a second animation clock.
 struct PodunkVisibilityNativeOwners {
@@ -17,6 +19,15 @@ public:
                upstream::FieldObjectSignals&,PodunkNativeRoot&,
                PodunkSceneScripts&,upstream::FieldSceneConsumers,
                PodunkVisibilityNativeOwners,std::string&);
+  // Exact returned House closure. The existing spatial/enabler algorithm and
+  // same native Viewport are retained; no Podunk script router is borrowed.
+  // If the source Enabler tracks AnimationPlayers, their actual native owner
+  // must own those same objects and consume set_active, without a new clock.
+  bool prepare_house(const upstream::HouseReturnSources&,
+               upstream::FieldNodeTreeRuntime&,upstream::FieldGlobalRegistry&,
+               upstream::FieldObjectSignals&,PodunkNativeRoot&,
+               HouseReturnNpcRuntime&,PodunkSceneNativeMechanism*animation_players,
+               std::string&);
   bool owns(const upstream::FieldNodeDescriptor&)const override;
   bool owns(upstream::FieldObjectId)const override;
   bool construct(upstream::FieldObjectId,const upstream::FieldNodeDescriptor&,
@@ -60,6 +71,7 @@ private:
   bool screen(upstream::FieldObjectId,bool,std::string&);
   bool source_callback(const upstream::FieldVisibilityConnection&,
                        upstream::FieldObjectId,std::string&);
+  bool house_npc_receipt(uint32_t,upstream::FieldObjectId,bool ready,std::string&)const;
   bool disconnect_source(upstream::FieldObjectId,std::string&);
   bool fail(std::string&,const char*);
   const upstream::FieldVisibilityData*data_=nullptr;
@@ -68,6 +80,9 @@ private:
   upstream::FieldGlobalRegistry*registry_=nullptr;
   upstream::FieldObjectSignals*signals_=nullptr;PodunkNativeRoot*viewport_=nullptr;
   PodunkSceneScripts*scripts_=nullptr;upstream::FieldSceneConsumers consumers_;
+  const upstream::HouseReturnSources*house_sources_=nullptr;
+  HouseReturnNpcRuntime*house_npcs_=nullptr;
+  PodunkSceneNativeMechanism*house_animations_=nullptr;
   PodunkVisibilityNativeOwners native_;
   std::map<upstream::FieldObjectId,Instance>instances_;
   std::map<uint32_t,upstream::FieldObjectId>objects_;

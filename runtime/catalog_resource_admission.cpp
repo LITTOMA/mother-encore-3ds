@@ -10,6 +10,7 @@
 #include "encore/drawer_program.hpp"
 #include "encore/field_goods.hpp"
 #include "encore/field_scene_destination.hpp"
+#include "encore/house_return_sources.hpp"
 #include "encore/field_item_admission.hpp"
 #include "encore/field_programme.hpp"
 #include "encore/field_psi.hpp"
@@ -263,6 +264,20 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
   FieldSceneDestinationData destination;
   if(!destination.load(catalog,root,owners->room.view(),detail)||
      !destination.bundle().verify_files(prefix,detail))
+    return rejected(error,catalog.path(ResourceRole::FieldSceneBundle),detail);
+  // Load the same immutable House destination as the actual exit owner.
+  // Digests alone cannot prove the NPC/geometry/Sprite source attachments.
+  // Offline production admission allocates no Nodes and executes no gameplay.
+  const auto *door_entry = destination.bundle().entry(PodunkPackRole::Door);
+  std::vector<uint8_t> house_door_bytes;
+  FieldDoorData house_doors;
+  HouseReturnSources house_destination;
+  if (!door_entry ||
+      !destination.bundle().read(PodunkPackRole::Door, prefix, house_door_bytes, detail) ||
+      !house_doors.load(house_door_bytes.data(), house_door_bytes.size(),
+                        door_entry->identity, detail) ||
+      !house_destination.load(destination.bundle(), prefix, house_doors,
+                              owners->room.view(), owners->house.view(), detail))
     return rejected(error,catalog.path(ResourceRole::FieldSceneBundle),detail);
   result.bindings+=2;result.singleton_formats+=2;
   ResourceRole failed = ResourceRole::Room;

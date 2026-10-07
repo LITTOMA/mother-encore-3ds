@@ -20,9 +20,11 @@ bool hex(const std::string &s, uint8_t *out, size_t n) {
 }
 }
 // Standalone and intentionally not run by default. Optional negative fixture
-// pairs must be valid bundle93 manifests with individually valid typed packs
+// pairs must be complete current bundles with individually valid typed packs
 // but mismatched cross-bindings: native ID/path/class/local, geometry script
 // SHA/parent/local/world, target identity, or TileSet source hash. Their complete
+// Include Sprite missing receivers, conflicting kinds/script hashes and a
+// Fetcher bound to a non-Sprite native target in the cross-binding fixtures.
 // file SHA/header/CRC bindings must be resealed by fixture authoring first;
 // otherwise they exercise file admission rather than the intended cross-check.
 int main(int argc, char **argv) {
@@ -52,6 +54,11 @@ int main(int argc, char **argv) {
   MANUAL_REQUIRE(owner.valid() && !owner.geometry().scene_admitted() &&
                  !owner.tree().scene_admitted());
   MANUAL_REQUIRE(owner.reentry().tilemaps().size() == 3);
+  MANUAL_REQUIRE(owner.npcs().valid() && owner.npcs().npcs().size() == 6 &&
+                 owner.npc_world().valid() && owner.npc_world().bodies().size() == 6);
+  MANUAL_REQUIRE(owner.timers().valid() && owner.timers().records().size() == 11 &&
+                 owner.visibility().valid() && owner.visibility().records().size() == 12 &&
+                 owner.sprites().valid() && owner.sprites().records().size() == 16);
   const auto root_id = owner.tree().identity().scene_id;
   const auto *root = owner.tree().record(root_id);
   MANUAL_REQUIRE(root && root->id == owner.reentry().native_nodes().front().id);
@@ -67,10 +74,14 @@ int main(int argc, char **argv) {
     HouseReturnSources empty;
     MANUAL_REQUIRE(!empty.load(candidate, romfs, actual_door, actual_room, actual_house, error));
     MANUAL_REQUIRE(!empty.valid() && !empty.reentry().valid() &&
-                   !empty.geometry().valid() && !empty.tree().valid());
+                   !empty.geometry().valid() && !empty.tree().valid() &&
+                   !empty.npcs().valid() && !empty.npc_world().valid() &&
+                   !empty.timers().valid() && !empty.visibility().valid() &&
+                   !empty.sprites().valid());
     MANUAL_REQUIRE(!owner.load(candidate, romfs, actual_door, actual_room, actual_house, error));
     MANUAL_REQUIRE(owner.valid() && owner.tree().record(root_id) == root &&
-                   owner.reentry().valid() && owner.geometry().valid());
+                   owner.reentry().valid() && owner.geometry().valid() &&
+                   owner.npcs().npcs().size() == 6 && owner.sprites().records().size() == 16);
   };
   PodunkBundleData empty_bundle;
   FieldDoorData empty_doors;

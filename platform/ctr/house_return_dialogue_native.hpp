@@ -3,6 +3,7 @@
 #include <optional>
 
 namespace encore::ctr {
+class HouseReturnNpcRuntime;
 struct HouseReturnDialogueNativeInput {
   PodunkMickSession *session=nullptr;
   HouseReturnDialogue *driver=nullptr;
@@ -28,6 +29,11 @@ public:
   bool driver_input(HouseReturnDialogueInput&,std::string&)const;
   // Call after the driver's real World bind and before any new native factory.
   bool bind_programme(std::string&);
+  // Same fixed source owner, after real House Ready and closed programme bind.
+  // Keep this borrower alive until real NPC deletion/Room waits complete.
+  bool bind_npc_source(HouseReturnNpcRuntime&,std::string&);
+  bool admit_npc_programme(const HouseReturnNpcRuntime&,
+      const upstream::HouseSourceNpcProgramme&,std::string&)const;
   const upstream::FreshHouseState *house()const override{return in_.house;}
   bool set_talking(upstream::FieldObjectId,bool,std::string&)override;
   bool observe(const HouseReturnDialogueContext&,HouseReturnDialogueReceipt&,
@@ -45,6 +51,7 @@ public:
 private:
   HouseReturnDialogueNativeInput in_{};
   PodunkMickHouseNativeState owners_{};
+  HouseReturnNpcRuntime *npc_source_=nullptr;
   bool prepared_=false,room_installed_=false,programme_bound_=false;
   size_t callback_depth_=0;
   // This is the actual Selected event removed from the source queue, retained

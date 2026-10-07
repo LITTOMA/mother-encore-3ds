@@ -7,9 +7,9 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools.podunk_scene import PIN,read,write,sha,decode,require
 IR=ROOT/'content/native-field-timers.json';REVIEW=ROOT/'compatibility/reviews/native-field-timers-v0410.json';OUT=ROOT/'romfs/data/podunk.enctimers'
 FAMILY=0x454e0044
-def validate(d):
+def validate(d,tree_count=2,record_count=314):
  require(set(d)=={'schema','kind','commit','family','engine','engine_sources','sources','trees','native','records','scope'} and d['schema']==1 and d['kind']=='encore.field-native-timer.source-ir' and d['commit']==PIN and d['family']==FAMILY and d['engine']=='3.6.2-stable','Timer source/schema')
- require(len(d['trees'])==2 and len(d['records'])==314 and len(d['native'])==2,'Timer full source scope')
+ require(len(d['trees'])==tree_count and len(d['records'])==record_count and len(d['native'])==tree_count,'Timer full source scope')
  keys=set()
  for r in d['records']:
   require(set(r)=={'id','scene','scene_sha','mode','wait','flags','script_sha','node'} and type(r['mode'])is int and r['mode'] in (0,1) and type(r['flags'])is int and 0<=r['flags']<=3 and isinstance(r['wait'],float) and math.isfinite(r['wait'])and r['wait']>0,'Timer unknown property')
@@ -35,8 +35,8 @@ def load():
  for p,h in d['sources'].items():require(inventory['files'][p]['sha256']==h==sha(ROOT/'upstream/MOTHER-Encore'/p),'Timer source changed '+p)
  for p,h in d['trees'].items():require(sha(ROOT/p)==h,'Timer source node tree changed '+p)
  return d
-def encode(d):
- validate(d);b=bytes.fromhex(PIN)+struct.pack('<I',len(d['records']))
+def encode(d,tree_count=2,record_count=314):
+ validate(d,tree_count,record_count);b=bytes.fromhex(PIN)+struct.pack('<I',len(d['records']))
  for r in d['records']:b+=struct.pack('<4If32s32s',r['id'],r['scene'],r['mode'],r['flags'],r['wait'],bytes.fromhex(r['scene_sha']),bytes.fromhex(r['script_sha']))
  return struct.pack('<8s6I',b'ENCFNT01',1,32+len(b),zlib.crc32(b),FAMILY,1,1)+b
 def stage_files(source):

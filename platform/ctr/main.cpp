@@ -1639,7 +1639,10 @@ int main(int argc,char** argv){
         const bool world_input=world_visible&&!field_equipment_menu.visible()&&!restore_input_pending&&(!introduction.active()||introduction.house_unpaused());
         podunk_controls=input_context()==sampled_context?upstream::Vec2{float(native_controls.direction.x),float(native_controls.direction.y)}:upstream::Vec2{};
         podunk_down=down;podunk_held=held;podunk_up=hidKeysUp();
-        const auto podunk_door_initial=podunk_exit?podunk_exit->house_door()->phase():upstream::FieldDoorPhase::Idle;
+        // A failed native construction retains its diagnostic owner but may
+        // not have initialized the Door yet. Keep that error visible next frame.
+        const auto* podunk_door=podunk_exit?podunk_exit->house_door():nullptr;
+        const auto podunk_door_initial=podunk_door?podunk_door->phase():upstream::FieldDoorPhase::Idle;
         while(accumulator>=1000){
             if(podunk_retired_house){if(podunk_exit&&podunk_exit->ready()&&house_error.empty()&&!podunk_exit->physics_frame(++podunk_physics_epoch,float(time_scale/60.0),false,error))house_error=error;accumulator-=1000;continue;}
             if(!world_visible){accumulator-=1000;continue;}

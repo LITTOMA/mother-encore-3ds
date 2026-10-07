@@ -56,7 +56,7 @@ def load():
  for p,h in d['sources'].items():require(sha(ROOT/'upstream/MOTHER-Encore'/p)==h,'Native audio source changed '+p)
  require(sha(ROOT/'content/podunk-node-tree.json')==d['tree_ir_sha256']and sha(ROOT/'romfs'/d['scene_bank'])==d['bank_sha256'],'Native audio binding changed')
  return d
-def encode(d):
+def encode(d,ir=IR):
  b=bytearray(128)
  def u(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
  def f(*v):b.extend(struct.pack('<'+'f'*len(v),*v))
@@ -65,7 +65,7 @@ def encode(d):
  for x in d['streams']:u(x['id'],x['asset_id'],x['bank']);t(x['source']);t(x['native_class']);b.extend(bytes.fromhex(x['source_sha256']))
  for x in d['nodes']:
   u(x['id'],x['kind'],x['stream'],x['mix_target'],x['area_mask'],x['autoplay'],x['paused']);t(x['path']);t(x['bus']);f(x['volume_db'],x['pitch'],x['max_distance'],x['attenuation'],x['panning'])
- struct.pack_into('<8s8I',b,0,b'ENCSAUD1',1,128,len(b),zlib.crc32(b[128:]),FAMILY,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
+ struct.pack_into('<8s8I',b,0,b'ENCSAUD1',1,128,len(b),zlib.crc32(b[128:]),FAMILY,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(ir));return bytes(b)
 def stage_files(root):
  d=load();b=encode(d);require((Path(root)/'data/podunk.encnativeaudio').read_bytes()==b,'Native audio pack changed');return {Path('data/podunk.encnativeaudio'):b}
 if __name__=='__main__':

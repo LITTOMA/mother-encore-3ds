@@ -1485,7 +1485,13 @@ bool FieldGeometrySpace::register_player_shape(
 bool FieldGeometrySpace::dynamic_actor(const DynamicInstance &d,
                                        FieldGeometryActor &a,
                                        std::string &e) const {
-  if (d.dialogue) {
+  if(d.door){
+    const auto at=dynamic_owners_.find(d.contact.actual_owner);
+    if(at==dynamic_owners_.end()||at->second.door!=d.door||
+       at->second.tree!=d.tree||at->second.registry!=d.registry||
+       !persistent_door_node(at->second,d.contact.actual_owner,e)||
+       !persistent_door_node(at->second,d.contact.actual_shape,e))return false;
+  } else if (d.dialogue) {
     if(!d.recipe||!dialogue_node(*d.dialogue,*d.recipe,*d.tree,*d.registry,d.contact.actual_owner,e)||
        !dialogue_node(*d.dialogue,*d.recipe,*d.tree,*d.registry,d.contact.actual_shape,e))return false;
   } else if (d.grass) {
@@ -1652,7 +1658,9 @@ bool FieldGeometrySpace::player_owner_rid(FieldObjectId owner,
     return false;
   }
   const auto &d = it->second;
-  if (d.dialogue) {
+  if(d.door){
+    if(!persistent_door_node(d,owner,e))return false;
+  } else if (d.dialogue) {
     if(!d.recipe||!dialogue_node(*d.dialogue,*d.recipe,*d.tree,*d.registry,owner,e))return false;
   } else if (d.grass) {
     const auto*n=d.tree->descriptor(owner);FieldIdentity identity;

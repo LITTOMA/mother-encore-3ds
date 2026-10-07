@@ -6,6 +6,8 @@
 
 namespace encore::ctr {
 class HouseReturnNpcRuntime;
+class HouseReturnDialogueNativeOwner;
+class PodunkPlayerHost;
 // Borrow the already committed House and the SAME native DialogueBox owners.
 // RoomView is the original checked programme source; no FieldProgrammeData or
 // FieldNpcRuntime is manufactured to impersonate a House programme/talker.
@@ -124,6 +126,19 @@ public:
   HouseReturnDialogue(HouseReturnDialogue &&) = delete;
   HouseReturnDialogue &operator=(HouseReturnDialogue &&) = delete;
   bool bind(HouseReturnDialogueInput, std::string &);
+  // CurrentScene is already the real constructed House; the retired source
+  // tree still owns the same detached, previously Ready Player. No request,
+  // inventory frame or closed transfer frame is admitted in this phase.
+  bool bind_staged(HouseReturnDialogueInput, HouseReturnDialogueNativeOwner&,
+      std::shared_ptr<upstream::FieldNodeTreeRuntime> retired_tree,
+      upstream::FieldObjectId retired_root, PodunkPlayerHost& retained_player,
+      std::string &);
+  bool finish_ready(std::string &);
+  bool staged_npc_context(const HouseReturnNpcRuntime&,
+      upstream::FieldObjectId, std::string&) const;
+  bool staged_player(const HouseReturnNpcRuntime&, upstream::FieldObjectId npc,
+      upstream::FieldObjectId player, const upstream::FieldNodeTreeRuntime&,
+      std::string&) const;
   // Exact-owner unbind after actual native closure. Keep this fixed owner and
   // all borrowed endpoints alive if pending callbacks/waits reject unbinding.
   bool unbind(std::string &);
@@ -170,7 +185,8 @@ public:
   bool native_closed(upstream::FieldObjectId, uint32_t generation,
                      std::string &);
   bool waiting_ready() const { return phase_ == Phase::WaitingReady; }
-  bool owns_programme() const { return phase_ != Phase::Unbound && phase_ != Phase::Closed; }
+  bool staged() const { return phase_ == Phase::AssignedStaged; }
+  bool owns_programme() const { return phase_ != Phase::Unbound && phase_ != Phase::AssignedStaged && phase_ != Phase::Closed; }
   bool failed() const { return phase_ == Phase::Failed; }
   bool native_open_live()const{return phase_==Phase::Opening&&!world_call_&&!action_call_;}
   bool native_start_live()const{return phase_==Phase::Starting&&world_call_&&!action_call_;}
@@ -181,12 +197,18 @@ public:
   bool inventory_frame(HouseReturnDialogueReceipt &, std::string &) const;
 private:
   struct NpcRequestScope;
-  enum class Phase { Unbound, Closed, Opening, WaitingReady, Starting, Running, Failed };
+  enum class Phase { Unbound, AssignedStaged, Closed, Opening, WaitingReady, Starting, Running, Failed };
   HouseReturnDialogueInput input_{};
   HouseReturnDialogueContext context_{};
   Phase phase_ = Phase::Unbound;
   bool world_call_ = false, action_call_ = false;
   const NpcRequestScope*npc_request_=nullptr;
+  std::shared_ptr<upstream::FieldNodeTreeRuntime> retired_tree_;
+  upstream::FieldObjectId retired_root_=0, retained_player_=0;
+  uint32_t staged_generation_=0;
+  PodunkPlayerHost *retained_player_host_=nullptr;
+  bool staged_binding_call_=false;
+  HouseReturnDialogueNativeOwner *staged_native_=nullptr;
   bool actual(bool require_ready, std::string &) const;
   bool receipt(bool closed, HouseReturnDialogueReceipt &, std::string &,
                const NpcRequestScope*request_scope=nullptr) const;

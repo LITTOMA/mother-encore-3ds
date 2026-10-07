@@ -1,4 +1,6 @@
 #include "podunk_scene_audio.hpp"
+#include "encore/house_return_sources.hpp"
+#include "podunk_native_root.hpp"
 #include <algorithm>
 #include <cmath>
 #include <fstream>
@@ -118,7 +120,7 @@ bool PodunkSceneAudio::live(std::string &e) const {
   return ((data_ && data_->valid() && data_->ir_sha() == ir_ && channel_owner == this) ||
                   (named_ && named_->valid() && named_->ir_sha256() == ir_)) && tree_ &&
                  registry_ && audio_ && audio_->available() &&
-                 registry_->data()
+                 registry_->data() && (!house_data_ || (house_tree_ && house_data_->valid() && house_data_->ir_sha()==house_ir_))
              ? true
              : fail(e, "Scene audio actual DSP/source owner unavailable");
 }
@@ -187,6 +189,44 @@ bool PodunkSceneAudio::prepare(const FieldSceneAudioData &d,
   tree_paused_ = false;
   return true;
 }
+bool PodunkSceneAudio::prepare_house(const FieldSceneAudioData&d,FieldNodeTreeRuntime&t,
+    FieldGlobalRegistry&r,std::string&e){
+  if(!live(e)||!data_||named_||house_data_||!d.valid()||registry_!=&r||
+     t.object_domain()!=r.kernel()||&t==tree_||d.identity().upstream_commit!=data_->identity().upstream_commit||
+     d.scene_bank()!=data_->scene_bank()||d.bank_sha()!=data_->bank_sha())
+    return fail(e,"House audio requires the retained same owner and exact checked immutable bank");
+  for(const auto&n:d.nodes())if(data_->node(n.id)&&
+      (!same(d.identity(),data_->identity())||data_->node(n.id)->path!=n.path))
+    return fail(e,"House audio native source ID collides with retained source data");
+  for(const auto&stream:d.streams()){
+    auto*old=data_->stream(stream.id);AudioAsset asset;
+    if((old&&(old->source!=stream.source||old->source_sha!=stream.source_sha||old->asset_id!=stream.asset_id||old->native_class!=stream.native_class))||
+       !audio_->checked_asset(stream.asset_id,asset,e)||asset.source_path!="res://"+stream.source||asset.source_sha256!=stream.source_sha)
+      return fail(e,"House audio explicit source asset/stream identity changed");
+  }
+  house_data_=&d;house_tree_=&t;house_ir_=d.ir_sha();e.clear();return true;
+}
+bool PodunkSceneAudio::bind_house_spatial(const HouseReturnSources&sources,const PodunkNativeRoot&root,FieldNodeTreeRuntime&tree,std::string&e){
+ if(!live(e)||!house_data_||house_sources_||house_tree_!=&tree||!sources.valid()||!same(sources.tree().identity(),house_data_->identity())||root.kernel_object()!=registry_->kernel()||root.viewport_object()!=registry_->root())return fail(e,"House positional audio requires exact actual destination sources/viewport/Tree");
+ for(const auto&n:sources.tree().records())if(n.class_index<sources.tree().classes().size()&&sources.tree().classes()[n.class_index]=="AudioListener2D")return fail(e,"Actual House explicit AudioListener2D has no mapped native owner");
+ house_sources_=&sources;house_root_=&root;house_spatial_data_=house_data_;house_spatial_tree_=&tree;e.clear();return true;
+}
+bool PodunkSceneAudio::retire_previous_scene(FieldNodeTreeRuntime&old,std::string&e){
+  if(!live(e)||!house_data_||!house_sources_||!house_root_||tree_!=&old||&old==house_tree_)
+    return fail(e,"House audio source retirement receiver/order differs");
+  for(const auto&v:voices_)if(v.second.tree==&old||v.second.audio_source==data_)
+    return fail(e,"House audio previous native voice still owns callbacks/playback before actual deletion");
+  // These are the only retained callbacks capturing the old scene source.
+  host_.listeners={};host_.area_bus={};
+  data_=house_data_;ir_=house_ir_;tree_=house_tree_;house_data_=nullptr;house_tree_=nullptr;house_ir_={};
+  e.clear();return true;
+}
+const FieldSceneAudioData*PodunkSceneAudio::source_data(FieldObjectId id)const{
+  auto i=voices_.find(id);return i==voices_.end()?nullptr:i->second.audio_source;
+}
+const FieldNodeTreeRuntime*PodunkSceneAudio::source_tree(FieldObjectId id)const{
+  auto i=voices_.find(id);return i==voices_.end()?nullptr:i->second.tree;
+}
 bool PodunkSceneAudio::prepare_named(const PlayerNamedSfxData &d,
                                      FieldNodeTreeRuntime &t,
                                      FieldGlobalRegistry &r, AudioPlayer &a,
@@ -252,7 +292,8 @@ bool PodunkSceneAudio::prepare_named(const PlayerNamedSfxData &d,
   return true;
 }
 const FieldSceneAudioStream *
-PodunkSceneAudio::stream_binding(uint32_t id) const {
+PodunkSceneAudio::stream_binding(uint32_t id,const Voice*voice) const {
+  if(voice&&voice->audio_source)return voice->audio_source->stream(id);
   if (data_)
     return data_->stream(id);
   auto *v = named_ ? named_->stream(id) : nullptr;
@@ -271,6 +312,7 @@ bool PodunkSceneAudio::construct_named(FieldObjectId id,
 bool PodunkSceneAudio::owns(const FieldNodeDescriptor &n) const {
   if(named_)return n.id==named_->voice_descriptor().id && n.native_class==named_->voice_descriptor().native_class && n.script.empty() && n.class_index==named_->voice_descriptor().class_index;
   auto *s = data_ ? data_->node(n.id) : nullptr;
+  if(!s&&house_data_)s=house_data_->node(n.id);
   return s && n.path == s->path && n.script.empty();
 }
 bool PodunkSceneAudio::owns(FieldObjectId id) const {
@@ -297,15 +339,15 @@ bool PodunkSceneAudio::rebind_voices(FieldNodeTreeRuntime &next,
     const auto *n=next.descriptor(id);const auto *s=next.state(id);FieldIdentity identity;
     if(at->second.state.inside||!s||s->inside||!n||!owns(*n)||n->id!=at->second.source->id||
        registry_->tree_owner(id).get()!=&next||!next.object_identity(id,identity)||
-       !same(identity,data_?data_->identity():named_->voice_identity()))
+       !same(identity,at->second.identity))
       return fail(e,"Scene voice migration changed actual source or preceded Exit");
   }
   for(auto id:ids){auto at=voices_.find(id);if(at!=voices_.end())at->second.tree=&next;}
   e.clear();return true;
 }
 bool PodunkSceneAudio::asset(uint32_t source, AudioAsset &out,
-                             std::string &e) const {
-  auto *s = stream_binding(source);
+                             std::string &e,const FieldSceneAudioData*data) const {
+  auto *s = data?data->stream(source):stream_binding(source);
   if (!s)
     return fail(e, "Scene audio unknown source stream");
   if (!audio_->checked_asset(s->asset_id, out, e) ||
@@ -317,15 +359,20 @@ bool PodunkSceneAudio::asset(uint32_t source, AudioAsset &out,
 bool PodunkSceneAudio::construct(FieldObjectId id, const FieldNodeDescriptor &n,
                                  const FieldIdentity &identity,
                                  std::string &e) {
-  if (!live(e) || !owns(n) || !same(identity, data_->identity()) || owns(id) ||
-      !registry_->object_exists(id) || registry_->tree_owner(id).get() != tree_)
+  if(!live(e))return false;
+  auto*source=house_data_&&registry_->tree_owner(id).get()==house_tree_?house_data_:data_;
+  auto*tree=source==house_data_?house_tree_:tree_;
+  if (!live(e) || !source || !source->node(n.id) || !owns(n) || !same(identity, source->identity()) || owns(id) ||
+      !registry_->object_exists(id) || registry_->tree_owner(id).get() != tree)
     return fail(e, "Scene audio native allocated/source constructor mismatch");
-  return construct_voice(id,*data_->node(n.id),e);
+  return construct_voice(id,*source->node(n.id),e,tree,source);
 }
-bool PodunkSceneAudio::construct_voice(FieldObjectId id,const FieldSceneAudioNode&source,std::string&e){
+bool PodunkSceneAudio::construct_voice(FieldObjectId id,const FieldSceneAudioNode&source,std::string&e,FieldNodeTreeRuntime*tree,const FieldSceneAudioData*data){
   const auto *s=&source;
   Voice v;
-  v.tree = tree_;
+  v.tree = tree?tree:tree_;
+  v.audio_source=data?data:data_;
+  if(!v.tree->object_identity(id,v.identity))return fail(e,"Scene audio actual native source identity unavailable");
   v.source = s;
   v.state.object = id;
   v.state.source_stream = s->stream;
@@ -334,7 +381,7 @@ bool PodunkSceneAudio::construct_voice(FieldObjectId id,const FieldSceneAudioNod
   v.state.bus = s->bus;
   v.state.paused = s->paused;
   v.mix_volume = s->volume_db;
-  if (s->stream && !asset(s->stream, v.asset, e))
+  if (s->stream && !asset(s->stream, v.asset, e,v.audio_source))
     return false;
   float db = 0;
   bool mute = false;
@@ -366,7 +413,7 @@ bool PodunkSceneAudio::bind(FieldObjectId id, FieldNodeBinding &b,
   auto *n = v ? v->tree->descriptor(id) : nullptr;
   if (!v || !n || n->id != v->source->id || !owns(*n))
     return fail(e, "Scene audio actual node binding");
-  b.identity = data_?data_->identity():named_->voice_identity();
+  b.identity = v->identity;
   b.stable_id = n->id;
   b.class_index = n->class_index;
   b.script_sha = n->script_sha;
@@ -491,7 +538,7 @@ bool PodunkSceneAudio::set_stream(FieldObjectId id, uint32_t source,
   if (!v)
     return false;
   AudioAsset a;
-  if (source && !asset(source, a, e))
+  if (source && !asset(source, a, e,v->audio_source))
     return false;
   if (v->source->kind == 1 && v->active && !v->state.paused &&
       !fade(*v, 512, e))
@@ -510,7 +557,7 @@ bool PodunkSceneAudio::play(FieldObjectId id, double from, std::string &e) {
     return fail(e, "Scene audio play position rejected");
   if (!v->state.source_stream)
     return true;
-  const auto *binding = stream_binding(v->state.source_stream);
+  const auto *binding = stream_binding(v->state.source_stream,v);
   if (!binding || (binding->native_class == "AudioStreamSample" && from != 0))
     return fail(
         e, "Scene sample nonzero start needs reviewed native seek semantics");
@@ -561,7 +608,7 @@ bool PodunkSceneAudio::seek(FieldObjectId id, double from, std::string &e) {
   if (!v || !std::isfinite(from) || from < 0 || from > double(UINT32_MAX))
     return fail(e, "Scene audio seek position rejected");
   if (v->state.source_stream) {
-    const auto *binding = stream_binding(v->state.source_stream);
+    const auto *binding = stream_binding(v->state.source_stream,v);
     if (!binding || (binding->native_class == "AudioStreamSample" && from != 0))
       return fail(e,
                   "Scene sample nonzero seek needs reviewed native semantics");
@@ -608,19 +655,27 @@ bool PodunkSceneAudio::set_bus(FieldObjectId id, std::string_view s,
   return true;
 }
 bool PodunkSceneAudio::spatial(Voice &v, std::string &e) {
-  if (!host_.listeners || !host_.area_bus)
-    return fail(e, "Scene positional audio actual World2D listeners/Area bus "
-                   "owner pending");
   std::vector<PodunkSceneAudioListener> listeners;
-  if (!host_.listeners(v.state.object, listeners, e))
-    return false;
+  const bool house=(house_data_&&v.audio_source==house_data_)||(house_spatial_data_&&v.audio_source==house_spatial_data_);
+  if(house){
+    if(!house_sources_||!house_sources_->valid()||!house_root_||v.tree!=house_spatial_tree_||!same(house_sources_->tree().identity(),v.identity))return fail(e,"House positional audio destination borrow expired");
+    const auto&view=house_root_->viewport();const auto*node=v.tree->state(v.state.object);
+    if(!node||!node->alive||!node->inside||registry_->tree_owner(v.state.object).get()!=v.tree||!view.inside||!view.active||!view.world_registered||view.failed||!registry_->object_exists(house_root_->viewport_object()))return fail(e,"House positional audio requires actual entered same World2D/viewport");
+    PodunkSceneAudioListener listener;listener.viewport=house_root_->viewport_object();listener.enabled=view.audio_listener_2d;listener.screen_size=view.size;listener.canvas=view.canvas;listeners={listener};
+  }else{
+    if(!host_.listeners||!host_.area_bus)return fail(e,"Scene positional audio actual World2D listeners/Area bus owner pending");
+    if(!host_.listeners(v.state.object,listeners,e))return false;
+  }
   auto *s = v.tree->state(v.state.object);
   if (!s)
     return false;
   Vec2 pos = s->world[2];
   std::string bus = v.state.bus;
-  if (!host_.area_bus(pos, v.source->area_mask, bus, e))
-    return false;
+  if(house){
+    // Same reviewed complete-source no-override path used by outdoor audio.
+    // A real overriding Area needs its exact point query; never approximate it.
+    for(uint32_t i=0;i<house_sources_->geometry().owner_count();++i){const auto owner=house_sources_->geometry().owner(i);if(owner.kind==4&&(owner.flags&8)&&(owner.layer&v.source->area_mask))return fail(e,"House source audio overriding Area requires exact point query owner");}
+  }else if(!host_.area_bus(pos,v.source->area_mask,bus,e))return false;
   std::vector<Output> outputs;
   for (const auto &l : listeners) {
     if (!l.viewport || !registry_->object_exists(l.viewport) ||
@@ -650,7 +705,7 @@ bool PodunkSceneAudio::spatial(Voice &v, std::string &e) {
         std::pow(1 - distance / v.source->max_distance, v.source->attenuation) *
         audio_linear_gain(v.state.volume_db);
     float pan = std::clamp(relative.x / l.screen_size.x, -1.f, 1.f) *
-                v.source->panning * data_->global_panning() * .5f;
+                v.source->panning * v.audio_source->global_panning() * .5f;
     pan = std::clamp(pan + .5f, 0.f, 1.f);
     outputs.push_back({l.viewport, (1 - pan) * gain, pan * gain, bus});
     if (outputs.size() > 8)
@@ -945,7 +1000,8 @@ bool PodunkSceneAudio::shutdown(std::string &e) {
   }
   if (channel_owner == this)
     channel_owner = nullptr;
-  data_ = nullptr;
+  data_ = nullptr;house_data_=nullptr;house_tree_=nullptr;house_ir_={};
+  house_sources_=nullptr;house_root_=nullptr;house_spatial_data_=nullptr;house_spatial_tree_=nullptr;
   named_ = nullptr;
   tree_ = nullptr;
   registry_ = nullptr;

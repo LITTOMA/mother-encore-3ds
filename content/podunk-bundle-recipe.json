@@ -758,6 +758,20 @@
       "producer": "house_inspection_restore",
       "ir": "content/native-house-inspection-restore.json",
       "path": "data/house-return.encrestore"
+    },
+    {
+      "role": 109,
+      "name": "HouseCameraControl",
+      "producer": "house_return_camera_control",
+      "ir": "content/native-house-return-camera-control.json",
+      "path": "data/house-return-camera-control.encshaker"
+    },
+    {
+      "role": 110,
+      "name": "HouseSceneAudio",
+      "producer": "house_return_camera_control_audio",
+      "ir": "content/native-house-return-camera-control-audio.json",
+      "path": "data/house-return-camera-control.encnativeaudio"
     }
   ],
   "extra_inputs": [

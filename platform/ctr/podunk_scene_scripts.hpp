@@ -4,6 +4,7 @@
 #include "encore/field_scene_sources.hpp"
 #include "encore/grass_native.hpp"
 #include <map>
+#include <set>
 namespace encore::ctr {
 class PodunkSceneCanvasLeaf;
 // Original onready preload owns a checked PackedScene before spawner Ready.
@@ -60,6 +61,13 @@ public:
   bool release(upstream::FieldObjectId, const upstream::FieldNodeBinding &,
                std::string &);
   bool collect_deleted(std::string &);
+  bool stage_old_scene_retirement(upstream::FieldObjectId old_root,
+      const upstream::FieldDoorData&,upstream::FieldDoorRuntime&,
+      upstream::FieldObjectId retained_door,upstream::FieldSceneRetirement&,
+      std::string&);
+  bool commit_old_scene_retirement(upstream::FieldSceneRetirement&,
+      const upstream::FieldNodeTreeRuntime&next,upstream::FieldObjectId next_root,
+      std::string&);
   bool grass_screen(upstream::FieldObjectId, bool entered, std::string &);
   bool npc_screen(upstream::FieldObjectId, bool entered, std::string &);
   bool npc_interact(upstream::FieldObjectId, bool telepathy, std::string &);
@@ -74,12 +82,21 @@ public:
                          std::string &) const;
   bool admission(upstream::FieldObjectId,
                  upstream::FieldSceneScriptAdmission &) const;
+  // The exact original Door source instance/Ready receipt moves with its
+  // already transferred subtree. No constructor, Ready or VM is recreated.
+  bool rebind_persistent_door(const upstream::FieldDoorData &,
+      upstream::FieldDoorRuntime &,upstream::FieldObjectId,
+      upstream::FieldNodeTreeRuntime &old_tree,upstream::FieldNodeTreeRuntime &next,
+      const std::vector<upstream::FieldObjectId>&,std::string &);
   upstream::FieldSceneHost &lifecycle() { return lifecycle_; }
   const std::vector<PodunkSceneScriptGap> &gaps() const { return gaps_; }
   bool poisoned() const { return poisoned_; }
 
 private:
   struct Instance {
+    upstream::FieldNodeTreeRuntime *tree=nullptr;
+    upstream::FieldPhysicsRid retained_door_rid{};
+    std::vector<upstream::FieldObjectId>retained_door_objects;
     upstream::FieldSceneReady source;
     upstream::FieldNodeBinding binding;
     bool bound = false, ready = false, released = false, deleted = false;
@@ -103,6 +120,8 @@ private:
   std::map<upstream::FieldObjectId, Instance> instances_;
   std::map<uint32_t, upstream::FieldObjectId> objects_;
   std::vector<PodunkSceneScriptGap> gaps_;
+  std::set<upstream::FieldObjectId>retiring_scene_objects_;
+  upstream::FieldSceneRetirement*retirement_=nullptr;
   bool poisoned_ = false;
 };
 } // namespace encore::ctr

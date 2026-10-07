@@ -23,6 +23,8 @@ SOURCES = (
     'runtime/house_return_controls.cpp',
     'runtime/house_return_inspection_programme.cpp',
     'runtime/house_inspection_restore.cpp',
+    'runtime/house_return_camera_control.cpp',
+    'runtime/field_scene_audio_data.cpp',
     'runtime/field_prompts_data.cpp',
     'runtime/prompt_native_data.cpp',
     'runtime/field_interact_dialog_data.cpp',

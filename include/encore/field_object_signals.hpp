@@ -36,6 +36,12 @@ public:
                             std::string &);
   const FieldGlobalRegistry *registry() const { return registry_; }
   bool emitting_to(FieldObjectId,std::string_view,FieldObjectId,std::string_view) const;
+  // Observe the actual synchronous dispatch stack; never drain or mirror it.
+  bool active_dispatch_to(const std::set<FieldObjectId>&objects)const {
+    for(const auto&frame:dispatching_)
+      if(objects.count(frame.emitter)||objects.count(frame.target))return true;
+    return false;
+  }
 private:
   struct Target {
     FieldObjectId object = 0;

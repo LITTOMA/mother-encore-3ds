@@ -1,4 +1,5 @@
 #include "podunk_player_scene_services.hpp"
+#include "house_return_player_scene_owner.hpp"
 #include <algorithm>
 #include <cctype>
 #include <cmath>
@@ -18,11 +19,17 @@ bool result(bool success, const std::string &original, std::string &e) {
 } // namespace
 bool PodunkPlayerSceneServices::live(std::string &e) const {
   if (!input_.continuation || !input_.continuation->initialized() ||
-      !input_.sources || !input_.player || !input_.tree || !input_.consumers ||
-      !input_.scripts || !input_.continuation->registry() ||
+      !input_.sources || !input_.player || !input_.tree ||
+      (!input_.house&&(!input_.consumers||!input_.scripts))||
+      (input_.house&&(input_.consumers||input_.scripts||input_.scene_data))||
+      !input_.continuation->registry() ||
       input_.continuation->registry()->poisoned())
     return fail(e,
                 "Player scene services lost their actual continuation owner");
+  if(input_.house&&(input_.house->tree()!=input_.tree||
+      input_.house->registry()!=input_.continuation->registry()||
+      input_.house->player()!=input_.player||!input_.house->borrowed(e)))
+    return fail(e,"Player House route no longer borrows the same fixed Tree/Registry/Player owner");
   if ((input_.preloads &&
        input_.preloads->registry() != input_.continuation->registry()) ||
       (input_.named_sfx &&
@@ -39,11 +46,15 @@ bool PodunkPlayerSceneServices::prepare(PodunkPlayerSceneInput in,
       !in.continuation->initialized() || !in.sources ||
       !in.sources->initialization || !in.sources->ready ||
       !in.sources->motion || !in.sources->effects || !in.player || !in.tree ||
-      !in.consumers || !in.scripts || !in.controls || !in.input ||
+      (!in.house&&(!in.consumers||!in.scripts))||
+      (in.house&&(in.consumers||in.scripts||in.scene_data))||!in.controls||!in.input||
       !in.continuation->global() || !in.continuation->characters() ||
       !in.continuation->character_data() || !in.continuation->signals() ||
       in.continuation->signals()->registry() != in.continuation->registry())
     return fail(e, "Player scene service source/native composition incomplete");
+  if(in.house&&(in.house->tree()!=in.tree||in.house->registry()!=in.continuation->registry()||
+      in.house->player()!=in.player||!in.house->borrowed(e)))
+    return fail(e,"Player House route is not its actual fixed source composition");
   if ((in.preloads && in.preloads->registry() != in.continuation->registry()) ||
       (in.named_sfx && in.named_sfx->registry() != in.continuation->registry()))
     return fail(
@@ -242,6 +253,30 @@ bool PodunkPlayerSceneServices::prepare(PodunkPlayerSceneInput in,
   e.clear();
   return true;
 }
+bool PodunkPlayerSceneServices::rebind_house(HouseReturnPlayerSceneOwner&owner,
+    FieldNodeTreeRuntime&old,FieldNodeTreeRuntime&next,
+    const std::vector<FieldObjectId>&nodes,std::string&e){
+  if(!live(e)||input_.house||input_.tree!=&old||&old==&next||
+      !input_.consumers||!input_.scripts||owner.tree()!=&next||
+      owner.player()!=input_.player||owner.registry()!=services_.registry||
+      !owner.borrowed(e)||!input_.player->ready_complete()||
+      input_.player->tree()!=&next||input_.player->body().tree()!=&next||
+      old.object_domain()!=services_.registry->kernel()||
+      next.object_domain()!=services_.registry->kernel()||nodes.empty()||
+      nodes.front()!=input_.player->body().object())
+    return fail(e,"Player service House rebind lacks the same actual transferred source owners");
+  bool area=false;
+  if(!owner.current_scene_area(area,e)||!area)return false;
+  for(auto id:nodes){const auto*n=next.state(id);
+    if(!input_.player->owns(id)||old.state(id)||!n||!n->alive||!n->bound||
+      n->inside||n->ready_first||services_.registry->tree_owner(id).get()!=&next)
+      return fail(e,"Player service rebind precedes the actual complete detached subtree transfer");
+  }
+  // Existing services_/motion/Ready closures capture this same address. No
+  // callback, Ready resource, Random, voice or party owner is reconstructed.
+  input_.tree=&next;input_.consumers=nullptr;input_.scripts=nullptr;
+  input_.scene_data=nullptr;input_.house=&owner;e.clear();return true;
+}
 bool PodunkPlayerSceneServices::singleton_party(std::string &e) const {
   std::shared_ptr<const GlobalLoadObjectArray> objects;
   if (!live(e) ||
@@ -254,6 +289,7 @@ bool PodunkPlayerSceneServices::singleton_party(std::string &e) const {
 }
 bool PodunkPlayerSceneServices::current_scene_area(bool &area,
                                                    std::string &e) const {
+  if(input_.house)return live(e)&&input_.house->current_scene_area(area,e);
   FieldObjectId scene;
   FieldIdentity actual;
   if (!live(e) || !input_.scene_data || !input_.scene_data->valid() ||
@@ -358,6 +394,13 @@ bool PodunkPlayerSceneServices::respawn(std::string &e) {
   bool area;
   if (!current_scene_area(area, e) || !area || !input_.player->ready_complete())
     return fail(e, "Respawn requires actual source currentScene/Player Ready");
+  std::string source_path;
+  if(input_.house){if(!input_.house->respawn_path(source_path,e))return false;}
+  else {
+    if(!input_.scene_data||!input_.scene_data->valid())return fail(e,"Respawn source scene resource is absent");
+    source_path=std::string(input_.scene_data->source_scene());
+    if(source_path.rfind("res://",0)!=0)source_path="res://"+source_path;
+  }
   const auto &fields = input_.sources->initialization->policy().respawn_fields;
   if (fields.size() != 4)
     return fail(e, "Respawn source assignment schema rejected");
@@ -381,9 +424,7 @@ bool PodunkPlayerSceneServices::respawn(std::string &e) {
     return false;
   GlobalYamlValue value;
   value.kind = 4;
-  value.string = std::string(input_.scene_data->source_scene());
-  if (value.string.rfind("res://", 0) != 0)
-    value.string = "res://" + value.string;
+  value.string = source_path;
   if (!owner.write_global_scalar(fields[1], value, e))
     return false;
   value.string = run.value->string;
@@ -397,6 +438,7 @@ PodunkPlayerServices PodunkPlayerSceneServices::services() const {
 }
 bool PodunkPlayerSceneServices::turn_player(FieldObjectId target, bool party,
                                             std::string &e) {
+  if(input_.house)return live(e)&&input_.house->turn_player(target,party,e);
   FieldSceneScriptAdmission admission;
   if (!source(target, admission, e))
     return false;
@@ -478,7 +520,7 @@ bool PodunkPlayerSceneServices::character_name(FieldObjectId id,
 bool PodunkPlayerSceneServices::source(FieldObjectId id,
                                        FieldSceneScriptAdmission &out,
                                        std::string &e) const {
-  if (!live(e) || !input_.scripts->admission(id, out))
+  if (!live(e) || input_.house || !input_.scripts->admission(id, out))
     return fail(
         e, "Player interaction target has no actual source Ready consumer");
   return true;
@@ -488,6 +530,7 @@ bool PodunkPlayerSceneServices::collider_info(FieldObjectId id,
                                               std::string &e) const {
   if (!live(e))
     return false;
+  if(input_.house)return input_.house->collider_info(id,out,e);
   auto owner = services_.registry->tree_owner(id);
   const auto *s = owner ? owner->state(id) : nullptr;
   const auto *d = owner ? owner->descriptor(id) : nullptr;
@@ -545,6 +588,7 @@ bool PodunkPlayerSceneServices::collider_info(FieldObjectId id,
 }
 bool PodunkPlayerSceneServices::interact(FieldObjectId id, bool thoughts,
                                          std::string &e) {
+  if(input_.house)return live(e)&&input_.house->interact(id,thoughts,e);
   FieldSceneScriptAdmission a;
   if (!source(id, a, e))
     return false;
@@ -578,6 +622,7 @@ bool PodunkPlayerSceneServices::interact(FieldObjectId id, bool thoughts,
   return fail(e, "Actual source target interact method consumer missing");
 }
 bool PodunkPlayerSceneServices::press_prompt(FieldObjectId id, std::string &e) {
+  if(input_.house)return live(e)&&input_.house->press_prompt(id,e);
   FieldSceneScriptAdmission a;
   if (!source(id, a, e))
     return false;

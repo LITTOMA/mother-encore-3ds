@@ -1,4 +1,6 @@
 #include "house_return_dialogue.hpp"
+#include "house_return_npc_runtime.hpp"
+#include "podunk_player_host.hpp"
 #include <algorithm>
 #include <set>
 
@@ -56,6 +58,8 @@ bool HouseReturnDialogue::fail(std::string &e, const char *s) {
   return reject(e, s);
 }
 bool HouseReturnDialogue::actual(bool require_ready, std::string &e) const {
+  if(require_ready&&phase_==Phase::AssignedStaged)
+    return reject(e,"House staged source reads do not admit a complete Ready programme owner");
   const auto &in = input_;
   if (!in.registry || !in.registry->data() || !in.tree || !in.house ||
       !in.text.valid() || !in.source || !in.source->valid() || !in.doors ||
@@ -112,7 +116,11 @@ bool HouseReturnDialogue::actual(bool require_ready, std::string &e) const {
 bool HouseReturnDialogue::receipt(bool closed, HouseReturnDialogueReceipt &out,
                                   std::string &e,const NpcRequestScope*scope) const {
   HouseReturnDialogueReceipt r;
-  if (!input_.native->observe(context_, r, e)) return false;
+  if (staged_binding_call_ || phase_ == Phase::AssignedStaged) {
+    if (!staged_native_ || input_.native != staged_native_ ||
+        !staged_native_->observe_impl(context_, r,
+          HouseReturnDialogueNativeOwner::Admission::AssignedStaged, e)) return false;
+  } else if (!input_.native->observe(context_, r, e)) return false;
   if (!r.inspected || !r.podunk_retired || !r.world_generation ||
       r.world_generation != input_.house->world.source_generation() ||
       r.registry != input_.registry ||
@@ -187,8 +195,93 @@ bool HouseReturnDialogue::bind(HouseReturnDialogueInput in, std::string &e) {
 const OpeningWorld *HouseReturnDialogue::world() const {
   return input_.house ? &input_.house->world : nullptr;
 }
+bool HouseReturnDialogue::bind_staged(HouseReturnDialogueInput in,
+    HouseReturnDialogueNativeOwner&native,
+    std::shared_ptr<FieldNodeTreeRuntime> old,FieldObjectId old_root,
+    PodunkPlayerHost&host,std::string&e){
+  const auto player=host.body().object();
+  if(phase_!=Phase::Unbound||world_call_||action_call_||staged_binding_call_||
+      !old||!old_root||!player||!in.registry||!in.tree||!in.house||
+      in.native!=&native||native.in_.driver!=this||native.in_.house!=in.house||
+      native.in_.tree!=in.tree||native.in_.source!=in.source||
+      native.in_.source_tree!=in.source_tree||native.in_.session!=in.session||
+      native.in_.doors!=in.doors||native.in_.text.bytes()!=in.text.bytes()||
+      native.in_.text.byte_size()!=in.text.byte_size()||
+      native.owners_.registry!=in.registry||native.owners_.ui!=in.ui||
+      native.owners_.root!=in.script||native.owners_.life!=in.lifecycle||
+      native.owners_.recipe!=in.recipe||native.owners_.random!=in.random||
+      native.owners_.uid_ledger!=in.uid_ledger||native.owners_.choices!=in.choices||
+      native.owners_.choice_data!=in.choice_data||
+      old==in.tree||old->root()!=old_root||old->state(old_root)||
+      in.registry->object_exists(old_root)||in.registry->current_scene()!=in.tree->root())
+    return reject(e,"House staged binding lacks actual old deletion/current-scene receipts");
+  const auto*p=old->state(player);
+  if(!p||!p->alive||!p->bound||p->inside||p->parent||p->queued||p->ready_first||
+      !host.ready_complete()||!host.body().constructed()||host.registry()!=in.registry||
+      host.tree()!=old.get()||host.body().tree()!=old.get()||
+      in.registry->tree_owner(player)!=old||
+      !in.registry->object_exists(player)||old->object_domain()!=in.registry->kernel()||
+      in.tree->object_domain()!=in.registry->kernel())
+    return reject(e,"House staged binding did not retain the same detached Ready Player");
+  input_=std::move(in);context_={};staged_native_=&native;
+  retired_tree_=std::move(old);retired_root_=old_root;retained_player_=player;
+  retained_player_host_=&host;
+  if(!actual(false,e))return false;
+  staged_generation_=input_.house->world.source_generation();
+  if(!staged_generation_)return reject(e,"House staged owner has no actual World generation");
+  context_.house=input_.house;context_.room=input_.house->world.content();
+  context_.text=input_.text;context_.house_root=input_.tree->root();
+  HouseReturnDialogueReceipt r;
+  {Call binding(staged_binding_call_);
+   if(!receipt(true,r,e)||!input_.house->world.bind_house_programme_owner(*this,e))return false;}
+  context_.canvas=r.canvas;phase_=Phase::AssignedStaged;e.clear();return true;
+}
+bool HouseReturnDialogue::finish_ready(std::string&e){
+  if(phase_!=Phase::AssignedStaged||staged_binding_call_||world_call_||action_call_||
+      npc_request_||!input_.house||input_.house->world.source_generation()!=staged_generation_)
+    return reject(e,"House staged owner cannot finish before actual full Root Ready");
+  HouseReturnDialogueReceipt r;
+  // Use the full native owner path here, never the staged Ready-read path.
+  phase_=Phase::Closed;
+  if(!actual(true,e)||!receipt(true,r,e)){phase_=Phase::AssignedStaged;return false;}
+  e.clear();return true;
+}
+bool HouseReturnDialogue::staged_npc_context(const HouseReturnNpcRuntime&source,
+    FieldObjectId object,std::string&e)const{
+  if(phase_!=Phase::AssignedStaged||staged_binding_call_||world_call_||action_call_||
+      npc_request_||!actual(false,e)||!retired_tree_||retired_tree_->root()!=retired_root_||
+      retired_tree_->state(retired_root_)||input_.registry->object_exists(retired_root_)||
+      input_.registry->current_scene()!=input_.tree->root()||
+      input_.house->world.source_generation()!=staged_generation_||
+      input_.house->house.programme_owner()||source.house()!=input_.house||
+      source.tree()!=input_.tree.get()||source.registry()!=input_.registry||
+      source.native_dialogue()!=staged_native_||!source.source_ready_live(object,e))
+    return reject(e,"House staged context is outside the actual same NPC source Ready");
+  HouseReturnDialogueReceipt r;
+  return receipt(true,r,e);
+}
+bool HouseReturnDialogue::staged_player(const HouseReturnNpcRuntime&source,
+    FieldObjectId npc,FieldObjectId player,const FieldNodeTreeRuntime&tree,std::string&e)const{
+  if(!staged_npc_context(source,npc,e)||player!=retained_player_||
+      &tree!=retired_tree_.get()||input_.registry->tree_owner(player)!=retired_tree_)
+    return reject(e,"House source Ready attempted to substitute the retained Player tree");
+  const auto*p=tree.state(player);
+  if(!p||!p->alive||!p->bound||p->inside||p->parent||p->queued||
+      p->ready_first||!retained_player_host_||!retained_player_host_->ready_complete()||
+      retained_player_host_->body().object()!=player||
+      retained_player_host_->tree()!=&tree||retained_player_host_->body().tree()!=&tree||
+      retained_player_host_->registry()!=input_.registry)
+    return reject(e,"House source Ready lost its actual detached Ready Player");
+  e.clear();return true;
+}
 bool HouseReturnDialogue::source_frame_closed(const OpeningWorld &w,
                                               std::string &e) const {
+  if(staged_binding_call_&&phase_==Phase::Unbound&& &w==world()&&
+      !w.house_programme_owner()&&w.source_generation()==staged_generation_&&
+      !world_call_&&!action_call_&&!npc_request_){
+    if(!actual(false,e))return false;
+    HouseReturnDialogueReceipt r;return receipt(true,r,e);
+  }
   if (&w != world() || world_call_ || action_call_ || npc_request_ ||
       (phase_ != Phase::Unbound && phase_ != Phase::Closed) ||
       (phase_ == Phase::Unbound && w.house_programme_owner()) ||
@@ -206,6 +299,9 @@ bool HouseReturnDialogue::unbind(std::string &e) {
   // Only a closed driver's pointer borrows are released. Native/source owners,
   // callback history, queues and waits remain untouched.
   input_ = {}; context_ = {}; phase_ = Phase::Unbound;
+  retired_tree_.reset();retired_root_=retained_player_=0;
+  staged_generation_=0;
+  retained_player_host_=nullptr;staged_native_=nullptr;
   e.clear(); return true;
 }
 bool HouseReturnDialogue::programme_binding(PodunkDialogueProgrammeBinding &out,

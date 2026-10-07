@@ -50,6 +50,8 @@ public:
   bool admit_static_monitor(upstream::FieldObjectId, uint32_t owner_index,
                             std::string &);
   bool static_monitor_exit(upstream::FieldObjectId, std::string &);
+  bool admit_persistent_door_monitor(const upstream::FieldDoorData &,
+      const upstream::FieldPersistentDoorGeometry &,std::string &);
   bool admit_grass_monitor(const upstream::GrassNativeData &,
                            upstream::FieldObjectId,
                            const upstream::FieldGeometryContact &, std::string &);

@@ -56,7 +56,7 @@ bool OpeningWorld::initialize_restored(const RoomView&content,const std::vector<
     return initialize_state(content,viewport,&story_flags,&reviewed_mutations,position,direction);
 }
 bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const std::vector<bool>*story_flags,const std::vector<bool>*reviewed_mutations,Vec2 position,Vec2 direction) {
-    if(house_programme_owner_||house_inventory_owner_||house_programme_callback_)return false;
+    if(house_programme_owner_||house_inventory_owner_||room_shaker_owner_||house_programme_callback_)return false;
     if(!persistent_player_){error_="Persistent player owner allocation failed";return false;}
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     house_programme_failed_=false;house_programme_error_.clear();
@@ -498,7 +498,20 @@ bool OpeningWorld::vibrate_room(uint32_t binding_index){
     if(!persistent_player_.state_->camera_.shake(binding.value,content_.rule_f64(RoomRuleKey::RoomShakeLengthSeconds),{float(content_.rule_f64(RoomRuleKey::RoomShakeDirectionX)),float(content_.rule_f64(RoomRuleKey::RoomShakeDirectionY))}))return fail("Room camera shake rejected");
     audio_.push_back({AudioRequestKind::PlayEffect,binding.target_index,0,dialogue_.phrase()});return true;
 }
+bool OpeningWorld::bind_room_shaker_owner(OpeningRoomShakerOwner&owner,std::string&e){
+ if(room_shaker_owner_||!initialized_||!healthy_||!room_shakers_.empty()||owner.world()!=this){e="RoomShaker exact owner/legacy state bind rejected";return false;}
+ for(const auto&a:deferred_){const auto kind=content_.binding(a.target_index).kind;if(kind==uint16_t(RoomBindingKind::PeriodicCameraShake)||kind==uint16_t(RoomBindingKind::StopRoomShaker)){e="RoomShaker source calls were already deferred before owner admission";return false;}}
+ if(!owner.source_frame_closed(*this,e)||owner.world()!=this)return false;
+ room_shaker_owner_=&owner;e.clear();return true;
+}
+bool OpeningWorld::unbind_room_shaker_owner(OpeningRoomShakerOwner&owner,std::string&e){
+ if(room_shaker_owner_!=&owner||owner.world()!=this||!room_shakers_.empty()){e="RoomShaker exact owner release rejected";return false;}
+ for(const auto&a:deferred_){const auto kind=content_.binding(a.target_index).kind;if(kind==uint16_t(RoomBindingKind::PeriodicCameraShake)||kind==uint16_t(RoomBindingKind::StopRoomShaker)){e="RoomShaker has pending actual deferred source calls";return false;}}
+ if(!owner.source_frame_closed(*this,e)||room_shaker_owner_!=&owner||owner.world()!=this)return false;
+ room_shaker_owner_=nullptr;e.clear();return true;
+}
 bool OpeningWorld::process_room_shakers(double delta){
+    if(room_shaker_owner_){if(room_shaker_owner_->world()!=this||!room_shakers_.empty())return fail("RoomShaker source owner changed or legacy execution still exists");return true;}
     delta=double(float(delta));
     for(auto& shaker:room_shakers_){
         shaker.remaining=shaker.delayed?double(float(shaker.remaining-delta)):shaker.remaining-delta;
@@ -523,8 +536,11 @@ bool OpeningWorld::flush_deferred() {
     for(const auto& action:deferred_){
         const auto binding=content_.binding(action.target_index);
         if(binding.kind==uint16_t(RoomBindingKind::PlayMusicRequest)){area_music_resource_=binding.target_index;audio_.push_back({AudioRequestKind::PlayMusic,binding.target_index,binding.duration,action.phrase});}
-        else if(binding.kind==uint16_t(RoomBindingKind::PeriodicCameraShake))room_shakers_.push_back({action.target_index,binding.duration,0,true});
-        else if(binding.kind==uint16_t(RoomBindingKind::StopRoomShaker))room_shakers_.erase(std::remove_if(room_shakers_.begin(),room_shakers_.end(),[&](const RoomShaker&s){return s.binding==binding.target_index;}),room_shakers_.end());
+        else if(binding.kind==uint16_t(RoomBindingKind::PeriodicCameraShake)||binding.kind==uint16_t(RoomBindingKind::StopRoomShaker)){
+            if(room_shaker_owner_){room_shaker_error_.clear();auto*owner=room_shaker_owner_;if(owner->world()!=this||!room_shakers_.empty()||!owner->invoke_room_binding(*this,action.target_index,room_shaker_error_)||room_shaker_owner_!=owner||owner->world()!=this){if(room_shaker_error_.empty())room_shaker_error_="Actual source RoomShaker deferred receiver rejected";return fail(room_shaker_error_.c_str());}}
+            else if(binding.kind==uint16_t(RoomBindingKind::PeriodicCameraShake))room_shakers_.push_back({action.target_index,binding.duration,0,true});
+            else room_shakers_.erase(std::remove_if(room_shakers_.begin(),room_shakers_.end(),[&](const RoomShaker&s){return s.binding==binding.target_index;}),room_shakers_.end());
+        }
         else if(binding.kind==uint16_t(RoomBindingKind::StopMusicResource)){if(area_music_resource_==binding.target_index&&!stop_area_music())return false;}
         else if(binding.kind==uint16_t(RoomBindingKind::WorldEffectAppear)||binding.kind==uint16_t(RoomBindingKind::WorldEffectDisappear)){
             uint64_t mask=0;for(uint32_t i=0;i<actor_bound_.size();++i)if(actor_bound_[i])mask|=uint64_t(1)<<i;

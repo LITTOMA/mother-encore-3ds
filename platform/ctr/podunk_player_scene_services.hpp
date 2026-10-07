@@ -4,6 +4,7 @@
 #include "podunk_scene_consumers.hpp"
 
 namespace encore::ctr {
+class HouseReturnPlayerSceneOwner;
 // The caller supplies the actual input sample and the existing native owners.
 // Business services below read/write the SAME continuation and player body.
 struct PodunkPlayerSceneInput {
@@ -21,12 +22,25 @@ struct PodunkPlayerSceneInput {
   std::function<bool(std::string_view, upstream::PlayerInputQuery, bool &,
                      std::string &)>
       input;
+  // Mutually exclusive with the Podunk consumers/scripts/scene_data route.
+  HouseReturnPlayerSceneOwner *house=nullptr;
 };
 class PodunkPlayerSceneServices {
 public:
   // Preparation does not evaluate onready, allocate nodes, draw RNG or demand
   // scene Ready. Each operation checks its actual owner at the source call.
   bool prepare(PodunkPlayerSceneInput, std::string &);
+  // Keep this same object's captured PlayerMotion callbacks. Only the actual
+  // destination route changes inside Registry's completed transfer callback.
+  bool rebind_house(HouseReturnPlayerSceneOwner&,
+      upstream::FieldNodeTreeRuntime&old_tree,upstream::FieldNodeTreeRuntime&next,
+      const std::vector<upstream::FieldObjectId>&actual_nodes,std::string&);
+  const upstream::FieldNodeTreeRuntime*tree()const{return input_.tree;}
+  const upstream::FieldGlobalRegistry*registry()const{
+    return input_.continuation?input_.continuation->registry():nullptr;
+  }
+  const PodunkPlayerHost*player()const{return input_.player;}
+  const PodunkPlayerSources*sources()const{return input_.sources;}
   PodunkPlayerServices services() const;
   bool pause(bool stop_running, bool start_idle, bool emit_signal,
              std::string &);

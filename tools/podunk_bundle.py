@@ -70,6 +70,7 @@ def checked_pack(spec):
  pin=raw.find(bytes.fromhex(PIN),0,160);require(pin>=0,'Missing actual source pin '+spec['path'])
  header_size=struct.unpack_from('<I',raw,12)[0]
  native_room=raw[:8]==b'ENCRMD01'
+ room_shaker=raw[:8]==b'ENCHSHK1'
  block=header_size==128 and not native_room
  family_offset=24 if block and 0x454e0000<=struct.unpack_from('<I',raw,24)[0]<=0x454effff else 28 if block else 20 if 0x454e0000<=struct.unpack_from('<I',raw,20)[0]<=0x454effff else 28
  family=struct.unpack_from('<I',raw,family_offset)[0]
@@ -79,6 +80,9 @@ def checked_pack(spec):
  if raw[:8]in(b'ENCSIG01',b'ENCPRN01',b'ENCSCL01',b'ENCSLN01'):capability=struct.unpack_from('<I',raw,12)[0]
  if raw[:8]==b'ENCHBPR1':family=struct.unpack_from('<I',raw,20)[0];capability=struct.unpack_from('<I',raw,12)[0]
  if native_room:family=struct.unpack_from('<I',raw,28)[0];capability=struct.unpack_from('<I',raw,36)[0]
+ if room_shaker:
+  require(header_size==len(raw)and struct.unpack_from('<I',raw,16)[0]==zlib.crc32(raw[32:]),'RoomShaker independent header/CRC')
+  family=struct.unpack_from('<I',raw,20)[0];capability=struct.unpack_from('<I',raw,24)[0]
  require(0<capability<65536,'Capability schema '+spec['path'])
  context=m.bundle_context(d)if hasattr(m,'bundle_context')else d
  ss={p.removeprefix('upstream/MOTHER-Encore/'):h for p,h in d['provenance']['sources'].items()if p.startswith('upstream/MOTHER-Encore/')}if native_room else sources(d);scene=context.get('scene',context.get('source_save',context.get('owner',context.get('script',''))))
@@ -92,7 +96,7 @@ def checked_pack(spec):
  if block:
   sid=struct.unpack_from('<I',raw,36)[0];source=raw[pin+20:pin+52].hex()
  require(sid and re.fullmatch('[0-9a-f]{64}',source),'Actual identity '+spec['path'])
- entry=dict(spec,identity_kind=3 if native_room else 1 if block else 2,magic=raw[:8].decode(),format=struct.unpack_from('<I',raw,8)[0],family=family,capability=capability,rules=d['rules']if type(d.get('rules'))is int else 1,scene=scene,scene_id=sid,source_sha256=source,ir_sha256=sha(ip),bytes=len(raw),crc32=zlib.crc32(raw),sha256=hashlib.sha256(raw).hexdigest(),original_header=raw[:128].hex(),sources=ss)
+ entry=dict(spec,identity_kind=4 if room_shaker else 3 if native_room else 1 if block else 2,magic=raw[:8].decode(),format=struct.unpack_from('<I',raw,8)[0],family=family,capability=capability,rules=d['rules']if type(d.get('rules'))is int else 1,scene=scene,scene_id=sid,source_sha256=source,ir_sha256=sha(ip),bytes=len(raw),crc32=zlib.crc32(raw),sha256=hashlib.sha256(raw).hexdigest(),original_header=raw[:128].hex(),sources=ss)
  return entry,staged,d
 
 def one_pack(spec):
@@ -179,8 +183,8 @@ def checked_audio():
  return out
 
 def derive():
- recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==107,'Bundle recipe scope')
- require([r['role']for r in recipe['packs']]==list(range(1,108))and len({r['name']for r in recipe['packs']})==107 and len({r['path']for r in recipe['packs']})==107,'Bundle role identity/coverage')
+ recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==110,'Bundle recipe scope')
+ require([r['role']for r in recipe['packs']]==list(range(1,111))and len({r['name']for r in recipe['packs']})==110 and len({r['path']for r in recipe['packs']})==110,'Bundle role identity/coverage')
  with concurrent.futures.ThreadPoolExecutor(max_workers=4)as pool:rows=list(pool.map(one_pack,recipe['packs']))
  packs=[];assets=checked_audio();inputs={RECIPE.relative_to(ROOT).as_posix():sha(RECIPE)};all_sources={}
  for entry,staged,d in rows:

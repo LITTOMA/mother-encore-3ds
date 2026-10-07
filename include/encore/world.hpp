@@ -53,6 +53,15 @@ public:
     virtual bool source_started(OpeningWorld&,uint32_t generation,std::string&)=0;
     virtual bool before_action(OpeningWorld&,const DialogueAction&,std::string&)=0;
 };
+// The actual source RoomShaker node owns its native Timer/coroutines. World
+// dispatches real deferred calls only; it never ticks this borrowed owner.
+class OpeningRoomShakerOwner {
+public:
+    virtual ~OpeningRoomShakerOwner()=default;
+    virtual const OpeningWorld*world()const=0;
+    virtual bool source_frame_closed(const OpeningWorld&,std::string&)const=0;
+    virtual bool invoke_room_binding(OpeningWorld&,uint32_t,std::string&)=0;
+};
 // Borrow the real House/session effects; no second inventory or scheduler.
 struct OpeningHouseInventoryState {
     const OpeningWorld*world=nullptr;
@@ -107,6 +116,9 @@ public:
     const OpeningHouseProgrammeOwner* house_programme_owner()const{return house_programme_owner_;}
     // The real World counter, including initialized-but-unstarted VM state.
     uint32_t source_generation()const{return generation_;}
+    bool bind_room_shaker_owner(OpeningRoomShakerOwner&,std::string&);
+    bool unbind_room_shaker_owner(OpeningRoomShakerOwner&,std::string&);
+    const OpeningRoomShakerOwner*room_shaker_owner()const{return room_shaker_owner_;}
     bool begin_battle_continuation(std::string_view source_path);
     bool story_completed()const{return dialogue_.status()==DialogueStatus::Completed;}
     DialogueStatus story_status()const{return dialogue_.status();}
@@ -191,6 +203,8 @@ private:
     DrawerHost*house_inventory_effects_=nullptr;DrawerProgramView house_inventory_source_{};
     bool inventory_receipt(OpeningHouseInventoryState&,std::string&)const;
     OpeningHouseProgrammeOwner*house_programme_owner_=nullptr;
+    OpeningRoomShakerOwner*room_shaker_owner_=nullptr;
+    std::string room_shaker_error_;
     bool house_programme_callback_=false,house_programme_failed_=false;
     std::string house_programme_error_;
     bool house_programme_failure(const char*);

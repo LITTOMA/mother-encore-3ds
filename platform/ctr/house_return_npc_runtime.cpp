@@ -124,7 +124,10 @@ bool HouseReturnNpcRuntime::invoke(FieldObjectId id,bool thoughts,
   uint32_t stable=0;if(!actual(id,stable,e))return false;
   if(source_call_&&source_call_!=stable)
     return reject(e,"House NPC recursive callback crossed source receivers");
-  if(method!=SourceMethod::Other&&callback_depth_)
+  if(method==SourceMethod::ReadyVisibility&&
+      (callback_depth_!=1||source_method_!=SourceMethod::Ready||source_call_!=stable))
+    return reject(e,"House NPC nested Ready visibility crossed its actual source invocation");
+  if(method!=SourceMethod::Other&&method!=SourceMethod::ReadyVisibility&&callback_depth_)
     return reject(e,"House NPC nested interaction source prefix rejected");
   Invocation guard(*this,stable,thoughts,method);
   return result(call(),e);
@@ -136,7 +139,8 @@ bool HouseReturnNpcRuntime::borrows(std::string&e)const{
       s.global_data!=&in_.characters->runtime()||in_.dialogue_native->house()!=in_.house||
       in_.dialogue->world()!=&in_.house->world||
       in_.house->world.house_programme_owner()!=in_.dialogue||
-      in_.house->house.programme_owner()!=in_.dialogue)
+      (in_.house->house.programme_owner()!=in_.dialogue&&
+       !in_.dialogue->staged_npc_context(*this,in_.tree->source_object(source_call_),e)))
     return reject(e,"House NPC UI/programme borrowed different actual session/entropy/House owners");
   e.clear();return true;
 }
@@ -393,7 +397,7 @@ bool HouseReturnNpcRuntime::source_phase(FieldObjectId id,FieldTreePhase phase,f
     i.entered=true;e.clear();return true;
   case FieldTreePhase::ReadyScript:
     if(!i.entered||!s->ready_notified)return reject(e,"House NPC source Ready not in actual Tree notification");
-    return invoke(id,false,[&]{return runtime_.ready(stable);},e);
+    return invoke(id,false,[&]{return runtime_.ready(stable);},e,SourceMethod::Ready);
   case FieldTreePhase::Physics:
     if(!i.entered||!geometry_active_||!std::isfinite(delta)||delta<0)
       return reject(e,"House NPC source physics before actual complete same-space activation");
@@ -404,6 +408,22 @@ bool HouseReturnNpcRuntime::source_phase(FieldObjectId id,FieldTreePhase phase,f
     i.entered=false;e.clear();return true;
   default:return reject(e,"House NPC source notification has no checked npc.gd consumer");
   }
+}
+bool HouseReturnNpcRuntime::source_ready_live(FieldObjectId id,std::string&e)const{
+  uint32_t stable=0;
+  const bool ready=callback_depth_==1&&source_method_==SourceMethod::Ready;
+  bool visibility=false;
+  if(callback_depth_==2&&source_method_==SourceMethod::ReadyVisibility)
+    for(const auto&c:in_.world_data->callbacks())if(c.op==12)
+      visibility=in_.signals->emitting_to(id,in_.world_data->visibility_signal(),id,c.method);
+  if((!ready&&!visibility)||thoughts_call_||
+      prefix_!=Prefix::None||!actual(id,stable,e)||source_call_!=stable)
+    return reject(e,"House NPC staged read is outside its real source Ready invocation");
+  const auto*s=in_.tree->state(id);const auto&i=instances_.at(id);
+  if(!i.bound||!i.entered||!s||!s->inside||!s->bound||s->queued||
+      !s->ready_notified||s->ready_first)
+    return reject(e,"House NPC source Ready lost its actual entered Tree notification");
+  e.clear();return true;
 }
 bool HouseReturnNpcRuntime::declaration(FieldObjectId id,std::string_view member,
     uint32_t&arity,std::string&e)const{
@@ -449,7 +469,9 @@ bool HouseReturnNpcRuntime::deferred(const FieldDeferredMessage&m,std::string&e)
       return in_.ports.persistent(m.object,persistent,e)&&runtime_.tree_exiting(stable,persistent);}
     default:return reject(e,"House NPC unsupported source callback opcode");
     }
-  },e,callback->op==10?SourceMethod::Interact:callback->op==11?SourceMethod::Telepathy:SourceMethod::Other);
+  },e,callback->op==10?SourceMethod::Interact:callback->op==11?SourceMethod::Telepathy:
+      callback->op==12&&callback_depth_==1&&source_method_==SourceMethod::Ready&&
+      source_call_==stable?SourceMethod::ReadyVisibility:SourceMethod::Other);
 }
 bool HouseReturnNpcRuntime::return_direction_timeout(FieldObjectId id,uint64_t receipt,std::string&e){
   uint32_t stable=0;if(!actual(id,stable,e))return false;

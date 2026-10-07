@@ -20,6 +20,30 @@ class PodunkConcretePlayerEffectOwners;
 class PodunkPlayerCanvasForeign;
 class PodunkSceneAnimatedLeaves;
 class PodunkSceneGrassFactory;
+class PodunkSceneNative;
+// Evidence from the actual source remove_child, never a replacement Door.
+// Only the concrete native owner may create or advance this receipt.
+class PodunkSceneDoorTransfer {
+public:
+  upstream::FieldObjectId door()const{return geometry_.door;}
+  upstream::FieldObjectId shape()const{return geometry_.shape;}
+  upstream::FieldObjectId marker()const{return marker_;}
+  upstream::FieldObjectId audio()const{return audio_;}
+  upstream::FieldPhysicsRid rid()const{return geometry_.rid;}
+  const upstream::FieldNodeTreeRuntime*old_tree()const{return old_;}
+  const upstream::FieldNodeTreeRuntime*destination_tree()const{return next_;}
+  const auto&objects()const{return objects_;}
+private:
+  friend class PodunkSceneNative;
+  const PodunkSceneNative*owner_=nullptr;
+  upstream::FieldNodeTreeRuntime*old_=nullptr,*next_=nullptr;
+  upstream::FieldPersistentDoorGeometry geometry_{};
+  upstream::FieldObjectId marker_=0,audio_=0;
+  std::vector<upstream::FieldObjectId>objects_;
+  std::map<upstream::FieldObjectId,upstream::FieldNodeDescriptor>descriptors_;
+  std::map<upstream::FieldObjectId,upstream::FieldNodeState>states_;
+  bool shape_disabled_=false;
+};
 struct PodunkSceneControlState {
  const upstream::FieldNodeTreeRuntime*tree=nullptr;
  const upstream::FieldGlobalRegistry*registry=nullptr;
@@ -169,12 +193,25 @@ public:
                   float global_shader_time, std::string &);
   bool draw(const upstream::FieldMapGateQuery &, std::string &);
   bool source_object(uint32_t, upstream::FieldObjectId &, std::string &) const;
+  // AFTER source remove_child/ExitNative, BEFORE old scene free/replacement.
+  bool retain_detached_door(const upstream::FieldDoorData &,uint32_t,
+                           PodunkSceneDoorTransfer &,std::string &);
+  // Inside Registry's transfer callback: actual Tree/ObjectDB transfer has
+  // completed; source add_child (and native Enter) has not happened yet.
+  bool rebind_persistent_door(PodunkSceneDoorTransfer &,
+      upstream::FieldNodeTreeRuntime &old_tree,upstream::FieldNodeTreeRuntime &next,
+      const std::vector<upstream::FieldObjectId>&,std::string &);
+  bool observe_persistent_door(const PodunkSceneDoorTransfer &,
+                              upstream::FieldObjectId actual_parent,std::string &)const;
   // Caller has waited for the actual GPU fence and exited the real tree.
   bool shutdown(std::string &);
 
 private:
   enum class Kind { Node, Canvas, Map, Body, Area, Shape, Sprite,TextureRect,Animated,ColorRect };
   struct Instance {
+    upstream::FieldNodeTreeRuntime *tree=nullptr;
+    const upstream::FieldDoorData *persistent_door=nullptr;
+    upstream::FieldObjectId persistent_root=0;
     Kind kind = Kind::Node;
     uint32_t source = 0, geometry_node = UINT32_MAX, owner = UINT32_MAX,
              shape = UINT32_MAX, map = UINT32_MAX;

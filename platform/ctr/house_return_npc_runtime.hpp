@@ -94,6 +94,9 @@ public:
   const upstream::FreshHouseState*house()const{return in_.house;}
   const HouseReturnDialogueNativeOwner*native_dialogue()const{return in_.dialogue_native;}
   bool source_frame_closed()const{return !callback_depth_&&!source_call_;}
+  // The actual synchronous npc.gd _ready invocation, including its direct
+  // visibility_changed read, alone produces this receipt.
+  bool source_ready_live(upstream::FieldObjectId,std::string&)const;
   // Only the live npc.gd invocation can produce this source request receipt.
   bool programme_input(upstream::FieldObjectId,uint32_t,bool,
       upstream::HouseSourceNpcProgramme&,std::string&)const;
@@ -102,7 +105,7 @@ public:
   bool before_open(const upstream::HouseSourceNpcProgramme&,uint32_t,
                    std::string&)const;
 private:
-  enum class SourceMethod {Other,Interact,Telepathy};
+  enum class SourceMethod {Other,Ready,ReadyVisibility,Interact,Telepathy};
   enum class Prefix {None,Preflight,TalkerAssigned,BeforeOpen};
   struct Invocation;
   struct Instance {uint32_t source=0;bool bound=false,entered=false;};

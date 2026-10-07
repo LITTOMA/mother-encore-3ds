@@ -244,7 +244,7 @@ bool HouseReturnSources::load(const PodunkBundleData &bundle,
                               const std::string &romfs_root,
                               const FieldDoorData &doors, RoomView room,
                               HouseView house, DrawerProgramView drawer, std::string &error) {
-  if (!bundle.valid() || bundle.packs().size() != uint32_t(PodunkPackRole::HouseInspectionRestore) ||
+  if (!bundle.valid() || bundle.packs().size() != uint32_t(PodunkPackRole::HouseSceneAudio) ||
       !doors.valid() || !same(bundle.identity(), doors.identity()) ||
       bundle.source_scene() != doors.source_scene())
     return fail(error, "House return requires the actual complete outdoor bundle and Door");
@@ -348,6 +348,18 @@ bool HouseReturnSources::load(const PodunkBundleData &bundle,
       !candidate.inspection_restore_.load(restore_bytes.data(),restore_bytes.size(),restore_bindings,error)||
       candidate.inspection_restore_.ir_sha256()!=restore_entry->ir_sha256)
     return fail(error,"House inspection Restore source/dependency binding differs");
+  const auto *camera_entry=bundle.entry(PodunkPackRole::HouseCameraControl);
+  const auto *audio_entry=bundle.entry(PodunkPackRole::HouseSceneAudio);
+  if(!camera_entry||!audio_entry||!same(camera_entry->identity,tree->identity)||
+      !same(audio_entry->identity,tree->identity))
+    return fail(error,"House RoomShaker/audio source identity differs");
+  if(!read(bundle,PodunkPackRole::HouseCameraControl,romfs_root,bytes,error)||
+      !candidate.camera_control_.load(bytes.data(),bytes.size(),candidate.tree_,tree->ir_sha256,error)||
+      candidate.camera_control_.ir_sha256()!=camera_entry->ir_sha256||
+      !read(bundle,PodunkPackRole::HouseSceneAudio,romfs_root,bytes,error)||
+      !candidate.scene_audio_.load(bytes.data(),bytes.size(),candidate.tree_,error)||
+      candidate.scene_audio_.ir_sha()!=audio_entry->ir_sha256)
+    return fail(error,"House RoomShaker/audio source/dependency binding differs");
   if (candidate.canvas_.source_scene() != candidate.tree_.source_scene() ||
       candidate.canvas_.tree_ir_sha() != tree->ir_sha256)
     return fail(error, "House Canvas complete tree authoring/source binding differs");

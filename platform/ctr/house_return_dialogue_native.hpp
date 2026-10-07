@@ -27,7 +27,9 @@ public:
   HouseReturnDialogueNativeOwner(HouseReturnDialogueNativeOwner&&)=delete;
   HouseReturnDialogueNativeOwner&operator=(HouseReturnDialogueNativeOwner&&)=delete;
   bool prepare(HouseReturnDialogueNativeInput,std::string&);
+  bool prepare_staged(HouseReturnDialogueNativeInput,std::string&);
   bool driver_input(HouseReturnDialogueInput&,std::string&)const;
+  bool staged_driver_input(HouseReturnDialogueInput&,std::string&)const;
   // Call after the driver's real World bind and before any new native factory.
   bool bind_programme(std::string&);
   // Same fixed source owner, after real House Ready and closed programme bind.
@@ -53,6 +55,8 @@ public:
                       uint32_t&,std::string&)override;
   bool choice_target_committed(const HouseReturnDialogueContext&,std::string&)override;
 private:
+  friend class HouseReturnDialogue;
+  enum class Admission { FullReady, AssignedStaged };
   HouseReturnDialogueNativeInput in_{};
   PodunkMickHouseNativeState owners_{};
   HouseReturnNpcRuntime *npc_source_=nullptr;
@@ -65,6 +69,11 @@ private:
   upstream::FieldObjectId selected_dialogue_=0;
   uint32_t selected_generation_=0;
   bool state(PodunkMickHouseNativeState&,std::string&)const;
+  bool state(PodunkMickHouseNativeState&,Admission,std::string&)const;
+  bool prepare_impl(HouseReturnDialogueNativeInput,Admission,std::string&);
+  bool driver_input_impl(HouseReturnDialogueInput&,Admission,std::string&)const;
+  bool observe_impl(const HouseReturnDialogueContext&,HouseReturnDialogueReceipt&,
+      Admission,std::string&)const;
   bool context(const HouseReturnDialogueContext&,upstream::FieldProgrammeContext&,
                std::string&)const;
   bool actor(upstream::FieldObjectId,uint32_t&,uint32_t&,std::string&)const;

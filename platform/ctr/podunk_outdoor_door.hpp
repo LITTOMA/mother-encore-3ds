@@ -80,6 +80,14 @@ public:
   bool deferred(const upstream::FieldDeferredMessage &, std::string &);
   bool declaration(upstream::FieldObjectId, std::string_view, uint32_t &,
                    std::string &) const;
+  const upstream::FieldDoorData *source_data()const{return in_.doors;}
+  upstream::FieldDoorRuntime *source_runtime()const{return runtime_;}
+  const upstream::FieldGlobalRegistry *registry()const{return in_.registry;}
+  // Checks the same onready references, body callback slot and live source
+  // coroutine during ReparentPersistent. It creates no new runtime/waiter.
+  bool rebind_persistent_door(upstream::FieldNodeTreeRuntime &old_tree,
+      upstream::FieldNodeTreeRuntime &next,
+      const std::vector<upstream::FieldObjectId>&,std::string &);
   const PodunkDoorScene &destination() const { return destination_; }
 private:
   bool live(std::string &) const;

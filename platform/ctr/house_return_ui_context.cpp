@@ -39,7 +39,7 @@ bool HouseReturnUiContext::domains(std::string&e)const{
     return reject(e,"House NPC UI lost its actual retained source/domain borrowers");
   e.clear();return true;
 }
-bool HouseReturnUiContext::live_ui(std::string&e)const{
+bool HouseReturnUiContext::live_ui(std::string&e,FieldObjectId ready_npc)const{
   if(!domains(e))return false;
   PodunkMickHouseNativeState s;
   if(!in_.session->house_native_state(*in_.house,s,e))return false;
@@ -52,7 +52,9 @@ bool HouseReturnUiContext::live_ui(std::string&e)const{
       s.random!=in_.continuation->random()||s.uid_ledger!=in_.continuation->uid_ledger()||
       in_.dialogue->world()!=&in_.house->world||
       in_.house->world.house_programme_owner()!=in_.dialogue||
-      in_.house->house.programme_owner()!=in_.dialogue)
+      (in_.house->house.programme_owner()!=in_.dialogue&&
+       (!ready_npc||!in_.npc_source||
+        !in_.dialogue->staged_npc_context(*in_.npc_source,ready_npc,e))))
     return reject(e,"House NPC UI is not bound to the actual House/native programme receiver");
   e.clear();return true;
 }
@@ -75,31 +77,39 @@ bool HouseReturnUiContext::npc(FieldObjectId id,bool entered,std::string&e)const
     return reject(e,"House NPC UI receiver differs from the actual full House source NPC");
   e.clear();return true;
 }
-bool HouseReturnUiContext::player(FieldObjectId&out,std::string&e)const{
+bool HouseReturnUiContext::player(FieldObjectId&out,std::string&e,FieldObjectId ready_npc)const{
   if(!domains(e))return false;
   auto&body=in_.player->body();const auto*data=body.data();
   out=body.object();std::shared_ptr<const GlobalLoadObjectArray>party;
+  auto player_tree=registry_->tree_owner(out);
+  const bool transferred=body.tree()==in_.tree&&in_.player->tree()==in_.tree&&
+      player_tree.get()==in_.tree;
+  const bool staged=!transferred&&ready_npc&&in_.npc_source&&player_tree&&
+      body.tree()==player_tree.get()&&in_.player->tree()==player_tree.get()&&
+      in_.dialogue->staged_player(*in_.npc_source,ready_npc,out,*player_tree,e);
   if(!body.constructed()||!data||!data->valid()||!in_.player->ready_complete()||
       data!=in_.continuation->player_initialization()||
-      body.registry()!=registry_||body.tree()!=in_.tree||in_.player->tree()!=in_.tree||
-      !registry_->object_exists(out)||registry_->tree_owner(out).get()!=in_.tree||
+      body.registry()!=registry_||(!transferred&&!staged)||
+      !registry_->object_exists(out)||!player_tree||
       data->identity().upstream_commit!=in_.sources->tree().identity().upstream_commit||
       !global_->array(FieldGlobalMemberRole::PartyObjects,party,e)||
       !party||party->values.empty()||party->values.front()!=out)
     return reject(e,"House NPC global player is not the retained ready Player source body");
-  const auto*s=in_.tree->state(out);const auto*d=in_.tree->descriptor(out);
+  const auto*s=player_tree->state(out);const auto*d=player_tree->descriptor(out);
   const auto&records=data->recipe().records();FieldIdentity identity;
-  if(!s||!s->alive||!s->inside||!s->bound||!d||records.empty()||
-      !in_.tree->object_identity(out,identity)||!same(identity,data->identity())||
+  if(!s||!s->alive||(!s->inside&&!staged)||!s->bound||!d||records.empty()||
+      !player_tree->object_identity(out,identity)||!same(identity,data->identity())||
       d->id!=records.front().id||d->script_sha!=records.front().script_sha||
       d->script!=records.front().script)
     return reject(e,"House NPC player class lost its checked source constructor identity");
   e.clear();return true;
 }
 bool HouseReturnUiContext::context(FieldObjectId id,FieldNpcContext&out,std::string&e)const{
-  if(!npc(id,true,e)||!live_ui(e))return false;
+  if(!npc(id,true,e)||!live_ui(e,id))return false;
   FieldObjectId actual_player=0,talker=0;FieldTransform transform;FieldNpcContext value;
-  if(!player(actual_player,e)||!in_.tree->world_transform(actual_player,transform,e)||
+  if(!player(actual_player,e,id))return false;
+  const auto player_tree=registry_->tree_owner(actual_player);
+  if(!player_tree||!player_tree->world_transform(actual_player,transform,e)||
       !in_.player->motion().source_paused(value.player_paused,e)||
       !ui_->source_is_in_battle(ui_->binding().object,value.in_battle,e)||
       !ui_->source_is_in_cutscene(ui_->binding().object,value.cutscene,e)||

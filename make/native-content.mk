@@ -64,6 +64,12 @@ house-inspection-reentry: house-return-inspection field-door house-geometry hous
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection_reentry.py compile
 house-inspection-restore: restore house-inspection-reentry house-node-tree
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection_restore.py compile
+CONTENT_TASKS += house-return-camera-control house-return-camera-audio
+.PHONY: house-return-camera-control house-return-camera-audio
+house-return-camera-control: house-node-tree house-return-canvas
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_camera_control.py compile
+house-return-camera-audio: house-node-tree field-scene-audio
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_camera_control_audio.py compile
 .PHONY: house-reentry house-geometry house-node-tree house-return-ladder field-door
 house-geometry:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_geometry.py compile

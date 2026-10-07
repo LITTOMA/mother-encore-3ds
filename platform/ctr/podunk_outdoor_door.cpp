@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <limits>
+#include <set>
 
 namespace encore::ctr {
 using namespace upstream;
@@ -401,6 +402,13 @@ bool PodunkOutdoorDoor::deferred(const FieldDeferredMessage &m, std::string &e) 
     return fail(e, "Outdoor Door received a foreign native source call");
   const auto at = body_slots_.find(m.object);
   if (at != body_slots_.end()) {
+    auto tree=in_.registry->tree_owner(m.object);
+    const auto*n=tree?tree->state(m.object):nullptr;
+    const auto*d=tree?tree->descriptor(m.object):nullptr;
+    FieldObjectId actual=0;
+    if(!runtime_||!d||!n||!n->inside||!n->bound||!n->ready_notified||
+       !runtime_->source_ready(d->id)||!source(d->id,actual,e)||actual!=m.object)
+      return fail(e,"Outdoor Door body callback lost its actual original source/Ready owner");
     if (m.args.size() != 1 || !std::holds_alternative<FieldObjectRef>(m.args[0]) ||
         !in_.signals->emitting_to(m.object, in_.target->data()->body_signal(),
                                   m.object, m.member))
@@ -426,6 +434,35 @@ bool PodunkOutdoorDoor::deferred(const FieldDeferredMessage &m, std::string &e) 
     return fail(e, "Outdoor Door deferred source capsule/coroutine cursor differs");
   deferred_pending_ = false;
   return runtime_->deferred_commit(e);
+}
+bool PodunkOutdoorDoor::rebind_persistent_door(FieldNodeTreeRuntime&old,
+    FieldNodeTreeRuntime&next,const std::vector<FieldObjectId>&objects,std::string&e){
+  FieldDoorDescriptor d;FieldObjectId object=0,marker=0,audio=0;
+  if(!live(e)||!runtime_||runtime_->data()!=in_.doors||
+     runtime_->phase()!=FieldDoorPhase::Deferred||!runtime_->source_ready(runtime_->active_door())||
+     !in_.doors->find(runtime_->active_door(),d)||old_tree_.get()!=&old||old.state(old_root_)||
+     destination_.tree.get()!=&next||next_step_!=uint32_t(FieldDoorSceneStep::ReparentPersistent)||
+     deferred_pending_||!transitioning_door_||!body_slots_.count(transitioning_door_)||
+     old.object_domain()!=next.object_domain()||next.object_domain()!=in_.registry->kernel()||
+     objects.size()!=4||objects.front()!=transitioning_door_||
+     std::find(detached_persistent_.begin(),detached_persistent_.end(),transitioning_door_)==detached_persistent_.end()||
+     !source(d.id,object,e)||!source(d.marker,marker,e)||!source(d.audio,audio,e)||
+     object!=transitioning_door_)
+    return fail(e,"Outdoor Door retained source coroutine/onready references changed during migration");
+  const auto shape=next.source_object(d.shape);
+  const std::set<FieldObjectId>expected{object,marker,audio,shape};
+  if(expected.size()!=4||expected.count(0)||std::set<FieldObjectId>(objects.begin(),objects.end())!=expected)
+    return fail(e,"Outdoor Door retained source subtree differs");
+  for(auto id:objects){const auto*n=next.state(id);
+    if(old.state(id)||!n||n->inside||n->ready_first||!n->bound||
+       in_.registry->tree_owner(id).get()!=&next||!in_.registry->object_exists(id)||
+       (id==object?n->parent!=0:n->parent!=object))
+      return fail(e,"Outdoor Door source rebind must follow migration and precede actual add_child");
+  }
+  // source() already resolves these original onready ObjectIDs through the
+  // actual Registry. Hosts, phase, callback slots and pending source waits
+  // remain those of this same FieldDoorRuntime, without a second borrower.
+  e.clear();return true;
 }
 bool PodunkOutdoorDoor::declaration(FieldObjectId id, std::string_view signal,
                                     uint32_t &argc, std::string &e) const {

@@ -97,6 +97,38 @@ struct FieldSceneConsumers {
  const FieldMapView*map=nullptr;const FieldGeometryView*geometry_data=nullptr;FieldGeometrySpace*geometry=nullptr;
 };
 struct FieldSceneScriptAdmission {uint32_t id=0,family=0,capability=0;std::array<uint8_t,32>source_sha{};};
+class FieldSceneHost;
+class FieldObjectSignals;
+// A receipt made from a real current-scene branch, before its source free.
+// Consumers cannot manufacture a list of source IDs to revoke.
+class FieldSceneRetirement {
+public:
+ FieldSceneRetirement()=default;
+ FieldSceneRetirement(const FieldSceneRetirement&)=delete;
+ FieldSceneRetirement&operator=(const FieldSceneRetirement&)=delete;
+ FieldSceneRetirement(FieldSceneRetirement&&)=default;
+ FieldSceneRetirement&operator=(FieldSceneRetirement&&)=default;
+ FieldObjectId old_root()const{return root_;}
+ const FieldNodeTreeRuntime*old_tree()const{return tree_;}
+ const std::vector<FieldObjectId>&objects()const{return objects_;}
+ const std::vector<uint32_t>&scripts()const{return scripts_;}
+ bool committed()const{return committed_;}
+private:
+ friend class FieldSceneHost;
+ const FieldSceneHost*owner_=nullptr;
+ const FieldSceneData*data_=nullptr;
+ const FieldNodeTreeData*source_=nullptr;
+ const FieldNodeTreeRuntime*tree_=nullptr;
+ const FieldGlobalRegistry*registry_=nullptr;
+ const FieldObjectSignals*signals_=nullptr;
+ FieldObjectId root_=0,door_=0;
+ uint32_t door_source_=0;
+ FieldIdentity identity_{};
+ std::vector<FieldObjectId>objects_;
+ std::vector<uint32_t>scripts_;
+ std::unordered_map<uint32_t,FieldSceneScriptAdmission>admissions_;
+ bool committed_=false;
+};
 // Lifecycle owner for the complete source script roster. There is no generic
 // "approve script" callback. A typed role must execute its real Ready method;
 // unknown leaf scripts retain the cursor and block the scene. Partial callback
@@ -109,6 +141,7 @@ public:
  bool ready_next(std::string&);bool ready_to_boundary(std::string&);
  uint32_t ready_cursor()const{return cursor_;}bool scene_ready()const;
  const FieldSceneReady*blocked()const{return blocked_valid_?&blocked_:nullptr;}
+ bool scene_retired()const{return retired_scene_;}
  bool script_admission(uint32_t,FieldSceneScriptAdmission&)const;
  FieldMapGateState gate(uint32_t)const;
  // FlagLandmark _check_flags registered on the real flags_updated signal.
@@ -132,10 +165,24 @@ public:
  bool switches_state()const{return switches_;}
  // Called only after actual source SceneTree deferred deletion has committed.
  bool commit_deleted(uint32_t,std::string&);
+ // Original Door source owner closes only after its real Done coroutine,
+ // complete native ObjectDB deletion and retirement of the original RID.
+ bool commit_persistent_door_deleted(const FieldDoorData&,const FieldDoorRuntime&,
+     uint32_t,const FieldNodeTreeRuntime&,const FieldGlobalRegistry&,
+     FieldObjectId,FieldPhysicsRid,const std::vector<FieldObjectId>&,std::string&);
+ // Whole-scene retirement is separate from FlagLandmark deferred deletion.
+ // Stage after persistent remove_child; commit only after actual old free and
+ // the original global.currentScene assignment to the checked new branch.
+ bool stage_scene_retirement(const FieldNodeTreeData&,const FieldNodeTreeRuntime&,
+     const FieldGlobalRegistry&,const FieldObjectSignals&,FieldObjectId,const FieldDoorData&,
+     const FieldDoorRuntime&,FieldObjectId,FieldSceneRetirement&,std::string&);
+ bool commit_scene_retirement(FieldSceneRetirement&,const FieldNodeTreeRuntime&,
+     FieldObjectId,std::string&);
 private:
  struct Gate {bool ready=false,visible=true,queued=false,deleted=false;};
  const FieldSceneData*data_=nullptr;FieldSceneConsumers consumers_;FieldSceneHostOps host_;
  uint32_t cursor_=0;bool switches_=false,poisoned_=false,blocked_valid_=false,base_done_=false;
+ bool retired_scene_=false;
  FieldSceneReady blocked_{};std::unordered_map<uint32_t,Gate>gates_;
  std::unordered_map<uint32_t,FieldSceneScriptAdmission>admissions_;
  bool read_flag(bool,std::string_view,bool&,std::string&)const;

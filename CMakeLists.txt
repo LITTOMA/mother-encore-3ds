@@ -20,6 +20,7 @@ add_library(encore_core
     runtime/house_return_button_prompt.cpp runtime/house_return_controls.cpp
     runtime/house_return_inspection_programme.cpp
     runtime/house_inspection_restore.cpp
+    runtime/house_return_camera_control.cpp
     runtime/house_return_ladder.cpp
     runtime/field_scene_audio_data.cpp runtime/field_scene_signal_callbacks_data.cpp
     runtime/field_visibility_data.cpp

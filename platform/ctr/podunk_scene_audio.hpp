@@ -3,7 +3,9 @@
 #include "encore/player_named_sfx.hpp"
 #include "podunk_player_native_media.hpp"
 #include "podunk_scene_loop.hpp"
+namespace encore::upstream {class HouseReturnSources;}
 namespace encore::ctr {
+class PodunkNativeRoot;
 struct PodunkSceneAudioListener {
   upstream::FieldObjectId viewport = 0;
   bool enabled = false, explicit_listener = false;
@@ -38,6 +40,19 @@ public:
                upstream::FieldNodeTreeRuntime &,
                upstream::FieldGlobalRegistry &, AudioPlayer &,
                PodunkSceneAudioHost, std::string &);
+  // Borrow a detached destination on this SAME AudioServer/channel owner.
+  // Native/source constructors remain real; no lifecycle replay or clock.
+  bool prepare_house(const upstream::FieldSceneAudioData &,
+                     upstream::FieldNodeTreeRuntime &,
+                     upstream::FieldGlobalRegistry &,std::string &);
+  bool bind_house_spatial(const upstream::HouseReturnSources&,const PodunkNativeRoot&,
+                          upstream::FieldNodeTreeRuntime&,std::string&);
+  // After every old-tree native voice was actually Exit/Delete/released, and
+  // before destroying that Tree/data owner. Keeps House callbacks/playback.
+  bool retire_previous_scene(upstream::FieldNodeTreeRuntime &,std::string &);
+  const upstream::FieldSceneAudioData *source_data(upstream::FieldObjectId) const;
+  const upstream::FieldNodeTreeRuntime *source_tree(upstream::FieldObjectId) const;
+  const upstream::FieldGlobalRegistry *registry() const {return registry_;}
   bool prepare_named(const upstream::PlayerNamedSfxData &,
                      upstream::FieldNodeTreeRuntime &,
                      upstream::FieldGlobalRegistry &, AudioPlayer &,
@@ -85,6 +100,8 @@ private:
   };
   struct Voice {
     upstream::FieldNodeTreeRuntime *tree = nullptr;
+    const upstream::FieldSceneAudioData *audio_source=nullptr;
+    upstream::FieldIdentity identity{};
     PodunkAudioVoiceCallback callback;
     const upstream::FieldSceneAudioNode *source = nullptr;
     PodunkSceneAudioState state;
@@ -102,10 +119,13 @@ private:
     std::vector<Output> outputs, previous;
   };
   bool live(std::string &) const;
-  const upstream::FieldSceneAudioStream *stream_binding(uint32_t) const;
-  bool construct_voice(upstream::FieldObjectId, const upstream::FieldSceneAudioNode &, std::string &);
+  const upstream::FieldSceneAudioStream *stream_binding(uint32_t,const Voice *voice=nullptr) const;
+  bool construct_voice(upstream::FieldObjectId, const upstream::FieldSceneAudioNode &, std::string &,
+                       upstream::FieldNodeTreeRuntime *tree=nullptr,
+                       const upstream::FieldSceneAudioData *data=nullptr);
   Voice *voice(upstream::FieldObjectId, std::string &);
-  bool asset(uint32_t, upstream::AudioAsset &, std::string &) const;
+  bool asset(uint32_t, upstream::AudioAsset &, std::string &,
+             const upstream::FieldSceneAudioData *source=nullptr) const;
   bool internal(Voice &, bool, std::string &);
   bool reserve(Voice &, std::string &);
   bool read(Voice &, int16_t *, uint32_t, uint32_t &, std::string &);
@@ -114,7 +134,13 @@ private:
   bool queued(const Voice &) const;
   void free_voice(Voice &);
   void release_channel(Voice &);
-  const upstream::FieldSceneAudioData *data_ = nullptr;
+  const upstream::FieldSceneAudioData *data_ = nullptr,*house_data_=nullptr;
+  upstream::FieldNodeTreeRuntime *house_tree_=nullptr;
+  std::array<uint8_t,32>house_ir_{};
+  const upstream::HouseReturnSources*house_sources_=nullptr;
+  const PodunkNativeRoot*house_root_=nullptr;
+  const upstream::FieldSceneAudioData*house_spatial_data_=nullptr;
+  upstream::FieldNodeTreeRuntime*house_spatial_tree_=nullptr;
   const upstream::PlayerNamedSfxData *named_ = nullptr;
   upstream::FieldNodeTreeRuntime *tree_ = nullptr;
   upstream::FieldGlobalRegistry *registry_ = nullptr;

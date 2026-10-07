@@ -220,9 +220,11 @@ const Schema schemas[] = {
     {"ENCFDLG1", 1, 0, 1, 1},
     {"ENCRMD01", 1, 0x454e0002, 10, 8},
     {"ENCHRET1", 2, 0x454e0075, 1, 1},
-    {"ENCHRST1", 1, 0x454e0082, 1, 1}};
+    {"ENCHRST1", 1, 0x454e0082, 1, 1},
+    {"ENCHSHK1", 2, 0x48525331, 2, 1},
+    {"ENCSAUD1", 1, 0x454e0067, 1, 1}};
 static_assert(sizeof(schemas) / sizeof(*schemas) ==
-                  uint32_t(PodunkPackRole::HouseInspectionRestore),
+                  uint32_t(PodunkPackRole::HouseSceneAudio),
               "Each bundle role requires exactly one current reader schema");
 const PodunkPackRole script_schemas[] = {PodunkPackRole::Grass,
                                          PodunkPackRole::Npc,
@@ -335,8 +337,9 @@ bool PodunkBundleData::load(const uint8_t *p, size_t n,
     a.original_header = r.bytes(hc);
     if (!r.ok || role != i + 1 || !safe(a.path) ||
         a.path.substr(0, 5) != "data/" || !paths.insert(a.path).second ||
-        a.kind < 1 || a.kind > 3 ||
+        a.kind < 1 || a.kind > 4 ||
         ((a.role == PodunkPackRole::HouseInspectionRoom) != (a.kind == 3)) ||
+        ((a.role == PodunkPackRole::HouseCameraControl) != (a.kind == 4)) ||
         !a.size || a.size > 64 * 1024 * 1024 ||
         !a.identity.scene_id || !nz(a.sha256) ||
         !nz(a.identity.source_sha256) || !nz(a.ir_sha256))
@@ -364,6 +367,19 @@ bool PodunkBundleData::load(const uint8_t *p, size_t n,
           u32(a.original_header.data()+32) != a.rules ||
           u32(a.original_header.data()+36) != a.capability)
         return fail(e, "Bundle native Room header identity differs");
+    } else if (a.kind == 4) {
+      // ENCHSHK1 owns a separate header, not a FieldIdentity block layout.
+      // Its typed loader checks the full payload, Tree IR and source body.
+      if (size_t(pin-a.original_header.begin()) != 32 ||
+          u32(a.original_header.data()+12) != a.size ||
+          u32(a.original_header.data()+20) != a.family ||
+          u32(a.original_header.data()+24) != a.capability ||
+          u32(a.original_header.data()+28) != a.rules ||
+          u32(a.original_header.data()+52) != a.identity.scene_id ||
+          !std::equal(a.identity.source_sha256.begin(),
+                      a.identity.source_sha256.end(),
+                      a.original_header.begin()+56))
+        return fail(e, "Bundle RoomShaker header/source identity differs");
     } else if (a.kind == 1) {
       auto at = size_t(pin - a.original_header.begin());
       if ((at != 40 && at != 48) || at + 52 > a.original_header.size() ||

@@ -416,6 +416,37 @@ bool PodunkPlayerPhysicsWorld::admit_grass_monitor(const GrassNativeData&data,Fi
  if(!data_||!data.valid()||monitors_.count(id)||flushing_||locked_||!tree||tree.get()!=tree_||!n||!s||!s->inside||!s->bound||!s->ready_notified||contact.actual_owner!=id||n->id!=data.node(GrassNativeRole::Area)||!data.native_matches(*n)||!tree->object_identity(id,identity)||identity.scene_id!=data.identity().scene_id||identity.source_sha256!=data.identity().source_sha256||identity.upstream_commit!=data.identity().upstream_commit||!space_->live_geometry(contact,actor,owner,shape,e)||owner.kind!=4||actor.kind!=FieldGeometryKind::Rectangle||owner.layer!=data.profile().collision_layer||owner.mask!=data.profile().collision_mask||owner.flags!=((data.monitoring()?2u:0u)|(data.monitorable()?4u:0u)))return fail(e,"Grass actual PhysicsWorld source/Ready/Rectangle monitor rejected");
  monitors_.emplace(id,Monitor{data.monitoring(),true,{},{}});grass_monitors_.emplace(id,contact);e.clear();return true;
 }
+bool PodunkPlayerPhysicsWorld::admit_persistent_door_monitor(const FieldDoorData&data,
+    const FieldPersistentDoorGeometry&receipt,std::string&e){
+  FieldPersistentDoorGeometry actual;FieldDoorDescriptor source;FieldIdentity identity;
+  const auto*object=tree_?tree_->state(receipt.door):nullptr;
+  const auto*shape=tree_?tree_->state(receipt.shape):nullptr;
+  const auto*descriptor=tree_?tree_->descriptor(receipt.door):nullptr;
+  const auto&c=receipt.contact;
+  if(!data_||!space_||!registry_||receipt.data!=&data||receipt.tree!=tree_||
+     receipt.registry!=registry_||!data.valid()||!data.find(receipt.source_id,source)||
+     monitors_.count(receipt.door)||natives_.count(receipt.door)||flushing_||locked_||
+     !object||!shape||!descriptor||!object->inside||!shape->inside||
+     !object->bound||!shape->bound||object->ready_first||shape->ready_first||
+     !object->ready_notified||!shape->ready_notified||shape->parent!=receipt.door||
+     registry_->tree_owner(receipt.door).get()!=tree_||
+     registry_->tree_owner(receipt.shape).get()!=tree_||
+     !tree_->object_identity(receipt.door,identity)||
+     identity.scene_id!=data.identity().scene_id||identity.source_sha256!=data.identity().source_sha256||
+     identity.upstream_commit!=data.identity().upstream_commit||descriptor->id!=source.id||
+     descriptor->native_class!="Area2D"||descriptor->script!=data.script()||
+     descriptor->script_sha!=data.script_sha()||c.actual_owner!=receipt.door||
+     c.actual_shape!=receipt.shape||c.stable_id!=source.id||
+     !space_->persistent_door(receipt.door,actual,e)||actual.data!=&data||
+     actual.tree!=tree_||actual.registry!=registry_||actual.shape!=receipt.shape||
+     actual.rid.space!=receipt.rid.space||actual.rid.handle!=receipt.rid.handle||
+     !space_->rid_alive(actual.rid)||actual.contact.actual_owner!=c.actual_owner||
+     actual.contact.actual_shape!=c.actual_shape||actual.contact.part!=c.part||
+     actual.contact.native_shape_index!=c.native_shape_index||actual.contact.stable_id!=c.stable_id)
+    return fail(e,"Persistent Door monitor requires the exact retained source/Rectangle/RID and native reenter");
+  monitors_.emplace(receipt.door,Monitor{bool(source.flags&1u),true,{},{}});
+  e.clear();return true;
+}
 bool PodunkPlayerPhysicsWorld::static_monitor_exit(FieldObjectId id,
                                                    std::string &e) {
   if (natives_.count(id) || !monitors_.count(id) || flushing_ || locked_)

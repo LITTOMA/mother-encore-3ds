@@ -1,0 +1,96 @@
+{
+  "schema": 2,
+  "engine_input_commit": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8",
+  "engine_input_source_sha256": "c07cd47833c2702df6a382e364c4af6286612ba325e937b2a4885fd5ef1d1d5b",
+  "engine_input_start_sha256": "d25717cde33bd2aabbe44bc3ef1187dada87d3f51f0c292f86cbd8a8a76c2e17",
+  "ui_game_over_member": "_game_over",
+  "ui_game_over_initial": false,
+  "ui_source": "Scripts/global/uiManager.gd",
+  "ui_game_over_getter_sha256": "0a388d090cc73098b69b4b82150016740f71be4a16cd4dee1f4e57a6cb4a8de6",
+  "kind": "encore.house-return-camera-control.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "scene_id": 2861651240,
+  "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+  "tree_ir_sha256": "2f00ad4969256d37bad977fee9ff52a16443158c3b603c16aae787ed7d3fc978",
+  "producer_sha256": "4ca383729b5d91e621427f2bf6276f96d87006ec3afc3c8bda1bbc0ca2ddd6c3",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b"
+  },
+  "script": "Scripts/Main/roomshaker.gd",
+  "prototype": "Nodes/Reusables/roomshaker.tscn",
+  "sound": "Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav",
+  "bus": "SFX",
+  "records": [
+    {
+      "id": 3698840859,
+      "ready": 462,
+      "node": "Room Shaker",
+      "native_class": "Control"
+    },
+    {
+      "id": 3967327820,
+      "ready": 460,
+      "node": "Room Shaker/Timer",
+      "native_class": "Timer"
+    },
+    {
+      "id": 6102708,
+      "ready": 461,
+      "node": "Room Shaker/AudioStreamPlayer",
+      "native_class": "AudioStreamPlayer"
+    }
+  ],
+  "auto_start": false,
+  "wait_time": 4.0,
+  "wait_margin": 0.5,
+  "magnitude": 4.0,
+  "length": 0.8,
+  "direction": [
+    1.0,
+    0.0
+  ],
+  "delay": 5.0,
+  "joy": [
+    0.0,
+    0.6,
+    0.8
+  ],
+  "player_camera": 3,
+  "player_state_member": "_state",
+  "methods": [
+    "_ready",
+    "delayed_start",
+    "start_shake",
+    "stop_shake",
+    "vibrate",
+    "_on_Timer_timeout"
+  ],
+  "method_sha256": {
+    "_ready": "a34adb7f30ac0c01eb83a0aaa09a9bbe08b51ae1538a7336873d640d3a0165e1",
+    "delayed_start": "5b4114150f01315e200026b28726e833a9fa15ce6333f9c3578444bb01671263",
+    "start_shake": "10902772b07851ce10416d5f22247c62bd6dc97a9bc7ee036e0a7900399781e6",
+    "stop_shake": "3b76b13f577be3025178cc2c3044c2f4f9ab4d81f312260559c174e214ff746c",
+    "vibrate": "0e9c45b5e97f9b51b58aa2d06488c9f71fb186d82e63c12744b559c17c9a4123",
+    "_on_Timer_timeout": "cc8ab27bcd5a36abb13fff970076d1db3b6f3e36b398f80bc70fb76a7520957b"
+  },
+  "semantics": [
+    "One actual House RoomShaker Control, no fixed House Camera2D node",
+    "Native repeating Timer remains in the sole actual internal traversal; strict time_left==0 start gate",
+    "SceneTreeTimer default process_pause=true; multiple delayed_start waiters survive stop_shake",
+    "Timeout battle/game-over/actual Player CAMERA guards short circuit in source order",
+    "Camera shake, audio play, global rumble gate/Input call precede shared rand_range and f32 Timer setter",
+    "CurrentCamera receiver must be a concrete source camera; unknown receivers reject",
+    "No whole House Ready approval, second VM, private timer or copied RNG"
+  ],
+  "unverified": [
+    "Manual negative cases not run",
+    "ARM integration and hardware run not performed"
+  ]
+}

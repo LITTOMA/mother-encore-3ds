@@ -13,6 +13,7 @@ struct HouseReturnUiContextInput {
   PodunkPlayerHost *player=nullptr;
   HouseReturnDialogue *dialogue=nullptr;
   bool actual_debug_build=false;
+  HouseReturnNpcRuntime *npc_source=nullptr;
 };
 // Borrows the retained UI/Global/Player and the destination House. No input,
 // programme lease, timer, dialogue stack or source state is owned here. Keep
@@ -42,8 +43,8 @@ private:
   HouseUiContinuation *ui_=nullptr;
   bool prepared_=false,installed_=false;
   bool domains(std::string&)const;
-  bool live_ui(std::string&)const;
+  bool live_ui(std::string&,upstream::FieldObjectId ready_npc=0)const;
   bool npc(upstream::FieldObjectId,bool entered,std::string&)const;
-  bool player(upstream::FieldObjectId&,std::string&)const;
+  bool player(upstream::FieldObjectId&,std::string&,upstream::FieldObjectId ready_npc=0)const;
 };
 } // namespace encore::ctr

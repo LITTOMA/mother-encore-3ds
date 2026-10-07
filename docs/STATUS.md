@@ -1,8 +1,12 @@
 # 当前状态
 
-返回室内的完整调查 Room 另有独立 Restore 资源，复用原版 UID、NPC 事件、音乐及初始库存语义，并绑定实际新 Room／Reentry／完整树字节和来源。读取不创建节点、不执行 Ready、不消耗随机数。该候选的 dependent bundle／catalog 正在使用固定 Linux 工具重新生成，未完成其自身的构建或游玩验收。
+返回室内的完整调查 Room 另有独立 Restore 资源，复用原版 UID、NPC 事件、音乐及初始库存语义，并绑定实际新 Room／Reentry／完整树字节和来源。新增实际 RoomShaker 与完整房屋音频资源，候选闭包为 110 项角色资源；读取不创建节点、不执行 Ready、不消耗随机数。当前依赖 bundle／catalog 仍需由固定 Linux 工具生成并完成实际交叉构建。
 
-Actions `37683045321` 在真实 ARM 编译中发现库存消费者访问三个私有只读接口，尚未产出 3DSX／CIA。`eb2027d` 已修正访问范围，保留旧 Drawer 执行私有，正在 [run 37685136196](https://github.com/LITTOMA/mother-encore-3ds/actions/runs/37685136196) 重新构建。测试、sanitizer、模拟器与真机没有运行。手动 `house-resources` 模式只生成该 House 来源闭包；默认主线更新仍构建和上传 3DSX／CIA，全面测试仍只由显式手动 `full` 启动。
+Actions `37683045321` 在真实 ARM 编译中发现库存消费者访问三个私有只读接口，未产出 3DSX／CIA。`eb2027d` 修正访问范围、保留旧 Drawer 执行私有后，[run 37685136196](https://github.com/LITTOMA/mother-encore-3ds/actions/runs/37685136196) 已完成真实 ARM／3DSX／CIA、实际 RomFS 提取比对及 artifact 上传，包含 Continue／LOAD 出门 Fade 元数据修复。该结果只适用于此提交。测试、sanitizer、模拟器与真机没有运行。
+
+同一持久 Door 的实际 ObjectID／RID／脚本协程和玩家服务地址保留路径已有实现；旧场景来源仅在实际删除且无活动或排队回调后退役。RoomShaker 使用实际原生 Timer、同一场景计时器、相机、音频、UI 和随机流；CTR 不提供实体震动。共享音频编码器改为显式 IR 参数，防止四路生产中的模块全局变量竞态。完整返家 Target 仍有逐项未映射的来源，分配前明确拒绝，尚未宣称返家可玩。
+
+手动 `house-resources` 仅生成 House 来源闭包；默认主线更新仍构建和上传 3DSX／CIA，全面测试只由显式手动 `full` 启动。本机 Linux 容器当前不可用。首次云端来源生成 `37687058086` 卡在 Ubuntu 包索引读取，尚未执行 producer，已取消并保留原始日志；下一次优先复用 runner 的音频工具并限制安装等待。
 
 音频设备与资源所有者现已分开：NDSP 成功时保留真实输出；DSP 组件／服务不可用时继续使用真实 PCM 的墙钟播放队列，保留暂停、音高、循环与完成时序，避免将无声音输出当作户外场景缺失。音乐、人物和场景音效在实际 24 个声道中统一租用，修正此前超过 libctru 有效范围的声道编号。此改动尚未进行模拟器或真机验收。
 

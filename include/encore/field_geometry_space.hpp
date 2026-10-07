@@ -60,16 +60,41 @@ struct FieldGeometryNodeUpdate {
 class FieldNpcRuntime;
 class HouseReentryData;
 class HouseReturnSources;
+class FieldDoorData;
+struct FieldPersistentDoorGeometry {
+  const FieldDoorData *data=nullptr;
+  FieldNodeTreeRuntime *tree=nullptr;
+  FieldGlobalRegistry *registry=nullptr;
+  FieldObjectId door=0,shape=0;
+  uint32_t source_id=0;
+  FieldPhysicsRid rid{};
+  FieldGeometryContact contact{};
+  bool disabled=false;
+};
 class FieldGeometrySpace {
 public:
+  // Original persistent Door only: after actual remove_child/Exit, move its
+  // existing static RID and exact Rectangle into a retained native owner.
+  bool retain_detached_door(const FieldDoorData &,uint32_t,FieldNodeTreeRuntime &,
+      FieldGlobalRegistry &,FieldObjectId,FieldObjectId,bool native_disabled,
+      FieldPersistentDoorGeometry &,std::string &);
+  bool persistent_door(FieldObjectId,FieldPersistentDoorGeometry &,std::string &)const;
+  bool rebind_persistent_door(const FieldDoorData &,FieldObjectId,
+      FieldNodeTreeRuntime &old_tree,FieldNodeTreeRuntime &next,
+      FieldGlobalRegistry &,std::string &);
+  bool update_persistent_door(const FieldDoorData &,FieldObjectId,bool disabled,
+      std::string &);
+  bool delete_persistent_door_shape(const FieldDoorData &,FieldObjectId,std::string &);
+  bool delete_persistent_door_owner(const FieldDoorData &,FieldObjectId,std::string &);
   bool apply_npc_interaction(const FieldNpcRuntime &, uint32_t,
                              FieldNodeTreeRuntime &, FieldGlobalRegistry &,
                              std::string &);
   bool configure(const FieldGeometryView &, float grid_cell_size,
                  std::string &);
   // Commit the checked native House geometry only after the actual old scene
-  // has exited and been deleted, with every dynamic shape removed. Player
-  // CollisionObject owners retain their original RIDs and this space address.
+  // has exited and been deleted. Only inactive, explicitly retained original
+  // Door shapes may remain; Player and Door owners keep their original RIDs
+  // and this space address.
   // Updates are observations of completed native property/deletion callbacks.
   // Script receipts remain individually required; this grants no Ready.
   bool replace_house_world(const HouseReentryData &,const FieldGeometryView &,
@@ -192,6 +217,7 @@ private:
     const GrassNativeData *grass = nullptr;
     const FieldDialogueVisualData *dialogue = nullptr;
     const FieldNodeRecipeData *recipe = nullptr;
+    const FieldDoorData *door = nullptr;
   };
   bool dynamic_actor(const DynamicInstance &, FieldGeometryActor &,
                      std::string &) const;
@@ -235,7 +261,14 @@ private:
     const GrassNativeData *grass = nullptr;
     const FieldDialogueVisualData *dialogue = nullptr;
     const FieldNodeRecipeData *recipe = nullptr;
+    const FieldDoorData *door = nullptr;
+    const FieldGeometryView *door_geometry = nullptr;
+    uint32_t door_id=0;
+    FieldObjectId door_shape=0;
+    FieldNodeDescriptor door_descriptor{},shape_descriptor{};
   };
+  bool persistent_door_node(const DynamicOwner &,FieldObjectId,std::string &,
+                            bool detached_shape_delete=false)const;
   std::map<FieldObjectId, DynamicOwner> dynamic_owners_;
   mutable std::map<uint32_t, uint64_t> static_rids_;
   mutable uint64_t next_rid_ = 0;

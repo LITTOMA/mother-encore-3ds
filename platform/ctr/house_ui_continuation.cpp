@@ -1,4 +1,5 @@
 #include "house_ui_continuation.hpp"
+#include "house_return_camera_control.hpp"
 #include <algorithm>
 #include "encore/global_yaml_caches.hpp"
 #include "encore/field_global_data.hpp"
@@ -732,3 +733,21 @@ bool HouseUiContinuation::source_clear_on_screen_enemies(std::string&e){
  on_screen_enemies_.clear();e.clear();return true;
 }
 } // namespace encore::ctr
+
+namespace encore::ctr {
+bool HouseUiContinuation::bind_game_over_source(const HouseReturnCameraControlData&proof,std::string&e){
+ std::array<uint8_t,32>sha{};
+ if(!proof.valid()||!actual(binding_.object,e)||!native_ready_||!source_business_closed(e)||
+    proof.identity().upstream_commit!=binding_.source.identity.upstream_commit||
+    proof.ui_source()!=binding_.source.script||!proof.source_hash(proof.ui_source(),sha)||sha!=binding_.source.script_sha||
+    proof.ui_game_over_member()!="_game_over")return fail(e,"UI game-over field requires actual continued source constructor/closed business frame");
+ if(game_over_source_bound_){if(game_over_getter_sha_!=proof.ui_game_over_getter_sha256())return fail(e,"UI game-over source getter changed");e.clear();return true;}
+ // Materialize the reviewed actual source declaration on this retained body.
+ // No game_over/_on_game_over_done business path has been admitted by deferred;
+ // those paths still reject before mutation, rather than resetting this field.
+ game_over_source_=proof.ui_game_over_initial();game_over_getter_sha_=proof.ui_game_over_getter_sha256();game_over_source_bound_=true;e.clear();return true;
+}
+bool HouseUiContinuation::source_is_game_over(upstream::FieldObjectId receiver,bool&out,std::string&e)const{
+ if(!game_over_source_bound_||!actual(receiver,e))return fail(e,"Actual UiManager game-over source field is unavailable");out=game_over_source_;e.clear();return true;
+}
+}

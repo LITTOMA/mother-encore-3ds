@@ -215,10 +215,13 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install the same pinned authoring tools as console builds
+        timeout-minutes: 5
         run: |
-          python -m pip install Pillow==12.3.0 PyYAML==6.0.3 fontTools==4.61.1
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends --yes ffmpeg
+          python -m pip install --timeout 30 --retries 1 Pillow==12.3.0 PyYAML==6.0.3 fontTools==4.61.1
+          if ! command -v ffmpeg >/dev/null; then
+            sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=30 update
+            sudo apt-get -o DPkg::Lock::Timeout=60 -o Acquire::Retries=1 -o Acquire::http::Timeout=30 install --no-install-recommends --yes ffmpeg
+          fi
           echo "PYTHONPATH=$GITHUB_WORKSPACE/tools/ci_python" >> "$GITHUB_ENV"
       - name: Restore the exact readonly reviewed upstream
         run: python tools/ci_bootstrap.py

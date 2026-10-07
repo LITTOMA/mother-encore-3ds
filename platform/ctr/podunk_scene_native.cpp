@@ -28,6 +28,33 @@ bool same(const FieldIdentity &a, const FieldIdentity &b) {
 bool translation(const FieldTransform &t) {
   return t[0].x == 1 && t[0].y == 0 && t[1].x == 0 && t[1].y == 1;
 }
+bool descriptor_same(const FieldNodeDescriptor&a,const FieldNodeDescriptor&b){
+  if(a.id!=b.id||a.parent!=b.parent||a.owner!=b.owner||a.canvas_parent!=b.canvas_parent||
+     a.class_index!=b.class_index||a.ready!=b.ready||a.pause!=b.pause||a.flags!=b.flags||
+     a.light_mask!=b.light_mask||a.script_methods!=b.script_methods||a.index!=b.index||
+     a.priority!=b.priority||a.z!=b.z||a.path!=b.path||a.name!=b.name||a.script!=b.script||
+     a.native_class!=b.native_class||a.native_generated!=b.native_generated||
+     a.script_sha!=b.script_sha||a.groups!=b.groups||a.modulate!=b.modulate||
+     a.self_modulate!=b.self_modulate)return false;
+  for(size_t i=0;i<3;++i)if(a.local[i].x!=b.local[i].x||a.local[i].y!=b.local[i].y||
+      a.world[i].x!=b.world[i].x||a.world[i].y!=b.world[i].y)return false;
+  return true;
+}
+bool detached_state_same(const FieldNodeState&a,const FieldNodeState&b){
+  if(a.object!=b.object||a.parent!=b.parent||a.owner!=b.owner||a.canvas_parent!=b.canvas_parent||
+     a.source!=b.source||a.name!=b.name||a.children!=b.children||a.alive!=b.alive||
+     a.inside!=b.inside||a.ready_first!=b.ready_first||a.ready_notified!=b.ready_notified||
+     a.queued!=b.queued||a.bound!=b.bound||a.blocked!=b.blocked||a.pause!=b.pause||
+     a.flags!=b.flags||a.priority!=b.priority||a.z!=b.z||a.modulate!=b.modulate||
+     a.self_modulate!=b.self_modulate||a.groups!=b.groups||a.input_enabled!=b.input_enabled||
+     a.block_transform_notify!=b.block_transform_notify||
+     !same(a.binding.identity,b.binding.identity)||a.binding.stable_id!=b.binding.stable_id||
+     a.binding.class_index!=b.binding.class_index||a.binding.family!=b.binding.family||
+     a.binding.capability!=b.binding.capability||a.binding.script_sha!=b.binding.script_sha||
+     a.binding.native_class!=b.binding.native_class)return false;
+  for(size_t i=0;i<3;++i)if(a.local[i].x!=b.local[i].x||a.local[i].y!=b.local[i].y)return false;
+  return true;
+}
 } // namespace
 // A closed, concrete ownership adapter for the existing two renderers. It is
 // not an arbitrary callback that approves a foreign identity or empty draw.
@@ -448,11 +475,13 @@ bool PodunkSceneNative::actual(FieldObjectId id, const FieldNodeDescriptor *&d,
                                const FieldNodeState *&s, std::string &e) const {
   FieldIdentity identity;
   auto owner = registry_ ? registry_->tree_owner(id) : nullptr;
-  d = tree_ ? tree_->descriptor(id) : nullptr;
-  s = tree_ ? tree_->state(id) : nullptr;
-  if (!data_ || !owner || owner.get() != tree_ ||
+  const auto at=instances_.find(id);
+  auto *actual_tree=at==instances_.end()?tree_:at->second.tree;
+  d = actual_tree ? actual_tree->descriptor(id) : nullptr;
+  s = actual_tree ? actual_tree->state(id) : nullptr;
+  if (!data_ || !owner || owner.get() != actual_tree ||
       !registry_->object_exists(id) || !d || !s || !s->alive ||
-      !tree_->object_identity(id, identity) ||
+      !actual_tree->object_identity(id, identity) ||
       !same(identity, data_->identity()))
     return fail(e, "Scene native actual ObjectDB/tree identity rejected");
   const auto *source = data_->record(d->id);
@@ -505,6 +534,7 @@ bool PodunkSceneNative::construct(FieldObjectId id,
       !actual(id, actual_d, s, e) || actual_d->id != d.id || s->inside)
     return fail(e, "Scene native constructor cursor/identity rejected");
   Instance n;
+  n.tree=tree_;
   n.source = d.id;
   if (d.native_class == "Node")
     n.kind = Kind::Node;
@@ -691,6 +721,19 @@ bool PodunkSceneNative::synchronize(FieldObjectId id, Instance &n,
   const FieldNodeState *s;
   if (!actual(id, d, s, e))
     return false;
+  if(n.persistent_door){
+    const auto area=instances_.find(n.persistent_root);
+    if(area==instances_.end()||area->second.persistent_door!=n.persistent_door)
+      return fail(e,"Persistent Door native original Area owner missing");
+    FieldDoorDescriptor door;
+    if(!n.persistent_door->find(area->second.source,door))return false;
+    const auto shape_id=source_objects_.find(door.shape);
+    const auto shape=shape_id==source_objects_.end()?instances_.end():instances_.find(shape_id->second);
+    if(shape==instances_.end()||shape->second.persistent_root!=n.persistent_root)
+      return fail(e,"Persistent Door native original Rectangle owner missing");
+    return geometry_->update_persistent_door(*n.persistent_door,n.persistent_root,
+        shape->second.disabled||!shape->second.entered||!area->second.entered,e);
+  }
   if(house_sources_){
     if(n.geometry_node!=UINT32_MAX&&!house_geometry_->observe_transform(id,e))return false;
     if(n.kind==Kind::Map){FieldTransform world;
@@ -751,6 +794,9 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
   if (it == instances_.end() || !it->second.bound || !actual(id, d, s, e))
     return fail(e, "Scene native phase actual owner unavailable");
   auto &n = it->second;
+  if(n.persistent_door&&(p==FieldTreePhase::ReadyNative||p==FieldTreePhase::ReadyScript||
+                        p==FieldTreePhase::ReadySignal))
+    return fail(e,"Persistent Door transfer cannot replay its original Ready");
   if (p == FieldTreePhase::EnterNative) {
     if (n.entered || !s->inside || !root_->viewport().world_registered)
       return fail(e, "Scene native Enter world/parent cursor rejected");
@@ -786,7 +832,10 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
   } else if (p == FieldTreePhase::Deleting) {
     if (n.entered || n.monitored)
       return fail(e, "Scene native deletion before physical Exit");
-    if (n.geometry_node != UINT32_MAX&&house_sources_) {
+    if(n.persistent_door){
+      if(n.kind==Kind::Shape&&!geometry_->delete_persistent_door_shape(*n.persistent_door,id,e))return false;
+      if(n.kind==Kind::Area&&!geometry_->delete_persistent_door_owner(*n.persistent_door,id,e))return false;
+    }else if (n.geometry_node != UINT32_MAX&&house_sources_) {
       if(!house_geometry_->observe_deleted(id,e))return false;
     }else if(n.geometry_node != UINT32_MAX) {
       FieldGeometryNodeUpdate u;
@@ -796,7 +845,7 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
       if (!geometry_->apply_updates({u}, e))
         return false;
     }
-    if(!house_sources_)for (uint32_t i = 0; i < map_->source()->canvas_count(); ++i)
+    if(!house_sources_&&!n.persistent_door)for (uint32_t i = 0; i < map_->source()->canvas_count(); ++i)
       if (map_->source()->canvas(i).stable_id == n.source &&
           !map_->commit_deleted(n.source, e))
         return false;
@@ -806,6 +855,13 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
     }
     source_objects_.erase(n.source);
     instances_.erase(it);
+  } else if(p==FieldTreePhase::PostEnterNative&&n.persistent_door&&n.kind==Kind::Area){
+    FieldPersistentDoorGeometry kept;
+    if(!n.entered||!n.ready||n.monitored||s->ready_first||!s->ready_notified||
+       !world_||!geometry_->persistent_door(id,kept,e)||
+       !world_->admit_persistent_door_monitor(*n.persistent_door,kept,e))
+      return fail(e,"Persistent Door reenter monitor lacks actual retained lifecycle/RID");
+    n.monitored=true;
   } else if (p == FieldTreePhase::Physics || p == FieldTreePhase::Idle ||
              p == FieldTreePhase::PhysicsInternal ||
              p == FieldTreePhase::IdleInternal || p == FieldTreePhase::Input ||
@@ -1076,6 +1132,11 @@ bool PodunkSceneNative::set_disabled(FieldObjectId id, bool value,
   const FieldNodeDescriptor *descriptor;
   const FieldNodeState *state;
   if (!actual(id,descriptor,state,e)) return false;
+  if(it->second.persistent_door){
+    const auto old=it->second.disabled;it->second.disabled=value;
+    if(!synchronize(id,it->second,e)){it->second.disabled=old;return false;}
+    return true;
+  }
   if (!geometry_bound_) {
     // NPC _ready mutates its already constructed child's native property.
     // The dormant physics space is synchronized from this exact property at
@@ -1097,6 +1158,8 @@ bool PodunkSceneNative::set_collision(FieldObjectId id, uint32_t layer,
   auto it = instances_.find(id);
   if (it == instances_.end() || it->second.owner == UINT32_MAX)
     return fail(e, "Scene native masks target is not actual body/Area");
+  if(it->second.persistent_door)
+    return fail(e,"Persistent Door mask mutation has no checked source operation");
   if (!geometry_bound_)
     return fail(e, "Scene native masks setter before source ancestors Ready");
   FieldGeometryNodeUpdate u;
@@ -1436,9 +1499,130 @@ bool PodunkSceneNative::source_object(uint32_t id, FieldObjectId &out,
   e.clear();
   return true;
 }
+bool PodunkSceneNative::retain_detached_door(const FieldDoorData&doors,uint32_t stable,
+    PodunkSceneDoorTransfer&out,std::string&e){
+  FieldDoorDescriptor door;PodunkSceneDoorTransfer next;
+  if(house_sources_||!data_||!tree_||!registry_||!geometry_||!finished_||!geometry_bound_||
+     !world_||out.owner_||!doors.valid()||!same(doors.identity(),data_->identity())||
+     !doors.find(stable,door)||tree_->lifecycle_pending())
+    return fail(e,"Persistent Door retention lacks actual completed original native owner");
+  auto source=[&](uint32_t id,FieldObjectId&object){return source_object(id,object,e);};
+  if(!source(stable,next.geometry_.door)||!source(door.shape,next.geometry_.shape)||
+     !source(door.marker,next.marker_))return false;
+  next.audio_=tree_->source_object(door.audio);
+  const auto*area=tree_->state(next.door());
+  if(!area||area->inside||area->parent||area->children.size()!=3||!next.audio_)
+    return fail(e,"Persistent Door must have completed actual source remove_child");
+  next.objects_.push_back(next.door());
+  next.objects_.insert(next.objects_.end(),area->children.begin(),area->children.end());
+  const std::set<FieldObjectId>expected{next.door(),next.shape(),next.marker(),next.audio()};
+  if(expected.size()!=4||std::set<FieldObjectId>(next.objects_.begin(),next.objects_.end())!=expected)
+    return fail(e,"Persistent Door source has unknown/missing native children");
+  for(auto id:next.objects_){
+    const auto*s=tree_->state(id);const auto*d=tree_->descriptor(id);FieldIdentity identity;
+    const auto*original=d?data_->record(d->id):nullptr;
+    if(!s||!d||!original||!s->alive||s->inside||s->ready_first||s->queued||s->blocked||
+       !s->bound||registry_->tree_owner(id).get()!=tree_||!registry_->object_exists(id)||
+       !tree_->object_identity(id,identity)||!same(identity,data_->identity())||
+       !descriptor_same(*d,*original)||(id!=next.door()&&s->parent!=next.door())||
+       (id!=next.door()&&!s->children.empty()))
+      return fail(e,"Persistent Door original four-object descriptor/lifecycle differs");
+    next.descriptors_.emplace(id,*d);
+    next.states_.emplace(id,*s);
+    if(id==next.audio()){
+      if(d->id!=door.audio||d->native_class!="AudioStreamPlayer"||owns(id))
+        return fail(e,"Persistent Door Audio belongs to its actual retained voice owner");
+      continue;
+    }
+    auto at=instances_.find(id);
+    if(at==instances_.end()||at->second.tree!=tree_||at->second.persistent_door||
+       at->second.entered||at->second.monitored||!at->second.ready||!at->second.bound||
+       (id==next.door()?at->second.kind!=Kind::Area:
+        id==next.shape()?at->second.kind!=Kind::Shape:
+        (at->second.kind!=Kind::Canvas||d->native_class!="Position2D")))
+      return fail(e,"Persistent Door actual native Area/shape/marker state differs");
+  }
+  if(!geometry_->retain_detached_door(doors,stable,*tree_,*registry_,next.door(),next.shape(),
+        instances_.at(next.shape()).disabled,next.geometry_,e))return false;
+  next.owner_=this;next.old_=tree_;
+  next.shape_disabled_=instances_.at(next.shape()).disabled;
+  for(auto id:{next.door(),next.shape(),next.marker()}){
+    auto&n=instances_.at(id);n.persistent_door=&doors;n.persistent_root=next.door();
+  }
+  out=std::move(next);e.clear();return true;
+}
+bool PodunkSceneNative::rebind_persistent_door(PodunkSceneDoorTransfer&receipt,
+    FieldNodeTreeRuntime&old,FieldNodeTreeRuntime&next,
+    const std::vector<FieldObjectId>&objects,std::string&e){
+  FieldDoorDescriptor door;FieldIdentity destination;std::array<uint8_t,32>source_sha{};
+  const auto*target=next.state(next.root());
+  if(receipt.owner_!=this||receipt.old_!=&old||receipt.next_||&old==&next||
+     !registry_||!geometry_||old.state(old.root())||registry_->object_exists(old.root())||
+     old.object_domain()!=next.object_domain()||next.object_domain()!=registry_->kernel()||
+     objects.empty()||objects.front()!=receipt.door()||
+     std::set<FieldObjectId>(objects.begin(),objects.end())!=
+       std::set<FieldObjectId>(receipt.objects_.begin(),receipt.objects_.end())||
+     objects.size()!=receipt.objects_.size()||!receipt.geometry_.data||
+     !receipt.geometry_.data->find(receipt.geometry_.source_id,door)||
+     !receipt.geometry_.data->source_hash(receipt.geometry_.data->string(door.target_path),source_sha)||
+     !next.object_identity(next.root(),destination)||destination.source_sha256!=source_sha||
+     destination.upstream_commit!=data_->identity().upstream_commit||
+     !target||!target->inside||!target->bound||!target->ready_notified)
+    return fail(e,"Persistent Door transfer callback changed actual old/new subtree");
+  for(auto id:objects){
+    const auto*s=next.state(id);const auto*d=next.descriptor(id);FieldIdentity identity;
+    const auto saved=receipt.descriptors_.find(id);
+    if(old.state(id)||!s||!d||s->inside||s->ready_first||s->queued||!s->bound||
+       saved==receipt.descriptors_.end()||!descriptor_same(*d,saved->second)||
+       !detached_state_same(*s,receipt.states_.at(id))||
+       registry_->tree_owner(id).get()!=&next||!registry_->object_exists(id)||
+       !next.object_identity(id,identity)||!same(identity,data_->identity())||
+       (id==receipt.door()?s->parent!=0:s->parent!=receipt.door()))
+      return fail(e,"Persistent Door source descriptor/ObjectID changed before native rebind");
+    if(id!=receipt.audio()){
+      auto at=instances_.find(id);
+      if(at==instances_.end()||at->second.tree!=&old||at->second.entered||
+         at->second.monitored||!at->second.ready||!at->second.bound||
+         at->second.persistent_root!=receipt.door()||
+         at->second.persistent_door!=receipt.geometry_.data||
+         (id==receipt.shape()&&at->second.disabled!=receipt.shape_disabled_))
+        return fail(e,"Persistent Door source native state was lost or entered prematurely");
+    }
+  }
+  if(!geometry_->rebind_persistent_door(*receipt.geometry_.data,receipt.door(),old,next,*registry_,e))return false;
+  for(auto id:{receipt.door(),receipt.shape(),receipt.marker()})instances_.at(id).tree=&next;
+  receipt.next_=&next;receipt.geometry_.tree=&next;
+  e.clear();return true;
+}
+bool PodunkSceneNative::observe_persistent_door(const PodunkSceneDoorTransfer&receipt,
+    FieldObjectId parent,std::string&e)const{
+  FieldPersistentDoorGeometry geometry;
+  if(receipt.owner_!=this||!receipt.next_||!parent||!geometry_||
+     receipt.next_->lifecycle_pending()||!geometry_->persistent_door(receipt.door(),geometry,e)||
+     geometry.tree!=receipt.next_||geometry.registry!=registry_||geometry.shape!=receipt.shape()||
+     geometry.data!=receipt.geometry_.data||geometry.rid.space!=receipt.rid().space||
+     geometry.rid.handle!=receipt.rid().handle||!geometry.contact.actual_shape)
+    return fail(e,"Persistent Door retained geometry/RID receipt changed");
+  for(auto id:receipt.objects_){
+    const auto*s=receipt.next_->state(id);const auto*d=receipt.next_->descriptor(id);
+    if(!s||!d||!s->alive||!s->inside||!s->bound||s->ready_first||!s->ready_notified||
+       !descriptor_same(*d,receipt.descriptors_.at(id))||
+       registry_->tree_owner(id).get()!=receipt.next_||
+       (id==receipt.door()?s->parent!=parent:s->parent!=receipt.door()))
+      return fail(e,"Persistent Door actual source reenter/parent receipt incomplete");
+    if(id!=receipt.audio()){
+      const auto at=instances_.find(id);
+      if(at==instances_.end()||at->second.tree!=receipt.next_||!at->second.entered||
+         !at->second.ready||!at->second.bound||
+         (id==receipt.door()&&!at->second.monitored))
+        return fail(e,"Persistent Door native reentry incomplete");
+    }
+  }
+  e.clear();return true;
+}
 bool PodunkSceneNative::shutdown(std::string &e) {
   for (const auto &q : instances_)
-    if (q.second.entered || q.second.monitored)
+    if (q.second.entered || q.second.monitored || q.second.persistent_door)
       return fail(e,
                   "Scene native shutdown requires actual Exit and GPU fence");
   if (map_gpu_)

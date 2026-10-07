@@ -48,6 +48,13 @@ source-house-inspection-reentry: house-return-inspection field-door house-geomet
 .PHONY: source-house-inspection-restore
 source-house-inspection-restore: restore house-inspection-reentry house-node-tree
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection_restore.py extract
+house-return-camera-control: source-house-return-camera-control
+house-return-camera-audio: source-house-return-camera-audio
+.PHONY: source-house-return-camera-control source-house-return-camera-audio
+source-house-return-camera-control: house-node-tree house-return-canvas
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_camera_control.py extract
+source-house-return-camera-audio: house-node-tree field-scene-audio
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_camera_control_audio.py extract
 house-node-tree: source-house-node-tree
 source-house-node-tree: house-geometry
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_node_tree.py extract

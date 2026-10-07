@@ -16,6 +16,10 @@ std::string_view source_path(std::string_view s){return s.substr(0,6)=="res://"?
 }
 bool HouseReturnDialogueNativeOwner::state(PodunkMickHouseNativeState &out,
     std::string &e)const{
+ return state(out,Admission::FullReady,e);
+}
+bool HouseReturnDialogueNativeOwner::state(PodunkMickHouseNativeState &out,
+    Admission admission,std::string &e)const{
  if(!prepared_||!in_.session||!in_.house||!in_.driver||!in_.tree||
     !in_.source||!in_.source_tree||!in_.doors||!in_.text.valid())
   return reject(e,"House native owner is not explicitly prepared with actual borrowed inputs");
@@ -33,8 +37,9 @@ bool HouseReturnDialogueNativeOwner::state(PodunkMickHouseNativeState &out,
   return reject(e,"House native owner lost an actual retained source/receiver borrow");
  FieldIdentity identity{};
  const auto *root=in_.tree->state(in_.tree->root());
- if(!root||!root->alive||!root->bound||!root->inside||root->queued||
-    !root->ready_notified||root->ready_first||in_.house->scene_ready_pending()||
+ if(!root||!root->alive||!root->bound||root->queued||
+    (admission==Admission::FullReady&&(!root->inside||
+     !root->ready_notified||root->ready_first||in_.house->scene_ready_pending()))||
     out.registry->tree_owner(in_.tree->root())!=in_.tree||
     !in_.tree->object_identity(in_.tree->root(),identity)||
     !same(identity,in_.source_tree->identity()))
@@ -101,6 +106,14 @@ bool HouseReturnDialogueNativeOwner::room_actor(RoomView room,uint32_t programme
 }
 bool HouseReturnDialogueNativeOwner::prepare(HouseReturnDialogueNativeInput in,
     std::string &e){
+ return prepare_impl(std::move(in),Admission::FullReady,e);
+}
+bool HouseReturnDialogueNativeOwner::prepare_staged(HouseReturnDialogueNativeInput in,
+    std::string &e){
+ return prepare_impl(std::move(in),Admission::AssignedStaged,e);
+}
+bool HouseReturnDialogueNativeOwner::prepare_impl(HouseReturnDialogueNativeInput in,
+    Admission admission,std::string &e){
  if(prepared_||in_.house||!in.session||!in.driver||!in.house||!in.tree||
     !in.source||!in.source_tree||!in.doors||!in.text.valid()||
     !in.source->valid()||!in.source_tree->valid())
@@ -121,7 +134,7 @@ bool HouseReturnDialogueNativeOwner::prepare(HouseReturnDialogueNativeInput in,
   return reject(e,"House native receiver installation requires all actual source owners closed");
  in_=std::move(in);owners_=std::move(actual);prepared_=true;
  PodunkMickHouseNativeState checked;
- if(!state(checked,e)){prepared_=false;in_={};owners_={};return false;}
+ if(!state(checked,admission,e)){prepared_=false;in_={};owners_={};return false;}
  // These are the same concrete coroutine/function-state/signal owners. Only
  // the programme and House region/talker receivers change at this boundary.
  FieldDialogueRoomHost room;
@@ -177,9 +190,17 @@ bool HouseReturnDialogueNativeOwner::prepare(HouseReturnDialogueNativeInput in,
 }
 bool HouseReturnDialogueNativeOwner::driver_input(HouseReturnDialogueInput &out,
     std::string &e)const{
+ return driver_input_impl(out,Admission::FullReady,e);
+}
+bool HouseReturnDialogueNativeOwner::staged_driver_input(HouseReturnDialogueInput &out,
+    std::string &e)const{
+ return driver_input_impl(out,Admission::AssignedStaged,e);
+}
+bool HouseReturnDialogueNativeOwner::driver_input_impl(HouseReturnDialogueInput &out,
+    Admission admission,std::string &e)const{
  PodunkMickHouseNativeState s;
  if(!room_installed_)return reject(e,"House native lifecycle installation has not completed");
- if(!state(s,e))return false;
+ if(!state(s,admission,e))return false;
  HouseReturnDialogueInput n;
  n.registry=s.registry;n.tree=in_.tree;n.house=in_.house;n.text=in_.text;
  n.source=in_.source;n.source_tree=in_.source_tree;n.doors=in_.doors;
@@ -273,7 +294,11 @@ bool HouseReturnDialogueNativeOwner::admit_npc_programme(const HouseReturnNpcRun
 }
 bool HouseReturnDialogueNativeOwner::observe(const HouseReturnDialogueContext &c,
     HouseReturnDialogueReceipt &out,std::string &e)const{
- PodunkMickHouseNativeState s;if(!state(s,e))return false;
+ return observe_impl(c,out,Admission::FullReady,e);
+}
+bool HouseReturnDialogueNativeOwner::observe_impl(const HouseReturnDialogueContext &c,
+    HouseReturnDialogueReceipt &out,Admission admission,std::string &e)const{
+ PodunkMickHouseNativeState s;if(!state(s,admission,e))return false;
  const auto *life=s.dialogue->lifecycle();
  std::vector<PodunkDialogueFactoryState> factories;
  std::vector<PodunkDialogueRootSourceState> roots;

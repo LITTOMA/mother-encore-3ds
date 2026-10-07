@@ -1,6 +1,7 @@
 #include "podunk_scene_scripts.hpp"
 #include <algorithm>
 #include <cmath>
+#include <set>
 namespace encore::ctr {
 using namespace upstream;
 namespace {
@@ -20,6 +21,7 @@ bool PodunkSceneScripts::fail(std::string &e, const char *s) const {
   return false;
 }
 bool PodunkSceneScripts::supported(FieldSceneRole r) const {
+  if(lifecycle_.scene_retired())return r==FieldSceneRole::Door&&consumers_.door;
   switch (r) {
   case FieldSceneRole::Grass:
     return consumers_.grass != nullptr;
@@ -455,6 +457,7 @@ bool PodunkSceneScripts::construct_source(FieldObjectId id,
     return false;
   }
   Instance value;
+  value.tree=tree_;
   value.source = ready;
   value.binding = {i, d.id,         d.class_index, 0x454e001c,
                    6, d.script_sha, d.native_class};
@@ -466,15 +469,16 @@ bool PodunkSceneScripts::construct_source(FieldObjectId id,
 bool PodunkSceneScripts::actual(FieldObjectId id, Instance *&out,
                                 std::string &e) {
   auto at = instances_.find(id);
-  const auto *n = tree_ ? tree_->state(id) : nullptr;
-  const auto *d = tree_ ? tree_->descriptor(id) : nullptr;
+  auto *tree=at!=instances_.end()?at->second.tree:nullptr;
+  const auto *n = tree ? tree->state(id) : nullptr;
+  const auto *d = tree ? tree->descriptor(id) : nullptr;
   FieldIdentity identity;
   if (poisoned_ || at == instances_.end() || at->second.released || !n ||
       !n->alive || !d || !owns(*d) || n->source != at->second.source.id ||
-      !tree_->object_identity(id, identity) ||
+      !tree->object_identity(id, identity) ||
       !same(identity, at->second.binding.identity) ||
-      tree_->object_domain() != registry_->kernel() ||
-      registry_->tree_owner(id).get() != tree_ || !registry_->object_exists(id))
+      tree->object_domain() != registry_->kernel() ||
+      registry_->tree_owner(id).get() != tree || !registry_->object_exists(id))
     return fail(e, "SceneScripts actual source ObjectDB owner unavailable");
   out = &at->second;
   return true;
@@ -558,8 +562,8 @@ bool PodunkSceneScripts::phase(FieldObjectId id,
   Instance *v = nullptr;
   if (!actual(id, v, e) || !v->bound || !same(binding, v->binding))
     return fail(e, "SceneScripts script phase typed binding rejected");
-  const auto *d = tree_->descriptor(id);
-  const auto *n = tree_->state(id);
+  const auto *d = v->tree->descriptor(id);
+  const auto *n = v->tree->state(id);
   if (p == FieldTreePhase::ReadyScript) {
     if (v->ready || !n->inside || !n->ready_notified || n->ready_first ||
         lifecycle_.ready_cursor() >= sources_->lifecycle().ready_count())
@@ -717,10 +721,17 @@ bool PodunkSceneScripts::release(FieldObjectId id, const FieldNodeBinding &b,
   Instance *v = nullptr;
   if (!actual(id, v, e) || !same(b, v->binding))
     return false;
-  const auto *n = tree_->state(id);
+  const auto *n = v->tree->state(id);
   if (n->inside || n->parent || !n->children.empty())
     return fail(e, "SceneScripts source release before actual native "
                    "detach/delete rejected");
+  if(v->retained_door_rid.handle&&(!consumers_.door||
+      consumers_.door->phase()!=FieldDoorPhase::Done||
+      registry_->pending_messages_to(std::set<FieldObjectId>(v->retained_door_objects.begin(),
+                                                             v->retained_door_objects.end()))||
+      signals_->active_dispatch_to(std::set<FieldObjectId>(v->retained_door_objects.begin(),
+                                                          v->retained_door_objects.end()))))
+    return fail(e,"Persistent Door source release precedes Done or leaves actual deferred callbacks");
   bool ok = true;
   switch (v->source.role) {
   case FieldSceneRole::Npc:
@@ -770,22 +781,99 @@ bool PodunkSceneScripts::collect_deleted(std::string &e) {
     auto &v = pair.second;
     if (!v.released || v.deleted)
       continue;
-    if (tree_->state(pair.first) || registry_->object_exists(pair.first))
+    // Whole-scene source free has its own exact branch/currentScene receipt.
+    // It cannot pass the ordinary FlagLandmark queue-delete gate.
+    if(retiring_scene_objects_.count(pair.first))continue;
+    if (v.tree->state(pair.first) || registry_->object_exists(pair.first))
       return fail(e, "SceneScripts actual ObjectDB deletion not committed");
-    if (!signals_->release(pair.first, e) ||
-        !lifecycle_.commit_deleted(v.source.id, e))
-      return false;
+    if(v.retained_door_rid.handle){
+      if(v.source.role!=FieldSceneRole::Door||!consumers_.door_data||!consumers_.door||
+         signals_->active_dispatch_to(std::set<FieldObjectId>(v.retained_door_objects.begin(),
+                                                             v.retained_door_objects.end()))||
+         !lifecycle_.commit_persistent_door_deleted(*consumers_.door_data,*consumers_.door,
+             v.source.id,*v.tree,*registry_,pair.first,v.retained_door_rid,
+             v.retained_door_objects,e)||!signals_->release(pair.first,e))return false;
+    }else if (!signals_->release(pair.first, e) ||
+        !lifecycle_.commit_deleted(v.source.id, e))return false;
     v.deleted = true;
     objects_.erase(v.source.id);
+  }
+  if(lifecycle_.scene_retired()){
+    for(auto at=instances_.begin();at!=instances_.end();){
+      if(at->second.deleted)at=instances_.erase(at);else ++at;
+    }
+    if(instances_.empty())consumers_={};
   }
   e.clear();
   return true;
 }
+bool PodunkSceneScripts::stage_old_scene_retirement(FieldObjectId root,
+    const FieldDoorData&doors,FieldDoorRuntime&door,FieldObjectId retained,
+    FieldSceneRetirement&out,std::string&e){
+  if(!sources_||poisoned_||retirement_||!tree_||!registry_||!signals_||
+     consumers_.door_data!=&doors||consumers_.door!=&door||door.data()!=&doors)
+    return fail(e,"SceneScripts old branch retirement has foreign original owners");
+  const auto held=instances_.find(retained);
+  if(held==instances_.end()||held->second.tree!=tree_||held->second.released||
+     held->second.deleted||!held->second.ready||held->second.source.role!=FieldSceneRole::Door)
+    return fail(e,"SceneScripts old branch lacks its actual retained Door source instance");
+  if(!lifecycle_.stage_scene_retirement(sources_->tree(),*tree_,*registry_,*signals_,root,
+                                       doors,door,retained,out,e))return false;
+  const std::set<FieldObjectId>objects(out.objects().begin(),out.objects().end());
+  for(auto stable:out.scripts()){
+    const auto source=objects_.find(stable);
+    const auto at=source==objects_.end()?instances_.end():instances_.find(source->second);
+    if(source==objects_.end()&&at==instances_.end()){
+      bool deleted=false;
+      for(const auto&p:instances_)if(p.second.tree==tree_&&p.second.source.id==stable&&
+        p.second.released&&p.second.deleted&&!tree_->state(p.first)&&!registry_->object_exists(p.first))deleted=true;
+      if(deleted)continue;
+    }
+    if(source==objects_.end()||at==instances_.end()||!objects.count(source->second)||
+       at->second.released||at->second.deleted||
+       at->second.tree!=tree_||at->second.source.id!=stable||!at->second.bound)
+      return fail(e,"SceneScripts old branch source admission has no actual native instance");
+  }
+  retiring_scene_objects_=objects;retirement_=&out;e.clear();return true;
+}
+bool PodunkSceneScripts::commit_old_scene_retirement(FieldSceneRetirement&receipt,
+    const FieldNodeTreeRuntime&next,FieldObjectId root,std::string&e){
+  if(poisoned_||retirement_!=&receipt||!sources_||!registry_||!signals_||
+     receipt.old_tree()!=tree_||receipt.committed()||
+     retiring_scene_objects_!=std::set<FieldObjectId>(receipt.objects().begin(),receipt.objects().end()))
+    return fail(e,"SceneScripts whole-scene retirement receipt is foreign or already consumed");
+  if(registry_->pending_messages_to(retiring_scene_objects_)||signals_->active_dispatch_to(retiring_scene_objects_))
+    return fail(e,"SceneScripts old source branch still has actual deferred callbacks");
+  for(auto id:retiring_scene_objects_){
+    if(tree_->state(id)||registry_->object_exists(id))
+      return fail(e,"SceneScripts old scene retains actual live native objects");
+    const auto at=instances_.find(id);
+    if(at!=instances_.end()&&(!at->second.released||at->second.deleted||
+        at->second.tree!=tree_||at->second.retained_door_rid.handle))
+      return fail(e,"SceneScripts whole-scene source Deleting/release did not run");
+  }
+  if(!lifecycle_.commit_scene_retirement(receipt,next,root,e))return false;
+  // Every emitter and target in the actual erased branch is disconnected,
+  // including script-null native children. The detached Door is excluded.
+  for(auto id:retiring_scene_objects_)if(!signals_->release(id,e)){poisoned_=true;return false;}
+  for(auto id:retiring_scene_objects_){const auto at=instances_.find(id);
+    if(at!=instances_.end()){objects_.erase(at->second.source.id);instances_.erase(at);}}
+  for(auto at=instances_.begin();at!=instances_.end();){
+    if(at->second.tree==tree_&&at->second.released&&at->second.deleted)at=instances_.erase(at);
+    else ++at;
+  }
+  FieldSceneConsumers retained;retained.door=consumers_.door;
+  retained.door_data=consumers_.door_data;retained.geometry=consumers_.geometry;
+  consumers_=retained;grass_factory_=nullptr;
+  retiring_scene_objects_.clear();retirement_=nullptr;e.clear();return true;
+}
 bool PodunkSceneScripts::object_for_source(uint32_t source, FieldObjectId &out,
                                            std::string &e) const {
   auto p = objects_.find(source);
-  if (p == objects_.end() || !tree_ || !registry_->object_exists(p->second) ||
-      registry_->tree_owner(p->second).get() != tree_)
+  const auto instance=p==objects_.end()?instances_.end():instances_.find(p->second);
+  if (p == objects_.end() || instance==instances_.end() || !instance->second.tree ||
+      instance->second.released || !registry_->object_exists(p->second) ||
+      registry_->tree_owner(p->second).get() != instance->second.tree)
     return fail(e, "SceneScripts actual source ObjectDB node unavailable");
   out = p->second;
   return true;
@@ -796,6 +884,49 @@ bool PodunkSceneScripts::admission(FieldObjectId id,
   return p != instances_.end() && p->second.ready && !p->second.released &&
          registry_->object_exists(id) &&
          lifecycle_.script_admission(p->second.source.id, out);
+}
+bool PodunkSceneScripts::rebind_persistent_door(const FieldDoorData&data,
+    FieldDoorRuntime&runtime,FieldObjectId object,FieldNodeTreeRuntime&old,
+    FieldNodeTreeRuntime&next,const std::vector<FieldObjectId>&objects,std::string&e){
+  const auto at=instances_.find(object);FieldDoorDescriptor door;
+  const auto*n=next.state(object);const auto*d=next.descriptor(object);FieldIdentity identity;
+  const auto*original=d&&sources_?sources_->tree().record(d->id):nullptr;
+  if(poisoned_||at==instances_.end()||at->second.tree!=&old||&old==&next||
+     !sources_||consumers_.door_data!=&data||consumers_.door!=&runtime||runtime.data()!=&data||
+     !data.valid()||!data.find(at->second.source.id,door)||!runtime.source_ready(door.id)||
+     runtime.active_door()!=door.id||runtime.phase()!=FieldDoorPhase::Deferred||
+     at->second.source.role!=FieldSceneRole::Door||!at->second.ready||!at->second.bound||
+     at->second.released||at->second.deleted||old.state(object)||old.state(old.root())||
+     !n||!d||!original||n->inside||n->parent||n->ready_first||n->queued||!n->bound||
+     n->source!=door.id||d->id!=door.id||d->native_class!="Area2D"||
+     d->script!=data.script()||d->script_sha!=data.script_sha()||
+     d->script_methods!=original->script_methods||d->path!=data.string(door.node)||
+     !same(n->binding,at->second.binding)||!same(at->second.binding.identity,data.identity())||
+     !next.object_identity(object,identity)||!same(identity,data.identity())||
+     registry_->tree_owner(object).get()!=&next||!registry_->object_exists(object)||
+     old.object_domain()!=next.object_domain()||next.object_domain()!=registry_->kernel()||
+     objects.size()!=4||objects.front()!=object||n->children.size()!=3)
+    return fail(e,"SceneScripts persistent Door must retain its exact source runtime/Ready/binding before Enter");
+  const std::set<FieldObjectId>expected{object,next.source_object(door.shape),
+      next.source_object(door.marker),next.source_object(door.audio)};
+  if(expected.size()!=4||expected.count(0)||std::set<FieldObjectId>(objects.begin(),objects.end())!=expected)
+    return fail(e,"SceneScripts persistent Door subtree source IDs differ");
+  for(auto id:objects){const auto*s=next.state(id);
+    if(old.state(id)||!s||s->inside||s->ready_first||s->queued||!s->bound||
+       registry_->tree_owner(id).get()!=&next||!registry_->object_exists(id)||
+       (id!=object&&s->parent!=object))
+      return fail(e,"SceneScripts persistent Door child native migration is incomplete");
+  }
+  // The original consumer, lifecycle lease and FieldDoorRuntime coroutine stay
+  // untouched. Only this live source instance's actual Tree borrower changes.
+  FieldPersistentDoorGeometry geometry;
+  if(!consumers_.geometry||!consumers_.geometry->persistent_door(object,geometry,e)||
+     geometry.data!=&data||geometry.tree!=&next||geometry.registry!=registry_||
+     geometry.shape!=next.source_object(door.shape)||geometry.rid.space!=consumers_.geometry||
+     !consumers_.geometry->rid_alive(geometry.rid))
+    return fail(e,"SceneScripts persistent Door source migration lost its original native RID");
+  at->second.tree=&next;at->second.retained_door_rid=geometry.rid;
+  at->second.retained_door_objects=objects;e.clear();return true;
 }
 bool PodunkSceneScripts::grass_screen(FieldObjectId id, bool entered,
                                       std::string &e) {

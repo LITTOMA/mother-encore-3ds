@@ -9,7 +9,7 @@
 #include "podunk_dialogue_host.hpp"
 #include "house_ui_reentry.hpp"
 #include "encore/field_global_constructor.hpp"
-namespace encore::upstream { class FieldGlobalDataRuntime; }
+namespace encore::upstream { class FieldGlobalDataRuntime; class HouseReturnCameraControlData; }
 namespace encore::ctr {
 // Borrow the running House session. These are its existing objects, not copies.
 struct HouseUiContinuationSources {
@@ -99,6 +99,8 @@ public:
   bool source_current_talker(upstream::FieldObjectId &,std::string &) const;
   bool source_close_closed_widget(uint32_t,std::string &);
   bool source_business_closed(std::string &) const;
+  bool bind_game_over_source(const upstream::HouseReturnCameraControlData&,std::string&);
+  bool source_is_game_over(upstream::FieldObjectId,bool&,std::string&)const;
   bool full_source_ready() const { return false; }
 
 private:
@@ -125,6 +127,8 @@ private:
   HouseUiContinuationSources sources_{};
   upstream::FieldObjectId parent_ = 0;
   bool inside_ = false, cutscene_ = false;
+  bool game_over_source_bound_=false,game_over_source_=false;
+  std::array<uint8_t,32>game_over_getter_sha_{};
   bool source_cutscene_observed_ = false, awaiting_entry_ = false;
   bool native_ready_ = false;
   bool key_open_=false,cash_open_=false,party_showing_=false,business_imported_=false;

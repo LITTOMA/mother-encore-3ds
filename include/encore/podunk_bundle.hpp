@@ -114,6 +114,8 @@ enum class PodunkPackRole : uint32_t {
   HouseInspectionRoom = 106,
   HouseInspectionReentry = 107,
   HouseInspectionRestore = 108,
+  HouseCameraControl = 109,
+  HouseSceneAudio = 110,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,
@@ -131,7 +133,8 @@ struct PodunkBundleFile {
 struct PodunkBundlePack : PodunkBundleFile {
   PodunkPackRole role{};
   // kind 1 is FieldIdentity; kind 2 is checked source context of a legacy
-  // format; kind 3 is the independently checked Room header identity.
+  // format; kind 3 is the independently checked Room header identity;
+  // kind 4 is the RoomShaker's independent header and source identity.
   uint32_t format = 0, family = 0, capability = 0, rules = 0;
   FieldIdentity identity{};
   std::array<uint8_t, 32> ir_sha256{};

@@ -1,6 +1,9 @@
 #include "encore/field_scene_host.hpp"
 #include <algorithm>
 #include <cmath>
+#include <set>
+#include "encore/field_global_registry.hpp"
+#include "encore/field_object_signals.hpp"
 namespace encore::upstream {
 namespace {
 bool identity(const FieldIdentity &a, const FieldIdentity &b) {
@@ -720,6 +723,7 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
   return true;
 }
 bool FieldSceneHost::construct_area(uint32_t id, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || id != data_->area().id || gates_.count(id)) {
     e = "AreaRoom actual source constructor missing/duplicate";
     return false;
@@ -734,6 +738,7 @@ bool FieldSceneHost::construct_area(uint32_t id, std::string &e) {
 }
 bool FieldSceneHost::read_flag(bool object, std::string_view key, bool &value,
                                std::string &e) const {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   bool present = false;
   if (!host_.read_flag(object, key, present, value, e))
     return false;
@@ -743,6 +748,7 @@ bool FieldSceneHost::read_flag(bool object, std::string_view key, bool &value,
 }
 bool FieldSceneHost::set_flag(bool object, std::string_view key, bool value,
                               bool emit, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_) {
     e = "Field SceneHost unavailable";
     return false;
@@ -774,6 +780,7 @@ FieldMapGateState FieldSceneHost::gate(uint32_t id) const {
                            : FieldMapGateState::Hidden;
 }
 bool FieldSceneHost::recheck_landmark(uint32_t id, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_) {
     e = "Field SceneHost unavailable";
     return false;
@@ -820,6 +827,7 @@ bool FieldSceneHost::recheck_landmark(uint32_t id, std::string &e) {
 }
 bool FieldSceneHost::flag_key(uint32_t id, bool &object, std::string &key,
                               uint32_t &bits, std::string &e) const {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_) {
     e = "Field flaggable data missing";
     return false;
@@ -871,6 +879,7 @@ bool FieldSceneHost::flag_key(uint32_t id, bool &object, std::string &key,
   return true;
 }
 bool FieldSceneHost::flag_status(uint32_t id, bool &value, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   bool object = false;
   std::string key;
   uint32_t bits = 0;
@@ -879,6 +888,7 @@ bool FieldSceneHost::flag_status(uint32_t id, bool &value, std::string &e) {
   return read_flag(object, key, value, e);
 }
 bool FieldSceneHost::set_flag_status(uint32_t id, bool value, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   bool object = false;
   std::string key;
   uint32_t bits = 0;
@@ -888,6 +898,7 @@ bool FieldSceneHost::set_flag_status(uint32_t id, bool value, std::string &e) {
 }
 bool FieldSceneHost::leave_area(uint32_t id, bool region_changed,
                                 std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   bool object = false;
   std::string key;
   uint32_t bits = 0;
@@ -898,6 +909,7 @@ bool FieldSceneHost::leave_area(uint32_t id, bool region_changed,
   return true;
 }
 bool FieldSceneHost::area_ready(std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   auto area = data_->area();
   auto region = data_->string(area.region);
   for (uint32_t i = 0; i < data_->visit_count(); ++i) {
@@ -930,6 +942,7 @@ bool FieldSceneHost::area_ready(std::string &e) {
 }
 bool FieldSceneHost::map_name(bool only, bool override, std::string &out,
                               std::string &e) const {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_) {
     e = "AreaRoom unavailable";
     return false;
@@ -963,6 +976,7 @@ bool FieldSceneHost::map_name(bool only, bool override, std::string &out,
   return true;
 }
 bool FieldSceneHost::leave_for(const FieldSceneData &next, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || !next.valid()) {
     e = "AreaRoom next source unadmitted";
     return false;
@@ -973,6 +987,7 @@ bool FieldSceneHost::leave_for(const FieldSceneData &next, std::string &e) {
 }
 bool FieldSceneHost::bind_geometry(const FieldSceneReady &n, uint32_t family,
                                    uint32_t capability, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!consumers_.geometry)
     return true;
   for (uint32_t i = 0; i < consumers_.geometry_data->node_count(); ++i) {
@@ -992,6 +1007,7 @@ bool FieldSceneHost::bind_geometry(const FieldSceneReady &n, uint32_t family,
 }
 bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
                               std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   pending = false;
   uint32_t family = 0x454e001c,
            capability = uint32_t(n.role) < 32 ? 1u << uint32_t(n.role) : 0;
@@ -1348,6 +1364,7 @@ bool FieldSceneHost::dispatch(const FieldSceneReady &n, bool &pending,
   return true;
 }
 bool FieldSceneHost::construct_camera_arrows(uint32_t id, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || !consumers_.arrows || !consumers_.arrows_data ||
       consumers_.arrows->data() != consumers_.arrows_data ||
       !consumers_.arrows_data->record(id) ||
@@ -1375,6 +1392,7 @@ bool FieldSceneHost::construct_camera_arrows(uint32_t id, std::string &e) {
   return true;
 }
 bool FieldSceneHost::ready_next(std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_) {
     e = "Field SceneHost unavailable or startup callback failed";
     return false;
@@ -1401,6 +1419,7 @@ bool FieldSceneHost::ready_next(std::string &e) {
   return true;
 }
 bool FieldSceneHost::ready_to_boundary(std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_) {
     e = "Field SceneHost unavailable";
     return false;
@@ -1411,7 +1430,7 @@ bool FieldSceneHost::ready_to_boundary(std::string &e) {
   return scene_ready();
 }
 bool FieldSceneHost::scene_ready() const {
-  return data_ && !poisoned_ && cursor_ == data_->ready_count();
+  return data_ && !poisoned_ && !retired_scene_ && cursor_ == data_->ready_count();
 }
 bool FieldSceneHost::script_admission(uint32_t id,
                                       FieldSceneScriptAdmission &out) const {
@@ -1422,6 +1441,7 @@ bool FieldSceneHost::script_admission(uint32_t id,
   return true;
 }
 bool FieldSceneHost::commit_deleted(uint32_t id, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   auto g = gates_.find(id);
   if (g == gates_.end() || !g->second.queued || g->second.deleted) {
     e = "Field landmark deferred delete not queued";
@@ -1445,8 +1465,164 @@ bool FieldSceneHost::commit_deleted(uint32_t id, std::string &e) {
   e.clear();
   return true;
 }
+bool FieldSceneHost::commit_persistent_door_deleted(const FieldDoorData&doors,
+    const FieldDoorRuntime&runtime,uint32_t stable,const FieldNodeTreeRuntime&tree,
+    const FieldGlobalRegistry&registry,FieldObjectId object,FieldPhysicsRid rid,
+    const std::vector<FieldObjectId>&objects,std::string&e){
+  FieldDoorDescriptor door;const auto admission=admissions_.find(stable);
+  if(!data_||poisoned_||consumers_.door_data!=&doors||consumers_.door!=&runtime||
+     runtime.data()!=&doors||!doors.valid()||!doors.find(stable,door)||
+     runtime.active_door()!=stable||runtime.phase()!=FieldDoorPhase::Done||
+     !runtime.source_ready(stable)||!identity(data_->identity(),doors.identity())||
+     admission==admissions_.end()||admission->second.id!=stable||
+     admission->second.source_sha!=doors.script_sha()||
+     !consumers_.geometry||rid.space!=consumers_.geometry||
+     !consumers_.geometry->rid_issued(rid)||consumers_.geometry->rid_alive(rid)||
+     !object||tree.state(object)||registry.object_exists(object)||
+     tree.object_domain()!=registry.kernel()||objects.size()!=4||objects.front()!=object){
+    e="Persistent Door source deletion lacks actual original Done/ObjectDB/RID receipt";return false;
+  }
+  const std::set<FieldObjectId>unique(objects.begin(),objects.end());
+  if(unique.size()!=4||unique.count(0)||registry.pending_messages_to(unique)){
+    e="Persistent Door source deletion retains duplicate objects or actual pending callbacks";return false;
+  }
+  for(auto id:objects)if(tree.state(id)||registry.object_exists(id)){
+    e="Persistent Door complete native subtree deletion has not committed";return false;
+  }
+  // Native geometry already deleted its exact retained shape and original RID.
+  // This only closes this old source lease, never a new House geometry gate.
+  admissions_.erase(admission);gates_.erase(stable);
+  if(retired_scene_&&admissions_.empty())consumers_={};
+  e.clear();return true;
+}
+bool FieldSceneHost::stage_scene_retirement(const FieldNodeTreeData&source,
+    const FieldNodeTreeRuntime&tree,const FieldGlobalRegistry&registry,const FieldObjectSignals&signals,
+    FieldObjectId root,const FieldDoorData&doors,const FieldDoorRuntime&door,
+    FieldObjectId retained,FieldSceneRetirement&out,std::string&e){
+  const auto*n=tree.state(root);const auto*d=tree.descriptor(root);FieldIdentity actual;
+  FieldPersistentDoorGeometry kept;FieldDoorDescriptor descriptor;
+  if(!data_||poisoned_||retired_scene_||out.owner_||!source.valid()||signals.registry()!=&registry||
+     !identity(source.identity(),data_->identity())||source.source_scene()!=data_->source_scene()||
+     !root||root!=tree.root()||!n||!d||!n->alive||!n->inside||!n->bound||n->queued||
+     tree.lifecycle_pending()||tree.object_domain()!=registry.kernel()||
+     registry.current_scene()!=root||registry.tree_current_scene()!=root||
+     registry.tree_owner(root).get()!=&tree||!registry.object_exists(root)||
+     !tree.object_identity(root,actual)||!identity(actual,source.identity())||
+     d->id!=source.identity().scene_id||consumers_.door_data!=&doors||
+     consumers_.door!=&door||door.data()!=&doors||door.phase()!=FieldDoorPhase::Deferred||
+     !doors.find(door.active_door(),descriptor)||!door.source_ready(descriptor.id)||
+     !consumers_.geometry||!consumers_.geometry->persistent_door(retained,kept,e)||
+     kept.data!=&doors||kept.tree!=&tree||kept.registry!=&registry||
+     kept.source_id!=descriptor.id||!kept.disabled||!kept.contact.actual_shape||
+     !consumers_.geometry->rid_alive(kept.rid)){
+    e="Scene retirement lacks actual current old root and detached original Door lease";return false;
+  }
+  const auto*held=tree.state(retained);
+  if(!held||held->inside||held->parent||held->queued||!held->bound||held->ready_first){
+    e="Scene retirement includes an attached/deleting persistent Door";return false;
+  }
+  FieldSceneRetirement next;next.owner_=this;next.data_=data_;next.source_=&source;
+  next.tree_=&tree;next.registry_=&registry;next.signals_=&signals;next.root_=root;next.door_=retained;
+  next.door_source_=descriptor.id;next.identity_=actual;
+  std::set<FieldObjectId>seen;std::set<uint32_t>stables;
+  std::vector<FieldObjectId>pending{root};
+  while(!pending.empty()){
+    const auto object=pending.back();pending.pop_back();
+    const auto*s=tree.state(object);const auto*node=tree.descriptor(object);FieldIdentity own;
+    if(!s||!node||!s->alive||!s->inside||!s->bound||s->queued||object==retained||
+       !seen.insert(object).second||
+       !registry.object_exists(object)||registry.tree_owner(object).get()!=&tree||
+       !tree.object_identity(object,own)||own.upstream_commit!=actual.upstream_commit||
+       !identity(s->binding.identity,own)||s->binding.stable_id!=node->id||
+       s->binding.class_index!=node->class_index||s->binding.native_class!=node->native_class||
+       s->binding.script_sha!=node->script_sha||!s->binding.family||!s->binding.capability||
+       (object!=root&&(!s->parent||!tree.state(s->parent))) ){
+      e="Scene retirement branch contains a foreign/unbound/duplicate actual source object";return false;
+    }
+    const auto*original=source.record(node->id);
+    // Multiple instantiated native recipes may share a source stable ID;
+    // their real ObjectIDs and binding identities remain distinct. Serialized
+    // nodes from this original scene must still have exactly one instance.
+    if(original&&(!stables.insert(node->id).second||node->path!=original->path||node->native_class!=original->native_class||
+       node->script!=original->script||node->script_sha!=original->script_sha||
+       !identity(own,source.identity()))){
+      e="Scene retirement serialized native/source descriptor differs";return false;
+    }
+    next.objects_.push_back(object);
+    if(original&&!node->script.empty()){
+      bool reviewed=false;
+      for(uint32_t i=0;i<data_->ready_count();++i){const auto r=data_->ready(i);
+        if(r.id==node->id){reviewed=data_->string(r.node)==node->path&&
+          data_->string(r.script)==node->script&&r.sha==node->script_sha;break;}}
+      if(!reviewed){e="Scene retirement script is absent from original reviewed roster";return false;}
+      next.scripts_.push_back(node->id);
+      const auto admission=admissions_.find(node->id);
+      if(admission!=admissions_.end())next.admissions_.emplace(*admission);
+    }
+    for(auto child:s->children){const auto*c=tree.state(child);
+      if(!c||c->parent!=object){e="Scene retirement actual child/parent roster differs";return false;}
+      pending.push_back(child);}
+  }
+  for(const auto&a:admissions_)if(!stables.count(a.first)&&a.first!=descriptor.id){
+    const auto gate=gates_.find(a.first);
+    if(gate==gates_.end()||!gate->second.deleted){
+      e="Scene retirement would orphan another live original source admission";return false;
+    }
+    next.scripts_.push_back(a.first);next.admissions_.emplace(a);
+  }
+  if(registry.pending_messages_to(seen)||signals.active_dispatch_to(seen)){
+    e="Scene retirement retains actual pending old-branch callbacks";return false;
+  }
+  out=std::move(next);e.clear();return true;
+}
+bool FieldSceneHost::commit_scene_retirement(FieldSceneRetirement&receipt,
+    const FieldNodeTreeRuntime&next,FieldObjectId root,std::string&e){
+  const auto*registry=receipt.registry_;const auto*old=receipt.tree_;
+  const auto*n=next.state(root);FieldIdentity actual;
+  FieldDoorDescriptor door;std::array<uint8_t,32>target{};
+  if(receipt.owner_!=this||receipt.committed_||retired_scene_||!data_||receipt.data_!=data_||poisoned_||
+     !registry||!old||!receipt.source_||!receipt.signals_||receipt.signals_->registry()!=registry||
+     !identity(receipt.identity_,data_->identity())||
+     !identity(receipt.source_->identity(),receipt.identity_)||receipt.root_!=old->root()||
+     old->state(receipt.root_)||registry->object_exists(receipt.root_)||old->lifecycle_pending()||
+     &next==old||next.object_domain()!=old->object_domain()||
+     next.object_domain()!=registry->kernel()||!root||root!=next.root()||!n||!n->alive||!n->bound||
+     n->queued||registry->tree_owner(root).get()!=&next||!registry->object_exists(root)||
+     registry->current_scene()!=root||!next.object_identity(root,actual)||
+     actual.upstream_commit!=receipt.identity_.upstream_commit||!consumers_.door_data||
+     !consumers_.door||consumers_.door->data()!=consumers_.door_data||
+     consumers_.door->phase()!=FieldDoorPhase::Deferred||
+     consumers_.door->active_door()!=receipt.door_source_||
+     !consumers_.door_data->find(receipt.door_source_,door)||
+     !consumers_.door_data->source_hash(consumers_.door_data->string(door.target_path),target)||
+     actual.source_sha256!=target){
+    e="Scene retirement precedes actual old free/new global currentScene source assignment";return false;
+  }
+  const std::set<FieldObjectId>objects(receipt.objects_.begin(),receipt.objects_.end());
+  if(objects.empty()||objects.size()!=receipt.objects_.size()||objects.count(receipt.door_)||
+     registry->pending_messages_to(objects)||receipt.signals_->active_dispatch_to(objects)){
+    e="Scene retirement retains duplicate objects or pending source callbacks";return false;
+  }
+  for(auto id:objects)if(old->state(id)||registry->object_exists(id)){
+    e="Scene retirement precedes complete actual branch/ObjectDB deletion";return false;
+  }
+  for(const auto&a:receipt.admissions_){const auto now=admissions_.find(a.first);
+    if(now==admissions_.end()||now->second.id!=a.second.id||now->second.family!=a.second.family||
+       now->second.capability!=a.second.capability||now->second.source_sha!=a.second.source_sha){
+      e="Scene retirement original admission changed before deletion commit";return false;
+    }
+  }
+  // Native Deleting has already removed old geometry. This path must never
+  // apply an old stable ID to the independently identified new House space.
+  for(auto stable:receipt.scripts_){admissions_.erase(stable);gates_.erase(stable);}
+  FieldSceneConsumers retained;retained.door=consumers_.door;
+  retained.door_data=consumers_.door_data;retained.geometry=consumers_.geometry;
+  consumers_=retained;host_={};retired_scene_=true;blocked_valid_=false;
+  receipt.committed_=true;e.clear();return true;
+}
 bool FieldSceneHost::emote_object(const FieldEmoteDescriptor &n, bool &exists,
                                   uint32_t &id, std::string &e) const {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || !consumers_.emote_data ||
       consumers_.emote_data->record(n.id) != &n) {
     e = "Field emotes descriptor not bound";
@@ -1460,6 +1636,7 @@ bool FieldSceneHost::emote_object(const FieldEmoteDescriptor &n, bool &exists,
 bool FieldSceneHost::emote_direction_source(const FieldEmoteDescriptor &n,
                                             uint32_t &id,
                                             std::string &e) const {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   bool exists = false;
   uint32_t object = 0;
   if (!emote_object(n, exists, object, e))
@@ -1476,6 +1653,7 @@ bool FieldSceneHost::emote_direction_source(const FieldEmoteDescriptor &n,
 bool FieldSceneHost::emote_texture_geometry(uint32_t id, uint32_t &height,
                                             uint32_t &rows,
                                             std::string &e) const {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || !consumers_.sprite || !consumers_.sprite_data) {
     e = "Field emotes sprite unavailable";
     return false;
@@ -1494,6 +1672,7 @@ bool FieldSceneHost::emote_texture_geometry(uint32_t id, uint32_t &height,
 }
 bool FieldSceneHost::emote_direction(uint32_t id, Vec2 &direction,
                                      std::string &e) const {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || !consumers_.sprite) {
     e = "Field emotes direction unavailable";
     return false;
@@ -1508,6 +1687,7 @@ bool FieldSceneHost::emote_direction(uint32_t id, Vec2 &direction,
   return true;
 }
 bool FieldSceneHost::emote_sprite_changed(uint32_t id, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || !consumers_.sprite_data ||
       !consumers_.emote_data || !consumers_.emote) {
     e = "Field emotes signal consumer unavailable";
@@ -1533,6 +1713,7 @@ bool FieldSceneHost::emote_sprite_changed(uint32_t id, std::string &e) {
   return true;
 }
 bool FieldSceneHost::idle_emotes(float dt, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || !consumers_.emote || !consumers_.emote_data ||
       !std::isfinite(dt) || dt < 0 || dt > 60) {
     e = "Field emotes idle binding/delta rejected";
@@ -1549,6 +1730,7 @@ bool FieldSceneHost::idle_emotes(float dt, std::string &e) {
   return true;
 }
 bool FieldSceneHost::idle_dead_bushes(float dt, std::string &e) {
+  if(retired_scene_){e="Original scene source owner has retired after actual branch deletion";return false;}
   if (!data_ || poisoned_ || !consumers_.bush || !consumers_.bush_data ||
       !std::isfinite(dt) || dt < 0 || dt > 60) {
     e = "Field DeadBush idle binding/delta rejected";

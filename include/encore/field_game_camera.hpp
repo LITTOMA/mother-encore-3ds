@@ -59,6 +59,7 @@ public:
  const FieldGameCameraState*state(uint32_t)const;const std::map<uint64_t,FieldCameraTweenState>&tweens()const{return tweens_;}const std::map<uint64_t,FieldCameraShakerState>&shakers()const{return shakers_;}const std::string&error()const{return error_;}
  bool native_current_changed(uint32_t,bool);
  const FieldGameCameraData*data()const{return data_;}
+ const SourceRandom*random()const{return random_;}
 private:
  std::set<uint32_t> pending_source_constructor_;
  const FieldGameCameraData*data_=nullptr;SourceRandom*random_=nullptr;FieldGameCameraHost host_;std::map<uint32_t,FieldGameCameraState>states_;std::map<uint64_t,FieldCameraTweenState>tweens_;std::map<uint64_t,FieldCameraShakerState>shakers_;uint64_t next_=1;uint32_t last_ready_=0;bool had_ready_=false,poisoned_=false;std::string error_;

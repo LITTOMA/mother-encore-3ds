@@ -1,6 +1,6 @@
 # 当前状态
 
-返回室内的完整调查 Room 另有独立 Restore 资源，复用原版 UID、NPC 事件、音乐及初始库存语义，并绑定实际新 Room／Reentry／完整树字节和来源。新增实际 RoomShaker 与完整房屋音频资源，候选闭包为 110 项角色资源；读取不创建节点、不执行 Ready、不消耗随机数。当前依赖 bundle／catalog 仍需由固定 Linux 工具生成并完成实际交叉构建。
+返回室内的完整调查 Room 另有独立 Restore 资源，复用原版 UID、NPC 事件、音乐及初始库存语义，并绑定实际新 Room／Reentry／完整树字节和来源。新增实际 RoomShaker 与完整房屋音频资源，候选闭包为 110 项角色资源；读取不创建节点、不执行 Ready、不消耗随机数。[手动来源生成 37692858247](https://github.com/LITTOMA/mother-encore-3ds/actions/runs/37692858247) 已完成实际 Linux 生成，四路来源核对并产出依赖 bundle／catalog；导入逐文件核对实际提交、字节和 SHA。此 110 项候选尚需真实交叉构建。
 
 Actions `37683045321` 在真实 ARM 编译中发现库存消费者访问三个私有只读接口，未产出 3DSX／CIA。`eb2027d` 修正访问范围、保留旧 Drawer 执行私有后，[run 37685136196](https://github.com/LITTOMA/mother-encore-3ds/actions/runs/37685136196) 已完成真实 ARM／3DSX／CIA、实际 RomFS 提取比对及 artifact 上传，包含 Continue／LOAD 出门 Fade 元数据修复。该结果只适用于此提交。测试、sanitizer、模拟器与真机没有运行。
 

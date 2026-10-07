@@ -1,4 +1,5 @@
 #include <atomic>
+#include "build_identity.hpp"
 #include <malloc.h>
 #include "encore/encounter_residency.hpp"
 #include <array>
@@ -83,7 +84,7 @@ std::string companion_path(const std::string& path){
 using GameplayScene=upstream::FreshHouseState;
 std::unique_ptr<GameplayScene> gameplay_scene=std::make_unique<GameplayScene>();
 struct DebugText {C2D_TextBuf buffer=nullptr;C2D_Text text{};std::string value;bool ready=false;};
-DebugText debug_text[6];
+DebugText debug_text[7];
 bool create_debug_text(){for(auto& slot:debug_text){slot.buffer=C2D_TextBufNew(1024);if(!slot.buffer)return false;}return true;}
 void free_debug_text(){for(auto& slot:debug_text){if(slot.buffer)C2D_TextBufDelete(slot.buffer);slot.buffer=nullptr;slot.ready=false;slot.value.clear();}}
 const u32 ink=C2D_Color32(225,235,235,255),muted=C2D_Color32(139,162,170,255);
@@ -1420,6 +1421,7 @@ void house_bottom(){
     const auto room=opening_data.view();const auto scene=room.scene();
     text(0,14,9,0.48f,"ROOM RUNTIME",accent,292);
     text(1,14,39,0.4f,std::string(room.string(scene.version_string))+"\n"+std::string(room.string(scene.display_name_string)),ink,292);
+    text(6,14,70,0.29f,std::string("Build ")+ctr::build_revision,ink,292);
     const auto stage=gameplay_scene->world.stage();
     const auto battle_phase=battle_entry.phase();
     const char* scope=stage==upstream::OpeningStage::Walking?"Native movement + room Y-sort":
@@ -1517,7 +1519,7 @@ void error_console(const std::string& error){
     u16 width=0,height=0;
     auto* framebuffer=gfxGetFramebuffer(GFX_TOP,GFX_LEFT,&width,&height);
     if(framebuffer)std::memset(framebuffer,0,size_t(width)*height*3);
-    consoleInit(GFX_BOTTOM,nullptr);std::printf("ENCORE NATIVE\n\n%s\n\nSTART to exit.\n",error.c_str());
+    consoleInit(GFX_BOTTOM,nullptr);std::printf("ENCORE NATIVE\nBuild %s\n\n%s\n\nSTART to exit.\n",ctr::build_revision,error.c_str());
     while(aptMainLoop()){hidScanInput();if(hidKeysDown()&KEY_START)break;gfxFlushBuffers();gfxSwapBuffers();gspWaitForVBlank();}
 }
 }

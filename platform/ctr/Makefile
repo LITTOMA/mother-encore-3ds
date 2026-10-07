@@ -148,6 +148,11 @@ endif
 all: $(APP).3dsx
 stage-romfs:
 	python3 tools/stage_native_romfs.py
+.PHONY: console-build-identity
+console-build-identity:
+build/ctr/build_identity.hpp: console-build-identity
+	python3 tools/write_build_identity.py
+build/ctr/platform/ctr/main.o: build/ctr/build_identity.hpp
 build/ctr/platform/ctr/main.o: CXXFLAGS += -ffp-contract=off
 # Headers can be included through renderer/host headers by any platform TU.
 # Generate them before all compilation, including a clean build and opt-in

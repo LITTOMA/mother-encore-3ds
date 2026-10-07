@@ -802,6 +802,10 @@ bool prepare_podunk_exit(std::string&e){
  session_state=podunk_house_snapshot;
  if(region_music.scene_epoch()==UINT64_MAX){e="House scene epoch exhausted";return false;}
  podunk_scene_epoch=region_music.scene_epoch()+1;
+ // Continue/LOAD enters the House without playing Introduction. The Door
+ // borrows its checked UI animation data, so admission must load that owner
+ // here rather than relying on the New Game presentation having run first.
+ if(!load_introduction(e))return false;
  if(!podunk_door_fade.initialize(house_data.view(),podunk_destination.exit(),introduction_data,e))return false;
  ctr::PodunkHouseExitInput input;
  auto&c=input.continuation;

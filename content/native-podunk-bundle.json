@@ -10453,11 +10453,11 @@
       "scene": "Maps/podunk/podunk.tscn",
       "scene_id": 2561235290,
       "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
-      "ir_sha256": "31f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a",
+      "ir_sha256": "934c68635386ec7326a0d84ab9e9bcb65fca25dade68af8ea7d1f5b269f884ec",
       "bytes": 15647,
-      "crc32": 1142620877,
-      "sha256": "b2d9964100c8eb59c76586959097444c7d748db878ce02b64ec182b79a5defa0",
-      "original_header": "454e43534155443101000000800000001f3d0000bd6e422c67004e4501000000010000005a59a9987d9246600fffe518408f5830d4848635019005a378febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c50131f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a00000000",
+      "crc32": 4000820860,
+      "sha256": "fefef5f47a97b5435f6396e9f2cb26933620da6cf8cbbfbe5d5faaf5fbb89851",
+      "original_header": "454e43534155443101000000800000001f3d000068aef38167004e4501000000010000005a59a9987d9246600fffe518408f5830d4848635019005a378febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501934c68635386ec7326a0d84ab9e9bcb65fca25dade68af8ea7d1f5b269f884ec00000000",
       "sources": {
         "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
         "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
@@ -12364,9 +12364,9 @@
       "id": 201,
       "kind": 5,
       "path": "sound/banks/podunk-scene-effects.encaudio",
-      "bytes": 1271,
-      "crc32": 329134062,
-      "sha256": "e6abedd92519cf18b4145da57f7a164735fec49dcfdc5f40be699712137cc5c7"
+      "bytes": 1279,
+      "crc32": 1848090104,
+      "sha256": "a7ea96437024c28d3326a7f67e7ae69c1ba6d4582144db25d8734bc1a7e126e6"
     },
     {
       "id": 202,
@@ -12659,13 +12659,21 @@
     {
       "id": 238,
       "kind": 2,
+      "path": "sound/effects/scene/knock.pcm",
+      "bytes": 44100,
+      "crc32": 2537147697,
+      "sha256": "33e29d4690224c9a9788a6c218e3f9f5c8ac6ed8266476ba7098babdaa2c3bca"
+    },
+    {
+      "id": 239,
+      "kind": 2,
       "path": "sound/effects/shop-register.pcm",
       "bytes": 8608,
       "crc32": 2814007984,
       "sha256": "6cf3c7f13a4f548d6bec553d343397f910ba2a28d70dad4c62a7805c4286439c"
     },
     {
-      "id": 239,
+      "id": 240,
       "kind": 2,
       "path": "sound/effects/storage-clear.pcm",
       "bytes": 9168,
@@ -12673,7 +12681,7 @@
       "sha256": "4624e7c848d7ae603df09b00861001bed6ca1a500cc9acddf0428f462666a8ef"
     },
     {
-      "id": 240,
+      "id": 241,
       "kind": 2,
       "path": "sound/effects/storage-equip.pcm",
       "bytes": 19336,
@@ -12681,7 +12689,7 @@
       "sha256": "cf6e2ad332ddaa36eed7f5cb2cb59b11226dd4f83af09d56c7ef8c859be05c47"
     },
     {
-      "id": 241,
+      "id": 242,
       "kind": 2,
       "path": "sound/effects/text-adult.pcm",
       "bytes": 14336,
@@ -12689,7 +12697,7 @@
       "sha256": "d4f0e98b04db649338c56b1aeaea3b5c78ffbdb7c7863ae8615719d1186d8443"
     },
     {
-      "id": 242,
+      "id": 243,
       "kind": 2,
       "path": "sound/effects/text-female.pcm",
       "bytes": 14336,
@@ -12697,7 +12705,7 @@
       "sha256": "e54112f322e29a9f91ea856c4d69701df1125fbac040f7cd7e9215d6d6bc353a"
     },
     {
-      "id": 243,
+      "id": 244,
       "kind": 2,
       "path": "sound/music/doll-melody.pcm",
       "bytes": 620476,
@@ -12705,7 +12713,7 @@
       "sha256": "8055343ce209cc090ad6bf487a995d230b0257c77bf6e02f6bac5bca5ca4810c"
     },
     {
-      "id": 244,
+      "id": 245,
       "kind": 2,
       "path": "sound/music/encounter-boss.pcm",
       "bytes": 986112,
@@ -12713,7 +12721,7 @@
       "sha256": "b0bf6f00b3bcc8d5b5ff0054ccddd867931057f10b75c74147bd94c54ea306c5"
     },
     {
-      "id": 245,
+      "id": 246,
       "kind": 2,
       "path": "sound/music/encounter-enemy.pcm",
       "bytes": 986112,
@@ -12721,7 +12729,7 @@
       "sha256": "028f04ce000e58361ef6d19c21143cf225ddd1b435964097363e1a95d7a5f4f9"
     },
     {
-      "id": 246,
+      "id": 247,
       "kind": 2,
       "path": "sound/music/good-morning.pcm",
       "bytes": 3754284,
@@ -12729,7 +12737,7 @@
       "sha256": "e6e6ccd4f0a7b8a1da9611cfbf069f7f7798de78a86e9187a797da4be1d096ea"
     },
     {
-      "id": 247,
+      "id": 248,
       "kind": 2,
       "path": "sound/music/house-music.pcm",
       "bytes": 6003820,
@@ -12737,7 +12745,7 @@
       "sha256": "beb4d21f7e43e93dd8c1f401eb2fe8e9a72d4e33b38ef36dfabbeabd50202ae1"
     },
     {
-      "id": 248,
+      "id": 249,
       "kind": 2,
       "path": "sound/music/naming-mother-earth-piano.pcm",
       "bytes": 20173824,
@@ -12745,7 +12753,7 @@
       "sha256": "fea132a11b00cd2092e844ec8408a5390f2db62aab0524c2302ab950f8cc2432"
     },
     {
-      "id": 249,
+      "id": 250,
       "kind": 2,
       "path": "sound/music/podunk-1388543241.pcm",
       "bytes": 18825984,
@@ -12753,7 +12761,7 @@
       "sha256": "2187318aac19e09726d0be5496cde4c05c89c53206af7543e08d2bf9e601cc5d"
     },
     {
-      "id": 250,
+      "id": 251,
       "kind": 2,
       "path": "sound/music/podunk-2369254644.pcm",
       "bytes": 12502108,
@@ -12761,7 +12769,7 @@
       "sha256": "bed99c9f303eb1473dced82940542a961e4c124474166b0a9ca5a3278e3c0733"
     },
     {
-      "id": 251,
+      "id": 252,
       "kind": 2,
       "path": "sound/music/podunk-364625705.pcm",
       "bytes": 9900948,
@@ -12769,7 +12777,7 @@
       "sha256": "7a8197f297ea06a8e54d4f6ea45eb21b820a46c71dbf74e665efb84474a307b9"
     },
     {
-      "id": 252,
+      "id": 253,
       "kind": 2,
       "path": "sound/music/podunk-582446421.pcm",
       "bytes": 19255848,
@@ -12777,7 +12785,7 @@
       "sha256": "761c33bf0ff1982ec96390e9715c62b8f0cf9ba2ee2b013c2e52afca41372fef"
     },
     {
-      "id": 253,
+      "id": 254,
       "kind": 2,
       "path": "sound/music/podunk-61517992.pcm",
       "bytes": 16934400,
@@ -12785,7 +12793,7 @@
       "sha256": "ae4e6b586382e0619d7159529923a4c0206cd33d946b68683c6a93b54dc1309a"
     },
     {
-      "id": 254,
+      "id": 255,
       "kind": 2,
       "path": "sound/music/poltergeist.pcm",
       "bytes": 10137900,
@@ -12793,20 +12801,12 @@
       "sha256": "fb9d28132973477cb13d5d87ed9ec61754c92225ff1e18d45663a9cdb53462f1"
     },
     {
-      "id": 255,
+      "id": 256,
       "kind": 2,
       "path": "sound/music/title-mother-earth.pcm",
       "bytes": 22311936,
       "crc32": 854003562,
       "sha256": "fbf6185fe7a452b1340b024b455d4a6c3dce1e27440e54f5c39eefdd614a9992"
-    },
-    {
-      "id": 256,
-      "kind": 2,
-      "path": "sound/scene/knock.pcm",
-      "bytes": 44100,
-      "crc32": 2537147697,
-      "sha256": "33e29d4690224c9a9788a6c218e3f9f5c8ac6ed8266476ba7098babdaa2c3bca"
     }
   ],
   "script_bindings": [
@@ -13147,7 +13147,7 @@
     "tools/house_exit_door.py": "4522e17a955181e002af901336073286fc7bb44daa1624728cb5ea0907c20c70",
     "content/native-house-status-effects.json": "1fb5b61aa92236ecad7e65f8d22bd7e3316b17fe7ffe14dc0597e695ae5eff1c",
     "tools/house_status_effects.py": "39e828b3b2411fc8f1c6a858a914dce7f189ac4eac2f2f4e839fc746759b1b9e",
-    "content/podunk-scene-audio.json": "31f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a",
+    "content/podunk-scene-audio.json": "934c68635386ec7326a0d84ab9e9bcb65fca25dade68af8ea7d1f5b269f884ec",
     "tools/field_scene_audio.py": "bb04ee0bcd5884efc85bc054a6f7463ab9eb660cbbde80f93c248b6c186c9b80",
     "content/native-field-scene-signal-callbacks.json": "fa17335bdcecc2a545e5dba55f861b8b826dcf6dc5c8a239457106cad45a7724",
     "tools/field_scene_signal_callbacks.py": "2b0fc97cd5becdc22c34581647e14cc9063b73d4ee6366365e947c15d50d6104",
@@ -13164,8 +13164,8 @@
     "content/podunk-music.json": "370a40616d509094880fe46d23ed2b1a1de09110eae4620170fdfec2eb1799f2",
     "content/asset-receipts/audio/opening.json": "9d2c85d6f9f2c95a2eacd6361fca01bff41c7247c0c7db43480643f9f17f1966",
     "content/asset-receipts/audio/podunk.json": "9964fa6c001d33123cf2fffbee0501ae76d3450876bf22ed8877c2b3d7e1298a",
-    "content/podunk-bundle-audio.json": "c3ca0be84505f05f49f1a7bd99984fa6e729c3a12793cdb99d20a37e7e70cc52",
-    "content/asset-receipts/audio/podunk-scene-effects.json": "17b17cbe5462ea960a0ba8250d4b89014f01a05fe53a79784c0ce57d282747eb",
+    "content/podunk-bundle-audio.json": "fcc98339e82b93564baee1cef88b2d6f4df14b424889f58210203c8bcbb5435f",
+    "content/asset-receipts/audio/podunk-scene-effects.json": "dc69595c5e8b0157d4bf479f9169d9481a3d9c1c3b1137e783a9b84bcca32dc4",
     "content/asset-receipts/graphics/objects/dead-bush/source.json": "4ae6a3f9fe77c10690bb6587fae13f59843c07a876fb8251f5b4e09b612344a8",
     "content/asset-receipts/graphics/objects/payphone/source.json": "b2144766de57d3cb3645ee892208169b5260ff6f8d3969e7b1b494c6a7a8699e",
     "content/asset-receipts/graphics/objects/vending-machine/source.json": "3032d7f7a56e2f86f5b7aae0dfdd4e987a192641bea78768d26d569e5c250aac",

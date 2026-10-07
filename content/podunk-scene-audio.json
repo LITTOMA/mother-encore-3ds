@@ -12,7 +12,7 @@
   "tree_ir_sha256": "8f6ac6436ad79c5cef04ab428d4896d7cf19aa7f2ab9a294d8e43de3a590406e",
   "global_panning": 1.0,
   "scene_bank": "sound/banks/podunk-scene-effects.encaudio",
-  "bank_sha256": "e6abedd92519cf18b4145da57f7a164735fec49dcfdc5f40be699712137cc5c7",
+  "bank_sha256": "a7ea96437024c28d3326a7f67e7ae69c1ba6d4582144db25d8734bc1a7e126e6",
   "nodes": [
     {
       "id": 1120173053,

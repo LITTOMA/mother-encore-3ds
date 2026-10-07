@@ -104,7 +104,7 @@ def audio_recipe():
  inv=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(inv[source]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/source),'Scene knock source changed')
  # The native Door source sound is distinct from audioManager global voices.
  sid=int.from_bytes(hashlib.sha256(('native-audio:'+source).encode()).digest()[:4],'little')
- assets.append(dict(stable_id=sid,source_path='res://'+source,source_sha256=sha(ROOT/'upstream/MOTHER-Encore'/source),import_sha256=sha(ROOT/'upstream/MOTHER-Encore'/(source+'.import')),pcm_path='sound/scene/knock.pcm',gain_db=0))
+ assets.append(dict(stable_id=sid,source_path='res://'+source,source_sha256=sha(ROOT/'upstream/MOTHER-Encore'/source),import_sha256=sha(ROOT/'upstream/MOTHER-Encore'/(source+'.import')),pcm_path='sound/effects/scene/knock.pcm',gain_db=0))
  require(len(assets)==7 and len({a['stable_id']for a in assets})==7,'Scene effects source coverage')
  return dict(schema=1,upstream_commit=PIN,bus_source=base['bus_source'],bus_sha256=base['bus_sha256'],manager_source=base['manager_source'],manager_sha256=base['manager_sha256'],assets=assets)
 def convert_audio(ffmpeg,ffprobe,logs):
@@ -114,9 +114,12 @@ def convert_audio(ffmpeg,ffprobe,logs):
  recipe=audio_recipe();reused={};old_recipe=read(AUDIO_RECIPE)if AUDIO_RECIPE.exists()else None;old_rc=read(AUDIO_RECEIPT)if AUDIO_RECEIPT.exists()else None
  if old_recipe is not None and old_rc is not None:
   require(old_rc['commit']==PIN and old_rc['recipe_sha256']==sha(AUDIO_RECIPE),'Old scene audio receipt changed')
-  require(old_recipe['assets']==recipe['assets'][:len(old_recipe['assets'])],'Unrelated scene audio source change during extension')
-  for spec,proof in zip(old_recipe['assets'],old_rc['assets']):
+  require(len(old_recipe['assets'])<=len(recipe['assets']) and len(old_recipe['assets'])==len(old_rc['assets']),'Old scene audio receipt coverage')
+  for spec,proof,target in zip(old_recipe['assets'],old_rc['assets'],recipe['assets']):
+   require({k:v for k,v in spec.items()if k!='pcm_path'}=={k:v for k,v in target.items()if k!='pcm_path'},'Unrelated scene audio source change during extension')
+   require(safe(target['pcm_path'])and target['pcm_path'].startswith('sound/effects/'),'Scene audio target must remain a checked effect')
    payload=ROOT/'romfs'/spec['pcm_path'];require(sha(payload)==proof['pcm_sha256']and payload.stat().st_size==proof['pcm_bytes'],'Old scene audio PCM changed before extension')
+   proof=dict(proof,pcm_path=target['pcm_path'])
    reused[spec['stable_id']]=(dict(assets=[proof],ffmpeg_sha256=old_rc['ffmpeg_sha256'],ffmpeg_version=old_rc['ffmpeg_version']),payload.read_bytes())
  write(AUDIO_RECIPE,recipe)
  def one(a):

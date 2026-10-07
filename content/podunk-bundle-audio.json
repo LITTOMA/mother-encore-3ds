@@ -59,7 +59,7 @@
       "source_path": "res://Audio/Sound effects/EB/knock.wav",
       "source_sha256": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
       "import_sha256": "9f23372ce5e75bff06456bad4ef95ef9dc9eb78e492e38a119c53327b0d1afc2",
-      "pcm_path": "sound/scene/knock.pcm",
+      "pcm_path": "sound/effects/scene/knock.pcm",
       "gain_db": 0
     }
   ]

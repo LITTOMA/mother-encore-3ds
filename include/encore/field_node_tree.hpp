@@ -163,6 +163,9 @@ public:
  bool set_visible(FieldObjectId,bool,std::string&);
  bool set_z_index(FieldObjectId,int32_t,std::string&);
  bool set_behind_parent(FieldObjectId,bool,std::string&);
+ // Actual native YSort/TileMap property. Source descriptors remain immutable;
+ // the owning native receiver supplies its checked sort_children value.
+ bool set_sort_children(FieldObjectId,bool,std::string&);
  bool visible_in_tree(FieldObjectId)const;
  bool effective_color(FieldObjectId,FieldColor&,std::string&)const;
  bool effective_z(FieldObjectId,int32_t&,std::string&)const;

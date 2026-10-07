@@ -6,6 +6,9 @@
 #include "encore/field_native_timer.hpp"
 #include "encore/field_visibility.hpp"
 #include "encore/field_sprite_bridge.hpp"
+#include "encore/field_map.hpp"
+#include "encore/field_canvas_art.hpp"
+#include "encore/field_tint.hpp"
 
 namespace encore::upstream {
 // One immutable, cross-bound destination owner. Admission does not allocate
@@ -23,6 +26,9 @@ public:
   const FieldNativeTimerData &timers() const { return timers_; }
   const FieldVisibilityData &visibility() const { return visibility_; }
   const FieldSpriteData &sprites() const { return sprites_; }
+  const FieldMapView &map() const { return map_; }
+  const FieldCanvasArtData &canvas() const { return canvas_; }
+  const FieldTintData &tint() const { return tint_; }
   // The complete tree owns the TileMaps' authoritative local/world matrices.
   // Only IDs already bound to a loaded reentry certificate can resolve here.
   const FieldNodeDescriptor *tilemap_node(uint32_t source_id) const;
@@ -37,5 +43,8 @@ private:
   FieldNativeTimerData timers_;
   FieldVisibilityData visibility_;
   FieldSpriteData sprites_;
+  FieldMapView map_;
+  FieldCanvasArtData canvas_;
+  FieldTintData tint_;
 };
 } // namespace encore::upstream

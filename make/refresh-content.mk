@@ -8,6 +8,18 @@ source-fonts:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/content_pipeline.py fonts
 
 ifeq ($(REFRESH_SOURCES),1)
+.PHONY: source-house-return-map source-house-return-canvas source-house-return-tint
+house-return-map: source-house-return-map
+source-house-return-map: house-node-tree house-geometry
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_map.py extract
+	"$(PYTHON)" tools/house_return_map.py assets --tex3ds "$(TEX3DS)" --work build/house-return-map-textures
+house-return-canvas: source-house-return-canvas
+source-house-return-canvas: house-node-tree field-canvas-art
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_canvas.py extract
+	"$(PYTHON)" tools/house_return_canvas.py assets --tex3ds "$(TEX3DS)" --work build/house-return-canvas-textures
+house-return-tint: source-house-return-tint
+source-house-return-tint: house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_tint.py extract
 .PHONY: source-house-reentry source-house-geometry source-house-node-tree source-house-return-ladder source-scene-bundle
 house-return-ladder: source-house-return-ladder
 source-house-return-ladder: house-node-tree house-geometry player-initialization player-ready player-motion

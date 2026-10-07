@@ -4,6 +4,7 @@
 #include <functional>
 #include <map>
 #include <string>
+#include <string_view>
 #include <vector>
 #include <utility>
 namespace encore::upstream {
@@ -17,7 +18,8 @@ public:
  bool valid()const{return valid_;}uint32_t scene_id()const{return scene_;}const std::array<uint8_t,20>&source_pin()const{return pin_;}
  const FieldTintColor&default_tint()const{return default_;}const std::vector<FieldTintDescriptor>&records()const{return records_;}
  const FieldTintDescriptor*record(uint32_t)const;const FieldTintDescriptor*prototype(FieldTintKind)const;
-private:bool valid_=false;uint32_t scene_=0;std::array<uint8_t,20>pin_{};FieldTintColor default_{};std::vector<FieldTintDescriptor>records_;
+ bool source_hash(std::string_view,std::array<uint8_t,32>&)const;
+private:bool valid_=false;uint32_t scene_=0;std::array<uint8_t,20>pin_{};FieldTintColor default_{};std::vector<FieldTintDescriptor>records_;std::map<std::string,std::array<uint8_t,32>>sources_;
 };
 struct FieldTintHost {
  // Resolve only the checked source child path within this actual instance.

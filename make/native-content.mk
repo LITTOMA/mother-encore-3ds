@@ -49,6 +49,7 @@ audio-server:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/audio_server.py compile
 CONTENT_TASKS += dialogue-actor-resource
 CONTENT_TASKS += house-reentry house-geometry house-node-tree house-return-ladder house-return-npc house-return-npc-world house-return-timers house-return-visibility house-return-sprite field-door
+CONTENT_TASKS += house-return-map house-return-canvas house-return-tint
 .PHONY: house-reentry house-geometry house-node-tree house-return-ladder field-door
 house-geometry:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_geometry.py compile
@@ -73,6 +74,13 @@ house-return-visibility: house-node-tree
 .PHONY: house-return-sprite
 house-return-sprite: house-node-tree house-return-npc
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_sprite.py compile
+.PHONY: house-return-map house-return-canvas house-return-tint
+house-return-map: house-node-tree house-geometry
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_map.py compile
+house-return-canvas: house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_canvas.py compile
+house-return-tint: house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_tint.py compile
 .PHONY: dialogue-actor-resource
 dialogue-actor-resource:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/dialogue_actor_resource.py compile

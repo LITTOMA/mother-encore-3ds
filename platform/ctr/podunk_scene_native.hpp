@@ -4,13 +4,17 @@
 #include "encore/field_map_space.hpp"
 #include "encore/field_object_signals.hpp"
 #include "encore/field_scene_host.hpp"
+#include "encore/source_random.hpp"
 #include "podunk_native_root.hpp"
 #include "podunk_player_physics_world.hpp"
 #include <memory>
+#include <set>
 
 class FieldMapRenderer;
 class FieldCanvasArtRenderer;
+namespace encore::upstream { class HouseReturnSources; }
 namespace encore::ctr {
+class HouseReturnGeometryNative;
 class PodunkPlayerHost;
 class PodunkConcretePlayerEffectOwners;
 class PodunkPlayerCanvasForeign;
@@ -54,9 +58,10 @@ public:
   virtual bool draw(const upstream::FieldCanvasDraw &, upstream::Vec2, float,
                     float, std::string &) = 0;
 };
-// Owns native bodies, shapes and GPU pages for the full checked scene. Script
-// construction/Ready, timers, audio and animated sprites have other typed
-// owners; this class never grants those classes an empty native admission.
+// Podunk owns its native collision bodies/shapes and GPU pages here. The
+// House path borrows its existing concrete geometry owner and consumes its
+// checked Canvas/TileMap pages and Sparkles body in the same native tree.
+// Other script/Control/material owners keep their actual source lifecycle.
 class PodunkSceneNative final : public upstream::FieldCanvasNativeOwner {
 public:
   PodunkSceneNative();
@@ -69,6 +74,18 @@ public:
                upstream::FieldMapSpace &, upstream::FieldGeometrySpace &,
                const upstream::FieldCanvasArtData &, const char *asset_root,
                upstream::FieldCanvasArtHost, PodunkSceneMaterialOwner *,
+               std::string &);
+  // Detached destination preparation borrows the same World/physics spaces;
+  // House geometry is constructed and synchronized by its existing owner.
+  bool prepare_house(const upstream::HouseReturnSources &,
+               upstream::FieldNodeTreeRuntime &,upstream::FieldGlobalRegistry &,
+               PodunkNativeRoot &,upstream::FieldMapSpace &,
+               upstream::FieldGeometrySpace &,HouseReturnGeometryNative &,
+               upstream::SourceRandom &,const char *asset_root,
+               upstream::FieldCanvasArtHost,PodunkSceneMaterialOwner *,
+               upstream::FieldCanvasControlOwner *,std::string &);
+  bool bind_replaced_house(const upstream::FieldNodeTreeRuntime &old_tree,
+               upstream::FieldObjectId old_root,upstream::FieldObjectId house_root,
                std::string &);
   bool owns(const upstream::FieldNodeDescriptor &) const;
   bool owns(upstream::FieldObjectId) const;
@@ -94,15 +111,34 @@ public:
                     PodunkConcretePlayerEffectOwners &,
                     const upstream::PlayerEffectsData &, std::string &);
   bool phase(upstream::FieldObjectId, upstream::FieldTreePhase, std::string &);
+  // Same real SceneTree notification/idle cursor. Source Ready below owns
+  // only the checked AnimatedSprite script body, never another source class.
+  bool phase_house(upstream::FieldObjectId,upstream::FieldTreePhase,float,
+                   bool paused,bool actual_update_pending,std::string &);
+  bool deferred_house(const upstream::FieldDeferredMessage &,std::string &);
+  // Exact Sparkles source attachment: no constructor/Enter/Exit body in the
+  // checked source, and the original _ready is consumed by phase_house.
+  bool house_sparkles_binding(upstream::FieldObjectId,
+                             upstream::FieldNodeBinding &,std::string &)const;
+  bool house_signal_declaration(upstream::FieldObjectId,std::string_view,
+                                uint32_t &,std::string &)const;
   const upstream::FieldCanvasArtData *canvas_data() const override {
     return art_;
   }
   const upstream::FieldNodeTreeRuntime *canvas_tree() const override {
     return tree_;
   }
+  const upstream::FieldMapView *tile_map_data()const override{return house_map_;}
+  bool tile_sort_children(upstream::FieldObjectId,
+                          std::vector<upstream::FieldCanvasNativeTileChild>&,
+                          std::string &)const override;
   bool sprite_snapshot(upstream::FieldObjectId,
                        upstream::FieldCanvasAppearance &,
                        std::string &) const override;
+  bool animated_snapshot(upstream::FieldObjectId,std::string &,uint32_t &,
+                       upstream::FieldCanvasAppearance &,std::string &)const override;
+  bool color_rect_snapshot(upstream::FieldObjectId,upstream::Vec2 &,
+                       upstream::FieldColor &,std::string &)const override;
   // Complete native property pose. Source setter signals are emitted only by
   // the explicit setter endpoints, never guessed from a pose difference.
   bool sprite_publish(upstream::FieldObjectId,
@@ -126,7 +162,7 @@ public:
   bool shutdown(std::string &);
 
 private:
-  enum class Kind { Node, Canvas, Map, Body, Area, Shape, Sprite };
+  enum class Kind { Node, Canvas, Map, Body, Area, Shape, Sprite,TextureRect,Animated,ColorRect };
   struct Instance {
     Kind kind = Kind::Node;
     uint32_t source = 0, geometry_node = UINT32_MAX, owner = UINT32_MAX,
@@ -135,12 +171,23 @@ private:
          monitored = false, synchronized = false, space_disabled = false;
     upstream::FieldTransform space_local{};
     upstream::FieldCanvasAppearance sprite{};
+    upstream::FieldCanvasAnimatedState animated{};
+    upstream::FieldColor color{};
+    bool source_ready=false;
   };
   bool actual(upstream::FieldObjectId, const upstream::FieldNodeDescriptor *&,
               const upstream::FieldNodeState *&, std::string &) const;
   bool synchronize(upstream::FieldObjectId, Instance &, std::string &);
   bool material(upstream::FieldObjectId, const upstream::FieldCanvasRecord &,
                 std::string &) const;
+  bool prepare_images(const upstream::FieldMapView &,
+                const upstream::FieldCanvasArtData &,const char *,std::string &);
+  const upstream::FieldMapView *draw_map_source()const;
+  bool house_live(std::string &)const;
+  bool collect_house_tiles(upstream::FieldMapRect,std::vector<uint32_t>&,
+                           std::string &)const;
+  bool tile_pose(uint32_t,upstream::FieldMapDraw &,std::string &)const;
+  upstream::FieldCanvasAnimationHost animation_host();
   const upstream::FieldNodeTreeData *data_ = nullptr;
   upstream::FieldNodeTreeRuntime *tree_ = nullptr;
   upstream::FieldGlobalRegistry *registry_ = nullptr;
@@ -148,6 +195,16 @@ private:
   upstream::FieldMapSpace *map_ = nullptr;
   upstream::FieldGeometrySpace *geometry_ = nullptr;
   const upstream::FieldCanvasArtData *art_ = nullptr;
+  const upstream::HouseReturnSources *house_sources_=nullptr;
+  const upstream::FieldMapView *house_map_=nullptr;
+  HouseReturnGeometryNative *house_geometry_=nullptr;
+  upstream::SourceRandom *house_random_=nullptr;
+  upstream::FieldCanvasControlOwner *house_controls_=nullptr;
+  const upstream::FieldNodeTreeRuntime *house_old_tree_=nullptr;
+  upstream::FieldObjectId house_old_root_=0,house_root_=0,animation_call_object_=0;
+  upstream::FieldCanvasNativeCall animation_call_=upstream::FieldCanvasNativeCall::SetProperty;
+  bool animation_call_active_=false,house_replaced_=false;
+  std::set<uint32_t>house_deleted_;
   upstream::FieldCanvasArtHost art_host_;
   PodunkSceneMaterialOwner *materials_ = nullptr;
   upstream::FieldObjectSignals *sprite_signals_ = nullptr;

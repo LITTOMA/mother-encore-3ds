@@ -1,0 +1,371 @@
+{
+  "schema": 2,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "d75660ad1d752f325813c008138a9b60a230f0ce8823a7825e01e16ad69a68c7",
+  "producer_sha256": "e90d8164164e461d2ed6cf46940196a6693341f6294c8596549db21fa5b342e3",
+  "shared_producer_sha256": "9be94ca70a86ab4b6d256051e0f93e9b1c9b2e59c436368aa58eabc2eeb2e73f",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "workers": 4,
+  "license_sha256": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+  "license_review": "Pinned upstream graphics conditions: game-related fork, modification or translation only; this Mother: Encore port retains original source attribution and conditions.",
+  "pages": [
+    {
+      "texture_id": 283944758,
+      "source": "Graphics/Character Sprites/Npcs/1dir/doll.png",
+      "source_sha256": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+      "crop": [
+        0,
+        0,
+        68,
+        22
+      ],
+      "path": "graphics/sprites/house-return-canvas/283944758-0-0.t3x",
+      "crop_png_sha256": "97c775da732fcac476b99d297454ac377c22af78c35401888868bd9fa72fe44c",
+      "bytes": 16405,
+      "crc": 2660965847,
+      "output_sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6"
+    },
+    {
+      "texture_id": 573441513,
+      "source": "Graphics/UI/select_arrow.png",
+      "source_sha256": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "crop": [
+        0,
+        0,
+        6,
+        11
+      ],
+      "path": "graphics/sprites/house-return-canvas/573441513-0-0.t3x",
+      "crop_png_sha256": "878316f52dfb97a940aad0957bab8ced5940e70a2cad561cfba4e56afb215457",
+      "bytes": 533,
+      "crc": 2596060401,
+      "output_sha256": "de93df8cbfb5175ff7afb97f551694a5ec6fd4b8b465499bbe8cd37aabebc383"
+    },
+    {
+      "texture_id": 610457151,
+      "source": "Graphics/Objects/Common/Sparkles.png",
+      "source_sha256": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "crop": [
+        0,
+        0,
+        35,
+        7
+      ],
+      "path": "graphics/sprites/house-return-canvas/610457151-0-0.t3x",
+      "crop_png_sha256": "8107fbe58d417074c2c1de1928c3f50ca66b998b7a9d4097466d29f743018db9",
+      "bytes": 2069,
+      "crc": 4179542955,
+      "output_sha256": "e7ff7514ae9d502d0538738bbe8a8d513eb3c7d70fe46f08713bbc7b49482829"
+    },
+    {
+      "texture_id": 1216500987,
+      "source": "Graphics/Character Sprites/Npcs/4dir/mimmie.png",
+      "source_sha256": "92cc5589bfe0ad56cd4f0e884952f2d3bc923ac57638fe657b7ea9c689a530e1",
+      "crop": [
+        0,
+        0,
+        85,
+        100
+      ],
+      "path": "graphics/sprites/house-return-canvas/1216500987-0-0.t3x",
+      "crop_png_sha256": "ec2b82b9e472ca4c2ea2b47b77e2899a0489161d8696ff51f3a3c868e4495ad7",
+      "bytes": 65557,
+      "crc": 2735732608,
+      "output_sha256": "ded975d36226afa1798ceff196fc3fb5c28d6556c10182944573fe00a459196b"
+    },
+    {
+      "texture_id": 1411471305,
+      "source": "Graphics/Rooms/Podunk/Ninten's House.png",
+      "source_sha256": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+      "crop": [
+        0,
+        0,
+        624,
+        1024
+      ],
+      "path": "graphics/sprites/house-return-canvas/1411471305-0-0.t3x",
+      "crop_png_sha256": "5543f4f09f19581abbff5b32485045383ecf66d89aa45a3747d9a153b99bd4d5",
+      "bytes": 4194325,
+      "crc": 1089906979,
+      "output_sha256": "99c09f1f48d9ec02ba13efae460d50375db22b7fd1d736de50e60345e6d45126"
+    },
+    {
+      "texture_id": 1411471305,
+      "source": "Graphics/Rooms/Podunk/Ninten's House.png",
+      "source_sha256": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+      "crop": [
+        0,
+        1024,
+        624,
+        80
+      ],
+      "path": "graphics/sprites/house-return-canvas/1411471305-0-1024.t3x",
+      "crop_png_sha256": "f59b7cec50ed86b47d883bad588e6c9b7008a7133d107c9d4c9399d96ea23472",
+      "bytes": 524309,
+      "crc": 4092782524,
+      "output_sha256": "ae387d75feaef196a7d934dc8f501532a6e623f4a4198ab507cd96d3a612653d"
+    },
+    {
+      "texture_id": 1519088727,
+      "source": "Graphics/Character Sprites/Npcs/1dir/pillow.png",
+      "source_sha256": "675fe31d2f8d9aa913d85f110a7d8d4cc9abdedde79e5fc7341f039bcf12d901",
+      "crop": [
+        0,
+        0,
+        68,
+        22
+      ],
+      "path": "graphics/sprites/house-return-canvas/1519088727-0-0.t3x",
+      "crop_png_sha256": "1463377290208a082eda928c4ddadf43493ae2571687c9f1b921aa7033aede7c",
+      "bytes": 16405,
+      "crc": 3590359616,
+      "output_sha256": "faf7872097617c11b47b78d9943357d86578dae5a716076f7424412123cbba80"
+    },
+    {
+      "texture_id": 1570783638,
+      "source": "Graphics/Objects/Doors/Door_Dark.png",
+      "source_sha256": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+      "crop": [
+        0,
+        0,
+        32,
+        48
+      ],
+      "path": "graphics/sprites/house-return-canvas/1570783638-0-0.t3x",
+      "crop_png_sha256": "bee40ff5005413f06da6bba68e55cd60adf76294972fcd61cdce89df30cc26a7",
+      "bytes": 8213,
+      "crc": 2158928246,
+      "output_sha256": "5596019ff6af60c29d3c726a2ece2769ed4167ee29de2efd6b9707fa1f2ba895"
+    },
+    {
+      "texture_id": 1656393140,
+      "source": "Graphics/Objects/Common/Briefcase.png",
+      "source_sha256": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+      "crop": [
+        0,
+        0,
+        120,
+        30
+      ],
+      "path": "graphics/sprites/house-return-canvas/1656393140-0-0.t3x",
+      "crop_png_sha256": "9666c3f7eec1199610cba8bdcaf052d4db24c17fb96db4cba84822c40eb2b5ad",
+      "bytes": 16405,
+      "crc": 1236599910,
+      "output_sha256": "6c9d1fa484bd03a59ed9940e6bb22b7224ebe914b5e6b121a17ad76b1194c771"
+    },
+    {
+      "texture_id": 2401016249,
+      "source": "Graphics/Other/emotes/emotes.png",
+      "source_sha256": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "crop": [
+        0,
+        0,
+        372,
+        384
+      ],
+      "path": "graphics/sprites/house-return-canvas/2401016249-0-0.t3x",
+      "crop_png_sha256": "d6b7b90b25787739432f0e43f61a33b1e308d286efabda590269b2b98a7d7a96",
+      "bytes": 1048597,
+      "crc": 647423065,
+      "output_sha256": "65b5b99815f10ed402ce9abf2de91d7e4f98158258bfa481a8a1d6bd447cf362"
+    },
+    {
+      "texture_id": 2468826813,
+      "source": "Graphics/Character Sprites/Npcs/4dir/woman.png",
+      "source_sha256": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "crop": [
+        0,
+        0,
+        105,
+        120
+      ],
+      "path": "graphics/sprites/house-return-canvas/2468826813-0-0.t3x",
+      "crop_png_sha256": "e2f72a78512ffba25c76cc868814472fbb1b3a1c5a0b621eb3a3048964aaa202",
+      "bytes": 65557,
+      "crc": 1775909239,
+      "output_sha256": "793b7da462e4311934acbf58ebbeccbe615a3d76a5660e029676fb21f3b26b8d"
+    },
+    {
+      "texture_id": 2558838792,
+      "source": "Graphics/UI/melody bg.png",
+      "source_sha256": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "crop": [
+        0,
+        0,
+        16,
+        10
+      ],
+      "path": "graphics/sprites/house-return-canvas/2558838792-0-0.t3x",
+      "crop_png_sha256": "3cec35e145e124b8b9442ac0e513e422c81f37321052505a53ac155ddb339efc",
+      "bytes": 1045,
+      "crc": 873986848,
+      "output_sha256": "99554030643f9a660d82bf3aa511be7fb1d73d63267a7af78051fcf36814c3a4"
+    },
+    {
+      "texture_id": 2787546525,
+      "source": "Graphics/Character Sprites/Shadow.png",
+      "source_sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "crop": [
+        0,
+        0,
+        15,
+        5
+      ],
+      "path": "graphics/sprites/house-return-canvas/2787546525-0-0.t3x",
+      "crop_png_sha256": "ab07a314023dbb334db5577272e8f5e2dbc84af3e040b8c94b8ec5cfc0251c0d",
+      "bytes": 533,
+      "crc": 3032840973,
+      "output_sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
+    },
+    {
+      "texture_id": 3025887858,
+      "source": "Graphics/Objects/Common/Present Box.png",
+      "source_sha256": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "crop": [
+        0,
+        0,
+        90,
+        16
+      ],
+      "path": "graphics/sprites/house-return-canvas/3025887858-0-0.t3x",
+      "crop_png_sha256": "1565397e100503eeb4680dd2b8bf94bba1f9f21eaf5662815f2ce3fcce3dfcce",
+      "bytes": 8213,
+      "crc": 3441288360,
+      "output_sha256": "f1def99f7c79dba2039c13ad8d03d38a9180157f9e527aba68bc027cb726f0b8"
+    },
+    {
+      "texture_id": 3574202801,
+      "source": "Graphics/Character Sprites/Npcs/4dir/carol.png",
+      "source_sha256": "58a91f79e495c3475564a3afda1364ee768b8c2b94ed54122e50acfac7928bbb",
+      "crop": [
+        0,
+        0,
+        105,
+        128
+      ],
+      "path": "graphics/sprites/house-return-canvas/3574202801-0-0.t3x",
+      "crop_png_sha256": "b47d1d26d559f5349a8d2edfaa4ed9d3313f7df26e91332326def7690a8ecfa7",
+      "bytes": 65557,
+      "crc": 920389798,
+      "output_sha256": "45e1b646ef539899a42bb6578fb315405d136413d7bcb4d41660ee7032123a2c"
+    },
+    {
+      "texture_id": 3751334123,
+      "source": "Graphics/Tilesets/TilPodunkInteriors.png",
+      "source_sha256": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+      "crop": [
+        0,
+        0,
+        896,
+        400
+      ],
+      "path": "graphics/sprites/house-return-canvas/3751334123-0-0.t3x",
+      "crop_png_sha256": "21dd1fe40f3c1be47a50b9aff9df8c50ec9174793d57f91ef7d7300c42bedecb",
+      "bytes": 2097173,
+      "crc": 4076116820,
+      "output_sha256": "b69b17bb081da2b1ccfe1cd74ec56cdd141a229aa2f2ebb8d6f3215ff9d7fccb"
+    },
+    {
+      "texture_id": 3763870829,
+      "source": "Graphics/Tilesets/TilNintensHouse.png",
+      "source_sha256": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+      "crop": [
+        0,
+        0,
+        208,
+        192
+      ],
+      "path": "graphics/sprites/house-return-canvas/3763870829-0-0.t3x",
+      "crop_png_sha256": "8ee0a94d3fd6d6b6bd5e6b5e31dbbec1cd915b3e9f67db0592aa8914c07000b1",
+      "bytes": 262165,
+      "crc": 2095801980,
+      "output_sha256": "91e17a81a8b50fc5dc4a7850ee493bc58ffef5bd49f1366fd606117ec6e4a7f8"
+    },
+    {
+      "texture_id": 3812599136,
+      "source": "Graphics/Character Sprites/Lloyd/main.png",
+      "source_sha256": "f66ac54e088cce2b839c23c9403840d40c516991337f86db05102e4fff0eb978",
+      "crop": [
+        0,
+        0,
+        310,
+        560
+      ],
+      "path": "graphics/sprites/house-return-canvas/3812599136-0-0.t3x",
+      "crop_png_sha256": "6f1e1731d96f2e28ad3be7a33cc49d640cb8ebcc58a1215b94f3b05e46ff8bb1",
+      "bytes": 2097173,
+      "crc": 2678524374,
+      "output_sha256": "0cf7237b0f6760e753a84304057bb1407fae8de68047f0ed7673f166412f37da"
+    },
+    {
+      "texture_id": 3966100482,
+      "source": "Graphics/Objects/Doors/Door_Dark_Locked.png",
+      "source_sha256": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+      "crop": [
+        0,
+        0,
+        32,
+        48
+      ],
+      "path": "graphics/sprites/house-return-canvas/3966100482-0-0.t3x",
+      "crop_png_sha256": "922720dd3302ace3250fd932e13bc0893e0c78b9df664933f80e2a8592dd2436",
+      "bytes": 8213,
+      "crc": 268371066,
+      "output_sha256": "c7c4068f6b9d7ae91b550d8ff931aa2009aa4f6030a74fd37743567f2b17eb48"
+    },
+    {
+      "texture_id": 4071812833,
+      "source": "Graphics/Character Sprites/Npcs/misc/Phone/main.png",
+      "source_sha256": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+      "crop": [
+        0,
+        0,
+        76,
+        22
+      ],
+      "path": "graphics/sprites/house-return-canvas/4071812833-0-0.t3x",
+      "crop_png_sha256": "df97969bafe4c5db46610802dc921100c542981a3f51e4194e7153f8309dad5a",
+      "bytes": 16405,
+      "crc": 3155222215,
+      "output_sha256": "75d51a98706720b861530629b498593ab0ee2329f7c80ebb9662725fcb33c784"
+    },
+    {
+      "texture_id": 4134416897,
+      "source": "Graphics/Character Sprites/Npcs/1dir/lamp.png",
+      "source_sha256": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+      "crop": [
+        0,
+        0,
+        68,
+        22
+      ],
+      "path": "graphics/sprites/house-return-canvas/4134416897-0-0.t3x",
+      "crop_png_sha256": "e8f874bd956f9da89541d55f09bc7cede36ed2dd945a9766f1b7f6a82a7f449c",
+      "bytes": 16405,
+      "crc": 3181434335,
+      "output_sha256": "aecc093a963e7e5ee1544f8091ea5cd8efebe82b47189c8d2d1caea1f204ff03"
+    },
+    {
+      "texture_id": 4159722537,
+      "source": "Graphics/Character Sprites/Npcs/4dir/minnie.png",
+      "source_sha256": "55ede50937e2511bfa27a88ce4660040c2e140886ee107be9260cb830be5338a",
+      "crop": [
+        0,
+        0,
+        95,
+        100
+      ],
+      "path": "graphics/sprites/house-return-canvas/4159722537-0-0.t3x",
+      "crop_png_sha256": "6ac203feaad8dc0938a28c4be6178f7d0961414c2dbc48cbca675180dd8b7e40",
+      "bytes": 65557,
+      "crc": 3548495851,
+      "output_sha256": "87ccf2743042ee1061f8960f47159629cedd45c39d90975e9acd2c0d4e05613e"
+    }
+  ],
+  "program": {
+    "bytes": 280,
+    "crc": 1630809928,
+    "source_sha256": "3068edabf7f6e88c95928b3098c4d8f53ffe5505096e7af90f3d0589009ab9b4",
+    "output_sha256": "24ba7af2bbe9913ba99bbb9d17bcef15a9286465723e564171a29b528a877287"
+  }
+}

@@ -105,6 +105,9 @@ enum class PodunkPackRole : uint32_t {
   HouseNativeTimers = 97,
   HouseVisibility = 98,
   HouseSprites = 99,
+  HouseMap = 100,
+  HouseCanvas = 101,
+  HouseTint = 102,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

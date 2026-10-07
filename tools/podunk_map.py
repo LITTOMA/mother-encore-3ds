@@ -9,6 +9,8 @@ from __future__ import annotations
 import argparse, hashlib, json, math, struct, subprocess, sys, zlib
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from dataclasses import dataclass
+from typing import Callable
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.podunk_scene import PIN, SCENE, decode, stable, require, sha, read, write
@@ -143,11 +145,24 @@ def dictionary(v):
     if isinstance(v,list): return [dictionary(x) for x in v]
     return v
 
-def extract(native,detail,receipt,upstream):
+@dataclass(frozen=True)
+class MapScene:
+    scene:str
+    scene_id:int
+    map_count:int
+    cell_count:int
+    node_id:Callable[[str],int]
+    scene_ir:Path
+    native_key:str='export_sha256'
+    script_key:str='pending'
+
+PODUNK=MapScene(SCENE,stable('.'),44,173211,stable,ROOT/'content/podunk-scene.json')
+
+def extract(native,detail,receipt,upstream,scene=PODUNK):
     d,extra,src=read(native),read(detail),read(receipt)
-    require(d['source']=='res://'+SCENE and not d['native_compatible'],'Expected complete unapproved Podunk export')
-    require(extra['schema']==1 and extra['scene']==SCENE and [extra['engine'][k] for k in ('major','minor','patch')]==[3,6,2],'Unreviewed supplemental engine/source')
-    require(src['commit']==PIN and src['scene']==SCENE,'Wrong map source pin')
+    require(d['source']=='res://'+scene.scene and not d['native_compatible'],'Expected complete unapproved map export')
+    require(extra['schema']==1 and extra['scene']==scene.scene and [extra['engine'][k] for k in ('major','minor','patch')]==[3,6,2],'Unreviewed supplemental engine/source')
+    require(src['commit']==PIN and src['scene']==scene.scene,'Wrong map source pin')
     inv=read(ROOT/'compatibility/upstream-inventory.json')['files']
     sources={}
     for name,r in src['files'].items():
@@ -155,28 +170,28 @@ def extract(native,detail,receipt,upstream):
         sources[name]=r['sha256']
     nodes=d['nodes'];by={n['path']:n for n in nodes};resources={r['id']:r for r in d['resources']}
     tilemaps=[n for n in nodes if n['class']=='TileMap'];details={m['path']:m for m in extra['maps']}
-    require(len(tilemaps)==44 and sum(len(m['cells']) for m in tilemaps)==173211 and set(details)=={m['path'] for m in tilemaps},'Full map coverage mismatch')
+    require(len(tilemaps)==scene.map_count and sum(len(m['cells']) for m in tilemaps)==scene.cell_count and set(details)=={m['path'] for m in tilemaps},'Full map coverage mismatch')
     # Script bindings and inner/outer instance overrides are already preserved
     # in the checked lifecycle IR. Reuse only source hashes and typed flag data.
-    scene_ir=read(ROOT/'content/podunk-scene.json')
-    require(scene_ir['export_sha256']==sha(native) and scene_ir['source_sha256']==sources[SCENE],'Lifecycle/map source differs')
+    scene_ir=read(scene.scene_ir)
+    require(scene_ir[scene.native_key]==sha(native) and scene_ir['source_sha256']==sources[scene.scene] and scene_ir['scene_id']==scene.scene_id,'Lifecycle/map source differs')
     flag_script='Scripts/Main/Flag Landmarks.gd'
     states={s['source'][6:]:s for s in d['scene_states']};roots=[]
     def visit(root,file):
         roots.append((root,file))
         for dec in states[file]['nodes']:
             if dec['instance'] is not None:
-                local=dec['path'].removeprefix('./');visit(local if root=='.' else root+'/'+local,resources[dec['instance']['id']]['path'][6:])
-    visit('.',SCENE);overrides={}
+                local=dec['path'].removeprefix('./');visit(root if local=='.' else local if root=='.' else root+'/'+local,resources[dec['instance']['id']]['path'][6:])
+    visit('.',scene.scene);overrides={}
     for root,file in sorted(roots,key=lambda r:r[0].count('/') if r[0]!='.' else -1,reverse=True):
         for dec in states[file]['nodes']:
             local=dec['path'].removeprefix('./');path=root if local=='.' else local if root=='.' else root+'/'+local
             overrides.setdefault(path,{}).update(dictionary(dec['properties']))
     gates=[];gateby={}
-    for pending in scene_ir['pending']:
+    for pending in scene_ir[scene.script_key]:
         if pending['script']==flag_script:
             path=pending['node'];p=overrides[path];gateby[path]=len(gates)
-            gates.append(dict(stable_id=stable(path),node=path,appear=p.get('appear_flag',''),disappear=p.get('disappear_flag',''),delete_if_hidden=p.get('delete_if_hidden',True)))
+            gates.append(dict(stable_id=scene.node_id(path),node=path,appear=p.get('appear_flag',''),disappear=p.get('disappear_flag',''),delete_if_hidden=p.get('delete_if_hidden',True)))
     canvas_paths=set()
     for m in tilemaps:
         p=m['path']
@@ -190,7 +205,7 @@ def extract(native,detail,receipt,upstream):
         path=n['path'];p=decode(n['properties']);t=decode(n.get('world_transform',[[1,0],[0,1],[0,0]]));parent=path.rsplit('/',1)[0] if '/' in path else '.'
         require(t[:2]==[[1,0],[0,1]],'Nontranslation canvas requires transform adapter '+path)
         flags=int(p.get('visible',True))|(int(n['class']=='YSort')<<1)|int(p.get('show_behind_parent',False))<<2|int(p.get('cell_y_sort',False))<<3
-        canvasby[path]=len(canvases);canvases.append(dict(stable_id=stable(path),node=path,parent=NONE if path=='.' else canvasby[parent],order=native_ordinal,flags=flags,gate=gateby.get(path,NONE),z=p.get('z_index',0),position=t[2]))
+        canvasby[path]=len(canvases);canvases.append(dict(stable_id=scene.node_id(path),node=path,parent=NONE if path=='.' else canvasby[parent],order=native_ordinal,flags=flags,gate=gateby.get(path,NONE),z=p.get('z_index',0),position=t[2]))
     maps=[];cells=[];draws=[];polys=[];chunks=[];tex=[];texby={};missing={};geometries=[];geometryby={};transforms=[]
     def texture(t):
         if not t:return NONE
@@ -260,10 +275,10 @@ def extract(native,detail,receipt,upstream):
                 cells.append([x,y,tid,int(c['autotile'][0]),int(c['autotile'][1]),qi,flags,df,len(draws)-df,pf,len(polys)-pf])
             b=[min(v[0] for v in bounds),min(v[1] for v in bounds),max(v[2] for v in bounds),max(v[3] for v in bounds)] if bounds else [0,0,0,0]
             chunks.append([mi,fc,len(cells)-fc,fd,len(draws)-fd,fp,len(polys)-fp,*b])
-        maps.append(dict(stable_id=stable(path),node=path,canvas=canvasby[path],cell_first=firstcell,cell_count=len(cells)-firstcell,draw_first=firstdraw,draw_count=len(draws)-firstdraw,poly_first=firstpoly,poly_count=len(polys)-firstpoly,flags=int(p['cell_y_sort'])|int(p['cell_tile_origin']==2)<<1,layer=p['collision_layer'],mask=p['collision_mask'],position=world[2],cell_size=p['cell_size']))
-    return dict(schema=1,kind='encore.field-map.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),source_sha256=sources[SCENE],sources=sources,native_sha256=sha(native),detail_sha256=sha(detail),scene_admitted=False,capability='full-static-tilemaps',counts=dict(tilemaps=len(maps),cells=len(cells),draws=len(draws),polygons=len(polys),segments=sum(p['kind']==2 for p in polys),degenerate_native_convex=sum(p['kind']==3 for p in polys),native_skipped_cells=sum(missing.values())),native_skips=missing,maps=maps,cells=cells,draws=draws,polygons=polys,textures=tex,canvases=canvases,gates=gates,chunks=chunks,local_geometries=geometries,shape_transforms=transforms)
+        maps.append(dict(stable_id=scene.node_id(path),node=path,canvas=canvasby[path],cell_first=firstcell,cell_count=len(cells)-firstcell,draw_first=firstdraw,draw_count=len(draws)-firstdraw,poly_first=firstpoly,poly_count=len(polys)-firstpoly,flags=int(p['cell_y_sort'])|int(p['cell_tile_origin']==2)<<1,layer=p['collision_layer'],mask=p['collision_mask'],position=world[2],cell_size=p['cell_size']))
+    return dict(schema=1,kind='encore.field-map.source-ir',commit=PIN,scene=scene.scene,scene_id=scene.scene_id,source_sha256=sources[scene.scene],sources=sources,native_sha256=sha(native),detail_sha256=sha(detail),scene_admitted=False,capability='full-static-tilemaps',counts=dict(tilemaps=len(maps),cells=len(cells),draws=len(draws),polygons=len(polys),segments=sum(p['kind']==2 for p in polys),degenerate_native_convex=sum(p['kind']==3 for p in polys),native_skipped_cells=sum(missing.values())),native_skips=missing,maps=maps,cells=cells,draws=draws,polygons=polys,textures=tex,canvases=canvases,gates=gates,chunks=chunks,local_geometries=geometries,shape_transforms=transforms)
 
-def prepare_textures(ir,upstream,work):
+def prepare_textures(ir,upstream,work,output_prefix='graphics/world/podunk',manifest_path=None):
     from PIL import Image
     work.mkdir(parents=True,exist_ok=True);pages=[];groups={}
     for i,t in enumerate(ir['textures']):
@@ -273,11 +288,12 @@ def prepare_textures(ir,upstream,work):
             for x in range(0,image.width,1024):
                 w,h=min(1024,image.width-x),min(1024,image.height-y);name='map-'+str(i)+'-'+str(x)+'-'+str(y)
                 image.crop((x,y,x+w,y+h)).save(work/(name+'.png'))
-                pages.append(dict(source_index=i,source=t['source'],source_sha256=t['source_sha256'],crop=[x,y,w,h],width=w,height=h,group=groups[t['group']],frame=t['frame'],frames=t['frames'],fps=t['fps'],delay=t['delay'],png=name+'.png',output='graphics/world/podunk/'+name+'.t3x'))
+                pages.append(dict(source_index=i,source=t['source'],source_sha256=t['source_sha256'],crop=[x,y,w,h],width=w,height=h,group=groups[t['group']],frame=t['frame'],frames=t['frames'],fps=t['fps'],delay=t['delay'],png=name+'.png',output=output_prefix+'/'+name+'.t3x'))
     require(all(t['frames']==1 or len([p for p in pages if p['source_index']==i])==1 for i,t in enumerate(ir['textures'])),'Multipage AnimatedTexture requires adapter')
-    write(ROOT/'content/podunk-scene-map-assets.json',dict(schema=1,kind='encore.field-map.assets',textures=pages))
+    write(ROOT/'content/podunk-scene-map-assets.json'if manifest_path is None else manifest_path,dict(schema=1,kind='encore.field-map.assets',textures=pages))
 
-def pack(ir,assets):
+def pack(ir,assets,ir_sha256=None):
+    require(ir_sha256 is None or len(ir_sha256)==64,'Map explicit source IR fingerprint extent differs')
     rows={k:[] for k in FORMATS};strings={};blob=bytearray()
     def s(v):
         if v not in strings:
@@ -353,7 +369,7 @@ def pack(ir,assets):
         data=b''.join(struct.pack('<'+fmt,*r) for r in rows[k]);directory+=struct.pack('<6I',k,base+len(payload),len(rows[k]),struct.calcsize('<'+fmt),len(data),0);payload+=data
     result=bytearray(128);result[:8]=MAGIC
     struct.pack_into('<8I',result,8,1,128,base+len(payload),len(rows),zlib.crc32(directory+payload),0x454e0019,1,ir['scene_id'])
-    result[40:60]=bytes.fromhex(ir['commit']);result[60:92]=bytes.fromhex(ir['source_sha256']);result[92:124]=hashlib.sha256(json.dumps(ir,sort_keys=True,separators=(',',':')).encode()).digest()
+    result[40:60]=bytes.fromhex(ir['commit']);result[60:92]=bytes.fromhex(ir['source_sha256']);result[92:124]=hashlib.sha256(json.dumps(ir,sort_keys=True,separators=(',',':')).encode()).digest() if ir_sha256 is None else bytes.fromhex(ir_sha256)
     struct.pack_into('<I',result,124,scene_string)
     return bytes(result+directory+payload)
 

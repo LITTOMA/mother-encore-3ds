@@ -1,4 +1,5 @@
 #include "podunk_scene_native.hpp"
+#include "house_return_geometry_native.hpp"
 #include "podunk_scene_animated_leaves.hpp"
 #include "podunk_scene_scripts.hpp"
 #include "field_canvas_art_renderer.hpp"
@@ -206,8 +207,236 @@ bool PodunkSceneNative::prepare(
   e.clear();
   return true;
 }
+bool PodunkSceneNative::prepare_images(const FieldMapView&m,const FieldCanvasArtData&a,
+    const char*prefix,std::string&e){
+  for(uint32_t i=0;i<m.texture_count();++i){const auto tex=m.texture(i);
+    std::ifstream f(std::string(prefix)+std::string(m.string(tex.path)),std::ios::binary);
+    if(!f)return fail(e,"House native map GPU texture unavailable");
+    f.seekg(0,std::ios::end);const auto n=f.tellg();
+    if(n<=0||n>16*1024*1024)return fail(e,"House native map GPU texture extent rejected");
+    std::vector<uint8_t>bytes(static_cast<size_t>(n));f.seekg(0);
+    if(!f.read(reinterpret_cast<char*>(bytes.data()),n)||
+       field_canvas_art_renderer_detail::sha256(bytes.data(),bytes.size())!=tex.output_sha256)
+      return fail(e,"House native map GPU texture source receipt differs");
+  }
+  auto mg=std::make_unique<FieldMapRenderer>();auto ag=std::make_unique<FieldCanvasArtRenderer>();
+  if(!mg->load(m,prefix,e)||!ag->load(a,prefix,e)){mg->free();return false;}
+  std::map<uint32_t,FieldMapAnimationState>clocks;
+  for(uint32_t i=0;i<m.texture_count();++i){const auto tex=m.texture(i);
+    if(tex.frames>1&&!clocks.count(tex.group)){FieldMapAnimationState state;
+      if(!m.start_animation(i,state,e)){mg->free();return false;}
+      clocks.emplace(tex.group,state);
+    }
+  }
+  map_gpu_=std::move(mg);art_gpu_=std::move(ag);animations_=std::move(clocks);
+  e.clear();return true;
+}
+bool PodunkSceneNative::prepare_house(const HouseReturnSources&sources,
+    FieldNodeTreeRuntime&tree,FieldGlobalRegistry&registry,PodunkNativeRoot&root,
+    FieldMapSpace&map,FieldGeometrySpace&space,HouseReturnGeometryNative&geometry,
+    SourceRandom&random,const char*prefix,FieldCanvasArtHost host,
+    PodunkSceneMaterialOwner*materials,FieldCanvasControlOwner*controls,std::string&e){
+  const auto&d=sources.tree();const auto&m=sources.map();const auto&a=sources.canvas();
+  const auto&g=sources.geometry();
+  if(data_||!sources.valid()||!d.valid()||!m.valid()||!a.valid()||a.format()!=2||!g.valid()||
+     !prefix||registry.poisoned()||root.kernel_object()!=registry.kernel()||
+     !registry.object_exists(root.viewport_object())||
+     (tree.object_domain()&&tree.object_domain()!=registry.kernel())||
+     (!tree.object_domain()&&tree.object_count())||
+     !same(d.identity(),m.identity())||!same(d.identity(),a.identity())||
+     d.source_scene()!=m.source_scene()||d.source_scene()!=a.source_scene()||
+     d.source_scene()!=g.source_scene()||d.identity().upstream_commit!=g.identity().upstream_commit||
+     d.identity().source_sha256!=g.identity().source_sha256||
+     (materials&&materials->registry()!=&registry)||
+     (controls&&(controls->canvas_tree()!=&tree||controls->canvas_data()!=&a)))
+    return fail(e,"House native Canvas requires exact loaded Tree/Map/Canvas and independent geometry source closure");
+  for(uint32_t i=0;i<g.node_count();++i){const auto n=g.node(i);const auto*actual=d.record(n.stable_id);
+    if(!actual||actual->path!=g.string(n.path)||actual->script_sha!=n.script_sha256||
+       actual->script!=g.string(n.script)||actual->class_index>=d.classes().size()||
+       d.classes()[actual->class_index]!=g.string(n.class_name)||
+       actual->local[0].x!=n.local.x.x||actual->local[0].y!=n.local.x.y||
+       actual->local[1].x!=n.local.y.x||actual->local[1].y!=n.local.y.y||
+       actual->local[2].x!=n.local.origin.x||actual->local[2].y!=n.local.origin.y||
+       actual->world[0].x!=n.world.x.x||actual->world[0].y!=n.world.x.y||
+       actual->world[1].x!=n.world.y.x||actual->world[1].y!=n.world.y.y||
+       actual->world[2].x!=n.world.origin.x||actual->world[2].y!=n.world.origin.y)
+      return fail(e,"House native geometry source node namespace differs from full Tree");
+  }
+  for(uint32_t i=0;i<m.map_count();++i){const auto r=m.map(i);const auto*actual=sources.tilemap_node(r.stable_id);
+    if(!actual||actual->class_index>=d.classes().size()||
+       d.classes()[actual->class_index]!="TileMap"||!translation(actual->world)||
+       actual->world[2].x!=r.position.x||actual->world[2].y!=r.position.y||r.polygon_count)
+      return fail(e,"House native TileMap draw/collision source proof differs");
+  }
+  // Source Sprite data must use these same actual Canvas records/texture bytes.
+  for(const auto&r:sources.sprites().records())if(r.kind==FieldSpriteKind::Character){
+    const auto*canvas=a.record(r.id);
+    if(!canvas||canvas->kind||canvas->node!=r.node||canvas->hframes!=r.columns||
+       canvas->vframes!=r.rows||canvas->frame!=r.frame)
+      return fail(e,"House NPC native Sprite constructor differs from checked source Sprite pack");
+    for(const auto id:{r.texture,r.sprite,r.setup_texture})if(id){const auto*texture=sources.sprites().texture(id);
+      bool found=false;for(const auto&asset:a.textures())if(texture&&asset.source==texture->source){
+        if(found||asset.width!=texture->width||asset.height!=texture->height)
+          return fail(e,"House native source Sprite GPU extent/uniqueness differs");
+        found=true;
+      }
+      if(!found)return fail(e,"House native source Sprite texture is outside complete Canvas closure");
+    }
+  }
+  if(!prepare_images(m,a,prefix,e))return false;
+  data_=&d;tree_=&tree;registry_=&registry;root_=&root;map_=&map;geometry_=&space;art_=&a;
+  house_sources_=&sources;house_map_=&m;house_geometry_=&geometry;house_random_=&random;
+  house_controls_=controls;materials_=materials;art_host_=std::move(host);
+  // This owner concretely consumes the source Sparkles _ready and native
+  // clock. Other owner classes keep the caller's actual source consumers.
+  const auto bind=art_host_.bind_owner;const auto appearance=art_host_.appearance;
+  art_host_.bind_owner=[this,bind](const auto&r,auto object,auto owner,auto&error){
+    if(r.kind!=2)return bind?bind(r,object,owner,error):fail(error,"House Canvas concrete source owner is missing");
+    const auto it=instances_.find(object);const auto*s=tree_->state(object);
+    const auto*d=tree_->descriptor(object);
+    if(r.owner!=FieldCanvasOwner::Sparkles||r.owner_id!=r.id||owner!=object||it==instances_.end()||
+       it->second.kind!=Kind::Animated||!it->second.bound||!s||!s->alive||!s->bound||
+       !d||d->script!=r.owner_script||d->script_sha!=r.owner_sha||
+       it->second.animated.source!=&r||it->second.animated.object!=object||
+       tree_->source_object(r.id)!=object||!registry_->object_exists(object)||
+       registry_->tree_owner(object).get()!=tree_)
+      return fail(error,"House Sparkles binding lacks its actual constructed source/native consumer");
+    error.clear();return true;
+  };
+  art_host_.appearance=[this,appearance](const auto&r,auto object,auto owner,auto&out,auto&error){
+    if(r.kind!=2)return appearance?appearance(r,object,owner,out,error):fail(error,"House Canvas concrete appearance consumer is missing");
+    if(object!=owner||r.owner!=FieldCanvasOwner::Sparkles)return fail(error,"House Sparkles source owner differs");
+    std::string animation;uint32_t frame=0;FieldCanvasAppearance native;
+    if(!animated_snapshot(object,animation,frame,native,error))return false;
+    // The shared command already selected this actual frame's AtlasTexture.
+    // Source appearance supplies native offset/flip without replacing that
+    // selected physical texture with the AnimatedSprite's null base texture.
+    out.offset=native.offset;out.size=native.size;out.centered=native.centered;
+    out.flip_h=native.flip_h;out.flip_v=native.flip_v;out.action=native.action;
+    return true;
+  };
+  if(materials_&&!materials_->bind_images(*art_gpu_,e))return false;
+  e.clear();return true;
+}
+const FieldMapView*PodunkSceneNative::draw_map_source()const{return house_map_?house_map_:map_->source();}
+bool PodunkSceneNative::tile_pose(uint32_t index,FieldMapDraw&out,std::string&e)const{
+  const auto*source=draw_map_source();
+  if(!source||index>=source->draw_count())return fail(e,"Native TileMap draw source index rejected");
+  if(!house_sources_){out=map_->draw(index);e.clear();return true;}
+  out=source->draw(index);const auto layer=source->map(out.map);
+  FieldObjectId id=0;FieldTransform world;
+  if(!house_live(e)||!source_object(layer.stable_id,id,e)||
+     !tree_->world_transform(id,world,e)||!translation(world))
+    return fail(e,"House TileMap pose lacks actual same-space translated native owner");
+  const auto&n=instances_.at(id);const auto*s=tree_->state(id);
+  if(n.kind!=Kind::Map||n.map!=out.map||!n.entered||!n.ready||!s->inside||!s->ready_notified)
+    return fail(e,"House TileMap pose before actual native Enter/Ready");
+  out.position.x+=world[2].x-layer.position.x;
+  out.position.y+=world[2].y-layer.position.y;
+  if(!std::isfinite(out.position.x)||!std::isfinite(out.position.y))
+    return fail(e,"House TileMap translated pose overflow");
+  e.clear();return true;
+}
+bool PodunkSceneNative::collect_house_tiles(FieldMapRect rect,std::vector<uint32_t>&out,
+    std::string&e)const{
+  if(!house_live(e))return false;
+  std::vector<uint32_t>candidate;
+  // Each map has its own actual translated Canvas transform. Culling uses
+  // the inverse translation against the immutable native quadrant bounds.
+  for(uint32_t i=0;i<house_map_->map_count();++i){
+    const auto layer=house_map_->map(i);
+    const auto q=source_objects_.find(layer.stable_id);
+    if(q==source_objects_.end()){
+      if(!house_deleted_.count(layer.stable_id))
+        return fail(e,"House TileMap source vanished without actual native deletion");
+      continue;
+    }
+    FieldObjectId id=0;FieldTransform world;
+    if(!source_object(layer.stable_id,id,e)||!tree_->world_transform(id,world,e)||!translation(world))return false;
+    const auto*s=tree_->state(id);const auto&n=instances_.at(id);
+    if(!s||!s->inside||!s->ready_notified||!n.entered||!n.ready||n.map!=i)
+      return fail(e,"House TileMap spatial draw before its actual native lifecycle");
+    if(!tree_->visible_in_tree(id))continue;
+    const Vec2 delta{world[2].x-layer.position.x,world[2].y-layer.position.y};
+    auto query=rect;query.minimum.x-=delta.x;query.minimum.y-=delta.y;
+    query.maximum.x-=delta.x;query.maximum.y-=delta.y;
+    std::vector<uint8_t>mask(house_map_->map_count(),0);mask[i]=1;
+    std::vector<uint32_t>indices;
+    if(!house_map_->collect_draws_masked(query,mask,house_map_->draw_count(),indices,e))return false;
+    candidate.insert(candidate.end(),indices.begin(),indices.end());
+  }
+  std::sort(candidate.begin(),candidate.end());
+  if(std::adjacent_find(candidate.begin(),candidate.end())!=candidate.end()||candidate.size()>house_map_->draw_count())
+    return fail(e,"House TileMap actual spatial collection duplicated native draw indices");
+  out=std::move(candidate);e.clear();return true;
+}
+bool PodunkSceneNative::tile_sort_children(FieldObjectId id,
+    std::vector<FieldCanvasNativeTileChild>&out,std::string&e)const{
+  const FieldNodeDescriptor*d;const FieldNodeState*s;
+  const auto it=instances_.find(id);
+  if(!house_live(e)||it==instances_.end()||!actual(id,d,s,e)||
+     it->second.kind!=Kind::Map||!it->second.entered||!it->second.ready||
+     !s->inside||!s->ready_notified||!(s->flags&128u)||it->second.map>=house_map_->map_count())
+    return fail(e,"House native tile children lack actual sorted TileMap owner/Ready");
+  const auto layer=house_map_->map(it->second.map);
+  if(layer.stable_id!=d->id||!(layer.flags&1u))
+    return fail(e,"House native tile children differ from checked native ysort property");
+  std::vector<FieldCanvasNativeTileChild>children;
+  for(uint32_t i=layer.draw_first;i<layer.draw_first+layer.draw_count;++i){
+    const auto draw=house_map_->draw(i);const auto cell=house_map_->cell(draw.cell);
+    const auto anchor=house_map_->sort_anchor(i);
+    if(draw.map!=it->second.map||draw.cell<layer.cell_first||
+       draw.cell>=layer.cell_first+layer.cell_count||cell.quadrant_ordinal<0||
+       i<cell.draw_first||i>=cell.draw_first+cell.draw_count)
+      return fail(e,"House native tile quadrant/source draw ordinal rejected");
+    FieldCanvasNativeTileChild child;
+    child.draw_index=i;child.quadrant_order=uint32_t(cell.quadrant_ordinal);
+    child.local_position={anchor.x-layer.position.x,anchor.y-layer.position.y};child.z=draw.z;
+    if(!std::isfinite(child.local_position.x)||!std::isfinite(child.local_position.y))
+      return fail(e,"House native tile quadrant anchor overflow");
+    children.push_back(child);
+  }
+  out=std::move(children);e.clear();return true;
+}
+bool PodunkSceneNative::bind_replaced_house(const FieldNodeTreeRuntime&old_tree,
+    FieldObjectId old_root,FieldObjectId root,std::string&e){
+  const auto*s=tree_?tree_->state(root):nullptr;const auto*d=tree_?tree_->descriptor(root):nullptr;
+  if(!house_sources_||!finished_||house_replaced_||&old_tree==tree_||!old_root||
+     old_tree.root()!=old_root||old_tree.state(old_root)||old_tree.lifecycle_pending()||
+     registry_->object_exists(old_root)||old_tree.object_domain()!=tree_->object_domain()||
+     geometry_->source()!=&house_sources_->geometry()||map_->house_source()!=&house_sources_->reentry()||
+     !s||!s->alive||!s->bound||!d||root!=tree_->root()||
+     tree_->source_object(data_->identity().scene_id)!=root||d->id!=data_->identity().scene_id||
+     !registry_->object_exists(root)||registry_->tree_owner(root).get()!=tree_)
+    return fail(e,"House Canvas bind requires actual old-root deletion and same-space source replacement");
+  house_old_tree_=&old_tree;house_old_root_=old_root;house_root_=root;house_replaced_=true;
+  e.clear();return true;
+}
+bool PodunkSceneNative::house_live(std::string&e)const{
+  const auto*s=tree_?tree_->state(house_root_):nullptr;
+  if(!house_sources_||!house_sources_->valid()||!house_replaced_||!house_old_tree_||
+     house_old_tree_->state(house_old_root_)||registry_->object_exists(house_old_root_)||
+     house_old_tree_->lifecycle_pending()||geometry_->source()!=&house_sources_->geometry()||
+     map_->house_source()!=&house_sources_->reentry()||house_map_!=&house_sources_->map()||
+     art_!=&house_sources_->canvas()||tree_->root()!=house_root_||
+     tree_->source_object(data_->identity().scene_id)!=house_root_||
+     !s||!s->alive||!s->inside||!s->bound||
+     !s->ready_notified||!registry_->object_exists(house_root_)||
+     registry_->tree_owner(house_root_).get()!=tree_||
+     !root_->viewport().world_registered||root_->viewport().current_scene!=house_root_)
+    return fail(e,"House Canvas draw lacks actual current same-space House source owners");
+  e.clear();return true;
+}
 bool PodunkSceneNative::owns(const FieldNodeDescriptor &d) const {
   const auto &c = d.native_class;
+  if(house_sources_){
+    const auto*source=data_->record(d.id);
+    if(!source||source->path!=d.path||source->class_index>=data_->classes().size()||
+       data_->classes()[source->class_index]!=c)return false;
+    // CollisionObject/shape and Control owners are independently concrete.
+    return c=="Node"||c=="Node2D"||c=="Position2D"||c=="YSort"||c=="TileMap"||
+      c=="Sprite"||c=="TextureRect"||c=="AnimatedSprite"||c=="ColorRect";
+  }
   return c == "Node" || c == "Node2D" || c == "Position2D" || c == "YSort" ||
          c == "TileMap" || c == "StaticBody2D" || c == "Area2D" ||
          c == "CollisionShape2D" || c == "CollisionPolygon2D" || c == "Sprite";
@@ -232,6 +461,10 @@ bool PodunkSceneNative::actual(FieldObjectId id, const FieldNodeDescriptor *&d,
       source->script_sha != d->script_sha || source->script != d->script ||
       data_->classes().at(source->class_index) != d->native_class)
     return fail(e, "Scene native source descriptor binding rejected");
+  if(house_sources_&&(tree_->source_object(d->id)!=id||
+      data_!=&house_sources_->tree()||art_!=&house_sources_->canvas()||
+      tree_->object_domain()!=registry_->kernel()))
+    return fail(e,"House Canvas actual source lookup/domain changed");
   return true;
 }
 bool PodunkSceneNative::material(FieldObjectId id, const FieldCanvasRecord &a,
@@ -286,9 +519,12 @@ bool PodunkSceneNative::construct(FieldObjectId id,
     n.kind = Kind::Shape;
   else if (d.native_class == "Sprite")
     n.kind = Kind::Sprite;
+  else if(house_sources_&&d.native_class=="TextureRect")n.kind=Kind::TextureRect;
+  else if(house_sources_&&d.native_class=="AnimatedSprite")n.kind=Kind::Animated;
+  else if(house_sources_&&d.native_class=="ColorRect")n.kind=Kind::ColorRect;
   else
     n.kind = Kind::Canvas;
-  auto *g = geometry_->source();
+  auto *g = house_sources_?&house_sources_->geometry():geometry_->source();
   for (uint32_t i = 0; i < g->node_count(); ++i)
     if (g->node(i).stable_id == d.id) {
       n.geometry_node = i;
@@ -326,18 +562,21 @@ bool PodunkSceneNative::construct(FieldObjectId id,
     n.disabled = bool(shape.flags & 1);
   }
   if (n.kind == Kind::Map) {
-    for (uint32_t i = 0; i < map_->source()->map_count(); ++i)
-      if (map_->source()->map(i).stable_id == d.id) {
+    for (uint32_t i = 0; i < draw_map_source()->map_count(); ++i)
+      if (draw_map_source()->map(i).stable_id == d.id) {
         n.map = i;
         break;
       }
     if (n.map == UINT32_MAX || !translation(d.world))
       return fail(e,
                   "Scene native TileMap source transform missing: " + d.path);
+    if(house_sources_&&!tree_->set_sort_children(id,bool(house_map_->map(n.map).flags&1u),e))
+      return false;
   }
-  if (n.kind == Kind::Sprite) {
+  if (n.kind == Kind::Sprite||n.kind==Kind::TextureRect||n.kind==Kind::Animated||n.kind==Kind::ColorRect) {
     const auto *a = art_->record(d.id);
-    if (!a || a->kind != 0 || !material(id, *a, e))
+    const auto kind=n.kind==Kind::Sprite?0u:n.kind==Kind::TextureRect?1u:n.kind==Kind::Animated?2u:3u;
+    if (!a || a->kind != kind || !material(id, *a, e))
       return fail(e, "Scene native Sprite source/material rejected: " + d.path +
                          ": " + e);
     n.sprite.texture = a->texture;
@@ -349,6 +588,9 @@ bool PodunkSceneNative::construct(FieldObjectId id,
     n.sprite.centered = a->centered;
     n.sprite.flip_h = a->flip_h;
     n.sprite.flip_v = a->flip_v;
+    if(n.kind==Kind::Animated&&
+       !field_canvas_animation_initialize(*art_,*tree_,id,n.animated,e))return false;
+    if(n.kind==Kind::ColorRect)n.color=a->color;
   }
   instances_.emplace(id, n);
   source_objects_.emplace(d.id, id);
@@ -365,6 +607,9 @@ bool PodunkSceneNative::bind(FieldObjectId id, const FieldNodeBinding &b,
       b.class_index != d->class_index || b.native_class != d->native_class ||
       b.script_sha != d->script_sha || !b.family || !b.capability)
     return fail(e, "Scene native combined typed binding rejected");
+  if(house_sources_&&it->second.kind==Kind::Animated&&
+     (b.family!=0x454e0040||b.capability!=2||d->script_methods!=1))
+    return fail(e,"House Sparkles combined binding must name its actual Canvas source consumer");
   it->second.bound = true;
   e.clear();
   return true;
@@ -381,6 +626,19 @@ bool PodunkSceneNative::finish_factory(std::string &e) {
   if (!canvas_.initialize(*art_, *data_, *tree_, art_host_, e) ||
       !canvas_.bind_native(*this, e))
     return false;
+  if(house_sources_){
+    if(!house_controls_||house_controls_->canvas_tree()!=tree_||house_controls_->canvas_data()!=art_||
+       !canvas_.bind_control(*house_controls_,e))
+      return fail(e,"House Canvas factory requires actual complete Control property owners");
+    for(const auto&c:art_->control_boundaries()){
+      const auto object=tree_->source_object(c.id),owner=tree_->source_object(c.owner_id);
+      const auto*s=tree_->state(object);const auto*d=tree_->descriptor(object);
+      if(!s||!d||!s->alive||!s->bound||d->native_class!=c.native_class||
+         registry_->tree_owner(object).get()!=tree_||!registry_->object_exists(object)||
+         !house_controls_->admit_control(c,object,owner,e))
+        return fail(e,"House Canvas Control native factory/property receipt incomplete: "+c.node);
+    }
+  }
   finished_ = true;
   e.clear();
   return true;
@@ -433,6 +691,14 @@ bool PodunkSceneNative::synchronize(FieldObjectId id, Instance &n,
   const FieldNodeState *s;
   if (!actual(id, d, s, e))
     return false;
+  if(house_sources_){
+    if(n.geometry_node!=UINT32_MAX&&!house_geometry_->observe_transform(id,e))return false;
+    if(n.kind==Kind::Map){FieldTransform world;
+      if(!tree_->world_transform(id,world,e)||!translation(world))
+        return fail(e,"House TileMap live affine transform is outside checked native drawing capability");
+    }
+    e.clear();return true;
+  }
   if (n.geometry_node != UINT32_MAX && geometry_bound_) {
     FieldGeometryNodeUpdate u;
     u.stable_id = n.source;
@@ -476,6 +742,9 @@ bool PodunkSceneNative::synchronize(FieldObjectId id, Instance &n,
 }
 bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
                               std::string &e) {
+  if(house_sources_&&(p==FieldTreePhase::ReadyScript||p==FieldTreePhase::EnterScript||
+                     p==FieldTreePhase::ExitScript))
+    return fail(e,"House Canvas native phase cannot grant or discard a source script lifecycle");
   auto it = instances_.find(id);
   const FieldNodeDescriptor *d;
   const FieldNodeState *s;
@@ -491,11 +760,13 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
   } else if (p == FieldTreePhase::ReadyNative) {
     if (!n.entered || !s->inside || !s->bound)
       return fail(e, "Scene native Ready without actual Enter/bind");
-    if (n.kind == Kind::Sprite && !material(id, *art_->record(n.source), e))
+    if ((n.kind == Kind::Sprite||n.kind==Kind::TextureRect||n.kind==Kind::Animated||n.kind==Kind::ColorRect) && !material(id, *art_->record(n.source), e))
       return false;
     if (!synchronize(id, n, e))
       return false;
     n.ready = true;
+    if(house_sources_&&n.kind==Kind::Animated&&n.animated.playing&&
+       !tree_->add_group(id,"idle_process_internal",e))return false;
   } else if (p == FieldTreePhase::ExitNative) {
     if (!n.entered)
       return fail(e, "Scene native Exit without Enter");
@@ -515,7 +786,9 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
   } else if (p == FieldTreePhase::Deleting) {
     if (n.entered || n.monitored)
       return fail(e, "Scene native deletion before physical Exit");
-    if (n.geometry_node != UINT32_MAX) {
+    if (n.geometry_node != UINT32_MAX&&house_sources_) {
+      if(!house_geometry_->observe_deleted(id,e))return false;
+    }else if(n.geometry_node != UINT32_MAX) {
       FieldGeometryNodeUpdate u;
       u.stable_id = n.source;
       u.fields = 2;
@@ -523,10 +796,14 @@ bool PodunkSceneNative::phase(FieldObjectId id, FieldTreePhase p,
       if (!geometry_->apply_updates({u}, e))
         return false;
     }
-    for (uint32_t i = 0; i < map_->source()->canvas_count(); ++i)
+    if(!house_sources_)for (uint32_t i = 0; i < map_->source()->canvas_count(); ++i)
       if (map_->source()->canvas(i).stable_id == n.source &&
           !map_->commit_deleted(n.source, e))
         return false;
+    if(house_sources_){
+      house_deleted_.insert(n.source);
+      if(n.kind==Kind::Animated&&!tree_->remove_group(id,"idle_process_internal",e))return false;
+    }
     source_objects_.erase(n.source);
     instances_.erase(it);
   } else if (p == FieldTreePhase::Physics || p == FieldTreePhase::Idle ||
@@ -549,12 +826,175 @@ bool PodunkSceneNative::sprite_snapshot(FieldObjectId id,
   const FieldNodeDescriptor *d;
   const FieldNodeState *s;
   const auto i = instances_.find(id);
-  if (i == instances_.end() || i->second.kind != Kind::Sprite ||
+  if (i == instances_.end() || (i->second.kind != Kind::Sprite&&i->second.kind!=Kind::TextureRect) ||
       !actual(id, d, s, e) || !art_->record(d->id))
     return fail(e, "Scene native Sprite snapshot has no same live body");
   out = i->second.sprite;
   e.clear();
   return true;
+}
+FieldCanvasAnimationHost PodunkSceneNative::animation_host(){
+  FieldCanvasAnimationHost host;
+  host.source_call=[this](FieldObjectId id,FieldCanvasNativeCall call,std::string&e){
+    const FieldNodeDescriptor*d;const FieldNodeState*s;
+    auto it=instances_.find(id);
+    if(!house_sources_||!animation_call_active_||animation_call_object_!=id||
+       it==instances_.end()||it->second.kind!=Kind::Animated||!actual(id,d,s,e)||
+       !it->second.bound||!it->second.entered||!s->inside||!s->bound||
+       !s->ready_notified||it->second.animated.source!=art_->record(d->id))
+      return fail(e,"House AnimatedSprite call lacks actual source/native invocation scope");
+    const auto&r=*it->second.animated.source;
+    if(r.owner!=FieldCanvasOwner::Sparkles||r.owner_id!=r.id||
+       d->script!=r.owner_script||d->script_sha!=r.owner_sha||d->script_methods!=1||
+       s->binding.family!=0x454e0040||s->binding.capability!=2||
+       r.ready_method!="_ready")
+      return fail(e,"House AnimatedSprite source script/owner receipt differs");
+    // Source _ready invokes the native set_frame setter in this same scope.
+    if(call!=animation_call_&&!(call==FieldCanvasNativeCall::SetProperty&&
+                               animation_call_==FieldCanvasNativeCall::Ready))
+      return fail(e,"House AnimatedSprite native call differs from actual dispatch");
+    if(call==FieldCanvasNativeCall::IdleInternal&&
+       (!it->second.ready||!it->second.source_ready))
+      return fail(e,"House AnimatedSprite internal notification before source/native Ready");
+    e.clear();return true;
+  };
+  host.random_range=[this](float from,float to,double&out,std::string&e){
+    auto it=instances_.find(animation_call_object_);
+    if(!house_random_||!animation_call_active_||animation_call_!=FieldCanvasNativeCall::Ready||
+       it==instances_.end()||!it->second.animated.source||
+       from!=it->second.animated.source->ready_min||to!=it->second.animated.source->ready_max)
+      return fail(e,"House Sparkles RNG is outside actual source Ready bounds");
+    out=house_random_->rand_range(from,to);e.clear();return true;
+  };
+  host.signal=[this](FieldObjectId id,FieldCanvasNativeSignal signal,std::string&e){
+    const FieldNodeDescriptor*d;const FieldNodeState*s;
+    if(!animation_call_active_||animation_call_object_!=id||!actual(id,d,s,e)||
+       !sprite_signals_||sprite_signals_->registry()!=registry_||
+       (signal!=FieldCanvasNativeSignal::FrameChanged&&signal!=FieldCanvasNativeSignal::AnimationFinished))
+      return fail(e,"House AnimatedSprite signal lacks same actual native call/ObjectDB bus");
+    return sprite_signals_->emit(id,signal==FieldCanvasNativeSignal::FrameChanged?
+      "frame_changed":"animation_finished",{},e);
+  };
+  return host;
+}
+bool PodunkSceneNative::house_sparkles_binding(FieldObjectId id,FieldNodeBinding&out,
+    std::string&e)const{
+  const FieldNodeDescriptor*d;const FieldNodeState*s;
+  auto it=instances_.find(id);
+  if(!house_sources_||it==instances_.end()||it->second.kind!=Kind::Animated||
+     !actual(id,d,s,e)||d->script_methods!=1)
+    return fail(e,"House Sparkles source binding has no exact constructed source/native instance");
+  const auto*r=art_->record(d->id);
+  if(!r||r->kind!=2||r->owner!=FieldCanvasOwner::Sparkles||r->owner_id!=d->id||
+     r->owner_script!=d->script||r->owner_sha!=d->script_sha||r->ready_method!="_ready"||
+     it->second.animated.source!=r||it->second.animated.object!=id)
+    return fail(e,"House Sparkles attachment differs from checked source implementation");
+  out={data_->identity(),d->id,d->class_index,0x454e0040,2,d->script_sha,d->native_class};
+  e.clear();return true;
+}
+bool PodunkSceneNative::phase_house(FieldObjectId id,FieldTreePhase p,float dt,
+    bool paused,bool update_pending,std::string&e){
+  const FieldNodeDescriptor*d;const FieldNodeState*s;
+  auto it=instances_.find(id);
+  if(!house_sources_||it==instances_.end()||!actual(id,d,s,e))
+    return fail(e,"House Canvas phase has no actual owning instance");
+  if(p!=FieldTreePhase::ReadyScript&&p!=FieldTreePhase::IdleInternal){
+    if(p==FieldTreePhase::EnterScript||p==FieldTreePhase::ExitScript){
+      FieldNodeBinding source;
+      if(!house_sparkles_binding(id,source,e)||!it->second.bound||!s->bound||
+         !it->second.entered||!s->inside)
+        return fail(e,"House source lifecycle belongs to its concrete script consumer");
+      // Only this audited source has neither _enter_tree nor _exit_tree.
+      e.clear();return true;
+    }
+    return phase(id,p,e);
+  }
+  auto&n=it->second;
+  if(n.kind!=Kind::Animated||!n.bound||!n.entered||!s->inside||!s->ready_notified||
+     !s->bound||animation_call_active_||!finished_||
+     !std::isfinite(dt)||dt<0)
+    return fail(e,"House Sparkles actual source/native notification cursor rejected");
+  if(p==FieldTreePhase::IdleInternal){
+    if(!n.source_ready||!n.ready)return fail(e,"House Sparkles process before source/native Ready");
+    if(!tree_->can_process(id,paused)){e.clear();return true;}
+  }else{
+    // An explicit request_ready repeats the original script body; a normal
+    // detach/re-enter does not dispatch ReadyScript and preserves this state.
+    if(s->ready_first)return fail(e,"House Sparkles ReadyScript before actual Tree Ready cursor");
+  }
+  animation_call_active_=true;animation_call_object_=id;
+  animation_call_=p==FieldTreePhase::ReadyScript?FieldCanvasNativeCall::Ready:FieldCanvasNativeCall::IdleInternal;
+  const auto host=animation_host();
+  const bool ok=p==FieldTreePhase::ReadyScript?
+    field_canvas_animation_ready(n.animated,host,e):
+    field_canvas_animation_idle(n.animated,dt,update_pending,host,e);
+  animation_call_active_=false;animation_call_object_=0;
+  if(ok&&p==FieldTreePhase::ReadyScript)n.source_ready=true;
+  return ok;
+}
+bool PodunkSceneNative::deferred_house(const FieldDeferredMessage&m,std::string&e){
+  const FieldNodeDescriptor*d;const FieldNodeState*s;
+  auto it=instances_.find(m.object);
+  if(!house_sources_||it==instances_.end()||!actual(m.object,d,s,e)||
+     it->second.kind!=Kind::Animated||m.kind!=FieldDeferredKind::Set||m.args.size()!=1||
+     !it->second.source_ready||!it->second.ready||!it->second.entered||!s->inside||
+     !s->ready_notified||animation_call_active_)
+    return fail(e,"House AnimatedSprite setter lacks actual checked live receiver");
+  const auto&v=m.args.front();auto&n=it->second;
+  // Validate the source setter signature before entering its native scope.
+  if((m.member=="frame"&&(!std::holds_alternative<int64_t>(v)||
+       std::get<int64_t>(v)<INT32_MIN||std::get<int64_t>(v)>INT32_MAX))||
+     (m.member=="playing"&&!std::holds_alternative<bool>(v))||
+     (m.member=="speed_scale"&&(!std::holds_alternative<double>(v)||
+       !std::isfinite(std::get<double>(v))||std::abs(std::get<double>(v))>std::numeric_limits<float>::max()))||
+     (m.member=="animation"&&!std::holds_alternative<std::string>(v))||
+     (m.member!="frame"&&m.member!="playing"&&m.member!="speed_scale"&&m.member!="animation"))
+    return fail(e,"House AnimatedSprite unknown setter/property signature");
+  animation_call_active_=true;animation_call_object_=m.object;animation_call_=FieldCanvasNativeCall::SetProperty;
+  const auto host=animation_host();bool ok=false;
+  if(m.member=="frame")ok=field_canvas_animation_set_frame(n.animated,int32_t(std::get<int64_t>(v)),host,e);
+  else if(m.member=="playing")ok=field_canvas_animation_set_playing(n.animated,std::get<bool>(v),host,e);
+  else if(m.member=="speed_scale")ok=field_canvas_animation_set_speed(n.animated,float(std::get<double>(v)),host,e);
+  else ok=field_canvas_animation_set_animation(n.animated,std::get<std::string>(v),host,e);
+  animation_call_active_=false;animation_call_object_=0;
+  if(!ok)return false;
+  return n.animated.playing?tree_->add_group(m.object,"idle_process_internal",e):
+    tree_->remove_group(m.object,"idle_process_internal",e);
+}
+bool PodunkSceneNative::house_signal_declaration(FieldObjectId id,std::string_view name,
+    uint32_t&arity,std::string&e)const{
+  const FieldNodeDescriptor*d;const FieldNodeState*s;
+  auto it=instances_.find(id);
+  if(!house_sources_||it==instances_.end()||!actual(id,d,s,e))return false;
+  if((it->second.kind==Kind::Animated&&(name=="frame_changed"||name=="animation_finished"))||
+     (it->second.kind==Kind::Sprite&&(name=="frame_changed"||name=="texture_changed"))){
+    arity=0;e.clear();return true;
+  }
+  return fail(e,"House Canvas signal is outside actual native class declarations");
+}
+bool PodunkSceneNative::animated_snapshot(FieldObjectId id,std::string&animation,uint32_t&frame,
+    FieldCanvasAppearance&out,std::string&e)const{
+  const FieldNodeDescriptor*d;const FieldNodeState*s;
+  auto it=instances_.find(id);
+  if(!house_sources_||it==instances_.end()||it->second.kind!=Kind::Animated||
+     !actual(id,d,s,e)||!it->second.source_ready||!it->second.ready||!it->second.entered||
+     !s->inside||!s->ready_notified||!s->bound)
+    return fail(e,"House AnimatedSprite snapshot before actual source/native Ready");
+  const auto&a=it->second.animated;const auto*r=art_->record(d->id);
+  if(a.source!=r||!r||a.animation>=r->animations.size()||a.frame>=r->animations[a.animation].frames.size())
+    return fail(e,"House AnimatedSprite actual source state/frames rejected");
+  animation=r->animations[a.animation].name;frame=a.frame;out=it->second.sprite;
+  e.clear();return true;
+}
+bool PodunkSceneNative::color_rect_snapshot(FieldObjectId id,Vec2&size,FieldColor&color,
+    std::string&e)const{
+  const FieldNodeDescriptor*d;const FieldNodeState*s;
+  auto it=instances_.find(id);
+  if(!house_sources_||it==instances_.end()||it->second.kind!=Kind::ColorRect||
+     !actual(id,d,s,e)||!it->second.ready||!it->second.entered||!s->inside||!s->bound||
+     !s->ready_notified||!d->script.empty())
+    return fail(e,"House ColorRect snapshot lacks actual native source owner/Ready");
+  size=it->second.sprite.size;color=it->second.color;e.clear();return true;
 }
 bool PodunkSceneNative::sprite_publish(FieldObjectId id,
                                        const FieldCanvasAppearance &value,
@@ -591,7 +1031,7 @@ bool PodunkSceneNative::bind_sprite_signals(FieldObjectSignals &signals,
 bool PodunkSceneNative::sprite_set_frame(FieldObjectId id, uint32_t frame,
                                         std::string &e) {
   FieldCanvasAppearance state;
-  if (!sprite_snapshot(id, state, e))
+  if (!sprite_snapshot(id, state, e)||instances_.at(id).kind!=Kind::Sprite)
     return false;
   if (!sprite_signals_ || sprite_signals_->registry() != registry_ ||
       frame >= state.hframes * state.vframes)
@@ -603,7 +1043,7 @@ bool PodunkSceneNative::sprite_set_frame(FieldObjectId id, uint32_t frame,
 bool PodunkSceneNative::sprite_set_texture(FieldObjectId id, uint32_t texture,
                                           std::string &e) {
   FieldCanvasAppearance state;
-  if (!sprite_snapshot(id, state, e))
+  if (!sprite_snapshot(id, state, e)||instances_.at(id).kind!=Kind::Sprite)
     return false;
   if (state.texture == texture)
     return true;
@@ -654,6 +1094,7 @@ bool PodunkSceneNative::set_collision(FieldObjectId id, uint32_t layer,
 bool PodunkSceneNative::activate_monitors(FieldSceneHost &scene,
                                           PodunkPlayerPhysicsWorld &world,
                                           std::string &e) {
+  if(house_sources_)return fail(e,"House monitors belong to the actual House geometry owner");
   if (!finished_ || !scene.scene_ready() || world.registry() != registry_ ||
       world.tree() != tree_)
     return fail(
@@ -709,6 +1150,7 @@ bool PodunkSceneNative::activate_monitors(FieldSceneHost &scene,
   return physics_admitted(e);
 }
 bool PodunkSceneNative::physics_admitted(std::string &e) const {
+  if(house_sources_)return house_live(e)&&house_geometry_->physics_admitted(e);
   if (!finished_ || !monitors_active_ || !root_->viewport().world_registered)
     return fail(e, "Scene native physical activation incomplete");
   for (uint32_t i = 0; i < map_->source()->map_count(); ++i) {
@@ -736,9 +1178,10 @@ bool PodunkSceneNative::begin_draw(uint64_t epoch, float delta,
       delta < 0 || !std::isfinite(shader_time) || shader_time < 0 ||
       !root_->viewport().active)
     return fail(e, "Scene native actual draw epoch rejected");
+  if(house_sources_&&!house_live(e))return false;
   auto next = animations_;
   for (auto &v : next)
-    if (!map_->source()->advance_animation(v.second, delta, e))
+    if (!draw_map_source()->advance_animation(v.second, delta, e))
       return false;
   animations_ = std::move(next);
   draw_epoch_ = epoch;
@@ -772,11 +1215,24 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
   };
   std::vector<Command> commands;
   std::map<FieldObjectId, FieldCanvasOrderSlot> slots;
+  std::map<uint32_t,FieldCanvasOrderSlot>native_tiles;
   std::vector<FieldCanvasOrderSlot> foreign_slots;
   std::vector<FieldObjectId> animated_slots;
   std::vector<std::pair<PodunkSceneCanvasLeaf *,FieldCanvasOrderSlot>> leaf_slots;
   std::set<FieldObjectId> leaf_objects, material_leaf_objects;
   for (const auto &s : canvas_.canvas_order()) {
+    if(s.native_tile){
+      const auto*n=tree_->descriptor(s.object);
+      if(!house_sources_||!n||n->native_class!="TileMap"||s.foreign||
+         s.source!=n->id||s.tile_draw>=house_map_->draw_count()||
+         !owns(s.object)||!native_tiles.emplace(s.tile_draw,s).second)
+        return fail(e,"Scene native sorted tile slot has no actual House TileMap owner");
+      const auto draw=house_map_->draw(s.tile_draw);const auto cell=house_map_->cell(draw.cell);
+      if(house_map_->map(draw.map).stable_id!=n->id||cell.quadrant_ordinal<0||
+         s.tile_quadrant!=uint32_t(cell.quadrant_ordinal))
+        return fail(e,"Scene native sorted tile slot differs from actual source quadrant");
+      continue;
+    }
     slots.emplace(s.object, s);
     const auto *n = tree_->descriptor(s.object);
     PodunkSceneCanvasLeaf *leaf=nullptr;
@@ -798,7 +1254,7 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
       leaf_slots.emplace_back(leaf,s); leaf_objects.insert(s.object);
       continue;
     }
-    if (!s.foreign && n && n->native_class == "AnimatedSprite") {
+    if (!house_sources_ && !s.foreign && n && n->native_class == "AnimatedSprite") {
       if (!animated_leaves_ || !animated_leaves_->owns(s.object) ||
           !animated_leaves_->drawable(s.object))
         return fail(
@@ -826,6 +1282,8 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
   }
   for (uint32_t i = 0; i < art.size(); ++i) {
     if (leaf_objects.count(art[i].object)) continue;
+    if(art[i].primitive==2)
+      return fail(e,"House visible native Label has no actual same-tree GPU leaf owner");
     const auto s = slots.find(art[i].object);
     if (s == slots.end() || (!owns(art[i].object) &&
         !material_leaf_objects.count(art[i].object)))
@@ -834,11 +1292,11 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
   }
   std::vector<uint32_t> tiles;
   std::set<FieldObjectId> synchronized_maps;
-  if (!map_->collect_draws(rect, gates, map_->source()->draw_count(), tiles, e))
-    return false;
+  if(house_sources_){if(!collect_house_tiles(rect,tiles,e))return false;}
+  else if (!map_->collect_draws(rect, gates, map_->source()->draw_count(), tiles, e))return false;
   for (auto index : tiles) {
-    const auto pose = map_->draw(index);
-    const auto layer = map_->map(pose.map);
+    FieldMapDraw pose;if(!tile_pose(index,pose,e))return false;
+    const auto layer = house_sources_?house_map_->map(pose.map):map_->map(pose.map);
     FieldObjectId id;
     if (!source_object(layer.stable_id, id, e))
       return false;
@@ -850,9 +1308,15 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
       continue; // Actual canvas ancestor visibility.
     if (synchronized_maps.insert(id).second && !synchronize(id, n->second, e))
       return false;
-    commands.push_back({int64_t(slot->second.z) + pose.z,
-                        slot->second.native_order, pose.order, true, index,
-                        slot->second.color});
+    if(house_sources_&&(layer.flags&1u)){
+      const auto native=native_tiles.find(index);
+      if(native==native_tiles.end()||native->second.object!=id)
+        return fail(e,"House ysorted tile draw lacks its actual native quadrant slot");
+      commands.push_back({native->second.z,native->second.native_order,pose.order,true,index,
+                          native->second.color});
+    }else commands.push_back({int64_t(slot->second.z) + pose.z,
+                             slot->second.native_order, pose.order, true, index,
+                             slot->second.color});
   }
   std::stable_sort(commands.begin(), commands.end(),
                    [](const Command &a, const Command &b) {
@@ -883,9 +1347,9 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
                                        viewport.canvas, art_->pixel_snap(), e))
         return false;
     } else if (c.tile) {
-      auto pose = map_->draw(c.index);
+      FieldMapDraw pose;if(!tile_pose(c.index,pose,e))return false;
       auto texture = pose.texture;
-      const auto tex = map_->source()->texture(texture);
+      const auto tex = draw_map_source()->texture(texture);
       if (tex.frames > 1)
         texture = tex.group + animations_.at(tex.group).frame;
       for (size_t i = 0; i < 4; ++i)
@@ -981,6 +1445,10 @@ bool PodunkSceneNative::shutdown(std::string &e) {
   map_ = nullptr;
   geometry_ = nullptr;
   art_ = nullptr;
+  house_sources_=nullptr;house_map_=nullptr;house_geometry_=nullptr;
+  house_random_=nullptr;house_controls_=nullptr;house_old_tree_=nullptr;
+  house_old_root_=0;house_root_=0;animation_call_object_=0;
+  animation_call_active_=false;house_replaced_=false;house_deleted_.clear();
   materials_ = nullptr;
   sprite_signals_ = nullptr;
   animated_leaves_ = nullptr;

@@ -211,9 +211,12 @@ const Schema schemas[] = {
     {"ENCNPCW1", 1, 0x454e006a, 1, 1},
     {"ENCFNT01", 1, 0x454e0044, 1, 1},
     {"ENCFVS01", 1, 0x454e0069, 1, 1},
-    {"ENCSPR01", 1, 0, 1, 1}};
+    {"ENCSPR01", 1, 0, 1, 1},
+    {"ENCFMAP1", 1, 0x454e0019, 1, 1},
+    {"ENCFCA01", 2, 0x454e0040, 2, 1},
+    {"ENCTINT1", 1, 0, 1, 1}};
 static_assert(sizeof(schemas) / sizeof(*schemas) ==
-                  uint32_t(PodunkPackRole::HouseSprites),
+                  uint32_t(PodunkPackRole::HouseTint),
               "Each bundle role requires exactly one current reader schema");
 const PodunkPackRole script_schemas[] = {PodunkPackRole::Grass,
                                          PodunkPackRole::Npc,

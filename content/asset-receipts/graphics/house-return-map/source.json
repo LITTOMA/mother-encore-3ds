@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "kind": "encore.field-map.assets",
+  "textures": [
+    {
+      "source_index": 0,
+      "source": "Graphics/Tilesets/TilNintensHouse.png",
+      "source_sha256": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+      "crop": [
+        0,
+        0,
+        208,
+        192
+      ],
+      "width": 208,
+      "height": 192,
+      "group": 0,
+      "frame": 0,
+      "frames": 1,
+      "fps": 0.0,
+      "delay": 0.0,
+      "png": "map-0-0-0.png",
+      "output": "graphics/world/house-return-map/map-0-0-0.t3x",
+      "output_sha256": "91e17a81a8b50fc5dc4a7850ee493bc58ffef5bd49f1366fd606117ec6e4a7f8",
+      "bytes": 262165,
+      "crc": 2095801980,
+      "crop_png_sha256": "8ee0a94d3fd6d6b6bd5e6b5e31dbbec1cd915b3e9f67db0592aa8914c07000b1"
+    },
+    {
+      "source_index": 1,
+      "source": "Graphics/Tilesets/TilPodunkInteriors.png",
+      "source_sha256": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+      "crop": [
+        0,
+        0,
+        896,
+        400
+      ],
+      "width": 896,
+      "height": 400,
+      "group": 1,
+      "frame": 0,
+      "frames": 1,
+      "fps": 0.0,
+      "delay": 0.0,
+      "png": "map-1-0-0.png",
+      "output": "graphics/world/house-return-map/map-1-0-0.t3x",
+      "output_sha256": "b69b17bb081da2b1ccfe1cd74ec56cdd141a229aa2f2ebb8d6f3215ff9d7fccb",
+      "bytes": 2097173,
+      "crc": 4076116820,
+      "crop_png_sha256": "21dd1fe40f3c1be47a50b9aff9df8c50ec9174793d57f91ef7d7300c42bedecb"
+    }
+  ],
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "d20e8ceb7635d84ca76a54df2ddde737687d78dbd6906a9c7ec773c2a8709d82",
+  "producer_sha256": "946347b32806d4207ebae45266559df8cec09c0d154182713e066043bcd21027",
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "workers": 4,
+  "license_sha256": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+  "license_review": "Pinned upstream LICENSE graphics conditions permit only game-related forks, modifications and translations; this Mother: Encore port retains those conditions and source attribution."
+}

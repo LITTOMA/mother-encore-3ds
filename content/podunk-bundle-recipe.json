@@ -695,6 +695,27 @@
       "producer": "house_return_sprite",
       "ir": "content/native-house-return-sprite.json",
       "path": "data/house-return-sprites.encsprite"
+    },
+    {
+      "role": 100,
+      "name": "HouseMap",
+      "producer": "house_return_map",
+      "ir": "content/native-house-return-map.json",
+      "path": "data/house-return.encmap"
+    },
+    {
+      "role": 101,
+      "name": "HouseCanvas",
+      "producer": "house_return_canvas",
+      "ir": "content/native-house-return-canvas.json",
+      "path": "data/house-return.enccanvas"
+    },
+    {
+      "role": 102,
+      "name": "HouseTint",
+      "producer": "house_return_tint",
+      "ir": "content/native-house-return-tint.json",
+      "path": "data/house-return-tint.enctint"
     }
   ],
   "extra_inputs": [

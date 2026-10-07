@@ -1,0 +1,355 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "original_native_sha256": "db04af6a239a5ecefef23162089cf6679e83a60792608a1ec646537aa9a88fd9",
+  "original_source_receipt_sha256": "028fed342cf3971e1ac828734ae87f59d267965215495c67c0a94d5275d96e7c",
+  "exporter_sha256": "b36e998e8a5388afc70c82981a8f20660f15929dc6b144986cf21c2126bbf817",
+  "native_detail_sha256": "432efe28d7068a684dc28c8f427c33d15ee43527b0c99bf58ad9c12e33f34cff",
+  "godot_sha256": "657119834a3719d91d114ce604e8769750dde4228c0ada33c94689285fcc8243",
+  "engine_tag": "3.6.2-stable",
+  "scene_entered": false,
+  "original_scripts_retained": false,
+  "script_errors": 0,
+  "headless_diagnostics": [
+    "VisualServer attempted to free a NULL RID; full actual private log retained"
+  ],
+  "material_getter_limitations": [
+    "Official headless dummy shader code/property list empty; serialized original material/shader declarations remain the uniform authority"
+  ],
+  "quarantined_source_payloads": {
+    "Audio/Sound effects/Door_Short.mp3": {
+      "original_sha256": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "native_payload_sha256": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "original_quarantine_bytes_checked": true
+    },
+    "Audio/Sound effects/EB/knock.wav": {
+      "original_sha256": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "native_payload_sha256": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "original_quarantine_bytes_checked": true
+    },
+    "Audio/Sound effects/Gift Box.mp3": {
+      "original_sha256": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "native_payload_sha256": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "original_quarantine_bytes_checked": true
+    },
+    "Audio/Sound effects/Laugh Small.mp3": {
+      "original_sha256": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "native_payload_sha256": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "original_quarantine_bytes_checked": true
+    },
+    "Audio/Sound effects/Shock.mp3": {
+      "original_sha256": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "native_payload_sha256": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "original_quarantine_bytes_checked": true
+    },
+    "Audio/Sound effects/phonering.wav": {
+      "original_sha256": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "native_payload_sha256": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "original_quarantine_bytes_checked": true
+    },
+    "Fonts/BottleRocket.tres": {
+      "original_sha256": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "native_payload_sha256": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "original_quarantine_bytes_checked": true
+    },
+    "Fonts/BottleRocket.ttf": {
+      "original_sha256": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "native_payload_sha256": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "original_quarantine_bytes_checked": true
+    },
+    "Fonts/BottleRocket_ja.ttf": {
+      "original_sha256": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "native_payload_sha256": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "original_quarantine_bytes_checked": true
+    },
+    "Fonts/BottleRocket_ko.ttf": {
+      "original_sha256": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "native_payload_sha256": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "original_quarantine_bytes_checked": true
+    },
+    "Fonts/BottleRocket_zh_cn.otf": {
+      "original_sha256": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "native_payload_sha256": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": {
+      "original_sha256": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "native_payload_sha256": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": {
+      "original_sha256": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+      "native_payload_sha256": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Character Sprites/Shadow.png": {
+      "original_sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "native_payload_sha256": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Objects/Common/Briefcase.png": {
+      "original_sha256": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+      "native_payload_sha256": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Objects/Common/Present Box.png": {
+      "original_sha256": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "native_payload_sha256": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Objects/Common/Sparkles.png": {
+      "original_sha256": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "native_payload_sha256": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Objects/Doors/Door_Dark.png": {
+      "original_sha256": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+      "native_payload_sha256": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Objects/Doors/Door_Dark_Locked.png": {
+      "original_sha256": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+      "native_payload_sha256": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Other/emotes/emotes.png": {
+      "original_sha256": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "native_payload_sha256": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Rooms/Podunk/Ninten's House.png": {
+      "original_sha256": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+      "native_payload_sha256": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Tilesets/TilNintensHouse.png": {
+      "original_sha256": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+      "native_payload_sha256": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/Tilesets/TilPodunkInteriors.png": {
+      "original_sha256": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+      "native_payload_sha256": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/UI/melody bg.png": {
+      "original_sha256": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "native_payload_sha256": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "original_quarantine_bytes_checked": true
+    },
+    "Graphics/UI/select_arrow.png": {
+      "original_sha256": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "native_payload_sha256": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "original_quarantine_bytes_checked": true
+    },
+    "Maps/Testing/phone.gd": {
+      "original_sha256": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "original_script_absent": true
+    },
+    "Maps/podunk/Ninten_s room.gd": {
+      "original_sha256": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+      "original_script_absent": true
+    },
+    "Maps/podunk/Nintens House.tscn": {
+      "original_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "native_payload_sha256": "380a7cad3d21a89b2ef28b212f34ed192fa69225af977a846a436cc052359db1",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Overworld/Door.tscn": {
+      "original_sha256": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "native_payload_sha256": "19393741e95c4c32f41ab832608428a3813044e59f12b3a88929601ff792ae54",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Overworld/Ladder.tscn": {
+      "original_sha256": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+      "native_payload_sha256": "c3639ccbb69cb75c8e774be04b094c45eedaad00cedcf0cb22438ac42627c980",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Overworld/MusicChanger.tscn": {
+      "original_sha256": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "native_payload_sha256": "36f2e2d82b9f3e0a98d85b85c7d2703ead582584815106fd86018a49590c5618",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Overworld/Objects/Openable Door.tscn": {
+      "original_sha256": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "native_payload_sha256": "34ea899e13b3fd078a2c93978aa38efd7953d8589d5bf271ee0b6832adac627f",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Overworld/Objects/Present.tscn": {
+      "original_sha256": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "native_payload_sha256": "33ad2cfb704ff78efd70d1b17c920a6846cd985b8991c465984e5e1854a46b6c",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Overworld/camarea.tscn": {
+      "original_sha256": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "native_payload_sha256": "9a263057d37812dda3e63d5a69d495f0c3fe16557a638f66080dbbca14f6e77d",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/CutsceneArea.tscn": {
+      "original_sha256": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "native_payload_sha256": "a7f3c0a9444d4ba76b475bbf638200367fc05ece3c0d1693bbe4e035db89032f",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/Effects/Sparkles.tscn": {
+      "original_sha256": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "native_payload_sha256": "9be75d668b543c6052bcfae7602055718b6f2bbdeb19ab7db1775559b5bb1742",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/character_sprite.tscn": {
+      "original_sha256": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "native_payload_sha256": "448b52f297a8f946d852c218237828105d5e5ed6093ff53b590bd07cd47c40f5",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/door_npc.tscn": {
+      "original_sha256": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "native_payload_sha256": "b51e10aa05de5779bc4d0926f722a1ad962079ec23de80f61467ccd31d64a111",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/flag landmarks.tscn": {
+      "original_sha256": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+      "native_payload_sha256": "ae562aab074f73842b9f48a0c6bd4246962872ae54096b7cee49a446ddcf0fa6",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/interact_dialog.tscn": {
+      "original_sha256": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "native_payload_sha256": "145d0b8b1ae9f24ad3538bb695891404db1ac180486474313106fc116869fb6e",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/npc.tscn": {
+      "original_sha256": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "native_payload_sha256": "d0ee83b057c22302b96e08d0fd5679f140bf00bba1ceefd6c0a3f82b4808475d",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/phone.tscn": {
+      "original_sha256": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+      "native_payload_sha256": "6fd2791f162c6c42ae8331eb669bab26b1e30b707270c6219fc9c9cb869ec027",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/roomshaker.tscn": {
+      "original_sha256": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+      "native_payload_sha256": "59ab904ee73cf9a4e0cf99baee0debbe3d3c2360699c1e567756884d791694f6",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/sprite_data_fetcher.tscn": {
+      "original_sha256": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "native_payload_sha256": "d25ce3684afb21aa7e4a2b48ef112c23250bb06ead6f983d6f47eff441f1af30",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Reusables/stepping sounds.tscn": {
+      "original_sha256": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "native_payload_sha256": "b017f5ec5136493fb1a9c97e8e1cc7f0cd9b60185d828fca269343f022e68fe6",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Ui/ButtonPrompt.tscn": {
+      "original_sha256": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "native_payload_sha256": "14f440f7543a5b1964f4ae011cbfe95d8663397d5c49d2cc5c41cab80878f053",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Ui/effects/melodyBG.gd": {
+      "original_sha256": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+      "original_script_absent": true
+    },
+    "Nodes/Ui/effects/melodyBG.tscn": {
+      "original_sha256": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+      "native_payload_sha256": "7f93c69c7207dd0cb154768227d4f6faf410806d32f685aeb5404c2d10b62aa4",
+      "original_quarantine_bytes_checked": true
+    },
+    "Nodes/Ui/emotes.tscn": {
+      "original_sha256": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "native_payload_sha256": "8115009d8c898bbff32ff7ae8f92eff56f8e736d690b748d21ab56e993ab07a9",
+      "original_quarantine_bytes_checked": true
+    },
+    "Scripts/Main/CutsceneArea.gd": {
+      "original_sha256": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+      "original_script_absent": true
+    },
+    "Scripts/Main/Door.gd": {
+      "original_sha256": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+      "original_script_absent": true
+    },
+    "Scripts/Main/Flag Landmarks.gd": {
+      "original_sha256": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+      "original_script_absent": true
+    },
+    "Scripts/Main/Interact Dialog.gd": {
+      "original_sha256": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+      "original_script_absent": true
+    },
+    "Scripts/Main/Ladder.gd": {
+      "original_sha256": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+      "original_script_absent": true
+    },
+    "Scripts/Main/Openable Door.gd": {
+      "original_sha256": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+      "original_script_absent": true
+    },
+    "Scripts/Main/Present.gd": {
+      "original_sha256": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+      "original_script_absent": true
+    },
+    "Scripts/Main/SpriteDataFetcher.gd": {
+      "original_sha256": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+      "original_script_absent": true
+    },
+    "Scripts/Main/Stepping Sounds.gd": {
+      "original_sha256": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "original_script_absent": true
+    },
+    "Scripts/Main/camarea.gd": {
+      "original_sha256": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+      "original_script_absent": true
+    },
+    "Scripts/Main/character_sprite.gd": {
+      "original_sha256": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+      "original_script_absent": true
+    },
+    "Scripts/Main/door_npc.gd": {
+      "original_sha256": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+      "original_script_absent": true
+    },
+    "Scripts/Main/npc.gd": {
+      "original_sha256": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "original_script_absent": true
+    },
+    "Scripts/Main/roomshaker.gd": {
+      "original_sha256": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+      "original_script_absent": true
+    },
+    "Scripts/UI/Button Prompt.gd": {
+      "original_sha256": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+      "original_script_absent": true
+    },
+    "Scripts/debug/DebugStartPos.gd": {
+      "original_sha256": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+      "original_script_absent": true
+    },
+    "Scripts/misc/Anim_start.gd": {
+      "original_sha256": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+      "original_script_absent": true
+    },
+    "Scripts/misc/character_tint.gd": {
+      "original_sha256": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+      "original_script_absent": true
+    },
+    "Scripts/misc/sparkles.gd": {
+      "original_sha256": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "original_script_absent": true
+    },
+    "Shaders/Distortionator.shader": {
+      "original_sha256": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+      "native_payload_sha256": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+      "original_quarantine_bytes_checked": true
+    },
+    "Shaders/Flash.tres": {
+      "original_sha256": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "native_payload_sha256": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "original_quarantine_bytes_checked": true
+    },
+    "Tilesets/Interior.tres": {
+      "original_sha256": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3",
+      "native_payload_sha256": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3",
+      "original_quarantine_bytes_checked": true
+    }
+  }
+}

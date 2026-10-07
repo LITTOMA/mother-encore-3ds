@@ -810,6 +810,17 @@ bool FieldNodeTreeRuntime::bind(FieldObjectId id,std::string&e){
   ++order_version_;
   e.clear();return true;
  }
+ bool FieldNodeTreeRuntime::set_sort_children(FieldObjectId id,bool value,std::string&e){
+  auto*n=live(id);
+  const auto*d=descriptor(id);
+  if(!n||!d||!(n->flags&1)||
+     (d->native_class!="YSort"&&d->native_class!="TileMap"))
+   return fail(e,"NodeTree native child-sort receiver rejected");
+  if(bool(n->flags&128)==value){e.clear();return true;}
+  n->flags=value?n->flags|128:n->flags&~128u;
+  ++order_version_;
+  e.clear();return true;
+ }
  bool FieldNodeTreeRuntime::effective_color(FieldObjectId id,FieldColor&out,std::string&e)const{
   auto*n=state(id);
   if(!n||!(n->flags&1))return fail(e,"NodeTree Canvas color rejected");

@@ -2,7 +2,7 @@
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "ir_sha256": "2e499fdb8a18a6733fb69017368e530e21ed1f4c8b55b5aef660a12ca9095df2",
-  "producer_sha256": "98c8aa382c6a6d1e403ae0ebbf0b761a0efc0507646fde78f660b0bd53bd3e79",
+  "producer_sha256": "9be94ca70a86ab4b6d256051e0f93e9b1c9b2e59c436368aa58eabc2eeb2e73f",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "picasso_sha256": "820f26b51fbf3481d7decb4dead58f3f8b7978affb01e43b5e6e72983c1681cb",
   "workers": 4,

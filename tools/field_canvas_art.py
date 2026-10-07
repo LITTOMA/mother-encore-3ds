@@ -12,6 +12,8 @@ OWNERS=['Native','Grass','Dandelion','Butterfly','Character','Emotes','Prompt','
 SCRIPTS={'Scripts/misc/grass spawner.gd':1,'Scripts/misc/dandelion spawner.gd':2,'Scripts/misc/butterfly.gd':3,'Scripts/Main/character_sprite.gd':4,'Nodes/Ui/emotes.tscn::6':5,'Scripts/UI/Button Prompt.gd':6,'Scripts/Main/Enemy Spawner.gd':7,'Scripts/Main/Present.gd':8,'Scripts/Main/Dead Bush.gd':9,'Scripts/Main/Openable Door.gd':10,'Scripts/Main/Jump Area.gd':11,'Maps/Testing/phone.gd':12,'Scripts/Main/DroppedItem.gd':13,'Scripts/Main/VendingMachine.gd':14,'Nodes/Ui/effects/melodyBG.gd':15,'Scripts/misc/birds.gd':16,'Scripts/Main/npc.gd':17,'Scripts/Main/Flag Landmarks.gd':18}
 ENGINE={'servers/visual/visual_server_canvas.cpp':'f55e0a8f33127b49f5cbad4a47efd3aaf6ea91da6b9a74485e81108e769a50b2','scene/2d/sprite.cpp':'ce678f79ba902084ad04398b3f36485543da9318835776de4480655618d9e4dd','scene/gui/texture_rect.cpp':'17498ec0735199c1cc7c3e9b509e328554e7aa1247076ef17cee97c4372ce149','scene/2d/canvas_item.cpp':'513b9efe70b2003b1ff3e451ac1b07527c3054b1eb81a0faab2ffe3eec0b6286','core/math/math_funcs.h':'32e8a5a998235947996119bed349cbd57233a9080b556a6b57d438ac40821e13','core/math/math_defs.h':'e5a6d4d80da1503950b05a468598c8a6fa1e5a3e15e05c0b024c0206b76b6a98'}
 ENGINE.update({'servers/visual/visual_server_canvas.h':'12e7beb6bbae020b027b721b3e1b19c433f814a85c425e8b1c21b0fd69e7a14c','scene/gui/texture_rect.h':'761667c6b0c16da93ace79507156d009ee135ec398fa44946fdd030c2a6bed9d'})
+ENGINE_V2={**ENGINE,'scene/2d/animated_sprite.cpp':'8dc64e924ca6f560f0acaffd43cb86e47a500c8586a03205f026a4445fff0c2e','scene/2d/animated_sprite.h':'806a6385c16a2f0df64eaf30e96234b8552dbbdd39fffe8f8b0c85a66e930016','scene/resources/texture.cpp':'ca3eb1dff44a4d5ea1da1683761694f7c63a803aa0fc58f350396f151a614f76','scene/gui/color_rect.cpp':'8dca7455ad21a361812d429b29d214abc406f6ef9a2cc462a59243db07187a6a'}
+ENGINE_V2['scene/2d/tile_map.cpp']='c59d5a0a1dfb440e74938929035ebf224f3628452cfe1a3ebd30b9bee8b4c9ad'
 PROGRAM='platform/ctr/shaders/field_canvas_art.v.pica'
 def extract(native):
  d=read(native);g=read(ROOT/'content/podunk-scene.json');tree=tree_load();inv=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(sha(native)==g['export_sha256']==tree['native_sha256'] and d['source']=='res://'+SCENE,'Canvas full native identity differs');ns={n['path']:n for n in d['nodes']};rs={r['id']:r for r in d['resources']};tr={r['id']:r for r in tree['records']};sources=dict(tree['sources']);textures={};records=[]
@@ -69,7 +71,8 @@ def load():
  d=read(IR);r=read(REVIEW);tree=tree_load();require(set(d)==set('schema kind commit scene scene_id scene_sha256 native_sha256 tree_ir_sha256 source_receipt_sha256 sources engine_tag engine_sources owners records textures program pixel_snap y_epsilon alpha_prune scene_admitted semantics unverified'.split()),'Canvas unknown/missing source IR field');require(d['schema']==1 and d['kind']=='encore.field-canvas-art.source-ir'and d['commit']==PIN and d['scene']==SCENE and not d['scene_admitted']and d['owners']==OWNERS and r['ir_sha256']==sha(IR)and r['engine_sources']==d['engine_sources']==ENGINE and d['tree_ir_sha256']==r['tree_ir_sha256']==sha(ROOT/'content/podunk-node-tree.json') and d['scene_sha256']==tree['source_sha256'] and d['program']['source_sha256']==sha(ROOT/PROGRAM),'Canvas source review/Tree/PICA differs');inv=read(ROOT/'compatibility/upstream-inventory.json')['files']
  for p,h in d['sources'].items():require(sha(ROOT/'upstream/MOTHER-Encore'/p)==h==inv[p]['sha256'],'Canvas changed source '+p)
  return d
-def encode(d,receipt):
+def encode(d,receipt,ir_sha256=None):
+ if d['schema']==2:return encode_v2(d,receipt,ir_sha256)
  b=bytearray(128)
  def u(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
  def f(*v):b.extend(struct.pack('<'+'f'*len(v),*v))
@@ -82,7 +85,47 @@ def encode(d,receipt):
   u(*(r[k]for k in ['id','kind','flags','texture','hframes','vframes','frame']),int(r['centered']),int(r['flip_h']),int(r['flip_v']),r['stretch'],r['owner'],r['owner_id'],r['shader']);f(*r['offset'],*r['size']);t(r['node']);t(r['owner_script']);t(r['shader_source']);b.extend(bytes.fromhex(r['owner_sha']))
  u(len(d['sources']))
  for p,h in d['sources'].items():t(p);b.extend(bytes.fromhex(h))
- struct.pack_into('<8s8I',b,0,b'ENCFCA01',1,128,len(b),0,0x454e0040,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['scene_sha256']);b[92:124]=bytes.fromhex(sha(IR));struct.pack_into('<I',b,20,zlib.crc32(b[128:]));return bytes(b)
+ struct.pack_into('<8s8I',b,0,b'ENCFCA01',1,128,len(b),0,0x454e0040,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['scene_sha256']);b[92:124]=bytes.fromhex(sha(IR)if ir_sha256 is None else ir_sha256);struct.pack_into('<I',b,20,zlib.crc32(b[128:]));return bytes(b)
+
+def encode_v2(d,receipt,ir_sha256):
+ require(d['schema']==d['format']==d['capabilities']==2 and d['rules']==1 and d['commit']==PIN and ir_sha256 is not None and receipt['ir_sha256']==ir_sha256,'Canvas v2 requires explicit reviewed source IR identity')
+ b=bytearray(128)
+ def u(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
+ def i(v):b.extend(struct.pack('<i',v))
+ def f(*v):b.extend(struct.pack('<'+'f'*len(v),*v))
+ def t(v):s=v.encode();u(len(s));b.extend(s)
+ def h(v):require(len(v)==64,'Canvas v2 hash extent');b.extend(bytes.fromhex(v))
+ t(d['scene']);f(d['y_epsilon'],d['alpha_prune']);u(int(d['pixel_snap']));h(d['tree_ir_sha256']);u(len(d['textures']))
+ for a in d['textures']:
+  u(a['id'],*a['size']);t(a['source']);h(a['source_sha256']);u(len(a['pages']))
+  pages=[p for p in receipt['pages']if p['texture_id']==a['id']];require(len(pages)==len(a['pages']),'Canvas v2 complete virtual texture pages missing')
+  for expected,p in zip(a['pages'],pages):
+   require(expected['path']==p['path']and expected['crop']==p['crop']and p['source']==a['source']and p['source_sha256']==a['source_sha256'],'Canvas v2 page/source differs')
+   u(stable(p['path']),*p['crop'],p['bytes'],p['crc']);t(p['path']);h(p['output_sha256']);h(p['crop_png_sha256'])
+ a=d['program'];p=receipt['program'];u(0,0,0,p['bytes'],p['crc']);t(a['source']);t(a['path']);h(p['source_sha256']);h(p['output_sha256']);u(len(d['records']))
+ for r in d['records']:
+  u(*(r[k]for k in ['id','kind','flags','texture','hframes','vframes','frame']),int(r['centered']),int(r['flip_h']),int(r['flip_v']),r['stretch'],r['owner'],r['owner_id'],r['shader']);f(*r['offset'],*r['size']);t(r['node']);t(r['owner_script']);t(r['shader_source']);h(r['owner_sha'])
+  f(*r.get('color',[0,0,0,0]),r.get('speed_scale',0),r.get('ready_rng',{}).get('minimum',0),r.get('ready_rng',{}).get('maximum',0));u(int(r.get('playing',False)));t(r.get('animation',''));t(r.get('ready_rng',{}).get('method',''));u(len(r.get('animations',[])))
+  for a in r.get('animations',[]):
+   t(a['name']);f(a['speed']);u(int(a['loop']),len(a['frames']))
+   for frame in a['frames']:u(frame['texture']);f(*frame['region'],*frame['margin']);u(int(frame['filter_clip']));t(frame.get('atlas_source',''))
+  m=r['material'];u(int(m is not None))
+  if m:
+   u(int(m['local_to_scene']));i(m['priority']);t(m['source']);h(m['shader_code_sha256']);u(len(m['params']))
+   for p in m['params']:
+    t(p['name']);kind=['bool','int','float','vec2','vec4','sampler2D'].index(p['type']);u(kind,['serialized_material','shader_default','source_uninitialized'].index(p['provenance']),int(p['value']is not None));values=[0]*4;integer=0
+    if p['value']is not None:
+     if kind in(0,1):integer=int(p['value'])
+     elif kind==2:values[0]=p['value']
+     elif kind in(3,4):values[:len(p['value'])]=p['value']
+     else:raise ValueError('Canvas original initialized sampler requires concrete source texture binding')
+    f(*values);i(integer)
+ u(len(d['control_boundaries']))
+ for c in d['control_boundaries']:
+  p=c['native_properties'];u(c['id'],c['flags'],c['owner_id']);t(c['node']);t(c['class_name']);t(c['owner_script']);h(c['owner_sha']);h(__import__('hashlib').sha256(json.dumps(p,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest());t(c.get('text',''));t(c.get('font_source',''));h(c.get('font_source_sha256','0'*64));f(p['margin_right']-p['margin_left'],p['margin_bottom']-p['margin_top']);u(p['align']if c['class_name']=='Label'else 0,p['valign']if c['class_name']=='Label'else 0);f(p['percent_visible']if c['class_name']=='Label'else 0);u(int(p['autowrap'])if c['class_name']=='Label'else 0,int(p['clip_text'])if c['class_name']=='Label'else 0)
+ u(len(d['sources']))
+ for p,hsh in d['sources'].items():t(p);h(hsh)
+ struct.pack_into('<8s8I',b,0,b'ENCFCA01',2,128,len(b),0,0x454e0040,2,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['scene_sha256']);b[92:124]=bytes.fromhex(ir_sha256);struct.pack_into('<I',b,20,zlib.crc32(b[128:]));return bytes(b)
 def assets(tex3ds,picasso):
  d=load();require(tex3ds and picasso and Path(tex3ds).is_file() and Path(picasso).is_file(),'Canvas actual SDK compilers required')
  def one(a):

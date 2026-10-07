@@ -29,6 +29,7 @@ SOURCES += platform/ctr/house_return_dialogue_native.cpp platform/ctr/house_retu
 SOURCES += platform/ctr/house_return_kinematic_native.cpp
 SOURCES += platform/ctr/house_return_ray_native.cpp platform/ctr/house_return_npc_runtime.cpp
 SOURCES += platform/ctr/house_return_npc_presentation.cpp platform/ctr/house_return_ui_context.cpp
+SOURCES += platform/ctr/house_return_tint_runtime.cpp
 SOURCES += runtime/house_return_ladder.cpp platform/ctr/house_return_ladder.cpp
 SOURCES += runtime/field_scene_audio_data.cpp runtime/field_scene_signal_callbacks_data.cpp platform/ctr/podunk_scene_audio.cpp platform/ctr/podunk_scene_signal_callbacks.cpp platform/ctr/podunk_scene_operations.cpp
 SOURCES += runtime/field_visibility_data.cpp platform/ctr/podunk_scene_visibility.cpp

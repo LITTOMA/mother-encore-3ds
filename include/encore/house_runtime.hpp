@@ -115,6 +115,11 @@ public:
  DrawerHost*drawer_effects()const{return drawer_effects_;}
  const OpeningWorld*world_owner()const{return world_;}
  std::string_view source_player_nickname()const{return player_nickname();}
+ // Read-only Drawer admission borrows the SAME reviewed House/Room metadata.
+ // Native Inventory consumers cannot call the private legacy Drawer executor.
+ bool validate_text(uint32_t,std::string&)override;
+ bool validate_flag(std::string_view,std::string&)override;
+ bool flag(std::string_view,bool&,std::string&)override;
  bool restore_seen_dialogue(const std::set<uint32_t>&);
  bool set_player_nickname(std::string_view);
  bool bind_phone(PhoneRuntime&);
@@ -186,12 +191,9 @@ private:
  bool resolve_inspection_dialogue(uint32_t,uint32_t&)const;
  std::string_view inspection_path(uint32_t)const;
  bool drawer_selected(uint32_t)const;
- bool validate_text(uint32_t,std::string&)override;
- bool validate_flag(std::string_view,std::string&)override;
  bool validate_item(DrawerItemTemplate t,std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->validate_item(t,n,e);}
  bool validate_sound(std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->validate_sound(n,e);}
  bool show_text(uint32_t,std::string&)override;
- bool flag(std::string_view,bool&,std::string&)override;
  bool inventory_space()const override{return drawer_effects_&&drawer_effects_->inventory_space();}
  bool grant_item(DrawerItemTemplate t,std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->grant_item(t,n,e);}
  bool play_sound(std::string_view n,std::string&e)override{return drawer_effects_&&drawer_effects_->play_sound(n,e);}

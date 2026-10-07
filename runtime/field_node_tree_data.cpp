@@ -252,6 +252,10 @@ namespace encore::upstream {
     if(sub.empty()||sub.find_first_not_of("0123456789")!=sub.npos)return reject("NodeTree embedded source binding rejected");
    }
   }
+  // The binary stores the validated class opcode once. Both immutable source
+  // consumers and live factories must observe that same native class; leaving
+  // this derived field empty makes a correct source receiver appear untyped.
+  for(auto&node:d.records_)node.native_class=d.classes_[node.class_index];
   d.valid_=true;
   *this=std::move(d);
   e.clear();

@@ -216,6 +216,53 @@ bool FieldItemDefinitionsRuntime::grant_programme(const std::string &program,
     return fail(e, "Field item programme source binding rejected");
   return construct(*b, true, false, result, e);
 }
+bool FieldItemDefinitionsRuntime::source_drawer_grant(
+    DrawerProgramView drawer, DrawerItemTemplate item, std::string_view name,
+    uint32_t receiver, FieldItemResult &result, std::string &e) {
+  if (!data_ || !drawer || !receiver || !source_construction_bound() ||
+      !std::equal(data_->source_pin().begin(), data_->source_pin().end(),
+                  drawer.reviewed_commit()))
+    return fail(e, "Drawer actual Item constructor/source pin unavailable");
+  const auto *definition = data_->definition(std::string(name));
+  if (!definition || definition->keyitem() || item.key_item ||
+      item.doses != definition->doses)
+    return fail(e, "Drawer actual singleton normal Item arguments rejected");
+  uint32_t index = UINT32_MAX;
+  for (uint32_t n = 0; n < drawer.count(DrawerSection::Templates); ++n) {
+    const auto t = drawer.item_template(n);
+    if (t.id == item.id && t.source == item.source && t.doses == item.doses &&
+        t.key_item == item.key_item && drawer.string(t.source) == name) {
+      if (index != UINT32_MAX) return fail(e, "Drawer Item template is ambiguous");
+      index = n;
+    }
+  }
+  uint32_t command = UINT32_MAX;
+  for (uint32_t n = 0; n < drawer.count(DrawerSection::Commands); ++n) {
+    const auto c = drawer.command(n);
+    if (c.opcode == uint32_t(DrawerOpcode::GrantItem) && c.a == index) {
+      if (command != UINT32_MAX) return fail(e, "Drawer grant source is ambiguous");
+      command = n;
+    }
+  }
+  FieldItemSnapshot state;
+  if (index == UINT32_MAX || command == UINT32_MAX || !read(state, e) ||
+      state.party_order.size() != 1 || state.party_order.front() != receiver)
+    return fail(e, "Drawer requires the same actual singleton source receiver");
+  const auto *inventory = owner(state, receiver);
+  if (!inventory || inventory->role != 0)
+    return fail(e, "Drawer receiver has no actual normal Inventory");
+  // This is the verified Drawer source cursor passed to Item._init, rather
+  // than an invented row in the unrelated Podunk programme binding table.
+  FieldItemBinding cursor;
+  cursor.kind = FieldItemBindingKind::Programme;
+  cursor.object_id = item.id;
+  cursor.definition = definition->id;
+  cursor.operation = 4;
+  cursor.program = std::string(drawer.string(drawer.binding().source_path));
+  cursor.label = std::to_string(command);
+  if (cursor.program.empty()) return fail(e, "Drawer source programme absent");
+  return construct(cursor, true, false, result, e);
+}
 bool FieldItemDefinitionsRuntime::query(FieldItemBindingKind kind,
                                         const std::string &scene, uint32_t id,
                                         bool &found, FieldItemResult &result,

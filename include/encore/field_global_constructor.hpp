@@ -123,6 +123,7 @@ public:
   bool clear_party(std::string_view, std::string &);
   bool append_party(std::string_view, FieldObjectId, std::string &);
   FieldObjectId owner() const { return owner_; }
+  const FieldGlobalRegistry *registry()const{return registry_;}
   const FieldGlobalConstructorData *data() const { return data_; }
 
 private:

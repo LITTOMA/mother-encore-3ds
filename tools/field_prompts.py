@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Actual Podunk ButtonPrompt authoring -> checked binary; no runtime JSON."""
 from pathlib import Path
+from dataclasses import dataclass
+from typing import Callable
 import argparse,hashlib,json,math,re,struct,sys,zlib
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools.podunk_scene import PIN,SCENE,read,write,sha,require,decode,stable
@@ -10,6 +12,16 @@ IR=ROOT/'content/native-field-prompts.json';PACK=ROOT/'romfs/data/podunk-prompts
 REVIEW=ROOT/'compatibility/reviews/podunk-prompts-v0410.json'
 LAYOUT=ROOT/'content/asset-receipts/graphics/ui/podunk-prompts-layout.json'
 PROPERTIES={'Arrow:rect_position':1,'HBoxContainer:rect_position':2,'HBoxContainer/Label:rect_position':3,'HBoxContainer/Label:modulate':4,'.:modulate':5,'Arrow:modulate':6,'.:visible':7,'.:material:shader_param/glow_modifier':8,'.:material:shader_param/flash_color':9,'.:material:shader_param/flash_modifier':10}
+@dataclass(frozen=True)
+class PromptScene:
+ scene:str
+ scene_id:int
+ node_id:Callable[[str],int]
+ expected_count:int
+ roster_path:Path
+ roster_kind:str='pending'
+
+PODUNK=PromptScene(SCENE,stable('.'),stable,146,ROOT/'content/podunk-scene.json')
 def source_instances(native,receipt,upstream):
  d=read(native);s=read(receipt);require(d['source']=='res://'+SCENE and d['schema']==1 and d['native_compatible'] is False,'Incomplete NPC native scene')
  require(s['commit']==PIN and s['scene']==SCENE,'Unreviewed NPC native receipt')
@@ -74,7 +86,7 @@ def source_clips(text):
   clips.append(dict(role=roles[name],name=name,length=a['length'],loop=a['loop'],tracks=tracks))
  return sorted(clips,key=lambda c:c['role'])
 
-def build(records,nodes,proof):
+def build(records,nodes,proof,scene=PODUNK):
  ex=Extractor(ROOT);text=ex.text(SOURCE);script=ex.text(SCRIPT);ex.text('Shaders/Flash.tres');ex.text('Shaders/Flash.shader');ex.text('LICENSE')
  require('set_process(false)' in script and '_player_nearby and !global.get_player().is_paused()'in script and '(should_show or _force_show) and !_force_hide'in script and 'if _pressing_button:'in script,'Changed ButtonPrompt source visibility')
  require('position.x = position.x / get_parent().scale.x'in script and 'scale.x = 1.0 / get_parent().scale.x'in script and 'emit_signal("hide")'in script,'Changed ButtonPrompt scale/Press source')
@@ -89,28 +101,29 @@ def build(records,nodes,proof):
   p=rec['overrides'];category=p.get('type',exported['category']);key=p.get('key',exported['key']);enabled=p.get('enabled',exported['enabled']);offset=p.get('offset',exported['offset']);parent=rec['node'].rsplit('/',1)[0]
   require(category in ('Objects','NPCs') and key in ('ui_accept','ui_select','ui_toggle'),'Unreviewed prompt category/action')
   require(parent in nodes and type(enabled)is bool and len(offset)==2 and all(type(v)in(int,float)and math.isfinite(v)for v in offset),'Prompt parent/offset')
-  out.append(dict(id=rec['stable_id'],parent_id=stable(parent),node=rec['node'],ready=rec['ready_ordinal'],category=choices.index(category),key=key,enabled=enabled,offset=offset))
+  out.append(dict(id=rec['stable_id'],parent_id=scene.node_id(parent),node=rec['node'],ready=rec['ready_ordinal'],category=choices.index(category),key=key,enabled=enabled,offset=offset))
  clips=source_clips(text)
  for path,h in proof['source_files'].items():ex.data(path);require(ex.sources[path]==h,'Changed prompt native closure')
- return dict(schema=1,kind='encore.field-prompts.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),script_sha256=ex.sources[SCRIPT],source_sha256=ex.sources[SCENE],sources=dict(sorted(ex.sources.items())),proof=proof,art=art,initial=initial,choices=choices,records=out,clips=sorted(clips,key=lambda c:c['role']),semantics=['146 exact postorder source Ready entries; hide and set_process(false) are retained','Authoritative paused/settings/input/locale/event detector signals; full force/press state machine','AnimationPlayer value/method tracks retain source times, ease and idle clock; no synthetic nearby distance','Current parent scale is read only when source _reset_scale executes; hidden animation remains active'])
+ return dict(schema=1,kind='encore.field-prompts.source-ir',commit=PIN,scene=scene.scene,scene_id=scene.scene_id,script_sha256=ex.sources[SCRIPT],source_sha256=ex.sources[scene.scene],sources=dict(sorted(ex.sources.items())),proof=proof,art=art,initial=initial,choices=choices,records=out,clips=sorted(clips,key=lambda c:c['role']),semantics=[str(scene.expected_count)+' exact postorder source Ready entries; hide and set_process(false) are retained','Authoritative paused/settings/input/locale/event detector signals; full force/press state machine','AnimationPlayer value/method tracks retain source times, ease and idle clock; no synthetic nearby distance','Current parent scale is read only when source _reset_scale executes; hidden animation remains active'])
 
-def validate(d):
+def validate(d,scene=PODUNK):
  require(set(d)=={'schema','kind','commit','scene','scene_id','script_sha256','source_sha256','sources','proof','art','initial','choices','records','clips','semantics'},'Prompt IR fields rejected')
- require(d['schema']==1 and d['kind']=='encore.field-prompts.source-ir' and d['commit']==PIN and d['scene']==SCENE and d['scene_id']==stable('.'),'Prompt source identity')
+ require(d['schema']==1 and d['kind']=='encore.field-prompts.source-ir' and d['commit']==PIN and d['scene']==scene.scene and d['scene_id']==scene.scene_id,'Prompt source identity')
  ex=Extractor(ROOT)
  for p,h in d['sources'].items():ex.data(p);require(ex.sources[p]==h,'Prompt source fingerprint '+p)
  require(d['art']==art_binding(ex),'Prompt source GPU/layout binding changed')
  require(d['clips']==source_clips(ex.text(SOURCE)),'Prompt source animation semantics changed')
  require(d['initial'][2]==d['art']['label_local']+[0,0],'Prompt Container actual layout changed')
- require(d['script_sha256']==d['sources'][SCRIPT] and d['source_sha256']==d['sources'][SCENE],'Prompt embedded proof')
+ require(d['script_sha256']==d['sources'][SCRIPT] and d['source_sha256']==d['sources'][scene.scene],'Prompt embedded proof')
  require(len(d['initial'])==10 and all(len(v)==4 and all(math.isfinite(n)for n in v)for v in d['initial']),'Prompt initial Canvas values')
  require(len(d['choices'])==4 and set(d['choices'])=={'Objects','NPCs','Both','None'},'Prompt settings')
- roster={p['stable_id']:p for p in read(ROOT/'content/podunk-scene.json')['pending']if p['script']==SCRIPT};seen=set();last=-1
+ require(scene.roster_kind in('pending','records'),'Prompt explicit roster schema differs')
+ roster={p['stable_id']if scene.roster_kind=='pending'else p['id']:p for p in read(scene.roster_path)[scene.roster_kind]if p['script']==SCRIPT};seen=set();last=-1
  for r in d['records']:
   require(set(r)=={'id','parent_id','node','ready','category','key','enabled','offset'},'Prompt record fields rejected')
-  require(r['id']in roster and r['id']not in seen and r['id']==stable(r['node']) and r['parent_id']==stable(r['node'].rsplit('/',1)[0]) and r['node']==roster[r['id']]['node'] and r['ready']==roster[r['id']]['ready_ordinal'] and last<r['ready'],'Prompt Ready binding');seen.add(r['id']);last=r['ready']
+  require(r['id']in roster and r['id']not in seen and r['id']==scene.node_id(r['node']) and r['parent_id']==scene.node_id(r['node'].rsplit('/',1)[0]) and r['node']==roster[r['id']]['node'] and r['ready']==roster[r['id']]['ready_ordinal'if scene.roster_kind=='pending'else'ready'] and last<r['ready'],'Prompt Ready binding');seen.add(r['id']);last=r['ready']
   require(r['category']<4 and d['choices'][r['category']]in ('Objects','NPCs') and r['key']in ('ui_accept','ui_select','ui_toggle')and type(r['enabled'])is bool and len(r['offset'])==2 and all(math.isfinite(v)and abs(v)<=100000 for v in r['offset']),'Prompt exported values')
- require(len(seen)==len(roster)==146 and {c['role']for c in d['clips']}=={1,2,3,4,5},'Prompt coverage')
+ require(len(seen)==len(roster)==scene.expected_count and {c['role']for c in d['clips']}=={1,2,3,4,5},'Prompt coverage')
  for c in d['clips']:
   require(set(c)=={'role','name','length','loop','tracks'} and c['name']=={1:'Float',2:'Hide',3:'Press',4:'RESET',5:'Show'}.get(c['role']) and c['loop']==(c['role']==1),'Prompt clip fields/role rejected')
   require(0<c['length']<=10 and type(c['loop'])is bool and 0<len(c['tracks'])<=16,'Prompt clip bounds');roles=set()
@@ -122,8 +135,8 @@ def validate(d):
     require(last<=k['time']<=c['length'] and math.isfinite(k['ease'])and len(k['value'])==4 and all(math.isfinite(v)and abs(v)<=100000 for v in k['value']),'Prompt key');last=k['time']
  return d
 
-def encode(d):
- validate(d);out=bytearray(80)
+def encode(d,scene=PODUNK):
+ validate(d,scene);out=bytearray(80)
  def u(*v):out.extend(struct.pack('<'+'I'*len(v),*v))
  def f(*v):out.extend(struct.pack('<'+'f'*len(v),*v))
  def s(v):b=v.encode();u(len(b));out.extend(b)

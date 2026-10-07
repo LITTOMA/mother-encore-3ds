@@ -113,6 +113,7 @@ struct FieldGlobalDataObject {
 };
 class FieldGlobalDataItemSourceReference : public FieldGlobalNativeReference {
 public:
+  const FieldGlobalDataItemSourceReference*item_source_reference()const final{return this;}
   virtual bool read_item(FieldOwnedItem &, std::string &) const = 0;
 };
 struct FieldGlobalDataItemReference {

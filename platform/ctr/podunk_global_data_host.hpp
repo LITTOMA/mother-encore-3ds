@@ -378,6 +378,7 @@ public:
   const auto &yaml_files() const { return yaml_files_; }
   auto &runtime() { return owner_; }
   const auto &runtime() const { return owner_; }
+  const PodunkInventoryHost *live_inventory() const { return live_inventory_; }
   bool bind_live_inventory(const PodunkInventoryHost &inventory,
                            std::string &error) {
     if (live_inventory_ || !registry_ || !inventory_ || !definitions_ ||

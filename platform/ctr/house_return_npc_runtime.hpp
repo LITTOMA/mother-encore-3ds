@@ -97,7 +97,14 @@ public:
   // Only the live npc.gd invocation can produce this source request receipt.
   bool programme_input(upstream::FieldObjectId,uint32_t,bool,
       upstream::HouseSourceNpcProgramme&,std::string&)const;
+  // Read the real synchronous npc.gd prefix immediately before open_program.
+  // No arbitrary caller can produce this by copying a programme receipt.
+  bool before_open(const upstream::HouseSourceNpcProgramme&,uint32_t,
+                   std::string&)const;
 private:
+  enum class SourceMethod {Other,Interact,Telepathy};
+  enum class Prefix {None,Preflight,TalkerAssigned,BeforeOpen};
+  struct Invocation;
   struct Instance {uint32_t source=0;bool bound=false,entered=false;};
   HouseReturnNpcInput in_{};
   upstream::FieldNpcRuntime runtime_;
@@ -106,11 +113,16 @@ private:
   size_t callback_depth_=0;
   uint32_t source_call_=0;
   bool thoughts_call_=false;
+  SourceMethod source_method_=SourceMethod::Other;
+  Prefix prefix_=Prefix::None;
+  uint32_t prefix_programme_=upstream::kRoomNoIndex,
+      prefix_npc_=upstream::kRoomNoIndex,prefix_generation_=0;
   bool actual(upstream::FieldObjectId,uint32_t&,std::string&)const;
   bool source(uint32_t,upstream::FieldObjectId&,std::string&)const;
   bool borrows(std::string&)const;
   bool result(bool,std::string&);
-  bool invoke(upstream::FieldObjectId,bool,const std::function<bool()>&,std::string&);
+  bool invoke(upstream::FieldObjectId,bool,const std::function<bool()>&,std::string&,
+              SourceMethod=SourceMethod::Other);
   const upstream::FieldNpcDescriptor*descriptor(uint32_t)const;
   bool dialogue_row(uint32_t,const upstream::FieldNpcDialogue&)const;
   bool programme(uint32_t,std::string_view,uint32_t&,uint32_t&,std::string&)const;

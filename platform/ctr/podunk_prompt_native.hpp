@@ -4,6 +4,16 @@
 #include "podunk_scene_loop.hpp"
 #include "source_font_renderer.hpp"
 namespace encore::ctr {
+struct PromptNativeControlState {
+  const upstream::FieldNodeTreeRuntime*tree=nullptr;
+  const upstream::FieldGlobalRegistry*registry=nullptr;
+  upstream::FieldObjectId object=0;
+  uint32_t source_id=0;
+  upstream::FieldNodeBinding binding{};
+  upstream::Vec2 position{},size{};
+  std::string text;
+  bool entered=false,ready=false;
+};
 // Four actual native children per source Prompt. The existing source runtime
 // owns the only clip clock and its source coroutine/persistent finished slot.
 class PodunkPromptNative final : public PodunkSceneNativeMechanism,
@@ -39,6 +49,8 @@ public:
                  bool snap, std::string &) const;
   bool snapshot(upstream::FieldObjectId, upstream::Vec2 &position,
                 upstream::Vec2 &size, std::string &text, std::string &) const;
+  bool control_state(upstream::FieldObjectId,PromptNativeControlState&,
+                     std::string&)const;
   bool finish_factory(std::string &) const;
   bool appearance(const upstream::FieldCanvasRecord &, upstream::FieldObjectId,
                   upstream::FieldCanvasAppearance &,

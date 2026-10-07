@@ -209,6 +209,31 @@ bool cross_bind_canvas(const FieldCanvasArtData &canvas,
 }
 } // namespace
 
+bool HouseReturnSources::admit_interact(const FieldInteractData&d,
+    const FieldNodeTreeData&t,std::string&e){
+ std::array<uint8_t,32>sha;
+ if(!t.valid()||!d.valid()||d.scene()!=t.source_scene()||
+    d.scene_id()!=t.identity().scene_id||d.source_pin()!=t.identity().upstream_commit||
+    !d.source_hash(d.scene(),sha)||sha!=t.identity().source_sha256)
+  return fail(e,"House Interact source identity differs from complete tree");
+ size_t count=0;
+ for(const auto&n:t.records())if(n.script==d.script()){
+  ++count;const auto*r=d.record(n.id);const auto*p=r?t.record(r->prompt):nullptr;
+  if(!r||r->node!=n.path||r->ready!=n.ready||n.native_class!="Area2D"||
+     n.script_methods!=1||!(n.flags&1)||bool(n.flags&2)!=bool(r->flags&8)||
+     !d.source_hash(n.script,sha)||sha!=n.script_sha||!p||p->parent!=n.id||
+     p->path!=n.path+"/ButtonPrompt"||p->native_class!="Node2D"||p->ready>=n.ready||
+     !d.source_hash(p->script,sha)||sha!=p->script_sha)
+   return fail(e,"House Interact actual Area/Ready/Prompt source attachment differs");
+ }
+ if(!count||count!=d.records().size())return fail(e,"House Interact full source instance coverage differs");
+ for(const auto&n:t.records())if(!n.script.empty()){
+  const auto path=n.script.substr(0,n.script.find("::"));std::array<uint8_t,32>original;
+  if(!t.source_hash(path,original)||!d.source_hash(path,sha)||original!=sha)
+   return fail(e,"House Interact original script source closure differs");
+ }
+ e.clear();return true;
+}
 const FieldNodeDescriptor *HouseReturnSources::tilemap_node(uint32_t id) const {
   if (valid_)
     for (const auto &certificate : reentry_.tilemaps())
@@ -218,8 +243,8 @@ const FieldNodeDescriptor *HouseReturnSources::tilemap_node(uint32_t id) const {
 bool HouseReturnSources::load(const PodunkBundleData &bundle,
                               const std::string &romfs_root,
                               const FieldDoorData &doors, RoomView room,
-                              HouseView house, std::string &error) {
-  if (!bundle.valid() || bundle.packs().size() != uint32_t(PodunkPackRole::HouseTint) ||
+                              HouseView house, DrawerProgramView drawer, std::string &error) {
+  if (!bundle.valid() || bundle.packs().size() != uint32_t(PodunkPackRole::HouseInspectionReentry) ||
       !doors.valid() || !same(bundle.identity(), doors.identity()) ||
       bundle.source_scene() != doors.source_scene())
     return fail(error, "House return requires the actual complete outdoor bundle and Door");
@@ -277,6 +302,32 @@ bool HouseReturnSources::load(const PodunkBundleData &bundle,
       !candidate.tint_.load(bytes.data(), bytes.size(), error) ||
       !cross_bind_tint(candidate.tint_, candidate.tree_, error))
     return false;
+  const auto*prompt_entry=bundle.entry(PodunkPackRole::HouseButtonPrompt);
+  const auto*control_entry=bundle.entry(PodunkPackRole::HouseControls);
+  const auto*interact_entry=bundle.entry(PodunkPackRole::HouseInteract);
+  const auto*return_entry=bundle.entry(PodunkPackRole::HouseInspectionReentry);
+  if(!prompt_entry||!control_entry||!interact_entry||!return_entry||
+      !same(prompt_entry->identity,tree->identity)||!same(control_entry->identity,tree->identity)||
+      !same(interact_entry->identity,tree->identity)||!same(return_entry->identity,reentry->identity))
+    return fail(error,"House Prompt/Control/Interact/return Room source identity differs");
+  if(!read(bundle,PodunkPackRole::HouseButtonPrompt,romfs_root,bytes,error)||
+      !candidate.button_prompts_.load(bytes.data(),bytes.size(),candidate.tree_,tree->ir_sha256,error)||
+      candidate.button_prompts_.ir_sha256()!=prompt_entry->ir_sha256||
+      !read(bundle,PodunkPackRole::HouseControls,romfs_root,bytes,error)||
+      !candidate.controls_.load(bytes.data(),bytes.size(),tree->identity,candidate.tree_,candidate.canvas_,error)||
+      !read(bundle,PodunkPackRole::HouseInteract,romfs_root,bytes,error)||
+      !candidate.interact_.load(bytes.data(),bytes.size(),error)||
+      !admit_interact(candidate.interact_,candidate.tree_,error)||
+      !read(bundle,PodunkPackRole::HouseInspectionRoom,romfs_root,bytes,error)||
+      !candidate.inspections_.load(bytes.data(),bytes.size(),room,house,drawer,candidate.interact_,error))
+    return false;
+  // Keep the opening Room/certificate unchanged. The complete return Room has
+  // its own freshly generated Door certificate and exact file dependencies.
+  HouseReentryData return_reentry;
+  if(!read(bundle,PodunkPackRole::HouseInspectionReentry,romfs_root,bytes,error)||
+      !return_reentry.load(bytes.data(),bytes.size(),doors,candidate.inspections_.view(),house,error)||
+      !cross_bind(return_reentry,candidate.geometry_,candidate.tree_,error))return false;
+  candidate.reentry_=std::move(return_reentry);
   if (candidate.canvas_.source_scene() != candidate.tree_.source_scene() ||
       candidate.canvas_.tree_ir_sha() != tree->ir_sha256)
     return fail(error, "House Canvas complete tree authoring/source binding differs");

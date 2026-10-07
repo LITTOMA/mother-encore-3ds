@@ -86,11 +86,13 @@ bool DialoguePlayer::resume(DialogueSink& sink) {
             if(action.target_index>=program.command_count)return fail("Dialogue jump outside program");
             pc_=action.target_index;continue;
         }
-        if(action.kind==DialogueActionKind::BranchFlag || action.kind==DialogueActionKind::BranchLeader) {
+        if(action.kind==DialogueActionKind::BranchFlag || action.kind==DialogueActionKind::BranchLeader || action.kind==DialogueActionKind::BranchInventorySpace) {
             if(action.auxiliary_index>=program.command_count)return fail("Dialogue branch outside program");
             if(action.kind==DialogueActionKind::BranchFlag) {
                 if(action.target_index>=source_flag_count() || (action.value!=0&&action.value!=1))
                     return fail("Invalid dialogue flag condition");
+            } else if(action.kind==DialogueActionKind::BranchInventorySpace) {
+                if(action.target_index!=kRoomNoIndex||(action.value!=0&&action.value!=1))return fail("Invalid normal inventory space condition");
             } else if(action.target_index>=source_string_count() || source_string(action.target_index).empty()) {
                 return fail("Invalid dialogue leader condition");
             }
@@ -154,7 +156,7 @@ const char* dialogue_action_name(DialogueActionKind kind) {
     static constexpr const char* names[]={"BeginCutscene","BindActor","ActorPersistent","StartWait","MusicFadeOut",
         "SetTalker","CallObjectDeferred","OverworldBattleMusic","PlaySound","MoveActor","TurnActor","ShakeActor",
         "JumpActor","AnimateActor","EmoteActor","ShakeCamera","ChangeCamera","MoveCamera","QueueBattle",
-        "StopInteraction","RestoreActor","ReleaseBattleActor","CutsceneEnded","DialogueDone","RequestBattle","YieldIdle","AwaitTimer","SetActorDirection","TeleportActor","MoveActorPath","ReturnCamera","SetFlag","ShowDialogue","AwaitDialogue","PlayMusicImmediate","HideDialogue","Jump","BranchFlag","BranchLeader","AwaitChoices","OpenSave","AwaitSubmenu","StopActorLoop","OpenStorage","GrantKeyItem","LearnSkill","AnimateSpecialActor"};
+        "StopInteraction","RestoreActor","ReleaseBattleActor","CutsceneEnded","DialogueDone","RequestBattle","YieldIdle","AwaitTimer","SetActorDirection","TeleportActor","MoveActorPath","ReturnCamera","SetFlag","ShowDialogue","AwaitDialogue","PlayMusicImmediate","HideDialogue","Jump","BranchFlag","BranchLeader","AwaitChoices","OpenSave","AwaitSubmenu","StopActorLoop","OpenStorage","GrantKeyItem","LearnSkill","AnimateSpecialActor","BranchInventorySpace","GrantInventoryItem"};
     const auto i=static_cast<size_t>(kind); return i<sizeof(names)/sizeof(names[0]) ? names[i] : "Unknown";
 }
 }

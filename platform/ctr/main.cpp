@@ -811,7 +811,7 @@ bool prepare_podunk_exit(std::string&e){
  auto&c=input.continuation;
  c.destination=&podunk_destination;c.romfs_root="romfs:/";c.house=gameplay_scene.get();
  c.battle=&battle_entry;c.outcome=&battle_outcome;c.commands=&field_equipment_menu;
- c.session=&native_session_data;c.room=opening_data.view();c.house_data=house_data.view();c.round=round_data.view();c.legacy_items=items_data.view();
+ c.session=&native_session_data;c.room=opening_data.view();c.house_data=house_data.view();c.drawer=drawer_program_data.view();c.round=round_data.view();c.legacy_items=items_data.view();
  c.snapshot=&session_state;c.played_random=&battle_random;c.uid_ledger=&generated_uid_ledger;
  c.target=loading_top;c.audio=&audio_player;c.signals=&podunk_signals;
  c.clock=[](LoadRngClockSample&sample,std::string&e){const auto now=std::time(nullptr);if(now<0){e="Native House continuation clock unavailable";return false;}sample.unix_seconds=uint64_t(now);sample.ticks_usec=uint64_t(double(svcGetSystemTick()-load_epoch_tick)*1000.0/CPU_TICKS_PER_MSEC);e.clear();return true;};

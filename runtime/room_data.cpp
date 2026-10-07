@@ -354,7 +354,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
     if(!bytes||size<kRoomHeaderBytes+kRoomSectionCount*kRoomDirectoryEntryBytes||size>kMaxRoomBytes) return fail("Room: invalid file size");
     if(std::memcmp(bytes,"ENCRMD01",8)!=0) return fail("Room: invalid magic");
     if(u16(bytes+8)!=1||u16(bytes+10)!=0||u32(bytes+12)!=kRoomHeaderBytes||u32(bytes+16)!=size||u32(bytes+20)!=0x01020304u) return fail("Room: unsupported format/header/endianness");
-    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7&&u32(bytes+32)!=8)||(!(u32(bytes+32)<=7&&u32(bytes+36)==u32(bytes+32))&&!(u32(bytes+32)==7&&u32(bytes+36)==8)&&!(u32(bytes+32)==8&&u32(bytes+36)==9))) return fail("Room: incompatible target/content/rules/capabilities");
+    if(u32(bytes+24)!=1||u32(bytes+28)!=0x454e0002u||(u32(bytes+32)!=4&&u32(bytes+32)!=5&&u32(bytes+32)!=6&&u32(bytes+32)!=7&&u32(bytes+32)!=8)||(!(u32(bytes+32)<=7&&u32(bytes+36)==u32(bytes+32))&&!(u32(bytes+32)==7&&u32(bytes+36)==8)&&!(u32(bytes+32)==8&&u32(bytes+36)==9)&&!(u32(bytes+32)==8&&u32(bytes+36)==10))) return fail("Room: incompatible target/content/rules/capabilities");
     if(!u32(bytes+40)||u32(bytes+44)!=kRoomHeaderBytes||u16(bytes+48)!=kRoomSectionCount||u16(bytes+50)!=kRoomDirectoryEntryBytes) return fail("Room: invalid scene identity/directory");
     if(!u32(bytes+108)||!u32(bytes+112)||u32(bytes+116)||!zero(bytes+120,8)||zero(bytes+56,20)||zero(bytes+76,32)) return fail("Room: invalid provenance/header reserved fields");
     if(room_crc(bytes,size)!=u32(bytes+52)) return fail("Room: CRC mismatch");
@@ -508,8 +508,8 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         else if(r.kind==uint16_t(RoomBindingKind::StopRoomShaker)) { if(!ref(r.target_index,v.binding_count())||v.binding(r.target_index).kind!=uint16_t(RoomBindingKind::PeriodicCameraShake)||r.value||r.duration)return fail("Room: invalid stop room shaker binding"); }
         else if(r.kind==uint16_t(RoomBindingKind::StopMusicResource)){if(!ref(r.target_index,v.resource_count())||v.resource(r.target_index).kind!=2||r.value||r.duration)return fail("Room: invalid targeted music stop");}
         else if(r.kind==uint16_t(RoomBindingKind::WorldEffectAppear)||r.kind==uint16_t(RoomBindingKind::WorldEffectDisappear)){if(!ref(r.target_index,v.resource_count())||v.resource(r.target_index).kind!=4||r.value||r.duration)return fail("Room: invalid world effect binding");}
-        else if(r.kind==uint16_t(RoomBindingKind::StopMusicRegion)||r.kind==uint16_t(RoomBindingKind::PlayMusicRegion)){if(u32(bytes+36)!=9||!ref(r.target_index,v.string_count())||!relative_path(v.string(r.target_index),false)||r.value||r.duration<0||r.duration>3600||(r.kind==uint16_t(RoomBindingKind::PlayMusicRegion)&&r.duration))return fail("Room: invalid checked music-region binding");}
-        else if(r.kind==uint16_t(RoomBindingKind::BasementWhiteFade)){if(u32(bytes+36)!=9||r.target_index!=kRoomNoIndex||r.value||r.duration)return fail("Room: invalid checked white fade binding");}
+        else if(r.kind==uint16_t(RoomBindingKind::StopMusicRegion)||r.kind==uint16_t(RoomBindingKind::PlayMusicRegion)){if((u32(bytes+36)!=9&&u32(bytes+36)!=10)||!ref(r.target_index,v.string_count())||!relative_path(v.string(r.target_index),false)||r.value||r.duration<0||r.duration>3600||(r.kind==uint16_t(RoomBindingKind::PlayMusicRegion)&&r.duration))return fail("Room: invalid checked music-region binding");}
+        else if(r.kind==uint16_t(RoomBindingKind::BasementWhiteFade)){if((u32(bytes+36)!=9&&u32(bytes+36)!=10)||r.target_index!=kRoomNoIndex||r.value||r.duration)return fail("Room: invalid checked white fade binding");}
         else if(r.kind==uint16_t(RoomBindingKind::StartPhoneRing)){if(u32(bytes+32)<5||r.target_index>=64||r.value||r.duration)return fail("Room: invalid phone-ring binding");}
         else if(r.kind==uint16_t(RoomBindingKind::DeferredFlagBodyDeletion)){if(u32(bytes+32)<5||!rule_bodies.count(r.target_index)||!ref(r.auxiliary_index,v.flag_count())||(r.value!=0&&r.value!=1)||r.duration)return fail("Room: invalid deferred flag-body binding");}
         else return fail("Room: unsupported binding kind");
@@ -563,7 +563,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         const auto c=v.command(i);const auto* p=v.record(RoomSection::Command,i);
         const bool extended=u32(bytes+32)>=5,branched=u32(bytes+32)>=6;
         const uint32_t allowed_flags=(u32(bytes+32)>=7&&c.opcode==12)?15u:extended?(c.opcode==10?15u:c.opcode==17?3u:c.opcode==33?7u:(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==35)?1u:0u):((c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==33)?1u:0u);
-        if(c.opcode>(u32(bytes+36)==9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38)&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
+        if(c.opcode>(u32(bytes+36)==10?48:u32(bytes+36)==9?46:u32(bytes+36)==8?43:u32(bytes+32)>=7?42:branched?41:extended?35:34)||(c.flags&~allowed_flags)||((c.opcode!=37&&c.opcode!=38&&c.opcode!=47)&&c.auxiliary_index!=kRoomNoIndex)||u32(p+44)||!finite(c.vector)||!std::isfinite(c.value)||!std::isfinite(c.duration))return fail("Room: unknown opcode/invalid command fields");
         const bool inherited_actor=(c.flags&1)&&(c.opcode==16||c.opcode==19||c.opcode==32||c.opcode==42||c.opcode==46);
         const bool actor_used=!inherited_actor&&(c.opcode==1||c.opcode==2||(c.opcode>=9&&c.opcode<=14)||c.opcode==16||(c.opcode>=18&&c.opcode<=21)||c.opcode==24||(c.opcode>=27&&c.opcode<=29)||c.opcode==32||c.opcode==42||c.opcode==46);
         if(actor_used) { if(c.actor_index>=v.actor_instance_count())return fail("Room: invalid command actor reference"); }
@@ -603,6 +603,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
                 break;
             }
             case 37:case 31:if(!ref(c.target_index,v.flag_count()))return fail("Room: invalid command flag");break;
+            case 48:if(c.target_index==kRoomNoIndex)return fail("Room: missing inventory template identity");break;
             case 36:if(c.target_index==kRoomNoIndex)return fail("Room: missing branch target");break;
             case 38:{if(!ref(c.target_index,v.string_count()))return fail("Room: missing leader identity");const auto id=v.string(c.target_index);if(id.empty()||id.size()>64||id[0]<'a'||id[0]>'z')return fail("Room: leader identity");for(char ch:id)if(!((ch>='a'&&ch<='z')||(ch>='0'&&ch<='9')||ch=='_'))return fail("Room: leader identity");break;}
             case 39:if(c.target_index>=32)return fail("Room: invalid choice group");break;
@@ -615,7 +616,7 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         if(!vector_used&&(c.vector.x||c.vector.y))return fail("Room: unused command vector");
         if(c.opcode==27&&(!c.vector.x&&!c.vector.y))return fail("Room: zero command direction");
         switch(c.opcode) {
-            case 7:case 31:case 37:if(c.value!=0&&c.value!=1)return fail("Room: invalid command boolean");break;
+            case 7:case 31:case 37:case 47:if(c.value!=0&&c.value!=1)return fail("Room: invalid command boolean");break;
             case 9:if(c.value<=0||c.value>10000)return fail("Room: invalid command move speed");break;
             case 12:if(c.value<0||c.value>1024)return fail("Room: invalid command jump height");break;
             case 15:if(c.value<0)return fail("Room: invalid command shake magnitude");break;
@@ -637,17 +638,17 @@ bool RoomData::validate(const uint8_t* bytes,size_t size,std::string& error) {
         if(!r.command_count||!r.phrase_count||r.phrase_count>65536||!range(r.first_command,r.command_count,v.command_count())||(v.command(r.first_command+r.command_count-1).opcode!=24&&v.command(r.first_command+r.command_count-1).opcode!=23))return fail("Room: invalid program/termination");
         if(v.command(r.first_command+r.command_count-1).opcode==23&&v.command(r.first_command+r.command_count-1).duration<=0)return fail("Room: world completion lacks camera timing");
         if(!ref(r.source_path_string,v.string_count())||!relative_path(v.string(r.source_path_string),false)||!program_paths.insert(v.string(r.source_path_string)).second)return fail("Room: invalid/duplicate program source path");
-        bool branch_program=false;for(uint32_t j=0;j<r.command_count;++j){const auto op=v.command(r.first_command+j).opcode;if(op>=36&&op<=41)branch_program=true;}
+        bool branch_program=false;for(uint32_t j=0;j<r.command_count;++j){const auto op=v.command(r.first_command+j).opcode;if((op>=36&&op<=41)||op==47)branch_program=true;}
         bool pending_timer=false;
         for(uint32_t j=0;j<r.command_count;++j) {
             const uint32_t index=r.first_command+j;
             const auto operation=v.command(index);
-            if((operation.opcode>=36&&operation.opcode<=41||operation.opcode==43)&&pending_timer)return fail("Room: branch/submenu with active timer");
+            if((operation.opcode>=36&&operation.opcode<=41||(operation.opcode==43||operation.opcode==47))&&pending_timer)return fail("Room: branch/submenu with active timer");
             if(operation.opcode==3){if(pending_timer)return fail("Room: overlapping phrase timers");pending_timer=true;}
             if(operation.opcode==26){if(!pending_timer)return fail("Room: timer wait without timer");pending_timer=false;}
             if(operation.opcode==33){if(bool(operation.flags&1)!=pending_timer)return fail("Room: dialogue timer mode mismatch");pending_timer=false;}
-            if((operation.opcode==36&&operation.target_index>=r.command_count)||((operation.opcode==37||operation.opcode==38)&&operation.auxiliary_index>=r.command_count))return fail("Room: branch target out of program");
-            if(operation.opcode>=36&&operation.opcode<=38){const uint32_t target=operation.opcode==36?operation.target_index:operation.auxiliary_index;if(target<=j||(target&&v.command(r.first_command+target-1).phrase==v.command(r.first_command+target).phrase))return fail("Room: branch must reach forward phrase entry");}
+            if((operation.opcode==36&&operation.target_index>=r.command_count)||((operation.opcode==37||operation.opcode==38||operation.opcode==47)&&operation.auxiliary_index>=r.command_count))return fail("Room: branch target out of program");
+            if((operation.opcode>=36&&operation.opcode<=38)||operation.opcode==47){const uint32_t target=operation.opcode==36?operation.target_index:operation.auxiliary_index;if(target<=j||(target&&v.command(r.first_command+target-1).phrase==v.command(r.first_command+target).phrase))return fail("Room: branch must reach forward phrase entry");}
             if((operation.opcode==40||operation.opcode==43)&&(j+1>=r.command_count||v.command(index+1).opcode!=41))return fail("Room: save request lacks submenu wait");
             if(operation.opcode==41&&(!j||(v.command(index-1).opcode!=40&&v.command(index-1).opcode!=43)))return fail("Room: submenu wait lacks save request");
             if(branch_program&&operation.opcode==23&&operation.duration<=0)return fail("Room: branch completion lacks camera timing");

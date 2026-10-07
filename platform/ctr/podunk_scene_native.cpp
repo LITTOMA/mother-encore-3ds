@@ -996,6 +996,21 @@ bool PodunkSceneNative::color_rect_snapshot(FieldObjectId id,Vec2&size,FieldColo
     return fail(e,"House ColorRect snapshot lacks actual native source owner/Ready");
   size=it->second.sprite.size;color=it->second.color;e.clear();return true;
 }
+bool PodunkSceneNative::control_state(FieldObjectId id,PodunkSceneControlState&out,
+    std::string&e)const{
+  const FieldNodeDescriptor*d;const FieldNodeState*s;auto it=instances_.find(id);
+  FieldIdentity identity;
+  if(!house_sources_||it==instances_.end()||
+     (it->second.kind!=Kind::TextureRect&&it->second.kind!=Kind::ColorRect)||
+     !actual(id,d,s,e)||!tree_->object_identity(id,identity)||
+     art_!=&house_sources_->canvas()||!art_->record(d->id))
+    return fail(e,"House native Control state lacks same actual Canvas instance");
+  PodunkSceneControlState value;value.tree=tree_;value.registry=registry_;
+  value.object=id;value.source_id=d->id;value.identity=identity;value.native_class=d->native_class;
+  value.position=s->local[2];value.size=it->second.sprite.size;value.constructed=true;
+  value.bound=it->second.bound;value.entered=it->second.entered;value.ready=it->second.ready;
+  out=std::move(value);e.clear();return true;
+}
 bool PodunkSceneNative::sprite_publish(FieldObjectId id,
                                        const FieldCanvasAppearance &value,
                                        std::string &e) {

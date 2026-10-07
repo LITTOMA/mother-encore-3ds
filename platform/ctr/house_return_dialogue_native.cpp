@@ -1,4 +1,5 @@
 #include "house_return_dialogue_native.hpp"
+#include "house_return_inventory.hpp"
 #include "house_return_npc_runtime.hpp"
 #include <algorithm>
 #include <set>
@@ -349,11 +350,29 @@ bool HouseReturnDialogueNativeOwner::observe(const HouseReturnDialogueContext &c
  }
  n.inspected=true;out=std::move(n);e.clear();return true;
 }
+bool HouseReturnDialogueNativeOwner::admit_npc_before_open(const HouseReturnNpcRuntime&source,
+    const HouseSourceNpcProgramme&r,uint32_t generation,std::string&e)const{
+  PodunkMickHouseNativeState s;
+  if(npc_source_!=&source||!programme_bound_||callback_depth_||selected_||!state(s,e)||
+      in_.house->world.house_programme_owner()!=in_.driver||
+      in_.house->house.programme_owner()!=in_.driver||
+      source.house()!=in_.house||source.tree()!=in_.tree.get()||source.registry()!=owners_.registry||
+      source.native_dialogue()!=this||r.source!=&source.runtime()||
+      r.tree!=in_.tree.get()||r.tree_data!=in_.source_tree||r.registry!=owners_.registry||
+      r.reentry!=in_.source||r.doors!=in_.doors||r.house.bytes()!=in_.text.bytes()||
+      r.house.byte_size()!=in_.text.byte_size()||r.thoughts||!source.owns(r.object)||
+      in_.house->world.source_generation()!=generation||
+      s.callback_depth||s.callback_receiver||s.notifying||s.input_live||s.printer_owner||
+      s.pending_messages||s.business_pending||!s.objects.empty()||!s.wait_connections.empty()||
+      !source.before_open(r,generation,e))
+    return reject(e,"House NPC BeforeOpen rejected a foreign/live native callback or source prefix");
+  e.clear();return true;
+}
 bool HouseReturnDialogueNativeOwner::admit_command(const HouseReturnDialogueContext &c,
     uint32_t pc,const RoomCommand &cmd,std::string &e)const{
  FieldProgrammeContext native;if(!context(c,native,e))return false;
  const auto p=c.room.program(c.programme);
- if(cmd.opcode>uint16_t(DialogueActionKind::AnimateSpecialActor))
+ if(cmd.opcode>uint16_t(DialogueActionKind::GrantInventoryItem))
   return reject(e,"House native admission received an unknown source opcode");
  if(pc>=p.command_count)return reject(e,"House native admission PC is outside its immutable programme");
  const auto actual=c.room.command(p.first_command+pc);
@@ -365,7 +384,8 @@ bool HouseReturnDialogueNativeOwner::admit_command(const HouseReturnDialogueCont
  switch(K(cmd.opcode)){
  case K::BeginCutscene:case K::StopInteraction:case K::SetTalker:
  case K::CutsceneEnded:case K::DialogueDone:{
-  if((K(cmd.opcode)==K::StopInteraction&&!(cmd.flags&1))||K(cmd.opcode)==K::SetTalker)
+  if((K(cmd.opcode)==K::StopInteraction&&!(cmd.flags&1))||(K(cmd.opcode)==K::SetTalker&&
+      (cmd.actor_index!=kRoomNoActor||c.original_npc!=kRoomNoIndex)))
    return reject(e,"House actor-dictionary talker lifecycle requires its actual source actor owner");
   DialogueAction a{K(cmd.opcode),cmd.actor_index,cmd.phrase,cmd.vector,cmd.value,
                    cmd.duration,cmd.target_index,cmd.auxiliary_index,cmd.flags};
@@ -378,6 +398,8 @@ bool HouseReturnDialogueNativeOwner::admit_command(const HouseReturnDialogueCont
   if(cmd.target_index>=owners_.choice_data->groups().size())
    return reject(e,"House choice command refers to an unknown source group");
   return owners_.choice_data->validate_program(cmd.target_index,c.room.string(p.source_path_string),p.command_count,e);
+ case K::BranchInventorySpace:case K::GrantInventoryItem:
+  return in_.house->world.admit_house_inventory_command(c.programme,pc,e);
  case K::AwaitDialogue:case K::Jump:case K::BranchFlag:case K::BranchLeader:
  case K::YieldIdle:case K::AwaitTimer:case K::StartWait:case K::SetFlag:
  case K::MusicFadeOut:case K::PlayMusicImmediate:case K::PlaySound:
@@ -402,6 +424,16 @@ bool HouseReturnDialogueNativeOwner::source_started(const HouseReturnDialogueCon
     !owners_.dialogue->admit_ready(c.dialogue,c.generation,e))return false;
  return owners_.root->begin(c.dialogue,c.generation,e);
 }
+bool HouseReturnDialogueNativeOwner::bind_inventory_source(HouseReturnInventoryOwner&owner,std::string&e){
+ OpeningHouseInventoryState actual;
+ if(!prepared_||!programme_bound_||inventory_source_||!in_.house||!in_.driver||
+    owner.world()!=&in_.house->world||in_.house->world.house_inventory_owner()!=&owner||
+    in_.house->house.drawer_effects()!=&owner||
+    !owner.observe_inventory(actual,e)||actual.world!=&in_.house->world||
+    actual.programme_owner!=in_.driver||actual.effects!=&owner||!actual.source_call_closed)
+  return reject(e,"House native inventory binding requires the actual same source owner");
+ inventory_source_=&owner;e.clear();return true;
+}
 bool HouseReturnDialogueNativeOwner::apply_native(const HouseReturnDialogueContext &c,
     uint32_t pc,const DialogueAction &a,std::string &e){
  SourceCall call(callback_depth_);FieldProgrammeContext native;
@@ -413,9 +445,15 @@ bool HouseReturnDialogueNativeOwner::apply_native(const HouseReturnDialogueConte
  case K::CutsceneEnded:case K::DialogueDone:return owners_.dialogue->apply(a,native,e);
  case K::ShowDialogue:{
   HouseDialogue t;std::string name;
-  if(!in_.driver->source_text(a.target_index,t,e)||!owners_.global_data->data()||
-     !owners_.global_data->character_nickname(owners_.global_data->data()->first_character(),name,e)||
-     !owners_.root->phrase_begin(c.dialogue,e))return false;
+  if(!in_.driver->source_text(a.target_index,t,e)||!owners_.global_data->data())return false;
+  const auto p=c.room.program(c.programme);
+  if(pc&&c.room.command(p.first_command+pc-1).opcode==uint16_t(K::GrantInventoryItem)){
+   FieldObjectId receiver=0;
+   if(!inventory_source_||in_.house->world.house_inventory_owner()!=inventory_source_||
+      !inventory_source_->item_receiver(receiver,name,e)||!receiver)
+    return reject(e,"House granted-item text requires its actual Inventory/global.item receiver");
+  }else if(!owners_.global_data->character_nickname(owners_.global_data->data()->first_character(),name,e))return false;
+  if(!owners_.root->phrase_begin(c.dialogue,e))return false;
   if(!in_.house->presentation.present_story_dialogue(t.first_segment,t.segment_count,name))
    return reject(e,in_.house->presentation.error());
   return owners_.root->presented_text(c.dialogue,c.room,c.room.program(c.programme).first_command+pc,t,e);

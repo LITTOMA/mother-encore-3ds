@@ -1,4 +1,5 @@
 #include "encore/house_return_sources.hpp"
+#include "encore/resource_catalog.hpp"
 #include "manual_require.hpp"
 #include <cstdlib>
 using namespace encore::upstream;
@@ -53,8 +54,12 @@ int main(int argc, char **argv) {
   HouseData house;
   MANUAL_REQUIRE(room.load_file(argv[3], error));
   MANUAL_REQUIRE(house.load_file(argv[4], error));
+  ResourceCatalog catalog;
+  DrawerProgramData drawer;
+  MANUAL_REQUIRE(catalog.load_file((std::string(argv[2])+"/data/native.encresources").c_str(),error));
+  MANUAL_REQUIRE(drawer.load_file((std::string(argv[2])+"/"+std::string(catalog.path(ResourceRole::DrawerProgram))).c_str(),error));
   HouseReturnSources owner;
-  MANUAL_REQUIRE(owner.load(bundle, argv[2], doors, room.view(), house.view(), error));
+  MANUAL_REQUIRE(owner.load(bundle, argv[2], doors, room.view(), house.view(),drawer.view(), error));
   MANUAL_REQUIRE(owner.valid() && !owner.geometry().scene_admitted() &&
                  !owner.tree().scene_admitted());
   MANUAL_REQUIRE(owner.reentry().tilemaps().size() == 3);
@@ -70,6 +75,10 @@ int main(int argc, char **argv) {
                  owner.canvas().records().size() == 67 &&
                  owner.canvas().control_boundaries().size() == 47 &&
                  owner.tint().valid() && owner.tint().records().size() == 10);
+  MANUAL_REQUIRE(owner.button_prompts().valid()&&owner.button_prompts().core().records().size()==23);
+  MANUAL_REQUIRE(owner.controls().valid()&&owner.controls().records().size()==72&&owner.interact().records().size()==8);
+  MANUAL_REQUIRE(owner.inspections().view().valid()&&owner.inspections().view().program_count()==37);
+  MANUAL_REQUIRE(owner.reentry().matches(doors,owner.inspections().view(),house.view(),error));
   const auto root_id = owner.tree().identity().scene_id;
   const auto *root = owner.tree().record(root_id);
   MANUAL_REQUIRE(root && root->id == owner.reentry().native_nodes().front().id);
@@ -83,14 +92,14 @@ int main(int argc, char **argv) {
                       const FieldDoorData &actual_door, RoomView actual_room,
                       HouseView actual_house) {
     HouseReturnSources empty;
-    MANUAL_REQUIRE(!empty.load(candidate, romfs, actual_door, actual_room, actual_house, error));
+    MANUAL_REQUIRE(!empty.load(candidate, romfs, actual_door, actual_room, actual_house,drawer.view(), error));
     MANUAL_REQUIRE(!empty.valid() && !empty.reentry().valid() &&
                    !empty.geometry().valid() && !empty.tree().valid() &&
                    !empty.npcs().valid() && !empty.npc_world().valid() &&
                    !empty.timers().valid() && !empty.visibility().valid() &&
                    !empty.sprites().valid() && !empty.map().valid() &&
                    !empty.canvas().valid() && !empty.tint().valid());
-    MANUAL_REQUIRE(!owner.load(candidate, romfs, actual_door, actual_room, actual_house, error));
+    MANUAL_REQUIRE(!owner.load(candidate, romfs, actual_door, actual_room, actual_house,drawer.view(), error));
     MANUAL_REQUIRE(owner.valid() && owner.tree().record(root_id) == root &&
                    owner.reentry().valid() && owner.geometry().valid() &&
                    owner.npcs().npcs().size() == 6 && owner.sprites().records().size() == 16 &&

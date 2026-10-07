@@ -4331,7 +4331,7 @@
       "scene": "Maps/podunk/podunk.tscn",
       "scene_id": 2561235290,
       "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
-      "ir_sha256": "5ea5a83a76c42af724076a14fcc1abfdab3f3de33125974c43ed052abb0939b3",
+      "ir_sha256": "8d937652421901c20889124da32101f49ac44e34768a4b9ec04c661cba8e5ad7",
       "bytes": 14723,
       "crc32": 3405996852,
       "sha256": "29aac73598e1724be79d85e4cdd580664405048f7927a34de8c5e5ca0b133079",
@@ -11565,11 +11565,11 @@
       "scene": "Maps/podunk/podunk.tscn",
       "scene_id": 869293449,
       "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
-      "ir_sha256": "8225b0b87cb939cae5cb188fea253755cd7c9b21160e65e12bb296ec25b3ea13",
+      "ir_sha256": "127045872229c42f34957818be98d31703e47c7b9d0172ddad08ceb05dd1e90d",
       "bytes": 13569,
-      "crc32": 802963344,
-      "sha256": "6a61d2efcfa596a32090b80c51d77c52d9191ff7cb7f3d16fd16ce4b9f420b36",
-      "original_header": "454e434852455431020000008000000001350000d303752075004e450100000001000000895dd0337d9246600fffe518408f5830d4848635019005a33ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e8225b0b87cb939cae5cb188fea253755cd7c9b21160e65e12bb296ec25b3ea1300000000",
+      "crc32": 4216198004,
+      "sha256": "da6795299fa47487838569b1fdd223d9e073276fb1b53f9c2c6c89e02d6c72dc",
+      "original_header": "454e434852455431020000008000000001350000f4fac36975004e450100000001000000895dd0337d9246600fffe518408f5830d4848635019005a33ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e127045872229c42f34957818be98d31703e47c7b9d0172ddad08ceb05dd1e90d00000000",
       "sources": {
         "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
         "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
@@ -12727,11 +12727,739 @@
         "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
         "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
       }
+    },
+    {
+      "role": 103,
+      "name": "HouseButtonPrompt",
+      "producer": "house_return_button_prompt",
+      "ir": "content/native-house-return-button-prompt.json",
+      "path": "data/house-return.encbuttonprompt",
+      "identity_kind": 2,
+      "magic": "ENCHBPR1",
+      "format": 1,
+      "family": 1162739840,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/Nintens House.tscn",
+      "scene_id": 2861651240,
+      "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "ir_sha256": "e000456f7cfc0ca5cfbaa53791dc865b31f4a0e367b1ac2a573504025ad822ca",
+      "bytes": 19504,
+      "crc32": 542660332,
+      "sha256": "479f4c3792eee589e6454a165c267df1f646c93d98e9d540dd1077341efc50da",
+      "original_header": "454e43484250523101000000010000000100000080004e45285591aab84b000002e184877d9246600fffe518408f5830d4848635019005a33ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2ee000456f7cfc0ca5cfbaa53791dc865b31f4a0e367b1ac2a573504025ad822ca2f00ad4969256d37",
+      "sources": {
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+        "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+        "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+        "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+        "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+        "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+        "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+        "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+        "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+      }
+    },
+    {
+      "role": 104,
+      "name": "HouseControls",
+      "producer": "house_return_controls",
+      "ir": "content/native-house-return-controls.json",
+      "path": "data/house-return.enccontrols",
+      "identity_kind": 1,
+      "magic": "ENCHCTL1",
+      "format": 1,
+      "family": 1162739841,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/Nintens House.tscn",
+      "scene_id": 2861651240,
+      "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "ir_sha256": "6b6d11b7e66dec7117dc7d9385412def1362fd2e9fa92815b53e7e83d2505de5",
+      "bytes": 156432,
+      "crc32": 2881193885,
+      "sha256": "c517cc6c45d744d167592417a0a4228e2cfba2df49b328d5bfe719c80f2cd4c1",
+      "original_header": "454e434843544c3101000000800000001063020033a3380581004e450100000001000000285591aa7d9246600fffe518408f5830d4848635019005a33ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e6b6d11b7e66dec7117dc7d9385412def1362fd2e9fa92815b53e7e83d2505de500000000",
+      "sources": {
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+        "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+        "Data/Animations/Lamp.yaml": "eb5043e8979cb5ed982ae75a5a95a89ebca765324d564da10759fa27736c66ed",
+        "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+        "Data/Dialogue/Podunk/carol_food.yaml": "eb6c465f0bd850cc3642a4dcc3dadefc6abf340d5530007e929e500534b74af5",
+        "Data/Dialogue/Podunk/carol_got_key.yaml": "e49a7eebcf1020a49fb80acc0f21ee8ab1794d3d065225a40d7e4defe21dabdf",
+        "Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
+        "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
+        "Data/Dialogue/Podunk/carol_panic.yaml": "e74b73f1ab2500ab77c8be31bbd51a8c8a385302542f62d9bc750dc0612fb2f9",
+        "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+        "Data/Dialogue/Podunk/carol_rested.yaml": "1085830398ff2fdd7f8a91dc4ad3bacf8b9edc22d264325bf5508f21c8ba84b1",
+        "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a",
+        "Data/Dialogue/Podunk/dollmelody.yaml": "9058f5f24fece54d7446e152830579f763773f312a2be5710c17a9d67c357fd6",
+        "Data/Dialogue/Podunk/mimmie_dead_doll.yaml": "a80642231df7dd64410eb34544f84265d53974587c7098efc32585816ec7d371",
+        "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": "24937777b12b6796ec2c3ce357a95b032575926ec836a097aa37b8620808ed03",
+        "Data/Dialogue/Podunk/mimmie_got_key.yaml": "8216ed557cf78766c169658a101053bb578356fe979bbf7d75de226d9661fb30",
+        "Data/Dialogue/Podunk/mimmie_juice.yaml": "79ff25b4030699ec68361550abe652a5c35a76970aa741fc98d9514b2ac24ab7",
+        "Data/Dialogue/Podunk/mimmie_key.yaml": "c0989d81319572e41e8bc00de168133bd6254f1c46f49da50711deb40006abf9",
+        "Data/Dialogue/Podunk/mimmie_key_again.yaml": "b409051db29ade47a736f3d5778f735e137439cb64fc8b79c13e88cc6a2982be",
+        "Data/Dialogue/Podunk/mimmie_open_basement.yaml": "444457597af5a0a8728b62b6e119558f3b85bcf28d907e16779a60b4f210daf2",
+        "Data/Dialogue/Podunk/minnie_door_open.yaml": "6ceb4598c44bc85803fe05ca43d46cc2ab5e32cc5a8692318bc358431fbf3eff",
+        "Data/Dialogue/Podunk/minnie_run_tutorial.yaml": "e97378db5d1dcd911d0febf1397c8462949c5974f15beef0e176f00266847aa5",
+        "Data/Dialogue/Podunk/minnie_storage.yaml": "a5a4a4e85854bdbecf999a887f27abe5238fc3412d42880c566ecbe0255dbcf4",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/lamp.yaml": "593f0e878fba93f346c3b4d67b72a82fc36118bda573ab8dea83683279f7c2f0",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Lloyd/main.png": "f66ac54e088cce2b839c23c9403840d40c516991337f86db05102e4fff0eb978",
+        "Graphics/Character Sprites/Lloyd/main.png.import": "04c09f5e870474767c6b65babddfb388ad8454c69d102acf8970cdeee72b4738",
+        "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+        "Graphics/Character Sprites/Npcs/1dir/doll.png.import": "a5e1ad37ae4fdb7ebb00d665656715d1bace2038dd97876e1f320d0e5a905edb",
+        "Graphics/Character Sprites/Npcs/1dir/lamp.png": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+        "Graphics/Character Sprites/Npcs/1dir/lamp.png.import": "8fe0430bd91b7ba1ea38d1facaf1e595999f3299d817ad9a145cff35bc18d84e",
+        "Graphics/Character Sprites/Npcs/1dir/pillow.png": "675fe31d2f8d9aa913d85f110a7d8d4cc9abdedde79e5fc7341f039bcf12d901",
+        "Graphics/Character Sprites/Npcs/1dir/pillow.png.import": "aeb7a589812b775e3d7f2d12ff1bf08285a91caa316c1b22397177ca5ded82ae",
+        "Graphics/Character Sprites/Npcs/4dir/carol.png": "58a91f79e495c3475564a3afda1364ee768b8c2b94ed54122e50acfac7928bbb",
+        "Graphics/Character Sprites/Npcs/4dir/carol.png.import": "527cfc1c1ec642938d3262b84ce4ceae1c18db6ef8232fbfee291bde144e34db",
+        "Graphics/Character Sprites/Npcs/4dir/mimmie.png": "92cc5589bfe0ad56cd4f0e884952f2d3bc923ac57638fe657b7ea9c689a530e1",
+        "Graphics/Character Sprites/Npcs/4dir/mimmie.png.import": "e9f472fa03898476e7ebc692eba8f42a27fcf070789cc33c2633901409e2b981",
+        "Graphics/Character Sprites/Npcs/4dir/minnie.png": "55ede50937e2511bfa27a88ce4660040c2e140886ee107be9260cb830be5338a",
+        "Graphics/Character Sprites/Npcs/4dir/minnie.png.import": "7c3cc4334634cba38a2f1199084262bc2c6f90dba6c00d717802cb04ca0c8d11",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png.import": "b88ff4213291c3cc624ec9da84650e00388206fd4bcd7a9d30c494e5b64f6854",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png.import": "c2a5c9f187d55231055c5203bbb134304f9965549becb75ad0ca594bfa518a97",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+        "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+        "Graphics/Objects/Common/Briefcase.png.import": "f3dc75c3716172baae8d53e21de64ec229a32af8878b141e6c50ba8082adf5a8",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Present Box.png.import": "727991665e76eee2c179013caf8ffa149316e35444c831562e6d46ee869ec59e",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+        "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+        "Graphics/Objects/Doors/Door_Dark.png.import": "85a7c87f12e637594258185aaf5d60866b99cd0c7a4918f20f837fce60ef2efd",
+        "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+        "Graphics/Objects/Doors/Door_Dark_Locked.png.import": "bd0c5d6dcba3d9aaec2a95a3f0a73b6972666e15d23b672b016b365bee57440b",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Graphics/Other/emotes/emotes.png.import": "da3aa2e8441cc3db6c48a3d525232493ae027034ffb8e6c0e99faae9f872324b",
+        "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+        "Graphics/Rooms/Podunk/Ninten's House.png.import": "3474b1fbe0835b6e0df908968c0f06d27253ddad6152f19d81dd5a9447e3bdb0",
+        "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+        "Graphics/Tilesets/TilNintensHouse.png.import": "1498d8f5b2c50f97794a67710670cbf8d61c4fef56abfe6c00b62bfe908c8d87",
+        "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+        "Graphics/Tilesets/TilPodunkInteriors.png.import": "b2b23b8240572a723d52a4c6d8b5364203b14459e5834ad72f8be8a8e6e794fa",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/melody bg.png.import": "541a55a1ebcf3d2b2fff92f7e25de2976c6d23059beb24c00e1b4067f772c5e8",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "Graphics/UI/select_arrow.png.import": "ec36c9aa5dcf4bd9bdbc5cf41d6858b0f5ab75e625d409526c9ac9b8b3305f6d",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+        "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+        "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+        "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+        "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+        "Scripts/misc/FloorReflector.gd": "a6e09679940ecb8ded44eb498fa725e9561c97830aca1d844aa0ae33e3ba0d92",
+        "Scripts/misc/character_reflection.gd": "34e5f8de756140cf4e2737d93201edc629457d7f605bd79397bf38fb67b7a38a",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+      }
+    },
+    {
+      "role": 105,
+      "name": "HouseInteract",
+      "producer": "house_return_interact_dialog",
+      "ir": "content/native-house-return-interact-dialog.json",
+      "path": "data/house-return-interact.encdialog",
+      "identity_kind": 2,
+      "magic": "ENCFDLG1",
+      "format": 1,
+      "family": 0,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/Nintens House.tscn",
+      "scene_id": 2861651240,
+      "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "ir_sha256": "32cd69978e18b61c5d04d7340877b1353ac122325cbf6478979188f0403de6cb",
+      "bytes": 7788,
+      "crc32": 3853907156,
+      "sha256": "a26542604ec1c96a404c715f70377bf1b6d128769b131c1acc6c90be7e776518",
+      "original_header": "454e4346444c4731010000006c1e0000c35b88420100000001000000285591aa7d9246600fffe518408f5830d4848635019005a30000000000000000000000001e0000004d6170732f706f64756e6b2f4e696e74656e7320486f7573652e7473636e1f000000536372697074732f4d61696e2f496e746572616374204469616c",
+      "sources": {
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml": "b5b50deba2216aab659cac7dea5386f692d59d3504b648d595762d04a1d2c166",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml": "3732040066ff94144a48bdbac880eaa888dc2abb3a52ded902082573f1b85cd4",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml": "21339eb0d16d37d7a0395636dd5078c28d76652296a4f5103b093469f3974810",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml": "2ca21079ca52fe65a9c5c5a2e97027134ad6e0fdab0da9bf968fa52e974ba09f",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
+        "Data/Dialogue/Reusable/nottime.yaml": "abc69fea985155bbc16f1e6cc5732307c0410bf6eb296d205b5cdc79a241f383",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+        "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+        "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+        "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+        "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+        "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+        "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+        "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+        "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+      }
+    },
+    {
+      "role": 106,
+      "name": "HouseInspectionRoom",
+      "producer": "house_return_inspection_programme",
+      "ir": "content/native-house-return-room-programmes.json",
+      "path": "data/house-return-room.encroom",
+      "identity_kind": 3,
+      "magic": "ENCRMD01",
+      "format": 1,
+      "family": 1162739714,
+      "capability": 10,
+      "rules": 8,
+      "scene": "Maps/podunk/Nintens House.tscn",
+      "scene_id": 1,
+      "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "ir_sha256": "782546e80424d57c3a4100a5dd7fdf9e203d17aa5c05bb7f52f00e1030c9bfe4",
+      "bytes": 78496,
+      "crc32": 377228102,
+      "sha256": "74e89ee3b85dd75aac43227830df3629411919c23374983be900e8702054d849",
+      "original_header": "454e43524d4430310100000080000000a0320100040302010100000002004e45080000000a00000001000000800000001c001800a20e3a057d9246600fffe518408f5830d4848635019005a3792ad4b2c8df6f9c3f2042df0413b5c187c0307f6e8042b8d347325c197c55010100000009000000000000000000000000000000",
+      "sources": {
+        "Scripts/Main/actor.gd": "b02d11841d21b0a49405dd654fd6a8ae8718d50156536d7d18cea7e8147b3b9a",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+        "Nodes/Reusables/actor.tscn": "bbb2fa797cd9886a240ee92b9ac753cd3f226a8e51bd546dd42eefbefdfa5d49",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Data/Animations/Lamp.yaml": "eb5043e8979cb5ed982ae75a5a95a89ebca765324d564da10759fa27736c66ed",
+        "Data/Animations/PartyMember.yaml": "f8e9e34974af51f7355a808a7188759b215d70b3b92357f4a68a5ebc135f6a00",
+        "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+        "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+        "Scripts/global/yaml_parser.gd": "435abe2f1fcfe94475379cc74fc767e97629eef4f584dbd29b8b53444f6165d7",
+        "Graphics/Character Sprites/Npcs/1dir/lamp.png": "04d7add01ec6d7d4e665cdbf3a1260099ecdf02b8b3486eb1f2566544b2144c6",
+        "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+        "Scripts/misc/Shaker.gd": "323af7cf3a739bb7f33c7285264ae8f4419f5c0c27e5c444f8a606b88651cf82",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+        "Scripts/global/controlsManager.gd": "73ffd540c3c95ed9f2d92d57ecbde8fc9c48fa98e683f3641cca5498becddae7",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+        "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+        "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Maps/Cutscenes/Mt Itoi Landscape.tscn": "c334e9ab97f842c9b478430b3ca4ecc0958560aaf2dd1710ec9244e885f69340",
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+        "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+        "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+        "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+        "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
+        "Audio/Music/House.mp3": "4052b0fc31263475d213b899153d2dab471512f1a925fe7f91f9ba3e5002d0c7",
+        "Audio/Music/Melodies/melody1.mp3": "9e730603d3fb1426567672332f01bc2be0a21cae00f98bd3e95363ef4d7508c6",
+        "Audio/Sound effects/M3/heal_se.wav": "d8712d29a0ef6feec927753dd897c136ae58e940b6e67b03693ecde2b6345021",
+        "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
+        "Data/Animations/Floater.yaml": "880a7d6662f5dbf53c313124f0dbdaff5f4b0806a2f5f032a1366142b748d047",
+        "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+        "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+        "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
+        "Data/Dialogue/Podunk/dollmelody.yaml": "9058f5f24fece54d7446e152830579f763773f312a2be5710c17a9d67c357fd6",
+        "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+        "Graphics/Character Sprites/Npcs/4dir/mimmie.png": "92cc5589bfe0ad56cd4f0e884952f2d3bc923ac57638fe657b7ea9c689a530e1",
+        "Graphics/Character Sprites/Npcs/4dir/minnie.png": "55ede50937e2511bfa27a88ce4660040c2e140886ee107be9260cb830be5338a",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2",
+        "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+        "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+        "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3",
+        "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+        "Audio/Music/Poltergeist.ogg": "55b239f855e2b799cba8944881d622a64e735c93e7746a9537bb6cd7d0a278fc",
+        "Audio/Sound effects/bash.mp3": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598",
+        "Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+        "Audio/Sound effects/M3/SMAAAASH.wav": "ab087702670dd87d46207b48429b9c9d1fa5daec0f74b0b10c9b1fe0e9a8c47f",
+        "Audio/Sound effects/M3/SMAAAASH.wav.import": "2670b26676ad536fb2d45147a675cee4edbbe640dca449b33de0fa0b35cf331e",
+        "Graphics/Character Sprites/Npcs/4dir/minnie.png.import": "7c3cc4334634cba38a2f1199084262bc2c6f90dba6c00d717802cb04ca0c8d11",
+        "Translations/TranslatedText/dialogue_Podunk_cutscenes - sheet.csv": "b0834522a57d96ef5868da7fdf0b7d4af87f9567ee13d1ff39c552c381a4b0f1",
+        "Scripts/UI/Battle/BattleSystem.gd": "d0af7731e0311855de1f0363f8712525269a9f50828033c88989796a657436ca",
+        "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+        "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": "24937777b12b6796ec2c3ce357a95b032575926ec836a097aa37b8620808ed03",
+        "Data/Dialogue/Podunk/mimmie_dead_doll.yaml": "a80642231df7dd64410eb34544f84265d53974587c7098efc32585816ec7d371",
+        "Data/Dialogue/Podunk/doll.yaml": "0efec152a3748a064d671e154428acb251995dac5a569f810b8e4c05e4a5ff5a",
+        "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+        "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+        "Data/save_new_game.yaml": "dd138bf891e8e3dcb141140270aceb8d2ae2ee7b40d30de7fa8e81066badcb9c",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Translations/TranslatedText/dialogue_Podunk - sheet.csv": "747fe6f7e457367327a0863c228ebb70e1f86e996687a44b58e19f171f1f5efe",
+        "Audio/Music/Melodies/melody1.mp3.import": "3f7d52ded59d4efae922628f9716fd8c1ca7f7d88ba6774b2065095c83ac7f23",
+        "Audio/Sound effects/M3/heal_se.wav.import": "1b82db1b468075e83174548e87a7150b71ca3aa039063f1c47f1d1fdf578256b",
+        "Audio/Music/House.mp3.import": "319c24b77108d2079a7cc5ee2babaf222c14067485522453e451379dc7ace95a",
+        "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+        "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+        "Audio/Music/Poltergeist.ogg.import": "a9c8d8f5a65d8279f5274300c31f5b18b54b5a414494d868d2e37d9faadac7a8",
+        "Audio/Sound effects/bash.mp3.import": "1e3241d9ac7d026dffe39041ac76131052b9eb3ef8f8ca92f816190d095b31d9",
+        "Audio/Music/Battle Encounter/Encounter Enemy.mp3": "8739f039b6b49aa984685c0d4d20b9a647256ca1436dab5cd30de6ff8d6a0918",
+        "Audio/Music/Battle Encounter/Encounter Enemy.mp3.import": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+        "Audio/Music/Battle Encounter/Encounter Boss.mp3": "248c9d3e342d9bf1f1223e2b018a6f00de22c54071b65469ab1912c434538a03",
+        "Audio/Music/Battle Encounter/Encounter Boss.mp3.import": "e07f81afe34f32ecd03fb1f65a88305b047e208004de2dbf662102c54591302a",
+        "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
+        "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",
+        "Audio/Sound effects/Cursor 2.mp3": "84a266a77ce48c43f9cc3d266be59e3effadf5d912a692c0b9915a47b2c1cd83",
+        "Audio/Sound effects/Cursor 2.mp3.import": "08265ad592b74b9c5644f8c9c34586cdedc38f6f84c2a92dd7bb4f6acf82e54e",
+        "Audio/Sound effects/M3/curshoriz.wav": "b16277ce84ab106804ebf18135cac83b41acfc9b88b0a7c9b7ab03456f797fed",
+        "Audio/Sound effects/M3/curshoriz.wav.import": "ba70d98226f7f11dc16003b0dd13b9598709ccbaa8ea697edc9fa56be85b6ba5",
+        "Audio/Sound effects/M3/bump.wav": "ca4fa187e8c7f71169d606c6ade544280fb21b364a159cb02989bf72212e40d1",
+        "Audio/Sound effects/M3/bump.wav.import": "162876ad2126780a4de9542b7ee7ae00c937952a6a08c42f8b2f93dc4cdb1819",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
+        "Audio/Sound effects/phonehangup.wav": "9e88d7505f2c0b86d73f34bb0a0c066485d160fbfb5e640c3874bce8bc522145",
+        "Audio/Sound effects/phonehangup.wav.import": "fdbe75f6e2df204ccc6bd2fa775982d96d8d5a6ce5cbf91517e53a3fbb2b78a4",
+        "Audio/Sound effects/text/Adult.mp3": "563078e3c723eb702273d6deb1a29bb0806731f427592665a88986e078885afc",
+        "Audio/Sound effects/text/Adult.mp3.import": "416f91e675ceb7bdd87850942624389e82e689f7e8bd6e1b74b0ec75454f3487",
+        "Audio/Music/Mother Earth.mp3": "89d44b28e944108bf285f1656950cba4cf5473764097a3b5138340fcf595fc5f",
+        "Audio/Music/Mother Earth.mp3.import": "dcc0a020300706b28f4c540a8922eb71f10c58b2bc8f1773efb140c285e18409",
+        "Data/Dialogue/Podunk/carol_call.yaml": "276081d295dde4885e14a17f219a49e19c66869bd5012438af145b7a8a549e31",
+        "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+        "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
+        "Data/Dialogue/Podunk/carol_phone.yaml": "8169a99205054ce28753d181642248abda60b5ea3595045a3ae1b9dd85cd7147",
+        "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+        "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+        "Data/Dialogue/Reusable/dad_normal.yaml": "5789ab4368611305127dd4c1bb9424e8bc586d4d93c7014a858637eb25e0524f",
+        "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+        "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+        "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+        "Scripts/UI/SaveSelect.gd": "067f0a28af8b9d9b62204ae89ac4bdafbd8470e81a55e02fa27f2958510d6d00",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Audio/Sound effects/text/Female.mp3": "5b8dba6076eedb74173355e55c5ab765f586f62e56a0773c96ed7febddae22b5",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png.import": "c2a5c9f187d55231055c5203bbb134304f9965549becb75ad0ca594bfa518a97",
+        "Graphics/Character Sprites/Npcs/4dir/carol.png": "58a91f79e495c3475564a3afda1364ee768b8c2b94ed54122e50acfac7928bbb",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Nodes/Ui/DialogueOptions.tscn": "862a800366644d825ca692fdece889f130af52298c23c02dda0b0765e0b9d3d9",
+        "Nodes/Ui/arrow.tscn": "9765796a95b9c7c47cf0a43b034b9cc5fa537d58b3e0b13d226323def130beb7",
+        "Scripts/UI/cursor.gd": "30317d27861618e795b45f8f047194fdecbc90da93aef3dde35bc01a9660b315",
+        "Fonts/EBMain.tres": "ed224862996862c05d6cfbd1383eb51e0edf036665d87d6c713f4840dc0d39c4",
+        "Fonts/EBMain.ttf": "7145045d455981991b0af5a1ba2967fb0d34156809984c26cc65423855e22ec8",
+        "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+        "Graphics/UI/Inventory/cursor.png.import": "00df9ab0e7a205187d09ac4a1131e0c852dfd9a4e15847e5a80fa66ea21fe9da",
+        "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml": "6e100c4ed8dc5cfd1fc6f88bc79ef9198d57c32721c5a9690d38e2e9c59c2f17",
+        "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": "6cc6d9c3c8f7eb2517dd945369b272b315e344e0af5afd0721a6b485894d053a",
+        "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": "0c07ab7c8f6c64708c9f41571429967827ba7ac82d8dc72a156aad84d17cd07a",
+        "Data/Dialogue/Podunk/minnie_run_tutorial.yaml": "e97378db5d1dcd911d0febf1397c8462949c5974f15beef0e176f00266847aa5",
+        "Data/Dialogue/Podunk/minnie_door_open.yaml": "6ceb4598c44bc85803fe05ca43d46cc2ab5e32cc5a8692318bc358431fbf3eff",
+        "Audio/Sound effects/text/Kid.mp3": "43cf3034cc30742f047e0964ec99bf6310aa9c30ff4bce1ce48d988dcc8df07f",
+        "Data/Dialogue/Podunk/minnie_storage.yaml": "a5a4a4e85854bdbecf999a887f27abe5238fc3412d42880c566ecbe0255dbcf4",
+        "Audio/Music/Good_Morning.mp3": "ca88059946ed9e2a8af810618ef5a779f07a281317cc8c3dda7f058adbed4b3c",
+        "Audio/Music/Good_Morning.mp3.import": "1f2f77b31372efd8eb6e7842e84d4489123e2449cd935a97ea9da012d71406b3",
+        "Audio/Sound effects/Item Received.mp3": "df12b8830ea8210197f965d18212a7be9ed7166ce048cf6d0770571bee8ddf96",
+        "Audio/Sound effects/Item Received.mp3.import": "0ad60a0d1864b075695cdc0dbe45d3a2affe613c359f71f1dcfb5ae7309855e5",
+        "Audio/Sound effects/M3/Dog_whining.wav": "e472611c9399ef97d628f31f2bd81dd5cc8ba4ede703ac117c15e985128b7c17",
+        "Audio/Sound effects/M3/Dog_whining.wav.import": "4c3f61c94e830a5014f1d95096bbfe7d90b8eed09a59de0c91625e0e3debd08e",
+        "Audio/Sound effects/M3/Learned PSI.wav": "f28b9e605a82bd89199d42b9448f03f42451714d17598bcd677fe5fa49c96a04",
+        "Audio/Sound effects/M3/Learned PSI.wav.import": "b7c2531943d39eef28e9d75af3adc510e974bc87e9e503d562cbf654e746de88",
+        "Audio/Sound effects/M3/Woof Woof!.wav": "d68a7b6acc856d591bbaa5e2304f2850adb8ed04f77f4d3cae99605b8bd8ff24",
+        "Audio/Sound effects/M3/Woof Woof!.wav.import": "52c407a76899b15653559e9c33b65cdf0486e72806fe7cbef3fd25351f284d57",
+        "Audio/Sound effects/text/Female.mp3.import": "d82f217dff6f00a7bb65119d02459901999c3ea9a386e91ea37f20b0a2429d7c",
+        "Data/Animations/NintenCutscene.yaml": "5c58c8034f23d8d2d485aaf40efa2dc584962916170db8e42f6281aafb25e2e8",
+        "Data/BattleSkills/lifeUpA.yaml": "9a2196d71255d94998502717254bbb569cb91bb2fb5edec053c15c1b2c1a73d3",
+        "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
+        "Data/Dialogue/Podunk/cutscenes/ggf_diary.yaml": "a8e7fd1e2ab459b1aee7edc72ca503e488af8c85c7223178860d5fe996dab9f8",
+        "Data/Dialogue/Podunk/woof.yaml": "bf72427cbb9aaec8f137adc01abecf05a152d9b2259e610ab0e2a80bbee4e7fd",
+        "Data/Dialogue/Podunk/woof_deal.yaml": "0e92387cbb42d0c7d72744e0e33b7ad6fb563a49866398399a324a494312d227",
+        "Data/Dialogue/Podunk/woof_food.yaml": "624ae86db6d352709245f815de6fc5975044b5c3c63255b9d1e04096a3207412",
+        "Data/Dialogue/Podunk/woof_key.yaml": "dbef94b23ad95e5f549cba9507f6b5bd27d09a951824760b3a088e4101aff7a7",
+        "Data/Dialogue/Podunk/woof_secret.yaml": "55b1de9a3aa188caff50d43fdf1eb94702d6ffa4e2f3249afcb4a5aaa686d03a",
+        "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
+        "Data/Dialogue/Reusable/lockopened.yaml": "ed10dc7cda371e34202cd8fddbe84365b3f494e14f6e6b9d303c4c5d6d697930",
+        "Data/FieldSkills/telepathy.yaml": "1529b8c0631d697377eb293e107b37068c03ba8588fdd254b37e33bc22559230",
+        "Data/Items/CashCard.yaml": "a265a852b1372698b057709485e755cfade8e8925406c045cafa0c016c3e99fb",
+        "Data/Items/GGFDiary.yaml": "679b78ece6697b8e750d49530d3402898a19bb2fd05a38d9253019fb8531934e",
+        "Data/Items/KeyBasement.yaml": "c7ae7bb18c1aeb874d5a85ec74caf37aef70d4da47b4ff3e1fc7499dd158f28e",
+        "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+        "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+        "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+        "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+        "Translations/TranslatedText/dialogue_ItemDialogue - sheet.csv": "af2de174e5c3c6375ee1fb0aeea018660998d76e8825d6f0acb986faa179dce1",
+        "Translations/TranslatedText/items - sheet.csv": "a0bdfa13d0fd0763cc2db9e91e6d530a87f55f8e19f201fad1232d3775623f6e",
+        "Graphics/Character Sprites/Npcs/1dir/pillow.png": "675fe31d2f8d9aa913d85f110a7d8d4cc9abdedde79e5fc7341f039bcf12d901",
+        "Graphics/Character Sprites/Npcs/1dir/pillow.png.import": "aeb7a589812b775e3d7f2d12ff1bf08285a91caa316c1b22397177ca5ded82ae",
+        "Data/Dialogue/Podunk/carol_key.yaml": "912854e6b3bf17187d6efec7989b84c43eb501425354a841ec477758728bdc96",
+        "Data/Dialogue/Podunk/carol_key_again.yaml": "6a90d8de337828751562f041971f2b2e5ae5cf4b2f51a7a96f8defe5f53dccb7",
+        "Data/Dialogue/Podunk/mimmie_key.yaml": "c0989d81319572e41e8bc00de168133bd6254f1c46f49da50711deb40006abf9",
+        "Data/Dialogue/Podunk/mimmie_key_again.yaml": "b409051db29ade47a736f3d5778f735e137439cb64fc8b79c13e88cc6a2982be",
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml": "b5b50deba2216aab659cac7dea5386f692d59d3504b648d595762d04a1d2c166",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml": "3732040066ff94144a48bdbac880eaa888dc2abb3a52ded902082573f1b85cd4",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml": "21339eb0d16d37d7a0395636dd5078c28d76652296a4f5103b093469f3974810",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml": "2ca21079ca52fe65a9c5c5a2e97027134ad6e0fdab0da9bf968fa52e974ba09f",
+        "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
+        "Data/Dialogue/Reusable/nottime.yaml": "abc69fea985155bbc16f1e6cc5732307c0410bf6eb296d205b5cdc79a241f383",
+        "Data/Items/AsthmaSpray.yaml": "ab0d760e1b49b04961d18f22cde1bfd6965dc060b0f2d51779cf85232b99dea3",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+        "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Translations/TranslatedText/dialogue_Podunk_non-person text_Ninten's house - sheet.csv": "c554acd6981a3a745d2a948433cdda737d1aa83e4793aa3a067cea9fa9a747fc"
+      }
+    },
+    {
+      "role": 107,
+      "name": "HouseInspectionReentry",
+      "producer": "house_inspection_reentry",
+      "ir": "content/native-house-inspection-reentry.json",
+      "path": "data/house-return.encreentry",
+      "identity_kind": 1,
+      "magic": "ENCHRET1",
+      "format": 2,
+      "family": 1162739829,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/Nintens House.tscn",
+      "scene_id": 869293449,
+      "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "ir_sha256": "27d99e9207f6cfde5a33592633a759f947600db6e512fa5c370d6737b10a40c6",
+      "bytes": 13579,
+      "crc32": 2436156692,
+      "sha256": "5927e06252f2976591efb0b19ab809c2b6278733a2184c5addfac87c44cb4c29",
+      "original_header": "454e43485245543102000000800000000b350000cd4d281975004e450100000001000000895dd0337d9246600fffe518408f5830d4848635019005a33ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e27d99e9207f6cfde5a33592633a759f947600db6e512fa5c370d6737b10a40c600000000",
+      "sources": {
+        "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+        "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+        "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+        "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+        "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+        "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+        "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+        "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+      }
     }
   ],
   "assets": [
     {
       "id": 1,
+      "kind": 4,
+      "path": "fonts/ebmain-6-000.t3x",
+      "bytes": 131093,
+      "crc32": 2494746642,
+      "sha256": "1cc3067adae11338fd1efc072a6d8e315ce493a7dd16eae51419b23a87c64aa2"
+    },
+    {
+      "id": 2,
+      "kind": 4,
+      "path": "fonts/source-fonts.encfont",
+      "bytes": 176012,
+      "crc32": 1667894791,
+      "sha256": "21445d8a890b258ec4aa1b36b43d755d8c6fd299832c05e49457e4ffb7c03bb8"
+    },
+    {
+      "id": 3,
       "kind": 1,
       "path": "graphics/actors/emotes.t3x",
       "bytes": 1048597,
@@ -12739,7 +13467,15 @@
       "sha256": "65b5b99815f10ed402ce9abf2de91d7e4f98158258bfa481a8a1d6bd447cf362"
     },
     {
-      "id": 2,
+      "id": 4,
+      "kind": 1,
+      "path": "graphics/actors/lamp.t3x",
+      "bytes": 16405,
+      "crc32": 3181434335,
+      "sha256": "aecc093a963e7e5ee1544f8091ea5cd8efebe82b47189c8d2d1caea1f204ff03"
+    },
+    {
+      "id": 5,
       "kind": 1,
       "path": "graphics/actors/ninten-main.t3x",
       "bytes": 2097173,
@@ -12747,7 +13483,7 @@
       "sha256": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2"
     },
     {
-      "id": 3,
+      "id": 6,
       "kind": 1,
       "path": "graphics/actors/shadow.t3x",
       "bytes": 533,
@@ -12755,7 +13491,15 @@
       "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
     },
     {
-      "id": 4,
+      "id": 7,
+      "kind": 1,
+      "path": "graphics/battle/pillow/pillow-world.t3x",
+      "bytes": 16405,
+      "crc32": 3590359616,
+      "sha256": "faf7872097617c11b47b78d9943357d86578dae5a716076f7424412123cbba80"
+    },
+    {
+      "id": 8,
       "kind": 1,
       "path": "graphics/effects/melody-background/tiled.t3x",
       "bytes": 16405,
@@ -12763,7 +13507,7 @@
       "sha256": "245076b12dabea927be20d60e2b1053066a705b487e48380af03466f9125aebd"
     },
     {
-      "id": 5,
+      "id": 9,
       "kind": 1,
       "path": "graphics/materials/259648254.t3x",
       "bytes": 1045,
@@ -12771,7 +13515,7 @@
       "sha256": "8b8c67770106eebc5a5fb12c4138602e01ca432ffea593dafb8041abffab7fed"
     },
     {
-      "id": 6,
+      "id": 10,
       "kind": 1,
       "path": "graphics/npcs/01271471ef0866aa.t3x",
       "bytes": 65557,
@@ -12779,7 +13523,7 @@
       "sha256": "a8bc5c27028c3767a83879a0617a3f49aee3047e6f3da4abb9365febc02928ed"
     },
     {
-      "id": 7,
+      "id": 11,
       "kind": 1,
       "path": "graphics/npcs/02f205d2408825c5.t3x",
       "bytes": 131093,
@@ -12787,7 +13531,7 @@
       "sha256": "d4a87c105ddd8c68aee8267a19462deb5b40217201f3be26c88e3b5ead335881"
     },
     {
-      "id": 8,
+      "id": 12,
       "kind": 1,
       "path": "graphics/npcs/03d2e2a6faab7e96.t3x",
       "bytes": 131093,
@@ -12795,7 +13539,7 @@
       "sha256": "e38b0da56f9a8a82a4f754b68e5f8b7f6252ee2e4eff2634b069e3d578b27ed6"
     },
     {
-      "id": 9,
+      "id": 13,
       "kind": 1,
       "path": "graphics/npcs/06220ae3de27be63.t3x",
       "bytes": 65557,
@@ -12803,7 +13547,7 @@
       "sha256": "2d5d95295627ff56c17d0a72f64c5b6e6293ececce79138e4298cc062d859247"
     },
     {
-      "id": 10,
+      "id": 14,
       "kind": 1,
       "path": "graphics/npcs/114b73ad7774fc61.t3x",
       "bytes": 32789,
@@ -12811,7 +13555,7 @@
       "sha256": "383800d56b71abb198dbe1ffc1b0731c8ae43f8161e2f0e4fd67290cd90bf7b3"
     },
     {
-      "id": 11,
+      "id": 15,
       "kind": 1,
       "path": "graphics/npcs/1b715fe14dac0abc.t3x",
       "bytes": 262165,
@@ -12819,7 +13563,7 @@
       "sha256": "51bd29e7151afb15ca25832fb1bde57dff935c6d02b7f87a50419c31a6d73c80"
     },
     {
-      "id": 12,
+      "id": 16,
       "kind": 1,
       "path": "graphics/npcs/1e851bb60b77c370.t3x",
       "bytes": 65557,
@@ -12827,7 +13571,7 @@
       "sha256": "56690a01ec9b51b3fb398b9628c7d06d617c3747ce66a00b0d207807cacbe151"
     },
     {
-      "id": 13,
+      "id": 17,
       "kind": 1,
       "path": "graphics/npcs/204ec058d8afaff1.t3x",
       "bytes": 65557,
@@ -12835,7 +13579,7 @@
       "sha256": "1fdf274bb29594a1c8800931065197714e20bc21fba57c91b3d5834779da2ea2"
     },
     {
-      "id": 14,
+      "id": 18,
       "kind": 1,
       "path": "graphics/npcs/217b2d61993752b0.t3x",
       "bytes": 65557,
@@ -12843,7 +13587,7 @@
       "sha256": "15b805082c4570c1017079eac6a5ff94d61c359783ed3d9bbacff023c378b27d"
     },
     {
-      "id": 15,
+      "id": 19,
       "kind": 1,
       "path": "graphics/npcs/255c72a93c6552d2.t3x",
       "bytes": 65557,
@@ -12851,7 +13595,7 @@
       "sha256": "ff2e4ecb86f2ca11795f8ae407f53384767de78b96f20c07be0ac5fc23f7d8a8"
     },
     {
-      "id": 16,
+      "id": 20,
       "kind": 1,
       "path": "graphics/npcs/3484482b0a997c62.t3x",
       "bytes": 65557,
@@ -12859,7 +13603,7 @@
       "sha256": "b758cb6cc38531e9e74b43d73721e580efd7afd919c6c19b12a3cc14b5993ba1"
     },
     {
-      "id": 17,
+      "id": 21,
       "kind": 1,
       "path": "graphics/npcs/38f306c181951bd1.t3x",
       "bytes": 65557,
@@ -12867,7 +13611,7 @@
       "sha256": "aa6972a20c42d0177399fd127751fe9000b526b4089bbf8f4204666ddfe48617"
     },
     {
-      "id": 18,
+      "id": 22,
       "kind": 1,
       "path": "graphics/npcs/3d7f7c472a94c1c6.t3x",
       "bytes": 16405,
@@ -12875,7 +13619,7 @@
       "sha256": "aecc093a963e7e5ee1544f8091ea5cd8efebe82b47189c8d2d1caea1f204ff03"
     },
     {
-      "id": 19,
+      "id": 23,
       "kind": 1,
       "path": "graphics/npcs/3e8d732d1311cc1d.t3x",
       "bytes": 262165,
@@ -12883,7 +13627,7 @@
       "sha256": "ee7fb858b8374a454222eca9aac6aab97c6613320bffdbeee6cb0056b542fffd"
     },
     {
-      "id": 20,
+      "id": 24,
       "kind": 1,
       "path": "graphics/npcs/42e8a1f8baaa69da.t3x",
       "bytes": 32789,
@@ -12891,7 +13635,7 @@
       "sha256": "520b98c1561b20b12c6255559fe4f4ac75efe80dc742d13d7a2f2003981243e7"
     },
     {
-      "id": 21,
+      "id": 25,
       "kind": 1,
       "path": "graphics/npcs/4873cbe59f42a338.t3x",
       "bytes": 65557,
@@ -12899,7 +13643,7 @@
       "sha256": "c270af581f261a51020c41a57d6a1bb9765991b30185a57f8a21b867b1fe6cbf"
     },
     {
-      "id": 22,
+      "id": 26,
       "kind": 1,
       "path": "graphics/npcs/4986e485cceec6a4.t3x",
       "bytes": 65557,
@@ -12907,7 +13651,7 @@
       "sha256": "c5f5ae67dd62791707fe6f6934967732fce215b1793fa1eb827749f9f899e119"
     },
     {
-      "id": 23,
+      "id": 27,
       "kind": 1,
       "path": "graphics/npcs/498e42d5e82980d6.t3x",
       "bytes": 131093,
@@ -12915,7 +13659,7 @@
       "sha256": "ab717967735a5fc6c9530350a1412d694e64375020e72eb67d87b1a780983fbe"
     },
     {
-      "id": 24,
+      "id": 28,
       "kind": 1,
       "path": "graphics/npcs/5155bfc0c20fa29b.t3x",
       "bytes": 262165,
@@ -12923,7 +13667,7 @@
       "sha256": "864651380bac4618c48d7ec14b0cd99a35f4fa6b4ed898194650b8ed1b382230"
     },
     {
-      "id": 25,
+      "id": 29,
       "kind": 1,
       "path": "graphics/npcs/606da1a98c54dee4.t3x",
       "bytes": 65557,
@@ -12931,7 +13675,7 @@
       "sha256": "f74e27f10e697e7565aed7cd99c4649ff794b8ba363b12360578ddb3fe44ae33"
     },
     {
-      "id": 26,
+      "id": 30,
       "kind": 1,
       "path": "graphics/npcs/63c679183e376a3b.t3x",
       "bytes": 65557,
@@ -12939,7 +13683,7 @@
       "sha256": "164b8e2957ea8731712836dd58956245a1319d7f917fa93dc057a444bc651ff1"
     },
     {
-      "id": 27,
+      "id": 31,
       "kind": 1,
       "path": "graphics/npcs/64c39c6b8ba208ec.t3x",
       "bytes": 65557,
@@ -12947,7 +13691,7 @@
       "sha256": "a1a43ecd3942ec2919245ae48f82eb7a62a27d750bcb250fc63a613663ee99c1"
     },
     {
-      "id": 28,
+      "id": 32,
       "kind": 1,
       "path": "graphics/npcs/7bc4d2743151d101.t3x",
       "bytes": 65557,
@@ -12955,7 +13699,7 @@
       "sha256": "45e1b646ef539899a42bb6578fb315405d136413d7bcb4d41660ee7032123a2c"
     },
     {
-      "id": 29,
+      "id": 33,
       "kind": 1,
       "path": "graphics/npcs/8992e96e40782df8.t3x",
       "bytes": 16405,
@@ -12963,7 +13707,7 @@
       "sha256": "faf7872097617c11b47b78d9943357d86578dae5a716076f7424412123cbba80"
     },
     {
-      "id": 30,
+      "id": 34,
       "kind": 1,
       "path": "graphics/npcs/8fd5422bf31f4ade.t3x",
       "bytes": 32789,
@@ -12971,7 +13715,7 @@
       "sha256": "93a5e2e53da5390ba1d9863d3276fb669738391bec01af82b9b0a1aaed9d55a5"
     },
     {
-      "id": 31,
+      "id": 35,
       "kind": 1,
       "path": "graphics/npcs/9153a9c13e53f780.t3x",
       "bytes": 131093,
@@ -12979,7 +13723,7 @@
       "sha256": "edd7898c541c9eda8372f23f64336ddf845437586054b4f1d7de4c62f4cc8a9f"
     },
     {
-      "id": 32,
+      "id": 36,
       "kind": 1,
       "path": "graphics/npcs/9bbb5525eed64bfd.t3x",
       "bytes": 65557,
@@ -12987,7 +13731,7 @@
       "sha256": "793b7da462e4311934acbf58ebbeccbe615a3d76a5660e029676fb21f3b26b8d"
     },
     {
-      "id": 33,
+      "id": 37,
       "kind": 1,
       "path": "graphics/npcs/9cab5e1babc1ad17.t3x",
       "bytes": 131093,
@@ -12995,7 +13739,7 @@
       "sha256": "2c181c938a0f80b3a2f554c19c4493d75f65902f08a7396711309ca1b567cfdd"
     },
     {
-      "id": 34,
+      "id": 38,
       "kind": 1,
       "path": "graphics/npcs/9da11b812372e609.t3x",
       "bytes": 524309,
@@ -13003,7 +13747,7 @@
       "sha256": "cc052f577cb43242ad42d7fbfced0eee4883f3040703f9f83d718578d06e69a9"
     },
     {
-      "id": 35,
+      "id": 39,
       "kind": 1,
       "path": "graphics/npcs/a4366f1e7a1e3c9f.t3x",
       "bytes": 65557,
@@ -13011,7 +13755,7 @@
       "sha256": "87ccf2743042ee1061f8960f47159629cedd45c39d90975e9acd2c0d4e05613e"
     },
     {
-      "id": 36,
+      "id": 40,
       "kind": 1,
       "path": "graphics/npcs/aca0fe01f1f06982.t3x",
       "bytes": 65557,
@@ -13019,7 +13763,7 @@
       "sha256": "dac2106a496d57cb29383b992ffa48bf11bd108a5ec2bf62d97f9a1f51db27e5"
     },
     {
-      "id": 37,
+      "id": 41,
       "kind": 1,
       "path": "graphics/npcs/b112c076980148e6.t3x",
       "bytes": 65557,
@@ -13027,7 +13771,7 @@
       "sha256": "2acb10f3342f7eeef6dcc09ff89cce817bed8fa639e79c2c033095e4fd28d8ce"
     },
     {
-      "id": 38,
+      "id": 42,
       "kind": 1,
       "path": "graphics/npcs/b53796084393faff.t3x",
       "bytes": 16405,
@@ -13035,7 +13779,7 @@
       "sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6"
     },
     {
-      "id": 39,
+      "id": 43,
       "kind": 1,
       "path": "graphics/npcs/be6294b7a04f32cc.t3x",
       "bytes": 65557,
@@ -13043,7 +13787,7 @@
       "sha256": "7a7387226479af34e30f89d120f30aff471a285ebf0cbe816f80536b322c50da"
     },
     {
-      "id": 40,
+      "id": 44,
       "kind": 1,
       "path": "graphics/npcs/bec08e65be733b60.t3x",
       "bytes": 131093,
@@ -13051,7 +13795,7 @@
       "sha256": "b0411f608de42e180d2d2e56bac82d63649ecd691a9f973e4dc58f66664cf5da"
     },
     {
-      "id": 41,
+      "id": 45,
       "kind": 1,
       "path": "graphics/npcs/c0b4e7ed43c1e607.t3x",
       "bytes": 65557,
@@ -13059,7 +13803,7 @@
       "sha256": "d06ea73ecb1d05de824662ac62655d6b0f3a12e3e3a6de3dea92e46ae123796a"
     },
     {
-      "id": 42,
+      "id": 46,
       "kind": 1,
       "path": "graphics/npcs/cc1ae5724b7c75b9.t3x",
       "bytes": 65557,
@@ -13067,7 +13811,7 @@
       "sha256": "53627320d30eaf02779ba7620282401121ae3bc4895e9b88946a56b573b39edf"
     },
     {
-      "id": 43,
+      "id": 47,
       "kind": 1,
       "path": "graphics/npcs/cee9e5a000cf9c5e.t3x",
       "bytes": 131093,
@@ -13075,7 +13819,7 @@
       "sha256": "21e4c467802fd75814016e08947fd5e5b937797f00d47fac8f73bfe25fc207ab"
     },
     {
-      "id": 44,
+      "id": 48,
       "kind": 1,
       "path": "graphics/npcs/d521695159db6ba7.t3x",
       "bytes": 65557,
@@ -13083,7 +13827,7 @@
       "sha256": "0d1d6211738070eb4d74920f38cff03a0ee217833f415acc66ded1dca8bbc4b9"
     },
     {
-      "id": 45,
+      "id": 49,
       "kind": 1,
       "path": "graphics/npcs/dad927bc9d7b1390.t3x",
       "bytes": 65557,
@@ -13091,7 +13835,7 @@
       "sha256": "fdde069f2ebdf1fe2c1e4220ea848de86ebeedbaab215bb571cc79b382cfc940"
     },
     {
-      "id": 46,
+      "id": 50,
       "kind": 1,
       "path": "graphics/npcs/e52d1fd8128e4e4f.t3x",
       "bytes": 1048597,
@@ -13099,7 +13843,7 @@
       "sha256": "fe5d479069c44a200d3300ffe5be9ea7e579bc9519d15d60870d20da576ce375"
     },
     {
-      "id": 47,
+      "id": 51,
       "kind": 1,
       "path": "graphics/npcs/e74e5674486d55fb.t3x",
       "bytes": 2097173,
@@ -13107,7 +13851,7 @@
       "sha256": "0cf7237b0f6760e753a84304057bb1407fae8de68047f0ed7673f166412f37da"
     },
     {
-      "id": 48,
+      "id": 52,
       "kind": 1,
       "path": "graphics/npcs/ebe2e05cecbb7ad3.t3x",
       "bytes": 262165,
@@ -13115,7 +13859,7 @@
       "sha256": "beb2bdb86a9a152148bfeb0d6338d756bb26fbcf6b893efad8be95f11d93b839"
     },
     {
-      "id": 49,
+      "id": 53,
       "kind": 1,
       "path": "graphics/npcs/f3d8bde280d016f8.t3x",
       "bytes": 65557,
@@ -13123,7 +13867,7 @@
       "sha256": "ded975d36226afa1798ceff196fc3fb5c28d6556c10182944573fe00a459196b"
     },
     {
-      "id": 50,
+      "id": 54,
       "kind": 1,
       "path": "graphics/npcs/shadow.t3x",
       "bytes": 533,
@@ -13131,7 +13875,7 @@
       "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
     },
     {
-      "id": 51,
+      "id": 55,
       "kind": 1,
       "path": "graphics/objects/birds/0.t3x",
       "bytes": 16405,
@@ -13139,7 +13883,7 @@
       "sha256": "f5b20858b37e99d0119d9e50d2dad03ba0f3acb5024147fd07377715260716c9"
     },
     {
-      "id": 52,
+      "id": 56,
       "kind": 1,
       "path": "graphics/objects/birds/1.t3x",
       "bytes": 16405,
@@ -13147,7 +13891,7 @@
       "sha256": "cbfc433c0b0b49816cc7914614c5c75fad5a26f3de32d957a0512ef5806e500b"
     },
     {
-      "id": 53,
+      "id": 57,
       "kind": 1,
       "path": "graphics/objects/birds/2.t3x",
       "bytes": 16405,
@@ -13155,7 +13899,7 @@
       "sha256": "bdcce31f6cc8c109ab62be39162d059207b4d32ec6e4eab76ccfacc7464dd2f3"
     },
     {
-      "id": 54,
+      "id": 58,
       "kind": 1,
       "path": "graphics/objects/butterfly/0.t3x",
       "bytes": 2069,
@@ -13163,7 +13907,7 @@
       "sha256": "eedc42f89604a8d280b5467b87e9c9a9a21adf5a1f8db330cc7d1f4ddaa4ef4e"
     },
     {
-      "id": 55,
+      "id": 59,
       "kind": 1,
       "path": "graphics/objects/butterfly/1.t3x",
       "bytes": 2069,
@@ -13171,7 +13915,7 @@
       "sha256": "495ae67cc67bb1dce86660be25ec63007e6dc7ec272a531de4422aa4c5726c14"
     },
     {
-      "id": 56,
+      "id": 60,
       "kind": 1,
       "path": "graphics/objects/butterfly/2.t3x",
       "bytes": 2069,
@@ -13179,7 +13923,7 @@
       "sha256": "9fd3b49955fb46f08ab0b89f5dc3153826e516976a2cdab7b9f86d2f7bce1bd2"
     },
     {
-      "id": 57,
+      "id": 61,
       "kind": 1,
       "path": "graphics/objects/butterfly/3.t3x",
       "bytes": 2069,
@@ -13187,7 +13931,7 @@
       "sha256": "f953a3d0f8c5c5cf6a590165b1987b766cf57c1bf1cca76ff309c8057a46fe32"
     },
     {
-      "id": 58,
+      "id": 62,
       "kind": 1,
       "path": "graphics/objects/butterfly/4.t3x",
       "bytes": 2069,
@@ -13195,7 +13939,7 @@
       "sha256": "0ea444376df1f29f409c2a76a01c6edf9414d2960268e8ca15ed4f58c109171a"
     },
     {
-      "id": 59,
+      "id": 63,
       "kind": 1,
       "path": "graphics/objects/dead-bush.t3x",
       "bytes": 262165,
@@ -13203,7 +13947,7 @@
       "sha256": "46aeb68294cd8d884b8fadc23585788fe85f3f2a4b69de6d0939fde5f9ebd1f3"
     },
     {
-      "id": 60,
+      "id": 64,
       "kind": 1,
       "path": "graphics/objects/doors/1044936970.t3x",
       "bytes": 16405,
@@ -13211,7 +13955,7 @@
       "sha256": "bf9ed1e9530d752089aec00ae2f882a7bf590dfc8325bca3d0324a303a5d5e29"
     },
     {
-      "id": 61,
+      "id": 65,
       "kind": 1,
       "path": "graphics/objects/doors/17837692.t3x",
       "bytes": 8213,
@@ -13219,7 +13963,7 @@
       "sha256": "c243c41e4d32bf9a2d4b3e1e7eb07b9a82e391e68b6ae05082140277be7d2da2"
     },
     {
-      "id": 62,
+      "id": 66,
       "kind": 1,
       "path": "graphics/objects/doors/2455671415.t3x",
       "bytes": 8213,
@@ -13227,7 +13971,7 @@
       "sha256": "b261b984191b8151500d08fd5623c6e00c10eebdb33f346aafe9d024ca6a8c22"
     },
     {
-      "id": 63,
+      "id": 67,
       "kind": 1,
       "path": "graphics/objects/doors/288814501.t3x",
       "bytes": 8213,
@@ -13235,7 +13979,7 @@
       "sha256": "9171a764265cab91f9f3fe2790524e06bd2b954005b1f5bf4c1b86e3ed579488"
     },
     {
-      "id": 64,
+      "id": 68,
       "kind": 1,
       "path": "graphics/objects/doors/3417100819.t3x",
       "bytes": 8213,
@@ -13243,7 +13987,7 @@
       "sha256": "7afce7a27b0e16ade4798e8813c33010ca2bb195721dab65d823eafa30a417ab"
     },
     {
-      "id": 65,
+      "id": 69,
       "kind": 1,
       "path": "graphics/objects/doors/3720749051.t3x",
       "bytes": 8213,
@@ -13251,7 +13995,7 @@
       "sha256": "0af512bf6e2bcaef5e82818116e60f09096d7112a2dadcb0a02ff3a411fdebed"
     },
     {
-      "id": 66,
+      "id": 70,
       "kind": 1,
       "path": "graphics/objects/doors/553757799.t3x",
       "bytes": 8213,
@@ -13259,7 +14003,7 @@
       "sha256": "cab0a8c3a83d8cf90cbd7c83ef3eb3aeeba58392867401e7e9a9bf6afb394e26"
     },
     {
-      "id": 67,
+      "id": 71,
       "kind": 1,
       "path": "graphics/objects/dropped/3229455756.t3x",
       "bytes": 4117,
@@ -13267,7 +14011,7 @@
       "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6"
     },
     {
-      "id": 68,
+      "id": 72,
       "kind": 1,
       "path": "graphics/objects/dropped/3969821641.t3x",
       "bytes": 4117,
@@ -13275,7 +14019,7 @@
       "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b"
     },
     {
-      "id": 69,
+      "id": 73,
       "kind": 1,
       "path": "graphics/objects/dropped/466181776.t3x",
       "bytes": 4117,
@@ -13283,7 +14027,7 @@
       "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead"
     },
     {
-      "id": 70,
+      "id": 74,
       "kind": 1,
       "path": "graphics/objects/payphone.t3x",
       "bytes": 8213,
@@ -13291,7 +14035,7 @@
       "sha256": "b7f3e811fcf25f7a44f5dd49fcb039cf742adc596e463dc0d35ca55d74f0dc05"
     },
     {
-      "id": 71,
+      "id": 75,
       "kind": 1,
       "path": "graphics/objects/present/present.t3x",
       "bytes": 8213,
@@ -13299,7 +14043,7 @@
       "sha256": "f1def99f7c79dba2039c13ad8d03d38a9180157f9e527aba68bc027cb726f0b8"
     },
     {
-      "id": 72,
+      "id": 76,
       "kind": 1,
       "path": "graphics/objects/vending-machine.t3x",
       "bytes": 16405,
@@ -13307,7 +14051,7 @@
       "sha256": "1fa27a6601f552a8fe6178dbb40cf0d1e185ac285ce03c8ae87ff88764002252"
     },
     {
-      "id": 73,
+      "id": 77,
       "kind": 1,
       "path": "graphics/player/bat_swing.t3x",
       "bytes": 4194325,
@@ -13315,7 +14059,7 @@
       "sha256": "28ae80e41c28153a6ba4dab2b924bdbf857861e35d42e6d7da81704af96c88fc"
     },
     {
-      "id": 74,
+      "id": 78,
       "kind": 1,
       "path": "graphics/player/magic_ripple.t3x",
       "bytes": 2069,
@@ -13323,7 +14067,7 @@
       "sha256": "5fa8d0f93510a317fafc5b8824ffa268247ccbc8fbe498aad30699faff47e60f"
     },
     {
-      "id": 75,
+      "id": 79,
       "kind": 1,
       "path": "graphics/player/resource-122296163.t3x",
       "bytes": 262165,
@@ -13331,7 +14075,7 @@
       "sha256": "07e11b8d91b3a179e8c6732b4603a188c1e85db5c84259e724cff80b9b0b74b1"
     },
     {
-      "id": 76,
+      "id": 80,
       "kind": 1,
       "path": "graphics/player/resource-2271392734.t3x",
       "bytes": 8213,
@@ -13339,7 +14083,7 @@
       "sha256": "a071fb75b30615a116185b414f47c41f3624685e2bf2857c41a87f4cf8d70ea5"
     },
     {
-      "id": 77,
+      "id": 81,
       "kind": 1,
       "path": "graphics/player/resource-2751338057.t3x",
       "bytes": 4194325,
@@ -13347,7 +14091,7 @@
       "sha256": "d776a7f066996394d15a8b0cd7b14a2840f97311ad5d679a16317329fca8ecb1"
     },
     {
-      "id": 78,
+      "id": 82,
       "kind": 1,
       "path": "graphics/player/resource-3485896102.t3x",
       "bytes": 65557,
@@ -13355,7 +14099,7 @@
       "sha256": "e3a84e86efebdd87c0554b45bb4ae2fd4667ebbe4ced2038c6b252a37d225026"
     },
     {
-      "id": 79,
+      "id": 83,
       "kind": 1,
       "path": "graphics/player/resource-3516114529.t3x",
       "bytes": 1045,
@@ -13363,7 +14107,7 @@
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
     {
-      "id": 80,
+      "id": 84,
       "kind": 1,
       "path": "graphics/player/resource-4168475363.t3x",
       "bytes": 4194325,
@@ -13371,7 +14115,7 @@
       "sha256": "4de09df797b9cf45250d8ecb0087dc4fe618b085d6f23223a10b08ff447c73cb"
     },
     {
-      "id": 81,
+      "id": 85,
       "kind": 1,
       "path": "graphics/player/resource-4265933975.t3x",
       "bytes": 4194325,
@@ -13379,7 +14123,7 @@
       "sha256": "8abb36956e38073cd7ed89cb71ed743265f7cbf3635138d6152f373f2c54a743"
     },
     {
-      "id": 82,
+      "id": 86,
       "kind": 1,
       "path": "graphics/player/water_ripple.t3x",
       "bytes": 2069,
@@ -13387,7 +14131,7 @@
       "sha256": "d4de20a9b4619fa0efa2f61d9c573841f3136402a2ef3c1e77f7896207523530"
     },
     {
-      "id": 83,
+      "id": 87,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/590.t3x",
       "bytes": 16405,
@@ -13395,7 +14139,7 @@
       "sha256": "8cd1a2444a62fe440c3685f3c0f2a0f024484c92ed6915deb6426392ce3258d8"
     },
     {
-      "id": 84,
+      "id": 88,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/592.t3x",
       "bytes": 533,
@@ -13403,7 +14147,7 @@
       "sha256": "4fbf3bca5c489aea0a59440e07aa9d35916950cba4de46b08329b4eb76fd58c1"
     },
     {
-      "id": 85,
+      "id": 89,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/594.t3x",
       "bytes": 8213,
@@ -13411,7 +14155,7 @@
       "sha256": "3349b3fce658d3996461fcb9ff9e15d592b7938df20e5db7313ad22bfc40e02f"
     },
     {
-      "id": 86,
+      "id": 90,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/599.t3x",
       "bytes": 8213,
@@ -13419,7 +14163,7 @@
       "sha256": "9171a764265cab91f9f3fe2790524e06bd2b954005b1f5bf4c1b86e3ed579488"
     },
     {
-      "id": 87,
+      "id": 91,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/609.t3x",
       "bytes": 533,
@@ -13427,7 +14171,7 @@
       "sha256": "de93df8cbfb5175ff7afb97f551694a5ec6fd4b8b465499bbe8cd37aabebc383"
     },
     {
-      "id": 88,
+      "id": 92,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/622.t3x",
       "bytes": 8213,
@@ -13435,7 +14179,7 @@
       "sha256": "b261b984191b8151500d08fd5623c6e00c10eebdb33f346aafe9d024ca6a8c22"
     },
     {
-      "id": 89,
+      "id": 93,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/627.t3x",
       "bytes": 8213,
@@ -13443,7 +14187,7 @@
       "sha256": "c243c41e4d32bf9a2d4b3e1e7eb07b9a82e391e68b6ae05082140277be7d2da2"
     },
     {
-      "id": 90,
+      "id": 94,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/628.t3x",
       "bytes": 8213,
@@ -13451,7 +14195,7 @@
       "sha256": "cab0a8c3a83d8cf90cbd7c83ef3eb3aeeba58392867401e7e9a9bf6afb394e26"
     },
     {
-      "id": 91,
+      "id": 95,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/629.t3x",
       "bytes": 8213,
@@ -13459,7 +14203,7 @@
       "sha256": "7afce7a27b0e16ade4798e8813c33010ca2bb195721dab65d823eafa30a417ab"
     },
     {
-      "id": 92,
+      "id": 96,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/630.t3x",
       "bytes": 16405,
@@ -13467,7 +14211,7 @@
       "sha256": "bf9ed1e9530d752089aec00ae2f882a7bf590dfc8325bca3d0324a303a5d5e29"
     },
     {
-      "id": 93,
+      "id": 97,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/631.t3x",
       "bytes": 8213,
@@ -13475,7 +14219,7 @@
       "sha256": "0af512bf6e2bcaef5e82818116e60f09096d7112a2dadcb0a02ff3a411fdebed"
     },
     {
-      "id": 94,
+      "id": 98,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/633.t3x",
       "bytes": 16405,
@@ -13483,7 +14227,7 @@
       "sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6"
     },
     {
-      "id": 95,
+      "id": 99,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/635.t3x",
       "bytes": 8213,
@@ -13491,7 +14235,7 @@
       "sha256": "f1def99f7c79dba2039c13ad8d03d38a9180157f9e527aba68bc027cb726f0b8"
     },
     {
-      "id": 96,
+      "id": 100,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/655.t3x",
       "bytes": 1045,
@@ -13499,7 +14243,7 @@
       "sha256": "5e275091a1880881238637395088bc9a5ad974594ea51f98fc890775b53d510e"
     },
     {
-      "id": 97,
+      "id": 101,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/694.t3x",
       "bytes": 533,
@@ -13507,7 +14251,7 @@
       "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
     },
     {
-      "id": 98,
+      "id": 102,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/696.t3x",
       "bytes": 65557,
@@ -13515,7 +14259,7 @@
       "sha256": "793b7da462e4311934acbf58ebbeccbe615a3d76a5660e029676fb21f3b26b8d"
     },
     {
-      "id": 99,
+      "id": 103,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/698.t3x",
       "bytes": 1048597,
@@ -13523,7 +14267,7 @@
       "sha256": "65b5b99815f10ed402ce9abf2de91d7e4f98158258bfa481a8a1d6bd447cf362"
     },
     {
-      "id": 100,
+      "id": 104,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/734.t3x",
       "bytes": 262165,
@@ -13531,7 +14275,7 @@
       "sha256": "46aeb68294cd8d884b8fadc23585788fe85f3f2a4b69de6d0939fde5f9ebd1f3"
     },
     {
-      "id": 101,
+      "id": 105,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/747.t3x",
       "bytes": 4117,
@@ -13539,7 +14283,7 @@
       "sha256": "8bd7498dfd75e980c007b25744900070bfb7bd8d12fb571ac3201623b5af9436"
     },
     {
-      "id": 102,
+      "id": 106,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/756.t3x",
       "bytes": 16405,
@@ -13547,7 +14291,7 @@
       "sha256": "f5b20858b37e99d0119d9e50d2dad03ba0f3acb5024147fd07377715260716c9"
     },
     {
-      "id": 103,
+      "id": 107,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/770.t3x",
       "bytes": 2069,
@@ -13555,7 +14299,7 @@
       "sha256": "eedc42f89604a8d280b5467b87e9c9a9a21adf5a1f8db330cc7d1f4ddaa4ef4e"
     },
     {
-      "id": 104,
+      "id": 108,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/775.t3x",
       "bytes": 131093,
@@ -13563,7 +14307,7 @@
       "sha256": "d4a87c105ddd8c68aee8267a19462deb5b40217201f3be26c88e3b5ead335881"
     },
     {
-      "id": 105,
+      "id": 109,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/791.t3x",
       "bytes": 8213,
@@ -13571,7 +14315,7 @@
       "sha256": "629f812027523869c5034714ba392a04babade25c1b009d1422149fb841409b1"
     },
     {
-      "id": 106,
+      "id": 110,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/798.t3x",
       "bytes": 8213,
@@ -13579,7 +14323,7 @@
       "sha256": "b7f3e811fcf25f7a44f5dd49fcb039cf742adc596e463dc0d35ca55d74f0dc05"
     },
     {
-      "id": 107,
+      "id": 111,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/805.t3x",
       "bytes": 16405,
@@ -13587,7 +14331,7 @@
       "sha256": "1fa27a6601f552a8fe6178dbb40cf0d1e185ac285ce03c8ae87ff88764002252"
     },
     {
-      "id": 108,
+      "id": 112,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/832.t3x",
       "bytes": 1045,
@@ -13595,7 +14339,7 @@
       "sha256": "99554030643f9a660d82bf3aa511be7fb1d73d63267a7af78051fcf36814c3a4"
     },
     {
-      "id": 109,
+      "id": 113,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/1216500987-0-0.t3x",
       "bytes": 65557,
@@ -13603,7 +14347,7 @@
       "sha256": "ded975d36226afa1798ceff196fc3fb5c28d6556c10182944573fe00a459196b"
     },
     {
-      "id": 110,
+      "id": 114,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/1411471305-0-0.t3x",
       "bytes": 4194325,
@@ -13611,7 +14355,7 @@
       "sha256": "99c09f1f48d9ec02ba13efae460d50375db22b7fd1d736de50e60345e6d45126"
     },
     {
-      "id": 111,
+      "id": 115,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/1411471305-0-1024.t3x",
       "bytes": 524309,
@@ -13619,7 +14363,7 @@
       "sha256": "ae387d75feaef196a7d934dc8f501532a6e623f4a4198ab507cd96d3a612653d"
     },
     {
-      "id": 112,
+      "id": 116,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/1519088727-0-0.t3x",
       "bytes": 16405,
@@ -13627,7 +14371,7 @@
       "sha256": "faf7872097617c11b47b78d9943357d86578dae5a716076f7424412123cbba80"
     },
     {
-      "id": 113,
+      "id": 117,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/1570783638-0-0.t3x",
       "bytes": 8213,
@@ -13635,7 +14379,7 @@
       "sha256": "5596019ff6af60c29d3c726a2ece2769ed4167ee29de2efd6b9707fa1f2ba895"
     },
     {
-      "id": 114,
+      "id": 118,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/1656393140-0-0.t3x",
       "bytes": 16405,
@@ -13643,7 +14387,7 @@
       "sha256": "6c9d1fa484bd03a59ed9940e6bb22b7224ebe914b5e6b121a17ad76b1194c771"
     },
     {
-      "id": 115,
+      "id": 119,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/2401016249-0-0.t3x",
       "bytes": 1048597,
@@ -13651,7 +14395,7 @@
       "sha256": "65b5b99815f10ed402ce9abf2de91d7e4f98158258bfa481a8a1d6bd447cf362"
     },
     {
-      "id": 116,
+      "id": 120,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/2468826813-0-0.t3x",
       "bytes": 65557,
@@ -13659,7 +14403,7 @@
       "sha256": "793b7da462e4311934acbf58ebbeccbe615a3d76a5660e029676fb21f3b26b8d"
     },
     {
-      "id": 117,
+      "id": 121,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/2558838792-0-0.t3x",
       "bytes": 1045,
@@ -13667,7 +14411,7 @@
       "sha256": "99554030643f9a660d82bf3aa511be7fb1d73d63267a7af78051fcf36814c3a4"
     },
     {
-      "id": 118,
+      "id": 122,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/2787546525-0-0.t3x",
       "bytes": 533,
@@ -13675,7 +14419,7 @@
       "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
     },
     {
-      "id": 119,
+      "id": 123,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/283944758-0-0.t3x",
       "bytes": 16405,
@@ -13683,7 +14427,7 @@
       "sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6"
     },
     {
-      "id": 120,
+      "id": 124,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/3025887858-0-0.t3x",
       "bytes": 8213,
@@ -13691,7 +14435,7 @@
       "sha256": "f1def99f7c79dba2039c13ad8d03d38a9180157f9e527aba68bc027cb726f0b8"
     },
     {
-      "id": 121,
+      "id": 125,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/3574202801-0-0.t3x",
       "bytes": 65557,
@@ -13699,7 +14443,7 @@
       "sha256": "45e1b646ef539899a42bb6578fb315405d136413d7bcb4d41660ee7032123a2c"
     },
     {
-      "id": 122,
+      "id": 126,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/3751334123-0-0.t3x",
       "bytes": 2097173,
@@ -13707,7 +14451,7 @@
       "sha256": "b69b17bb081da2b1ccfe1cd74ec56cdd141a229aa2f2ebb8d6f3215ff9d7fccb"
     },
     {
-      "id": 123,
+      "id": 127,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/3763870829-0-0.t3x",
       "bytes": 262165,
@@ -13715,7 +14459,7 @@
       "sha256": "91e17a81a8b50fc5dc4a7850ee493bc58ffef5bd49f1366fd606117ec6e4a7f8"
     },
     {
-      "id": 124,
+      "id": 128,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/3812599136-0-0.t3x",
       "bytes": 2097173,
@@ -13723,7 +14467,7 @@
       "sha256": "0cf7237b0f6760e753a84304057bb1407fae8de68047f0ed7673f166412f37da"
     },
     {
-      "id": 125,
+      "id": 129,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/3966100482-0-0.t3x",
       "bytes": 8213,
@@ -13731,7 +14475,7 @@
       "sha256": "c7c4068f6b9d7ae91b550d8ff931aa2009aa4f6030a74fd37743567f2b17eb48"
     },
     {
-      "id": 126,
+      "id": 130,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/4071812833-0-0.t3x",
       "bytes": 16405,
@@ -13739,7 +14483,7 @@
       "sha256": "75d51a98706720b861530629b498593ab0ee2329f7c80ebb9662725fcb33c784"
     },
     {
-      "id": 127,
+      "id": 131,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/4134416897-0-0.t3x",
       "bytes": 16405,
@@ -13747,7 +14491,7 @@
       "sha256": "aecc093a963e7e5ee1544f8091ea5cd8efebe82b47189c8d2d1caea1f204ff03"
     },
     {
-      "id": 128,
+      "id": 132,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/4159722537-0-0.t3x",
       "bytes": 65557,
@@ -13755,7 +14499,7 @@
       "sha256": "87ccf2743042ee1061f8960f47159629cedd45c39d90975e9acd2c0d4e05613e"
     },
     {
-      "id": 129,
+      "id": 133,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/573441513-0-0.t3x",
       "bytes": 533,
@@ -13763,7 +14507,7 @@
       "sha256": "de93df8cbfb5175ff7afb97f551694a5ec6fd4b8b465499bbe8cd37aabebc383"
     },
     {
-      "id": 130,
+      "id": 134,
       "kind": 1,
       "path": "graphics/sprites/house-return-canvas/610457151-0-0.t3x",
       "bytes": 2069,
@@ -13771,7 +14515,7 @@
       "sha256": "e7ff7514ae9d502d0538738bbe8a8d513eb3c7d70fe46f08713bbc7b49482829"
     },
     {
-      "id": 131,
+      "id": 135,
       "kind": 1,
       "path": "graphics/story/present-sparkles/sparkles.t3x",
       "bytes": 2069,
@@ -13779,7 +14523,7 @@
       "sha256": "e7ff7514ae9d502d0538738bbe8a8d513eb3c7d70fe46f08713bbc7b49482829"
     },
     {
-      "id": 132,
+      "id": 136,
       "kind": 1,
       "path": "graphics/ui/field-goods/bar.t3x",
       "bytes": 149,
@@ -13787,7 +14531,7 @@
       "sha256": "dca7f8f779793056796223c2de13c0754854c75ecadefa0a3092f0f8f2bdf08a"
     },
     {
-      "id": 133,
+      "id": 137,
       "kind": 1,
       "path": "graphics/ui/field-goods/cursor0.t3x",
       "bytes": 57,
@@ -13795,7 +14539,7 @@
       "sha256": "b82500a210c83cd13a34545292b8eae3d21993a498fa567b01632f07d08405cb"
     },
     {
-      "id": 134,
+      "id": 138,
       "kind": 1,
       "path": "graphics/ui/field-goods/cursor1.t3x",
       "bytes": 57,
@@ -13803,7 +14547,7 @@
       "sha256": "bc1cc4b3bc0d09749a143d56fc625811cee181e7e9eefde2a85688d4ccd6a33b"
     },
     {
-      "id": 135,
+      "id": 139,
       "kind": 1,
       "path": "graphics/ui/field-goods/cursor2.t3x",
       "bytes": 57,
@@ -13811,7 +14555,7 @@
       "sha256": "5fb76d8fbf3225160ba38ebae55a647c73d88d9eeb7a295ad42523f59a427631"
     },
     {
-      "id": 136,
+      "id": 140,
       "kind": 1,
       "path": "graphics/ui/field-goods/down.t3x",
       "bytes": 81,
@@ -13819,7 +14563,7 @@
       "sha256": "740b7d24b6b2c00034d0dd6f4572a04e5c143ef50cab5c79e01ddcc35c6ed761"
     },
     {
-      "id": 137,
+      "id": 141,
       "kind": 1,
       "path": "graphics/ui/field-goods/equipped.t3x",
       "bytes": 73,
@@ -13827,7 +14571,7 @@
       "sha256": "20907c33f6fa8deabcd6f6f73d93b0c3200315e57f5b8ac707210079ade3b700"
     },
     {
-      "id": 138,
+      "id": 142,
       "kind": 1,
       "path": "graphics/ui/field-goods/indicator.t3x",
       "bytes": 69,
@@ -13835,7 +14579,7 @@
       "sha256": "aedb94141a3564e3ecb27760a194514f47d116b0162fe0f25ec890419e1c3e62"
     },
     {
-      "id": 139,
+      "id": 143,
       "kind": 1,
       "path": "graphics/ui/field-goods/inside.t3x",
       "bytes": 137,
@@ -13843,7 +14587,7 @@
       "sha256": "ef1f54db27588e907254c5d16d06fcb4e8437c49ebc79992dbe083cee24a2fa4"
     },
     {
-      "id": 140,
+      "id": 144,
       "kind": 1,
       "path": "graphics/ui/field-goods/key-hl.t3x",
       "bytes": 277,
@@ -13851,7 +14595,7 @@
       "sha256": "2345c760126f6324f3e2d422dc5bb87bdf7e4b1e02fd2d8aa3faf376f833ca19"
     },
     {
-      "id": 141,
+      "id": 145,
       "kind": 1,
       "path": "graphics/ui/field-goods/key.t3x",
       "bytes": 261,
@@ -13859,7 +14603,7 @@
       "sha256": "9937f541729b3a2e8effaa333fa43e416598ec884608d73469dc87ea5a1c6386"
     },
     {
-      "id": 142,
+      "id": 146,
       "kind": 1,
       "path": "graphics/ui/field-goods/ninten-hl.t3x",
       "bytes": 405,
@@ -13867,7 +14611,7 @@
       "sha256": "189a02f6cc4c0e3a55850733f99a483f513bdeceb52c7992ffb346cc40a066d3"
     },
     {
-      "id": 143,
+      "id": 147,
       "kind": 1,
       "path": "graphics/ui/field-goods/ninten.t3x",
       "bytes": 381,
@@ -13875,7 +14619,7 @@
       "sha256": "bb3e12ad6a6d75a11f1b67abd917ca311ee33d09373699e26fb30d7ee6cfbfdc"
     },
     {
-      "id": 144,
+      "id": 148,
       "kind": 1,
       "path": "graphics/ui/field-goods/scroll-bg.t3x",
       "bytes": 41,
@@ -13883,7 +14627,7 @@
       "sha256": "59a113e0a2013d6421ab0f6c81dae3cc10e3bae82d1b9a1f188f2049f42cd274"
     },
     {
-      "id": 145,
+      "id": 149,
       "kind": 1,
       "path": "graphics/ui/field-goods/scroll-thumb.t3x",
       "bytes": 65,
@@ -13891,7 +14635,7 @@
       "sha256": "d262ce0bb60965d737cd88c97a93339d6519c97e01bddfb5aa245c5da6277caf"
     },
     {
-      "id": 146,
+      "id": 150,
       "kind": 1,
       "path": "graphics/ui/field-goods/stats.t3x",
       "bytes": 509,
@@ -13899,7 +14643,7 @@
       "sha256": "07e182f79ab181cdf40c2eab805a961699c059a4256f535a5692fb0144de07df"
     },
     {
-      "id": 147,
+      "id": 151,
       "kind": 1,
       "path": "graphics/ui/field-goods/up.t3x",
       "bytes": 81,
@@ -13907,7 +14651,7 @@
       "sha256": "7d8cd0b7479133688de60c4c17cd77e78b51d4e14b6cae90db905a2e5c001df1"
     },
     {
-      "id": 148,
+      "id": 152,
       "kind": 1,
       "path": "graphics/ui/field-inventory/equipped.t3x",
       "bytes": 73,
@@ -13915,7 +14659,7 @@
       "sha256": "20907c33f6fa8deabcd6f6f73d93b0c3200315e57f5b8ac707210079ade3b700"
     },
     {
-      "id": 149,
+      "id": 153,
       "kind": 1,
       "path": "graphics/ui/field-item-details/asthma-status.t3x",
       "bytes": 1045,
@@ -13923,7 +14667,7 @@
       "sha256": "08e919bb8aa5876a9dce6dd1a29addb8a043bcf3e1063ce6770854c42ba0c664"
     },
     {
-      "id": 150,
+      "id": 154,
       "kind": 1,
       "path": "graphics/ui/field-item-details/asthmaspray.t3x",
       "bytes": 4117,
@@ -13931,7 +14675,7 @@
       "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd"
     },
     {
-      "id": 151,
+      "id": 155,
       "kind": 1,
       "path": "graphics/ui/field-item-details/baseballcap.t3x",
       "bytes": 4117,
@@ -13939,7 +14683,7 @@
       "sha256": "c348428f72a469e12e0fac00567142d7a4c396197c73c7b28d469c20b52141f7"
     },
     {
-      "id": 152,
+      "id": 156,
       "kind": 1,
       "path": "graphics/ui/field-item-details/blinded-status.t3x",
       "bytes": 2069,
@@ -13947,7 +14691,7 @@
       "sha256": "b4b77495688305e6a07ddd91cf8f4c40ae8de5606f685469590abf62e25b9eec"
     },
     {
-      "id": 153,
+      "id": 157,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsuledef.t3x",
       "bytes": 4117,
@@ -13955,7 +14699,7 @@
       "sha256": "4c14b510755d8f981a7dc56573f815aeb2527388dfcd34b3e2bafb9ae904f800"
     },
     {
-      "id": 154,
+      "id": 158,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsulehp.t3x",
       "bytes": 4117,
@@ -13963,7 +14707,7 @@
       "sha256": "7db5101a8abc54a4b74e5547c247b8b4cbe17b5e695d6c0e9b32c35f630eb142"
     },
     {
-      "id": 155,
+      "id": 159,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsuleiq.t3x",
       "bytes": 4117,
@@ -13971,7 +14715,7 @@
       "sha256": "8db1ddb1649f5b6a61fae0c0e4bd1e65929861183dafb9ef9764a028412529f1"
     },
     {
-      "id": 156,
+      "id": 160,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsuleofe.t3x",
       "bytes": 4117,
@@ -13979,7 +14723,7 @@
       "sha256": "c2fb878e5a3d5563391ef84f3ef2f6e207238b3c2072b4f1571e7b92a20266fb"
     },
     {
-      "id": 157,
+      "id": 161,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsulepp.t3x",
       "bytes": 4117,
@@ -13987,7 +14731,7 @@
       "sha256": "14a51a41097165c99e43cc4d55f57781bbccb02b046b2534488e26e6b2e0c6f0"
     },
     {
-      "id": 158,
+      "id": 162,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsulespd.t3x",
       "bytes": 4117,
@@ -13995,7 +14739,7 @@
       "sha256": "96615c10feb5d309fe8bab412daf8184e33dc7bf5f7df0654d51dc2d7b764473"
     },
     {
-      "id": 159,
+      "id": 163,
       "kind": 1,
       "path": "graphics/ui/field-item-details/cashcard.t3x",
       "bytes": 4117,
@@ -14003,7 +14747,7 @@
       "sha256": "8252d0cd0ece22a5e84047a2d727063ec73510e760b82e6056599a4aaf7819f7"
     },
     {
-      "id": 160,
+      "id": 164,
       "kind": 1,
       "path": "graphics/ui/field-item-details/eaglefeather.t3x",
       "bytes": 4117,
@@ -14011,7 +14755,7 @@
       "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6"
     },
     {
-      "id": 161,
+      "id": 165,
       "kind": 1,
       "path": "graphics/ui/field-item-details/eyedrops.t3x",
       "bytes": 4117,
@@ -14019,7 +14763,7 @@
       "sha256": "09898e21981eb7508b1fd07d7787988ccd70ed76da08cb77601239c9e8491049"
     },
     {
-      "id": 162,
+      "id": 166,
       "kind": 1,
       "path": "graphics/ui/field-item-details/favfood.t3x",
       "bytes": 4117,
@@ -14027,7 +14771,7 @@
       "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead"
     },
     {
-      "id": 163,
+      "id": 167,
       "kind": 1,
       "path": "graphics/ui/field-item-details/fries.t3x",
       "bytes": 4117,
@@ -14035,7 +14779,7 @@
       "sha256": "582dc546bb5783a74dcb388122c0509f28ea6f11b7c68d276444be4b26404eb6"
     },
     {
-      "id": 164,
+      "id": 168,
       "kind": 1,
       "path": "graphics/ui/field-item-details/ggfdiary.t3x",
       "bytes": 4117,
@@ -14043,7 +14787,7 @@
       "sha256": "de24fc5f30cad37ea26082bf4ef6f7b9b0bb731056d7b497464a4cb5c2590fbe"
     },
     {
-      "id": 165,
+      "id": 169,
       "kind": 1,
       "path": "graphics/ui/field-item-details/hamburger.t3x",
       "bytes": 4117,
@@ -14051,7 +14795,7 @@
       "sha256": "e6f4e6874992bcac7e7a3b6c84e9b14c87c466e23adf69a813e8a3af4d218859"
     },
     {
-      "id": 166,
+      "id": 170,
       "kind": 1,
       "path": "graphics/ui/field-item-details/keybasement.t3x",
       "bytes": 4117,
@@ -14059,7 +14803,7 @@
       "sha256": "3f0b09eb22ff4491059c6714505ebe8279a969f6984f87d45f42fd55c5dc26c6"
     },
     {
-      "id": 167,
+      "id": 171,
       "kind": 1,
       "path": "graphics/ui/field-item-details/phonecard.t3x",
       "bytes": 4117,
@@ -14067,7 +14811,7 @@
       "sha256": "e8fb01b105e3a615b326794c34a3dec94f4e73d5729998904d9b59e73c61f4bc"
     },
     {
-      "id": 168,
+      "id": 172,
       "kind": 1,
       "path": "graphics/ui/field-item-details/shovel.t3x",
       "bytes": 4117,
@@ -14075,7 +14819,7 @@
       "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b"
     },
     {
-      "id": 169,
+      "id": 173,
       "kind": 1,
       "path": "graphics/ui/field-item-details/sportsdrink.t3x",
       "bytes": 4117,
@@ -14083,7 +14827,7 @@
       "sha256": "6a6318acd974342714f78d2a5f0ad80fc0777009656ead09f57b531498704d59"
     },
     {
-      "id": 170,
+      "id": 174,
       "kind": 1,
       "path": "graphics/ui/house-button-prompts/accept.t3x",
       "bytes": 2069,
@@ -14091,7 +14835,15 @@
       "sha256": "09a3afeef81068e7510329077fad1d30b0f0d6a807b522c8c7db83e273da1b93"
     },
     {
-      "id": 171,
+      "id": 175,
+      "kind": 1,
+      "path": "graphics/ui/house/carol.t3x",
+      "bytes": 65557,
+      "crc32": 920389798,
+      "sha256": "45e1b646ef539899a42bb6578fb315405d136413d7bcb4d41660ee7032123a2c"
+    },
+    {
+      "id": 176,
       "kind": 1,
       "path": "graphics/ui/house/dialogue_box.t3x",
       "bytes": 4117,
@@ -14099,7 +14851,31 @@
       "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
     },
     {
-      "id": 172,
+      "id": 177,
+      "kind": 1,
+      "path": "graphics/ui/house/doll.t3x",
+      "bytes": 16405,
+      "crc32": 2660965847,
+      "sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6"
+    },
+    {
+      "id": 178,
+      "kind": 1,
+      "path": "graphics/ui/house/mimmie.t3x",
+      "bytes": 65557,
+      "crc32": 2735732608,
+      "sha256": "ded975d36226afa1798ceff196fc3fb5c28d6556c10182944573fe00a459196b"
+    },
+    {
+      "id": 179,
+      "kind": 1,
+      "path": "graphics/ui/house/minnie.t3x",
+      "bytes": 65557,
+      "crc32": 3548495851,
+      "sha256": "87ccf2743042ee1061f8960f47159629cedd45c39d90975e9acd2c0d4e05613e"
+    },
+    {
+      "id": 180,
       "kind": 1,
       "path": "graphics/ui/house/name_box.t3x",
       "bytes": 16405,
@@ -14107,7 +14883,7 @@
       "sha256": "04ba759f658b1cf9fc26b194c26ca492303d2243fd8b09c4bc443bd44628e300"
     },
     {
-      "id": 173,
+      "id": 181,
       "kind": 1,
       "path": "graphics/ui/map-arrows/cursor.t3x",
       "bytes": 1045,
@@ -14115,7 +14891,7 @@
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
     {
-      "id": 174,
+      "id": 182,
       "kind": 1,
       "path": "graphics/ui/shop/0.t3x",
       "bytes": 4117,
@@ -14123,7 +14899,7 @@
       "sha256": "fe7878caaa48c7f557f96aefda7fb82118d3f9e9effb00352c61e9341d821b0d"
     },
     {
-      "id": 175,
+      "id": 183,
       "kind": 1,
       "path": "graphics/ui/shop/1.t3x",
       "bytes": 4117,
@@ -14131,7 +14907,7 @@
       "sha256": "51ecf4578c9b197f271333d0fffa5f96b7f74e525c2687520cbc6cc20e997e34"
     },
     {
-      "id": 176,
+      "id": 184,
       "kind": 1,
       "path": "graphics/ui/shop/10.t3x",
       "bytes": 277,
@@ -14139,7 +14915,7 @@
       "sha256": "41c27a2418f67560bd8758023c6e70295fedaccb14b75146e7c77d07d84d6e92"
     },
     {
-      "id": 177,
+      "id": 185,
       "kind": 1,
       "path": "graphics/ui/shop/11.t3x",
       "bytes": 4117,
@@ -14147,7 +14923,7 @@
       "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd"
     },
     {
-      "id": 178,
+      "id": 186,
       "kind": 1,
       "path": "graphics/ui/shop/12.t3x",
       "bytes": 4117,
@@ -14155,7 +14931,7 @@
       "sha256": "c348428f72a469e12e0fac00567142d7a4c396197c73c7b28d469c20b52141f7"
     },
     {
-      "id": 179,
+      "id": 187,
       "kind": 1,
       "path": "graphics/ui/shop/13.t3x",
       "bytes": 4117,
@@ -14163,7 +14939,7 @@
       "sha256": "4c14b510755d8f981a7dc56573f815aeb2527388dfcd34b3e2bafb9ae904f800"
     },
     {
-      "id": 180,
+      "id": 188,
       "kind": 1,
       "path": "graphics/ui/shop/14.t3x",
       "bytes": 4117,
@@ -14171,7 +14947,7 @@
       "sha256": "7db5101a8abc54a4b74e5547c247b8b4cbe17b5e695d6c0e9b32c35f630eb142"
     },
     {
-      "id": 181,
+      "id": 189,
       "kind": 1,
       "path": "graphics/ui/shop/15.t3x",
       "bytes": 4117,
@@ -14179,7 +14955,7 @@
       "sha256": "8db1ddb1649f5b6a61fae0c0e4bd1e65929861183dafb9ef9764a028412529f1"
     },
     {
-      "id": 182,
+      "id": 190,
       "kind": 1,
       "path": "graphics/ui/shop/16.t3x",
       "bytes": 4117,
@@ -14187,7 +14963,7 @@
       "sha256": "c2fb878e5a3d5563391ef84f3ef2f6e207238b3c2072b4f1571e7b92a20266fb"
     },
     {
-      "id": 183,
+      "id": 191,
       "kind": 1,
       "path": "graphics/ui/shop/17.t3x",
       "bytes": 4117,
@@ -14195,7 +14971,7 @@
       "sha256": "14a51a41097165c99e43cc4d55f57781bbccb02b046b2534488e26e6b2e0c6f0"
     },
     {
-      "id": 184,
+      "id": 192,
       "kind": 1,
       "path": "graphics/ui/shop/18.t3x",
       "bytes": 4117,
@@ -14203,7 +14979,7 @@
       "sha256": "96615c10feb5d309fe8bab412daf8184e33dc7bf5f7df0654d51dc2d7b764473"
     },
     {
-      "id": 185,
+      "id": 193,
       "kind": 1,
       "path": "graphics/ui/shop/19.t3x",
       "bytes": 4117,
@@ -14211,7 +14987,7 @@
       "sha256": "8252d0cd0ece22a5e84047a2d727063ec73510e760b82e6056599a4aaf7819f7"
     },
     {
-      "id": 186,
+      "id": 194,
       "kind": 1,
       "path": "graphics/ui/shop/2.t3x",
       "bytes": 4117,
@@ -14219,7 +14995,7 @@
       "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
     },
     {
-      "id": 187,
+      "id": 195,
       "kind": 1,
       "path": "graphics/ui/shop/20.t3x",
       "bytes": 4117,
@@ -14227,7 +15003,7 @@
       "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6"
     },
     {
-      "id": 188,
+      "id": 196,
       "kind": 1,
       "path": "graphics/ui/shop/21.t3x",
       "bytes": 4117,
@@ -14235,7 +15011,7 @@
       "sha256": "09898e21981eb7508b1fd07d7787988ccd70ed76da08cb77601239c9e8491049"
     },
     {
-      "id": 189,
+      "id": 197,
       "kind": 1,
       "path": "graphics/ui/shop/22.t3x",
       "bytes": 4117,
@@ -14243,7 +15019,7 @@
       "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead"
     },
     {
-      "id": 190,
+      "id": 198,
       "kind": 1,
       "path": "graphics/ui/shop/23.t3x",
       "bytes": 4117,
@@ -14251,7 +15027,7 @@
       "sha256": "582dc546bb5783a74dcb388122c0509f28ea6f11b7c68d276444be4b26404eb6"
     },
     {
-      "id": 191,
+      "id": 199,
       "kind": 1,
       "path": "graphics/ui/shop/24.t3x",
       "bytes": 4117,
@@ -14259,7 +15035,7 @@
       "sha256": "de24fc5f30cad37ea26082bf4ef6f7b9b0bb731056d7b497464a4cb5c2590fbe"
     },
     {
-      "id": 192,
+      "id": 200,
       "kind": 1,
       "path": "graphics/ui/shop/25.t3x",
       "bytes": 4117,
@@ -14267,7 +15043,7 @@
       "sha256": "e6f4e6874992bcac7e7a3b6c84e9b14c87c466e23adf69a813e8a3af4d218859"
     },
     {
-      "id": 193,
+      "id": 201,
       "kind": 1,
       "path": "graphics/ui/shop/26.t3x",
       "bytes": 4117,
@@ -14275,7 +15051,7 @@
       "sha256": "3f0b09eb22ff4491059c6714505ebe8279a969f6984f87d45f42fd55c5dc26c6"
     },
     {
-      "id": 194,
+      "id": 202,
       "kind": 1,
       "path": "graphics/ui/shop/27.t3x",
       "bytes": 4117,
@@ -14283,7 +15059,7 @@
       "sha256": "e8fb01b105e3a615b326794c34a3dec94f4e73d5729998904d9b59e73c61f4bc"
     },
     {
-      "id": 195,
+      "id": 203,
       "kind": 1,
       "path": "graphics/ui/shop/28.t3x",
       "bytes": 4117,
@@ -14291,7 +15067,7 @@
       "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b"
     },
     {
-      "id": 196,
+      "id": 204,
       "kind": 1,
       "path": "graphics/ui/shop/29.t3x",
       "bytes": 4117,
@@ -14299,7 +15075,7 @@
       "sha256": "6a6318acd974342714f78d2a5f0ad80fc0777009656ead09f57b531498704d59"
     },
     {
-      "id": 197,
+      "id": 205,
       "kind": 1,
       "path": "graphics/ui/shop/3.t3x",
       "bytes": 277,
@@ -14307,7 +15083,7 @@
       "sha256": "094e86dacf285fa00cbd9d975ac42583b8f03eaa58de668efda82daae2b78287"
     },
     {
-      "id": 198,
+      "id": 206,
       "kind": 1,
       "path": "graphics/ui/shop/30.t3x",
       "bytes": 4117,
@@ -14315,7 +15091,7 @@
       "sha256": "fc0f7a78e16eb7c760926168210828ee36ba92964f7e6764ea5f0df1df8ed688"
     },
     {
-      "id": 199,
+      "id": 207,
       "kind": 1,
       "path": "graphics/ui/shop/31.t3x",
       "bytes": 4117,
@@ -14323,7 +15099,7 @@
       "sha256": "e84048378fc026fd70cb8461965e3e7cd97580b4be1c2532bcb1b6baf4e78f18"
     },
     {
-      "id": 200,
+      "id": 208,
       "kind": 1,
       "path": "graphics/ui/shop/32.t3x",
       "bytes": 4117,
@@ -14331,7 +15107,7 @@
       "sha256": "fa7441713e5806d5fe0a3a46a7fca5e166019d1b7a7e3af16b464789eb94252f"
     },
     {
-      "id": 201,
+      "id": 209,
       "kind": 1,
       "path": "graphics/ui/shop/33.t3x",
       "bytes": 4117,
@@ -14339,7 +15115,7 @@
       "sha256": "02b9963ed42044b83b1e5d4381e91ec35a83aaac8308bacb8e4247844bf21f43"
     },
     {
-      "id": 202,
+      "id": 210,
       "kind": 1,
       "path": "graphics/ui/shop/34.t3x",
       "bytes": 4117,
@@ -14347,7 +15123,7 @@
       "sha256": "d02f18b3037ae8f55e8267d83fa615eabcfced6bc96ae1a3aa3f6220b619797a"
     },
     {
-      "id": 203,
+      "id": 211,
       "kind": 1,
       "path": "graphics/ui/shop/35.t3x",
       "bytes": 4117,
@@ -14355,7 +15131,7 @@
       "sha256": "1d8dcffa533347b57b2537c3b8d0a0f352b77e9319075a0901ef511ec163e5f2"
     },
     {
-      "id": 204,
+      "id": 212,
       "kind": 1,
       "path": "graphics/ui/shop/36.t3x",
       "bytes": 4117,
@@ -14363,7 +15139,7 @@
       "sha256": "1d8dcffa533347b57b2537c3b8d0a0f352b77e9319075a0901ef511ec163e5f2"
     },
     {
-      "id": 205,
+      "id": 213,
       "kind": 1,
       "path": "graphics/ui/shop/37.t3x",
       "bytes": 4117,
@@ -14371,7 +15147,7 @@
       "sha256": "38d30261ce5df1958a3547c5ed07158195925e15dd61a4f7017d199546bded14"
     },
     {
-      "id": 206,
+      "id": 214,
       "kind": 1,
       "path": "graphics/ui/shop/38.t3x",
       "bytes": 4117,
@@ -14379,7 +15155,7 @@
       "sha256": "f549b767dba681ae9ebe001bf77fb140fe632c17ae4eb7e2c7789bfb7d84b62f"
     },
     {
-      "id": 207,
+      "id": 215,
       "kind": 1,
       "path": "graphics/ui/shop/39.t3x",
       "bytes": 4117,
@@ -14387,7 +15163,7 @@
       "sha256": "e7fcbeb709f8872c6ee759cdb1981c1cc37fe36829d431848856221c66096ad4"
     },
     {
-      "id": 208,
+      "id": 216,
       "kind": 1,
       "path": "graphics/ui/shop/4.t3x",
       "bytes": 277,
@@ -14395,7 +15171,7 @@
       "sha256": "c1264403312908e5f4e4b6a01f351e16e2382b04792aba7248e422f6321d70a0"
     },
     {
-      "id": 209,
+      "id": 217,
       "kind": 1,
       "path": "graphics/ui/shop/40.t3x",
       "bytes": 4117,
@@ -14403,7 +15179,7 @@
       "sha256": "31c190b989b7819230276c4789540801bb115d70676438d7cc0c9af73de2afad"
     },
     {
-      "id": 210,
+      "id": 218,
       "kind": 1,
       "path": "graphics/ui/shop/41.t3x",
       "bytes": 4117,
@@ -14411,7 +15187,7 @@
       "sha256": "842ac58573f2a8c85777c67acad557d42a3e337a016c9cf4dbd6cb311e185f75"
     },
     {
-      "id": 211,
+      "id": 219,
       "kind": 1,
       "path": "graphics/ui/shop/42.t3x",
       "bytes": 4117,
@@ -14419,7 +15195,7 @@
       "sha256": "eda5b3f20d65599b4217e23197b80fb0c906b0bcf8401a4c12eca3d342a80886"
     },
     {
-      "id": 212,
+      "id": 220,
       "kind": 1,
       "path": "graphics/ui/shop/43.t3x",
       "bytes": 4117,
@@ -14427,7 +15203,7 @@
       "sha256": "d901d0d7a28bfc52c24eaaee412ca8cc7f2c1a7585dca4434bea035e5f922c3e"
     },
     {
-      "id": 213,
+      "id": 221,
       "kind": 1,
       "path": "graphics/ui/shop/44.t3x",
       "bytes": 4117,
@@ -14435,7 +15211,7 @@
       "sha256": "d901d0d7a28bfc52c24eaaee412ca8cc7f2c1a7585dca4434bea035e5f922c3e"
     },
     {
-      "id": 214,
+      "id": 222,
       "kind": 1,
       "path": "graphics/ui/shop/45.t3x",
       "bytes": 4117,
@@ -14443,7 +15219,7 @@
       "sha256": "eb6bc8447ee75645647c6000d61e91663d4f67897fc656eb224e38586b04ce3f"
     },
     {
-      "id": 215,
+      "id": 223,
       "kind": 1,
       "path": "graphics/ui/shop/5.t3x",
       "bytes": 1045,
@@ -14451,7 +15227,7 @@
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
     {
-      "id": 216,
+      "id": 224,
       "kind": 1,
       "path": "graphics/ui/shop/6.t3x",
       "bytes": 1045,
@@ -14459,7 +15235,7 @@
       "sha256": "0c4523fc10cb075c2637f6606adcb707ee927c55f28b4c847e4ba79a23885ffc"
     },
     {
-      "id": 217,
+      "id": 225,
       "kind": 1,
       "path": "graphics/ui/shop/7.t3x",
       "bytes": 277,
@@ -14467,7 +15243,7 @@
       "sha256": "7c96816402258022bba1b8f10fed9240744c24423ea1382a1f91e5094e16d469"
     },
     {
-      "id": 218,
+      "id": 226,
       "kind": 1,
       "path": "graphics/ui/shop/8.t3x",
       "bytes": 4117,
@@ -14475,7 +15251,7 @@
       "sha256": "6f16bd07aabce0683c239af8f336a8cf27d9bd116b9fe72cabcda20f605a6103"
     },
     {
-      "id": 219,
+      "id": 227,
       "kind": 1,
       "path": "graphics/ui/shop/9.t3x",
       "bytes": 277,
@@ -14483,7 +15259,143 @@
       "sha256": "45de60e183b033c30763ac35c60c571278bfb5342b741cf91f54fdd8b4be4f73"
     },
     {
-      "id": 220,
+      "id": 228,
+      "kind": 1,
+      "path": "graphics/world/house-layers/above.t3x",
+      "bytes": 2097173,
+      "crc32": 4076116820,
+      "sha256": "b69b17bb081da2b1ccfe1cd74ec56cdd141a229aa2f2ebb8d6f3215ff9d7fccb"
+    },
+    {
+      "id": 229,
+      "kind": 1,
+      "path": "graphics/world/house-layers/objects.t3x",
+      "bytes": 262165,
+      "crc32": 2095801980,
+      "sha256": "91e17a81a8b50fc5dc4a7850ee493bc58ffef5bd49f1366fd606117ec6e4a7f8"
+    },
+    {
+      "id": 230,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-00.t3x",
+      "bytes": 262165,
+      "crc32": 747118401,
+      "sha256": "4340081f068db84221569b1feaf09db941e4ed822a82ea96aa480d81e6a71048"
+    },
+    {
+      "id": 231,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-01.t3x",
+      "bytes": 262165,
+      "crc32": 368007944,
+      "sha256": "2b63089f113ff8e6b27742144d5198eb9727ff7b9d83286b70f28187dedcde91"
+    },
+    {
+      "id": 232,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-02.t3x",
+      "bytes": 131093,
+      "crc32": 3338447059,
+      "sha256": "2bce2f73c7ca2b64af9d76e9837c1f698fb80bd025fd2801f2d867389dd8863f"
+    },
+    {
+      "id": 233,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-03.t3x",
+      "bytes": 262165,
+      "crc32": 2639734541,
+      "sha256": "1b5cc99dd2e2fa6de3a21efd002e1580a459e47cac77399ee214e152a9b55894"
+    },
+    {
+      "id": 234,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-04.t3x",
+      "bytes": 262165,
+      "crc32": 2030223984,
+      "sha256": "7acf1bd924e2708683ee63e68418742fe2ab73501b05a3f6fd30d5257355b321"
+    },
+    {
+      "id": 235,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-05.t3x",
+      "bytes": 131093,
+      "crc32": 3318268164,
+      "sha256": "c0a3215c9302d5b80d7fa77bd02138d2b423fc2e26910ecf6ce43593afd7b991"
+    },
+    {
+      "id": 236,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-06.t3x",
+      "bytes": 262165,
+      "crc32": 2389156429,
+      "sha256": "5ea77df29b85e7a692b5b9713aef9b741334f8c0569c2ee9e5fde5a295f2b75c"
+    },
+    {
+      "id": 237,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-07.t3x",
+      "bytes": 262165,
+      "crc32": 1223925855,
+      "sha256": "c3a81d7ab6a596d86c0af9737ba49fbcc67f04bb57a6880d72711d1aa853e663"
+    },
+    {
+      "id": 238,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-08.t3x",
+      "bytes": 131093,
+      "crc32": 1600169225,
+      "sha256": "a836c9fafec132b800ba53e2e0ac08a77cbc828a1a9ea7bf941f27996e82da83"
+    },
+    {
+      "id": 239,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-09.t3x",
+      "bytes": 262165,
+      "crc32": 3984165837,
+      "sha256": "447223c3d6bfa9241c2cf74e3578e3b38d8cc1c3efba4350cbea5b325210cee2"
+    },
+    {
+      "id": 240,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-10.t3x",
+      "bytes": 262165,
+      "crc32": 1223925855,
+      "sha256": "c3a81d7ab6a596d86c0af9737ba49fbcc67f04bb57a6880d72711d1aa853e663"
+    },
+    {
+      "id": 241,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-11.t3x",
+      "bytes": 131093,
+      "crc32": 1600169225,
+      "sha256": "a836c9fafec132b800ba53e2e0ac08a77cbc828a1a9ea7bf941f27996e82da83"
+    },
+    {
+      "id": 242,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-12.t3x",
+      "bytes": 131093,
+      "crc32": 2219312092,
+      "sha256": "322b356db6aa7f7f2491393a2883d04a61e22fd82b5ccecfc7779886869c83b3"
+    },
+    {
+      "id": 243,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-13.t3x",
+      "bytes": 131093,
+      "crc32": 3799871174,
+      "sha256": "ddd8c44802476ec6f8c3e5a7a2ada07c7d3ec17c95f58568ae967398776d1d28"
+    },
+    {
+      "id": 244,
+      "kind": 1,
+      "path": "graphics/world/house-map/house-14.t3x",
+      "bytes": 65557,
+      "crc32": 3828955174,
+      "sha256": "9bce2a25276d1a11abd1f063c37463ee20d94d710b8bce9c3fe5a336af1b77eb"
+    },
+    {
+      "id": 245,
       "kind": 1,
       "path": "graphics/world/house-return-map/map-0-0-0.t3x",
       "bytes": 262165,
@@ -14491,7 +15403,7 @@
       "sha256": "91e17a81a8b50fc5dc4a7850ee493bc58ffef5bd49f1366fd606117ec6e4a7f8"
     },
     {
-      "id": 221,
+      "id": 246,
       "kind": 1,
       "path": "graphics/world/house-return-map/map-1-0-0.t3x",
       "bytes": 2097173,
@@ -14499,7 +15411,7 @@
       "sha256": "b69b17bb081da2b1ccfe1cd74ec56cdd141a229aa2f2ebb8d6f3215ff9d7fccb"
     },
     {
-      "id": 222,
+      "id": 247,
       "kind": 1,
       "path": "graphics/world/podunk/dandelion-seed.t3x",
       "bytes": 277,
@@ -14507,7 +15419,7 @@
       "sha256": "1a6c9a499da3a506399ac6a0c8c44e4566f2763c4fdd2a9035afc8edd3c3334c"
     },
     {
-      "id": 223,
+      "id": 248,
       "kind": 1,
       "path": "graphics/world/podunk/dandelion.t3x",
       "bytes": 533,
@@ -14515,7 +15427,7 @@
       "sha256": "4fbf3bca5c489aea0a59440e07aa9d35916950cba4de46b08329b4eb76fd58c1"
     },
     {
-      "id": 224,
+      "id": 249,
       "kind": 1,
       "path": "graphics/world/podunk/grass-0.t3x",
       "bytes": 16405,
@@ -14523,7 +15435,7 @@
       "sha256": "8cd1a2444a62fe440c3685f3c0f2a0f024484c92ed6915deb6426392ce3258d8"
     },
     {
-      "id": 225,
+      "id": 250,
       "kind": 1,
       "path": "graphics/world/podunk/grass-1.t3x",
       "bytes": 16405,
@@ -14531,7 +15443,7 @@
       "sha256": "d67346169e16fb741c649bfbc3e853201e00331b24f1795ace08ec415c958d18"
     },
     {
-      "id": 226,
+      "id": 251,
       "kind": 1,
       "path": "graphics/world/podunk/map-0-0-0.t3x",
       "bytes": 4194325,
@@ -14539,7 +15451,7 @@
       "sha256": "0c25fb2e1ccc24c55402525e6c316a2ea0376339409b1a47cef2acd921e154d0"
     },
     {
-      "id": 227,
+      "id": 252,
       "kind": 1,
       "path": "graphics/world/podunk/map-0-1024-0.t3x",
       "bytes": 524309,
@@ -14547,7 +15459,7 @@
       "sha256": "0e8953c3522aa4bc38e0f30d56a45a1167982c9653a3713a4f7d5597399808e8"
     },
     {
-      "id": 228,
+      "id": 253,
       "kind": 1,
       "path": "graphics/world/podunk/map-1-0-0.t3x",
       "bytes": 65557,
@@ -14555,7 +15467,7 @@
       "sha256": "76b13e6022bbd9a496661c646aeb2008346d1a5837746b4e54a1a68aeaebf26e"
     },
     {
-      "id": 229,
+      "id": 254,
       "kind": 1,
       "path": "graphics/world/podunk/map-2-0-0.t3x",
       "bytes": 65557,
@@ -14563,7 +15475,7 @@
       "sha256": "4072f0daeaf567990d98ff4673a4bbcdc28e807b39324ccea1f471b17a7b2bba"
     },
     {
-      "id": 230,
+      "id": 255,
       "kind": 1,
       "path": "graphics/world/podunk/map-3-0-0.t3x",
       "bytes": 65557,
@@ -14571,7 +15483,7 @@
       "sha256": "4f35d2be1686a10146dadcc2c14380d11812d20c34efd6b9e81d009dc6f1b561"
     },
     {
-      "id": 231,
+      "id": 256,
       "kind": 1,
       "path": "graphics/world/podunk/map-4-0-0.t3x",
       "bytes": 65557,
@@ -14579,7 +15491,7 @@
       "sha256": "d5b25a5a982e04f917074439baa1633563210093dceb2bb6c6817dc232357e37"
     },
     {
-      "id": 232,
+      "id": 257,
       "kind": 1,
       "path": "graphics/world/podunk/map-5-0-0.t3x",
       "bytes": 1048597,
@@ -14587,7 +15499,7 @@
       "sha256": "48a4e007e4d70f85e9fed10d0ae5213225775a225b9395bc29516dc35e648cbb"
     },
     {
-      "id": 233,
+      "id": 258,
       "kind": 3,
       "path": "shaders/field-camera-arrows.shbin",
       "bytes": 280,
@@ -14595,7 +15507,7 @@
       "sha256": "24ba7af2bbe9913ba99bbb9d17bcef15a9286465723e564171a29b528a877287"
     },
     {
-      "id": 234,
+      "id": 259,
       "kind": 3,
       "path": "shaders/field-canvas-art.shbin",
       "bytes": 280,
@@ -14603,7 +15515,7 @@
       "sha256": "24ba7af2bbe9913ba99bbb9d17bcef15a9286465723e564171a29b528a877287"
     },
     {
-      "id": 235,
+      "id": 260,
       "kind": 5,
       "path": "sound/banks/named-sfx.encaudio",
       "bytes": 1808,
@@ -14611,7 +15523,7 @@
       "sha256": "698790b2551e927ee6969a28227396287e7a291ccbfc8f7972460e3b6507b940"
     },
     {
-      "id": 236,
+      "id": 261,
       "kind": 5,
       "path": "sound/banks/opening.encaudio",
       "bytes": 6340,
@@ -14619,7 +15531,7 @@
       "sha256": "f8c1215fd839cc264e46f34ed9c8df0c0652d64c421d416e5d8dd421cf448299"
     },
     {
-      "id": 237,
+      "id": 262,
       "kind": 5,
       "path": "sound/banks/podunk-scene-effects.encaudio",
       "bytes": 1279,
@@ -14627,7 +15539,7 @@
       "sha256": "a7ea96437024c28d3326a7f67e7ae69c1ba6d4582144db25d8734bc1a7e126e6"
     },
     {
-      "id": 238,
+      "id": 263,
       "kind": 5,
       "path": "sound/banks/podunk.encaudio",
       "bytes": 888,
@@ -14635,7 +15547,7 @@
       "sha256": "1973c1e63a2365e56aac6fcca0d01db22768a4bc2f5eb53ab5c26f2ebdc4e8f8"
     },
     {
-      "id": 239,
+      "id": 264,
       "kind": 6,
       "path": "sound/banks/podunk.encmusic",
       "bytes": 2003,
@@ -14643,7 +15555,7 @@
       "sha256": "66e4979f9c96dd628daabea77ff803201c3eb8d99c169286637b878f4b47a039"
     },
     {
-      "id": 240,
+      "id": 265,
       "kind": 2,
       "path": "sound/effects/bash.pcm",
       "bytes": 88196,
@@ -14651,7 +15563,7 @@
       "sha256": "0c212e38f9648ca0d7995cabcf2b943dba2ad99adad899e956442788e4aae77c"
     },
     {
-      "id": 241,
+      "id": 266,
       "kind": 2,
       "path": "sound/effects/cursor-back.pcm",
       "bytes": 3844,
@@ -14659,7 +15571,7 @@
       "sha256": "c1c2cadaea3ca8186efd29e863a41b09a691cf3f422241e4c60ccdaf1c85937c"
     },
     {
-      "id": 242,
+      "id": 267,
       "kind": 2,
       "path": "sound/effects/cursor-move.pcm",
       "bytes": 10240,
@@ -14667,7 +15579,7 @@
       "sha256": "750301508a9e702a1c1adf66029c05334dc5bbae31bd3f8a30db5661eb8f60e3"
     },
     {
-      "id": 243,
+      "id": 268,
       "kind": 2,
       "path": "sound/effects/cursor-restricted.pcm",
       "bytes": 14966,
@@ -14675,7 +15587,7 @@
       "sha256": "8326bbc1c70baed1d5818c265ac456e17767ad6509fb95529f887d83c04ae839"
     },
     {
-      "id": 244,
+      "id": 269,
       "kind": 2,
       "path": "sound/effects/cursor-select.pcm",
       "bytes": 14336,
@@ -14683,7 +15595,7 @@
       "sha256": "ceeeb3237adc3a1639bd15930bdf72ac5668ab3d5264fa9ece624da3e475b0e9"
     },
     {
-      "id": 245,
+      "id": 270,
       "kind": 2,
       "path": "sound/effects/dead-bush.pcm",
       "bytes": 30618,
@@ -14691,7 +15603,7 @@
       "sha256": "083b5b698f4b567160aa4e4e395060016964d74625e927bbb3cc70ace6c607ea"
     },
     {
-      "id": 246,
+      "id": 271,
       "kind": 2,
       "path": "sound/effects/doll-postwin-smash.pcm",
       "bytes": 175680,
@@ -14699,7 +15611,7 @@
       "sha256": "13e1767f062a1b77594f0428655a382f26f6adddf1509c219472e6f0d421cbb6"
     },
     {
-      "id": 247,
+      "id": 272,
       "kind": 2,
       "path": "sound/effects/emote-2209671527.pcm",
       "bytes": 57788,
@@ -14707,7 +15619,7 @@
       "sha256": "ac69600e953bc437c444f36044b4dd2d91eb5f4552bc276356f0acae8444b822"
     },
     {
-      "id": 248,
+      "id": 273,
       "kind": 2,
       "path": "sound/effects/emote-458463090.pcm",
       "bytes": 271872,
@@ -14715,7 +15627,7 @@
       "sha256": "fbc79abae6c8cf3321ac152580bf09cf529535b04a36b9c18926b0d8380501a4"
     },
     {
-      "id": 249,
+      "id": 274,
       "kind": 2,
       "path": "sound/effects/field-menu-close.pcm",
       "bytes": 35280,
@@ -14723,7 +15635,7 @@
       "sha256": "cd8edf55b1247c0dcde0ca68862af62a598c6cfea53de06514564844c682c756"
     },
     {
-      "id": 250,
+      "id": 275,
       "kind": 2,
       "path": "sound/effects/field-menu-open.pcm",
       "bytes": 35280,
@@ -14731,7 +15643,7 @@
       "sha256": "a707c5761a3369847577a5dd23ef5d8c28c9bb3eacb90620fe07a282583ad74e"
     },
     {
-      "id": 251,
+      "id": 276,
       "kind": 2,
       "path": "sound/effects/field-psi-heal.pcm",
       "bytes": 85124,
@@ -14739,7 +15651,7 @@
       "sha256": "12d503830a2586f147c86eaacb949c5cc20c889fb7cea8f66fe7bce8e50adbad"
     },
     {
-      "id": 252,
+      "id": 277,
       "kind": 2,
       "path": "sound/effects/goods-close.pcm",
       "bytes": 35280,
@@ -14747,7 +15659,7 @@
       "sha256": "1ad7e3e35190fb3e1b232a07bce5e6f80f4428bf20897cbdac3974c47d25d9c9"
     },
     {
-      "id": 253,
+      "id": 278,
       "kind": 2,
       "path": "sound/effects/goods-open.pcm",
       "bytes": 35280,
@@ -14755,7 +15667,7 @@
       "sha256": "d253c6024ac6c24953d10f9e4cd0a09be9c69e9a8d9399830917bbf365d41c3d"
     },
     {
-      "id": 254,
+      "id": 279,
       "kind": 2,
       "path": "sound/effects/introduction-kid-text.pcm",
       "bytes": 14336,
@@ -14763,7 +15675,7 @@
       "sha256": "3442491d9a6ab0bf843fa339e7865c03c317d031529637906d87b269f7b7e578"
     },
     {
-      "id": 255,
+      "id": 280,
       "kind": 2,
       "path": "sound/effects/introduction-teleport.pcm",
       "bytes": 174220,
@@ -14771,7 +15683,7 @@
       "sha256": "d4f01f48675d8e2ef8a35afe0f71d988f34b37b8702113bb5adc1e84788e4e6d"
     },
     {
-      "id": 256,
+      "id": 281,
       "kind": 2,
       "path": "sound/effects/introduction-text.pcm",
       "bytes": 3840,
@@ -14779,7 +15691,7 @@
       "sha256": "00214e73fd47ccd15f9a0c5019e584febe8cb4fa474925d6eac7044dcfb36bae"
     },
     {
-      "id": 257,
+      "id": 282,
       "kind": 2,
       "path": "sound/effects/introduction-thunder.pcm",
       "bytes": 338100,
@@ -14787,7 +15699,7 @@
       "sha256": "46113def40102327d47df699af3fa141b4843649ab030a3418467631bfb2e072"
     },
     {
-      "id": 258,
+      "id": 283,
       "kind": 2,
       "path": "sound/effects/item-consume.pcm",
       "bytes": 44100,
@@ -14795,7 +15707,7 @@
       "sha256": "e7dba08c5885bef7319a1d46aa750a19e71742203ca2273f0853c897878dbff5"
     },
     {
-      "id": 259,
+      "id": 284,
       "kind": 2,
       "path": "sound/effects/item-received.pcm",
       "bytes": 30250,
@@ -14803,7 +15715,7 @@
       "sha256": "858109671300cadb85113b4f5e09613e9567e9dc89f9815f567c3d00c7c24cf5"
     },
     {
-      "id": 260,
+      "id": 285,
       "kind": 2,
       "path": "sound/effects/learned-psi.pcm",
       "bytes": 283772,
@@ -14811,7 +15723,7 @@
       "sha256": "46724f324b6647a8fc10d7d20efac20af63b5b307e506c67306e340c6d61eec2"
     },
     {
-      "id": 261,
+      "id": 286,
       "kind": 2,
       "path": "sound/effects/melody-remembered.pcm",
       "bytes": 192644,
@@ -14819,7 +15731,7 @@
       "sha256": "28302bba09f15508f1591b34ffbfa43bdf7dd260c06495065a29205fdf5b7811"
     },
     {
-      "id": 262,
+      "id": 287,
       "kind": 2,
       "path": "sound/effects/mick-whining.pcm",
       "bytes": 114688,
@@ -14827,7 +15739,7 @@
       "sha256": "7cc92aca57090d96671bf7d4127fc2f1f82da97ea078887570ca2b60613ddb35"
     },
     {
-      "id": 263,
+      "id": 288,
       "kind": 2,
       "path": "sound/effects/mick-woof.pcm",
       "bytes": 104816,
@@ -14835,7 +15747,7 @@
       "sha256": "dc7689a33a7c8bc4fffd0c221fb53612f7d688039dedc78b8d5c7c2749b88cd9"
     },
     {
-      "id": 264,
+      "id": 289,
       "kind": 2,
       "path": "sound/effects/named-106331722.pcm",
       "bytes": 70560,
@@ -14843,7 +15755,7 @@
       "sha256": "c76d87dcbc27e25ef8de51169e308869bd05d06d4c44646b50f37d1c86e15e1d"
     },
     {
-      "id": 265,
+      "id": 290,
       "kind": 2,
       "path": "sound/effects/named-1103769193.pcm",
       "bytes": 125336,
@@ -14851,7 +15763,7 @@
       "sha256": "b3f4329d98be379f777c9a5472256cacd53560e6067d68c0590557a0334dc6b5"
     },
     {
-      "id": 266,
+      "id": 291,
       "kind": 2,
       "path": "sound/effects/named-1152974177.pcm",
       "bytes": 70560,
@@ -14859,7 +15771,7 @@
       "sha256": "582fd76c9d0aba6a22df11ffacf1f6586871601738aa10b94e63bc73cec65bc7"
     },
     {
-      "id": 267,
+      "id": 292,
       "kind": 2,
       "path": "sound/effects/named-2085542988.pcm",
       "bytes": 70560,
@@ -14867,7 +15779,7 @@
       "sha256": "cd8a8cc3b3111ae9ce8dcd023b3246fcd943a8e5b7bcf6b967494890e80e9a68"
     },
     {
-      "id": 268,
+      "id": 293,
       "kind": 2,
       "path": "sound/effects/named-2242605484.pcm",
       "bytes": 70560,
@@ -14875,7 +15787,7 @@
       "sha256": "a1c4591dfc0919cc27881aa7dc6d7e3ab0cbfe4056c8eba2d4fd0827060c7cc4"
     },
     {
-      "id": 269,
+      "id": 294,
       "kind": 2,
       "path": "sound/effects/named-2544657704.pcm",
       "bytes": 70560,
@@ -14883,7 +15795,7 @@
       "sha256": "a42edc06a6acff945df1debb8ada1a06248da3c941f365877fbb99ed0842564f"
     },
     {
-      "id": 270,
+      "id": 295,
       "kind": 2,
       "path": "sound/effects/named-3333094761.pcm",
       "bytes": 18292,
@@ -14891,7 +15803,7 @@
       "sha256": "ecf1b73409afc107672344101274f8f92935f4d1d0b2e3e3d4493b8dc8bfcfe0"
     },
     {
-      "id": 271,
+      "id": 296,
       "kind": 2,
       "path": "sound/effects/named-651909959.pcm",
       "bytes": 70560,
@@ -14899,7 +15811,7 @@
       "sha256": "ae31a3f6020c85125eb9aeb30a2b7a47dfcb1071fc98dd770017c3116d2f1088"
     },
     {
-      "id": 272,
+      "id": 297,
       "kind": 2,
       "path": "sound/effects/named-834825354.pcm",
       "bytes": 70560,
@@ -14907,7 +15819,7 @@
       "sha256": "1f6afb347aff38865ba6315f5b3ca89d8a560010b187e3e471070a4b6418cece"
     },
     {
-      "id": 273,
+      "id": 298,
       "kind": 2,
       "path": "sound/effects/named-972225861.pcm",
       "bytes": 70560,
@@ -14915,7 +15827,7 @@
       "sha256": "61885ef0694e25ca854da24d4c1746d7a961905e4013f51496dbf3a9351be9d0"
     },
     {
-      "id": 274,
+      "id": 299,
       "kind": 2,
       "path": "sound/effects/openable-door/130294754.pcm",
       "bytes": 88196,
@@ -14923,7 +15835,7 @@
       "sha256": "0c212e38f9648ca0d7995cabcf2b943dba2ad99adad899e956442788e4aae77c"
     },
     {
-      "id": 275,
+      "id": 300,
       "kind": 2,
       "path": "sound/effects/openable-door/1456608675.pcm",
       "bytes": 61740,
@@ -14931,7 +15843,7 @@
       "sha256": "f70e2bb4d410fec6e70edec43967395851f4f3541f19f46d542d9f0dc5077a6e"
     },
     {
-      "id": 276,
+      "id": 301,
       "kind": 2,
       "path": "sound/effects/openable-door/1988640769.pcm",
       "bytes": 42576,
@@ -14939,7 +15851,7 @@
       "sha256": "3519e83798cf6edf3309f80daf8a0af3b6f3f1feacfe61bb988f71fa68261829"
     },
     {
-      "id": 277,
+      "id": 302,
       "kind": 2,
       "path": "sound/effects/phone-hangup.pcm",
       "bytes": 8282,
@@ -14947,7 +15859,7 @@
       "sha256": "96cb26c1eb21b66ac57b527d0a595448b3aa81fdddfcba701322004f1a14f367"
     },
     {
-      "id": 278,
+      "id": 303,
       "kind": 2,
       "path": "sound/effects/phone-ring.pcm",
       "bytes": 44100,
@@ -14955,7 +15867,7 @@
       "sha256": "83b716a9d57fb5b640114e14e8713f2f09454dceb4ba6a2af370294a7bb6807e"
     },
     {
-      "id": 279,
+      "id": 304,
       "kind": 2,
       "path": "sound/effects/player-2958539110.pcm",
       "bytes": 57788,
@@ -14963,7 +15875,7 @@
       "sha256": "ac69600e953bc437c444f36044b4dd2d91eb5f4552bc276356f0acae8444b822"
     },
     {
-      "id": 280,
+      "id": 305,
       "kind": 2,
       "path": "sound/effects/player-3506099269.pcm",
       "bytes": 44896,
@@ -14971,7 +15883,7 @@
       "sha256": "93366149f37acc99303157c76e9f44aa15de6ee63220ee245d39a04395d884ac"
     },
     {
-      "id": 281,
+      "id": 306,
       "kind": 2,
       "path": "sound/effects/player-431886036.pcm",
       "bytes": 271872,
@@ -14979,7 +15891,7 @@
       "sha256": "fbc79abae6c8cf3321ac152580bf09cf529535b04a36b9c18926b0d8380501a4"
     },
     {
-      "id": 282,
+      "id": 307,
       "kind": 2,
       "path": "sound/effects/player-890270501.pcm",
       "bytes": 77824,
@@ -14987,7 +15899,7 @@
       "sha256": "a02fda3b93502221bbdd35bdc3b7086b797dd501aa69d0872511d158f7c4e143"
     },
     {
-      "id": 283,
+      "id": 308,
       "kind": 2,
       "path": "sound/effects/present-unwrapped.pcm",
       "bytes": 18432,
@@ -14995,7 +15907,7 @@
       "sha256": "1f6e543441606e7e394f70d217a40bb1ec1bccb9c53c4e103be4376c387c124f"
     },
     {
-      "id": 284,
+      "id": 309,
       "kind": 2,
       "path": "sound/effects/scene/knock.pcm",
       "bytes": 44100,
@@ -15003,7 +15915,7 @@
       "sha256": "33e29d4690224c9a9788a6c218e3f9f5c8ac6ed8266476ba7098babdaa2c3bca"
     },
     {
-      "id": 285,
+      "id": 310,
       "kind": 2,
       "path": "sound/effects/shop-register.pcm",
       "bytes": 8608,
@@ -15011,7 +15923,7 @@
       "sha256": "6cf3c7f13a4f548d6bec553d343397f910ba2a28d70dad4c62a7805c4286439c"
     },
     {
-      "id": 286,
+      "id": 311,
       "kind": 2,
       "path": "sound/effects/storage-clear.pcm",
       "bytes": 9168,
@@ -15019,7 +15931,7 @@
       "sha256": "4624e7c848d7ae603df09b00861001bed6ca1a500cc9acddf0428f462666a8ef"
     },
     {
-      "id": 287,
+      "id": 312,
       "kind": 2,
       "path": "sound/effects/storage-equip.pcm",
       "bytes": 19336,
@@ -15027,7 +15939,7 @@
       "sha256": "cf6e2ad332ddaa36eed7f5cb2cb59b11226dd4f83af09d56c7ef8c859be05c47"
     },
     {
-      "id": 288,
+      "id": 313,
       "kind": 2,
       "path": "sound/effects/text-adult.pcm",
       "bytes": 14336,
@@ -15035,7 +15947,7 @@
       "sha256": "d4f0e98b04db649338c56b1aeaea3b5c78ffbdb7c7863ae8615719d1186d8443"
     },
     {
-      "id": 289,
+      "id": 314,
       "kind": 2,
       "path": "sound/effects/text-female.pcm",
       "bytes": 14336,
@@ -15043,7 +15955,7 @@
       "sha256": "e54112f322e29a9f91ea856c4d69701df1125fbac040f7cd7e9215d6d6bc353a"
     },
     {
-      "id": 290,
+      "id": 315,
       "kind": 2,
       "path": "sound/music/doll-melody.pcm",
       "bytes": 620476,
@@ -15051,7 +15963,7 @@
       "sha256": "8055343ce209cc090ad6bf487a995d230b0257c77bf6e02f6bac5bca5ca4810c"
     },
     {
-      "id": 291,
+      "id": 316,
       "kind": 2,
       "path": "sound/music/encounter-boss.pcm",
       "bytes": 986112,
@@ -15059,7 +15971,7 @@
       "sha256": "b0bf6f00b3bcc8d5b5ff0054ccddd867931057f10b75c74147bd94c54ea306c5"
     },
     {
-      "id": 292,
+      "id": 317,
       "kind": 2,
       "path": "sound/music/encounter-enemy.pcm",
       "bytes": 986112,
@@ -15067,7 +15979,7 @@
       "sha256": "028f04ce000e58361ef6d19c21143cf225ddd1b435964097363e1a95d7a5f4f9"
     },
     {
-      "id": 293,
+      "id": 318,
       "kind": 2,
       "path": "sound/music/good-morning.pcm",
       "bytes": 3754284,
@@ -15075,7 +15987,7 @@
       "sha256": "e6e6ccd4f0a7b8a1da9611cfbf069f7f7798de78a86e9187a797da4be1d096ea"
     },
     {
-      "id": 294,
+      "id": 319,
       "kind": 2,
       "path": "sound/music/house-music.pcm",
       "bytes": 6003820,
@@ -15083,7 +15995,7 @@
       "sha256": "beb4d21f7e43e93dd8c1f401eb2fe8e9a72d4e33b38ef36dfabbeabd50202ae1"
     },
     {
-      "id": 295,
+      "id": 320,
       "kind": 2,
       "path": "sound/music/naming-mother-earth-piano.pcm",
       "bytes": 20173824,
@@ -15091,7 +16003,7 @@
       "sha256": "fea132a11b00cd2092e844ec8408a5390f2db62aab0524c2302ab950f8cc2432"
     },
     {
-      "id": 296,
+      "id": 321,
       "kind": 2,
       "path": "sound/music/podunk-1388543241.pcm",
       "bytes": 18825984,
@@ -15099,7 +16011,7 @@
       "sha256": "2187318aac19e09726d0be5496cde4c05c89c53206af7543e08d2bf9e601cc5d"
     },
     {
-      "id": 297,
+      "id": 322,
       "kind": 2,
       "path": "sound/music/podunk-2369254644.pcm",
       "bytes": 12502108,
@@ -15107,7 +16019,7 @@
       "sha256": "bed99c9f303eb1473dced82940542a961e4c124474166b0a9ca5a3278e3c0733"
     },
     {
-      "id": 298,
+      "id": 323,
       "kind": 2,
       "path": "sound/music/podunk-364625705.pcm",
       "bytes": 9900948,
@@ -15115,7 +16027,7 @@
       "sha256": "7a8197f297ea06a8e54d4f6ea45eb21b820a46c71dbf74e665efb84474a307b9"
     },
     {
-      "id": 299,
+      "id": 324,
       "kind": 2,
       "path": "sound/music/podunk-582446421.pcm",
       "bytes": 19255848,
@@ -15123,7 +16035,7 @@
       "sha256": "761c33bf0ff1982ec96390e9715c62b8f0cf9ba2ee2b013c2e52afca41372fef"
     },
     {
-      "id": 300,
+      "id": 325,
       "kind": 2,
       "path": "sound/music/podunk-61517992.pcm",
       "bytes": 16934400,
@@ -15131,7 +16043,7 @@
       "sha256": "ae4e6b586382e0619d7159529923a4c0206cd33d946b68683c6a93b54dc1309a"
     },
     {
-      "id": 301,
+      "id": 326,
       "kind": 2,
       "path": "sound/music/poltergeist.pcm",
       "bytes": 10137900,
@@ -15139,7 +16051,7 @@
       "sha256": "fb9d28132973477cb13d5d87ed9ec61754c92225ff1e18d45663a9cdb53462f1"
     },
     {
-      "id": 302,
+      "id": 327,
       "kind": 2,
       "path": "sound/music/title-mother-earth.pcm",
       "bytes": 22311936,
@@ -15330,7 +16242,7 @@
     }
   ],
   "inputs": {
-    "content/podunk-bundle-recipe.json": "eed8a024c21cf7a4f7b16bfae721be6ca54598c277292e9d8140a4cf388d9a1f",
+    "content/podunk-bundle-recipe.json": "824a66835e62b11f445d15048d6aa64f700ab9a3266ad87bc24f94a118c63416",
     "content/field-battle-bg-resources.json": "0dd492851fe778764abdfa7ee5623d76e3b10f995c2f16f744a362e20d8909ee",
     "tools/field_battle_bg_resources.py": "e763b314a9c4cb497d9dbf2b1c29f9b652ae9114475da82411db6041862e5753",
     "content/native-field-character-load.json": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
@@ -15411,8 +16323,8 @@
     "tools/field_emotes.py": "2ae4f7719352b1ff38a2c891748369efe3a6ae3df60f81bdae19b407eeeaa51d",
     "content/native-field-enemy.json": "47e5509c0fe5cefaa55f961858592b7a99a3d74e831dcbcc2c20b030c9027b3b",
     "tools/field_enemy.py": "aff6acf0102176a6bcc0963d96e092837b540f7546aa45beb4e700979eb09b04",
-    "content/native-field-interact-dialog.json": "5ea5a83a76c42af724076a14fcc1abfdab3f3de33125974c43ed052abb0939b3",
-    "tools/field_interact_dialog.py": "1869e734e8e9ed2669267b8d6b58dd8c23e0f2df741858a15dbff7e5337bfd3b",
+    "content/native-field-interact-dialog.json": "8d937652421901c20889124da32101f49ac44e34768a4b9ec04c661cba8e5ad7",
+    "tools/field_interact_dialog.py": "d00dbd5522e45a4b1047faf561b5fb2471e202c5e947e6b4863b5ae9dfc5a403",
     "content/native-field-melody-background.json": "b8ccd742850fe26176347864050cd4258a3fd0888ac46aeb20a00bd807ffe40f",
     "tools/field_melody_background.py": "7b343a8b1ea0cd02b8ea6fa44ed9abc2c22061fc46c06454b345b69f6bdb64f5",
     "content/native-field-music-changer.json": "79065ecb3aef9a4b5b382fbccccdbe82a8b590274fec8c2a846873aa37796e71",
@@ -15426,7 +16338,7 @@
     "content/native-field-programme.json": "9dc30c39b061ba45c76750a7e448dc8efba1c789ae7b86b07b05fe51331fddf2",
     "tools/field_programme.py": "1c96c6bbc6f4dc2530f130141210314208c3d7da941e1ab0c225fbc0e92bc116",
     "content/native-field-prompts.json": "42ecbe30d3dfe1dd882245fea419ae3794c485a20e4d261172e38d2827ba1062",
-    "tools/field_prompts.py": "02e1e0d676d0b8bc513d4719ed0dc62c8db044128359d49d0695f3000edd2ef0",
+    "tools/field_prompts.py": "f33bcb03c58b349e23926c0f21c108cce9bbe795421e87a2623df19f43792bfc",
     "content/native-field-scene-actions.json": "0d706b36df7e2b409502514dbb6ad6d446aade5fc3ddf961ff12a494ba60f1f6",
     "tools/field_scene_actions.py": "df93e160951d8446a2426c5ae2ae79e33388e50c5a6e4e45c608b2a994cd9969",
     "content/native-field-sprite-bridge.json": "7b139a6c597663a60828d2abdd2a0497fa40bf9668020152e4af624d6672aee7",
@@ -15511,8 +16423,8 @@
     "tools/player_named_sfx.py": "b2aeaed339eee7e3f4367f55cdb98fbe49f0c03cdffda671f13e60528f762fba",
     "content/native-dialogue-actor-resource.json": "7ca5a1b66c8c70f8e13c9a8474bb943804d99b376012ca41db695fa6cc4eb533",
     "tools/dialogue_actor_resource.py": "4be378e4dbd916d14997ca2d4b9af2f4613e8fcdf555c2e915984621f10f475b",
-    "content/native-house-reentry.json": "8225b0b87cb939cae5cb188fea253755cd7c9b21160e65e12bb296ec25b3ea13",
-    "tools/house_reentry.py": "e4550a22f57cd95cdb1fdf3dc058f839a41b51b265a4a2c579976538fc3074cb",
+    "content/native-house-reentry.json": "127045872229c42f34957818be98d31703e47c7b9d0172ddad08ceb05dd1e90d",
+    "tools/house_reentry.py": "ee2ed888e2658e8a77113d6a8d4ebcf5331ec56146eb7bfde905bbddf242bed9",
     "content/native-house-geometry.json": "c62b89237db59d8f69180fa51c18c9a84e873608acee86844f3f44a4a9a8a037",
     "tools/house_geometry.py": "a200aa9bbce4a0e5dcc272c08564b6f0d479f3f8770faa86607dedf374b88b9a",
     "content/native-house-node-tree.json": "2f00ad4969256d37bad977fee9ff52a16443158c3b603c16aae787ed7d3fc978",
@@ -15535,6 +16447,16 @@
     "tools/house_return_canvas.py": "e90d8164164e461d2ed6cf46940196a6693341f6294c8596549db21fa5b342e3",
     "content/native-house-return-tint.json": "3939c884b9c5ec76209fb867719c3093d1a31036ca146d6daac240d700a5b7af",
     "tools/house_return_tint.py": "d87d946335f3d4a3b552e671b1ebe63b8c6293637c69e4ab2c8a6a6065ad913e",
+    "content/native-house-return-button-prompt.json": "e000456f7cfc0ca5cfbaa53791dc865b31f4a0e367b1ac2a573504025ad822ca",
+    "tools/house_return_button_prompt.py": "e8bb7f4c5d07f1a55717ad32c7340227feb1f4ca2e69bad5bfd51fab54e10640",
+    "content/native-house-return-controls.json": "6b6d11b7e66dec7117dc7d9385412def1362fd2e9fa92815b53e7e83d2505de5",
+    "tools/house_return_controls.py": "5c4d90bdb102cc73c706eab5f4a02b183750713f82687bb758c0291299461b61",
+    "content/native-house-return-interact-dialog.json": "32cd69978e18b61c5d04d7340877b1353ac122325cbf6478979188f0403de6cb",
+    "tools/house_return_interact_dialog.py": "2d4dcf721ef9095fe341fa2ec0da0086f4028f1ace1a14713f2ad98659721af6",
+    "content/native-house-return-room-programmes.json": "782546e80424d57c3a4100a5dd7fdf9e203d17aa5c05bb7f52f00e1030c9bfe4",
+    "tools/house_return_inspection_programme.py": "05b6e46570598f4df7ad0f6f3abf7a79b9ed8a9e1694c791b71ecd3f242553a8",
+    "content/native-house-inspection-reentry.json": "27d99e9207f6cfde5a33592633a759f947600db6e512fa5c370d6737b10a40c6",
+    "tools/house_inspection_reentry.py": "f4905ae0e4493cee7299782dc9847afc3d1986288c3254b2ad2f7b2a14b0fc6e",
     "content/podunk-scene-assets.json": "834d267b496fb653a5ed2f3cf684d2d2ee9944bb90029778060a13f8b15eed2e",
     "content/podunk-scene-map-assets.json": "f3b262436a968c0fd40d0ef9e5b9535f2fe86a5bb89f8c0d02c46a6b64089149",
     "content/native-audio.json": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910",
@@ -15554,6 +16476,7 @@
     "content/asset-receipts/graphics/objects/payphone/source.json": "b2144766de57d3cb3645ee892208169b5260ff6f8d3969e7b1b494c6a7a8699e",
     "content/asset-receipts/graphics/objects/vending-machine/source.json": "3032d7f7a56e2f86f5b7aae0dfdd4e987a192641bea78768d26d569e5c250aac",
     "content/asset-receipts/graphics/objects/dead-bush/source.json": "777800cc396317af9fbd323082f19b6ca2e7d5c15a256b61512ac5abc3f9a088",
+    "content/asset-receipts/graphics/battle/pillow/world-source.json": "dc1f132d2070f1e763b13d26b62b752a24f68d6380c8e198afaa002eec4f4653",
     "content/asset-receipts/graphics/materials/source.json": "52521810362998c89fe32ce1a7d0f370b6e732e58cc6ab365306a6c69a58e0a4",
     "content/asset-receipts/graphics/player/source.json": "7d8b48772a0de91181a61f7555b6fe4478580af04277e7dd9a91bb71ffc719c3",
     "content/asset-receipts/graphics/player/resources-source.json": "402b2b9d6e2aef86c8ee614e937a0276d22f872cc74fb030ffc0c577bbd0f6ee",
@@ -17273,7 +18196,42 @@
     "Graphics/Objects/Common/Briefcase.png.import": "f3dc75c3716172baae8d53e21de64ec229a32af8878b141e6c50ba8082adf5a8",
     "Graphics/Objects/Doors/Door_Dark.png.import": "85a7c87f12e637594258185aaf5d60866b99cd0c7a4918f20f837fce60ef2efd",
     "Graphics/Objects/Doors/Door_Dark_Locked.png.import": "bd0c5d6dcba3d9aaec2a95a3f0a73b6972666e15d23b672b016b365bee57440b",
-    "Graphics/Rooms/Podunk/Ninten's House.png.import": "3474b1fbe0835b6e0df908968c0f06d27253ddad6152f19d81dd5a9447e3bdb0"
+    "Graphics/Rooms/Podunk/Ninten's House.png.import": "3474b1fbe0835b6e0df908968c0f06d27253ddad6152f19d81dd5a9447e3bdb0",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Downstairs TV.yaml": "9e6b05d099e0104751994e6eb947ed31a13009c4684fbf92cb114c88ba039c4e",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Electric Guitar.yaml": "b5b50deba2216aab659cac7dea5386f692d59d3504b648d595762d04a1d2c166",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/NES.yaml": "3732040066ff94144a48bdbac880eaa888dc2abb3a52ded902082573f1b85cd4",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Old Photos.yaml": "21339eb0d16d37d7a0395636dd5078c28d76652296a4f5103b093469f3974810",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/Pinboard.yaml": "2ca21079ca52fe65a9c5c5a2e97027134ad6e0fdab0da9bf968fa52e974ba09f",
+    "Data/Dialogue/Podunk/non-person text/Ninten's house/TV.yaml": "0d66f425cd7a9f853448cdd8a23581cd05347a5a78d0d41cfdf92c04b557d78e",
+    "Data/Dialogue/Reusable/nottime.yaml": "abc69fea985155bbc16f1e6cc5732307c0410bf6eb296d205b5cdc79a241f383",
+    "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml": "2fa136feb0b4ce7ff7c48de14351207d4a47eddc5cd99683cd372c12a557fc36",
+    "Maps/Cutscenes/Mt Itoi Landscape.tscn": "c334e9ab97f842c9b478430b3ca4ecc0958560aaf2dd1710ec9244e885f69340",
+    "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
+    "Audio/Sound effects/M3/heal_se.wav": "d8712d29a0ef6feec927753dd897c136ae58e940b6e67b03693ecde2b6345021",
+    "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml": "b04e1ba848ee5c83f60781f723fb04f051c9be8242d8e68789104bd11f87a44b",
+    "Data/Dialogue/Podunk/cutscenes/doll_defeated.yaml": "50ed3ecac93141f5ddbd1c3928dc8e5a1cb9ed8c34ce294f6a94a972720f2cba",
+    "Data/Dialogue/Podunk/cutscenes/mimmie_ignore.yaml": "b9e930948fd7eb54169c048426c125190f8e90ac10974368e54e75785fe7400a",
+    "Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav": "3f057e7ca1edc738d3c6fc99deed8de18311664884488ea72bc92bdd390e1c90",
+    "Audio/Sound effects/M3/SMAAAASH.wav": "ab087702670dd87d46207b48429b9c9d1fa5daec0f74b0b10c9b1fe0e9a8c47f",
+    "Audio/Sound effects/M3/SMAAAASH.wav.import": "2670b26676ad536fb2d45147a675cee4edbbe640dca449b33de0fa0b35cf331e",
+    "Audio/Music/Melodies/melody1.mp3.import": "3f7d52ded59d4efae922628f9716fd8c1ca7f7d88ba6774b2065095c83ac7f23",
+    "Audio/Sound effects/M3/heal_se.wav.import": "1b82db1b468075e83174548e87a7150b71ca3aa039063f1c47f1d1fdf578256b",
+    "Scripts/UI/Title screen.gd": "d6605d7471fd1524dda570b1004e54783aa7e0999e35c721ee0fb4baecd2d401",
+    "Audio/Sound effects/bash.mp3.import": "1e3241d9ac7d026dffe39041ac76131052b9eb3ef8f8ca92f816190d095b31d9",
+    "Audio/Music/Battle Encounter/Encounter Enemy.mp3.import": "27cf9d7f6a8b02fbe83d397c925a3b6679361c8b0e4718e06dbf7a844aabe663",
+    "Audio/Music/Battle Encounter/Encounter Boss.mp3.import": "e07f81afe34f32ecd03fb1f65a88305b047e208004de2dbf662102c54591302a",
+    "Audio/Sound effects/text/Adult.mp3.import": "416f91e675ceb7bdd87850942624389e82e689f7e8bd6e1b74b0ec75454f3487",
+    "Audio/Music/Mother Earth.mp3.import": "dcc0a020300706b28f4c540a8922eb71f10c58b2bc8f1773efb140c285e18409",
+    "Data/Dialogue/Podunk/cutscenes/carol_call.yaml": "ac4bce3b1a7deff57f6ffb0d5a7411ae24e3f1e4e5afc9ca6fbec0aeb2517686",
+    "Data/Dialogue/Podunk/cutscenes/carol_phone.yaml": "a65909fb950988db8dd698fcc33a46417f88b02f9b8a2ab382b6ab7d4adc3198",
+    "Data/Dialogue/Podunk/dad_poltergeist.yaml": "a8f212b17fbd1806f223e13146b66c6d96801f98d993b166999d765d953b585b",
+    "Data/Dialogue/Reusable/phonenoanswer.yaml": "b564f46fb01b87cd186301b38e3508678451625a047cdc9ae6e8e4b6744a2646",
+    "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml": "6e100c4ed8dc5cfd1fc6f88bc79ef9198d57c32721c5a9690d38e2e9c59c2f17",
+    "Data/Dialogue/Podunk/cutscenes/minnie_leave.yaml": "6cc6d9c3c8f7eb2517dd945369b272b315e344e0af5afd0721a6b485894d053a",
+    "Data/Dialogue/Podunk/cutscenes/minnie_door.yaml": "0c07ab7c8f6c64708c9f41571429967827ba7ac82d8dc72a156aad84d17cd07a",
+    "Translations/TranslatedText/dialogue_Podunk_non-person text_Ninten's house - sheet.csv": "c554acd6981a3a745d2a948433cdda737d1aa83e4793aa3a067cea9fa9a747fc"
   },
   "semantics": [
     "Complete resource closure only; 2156 actual Ready callbacks remain consumer-owned",

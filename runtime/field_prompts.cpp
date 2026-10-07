@@ -33,7 +33,8 @@ FieldPromptInstance *FieldPromptRuntime::get(uint32_t id) {
 bool FieldPromptRuntime::initialize(const FieldPromptData &d, FieldPromptHost h,
                                     std::string &e) {
   if (!d.valid() || !h.observe || !h.key_name || !h.connect || !h.publish ||
-      !h.visibility || !h.hide_signal) {
+      !h.visibility || !h.hide_signal ||
+      (h.completion_owner && !h.native_animation)) {
     e = "Field prompt actual source hosts absent";
     return false;
   }
@@ -42,6 +43,9 @@ bool FieldPromptRuntime::initialize(const FieldPromptData &d, FieldPromptHost h,
   instances_.clear();
   had_ready_ = false;
   last_ready_ = 0;
+  finishing_ = 0;
+  finishing_clip_ = {};
+  finished_slot_ = resumed_press_ = false;
   error_.clear();
   e.clear();
   return true;
@@ -52,9 +56,17 @@ bool FieldPromptRuntime::create(uint32_t id) {
   FieldPromptInstance s;
   s.id = id;
   s.enabled = data_->record(id)->enabled;
+  s.offset = data_->record(id)->offset;
   s.properties = data_->initial();
   instances_.emplace(id, std::move(s));
   return true;
+}
+bool FieldPromptRuntime::assign_offset(uint32_t id,Vec2 value,std::string&e){
+  auto i=instances_.find(id);
+  if(!data_||!data_->record(id)||i==instances_.end()||!error_.empty()||!finite(value)){
+    e="Prompt actual exported offset field assignment rejected";return false;
+  }
+  i->second.offset=value;e.clear();return true;
 }
 bool FieldPromptRuntime::assign_source_material(
     uint32_t id, const std::array<float, 4> &flash, float fm, float gm,
@@ -89,7 +101,7 @@ bool FieldPromptRuntime::observe(uint32_t id, FieldPromptObservation &o) {
 }
 bool FieldPromptRuntime::reset_scale(FieldPromptInstance &s,
                                      const FieldPromptObservation &o) {
-  const auto &v = data_->record(s.id)->offset;
+  const auto &v = s.offset;
   s.position = {v.x / o.parent_scale.x, v.y / o.parent_scale.y};
   s.scale = {1 / o.parent_scale.x, 1 / o.parent_scale.y};
   if (!finite(s.position) || !finite(s.scale))
@@ -241,7 +253,43 @@ bool FieldPromptRuntime::press(uint32_t id) {
     return true;
   s->hidden = true;
   s->pressing = true;
-  return play(*s, FieldPromptClipRole::Press) && publish(*s);
+  if (!play(*s, FieldPromptClipRole::Press))
+    return false;
+  if (host_.completion_owner &&
+      !host_.completion_owner->arm_press(*this, id, error_))
+    return false;
+  return publish(*s);
+}
+bool FieldPromptRuntime::source_animation_finished(uint32_t id,
+    FieldPromptClipRole clip, std::string &e) {
+  auto *s = get(id);
+  if (!s || !host_.completion_owner || finishing_ != id ||
+      finishing_clip_ != clip || finished_slot_ ||
+      !host_.completion_owner->source_completion_live(*this,id,clip,false,e)) {
+    if (e.empty()) e = "Prompt persistent completion source scope rejected";
+    return false;
+  }
+  finished_slot_ = true;
+  if (clip == FieldPromptClipRole::Show && s->visible() &&
+      !play(*s,FieldPromptClipRole::Float)) {
+    e = error_; return false;
+  }
+  e.clear(); return true;
+}
+bool FieldPromptRuntime::source_press_resume(uint32_t id,
+    FieldPromptClipRole clip, std::string &e) {
+  auto *s = get(id);
+  if (!s || !host_.completion_owner || finishing_ != id ||
+      finishing_clip_ != clip || clip != FieldPromptClipRole::Press ||
+      !s->pressing || !finished_slot_ || resumed_press_ ||
+      !host_.completion_owner->source_completion_live(*this,id,clip,true,e)) {
+    if (e.empty()) e = "Prompt FunctionState resume source scope rejected";
+    return false;
+  }
+  resumed_press_ = true;
+  s->pressing = false;
+  if (!host_.hide_signal(id,error_)) { e = error_; return false; }
+  e.clear(); return true;
 }
 bool FieldPromptRuntime::apply(FieldPromptInstance &s, FieldPromptProperty p,
                                const std::array<float, 4> &v) {
@@ -347,6 +395,21 @@ bool FieldPromptRuntime::idle_frame(uint32_t id, float dt) {
   if (from < c->length && to == c->length) {
     s->playing = false;
     const auto role = c->role;
+    if (host_.completion_owner) {
+      if (finishing_ || !host_.native_animation)
+        return fail("Prompt source completion reentry/native owner rejected");
+      finishing_ = id; finishing_clip_ = role;
+      finished_slot_ = resumed_press_ = false;
+      const bool emitted = host_.native_animation(id,role,2,error_);
+      const bool consumed = finished_slot_ &&
+          (role != FieldPromptClipRole::Press || resumed_press_);
+      finishing_ = 0; finishing_clip_ = {};
+      finished_slot_ = resumed_press_ = false;
+      if (!emitted) return false;
+      if (!consumed)
+        return fail("Prompt source finished slot/FunctionState not consumed");
+      return publish(*s);
+    }
     if (host_.native_animation &&
         !host_.native_animation(s->id, role, 2, error_))
       return false;

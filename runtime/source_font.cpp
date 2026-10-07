@@ -1,6 +1,7 @@
 #include "encore/source_font.hpp"
 #include "encore/crc32.hpp"
 #include "encore/utf8.hpp"
+#include "global_yaml_file_hash.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -192,6 +193,8 @@ bool SourceFontCatalog::load_bytes(const uint8_t *data, size_t size,
   }
   if (!r.good || r.cursor != r.size)
     return fail(error, "Trailing/truncated source font metadata");
+  candidate.binary_sha_=upstream::global_yaml_bytes_sha256(
+      std::string_view(reinterpret_cast<const char*>(data),size));
   *this = std::move(candidate);
   error.clear();
   return true;

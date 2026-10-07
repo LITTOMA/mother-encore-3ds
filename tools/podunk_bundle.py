@@ -51,7 +51,7 @@ def sources(d):
 
 def checked_pack(spec):
  require(safe(spec['path'])and spec['path'].startswith('data/'),'Pack path')
- ip=ROOT/spec['ir'];d=read(ip);check_declared_assets(d);require(d.get('commit')==PIN,'Pack source pin '+spec['ir'])
+ ip=ROOT/spec['ir'];d=read(ip);check_declared_assets(d);require(d.get('commit',d.get('upstream_commit'))==PIN,'Pack source pin '+spec['ir'])
  m=importlib.import_module('tools.'+spec['producer']);raw=(ROOT/'romfs'/spec['path']).read_bytes()
  staged={}
  if hasattr(m,'stage_files'):staged=m.stage_files(ROOT/'romfs')
@@ -69,16 +69,19 @@ def checked_pack(spec):
  require(not staged or staged.get(Path(spec['path']))==raw,'Producer stage binding differs '+spec['path'])
  pin=raw.find(bytes.fromhex(PIN),0,160);require(pin>=0,'Missing actual source pin '+spec['path'])
  header_size=struct.unpack_from('<I',raw,12)[0]
- block=header_size==128
+ native_room=raw[:8]==b'ENCRMD01'
+ block=header_size==128 and not native_room
  family_offset=24 if block and 0x454e0000<=struct.unpack_from('<I',raw,24)[0]<=0x454effff else 28 if block else 20 if 0x454e0000<=struct.unpack_from('<I',raw,20)[0]<=0x454effff else 28
  family=struct.unpack_from('<I',raw,family_offset)[0]
  if not 0x454e0000<=family<=0x454effff:family=0 # original magic-only formats have no numeric family
  capability=struct.unpack_from('<I',raw,family_offset+4)[0]if family and (block or family_offset==20)else struct.unpack_from('<I',raw,20)[0]
  if raw[:8]==b'ENCFID01':capability=struct.unpack_from('<I',raw,24)[0]
  if raw[:8]in(b'ENCSIG01',b'ENCPRN01',b'ENCSCL01',b'ENCSLN01'):capability=struct.unpack_from('<I',raw,12)[0]
+ if raw[:8]==b'ENCHBPR1':family=struct.unpack_from('<I',raw,20)[0];capability=struct.unpack_from('<I',raw,12)[0]
+ if native_room:family=struct.unpack_from('<I',raw,28)[0];capability=struct.unpack_from('<I',raw,36)[0]
  require(0<capability<65536,'Capability schema '+spec['path'])
  context=m.bundle_context(d)if hasattr(m,'bundle_context')else d
- ss=sources(d);scene=context.get('scene',context.get('source_save',context.get('owner',context.get('script',''))))
+ ss={p.removeprefix('upstream/MOTHER-Encore/'):h for p,h in d['provenance']['sources'].items()if p.startswith('upstream/MOTHER-Encore/')}if native_room else sources(d);scene=context.get('scene',context.get('source_save',context.get('owner',context.get('script',''))))
  scene=scene or read(RECIPE)['scene']
  source=context.get('source_sha256',context.get('scene_sha256',ss.get(scene,context.get('script_sha256'))))
  if not source and not block:
@@ -89,7 +92,7 @@ def checked_pack(spec):
  if block:
   sid=struct.unpack_from('<I',raw,36)[0];source=raw[pin+20:pin+52].hex()
  require(sid and re.fullmatch('[0-9a-f]{64}',source),'Actual identity '+spec['path'])
- entry=dict(spec,identity_kind=1 if block else 2,magic=raw[:8].decode(),format=struct.unpack_from('<I',raw,8)[0],family=family,capability=capability,rules=d['rules']if type(d.get('rules'))is int else 1,scene=scene,scene_id=sid,source_sha256=source,ir_sha256=sha(ip),bytes=len(raw),crc32=zlib.crc32(raw),sha256=hashlib.sha256(raw).hexdigest(),original_header=raw[:128].hex(),sources=ss)
+ entry=dict(spec,identity_kind=3 if native_room else 1 if block else 2,magic=raw[:8].decode(),format=struct.unpack_from('<I',raw,8)[0],family=family,capability=capability,rules=d['rules']if type(d.get('rules'))is int else 1,scene=scene,scene_id=sid,source_sha256=source,ir_sha256=sha(ip),bytes=len(raw),crc32=zlib.crc32(raw),sha256=hashlib.sha256(raw).hexdigest(),original_header=raw[:128].hex(),sources=ss)
  return entry,staged,d
 
 def one_pack(spec):
@@ -176,8 +179,8 @@ def checked_audio():
  return out
 
 def derive():
- recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==102,'Bundle recipe scope')
- require([r['role']for r in recipe['packs']]==list(range(1,103))and len({r['name']for r in recipe['packs']})==102 and len({r['path']for r in recipe['packs']})==102,'Bundle role identity/coverage')
+ recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==107,'Bundle recipe scope')
+ require([r['role']for r in recipe['packs']]==list(range(1,108))and len({r['name']for r in recipe['packs']})==107 and len({r['path']for r in recipe['packs']})==107,'Bundle role identity/coverage')
  with concurrent.futures.ThreadPoolExecutor(max_workers=4)as pool:rows=list(pool.map(one_pack,recipe['packs']))
  packs=[];assets=checked_audio();inputs={RECIPE.relative_to(ROOT).as_posix():sha(RECIPE)};all_sources={}
  for entry,staged,d in rows:
@@ -203,7 +206,9 @@ def derive():
  require(len(lifecycle['roster'])==2156 and all(v['role']in mapping for v in lifecycle['roster']),'Uncovered source lifecycle')
  art=[]
  for i,(p,b)in enumerate(sorted(assets.items()),1):
-  kind=6 if p.endswith('.encmusic')else 5 if p.endswith('.encaudio')else 1 if p.endswith('.t3x')else 2 if p.endswith('.pcm')else 3 if p.endswith('.shbin')else 4 if p.startswith('fonts/')else 0
+  # Font atlases use the same tex3ds container as graphics, but retain the
+  # typed Font role and fonts/ directory of their actual source owner.
+  kind=4 if p.startswith('fonts/')else 6 if p.endswith('.encmusic')else 5 if p.endswith('.encaudio')else 1 if p.endswith('.t3x')else 2 if p.endswith('.pcm')else 3 if p.endswith('.shbin')else 0
   require(kind,'Unsupported asset schema '+p)
   art.append(dict(id=i,kind=kind,path=p,bytes=len(b),crc32=zlib.crc32(b),sha256=hashlib.sha256(b).hexdigest()))
  base=read(ROOT/'content/podunk-scene.json')

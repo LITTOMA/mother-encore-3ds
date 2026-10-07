@@ -10,6 +10,7 @@
 #include "encore/basement_actor_assets.hpp"
 #include "encore/field_door.hpp"
 #include "encore/field_npc.hpp"
+#include "encore/field_interact_dialog.hpp"
 #include "encore/house_reentry.hpp"
 #include <set>
 namespace encore::upstream {
@@ -29,6 +30,30 @@ struct HouseSourceNpcProgramme {
  FieldObjectId object=0;
  uint32_t source_id=0,original_npc=house_no_index,programme=house_no_index;
  bool thoughts=false;
+};
+class HouseSourceInteractProgrammeCaller;
+struct HouseSourceInteractProgramme {
+ const HouseSourceInteractProgrammeCaller*caller=nullptr;
+ const FieldInteractRuntime*source=nullptr;
+ const FieldInteractData*data=nullptr;
+ const FieldNodeTreeRuntime*tree=nullptr;
+ const FieldNodeTreeData*tree_data=nullptr;
+ const FieldGlobalRegistry*registry=nullptr;
+ const HouseReentryData*reentry=nullptr;
+ const FieldDoorData*doors=nullptr;
+ HouseView house{};
+ FieldObjectId object=0;
+ uint32_t source_id=0,programme=house_no_index;
+ std::string_view dialogue;
+ bool thoughts=false;
+};
+// Reads the current InteractDialog invocation and its actual flag selection.
+// A caller cannot replace this with a copied programme index or an NPC body.
+class HouseSourceInteractProgrammeCaller {
+public:
+ virtual ~HouseSourceInteractProgrammeCaller()=default;
+ virtual bool observe(const HouseSourceInteractProgramme&,
+                      HouseSourceInteractProgramme&,std::string&)const=0;
 };
 enum class HouseProgrammePhase:uint8_t {Closed,Opening,WaitingReady,Starting,Running,Failed};
 // Read from the actual native programme owner. A default receipt cannot admit
@@ -83,6 +108,13 @@ public:
  // The caller has performed its source mark_seen/pauseForInteract before open.
  bool admit_source_npc_programme(const HouseSourceNpcProgramme&,std::string&)const;
  bool request_source_npc_programme(const HouseSourceNpcProgramme&,std::string&);
+ bool admit_source_interact_programme(const HouseSourceInteractProgramme&,std::string&)const;
+ bool request_source_interact_programme(const HouseSourceInteractProgramme&,std::string&);
+ // Borrow the existing source effects; these getters execute no inventory or VM.
+ DrawerProgramView drawer_source()const{return drawer_;}
+ DrawerHost*drawer_effects()const{return drawer_effects_;}
+ const OpeningWorld*world_owner()const{return world_;}
+ std::string_view source_player_nickname()const{return player_nickname();}
  bool restore_seen_dialogue(const std::set<uint32_t>&);
  bool set_player_nickname(std::string_view);
  bool bind_phone(PhoneRuntime&);

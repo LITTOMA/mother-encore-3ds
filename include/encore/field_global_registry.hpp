@@ -81,6 +81,7 @@ public:
  virtual const char*resource_class()const=0;
 };
 class FieldGlobalRegistry;
+class FieldGlobalDataItemSourceReference;
 // A real source Object, separately owned from Node and Reference lifetimes.
 // Its adapter reads the same allocated source body; it never supplies Ready.
 class FieldGlobalNativeObject {
@@ -101,6 +102,9 @@ public:
  virtual const char*native_class()const=0;
  virtual const FieldGlobalRegistry*registry()const=0;
  virtual bool checked_source_hash(std::string_view,std::array<uint8_t,32>&)const=0;
+ // Typed Item source access keeps the console's no-RTTI policy. Other actual
+ // Reference owners cannot be treated as Item arguments by class-name text.
+ virtual const FieldGlobalDataItemSourceReference*item_source_reference()const{return nullptr;}
  virtual bool dispatch(const FieldDeferredMessage&,std::string&e){e="Actual native Reference method is unsupported";return false;}
 };
 struct FieldGlobalRegistryHost {

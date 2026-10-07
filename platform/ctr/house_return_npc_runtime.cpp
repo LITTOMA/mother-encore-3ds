@@ -18,14 +18,22 @@ bool inverse(const FieldTransform&t,Vec2 p,Vec2&out){
   out={(t[1].y*p.x-t[1].x*p.y)/det,(-t[0].y*p.x+t[0].x*p.y)/det};
   return std::isfinite(out.x)&&std::isfinite(out.y);
 }
-struct SourceCall {
-  uint32_t&source;bool&thoughts;size_t&depth;
-  uint32_t previous;bool previous_thoughts;
-  SourceCall(uint32_t&s,bool&t,size_t&d,uint32_t id,bool th)
-      :source(s),thoughts(t),depth(d),previous(s),previous_thoughts(t){s=id;t=th;++d;}
-  ~SourceCall(){source=previous;thoughts=previous_thoughts;--depth;}
-};
 }
+struct HouseReturnNpcRuntime::Invocation {
+  HouseReturnNpcRuntime&owner;uint32_t source,programme,npc,generation;
+  bool thoughts;SourceMethod method;Prefix prefix;
+  Invocation(HouseReturnNpcRuntime&o,uint32_t id,bool th,SourceMethod m)
+      :owner(o),source(o.source_call_),programme(o.prefix_programme_),npc(o.prefix_npc_),
+       generation(o.prefix_generation_),thoughts(o.thoughts_call_),
+       method(o.source_method_),prefix(o.prefix_){
+    o.source_call_=id;o.thoughts_call_=th;o.source_method_=m;++o.callback_depth_;
+    o.prefix_=Prefix::None;o.prefix_programme_=o.prefix_npc_=kRoomNoIndex;o.prefix_generation_=0;
+  }
+  ~Invocation(){owner.source_call_=source;owner.thoughts_call_=thoughts;
+    owner.source_method_=method;owner.prefix_=prefix;owner.prefix_programme_=programme;
+    owner.prefix_npc_=npc;owner.prefix_generation_=generation;--owner.callback_depth_;}
+  Invocation(const Invocation&)=delete;Invocation&operator=(const Invocation&)=delete;
+};
 const FieldNpcDescriptor*HouseReturnNpcRuntime::descriptor(uint32_t id)const{
   if(!in_.data)return nullptr;
   for(const auto&d:in_.data->npcs())if(d.id==id)return &d;
@@ -112,11 +120,13 @@ bool HouseReturnNpcRuntime::result(bool ok,std::string&e){
   e.clear();return true;
 }
 bool HouseReturnNpcRuntime::invoke(FieldObjectId id,bool thoughts,
-    const std::function<bool()>&call,std::string&e){
+    const std::function<bool()>&call,std::string&e,SourceMethod method){
   uint32_t stable=0;if(!actual(id,stable,e))return false;
   if(source_call_&&source_call_!=stable)
     return reject(e,"House NPC recursive callback crossed source receivers");
-  SourceCall guard(source_call_,thoughts_call_,callback_depth_,stable,thoughts);
+  if(method!=SourceMethod::Other&&callback_depth_)
+    return reject(e,"House NPC nested interaction source prefix rejected");
+  Invocation guard(*this,stable,thoughts,method);
   return result(call(),e);
 }
 bool HouseReturnNpcRuntime::borrows(std::string&e)const{
@@ -181,7 +191,8 @@ bool HouseReturnNpcRuntime::context(uint32_t stable,FieldNpcContext&out,std::str
 bool HouseReturnNpcRuntime::programme_input(FieldObjectId object,uint32_t program,bool thoughts,
     HouseSourceNpcProgramme&out,std::string&e)const{
   uint32_t stable=0,npc=0,mapped_program=0;
-  if(!callback_depth_||!actual(object,stable,e)||source_call_!=stable||thoughts_call_!=thoughts||
+  if(callback_depth_!=1||source_method_!=SourceMethod::Interact||
+      !actual(object,stable,e)||source_call_!=stable||thoughts_call_!=thoughts||
       program>=in_.house->world.content().program_count())
     return reject(e,"House NPC programme receipt is outside its live actual source invocation");
   const auto room=in_.house->world.content();
@@ -192,6 +203,28 @@ bool HouseReturnNpcRuntime::programme_input(FieldObjectId object,uint32_t progra
   r.reentry=&in_.sources->reentry();r.doors=in_.doors;r.house=in_.text;
   r.object=object;r.source_id=stable;r.original_npc=npc;r.programme=program;r.thoughts=thoughts;
   out=r;e.clear();return true;
+}
+bool HouseReturnNpcRuntime::before_open(const HouseSourceNpcProgramme&r,
+    uint32_t generation,std::string&e)const{
+  HouseSourceNpcProgramme actual;FieldObjectId talker=0;
+  if(prefix_!=Prefix::BeforeOpen||thoughts_call_||r.thoughts||
+      prefix_programme_!=r.programme||prefix_npc_!=r.original_npc||
+      prefix_generation_!=generation||!in_.house||
+      in_.house->world.source_generation()!=generation||
+      !programme_input(r.object,r.programme,false,actual,e)||
+      actual.source!=r.source||actual.tree!=r.tree||actual.tree_data!=r.tree_data||
+      actual.registry!=r.registry||actual.reentry!=r.reentry||actual.doors!=r.doors||
+      actual.house.bytes()!=r.house.bytes()||actual.house.byte_size()!=r.house.byte_size()||
+      actual.object!=r.object||actual.source_id!=r.source_id||actual.original_npc!=r.original_npc||
+      !in_.global->object(FieldGlobalMemberRole::Talker,talker,e)||talker!=r.object)
+    return reject(e,"House NPC BeforeOpen is not its exact live source prefix/generation/talker");
+  const FieldNpcInstance*instance=nullptr;for(const auto&v:runtime_.npcs())if(v.id==r.source_id)instance=&v;
+  const auto*n=in_.tree->state(r.object);
+  if(!instance||!instance->ready||!instance->pause_for_interact||instance->destroyed||instance->queued_free||
+      !n||!n->alive||!n->inside||!n->bound||n->queued||!n->ready_notified||n->ready_first||
+      in_.registry->current_scene()!=in_.tree->root())
+    return reject(e,"House NPC BeforeOpen lost its actual Ready paused source receiver");
+  e.clear();return true;
 }
 FieldNpcHost HouseReturnNpcRuntime::host(){
   FieldNpcHost h;
@@ -218,7 +251,8 @@ FieldNpcHost HouseReturnNpcRuntime::host(){
   };
   h.admit_program=[this](const std::string&path,std::string&e){
     uint32_t npc=0,program=0;FieldObjectId body=0;
-    if(!source_call_||!source(source_call_,body,e)||!borrows(e)||
+    if(source_method_!=SourceMethod::Interact||prefix_!=Prefix::None||callback_depth_!=1||
+        !source_call_||!source(source_call_,body,e)||!borrows(e)||
         !programme(source_call_,path,npc,program,e))return false;
     const auto state=in_.random->state(),draws=in_.random->raw_draw_count();
     const auto ledger=*in_.uid_ledger;const auto flags=in_.characters->flags().revision();
@@ -229,16 +263,21 @@ FieldNpcHost HouseReturnNpcRuntime::host(){
     if(state!=in_.random->state()||draws!=in_.random->raw_draw_count()||
         ledger!=*in_.uid_ledger||flags!=in_.characters->flags().revision())
       return reject(e,"House NPC read-only programme admission changed actual RNG/UID/flags");
+    if(admitted){prefix_=Prefix::Preflight;prefix_programme_=program;prefix_npc_=npc;
+      prefix_generation_=in_.house->world.source_generation();}
     return admitted;
   };
   h.open_program=[this](uint32_t id,const std::string&path,bool thoughts,
       const FieldNpcDescriptor&d,std::string&e){
     uint32_t npc=0,program=0;FieldObjectId body=0;
-    if(id!=source_call_||d.id!=id||thoughts!=thoughts_call_||!source(id,body,e)||
+    if(source_method_!=SourceMethod::Interact||prefix_!=Prefix::TalkerAssigned||
+        id!=source_call_||d.id!=id||thoughts!=thoughts_call_||!source(id,body,e)||
         !borrows(e)||!programme(id,path,npc,program,e))return false;
     HouseSourceNpcProgramme request;
-    if(!programme_input(body,program,thoughts,request,e)||
-        !in_.house->house.request_source_npc_programme(request,e))return false;
+    if(program!=prefix_programme_||npc!=prefix_npc_||
+        !programme_input(body,program,thoughts,request,e))return false;
+    prefix_=Prefix::BeforeOpen;
+    if(!in_.dialogue->request_npc_programme(*this,request,e))return false;
     HouseProgrammeState actual;
     if(!in_.house->house.observe_programme_owner(actual,e)||
         actual.phase!=HouseProgrammePhase::WaitingReady||actual.programme!=program||
@@ -248,8 +287,13 @@ FieldNpcHost HouseReturnNpcRuntime::host(){
     return true;
   };
   h.begin_talker=[this](uint32_t id,std::string&e){
-    FieldObjectId body=0;return source(id,body,e)&&
-        in_.global->set_object(FieldGlobalMemberRole::Talker,body,e);
+    FieldObjectId body=0;
+    if(source_method_!=SourceMethod::Interact||prefix_!=Prefix::Preflight||callback_depth_!=1||
+        id!=source_call_||!source(id,body,e)||
+        in_.house->world.source_generation()!=prefix_generation_||
+        !in_.global->set_object(FieldGlobalMemberRole::Talker,body,e))
+      return reject(e,"House NPC talker assignment is outside its admitted actual source prefix");
+    prefix_=Prefix::TalkerAssigned;e.clear();return true;
   };
   h.close_commands=[this](std::string&e){return borrows(e)&&in_.ports.close_commands(e);};
   h.telepathy_effect=[this](uint32_t id,bool on,std::string&e){
@@ -405,7 +449,7 @@ bool HouseReturnNpcRuntime::deferred(const FieldDeferredMessage&m,std::string&e)
       return in_.ports.persistent(m.object,persistent,e)&&runtime_.tree_exiting(stable,persistent);}
     default:return reject(e,"House NPC unsupported source callback opcode");
     }
-  },e);
+  },e,callback->op==10?SourceMethod::Interact:callback->op==11?SourceMethod::Telepathy:SourceMethod::Other);
 }
 bool HouseReturnNpcRuntime::return_direction_timeout(FieldObjectId id,uint64_t receipt,std::string&e){
   uint32_t stable=0;if(!actual(id,stable,e))return false;
@@ -429,7 +473,8 @@ bool HouseReturnNpcRuntime::has_dialog(FieldObjectId id,bool thoughts,bool&out,s
 }
 bool HouseReturnNpcRuntime::interact(FieldObjectId id,bool thoughts,std::string&e){
   uint32_t stable=0;if(!actual(id,stable,e))return false;
-  return invoke(id,thoughts,[&]{return thoughts?runtime_.telepathy(stable):runtime_.interact(stable);},e);
+  return invoke(id,thoughts,[&]{return thoughts?runtime_.telepathy(stable):runtime_.interact(stable);},e,
+      thoughts?SourceMethod::Telepathy:SourceMethod::Interact);
 }
 bool HouseReturnNpcRuntime::activate_geometry(std::string&e){
   if(!prepared_||poisoned_||geometry_active_||callback_depth_||

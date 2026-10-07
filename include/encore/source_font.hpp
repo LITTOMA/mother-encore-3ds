@@ -1,5 +1,6 @@
 #pragma once
 #include <cstddef>
+#include <array>
 #include <cstdint>
 #include <string>
 #include <string_view>
@@ -40,6 +41,7 @@ public:
   }
   const std::vector<SourceFontPage> &pages() const { return pages_; }
   const std::vector<SourceFontFace> &faces() const { return faces_; }
+  const std::array<uint8_t,32>&binary_sha256()const{return binary_sha_;}
   static std::string missing_glyph(uint32_t codepoint, std::string_view source);
 
 private:
@@ -47,5 +49,6 @@ private:
   std::vector<SourceFontPage> pages_;
   std::vector<SourceFontGlyph> glyphs_;
   size_t selected_ = size_t(-1);
+  std::array<uint8_t,32>binary_sha_{};
 };
 } // namespace encore

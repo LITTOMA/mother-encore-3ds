@@ -1,4 +1,5 @@
 #include "podunk_native_root.hpp"
+#include "house_return_gui_native.hpp"
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -878,6 +879,53 @@ bool PodunkNativeRoot::input_objects(uint32_t kind,
   e.clear();
   return true;
 }
+bool PodunkNativeRoot::bind_house_gui(HouseReturnGuiNative&gui,std::string&e){
+  if(house_gui_||!registry_||state_.failed||gui.native_root()!=this||
+     gui.registry()!=registry_||gui.signals()!=signals_||!gui.tree()||
+      (gui.tree()->object_domain()&&gui.tree()->object_domain()!=kernel_))
+    return fail(e,"Native Viewport House GUI actual owner/Registry/bus binding rejected");
+  house_gui_=&gui;e.clear();return true;
+}
+bool PodunkNativeRoot::clear_house_gui(HouseReturnGuiNative&gui,std::string&e){
+  if(house_gui_!=&gui||gui.native_root()!=this||!gui.can_unbind(e))
+    return fail(e,"Native Viewport House GUI removal lacks actual owner/Exit");
+  house_gui_=nullptr;e.clear();return true;
+}
+bool PodunkNativeRoot::house_gui_control(FieldObjectId object,FieldTreePhase phase,
+    std::string&e){
+  if(!house_gui_||state_.failed||house_gui_->native_root()!=this)
+    return fail(e,"Native Viewport House GUI native Control owner unavailable");
+  if(phase==FieldTreePhase::EnterNative)return house_gui_->enter_control(object,e);
+  if(phase==FieldTreePhase::ExitNative)return house_gui_->exit_control(object,e);
+  return fail(e,"Native Viewport House GUI registration only accepts actual native Enter/Exit");
+}
+bool PodunkNativeRoot::house_gui_pick(Vec2 position,HouseGuiPick&out,std::string&e){
+  if(!house_gui_||state_.failed||house_gui_->native_root()!=this)
+    return fail(e,"Native Viewport House GUI source picker unavailable");
+  return house_gui_->pick(position,out,e);
+}
+bool PodunkNativeRoot::house_gui_action(const PlayerInputEvent&event,bool paused,
+    HouseGuiInputResult&out,std::string&e){
+  if(!house_gui_||state_.failed||house_gui_->native_root()!=this)
+    return fail(e,"Native Viewport House GUI source action owner unavailable");
+  return house_gui_->action_input(event,paused,out,e);
+}
+bool PodunkNativeRoot::house_gui_pointer(FieldObjectId event,HouseGuiInputResult&out,
+    std::string&e){
+  if(!house_gui_||state_.failed||house_gui_->native_root()!=this)
+    return fail(e,"Native Viewport House GUI source pointer owner unavailable");
+  return house_gui_->pointer_input(event,out,e);
+}
+bool PodunkNativeRoot::house_gui_registered(FieldObjectId object,std::string&e)const{
+  if(!house_gui_||state_.failed||house_gui_->native_root()!=this)
+    return fail(e,"Native Viewport House GUI actual registration owner unavailable");
+  return house_gui_->live_registration(object,e);
+}
+bool PodunkNativeRoot::house_gui_unregistered(FieldObjectId object,std::string&e)const{
+  if(!house_gui_||state_.failed||house_gui_->native_root()!=this)
+    return fail(e,"Native Viewport House GUI actual unregister owner unavailable");
+  return house_gui_->retired_registration(object,e);
+}
 bool PodunkNativeRoot::enqueue(FieldDeferredMessage m, std::string &e) {
   if (!registry_ || state_.failed)
     return fail(e, "Native SceneTree global queue unavailable");
@@ -929,6 +977,11 @@ bool PodunkNativeRoot::finalize_tree(std::string &e) {
   while (!state_.children.empty())
     if (!remove_child(state_.children.back(), e))
       return false;
+  if(house_gui_){
+    if(!house_gui_->can_unbind(e))return fail(e,"Native Viewport finalized before actual House GUI Exit");
+    // Retain the borrowed owner through the branch's actual deletion cursor.
+    // The caller clears this exact owner after native leaves are released.
+  }
   if (!emit(false, "tree_exiting", 0, e))
     return poison(e, e);
   world_viewports_.erase(root_);

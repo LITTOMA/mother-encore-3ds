@@ -2,6 +2,7 @@
 #include "encore/opening_trigger.hpp"
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 namespace encore::upstream {
 namespace {
 struct ProgrammeCallback {
@@ -55,7 +56,7 @@ bool OpeningWorld::initialize_restored(const RoomView&content,const std::vector<
     return initialize_state(content,viewport,&story_flags,&reviewed_mutations,position,direction);
 }
 bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const std::vector<bool>*story_flags,const std::vector<bool>*reviewed_mutations,Vec2 position,Vec2 direction) {
-    if(house_programme_owner_||house_programme_callback_)return false;
+    if(house_programme_owner_||house_inventory_owner_||house_programme_callback_)return false;
     if(!persistent_player_){error_="Persistent player owner allocation failed";return false;}
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
     house_programme_failed_=false;house_programme_error_.clear();
@@ -72,7 +73,7 @@ bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const 
         }
     }
     if(scene_motion_&&(!scene_motion_->admitted()||motion_scene_!=content.string(content.scene().source_scene_string)||motion_commit_!=pin))return fail("Scene motion source binding mismatch");
-    for(uint32_t i=0;i<content.command_count();++i){const auto c=content.command(i);if(c.opcode<uint16_t(DialogueActionKind::GrantKeyItem))continue;
+    for(uint32_t i=0;i<content.command_count();++i){const auto c=content.command(i);if(c.opcode<uint16_t(DialogueActionKind::GrantKeyItem)||c.opcode>uint16_t(DialogueActionKind::AnimateSpecialActor))continue;
         if(!basement_.bound()||!basement_actors_||basement_.data()->reviewed_commit()!=pin||basement_actors_->reviewed_commit()!=pin)return fail("Typed progression requires source-bound effect host");
         if(c.opcode==uint16_t(DialogueActionKind::GrantKeyItem)){const auto*k=basement_.data()->key_item(c.target_index);if(!k||!k->grant)return fail("Unknown progression key item identity");}
         else if(c.opcode==uint16_t(DialogueActionKind::LearnSkill)){if(!basement_.data()->skill(c.target_index))return fail("Unknown progression skill identity");}
@@ -145,6 +146,15 @@ bool OpeningWorld::advance(WalkInput input) {
 }
 bool OpeningWorld::begin_house_program(uint32_t program_index,uint32_t original_npc){
     if(house_programme_callback_||!healthy_||stage_!=OpeningStage::Walking||program_index>=content_.program_count()||dialogue_.active())return false;
+    // Inventory effects bind after detached World construction. Admit the
+    // selected source programme before changing its VM/generation, never at
+    // scene initialization when there is no request or inventory owner yet.
+    const auto programme=content_.program(program_index);
+    for(uint32_t pc=0;pc<programme.command_count;++pc){
+        const auto op=content_.command(programme.first_command+pc).opcode;
+        if((op==uint16_t(DialogueActionKind::BranchInventorySpace)||op==uint16_t(DialogueActionKind::GrantInventoryItem))&&
+           !admit_house_inventory_command(program_index,pc,host_error_))return false;
+    }
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;
     cutscene_done_=restore_pending_=false;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;story_hides_.clear();pending_dialogue_id_=kRoomNoIndex;pending_actor_=talker_=kRoomNoActor;
     if(++generation_==0)++generation_;
@@ -175,7 +185,7 @@ bool OpeningWorld::bind_house_programme_owner(OpeningHouseProgrammeOwner&owner,s
     house_programme_owner_=&owner;e.clear();return true;
 }
 bool OpeningWorld::unbind_house_programme_owner(OpeningHouseProgrammeOwner&owner,std::string&e){
-    if(house_programme_owner_!=&owner||house_programme_callback_||dialogue_.active()||owner.world()!=this){
+    if(house_inventory_owner_||house_programme_owner_!=&owner||house_programme_callback_||dialogue_.active()||owner.world()!=this){
         e="House programme owner unbinding requires the exact closed source owner";return false;
     }
     {ProgrammeCallback call(house_programme_callback_);
@@ -184,6 +194,76 @@ bool OpeningWorld::unbind_house_programme_owner(OpeningHouseProgrammeOwner&owner
         e="House programme source owner changed during closed-frame admission";return false;
     }
     house_programme_owner_=nullptr;e.clear();return true;
+}
+namespace {
+bool same_drawer(DrawerProgramView a,DrawerProgramView b){
+    if(!a.valid()||!b.valid()||a.reviewed_commit()!=b.reviewed_commit()||std::memcmp(a.reviewed_commit(),b.reviewed_commit(),20))return false;
+    for(uint32_t section=1;section<=4;++section)if(a.count(DrawerSection(section))!=b.count(DrawerSection(section)))return false;
+    for(uint32_t i=0;i<a.count(DrawerSection::Strings);++i)if(a.string(i)!=b.string(i))return false;
+    for(uint32_t i=0;i<a.count(DrawerSection::Templates);++i){const auto x=a.item_template(i),y=b.item_template(i);
+        if(x.id!=y.id||x.source!=y.source||x.doses!=y.doses||x.key_item!=y.key_item)return false;}
+    for(uint32_t i=0;i<a.count(DrawerSection::Commands);++i){const auto x=a.command(i),y=b.command(i);
+        if(x.opcode!=y.opcode||x.a!=y.a||x.b!=y.b||x.c!=y.c||x.d!=y.d)return false;}
+    return a.binding().source_path==b.binding().source_path&&a.binding().inspection_source==b.binding().inspection_source;
+}
+}
+bool OpeningWorld::inventory_receipt(OpeningHouseInventoryState&out,std::string&e)const{
+    OpeningHouseInventoryState r;
+    if(!house_inventory_owner_||!house_inventory_effects_||house_inventory_owner_->world()!=this){
+        e="Actual House inventory source owner is absent or bound to a different World";return false;}
+    if(!house_inventory_owner_->observe_inventory(r,e))return false;
+    if(r.world!=this||r.programme_owner!=house_programme_owner_||!house_programme_owner_||
+       r.room.bytes()!=content_.bytes()||r.room.byte_size()!=content_.byte_size()||
+       r.effects!=house_inventory_effects_||!r.source_call_closed||
+       r.programme!=program_index_||r.generation!=generation_||
+       !same_drawer(r.drawer,house_inventory_source_)){
+        e="House inventory receipt changed its actual Room/World/programme/Drawer/effects/source scope";return false;}
+    out=r;e.clear();return true;
+}
+bool OpeningWorld::bind_house_inventory_owner(OpeningHouseInventoryOwner&owner,std::string&e){
+    if(house_inventory_owner_||house_programme_callback_||!initialized_||!healthy_||
+       stage_!=OpeningStage::Walking||dialogue_.active()||!house_programme_owner_||owner.world()!=this){
+        e="House inventory binding requires the exact initialized closed World/programme owner";return false;}
+    OpeningHouseInventoryState r;
+    {ProgrammeCallback call(house_programme_callback_);
+     if(!house_programme_owner_->source_frame_closed(*this,e)||!owner.observe_inventory(r,e))return false;}
+    if(r.world!=this||r.programme_owner!=house_programme_owner_||r.room.bytes()!=content_.bytes()||
+       r.room.byte_size()!=content_.byte_size()||!r.drawer.valid()||!r.effects||!r.source_call_closed||
+       r.programme!=program_index_||r.generation!=generation_||
+       std::memcmp(r.drawer.reviewed_commit(),content_.bytes()+56,20)||owner.world()!=this){
+        e="House inventory binding lacks its actual same-source Room/Drawer/session effects";return false;}
+    for(uint32_t i=0;i<r.drawer.count(DrawerSection::Templates);++i){const auto t=r.drawer.item_template(i);
+        if(!r.effects->validate_item(t,r.drawer.string(t.source),e))return false;}
+    house_inventory_owner_=&owner;house_inventory_effects_=r.effects;house_inventory_source_=r.drawer;
+    if(!inventory_receipt(r,e)){house_inventory_owner_=nullptr;house_inventory_effects_=nullptr;house_inventory_source_={};return false;}
+    e.clear();return true;
+}
+bool OpeningWorld::unbind_house_inventory_owner(OpeningHouseInventoryOwner&owner,std::string&e){
+    if(house_inventory_owner_!=&owner||house_programme_callback_||dialogue_.active()){
+        e="House inventory unbind requires its exact closed owner";return false;}
+    OpeningHouseInventoryState r;
+    {ProgrammeCallback call(house_programme_callback_);
+     if(!inventory_receipt(r,e)||!house_programme_owner_->source_frame_closed(*this,e))return false;}
+    house_inventory_owner_=nullptr;house_inventory_effects_=nullptr;house_inventory_source_={};e.clear();return true;
+}
+bool OpeningWorld::admit_house_inventory_command(uint32_t programme,uint32_t pc,std::string&e)const{
+    OpeningHouseInventoryState r;if(!inventory_receipt(r,e))return false;
+    if(programme>=content_.program_count()||pc>=content_.program(programme).command_count){
+        e="House inventory command is outside its immutable Room programme";return false;}
+    const auto p=content_.program(programme);const auto c=content_.command(p.first_command+pc);
+    const auto source=r.drawer.string(r.drawer.binding().source_path);
+    const auto identity=content_.string(p.source_path_string);
+    if(source!=std::string("Data/Dialogue/")+std::string(identity)+".yaml"){
+        e="House inventory opcode belongs to a different actual Drawer YAML";return false;}
+    if(c.opcode==uint16_t(DialogueActionKind::BranchInventorySpace)){
+        if(c.target_index!=kRoomNoIndex||(c.value!=0&&c.value!=1)||c.auxiliary_index<=pc||c.auxiliary_index>=p.command_count){
+            e="House inventory source branch has invalid Boolean/forward phrase target";return false;}
+    }else if(c.opcode==uint16_t(DialogueActionKind::GrantInventoryItem)){
+        if(c.target_index>=r.drawer.count(DrawerSection::Templates)){e="House inventory template is absent from actual Drawer resource";return false;}
+        const auto t=r.drawer.item_template(c.target_index);
+        if(!r.effects->validate_item(t,r.drawer.string(t.source),e))return false;
+    }else{e="Command is not an admitted House inventory opcode";return false;}
+    e.clear();return true;
 }
 bool OpeningWorld::house_programme_failure(const char*fallback){
     house_programme_failed_=true;
@@ -228,6 +308,13 @@ bool OpeningWorld::set_story_talking(bool talking){
     return story_talker_.kind!=DialogueTalkerKind::Actor||(story_talker_.index<actors_.size()&&actor_set_talking(actors_[story_talker_.index],talking));
 }
 bool OpeningWorld::branch_condition(const DialogueAction& action,bool& matched){
+    if(action.kind==DialogueActionKind::BranchInventorySpace){
+        const auto pc=dialogue_.next_command_index();OpeningHouseInventoryState r;
+        if(!pc||house_programme_callback_||dialogue_.generation()!=generation_||
+           !admit_house_inventory_command(program_index_,pc-1,host_error_)||!inventory_receipt(r,host_error_))return false;
+        ProgrammeCallback call(house_programme_callback_);
+        matched=r.effects->inventory_space()==(action.value!=0);return true;
+    }
     if(action.kind==DialogueActionKind::BranchFlag){if(action.target_index>=content_.flag_count())return false;matched=flags_.story_flag(content_.string(content_.flag(action.target_index).name_string))==(action.value!=0);return true;}
     if(action.kind==DialogueActionKind::BranchLeader){if(persistent_player_.state_->party_leader_.empty()||action.target_index>=content_.string_count())return false;matched=persistent_player_.state_->party_leader_==content_.string(action.target_index);return true;}
     return false;
@@ -514,6 +601,13 @@ bool OpeningWorld::apply(const DialogueAction& a) {
     case K::ShakeActor:return actor&&actor_shake(*actor,a.vector,a.duration);
     case K::JumpActor:return actor&&actor_jump(*actor,float(a.value),a.duration,a.flags+1);
     case K::AnimateActor:if(!actor||!actor_play_clip(*actor,a.target_index))return false;special_actors_[a.actor]={};return true;
+    case K::GrantInventoryItem:{
+        const auto pc=dialogue_.next_command_index();OpeningHouseInventoryState r;
+        if(!pc||house_programme_callback_||dialogue_.generation()!=generation_||
+           !admit_house_inventory_command(program_index_,pc-1,host_error_)||!inventory_receipt(r,host_error_))return fail(host_error_.c_str());
+        const auto t=r.drawer.item_template(a.target_index);ProgrammeCallback call(house_programme_callback_);
+        if(!r.effects->grant_item(t,r.drawer.string(t.source),host_error_))return fail(host_error_.c_str());
+        return true;}
     case K::GrantKeyItem:if(!basement_.grant_key_item(a.target_index,host_error_))return fail(host_error_.c_str());return true;
     case K::LearnSkill:if(!basement_.learn_skill(a.target_index,host_error_))return fail(host_error_.c_str());return true;
     case K::AnimateSpecialActor:if(!actor||!actor_bound_[a.actor]||!basement_actors_||!begin_basement_actor(*basement_actors_,a.target_index,special_actors_[a.actor],host_error_))return false;return true;

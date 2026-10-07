@@ -1,0 +1,2506 @@
+{
+  "schema": 1,
+  "format": 1,
+  "capability": 1,
+  "rules": 1,
+  "family": 1162739840,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "scene_id": 2861651240,
+  "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+  "tree_ir_sha256": "2f00ad4969256d37bad977fee9ff52a16443158c3b603c16aae787ed7d3fc978",
+  "sources": {
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+    "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+    "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+    "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+    "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+  },
+  "core": {
+    "schema": 1,
+    "kind": "encore.field-prompts.source-ir",
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "scene_id": 2861651240,
+    "script_sha256": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "sources": {
+      "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+      "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+      "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+      "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+      "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+      "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+      "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+      "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+      "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+      "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+      "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+      "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+      "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+      "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+      "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+      "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+      "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+      "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+      "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+      "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+      "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+      "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+      "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+      "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+      "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+      "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+      "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+      "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+      "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+      "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+      "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+      "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+      "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+      "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+      "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+      "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+      "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+      "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+      "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+      "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+      "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+      "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+      "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+      "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+      "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+      "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+      "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+      "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+      "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+      "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+      "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+      "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+      "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+      "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+      "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+      "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+      "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+      "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+      "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+      "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+      "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+      "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+      "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+      "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+      "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+      "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+      "Shaders/Flash.shader": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+      "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+      "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+    },
+    "proof": {
+      "native_export_sha256": "db04af6a239a5ecefef23162089cf6679e83a60792608a1ec646537aa9a88fd9",
+      "source_receipt_sha256": "028fed342cf3971e1ac828734ae87f59d267965215495c67c0a94d5275d96e7c",
+      "source_files": {
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+        "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+        "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+        "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+        "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+        "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+      }
+    },
+    "art": {
+      "path": "graphics/ui/house-button-prompts/accept.t3x",
+      "width": 12,
+      "height": 21,
+      "sha256": "09a3afeef81068e7510329077fad1d30b0f0d6a807b522c8c7db83e273da1b93",
+      "bytes": 2069,
+      "crc32": 1792288240,
+      "label": "A",
+      "label_crop": [
+        0,
+        0,
+        12,
+        15
+      ],
+      "arrow_crop": [
+        1,
+        15,
+        11,
+        6
+      ],
+      "label_origin": [
+        -1,
+        -1
+      ],
+      "arrow_origin": [
+        -11.0,
+        0
+      ],
+      "label_local": [
+        60.0,
+        3.0
+      ],
+      "layout_sha256": "0834d41bd7911429c608a565b10248f5fa8bf3abaab094aefc903dde3d95987a",
+      "engine_hash": "3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8"
+    },
+    "initial": [
+      [
+        7.0,
+        -6.0,
+        0,
+        0
+      ],
+      [
+        -64.0,
+        -23.0,
+        0,
+        0
+      ],
+      [
+        60.0,
+        3.0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0.444,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        0.0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "choices": [
+      "Both",
+      "Objects",
+      "NPCs",
+      "None"
+    ],
+    "records": [
+      {
+        "id": 1630786942,
+        "parent_id": 3559873161,
+        "node": "Below/Openable Door/interact/ButtonPrompt",
+        "ready": 12,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": false,
+        "offset": [
+          0.0,
+          -32.0
+        ]
+      },
+      {
+        "id": 1005115076,
+        "parent_id": 3992902945,
+        "node": "Below/Openable Door2/interact/ButtonPrompt",
+        "ready": 30,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": false,
+        "offset": [
+          0.0,
+          -32.0
+        ]
+      },
+      {
+        "id": 208617136,
+        "parent_id": 2511524354,
+        "node": "Below/Openable Door3/interact/ButtonPrompt",
+        "ready": 48,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": false,
+        "offset": [
+          0.0,
+          -32.0
+        ]
+      },
+      {
+        "id": 248281308,
+        "parent_id": 2913902089,
+        "node": "Below/Openable Door4/interact/ButtonPrompt",
+        "ready": 66,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": false,
+        "offset": [
+          0.0,
+          -32.0
+        ]
+      },
+      {
+        "id": 1141665895,
+        "parent_id": 728339406,
+        "node": "Objects/npc/interact/ButtonPrompt",
+        "ready": 89,
+        "category": 2,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -11.0
+        ]
+      },
+      {
+        "id": 2085078767,
+        "parent_id": 433809394,
+        "node": "Objects/npc2/interact/ButtonPrompt",
+        "ready": 116,
+        "category": 2,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -11.0
+        ]
+      },
+      {
+        "id": 3674829925,
+        "parent_id": 12726359,
+        "node": "Objects/npc3/interact/ButtonPrompt",
+        "ready": 143,
+        "category": 2,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -11.0
+        ]
+      },
+      {
+        "id": 1223048161,
+        "parent_id": 2909945843,
+        "node": "Objects/pillow/interact/ButtonPrompt",
+        "ready": 170,
+        "category": 2,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -11.0
+        ]
+      },
+      {
+        "id": 948423137,
+        "parent_id": 794678346,
+        "node": "Objects/Phone/interact/ButtonPrompt",
+        "ready": 192,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          1.0,
+          2.0
+        ]
+      },
+      {
+        "id": 2595719401,
+        "parent_id": 638780681,
+        "node": "Objects/interact_dialog/ButtonPrompt",
+        "ready": 206,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 1372375868,
+        "parent_id": 177298043,
+        "node": "Objects/interact_dialog3/ButtonPrompt",
+        "ready": 213,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 2805403293,
+        "parent_id": 4018296404,
+        "node": "Objects/interact_dialog7/ButtonPrompt",
+        "ready": 220,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 2347342956,
+        "parent_id": 3920060268,
+        "node": "Objects/interact_dialog4/ButtonPrompt",
+        "ready": 227,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 1906418799,
+        "parent_id": 389805854,
+        "node": "Objects/interact_dialog6/ButtonPrompt",
+        "ready": 234,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 2062649775,
+        "parent_id": 2732792791,
+        "node": "Objects/interact_dialog2/ButtonPrompt",
+        "ready": 241,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 1970808,
+        "parent_id": 1505566048,
+        "node": "Objects/interact_dialog8/ButtonPrompt",
+        "ready": 248,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 4106927607,
+        "parent_id": 3834798539,
+        "node": "Objects/interact_dialog5/ButtonPrompt",
+        "ready": 255,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": 599534787,
+        "parent_id": 64020873,
+        "node": "Objects/lamp/interact/ButtonPrompt",
+        "ready": 269,
+        "category": 2,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -11.0
+        ]
+      },
+      {
+        "id": 3134594703,
+        "parent_id": 617753871,
+        "node": "Objects/npcdoll/interact/ButtonPrompt",
+        "ready": 296,
+        "category": 2,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -11.0
+        ]
+      },
+      {
+        "id": 2512144705,
+        "parent_id": 2476875793,
+        "node": "Objects/Present1/interact/ButtonPrompt",
+        "ready": 320,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -8.0
+        ]
+      },
+      {
+        "id": 3888442132,
+        "parent_id": 1417121152,
+        "node": "Objects/Present2/interact/ButtonPrompt",
+        "ready": 336,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -8.0
+        ]
+      },
+      {
+        "id": 777639734,
+        "parent_id": 3969526969,
+        "node": "Objects/Present4/interact/ButtonPrompt",
+        "ready": 352,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -8.0
+        ]
+      },
+      {
+        "id": 2012110327,
+        "parent_id": 3583528909,
+        "node": "Objects/Present3/interact/ButtonPrompt",
+        "ready": 368,
+        "category": 1,
+        "key": "ui_accept",
+        "enabled": true,
+        "offset": [
+          0.0,
+          -8.0
+        ]
+      }
+    ],
+    "clips": [
+      {
+        "role": 1,
+        "name": "Float",
+        "length": 1.0,
+        "loop": true,
+        "tracks": [
+          {
+            "property": 1,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  7,
+                  -6,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.5,
+                "ease": 1,
+                "value": [
+                  7,
+                  -9,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 2,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0.166667,
+                "ease": 1,
+                "value": [
+                  -64,
+                  -22,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.664,
+                "ease": 1,
+                "value": [
+                  -64,
+                  -26,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 4,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 5,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 7,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 6,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 2,
+        "name": "Hide",
+        "length": 0.0833333,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 7,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 5,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 2.5,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 11,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.083,
+                "ease": 1,
+                "value": [
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 3,
+        "name": "Press",
+        "length": 0.333333,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 7,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 5,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "time": 0.166667,
+                "ease": 3,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "time": 0.25,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 8,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  0.0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  1.0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.166667,
+                "ease": 1,
+                "value": [
+                  0.0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 1,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  7,
+                  -9,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  7,
+                  -9,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.166667,
+                "ease": 0.65,
+                "value": [
+                  7,
+                  -4,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.25,
+                "ease": 0.65,
+                "value": [
+                  7,
+                  -8,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 9,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "time": 0.166,
+                "ease": 1,
+                "value": [
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 10,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  0.0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  1.0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.166667,
+                "ease": 1,
+                "value": [
+                  1.0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.25,
+                "ease": 1,
+                "value": [
+                  0.0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 11,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0.249,
+                "ease": 1,
+                "value": [
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 6,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 4,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 2,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 0.65,
+                "value": [
+                  -64,
+                  -29,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  -64,
+                  -23,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.166,
+                "ease": 0.65,
+                "value": [
+                  -64,
+                  -17,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.249,
+                "ease": 0.65,
+                "value": [
+                  -64,
+                  -21,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 4,
+        "name": "RESET",
+        "length": 0.001,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 3,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  -4,
+                  -19,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 4,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 5,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 6,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 1,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  7,
+                  -6,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 7,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 8,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  0.0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 9,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 10,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  0.0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 2,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  -64,
+                  -23,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "role": 5,
+        "name": "Show",
+        "length": 0.333333,
+        "loop": false,
+        "tracks": [
+          {
+            "property": 4,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 2.5,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "time": 0.166667,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 5,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 1,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 0.65,
+                "value": [
+                  7,
+                  -24,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.333333,
+                "ease": 0.65,
+                "value": [
+                  7,
+                  -6,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 6,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 5,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "time": 0.0833333,
+                "ease": 1,
+                "value": [
+                  1,
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "property": 7,
+            "update": 1,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  1,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "property": 2,
+            "update": 0,
+            "keys": [
+              {
+                "time": 0,
+                "ease": 1,
+                "value": [
+                  -64,
+                  -29,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.083,
+                "ease": 1,
+                "value": [
+                  -64,
+                  -27,
+                  0,
+                  0
+                ]
+              },
+              {
+                "time": 0.332,
+                "ease": 1,
+                "value": [
+                  -64,
+                  -23,
+                  0,
+                  0
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "semantics": [
+      "23 exact postorder source Ready entries; hide and set_process(false) are retained",
+      "Authoritative paused/settings/input/locale/event detector signals; full force/press state machine",
+      "AnimationPlayer value/method tracks retain source times, ease and idle clock; no synthetic nearby distance",
+      "Current parent scale is read only when source _reset_scale executes; hidden animation remains active"
+    ]
+  },
+  "native": {
+    "schema": 1,
+    "capability": 1,
+    "rules": 1,
+    "family": 1162739819,
+    "commit": "7d9246600fffe518408f5830d4848635019005a3",
+    "scene": "Maps/podunk/Nintens House.tscn",
+    "scene_id": 2861651240,
+    "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "tree_sha256": "2f00ad4969256d37bad977fee9ff52a16443158c3b603c16aae787ed7d3fc978",
+    "prompt_sha256": "5f578aa91a90dcc20f0b49014bf11930ad6650e6a4d18f735b8906fbcbd49cfd",
+    "sources": {
+      "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+      "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+      "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+      "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
+      "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+      "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+      "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc"
+    },
+    "settings_member": "button_prompts",
+    "paused_member": "_paused",
+    "font": "Fonts/BottleRocket.tres",
+    "internal_group": "idle_process_internal",
+    "started_signal": "animation_started",
+    "finished_signal": "animation_finished",
+    "box_size": [
+      128.0,
+      17.0
+    ],
+    "box_alignment": 1,
+    "label_alignment": 1,
+    "arrow_rotation": 90.0,
+    "arrow_stretch": 3,
+    "controls": [
+      {
+        "role": 1,
+        "position": [
+          -64.0,
+          -23.0
+        ],
+        "size": [
+          128.0,
+          17.0
+        ],
+        "text": ""
+      },
+      {
+        "role": 2,
+        "position": [
+          -4.0,
+          -19.0
+        ],
+        "size": [
+          7.0,
+          11.0
+        ],
+        "text": "A"
+      },
+      {
+        "role": 3,
+        "position": [
+          7.0,
+          -6.0
+        ],
+        "size": [
+          6.0,
+          11.0
+        ],
+        "text": ""
+      }
+    ],
+    "inputs": [
+      {
+        "action": "ui_select",
+        "parameter": "OpenMask",
+        "mask": 8,
+        "label": "START",
+        "parameter_id": 29
+      },
+      {
+        "action": "ui_accept",
+        "parameter": "ConfirmMask",
+        "mask": 1,
+        "label": "A",
+        "parameter_id": 30
+      },
+      {
+        "action": "ui_toggle",
+        "parameter": "CancelMask",
+        "mask": 2,
+        "label": "B",
+        "parameter_id": 31
+      }
+    ],
+    "adapter_sha256": "4671c7427c76859648bce9c03613331d34f7240448f1bf09e9d76369c119394c",
+    "equipment_sha256": "baebe4aa3fc0465a31e547efcd0c33936a56bbb3807491bbe721ee5a6ec60c37",
+    "records": [
+      {
+        "id": 595899348,
+        "prompt": 1630786942,
+        "parent": 1630786942,
+        "role": 1,
+        "path": "Below/Openable Door/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3257544299,
+        "prompt": 1630786942,
+        "parent": 595899348,
+        "role": 2,
+        "path": "Below/Openable Door/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 3956443179,
+        "prompt": 1630786942,
+        "parent": 1630786942,
+        "role": 3,
+        "path": "Below/Openable Door/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 430479109,
+        "prompt": 1630786942,
+        "parent": 1630786942,
+        "role": 4,
+        "path": "Below/Openable Door/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3187929948,
+        "prompt": 1005115076,
+        "parent": 1005115076,
+        "role": 1,
+        "path": "Below/Openable Door2/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2089295358,
+        "prompt": 1005115076,
+        "parent": 3187929948,
+        "role": 2,
+        "path": "Below/Openable Door2/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 2944553017,
+        "prompt": 1005115076,
+        "parent": 1005115076,
+        "role": 3,
+        "path": "Below/Openable Door2/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 2424178457,
+        "prompt": 1005115076,
+        "parent": 1005115076,
+        "role": 4,
+        "path": "Below/Openable Door2/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 1119222795,
+        "prompt": 208617136,
+        "parent": 208617136,
+        "role": 1,
+        "path": "Below/Openable Door3/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2799899005,
+        "prompt": 208617136,
+        "parent": 1119222795,
+        "role": 2,
+        "path": "Below/Openable Door3/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 506462212,
+        "prompt": 208617136,
+        "parent": 208617136,
+        "role": 3,
+        "path": "Below/Openable Door3/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 3375287922,
+        "prompt": 208617136,
+        "parent": 208617136,
+        "role": 4,
+        "path": "Below/Openable Door3/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 1781801167,
+        "prompt": 248281308,
+        "parent": 248281308,
+        "role": 1,
+        "path": "Below/Openable Door4/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2236910569,
+        "prompt": 248281308,
+        "parent": 1781801167,
+        "role": 2,
+        "path": "Below/Openable Door4/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 2187054287,
+        "prompt": 248281308,
+        "parent": 248281308,
+        "role": 3,
+        "path": "Below/Openable Door4/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1857638221,
+        "prompt": 248281308,
+        "parent": 248281308,
+        "role": 4,
+        "path": "Below/Openable Door4/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 1322996405,
+        "prompt": 1141665895,
+        "parent": 1141665895,
+        "role": 1,
+        "path": "Objects/npc/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2520973026,
+        "prompt": 1141665895,
+        "parent": 1322996405,
+        "role": 2,
+        "path": "Objects/npc/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 1496646956,
+        "prompt": 1141665895,
+        "parent": 1141665895,
+        "role": 3,
+        "path": "Objects/npc/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1582814614,
+        "prompt": 1141665895,
+        "parent": 1141665895,
+        "role": 4,
+        "path": "Objects/npc/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 4032817168,
+        "prompt": 2085078767,
+        "parent": 2085078767,
+        "role": 1,
+        "path": "Objects/npc2/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2412107250,
+        "prompt": 2085078767,
+        "parent": 4032817168,
+        "role": 2,
+        "path": "Objects/npc2/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 398925611,
+        "prompt": 2085078767,
+        "parent": 2085078767,
+        "role": 3,
+        "path": "Objects/npc2/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 3967525508,
+        "prompt": 2085078767,
+        "parent": 2085078767,
+        "role": 4,
+        "path": "Objects/npc2/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3058507326,
+        "prompt": 3674829925,
+        "parent": 3674829925,
+        "role": 1,
+        "path": "Objects/npc3/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3446175085,
+        "prompt": 3674829925,
+        "parent": 3058507326,
+        "role": 2,
+        "path": "Objects/npc3/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 3487085624,
+        "prompt": 3674829925,
+        "parent": 3674829925,
+        "role": 3,
+        "path": "Objects/npc3/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1082821535,
+        "prompt": 3674829925,
+        "parent": 3674829925,
+        "role": 4,
+        "path": "Objects/npc3/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 2370462113,
+        "prompt": 1223048161,
+        "parent": 1223048161,
+        "role": 1,
+        "path": "Objects/pillow/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3283942378,
+        "prompt": 1223048161,
+        "parent": 2370462113,
+        "role": 2,
+        "path": "Objects/pillow/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 3037843860,
+        "prompt": 1223048161,
+        "parent": 1223048161,
+        "role": 3,
+        "path": "Objects/pillow/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 3144015233,
+        "prompt": 1223048161,
+        "parent": 1223048161,
+        "role": 4,
+        "path": "Objects/pillow/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 4017084754,
+        "prompt": 948423137,
+        "parent": 948423137,
+        "role": 1,
+        "path": "Objects/Phone/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 1423185922,
+        "prompt": 948423137,
+        "parent": 4017084754,
+        "role": 2,
+        "path": "Objects/Phone/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 4076456189,
+        "prompt": 948423137,
+        "parent": 948423137,
+        "role": 3,
+        "path": "Objects/Phone/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 2072399922,
+        "prompt": 948423137,
+        "parent": 948423137,
+        "role": 4,
+        "path": "Objects/Phone/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 219047572,
+        "prompt": 2595719401,
+        "parent": 2595719401,
+        "role": 1,
+        "path": "Objects/interact_dialog/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 1978447126,
+        "prompt": 2595719401,
+        "parent": 219047572,
+        "role": 2,
+        "path": "Objects/interact_dialog/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 3438645653,
+        "prompt": 2595719401,
+        "parent": 2595719401,
+        "role": 3,
+        "path": "Objects/interact_dialog/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 2174838441,
+        "prompt": 2595719401,
+        "parent": 2595719401,
+        "role": 4,
+        "path": "Objects/interact_dialog/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3093516834,
+        "prompt": 1372375868,
+        "parent": 1372375868,
+        "role": 1,
+        "path": "Objects/interact_dialog3/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3550814174,
+        "prompt": 1372375868,
+        "parent": 3093516834,
+        "role": 2,
+        "path": "Objects/interact_dialog3/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 3366605065,
+        "prompt": 1372375868,
+        "parent": 1372375868,
+        "role": 3,
+        "path": "Objects/interact_dialog3/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 2124505168,
+        "prompt": 1372375868,
+        "parent": 1372375868,
+        "role": 4,
+        "path": "Objects/interact_dialog3/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 1100752325,
+        "prompt": 2805403293,
+        "parent": 2805403293,
+        "role": 1,
+        "path": "Objects/interact_dialog7/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3024436999,
+        "prompt": 2805403293,
+        "parent": 1100752325,
+        "role": 2,
+        "path": "Objects/interact_dialog7/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 438615942,
+        "prompt": 2805403293,
+        "parent": 2805403293,
+        "role": 3,
+        "path": "Objects/interact_dialog7/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1838471877,
+        "prompt": 2805403293,
+        "parent": 2805403293,
+        "role": 4,
+        "path": "Objects/interact_dialog7/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3013603506,
+        "prompt": 2347342956,
+        "parent": 2347342956,
+        "role": 1,
+        "path": "Objects/interact_dialog4/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 4053731987,
+        "prompt": 2347342956,
+        "parent": 3013603506,
+        "role": 2,
+        "path": "Objects/interact_dialog4/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 1236111700,
+        "prompt": 2347342956,
+        "parent": 2347342956,
+        "role": 3,
+        "path": "Objects/interact_dialog4/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1756765901,
+        "prompt": 2347342956,
+        "parent": 2347342956,
+        "role": 4,
+        "path": "Objects/interact_dialog4/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 314086659,
+        "prompt": 1906418799,
+        "parent": 1906418799,
+        "role": 1,
+        "path": "Objects/interact_dialog6/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 291748391,
+        "prompt": 1906418799,
+        "parent": 314086659,
+        "role": 2,
+        "path": "Objects/interact_dialog6/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 4170372158,
+        "prompt": 1906418799,
+        "parent": 1906418799,
+        "role": 3,
+        "path": "Objects/interact_dialog6/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 3503813802,
+        "prompt": 1906418799,
+        "parent": 1906418799,
+        "role": 4,
+        "path": "Objects/interact_dialog6/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 1183418783,
+        "prompt": 2062649775,
+        "parent": 2062649775,
+        "role": 1,
+        "path": "Objects/interact_dialog2/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3206023466,
+        "prompt": 2062649775,
+        "parent": 1183418783,
+        "role": 2,
+        "path": "Objects/interact_dialog2/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 3286528815,
+        "prompt": 2062649775,
+        "parent": 2062649775,
+        "role": 3,
+        "path": "Objects/interact_dialog2/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 2616765461,
+        "prompt": 2062649775,
+        "parent": 2062649775,
+        "role": 4,
+        "path": "Objects/interact_dialog2/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3224872989,
+        "prompt": 1970808,
+        "parent": 1970808,
+        "role": 1,
+        "path": "Objects/interact_dialog8/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2863568527,
+        "prompt": 1970808,
+        "parent": 3224872989,
+        "role": 2,
+        "path": "Objects/interact_dialog8/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 1512874180,
+        "prompt": 1970808,
+        "parent": 1970808,
+        "role": 3,
+        "path": "Objects/interact_dialog8/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 4215119641,
+        "prompt": 1970808,
+        "parent": 1970808,
+        "role": 4,
+        "path": "Objects/interact_dialog8/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 348142917,
+        "prompt": 4106927607,
+        "parent": 4106927607,
+        "role": 1,
+        "path": "Objects/interact_dialog5/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3075436888,
+        "prompt": 4106927607,
+        "parent": 348142917,
+        "role": 2,
+        "path": "Objects/interact_dialog5/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 1141361308,
+        "prompt": 4106927607,
+        "parent": 4106927607,
+        "role": 3,
+        "path": "Objects/interact_dialog5/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 2551450537,
+        "prompt": 4106927607,
+        "parent": 4106927607,
+        "role": 4,
+        "path": "Objects/interact_dialog5/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 4145720496,
+        "prompt": 599534787,
+        "parent": 599534787,
+        "role": 1,
+        "path": "Objects/lamp/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2953236311,
+        "prompt": 599534787,
+        "parent": 4145720496,
+        "role": 2,
+        "path": "Objects/lamp/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 2092113994,
+        "prompt": 599534787,
+        "parent": 599534787,
+        "role": 3,
+        "path": "Objects/lamp/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 3065843209,
+        "prompt": 599534787,
+        "parent": 599534787,
+        "role": 4,
+        "path": "Objects/lamp/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3483663319,
+        "prompt": 3134594703,
+        "parent": 3134594703,
+        "role": 1,
+        "path": "Objects/npcdoll/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2364907108,
+        "prompt": 3134594703,
+        "parent": 3483663319,
+        "role": 2,
+        "path": "Objects/npcdoll/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 3171077448,
+        "prompt": 3134594703,
+        "parent": 3134594703,
+        "role": 3,
+        "path": "Objects/npcdoll/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1150279130,
+        "prompt": 3134594703,
+        "parent": 3134594703,
+        "role": 4,
+        "path": "Objects/npcdoll/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3169840456,
+        "prompt": 2512144705,
+        "parent": 2512144705,
+        "role": 1,
+        "path": "Objects/Present1/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 2220523865,
+        "prompt": 2512144705,
+        "parent": 3169840456,
+        "role": 2,
+        "path": "Objects/Present1/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 663149932,
+        "prompt": 2512144705,
+        "parent": 2512144705,
+        "role": 3,
+        "path": "Objects/Present1/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1198866207,
+        "prompt": 2512144705,
+        "parent": 2512144705,
+        "role": 4,
+        "path": "Objects/Present1/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 3751449500,
+        "prompt": 3888442132,
+        "parent": 3888442132,
+        "role": 1,
+        "path": "Objects/Present2/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 1295046977,
+        "prompt": 3888442132,
+        "parent": 3751449500,
+        "role": 2,
+        "path": "Objects/Present2/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 4083051462,
+        "prompt": 3888442132,
+        "parent": 3888442132,
+        "role": 3,
+        "path": "Objects/Present2/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 26416020,
+        "prompt": 3888442132,
+        "parent": 3888442132,
+        "role": 4,
+        "path": "Objects/Present2/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 4077597496,
+        "prompt": 777639734,
+        "parent": 777639734,
+        "role": 1,
+        "path": "Objects/Present4/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 814598246,
+        "prompt": 777639734,
+        "parent": 4077597496,
+        "role": 2,
+        "path": "Objects/Present4/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 1484664034,
+        "prompt": 777639734,
+        "parent": 777639734,
+        "role": 3,
+        "path": "Objects/Present4/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1403284572,
+        "prompt": 777639734,
+        "parent": 777639734,
+        "role": 4,
+        "path": "Objects/Present4/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      },
+      {
+        "id": 1415952953,
+        "prompt": 2012110327,
+        "parent": 2012110327,
+        "role": 1,
+        "path": "Objects/Present3/interact/ButtonPrompt/HBoxContainer",
+        "native_class": "HBoxContainer"
+      },
+      {
+        "id": 3984920860,
+        "prompt": 2012110327,
+        "parent": 1415952953,
+        "role": 2,
+        "path": "Objects/Present3/interact/ButtonPrompt/HBoxContainer/Label",
+        "native_class": "Label"
+      },
+      {
+        "id": 376994667,
+        "prompt": 2012110327,
+        "parent": 2012110327,
+        "role": 3,
+        "path": "Objects/Present3/interact/ButtonPrompt/Arrow",
+        "native_class": "TextureRect"
+      },
+      {
+        "id": 1975791663,
+        "prompt": 2012110327,
+        "parent": 2012110327,
+        "role": 4,
+        "path": "Objects/Present3/interact/ButtonPrompt/AnimationPlayer",
+        "native_class": "AnimationPlayer"
+      }
+    ]
+  },
+  "connections": [
+    {
+      "role": 1,
+      "emitter": 1,
+      "signal": "event_detector_entered",
+      "method": "_on_player_nearby",
+      "arguments": 1,
+      "flags": 0,
+      "bind": 1
+    },
+    {
+      "role": 2,
+      "emitter": 1,
+      "signal": "event_detector_exited",
+      "method": "_on_player_nearby",
+      "arguments": 1,
+      "flags": 0,
+      "bind": 0
+    },
+    {
+      "role": 3,
+      "emitter": 2,
+      "signal": "inputs_changed",
+      "method": "_set_key_name",
+      "arguments": 0,
+      "flags": 0,
+      "bind": 2
+    },
+    {
+      "role": 4,
+      "emitter": 2,
+      "signal": "locale_changed",
+      "method": "_set_key_name",
+      "arguments": 0,
+      "flags": 0,
+      "bind": 2
+    },
+    {
+      "role": 5,
+      "emitter": 1,
+      "signal": "paused",
+      "method": "_on_player_toggle_pause",
+      "arguments": 0,
+      "flags": 0,
+      "bind": 2
+    },
+    {
+      "role": 6,
+      "emitter": 1,
+      "signal": "unpaused",
+      "method": "_on_player_toggle_pause",
+      "arguments": 0,
+      "flags": 0,
+      "bind": 2
+    },
+    {
+      "role": 7,
+      "emitter": 3,
+      "signal": "animation_finished",
+      "method": "_on_AnimationPlayer_animation_finished",
+      "arguments": 1,
+      "flags": 2,
+      "bind": 2
+    }
+  ],
+  "hide_signal": "hide",
+  "offset_member": "offset",
+  "enabled_member": "enabled",
+  "material_source": "Shaders/Flash.tres",
+  "shader_source": "Shaders/Flash.tres",
+  "shader_declaration": 9,
+  "shader_code_sha256": "b78fa8b1e62a15727d0ce256718f44c148844581e42478786ec268f4ffec160d",
+  "material_glow": [
+    0,
+    0,
+    0,
+    1
+  ],
+  "material_local_to_scene": true,
+  "native_material_clones": {
+    "1630786942": 264,
+    "1005115076": 265,
+    "208617136": 266,
+    "248281308": 267,
+    "1141665895": 268,
+    "2085078767": 269,
+    "3674829925": 270,
+    "1223048161": 271,
+    "948423137": 272,
+    "2595719401": 273,
+    "1372375868": 274,
+    "2805403293": 275,
+    "2347342956": 276,
+    "1906418799": 277,
+    "2062649775": 278,
+    "1970808": 279,
+    "4106927607": 280,
+    "599534787": 281,
+    "3134594703": 282,
+    "2512144705": 283,
+    "3888442132": 284,
+    "777639734": 285,
+    "2012110327": 286
+  },
+  "methods": [
+    "press_button",
+    "set_enabled",
+    "force_show",
+    "force_hide",
+    "unforce_show_hide"
+  ],
+  "wait": {
+    "id": 700953738,
+    "flags": 4,
+    "native_class": "GDScriptFunctionState",
+    "method": "_signal_callback",
+    "source": "Scripts/UI/Button Prompt.gd",
+    "source_sha256": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "engine": {
+      "gdscript_function.cpp": "fbf428dcba723ba9bee9aa6b74ed1c69ddec9dec950174bfd5d1367332c91df4",
+      "object.cpp": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6"
+    },
+    "abi_ir_sha256": "9c5c2a31fe4b70409ec77bdc7685637fb40b98bfee18accb1dce86787aec4df9"
+  },
+  "font": {
+    "path": "fonts/source-fonts.encfont",
+    "sha256": "21445d8a890b258ec4aa1b36b43d755d8c6fd299832c05e49457e4ffb7c03bb8",
+    "bytes": 176012,
+    "ir_sha256": "9f7225f90cb0da3bc100c1d75000aaeef8e8aaba1531e58c4d6570b94d013997",
+    "source_path": "Fonts/BottleRocket.ttf",
+    "source": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "face": {
+      "source": "Fonts/BottleRocket.tres",
+      "legacy_ascii": false,
+      "first_glyph": 4820,
+      "glyph_count": 40,
+      "first_page": 13,
+      "page_count": 1,
+      "ascent": 11,
+      "descent": 0,
+      "height": 11,
+      "spacing_char": -1,
+      "spacing_space": 3,
+      "texture_bytes": 131072,
+      "fallback_chain": [
+        "Fonts/BottleRocket.ttf",
+        "Fonts/BottleRocket_ja.ttf",
+        "Fonts/BottleRocket_ko.ttf",
+        "Fonts/BottleRocket_zh_cn.otf"
+      ]
+    },
+    "pages": [
+      {
+        "path": "ebmain-6-000.t3x",
+        "width": 256,
+        "height": 256,
+        "texture_bytes": 131072,
+        "file_bytes": 131093,
+        "crc32": 2494746642,
+        "sha256": "1cc3067adae11338fd1efc072a6d8e315ce493a7dd16eae51419b23a87c64aa2"
+      }
+    ],
+    "license_review_sha256": "9b4b1d42e5944e28cf060140dbb76078cae4d082ce6725a36012be23825e5a08"
+  },
+  "scene_admitted": false
+}

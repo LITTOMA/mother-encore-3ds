@@ -14,7 +14,8 @@ SOURCE='Maps/podunk/podunk.tscn'
 TARGET='Maps/podunk/Nintens House.tscn'
 AREA='Scripts/Main/RoomTypes/AreaRoom.gd'
 DEPENDENCIES=['content/podunk-door.json','content/native-opening.json','content/native-house.json','content/house-source-bindings.json','content/native-house-geometry.json']
-def derive():
+def derive(room_ir=DEPENDENCIES[1],room_pack='data/opening.encroom'):
+ dependencies=list(DEPENDENCIES);dependencies[1]=room_ir
  ex=Extractor(ROOT);house=ex.text(TARGET);outdoor=ex.text(SOURCE)
  area=ex.text(AREA);door=ex.text('Scripts/Main/Door.gd');transition=ex.text('Scripts/global/SceneTransition.gd');glob=ex.text('Scripts/global/global.gd')
  house_script=ex.text('Maps/podunk/Ninten_s room.gd');landmark=ex.text('Scripts/Main/Flag Landmarks.gd')
@@ -60,7 +61,7 @@ def derive():
  require(one(r'^signal '+re.escape(follower_tail[2])+r'$',glob,'Global party changed signal declaration') and followers[2].find('partyObjects.resize(1)')<followers[2].find('if emit_signal:') and followers[2].find('follow.init_with_follower_idx(i)')<followers[2].find('if emit_signal:'),'Original party changed construction ordering changed')
  deferred=one(r'call_deferred\("([^\"]+)", path, player_pos, player_dir, params\)',transition,'Deferred method')[1]
  left=one(r'^signal (area_left)$',area,'Area left')[1]
- room=read(ROOT/DEPENDENCIES[1]);h=read(ROOT/DEPENDENCIES[2]);bindings=read(ROOT/DEPENDENCIES[3]);ss=room['strings'];rr=room['sections']
+ room=read(ROOT/room_ir);h=read(ROOT/DEPENDENCIES[2]);bindings=read(ROOT/DEPENDENCIES[3]);ss=room['strings'];rr=room['sections']
  require(len(rr['Scene'])==1 and ss[rr['Scene'][0]['source_scene_string']]=='res://'+TARGET,'Existing Room scene differs')
  flags=[dict(index=i,id=x['stable_id'],name=ss[x['name_string']])for i,x in enumerate(rr['Flag'])]
  fn={f['name']for f in flags};require(visit in fn and flyingflag in fn,'House Ready flags absent from Room')
@@ -94,10 +95,10 @@ def derive():
   tilemaps.append(dict(id=stable('house-reentry-native:'+TARGET+'#'+m['node']),**m,resource_source=resource_source,resource_sha256=ex.sources[resource_source]))
  require(len(tilemaps)==3 and len({m['id']for m in tilemaps})==3,'House complete TileMap proof differs')
  packrows=[]
- for role,path in [(1,'data/opening.encroom'),(2,'data/opening.enchouse')]:
+ for role,path in [(1,room_pack),(2,'data/opening.enchouse')]:
   raw=(ROOT/'romfs'/path).read_bytes();packrows.append(dict(role=role,path=path,size=len(raw),sha256=hashlib.sha256(raw).hexdigest()))
  return dict(schema=1,format=2,family=FAMILY,capability=1,rules=1,commit=PIN,scene_id=stable('house-reentry:'+TARGET),source_sha256=ex.sources[TARGET],sources=ex.sources,tilemaps=tilemaps,
-  dependencies={p:sha(ROOT/p)for p in DEPENDENCIES},packs=packrows,door_ir_sha256=sha(ROOT/DEPENDENCIES[0]),source_scene=SOURCE,target_scene=TARGET,door_id=entry['id'],target_root_name=rootname,source_region=source_region,target_region=region,player_parent=parentpath,position=[entry['target'][0],entry['target'][1]-d['ground_offset']],direction=entry['direction'],empty_target_params=True,
+  dependencies={p:sha(ROOT/p)for p in dependencies},packs=packrows,door_ir_sha256=sha(ROOT/DEPENDENCIES[0]),source_scene=SOURCE,target_scene=TARGET,door_id=entry['id'],target_root_name=rootname,source_region=source_region,target_region=region,player_parent=parentpath,position=[entry['target'][0],entry['target'][1]-d['ground_offset']],direction=entry['direction'],empty_target_params=True,
   body_signal=body_signal,body_method=d['body_method'],door_signals=signals,scene_changed_signal=changed,deferred_method=deferred,area_left_signal=left,area_left_arguments=1,party_changed_signal=follower_tail[2],party_changed_wait_signal=follower_tail[1],party_changed_method=followers[1],party_changed_body_sha256=hashlib.sha256(followers[2].encode()).hexdigest(),steps=[dict(step=i,source=s)for i,s in enumerate(selectors)],
   ready=dict(script=AREA,visit_method=ready[1].strip()[:-2],flying_method=ready[2].strip()[:-2],visit_flag=visit,magicant_region=flying,flying_flag=flyingflag,flying_character=character[0],party_npcs_member=character[1],switch_signal=switch[1],switch_method=switch[2]),flags=flags,actors=actors,bodies=bodies,landmarks=landmarks,native_nodes=native,
   admission=dict(full_cold_ready=False,read_only_pack=True,reset_initial_flags=False,reseed=False,new_player=False,notes='Actual current flags and source object owners supplied by continuation. House source root extends AreaRoom; root has no Ready override. Its animation_finished battle callback is not run by return Ready. Existing bounded House/Room execute their original mapped behavior; this resource grants no additional unknown content.'))
@@ -105,7 +106,7 @@ def extract():
  d=derive();write(IR,d);write(REVIEW,dict(schema=1,commit=PIN,ir_sha256=sha(IR),producer_sha256=sha(Path(__file__)),sources=d['sources'],dependencies=d['dependencies'],admission=d['admission']));return d
 def load():
  d=read(IR);require(d==derive(),'House return source/pack dependency changed');r=read(REVIEW);require(r==dict(schema=1,commit=PIN,ir_sha256=sha(IR),producer_sha256=sha(Path(__file__)),sources=d['sources'],dependencies=d['dependencies'],admission=d['admission']),'House return source review stale');return d
-def binary(d):
+def binary(d,ir_sha256=None):
  b=bytearray(128)
  def u(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
  def t(v):raw=v.encode();u(len(raw));b.extend(raw)
@@ -144,7 +145,7 @@ def binary(d):
  for x in d['steps']:u(x['step']);t(x['source'])
  u(len(d['sources']))
  for p,h in d['sources'].items():t(p);b.extend(bytes.fromhex(h))
- struct.pack_into('<8s8I',b,0,b'ENCHRET1',2,128,len(b),zlib.crc32(b[128:]),FAMILY,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(sha(IR));return bytes(b)
+ struct.pack_into('<8s8I',b,0,b'ENCHRET1',2,128,len(b),zlib.crc32(b[128:]),FAMILY,1,1,d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(ir_sha256 or sha(IR));return bytes(b)
 def stage_files(root):
  raw=binary(load());relative=Path('data/house.encreentry');require((Path(root)/relative).read_bytes()==raw,'House return staged pack differs');return {relative:raw}
 def main():

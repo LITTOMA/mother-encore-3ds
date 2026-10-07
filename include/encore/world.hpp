@@ -4,6 +4,7 @@
 #include "encore/collision.hpp"
 #include "encore/world_flags.hpp"
 #include "encore/dialogue.hpp"
+#include "encore/drawer_program.hpp"
 #include "encore/actor_actions.hpp"
 #include "encore/persistent_player.hpp"
 #include "encore/room_data.hpp"
@@ -52,6 +53,21 @@ public:
     virtual bool source_started(OpeningWorld&,uint32_t generation,std::string&)=0;
     virtual bool before_action(OpeningWorld&,const DialogueAction&,std::string&)=0;
 };
+// Borrow the real House/session effects; no second inventory or scheduler.
+struct OpeningHouseInventoryState {
+    const OpeningWorld*world=nullptr;
+    const OpeningHouseProgrammeOwner*programme_owner=nullptr;
+    RoomView room{};DrawerProgramView drawer{};DrawerHost*effects=nullptr;
+    uint32_t programme=kRoomNoIndex,generation=0;
+    bool source_call_closed=false;
+};
+class OpeningHouseInventoryOwner {
+public:
+    virtual ~OpeningHouseInventoryOwner()=default;
+    virtual const OpeningWorld*world()const=0;
+    // Observe actual source owners/callback scope. Dialogue may be active.
+    virtual bool observe_inventory(OpeningHouseInventoryState&,std::string&)const=0;
+};
 class OpeningWorld final : private DialogueSink {
 public:
     OpeningWorld();
@@ -84,6 +100,10 @@ public:
     // Binding/checked unbinding do not initialize, grant Ready or tick anything.
     bool bind_house_programme_owner(OpeningHouseProgrammeOwner&,std::string&);
     bool unbind_house_programme_owner(OpeningHouseProgrammeOwner&,std::string&);
+    bool bind_house_inventory_owner(OpeningHouseInventoryOwner&,std::string&);
+    bool unbind_house_inventory_owner(OpeningHouseInventoryOwner&,std::string&);
+    const OpeningHouseInventoryOwner*house_inventory_owner()const{return house_inventory_owner_;}
+    bool admit_house_inventory_command(uint32_t programme,uint32_t pc,std::string&)const;
     const OpeningHouseProgrammeOwner* house_programme_owner()const{return house_programme_owner_;}
     // The real World counter, including initialized-but-unstarted VM state.
     uint32_t source_generation()const{return generation_;}
@@ -167,6 +187,9 @@ public:
     const std::vector<OpeningAudioRequest>& audio_requests() const { return audio_; }
     const std::vector<OpeningTraceEvent>& action_trace() const { return trace_; }
 private:
+    OpeningHouseInventoryOwner*house_inventory_owner_=nullptr;
+    DrawerHost*house_inventory_effects_=nullptr;DrawerProgramView house_inventory_source_{};
+    bool inventory_receipt(OpeningHouseInventoryState&,std::string&)const;
     OpeningHouseProgrammeOwner*house_programme_owner_=nullptr;
     bool house_programme_callback_=false,house_programme_failed_=false;
     std::string house_programme_error_;

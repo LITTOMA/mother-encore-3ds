@@ -127,6 +127,9 @@ public:
     return catalog_.selected() && (!catalog_.legacy_ascii() || cp >= 128);
   }
   const SourceFontCatalog &catalog() const { return catalog_; }
+  const std::array<uint8_t,32>&catalog_sha256()const{
+    return catalog_.binary_sha256();
+  }
   const SourceFontGlyph *glyph(uint32_t cp) const {
     const auto *g = catalog_.glyph(cp);
     if (!g)

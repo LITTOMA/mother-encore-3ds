@@ -210,6 +210,66 @@ bool HouseRuntime::request_source_npc_programme(const HouseSourceNpcProgramme&r,
  active_=r.original_npc;event(HouseEventKind::DialogueOpened,active_);
  e.clear();return true;
 }
+bool HouseRuntime::admit_source_interact_programme(const HouseSourceInteractProgramme&r,std::string&e)const{
+ auto reject=[&](const char*message){e=message;return false;};
+ if(!programme_owner_||!world_||!presentation_||phase_!=HousePhase::Idle||
+    story_executing_||story_pending()||programme_lease_||entering_door()||
+    world_->stage()!=OpeningStage::Walking||!world_->healthy()||r.thoughts||
+    !r.caller||!r.source||!r.data||r.source->data()!=r.data||!r.data->valid()||
+    !r.source->error().empty()||!r.tree||!r.tree_data||!r.tree_data->valid()||
+    !r.registry||!r.reentry||!r.reentry->valid()||!r.doors||
+    r.house.bytes()!=content_.bytes()||r.house.byte_size()!=content_.byte_size()||
+    r.programme>=world_->content().program_count()||r.dialogue.empty())
+  return reject("House Interact programme requires its ordinary actual idle source owners");
+ HouseProgrammeState owner;
+ if(!programme_state(owner,e)||owner.phase!=HouseProgrammePhase::Closed||!owner.native_closed)
+  return reject("House Interact programme requires the actual closed native/World owner");
+ HouseSourceInteractProgramme actual;
+ if(!r.caller->observe(r,actual,e))return false;
+ if(actual.caller!=r.caller||actual.source!=r.source||actual.data!=r.data||
+    actual.tree!=r.tree||actual.tree_data!=r.tree_data||actual.registry!=r.registry||
+    actual.reentry!=r.reentry||actual.doors!=r.doors||
+    actual.house.bytes()!=r.house.bytes()||actual.house.byte_size()!=r.house.byte_size()||
+    actual.object!=r.object||actual.source_id!=r.source_id||
+    actual.programme!=r.programme||actual.dialogue!=r.dialogue||actual.thoughts)
+  return reject("House Interact programme differs from its live source invocation");
+ if(!r.reentry->matches(*r.doors,world_->content(),content_,e))return false;
+ const auto identity=r.tree_data->identity();FieldIdentity body;
+ const auto*n=r.tree->state(r.object);const auto*d=r.tree->descriptor(r.object);
+ const auto*checked=r.tree_data->record(r.source_id);
+ const auto*record=r.data->record(r.source_id);const auto*instance=r.source->state(r.source_id);
+ if(!r.object||!n||!d||!checked||!record||!instance||!instance->instantiated||
+    !instance->ready||instance->queued||instance->deleted||!n->alive||!n->inside||
+    !n->bound||n->queued||!n->ready_notified||n->ready_first||d->id!=r.source_id||
+    d->native_class!="Area2D"||checked->native_class!=d->native_class||
+    r.tree->source_object(r.source_id)!=r.object||
+    r.registry->tree_owner(r.object).get()!=r.tree||r.registry->current_scene()!=r.tree->root()||
+    r.tree->object_domain()!=r.registry->kernel()||!r.tree->object_identity(r.object,body)||
+    body.scene_id!=identity.scene_id||body.upstream_commit!=identity.upstream_commit||
+    body.source_sha256!=identity.source_sha256||
+    identity.upstream_commit!=r.reentry->identity().upstream_commit||
+    r.tree_data->source_scene()!=r.reentry->target_scene()||r.data->scene_id()!=identity.scene_id||
+    r.data->source_pin()!=identity.upstream_commit||r.data->scene()!=r.tree_data->source_scene()||
+    record->node!=d->path||record->ready!=d->ready||
+    checked->path!=d->path||checked->script!=d->script||checked->script_sha!=d->script_sha)
+  return reject("House Interact programme borrowed another actual Ready Area/Tree/Registry");
+ std::array<uint8_t,32>script{},yaml{};
+ if(!r.data->source_hash(d->script,script)||script!=d->script_sha||
+    !r.data->source_hash("Data/Dialogue/"+std::string(r.dialogue)+".yaml",yaml)||
+    world_->content().string(world_->content().program(r.programme).source_path_string)!=r.dialogue)
+  return reject("House Interact programme lost its actual script/YAML/Room source binding");
+ e.clear();return true;
+}
+bool HouseRuntime::request_source_interact_programme(const HouseSourceInteractProgramme&r,std::string&e){
+ if(!admit_source_interact_programme(r,e))return false;
+ // The original InteractDialog has no NPC mark_seen/pauseForInteract prefix.
+ // Keep the same House lease and real asynchronous native Ready boundary.
+ if(!world_->pause_for_house()){e="House Interact actual World pause rejected";return false;}
+ story_original_npc_=house_no_index;story_executing_=true;phase_=HousePhase::StoryRunning;
+ if(!request_programme(r.programme,house_no_index)){e=error_;return false;}
+ active_=r.source_id;event(HouseEventKind::DialogueOpened,active_);
+ e.clear();return true;
+}
 bool HouseRuntime::native_programme_complete(bool&complete){
  complete=false;
  HouseProgrammeState actual;

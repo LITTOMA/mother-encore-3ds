@@ -60,6 +60,7 @@ struct Owners {
   StartupSettingsData settings;
   HouseButtonPromptData prompts;
   HouseInspectionData inspections;
+  DrawerProgramData drawer;
   StorageData storage;
   ItemDetailsData legacy_details, field_details;
   ItemUseData item_use;
@@ -180,7 +181,7 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
       accepted = owners->inspections.load_file(absolute.c_str(), detail);
       break;
     case ResourceRole::DrawerProgram:
-      accepted = decode<DrawerProgramData>(absolute, detail);
+      accepted = owners->drawer.load_file(absolute.c_str(), detail);
       break;
     case ResourceRole::Storage:
       accepted = owners->storage.load_file(absolute.c_str(), detail);
@@ -277,7 +278,7 @@ bool admit_catalog_resource_formats(const ResourceCatalog &catalog,
       !house_doors.load(house_door_bytes.data(), house_door_bytes.size(),
                         door_entry->identity, detail) ||
       !house_destination.load(destination.bundle(), prefix, house_doors,
-                              owners->room.view(), owners->house.view(), detail))
+                              owners->room.view(), owners->house.view(), owners->drawer.view(),detail))
     return rejected(error,catalog.path(ResourceRole::FieldSceneBundle),detail);
   result.bindings+=2;result.singleton_formats+=2;
   ResourceRole failed = ResourceRole::Room;

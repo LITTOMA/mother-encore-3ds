@@ -214,9 +214,14 @@ const Schema schemas[] = {
     {"ENCSPR01", 1, 0, 1, 1},
     {"ENCFMAP1", 1, 0x454e0019, 1, 1},
     {"ENCFCA01", 2, 0x454e0040, 2, 1},
-    {"ENCTINT1", 1, 0, 1, 1}};
+    {"ENCTINT1", 1, 0, 1, 1},
+    {"ENCHBPR1", 1, 0x454e0080, 1, 1},
+    {"ENCHCTL1", 1, 0x454e0081, 1, 1},
+    {"ENCFDLG1", 1, 0, 1, 1},
+    {"ENCRMD01", 1, 0x454e0002, 10, 8},
+    {"ENCHRET1", 2, 0x454e0075, 1, 1}};
 static_assert(sizeof(schemas) / sizeof(*schemas) ==
-                  uint32_t(PodunkPackRole::HouseTint),
+                  uint32_t(PodunkPackRole::HouseInspectionReentry),
               "Each bundle role requires exactly one current reader schema");
 const PodunkPackRole script_schemas[] = {PodunkPackRole::Grass,
                                          PodunkPackRole::Npc,
@@ -329,7 +334,9 @@ bool PodunkBundleData::load(const uint8_t *p, size_t n,
     a.original_header = r.bytes(hc);
     if (!r.ok || role != i + 1 || !safe(a.path) ||
         a.path.substr(0, 5) != "data/" || !paths.insert(a.path).second ||
-        a.kind < 1 || a.kind > 2 || !a.size || a.size > 64 * 1024 * 1024 ||
+        a.kind < 1 || a.kind > 3 ||
+        ((a.role == PodunkPackRole::HouseInspectionRoom) != (a.kind == 3)) ||
+        !a.size || a.size > 64 * 1024 * 1024 ||
         !a.identity.scene_id || !nz(a.sha256) ||
         !nz(a.identity.source_sha256) || !nz(a.ir_sha256))
       return fail(e, "Bundle typed resource binding rejected");
@@ -347,7 +354,16 @@ bool PodunkBundleData::load(const uint8_t *p, size_t n,
                            expected.upstream_commit.end());
     if (pin == a.original_header.end())
       return fail(e, "Bundle original upstream pin differs");
-    if (a.kind == 1) {
+    if (a.kind == 3) {
+      // ENCRMD01 keeps its own major/minor, rules, capabilities, save identity
+      // and compiler input fingerprint. It is not a FieldIdentity header.
+      if (size_t(pin-a.original_header.begin()) != 56 ||
+          u32(a.original_header.data()+40) != a.identity.scene_id ||
+          u32(a.original_header.data()+28) != a.family ||
+          u32(a.original_header.data()+32) != a.rules ||
+          u32(a.original_header.data()+36) != a.capability)
+        return fail(e, "Bundle native Room header identity differs");
+    } else if (a.kind == 1) {
       auto at = size_t(pin - a.original_header.begin());
       if ((at != 40 && at != 48) || at + 52 > a.original_header.size() ||
           u32(a.original_header.data() + 36) != a.identity.scene_id ||
@@ -384,7 +400,7 @@ bool PodunkBundleData::load(const uint8_t *p, size_t n,
     if (!r.ok || a.id != i + 1 || !safe(a.path) || !type ||
         !paths.insert(a.path).second || !a.size || a.size > 64 * 1024 * 1024 ||
         !nz(a.sha256))
-      return fail(e, "Bundle asset binding rejected");
+      { e = "Bundle asset binding rejected: " + a.path; return false; }
     d.assets_.push_back(std::move(a));
   }
   for (uint32_t i = 0; i < sc; ++i) {

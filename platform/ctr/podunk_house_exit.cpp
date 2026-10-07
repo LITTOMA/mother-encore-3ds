@@ -300,7 +300,7 @@ bool PodunkHouseExit::prepare(PodunkHouseExitInput in,std::string &e) {
     return s.fail(e);
   if(!s.house_return_sources.load(s.input.continuation.destination->bundle(),
        s.input.continuation.romfs_root,s.sources.door(),
-       s.input.continuation.room,s.input.continuation.house_data,e))return s.fail(e);
+       s.input.continuation.room,s.input.continuation.house_data,s.input.continuation.drawer,e))return s.fail(e);
   auto &r=*s.continuation.registry();auto &root=*s.continuation.native_root();
   auto &global=s.continuation.global()->core();auto &bus=*s.continuation.signals();
   if(!s.load(PodunkPackRole::Goods,s.goods,e)||

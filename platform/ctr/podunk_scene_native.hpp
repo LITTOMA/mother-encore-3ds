@@ -20,6 +20,13 @@ class PodunkConcretePlayerEffectOwners;
 class PodunkPlayerCanvasForeign;
 class PodunkSceneAnimatedLeaves;
 class PodunkSceneGrassFactory;
+struct PodunkSceneControlState {
+ const upstream::FieldNodeTreeRuntime*tree=nullptr;
+ const upstream::FieldGlobalRegistry*registry=nullptr;
+ upstream::FieldObjectId object=0;uint32_t source_id=0;
+ upstream::FieldIdentity identity{};std::string native_class;
+ upstream::Vec2 position{},size{};bool constructed=false,bound=false,entered=false,ready=false;
+};
 // Actual native Control leaves join the existing Canvas order; their source
 // owner executes construction and draws its own real GPU assets. No separate
 // overlay pass or frame clock is introduced.
@@ -139,6 +146,10 @@ public:
                        upstream::FieldCanvasAppearance &,std::string &)const override;
   bool color_rect_snapshot(upstream::FieldObjectId,upstream::Vec2 &,
                        upstream::FieldColor &,std::string &)const override;
+  // Read the same actual TextureRect/ColorRect native instance. This grants
+  // no construction, lifecycle or source property mutation.
+  bool control_state(upstream::FieldObjectId,PodunkSceneControlState&,
+                     std::string&)const;
   // Complete native property pose. Source setter signals are emitted only by
   // the explicit setter endpoints, never guessed from a pose difference.
   bool sprite_publish(upstream::FieldObjectId,

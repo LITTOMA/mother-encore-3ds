@@ -4,6 +4,7 @@
 
 namespace encore::ctr {
 class HouseReturnNpcRuntime;
+class HouseReturnInventoryOwner;
 struct HouseReturnDialogueNativeInput {
   PodunkMickSession *session=nullptr;
   HouseReturnDialogue *driver=nullptr;
@@ -32,8 +33,11 @@ public:
   // Same fixed source owner, after real House Ready and closed programme bind.
   // Keep this borrower alive until real NPC deletion/Room waits complete.
   bool bind_npc_source(HouseReturnNpcRuntime&,std::string&);
+  bool bind_inventory_source(HouseReturnInventoryOwner&,std::string&);
   bool admit_npc_programme(const HouseReturnNpcRuntime&,
       const upstream::HouseSourceNpcProgramme&,std::string&)const;
+  bool admit_npc_before_open(const HouseReturnNpcRuntime&,
+      const upstream::HouseSourceNpcProgramme&,uint32_t,std::string&)const override;
   const upstream::FreshHouseState *house()const override{return in_.house;}
   bool set_talking(upstream::FieldObjectId,bool,std::string&)override;
   bool observe(const HouseReturnDialogueContext&,HouseReturnDialogueReceipt&,
@@ -52,6 +56,7 @@ private:
   HouseReturnDialogueNativeInput in_{};
   PodunkMickHouseNativeState owners_{};
   HouseReturnNpcRuntime *npc_source_=nullptr;
+  HouseReturnInventoryOwner *inventory_source_=nullptr;
   bool prepared_=false,room_installed_=false,programme_bound_=false;
   size_t callback_depth_=0;
   // This is the actual Selected event removed from the source queue, retained

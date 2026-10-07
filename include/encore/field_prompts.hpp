@@ -92,7 +92,7 @@ struct FieldPromptInstance {
        playing = false, started = false, material_assigned = false;
   FieldPromptClipRole clip{};
   float elapsed = 0;
-  Vec2 position{}, scale{};
+  Vec2 position{}, scale{}, offset{};
   std::string label;
   std::array<std::array<float, 4>, 10> properties{};
   bool visible() const { return properties[6][0] != 0; }
@@ -101,6 +101,17 @@ struct FieldPromptObservation {
   uint32_t settings_choice = 0;
   bool paused = true;
   Vec2 parent_scale{};
+};
+class FieldPromptRuntime;
+// Bound only by a concrete source owner. A completion call must prove the
+// currently executing persistent signal slot or actual FunctionState resume.
+class FieldPromptCompletionOwner {
+public:
+  virtual ~FieldPromptCompletionOwner() = default;
+  virtual bool arm_press(FieldPromptRuntime &, uint32_t, std::string &) = 0;
+  virtual bool source_completion_live(const FieldPromptRuntime &, uint32_t,
+                                      FieldPromptClipRole, bool resume,
+                                      std::string &) const = 0;
 };
 struct FieldPromptHost {
   std::function<bool(uint32_t parent, FieldPromptObservation &, std::string &)>
@@ -122,12 +133,16 @@ struct FieldPromptHost {
   // Actual native AP endpoint: 1=play, 2=finished, 3=stop. No second clock.
   std::function<bool(uint32_t, FieldPromptClipRole, uint32_t, std::string &)>
       native_animation;
+  FieldPromptCompletionOwner *completion_owner = nullptr;
 };
 class FieldPromptRuntime {
 public:
   const FieldPromptData *data() const { return data_; }
   bool initialize(const FieldPromptData &, FieldPromptHost, std::string &);
   bool create(uint32_t);
+  // Original exported field assignment. Only _reset_scale/_process writes the
+  // corresponding Canvas position; this assigns no Ready or native transform.
+  bool assign_offset(uint32_t,Vec2,std::string&);
   // Actual inherited/local material constructor before this script Ready.
   bool assign_source_material(uint32_t, const std::array<float, 4> &flash,
                               float flash_modifier, float glow_modifier,
@@ -139,6 +154,8 @@ public:
   bool set_enabled(uint32_t, bool, bool quick = false);
   bool force(uint32_t, int mode, bool quick = false);
   bool press(uint32_t);
+  bool source_animation_finished(uint32_t, FieldPromptClipRole, std::string &);
+  bool source_press_resume(uint32_t, FieldPromptClipRole, std::string &);
   bool assign_enabled(uint32_t, bool);
   bool canvas_hide(uint32_t);
   bool idle_frame(uint32_t, float);
@@ -153,6 +170,9 @@ private:
   std::string error_;
   uint32_t last_ready_ = 0;
   bool had_ready_ = false;
+  uint32_t finishing_ = 0;
+  FieldPromptClipRole finishing_clip_{};
+  bool finished_slot_ = false, resumed_press_ = false;
   bool fail(const char *);
   FieldPromptInstance *get(uint32_t);
   bool observe(uint32_t, FieldPromptObservation &);

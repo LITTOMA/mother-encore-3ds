@@ -32,13 +32,13 @@
   "dependencies": {
     "content/native-opening.json": "7465d226ae3a8e8ee404be64668edba67fbc390c81e00c04471ed098ac11f474",
     "content/native-house.json": "fba1a433cc91e2cbc7c4b951188bb01a329322b76ddae401a887793b86a9d75d",
-    "romfs/data/opening.encroom": "78efae6ae76616bdad04833050262a65de7e137d369df7c335980db3748e22a7",
+    "romfs/data/opening.encroom": "e3003469037f22b20c7d66efe3e08e030bb48ce68020f3695d5d977f42925099",
     "romfs/data/opening.enchouse": "1034f69bab8858daad5f8aeca5508dfc200e124581df3372e0bb71ffb5d91834"
   },
   "fingerprints": {
     "room": {
       "bytes": 73704,
-      "sha256": "78efae6ae76616bdad04833050262a65de7e137d369df7c335980db3748e22a7"
+      "sha256": "e3003469037f22b20c7d66efe3e08e030bb48ce68020f3695d5d977f42925099"
     },
     "house": {
       "bytes": 25688,

@@ -5,6 +5,7 @@
 #include "podunk_dialogue_programme_port.hpp"
 
 namespace encore::ctr {
+class HouseReturnNpcRuntime;
 // Borrow the already committed House and the SAME native DialogueBox owners.
 // RoomView is the original checked programme source; no FieldProgrammeData or
 // FieldNpcRuntime is manufactured to impersonate a House programme/talker.
@@ -59,6 +60,10 @@ public:
   virtual ~HouseReturnDialogueNativePort() = default;
   virtual bool observe(const HouseReturnDialogueContext &,
                        HouseReturnDialogueReceipt &, std::string &) const = 0;
+  virtual bool admit_npc_before_open(const HouseReturnNpcRuntime&,
+      const upstream::HouseSourceNpcProgramme&,uint32_t,std::string&e)const{
+    e="House native owner has no actual NPC BeforeOpen consumer";return false;
+  }
   // Read-only admission of EVERY immutable Room command, including branches
   // and waits not passed to OpeningWorld::apply. Reject missing source owners.
   virtual bool admit_command(const HouseReturnDialogueContext &, uint32_t pc,
@@ -137,6 +142,10 @@ public:
   // Replace only the actual HouseRuntime programme-start call sites. Keep its
   // real interaction/seen/phase mutations and mark the Ready wait explicitly.
   bool request(uint32_t programme, uint32_t original_npc, std::string &) override;
+  // Scoped only to the concrete NPC's already executed original source prefix.
+  // Core repeated snapshots do not turn this into a closed transfer frame.
+  bool request_npc_programme(const HouseReturnNpcRuntime&,
+                            const upstream::HouseSourceNpcProgramme&,std::string&);
   bool observe_house_programme(upstream::HouseProgrammeState &,
                                std::string &) const override;
   bool native_ready(upstream::FieldObjectId, std::string &);
@@ -167,14 +176,21 @@ public:
   bool native_start_live()const{return phase_==Phase::Starting&&world_call_&&!action_call_;}
   bool native_action_live()const{return phase_==Phase::Running&&action_call_;}
   const HouseReturnDialogueContext &context() const { return context_; }
+  // Read actual owners during inventory opcodes, including a live native box.
+  // callback_depth is observed, not required to be zero by this getter.
+  bool inventory_frame(HouseReturnDialogueReceipt &, std::string &) const;
 private:
+  struct NpcRequestScope;
   enum class Phase { Unbound, Closed, Opening, WaitingReady, Starting, Running, Failed };
   HouseReturnDialogueInput input_{};
   HouseReturnDialogueContext context_{};
   Phase phase_ = Phase::Unbound;
   bool world_call_ = false, action_call_ = false;
+  const NpcRequestScope*npc_request_=nullptr;
   bool actual(bool require_ready, std::string &) const;
-  bool receipt(bool closed, HouseReturnDialogueReceipt &, std::string &) const;
+  bool receipt(bool closed, HouseReturnDialogueReceipt &, std::string &,
+               const NpcRequestScope*request_scope=nullptr) const;
+  bool checked_npc_request(const NpcRequestScope&,std::string&)const;
   bool current(upstream::FieldObjectId, uint32_t, std::string &) const;
   bool fail(std::string &, const char *);
   bool world_result(bool, std::string &);

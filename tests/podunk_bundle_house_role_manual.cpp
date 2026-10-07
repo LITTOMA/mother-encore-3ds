@@ -50,6 +50,7 @@ int main(int argc, char **argv) {
   const auto *geometry = owner.entry(PodunkPackRole::HouseGeometry);
   const auto *reentry = owner.entry(PodunkPackRole::HouseReentry);
   const auto *tree = owner.entry(PodunkPackRole::HouseNodeTree);
+  const auto *inspection = owner.entry(PodunkPackRole::HouseInspectionRoom);
   MANUAL_REQUIRE(geometry && reentry && tree && geometry != reentry && tree != geometry);
   MANUAL_REQUIRE(reentry->format == 2 && reentry->family == 0x454e0075 &&
                  reentry->capability == 1 && reentry->rules == 1);
@@ -61,11 +62,17 @@ int main(int argc, char **argv) {
                  tree->capability == 3 && tree->rules == 1);
   MANUAL_REQUIRE(tree->original_header.size() == 128 &&
                  !std::memcmp(tree->original_header.data(), "ENCFNTR1", 8));
+  MANUAL_REQUIRE(inspection && inspection->kind == 3 && inspection->format == 1 &&
+                 inspection->family == 0x454e0002 && inspection->rules == 8 &&
+                 inspection->capability == 10 &&
+                 inspection->original_header.size() == 128 &&
+                 !std::memcmp(inspection->original_header.data(), "ENCRMD01", 8));
   const auto counts = size_t(132) + word(original, 128);
   const auto count = word(original, counts);
   MANUAL_REQUIRE(count == owner.packs().size());
   size_t at = counts + 12, geometry_at = 0, geometry_header = 0,
-         tree_at = 0, tree_header = 0, reentry_at = 0;
+         tree_at = 0, tree_header = 0, reentry_at = 0,
+         inspection_at = 0, inspection_header = 0;
   for (uint32_t i = 0; i < count; ++i) {
     const size_t start = at;
     MANUAL_REQUIRE(word(original, start) == i + 1);
@@ -85,8 +92,29 @@ int main(int argc, char **argv) {
       tree_header = header_start;
     }
     if (i + 1 == uint32_t(PodunkPackRole::HouseReentry)) reentry_at = start;
+    if (i + 1 == uint32_t(PodunkPackRole::HouseInspectionRoom)) {
+      inspection_at = start;
+      inspection_header = header_start;
+    }
   }
-  MANUAL_REQUIRE(geometry_at && tree_at && reentry_at);
+  MANUAL_REQUIRE(geometry_at && tree_at && reentry_at && inspection_at && inspection_header);
+  size_t font_atlas_at = 0;
+  for (uint32_t i = 0; i < word(original, counts + 4); ++i) {
+    const size_t start = at;
+    MANUAL_REQUIRE(word(original, start) == i + 1);
+    at += 16;
+    const uint32_t length = word(original, at);
+    MANUAL_REQUIRE(at + 4 + length + 32 <= original.size());
+    const std::string asset_path(original.begin() + at + 4,
+                                 original.begin() + at + 4 + length);
+    at += 4 + length + 32;
+    if (asset_path.substr(0, 6) == "fonts/" &&
+        asset_path.size() > 4 && asset_path.substr(asset_path.size() - 4) == ".t3x") {
+      MANUAL_REQUIRE(word(original, start + 4) == uint32_t(PodunkAssetKind::Font));
+      font_atlas_at = start;
+    }
+  }
+  MANUAL_REQUIRE(font_atlas_at);
   const auto path = geometry->path;
   auto rejected = [&](std::vector<uint8_t> candidate) {
     put(candidate, 20, encore::crc32(candidate.data() + 128, candidate.size() - 128));
@@ -97,11 +125,22 @@ int main(int argc, char **argv) {
     MANUAL_REQUIRE(owner.valid() && owner.entry(PodunkPackRole::HouseGeometry)->path == path);
   };
   auto candidate = original; put(candidate, counts, count - 1); rejected(candidate);
+  candidate = original; put(candidate, font_atlas_at + 4, uint32_t(PodunkAssetKind::Texture)); rejected(candidate);
+  candidate = original; put(candidate, font_atlas_at + 4, 99); rejected(candidate);
   candidate = original; put(candidate, geometry_at, uint32_t(PodunkPackRole::HouseReentry)); rejected(candidate);
   candidate = original; put(candidate, geometry_at, count + 1); rejected(candidate);
   candidate = original; candidate[geometry_header] = 'X'; rejected(candidate);
   candidate = original; candidate[tree_header] = 'X'; rejected(candidate);
   candidate = original; put(candidate, reentry_at + 16, 1); rejected(candidate);
+  // The independent Room format is accepted only in its own role. These
+  // mutations reseal the bundle CRC; each must still reject atomically.
+  candidate = original; put(candidate, inspection_at + 4, 1); rejected(candidate);
+  candidate = original; put(candidate, geometry_at + 4, 3); rejected(candidate);
+  candidate = original; put(candidate, inspection_header + 40, inspection->identity.scene_id ^ 1u); rejected(candidate);
+  candidate = original; candidate[inspection_header + 56] ^= 1u; rejected(candidate);
+  for (size_t offset : {size_t(28), size_t(32), size_t(36)}) {
+    candidate = original; put(candidate, inspection_header + offset, 99); rejected(candidate);
+  }
   for (size_t offset : {size_t(16), size_t(20), size_t(24), size_t(28)}) {
     candidate = original; put(candidate, geometry_at + offset, 99); rejected(candidate);
     candidate = original; put(candidate, tree_at + offset, 99); rejected(candidate);

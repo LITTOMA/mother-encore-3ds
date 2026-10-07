@@ -716,6 +716,41 @@
       "producer": "house_return_tint",
       "ir": "content/native-house-return-tint.json",
       "path": "data/house-return-tint.enctint"
+    },
+    {
+      "role": 103,
+      "name": "HouseButtonPrompt",
+      "producer": "house_return_button_prompt",
+      "ir": "content/native-house-return-button-prompt.json",
+      "path": "data/house-return.encbuttonprompt"
+    },
+    {
+      "role": 104,
+      "name": "HouseControls",
+      "producer": "house_return_controls",
+      "ir": "content/native-house-return-controls.json",
+      "path": "data/house-return.enccontrols"
+    },
+    {
+      "role": 105,
+      "name": "HouseInteract",
+      "producer": "house_return_interact_dialog",
+      "ir": "content/native-house-return-interact-dialog.json",
+      "path": "data/house-return-interact.encdialog"
+    },
+    {
+      "role": 106,
+      "name": "HouseInspectionRoom",
+      "producer": "house_return_inspection_programme",
+      "ir": "content/native-house-return-room-programmes.json",
+      "path": "data/house-return-room.encroom"
+    },
+    {
+      "role": 107,
+      "name": "HouseInspectionReentry",
+      "producer": "house_inspection_reentry",
+      "ir": "content/native-house-inspection-reentry.json",
+      "path": "data/house-return.encreentry"
     }
   ],
   "extra_inputs": [

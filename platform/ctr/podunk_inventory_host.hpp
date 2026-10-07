@@ -5,7 +5,9 @@
 #include "encore/global_item_cache.hpp"
 #include "encore/house_global_bridge.hpp"
 #include "encore/field_openable_door.hpp"
+#include "encore/field_global_constructor.hpp"
 #include "field_goods_renderer.hpp"
+#include <algorithm>
 #include <memory>
 #include <set>
 
@@ -90,6 +92,16 @@ struct PodunkInventorySnapshot {
   std::vector<std::shared_ptr<PodunkItemObject>> items;
   std::shared_ptr<PodunkItemObject> context;
 };
+struct PodunkDrawerInventoryState {
+  const upstream::FieldInventoryData *data = nullptr;
+  const upstream::FieldItemDefinitions *definitions = nullptr;
+  const upstream::FieldItemDefinitions *constructor_definitions = nullptr;
+  const upstream::FieldCharacterLoadData *characters = nullptr;
+  upstream::FieldGlobalRegistry *registry = nullptr;
+  upstream::SourceRandom *random = nullptr;
+  std::vector<uint32_t> *uid_ledger = nullptr;
+  PodunkInventorySnapshot actual;
+};
 struct PodunkInventoryOps {
   // Must check actual globaldata.characters.ninten/key_items/storage owners.
   // It is invoked again on activation, never replaced with legacy save flags.
@@ -115,6 +127,8 @@ class PodunkInventoryHost final {
   std::weak_ptr<PodunkItemObject> constructing_item_;
   upstream::SourceRandom *source_random_ = nullptr;
   std::vector<uint32_t> *source_ledger_ = nullptr;
+  const upstream::FieldItemDefinitions *source_item_definitions_ = nullptr;
+  const upstream::FieldCharacterLoadData *source_item_characters_ = nullptr;
   upstream::FieldGoodsMenu menu_;
   FieldGoodsRenderer renderer_;
   ItemDetailsRenderer details_;
@@ -852,6 +866,74 @@ public:
   upstream::FieldItemDefinitionsRuntime *items() {
     return active_ && !poisoned_ ? &definitions_ : nullptr;
   }
+  bool drawer_state(PodunkDrawerInventoryState &out, std::string &e) const {
+    PodunkDrawerInventoryState next;
+    if (!source_item_definitions_ || !source_item_characters_ ||
+        !definitions_.source_construction_bound() || !snapshot(next.actual,e))
+      return fail(e,"Drawer actual retained Item constructor unavailable");
+    next.data=data_; next.definitions=defs_;
+    next.constructor_definitions=source_item_definitions_;
+    next.characters=source_item_characters_; next.registry=registry_;
+    next.random=source_random_; next.uid_ledger=source_ledger_;
+    out=std::move(next); e.clear(); return true;
+  }
+  bool source_drawer_space(bool &out, std::string &e) const {
+    return live(e) && definitions_.source_construction_bound() &&
+           definitions_.inventory_space(out,e);
+  }
+  bool source_drawer_grant(upstream::DrawerProgramView drawer,
+                          upstream::DrawerItemTemplate t,std::string_view name,
+                          uint32_t receiver,
+                          upstream::FieldGlobalConstructorRuntime &global,
+                          std::string &e) {
+    upstream::FieldObjectId old=0;
+    if (!live(e) || global.registry()!=registry_ || !global.data() ||
+        global.data()->identity().upstream_commit!=data_->source_pin() ||
+        !global.object(upstream::FieldGlobalMemberRole::Item,old,e) ||
+        old!=global_item())
+      return fail(e,"Drawer global.item does not borrow the same actual source host");
+    upstream::FieldItemResult r;
+    if (!definitions_.source_drawer_grant(drawer,t,name,receiver,r,e)) return false;
+    upstream::FieldOwnedItem value;
+    if (!context_ || r.kind!=upstream::FieldItemResultKind::Owned ||
+        r.owner!=receiver || context_->owner!=receiver ||
+        !context_->read_item(value,e) || !same(value,r.item) ||
+        !global.set_object(upstream::FieldGlobalMemberRole::Item,context_->object,e)) {
+      poisoned_=true;
+      return fail(e,"Drawer committed Item/global.item ownership failed");
+    }
+    e.clear(); return true;
+  }
+  bool prepare_drawer_audio(upstream::DrawerProgramView drawer,std::string &e) {
+    if (!live(e) || !drawer || !audio_bank_ ||
+        !std::equal(data_->source_pin().begin(),data_->source_pin().end(),drawer.reviewed_commit()))
+      return fail(e,"Drawer checked audio/source unavailable");
+    auto next=sounds_;
+    for(uint32_t n=0;n<drawer.count(upstream::DrawerSection::Commands);++n) {
+      const auto c=drawer.command(n);
+      if(c.opcode!=uint32_t(upstream::DrawerOpcode::PlaySound))continue;
+      const auto name=std::string(drawer.string(c.a));
+      const auto path=std::string("Audio/Sound effects/")+name;
+      std::array<uint8_t,32> proof{}; uint32_t id=0;
+      if(!defs_->source_hash(path,proof))return fail(e,"Drawer audio source SHA absent");
+      for(uint32_t i=0;i<audio_bank_->count();++i) {
+        const auto a=audio_bank_->asset(i);
+        if(a.source_path==path||a.source_path==std::string("res://")+path) {
+          if(id||a.source_sha256!=proof)return fail(e,"Drawer checked sound differs");
+          id=a.stable_id;
+        }
+      }
+      if(!id||!prepare_bank_asset(id,e))return fail(e,"Drawer actual sound owner unavailable");
+      next[name]=id;
+    }
+    sounds_.swap(next); e.clear(); return true;
+  }
+  bool source_drawer_sound(std::string_view name,bool play,std::string &e) {
+    if(!live(e)||sounds_.find(std::string(name))==sounds_.end())
+      return fail(e,"Drawer original sound was not prepared");
+    if(play)return sound(std::string(name),e);
+    e.clear(); return true;
+  }
   // Bind only the same live globaldata Items cache. This is Item.new, not
   // serialized LOAD: allocate Reference, evaluate UID, then resolve doses.
   bool bind_source_item_factory(const upstream::FieldCharacterLoadData &source,
@@ -925,7 +1007,9 @@ public:
       item->constructing_ = false;
       error.clear(); return true;
     };
-    return definitions_.bind_source_construction(std::move(h), e);
+    if(!definitions_.bind_source_construction(std::move(h), e))return false;
+    source_item_definitions_=&all; source_item_characters_=&source;
+    return true;
   }
   bool encode_save(std::vector<uint8_t> &bytes, std::string &e) const {
     return live(e) && inventory_.encode_save(bytes, e);

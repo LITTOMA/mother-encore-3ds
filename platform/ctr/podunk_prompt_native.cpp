@@ -385,6 +385,17 @@ bool PodunkPromptNative::snapshot(FieldObjectId id, Vec2 &position, Vec2 &size,
   text = l.text;
   return true;
 }
+bool PodunkPromptNative::control_state(FieldObjectId id,
+    PromptNativeControlState&out,std::string&e)const{
+  if(!state_->actual(id,e))return false;
+  const auto&l=state_->leaves.at(id);
+  if(l.source->role==PromptNativeRole::Player)
+    return fail(e,"Prompt actual AnimationPlayer is not Control state");
+  out={};out.tree=state_->tree;out.registry=state_->registry;out.object=id;
+  out.source_id=l.source->id;out.binding=l.binding;
+  out.position=l.position;out.size=l.size;out.text=l.text;
+  out.entered=l.entered;out.ready=l.ready;e.clear();return true;
+}
 bool PodunkPromptNative::finish_factory(std::string &e) const {
   const auto &s = *state_;
   if (!s.data)

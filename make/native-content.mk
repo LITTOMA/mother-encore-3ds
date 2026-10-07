@@ -50,6 +50,18 @@ audio-server:
 CONTENT_TASKS += dialogue-actor-resource
 CONTENT_TASKS += house-reentry house-geometry house-node-tree house-return-ladder house-return-npc house-return-npc-world house-return-timers house-return-visibility house-return-sprite field-door
 CONTENT_TASKS += house-return-map house-return-canvas house-return-tint
+CONTENT_TASKS += house-return-button-prompt house-return-controls house-return-interact house-return-inspection house-inspection-reentry
+.PHONY: house-return-button-prompt house-return-controls house-return-interact house-return-inspection house-inspection-reentry
+house-return-button-prompt: house-node-tree field-prompts prompt-native
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_button_prompt.py compile
+house-return-controls: house-node-tree house-return-canvas house-return-button-prompt
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_controls.py compile
+house-return-interact: house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_interact_dialog.py compile
+house-return-inspection: room house drawer house-return-interact
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_inspection_programme.py compile
+house-inspection-reentry: house-return-inspection field-door house-geometry house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection_reentry.py compile
 .PHONY: house-reentry house-geometry house-node-tree house-return-ladder field-door
 house-geometry:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_geometry.py compile

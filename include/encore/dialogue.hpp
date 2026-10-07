@@ -17,7 +17,9 @@ enum class DialogueActionKind : uint8_t {
     // passed to the sink to prepare the menu; only a selected callback resumes.
     Jump, BranchFlag, BranchLeader, AwaitChoices, OpenSave, AwaitSubmenu, StopActorLoop, OpenStorage,
     // Rules8/cap9: stable identities live in separately checked source resources.
-    GrantKeyItem, LearnSkill, AnimateSpecialActor
+    GrantKeyItem, LearnSkill, AnimateSpecialActor,
+    // Rules8/cap10: normal inventory belongs to the actual House session.
+    BranchInventorySpace, GrantInventoryItem
 };
 struct DialogueAction {
     DialogueActionKind kind=DialogueActionKind::BeginCutscene;

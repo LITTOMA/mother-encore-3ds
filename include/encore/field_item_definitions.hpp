@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/load_rng.hpp"
+#include "encore/drawer_program.hpp"
 #include <array>
 #include <map>
 #include <memory>
@@ -59,6 +60,11 @@ public:
  bool inventory_space(bool&,std::string&)const;
  bool select_holder(FieldItemBindingKind,const std::string&scene,uint32_t source_object,bool give,FieldItemResult&,std::string&);
  bool grant_programme(const std::string&source_program,const std::string&label,FieldItemResult&,std::string&);
+ // A checked Drawer resource supplies this source cursor; no new packed
+ // Programme binding or second Inventory/UID implementation is introduced.
+ bool source_drawer_grant(DrawerProgramView,DrawerItemTemplate,std::string_view,
+                          uint32_t actual_receiver,FieldItemResult&,std::string&);
+ bool source_construction_bound()const{return bool(construction_.reserve)&&bool(construction_.finish);}
  bool bind_source_construction(FieldItemConstructionHost,std::string&);
  bool query(FieldItemBindingKind,const std::string&scene,uint32_t source_object,bool&found,FieldItemResult&,std::string&)const;
  bool reduce_or_drop(uint32_t uid,FieldItemResult&,std::string&);bool drop(uint32_t uid,FieldItemResult&,std::string&);bool transfer(uint32_t uid,uint32_t target_owner,FieldItemResult&,std::string&);

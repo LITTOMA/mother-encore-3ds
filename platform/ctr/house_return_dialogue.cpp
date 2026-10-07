@@ -39,6 +39,18 @@ bool text(HouseView house, uint32_t id, HouseDialogue &out, std::string &e) {
 }
 } // namespace
 
+struct HouseReturnDialogue::NpcRequestScope {
+  HouseReturnDialogue&owner;const HouseReturnNpcRuntime&source;
+  const HouseSourceNpcProgramme request;const uint32_t generation;
+  NpcRequestScope(HouseReturnDialogue&o,const HouseReturnNpcRuntime&s,
+      const HouseSourceNpcProgramme&r,uint32_t g):owner(o),source(s),request(r),generation(g){
+    owner.npc_request_=this;
+  }
+  ~NpcRequestScope(){owner.npc_request_=nullptr;}
+  NpcRequestScope(const NpcRequestScope&)=delete;
+  NpcRequestScope&operator=(const NpcRequestScope&)=delete;
+};
+
 bool HouseReturnDialogue::fail(std::string &e, const char *s) {
   phase_ = Phase::Failed;
   return reject(e, s);
@@ -98,7 +110,7 @@ bool HouseReturnDialogue::actual(bool require_ready, std::string &e) const {
   e.clear(); return true;
 }
 bool HouseReturnDialogue::receipt(bool closed, HouseReturnDialogueReceipt &out,
-                                  std::string &e) const {
+                                  std::string &e,const NpcRequestScope*scope) const {
   HouseReturnDialogueReceipt r;
   if (!input_.native->observe(context_, r, e)) return false;
   if (!r.inspected || !r.podunk_retired || !r.world_generation ||
@@ -131,11 +143,16 @@ bool HouseReturnDialogue::receipt(bool closed, HouseReturnDialogueReceipt &out,
       return reject(e, "House dialogue native receipt contains a foreign or stale object");
   }
   if (closed) {
+    // Only the real npc.gd BeforeOpen scope owns a non-null source Talker
+    // while the actual Box lifecycle is still fully closed. All native
+    // callbacks, queues, waits, choices and input closure remain unchanged.
+    if(scope&&!checked_npc_request(*scope,e))return false;
     const std::set<FieldObjectId> targets(r.message_targets.begin(), r.message_targets.end());
     if (!r.source_closed || r.callback_depth || r.pending_callbacks || r.ready_waiting ||
         r.lifecycle_phase != FieldDialogueLifecyclePhase::Closed || r.pending_choice_events ||
         !r.dialogue_objects.empty() || !r.wait_receivers.empty() || r.dialogue ||
-        ui.current_dialogue || !ui.stack.empty() || ui.cutscene || ui.talker ||
+        ui.current_dialogue || !ui.stack.empty() || ui.cutscene ||
+        (scope?ui.talker!=scope->request.object:ui.talker!=0) ||
         input_.choices->phase() != DialogueChoicesPhase::Closed ||
         input_.registry->pending_messages_to(targets) ||
         !input_.house->presentation.source_frame_closed())
@@ -172,7 +189,7 @@ const OpeningWorld *HouseReturnDialogue::world() const {
 }
 bool HouseReturnDialogue::source_frame_closed(const OpeningWorld &w,
                                               std::string &e) const {
-  if (&w != world() || world_call_ || action_call_ ||
+  if (&w != world() || world_call_ || action_call_ || npc_request_ ||
       (phase_ != Phase::Unbound && phase_ != Phase::Closed) ||
       (phase_ == Phase::Unbound && w.house_programme_owner()) ||
       (phase_ == Phase::Closed && w.house_programme_owner() != this))
@@ -212,7 +229,7 @@ bool HouseReturnDialogue::observe_house_programme(HouseProgrammeState &out,
   if (!closed && !context_.dialogue)
     return reject(e, "House programme source factory has not published its actual dialogue lease");
   const auto &w = input_.house->world;
-  if (!receipt(closed, native, e)) {
+  if (!receipt(closed, native, e,closed?npc_request_:nullptr)) {
     // The actual VM can finish and delete Root before the retained source
     // Fade restoration coroutine unwinds. This observer grants only that
     // existing closing lease; dialogue context/Ready/input admission stays
@@ -344,7 +361,10 @@ bool HouseReturnDialogue::request(uint32_t programme, uint32_t npc,
   if (phase_ != Phase::Closed || world_call_ || action_call_ || !actual(true, e))
     return reject(e, "House dialogue opening requires a closed actual source frame");
   HouseReturnDialogueReceipt previous;
-  if (!receipt(true, previous, e)) return false;
+  if(npc_request_&&(programme!=npc_request_->request.programme||
+      npc!=npc_request_->request.original_npc||!checked_npc_request(*npc_request_,e)))
+    return reject(e,"House request differs from its actual NPC BeforeOpen scope");
+  if (!receipt(true, previous, e,npc_request_)) return false;
   auto next = context_;
   next.dialogue = 0; next.talker = 0;
   next.generation = previous.world_generation + 1;
@@ -391,7 +411,7 @@ bool HouseReturnDialogue::request(uint32_t programme, uint32_t npc,
   const auto uids = *input_.uid_ledger;
   for (uint32_t pc = 0; pc < p.command_count; ++pc) {
     const auto command = next.room.command(p.first_command + pc);
-    if (command.opcode > uint16_t(DialogueActionKind::AnimateSpecialActor))
+    if (command.opcode > uint16_t(DialogueActionKind::GrantInventoryItem))
       return reject(e, "House dialogue contains an unknown source command");
     if (command.opcode == uint16_t(DialogueActionKind::ShowDialogue)) {
       HouseDialogue selected;
@@ -427,6 +447,28 @@ bool HouseReturnDialogue::request(uint32_t programme, uint32_t npc,
   HouseReturnDialogueReceipt r;
   if (!receipt(false, r, e)) { phase_ = Phase::Failed; return false; }
   e.clear(); return true;
+}
+bool HouseReturnDialogue::checked_npc_request(const NpcRequestScope&s,std::string&e)const{
+  if(npc_request_!=&s||&s.owner!=this||!input_.house||!input_.native||
+      s.request.thoughts||s.request.original_npc==kRoomNoIndex||
+      s.request.tree!=input_.tree.get()||s.request.tree_data!=input_.source_tree||
+      s.request.registry!=input_.registry||s.request.reentry!=input_.source||
+      s.request.doors!=input_.doors||s.request.house.bytes()!=input_.text.bytes()||
+      s.request.house.byte_size()!=input_.text.byte_size()||
+      input_.house->world.source_generation()!=s.generation||
+      !input_.native->admit_npc_before_open(s.source,s.request,s.generation,e))
+    return reject(e,"House request scope lost its actual source owner/objects/generation");
+  e.clear();return true;
+}
+bool HouseReturnDialogue::request_npc_programme(const HouseReturnNpcRuntime&source,
+    const HouseSourceNpcProgramme&r,std::string&e){
+  if(npc_request_||phase_!=Phase::Closed||world_call_||action_call_||!actual(true,e))
+    return reject(e,"House NPC request scope is nested or outside its closed Box lifecycle");
+  const auto generation=input_.house->world.source_generation();
+  if(!input_.native->admit_npc_before_open(source,r,generation,e))return false;
+  NpcRequestScope scope(*this,source,r,generation);
+  if(!checked_npc_request(scope,e))return false;
+  return input_.house->house.request_source_npc_programme(r,e);
 }
 bool HouseReturnDialogue::native_ready(FieldObjectId id, std::string &e) {
   if (phase_ != Phase::WaitingReady || world_call_ || action_call_ ||
@@ -640,6 +682,12 @@ bool HouseReturnDialogue::source_text(uint32_t id, HouseDialogue &out,
   if (phase_ != Phase::Running || !actual(true, e))
     return reject(e, "House dialogue text requires its actual running Room owner");
   return text(context_.text, id, out, e);
+}
+bool HouseReturnDialogue::inventory_frame(HouseReturnDialogueReceipt &out,
+                                          std::string &e) const {
+  if (phase_ == Phase::Unbound || phase_ == Phase::Failed || !actual(true, e))
+    return reject(e, "House inventory has no actual bound programme owner");
+  return receipt(phase_ == Phase::Closed, out, e);
 }
 bool HouseReturnDialogue::native_closed(FieldObjectId id, uint32_t generation,
                                         std::string &e) {

@@ -25,6 +25,7 @@ struct PodunkHouseContinuationInput {
   const upstream::NativeSessionData *session = nullptr;
   upstream::RoomView room{};
   upstream::HouseView house_data{};
+  upstream::DrawerProgramView drawer{};
   upstream::RoundView round{};
   upstream::ItemView legacy_items{};
   const upstream::SessionSnapshot *snapshot = nullptr;

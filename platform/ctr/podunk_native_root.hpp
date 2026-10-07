@@ -5,7 +5,9 @@
 #include "podunk_ui_host.hpp"
 #include <citro2d.h>
 #include <set>
+namespace encore::upstream {struct PlayerInputEvent;}
 namespace encore::ctr {
+class HouseReturnGuiNative;struct HouseGuiPick;struct HouseGuiInputResult;
 // Implemented by the actual source autoload object, not a metadata proxy.
 // The object passed to register_external_child must be Registry-owned.
 class PodunkExternalNodeLifecycle {
@@ -87,6 +89,19 @@ public:
                           std::string &);
   bool input_objects(uint32_t, std::vector<upstream::FieldObjectId> &,
                      std::string &) const;
+  // The source House branch borrows this ONE actual Viewport. These calls
+  // preserve other/global GUI owners and never assert global GUI completion.
+  bool bind_house_gui(HouseReturnGuiNative&,std::string&);
+  bool clear_house_gui(HouseReturnGuiNative&,std::string&);
+  bool house_gui_control(upstream::FieldObjectId,upstream::FieldTreePhase,
+                         std::string&);
+  bool house_gui_pick(upstream::Vec2,HouseGuiPick&,std::string&);
+  bool house_gui_action(const upstream::PlayerInputEvent&,bool paused,
+                        HouseGuiInputResult&,std::string&);
+  bool house_gui_pointer(upstream::FieldObjectId,HouseGuiInputResult&,
+                         std::string&);
+  bool house_gui_registered(upstream::FieldObjectId,std::string&)const;
+  bool house_gui_unregistered(upstream::FieldObjectId,std::string&)const;
   bool bind_object_signals(upstream::FieldObjectSignals &, std::string &);
   bool signal_declaration(upstream::FieldObjectId, std::string_view, uint32_t &, std::string &) const;
   bool disconnect_signal(bool kernel, std::string_view, upstream::FieldObjectId,
@@ -125,6 +140,7 @@ private:
   std::map<upstream::FieldObjectId, External> external_;
   std::array<std::set<upstream::FieldObjectId>, 3> input_;
   upstream::FieldObjectSignals *signals_ = nullptr;
+  HouseReturnGuiNative*house_gui_=nullptr;
   ParentObserver parent_observer_;
   ChildNotification child_notification_;
   std::set<upstream::FieldObjectId> known_nodes_, entered_notified_,

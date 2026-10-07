@@ -1,4 +1,5 @@
 #include "podunk_dialogue_host.hpp"
+#include "house_ui_reentry.hpp"
 #include <algorithm>
 #include <cmath>
 
@@ -72,6 +73,75 @@ bool PodunkDialogueHost::owner(const FieldNodeDescriptor &n, Owner &out,
     return fail(e, "Dialogue full native ownership missing or overlapping");
   e.clear();
   return true;
+}
+bool PodunkDialogueHost::observes_closed_printer(const HousePresentation &p,std::string &e)const{
+ if(!initialized_||!registry_||registry_->poisoned()||printer_!=&p||!p.source_frame_closed()||
+    !life_||!life_->valid()||!recipe_||!recipe_->valid()||
+    life_->factory_ir_sha()!=recipe_->ir_sha256()||
+    life_->commit()!=recipe_->identity().upstream_commit||
+    random_!=p.callback_bindings().random||!factories_.empty()||!owners_.empty()||
+    !lifecycle_.source_frame_closed(e)||lifecycle_.tree()!=lifecycle_tree_.get()||
+    !lifecycle_tree_||lifecycle_tree_->object_domain()!=registry_->kernel()||
+    lifecycle_tree_->lifecycle_pending())
+  return fail(e,"DialogueHost printer rebind requires closed actual factory/lifecycle owners");
+ e.clear();return true;
+}
+bool PodunkDialogueHost::admit_printer_rebind(const HousePresentation &old,
+    const HousePresentation &next,std::string &e)const{
+ if(&old==&next||!observes_closed_printer(old,e)||!next.source_frame_closed()||
+    random_!=next.callback_bindings().random)
+  return fail(e,"DialogueHost actual printer destination differs");
+ e.clear();return true;
+}
+bool PodunkDialogueHost::rebind_printer(const HousePresentation &old,
+    HousePresentation &next,std::string &e){
+ if(!admit_printer_rebind(old,next,e))return false;
+ printer_=&next;e.clear();return true;
+}
+bool PodunkDialogueHost::admit_house_tree_rebind(const HouseUiReentryInput &in,std::string &e)const{
+ std::array<uint8_t,32> target_sha{};
+ if(!initialized_||in.registry!=registry_||!in.source||!in.source_tree||!in.source_tree->valid()||!in.doors||!in.door_runtime||
+    in.door_runtime->data()!=in.doors||in.door_runtime->phase()!=FieldDoorPhase::Deferred||
+    in.door_runtime->active_door()!=in.source->door_id()||
+    !in.door_runtime->source_ready(in.source->door_id())||!in.old_house||!in.next_house||
+    !in.old_tree||!in.next_tree||lifecycle_tree_!=in.old_tree||
+    !same(in.old_identity,in.doors->identity())||!same(in.next_identity,in.source_tree->identity())||
+    in.source->identity().upstream_commit!=in.source_tree->identity().upstream_commit||
+    in.source->target_scene()!=in.source_tree->source_scene()||
+    !in.source->source_hash(in.source->target_scene(),target_sha)||
+    target_sha!=in.source_tree->identity().source_sha256||
+    !in.source->matches(*in.doors,in.old_house->world.content(),in.house_data,e)||
+    !in.source->matches(*in.doors,in.next_house->world.content(),in.house_data,e)||
+    !observes_closed_printer(*printer_,e)||
+    !lifecycle_.admit_tree_rebind(*in.old_tree,*in.next_tree,e))
+  return fail(e,"Dialogue House tree rebind actual Door/source owners differ");
+ FieldIdentity old_identity{},next_identity{},canvas_identity{};
+ const auto *old_root=in.old_tree->state(in.old_root);
+ const auto *next_root=in.next_tree->state(in.next_root);
+ const auto canvas=registry_->stable_canvas();auto canvas_tree=registry_->tree_owner(canvas);
+ const auto *state=canvas_tree?canvas_tree->state(canvas):nullptr;
+ const auto *descriptor=canvas_tree?canvas_tree->descriptor(canvas):nullptr;
+ const auto *data=registry_->data();const auto *record=data?data->canvas_recipe().record(data->canvas_recipe().identity().scene_id):nullptr;
+ if(registry_->poisoned()||in.old_root!=in.old_tree->root()||in.next_root!=in.next_tree->root()||
+    !in.next_house->scene_ready_pending()||!old_root||!old_root->alive||old_root->queued||
+    !next_root||!next_root->alive||next_root->inside||next_root->queued||
+    next_root->ready_notified||!next_root->ready_first||
+    registry_->tree_owner(in.old_root)!=in.old_tree||registry_->tree_owner(in.next_root)!=in.next_tree||
+    !in.old_tree->object_identity(in.old_root,old_identity)||!same(old_identity,in.old_identity)||
+    !in.next_tree->object_identity(in.next_root,next_identity)||!same(next_identity,in.next_identity)||
+    in.next_tree->object_domain()!=registry_->kernel()||!canvas||!state||!descriptor||!record||
+    (canvas_tree!=in.old_tree&&canvas_tree!=in.next_tree)||!state->alive||state->queued||!state->bound||
+    state->inside||state->parent||state->ready_notified||state->ready_first||
+    !canvas_tree->object_identity(canvas,canvas_identity)||!same(canvas_identity,data->canvas_recipe().identity())||
+    descriptor->id!=record->id||descriptor->native_class!=record->native_class||
+    descriptor->script!=record->script||descriptor->script_sha!=record->script_sha||
+    registry_->pending_messages_to(std::set<FieldObjectId>{canvas}))
+  return fail(e,"Dialogue House tree rebind requires the same detached registered Canvas/source roots");
+ e.clear();return true;
+}
+bool PodunkDialogueHost::rebind_house_tree(const HouseUiReentryInput &in,std::string &e){
+ if(!admit_house_tree_rebind(in,e)||!lifecycle_.rebind_tree(*in.old_tree,*in.next_tree,e))return false;
+ lifecycle_tree_=in.next_tree;e.clear();return true;
 }
 bool PodunkDialogueHost::admit_factory(std::string &e) const {
   if (!recipe_ || !life_ || !printer_ || !services_.root_script || !registry_ ||
@@ -150,30 +220,41 @@ bool PodunkDialogueHost::initialize(
   lifecycle_tree_ = std::move(tree);
   if (!admit_factory(e))
     return false;
-  auto host = services_.lifecycle;
-  host.admit_factory = [this](const FieldDialogueLifecycleData &d,
+  auto host = wrap_lifecycle(services_.lifecycle);
+  if (!lifecycle_.initialize(life, programmes, recipe, *lifecycle_tree_, npcs,
+                             std::move(host), e))
+    return false;
+  initialized_ = true;
+  e.clear();
+  return true;
+}
+FieldDialogueLifecycleHost PodunkDialogueHost::wrap_lifecycle(FieldDialogueLifecycleHost host) {
+  const auto source_admit=host.admit_factory;
+  const auto source_parent=host.admit_parent;
+  const auto source_ready=host.connect_ready;
+  host.admit_factory = [this,source_admit](const FieldDialogueLifecycleData &d,
                               std::string &error) {
     return &d == life_ && admit_factory(error) &&
-           services_.lifecycle.admit_factory(d, error);
+           source_admit(d, error);
   };
-  host.admit_parent = [this](FieldObjectId parent, std::string &error) {
+  host.admit_parent = [this,source_parent](FieldObjectId parent, std::string &error) {
     if (parent != registry_->stable_canvas() ||
         registry_->tree_owner(parent) != lifecycle_tree_)
       return fail(
           error,
           "Dialogue source parent changed Tree; lifecycle rebind required");
-    return services_.lifecycle.admit_parent(parent, error);
+    return source_parent(parent, error);
   };
   host.factory_created = [this](FieldObjectId root, std::string &error) {
     return attach(root, error) && lifecycle_tree_->bind_source_object(root, error);
   };
   host.connect_ready =
-      [this](FieldObjectId root, uint32_t generation, std::string_view signal,
+      [this,source_ready](FieldObjectId root, uint32_t generation, std::string_view signal,
              std::function<bool()> callback, std::string &error) {
         auto *f = factory(root);
         if (!f || f->root != root || !script_state(*f, false, error))
           return false;
-        return services_.lifecycle.connect_ready(root, generation, signal,
+        return source_ready(root, generation, signal,
                                                  std::move(callback), error);
       };
   host.native = [this](const FieldDialogueStep &step, FieldObjectId id,
@@ -184,12 +265,7 @@ bool PodunkDialogueHost::initialize(
                                std::string &error) {
     return play_animation(id, clip, error);
   };
-  if (!lifecycle_.initialize(life, programmes, recipe, *lifecycle_tree_, npcs,
-                             std::move(host), e))
-    return false;
-  initialized_ = true;
-  e.clear();
-  return true;
+  return host;
 }
 PodunkDialogueHost::Factory *PodunkDialogueHost::factory(FieldObjectId id) {
   auto o = owners_.find(id);
@@ -606,6 +682,67 @@ bool PodunkDialogueHost::open(const FieldProgrammeData &p, uint32_t programme,
                 "Dialogue actual current canvas lifecycle owner unavailable");
   return lifecycle_.open(p, programme, ctx, generation, out, e);
 }
+bool PodunkDialogueHost::bind_room_source(const HouseReentryData &source,
+    const FieldDoorData &doors, RoomView room, HouseView house,
+    const FieldNodeTreeData &source_tree, FieldDialogueRoomHost host,std::string &e){
+  if(!initialized_||!observes_closed_printer(*printer_,e)||
+     registry_->tree_owner(registry_->stable_canvas())!=lifecycle_tree_||
+     !host.lifecycle.admit_factory||!host.lifecycle.admit_parent||
+     !host.lifecycle.connect_ready||!host.lifecycle.native||
+     !ui_data_->verify_house(house,e))
+    return fail(e,"Dialogue Room bind requires actual closed native owners");
+  auto source_host=host.lifecycle;
+  host.lifecycle=wrap_lifecycle(std::move(host.lifecycle));
+  if(!lifecycle_.bind_room_source(source,doors,room,house,source_tree,std::move(host),e))
+    return false;
+  services_.lifecycle=std::move(source_host);house_=house;e.clear();return true;
+}
+bool PodunkDialogueHost::open_room(uint32_t programme,const FieldProgrammeContext &ctx,
+    uint32_t generation,FieldObjectId &out,std::string &e){
+  if(!initialized_||registry_->poisoned()||
+     registry_->tree_owner(registry_->stable_canvas())!=lifecycle_tree_)
+    return fail(e,"Dialogue actual Room canvas lifecycle owner unavailable");
+  return lifecycle_.open_room(programme,ctx,generation,out,e);
+}
+bool PodunkDialogueHost::admit_room(uint32_t programme,const DialogueAction &a,
+    const FieldProgrammeContext &ctx,std::string &e){
+  return initialized_?lifecycle_.admit_room(programme,a,ctx,e):
+      fail(e,"Dialogue actual Room host not initialized");
+}
+bool PodunkDialogueHost::source_factories(std::vector<PodunkDialogueFactoryState> &out,
+    std::string &e)const{
+  if(!initialized_||!registry_||registry_->poisoned()||!recipe_||!recipe_->valid()||
+     !services_.root_script||!lifecycle_tree_||lifecycle_.tree()!=lifecycle_tree_.get())
+    return fail(e,"Dialogue factory receipt actual owner unavailable");
+  std::vector<PodunkDialogueFactoryState> result;
+  size_t count=0;
+  for(const auto &entry:factories_){
+    const auto &f=*entry.second;
+    if(entry.first!=f.root||f.tree!=lifecycle_tree_||f.objects.size()!=recipe_->records().size())
+      return fail(e,"Dialogue factory receipt actual full roster differs");
+    PodunkDialogueFactoryState state;
+    if(!services_.root_script->state(f.root,state.script,e))return false;
+    if(state.script.object!=f.root||state.script.printer!=printer_||
+       !same(state.script.identity,recipe_->identity()))
+      return fail(e,"Dialogue factory receipt actual script owner differs");
+    for(const auto &object:f.objects){
+      const auto *record=recipe_->record(object.first);
+      const auto *n=f.tree->state(object.second);
+      FieldIdentity identity{};
+      const auto owner=owners_.find(object.second);
+      if(!record||!n||!n->alive||n->source!=record->id||owner==owners_.end()||
+         owner->second!=f.root||!f.tree->object_identity(object.second,identity)||
+         !same(identity,recipe_->identity()))
+        return fail(e,"Dialogue factory receipt source object ownership differs");
+    }
+    state.root=f.root;state.tree=f.tree.get();state.objects=f.objects;
+    state.entered=f.entered;state.native_ready=f.native_ready;state.script_ready=f.script_ready;
+    state.timer_attached=f.timer_attached;state.deleting=f.deleting;
+    count+=f.objects.size();result.push_back(std::move(state));
+  }
+  if(count!=owners_.size())return fail(e,"Dialogue factory receipt orphan owner remains");
+  out=std::move(result);e.clear();return true;
+}
 bool PodunkDialogueHost::admit(const DialogueAction &a,
                                const FieldProgrammeContext &ctx,
                                std::string &e) {
@@ -633,6 +770,38 @@ bool PodunkDialogueHost::presented_text(FieldObjectId root,
     return fail(e, "Dialogue presented phrase actual programme owner differs");
   return f->audio.phrase_sound(f->objects.at(voice->id), text.voice, e) &&
          f->ui.sync_text(root, *printer_, e);
+}
+bool PodunkDialogueHost::presented_text(FieldObjectId root,RoomView room,
+    uint32_t command,const HouseDialogue &text,std::string &e){
+  auto *f=factory(root);
+  const auto bound=lifecycle_.room_source();const auto house=lifecycle_.house_source();
+  if(!initialized_||!lifecycle_.room_bound()||!f||root!=lifecycle_.object()||
+     room.bytes()!=bound.bytes()||room.byte_size()!=bound.byte_size()||
+     lifecycle_.programme_index()>=room.program_count()||command>=room.command_count()||
+     !full_ready(*f,e))return fail(e,"Dialogue House phrase actual Room/native owner differs");
+  const auto p=room.program(lifecycle_.programme_index());
+  const auto cmd=room.command(command);
+  if(command<p.first_command||command-p.first_command>=p.command_count||
+     cmd.opcode!=uint16_t(DialogueActionKind::ShowDialogue)||cmd.target_index!=text.id)
+    return fail(e,"Dialogue House phrase is outside the actual Room programme");
+  bool found=false;
+  for(uint32_t i=0;i<house.count(HouseSection::Dialogues);++i){
+    const auto actual=house.dialogue(i);
+    if(actual.id==text.id){
+      if(found||actual.source_path!=text.source_path||actual.first_segment!=text.first_segment||
+         actual.segment_count!=text.segment_count)
+        return fail(e,"Dialogue House phrase source span differs");
+      found=true;
+    }
+  }
+  if(!found||!text.segment_count||printer_->source_first_segment()!=text.first_segment||
+     text.first_segment>=house.count(HouseSection::Segments)||
+     text.segment_count>house.count(HouseSection::Segments)-text.first_segment)
+    return fail(e,"Dialogue House phrase printer source segment differs");
+  const auto *voice=life_->reference(9);
+  if(!voice)return fail(e,"Dialogue House phrase source voice reference absent");
+  return f->audio.phrase_sound(f->objects.at(voice->id),house.string(house.segment(text.first_segment).voice),e)&&
+      f->ui.sync_text(root,*printer_,e);
 }
 bool PodunkDialogueHost::sync_choices(FieldObjectId root,
                                       const DialogueChoices &choices,

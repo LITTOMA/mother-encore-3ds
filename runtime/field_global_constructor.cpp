@@ -99,6 +99,20 @@ bool FieldGlobalConstructorRuntime::append_array(FieldGlobalMemberRole role,
   f->second->values.push_back(id);
   return true;
 }
+bool FieldGlobalConstructorRuntime::erase_array_first(FieldGlobalMemberRole role,
+                                                      FieldObjectId id,
+                                                      std::string &e) {
+  if (!live(e)) return false;
+  auto f = arrays_.find(role);
+  if (f == arrays_.end() || !f->second)
+    return fail(e, "Global erase unknown Array");
+  // Godot Array.erase does not dereference its Variant element. In particular,
+  // source cleanup may erase a node after queue_free has destroyed that node.
+  auto at = std::find(f->second->values.begin(), f->second->values.end(), id);
+  if (at != f->second->values.end()) f->second->values.erase(at);
+  e.clear();
+  return true;
+}
 bool FieldGlobalConstructorRuntime::assign_array(FieldGlobalMemberRole role,
                                                  std::vector<FieldObjectId> v,
                                                  std::string &e) {

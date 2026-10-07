@@ -33,6 +33,11 @@ public:
   // Overlays only the owned KEY/normal/object/seen domains; other session
   // fields and saved identities are preserved verbatim.
   bool writeback(std::string &);
+  // Read-only snapshot of the same actual KEY/flag owners. No RNG or UID draw.
+  bool export_snapshot(const upstream::SessionSnapshot &base,
+                       upstream::SessionSnapshot &out, std::string &) const;
+  bool binds(const PodunkHouseContinuation &, const PodunkInventoryHost &,
+             const upstream::SessionSnapshot &) const;
 
 private:
   struct Grant {

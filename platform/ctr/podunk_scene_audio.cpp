@@ -281,13 +281,27 @@ PodunkSceneAudio::Voice *PodunkSceneAudio::voice(FieldObjectId id,
   if (!live(e))
     return nullptr;
   auto i = voices_.find(id);
-  auto *s = tree_->state(id);
+  auto *s = i!=voices_.end()&&i->second.tree ? i->second.tree->state(id) : nullptr;
   if (i == voices_.end() || !s || !s->alive ||
-      registry_->tree_owner(id).get() != tree_) {
+      registry_->tree_owner(id).get() != i->second.tree) {
     fail(e, "Scene audio same live ObjectDB/Tree node absent");
     return nullptr;
   }
   return &i->second;
+}
+bool PodunkSceneAudio::rebind_voices(FieldNodeTreeRuntime &next,
+    const std::vector<FieldObjectId>&ids,std::string &e){
+  if(!live(e)||next.object_domain()!=registry_->kernel())return false;
+  for(auto id:ids){
+    auto at=voices_.find(id);if(at==voices_.end())continue;
+    const auto *n=next.descriptor(id);const auto *s=next.state(id);FieldIdentity identity;
+    if(at->second.state.inside||!s||s->inside||!n||!owns(*n)||n->id!=at->second.source->id||
+       registry_->tree_owner(id).get()!=&next||!next.object_identity(id,identity)||
+       !same(identity,data_?data_->identity():named_->voice_identity()))
+      return fail(e,"Scene voice migration changed actual source or preceded Exit");
+  }
+  for(auto id:ids){auto at=voices_.find(id);if(at!=voices_.end())at->second.tree=&next;}
+  e.clear();return true;
 }
 bool PodunkSceneAudio::asset(uint32_t source, AudioAsset &out,
                              std::string &e) const {
@@ -311,6 +325,7 @@ bool PodunkSceneAudio::construct(FieldObjectId id, const FieldNodeDescriptor &n,
 bool PodunkSceneAudio::construct_voice(FieldObjectId id,const FieldSceneAudioNode&source,std::string&e){
   const auto *s=&source;
   Voice v;
+  v.tree = tree_;
   v.source = s;
   v.state.object = id;
   v.state.source_stream = s->stream;
@@ -348,7 +363,7 @@ bool PodunkSceneAudio::construct_voice(FieldObjectId id,const FieldSceneAudioNod
 bool PodunkSceneAudio::bind(FieldObjectId id, FieldNodeBinding &b,
                             std::string &e) {
   auto *v = voice(id, e);
-  auto *n = tree_->descriptor(id);
+  auto *n = v ? v->tree->descriptor(id) : nullptr;
   if (!v || !n || n->id != v->source->id || !owns(*n))
     return fail(e, "Scene audio actual node binding");
   b.identity = data_?data_->identity():named_->voice_identity();
@@ -366,8 +381,8 @@ bool PodunkSceneAudio::internal(Voice &v, bool enabled, std::string &e) {
                                           : "physics_process_internal";
   if (enabled == v.internal)
     return true;
-  if (!(enabled ? tree_->add_group(v.state.object, group, e)
-                : tree_->remove_group(v.state.object, group, e)))
+  if (!(enabled ? v.tree->add_group(v.state.object, group, e)
+                : v.tree->remove_group(v.state.object, group, e)))
     return false;
   v.internal = enabled;
   return true;
@@ -599,7 +614,7 @@ bool PodunkSceneAudio::spatial(Voice &v, std::string &e) {
   std::vector<PodunkSceneAudioListener> listeners;
   if (!host_.listeners(v.state.object, listeners, e))
     return false;
-  auto *s = tree_->state(v.state.object);
+  auto *s = v.tree->state(v.state.object);
   if (!s)
     return false;
   Vec2 pos = s->world[2];
@@ -778,7 +793,7 @@ bool PodunkSceneAudio::tree_pause(bool paused, std::string &e) {
   if (paused == tree_paused_)
     return true;
   for (auto &entry : voices_) {
-    if (paused && !tree_->can_process(entry.first, true)) {
+    if (paused && !entry.second.tree->can_process(entry.first, true)) {
       if (!set_paused(entry.first, true, e))
         return false;
     } else if (!paused && !set_paused(entry.first, false, e))
@@ -815,7 +830,7 @@ bool PodunkSceneAudio::phase(FieldObjectId id, FieldTreePhase p, float,
     break;
   case FieldTreePhase::IdleInternal:
   case FieldTreePhase::PhysicsInternal:
-    if (!v->internal || !tree_->can_process(id, paused))
+    if (!v->internal || !v->tree->can_process(id, paused))
       break;
     if ((p == FieldTreePhase::IdleInternal) != (v->source->kind == 1))
       return fail(e, "Scene audio wrong native processing clock");

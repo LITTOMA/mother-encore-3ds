@@ -41,9 +41,118 @@ bool HouseRuntime::initialize(HouseView content,OpeningWorld& world,HousePresent
  return sync_npc_visibility();
 }
 bool HouseRuntime::rebind_scene(OpeningWorld&world,HousePresentation&presentation){
+ if(programme_owner_){
+  HouseProgrammeState actual;
+  if(&world!=world_||&presentation!=presentation_||!programme_state(actual,programme_error_))
+   return fail("Native House programme owner requires checked same scene/printer binding");
+  return true; // Preserve the actual native completion receiver.
+ }
+ if(world.house_programme_owner()||(world_&&world_->house_programme_owner()))
+  return fail("House callback restoration requires released actual World programme owner");
  if(!content_.valid()||!world.healthy())return false;
  world_=&world;presentation_=&presentation;
  presentation.set_text_completion_callback([](void*state){return static_cast<HouseRuntime*>(state)->text_finished();},this);return true;
+}
+bool HouseRuntime::programme_state(HouseProgrammeState&out,std::string&e)const{
+ if(!programme_owner_||!world_||!presentation_||!content_.valid()){
+  e="House programme owner is not bound to an actual source scene";return false;
+ }
+ HouseProgrammeState actual;
+ if(!programme_owner_->observe_house_programme(actual,e))return false;
+ const auto room=world_->content();
+ if(actual.runtime!=this||actual.world!=world_||actual.printer!=presentation_||
+    actual.choices!=choices_||!actual.world_owner||
+    actual.world_owner!=world_->house_programme_owner()||actual.world_owner->world()!=world_||
+    actual.room.bytes()!=room.bytes()||actual.room.byte_size()!=room.byte_size()||
+    actual.house.bytes()!=content_.bytes()||actual.house.byte_size()!=content_.byte_size()||
+    actual.vm_generation!=world_->story_generation()){
+  e="House programme receipt borrowed another actual Runtime/World/Room/House owner";return false;
+ }
+ switch(actual.phase){
+ case HouseProgrammePhase::Closed:
+  if(!actual.native_closed||actual.request_generation){
+   e="House programme Closed receipt lacks actual native closure";return false;
+  }
+  break;
+ case HouseProgrammePhase::Opening:case HouseProgrammePhase::WaitingReady:
+ case HouseProgrammePhase::Starting:case HouseProgrammePhase::Running:
+  if(actual.native_closed||!actual.request_generation||actual.programme>=room.program_count()||
+     (actual.original_npc!=house_no_index&&actual.original_npc>=content_.count(HouseSection::Npcs))||
+     (programme_lease_&&(actual.request_generation!=programme_lease_||
+                        actual.programme!=requested_programme_||
+                        actual.original_npc!=story_original_npc_))){
+   e="House programme active source request/lease differs";return false;
+  }
+  break;
+ case HouseProgrammePhase::Failed:
+ default:e="House programme source owner failed or phase is unknown";return false;
+ }
+ out=actual;e.clear();return true;
+}
+bool HouseRuntime::bind_programme_owner(HouseProgrammeOwner&owner,std::string&e){
+ if(programme_owner_||!world_||!presentation_||!content_.valid()||
+    phase_!=HousePhase::Idle||story_executing_||story_pending()||programme_lease_||
+    !presentation_->source_frame_closed()){
+  e="House programme binding requires actual idle closed House";return false;
+ }
+ // Admission uses the candidate's real receipt; rollback preserves the old
+ // unbound owner and all source callbacks if that candidate rejects.
+ programme_owner_=&owner;
+ HouseProgrammeState actual;
+ if(!programme_state(actual,e)||actual.phase!=HouseProgrammePhase::Closed){
+  programme_owner_=nullptr;
+  if(e.empty())e="House programme candidate is not actually closed";
+  return false;
+ }
+ e.clear();return true;
+}
+bool HouseRuntime::unbind_programme_owner(HouseProgrammeOwner&owner,std::string&e){
+ HouseProgrammeState actual;
+ if(programme_owner_!=&owner||story_executing_||story_pending()||programme_lease_||
+    phase_!=HousePhase::Idle||!programme_state(actual,e)||
+    actual.phase!=HouseProgrammePhase::Closed||!presentation_->source_frame_closed()){
+  if(e.empty())e="House programme unbind rejects actual pending source ownership";
+  return false;
+ }
+ programme_owner_=nullptr;
+ // Keep the actual native completion receiver for World owner's exact closed
+ // unbind receipt. The target restores legacy callbacks through rebind_scene
+ // only after that same World programme owner has released its borrow.
+ e.clear();return true;
+}
+bool HouseRuntime::request_programme(uint32_t programme,uint32_t npc){
+ if(!programme_owner_)return world_->begin_house_program(programme,npc);
+ HouseProgrammeState before;
+ if(programme_lease_||!programme_state(before,programme_error_)||
+    before.phase!=HouseProgrammePhase::Closed)
+  return fail(programme_error_.empty()?"House programme source owner is busy":programme_error_.c_str());
+ if(!programme_owner_->request(programme,npc,programme_error_))
+  return fail(programme_error_.empty()?"House programme actual async request rejected":programme_error_.c_str());
+ HouseProgrammeState after;
+ if(!programme_state(after,programme_error_)||after.phase!=HouseProgrammePhase::WaitingReady||
+    after.programme!=programme||after.original_npc!=npc||
+    after.vm_generation!=before.vm_generation||
+    after.request_generation==after.vm_generation)
+  return fail(programme_error_.empty()?"House programme request did not retain actual native Ready wait":programme_error_.c_str());
+ programme_lease_=after.request_generation;requested_programme_=programme;
+ return true;
+}
+bool HouseRuntime::native_programme_complete(bool&complete){
+ complete=false;
+ HouseProgrammeState actual;
+ if(!programme_state(actual,programme_error_))return fail(programme_error_.c_str());
+ if(!story_executing_){
+  if(programme_lease_||actual.phase!=HouseProgrammePhase::Closed)
+   return fail("House native programme has no checked House request owner");
+  return true;
+ }
+ if(!programme_lease_||requested_programme_==house_no_index)
+  return fail("House native programme source request lease absent");
+ if(actual.phase!=HouseProgrammePhase::Closed)return true;
+ if(actual.vm_generation!=programme_lease_||!world_->story_completed()||
+    world_->story_program_index()!=requested_programme_||world_->stage()!=OpeningStage::Walking)
+  return fail("House native closure differs from the actual completed World request");
+ complete=true;return true;
 }
 bool HouseRuntime::restore_seen_dialogue(const std::set<uint32_t>&keys){
  if(!content_.valid()||physics_tick_||idle_frame_||phase_!=HousePhase::Idle)return false;
@@ -229,6 +338,7 @@ bool HouseRuntime::interact_openable(uint32_t index){
  if(!content_.string(data.activates_flag).empty()||!content_.string(data.deactivates_flag).empty())return fail("Door flag notification side effects are not implemented");
  if(!world_->pause_for_house())return fail("Door dialogue pause rejected");
  if(!state.blocked||data.blocked_dialogue==house_no_index){phase_=HousePhase::Unsupported;error_="Unported key/item interaction; B returns control";last_safe_position_=world_->player().position;last_safe_direction_=world_->player().direction;return true;}
+ if(programme_owner_)return fail("Native House door dialogue requires an admitted Room programme source");
  const auto dialogue=content_.dialogue(data.blocked_dialogue);const auto room=world_->content();const auto actor=room.actor_instance(room.scene().player_instance_index);
  if(!presentation_->begin_dialogue(dialogue.first_segment,dialogue.segment_count,room.string(actor.display_name_string)))return fail("Non-NPC dialogue rejected");
  active_=index;phase_=HousePhase::Dialogue;event(HouseEventKind::DoorDialogueOpened,index);return true;
@@ -245,7 +355,7 @@ bool HouseRuntime::process_story_requests(){
   if(!world_->pause_for_house())return fail("Story trigger pause rejected");
   story_index_=i;event(HouseEventKind::StoryRequested,i);
   const auto trigger=content_.story_trigger(i);
-  if(trigger.disposition==2){story_executing_=true;if(!world_->begin_house_program(trigger.program_index))return fail("Source house program start rejected");}
+  if(trigger.disposition==2){story_executing_=true;if(!request_programme(trigger.program_index))return programme_owner_?false:fail("Source house program start rejected");}
 
   error_="Original story requested; script/battle not implemented. B returns after fade";
   if(phase_!=HousePhase::DoorFadeIn&&phase_!=HousePhase::WarpAwaitIdle&&phase_!=HousePhase::DoorFadeOut)phase_=story_executing_?HousePhase::StoryRunning:HousePhase::StoryBoundary;
@@ -295,7 +405,7 @@ bool HouseRuntime::begin_basement_program(std::string_view path,uint32_t object)
  const auto program=program_for_path(path);if(program==house_no_index)return fail("Basement source programme absent");
  if(!world_->pause_for_house())return fail("Basement programme pause rejected");
  story_original_npc_=house_no_index;story_executing_=true;active_=object;phase_=HousePhase::StoryRunning;
- if(!world_->begin_house_program(program))return fail("Basement source programme rejected");
+ if(!request_programme(program))return programme_owner_?false:fail("Basement source programme rejected");
  event(HouseEventKind::DialogueOpened,object);return true;
 }
 bool HouseRuntime::basement_present_opened()const{return basement_&&world_&&world_->story_flag(basement_->present().flag);}
@@ -419,7 +529,8 @@ bool HouseRuntime::interact_phone(uint32_t index){
  if(program==house_no_index){phase_=HousePhase::Unsupported;error_="Unported source phone dialogue; B returns control";last_safe_position_=p.position;last_safe_direction_=p.direction;return true;}
  // Phone is an InteractDialog, so no NPC talker/seen key or Actor replacement.
  story_original_npc_=house_no_index;story_executing_=true;phase_=HousePhase::StoryRunning;
- if(!world_->begin_house_program(program)||!play_phone_sound(interaction.sound))return fail("Phone program/sound rejected");
+ if(!request_programme(program))return programme_owner_?false:fail("Phone program/sound rejected");
+ if(!play_phone_sound(interaction.sound))return fail("Phone program/sound rejected");
  return true;
 }
 bool HouseRuntime::resolve_npc_dialogue(uint32_t selected,uint32_t&first,uint32_t&count,uint32_t&program,uint32_t&selected_seen)const{
@@ -453,6 +564,7 @@ bool HouseRuntime::drawer_selected(uint32_t i)const{return drawer_&&inspection_v
 bool HouseRuntime::inspection_interaction_supported(uint32_t i)const{uint32_t dialogue=house_no_index;return resolve_inspection_dialogue(i,dialogue)||drawer_selected(i);}
 bool HouseRuntime::interact_inspection(uint32_t index){
  if(!inspection_visible(index))return fail("Unbound house inspection interaction");
+ if(programme_owner_)return fail("Native House inspection requires an admitted Room programme/effect consumer");
  const auto object=inspections_.object(index);const auto p=world_->player();uint32_t dialogue=house_no_index;
  Vec2 facing{object.position.x-p.position.x,object.position.y-p.position.y};
  // Actual Player._turn_to overrides party_object's unconstrained base method.
@@ -497,6 +609,7 @@ bool HouseRuntime::interact(){
  if(selected==house_no_index)return true;
  const auto npc=content_.npc(selected);uint32_t first=0,count=0,program=house_no_index,selected_seen=house_no_index;
  if(!resolve_npc_dialogue(selected,first,count,program,selected_seen)){if(!world_->pause_for_house())return false;phase_=HousePhase::Unsupported;error_="Unported source dialogue; B returns control";last_safe_position_=p.position;last_safe_direction_=p.direction;return true;}
+ if(programme_owner_&&program==house_no_index)return fail("Native House NPC dialogue requires an admitted Room programme source");
 
  const auto position=presentation_->npc_pose(selected).position;Vec2 facing{position.x-p.position.x,position.y-p.position.y};
  if(((std::abs(facing.x)>std::abs(facing.y))||!(npc.flags&8))&&facing.x!=0&&(npc.flags&4))facing={sign(facing.x),0};else if((npc.flags&8)&&facing.y!=0)facing={0,sign(facing.y)};else facing=p.direction;
@@ -505,13 +618,14 @@ bool HouseRuntime::interact(){
  if(!presentation_->begin_npc_interaction(selected,p.position))return fail("Original NPC interaction rejected");
  if(program!=house_no_index){
   story_original_npc_=selected;story_executing_=true;phase_=HousePhase::StoryRunning;
-  if(!world_->begin_house_program(program,selected))return fail("NPC source program rejected");
+  if(!request_programme(program,selected))return programme_owner_?false:fail("NPC source program rejected");
   active_=selected;event(HouseEventKind::DialogueOpened,selected);seen_.insert(selected_seen);return true;
  }
  if(!presentation_->begin_npc_dialogue(selected,first,count,player_nickname(),p.position))return fail("NPC dialogue rejected");
  active_=selected;phase_=HousePhase::Dialogue;event(HouseEventKind::DialogueOpened,selected);seen_.insert(selected_seen);event(HouseEventKind::DialogueSeen,selected);return true;
 }
 bool HouseRuntime::sync_story_dialogue(){
+ if(programme_owner_)return fail("Legacy House text synchronization cannot borrow the native programme");
  for(bool sound:world_->take_story_hides())presentation_->hide_story_dialogue(sound);
  const auto requested=world_->pending_dialogue_id();
  if(world_->story_choices_waiting()&&choices_&&choices_->phase()==DialogueChoicesPhase::Closed){
@@ -531,6 +645,7 @@ bool HouseRuntime::sync_story_dialogue(){
  active_story_dialogue_=requested;return true;
 }
 bool HouseRuntime::advance_story_dialogue(bool automatic){
+ if(programme_owner_)return fail("Legacy House advance cannot resume the native programme");
  active_story_dialogue_=house_no_index;
  if(!world_->finish_story_dialogue(automatic))return fail("Story dialogue completion rejected");
  if(!process_npc_restores()||!sync_story_dialogue())return false;
@@ -538,17 +653,20 @@ bool HouseRuntime::advance_story_dialogue(bool automatic){
  return true;
 }
 bool HouseRuntime::select_story_option(uint32_t pc,uint32_t generation){
+ if(programme_owner_)return fail("Native House choices require the actual source Cursor callback");
  if(!choices_||generation!=choices_generation_)return fail("Stale story option");
  presentation_->clear_story_text();active_story_dialogue_=house_no_index;choices_->close();
  if(!world_->choose_story_option(pc,generation))return fail("World choice rejected");
  return process_npc_restores()&&sync_story_dialogue();
 }
 bool HouseRuntime::close_story_submenu(uint32_t generation){
+ if(programme_owner_)return fail("Native House submenu requires its actual source callback");
  active_story_dialogue_=house_no_index;
  if(!world_->close_story_submenu(generation))return fail("World submenu rejected");
  return process_npc_restores()&&sync_story_dialogue();
 }
 bool HouseRuntime::text_finished(){
+ if(programme_owner_)return fail("Native House text completion requires the actual Root printer receiver");
  // This is the original _finish_phrase callback during printing, not a
  // synthetic Accept event on the following idle frame. Its source gating
  // includes caninput and the active minimum timer; automatic goto is silent.
@@ -565,6 +683,8 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
  if(!content_.valid()||!std::isfinite(delta)||delta<0||delta>double(.1f))return fail("Invalid house idle delta");
  ++idle_frame_;delta=double(float(delta));
  if(phase_==HousePhase::Error)return false;
+ bool native_complete=false;
+ if(programme_owner_&&!native_programme_complete(native_complete))return false;
  // The source Phone AnimationPlayer processes before deferred scene methods.
  if(phone_&&!phone_->advance(delta,*this))return fail(phone_->error());
  for(const auto call:world_->take_scene_calls())if(!phone_||!phone_->ring(call.object))return fail("Unbound source phone scene call");
@@ -580,7 +700,7 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
  if(!process_npc_restores()||!advance_basement_present(delta))return false;
  if(world_->stage()==OpeningStage::BattleRequested)return true;
  bool story_dialogue_input=false;
- if(world_->stage()==OpeningStage::ScriptRunning){
+ if(!programme_owner_&&world_->stage()==OpeningStage::ScriptRunning){
   if(!sync_story_dialogue())return false;
   if(active_story_dialogue_!=house_no_index){
    story_dialogue_input=true;
@@ -595,13 +715,18 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
   }
  }
 
- if(story_executing_&&world_->stage()==OpeningStage::Walking&&world_->story_completed()){
+ if(story_executing_&&(programme_owner_?native_complete:
+    (world_->stage()==OpeningStage::Walking&&world_->story_completed()))){
   // Actor restoration can move Player during this idle callback, after the
   // last physics observation. The next contact query must use the restored
   // body, not its old location inside the triggering area.
   observed_physics_position_=world_->player().position;
   pending_contacts_.clear();
-  if(story_original_npc_!=house_no_index){if(!presentation_->stop_npc_interaction(story_original_npc_))return fail("NPC interaction completion rejected");story_original_npc_=house_no_index;}
+  if(story_original_npc_!=house_no_index){
+   if(!programme_owner_&&!presentation_->stop_npc_interaction(story_original_npc_))return fail("NPC interaction completion rejected");
+   story_original_npc_=house_no_index;
+  }
+  if(programme_owner_){programme_lease_=0;requested_programme_=house_no_index;}
   story_executing_=false;story_index_=house_no_index;if(phase_==HousePhase::StoryRunning)phase_=HousePhase::Idle;error_="";
  }
  if(!advance_openables(delta))return false;
@@ -617,6 +742,7 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
   else if(!in){if(!door_unpaused_&&old<=door.fade_out_mostly&&fade_time_>door.fade_out_mostly)if(!finish_door())return false;if(fade_time_>=door.fade_out_length){phase_=story_pending()?(story_executing_?HousePhase::StoryRunning:HousePhase::StoryBoundary):HousePhase::Idle;fade_time_=0;}}
  }
  if(phase_==HousePhase::InspectionProgram){
+  if(programme_owner_)return fail("Legacy inspection printer owner conflicts with the native House programme");
   if(drawer_runtime_.state()==DrawerState::WaitingText){
    // The source appends subsequent phrases to the existing box. Defer close
    // until End rather than closing/reopening between the branch and receipt.
@@ -629,7 +755,9 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
   }
   if(drawer_runtime_.state()==DrawerState::Complete&&presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Inspection programme unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}
  }
- else if(phase_==HousePhase::Dialogue){presentation_->input(accept,cancel);if(presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Dialogue unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}}
+ else if(phase_==HousePhase::Dialogue){
+  if(programme_owner_)return fail("Legacy dialogue printer owner conflicts with the native House programme");
+  presentation_->input(accept,cancel);if(presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Dialogue unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}}
  else if((phase_==HousePhase::Idle||(phase_==HousePhase::DoorFadeOut&&door_unpaused_))&&accept&&!story_dialogue_input)return interact();
  return true;
 }

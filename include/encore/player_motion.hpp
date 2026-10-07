@@ -3,6 +3,8 @@
 #include "encore/source_random.hpp"
 #include <set>
 namespace encore::upstream {
+class HouseReturnLadderData;
+class PlayerLadderAnimationNative;
 enum class PlayerMotionField : size_t {
   State,
   Input,
@@ -351,6 +353,11 @@ struct PlayerMotionHost {
 };
 class PlayerMotionRuntime {
 public:
+  bool bind_ladder(const HouseReturnLadderData &, PlayerLadderAnimationNative &,
+                   std::string &);
+  bool ladder(std::string &);
+  bool unladder(std::string &);
+  bool rebind_tree(FieldNodeTreeRuntime &, std::string &);
   bool initialize(const PlayerMotionData &, PlayerInitializationBody &,
                   PlayerReadyRuntime &, PlayerAnimationGraph &,
                   FieldNodeTreeRuntime &, FieldGlobalConstructorRuntime &,
@@ -376,6 +383,11 @@ public:
   bool healthy() const { return data_ && !poisoned_; }
 
 private:
+  bool ladder_sources(std::string &) const;
+  bool animation_speed(FieldObjectId, double, std::string &);
+  const HouseReturnLadderData *ladder_data_ = nullptr;
+  PlayerLadderAnimationNative *ladder_native_ = nullptr;
+  std::array<uint8_t, 32> ladder_ir_{};
   bool live(std::string &) const;
   bool read(PlayerMotionField, PlayerInitializationMember &,
             std::string &) const;

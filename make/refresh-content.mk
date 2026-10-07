@@ -8,6 +8,22 @@ source-fonts:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/content_pipeline.py fonts
 
 ifeq ($(REFRESH_SOURCES),1)
+.PHONY: source-house-reentry source-house-geometry source-house-node-tree source-house-return-ladder source-scene-bundle
+house-return-ladder: source-house-return-ladder
+source-house-return-ladder: house-node-tree house-geometry player-initialization player-ready player-motion
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_ladder.py extract
+house-geometry: source-house-geometry
+source-house-geometry:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_geometry.py extract
+house-reentry: source-house-reentry
+house-node-tree: source-house-node-tree
+source-house-node-tree: house-geometry
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_node_tree.py extract
+source-house-reentry: room house field-door house-geometry house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_reentry.py extract
+scene-bundle: source-scene-bundle
+source-scene-bundle: $(DESTINATION_INPUT_TASKS)
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/podunk_bundle.py extract
 .PHONY: source-dialogue-audio
 field-dialogue-audio: source-dialogue-audio
 source-dialogue-audio: field-node-recipe audio

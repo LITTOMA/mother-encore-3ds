@@ -57,6 +57,7 @@ struct PlayerInitializationMember {
 // before its first child is allocated. This grants no onready/Ready behavior.
 class PlayerInitializationBody {
 public:
+  bool rebind_tree(FieldNodeTreeRuntime &, std::string &);
   using ResourceLoader = std::function<bool(const PlayerInitializationField &,
                                             FieldObjectId &, std::string &)>;
   bool construct(const PlayerInitializationData &, FieldNodeTreeRuntime &,
@@ -68,6 +69,7 @@ public:
                      std::string &);
   bool bind_onready(std::string_view, FieldObjectId, std::string &);
   bool assign_variant_node(std::string_view, FieldObjectId, std::string &);
+  const FieldGlobalRegistry *registry() const { return registry_; }
   const PlayerInitializationData *data() const { return data_; }
   const FieldNodeTreeRuntime *tree() const { return tree_; }
   FieldObjectId object() const { return object_; }

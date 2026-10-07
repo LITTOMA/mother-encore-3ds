@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "podunk_player_visual_scripts.hpp"
 namespace encore::ctr {
 using namespace upstream;
@@ -43,5 +44,10 @@ bool PodunkPlayerVisualScripts::script_phase(FieldObjectId id,
   if (phase == FieldTreePhase::Idle && d->id == data_->bat().id)
     return core_.process(id, e);
   return fail(e, "Player visual source script phase not present/unsupported");
+}
+bool PodunkPlayerVisualScripts::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!data_ || !core_.rebind_tree(next, e)) return false;
+  tree_ = &next;
+  return true;
 }
 } // namespace encore::ctr

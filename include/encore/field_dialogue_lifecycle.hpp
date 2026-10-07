@@ -3,6 +3,7 @@
 #include "encore/field_node_tree.hpp"
 #include "encore/field_npc.hpp"
 #include "encore/field_programme.hpp"
+#include "encore/house_reentry.hpp"
 #include <array>
 #include <functional>
 #include <map>
@@ -184,6 +185,16 @@ struct FieldDialogueLifecycleHost {
       emit_done;
   std::function<bool(FieldObjectId, uint32_t, std::string &)> disconnect;
 };
+// Actual Room programme and House actor owners. The lifecycle host is the
+// same source coroutine's concrete singleton/signal endpoints, not a VM.
+struct FieldDialogueRoomHost {
+  FieldDialogueLifecycleHost lifecycle;
+  std::function<bool(RoomView, uint32_t, const FieldProgrammeContext &,
+                     std::string &)> admit_actor;
+  std::function<bool(RoomView, uint32_t, FieldObjectId,
+                     const FieldProgrammeContext &, std::string &)> bind_programme;
+  std::function<bool(FieldObjectId, uint32_t, std::string &)> stop_talker;
+};
 enum class FieldDialogueLifecyclePhase : uint32_t {
   Closed,
   WaitingReady,
@@ -206,6 +217,29 @@ public:
                   const FieldProgrammeData &, const FieldNodeRecipeData &,
                   FieldNodeTreeRuntime &, FieldNpcRuntime &,
                   FieldDialogueLifecycleHost, std::string &);
+  // Closed-source pointer transfer only. Programme, NPC, callbacks and cached
+  // context remain their actual owners; this grants no destination programme.
+  bool source_frame_closed(std::string &) const;
+  bool admit_tree_rebind(const FieldNodeTreeRuntime &,const FieldNodeTreeRuntime &,std::string &) const;
+  bool rebind_tree(const FieldNodeTreeRuntime &,FieldNodeTreeRuntime &,std::string &);
+  const FieldNodeTreeRuntime *tree() const { return tree_; }
+  bool bind_room_source(const HouseReentryData &, const FieldDoorData &,
+                        RoomView, HouseView, const FieldNodeTreeData &,
+                        FieldDialogueRoomHost, std::string &);
+  bool admit_room(uint32_t, const DialogueAction &,
+                  const FieldProgrammeContext &, std::string &);
+  bool open_room(uint32_t, const FieldProgrammeContext &, uint32_t,
+                 FieldObjectId &, std::string &);
+  bool room_bound() const { return room_source_ != nullptr; }
+  RoomView room_source() const { return room_; }
+  HouseView house_source() const { return house_; }
+  const FieldProgrammeContext &context() const { return context_; }
+  uint32_t generation() const { return generation_; }
+  uint32_t programme_index() const { return programme_; }
+  const std::array<FieldObjectId, 12> &nodes() const { return nodes_; }
+  // Reads existing coroutine ownership; actual signal connection maps remain
+  // owned and inspected by the native host.
+  bool waiting_owners(std::vector<FieldObjectId> &, std::string &) const;
   bool admit(const DialogueAction &, const FieldProgrammeContext &,
              std::string &);
   bool open(const FieldProgrammeData &, uint32_t, const FieldProgrammeContext &,
@@ -223,7 +257,11 @@ public:
 
 private:
   bool fail(std::string &, const char *);
-  bool preflight(const FieldProgrammeContext &, std::string &);
+  bool preflight(const FieldProgrammeContext &, std::string &,
+                 uint32_t programme = kRoomNoIndex);
+  bool open_checked(uint32_t, const FieldProgrammeContext &, uint32_t,
+                    FieldObjectId &, std::string &);
+  bool room_programme(uint32_t, std::string &) const;
   bool run(FieldDialogueStage, std::string &);
   bool step(const FieldDialogueStep &, std::string &);
   bool close(std::string &);
@@ -236,6 +274,11 @@ private:
   FieldNodeTreeRuntime *tree_ = nullptr;
   FieldNpcRuntime *npcs_ = nullptr;
   FieldDialogueLifecycleHost host_{};
+  const HouseReentryData *room_source_ = nullptr;
+  const FieldNodeTreeData *room_tree_ = nullptr;
+  RoomView room_{};
+  HouseView house_{};
+  FieldDialogueRoomHost room_host_{};
   FieldDialogueLifecyclePhase phase_ = FieldDialogueLifecyclePhase::Closed;
   FieldProgrammeContext context_{};
   FieldObjectId object_ = 0, parent_ = 0, animation_owner_ = 0;

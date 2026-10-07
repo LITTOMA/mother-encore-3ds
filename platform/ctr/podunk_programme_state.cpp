@@ -281,12 +281,30 @@ bool PodunkProgrammeState::grant_key(const BasementKeyItem &key,
   return writeback(e);
 }
 bool PodunkProgrammeState::writeback(std::string &e) {
-  if (!owners(e))
+  if (!input_.session || !owners(e))
+    return false;
+  SessionSnapshot next;
+  if (!export_snapshot(*input_.session, next, e))
+    return false;
+  *input_.session = std::move(next);
+  e.clear();
+  return true;
+}
+bool PodunkProgrammeState::binds(const PodunkHouseContinuation &c,
+                                  const PodunkInventoryHost &inventory,
+                                  const SessionSnapshot &session) const {
+  return prepared_ && input_.continuation == &c &&
+         input_.inventory == &inventory && input_.session == &session;
+}
+bool PodunkProgrammeState::export_snapshot(const SessionSnapshot &base,
+                                            SessionSnapshot &out,
+                                            std::string &e) const {
+  if (!prepared_ || !owners(e))
     return false;
   PodunkInventorySnapshot state;
   if (!input_.inventory->snapshot(state, e))
     return false;
-  auto next = *input_.session;
+  auto next = base;
   next.key_items.clear();
   const auto *defs = input_.continuation->item_definitions();
   for (const auto &row : state.state.items.inventories)
@@ -319,7 +337,7 @@ bool PodunkProgrammeState::writeback(std::string &e) {
   copy(flags.seen, next.seen_dialogue_flags);
   if (!validate_session_snapshot(next, e))
     return false;
-  *input_.session = std::move(next);
+  out = std::move(next);
   e.clear();
   return true;
 }

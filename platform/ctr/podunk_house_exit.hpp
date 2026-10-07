@@ -8,6 +8,8 @@
 #include "podunk_programme_inventory.hpp"
 #include "podunk_programme_state.hpp"
 #include "encore/blackbars.hpp"
+#include "encore/house_return_sources.hpp"
+#include "encore/house_return_ladder.hpp"
 
 class SourceFontRenderer;
 class HouseRenderer;
@@ -78,6 +80,8 @@ public:
   bool player_view_position(upstream::Vec2 &,std::string &)const;
   PodunkHouseContinuation *continuation();
   const upstream::FieldSceneSources *sources() const;
+  const upstream::HouseReturnSources *house_return_sources() const;
+  const upstream::HouseReturnLadderData *house_return_ladder() const;
   upstream::FieldSceneConsumers consumers() const;
   const std::shared_ptr<upstream::FieldNodeTreeRuntime> &tree() const;
   upstream::FieldGeometrySpace *geometry();

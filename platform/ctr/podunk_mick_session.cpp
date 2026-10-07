@@ -44,7 +44,7 @@ struct PodunkMickSession::State {
   PodunkDialogueSceneNative native;
   PodunkDialogueBusinessNative business;
   PodunkDialogueLifecyclePorts lifecycle;
-  std::set<FieldObjectId> dialogue_objects;
+  std::set<FieldObjectId> dialogue_objects, dialogue_history;
   PodunkDialogueFrame current;
   FieldObjectId notifying = 0, printer_owner = 0;
   std::map<FieldObjectId, PodunkDialogueWaitConnection> wait_connections;
@@ -53,8 +53,29 @@ struct PodunkMickSession::State {
   std::vector<Vec2> pressed_directions, released_directions;
   uint32_t generation = 0;
   bool prepared = false, active = false, input_live = false, handled = false,
-       update_pending = false;
+       update_pending = false, idle_frame_live = false, deferred_live = false,
+       source_scene_retired = false;
+  uint32_t source_callback_depth = 0;
+  FieldObjectId source_callback_receiver = 0;
+  FreshHouseState *return_house=nullptr;
+  HousePresentationCallbacks return_callbacks{};
+  PodunkMickHouseTalkerOwner *house_talker=nullptr;
+  struct SourceCall {
+    State &owner;FieldObjectId previous;
+    SourceCall(State &s,FieldObjectId receiver=0):owner(s),previous(s.source_callback_receiver){
+      ++owner.source_callback_depth;owner.source_callback_receiver=receiver;
+    }
+    ~SourceCall(){owner.source_callback_receiver=previous;--owner.source_callback_depth;}
+    SourceCall(const SourceCall&)=delete;SourceCall&operator=(const SourceCall&)=delete;
+  };
   std::string failure;
+  static bool text_completed(void *owner){
+    auto *self=static_cast<State*>(owner);
+    if(!self||!self->printer_owner||!self->dialogue_objects.count(self->printer_owner)||
+       !self->in.continuation->registry()->object_exists(self->printer_owner))return false;
+    SourceCall call(*self,self->printer_owner);
+    return self->root_script.text_completed(self->printer_owner,self->failure);
+  }
   template <class Data>
   bool plain(PodunkPackRole role, Data &out, std::string &e) {
     std::vector<uint8_t> bytes;
@@ -76,6 +97,7 @@ struct PodunkMickSession::State {
     return true;
   }
   bool session(std::string &e) const {
+    if(source_scene_retired)return fail(e,"Mick programme cannot borrow a fresh House source context");
     auto *r = in.continuation->registry();
     auto tree = r->tree_owner(in.player->body().object());
     auto *n = tree ? tree->state(in.player->body().object()) : nullptr;
@@ -153,6 +175,20 @@ struct PodunkMickSession::State {
     wait_connections.emplace(id, std::move(w));
     e.clear();
     return true;
+  }
+  bool source_input(const PlayerInputEvent &next,std::string &e){
+    SourceCall call(*this);
+    if(input_live)return fail(e,"Mick nested actual input event rejected");
+    Vec2 controls;
+    if(!in.controls(controls,e))return false;
+    event=next;input_live=true;handled=false;
+    const Vec2 directions[]={{-1,0},{1,0},{0,-1},{0,1}};
+    auto on=[](Vec2 c,Vec2 d){return (d.x&&c.x*d.x>0)||(d.y&&c.y*d.y>0);};
+    for(auto d:directions){
+      if(on(controls,d)&&!on(previous_controls,d))pressed_directions.push_back(d);
+      if(!on(controls,d)&&on(previous_controls,d))released_directions.push_back(d);
+    }
+    previous_controls=controls;e.clear();return true;
   }
 };
 PodunkMickSession::PodunkMickSession() : state_(std::make_unique<State>()) {}
@@ -264,6 +300,12 @@ bool PodunkMickSession::activate(std::string &e) {
     return s.options.hide(id, error);
   };
   h.talker_talking = [&s](auto id, bool talking, auto &error) {
+    if(s.source_scene_retired){
+      if(!s.return_house||!s.house_talker||s.house_talker->house()!=s.return_house||
+         s.in.printer!=&s.return_house->presentation)
+        return fail(error,"Returned House talker has no exact native source receiver");
+      return s.house_talker->set_talking(id,talking,error);
+    }
     auto t = s.in.continuation->registry()->tree_owner(id);
     const auto *d = t ? t->descriptor(id) : nullptr;
     auto *npc = s.in.npc;
@@ -480,15 +522,7 @@ bool PodunkMickSession::activate(std::string &e) {
           *s.in.printer, *s.in.choice_data, *s.in.choices, std::move(ops), e) ||
       !s.programme.activate(e))
     return false;
-  s.in.printer->set_text_completion_callback(
-      [](void *owner) {
-        auto *self = static_cast<State *>(owner);
-        if (!self->printer_owner)
-          return false;
-        return self->root_script.text_completed(self->printer_owner,
-                                                self->failure);
-      },
-      &s);
+  s.in.printer->set_text_completion_callback(State::text_completed,&s);
   s.active = true;
   e.clear();
   return true;
@@ -572,13 +606,14 @@ bool PodunkMickSession::construct(FieldObjectId id,
   if (!s.active || !candidate(d, i) || !t || !t->state(id) ||
       s.dialogue_objects.count(id))
     return fail(e, "Mick actual dialogue source allocation rejected");
-  s.dialogue_objects.insert(id);
+  s.dialogue_objects.insert(id);s.dialogue_history.insert(id);
   e.clear();
   return true;
 }
 bool PodunkMickSession::bind(FieldObjectId id, const FieldNodeDescriptor &d,
                              FieldNodeBinding &out, std::string &e) {
   auto &s = *state_;
+  State::SourceCall call(s,id);
   if (s.canvas.owns(id))
     return s.canvas.bind(id, out, e);
   if (!s.dialogue.bind(id, d, out, e))
@@ -591,6 +626,7 @@ bool PodunkMickSession::phase(FieldObjectId id, const FieldNodeBinding &b,
                               FieldTreePhase p, float dt, bool paused,
                               bool update, std::string &e) {
   auto &s = *state_;
+  State::SourceCall call(s,id);
   if (s.canvas.owns(id))
     return s.canvas.phase(id, p, e);
   if (!s.active || !s.dialogue_objects.count(id))
@@ -614,12 +650,15 @@ bool PodunkMickSession::phase(FieldObjectId id, const FieldNodeBinding &b,
 bool PodunkMickSession::deferred(const FieldDeferredMessage &m,
                                  std::string &e) {
   auto &s = *state_;
-  if (s.canvas.owns(m.object))
-    return s.canvas.deferred(m, e);
-  return s.dialogue.deferred(m, e);
+  if(s.deferred_live)return fail(e,"Mick nested source deferred callback rejected");
+  State::SourceCall call(s,m.object);
+  s.deferred_live=true;
+  const bool result=s.canvas.owns(m.object)?s.canvas.deferred(m,e):s.dialogue.deferred(m,e);
+  s.deferred_live=false;return result;
 }
 bool PodunkMickSession::release(FieldObjectId id, std::string &e) {
   auto &s = *state_;
+  State::SourceCall call(s,id);
   if (s.canvas.owns(id))
     return s.canvas.release(id, e);
   if (!s.dialogue_objects.erase(id))
@@ -669,7 +708,12 @@ bool PodunkMickSession::idle_begin(std::string &e) {
     e.clear();
     return true;
   }
-  return state_->programme.idle_begin(e);
+  auto &s=*state_;
+  if(s.source_scene_retired){e.clear();return true;}
+  if(s.idle_frame_live)return fail(e,"Mick source idle wrapper is already open");
+  State::SourceCall call(s);
+  if(!s.programme.idle_begin(e))return false;
+  s.idle_frame_live=true;return true;
 }
 bool PodunkMickSession::idle_end(uint64_t epoch, float dt, bool paused,
                                  std::string &e) {
@@ -680,6 +724,15 @@ bool PodunkMickSession::idle_end(uint64_t epoch, float dt, bool paused,
   }
   if (!s.failure.empty())
     return fail(e, s.failure.c_str());
+  if(s.source_scene_retired){
+    // The real Deferred freed this source scene inside the current outer idle
+    // wrapper. Admission proved every actual producer/wait closed. Complete
+    // only that scheduling wrapper; never process the freed scene or tick the
+    // destination printer before its own mapped Ready/frame.
+    if(s.source_callback_depth)return fail(e,"Retired Mick source callback is still executing");
+    s.idle_frame_live=false;e.clear();return true;
+  }
+  State::SourceCall call(s);
   if (!s.in.printer->idle_frame(dt))
     return fail(e, "Outdoor shared printer idle step rejected");
   if (s.printer_owner) {
@@ -693,31 +746,41 @@ bool PodunkMickSession::idle_end(uint64_t epoch, float dt, bool paused,
     return false;
   s.pressed_directions.clear();
   s.released_directions.clear();
-  return s.audio_player.pump_streams(e);
+  if(!s.audio_player.pump_streams(e))return false;
+  s.idle_frame_live=false;return true;
 }
 bool PodunkMickSession::begin_input(const PlayerInputEvent &event,
                                     std::string &e) {
   auto &s = *state_;
-  if (s.input_live)
-    return fail(e, "Mick nested actual input event rejected");
-  Vec2 controls;
-  if (!s.in.controls(controls, e))
-    return false;
-  s.event = event;
-  s.input_live = true;
-  s.handled = false;
-  const Vec2 directions[] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-  auto active = [](Vec2 c, Vec2 d) {
-    return (d.x && c.x * d.x > 0) || (d.y && c.y * d.y > 0);
-  };
-  for (auto d : directions) {
-    if (active(controls, d) && !active(s.previous_controls, d))
-      s.pressed_directions.push_back(d);
-    if (!active(controls, d) && active(s.previous_controls, d))
-      s.released_directions.push_back(d);
-  }
-  s.previous_controls = controls;
-  return true;
+  if(s.source_scene_retired)return fail(e,"Old Mick input traversal is retired after House return");
+  return s.source_input(event,e);
+}
+bool PodunkMickSession::begin_house_input(FreshHouseState &house,
+    const PlayerInputEvent &event,std::string &e){
+ PodunkMickHouseNativeState n;
+ if(!house_native_state(house,n,e))return false;
+ auto &s=*state_;
+ if(!s.house_talker||s.house_talker->house()!=&house||!house.world.house_programme_owner()||
+    n.callback_depth||n.callback_receiver||n.notifying||n.input_live||s.idle_frame_live)
+  return fail(e,"House input must borrow its exact actual closed source event boundary");
+ return s.source_input(event,e);
+}
+bool PodunkMickSession::house_idle_tail(FreshHouseState &house,uint64_t epoch,
+    float dt,bool paused,std::string &e){
+ PodunkMickHouseNativeState n;
+ if(!house_native_state(house,n,e))return false;
+ auto &s=*state_;
+ if(!s.house_talker||s.house_talker->house()!=&house||!house.world.house_programme_owner()||
+    n.callback_depth||n.callback_receiver||n.notifying||n.input_live||s.idle_frame_live||
+    !std::isfinite(dt)||dt<0)
+  return fail(e,"House idle tail must follow its actual canonical source frame exactly once");
+ State::SourceCall call(s);
+ if(!house.presentation.idle_frame(dt))return fail(e,house.presentation.error());
+ if(s.printer_owner){auto *ui=s.dialogue.ui(s.printer_owner);
+  if(!ui||!ui->sync_text(s.printer_owner,house.presentation,e))return false;}
+ if(!s.native.idle_tail(epoch,dt,paused,e)||!s.business.idle(epoch,dt,e)||
+    !s.audio_player.pump_streams(e))return false;
+ s.pressed_directions.clear();s.released_directions.clear();e.clear();return true;
 }
 void PodunkMickSession::end_input() { state_->input_live = false; }
 bool PodunkMickSession::input_handled() const {
@@ -743,7 +806,181 @@ bool PodunkMickSession::telepathy_effect(FieldObjectId target, bool enabled,
   if (!s.active || !s.session(e) ||
       !s.in.continuation->registry()->object_exists(target))
     return fail(e, "Mick telepathy actual session/target is not active");
+  State::SourceCall call(s,target);
   return s.business.set_telepathy_effect(enabled, target, e);
 }
+bool PodunkMickSession::observe(const HouseUiReentryInput &in,
+    const HouseUiContinuation &ui,bool rebound,HouseUiReentryBorrowState &out,
+    std::string &e)const{
+ const auto &s=*state_;
+ if(!s.prepared||!s.active||!s.in.continuation||in.borrowers!=this||
+    !in.registry||in.registry->poisoned()||s.in.continuation->registry()!=in.registry||
+    s.in.continuation->ui()!=&ui||in.registry->external_object(ui.binding().object)!=&ui||
+    !in.old_house||!in.next_house||in.old_house==in.next_house||!in.source||
+    !in.doors||!in.door_runtime||in.door_runtime->data()!=in.doors||
+    in.door_runtime->phase()!=FieldDoorPhase::Deferred||
+    in.door_runtime->active_door()!=in.source->door_id()||
+    !in.door_runtime->source_ready(in.source->door_id())||
+    in.random!=s.in.continuation->random()||in.uid_ledger!=s.in.continuation->uid_ledger()||
+    !in.random||!in.uid_ledger||!in.old_tree||!in.next_tree||
+    !same(in.old_identity,in.doors->identity())||!same(in.next_identity,in.source->identity())||
+    !same(in.old_identity,s.in.sources->tree().identity())||
+    s.in.house.bytes()!=in.house_data.bytes()||s.in.house.byte_size()!=in.house_data.byte_size()||
+    !in.source->matches(*in.doors,in.old_house->world.content(),in.house_data,e)||
+    !in.source->matches(*in.doors,in.next_house->world.content(),in.house_data,e))
+  return fail(e,"Mick House printer rebind actual source/Registry/session owners differ");
+ const auto *printer=rebound?&in.next_house->presentation:&in.old_house->presentation;
+ FieldIdentity old_id{},next_id{};
+ const auto *old_root=in.old_tree->state(in.old_root);
+ const auto *next_root=in.next_tree->state(in.next_root);
+ if(s.in.printer!=printer||!old_root||!old_root->alive||old_root->queued||
+    !next_root||!next_root->alive||next_root->inside||next_root->queued||
+    next_root->ready_notified||!next_root->ready_first||
+    in.registry->tree_owner(in.old_root)!=in.old_tree||
+    in.registry->tree_owner(in.next_root)!=in.next_tree||
+    !in.old_tree->object_identity(in.old_root,old_id)||!same(old_id,in.old_identity)||
+    !in.next_tree->object_identity(in.next_root,next_id)||!same(next_id,in.next_identity)||
+    !in.next_house->scene_ready_pending()||!s.failure.empty()||s.input_live||s.notifying||
+    s.printer_owner||!s.in.fade||s.in.fade->restore_pending()||
+    s.source_callback_depth||s.source_callback_receiver||s.deferred_live||
+    s.source_scene_retired!=rebound||s.programme.source_scene_retired()!=rebound||
+    s.dialogue.lifecycle_tree()!=(rebound?in.next_tree.get():in.old_tree.get())||!s.dialogue_objects.empty()||
+    !s.wait_connections.empty())
+  return fail(e,"Mick House reentry rejects live source frames/dialogue/input/printer work");
+ if(!s.root_script.observes_closed_printer(*printer,e)||
+    !s.dialogue.observes_closed_printer(*printer,e)||
+    !s.native.observes_closed_printer(*printer,e)||
+    !s.programme.observes_closed_printer(*printer,e)||
+    !s.lifecycle.source_frame_closed(e))return false;
+ const auto old_callbacks=in.old_house->presentation.callback_bindings();
+ const auto callbacks=printer->callback_bindings();
+ if(callbacks.random!=in.random||callbacks.completion!=State::text_completed||
+    callbacks.completion_state!=&s||callbacks.value!=old_callbacks.value||
+    callbacks.value_state!=(rebound?static_cast<const void*>(&in.next_house->world):
+                                    static_cast<const void*>(&in.old_house->world))||
+    callbacks.locale!=old_callbacks.locale||callbacks.locale_state!=old_callbacks.locale_state||
+    callbacks.glyph!=old_callbacks.glyph||callbacks.glyph_state!=old_callbacks.glyph_state)
+  return fail(e,"Mick House printer has unknown/stale actual callback function receivers");
+ auto targets=s.dialogue_history;
+ targets.insert(ui.binding().object);targets.insert(in.registry->stable_canvas());
+ const auto pending=in.registry->pending_messages_to(targets);
+ if(pending)return fail(e,"Mick House reentry has queued actual UI/dialogue/native messages");
+ if(!rebound&&(!in.next_house->presentation.admit_source_callback_rebind(
+       in.old_house->presentation,&in.old_house->world,&in.next_house->world,
+       State::text_completed,const_cast<State*>(&s),e)||
+    !s.root_script.admit_printer_rebind(*printer,in.next_house->presentation,e)||
+    !s.dialogue.admit_printer_rebind(*printer,in.next_house->presentation,e)||
+    !s.native.admit_printer_rebind(*printer,in.next_house->presentation,e)||
+    !s.programme.admit_printer_rebind(*printer,in.next_house->presentation,e)||
+    !s.dialogue.admit_house_tree_rebind(in,e)))return false;
+ HouseUiReentryBorrowState next;
+ next.registry=in.registry;next.printer=printer;next.dialogue_script=&s.root_script;
+ next.random=in.random;next.uid_ledger=in.uid_ledger;
+ next.dialogue_objects.assign(s.dialogue_objects.begin(),s.dialogue_objects.end());
+ next.pending_ui_callbacks=pending;
+ // Every concrete native/factory/wait map was inspected above. No receiver,
+ // waiter, event, cache or actual ObjectID is cleared to obtain this receipt.
+ next.complete=true;out=std::move(next);e.clear();return true;
+}
+bool PodunkMickSession::rebind(const HouseUiReentryInput &in,
+    HouseUiContinuation &ui,std::string &e){
+ HouseUiReentryBorrowState before;
+ if(!observe(in,ui,false,before,e))return false;
+ auto &s=*state_;auto &next=in.next_house->presentation;
+ const auto &old=in.old_house->presentation;
+ const auto random_state=in.random->state(),draws=in.random->raw_draw_count();
+ const auto uids=*in.uid_ledger;
+ // Existing endpoints capture this same fixed State by reference. Updating
+ // only its printer and the four actual consumers preserves their callbacks,
+ // source fields, coroutine/signal ledgers, native IDs and resource owners.
+ if(!next.rebind_source_callbacks(old,&in.old_house->world,&in.next_house->world,
+       State::text_completed,&s,e)||!s.dialogue.rebind_house_tree(in,e)||
+    !s.root_script.rebind_printer(old,next,e)||
+    !s.dialogue.rebind_printer(old,next,e)||!s.native.rebind_printer(old,next,e)||
+    !s.programme.rebind_printer(old,next,e))return false;
+ s.in.printer=&next;
+ s.return_house=in.next_house;
+ s.return_callbacks=next.callback_bindings();
+ if(!s.programme.retire_source_scene(e))return false;
+ s.source_scene_retired=true;
+ HouseUiReentryBorrowState after;
+ if(!observe(in,ui,true,after,e))return false;
+ if(after.dialogue_objects!=before.dialogue_objects||in.random->state()!=random_state||
+    in.random->raw_draw_count()!=draws||*in.uid_ledger!=uids)
+  return fail(e,"Mick printer rebind changed actual objects/entropy/UID ledger");
+ e.clear();return true;
+}
 bool PodunkMickSession::active() const { return state_->active; }
+bool PodunkMickSession::source_scene_retired() const { return state_->source_scene_retired; }
+bool PodunkMickSession::house_native_state(FreshHouseState &house,
+    PodunkMickHouseNativeState &out,std::string &e)const{
+ auto &s=*state_;
+ if(!s.prepared||!s.active||!s.in.continuation||!s.source_scene_retired||
+    !s.programme.source_scene_retired()||s.return_house!=&house||
+    s.in.printer!=&house.presentation||!s.failure.empty())
+  return fail(e,"House native borrow is not the actual retired Mick/fixed House receiver");
+ auto *registry=s.in.continuation->registry();
+ const auto callbacks=house.presentation.callback_bindings();
+ if(!registry||registry->poisoned()||callbacks.random!=s.in.continuation->random()||
+    callbacks.completion!=State::text_completed||callbacks.completion_state!=&s||
+    callbacks.value!=s.return_callbacks.value||callbacks.value_state!=&house.world||
+    callbacks.locale!=s.return_callbacks.locale||callbacks.locale_state!=s.return_callbacks.locale_state||
+    callbacks.glyph!=s.return_callbacks.glyph||callbacks.glyph_state!=s.return_callbacks.glyph_state||
+    s.dialogue.lifecycle_tree()!=registry->tree_owner(registry->current_scene()).get())
+  return fail(e,"House native borrow has stale printer/World/Tree callback receivers");
+ PodunkMickHouseNativeState n;
+ n.registry=registry;n.ui=s.in.continuation->ui();n.dialogue=&s.dialogue;
+ n.root=&s.root_script;n.lifecycle=&s.lifecycle;n.old_programme=&s.programme;
+ n.native=&s.native;
+ n.recipe=&s.recipe;n.life=&s.life;n.choice_data=s.in.choice_data;n.locale=s.in.locale;
+ n.audio_data=&s.audio;
+ n.input_sound_node=s.in.continuation->ui_continuation_data()->dialogue_policy().input_sound_node;
+ n.choices=s.in.choices;n.random=s.in.continuation->random();
+ n.global_data=&s.in.continuation->characters()->runtime();
+ n.uid_ledger=s.in.continuation->uid_ledger();
+ n.objects.assign(s.dialogue_objects.begin(),s.dialogue_objects.end());
+ auto targets=s.dialogue_history;
+ targets.insert(n.ui->binding().object);targets.insert(registry->stable_canvas());
+ n.history.assign(targets.begin(),targets.end());
+ for(const auto &w:s.wait_connections)n.wait_connections.push_back(w.second);
+ n.frame=s.current;n.notifying=s.notifying;n.printer_owner=s.printer_owner;
+ n.callback_depth=s.source_callback_depth;n.callback_receiver=s.source_callback_receiver;
+ n.input_live=s.input_live;n.retired=s.source_scene_retired;
+ if(!s.in.fade)return fail(e,"House native borrow has no actual retained Fade coroutine owner");
+ n.business_pending=s.in.fade->restore_pending();
+ n.pending_messages=registry->pending_messages_to(targets);
+ out=std::move(n);e.clear();return true;
+}
+bool PodunkMickSession::bind_house_talker(FreshHouseState &house,
+    PodunkMickHouseTalkerOwner &owner,std::string &e){
+ PodunkMickHouseNativeState n;
+ if(!house_native_state(house,n,e))return false;
+ auto &s=*state_;
+ if(s.house_talker||owner.house()!=&house||n.callback_depth||n.callback_receiver||
+    n.input_live||n.notifying||n.printer_owner||n.pending_messages||
+    !n.objects.empty()||!n.wait_connections.empty()||
+    !s.root_script.observes_closed_printer(house.presentation,e)||
+    !s.dialogue.observes_closed_printer(house.presentation,e)||
+    !s.native.observes_closed_printer(house.presentation,e)||
+    !s.lifecycle.source_frame_closed(e))
+  return fail(e,"House talker binding requires the exact closed source callback boundary");
+ s.house_talker=&owner;e.clear();return true;
+}
+bool PodunkMickSession::rebind_house_programme(FreshHouseState &house,
+    const PodunkDialogueProgrammeBinding &expected,PodunkDialogueProgrammePort &next,
+    std::string &e){
+ PodunkMickHouseNativeState n;
+ if(!house_native_state(house,n,e))return false;
+ auto &s=*state_;
+ if(!s.house_talker||s.house_talker->house()!=&house||n.callback_depth||
+    n.callback_receiver||n.input_live||n.notifying||n.printer_owner||
+    n.pending_messages||!n.objects.empty()||!n.wait_connections.empty()||
+    !s.lifecycle.source_frame_closed(e)||
+    !s.root_script.admit_programme_rebind(s.programme,expected,next,house.presentation,e))
+  return fail(e,"House programme transfer is outside the actual closed source boundary");
+ // The old VM remains retired. Preserve both concrete Root and Options owners.
+ if(!s.root_script.rebind_programme(s.programme,expected,next,e)||
+    !s.options.rebind_programme(s.programme,expected,next,e))return false;
+ e.clear();return true;
+}
 } // namespace encore::ctr

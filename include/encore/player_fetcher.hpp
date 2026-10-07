@@ -75,6 +75,7 @@ struct PlayerFetcherState {
 // ReadyScript; the normal Idle notification performs the source process.
 class PlayerFetcherRuntime final : public PlayerVisualFetcherOwner {
 public:
+  bool rebind_tree(FieldNodeTreeRuntime &, std::string &);
   // Prepare dependencies at the actual root construction cursor; no Node or
   // Ready is created. Construct is called at each original script attachment.
   bool prepare(const PlayerFetcherData &, const PlayerInitializationData &,
@@ -109,6 +110,7 @@ private:
   bool live(bool, std::string &) const;
   bool reflector(FieldObjectId &, std::string &) const;
   bool sample(PlayerFetcherSpriteState &, std::string &) const;
+  const PlayerInitializationData *player_data_ = nullptr;
   const PlayerFetcherData *data_ = nullptr;
   const PlayerFetcherRecord *row_ = nullptr;
   FieldNodeTreeRuntime *tree_ = nullptr;

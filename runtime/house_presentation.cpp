@@ -6,6 +6,43 @@
 #include <cstdlib>
 #include <limits>
 namespace encore::upstream {
+HousePresentationCallbacks HousePresentation::callback_bindings()const{
+ return {locale_resolver_,locale_state_,glyph_advance_,glyph_state_,text_value_,
+         text_value_state_,text_completion_,text_completion_state_,random_};
+}
+bool HousePresentation::source_frame_closed()const{
+ return content_.valid()&&font_.valid()&&random_&&!active_&&!closing_&&
+        !choice_rows_&&!advance_requested_&&!voice_playing_&&audio_.empty()&&
+        error_&&!*error_;
+}
+bool HousePresentation::admit_source_callback_rebind(const HousePresentation&old,
+    const void*old_world,void*next_world,bool(*completion)(void*),
+    void*completion_state,std::string&e)const{
+ if(this==&old||!old_world||!next_world||old_world==next_world||!completion||
+    !completion_state||!old.source_frame_closed()||!source_frame_closed()||
+    old.random_!=random_||old.content_.bytes()!=content_.bytes()||
+    old.content_.byte_size()!=content_.byte_size()||
+    old.locale_resolver_!=locale_resolver_||old.locale_state_!=locale_state_||
+    old.glyph_advance_!=glyph_advance_||old.glyph_state_!=glyph_state_||
+    !old.text_value_||old.text_value_state_!=old_world||
+    text_value_!=old.text_value_||text_value_state_!=next_world||
+    old.text_completion_!=completion||old.text_completion_state_!=completion_state||
+    (text_completion_&&(text_completion_!=completion||text_completion_state_!=completion_state))){
+  e="House printer callback rebind requires closed actual source/function/receiver owners";return false;
+ }
+ e.clear();return true;
+}
+bool HousePresentation::rebind_source_callbacks(const HousePresentation&old,
+    const void*old_world,void*next_world,bool(*completion)(void*),
+    void*completion_state,std::string&e){
+ if(!admit_source_callback_rebind(old,old_world,next_world,completion,completion_state,e))return false;
+ // The text-value function survives, but its receiver is the actual new World.
+ // Locale/glyph receivers are already proven identical; old owners stay valid
+ // until every borrower commits. No callback, clock or random draw is executed.
+ text_completion_=old.text_completion_;text_completion_state_=old.text_completion_state_;
+ e.clear();return true;
+}
+
 namespace {
 float cubic(float before,float from,float to,float after,float t){return .5f*((2*from)+(-before+to)*t+(2*before-5*from+4*to-after)*t*t+(-before+3*from-3*to+after)*t*t*t);}
 bool finite(Vec2 p){return std::isfinite(p.x)&&std::isfinite(p.y);}

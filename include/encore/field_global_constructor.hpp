@@ -100,6 +100,9 @@ public:
              std::string &) const;
   bool clear_array(FieldGlobalMemberRole, std::string &);
   bool append_array(FieldGlobalMemberRole, FieldObjectId, std::string &);
+  // Array.erase removes the first occurrence while retaining the same root.
+  // A missing value is a source no-op, including an already freed ObjectID.
+  bool erase_array_first(FieldGlobalMemberRole, FieldObjectId, std::string &);
   bool assign_array(FieldGlobalMemberRole, std::vector<FieldObjectId>,
                     std::string &);
   bool party_space(std::shared_ptr<const FieldGlobalPartySpaceArray> &,

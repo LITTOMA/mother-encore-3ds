@@ -48,6 +48,12 @@ struct PodunkDialogueNativeInput {
 class PodunkDialogueSceneNative {
 public:
   bool prepare(PodunkDialogueNativeInput, std::string &);
+  // Closed actual source owners only; no factory/Ready/callback replay.
+  bool observes_closed_printer(const upstream::HousePresentation &,std::string &) const;
+  bool admit_printer_rebind(const upstream::HousePresentation &,
+                           const upstream::HousePresentation &,std::string &) const;
+  bool rebind_printer(const upstream::HousePresentation &,
+                     upstream::HousePresentation &,std::string &);
   bool apply(PodunkDialogueServices &, std::string &);
   bool admit(const upstream::FieldNodeRecipeData &, std::string &) const;
   bool factory_services(upstream::FieldObjectId,

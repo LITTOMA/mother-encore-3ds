@@ -31,6 +31,27 @@ struct OpeningMusicRegionCall {bool play=false;uint32_t node_string=kRoomNoIndex
 using OpeningMusicRegionValidator=std::function<bool(std::string_view,std::string_view,bool,double,std::string&)>;
 struct OpeningSceneCall {uint32_t object=0;};
 struct OpeningTraceEvent { DialogueAction action; uint64_t physics_tick,idle_frame; };
+// Borrowed Room source plus copies of the last committed collision state.
+// Pending flag deletion is excluded until end_scene_frame commits it.
+struct OpeningCollisionSnapshot {
+    RoomView source;
+    std::vector<uint32_t> active_polygons,erased_bodies;
+    std::vector<Vec2> polygon_offsets;
+};
+class OpeningWorld;
+// A fixed-address external source owner, borrowed rather than owned by World.
+// Concrete targets inspect the actual Room/native UI/source callback owners.
+// Keep it alive until the exact-owner checked unbind succeeds (or World dies).
+class OpeningHouseProgrammeOwner {
+public:
+    virtual ~OpeningHouseProgrammeOwner()=default;
+    virtual const OpeningWorld* world()const=0;
+    // Admission must inspect closed source sessions/callbacks/waits. A function
+    // object's presence or a scheduling wrapper is not a source-frame proof.
+    virtual bool source_frame_closed(const OpeningWorld&,std::string&)const=0;
+    virtual bool source_started(OpeningWorld&,uint32_t generation,std::string&)=0;
+    virtual bool before_action(OpeningWorld&,const DialogueAction&,std::string&)=0;
+};
 class OpeningWorld final : private DialogueSink {
 public:
     OpeningWorld();
@@ -59,8 +80,16 @@ public:
     bool initialize_restored(const RoomView&,const std::vector<bool>& story_flags,const std::vector<bool>&reviewed_mutations,Vec2 position,Vec2 direction,Vec2 viewport={400,240});
     bool accept_battle_entry();
     bool begin_house_program(uint32_t program_index,uint32_t original_npc=kRoomNoIndex);
+    // Optional explicit integration with the SAME existing programme VM.
+    // Binding/checked unbinding do not initialize, grant Ready or tick anything.
+    bool bind_house_programme_owner(OpeningHouseProgrammeOwner&,std::string&);
+    bool unbind_house_programme_owner(OpeningHouseProgrammeOwner&,std::string&);
+    const OpeningHouseProgrammeOwner* house_programme_owner()const{return house_programme_owner_;}
+    // The real World counter, including initialized-but-unstarted VM state.
+    uint32_t source_generation()const{return generation_;}
     bool begin_battle_continuation(std::string_view source_path);
     bool story_completed()const{return dialogue_.status()==DialogueStatus::Completed;}
+    DialogueStatus story_status()const{return dialogue_.status();}
     bool finish_story_dialogue(bool automatic=false);
     bool set_party_leader(std::string_view identity){if(!persistent_player_||player_read_only_)return false;persistent_player_.state_->party_leader_=std::string(identity);return true;}
     uint32_t story_program_index()const{return program_index_;}
@@ -97,6 +126,7 @@ public:
     bool body_enabled(uint32_t body_id)const;
     bool body_visible(uint32_t body_id)const;
     bool set_body_offset(uint32_t body_id,Vec2 delta);
+    bool committed_collision_snapshot(const RoomView& expected,OpeningCollisionSnapshot&,std::string&)const;
     bool set_initial_actor_pose(uint32_t index,Vec2 position,Vec2 direction);
     OpenableDoorFlagState door_flag_state(const OpenableDoorFlagRule& rule)const{return openable_door_flag_state(flags_,rule);}
     bool shake_house_camera(double magnitude,double duration,Vec2 direction){return healthy_&&persistent_player_.state_->camera_.shake(magnitude,duration,direction);}
@@ -137,6 +167,10 @@ public:
     const std::vector<OpeningAudioRequest>& audio_requests() const { return audio_; }
     const std::vector<OpeningTraceEvent>& action_trace() const { return trace_; }
 private:
+    OpeningHouseProgrammeOwner*house_programme_owner_=nullptr;
+    bool house_programme_callback_=false,house_programme_failed_=false;
+    std::string house_programme_error_;
+    bool house_programme_failure(const char*);
     PersistentPlayerOwner persistent_player_;
     bool player_read_only_=false;
     uint32_t area_music_resource_=kRoomNoIndex;

@@ -170,6 +170,7 @@ struct PlayerReadyHost {
 };
 class PlayerReadyRuntime {
 public:
+  bool rebind_tree(FieldNodeTreeRuntime &, std::string &);
   bool initialize(const PlayerReadyData &, PlayerInitializationBody &,
                   FieldNodeTreeRuntime &, FieldGlobalConstructorRuntime &,
                   const FieldGlobalDataRuntime &, PlayerAnimationGraph &,

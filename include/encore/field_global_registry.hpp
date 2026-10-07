@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/field_node_recipe.hpp"
 #include <memory>
+#include <set>
 namespace encore::upstream {
 class PlayerNamedSfxData;
 struct FieldGlobalAutoload {
@@ -139,6 +140,12 @@ public:
  bool observe_external_parent(FieldObjectId parent,FieldObjectId child,std::string&);
  bool detach_scene(FieldObjectId,std::string&);
  bool persistent_reparent(FieldObjectId,FieldObjectId,std::string&);
+ // Actual subtree/ObjectDB migration occurs before this callback; native
+ // owners must rebind before add_child issues Enter. It cannot replay Ready.
+ using PersistentTransfer = std::function<bool(FieldNodeTreeRuntime&,
+     FieldNodeTreeRuntime&,const std::vector<FieldObjectId>&,std::string&)>;
+ bool persistent_reparent_before_enter(FieldObjectId,FieldObjectId,
+                                      PersistentTransfer,std::string&);
  const FieldGlobalRegistryData*data()const{return data_;}
  FieldObjectId autoload_object(uint32_t)const;
  bool construct_autoload(uint32_t,std::string&);
@@ -160,6 +167,8 @@ public:
  bool resolve_path(FieldObjectId,std::string_view,FieldObjectId&,std::string&)const;
  bool get_path_to(FieldObjectId,FieldObjectId,std::string&,std::string&)const;
  bool get_path(FieldObjectId,std::string&,std::string&)const;
+ // Includes the unread part of an active flush batch; never drains messages.
+ size_t pending_messages_to(const std::set<FieldObjectId>&)const;
  bool enqueue(FieldDeferredMessage,std::string&);
  bool flush_messages(std::string&);
  bool dispatch(const FieldDeferredMessage&,std::string&);
@@ -188,6 +197,7 @@ private:
  std::map<FieldObjectId,Object>objects_;
  std::map<uint32_t,FieldObjectId>autoload_objects_;
  std::deque<FieldDeferredMessage>messages_;
+ const std::deque<FieldDeferredMessage>*active_messages_=nullptr;
  uint64_t counter_=0,fast_counter_=0;
  FieldObjectId kernel_=0,root_=0,current_scene_=0,tree_current_scene_=0,stable_canvas_=0;
  bool initialized_=false,poisoned_=false,flushing_=false;

@@ -151,12 +151,12 @@ bool PodunkDialogueRootData::load_file(const char *path, std::string &e) {
 bool PodunkDialogueRootOwner::initialize(
     const PodunkDialogueRootData &d, const FieldDialogueLifecycleData &life,
     const FieldNodeRecipeData &recipe, HousePresentation &printer,
-    PodunkProgrammeHost &programme, PodunkDialogueHost &dialogue,
+    PodunkDialogueProgrammePort &programme, PodunkDialogueHost &dialogue,
     DialogueChoices &choices, FieldNativeTimers &timers,
     const LocaleSelection *locale, PodunkDialogueRootEndpoints host,
     std::string &e) {
-  if (!instances_.empty())
-    return reject(e, "Live dialogue script cannot be rebound");
+  if (data_ || !instances_.empty())
+    return reject(e, "DialogueRoot initialization cannot replace its actual owners");
   if (!d.valid() || !life.valid() || !recipe.valid() ||
       !same(d.identity(), recipe.identity()) ||
       d.recipe_sha() != recipe.ir_sha256() || !host.tree || !host.frame ||
@@ -185,6 +185,71 @@ bool PodunkDialogueRootOwner::initialize(
   locale_ = locale;
   host_ = std::move(host);
   return admit(life, recipe, printer, e);
+}
+bool PodunkDialogueRootOwner::observes_closed_printer(const HousePresentation &p,std::string &e) const{
+ if(!life_||!recipe_||!instances_.empty()||!p.source_frame_closed()||
+    !admit(*life_,*recipe_,const_cast<HousePresentation&>(p),e))
+  return reject(e,"DialogueRoot printer rebind requires closed actual script instances");
+ e.clear();return true;
+}
+bool PodunkDialogueRootOwner::admit_printer_rebind(const HousePresentation &old,
+    const HousePresentation &next,std::string &e) const{
+ if(&old==&next||!observes_closed_printer(old,e)||!next.source_frame_closed()||
+    old.callback_bindings().random!=next.callback_bindings().random)
+  return reject(e,"DialogueRoot printer destination/source frame differs");
+ e.clear();return true;
+}
+bool PodunkDialogueRootOwner::rebind_printer(const HousePresentation &old,
+    HousePresentation &next,std::string &e){
+ if(!admit_printer_rebind(old,next,e))return false;
+ printer_=&next;e.clear();return true;
+}
+bool PodunkDialogueRootOwner::admit_programme_rebind(
+    const PodunkDialogueProgrammePort &old,
+    const PodunkDialogueProgrammeBinding &expected_old,
+    const PodunkDialogueProgrammePort &next,
+    const HousePresentation &next_printer,std::string &e) const {
+  if(programme_!=&old||&old==&next||!printer_||!choices_||choices_->active()||
+     !observes_closed_printer(*printer_,e)||!next_printer.source_frame_closed()||
+     printer_->callback_bindings().random!=next_printer.callback_bindings().random)
+    return reject(e,"DialogueRoot programme rebind requires its actual closed owners");
+  PodunkDialogueProgrammeBinding actual, destination;
+  DialogueStatus old_status=DialogueStatus::Error, next_status=DialogueStatus::Error;
+  bool old_wait=true,next_wait=true;
+  if(!old.programme_binding(actual,e)||!next.programme_binding(destination,e)||
+     !old.dialogue_status(old_status,e)||!next.dialogue_status(next_status,e)||
+     !old.ready_waiting(old_wait,e)||!next.ready_waiting(next_wait,e))return false;
+  auto closed=[](DialogueStatus status){return status==DialogueStatus::Idle||
+    status==DialogueStatus::Completed||status==DialogueStatus::Cancelled;};
+  if(!expected_old.vm_owner||!actual.identity.scene_id||
+     std::all_of(actual.identity.source_sha256.begin(),actual.identity.source_sha256.end(),
+                 [](uint8_t byte){return !byte;})||
+     !same(actual.identity,expected_old.identity)||
+     actual.vm_owner!=expected_old.vm_owner||actual.printer!=expected_old.printer||
+     actual.choices!=expected_old.choices||!actual.printer||
+     !actual.printer->source_frame_closed()||actual.choices!=choices_||
+     !destination.identity.scene_id||
+     std::all_of(destination.identity.source_sha256.begin(),destination.identity.source_sha256.end(),
+                 [](uint8_t byte){return !byte;})||!destination.vm_owner||
+     destination.vm_owner==actual.vm_owner||destination.printer!=&next_printer||
+     destination.choices!=choices_||
+     actual.identity.upstream_commit!=data_->identity().upstream_commit||
+     destination.identity.upstream_commit!=data_->identity().upstream_commit||
+     !closed(old_status)||!closed(next_status)||old_wait||next_wait)
+    return reject(e,"DialogueRoot actual programme VM/identity/Ready waiter differs");
+  const auto *root=recipe_->record(recipe_->identity().scene_id);
+  std::array<uint8_t,32> hash{};
+  if(!root||!next.source_hash(root->script,hash)||hash!=data_->script_sha()||
+     !next.source_hash(data_->base_source(),hash)||hash!=data_->base_sha())
+    return reject(e,"DialogueRoot destination programme source script proof differs");
+  e.clear();return true;
+}
+bool PodunkDialogueRootOwner::rebind_programme(
+    const PodunkDialogueProgrammePort &old,
+    const PodunkDialogueProgrammeBinding &expected_old,
+    PodunkDialogueProgrammePort &next,std::string &e) {
+  if(!printer_||!admit_programme_rebind(old,expected_old,next,*printer_,e))return false;
+  programme_=&next;e.clear();return true;
 }
 bool PodunkDialogueRootOwner::admit(const FieldDialogueLifecycleData &life,
                                     const FieldNodeRecipeData &recipe,
@@ -359,7 +424,8 @@ bool PodunkDialogueRootOwner::phase(FieldObjectId id, FieldTreePhase phase,
       !printer_->physics_frame(frame.delta, position))
     return reject(e, "DialogueRoot actual printer physics failed");
   i->stopped = printer_->dialogue_stopped();
-  const auto &context=programme_->programme().context();
+  PodunkDialogueProgrammeContext context;
+  if(!programme_||!programme_->dialogue_context(context,e))return false;
   auto actor = context.actor_object;
   if (!context.thoughts && actor && !host_.talker_talking(actor, printer_->talking(), e))
     return false;
@@ -409,9 +475,12 @@ bool PodunkDialogueRootOwner::state(FieldObjectId id,
 bool PodunkDialogueRootOwner::begin(FieldObjectId id, uint32_t generation,
                                     std::string &e) {
   auto *i = live(id, true, e);
-  if (!i || !generation || i->running ||
-      programme_->programme().context().dialogue_object != id)
+  if (!i || !generation || i->running)
     return reject(e, "DialogueRoot programme generation/context rejected");
+  PodunkDialogueProgrammeContext context;
+  if(!programme_||!programme_->dialogue_context(context,e))return false;
+  if(context.dialogue_object!=id)
+    return reject(e,"DialogueRoot programme generation/context rejected");
   if (!host_.printer_ownership(id, *printer_, true, e))
     return false;
   i->owns_printer = true;
@@ -425,10 +494,13 @@ bool PodunkDialogueRootOwner::begin(FieldObjectId id, uint32_t generation,
 }
 bool PodunkDialogueRootOwner::phrase_begin(FieldObjectId id, std::string &e) {
   auto *i = live(id, true, e);
-  if (!i || !i->running || !i->owns_printer || i->phrase_prepared ||
-      programme_->programme().context().dialogue_object != id)
+  if (!i || !i->running || !i->owns_printer || i->phrase_prepared)
     return reject(e,
                   "DialogueRoot phrase reset lacks actual running programme");
+  PodunkDialogueProgrammeContext context;
+  if(!programme_||!programme_->dialogue_context(context,e))return false;
+  if(context.dialogue_object!=id)
+    return reject(e,"DialogueRoot phrase reset lacks actual running programme");
   auto *visual = dialogue_->visual(id);
   if (!visual || !timers_->state(i->state.references[9]) ||
       !timers_->stop(i->state.references[9], e) ||
@@ -448,11 +520,13 @@ bool PodunkDialogueRootOwner::presented_text(FieldObjectId id,
                                              const FieldProgrammeText &text,
                                              std::string &e) {
   auto *i = live(id, true, e);
-  if (!i || !i->running || !i->phrase_prepared ||
-      !printer_->dialogue_active() ||
-      programme_->programme().context().dialogue_object != id)
+  if (!i || !i->running || !i->phrase_prepared || !printer_->dialogue_active())
     return reject(e,
                   "DialogueRoot presented text precedes source phrase reset");
+  PodunkDialogueProgrammeContext context;
+  if(!programme_||!programme_->dialogue_context(context,e))return false;
+  if(context.dialogue_object!=id)
+    return reject(e,"DialogueRoot presented text precedes source phrase reset");
   if (!i->box_shown) {
     auto *ui = dialogue_->ui(id);
     auto *tree = host_.tree(id);
@@ -478,14 +552,58 @@ bool PodunkDialogueRootOwner::flush_audio(Instance &i, std::string &e) {
   e.clear();
   return true;
 }
+bool PodunkDialogueRootOwner::presented_text(FieldObjectId id,RoomView room,
+    uint32_t command,const HouseDialogue &text,std::string &e){
+  auto *i=live(id,true,e);
+  if(!i||!i->running||!i->phrase_prepared||!i->owns_printer||!printer_->dialogue_active())
+    return reject(e,"DialogueRoot House text precedes actual source phrase reset");
+  PodunkDialogueProgrammeContext context;
+  if(!programme_||!programme_->dialogue_context(context,e))return false;
+  if(context.dialogue_object!=id||context.generation!=i->generation)
+    return reject(e,"DialogueRoot House text current Room owner/generation differs");
+  if(!i->box_shown){
+    auto *ui=dialogue_->ui(id);auto *tree=host_.tree(id);
+    if(!ui||!tree||!ui->play(i->state.references[6],data_->open_animation(),e)||
+       !tree->set_input_process(id,0,true,e)||!tree->set_process(id,true,true,e))return false;
+  }
+  if(!flush_audio(*i,e)||!dialogue_->presented_text(id,room,command,text,e))return false;
+  i->phrase_prepared=false;i->finished=false;i->stopped=printer_->dialogue_stopped();
+  i->box_shown=true;e.clear();return true;
+}
+bool PodunkDialogueRootOwner::observe_instances(std::vector<PodunkDialogueRootSourceState> &out,
+    std::string &e)const{
+  if(!data_||!data_->valid()||!recipe_||!recipe_->valid()||!printer_||!host_.tree)
+    return reject(e,"DialogueRoot source receipt actual owner unavailable");
+  std::vector<PodunkDialogueRootSourceState> result;
+  for(const auto &entry:instances_){
+    const auto &i=entry.second;PodunkDialogueRootSourceState observed;
+    if(!state(entry.first,observed.script,e))return false;
+    if(observed.script.printer!=printer_||!same(observed.script.identity,data_->identity()))
+      return reject(e,"DialogueRoot source receipt script owner differs");
+    observed.generation=i.generation;observed.options=i.options;
+    observed.running=i.running;observed.owns_printer=i.owns_printer;observed.closing=i.closing;
+    observed.choices_shown=i.choices_shown;observed.phrase_prepared=i.phrase_prepared;
+    result.push_back(std::move(observed));
+  }
+  out=std::move(result);e.clear();return true;
+}
+bool PodunkDialogueRootOwner::source_frame(FieldObjectId id,PodunkDialogueFrame &out,
+    std::string &e)const{
+  PodunkDialogueScriptState actual;
+  if(!state(id,actual,e)||!host_.frame||!host_.frame(id,out,e)||
+     !std::isfinite(out.delta)||out.delta<0)
+    return reject(e,"DialogueRoot actual source notification frame unavailable");
+  e.clear();return true;
+}
 bool PodunkDialogueRootOwner::finish(Instance &i, std::string &e) {
   i.finished = true;
   auto *tree = host_.tree(i.state.object);
   auto *visual = dialogue_->visual(i.state.object);
   if (!tree || !visual)
     return reject(e, "DialogueRoot source finish native owners absent");
-  if (programme_->programme().scheduler().status() ==
-      DialogueStatus::AwaitChoices) {
+  DialogueStatus status;
+  if(!programme_||!programme_->dialogue_status(status,e))return false;
+  if (status == DialogueStatus::AwaitChoices) {
     if ((choices_->phase() == DialogueChoicesPhase::WaitingText &&
          !programme_->text_completed(e)) ||
         !choices_->active() ||
@@ -558,7 +676,7 @@ bool PodunkDialogueRootOwner::input(Instance &i,
         if (!programme_->source_cursor_input(i.state.object, i.generation,
                                              index, next, cancel, e))
           return false;
-      } else if (!programme_->input({0, 0, next, cancel}, 0, e))
+      } else if (!programme_->advance(next, cancel, e))
         return false;
     }
   }
@@ -566,10 +684,12 @@ bool PodunkDialogueRootOwner::input(Instance &i,
 }
 bool PodunkDialogueRootOwner::text_completed(FieldObjectId id, std::string &e) {
   auto *i = live(id, true, e);
-  if (!i || !i->running || !i->owns_printer || i->finished ||
-      !printer_->dialogue_finished() ||
-      programme_->programme().context().dialogue_object != id)
+  if (!i || !i->running || !i->owns_printer || i->finished || !printer_->dialogue_finished())
     return reject(e, "DialogueRoot source finish callback is stale/duplicate");
+  PodunkDialogueProgrammeContext context;
+  if(!programme_||!programme_->dialogue_context(context,e))return false;
+  if(context.dialogue_object!=id)
+    return reject(e,"DialogueRoot source finish callback is stale/duplicate");
   return finish(*i, e);
 }
 bool PodunkDialogueRootOwner::wait_timeout(FieldObjectId id, std::string &e) {

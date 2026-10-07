@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "podunk_player_animation.hpp"
 #include <algorithm>
 #include <cmath>
@@ -1042,6 +1043,32 @@ bool PodunkPlayerAnimation::stop(bool reset, std::string &e) {
       animation_,
       process_mode_ ? "idle_process_internal" : "physics_process_internal", e);
 }
+bool PodunkPlayerAnimation::ladder_animation(FieldObjectId id,
+                                             std::string_view clip,
+                                             std::string &e) const {
+  if (id != animation_ || !live(e) || !ready_ || !clips_.count(std::string(clip)))
+    return fail(e, "Ladder original Player AnimationPlayer/clip absent");
+  e.clear();
+  return true;
+}
+bool PodunkPlayerAnimation::ladder_speed(FieldObjectId id, double value,
+                                        std::string &e) {
+  if (id != animation_)
+    return fail(e, "Ladder playback speed belongs to a foreign animator");
+  return playback_speed(id, value, e);
+}
+bool PodunkPlayerAnimation::playback_speed(FieldObjectId id, double value,
+                                          std::string &e) {
+  auto *owner = for_animation(id);
+  if (!owner || !owner->live(e) || !owner->ready_ || owner->frame_open_ ||
+      !std::isfinite(value) || !std::isfinite(float(value)))
+    return fail(e, "Native AnimationPlayer playback_speed owner/value rejected");
+  // advance() multiplies its original process delta by this same speed_.
+  // Keep the assigned clip, position, custom speed and process membership.
+  owner->speed_ = float(value);
+  e.clear();
+  return true;
+}
 bool PodunkPlayerAnimation::advance(float delta, bool paused, std::string &e) {
   if (!live(e) || !ready_ || !std::isfinite(delta) || delta < 0 || frame_open_)
     return fail(e,
@@ -1165,5 +1192,34 @@ bool PodunkPlayerAnimation::process(FieldObjectId id, FieldTreePhase phase,
   auto own = for_animation(id);
   return own ? own->process(phase, delta, paused, e)
              : fail(e, "Player native AnimationPlayer actual owner absent");
+}
+bool PodunkPlayerAnimation::check_rebind_tree(const FieldNodeTreeRuntime &next, std::string &e) const {
+  if (!data_ || effects_data_ || poisoned_ || frame_open_ || !ready_ || !registry_)
+    return fail(e, "Player animation transfer requires completed source frame/Ready owner");
+  auto checked = [&](FieldObjectId id) {
+    auto *descriptor = next.descriptor(id);
+    return descriptor && player_rebind_node(*data_, *registry_, next, id, descriptor->id, e);
+  };
+  if (!checked(player_) || !checked(animation_)) return false;
+  for (const auto &sprite : sprites_) if (!checked(sprite.first)) return false;
+  for (const auto &clip : clips_)
+    for (const auto &track : clip.second.tracks)
+      if (!checked(track.target)) return false;
+  for (const auto &cache : cache_order_) if (!checked(cache.first)) return false;
+  for (const auto &child : children_)
+    if (!child.second->check_rebind_tree(next, e)) return false;
+  return true;
+}
+void PodunkPlayerAnimation::commit_rebind_tree(FieldNodeTreeRuntime &next) {
+  tree_ = &next;
+  for (auto &child : children_) child.second->commit_rebind_tree(next);
+}
+bool PodunkPlayerAnimation::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!check_rebind_tree(next, e)) return false;
+  // Track addresses, cache traversal order, graph callbacks and clip clocks
+  // remain unchanged; only the borrowed Tree pointer follows the same IDs.
+  commit_rebind_tree(next);
+  e.clear();
+  return true;
 }
 } // namespace encore::ctr

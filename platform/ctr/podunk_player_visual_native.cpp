@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "podunk_player_visual_native.hpp"
 #include <algorithm>
 #include <cmath>
@@ -233,5 +234,15 @@ bool PodunkPlayerVisualNative::draw(const FieldTransform &viewport,bool snap,std
   C3D_TexSetFilter(image.tex,GPU_NEAREST,GPU_NEAREST);image.subtex=&sub;
   if(!C2D_DrawImageAtRotated(image,origin.x,origin.y,0,std::atan2(axis_x.y,axis_x.x),&tint,sx,sy))return fail(e,"Player native Sprite GPU draw rejected");
   e.clear();return true;
+}
+bool PodunkPlayerVisualNative::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  auto *descriptor = next.descriptor(object_);
+  if (!player_ || !registry_ || !state_.constructed ||
+      !descriptor || !player_rebind_node(*player_, *registry_, next,
+                                         object_, descriptor->id, e))
+    return fail(e, "Player native visual rebind requires original Ready Sprite");
+  tree_ = &next;
+  e.clear();
+  return true;
 }
 } // namespace encore::ctr

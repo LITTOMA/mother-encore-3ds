@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/field_object_signals.hpp"
+#include "encore/house_return_sources.hpp"
 #include "podunk_player_camera.hpp"
 #include "podunk_player_host.hpp"
 #include <tuple>
@@ -17,10 +18,18 @@ public:
                upstream::FieldGlobalRegistry &, upstream::FieldGeometrySpace &,
                upstream::FieldObjectSignals &, SourceObject, std::string &);
   bool bind_camera(PodunkPlayerCamera &, std::string &);
+  bool rebind_tree(upstream::FieldNodeTreeRuntime &, SourceObject, std::string &);
+  // Exact loaded House closure, after same-space replacement and real old
+  // scene deletion. This admits no node, script phase or monitor by itself.
+  bool bind_house_geometry(const upstream::HouseReturnSources &,
+      const upstream::FieldNodeTreeRuntime &old_tree,
+      upstream::FieldObjectId old_root, upstream::FieldObjectId house_root,
+      std::string &);
   const upstream::FieldGlobalRegistry *registry() const override {
     return registry_;
   }
   const upstream::FieldNodeTreeRuntime *tree() const override { return tree_; }
+  const upstream::FieldGeometrySpace *geometry_space() const { return space_; }
   bool construct(upstream::FieldObjectId, const upstream::FieldNodeDescriptor &,
                  const upstream::PlayerInitializationData &,
                  std::string &) override;
@@ -104,6 +113,9 @@ private:
   upstream::FieldObjectSignals *signals_ = nullptr;
   PodunkPlayerCamera *camera_ = nullptr;
   SourceObject source_;
+  const upstream::HouseReturnSources *house_sources_ = nullptr;
+  const upstream::FieldNodeTreeRuntime *house_old_tree_ = nullptr;
+  upstream::FieldObjectId house_old_root_ = 0, house_root_ = 0;
   std::map<upstream::FieldObjectId, Native> natives_;
   std::map<upstream::FieldObjectId, Monitor> monitors_;
   std::map<upstream::FieldObjectId, upstream::FieldGeometryContact> grass_monitors_;

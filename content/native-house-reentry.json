@@ -1,0 +1,1480 @@
+{
+  "schema": 1,
+  "format": 2,
+  "family": 1162739829,
+  "capability": 1,
+  "rules": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene_id": 869293449,
+  "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+    "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+    "Scripts/global/SceneTransition.gd": "67e73371a00e7e12497d9eada28c2cb9238e5aad0b6ee93612393cff7c937270",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Maps/podunk/Ninten_s room.gd": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+    "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+    "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+    "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+    "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+    "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+    "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+    "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+    "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+    "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+    "Graphics/Character Sprites/Npcs/misc/Phone/main.png": "16560704ede2d4ffced890a52a2d7e86a402fea1e0030908099c64c5c83d3691",
+    "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+    "Graphics/Objects/Common/Briefcase.png": "4d2a5353e50e2b6d51ad00ce24dd1f8653e621ac52e16d54a4bfc7e6bc99160d",
+    "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+    "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+    "Graphics/Objects/Doors/Door_Dark.png": "f7b29bcb0c9e09fbba743f9dc56ade9e8936ca53d4b9ae312bf050baa0248bf4",
+    "Graphics/Objects/Doors/Door_Dark_Locked.png": "eb69fd026947b3d2194202cec379afcce8263a642a696c7fd059821bea37ae4f",
+    "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+    "Graphics/Rooms/Podunk/Ninten's House.png": "28bc4515771b8032fcf47da52a34e163bb03d870d8e013f7abeef9acef1c1717",
+    "Graphics/Tilesets/TilNintensHouse.png": "48aecf0242f57925e9abb87d5e132f63da157fad9a7bef3e9e48901be2b8d023",
+    "Graphics/Tilesets/TilPodunkInteriors.png": "4516402154cfd071a5d906391c8e3379d254ce57d774cabf32b89d7ae19010b6",
+    "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+    "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+    "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+    "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+    "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+    "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+    "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+    "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+    "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Nodes/Reusables/phone.tscn": "438148cd45e1a9286265fe897d0c9d5b4997601814f09fb9467d16ed7a621626",
+    "Nodes/Reusables/roomshaker.tscn": "8ec240a81068948aee2c53f4ebbbb5b80cef046c357b10b55727b035a91b29ea",
+    "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+    "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+    "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+    "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+    "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+    "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+    "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+    "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+    "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+    "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+    "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+    "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+    "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+    "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+    "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+    "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+    "Scripts/Main/roomshaker.gd": "5dd1c51a8b97970296c9bc0e5e7fe85d7f44f4a4e050cc823e40c785463ca005",
+    "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+    "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+    "Scripts/misc/Anim_start.gd": "29a84d454811c197bf3a69c4c043a8f89d5e12ba80fbbdfa9954384b56295e11",
+    "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+    "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+    "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+    "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+    "Tilesets/Interior.tres": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+  },
+  "tilemaps": [
+    {
+      "id": 4140339158,
+      "node": "Below",
+      "resource": "res://Tilesets/Interior.tres",
+      "cell_count": 1,
+      "cell_sha256": "936b197a47c0cba89f3e980536349be65da0550702f5697114bb9d1766473035",
+      "layer": 5,
+      "mask": 1,
+      "tiles": [
+        {
+          "id": 30,
+          "present": false,
+          "shape": null,
+          "shapes": []
+        }
+      ],
+      "native_collision_parts": 0,
+      "resource_source": "Tilesets/Interior.tres",
+      "resource_sha256": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+    },
+    {
+      "id": 3431819630,
+      "node": "Objects",
+      "resource": "res://Maps/podunk/Nintens House.tscn::101",
+      "cell_count": 14,
+      "cell_sha256": "d4a743651f034bf4e1e436ad4dd62fe6acecb4af6477c137622c0afa3e3d5218",
+      "layer": 1,
+      "mask": 1,
+      "tiles": [
+        {
+          "id": 0,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 1,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 2,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 3,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 4,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 5,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 6,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 7,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 8,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 9,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 10,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 11,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 12,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        },
+        {
+          "id": 13,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        }
+      ],
+      "native_collision_parts": 0,
+      "resource_source": "Maps/podunk/Nintens House.tscn",
+      "resource_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
+    },
+    {
+      "id": 4231956636,
+      "node": "Above",
+      "resource": "res://Tilesets/Interior.tres",
+      "cell_count": 276,
+      "cell_sha256": "6bbf36cc699fad70973b0b022ec8666e7e72aebfbe55874c3287873eb82dfaa2",
+      "layer": 5,
+      "mask": 1,
+      "tiles": [
+        {
+          "id": 14,
+          "present": true,
+          "shape": null,
+          "shapes": []
+        }
+      ],
+      "native_collision_parts": 0,
+      "resource_source": "Tilesets/Interior.tres",
+      "resource_sha256": "c0bcaaf401f4ce8cd9aa2e04754cb60d7869b9a52df0b1eb7d6efa7b6dce78b3"
+    }
+  ],
+  "dependencies": {
+    "content/podunk-door.json": "6a847ad9a383c5b668ebe21117a8a1e9736e959bb00ac40ebf4c63b2d948f994",
+    "content/native-opening.json": "7465d226ae3a8e8ee404be64668edba67fbc390c81e00c04471ed098ac11f474",
+    "content/native-house.json": "fba1a433cc91e2cbc7c4b951188bb01a329322b76ddae401a887793b86a9d75d",
+    "content/house-source-bindings.json": "1966ad9b2cd76cbbb6a382c304f7eba785d533b44d916d77e53ee57fb11b755a",
+    "content/native-house-geometry.json": "c62b89237db59d8f69180fa51c18c9a84e873608acee86844f3f44a4a9a8a037"
+  },
+  "packs": [
+    {
+      "role": 1,
+      "path": "data/opening.encroom",
+      "size": 73704,
+      "sha256": "78efae6ae76616bdad04833050262a65de7e137d369df7c335980db3748e22a7"
+    },
+    {
+      "role": 2,
+      "path": "data/opening.enchouse",
+      "size": 25688,
+      "sha256": "1034f69bab8858daad5f8aeca5508dfc200e124581df3372e0bb71ffb5d91834"
+    }
+  ],
+  "door_ir_sha256": "6a847ad9a383c5b668ebe21117a8a1e9736e959bb00ac40ebf4c63b2d948f994",
+  "source_scene": "Maps/podunk/podunk.tscn",
+  "target_scene": "Maps/podunk/Nintens House.tscn",
+  "door_id": 514706179,
+  "target_root_name": "Ninten's House",
+  "source_region": "Podunk",
+  "target_region": "Podunk",
+  "player_parent": "Objects",
+  "position": [
+    136,
+    809.0
+  ],
+  "direction": [
+    0.0,
+    -1.0
+  ],
+  "empty_target_params": true,
+  "body_signal": "body_entered",
+  "body_method": "_on_Door_body_entered",
+  "door_signals": [
+    "entered",
+    "moved_player",
+    "done"
+  ],
+  "scene_changed_signal": "scene_changed",
+  "deferred_method": "_deferred_goto_scene",
+  "area_left_signal": "area_left",
+  "area_left_arguments": 1,
+  "party_changed_signal": "party_changed",
+  "party_changed_wait_signal": "idle_frame",
+  "party_changed_method": "create_party_followers",
+  "party_changed_body_sha256": "73b79291a55612e4d78dd86ed53e577cb77f2fd40c8c5474bf66896c41c1b4e2",
+  "steps": [
+    {
+      "step": 0,
+      "source": "remove_child(global.get_player())"
+    },
+    {
+      "step": 1,
+      "source": "set_collisions(false)"
+    },
+    {
+      "step": 2,
+      "source": "for node in global.get_persistent():"
+    },
+    {
+      "step": 3,
+      "source": "var new_scene = ResourceLoader.load(path).instance()"
+    },
+    {
+      "step": 4,
+      "source": "global.currentScene.leave_for(new_scene)"
+    },
+    {
+      "step": 5,
+      "source": "global.currentScene.free()"
+    },
+    {
+      "step": 6,
+      "source": "global.currentScene = new_scene"
+    },
+    {
+      "step": 7,
+      "source": "global.currentScene.callv(\"init_params\", params)"
+    },
+    {
+      "step": 8,
+      "source": "get_tree().get_root().add_child(global.currentScene)"
+    },
+    {
+      "step": 9,
+      "source": "global.get_current_scene_player_node().add_child(global.get_player())"
+    },
+    {
+      "step": 10,
+      "source": "global.create_party_followers()"
+    },
+    {
+      "step": 11,
+      "source": "global.set_party_position(player_pos, player_dir)"
+    },
+    {
+      "step": 12,
+      "source": "global.get_current_scene_player_node().add_child(node)"
+    },
+    {
+      "step": 13,
+      "source": "get_tree().set_current_scene(global.currentScene)"
+    },
+    {
+      "step": 14,
+      "source": "uiManager.update_key_indicator()"
+    },
+    {
+      "step": 15,
+      "source": "global.get_player().set_collisions(true)"
+    }
+  ],
+  "ready": {
+    "script": "Scripts/Main/RoomTypes/AreaRoom.gd",
+    "visit_method": "_update_visit_flags",
+    "flying_method": "_update_flying_man_status",
+    "visit_flag": "visited_podunk",
+    "magicant_region": "Magicant",
+    "flying_flag": "flying_man_in_party",
+    "flying_character": "flyingman",
+    "party_npcs_member": "partyNpcs",
+    "switch_signal": "synced_switches_changed",
+    "switch_method": "_on_switches_changed_state"
+  },
+  "flags": [
+    {
+      "index": 0,
+      "id": 1,
+      "name": "doll_melody"
+    },
+    {
+      "index": 1,
+      "id": 2,
+      "name": "canary_melody"
+    },
+    {
+      "index": 2,
+      "id": 3,
+      "name": "monkey_melody"
+    },
+    {
+      "index": 3,
+      "id": 4,
+      "name": "piano_melody"
+    },
+    {
+      "index": 4,
+      "id": 5,
+      "name": "cactus_melody"
+    },
+    {
+      "index": 5,
+      "id": 6,
+      "name": "dragon_melody"
+    },
+    {
+      "index": 6,
+      "id": 7,
+      "name": "eve_melody"
+    },
+    {
+      "index": 7,
+      "id": 8,
+      "name": "grave_melody"
+    },
+    {
+      "index": 8,
+      "id": 9,
+      "name": "switch_leader"
+    },
+    {
+      "index": 9,
+      "id": 10,
+      "name": "bat"
+    },
+    {
+      "index": 10,
+      "id": 11,
+      "name": "energy_beam"
+    },
+    {
+      "index": 11,
+      "id": 12,
+      "name": "eagle_feather"
+    },
+    {
+      "index": 12,
+      "id": 13,
+      "name": "encore_tutorial"
+    },
+    {
+      "index": 13,
+      "id": 14,
+      "name": "used_encore"
+    },
+    {
+      "index": 14,
+      "id": 15,
+      "name": "earned_cash"
+    },
+    {
+      "index": 15,
+      "id": 16,
+      "name": "good_morning"
+    },
+    {
+      "index": 16,
+      "id": 17,
+      "name": "saved"
+    },
+    {
+      "index": 17,
+      "id": 18,
+      "name": "npc_disappear_1"
+    },
+    {
+      "index": 18,
+      "id": 19,
+      "name": "npc_dialog_1"
+    },
+    {
+      "index": 19,
+      "id": 20,
+      "name": "npc_dialog_2"
+    },
+    {
+      "index": 20,
+      "id": 21,
+      "name": "visited_podunk"
+    },
+    {
+      "index": 21,
+      "id": 22,
+      "name": "visited_magicant"
+    },
+    {
+      "index": 22,
+      "id": 23,
+      "name": "visited_merrysville"
+    },
+    {
+      "index": 23,
+      "id": 24,
+      "name": "visited_twinkle_elementary"
+    },
+    {
+      "index": 24,
+      "id": 25,
+      "name": "visited_reindeer"
+    },
+    {
+      "index": 25,
+      "id": 26,
+      "name": "visited_spookane"
+    },
+    {
+      "index": 26,
+      "id": 27,
+      "name": "visited_snowman"
+    },
+    {
+      "index": 27,
+      "id": 28,
+      "name": "visited_yucca"
+    },
+    {
+      "index": 28,
+      "id": 29,
+      "name": "visited_youngtown"
+    },
+    {
+      "index": 29,
+      "id": 30,
+      "name": "visited_ellay"
+    },
+    {
+      "index": 30,
+      "id": 31,
+      "name": "visited_mtitoi"
+    },
+    {
+      "index": 31,
+      "id": 32,
+      "name": "pippi_reunion"
+    },
+    {
+      "index": 32,
+      "id": 33,
+      "name": "pippi_met_lloyd"
+    },
+    {
+      "index": 33,
+      "id": 34,
+      "name": "pippi_met_ana"
+    },
+    {
+      "index": 34,
+      "id": 35,
+      "name": "pippi_met_teddy"
+    },
+    {
+      "index": 35,
+      "id": 36,
+      "name": "pippi_rocket"
+    },
+    {
+      "index": 36,
+      "id": 37,
+      "name": "lloyd_magicant"
+    },
+    {
+      "index": 37,
+      "id": 38,
+      "name": "ana_magicant"
+    },
+    {
+      "index": 38,
+      "id": 39,
+      "name": "teddy_magicant"
+    },
+    {
+      "index": 39,
+      "id": 40,
+      "name": "poltergeist"
+    },
+    {
+      "index": 40,
+      "id": 41,
+      "name": "mimmie_door_opened"
+    },
+    {
+      "index": 41,
+      "id": 42,
+      "name": "doll_attack"
+    },
+    {
+      "index": 42,
+      "id": 43,
+      "name": "pillow_attack"
+    },
+    {
+      "index": 43,
+      "id": 44,
+      "name": "minnie_leave"
+    },
+    {
+      "index": 44,
+      "id": 45,
+      "name": "minnie_door"
+    },
+    {
+      "index": 45,
+      "id": 46,
+      "name": "doll_defeated"
+    },
+    {
+      "index": 46,
+      "id": 47,
+      "name": "phone_ring"
+    },
+    {
+      "index": 47,
+      "id": 48,
+      "name": "talked_to_dad"
+    },
+    {
+      "index": 48,
+      "id": 49,
+      "name": "mimmie_ask_key"
+    },
+    {
+      "index": 49,
+      "id": 50,
+      "name": "carol_ask_key"
+    },
+    {
+      "index": 50,
+      "id": 51,
+      "name": "mick_scratch"
+    },
+    {
+      "index": 51,
+      "id": 52,
+      "name": "mick_telepathy"
+    },
+    {
+      "index": 52,
+      "id": 53,
+      "name": "ninten_basement_door"
+    },
+    {
+      "index": 53,
+      "id": 54,
+      "name": "got_juice"
+    },
+    {
+      "index": 54,
+      "id": 55,
+      "name": "got_diary"
+    },
+    {
+      "index": 55,
+      "id": 56,
+      "name": "got_dog_treats"
+    },
+    {
+      "index": 56,
+      "id": 57,
+      "name": "got_asthma_spray"
+    },
+    {
+      "index": 57,
+      "id": 58,
+      "name": "gave_treats"
+    },
+    {
+      "index": 58,
+      "id": 59,
+      "name": "beat_dog_bridge"
+    },
+    {
+      "index": 59,
+      "id": 60,
+      "name": "pippis_mom_call"
+    },
+    {
+      "index": 60,
+      "id": 61,
+      "name": "pippis_mom_help"
+    },
+    {
+      "index": 61,
+      "id": 62,
+      "name": "disguised_zombie_defeated"
+    },
+    {
+      "index": 62,
+      "id": 63,
+      "name": "cem_roots_grown"
+    },
+    {
+      "index": 63,
+      "id": 64,
+      "name": "got_shovel"
+    },
+    {
+      "index": 64,
+      "id": 65,
+      "name": "returned_shovel"
+    },
+    {
+      "index": 65,
+      "id": 66,
+      "name": "hidden_entrance_opened"
+    },
+    {
+      "index": 66,
+      "id": 67,
+      "name": "pippi_fight"
+    },
+    {
+      "index": 67,
+      "id": 68,
+      "name": "pippi_fought"
+    },
+    {
+      "index": 68,
+      "id": 69,
+      "name": "pippi_rescued"
+    },
+    {
+      "index": 69,
+      "id": 70,
+      "name": "courage_badge_received"
+    },
+    {
+      "index": 70,
+      "id": 71,
+      "name": "church_door_opened"
+    },
+    {
+      "index": 71,
+      "id": 72,
+      "name": "church_exited"
+    },
+    {
+      "index": 72,
+      "id": 73,
+      "name": "canary_found"
+    },
+    {
+      "index": 73,
+      "id": 74,
+      "name": "wally_attack"
+    },
+    {
+      "index": 74,
+      "id": 75,
+      "name": "wally_fought"
+    },
+    {
+      "index": 75,
+      "id": 76,
+      "name": "wally_defeat"
+    },
+    {
+      "index": 76,
+      "id": 77,
+      "name": "pippi_reunite"
+    },
+    {
+      "index": 77,
+      "id": 78,
+      "name": "alfred_song"
+    },
+    {
+      "index": 78,
+      "id": 79,
+      "name": "leave_canary_village"
+    },
+    {
+      "index": 79,
+      "id": 80,
+      "name": "pippi_delivered"
+    },
+    {
+      "index": 80,
+      "id": 81,
+      "name": "zoo_key_stolen"
+    },
+    {
+      "index": 81,
+      "id": 82,
+      "name": "starman_jr_fought"
+    },
+    {
+      "index": 82,
+      "id": 83,
+      "name": "zoo_freed"
+    },
+    {
+      "index": 83,
+      "id": 84,
+      "name": "monkey_apologize"
+    },
+    {
+      "index": 84,
+      "id": 85,
+      "name": "guard_moved"
+    },
+    {
+      "index": 85,
+      "id": 86,
+      "name": "ninten_family_goodbye"
+    },
+    {
+      "index": 86,
+      "id": 87,
+      "name": "got_magic_candy"
+    },
+    {
+      "index": 87,
+      "id": 88,
+      "name": "got_magic_ribbon"
+    },
+    {
+      "index": 88,
+      "id": 89,
+      "name": "lent_cash_card"
+    },
+    {
+      "index": 89,
+      "id": 90,
+      "name": "got_big_bag"
+    },
+    {
+      "index": 90,
+      "id": 91,
+      "name": "met_happiness_guy"
+    },
+    {
+      "index": 91,
+      "id": 92,
+      "name": "met_guy_who_talks_about_how_you_cant_part_if_you_havent_met"
+    },
+    {
+      "index": 92,
+      "id": 93,
+      "name": "got_nicknamed"
+    },
+    {
+      "index": 93,
+      "id": 94,
+      "name": "slept_at_spoon_guys_place"
+    },
+    {
+      "index": 94,
+      "id": 95,
+      "name": "guard_riddle_solved"
+    },
+    {
+      "index": 95,
+      "id": 96,
+      "name": "fountain_scouts_met"
+    },
+    {
+      "index": 96,
+      "id": 97,
+      "name": "marys_story_learned"
+    },
+    {
+      "index": 97,
+      "id": 98,
+      "name": "enteredwell"
+    },
+    {
+      "index": 98,
+      "id": 99,
+      "name": "first_flying_man"
+    },
+    {
+      "index": 99,
+      "id": 100,
+      "name": "flying_man_in_party"
+    },
+    {
+      "index": 100,
+      "id": 101,
+      "name": "flying_man_1_joined"
+    },
+    {
+      "index": 101,
+      "id": 102,
+      "name": "flying_man_2_joined"
+    },
+    {
+      "index": 102,
+      "id": 103,
+      "name": "flying_man_3_joined"
+    },
+    {
+      "index": 103,
+      "id": 104,
+      "name": "flying_man_4_joined"
+    },
+    {
+      "index": 104,
+      "id": 105,
+      "name": "flying_man_5_joined"
+    },
+    {
+      "index": 105,
+      "id": 106,
+      "name": "onyx_hook_found"
+    },
+    {
+      "index": 106,
+      "id": 107,
+      "name": "fish_attack"
+    },
+    {
+      "index": 107,
+      "id": 108,
+      "name": "fish_defeat"
+    },
+    {
+      "index": 108,
+      "id": 109,
+      "name": "forgotten_man_1"
+    },
+    {
+      "index": 109,
+      "id": 110,
+      "name": "forgotten_man_2"
+    },
+    {
+      "index": 110,
+      "id": 111,
+      "name": "forgotten_man_3"
+    },
+    {
+      "index": 111,
+      "id": 112,
+      "name": "forgotten_man_4"
+    },
+    {
+      "index": 112,
+      "id": 113,
+      "name": "forgotten_man_5"
+    },
+    {
+      "index": 113,
+      "id": 114,
+      "name": "roof_door_checked"
+    },
+    {
+      "index": 114,
+      "id": 115,
+      "name": "janitor_cutscene_finished"
+    },
+    {
+      "index": 115,
+      "id": 116,
+      "name": "lloyd_roof_1"
+    },
+    {
+      "index": 116,
+      "id": 117,
+      "name": "rat_king_1"
+    },
+    {
+      "index": 117,
+      "id": 118,
+      "name": "rat_king_2"
+    },
+    {
+      "index": 118,
+      "id": 119,
+      "name": "sweet_factory_key_1"
+    },
+    {
+      "index": 119,
+      "id": 120,
+      "name": "got_br_wings"
+    },
+    {
+      "index": 120,
+      "id": 121,
+      "name": "got_br_head"
+    },
+    {
+      "index": 121,
+      "id": 122,
+      "name": "br_progress_1"
+    },
+    {
+      "index": 122,
+      "id": 123,
+      "name": "br_progress_1_arrived"
+    },
+    {
+      "index": 123,
+      "id": 124,
+      "name": "br_wings_attached"
+    },
+    {
+      "index": 124,
+      "id": 125,
+      "name": "br_progress_2"
+    },
+    {
+      "index": 125,
+      "id": 126,
+      "name": "br_progress_2_arrived"
+    },
+    {
+      "index": 126,
+      "id": 127,
+      "name": "br_head_attached"
+    },
+    {
+      "index": 127,
+      "id": 128,
+      "name": "br_progress_3"
+    },
+    {
+      "index": 128,
+      "id": 129,
+      "name": "br_progress_3_arrived"
+    },
+    {
+      "index": 129,
+      "id": 130,
+      "name": "br_finishing_touch"
+    },
+    {
+      "index": 130,
+      "id": 131,
+      "name": "rat_king_attack"
+    },
+    {
+      "index": 131,
+      "id": 132,
+      "name": "rat_king_defeat"
+    },
+    {
+      "index": 132,
+      "id": 133,
+      "name": "rat_king_disappear"
+    },
+    {
+      "index": 133,
+      "id": 134,
+      "name": "bottle_rocket_found"
+    },
+    {
+      "index": 134,
+      "id": 135,
+      "name": "sweet_factory_bomb_chain"
+    },
+    {
+      "index": 135,
+      "id": 136,
+      "name": "sweet_factory_exit_open"
+    },
+    {
+      "index": 136,
+      "id": 137,
+      "name": "lloyd_befriended"
+    },
+    {
+      "index": 137,
+      "id": 138,
+      "name": "lab_destroyed"
+    },
+    {
+      "index": 138,
+      "id": 139,
+      "name": "missile_explosion"
+    },
+    {
+      "index": 139,
+      "id": 140,
+      "name": "missile_damage_seen"
+    },
+    {
+      "index": 140,
+      "id": 141,
+      "name": "weird_teacher_appear"
+    },
+    {
+      "index": 141,
+      "id": 142,
+      "name": "weird_teacher_alt_dialogue"
+    },
+    {
+      "index": 142,
+      "id": 143,
+      "name": "weird_teacher_real_rocket_launched"
+    },
+    {
+      "index": 143,
+      "id": 144,
+      "name": "got_factory_pass"
+    },
+    {
+      "index": 144,
+      "id": 145,
+      "name": "guard_dog_beaten"
+    },
+    {
+      "index": 145,
+      "id": 146,
+      "name": "drdistorto_1"
+    },
+    {
+      "index": 146,
+      "id": 147,
+      "name": "drdistorto_2"
+    },
+    {
+      "index": 147,
+      "id": 148,
+      "name": "drdistorto_3"
+    },
+    {
+      "index": 148,
+      "id": 149,
+      "name": "drdistorto_4"
+    },
+    {
+      "index": 149,
+      "id": 150,
+      "name": "computer_left_hacked"
+    },
+    {
+      "index": 150,
+      "id": 151,
+      "name": "computer_right_hacked"
+    },
+    {
+      "index": 151,
+      "id": 152,
+      "name": "computers_all_hacked"
+    },
+    {
+      "index": 152,
+      "id": 153,
+      "name": "franklin_badge_found"
+    },
+    {
+      "index": 153,
+      "id": 154,
+      "name": "drdistorto_attack"
+    },
+    {
+      "index": 154,
+      "id": 155,
+      "name": "drdistorto_defeat"
+    },
+    {
+      "index": 155,
+      "id": 156,
+      "name": "rocket_launched"
+    },
+    {
+      "index": 156,
+      "id": 157,
+      "name": "drdistorto_disappear"
+    },
+    {
+      "index": 157,
+      "id": 158,
+      "name": "lloyd_kitchen"
+    },
+    {
+      "index": 158,
+      "id": 159,
+      "name": "fixed_merrysville_road_bridge"
+    },
+    {
+      "index": 159,
+      "id": 160,
+      "name": "lloyd_mom_goodbye"
+    },
+    {
+      "index": 160,
+      "id": 161,
+      "name": "train_to_reindeer"
+    },
+    {
+      "index": 161,
+      "id": 162,
+      "name": "met_arms_dealer"
+    },
+    {
+      "index": 162,
+      "id": 163,
+      "name": "received_swindler_money"
+    },
+    {
+      "index": 163,
+      "id": 164,
+      "name": "donated_to_charity"
+    },
+    {
+      "index": 164,
+      "id": 165,
+      "name": "found_ana_hat"
+    },
+    {
+      "index": 165,
+      "id": 166,
+      "name": "magicant_second_visit"
+    },
+    {
+      "index": 166,
+      "id": 167,
+      "name": "wally2_attack"
+    },
+    {
+      "index": 167,
+      "id": 168,
+      "name": "wally2_defeat"
+    },
+    {
+      "index": 168,
+      "id": 169,
+      "name": "lloyd_asleep"
+    },
+    {
+      "index": 169,
+      "id": 170,
+      "name": "ana_befriended"
+    },
+    {
+      "index": 170,
+      "id": 171,
+      "name": "nancy_attack"
+    },
+    {
+      "index": 171,
+      "id": 172,
+      "name": "nancy_defeat"
+    },
+    {
+      "index": 172,
+      "id": 173,
+      "name": "magicant_third_visit"
+    },
+    {
+      "index": 173,
+      "id": 174,
+      "name": "giantrobot1_attack"
+    },
+    {
+      "index": 174,
+      "id": 175,
+      "name": "giantrobot1_defeat"
+    },
+    {
+      "index": 175,
+      "id": 176,
+      "name": "magicant_fourth_visit"
+    },
+    {
+      "index": 176,
+      "id": 177,
+      "name": "magicant_fifth_visit"
+    },
+    {
+      "index": 177,
+      "id": 178,
+      "name": "magicant_sixth_visit"
+    }
+  ],
+  "actors": [
+    {
+      "house_index": 0,
+      "room_index": 5,
+      "id": 6,
+      "body": 9,
+      "node": "Objects/npc",
+      "position": [
+        192.0,
+        704.0
+      ],
+      "direction": [
+        0,
+        1
+      ]
+    },
+    {
+      "house_index": 1,
+      "room_index": 3,
+      "id": 4,
+      "body": 10,
+      "node": "Objects/npc2",
+      "position": [
+        120.0,
+        88.0
+      ],
+      "direction": [
+        0,
+        1
+      ]
+    },
+    {
+      "house_index": 2,
+      "room_index": 2,
+      "id": 3,
+      "body": 15,
+      "node": "Objects/npcdoll",
+      "position": [
+        40.0,
+        40.0
+      ],
+      "direction": [
+        0,
+        1
+      ]
+    },
+    {
+      "house_index": 3,
+      "room_index": 4,
+      "id": 5,
+      "body": 11,
+      "node": "Objects/npc3",
+      "position": [
+        472.0,
+        88.0
+      ],
+      "direction": [
+        0,
+        1
+      ]
+    }
+  ],
+  "bodies": [
+    {
+      "index": 0,
+      "id": 1,
+      "node": "Below/Openable Door/StaticBody2D"
+    },
+    {
+      "index": 1,
+      "id": 2,
+      "node": "Below/Openable Door/NonPlayerStaticBody2D"
+    },
+    {
+      "index": 2,
+      "id": 3,
+      "node": "Below/Openable Door2/StaticBody2D"
+    },
+    {
+      "index": 3,
+      "id": 4,
+      "node": "Below/Openable Door2/NonPlayerStaticBody2D"
+    },
+    {
+      "index": 4,
+      "id": 5,
+      "node": "Below/Openable Door3/StaticBody2D"
+    },
+    {
+      "index": 5,
+      "id": 6,
+      "node": "Below/Openable Door3/NonPlayerStaticBody2D"
+    },
+    {
+      "index": 6,
+      "id": 7,
+      "node": "Below/Openable Door4/StaticBody2D"
+    },
+    {
+      "index": 7,
+      "id": 8,
+      "node": "Below/Openable Door4/NonPlayerStaticBody2D"
+    },
+    {
+      "index": 8,
+      "id": 9,
+      "node": "Objects/npc"
+    },
+    {
+      "index": 9,
+      "id": 10,
+      "node": "Objects/npc2"
+    },
+    {
+      "index": 10,
+      "id": 11,
+      "node": "Objects/npc3"
+    },
+    {
+      "index": 11,
+      "id": 12,
+      "node": "Objects/pillow"
+    },
+    {
+      "index": 12,
+      "id": 13,
+      "node": "Objects/Phone/StaticBody2D"
+    },
+    {
+      "index": 13,
+      "id": 14,
+      "node": "Objects/lamp"
+    },
+    {
+      "index": 14,
+      "id": 15,
+      "node": "Objects/npcdoll"
+    },
+    {
+      "index": 15,
+      "id": 16,
+      "node": "Objects/Present1/StaticBody2D"
+    },
+    {
+      "index": 16,
+      "id": 17,
+      "node": "Objects/Present2/StaticBody2D"
+    },
+    {
+      "index": 17,
+      "id": 18,
+      "node": "Objects/Present4/StaticBody2D"
+    },
+    {
+      "index": 18,
+      "id": 19,
+      "node": "Objects/Present3/StaticBody2D"
+    },
+    {
+      "index": 19,
+      "id": 20,
+      "node": "Collisions"
+    },
+    {
+      "index": 20,
+      "id": 21,
+      "node": "DoorBlock/Entrance"
+    }
+  ],
+  "landmarks": [
+    {
+      "node": "Poltergeist",
+      "appear": "",
+      "disappear": "doll_melody",
+      "delete_if_hidden": true
+    },
+    {
+      "node": "DoorBlock",
+      "appear": "",
+      "disappear": "talked_to_dad",
+      "delete_if_hidden": true
+    }
+  ],
+  "native_nodes": [
+    {
+      "id": 2861651240,
+      "parent": 0,
+      "owner_role": 1,
+      "node": ".",
+      "name": "Ninten's House",
+      "native_class": "Node2D",
+      "script": "Maps/podunk/Ninten_s room.gd",
+      "script_sha256": "18c4bdd0ef8c5ddd1874b09dbea953c640b1ffad9b8f02397c6236290e941300",
+      "local": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 3431819630,
+      "parent": 2861651240,
+      "owner_role": 2,
+      "node": "Objects",
+      "name": "Objects",
+      "native_class": "TileMap",
+      "script": "",
+      "script_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "local": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "admission": {
+    "full_cold_ready": false,
+    "read_only_pack": true,
+    "reset_initial_flags": false,
+    "reseed": false,
+    "new_player": false,
+    "notes": "Actual current flags and source object owners supplied by continuation. House source root extends AreaRoom; root has no Ready override. Its animation_finished battle callback is not run by return Ready. Existing bounded House/Room execute their original mapped behavior; this resource grants no additional unknown content."
+  }
+}

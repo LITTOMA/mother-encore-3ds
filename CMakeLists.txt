@@ -15,6 +15,9 @@ add_library(encore_core
     runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/field_dandelion.cpp
     runtime/podunk_bundle.cpp runtime/field_scene_sources.cpp runtime/field_scene_destination.cpp
     runtime/dialogue_actor_resource_data.cpp
+    runtime/house_reentry_data.cpp
+    runtime/house_return_sources.cpp
+    runtime/house_return_ladder.cpp
     runtime/field_scene_audio_data.cpp runtime/field_scene_signal_callbacks_data.cpp
     runtime/field_visibility_data.cpp
     runtime/field_npc_world_data.cpp runtime/field_npc_world_motion.cpp
@@ -26,6 +29,8 @@ add_library(encore_core
     runtime/player_preload_scenes_data.cpp
   runtime/player_named_sfx_data.cpp
   runtime/field_node_tree_door.cpp
+  runtime/field_node_tree_house.cpp
+  runtime/field_geometry_house.cpp
     runtime/audio_server_data.cpp
     runtime/audio_server.cpp
     runtime/field_scene_materials_data.cpp

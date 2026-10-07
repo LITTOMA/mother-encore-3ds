@@ -74,7 +74,7 @@ bool HouseUiContinuation::initialize(
   return true;
 }
 bool HouseUiContinuation::models(std::string &e) const {
-  if (!data_ || !registry_ || registry_->poisoned() || !sources_.world ||
+  if (reentry_failed_ || reentry_committing_ || !data_ || !registry_ || registry_->poisoned() || !sources_.world ||
       !sources_.world->healthy() || !sources_.battle || !sources_.outcome ||
       !sources_.commands || !sources_.commands->content().valid() ||
       !sources_.house || !sources_.dialogue ||
@@ -347,13 +347,185 @@ bool HouseUiContinuation::rebind_scene(const OpeningWorld &w,
                                        const HouseRuntime &h,
                                        const HousePresentation &p,
                                        std::string &e) {
-  if (!actual(binding_.object, e) || !w.healthy())
-    return fail(e, "House UI continuation destination ownership rejected");
-  sources_.world = &w;
-  sources_.house = &h;
-  sources_.dialogue = &p;
+  if (!actual(binding_.object, e) || !w.healthy() ||
+      &w!=sources_.world || &h!=sources_.house || &p!=sources_.dialogue)
+    return fail(e, "House UI scene replacement requires a checked House reentry ticket");
   e.clear();
   return true;
+}
+bool HouseUiContinuation::checked_house_reentry(const HouseUiReentryInput &in,
+                                                bool committing,
+                                                std::string &e) const {
+  if (!actual(binding_.object,e) || !native_ready_ || !global_ ||
+      in.registry!=registry_ || !in.source || !in.source_tree || !in.source_tree->valid() ||
+      !in.doors || !in.door_runtime || !in.old_house ||
+      !in.next_house || in.old_house==in.next_house || !in.old_tree ||
+      !in.next_tree || in.old_tree==in.next_tree || !in.old_root ||
+      !in.next_root || in.old_root==in.next_root || !in.random ||
+      !in.uid_ledger || !in.borrowers ||
+      sources_.world!=&in.old_house->world ||
+      sources_.house!=&in.old_house->house ||
+      sources_.dialogue!=&in.old_house->presentation)
+    return fail(e,"UI House reentry requires the same live source owners/Registry");
+  if (in.door_runtime->data()!=in.doors ||
+      in.door_runtime->phase()!=FieldDoorPhase::Deferred ||
+      in.door_runtime->active_door()!=in.source->door_id() ||
+      !in.door_runtime->source_ready(in.source->door_id()))
+    return fail(e,"UI House reentry is outside the actual source Door deferred commit");
+  if (!in.source->matches(*in.doors,in.next_house->world.content(),in.house_data,e) ||
+      !in.source->matches(*in.doors,in.old_house->world.content(),in.house_data,e) ||
+      !same(in.old_identity,in.doors->identity()) ||
+      !same(in.next_identity,in.source_tree->identity()) ||
+      in.next_identity.upstream_commit!=in.source->identity().upstream_commit ||
+      in.next_identity.source_sha256!=in.source->identity().source_sha256 ||
+      in.source_tree->source_scene()!=in.source->target_scene() ||
+      in.old_identity.upstream_commit!=data_->identity().upstream_commit ||
+      in.next_identity.upstream_commit!=data_->identity().upstream_commit ||
+      in.old_tree->object_domain()!=registry_->kernel() ||
+      in.next_tree->object_domain()!=registry_->kernel() ||
+      registry_->tree_owner(in.old_root)!=in.old_tree ||
+      registry_->tree_owner(in.next_root)!=in.next_tree)
+    return fail(e,"UI House reentry full old/new source identity/domain differs");
+  FieldIdentity old_id{},next_id{};
+  const auto *old=in.old_tree->state(in.old_root);
+  const auto *next=in.next_tree->state(in.next_root);
+  const auto *desc=in.next_tree->descriptor(in.next_root);
+  const auto &nodes=in.source->native_nodes();
+  std::array<uint8_t,32> source_sha{};
+  if (!in.source_tree->source_hash(in.source->target_scene(),source_sha) ||
+      source_sha!=in.source->identity().source_sha256 || nodes.empty() ||
+      nodes.front().id!=in.next_identity.scene_id)
+    return fail(e,"UI House reentry complete tree target source proof differs");
+  if (!old || !next || !desc || nodes.empty() || !old->alive || old->queued ||
+      (!committing&&(!old->inside||!old->ready_notified)) ||
+      !next->alive || next->queued || next->inside || next->ready_notified ||
+      !next->ready_first || next->parent ||
+      in.old_tree->lifecycle_pending() || in.next_tree->lifecycle_pending() ||
+      !in.old_tree->object_identity(in.old_root,old_id) ||
+      !in.next_tree->object_identity(in.next_root,next_id) ||
+      !same(old_id,in.old_identity) || !same(next_id,in.next_identity) ||
+      desc->id!=nodes.front().id || desc->native_class!=nodes.front().native_class ||
+      desc->script!=nodes.front().script || desc->script_sha!=nodes.front().script_sha ||
+      next->name!=in.source->target_root_name() ||
+      (!committing&&registry_->current_scene()!=in.old_root) ||
+      (committing&&registry_->current_scene()!=in.old_root&&
+                   registry_->current_scene()!=in.next_root))
+    return fail(e,"UI House reentry must precede old deletion/new Enter and mapped Ready");
+  if (!in.next_house->world.healthy() ||
+      in.next_house->world.stage()!=OpeningStage::Walking ||
+      !in.next_house->scene_ready_pending() ||
+      in.next_house->house.phase()!=HousePhase::Idle ||
+      in.next_house->house.story_pending() ||
+      in.next_house->presentation.dialogue_active() ||
+      in.next_house->world.cutscene_active() || sources_.house->story_pending() ||
+      sources_.dialogue->dialogue_active() || sources_.world->cutscene_active() ||
+      awaiting_entry_ || cutscene_ || !source_cutscene_observed_ ||
+      current_dialogue_ || !ui_stack_.empty() || !on_screen_enemies_.empty() ||
+      !source_business_closed(e))
+    return fail(e,"UI House reentry rejects pending dialogue/story/battle/native widget work");
+  bool battle=false;FieldObjectId talker=0;
+  if (!source_is_in_battle(binding_.object,battle,e) || battle ||
+      !source_current_talker(talker,e) || talker)
+    return fail(e,"UI House reentry has an active battle or source talker");
+  if (!stable_canvas_ || stable_canvas_!=registry_->stable_canvas())
+    return fail(e,"UI House reentry lost its same persistent Canvas ObjectID");
+  auto canvas_tree=registry_->tree_owner(stable_canvas_);
+  const auto *canvas=canvas_tree?canvas_tree->state(stable_canvas_):nullptr;
+  const auto *canvas_desc=canvas_tree?canvas_tree->descriptor(stable_canvas_):nullptr;
+  const auto &recipe=registry_->data()->canvas_recipe();
+  const auto *record=recipe.record(recipe.identity().scene_id);
+  FieldIdentity canvas_id{};
+  if (!canvas || !canvas_desc || !record || !canvas->alive || canvas->queued ||
+      !canvas->bound || canvas->inside || canvas->parent ||
+      canvas->ready_notified || canvas->ready_first ||
+      canvas_tree->object_domain()!=registry_->kernel() ||
+      !canvas_tree->object_identity(stable_canvas_,canvas_id) ||
+      !same(canvas_id,recipe.identity()) || canvas_desc->id!=record->id ||
+      canvas_desc->native_class!=record->native_class ||
+      canvas_desc->script!=record->script || canvas_desc->script_sha!=record->script_sha)
+    return fail(e,"UI House reentry Canvas source/lifecycle differs");
+  std::shared_ptr<const GlobalLoadObjectArray> persistent;
+  if (!global_->array(FieldGlobalMemberRole::Persistent,persistent,e) || !persistent ||
+      std::count(persistent->values.begin(),persistent->values.end(),stable_canvas_)!=1)
+    return fail(e,"UI House reentry changed the actual persistent Array");
+  e.clear();return true;
+}
+bool HouseUiContinuation::checked_reentry_borrowers(const HouseUiReentryInput &in,
+    bool rebound,HouseUiReentryBorrowState &out,std::string &e) const {
+  HouseUiReentryBorrowState next;
+  const auto *printer=rebound?&in.next_house->presentation:&in.old_house->presentation;
+  if (!in.borrowers->observe(in,*this,rebound,next,e))return false;
+  if (!next.complete || next.registry!=registry_ || next.printer!=printer ||
+      next.dialogue_script!=dialogue_script_ || next.random!=in.random ||
+      next.uid_ledger!=in.uid_ledger || next.pending_ui_callbacks ||
+      next.pending_native_callbacks)
+    return fail(e,"UI House reentry has unknown/pending native callbacks or stale printer borrowers");
+  std::vector<FieldObjectId> observed;
+  for(auto id:next.dialogue_objects){
+    auto tree=registry_->tree_owner(id);const auto *node=tree?tree->state(id):nullptr;
+    if(!id || !registry_->object_exists(id) || !node || !node->alive || node->queued ||
+       tree->object_domain()!=registry_->kernel() ||
+       std::find(observed.begin(),observed.end(),id)!=observed.end())
+      return fail(e,"UI House reentry dialogue ObjectIDs have unknown/pending native ownership");
+    observed.push_back(id);
+  }
+  if (dialogue_script_ && (!dialogue_life_ || !dialogue_recipe_ ||
+      !dialogue_script_->admit(*dialogue_life_,*dialogue_recipe_,
+          rebound?in.next_house->presentation:
+                  const_cast<HousePresentation&>(in.old_house->presentation),e)))
+    return fail(e,"UI House reentry dialogue script did not retain its actual source/printer");
+  out=next;e.clear();return true;
+}
+bool HouseUiContinuation::prepare_house_reentry(const HouseUiReentryInput &in,
+    HouseUiReentryTicket &out,std::string &e) const {
+  if (out.valid())return fail(e,"UI House reentry ticket is already prepared");
+  if (!checked_house_reentry(in,false,e))return false;
+  HouseUiReentryTicket next;
+  next.input_=in;
+  next.random_state_=in.random->state();next.random_draws_=in.random->raw_draw_count();
+  next.uids_=*in.uid_ledger;
+  if (!checked_reentry_borrowers(in,false,next.borrowers_,e))return false;
+  if (in.random->state()!=next.random_state_ ||
+      in.random->raw_draw_count()!=next.random_draws_ || *in.uid_ledger!=next.uids_)
+    return fail(e,"UI House reentry admission modified live entropy/UID ledger");
+  next.owner_=this;next.ui_=binding_.object;next.canvas_=stable_canvas_;
+  next.story_generation_=story_generation_;next.outcome_cursor_=outcome_cursor_;
+  next.dialogue_event_=dialogue_at_source_event_;next.story_event_=story_at_source_event_;
+  out=std::move(next);e.clear();return true;
+}
+bool HouseUiContinuation::commit_house_reentry(HouseUiReentryTicket &ticket,
+                                               std::string &e) {
+  if (ticket.owner_!=this || ticket.ui_!=binding_.object || ticket.canvas_!=stable_canvas_ ||
+      ticket.story_generation_!=story_generation_ || ticket.outcome_cursor_!=outcome_cursor_ ||
+      ticket.dialogue_event_!=dialogue_at_source_event_ || ticket.story_event_!=story_at_source_event_)
+    return fail(e,"UI House reentry ticket does not own the unchanged actual continuation");
+  const auto &in=ticket.input_;HouseUiReentryBorrowState before;
+  if (!checked_house_reentry(in,true,e) || !checked_reentry_borrowers(in,false,before,e))return false;
+  if (before.dialogue_objects!=ticket.borrowers_.dialogue_objects ||
+      in.random->state()!=ticket.random_state_ ||
+      in.random->raw_draw_count()!=ticket.random_draws_ || *in.uid_ledger!=ticket.uids_)
+    return fail(e,"UI House reentry source instances/entropy changed after preparation");
+  // An actual owner may have partially changed its borrows on failure. Poison
+  // this continuation before any later callback can dereference a mixed scene.
+  reentry_committing_=true;
+  if (!in.borrowers->rebind(in,*this,e)){
+    reentry_committing_=false;reentry_failed_=true;
+    if(e.empty())e="UI House reentry concrete borrower commit failed";
+    return false;
+  }
+  HouseUiReentryBorrowState after;
+  if (!checked_reentry_borrowers(in,true,after,e) ||
+      after.dialogue_objects!=before.dialogue_objects ||
+      in.random->state()!=ticket.random_state_ ||
+      in.random->raw_draw_count()!=ticket.random_draws_ || *in.uid_ledger!=ticket.uids_){
+    reentry_committing_=false;reentry_failed_=true;
+    if(e.empty())e="UI House reentry borrower commit changed source instances/entropy";
+    return false;
+  }
+  sources_.world=&in.next_house->world;sources_.house=&in.next_house->house;
+  sources_.dialogue=&in.next_house->presentation;
+  reentry_committing_=false;ticket=HouseUiReentryTicket{};
+  e.clear();return true;
 }
 bool HouseUiContinuation::bind_source_global(FieldGlobalConstructorRuntime &g,std::string &e){
   const auto *ns=registry_?registry_->data():nullptr;

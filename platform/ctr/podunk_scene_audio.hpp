@@ -71,6 +71,10 @@ public:
   bool signal_declaration(upstream::FieldObjectId, std::string_view, uint32_t &,
                           std::string &) const;
   bool shutdown(std::string &);
+  // Only voices actually migrated by Registry are rebound. NDSP queues,
+  // decoder position, source state and AudioServer callbacks are retained.
+  bool rebind_voices(upstream::FieldNodeTreeRuntime &,
+                     const std::vector<upstream::FieldObjectId> &, std::string &);
 
 private:
   static constexpr uint32_t buffer_count = 3, block_frames = 1024;
@@ -80,6 +84,7 @@ private:
     std::string bus;
   };
   struct Voice {
+    upstream::FieldNodeTreeRuntime *tree = nullptr;
     PodunkAudioVoiceCallback callback;
     const upstream::FieldSceneAudioNode *source = nullptr;
     PodunkSceneAudioState state;

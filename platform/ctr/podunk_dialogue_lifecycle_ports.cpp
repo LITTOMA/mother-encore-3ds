@@ -43,6 +43,34 @@ public:
 PodunkDialogueLifecyclePorts::~PodunkDialogueLifecyclePorts() {
   std::string e; shutdown(e);
 }
+bool PodunkDialogueLifecyclePorts::source_frame_closed(std::string &e)const{
+ if(!in_.registry||in_.registry->poisoned()||callback_depth_||callback_receiver_||!waiting_.empty()||
+    in_.registry->pending_messages_to(wait_history_))
+  return fail(e,"Dialogue reentry rejects retained source Ready/Done/Animation wait owners");
+ e.clear();return true;
+}
+bool PodunkDialogueLifecyclePorts::source_coroutines(PodunkDialogueCoroutineState &out,
+    std::string &e)const{
+ if(!in_.registry||in_.registry->poisoned()||!in_.signals||
+    in_.signals->registry()!=in_.registry)
+  return fail(e,"Dialogue coroutine receipt has no actual Registry/signal owner");
+ PodunkDialogueCoroutineState n;
+ n.callback_depth=callback_depth_;n.callback_receiver=callback_receiver_;
+ n.history.assign(wait_history_.begin(),wait_history_.end());
+ for(const auto &entry:waiting_){
+  const auto &w=entry.second;
+  bool connected=false;
+  if(!w||w->source.object!=entry.first||w->registry()!=in_.registry||
+     in_.registry->native_reference(entry.first).get()!=w.get()||!w->emitter||
+     !w->generation||!w->instance||!in_.registry->object_exists(w->emitter)||
+     !in_.registry->object_exists(w->instance)||
+     !in_.signals->connected(w->emitter,w->signal,entry.first,"_signal_callback",connected,e)||
+     (!connected&&!w->executing))
+   return fail(e,"Dialogue coroutine receipt contains stale/unknown actual waiter ownership");
+  n.receivers.push_back(entry.first);
+ }
+ out=std::move(n);e.clear();return true;
+}
 bool PodunkDialogueLifecyclePorts::prepare(PodunkDialogueLifecycleInput in,
                                            std::string &e) {
   if (in_.registry || !in.ui_data || !in.ui_data->valid() ||
@@ -154,7 +182,7 @@ bool PodunkDialogueLifecyclePorts::wait(FieldObjectId emitter,uint32_t generatio
   owner->signal=std::string(signal); owner->callback=std::move(callback); owner->done=std::move(done);
   if (!owner->instance || !in_.registry->object_exists(owner->instance) ||
       !in_.registry->publish_native_reference(b.source,b.object,owner,e)) return false;
-  waiting_.emplace(b.object,owner);
+  waiting_.emplace(b.object,owner);wait_history_.insert(b.object);
   if (!in_.signals->connect(emitter,signal,b.object,"_signal_callback",FieldSignalOneShot,
                             {FieldObjectRef{b.object}},e)) {
     waiting_.erase(b.object); return false;
@@ -188,6 +216,13 @@ bool PodunkDialogueLifecyclePorts::resume(FieldObjectId id,
       (!std::holds_alternative<std::string>(m.args[0]) ||
        std::get<std::string>(m.args[0])!=in_.life->close_clip().name))
     return fail(e,"Dialogue yielded animation signal does not match Close");
+  // A callback can disconnect/retire its waiter before unwinding. Keep actual
+  // receiver liveness independent of waiting_'s retained ownership map.
+  struct ActiveCallback {
+    uint32_t &depth;FieldObjectId &receiver;FieldObjectId previous;
+    ActiveCallback(uint32_t &d,FieldObjectId &r,FieldObjectId id):depth(d),receiver(r),previous(r){++depth;receiver=id;}
+    ~ActiveCallback(){receiver=previous;--depth;}
+  } callback(callback_depth_,callback_receiver_,id);
   owner->executing=true;
   const bool ok=owner->kind==Kind::Done ? owner->done(response) : owner->callback();
   owner->executing=false; owner->resumed=true;

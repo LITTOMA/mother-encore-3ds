@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "encore/player_initialization.hpp"
 #include <algorithm>
 #include <cmath>
@@ -415,6 +416,19 @@ bool PlayerInitializationRuntime::run(std::string &e) {
       !host_.set_respawn(data_->policy(), player_, scene, e))
     return abort();
   complete_ = true;
+  return true;
+}
+bool PlayerInitializationBody::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!constructed() || !data_ || !registry_ || !tree_)
+    return fail(e, "Player body rebind requires existing constructed owner");
+  for (const auto &record : data_->recipe().records()) {
+    FieldObjectId id = 0;
+    if (!next.get_node(object_, record.path, id, e) ||
+        !player_rebind_node(*data_, *registry_, next, id, record.id, e))
+      return false;
+  }
+  tree_ = &next;
+  e.clear();
   return true;
 }
 } // namespace encore::upstream

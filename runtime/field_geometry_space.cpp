@@ -609,6 +609,16 @@ bool FieldGeometrySpace::apply_updates(
     disabled_ = std::move(old_disabled);
     return false;
   }
+  // Native CollisionObject deletion retires its existing RID at this successful
+  // commit. Deleting only a CollisionShape leaves its parent's RID alive.
+  for (auto it = static_rids_.begin(); it != static_rids_.end();) {
+    bool deleted = false;
+    for (uint32_t at = source_->owner(it->first).node; at != none;
+         at = source_->node(at).parent)
+      deleted = deleted || nodes_[at].deleted;
+    if (deleted) it = static_rids_.erase(it);
+    else ++it;
+  }
   error.clear();
   return true;
 }
@@ -658,6 +668,13 @@ bool FieldGeometrySpace::query_instances(FieldGeometryBounds b,
               "before layer/disabled/monitoring filtering";
       return false;
     }
+  }
+  if(native_tree_)for(const auto&entry:instances_){
+    if(entry.deleted||entry.contact.owner==none)continue;
+    const auto owner=source_->owner(entry.contact.owner);
+    const bool type=owner.kind==4?filter.areas:filter.bodies;
+    const bool excluded=filter.exclude_stable_id&&entry.contact.stable_id==filter.exclude_stable_id;
+    if(type&&!excluded&&!native_instance(entry,error))return false;
   }
   std::vector<int64_t> cells;
   if (!keys(b, cells, error))
@@ -714,8 +731,6 @@ bool FieldGeometrySpace::live_geometry(const FieldGeometryContact &contact,
         return true;
       }
     }
-    error = "Field dynamic geometry stale actual ObjectID contact";
-    return false;
   }
   if (!source_) {
     error = "Field live geometry source unavailable";
@@ -725,13 +740,15 @@ bool FieldGeometrySpace::live_geometry(const FieldGeometryContact &contact,
     const auto &c = entry.contact;
     if (c.owner != contact.owner || c.shape != contact.shape ||
         c.part != contact.part || c.stable_id != contact.stable_id ||
-        c.native_shape_index != contact.native_shape_index)
+        c.native_shape_index != contact.native_shape_index ||
+        c.actual_owner!=contact.actual_owner||c.actual_shape!=contact.actual_shape)
       continue;
     if (entry.deleted || entry.disabled || !entry.resolved || c.owner == none ||
         c.owner >= owners_.size()) {
       error = "Field live geometry disabled/deleted/unadmitted";
       return false;
     }
+    if(!native_instance(entry,error))return false;
     auto o = source_->owner(c.owner);
     o.layer = owners_[c.owner].layer;
     o.mask = owners_[c.owner].mask;
@@ -1252,6 +1269,22 @@ bool FieldGeometrySpace::reserve_player_owner(const PlayerInitializationData &d,
                           DynamicOwner{&d, &t, &r, object, ++next_rid_});
   return true;
 }
+bool FieldGeometrySpace::rebind_player_owner(const PlayerInitializationData &d,
+    FieldNodeTreeRuntime &t,FieldGlobalRegistry &r,FieldObjectId object,std::string &e){
+  auto owner=dynamic_owners_.find(object);
+  if(owner==dynamic_owners_.end()||owner->second.data!=&d||owner->second.registry!=&r||
+     !source_player_node(d,t,r,object,e)){
+    e="Player native Physics RID transfer changed its actual owner";return false;
+  }
+  const auto *state=t.state(object);
+  if(!state||state->inside){e="Player Physics RID rebind must precede native Enter";return false;}
+  for(const auto &shape:dynamic_)if(shape.contact.actual_owner==object){
+    e="Player Physics RID rebind requires actual old shape removal";return false;
+  }
+  // The collision object and RID survive source remove_child/add_child.
+  // Shape registration resumes at Enter using the transferred actual children.
+  owner->second.tree=&t;e.clear();return true;
+}
 bool FieldGeometrySpace::register_player_shape(
     const PlayerInitializationData &d, FieldNodeTreeRuntime &t,
     FieldGlobalRegistry &r, FieldObjectId player, FieldObjectId shape,
@@ -1632,7 +1665,7 @@ bool FieldGeometrySpace::player_owner_rid(FieldObjectId owner,
 bool FieldGeometrySpace::physics_rid(const FieldGeometryContact &c,
                                      FieldPhysicsRid &out,
                                      std::string &e) const {
-  if (c.actual_owner)
+  if (c.actual_owner&&dynamic_owners_.count(c.actual_owner))
     return player_owner_rid(c.actual_owner, out, e);
   FieldGeometryActor a;
   FieldGeometryOwner o;

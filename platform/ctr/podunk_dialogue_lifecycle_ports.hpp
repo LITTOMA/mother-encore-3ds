@@ -4,6 +4,11 @@
 #include "podunk_player_host.hpp"
 
 namespace encore::ctr {
+struct PodunkDialogueCoroutineState {
+  std::vector<upstream::FieldObjectId> receivers,history;
+  size_t callback_depth=0;
+  upstream::FieldObjectId callback_receiver=0;
+};
 // Actual source business owners outside DialogueBox's 47-node subtree. The
 // adapter never infers a closed Key/Cash/BlackBars object from absent widgets.
 class PodunkDialogueBusiness {
@@ -52,6 +57,8 @@ public:
                std::string &) const;
   bool disconnect(upstream::FieldObjectId, uint32_t, std::string &);
   bool shutdown(std::string &);
+  bool source_frame_closed(std::string &)const;
+  bool source_coroutines(PodunkDialogueCoroutineState &,std::string &)const;
 private:
   class Wait;
   friend class Wait;
@@ -64,5 +71,8 @@ private:
   bool checked_step(const upstream::FieldDialogueStep &, std::string &) const;
   PodunkDialogueLifecycleInput in_{};
   std::map<upstream::FieldObjectId, std::shared_ptr<Wait>> waiting_;
+  std::set<upstream::FieldObjectId> wait_history_;
+  uint32_t callback_depth_=0;
+  upstream::FieldObjectId callback_receiver_=0;
 };
 } // namespace encore::ctr

@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "encore/podunk_player_kinematic.hpp"
 #include <algorithm>
 #include <cmath>
@@ -514,6 +515,20 @@ bool PodunkPlayerKinematic::ray_physics(FieldObjectId ray, uint64_t epoch,
   ray_hit_ = hit;
   ray_epoch_ = epoch;
   ray_cached_ = true;
+  return true;
+}
+bool PodunkPlayerKinematic::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!admitted() || !body_ || body_->tree() != &next || !registry_)
+    return fail(e, "Player Kinematic rebind requires existing body/world owner");
+  for (auto id : {body_->object(), collider_, ray_}) {
+    auto *descriptor = next.descriptor(id);
+    if (!descriptor || !player_rebind_node(*data_, *registry_, next, id, descriptor->id, e))
+      return false;
+  }
+  // Preserve mask, velocity-independent solver state and the actual RayCast
+  // cache until its next source physics-internal notification.
+  tree_ = &next;
+  e.clear();
   return true;
 }
 } // namespace encore::upstream

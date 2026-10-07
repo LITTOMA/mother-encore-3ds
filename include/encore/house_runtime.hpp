@@ -11,6 +11,28 @@
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
+class HouseRuntime;
+enum class HouseProgrammePhase:uint8_t {Closed,Opening,WaitingReady,Starting,Running,Failed};
+// Read from the actual native programme owner. A default receipt cannot admit
+// a closed source frame or grant responsibility for the printer/VM.
+struct HouseProgrammeState {
+ const HouseRuntime*runtime=nullptr;
+ const OpeningWorld*world=nullptr;
+ const OpeningHouseProgrammeOwner*world_owner=nullptr;
+ const HousePresentation*printer=nullptr;
+ const DialogueChoices*choices=nullptr;
+ RoomView room{};HouseView house{};
+ HouseProgrammePhase phase=HouseProgrammePhase::Failed;
+ uint32_t programme=kRoomNoIndex,original_npc=kRoomNoIndex;
+ uint32_t request_generation=0,vm_generation=0;
+ bool native_closed=false;
+};
+class HouseProgrammeOwner {
+public:
+ virtual ~HouseProgrammeOwner()=default;
+ virtual bool request(uint32_t programme,uint32_t original_npc,std::string&)=0;
+ virtual bool observe_house_programme(HouseProgrammeState&,std::string&)const=0;
+};
 // All item identities and sound bindings come from the admitted basement packs.
 // The session host owns keybag mutations and the current-item text context.
 struct HouseBasementHost {
@@ -33,6 +55,12 @@ class HouseRuntime : public PhoneFlagQuery, public PhoneSoundSink, private Drawe
 public:
  bool initialize(HouseView,OpeningWorld&,HousePresentation&);
  bool rebind_scene(OpeningWorld&,HousePresentation&);
+ bool bind_programme_owner(HouseProgrammeOwner&,std::string&);
+ // Release the core borrow only. Keep the native printer callback until the
+ // same World owner unbinds; then rebind_scene restores the legacy receiver.
+ bool unbind_programme_owner(HouseProgrammeOwner&,std::string&);
+ const HouseProgrammeOwner*programme_owner()const{return programme_owner_;}
+ bool observe_programme_owner(HouseProgrammeState&state,std::string&error)const{return programme_state(state,error);}
  bool restore_seen_dialogue(const std::set<uint32_t>&);
  bool set_player_nickname(std::string_view);
  bool bind_phone(PhoneRuntime&);
@@ -122,6 +150,13 @@ private:
  bool process_story_requests();
  bool deliver_area_contacts();
  bool sync_story_dialogue();bool advance_story_dialogue(bool automatic);bool text_finished();
+ bool request_programme(uint32_t,uint32_t original_npc=house_no_index);
+ bool programme_state(HouseProgrammeState&,std::string&)const;
+ bool native_programme_complete(bool&);
+ HouseProgrammeOwner*programme_owner_=nullptr;
+ // A checked request lease, never a mirrored VM/coroutine state.
+ uint32_t programme_lease_=0,requested_programme_=house_no_index;
+ std::string programme_error_;
  bool resolve_npc_dialogue(uint32_t,uint32_t&first,uint32_t&count,uint32_t&program,uint32_t&seen)const;
  bool request_scene_door(uint32_t);
  const FieldDoorData*scene_door_data_=nullptr;FieldDoorRuntime*scene_door_runtime_=nullptr;

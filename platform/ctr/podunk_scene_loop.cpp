@@ -87,7 +87,7 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
       !input.audio_server || !input.leaf_native || !input.cameras || !input.grass || !input.player ||
       !input.physics || !input.map || !input.geometry || input.asset_root.empty() ||
       !input.source_signals || !input.source_methods || !input.source_method_owned ||
-      !input.allocation_observed)
+      !input.allocation_observed || !input.source_scene_retired)
     return fail(e, "Scene loop requires actual checked destination and session owners");
   if (!prepare_native(input, e)) return false;
   attempted_ = true;
@@ -200,6 +200,7 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
     poisoned_ = true;
     return false;
   }
+  source_root_object_=input_.tree->root();
   constructed_ = true;
   e.clear();
   return true;
@@ -360,8 +361,40 @@ bool PodunkSceneLoop::activate_after_player(std::string &e) {
   e.clear(); return true;
 }
 bool PodunkSceneLoop::ready() const {
-  return attached_ && source_ready_ && monitors_ready_ && !poisoned_ &&
+  return attached_ && source_ready_ && monitors_ready_ && !poisoned_ && !source_scene_retired() &&
          input_.player->ready_complete();
+}
+bool PodunkSceneLoop::source_scene_retired()const{
+  return input_.source_scene_retired&&input_.source_scene_retired();
+}
+FieldSceneTreeTimers *PodunkSceneLoop::global_timers(){
+  return input_.return_timers?&input_.return_timers->scene_tree_timers():nullptr;
+}
+bool PodunkSceneLoop::collect_dead_source_signals(std::string &e){
+  input_.continuation->registry()->collect_dead_tree_objects();
+  for(auto id:released_signals_)
+    if(!input_.continuation->signals()->release(id,e)){poisoned_=true;return false;}
+  released_signals_.clear();e.clear();return true;
+}
+bool PodunkSceneLoop::retired_after_flush(bool idle,uint64_t epoch,float dt,bool paused,std::string &e){
+  // Retirement is reported by the real borrower only after its checked commit.
+  // The unchanged flush must also have completed the actual old-scene Free.
+  const auto *root=input_.tree->state(source_root_object_);
+  if(!source_root_object_||!source_scene_retired()||(root&&root->alive)){
+    poisoned_=true;return fail(e,"Scene retirement precedes successful actual Deferred source Free");
+  }
+  if(!collect_dead_source_signals(e))return false;
+  if(idle){
+    // SceneTreeTimer is a global Reference list, not old Node/grass work. Its
+    // genuine idle phase still runs once after actual deletion/connection
+    // cleanup, with the original epoch, delta and process_pause semantics.
+    auto *timers=global_timers();
+    if(!timers||timers->registry()!=input_.continuation->registry()){
+      poisoned_=true;return fail(e,"Retired source SceneTreeTimer Registry owner differs");
+    }
+    if(!timers->idle(epoch,dt,paused,e)){poisoned_=true;return false;}
+  }
+  e.clear();return true;
 }
 bool PodunkSceneLoop::physics_frame(uint64_t epoch, float dt, bool paused,
                                     std::string &e) {
@@ -371,9 +404,11 @@ bool PodunkSceneLoop::physics_frame(uint64_t epoch, float dt, bool paused,
   if (!input_.player->begin_frame(++player_frame_cursor_, 0, dt, paused, update_pending_, e) ||
       (physics_sampled_ && !input_.physics->flush_queries(e)) ||
       !input_.tree->process(true, paused, e) ||
-      !input_.continuation->registry()->flush_messages(e) ||
-      !input_.tree->flush_transform_notifications(e) ||
-      !input_.physics->physics_step(epoch, e)) {
+      !input_.continuation->registry()->flush_messages(e)) {
+    poisoned_ = true; return false;
+  }
+  if(source_scene_retired())return retired_after_flush(false,epoch,dt,paused,e);
+  if(!input_.tree->flush_transform_notifications(e)||!input_.physics->physics_step(epoch,e)) {
     poisoned_ = true; return false;
   }
   physics_sampled_ = true;
@@ -387,18 +422,16 @@ bool PodunkSceneLoop::idle_frame(uint64_t epoch, float dt, bool paused,
   if (!input_.player->begin_frame(++player_frame_cursor_, dt, 0, paused, update, e) ||
       !input_.tree->process(false, paused, e) ||
       !transition_jobs(dt, paused, e) ||
-      !input_.continuation->registry()->flush_messages(e) ||
-      !input_.tree->flush_transform_notifications(e) ||
+      !input_.continuation->registry()->flush_messages(e)) {
+    poisoned_ = true; return false;
+  }
+  if(source_scene_retired())return retired_after_flush(true,epoch,dt,paused,e);
+  if(!input_.tree->flush_transform_notifications(e)||
       !input_.visibility->update_world(epoch, e) ||
       !input_.tree->flush_delete_queue(e) || !scripts_.collect_deleted(e)) {
     poisoned_ = true; return false;
   }
-  input_.continuation->registry()->collect_dead_tree_objects();
-  for (auto id : released_signals_)
-    if (!input_.continuation->signals()->release(id, e)) {
-      poisoned_ = true; return false;
-    }
-  released_signals_.clear();
+  if(!collect_dead_source_signals(e))return false;
   // SceneTreeTimer's native list follows idle delete processing. It uses this
   // exact global idle cursor; Node Timers retain their own original phase.
   if (!input_.grass->tween_frame(epoch, dt, paused, e) ||

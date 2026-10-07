@@ -71,6 +71,9 @@ class PodunkPlayerHost final : public PodunkPlayerAnimationEndpoints,
                                public upstream::PlayerFetcherSpriteReader,
                                public upstream::PlayerChildScriptNative {
 public:
+  // After actual subtree/Registry/world transfer, before destination Enter.
+  // Retains existing script, Ready, resource, signal and animation owners.
+  bool rebind_tree(std::shared_ptr<upstream::FieldNodeTreeRuntime>, std::string &);
   bool prepare(PodunkPlayerSources, PodunkPlayerServices,
                std::shared_ptr<upstream::FieldNodeTreeRuntime>, const char *,
                std::string &);

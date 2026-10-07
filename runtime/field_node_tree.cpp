@@ -4,6 +4,7 @@
 #include "encore/field_sprite_bridge.hpp"
 #include "encore/crc32.hpp"
 #include "encore/utf8.hpp"
+#include "field_node_native_classes.hpp"
 #include <algorithm>
 #include <cmath>
 #include <set>
@@ -128,7 +129,9 @@ bool FieldNodeTreeRuntime::initialize_source_node(const FieldIdentity&identity,c
   if(!d.valid()||!d.record(first))return fail(e,"NodeTree dynamic source root missing");
   auto records=d.records();
   for(auto&r:records){
-   if(r.class_index>=d.classes().size())return fail(e,"NodeTree native class source rejected");
+   if(!detail::field_native_class_schema(uint32_t(d.classes().size()))||
+      r.class_index>=d.classes().size()||d.classes()[r.class_index]!=detail::field_native_classes[r.class_index]||
+      bool(r.flags&1)!=detail::field_native_canvas(r.class_index))return fail(e,"NodeTree native class source rejected");
    r.native_class=d.classes()[r.class_index];
   }
   return instantiate_records(d.identity(),records,first,false,out,e);

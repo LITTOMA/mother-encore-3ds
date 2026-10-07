@@ -4,12 +4,21 @@
 #include <unordered_map>
 
 namespace encore::upstream {
+class HouseReentryData;
+class FieldNodeTreeRuntime;
 // Live TileMap state consumes the existing source map and checked Reparenter
 // bindings. It never interprets script or approves the whole source scene.
 class FieldMapSpace {
 public:
   bool configure(const FieldMapView &, const FieldSceneActionsData &,
                  std::string &);
+  // Retire the actual Podunk TileMaps and bind the full source House tree.
+  // Only the complete checked placed-cell proof can authorize an empty tile
+  // collision result. House collision bodies live in FieldGeometrySpace.
+  bool replace_house_tiles(const HouseReentryData &,
+                           const FieldNodeTreeRuntime &old_tree,
+                           uint64_t old_root, FieldNodeTreeRuntime &house_tree,
+                           std::string &);
   bool admit_reparent(uint32_t leaf, uint32_t parent, std::string &) const;
   // Source remove_child is immediate; add_child is invoked by the global queue.
   // Native child ordering comes from the actual tree, not an independent
@@ -34,6 +43,7 @@ public:
   Vec2 point(uint32_t polygon_index, uint32_t point_in_polygon) const;
   Vec2 sort_anchor(uint32_t draw_index) const;
   const FieldMapView *source() const { return source_; }
+  const HouseReentryData *house_source() const { return house_; }
 
 private:
   struct CanvasState {
@@ -52,6 +62,9 @@ private:
              size_t, std::vector<uint32_t> &, std::string &) const;
   const FieldMapView *source_ = nullptr;
   const FieldSceneActionsData *actions_ = nullptr;
+  const HouseReentryData *house_ = nullptr;
+  FieldNodeTreeRuntime *house_tree_ = nullptr;
+  std::vector<uint64_t> house_tiles_;
   std::vector<CanvasState> canvases_;
   std::vector<LayerState> layers_;
   std::unordered_map<uint32_t, uint32_t> canvas_ids_, map_ids_;

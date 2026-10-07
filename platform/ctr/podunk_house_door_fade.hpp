@@ -12,6 +12,9 @@ public:
   bool initialize(upstream::HouseView, const upstream::FieldDoorData &, const upstream::IntroductionData&, std::string &);
   bool start(uint32_t door, bool in, std::string_view animation,
              const std::array<float,4> &, float speed, std::string &);
+  bool start_source(const upstream::FieldDoorData &, uint32_t door, bool in,
+                    std::string_view animation, const std::array<float,4> &,
+                    float speed, std::string &);
   bool frame(uint64_t epoch, float delta, bool &in_done, bool &out_mostly,
              std::string &);
   void focus(upstream::Vec2 actual_screen_position){focus_=actual_screen_position;focus_source_=false;}

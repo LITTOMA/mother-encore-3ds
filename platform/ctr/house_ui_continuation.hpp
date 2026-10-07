@@ -7,6 +7,7 @@
 #include "encore/house_ui_continuation.hpp"
 #include "podunk_native_root.hpp"
 #include "podunk_dialogue_host.hpp"
+#include "house_ui_reentry.hpp"
 #include "encore/field_global_constructor.hpp"
 namespace encore::upstream { class FieldGlobalDataRuntime; }
 namespace encore::ctr {
@@ -65,11 +66,18 @@ public:
   // Call at the existing Outcome event boundary. Previous session events are
   // retained as observed; only new real ReturnStarted events emit battle_to_ov.
   bool observe_battle_events(std::string &);
-  // Rebind only after actual destination ownership has replaced the House
-  // scene. The same UI, Battle, Menu, ObjectDB and signal connections survive.
+  // Identity-preserving compatibility check only. Scene replacement requires
+  // the checked source Door reentry ticket below.
   bool rebind_scene(const upstream::OpeningWorld &,
                     const upstream::HouseRuntime &,
                     const upstream::HousePresentation &, std::string &);
+  // Read-only preflight and pointer-only commit at the real source Door
+  // deferred boundary after persistent detach/destination instance, before
+  // old House destruction and destination mapped Ready.
+  // Tickets do not grant House/UI Ready and are consumed only on success.
+  bool prepare_house_reentry(const HouseUiReentryInput &,
+                            HouseUiReentryTicket &, std::string &) const;
+  bool commit_house_reentry(HouseUiReentryTicket &, std::string &);
   bool source_stack_empty(upstream::FieldObjectId,bool&,std::string&)const;
   bool source_clear_on_screen_enemies(std::string &);
   bool source_update_key_indicator(const upstream::FieldGlobalDataRuntime &,
@@ -94,6 +102,10 @@ public:
   bool full_source_ready() const { return false; }
 
 private:
+  bool checked_house_reentry(const HouseUiReentryInput &, bool committing,
+                             std::string &) const;
+  bool checked_reentry_borrowers(const HouseUiReentryInput &, bool rebound,
+                                HouseUiReentryBorrowState &, std::string &) const;
   bool actual(upstream::FieldObjectId, std::string &) const;
   bool models(std::string &) const;
   bool dialogue_object(upstream::FieldObjectId,bool entered,std::string &) const;
@@ -121,5 +133,6 @@ private:
   uint32_t story_generation_ = 0;
   bool dialogue_at_source_event_ = false, story_at_source_event_ = false;
   size_t outcome_cursor_ = 0;
+  bool reentry_committing_ = false, reentry_failed_ = false;
 };
 } // namespace encore::ctr

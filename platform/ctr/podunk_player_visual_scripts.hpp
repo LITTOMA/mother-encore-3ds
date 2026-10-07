@@ -5,6 +5,7 @@ namespace encore::ctr {
 // manufactured here; normal constructor/Ready/render owners must be supplied.
 class PodunkPlayerVisualScripts {
 public:
+  bool rebind_tree(upstream::FieldNodeTreeRuntime &, std::string &);
   bool initialize(const upstream::PlayerVisualScriptsData &,
                   const upstream::PlayerInitializationData &,
                   upstream::FieldNodeTreeRuntime &,

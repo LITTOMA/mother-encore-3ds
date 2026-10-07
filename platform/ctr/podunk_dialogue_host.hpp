@@ -9,6 +9,7 @@
 #include <set>
 
 namespace encore::ctr {
+struct HouseUiReentryInput;
 // Actual owner of the original DialogueBox/AbstractDialogueBox script instance.
 // It borrows the same text printer and programme executor used by the existing
 // world. Its source constructor/onready/input state is never inferred from a
@@ -53,6 +54,14 @@ struct PodunkDialogueFactoryServices {
   upstream::FieldGameCameraHost camera;
   upstream::FieldCameraArrowsHost arrows;
   upstream::FieldDialogueAudioHost audio;
+};
+struct PodunkDialogueFactoryState {
+  upstream::FieldObjectId root = 0;
+  const upstream::FieldNodeTreeRuntime *tree = nullptr;
+  std::map<uint32_t, upstream::FieldObjectId> objects;
+  std::set<upstream::FieldObjectId> entered, native_ready, script_ready,
+      timer_attached, deleting;
+  PodunkDialogueScriptState script;
 };
 struct PodunkDialogueServices {
   // Camera/Arrows legacy cores address checked source IDs. Their adapters
@@ -113,6 +122,15 @@ public:
                   upstream::HouseView, upstream::HousePresentation &,
                   upstream::SourceRandom &, FieldDialogueAudioPlayer &,
                   PodunkDialogueServices, std::string &);
+  // Closed actual source owners only; no factory/Ready/callback replay.
+  bool admit_house_tree_rebind(const HouseUiReentryInput &,std::string &) const;
+  bool rebind_house_tree(const HouseUiReentryInput &,std::string &);
+  const upstream::FieldNodeTreeRuntime *lifecycle_tree() const { return lifecycle_tree_.get(); }
+  bool observes_closed_printer(const upstream::HousePresentation &,std::string &) const;
+  bool admit_printer_rebind(const upstream::HousePresentation &,
+                           const upstream::HousePresentation &,std::string &) const;
+  bool rebind_printer(const upstream::HousePresentation &,
+                     upstream::HousePresentation &,std::string &);
   bool admit_factory(std::string &) const;
   // Called by the one real Tree host only for this checked recipe's nodes.
   bool bind(upstream::FieldObjectId, const upstream::FieldNodeDescriptor &,
@@ -123,6 +141,16 @@ public:
   bool open(const upstream::FieldProgrammeData &, uint32_t,
             const upstream::FieldProgrammeContext &, uint32_t,
             upstream::FieldObjectId &, std::string &);
+  bool bind_room_source(const upstream::HouseReentryData &,
+                        const upstream::FieldDoorData &, upstream::RoomView,
+                        upstream::HouseView, const upstream::FieldNodeTreeData &,
+                        upstream::FieldDialogueRoomHost, std::string &);
+  bool open_room(uint32_t, const upstream::FieldProgrammeContext &, uint32_t,
+                 upstream::FieldObjectId &, std::string &);
+  bool admit_room(uint32_t, const upstream::DialogueAction &,
+                  const upstream::FieldProgrammeContext &, std::string &);
+  bool source_factories(std::vector<PodunkDialogueFactoryState> &,
+                        std::string &) const;
   bool admit(const upstream::DialogueAction &,
              const upstream::FieldProgrammeContext &, std::string &);
   bool apply(const upstream::DialogueAction &,
@@ -131,6 +159,9 @@ public:
   // Invoke only after actual ShowDialogue has updated that same printer.
   bool presented_text(upstream::FieldObjectId,
                       const upstream::FieldProgrammeText &, std::string &);
+  bool presented_text(upstream::FieldObjectId, upstream::RoomView,
+                      uint32_t absolute_command, const upstream::HouseDialogue &,
+                      std::string &);
   bool sync_choices(upstream::FieldObjectId, const upstream::DialogueChoices &,
                     const upstream::LocaleSelection *, std::string &);
   // The caller passes the events already drawn by HousePresentation. In
@@ -145,6 +176,9 @@ public:
   upstream::FieldDialogueVisualRuntime *visual(upstream::FieldObjectId);
   upstream::FieldDialogueAudioRuntime *audio(upstream::FieldObjectId);
   upstream::FieldDialogueLifecycleRuntime *lifecycle() {
+    return initialized_ ? &lifecycle_ : nullptr;
+  }
+  const upstream::FieldDialogueLifecycleRuntime *lifecycle() const {
     return initialized_ ? &lifecycle_ : nullptr;
   }
 
@@ -180,6 +214,7 @@ private:
   std::map<upstream::FieldObjectId, std::unique_ptr<Factory>> factories_;
   std::map<upstream::FieldObjectId, upstream::FieldObjectId> owners_;
   bool initialized_ = false;
+  upstream::FieldDialogueLifecycleHost wrap_lifecycle(upstream::FieldDialogueLifecycleHost);
   bool owner(const upstream::FieldNodeDescriptor &, Owner &,
              std::string &) const;
   bool attach(upstream::FieldObjectId, std::string &);

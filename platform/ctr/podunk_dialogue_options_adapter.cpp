@@ -15,7 +15,7 @@ bool same(const FieldIdentity &a, const FieldIdentity &b) {
 bool PodunkDialogueOptionsAdapter::initialize(
     const PodunkDialogueRootData &data, const FieldNodeRecipeData &recipe,
     PodunkDialogueHost &dialogue, PodunkDialogueRootOwner &owner,
-    PodunkProgrammeHost &programme, DialogueChoices &choices, CurrentTree tree,
+    PodunkDialogueProgrammePort &programme, DialogueChoices &choices, CurrentTree tree,
     std::string &error) {
   const auto *options = recipe.record(data.options_source());
   if (data_ || !data.valid() || !recipe.valid() || !tree ||
@@ -33,19 +33,48 @@ bool PodunkDialogueOptionsAdapter::initialize(
   error.clear();
   return true;
 }
+bool PodunkDialogueOptionsAdapter::rebind_programme(
+    const PodunkDialogueProgrammePort &old,
+    const PodunkDialogueProgrammeBinding &expected,
+    PodunkDialogueProgrammePort &next, std::string &error) {
+  PodunkDialogueProgrammeBinding old_binding, next_binding;
+  DialogueStatus old_status = DialogueStatus::Error, next_status = DialogueStatus::Error;
+  bool old_wait = true, next_wait = true;
+  if (!data_ || programme_ != &old || &old == &next || !owner_ || !dialogue_ ||
+      choices_->active() || !old.programme_binding(old_binding, error) ||
+      !next.programme_binding(next_binding, error) ||
+      !same(old_binding.identity, expected.identity) ||
+      old_binding.vm_owner != expected.vm_owner ||
+      old_binding.printer != expected.printer || old_binding.choices != choices_ ||
+      expected.choices != choices_ || next_binding.choices != choices_ ||
+      !next_binding.vm_owner || !next_binding.printer ||
+      !old.dialogue_status(old_status, error) ||
+      !next.dialogue_status(next_status, error) ||
+      (old_status != DialogueStatus::Idle && old_status != DialogueStatus::Completed) ||
+      (next_status != DialogueStatus::Idle && next_status != DialogueStatus::Completed) ||
+      !old.ready_waiting(old_wait, error) || !next.ready_waiting(next_wait, error) ||
+      old_wait || next_wait ||
+      !dialogue_->observes_closed_printer(*next_binding.printer, error) ||
+      !owner_->observes_closed_printer(*next_binding.printer, error))
+    return reject(error, "Dialogue options programme transfer requires closed actual owners");
+  programme_ = &next;
+  error.clear();
+  return true;
+}
 FieldDialogueUiRuntime *PodunkDialogueOptionsAdapter::checked(
     FieldObjectId root, std::string &error) {
   const auto fail = [&](const char *message) -> FieldDialogueUiRuntime * {
     error = message;
     return nullptr;
   };
-  if (!data_ || !root || !programme_->active() || !choices_->active())
+  if (!data_ || !root || !programme_ || !choices_->active())
     return fail("Dialogue option bridge has no active source choice owner");
-  const auto &programme = programme_->programme();
-  if (programme.context().dialogue_object != root ||
-      programme.scheduler().status() != DialogueStatus::AwaitChoices ||
-      !programme.scheduler().generation() ||
-      !dialogue_->admit_ready(root, programme.scheduler().generation(), error))
+  PodunkDialogueProgrammeContext context;
+  DialogueStatus status = DialogueStatus::Error;
+  if (!programme_->dialogue_context(context, error) ||
+      !programme_->dialogue_status(status, error) ||
+      context.dialogue_object != root || status != DialogueStatus::AwaitChoices ||
+      !context.generation || !dialogue_->admit_ready(root, context.generation, error))
     return fail("Dialogue option bridge actual programme/Ready lease differs");
   auto *tree = tree_(root);
   auto *ui = dialogue_->ui(root);

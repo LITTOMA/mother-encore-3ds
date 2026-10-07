@@ -58,15 +58,128 @@ bool FieldDialogueLifecycleRuntime::initialize(
   e.clear();
   return true;
 }
+bool FieldDialogueLifecycleRuntime::source_frame_closed(std::string &e)const{
+  if(!data_||!data_->valid()||!recipe_||!recipe_->valid()||!programmes_||
+     !programmes_->valid()||!tree_||!npcs_||!error_.empty()||
+     (room_source_&&(!room_source_->valid()||!room_tree_||!room_tree_->valid()||
+                    !room_.valid()||!house_.valid()))||
+     phase_!=FieldDialogueLifecyclePhase::Closed||object_||animation_owner_||
+     closing_wait_||!retired_.empty()||
+     std::any_of(nodes_.begin(),nodes_.end(),[](FieldObjectId id){return id!=0;})){
+    e="Dialogue lifecycle rebind rejects an actual live/retired source owner";return false;
+  }
+  e.clear();return true;
+}
+bool FieldDialogueLifecycleRuntime::admit_tree_rebind(const FieldNodeTreeRuntime &old,
+    const FieldNodeTreeRuntime &next,std::string &e)const{
+  if(!source_frame_closed(e)||tree_!=&old||&old==&next||!old.object_domain()||
+     old.object_domain()!=next.object_domain()||old.lifecycle_pending()||next.lifecycle_pending()){
+    e="Dialogue lifecycle rebind requires closed same-kernel source Trees";return false;
+  }
+  e.clear();return true;
+}
+bool FieldDialogueLifecycleRuntime::rebind_tree(const FieldNodeTreeRuntime &old,
+    FieldNodeTreeRuntime &next,std::string &e){
+  if(!admit_tree_rebind(old,next,e))return false;
+  // Preserve source programme/context, generation, callbacks and retired ledger.
+  // Later open still requires its independently admitted actual programme/NPC.
+  tree_=&next;e.clear();return true;
+}
+bool FieldDialogueLifecycleRuntime::room_programme(uint32_t index, std::string &e) const {
+  if (!room_source_ || !room_source_->valid() || !room_tree_ || !room_tree_->valid() ||
+      !room_.valid() || !house_.valid() || index >= room_.program_count()) {
+    e = "Dialogue lifecycle actual Room programme source absent"; return false;
+  }
+  const auto p = room_.program(index);
+  if (!p.stable_id || !p.command_count || p.first_command > room_.command_count() ||
+      p.command_count > room_.command_count() - p.first_command ||
+      room_.string(p.source_path_string).empty()) {
+    e = "Dialogue lifecycle actual Room programme span differs"; return false;
+  }
+  FieldIdentity identity{};
+  if (!tree_->object_identity(tree_->root(), identity) ||
+      identity.scene_id != room_tree_->identity().scene_id ||
+      identity.upstream_commit != room_tree_->identity().upstream_commit ||
+      identity.source_sha256 != room_tree_->identity().source_sha256) {
+    e = "Dialogue lifecycle actual Room Tree source owner differs"; return false;
+  }
+  e.clear(); return true;
+}
+bool FieldDialogueLifecycleRuntime::bind_room_source(const HouseReentryData &source,
+    const FieldDoorData &doors, RoomView room, HouseView house,
+    const FieldNodeTreeData &source_tree, FieldDialogueRoomHost h, std::string &e) {
+  const auto &l = h.lifecycle;
+  FieldIdentity actual{};
+  std::array<uint8_t,32> hash{};
+  if (!source_frame_closed(e) || !source.valid() || !source_tree.valid() ||
+      !source.matches(doors,room,house,e) || !tree_->object_identity(tree_->root(),actual) ||
+      actual.scene_id != source_tree.identity().scene_id ||
+      actual.upstream_commit != source_tree.identity().upstream_commit ||
+      actual.source_sha256 != source_tree.identity().source_sha256 ||
+      source.identity().upstream_commit != source_tree.identity().upstream_commit ||
+      data_->commit() != source_tree.identity().upstream_commit ||
+      source.target_scene() != source_tree.source_scene() ||
+      !source.source_hash(source.target_scene(),hash) || hash != actual.source_sha256 ||
+      source_tree.records().empty() || source_tree.records().front().id != actual.scene_id ||
+      !h.admit_actor || !h.bind_programme || !h.stop_talker ||
+      !l.admit_factory || !l.admit_parent || !l.factory_created || !l.admit_step ||
+      !l.observe || !l.pause_player || !l.unpause_player || !l.manager || !l.global ||
+      !l.native || !l.play_animation || !l.close_sound || !l.restore_telepathy ||
+      !l.return_camera || !l.connect_ready || !l.connect_done || !l.connect_animation ||
+      !l.start_programme || !l.emit_done || !l.disconnect) {
+    if(e.empty()) e = "Dialogue Room source/Tree or concrete lifecycle endpoints differ";
+    return false;
+  }
+  // A resource-family scene ID is never used as this full Tree's native root ID.
+  room_source_=&source; room_tree_=&source_tree; room_=room; house_=house;
+  host_=h.lifecycle; room_host_=std::move(h); e.clear(); return true;
+}
+bool FieldDialogueLifecycleRuntime::waiting_owners(std::vector<FieldObjectId> &out,
+    std::string &e) const {
+  if(!data_||!data_->valid()||!recipe_||!recipe_->valid()||!tree_||
+     !error_.empty()||phase_==FieldDialogueLifecyclePhase::Error){
+    e="Dialogue lifecycle wait receipt has no checked actual owner";return false;
+  }
+  std::vector<FieldObjectId> result;
+  if(phase_==FieldDialogueLifecyclePhase::WaitingReady)result.push_back(object_);
+  if(closing_wait_)result.push_back(animation_owner_);
+  for(const auto &entry:retired_)if(entry.second.waiting)result.push_back(entry.second.animation);
+  for(auto id:result){const auto *n=tree_->state(id);if(!id||!n||!n->alive){
+    e="Dialogue lifecycle wait receiver is no longer an actual object";return false;}}
+  out=std::move(result);e.clear();return true;
+}
 bool FieldDialogueLifecycleRuntime::preflight(const FieldProgrammeContext &ctx,
-                                              std::string &e) {
-  if (!data_ || ctx.source_npc != programmes_->npc().id || !ctx.actor_object) {
+                                              std::string &e, uint32_t programme) {
+  if (room_source_) {
+    if (!room_programme(programme,e) ||
+        !room_host_.admit_actor(room_,programme,ctx,e)) return false;
+    if (bool(ctx.actor_object) != bool(ctx.source_npc)) {
+      e="Dialogue Room nullable talker/source binding differs"; return false;
+    }
+    if(ctx.actor_object){
+      const auto *n=tree_->state(ctx.actor_object);
+      const auto *record=room_tree_->record(ctx.source_npc);
+      const auto *descriptor=tree_->descriptor(ctx.actor_object);
+      FieldIdentity identity{};
+      if(!n||!record||!descriptor||descriptor->id!=record->id||
+         descriptor->path!=record->path||descriptor->script!=record->script||
+         descriptor->script_sha!=record->script_sha||descriptor->class_index!=record->class_index||
+         !n->alive||!n->inside||!n->ready_notified||n->queued||
+         !n->bound||n->source!=ctx.source_npc||
+         !tree_->object_identity(ctx.actor_object,identity)||
+         identity.scene_id!=room_tree_->identity().scene_id||
+         identity.upstream_commit!=room_tree_->identity().upstream_commit||
+         identity.source_sha256!=room_tree_->identity().source_sha256){
+        e="Dialogue Room actual House talker Ready/source owner differs";return false;
+      }
+    }
+  } else if (!data_ || ctx.source_npc != programmes_->npc().id || !ctx.actor_object) {
     e = "Dialogue lifecycle original NPC context absent";
     return false;
   }
   auto *n = tree_->state(ctx.actor_object);
-  if (!n || !n->alive || !n->inside || !n->ready_notified ||
-      n->source != ctx.source_npc) {
+  if (!room_source_ && (!n || !n->alive || !n->inside || !n->ready_notified ||
+      n->source != ctx.source_npc)) {
     e = "Dialogue lifecycle actual source NPC Ready absent";
     return false;
   }
@@ -92,6 +205,7 @@ bool FieldDialogueLifecycleRuntime::preflight(const FieldProgrammeContext &ctx,
 bool FieldDialogueLifecycleRuntime::admit(const DialogueAction &a,
                                           const FieldProgrammeContext &ctx,
                                           std::string &e) {
+  if(room_source_){e="Dialogue lifecycle requires actual Room admission";return false;}
   switch (a.kind) {
   case DialogueActionKind::BeginCutscene:
   case DialogueActionKind::StopInteraction:
@@ -110,6 +224,21 @@ bool FieldDialogueLifecycleRuntime::admit(const DialogueAction &a,
     return false;
   }
   return preflight(ctx, e);
+}
+bool FieldDialogueLifecycleRuntime::admit_room(uint32_t programme,
+    const DialogueAction &a,const FieldProgrammeContext &ctx,std::string &e){
+  if(!room_source_){e="Dialogue lifecycle actual Room source is not bound";return false;}
+  switch(a.kind){
+  case DialogueActionKind::BeginCutscene: case DialogueActionKind::StopInteraction:
+  case DialogueActionKind::SetTalker: case DialogueActionKind::CutsceneEnded:
+  case DialogueActionKind::DialogueDone: break;
+  default:e="Dialogue Room lifecycle opcode outside reviewed coroutine";return false;
+  }
+  if(phase_!=FieldDialogueLifecyclePhase::Closed&&phase_!=FieldDialogueLifecyclePhase::Removed&&
+     !(phase_==FieldDialogueLifecyclePhase::Closing&&done_seen_)){
+    e="Dialogue Room source UI owner busy";return false;
+  }
+  return preflight(ctx,e,programme);
 }
 bool FieldDialogueLifecycleRuntime::owned(std::string &e) const {
   if (!data_ || !object_) {
@@ -132,7 +261,7 @@ bool FieldDialogueLifecycleRuntime::open(const FieldProgrammeData &p,
                                          const FieldProgrammeContext &ctx,
                                          uint32_t generation,
                                          FieldObjectId &out, std::string &e) {
-  if (&p != programmes_ || !generation ||
+  if (room_source_ || &p != programmes_ || !generation ||
       (phase_ != FieldDialogueLifecyclePhase::Closed &&
        phase_ != FieldDialogueLifecyclePhase::Removed &&
        !(phase_ == FieldDialogueLifecyclePhase::Closing && done_seen_)) ||
@@ -141,6 +270,21 @@ bool FieldDialogueLifecycleRuntime::open(const FieldProgrammeData &p,
       e = "Dialogue lifecycle source open rejected";
     return false;
   }
+  return open_checked(programme,ctx,generation,out,e);
+}
+bool FieldDialogueLifecycleRuntime::open_room(uint32_t programme,
+    const FieldProgrammeContext &ctx,uint32_t generation,FieldObjectId &out,std::string &e){
+  if(!room_source_||!generation||
+     (phase_!=FieldDialogueLifecyclePhase::Closed&&phase_!=FieldDialogueLifecyclePhase::Removed&&
+      !(phase_==FieldDialogueLifecyclePhase::Closing&&done_seen_))||
+     !preflight(ctx,e,programme)){
+    if(e.empty())e="Dialogue lifecycle actual Room open rejected";
+    return false;
+  }
+  return open_checked(programme,ctx,generation,out,e);
+}
+bool FieldDialogueLifecycleRuntime::open_checked(uint32_t programme,
+    const FieldProgrammeContext &ctx,uint32_t generation,FieldObjectId &out,std::string &e){
   FieldDialogueObservation o;
   if (!host_.observe(0, o, e) || !host_.admit_parent(o.stable_canvas, e))
     return false;
@@ -290,6 +434,7 @@ bool FieldDialogueLifecycleRuntime::step(const FieldDialogueStep &s,
   case O::ClearDialogue:
     return host_.manager(s, object_, e);
   case O::SetProgramme:
+    if(room_source_)return room_host_.bind_programme(room_,programme_,object_,context_,e);
     return host_.bind_programme(*programmes_, programme_, object_, context_, e);
   case O::GlobalCutscene:
   case O::SetTalker:
@@ -323,6 +468,7 @@ bool FieldDialogueLifecycleRuntime::step(const FieldDialogueStep &s,
                   "Dialogue lifecycle valid external talker adapter pending");
     if (n->source != context_.source_npc)
       return fail(e, "Dialogue lifecycle changed talker typed method pending");
+    if(room_source_)return room_host_.stop_talker(o.talker,n->source,e);
     if (!npcs_->stop_interaction(n->source))
       return fail(e, npcs_->error().c_str());
     return true;

@@ -328,6 +328,10 @@ bool FieldGlobalRegistry::create_continuation_stable_canvas(FieldObjectId&out,st
  stable_canvas_=canvas;out=canvas;e.clear();return true;
 }
 bool FieldGlobalRegistry::persistent_reparent(FieldObjectId id,FieldObjectId parent,std::string&e){
+ return persistent_reparent_before_enter(id,parent,{},e);
+}
+bool FieldGlobalRegistry::persistent_reparent_before_enter(FieldObjectId id,
+    FieldObjectId parent,PersistentTransfer before_enter,std::string&e){
  auto i=objects_.find(id),p=objects_.find(parent);
  if(poisoned_||i==objects_.end()||p==objects_.end()||!i->second.tree||!p->second.tree)return fail(e,"Global persistent reparent actual Tree owners missing");
  auto original=i->second.tree;auto destination=p->second.tree;auto*n=original->state(id);
@@ -342,6 +346,30 @@ bool FieldGlobalRegistry::persistent_reparent(FieldObjectId id,FieldObjectId par
   }
   if(!original->transfer_detached_subtree(*destination,id,e))return false;
   for(auto child:pending){auto&slot=objects_.at(child);slot.tree=destination;slot.dispatch=p->second.dispatch;slot.external_parent=0;}
+  if(before_enter){
+   struct Lifecycle {FieldObjectId id;uint32_t source;bool ready_first,ready_notified,bound;};
+   std::vector<Lifecycle> retained;
+   for(auto child:pending){
+    const auto*state=destination->state(child);
+    if(!state||state->inside){poisoned_=true;return fail(e,"Global persistent transfer entered before native rebind");}
+    retained.push_back({child,state->source,state->ready_first,state->ready_notified,state->bound});
+   }
+   if(!before_enter(*original,*destination,pending,e)){
+    poisoned_=true;
+    if(e.empty())e="Global persistent native rebind failed";
+    return false;
+   }
+   for(const auto&saved:retained){
+    const auto*state=destination->state(saved.id);
+    if(!state||state->inside||state->source!=saved.source||
+       state->ready_first!=saved.ready_first||state->ready_notified!=saved.ready_notified||
+       state->bound!=saved.bound||objects_.at(saved.id).tree!=destination){
+     poisoned_=true;
+     return fail(e,"Global persistent rebind changed actual subtree/lifecycle");
+    }
+   }
+   if(destination->state(id)->parent){poisoned_=true;return fail(e,"Global persistent rebind attached before source add_child");}
+  }
  }
  return destination->add_child(parent,id,e);
 }
@@ -408,6 +436,12 @@ bool FieldGlobalRegistry::get_path(FieldObjectId id,std::string&out,std::string&
  if(!id)return fail(e,"Global actual path does not reach source Viewport root");
  out.clear();for(auto i=names.rbegin();i!=names.rend();++i){out+='/';out+=*i;}e.clear();return true;
 }
+size_t FieldGlobalRegistry::pending_messages_to(const std::set<FieldObjectId>&targets)const{
+ size_t count=0;
+ for(const auto&m:messages_)if(targets.count(m.object))++count;
+ if(active_messages_)for(const auto&m:*active_messages_)if(targets.count(m.object))++count;
+ return count;
+}
 bool FieldGlobalRegistry::enqueue(FieldDeferredMessage m,std::string&e){
  if(!initialized_||poisoned_||!m.object||uint32_t(m.kind)>2||messages_.size()>=65536||m.args.size()>64)return fail(e,"Global MessageQueue budget/opcode rejected");
  if((m.kind!=FieldDeferredKind::Notification&&!member_name(m.member))||(m.kind==FieldDeferredKind::Set&&m.args.size()!=1)||(m.kind==FieldDeferredKind::Notification&&(!m.args.empty()||m.notification<0)))return fail(e,"Global MessageQueue signature rejected");
@@ -449,6 +483,8 @@ bool FieldGlobalRegistry::flush_messages(std::string&e){
  flushing_=true;size_t done=0;
  while(!messages_.empty()){
   std::deque<FieldDeferredMessage>read;read.swap(messages_);
+  struct ActiveRead {const std::deque<FieldDeferredMessage>**slot;~ActiveRead(){*slot=nullptr;}};
+  ActiveRead active{&active_messages_};active_messages_=&read;
   while(!read.empty()){
    auto m=std::move(read.front());read.pop_front();
    if(++done>1000000){flushing_=false;poisoned_=true;return fail(e,"Global MessageQueue recursion budget rejected");}

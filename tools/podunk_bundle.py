@@ -175,7 +175,8 @@ def checked_audio():
  return out
 
 def derive():
- recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==90,'Bundle recipe scope')
+ recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==94,'Bundle recipe scope')
+ require([r['role']for r in recipe['packs']]==list(range(1,95))and len({r['name']for r in recipe['packs']})==94 and len({r['path']for r in recipe['packs']})==94,'Bundle role identity/coverage')
  with concurrent.futures.ThreadPoolExecutor(max_workers=4)as pool:rows=list(pool.map(one_pack,recipe['packs']))
  packs=[];assets=checked_audio();inputs={RECIPE.relative_to(ROOT).as_posix():sha(RECIPE)};all_sources={}
  for entry,staged,d in rows:

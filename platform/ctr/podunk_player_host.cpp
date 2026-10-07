@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "podunk_player_host.hpp"
 #include <algorithm>
 #include <cmath>
@@ -975,5 +976,56 @@ bool PodunkPlayerHost::draw(FieldObjectId id, const FieldTransform &viewport,
                                 std::atan2(x.y, x.x), &tint, sx, sy)
              ? true
              : fail(e, "Player Sprite actual GPU submission failed");
+}
+bool PodunkPlayerHost::rebind_tree(std::shared_ptr<FieldNodeTreeRuntime> next,
+                                  std::string &e) {
+  if (!live(e) || !ready_complete() || building_ || input_event_ || !next ||
+      next.get() == tree_.get() || !services_.world ||
+      services_.world->registry() != services_.registry ||
+      services_.world->tree() != next.get() ||
+      next->object_domain() != services_.registry->kernel() ||
+      objects_.size() != sources_.initialization->recipe().records().size() ||
+      constructed_.size() != objects_.size())
+    return fail(e, "Player rebind requires actual completed subtree/Registry/world transfer");
+  const auto *root = next->state(body_.object());
+  if (!root || root->parent || root->inside || next->lifecycle_pending())
+    return fail(e, "Player rebind must precede destination add_child/Enter");
+  // Every source node must retain its original ObjectID, not merely a matching
+  // replacement descriptor. The old tree must no longer contain any of them.
+  for (const auto &entry : objects_) {
+    const auto *record = sources_.initialization->recipe().record(entry.second);
+    FieldObjectId relative = 0;
+    if (!record || !constructed_.count(entry.first) || tree_->state(entry.first) ||
+        !player_rebind_node(*sources_.initialization, *services_.registry,
+                            *next, entry.first, entry.second, e) ||
+        !next->get_node(body_.object(), record->path, relative, e) ||
+        relative != entry.first)
+      return fail(e, "Player original complete source-object transfer rejected");
+  }
+  // Source transfer already committed upstream. Any later component failure
+  // blocks this host; callbacks can never continue with mixed tree pointers.
+  // Keep the prior Tree alive while existing borrowers are checked/rebound.
+  const auto old = tree_;
+  tree_ = next;
+  if (!body_.rebind_tree(*next, e) || !ready_.rebind_tree(*next, e) ||
+      !motion_.rebind_tree(*next, e) || !kinematic_.rebind_tree(*next, e) ||
+      !animation_.rebind_tree(*next, e) || !media_.rebind_tree(*next, e)) {
+    poisoned_ = true;
+    return false;
+  }
+  for (auto &fetcher : fetchers_)
+    if (!fetcher.second->rebind_tree(*next, e)) {
+      poisoned_ = true;
+      return false;
+    }
+  if (!visual_.rebind_tree(*next, e) || !arrow_native_.rebind_tree(*next, e) ||
+      !children_.rebind_tree(*next, e)) {
+    poisoned_ = true;
+    return false;
+  }
+  // Timers and effects resolve their live tree through the same Registry.
+  // Playback, Character, resources and connections retain their actual owners.
+  e.clear();
+  return true;
 }
 } // namespace encore::ctr

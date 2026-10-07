@@ -22,6 +22,14 @@ struct WorldDialoguePose {
 };
 enum class HouseAudioKind:uint32_t {MenuOpen=1,MenuClose,Confirm,VoiceStart,VoiceStop};
 struct HouseAudioEvent {HouseAudioKind kind=HouseAudioKind::VoiceStop;std::string voice;double pitch=1;};
+// Actual function/receiver bindings; no callback is invoked by observation.
+struct HousePresentationCallbacks {
+ HouseLocaleResolver locale=nullptr;void*locale_state=nullptr;
+ HouseGlyphAdvance glyph=nullptr;void*glyph_state=nullptr;
+ bool(*value)(void*,HouseTokenKind,std::string&)=nullptr;void*value_state=nullptr;
+ bool(*completion)(void*)=nullptr;void*completion_state=nullptr;
+ SourceRandom*random=nullptr;
+};
 // Native AnimationTree subset: data-selected one/four-direction source
 // states, including immediate Idle->Talk and at-end Talk->Idle edges.
 class HouseNpcAnimation {
@@ -38,6 +46,12 @@ private:
 class HousePresentation {
 public:
  bool begin(HouseView,BattleView,SourceRandom&);
+ HousePresentationCallbacks callback_bindings()const;
+ bool source_frame_closed()const;
+ bool admit_source_callback_rebind(const HousePresentation&old,const void*old_world,
+     void*next_world,bool(*completion)(void*),void*completion_state,std::string&)const;
+ bool rebind_source_callbacks(const HousePresentation&old,const void*old_world,
+     void*next_world,bool(*completion)(void*),void*completion_state,std::string&);
  void set_locale_resolver(HouseLocaleResolver resolver,void*state){locale_resolver_=resolver;locale_state_=state;}
  void set_font_line_height(float value){font_line_height_=value;}
  void set_glyph_advance(HouseGlyphAdvance callback,void*state){glyph_advance_=callback;glyph_state_=state;}
@@ -73,6 +87,7 @@ public:
  bool dialogue_stopped()const{return stopped_;}bool dialogue_finished()const{return finished_;}
  bool dialogue_closing()const{return closing_;}uint32_t visible_characters()const{return visible_;}
  uint32_t current_segment()const{return segment_;}bool talking()const{return talking_;}
+ uint32_t source_first_segment()const{return first_segment_;}
  HouseNpcPose npc_pose(uint32_t)const;HouseDoorPose openable_door_pose(uint32_t,bool visible)const;WorldDialoguePose dialogue_pose()const;
  HouseSourceTextState source_text_state() const;
  std::vector<HouseAudioEvent>take_audio_events();

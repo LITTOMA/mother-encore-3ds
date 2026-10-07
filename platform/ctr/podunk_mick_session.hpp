@@ -1,6 +1,7 @@
 #pragma once
 #include "encore/blackbars.hpp"
 #include "encore/field_scene_sources.hpp"
+#include "encore/field_global_data.hpp"
 #include "podunk_dialogue_lifecycle_ports.hpp"
 #include "podunk_dialogue_options_adapter.hpp"
 #include "podunk_dialogue_scene_native.hpp"
@@ -8,6 +9,39 @@
 #include "podunk_stable_canvas.hpp"
 namespace encore::ctr {
 class PodunkHouseDoorFade;
+class PodunkMickHouseTalkerOwner {
+public:
+  virtual ~PodunkMickHouseTalkerOwner()=default;
+  virtual const upstream::FreshHouseState *house()const=0;
+  virtual bool set_talking(upstream::FieldObjectId,bool,std::string&)=0;
+};
+// Read-only borrow of the actual fixed session's owners and live source maps.
+// No copied scheduler, notification flags or synthesized callback completion.
+struct PodunkMickHouseNativeState {
+  upstream::FieldGlobalRegistry *registry=nullptr;
+  HouseUiContinuation *ui=nullptr;
+  PodunkDialogueHost *dialogue=nullptr;
+  PodunkDialogueRootOwner *root=nullptr;
+  PodunkDialogueLifecyclePorts *lifecycle=nullptr;
+  PodunkDialogueSceneNative *native=nullptr;
+  PodunkDialogueProgrammePort *old_programme=nullptr;
+  const upstream::FieldNodeRecipeData *recipe=nullptr;
+  const upstream::FieldDialogueLifecycleData *life=nullptr;
+  const upstream::FieldDialogueAudioData *audio_data=nullptr;
+  std::string input_sound_node;
+  const upstream::DialogueChoicesData *choice_data=nullptr;
+  const upstream::LocaleSelection *locale=nullptr;
+  upstream::DialogueChoices *choices=nullptr;
+  upstream::FieldGlobalDataRuntime *global_data=nullptr;
+  upstream::SourceRandom *random=nullptr;
+  std::vector<uint32_t> *uid_ledger=nullptr;
+  std::vector<upstream::FieldObjectId> objects,history;
+  std::vector<PodunkDialogueWaitConnection> wait_connections;
+  PodunkDialogueFrame frame{};
+  upstream::FieldObjectId notifying=0,printer_owner=0,callback_receiver=0;
+  size_t callback_depth=0,pending_messages=0;
+  bool input_live=false,retired=false,business_pending=false;
+};
 struct PodunkMickInput {
   PodunkHouseContinuation *continuation = nullptr;
   const upstream::PodunkBundleData *bundle = nullptr;
@@ -45,7 +79,7 @@ struct PodunkMickInput {
 // The original Mick programme uses the same scene, printer, inventory, source
 // factory and clocks. The source-only prepare installs callbacks before Ready;
 // activate is only called after the real door transaction completes.
-class PodunkMickSession {
+class PodunkMickSession final : public HouseUiReentryBorrowOwner {
 public:
   PodunkMickSession();
   ~PodunkMickSession();
@@ -69,11 +103,27 @@ public:
   bool idle_begin(std::string &);
   bool idle_end(uint64_t, float, bool, std::string &);
   bool begin_input(const upstream::PlayerInputEvent &, std::string &);
+  bool begin_house_input(upstream::FreshHouseState &,const upstream::PlayerInputEvent &,
+                         std::string &);
+  bool house_idle_tail(upstream::FreshHouseState &,uint64_t,float,bool,std::string &);
   void end_input();
   bool input_handled() const;
   bool draw(uint64_t, std::string &);
   bool telepathy_effect(upstream::FieldObjectId, bool, std::string &);
   bool active() const;
+  // Retire old outdoor traversal after the real Door frees that source scene.
+  // Resources/Canvas/dialogue owners stay alive for the checked House adapter.
+  bool source_scene_retired() const;
+  bool house_native_state(upstream::FreshHouseState &,PodunkMickHouseNativeState &,
+                          std::string &) const;
+  bool bind_house_talker(upstream::FreshHouseState &,PodunkMickHouseTalkerOwner &,
+                         std::string &);
+  bool rebind_house_programme(upstream::FreshHouseState &,
+      const PodunkDialogueProgrammeBinding &,PodunkDialogueProgrammePort &,
+      std::string &);
+  bool observe(const HouseUiReentryInput &,const HouseUiContinuation &,bool rebound,
+               HouseUiReentryBorrowState &,std::string &) const override;
+  bool rebind(const HouseUiReentryInput &,HouseUiContinuation &,std::string &) override;
 
 private:
   struct State;

@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/player_ready.hpp"
+#include "encore/house_return_ladder.hpp"
 #include "encore/player_effects.hpp"
 #include "podunk_player_visual_native.hpp"
 
@@ -50,8 +51,16 @@ struct PodunkPlayerSpriteState {
 // Owns ordinary Sprite native properties, and the source AnimationPlayer's
 // actual track caches. Canvas values remain in the one actual SceneTree.
 // Shadow/Bat retain their existing native owners; they are never duplicated.
-class PodunkPlayerAnimation {
+class PodunkPlayerAnimation : public upstream::PlayerLadderAnimationNative {
 public:
+  const upstream::FieldGlobalRegistry *ladder_registry() const override { return registry_; }
+  const upstream::FieldNodeTreeRuntime *ladder_tree() const override { return tree_; }
+  bool ladder_animation(upstream::FieldObjectId, std::string_view, std::string &) const override;
+  bool ladder_play(upstream::FieldObjectId id, std::string_view clip, std::string &e) override { return play(id, clip, e); }
+  bool ladder_stop(upstream::FieldObjectId id, std::string &e) override { return stop(id, e); }
+  bool ladder_speed(upstream::FieldObjectId, double, std::string &) override;
+  bool playback_speed(upstream::FieldObjectId, double, std::string &);
+  bool rebind_tree(upstream::FieldNodeTreeRuntime &, std::string &);
   bool construct(const upstream::PlayerInitializationData &,
                  const upstream::PlayerReadyData &,
                  upstream::FieldNodeTreeRuntime &,
@@ -121,6 +130,8 @@ private:
     bool loop = false;
     std::vector<Track> tracks;
   };
+  bool check_rebind_tree(const upstream::FieldNodeTreeRuntime &, std::string &) const;
+  void commit_rebind_tree(upstream::FieldNodeTreeRuntime &);
   bool live(std::string &) const;
   bool construct_one(const upstream::PlayerInitializationData &,
                      const upstream::PlayerReadyData &,

@@ -64,7 +64,7 @@ def load():
  for p,h in d['sources'].items():require(h==inv[p]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/p),'Changed NodeTree source '+p)
  return d
 
-def encode(d):
+def encode(d,ir_sha256=None):
  b=bytearray(128)
  def u(*v):b.extend(struct.pack('<'+'I'*len(v),*v))
  def i(*v):b.extend(struct.pack('<'+'i'*len(v),*v))
@@ -75,7 +75,8 @@ def encode(d):
   u(*[r[k]for k in ['id','parent','owner','canvas_parent','class_index','ready','pause','flags','light_mask','script_methods']]);i(r['index'],r['priority'],r['z']);f(*[v for row in r['local']for v in row],*[v for row in r['world']for v in row],*r['modulate'],*r['self_modulate']);t(r['node']);t(r['name']);t(r['script']);b.extend(bytes.fromhex(r['script_sha']));u(len(r['groups']));[t(v)for v in r['groups']]
  u(len(d['sources']))
  for p,h in d['sources'].items():t(p);b.extend(bytes.fromhex(h))
- struct.pack_into('<8s8I',b,0,b'ENCFNTR1',1,128,len(b),0,0x454e003c,3,len(d['records']),d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',b,20,zlib.crc32(b[128:]));return bytes(b)
+ require(ir_sha256 is None or re.fullmatch('[0-9a-f]{64}',ir_sha256),'NodeTree explicit IR hash rejected')
+ struct.pack_into('<8s8I',b,0,b'ENCFNTR1',1,128,len(b),0,0x454e003c,3,len(d['records']),d['scene_id']);b[40:60]=bytes.fromhex(PIN);b[60:92]=bytes.fromhex(d['source_sha256']);b[92:124]=bytes.fromhex(ir_sha256)if ir_sha256 is not None else hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',b,20,zlib.crc32(b[128:]));return bytes(b)
 
 def stage_files(source):
  raw=encode(load());require((Path(source)/'data/podunk.encnodetree').read_bytes()==raw,'StagedNodeTree differs');return {Path('data/podunk.encnodetree'):raw}

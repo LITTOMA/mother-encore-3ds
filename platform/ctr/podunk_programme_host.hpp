@@ -4,6 +4,7 @@
 #include "encore/field_programme.hpp"
 #include "encore/field_psi.hpp"
 #include "encore/field_scene_host.hpp"
+#include "podunk_dialogue_programme_port.hpp"
 #include <algorithm>
 namespace encore::ctr {
 // The platform owns genuine save/audio/UI endpoints. These closures are not
@@ -41,7 +42,7 @@ struct PodunkProgrammeOps {
   upstream::BasementProgressionHost keys;
   upstream::FieldTelepathyHost telepathy;
 };
-class PodunkProgrammeHost final {
+class PodunkProgrammeHost final : public PodunkDialogueProgrammePort {
   const upstream::FieldProgrammeData *data_ = nullptr;
   const upstream::BasementProgressionData *basement_ = nullptr;
   const upstream::FieldNodeTreeData *tree_data_ = nullptr;
@@ -55,7 +56,7 @@ class PodunkProgrammeHost final {
   upstream::FieldProgrammeRuntime programme_;
   upstream::FieldTelepathyRuntime telepathy_;
   PodunkProgrammeOps ops_{};
-  bool prepared_ = false, active_ = false;
+  bool prepared_ = false, active_ = false, source_scene_retired_ = false;
   bool source_cursor_owned_ = false;
   uint32_t choice_group_ = upstream::kRoomNoIndex, generation_ = 0;
   static bool fail(std::string &e, const char *m) {
@@ -63,7 +64,7 @@ class PodunkProgrammeHost final {
     return false;
   }
   bool live(std::string &e) const {
-    if (!active_ || !prepared_ || !tree_ || !scene_ || !scene_->scene_ready())
+    if (source_scene_retired_ || !active_ || !prepared_ || !tree_ || !scene_ || !scene_->scene_ready())
       return fail(e,
                   "Podunk programme scene is not completely admitted/active");
     const auto *root = tree_->state(tree_->root());
@@ -214,6 +215,39 @@ class PodunkProgrammeHost final {
   }
 
 public:
+  bool programme_binding(PodunkDialogueProgrammeBinding &out, std::string &e) const override {
+    std::array<uint8_t,32> source{};
+    if(!prepared_||!data_||!data_->valid()||!tree_data_||!tree_data_->valid()||
+       !presentation_||!choices_||data_->scene()!=tree_data_->source_scene()||
+       data_->commit()!=tree_data_->identity().upstream_commit||
+       !data_->source_hash(data_->scene(),source)||source!=tree_data_->identity().source_sha256)
+      return fail(e,"Programme port requires its actual checked VM/source owner");
+    out={tree_data_->identity(),&programme_,presentation_,choices_};e.clear();return true;
+  }
+  bool dialogue_context(PodunkDialogueProgrammeContext &out,std::string &e) const override {
+    if(!live(e))return false;
+    const auto &context=programme_.context();
+    out.dialogue_object=context.dialogue_object;out.actor_object=context.actor_object;
+    out.generation=programme_.scheduler().generation();out.thoughts=context.thoughts;
+    e.clear();return true;
+  }
+  bool dialogue_status(upstream::DialogueStatus &out,std::string &e) const override {
+    PodunkDialogueProgrammeBinding actual;
+    if(!programme_binding(actual,e))return false;
+    out=programme_.scheduler().status();e.clear();return true;
+  }
+  bool ready_waiting(bool &out,std::string &e) const override {
+    PodunkDialogueProgrammeBinding actual;
+    if(!programme_binding(actual,e))return false;
+    out=programme_.source_ready_pending();e.clear();return true;
+  }
+  bool source_hash(std::string_view source,std::array<uint8_t,32> &out) const override {
+    if(!prepared_||!data_||!data_->valid())return false;
+    return data_->source_hash(source,out);
+  }
+  bool advance(bool confirm,bool cancel,std::string &e) override {
+    return input({0,0,confirm,cancel},0,e);
+  }
   bool prepare(const upstream::FieldProgrammeData &d,
                const upstream::BasementProgressionData &basement,
                const upstream::FieldPsiData &psi,
@@ -355,6 +389,36 @@ public:
     choice_group_ = upstream::kRoomNoIndex;
     generation_ = 0;
   }
+  bool observes_closed_printer(const upstream::HousePresentation &p,std::string &e)const{
+    const auto phase=programme_.scheduler().status();
+    if(!prepared_||!active_||presentation_!=&p||!p.source_frame_closed()||!data_||
+       !data_->valid()||!tree_data_||!tree_data_->valid()||
+       data_->commit()!=tree_data_->identity().upstream_commit||
+       (phase!=upstream::DialogueStatus::Idle&&phase!=upstream::DialogueStatus::Completed&&
+        phase!=upstream::DialogueStatus::Cancelled)||!choices_||choices_->active())
+      return fail(e,"Programme printer rebind requires its actual closed source cursor");
+    e.clear();return true;
+  }
+  bool admit_printer_rebind(const upstream::HousePresentation &old,
+      const upstream::HousePresentation &next,std::string &e)const{
+    if(&old==&next||!observes_closed_printer(old,e)||!next.source_frame_closed()||
+       old.callback_bindings().random!=next.callback_bindings().random)
+      return fail(e,"Programme actual printer destination differs");
+    e.clear();return true;
+  }
+  bool rebind_printer(const upstream::HousePresentation &old,
+      upstream::HousePresentation &next,std::string &e){
+    if(!admit_printer_rebind(old,next,e))return false;
+    presentation_=&next;e.clear();return true;
+  }
+  // The old programme remains the same checked source/cursor. It cannot be
+  // dispatched against a House actor or Room programme after the scene frees.
+  bool retire_source_scene(std::string &e) {
+    if(source_scene_retired_||!presentation_||!observes_closed_printer(*presentation_,e))
+      return fail(e,"Programme source retirement requires its actual closed cursor");
+    source_scene_retired_=true;e.clear();return true;
+  }
+  bool source_scene_retired() const { return source_scene_retired_; }
   bool active() const { return active_; }
   bool admit_telepathy(std::string &e) {
     return live(e) && telepathy_.admit(e);
@@ -395,7 +459,7 @@ public:
       return fail(e, programme_.scheduler().error());
     return true;
   }
-  bool text_completed(std::string &e) {
+  bool text_completed(std::string &e) override {
     if (!live(e))
       return false;
     if (programme_.scheduler().status() !=
@@ -467,7 +531,7 @@ public:
   // programme target and source post-target InputSound order.
   bool source_cursor_input(uint64_t actual_dialogue, uint32_t generation,
                            int32_t index, bool confirm, bool cancel,
-                           std::string &e) {
+                           std::string &e) override {
     if (!live(e) || !actual_dialogue || !generation ||
         generation != generation_ ||
         programme_.context().dialogue_object != actual_dialogue ||

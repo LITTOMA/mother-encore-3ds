@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "encore/player_visual_scripts.hpp"
 #include <algorithm>
 namespace encore::upstream {
@@ -252,5 +253,26 @@ const PlayerVisualScriptState *
 PlayerVisualScriptsRuntime::state(FieldObjectId id) const {
   auto f = states_.find(id);
   return f == states_.end() ? nullptr : &f->second;
+}
+bool PlayerVisualScriptsRuntime::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!data_ || !player_data_ || !registry_ || !player_ ||
+      player_->tree() != &next || !shadow_ || !bat_ || !fetcher_ ||
+      shadow_->tree() != &next || bat_->tree() != &next || fetcher_->tree() != &next)
+    return fail(e, "Player visual rebind requires same preserved native/script owners");
+  for (const auto &entry : states_) {
+    auto *descriptor = next.descriptor(entry.first);
+    if (!entry.second.constructed || !entry.second.onready_complete || !descriptor ||
+        !player_rebind_node(*player_data_, *registry_, next, entry.first, descriptor->id, e))
+      return false;
+    if (entry.second.special) {
+      auto *special = next.descriptor(entry.second.special);
+      if (!special || !player_rebind_node(*player_data_, *registry_, next,
+                                          entry.second.special, special->id, e))
+        return false;
+    }
+  }
+  tree_ = &next;
+  e.clear();
+  return true;
 }
 } // namespace encore::upstream

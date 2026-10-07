@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "encore/player_ready.hpp"
 #include <algorithm>
 #include <cmath>
@@ -347,6 +348,16 @@ bool PlayerReadyRuntime::ready(FieldTreePhase phase,
       !assign(PlayerReadyBinding::LastStep, 7, false, position, 0, e))
     return abort();
   complete_ = true;
+  return true;
+}
+bool PlayerReadyRuntime::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!body_complete() || !body_ || !body_->constructed() ||
+      body_->tree() != &next || !body_->registry() || !body_->data() ||
+      !player_rebind_node(*body_->data(), *body_->registry(), next,
+                          body_->object(), body_->data()->recipe().identity().scene_id, e))
+    return fail(e, "Player Ready rebind requires preserved completed body");
+  tree_ = &next;
+  e.clear();
   return true;
 }
 } // namespace encore::upstream

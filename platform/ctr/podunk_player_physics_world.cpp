@@ -30,6 +30,59 @@ bool fail(std::string &e, const char *s) {
   e = s;
   return false;
 }
+bool house_deleted_landmark(const HouseReturnSources&sources,
+    const FieldNodeTreeRuntime&tree,uint32_t node){
+  const auto&g=sources.geometry();
+  for(uint32_t at=node;at!=UINT32_MAX;at=g.node(at).parent){
+    const auto source=g.node(at);
+    for(const auto&landmark:sources.reentry().landmarks())
+      if(g.string(source.path)==landmark.node&&!tree.source_object(source.stable_id))return true;
+  }
+  return false;
+}
+bool house_geometry_receipt(const HouseReturnSources&sources,
+    const FieldNodeTreeRuntime&old_tree,FieldObjectId old_root,
+    const FieldNodeTreeRuntime&tree,FieldObjectId root,
+    const FieldGlobalRegistry&registry,const FieldGeometrySpace&space,std::string&e){
+  const auto&nodes=sources.tree();const auto&g=sources.geometry();
+  FieldIdentity identity;const auto*s=tree.state(root);const auto*d=tree.descriptor(root);
+  if(!sources.valid()||space.source()!=&g||&old_tree==&tree||!old_root||
+     old_tree.root()!=old_root||old_tree.state(old_root)||old_tree.lifecycle_pending()||
+     registry.object_exists(old_root)||tree.object_domain()!=registry.kernel()||
+     old_tree.object_domain()!=tree.object_domain()||tree.root()!=root||!s||!d||!s->alive||
+     !s->bound||registry.tree_owner(root).get()!=&tree||!registry.object_exists(root)||
+     d->id!=nodes.identity().scene_id||!nodes.record(d->id)||
+     !tree.object_identity(root,identity)||identity.scene_id!=nodes.identity().scene_id||
+     identity.upstream_commit!=nodes.identity().upstream_commit||
+     identity.source_sha256!=nodes.identity().source_sha256||
+     nodes.source_scene()!=sources.reentry().target_scene()||g.source_scene()!=nodes.source_scene())
+    return fail(e,"Player PhysicsWorld exact loaded House/old deletion receipt rejected");
+  for(uint32_t i=0;i<g.owner_count();++i){
+    const auto o=g.owner(i);const auto n=g.node(o.node);const auto id=tree.source_object(n.stable_id);
+    if(!id){
+      if(!house_deleted_landmark(sources,tree,o.node))
+        return fail(e,"Player PhysicsWorld House source owner omitted without landmark deletion");
+      continue;
+    }
+    const auto*state=tree.state(id);const auto*descriptor=tree.descriptor(id);FieldPhysicsRid rid;
+    if(!state||!descriptor||!state->bound||!registry.object_exists(id)||
+       registry.tree_owner(id).get()!=&tree||!space.house_owner_rid(id,sources,rid,e)||
+       !space.rid_alive(rid))return fail(e,"Player PhysicsWorld House actual owner/RID proof differs");
+    for(uint32_t j=o.shape_first;j<o.shape_first+o.shape_count;++j){
+      const auto shape=g.shape(j);const auto sn=g.node(shape.node);
+      const auto sid=tree.source_object(sn.stable_id);const auto*ss=tree.state(sid);
+      const auto*sd=tree.descriptor(sid);const auto*source=nodes.record(sn.stable_id);
+      if(!sid||!ss||!sd||!source||!ss->bound||ss->parent!=id||
+         !registry.object_exists(sid)||registry.tree_owner(sid).get()!=&tree||
+         sd->id!=sn.stable_id||sd->path!=source->path||sd->native_class!=source->native_class||
+         sd->script!=source->script||sd->script_sha!=source->script_sha||
+         !tree.object_identity(sid,identity)||identity.scene_id!=nodes.identity().scene_id||
+         identity.upstream_commit!=nodes.identity().upstream_commit||identity.source_sha256!=nodes.identity().source_sha256)
+        return fail(e,"Player PhysicsWorld House actual owner/shape source relation differs");
+    }
+  }
+  e.clear();return true;
+}
 const char *node_signal(bool area, bool enter) {
   return area ? (enter ? "area_entered" : "area_exited")
               : (enter ? "body_entered" : "body_exited");
@@ -69,6 +122,45 @@ bool PodunkPlayerPhysicsWorld::bind_camera(PodunkPlayerCamera &c,
         e, "Player PhysicsWorld native Camera binding repeated/unprepared");
   camera_ = &c;
   return true;
+}
+bool PodunkPlayerPhysicsWorld::rebind_tree(FieldNodeTreeRuntime &next,
+    SourceObject source,std::string &e){
+  if(!data_||poisoned_||locked_||flushing_||!registry_||!space_||!source||
+     next.object_domain()!=registry_->kernel()||!pairs_.empty()||!pending_.empty())
+    return fail(e,"Player PhysicsWorld transfer is not at the native Exit boundary");
+  for(const auto &entry:natives_){
+    const auto &native=entry.second;const auto *state=next.state(entry.first);
+    const auto *descriptor=next.descriptor(entry.first);
+    const auto *original=data_->recipe().record(native.stable);FieldIdentity identity;
+    if(native.entered||native.registered||!state||state->inside||!descriptor||!original||
+       registry_->tree_owner(entry.first).get()!=&next||descriptor->id!=native.stable||
+       descriptor->native_class!=native.klass||descriptor->script_sha!=original->script_sha||
+       !next.object_identity(entry.first,identity)||
+       identity.scene_id!=data_->recipe().identity().scene_id||
+       identity.source_sha256!=data_->recipe().identity().source_sha256||
+       identity.upstream_commit!=data_->identity().upstream_commit)
+      return fail(e,"Player PhysicsWorld did not transfer its same actual native nodes");
+  }
+  for(const auto &entry:monitors_){
+    const auto &monitor=entry.second;
+    if(natives_.count(entry.first) && (monitor.native_entered||!monitor.bodies.empty()||!monitor.areas.empty()))
+      return fail(e,"Player PhysicsWorld transfer retains old entered monitor pairs");
+    if(!natives_.count(entry.first)&&monitor.native_entered)
+      return fail(e,"Player PhysicsWorld old static monitor is still entered");
+  }
+  for(const auto &entry:natives_)if(entry.second.klass=="Area2D"||entry.second.klass=="KinematicBody2D")
+    if(!space_->rebind_player_owner(*data_,next,*registry_,entry.first,e)){poisoned_=true;return false;}
+  tree_=&next;source_=std::move(source);sampled_=false;
+  house_sources_=nullptr;house_old_tree_=nullptr;house_old_root_=house_root_=0;
+  e.clear();return true;
+}
+bool PodunkPlayerPhysicsWorld::bind_house_geometry(const HouseReturnSources&sources,
+    const FieldNodeTreeRuntime&old_tree,FieldObjectId old_root,FieldObjectId root,std::string&e){
+  if(!data_||poisoned_||locked_||flushing_||house_sources_||!tree_||!registry_||!space_||
+     !house_geometry_receipt(sources,old_tree,old_root,*tree_,root,*registry_,*space_,e))
+    return fail(e,"Player PhysicsWorld House bind lacks actual replacement/deletion closure");
+  house_sources_=&sources;house_old_tree_=&old_tree;house_old_root_=old_root;house_root_=root;
+  e.clear();return true;
 }
 bool PodunkPlayerPhysicsWorld::construct(FieldObjectId id,
                                          const FieldNodeDescriptor &n,
@@ -296,10 +388,20 @@ bool PodunkPlayerPhysicsWorld::admit_static_monitor(FieldObjectId id,
   const auto *s = t ? t->state(id) : nullptr;
   FieldIdentity identity{};
   FieldObjectId actual = 0;
+  bool house=false;
+  if(house_sources_){
+    const auto*root_state=tree_?tree_->state(house_root_):nullptr;
+    if(!house_old_tree_||!tree_||t.get()!=tree_||tree_->lifecycle_pending()||
+       !root_state||!root_state->inside||!root_state->ready_notified||!s||!s->ready_notified)
+      return fail(e,"Player PhysicsWorld House monitor requires actual completed source lifecycle");
+    if(!house_geometry_receipt(*house_sources_,*house_old_tree_,house_old_root_,
+          *tree_,house_root_,*registry_,*space_,e))return false;
+    house=true;
+  }
   if (!source_object(node.stable_id, actual, e) || actual != id || !d || !s ||
       !s->alive || !s->inside || !s->bound || d->id != node.stable_id ||
       !t->object_identity(id, identity) ||
-      identity.scene_id != g->identity().scene_id ||
+      identity.scene_id != (house?house_sources_->tree().identity().scene_id:g->identity().scene_id) ||
       identity.upstream_commit != g->identity().upstream_commit ||
       identity.source_sha256 != g->identity().source_sha256 ||
       owner.kind != 4 || owner.space_override || (owner.flags & 8) ||

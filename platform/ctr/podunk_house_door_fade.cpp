@@ -29,11 +29,28 @@ bool PodunkHouseDoorFade::initialize(HouseView source,const FieldDoorData &doors
 }
 bool PodunkHouseDoorFade::start(uint32_t id,bool in,std::string_view animation,
     const std::array<float,4>&color,float speed,std::string&e){
+  if(!initialized_ || !doors_)return fail(e,"House door Fade is not initialized");
+  return start_source(*doors_,id,in,animation,color,speed,e);
+}
+bool PodunkHouseDoorFade::start_source(const FieldDoorData &source,uint32_t id,
+    bool in,std::string_view animation,const std::array<float,4>&color,
+    float speed,std::string&e){
   FieldDoorDescriptor door;
-  if(!initialized_ || !doors_->find(id,door) || !std::isfinite(speed) || speed<=0)
+  if(!initialized_ || !source.valid() || !doors_ ||
+     source.identity().upstream_commit!=doors_->identity().upstream_commit ||
+     !source.find(id,door) || !std::isfinite(speed) || speed<=0)
     return fail(e,"House door Fade lacks actual source request");
-  auto expected=doors_->string(in?door.in_anim:door.out_anim);
-  if(!in && expected.empty())expected=doors_->string(door.in_anim);
+  // Both packs must refer to the same imported UI material/animation sources;
+  // accepting a pin alone would admit a different Fade implementation.
+  std::array<uint8_t,32> original{},actual{};
+  const auto *fade_paths=restore_source_ ? &restore_source_->business_policy() : nullptr;
+  if(&source!=doors_ && (!fade_paths || !source.source_hash(fade_paths->fade_script,actual) ||
+     !doors_->source_hash(fade_paths->fade_script,original) || actual!=original ||
+     !source.source_hash(fade_paths->fade_scene,actual) ||
+     !doors_->source_hash(fade_paths->fade_scene,original) || actual!=original))
+    return fail(e,"Door Fade source differs from the live imported UI owner");
+  auto expected=source.string(in?door.in_anim:door.out_anim);
+  if(!in && expected.empty())expected=source.string(door.in_anim);
   if(animation!=expected || (animation!="Fade" && animation!="Circle Focus") || color!=(in?door.in_color:door.out_color) ||
       speed!=(in?door.in_speed:door.out_speed))
     return fail(e,"House door Fade animation/color/speed differs or is unsupported");

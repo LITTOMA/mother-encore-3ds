@@ -4,6 +4,11 @@
 #include <cmath>
 namespace encore::upstream {
 namespace {
+struct ProgrammeCallback {
+    bool&live;
+    explicit ProgrammeCallback(bool&v):live(v){live=true;}
+    ~ProgrammeCallback(){live=false;}
+};
 unsigned direction_index(Vec2 d){if(d.y>0)return d.x<0?4:(d.x>0?5:0);if(d.y<0)return d.x<0?6:(d.x>0?7:3);return d.x<0?1:2;}
 std::string source_commit(const RoomView&v){if(!v.valid())return{};std::string s;const char*h="0123456789abcdef";for(size_t i=56;i<76;++i){s+=h[v.bytes()[i]>>4];s+=h[v.bytes()[i]&15];}return s;}
 }
@@ -50,8 +55,10 @@ bool OpeningWorld::initialize_restored(const RoomView&content,const std::vector<
     return initialize_state(content,viewport,&story_flags,&reviewed_mutations,position,direction);
 }
 bool OpeningWorld::initialize_state(const RoomView& content,Vec2 viewport,const std::vector<bool>*story_flags,const std::vector<bool>*reviewed_mutations,Vec2 position,Vec2 direction) {
+    if(house_programme_owner_||house_programme_callback_)return false;
     if(!persistent_player_){error_="Persistent player owner allocation failed";return false;}
     if(player_read_only_){error_="Retained player cannot be reset by New Game or LOAD initialization";return false;}
+    house_programme_failed_=false;house_programme_error_.clear();
     healthy_=initialized_=false;error_="Invalid scene content";
     if(!content.valid())return false;
     const auto pin=source_commit(content);
@@ -137,14 +144,51 @@ bool OpeningWorld::advance(WalkInput input) {
     persistent_player_.state_->player_=player;persistent_player_.state_->playback_=playback;persistent_player_.state_->clip_=selected;persistent_player_.state_->camera_.update_player_position(persistent_player_.state_->player_.position);return persistent_player_.state_->camera_.physics_frame(1.0/60.0);
 }
 bool OpeningWorld::begin_house_program(uint32_t program_index,uint32_t original_npc){
-    if(!healthy_||stage_!=OpeningStage::Walking||program_index>=content_.program_count()||dialogue_.active())return false;
+    if(house_programme_callback_||!healthy_||stage_!=OpeningStage::Walking||program_index>=content_.program_count()||dialogue_.active())return false;
     dialogue_=DialoguePlayer{};battle_=OpeningBattleRequest{};battle_accepted_=false;persistent_player_.state_->return_player_visible_=false;
     cutscene_done_=restore_pending_=false;choice_group_=kRoomNoIndex;save_requested_=storage_requested_=false;story_hides_.clear();pending_dialogue_id_=kRoomNoIndex;pending_actor_=talker_=kRoomNoActor;
     if(++generation_==0)++generation_;
     story_talker_=original_npc==kRoomNoIndex?DialogueTalker{}:DialogueTalker{DialogueTalkerKind::OriginalNpc,original_npc};
     program_index_=program_index;persistent_player_.state_->house_paused_=false;
+    if(house_programme_owner_){
+        if(house_programme_owner_->world()!=this)return house_programme_failure("House programme source-start owner changed its World receiver");
+        house_programme_error_.clear();
+        ProgrammeCallback call(house_programme_callback_);
+        if(!house_programme_owner_->source_started(*this,generation_,house_programme_error_))
+            return house_programme_failure("House programme source-start owner rejected the actual start");
+        if(house_programme_owner_->world()!=this||!healthy_)
+            return house_programme_failure("House programme source-start callback changed its actual receiver/state");
+    }
     if(!dialogue_.start(content_,program_index_,*this,generation_))return fail(dialogue_.error());
     return flush_deferred();
+}
+bool OpeningWorld::bind_house_programme_owner(OpeningHouseProgrammeOwner&owner,std::string&e){
+    if(house_programme_owner_||house_programme_callback_||!initialized_||!healthy_||
+       stage_!=OpeningStage::Walking||dialogue_.active()||owner.world()!=this){
+        e="House programme owner binding requires its actual initialized closed World";return false;
+    }
+    {ProgrammeCallback call(house_programme_callback_);
+     if(!owner.source_frame_closed(*this,e))return false;}
+    if(owner.world()!=this||!healthy_||stage_!=OpeningStage::Walking||dialogue_.active()){
+        e="House programme owner binding changed its actual closed World receiver/state";return false;
+    }
+    house_programme_owner_=&owner;e.clear();return true;
+}
+bool OpeningWorld::unbind_house_programme_owner(OpeningHouseProgrammeOwner&owner,std::string&e){
+    if(house_programme_owner_!=&owner||house_programme_callback_||dialogue_.active()||owner.world()!=this){
+        e="House programme owner unbinding requires the exact closed source owner";return false;
+    }
+    {ProgrammeCallback call(house_programme_callback_);
+     if(!owner.source_frame_closed(*this,e))return false;}
+    if(house_programme_owner_!=&owner||owner.world()!=this||dialogue_.active()){
+        e="House programme source owner changed during closed-frame admission";return false;
+    }
+    house_programme_owner_=nullptr;e.clear();return true;
+}
+bool OpeningWorld::house_programme_failure(const char*fallback){
+    house_programme_failed_=true;
+    if(house_programme_error_.empty())house_programme_error_=fallback;
+    return fail(house_programme_error_.c_str());
 }
 bool OpeningWorld::begin_battle_continuation(std::string_view source_path){
     if(!healthy_||stage_!=OpeningStage::BattleRequested||!battle_accepted_||!persistent_player_.state_->return_player_visible_||source_path.empty()||content_.string(battle_.win_cutscene_string)!=source_path)return false;
@@ -189,18 +233,18 @@ bool OpeningWorld::branch_condition(const DialogueAction& action,bool& matched){
     return false;
 }
 bool OpeningWorld::choose_story_option(uint32_t pc,uint32_t generation){
-    if(!healthy_||!story_choices_waiting()||generation!=dialogue_.generation()||pc>=content_.program(program_index_).command_count)return false;
+    if(house_programme_callback_||!healthy_||!story_choices_waiting()||generation!=dialogue_.generation()||pc>=content_.program(program_index_).command_count)return false;
     pending_dialogue_id_=kRoomNoIndex;choice_group_=kRoomNoIndex;
     if(!dialogue_.choices_selected(pc,generation,*this))return fail("Story choice callback rejected");
     return flush_deferred();
 }
 bool OpeningWorld::close_story_submenu(uint32_t generation){
-    if(!healthy_||!story_submenu_waiting())return false;
+    if(house_programme_callback_||!healthy_||!story_submenu_waiting())return false;
     if(!dialogue_.submenu_closed(generation,*this))return fail("Story submenu callback rejected");
     return flush_deferred();
 }
 bool OpeningWorld::finish_story_dialogue(bool automatic){
-    if(!healthy_||pending_dialogue_id_==kRoomNoIndex)return false;
+    if(house_programme_callback_||!healthy_||pending_dialogue_id_==kRoomNoIndex)return false;
     pending_dialogue_id_=kRoomNoIndex;
     if(!dialogue_.dialogue_finished(*this,automatic))return fail(dialogue_.error());
     return flush_deferred();
@@ -235,6 +279,35 @@ bool OpeningWorld::set_initial_actor_pose(uint32_t index,Vec2 position,Vec2 dire
 bool OpeningWorld::body_enabled(uint32_t body_id)const{
     for(auto i:active_polygons_)if(content_.polygon(i).body_id==body_id)return true;
     return false;
+}
+bool OpeningWorld::committed_collision_snapshot(const RoomView&expected,OpeningCollisionSnapshot&out,std::string&e)const{
+    if(!initialized_||!healthy_||scene_motion_||!expected.valid()||
+       content_.bytes()!=expected.bytes()||content_.byte_size()!=expected.byte_size()||
+       polygon_offsets_.size()!=content_.polygon_count()){
+        e="Committed Room collision source/state mismatch";return false;
+    }
+    uint32_t previous=kRoomNoIndex;
+    for(const auto i:active_polygons_){
+        if(i>=content_.polygon_count()||(previous!=kRoomNoIndex&&i<=previous)){
+            e="Committed Room collision index order rejected";return false;
+        }
+        previous=i;
+    }
+    for(const auto offset:polygon_offsets_)if(!std::isfinite(offset.x)||!std::isfinite(offset.y)||
+       std::abs(offset.x)>1000000||std::abs(offset.y)>1000000){
+        e="Committed Room collision offset rejected";return false;
+    }
+    for(const auto body:erased_bodies_){
+        bool known=false;
+        for(uint32_t i=0;i<content_.body_rule_count();++i)known|=content_.body_rule(i).body_id==body;
+        if(!known||body_enabled(body)){
+            e="Committed Room body deletion rejected";return false;
+        }
+    }
+    OpeningCollisionSnapshot candidate;
+    candidate.source=content_;candidate.active_polygons=active_polygons_;
+    candidate.polygon_offsets=polygon_offsets_;candidate.erased_bodies=erased_bodies_;
+    out=std::move(candidate);e.clear();return true;
 }
 bool OpeningWorld::set_body_enabled(uint32_t body_id,bool enabled){
     if(!healthy_||scene_motion_)return false;
@@ -297,14 +370,14 @@ bool OpeningWorld::finish_battle_return(){
     persistent_player_.state_->clip_=walk_clip(persistent_player_.state_->player_.animation,persistent_player_.state_->player_.direction);FrameClip clip;
     return content_.frame_clip(persistent_player_.state_->clip_,clip)&&begin_clip(clip,content_.clip(persistent_player_.state_->clip_).frame_count,persistent_player_.state_->playback_);
 }
-bool OpeningWorld::fail(const char* message){healthy_=false;stage_=OpeningStage::Error;error_=message;dialogue_.cancel();return false;}
+bool OpeningWorld::fail(const char* message){healthy_=false;stage_=OpeningStage::Error;error_=house_programme_failed_?house_programme_error_.c_str():message;dialogue_.cancel();return false;}
 bool OpeningWorld::trigger_conditions(uint32_t index) const {
     const auto trigger=content_.trigger(index);
     for(uint32_t i=0;i<trigger.condition_count;++i){const auto condition=content_.condition(trigger.condition_first+i);if(flags_.story_flag(condition.flag_index)!=condition.expected_value)return false;}
     return true;
 }
 bool OpeningWorld::idle_frame(double delta) {
-    if(!healthy_)return false;
+    if(house_programme_callback_||!healthy_)return false;
     if(!std::isfinite(delta)||delta<0||delta>double(0.1f))return fail("Unsupported idle delta");
     if(delta==0)return true;
     last_idle_delta_=double(float(delta));
@@ -380,6 +453,16 @@ bool OpeningWorld::flush_deferred() {
 }
 bool OpeningWorld::apply(const DialogueAction& a) {
     if(trace_.size()>=65535)return false;
+    if(house_programme_owner_){
+        if(house_programme_callback_)return house_programme_failure("House programme action reentered its executing source callback");
+        if(house_programme_owner_->world()!=this)return house_programme_failure("House programme action owner changed its actual World receiver");
+        house_programme_error_.clear();
+        ProgrammeCallback call(house_programme_callback_);
+        if(!house_programme_owner_->before_action(*this,a,house_programme_error_))
+            return house_programme_failure("House programme source owner rejected the actual action");
+        if(house_programme_owner_->world()!=this||!healthy_)
+            return house_programme_failure("House programme action callback changed its actual receiver/state");
+    }
     trace_.push_back({a,physics_tick_,idle_frame_});
     auto* actor=a.actor<actors_.size()?&actors_[a.actor]:nullptr;
     using K=DialogueActionKind;

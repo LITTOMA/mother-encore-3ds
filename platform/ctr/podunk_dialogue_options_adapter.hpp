@@ -10,8 +10,13 @@ public:
       upstream::FieldObjectId)>;
   bool initialize(const PodunkDialogueRootData &,
                   const upstream::FieldNodeRecipeData &, PodunkDialogueHost &,
-                  PodunkDialogueRootOwner &, PodunkProgrammeHost &,
+                  PodunkDialogueRootOwner &, PodunkDialogueProgrammePort &,
                   upstream::DialogueChoices &, CurrentTree, std::string &);
+  // Same closed VM/printer/choices proof as the Root owner; transfer happens
+  // before the destination creates any real DialogueBox, never during input.
+  bool rebind_programme(const PodunkDialogueProgrammePort &,
+                        const PodunkDialogueProgrammeBinding &,
+                        PodunkDialogueProgrammePort &, std::string &);
   // Bind these methods to the two corresponding RootEndpoints. The root owner
   // retains the actual Arrow/on/index/Grid/down-arrow source ordering.
   bool prepare(upstream::FieldObjectId, const upstream::DialogueChoices &,
@@ -23,7 +28,7 @@ private:
   const upstream::FieldNodeRecipeData *recipe_ = nullptr;
   PodunkDialogueHost *dialogue_ = nullptr;
   PodunkDialogueRootOwner *owner_ = nullptr;
-  PodunkProgrammeHost *programme_ = nullptr;
+  PodunkDialogueProgrammePort *programme_ = nullptr;
   upstream::DialogueChoices *choices_ = nullptr;
   CurrentTree tree_;
   upstream::FieldDialogueUiRuntime *checked(upstream::FieldObjectId,

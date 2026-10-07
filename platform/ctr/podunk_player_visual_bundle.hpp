@@ -6,6 +6,7 @@ namespace encore::ctr {
 // Player tree is being constructed. Construction never grants subtree Ready.
 class PodunkPlayerVisualBundle {
 public:
+  bool rebind_tree(upstream::FieldNodeTreeRuntime &, std::string &);
   bool load(std::shared_ptr<const upstream::PlayerInitializationData>,
             std::shared_ptr<const upstream::PlayerVisualScriptsData>,
             std::shared_ptr<const upstream::PlayerGraphicsData>,

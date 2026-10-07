@@ -150,6 +150,7 @@ public:
     awaiting_ready_ = false;
   }
   const DialoguePlayer &scheduler() const { return scheduler_; }
+  bool source_ready_pending() const { return awaiting_ready_; }
   uint32_t program_index() const { return programme_; }
   const FieldProgrammeContext &context() const { return context_; }
   const std::string &error() const { return error_; }

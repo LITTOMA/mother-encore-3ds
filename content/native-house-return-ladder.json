@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "format": 1,
+  "family": 1162739832,
+  "capability": 1,
+  "rules": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scene": "Maps/podunk/Nintens House.tscn",
+  "scene_id": 3999778695,
+  "source_sha256": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+  "sources": {
+    "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Scripts/Main/Ladder.gd": "d4d015fac9a61b62f2430e2849368274b80f1f5efeb4933b7caadd966bacb519",
+    "Nodes/Overworld/Ladder.tscn": "d103c82c13ed0828f05cc42ed95fc60c26b848022f122f126c68151f79797d2d",
+    "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34",
+    "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+    "Scripts/Main/party/party_follower.gd": "d972fc68dc41fc8d55550786b167a91f119b0a2fcba45174c7019df0e30b5550",
+    "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86"
+  },
+  "non_party_body_ids": [
+    1913550159,
+    493763568,
+    3648145994,
+    2892815254,
+    3179753591,
+    2615610755,
+    428558931,
+    2528365490,
+    671299040,
+    951827542,
+    471086556,
+    1935630852,
+    2728935460,
+    300508307,
+    2424272169,
+    2669891331,
+    3260748190,
+    884653047,
+    294435978,
+    1487219435,
+    2041799966
+  ],
+  "dependencies": {
+    "content/native-house-node-tree.json": "2f00ad4969256d37bad977fee9ff52a16443158c3b603c16aae787ed7d3fc978",
+    "content/native-house-geometry.json": "c62b89237db59d8f69180fa51c18c9a84e873608acee86844f3f44a4a9a8a037",
+    "content/native-player-initialization.json": "15825fddcd42e0744027b76cbd9994feb643f3f8f4c3e5a6977460be1eb42016",
+    "content/native-player-ready.json": "36f6feed2937e409f4dbf0e633fb1e60751f2131d17f36cd7f845e76bb612eb7",
+    "content/native-player-motion.json": "a2c33a17f7559a1445e0f7cbb1fba2a934bea626f2414d07db7f3bd713fb1c01"
+  },
+  "player_initialization_ir_sha256": "15825fddcd42e0744027b76cbd9994feb643f3f8f4c3e5a6977460be1eb42016",
+  "player_ready_ir_sha256": "36f6feed2937e409f4dbf0e633fb1e60751f2131d17f36cd7f845e76bb612eb7",
+  "player_motion_ir_sha256": "a2c33a17f7559a1445e0f7cbb1fba2a934bea626f2414d07db7f3bd713fb1c01",
+  "node": "Below/Ladder",
+  "id": 2282871525,
+  "shape_id": 2043630405,
+  "geometry_owner_index": 0,
+  "geometry_shape_index": 0,
+  "layer": 6144,
+  "mask": 0,
+  "owner_flags": 7,
+  "shape_flags": 0,
+  "local": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      -0.0,
+      1.0
+    ],
+    [
+      63.0,
+      88.0
+    ]
+  ],
+  "world": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ],
+    [
+      63.0,
+      88.0
+    ]
+  ],
+  "connections": [
+    {
+      "signal": "body_entered",
+      "method": "_on_Ladder_body_entered",
+      "flags": 2,
+      "arguments": 1
+    },
+    {
+      "signal": "body_exited",
+      "method": "_on_Ladder_body_exited",
+      "flags": 2,
+      "arguments": 1
+    }
+  ],
+  "texts": [
+    "Scripts/Main/Ladder.gd",
+    "Scripts/Main/party/party_object.gd",
+    "Scripts/Main/party/Player.gd",
+    "Scripts/Main/party/party_follower.gd",
+    "body_entered",
+    "body_exited",
+    "_on_Ladder_body_entered",
+    "_on_Ladder_body_exited",
+    "ladder",
+    "unladder",
+    "Ladder",
+    "Position",
+    "Shadow",
+    "_climbing",
+    "_anim_tree",
+    "_anim_player",
+    "run",
+    "Idle",
+    "global_position",
+    "playback_speed"
+  ],
+  "stopped_speed": 0.0,
+  "position_y": 0.0,
+  "admission": {
+    "no_source_lifecycle_callbacks": true,
+    "no_ready_body": true,
+    "actual_native_area_required": true,
+    "actual_current_player_receiver_implemented": true,
+    "follower_receiver_requires_its_actual_owner": true
+  }
+}

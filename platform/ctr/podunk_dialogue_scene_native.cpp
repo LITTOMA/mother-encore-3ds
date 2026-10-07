@@ -1137,6 +1137,25 @@ bool PodunkDialogueSceneNative::draw(uint64_t epoch, float width, float height,
   e.clear();
   return true;
 }
+bool PodunkDialogueSceneNative::observes_closed_printer(const HousePresentation &p,std::string &e)const{
+ if(!in_.registry||in_.registry->poisoned()||!in_.recipe||!in_.recipe->valid()||
+    in_.printer!=&p||!p.source_frame_closed()||!bodies_.empty()||!factories_.empty()||
+    !waits_.empty()||!tweens_.empty()||!signal_waits_.empty())
+  return fail(e,"Dialogue native printer rebind rejects live/pending native callback owners");
+ e.clear();return true;
+}
+bool PodunkDialogueSceneNative::admit_printer_rebind(const HousePresentation &old,
+    const HousePresentation &next,std::string &e)const{
+ if(&old==&next||!observes_closed_printer(old,e)||!next.source_frame_closed()||
+    old.callback_bindings().random!=next.callback_bindings().random)
+  return fail(e,"Dialogue native actual printer destination differs");
+ e.clear();return true;
+}
+bool PodunkDialogueSceneNative::rebind_printer(const HousePresentation &old,
+    HousePresentation &next,std::string &e){
+ if(!admit_printer_rebind(old,next,e))return false;
+ in_.printer=&next;e.clear();return true;
+}
 bool PodunkDialogueSceneNative::apply(PodunkDialogueServices &s,
                                       std::string &e) {
   if (!in_.recipe || s.factory_services || s.admit_native_services ||

@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "podunk_player_visual_bundle.hpp"
 namespace encore::ctr {
 using namespace upstream;
@@ -56,5 +57,14 @@ bool PodunkPlayerVisualBundle::phase(FieldObjectId id, FieldTreePhase p,
   if(p==FieldTreePhase::IdleInternal&&owner==&shadow_)
     return owner->process_internal(delta,paused,pending,e);
   return fail(e,"Player visual phase requires enclosing native Tree owner");
+}
+bool PodunkPlayerVisualBundle::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!prepared_ || !registry_ || next.object_domain() != registry_->kernel())
+    return fail(e, "Player visual bundle transfer domain rejected");
+  if (!shadow_.rebind_tree(next, e) || !bat_.rebind_tree(next, e) ||
+      !scripts_.rebind_tree(next, e)) return false;
+  tree_ = &next;
+  e.clear();
+  return true;
 }
 } // namespace encore::ctr

@@ -29,6 +29,8 @@ public:
  // no filesystem, save operation, platform input polling or MenuRepeat.
  bool step(double dt,const DialogueChoicesInput&,std::string&);
  bool poll_event(DialogueChoicesEvent&);void close();
+ size_t pending_events()const{return events_.size();}
+ const DialogueChoicesEvent*peek_event()const{return events_.empty()?nullptr:&events_.front();}
  DialogueChoicesPhase phase()const{return phase_;}bool active()const{return phase_==DialogueChoicesPhase::Active;}
  DialogueChoicesPose pose()const;const DialogueChoicesData*data()const{return data_;}
  const DialogueChoiceGroup*group()const{return data_?&data_->groups()[group_]:nullptr;}

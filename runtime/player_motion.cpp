@@ -1,4 +1,6 @@
+#include "encore/player_tree_rebind.hpp"
 #include "encore/player_motion.hpp"
+#include "encore/house_return_ladder.hpp"
 #include <algorithm>
 #include <cmath>
 #include <limits>
@@ -66,6 +68,86 @@ bool PlayerMotionRuntime::initialize(
   registry_ = &registry;
   random_ = &random;
   host_ = std::move(h);
+  return true;
+}
+bool PlayerMotionRuntime::bind_ladder(const HouseReturnLadderData &d,
+                                     PlayerLadderAnimationNative &native,
+                                     std::string &e) {
+  if (!live(e) || !d.player_matches(*body_->data(), *graph_->data(), *data_, e) ||
+      native.ladder_registry() != registry_ || native.ladder_tree() != tree_)
+    return fail(e, "Ladder actual Player/native owner differs");
+  FieldObjectId animation, position, shadow;
+  PlayerInitializationMember tree_member, animation_member;
+  if (!node(R::AnimationPlayer, animation, e) ||
+      !native.ladder_animation(animation, d.text(HouseLadderText::LadderAnimation), e) ||
+      !body_->member(d.text(HouseLadderText::AnimationTreeMember), tree_member, e) ||
+      !body_->member(d.text(HouseLadderText::AnimationPlayerMember), animation_member, e) ||
+      tree_member.kind != 8 || animation_member.kind != 8 || animation_member.object != animation ||
+      !tree_->state(tree_member.object) || !tree_->descriptor(tree_member.object) ||
+      tree_->descriptor(tree_member.object)->native_class != "AnimationTree" ||
+      !tree_->get_node(body_->object(), d.text(HouseLadderText::PositionPath), position, e) ||
+      !tree_->get_node(body_->object(), d.text(HouseLadderText::ShadowPath), shadow, e) ||
+      !tree_->state(position) || !tree_->state(shadow) ||
+      !(tree_->state(position)->flags & 1) || !(tree_->state(shadow)->flags & 1))
+    return fail(e, "Ladder actual graph/animator/Position/Shadow owner missing");
+  ladder_data_ = &d;
+  ladder_native_ = &native;
+  ladder_ir_ = d.ir_sha256();
+  e.clear();
+  return true;
+}
+bool PlayerMotionRuntime::ladder_sources(std::string &e) const {
+  return live(e) && ladder_data_ && ladder_native_ &&
+         ladder_data_->ir_sha256() == ladder_ir_ &&
+         ladder_native_->ladder_registry() == registry_ &&
+         ladder_native_->ladder_tree() == tree_ &&
+         ladder_data_->player_matches(*body_->data(), *graph_->data(), *data_, e)
+      ? true : fail(e, "Ladder source/native Player continuation unavailable");
+}
+bool PlayerMotionRuntime::animation_speed(FieldObjectId id, double value,
+                                          std::string &e) {
+  if (ladder_native_) {
+    if (!ladder_sources(e)) return false;
+    return ladder_native_->ladder_speed(id, value, e);
+  }
+  return branch(host_.animation_speed, "animation_speed", e, id, value);
+}
+bool PlayerMotionRuntime::ladder(std::string &e) {
+  if (!ladder_sources(e)) return false;
+  FieldObjectId animation;
+  if (!node(R::AnimationPlayer, animation, e)) return false;
+  auto abort = [&]() { poisoned_ = true; return false; };
+  // Base PartyObject first, then the original Player override.
+  if (!graph_->set_active(false, e) ||
+      !ladder_native_->ladder_play(animation, ladder_data_->text(HouseLadderText::LadderAnimation), e) ||
+      !animation_speed(animation, ladder_data_->stopped_speed(), e) ||
+      !set_boolean(F::Climbing, true, e) ||
+      !set_integer(F::State, data_->state(S::Move), e)) return abort();
+  PlayerAudioVoice voice;
+  if (!host_.audio_voice({}, data_->text(T::RunVoice), voice, e) ||
+      (voice.exists && !host_.audio_stop(data_->text(T::RunVoice), e))) return abort();
+  e.clear();
+  return true;
+}
+bool PlayerMotionRuntime::unladder(std::string &e) {
+  if (!ladder_sources(e)) return false;
+  FieldObjectId animation, position, shadow;
+  if (!node(R::AnimationPlayer, animation, e) ||
+      !tree_->get_node(body_->object(), ladder_data_->text(HouseLadderText::PositionPath), position, e) ||
+      !tree_->get_node(body_->object(), ladder_data_->text(HouseLadderText::ShadowPath), shadow, e)) return false;
+  auto abort = [&]() { poisoned_ = true; return false; };
+  if (!graph_->set_active(true, e) || !ladder_native_->ladder_stop(animation, e) ||
+      !ready_->set_anim_state(ladder_data_->text(HouseLadderText::IdleAnimation), e)) return abort();
+  // Keep _climbing unchanged until after source set_anim_state and Shadow.show.
+  const auto *state = tree_->state(position);
+  if (!state) return abort();
+  auto local = state->local;
+  local[2].y = ladder_data_->position_y();
+  if (!tree_->set_local(position, local, e) || !tree_->set_visible(shadow, true, e) ||
+      !set_boolean(F::Climbing, false, e)) return abort();
+  bool running;
+  if (!boolean(F::Running, running, e) || (running && !set_running(true, e))) return abort();
+  e.clear();
   return true;
 }
 bool PlayerMotionRuntime::read(F f, PlayerInitializationMember &v,
@@ -208,8 +290,7 @@ bool PlayerMotionRuntime::anim_play_pause(bool playing, bool idle,
   if (climb) {
     FieldObjectId animation;
     if (!node(R::AnimationPlayer, animation, e) ||
-        !branch(host_.animation_speed, "climbing pause", e, animation,
-                playing ? p.playing_scale : p.paused_scale))
+        !animation_speed(animation, playing ? p.playing_scale : p.paused_scale, e))
       return false;
   } else if (idle && !ready_->set_anim_state(data_->text(T::IdleAnimation), e))
     return false;
@@ -524,7 +605,7 @@ bool PlayerMotionRuntime::movement(float dt, std::string &e) {
         !boolean(F::Running, running, e) || !boolean(F::Paused, paused, e) ||
         !boolean(F::Substantial, substantial, e) || !boolean(F::TapRun, tap, e))
       return false;
-    if (climb && !branch(host_.animation_speed,"animation_speed",e,anim, 1))
+    if (climb && !animation_speed(anim, 1, e))
       return false;
     if (held || tap) {
       if (pressed && !crouch && !running && !climb) {
@@ -616,7 +697,7 @@ bool PlayerMotionRuntime::movement(float dt, std::string &e) {
     if (!ready_->set_anim_state(data_->text(T::IdleAnimation), e) ||
         !set_boolean(F::Walking, false, e) ||
         !set_boolean(F::TapRun, false, e) || !set_running(false, e) ||
-        (climb && !branch(host_.animation_speed,"animation_speed",e,anim, 0)) ||
+        (climb && !animation_speed(anim, 0, e)) ||
         !boolean(F::Crouch, crouch, e))
       return false;
     if (pressed && !crouch) {
@@ -1403,5 +1484,17 @@ bool PlayerMotionRuntime::native_callback(std::string_view method,
       return node(pair.second, timer, e) && timer_timeout(timer, e);
     }
   return fail(e, "Unknown Player source method capability rejected");
+}
+bool PlayerMotionRuntime::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!healthy() || !body_ || !ready_ || !ready_->body_complete() ||
+      body_->tree() != &next || !registry_ || !body_->data() ||
+      !player_rebind_node(*body_->data(), *registry_, next, body_->object(),
+                          body_->data()->recipe().identity().scene_id, e))
+    return fail(e, "Player motion rebind requires preserved Ready/script owner");
+  // Timers/projectiles in pending source coroutines keep their original
+  // ObjectIDs and actual Registry owners; moving Player does not restart them.
+  tree_ = &next;
+  e.clear();
+  return true;
 }
 } // namespace encore::upstream

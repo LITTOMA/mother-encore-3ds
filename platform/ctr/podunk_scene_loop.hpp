@@ -6,6 +6,7 @@
 #include "podunk_scene_timers.hpp"
 #include "podunk_player_host.hpp"
 
+namespace encore::upstream { class FieldSceneTreeTimers; }
 namespace encore::ctr {
 class PodunkSceneVisibility;
 class PodunkSceneNpcWorld;
@@ -84,6 +85,9 @@ struct PodunkSceneLoopInput {
   std::function<bool(upstream::FieldObjectId,std::string&)> foreign_release;
   std::function<bool(upstream::FieldObjectId)> foreign_emits_ready;
   std::function<bool()> source_input_handled;
+  // Actual continued owner reports successful source retirement. The outer
+  // frame checks only after the unchanged global MessageQueue flush completes.
+  std::function<bool()> source_scene_retired;
   std::string asset_root;
 };
 // The actual frame/factory owner for a destination. It allocates through the
@@ -110,6 +114,10 @@ public:
   bool signal_declaration(upstream::FieldObjectId, std::string_view,
                           uint32_t &, std::string &) const;
   bool ready() const;
+  bool source_scene_retired() const;
+  // Same global native list and References; caller retains this composition.
+  // A replacement target must not advance it twice in a shared idle epoch.
+  upstream::FieldSceneTreeTimers *global_timers();
   const std::shared_ptr<upstream::FieldNodeTreeRuntime> &tree() const {
     return input_.tree;
   }
@@ -129,6 +137,8 @@ private:
                std::string &);
   bool prepare_leaves(std::string &);
   bool transition_jobs(float delta, bool paused, std::string &);
+  bool collect_dead_source_signals(std::string &);
+  bool retired_after_flush(bool idle,uint64_t epoch,float delta,bool paused,std::string &);
   PodunkSceneNativeMechanism *mechanism(
       const upstream::FieldNodeDescriptor &) const;
   PodunkSceneLoopInput input_, native_preparation_;
@@ -142,6 +152,7 @@ private:
   uint64_t physics_epoch_ = 0, idle_epoch_ = 0;
   // Player callbacks share this dispatch sequence; engine phase cursors stay separate.
   uint64_t player_frame_cursor_ = 0;
+  upstream::FieldObjectId source_root_object_ = 0;
   bool attempted_ = false, constructed_ = false, attached_ = false,
        leaves_prepared_ = false, source_ready_ = false, monitors_ready_ = false,
        paused_ = false, update_pending_ = false,

@@ -632,6 +632,34 @@
       "path": "data/dialogue.encactorrecipe",
       "producer": "dialogue_actor_resource",
       "ir": "content/native-dialogue-actor-resource.json"
+    },
+    {
+      "role": 91,
+      "name": "HouseReentry",
+      "path": "data/house.encreentry",
+      "producer": "house_reentry",
+      "ir": "content/native-house-reentry.json"
+    },
+    {
+      "role": 92,
+      "name": "HouseGeometry",
+      "path": "data/house.encfieldgeometry",
+      "producer": "house_geometry",
+      "ir": "content/native-house-geometry.json"
+    },
+    {
+      "role": 93,
+      "name": "HouseNodeTree",
+      "path": "data/house.encnodetree",
+      "producer": "house_node_tree",
+      "ir": "content/native-house-node-tree.json"
+    },
+    {
+      "role": 94,
+      "name": "HouseReturnLadder",
+      "path": "data/house-return-ladder.encladder",
+      "producer": "house_return_ladder",
+      "ir": "content/native-house-return-ladder.json"
     }
   ],
   "extra_inputs": [
@@ -641,7 +669,10 @@
     "content/podunk-audio.json",
     "content/podunk-music.json",
     "content/asset-receipts/audio/opening.json",
-    "content/asset-receipts/audio/podunk.json"
+    "content/asset-receipts/audio/podunk.json",
+    "reports/cloud-world/house-exact.json",
+    "reports/cloud-world/house-source.json",
+    "reports/house-node-tree/native-tree.json"
   ],
   "admission_ready": false
 }

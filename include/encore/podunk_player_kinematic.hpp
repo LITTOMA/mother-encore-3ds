@@ -11,6 +11,7 @@ struct PodunkPlayerKinematicHost {
 };
 class PodunkPlayerKinematic {
 public:
+  bool rebind_tree(FieldNodeTreeRuntime &, std::string &);
   bool initialize(const PlayerInitializationData &, const PlayerMotionData &,
                   PlayerInitializationBody &, FieldNodeTreeRuntime &,
                   FieldGlobalRegistry &, FieldMapSpace &, FieldGeometrySpace &,

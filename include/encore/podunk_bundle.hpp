@@ -96,6 +96,10 @@ enum class PodunkPackRole : uint32_t {
   PlayerPreloadScenes = 88,
   NamedSfx = 89,
   DialogueActorResource = 90,
+  HouseReentry = 91,
+  HouseGeometry = 92,
+  HouseNodeTree = 93,
+  HouseReturnLadder = 94,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

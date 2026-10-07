@@ -1,5 +1,6 @@
 #include "encore/field_node_tree.hpp"
 #include "encore/utf8.hpp"
+#include "field_node_native_classes.hpp"
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -100,14 +101,6 @@ namespace encore::upstream {
   bool name(std::string_view s){
    return !s.empty()&&s!="."&&s!=".."&&s.find_first_of("/:@\\") ==s.npos;
   }
-  bool native_canvas(uint32_t i){
-   return i!=0&&i!=6&&i!=8&&i!=14&&i!=23;
-  }
-  // Class names form the native structural schema, not game-content bindings.
-  const char*native_classes[]={
-   "Node","Node2D","Sprite","VisibilityNotifier2D","Position2D","CollisionShape2D","AnimationPlayer","Area2D","Timer","KinematicBody2D","VisibilityEnabler2D","TextureRect","HBoxContainer","Label","AudioStreamPlayer","RayCast2D","AnimatedSprite","StaticBody2D","CollisionPolygon2D","TileMap","YSort","Camera2D","AudioStreamPlayer2D","Tween","ReferenceRect"
-  }
-  ;
  }
  const FieldNodeDescriptor*FieldNodeTreeData::record(uint32_t id)const{
   auto it=index_.find(id);
@@ -169,10 +162,10 @@ namespace encore::upstream {
   ;
   d.scene_=r.text();
   auto count=r.integer();
-  if(!r.ok||!path(d.scene_)||count!=std::size(native_classes))return reject("NodeTree native class schema rejected");
+  if(!r.ok||!path(d.scene_)||!detail::field_native_class_schema(count))return reject("NodeTree native class schema rejected");
   for(uint32_t i=0;i<count;++i){
    auto s=r.text();
-   if(s!=native_classes[i])return reject("NodeTree class opcode rejected");
+   if(s!=detail::field_native_classes[i])return reject("NodeTree class opcode rejected");
    d.classes_.push_back(std::move(s));
   }
   std::set<std::string>paths;
@@ -208,7 +201,7 @@ namespace encore::upstream {
     if(g.empty()||!gs.insert(g).second)return reject("NodeTree group identity rejected");
     a.groups.push_back(std::move(g));
    }
-   if(!r.ok||!a.id||!d.index_.emplace(a.id,i).second||!paths.insert(a.path).second||!name(a.name)||a.class_index>=count||a.ready>=word(p+32)||a.pause>2||a.flags>1023||a.script_methods>255||bool(a.flags&1)!=native_canvas(a.class_index)||a.z<-4096||a.z>4096||a.script.empty()!=empty_hash(a.script_sha)||(a.script.empty()&&a.script_methods))return reject("NodeTree node fields rejected");
+   if(!r.ok||!a.id||!d.index_.emplace(a.id,i).second||!paths.insert(a.path).second||!name(a.name)||a.class_index>=count||a.ready>=word(p+32)||a.pause>2||a.flags>1023||a.script_methods>255||bool(a.flags&1)!=detail::field_native_canvas(a.class_index)||a.z<-4096||a.z>4096||a.script.empty()!=empty_hash(a.script_sha)||(a.script.empty()&&a.script_methods))return reject("NodeTree node fields rejected");
    if(!i){
     if(a.id!=id.scene_id||a.parent||a.owner||a.canvas_parent||a.path!="."||a.index!=-1)return reject("NodeTree root rejected");
    }

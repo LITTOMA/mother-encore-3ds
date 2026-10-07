@@ -136,7 +136,7 @@ def extract(native,source,detail,upstream):
         shape_rows.append(dict(node=indices[n['path']],owner=owner_indices[parent(n['path'])],kind=kind,flags=int(pr['disabled'])|(int(pr['one_way_collision'])<<1),geometry=original,part_first=parts[0] if parts else NONE,part_count=len(parts),margin=pr['one_way_collision_margin'],owner_margin=no['one_way_margin'],owner_transform=no['transform'],cached_transform_before_enter_tree=no['cached_transform_before_enter_tree'],transform=transform(n)))
     result=dict(schema=1,kind='encore.field-geometry.source-ir',commit=PIN,scene=SCENE,scene_id=stable('.'),source_sha256=sources[SCENE],scene_admitted=False,sources=sources,native_sha256=sha(native),detail_sha256=sha(detail),nodes=nodes,owners=owners,shapes=shape_rows,geometry=geometry)
     write(IR,result);return result
-def pack(ir):
+def pack(ir,ir_sha256=None):
     strings=[];lookup={};blob=bytearray()
     def string(v):
         if v not in lookup:lookup[v]=len(strings);raw=v.encode();strings.append((len(blob),len(raw)));blob.extend(raw+b'\0')
@@ -153,7 +153,9 @@ def pack(ir):
     for k,fmt in FORMATS.items():
         payload=b''.join(struct.pack('<'+fmt,*row) for row in rows[k]);directory.append((k,len(rows[k]),struct.calcsize('<'+fmt),len(result),len(payload),0));result.extend(payload)
     struct.pack_into('<8s8I',result,0,b'ENCFGEO1',1,128,len(result),len(FORMATS),zlib.crc32(result[128+24*len(FORMATS):]),0x454e001b,1,ir['scene_id'])
-    result[40:60]=bytes.fromhex(PIN);result[60:92]=bytes.fromhex(ir['source_sha256']);result[92:124]=hashlib.sha256(IR.read_bytes()).digest();struct.pack_into('<I',result,124,scene_index)
+    proof=sha(IR)if ir_sha256 is None else ir_sha256
+    require(isinstance(proof,str)and len(proof)==64 and len(bytes.fromhex(proof))==32,'Geometry explicit IR proof rejected')
+    result[40:60]=bytes.fromhex(PIN);result[60:92]=bytes.fromhex(ir['source_sha256']);result[92:124]=bytes.fromhex(proof);struct.pack_into('<I',result,124,scene_index)
     for i,row in enumerate(directory):struct.pack_into('<6I',result,128+i*24,*row)
     return bytes(result)
 def compile_resource(verify=False):

@@ -1,4 +1,6 @@
 #include "encore/field_map_space.hpp"
+#include "encore/field_node_tree.hpp"
+#include "encore/house_reentry.hpp"
 #include <algorithm>
 #include <cmath>
 #include <unordered_set>
@@ -112,6 +114,57 @@ bool FieldMapSpace::admit_reparent(uint32_t leaf, uint32_t parent,
     e = "Field live map reparent world translation rejected";
     return false;
   }
+  e.clear();
+  return true;
+}
+bool FieldMapSpace::replace_house_tiles(const HouseReentryData &data,
+    const FieldNodeTreeRuntime &old_tree, uint64_t old_root,
+    FieldNodeTreeRuntime &house_tree, std::string &e) {
+  if (!source_ || !data.valid() || source_->source_scene() != data.source_scene() ||
+      source_->identity().upstream_commit != data.identity().upstream_commit ||
+      !old_root || old_tree.root() != old_root || old_tree.state(old_root) ||
+      old_tree.lifecycle_pending() || &old_tree == &house_tree ||
+      !old_tree.object_domain() || old_tree.object_domain() != house_tree.object_domain() ||
+      !house_tree.state(house_tree.root()) || house_tree.lifecycle_pending() ||
+      data.tilemaps().size() != 3) {
+    e = "House tiles require actual old scene retirement and full source proof";
+    return false;
+  }
+  std::array<uint8_t, 32> hash{};
+  if (!data.source_hash(data.source_scene(), hash) || hash != source_->identity().source_sha256) {
+    e = "House tiles source map identity differs";
+    return false;
+  }
+  for (uint32_t i = 0; i < source_->map_count(); ++i)
+    if (old_tree.source_object(source_->map(i).stable_id)) {
+      e = "House tiles retain an old source TileMap";
+      return false;
+    }
+  std::vector<uint64_t> objects;
+  for (const auto &tilemap : data.tilemaps()) {
+    const auto object = house_tree.source_object(tilemap.id);
+    const auto *state = house_tree.state(object);
+    const auto *node = house_tree.descriptor(object);
+    FieldIdentity identity;
+    if (!object || !state || !state->bound || state->inside || !node ||
+        node->id != tilemap.id || node->path != tilemap.node ||
+        node->native_class != "TileMap" ||
+        !house_tree.object_identity(object, identity) ||
+        identity.upstream_commit != data.identity().upstream_commit ||
+        identity.source_sha256 != data.identity().source_sha256) {
+      e = "House tiles actual staged native owner differs";
+      return false;
+    }
+    objects.push_back(object);
+  }
+  // Clear the retired source pointers atomically; no subsequent ray/movement
+  // query can fall through to outdoor geometry.
+  source_ = nullptr;
+  actions_ = nullptr;
+  house_ = &data;
+  house_tree_ = &house_tree;
+  house_tiles_ = std::move(objects);
+  canvases_.clear(); layers_.clear(); canvas_ids_.clear(); map_ids_.clear();
   e.clear();
   return true;
 }
@@ -250,6 +303,32 @@ bool FieldMapSpace::query(FieldMapRect area, uint32_t mask,
                           const FieldMapGateQuery &g, bool drawing,
                           size_t capacity, std::vector<uint32_t> &out,
                           std::string &e) const {
+  if (house_) {
+    if (drawing || !house_->valid() || !house_tree_ ||
+        house_tiles_.size() != house_->tilemaps().size() ||
+        !finite(area.minimum) || !finite(area.maximum) ||
+        area.minimum.x > area.maximum.x || area.minimum.y > area.maximum.y) {
+      e = "House tile query requires source collision proof; drawing belongs to House renderer";
+      return false;
+    }
+    for (size_t i = 0; i < house_tiles_.size(); ++i) {
+      const auto *state = house_tree_->state(house_tiles_[i]);
+      const auto *node = house_tree_->descriptor(house_tiles_[i]);
+      FieldIdentity identity;
+      if (!state || !node || !state->alive || !state->bound || !state->inside ||
+          state->world_dirty || node->id != house_->tilemaps()[i].id ||
+          node->path != house_->tilemaps()[i].node || node->native_class != "TileMap" ||
+          !house_tree_->object_identity(house_tiles_[i], identity) ||
+          identity.upstream_commit != house_->identity().upstream_commit ||
+          identity.source_sha256 != house_->identity().source_sha256) {
+        e = "House tile collision queried before actual native Enter or after owner retirement";
+        return false;
+      }
+    }
+    out.clear(); // All placed tiles were proved to have zero native parts.
+    e.clear();
+    return true;
+  }
   if (!source_) {
     e = "Field live map query unavailable";
     return false;

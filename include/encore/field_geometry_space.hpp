@@ -34,8 +34,8 @@ struct FieldGeometryFilter {
 struct FieldGeometryContact {
   uint32_t owner = 0, shape = 0, part = 0, stable_id = 0,
            native_shape_index = 0;
-  // Zero for the immutable world pack. Dynamic source instances retain their
-  // real ObjectDB identities instead of posing as indices into that pack.
+  // Zero for unbound immutable world packs. Returned House geometry and
+  // dynamic source instances retain their real native ObjectDB identities.
   FieldObjectId actual_owner = 0, actual_shape = 0;
 };
 struct FieldGeometryRayHit : FieldGeometryContact {
@@ -58,6 +58,8 @@ struct FieldGeometryNodeUpdate {
 // approval. A source-compatible Circle remains analytic. Unsupported live
 // transforms or kinds return an error and preserve the last space/query result.
 class FieldNpcRuntime;
+class HouseReentryData;
+class HouseReturnSources;
 class FieldGeometrySpace {
 public:
   bool apply_npc_interaction(const FieldNpcRuntime &, uint32_t,
@@ -65,6 +67,15 @@ public:
                              std::string &);
   bool configure(const FieldGeometryView &, float grid_cell_size,
                  std::string &);
+  // Commit the checked native House geometry only after the actual old scene
+  // has exited and been deleted, with every dynamic shape removed. Player
+  // CollisionObject owners retain their original RIDs and this space address.
+  // Updates are observations of completed native property/deletion callbacks.
+  // Script receipts remain individually required; this grants no Ready.
+  bool replace_house_world(const HouseReentryData &,const FieldGeometryView &,
+      const FieldNodeTreeRuntime &old_tree,FieldObjectId old_root,
+      FieldNodeTreeRuntime &house_tree,
+      const std::vector<FieldGeometryNodeUpdate> &actual_updates,std::string &);
   // Caller is the trusted checked adapter registry, after actual source and
   // runtime capability admission. SHA and individual NodeID must both match.
   bool bind_script(uint32_t stable_id,
@@ -99,6 +110,9 @@ public:
   bool reserve_player_owner(const PlayerInitializationData &,
                             FieldNodeTreeRuntime &, FieldGlobalRegistry &,
                             FieldObjectId owner, std::string &);
+  bool rebind_player_owner(const PlayerInitializationData &,
+                           FieldNodeTreeRuntime &, FieldGlobalRegistry &,
+                           FieldObjectId owner, std::string &);
   bool reserve_grass_owner(const GrassNativeData &, FieldNodeTreeRuntime &,
                            FieldGlobalRegistry &, FieldObjectId, std::string &);
   bool register_grass_shape(const GrassNativeData &, FieldNodeTreeRuntime &,
@@ -114,6 +128,10 @@ public:
                    std::string &) const;
   bool player_owner_rid(FieldObjectId owner, FieldPhysicsRid &,
                         std::string &) const;
+  // Observe the already allocated native House CollisionObject RID, including
+  // disabled/empty shapes. This does not admit a contact or allocate a RID.
+  bool house_owner_rid(FieldObjectId, const HouseReturnSources &,
+                       FieldPhysicsRid &, std::string &) const;
   bool rid_alive(FieldPhysicsRid) const;
   bool rid_issued(FieldPhysicsRid rid) const {
     return rid.space == this && rid.handle && rid.handle <= next_rid_;
@@ -192,7 +210,9 @@ private:
   bool filter_owner(uint32_t, const FieldGeometryFilter &) const;
   bool query_instances(FieldGeometryBounds, const FieldGeometryFilter &, size_t,
                        std::vector<uint32_t> &, std::string &) const;
+  bool native_instance(const Instance &,std::string &)const;
   const FieldGeometryView *source_ = nullptr;
+  FieldNodeTreeRuntime *native_tree_ = nullptr;
   float cell_size_ = 0;
   std::vector<NodeState> nodes_;
   std::vector<OwnerState> owners_;

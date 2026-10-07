@@ -10,6 +10,7 @@ namespace encore::upstream {
 class FieldNodeRecipeData;
 class FieldSpriteData;
 class FieldDoorData;
+class HouseReentryData;
 using FieldObjectId=uint64_t;
 using FieldTransform=std::array<Vec2,3>;
 using FieldColor=std::array<float,4>;
@@ -138,6 +139,11 @@ public:
  // ObjectIDs come from this same ObjectDB; this grants no source Ready.
  bool initialize_door_continuation(const FieldDoorData&,uint32_t,
                                   FieldNodeTreeHost,std::string&);
+ // Exactly the reviewed House root and its actual player container. Existing
+ // House/Room owners retain gameplay/rendering; callbacks own native/script
+ // construction, and this allocation grants neither Enter nor Ready.
+ bool initialize_house_continuation(const HouseReentryData&,
+                                   FieldNodeTreeHost,std::string&);
  // The audited CharacterSprite body creates exactly one native AnimationTree.
  // This derives a constructor descriptor from both checked source packs and
  // the live caller; it cannot instantiate an arbitrary class or script.

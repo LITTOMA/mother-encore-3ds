@@ -108,6 +108,8 @@ struct PodunkHouseExit::State {
   PodunkProgrammeInventory programme_inventory;
   PodunkProgrammeState programme_state;
   FieldSceneSources sources;
+  HouseReturnSources house_return_sources;
+  HouseReturnLadderData house_return_ladder;
   PodunkPlayerSources player_sources;
   FieldNativeRootData native_root;
   FieldShopData shop;
@@ -296,6 +298,9 @@ bool PodunkHouseExit::prepare(PodunkHouseExitInput in,std::string &e) {
   if(!s.continuation.initialize(s.input.continuation,e)||
      !s.sources.load(s.input.continuation.destination->bundle(),s.input.continuation.romfs_root,e))
     return s.fail(e);
+  if(!s.house_return_sources.load(s.input.continuation.destination->bundle(),
+       s.input.continuation.romfs_root,s.sources.door(),
+       s.input.continuation.room,s.input.continuation.house_data,e))return s.fail(e);
   auto &r=*s.continuation.registry();auto &root=*s.continuation.native_root();
   auto &global=s.continuation.global()->core();auto &bus=*s.continuation.signals();
   if(!s.load(PodunkPackRole::Goods,s.goods,e)||
@@ -311,6 +316,12 @@ bool PodunkHouseExit::prepare(PodunkHouseExitInput in,std::string &e) {
      !s.load_shared(PodunkPackRole::PlayerFetcher,ps.fetchers,e,*ps.initialization,s.sources.tree(),*global.data())||
      !s.load_shared(PodunkPackRole::PlayerChildScripts,ps.children,e,*ps.initialization,*ps.ready)||
      !s.load_shared(PodunkPackRole::PlayerEffects,ps.effects,e,*ps.initialization))return s.fail(e);
+  // The destination ladder borrows the same Player scripts and animator. Load
+  // it against the complete House tree/geometry before any source mutation.
+  const auto *ladder_entry=s.input.continuation.destination->bundle().entry(PodunkPackRole::HouseReturnLadder);
+  if(!ladder_entry||!s.load(PodunkPackRole::HouseReturnLadder,s.house_return_ladder,e,
+       ladder_entry->identity,s.house_return_sources.tree(),
+       s.house_return_sources.geometry(),*ps.initialization,*ps.ready,*ps.motion))return s.fail(e);
   auto resource=std::make_shared<PlayerResourcesData>();
   if(!s.load(PodunkPackRole::PlayerResources,*resource,e,*ps.initialization,*ps.graphics)||
      !resource->bind_effects(*ps.effects,e)||
@@ -1325,6 +1336,7 @@ bool PodunkHouseExit::construct(std::string &e) {
   in.foreign_release=[&s](auto id,auto &error){return s.mick.release(id,error);};
   in.foreign_emits_ready=[&s](auto id){return s.mick.emits_ready(id);};
   in.source_input_handled=[&s](){return s.mick.input_handled();};
+  in.source_scene_retired=[&s](){return s.mick.source_scene_retired();};
   in.allocation_observed=[&s](auto id,const auto &node,const auto &identity,auto &error){
     const auto *actual=s.tree->descriptor(id);
     if(!actual||actual->id!=node.id||s.continuation.registry()->tree_owner(id)!=s.tree||
@@ -1703,6 +1715,13 @@ bool PodunkHouseExit::idle_frame(uint64_t epoch,float dt,bool paused,bool update
   for(auto &row:waiters)if(!row.second()){e=s.consumers.runtime_instances().camera_area->error();return s.fail(e);}
   if(!s.audio_server->pump(e)||!s.continuation.named_sfx()->process(false,paused,e)||
      !s.loop.idle_frame(epoch,dt,paused,update,e))return s.fail(e);
+  // Player's camera and its actual Tween/FunctionState jobs persist across the
+  // Door. Their existing tail still runs once; require the committed Registry
+  // owner before it touches a job. The replacement target must not repeat it.
+  if(s.loop.source_scene_retired()){
+    FieldGameCameraState actual;
+    if(!s.player_camera.native_snapshot(actual,e))return s.fail(e);
+  }
   if(!s.player_camera.idle_tail(epoch,dt,paused,e))return s.fail(e);
   return !s.mick.active()||s.mick.idle_end(epoch,dt,paused,e);
 }
@@ -1741,6 +1760,8 @@ bool PodunkHouseExit::player_view_position(Vec2 &out,std::string &e)const{
 }
 PodunkHouseContinuation *PodunkHouseExit::continuation(){return state_->continuation.initialized()?&state_->continuation:nullptr;}
 const FieldSceneSources *PodunkHouseExit::sources()const{return state_->sources.valid()?&state_->sources:nullptr;}
+const HouseReturnSources *PodunkHouseExit::house_return_sources()const{return state_->house_return_sources.valid()?&state_->house_return_sources:nullptr;}
+const HouseReturnLadderData *PodunkHouseExit::house_return_ladder()const{return state_->house_return_ladder.valid()?&state_->house_return_ladder:nullptr;}
 FieldSceneConsumers PodunkHouseExit::consumers()const{return state_->consumers.runtime_instances();}
 const std::shared_ptr<FieldNodeTreeRuntime> &PodunkHouseExit::tree()const{return state_->tree;}
 FieldGeometrySpace *PodunkHouseExit::geometry(){return &state_->geometry;}

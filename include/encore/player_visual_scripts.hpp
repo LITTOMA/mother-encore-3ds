@@ -97,6 +97,7 @@ struct PlayerVisualScriptState {
 };
 class PlayerVisualScriptsRuntime {
 public:
+  bool rebind_tree(FieldNodeTreeRuntime &, std::string &);
   bool initialize(const PlayerVisualScriptsData &,
                   const PlayerInitializationData &, FieldNodeTreeRuntime &,
                   FieldGlobalRegistry &, FieldGlobalConstructorRuntime &,

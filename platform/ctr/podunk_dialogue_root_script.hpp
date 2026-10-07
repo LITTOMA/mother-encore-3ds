@@ -86,16 +86,37 @@ struct PodunkDialogueRootEndpoints {
   // Native UI's source name-size/tween receiver. It does not advance text.
   std::function<bool(upstream::FieldObjectId, std::string &)> name_rect_changed;
 };
+struct PodunkDialogueRootSourceState {
+  PodunkDialogueScriptState script;
+  uint32_t generation = 0;
+  upstream::FieldObjectId options = 0;
+  bool running = false, owns_printer = false, closing = false,
+       choices_shown = false, phrase_prepared = false;
+};
 class PodunkDialogueRootOwner final : public PodunkDialogueRootScript {
 public:
   bool initialize(const PodunkDialogueRootData &,
                   const upstream::FieldDialogueLifecycleData &,
                   const upstream::FieldNodeRecipeData &,
-                  upstream::HousePresentation &, PodunkProgrammeHost &,
+                  upstream::HousePresentation &, PodunkDialogueProgrammePort &,
                   PodunkDialogueHost &, upstream::DialogueChoices &,
                   upstream::FieldNativeTimers &,
                   const upstream::LocaleSelection *,
                   PodunkDialogueRootEndpoints, std::string &);
+  // Closed actual source owners only; no factory/Ready/callback replay.
+  bool observes_closed_printer(const upstream::HousePresentation &,std::string &) const;
+  bool admit_printer_rebind(const upstream::HousePresentation &,
+                           const upstream::HousePresentation &,std::string &) const;
+  bool rebind_printer(const upstream::HousePresentation &,
+                     upstream::HousePresentation &,std::string &);
+  bool admit_programme_rebind(const PodunkDialogueProgrammePort &old,
+                             const PodunkDialogueProgrammeBinding &expected_old,
+                             const PodunkDialogueProgrammePort &next,
+                             const upstream::HousePresentation &next_printer,
+                             std::string &) const;
+  bool rebind_programme(const PodunkDialogueProgrammePort &old,
+                       const PodunkDialogueProgrammeBinding &expected_old,
+                       PodunkDialogueProgrammePort &next, std::string &);
   bool bind_observation_defaults(const upstream::HouseUiContinuationData &,std::string &);
   bool source_observation(upstream::FieldObjectId,upstream::FieldDialogueObservation &,std::string &) const;
   bool admit(const upstream::FieldDialogueLifecycleData &,
@@ -116,6 +137,13 @@ public:
   // Same actual programme text object, only after the one printer accepted it.
   bool presented_text(upstream::FieldObjectId,
                       const upstream::FieldProgrammeText &, std::string &);
+  bool presented_text(upstream::FieldObjectId, upstream::RoomView,
+                      uint32_t absolute_command, const upstream::HouseDialogue &,
+                      std::string &);
+  bool observe_instances(std::vector<PodunkDialogueRootSourceState> &,
+                         std::string &) const;
+  bool source_frame(upstream::FieldObjectId, PodunkDialogueFrame &,
+                    std::string &) const;
   // Same printer callback, synchronously at the actual source finish point.
   bool text_completed(upstream::FieldObjectId, std::string &);
   bool wait_timeout(upstream::FieldObjectId, std::string &);
@@ -142,7 +170,7 @@ private:
   const upstream::FieldDialogueLifecycleData *life_ = nullptr;
   const upstream::FieldNodeRecipeData *recipe_ = nullptr;
   upstream::HousePresentation *printer_ = nullptr;
-  PodunkProgrammeHost *programme_ = nullptr;
+  PodunkDialogueProgrammePort *programme_ = nullptr;
   PodunkDialogueHost *dialogue_ = nullptr;
   upstream::DialogueChoices *choices_ = nullptr;
   upstream::FieldNativeTimers *timers_ = nullptr;

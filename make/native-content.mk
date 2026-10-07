@@ -48,6 +48,18 @@ scene-clip-native: field-node-tree field-openable field-present field-emotes fie
 audio-server:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/audio_server.py compile
 CONTENT_TASKS += dialogue-actor-resource
+CONTENT_TASKS += house-reentry house-geometry house-node-tree house-return-ladder field-door
+.PHONY: house-reentry house-geometry house-node-tree house-return-ladder field-door
+house-geometry:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_geometry.py compile
+house-node-tree: house-geometry
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_node_tree.py compile
+field-door:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_door.py compile
+house-reentry: room house field-door house-geometry house-node-tree
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_reentry.py compile
+house-return-ladder: house-node-tree house-geometry player-initialization player-ready player-motion
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_return_ladder.py compile
 .PHONY: dialogue-actor-resource
 dialogue-actor-resource:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/dialogue_actor_resource.py compile

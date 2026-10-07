@@ -1,3 +1,4 @@
+#include "encore/player_tree_rebind.hpp"
 #include "encore/player_fetcher.hpp"
 #include <algorithm>
 namespace encore::upstream {
@@ -76,6 +77,7 @@ bool PlayerFetcherRuntime::prepare(const PlayerFetcherData &d,
       sprites.registry() != &r || sprites.tree() != &t)
     return fail(e, "Fetcher actual Player/global/native dependencies differ");
   data_ = &d;
+  player_data_ = &p;
   tree_ = &t;
   registry_ = &r;
   global_ = &global;
@@ -315,6 +317,24 @@ bool PlayerFetcherRuntime::visibility(bool &out, std::string &e) const {
   if (!sample(s, e))
     return false;
   out = s.visible;
+  return true;
+}
+bool PlayerFetcherRuntime::rebind_tree(FieldNodeTreeRuntime &next, std::string &e) {
+  if (!data_ || !player_data_ || !row_ || !registry_ || !sprites_ ||
+      sprites_->registry() != registry_ || sprites_->tree() != &next ||
+      !state_.export_applied || !state_.onready ||
+      !player_rebind_node(*player_data_, *registry_, next, object_, row_->id, e))
+    return fail(e, "Player Fetcher rebind requires preserved source/native owner");
+  for (auto id : {state_.sprite, state_.parent}) {
+    if (!id) continue;
+    auto *descriptor = next.descriptor(id);
+    if (!descriptor || !player_rebind_node(*player_data_, *registry_, next, id, descriptor->id, e))
+      return false;
+  }
+  // Reflector/reflection may belong to the prior scene. Source _process
+  // performs that lookup/deletion; transfer must not replay its onready.
+  tree_ = &next;
+  e.clear();
   return true;
 }
 } // namespace encore::upstream

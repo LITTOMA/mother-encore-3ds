@@ -38,6 +38,10 @@ public:
  bool bind_phone(PhoneRuntime&);
  // Requires the same actual Ready Door runtime and an actual player ObjectID.
  bool bind_scene_doors(const FieldDoorData&,FieldDoorRuntime&,std::function<bool(uint64_t&,std::string&)>,std::string&);
+ // Resolve a lazy destination at the actual boundary contact, before routing
+ // that contact. The callback must bind its checked Door or report failure;
+ // unrecognized boundaries retain their existing unsupported behavior.
+ void set_scene_door_preparer(std::function<bool(std::string_view,std::string&)> prepare){scene_door_preparer_=std::move(prepare);}
  std::vector<HouseSceneDoorRequest>take_scene_door_requests(){auto out=std::move(scene_door_requests_);scene_door_requests_.clear();return out;}
  // Cross-pack admission is transactional: a rejected candidate keeps the
  // previous inspection binding and current interaction intact.
@@ -122,6 +126,7 @@ private:
  bool request_scene_door(uint32_t);
  const FieldDoorData*scene_door_data_=nullptr;FieldDoorRuntime*scene_door_runtime_=nullptr;
  std::function<bool(uint64_t&,std::string&)>scene_door_player_;std::vector<uint32_t>scene_door_ids_;
+ std::function<bool(std::string_view,std::string&)>scene_door_preparer_;
  std::vector<HouseSceneDoorRequest>scene_door_requests_;std::string scene_door_error_;
  bool begin_door(uint32_t);bool interact();bool finish_door();
  const DialogueChoicesData*choices_data_=nullptr;DialogueChoices*choices_=nullptr;uint32_t choices_generation_=0;

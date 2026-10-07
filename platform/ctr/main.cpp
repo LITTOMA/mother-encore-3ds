@@ -794,27 +794,6 @@ bool collect_session_snapshot(upstream::SessionSnapshot&result,std::string&error
     NativeSnapshotInput input;input.state=std::move(state);input.stats=&session_rewards;input.inventory=&session_inventory;input.storage=&session_storage;
     return build_native_session_snapshot(native_session_data,room,house_data.view(),round_data.view(),items_data.view(),input,result,error);
 }
-// Destination ownership is tied to the currently played House. Metadata alone
-// executes no script, takes no entropy and cannot switch the current scene.
-bool podunk_exit_near(std::string&e){
- using namespace upstream;e.clear();
- if(podunk_exit||podunk_prepare_attempted||podunk_retired_house)return false;
- if(gameplay_scene->house.phase()!=HousePhase::Idle||gameplay_scene->world.stage()!=OpeningStage::Walking||gameplay_scene->world.cutscene_active())return false;
- if(!podunk_destination.valid()&&!podunk_destination.load(resource_catalog,"romfs:/",opening_data.view(),e))return false;
- const auto&doors=podunk_destination.exit();const auto p=gameplay_scene->world.player().position;
- const auto room=opening_data.view();const auto scene=room.scene();
- float hull=0;for(uint32_t i=0;i<scene.actor_hull_count;++i){const auto v=room.vertex(scene.actor_hull_first+i);hull=std::max(hull,std::max(std::abs(v.x),std::abs(v.y)));}
- // Prepare before the very next native House overlap query. This margin is
- // derived from the actual source movement and actor hull, never a new trigger.
- const float speed=std::max(room.rule_f32(RoomRuleKey::RunSpeed),gameplay_scene->world.player().speed);
- const float margin=hull+speed*speed/(room.rule_f32(RoomRuleKey::MovementDivisor)*60.f*60.f);
- for(uint32_t i=0;i<doors.door_count();++i){const auto d=doors.door(i);const auto&t=d.body_transform;
-  const Vec2 c{t.origin.x+t.x.x*d.shape_offset.x+t.y.x*d.shape_offset.y,t.origin.y+t.x.y*d.shape_offset.x+t.y.y*d.shape_offset.y};
-  const Vec2 r{std::abs(t.x.x)*d.extents.x+std::abs(t.y.x)*d.extents.y,std::abs(t.x.y)*d.extents.x+std::abs(t.y.y)*d.extents.y};
-  if(std::abs(p.x-c.x)<=r.x+margin&&std::abs(p.y-c.y)<=r.y+margin){e.clear();return true;}
- }
- e.clear();return false;
-}
 bool prepare_podunk_exit(std::string&e){
  using namespace upstream;
  if(podunk_prepare_attempted||podunk_exit||!podunk_destination.valid()){e="House exit preparation owner repeated/missing";return false;}
@@ -1661,11 +1640,6 @@ int main(int argc,char** argv){
         podunk_controls=input_context()==sampled_context?upstream::Vec2{float(native_controls.direction.x),float(native_controls.direction.y)}:upstream::Vec2{};
         podunk_down=down;podunk_held=held;podunk_up=hidKeysUp();
         const auto podunk_door_initial=podunk_exit?podunk_exit->house_door()->phase():upstream::FieldDoorPhase::Idle;
-        if(world_input&&house_error.empty()&&!podunk_exit){
-            const bool near=podunk_exit_near(error);
-            if(!error.empty())house_error=error;
-            else if(near){LoadingScope loading("Leaving house",1);if(!loading.step([&]{return prepare_podunk_exit(error);},"source-house-to-outdoor")||!loading.finish())house_error=error;}
-        }
         while(accumulator>=1000){
             if(podunk_retired_house){if(podunk_exit&&podunk_exit->ready()&&house_error.empty()&&!podunk_exit->physics_frame(++podunk_physics_epoch,float(time_scale/60.0),false,error))house_error=error;accumulator-=1000;continue;}
             if(!world_visible){accumulator-=1000;continue;}
@@ -1684,6 +1658,17 @@ int main(int argc,char** argv){
         shader_time+=dt;if((world_input||field_equipment_menu.visible()||(podunk_retired_house&&podunk_exit&&podunk_exit->ready()&&house_error.empty()))&&session_state_ready)session_state.playtime_seconds+=dt;
         if(world_visible&&gameplay_scene->world.healthy())gameplay_scene->world.idle_frame(dt);
         if(world_visible&&house_error.empty()&&!gameplay_scene->presentation.idle_frame(dt))house_error=gameplay_scene->presentation.error();
+        gameplay_scene->house.set_scene_door_preparer([](std::string_view path,std::string&e){
+            // The House contact supplies the checked source node identity. No
+            // proximity prediction or catch-up frame count controls admission.
+            if(podunk_exit||podunk_retired_house){e="House scene Door contact lacks its current binding";return false;}
+            if(!podunk_destination.valid()&&!podunk_destination.load(resource_catalog,"romfs:/",opening_data.view(),e))return false;
+            const auto&doors=podunk_destination.exit();bool mapped=false;
+            for(uint32_t i=0;i<doors.door_count();++i)if(doors.string(doors.door(i).node)==path)mapped=true;
+            if(!mapped){e.clear();return true;}
+            LoadingScope loading("Leaving house",1);
+            return loading.step([&]{return prepare_podunk_exit(e);},"source-house-to-outdoor")&&loading.finish();
+        });
         if(world_visible&&house_error.empty()&&!gameplay_scene->house.idle_frame(dt,world_input&&((down&KEY_A)!=0||(input_context()==sampled_context&&native_controls.confirm_pulse)),world_input&&(down&KEY_B)!=0))house_error=gameplay_scene->house.error();
         if(world_visible&&house_error.empty()&&gameplay_scene->present_sparkles.initialized()){if(!gameplay_scene->present_sparkles.set_opened(gameplay_scene->house.basement_present_opened(),error)||!gameplay_scene->present_sparkles.idle_frame(dt,true,error))house_error=error;}
         if(world_visible&&house_error.empty()&&!advance_world_effect(dt,house_error)){}

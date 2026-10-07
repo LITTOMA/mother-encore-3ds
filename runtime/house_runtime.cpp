@@ -135,6 +135,13 @@ bool HouseRuntime::deliver_area_contacts(){
    if(!world_->pause_for_house())return fail("Door pause rejected");
    event(HouseEventKind::Paused,c.index);
   }else if(c.kind==2&&!blocks_player()&&!entering_door()){
+   if((!scene_door_data_||c.index>=scene_door_ids_.size()||!scene_door_ids_[c.index])&&scene_door_preparer_){
+    const auto boundary=content_.boundary(c.index);
+    if(boundary.kind==uint32_t(HouseBoundaryKind::UnsupportedScene)){
+     scene_door_error_.clear();
+     if(!scene_door_preparer_(content_.string(boundary.source_path),scene_door_error_))return fail(scene_door_error_.empty()?"House scene Door preparation failed":scene_door_error_.c_str());
+    }
+   }
    if(scene_door_data_&&c.index<scene_door_ids_.size()&&scene_door_ids_[c.index]){if(!request_scene_door(c.index))return false;continue;}
    active_=c.index;phase_=HousePhase::Unsupported;error_="Unported source route; B returns to the last safe point";
    if(!world_->pause_for_house())return fail("Boundary pause rejected");

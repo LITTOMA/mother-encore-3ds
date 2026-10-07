@@ -10,6 +10,28 @@ namespace {
 unsigned checks=0;
 #define check(ok,why) do{++checks;if(!(ok)){std::cerr<<"House binding check "<<checks<<" line "<<__LINE__<<": "<<(why)<<'\n';std::exit(1);}}while(false)
 struct Trace {std::string source,text,events,actions,audio;Vec2 anchor;uint64_t state=0,draws=0;std::set<uint32_t>seen;uint32_t body=0,actor=0;};
+void lazy_scene_contact(const char*house_path,const char*room_path,const char*font_path,unsigned physics_steps,bool reject_prepare){
+ HouseData data;RoomData room;BattleData font;std::string error;
+ check(data.load_file(house_path,error)&&room.load_file(room_path,error)&&font.load_file(font_path,error),error);
+ const auto h=data.view();SourceRandom random(123);OpeningWorld world;HousePresentation p;HouseRuntime runtime;
+ check(world.initialize(room.view(),{400,240}),world.error());world.attach_random(random);
+ check(p.begin(h,font.view(),random),p.error());check(runtime.initialize(h,world,p),runtime.error());
+ uint32_t boundary=house_no_index;
+ for(uint32_t i=0;i<h.count(HouseSection::Boundaries);++i)if(h.boundary(i).kind==uint32_t(HouseBoundaryKind::UnsupportedScene)){check(boundary==house_no_index,"Single reviewed source scene exit");boundary=i;}
+ check(boundary!=house_no_index,"Actual source scene exit exists");const auto door=h.boundary(boundary);
+ unsigned prepared=0;std::string contacted;
+ runtime.set_scene_door_preparer([&](std::string_view path,std::string&e){++prepared;contacted=path;e=reject_prepare?"Destination preparation rejected at contact":"";return !reject_prepare;});
+ check(world.warp_same_scene(door.center,{0,1}),world.error());check(runtime.after_physics(),runtime.error());
+ const double dt=double(float(1./60));
+ // Several physics ticks can precede one idle dispatch. Destination admission
+ // must run for the queued real contact, regardless of this catch-up count.
+ for(unsigned i=0;i<physics_steps;++i){WalkInput input;check(runtime.before_physics(input),runtime.error());check(world.advance(input),world.error());check(runtime.after_physics(),runtime.error());}
+ check(prepared==0,"Physics contact does not construct a destination early");
+ const bool delivered=runtime.idle_frame(dt,false,false);
+ check(prepared==1&&contacted==h.string(door.source_path),"Queued contact resolves the actual source exit once");
+ if(reject_prepare){check(!delivered&&runtime.phase()==HousePhase::Error&&runtime.error()=="Destination preparation rejected at contact","Preparation failure survives instead of becoming an unsupported route");}
+ else{check(delivered&&runtime.phase()==HousePhase::Unsupported,"Unbound destination remains explicitly unsupported");}
+}
 Trace run(const std::string&path,const char*room_path,const char*font_path){
  HouseData data;RoomData room;BattleData font;std::string error;
  check(data.load_file(path.c_str(),error)&&room.load_file(room_path,error)&&font.load_file(font_path,error),error);
@@ -41,6 +63,10 @@ Trace run(const std::string&path,const char*room_path,const char*font_path){
 }
 int main(int argc,char**argv){
  check(argc==4,"House fixture directory, actual Room and font packs required");const std::string directory=argv[1];
+ const auto baseline=directory+"/baseline.enchouse";
+ lazy_scene_contact(baseline.c_str(),argv[2],argv[3],1,true);
+ lazy_scene_contact(baseline.c_str(),argv[2],argv[3],6,true);
+ lazy_scene_contact(baseline.c_str(),argv[2],argv[3],6,false);
  const auto a=run(directory+"/baseline.enchouse",argv[2],argv[3]),b=run(directory+"/adapter.enchouse",argv[2],argv[3]);
  check(a.anchor.x==.5f&&b.anchor.x==.75f&&a.anchor.y==1&&b.anchor.y==1,"Same executable consumes external House anchor change");
  check(a.source==b.source&&a.body==b.body&&a.actor==b.actor&&a.seen==b.seen,"Stable original NPC/save identity unchanged");

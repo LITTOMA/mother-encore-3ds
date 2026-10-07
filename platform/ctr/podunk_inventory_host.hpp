@@ -112,6 +112,9 @@ class PodunkInventoryHost final {
   upstream::FieldGlobalRegistry *registry_ = nullptr;
   upstream::FieldInventoryRuntime inventory_;
   upstream::FieldItemDefinitionsRuntime definitions_;
+  std::weak_ptr<PodunkItemObject> constructing_item_;
+  upstream::SourceRandom *source_random_ = nullptr;
+  std::vector<uint32_t> *source_ledger_ = nullptr;
   upstream::FieldGoodsMenu menu_;
   FieldGoodsRenderer renderer_;
   ItemDetailsRenderer details_;
@@ -184,6 +187,16 @@ class PodunkInventoryHost final {
             return fail(e, "Source UID aliases a different actual Item");
           return true;
         }
+      if (auto pending = constructing_item_.lock()) {
+        if (pending->value.uid == i.uid && pending->value.definition == i.definition) {
+          upstream::FieldOwnedItem actual_value;
+          if (pending->owner != owner || !pending->read_item(actual_value, e) ||
+              !same(actual_value, i))
+            return fail(e, "Actual Item candidate/body differs");
+          next.emplace(pending->object, pending);
+          return true;
+        }
+      }
       upstream::FieldObjectId id = 0;
       if (!registry_->allocate_object(id, e))
         return false;
@@ -667,6 +680,7 @@ public:
         poisoned_ = true;
         return false;
       }
+      constructing_item_.reset();
       return true;
     };
     if (!definitions_.initialize(defs, random, ledger, std::move(clock),
@@ -691,6 +705,8 @@ public:
     };
     if (!menu_.initialize(goods, inventory_, definitions_, std::move(host), e))
       return false;
+    source_random_ = &random;
+    source_ledger_ = &ledger;
     prepared_ = true;
     e.clear();
     return true;
@@ -746,7 +762,7 @@ public:
         [&](const auto &f) {
           return f.source == field.binding(upstream::FieldBinding::MainFont);
         });
-    if (!prepared_ || active_ || !field.valid() || !main || !numbers ||
+    if (!prepared_ || menu_.visible() || !field.valid() || !main || !numbers ||
         !catalog || index < 0 ||
         authored == main_font.catalog().faces().end() ||
         main->source != catalog->locales()[size_t(index)].font ||
@@ -771,7 +787,7 @@ public:
     return true;
   }
   bool activate(std::string &e) {
-    if (!prepared_ || !graphics_ || sounds_.empty() || poisoned_ || active_ ||
+    if (!prepared_ || poisoned_ || active_ ||
         !ops_.owners(*data_, owners_, inventory_.state(), e))
       return fail(e, "Goods actual source owners/preparation not admitted");
     for (const auto &o : owners_)
@@ -779,16 +795,20 @@ public:
         return fail(
             e,
             "Actual Inventory Reference owner was retired before activation");
-    for (const auto &v : objects_)
-      if (!actual(v.second, e))
+    for (const auto &v : objects_) {
+      upstream::FieldOwnedItem value;
+      if (!actual(v.second, e) || !v.second->read_item(value, e) ||
+          !same(value, v.second->value))
         return false;
+    }
     active_ = true;
     e.clear();
     return true;
   }
   bool open(const std::string &nickname, bool description, bool chinese,
             std::string &e) {
-    if (!live(e) || !locale_ || chinese != (locale_->code() == "zh_Hans_CN"))
+    if (!live(e) || !graphics_ || sounds_.empty() || !locale_ ||
+        chinese != (locale_->code() == "zh_Hans_CN"))
       return fail(e, "Goods locale does not match actual font owner");
     details_.set_locale(chinese ? "zh_Hans_CN" : "en");
     details_.set_nickname(nickname);
@@ -831,6 +851,81 @@ public:
   const upstream::FieldGoodsMenu &menu() const { return menu_; }
   upstream::FieldItemDefinitionsRuntime *items() {
     return active_ && !poisoned_ ? &definitions_ : nullptr;
+  }
+  // Bind only the same live globaldata Items cache. This is Item.new, not
+  // serialized LOAD: allocate Reference, evaluate UID, then resolve doses.
+  bool bind_source_item_factory(const upstream::FieldCharacterLoadData &source,
+                                const upstream::FieldItemDefinitions &all,
+                                upstream::GlobalItemCache &cache,
+                                upstream::SourceRandom &random,
+                                std::vector<uint32_t> &ledger, std::string &e) {
+    if (!live(e) || &random != source_random_ || &ledger != source_ledger_ ||
+        !source.valid() || !all.global_constructor_scope() ||
+        cache.definitions() != &all || !cache.directory_admitted() ||
+        source.identity().upstream_commit != data_->source_pin() ||
+        all.source_pin() != data_->source_pin())
+      return fail(e, "Item.new actual shared cache/RNG owner rejected");
+    const auto &binding = source.source_bindings();
+    std::array<uint8_t, 32> a{}, b{};
+    if (!binding.item_constructor_id || binding.item_native != "Reference" ||
+        !source.source_hash(binding.item_script, a) ||
+        !all.source_hash(binding.item_script, b) || a != b)
+      return fail(e, "Item.new source constructor identity rejected");
+    upstream::FieldItemConstructionHost h;
+    h.reserve = [this, &source, &all, &cache](const auto &request, uint32_t owner,
+                                            std::shared_ptr<void> &token,
+                                            std::string &error) {
+      if (!live(error) || !constructing_item_.expired() || token ||
+          !cache.directory_admitted() || cache.definitions() != &all)
+        return fail(error, "Item.new constructor transaction unavailable");
+      const auto *d = defs_->definition(request.definition);
+      const auto *full = all.definition(request.definition);
+      const auto *o = owner ? data_->owner(owner) : nullptr;
+      if (!d || !full || d->source != full->source || d->item_name != full->item_name ||
+          d->doses != full->doses || (owner && !o) ||
+          (o && ((o->role == 1) != d->keyitem())))
+        return fail(error, "Item.new source definition/target rejected");
+      const auto &s = source.source_bindings();
+      upstream::FieldObjectId id = 0;
+      if (!registry_->allocate_object(id, error)) return false;
+      auto item = std::make_shared<PodunkItemObject>();
+      item->object = item->allocated_ = id;
+      item->allocator_ = registry_; item->owner = owner;
+      item->source_definitions_ = &all; item->source_character_load_ = &source;
+      item->character_ir_ = source.ir_sha256(); item->constructing_ = true;
+      if (!source.source_hash(s.item_script, item->source_proof_))
+        return fail(error, "Item.new source proof unavailable");
+      upstream::FieldGlobalExternalSpec spec;
+      spec.identity.upstream_commit = all.source_pin();
+      spec.identity.scene_id = spec.stable_id = s.item_constructor_id;
+      spec.identity.source_sha256 = spec.source_sha = spec.script_sha = item->source_proof_;
+      spec.role = 5; spec.native_class = s.item_native;
+      spec.source = spec.script = s.item_script;
+      item->source_binding_ = {id, spec, 0x454e0050, 2};
+      if (!registry_->publish_native_reference(spec, id, item, error)) return false;
+      constructing_item_ = item; token = item;
+      error.clear(); return true;
+    };
+    h.finish = [this, &all, &cache](const auto &request, const auto &value,
+                                  const std::shared_ptr<void> &token,
+                                  std::string &error) {
+      auto item = constructing_item_.lock();
+      const auto *d = all.definition(request.definition);
+      if (!item || token.get() != item.get() || !item->constructing_ || !d ||
+          value.definition != d->id || value.equipped || value.doses != d->doses)
+        return fail(error, "Item.new actual initializer rejected");
+      item->value.definition = value.definition;
+      item->value.equipped = value.equipped;
+      item->value.uid = value.uid;
+      item->constructor_doses_ = -1;
+      if (cache.get_item_data(d->id) != d)
+        return fail(error, "Item.new actual get_data cache unavailable");
+      item->value.doses = d->doses;
+      item->constructor_doses_ = d->doses;
+      item->constructing_ = false;
+      error.clear(); return true;
+    };
+    return definitions_.bind_source_construction(std::move(h), e);
   }
   bool encode_save(std::vector<uint8_t> &bytes, std::string &e) const {
     return live(e) && inventory_.encode_save(bytes, e);

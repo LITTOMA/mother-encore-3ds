@@ -4,6 +4,8 @@
 
 正常家门→Podunk 的游戏入口已接入当前会话：按原版门的16步顺序建立目标场景、迁移玩家及持久门对象、接续音乐，启用场景绘制、移动、碰撞和相机。源场景的动画、计时器、音频、NPC与物件消费者共用同一场景树、对象注册表及游戏随机数。代码接入不等于成功出门验收；本候选尚未在模拟器或真机运行，不能宣称户外可玩。
 
+Mick 的普通对话、选择、蹲下互动时的读心及原版 `woof_key` 钥匙程序已接入上述户外会话。实际 DialogueBox 子树、文字打印、信号等待、镜头返回、读心 Fade 和 Item 构造使用同一场景树、对象注册表、库存 UID 与随机流。独立 `.encactorrecipe` 保存原版 DialogueActor 资源，`.encuicontinuation` v4 保存此切片使用的声音和曲线路径；Podunk bundle 增为 90 项角色资源。完整七项 UI 启动、户外 Pause／PSI 菜单、重返房屋及后续地图仍未全部接通；这些代码尚未通过模拟器或真机游玩验收。
+
 户外普通 Ready 与首帧的桥接包括提示框、Emote／Bush、Sparkles／OpenableDoor、Butterfly、CameraArea／MusicChanger和跳跃区域的原生 RayCast。玩家物理与 idle 回调使用场景循环维护的唯一调用序列；UI信号通过实际会话单例的声明所有者核对。完整户外对话、剧情、敌人生成、战斗及后续场景仍未全部实现，未知动作继续明确报告。
 
 Mother: Encore 的局部原生 Nintendo 3DS 移植。共享 C++17 核心运行受检内容，3DS 后端负责渲染、输入、音频和存储；不运行 Godot 或通用 GDScript 解释器。完整游戏尚未完成。

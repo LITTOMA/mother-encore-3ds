@@ -264,7 +264,10 @@ bool FieldNodeTreeRuntime::initialize_source_node(const FieldIdentity&identity,c
   e.clear();
   return true;
  }
- bool FieldNodeTreeRuntime::bind(FieldObjectId id,std::string&e){
+ bool FieldNodeTreeRuntime::bind_source_object(FieldObjectId id,std::string&e){
+ return bind(id,e);
+}
+bool FieldNodeTreeRuntime::bind(FieldObjectId id,std::string&e){
   auto*n=live(id);
   auto*s=source(id);
   if(!n||!s)return fail(e,"NodeTree dead lifecycle owner");

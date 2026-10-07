@@ -15,6 +15,334 @@ bool identity(const FieldIdentity &a, const FieldIdentity &b) {
          a.upstream_commit == b.upstream_commit;
 }
 } // namespace
+class PodunkPlayerCamera::TweenReference final
+    : public FieldGlobalNativeReference {
+public:
+  TweenReference(PodunkPlayerCamera &owner, FieldGlobalExternalBinding binding)
+      : owner_(owner), binding_(std::move(binding)) {}
+  FieldGlobalExternalBinding binding() const override { return binding_; }
+  const char *native_class() const override {
+    return binding_.source.native_class.c_str();
+  }
+  const FieldGlobalRegistry *registry() const override {
+    return owner_.registry_;
+  }
+  bool checked_source_hash(std::string_view source,
+                           std::array<uint8_t, 32> &out) const override {
+    if (binding_.source.native_class == "GDScriptFunctionState")
+      return owner_.data_ && owner_.data_->camera().source_hash(source, out);
+    return owner_.tween_engine_ &&
+           owner_.tween_engine_->source_hash(source, out);
+  }
+  bool dispatch(const FieldDeferredMessage &m, std::string &e) override {
+    if (binding_.source.native_class != "GDScriptFunctionState" ||
+        m.object != binding_.object || m.kind != FieldDeferredKind::Call ||
+        m.member != "_signal_callback" || m.args.size() != 1 ||
+        !std::holds_alternative<FieldObjectRef>(m.args[0]) ||
+        std::get<FieldObjectRef>(m.args[0]).id != binding_.object)
+      return fail(e,
+                  "Camera native Reference source coroutine method rejected");
+    return owner_.resume_tween_waiter(binding_.object, e);
+  }
+
+private:
+  PodunkPlayerCamera &owner_;
+  FieldGlobalExternalBinding binding_;
+};
+PodunkPlayerCamera::~PodunkPlayerCamera() {
+  if (registry_ && tween_signals_) {
+    std::string e;
+    collect_tweens(true, e);
+  }
+}
+bool PodunkPlayerCamera::bind_tweens(const GrassNativeData &proof,
+                                     FieldObjectSignals &signals,
+                                     std::string &e) {
+  std::array<uint8_t, 32> hash{}, namespace_hash{};
+  if (!data_ || !registry_ || tween_engine_ || !proof.valid() ||
+      proof.identity().upstream_commit != data_->identity().upstream_commit ||
+      signals.registry() != registry_ ||
+      proof.tween_source() != "scene/animation/scene_tree_tween.cpp" ||
+      !proof.source_hash(proof.tween_source(), hash) ||
+      std::all_of(hash.begin(), hash.end(), [](uint8_t v) { return !v; }) ||
+      proof.tween_signal() != "finished" ||
+      (registry_->data()->engine_hash(proof.tween_source(), namespace_hash) &&
+       namespace_hash != hash))
+    return fail(
+        e,
+        "Camera actual Tween official engine/source/SignalBus proof rejected");
+  tween_engine_ = &proof;
+  tween_signals_ = &signals;
+  e.clear();
+  return true;
+}
+bool PodunkPlayerCamera::make_tween_reference(
+    const char *type, std::string_view source,
+    std::shared_ptr<TweenReference> &out, std::string &e) {
+  if (!tween_engine_ || !tween_signals_ || !live(e))
+    return fail(e, "Camera native Tween owner not bound");
+  FieldGlobalExternalBinding b;
+  b.family = 0x454e0061;
+  b.capability = 1;
+  b.source.identity = data_->identity();
+  b.source.stable_id = native_.id;
+  b.source.role = 5;
+  b.source.native_class = type;
+  b.source.source = std::string(source);
+  const bool function = std::string_view(type) == "GDScriptFunctionState";
+  if (!(function ? data_->camera().source_hash(source, b.source.source_sha)
+                 : tween_engine_->source_hash(source, b.source.source_sha)))
+    return fail(e, "Camera actual Reference independent source proof absent");
+  b.source.identity.source_sha256 = b.source.source_sha;
+  if (function) {
+    b.source.script = b.source.source;
+    b.source.script_sha = b.source.source_sha;
+  }
+  if (!registry_->allocate_object(b.object, e))
+    return false;
+  auto ref = std::make_shared<TweenReference>(*this, b);
+  if (!registry_->publish_native_reference(b.source, b.object, ref, e)) {
+    ref.reset();
+    std::string ignored;
+    registry_->retire_object(b.object, ignored);
+    return false;
+  }
+  tween_references_.insert(b.object);
+  out = std::move(ref);
+  e.clear();
+  return true;
+}
+bool PodunkPlayerCamera::register_tween(uint32_t camera, uint64_t token,
+                                        std::function<bool(float)> step,
+                                        std::string &e) {
+  if (!live(e) || !tween_engine_ || !tween_signals_ || tween_poisoned_ ||
+      camera != native_.id || !token || !step || tween_jobs_.count(token))
+    return fail(e, "Camera actual source Tween registration rejected");
+  const auto &core = children_->camera().tweens();
+  auto i = core.find(token);
+  if (i == core.end() || i->second.camera != camera || !i->second.alive ||
+      !i->second.running || i->second.tracks.empty() ||
+      i->second.tracks.size() > 2 || i->second.continuation > 3)
+    return fail(e, "Camera Tween differs from same actual source core");
+  TweenJob job;
+  job.token = token;
+  job.step = std::move(step);
+  job.property_finished.assign(i->second.tracks.size(), false);
+  if (!make_tween_reference("SceneTreeTween", tween_engine_->tween_source(),
+                            job.owner, e))
+    return false;
+  for (size_t at = 0; at < i->second.tracks.size(); ++at) {
+    std::shared_ptr<TweenReference> property;
+    if (!make_tween_reference("PropertyTweener", tween_engine_->tween_source(),
+                              property, e)) {
+      tween_poisoned_ = true;
+      return false;
+    }
+    job.properties.push_back(std::move(property));
+  }
+  if (i->second.continuation) {
+    if (!make_tween_reference("GDScriptFunctionState", data_->camera().script(),
+                              job.waiter, e)) {
+      tween_poisoned_ = true;
+      return false;
+    }
+    job.wait_emitter = i->second.continuation == 3
+                           ? job.owner->binding().object
+                           : job.properties.front()->binding().object;
+  }
+  auto result = tween_jobs_.emplace(token, std::move(job));
+  auto &actual = result.first->second;
+  if (actual.waiter &&
+      !tween_signals_->connect(
+          actual.wait_emitter, tween_engine_->tween_signal(),
+          actual.waiter->binding().object, "_signal_callback",
+          FieldSignalOneShot, {FieldObjectRef{actual.waiter->binding().object}},
+          e)) {
+    tween_poisoned_ = true;
+    return false;
+  }
+  e.clear();
+  return true;
+}
+bool PodunkPlayerCamera::kill_tween(uint64_t token, std::string &e) {
+  auto i = tween_jobs_.find(token);
+  if (tween_poisoned_ || i == tween_jobs_.end() || !i->second.owner ||
+      !registry_->object_exists(i->second.owner->binding().object))
+    return fail(e, "Camera kill actual source Tween lifetime rejected");
+  // Official kill marks dead/running=false; it never emits finished/resumes.
+  i->second.dead = true;
+  i->second.step = {};
+  e.clear();
+  return true;
+}
+bool PodunkPlayerCamera::tween_owned(FieldObjectId id) const {
+  return id && tween_references_.count(id);
+}
+bool PodunkPlayerCamera::tween_declaration(FieldObjectId id,
+                                           std::string_view name,
+                                           uint32_t &arity,
+                                           std::string &e) const {
+  if (!tween_owned(id) || !registry_ || !tween_engine_)
+    return fail(e, "Camera actual Reference signal owner absent");
+  auto ref = registry_->native_reference(id);
+  if (!ref)
+    return fail(e, "Camera actual Reference signal owner expired");
+  std::string_view type = ref->native_class();
+  if ((type == "SceneTreeTween" || type == "PropertyTweener") &&
+      name == tween_engine_->tween_signal()) {
+    arity = 0;
+    e.clear();
+    return true;
+  }
+  if (type == "SceneTreeTween" &&
+      (name == "step_finished" || name == "loop_finished")) {
+    arity = 1;
+    e.clear();
+    return true;
+  }
+  if (type == "GDScriptFunctionState" && name == "completed") {
+    arity = 1;
+    e.clear();
+    return true;
+  }
+  return fail(e, "Camera native Reference unknown signal rejected");
+}
+bool PodunkPlayerCamera::resume_tween_waiter(FieldObjectId id, std::string &e) {
+  for (auto &row : tween_jobs_) {
+    auto &job = row.second;
+    if (!job.waiter || job.waiter->binding().object != id)
+      continue;
+    if (job.dead || job.resumed || job.completed ||
+        !tween_signals_->emitting_to(job.wait_emitter,
+                                     tween_engine_->tween_signal(), id,
+                                     "_signal_callback"))
+      return fail(
+          e, "Camera actual FunctionState resume outside checked yield signal");
+    job.resumed = true;
+    e.clear();
+    return true;
+  }
+  return fail(e, "Camera actual FunctionState waiter unknown");
+}
+bool PodunkPlayerCamera::tween_signal(uint64_t token, uint32_t property,
+                                      bool finished, std::string &e) {
+  auto i = tween_jobs_.find(token);
+  if (!tween_stepping_ || i == tween_jobs_.end() || i->second.dead ||
+      !tween_signals_)
+    return fail(e, "Camera Tween signal outside actual idle traversal");
+  auto &job = i->second;
+  if (!finished) {
+    if (property >= job.properties.size() || job.property_finished[property] ||
+        !job.properties[property])
+      return fail(e, "Camera PropertyTweener duplicate/source index rejected");
+    job.property_finished[property] = true;
+    return tween_signals_->emit(job.properties[property]->binding().object,
+                                tween_engine_->tween_signal(), {}, e);
+  }
+  if (job.finished ||
+      std::find(job.property_finished.begin(), job.property_finished.end(),
+                false) != job.property_finished.end())
+    return fail(e, "Camera Tween finished before all source properties");
+  job.finished = true;
+  // One source step, default single loop: step_finished then finished; no
+  // loop_finished at final completion (official 3.6.2 SceneTreeTween::step).
+  return tween_signals_->emit(job.owner->binding().object, "step_finished",
+                              {int64_t(0)}, e) &&
+         tween_signals_->emit(job.owner->binding().object,
+                              tween_engine_->tween_signal(), {}, e);
+}
+bool PodunkPlayerCamera::coroutine_completed(uint64_t token, std::string &e) {
+  auto i = tween_jobs_.find(token);
+  if (i == tween_jobs_.end() || !i->second.waiter || !i->second.resumed ||
+      i->second.completed || i->second.dead)
+    return fail(
+        e, "Camera source continuation completed without actual yield resume");
+  i->second.completed = true;
+  // Source methods have no explicit return expression: completed carries nil.
+  return tween_signals_->emit(i->second.waiter->binding().object, "completed",
+                              {std::monostate{}}, e);
+}
+bool PodunkPlayerCamera::release_tween_reference(
+    std::shared_ptr<TweenReference> &ref, std::string &e) {
+  if (!ref)
+    return true;
+  auto id = ref->binding().object;
+  ref.reset();
+  if (registry_->native_reference(id))
+    return fail(e, "Camera native Reference still held after source release");
+  if (!tween_signals_->release(id, e) || !registry_->retire_object(id, e))
+    return false;
+  tween_references_.erase(id);
+  return true;
+}
+bool PodunkPlayerCamera::collect_tweens(bool all, std::string &e) {
+  for (auto i = tween_jobs_.begin(); i != tween_jobs_.end();) {
+    auto &job = i->second;
+    if (all || job.dead || job.finished) {
+      for (auto &property : job.properties)
+        if (!release_tween_reference(property, e))
+          return false;
+      job.step = {};
+      if (all || job.dead || job.completed)
+        if (!release_tween_reference(job.waiter, e))
+          return false;
+      auto *source =
+          children_ ? children_->camera().state(native_.id) : nullptr;
+      const bool retained =
+          !all && source && source->alive && source->shared_tween == job.token;
+      if (!retained) {
+        if (!release_tween_reference(job.owner, e))
+          return false;
+        i = tween_jobs_.erase(i);
+        continue;
+      }
+    }
+    ++i;
+  }
+  e.clear();
+  return true;
+}
+bool PodunkPlayerCamera::idle_tail(uint64_t epoch, float delta, bool paused,
+                                   std::string &e) {
+  if (!tween_engine_ || !tween_signals_ || tween_poisoned_ || tween_stepping_ ||
+      !epoch || epoch <= tween_epoch_ || !std::isfinite(delta) || delta < 0)
+    return fail(e, "Camera unique actual SceneTree Tween frame rejected");
+  tween_epoch_ = epoch;
+  // Snapshot actual creation order. Jobs appended by a finished callback wait
+  // for the next real traversal; bound Nodes outside the tree do not advance.
+  std::vector<uint64_t> order;
+  for (const auto &row : tween_jobs_)
+    order.push_back(row.first);
+  tween_stepping_ = true;
+  for (auto token : order) {
+    auto i = tween_jobs_.find(token);
+    if (i == tween_jobs_.end() || i->second.dead || i->second.finished)
+      continue;
+    const auto *node = tree_->state(object_);
+    if (!node || !node->alive) {
+      i->second.dead = true;
+      continue;
+    }
+    if (!node->inside || !tree_->can_process(object_, paused))
+      continue;
+    auto step = i->second.step;
+    if (!step || !step(delta)) {
+      tween_stepping_ = false;
+      tween_poisoned_ = true;
+      e = children_->camera().error();
+      if (e.empty())
+        e = "Camera actual Tween step failed";
+      return false;
+    }
+  }
+  tween_stepping_ = false;
+  if (!collect_tweens(false, e)) {
+    tween_poisoned_ = true;
+    return false;
+  }
+  e.clear();
+  return true;
+}
 bool PodunkPlayerCamera::prepare(
     const PlayerChildScriptsData &d, const PlayerInitializationData &p,
     const PlayerMotionData &m, FieldNodeTreeRuntime &t, FieldGlobalRegistry &r,
@@ -74,21 +402,24 @@ bool PodunkPlayerCamera::live(std::string &e) const {
     return fail(e, "Player Camera actual native owner unavailable");
   return true;
 }
-bool PodunkPlayerCamera::native_snapshot(FieldGameCameraState&out,std::string&e)const{
-  if (!live(e)) return false;
+bool PodunkPlayerCamera::native_snapshot(FieldGameCameraState &out,
+                                         std::string &e) const {
+  if (!live(e))
+    return false;
   out = native_;
   e.clear();
   return true;
 }
-bool PodunkPlayerCamera::native_select(bool current,std::string&e){
-  if (!live(e)) return false;
+bool PodunkPlayerCamera::native_select(bool current, std::string &e) {
+  if (!live(e))
+    return false;
   native_.current = current;
   if (children_->camera().state(native_.id) &&
       !children_->camera().native_current_changed(native_.id, current)) {
     e = children_->camera().error();
     return false;
   }
-  return current&&entered_?update_native(e):true;
+  return current && entered_ ? update_native(e) : true;
 }
 bool PodunkPlayerCamera::actual_ui(std::string &e) const {
   const auto *ns = ports_.ui_namespace;
@@ -123,6 +454,12 @@ bool PodunkPlayerCamera::actual_ui(std::string &e) const {
 }
 bool PodunkPlayerCamera::deferred(const FieldDeferredMessage &m,
                                   std::string &e) {
+  if (tween_owned(m.object)) {
+    auto ref = registry_->native_reference(m.object);
+    return ref ? const_cast<FieldGlobalNativeReference *>(ref.get())->dispatch(
+                     m, e)
+               : fail(e, "Camera actual Tween Reference expired");
+  }
   if (!live(e) || m.object != object_ || m.kind != FieldDeferredKind::Call ||
       m.member != "_update_scroll" || !m.args.empty())
     return fail(e, "Camera native method/signature/owner rejected");
@@ -423,6 +760,8 @@ bool PodunkPlayerCamera::phase(FieldObjectId id, FieldTreePhase p, bool paused,
   case FieldTreePhase::Deleting:
     if (entered_)
       return fail(e, "Player Camera deleted while in actual Viewport");
+    if (tween_signals_ && !collect_tweens(true, e))
+      return false;
     object_ = 0;
     return true;
   case FieldTreePhase::PostEnterNative:
@@ -589,20 +928,19 @@ FieldGameCameraHost PodunkPlayerCamera::source_host() {
     return global_->set_object(FieldGlobalMemberRole::CurrentCamera, object_,
                                e);
   };
-  // Explicitly unsupported factories are encountered only when source calls
-  // them. No fake Reference/ObjectID or copied local tween queue is published.
-  h.register_tween = [](uint32_t, uint64_t, std::function<bool(float)>,
-                        std::string &e) {
-    return fail(e, "Camera SceneTreeTween actual Reference factory pending");
+  h.register_tween = [this](uint32_t camera, uint64_t token,
+                            std::function<bool(float)> step, std::string &e) {
+    return register_tween(camera, token, std::move(step), e);
   };
-  h.kill_tween = [](uint64_t, std::string &e) {
-    return fail(e, "Camera SceneTreeTween actual lifetime owner pending");
+  h.kill_tween = [this](uint64_t token, std::string &e) {
+    return kill_tween(token, e);
   };
-  h.tween_signal = [](uint64_t, uint32_t, bool, std::string &e) {
-    return fail(e, "Camera actual Tween signal owner pending");
+  h.tween_signal = [this](uint64_t token, uint32_t property, bool finished,
+                          std::string &e) {
+    return tween_signal(token, property, finished, e);
   };
-  h.coroutine_completed = [](uint64_t, std::string &e) {
-    return fail(e, "Camera actual coroutine owner pending");
+  h.coroutine_completed = [this](uint64_t token, std::string &e) {
+    return coroutine_completed(token, e);
   };
   h.create_shaker = [](uint32_t, uint64_t, std::function<bool(float)>,
                        std::string &e) {
@@ -626,7 +964,8 @@ FieldGameCameraHost PodunkPlayerCamera::source_host() {
   return h;
 }
 
-bool PodunkPlayerCamera::source_observation(FieldGameCameraObservation &out, std::string &e) {
+bool PodunkPlayerCamera::source_observation(FieldGameCameraObservation &out,
+                                            std::string &e) {
   return observe(native_.id, out, e);
 }
 

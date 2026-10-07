@@ -14,6 +14,7 @@ add_library(encore_core
     runtime/basement_progression.cpp runtime/basement_actor_assets.cpp runtime/present_sparkles.cpp
     runtime/field_scene_data.cpp runtime/field_scene_host.cpp runtime/field_dandelion.cpp
     runtime/podunk_bundle.cpp runtime/field_scene_sources.cpp runtime/field_scene_destination.cpp
+    runtime/dialogue_actor_resource_data.cpp
     runtime/field_scene_audio_data.cpp runtime/field_scene_signal_callbacks_data.cpp
     runtime/field_visibility_data.cpp
     runtime/field_npc_world_data.cpp runtime/field_npc_world_motion.cpp

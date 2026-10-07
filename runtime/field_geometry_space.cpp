@@ -1,4 +1,5 @@
 #include "encore/field_geometry_space.hpp"
+#include "encore/field_dialogue_visual.hpp"
 #include "encore/grass_native.hpp"
 #include "encore/field_npc.hpp"
 #include "encore/field_global_registry.hpp"
@@ -1158,6 +1159,57 @@ bool source_player_node(const PlayerInitializationData &d,
   return true;
 }
 } // namespace
+namespace {
+bool dialogue_node(const FieldDialogueVisualData &d,const FieldNodeRecipeData &recipe,
+ FieldNodeTreeRuntime &tree,FieldGlobalRegistry &registry,FieldObjectId object,std::string &e){
+ const auto *state=tree.state(object);const auto *node=tree.descriptor(object);
+ const auto *source=node?recipe.record(node->id):nullptr;FieldIdentity identity;
+ if(!d.valid()||!recipe.valid()||d.recipe_sha()!=recipe.ir_sha256()||
+    !state||!state->alive||!node||!source||!d.node(node->id)||
+    source->path!=node->path||source->native_class!=node->native_class||source->script_sha!=node->script_sha||
+    registry.tree_owner(object).get()!=&tree||!registry.object_exists(object)||
+    !tree.object_identity(object,identity)||identity.scene_id!=recipe.identity().scene_id||
+    identity.source_sha256!=recipe.identity().source_sha256||identity.upstream_commit!=recipe.identity().upstream_commit||
+    d.identity().scene_id!=identity.scene_id||d.identity().source_sha256!=identity.source_sha256||
+    d.identity().upstream_commit!=identity.upstream_commit){e="Dialogue Camera shape actual source/Registry rejected";return false;}
+ return true;
+}
+}
+bool FieldGeometrySpace::reserve_dialogue_camera_owner(const FieldDialogueVisualData &d,
+ const FieldNodeRecipeData &recipe,FieldNodeTreeRuntime &tree,FieldGlobalRegistry &registry,
+ FieldObjectId object,std::string &e){
+ if(!source_||source_->identity().upstream_commit!=d.identity().upstream_commit||
+    !dialogue_node(d,recipe,tree,registry,object,e)||dynamic_owners_.count(object)||next_rid_==UINT64_MAX)return false;
+ bool found=false;for(const auto &camera:d.camera().records())found=found||tree.descriptor(object)->id==camera.area_id;
+ if(!found||tree.descriptor(object)->native_class!="Area2D"){e="Dialogue Camera native Area identity rejected";return false;}
+ DynamicOwner owner;owner.tree=&tree;owner.registry=&registry;owner.object=object;owner.rid=++next_rid_;owner.dialogue=&d;owner.recipe=&recipe;
+ dynamic_owners_.emplace(object,owner);return true;
+}
+bool FieldGeometrySpace::register_dialogue_camera_shape(const FieldDialogueVisualData &d,
+ const FieldNodeRecipeData &recipe,FieldNodeTreeRuntime &tree,FieldGlobalRegistry &registry,
+ FieldObjectId area,FieldObjectId shape,std::string &e){
+ if(!dialogue_node(d,recipe,tree,registry,area,e)||!dialogue_node(d,recipe,tree,registry,shape,e))return false;
+ auto owner=dynamic_owners_.find(area);const auto *state=tree.state(shape);const auto *node=tree.descriptor(shape);
+ const FieldGameCameraDescriptor *camera=nullptr;
+ for(const auto &c:d.camera().records())if(c.area_id==tree.descriptor(area)->id&&c.shape_id==node->id)camera=&c;
+ if(owner==dynamic_owners_.end()||owner->second.dialogue!=&d||owner->second.recipe!=&recipe||
+    !camera||!tree.state(area)->inside||!state->inside||!state->bound||!tree.state(area)->bound||
+    state->parent!=area||node->native_class!="CollisionShape2D"||(camera->area_flags&8)){
+   e="Dialogue Camera exact Rectangle native parent/Enter rejected";return false;}
+ for(const auto &v:dynamic_)if(v.contact.actual_shape==shape){e="Dialogue native Camera shape duplicate registration";return false;}
+ FieldTransform world;if(!tree.world_transform(shape,world,e))return false;
+ DynamicInstance instance;instance.tree=&tree;instance.registry=&registry;instance.dialogue=&d;instance.recipe=&recipe;
+ instance.player=area;instance.disabled=camera->area_flags&4;
+ instance.contact={none,none,0,camera->area_id,0,area,shape};
+ instance.actor.kind=FieldGeometryKind::Rectangle;instance.actor.transform={world[0],world[1],world[2]};instance.actor.extents=camera->shape_extents;
+ instance.actor.stable_id=camera->area_id;instance.actor.layer=camera->area_layer;instance.actor.mask=camera->area_mask;
+ instance.actor.area=true;instance.actor.monitorable=camera->area_flags&2;
+ instance.owner.kind=4;instance.owner.layer=camera->area_layer;instance.owner.mask=camera->area_mask;
+ instance.owner.flags=(camera->area_flags&1?2u:0u)|(camera->area_flags&2?4u:0u);
+ instance.shape.kind=uint32_t(FieldGeometryKind::Rectangle);instance.shape.flags=instance.disabled?1u:0u;instance.shape.part_count=1;
+ if(!actor_ok(instance.actor)){e="Dialogue Camera Rectangle geometry invalid";return false;}
+ dynamic_.push_back(instance);return true;
+}
 bool FieldGeometrySpace::reserve_grass_owner(const GrassNativeData&d,FieldNodeTreeRuntime&t,FieldGlobalRegistry&r,FieldObjectId object,std::string&e){
  const auto*n=t.descriptor(object);const auto*s=t.state(object);FieldIdentity id;
  if(!source_||!d.valid()||!n||!s||!s->alive||n->id!=d.node(GrassNativeRole::Area)||!d.native_matches(*n)||r.tree_owner(object).get()!=&t||!r.object_exists(object)||!t.object_identity(object,id)||id.scene_id!=d.identity().scene_id||id.source_sha256!=d.identity().source_sha256||id.upstream_commit!=d.identity().upstream_commit||source_->identity().upstream_commit!=id.upstream_commit||dynamic_owners_.count(object)||next_rid_==UINT64_MAX){e="Grass actual native Area/RID source allocation rejected";return false;}
@@ -1400,7 +1452,10 @@ bool FieldGeometrySpace::register_player_shape(
 bool FieldGeometrySpace::dynamic_actor(const DynamicInstance &d,
                                        FieldGeometryActor &a,
                                        std::string &e) const {
-  if (d.grass) {
+  if (d.dialogue) {
+    if(!d.recipe||!dialogue_node(*d.dialogue,*d.recipe,*d.tree,*d.registry,d.contact.actual_owner,e)||
+       !dialogue_node(*d.dialogue,*d.recipe,*d.tree,*d.registry,d.contact.actual_shape,e))return false;
+  } else if (d.grass) {
     FieldIdentity identity;
     const auto *owner=d.tree->descriptor(d.contact.actual_owner);
     const auto *shape=d.tree->descriptor(d.contact.actual_shape);
@@ -1564,7 +1619,9 @@ bool FieldGeometrySpace::player_owner_rid(FieldObjectId owner,
     return false;
   }
   const auto &d = it->second;
-  if (d.grass) {
+  if (d.dialogue) {
+    if(!d.recipe||!dialogue_node(*d.dialogue,*d.recipe,*d.tree,*d.registry,owner,e))return false;
+  } else if (d.grass) {
     const auto*n=d.tree->descriptor(owner);FieldIdentity identity;
     if(!n||n->id!=d.grass->node(GrassNativeRole::Area)||!d.grass->native_matches(*n)||d.registry->tree_owner(owner).get()!=d.tree||!d.registry->object_exists(owner)||!d.tree->object_identity(owner,identity)||identity.scene_id!=d.grass->identity().scene_id||identity.source_sha256!=d.grass->identity().source_sha256||identity.upstream_commit!=d.grass->identity().upstream_commit){e="Grass native Physics RID same source owner unavailable";return false;}
   } else if (!d.data || !source_player_node(*d.data, *d.tree, *d.registry, owner, e))

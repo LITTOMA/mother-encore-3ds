@@ -164,10 +164,14 @@ bool PodunkDialogueHost::initialize(
           "Dialogue source parent changed Tree; lifecycle rebind required");
     return services_.lifecycle.admit_parent(parent, error);
   };
+  host.factory_created = [this](FieldObjectId root, std::string &error) {
+    return attach(root, error) && lifecycle_tree_->bind_source_object(root, error);
+  };
   host.connect_ready =
       [this](FieldObjectId root, uint32_t generation, std::string_view signal,
              std::function<bool()> callback, std::string &error) {
-        if (!attach(root, error))
+        auto *f = factory(root);
+        if (!f || f->root != root || !script_state(*f, false, error))
           return false;
         return services_.lifecycle.connect_ready(root, generation, signal,
                                                  std::move(callback), error);
@@ -428,7 +432,7 @@ bool PodunkDialogueHost::process(Factory &f, FieldObjectId id, Owner o,
   if (phase == FieldTreePhase::IdleInternal) {
     for (const auto &camera : visual_data_->camera().records())
       if (camera.animation_id == d->id)
-        return f.visual.camera().animation_idle(camera.id, frame.delta) ||
+        return f.visual.camera().animation_idle(camera.animation_id, frame.delta) ||
                fail(e, f.visual.camera().error().c_str());
     if (visual_data_->arrows().sprite(d->id) ||
         visual_data_->arrows().player(d->id))

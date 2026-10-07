@@ -6,6 +6,8 @@
 #include "encore/house_runtime.hpp"
 #include "encore/house_ui_continuation.hpp"
 #include "podunk_native_root.hpp"
+#include "podunk_dialogue_host.hpp"
+#include "encore/field_global_constructor.hpp"
 namespace encore::upstream { class FieldGlobalDataRuntime; }
 namespace encore::ctr {
 // Borrow the running House session. These are its existing objects, not copies.
@@ -16,6 +18,11 @@ struct HouseUiContinuationSources {
   const upstream::OpeningWorld *world = nullptr;
   const upstream::HouseRuntime *house = nullptr;
   const upstream::HousePresentation *dialogue = nullptr;
+};
+struct HouseUiDialogueState {
+  upstream::FieldObjectId stable_canvas=0, current_dialogue=0, talker=0;
+  std::vector<upstream::FieldObjectId> stack;
+  bool current_inside=false, current_ready=false, cutscene=false;
 };
 class HouseUiContinuation final : public upstream::FieldGlobalExternalObject,
                                   public PodunkExternalNodeLifecycle {
@@ -67,11 +74,37 @@ public:
   bool source_clear_on_screen_enemies(std::string &);
   bool source_update_key_indicator(const upstream::FieldGlobalDataRuntime &,
                                    std::string_view region,std::string &);
+  // Borrow the actual source global body before reifying its continued Canvas.
+  bool bind_source_global(upstream::FieldGlobalConstructorRuntime &,std::string &);
+  bool source_continuation_canvas_admitted(std::string &) const override;
+  bool bind_dialogue_sources(const upstream::FieldDialogueLifecycleData &,
+                            const upstream::FieldNodeRecipeData &,
+                            PodunkDialogueRootScript &,upstream::HousePresentation &,std::string &);
+  bool source_dialogue_parent(upstream::FieldObjectId,std::string &) const;
+  bool source_add_ui(upstream::FieldObjectId,bool add_child,std::string &);
+  bool source_remove_ui(upstream::FieldObjectId,std::string &);
+  bool source_dialogue_step(const upstream::FieldDialogueStep &,
+                            upstream::FieldObjectId,std::string &);
+  bool source_dialogue_global_step(const upstream::FieldDialogueStep &,
+                                   upstream::FieldObjectId,upstream::FieldObjectId talker,std::string &);
+  bool source_dialogue_state(HouseUiDialogueState &,std::string &) const;
+  bool source_current_talker(upstream::FieldObjectId &,std::string &) const;
+  bool source_close_closed_widget(uint32_t,std::string &);
+  bool source_business_closed(std::string &) const;
   bool full_source_ready() const { return false; }
 
 private:
   bool actual(upstream::FieldObjectId, std::string &) const;
   bool models(std::string &) const;
+  bool dialogue_object(upstream::FieldObjectId,bool entered,std::string &) const;
+  bool stack_state(std::string &) const;
+  bool checked_dialogue_step(const upstream::FieldDialogueStep &,std::string &) const;
+  upstream::FieldGlobalConstructorRuntime *global_=nullptr;
+  const upstream::FieldDialogueLifecycleData *dialogue_life_=nullptr;
+  const upstream::FieldNodeRecipeData *dialogue_recipe_=nullptr;
+  PodunkDialogueRootScript *dialogue_script_=nullptr;
+  upstream::FieldObjectId stable_canvas_=0,current_dialogue_=0;
+  std::vector<upstream::FieldObjectId> ui_stack_;
   std::shared_ptr<const upstream::HouseUiContinuationData> data_;
   upstream::FieldGlobalRegistry *registry_ = nullptr;
   PodunkNativeRoot *root_ = nullptr;
@@ -82,7 +115,8 @@ private:
   bool inside_ = false, cutscene_ = false;
   bool source_cutscene_observed_ = false, awaiting_entry_ = false;
   bool native_ready_ = false;
-  bool key_open_=false;
+  bool key_open_=false,cash_open_=false,party_showing_=false,business_imported_=false;
+  upstream::FieldObjectId party_info_timer_=0;
   std::vector<upstream::FieldObjectId> on_screen_enemies_;
   uint32_t story_generation_ = 0;
   bool dialogue_at_source_event_ = false, story_at_source_event_ = false;

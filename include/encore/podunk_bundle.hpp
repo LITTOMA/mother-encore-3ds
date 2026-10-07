@@ -95,6 +95,7 @@ enum class PodunkPackRole : uint32_t {
   GrassNative = 87,
   PlayerPreloadScenes = 88,
   NamedSfx = 89,
+  DialogueActorResource = 90,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

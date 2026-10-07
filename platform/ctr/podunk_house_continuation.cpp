@@ -515,6 +515,12 @@ HouseUiContinuation *PodunkHouseContinuation::ui() {
 PodunkHouseGlobalBridge *PodunkHouseContinuation::bridge() {
   return initialized() ? &state_->bridge : nullptr;
 }
+const HouseGlobalBridgeData *PodunkHouseContinuation::bridge_data() const {
+  return initialized() ? &state_->bridge_data : nullptr;
+}
+const HouseUiContinuationData *PodunkHouseContinuation::ui_continuation_data() const {
+  return initialized() ? state_->continuation_ui.get() : nullptr;
+}
 const FieldInventoryData *PodunkHouseContinuation::inventory_data() const {
   return initialized() ? &state_->inventory : nullptr;
 }

@@ -381,7 +381,8 @@ public:
   bool bind_live_inventory(const PodunkInventoryHost &inventory,
                            std::string &error) {
     if (live_inventory_ || !registry_ || !inventory_ || !definitions_ ||
-        !owner_.prefix_complete())
+        !(owner_.prefix_complete() ||
+          (owner_.house_continuation_complete() && owner_.constructor_complete())))
       return fail(error,
                   "globalData actual inventory owner missing/already bound");
     PodunkInventorySnapshot actual;
@@ -402,7 +403,8 @@ public:
     upstream::FieldGlobalDataObject current;
     if (!owner_.read_constructed_object(object, current, error))
       return false;
-    if (!owner_.prefix_complete() || (item_cache_.definitions() && current.declaration==item_cache_.definitions()->god_storage_id() && owner_.god_storage_complete())) {
+    if (!(owner_.prefix_complete() ||
+          (owner_.house_continuation_complete() && owner_.constructor_complete())) || (item_cache_.definitions() && current.declaration==item_cache_.definitions()->god_storage_id() && owner_.god_storage_complete())) {
       // stat_changed is synchronous. HP/MAXHP etc. have already been written;
       // nickname/skills/affinities still have their real constructor defaults
       // until execution reaches their later assignments. Do not substitute the

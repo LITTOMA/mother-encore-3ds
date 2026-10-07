@@ -48,6 +48,19 @@ public:
   }return true;
  }
  void free(){for(auto&a:assets_)if(a.sheet)encore::ctr::loading_sprite_sheet_free(a.sheet);assets_.clear();content_={};}
+ // The scene transition retires House world art while the same checked UI
+ // atlas remains owned by the continued dialogue renderer.
+ void free_world(){
+  using namespace encore::upstream;
+  for(uint32_t i=0;i<assets_.size();++i){
+   bool retained=false;
+   for(uint32_t c=0;c<content_.count(HouseSection::Clips);++c){
+    const auto clip=content_.clip(c);
+    if(clip.resource==i&&clip.role>=uint32_t(HouseClipRole::DialogueOpen)&&clip.role<=uint32_t(HouseClipRole::Cursor))retained=true;
+   }
+   if(!retained&&assets_[i].sheet){encore::ctr::loading_sprite_sheet_free(assets_[i].sheet);assets_[i].sheet=nullptr;}
+  }
+ }
  bool draw_npc(const encore::upstream::HouseNpcPose&p,float cx,float cy)const{
   if(!p.visible)return true;
   if(p.shadow_resource!=encore::upstream::house_no_index&&!centered(p.shadow_resource,0,p.position.x+p.shadow_offset.x-cx,p.position.y+p.shadow_offset.y-cy))return false;

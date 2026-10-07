@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "7ca5a1b66c8c70f8e13c9a8474bb943804d99b376012ca41db695fa6cc4eb533",
+  "capability": 1,
+  "review": [
+    "Complete original native nodes, properties, resources and SceneStates retained",
+    "Original scripts and signal connections retained in immutable native graph and recipe",
+    "Source preload only; Actor.instance and every native/script lifecycle remain unapproved"
+  ],
+  "source_receipt_sha256": "3e658c55ef905f32348ea99921a1c0934424f011097edb145153c51108de5f11",
+  "native_sha256": "fdac7c498dc7773dd0b31b2ad79a8c76a2740019f5e4b9e8b4be167f2e84f44c",
+  "tree_sha256": "0c0da81740b2d36ab2aba7e8e8e3ccdfb4b2b5400ac98ececf4b4e640b9c58c4"
+}

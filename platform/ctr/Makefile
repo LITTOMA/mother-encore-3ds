@@ -78,6 +78,10 @@ SOURCES += runtime/house_status_effects.cpp runtime/house_status_effects_data.cp
 SOURCES += runtime/player_preload_scenes_data.cpp platform/ctr/podunk_player_preload_scenes.cpp platform/ctr/podunk_house_exit.cpp platform/ctr/podunk_player_scene_services.cpp platform/ctr/podunk_house_door_continuation.cpp runtime/field_node_tree_door.cpp
 SOURCES += runtime/player_named_sfx_data.cpp platform/ctr/podunk_named_sfx.cpp
 SOURCES += platform/ctr/podunk_ready_native_bridges.cpp platform/ctr/podunk_ready_interaction_bridges.cpp platform/ctr/podunk_ready_transition_bridge.cpp
+SOURCES += platform/ctr/podunk_programme_state.cpp platform/ctr/podunk_programme_inventory.cpp \
+ platform/ctr/podunk_dialogue_lifecycle_ports.cpp platform/ctr/podunk_dialogue_scene_native.cpp \
+ platform/ctr/podunk_dialogue_business_native.cpp platform/ctr/podunk_mick_session.cpp \
+ runtime/dialogue_actor_resource_data.cpp platform/ctr/podunk_dialogue_actor_resource.cpp
 OBJECTS := $(patsubst %.cpp,build/ctr/%.o,$(SOURCES))
 TOOLS := $(DEVKITPRO)/tools/bin
 APP := dist/encore-native

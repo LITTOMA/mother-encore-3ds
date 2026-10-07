@@ -17,6 +17,10 @@ struct PodunkProgrammeOps {
   std::function<bool(std::string_view, std::string &)> admit_audio, play_audio;
   std::function<bool(const upstream::FieldProgrammeText &, std::string &)>
       admit_text;
+  // Original phrase reset runs once at each ShowDialogue source cursor,
+  // before the shared printer accepts the phrase (including goto targets).
+  std::function<bool(const upstream::FieldProgrammeText &, uint64_t,
+                     std::string &)> prepare_text;
   // Actual ShowDialogue notification, after that same source printer accepts
   // the checked span. Preflight must never assign/play the phrase's stream.
   std::function<bool(const upstream::FieldProgrammeText &, uint64_t,
@@ -171,7 +175,8 @@ class PodunkProgrammeHost final {
       const auto *text = data_->text(a.target_index);
       if (!text || !ctx.dialogue_object || !house_text(a.target_index, h))
         return fail(e, "Podunk actual presented text/dialogue owner absent");
-      if (!ops_.player_name(name, e))
+      if (!ops_.player_name(name, e) ||
+          !ops_.prepare_text(*text,ctx.dialogue_object,e))
         return false;
       if (!presentation_->present_story_dialogue(h.first_segment,
                                                  h.segment_count, name))
@@ -229,7 +234,7 @@ public:
       return fail(e, "Podunk source programme resources/owner mismatch");
     if (!ops.flag || !ops.actual_path || !ops.seen || !ops.mark_seen ||
         !ops.admit_session_scene || !ops.admit_key || !ops.admit_audio ||
-        !ops.play_audio || !ops.admit_text || !ops.presented_text ||
+        !ops.play_audio || !ops.admit_text || !ops.prepare_text || !ops.presented_text ||
         !ops.player_name ||
         !ops.admit_lifecycle || !ops.apply_lifecycle || !ops.open_dialogue ||
         !ops.admit_dialogue_ready || !ops.close_commands_for_telepathy)

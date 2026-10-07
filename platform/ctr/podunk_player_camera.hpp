@@ -1,4 +1,6 @@
 #pragma once
+#include "encore/field_object_signals.hpp"
+#include "encore/grass_native.hpp"
 #include "encore/player_motion.hpp"
 #include "podunk_native_root.hpp"
 #include "podunk_player_child_scripts.hpp"
@@ -47,6 +49,7 @@ struct PodunkPlayerCameraPorts {
 // animation clock or input loop is created. All tuning remains in 0061.
 class PodunkPlayerCamera {
 public:
+  ~PodunkPlayerCamera();
   bool prepare(const upstream::PlayerChildScriptsData &,
                const upstream::PlayerInitializationData &,
                const upstream::PlayerMotionData &,
@@ -57,6 +60,14 @@ public:
                upstream::PlayerChildScriptsRuntime &, PodunkPlayerAnimation &,
                PodunkCameraViewport, PodunkPlayerCameraPorts, std::string &);
   bool deferred(const upstream::FieldDeferredMessage &, std::string &);
+  // Borrow only the independently checked official engine Tween source proof.
+  // Camera properties, targets, curves and source code remain owned by 0061.
+  bool bind_tweens(const upstream::GrassNativeData &,
+                   upstream::FieldObjectSignals &, std::string &);
+  bool idle_tail(uint64_t epoch, float delta, bool paused, std::string &);
+  bool tween_owned(upstream::FieldObjectId) const;
+  bool tween_declaration(upstream::FieldObjectId, std::string_view, uint32_t &,
+                         std::string &) const;
   bool construct(upstream::FieldObjectId, const upstream::FieldNodeDescriptor &,
                  std::string &);
   upstream::FieldGameCameraHost source_host();
@@ -72,13 +83,41 @@ public:
   upstream::FieldObjectId object() const { return object_; }
   upstream::Vec2 display_offset() const { return display_offset_; }
   bool native_ready() const { return ready_; }
-  bool native_snapshot(upstream::FieldGameCameraState&,std::string&)const;
-  bool native_select(bool,std::string&);
-  bool source_observation(upstream::FieldGameCameraObservation&,std::string&);
-  const upstream::FieldGlobalRegistry*registry()const{return registry_;}
-  const upstream::FieldNodeTreeRuntime*tree()const{return tree_;}
+  bool native_snapshot(upstream::FieldGameCameraState &, std::string &) const;
+  bool native_select(bool, std::string &);
+  bool source_observation(upstream::FieldGameCameraObservation &,
+                          std::string &);
+  const upstream::FieldGlobalRegistry *registry() const { return registry_; }
+  const upstream::FieldNodeTreeRuntime *tree() const { return tree_; }
 
 private:
+  class TweenReference;
+  struct TweenJob {
+    uint64_t token = 0;
+    std::shared_ptr<TweenReference> owner, waiter;
+    std::vector<std::shared_ptr<TweenReference>> properties;
+    std::vector<bool> property_finished;
+    std::function<bool(float)> step;
+    upstream::FieldObjectId wait_emitter = 0;
+    bool dead = false, finished = false, resumed = false, completed = false;
+  };
+  bool make_tween_reference(const char *, std::string_view,
+                            std::shared_ptr<TweenReference> &, std::string &);
+  bool register_tween(uint32_t, uint64_t, std::function<bool(float)>,
+                      std::string &);
+  bool kill_tween(uint64_t, std::string &);
+  bool tween_signal(uint64_t, uint32_t, bool, std::string &);
+  bool coroutine_completed(uint64_t, std::string &);
+  bool resume_tween_waiter(upstream::FieldObjectId, std::string &);
+  bool release_tween_reference(std::shared_ptr<TweenReference> &,
+                               std::string &);
+  bool collect_tweens(bool all, std::string &);
+  const upstream::GrassNativeData *tween_engine_ = nullptr;
+  upstream::FieldObjectSignals *tween_signals_ = nullptr;
+  std::map<uint64_t, TweenJob> tween_jobs_;
+  std::set<upstream::FieldObjectId> tween_references_;
+  uint64_t tween_epoch_ = 0;
+  bool tween_poisoned_ = false, tween_stepping_ = false;
   bool live(std::string &) const;
   bool actual_ui(std::string &) const;
   bool actual(uint32_t, upstream::FieldObjectId &, std::string &) const;

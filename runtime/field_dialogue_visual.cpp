@@ -138,11 +138,13 @@ bool FieldDialogueVisualRuntime::attach(FieldObjectId root, std::string &e) {
         !publish(cursors_.at(state.object), e))
       return false;
   }
-  if (!camera_.create(data_->camera().records()[0].id)) {
+  // These are source constructor fields in a detached PackedScene. Geometry,
+  // Canvas registration and native child Ready happen during real tree entry.
+  if (!camera_.create(data_->camera().records()[0].id, true)) {
     e = camera_.error();
     return false;
   }
-  if (!arrows_.create(data_->arrows().records()[0].id)) {
+  if (!arrows_.create_source_constructor(data_->arrows().records()[0].id)) {
     e = arrows_.error();
     return false;
   }

@@ -44,6 +44,9 @@ public:
   bool admit_grass_monitor(const upstream::GrassNativeData &,
                            upstream::FieldObjectId,
                            const upstream::FieldGeometryContact &, std::string &);
+  bool admit_dialogue_camera_monitor(const upstream::FieldDialogueVisualData &,
+      const upstream::FieldNodeRecipeData &,upstream::FieldObjectId,
+      const upstream::FieldGeometryContact &,std::string &);
   // The one real physics frame owner samples after step and flushes the queued
   // monitor callbacks at PhysicsServer::flush_queries, before the next frame's
   // SceneTree physics processing. No dt or independent timer is maintained.
@@ -104,6 +107,7 @@ private:
   std::map<upstream::FieldObjectId, Native> natives_;
   std::map<upstream::FieldObjectId, Monitor> monitors_;
   std::map<upstream::FieldObjectId, upstream::FieldGeometryContact> grass_monitors_;
+  std::map<upstream::FieldObjectId, upstream::FieldGeometryContact> dialogue_monitors_;
   std::set<Pair> pairs_, pending_;
   uint64_t epoch_ = 0;
   bool sampled_ = false, flushing_ = false, locked_ = false, poisoned_ = false;

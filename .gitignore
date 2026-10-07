@@ -397,6 +397,8 @@ cookies.json
 !/reports/house-ui-continuation/
 /reports/house-ui-continuation/*
 !/reports/house-ui-continuation/source-review.json
+!/reports/house-ui-continuation/fade-curve-native.json
+!/reports/dialogue-actor-resource/source-review.json
 !/reports/house-exit-door/
 /reports/house-exit-door/*
 !/reports/house-exit-door/source-review.json

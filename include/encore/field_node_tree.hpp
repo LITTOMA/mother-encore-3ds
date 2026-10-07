@@ -131,6 +131,8 @@ public:
  // Complete source recipe, including constructor-owned internal nodes.
  // Creation stays out of tree until the actual deferred add_child executes.
  bool instantiate_recipe(const FieldNodeRecipeData&,FieldObjectId&,std::string&);
+ // Bind the already allocated source object without entering or granting Ready.
+ bool bind_source_object(FieldObjectId,std::string&);
  // The existing native House owns its full execution. Materialize only its
  // checked Door continuation and the three source children observed by Door.
  // ObjectIDs come from this same ObjectDB; this grants no source Ready.

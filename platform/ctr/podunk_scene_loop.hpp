@@ -73,6 +73,17 @@ struct PodunkSceneLoopInput {
                      const upstream::FieldNodeDescriptor &,
                      const upstream::FieldIdentity &, std::string &)>
       allocation_observed;
+  // Specific additional source recipes retain the same Tree/ObjectDB. Their
+  // actual owner supplies constructor, source bind and every notification.
+  std::function<bool(const upstream::FieldNodeDescriptor&,const upstream::FieldIdentity&)> foreign_candidate;
+  std::function<bool(upstream::FieldObjectId)> foreign_owned;
+  std::function<bool(upstream::FieldObjectId,const upstream::FieldNodeDescriptor&,const upstream::FieldIdentity&,std::string&)> foreign_construct;
+  std::function<bool(upstream::FieldObjectId,const upstream::FieldNodeDescriptor&,upstream::FieldNodeBinding&,std::string&)> foreign_bind;
+  std::function<bool(upstream::FieldObjectId,const upstream::FieldNodeBinding&,upstream::FieldTreePhase,float,bool,bool,std::string&)> foreign_phase;
+  upstream::FieldGlobalRegistry::NodeDispatch foreign_deferred;
+  std::function<bool(upstream::FieldObjectId,std::string&)> foreign_release;
+  std::function<bool(upstream::FieldObjectId)> foreign_emits_ready;
+  std::function<bool()> source_input_handled;
   std::string asset_root;
 };
 // The actual frame/factory owner for a destination. It allocates through the

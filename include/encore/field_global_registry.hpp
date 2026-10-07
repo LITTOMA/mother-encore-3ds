@@ -67,6 +67,11 @@ public:
  virtual bool deferred(const FieldDeferredMessage&,std::string&)=0;
  virtual bool persist_append(FieldObjectId,std::string&)=0;
  virtual bool assign_stable_canvas(FieldObjectId,std::string&)=0;
+ // An existing-session continuation must prove its actual UI constructor and
+ // closed source stack; this does not grant the cold UiManager Ready prefix.
+ virtual bool source_continuation_canvas_admitted(std::string&e)const{
+  e="Actual existing-session UI canvas continuation is unsupported";return false;
+ }
 };
 // Actual non-Node Resource owner. A PackedScene retains its checked complete
 // recipe; this interface never grants native/script lifecycle admission.
@@ -150,6 +155,7 @@ public:
  // out-of-tree root.add_child; global.currentScene is assigned later in Ready.
  bool observe_bootstrap_tree_current_scene(FieldObjectId,std::string&);
  bool create_stable_canvas(FieldObjectId&,std::string&);
+ bool create_continuation_stable_canvas(FieldObjectId&,std::string&);
  bool lookup_absolute(std::string_view,FieldObjectId&,std::string&)const;
  bool resolve_path(FieldObjectId,std::string_view,FieldObjectId&,std::string&)const;
  bool get_path_to(FieldObjectId,FieldObjectId,std::string&,std::string&)const;

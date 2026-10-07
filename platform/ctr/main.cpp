@@ -820,6 +820,7 @@ bool prepare_podunk_exit(std::string&e){
  if(podunk_prepare_attempted||podunk_exit||!podunk_destination.valid()){e="House exit preparation owner repeated/missing";return false;}
  podunk_prepare_attempted=true;
  if(!collect_session_snapshot(podunk_house_snapshot,e))return false;
+ session_state=podunk_house_snapshot;
  if(region_music.scene_epoch()==UINT64_MAX){e="House scene epoch exhausted";return false;}
  podunk_scene_epoch=region_music.scene_epoch()+1;
  if(!podunk_door_fade.initialize(house_data.view(),podunk_destination.exit(),introduction_data,e))return false;
@@ -828,7 +829,7 @@ bool prepare_podunk_exit(std::string&e){
  c.destination=&podunk_destination;c.romfs_root="romfs:/";c.house=gameplay_scene.get();
  c.battle=&battle_entry;c.outcome=&battle_outcome;c.commands=&field_equipment_menu;
  c.session=&native_session_data;c.room=opening_data.view();c.house_data=house_data.view();c.round=round_data.view();c.legacy_items=items_data.view();
- c.snapshot=&podunk_house_snapshot;c.played_random=&battle_random;c.uid_ledger=&generated_uid_ledger;
+ c.snapshot=&session_state;c.played_random=&battle_random;c.uid_ledger=&generated_uid_ledger;
  c.target=loading_top;c.audio=&audio_player;c.signals=&podunk_signals;
  c.clock=[](LoadRngClockSample&sample,std::string&e){const auto now=std::time(nullptr);if(now<0){e="Native House continuation clock unavailable";return false;}sample.unix_seconds=uint64_t(now);sample.ticks_usec=uint64_t(double(svcGetSystemTick()-load_epoch_tick)*1000.0/CPU_TICKS_PER_MSEC);e.clear();return true;};
  c.locale=[](std::string&out,std::string&e){out=std::string(locale_selection.code());if(out.empty()){e="Actual locale owner missing";return false;}e.clear();return true;};
@@ -843,6 +844,12 @@ bool prepare_podunk_exit(std::string&e){
  input.camera_ports.controls=input.controls;input.camera_ports.input=input.query_input;
  input.viewport={{float(view_width),float(view_height)},reference_view};
  input.equipment=field_equipment_data.view();input.font=&locale_font;
+ input.programme=&field_programme_data;input.psi=&field_psi_data;input.basement=&basement_data;
+ input.choices=&choice_data;input.choice_runtime=&dialogue_choices;
+ input.printer=&gameplay_scene->presentation;input.mutable_session=&session_state;
+ input.house_renderer=&house_renderer;input.text_renderer=&battle_renderer;
+ input.locale=&locale_selection;input.inventory_audio_bank=audio_player.checked_bank();
+ input.bars=&world_blackbars;input.fade=&podunk_door_fade;
  input.music=&region_music;input.scene_epoch=podunk_scene_epoch;input.geometry_grid_size=32;
  input.music_service.admit_service=[](const FieldMusicChangerData&data,uint64_t epoch,std::string&e){
   if(epoch!=podunk_scene_epoch||podunk_music_bank){e="Outdoor music preparation owner repeated";return false;}
@@ -889,7 +896,7 @@ bool prepare_podunk_exit(std::string&e){
   if(podunk_retired_house||!house_music_host){e="Old House scene owner already retired";return false;}
   if(!house_music_host->finish(e)||!region_music.handoff_scene(podunk_prepared_music,podunk_scene_epoch,audio_player,e))return false;
   house_music_host.reset();cancel_battle_prewarm();wait_for_gpu_idle();
-  house_renderer.free();opening_actor.free();basement_actor_renderer.free();present_sparkles_renderer.free();room_draw_items.clear();
+  house_renderer.free_world();opening_actor.free();basement_actor_renderer.free();present_sparkles_renderer.free();room_draw_items.clear();
   podunk_retired_house=true;e.clear();return true;
  };
  auto candidate=std::make_unique<ctr::PodunkHouseExit>();
@@ -1927,7 +1934,8 @@ int main(int argc,char** argv){
         }
         // uiManager owns bars for the entire dialogue lifetime, including
         // showbox:false movement phrases. Closing text alone is not an end.
-        const bool bars_open=world_visible&&!in_battle()&&(field_equipment_menu.visible()||gameplay_scene->world.cutscene_active()||
+        const bool bars_open=podunk_retired_house?world_blackbars.target_open():
+            world_visible&&!in_battle()&&(field_equipment_menu.visible()||gameplay_scene->world.cutscene_active()||
             (gameplay_scene->presentation.dialogue_active()&&!gameplay_scene->presentation.dialogue_closing()));
         if(!world_blackbars.update(bars_open,dt))house_error="World blackbar animation rejected";
         if(audio_player.available()){

@@ -58,6 +58,8 @@ public:
   PodunkGlobalDataHost *characters();
   HouseUiContinuation *ui();
   PodunkHouseGlobalBridge *bridge();
+  const upstream::HouseGlobalBridgeData *bridge_data() const;
+  const upstream::HouseUiContinuationData *ui_continuation_data() const;
   const upstream::FieldInventoryData *inventory_data() const;
   const upstream::FieldItemDefinitions *item_definitions() const;
   const upstream::FieldItemDefinitions *global_item_definitions() const;

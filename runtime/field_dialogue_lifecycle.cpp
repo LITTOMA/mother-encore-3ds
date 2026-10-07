@@ -13,7 +13,7 @@ bool FieldDialogueLifecycleRuntime::initialize(
     const FieldNodeRecipeData &recipe, FieldNodeTreeRuntime &t,
     FieldNpcRuntime &n, FieldDialogueLifecycleHost h, std::string &e) {
   if (data_ || !d.valid() || !p.valid() || d.commit() != p.commit() ||
-      !h.admit_factory || !h.admit_parent || !h.admit_step || !h.observe ||
+      !h.admit_factory || !h.admit_parent || !h.factory_created || !h.admit_step || !h.observe ||
       !h.pause_player || !h.unpause_player || !h.manager || !h.global ||
       !h.native || !h.play_animation || !h.close_sound ||
       !h.restore_telepathy || !h.return_camera || !h.connect_ready ||
@@ -162,7 +162,8 @@ bool FieldDialogueLifecycleRuntime::open(const FieldProgrammeData &p,
   if (!was_paused_ &&
       !host_.pause_player(data_->pause_args()[0], data_->pause_args()[1], e))
     return fail(e, "Dialogue lifecycle source player pause rejected");
-  if (!tree_->instantiate_recipe(*recipe_, object_, e) || !owned(e))
+  if (!tree_->instantiate_recipe(*recipe_, object_, e) || !owned(e) ||
+      !host_.factory_created(object_, e))
     return fail(e, "Dialogue lifecycle source recipe instantiate rejected");
   const auto *n = tree_->state(object_);
   if (n->inside || n->ready_notified)

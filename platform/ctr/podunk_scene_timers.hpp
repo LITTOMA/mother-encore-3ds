@@ -7,6 +7,7 @@ namespace encore::ctr {
 // this adapter never dispatches script Ready or advances a private frame clock.
 class PodunkSceneTimers {
 public:
+  upstream::FieldNativeTimers &core(){return timers_;}
   bool prepare(const upstream::FieldNativeTimerData &,
                const upstream::FieldNodeTreeData &,
                upstream::FieldNodeTreeRuntime &,

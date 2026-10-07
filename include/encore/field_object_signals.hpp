@@ -35,6 +35,7 @@ public:
   bool duplicate_persistent(const std::map<FieldObjectId,FieldObjectId> &,
                             std::string &);
   const FieldGlobalRegistry *registry() const { return registry_; }
+  bool emitting_to(FieldObjectId,std::string_view,FieldObjectId,std::string_view) const;
 private:
   struct Target {
     FieldObjectId object = 0;
@@ -59,5 +60,7 @@ private:
   std::map<std::string,std::unique_ptr<std::string>> names_;
   std::map<Key,Slots> signals_;
   std::set<FieldObjectId> blocked_;
+  struct DispatchFrame { FieldObjectId emitter=0,target=0; std::string signal,method; };
+  std::vector<DispatchFrame> dispatching_;
 };
 } // namespace encore::upstream

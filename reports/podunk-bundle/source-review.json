@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "bb51697042599f95edb251963e84187b3a1380a83c3569fcb463ab96539b0c4d",
+  "ir_sha256": "0cbfd7a1b395e6451b3b41a4279e23a2519ff9f5c95767019b66ca32d0b7271e",
   "sources": {
     "Graphics/Battle BGS/BG_2.mbg": "57f7957e5261b5dcf21647aba98a5b9c7955d006805ab1e8a87a4468ce2a2248",
     "Graphics/Battle BGS/BG_3.mbg": "f1f3d032390418cbd29c708c2779640ca8fcf67a7d076d907b7fe7d61774cd77",
@@ -1666,7 +1666,7 @@
     "Audio/Sound effects/Footsteps/water.mp3.import": "cff5636980164c4acd0efd169628a90cf5b3f64604f1844db305f9fbdeb92cc7"
   },
   "inputs": {
-    "content/podunk-bundle-recipe.json": "c83133681ebd8274a310358f368f681810cae0d6858f5b6916bed0c07fe6d335",
+    "content/podunk-bundle-recipe.json": "32e80cb1ca9b88a32cbe4fbdb1b6f7d8c0f7f6648b6255b7ddce6dceb928694d",
     "content/field-battle-bg-resources.json": "0dd492851fe778764abdfa7ee5623d76e3b10f995c2f16f744a362e20d8909ee",
     "tools/field_battle_bg_resources.py": "e763b314a9c4cb497d9dbf2b1c29f9b652ae9114475da82411db6041862e5753",
     "content/native-field-character-load.json": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
@@ -1703,8 +1703,8 @@
     "tools/global_yaml_file.py": "02349478272b38a10e2a4a7c177f89b258b104be57ef94add5fcebaf74fc12ff",
     "content/native-house-global-bridge.json": "bd774721dcf8a285a29dd5dbaca9658724cf3d215ecc4bde05fea3fabc3b2075",
     "tools/house_global_bridge.py": "7e77388e92e7d0bf0e1bf5a6936f89f02476c4b2bb265f6ead904ff7f939e4a7",
-    "content/native-house-ui-continuation.json": "f5b3d3b03db1ac1ec52680700021e9f49c3cf0ea85794d54e87e91b2e777bdc1",
-    "tools/house_ui_continuation.py": "8d643644a9fed8e82055a0f79bed8d237cd280a931897ceb50e41ef7f591233b",
+    "content/native-house-ui-continuation.json": "2bd83ce473f168361bd8ebd1ada6796272f73434ef3c7422f313beeef8d59362",
+    "tools/house_ui_continuation.py": "0fd62c37f524d19abdf2aeb056ef4823827ac2ff0e2b0435bc3e9c48acd20833",
     "content/native-player-child-scripts.json": "190d95eb5f2c5d6209896720d7628704ad648b034329ff0a04399b1036627a26",
     "tools/player_child_scripts.py": "8cb36e87a8f5dcc69bc5178fc4daec9e02865f0742769e7be09b58d84dd32ae1",
     "content/native-player-effects.json": "362bcc8cebfde6bb665a74fc56a86fcfbbcd3e8545b3a7006488c65f038a0933",
@@ -1845,6 +1845,8 @@
     "tools/player_preload_scenes.py": "76f263841f293a7dc00cc0af51928b4063077ce92fef4a618e06a434f1b5b0cf",
     "content/native-player-named-sfx.json": "7252fe83a932b8a617eef73fc7d00e11dc91a82f1f123756cb208958513e2cd0",
     "tools/player_named_sfx.py": "b2aeaed339eee7e3f4367f55cdb98fbe49f0c03cdffda671f13e60528f762fba",
+    "content/native-dialogue-actor-resource.json": "7ca5a1b66c8c70f8e13c9a8474bb943804d99b376012ca41db695fa6cc4eb533",
+    "tools/dialogue_actor_resource.py": "4be378e4dbd916d14997ca2d4b9af2f4613e8fcdf555c2e915984621f10f475b",
     "content/podunk-scene-assets.json": "834d267b496fb653a5ed2f3cf684d2d2ee9944bb90029778060a13f8b15eed2e",
     "content/podunk-scene-map-assets.json": "f3b262436a968c0fd40d0ef9e5b9535f2fe86a5bb89f8c0d02c46a6b64089149",
     "content/native-audio.json": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910",

@@ -9,6 +9,8 @@ class FieldSceneActionsData;
 class PlayerInitializationData;
 class GrassNativeData;
 class FieldGlobalRegistry;
+class FieldDialogueVisualData;
+class FieldNodeRecipeData;
 struct FieldGeometryBounds {
   Vec2 minimum{}, maximum{};
 };
@@ -102,6 +104,12 @@ public:
   bool register_grass_shape(const GrassNativeData &, FieldNodeTreeRuntime &,
                             FieldGlobalRegistry &, FieldObjectId area,
                             FieldObjectId shape, std::string &);
+  bool reserve_dialogue_camera_owner(const FieldDialogueVisualData &,
+      const FieldNodeRecipeData &,FieldNodeTreeRuntime &,FieldGlobalRegistry &,
+      FieldObjectId,std::string &);
+  bool register_dialogue_camera_shape(const FieldDialogueVisualData &,
+      const FieldNodeRecipeData &,FieldNodeTreeRuntime &,FieldGlobalRegistry &,
+      FieldObjectId area,FieldObjectId shape,std::string &);
   bool physics_rid(const FieldGeometryContact &, FieldPhysicsRid &,
                    std::string &) const;
   bool player_owner_rid(FieldObjectId owner, FieldPhysicsRid &,
@@ -164,6 +172,8 @@ private:
     FieldGeometryShape shape{};
     bool disabled = false;
     const GrassNativeData *grass = nullptr;
+    const FieldDialogueVisualData *dialogue = nullptr;
+    const FieldNodeRecipeData *recipe = nullptr;
   };
   bool dynamic_actor(const DynamicInstance &, FieldGeometryActor &,
                      std::string &) const;
@@ -203,6 +213,8 @@ private:
     FieldObjectId object = 0;
     uint64_t rid = 0;
     const GrassNativeData *grass = nullptr;
+    const FieldDialogueVisualData *dialogue = nullptr;
+    const FieldNodeRecipeData *recipe = nullptr;
   };
   std::map<FieldObjectId, DynamicOwner> dynamic_owners_;
   mutable std::map<uint32_t, uint64_t> static_rids_;

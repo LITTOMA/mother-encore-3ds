@@ -625,6 +625,13 @@
       "path": "data/audio-manager.encnamedsfx",
       "producer": "player_named_sfx",
       "ir": "content/native-player-named-sfx.json"
+    },
+    {
+      "role": 90,
+      "name": "DialogueActorResource",
+      "path": "data/dialogue.encactorrecipe",
+      "producer": "dialogue_actor_resource",
+      "ir": "content/native-dialogue-actor-resource.json"
     }
   ],
   "extra_inputs": [

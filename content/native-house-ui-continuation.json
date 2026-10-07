@@ -12,6 +12,18 @@
     "Scripts/UI/KeyNumber.gd": "7e022d5cb6b1ee5c709b5f413efc2237d27f5bf5e27a045fa9082b4dacfb243a",
     "Nodes/Ui/KeyCount.tscn": "5cedc188b29b381cbfbfe187ca22abc0439ffcf95519608c5d0a70e4229eb427",
     "Scripts/UI/DialogueBox.gd": "cc9f20daa8bdb4e6311625ac480485b72bccf74d35208b6426a66939123e7ed8",
+    "Nodes/Ui/DialogueBox.tscn": "3f827d164c6f7268d3cc299f18ad40339f9c136854ac6f5491a29e7c0ea9f44c",
+    "Scripts/UI/AbstractDialogueBox.gd": "c14cdcbc5b806367c4d34b4ee135001270936fd668d2271fbc85f29b1ab0beb5",
+    "Scripts/UI/CashBox.gd": "a2364ce2b39b2d03f4b116d45eb4b0fc1bae8f50228a6ee7ae4855055cb3ec1c",
+    "Nodes/Ui/CashBox.tscn": "3de63700dced79e8f907d68d67830ae8ddff609c53810ae2849706cafe6717d1",
+    "Scripts/UI/PartyInfo.gd": "f871c5d1ebbb77a057c56249bd5386adeba87c26984d75c1466b267cb25b4ac4",
+    "Nodes/Ui/PartyInfo.tscn": "7628826725a82c025207d40996c2c195b628cfd67fc6b9ee4c89fd9ae96599dd",
+    "Nodes/Ui/effects/Fade.gd": "8266bf5f24eedd8281be92a04abe8ab988da720189f2bbc90c24656cbb99efaa",
+    "Nodes/Ui/effects/Fade.tscn": "87dcacdfd84e3640cce58dec3e8b33cb6db73ef2b4ee1b0a5d032c9ff996b71f",
+    "Nodes/Ui/Blackbars.tscn": "f5af280dd92b24db8b2b0c73896c2415ea0024408f01971c29e20f505c93bee1",
+    "Scripts/UI/Blackbars.gd": "1b94b98381c685e2396503a66c23773f1941b9dc498914057c2c18e7d30960aa",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Scripts/global/audioManager.gd": "425bffd0f66c2da908232f8d5b644139388be58b99aff49ebbf8c127fa5b616c",
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e"
   },
   "key_policy": {
@@ -28,6 +40,147 @@
     "member": "_ui_stack",
     "initial_count": 0,
     "dialogue_script": "Scripts/UI/DialogueBox.gd"
+  },
+  "dialogue_policy": {
+    "stack_member": "_ui_stack",
+    "dialogue_member": "_dialogue_box",
+    "canvas_member": "_stable_canvas_layer",
+    "dialogue_scene": "Nodes/Ui/DialogueBox.tscn",
+    "dialogue_script": "Scripts/UI/DialogueBox.gd",
+    "abstract_script": "Scripts/UI/AbstractDialogueBox.gd",
+    "add_child_method": "add_child",
+    "close_method": "close",
+    "queue_free_method": "queue_free",
+    "actors_member": "_actors",
+    "actor_count": 0,
+    "queued_battle_member": "_queued_battle",
+    "queued_battle": false,
+    "set_respawn_member": "_set_respawn",
+    "set_respawn": false,
+    "input_sound_node": "InputSound",
+    "open_sound_name": "menu_open",
+    "open_sound_source": "Audio/Sound effects/M3/menu_open.wav"
+  },
+  "business_policy": {
+    "widgets": [
+      {
+        "role": 1,
+        "scene": "Nodes/Ui/KeyCount.tscn",
+        "script": "Scripts/UI/KeyNumber.gd",
+        "member": "_is_open",
+        "close_method": "close",
+        "initial_open": false
+      },
+      {
+        "role": 2,
+        "scene": "Nodes/Ui/CashBox.tscn",
+        "script": "Scripts/UI/CashBox.gd",
+        "member": "_is_open",
+        "close_method": "close",
+        "initial_open": false
+      },
+      {
+        "role": 3,
+        "scene": "Nodes/Ui/PartyInfo.tscn",
+        "script": "Scripts/UI/PartyInfo.gd",
+        "member": "_showing",
+        "close_method": "close",
+        "initial_open": false
+      }
+    ],
+    "timer_member": "_party_info_timer",
+    "initial_timer_null": true,
+    "fade_scene": "Nodes/Ui/effects/Fade.tscn",
+    "fade_script": "Nodes/Ui/effects/Fade.gd",
+    "cut_signal": "cut_done",
+    "global_script": "Scripts/global/global.gd",
+    "phone_member": "_phone_location",
+    "end_signal": "cutscene_ended",
+    "close_sound_source": "Audio/Sound effects/M3/menu_close.wav",
+    "close_sound_name": "menu_close",
+    "restore_target": 1.0,
+    "restore_duration": 0.3,
+    "fade_type": 1,
+    "transition": 1,
+    "ease": 1,
+    "spin_stop_unit_offset": 0.0,
+    "effect_target": 0.1,
+    "effect_duration": 0.3,
+    "effect_type": 1,
+    "effect_ease": 2,
+    "effect_color": [
+      0.0,
+      0.0,
+      0.0,
+      0.5
+    ],
+    "spin_speed": 0.5,
+    "screen_size": [
+      320.0,
+      180.0
+    ],
+    "spin_length": 1.8,
+    "spin_from": 0.0,
+    "spin_to": 100.0,
+    "initial_path_position": [
+      0.001672,
+      -7.99947
+    ],
+    "curve_points": [
+      [
+        0.0,
+        -8.0
+      ],
+      [
+        4.76658821105957,
+        -6.490910530090332
+      ],
+      [
+        7.667719841003418,
+        -2.4200446605682373
+      ],
+      [
+        7.565566539764404,
+        2.5789425373077393
+      ],
+      [
+        4.484163284301758,
+        6.517305374145508
+      ],
+      [
+        -0.2877897024154663,
+        8.009503364562988
+      ],
+      [
+        -5.004793643951416,
+        6.35066032409668
+      ],
+      [
+        -7.739530563354492,
+        2.165419101715088
+      ],
+      [
+        -7.488729476928711,
+        -2.828029155731201
+      ],
+      [
+        -4.410696029663086,
+        -6.768831253051758
+      ],
+      [
+        0.0,
+        -8.0
+      ]
+    ],
+    "curve_length": 49.57930374145508,
+    "curve_interval": 5.0,
+    "curve_cubic": true,
+    "curve_loop": true,
+    "curve_input_sha256": "09a8a1a8d91023f317857e5729725a2a2b7c429c1428d545ee9555aaa9f288f8",
+    "curve_engine": {
+      "curve.cpp": "ba9b3fca1b5f7e672aa3a07e9b95a5427843860b03100a06f2d132e5b3251820",
+      "path_2d.cpp": "93b88d9cdbd21cb27556cf532b02e8be32d337f72a067b5a7f0a6e2a26123abb"
+    }
   },
   "fields": [
     {
@@ -136,6 +289,51 @@
       "role": 18,
       "name": "_close_dialog_box",
       "sha": "1ac23d1cdde170c9e47606654875e10a2d7300167f7be41d5903e8490ce9ec24"
+    },
+    {
+      "role": 19,
+      "name": "close_item",
+      "sha": "b732efad0728a2cc6ce9268455ea2aa60e45a01c0938dd1e70c9056a41251ebc"
+    },
+    {
+      "role": 20,
+      "name": "get_dialogue_actors",
+      "sha": "e84a79ee53469f33865bbc1fa5219899447b9c16808f03ed9cc7afbe849985f6"
+    },
+    {
+      "role": 21,
+      "name": "close_dialogue_box",
+      "sha": "fcce25fd6baa505768722ea3ceb2025b84b28a62d13d415389528c12e92d861a"
+    },
+    {
+      "role": 22,
+      "name": "close_key_indicator",
+      "sha": "6fb3ba8456cfc02a589eaae25a19c39e2a3543e1405e9cae076ca820b699c87e"
+    },
+    {
+      "role": 23,
+      "name": "toggle_black_bars",
+      "sha": "d889026153eabcd86a2020bc776ee7c3392b7ec842ed60329d75e8f7aa7258b4"
+    },
+    {
+      "role": 24,
+      "name": "get_cash_box",
+      "sha": "e5e7740bc9169bfe24ba3f209a6940320a8f98cfd7bf46db8d2fb5cb7b592bb0"
+    },
+    {
+      "role": 25,
+      "name": "set_telepathy_effect",
+      "sha": "4b15e43c6636b5cc0f76a00f9b2d29ff6e604a9c284feb3b91afb2e98f01e73a"
+    },
+    {
+      "role": 26,
+      "name": "set_phone_location",
+      "sha": "b7249d1d4787c46f544833a4b0336e74eb068b6a7e459deab87633f458ab6ccf"
+    },
+    {
+      "role": 27,
+      "name": "play_sfx_by_name",
+      "sha": "40b2d035867f21ad1c1698162c5747d894e7ff4e277c3532d81059f18d8f1898"
     }
   ],
   "signals": [

@@ -76,7 +76,7 @@ bool FieldGlobalRegistry::publish_native_reference(const FieldGlobalExternalSpec
  auto i=objects_.find(id);
  if(!initialized_||poisoned_||!owner||!id||i==objects_.end()||i->second.external||i->second.native||i->second.tree||i->second.reference_published||owner->registry()!=this||!spec.stable_id||spec.role!=5||spec.identity.upstream_commit!=data_->identity().upstream_commit||spec.source.empty()||((spec.native_class=="SceneTreeTimer"||spec.native_class=="SceneTreeTween"||spec.native_class=="PropertyTweener")?(!spec.script.empty()||!std::all_of(spec.script_sha.begin(),spec.script_sha.end(),[](uint8_t v){return !v;})):(spec.script!=spec.source||spec.source_sha!=spec.script_sha))||spec.identity.source_sha256!=spec.source_sha||std::all_of(spec.source_sha.begin(),spec.source_sha.end(),[](uint8_t v){return !v;}))return fail(e,"Global actual native Reference slot/source rejected");
  auto type=owner->native_class();auto b=owner->binding();
- const bool supported=(spec.native_class=="SceneTreeTimer"&&b.family==0x454e006c&&b.capability==1)||(spec.native_class=="GDScriptFunctionState"&&b.family==0x454e0068&&b.capability==1)||((spec.native_class=="SceneTreeTween"||spec.native_class=="PropertyTweener"||spec.native_class=="GDScriptFunctionState")&&b.family==0x454e0071&&b.capability==1)||(spec.native_class=="Reference"&&b.family==0x454e0050&&b.capability==2)||(((spec.native_class=="Reference"&&(b.family==0x454e0053||b.family==0x454e0060))||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052)||(spec.native_class=="File"&&b.family==0x454e005d))&&b.capability==1);
+ const bool supported=(spec.native_class=="SceneTreeTimer"&&b.family==0x454e006c&&b.capability==1)||(spec.native_class=="GDScriptFunctionState"&&b.family==0x454e0068&&b.capability==1)||(spec.native_class=="GDScriptFunctionState"&&b.family==0x454e0064&&b.capability==4)||((spec.native_class=="SceneTreeTween"||spec.native_class=="PropertyTweener"||spec.native_class=="GDScriptFunctionState")&&(b.family==0x454e0071||b.family==0x454e0061)&&b.capability==1)||(spec.native_class=="Reference"&&b.family==0x454e0050&&b.capability==2)||(((spec.native_class=="Reference"&&(b.family==0x454e0053||b.family==0x454e0060))||(spec.native_class=="Directory"&&b.family==0x454e0051)||((spec.native_class=="File"||spec.native_class=="Reference")&&b.family==0x454e0052)||(spec.native_class=="File"&&b.family==0x454e005d))&&b.capability==1);
  std::array<uint8_t,32>source{},namespace_source{};
  if(!type||spec.native_class!=type||!supported||!owner->checked_source_hash(spec.source,source)||source!=spec.source_sha||b.object!=id||!equal_spec(b.source,spec))return fail(e,"Global native Reference actual owner/domain proof rejected");
  // Nested source classes have their own checked resource closure. Namespace
@@ -301,6 +301,30 @@ bool FieldGlobalRegistry::create_stable_canvas(FieldObjectId&out,std::string&e){
  if(!n||!parent||n->parent!=current_scene_||!n->inside||n->ready_notified!=parent->ready_notified)return fail(e,"Global mainCanvas actual parent-dependent Enter/Ready differs");
  if(!objects_.at(g->second).external->persist_append(canvas,e)||!objects_.at(u->second).external->assign_stable_canvas(canvas,e))return false;
  if(!snapshot(u->second,ui,e)||ui.stable_canvas!=canvas)return fail(e,"Global UiManager did not retain actual persistent mainCanvas ObjectID");
+ stable_canvas_=canvas;out=canvas;e.clear();return true;
+}
+bool FieldGlobalRegistry::create_continuation_stable_canvas(FieldObjectId&out,std::string&e){
+ if(!initialized_||poisoned_||stable_canvas_||!current_scene_||tree_current_scene_!=current_scene_)
+  return fail(e,"Global existing-session mainCanvas boundary unavailable");
+ auto u=autoload_objects_.find(data_->ui_autoload()),g=autoload_objects_.find(data_->global_autoload());
+ if(u==autoload_objects_.end()||g==autoload_objects_.end()||!objects_.at(u->second).external)
+  return fail(e,"Global existing-session UI/global owners missing");
+ FieldGlobalExternalState ui,global,scene;
+ if(!objects_.at(u->second).external->source_continuation_canvas_admitted(e)||
+    !snapshot(u->second,ui,e)||ui.stable_canvas||!snapshot(g->second,global,e)||
+    global.current_scene!=current_scene_||!snapshot(current_scene_,scene,e)||!scene.inside||!scene.ready)
+  return fail(e,"Global existing-session mainCanvas source ownership rejected");
+ auto source=objects_.at(current_scene_).tree;auto dispatch=objects_.at(current_scene_).dispatch;
+ if(!source)return fail(e,"Global existing-session scene Tree missing");
+ FieldObjectId canvas=0;
+ if(!source->instantiate_recipe(data_->canvas_recipe(),canvas,e)||!publish_branch(source,canvas,dispatch,e)||
+    !source->add_child(current_scene_,canvas,e))return false;
+ const auto*n=source->state(canvas);const auto*parent=source->state(current_scene_);
+ if(!n||!parent||n->parent!=current_scene_||!n->inside||n->ready_notified!=parent->ready_notified)
+  return fail(e,"Global existing-session mainCanvas actual Enter/Ready differs");
+ if(!objects_.at(g->second).external->persist_append(canvas,e)||
+    !objects_.at(u->second).external->assign_stable_canvas(canvas,e)||
+    !snapshot(u->second,ui,e)||ui.stable_canvas!=canvas)return false;
  stable_canvas_=canvas;out=canvas;e.clear();return true;
 }
 bool FieldGlobalRegistry::persistent_reparent(FieldObjectId id,FieldObjectId parent,std::string&e){

@@ -100,9 +100,13 @@ bool FieldObjectSignals::emit(FieldObjectId id,std::string_view signal,
     message.member=*target.method;message.args=args;
     message.args.insert(message.args.end(),slot.binds.begin(),slot.binds.end());
     std::string error;
-    bool ok=slot.flags & FieldSignalDeferred
-               ? registry_->enqueue(std::move(message),error)
-               : registry_->dispatch(message,error);
+    bool ok=false;
+    if(slot.flags & FieldSignalDeferred)ok=registry_->enqueue(std::move(message),error);
+    else {
+      dispatching_.push_back({id,target.object,std::string(signal),*target.method});
+      ok=registry_->dispatch(message,error);
+      dispatching_.pop_back();
+    }
     if(!ok && first_error.empty())
       first_error=error.empty()?"Object signal actual method dispatch failed":error;
     if(slot.flags & FieldSignalOneShot)one_shot.push_back(target);
@@ -118,6 +122,12 @@ bool FieldObjectSignals::emit(FieldObjectId id,std::string_view signal,
   }
   if(!first_error.empty()){e=std::move(first_error);return false;}
   e.clear();return true;
+}
+bool FieldObjectSignals::emitting_to(FieldObjectId emitter,std::string_view signal,
+                                    FieldObjectId target,std::string_view method) const {
+  if(dispatching_.empty())return false;
+  const auto &f=dispatching_.back();
+  return f.emitter==emitter&&f.target==target&&f.signal==signal&&f.method==method;
 }
 bool FieldObjectSignals::block(FieldObjectId id,bool value,std::string &e) {
   if(!registry_||!registry_->object_exists(id))

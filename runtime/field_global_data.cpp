@@ -86,7 +86,8 @@ bool FieldGlobalDataRuntime::check_owners(
     const FieldInventoryData &inv,
     const std::vector<std::pair<uint32_t, FieldObjectId>> &owners,
     std::string &e) const {
-  if (!data_ || poisoned_ || !prefix_ || !data_->valid() ||
+  if (!data_ || poisoned_ ||
+      (!prefix_ && !(house_continuation_complete_ && constructor_complete())) || !data_->valid() ||
       data_->ir_sha256() != admitted_ir_ ||
       inv.identity() != data_->inventory_sha256() ||
       inv.source_pin() != data_->identity().upstream_commit ||

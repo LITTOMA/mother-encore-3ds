@@ -1,4 +1,5 @@
 #include "podunk_player_physics_world.hpp"
+#include "encore/field_dialogue_visual.hpp"
 #include "encore/grass_native.hpp"
 #include <algorithm>
 #include <cmath>
@@ -321,6 +322,7 @@ bool PodunkPlayerPhysicsWorld::static_monitor_exit(FieldObjectId id,
     return false;
   monitors_.erase(id);
   grass_monitors_.erase(id);
+  dialogue_monitors_.erase(id);
   for (auto i = pairs_.begin(); i != pairs_.end();)
     if (i->watcher == id)
       i = pairs_.erase(i);
@@ -349,6 +351,29 @@ bool PodunkPlayerPhysicsWorld::geometry_admitted(FieldObjectId owner,
     if (p.actual_shape == shape)
       return true;
   return fail(e, "Player PhysicsWorld actual Area/shape relation mismatched");
+}
+bool PodunkPlayerPhysicsWorld::admit_dialogue_camera_monitor(
+ const FieldDialogueVisualData &data,const FieldNodeRecipeData &recipe,
+ FieldObjectId id,const FieldGeometryContact &contact,std::string &e){
+ auto tree=registry_?registry_->tree_owner(id):nullptr;
+ const auto *node=tree?tree->descriptor(id):nullptr;
+ const auto *state=tree?tree->state(id):nullptr;FieldIdentity identity;
+ FieldGeometryActor actor;FieldGeometryOwner owner;FieldGeometryShape shape;
+ const FieldGameCameraDescriptor *camera=nullptr;
+ if(node)for(const auto &c:data.camera().records())if(c.area_id==node->id)camera=&c;
+ if(!data_||!data.valid()||!recipe.valid()||data.recipe_sha()!=recipe.ir_sha256()||
+    monitors_.count(id)||flushing_||locked_||!tree||!node||!state||!state->inside||!state->bound||
+    !registry_->object_exists(id)||!camera||contact.actual_owner!=id||
+    node->native_class!="Area2D"||!recipe.record(node->id)||
+    !tree->object_identity(id,identity)||identity.scene_id!=recipe.identity().scene_id||
+    identity.source_sha256!=recipe.identity().source_sha256||identity.upstream_commit!=recipe.identity().upstream_commit||
+    !space_->live_geometry(contact,actor,owner,shape,e)||owner.kind!=4||
+    actor.kind!=FieldGeometryKind::Rectangle||actor.extents.x!=camera->shape_extents.x||actor.extents.y!=camera->shape_extents.y||
+    owner.layer!=camera->area_layer||owner.mask!=camera->area_mask||
+    owner.flags!=((camera->area_flags&1?2u:0u)|(camera->area_flags&2?4u:0u)))
+   return fail(e,"Dialogue Camera actual PhysicsWorld shape/source rejected");
+ monitors_.emplace(id,Monitor{bool(camera->area_flags&1),true,{},{}});
+ dialogue_monitors_.emplace(id,contact);return true;
 }
 bool PodunkPlayerPhysicsWorld::collect(std::set<Pair> &out, std::string &e) {
   std::set<Pair> result;
@@ -419,6 +444,31 @@ bool PodunkPlayerPhysicsWorld::collect(std::set<Pair> &out, std::string &e) {
     std::vector<FieldGeometryContact>hits;
     if(!space_->overlap_actor(actor,filter,space_->indexed_instance_count(),hits,e))return false;
     for(const auto&hit:hits){FieldObjectId other=0;FieldPhysicsRid rid;if(!target(hit,other,e)||!space_->physics_rid(hit,rid,e))return false;if(other==entry.first)continue;result.insert(Pair{entry.first,other,rid,hit.native_shape_index,entry.second.native_shape_index,false});}
+  }
+  for(const auto &entry:dialogue_monitors_){
+    FieldGeometryActor actor;FieldGeometryOwner owner;FieldGeometryShape shape;
+    if(!space_->live_geometry(entry.second,actor,owner,shape,e))return false;
+    FieldGeometryFilter filter;filter.bodies=true;filter.areas=true;filter.bilateral_mask=true;
+    filter.layer_mask=owner.mask;filter.reciprocal_layer=owner.layer;
+    std::vector<FieldGeometryContact> hits;
+    if(!space_->overlap_actor(actor,filter,space_->indexed_instance_count(),hits,e))return false;
+    for(const auto &hit:hits){
+      FieldObjectId other=0;FieldGeometryActor otherActor;FieldGeometryOwner otherOwner;FieldGeometryShape otherShape;
+      if(!target(hit,other,e)||!space_->live_geometry(hit,otherActor,otherOwner,otherShape,e))return false;
+      if(other==entry.first)continue;
+      bool otherArea=otherOwner.kind==4;
+      if((owner.flags&2)&&(!otherArea||(otherOwner.flags&4))){
+        FieldPhysicsRid rid;if(!space_->physics_rid(hit,rid,e))return false;
+        result.insert(Pair{entry.first,other,rid,hit.native_shape_index,entry.second.native_shape_index,otherArea});
+      }
+      if(otherArea&&(otherOwner.flags&2)&&(owner.flags&4)){
+        auto monitor=monitors_.find(other);
+        if(monitor==monitors_.end()||!monitor->second.native_entered)
+          return fail(e,"Dialogue Camera contacted Area lacks actual monitor owner");
+        FieldPhysicsRid rid;if(!space_->physics_rid(entry.second,rid,e))return false;
+        result.insert(Pair{other,entry.first,rid,entry.second.native_shape_index,hit.native_shape_index,true});
+      }
+    }
   }
   out = std::move(result);
   return true;

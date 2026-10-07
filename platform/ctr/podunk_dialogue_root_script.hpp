@@ -1,6 +1,7 @@
 #pragma once
 #include "podunk_dialogue_host.hpp"
 #include "podunk_programme_host.hpp"
+#include "encore/house_ui_continuation.hpp"
 
 namespace encore::ctr {
 // Independent source receipt for the concrete script's constructor/input.
@@ -95,6 +96,8 @@ public:
                   upstream::FieldNativeTimers &,
                   const upstream::LocaleSelection *,
                   PodunkDialogueRootEndpoints, std::string &);
+  bool bind_observation_defaults(const upstream::HouseUiContinuationData &,std::string &);
+  bool source_observation(upstream::FieldObjectId,upstream::FieldDialogueObservation &,std::string &) const;
   bool admit(const upstream::FieldDialogueLifecycleData &,
              const upstream::FieldNodeRecipeData &,
              upstream::HousePresentation &, std::string &) const override;
@@ -129,9 +132,12 @@ private:
          stopped = false, box_shown = false, name_shown = false,
          running = false, owns_printer = false, choices_shown = false,
          phrase_prepared = false, closing = false;
+    std::map<std::string,upstream::FieldObjectId> actors;
+    bool queued_battle=false,set_respawn=false;
     std::string bullet, phrase;
     int64_t response = 0;
   };
+  const upstream::HouseUiContinuationData *observation_data_=nullptr;
   const PodunkDialogueRootData *data_ = nullptr;
   const upstream::FieldDialogueLifecycleData *life_ = nullptr;
   const upstream::FieldNodeRecipeData *recipe_ = nullptr;

@@ -146,6 +146,8 @@ struct FieldDialogueLifecycleHost {
   std::function<bool(const FieldDialogueLifecycleData &, std::string &)>
       admit_factory;
   std::function<bool(FieldObjectId, std::string &)> admit_parent;
+  // Publish and bind the real detached factory before source UI assignment.
+  std::function<bool(FieldObjectId, std::string &)> factory_created;
   std::function<bool(const FieldDialogueStep &, const FieldProgrammeContext &,
                      std::string &)>
       admit_step;

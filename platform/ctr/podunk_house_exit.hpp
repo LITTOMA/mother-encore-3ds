@@ -5,9 +5,15 @@
 #include "podunk_player_camera.hpp"
 #include "podunk_scene_audio.hpp"
 #include "encore/scene_leaf_native.hpp"
+#include "podunk_programme_inventory.hpp"
+#include "podunk_programme_state.hpp"
+#include "encore/blackbars.hpp"
 
 class SourceFontRenderer;
+class HouseRenderer;
+class BattleRenderer;
 namespace encore::ctr {
+class PodunkHouseDoorFade;
 // Borrow only the actual running House models/backends. Native source owners
 // below share this one Registry, Tree, Player and gameplay random stream.
 struct PodunkHouseExitInput {
@@ -19,6 +25,19 @@ struct PodunkHouseExitInput {
   PodunkCameraViewport viewport;
   upstream::FieldEquipmentView equipment;
   SourceFontRenderer *font = nullptr;
+  const upstream::FieldProgrammeData *programme = nullptr;
+  const upstream::FieldPsiData *psi = nullptr;
+  const upstream::BasementProgressionData *basement = nullptr;
+  const upstream::DialogueChoicesData *choices = nullptr;
+  upstream::DialogueChoices *choice_runtime = nullptr;
+  upstream::HousePresentation *printer = nullptr;
+  upstream::SessionSnapshot *mutable_session = nullptr;
+  HouseRenderer *house_renderer = nullptr;
+  BattleRenderer *text_renderer = nullptr;
+  const upstream::LocaleSelection *locale = nullptr;
+  const upstream::AudioBank *inventory_audio_bank = nullptr;
+  upstream::Blackbars *bars = nullptr;
+  PodunkHouseDoorFade *fade = nullptr;
   upstream::FieldDoorHost house_door;
   PodunkSceneAudioHost audio;
   MusicRegionService *music = nullptr;
@@ -63,6 +82,12 @@ public:
   const std::shared_ptr<upstream::FieldNodeTreeRuntime> &tree() const;
   upstream::FieldGeometrySpace *geometry();
   upstream::FieldDoorRuntime *house_door();
+  // These are the same source-state owners used by NPC programmes and saves.
+  // They are exposed after actual construction, without granting Scene Ready.
+  PodunkInventoryHost *inventory();
+  PodunkProgrammeState *programme_state();
+  upstream::FieldSceneHost *scene_lifecycle();
+  PodunkPlayerHost *player_host();
   const std::string &failure() const;
 private:
   struct State;

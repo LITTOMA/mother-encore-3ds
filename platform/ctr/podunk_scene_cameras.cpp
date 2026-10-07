@@ -53,6 +53,27 @@ bool PodunkSceneCameras::register_player(PodunkPlayerCamera &p,
   e.clear();
   return true;
 }
+bool PodunkSceneCameras::actual_external(FieldObjectId id,std::string&e)const{
+ auto i=external_.find(id);auto tree=registry_?registry_->tree_owner(id):nullptr;
+ FieldIdentity identity;const auto*n=tree?tree->state(id):nullptr;const auto*d=tree?tree->descriptor(id):nullptr;
+ if(i==external_.end()||!n||!n->alive||!d||d->native_class!="Camera2D"||
+    !tree->object_identity(id,identity)||!same(identity,i->second.identity)||
+    identity.upstream_commit!=data_->identity().upstream_commit)
+  return fail(e,"External Camera2D actual recipe/Registry owner rejected");
+ e.clear();return true;
+}
+bool PodunkSceneCameras::register_external(FieldObjectId id,const FieldIdentity&identity,
+ ExternalSnapshot snapshot,ExternalSelect select,std::string&e){
+ if(!data_||!id||!snapshot||!select||cameras_.count(id)||external_.count(id)||
+    (player_&&player_->owns(id)))return fail(e,"External Camera2D registration owner rejected");
+ external_.emplace(id,ExternalCamera{identity,std::move(snapshot),std::move(select)});
+ if(!actual_external(id,e)){external_.erase(id);return false;}e.clear();return true;
+}
+bool PodunkSceneCameras::unregister_external(FieldObjectId id,std::string&e){
+ if(!actual_external(id,e))return false;
+ if(current_==id&&!make_current(0,e))return false;
+ external_.erase(id);e.clear();return true;
+}
 bool PodunkSceneCameras::owns(const FieldNodeDescriptor &d) const {
   auto *r = data_ ? data_->record(d.id) : nullptr;
   return r &&
@@ -126,7 +147,8 @@ bool PodunkSceneCameras::native_current(FieldObjectId &out,
       !registry_->object_exists(root_->viewport_object()))
     return fail(e, "Camera Viewport owner not live");
   if (current_ &&
-      (!(player_ && player_->owns(current_)) && !actual(current_, e)))
+      (!(player_ && player_->owns(current_)) &&
+       !(external_.count(current_) ? actual_external(current_,e) : actual(current_,e))))
     return false;
   if (current_ && !registry_->object_exists(current_))
     return fail(e, "Viewport current Camera2D has been freed");
@@ -138,9 +160,11 @@ bool PodunkSceneCameras::make_current(FieldObjectId id, std::string &e) {
   if (!data_)
     return fail(e, "Camera Viewport registry unprepared");
   bool external = player_ && player_->owns(id);
-  if (id && !external && !actual(id, e))
+  bool foreign = external_.count(id)!=0;
+  if (id && !external && !(foreign ? actual_external(id,e) : actual(id, e)))
     return false;
-  const auto *s = id ? tree_->state(id) : nullptr;
+  auto selected_tree=id?registry_->tree_owner(id):nullptr;
+  const auto *s = selected_tree ? selected_tree->state(id) : nullptr;
   if (id && (!s || !s->inside))
     return fail(e, "Camera selection requires actual entered node");
   current_ = id;
@@ -158,7 +182,11 @@ bool PodunkSceneCameras::make_current(FieldObjectId id, std::string &e) {
   if (player_ && player_->object() && tree_->state(player_->object())->inside &&
       !player_->native_select(external, e))
     return false;
-  if (id && !external)
+  for(auto&i:external_){
+    auto owner=registry_->tree_owner(i.first);const auto*node=owner?owner->state(i.first):nullptr;
+    if(node&&node->inside&&!i.second.select(i.first,i.first==id,e))return false;
+  }
+  if (id && !external && !foreign)
     return update(id, e);
   e.clear();
   return true;
@@ -170,6 +198,7 @@ bool PodunkSceneCameras::current_snapshot(FieldObjectId id,
     return fail(e, "Camera snapshot cannot use null ObjectID");
   if (player_ && player_->owns(id))
     return player_->native_snapshot(out, e);
+  if(external_.count(id))return actual_external(id,e)&&external_.at(id).snapshot(id,out,e);
   if (!actual(id, e))
     return false;
   out = cameras_.at(id).body;

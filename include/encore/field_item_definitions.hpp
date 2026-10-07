@@ -2,6 +2,7 @@
 #include "encore/load_rng.hpp"
 #include <array>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 namespace encore::upstream {
@@ -46,17 +47,25 @@ struct FieldItemDefinitionsHost {
  // committed immediately after it returns, before subsequent source flags.
  std::function<bool(const FieldItemSnapshot&before,const FieldItemSnapshot&after,const FieldItemResult&,std::string&)>commit;
 };
+// Optional concrete ObjectDB constructor. The lifetime token owns the actual
+// Reference reservation; its destruction retires an uncommitted object.
+struct FieldItemConstructionHost {
+ std::function<bool(const FieldItemBinding&,uint32_t,std::shared_ptr<void>&,std::string&)>reserve;
+ std::function<bool(const FieldItemBinding&,const FieldOwnedItem&,const std::shared_ptr<void>&,std::string&)>finish;
+};
 class FieldItemDefinitionsRuntime {
 public:
  bool initialize(const FieldItemDefinitions&,SourceRandom&,std::vector<uint32_t>&generated_uid_ledger,LoadRngClockProvider,FieldItemDefinitionsHost,std::string&);
  bool inventory_space(bool&,std::string&)const;
  bool select_holder(FieldItemBindingKind,const std::string&scene,uint32_t source_object,bool give,FieldItemResult&,std::string&);
  bool grant_programme(const std::string&source_program,const std::string&label,FieldItemResult&,std::string&);
+ bool bind_source_construction(FieldItemConstructionHost,std::string&);
  bool query(FieldItemBindingKind,const std::string&scene,uint32_t source_object,bool&found,FieldItemResult&,std::string&)const;
  bool reduce_or_drop(uint32_t uid,FieldItemResult&,std::string&);bool drop(uint32_t uid,FieldItemResult&,std::string&);bool transfer(uint32_t uid,uint32_t target_owner,FieldItemResult&,std::string&);
  bool validate_snapshot(const FieldItemSnapshot&,std::string&)const;const FieldItemDefinitions*data()const{return data_;}
 private:
  const FieldItemDefinitions*data_=nullptr;SourceRandom*random_=nullptr;std::vector<uint32_t>*ledger_=nullptr;LoadRngClockProvider clock_;FieldItemDefinitionsHost host_;
+ FieldItemConstructionHost construction_;
  bool read(FieldItemSnapshot&,std::string&)const;bool construct(const FieldItemBinding&,bool give,bool full_transient,FieldItemResult&,std::string&);
  bool remove(uint32_t,bool dose,FieldItemResult&,std::string&);
 };

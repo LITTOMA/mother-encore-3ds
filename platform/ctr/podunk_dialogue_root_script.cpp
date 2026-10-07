@@ -233,7 +233,10 @@ bool PodunkDialogueRootOwner::construct(FieldObjectId id,
       !same(identity, data_->identity()))
     return reject(
         e, "DialogueRoot construction has no actual ObjectDB source instance");
+  if(!observation_data_)return reject(e,"DialogueRoot actual observation defaults were not source-bound");
   Instance i;
+  const auto &observation=observation_data_->dialogue_policy();
+  i.queued_battle=observation.queued_battle;i.set_respawn=observation.set_respawn;
   i.state.identity = identity;
   i.state.object = id;
   i.state.printer = &printer;
@@ -356,8 +359,9 @@ bool PodunkDialogueRootOwner::phase(FieldObjectId id, FieldTreePhase phase,
       !printer_->physics_frame(frame.delta, position))
     return reject(e, "DialogueRoot actual printer physics failed");
   i->stopped = printer_->dialogue_stopped();
-  auto actor = programme_->programme().context().actor_object;
-  if (actor && !host_.talker_talking(actor, printer_->talking(), e))
+  const auto &context=programme_->programme().context();
+  auto actor = context.actor_object;
+  if (!context.thoughts && actor && !host_.talker_talking(actor, printer_->talking(), e))
     return false;
   if (!flush_audio(*i, e))
     return false;
@@ -366,6 +370,27 @@ bool PodunkDialogueRootOwner::phase(FieldObjectId id, FieldTreePhase phase,
         e, "DialogueRoot same-printer synchronous finish callback absent");
   e.clear();
   return true;
+}
+bool PodunkDialogueRootOwner::bind_observation_defaults(const HouseUiContinuationData &d,std::string &e){
+  std::array<uint8_t,32> hash{};
+  if(!data_||!d.valid()||!d.dialogue_continuation()||
+     d.identity().upstream_commit!=data_->identity().upstream_commit||
+     !d.source_hash(d.dialogue_policy().dialogue_script,hash)||hash!=data_->script_sha()||
+     d.dialogue_policy().actor_count)
+    return reject(e,"DialogueRoot observation declaration source binding rejected");
+  if(observation_data_){
+    if(observation_data_!=&d)return reject(e,"DialogueRoot observation owner replacement rejected");
+    e.clear();return true;
+  }
+  if(!instances_.empty())return reject(e,"DialogueRoot observation binding after source construction rejected");
+  observation_data_=&d;e.clear();return true;
+}
+bool PodunkDialogueRootOwner::source_observation(FieldObjectId id,FieldDialogueObservation &out,std::string &e)const{
+  PodunkDialogueScriptState actual;
+  if(!observation_data_||!state(id,actual,e))return false;
+  const auto &body=instances_.at(id);
+  out.actor_count=uint32_t(body.actors.size());out.queued_battle=body.queued_battle;out.set_respawn=body.set_respawn;
+  e.clear();return true;
 }
 bool PodunkDialogueRootOwner::state(FieldObjectId id,
                                     PodunkDialogueScriptState &out,
@@ -393,11 +418,14 @@ bool PodunkDialogueRootOwner::begin(FieldObjectId id, uint32_t generation,
   i->running = true;
   i->generation = generation;
   i->choices_shown = false;
-  return phrase_begin(id, e);
+  // Every checked ShowDialogue enters its source phrase through prepare_text
+  // before this same printer changes. Initial begin owns only programme and
+  // printer; it must not reset the first phrase a second time.
+  e.clear();return true;
 }
 bool PodunkDialogueRootOwner::phrase_begin(FieldObjectId id, std::string &e) {
   auto *i = live(id, true, e);
-  if (!i || !i->running || !i->owns_printer ||
+  if (!i || !i->running || !i->owns_printer || i->phrase_prepared ||
       programme_->programme().context().dialogue_object != id)
     return reject(e,
                   "DialogueRoot phrase reset lacks actual running programme");

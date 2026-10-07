@@ -23,6 +23,7 @@
 #include "podunk_ready_native_bridges.hpp"
 #include "podunk_ready_interaction_bridges.hpp"
 #include "podunk_ready_transition_bridge.hpp"
+#include "podunk_mick_session.hpp"
 #include <algorithm>
 #include <cmath>
 #include <tuple>
@@ -103,6 +104,9 @@ struct PodunkHouseExit::State {
   } butterfly_canvas;
   PodunkHouseExitInput input;
   PodunkHouseContinuation continuation;
+  FieldGoodsData goods;
+  PodunkProgrammeInventory programme_inventory;
+  PodunkProgrammeState programme_state;
   FieldSceneSources sources;
   PodunkPlayerSources player_sources;
   FieldNativeRootData native_root;
@@ -160,6 +164,7 @@ struct PodunkHouseExit::State {
        activated=false,ended=false,failed=false,candidate=false;
   uint32_t step=0;
   uint64_t token=0;
+  PodunkMickSession mick;
   bool fail(std::string &e) { failed=true; failure=e; return false; }
   bool source_ready_boundary(uint32_t stable,std::string &e) const {
     FieldObjectId id=0;
@@ -247,6 +252,27 @@ struct PodunkHouseExit::State {
       return reject(e,"House exit actual destination source object unavailable");
     e.clear();return true;
   }
+  bool npc_seen_identity(uint32_t stable,const FieldNpcDialogue &row,
+                         std::string &key,std::string &e) const {
+    const FieldNpcDescriptor *binding=nullptr;
+    for(const auto &npc:sources.npc().npcs())if(npc.id==stable)binding=&npc;
+    if(!binding)return reject(e,"NPC seen source binding is absent");
+    auto match=std::find_if(binding->dialogues.begin(),binding->dialogues.end(),
+      [&](const auto &actual){return actual.thoughts==row.thoughts&&actual.last==row.last&&
+        actual.group==row.group&&actual.ordinal==row.ordinal&&actual.flag==row.flag&&
+        actual.program==row.program&&actual.source==row.source;});
+    if(match==binding->dialogues.end())return reject(e,"NPC seen source row differs");
+    FieldObjectId actual=0;
+    if(!source(stable,actual,e))return false;
+    const auto *n=tree->state(actual);const auto *d=tree->descriptor(actual);
+    if(!n||!d||!n->inside||!n->ready_notified||!n->bound||
+       d->path!=binding->node||d->ready!=binding->ready_ordinal)
+      return reject(e,"NPC seen read before actual source Ready cursor");
+    std::string path;
+    if(!const_cast<PodunkHouseContinuation&>(continuation).registry()->get_path(actual,path,e))return false;
+    key=path+":"+row.flag+":"+std::to_string(row.ordinal)+":"+row.program;
+    e.clear();return true;
+  }
 };
 PodunkHouseExit::PodunkHouseExit():state_(std::make_unique<State>()){}
 PodunkHouseExit::~PodunkHouseExit()=default;
@@ -254,6 +280,12 @@ bool PodunkHouseExit::prepare(PodunkHouseExitInput in,std::string &e) {
   auto &s=*state_;
   if(s.attempted||!in.continuation.house||
      in.continuation.house->house.phase()!=HousePhase::Idle||!in.font||
+     !in.programme||!in.programme->valid()||!in.psi||!in.psi->valid()||
+     !in.basement||!in.basement->valid()||!in.choices||!in.choices->valid()||!in.choice_runtime||
+     !in.printer||!in.mutable_session||
+     in.mutable_session!=in.continuation.snapshot||!in.house_renderer||
+     !in.text_renderer||!in.locale||!in.locale->catalog()||
+     !in.inventory_audio_bank||!in.inventory_audio_bank->count()||!in.bars||!in.fade||
      !in.scene_epoch||!in.music||
      !std::isfinite(in.geometry_grid_size)||in.geometry_grid_size<=0)
     return reject(e,"House exit requires Idle live session and checked native owners");
@@ -266,6 +298,9 @@ bool PodunkHouseExit::prepare(PodunkHouseExitInput in,std::string &e) {
     return s.fail(e);
   auto &r=*s.continuation.registry();auto &root=*s.continuation.native_root();
   auto &global=s.continuation.global()->core();auto &bus=*s.continuation.signals();
+  if(!s.load(PodunkPackRole::Goods,s.goods,e)||
+     !s.programme_inventory.prepare({&s.continuation,&s.goods,
+        s.input.inventory_audio_bank,s.input.locale,s.input.continuation.clock},e))return s.fail(e);
   auto &ps=s.player_sources;
   ps.initialization=s.continuation.player_initialization_owner();
   ps.ready=s.continuation.player_ready_owner();
@@ -318,7 +353,11 @@ bool PodunkHouseExit::prepare(PodunkHouseExitInput in,std::string &e) {
   // Missing future operations fail when their source actually calls them.
   s.owners.npc.context=unsupported("Outdoor npc.context actual operation is not implemented");
   s.owners.npc.flag=unsupported("Outdoor npc.flag actual operation is not implemented");
-  s.owners.npc.seen=unsupported("Outdoor npc.seen actual operation is not implemented");
+  s.owners.npc.seen=[&s](uint32_t source,const auto &row,bool &out,auto &error){
+    std::string key;
+    return s.npc_seen_identity(source,row,key,error)&&
+      s.continuation.characters()->flags().seen(key,out,error);
+  };
   s.owners.npc.mark_seen=unsupported("Outdoor npc.mark_seen actual operation is not implemented");
   s.owners.npc.admit_program=unsupported("Outdoor npc.admit_program actual operation is not implemented");
   s.owners.npc.open_program=unsupported("Outdoor npc.open_program actual operation is not implemented");
@@ -1235,7 +1274,22 @@ bool PodunkHouseExit::prepare(PodunkHouseExitInput in,std::string &e) {
      !s.ready_transition.prepare({&s.sources,&s.continuation,&s.player,&s.player_sources,s.tree.get(),
          &s.geometry,&s.map,&s.native,[&s](uint32_t id){return s.loop.scripts().lifecycle().gate(id);},
          [&s](auto stable,auto &actual,auto &error){return s.source(stable,actual,error);}},e)||
-     !s.ready_transition.apply(s.owners.transitions,e)||!s.consumers.initialize_owners(s.owners,e)||
+     !s.ready_transition.apply(s.owners.transitions,e))return s.fail(e);
+  PodunkMickInput mick;
+  mick.continuation=&s.continuation;mick.bundle=&s.input.continuation.destination->bundle();
+  mick.sources=&s.sources;mick.programmes=s.input.programme;mick.basement=s.input.basement;
+  mick.psi=s.input.psi;mick.choice_data=s.input.choices;mick.choices=s.input.choice_runtime;
+  mick.locale=s.input.locale;mick.printer=s.input.printer;mick.scene=&s.loop.scripts().lifecycle();mick.npc=cores.npc;
+  mick.state=&s.programme_state;mick.player=&s.player;mick.player_camera=&s.player_camera;
+  mick.cameras=&s.cameras;mick.audio_server=s.audio_server;mick.timers=&s.loop.timers().core();
+  mick.geometry=&s.geometry;mick.physics=&s.physics;mick.bars=s.input.bars;mick.fade=s.input.fade;
+  mick.house_renderer=s.input.house_renderer;mick.font=s.input.text_renderer;mick.source_font=s.input.font;
+  mick.motion=ps.motion.get();mick.house=s.input.continuation.house_data;
+  mick.asset_root=s.input.continuation.romfs_root;mick.controls=s.input.controls;
+  mick.query_input=s.input.query_input;
+  if(!s.mick.prepare(std::move(mick),e))return s.fail(e);
+  s.mick.apply_npc(s.owners.npc);
+  if(!s.consumers.initialize_owners(s.owners,e)||
      !s.consumers.bind_scripts(s.loop.scripts(),e))return s.fail(e);
   s.bird_canvas.owner=&s;s.butterfly_canvas.owner=&s;
   if(!s.bird_canvas.gpu.load(s.sources.birds(),s.input.continuation.romfs_root.c_str(),e)||!s.butterfly_canvas.gpu.load(s.sources.butterfly(),s.input.continuation.romfs_root.c_str(),e))return s.fail(e);
@@ -1262,6 +1316,15 @@ bool PodunkHouseExit::construct(std::string &e) {
   in.asset_root=s.input.continuation.romfs_root;
   in.mechanisms={&s.visibility,&s.npc_world,&s.prompts,&s.butterfly_animation,
       &s.clips,&s.npc_animation,&s.audio,&s.leaves,&s.cameras,&s.ready_transition};
+  in.foreign_candidate=[&s](const auto &node,const auto &identity){return s.mick.candidate(node,identity);};
+  in.foreign_owned=[&s](auto id){return s.mick.owns(id);};
+  in.foreign_construct=[&s](auto id,const auto &node,const auto &identity,auto &error){return s.mick.construct(id,node,identity,error);};
+  in.foreign_bind=[&s](auto id,const auto &node,auto &binding,auto &error){return s.mick.bind(id,node,binding,error);};
+  in.foreign_phase=[&s](auto id,const auto &binding,auto phase,float dt,bool paused,bool update,auto &error){return s.mick.phase(id,binding,phase,dt,paused,update,error);};
+  in.foreign_deferred=[&s](const auto &message,auto &error){return s.mick.deferred(message,error);};
+  in.foreign_release=[&s](auto id,auto &error){return s.mick.release(id,error);};
+  in.foreign_emits_ready=[&s](auto id){return s.mick.emits_ready(id);};
+  in.source_input_handled=[&s](){return s.mick.input_handled();};
   in.allocation_observed=[&s](auto id,const auto &node,const auto &identity,auto &error){
     const auto *actual=s.tree->descriptor(id);
     if(!actual||actual->id!=node.id||s.continuation.registry()->tree_owner(id)!=s.tree||
@@ -1280,6 +1343,8 @@ bool PodunkHouseExit::construct(std::string &e) {
        s.callbacks.observe_allocated(id,node,identity,error);
   };
   in.source_signals=[&s](auto id,auto name,auto &arity,auto &error){
+    if(s.player_camera.tween_owned(id))return s.player_camera.tween_declaration(id,name,arity,error);
+    if(s.mick.owns(id))return s.mick.declaration(id,name,arity,error);
     if(s.leaves.owns(id))return s.leaves.declaration(id,name,arity,error);
     if(s.audio.owns(id))return s.audio.signal_declaration(id,name,arity,error);
     std::string transition_error;
@@ -1346,6 +1411,7 @@ bool PodunkHouseExit::construct(std::string &e) {
   if(!s.player_camera.prepare(*s.player_sources.children,*s.player_sources.initialization,
       *s.player_sources.motion,*s.tree,r,*s.continuation.native_root(),global,s.player.body(),
       s.player.children(),s.player.animations(),s.input.viewport,std::move(ports),e)||
+     !s.player_camera.bind_tweens(s.sources.grass_native(),*s.continuation.signals(),e)||
      !s.physics.bind_camera(s.player_camera,e)||!s.cameras.register_player(s.player_camera,e)||
      !s.effects.initialize(*s.player_sources.effects,*s.player_sources.initialization,
       *s.player_sources.resources,r,global,*s.continuation.signals(),s.player.resources(),s.player.animations(),e))return s.fail(e);
@@ -1357,6 +1423,9 @@ bool PodunkHouseExit::construct(std::string &e) {
   services.map=&s.map;services.geometry=&s.geometry;services.world=&s.physics;
   services.effect_owners=&s.effects;services.audio_server=s.audio_server->media_host();
   services.camera=s.player_camera.source_host();
+  services.motion.telepathy_effect=[&s](auto target,bool enabled,auto &error){
+    return s.mick.telepathy_effect(target,enabled,error);
+  };
   if(!s.player_services.prepare({&s.continuation,&s.player_sources,&s.player,s.tree.get(),
        &s.consumers,&s.loop.scripts(),&s.sources.lifecycle(),&s.preloads,s.continuation.named_sfx(),std::move(services),s.input.controls,s.input.query_input},e))return s.fail(e);
   if(!s.player.prepare(s.player_sources,s.player_services.services(),s.tree,s.input.continuation.romfs_root.c_str(),e)||
@@ -1372,6 +1441,9 @@ bool PodunkHouseExit::construct(std::string &e) {
   auto local=node->local;local[2]=s.input.continuation.house->world.player().position;
   if(!s.tree->set_local(actual,local,e)||!s.native.bind_foreign(s.player,*s.player_sources.initialization,
        s.effects,*s.player_sources.effects,e)||!s.native.bind_canvas_leaf(s.bird_canvas,e)||!s.native.bind_canvas_leaf(s.butterfly_canvas,e))return s.fail(e);
+  if(!s.programme_state.prepare({&s.continuation,s.programme_inventory.host(),
+      s.input.programme,s.input.basement,cores.npc,s.tree.get(),
+      &s.loop.scripts().lifecycle(),actual,s.input.mutable_session},e))return s.fail(e);
   auto host=s.input.house_door;
   host.observe=[&s](FieldDoorContext &out,std::string &error){
     auto &global=s.continuation.global()->core();
@@ -1622,14 +1694,29 @@ bool PodunkHouseExit::idle_frame(uint64_t epoch,float dt,bool paused,bool update
   auto &s=*state_;s.tree_paused=paused;s.update_pending=update;
   if(!epoch||epoch<=s.camera_idle_epoch)return reject(e,"House exit actual idle frame repeated or out of order");
   s.camera_idle_epoch=epoch;
+  if(s.activated&&!s.mick.active()&&s.door.phase()==FieldDoorPhase::Done&&
+     !s.mick.activate(e))return s.fail(e);
+  if(s.mick.active()&&!s.mick.idle_begin(e))return s.fail(e);
   // SceneTree idle_frame is emitted before native/script idle traversal. Taking
   // the tail here keeps any waiter created during this traversal for next frame.
   auto waiters=std::move(s.camera_idle_waiters);s.camera_idle_waiters.clear();
   for(auto &row:waiters)if(!row.second()){e=s.consumers.runtime_instances().camera_area->error();return s.fail(e);}
-  return s.audio_server->pump(e)&&s.continuation.named_sfx()->process(false,paused,e)&&s.loop.idle_frame(epoch,dt,paused,update,e);
+  if(!s.audio_server->pump(e)||!s.continuation.named_sfx()->process(false,paused,e)||
+     !s.loop.idle_frame(epoch,dt,paused,update,e))return s.fail(e);
+  if(!s.player_camera.idle_tail(epoch,dt,paused,e))return s.fail(e);
+  return !s.mick.active()||s.mick.idle_end(epoch,dt,paused,e);
 }
-bool PodunkHouseExit::input(uint32_t kind,const PlayerInputEvent &event,bool accept,bool paused,std::string &e){return state_->loop.input(kind,event,accept,paused,e);}
-bool PodunkHouseExit::draw(uint64_t epoch,float dt,float time,std::string &e){return state_->loop.draw(epoch,dt,time,e);}
+bool PodunkHouseExit::input(uint32_t kind,const PlayerInputEvent &event,bool accept,bool paused,std::string &e){
+  auto &s=*state_;
+  if(s.mick.active()&&!s.mick.begin_input(event,e))return s.fail(e);
+  const bool result=s.loop.input(kind,event,accept,paused,e);
+  if(s.mick.active())s.mick.end_input();
+  return result;
+}
+bool PodunkHouseExit::draw(uint64_t epoch,float dt,float time,std::string &e){
+  auto &s=*state_;
+  return s.loop.draw(epoch,dt,time,e)&&(!s.mick.active()||s.mick.draw(epoch,e));
+}
 bool PodunkHouseExit::end(std::string &e){
   auto &s=*state_;if(s.ended)return reject(e,"House exit teardown repeated");
   if(s.tree->root()&&s.tree->state(s.tree->root())->inside&&
@@ -1658,5 +1745,9 @@ FieldSceneConsumers PodunkHouseExit::consumers()const{return state_->consumers.r
 const std::shared_ptr<FieldNodeTreeRuntime> &PodunkHouseExit::tree()const{return state_->tree;}
 FieldGeometrySpace *PodunkHouseExit::geometry(){return &state_->geometry;}
 FieldDoorRuntime *PodunkHouseExit::house_door(){return state_->door.data()?&state_->door:nullptr;}
+PodunkInventoryHost *PodunkHouseExit::inventory(){return state_->programme_inventory.host();}
+PodunkProgrammeState *PodunkHouseExit::programme_state(){return state_->constructed?&state_->programme_state:nullptr;}
+FieldSceneHost *PodunkHouseExit::scene_lifecycle(){return state_->constructed?&state_->loop.scripts().lifecycle():nullptr;}
+PodunkPlayerHost *PodunkHouseExit::player_host(){return state_->constructed?&state_->player:nullptr;}
 const std::string &PodunkHouseExit::failure()const{return state_->failure;}
 } // namespace encore::ctr

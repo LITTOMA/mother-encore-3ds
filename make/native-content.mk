@@ -47,6 +47,10 @@ scene-clip-native: field-node-tree field-openable field-present field-emotes fie
 .PHONY: audio-server
 audio-server:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/audio_server.py compile
+CONTENT_TASKS += dialogue-actor-resource
+.PHONY: dialogue-actor-resource
+dialogue-actor-resource:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/dialogue_actor_resource.py compile
 DESTINATION_INPUT_TASKS := $(CONTENT_TASKS)
 CONTENT_TASKS += scene-bundle
 .PHONY: scene-bundle

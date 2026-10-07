@@ -16,6 +16,10 @@ public:
                upstream::FieldCameraArrowsRuntime &, PodunkCameraViewport,
                std::string &);
   bool register_player(PodunkPlayerCamera &, std::string &);
+  using ExternalSnapshot=std::function<bool(upstream::FieldObjectId,upstream::FieldGameCameraState&,std::string&)>;
+  using ExternalSelect=std::function<bool(upstream::FieldObjectId,bool,std::string&)>;
+  bool register_external(upstream::FieldObjectId,const upstream::FieldIdentity&,ExternalSnapshot,ExternalSelect,std::string&);
+  bool unregister_external(upstream::FieldObjectId,std::string&);
   bool native_current(upstream::FieldObjectId &, std::string &) const;
   bool make_current(upstream::FieldObjectId, std::string &);
   bool current_snapshot(upstream::FieldObjectId,
@@ -42,6 +46,9 @@ private:
     upstream::FieldGameCameraState body{};
     bool entered = false, ready = false;
   };
+  struct ExternalCamera {upstream::FieldIdentity identity;ExternalSnapshot snapshot;ExternalSelect select;};
+  std::map<upstream::FieldObjectId,ExternalCamera> external_;
+  bool actual_external(upstream::FieldObjectId,std::string&)const;
   bool actual(upstream::FieldObjectId, std::string &) const;
   bool update(upstream::FieldObjectId, std::string &);
   bool source(uint32_t, upstream::FieldObjectId &, std::string &) const;

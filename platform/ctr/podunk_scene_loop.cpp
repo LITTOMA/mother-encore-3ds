@@ -151,6 +151,7 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
   };
   host.construct_source = [this](auto id, const auto &n, const auto &identity,
                                  auto &error) {
+    if(input_.foreign_owned&&input_.foreign_owned(id)){error.clear();return true;}
     if (input_.grass->owns(id))
       return input_.grass->construct_source(id, n, identity, error);
     if (input_.player->source_candidate(n.id))
@@ -224,6 +225,8 @@ bool PodunkSceneLoop::native_allocated(FieldObjectId id,
   if (!r.publish_allocated_node(input_.tree, id,
       [this](const auto &message, auto &error) { return deferred(message, error); }, e))
     return false;
+  if(input_.foreign_candidate&&input_.foreign_candidate(d,identity))
+    return input_.foreign_construct&&input_.foreign_construct(id,d,identity,e);
   if (input_.grass->owns(d)) return input_.grass->native_construct(id, d, identity, e);
   if (input_.player->source_candidate(d.id)) return true;
   if (!input_.allocation_observed(id, d, identity, e)) return false;
@@ -244,6 +247,7 @@ bool PodunkSceneLoop::native_allocated(FieldObjectId id,
 }
 bool PodunkSceneLoop::bind(FieldObjectId id, const FieldNodeDescriptor &d,
                            FieldNodeBinding &out, std::string &e) {
+  if(input_.foreign_owned&&input_.foreign_owned(id))return input_.foreign_bind&&input_.foreign_bind(id,d,out,e);
   if (input_.house_door_continuation && input_.house_door_continuation->owns(id)) return input_.house_door_continuation->bind(id,out,e);
   if (input_.grass->owns(id)) return input_.grass->bind(id, out, e);
   if (input_.player->source_candidate(d.id)) return input_.player->bind(id, d, out, e);
@@ -275,19 +279,25 @@ bool PodunkSceneLoop::dispatch(FieldObjectId id, const FieldNodeBinding &b,
       p == FieldTreePhase::ChildEntered || p == FieldTreePhase::ChildExiting ||
       p == FieldTreePhase::ReadyNative || p == FieldTreePhase::ReadyScript)
     if (!root.node_notification(id, p, e)) return false;
-  if (input_.house_door_continuation && input_.house_door_continuation->owns(id))
+  const bool foreign=input_.foreign_owned&&input_.foreign_owned(id);
+  if(foreign){
+    if(!input_.foreign_phase||!input_.foreign_phase(id,b,p,
+       p==FieldTreePhase::PhysicsInternal||p==FieldTreePhase::Physics?physics_delta_:idle_delta_,
+       paused_,update_pending_,e))return false;
+  }
+  if (!foreign && input_.house_door_continuation && input_.house_door_continuation->owns(id))
     return input_.house_door_continuation->phase(id,p,p==FieldTreePhase::Physics?physics_delta_:idle_delta_,paused_,update_pending_,e);
-  if (input_.grass->owns(id))
+  if (!foreign && input_.grass->owns(id))
     return input_.grass->phase(id, p, p == FieldTreePhase::PhysicsInternal || p == FieldTreePhase::Physics ? physics_delta_ : idle_delta_, paused_, e);
-  if (input_.player->owns(id)) return input_.player->phase(id, b, p, e);
-  if (source_phase(p)) {
+  if (!foreign && input_.player->owns(id)) return input_.player->phase(id, b, p, e);
+  if (!foreign && source_phase(p)) {
     if (!n->script.empty())
       return scripts_.phase(id, b, p,
           p == FieldTreePhase::Physics ? physics_delta_ : idle_delta_, e);
     // Source-less nodes have no script callback; Tree retains base state.
     e.clear(); return true;
   }
-  if (native_phase(p)) {
+  if (!foreign && native_phase(p)) {
     if (input_.native->owns(id)) {
       if (!input_.native->phase(id, p, e)) return false;
     } else if (timers_.owns(id)) {
@@ -306,6 +316,10 @@ bool PodunkSceneLoop::dispatch(FieldObjectId id, const FieldNodeBinding &b,
   // Engine signal declarations are software schema, independently of game
   // callbacks. Delivery uses the same synchronous ObjectDB bus/queue.
   std::string_view signal;
+  if (foreign && p == FieldTreePhase::ReadySignal &&
+      input_.foreign_emits_ready && input_.foreign_emits_ready(id)) {
+    e.clear(); return true;
+  }
   switch (p) {
   case FieldTreePhase::TreeEntered: signal = "tree_entered"; break;
   case FieldTreePhase::TreeExiting: signal = "tree_exiting"; break;
@@ -415,6 +429,7 @@ bool PodunkSceneLoop::input(uint32_t kind, const PlayerInputEvent &event,
   std::vector<FieldObjectId> receivers;
   if (!input_.continuation->native_root()->input_objects(kind, receivers, e)) return false;
   for (auto id : receivers) {
+    if (input_.source_input_handled && input_.source_input_handled()) break;
     if (!input_.tree->state(id) || !input_.tree->can_process(id, paused)) continue;
     if (input_.player->owns(id)) {
       if (kind != 0 || id != input_.player->body().object())
@@ -449,6 +464,8 @@ bool PodunkSceneLoop::deferred(const FieldDeferredMessage &m, std::string &e) {
   const auto *n = input_.tree ? input_.tree->descriptor(m.object) : nullptr;
   const auto *s = input_.tree ? input_.tree->state(m.object) : nullptr;
   if (!n || !s || !s->alive) return fail(e, "Scene queued method target not live");
+  if(input_.foreign_owned&&input_.foreign_owned(m.object))
+    return input_.foreign_deferred&&input_.foreign_deferred(m,e);
   if (m.kind == FieldDeferredKind::Notification) {
     const auto p = FieldTreePhase(m.notification);
     if (!m.args.empty() || (p != FieldTreePhase::Parented &&
@@ -477,6 +494,10 @@ bool PodunkSceneLoop::deferred(const FieldDeferredMessage &m, std::string &e) {
 }
 bool PodunkSceneLoop::release(FieldObjectId id, const FieldNodeBinding &b,
                               std::string &e) {
+  if(input_.foreign_owned&&input_.foreign_owned(id)){
+    if(!input_.foreign_release||!input_.foreign_release(id,e))return false;
+    released_signals_.push_back(id);e.clear();return true;
+  }
   if (input_.house_door_continuation && input_.house_door_continuation->owns(id)){
     if(!input_.house_door_continuation->release(id,e))return false;
     released_signals_.push_back(id);e.clear();return true;

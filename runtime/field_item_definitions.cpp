@@ -143,6 +143,15 @@ bool FieldItemDefinitionsRuntime::construct(const FieldItemBinding &b,
                     "Source full-holder transient branch has inventory space");
     }
   }
+  // Native Reference allocation precedes Item._init's default UID expression.
+  // Keep its owning token local so every failed candidate releases the slot.
+  std::shared_ptr<void> construction;
+  if (construction_.reserve) {
+    if (!construction_.reserve(b, target ? target->owner : 0, construction, e))
+      return false;
+    if (!construction)
+      return fail(e, "Actual Item reservation missing");
+  }
   SourceRandom next = *random_;
   auto ledger = *ledger_;
   std::vector<LoadUidAllocation> trace;
@@ -165,11 +174,23 @@ bool FieldItemDefinitionsRuntime::construct(const FieldItemBinding &b,
       return false;
     }
   }
+  if (construction_.finish &&
+      !construction_.finish(b, r.item, construction, e))
+    return false;
   if (!host_.commit(before, after, r, e))
     return false;
   *random_ = next;
   ledger_->swap(ledger);
   result = r;
+  e.clear();
+  return true;
+}
+bool FieldItemDefinitionsRuntime::bind_source_construction(
+    FieldItemConstructionHost h, std::string &e) {
+  if (!data_ || construction_.reserve || construction_.finish || !h.reserve ||
+      !h.finish)
+    return fail(e, "Actual Item constructor missing/already bound");
+  construction_ = std::move(h);
   e.clear();
   return true;
 }

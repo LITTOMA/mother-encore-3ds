@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/field_scene_audio.hpp"
+#include "encore/field_object_signals.hpp"
 #include "encore/player_named_sfx.hpp"
 #include "podunk_player_native_media.hpp"
 #include "podunk_scene_loop.hpp"
@@ -47,6 +48,10 @@ public:
                      upstream::FieldGlobalRegistry &,std::string &);
   bool bind_house_spatial(const upstream::HouseReturnSources&,const PodunkNativeRoot&,
                           upstream::FieldNodeTreeRuntime&,std::string&);
+  // Roll back only a truly erased detached candidate; actual callbacks, queues
+  // and every constructed voice must be released before dropping its borrow.
+  bool cancel_house_prepare(upstream::FieldNodeTreeRuntime&,
+                            const upstream::FieldObjectSignals&,std::string&);
   // After every old-tree native voice was actually Exit/Delete/released, and
   // before destroying that Tree/data owner. Keeps House callbacks/playback.
   bool retire_previous_scene(upstream::FieldNodeTreeRuntime &,std::string &);
@@ -137,6 +142,8 @@ private:
   const upstream::FieldSceneAudioData *data_ = nullptr,*house_data_=nullptr;
   upstream::FieldNodeTreeRuntime *house_tree_=nullptr;
   std::array<uint8_t,32>house_ir_{};
+  // Allocation receipts only; live voice ownership remains voices_.
+  std::set<upstream::FieldObjectId>house_voice_objects_;
   const upstream::HouseReturnSources*house_sources_=nullptr;
   const PodunkNativeRoot*house_root_=nullptr;
   const upstream::FieldSceneAudioData*house_spatial_data_=nullptr;

@@ -27,6 +27,7 @@ SOURCES += runtime/house_inspection_restore.cpp
 SOURCES += runtime/house_return_camera_control.cpp
 SOURCES += platform/ctr/house_return_camera_control.cpp platform/ctr/house_return_camera_control_effects.cpp
 SOURCES += platform/ctr/house_return_player_scene_owner.cpp
+SOURCES += platform/ctr/house_return_target.cpp
 SOURCES += platform/ctr/house_return_button_prompt_native.cpp platform/ctr/house_return_controls.cpp
 SOURCES += platform/ctr/house_return_prompt_material.cpp
 SOURCES += platform/ctr/house_return_gui_native.cpp

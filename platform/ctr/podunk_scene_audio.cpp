@@ -211,6 +211,22 @@ bool PodunkSceneAudio::bind_house_spatial(const HouseReturnSources&sources,const
  for(const auto&n:sources.tree().records())if(n.class_index<sources.tree().classes().size()&&sources.tree().classes()[n.class_index]=="AudioListener2D")return fail(e,"Actual House explicit AudioListener2D has no mapped native owner");
  house_sources_=&sources;house_root_=&root;house_spatial_data_=house_data_;house_spatial_tree_=&tree;e.clear();return true;
 }
+bool PodunkSceneAudio::cancel_house_prepare(FieldNodeTreeRuntime&next,
+    const FieldObjectSignals&signals,std::string&e){
+  if(!live(e)||!house_data_||house_tree_!=&next||tree_==&next||
+     signals.registry()!=registry_||next.object_domain()!=registry_->kernel()||
+     next.object_count()||next.lifecycle_pending()||registry_->current_scene()==next.root()||
+     registry_->pending_messages_to(house_voice_objects_)||
+     signals.active_dispatch_to(house_voice_objects_))
+    return fail(e,"House audio cancellation precedes actual candidate/callback/queue deletion");
+  for(const auto&v:voices_)if(v.second.tree==&next||v.second.audio_source==house_data_)
+    return fail(e,"House audio candidate still owns an actual voice/server callback");
+  for(auto id:house_voice_objects_)if(next.state(id)||registry_->object_exists(id)||registry_->tree_owner(id))
+    return fail(e,"House audio constructed voice still belongs to ObjectDB");
+  house_data_=nullptr;house_tree_=nullptr;house_ir_={};house_voice_objects_.clear();
+  house_sources_=nullptr;house_root_=nullptr;house_spatial_data_=nullptr;house_spatial_tree_=nullptr;
+  e.clear();return true;
+}
 bool PodunkSceneAudio::retire_previous_scene(FieldNodeTreeRuntime&old,std::string&e){
   if(!live(e)||!house_data_||!house_sources_||!house_root_||tree_!=&old||&old==house_tree_)
     return fail(e,"House audio source retirement receiver/order differs");
@@ -218,7 +234,7 @@ bool PodunkSceneAudio::retire_previous_scene(FieldNodeTreeRuntime&old,std::strin
     return fail(e,"House audio previous native voice still owns callbacks/playback before actual deletion");
   // These are the only retained callbacks capturing the old scene source.
   host_.listeners={};host_.area_bus={};
-  data_=house_data_;ir_=house_ir_;tree_=house_tree_;house_data_=nullptr;house_tree_=nullptr;house_ir_={};
+  data_=house_data_;ir_=house_ir_;tree_=house_tree_;house_data_=nullptr;house_tree_=nullptr;house_ir_={};house_voice_objects_.clear();
   e.clear();return true;
 }
 const FieldSceneAudioData*PodunkSceneAudio::source_data(FieldObjectId id)const{
@@ -365,7 +381,9 @@ bool PodunkSceneAudio::construct(FieldObjectId id, const FieldNodeDescriptor &n,
   if (!live(e) || !source || !source->node(n.id) || !owns(n) || !same(identity, source->identity()) || owns(id) ||
       !registry_->object_exists(id) || registry_->tree_owner(id).get() != tree)
     return fail(e, "Scene audio native allocated/source constructor mismatch");
-  return construct_voice(id,*source->node(n.id),e,tree,source);
+  if(!construct_voice(id,*source->node(n.id),e,tree,source))return false;
+  if(source==house_data_)house_voice_objects_.insert(id);
+  return true;
 }
 bool PodunkSceneAudio::construct_voice(FieldObjectId id,const FieldSceneAudioNode&source,std::string&e,FieldNodeTreeRuntime*tree,const FieldSceneAudioData*data){
   const auto *s=&source;
@@ -1000,7 +1018,7 @@ bool PodunkSceneAudio::shutdown(std::string &e) {
   }
   if (channel_owner == this)
     channel_owner = nullptr;
-  data_ = nullptr;house_data_=nullptr;house_tree_=nullptr;house_ir_={};
+  data_ = nullptr;house_data_=nullptr;house_tree_=nullptr;house_ir_={};house_voice_objects_.clear();
   house_sources_=nullptr;house_root_=nullptr;house_spatial_data_=nullptr;house_spatial_tree_=nullptr;
   named_ = nullptr;
   tree_ = nullptr;

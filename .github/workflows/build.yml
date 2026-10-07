@@ -229,6 +229,7 @@ jobs:
         run: |
           python tools/restore_audio.py
           python tools/podunk_bundle.py restore --logs build/cloud-house-return/audio
+          python tools/player_named_sfx.py restore
       - name: Generate House Restore and its dependent binary resource closure
         run: python tools/house_return_source_build.py
       - name: Recheck the readonly source pin

@@ -1089,7 +1089,7 @@ bool write_record_slot(uint32_t slot,std::string&error){
     const auto metadata=slot_metadata(snapshot);if(!save_menu.acknowledge_save(true,&metadata,error))return false;
     std::string preference_error;remember_slot(slot,preference_error);error=preference_error;return true;
 }
-void initialize_audio(){audio_status.clear();if(!audio_player.initialize(resource_path(ResourceRole::Audio).c_str(),"romfs:/",audio_status))audio_status="Audio unavailable: "+audio_status;}
+void initialize_audio(){audio_status.clear();if(!audio_player.initialize(resource_path(ResourceRole::Audio).c_str(),"romfs:/",audio_status))audio_status="Audio unavailable: "+audio_status;else if(!audio_player.audible())audio_status="Silent audio output: DSP unavailable; playback timing remains active";}
 bool open_continue(std::string&error,LoadingScope* parent=nullptr){
     cancel_battle_prewarm();
     std::unique_ptr<LoadingScope> owned;

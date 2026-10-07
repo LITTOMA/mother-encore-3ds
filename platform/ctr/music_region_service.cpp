@@ -46,11 +46,11 @@ const upstream::MusicRegionData*MusicRegionService::content()const{return state_
 bool MusicRegionService::begin_prepare(const upstream::MusicRegionData&data,const char*bank,const char*root,uint32_t capacity,const AudioPlayer&owner,std::string&e){
  if(state_)return fail(e,"Music region service already prepared; preserve the live owner");
  const auto snapshot=owner.observe_music();
- if(!snapshot.available)return fail(e,"Music region service unavailable: existing NDSP owner is not initialized");
+ if(!owner.device().available())return fail(e,"Music region service unavailable: existing audio device is not initialized");
  if(!data.valid())return fail(e,"Music region preparation needs actual loaded source data");
  auto candidate=std::make_unique<State>();candidate->data=data;
  if(!candidate->controller.initialize(candidate->data,capacity,e)||
-    !candidate->player.begin_prepare(bank,root,candidate->data,capacity,snapshot.available,snapshot.master_db,e))return false;
+    !candidate->player.begin_prepare(bank,root,candidate->data,capacity,owner.device(),snapshot.master_db,e))return false;
  state_=std::move(candidate);phase_=MusicRegionServicePhase::Preparing;e.clear();return true;
 }
 uint64_t MusicRegionService::prepared_pcm_bytes()const{return state_?state_->player.prepared_pcm_bytes():0;}

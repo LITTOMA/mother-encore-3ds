@@ -32,7 +32,7 @@ bool PodunkAudioServer::create(const AudioServerData &d, FieldGlobalRegistry &r,
       d.identity().upstream_commit != r.data()->identity().upstream_commit ||
       s.registry() != &r || !a.available())
     return fail(e,
-                "AudioServer same Registry/signals/initialized NDSP required");
+                "AudioServer same Registry/signals/initialized audio device required");
   auto owned = std::make_unique<PodunkAudioServer>();
   owned->data_ = &d;
   owned->registry_ = &r;
@@ -126,13 +126,19 @@ bool PodunkAudioServer::remove(FieldObjectId id, std::string &e) {
 bool PodunkAudioServer::pump(std::string &e) {
   if (!live(e) || pumping_)
     return fail(e, "Shared AudioServer mix reentry/backend rejected");
+  // This is a bounded output-queue refill, independent of SceneTree delta.
+  // Each source callback consumes at most one free PCM block; full queues do
+  // no work. Natural finished signals remain in native internal processing.
+  audio_->device().pump();
   pumping_ = true;
-  for (const auto &c : callbacks_) {
-    PodunkNativeAudioCallback actual{c.first.function, c.first.userdata};
-    if (!callback_valid(c.second, actual, e) ||
-        !actual.function(actual.userdata, e)) {
-      pumping_ = false;
-      return false;
+  for (size_t refill = 0; refill < AudioDevice::queue_capacity; ++refill) {
+    for (const auto &c : callbacks_) {
+      PodunkNativeAudioCallback actual{c.first.function, c.first.userdata};
+      if (!callback_valid(c.second, actual, e) ||
+          !actual.function(actual.userdata, e)) {
+        pumping_ = false;
+        return false;
+      }
     }
   }
   pumping_ = false;

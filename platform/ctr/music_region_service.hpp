@@ -12,6 +12,7 @@ struct MusicSourcePlayer {
 enum class MusicRegionServicePhase:uint8_t {Dormant,Preparing,Prepared,Active,Draining};
 // App-lifetime service. It stays Dormant until the selected scene explicitly
 // prepares its source-owned music; title metadata loading cannot start voices.
+// Preparation borrows the same AudioPlayer device; audible output is optional.
 // The scene factory owns real source-ordered Area callbacks and commit epochs.
 class MusicRegionService final {
 public:

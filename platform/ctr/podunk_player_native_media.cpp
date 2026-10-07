@@ -134,6 +134,8 @@ bool PodunkPlayerNativeMedia::prepare(
   return true;
 }
 bool PodunkPlayerNativeMedia::live(std::string &e) const {
+  if (audio_ && audio_->available())
+    audio_->device().pump();
   return data_ && data_->valid() && data_->ir_sha256() == ir_ && resources_ &&
                  resources_->registry() == registry_ && registry_ &&
                  !registry_->poisoned() && tree_ &&
@@ -596,6 +598,8 @@ bool PodunkPlayerNativeMedia::stream(uint32_t source, FieldObjectId &out,
   return resources_->construct_audio(source, out, e);
 }
 bool PodunkPlayerNativeMedia::queued(const Voice &v) const {
+  if (audio_ && audio_->available())
+    audio_->device().pump();
   for (const auto &w : v.waves)
     if (w.status == NDSP_WBUF_QUEUED || w.status == NDSP_WBUF_PLAYING)
       return true;
@@ -606,17 +610,20 @@ bool PodunkPlayerNativeMedia::reserve(Voice &v, std::string &e) {
     return true;
   for (size_t i = 0; i < leases_.size(); ++i)
     if (!leases_[i]) {
+      int channel = -1;
+      if (!audio_->device().lease(this, v.state.object, channel, e))
+        return false;
       leases_[i] = v.state.object;
-      v.channel = int(24 + i);
-      ndspChnReset(v.channel);
-      ndspChnSetInterp(v.channel, NDSP_INTERP_POLYPHASE);
-      ndspChnSetFormat(v.channel, NDSP_FORMAT_STEREO_PCM16);
+      v.channel = channel;
+      audio_->device().reset(v.channel);
+      audio_->device().interp(v.channel, NDSP_INTERP_POLYPHASE);
+      audio_->device().format(v.channel, NDSP_FORMAT_STEREO_PCM16);
       float gain[12]{};
       gain[0] = gain[1] = 1;
-      ndspChnSetMix(v.channel, gain);
+      audio_->device().mix(v.channel, gain);
       return true;
     }
-  return fail(e, "Player native DSP channels 24/25 both occupied");
+  return fail(e, "Player native audio two voice leases occupied");
 }
 bool PodunkPlayerNativeMedia::read(Voice &v, int16_t *out, uint32_t amount,
                                    uint32_t &got, std::string &e) {
@@ -666,10 +673,11 @@ bool PodunkPlayerNativeMedia::queue(Voice &v, size_t slot,
   w.data_pcm16 = target;
   w.nsamples = count;
   w.looping = false;
-  if (R_FAILED(DSP_FlushDataCache(target, count * 2 * sizeof(int16_t))))
+  if (R_FAILED(audio_->device().flush(target, count * 2 * sizeof(int16_t))))
     return fail(e, "Player actual DSP cache flush failed");
-  ndspChnSetRate(v.channel, float(v.binding.rate) * v.state.pitch);
-  ndspChnWaveBufAdd(v.channel, &w);
+  audio_->device().rate(v.channel, float(v.binding.rate) * v.state.pitch);
+  if (R_FAILED(audio_->device().add(v.channel, &w)))
+    return fail(e, "Player actual audio device wave queue failed");
   return true;
 }
 bool PodunkPlayerNativeMedia::fade(Voice &v, uint32_t count, bool replacement,
@@ -793,7 +801,7 @@ bool PodunkPlayerNativeMedia::audio_paused(FieldObjectId id, bool paused,
     v->state.paused = paused;
     v->state.paused_fade = paused;
     if (!paused && v->channel >= 0)
-      ndspChnSetPaused(v->channel, false);
+      audio_->device().paused(v->channel, false);
   }
   return true;
 }
@@ -921,7 +929,7 @@ bool PodunkPlayerNativeMedia::audio_mix(FieldObjectId id, std::string &e) {
   // Pause only once the source short ramp has actually drained. Pausing queued
   // earlier audio here would suppress the ramp rather than produce it.
   if (v->state.paused && !queued(*v) && !v->tail_frames && v->channel >= 0)
-    ndspChnSetPaused(v->channel, true);
+    audio_->device().paused(v->channel, true);
   return true;
 }
 bool PodunkPlayerNativeMedia::tree_pause(bool paused, std::string &e) {
@@ -1008,7 +1016,11 @@ bool PodunkPlayerNativeMedia::phase(FieldObjectId id, FieldTreePhase phase,
 }
 void PodunkPlayerNativeMedia::free_voice(Voice &v) {
   if (v.channel >= 0 && audio_ && audio_->available())
-    ndspChnWaveBufClear(v.channel);
+    audio_->device().clear(v.channel);
+  if (v.channel >= 0 && audio_) {
+    std::string error;
+    audio_->device().release(this, v.state.object, v.channel, error);
+  }
   for (auto &id : leases_)
     if (id == v.state.object)
       id = 0;

@@ -9,7 +9,6 @@ bool reject(std::string &e, const char *s) {
   e = s;
   return false;
 }
-int hardware(size_t lease) { return int(20 + lease); }
 } // namespace
 bool FieldDialogueAudioPlayer::initialize(AudioPlayer &owner, BusGain bus,
                                           std::string &e) {
@@ -26,6 +25,8 @@ bool FieldDialogueAudioPlayer::initialize(AudioPlayer &owner, BusGain bus,
   return true;
 }
 bool FieldDialogueAudioPlayer::live(std::string &e) const {
+  if (owner_ && owner_->available())
+    owner_->device().pump();
   return owner_ && owner_->available() && owner_->checked_bank() == bank_ &&
                  bank_
              ? true
@@ -142,13 +143,16 @@ bool FieldDialogueAudioPlayer::reserve(upstream::FieldObjectId id,
     return true;
   for (size_t i = 0; i < leases_.size(); ++i)
     if (!leases_[i]) {
+      int channel = -1;
+      if (!owner_->device().lease(this, id, channel, e))
+        return false;
       leases_[i] = id;
-      v->channel = hardware(i);
-      ndspChnReset(v->channel);
+      v->channel = channel;
+      owner_->device().reset(v->channel);
       float volumes[12]{};
       volumes[0] = volumes[1] = 1;
-      ndspChnSetMix(v->channel, volumes);
-      ndspChnSetInterp(v->channel, NDSP_INTERP_POLYPHASE);
+      owner_->device().mix(v->channel, volumes);
+      owner_->device().interp(v->channel, NDSP_INTERP_POLYPHASE);
       return true;
     }
   return reject(e, "Dialogue hardware capacity exceeded: both independent "
@@ -227,9 +231,9 @@ bool FieldDialogueAudioPlayer::start(upstream::FieldObjectId id, double seconds,
   v->decoder_playing = true;
   v->pitch = pitch;
   v->paused = false;
-  ndspChnSetPaused(v->channel, false);
-  ndspChnSetRate(v->channel, float(v->asset.sample_rate) * pitch);
-  ndspChnSetFormat(v->channel, v->asset.channels == 2 ? NDSP_FORMAT_STEREO_PCM16
+  owner_->device().paused(v->channel, false);
+  owner_->device().rate(v->channel, float(v->asset.sample_rate) * pitch);
+  owner_->device().format(v->channel, v->asset.channels == 2 ? NDSP_FORMAT_STEREO_PCM16
                                                       : NDSP_FORMAT_MONO_PCM16);
   return true;
 }
@@ -250,12 +254,14 @@ bool FieldDialogueAudioPlayer::pause(upstream::FieldObjectId id, bool paused_,
     return false;
   v->paused = paused_;
   if (v->channel >= 0)
-    ndspChnSetPaused(v->channel, false);
+    owner_->device().paused(v->channel, false);
   // Paused fade is invoked by the actual native mixer, and belongs to this
   // audio block. The outer frame pump never submits pending source fades.
   return paused_ ? pump(*v, e) : true;
 }
 bool FieldDialogueAudioPlayer::queued(const Voice &v) const {
+  if (owner_ && owner_->available())
+    owner_->device().pump();
   for (const auto &w : v.waves)
     if (w.status == NDSP_WBUF_QUEUED || w.status == NDSP_WBUF_PLAYING)
       return true;
@@ -331,14 +337,16 @@ bool FieldDialogueAudioPlayer::queue(Voice &v, ndspWaveBuf &wave, size_t slot,
   wave.data_pcm16 = v.samples + slot * buffer_frames * 2;
   wave.nsamples = frames;
   wave.looping = false;
-  auto result = DSP_FlushDataCache(wave.data_pcm16,
+  auto result = owner_->device().flush(wave.data_pcm16,
                                    frames * v.asset.channels * sizeof(int16_t));
   if (R_FAILED(result))
     return reject(e, "Dialogue native DSP cache flush failed");
-  ndspChnWaveBufAdd(v.channel, &wave);
+  if (R_FAILED(owner_->device().add(v.channel, &wave)))
+    return reject(e, "Dialogue native audio device wave queue failed");
   return true;
 }
 bool FieldDialogueAudioPlayer::pump(Voice &v, std::string &e) {
+  owner_->device().pump();
   if (v.channel < 0)
     return true;
   for (size_t i = 0; i < v.waves.size(); ++i) {
@@ -378,7 +386,7 @@ bool FieldDialogueAudioPlayer::mix(upstream::FieldObjectId id, float from,
     return pump(*v, e);
   if (!reserve(id, e))
     return false;
-  ndspChnSetRate(v->channel, float(v->asset.sample_rate) * pitch);
+  owner_->device().rate(v->channel, float(v->asset.sample_rate) * pitch);
   float previous = from;
   for (size_t i = 0; i < v->waves.size(); ++i) {
     auto &w = v->waves[i];
@@ -409,7 +417,9 @@ bool FieldDialogueAudioPlayer::mix(upstream::FieldObjectId id, float from,
 void FieldDialogueAudioPlayer::give_back(upstream::FieldObjectId id, Voice &v) {
   if (v.channel < 0)
     return;
-  ndspChnWaveBufClear(v.channel);
+  owner_->device().clear(v.channel);
+  std::string error;
+  owner_->device().release(this, id, v.channel, error);
   for (auto &lease : leases_)
     if (lease == id)
       lease = 0;

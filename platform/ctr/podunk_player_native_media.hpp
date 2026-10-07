@@ -46,8 +46,8 @@ struct PodunkPlayerAudioState {
   float volume = 0, mix_volume = 0, pitch = 1;
   std::string bus;
 };
-// One live Player media owner reserves NDSP 24/25 exclusively. It borrows the
-// existing initialized DSP service and real source Resource payloads. It never
+// One live Player media owner leases at most two shared audio channels. It borrows the
+// existing initialized audio device and real source Resource payloads. It never
 // initializes DSP, owns another animation/player clock or creates a Node.
 class PodunkPlayerNativeMedia {
 public:

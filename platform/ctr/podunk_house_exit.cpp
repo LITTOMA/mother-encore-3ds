@@ -1613,7 +1613,7 @@ bool PodunkHouseExit::fade_in_done(std::string &e){return state_->door.fade_in_d
 bool PodunkHouseExit::deferred_commit(std::string &e){return state_->door.deferred_commit(e);}
 bool PodunkHouseExit::tree_changed(std::string &e){return state_->door.tree_changed(e);}
 bool PodunkHouseExit::fade_out_mostly_done(std::string &e){return state_->door.fade_out_mostly_done(e);}
-bool PodunkHouseExit::door_idle(std::string &e){return state_->door.idle_frame(e);}
+bool PodunkHouseExit::door_idle(std::string &e){return state_->audio_server->pump(e)&&state_->door.idle_frame(e);}
 bool PodunkHouseExit::physics_frame(uint64_t epoch,float dt,bool paused,std::string &e){
   state_->tree_paused=paused;
   return state_->continuation.named_sfx()->process(true,paused,e)&&state_->player_camera.begin_frame(epoch,paused,e)&&state_->loop.physics_frame(epoch,dt,paused,e);
@@ -1626,7 +1626,7 @@ bool PodunkHouseExit::idle_frame(uint64_t epoch,float dt,bool paused,bool update
   // the tail here keeps any waiter created during this traversal for next frame.
   auto waiters=std::move(s.camera_idle_waiters);s.camera_idle_waiters.clear();
   for(auto &row:waiters)if(!row.second()){e=s.consumers.runtime_instances().camera_area->error();return s.fail(e);}
-  return s.continuation.named_sfx()->process(false,paused,e)&&s.loop.idle_frame(epoch,dt,paused,update,e);
+  return s.audio_server->pump(e)&&s.continuation.named_sfx()->process(false,paused,e)&&s.loop.idle_frame(epoch,dt,paused,update,e);
 }
 bool PodunkHouseExit::input(uint32_t kind,const PlayerInputEvent &event,bool accept,bool paused,std::string &e){return state_->loop.input(kind,event,accept,paused,e);}
 bool PodunkHouseExit::draw(uint64_t epoch,float dt,float time,std::string &e){return state_->loop.draw(epoch,dt,time,e);}

@@ -1,4 +1,5 @@
 #pragma once
+#include "audio_device.hpp"
 #include "encore/music_regions.hpp"
 #include <3ds.h>
 #include <array>
@@ -6,12 +7,13 @@
 
 namespace encore::ctr {
 enum class MusicPreparationStep:uint8_t {Progress,Ready,Failed};
-// Separate, opt-in adapter. Existing AudioPlayer owns NDSP, channels0..5 and
-// global master volume. This object uses only channels6..21 and must shut down
-// before that NDSP owner. It never initializes, exits, or reconfigures NDSP.
+// Separate, opt-in adapter. It borrows the existing AudioPlayer device and
+// global master volume and leases hardware channels from that same device.
+// It must shut down before that owner and never initializes or shuts down
+// the shared audio device.
 class MusicRegionPlayer {
 public:
- static constexpr uint32_t first_channel=6,maximum_voices=16;
+ static constexpr uint32_t maximum_voices=16;
  static constexpr uint32_t maximum_prepare_budget=65536;
  MusicRegionPlayer()=default;~MusicRegionPlayer(){shutdown();}
  MusicRegionPlayer(const MusicRegionPlayer&)=delete;
@@ -21,7 +23,7 @@ public:
  // After CRC/length validation, each step reserves at most one24KiB buffer.
  // Begin/step/cancel do no NDSP work; a loading coordinator pumps the old owner.
  bool begin_prepare(const char* bank,const char* asset_root,const upstream::MusicRegionData&,
-                    uint32_t capacity,bool ndsp_available,float existing_master_db,std::string&);
+                    uint32_t capacity,AudioDevice&,float existing_master_db,std::string&);
  MusicPreparationStep prepare_step(uint32_t byte_budget,std::string&);
  bool preparing()const{return preparing_;}
  uint64_t prepared_pcm_bytes()const{return verified_bytes_;}
@@ -37,11 +39,11 @@ private:
  struct Track{upstream::AudioAsset asset{};FILE*file=nullptr;};
  struct Voice{uint64_t generation=0;uint32_t track=0,channel=UINT32_MAX;bool active=false;
   upstream::AudioFrameCursor cursor;std::array<ndspWaveBuf,buffer_count>waves{};int16_t*samples=nullptr;};
- bool refill(uint32_t,std::string&);void stop(uint32_t);
+ bool refill(uint32_t,std::string&);bool stop(uint32_t,std::string&);
  std::vector<std::unique_ptr<upstream::AudioBank>> adopted_banks_;
  upstream::AudioBank bank_;std::array<Track,16>tracks_{};
  std::array<Voice,maximum_voices>voices_{};uint32_t capacity_=0,track_count_=0,submitted_=0;
- const upstream::MusicRegionController*owner_=nullptr;
+ const upstream::MusicRegionController*owner_=nullptr;AudioDevice*device_=nullptr;
  bool prepared_=false,preparing_=false;
  uint32_t validation_track_=0,allocation_voice_=0,validation_crc_=0xffffffffu;
  uint64_t track_bytes_=0,verified_bytes_=0,total_bytes_=0;

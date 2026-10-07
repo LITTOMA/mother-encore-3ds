@@ -113,6 +113,8 @@ PodunkSceneAudio::~PodunkSceneAudio() {
   shutdown(e);
 }
 bool PodunkSceneAudio::live(std::string &e) const {
+  if (audio_ && audio_->available())
+    audio_->device().pump();
   return ((data_ && data_->valid() && data_->ir_sha() == ir_ && channel_owner == this) ||
                   (named_ && named_->valid() && named_->ir_sha256() == ir_)) && tree_ &&
                  registry_ && audio_ && audio_->available() &&
@@ -371,6 +373,8 @@ bool PodunkSceneAudio::internal(Voice &v, bool enabled, std::string &e) {
   return true;
 }
 bool PodunkSceneAudio::queued(const Voice &v) const {
+  if (audio_ && audio_->available())
+    audio_->device().pump();
   for (const auto &w : v.waves)
     if (w.status == NDSP_WBUF_QUEUED || w.status == NDSP_WBUF_PLAYING)
       return true;
@@ -378,7 +382,7 @@ bool PodunkSceneAudio::queued(const Voice &v) const {
 }
 void PodunkSceneAudio::release_channel(Voice &v) {
   if (v.channel >= 0 && audio_ && audio_->available())
-    ndspChnWaveBufClear(v.channel);
+    audio_->device().clear(v.channel);
   if (v.channel >= 0 && audio_ && audio_->available()) {
     std::string error;
     audio_->release_native_channel(v.state.object, this, v.channel, error);
@@ -418,12 +422,12 @@ bool PodunkSceneAudio::reserve(Voice &v, std::string &e) {
   v.samples = p;
   leases_[i] = v.state.object;
   v.channel = channel;
-  ndspChnReset(v.channel);
-  ndspChnSetFormat(v.channel, NDSP_FORMAT_STEREO_PCM16);
-  ndspChnSetInterp(v.channel, NDSP_INTERP_POLYPHASE);
+  audio_->device().reset(v.channel);
+  audio_->device().format(v.channel, NDSP_FORMAT_STEREO_PCM16);
+  audio_->device().interp(v.channel, NDSP_INTERP_POLYPHASE);
   float gains[12]{};
   gains[0] = gains[1] = 1;
-  ndspChnSetMix(v.channel, gains);
+  audio_->device().mix(v.channel, gains);
   return true;
 }
 bool PodunkSceneAudio::read(Voice &v, int16_t *out, uint32_t n, uint32_t &got,
@@ -559,7 +563,7 @@ bool PodunkSceneAudio::set_paused(FieldObjectId id, bool p, std::string &e) {
     v->fade_pause = p;
     v->fade_in = !p;
     if (!p && v->channel >= 0)
-      ndspChnSetPaused(v->channel, false);
+      audio_->device().paused(v->channel, false);
   }
   return true;
 }
@@ -753,15 +757,16 @@ bool PodunkSceneAudio::mix(FieldObjectId id, std::string &e) {
     w = {};
     w.data_pcm16 = target;
     w.nsamples = count;
-    if (R_FAILED(DSP_FlushDataCache(target, count * 2 * sizeof(int16_t))))
+    if (R_FAILED(audio_->device().flush(target, count * 2 * sizeof(int16_t))))
       return fail(e, "Scene DSP cache flush failed");
-    ndspChnSetRate(v->channel, float(v->asset.sample_rate) * v->state.pitch);
-    ndspChnWaveBufAdd(v->channel, &w);
+    audio_->device().rate(v->channel, float(v->asset.sample_rate) * v->state.pitch);
+    if (R_FAILED(audio_->device().add(v->channel, &w)))
+      return fail(e, "Scene audio device queue rejected actual wave");
   }
   if (v->source->kind == 2 && !v->decoder)
     v->active = false;
   if (v->state.paused && !queued(*v) && v->tail.empty())
-    ndspChnSetPaused(v->channel, true);
+    audio_->device().paused(v->channel, true);
   if (!v->decoder && !queued(*v) && v->tail.empty() && v->pending_seek < 0 &&
       v->setplay < 0)
     release_channel(*v);

@@ -1,7 +1,7 @@
 #pragma once
 #include "encore/audio_data.hpp"
 #include "encore/world.hpp"
-#include <3ds.h>
+#include "audio_device.hpp"
 #include <array>
 #include <string>
 #include <functional>
@@ -53,23 +53,25 @@ public:
     bool stop_lane(AudioLane,std::string& error);
     bool update(double delta,std::string& error);
     // Shared native AudioStreamPlayer leases, distinct from bounded AudioLane.
-    // Same live DSP owner arbitrates channels 26..31 for real source Nodes.
+    // Same live device owner leases up to six actual hardware channels for real source Nodes.
     bool lease_native_channel(uint64_t object,const void* owner,int& channel,std::string&);
     bool release_native_channel(uint64_t object,const void* owner,int channel,std::string&);
-    bool available() const{return ready_;}
-    // Borrow only this live NDSP owner and its checked immutable bank.
+    bool available() const{return ready_&&device_.available();}
+    bool audible() const{return ready_&&device_.audible();}
+    AudioDevice& device() const{return device_;}
+    // Borrow only this live audio device owner and its checked immutable bank.
     const upstream::AudioBank* checked_bank() const{return ready_?&bank_:nullptr;}
     const std::string& asset_root() const{return asset_root_;}
     MusicObservation observe_music() const;
     // Loading cooperation only: feed existing queues and observe natural ends.
     // No elapsed game/fade time, volume mix writes, new voice or init retry.
     bool pump_streams(std::string& error);
-    Result dsp_result() const{return dsp_result_;}
+    Result dsp_result() const{return device_.init_result();}
     size_t consumed_requests() const{return consumed_;}
     void reset_scene_requests(){consumed_=0;}
     uint32_t submitted_voices() const{return submitted_;}
     uint32_t completed_voices() const{return completed_;}
-    uint32_t dropped_frames() const{return ready_?ndspGetDroppedFrames():0;}
+    uint32_t dropped_frames() const{return ready_?device_.dropped_frames():0;}
     uint32_t queued_frames() const{return queued_frames_;}
 private:
     static constexpr uint32_t lane_count=6,buffer_count=3,buffer_frames=2048;
@@ -95,8 +97,8 @@ private:
     std::array<Voice,lane_count> voices_;
     struct NativeLease {uint64_t object=0;const void* owner=nullptr;};
     std::array<NativeLease,6> native_leases_{};
-    Result dsp_result_=0;
-    bool ndsp_initialized_=false,ready_=false;
+    mutable AudioDevice device_;
+    bool ready_=false;
     uint64_t music_generation_=0;
     uint64_t music_player_identity_=0,retired_music_player_identity_=0;
     bool music_player_present_=false;

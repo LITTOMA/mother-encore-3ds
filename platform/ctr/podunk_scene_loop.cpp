@@ -42,7 +42,8 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
       !input.continuation || !input.continuation->initialized() || !input.tree ||
       input.tree->object_count() || !input.native || !input.player ||
       !input.physics || !input.map || !input.geometry || input.asset_root.empty() ||
-      !input.source_signals || !input.source_methods)
+      !input.source_signals || !input.source_methods || !input.source_method_owned ||
+      !input.allocation_observed)
     return fail(e, "Scene loop requires actual checked destination and session owners");
   attempted_ = true;
   input_ = std::move(input);
@@ -156,6 +157,7 @@ bool PodunkSceneLoop::native_allocated(FieldObjectId id,
       [this](const auto &message, auto &error) { return deferred(message, error); }, e))
     return false;
   if (input_.player->source_candidate(d.id)) return true;
+  if (!input_.allocation_observed(id, d, identity, e)) return false;
   if (!prepare_leaves(e)) return false;
   if (input_.native->owns(d)) return input_.native->construct(id, d, identity, e);
   if (d.native_class == "Timer") return timers_.construct(id, d, identity, e);
@@ -238,13 +240,12 @@ bool PodunkSceneLoop::dispatch(FieldObjectId id, const FieldNodeBinding &b,
   }
   return signal.empty() || input_.continuation->signals()->emit(id, signal, {}, e);
 }
-bool PodunkSceneLoop::attach_and_ready(std::string &e) {
+bool PodunkSceneLoop::attach_scene(std::string &e) {
   if (!constructed_ || attached_ || poisoned_)
     return fail(e, "Scene attachment precedes actual complete factory");
   auto &r = *input_.continuation->registry();
   if (!r.attach_scene(input_.tree->root(), e) ||
-      !scripts_.lifecycle().scene_ready() ||
-      !input_.native->activate_monitors(scripts_.lifecycle(), *input_.physics, e)) {
+      !scripts_.lifecycle().scene_ready()) {
     poisoned_ = true;
     return false;
   }
@@ -252,8 +253,21 @@ bool PodunkSceneLoop::attach_and_ready(std::string &e) {
   source_ready_ = true;
   e.clear(); return true;
 }
+bool PodunkSceneLoop::activate_after_player(std::string &e) {
+  if (!attached_ || !source_ready_ || monitors_ready_ || poisoned_ ||
+      !input_.player->ready_complete())
+    return fail(e, "Scene monitors precede actual persistent Player attachment/Ready");
+  const auto player=input_.player->body().object();
+  const auto *state=input_.tree->state(player);
+  if (!state || !state->alive || !state->inside || !state->ready_notified ||
+      !input_.native->activate_monitors(scripts_.lifecycle(), *input_.physics, e)) {
+    poisoned_=true; return false;
+  }
+  monitors_ready_=true;
+  e.clear(); return true;
+}
 bool PodunkSceneLoop::ready() const {
-  return attached_ && source_ready_ && !poisoned_ &&
+  return attached_ && source_ready_ && monitors_ready_ && !poisoned_ &&
          input_.player->ready_complete();
 }
 bool PodunkSceneLoop::physics_frame(uint64_t epoch, float dt, bool paused,
@@ -357,6 +371,9 @@ bool PodunkSceneLoop::deferred(const FieldDeferredMessage &m, std::string &e) {
   }
   if (input_.physics->handles_callback(m)) return input_.physics->deferred(m, e);
   if (input_.player->owns(m.object)) return input_.player->deferred(m, e);
+  // A native body can also be a scripted receiver. Route only an explicitly
+  // owned source method before its native property's dispatcher.
+  if (input_.source_method_owned(m)) return input_.source_methods(m,e);
   if (timers_.owns(m.object)) return timers_.deferred(m, e);
   if (auto *owner = mechanism(*n); owner && owner->owns(m.object))
     return owner->deferred(m, e);

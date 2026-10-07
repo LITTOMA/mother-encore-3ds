@@ -716,11 +716,19 @@ bool FieldSceneHost::configure(const FieldSceneData &d, FieldSceneConsumers c,
     g.visible = n.initial_visible;
     gates_.emplace(n.id, g);
   }
-  if (!host_.connect_switches(
-          d.area().id, [this](bool value) { switches_ = value; }, e)) {
+  e.clear();
+  return true;
+}
+bool FieldSceneHost::construct_area(uint32_t id, std::string &e) {
+  if (!data_ || poisoned_ || id != data_->area().id || gates_.count(id)) {
+    e = "AreaRoom actual source constructor missing/duplicate";
+    return false;
+  }
+  if (!host_.connect_switches(id, [this](bool value) { switches_ = value; }, e)) {
     poisoned_ = true;
     return false;
   }
+  gates_.emplace(id, Gate{});
   e.clear();
   return true;
 }

@@ -383,7 +383,8 @@ bool PodunkSceneConsumers::initialize_owners(PodunkSceneMechanismOwners owners,
     e.clear();
     return true;
   };
-  o.sprite.publish = [&s](uint32_t id, const FieldSpriteInstance &pose,
+  auto sprite_observed=o.sprite_observed;
+  o.sprite.publish = [&s,sprite_observed](uint32_t id, const FieldSpriteInstance &pose,
                           std::string &e) {
     FieldObjectId actual = 0;
     FieldCanvasAppearance native;
@@ -411,7 +412,8 @@ bool PodunkSceneConsumers::initialize_owners(PodunkSceneMechanismOwners owners,
     native.frame = pose.frame;
     native.offset = pose.offset;
     return s.input.native->sprite_publish(actual, native, e) &&
-           s.input.tree->set_visible(actual, pose.visible, e);
+           s.input.tree->set_visible(actual, pose.visible, e) &&
+           (!sprite_observed || sprite_observed(id,pose,e));
   };
   o.sprite.sprite_changed = [&s](uint32_t id, const FieldSpriteDescriptor &,
                                  const FieldSpriteInstance &, std::string &e) {

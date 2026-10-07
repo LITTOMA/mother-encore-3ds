@@ -15,6 +15,19 @@ class PodunkPlayerHost;
 class PodunkConcretePlayerEffectOwners;
 class PodunkPlayerCanvasForeign;
 class PodunkSceneAnimatedLeaves;
+// Actual native Control leaves join the existing Canvas order; their source
+// owner executes construction and draws its own real GPU assets. No separate
+// overlay pass or frame clock is introduced.
+class PodunkSceneCanvasLeaf {
+public:
+  virtual ~PodunkSceneCanvasLeaf() = default;
+  virtual const upstream::FieldNodeTreeRuntime *canvas_tree() const = 0;
+  virtual const upstream::FieldGlobalRegistry *canvas_registry() const = 0;
+  virtual bool owns_drawable(upstream::FieldObjectId) const = 0;
+  virtual bool draw_leaf(const upstream::FieldCanvasOrderSlot &,
+                        const upstream::FieldTransform &, bool pixel_snap,
+                        std::string &) = 0;
+};
 struct PodunkSceneMaterialState {
   upstream::FieldObjectId material = 0;
   std::string shader_source;
@@ -58,6 +71,7 @@ public:
             std::string &);
   bool finish_factory(std::string &);
   bool bind_animated_leaves(PodunkSceneAnimatedLeaves &, std::string &);
+  bool bind_canvas_leaf(PodunkSceneCanvasLeaf &, std::string &);
   bool bind_foreign(PodunkPlayerHost &,
                     const upstream::PlayerInitializationData &,
                     PodunkConcretePlayerEffectOwners &,
@@ -124,6 +138,7 @@ private:
   std::unique_ptr<FieldCanvasArtRenderer> art_gpu_;
   std::unique_ptr<PodunkPlayerCanvasForeign> foreign_;
   PodunkSceneAnimatedLeaves *animated_leaves_ = nullptr;
+  std::vector<PodunkSceneCanvasLeaf *> canvas_leaves_;
   upstream::FieldCanvasArtRuntime canvas_;
   std::map<upstream::FieldObjectId, Instance> instances_;
   std::map<uint32_t, upstream::FieldObjectId> source_objects_;

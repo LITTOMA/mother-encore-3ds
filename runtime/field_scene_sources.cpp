@@ -127,6 +127,15 @@ bool FieldSceneSources::load(const PodunkBundleData &bundle,
   if (!read_plain(bundle, PodunkPackRole::NativeTimers, root, timers_, e)) {
     failed_ = true; e = "Scene NativeTimers source: " + e; return false;
   }
+  std::vector<uint8_t> audio_bytes;
+  if (!bundle.read(PodunkPackRole::SceneNativeAudio, root, audio_bytes, e) ||
+      !audio_.load(audio_bytes.data(), audio_bytes.size(), tree_, e)) {
+    failed_ = true; e = "Scene native Audio source: " + e; return false;
+  }
+  if (!read_identity(bundle, PodunkPackRole::SceneSignalCallbacks, root,
+                     signals_, e)) {
+    failed_ = true; e = "Scene signal callback source: " + e; return false;
+  }
   const auto expected = bundle.identity();
   auto same = [&](const FieldIdentity &id) {
     return id.scene_id == expected.scene_id &&
@@ -135,7 +144,8 @@ bool FieldSceneSources::load(const PodunkBundleData &bundle,
   };
   if (!same(map_.identity()) || !same(geometry_.identity()) ||
       !same(lifecycle_.identity()) || !same(tree_.identity()) ||
-      !same(canvas_.identity()) || map_.source_scene() != bundle.source_scene() ||
+      !same(canvas_.identity()) || !same(audio_.identity()) ||
+      !same(signals_.identity()) || map_.source_scene() != bundle.source_scene() ||
       geometry_.source_scene() != bundle.source_scene() ||
       lifecycle_.source_scene() != bundle.source_scene() ||
       tree_.source_scene() != bundle.source_scene() ||

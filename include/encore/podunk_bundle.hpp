@@ -83,6 +83,8 @@ enum class PodunkPackRole : uint32_t {
   Shop = 75,
   HouseExitDoor = 76,
   HouseStatusEffects = 77,
+  SceneNativeAudio = 78,
+  SceneSignalCallbacks = 79,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

@@ -408,3 +408,10 @@ cookies.json
 !/reports/field-dead-bush/
 /reports/field-dead-bush/*
 !/reports/field-dead-bush/source-review.json
+
+!/reports/field-scene-audio/
+/reports/field-scene-audio/*
+!/reports/field-scene-audio/source-review.json
+!/reports/field-scene-signal-callbacks/
+/reports/field-scene-signal-callbacks/*
+!/reports/field-scene-signal-callbacks/source-review.json

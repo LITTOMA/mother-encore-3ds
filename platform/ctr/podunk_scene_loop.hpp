@@ -43,6 +43,14 @@ struct PodunkSceneLoopInput {
   std::vector<PodunkSceneNativeMechanism *> mechanisms;
   upstream::FieldObjectSignals::DeclarationQuery source_signals;
   upstream::FieldGlobalRegistry::NodeDispatch source_methods;
+  std::function<bool(const upstream::FieldDeferredMessage &)> source_method_owned;
+  // Source _init can address already allocated parents before the final tree
+  // source index exists. Observers borrow this actual allocation, never create
+  // a replacement ID or grant Ready.
+  std::function<bool(upstream::FieldObjectId,
+                     const upstream::FieldNodeDescriptor &,
+                     const upstream::FieldIdentity &, std::string &)>
+      allocation_observed;
   std::string asset_root;
 };
 // The actual frame/factory owner for a destination. It allocates through the
@@ -52,7 +60,10 @@ struct PodunkSceneLoopInput {
 class PodunkSceneLoop {
 public:
   bool construct(PodunkSceneLoopInput, std::string &);
-  bool attach_and_ready(std::string &);
+  bool attach_scene(std::string &);
+  // SceneTransition adds its persistent Player after the Area's Ready body.
+  // Call only after that actual attachment/Player Ready boundary.
+  bool activate_after_player(std::string &);
   bool physics_frame(uint64_t epoch, float delta, bool paused, std::string &);
   bool idle_frame(uint64_t epoch, float delta, bool paused,
                   bool update_pending, std::string &);
@@ -93,7 +104,8 @@ private:
   float idle_delta_ = 0, physics_delta_ = 0;
   uint64_t physics_epoch_ = 0, idle_epoch_ = 0;
   bool attempted_ = false, constructed_ = false, attached_ = false,
-       leaves_prepared_ = false, source_ready_ = false, paused_ = false, update_pending_ = false,
+       leaves_prepared_ = false, source_ready_ = false, monitors_ready_ = false,
+       paused_ = false, update_pending_ = false,
        physics_sampled_ = false, poisoned_ = false;
 };
 } // namespace encore::ctr

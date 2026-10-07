@@ -102,6 +102,11 @@ bool AudioPlayer::source_asset(std::string_view source,upstream::AudioAsset& out
     if(matches!=1){e="Scene audio source absent or ambiguous";return false;}
     e.clear();return true;
 }
+bool AudioPlayer::checked_asset(uint32_t id,upstream::AudioAsset& out,std::string& e)const{
+    if(!ready_){e="Audio checked metadata requires live DSP owner";return false;}
+    for(uint32_t i=0;i<asset_count();++i)if(asset(i).stable_id==id){out=asset(i);e.clear();return true;}
+    e="Audio explicit asset ID absent";return false;
+}
 void AudioPlayer::reset_scene(){
     // The immutable checked bank and open streams belong to the application,
     // not a gameplay scene. Stop NDSP before clearing its wave-buffer objects.

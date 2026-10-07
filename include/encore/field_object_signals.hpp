@@ -15,7 +15,9 @@ class FieldObjectSignals {
 public:
   using DeclarationQuery = std::function<bool(
       FieldObjectId, std::string_view, uint32_t &arguments, std::string &)>;
+  using EmissionQuery=std::function<bool(FieldObjectId,std::string_view,size_t,std::string&)>;
   bool initialize(FieldGlobalRegistry &, DeclarationQuery, std::string &);
+  bool bind_emission_policy(EmissionQuery,std::string&);
   bool connect(FieldObjectId, std::string_view, FieldObjectId, std::string_view,
                uint32_t flags, std::vector<FieldDeferredValue> binds,
                std::string &);
@@ -53,6 +55,7 @@ private:
   const std::string *intern(std::string_view);
   FieldGlobalRegistry *registry_ = nullptr;
   DeclarationQuery declaration_;
+  EmissionQuery emission_;
   std::map<std::string,std::unique_ptr<std::string>> names_;
   std::map<Key,Slots> signals_;
   std::set<FieldObjectId> blocked_;

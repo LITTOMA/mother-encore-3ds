@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "31f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a",
+  "sources": {
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+    "Audio/Sound effects/Door_Short.mp3.import": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
+    "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+    "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+    "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+    "Audio/Sound effects/Laugh Small.mp3.import": "91d8169b6f20249aea1a9766b3fb383db9b1345730ac15177db3373a291b49a4",
+    "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+    "Audio/Sound effects/Shock.mp3.import": "34f9e10222fe1e0b237645308336000d84e930d0083ec176e6d7f21308068da2",
+    "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+    "Audio/Sound effects/Barrel Coffin Explode.mp3.import": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+    "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+    "Audio/Sound effects/EB/knock.wav.import": "9f23372ce5e75bff06456bad4ef95ef9dc9eb78e492e38a119c53327b0d1afc2",
+    "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+    "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6"
+  },
+  "engine": {
+    "audio_stream_player.cpp": {
+      "sha256": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+      "source": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/audio/audio_stream_player.cpp"
+    },
+    "audio_stream_player_2d.cpp": {
+      "sha256": "7ee0ab4970818682dbc85fcb0c561e84f7045a3da518b94c5d267cf6356f8de2",
+      "source": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/2d/audio_stream_player_2d.cpp"
+    },
+    "project_settings.cpp": {
+      "sha256": "0922d57c07d6d651942ba28cd736796afe363add4510d1f2fdc7802039c8a9d5",
+      "source": "https://github.com/godotengine/godot/blob/3.6.2-stable/core/project_settings.cpp"
+    }
+  },
+  "native_sha256": "2ebb7fbb524b1a6808d5d0c5d1cbbe8369390397df52becc96952a18848c3353",
+  "admission_ready": false
+}

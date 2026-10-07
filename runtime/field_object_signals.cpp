@@ -17,6 +17,10 @@ bool FieldObjectSignals::initialize(FieldGlobalRegistry &r,DeclarationQuery q,
     return fail(e,"Object signals actual ObjectDB/declaration owner absent");
   registry_=&r;declaration_=std::move(q);e.clear();return true;
 }
+bool FieldObjectSignals::bind_emission_policy(EmissionQuery q,std::string&e){
+ if(!registry_||emission_||!q)return fail(e,"Object signal emission policy unavailable/duplicate");
+ emission_=std::move(q);e.clear();return true;
+}
 bool FieldObjectSignals::declaration(FieldObjectId id,std::string_view signal,
                                      uint32_t &arity,std::string &e) const {
   if(!registry_ || registry_->poisoned() || !registry_->object_exists(id) ||
@@ -80,7 +84,7 @@ bool FieldObjectSignals::emit(FieldObjectId id,std::string_view signal,
                               std::string &e) {
   uint32_t arity=0;
   if(!declaration(id,signal,arity,e))return false;
-  if(args.size()!=arity)return fail(e,"Object signal arguments differ from source declaration");
+  if(args.size()!=arity&&(!emission_||!emission_(id,signal,args.size(),e)))return fail(e,"Object signal arguments differ from source declaration/checked emission");
   if(blocked_.count(id)){e.clear();return true;}
   auto found=signals_.find({id,std::string(signal)});
   if(found==signals_.end()){e.clear();return true;}

@@ -421,7 +421,7 @@ bool PodunkSceneScripts::construct_body(const FieldSceneReady &n,
         return true;
     return fail(e, "SceneScripts Flaggable native declaration missing");
   case FieldSceneRole::AreaRoom:
-    return sources_->lifecycle().area().id == n.id ||
+    return (sources_->lifecycle().area().id == n.id && lifecycle_.construct_area(n.id,e)) ||
            fail(e, "SceneScripts actual AreaRoom body differs");
   case FieldSceneRole::DebugStart:
     return sources_->lifecycle().debug(n.profile).id == n.id ||

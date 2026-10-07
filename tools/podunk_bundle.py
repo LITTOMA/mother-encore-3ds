@@ -71,6 +71,7 @@ def checked_pack(spec):
  if not 0x454e0000<=family<=0x454effff:family=0 # original magic-only formats have no numeric family
  capability=struct.unpack_from('<I',raw,family_offset+4)[0]if family and (block or family_offset==20)else struct.unpack_from('<I',raw,20)[0]
  if raw[:8]==b'ENCFID01':capability=struct.unpack_from('<I',raw,24)[0]
+ if raw[:8]==b'ENCSIG01':capability=struct.unpack_from('<I',raw,12)[0]
  require(0<capability<65536,'Capability schema '+spec['path'])
  ss=sources(d);scene=d.get('scene',d.get('source_save',d.get('owner',d.get('script',''))))
  scene=scene or read(RECIPE)['scene']
@@ -99,14 +100,27 @@ def audio_recipe():
   m=importlib.import_module('tools.'+producer)
   for a in m.audio_bindings():
    source=a['source'];assets.append(dict(stable_id=a['identity']['value'],source_path='res://'+source,source_sha256=sha(ROOT/'upstream/MOTHER-Encore'/source),import_sha256=sha(ROOT/'upstream/MOTHER-Encore'/(source+'.import')),pcm_path=a['pcm'],gain_db=a['gain_db']))
- require(len(assets)==6 and len({a['stable_id']for a in assets})==6,'Scene effects source coverage')
+ source='Audio/Sound effects/EB/knock.wav'
+ inv=read(ROOT/'compatibility/upstream-inventory.json')['files'];require(inv[source]['sha256']==sha(ROOT/'upstream/MOTHER-Encore'/source),'Scene knock source changed')
+ # The native Door source sound is distinct from audioManager global voices.
+ sid=int.from_bytes(hashlib.sha256(('native-audio:'+source).encode()).digest()[:4],'little')
+ assets.append(dict(stable_id=sid,source_path='res://'+source,source_sha256=sha(ROOT/'upstream/MOTHER-Encore'/source),import_sha256=sha(ROOT/'upstream/MOTHER-Encore'/(source+'.import')),pcm_path='sound/scene/knock.pcm',gain_db=0))
+ require(len(assets)==7 and len({a['stable_id']for a in assets})==7,'Scene effects source coverage')
  return dict(schema=1,upstream_commit=PIN,bus_source=base['bus_source'],bus_sha256=base['bus_sha256'],manager_source=base['manager_source'],manager_sha256=base['manager_sha256'],assets=assets)
 def convert_audio(ffmpeg,ffprobe,logs):
  require(logs,"Explicit private audio log directory required")
  import tempfile
  from tools import audio_asset as audio
- recipe=audio_recipe();write(AUDIO_RECIPE,recipe)
+ recipe=audio_recipe();reused={};old_recipe=read(AUDIO_RECIPE)if AUDIO_RECIPE.exists()else None;old_rc=read(AUDIO_RECEIPT)if AUDIO_RECEIPT.exists()else None
+ if old_recipe is not None and old_rc is not None:
+  require(old_rc['commit']==PIN and old_rc['recipe_sha256']==sha(AUDIO_RECIPE),'Old scene audio receipt changed')
+  require(old_recipe['assets']==recipe['assets'][:len(old_recipe['assets'])],'Unrelated scene audio source change during extension')
+  for spec,proof in zip(old_recipe['assets'],old_rc['assets']):
+   payload=ROOT/'romfs'/spec['pcm_path'];require(sha(payload)==proof['pcm_sha256']and payload.stat().st_size==proof['pcm_bytes'],'Old scene audio PCM changed before extension')
+   reused[spec['stable_id']]=(dict(assets=[proof],ffmpeg_sha256=old_rc['ffmpeg_sha256'],ffmpeg_version=old_rc['ffmpeg_version']),payload.read_bytes())
+ write(AUDIO_RECIPE,recipe)
  def one(a):
+  if a['stable_id']in reused:return reused[a['stable_id']]
   with tempfile.TemporaryDirectory(prefix='encore-source-scene-audio-')as tmp:
    r=dict(recipe,assets=[a]);v=audio.compile_assets(r,ROOT/'upstream/MOTHER-Encore',Path(tmp),ffmpeg,ffprobe);return v,(Path(tmp)/a['pcm_path']).read_bytes()
  with concurrent.futures.ThreadPoolExecutor(max_workers=4)as pool:result=list(pool.map(one,recipe['assets']))
@@ -140,7 +154,7 @@ def checked_audio():
  from tools import audio_asset as audio
  recipe=read(AUDIO_RECIPE);require(recipe==audio_recipe(),'Scene audio source recipe changed');rc=read(AUDIO_RECEIPT);require(rc['commit']==PIN and rc['recipe_sha256']==sha(AUDIO_RECIPE)and rc['workers']>=4 and len(rc['assets'])==len(recipe['assets']),'Scene audio conversion receipt')
  bank=(ROOT/'romfs'/AUDIO_BANK).read_bytes();require(len(bank)==rc['bank']['bytes']and hashlib.sha256(bank).hexdigest()==rc['bank']['sha256'],'Scene effects bank fingerprint')
- parsed=audio.parse_bank(bank);require(len(parsed['assets'])==6,'Scene effects bank count');out={AUDIO_BANK:bank}
+ parsed=audio.parse_bank(bank);require(len(parsed['assets'])==len(recipe['assets']),'Scene effects bank count');out={AUDIO_BANK:bank}
  for spec,proof,record in zip(recipe['assets'],rc['assets'],parsed['assets']):
   for k in ['stable_id','source_path','source_sha256','import_sha256','pcm_path','gain_db']:require(spec[k]==proof[k],'Scene audio source identity')
   for k,v in record.items():require(proof[k]==v,'Scene audio bank record')
@@ -154,7 +168,7 @@ def checked_audio():
  return out
 
 def derive():
- recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==77,'Bundle recipe scope')
+ recipe=read(RECIPE);require(recipe['schema']==1 and recipe['commit']==PIN and recipe['admission_ready']is False and len(recipe['packs'])==79,'Bundle recipe scope')
  with concurrent.futures.ThreadPoolExecutor(max_workers=4)as pool:rows=list(pool.map(one_pack,recipe['packs']))
  packs=[];assets=checked_audio();inputs={RECIPE.relative_to(ROOT).as_posix():sha(RECIPE)};all_sources={}
  for entry,staged,d in rows:

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "53c0b7475a88e94b900517a82b4f81774b8314d69acdd8d1ff64cfcbbfff554c",
+  "ir_sha256": "4257db99578b510ca74870d36dff0f1651b12a78d3841fbbb2c773e0dc696ee4",
   "sources": {
     "Graphics/Battle BGS/BG_2.mbg": "57f7957e5261b5dcf21647aba98a5b9c7955d006805ab1e8a87a4468ce2a2248",
     "Graphics/Battle BGS/BG_3.mbg": "f1f3d032390418cbd29c708c2779640ca8fcf67a7d076d907b7fe7d61774cd77",
@@ -1635,10 +1635,12 @@
     "Graphics/UI/Inventory/characters/key_hl.png.import": "95e6729b4c388a82b49e52b6c53b6f75d6aa9476960f1580170a6f1f0579f036",
     "Graphics/UI/Inventory/stats_menu.png.import": "13cda54b247e509fc82177e8a43138aa3bf4af7d7187285bfc470957501b5001",
     "Audio/Sound effects/Door_Short.mp3.import": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
-    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31"
+    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31",
+    "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
+    "Scripts/Main/Switches/TwoStatesSwitch.gd": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
   },
   "inputs": {
-    "content/podunk-bundle-recipe.json": "eed3de391cc442ed1632f81d803238b41893b9a1dab7cdc702e3e605c97c8aeb",
+    "content/podunk-bundle-recipe.json": "3dd2349d52e7e61afcf622fd08747e841c10a412f1a418578b9e761e54b6aaa4",
     "content/field-battle-bg-resources.json": "0dd492851fe778764abdfa7ee5623d76e3b10f995c2f16f744a362e20d8909ee",
     "tools/field_battle_bg_resources.py": "e763b314a9c4cb497d9dbf2b1c29f9b652ae9114475da82411db6041862e5753",
     "content/native-field-character-load.json": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
@@ -1793,6 +1795,10 @@
     "tools/house_exit_door.py": "4522e17a955181e002af901336073286fc7bb44daa1624728cb5ea0907c20c70",
     "content/native-house-status-effects.json": "1fb5b61aa92236ecad7e65f8d22bd7e3316b17fe7ffe14dc0597e695ae5eff1c",
     "tools/house_status_effects.py": "39e828b3b2411fc8f1c6a858a914dce7f189ac4eac2f2f4e839fc746759b1b9e",
+    "content/podunk-scene-audio.json": "31f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a",
+    "tools/field_scene_audio.py": "bb04ee0bcd5884efc85bc054a6f7463ab9eb660cbbde80f93c248b6c186c9b80",
+    "content/native-field-scene-signal-callbacks.json": "fa6978fa75865af97d8e303f739c8a791083a620f323b9ee0ddc1945fb7cb6fa",
+    "tools/field_scene_signal_callbacks.py": "d853c10017cb0a3d9034263b26d3dab3d8781a2b91bd1e5eabd536d829150545",
     "content/podunk-scene-assets.json": "834d267b496fb653a5ed2f3cf684d2d2ee9944bb90029778060a13f8b15eed2e",
     "content/podunk-scene-map-assets.json": "f3b262436a968c0fd40d0ef9e5b9535f2fe86a5bb89f8c0d02c46a6b64089149",
     "content/native-audio.json": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910",
@@ -1800,8 +1806,8 @@
     "content/podunk-music.json": "370a40616d509094880fe46d23ed2b1a1de09110eae4620170fdfec2eb1799f2",
     "content/asset-receipts/audio/opening.json": "9d2c85d6f9f2c95a2eacd6361fca01bff41c7247c0c7db43480643f9f17f1966",
     "content/asset-receipts/audio/podunk.json": "9964fa6c001d33123cf2fffbee0501ae76d3450876bf22ed8877c2b3d7e1298a",
-    "content/podunk-bundle-audio.json": "226a2c2b134b5b71c6d21472d5ecf82125fb923ea287e06402c7986224893303",
-    "content/asset-receipts/audio/podunk-scene-effects.json": "786256e2321b4c1ccd06d634752ecc61af42e6107161b788884742c28ca90afc",
+    "content/podunk-bundle-audio.json": "c3ca0be84505f05f49f1a7bd99984fa6e729c3a12793cdb99d20a37e7e70cc52",
+    "content/asset-receipts/audio/podunk-scene-effects.json": "7a2dce9764dd4fc33ab85816b089e3b2df0d412a8c043a7c2879b3f489d0b261",
     "content/asset-receipts/graphics/objects/dead-bush/source.json": "4ae6a3f9fe77c10690bb6587fae13f59843c07a876fb8251f5b4e09b612344a8",
     "content/asset-receipts/graphics/objects/payphone/source.json": "b2144766de57d3cb3645ee892208169b5260ff6f8d3969e7b1b494c6a7a8699e",
     "content/asset-receipts/graphics/objects/vending-machine/source.json": "3032d7f7a56e2f86f5b7aae0dfdd4e987a192641bea78768d26d569e5c250aac",

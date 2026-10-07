@@ -39,6 +39,8 @@ struct PodunkSceneMechanismOwners {
   upstream::FieldMelodyBackgroundHost melody;
   upstream::FieldVendingHost vending;
   upstream::FieldSceneHostOps scene;
+  // Actual NPC AnimationTree owner observes active-state changes after publish.
+  std::function<bool(uint32_t,const upstream::FieldSpriteInstance&,std::string&)> sprite_observed;
 };
 struct PodunkSceneConsumerInput {
   const upstream::FieldSceneSources *sources = nullptr;

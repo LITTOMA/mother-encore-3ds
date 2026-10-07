@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "fa6978fa75865af97d8e303f739c8a791083a620f323b9ee0ddc1945fb7cb6fa",
+  "producer_sha256": "d853c10017cb0a3d9034263b26d3dab3d8781a2b91bd1e5eabd536d829150545",
+  "engine_sources": {
+    "gdscript_function.cpp": "fbf428dcba723ba9bee9aa6b74ed1c69ddec9dec950174bfd5d1367332c91df4",
+    "object.cpp": "7d9bb073fde7ba0c1d7b057fbefcdba292148eeb4cdd58c1c975c9e8f8f3b8c6"
+  },
+  "semantics": [
+    "Exact source callback signatures, inherited source bindings and synchronous signal bool binds.",
+    "AreaRoom declares area_left with zero arguments and emits one region_changed bool; actual Object emission forwards varargs.",
+    "MapArrows one-shot FunctionState yield resumes on the actual frame_changed signal without a second clock.",
+    "AreaRoom party member is resolved from its three actual dictionary expressions and the reviewed globalData constructor; same declaration ID is consumed by the actual party array operations."
+  ],
+  "not_implemented": [
+    "No general script VM; unsupported source callbacks reject."
+  ]
+}

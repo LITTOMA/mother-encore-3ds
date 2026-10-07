@@ -2,6 +2,8 @@
 #include "encore/field_scene_host.hpp"
 #include "encore/field_canvas_art.hpp"
 #include "encore/field_native_timer.hpp"
+#include "encore/field_scene_audio.hpp"
+#include "encore/field_scene_signal_callbacks.hpp"
 #include "encore/podunk_bundle.hpp"
 namespace encore::upstream {
 // Stable ownership of the complete scene's actual typed binary sources. Load
@@ -53,6 +55,8 @@ public:
   const FieldNodeTreeData &tree() const { return tree_; }
   const FieldCanvasArtData &canvas() const { return canvas_; }
   const FieldNativeTimerData &timers() const { return timers_; }
+  const FieldSceneAudioData &audio() const { return audio_; }
+  const FieldSceneSignalCallbacksData &signals() const { return signals_; }
 private:
   FieldData grass_;
   FieldNpcData npc_;
@@ -89,6 +93,8 @@ private:
   FieldNodeTreeData tree_;
   FieldCanvasArtData canvas_;
   FieldNativeTimerData timers_;
+  FieldSceneAudioData audio_;
+  FieldSceneSignalCallbacksData signals_;
   bool loaded_ = false, failed_ = false;
 };
 } // namespace encore::upstream

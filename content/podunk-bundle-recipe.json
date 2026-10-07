@@ -541,6 +541,20 @@
       "path": "data/house.encstatuseffects",
       "producer": "house_status_effects",
       "ir": "content/native-house-status-effects.json"
+    },
+    {
+      "role": 78,
+      "name": "SceneNativeAudio",
+      "path": "data/podunk.encnativeaudio",
+      "producer": "field_scene_audio",
+      "ir": "content/podunk-scene-audio.json"
+    },
+    {
+      "role": 79,
+      "name": "SceneSignalCallbacks",
+      "path": "data/podunk.encsignals",
+      "producer": "field_scene_signal_callbacks",
+      "ir": "content/native-field-scene-signal-callbacks.json"
     }
   ],
   "extra_inputs": [

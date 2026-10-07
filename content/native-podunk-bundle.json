@@ -10437,6 +10437,87 @@
         "Scripts/Main/Status.gd": "a48b1d17426aee22aeb6d6d965a9b87092e01659ad2238e256720073d6352943",
         "Scripts/Main/party/party_object.gd": "e2e642814c9055784e370fe7a4035549be7b06d55daaefe03ede54fe15c5db34"
       }
+    },
+    {
+      "role": 78,
+      "name": "SceneNativeAudio",
+      "path": "data/podunk.encnativeaudio",
+      "producer": "field_scene_audio",
+      "ir": "content/podunk-scene-audio.json",
+      "identity_kind": 1,
+      "magic": "ENCSAUD1",
+      "format": 1,
+      "family": 1162739815,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/podunk.tscn",
+      "scene_id": 2561235290,
+      "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "ir_sha256": "31f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a",
+      "bytes": 15647,
+      "crc32": 1142620877,
+      "sha256": "b2d9964100c8eb59c76586959097444c7d748db878ce02b64ec182b79a5defa0",
+      "original_header": "454e43534155443101000000800000001f3d0000bd6e422c67004e4501000000010000005a59a9987d9246600fffe518408f5830d4848635019005a378febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c50131f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a00000000",
+      "sources": {
+        "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/Door_Short.mp3.import": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Laugh Small.mp3.import": "91d8169b6f20249aea1a9766b3fb383db9b1345730ac15177db3373a291b49a4",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/Shock.mp3.import": "34f9e10222fe1e0b237645308336000d84e930d0083ec176e6d7f21308068da2",
+        "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+        "Audio/Sound effects/Barrel Coffin Explode.mp3.import": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/EB/knock.wav.import": "9f23372ce5e75bff06456bad4ef95ef9dc9eb78e492e38a119c53327b0d1afc2",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6"
+      }
+    },
+    {
+      "role": 79,
+      "name": "SceneSignalCallbacks",
+      "path": "data/podunk.encsignals",
+      "producer": "field_scene_signal_callbacks",
+      "ir": "content/native-field-scene-signal-callbacks.json",
+      "identity_kind": 2,
+      "magic": "ENCSIG01",
+      "format": 2,
+      "family": 1162739816,
+      "capability": 2,
+      "rules": 1,
+      "scene": "Maps/podunk/podunk.tscn",
+      "scene_id": 2561235290,
+      "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "ir_sha256": "fa6978fa75865af97d8e303f739c8a791083a620f323b9ee0ddc1945fb7cb6fa",
+      "bytes": 87919,
+      "crc32": 1127630610,
+      "sha256": "ddd4c542a171ff5125fc43267fd8cbb498909d9dbda4aaa0f7750451d9fc455c",
+      "original_header": "454e43534947303102000000020000000100000068004e455a59a998175701007aa611cb7d9246600fffe518408f5830d4848635019005a378febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501170000004d6170732f706f64756e6b2f706f64756e6b2e7473636e21000000536372697074732f55",
+      "sources": {
+        "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b",
+        "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c",
+        "Scripts/global/Character.gd": "6d74b43456624dd5105500967558a3cdd64287de0d2e804f2b6cc983670392b7",
+        "Scripts/global/PartyMember.gd": "b497ef1d5a9448f6cd2931186e6a8f02ec385957c04c61f9284cde489a343120",
+        "Scripts/global/PartyNPC.gd": "36b19f7fe73d01097371d788587685ea1ea1869dc0fa7014a97da7e79d25b925",
+        "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+        "Scripts/global/uiManager.gd": "67b1161f16799963d478e4473cc48d8ca1329bfa041d95b458c4cb7906a7060b",
+        "Scripts/Main/Switches/TwoStatesSwitch.gd": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89"
+      }
     }
   ],
   "assets": [
@@ -12044,9 +12125,9 @@
       "id": 201,
       "kind": 5,
       "path": "sound/banks/podunk-scene-effects.encaudio",
-      "bytes": 1114,
-      "crc32": 1810057700,
-      "sha256": "374bf93c2c845a75e5d54d03a1132e848847e74658480b81b418cb725cbbc689"
+      "bytes": 1271,
+      "crc32": 329134062,
+      "sha256": "e6abedd92519cf18b4145da57f7a164735fec49dcfdc5f40be699712137cc5c7"
     },
     {
       "id": 202,
@@ -12479,6 +12560,14 @@
       "bytes": 22311936,
       "crc32": 854003562,
       "sha256": "fbf6185fe7a452b1340b024b455d4a6c3dce1e27440e54f5c39eefdd614a9992"
+    },
+    {
+      "id": 256,
+      "kind": 2,
+      "path": "sound/scene/knock.pcm",
+      "bytes": 44100,
+      "crc32": 2537147697,
+      "sha256": "33e29d4690224c9a9788a6c218e3f9f5c8ac6ed8266476ba7098babdaa2c3bca"
     }
   ],
   "script_bindings": [
@@ -12664,7 +12753,7 @@
     }
   ],
   "inputs": {
-    "content/podunk-bundle-recipe.json": "eed3de391cc442ed1632f81d803238b41893b9a1dab7cdc702e3e605c97c8aeb",
+    "content/podunk-bundle-recipe.json": "3dd2349d52e7e61afcf622fd08747e841c10a412f1a418578b9e761e54b6aaa4",
     "content/field-battle-bg-resources.json": "0dd492851fe778764abdfa7ee5623d76e3b10f995c2f16f744a362e20d8909ee",
     "tools/field_battle_bg_resources.py": "e763b314a9c4cb497d9dbf2b1c29f9b652ae9114475da82411db6041862e5753",
     "content/native-field-character-load.json": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
@@ -12819,6 +12908,10 @@
     "tools/house_exit_door.py": "4522e17a955181e002af901336073286fc7bb44daa1624728cb5ea0907c20c70",
     "content/native-house-status-effects.json": "1fb5b61aa92236ecad7e65f8d22bd7e3316b17fe7ffe14dc0597e695ae5eff1c",
     "tools/house_status_effects.py": "39e828b3b2411fc8f1c6a858a914dce7f189ac4eac2f2f4e839fc746759b1b9e",
+    "content/podunk-scene-audio.json": "31f82fe2d4a88a29b25dc98588cca2223bea015aa4971a633a8940b0f9361c7a",
+    "tools/field_scene_audio.py": "bb04ee0bcd5884efc85bc054a6f7463ab9eb660cbbde80f93c248b6c186c9b80",
+    "content/native-field-scene-signal-callbacks.json": "fa6978fa75865af97d8e303f739c8a791083a620f323b9ee0ddc1945fb7cb6fa",
+    "tools/field_scene_signal_callbacks.py": "d853c10017cb0a3d9034263b26d3dab3d8781a2b91bd1e5eabd536d829150545",
     "content/podunk-scene-assets.json": "834d267b496fb653a5ed2f3cf684d2d2ee9944bb90029778060a13f8b15eed2e",
     "content/podunk-scene-map-assets.json": "f3b262436a968c0fd40d0ef9e5b9535f2fe86a5bb89f8c0d02c46a6b64089149",
     "content/native-audio.json": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910",
@@ -12826,8 +12919,8 @@
     "content/podunk-music.json": "370a40616d509094880fe46d23ed2b1a1de09110eae4620170fdfec2eb1799f2",
     "content/asset-receipts/audio/opening.json": "9d2c85d6f9f2c95a2eacd6361fca01bff41c7247c0c7db43480643f9f17f1966",
     "content/asset-receipts/audio/podunk.json": "9964fa6c001d33123cf2fffbee0501ae76d3450876bf22ed8877c2b3d7e1298a",
-    "content/podunk-bundle-audio.json": "226a2c2b134b5b71c6d21472d5ecf82125fb923ea287e06402c7986224893303",
-    "content/asset-receipts/audio/podunk-scene-effects.json": "786256e2321b4c1ccd06d634752ecc61af42e6107161b788884742c28ca90afc",
+    "content/podunk-bundle-audio.json": "c3ca0be84505f05f49f1a7bd99984fa6e729c3a12793cdb99d20a37e7e70cc52",
+    "content/asset-receipts/audio/podunk-scene-effects.json": "7a2dce9764dd4fc33ab85816b089e3b2df0d412a8c043a7c2879b3f489d0b261",
     "content/asset-receipts/graphics/objects/dead-bush/source.json": "4ae6a3f9fe77c10690bb6587fae13f59843c07a876fb8251f5b4e09b612344a8",
     "content/asset-receipts/graphics/objects/payphone/source.json": "b2144766de57d3cb3645ee892208169b5260ff6f8d3969e7b1b494c6a7a8699e",
     "content/asset-receipts/graphics/objects/vending-machine/source.json": "3032d7f7a56e2f86f5b7aae0dfdd4e987a192641bea78768d26d569e5c250aac",
@@ -14471,7 +14564,9 @@
     "Graphics/UI/Inventory/characters/key_hl.png.import": "95e6729b4c388a82b49e52b6c53b6f75d6aa9476960f1580170a6f1f0579f036",
     "Graphics/UI/Inventory/stats_menu.png.import": "13cda54b247e509fc82177e8a43138aa3bf4af7d7187285bfc470957501b5001",
     "Audio/Sound effects/Door_Short.mp3.import": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
-    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31"
+    "Audio/Sound effects/M3/door_open.wav.import": "1daa2c6555c80fd449393cc48d7b72c2a46dc7d310329dad373cd24a48599c31",
+    "Audio/Sound effects/phonering.wav.import": "310a8d4d30a4c2337a0938e9eb979ca0107d2e09e9e9a1a2f21f366f1c487cf6",
+    "Scripts/Main/Switches/TwoStatesSwitch.gd": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
   },
   "semantics": [
     "Complete resource closure only; 2156 actual Ready callbacks remain consumer-owned",

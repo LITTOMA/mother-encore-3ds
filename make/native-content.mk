@@ -16,11 +16,18 @@ CONTENT_TASKS += field-native-root field-global-data field-dialogue-root-script
 CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-directory global-yaml-file global-data-constructor field-character-load global-load field-global-constructor
 CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge player-child-scripts house-status-effects
 CONTENT_TASKS += house-ui-continuation house-exit-door
+CONTENT_TASKS += scene-effects field-scene-audio field-scene-signals
 DESTINATION_INPUT_TASKS := $(CONTENT_TASKS)
 CONTENT_TASKS += scene-bundle
 .PHONY: scene-bundle
-scene-bundle: $(DESTINATION_INPUT_TASKS)
+.PHONY: scene-effects field-scene-audio field-scene-signals
+scene-effects:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/podunk_bundle.py restore --logs build/content-logs/scene-audio
+field-scene-audio: field-node-tree scene-effects audio
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_scene_audio.py compile
+field-scene-signals: field-lifecycle global-data-constructor
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_scene_signal_callbacks.py compile
+scene-bundle: $(DESTINATION_INPUT_TASKS)
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/podunk_bundle.py compile
 .PHONY: house-ui-continuation house-exit-door
 house-ui-continuation: field-ui-manager

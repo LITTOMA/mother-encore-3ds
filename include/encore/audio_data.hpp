@@ -56,6 +56,7 @@ public:
     // Frame position. Failure preserves the previous cursor and file handle.
     bool seek(uint32_t position);
     bool is_open() const {return file_!=nullptr;}
+    uint32_t position() const {return cursor_.position();}
 private:
     FILE* file_=nullptr;
     AudioFrameCursor cursor_;

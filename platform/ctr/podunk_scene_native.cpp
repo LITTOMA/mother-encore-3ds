@@ -2,6 +2,7 @@
 #include "podunk_scene_animated_leaves.hpp"
 #include "field_canvas_art_renderer.hpp"
 #include "podunk_player_effect_owners.hpp"
+#include <algorithm>
 // This existing primitive's compact statements predate this owner. Keep its
 // diagnostics local rather than changing the frozen renderer's source bytes.
 #pragma GCC diagnostic push
@@ -381,6 +382,14 @@ bool PodunkSceneNative::bind_animated_leaves(PodunkSceneAnimatedLeaves &owner,
   animated_leaves_ = &owner;
   return true;
 }
+bool PodunkSceneNative::bind_canvas_leaf(PodunkSceneCanvasLeaf &owner,
+                                       std::string &e) {
+  if (!finished_ || owner.canvas_tree()!=tree_ ||
+      owner.canvas_registry()!=registry_ ||
+      std::find(canvas_leaves_.begin(),canvas_leaves_.end(),&owner)!=canvas_leaves_.end())
+    return fail(e,"Canvas leaf must borrow the same actual tree/ObjectDB once");
+  canvas_leaves_.push_back(&owner); e.clear(); return true;
+}
 bool PodunkSceneNative::bind_foreign(PodunkPlayerHost &player,
                                      const PlayerInitializationData &initial,
                                      PodunkConcretePlayerEffectOwners &effects,
@@ -587,10 +596,15 @@ bool PodunkSceneNative::set_disabled(FieldObjectId id, bool value,
   auto it = instances_.find(id);
   if (it == instances_.end() || it->second.kind != Kind::Shape)
     return fail(e, "Scene native disabled target is not actual shape");
-  if (!geometry_bound_)
-    return fail(
-        e,
-        "Scene native dynamic disabled setter before source ancestors Ready");
+  const FieldNodeDescriptor *descriptor;
+  const FieldNodeState *state;
+  if (!actual(id,descriptor,state,e)) return false;
+  if (!geometry_bound_) {
+    // NPC _ready mutates its already constructed child's native property.
+    // The dormant physics space is synchronized from this exact property at
+    // activation; this does not admit an ancestor or run collision queries.
+    it->second.disabled=value; e.clear(); return true;
+  }
   FieldGeometryNodeUpdate u;
   u.stable_id = it->second.source;
   u.fields = 4;
@@ -730,14 +744,29 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
     FieldColor color;
     bool foreign = false;
     bool animated = false;
+    bool leaf = false;
   };
   std::vector<Command> commands;
   std::map<FieldObjectId, FieldCanvasOrderSlot> slots;
   std::vector<FieldCanvasOrderSlot> foreign_slots;
   std::vector<FieldObjectId> animated_slots;
+  std::vector<std::pair<PodunkSceneCanvasLeaf *,FieldCanvasOrderSlot>> leaf_slots;
+  std::set<FieldObjectId> leaf_objects;
   for (const auto &s : canvas_.canvas_order()) {
     slots.emplace(s.object, s);
     const auto *n = tree_->descriptor(s.object);
+    PodunkSceneCanvasLeaf *leaf=nullptr;
+    for (auto *owner:canvas_leaves_) if (owner->owns_drawable(s.object)) {
+      if (leaf) return fail(e,"Canvas leaf has ambiguous actual source owners");
+      leaf=owner;
+    }
+    if (leaf) {
+      if (!n || s.foreign || (n->native_class!="Label" && n->native_class!="TextureRect"))
+        return fail(e,"Canvas leaf source/class is outside native Control capability");
+      commands.push_back({s.z,s.native_order,0,false,uint32_t(leaf_slots.size()),{},false,false,true});
+      leaf_slots.emplace_back(leaf,s); leaf_objects.insert(s.object);
+      continue;
+    }
     if (!s.foreign && n && n->native_class == "AnimatedSprite") {
       if (!animated_leaves_ || !animated_leaves_->owns(s.object) ||
           !animated_leaves_->drawable(s.object))
@@ -765,6 +794,7 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
     }
   }
   for (uint32_t i = 0; i < art.size(); ++i) {
+    if (leaf_objects.count(art[i].object)) continue;
     const auto s = slots.find(art[i].object);
     if (s == slots.end() || !owns(art[i].object))
       return fail(e, "Scene native Sprite command has no actual native owner");
@@ -809,7 +839,10 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
       return materials_->draw(a, c, w, h, error);
     };
   for (const auto &c : commands) {
-    if (c.animated) {
+    if (c.leaf) {
+      auto &leaf=leaf_slots.at(c.index);
+      if (!leaf.first->draw_leaf(leaf.second,viewport.canvas,art_->pixel_snap(),e)) return false;
+    } else if (c.animated) {
       if (!animated_leaves_ ||
           !animated_leaves_->draw(animated_slots.at(c.index), camera, e))
         return false;
@@ -865,6 +898,7 @@ bool PodunkSceneNative::shutdown(std::string &e) {
   map_gpu_.reset();
   canvas_.clear();
   foreign_.reset();
+  canvas_leaves_.clear();
   instances_.clear();
   source_objects_.clear();
   animations_.clear();

@@ -35,6 +35,8 @@ public:
     // does not reset playback, read PCM or introduce another frame clock.
     bool include_bank(std::shared_ptr<const upstream::AudioBank>,std::string&);
     bool source_asset(std::string_view,upstream::AudioAsset&,std::string&)const;
+    // Explicit checked metadata ID, independent of duplicate source paths.
+    bool checked_asset(uint32_t,upstream::AudioAsset&,std::string&)const;
     // Opening a stream performs its complete size/CRC validation once. Metadata
     // admission and NDSP initialization do not read unused PCM payloads.
     bool prepare(uint32_t stable_audio_id,std::string& error);

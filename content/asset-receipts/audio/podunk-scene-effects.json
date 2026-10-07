@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "226a2c2b134b5b71c6d21472d5ecf82125fb923ea287e06402c7986224893303",
+  "recipe_sha256": "c3ca0be84505f05f49f1a7bd99984fa6e729c3a12793cdb99d20a37e7e70cc52",
   "workers": 4,
   "ffmpeg_sha256": "0fb10e2d3073ba643778d72c4e3766456d7849f41ca9fc9203b19b1172897c39",
   "ffmpeg_version": "ffmpeg version 6.0-full_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers\nbuilt with gcc 12.2.0 (Rev10, Built by MSYS2 project)\nconfiguration: --enable-gpl --enable-version3 --enable-shared --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-libsnappy --enable-zlib --enable-librist --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-libbluray --enable-libcaca --enable-sdl2 --enable-libaribb24 --enable-libdav1d --enable-libdavs2 --enable-libuavs3d --enable-libzvbi --enable-librav1e --enable-libsvtav1 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxavs2 --enable-libxvid --enable-libaom --enable-libjxl --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-frei0r --enable-libfreetype --enable-libfribidi --enable-liblensfun --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-d3d11va --enable-dxva2 --enable-libvpl --enable-libshaderc --enable-vulkan --enable-libplacebo --enable-opencl --enable-libcdio --enable-libgme --enable-libmodplug --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libshine --enable-libtheora --enable-libtwolame --enable-libvo-amrwbenc --enable-libilbc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-ladspa --enable-libbs2b --enable-libflite --enable-libmysofa --enable-librubberband --enable-libsoxr --enable-chromaprint\nlibavutil      58.  2.100 / 58.  2.100\nlibavcodec     60.  3.100 / 60.  3.100\nlibavformat    60.  3.100 / 60.  3.100\nlibavdevice    60.  1.100 / 60.  1.100\nlibavfilter     9.  3.100 /  9.  3.100\nlibswscale      7.  1.100 /  7.  1.100\nlibswresample   4. 10.100 /  4. 10.100\nlibpostproc    57.  1.100 / 57.  1.100\n",
@@ -113,12 +113,30 @@
       "import_sha256": "0b24cb89d9404758ba27d6c5d59c3e55a799594548a553a220a046c47f5cd3cc",
       "loop_offset_seconds": 0.0,
       "pcm_sha256": "3519e83798cf6edf3309f80daf8a0af3b6f3f1feacfe61bb988f71fa68261829"
+    },
+    {
+      "stable_id": 3475384068,
+      "source_sha256": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+      "sample_rate": 44100,
+      "channels": 1,
+      "loop": false,
+      "frames": 22050,
+      "loop_start": 0,
+      "pcm_bytes": 44100,
+      "pcm_crc32": 2537147697,
+      "pcm_path": "sound/scene/knock.pcm",
+      "source_path": "res://Audio/Sound effects/EB/knock.wav",
+      "gain_db": 0,
+      "source_sample_rate": 44100,
+      "import_sha256": "9f23372ce5e75bff06456bad4ef95ef9dc9eb78e492e38a119c53327b0d1afc2",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "33e29d4690224c9a9788a6c218e3f9f5c8ac6ed8266476ba7098babdaa2c3bca"
     }
   ],
   "bank": {
     "path": "sound/banks/podunk-scene-effects.encaudio",
-    "bytes": 1114,
-    "sha256": "374bf93c2c845a75e5d54d03a1132e848847e74658480b81b418cb725cbbc689"
+    "bytes": 1271,
+    "sha256": "e6abedd92519cf18b4145da57f7a164735fec49dcfdc5f40be699712137cc5c7"
   },
-  "producer_sha256": "81c0dca0cec598eafdf56d1b26d52c997da24a972f0fac9888001186e978e8a5"
+  "producer_sha256": "4bede884e5e652bd751fe62410d0632a3a28736b142d0af2b53943cacc16cd47"
 }

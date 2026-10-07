@@ -104,6 +104,7 @@ struct FieldSceneScriptAdmission {uint32_t id=0,family=0,capability=0;std::array
 class FieldSceneHost {
 public:
  bool configure(const FieldSceneData&,FieldSceneConsumers,FieldSceneHostOps,std::string&);
+ bool construct_area(uint32_t source_id,std::string&);
  bool construct_camera_arrows(uint32_t source_id,std::string&);
  bool ready_next(std::string&);bool ready_to_boundary(std::string&);
  uint32_t ready_cursor()const{return cursor_;}bool scene_ready()const;

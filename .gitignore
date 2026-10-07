@@ -421,3 +421,11 @@ cookies.json
 !/reports/field-scene-signal-callbacks/
 /reports/field-scene-signal-callbacks/*
 !/reports/field-scene-signal-callbacks/source-review.json
+
+!reports/audio-server/
+reports/audio-server/*
+!reports/audio-server/source-review.json
+
+!/reports/scene-clip-native/
+/reports/scene-clip-native/*
+!/reports/scene-clip-native/source-review.json

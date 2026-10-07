@@ -132,7 +132,7 @@ bool FieldBushRuntime::play(FieldBushInstance &s, FieldBushClipRole role) {
     s.elapsed = 0;
   s.clip = role;
   s.playing = true;
-  return true;
+  return !host_.native_animation || callback(host_.native_animation(s.id,uint32_t(role),1,error_));
 }
 bool FieldBushRuntime::viewport(uint32_t id, bool enter) {
   auto s = get(id);
@@ -211,6 +211,7 @@ bool FieldBushRuntime::apply(FieldBushInstance &s, FieldBushProperty p,
     auto d = data_->record(s.id);
     if (v >= d->columns * d->rows)
       return fail("DeadBush frame outside source grid");
+    if(host_.native_frame&&!callback(host_.native_frame(s.id,v,error_)))return false;
     s.frame = v;
     break;
   }
@@ -285,6 +286,7 @@ bool FieldBushRuntime::idle_frame(uint32_t id, float dt) {
     return false;
   if (to == a->length) {
     s->playing = false;
+    if (from < a->length && host_.native_animation && !callback(host_.native_animation(id,uint32_t(role),2,error_)))return false;
     if (from < a->length && !finished(*s, role))
       return false;
   }

@@ -118,7 +118,7 @@ bool FieldPresentRuntime::play(FieldPresentState &s, bool wrapped,
   s.animation_time = 0;
   s.next_key = 0;
   s.animation_playing = true;
-  return true;
+  return !host_.native_animation || host_.native_animation(s.id,wrapped?2u:1u,1,e);
 }
 bool FieldPresentRuntime::interact(uint32_t id, std::string &e) {
   auto *s = mutable_state(id);
@@ -177,8 +177,10 @@ bool FieldPresentRuntime::animate(FieldPresentState &s,
   const float end = std::min(clip.length, float(s.animation_time + delta));
   while (s.next_key < clip.keys.size() && clip.keys[s.next_key].time <= end) {
     const auto &key = clip.keys[s.next_key++];
-    if (key.role == 1)
+    if (key.role == 1) {
+      if(host_.native_frame&&!host_.native_frame(s.id,key.value,e))return false;
       s.frame = key.value;
+    }
     else if (key.role == 2) {
       s.audio_playing = key.value != 0;
       if (!host_.sound(b.id, s.audio_playing, e))
@@ -191,6 +193,7 @@ bool FieldPresentRuntime::animate(FieldPresentState &s,
   s.animation_time = end;
   if (end >= clip.length) {
     s.animation_playing = false;
+    if(host_.native_animation&&!host_.native_animation(s.id,s.wrapped?2u:1u,2,e))return false;
     auto waiters = std::move(s.revert_waiters);
     s.revert_waiters.clear();
     for (auto waiter : waiters) {
@@ -231,11 +234,17 @@ bool FieldPresentRuntime::idle_frame(double delta, bool processing,
         s.sparkle_timeout -= step;
       }
     }
-    if (s.parent_ready && !animate(s, *data_->binding(s.id), float(delta), e))
+    if (!host_.native_animation && s.parent_ready && !animate(s, *data_->binding(s.id), float(delta), e))
       return false;
   }
   e.clear();
   return true;
+}
+bool FieldPresentRuntime::idle_animation_leaf(uint32_t id,double dt,bool processing,std::string&e){
+ auto*s=mutable_state(id);auto*b=data_?data_->binding(id):nullptr;
+ if(!s||!b||!s->alive||!s->parent_ready||!host_.native_animation||!std::isfinite(dt)||dt<0||dt>60){e="Present native AP live owner/delta rejected";return false;}
+ if(!processing){return true;}
+ return animate(*s,*b,float(dt),e);
 }
 bool FieldPresentRuntime::bind_sparkles_leaf_owner(
     FieldPresentSparklesLeafOwner &owner, std::string &e) {

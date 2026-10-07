@@ -18,6 +18,11 @@ add_library(encore_core
     runtime/field_visibility_data.cpp
     runtime/field_npc_world_data.cpp runtime/field_npc_world_motion.cpp
     runtime/prompt_native_data.cpp
+    runtime/field_scene_tree_timer.cpp
+    runtime/scene_clip_native_data.cpp
+    runtime/audio_server_data.cpp
+    runtime/audio_server.cpp
+    runtime/field_scene_materials_data.cpp
     runtime/field_prompts_data.cpp runtime/field_prompts.cpp
     runtime/field_psi.cpp
     runtime/field_psi_data.cpp

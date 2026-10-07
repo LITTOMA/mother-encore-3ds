@@ -408,6 +408,36 @@ bool PodunkPromptNative::owns_drawable(FieldObjectId id) const {
          (i->second.source->role == PromptNativeRole::Label ||
           i->second.source->role == PromptNativeRole::Arrow);
 }
+bool PodunkPromptNative::appearance(const FieldCanvasRecord &r,
+                                    FieldObjectId id,
+                                    FieldCanvasAppearance &out,
+                                    std::string &e) const {
+  const auto &s = *state_;
+  if (!s.actual(id, e))
+    return false;
+  const auto &l = s.leaves.at(id);
+  const auto *p = s.core->instance(l.source->prompt);
+  if (l.source->role != PromptNativeRole::Arrow || r.id != l.source->id ||
+      r.node != l.source->path || r.kind != 1 ||
+      r.owner != FieldCanvasOwner::Prompt || r.owner_id != l.source->prompt ||
+      r.shader != FieldCanvasShader::Flash || !r.texture || r.hframes != 1 ||
+      r.vframes != 1 || r.frame || r.centered || !p || !p->ready ||
+      s.core->data() != s.prompt || !l.ready)
+    return fail(e, "Prompt actual Arrow appearance source/owner rejected");
+  out = {};
+  out.action = FieldCanvasAction::Delegate;
+  out.texture = r.texture;
+  out.hframes = r.hframes;
+  out.vframes = r.vframes;
+  out.frame = r.frame;
+  out.offset = r.offset;
+  out.size = l.size;
+  out.centered = r.centered;
+  out.flip_h = r.flip_h;
+  out.flip_v = r.flip_v;
+  e.clear();
+  return true;
+}
 bool PodunkPromptNative::draw_leaf(const FieldCanvasOrderSlot &slot,
                                    const FieldTransform &viewport, bool snap,
                                    std::string &e) {

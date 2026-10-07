@@ -879,8 +879,6 @@ bool PodunkSceneConsumers::sprite_appearance(const FieldCanvasRecord &r,
     return fail(e, "Scene CanvasArt typed owner differs");
   // The same native body holds dynamic property values. Shader ownership must
   // still be the actual separate admitted GPU consumer, never flattened here.
-  if (r.shader != FieldCanvasShader::Default)
-    return fail(e, "Scene typed shader requires actual material owner");
-  return s.input.native->sprite_snapshot(actual, out, e);
+  return s.input.native->canvas_appearance(r, actual, out, e);
 }
 } // namespace encore::ctr

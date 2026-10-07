@@ -10757,6 +10757,397 @@
         "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
         "Scripts/Main/party/Player.gd": "b576137400020ddc2e8da1ae98a1065d86eacbb861e9b67b73bf17f3358cee0b"
       }
+    },
+    {
+      "role": 83,
+      "name": "AudioServer",
+      "producer": "audio_server",
+      "path": "data/audio-server.encbuses",
+      "ir": "content/native-audio-server.json",
+      "identity_kind": 1,
+      "magic": "ENCBUS01",
+      "format": 1,
+      "family": 1162739822,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/podunk.tscn",
+      "scene_id": 3563821078,
+      "source_sha256": "826927c48e1c7ca16b87b8d0abf46ead6d07bcdc77e7b6974abff605a6d18776",
+      "ir_sha256": "947bd0b257bc873f85daa19218028fb837fca6fa5f20a46adfaeba1a89582448",
+      "bytes": 1130,
+      "crc32": 3070019609,
+      "sha256": "e9f87b281d9f0b4165280fb36def61067e1e200d4bc49e6896c5e65740330bb9",
+      "original_header": "454e43425553303101000000800000006a04000022f964206e004e45010000000100000016986bd47d9246600fffe518408f5830d4848635019005a3826927c48e1c7ca16b87b8d0abf46ead6d07bcdc77e7b6974abff605a6d18776947bd0b257bc873f85daa19218028fb837fca6fa5f20a46adfaeba1a8958244800000000",
+      "sources": {
+        "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+        "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2"
+      }
+    },
+    {
+      "role": 84,
+      "name": "SceneMaterials",
+      "path": "data/podunk.encmaterials",
+      "producer": "field_scene_materials",
+      "ir": "content/native-field-scene-materials.json",
+      "identity_kind": 1,
+      "magic": "ENCMAT01",
+      "format": 1,
+      "family": 1162739823,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/podunk.tscn",
+      "scene_id": 2561235290,
+      "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "ir_sha256": "51e0683390538b804595c126675d5917a5b5ba810168b12adf0facf1bbeac799",
+      "bytes": 61089,
+      "crc32": 2314729021,
+      "sha256": "3624df33050e43a6ef5fe4d1e4a6964a5cd10f9ab1d510e5fbbd3d531290b847",
+      "original_header": "454e434d415430310100000080000000a1ee00004a5255946f004e4501000000010000005a59a9987d9246600fffe518408f5830d4848635019005a378febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c50151e0683390538b804595c126675d5917a5b5ba810168b12adf0facf1bbeac79900000000",
+      "sources": {
+        "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+        "Graphics/Character Sprites/Npcs/1dir/doll.png.import": "a5e1ad37ae4fdb7ebb00d665656715d1bace2038dd97876e1f320d0e5a905edb",
+        "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+        "Graphics/Character Sprites/Npcs/4dir/gravedigger.png.import": "4cd4f75316ae4a206236be1fd3f47ebe4a8a56b8b4157eee0bb7d0005299fae5",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png.import": "b88ff4213291c3cc624ec9da84650e00388206fd4bcd7a9d30c494e5b64f6854",
+        "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+        "Graphics/Character Sprites/Npcs/misc/birds/0.png.import": "36acda999115670f3a10782c0e7d3678cd461fbaa7f43d04d6fd4968c9b42bb9",
+        "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+        "Graphics/Character Sprites/Npcs/misc/butterflies/0.png.import": "eee95975602fad2857b97b8f63ab9d7ca586fd119eabcc98ddd9992b00202fd3",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Character Sprites/Shadow.png.import": "5b73049384d38652d3360d270a7b0617d7aaae01096fa49d5d52420efd3a0679",
+        "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+        "Graphics/Objects/Common/ATM Exterior.png.import": "f7830a0a46b9fe3e1f7acf4ca415a16b383b9f53e73676efcbd15a13a7d3ba3f",
+        "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+        "Graphics/Objects/Common/Dandelion.png.import": "6dcddd49fa24a04f138d70977aa3e973762239c44c1dd5d8db24baa9af603fa6",
+        "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+        "Graphics/Objects/Common/Exterior Payphone.png.import": "6354253dacabf47d93a792152533e5ab25925b0e472650540a1e17cc81ee65d7",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Present Box.png.import": "727991665e76eee2c179013caf8ffa149316e35444c831562e6d46ee869ec59e",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+        "Graphics/Objects/Common/Vending Machine Exterior.png.import": "2332d3b934223a853b00fbf5be5a9407615754870a93226c0071941c1924d1a7",
+        "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+        "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+        "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+        "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+        "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+        "Graphics/Objects/Doors/Podunk_White_Door.png.import": "79c5843295fa8315c36cbaaa76830fc063efcacd93d88292d576d048b47ab86a",
+        "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+        "Graphics/Objects/Doors/Podunk_Yellow_Door.png.import": "120d60884596215d8a15989207e42e33762a131bb799d8262f938026d1397e2a",
+        "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+        "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+        "Graphics/Objects/Grass/Podunk/0.png.import": "7f4dd5f8d1449eb8797d210d0d8a61f23de9f8518caff118a48fd3cb9c67d4ed",
+        "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+        "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+        "Graphics/Objects/Items/Error.png.import": "acab7c02b5ff5a85c7b2621dd9107b91e128cae5132190df28c1544ae3f1b120",
+        "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+        "Graphics/Objects/Podunk/Dead Bush.png.import": "4ad90f6e9358c616d86e5eefcead4cb82e73b4c8cd8a543a5a98b44ddc993d48",
+        "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+        "Graphics/Objects/Podunk/Zoo Gate.png.import": "feb455bb2a06f9ea4e5508fae2f1f711b963a27117e272c7b4eb2fdb7971cbaf",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Graphics/Other/emotes/emotes.png.import": "da3aa2e8441cc3db6c48a3d525232493ae027034ffb8e6c0e99faae9f872324b",
+        "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+        "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+        "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+        "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+        "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+        "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+        "Graphics/UI/Battle/targetCursor.png.import": "98ca8ee62ee06c86d0d7a3c2b0b81efb3c1927d7c91df674448d02f6187d7320",
+        "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/melody bg.png.import": "541a55a1ebcf3d2b2fff92f7e25de2976c6d23059beb24c00e1b4067f772c5e8",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "Graphics/UI/select_arrow.png.import": "ec36c9aa5dcf4bd9bdbc5cf41d6858b0f5ab75e625d409526c9ac9b8b3305f6d",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+        "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+        "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+        "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+        "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+        "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+        "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+        "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+        "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+        "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+        "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+        "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+        "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+        "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+        "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/Switches/ControlledObject.gd": "985ed4d00b3d88b445792d8d50e0e649b651ac3863e3d88ceac0fc0e8f0faf4d",
+        "Scripts/Main/Switches/ControlledTwoStatesObject.gd": "e4ccc003d5e810cf39e8afed2751b357f5bb5b48620a6b2ccb5a0a05b3bdb4ee",
+        "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+        "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+        "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+        "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+        "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+        "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+        "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b"
+      }
+    },
+    {
+      "role": 85,
+      "name": "SceneClipNative",
+      "path": "data/podunk.encclipnative",
+      "producer": "scene_clip_native",
+      "ir": "content/native-scene-clip-native.json",
+      "identity_kind": 2,
+      "magic": "ENCSCL01",
+      "format": 1,
+      "family": 1162739821,
+      "capability": 1,
+      "rules": 1,
+      "scene": "Maps/podunk/podunk.tscn",
+      "scene_id": 2561235290,
+      "source_sha256": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+      "ir_sha256": "4e79086dc2f4a8bc4bb6a71b1d949b2aad9210ec6ff0d5adea28597b93c68dbf",
+      "bytes": 21304,
+      "crc32": 428851343,
+      "sha256": "f20d8f1dba5cb6b4c6c2cd907f92544e716862353b75e250913a432537800566",
+      "original_header": "454e4353434c30310100000001000000010000006d004e455a59a998e05200008543bf2e7d9246600fffe518408f5830d4848635019005a378febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c5011500000069646c655f70726f636573735f696e7465726e616c11000000616e696d6174696f6e5f73",
+      "sources": {
+        "Nodes/Overworld/Objects/Openable Door.tscn": "468ebbccdf071b2aab2af400d01c9e47b8b3ba7269ab5ffd3b70b23e25c0d331",
+        "Audio/Sound effects/Barrel Coffin Explode.mp3": "1f6e7a7b84ec37a9f81b2ae6b6540966d4cf3670798e10f9994010506ebf63db",
+        "Audio/Sound effects/Door_Short.mp3": "c30e52509c50d3488bc36632a300c4e8d1a6280e443f55725a9b5a3c491c4160",
+        "Audio/Sound effects/EB/knock.wav": "eb7d54830296c8d2eb5f92b5df527dc01ec5f7501a387f06297c4a06d52e3a94",
+        "Audio/Sound effects/Gift Box.mp3": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+        "Audio/Sound effects/Laugh Small.mp3": "4c7d29a2fab60e45d855b4ed13b2c870e63f39333d5a239157a14b080373af03",
+        "Audio/Sound effects/Shock.mp3": "e1cf8eb91df7f1ca10256e83598feca97ed455de1c2da64e1206157e8c1544de",
+        "Audio/Sound effects/phonering.wav": "58c5b4865b67da1d3b697b1e7b918dabacff12f122c7ad5ec34dc78a833bf685",
+        "Fonts/BottleRocket.tres": "e6f65c8a3d7c0c250c8370b91f3dd1d62c0cae296bcc3a7920e4a80bcccba97e",
+        "Fonts/BottleRocket.ttf": "2363dad560703b9285c108a01255934a358f4ba8ff0043a80a8d43fd9bdc2ee1",
+        "Fonts/BottleRocket_ja.ttf": "79bd0926501b466d43b28fca4f3ab5ef98bc2f5a61cdf6abfafa03ea43fd65db",
+        "Fonts/BottleRocket_ko.ttf": "0371809423fadc5f5a1abd5e0b3c3dbafd6fd12874264ee470a40ba9a5f873f5",
+        "Fonts/BottleRocket_zh_cn.otf": "529b7651c870779f321083e1f0d644a6db7d49c3a1aa4387a1ca1faa4e0e84f5",
+        "Graphics/Character Sprites/Npcs/1dir/doll.png": "b50316ac34ee11551758df5132e29e773b57ee422bcc8b32aee470d800eb27cf",
+        "Graphics/Character Sprites/Npcs/4dir/gravedigger.png": "a35f7d3d002245ed75c9c4e6db3aab2d98c2636b38837d822b63555599ad0606",
+        "Graphics/Character Sprites/Npcs/4dir/woman.png": "0a2188fa55be1f36d31475f59f2263201acb164ad3b89faf5f3dc3626cbf1666",
+        "Graphics/Character Sprites/Npcs/misc/birds/0.png": "624610bce33f72fbf3172c511c70ae0ed15ce8a113ea3cf925c7f139b1f75d8f",
+        "Graphics/Character Sprites/Npcs/misc/butterflies/0.png": "8a7daf8fb07d8f5c2174a1c10f281857c81c16e5494450142e4d7e5c5e26be44",
+        "Graphics/Character Sprites/Shadow.png": "72c7b2cd2cfe5dd37bf36f70f4657c7006901fea2a59753587d29779f25aa5d7",
+        "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",
+        "Graphics/Objects/Common/Dandelion.png": "8797e182386baaa5052d7d0e96eca2b60d25d51b2f7f4a99ad28b826eae12b13",
+        "Graphics/Objects/Common/Exterior Payphone.png": "5c70d659ab789b40ca21ee2da997891264e5cd9804abf9510464659a5c6e0fe9",
+        "Graphics/Objects/Common/Present Box.png": "9b7166265858aa3469fbe46dc2afe3907ec9b986fcf7d0f51e65d32482b761c8",
+        "Graphics/Objects/Common/Sparkles.png": "19a1adf2d7d11fbcb5129836f4d527fc623a09541012d914371377830d65e07a",
+        "Graphics/Objects/Common/Vending Machine Exterior.png": "481d21c80bc166c3cf0db2d34c1c69aaf57cb23459513357907b6f392704c13b",
+        "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png": "b7f49555a377830fbd69f81ce8345883ef0e51e392f3616564ca5cc4de4711a7",
+        "Graphics/Objects/Doors/Podunk_Church_Door.png": "bdb3131bb279da51d26565f9072b5f10b51c620cccd008974c7aacb074a98d2e",
+        "Graphics/Objects/Doors/Podunk_Shop_Door.png": "a01eeebd964cf128e4c58c1be82eaa6f2be76033627683dd1441bd92a7ef9522",
+        "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png": "2bcee8e9f50986fce99fd0bf20c398b0b4d4811605fdfe640a6307b210d700b2",
+        "Graphics/Objects/Doors/Podunk_White_Door.png": "1a7752d3dffd9653b4bbb547ae1403892019142997ffd13732bdb2edbd202c67",
+        "Graphics/Objects/Doors/Podunk_Yellow_Door.png": "01886160e57a4364f4289bf030ad1c60dd0f01ffb0d3531bffd6ea5244e9fdb8",
+        "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png": "33b43871d74f1eba0ac61d2617f4e2c84c683e9b886b6a608cba02b6d622ebb8",
+        "Graphics/Objects/Grass/Podunk/0.png": "475668b76b7c968f6dd109ab5d35ea747306035ae304f9c4d9b5b47e70e0eee6",
+        "Graphics/Objects/Items/Error.png": "1f1722cf457dded9974947461962057d46f5e01a62fadd9d4760d1dd20d3fc1e",
+        "Graphics/Objects/Podunk/Dead Bush.png": "d78cd9a09fa3e29b2c5e6468cb010b4ed58dfaea362c38988663d8db3bdb7a4f",
+        "Graphics/Objects/Podunk/Zoo Gate.png": "0b426c8090ce8f45b849086f5b739ae68626673621f605090054c2cb46f2ec64",
+        "Graphics/Other/emotes/emotes.png": "cee9da83884753aaf2756f2e28dd6c385385e2af7cd6f9dd8e013078e09537cb",
+        "Graphics/Tilesets/TilPodunk.png": "820929a3d2f86fb6c94f2af838b2a90a3cec0da10d720b9c4ab6ca8b3af6e21d",
+        "Graphics/Tilesets/TilPodunkAnim1.png": "c9ea513f5ff46e2f3554db9559033065eb4bf2f644c1df1703dd28ebeb1f49c7",
+        "Graphics/Tilesets/TilPodunkAnim2.png": "74efbfc6020ca3f6c33d016a1f78d9edc77c16b6a741c91c154a5da380be509f",
+        "Graphics/Tilesets/TilPodunkAnim3.png": "391cea778e653e96c37cd1b0fc6135d362c55f4ed85a280e53e2da9aa1343b58",
+        "Graphics/Tilesets/TilPodunkAnim4.png": "9c9b698881eeadfdde51f07454b75463be587cb235b321139c9d618acdc9b481",
+        "Graphics/UI/Battle/targetCursor.png": "c0be7ea41b2f38584ae512ce15db52ba0260552d4778270bcdf9000c3d3eb9c8",
+        "Graphics/UI/Inventory/cursor.png": "de10bbe1b9e8dde8212ac095db9fe6447466828af4f66d4d987ecd25a44d81af",
+        "Graphics/UI/melody bg.png": "f23d009552afca3c728d0710cef6dc257956a19becc31c92a452b898d01428cd",
+        "Graphics/UI/select_arrow.png": "347905e3a47d0af12ab55daf7bf2f1f7ed512d0b228430c893fe11b53b8bcecc",
+        "Maps/Testing/phone.gd": "8f8904d080126666febc4d75bbeec526744584a1eebb49a228335e6404ee1f89",
+        "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
+        "Nodes/Overworld/Door.tscn": "ce09e59dda725709f45a177597ae3eaf4f5cacc5dd42dc9c744cf011526b747e",
+        "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "06fb8a180f431d8006886949b3b552f70002addf4a5e72e197c9a3fc600c4582",
+        "Nodes/Overworld/Grass/grass spawner.tscn": "abe53a94717e851971a968d364611ccb56293e9003b4a963288ab23bf5f6e7cc",
+        "Nodes/Overworld/MusicChanger.tscn": "f6a50dd17dd71d8070d19799b469e11b050474d9154ec8da6197375951d51506",
+        "Nodes/Overworld/Objects/Dead Bush.tscn": "7a30043cabe265011371f28a4460d384f2b42dc23ed7c03ff54cd927e3c23bfa",
+        "Nodes/Overworld/Objects/DroppedItem.tscn": "c18acf272118d4b6a46f14f8ad415a91420611276bddf14350b2842978741ba9",
+        "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+        "Nodes/Overworld/Objects/Zoo Gate.tscn": "afc873611e8c8583545a1179d15260dd12076f7524b3ff1e0a725f36cfab5904",
+        "Nodes/Overworld/birds.tscn": "06c0f2a9c29a4f96505f2ad7e8db567b0e35d3c2e6b66597472ed68b9bfb81b7",
+        "Nodes/Overworld/butterfly.tscn": "b6b2145de7b180462e6d7d3fb551b7f1ac8ce7350bbbbfabeffafbde8b3d0de4",
+        "Nodes/Overworld/camarea.tscn": "c4f6b652017358fd456e2ffd7cc2588e6f444c35fd13300a4b023a101f452b5f",
+        "Nodes/Overworld/dandelion spawner.tscn": "4d18237d64ed0e98fe8dd7cb25c148e5514b39bae23ec82031328279a74a7912",
+        "Nodes/Overworld/jump area.tscn": "7d958fc8bc6b6d5cc02f7c5e963e39e704a8b0aeb8234b564874e94e6e86a400",
+        "Nodes/Reusables/CutsceneArea.tscn": "ddea134b51c5ec2ff6a1d72ac0dd1c0c0e3bf95c90219a9233d73298e2565b6b",
+        "Nodes/Reusables/DebugStartPos.tscn": "84d19d56316d61b396d263ddd2f32efc1c68b09b2cbd1a936df9c1e08143bc73",
+        "Nodes/Reusables/Effects/Sparkles.tscn": "48c9c3059e58e51afe0b19f25fc63aefd4a2a137d1595f023833ce95deaf9e29",
+        "Nodes/Reusables/Reparenter.tscn": "1c39b1ac6035d7b51f0c330cc914d9b1aa04193085fb239e4aabc8f43ae66cbe",
+        "Nodes/Reusables/VendingMachineExterior.tscn": "f45dee9421d9df23066e1580f1beb87b9b90974d306653f0e2a42b39dbbc49af",
+        "Nodes/Reusables/atm exterior.tscn": "f92d033eeee338bb1e8d49ce77761de47df974f715bda13abd534bd39756d8f2",
+        "Nodes/Reusables/character_sprite.tscn": "c19848bfbb32949b65c95cecd06bf7e1507a4edd0bbb6a0428f63fc67b1c07ed",
+        "Nodes/Reusables/door_npc.tscn": "ff01e6eec42effb9afa08fc3f083201432e0ec4f4961fa88cb19bd10999acdb2",
+        "Nodes/Reusables/event activator.tscn": "9ccace1d2dee71e668627f8dd8c0132c4fac1214e37313d7f152a85c4f29a193",
+        "Nodes/Reusables/exterior payphone.tscn": "5138b462646bb4f07b5ff35577f57bffce7305c9fdd5145621cc785b6131d578",
+        "Nodes/Reusables/flag landmarks.tscn": "d22922175e73eef76816bf45ee338eb15fb866fbe37fd8b114e7ce942cf46699",
+        "Nodes/Reusables/interact_dialog.tscn": "7b0ec291cff7ad5983d4ea0e8390762bdfde484513020eadb8186c359d18e799",
+        "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+        "Nodes/Reusables/sprite_data_fetcher.tscn": "9b4720ea52e3e8799097417ceaaf64e392d6164059df91639f23fd479fc790a5",
+        "Nodes/Reusables/stairs.tscn": "62f5299b300b412c0be6cdf108f8ca29d24c35808c29396e33670d785016cb63",
+        "Nodes/Reusables/stepping sounds.tscn": "1eed635be051be42b0023a60b53b5bac3ec1a8b2fd0cc53558e526bd0a6771be",
+        "Nodes/Ui/ButtonPrompt.tscn": "bf17884e8c495fcb12da21aac196fee711f7001132db3070a79557b94df1298c",
+        "Nodes/Ui/Camera.tscn": "7ec4f9a466e960bb4643a6f8ced727ccabb25ea20c10c7752f13ebf405efc466",
+        "Nodes/Ui/MapScreen/MapArrows.tscn": "0337f1052703bf5da8849dc4bf61fe7e5af5c85f06a94bc601310decdc086d4e",
+        "Nodes/Ui/effects/melodyBG.gd": "3eff65bc321044357215128684fd8614845ed6aabd04a494bf26bbd3f3e3d77b",
+        "Nodes/Ui/effects/melodyBG.tscn": "0b46f8402ab0cde10d4743764035fb36719e73f90d044d738c2a62eb20f894c9",
+        "Nodes/Ui/emotes.tscn": "0fea0a87b30dfa3cdc9e87d120f7924416eecc02e99b6bd925177b2f1ad6c4eb",
+        "Scripts/Main/Camera2D.gd": "3598a2c5ef457edac40dda8893eb76fd1a01848ddd6a90db56491da077108ffa",
+        "Scripts/Main/CutsceneArea.gd": "8135247180b0935ad97de31105fcabe4a661c58769e58566ba586c34a8270e62",
+        "Scripts/Main/Dead Bush.gd": "0f32e757890d83c870057b5030e6c5e3398d2a9a163667145427a1b87ba06956",
+        "Scripts/Main/Door.gd": "67ffc3a807f4748b5cb0d6cc76c50cb3d8ad9d9a1d7b061634a47a2ec54f0e08",
+        "Scripts/Main/DroppedItem.gd": "f081754d16070337fa0ee20431ee9df984daf97934fb8de864f34a13fa3c85c2",
+        "Scripts/Main/Enemy Spawner.gd": "6aa09b9df8d640846a6d5f0b0acc7f88e650a826f2be0a16b0a68f153537773b",
+        "Scripts/Main/Event Activator.gd": "ee106f0c6514d7a219d6cbfe00fcb24357bba17b1cb111795f48bda9a1aa0247",
+        "Scripts/Main/Flag Landmarks.gd": "16a4ef685cd7b50ba73e80276381c22ed08e7ea0982b42ce5505b910bbcdefa5",
+        "Scripts/Main/Interact Dialog.gd": "a34e5eb3fba2ba2cacfbdc297457dcc92c22b89d39ef28264305544160c47406",
+        "Scripts/Main/Jump Area.gd": "8bd293ee91c6b02cf7ac78a52e4e438e7ca93bbe14cb4b92eff8414972519514",
+        "Scripts/Main/Openable Door.gd": "b5b129d766a83bbe3891eb45fbb40b7796c8eb340cbad465fd50d3c14728e35a",
+        "Scripts/Main/Present.gd": "5202251dee58a53231dc4929a9eaecb87072bcc059d7224201af7b4534c3fd98",
+        "Scripts/Main/Reparenter.gd": "7c8d093d6434d248df47f7300f866d1dcb7d25c399ebe664519006b3b7dfbcf5",
+        "Scripts/Main/RoomTypes/AreaRoom.gd": "d0e3dc55149ac00fe36d6fe5f8cceef0a65c0d7c268c135f892264623758e96d",
+        "Scripts/Main/SpriteDataFetcher.gd": "fd252d9d119d8c6eb9a4b15ed8575c95f4642e3232ea97925129281fe0d0f2e9",
+        "Scripts/Main/Stairs.gd": "3e0897ace860192ef893b0044d80c0980d1ed34a96ed16612aa784b5ba774cc5",
+        "Scripts/Main/Stepping Sounds.gd": "736c35dac834f5aa117f0d31df097071e1b2a5b8e68cf22eebb73bb498dbaf85",
+        "Scripts/Main/VendingMachine.gd": "af30e8be31b14e77b76fba5b53e7ad47479ca348d6cf72d136d705afdf1b489d",
+        "Scripts/Main/camarea.gd": "09377ce72846fc973d03cdee4017ee21259a5fc5ba86a0e3dca560c9ecfc8799",
+        "Scripts/Main/character_sprite.gd": "19db94e0f4901a217eac086b8de6df149200580660477d5a72cb8e8408a04498",
+        "Scripts/Main/door_npc.gd": "8dbdc968422e1eac23448a898f74237166ae711f0ac4ee92bec1985153abab0f",
+        "Scripts/Main/npc.gd": "aa699e0ef338f0329dffdf6581c226471034a000efbd1cc9672816ed8fa9fe86",
+        "Scripts/UI/Button Prompt.gd": "1c3ea6cbf0f2466439881fff7293f5ecbb4fa48b2ece11d4c9df72d206aa2ce2",
+        "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
+        "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
+        "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
+        "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
+        "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",
+        "Scripts/misc/dandelion spawner.gd": "0e5a3bc57d1e71f099e9853fd6264497c83f151fe7c37569e4dc56a710adfe07",
+        "Scripts/misc/grass spawner.gd": "734b21f991adc8b848f6bb10586787b9abd1debed5e9fca755283cdb33756f07",
+        "Scripts/misc/sparkles.gd": "a289b43a117d622e48f4cc485c4a33618f4fb7acf3343c34830a9cf641b0c436",
+        "Shaders/Distortionator.shader": "64a9def2d7ff85bf7d78cf2b253e4ca69a0fba55b6e40ce289f854e7c39f344c",
+        "Shaders/Flash.tres": "cd92272912c8183800e65c84d69ddb18c85e3c327cd523c17c525e7128cb5a1e",
+        "Shaders/Outline.shader": "8c01eb3919b34ee90d5ff45e491749108645e2404f10d00158f2df2511e00999",
+        "Tilesets/Podunk.tres": "56635e34e7b5994063159c15675fda0fbfb697aaf396a968c8bcdfba4d681177",
+        "Tilesets/PodunkWater.tres": "d78bdab8c4a2b50c2d686f9cc8b1ce687716ae1fc52af4725bbe819b2ef8b1a6",
+        "Translations/TranslatedTilesets/TilPodunk_translate.png": "e226f47263b77708de61acd8fe348a047f4729ef3662fd2e63f2c00237cd7d70",
+        "LICENSE": "1530b0853faace49e2df7e7f35026c2256766430921356998707ed7582cdf38d",
+        "Nodes/Overworld/Grass/grass.tscn": "62d2be59be6ecf35bef69dd22b7e03b9fa58e9b3e75e2bc2a43d9488b72d2942",
+        "Scripts/misc/grass.gd": "5535965143efac980530523f949ca48b7b849ae4e7d80c32cadef2691f594084",
+        "Graphics/Objects/Grass/Podunk/1.png": "da8865577c9e4a8495aa2f3a73b78a4e23b403f60657e057f5c08722bb9a7db0",
+        "Data/Dialogue/Reusable/doorblocked.yaml": "d6f8f581ffc9163dc3c145c3aea7e527d568c97388bbf21ab2d4de1970033e64",
+        "Data/Dialogue/Reusable/lockopened.yaml": "ed10dc7cda371e34202cd8fddbe84365b3f494e14f6e6b9d303c4c5d6d697930",
+        "Data/Dialogue/Reusable/locklocked.yaml": "7f5e8898ab912ad126367e1dda1c3f58a19872a5a6f969f4570d73d52cb5f462",
+        "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+        "Scripts/global/Item.gd": "209d4dd7fc586218211330c094109d2f1e212e2d9ff06a7c0dc8572bca40ad4c",
+        "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+        "Translations/TranslatedText/dialogue_Reusable - sheet.csv": "0b1bcea96072f15e19704f3d07792286dd9953601f92d6a1a6d267626624dedf",
+        "Audio/Sound effects/bash.mp3": "54b192a7e4c4c9bcf022ea1db1ab5cbd4deb0e8156d1d159bc4817ded945e598",
+        "Audio/Sound effects/M3/door_open.wav": "96254dbc6980cb8080bbae1321340768debc2690f3b76d55c2905611f869450c",
+        "Graphics/Objects/Doors/Podunk_White_Door.png.import": "79c5843295fa8315c36cbaaa76830fc063efcacd93d88292d576d048b47ab86a",
+        "Graphics/Objects/Doors/Podunk_Yellow_Door.png.import": "120d60884596215d8a15989207e42e33762a131bb799d8262f938026d1397e2a",
+        "Graphics/Objects/Doors/Podunk_Shop_Door.png.import": "4aacf6ba5e0c2230cd3d24c3461113862c89b0e4a12ad64c2f5c6cdc2ad90d12",
+        "Graphics/Objects/Doors/Podunk_Zoo_Office_Door.png.import": "abcf1484967d8618f4cf19c38497d0705b1780af61ef90e23cdb8e4d0c431c99",
+        "Graphics/Objects/Doors/Podunk_Building_Blue_Door.png.import": "84bae636c8b17c6458746f5deffd4049b42a457e91e15e1012cca675e41aeff4",
+        "Graphics/Objects/Doors/Podunk_Town_Hall_Door.png.import": "f5f0bf1544d4d1af1ae25543ad5aa99e27e8c9bee46176666892006a99326b81",
+        "Graphics/Objects/Doors/Podunk_Church_Door.png.import": "852682b2a86c5b72db55d199c4a1d0864ce7bd7375a6d57042cbf35d0506cecd",
+        "Audio/Sound effects/Gift Box.mp3.import": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+        "Data/Dialogue/ItemDialogue/presentcheck.yaml": "0d7faebe7fa884315140d7e038f39bef61401baca5eb31d3207c3b3ebd182b42",
+        "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
+        "Data/Dialogue/ItemDialogue/presentfull.yaml": "7e238088259d7d8af92602e1e3fbf633128d41535f41e0761ebc658f9c2e87d8",
+        "Data/Items/CapsuleDEF.yaml": "015a97a72b6ff468bb4201b801c9fde9fc08d50ba751fd429be5e1dd169af699",
+        "Data/Items/CapsuleHP.yaml": "e4c2c77b3cd4d9c76061830cfe3ae7cebc908f1df00c9b2dc5ab61cffc12c723",
+        "Data/Items/CapsuleIQ.yaml": "4be4d4fca22df4e67d669cef7f00f2430a44d91a9c5c0ec51bd864fa82fd3874",
+        "Data/Items/CapsuleOFE.yaml": "138b3d188d5c916902a4eae6319e5aab0018526699d42310958b8bddabef2629",
+        "Data/Items/CapsulePP.yaml": "6cb20586236910a3b56593937c62e0f6af396477e7883843132188f8cfc00db9",
+        "Data/Items/CapsuleSPD.yaml": "9b2fa7adee577e69085ab5684ee7b793a3a6648d45699083671ce80e19c33814",
+        "Data/Items/EagleFeather.yaml": "69602dc23c3e4821ecd57b70914367225861459f8c9df799fadd4b35598c6b95",
+        "Data/Items/FavFood.yaml": "af37bcef1ee7b36397ead1b46723ca54040d2cbb476bc262dbcbc980dd84cd4d",
+        "Data/Items/Fries.yaml": "b560c57132916853c0c860eb2df6431ca18d103daa74ac2ba586246e4217dd8f",
+        "Data/Items/Hamburger.yaml": "46e0926698265ace0fd5a257411b3fcfe88ebbf052424fd64c74fb6d77e1d9f0",
+        "Data/Items/Shovel.yaml": "b7548e3bd6a67cff62741fd6ed839e611620aac9e1197b089fa8cdee5ac8aef0",
+        "Graphics/Objects/Common/Present Box.png.import": "727991665e76eee2c179013caf8ffa149316e35444c831562e6d46ee869ec59e",
+        "Graphics/Objects/Common/Sparkles.png.import": "33e337c8dee8917d2a06ada23c12f713856b3066783771ab17c40adac214372a",
+        "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+        "Scripts/Main/FlaggableObject.gd": "779da0c3346be7ee373df0f2564cf8292a59ce72e193610d19694dc36ae98d4b",
+        "Scripts/Main/ItemHolder.gd": "85908ba1313a6dfae4fbbc3cf894f20b3a006fbe6594ffd479f4c40a31ad1b7d",
+        "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+        "Audio/Sound effects/Laugh Small.mp3.import": "91d8169b6f20249aea1a9766b3fb383db9b1345730ac15177db3373a291b49a4",
+        "Audio/Sound effects/Shock.mp3.import": "34f9e10222fe1e0b237645308336000d84e930d0083ec176e6d7f21308068da2",
+        "Audio/Sound effects/Barrel Coffin Explode.mp3.import": "ecc9027715bf8aa4d4de735698b1e6550adfd957e2d20ce1be7344c632594b1d",
+        "Data/Dialogue/Reusable/easytobreak.yaml": "4a02b5ca34c085ea6a33fcbf81b9da699babe4588689640985502d80c9312043",
+        "Data/Dialogue/Reusable/hardtobreak.yaml": "d6a45611cb64dc94fbaaf70321ed2d1dfdcce16ed2206079fa32b384b0132bd3",
+        "Graphics/Objects/Podunk/Dead Bush.png.import": "4ad90f6e9358c616d86e5eefcead4cb82e73b4c8cd8a543a5a98b44ddc993d48",
+        "Scripts/global/globalData.gd": "992b1f1a20ca5a5658d02b6ce16b94329a83836f9df5fe7df6b93453c3645c4c"
+      }
     }
   ],
   "assets": [
@@ -10795,13 +11186,21 @@
     {
       "id": 5,
       "kind": 1,
+      "path": "graphics/materials/259648254.t3x",
+      "bytes": 1045,
+      "crc32": 150412552,
+      "sha256": "8b8c67770106eebc5a5fb12c4138602e01ca432ffea593dafb8041abffab7fed"
+    },
+    {
+      "id": 6,
+      "kind": 1,
       "path": "graphics/npcs/01271471ef0866aa.t3x",
       "bytes": 65557,
       "crc32": 2479059642,
       "sha256": "a8bc5c27028c3767a83879a0617a3f49aee3047e6f3da4abb9365febc02928ed"
     },
     {
-      "id": 6,
+      "id": 7,
       "kind": 1,
       "path": "graphics/npcs/02f205d2408825c5.t3x",
       "bytes": 131093,
@@ -10809,7 +11208,7 @@
       "sha256": "d4a87c105ddd8c68aee8267a19462deb5b40217201f3be26c88e3b5ead335881"
     },
     {
-      "id": 7,
+      "id": 8,
       "kind": 1,
       "path": "graphics/npcs/03d2e2a6faab7e96.t3x",
       "bytes": 131093,
@@ -10817,7 +11216,7 @@
       "sha256": "e38b0da56f9a8a82a4f754b68e5f8b7f6252ee2e4eff2634b069e3d578b27ed6"
     },
     {
-      "id": 8,
+      "id": 9,
       "kind": 1,
       "path": "graphics/npcs/06220ae3de27be63.t3x",
       "bytes": 65557,
@@ -10825,7 +11224,7 @@
       "sha256": "2d5d95295627ff56c17d0a72f64c5b6e6293ececce79138e4298cc062d859247"
     },
     {
-      "id": 9,
+      "id": 10,
       "kind": 1,
       "path": "graphics/npcs/114b73ad7774fc61.t3x",
       "bytes": 32789,
@@ -10833,7 +11232,7 @@
       "sha256": "383800d56b71abb198dbe1ffc1b0731c8ae43f8161e2f0e4fd67290cd90bf7b3"
     },
     {
-      "id": 10,
+      "id": 11,
       "kind": 1,
       "path": "graphics/npcs/1b715fe14dac0abc.t3x",
       "bytes": 262165,
@@ -10841,7 +11240,7 @@
       "sha256": "51bd29e7151afb15ca25832fb1bde57dff935c6d02b7f87a50419c31a6d73c80"
     },
     {
-      "id": 11,
+      "id": 12,
       "kind": 1,
       "path": "graphics/npcs/1e851bb60b77c370.t3x",
       "bytes": 65557,
@@ -10849,7 +11248,7 @@
       "sha256": "56690a01ec9b51b3fb398b9628c7d06d617c3747ce66a00b0d207807cacbe151"
     },
     {
-      "id": 12,
+      "id": 13,
       "kind": 1,
       "path": "graphics/npcs/204ec058d8afaff1.t3x",
       "bytes": 65557,
@@ -10857,7 +11256,7 @@
       "sha256": "1fdf274bb29594a1c8800931065197714e20bc21fba57c91b3d5834779da2ea2"
     },
     {
-      "id": 13,
+      "id": 14,
       "kind": 1,
       "path": "graphics/npcs/217b2d61993752b0.t3x",
       "bytes": 65557,
@@ -10865,7 +11264,7 @@
       "sha256": "15b805082c4570c1017079eac6a5ff94d61c359783ed3d9bbacff023c378b27d"
     },
     {
-      "id": 14,
+      "id": 15,
       "kind": 1,
       "path": "graphics/npcs/255c72a93c6552d2.t3x",
       "bytes": 65557,
@@ -10873,7 +11272,7 @@
       "sha256": "ff2e4ecb86f2ca11795f8ae407f53384767de78b96f20c07be0ac5fc23f7d8a8"
     },
     {
-      "id": 15,
+      "id": 16,
       "kind": 1,
       "path": "graphics/npcs/3484482b0a997c62.t3x",
       "bytes": 65557,
@@ -10881,7 +11280,7 @@
       "sha256": "b758cb6cc38531e9e74b43d73721e580efd7afd919c6c19b12a3cc14b5993ba1"
     },
     {
-      "id": 16,
+      "id": 17,
       "kind": 1,
       "path": "graphics/npcs/38f306c181951bd1.t3x",
       "bytes": 65557,
@@ -10889,7 +11288,7 @@
       "sha256": "aa6972a20c42d0177399fd127751fe9000b526b4089bbf8f4204666ddfe48617"
     },
     {
-      "id": 17,
+      "id": 18,
       "kind": 1,
       "path": "graphics/npcs/3e8d732d1311cc1d.t3x",
       "bytes": 262165,
@@ -10897,7 +11296,7 @@
       "sha256": "ee7fb858b8374a454222eca9aac6aab97c6613320bffdbeee6cb0056b542fffd"
     },
     {
-      "id": 18,
+      "id": 19,
       "kind": 1,
       "path": "graphics/npcs/42e8a1f8baaa69da.t3x",
       "bytes": 32789,
@@ -10905,7 +11304,7 @@
       "sha256": "520b98c1561b20b12c6255559fe4f4ac75efe80dc742d13d7a2f2003981243e7"
     },
     {
-      "id": 19,
+      "id": 20,
       "kind": 1,
       "path": "graphics/npcs/4873cbe59f42a338.t3x",
       "bytes": 65557,
@@ -10913,7 +11312,7 @@
       "sha256": "c270af581f261a51020c41a57d6a1bb9765991b30185a57f8a21b867b1fe6cbf"
     },
     {
-      "id": 20,
+      "id": 21,
       "kind": 1,
       "path": "graphics/npcs/4986e485cceec6a4.t3x",
       "bytes": 65557,
@@ -10921,7 +11320,7 @@
       "sha256": "c5f5ae67dd62791707fe6f6934967732fce215b1793fa1eb827749f9f899e119"
     },
     {
-      "id": 21,
+      "id": 22,
       "kind": 1,
       "path": "graphics/npcs/498e42d5e82980d6.t3x",
       "bytes": 131093,
@@ -10929,7 +11328,7 @@
       "sha256": "ab717967735a5fc6c9530350a1412d694e64375020e72eb67d87b1a780983fbe"
     },
     {
-      "id": 22,
+      "id": 23,
       "kind": 1,
       "path": "graphics/npcs/5155bfc0c20fa29b.t3x",
       "bytes": 262165,
@@ -10937,7 +11336,7 @@
       "sha256": "864651380bac4618c48d7ec14b0cd99a35f4fa6b4ed898194650b8ed1b382230"
     },
     {
-      "id": 23,
+      "id": 24,
       "kind": 1,
       "path": "graphics/npcs/606da1a98c54dee4.t3x",
       "bytes": 65557,
@@ -10945,7 +11344,7 @@
       "sha256": "f74e27f10e697e7565aed7cd99c4649ff794b8ba363b12360578ddb3fe44ae33"
     },
     {
-      "id": 24,
+      "id": 25,
       "kind": 1,
       "path": "graphics/npcs/63c679183e376a3b.t3x",
       "bytes": 65557,
@@ -10953,7 +11352,7 @@
       "sha256": "164b8e2957ea8731712836dd58956245a1319d7f917fa93dc057a444bc651ff1"
     },
     {
-      "id": 25,
+      "id": 26,
       "kind": 1,
       "path": "graphics/npcs/64c39c6b8ba208ec.t3x",
       "bytes": 65557,
@@ -10961,7 +11360,7 @@
       "sha256": "a1a43ecd3942ec2919245ae48f82eb7a62a27d750bcb250fc63a613663ee99c1"
     },
     {
-      "id": 26,
+      "id": 27,
       "kind": 1,
       "path": "graphics/npcs/7bc4d2743151d101.t3x",
       "bytes": 65557,
@@ -10969,7 +11368,7 @@
       "sha256": "45e1b646ef539899a42bb6578fb315405d136413d7bcb4d41660ee7032123a2c"
     },
     {
-      "id": 27,
+      "id": 28,
       "kind": 1,
       "path": "graphics/npcs/8fd5422bf31f4ade.t3x",
       "bytes": 32789,
@@ -10977,7 +11376,7 @@
       "sha256": "93a5e2e53da5390ba1d9863d3276fb669738391bec01af82b9b0a1aaed9d55a5"
     },
     {
-      "id": 28,
+      "id": 29,
       "kind": 1,
       "path": "graphics/npcs/9153a9c13e53f780.t3x",
       "bytes": 131093,
@@ -10985,7 +11384,7 @@
       "sha256": "edd7898c541c9eda8372f23f64336ddf845437586054b4f1d7de4c62f4cc8a9f"
     },
     {
-      "id": 29,
+      "id": 30,
       "kind": 1,
       "path": "graphics/npcs/9bbb5525eed64bfd.t3x",
       "bytes": 65557,
@@ -10993,7 +11392,7 @@
       "sha256": "793b7da462e4311934acbf58ebbeccbe615a3d76a5660e029676fb21f3b26b8d"
     },
     {
-      "id": 30,
+      "id": 31,
       "kind": 1,
       "path": "graphics/npcs/9cab5e1babc1ad17.t3x",
       "bytes": 131093,
@@ -11001,7 +11400,7 @@
       "sha256": "2c181c938a0f80b3a2f554c19c4493d75f65902f08a7396711309ca1b567cfdd"
     },
     {
-      "id": 31,
+      "id": 32,
       "kind": 1,
       "path": "graphics/npcs/9da11b812372e609.t3x",
       "bytes": 524309,
@@ -11009,7 +11408,7 @@
       "sha256": "cc052f577cb43242ad42d7fbfced0eee4883f3040703f9f83d718578d06e69a9"
     },
     {
-      "id": 32,
+      "id": 33,
       "kind": 1,
       "path": "graphics/npcs/a4366f1e7a1e3c9f.t3x",
       "bytes": 65557,
@@ -11017,7 +11416,7 @@
       "sha256": "87ccf2743042ee1061f8960f47159629cedd45c39d90975e9acd2c0d4e05613e"
     },
     {
-      "id": 33,
+      "id": 34,
       "kind": 1,
       "path": "graphics/npcs/aca0fe01f1f06982.t3x",
       "bytes": 65557,
@@ -11025,7 +11424,7 @@
       "sha256": "dac2106a496d57cb29383b992ffa48bf11bd108a5ec2bf62d97f9a1f51db27e5"
     },
     {
-      "id": 34,
+      "id": 35,
       "kind": 1,
       "path": "graphics/npcs/b112c076980148e6.t3x",
       "bytes": 65557,
@@ -11033,7 +11432,7 @@
       "sha256": "2acb10f3342f7eeef6dcc09ff89cce817bed8fa639e79c2c033095e4fd28d8ce"
     },
     {
-      "id": 35,
+      "id": 36,
       "kind": 1,
       "path": "graphics/npcs/be6294b7a04f32cc.t3x",
       "bytes": 65557,
@@ -11041,7 +11440,7 @@
       "sha256": "7a7387226479af34e30f89d120f30aff471a285ebf0cbe816f80536b322c50da"
     },
     {
-      "id": 36,
+      "id": 37,
       "kind": 1,
       "path": "graphics/npcs/bec08e65be733b60.t3x",
       "bytes": 131093,
@@ -11049,7 +11448,7 @@
       "sha256": "b0411f608de42e180d2d2e56bac82d63649ecd691a9f973e4dc58f66664cf5da"
     },
     {
-      "id": 37,
+      "id": 38,
       "kind": 1,
       "path": "graphics/npcs/c0b4e7ed43c1e607.t3x",
       "bytes": 65557,
@@ -11057,7 +11456,7 @@
       "sha256": "d06ea73ecb1d05de824662ac62655d6b0f3a12e3e3a6de3dea92e46ae123796a"
     },
     {
-      "id": 38,
+      "id": 39,
       "kind": 1,
       "path": "graphics/npcs/cc1ae5724b7c75b9.t3x",
       "bytes": 65557,
@@ -11065,7 +11464,7 @@
       "sha256": "53627320d30eaf02779ba7620282401121ae3bc4895e9b88946a56b573b39edf"
     },
     {
-      "id": 39,
+      "id": 40,
       "kind": 1,
       "path": "graphics/npcs/cee9e5a000cf9c5e.t3x",
       "bytes": 131093,
@@ -11073,7 +11472,7 @@
       "sha256": "21e4c467802fd75814016e08947fd5e5b937797f00d47fac8f73bfe25fc207ab"
     },
     {
-      "id": 40,
+      "id": 41,
       "kind": 1,
       "path": "graphics/npcs/d521695159db6ba7.t3x",
       "bytes": 65557,
@@ -11081,7 +11480,7 @@
       "sha256": "0d1d6211738070eb4d74920f38cff03a0ee217833f415acc66ded1dca8bbc4b9"
     },
     {
-      "id": 41,
+      "id": 42,
       "kind": 1,
       "path": "graphics/npcs/dad927bc9d7b1390.t3x",
       "bytes": 65557,
@@ -11089,7 +11488,7 @@
       "sha256": "fdde069f2ebdf1fe2c1e4220ea848de86ebeedbaab215bb571cc79b382cfc940"
     },
     {
-      "id": 42,
+      "id": 43,
       "kind": 1,
       "path": "graphics/npcs/e52d1fd8128e4e4f.t3x",
       "bytes": 1048597,
@@ -11097,7 +11496,7 @@
       "sha256": "fe5d479069c44a200d3300ffe5be9ea7e579bc9519d15d60870d20da576ce375"
     },
     {
-      "id": 43,
+      "id": 44,
       "kind": 1,
       "path": "graphics/npcs/ebe2e05cecbb7ad3.t3x",
       "bytes": 262165,
@@ -11105,7 +11504,7 @@
       "sha256": "beb2bdb86a9a152148bfeb0d6338d756bb26fbcf6b893efad8be95f11d93b839"
     },
     {
-      "id": 44,
+      "id": 45,
       "kind": 1,
       "path": "graphics/npcs/f3d8bde280d016f8.t3x",
       "bytes": 65557,
@@ -11113,7 +11512,7 @@
       "sha256": "ded975d36226afa1798ceff196fc3fb5c28d6556c10182944573fe00a459196b"
     },
     {
-      "id": 45,
+      "id": 46,
       "kind": 1,
       "path": "graphics/objects/birds/0.t3x",
       "bytes": 16405,
@@ -11121,7 +11520,7 @@
       "sha256": "f5b20858b37e99d0119d9e50d2dad03ba0f3acb5024147fd07377715260716c9"
     },
     {
-      "id": 46,
+      "id": 47,
       "kind": 1,
       "path": "graphics/objects/birds/1.t3x",
       "bytes": 16405,
@@ -11129,7 +11528,7 @@
       "sha256": "cbfc433c0b0b49816cc7914614c5c75fad5a26f3de32d957a0512ef5806e500b"
     },
     {
-      "id": 47,
+      "id": 48,
       "kind": 1,
       "path": "graphics/objects/birds/2.t3x",
       "bytes": 16405,
@@ -11137,7 +11536,7 @@
       "sha256": "bdcce31f6cc8c109ab62be39162d059207b4d32ec6e4eab76ccfacc7464dd2f3"
     },
     {
-      "id": 48,
+      "id": 49,
       "kind": 1,
       "path": "graphics/objects/butterfly/0.t3x",
       "bytes": 2069,
@@ -11145,7 +11544,7 @@
       "sha256": "eedc42f89604a8d280b5467b87e9c9a9a21adf5a1f8db330cc7d1f4ddaa4ef4e"
     },
     {
-      "id": 49,
+      "id": 50,
       "kind": 1,
       "path": "graphics/objects/butterfly/1.t3x",
       "bytes": 2069,
@@ -11153,7 +11552,7 @@
       "sha256": "495ae67cc67bb1dce86660be25ec63007e6dc7ec272a531de4422aa4c5726c14"
     },
     {
-      "id": 50,
+      "id": 51,
       "kind": 1,
       "path": "graphics/objects/butterfly/2.t3x",
       "bytes": 2069,
@@ -11161,7 +11560,7 @@
       "sha256": "9fd3b49955fb46f08ab0b89f5dc3153826e516976a2cdab7b9f86d2f7bce1bd2"
     },
     {
-      "id": 51,
+      "id": 52,
       "kind": 1,
       "path": "graphics/objects/butterfly/3.t3x",
       "bytes": 2069,
@@ -11169,7 +11568,7 @@
       "sha256": "f953a3d0f8c5c5cf6a590165b1987b766cf57c1bf1cca76ff309c8057a46fe32"
     },
     {
-      "id": 52,
+      "id": 53,
       "kind": 1,
       "path": "graphics/objects/butterfly/4.t3x",
       "bytes": 2069,
@@ -11177,7 +11576,7 @@
       "sha256": "0ea444376df1f29f409c2a76a01c6edf9414d2960268e8ca15ed4f58c109171a"
     },
     {
-      "id": 53,
+      "id": 54,
       "kind": 1,
       "path": "graphics/objects/dead-bush.t3x",
       "bytes": 262165,
@@ -11185,7 +11584,7 @@
       "sha256": "46aeb68294cd8d884b8fadc23585788fe85f3f2a4b69de6d0939fde5f9ebd1f3"
     },
     {
-      "id": 54,
+      "id": 55,
       "kind": 1,
       "path": "graphics/objects/doors/1044936970.t3x",
       "bytes": 16405,
@@ -11193,7 +11592,7 @@
       "sha256": "bf9ed1e9530d752089aec00ae2f882a7bf590dfc8325bca3d0324a303a5d5e29"
     },
     {
-      "id": 55,
+      "id": 56,
       "kind": 1,
       "path": "graphics/objects/doors/17837692.t3x",
       "bytes": 8213,
@@ -11201,7 +11600,7 @@
       "sha256": "c243c41e4d32bf9a2d4b3e1e7eb07b9a82e391e68b6ae05082140277be7d2da2"
     },
     {
-      "id": 56,
+      "id": 57,
       "kind": 1,
       "path": "graphics/objects/doors/2455671415.t3x",
       "bytes": 8213,
@@ -11209,7 +11608,7 @@
       "sha256": "b261b984191b8151500d08fd5623c6e00c10eebdb33f346aafe9d024ca6a8c22"
     },
     {
-      "id": 57,
+      "id": 58,
       "kind": 1,
       "path": "graphics/objects/doors/288814501.t3x",
       "bytes": 8213,
@@ -11217,7 +11616,7 @@
       "sha256": "9171a764265cab91f9f3fe2790524e06bd2b954005b1f5bf4c1b86e3ed579488"
     },
     {
-      "id": 58,
+      "id": 59,
       "kind": 1,
       "path": "graphics/objects/doors/3417100819.t3x",
       "bytes": 8213,
@@ -11225,7 +11624,7 @@
       "sha256": "7afce7a27b0e16ade4798e8813c33010ca2bb195721dab65d823eafa30a417ab"
     },
     {
-      "id": 59,
+      "id": 60,
       "kind": 1,
       "path": "graphics/objects/doors/3720749051.t3x",
       "bytes": 8213,
@@ -11233,7 +11632,7 @@
       "sha256": "0af512bf6e2bcaef5e82818116e60f09096d7112a2dadcb0a02ff3a411fdebed"
     },
     {
-      "id": 60,
+      "id": 61,
       "kind": 1,
       "path": "graphics/objects/doors/553757799.t3x",
       "bytes": 8213,
@@ -11241,7 +11640,7 @@
       "sha256": "cab0a8c3a83d8cf90cbd7c83ef3eb3aeeba58392867401e7e9a9bf6afb394e26"
     },
     {
-      "id": 61,
+      "id": 62,
       "kind": 1,
       "path": "graphics/objects/dropped/3229455756.t3x",
       "bytes": 4117,
@@ -11249,7 +11648,7 @@
       "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6"
     },
     {
-      "id": 62,
+      "id": 63,
       "kind": 1,
       "path": "graphics/objects/dropped/3969821641.t3x",
       "bytes": 4117,
@@ -11257,7 +11656,7 @@
       "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b"
     },
     {
-      "id": 63,
+      "id": 64,
       "kind": 1,
       "path": "graphics/objects/dropped/466181776.t3x",
       "bytes": 4117,
@@ -11265,7 +11664,7 @@
       "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead"
     },
     {
-      "id": 64,
+      "id": 65,
       "kind": 1,
       "path": "graphics/objects/payphone.t3x",
       "bytes": 8213,
@@ -11273,7 +11672,7 @@
       "sha256": "b7f3e811fcf25f7a44f5dd49fcb039cf742adc596e463dc0d35ca55d74f0dc05"
     },
     {
-      "id": 65,
+      "id": 66,
       "kind": 1,
       "path": "graphics/objects/present/present.t3x",
       "bytes": 8213,
@@ -11281,7 +11680,7 @@
       "sha256": "f1def99f7c79dba2039c13ad8d03d38a9180157f9e527aba68bc027cb726f0b8"
     },
     {
-      "id": 66,
+      "id": 67,
       "kind": 1,
       "path": "graphics/objects/vending-machine.t3x",
       "bytes": 16405,
@@ -11289,7 +11688,7 @@
       "sha256": "1fa27a6601f552a8fe6178dbb40cf0d1e185ac285ce03c8ae87ff88764002252"
     },
     {
-      "id": 67,
+      "id": 68,
       "kind": 1,
       "path": "graphics/player/bat_swing.t3x",
       "bytes": 4194325,
@@ -11297,7 +11696,7 @@
       "sha256": "28ae80e41c28153a6ba4dab2b924bdbf857861e35d42e6d7da81704af96c88fc"
     },
     {
-      "id": 68,
+      "id": 69,
       "kind": 1,
       "path": "graphics/player/magic_ripple.t3x",
       "bytes": 2069,
@@ -11305,7 +11704,7 @@
       "sha256": "5fa8d0f93510a317fafc5b8824ffa268247ccbc8fbe498aad30699faff47e60f"
     },
     {
-      "id": 69,
+      "id": 70,
       "kind": 1,
       "path": "graphics/player/resource-122296163.t3x",
       "bytes": 262165,
@@ -11313,7 +11712,7 @@
       "sha256": "07e11b8d91b3a179e8c6732b4603a188c1e85db5c84259e724cff80b9b0b74b1"
     },
     {
-      "id": 70,
+      "id": 71,
       "kind": 1,
       "path": "graphics/player/resource-2271392734.t3x",
       "bytes": 8213,
@@ -11321,7 +11720,7 @@
       "sha256": "a071fb75b30615a116185b414f47c41f3624685e2bf2857c41a87f4cf8d70ea5"
     },
     {
-      "id": 71,
+      "id": 72,
       "kind": 1,
       "path": "graphics/player/resource-2751338057.t3x",
       "bytes": 4194325,
@@ -11329,7 +11728,7 @@
       "sha256": "d776a7f066996394d15a8b0cd7b14a2840f97311ad5d679a16317329fca8ecb1"
     },
     {
-      "id": 72,
+      "id": 73,
       "kind": 1,
       "path": "graphics/player/resource-3485896102.t3x",
       "bytes": 65557,
@@ -11337,7 +11736,7 @@
       "sha256": "e3a84e86efebdd87c0554b45bb4ae2fd4667ebbe4ced2038c6b252a37d225026"
     },
     {
-      "id": 73,
+      "id": 74,
       "kind": 1,
       "path": "graphics/player/resource-3516114529.t3x",
       "bytes": 1045,
@@ -11345,7 +11744,7 @@
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
     {
-      "id": 74,
+      "id": 75,
       "kind": 1,
       "path": "graphics/player/resource-4168475363.t3x",
       "bytes": 4194325,
@@ -11353,7 +11752,7 @@
       "sha256": "4de09df797b9cf45250d8ecb0087dc4fe618b085d6f23223a10b08ff447c73cb"
     },
     {
-      "id": 75,
+      "id": 76,
       "kind": 1,
       "path": "graphics/player/resource-4265933975.t3x",
       "bytes": 4194325,
@@ -11361,7 +11760,7 @@
       "sha256": "8abb36956e38073cd7ed89cb71ed743265f7cbf3635138d6152f373f2c54a743"
     },
     {
-      "id": 76,
+      "id": 77,
       "kind": 1,
       "path": "graphics/player/water_ripple.t3x",
       "bytes": 2069,
@@ -11369,7 +11768,7 @@
       "sha256": "d4de20a9b4619fa0efa2f61d9c573841f3136402a2ef3c1e77f7896207523530"
     },
     {
-      "id": 77,
+      "id": 78,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/590.t3x",
       "bytes": 16405,
@@ -11377,7 +11776,7 @@
       "sha256": "8cd1a2444a62fe440c3685f3c0f2a0f024484c92ed6915deb6426392ce3258d8"
     },
     {
-      "id": 78,
+      "id": 79,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/592.t3x",
       "bytes": 533,
@@ -11385,7 +11784,7 @@
       "sha256": "4fbf3bca5c489aea0a59440e07aa9d35916950cba4de46b08329b4eb76fd58c1"
     },
     {
-      "id": 79,
+      "id": 80,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/594.t3x",
       "bytes": 8213,
@@ -11393,7 +11792,7 @@
       "sha256": "3349b3fce658d3996461fcb9ff9e15d592b7938df20e5db7313ad22bfc40e02f"
     },
     {
-      "id": 80,
+      "id": 81,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/599.t3x",
       "bytes": 8213,
@@ -11401,7 +11800,7 @@
       "sha256": "9171a764265cab91f9f3fe2790524e06bd2b954005b1f5bf4c1b86e3ed579488"
     },
     {
-      "id": 81,
+      "id": 82,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/609.t3x",
       "bytes": 533,
@@ -11409,7 +11808,7 @@
       "sha256": "de93df8cbfb5175ff7afb97f551694a5ec6fd4b8b465499bbe8cd37aabebc383"
     },
     {
-      "id": 82,
+      "id": 83,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/622.t3x",
       "bytes": 8213,
@@ -11417,7 +11816,7 @@
       "sha256": "b261b984191b8151500d08fd5623c6e00c10eebdb33f346aafe9d024ca6a8c22"
     },
     {
-      "id": 83,
+      "id": 84,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/633.t3x",
       "bytes": 16405,
@@ -11425,7 +11824,7 @@
       "sha256": "87ae18a5d04d6ee0d5518b78c54e818a6abc20235608bfc70d0ca46ae675a9c6"
     },
     {
-      "id": 84,
+      "id": 85,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/635.t3x",
       "bytes": 8213,
@@ -11433,7 +11832,7 @@
       "sha256": "f1def99f7c79dba2039c13ad8d03d38a9180157f9e527aba68bc027cb726f0b8"
     },
     {
-      "id": 85,
+      "id": 86,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/655.t3x",
       "bytes": 1045,
@@ -11441,7 +11840,7 @@
       "sha256": "5e275091a1880881238637395088bc9a5ad974594ea51f98fc890775b53d510e"
     },
     {
-      "id": 86,
+      "id": 87,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/694.t3x",
       "bytes": 533,
@@ -11449,7 +11848,7 @@
       "sha256": "42fc596c6cbda01867ccf518b90558eb34c7c083766a903811245475a6bc5e85"
     },
     {
-      "id": 87,
+      "id": 88,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/696.t3x",
       "bytes": 65557,
@@ -11457,7 +11856,7 @@
       "sha256": "793b7da462e4311934acbf58ebbeccbe615a3d76a5660e029676fb21f3b26b8d"
     },
     {
-      "id": 88,
+      "id": 89,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/698.t3x",
       "bytes": 1048597,
@@ -11465,7 +11864,7 @@
       "sha256": "65b5b99815f10ed402ce9abf2de91d7e4f98158258bfa481a8a1d6bd447cf362"
     },
     {
-      "id": 89,
+      "id": 90,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/734.t3x",
       "bytes": 262165,
@@ -11473,7 +11872,7 @@
       "sha256": "46aeb68294cd8d884b8fadc23585788fe85f3f2a4b69de6d0939fde5f9ebd1f3"
     },
     {
-      "id": 90,
+      "id": 91,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/747.t3x",
       "bytes": 4117,
@@ -11481,7 +11880,7 @@
       "sha256": "8bd7498dfd75e980c007b25744900070bfb7bd8d12fb571ac3201623b5af9436"
     },
     {
-      "id": 91,
+      "id": 92,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/756.t3x",
       "bytes": 16405,
@@ -11489,7 +11888,7 @@
       "sha256": "f5b20858b37e99d0119d9e50d2dad03ba0f3acb5024147fd07377715260716c9"
     },
     {
-      "id": 92,
+      "id": 93,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/770.t3x",
       "bytes": 2069,
@@ -11497,7 +11896,7 @@
       "sha256": "eedc42f89604a8d280b5467b87e9c9a9a21adf5a1f8db330cc7d1f4ddaa4ef4e"
     },
     {
-      "id": 93,
+      "id": 94,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/775.t3x",
       "bytes": 131093,
@@ -11505,7 +11904,7 @@
       "sha256": "d4a87c105ddd8c68aee8267a19462deb5b40217201f3be26c88e3b5ead335881"
     },
     {
-      "id": 94,
+      "id": 95,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/791.t3x",
       "bytes": 8213,
@@ -11513,7 +11912,7 @@
       "sha256": "629f812027523869c5034714ba392a04babade25c1b009d1422149fb841409b1"
     },
     {
-      "id": 95,
+      "id": 96,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/798.t3x",
       "bytes": 8213,
@@ -11521,7 +11920,7 @@
       "sha256": "b7f3e811fcf25f7a44f5dd49fcb039cf742adc596e463dc0d35ca55d74f0dc05"
     },
     {
-      "id": 96,
+      "id": 97,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/805.t3x",
       "bytes": 16405,
@@ -11529,7 +11928,7 @@
       "sha256": "1fa27a6601f552a8fe6178dbb40cf0d1e185ac285ce03c8ae87ff88764002252"
     },
     {
-      "id": 97,
+      "id": 98,
       "kind": 1,
       "path": "graphics/sprites/canvas-art/832.t3x",
       "bytes": 1045,
@@ -11537,7 +11936,7 @@
       "sha256": "99554030643f9a660d82bf3aa511be7fb1d73d63267a7af78051fcf36814c3a4"
     },
     {
-      "id": 98,
+      "id": 99,
       "kind": 1,
       "path": "graphics/story/present-sparkles/sparkles.t3x",
       "bytes": 2069,
@@ -11545,7 +11944,7 @@
       "sha256": "e7ff7514ae9d502d0538738bbe8a8d513eb3c7d70fe46f08713bbc7b49482829"
     },
     {
-      "id": 99,
+      "id": 100,
       "kind": 1,
       "path": "graphics/ui/field-goods/bar.t3x",
       "bytes": 149,
@@ -11553,7 +11952,7 @@
       "sha256": "dca7f8f779793056796223c2de13c0754854c75ecadefa0a3092f0f8f2bdf08a"
     },
     {
-      "id": 100,
+      "id": 101,
       "kind": 1,
       "path": "graphics/ui/field-goods/cursor0.t3x",
       "bytes": 57,
@@ -11561,7 +11960,7 @@
       "sha256": "b82500a210c83cd13a34545292b8eae3d21993a498fa567b01632f07d08405cb"
     },
     {
-      "id": 101,
+      "id": 102,
       "kind": 1,
       "path": "graphics/ui/field-goods/cursor1.t3x",
       "bytes": 57,
@@ -11569,7 +11968,7 @@
       "sha256": "bc1cc4b3bc0d09749a143d56fc625811cee181e7e9eefde2a85688d4ccd6a33b"
     },
     {
-      "id": 102,
+      "id": 103,
       "kind": 1,
       "path": "graphics/ui/field-goods/cursor2.t3x",
       "bytes": 57,
@@ -11577,7 +11976,7 @@
       "sha256": "5fb76d8fbf3225160ba38ebae55a647c73d88d9eeb7a295ad42523f59a427631"
     },
     {
-      "id": 103,
+      "id": 104,
       "kind": 1,
       "path": "graphics/ui/field-goods/down.t3x",
       "bytes": 81,
@@ -11585,7 +11984,7 @@
       "sha256": "740b7d24b6b2c00034d0dd6f4572a04e5c143ef50cab5c79e01ddcc35c6ed761"
     },
     {
-      "id": 104,
+      "id": 105,
       "kind": 1,
       "path": "graphics/ui/field-goods/equipped.t3x",
       "bytes": 73,
@@ -11593,7 +11992,7 @@
       "sha256": "20907c33f6fa8deabcd6f6f73d93b0c3200315e57f5b8ac707210079ade3b700"
     },
     {
-      "id": 105,
+      "id": 106,
       "kind": 1,
       "path": "graphics/ui/field-goods/indicator.t3x",
       "bytes": 69,
@@ -11601,7 +12000,7 @@
       "sha256": "aedb94141a3564e3ecb27760a194514f47d116b0162fe0f25ec890419e1c3e62"
     },
     {
-      "id": 106,
+      "id": 107,
       "kind": 1,
       "path": "graphics/ui/field-goods/inside.t3x",
       "bytes": 137,
@@ -11609,7 +12008,7 @@
       "sha256": "ef1f54db27588e907254c5d16d06fcb4e8437c49ebc79992dbe083cee24a2fa4"
     },
     {
-      "id": 107,
+      "id": 108,
       "kind": 1,
       "path": "graphics/ui/field-goods/key-hl.t3x",
       "bytes": 277,
@@ -11617,7 +12016,7 @@
       "sha256": "2345c760126f6324f3e2d422dc5bb87bdf7e4b1e02fd2d8aa3faf376f833ca19"
     },
     {
-      "id": 108,
+      "id": 109,
       "kind": 1,
       "path": "graphics/ui/field-goods/key.t3x",
       "bytes": 261,
@@ -11625,7 +12024,7 @@
       "sha256": "9937f541729b3a2e8effaa333fa43e416598ec884608d73469dc87ea5a1c6386"
     },
     {
-      "id": 109,
+      "id": 110,
       "kind": 1,
       "path": "graphics/ui/field-goods/ninten-hl.t3x",
       "bytes": 405,
@@ -11633,7 +12032,7 @@
       "sha256": "189a02f6cc4c0e3a55850733f99a483f513bdeceb52c7992ffb346cc40a066d3"
     },
     {
-      "id": 110,
+      "id": 111,
       "kind": 1,
       "path": "graphics/ui/field-goods/ninten.t3x",
       "bytes": 381,
@@ -11641,7 +12040,7 @@
       "sha256": "bb3e12ad6a6d75a11f1b67abd917ca311ee33d09373699e26fb30d7ee6cfbfdc"
     },
     {
-      "id": 111,
+      "id": 112,
       "kind": 1,
       "path": "graphics/ui/field-goods/scroll-bg.t3x",
       "bytes": 41,
@@ -11649,7 +12048,7 @@
       "sha256": "59a113e0a2013d6421ab0f6c81dae3cc10e3bae82d1b9a1f188f2049f42cd274"
     },
     {
-      "id": 112,
+      "id": 113,
       "kind": 1,
       "path": "graphics/ui/field-goods/scroll-thumb.t3x",
       "bytes": 65,
@@ -11657,7 +12056,7 @@
       "sha256": "d262ce0bb60965d737cd88c97a93339d6519c97e01bddfb5aa245c5da6277caf"
     },
     {
-      "id": 113,
+      "id": 114,
       "kind": 1,
       "path": "graphics/ui/field-goods/stats.t3x",
       "bytes": 509,
@@ -11665,7 +12064,7 @@
       "sha256": "07e182f79ab181cdf40c2eab805a961699c059a4256f535a5692fb0144de07df"
     },
     {
-      "id": 114,
+      "id": 115,
       "kind": 1,
       "path": "graphics/ui/field-goods/up.t3x",
       "bytes": 81,
@@ -11673,7 +12072,7 @@
       "sha256": "7d8cd0b7479133688de60c4c17cd77e78b51d4e14b6cae90db905a2e5c001df1"
     },
     {
-      "id": 115,
+      "id": 116,
       "kind": 1,
       "path": "graphics/ui/field-inventory/equipped.t3x",
       "bytes": 73,
@@ -11681,7 +12080,7 @@
       "sha256": "20907c33f6fa8deabcd6f6f73d93b0c3200315e57f5b8ac707210079ade3b700"
     },
     {
-      "id": 116,
+      "id": 117,
       "kind": 1,
       "path": "graphics/ui/field-item-details/asthma-status.t3x",
       "bytes": 1045,
@@ -11689,7 +12088,7 @@
       "sha256": "08e919bb8aa5876a9dce6dd1a29addb8a043bcf3e1063ce6770854c42ba0c664"
     },
     {
-      "id": 117,
+      "id": 118,
       "kind": 1,
       "path": "graphics/ui/field-item-details/asthmaspray.t3x",
       "bytes": 4117,
@@ -11697,7 +12096,7 @@
       "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd"
     },
     {
-      "id": 118,
+      "id": 119,
       "kind": 1,
       "path": "graphics/ui/field-item-details/baseballcap.t3x",
       "bytes": 4117,
@@ -11705,7 +12104,7 @@
       "sha256": "c348428f72a469e12e0fac00567142d7a4c396197c73c7b28d469c20b52141f7"
     },
     {
-      "id": 119,
+      "id": 120,
       "kind": 1,
       "path": "graphics/ui/field-item-details/blinded-status.t3x",
       "bytes": 2069,
@@ -11713,7 +12112,7 @@
       "sha256": "b4b77495688305e6a07ddd91cf8f4c40ae8de5606f685469590abf62e25b9eec"
     },
     {
-      "id": 120,
+      "id": 121,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsuledef.t3x",
       "bytes": 4117,
@@ -11721,7 +12120,7 @@
       "sha256": "4c14b510755d8f981a7dc56573f815aeb2527388dfcd34b3e2bafb9ae904f800"
     },
     {
-      "id": 121,
+      "id": 122,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsulehp.t3x",
       "bytes": 4117,
@@ -11729,7 +12128,7 @@
       "sha256": "7db5101a8abc54a4b74e5547c247b8b4cbe17b5e695d6c0e9b32c35f630eb142"
     },
     {
-      "id": 122,
+      "id": 123,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsuleiq.t3x",
       "bytes": 4117,
@@ -11737,7 +12136,7 @@
       "sha256": "8db1ddb1649f5b6a61fae0c0e4bd1e65929861183dafb9ef9764a028412529f1"
     },
     {
-      "id": 123,
+      "id": 124,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsuleofe.t3x",
       "bytes": 4117,
@@ -11745,7 +12144,7 @@
       "sha256": "c2fb878e5a3d5563391ef84f3ef2f6e207238b3c2072b4f1571e7b92a20266fb"
     },
     {
-      "id": 124,
+      "id": 125,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsulepp.t3x",
       "bytes": 4117,
@@ -11753,7 +12152,7 @@
       "sha256": "14a51a41097165c99e43cc4d55f57781bbccb02b046b2534488e26e6b2e0c6f0"
     },
     {
-      "id": 125,
+      "id": 126,
       "kind": 1,
       "path": "graphics/ui/field-item-details/capsulespd.t3x",
       "bytes": 4117,
@@ -11761,7 +12160,7 @@
       "sha256": "96615c10feb5d309fe8bab412daf8184e33dc7bf5f7df0654d51dc2d7b764473"
     },
     {
-      "id": 126,
+      "id": 127,
       "kind": 1,
       "path": "graphics/ui/field-item-details/cashcard.t3x",
       "bytes": 4117,
@@ -11769,7 +12168,7 @@
       "sha256": "8252d0cd0ece22a5e84047a2d727063ec73510e760b82e6056599a4aaf7819f7"
     },
     {
-      "id": 127,
+      "id": 128,
       "kind": 1,
       "path": "graphics/ui/field-item-details/eaglefeather.t3x",
       "bytes": 4117,
@@ -11777,7 +12176,7 @@
       "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6"
     },
     {
-      "id": 128,
+      "id": 129,
       "kind": 1,
       "path": "graphics/ui/field-item-details/eyedrops.t3x",
       "bytes": 4117,
@@ -11785,7 +12184,7 @@
       "sha256": "09898e21981eb7508b1fd07d7787988ccd70ed76da08cb77601239c9e8491049"
     },
     {
-      "id": 129,
+      "id": 130,
       "kind": 1,
       "path": "graphics/ui/field-item-details/favfood.t3x",
       "bytes": 4117,
@@ -11793,7 +12192,7 @@
       "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead"
     },
     {
-      "id": 130,
+      "id": 131,
       "kind": 1,
       "path": "graphics/ui/field-item-details/fries.t3x",
       "bytes": 4117,
@@ -11801,7 +12200,7 @@
       "sha256": "582dc546bb5783a74dcb388122c0509f28ea6f11b7c68d276444be4b26404eb6"
     },
     {
-      "id": 131,
+      "id": 132,
       "kind": 1,
       "path": "graphics/ui/field-item-details/ggfdiary.t3x",
       "bytes": 4117,
@@ -11809,7 +12208,7 @@
       "sha256": "de24fc5f30cad37ea26082bf4ef6f7b9b0bb731056d7b497464a4cb5c2590fbe"
     },
     {
-      "id": 132,
+      "id": 133,
       "kind": 1,
       "path": "graphics/ui/field-item-details/hamburger.t3x",
       "bytes": 4117,
@@ -11817,7 +12216,7 @@
       "sha256": "e6f4e6874992bcac7e7a3b6c84e9b14c87c466e23adf69a813e8a3af4d218859"
     },
     {
-      "id": 133,
+      "id": 134,
       "kind": 1,
       "path": "graphics/ui/field-item-details/keybasement.t3x",
       "bytes": 4117,
@@ -11825,7 +12224,7 @@
       "sha256": "3f0b09eb22ff4491059c6714505ebe8279a969f6984f87d45f42fd55c5dc26c6"
     },
     {
-      "id": 134,
+      "id": 135,
       "kind": 1,
       "path": "graphics/ui/field-item-details/phonecard.t3x",
       "bytes": 4117,
@@ -11833,7 +12232,7 @@
       "sha256": "e8fb01b105e3a615b326794c34a3dec94f4e73d5729998904d9b59e73c61f4bc"
     },
     {
-      "id": 135,
+      "id": 136,
       "kind": 1,
       "path": "graphics/ui/field-item-details/shovel.t3x",
       "bytes": 4117,
@@ -11841,7 +12240,7 @@
       "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b"
     },
     {
-      "id": 136,
+      "id": 137,
       "kind": 1,
       "path": "graphics/ui/field-item-details/sportsdrink.t3x",
       "bytes": 4117,
@@ -11849,7 +12248,7 @@
       "sha256": "6a6318acd974342714f78d2a5f0ad80fc0777009656ead09f57b531498704d59"
     },
     {
-      "id": 137,
+      "id": 138,
       "kind": 1,
       "path": "graphics/ui/house-button-prompts/accept.t3x",
       "bytes": 2069,
@@ -11857,7 +12256,7 @@
       "sha256": "09a3afeef81068e7510329077fad1d30b0f0d6a807b522c8c7db83e273da1b93"
     },
     {
-      "id": 138,
+      "id": 139,
       "kind": 1,
       "path": "graphics/ui/house/dialogue_box.t3x",
       "bytes": 4117,
@@ -11865,7 +12264,7 @@
       "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
     },
     {
-      "id": 139,
+      "id": 140,
       "kind": 1,
       "path": "graphics/ui/house/name_box.t3x",
       "bytes": 16405,
@@ -11873,7 +12272,7 @@
       "sha256": "04ba759f658b1cf9fc26b194c26ca492303d2243fd8b09c4bc443bd44628e300"
     },
     {
-      "id": 140,
+      "id": 141,
       "kind": 1,
       "path": "graphics/ui/map-arrows/cursor.t3x",
       "bytes": 1045,
@@ -11881,7 +12280,7 @@
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
     {
-      "id": 141,
+      "id": 142,
       "kind": 1,
       "path": "graphics/ui/shop/0.t3x",
       "bytes": 4117,
@@ -11889,7 +12288,7 @@
       "sha256": "fe7878caaa48c7f557f96aefda7fb82118d3f9e9effb00352c61e9341d821b0d"
     },
     {
-      "id": 142,
+      "id": 143,
       "kind": 1,
       "path": "graphics/ui/shop/1.t3x",
       "bytes": 4117,
@@ -11897,7 +12296,7 @@
       "sha256": "51ecf4578c9b197f271333d0fffa5f96b7f74e525c2687520cbc6cc20e997e34"
     },
     {
-      "id": 143,
+      "id": 144,
       "kind": 1,
       "path": "graphics/ui/shop/10.t3x",
       "bytes": 277,
@@ -11905,7 +12304,7 @@
       "sha256": "41c27a2418f67560bd8758023c6e70295fedaccb14b75146e7c77d07d84d6e92"
     },
     {
-      "id": 144,
+      "id": 145,
       "kind": 1,
       "path": "graphics/ui/shop/11.t3x",
       "bytes": 4117,
@@ -11913,7 +12312,7 @@
       "sha256": "88adb3470064a23a80c362f5a3ce1a0f57e6f4e285d2713a3cd76bb6d1dc32fd"
     },
     {
-      "id": 145,
+      "id": 146,
       "kind": 1,
       "path": "graphics/ui/shop/12.t3x",
       "bytes": 4117,
@@ -11921,7 +12320,7 @@
       "sha256": "c348428f72a469e12e0fac00567142d7a4c396197c73c7b28d469c20b52141f7"
     },
     {
-      "id": 146,
+      "id": 147,
       "kind": 1,
       "path": "graphics/ui/shop/13.t3x",
       "bytes": 4117,
@@ -11929,7 +12328,7 @@
       "sha256": "4c14b510755d8f981a7dc56573f815aeb2527388dfcd34b3e2bafb9ae904f800"
     },
     {
-      "id": 147,
+      "id": 148,
       "kind": 1,
       "path": "graphics/ui/shop/14.t3x",
       "bytes": 4117,
@@ -11937,7 +12336,7 @@
       "sha256": "7db5101a8abc54a4b74e5547c247b8b4cbe17b5e695d6c0e9b32c35f630eb142"
     },
     {
-      "id": 148,
+      "id": 149,
       "kind": 1,
       "path": "graphics/ui/shop/15.t3x",
       "bytes": 4117,
@@ -11945,7 +12344,7 @@
       "sha256": "8db1ddb1649f5b6a61fae0c0e4bd1e65929861183dafb9ef9764a028412529f1"
     },
     {
-      "id": 149,
+      "id": 150,
       "kind": 1,
       "path": "graphics/ui/shop/16.t3x",
       "bytes": 4117,
@@ -11953,7 +12352,7 @@
       "sha256": "c2fb878e5a3d5563391ef84f3ef2f6e207238b3c2072b4f1571e7b92a20266fb"
     },
     {
-      "id": 150,
+      "id": 151,
       "kind": 1,
       "path": "graphics/ui/shop/17.t3x",
       "bytes": 4117,
@@ -11961,7 +12360,7 @@
       "sha256": "14a51a41097165c99e43cc4d55f57781bbccb02b046b2534488e26e6b2e0c6f0"
     },
     {
-      "id": 151,
+      "id": 152,
       "kind": 1,
       "path": "graphics/ui/shop/18.t3x",
       "bytes": 4117,
@@ -11969,7 +12368,7 @@
       "sha256": "96615c10feb5d309fe8bab412daf8184e33dc7bf5f7df0654d51dc2d7b764473"
     },
     {
-      "id": 152,
+      "id": 153,
       "kind": 1,
       "path": "graphics/ui/shop/19.t3x",
       "bytes": 4117,
@@ -11977,7 +12376,7 @@
       "sha256": "8252d0cd0ece22a5e84047a2d727063ec73510e760b82e6056599a4aaf7819f7"
     },
     {
-      "id": 153,
+      "id": 154,
       "kind": 1,
       "path": "graphics/ui/shop/2.t3x",
       "bytes": 4117,
@@ -11985,7 +12384,7 @@
       "sha256": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807"
     },
     {
-      "id": 154,
+      "id": 155,
       "kind": 1,
       "path": "graphics/ui/shop/20.t3x",
       "bytes": 4117,
@@ -11993,7 +12392,7 @@
       "sha256": "1554c5e653a08ae9efdbe108b390a6cbf045c7b8f0dcb6aa460634c10f25c8d6"
     },
     {
-      "id": 155,
+      "id": 156,
       "kind": 1,
       "path": "graphics/ui/shop/21.t3x",
       "bytes": 4117,
@@ -12001,7 +12400,7 @@
       "sha256": "09898e21981eb7508b1fd07d7787988ccd70ed76da08cb77601239c9e8491049"
     },
     {
-      "id": 156,
+      "id": 157,
       "kind": 1,
       "path": "graphics/ui/shop/22.t3x",
       "bytes": 4117,
@@ -12009,7 +12408,7 @@
       "sha256": "7f402fd2d8f972632496894fc78a8f909c1a66bd1a1cb47c4c48ebcc7447dead"
     },
     {
-      "id": 157,
+      "id": 158,
       "kind": 1,
       "path": "graphics/ui/shop/23.t3x",
       "bytes": 4117,
@@ -12017,7 +12416,7 @@
       "sha256": "582dc546bb5783a74dcb388122c0509f28ea6f11b7c68d276444be4b26404eb6"
     },
     {
-      "id": 158,
+      "id": 159,
       "kind": 1,
       "path": "graphics/ui/shop/24.t3x",
       "bytes": 4117,
@@ -12025,7 +12424,7 @@
       "sha256": "de24fc5f30cad37ea26082bf4ef6f7b9b0bb731056d7b497464a4cb5c2590fbe"
     },
     {
-      "id": 159,
+      "id": 160,
       "kind": 1,
       "path": "graphics/ui/shop/25.t3x",
       "bytes": 4117,
@@ -12033,7 +12432,7 @@
       "sha256": "e6f4e6874992bcac7e7a3b6c84e9b14c87c466e23adf69a813e8a3af4d218859"
     },
     {
-      "id": 160,
+      "id": 161,
       "kind": 1,
       "path": "graphics/ui/shop/26.t3x",
       "bytes": 4117,
@@ -12041,7 +12440,7 @@
       "sha256": "3f0b09eb22ff4491059c6714505ebe8279a969f6984f87d45f42fd55c5dc26c6"
     },
     {
-      "id": 161,
+      "id": 162,
       "kind": 1,
       "path": "graphics/ui/shop/27.t3x",
       "bytes": 4117,
@@ -12049,7 +12448,7 @@
       "sha256": "e8fb01b105e3a615b326794c34a3dec94f4e73d5729998904d9b59e73c61f4bc"
     },
     {
-      "id": 162,
+      "id": 163,
       "kind": 1,
       "path": "graphics/ui/shop/28.t3x",
       "bytes": 4117,
@@ -12057,7 +12456,7 @@
       "sha256": "e2bbc8b2634324c19d432501cbe346c2517a71dd332fe9a0120c27b2d9aac79b"
     },
     {
-      "id": 163,
+      "id": 164,
       "kind": 1,
       "path": "graphics/ui/shop/29.t3x",
       "bytes": 4117,
@@ -12065,7 +12464,7 @@
       "sha256": "6a6318acd974342714f78d2a5f0ad80fc0777009656ead09f57b531498704d59"
     },
     {
-      "id": 164,
+      "id": 165,
       "kind": 1,
       "path": "graphics/ui/shop/3.t3x",
       "bytes": 277,
@@ -12073,7 +12472,7 @@
       "sha256": "094e86dacf285fa00cbd9d975ac42583b8f03eaa58de668efda82daae2b78287"
     },
     {
-      "id": 165,
+      "id": 166,
       "kind": 1,
       "path": "graphics/ui/shop/30.t3x",
       "bytes": 4117,
@@ -12081,7 +12480,7 @@
       "sha256": "fc0f7a78e16eb7c760926168210828ee36ba92964f7e6764ea5f0df1df8ed688"
     },
     {
-      "id": 166,
+      "id": 167,
       "kind": 1,
       "path": "graphics/ui/shop/31.t3x",
       "bytes": 4117,
@@ -12089,7 +12488,7 @@
       "sha256": "e84048378fc026fd70cb8461965e3e7cd97580b4be1c2532bcb1b6baf4e78f18"
     },
     {
-      "id": 167,
+      "id": 168,
       "kind": 1,
       "path": "graphics/ui/shop/32.t3x",
       "bytes": 4117,
@@ -12097,7 +12496,7 @@
       "sha256": "fa7441713e5806d5fe0a3a46a7fca5e166019d1b7a7e3af16b464789eb94252f"
     },
     {
-      "id": 168,
+      "id": 169,
       "kind": 1,
       "path": "graphics/ui/shop/33.t3x",
       "bytes": 4117,
@@ -12105,7 +12504,7 @@
       "sha256": "02b9963ed42044b83b1e5d4381e91ec35a83aaac8308bacb8e4247844bf21f43"
     },
     {
-      "id": 169,
+      "id": 170,
       "kind": 1,
       "path": "graphics/ui/shop/34.t3x",
       "bytes": 4117,
@@ -12113,7 +12512,7 @@
       "sha256": "d02f18b3037ae8f55e8267d83fa615eabcfced6bc96ae1a3aa3f6220b619797a"
     },
     {
-      "id": 170,
+      "id": 171,
       "kind": 1,
       "path": "graphics/ui/shop/35.t3x",
       "bytes": 4117,
@@ -12121,7 +12520,7 @@
       "sha256": "1d8dcffa533347b57b2537c3b8d0a0f352b77e9319075a0901ef511ec163e5f2"
     },
     {
-      "id": 171,
+      "id": 172,
       "kind": 1,
       "path": "graphics/ui/shop/36.t3x",
       "bytes": 4117,
@@ -12129,7 +12528,7 @@
       "sha256": "1d8dcffa533347b57b2537c3b8d0a0f352b77e9319075a0901ef511ec163e5f2"
     },
     {
-      "id": 172,
+      "id": 173,
       "kind": 1,
       "path": "graphics/ui/shop/37.t3x",
       "bytes": 4117,
@@ -12137,7 +12536,7 @@
       "sha256": "38d30261ce5df1958a3547c5ed07158195925e15dd61a4f7017d199546bded14"
     },
     {
-      "id": 173,
+      "id": 174,
       "kind": 1,
       "path": "graphics/ui/shop/38.t3x",
       "bytes": 4117,
@@ -12145,7 +12544,7 @@
       "sha256": "f549b767dba681ae9ebe001bf77fb140fe632c17ae4eb7e2c7789bfb7d84b62f"
     },
     {
-      "id": 174,
+      "id": 175,
       "kind": 1,
       "path": "graphics/ui/shop/39.t3x",
       "bytes": 4117,
@@ -12153,7 +12552,7 @@
       "sha256": "e7fcbeb709f8872c6ee759cdb1981c1cc37fe36829d431848856221c66096ad4"
     },
     {
-      "id": 175,
+      "id": 176,
       "kind": 1,
       "path": "graphics/ui/shop/4.t3x",
       "bytes": 277,
@@ -12161,7 +12560,7 @@
       "sha256": "c1264403312908e5f4e4b6a01f351e16e2382b04792aba7248e422f6321d70a0"
     },
     {
-      "id": 176,
+      "id": 177,
       "kind": 1,
       "path": "graphics/ui/shop/40.t3x",
       "bytes": 4117,
@@ -12169,7 +12568,7 @@
       "sha256": "31c190b989b7819230276c4789540801bb115d70676438d7cc0c9af73de2afad"
     },
     {
-      "id": 177,
+      "id": 178,
       "kind": 1,
       "path": "graphics/ui/shop/41.t3x",
       "bytes": 4117,
@@ -12177,7 +12576,7 @@
       "sha256": "842ac58573f2a8c85777c67acad557d42a3e337a016c9cf4dbd6cb311e185f75"
     },
     {
-      "id": 178,
+      "id": 179,
       "kind": 1,
       "path": "graphics/ui/shop/42.t3x",
       "bytes": 4117,
@@ -12185,7 +12584,7 @@
       "sha256": "eda5b3f20d65599b4217e23197b80fb0c906b0bcf8401a4c12eca3d342a80886"
     },
     {
-      "id": 179,
+      "id": 180,
       "kind": 1,
       "path": "graphics/ui/shop/43.t3x",
       "bytes": 4117,
@@ -12193,7 +12592,7 @@
       "sha256": "d901d0d7a28bfc52c24eaaee412ca8cc7f2c1a7585dca4434bea035e5f922c3e"
     },
     {
-      "id": 180,
+      "id": 181,
       "kind": 1,
       "path": "graphics/ui/shop/44.t3x",
       "bytes": 4117,
@@ -12201,7 +12600,7 @@
       "sha256": "d901d0d7a28bfc52c24eaaee412ca8cc7f2c1a7585dca4434bea035e5f922c3e"
     },
     {
-      "id": 181,
+      "id": 182,
       "kind": 1,
       "path": "graphics/ui/shop/45.t3x",
       "bytes": 4117,
@@ -12209,7 +12608,7 @@
       "sha256": "eb6bc8447ee75645647c6000d61e91663d4f67897fc656eb224e38586b04ce3f"
     },
     {
-      "id": 182,
+      "id": 183,
       "kind": 1,
       "path": "graphics/ui/shop/5.t3x",
       "bytes": 1045,
@@ -12217,7 +12616,7 @@
       "sha256": "2fa90445a6280db291c8f81d46cd14f1a95a52c704ffae0d1639318b0b649516"
     },
     {
-      "id": 183,
+      "id": 184,
       "kind": 1,
       "path": "graphics/ui/shop/6.t3x",
       "bytes": 1045,
@@ -12225,7 +12624,7 @@
       "sha256": "0c4523fc10cb075c2637f6606adcb707ee927c55f28b4c847e4ba79a23885ffc"
     },
     {
-      "id": 184,
+      "id": 185,
       "kind": 1,
       "path": "graphics/ui/shop/7.t3x",
       "bytes": 277,
@@ -12233,7 +12632,7 @@
       "sha256": "7c96816402258022bba1b8f10fed9240744c24423ea1382a1f91e5094e16d469"
     },
     {
-      "id": 185,
+      "id": 186,
       "kind": 1,
       "path": "graphics/ui/shop/8.t3x",
       "bytes": 4117,
@@ -12241,7 +12640,7 @@
       "sha256": "6f16bd07aabce0683c239af8f336a8cf27d9bd116b9fe72cabcda20f605a6103"
     },
     {
-      "id": 186,
+      "id": 187,
       "kind": 1,
       "path": "graphics/ui/shop/9.t3x",
       "bytes": 277,
@@ -12249,7 +12648,7 @@
       "sha256": "45de60e183b033c30763ac35c60c571278bfb5342b741cf91f54fdd8b4be4f73"
     },
     {
-      "id": 187,
+      "id": 188,
       "kind": 1,
       "path": "graphics/world/podunk/dandelion-seed.t3x",
       "bytes": 277,
@@ -12257,7 +12656,7 @@
       "sha256": "1a6c9a499da3a506399ac6a0c8c44e4566f2763c4fdd2a9035afc8edd3c3334c"
     },
     {
-      "id": 188,
+      "id": 189,
       "kind": 1,
       "path": "graphics/world/podunk/dandelion.t3x",
       "bytes": 533,
@@ -12265,7 +12664,7 @@
       "sha256": "4fbf3bca5c489aea0a59440e07aa9d35916950cba4de46b08329b4eb76fd58c1"
     },
     {
-      "id": 189,
+      "id": 190,
       "kind": 1,
       "path": "graphics/world/podunk/grass-0.t3x",
       "bytes": 16405,
@@ -12273,7 +12672,7 @@
       "sha256": "8cd1a2444a62fe440c3685f3c0f2a0f024484c92ed6915deb6426392ce3258d8"
     },
     {
-      "id": 190,
+      "id": 191,
       "kind": 1,
       "path": "graphics/world/podunk/grass-1.t3x",
       "bytes": 16405,
@@ -12281,7 +12680,7 @@
       "sha256": "d67346169e16fb741c649bfbc3e853201e00331b24f1795ace08ec415c958d18"
     },
     {
-      "id": 191,
+      "id": 192,
       "kind": 1,
       "path": "graphics/world/podunk/map-0-0-0.t3x",
       "bytes": 4194325,
@@ -12289,7 +12688,7 @@
       "sha256": "0c25fb2e1ccc24c55402525e6c316a2ea0376339409b1a47cef2acd921e154d0"
     },
     {
-      "id": 192,
+      "id": 193,
       "kind": 1,
       "path": "graphics/world/podunk/map-0-1024-0.t3x",
       "bytes": 524309,
@@ -12297,7 +12696,7 @@
       "sha256": "0e8953c3522aa4bc38e0f30d56a45a1167982c9653a3713a4f7d5597399808e8"
     },
     {
-      "id": 193,
+      "id": 194,
       "kind": 1,
       "path": "graphics/world/podunk/map-1-0-0.t3x",
       "bytes": 65557,
@@ -12305,7 +12704,7 @@
       "sha256": "76b13e6022bbd9a496661c646aeb2008346d1a5837746b4e54a1a68aeaebf26e"
     },
     {
-      "id": 194,
+      "id": 195,
       "kind": 1,
       "path": "graphics/world/podunk/map-2-0-0.t3x",
       "bytes": 65557,
@@ -12313,7 +12712,7 @@
       "sha256": "4072f0daeaf567990d98ff4673a4bbcdc28e807b39324ccea1f471b17a7b2bba"
     },
     {
-      "id": 195,
+      "id": 196,
       "kind": 1,
       "path": "graphics/world/podunk/map-3-0-0.t3x",
       "bytes": 65557,
@@ -12321,7 +12720,7 @@
       "sha256": "4f35d2be1686a10146dadcc2c14380d11812d20c34efd6b9e81d009dc6f1b561"
     },
     {
-      "id": 196,
+      "id": 197,
       "kind": 1,
       "path": "graphics/world/podunk/map-4-0-0.t3x",
       "bytes": 65557,
@@ -12329,7 +12728,7 @@
       "sha256": "d5b25a5a982e04f917074439baa1633563210093dceb2bb6c6817dc232357e37"
     },
     {
-      "id": 197,
+      "id": 198,
       "kind": 1,
       "path": "graphics/world/podunk/map-5-0-0.t3x",
       "bytes": 1048597,
@@ -12337,7 +12736,7 @@
       "sha256": "48a4e007e4d70f85e9fed10d0ae5213225775a225b9395bc29516dc35e648cbb"
     },
     {
-      "id": 198,
+      "id": 199,
       "kind": 3,
       "path": "shaders/field-camera-arrows.shbin",
       "bytes": 280,
@@ -12345,7 +12744,7 @@
       "sha256": "24ba7af2bbe9913ba99bbb9d17bcef15a9286465723e564171a29b528a877287"
     },
     {
-      "id": 199,
+      "id": 200,
       "kind": 3,
       "path": "shaders/field-canvas-art.shbin",
       "bytes": 280,
@@ -12353,7 +12752,7 @@
       "sha256": "24ba7af2bbe9913ba99bbb9d17bcef15a9286465723e564171a29b528a877287"
     },
     {
-      "id": 200,
+      "id": 201,
       "kind": 5,
       "path": "sound/banks/opening.encaudio",
       "bytes": 6340,
@@ -12361,7 +12760,7 @@
       "sha256": "f8c1215fd839cc264e46f34ed9c8df0c0652d64c421d416e5d8dd421cf448299"
     },
     {
-      "id": 201,
+      "id": 202,
       "kind": 5,
       "path": "sound/banks/podunk-scene-effects.encaudio",
       "bytes": 1279,
@@ -12369,7 +12768,7 @@
       "sha256": "a7ea96437024c28d3326a7f67e7ae69c1ba6d4582144db25d8734bc1a7e126e6"
     },
     {
-      "id": 202,
+      "id": 203,
       "kind": 5,
       "path": "sound/banks/podunk.encaudio",
       "bytes": 888,
@@ -12377,7 +12776,7 @@
       "sha256": "1973c1e63a2365e56aac6fcca0d01db22768a4bc2f5eb53ab5c26f2ebdc4e8f8"
     },
     {
-      "id": 203,
+      "id": 204,
       "kind": 6,
       "path": "sound/banks/podunk.encmusic",
       "bytes": 2003,
@@ -12385,7 +12784,7 @@
       "sha256": "66e4979f9c96dd628daabea77ff803201c3eb8d99c169286637b878f4b47a039"
     },
     {
-      "id": 204,
+      "id": 205,
       "kind": 2,
       "path": "sound/effects/bash.pcm",
       "bytes": 88196,
@@ -12393,7 +12792,7 @@
       "sha256": "0c212e38f9648ca0d7995cabcf2b943dba2ad99adad899e956442788e4aae77c"
     },
     {
-      "id": 205,
+      "id": 206,
       "kind": 2,
       "path": "sound/effects/cursor-back.pcm",
       "bytes": 3844,
@@ -12401,7 +12800,7 @@
       "sha256": "c1c2cadaea3ca8186efd29e863a41b09a691cf3f422241e4c60ccdaf1c85937c"
     },
     {
-      "id": 206,
+      "id": 207,
       "kind": 2,
       "path": "sound/effects/cursor-move.pcm",
       "bytes": 10240,
@@ -12409,7 +12808,7 @@
       "sha256": "750301508a9e702a1c1adf66029c05334dc5bbae31bd3f8a30db5661eb8f60e3"
     },
     {
-      "id": 207,
+      "id": 208,
       "kind": 2,
       "path": "sound/effects/cursor-restricted.pcm",
       "bytes": 14966,
@@ -12417,7 +12816,7 @@
       "sha256": "8326bbc1c70baed1d5818c265ac456e17767ad6509fb95529f887d83c04ae839"
     },
     {
-      "id": 208,
+      "id": 209,
       "kind": 2,
       "path": "sound/effects/cursor-select.pcm",
       "bytes": 14336,
@@ -12425,7 +12824,7 @@
       "sha256": "ceeeb3237adc3a1639bd15930bdf72ac5668ab3d5264fa9ece624da3e475b0e9"
     },
     {
-      "id": 209,
+      "id": 210,
       "kind": 2,
       "path": "sound/effects/dead-bush.pcm",
       "bytes": 30618,
@@ -12433,7 +12832,7 @@
       "sha256": "083b5b698f4b567160aa4e4e395060016964d74625e927bbb3cc70ace6c607ea"
     },
     {
-      "id": 210,
+      "id": 211,
       "kind": 2,
       "path": "sound/effects/doll-postwin-smash.pcm",
       "bytes": 175680,
@@ -12441,7 +12840,7 @@
       "sha256": "13e1767f062a1b77594f0428655a382f26f6adddf1509c219472e6f0d421cbb6"
     },
     {
-      "id": 211,
+      "id": 212,
       "kind": 2,
       "path": "sound/effects/emote-2209671527.pcm",
       "bytes": 57788,
@@ -12449,7 +12848,7 @@
       "sha256": "ac69600e953bc437c444f36044b4dd2d91eb5f4552bc276356f0acae8444b822"
     },
     {
-      "id": 212,
+      "id": 213,
       "kind": 2,
       "path": "sound/effects/emote-458463090.pcm",
       "bytes": 271872,
@@ -12457,7 +12856,7 @@
       "sha256": "fbc79abae6c8cf3321ac152580bf09cf529535b04a36b9c18926b0d8380501a4"
     },
     {
-      "id": 213,
+      "id": 214,
       "kind": 2,
       "path": "sound/effects/field-menu-close.pcm",
       "bytes": 35280,
@@ -12465,7 +12864,7 @@
       "sha256": "cd8edf55b1247c0dcde0ca68862af62a598c6cfea53de06514564844c682c756"
     },
     {
-      "id": 214,
+      "id": 215,
       "kind": 2,
       "path": "sound/effects/field-menu-open.pcm",
       "bytes": 35280,
@@ -12473,7 +12872,7 @@
       "sha256": "a707c5761a3369847577a5dd23ef5d8c28c9bb3eacb90620fe07a282583ad74e"
     },
     {
-      "id": 215,
+      "id": 216,
       "kind": 2,
       "path": "sound/effects/field-psi-heal.pcm",
       "bytes": 85124,
@@ -12481,7 +12880,7 @@
       "sha256": "12d503830a2586f147c86eaacb949c5cc20c889fb7cea8f66fe7bce8e50adbad"
     },
     {
-      "id": 216,
+      "id": 217,
       "kind": 2,
       "path": "sound/effects/goods-close.pcm",
       "bytes": 35280,
@@ -12489,7 +12888,7 @@
       "sha256": "1ad7e3e35190fb3e1b232a07bce5e6f80f4428bf20897cbdac3974c47d25d9c9"
     },
     {
-      "id": 217,
+      "id": 218,
       "kind": 2,
       "path": "sound/effects/goods-open.pcm",
       "bytes": 35280,
@@ -12497,7 +12896,7 @@
       "sha256": "d253c6024ac6c24953d10f9e4cd0a09be9c69e9a8d9399830917bbf365d41c3d"
     },
     {
-      "id": 218,
+      "id": 219,
       "kind": 2,
       "path": "sound/effects/introduction-kid-text.pcm",
       "bytes": 14336,
@@ -12505,7 +12904,7 @@
       "sha256": "3442491d9a6ab0bf843fa339e7865c03c317d031529637906d87b269f7b7e578"
     },
     {
-      "id": 219,
+      "id": 220,
       "kind": 2,
       "path": "sound/effects/introduction-teleport.pcm",
       "bytes": 174220,
@@ -12513,7 +12912,7 @@
       "sha256": "d4f01f48675d8e2ef8a35afe0f71d988f34b37b8702113bb5adc1e84788e4e6d"
     },
     {
-      "id": 220,
+      "id": 221,
       "kind": 2,
       "path": "sound/effects/introduction-text.pcm",
       "bytes": 3840,
@@ -12521,7 +12920,7 @@
       "sha256": "00214e73fd47ccd15f9a0c5019e584febe8cb4fa474925d6eac7044dcfb36bae"
     },
     {
-      "id": 221,
+      "id": 222,
       "kind": 2,
       "path": "sound/effects/introduction-thunder.pcm",
       "bytes": 338100,
@@ -12529,7 +12928,7 @@
       "sha256": "46113def40102327d47df699af3fa141b4843649ab030a3418467631bfb2e072"
     },
     {
-      "id": 222,
+      "id": 223,
       "kind": 2,
       "path": "sound/effects/item-consume.pcm",
       "bytes": 44100,
@@ -12537,7 +12936,7 @@
       "sha256": "e7dba08c5885bef7319a1d46aa750a19e71742203ca2273f0853c897878dbff5"
     },
     {
-      "id": 223,
+      "id": 224,
       "kind": 2,
       "path": "sound/effects/item-received.pcm",
       "bytes": 30250,
@@ -12545,7 +12944,7 @@
       "sha256": "858109671300cadb85113b4f5e09613e9567e9dc89f9815f567c3d00c7c24cf5"
     },
     {
-      "id": 224,
+      "id": 225,
       "kind": 2,
       "path": "sound/effects/learned-psi.pcm",
       "bytes": 283772,
@@ -12553,7 +12952,7 @@
       "sha256": "46724f324b6647a8fc10d7d20efac20af63b5b307e506c67306e340c6d61eec2"
     },
     {
-      "id": 225,
+      "id": 226,
       "kind": 2,
       "path": "sound/effects/melody-remembered.pcm",
       "bytes": 192644,
@@ -12561,7 +12960,7 @@
       "sha256": "28302bba09f15508f1591b34ffbfa43bdf7dd260c06495065a29205fdf5b7811"
     },
     {
-      "id": 226,
+      "id": 227,
       "kind": 2,
       "path": "sound/effects/mick-whining.pcm",
       "bytes": 114688,
@@ -12569,7 +12968,7 @@
       "sha256": "7cc92aca57090d96671bf7d4127fc2f1f82da97ea078887570ca2b60613ddb35"
     },
     {
-      "id": 227,
+      "id": 228,
       "kind": 2,
       "path": "sound/effects/mick-woof.pcm",
       "bytes": 104816,
@@ -12577,7 +12976,7 @@
       "sha256": "dc7689a33a7c8bc4fffd0c221fb53612f7d688039dedc78b8d5c7c2749b88cd9"
     },
     {
-      "id": 228,
+      "id": 229,
       "kind": 2,
       "path": "sound/effects/openable-door/130294754.pcm",
       "bytes": 88196,
@@ -12585,7 +12984,7 @@
       "sha256": "0c212e38f9648ca0d7995cabcf2b943dba2ad99adad899e956442788e4aae77c"
     },
     {
-      "id": 229,
+      "id": 230,
       "kind": 2,
       "path": "sound/effects/openable-door/1456608675.pcm",
       "bytes": 61740,
@@ -12593,7 +12992,7 @@
       "sha256": "f70e2bb4d410fec6e70edec43967395851f4f3541f19f46d542d9f0dc5077a6e"
     },
     {
-      "id": 230,
+      "id": 231,
       "kind": 2,
       "path": "sound/effects/openable-door/1988640769.pcm",
       "bytes": 42576,
@@ -12601,7 +13000,7 @@
       "sha256": "3519e83798cf6edf3309f80daf8a0af3b6f3f1feacfe61bb988f71fa68261829"
     },
     {
-      "id": 231,
+      "id": 232,
       "kind": 2,
       "path": "sound/effects/phone-hangup.pcm",
       "bytes": 8282,
@@ -12609,7 +13008,7 @@
       "sha256": "96cb26c1eb21b66ac57b527d0a595448b3aa81fdddfcba701322004f1a14f367"
     },
     {
-      "id": 232,
+      "id": 233,
       "kind": 2,
       "path": "sound/effects/phone-ring.pcm",
       "bytes": 44100,
@@ -12617,7 +13016,7 @@
       "sha256": "83b716a9d57fb5b640114e14e8713f2f09454dceb4ba6a2af370294a7bb6807e"
     },
     {
-      "id": 233,
+      "id": 234,
       "kind": 2,
       "path": "sound/effects/player-2958539110.pcm",
       "bytes": 57788,
@@ -12625,7 +13024,7 @@
       "sha256": "ac69600e953bc437c444f36044b4dd2d91eb5f4552bc276356f0acae8444b822"
     },
     {
-      "id": 234,
+      "id": 235,
       "kind": 2,
       "path": "sound/effects/player-3506099269.pcm",
       "bytes": 44896,
@@ -12633,7 +13032,7 @@
       "sha256": "93366149f37acc99303157c76e9f44aa15de6ee63220ee245d39a04395d884ac"
     },
     {
-      "id": 235,
+      "id": 236,
       "kind": 2,
       "path": "sound/effects/player-431886036.pcm",
       "bytes": 271872,
@@ -12641,7 +13040,7 @@
       "sha256": "fbc79abae6c8cf3321ac152580bf09cf529535b04a36b9c18926b0d8380501a4"
     },
     {
-      "id": 236,
+      "id": 237,
       "kind": 2,
       "path": "sound/effects/player-890270501.pcm",
       "bytes": 77824,
@@ -12649,7 +13048,7 @@
       "sha256": "a02fda3b93502221bbdd35bdc3b7086b797dd501aa69d0872511d158f7c4e143"
     },
     {
-      "id": 237,
+      "id": 238,
       "kind": 2,
       "path": "sound/effects/present-unwrapped.pcm",
       "bytes": 18432,
@@ -12657,7 +13056,7 @@
       "sha256": "1f6e543441606e7e394f70d217a40bb1ec1bccb9c53c4e103be4376c387c124f"
     },
     {
-      "id": 238,
+      "id": 239,
       "kind": 2,
       "path": "sound/effects/scene/knock.pcm",
       "bytes": 44100,
@@ -12665,7 +13064,7 @@
       "sha256": "33e29d4690224c9a9788a6c218e3f9f5c8ac6ed8266476ba7098babdaa2c3bca"
     },
     {
-      "id": 239,
+      "id": 240,
       "kind": 2,
       "path": "sound/effects/shop-register.pcm",
       "bytes": 8608,
@@ -12673,7 +13072,7 @@
       "sha256": "6cf3c7f13a4f548d6bec553d343397f910ba2a28d70dad4c62a7805c4286439c"
     },
     {
-      "id": 240,
+      "id": 241,
       "kind": 2,
       "path": "sound/effects/storage-clear.pcm",
       "bytes": 9168,
@@ -12681,7 +13080,7 @@
       "sha256": "4624e7c848d7ae603df09b00861001bed6ca1a500cc9acddf0428f462666a8ef"
     },
     {
-      "id": 241,
+      "id": 242,
       "kind": 2,
       "path": "sound/effects/storage-equip.pcm",
       "bytes": 19336,
@@ -12689,7 +13088,7 @@
       "sha256": "cf6e2ad332ddaa36eed7f5cb2cb59b11226dd4f83af09d56c7ef8c859be05c47"
     },
     {
-      "id": 242,
+      "id": 243,
       "kind": 2,
       "path": "sound/effects/text-adult.pcm",
       "bytes": 14336,
@@ -12697,7 +13096,7 @@
       "sha256": "d4f0e98b04db649338c56b1aeaea3b5c78ffbdb7c7863ae8615719d1186d8443"
     },
     {
-      "id": 243,
+      "id": 244,
       "kind": 2,
       "path": "sound/effects/text-female.pcm",
       "bytes": 14336,
@@ -12705,7 +13104,7 @@
       "sha256": "e54112f322e29a9f91ea856c4d69701df1125fbac040f7cd7e9215d6d6bc353a"
     },
     {
-      "id": 244,
+      "id": 245,
       "kind": 2,
       "path": "sound/music/doll-melody.pcm",
       "bytes": 620476,
@@ -12713,7 +13112,7 @@
       "sha256": "8055343ce209cc090ad6bf487a995d230b0257c77bf6e02f6bac5bca5ca4810c"
     },
     {
-      "id": 245,
+      "id": 246,
       "kind": 2,
       "path": "sound/music/encounter-boss.pcm",
       "bytes": 986112,
@@ -12721,7 +13120,7 @@
       "sha256": "b0bf6f00b3bcc8d5b5ff0054ccddd867931057f10b75c74147bd94c54ea306c5"
     },
     {
-      "id": 246,
+      "id": 247,
       "kind": 2,
       "path": "sound/music/encounter-enemy.pcm",
       "bytes": 986112,
@@ -12729,7 +13128,7 @@
       "sha256": "028f04ce000e58361ef6d19c21143cf225ddd1b435964097363e1a95d7a5f4f9"
     },
     {
-      "id": 247,
+      "id": 248,
       "kind": 2,
       "path": "sound/music/good-morning.pcm",
       "bytes": 3754284,
@@ -12737,7 +13136,7 @@
       "sha256": "e6e6ccd4f0a7b8a1da9611cfbf069f7f7798de78a86e9187a797da4be1d096ea"
     },
     {
-      "id": 248,
+      "id": 249,
       "kind": 2,
       "path": "sound/music/house-music.pcm",
       "bytes": 6003820,
@@ -12745,7 +13144,7 @@
       "sha256": "beb4d21f7e43e93dd8c1f401eb2fe8e9a72d4e33b38ef36dfabbeabd50202ae1"
     },
     {
-      "id": 249,
+      "id": 250,
       "kind": 2,
       "path": "sound/music/naming-mother-earth-piano.pcm",
       "bytes": 20173824,
@@ -12753,7 +13152,7 @@
       "sha256": "fea132a11b00cd2092e844ec8408a5390f2db62aab0524c2302ab950f8cc2432"
     },
     {
-      "id": 250,
+      "id": 251,
       "kind": 2,
       "path": "sound/music/podunk-1388543241.pcm",
       "bytes": 18825984,
@@ -12761,7 +13160,7 @@
       "sha256": "2187318aac19e09726d0be5496cde4c05c89c53206af7543e08d2bf9e601cc5d"
     },
     {
-      "id": 251,
+      "id": 252,
       "kind": 2,
       "path": "sound/music/podunk-2369254644.pcm",
       "bytes": 12502108,
@@ -12769,7 +13168,7 @@
       "sha256": "bed99c9f303eb1473dced82940542a961e4c124474166b0a9ca5a3278e3c0733"
     },
     {
-      "id": 252,
+      "id": 253,
       "kind": 2,
       "path": "sound/music/podunk-364625705.pcm",
       "bytes": 9900948,
@@ -12777,7 +13176,7 @@
       "sha256": "7a8197f297ea06a8e54d4f6ea45eb21b820a46c71dbf74e665efb84474a307b9"
     },
     {
-      "id": 253,
+      "id": 254,
       "kind": 2,
       "path": "sound/music/podunk-582446421.pcm",
       "bytes": 19255848,
@@ -12785,7 +13184,7 @@
       "sha256": "761c33bf0ff1982ec96390e9715c62b8f0cf9ba2ee2b013c2e52afca41372fef"
     },
     {
-      "id": 254,
+      "id": 255,
       "kind": 2,
       "path": "sound/music/podunk-61517992.pcm",
       "bytes": 16934400,
@@ -12793,7 +13192,7 @@
       "sha256": "ae4e6b586382e0619d7159529923a4c0206cd33d946b68683c6a93b54dc1309a"
     },
     {
-      "id": 255,
+      "id": 256,
       "kind": 2,
       "path": "sound/music/poltergeist.pcm",
       "bytes": 10137900,
@@ -12801,7 +13200,7 @@
       "sha256": "fb9d28132973477cb13d5d87ed9ec61754c92225ff1e18d45663a9cdb53462f1"
     },
     {
-      "id": 256,
+      "id": 257,
       "kind": 2,
       "path": "sound/music/title-mother-earth.pcm",
       "bytes": 22311936,
@@ -12992,7 +13391,7 @@
     }
   ],
   "inputs": {
-    "content/podunk-bundle-recipe.json": "f87104efb07469925367124959025fe608a355b1a38b999c220da84135f10b68",
+    "content/podunk-bundle-recipe.json": "5ff88f8808d31a77581a60453e9a88eae7f59edbafb1f470f9bd6447fe72e719",
     "content/field-battle-bg-resources.json": "0dd492851fe778764abdfa7ee5623d76e3b10f995c2f16f744a362e20d8909ee",
     "tools/field_battle_bg_resources.py": "e763b314a9c4cb497d9dbf2b1c29f9b652ae9114475da82411db6041862e5753",
     "content/native-field-character-load.json": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
@@ -13157,6 +13556,12 @@
     "tools/field_npc_world.py": "89516db124c9fecdf3a9669c5a0c784e447251881fda524a173335272f3c1602",
     "content/native-prompt-native.json": "61ffed51c5f8ef31955009dcde54532cb017a0935f84a9cd8309f9924ab9d1ea",
     "tools/prompt_native.py": "f7b325eaf1d0d1db09a51e9e1d83f1864dbf408906e182ba349028fa84c34b46",
+    "content/native-audio-server.json": "947bd0b257bc873f85daa19218028fb837fca6fa5f20a46adfaeba1a89582448",
+    "tools/audio_server.py": "0105029066379d76e56060bd8b1a16e6b4d4a7eb61b3107a33878392ff95d897",
+    "content/native-field-scene-materials.json": "51e0683390538b804595c126675d5917a5b5ba810168b12adf0facf1bbeac799",
+    "tools/field_scene_materials.py": "dacf576c38ba65a67b94a49a6212a9566a73fff6c960041937b173b51807a469",
+    "content/native-scene-clip-native.json": "4e79086dc2f4a8bc4bb6a71b1d949b2aad9210ec6ff0d5adea28597b93c68dbf",
+    "tools/scene_clip_native.py": "4b0ced90c5547c6157f1e24f515168572c449e4dda7c34b48f4e60bccc8e0adb",
     "content/podunk-scene-assets.json": "834d267b496fb653a5ed2f3cf684d2d2ee9944bb90029778060a13f8b15eed2e",
     "content/podunk-scene-map-assets.json": "f3b262436a968c0fd40d0ef9e5b9535f2fe86a5bb89f8c0d02c46a6b64089149",
     "content/native-audio.json": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910",
@@ -13166,6 +13571,7 @@
     "content/asset-receipts/audio/podunk.json": "9964fa6c001d33123cf2fffbee0501ae76d3450876bf22ed8877c2b3d7e1298a",
     "content/podunk-bundle-audio.json": "fcc98339e82b93564baee1cef88b2d6f4df14b424889f58210203c8bcbb5435f",
     "content/asset-receipts/audio/podunk-scene-effects.json": "dc69595c5e8b0157d4bf479f9169d9481a3d9c1c3b1137e783a9b84bcca32dc4",
+    "content/asset-receipts/graphics/materials/source.json": "b4d29c723a5c7c8d2b877c404fdb6c61d270a80a76e0a7360e13e82130cd962c",
     "content/asset-receipts/graphics/objects/dead-bush/source.json": "4ae6a3f9fe77c10690bb6587fae13f59843c07a876fb8251f5b4e09b612344a8",
     "content/asset-receipts/graphics/objects/payphone/source.json": "b2144766de57d3cb3645ee892208169b5260ff6f8d3969e7b1b494c6a7a8699e",
     "content/asset-receipts/graphics/objects/vending-machine/source.json": "3032d7f7a56e2f86f5b7aae0dfdd4e987a192641bea78768d26d569e5c250aac",

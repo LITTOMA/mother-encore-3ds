@@ -27,6 +27,10 @@ private:
 };
 struct FieldEmoteInstance {uint32_t id=0,object=0,direction_source=0,frame=0,clip_id=0,sound_id=0;Vec2 position{},offset{},scale{},capture_offset{};float elapsed=0;bool ready=false,visible=false,playing=false,started=false,sound_playing=false,capture_valid=false;};
 struct FieldEmoteHost {
+ // Invoked for every source frame setter, including equal values.
+ std::function<bool(uint32_t,uint32_t,std::string&)>native_frame;
+ // Native events: play=1, finished=2, stopped=3; clips remain typed core-owned.
+ std::function<bool(uint32_t,uint32_t,uint32_t,std::string&)>native_animation;
  // onready source nullable NodePath and get_direction ancestor must resolve
  // only real checked nodes; unavailable adapters reject, never appear absent.
  std::function<bool(const FieldEmoteDescriptor&,bool&,uint32_t&,std::string&)>resolve_object;

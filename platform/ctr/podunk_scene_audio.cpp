@@ -237,6 +237,9 @@ bool PodunkSceneAudio::construct(FieldObjectId id, const FieldNodeDescriptor &n,
   bool mute = false;
   if (!host_.server.bus_gain(s->bus, db, mute, e) || !std::isfinite(db))
     return false;
+  v.callback = {id, registry_, this, [](void *owner, upstream::FieldObjectId object, std::string &error) {
+    return static_cast<PodunkSceneAudio *>(owner)->mix(object, error);
+  }};
   voices_.emplace(id, std::move(v));
   if (!host_.server.connect_bus_layout(
           id,
@@ -596,7 +599,7 @@ bool PodunkSceneAudio::mix(FieldObjectId id, std::string &e) {
         float db = 0;
         bool mute = false;
         if (!host_.server.bus_gain(v->state.bus, db, mute, e) ||
-            !std::isfinite(db) || db < -120 || db > 24)
+            !std::isfinite(db) || db > 24)
           return fail(e, "Scene audio bus gain invalid");
         float from = mute ? 0 : audio_linear_gain(v->mix_volume + db),
               to = mute ? 0 : audio_linear_gain(v->state.volume_db + db);
@@ -612,7 +615,7 @@ bool PodunkSceneAudio::mix(FieldObjectId id, std::string &e) {
           float db = 0;
           bool mute = false;
           if (!host_.server.bus_gain(current.bus, db, mute, e) ||
-              !std::isfinite(db) || db < -120 || db > 24)
+              !std::isfinite(db) || db > 24)
             return fail(e, "Scene positional audio bus gain invalid");
           auto old = std::find_if(
               v->previous.begin(), v->previous.end(),
@@ -693,10 +696,7 @@ bool PodunkSceneAudio::phase(FieldObjectId id, FieldTreePhase p, float,
   case FieldTreePhase::EnterNative:
     if (v->state.inside || !host_.server.add_audio_callback(
                                id,
-                               [this, id] {
-                                 std::string e;
-                                 return mix(id, e);
-                               },
+                               {v->source->kind == 2 ? podunk_audio_stream_player_2d_mix : podunk_audio_stream_player_mix, &v->callback},
                                e))
       return fail(e, "Scene AudioServer native Enter rejected");
     v->state.inside = true;

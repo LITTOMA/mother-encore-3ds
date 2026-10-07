@@ -17,6 +17,20 @@ CONTENT_TASKS += global-item-definitions global-yaml-caches global-packed-direct
 CONTENT_TASKS += player-initialization global-child-ready player-visual-scripts player-ready player-effects player-graphics player-motion global-ready player-fetcher player-resources house-global-bridge player-child-scripts house-status-effects
 CONTENT_TASKS += house-ui-continuation house-exit-door
 CONTENT_TASKS += scene-effects field-scene-audio field-scene-signals field-visibility field-npc-world field-prompts prompt-native
+CONTENT_TASKS += audio-server scene-materials scene-clip-native field-emotes field-dead-bush
+.PHONY: field-emotes field-dead-bush
+field-emotes:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_emotes.py compile
+field-dead-bush:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_dead_bush.py pack
+.PHONY: scene-materials scene-clip-native
+scene-materials: field-canvas-art field-node-tree field-prompts field-melody-background
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/field_scene_materials.py compile
+scene-clip-native: field-node-tree field-openable field-present field-emotes field-dead-bush
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/scene_clip_native.py compile
+.PHONY: audio-server
+audio-server:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/audio_server.py compile
 DESTINATION_INPUT_TASKS := $(CONTENT_TASKS)
 CONTENT_TASKS += scene-bundle
 .PHONY: scene-bundle

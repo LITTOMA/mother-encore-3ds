@@ -144,6 +144,7 @@ bool FieldCanvasArtData::load(const uint8_t *p, size_t n,
   d.identity_.scene_id = u32(p + 36);
   std::copy_n(p + 40, 20, d.identity_.upstream_commit.begin());
   std::copy_n(p + 60, 32, d.identity_.source_sha256.begin());
+  std::copy_n(p + 92, 32, d.ir_.begin());
   if (d.identity_.scene_id != identity.scene_id ||
       d.identity_.upstream_commit != identity.upstream_commit ||
       d.identity_.source_sha256 != identity.source_sha256 ||

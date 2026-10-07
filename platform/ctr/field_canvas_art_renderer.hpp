@@ -245,6 +245,17 @@ public:
   // vertex region until the next frame, including calls interleaved by
   // delegates.
   void begin_frame() { used_ = 0; }
+  const Data *data() const { return data_; }
+  bool image(uint32_t texture, C2D_Image &out, std::string &e) const {
+    auto i = sheets_.find(texture);
+    if (!data_ || !data_->texture(texture) || i == sheets_.end())
+      return fail(e, "Canvas borrowed checked texture unavailable");
+    out = encore::ctr::loading_sprite_sheet_get_image(i->second, 0);
+    if (!out.tex || !out.subtex)
+      return fail(e, "Canvas actual GPU texture owner expired");
+    e.clear();
+    return true;
+  }
   bool draw(const std::vector<Draw> &commands, encore::upstream::Vec2 camera,
             float width, float height, const Delegate &delegate,
             std::string &e) {

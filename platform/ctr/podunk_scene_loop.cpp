@@ -4,6 +4,10 @@
 #include "podunk_scene_npc_world.hpp"
 #include "podunk_prompt_native.hpp"
 #include "podunk_butterfly_animation.hpp"
+#include "podunk_npc_return_timer.hpp"
+#include "podunk_butterfly_timers.hpp"
+#include "podunk_scene_clip_native.hpp"
+#include "podunk_audio_server.hpp"
 #include <algorithm>
 #include <cmath>
 
@@ -41,15 +45,48 @@ PodunkSceneNativeMechanism *PodunkSceneLoop::mechanism(
   }
   return found;
 }
+bool PodunkSceneLoop::prepare_native(const PodunkSceneLoopInput &input,
+                                     std::string &e) {
+  if (!input.sources || !input.sources->valid() || !input.continuation ||
+      !input.continuation->initialized() || !input.tree || !input.native ||
+      !input.map || !input.geometry || input.asset_root.empty())
+    return fail(e, "Scene native preload requires the actual checked session owners");
+  if (native_prepared_) {
+    const auto &p = native_preparation_;
+    if (p.sources != input.sources || p.continuation != input.continuation ||
+        p.tree != input.tree || p.native != input.native || p.map != input.map ||
+        p.geometry != input.geometry || p.materials != input.materials ||
+        p.asset_root != input.asset_root)
+      return fail(e, "Scene native preload belongs to different composition owners");
+    e.clear();
+    return true;
+  }
+  if (attempted_ || input.tree->object_count())
+    return fail(e, "Scene native preload must precede actual node construction");
+  const auto &d = *input.sources;
+  if (!input.native->prepare(d.tree(), *input.tree,
+          *input.continuation->registry(), *input.continuation->native_root(),
+          *input.map, *input.geometry, d.canvas(), input.asset_root.c_str(),
+          input.canvas, input.materials, e) ||
+      !input.native->bind_sprite_signals(*input.continuation->signals(), e))
+    return false;
+  native_preparation_ = input;
+  native_prepared_ = true;
+  e.clear();
+  return true;
+}
 bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
   if (attempted_ || !input.sources || !input.sources->valid() ||
       !input.continuation || !input.continuation->initialized() || !input.tree ||
       input.tree->object_count() || !input.native || !input.visibility ||
-      !input.npc_world || !input.prompts || !input.butterfly_animation || !input.player ||
+      !input.npc_world || !input.prompts || !input.butterfly_animation ||
+      !input.return_timers || !input.butterfly_timers || !input.clip_native ||
+      !input.audio_server || !input.player ||
       !input.physics || !input.map || !input.geometry || input.asset_root.empty() ||
       !input.source_signals || !input.source_methods || !input.source_method_owned ||
       !input.allocation_observed)
     return fail(e, "Scene loop requires actual checked destination and session owners");
+  if (!prepare_native(input, e)) return false;
   attempted_ = true;
   input_ = std::move(input);
   if (std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
@@ -59,10 +96,14 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
       std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
                  input_.prompts) != 1 ||
       std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
-                 input_.butterfly_animation) != 1)
-    return fail(e, "Scene visibility, NPC world, prompts and Butterfly animation must join the unique native mechanism roster");
+                 input_.butterfly_animation) != 1 ||
+      std::count(input_.mechanisms.begin(), input_.mechanisms.end(),
+                 input_.clip_native) != 1)
+    return fail(e, "Scene visibility, NPC world, prompts, Butterfly and clip animation owners must join the unique native mechanism roster");
   auto &d = *input_.sources;
   auto &r = *input_.continuation->registry();
+  if (input_.audio_server->registry() != &r || !input_.audio_server->alive())
+    return fail(e, "Scene AudioServer must be the live shared session singleton");
   // Reject before allocating nodes or consuming RNG. A missing native class
   // is a concrete dependency, never an empty notification implementation.
   for (const auto &row : d.tree().records()) {
@@ -84,10 +125,7 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
     return fail(e, "Scene native owner missing: " + missing_.front());
   if (!scripts_.prepare(d, input_.consumers, input_.scene_ops, *input_.tree, r,
                         *input_.continuation->signals(), input_.grass, e) ||
-      !input_.native->prepare(d.tree(), *input_.tree, r,
-          *input_.continuation->native_root(), *input_.map, *input_.geometry,
-          d.canvas(), input_.asset_root.c_str(), input_.canvas, input_.materials, e) ||
-      !input_.native->bind_sprite_signals(*input_.continuation->signals(), e) ||
+
       !input_.continuation->bind_scene_signal_declarations(
           [this](auto id, auto name, auto &arity, auto &error) {
             return signal_declaration(id, name, arity, error);
@@ -144,6 +182,8 @@ bool PodunkSceneLoop::construct(PodunkSceneLoopInput input, std::string &e) {
       !input_.visibility->finish_factory(e) ||
       !input_.prompts->finish_factory(e) ||
       !input_.butterfly_animation->finish_factory(e) ||
+      !input_.butterfly_timers->finish_factory(e) ||
+      !input_.clip_native->finish_factory(e) ||
       !input_.native->bind_animated_leaves(animated_, e) ||
       !input_.native->bind_canvas_leaf(*input_.prompts, e)) {
     poisoned_ = true;
@@ -187,8 +227,9 @@ bool PodunkSceneLoop::native_allocated(FieldObjectId id,
     if (arrow) return animated_.construct(id, d, identity, e);
   }
   auto *owner = mechanism(d);
-  return owner ? owner->construct(id, d, identity, e)
-               : fail(e, "Unowned actual native constructor: " + d.path);
+  if (!owner || !owner->construct(id, d, identity, e))
+    return owner ? false : fail(e, "Unowned actual native constructor: " + d.path);
+  return input_.native->bind_external_material(id, d, e);
 }
 bool PodunkSceneLoop::bind(FieldObjectId id, const FieldNodeDescriptor &d,
                            FieldNodeBinding &out, std::string &e) {
@@ -327,6 +368,11 @@ bool PodunkSceneLoop::idle_frame(uint64_t epoch, float dt, bool paused,
       poisoned_ = true; return false;
     }
   released_signals_.clear();
+  // SceneTreeTimer's native list follows idle delete processing. It uses this
+  // exact global idle cursor; Node Timers retain their own original phase.
+  if (!input_.return_timers->idle(epoch, dt, paused, e)) {
+    poisoned_ = true; return false;
+  }
   e.clear(); return true;
 }
 bool PodunkSceneLoop::transition_jobs(float dt, bool paused, std::string &e) {
@@ -373,9 +419,9 @@ bool PodunkSceneLoop::input(uint32_t kind, const PlayerInputEvent &event,
   }
   e.clear(); return true;
 }
-bool PodunkSceneLoop::draw(uint64_t epoch, float dt, std::string &e) {
+bool PodunkSceneLoop::draw(uint64_t epoch, float dt, float shader_time, std::string &e) {
   if (!ready() || !step_delta(dt)) return fail(e, "Scene draw before actual Ready");
-  if (!animated_.begin_draw(epoch, e) || !input_.native->begin_draw(epoch, dt, e)) return false;
+  if (!animated_.begin_draw(epoch, e) || !input_.native->begin_draw(epoch, dt, shader_time, e)) return false;
   return input_.native->draw([this](uint32_t source) {
     return scripts_.lifecycle().gate(source);
   }, e);
@@ -391,12 +437,16 @@ bool PodunkSceneLoop::deferred(const FieldDeferredMessage &m, std::string &e) {
       return fail(e, "Scene external native notification unsupported");
     return dispatch(m.object, s->binding, p, e);
   }
+  if (input_.audio_server->handles_layout(m)) return input_.audio_server->layout_callback(m,e);
   if (input_.physics->handles_callback(m)) return input_.physics->deferred(m, e);
   if (input_.player->owns(m.object)) return input_.player->deferred(m, e);
   if (input_.visibility->handles_method(m)) return input_.visibility->deferred(m,e);
+  if (input_.butterfly_timers->handles_method(m)) return input_.butterfly_timers->deferred(m,e);
+  if (input_.return_timers->handles_callback(m)) return input_.return_timers->deferred(m,e);
   if (input_.npc_world->handles_callback(m)) return input_.npc_world->deferred(m,e);
   // A native body can also be a scripted receiver. Route only an explicitly
   // owned source method before its native property's dispatcher.
+  if (input_.clip_native->method_owned(m)) return input_.clip_native->source_method(m,e);
   if (input_.source_method_owned(m)) return input_.source_methods(m,e);
   if (timers_.owns(m.object)) return timers_.deferred(m, e);
   if (auto *owner = mechanism(*n); owner && owner->owns(m.object))
@@ -417,6 +467,12 @@ bool PodunkSceneLoop::release(FieldObjectId id, const FieldNodeBinding &b,
 }
 bool PodunkSceneLoop::signal_declaration(FieldObjectId id, std::string_view name,
                                         uint32_t &arity, std::string &e) const {
+  if (input_.audio_server && id == input_.audio_server->binding().object)
+    return input_.audio_server->signal_declaration(id, name, arity, e);
+  // SceneTreeTimer is an actual Reference, so it must be resolved before the
+  // Node-only declaration guard below.
+  if (input_.return_timers && input_.return_timers->owns(id))
+    return input_.return_timers->signal_declaration(id, name, arity, e);
   const auto *d = input_.tree ? input_.tree->descriptor(id) : nullptr;
   if (!d || input_.continuation->registry()->tree_owner(id) != input_.tree)
     return fail(e, "Scene signal lacks actual owning node");
@@ -440,6 +496,8 @@ bool PodunkSceneLoop::signal_declaration(FieldObjectId id, std::string_view name
     return input_.visibility->signal_declaration(id, name, arity, e);
   if (input_.prompts->owns(id))
     return input_.prompts->declaration(id, name, arity, e);
+  if (input_.clip_native->owns(id))
+    return input_.clip_native->declaration(id, name, arity, e);
   return input_.source_signals(id, name, arity, e);
 }
 } // namespace encore::ctr

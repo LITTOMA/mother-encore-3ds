@@ -39,8 +39,12 @@ struct FieldOpenableInstance {
 struct FieldOpenableBody {uint64_t id=0;bool actual_party_object=false;};
 struct FieldOpenableObservation {bool player_paused=false,player_running=false,entering_door=false,animation_process=false,timer_process=false;Vec2 player_direction{};};
 struct FieldOpenableHost {
+ // Native events: play=1, finished=2, stopped=3; clips remain typed core-owned.
+ std::function<bool(uint32_t,uint32_t,uint32_t,std::string&)>native_animation;
  // All source nodes/art/material/geometry/audio/Prompt identities must resolve.
  std::function<bool(const FieldOpenableDoorData&,std::string&)>bind;
+ std::function<bool(uint32_t,float,std::string&)>native_timer_start;
+ std::function<bool(uint32_t,float&,std::string&)>native_timer_left;
  std::function<bool(uint32_t,std::function<bool(uint64_t)>,std::function<bool(uint64_t)>,std::string&)>connect_area;
  std::function<bool(uint32_t,std::function<bool()>,std::string&)>connect_flags;
  std::function<bool(std::string_view,bool&present,bool&value,std::string&)>read_flag;
@@ -76,11 +80,13 @@ public:
  const FieldOpenableDoorData*data()const{return data_;}
  bool initialize(const FieldOpenableDoorData&,FieldOpenableHost,std::string&);bool create(uint32_t,bool source_constructor=false);bool ready(uint32_t);bool update_state(uint32_t);
  bool body_entered(uint32_t,uint64_t);bool body_exited(uint32_t,uint64_t);bool timer_timeout(uint32_t);bool idle_frame(uint32_t,float);
+ bool native_animation_frame(uint32_t,float);bool native_timer_timeout(uint32_t);
  bool lock(uint32_t);bool unlock(uint32_t);bool open(uint32_t);bool close(uint32_t);bool interact(uint32_t);bool interact_item(uint32_t,uint64_t);
  const FieldOpenableInstance*instance(uint32_t)const;const std::string&error()const{return error_;}
 private:
  std::set<uint32_t> pending_source_constructor_;
  const FieldOpenableDoorData*data_=nullptr;FieldOpenableHost host_;std::map<uint32_t,FieldOpenableInstance>instances_;std::string error_;bool poisoned_=false,had_ready_=false;uint32_t last_ready_=0;
+ bool advance(uint32_t,float,bool,bool);
  bool fail(const char*);bool callback(bool);FieldOpenableInstance*get(uint32_t,bool ready=true);bool publish(FieldOpenableInstance&);bool play(FieldOpenableInstance&,FieldOpenableClipRole);bool valid_body(uint32_t,uint64_t,bool&);bool assign_audio(FieldOpenableInstance&,std::string_view,bool);bool use_key(FieldOpenableInstance&,uint64_t);bool dialogue(FieldOpenableInstance&,uint32_t);bool apply(FieldOpenableInstance&,FieldOpenableProperty,bool);bool deferred(FieldOpenableInstance&,bool);
 };
 }

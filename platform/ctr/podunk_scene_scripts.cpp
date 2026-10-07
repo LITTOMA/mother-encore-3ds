@@ -750,6 +750,9 @@ bool PodunkSceneScripts::release(FieldObjectId id, const FieldNodeBinding &b,
     if (!ok)
       e = consumers_.arrows->error();
     break;
+  case FieldSceneRole::Butterfly:
+    ok = consumers_.butterfly->destroy(v->source.id, e);
+    break;
   default:
     break;
   }

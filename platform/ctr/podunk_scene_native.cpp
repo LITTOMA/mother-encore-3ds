@@ -191,6 +191,7 @@ bool PodunkSceneNative::prepare(
   map_gpu_ = std::move(mg);
   art_gpu_ = std::move(ag);
   animations_ = std::move(clocks);
+  if (materials_ && !materials_->bind_images(*art_gpu_, e)) return false;
   e.clear();
   return true;
 }
@@ -709,9 +710,10 @@ bool PodunkSceneNative::physics_admitted(std::string &e) const {
   return true;
 }
 bool PodunkSceneNative::begin_draw(uint64_t epoch, float delta,
-                                   std::string &e) {
+                                   float shader_time, std::string &e) {
   if (!finished_ || !epoch || epoch <= draw_epoch_ || !std::isfinite(delta) ||
-      delta < 0 || !root_->viewport().active)
+      delta < 0 || !std::isfinite(shader_time) || shader_time < 0 ||
+      !root_->viewport().active)
     return fail(e, "Scene native actual draw epoch rejected");
   auto next = animations_;
   for (auto &v : next)
@@ -721,6 +723,7 @@ bool PodunkSceneNative::begin_draw(uint64_t epoch, float delta,
   draw_epoch_ = epoch;
   draw_started_ = true;
   art_gpu_->begin_frame();
+  if (materials_ && !materials_->begin_frame(epoch, shader_time, e)) return false;
   if (animated_leaves_ && !animated_leaves_->begin_draw(epoch, e))
     return false;
   e.clear();
@@ -751,7 +754,7 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
   std::vector<FieldCanvasOrderSlot> foreign_slots;
   std::vector<FieldObjectId> animated_slots;
   std::vector<std::pair<PodunkSceneCanvasLeaf *,FieldCanvasOrderSlot>> leaf_slots;
-  std::set<FieldObjectId> leaf_objects;
+  std::set<FieldObjectId> leaf_objects, material_leaf_objects;
   for (const auto &s : canvas_.canvas_order()) {
     slots.emplace(s.object, s);
     const auto *n = tree_->descriptor(s.object);
@@ -763,6 +766,13 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
     if (leaf) {
       if (!n || s.foreign || (n->native_class!="Label" && n->native_class!="TextureRect"))
         return fail(e,"Canvas leaf source/class is outside native Control capability");
+      const auto *record = art_->record(n->id);
+      if (record && record->shader != FieldCanvasShader::Default) {
+        if (n->native_class != "TextureRect" || !materials_)
+          return fail(e, "Canvas material leaf has no actual typed renderer");
+        material_leaf_objects.insert(s.object);
+        continue; // Its collected material draw occupies this same native slot.
+      }
       commands.push_back({s.z,s.native_order,0,false,uint32_t(leaf_slots.size()),{},false,false,true});
       leaf_slots.emplace_back(leaf,s); leaf_objects.insert(s.object);
       continue;
@@ -796,7 +806,8 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
   for (uint32_t i = 0; i < art.size(); ++i) {
     if (leaf_objects.count(art[i].object)) continue;
     const auto s = slots.find(art[i].object);
-    if (s == slots.end() || !owns(art[i].object))
+    if (s == slots.end() || (!owns(art[i].object) &&
+        !material_leaf_objects.count(art[i].object)))
       return fail(e, "Scene native Sprite command has no actual native owner");
     commands.push_back({art[i].z, s->second.native_order, 0, false, i, {}});
   }
@@ -875,6 +886,44 @@ bool PodunkSceneNative::draw(const FieldMapGateQuery &gates, std::string &e) {
   draw_started_ = false;
   e.clear();
   return true;
+}
+bool PodunkSceneNative::bind_external_material(FieldObjectId id,
+    const FieldNodeDescriptor &d, std::string &e) {
+  const FieldNodeDescriptor *actual_d;
+  const FieldNodeState *state;
+  if (!actual(id, actual_d, state, e) || actual_d->id != d.id)
+    return fail(e, "Canvas material external native identity differs");
+  const auto *record = art_->record(d.id);
+  if (record && !material(id, *record, e)) return false;
+  e.clear(); return true;
+}
+bool PodunkSceneNative::canvas_appearance(const FieldCanvasRecord &record,
+    FieldObjectId id, FieldCanvasAppearance &out, std::string &e) const {
+  const FieldNodeDescriptor *d;
+  const FieldNodeState *state;
+  if (!actual(id, d, state, e) || d->id != record.id ||
+      art_->record(d->id) != &record)
+    return fail(e, "Canvas appearance must use its actual source record");
+  PodunkSceneCanvasLeaf *leaf = nullptr;
+  for (auto *owner : canvas_leaves_) if (owner->owns_drawable(id)) {
+    if (leaf) return fail(e, "Canvas appearance has ambiguous native leaf owners");
+    leaf = owner;
+  }
+  if (leaf) {
+    if (!leaf->appearance(record, id, out, e)) return false;
+  } else if (!sprite_snapshot(id, out, e)) return false;
+  if (record.shader != FieldCanvasShader::Default) {
+    if (!material(id, record, e)) return false;
+    out.action = FieldCanvasAction::Delegate;
+  }
+  e.clear(); return true;
+}
+bool PodunkSceneNative::draw_default(const FieldCanvasDraw &draw, Vec2 camera,
+    float width, float height, std::string &e) {
+  if (!draw_started_ || !art_gpu_ || draw.shader != FieldCanvasShader::Default ||
+      draw.action != FieldCanvasAction::Default)
+    return fail(e, "Default GPU draw requires actual default source command");
+  return art_gpu_->draw({draw}, camera, width, height, {}, e);
 }
 bool PodunkSceneNative::source_object(uint32_t id, FieldObjectId &out,
                                       std::string &e) const {

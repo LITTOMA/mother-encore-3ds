@@ -88,6 +88,9 @@ enum class PodunkPackRole : uint32_t {
   SceneVisibility = 80,
   SceneNpcWorld = 81,
   ScenePromptNative = 82,
+  AudioServer = 83,
+  SceneMaterials = 84,
+  SceneClipNative = 85,
 };
 enum class PodunkAssetKind : uint32_t {
   Texture = 1,

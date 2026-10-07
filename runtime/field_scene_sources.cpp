@@ -173,6 +173,21 @@ bool FieldSceneSources::load(const PodunkBundleData &bundle,
     e = "Complete scene sources belong to different destination identities";
     return false;
   }
+  if (!read_plain(bundle, PodunkPackRole::AudioServer, root, audio_server_, e)) {
+    failed_ = true; e = "Scene shared AudioServer source: " + e; return false;
+  }
+  if (audio_server_.identity().upstream_commit != tree_.identity().upstream_commit) {
+    failed_ = true; e = "Scene AudioServer belongs to a different upstream pin"; return false;
+  }
+  std::vector<uint8_t> material_bytes, clip_bytes;
+  if (!bundle.read(PodunkPackRole::SceneMaterials, root, material_bytes, e) ||
+      !materials_.load(material_bytes.data(), material_bytes.size(), canvas_, e)) {
+    failed_ = true; e = "Scene native Material source: " + e; return false;
+  }
+  if (!bundle.read(PodunkPackRole::SceneClipNative, root, clip_bytes, e) ||
+      !clips_.load(clip_bytes.data(), clip_bytes.size(), tree_, openable_, present_, emote_, bush_, e)) {
+    failed_ = true; e = "Scene native animation clip source: " + e; return false;
+  }
   loaded_ = true;
   e.clear();
   return true;

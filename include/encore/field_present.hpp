@@ -28,6 +28,10 @@ private:
  std::vector<FieldPresentBinding>bindings_;std::vector<FieldPresentItem>items_;std::array<FieldPresentClip,2>clips_;std::vector<PresentSparklesFrame>sparkle_frames_;std::vector<FieldPresentPending>pending_;
 };
 struct FieldPresentHost {
+ // Invoked for every source frame setter, including equal values.
+ std::function<bool(uint32_t,uint32_t,std::string&)>native_frame;
+ // Native events: play=1, finished=2, stopped=3; clips remain typed core-owned.
+ std::function<bool(uint32_t,uint32_t,uint32_t,std::string&)>native_animation;
  // Cross-source child and interaction admission: no missing inventory, Room
  // Programme, audio voice, prompt, Tint or Fetcher may be silently ignored.
  std::function<bool(const FieldPresentBinding&,std::string&)>admit_ready,admit_interaction;
@@ -59,6 +63,7 @@ public:
  bool ready_sparkles(uint32_t child,SourceRandom&,std::string&);bool ready_present(uint32_t parent,std::string&);
  bool interact(uint32_t,std::string&);bool area_left(bool region_changed,std::string&);bool exit_tree(uint32_t,std::string&);
  bool idle_frame(double delta,bool tree_idle_processing,std::string&);
+ bool idle_animation_leaf(uint32_t,double,bool,std::string&);
  bool bind_sparkles_leaf_owner(FieldPresentSparklesLeafOwner&,std::string&);
  bool idle_sparkles_leaf(uint32_t child,double delta,bool can_process,std::string&);
  const FieldPresentState*state(uint32_t)const;const FieldPresentData*content()const{return data_;}

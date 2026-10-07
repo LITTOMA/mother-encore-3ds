@@ -24,6 +24,12 @@ public:
   virtual const upstream::FieldNodeTreeRuntime *canvas_tree() const = 0;
   virtual const upstream::FieldGlobalRegistry *canvas_registry() const = 0;
   virtual bool owns_drawable(upstream::FieldObjectId) const = 0;
+  virtual bool appearance(const upstream::FieldCanvasRecord &,
+                          upstream::FieldObjectId,
+                          upstream::FieldCanvasAppearance &, std::string &e) const {
+    e = "Canvas leaf typed appearance is not implemented by its actual owner";
+    return false;
+  }
   virtual bool draw_leaf(const upstream::FieldCanvasOrderSlot &,
                         const upstream::FieldTransform &, bool pixel_snap,
                         std::string &) = 0;
@@ -42,6 +48,8 @@ public:
   virtual bool material(upstream::FieldObjectId,
                         const upstream::FieldCanvasRecord &,
                         PodunkSceneMaterialState &, std::string &) const = 0;
+  virtual bool bind_images(const FieldCanvasArtRenderer &, std::string &) = 0;
+  virtual bool begin_frame(uint64_t, float global_shader_time, std::string &) = 0;
   virtual bool draw(const upstream::FieldCanvasDraw &, upstream::Vec2, float,
                     float, std::string &) = 0;
 };
@@ -70,6 +78,13 @@ public:
   bool bind(upstream::FieldObjectId, const upstream::FieldNodeBinding &,
             std::string &);
   bool finish_factory(std::string &);
+  bool bind_external_material(upstream::FieldObjectId,
+                              const upstream::FieldNodeDescriptor &, std::string &);
+  bool canvas_appearance(const upstream::FieldCanvasRecord &,
+                         upstream::FieldObjectId, upstream::FieldCanvasAppearance &,
+                         std::string &) const;
+  bool draw_default(const upstream::FieldCanvasDraw &, upstream::Vec2, float,
+                    float, std::string &);
   bool bind_animated_leaves(PodunkSceneAnimatedLeaves &, std::string &);
   bool bind_canvas_leaf(PodunkSceneCanvasLeaf &, std::string &);
   bool bind_foreign(PodunkPlayerHost &,
@@ -101,7 +116,8 @@ public:
                          std::string &);
   bool physics_admitted(std::string &) const;
   // Called once by the same real GPU frame owner, after its fence/begin.
-  bool begin_draw(uint64_t epoch, float actual_draw_delta, std::string &);
+  bool begin_draw(uint64_t epoch, float actual_draw_delta,
+                  float global_shader_time, std::string &);
   bool draw(const upstream::FieldMapGateQuery &, std::string &);
   bool source_object(uint32_t, upstream::FieldObjectId &, std::string &) const;
   // Caller has waited for the actual GPU fence and exited the real tree.

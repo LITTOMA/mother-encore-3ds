@@ -11,6 +11,10 @@ class PodunkSceneVisibility;
 class PodunkSceneNpcWorld;
 class PodunkPromptNative;
 class PodunkButterflyAnimation;
+class PodunkNpcReturnTimers;
+class PodunkButterflyTimers;
+class PodunkSceneClipNative;
+class PodunkAudioServer;
 // Source-specific native mechanisms (audio, animation and visibility) join
 // the same tree. Their concrete state owner must supply every operation;
 // this interface grants no constructor or lifecycle admission itself.
@@ -39,6 +43,10 @@ struct PodunkSceneLoopInput {
   PodunkSceneNpcWorld *npc_world = nullptr;
   PodunkPromptNative *prompts = nullptr;
   PodunkButterflyAnimation *butterfly_animation = nullptr;
+  PodunkNpcReturnTimers *return_timers = nullptr;
+  PodunkButterflyTimers *butterfly_timers = nullptr;
+  PodunkSceneClipNative *clip_native = nullptr;
+  PodunkAudioServer *audio_server = nullptr;
   PodunkPlayerHost *player = nullptr;
   PodunkPlayerPhysicsWorld *physics = nullptr;
   upstream::FieldMapSpace *map = nullptr;
@@ -67,6 +75,9 @@ struct PodunkSceneLoopInput {
 // a second player, session, RNG, input clock or GPU frame.
 class PodunkSceneLoop {
 public:
+  // Load the unique native world before source hosts borrow its Tree.
+  // Construction later reuses exactly this preparation without loading again.
+  bool prepare_native(const PodunkSceneLoopInput &, std::string &);
   bool construct(PodunkSceneLoopInput, std::string &);
   bool attach_scene(std::string &);
   // SceneTransition adds its persistent Player after the Area's Ready body.
@@ -77,7 +88,7 @@ public:
                   bool update_pending, std::string &);
   bool input(uint32_t kind, const upstream::PlayerInputEvent &,
              bool accept_pressed, bool paused, std::string &);
-  bool draw(uint64_t epoch, float delta, std::string &);
+  bool draw(uint64_t epoch, float delta, float global_shader_time, std::string &);
   bool deferred(const upstream::FieldDeferredMessage &, std::string &);
   bool signal_declaration(upstream::FieldObjectId, std::string_view,
                           uint32_t &, std::string &) const;
@@ -103,7 +114,8 @@ private:
   bool transition_jobs(float delta, bool paused, std::string &);
   PodunkSceneNativeMechanism *mechanism(
       const upstream::FieldNodeDescriptor &) const;
-  PodunkSceneLoopInput input_;
+  PodunkSceneLoopInput input_, native_preparation_;
+  bool native_prepared_ = false;
   PodunkSceneScripts scripts_;
   PodunkSceneTimers timers_;
   PodunkSceneAnimatedLeaves animated_;

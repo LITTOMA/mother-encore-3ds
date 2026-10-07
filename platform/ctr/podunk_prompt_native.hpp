@@ -40,6 +40,9 @@ public:
   bool snapshot(upstream::FieldObjectId, upstream::Vec2 &position,
                 upstream::Vec2 &size, std::string &text, std::string &) const;
   bool finish_factory(std::string &) const;
+  bool appearance(const upstream::FieldCanvasRecord &, upstream::FieldObjectId,
+                  upstream::FieldCanvasAppearance &,
+                  std::string &) const override;
   const upstream::FieldNodeTreeRuntime *canvas_tree() const override;
   const upstream::FieldGlobalRegistry *canvas_registry() const override;
   bool owns_drawable(upstream::FieldObjectId) const override;

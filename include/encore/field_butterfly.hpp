@@ -33,13 +33,22 @@ struct FieldButterflyHost{
  // Synchronize true root / Sprite transforms and live Area centre. Texture
  // Sprite offset affects drawing only, never the child's collision centre.
  std::function<bool(const FieldButterflyBinding&,const FieldButterflyState&,std::string&)>publish;
+ // Optional paired native Timer bridge. Source start precedes signal-yield;
+ // actual timeout restores ordered continuations, without a private clock.
+ std::function<bool(uint32_t root,uint32_t phase,std::string&)>timer_start_wait;
+ std::function<bool(uint32_t root,std::string&)>timer_cancel;
 };
 class FieldButterflyRuntime{
 public:
  bool initialize(const FieldButterflyData&,FieldButterflyHost,std::string&);bool ready(uint32_t,SourceRandom&,std::string&);bool screen_enter(uint32_t,SourceRandom&,std::string&);bool screen_exit(uint32_t,std::string&);
  bool body_enter(uint32_t,uint32_t body,std::string&);bool body_exit(uint32_t,uint32_t body,std::string&);
+ bool actual_timer_timeout(uint32_t root,std::string&);
+ bool borrowed_timer()const{return bool(host_.timer_start_wait);}
  // Scene internal Timer/AnimationPlayer idle leaves precede ordinary _process.
  bool idle_leaf(uint32_t,double delta,bool tree_can_process,std::string&);bool idle_process(uint32_t,double delta,bool tree_can_process,std::string&);bool exit_tree(uint32_t,std::string&);
+ // Actual native destruction follows child retirement. It cannot publish a
+ // new pose to dead Sprite/AP children or impersonate a source _exit_tree.
+ bool destroy(uint32_t,std::string&);
  const FieldButterflyState*state(uint32_t)const;const FieldButterflyData*content()const{return data_;}Vec2 world_position(uint32_t)const;Vec2 area_center(uint32_t)const;
 private:
  FieldButterflyState*get(uint32_t,std::string&);bool publish(FieldButterflyState&,std::string&);bool animate(FieldButterflyState&,uint32_t role,float delta,bool seek,std::string&);bool apply(FieldButterflyState&,const FieldButterflyTrack&,float time,bool seek,float from,float raw_to,float length,std::string&);

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "46f8e3df5241cb94e108dd1366cb8c54e2364c9d887580f973288e54a8fd6285",
+  "ir_sha256": "289d2008f885704ca9a94123775d71ae9ebbb5c5513008ee720d4b4986b7ca34",
   "sources": {
     "Graphics/Battle BGS/BG_2.mbg": "57f7957e5261b5dcf21647aba98a5b9c7955d006805ab1e8a87a4468ce2a2248",
     "Graphics/Battle BGS/BG_3.mbg": "f1f3d032390418cbd29c708c2779640ca8fcf67a7d076d907b7fe7d61774cd77",
@@ -1640,7 +1640,7 @@
     "Scripts/Main/Switches/TwoStatesSwitch.gd": "73c4e11707739e43c6d5265a91beb4e21e961bb5ffe7055608a92684364a6148"
   },
   "inputs": {
-    "content/podunk-bundle-recipe.json": "f87104efb07469925367124959025fe608a355b1a38b999c220da84135f10b68",
+    "content/podunk-bundle-recipe.json": "5ff88f8808d31a77581a60453e9a88eae7f59edbafb1f470f9bd6447fe72e719",
     "content/field-battle-bg-resources.json": "0dd492851fe778764abdfa7ee5623d76e3b10f995c2f16f744a362e20d8909ee",
     "tools/field_battle_bg_resources.py": "e763b314a9c4cb497d9dbf2b1c29f9b652ae9114475da82411db6041862e5753",
     "content/native-field-character-load.json": "a7c3fb2630510d8c2f7146fe861ee3c47f39dcc1c10e4fdf4a02b6a8fa2776ef",
@@ -1805,6 +1805,12 @@
     "tools/field_npc_world.py": "89516db124c9fecdf3a9669c5a0c784e447251881fda524a173335272f3c1602",
     "content/native-prompt-native.json": "61ffed51c5f8ef31955009dcde54532cb017a0935f84a9cd8309f9924ab9d1ea",
     "tools/prompt_native.py": "f7b325eaf1d0d1db09a51e9e1d83f1864dbf408906e182ba349028fa84c34b46",
+    "content/native-audio-server.json": "947bd0b257bc873f85daa19218028fb837fca6fa5f20a46adfaeba1a89582448",
+    "tools/audio_server.py": "0105029066379d76e56060bd8b1a16e6b4d4a7eb61b3107a33878392ff95d897",
+    "content/native-field-scene-materials.json": "51e0683390538b804595c126675d5917a5b5ba810168b12adf0facf1bbeac799",
+    "tools/field_scene_materials.py": "dacf576c38ba65a67b94a49a6212a9566a73fff6c960041937b173b51807a469",
+    "content/native-scene-clip-native.json": "4e79086dc2f4a8bc4bb6a71b1d949b2aad9210ec6ff0d5adea28597b93c68dbf",
+    "tools/scene_clip_native.py": "4b0ced90c5547c6157f1e24f515168572c449e4dda7c34b48f4e60bccc8e0adb",
     "content/podunk-scene-assets.json": "834d267b496fb653a5ed2f3cf684d2d2ee9944bb90029778060a13f8b15eed2e",
     "content/podunk-scene-map-assets.json": "f3b262436a968c0fd40d0ef9e5b9535f2fe86a5bb89f8c0d02c46a6b64089149",
     "content/native-audio.json": "1e1b3d0224de13338e2100a304d39fae6d8f98a2d01b4bad48a9518272834910",
@@ -1814,6 +1820,7 @@
     "content/asset-receipts/audio/podunk.json": "9964fa6c001d33123cf2fffbee0501ae76d3450876bf22ed8877c2b3d7e1298a",
     "content/podunk-bundle-audio.json": "fcc98339e82b93564baee1cef88b2d6f4df14b424889f58210203c8bcbb5435f",
     "content/asset-receipts/audio/podunk-scene-effects.json": "dc69595c5e8b0157d4bf479f9169d9481a3d9c1c3b1137e783a9b84bcca32dc4",
+    "content/asset-receipts/graphics/materials/source.json": "b4d29c723a5c7c8d2b877c404fdb6c61d270a80a76e0a7360e13e82130cd962c",
     "content/asset-receipts/graphics/objects/dead-bush/source.json": "4ae6a3f9fe77c10690bb6587fae13f59843c07a876fb8251f5b4e09b612344a8",
     "content/asset-receipts/graphics/objects/payphone/source.json": "b2144766de57d3cb3645ee892208169b5260ff6f8d3969e7b1b494c6a7a8699e",
     "content/asset-receipts/graphics/objects/vending-machine/source.json": "3032d7f7a56e2f86f5b7aae0dfdd4e987a192641bea78768d26d569e5c250aac",

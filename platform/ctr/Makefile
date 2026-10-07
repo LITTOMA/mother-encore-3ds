@@ -25,6 +25,11 @@ SOURCES += runtime/field_visibility_data.cpp platform/ctr/podunk_scene_visibilit
 SOURCES += runtime/field_npc_world_data.cpp runtime/field_npc_world_motion.cpp platform/ctr/podunk_scene_npc_world.cpp
 SOURCES += runtime/prompt_native_data.cpp platform/ctr/podunk_prompt_native.cpp
 SOURCES += platform/ctr/podunk_butterfly_animation.cpp
+SOURCES += runtime/field_scene_tree_timer.cpp platform/ctr/podunk_npc_return_timer.cpp
+SOURCES += runtime/scene_clip_native_data.cpp platform/ctr/podunk_scene_clip_native.cpp
+SOURCES += runtime/audio_server_data.cpp runtime/audio_server.cpp platform/ctr/podunk_audio_server.cpp
+SOURCES += runtime/field_scene_materials_data.cpp platform/ctr/podunk_scene_materials.cpp
+SOURCES += platform/ctr/podunk_butterfly_timers.cpp
 SOURCES += runtime/house_ui_continuation_data.cpp runtime/house_scene_door.cpp platform/ctr/house_ui_continuation.cpp platform/ctr/podunk_house_continuation.cpp platform/ctr/podunk_scene_animated_leaves.cpp platform/ctr/podunk_scene_scripts.cpp platform/ctr/podunk_scene_consumers.cpp platform/ctr/podunk_scene_loop.cpp
 SOURCES += runtime/field_prompts_data.cpp runtime/field_prompts.cpp \
  runtime/field_psi.cpp runtime/field_psi_data.cpp runtime/field_psi_telepathy.cpp \

@@ -576,6 +576,27 @@
       "path": "data/podunk.encpromptnative",
       "producer": "prompt_native",
       "ir": "content/native-prompt-native.json"
+    },
+    {
+      "role": 83,
+      "name": "AudioServer",
+      "producer": "audio_server",
+      "path": "data/audio-server.encbuses",
+      "ir": "content/native-audio-server.json"
+    },
+    {
+      "role": 84,
+      "name": "SceneMaterials",
+      "path": "data/podunk.encmaterials",
+      "producer": "field_scene_materials",
+      "ir": "content/native-field-scene-materials.json"
+    },
+    {
+      "role": 85,
+      "name": "SceneClipNative",
+      "path": "data/podunk.encclipnative",
+      "producer": "scene_clip_native",
+      "ir": "content/native-scene-clip-native.json"
     }
   ],
   "extra_inputs": [

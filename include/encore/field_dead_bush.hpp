@@ -38,6 +38,10 @@ struct FieldBushInstance {
  std::vector<uint64_t>roots;
 };
 struct FieldBushHost {
+ // Invoked for every source frame setter, including equal values.
+ std::function<bool(uint32_t,uint32_t,std::string&)>native_frame;
+ // Native events: play=1, finished=2, stopped=3; clips remain typed core-owned.
+ std::function<bool(uint32_t,uint32_t,uint32_t,std::string&)>native_animation;
  // Bind actual source geometry, texture, audio, prompt and deferred receiver
  // identity. Unknown dispatch remains rejected, never a generic approved bit.
  std::function<bool(const FieldBushData&,std::string&)>bind;

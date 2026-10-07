@@ -56,6 +56,28 @@ bool FieldPromptRuntime::create(uint32_t id) {
   instances_.emplace(id, std::move(s));
   return true;
 }
+bool FieldPromptRuntime::assign_source_material(
+    uint32_t id, const std::array<float, 4> &flash, float fm, float gm,
+    std::string &e) {
+  auto i = instances_.find(id);
+  if (!data_ || !error_.empty() || i == instances_.end() || i->second.ready ||
+      i->second.material_assigned || !std::isfinite(fm) || !std::isfinite(gm) ||
+      fm < 0 || fm > 1 || gm < 0) {
+    e = "Prompt actual source material constructor phase rejected";
+    return false;
+  }
+  for (float v : flash)
+    if (!std::isfinite(v) || v < 0 || v > 1) {
+      e = "Prompt source Flash color rejected";
+      return false;
+    }
+  i->second.properties[8] = flash;
+  i->second.properties[9][0] = fm;
+  i->second.properties[7][0] = gm;
+  i->second.material_assigned = true;
+  e.clear();
+  return true;
+}
 bool FieldPromptRuntime::observe(uint32_t id, FieldPromptObservation &o) {
   const auto *d = data_->record(id);
   if (!d || !host_.observe(d->parent_id, o, error_))
@@ -127,7 +149,8 @@ bool FieldPromptRuntime::play(FieldPromptInstance &s,
   s.clip = role;
   s.playing = true;
   s.started = true;
-  return !host_.native_animation || host_.native_animation(s.id, role, 1, error_);
+  return !host_.native_animation ||
+         host_.native_animation(s.id, role, 1, error_);
 }
 bool FieldPromptRuntime::refresh(FieldPromptInstance &s, bool quick) {
   if (s.pressing)
@@ -162,7 +185,8 @@ bool FieldPromptRuntime::refresh(FieldPromptInstance &s, bool quick) {
         return false;
     } else {
       s.playing = false;
-      if (host_.native_animation && !host_.native_animation(s.id, s.clip, 3, error_))
+      if (host_.native_animation &&
+          !host_.native_animation(s.id, s.clip, 3, error_))
         return false;
       s.elapsed = 0;
       s.properties[6][0] = 0;
@@ -323,7 +347,8 @@ bool FieldPromptRuntime::idle_frame(uint32_t id, float dt) {
   if (from < c->length && to == c->length) {
     s->playing = false;
     const auto role = c->role;
-    if (host_.native_animation && !host_.native_animation(s->id, role, 2, error_))
+    if (host_.native_animation &&
+        !host_.native_animation(s->id, role, 2, error_))
       return false;
     if (role == FieldPromptClipRole::Show && s->visible()) {
       if (!play(*s, FieldPromptClipRole::Float))
@@ -347,8 +372,20 @@ bool FieldPromptRuntime::destroy(uint32_t id) {
 
 namespace encore::upstream {
 // Source plain property assignment differs from set_enabled's refresh method.
-bool FieldPromptRuntime::assign_enabled(uint32_t id,bool value){auto*s=get(id);if(!s)return false;s->enabled=value;return publish(*s);}
+bool FieldPromptRuntime::assign_enabled(uint32_t id, bool value) {
+  auto *s = get(id);
+  if (!s)
+    return false;
+  s->enabled = value;
+  return publish(*s);
+}
 // Canvas.hide changes only local Canvas visibility; AnimationPlayer, source
 // _hidden and _pressing_button are separate state and deliberately retained.
-bool FieldPromptRuntime::canvas_hide(uint32_t id){auto*s=get(id);if(!s)return false;s->properties[6][0]=0;return host_.visibility(id,false,error_)&&publish(*s);}
+bool FieldPromptRuntime::canvas_hide(uint32_t id) {
+  auto *s = get(id);
+  if (!s)
+    return false;
+  s->properties[6][0] = 0;
+  return host_.visibility(id, false, error_) && publish(*s);
 }
+} // namespace encore::upstream

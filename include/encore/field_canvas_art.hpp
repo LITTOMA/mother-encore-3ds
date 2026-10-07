@@ -55,6 +55,7 @@ public:
   float alpha_prune() const { return alpha_prune_; }
   bool pixel_snap() const { return pixel_snap_; }
   const auto &tree_ir_sha() const { return tree_ir_; }
+  const auto &ir_sha256() const { return ir_; }
   bool source_hash(std::string_view, std::array<uint8_t, 32> &) const;
 
 private:
@@ -62,7 +63,7 @@ private:
   FieldIdentity identity_{};
   std::string scene_;
   float y_epsilon_ = 0, alpha_prune_ = 0;
-  std::array<uint8_t, 32> tree_ir_{};
+  std::array<uint8_t, 32> tree_ir_{}, ir_{};
   FieldCanvasAsset program_;
   std::vector<FieldCanvasAsset> textures_;
   std::vector<FieldCanvasRecord> records_;

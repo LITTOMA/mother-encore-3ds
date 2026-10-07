@@ -7,6 +7,9 @@
 #include "encore/field_visibility.hpp"
 #include "encore/field_npc_world.hpp"
 #include "encore/prompt_native.hpp"
+#include "encore/audio_server.hpp"
+#include "encore/field_scene_materials.hpp"
+#include "encore/scene_clip_native.hpp"
 #include "encore/podunk_bundle.hpp"
 namespace encore::upstream {
 // Stable ownership of the complete scene's actual typed binary sources. Load
@@ -63,6 +66,9 @@ public:
   const FieldVisibilityData &visibility() const { return visibility_; }
   const FieldNpcWorldData &npc_world() const { return npc_world_; }
   const PromptNativeData &prompt_native() const { return prompt_native_; }
+  const AudioServerData &audio_server() const { return audio_server_; }
+  const FieldSceneMaterialsData &materials() const { return materials_; }
+  const SceneClipNativeData &clips() const { return clips_; }
 private:
   FieldData grass_;
   FieldNpcData npc_;
@@ -104,6 +110,9 @@ private:
   FieldVisibilityData visibility_;
   FieldNpcWorldData npc_world_;
   PromptNativeData prompt_native_;
+  AudioServerData audio_server_;
+  FieldSceneMaterialsData materials_;
+  SceneClipNativeData clips_;
   bool loaded_ = false, failed_ = false;
 };
 } // namespace encore::upstream

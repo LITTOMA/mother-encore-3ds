@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "format": 1,
+  "family": 1162739822,
+  "capability": 1,
+  "rules": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "engine_source": "servers/audio_server.cpp",
+  "source_sha256": "826927c48e1c7ca16b87b8d0abf46ead6d07bcdc77e7b6974abff605a6d18776",
+  "source_id": 3563821078,
+  "layout_signal": "bus_layout_changed",
+  "layout_method": "_bus_layout_changed",
+  "buses": [
+    {
+      "name": "Master",
+      "send": "",
+      "volume_db": -5.93075,
+      "solo": false,
+      "mute": false,
+      "bypass_fx": false,
+      "effects": []
+    },
+    {
+      "name": "Music",
+      "send": "Music",
+      "volume_db": 0.0,
+      "solo": false,
+      "mute": false,
+      "bypass_fx": false,
+      "effects": []
+    },
+    {
+      "name": "Filter",
+      "send": "Music",
+      "volume_db": -0.659333,
+      "solo": false,
+      "mute": false,
+      "bypass_fx": false,
+      "effects": [
+        {
+          "id": 2,
+          "native_class": "AudioEffectFilter",
+          "enabled": true,
+          "resource_name": "Filter",
+          "cutoff_hz": 6750.0,
+          "resonance": 1.0
+        }
+      ]
+    },
+    {
+      "name": "More Filter",
+      "send": "Filter",
+      "volume_db": -1.18817,
+      "solo": false,
+      "mute": false,
+      "bypass_fx": false,
+      "effects": [
+        {
+          "id": 2,
+          "native_class": "AudioEffectFilter",
+          "enabled": true,
+          "resource_name": "Filter",
+          "cutoff_hz": 6750.0,
+          "resonance": 1.0
+        }
+      ]
+    },
+    {
+      "name": "SFX",
+      "send": "Master",
+      "volume_db": 0.0,
+      "solo": false,
+      "mute": false,
+      "bypass_fx": false,
+      "effects": []
+    }
+  ],
+  "settings": [
+    {
+      "method": "set_master_volume",
+      "member": "master_volume",
+      "bus": "Master",
+      "signal": "settings_changed"
+    },
+    {
+      "method": "set_music_volume",
+      "member": "music_volume",
+      "bus": "Music",
+      "signal": "settings_changed"
+    },
+    {
+      "method": "set_sfx_volume",
+      "member": "sfx_volume",
+      "bus": "SFX",
+      "signal": "settings_changed"
+    }
+  ],
+  "sources": {
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2"
+  },
+  "engine": {
+    "servers/audio_server.cpp": {
+      "sha256": "826927c48e1c7ca16b87b8d0abf46ead6d07bcdc77e7b6974abff605a6d18776",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/servers/audio_server.cpp"
+    },
+    "servers/audio_server.h": {
+      "sha256": "cd77a225a431316521114eaf1688f0e576f5e832854ce2f4af54151b5c450f51",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/servers/audio_server.h"
+    },
+    "scene/audio/audio_stream_player.cpp": {
+      "sha256": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/audio/audio_stream_player.cpp"
+    }
+  },
+  "unsupported_at_use": [
+    "AudioEffectFilter DSP processing"
+  ],
+  "source_ready_granted": false
+}

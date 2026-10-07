@@ -89,7 +89,7 @@ struct FieldPromptInstance {
   uint32_t id = 0;
   bool ready = false, enabled = false, nearby = false, force_show = false,
        force_hide = false, hidden = true, pressing = false, process = false,
-       playing = false, started = false;
+       playing = false, started = false, material_assigned = false;
   FieldPromptClipRole clip{};
   float elapsed = 0;
   Vec2 position{}, scale{};
@@ -120,13 +120,18 @@ struct FieldPromptHost {
   std::function<bool(uint32_t, bool, std::string &)> visibility;
   std::function<bool(uint32_t, std::string &)> hide_signal;
   // Actual native AP endpoint: 1=play, 2=finished, 3=stop. No second clock.
-  std::function<bool(uint32_t, FieldPromptClipRole, uint32_t, std::string &)> native_animation;
+  std::function<bool(uint32_t, FieldPromptClipRole, uint32_t, std::string &)>
+      native_animation;
 };
 class FieldPromptRuntime {
 public:
- const FieldPromptData*data()const{return data_;}
+  const FieldPromptData *data() const { return data_; }
   bool initialize(const FieldPromptData &, FieldPromptHost, std::string &);
   bool create(uint32_t);
+  // Actual inherited/local material constructor before this script Ready.
+  bool assign_source_material(uint32_t, const std::array<float, 4> &flash,
+                              float flash_modifier, float glow_modifier,
+                              std::string &);
   bool ready(uint32_t);
   bool nearby(uint32_t, uint32_t object, bool);
   bool pause_changed(uint32_t);

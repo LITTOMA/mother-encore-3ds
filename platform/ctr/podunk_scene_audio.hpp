@@ -72,6 +72,7 @@ private:
     std::string bus;
   };
   struct Voice {
+    PodunkAudioVoiceCallback callback;
     const upstream::FieldSceneAudioNode *source = nullptr;
     PodunkSceneAudioState state;
     upstream::AudioAsset asset{};

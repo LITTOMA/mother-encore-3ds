@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "947bd0b257bc873f85daa19218028fb837fca6fa5f20a46adfaeba1a89582448",
+  "sources": {
+    "Audio/Audio Buses/default_bus_layout.tres": "68d7125d8c32cac70f40418e1b632c9fdd7595cc5f5bb36efd08e93e89b762c4",
+    "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
+    "Scripts/global/global.gd": "b0cef0490a6a33f981e881435c9b67959a45905d921a5b727f1589b343ec0590",
+    "Nodes/Reusables/Player.tscn": "f61f6a34a6cdfbd2127efef1afe20713fd8873fac738a621773bc7e8bca2e4e2"
+  },
+  "engine": {
+    "servers/audio_server.cpp": {
+      "sha256": "826927c48e1c7ca16b87b8d0abf46ead6d07bcdc77e7b6974abff605a6d18776",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/servers/audio_server.cpp"
+    },
+    "servers/audio_server.h": {
+      "sha256": "cd77a225a431316521114eaf1688f0e576f5e832854ce2f4af54151b5c450f51",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/servers/audio_server.h"
+    },
+    "scene/audio/audio_stream_player.cpp": {
+      "sha256": "ddee1dc22916416899a916bfb85ebd207ff68462087b2b0672a02084cc84604a",
+      "url": "https://github.com/godotengine/godot/blob/3.6.2-stable/scene/audio/audio_stream_player.cpp"
+    }
+  },
+  "semantics": [
+    "native callback/function userdata ordered Set",
+    "set_bus_layout/set_bus_volume_db do not emit bus_layout_changed",
+    "native forward/self-send fallback to bus0",
+    "actual scalar mute/solo/send route; effect execution refuses until implemented"
+  ],
+  "source_ready_granted": false
+}

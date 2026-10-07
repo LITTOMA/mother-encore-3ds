@@ -356,6 +356,9 @@ bool PodunkPlayerNativeMedia::construct(FieldObjectId id, std::string &e) {
       linearFree(v.samples);
       return fail(e, "Player native stream type rejected");
     }
+    v.callback = {id, registry_, this, [](void *owner, upstream::FieldObjectId object, std::string &error) {
+      return static_cast<PodunkPlayerNativeMedia *>(owner)->audio_mix(object, error);
+    }};
     voices_.emplace(id, std::move(v));
     if (!audio_stream(id, stream_id, e)) {
       free_voice(voices_.at(id));
@@ -890,7 +893,7 @@ bool PodunkPlayerNativeMedia::audio_mix(FieldObjectId id, std::string &e) {
     float db = 0;
     bool muted = false;
     if (!host_.bus_gain(v->state.bus, db, muted, e) || !std::isfinite(db) ||
-        db < -120 || db > 24)
+        db > 24)
       return fail(e, "Player actual audio bus gain rejected");
     float from = muted ? 0 : audio_linear_gain(v->state.mix_volume + db),
           to = muted ? 0 : audio_linear_gain(v->state.volume + db);
@@ -970,10 +973,7 @@ bool PodunkPlayerNativeMedia::phase(FieldObjectId id, FieldTreePhase phase,
   case FieldTreePhase::EnterNative:
     if (v.state.entered || !host_.add_audio_callback(
                                id,
-                               [this, id] {
-                                 std::string e;
-                                 return audio_mix(id, e);
-                               },
+                               {podunk_audio_stream_player_mix, &v.callback},
                                e))
       return fail(e,
                   "Player native AudioServer EnterTree registration rejected");

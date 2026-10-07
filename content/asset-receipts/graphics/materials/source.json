@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "ir_sha256": "51e0683390538b804595c126675d5917a5b5ba810168b12adf0facf1bbeac799",
+  "producer_sha256": "dacf576c38ba65a67b94a49a6212a9566a73fff6c960041937b173b51807a469",
+  "workers": 4,
+  "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
+  "assets": [
+    {
+      "id": 259648254,
+      "texture": 655,
+      "source": "Graphics/UI/Battle/targetCursor.png",
+      "path": "graphics/materials/259648254.t3x",
+      "size": [
+        16,
+        16
+      ],
+      "material": 3778686092,
+      "bytes": 1045,
+      "crc": 150412552,
+      "output_sha256": "8b8c67770106eebc5a5fb12c4138602e01ca432ffea593dafb8041abffab7fed",
+      "converted_png_sha256": "1e231dcb40458d72f183da931776569ebe13ed0445606a418c897abfdf68c521"
+    }
+  ]
+}

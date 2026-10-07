@@ -1,10 +1,11 @@
 #pragma once
 #include "audio_player.hpp"
+#include "podunk_audio_callback.hpp"
 #include "podunk_player_resources.hpp"
 namespace encore::ctr {
 struct PodunkPlayerMediaHost {
   // Bind to the actual AudioServer callback list and shared ObjectDB signals.
-  std::function<bool(upstream::FieldObjectId, std::function<bool()>,
+  std::function<bool(upstream::FieldObjectId, PodunkNativeAudioCallback,
                      std::string &)>
       add_audio_callback;
   std::function<bool(upstream::FieldObjectId, std::string &)>
@@ -121,6 +122,7 @@ private:
   };
   static constexpr size_t buffers = 3, block_frames = 1024;
   struct Voice {
+    PodunkAudioVoiceCallback callback;
     PodunkPlayerAudioState state;
     upstream::PlayerResourceAudio binding;
     const std::vector<uint8_t> *pcm = nullptr;

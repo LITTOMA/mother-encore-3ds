@@ -160,8 +160,7 @@ const Schema schemas[] = {
     {"ENCFGRG1", 1, 1162739778, 3, 1}, {"ENCFUIM1", 2, 1162739781, 1, 1},
     {"ENCFUPR1", 1, 1162739787, 1, 1}, {"ENCYAML1", 1, 1162739791, 1, 1},
     {"ENCYFIL1", 1, 1162739794, 1, 1}, {"ENCHGB01", 1, 1162739808, 2, 1},
-    {"ENCHUIC1", 3, 1162739812, 3, 1}, {"ENCHUIC1", 4, 1162739812, 4, 1},
-    {"ENCPSCR1", 2, 1162739809, 2, 1},
+    {"ENCHUIC1", 4, 1162739812, 4, 1}, {"ENCPSCR1", 2, 1162739809, 2, 1},
     {"ENCPFX01", 1, 1162739801, 1, 1}, {"ENCPFET1", 1, 1162739806, 1, 1},
     {"ENCPGFX1", 1, 1162739803, 1, 1}, {"ENCPLYI1", 1, 1162739798, 1, 1},
     {"ENCPMOV1", 2, 1162739804, 2, 1}, {"ENCPRDY1", 1, 1162739802, 1, 1},
@@ -204,6 +203,9 @@ const Schema schemas[] = {
     {"ENCPPSC1", 1, 0x454e0072, 1, 1},
     {"ENCNSFX1", 1, 0x454e0073, 1, 1},
     {"ENCDACT1", 1, 0x454e0074, 1, 1}};
+static_assert(sizeof(schemas) / sizeof(*schemas) ==
+                  uint32_t(PodunkPackRole::DialogueActorResource),
+              "Each bundle role requires exactly one current reader schema");
 const PodunkPackRole script_schemas[] = {PodunkPackRole::Grass,
                                          PodunkPackRole::Npc,
                                          PodunkPackRole::Enemy,
@@ -319,7 +321,10 @@ bool PodunkBundleData::load(const uint8_t *p, size_t n,
         !a.identity.scene_id || !nz(a.sha256) ||
         !nz(a.identity.source_sha256) || !nz(a.ir_sha256))
       return fail(e, "Bundle typed resource binding rejected");
-    const auto &s = schemas[i];
+    auto s = schemas[i];
+    // Version compatibility belongs to its existing role, never another pack slot.
+    if (a.role == PodunkPackRole::UiContinuation && a.format == 3)
+      s = {"ENCHUIC1", 3, 1162739812, 3, 1};
     if (a.format != s.format || a.family != s.family ||
         a.capability != s.capability || a.rules != s.rules ||
         std::memcmp(a.original_header.data(), s.magic, 8) ||

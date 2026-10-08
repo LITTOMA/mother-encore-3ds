@@ -17,7 +17,9 @@ from tools import resource_catalog as catalog
 
 class ResourceCatalogTests(unittest.TestCase):
     def setUp(self):
-        self.ir = catalog.load_ir()
+        self.base = catalog.load_ir()
+        self.fields = catalog.load_ir(catalog.FIELD_IR)
+        self.ir = catalog.load_catalog()
         self.fixture_parent = ROOT / 'build/resource-catalog-python'
         self.fixture_parent.mkdir(parents=True, exist_ok=True)
 
@@ -45,6 +47,41 @@ class ResourceCatalogTests(unittest.TestCase):
                                         text=True, capture_output=True)
                 self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             self.assertEqual(output.read_bytes(), expected)
+
+    def test_field_extension_is_separate_and_fail_closed(self):
+        self.assertFalse(any(row['role'] in catalog.FIELD_ROLES for row in self.base['bindings']))
+        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.FIELD_ROLES)
+        self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 2)
+
+        def reject(edit_base=None, edit_fields=None):
+            base, fields = copy.deepcopy(self.base), copy.deepcopy(self.fields)
+            if edit_base:
+                edit_base(base)
+            if edit_fields:
+                edit_fields(fields)
+            with self.assertRaises(ValueError):
+                catalog.merge_catalog(base, fields)
+
+        for key, value in [('schema', 2), ('schema', True), ('kind', 'encore.native-resource-catalog.source-ir'),
+                           ('commit', '0' * 40), ('scope', ''), ('sources', {}), ('bindings', []),
+                           ('bindings', {}), ('encounters', []), ('unknown', 1)]:
+            with self.subTest(key=key, value=value):
+                reject(edit_fields=lambda ir: ir.update({key: value}))
+        reject(edit_fields=lambda ir: ir.pop('scope'))
+        reject(edit_fields=lambda ir: ir['bindings'][0].update(unknown=1))
+        reject(edit_fields=lambda ir: ir['bindings'].pop())
+        reject(edit_fields=lambda ir: ir['bindings'].append(copy.deepcopy(ir['bindings'][0])))
+        reject(edit_fields=lambda ir: ir['bindings'].append(dict(id=1, role='Room', path='data/other.encroom')))
+        reject(edit_fields=lambda ir: ir['bindings'][0].update(id=30))
+        reject(edit_fields=lambda ir: ir['bindings'][0].update(path=self.base['bindings'][0]['path']))
+        reject(edit_fields=lambda ir: ir['bindings'][1].update(path='data/podunk.encroom'))
+        reject(edit_fields=lambda ir: ir['sources'].update({'project.godot': '0' * 64}))
+        reject(edit_base=lambda ir: ir['bindings'].append(copy.deepcopy(self.fields['bindings'][0])))
+        candidate = copy.deepcopy(self.fields)
+        candidate['sources'][next(iter(candidate['sources']))] = '0' * 64
+        with self.assertRaises(ValueError):
+            catalog.encode(catalog.merge_catalog(copy.deepcopy(self.base), candidate))
 
     def test_unknown_schema_fields_types_pin_and_empty_scope(self):
         for key, value in [('schema', 2), ('schema', True), ('kind', 'unknown'),

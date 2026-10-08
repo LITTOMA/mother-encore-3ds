@@ -43,6 +43,8 @@ python tools/resource_catalog.py compile
 
 资源目录 `native.encresources` 升至能力 2，新增 `FieldRoom=31`、`FieldMap=32`、`WorldLinks=33`；能力 2 必须同时包含三者，能力 1 拒绝它们。房屋 `.enchouse` 与存档格式不变。
 
+这三个绑定声明在独立的 `content/field-resource-catalog.json`（kind `encore.field-resource-catalog.source-ir`，只允许场景角色，并固定 `Maps/podunk/podunk.tscn` 指纹），`tools/resource_catalog.py` 把它与 `content/native-resource-catalog.json` 合并编译为同一个二进制目录。原因：开局房间 IR `content/native-opening.json` 的来源记录固定了 `native-resource-catalog.json` 的字节哈希，并经由它级联到房屋、会话、恢复与三场回合的受审 IR；把室外场景放进该文件会迫使整条开局链重新提取。分离后开局链不依赖室外地图，基础配方保持与 main 相同的字节。
+
 ## 运行机制
 
 - `FieldScene`（共享核心）拥有一个 `OpeningWorld`，通过 `MotionObstacleSource` 向 `StaticMotionSolver` 提供查询范围内的图块与静态体形状。
@@ -66,5 +68,6 @@ python tools/resource_catalog.py compile
 - 资源生成：Windows 主机 Python 3.9 + Pillow 11.3 运行 `podunk_field.py compile`，图集由 `encore-devkitpro:pinned`（devkitarm 摘要 `116afba8…`）中的 tex3ds 经 wslc 转换；随后 `resource_catalog.py compile`，`podunk_field.py verify` 与 `resource_catalog.py verify` 通过。CI 使用 Pillow 12.3.0，`make 3dsx` 中的 verify 会在 CI 上重新核对。
 - 语法检查（`-fsyntax-only`，未链接、未生成目标文件）：同一镜像中 arm-none-eabi-g++ 检查 `platform/ctr/main.cpp`（默认渲染开关，未启用 CI 使用的实验性 GPU 开关）与修改过的 `runtime/` 文件；主机 g++ 12 检查共享核心与 `tests/field_data_tests.cpp`、`tests/resource_catalog_tests.cpp`。
 - 用临时宿主探针加载编译输出，完成出生、行走、碰撞、边界停止与 B 返回、回到房门触发返回路线、转场计时。
+- CI build 模式 run 37756233511（提交 `2459070`）在 `make native-content` 的 room 任务失败：`NATIVE CONTENT ERROR: Changed reviewed source: content/native-resource-catalog.json`。按上文拆分目录配方后，本地 `python tools/native_content.py verify` 与 `python tools/resource_catalog.py verify` 通过，合并后的 `native.encresources` 与拆分前逐字节相同（SHA-256 `95ced244…b908`）。
 
 未执行：新增 `tests/field_data_tests.cpp`、`tests/test_godot_text.py`、`tests/test_podunk_field.py` 与目录测试更新尚未运行（按仓库规则，测试仅在明确要求时运行）。3DSX / CIA 链接与打包、模拟器与 Old / New 3DS 真机均未验证。

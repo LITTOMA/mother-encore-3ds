@@ -69,5 +69,6 @@ python tools/resource_catalog.py compile
 - 语法检查（`-fsyntax-only`，未链接、未生成目标文件）：同一镜像中 arm-none-eabi-g++ 检查 `platform/ctr/main.cpp`（默认渲染开关，未启用 CI 使用的实验性 GPU 开关）与修改过的 `runtime/` 文件；主机 g++ 12 检查共享核心与 `tests/field_data_tests.cpp`、`tests/resource_catalog_tests.cpp`。
 - 用临时宿主探针加载编译输出，完成出生、行走、碰撞、边界停止与 B 返回、回到房门触发返回路线、转场计时。
 - CI build 模式 run 37756233511（提交 `2459070`）在 `make native-content` 的 room 任务失败：`NATIVE CONTENT ERROR: Changed reviewed source: content/native-resource-catalog.json`。按上文拆分目录配方后，本地 `python tools/native_content.py verify` 与 `python tools/resource_catalog.py verify` 通过，合并后的 `native.encresources` 与拆分前逐字节相同（SHA-256 `95ced244…b908`）。
+- CI build 模式 run 37759915317（提交 `2defb93`，不含测试）成功：`make native-content`、Linux + Pillow 12.3.0 下的 `podunk_field.py verify`、启用实验性 GPU 开关的 ARM 编译链接、3DSX、CIA、提取 CIA 后的 RomFS 逐文件比较与受检来源未改动检查；产物 `encore-3ds-2defb93…-37759915317`。该结果只覆盖该提交。
 
-未执行：新增 `tests/field_data_tests.cpp`、`tests/test_godot_text.py`、`tests/test_podunk_field.py` 与目录测试更新尚未运行（按仓库规则，测试仅在明确要求时运行）。3DSX / CIA 链接与打包、模拟器与 Old / New 3DS 真机均未验证。
+未执行：新增 `tests/field_data_tests.cpp`、`tests/test_godot_text.py`、`tests/test_podunk_field.py` 与目录测试更新尚未运行（按仓库规则，测试仅在明确要求时运行）；sanitizer、模拟器与 Old / New 3DS 真机均未验证。

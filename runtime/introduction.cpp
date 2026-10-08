@@ -142,18 +142,36 @@ IntroductionPose Introduction::pose()const{IntroductionPose p;p.phase=phase_;if(
  if(scene_==1){const auto bars=blackbars_.pose(width_,height_);const auto color=bars.color;const auto rgba_color=(color&255)<<24|(color&0xff00)<<8|(color&0xff0000)>>8|(color>>24);for(const auto&b:bars.bars)p.masks.push_back({{b.x,b.y,b.w,b.h},rgba_color});}
  if(hide_time_>=0){const float weight=float(std::clamp(hide_time_/s.hide,0.,1.));p.text_y=text_origin_+float(s.hide_y-text_origin_)*weight;p.text_center_weight=1-weight;}else p.text_y=text_origin_;
  if(hint_time_>=0){const auto&h=data_->hint_timing;const double out=h[0]+h[2];if(hint_time_<h[0])p.hint_alpha=ease(float(hint_time_/h[0]),data_->hint_curve[0]);else if(hint_time_<out)p.hint_alpha=1;else p.hint_alpha=1-ease(float((hint_time_-out)/h[1]),data_->hint_curve[1]);}
- if(phase_==IntroPhase::DoorIn||phase_==IntroPhase::DoorOut){const auto&door=data_->doors[door_];p.door.index=door_;p.door.incoming=phase_==IntroPhase::DoorOut;p.door.kind=p.door.incoming?door.out_kind:door.in_kind;p.door.destination=door.destination;const auto&clip=data_->fades[p.door.kind*2+(p.door.incoming?1:0)];p.door.cut=sample(clip.tracks.front(),phase_time_)[0];const auto&v=data_->fade_shader;
-  const auto color=data_->border_rects.front().color;
-  if(p.door.kind==0){const float x=std::clamp(v[0]-p.door.cut,0.f,1.f),alpha=x*x*(3-2*x);p.door.masks.push_back({{0,0,width_,height_},(color&0xffffff00)|uint32_t(std::round(alpha*255))});}
-  else {const float cx=(p.door.kind==1?focus_x_:width_/2)+v[5],cy=(p.door.kind==1?focus_y_:height_/2)+v[6];const double ratio=v[1]/v[2];
-   for(int y=0;y<int(height_);++y){const double dy=(y+.5-cy)/v[4],remaining=double(p.door.cut)*p.door.cut-dy*dy;
-    if(remaining<=0){p.door.masks.push_back({{0,float(y),width_,1},color});continue;}
-    const double radius=std::sqrt(remaining)*v[3]/ratio;
-    const int first=std::clamp(int(std::floor(cx-radius-.5))+1,0,int(width_)),last=std::clamp(int(std::ceil(cx+radius-.5))-1,-1,int(width_)-1);
-    if(first>last)p.door.masks.push_back({{0,float(y),width_,1},color});else{if(first>0)p.door.masks.push_back({{0,float(y),float(first),1},color});if(last+1<int(width_))p.door.masks.push_back({{float(last+1),float(y),width_-float(last+1),1},color});}}
-  }
+ if(phase_==IntroPhase::DoorIn||phase_==IntroPhase::DoorOut){const auto&door=data_->doors[door_];p.door.index=door_;p.door.incoming=phase_==IntroPhase::DoorOut;p.door.kind=p.door.incoming?door.out_kind:door.in_kind;p.door.destination=door.destination;p.door.cut=door_transition_cut(*data_,p.door.kind,p.door.incoming,phase_time_);
+  p.door.masks=door_transition_masks(*data_,p.door.kind,p.door.cut,width_,height_,focus_x_,focus_y_);
  }
  return p;
+}
+float door_transition_cut(const IntroductionData&d,uint32_t kind,bool incoming,double time){
+ const size_t index=size_t(kind)*2+(incoming?1:0);
+ if(index>=d.fades.size()||d.fades[index].tracks.empty())return 0;
+ return sample(d.fades[index].tracks.front(),time)[0];
+}
+double door_transition_length(const IntroductionData&d,uint32_t kind,bool incoming){
+ const size_t index=size_t(kind)*2+(incoming?1:0);return index<d.fades.size()?d.fades[index].length:0;
+}
+double door_transition_mostly(const IntroductionData&d,uint32_t kind,bool incoming){
+ const size_t index=size_t(kind)*2+(incoming?1:0);return index<d.fade_mostly.size()?d.fade_mostly[index]:0;
+}
+std::vector<IntroMask> door_transition_masks(const IntroductionData&d,uint32_t kind,float cut,float width,float height,float focus_x,float focus_y){
+ std::vector<IntroMask> masks;
+ if(kind>2||d.border_rects.empty())return masks;
+ const auto&v=d.fade_shader;
+ const auto color=d.border_rects.front().color;
+ if(kind==0){const float x=std::clamp(v[0]-cut,0.f,1.f),alpha=x*x*(3-2*x);masks.push_back({{0,0,width,height},(color&0xffffff00)|uint32_t(std::round(alpha*255))});}
+ else {const float cx=(kind==1?focus_x:width/2)+v[5],cy=(kind==1?focus_y:height/2)+v[6];const double ratio=v[1]/v[2];
+  for(int y=0;y<int(height);++y){const double dy=(y+.5-cy)/v[4],remaining=double(cut)*cut-dy*dy;
+   if(remaining<=0){masks.push_back({{0,float(y),width,1},color});continue;}
+   const double radius=std::sqrt(remaining)*v[3]/ratio;
+   const int first=std::clamp(int(std::floor(cx-radius-.5))+1,0,int(width)),last=std::clamp(int(std::ceil(cx+radius-.5))-1,-1,int(width)-1);
+   if(first>last)masks.push_back({{0,float(y),width,1},color});else{if(first>0)masks.push_back({{0,float(y),float(first),1},color});if(last+1<int(width))masks.push_back({{float(last+1),float(y),width-float(last+1),1},color});}}
+ }
+ return masks;
 }
 std::vector<IntroAudio>Introduction::take_audio(){std::vector<IntroAudio>v;v.swap(audio_);return v;}
 }

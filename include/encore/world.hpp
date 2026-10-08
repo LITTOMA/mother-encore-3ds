@@ -78,6 +78,8 @@ public:
     bool warp_same_scene(Vec2 position,Vec2 direction);
     bool house_paused()const{return persistent_player_&&persistent_player_.state_->house_paused_;}
     void attach_random(SourceRandom& random){random_=&random;}
+    // Field scenes supply TileMap/static-body shapes; the source must outlive this world.
+    void attach_obstacles(const MotionObstacleSource* source){solver_.attach_source(source);}
     bool erase_battle_actor(uint32_t body_id);
     bool set_body_enabled(uint32_t body_id,bool enabled);
     bool body_enabled(uint32_t body_id)const;

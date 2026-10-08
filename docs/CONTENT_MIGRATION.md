@@ -71,6 +71,10 @@ Continue、Save 和按钮提示分别使用 `continue-presentation-bindings.json
 
 电脑上的共享核心正常 / 负向自动测试和同一执行文件的资源变化检查证明核心消费者行为；真实 3DSX / CIA 构建和嵌入资源检查证明交叉构建与打包。它们不能代替模拟器、Old / New 3DS 的画面、声音、输入和存档验收。对应提交的实际检查结果见 PR 与 Actions，原始日志保留在仓库外的私有构建目录。
 
+## Podunk 室外场景
+
+`content/podunk-field.json` 声明场景类别、物件精灵、跨场景路线、语言与输出路径；格子、图块形状、精灵、门与边界在每次编译时直接从固定上游提取（批量数据例外见 [ARCHITECTURE](ARCHITECTURE.md)）。`tools/podunk_field.py` 生成 `data/podunk.encmap`（ENCMAP01）、`data/podunk.encroom`、`data/world.enclinks`（ENCLNK01）与 `graphics/world/podunk` 图集，收据位于 `content/asset-receipts/graphics/world/podunk/source.json`。资源目录能力 2 新增 FieldRoom / FieldMap / WorldLinks 三个角色。房屋 `.enchouse`、存档格式与既有身份不变；旗标按名称与稳定 ID 跨场景，Podunk 房间必须携带与房屋相同的旗标表。范围与限制见 [PODUNK_FIELD](PODUNK_FIELD.md)。
+
 ## 自由行走装备菜单
 
 `native-field-equipment.json` / `field-equipment-assets.json` 从固定上游 Pause / Equip 场景、脚本、动画、翻译、库存与角色属性提取完整局部来源。`field_equipment.py` 普通编译重新对照来源与 IR，编译独立 `data/opening.encfield`（ENCFIE01，格式 / 能力 1），纹理归入 `graphics/ui/equipment`。`field-audio-binding.json` 补入两个原版 Pause 音效，其他菜单音效复用受检音频 bank 的稳定身份；PCM 位于 `sound/effects`。JSON、转换配方及收据均不进入 RomFS。

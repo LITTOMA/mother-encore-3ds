@@ -26,12 +26,20 @@ ROLES = {name: index + 1 for index, name in enumerate((
     'Room', 'Blackbars', 'Battle', 'Round', 'House', 'Items', 'Audio', 'Phone',
     'Choices', 'SaveMenu', 'Session', 'Settings', 'Prompts', 'Continue', 'Restore',
     'SessionMigration', 'NewGame', 'Localization', 'TitleLocale', 'SourceFonts',
-    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment'))}
+    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment',
+    'FieldRoom', 'FieldMap', 'WorldLinks'))}
 SUFFIXES = dict(zip(ROLES, ('.encroom', '.encbars', '.encbattle', '.encround',
     '.enchouse', '.encitems', '.encaudio', '.encphone', '.encchoices', '.encsavemenu',
     '.encsession', '.encsettings', '.encprompts', '.enccontinue', '.encrestore',
     '.encmigration', '.encnewgame', '.enclocale', '.enctitlelocale', '.encfont',
-    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield')))
+    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield',
+    '.encroom', '.encmap', '.enclinks')))
+# Capability 2 adds the linked exterior field roles; all three are then required.
+FIELD_ROLES = {'FieldRoom', 'FieldMap', 'WorldLinks'}
+
+
+def capability_for(bindings):
+    return 2 if any(row['role'] in FIELD_ROLES for row in bindings) else 1
 BATTLE_ROLES = {'Battle', 'EncounterBattle'}
 ROUND_ROLES = {'Round', 'EncounterRound'}
 
@@ -90,6 +98,7 @@ def validate_bindings(bindings, encounters):
         require((ROLES[role] > 22 or role not in names) and row['id'] not in ids and row['path'] not in paths, 'Duplicate binding role/ID/path')
         names.add(role); ids.add(row['id']); paths.add(row['path'])
     require({name for name in names if ROLES[name] <= 22} == {name for name in ROLES if ROLES[name] <= 22}, 'Incomplete catalog roles')
+    require(not (names & FIELD_ROLES) or FIELD_ROLES <= names, 'Incomplete field scene roles')
     require(type(encounters) is list and 1 <= len(encounters) <= 32, 'Incomplete encounter coverage')
     binding_roles = {row['id']: row['role'] for row in bindings}
     battles, rounds = set(), set()
@@ -140,13 +149,13 @@ def encode(ir, romfs_root=ROOT / 'romfs'):
     for row in ir['encounters']:
         payload += struct.pack('<2I', row['battle_id'], row['round_id'])
     require(HEADER.size + len(payload) <= CATALOG_LIMIT, 'Catalog exceeds format size bound')
-    return HEADER.pack(MAGIC, 1, HEADER.size + len(payload), zlib.crc32(payload), 1, 0, 0) + payload
+    return HEADER.pack(MAGIC, 1, HEADER.size + len(payload), zlib.crc32(payload), capability_for(ir['bindings']), 0, 0) + payload
 
 
 def decode(blob):
     require(type(blob) in (bytes, bytearray) and 60 <= len(blob) <= CATALOG_LIMIT, 'Catalog size rejected')
     magic, version, total, checksum, capability, reserved0, reserved1 = HEADER.unpack_from(blob)
-    require(magic == MAGIC and version == 1 and total == len(blob) and capability == 1 and not reserved0 and not reserved1, 'Catalog header rejected')
+    require(magic == MAGIC and version == 1 and total == len(blob) and capability in (1, 2) and not reserved0 and not reserved1, 'Catalog header rejected')
     require(zlib.crc32(blob[HEADER.size:]) == checksum, 'Catalog checksum mismatch')
     require(blob[32:52] == bytes.fromhex(PIN), 'Catalog source pin rejected')
     count, pairs = struct.unpack_from('<2I', blob, 52)
@@ -157,7 +166,7 @@ def decode(blob):
     for _ in range(count):
         require(offset + 20 <= len(blob), 'Truncated catalog binding')
         identity, role, size, crc, length = struct.unpack_from('<5I', blob, offset); offset += 20
-        require(role in names and 0 < size <= RESOURCE_LIMIT and 0 < length <= 256 and offset + length <= len(blob), 'Invalid catalog binding')
+        require(role in names and role <= (30 if capability == 1 else 33) and 0 < size <= RESOURCE_LIMIT and 0 < length <= 256 and offset + length <= len(blob), 'Invalid catalog binding')
         try:
             path = blob[offset:offset + length].decode('ascii')
         except UnicodeDecodeError as exc:
@@ -171,6 +180,7 @@ def decode(blob):
         encounters.append(dict(battle_id=b, round_id=r))
     require(offset == len(blob), 'Trailing catalog bytes')
     validate_bindings(bindings, encounters)
+    require(capability == capability_for(bindings), 'Catalog capability does not match its roles')
     return dict(bindings=bindings, encounters=encounters, fingerprints=fingerprints)
 
 

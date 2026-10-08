@@ -137,10 +137,93 @@ template<class Shape> bool solve(const Shape& a,Vec2 position,Vec2 motion,const 
     return true;
 }
 
+// Godot _generate_contacts_from_supports with the collector swap flag. Output is
+// always (actor point, obstacle point) once the swap parity is resolved.
+void generate_contacts_swapped(const Vec2* a,unsigned na,const Vec2* b,unsigned nb,Vec2 normal,bool swap,Contacts& out) {
+    if(na>nb){swap=!swap;normal=mul(normal,-1);std::swap(a,b);std::swap(na,nb);}
+    const auto call=[&](Vec2 pa,Vec2 pb){if(swap)out.append(pb,pa);else out.append(pa,pb);};
+    if(na==1&&nb==1){call(a[0],b[0]);return;}
+    if(na==1){call(a[0],closest_on_line(a[0],b[0],b[1]));return;}
+    const Vec2 t=tangent(normal);
+    const float da=dot(normal,a[0]),db=dot(normal,b[0]);
+    struct Endpoint { float distance; bool first; unsigned index; };
+    std::array<Endpoint,4> points{{{dot(t,a[0]),true,0},{dot(t,a[1]),true,1},{dot(t,b[0]),false,0},{dot(t,b[1]),false,1}}};
+    for(unsigned i=1;i<points.size();++i) {
+        const Endpoint value=points[i];unsigned j=i;
+        while(j>0&&value.distance<points[j-1].distance){points[j]=points[j-1];--j;}
+        points[j]=value;
+    }
+    for(unsigned i=1;i<=2;++i) {
+        Vec2 pa,pb;
+        if(points[i].first){pa=a[points[i].index];pb=sub(pa,mul(normal,dot(normal,pa)-db));}
+        else {pb=b[points[i].index];pa=sub(pb,mul(normal,dot(normal,pb)-da));}
+        if(dot(normal,pa)>dot(normal,pb)-epsilon)continue;
+        call(pa,pb);
+    }
+}
+
+// Convex actor against one ConcavePolygonShape2D segment. Godot orders shape
+// types, so the segment becomes A (static, zero margin) and the actor B (cast,
+// actor margin); the result collector is therefore swapped.
+template<class Shape> bool solve_segment(const Shape& actor,Vec2 position,Vec2 motion,const Shape& seg,float margin,Contacts* contacts=nullptr) {
+    const Vec2 a=seg.vertices[0],b=seg.vertices[1],normal=seg.normals[0];
+    float best_depth=1e15f;Vec2 best_axis{};
+    const bool cast=!zero(motion),with_margin=margin>0;
+    const auto test_axis=[&](Vec2 axis) {
+        if(std::abs(axis.x)<epsilon&&std::abs(axis.y)<epsilon)axis={0,1};
+        float amin=std::min(dot(axis,a),dot(axis,b)),amax=std::max(dot(axis,a),dot(axis,b));
+        float bmin,bmax;project(actor,position,axis,bmin,bmax);
+        if(cast){float lo,hi;project(actor,add(position,motion),axis,lo,hi);bmin=std::min(bmin,lo);bmax=std::max(bmax,hi);}
+        if(with_margin){bmin-=margin;bmax+=margin;}
+        bmin-=(amax-amin)*0.5f;bmax+=(amax-amin)*0.5f;
+        float dmin=bmin-(amin+amax)*0.5f,dmax=bmax-(amin+amax)*0.5f;
+        if(dmin>0||dmax<0)return false;
+        dmin=std::abs(dmin);
+        if(dmax<dmin){if(dmax<best_depth){best_depth=dmax;best_axis=axis;}}
+        else if(dmin<best_depth){best_depth=dmin;best_axis=mul(axis,-1);}
+        return true;
+    };
+    const auto test_point=[&](Vec2 pa,Vec2 pb) {
+        if(!test_axis(normalized(sub(pa,pb))))return false;
+        if(cast&&!test_axis(normalized(sub(pa,add(pb,motion)))))return false;
+        return true;
+    };
+    if(cast){const Vec2 n=normalized(motion);if(!test_axis(n)||!test_axis(tangent(n)))return false;}
+    if(!test_axis(normal))return false;
+    for(std::size_t i=0;i<actor.vertices.size();++i) {
+        if(!test_axis(actor.normals[i]))return false;
+        if(with_margin) {
+            const Vec2 p=add(position,actor.vertices[i]);
+            if(!test_point(a,p)||!test_point(b,p))return false;
+        }
+    }
+    if(zero(best_axis))return false;
+    if(contacts) {
+        // This backend only requests contacts for stationary shape tests.
+        Vec2 sa[2],sb[2];unsigned na=0;
+        const Vec2 toward=mul(best_axis,-1);
+        if(std::abs(dot(toward,normal))>0.99998f){sa[0]=a;sa[1]=b;na=2;}
+        else {sa[0]=dot(toward,sub(b,a))>0?b:a;na=1;}
+        const unsigned nb=supports(actor,position,best_axis,sb);
+        if(with_margin)for(unsigned i=0;i<nb;++i)sb[i]=add(sb[i],mul(best_axis,margin));
+        generate_contacts_swapped(sa,na,sb,nb,best_axis,true,*contacts);
+    }
+    return true;
+}
+
 template<class Shape> bool nearby(const Shape& actor,Vec2 position,Vec2 motion,const Shape& obstacle,float grow) {
+    if(obstacle.segment) {
+        // ConcavePolygonShape2DSW::cull: strict Rect2::intersects against the
+        // actor's static projection, without motion or margin.
+        const Vec2 lo{position.x+actor.minimum.x,position.y+actor.minimum.y},hi{position.x+actor.maximum.x,position.y+actor.maximum.y};
+        return !(lo.x>=obstacle.maximum.x||hi.x<=obstacle.minimum.x||lo.y>=obstacle.maximum.y||hi.y<=obstacle.minimum.y);
+    }
     const Vec2 lo{position.x+actor.minimum.x+std::min(0.0f,motion.x)-grow,position.y+actor.minimum.y+std::min(0.0f,motion.y)-grow};
     const Vec2 hi{position.x+actor.maximum.x+std::max(0.0f,motion.x)+grow,position.y+actor.maximum.y+std::max(0.0f,motion.y)+grow};
     return lo.x<=obstacle.maximum.x&&hi.x>=obstacle.minimum.x&&lo.y<=obstacle.maximum.y&&hi.y>=obstacle.minimum.y;
+}
+template<class Shape> bool collide(const Shape& actor,Vec2 position,Vec2 motion,const Shape& obstacle,float margin,Contacts* contacts=nullptr) {
+    return obstacle.segment?solve_segment(actor,position,motion,obstacle,margin,contacts):solve(actor,position,motion,obstacle,margin,contacts);
 }
 struct Motion { Vec2 position{},remainder{},normal{};bool collided=false; };
 template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obstacles,Vec2 from,Vec2 motion,Motion& result,float margin) {
@@ -148,7 +231,7 @@ template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obs
     Vec2 position=from;bool recovered=false;
     for(unsigned attempt=0;attempt<4;++attempt) {
         Contacts contacts;
-        for(const auto& obstacle:obstacles)if(nearby(actor,position,{},obstacle,margin))solve(actor,position,{},obstacle,margin,&contacts);
+        for(const auto& obstacle:obstacles)if(nearby(actor,position,{},obstacle,margin))collide(actor,position,{},obstacle,margin,&contacts);
         if(contacts.overflow)return false;
         if(!contacts.size)break;
         recovered=true;Vec2 recovery{};
@@ -163,12 +246,12 @@ template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obs
     }
     float safe=1,unsafe=1;
     for(const auto& obstacle:obstacles) {
-        if(!nearby(actor,position,motion,obstacle,margin)||!solve(actor,position,motion,obstacle,0))continue;
-        if(solve(actor,position,{},obstacle,0)){safe=unsafe=0;break;}
+        if(!nearby(actor,position,motion,obstacle,margin)||!collide(actor,position,motion,obstacle,0))continue;
+        if(collide(actor,position,{},obstacle,0)){safe=unsafe=0;break;}
         float low=0,high=1,coefficient=0.5f;
         for(unsigned iteration=0;iteration<8;++iteration) {
             const float fraction=low+(high-low)*coefficient;
-            if(solve(actor,position,mul(motion,fraction),obstacle,0)) {
+            if(collide(actor,position,mul(motion,fraction),obstacle,0)) {
                 high=fraction;coefficient=(iteration==0||low>0)?0.5f:0.25f;
             } else {
                 low=fraction;coefficient=(iteration==0||high<1)?0.5f:0.75f;
@@ -182,7 +265,7 @@ template<class Shape> bool move(const Shape& actor,const std::vector<Shape>& obs
         const float allowed_depth=std::min(length(motion),minimum_depth);
         for(const auto& obstacle:obstacles) {
             if(!nearby(actor,contact_position,{},obstacle,margin))continue;
-            Contacts contacts;solve(actor,contact_position,{},obstacle,margin,&contacts);
+            Contacts contacts;collide(actor,contact_position,{},obstacle,margin,&contacts);
             if(contacts.overflow)return false;
             for(unsigned i=0;i<contacts.size;++i) {
                 const Vec2 relative=sub(contacts.data[i].obstacle,contacts.data[i].actor);const float d=length(relative);
@@ -246,9 +329,28 @@ bool StaticMotionSolver::configure_room(const RoomView& content,const std::vecto
 bool StaticMotionSolver::slide(Vec2 position,Vec2 velocity,SlideResult& result) const {
     if(!valid_||!bounded(position)||!bounded(velocity))return false;
     Vec2 motion=mul(velocity,1.0f/60.0f);
+    const std::vector<Shape>* obstacles=&obstacles_;
+    if(source_) {
+        // Slides only shorten the first motion, so one query covers every iteration.
+        const float reach=length(motion)+margin_+1.0f;
+        const Vec2 lo{position.x+actor_.minimum.x-reach,position.y+actor_.minimum.y-reach};
+        const Vec2 hi{position.x+actor_.maximum.x+reach,position.y+actor_.maximum.y+reach};
+        collected_.clear();
+        if(!source_->collect(lo,hi,collected_))return false;
+        combined_.assign(obstacles_.begin(),obstacles_.end());
+        for(const auto& o:collected_) {
+            if(!o.points||!o.normals||(o.segment?o.count!=2:(o.count<2||o.count>64))||!bounded(o.offset))return false;
+            Shape shape;
+            shape.vertices={nullptr,o.points,0,o.count,false,o.offset};
+            shape.normals={nullptr,o.normals,0,o.segment?1u:o.count,false,{}};
+            shape.minimum=o.minimum;shape.maximum=o.maximum;shape.segment=o.segment;
+            combined_.push_back(shape);
+        }
+        obstacles=&combined_;
+    }
     for(unsigned iteration=0;iteration<4;++iteration) {
         Motion moved;
-        if(!move(actor_,obstacles_,position,motion,moved,margin_))return false;
+        if(!move(actor_,*obstacles,position,motion,moved,margin_))return false;
         position=moved.position;
         if(!moved.collided)break;
         motion=projected_slide(moved.remainder,moved.normal);

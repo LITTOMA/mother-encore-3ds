@@ -2,10 +2,11 @@
   "schema": 1,
   "kind": "encore.native-resource-catalog.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Native wiring adapter for the already reviewed opening, Introduction, title, menus and house encounter resources. Relative paths and encounter companions are native bindings; no new upstream gameplay behavior is claimed.; source-bound house object inspections",
+  "scope": "Native wiring adapter for the already reviewed opening, Introduction, title, menus and house encounter resources. Relative paths and encounter companions are native bindings; no new upstream gameplay behavior is claimed.; source-bound house object inspections; linked Podunk exterior field scene (capability 2)",
   "sources": {
     "project.godot": "76c5b009c209cc3e246ddb9058ddd37431d5d0d2bca945148e4d68891c5e602b",
     "Maps/podunk/Nintens House.tscn": "3ef508b1378765b5db09a3f3404fe1c0419f4f111a96f1a03f84105346eb8f2e",
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
     "Nodes/Ui/Battle/Battle.tscn": "7814471baacd68b187c311c5167e47d032170ca77e09f67c79ad878afd43ac5c"
   },
   "bindings": [
@@ -168,6 +169,21 @@
       "id": 30,
       "role": "FieldEquipment",
       "path": "data/opening.encfield"
+    },
+    {
+      "id": 31,
+      "role": "FieldRoom",
+      "path": "data/podunk.encroom"
+    },
+    {
+      "id": 32,
+      "role": "FieldMap",
+      "path": "data/podunk.encmap"
+    },
+    {
+      "id": 33,
+      "role": "WorldLinks",
+      "path": "data/world.enclinks"
     }
   ],
   "encounters": [

@@ -57,8 +57,19 @@ bool HouseRuntime::set_player_nickname(std::string_view name){
 std::string_view HouseRuntime::player_nickname()const{
  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
 }
-bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error;}
-bool HouseRuntime::entering_door()const{return phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_);}
+bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error||phase_==HousePhase::SceneDoorAwaitIdle||phase_==HousePhase::SceneTransition;}
+bool HouseRuntime::entering_door()const{return phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::SceneTransition;}
+bool HouseRuntime::bind_scene_routes(const WorldLinksData&links,uint32_t scene_id){
+ if(!content_.valid()||!links.valid()||links.find_scene(scene_id)==WorldLinksData::kNotFound)return fail("Scene route binding rejected");
+ std::vector<uint32_t>routes(content_.count(HouseSection::Boundaries),WorldLinksData::kNotFound);
+ for(uint32_t i=0;i<routes.size();++i){const auto b=content_.boundary(i);const auto r=links.find_route_from(scene_id,content_.string(b.source_path));
+  if(r==WorldLinksData::kNotFound)continue;
+  if(b.kind!=uint32_t(HouseBoundaryKind::UnsupportedScene))return fail("Scene route bound to a same-scene boundary");
+  routes[i]=r;}
+ for(uint32_t r=0;r<links.route_count();++r){const auto route=links.route(r);if(route.from!=scene_id)continue;
+  if(std::find(routes.begin(),routes.end(),r)==routes.end())return fail("Scene route has no source boundary");}
+ boundary_routes_=std::move(routes);return true;
+}
 bool HouseRuntime::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
  const auto&room=world_->content();const auto scene=room.scene();
  const Vec2 rect[4]={{center.x-extents.x,center.y-extents.y},{center.x+extents.x,center.y-extents.y},{center.x+extents.x,center.y+extents.y},{center.x-extents.x,center.y+extents.y}};
@@ -135,7 +146,9 @@ bool HouseRuntime::deliver_area_contacts(){
    if(!world_->pause_for_house())return fail("Door pause rejected");
    event(HouseEventKind::Paused,c.index);
   }else if(c.kind==2&&!blocks_player()&&!entering_door()){
-   active_=c.index;phase_=HousePhase::Unsupported;error_="Unported source route; B returns to the last safe point";
+   active_=c.index;
+   if(c.index<boundary_routes_.size()&&boundary_routes_[c.index]!=WorldLinksData::kNotFound){phase_=HousePhase::SceneDoorAwaitIdle;await_idle_=idle_frame_;}
+   else {phase_=HousePhase::Unsupported;error_="Unported source route; B returns to the last safe point";}
    if(!world_->pause_for_house())return fail("Boundary pause rejected");
   }
  }
@@ -508,6 +521,8 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
  if(!advance_openables(delta))return false;
  if(phase_==HousePhase::StoryBoundary){if(cancel){story_index_=house_no_index;std::fill(story_process_.begin(),story_process_.end(),0);if(!world_->warp_same_scene(last_safe_position_,last_safe_direction_)||!world_->unpause_from_house())return fail("Story boundary recovery rejected");phase_=HousePhase::Idle;error_="";}return true;}
  if(phase_==HousePhase::Unsupported){if(cancel){if(!world_->warp_same_scene(last_safe_position_,last_safe_direction_)||!world_->unpause_from_house())return fail("Boundary recovery rejected");phase_=HousePhase::Idle;error_="";}return true;}
+ if(phase_==HousePhase::SceneDoorAwaitIdle){if(idle_frame_>await_idle_){scene_route_=boundary_routes_[active_];phase_=HousePhase::SceneTransition;}return true;}
+ if(phase_==HousePhase::SceneTransition)return true;
  if(phase_==HousePhase::DoorAwaitIdle){if(idle_frame_>await_idle_){if(!begin_door(active_))return false;}else return true;}
  if(phase_==HousePhase::WarpAwaitIdle){if(idle_frame_>await_idle_){phase_=HousePhase::DoorFadeOut;fade_time_=0;event(HouseEventKind::FadeOutStarted,active_);}else return true;}
  if(!process_story_requests()||!deliver_area_contacts())return false;

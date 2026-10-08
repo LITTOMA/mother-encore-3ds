@@ -31,6 +31,8 @@ const char* suffix(uint32_t role) {
     case ResourceRole::DrawerProgram:return ".encdrawer";case ResourceRole::Storage:return ".encstorage";
     case ResourceRole::ItemDetails:return ".encdetails";
     case ResourceRole::FieldEquipment:return ".encfield";
+    case ResourceRole::FieldRoom:return ".encroom";case ResourceRole::FieldMap:return ".encmap";
+    case ResourceRole::WorldLinks:return ".enclinks";
     }return nullptr;
 }
 bool canonical(const std::string& path) {
@@ -55,8 +57,10 @@ struct Reader {
 bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     auto fail=[&](const char* message){error=message;return false;};
     if(!p||n<60||n>catalog_limit)return fail("Resource catalog size rejected");
-    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1||u32(p+24)||u32(p+28))
+    const auto capability=u32(p+20);
+    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||(capability!=1&&capability!=2)||u32(p+24)||u32(p+28))
         return fail("Resource catalog schema/size/capability/reserved rejected");
+    const uint32_t max_role=capability==1?30:33;
     if(~encore::crc32_update(~0u,p+32,n-32)!=u32(p+16))return fail("Resource catalog checksum rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
         if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Resource catalog source pin rejected");}
@@ -65,7 +69,7 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     ResourceCatalog data;
     bool roots[22]={};
     for(uint32_t i=0;i<count;++i){const auto id=r.integer(),role=r.integer(),size=r.integer(),checksum=r.integer();auto path=r.path();
-        if(!r.ok||role<1||role>30||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
+        if(!r.ok||role<1||role>max_role||((role<=22||role>=25)?id!=role:id<256)||!size||size>resource_limit||!canonical(path))return fail("Resource catalog binding rejected");
         const auto expected=suffix(role);const auto len=std::strlen(expected);
         if(path.size()<=len||path.compare(path.size()-len,len,expected))return fail("Resource catalog binding type rejected");
         for(const auto& prior:data.bindings_)if(prior.id==id||prior.path==path)return fail("Resource catalog duplicate ID/path rejected");
@@ -73,6 +77,8 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
         data.bindings_.push_back({id,static_cast<ResourceRole>(role),std::move(path),size,checksum});
     }
     for(bool present:roots)if(!present)return fail("Resource catalog missing required role");
+    if(capability==2){unsigned field=0;for(const auto& row:data.bindings_)field+=uint32_t(row.role)>=31;
+        if(field!=3)return fail("Resource catalog field scene roles incomplete");}
     auto binding=[&](uint32_t id)->const Binding*{for(const auto& row:data.bindings_)if(row.id==id)return &row;return nullptr;};
     for(uint32_t i=0;i<pairs;++i){const auto battle=r.integer(),round=r.integer();
         const auto* b=binding(battle);const auto* v=binding(round);

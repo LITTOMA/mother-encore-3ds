@@ -86,6 +86,8 @@ def main():
     from introduction_assets import stage_files as introduction_asset_files
     files.update(introduction_files(source))
     files.update(introduction_asset_files(source))
+    from podunk_field import stage_files as podunk_files
+    files.update(podunk_files(source))
     files.update(catalog_files(source, files))
     from romfs_layout import check_layout
     check_layout(files)

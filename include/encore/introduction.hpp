@@ -49,6 +49,13 @@ public:
  uint32_t background_color=0,finish_stop_slot=0;Blackbars blackbars;
 private:bool valid_=false;
 };
+// Original uiManager fade shared by Introduction and scene doors. kind: Fade=0,
+// Circle Focus=1, Circle Pop=2; incoming selects the fade-out clip. Callers check
+// kind < 3 against loaded data; out-of-range requests return 0 / no masks.
+float door_transition_cut(const IntroductionData&,uint32_t kind,bool incoming,double time);
+double door_transition_length(const IntroductionData&,uint32_t kind,bool incoming);
+double door_transition_mostly(const IntroductionData&,uint32_t kind,bool incoming);
+std::vector<IntroMask> door_transition_masks(const IntroductionData&,uint32_t kind,float cut,float width,float height,float focus_x,float focus_y);
 class Introduction {
 public:
  bool begin(const IntroductionData&,SourceRandom&,const std::string&locale,float viewport_width,float viewport_height,std::string&);

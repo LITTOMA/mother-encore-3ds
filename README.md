@@ -18,9 +18,10 @@ Mother: Encore 的原生 Nintendo 3DS 移植，使用 C++17 共享游戏核心�
 - 开局房屋移动、碰撞、交互与局部剧情。
 - 已审查的 Lamp、Doll、Pillow / Minnie 流程及部分原版战斗机制。
 - Dad Record，以及受限的 Continue / LOAD。
+- 房屋正门经原版转场进入 Podunk 室外（完整地图与碰撞）并可返回房屋；Podunk 内的 NPC、敌人、音乐和交互尚未移植。
 - 英文和简体中文。
 
-Podunk 激活及其余地图与剧情、完整战斗机制、音频可听性和 Old / New 3DS 真机验证仍待完成。详细范围见 [项目状态](docs/STATUS.md)，后续工作见 [开发计划](docs/DEVELOPMENT_PLAN.md)。
+Podunk 内的剧情与 NPC、其余地图、完整战斗机制、音频可听性和 Old / New 3DS 真机验证仍待完成。详细范围见 [项目状态](docs/STATUS.md)，后续工作见 [开发计划](docs/DEVELOPMENT_PLAN.md)。
 
 ## 获取源码
 

@@ -8,6 +8,7 @@ option(ENCORE_SANITIZERS "Enable ASan and UBSan on the desktop host" OFF)
 option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMake builds" ON)
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
+    runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp
     runtime/house_inspection_data.cpp
     runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp runtime/storage_data.cpp runtime/storage_menu.cpp runtime/item_details.cpp runtime/drawer_program.cpp
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
@@ -775,6 +776,9 @@ endif()
 
 # New interaction formats stay in the explicitly requested manual full run.
 if(BUILD_TESTING)
+    add_executable(encore_field_data_tests tests/field_data_tests.cpp)
+    target_link_libraries(encore_field_data_tests PRIVATE encore_core)
+    add_test(NAME field_data COMMAND encore_field_data_tests ${CMAKE_SOURCE_DIR}/romfs/data/podunk.encmap ${CMAKE_SOURCE_DIR}/romfs/data/world.enclinks ${CMAKE_SOURCE_DIR}/romfs/data/podunk.encroom ${CMAKE_SOURCE_DIR}/romfs/data/opening.encintro)
     add_executable(encore_house_inspection_data_tests tests/house_inspection_data_tests.cpp)
     target_link_libraries(encore_house_inspection_data_tests PRIVATE encore_core)
     add_test(NAME house_inspection_data COMMAND encore_house_inspection_data_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encinspect)

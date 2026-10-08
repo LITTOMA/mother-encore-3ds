@@ -207,7 +207,7 @@ class ResourceCatalogTests(unittest.TestCase):
         for size in range(len(original)):
             with self.subTest(size=size), self.assertRaises(ValueError):
                 catalog.decode(original[:size])
-        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 1), (20, 2), (20, 4), (24, 1), (28, 1)]:
+        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 1), (20, 2), (20, 5), (24, 1), (28, 1)]:
             bad = bytearray(original)
             struct.pack_into('<I', bad, offset, value)
             with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):

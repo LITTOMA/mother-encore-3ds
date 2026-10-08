@@ -214,6 +214,15 @@ def verify_receipt(root=ROOT, source=None):
     return r
 
 
+def stage_files(source):
+    root = ROOT
+    ir = load(root)
+    verify_receipt(root, source)
+    blob = (Path(source) / PACK).read_bytes()
+    require(blob == encode(ir), 'Staged Mick pack differs from reviewed IR')
+    return {Path(PACK): blob, Path(OUTPUT): (Path(source) / OUTPUT).read_bytes()}
+
+
 def lower(ir):
     from tools.podunk_field import pack_container
     pool = bytearray()

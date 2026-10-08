@@ -7,7 +7,7 @@ export ENCORE_CONTENT_RUN_ID := $(shell "$(PYTHON)" -c "import uuid; print(uuid.
 $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
- round doll-round pillow-round house items-check items session migration restore \
+ round doll-round pillow-round house house-presents items-check items session migration restore \
  continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
@@ -22,15 +22,16 @@ battle: room
 restore: room house
 items: items-check
 # Localization writes its legacy-lane IR; finish frozen migration admission first.
-locale: migration
+locale: migration house-presents
 # Intro admission reads its audio bank and immutable scene/font inputs.
 introduction: audio
 inspections: house
 drawer: house
+house-presents: house
 storage: items
 item-details: items
 field-equipment: items item-details
-session: drawer items storage
+session: drawer items storage house-presents
 
 audio:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/restore_audio.py
@@ -58,6 +59,8 @@ pillow-round:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/pillow_round.py compile
 house:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/native_house.py compile
+house-presents:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_presents.py compile
 inspections:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection.py compile
 drawer:

@@ -134,6 +134,17 @@ def extract():
             if command['opcode']=='SetFlag':effects.append(command)
         require(len(effects)==1 and effects[0]['b']==1,'Session acquisition needs one source grant flag')
         acquisitions.append(dict(item_id=template['source_item'],doses=template['doses'],max_count=len(grants),flag_id=effects[0]['a']))
+    # House present key-item grants: key_items never fill, so no space branch.
+    from tools.house_presents import load as load_presents, IR as presents_ir
+    presents=load_presents(ROOT);required.append(presents_ir);key_acquisitions=[]
+    for program in presents['programs']:
+        template=presents['templates'][program['template']];commands=program['commands']
+        grants=[pc for pc,c in enumerate(commands) if c['op']=='GrantItem']
+        require(len(grants)==1 and template['key_item'] and template['doses']==1,'Session key acquisition requires one reviewed key-item grant')
+        effects=[c for c in commands[grants[0]+1:] if c['op']=='SetFlag']
+        require(len(effects)>=1 and effects[0]['b']==1 and commands[grants[0]+1]['op']=='SetFlag','Session key acquisition needs its source grant flag')
+        require(all(x['item_id']!=template['source_item'] for x in key_acquisitions),'Duplicate session key acquisition')
+        key_acquisitions.append(dict(item_id=template['source_item'],doses=template['doses'],flag_id=effects[0]['a'],consumed_flag_id=''))
     from tools.storage_assets import load as load_storage, IR as storage_ir
     storage=load_storage(ROOT);required.append(storage_ir)
     storage_policies=[]
@@ -177,6 +188,7 @@ def extract():
     require(levels[0]['stats']==[effective[k]for k in stats] and levels[1]['stats']==[x['after']for x in second['growth']],'Derived stat contract disagrees with live battle resources')
     mutable={saved_flag,first['victory']['earned_cash_flag']}
     mutable.update(command['a'] for command in drawer['commands'] if command['opcode']=='SetFlag')
+    mutable.update(c['a'] for program in presents['programs'] for c in program['commands'] if c['op']=='SetFlag')
     encounter_flag=battle['entry']['first_encounter_flag']
     if encounter_flag in {f['id']for f in flags}:mutable.add(encounter_flag)
     for command in room['sections']['Command']:
@@ -193,7 +205,9 @@ def extract():
     points=[scene['spawn']]+[d['destination']for d in house['doors']]
     cameras=room['sections']['CameraArea'];camera_ids=sorted({min(cameras,key=lambda c:sum((a-b)**2 for a,b in zip(c['center'],point)))['stable_id'] for point in points})
     startup=copy.deepcopy(defaults);startup['characters'],derivation=source_startup_characters(ex,save,overrides,defaults)
-    return dict(schema=5,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
+    for policy in key_acquisitions:
+        require(not any(x['item_id']==policy['item_id'] for x in key_items) and any(f['id']==policy['flag_id'] and not f['value'] for f in flags),'Session key acquisition initial state')
+    return dict(schema=6,storage_capacity=storage['parameters']['StorageCapacity'],storage_policies=storage_policies,acquisitions=acquisitions,key_acquisitions=key_acquisitions,settings_choices=settings_choices(ex),kind='encore.native-session.source-ir',commit=ex.lock['commit'],scope='Single live party member; complete inactive startup naming roster; connected native house rooms; source leader levels 1 and 2; frozen source startup records; no inactive gameplay or event-transform snapshot',compatibility=dict(content_family=room['family'],content_revision=1,rules_revision=room['rules']),defaults=defaults,startup=startup,startup_derivation=derivation,levels=levels,saved_flag=saved_flag,earned_cash_flag=first['victory']['earned_cash_flag'],mutable_flags=sorted(mutable),camera_area_ids=camera_ids,uid_policy='Legacy defaults retain stable native IDs. Startup resource UIDs are unique placeholders, preserving Ninten/CashCard IDs and allocating inactive items in source inventory order. New Game stages replacement UIDs using copies of the existing shared source randomize/clock/UID ledger in source load order; accept commits the staged state, cancel discards it without live RNG mutation. Saved UIDs remain opaque and are preserved; resource placeholders do not reproduce source random IDs.',sources=ex.sources,dependencies={p:digest(ROOT/p)for p in required})
 
 class Writer:
     def __init__(self):self.raw=bytearray()
@@ -217,7 +231,7 @@ def encode_snapshot(s,c):
     return raw+struct.pack('<I',zlib.crc32(raw))
 
 def encode(r):
-    require(r['schema'] in (1,2,3,4,5),'Unsupported native session schema')
+    require(r['schema'] in (1,2,3,4,5,6),'Unsupported native session schema')
     w=Writer();c=r['compatibility'];w.put('3I',c['content_family'],c['content_revision'],c['rules_revision']);template=encode_snapshot(r['defaults'],c);w.put('I',len(template));w.raw.extend(template)
     w.put('I',len(r['levels']))
     for level in r['levels']:w.put('3I7i',level['level'],level['minimum_exp'],level['next_exp'],*level['stats']);w.array(level['skills'],w.text)
@@ -234,6 +248,10 @@ def encode(r):
         w.put('2I',r['storage_capacity'],len(r['storage_policies']))
         for policy in r['storage_policies']:
             w.text(policy['item_id']);w.put('3I7i',policy['doses'],policy['total_count'],int(policy['required']),*policy['boosts'])
+    if r['schema']>=6:
+        w.put('I',len(r['key_acquisitions']))
+        for policy in r['key_acquisitions']:
+            w.text(policy['item_id']);w.put('I',policy['doses']);w.text(policy['flag_id']);w.text(policy['consumed_flag_id'])
     return struct.pack('<8s4I',b'ENCNSESS',r['schema'],24+len(w.raw),zlib.crc32(w.raw),r['schema'])+w.raw
 
 def verify_recipe(r):
@@ -247,7 +265,7 @@ def stage_files(source_root):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('action',choices=['extract','compile','verify'],nargs='?',default='compile');a=ap.parse_args()
-    if a.action=='extract':r=extract();IR.write_text(json.dumps(r,indent=2,ensure_ascii=False)+'\n')
+    if a.action=='extract':r=extract();IR.write_bytes((json.dumps(r,indent=2,ensure_ascii=False)+'\n').encode('utf-8'))
     else:r=read(IR);verify_recipe(r)
     raw=encode(r)
     if a.action=='verify':require(PACK.read_bytes()==raw,'Stale native session pack')

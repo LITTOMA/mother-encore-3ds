@@ -16,7 +16,9 @@ def bindings(root):
         require(safe_path(row['source']) and row['source'] in expected and row['source'] not in paths and row['source'] in ir['sources'] and row['source']+'.import' in ir['sources'],'Field audio source')
         require(row['conversion'] is None and type(row['gain_db']) in (int,float) and row['gain_db']==0 and safe_path(row['pcm']) and row['pcm'].startswith('sound/effects/') and row['pcm'].endswith('.pcm') and row['pcm'] not in outputs,'Field audio conversion/path/gain')
         paths.add(row['source']);ids.add(row['identity']['value']);outputs.add(row['pcm'])
-    require(paths==expected,'Field audio incomplete coverage');return config['assets']
+    require(paths==expected,'Field audio incomplete coverage')
+    from tools.extension_audio import bindings as extension_audio
+    return config['assets']+extension_audio(root)
 
 if __name__=='__main__':
     from tools.phone_linker_bindings import audio

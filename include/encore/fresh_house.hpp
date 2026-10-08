@@ -23,6 +23,7 @@ struct FreshHouseState {
  HouseRuntime house;
  HousePresentation presentation;
  PhoneRuntime phone;
+ PresentRuntime presents;
  bool finish_scene_ready();
  bool scene_ready_pending()const{return ready_pending_;}
 private:

@@ -13,7 +13,7 @@ from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from tools import field_audio
+from tools import field_audio, present_audio
 
 
 class FieldAudioBinding(unittest.TestCase):
@@ -21,6 +21,7 @@ class FieldAudioBinding(unittest.TestCase):
     def setUpClass(cls):
         cls.ir = json.loads((ROOT / 'content/native-field-equipment.json').read_text(encoding='utf-8'))
         cls.config = json.loads((ROOT / 'content/field-audio-binding.json').read_text(encoding='utf-8'))
+        cls.present = present_audio.bindings(ROOT)
 
     def validate_detached(self, config=None, ir=None):
         config = copy.deepcopy(self.config if config is None else config)
@@ -32,6 +33,9 @@ class FieldAudioBinding(unittest.TestCase):
             read.assert_called_once_with(ROOT / 'content/field-audio-binding.json')
             return result
 
+    def combined(self, pause=None):
+        return (self.config['assets'] if pause is None else pause) + self.present
+
     def reject(self, change, ir_change=None):
         config, ir = copy.deepcopy(self.config), copy.deepcopy(self.ir)
         change(config)
@@ -42,10 +46,10 @@ class FieldAudioBinding(unittest.TestCase):
 
     def test_actual_reviewed_source_binding(self):
         # This is the actual source admission, not the detached parser double.
-        self.assertEqual(field_audio.bindings(ROOT), self.config['assets'])
+        self.assertEqual(field_audio.bindings(ROOT), self.combined())
 
     def test_detached_valid_binding(self):
-        self.assertEqual(self.validate_detached(), self.config['assets'])
+        self.assertEqual(self.validate_detached(), self.combined())
 
     def test_source_admission_failure_propagates(self):
         with mock.patch.object(field_audio, 'load', side_effect=ValueError('unreviewed field source')), \
@@ -104,7 +108,7 @@ class FieldAudioBinding(unittest.TestCase):
     def test_unsigned_stable_identity_boundary(self):
         c = copy.deepcopy(self.config)
         c['assets'][0]['identity']['value'] = 2 ** 32 - 1
-        self.assertEqual(self.validate_detached(c), c['assets'])
+        self.assertEqual(self.validate_detached(c), self.combined(c['assets']))
 
     def test_unknown_duplicate_and_unsafe_source(self):
         for value in ('Audio/Sound effects/M3/menu_open.wav',

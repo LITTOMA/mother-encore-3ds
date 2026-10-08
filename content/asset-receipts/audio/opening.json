@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "upstream_commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "recipe_sha256": "e2ab5b71ef7d65cfc79e309ec49e5e809e301a590de2eb69d34141e809849a66",
+  "recipe_sha256": "7e4e4f8cdd75945db7d9501351299953bbaddaa0ea99a5bd3c7c02023385668d",
   "ffmpeg_version": "ffmpeg version 7.1.5 Copyright (c) 2000-2026 the FFmpeg developers\nbuilt with gcc 12 (Debian 12.2.0-14+deb12u1)\nconfiguration: --prefix=/opt/encore-ffmpeg --disable-doc --disable-everything --enable-ffmpeg --enable-ffprobe --enable-protocol=file --enable-demuxer='ogg,wav,mp3' --enable-decoder='vorbis,mp3float,pcm_s16le,pcm_s24le,pcm_u8,pcm_f32le' --enable-encoder=pcm_s16le --enable-muxer=pcm_s16le --enable-filter='aresample,aformat,anull'\nlibavutil      59. 39.100 / 59. 39.100\nlibavcodec     61. 19.101 / 61. 19.101\nlibavformat    61.  7.103 / 61.  7.103\nlibavdevice    61.  3.100 / 61.  3.100\nlibavfilter    10.  5.100 / 10.  5.100\nlibswscale      8.  3.100 /  8.  3.100\nlibswresample   5.  3.100 /  5.  3.100\n",
   "ffmpeg_sha256": "4dee476fa932662ce7ff2b6e53356ec5f6173505df6d4fed8bc87583187be59e",
   "assets": [
@@ -1020,13 +1020,51 @@
         "1",
         "/tmp/encore-audio-0q5wimxv/25.pcm"
       ]
+    },
+    {
+      "stable_id": 1403,
+      "source_sha256": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "sample_rate": 44100,
+      "channels": 1,
+      "loop": false,
+      "frames": 9216,
+      "loop_start": 0,
+      "pcm_bytes": 18432,
+      "pcm_crc32": 3320888358,
+      "pcm_path": "sound/effects/gift-box.pcm",
+      "source_path": "res://Audio/Sound effects/Gift Box.mp3",
+      "gain_db": 0.0,
+      "source_sample_rate": 44100,
+      "import_sha256": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+      "loop_offset_seconds": 0.0,
+      "pcm_sha256": "1f6e543441606e7e394f70d217a40bb1ec1bccb9c53c4e103be4376c387c124f",
+      "command": [
+        "/opt/encore-ffmpeg/bin/ffmpeg",
+        "-nostdin",
+        "-v",
+        "error",
+        "-i",
+        "Audio/Sound effects/Gift Box.mp3",
+        "-map",
+        "0:a:0",
+        "-vn",
+        "-sn",
+        "-dn",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "-bitexact",
+        "-threads",
+        "1"
+      ]
     }
   ],
   "files": [
     {
       "path": "sound/banks/opening.encaudio",
-      "size": 4489,
-      "sha256": "882a0027ad9b30abe602e3e90086b2155b0941acc7d7a179771b27f61cdb073e"
+      "size": 4651,
+      "sha256": "8e58a7076303527dfb3bb277d7198b694b5d4a8c839abba1ecfcd96a107a83d0"
     },
     {
       "path": "sound/effects/bash.pcm",
@@ -1067,6 +1105,11 @@
       "path": "sound/effects/field-menu-open.pcm",
       "size": 35280,
       "sha256": "a707c5761a3369847577a5dd23ef5d8c28c9bb3eacb90620fe07a282583ad74e"
+    },
+    {
+      "path": "sound/effects/gift-box.pcm",
+      "size": 18432,
+      "sha256": "1f6e543441606e7e394f70d217a40bb1ec1bccb9c53c4e103be4376c387c124f"
     },
     {
       "path": "sound/effects/introduction-kid-text.pcm",

@@ -105,13 +105,16 @@ int main(int argc,char** argv){
  check(!catalog.load(nullptr,blob.size(),error),"null catalog rejected");
  auto bad=blob;bad.back()^=1;reject(bad,"payload corruption rejected");
  bad=blob;bad[0]^=1;reject(bad,"unknown magic rejected");
- // Capability 2 admits the linked field roles; capability 1 must reject them.
- check(get(blob,20)==2,"actual catalog declares field scene capability");
- for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{8,0},{8,2},{12,uint32_t(blob.size()+1)},{20,0},{20,1},{20,3},{24,1},{28,1},{52,0},{52,129},{56,0},{56,33}}){bad=blob;put(bad,edit.first,edit.second);if(edit.first!=12)fix(bad);reject(bad,"unknown header, capability/role mismatch or record count rejected");}
- for(const auto role:{ResourceRole::FieldRoom,ResourceRole::FieldMap,ResourceRole::WorldLinks}){const auto r=row(blob,role);
-  check(catalog.path(role)==row_path(blob,r),"field scene role resolves its checked resource");
-  bad=blob;put(bad,r+4,uint32_t(ResourceRole::FieldEquipment));fix(bad);reject(bad,"field scene role cannot be dropped or duplicated");}
+ // Capability 2 admits the linked field roles; capability 3 additionally
+ // requires HousePresents. Lower capabilities must reject the newer roles.
+ check(get(blob,20)==3,"actual catalog declares House present capability");
+ for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{8,0},{8,2},{12,uint32_t(blob.size()+1)},{20,0},{20,1},{20,2},{20,4},{24,1},{28,1},{52,0},{52,129},{56,0},{56,33}}){bad=blob;put(bad,edit.first,edit.second);if(edit.first!=12)fix(bad);reject(bad,"unknown header, capability/role mismatch or record count rejected");}
+ for(const auto role:{ResourceRole::FieldRoom,ResourceRole::FieldMap,ResourceRole::WorldLinks,ResourceRole::HousePresents}){const auto r=row(blob,role);
+  check(catalog.path(role)==row_path(blob,r),"extension role resolves its checked resource");
+  bad=blob;put(bad,r+4,uint32_t(ResourceRole::FieldEquipment));fix(bad);reject(bad,"extension role cannot be dropped or duplicated");}
  bad=blob;path(bad,ResourceRole::FieldMap,"data/podunk.encroom");reject(bad,"field map requires its own binary type");
+ bad=blob;path(bad,ResourceRole::HousePresents,"data/opening.encroom");reject(bad,"House presents require their own binary type");
+ {const auto r=row(blob,ResourceRole::HousePresents);bad=blob;put(bad,r,35);put(bad,r+4,35);fix(bad);reject(bad,"unknown role after HousePresents rejected");}
  bad=blob;bad[32]^=1;fix(bad);reject(bad,"unreviewed upstream pin rejected");
  const auto round_row=row(blob,ResourceRole::Round),battle_row=row(blob,ResourceRole::Battle);
  for(auto edit:std::vector<std::pair<size_t,uint32_t>>{{round_row,0},{round_row,uint32_t(ResourceRole::Battle)},{round_row+4,0},{round_row+4,26},{round_row+4,uint32_t(ResourceRole::Battle)},{round_row+8,0},{round_row+8,16*1024*1024+1},{round_row+16,0},{round_row+16,UINT32_MAX}}){bad=blob;put(bad,edit.first,edit.second);fix(bad);reject(bad,"unknown or duplicate id/role, unsupported size or path span rejected");}

@@ -88,6 +88,8 @@ def main():
     files.update(introduction_asset_files(source))
     from podunk_field import stage_files as podunk_files
     files.update(podunk_files(source))
+    from house_presents import stage_files as present_files
+    files.update(present_files(source))
     files.update(catalog_files(source, files))
     from romfs_layout import check_layout
     check_layout(files)

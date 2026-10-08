@@ -7,7 +7,7 @@ export ENCORE_CONTENT_RUN_ID := $(shell "$(PYTHON)" -c "import uuid; print(uuid.
 $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
 CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
- round doll-round pillow-round house house-presents items-check items session migration restore \
+ round doll-round pillow-round house house-presents mick-treats items-check items session migration restore \
  continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
 native-content: catalog encounters
@@ -28,10 +28,11 @@ introduction: audio
 inspections: house
 drawer: house
 house-presents: house
+mick-treats:
 storage: items
 item-details: items
 field-equipment: items item-details
-session: drawer items storage house-presents
+session: drawer items storage house-presents mick-treats
 
 audio:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/restore_audio.py
@@ -61,6 +62,8 @@ house:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/native_house.py compile
 house-presents:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_presents.py compile
+mick-treats:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/mick_treats.py compile
 inspections:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/house_inspection.py compile
 drawer:

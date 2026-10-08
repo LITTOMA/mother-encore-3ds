@@ -2,7 +2,7 @@
   "schema": 1,
   "kind": "encore.podunk-field.recipe",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Podunk exterior entered from the original House front door: complete TileMap layers, tile and static-body collision, grass idle sprites, static prop sprites, unlocked openable doors, the House return door and cross-scene routes. Every other source node class is explicitly a development boundary or a not-ported notice; this recipe does not claim Podunk NPCs, enemies, music, cutscenes or interactions.",
+  "scope": "Podunk exterior entered from the original House front door: complete TileMap layers, tile and static-body collision, grass idle sprites, static prop sprites, unlocked openable doors, the House return door and cross-scene routes. Mick (npc21) DogTreats→gave_treats is ported via ENCMIK01 and omitted from not-ported notices; every other NPC, enemy, music, cutscene and object interaction remains an explicit development boundary.",
   "scene": {
     "id": 2,
     "source": "Maps/podunk/podunk.tscn",
@@ -32,6 +32,7 @@
     {"id": 2, "from": 2, "door": "Objects/Doors/NintensHouse", "to": 1}
   ],
   "locales": ["en", "zh_Hans_CN"],
+  "ported_notices": ["Objects/NPCS/npc21"],
   "categories": {
     "Nodes/Overworld/Door.tscn": "door",
     "Nodes/Overworld/Objects/Openable Door.tscn": "openable_door",

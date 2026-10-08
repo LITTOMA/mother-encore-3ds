@@ -2,10 +2,13 @@
   "schema": 1,
   "kind": "encore.extension-resource-catalog.source-ir",
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "scope": "Roles added after the reviewed opening catalog: linked exterior field scene bindings (capability 2) and House present objects (capability 3). Kept apart from native-resource-catalog.json so the reviewed opening room provenance does not depend on later scenes or objects; merged into the same data/native.encresources.",
+  "scope": "Roles added after the reviewed opening catalog: linked exterior field scene bindings (capability 2), House present objects (capability 3) and Mick DogTreats→gave_treats (capability 4). Kept apart from native-resource-catalog.json so the reviewed opening room provenance does not depend on later scenes or objects; merged into the same data/native.encresources.",
   "sources": {
     "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501",
-    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193"
+    "Nodes/Overworld/Objects/Present.tscn": "16221f4b0ae42746d3e428cca91c6150f64f3307fd813b22fee65334b2b72193",
+    "Nodes/Reusables/npc.tscn": "0cc090d7290b6798a92e396acd94447e343c391b1365f59fe2a300665ac8ae15",
+    "Data/Dialogue/Podunk/woof_treats.yaml": "a64e5ca07dff6a39a702003d054944968fc8d87a42a2da1920818b85b9d46239",
+    "Graphics/Character Sprites/Npcs/4dir/mick.png": "95707b529876ec8cf1f6a68cb413759ce34f7a8a48a9ac5e85f7d5b48bdbc0d9"
   },
   "bindings": [
     {
@@ -27,6 +30,11 @@
       "id": 34,
       "role": "HousePresents",
       "path": "data/opening.encpresent"
+    },
+    {
+      "id": 35,
+      "role": "MickTreats",
+      "path": "data/podunk.encmick"
     }
   ]
 }

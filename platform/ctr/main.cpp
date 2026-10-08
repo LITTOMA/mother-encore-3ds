@@ -52,8 +52,10 @@
 #include "encore/native_input.hpp"
 #include "encore/resource_catalog.hpp"
 #include "encore/field_scene.hpp"
+#include "encore/mick_treats.hpp"
 #include "encore/world_links.hpp"
 #include "field_renderer.hpp"
+#include "loading_texture.hpp"
 #include "native_input_renderer.hpp"
 #include <algorithm>
 #include <cstdio>
@@ -582,11 +584,80 @@ bool bind_house_presents(GameplayScene& scene,std::string& error){
 upstream::WorldLinksData world_links;
 upstream::RoomData field_room_data;
 upstream::FieldMapData field_map_data;
+upstream::MickData mick_data;
 std::unique_ptr<upstream::FieldScene> field_scene;
 OpeningActorRenderer field_actor;
 FieldRenderer field_renderer;
+C2D_SpriteSheet mick_sheet=nullptr;
+std::string mick_dialogue;
 upstream::SceneDoorTransition scene_door;
 uint64_t door_sound_requests=0;
+class MickEffects final:public upstream::MickHost {
+public:
+ bool validate_flag(std::string_view name,std::string&e)override{
+  if(!field_scene){e="Mick flag validation requires a field scene";return false;}
+  const auto room=field_scene->world.content();
+  for(uint32_t i=0;i<room.flag_count();++i)if(room.string(room.flag(i).name_string)==name){e.clear();return true;}
+  e="Mick flag unregistered";return false;
+ }
+ bool validate_item(std::string_view name,std::string&e)override{
+  for(const auto&k:native_session_data.key_acquisitions())if(k.item_id==name){e.clear();return true;}
+  e="Mick key item absent from session acquisitions";return false;
+ }
+ bool flag(std::string_view name,bool&value,std::string&e)override{
+  if(!field_scene){e="Mick flag read requires a field scene";return false;}
+  value=field_scene->world.story_flag(name);e.clear();return true;
+ }
+ bool set_flag(std::string_view name,bool value,std::string&e)override{
+  if(!field_scene||!field_scene->world.set_story_flag(name,value,false)){e="Mick flag write rejected";return false;}
+  e.clear();return true;
+ }
+ bool remove_key_item(std::string_view name,std::string&e)override{
+  auto&keys=session_state.key_items;
+  const auto it=std::find_if(keys.begin(),keys.end(),[&](const upstream::SessionItem&i){return i.item_id==name;});
+  if(it==keys.end()){e="Mick key item is not held";return false;}
+  keys.erase(it);e.clear();return true;
+ }
+ bool show_text(std::string_view body,std::string&e)override{
+  std::string out(body);
+  const std::string lead=session_state.characters.empty()?std::string("Ninten"):session_state.characters[0].nickname;
+  for(size_t at=0;(at=out.find("[PartyLead]",at))!=std::string::npos;at+=lead.size())out.replace(at,11,lead);
+  mick_dialogue=std::move(out);e.clear();return true;
+ }
+} mick_effects;
+void release_mick_graphics(){if(mick_sheet){encore::ctr::loading_sprite_sheet_free(mick_sheet);mick_sheet=nullptr;}mick_dialogue.clear();}
+bool load_mick_graphics(std::string& error){
+ if(mick_sheet)return true;
+ if(!mick_data.view().valid()&&!mick_data.load_file(resource_path(ResourceRole::MickTreats).c_str(),error))return false;
+ const auto t=mick_data.view().texture();const std::string path="romfs:/"+std::string(mick_data.view().string(t.path));
+ std::string why;mick_sheet=encore::ctr::loading_sprite_sheet_load(path.c_str(),&why);
+ if(!mick_sheet||encore::ctr::loading_sprite_sheet_count(mick_sheet)!=1){release_mick_graphics();error=why.empty()?"Mick atlas missing":why;return false;}
+ const auto image=encore::ctr::loading_sprite_sheet_get_image(mick_sheet,0);
+ if(!image.tex||!image.subtex||image.subtex->width!=t.width||image.subtex->height!=t.height){release_mick_graphics();error="Mick atlas layout differs from checked metadata";return false;}
+ C3D_TexSetFilter(image.tex,GPU_NEAREST,GPU_NEAREST);return true;
+}
+bool bind_field_mick(upstream::FieldScene& scene,std::string& error){
+ if(!mick_data.view().valid()&&!mick_data.load_file(resource_path(ResourceRole::MickTreats).c_str(),error))return false;
+ scene.mick().set_locale(locale_selection.code());
+ return scene.bind_mick(mick_data.view(),mick_effects,error);
+}
+void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y){
+ if(!mick_sheet||!field_scene||!field_scene->mick().ready())return;
+ const auto view=field_scene->mick().view();const auto a=view.actor();const auto t=view.texture();
+ const auto image=encore::ctr::loading_sprite_sheet_get_image(mick_sheet,0);
+ if(!image.tex||!image.subtex||!t.columns||!t.rows)return;
+ const uint16_t fw=uint16_t(t.width/t.columns),fh=uint16_t(t.height/t.rows);
+ const uint16_t col=uint16_t(a.frame%t.columns),row=uint16_t(a.frame/t.columns);
+ Tex3DS_SubTexture sub=*image.subtex;
+ const float left=float(col*fw)/float(t.width),right=float((col+1)*fw)/float(t.width);
+ const float top=float(row*fh)/float(t.height),bottom=float((row+1)*fh)/float(t.height);
+ // Citro2D subtex v is flipped relative to top-left sheet rows.
+ sub.width=fw;sub.height=fh;sub.left=left;sub.right=right;sub.top=1.f-top;sub.bottom=1.f-bottom;
+ C2D_Image frame{image.tex,&sub};
+ const float x=a.sprite_position.x-camera_x+offset_x-float(fw)*.5f;
+ const float y=a.sprite_position.y-camera_y+offset_y-float(fh)*.5f;
+ C2D_DrawImageAt(frame,x,y,0.6f);
+}
 std::string field_status;
 bool in_field(){return field_scene!=nullptr;}
 bool bind_house_routes(upstream::HouseRuntime& house,std::string& error){
@@ -937,7 +1008,7 @@ void process_scene_door_events(){
         }
     }
 }
-void release_field_graphics(){wait_for_gpu_idle();field_renderer.free();field_actor.free();}
+void release_field_graphics(){wait_for_gpu_idle();field_renderer.free();field_actor.free();release_mick_graphics();}
 void release_house_graphics(){
     cancel_battle_prewarm();wait_for_gpu_idle();
     opening_actor.free();house_renderer.free();present_renderer.free();room_draw_items.clear();house_graphics_ready=false;
@@ -954,7 +1025,7 @@ bool load_field_resources(std::string& error){
 }
 bool enter_field(const upstream::WorldRoute& route,std::string& error){
     using namespace upstream;
-    LoadingScope loading("Entering field",4);
+    LoadingScope loading("Entering field",5);
     SessionSnapshot snapshot;
     if(!loading.step([&]{return collect_session_snapshot(snapshot,error);},"house-state")||
        !loading.step([&]{return load_field_resources(error);},"field-metadata"))return false;
@@ -962,13 +1033,17 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     for(uint32_t i=0;i<room.flag_count();++i)flags[i]=gameplay_scene->world.story_flag(room.string(room.flag(i).name_string));
     auto candidate=std::make_unique<FieldScene>();
     if(!loading.step([&]{return candidate->prepare(room,field_map_data.view(),world_links,flags,route.destination,route.direction,{float(view_width),float(view_height)},error);},"field-scene"))return false;
+    // Mick bind needs the prepared world for flag validation before graphics commit.
+    field_scene=candidate.get();
+    if(!loading.step([&]{return bind_field_mick(*candidate,error);},"field-mick")){field_scene=nullptr;return false;}
+    field_scene=nullptr;
     release_house_graphics();
-    if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error);},"field-atlases")){
+    if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);},"field-atlases")){
         release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
-    if(!loading.finish())return false;
+    if(!loading.finish()){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
-    session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();
+    session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();mick_dialogue.clear();
     dialogue_choices.close();save_menu.close();storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;
     error.clear();return true;
@@ -1360,6 +1435,7 @@ void field_top(){
     const auto player=field_scene->world.player().position;
     const auto origin=field_scene->camera_origin(player,{float(view_width),float(view_height)});
     if(!field_renderer.draw(*field_scene,field_actor,origin.x,origin.y,float(view_width),float(view_height),view_x(),view_y(),shader_time))field_status="Field renderer rejected checked map binding";
+    draw_mick_actor(origin.x,origin.y,view_x(),view_y());
 }
 void field_bottom(){
     using namespace upstream;
@@ -1368,16 +1444,17 @@ void field_bottom(){
     text(1,14,39,0.4f,std::string(room.string(room.scene().version_string))+"\n"+std::string(room.string(room.scene().display_name_string))+": original TileMap layers and collision",ink,292);
     std::string scope;
     switch(field_scene->phase()){
-    case FieldPhase::Walking:scope="Native movement + TileMap collision\nNPCs, enemies, music and object interactions are not ported";break;
+    case FieldPhase::Walking:scope="Native movement + TileMap collision\nA near Mick with Dog Treats: give treats\nOther NPCs, enemies and music are not ported";break;
     case FieldPhase::DoorAwaitIdle:case FieldPhase::Transition:scope="Original door transition";break;
+    case FieldPhase::MickTalk:scope=mick_dialogue.empty()?"Mick":mick_dialogue;scope+="\nA: continue";break;
     default:scope=field_scene->error();break;
     }
-    if(!field_status.empty())scope=field_status;
+    if(!field_status.empty()&&field_scene->phase()!=FieldPhase::MickTalk)scope=field_status;
     const auto player=field_scene->world.player().position;
     const auto nearby=field_scene->nearby_notices(player,200.f,3);
-    if(!nearby.empty()){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
+    if(!nearby.empty()&&field_scene->phase()==FieldPhase::Walking){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
     text(2,14,84,0.35f,scope,muted,292);
-    text(3,14,150,0.37f,"D-pad: move   B at a stop: return\nSTART menus are not ported in this field\nSELECT: reference view + restart",ink,292);
+    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART menus are not ported in this field\nSELECT: reference view + restart",ink,292);
     char position[160];const auto instance=room.actor_instance(room.scene().player_instance_index);
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
@@ -1519,6 +1596,10 @@ int main(int argc,char** argv){
                     bool ok=field_scene->before_physics(input);
                     if(ok&&field_scene->world.healthy())field_scene->world.advance(input);
                     ok=ok&&field_scene->after_physics();
+                    if(ok&&field_scene->phase()==upstream::FieldPhase::Walking){
+                        std::string why;ok=field_scene->try_mick(world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse),why);
+                        if(!ok)field_status=field_scene->error();else if(!why.empty())field_status=why;
+                    }
                     if(!ok)field_status=field_scene->error();
                 }
                 accumulator-=1000;continue;
@@ -1535,8 +1616,8 @@ int main(int argc,char** argv){
         uint32_t requested_route=upstream::WorldLinksData::kNotFound;
         if(in_field()){
             if(world_visible&&field_scene->world.healthy())field_scene->world.idle_frame(dt);
-            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,world_input&&(down&KEY_B)!=0))field_status=field_scene->error();
-            if(field_scene->phase()==upstream::FieldPhase::Walking&&!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();
+            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,world_input&&(down&KEY_B)!=0,world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse)))field_status=field_scene->error();
+            if(field_scene->phase()==upstream::FieldPhase::Walking){mick_dialogue.clear();if(!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();}
             door_sound_requests+=field_scene->take_sounds().size();
             requested_route=field_scene->take_route();
         }else{

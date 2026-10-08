@@ -24,7 +24,7 @@ Gift Box 音效经 `content/present-audio-binding.json` 并入既有 opening 音
 
 - Present1（日记过场）、Present2（塑料球棒）、Present3（地图）只绘制，交互为明确开发边界。
 - 礼物盒上的 ButtonPrompt、射线打到 StaticBody2D 时的 noproblem 提示未接入。
-- 狗粮尚未从钥匙栏移除，Mick 对话、漫步和南栅栏 `mick_bark` / `gave_treats` 未接入。
+- Mick 给粮与 `gave_treats` 见 [Mick 狗粮](MICK_TREATS.md)；漫步与 `mick_bark` 推回仍未接入。
 - 礼物盒贴图由 CI / `make 3dsx` 的 tex3ds 生成，不作为已审查二进制入库；没有 tex3ds 时不能 staging。
 
 ## 验证

@@ -19,8 +19,8 @@
 
 按严格程序 / 数据分离与 fail-closed 规则，`podunk.tscn` 展开后的 8,686 个节点全部归入配方类别；未归类节点使编译失败。
 
-- 阻挡边界（接触即暂停，下屏说明，B 回到上一个安全点）：13 扇通往建筑 / Merrysville 的门、过场区域（包括房门南侧 Mick 的 `mick_bark`，原版在 `gave_treats` 之前同样会拦住并推回玩家）、跳跃区、桥层切换、事件触发区、上锁的门。
-- 提示（下屏列出附近未移植对象，不生成）：NPC、敌人生成器、鸟、蝴蝶、蒲公英、调查点、音乐区、楼梯、踏步音、闪光、野外礼物盒与公用电话等交互。房屋内四个礼物盒已绘制，仅 Present4 可领取狗粮，见 [房屋礼物盒](HOUSE_PRESENTS.md)。
+- 阻挡边界（接触即暂停，下屏说明，B 回到上一个安全点）：13 扇通往建筑 / Merrysville 的门、过场区域（房门南侧 Mick 的 `Area11` 在 `gave_treats` 之前仍会拦住；给粮后消失，见 [Mick 狗粮](MICK_TREATS.md)）、跳跃区、桥层切换、事件触发区、上锁的门。
+- 提示（下屏列出附近未移植对象，不生成）：其余 NPC、敌人生成器、鸟、蝴蝶、蒲公英、调查点、音乐区、楼梯、踏步音、闪光、野外礼物盒与公用电话等交互。Mick（npc21）已移植，见 [Mick 狗粮](MICK_TREATS.md)。房屋内四个礼物盒已绘制，仅 Present4 可领取狗粮，见 [房屋礼物盒](HOUSE_PRESENTS.md)。
 - Podunk 中不开放 START 菜单、存档与战斗。
 
 ## 数据与格式
@@ -60,7 +60,7 @@ python tools/resource_catalog.py compile
 - Y 坐标恰好相等时：TileMap 格子绘制项与子节点在 Godot 中按绘制下标排序且排序不稳定；本实现采用“格子按创建顺序、子节点按树顺序、玩家最后”，下标 0 的并列顺序未对照验证。
 - 翻转的图块凸形状以世界坐标重新规范绕向，SAT 轴符号与 Godot 的变换法线相反，只影响恰好相等的平局选轴。
 - 草丛晃动、闪光、NPC、物件交互未实现；AnimatedTexture 相位从进入场景开始计时（原版为资源首次绘制）。
-- 房门南侧栅栏开口处的 `Cutscenes/Cutscene Area11`（`mick_bark`，`disappear_flag=gave_treats`）在本切片中仍为阻挡边界；原版会播过场并把玩家往北推回 16 像素。未给狗粮前无法由此离开院子属预期。
+- 房门南侧栅栏开口处的 `Cutscenes/Cutscene Area11`（`mick_bark`，`disappear_flag=gave_treats`）在 `gave_treats` 之前仍为阻挡边界；给 Mick 狗粮后该边界条件失效，可直接离开院子。原版的 `mick_bark` 往北推回过场仍未接入，见 [Mick 狗粮](MICK_TREATS.md)。
 - Y 排序绘制原先把全图约 1,058 个草丛条目每帧全部参与排序；现已在平台层按视口剔除后再排序（不改变可见结果）。
 
 ## 验证

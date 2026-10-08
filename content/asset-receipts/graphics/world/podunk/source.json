@@ -1,16 +1,16 @@
 {
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "compiler_sha256": "e1d1da42b15d4d6ac11d865528537ccda220f66e2c6ad47a50571d6d3902c63b",
+  "compiler_sha256": "08b9ead03cf3a0790b223e519537a2b75b46c44c9b74d41918cf59907d483b16",
   "compression": "none",
   "format": "rgba8",
   "outputs": {
     "data/podunk.encmap": {
-      "bytes": 1621004,
-      "sha256": "2e9543df0c41f492afd3d70cad0442dc870b9992c7439e1de12053d7b3069a50"
+      "bytes": 1621424,
+      "sha256": "46127f17d5194724fd58f01132052c82cd706b70f99bcb2801291a62f2610b7a"
     },
     "data/podunk.encroom": {
       "bytes": 11536,
-      "sha256": "e94aa745de762d2c2659396c026fb04afe2f1c8e5f36d099172ce513435d6395"
+      "sha256": "3e83acf8e9b145b026c8b219a2ca1bba75f8a9c7346d904b84e198b81218e1c8"
     },
     "data/world.enclinks": {
       "bytes": 528,
@@ -27,7 +27,7 @@
       "width": 1024
     }
   ],
-  "recipe_sha256": "fa406d7a6c18d9a023be92ed7a83a391116fb68eb44c42e9f112698b2799afd4",
+  "recipe_sha256": "0b7833ea1d554bc0ef1e128811cfebc6ac858913c7f2c17fd62b5288d9b5b258",
   "schema": 1,
   "sources": {
     "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",

@@ -9,7 +9,7 @@ option(ENCORE_REGENERATE_NATIVE_CONTENT "Regenerate native resources during CMak
 option(ENCORE_TEST_PARALLEL "Enable the reviewed parallel CI test schedule" ON)
 add_library(encore_core
     runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp
-    runtime/present_data.cpp runtime/house_presents.cpp
+    runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
     runtime/house_inspection_data.cpp
     runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp runtime/storage_data.cpp runtime/storage_menu.cpp runtime/item_details.cpp runtime/drawer_program.cpp
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
@@ -829,6 +829,11 @@ if(BUILD_TESTING)
     add_test(NAME present_data COMMAND encore_present_data_tests ${CMAKE_SOURCE_DIR}/romfs/data/opening.encpresent)
     add_test(NAME present_data_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_house_presents)
     set_tests_properties(present_data present_data_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
+    add_executable(encore_mick_treats_tests tests/mick_treats_tests.cpp)
+    target_link_libraries(encore_mick_treats_tests PRIVATE encore_core)
+    add_test(NAME mick_treats COMMAND encore_mick_treats_tests ${CMAKE_SOURCE_DIR}/romfs/data/podunk.encmick)
+    add_test(NAME mick_treats_source COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_mick_treats)
+    set_tests_properties(mick_treats mick_treats_source PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} TIMEOUT 60)
 endif()
 if(BUILD_TESTING)
     add_executable(encore_certified_texture_background_tests tests/certified_texture_background_tests.cpp)

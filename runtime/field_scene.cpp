@@ -6,6 +6,14 @@ namespace encore::upstream {
 namespace {
 bool intersects(Vec2 alo,Vec2 ahi,Vec2 blo,Vec2 bhi){return alo.x<=bhi.x&&ahi.x>=blo.x&&alo.y<=bhi.y&&ahi.y>=blo.y;}
 Vec2 normalized(Vec2 v){const float d=std::sqrt(v.x*v.x+v.y*v.y);return d==0?Vec2{}:Vec2{v.x/d,v.y/d};}
+float sign(float v){return v<0?-1.f:v>0?1.f:0.f;}
+bool ray_rect(Vec2 origin,Vec2 direction,float length,Vec2 center,Vec2 extents,float& distance){
+ float low=0,high=length;
+ for(unsigned axis=0;axis<2;++axis){const float o=axis?origin.y:origin.x,d=axis?direction.y:direction.x,c=axis?center.y:center.x,e=axis?extents.y:extents.x;
+  if(d==0){if(o<c-e||o>c+e)return false;continue;}
+  float a=(c-e-o)/d,b=(c+e-o)/d;if(a>b)std::swap(a,b);low=std::max(low,a);high=std::min(high,b);if(low>high)return false;
+ }distance=low;return true;
+}
 }
 
 bool FieldCollision::bind(FieldMapView map,const std::vector<bool>& layer_active,const std::vector<bool>& body_active,std::string& error){
@@ -127,26 +135,14 @@ bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& li
     const std::vector<bool> reviewed(room.flag_count(),true);
     if(!world.initialize_restored(room,story_flags,reviewed,position,direction,viewport))return reject(std::string("Field world rejected: ")+world.error());
     map_=map;links_=&links;
-    const auto layers=map.count(FieldMapSection::Layers),sprites=map.count(FieldMapSection::Sprites),items=map.count(FieldMapSection::Items);
     const auto doors=map.count(FieldMapSection::Doors),boundaries=map.count(FieldMapSection::Boundaries),cameras=map.count(FieldMapSection::Cameras);
-    const auto notices=map.count(FieldMapSection::Notices),bodies=map.count(FieldMapSection::Bodies),openables=map.count(FieldMapSection::Openables);
-    // FlagLandmark conditions are evaluated once at Ready; no Podunk flag can change in this slice.
-    layer_active_.assign(layers,false);for(uint32_t i=0;i<layers;++i)layer_active_[i]=conditions(map.layer(i).conditions);
-    sprite_active_.assign(sprites,false);for(uint32_t i=0;i<sprites;++i)sprite_active_[i]=conditions(map.sprite(i).conditions);
-    item_active_.assign(items,false);for(uint32_t i=0;i<items;++i)item_active_[i]=conditions(map.item(i).conditions);
-    door_active_.assign(doors,false);for(uint32_t i=0;i<doors;++i)door_active_[i]=conditions(map.door(i).conditions);
-    boundary_active_.assign(boundaries,false);for(uint32_t i=0;i<boundaries;++i)boundary_active_[i]=conditions(map.boundary(i).conditions);
-    camera_active_.assign(cameras,false);for(uint32_t i=0;i<cameras;++i)camera_active_[i]=conditions(map.camera(i).conditions);
-    notice_active_.assign(notices,false);for(uint32_t i=0;i<notices;++i)notice_active_[i]=conditions(map.notice(i).conditions);
-    std::vector<bool> body_active(bodies,false);for(uint32_t i=0;i<bodies;++i)body_active[i]=conditions(map.body(i).conditions);
-    std::vector<bool> collide(layers,false);for(uint32_t i=0;i<layers;++i)collide[i]=layer_active_[i];
+    const auto openables=map.count(FieldMapSection::Openables);
     for(uint32_t i=0;i<doors;++i){const auto d=map.door(i);if(!d.route)continue;
         const auto r=links.find_route(d.route);
         if(r==WorldLinksData::kNotFound||links.route(r).from!=map.scene_id()||links.route(r).door!=map.text(d.path))return reject("Field door route binding rejected");}
     for(uint32_t i=0;i<openables;++i)if(!conditions(map.openable(i).conditions))return reject("Conditional openable doors are not reviewed");
     std::string why;
-    if(!collision_.bind(map,collide,body_active,why))return reject(why);
-    world.attach_obstacles(&collision_);
+    if(!refresh_conditions(why))return reject(why);
     door_inside_.assign(doors,0);boundary_inside_.assign(boundaries,0);camera_inside_.assign(cameras,0);
     openables_.assign(openables,Openable{});sounds_.clear();
     route_=pending_door_=boundary_=WorldLinksData::kNotFound;
@@ -154,10 +150,59 @@ bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& li
     if(!world.pause_for_house())return reject("Field player pause rejected");
     phase_=FieldPhase::Transition;error_.clear();error.clear();return true;
 }
+bool FieldScene::refresh_conditions(std::string& error){
+    if(!map_.valid()||!links_){error="Field conditions require a prepared map";return false;}
+    const auto layers=map_.count(FieldMapSection::Layers),sprites=map_.count(FieldMapSection::Sprites),items=map_.count(FieldMapSection::Items);
+    const auto doors=map_.count(FieldMapSection::Doors),boundaries=map_.count(FieldMapSection::Boundaries),cameras=map_.count(FieldMapSection::Cameras);
+    const auto notices=map_.count(FieldMapSection::Notices),bodies=map_.count(FieldMapSection::Bodies);
+    layer_active_.assign(layers,false);for(uint32_t i=0;i<layers;++i)layer_active_[i]=conditions(map_.layer(i).conditions);
+    sprite_active_.assign(sprites,false);for(uint32_t i=0;i<sprites;++i)sprite_active_[i]=conditions(map_.sprite(i).conditions);
+    item_active_.assign(items,false);for(uint32_t i=0;i<items;++i)item_active_[i]=conditions(map_.item(i).conditions);
+    door_active_.assign(doors,false);for(uint32_t i=0;i<doors;++i)door_active_[i]=conditions(map_.door(i).conditions);
+    boundary_active_.assign(boundaries,false);for(uint32_t i=0;i<boundaries;++i)boundary_active_[i]=conditions(map_.boundary(i).conditions);
+    camera_active_.assign(cameras,false);for(uint32_t i=0;i<cameras;++i)camera_active_[i]=conditions(map_.camera(i).conditions);
+    notice_active_.assign(notices,false);for(uint32_t i=0;i<notices;++i)notice_active_[i]=conditions(map_.notice(i).conditions);
+    std::vector<bool> body_active(bodies,false);for(uint32_t i=0;i<bodies;++i)body_active[i]=conditions(map_.body(i).conditions);
+    std::vector<bool> collide(layers,false);for(uint32_t i=0;i<layers;++i)collide[i]=layer_active_[i];
+    std::string why;
+    if(!collision_.bind(map_,collide,body_active,why)){error=why;return false;}
+    world.attach_obstacles(&collision_);
+    if(boundary_inside_.size()==boundaries){
+        for(uint32_t i=0;i<boundaries;++i)if(!boundary_active_[i])boundary_inside_[i]=0;
+        if(boundary_!=WorldLinksData::kNotFound&&(boundary_&0x80000000u)!=0){
+            const auto index=boundary_&~0x80000000u;
+            if(index<boundaries&&!boundary_active_[index]&&phase_==FieldPhase::Unsupported){
+                boundary_=WorldLinksData::kNotFound;error_.clear();
+                if(!world.unpause_from_house()){error="Field boundary clear unpause rejected";return false;}
+                phase_=FieldPhase::Walking;
+            }
+        }
+    }
+    error.clear();return true;
+}
 bool FieldScene::finish_transition(){
     if(phase_!=FieldPhase::Transition)return fail("Field transition finish outside its boundary");
     if(!world.unpause_from_house())return fail("Field player unpause rejected");
     phase_=FieldPhase::Walking;return true;
+}
+bool FieldScene::bind_mick(MickView view,MickHost& host,std::string& error){
+    if(phase_==FieldPhase::Error||!map_.valid()){error="Field Mick bind requires a prepared scene";return false;}
+    if(!mick_.initialize(view,host,error))return false;
+    mick_bound_=true;error.clear();return true;
+}
+bool FieldScene::try_mick(bool accept,std::string& error){
+    if(!mick_bound_||phase_!=FieldPhase::Walking||!accept){error.clear();return true;}
+    std::string why;if(!mick_.available(why)){error.clear();return true;}
+    const auto a=mick_.view().actor();const auto p=world.player();
+    const Vec2 origin=p.position,dir=normalized(p.direction);
+    float distance=0;
+    if(!ray_rect(origin,dir,a.ray_length,a.interact_center,a.interact_extents,distance)){error.clear();return true;}
+    Vec2 facing{a.position.x-p.position.x,a.position.y-p.position.y};
+    if(std::abs(facing.x)>std::abs(facing.y)&&facing.x!=0)facing={sign(facing.x),0};else if(facing.y!=0)facing={0,sign(facing.y)};else facing=p.direction;
+    if(!world.set_house_direction(facing)||!world.pause_for_house())return fail("Field Mick turn/pause rejected");
+    phase_=FieldPhase::MickTalk;mick_ignore_accept_=true;
+    if(!mick_.start(error))return fail(error.empty()?"Field Mick programme rejected":error.c_str());
+    error.clear();return true;
 }
 bool FieldScene::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
     // Same actor-hull SAT as HouseRuntime::overlaps; touching counts as contact.
@@ -210,7 +255,7 @@ bool FieldScene::after_physics(){
     if(!any&&phase_==FieldPhase::Walking){last_safe_position_=position;last_safe_direction_=world.player().direction;}
     return true;
 }
-bool FieldScene::idle_frame(double delta,bool back){
+bool FieldScene::idle_frame(double delta,bool back,bool accept){
     if(phase_==FieldPhase::Error)return false;
     if(!std::isfinite(delta)||delta<0||delta>1)return fail("Field idle time rejected");
     if(phase_==FieldPhase::DoorAwaitIdle){
@@ -221,6 +266,17 @@ bool FieldScene::idle_frame(double delta,bool back){
         boundary_=WorldLinksData::kNotFound;error_.clear();phase_=FieldPhase::Walking;
         for(uint32_t i=0;i<door_inside_.size();++i)door_inside_[i]=0;
         for(uint32_t i=0;i<boundary_inside_.size();++i)boundary_inside_[i]=0;
+    }else if(phase_==FieldPhase::MickTalk){
+        std::string why;
+        const bool ignore=mick_ignore_accept_;mick_ignore_accept_=false;
+        if(mick_.state()==MickProgramState::WaitingText&&accept&&!ignore){
+            if(!mick_.advance_text(why))return fail(why.empty()?"Field Mick text advance rejected":why.c_str());
+        }
+        if(mick_.state()==MickProgramState::Complete){
+            if(!refresh_conditions(why))return fail(why.empty()?"Field Mick condition refresh rejected":why.c_str());
+            if(!world.unpause_from_house())return fail("Field Mick unpause rejected");
+            error_.clear();phase_=FieldPhase::Walking;
+        }
     }
     const bool paused=world.house_paused();
     for(uint32_t i=0;i<openables_.size();++i){auto& s=openables_[i];if(s.timer<0)continue;s.timer-=delta;

@@ -17,7 +17,9 @@ enum class ResourceRole : uint32_t {
     // Capability 2: linked exterior field scenes.
     FieldRoom=31, FieldMap=32, WorldLinks=33,
     // Capability 3: capability 2 plus House present objects.
-    HousePresents=34
+    HousePresents=34,
+    // Capability 4: capability 3 plus Mick DogTreats → gave_treats.
+    MickTreats=35
 };
 
 class ResourceCatalog {

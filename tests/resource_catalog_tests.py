@@ -52,8 +52,10 @@ class ResourceCatalogTests(unittest.TestCase):
         self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
         self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES)
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 3)
-        without_presents = [row for row in self.ir['bindings'] if row['role'] != 'HousePresents']
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 4)
+        without_mick = [row for row in self.ir['bindings'] if row['role'] != 'MickTreats']
+        self.assertEqual(catalog.capability_for(without_mick), 3)
+        without_presents = [row for row in without_mick if row['role'] != 'HousePresents']
         self.assertEqual(catalog.capability_for(without_presents), 2)
 
         def reject(edit_base=None, edit_fields=None):

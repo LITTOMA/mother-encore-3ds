@@ -2,6 +2,7 @@
 #include "encore/collision.hpp"
 #include "encore/field_data.hpp"
 #include "encore/introduction.hpp"
+#include "encore/mick_treats.hpp"
 #include "encore/world.hpp"
 #include "encore/world_links.hpp"
 #include <cstdint>
@@ -51,7 +52,7 @@ private:
     std::vector<SceneDoorEvent> events_;
 };
 
-enum class FieldPhase:uint8_t {Walking,DoorAwaitIdle,Transition,Unsupported,Error};
+enum class FieldPhase:uint8_t {Walking,DoorAwaitIdle,Transition,Unsupported,MickTalk,Error};
 struct FieldNoticeView {uint32_t index=0;float distance=0;};
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
@@ -65,10 +66,19 @@ public:
     // the room's flag table order (the House table, shared by stable name).
     bool prepare(RoomView room,FieldMapView map,const WorldLinksData& links,const std::vector<bool>& story_flags,
                  Vec2 position,Vec2 direction,Vec2 viewport,std::string& error);
+    // Re-evaluate FlagLandmark / CutsceneArea conditions after a live story flag write.
+    // Podunk can change gave_treats in-session once Mick accepts DogTreats.
+    bool refresh_conditions(std::string& error);
+    // Bind Mick after prepare; host effects stay platform-owned.
+    bool bind_mick(MickView,MickHost&,std::string& error);
+    MickRuntime& mick(){return mick_;}
+    const MickRuntime& mick()const{return mick_;}
     OpeningWorld world;
     bool before_physics(WalkInput& input);
     bool after_physics();
-    bool idle_frame(double delta,bool back);
+    bool idle_frame(double delta,bool back,bool accept=false);
+    // Ray-select Mick while walking; starts the woof_treats programme when available.
+    bool try_mick(bool accept,std::string& error);
     FieldPhase phase()const{return phase_;}
     const std::string& error()const{return error_;}
     bool blocks_player()const{return phase_!=FieldPhase::Walking;}
@@ -95,6 +105,9 @@ private:
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
+    MickRuntime mick_;bool mick_bound_=false;
+    // Suppress the same confirm pulse that started MickTalk from advancing text.
+    bool mick_ignore_accept_=false;
     std::vector<bool> layer_active_,sprite_active_,item_active_,door_active_,boundary_active_,camera_active_,notice_active_;
     std::vector<uint8_t> door_inside_,boundary_inside_,camera_inside_;
     std::vector<Openable> openables_;

@@ -145,6 +145,18 @@ def extract():
         require(len(effects)>=1 and effects[0]['b']==1 and commands[grants[0]+1]['op']=='SetFlag','Session key acquisition needs its source grant flag')
         require(all(x['item_id']!=template['source_item'] for x in key_acquisitions),'Duplicate session key acquisition')
         key_acquisitions.append(dict(item_id=template['source_item'],doses=template['doses'],flag_id=effects[0]['a'],consumed_flag_id=''))
+    # Mick woof_treats removes DogTreats and sets gave_treats; bind that consume flag here.
+    from tools.mick_treats import load as load_mick, IR as mick_ir
+    mick=load_mick(ROOT);required.append(mick_ir)
+    consume=mick['actor']['consume_flag'];item=mick['actor']['item']
+    require(any(c['op']=='SetFlag' and c['a']==consume and c['b']==1 for c in mick['commands']), 'Mick programme must set its consume flag')
+    require(any(c['op']=='RemoveKeyItem' and c['a']==item for c in mick['commands']), 'Mick programme must remove its key item')
+    matched=False
+    for policy in key_acquisitions:
+        if policy['item_id']==item:
+            require(not policy['consumed_flag_id'], 'Duplicate Mick key consume binding')
+            policy['consumed_flag_id']=consume;matched=True
+    require(matched, 'Mick consume item absent from session key acquisitions')
     from tools.storage_assets import load as load_storage, IR as storage_ir
     storage=load_storage(ROOT);required.append(storage_ir)
     storage_policies=[]
@@ -189,6 +201,7 @@ def extract():
     mutable={saved_flag,first['victory']['earned_cash_flag']}
     mutable.update(command['a'] for command in drawer['commands'] if command['opcode']=='SetFlag')
     mutable.update(c['a'] for program in presents['programs'] for c in program['commands'] if c['op']=='SetFlag')
+    mutable.update(c['a'] for c in mick['commands'] if c['op']=='SetFlag')
     encounter_flag=battle['entry']['first_encounter_flag']
     if encounter_flag in {f['id']for f in flags}:mutable.add(encounter_flag)
     for command in room['sections']['Command']:

@@ -637,7 +637,8 @@ bool load_mick_graphics(std::string& error){
  std::string why;mick_sheet=encore::ctr::loading_sprite_sheet_load(path.c_str(),&why);
  if(!mick_sheet||encore::ctr::loading_sprite_sheet_count(mick_sheet)!=1){release_mick_graphics();error=why.empty()?"Mick atlas missing":why;return false;}
  const auto image=encore::ctr::loading_sprite_sheet_get_image(mick_sheet,0);
- if(!image.tex||!image.subtex||image.subtex->width!=t.width||image.subtex->height!=t.height){release_mick_graphics();error="Mick atlas layout differs from checked metadata";return false;}
+ if(!image.tex||!image.subtex||image.subtex->width!=t.width||image.subtex->height!=t.height||Tex3DS_SubTextureRotated(image.subtex)){
+  release_mick_graphics();error="Mick atlas layout differs from checked metadata";return false;}
  C3D_TexSetFilter(image.tex,GPU_NEAREST,GPU_NEAREST);return true;
 }
 bool bind_field_mick(upstream::FieldScene& scene,std::string& error){
@@ -649,18 +650,17 @@ void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y
  if(!mick_sheet||!field_scene||!field_scene->mick().ready())return;
  const auto view=field_scene->mick().view();const auto a=view.actor();const auto t=view.texture();
  const auto image=encore::ctr::loading_sprite_sheet_get_image(mick_sheet,0);
- if(!image.tex||!image.subtex||!t.columns||!t.rows)return;
- const uint16_t fw=uint16_t(t.width/t.columns),fh=uint16_t(t.height/t.rows);
- const uint16_t col=uint16_t(a.frame%t.columns),row=uint16_t(a.frame/t.columns);
+ if(!image.tex||!image.subtex||!t.columns||!t.rows||a.frame>=uint32_t(t.columns)*uint32_t(t.rows))return;
+ // Same padded-atlas UV math as OpeningActorRenderer / PresentRenderer.
+ const unsigned fw=t.width/t.columns,fh=t.height/t.rows;
+ const unsigned u=(a.frame%t.columns)*fw,v=(a.frame/t.columns)*fh;
  Tex3DS_SubTexture sub=*image.subtex;
- const float left=float(col*fw)/float(t.width),right=float((col+1)*fw)/float(t.width);
- const float top=float(row*fh)/float(t.height),bottom=float((row+1)*fh)/float(t.height);
- // Citro2D subtex v is flipped relative to top-left sheet rows.
- sub.width=fw;sub.height=fh;sub.left=left;sub.right=right;sub.top=1.f-top;sub.bottom=1.f-bottom;
- C2D_Image frame{image.tex,&sub};
- const float x=a.sprite_position.x-camera_x+offset_x-float(fw)*.5f;
- const float y=a.sprite_position.y-camera_y+offset_y-float(fh)*.5f;
- C2D_DrawImageAt(frame,x,y,0.6f);
+ const float du=(sub.right-sub.left)/float(t.width),dv=(sub.bottom-sub.top)/float(t.height);
+ const float left=sub.left,top=sub.top;
+ sub.left=left+u*du;sub.right=left+(u+fw)*du;sub.top=top+v*dv;sub.bottom=top+(v+fh)*dv;
+ sub.width=uint16_t(fw);sub.height=uint16_t(fh);
+ C2D_DrawImageAt({image.tex,&sub},std::floor(a.sprite_position.x-camera_x+offset_x-float(fw)*.5f+.5f),
+                 std::floor(a.sprite_position.y-camera_y+offset_y-float(fh)*.5f+.5f),0.6f);
 }
 std::string field_status;
 bool in_field(){return field_scene!=nullptr;}

@@ -58,7 +58,9 @@ public:
                 switch(FieldItemKind(item.kind)){
                 case FieldItemKind::SortedLayerCells:collect_cells(scene,item);break;
                 case FieldItemKind::SortedLayer:if(scene.layer_active(item.first))entries_.push_back({item.sort_y,item.order,1,item.first,0});break;
-                case FieldItemKind::Sprites:entries_.push_back({item.sort_y,item.order,2,item.first,item.count});break;
+                // Grass alone contributes ~1000 y-sort items; skip ones wholly off-screen
+                // before the per-frame sort (Godot only sorts currently visible canvas items).
+                case FieldItemKind::Sprites:if(sprites_visible(scene,item.first,item.count))entries_.push_back({item.sort_y,item.order,2,item.first,item.count});break;
                 case FieldItemKind::Player:entries_.push_back({scene.world.player().position.y,item.order,3,0,0});break;
                 default:break;}
             }
@@ -135,6 +137,13 @@ private:
                 entries_.push_back({layer.position.y+float(cell.y)*16.f+layer.origin_y,item.order+cell.order,0,item.first,chunk.first+k});
             }
         }
+    }
+    bool sprites_visible(const encore::upstream::FieldScene& scene,uint32_t first,uint32_t count)const{
+        for(uint32_t i=first;i<first+count;++i){
+            if(!scene.sprite_visible(i))continue;
+            const auto s=map_.sprite(i);if(visible(s.position.x,s.position.y,s.w,s.h))return true;
+        }
+        return false;
     }
     void draw_sprites(const encore::upstream::FieldScene& scene,uint32_t first,uint32_t count){
         for(uint32_t i=first;i<first+count;++i){

@@ -15,6 +15,9 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 IR = ROOT / 'content/native-resource-catalog.json'
+# The opening room IR pins IR's bytes; field scenes live in a separate recipe so
+# adding maps never rewrites that reviewed provenance chain.
+FIELD_IR = ROOT / 'content/field-resource-catalog.json'
 OUT = ROOT / 'romfs/data/native.encresources'
 PIN = '7d9246600fffe518408f5830d4848635019005a3'
 MAGIC = b'ENCRSC01'
@@ -26,12 +29,20 @@ ROLES = {name: index + 1 for index, name in enumerate((
     'Room', 'Blackbars', 'Battle', 'Round', 'House', 'Items', 'Audio', 'Phone',
     'Choices', 'SaveMenu', 'Session', 'Settings', 'Prompts', 'Continue', 'Restore',
     'SessionMigration', 'NewGame', 'Localization', 'TitleLocale', 'SourceFonts',
-    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment'))}
+    'Input', 'LoadingIndicator', 'EncounterBattle', 'EncounterRound', 'Introduction', 'HouseInspections', 'DrawerProgram', 'Storage', 'ItemDetails', 'FieldEquipment',
+    'FieldRoom', 'FieldMap', 'WorldLinks'))}
 SUFFIXES = dict(zip(ROLES, ('.encroom', '.encbars', '.encbattle', '.encround',
     '.enchouse', '.encitems', '.encaudio', '.encphone', '.encchoices', '.encsavemenu',
     '.encsession', '.encsettings', '.encprompts', '.enccontinue', '.encrestore',
     '.encmigration', '.encnewgame', '.enclocale', '.enctitlelocale', '.encfont',
-    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield')))
+    '.encinput', '.encload', '.encbattle', '.encround', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield',
+    '.encroom', '.encmap', '.enclinks')))
+# Capability 2 adds the linked exterior field roles; all three are then required.
+FIELD_ROLES = {'FieldRoom', 'FieldMap', 'WorldLinks'}
+
+
+def capability_for(bindings):
+    return 2 if any(row['role'] in FIELD_ROLES for row in bindings) else 1
 BATTLE_ROLES = {'Battle', 'EncounterBattle'}
 ROUND_ROLES = {'Round', 'EncounterRound'}
 
@@ -61,21 +72,55 @@ def load_ir(path=IR):
     return json.loads(Path(path).read_text(encoding='utf-8'), object_pairs_hook=unique)
 
 
-def validate(ir):
-    fields(ir, ('schema', 'kind', 'commit', 'scope', 'sources', 'bindings', 'encounters'), 'resource catalog')
-    require(type(ir['schema']) is int and ir['schema'] == 1 and
-            ir['kind'] == 'encore.native-resource-catalog.source-ir', 'Unsupported resource catalog schema/kind')
-    require(ir['commit'] == PIN, 'Resource catalog source pin mismatch')
-    require(type(ir['scope']) is str and 0 < len(ir['scope']) <= 2048, 'Missing resource catalog scope')
-    sources = ir['sources']
+def validate_sources(sources):
     require(type(sources) is dict and 0 < len(sources) <= 1024, 'Invalid catalog source coverage')
     for path, digest in sources.items():
         # Source paths may contain spaces; canonical components remain required.
         require(type(path) is str and 0 < len(path) <= 512 and all(32 <= ord(c) <= 126 and c not in '\\:?#' for c in path) and
                 all(part not in ('', '.', '..') for part in path.split('/')), 'Invalid catalog source path')
         require(type(digest) is str and len(digest) == 64 and all(c in '0123456789abcdef' for c in digest), 'Invalid source digest')
+
+
+def validate(ir):
+    fields(ir, ('schema', 'kind', 'commit', 'scope', 'sources', 'bindings', 'encounters'), 'resource catalog')
+    require(type(ir['schema']) is int and ir['schema'] == 1 and
+            ir['kind'] == 'encore.native-resource-catalog.source-ir', 'Unsupported resource catalog schema/kind')
+    require(ir['commit'] == PIN, 'Resource catalog source pin mismatch')
+    require(type(ir['scope']) is str and 0 < len(ir['scope']) <= 2048, 'Missing resource catalog scope')
+    validate_sources(ir['sources'])
     validate_bindings(ir['bindings'], ir['encounters'])
     return ir
+
+
+def validate_field_extension(ir):
+    fields(ir, ('schema', 'kind', 'commit', 'scope', 'sources', 'bindings'), 'field resource catalog')
+    require(type(ir['schema']) is int and ir['schema'] == 1 and
+            ir['kind'] == 'encore.field-resource-catalog.source-ir', 'Unsupported field resource catalog schema/kind')
+    require(ir['commit'] == PIN, 'Field resource catalog source pin mismatch')
+    require(type(ir['scope']) is str and 0 < len(ir['scope']) <= 2048, 'Missing field resource catalog scope')
+    validate_sources(ir['sources'])
+    rows = ir['bindings']
+    require(type(rows) is list and 0 < len(rows) <= 64, 'Invalid field binding coverage')
+    for row in rows:
+        fields(row, ('id', 'role', 'path'), 'field binding')
+        require(row['role'] in FIELD_ROLES, 'Field resource catalog may only bind field scene roles')
+    return ir
+
+
+def merge_catalog(base, extension):
+    """Base keeps every opening role; the extension contributes only field roles."""
+    validate(base)
+    validate_field_extension(extension)
+    require(not any(row['role'] in FIELD_ROLES for row in base['bindings']), 'Field scene roles belong to the field resource catalog')
+    for path, digest in extension['sources'].items():
+        require(base['sources'].get(path, digest) == digest, 'Conflicting catalog source digest: ' + path)
+    merged = dict(base, sources={**base['sources'], **extension['sources']},
+                  bindings=list(base['bindings']) + list(extension['bindings']))
+    return validate(merged)
+
+
+def load_catalog(source=IR, field_source=FIELD_IR):
+    return merge_catalog(load_ir(source), load_ir(field_source))
 
 
 def validate_bindings(bindings, encounters):
@@ -90,6 +135,7 @@ def validate_bindings(bindings, encounters):
         require((ROLES[role] > 22 or role not in names) and row['id'] not in ids and row['path'] not in paths, 'Duplicate binding role/ID/path')
         names.add(role); ids.add(row['id']); paths.add(row['path'])
     require({name for name in names if ROLES[name] <= 22} == {name for name in ROLES if ROLES[name] <= 22}, 'Incomplete catalog roles')
+    require(not (names & FIELD_ROLES) or FIELD_ROLES <= names, 'Incomplete field scene roles')
     require(type(encounters) is list and 1 <= len(encounters) <= 32, 'Incomplete encounter coverage')
     binding_roles = {row['id']: row['role'] for row in bindings}
     battles, rounds = set(), set()
@@ -140,13 +186,13 @@ def encode(ir, romfs_root=ROOT / 'romfs'):
     for row in ir['encounters']:
         payload += struct.pack('<2I', row['battle_id'], row['round_id'])
     require(HEADER.size + len(payload) <= CATALOG_LIMIT, 'Catalog exceeds format size bound')
-    return HEADER.pack(MAGIC, 1, HEADER.size + len(payload), zlib.crc32(payload), 1, 0, 0) + payload
+    return HEADER.pack(MAGIC, 1, HEADER.size + len(payload), zlib.crc32(payload), capability_for(ir['bindings']), 0, 0) + payload
 
 
 def decode(blob):
     require(type(blob) in (bytes, bytearray) and 60 <= len(blob) <= CATALOG_LIMIT, 'Catalog size rejected')
     magic, version, total, checksum, capability, reserved0, reserved1 = HEADER.unpack_from(blob)
-    require(magic == MAGIC and version == 1 and total == len(blob) and capability == 1 and not reserved0 and not reserved1, 'Catalog header rejected')
+    require(magic == MAGIC and version == 1 and total == len(blob) and capability in (1, 2) and not reserved0 and not reserved1, 'Catalog header rejected')
     require(zlib.crc32(blob[HEADER.size:]) == checksum, 'Catalog checksum mismatch')
     require(blob[32:52] == bytes.fromhex(PIN), 'Catalog source pin rejected')
     count, pairs = struct.unpack_from('<2I', blob, 52)
@@ -157,7 +203,7 @@ def decode(blob):
     for _ in range(count):
         require(offset + 20 <= len(blob), 'Truncated catalog binding')
         identity, role, size, crc, length = struct.unpack_from('<5I', blob, offset); offset += 20
-        require(role in names and 0 < size <= RESOURCE_LIMIT and 0 < length <= 256 and offset + length <= len(blob), 'Invalid catalog binding')
+        require(role in names and role <= (30 if capability == 1 else 33) and 0 < size <= RESOURCE_LIMIT and 0 < length <= 256 and offset + length <= len(blob), 'Invalid catalog binding')
         try:
             path = blob[offset:offset + length].decode('ascii')
         except UnicodeDecodeError as exc:
@@ -171,11 +217,12 @@ def decode(blob):
         encounters.append(dict(battle_id=b, round_id=r))
     require(offset == len(blob), 'Trailing catalog bytes')
     validate_bindings(bindings, encounters)
+    require(capability == capability_for(bindings), 'Catalog capability does not match its roles')
     return dict(bindings=bindings, encounters=encounters, fingerprints=fingerprints)
 
 
-def compile_file(source=IR, output=OUT, romfs_root=ROOT / 'romfs'):
-    blob = encode(load_ir(source), romfs_root)
+def compile_file(source=IR, output=OUT, romfs_root=ROOT / 'romfs', field_source=FIELD_IR):
+    blob = encode(load_catalog(source, field_source), romfs_root)
     decode(blob)
     output = Path(output); output.parent.mkdir(parents=True, exist_ok=True); output.write_bytes(blob)
     return blob
@@ -185,7 +232,7 @@ def stage_files(source_root, files=None):
     relative = Path('data/native.encresources')
     blob = checked_file(source_root, relative)
     decoded = decode(blob)
-    require(blob == encode(load_ir(), source_root), 'Resource catalog is stale')
+    require(blob == encode(load_catalog(), source_root), 'Resource catalog is stale')
     if files is not None:
         for row in decoded['bindings']:
             path = Path(row['path'])
@@ -199,14 +246,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=('compile', 'verify'))
     parser.add_argument('--source', type=Path, default=IR)
+    parser.add_argument('--fields', type=Path, default=FIELD_IR)
     parser.add_argument('--out', type=Path, default=OUT)
     parser.add_argument('--romfs', type=Path, default=ROOT / 'romfs')
     args = parser.parse_args()
     if args.command == 'compile':
-        blob = compile_file(args.source, args.out, args.romfs)
+        blob = compile_file(args.source, args.out, args.romfs, args.fields)
     else:
         blob = args.out.read_bytes(); decode(blob)
-        require(blob == encode(load_ir(args.source), args.romfs), 'Resource catalog is stale')
+        require(blob == encode(load_catalog(args.source, args.fields), args.romfs), 'Resource catalog is stale')
     print('Native resource catalog: %d checked bytes, %d typed bindings' % (len(blob), len(decode(blob)['bindings'])))
 
 

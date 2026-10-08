@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "kind": "encore.field-resource-catalog.source-ir",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Linked exterior field scene bindings (catalog capability 2). Kept apart from native-resource-catalog.json so the reviewed opening room provenance does not depend on outdoor maps; merged into the same data/native.encresources.",
+  "sources": {
+    "Maps/podunk/podunk.tscn": "78febcf35bfb7d77106c62edfca52522e5963cebaf8c2f031c5d54da7b78c501"
+  },
+  "bindings": [
+    {
+      "id": 31,
+      "role": "FieldRoom",
+      "path": "data/podunk.encroom"
+    },
+    {
+      "id": 32,
+      "role": "FieldMap",
+      "path": "data/podunk.encmap"
+    },
+    {
+      "id": 33,
+      "role": "WorldLinks",
+      "path": "data/world.enclinks"
+    }
+  ]
+}

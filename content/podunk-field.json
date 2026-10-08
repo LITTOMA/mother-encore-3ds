@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "kind": "encore.podunk-field.recipe",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "scope": "Podunk exterior entered from the original House front door: complete TileMap layers, tile and static-body collision, grass idle sprites, static prop sprites, unlocked openable doors, the House return door and cross-scene routes. Every other source node class is explicitly a development boundary or a not-ported notice; this recipe does not claim Podunk NPCs, enemies, music, cutscenes or interactions.",
+  "scene": {
+    "id": 2,
+    "source": "Maps/podunk/podunk.tscn",
+    "display_name": "Podunk",
+    "version": "Act2 v0.4.1.0",
+    "region": "Podunk"
+  },
+  "house": {
+    "id": 1,
+    "source": "Maps/podunk/Nintens House.tscn",
+    "room_ir": "content/native-opening.json"
+  },
+  "player": {
+    "scene": "Nodes/Reusables/Player.tscn",
+    "collision_layer": 1,
+    "collision_mask": 4353
+  },
+  "tileset": "Tilesets/Podunk.tres",
+  "door": {
+    "scene": "Nodes/Overworld/Door.tscn",
+    "script": "Scripts/Main/Door.gd",
+    "transition": "Scripts/global/SceneTransition.gd",
+    "destination_offset_y": -7
+  },
+  "routes": [
+    {"id": 1, "from": 1, "door": "Doors/Podunk", "to": 2},
+    {"id": 2, "from": 2, "door": "Objects/Doors/NintensHouse", "to": 1}
+  ],
+  "locales": ["en", "zh_Hans_CN"],
+  "categories": {
+    "Nodes/Overworld/Door.tscn": "door",
+    "Nodes/Overworld/Objects/Openable Door.tscn": "openable_door",
+    "Nodes/Overworld/Grass/grass spawner.tscn": "grass",
+    "Nodes/Overworld/Objects/Dead Bush.tscn": "prop",
+    "Nodes/Overworld/Objects/Present.tscn": "prop",
+    "Nodes/Reusables/exterior payphone.tscn": "prop",
+    "Nodes/Reusables/atm exterior.tscn": "prop",
+    "Nodes/Reusables/VendingMachineExterior.tscn": "prop",
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": "prop",
+    "Nodes/Overworld/Objects/DroppedItem.tscn": "prop",
+    "Nodes/Reusables/flag landmarks.tscn": "flag_landmark",
+    "Nodes/Overworld/camarea.tscn": "camera_area",
+    "Nodes/Reusables/CutsceneArea.tscn": "boundary",
+    "Nodes/Overworld/jump area.tscn": "boundary",
+    "Nodes/Reusables/Reparenter.tscn": "boundary",
+    "Nodes/Reusables/event activator.tscn": "boundary",
+    "Nodes/Reusables/npc.tscn": "notice",
+    "Nodes/Reusables/door_npc.tscn": "notice",
+    "Nodes/Overworld/birds.tscn": "notice",
+    "Nodes/Overworld/butterfly.tscn": "notice",
+    "Nodes/Overworld/dandelion spawner.tscn": "notice",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "notice",
+    "Nodes/Reusables/interact_dialog.tscn": "notice",
+    "Nodes/Overworld/MusicChanger.tscn": "notice",
+    "Nodes/Reusables/stairs.tscn": "notice",
+    "Nodes/Reusables/stepping sounds.tscn": "notice",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "notice",
+    "Nodes/Ui/effects/melodyBG.tscn": "notice",
+    "Nodes/Reusables/DebugStartPos.tscn": "notice"
+  },
+  "prop_sprites": {
+    "Nodes/Overworld/Objects/Dead Bush.tscn": ["Sprite"],
+    "Nodes/Overworld/Objects/Present.tscn": ["Sprite"],
+    "Nodes/Reusables/exterior payphone.tscn": ["main"],
+    "Nodes/Reusables/atm exterior.tscn": ["main"],
+    "Nodes/Reusables/VendingMachineExterior.tscn": ["main"],
+    "Nodes/Overworld/Objects/Zoo Gate.tscn": ["."],
+    "Nodes/Overworld/Objects/DroppedItem.tscn": ["Sprite"]
+  },
+  "labels": {
+    "Nodes/Reusables/CutsceneArea.tscn": "Cutscene area",
+    "Nodes/Overworld/jump area.tscn": "Jump area",
+    "Nodes/Reusables/Reparenter.tscn": "Bridge layer switch",
+    "Nodes/Reusables/event activator.tscn": "Event activator",
+    "Nodes/Reusables/npc.tscn": "NPC",
+    "Nodes/Reusables/door_npc.tscn": "Door dialogue",
+    "Nodes/Overworld/birds.tscn": "Birds",
+    "Nodes/Overworld/butterfly.tscn": "Butterfly",
+    "Nodes/Overworld/dandelion spawner.tscn": "Dandelion",
+    "Nodes/Overworld/Enemies/Enemy Spawner.tscn": "Enemy spawner",
+    "Nodes/Reusables/interact_dialog.tscn": "Inspectable",
+    "Nodes/Overworld/MusicChanger.tscn": "Music area",
+    "Nodes/Reusables/stairs.tscn": "Stairs",
+    "Nodes/Reusables/stepping sounds.tscn": "Stepping sounds",
+    "Nodes/Reusables/Effects/Sparkles.tscn": "Sparkles",
+    "Nodes/Ui/effects/melodyBG.tscn": "Melody background",
+    "Nodes/Reusables/DebugStartPos.tscn": "Debug start",
+    "Nodes/Overworld/Door.tscn": "Door",
+    "prop": "Object interaction"
+  },
+  "atlas_directory": "graphics/world/podunk",
+  "outputs": {
+    "map": "data/podunk.encmap",
+    "room": "data/podunk.encroom",
+    "links": "data/world.enclinks"
+  }
+}

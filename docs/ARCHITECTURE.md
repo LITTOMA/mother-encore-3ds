@@ -53,6 +53,12 @@ make native-content仅从外部IR编译并核对来源，不调用C++编译器�
 
 BattleRound读取独立RoundView，持有HP/行动队列/阶段；BattleActionPresentation通过同步事件接口共享SourceRandom，保留演出与逻辑的全局随机顺序。原版技能、翻译文本、规则、媒体轨道位于opening.encround；新增内容不生成C++常量表。目标选择、源Timer域、独立HP滚动与文字信号详见BATTLE_ROUND.md。BattleOutcome继续驱动原版胜利、手动EXP确认、奖励及世界返回；外部胜利记录和媒体决定数值/时序，世界桥接保留坐标、旗标和删除后的碰撞。周期Room Shaker使用外部规则和同一随机流，详见BATTLE_VICTORY.md。
 
+## 室外场景与批量图块数据
+
+Podunk 这类 TileMap 场景的格子数据量（约 17 万格）不适合保存为审查用 JSON。例外规则：`content/podunk-field.json` 只保存审查过的策略与路线，`tools/podunk_field.py` 每次编译直接从固定上游读取场景、TileSet 与脚本默认值并核对清单哈希，产物与 t3x 图集由收据记录 SHA-256，`verify` 重新生成并逐字节比较。任何未归类的场景节点、未审查属性、形状类型或转场类型都使编译失败。
+
+`FieldScene` 复用 `OpeningWorld`（玩家移动、动画、镜头），碰撞经 `MotionObstacleSource` 在每次滑动前按范围查询；凸形状遵循 Godot 运行时凸分解与 ConvexPolygonShape2DSW 法线，凹形状按 ConcavePolygonShape2D 线段与静态 AABB 裁剪。跨场景转场由 `SceneDoorTransition` 驱动，换场使用先准备后提交，失败保留原场景。详见 [PODUNK_FIELD](PODUNK_FIELD.md)。
+
 ## 同场景门与普通对话
 
 HouseView读取独立opening.enchouse；HouseRuntime控制原版门信号、触发几何、交互射线、暂停与seen状态，HousePresentation处理NPC与普通DialogueBox演出。传送只改变现有玩家坐标/朝向及相机区域，不重载或重置奖励。全部文本、资源、角色参数与过渡时间来自外部包，详见HOUSE_INTERACTIONS.md。

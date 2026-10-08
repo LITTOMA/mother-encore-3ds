@@ -6,7 +6,7 @@ CMAKE_ARGS ?=
 BUILD_JOBS ?= 4
 CONTENT_JOBS ?= $(BUILD_JOBS)
 TEX3DS ?= $(DEVKITPRO)/tools/bin/tex3ds
-.PHONY: help content native-content items-assets item-details-assets field-equipment-assets audio-assets battle-assets round-assets house-assets assets map-assets actor-assets house-layers new-game-assets host test sanitize 3dsx cia cxi 3ds release doctor clean
+.PHONY: help content native-content items-assets item-details-assets field-equipment-assets audio-assets battle-assets round-assets house-assets assets map-assets actor-assets house-layers podunk-field new-game-assets host test sanitize 3dsx cia cxi 3ds release doctor clean
 help:
 	@echo "make host/test/sanitize | make 3dsx/cia/cxi/3ds/release"
 	@echo "3DS targets require devkitPro 3ds-dev; CIA/CCI also require makerom + bannertool."
@@ -39,6 +39,9 @@ actor-assets:
 	$(PYTHON) tools/actor_asset.py compile --tex3ds "$(TEX3DS)"
 house-layers:
 	$(PYTHON) tools/house_layers.py compile --tex3ds "$(TEX3DS)"
+podunk-field:
+	$(PYTHON) tools/podunk_field.py compile --tex3ds "$(TEX3DS)"
+	$(PYTHON) tools/resource_catalog.py compile
 host: content
 	cmake -S . -B build/host -DCMAKE_BUILD_TYPE=Release -DENCORE_REGENERATE_NATIVE_CONTENT=OFF -DENCORE_TEST_PARALLEL=ON $(CMAKE_ARGS)
 	cmake --build build/host --parallel $(BUILD_JOBS)
@@ -84,6 +87,7 @@ introduction-assets:
 	$(PYTHON) tools/map_asset.py verify
 	$(PYTHON) tools/actor_asset.py verify
 	$(PYTHON) tools/house_layers.py verify
+	$(PYTHON) tools/podunk_field.py verify
 	$(MAKE) -f platform/ctr/Makefile -j$(BUILD_JOBS) all
 cia: 3dsx
 	$(PYTHON) tools/package_ctr.py --format cia

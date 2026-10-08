@@ -5,10 +5,11 @@
 #include "encore/dialogue_choices.hpp"
 #include "encore/house_inspection_data.hpp"
 #include "encore/drawer_program.hpp"
+#include "encore/world_links.hpp"
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
-enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram};
+enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram,SceneDoorAwaitIdle,SceneTransition};
 enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested};
 struct HouseEvent {HouseEventKind kind{};uint32_t object=0;uint64_t physics_tick=0,idle_frame=0;Vec2 position{};};
 struct HouseSoundRequest {uint32_t sound=0;};
@@ -31,6 +32,17 @@ public:
  // refs. Bind before inspections; effects owns inventory/audio, never text/flags.
  bool bind_drawer(DrawerProgramView,DrawerHost& effects);
  void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
+ // Boundaries of kind UnsupportedScene whose source door has a reviewed route
+ // become cross-scene doors; every other boundary keeps the development stop.
+ bool bind_scene_routes(const WorldLinksData&links,uint32_t scene_id);
+ // Route index once the door's idle frame has passed; the platform owns the swap.
+ uint32_t take_scene_route(){const auto r=scene_route_;scene_route_=WorldLinksData::kNotFound;return r;}
+ // A rejected destination keeps this House paused at an explicit stop; B returns
+ // to the last safe point. The message must have static storage duration.
+ bool abort_scene_transition(const char*message){
+  if(phase_!=HousePhase::SceneTransition&&phase_!=HousePhase::SceneDoorAwaitIdle)return false;
+  scene_route_=WorldLinksData::kNotFound;phase_=HousePhase::Unsupported;error_=message;return true;
+ }
  bool select_story_option(uint32_t pc,uint32_t generation);
  bool close_story_submenu(uint32_t generation);
  bool get_phone_flag(uint32_t,bool&)const override;
@@ -116,6 +128,7 @@ private:
  std::vector<HouseEvent>events_;std::vector<HouseSoundRequest>sounds_;
  HousePhase phase_=HousePhase::Idle;uint32_t active_=house_no_index;double fade_time_=0;
  bool door_unpaused_=false;uint64_t physics_tick_=0,idle_frame_=0,await_idle_=0;
+ std::vector<uint32_t>boundary_routes_;uint32_t scene_route_=WorldLinksData::kNotFound;
  Vec2 last_safe_position_{},last_safe_direction_{};const char*error_="";
 };
 }

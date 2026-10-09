@@ -94,7 +94,7 @@
     "columns": 5,
     "rows": 4,
     "output": "graphics/world/mick/mick.t3x",
-    "frame": 2
+    "frame": 1
   },
   "actor": {
     "source_path": "Objects/NPCS/npc21",
@@ -127,7 +127,7 @@
     "require_flag": "got_dog_treats",
     "consume_flag": "gave_treats",
     "ray_length": 16.0,
-    "frame": 2,
+    "frame": 1,
     "speed": 64,
     "walk_frequency": 1,
     "wander_radius": 44.0,
@@ -490,25 +490,31 @@
     {
       "anim": 0,
       "direction": 0,
-      "frame": 2,
+      "frame": 1,
       "milliseconds": 200
     },
     {
       "anim": 0,
       "direction": 1,
-      "frame": 7,
+      "frame": 6,
       "milliseconds": 200
     },
     {
       "anim": 0,
       "direction": 2,
-      "frame": 12,
+      "frame": 11,
       "milliseconds": 200
     },
     {
       "anim": 0,
       "direction": 3,
-      "frame": 17,
+      "frame": 16,
+      "milliseconds": 200
+    },
+    {
+      "anim": 1,
+      "direction": 0,
+      "frame": 0,
       "milliseconds": 200
     },
     {
@@ -526,13 +532,13 @@
     {
       "anim": 1,
       "direction": 0,
-      "frame": 3,
+      "frame": 1,
       "milliseconds": 200
     },
     {
       "anim": 1,
-      "direction": 0,
-      "frame": 2,
+      "direction": 1,
+      "frame": 5,
       "milliseconds": 200
     },
     {
@@ -550,13 +556,13 @@
     {
       "anim": 1,
       "direction": 1,
-      "frame": 8,
+      "frame": 6,
       "milliseconds": 200
     },
     {
       "anim": 1,
-      "direction": 1,
-      "frame": 7,
+      "direction": 2,
+      "frame": 10,
       "milliseconds": 200
     },
     {
@@ -574,13 +580,13 @@
     {
       "anim": 1,
       "direction": 2,
-      "frame": 13,
+      "frame": 11,
       "milliseconds": 200
     },
     {
       "anim": 1,
-      "direction": 2,
-      "frame": 12,
+      "direction": 3,
+      "frame": 15,
       "milliseconds": 200
     },
     {
@@ -598,61 +604,55 @@
     {
       "anim": 1,
       "direction": 3,
-      "frame": 18,
-      "milliseconds": 200
-    },
-    {
-      "anim": 1,
-      "direction": 3,
-      "frame": 17,
-      "milliseconds": 200
-    },
-    {
-      "anim": 2,
-      "direction": 0,
-      "frame": 5,
+      "frame": 16,
       "milliseconds": 200
     },
     {
       "anim": 2,
       "direction": 0,
       "frame": 4,
-      "milliseconds": 100
+      "milliseconds": 200
     },
     {
       "anim": 2,
-      "direction": 1,
-      "frame": 10,
-      "milliseconds": 200
+      "direction": 0,
+      "frame": 3,
+      "milliseconds": 100
     },
     {
       "anim": 2,
       "direction": 1,
       "frame": 9,
-      "milliseconds": 100
+      "milliseconds": 200
     },
     {
       "anim": 2,
-      "direction": 2,
-      "frame": 15,
-      "milliseconds": 200
+      "direction": 1,
+      "frame": 8,
+      "milliseconds": 100
     },
     {
       "anim": 2,
       "direction": 2,
       "frame": 14,
+      "milliseconds": 200
+    },
+    {
+      "anim": 2,
+      "direction": 2,
+      "frame": 13,
       "milliseconds": 100
     },
     {
       "anim": 2,
       "direction": 3,
-      "frame": 20,
+      "frame": 19,
       "milliseconds": 200
     },
     {
       "anim": 2,
       "direction": 3,
-      "frame": 19,
+      "frame": 18,
       "milliseconds": 100
     }
   ],

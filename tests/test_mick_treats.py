@@ -20,7 +20,7 @@ class MickTreatsTests(unittest.TestCase):
         self.assertEqual(a['item'], 'DogTreats')
         self.assertEqual(a['require_flag'], 'got_dog_treats')
         self.assertEqual(a['consume_flag'], 'gave_treats')
-        self.assertEqual(a['frame'], 2)
+        self.assertEqual(a['frame'], 1)
         treats = next(p for p in self.ir['programmes'] if p['flag'] == 'got_dog_treats')
         ops = [c['op'] for c in self.ir['commands'][treats['first']:treats['first'] + treats['count']]]
         self.assertEqual(ops, ['ShowText', 'AwaitText', 'ShowText', 'AwaitText',

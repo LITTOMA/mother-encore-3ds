@@ -220,7 +220,13 @@ def build(root=ROOT):
     sheet_offset = anim.get('offset', [0, 0])
     require(sheet_offset == [0, 0], '4dir sheet offset changed')
     sprite_draw = [f32(char_at.x + sheet_offset[0]), f32(char_at.y - int(size[1] / float(rows * 2)) + sheet_offset[1])]
-    frame = anim['animations']['Idle']['directions'][0][1][0]
+    # character_sprite.gd inserts the yaml frame minus one. Sheet cells are 0 .. columns*rows-1.
+    def sheet_frame(raw):
+        index = int(raw) - 1
+        require(0 <= index < columns * rows, '4dir frame is outside the Mick sheet')
+        return index
+
+    frame = sheet_frame(anim['animations']['Idle']['directions'][0][1][0])
     clips = []
     for name, anim_id in (('Idle', 0), ('Walk', 1), ('Talk', 2)):
         directions = anim['animations'][name]['directions']
@@ -231,7 +237,7 @@ def build(root=ROOT):
                 require(isinstance(sample, list) and len(sample) == 2, '4dir sample changed: ' + name)
                 milliseconds = int(round(float(sample[1]) * 1000))
                 require(0 < milliseconds <= 10000, '4dir sample duration rejected')
-                clips.append(dict(anim=anim_id, direction=direction, frame=int(sample[0]), milliseconds=milliseconds))
+                clips.append(dict(anim=anim_id, direction=direction, frame=sheet_frame(sample[0]), milliseconds=milliseconds))
     clip_counts = {0: 0, 1: 0, 2: 0}
     for clip in clips:
         clip_counts[clip['anim']] += 1
@@ -621,7 +627,7 @@ def review(ir):
     return dict(schema=1, commit=PIN, ir_sha256=digest(ROOT / IR), sources=ir['sources'], scope=ir['scope'],
                 semantics={
                     'spawn': 'npc21 starts at Vector2(-88, 8) facing south and wanders inside the radius-44 circle',
-                    'idle': '4dir Idle/Walk/Talk frames; south Idle frame 2 is the rest pose',
+                    'idle': '4dir Idle/Walk/Talk use the yaml frame minus one, matching character_sprite.gd; south Idle rests on sheet index 1',
                     'interact': 'The last matching spoken row wins: woof, woof_secret, woof_deal, woof_treats, woof_animals',
                     'collision': 'The foot rectangle moves with Mick and blocks the player; the sprite y-sorts on his live position',
                     'bark': 'Cutscene Area11 starts mick_bark and steps the player 16px north while gave_treats is clear',

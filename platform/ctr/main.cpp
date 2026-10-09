@@ -1101,7 +1101,11 @@ void perform_scene_swap(){
     if(ok&&scene_door.swapped(error))return;
     scene_door.cancel();
     if(in_field()){field_status="Scene change rejected: "+error;field_scene->abort_transition(field_status);}
-    else {house_error.clear();gameplay_scene->house.abort_scene_transition("Scene change rejected; B returns");field_status=error;}
+    else {
+        // HouseRuntime keeps the pointer, so the text has to outlive this call.
+        static std::string scene_reject;
+        scene_reject=error.empty()?"Scene change rejected; B returns":"Scene change rejected: "+error+"; B returns";
+        house_error.clear();gameplay_scene->house.abort_scene_transition(scene_reject.c_str());field_status=error;}
 }
 void reset_field_state(){scene_door.cancel();if(in_field()){release_field_graphics();field_scene.reset();}field_status.clear();door_sound_requests=0;}
 void draw_door_masks(float focus_x,float focus_y){

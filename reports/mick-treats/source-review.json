@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "c7d8a37502b2cbf36ff75ef2d663cb4b60261fa4b5a162222e6a7dd6c3024cc1",
+  "ir_sha256": "e89350120d8b7e832ff860027c0d1845470b230e0388fdff27ada8cd67118e08",
   "sources": {
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
     "Data/Dialogue/Podunk/cutscenes/mick_bark.yaml": "c9ae2bd1e5c0078c96e54fc27d63e9cba60fbc9f8a49e5ec23787ab7c0be619d",
@@ -87,7 +87,7 @@
   "scope": "Podunk Mick npc21 walks inside his wander radius, faces the player in the view circle, and speaks woof, woof_secret, woof_deal, woof_treats and woof_animals. Cutscene Area11 runs mick_bark and steps the player 16px north until gave_treats. Field-enter RNG replays reviewed _ready draws and screen-entered draws without spawning enemies. Telepathy, the heart emote, other NPC dialogue and movement, music and field battles stay deferred.",
   "semantics": {
     "spawn": "npc21 starts at Vector2(-88, 8) facing south and wanders inside the radius-44 circle",
-    "idle": "4dir Idle/Walk/Talk frames; south Idle frame 2 is the rest pose",
+    "idle": "4dir Idle/Walk/Talk use the yaml frame minus one, matching character_sprite.gd; south Idle rests on sheet index 1",
     "interact": "The last matching spoken row wins: woof, woof_secret, woof_deal, woof_treats, woof_animals",
     "collision": "The foot rectangle moves with Mick and blocks the player; the sprite y-sorts on his live position",
     "bark": "Cutscene Area11 starts mick_bark and steps the player 16px north while gave_treats is clear",

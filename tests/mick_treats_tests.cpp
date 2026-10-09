@@ -18,7 +18,7 @@ int main(int argc,char** argv){
     MickData data;CHECK(data.load(bytes.data(),bytes.size(),error));
     const auto view=data.view();CHECK(view);CHECK(view.count(MickSection::Actor)==1);CHECK(view.count(MickSection::Texture)==1);
     const auto a=view.actor();CHECK(view.string(a.item)=="DogTreats");CHECK(view.string(a.require_flag)=="got_dog_treats");
-    CHECK(view.string(a.consume_flag)=="gave_treats");CHECK(a.frame==2);CHECK(a.command_count>=1);
+    CHECK(view.string(a.consume_flag)=="gave_treats");CHECK(a.frame==1);CHECK(a.command_count>=1);
     CHECK(a.collision_extents.x==7.5f&&a.collision_extents.y==3.f);CHECK(a.sort_y==8.f);
     CHECK(view.string(a.bark_path)=="Cutscenes/Cutscene Area11");
     CHECK(a.bark_center.x==-24.f&&a.bark_center.y==64.f&&a.bark_extents.x==56.f&&a.bark_extents.y==8.f);

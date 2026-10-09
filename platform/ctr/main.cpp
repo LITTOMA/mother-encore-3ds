@@ -1669,7 +1669,7 @@ int main(int argc,char** argv){
                 if(state==upstream::MickProgramState::Complete&&!box.dialogue_active()&&!field_scene->finish_talk())field_status=field_scene->error();
                 const bool choosing=state==upstream::MickProgramState::WaitingChoice&&box.dialogue_finished()&&!box.dialogue_closing();
                 if(choosing&&!choice_data.groups().empty()&&choice_data.groups().front().options.size()>=2){
-                    const auto& opts=choice_data.groups().front().options;const uint32_t sel=std::min(field_scene->mick().choice_selection(),1u);
+                    const auto& opts=choice_data.groups().front().options;const uint32_t sel=std::min(field_scene->mick().choice_selection(),uint32_t{1});
                     const float tx=opts[sel].rect.x,ty=opts[sel].rect.y;
                     if(!field_choice_shown||sel!=field_choice_sel){
                         if(!field_choice_shown){field_choice_x=field_choice_from_x=tx;field_choice_y=field_choice_from_y=ty;field_choice_t=1;}

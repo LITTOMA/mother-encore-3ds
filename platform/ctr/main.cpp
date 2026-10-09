@@ -619,8 +619,11 @@ public:
  bool remove_key_item(std::string_view name,std::string&e)override{
   auto&keys=session_state.key_items;
   const auto it=std::find_if(keys.begin(),keys.end(),[&](const upstream::SessionItem&i){return i.item_id==name;});
-  if(it==keys.end()){e="Mick key item is not held";return false;}
+  if(it==keys.end()){e.clear();return true;}
   keys.erase(it);e.clear();return true;
+ }
+ bool play_sound(std::string_view,std::string& e)override{
+  ++door_sound_requests;e.clear();return true;
  }
  bool show_text(std::string_view body,std::string&e)override{
   std::string out(body);
@@ -648,19 +651,21 @@ bool bind_field_mick(upstream::FieldScene& scene,std::string& error){
 }
 void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y){
  if(!mick_sheet||!field_scene||!field_scene->mick().ready())return;
- const auto view=field_scene->mick().view();const auto a=view.actor();const auto t=view.texture();
+ const auto& mick=field_scene->mick();const auto view=mick.view();const auto t=view.texture();
+ const auto frame=mick.sheet_frame();const auto center=mick.sprite_center();
  const auto image=encore::ctr::loading_sprite_sheet_get_image(mick_sheet,0);
- if(!image.tex||!image.subtex||!t.columns||!t.rows||a.frame>=uint32_t(t.columns)*uint32_t(t.rows))return;
+ if(!image.tex||!image.subtex||!t.columns||!t.rows||frame>=uint32_t(t.columns)*uint32_t(t.rows))return;
  // Same padded-atlas UV math as OpeningActorRenderer / PresentRenderer.
  const unsigned fw=t.width/t.columns,fh=t.height/t.rows;
- const unsigned u=(a.frame%t.columns)*fw,v=(a.frame/t.columns)*fh;
+ const unsigned u=(frame%t.columns)*fw,v=(frame/t.columns)*fh;
  Tex3DS_SubTexture sub=*image.subtex;
  const float du=(sub.right-sub.left)/float(t.width),dv=(sub.bottom-sub.top)/float(t.height);
  const float left=sub.left,top=sub.top;
  sub.left=left+u*du;sub.right=left+(u+fw)*du;sub.top=top+v*dv;sub.bottom=top+(v+fh)*dv;
  sub.width=uint16_t(fw);sub.height=uint16_t(fh);
- C2D_DrawImageAt({image.tex,&sub},std::floor(a.sprite_position.x-camera_x+offset_x-float(fw)*.5f+.5f),
-                 std::floor(a.sprite_position.y-camera_y+offset_y-float(fh)*.5f+.5f),0.6f);
+ // Same depth as FieldRenderer tiles and the player; a higher depth always covers the player.
+ C2D_DrawImageAt({image.tex,&sub},std::floor(center.x-camera_x+offset_x-float(fw)*.5f+.5f),
+                 std::floor(center.y-camera_y+offset_y-float(fh)*.5f+.5f),0.f);
 }
 std::string field_status;
 bool in_field(){return field_scene!=nullptr;}
@@ -1438,8 +1443,7 @@ void house_bottom(){
 void field_top(){
     const auto player=field_scene->world.player().position;
     const auto origin=field_scene->camera_origin(player,{float(view_width),float(view_height)});
-    if(!field_renderer.draw(*field_scene,field_actor,origin.x,origin.y,float(view_width),float(view_height),view_x(),view_y(),shader_time))field_status="Field renderer rejected checked map binding";
-    draw_mick_actor(origin.x,origin.y,view_x(),view_y());
+    if(!field_renderer.draw(*field_scene,field_actor,origin.x,origin.y,float(view_width),float(view_height),view_x(),view_y(),shader_time,draw_mick_actor))field_status="Field renderer rejected checked map binding";
 }
 void field_bottom(){
     using namespace upstream;
@@ -1448,9 +1452,16 @@ void field_bottom(){
     text(1,14,39,0.4f,std::string(room.string(room.scene().version_string))+"\n"+std::string(room.string(room.scene().display_name_string))+": original TileMap layers and collision",ink,292);
     std::string scope;
     switch(field_scene->phase()){
-    case FieldPhase::Walking:scope="Native movement + TileMap collision\nA near Mick with Dog Treats: give treats\nOther NPCs, enemies and music are not ported";break;
+    case FieldPhase::Walking:scope="Native movement + TileMap collision\nA near Mick: talk    south fence before treats: bark\nOther NPCs, enemies and music are not ported";break;
     case FieldPhase::DoorAwaitIdle:case FieldPhase::Transition:scope="Original door transition";break;
-    case FieldPhase::MickTalk:scope=mick_dialogue.empty()?"Mick":mick_dialogue;scope+="\nA: continue";break;
+    case FieldPhase::MickTalk:{
+        scope=mick_dialogue.empty()?"Mick":mick_dialogue;
+        if(field_scene->mick().waiting_choice()){
+            scope+="\n";
+            for(uint32_t i=0;i<2;++i){scope+=i==field_scene->mick().choice_selection()?"\n> ":"\n  ";scope+=std::string(field_scene->mick().choice_text(i));}
+            scope+="\nUp/Down: choose   A: confirm   B: cancel";
+        }else scope+="\nA: continue";
+        break;}
     default:scope=field_scene->error();break;
     }
     if(!field_status.empty()&&field_scene->phase()!=FieldPhase::MickTalk)scope=field_status;
@@ -1602,7 +1613,8 @@ int main(int argc,char** argv){
                     ok=ok&&field_scene->after_physics();
                     if(ok&&field_scene->phase()==upstream::FieldPhase::Walking){
                         std::string why;ok=field_scene->try_mick(world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse),why);
-                        if(!ok)field_status=field_scene->error();else if(!why.empty())field_status=why;
+                        if(!ok)field_status=field_scene->error();
+                        else if(!why.empty())field_status=why;
                     }
                     if(!ok)field_status=field_scene->error();
                 }
@@ -1620,7 +1632,8 @@ int main(int argc,char** argv){
         uint32_t requested_route=upstream::WorldLinksData::kNotFound;
         if(in_field()){
             if(world_visible&&field_scene->world.healthy())field_scene->world.idle_frame(dt);
-            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,world_input&&(down&KEY_B)!=0,world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse)))field_status=field_scene->error();
+            const int mick_choice=((down&KEY_DDOWN)?1:0)-((down&KEY_DUP)?1:0);
+            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,world_input&&(down&KEY_B)!=0,world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse),mick_choice))field_status=field_scene->error();
             if(field_scene->phase()==upstream::FieldPhase::Walking){mick_dialogue.clear();if(!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();}
             door_sound_requests+=field_scene->take_sounds().size();
             requested_route=field_scene->take_route();

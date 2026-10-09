@@ -59,8 +59,17 @@ bool FieldCollision::collect(Vec2 lo,Vec2 hi,std::vector<MotionObstacle>& out)co
         }
     }
     for(const auto bi:bodies_){const auto b=map_.body(bi);for(uint32_t s=0;s<b.shape_count;++s)push(b.shape_first+s,{});}
+    if(extra_&&extra_enabled_&&intersects(lo,hi,extra_minimum_,extra_maximum_))
+        out.push_back({extra_points_,extra_normals_,4,{},extra_minimum_,extra_maximum_,false});
     if(out.size()>4096)return false;
     return true;
+}
+void FieldCollision::set_body(Vec2 center,Vec2 extents){
+    Vec2 pts[4]={{center.x-extents.x,center.y-extents.y},{center.x+extents.x,center.y-extents.y},{center.x+extents.x,center.y+extents.y},{center.x-extents.x,center.y+extents.y}};
+    double sum=0;for(int k=0;k<4;++k){const auto a=pts[k],b=pts[(k+1)%4];sum+=double(b.x-a.x)*double(b.y+a.y);}
+    if(sum>0)std::reverse(pts,pts+4);
+    for(int k=0;k<4;++k){extra_points_[k]=pts[k];const auto a=pts[k],b=pts[(k+1)%4];extra_normals_[k]=normalized({b.y-a.y,-(b.x-a.x)});}
+    extra_minimum_={center.x-extents.x,center.y-extents.y};extra_maximum_={center.x+extents.x,center.y+extents.y};extra_=true;extra_enabled_=true;
 }
 
 uint32_t SceneDoorTransition::kind()const{return phase_==SceneDoorPhase::FadeIn?route_.in_kind:route_.out_kind;}
@@ -134,7 +143,7 @@ bool FieldScene::prepare(RoomView room,FieldMapView map,const WorldLinksData& li
     if(story_flags.size()!=room.flag_count())return reject("Field scene flag table mismatch");
     const std::vector<bool> reviewed(room.flag_count(),true);
     if(!world.initialize_restored(room,story_flags,reviewed,position,direction,viewport))return reject(std::string("Field world rejected: ")+world.error());
-    map_=map;links_=&links;
+    map_=map;links_=&links;viewport_=viewport;
     const auto doors=map.count(FieldMapSection::Doors),boundaries=map.count(FieldMapSection::Boundaries),cameras=map.count(FieldMapSection::Cameras);
     const auto openables=map.count(FieldMapSection::Openables);
     for(uint32_t i=0;i<doors;++i){const auto d=map.door(i);if(!d.route)continue;
@@ -178,8 +187,37 @@ bool FieldScene::refresh_conditions(std::string& error){
             }
         }
     }
+    if(mick_bound_)apply_mick_body();
     error.clear();return true;
 }
+void FieldScene::apply_mick_body(){
+    const auto a=mick_.view().actor();
+    collision_.set_body(mick_.collision_center(),a.collision_extents);
+}
+struct FieldMickWorld final:MickWorld {
+    FieldScene& scene;
+    explicit FieldMickWorld(FieldScene& scene):scene(scene){}
+    bool probe(Vec2 from,Vec2 to,bool& clear)override{
+        if(!scene.mick_solver_ready_){clear=true;return true;}
+        scene.collision_.set_extra_enabled(false);
+        SlideResult result;const Vec2 delta{to.x-from.x,to.y-from.y};
+        const bool ok=scene.mick_solver_.slide(from,{delta.x*60.f,delta.y*60.f},result);
+        scene.collision_.set_extra_enabled(true);
+        if(!ok)return false;
+        const float dx=result.position.x-to.x,dy=result.position.y-to.y;
+        clear=dx*dx+dy*dy<1.f;return true;
+    }
+    bool slide(Vec2 position,Vec2 velocity,Vec2& out)override{
+        if(!scene.mick_solver_ready_){out={position.x+velocity.x/60.f,position.y+velocity.y/60.f};return true;}
+        scene.collision_.set_extra_enabled(false);
+        SlideResult result;const bool ok=scene.mick_solver_.slide(position,velocity,result);
+        scene.collision_.set_extra_enabled(true);
+        if(!ok)return false;out=result.position;return true;
+    }
+    bool player_near(Vec2 center,Vec2 extents)override{return scene.overlaps(center,extents,scene.world.player().position);}
+    bool player_in_view(Vec2 center,float radius)override{return scene.circle_overlaps(center,radius);}
+    bool shove_player(Vec2 position,Vec2 direction,bool walking)override{return scene.world.script_move(position,direction,walking);}
+};
 bool FieldScene::finish_transition(){
     if(phase_!=FieldPhase::Transition)return fail("Field transition finish outside its boundary");
     if(!world.unpause_from_house())return fail("Field player unpause rejected");
@@ -188,21 +226,45 @@ bool FieldScene::finish_transition(){
 bool FieldScene::bind_mick(MickView view,MickHost& host,std::string& error){
     if(phase_==FieldPhase::Error||!map_.valid()){error="Field Mick bind requires a prepared scene";return false;}
     if(!mick_.initialize(view,host,error))return false;
-    mick_bound_=true;error.clear();return true;
+    const auto a=view.actor();const auto origin=mick_.position();const auto center=mick_.collision_center();
+    const Vec2 o{center.x-origin.x,center.y-origin.y};const auto e=a.collision_extents;
+    ConvexPolygon foot;foot.vertices={{o.x-e.x,o.y-e.y},{o.x+e.x,o.y-e.y},{o.x+e.x,o.y+e.y},{o.x-e.x,o.y+e.y}};
+    if(!mick_solver_.configure(foot,{},0.08f)){error="Field Mick foot solver rejected";return false;}
+    mick_solver_.attach_source(&collision_);mick_solver_ready_=mick_solver_.valid();
+    if(!mick_solver_ready_){error="Field Mick foot solver rejected";return false;}
+    mick_bound_=true;apply_mick_body();error.clear();return true;
+}
+bool FieldScene::mick_contact()const{
+    if(!mick_bound_||phase_!=FieldPhase::Walking)return false;
+    const auto a=mick_.view().actor();const auto p=world.player();const auto center=mick_.interact_center();
+    float distance=0;
+    return ray_rect(p.position,normalized(p.direction),a.ray_length,center,a.interact_extents,distance)||overlaps(center,a.interact_extents,p.position);
 }
 bool FieldScene::try_mick(bool accept,std::string& error){
-    if(!mick_bound_||phase_!=FieldPhase::Walking||!accept){error.clear();return true;}
-    std::string why;if(!mick_.available(why)){error.clear();return true;}
-    const auto a=mick_.view().actor();const auto p=world.player();
-    const Vec2 origin=p.position,dir=normalized(p.direction);
-    float distance=0;
-    if(!ray_rect(origin,dir,a.ray_length,a.interact_center,a.interact_extents,distance)){error.clear();return true;}
-    Vec2 facing{a.position.x-p.position.x,a.position.y-p.position.y};
+    if(!mick_bound_||phase_!=FieldPhase::Walking||!accept||!mick_contact()){error.clear();return true;}
+    const auto p=world.player();const auto at=mick_.position();
+    mick_.face_toward(p.position);
+    Vec2 facing{at.x-p.position.x,at.y-p.position.y};
     if(std::abs(facing.x)>std::abs(facing.y)&&facing.x!=0)facing={sign(facing.x),0};else if(facing.y!=0)facing={0,sign(facing.y)};else facing=p.direction;
     if(!world.set_house_direction(facing)||!world.pause_for_house())return fail("Field Mick turn/pause rejected");
     phase_=FieldPhase::MickTalk;mick_ignore_accept_=true;
-    if(!mick_.start(error))return fail(error.empty()?"Field Mick programme rejected":error.c_str());
+    if(!mick_.start_talk(error))return fail(error.empty()?"Field Mick programme rejected":error.c_str());
     error.clear();return true;
+}
+bool FieldScene::circle_overlaps(Vec2 center,float radius)const{
+    const auto& room=world.content();const auto scene=room.scene();const auto player=world.player().position;
+    const float r2=radius*radius;bool inside=true;
+    for(uint32_t i=0;i<scene.actor_hull_count;++i){
+        const auto p=room.vertex(scene.actor_hull_first+i);const float x=p.x+player.x-center.x,y=p.y+player.y-center.y;
+        if(x*x+y*y<=r2)return true;
+        const auto q=room.vertex(scene.actor_hull_first+(i+1)%scene.actor_hull_count);
+        const float ex=q.x-p.x,ey=q.y-p.y,len=ex*ex+ey*ey;
+        if(len>0){float t=((center.x-player.x-p.x)*ex+(center.y-player.y-p.y)*ey)/len;t=std::clamp(t,0.f,1.f);
+            const float dx=player.x+p.x+ex*t-center.x,dy=player.y+p.y+ey*t-center.y;if(dx*dx+dy*dy<=r2)return true;}
+        const float cross=(p.x+player.x-center.x)*(q.y+player.y-center.y)-(p.y+player.y-center.y)*(q.x+player.x-center.x);
+        if(cross<0)inside=false;
+    }
+    return inside&&scene.actor_hull_count>=3;
 }
 bool FieldScene::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
     // Same actor-hull SAT as HouseRuntime::overlaps; touching counts as contact.
@@ -217,6 +279,12 @@ bool FieldScene::overlaps(Vec2 center,Vec2 extents,Vec2 player)const{
 }
 bool FieldScene::before_physics(WalkInput& input){
     if(phase_==FieldPhase::Error)return false;
+    if(mick_bound_){
+        FieldMickWorld motion{*this};std::string why;const auto player=world.player().position;
+        if(!mick_.simulate(1.f/60.f,player,camera_origin(player,viewport_),viewport_,world.house_paused(),motion,why))
+            return fail(why.empty()?"Field Mick simulation rejected":why.c_str());
+        apply_mick_body();
+    }
     input.paused=input.paused||blocks_player();
     input.entering_door=input.entering_door||phase_==FieldPhase::DoorAwaitIdle||phase_==FieldPhase::Transition;
     return true;
@@ -238,6 +306,13 @@ bool FieldScene::after_physics(){
         const auto b=map_.boundary(i);const bool inside=boundary_active_[i]&&overlaps(b.center,b.extents,position);
         const bool entered=inside&&!boundary_inside_[i];boundary_inside_[i]=inside;any|=inside;
         if(!entered||phase_!=FieldPhase::Walking)continue;
+        const auto bark=mick_bound_?mick_.view().string(mick_.view().actor().bark_path):std::string_view{};
+        if(!bark.empty()&&map_.text(b.path)==bark){
+            if(!world.pause_for_house())return fail("Field Mick bark pause rejected");
+            phase_=FieldPhase::MickTalk;mick_ignore_accept_=true;
+            std::string why;if(!mick_.start_bark(why))return fail(why.empty()?"Field Mick bark rejected":why.c_str());
+            continue;
+        }
         boundary_=0x80000000u|i;phase_=FieldPhase::Unsupported;error_=std::string(map_.text(b.label))+" not ported; B returns";
         if(!world.pause_for_house())return fail("Field boundary pause rejected");
     }
@@ -255,7 +330,7 @@ bool FieldScene::after_physics(){
     if(!any&&phase_==FieldPhase::Walking){last_safe_position_=position;last_safe_direction_=world.player().direction;}
     return true;
 }
-bool FieldScene::idle_frame(double delta,bool back,bool accept){
+bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
     if(phase_==FieldPhase::Error)return false;
     if(!std::isfinite(delta)||delta<0||delta>1)return fail("Field idle time rejected");
     if(phase_==FieldPhase::DoorAwaitIdle){
@@ -269,7 +344,10 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept){
     }else if(phase_==FieldPhase::MickTalk){
         std::string why;
         const bool ignore=mick_ignore_accept_;mick_ignore_accept_=false;
-        if(mick_.state()==MickProgramState::WaitingText&&accept&&!ignore){
+        if(mick_.waiting_choice()){
+            if(choice)mick_.move_choice(choice);
+            if((back||(accept&&!ignore))&&!mick_.confirm_choice(back,why))return fail(why.empty()?"Field Mick choice rejected":why.c_str());
+        }else if(mick_.state()==MickProgramState::WaitingText&&accept&&!ignore){
             if(!mick_.advance_text(why))return fail(why.empty()?"Field Mick text advance rejected":why.c_str());
         }
         if(mick_.state()==MickProgramState::Complete){

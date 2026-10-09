@@ -16,12 +16,16 @@ namespace encore::upstream {
 class FieldCollision final : public MotionObstacleSource {
 public:
     bool bind(FieldMapView map,const std::vector<bool>& layer_active,const std::vector<bool>& body_active,std::string& error);
+    // One extra solid rectangle (Mick's foot body). bind() clears it.
+    void set_body(Vec2 center,Vec2 extents);
+    void set_extra_enabled(bool enabled){extra_enabled_=enabled;}
     bool collect(Vec2 minimum,Vec2 maximum,std::vector<MotionObstacle>& out)const override;
 private:
     FieldMapView map_;
     std::vector<Vec2> points_,normals_;
     std::vector<uint32_t> first_;
     std::vector<uint32_t> layers_,bodies_;
+    bool extra_=false,extra_enabled_=true;Vec2 extra_points_[4]{},extra_normals_[4]{},extra_minimum_{},extra_maximum_{};
 };
 
 // Original Door/SceneTransition sequence for one cross-scene route: pause, one
@@ -54,6 +58,7 @@ private:
 
 enum class FieldPhase:uint8_t {Walking,DoorAwaitIdle,Transition,Unsupported,MickTalk,Error};
 struct FieldNoticeView {uint32_t index=0;float distance=0;};
+struct FieldMickWorld;
 
 // AreaRoom field: TileMap world, routed and unported doors, explicit development
 // boundaries and unlocked openable doors. Rendering and scene swaps are platform owned.
@@ -76,9 +81,10 @@ public:
     OpeningWorld world;
     bool before_physics(WalkInput& input);
     bool after_physics();
-    bool idle_frame(double delta,bool back,bool accept=false);
-    // Ray-select Mick while walking; starts the woof_treats programme when available.
+    bool idle_frame(double delta,bool back,bool accept=false,int choice=0);
+    // A against Mick's live interact rectangle while walking. The matching spoken tree starts.
     bool try_mick(bool accept,std::string& error);
+    bool mick_contact()const;
     FieldPhase phase()const{return phase_;}
     const std::string& error()const{return error_;}
     bool blocks_player()const{return phase_!=FieldPhase::Walking;}
@@ -100,12 +106,17 @@ public:
     uint32_t scene_id()const{return map_.scene_id();}
 private:
     struct Openable {bool inside=false,open=false;double timer=-1;};
+    friend struct FieldMickWorld;
     bool overlaps(Vec2 center,Vec2 extents,Vec2 player)const;
+    bool circle_overlaps(Vec2 center,float radius)const;
     bool conditions(FieldSpan)const;
+    void apply_mick_body();
     bool fail(std::string message){phase_=FieldPhase::Error;error_=std::move(message);return false;}
     FieldMapView map_;const WorldLinksData* links_=nullptr;
     FieldCollision collision_;
+    StaticMotionSolver mick_solver_;bool mick_solver_ready_=false;
     MickRuntime mick_;bool mick_bound_=false;
+    Vec2 viewport_{400,240};
     // Suppress the same confirm pulse that started MickTalk from advancing text.
     bool mick_ignore_accept_=false;
     std::vector<bool> layer_active_,sprite_active_,item_active_,door_active_,boundary_active_,camera_active_,notice_active_;

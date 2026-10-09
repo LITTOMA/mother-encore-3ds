@@ -21,14 +21,26 @@ class MickTreatsTests(unittest.TestCase):
         self.assertEqual(a['require_flag'], 'got_dog_treats')
         self.assertEqual(a['consume_flag'], 'gave_treats')
         self.assertEqual(a['frame'], 2)
-        ops = [c['op'] for c in self.ir['commands']]
+        treats = next(p for p in self.ir['programmes'] if p['flag'] == 'got_dog_treats')
+        ops = [c['op'] for c in self.ir['commands'][treats['first']:treats['first'] + treats['count']]]
         self.assertEqual(ops, ['ShowText', 'AwaitText', 'ShowText', 'AwaitText',
-                               'RemoveKeyItem', 'SetFlag', 'ShowText', 'AwaitText', 'End'])
+                               'SetFlag', 'RemoveKeyItem', 'ShowText', 'AwaitText', 'End'])
+        bark = next(p for p in self.ir['programmes'] if p['kind'] == 'Bark')
+        bark_ops = [c['op'] for c in self.ir['commands'][bark['first']:bark['first'] + bark['count']]]
+        self.assertEqual(bark_ops, ['JumpActor', 'TurnActor', 'ShowText', 'AwaitText',
+                                    'ShowText', 'AwaitText', 'MovePlayer', 'Wait', 'End'])
+        self.assertEqual(self.ir['actor']['bark_path'], 'Cutscenes/Cutscene Area11')
+        self.assertEqual(self.ir['actor']['bark_center'], [-24.0, 64.0])
+        self.assertEqual(self.ir['actor']['bark_extents'], [56.0, 8.0])
+        self.assertTrue(any(c['op'] == 'Choice' for c in self.ir['commands']))
+        self.assertTrue(any(c['op'] == 'SetFlag' and c['a'] == 'mick_scratch' for c in self.ir['commands']))
 
     def test_pack_round_trip(self):
         rows = mick.parse(self.blob)
-        self.assertEqual(len(rows['Actor']) // 68, 1)
+        self.assertEqual(len(rows['Actor']) // 200, 1)
         self.assertEqual(len(rows['Texture']) // 12, 1)
+        self.assertGreater(len(rows['Programmes']) // 16, 1)
+        self.assertGreater(len(rows['Rng']) // 32, 1)
 
     def test_reject_truncated_and_bad_magic(self):
         with self.assertRaises(Exception):

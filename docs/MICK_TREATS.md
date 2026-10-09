@@ -1,31 +1,32 @@
-# Mick 狗粮（gave_treats）
+# Mick（院子 npc21）
 
-固定来源：Mother: Encore `7d9246600fffe518408f5830d4848635019005a3`，场景 `Maps/podunk/podunk.tscn` 实例 `Objects/NPCS/npc21`、`Nodes/Reusables/npc.tscn`、`Data/Dialogue/Podunk/woof_treats.yaml`、`Data/Animations/4dir.yaml`、`Graphics/Character Sprites/Npcs/4dir/mick.png`。
+固定来源：Mother: Encore `7d9246600fffe518408f5830d4848635019005a3`，场景 `Maps/podunk/podunk.tscn` 实例 `Objects/NPCS/npc21`、`Nodes/Reusables/npc.tscn`、`Scripts/Main/npc.gd`、`Scripts/Main/actor.gd`、`Data/Animations/4dir.yaml`、`Graphics/Character Sprites/Npcs/4dir/mick.png`，以及 `Data/Dialogue/Podunk/` 下的 `woof.yaml`、`woof_secret.yaml`、`woof_deal.yaml`、`woof_treats.yaml`、`woof_animals.yaml` 和 `cutscenes/mick_bark.yaml`。
 
-本切片在 Podunk 院子画出静止的 Mick（南向 Idle 第 2 帧），并在持有狗粮且尚未 `gave_treats` 时用 A 键射线交互跑通 `woof_treats`：移除 `DogTreats`、设置 `gave_treats`，使南栅栏 `Cutscene Area11` 条件失效从而可以离开院子。它不是完整 Mick / NPC 系统。
+本切片让院子里的 Mick 按已审查的漫步、凝视和口语句走路并对话，并用南栅栏 `mick_bark` 在给粮前把玩家往北推回。它不是完整 NPC 系统，也不生成其它 NPC 或野外敌人。
 
 ## 可玩范围
 
-- Mick 固定在原版 spawn `(-88, 8)`；漫步与 `walk_frequency` 未接入。
-- 仅当故事旗 `got_dog_treats` 为真且 `gave_treats` 为假时，面向 Mick 的射线（长度 16，与房屋交互一致）可启动节目。
-- 节目顺序对齐 `woof_treats.yaml`：短语 0 → 2 → 移除 DogTreats → 设置 `gave_treats` → 短语 3。
-- 文本为编译期去掉 DialogueBox 控制标签后的纯文本，显示在下屏；`[PartyLead]` 在运行时替换为当前昵称。英文与简体中文写入 `ENCMIK01`。
-- 设置 `gave_treats` 后立刻重算野外条件：`Area11`（`disappear_flag=gave_treats`）不再作为阻挡边界。
+- 出生点 `(-88, 8)`，初始朝南。速度 64，`walk_frequency` 1，在半径 44 的圆内漫步。脚底矩形挡住玩家，精灵与玩家按当前 `position.y` 做 Y 排序。
+- 玩家进入半径 44 的视野圆时 Mick 转向玩家并停止走路；靠近脚边矩形时也不再走开。离开视野后不恢复初始朝向。
+- 面向 Mick 的射线（长度 16）或玩家碰到交互区时按 A。按最后一条为真的旗标选择节目：无旗标 `woof`（含二选一，取消等于第二项）、`mick_scratch` → `woof_secret`、`mick_telepathy` → `woof_deal`、`got_dog_treats` → `woof_treats`、`gave_treats` → `woof_animals`。
+- `woof_treats` 在进入第三句时先设置 `gave_treats` 再移除钥匙物品 `DogTreats`，然后显示该句并等待确认。设置后立刻重算野外条件。
+- 南栅栏 `Cutscenes/Cutscene Area11`（`disappear_flag=gave_treats`）在给粮前不再是硬停。走进该区域播放 `mick_bark`：Mick 跳两下、转向玩家、两句文本，并把玩家沿北推 16 像素。推完后若仍在区域内，须先离开再进入才会再次触发。`gave_treats` 之后该边界失效，可以直接离开院子。
+- 文本为编译期去掉 DialogueBox 控制标签后的纯文本，显示在下屏；选项用上下键移动、A 确认、B 取消。`[PartyLead]` 在运行时替换为当前昵称。英文与简体中文写入 `ENCMIK01`。
+- 进场随机数是字段本地账本：草丛、鸟、蝴蝶、闪光和其它会漫步的 NPC 在首次与 400×240 视口重叠时按实例化顺序消耗抽取，使 Mick 自己的漫步等待与原版同一条流对齐。敌人生成器的 `randi` 只被消耗，不生成敌人。
 
 ## 数据与消费者
 
-`content/mick-treats.json` 为来源 IR；`tools/mick_treats.py` 编译 `data/podunk.encmick`（ENCMIK01）。贴图由真实 `tex3ds` 生成到 `graphics/world/mick/mick.t3x`。
+`content/mick-treats.json` 为来源 IR；`tools/mick_treats.py` 编译 `data/podunk.encmick`（ENCMIK01，演员记录 200 字节，九个段）。贴图由真实 `tex3ds` 生成到 `graphics/world/mick/mick.t3x`。
 
-资源目录能力 4 增加 MickTreats 角色，绑定位于 `content/extension-resource-catalog.json`。Session 钥匙获取策略为 DogTreats 绑定 `consumed_flag_id=gave_treats`，且 `gave_treats` 进入 `mutable_flags`。
+资源目录能力 4 的 MickTreats 角色仍指向该包。`gave_treats` 与 `mick_scratch` 进入会话 `mutable_flags`。钥匙获取策略仍是 DogTreats 绑定 `consumed_flag_id=gave_treats`。
 
 ## 明确边界
 
-- `woof` / `woof_secret` / `woof_deal` / `woof_animals` 与心灵感应树未接入。
-- `talkeremote: heart`、ButtonPrompt、NPC 碰撞体未接入。
-- 南栅栏 `mick_bark` 过场（原版往北推回 16 像素）未接入；给粮后门洞直接可过。
-- 野外未恢复房屋 DialogueBox 图集；下屏纯文本为登记差异。
-- Mick 贴图由 CI / `make 3dsx` 的 tex3ds 生成，不作为已审查二进制入库。
+- `woof_food` / `woof_key` 心灵感应树未接入，因此 `mick_telepathy` 不会被本切片设置。`talkeremote: heart` 被识别但不显示。ButtonPrompt 未接入。
+- 汪汪与呜咽只计数，不播放。下屏纯文本代替 DialogueBox 图集。
+- 漫步探路用脚底盒的 `StaticMotionSolver`，不是 `RayCast2D`。鸟离开屏幕后的再次 `_ready` 重抽不在首次重叠账本里。其它 `wander=true` 的 NPC 只贡献进场 `rand_range`，自己不走路、不说话。
+- 其余 Podunk NPC、音乐区和野外敌人仍是下一步。Mick 贴图由 CI / `make 3dsx` 的 tex3ds 生成，不作为已审查二进制入库。
 
 ## 验证
 
-新增解析器负向用例在 `tests/test_mick_treats.py` 与 `tests/mick_treats_tests.cpp`。日常不运行主机测试；本切片的 3DSX / CIA 由手动 `build` 模式 Actions 记录。模拟器与真机未验证。
+`python -m unittest tests.test_mick_treats` 通过（4 项）。`clang++ -fsyntax-only -std=c++17` 检查了 `runtime/mick_treats.cpp`、`runtime/field_scene.cpp` 与 `runtime/world.cpp`。未运行 `make test`，未做 3DSX / CIA。模拟器与真机未验证。

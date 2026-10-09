@@ -76,6 +76,8 @@ public:
     bool unpause_from_house();
     bool set_house_direction(Vec2 direction);
     bool warp_same_scene(Vec2 position,Vec2 direction);
+    // Scripted step used by mick_bark. Restarts the walk clip only when the pose changes.
+    bool script_move(Vec2 position,Vec2 direction,bool walking);
     bool house_paused()const{return persistent_player_&&persistent_player_.state_->house_paused_;}
     void attach_random(SourceRandom& random){random_=&random;}
     // Field scenes supply TileMap/static-body shapes; the source must outlive this world.

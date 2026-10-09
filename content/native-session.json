@@ -2402,6 +2402,7 @@
     "gave_treats",
     "got_asthma_spray",
     "got_dog_treats",
+    "mick_scratch",
     "mimmie_ask_key",
     "mimmie_door_opened",
     "minnie_door",
@@ -2445,7 +2446,7 @@
     "content/doll-round.json": "1e7a9607835e6f7d66ab8a0b7b6a54c96fe0c19ac05d926c16065b116aff144e",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
     "content/house-presents.json": "44b5bd75a4c5594d4b99052de23bcf54b67771153356bbefa3d26c63d0187792",
-    "content/mick-treats.json": "e1a56e8ca02e4c9e902d5116f600348ecd5662efe278e6ddf6ff14c40d03bd7f",
+    "content/mick-treats.json": "c7d8a37502b2cbf36ff75ef2d663cb4b60261fa4b5a162222e6a7dd6c3024cc1",
     "content/native-storage.json": "c4cb1436789597fe592bb50f6e807913e3747aa363adb24b5e7a2771a9f480e2"
   }
 }

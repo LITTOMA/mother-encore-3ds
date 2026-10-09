@@ -10,7 +10,7 @@
     },
     "data/podunk.encroom": {
       "bytes": 11536,
-      "sha256": "3e83acf8e9b145b026c8b219a2ca1bba75f8a9c7346d904b84e198b81218e1c8"
+      "sha256": "1c4c27408562da84500d428406525e7efcf52458544171ea0a2e390dc460a15e"
     },
     "data/world.enclinks": {
       "bytes": 528,
@@ -27,7 +27,7 @@
       "width": 1024
     }
   ],
-  "recipe_sha256": "0b7833ea1d554bc0ef1e128811cfebc6ac858913c7f2c17fd62b5288d9b5b258",
+  "recipe_sha256": "06cb7294558e7170efe1acdaaf491e181ca3b2e94052702c5bd6188a815bc447",
   "schema": 1,
   "sources": {
     "Graphics/Objects/Common/ATM Exterior.png": "23c78f2b0a1571203f74507b2e1e2271c7ecb0cf039d0852cfd087a108cb02aa",

@@ -1,10 +1,10 @@
 name: 3DS artifacts and manual full verification
 
-# Every main update builds downloadable console artifacts. Tests require an
-# explicit manual full run; PR updates and review changes never trigger tests.
+# Every branch push builds downloadable console artifacts for that commit.
+# Tests require an explicit manual full run. pull_request events do not start
+# this workflow.
 on:
   push:
-    branches: [main]
   workflow_dispatch:
     inputs:
       mode:

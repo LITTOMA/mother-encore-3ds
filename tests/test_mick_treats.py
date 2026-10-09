@@ -34,6 +34,10 @@ class MickTreatsTests(unittest.TestCase):
         self.assertEqual(self.ir['actor']['bark_extents'], [56.0, 8.0])
         self.assertTrue(any(c['op'] == 'Choice' for c in self.ir['commands']))
         self.assertTrue(any(c['op'] == 'SetFlag' and c['a'] == 'mick_scratch' for c in self.ir['commands']))
+        shown = [c for c in self.ir['commands'] if c['op'] == 'ShowText']
+        self.assertTrue(any(c['b'] == 0xFFFFFFFF for c in shown))
+        named = next(c for c in shown if c['b'] != 0xFFFFFFFF)
+        self.assertIn('SPEAKER', self.ir['texts'][named['b']]['translation_key'])
 
     def test_pack_round_trip(self):
         rows = mick.parse(self.blob)

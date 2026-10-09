@@ -114,7 +114,7 @@ bool MickData::load(const uint8_t*p,size_t n,std::string&error){
         bool ended=false;
         for(uint32_t pc=0;pc<g.count;++pc){const auto c=v.command(g.first+pc);
             switch(MickOpcode(c.opcode)){
-            case MickOpcode::ShowText:if(c.a>=v.count(S::Texts)||c.b||c.c||c.d)return fail("Mick pack ShowText rejected");break;
+            case MickOpcode::ShowText:if(c.a>=v.count(S::Texts)||(c.b!=kMickNone&&c.b>=v.count(S::Texts))||c.c||c.d)return fail("Mick pack ShowText rejected");break;
             case MickOpcode::AwaitText:case MickOpcode::End:if(c.a||c.b||c.c||c.d)return fail("Mick pack gate rejected");if(c.opcode==uint32_t(MickOpcode::End))ended=true;break;
             case MickOpcode::RemoveKeyItem:if(c.a!=a.item||c.b||c.c||c.d)return fail("Mick pack RemoveKeyItem rejected");break;
             case MickOpcode::SetFlag:if(!c.a||c.a>=v.count(S::Strings)||v.string(c.a).empty()||c.b>1||c.c||c.d)return fail("Mick pack SetFlag rejected");break;
@@ -198,7 +198,8 @@ bool MickRuntime::step(std::string&e){
         switch(MickOpcode(c.opcode)){
         case MickOpcode::ShowText:{
             anim_=2;const auto body=localized(view_.text(c.a),locale_);
-            if(!host_->show_text(body,e))return rejected();++pc_;break;}
+            const auto speaker=c.b==kMickNone?std::string_view{}:localized(view_.text(c.b),locale_);
+            if(!host_->show_text(speaker,body,e))return rejected();++pc_;break;}
         case MickOpcode::AwaitText:++pc_;state_=MickProgramState::WaitingText;e.clear();return true;
         case MickOpcode::RemoveKeyItem:if(!host_->remove_key_item(view_.string(c.a),e))return rejected();++pc_;break;
         case MickOpcode::SetFlag:if(!host_->set_flag(view_.string(c.a),c.b!=0,e))return rejected();++pc_;break;

@@ -82,6 +82,9 @@ public:
     bool before_physics(WalkInput& input);
     bool after_physics();
     bool idle_frame(double delta,bool back,bool accept=false,int choice=0);
+    // The dialogue box close finishes the pause. Complete alone keeps MickTalk.
+    bool finish_talk();
+    bool talk_accept_latched()const{return mick_ignore_accept_;}
     // A against Mick's live interact rectangle while walking. The matching spoken tree starts.
     bool try_mick(bool accept,std::string& error);
     bool mick_contact()const;

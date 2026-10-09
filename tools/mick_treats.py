@@ -3,8 +3,8 @@
 
 Build-time adapter only. Spoken trees, the south-fence bark, 4dir clips and the
 field-enter RNG ledger are data. Telepathy, the heart emote and other NPC
-movement stay out. DialogueBox graphics are not restored; phrase bodies are
-plain bottom-screen text with [PartyLead] substituted at runtime.
+movement stay out. Phrase text is printed by the existing world DialogueBox;
+[PartyLead] is substituted at runtime.
 Outputs: data/podunk.encmick and graphics/world/mick/mick.t3x.
 """
 from __future__ import annotations
@@ -336,6 +336,16 @@ def build(root=ROOT):
             if 'wait' in body:
                 require(isinstance(body['wait'], (int, float)) and body['wait'] > 0, 'Bad wait')
                 emit('Wait', a=float(body['wait']))
+            def show_text(phrase_body):
+                fields = {'a': intern_text(phrase_body['text'])}
+                speaker = phrase_body.get('name')
+                if speaker:
+                    require(isinstance(speaker, str) and speaker, 'Bad dialogue speaker')
+                    fields['b'] = intern_text(speaker)
+                else:
+                    fields['b'] = 0xFFFFFFFF
+                emit('ShowText', **fields)
+
             options = body.get('options')
             if options is not None:
                 require('text' in body and 'goto' not in body and not body.get('autoadvance'), 'Choice phrase shape changed')
@@ -346,7 +356,7 @@ def build(root=ROOT):
                         continue
                     visible.append((str(key), str(dest)))
                 require(len(visible) == 2 and cancel == visible[1][1], 'Choice cancel must select option 1')
-                emit('ShowText', a=intern_text(body['text']))
+                show_text(body)
                 slot = len(local_commands)
                 emit('Choice', a=0, b=0, c=0, d=0)
                 for _key, dest in visible:
@@ -355,7 +365,7 @@ def build(root=ROOT):
                                              c=intern_text(visible[1][0]), d=started[visible[1][1]])
                 return
             if 'text' in body:
-                emit('ShowText', a=intern_text(body['text']))
+                show_text(body)
                 if not body.get('autoadvance'):
                     emit('AwaitText')
             else:
@@ -378,6 +388,8 @@ def build(root=ROOT):
         for command in local_commands:
             if command['op'] == 'ShowText':
                 command['a'] += base
+                if command['b'] != 0xFFFFFFFF:
+                    command['b'] += base
             elif command['op'] == 'Choice':
                 command['a'] += base
                 command['c'] += base
@@ -632,7 +644,7 @@ def review(ir):
                     'collision': 'The foot rectangle moves with Mick and blocks the player; the sprite y-sorts on his live position',
                     'bark': 'Cutscene Area11 starts mick_bark and steps the player 16px north while gave_treats is clear',
                     'rng': 'Initial PCG state is after reviewed _ready draws; screen overlap then consumes butterfly, enemy and wander draws',
-                    'display': 'Field bottom-screen plain text and a two-line choice; house DialogueBox graphics are not restored'},
+                    'display': 'Spoken lines use the world DialogueBox: name tag, open/close, typewriter and continue cursor. Two options use the source option grid and arrow. A phrase without name closes the tag. showbox false closes the box before the shove'},
                 unsupported=['Telepathy thoughts woof_food and woof_key', 'talkeremote heart is recognized and not drawn',
                              'ButtonPrompt over Mick', 'Other Podunk NPC dialogue and walking',
                              'Birds reroll when they leave the screen', 'Enemy bodies and field music',

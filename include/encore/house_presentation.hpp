@@ -47,6 +47,14 @@ public:
  bool begin_dialogue(uint32_t first_segment,uint32_t segment_count,std::string_view player_name);
  void input(bool accept,bool cancel,bool defer_close=false,bool confirm_next=false);
  bool present_story_dialogue(uint32_t first,uint32_t count,std::string_view player_name);
+ // One DialogueBox phrase from outside the house programme. The same open,
+ // name tag, typewriter and continue cursor run. A repeated speaker appends;
+ // a new or missing name clears the text. An empty speaker closes the name tag.
+ bool present_plain(std::string_view speaker,std::string_view text);
+ // Typewriter only. physics_frame also turns house NPCs; the field must not.
+ bool advance_dialogue(double);
+ // Box, name and cursor clocks only. idle_frame also steps house NPC clips.
+ bool advance_chrome(double);
  // Source options append blank layout rows after text completion. They own
  // input until selection clears the text; the existing box stays open.
  void set_choice_rows(uint32_t rows){choice_rows_=rows;}
@@ -79,6 +87,7 @@ private:
  struct Line {std::u32string text;uint32_t first=0,segment=0;bool bullet=false,wait=false;std::vector<uint32_t>colors;};
  float font_line_height_=0;HouseLocaleResolver locale_resolver_=nullptr;void*locale_state_=nullptr;HouseGlyphAdvance glyph_advance_=nullptr;void*glyph_state_=nullptr;LocalizedHouseSpan localized_;std::string locale_error_;
  bool fail(const char*);bool append_segment(uint32_t);void close(bool sound=true);float width(std::string_view)const;float width(std::u32string_view)const;bool valid_text(std::string_view)const;
+ bool plain_glyphs(std::string_view)const;bool wrap_plain(std::string_view,std::vector<Line>&)const;
  HouseClip clip(HouseClipRole)const;void voice(HouseAudioKind,double=1);
  HouseView content_;BattleView font_;SourceRandom*random_=nullptr;std::vector<Npc>npcs_;std::vector<Line>lines_;std::vector<HouseAudioEvent>audio_;
  std::string player_name_,speaker_,voice_,bullet_;uint32_t npc_=house_no_index,first_segment_=0,segment_count_=0,segment_=0,loaded_line_=0,loaded_count_=0,visible_=0;
@@ -87,6 +96,6 @@ private:
  bool advance_requested_=false;
  bool(*text_value_)(void*,HouseTokenKind,std::string&)=nullptr;void*text_value_state_=nullptr;
  bool(*text_completion_)(void*)=nullptr;void*text_completion_state_=nullptr;
- bool active_=false,done_=true,closing_=false,finished_=false,stopped_=false,talking_=false,voice_playing_=false;const char*error_="";
+ bool active_=false,done_=true,closing_=false,finished_=false,stopped_=false,talking_=false,voice_playing_=false,external_=false,name_closing_=false;const char*error_="";
 };
 }

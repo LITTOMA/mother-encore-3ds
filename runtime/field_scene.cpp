@@ -330,6 +330,13 @@ bool FieldScene::after_physics(){
     if(!any&&phase_==FieldPhase::Walking){last_safe_position_=position;last_safe_direction_=world.player().direction;}
     return true;
 }
+bool FieldScene::finish_talk(){
+    if(phase_!=FieldPhase::MickTalk||mick_.state()!=MickProgramState::Complete)return fail("Field Mick talk is still running");
+    std::string why;
+    if(!refresh_conditions(why))return fail(why.empty()?"Field Mick condition refresh rejected":why.c_str());
+    if(!world.unpause_from_house())return fail("Field Mick unpause rejected");
+    error_.clear();phase_=FieldPhase::Walking;return true;
+}
 bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
     if(phase_==FieldPhase::Error)return false;
     if(!std::isfinite(delta)||delta<0||delta>1)return fail("Field idle time rejected");
@@ -349,11 +356,6 @@ bool FieldScene::idle_frame(double delta,bool back,bool accept,int choice){
             if((back||(accept&&!ignore))&&!mick_.confirm_choice(back,why))return fail(why.empty()?"Field Mick choice rejected":why.c_str());
         }else if(mick_.state()==MickProgramState::WaitingText&&accept&&!ignore){
             if(!mick_.advance_text(why))return fail(why.empty()?"Field Mick text advance rejected":why.c_str());
-        }
-        if(mick_.state()==MickProgramState::Complete){
-            if(!refresh_conditions(why))return fail(why.empty()?"Field Mick condition refresh rejected":why.c_str());
-            if(!world.unpause_from_house())return fail("Field Mick unpause rejected");
-            error_.clear();phase_=FieldPhase::Walking;
         }
     }
     const bool paused=world.house_paused();

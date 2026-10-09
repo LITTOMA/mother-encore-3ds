@@ -1,3 +1,4 @@
+#include "encore/crc32.hpp"
 #include "encore/mick_treats.hpp"
 #include <cstdio>
 #include <fstream>
@@ -24,7 +25,20 @@ int main(int argc,char** argv){
     CHECK(a.bark_center.x==-24.f&&a.bark_center.y==64.f&&a.bark_extents.x==56.f&&a.bark_extents.y==8.f);
     CHECK(view.count(MickSection::Programmes)>=6);CHECK(view.count(MickSection::Clips)>=28);CHECK(view.count(MickSection::Rng)>=1);
     CHECK(view.programme(a.bark_programme).kind==uint32_t(MickProgramKind::Bark));
-    auto truncated=bytes;truncated.pop_back();MickData bad;CHECK(!bad.load(truncated.data(),truncated.size(),error));
+    bool named=false,blank=false;
+    for(uint32_t i=0;i<view.count(MickSection::Commands);++i){const auto c=view.command(i);if(c.opcode!=uint32_t(MickOpcode::ShowText))continue;
+        if(c.b==kMickNone)blank=true;else{CHECK(c.b<view.count(MickSection::Texts));const auto speaker=view.text(c.b);CHECK(!view.string(speaker.en).empty()&&!view.string(speaker.zh).empty());named=true;}}
+    CHECK(named&&blank);
+    MickData bad;
+    auto speaker=bytes;uint32_t commands=0;bool patched=false;
+    for(uint32_t i=0;i<9;++i){const uint8_t* d=speaker.data()+64+i*16;const uint32_t kind=uint32_t(d[0])|uint32_t(d[1])<<8|uint32_t(d[2])<<16|uint32_t(d[3])<<24;
+        const uint32_t off=uint32_t(d[4])|uint32_t(d[5])<<8|uint32_t(d[6])<<16|uint32_t(d[7])<<24;
+        const uint32_t count=uint32_t(d[8])|uint32_t(d[9])<<8|uint32_t(d[10])<<16|uint32_t(d[11])<<24;if(kind!=6)continue;commands=count;
+        for(uint32_t n=0;n<count&&!patched;++n){uint8_t* row=speaker.data()+off+n*20;const uint32_t op=uint32_t(row[0])|uint32_t(row[1])<<8|uint32_t(row[2])<<16|uint32_t(row[3])<<24;if(op!=1)continue;row[8]=0xfe;row[9]=row[10]=row[11]=0xff;patched=true;}}
+    CHECK(patched&&commands);
+    const uint32_t crc=encore::crc32(speaker.data()+32,speaker.size()-32);speaker[16]=uint8_t(crc);speaker[17]=uint8_t(crc>>8);speaker[18]=uint8_t(crc>>16);speaker[19]=uint8_t(crc>>24);
+    CHECK(!bad.load(speaker.data(),speaker.size(),error));
+    auto truncated=bytes;truncated.pop_back();CHECK(!bad.load(truncated.data(),truncated.size(),error));
     auto magic=bytes;magic[7]='0';CHECK(!bad.load(magic.data(),magic.size(),error));
     auto stride=bytes;stride[64+3*16+12]=0;CHECK(!bad.load(stride.data(),stride.size(),error));
     return fails?1:0;

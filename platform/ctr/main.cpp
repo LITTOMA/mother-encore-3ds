@@ -1,4 +1,5 @@
 #include <atomic>
+#include <cmath>
 #include <malloc.h>
 #include "encore/encounter_residency.hpp"
 #include <array>
@@ -589,7 +590,8 @@ std::unique_ptr<upstream::FieldScene> field_scene;
 OpeningActorRenderer field_actor;
 FieldRenderer field_renderer;
 encore::ctr::LoadingSpriteSheet mick_sheet=nullptr;
-std::string mick_dialogue;
+float field_choice_x=0,field_choice_y=0,field_choice_from_x=0,field_choice_from_y=0;
+double field_choice_t=1,field_choice_clock=0;uint32_t field_choice_sel=0;bool field_choice_shown=false;
 // Temporary FieldScene* while binding Mick before field_scene ownership commits.
 upstream::FieldScene* mick_bind_target=nullptr;
 upstream::FieldScene* mick_host_field(){return field_scene?field_scene.get():mick_bind_target;}
@@ -625,14 +627,15 @@ public:
  bool play_sound(std::string_view,std::string& e)override{
   ++door_sound_requests;e.clear();return true;
  }
- bool show_text(std::string_view body,std::string&e)override{
+ bool show_text(std::string_view speaker,std::string_view body,std::string&e)override{
   std::string out(body);
   const std::string lead=session_state.characters.empty()?std::string("Ninten"):session_state.characters[0].nickname;
   for(size_t at=0;(at=out.find("[PartyLead]",at))!=std::string::npos;at+=lead.size())out.replace(at,11,lead);
-  mick_dialogue=std::move(out);e.clear();return true;
+  if(!gameplay_scene||!gameplay_scene->presentation.present_plain(speaker,out)){e=gameplay_scene?gameplay_scene->presentation.error():"World dialogue box is not ready";return false;}
+  e.clear();return true;
  }
 } mick_effects;
-void release_mick_graphics(){if(mick_sheet){encore::ctr::loading_sprite_sheet_free(mick_sheet);mick_sheet=nullptr;}mick_dialogue.clear();}
+void release_mick_graphics(){if(mick_sheet){encore::ctr::loading_sprite_sheet_free(mick_sheet);mick_sheet=nullptr;}field_choice_shown=false;}
 bool load_mick_graphics(std::string& error){
  if(mick_sheet)return true;
  if(!mick_data.view().valid()&&!mick_data.load_file(resource_path(ResourceRole::MickTreats).c_str(),error))return false;
@@ -1020,7 +1023,8 @@ void process_scene_door_events(){
 void release_field_graphics(){wait_for_gpu_idle();field_renderer.free();field_actor.free();release_mick_graphics();}
 void release_house_graphics(){
     cancel_battle_prewarm();wait_for_gpu_idle();
-    opening_actor.free();house_renderer.free();present_renderer.free();room_draw_items.clear();house_graphics_ready=false;
+    // The field draws the same DialogueBox, so its ninepatches stay resident.
+    opening_actor.free();present_renderer.free();room_draw_items.clear();house_graphics_ready=false;
 }
 bool load_field_resources(std::string& error){
     using namespace upstream;
@@ -1052,7 +1056,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     if(!loading.finish()){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
-    session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();mick_dialogue.clear();
+    session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();field_choice_shown=false;
     dialogue_choices.close();save_menu.close();storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;
     error.clear();return true;
@@ -1458,14 +1462,7 @@ void field_bottom(){
     switch(field_scene->phase()){
     case FieldPhase::Walking:scope="Native movement + TileMap collision\nA near Mick: talk    south fence before treats: bark\nOther NPCs, enemies and music are not ported";break;
     case FieldPhase::DoorAwaitIdle:case FieldPhase::Transition:scope="Original door transition";break;
-    case FieldPhase::MickTalk:{
-        scope=mick_dialogue.empty()?"Mick":mick_dialogue;
-        if(field_scene->mick().waiting_choice()){
-            scope+="\n";
-            for(uint32_t i=0;i<2;++i){scope+=i==field_scene->mick().choice_selection()?"\n> ":"\n  ";scope+=std::string(field_scene->mick().choice_text(i));}
-            scope+="\nUp/Down: choose   A: confirm   B: cancel";
-        }else scope+="\nA: continue";
-        break;}
+    case FieldPhase::MickTalk:scope=field_scene->mick().waiting_choice()?"Dialogue\nLeft/Right: choose    A: confirm    B: cancel":"Dialogue";break;
     default:scope=field_scene->error();break;
     }
     if(!field_status.empty()&&field_scene->phase()!=FieldPhase::MickTalk)scope=field_status;
@@ -1478,6 +1475,20 @@ void field_bottom(){
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
     text(5,14,212,0.27f,audio_status.empty()?"Audio backend initialized (output unverified)":audio_status,muted,292);
+}
+void field_dialogue_overlay(){
+    const auto bars=world_blackbars.pose(float(view_width),float(view_height));
+    for(const auto& bar:bars.bars)if(bar.h>0)BattleRenderer::draw_rect(view_x()+bar.x,view_y()+bar.y,bar.w,bar.h,bars.color);
+    const auto canvas=house_data.view().parameter(upstream::HouseParameter::DisplayReference);
+    const auto pose=gameplay_scene->presentation.dialogue_pose();
+    if(!house_renderer.draw_dialogue(pose,battle_renderer,float(view_width)-canvas.x,float(view_height)-canvas.y,view_x(),view_y())){field_status="World dialogue renderer rejected checked pose";return;}
+    if(!pose.visible||field_scene->phase()!=upstream::FieldPhase::MickTalk||!field_scene->mick().waiting_choice()||!gameplay_scene->presentation.dialogue_finished()||gameplay_scene->presentation.dialogue_closing())return;
+    if(choice_data.groups().empty()||choice_data.groups().front().options.size()<2){field_status="Dialogue choice layout is not loaded";return;}
+    const double loop=choice_data.arrow_loop_seconds();uint32_t frame=0;const double anim=loop>0?std::fmod(field_choice_clock,loop):0;
+    for(const auto& key:choice_data.arrow_keys())if(key.time<=anim+1e-12)frame=key.frame;
+    const float box_x=view_x()+pose.box.x+pose.anchor.x*(float(view_width)-canvas.x),box_y=view_y()+pose.box.y+pose.anchor.y*(float(view_height)-canvas.y);
+    const auto left=std::string(field_scene->mick().choice_text(0)),right=std::string(field_scene->mick().choice_text(1));
+    if(!choice_renderer.draw_pair(left,right,field_choice_x,field_choice_y,frame,battle_renderer,box_x,box_y))field_status="Dialogue choice renderer rejected pose";
 }
 void error_console(const std::string& error){
     u16 width=0,height=0;
@@ -1620,6 +1631,7 @@ int main(int argc,char** argv){
                         if(!ok)field_status=field_scene->error();
                         else if(!why.empty())field_status=why;
                     }
+                    if(ok&&field_scene->phase()==upstream::FieldPhase::MickTalk&&!gameplay_scene->presentation.advance_dialogue(double(float(time_scale/60.0))))field_status=gameplay_scene->presentation.error();
                     if(!ok)field_status=field_scene->error();
                 }
                 accumulator-=1000;continue;
@@ -1636,9 +1648,41 @@ int main(int argc,char** argv){
         uint32_t requested_route=upstream::WorldLinksData::kNotFound;
         if(in_field()){
             if(world_visible&&field_scene->world.healthy())field_scene->world.idle_frame(dt);
-            const int mick_choice=((down&KEY_DDOWN)?1:0)-((down&KEY_DUP)?1:0);
-            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,world_input&&(down&KEY_B)!=0,world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse),mick_choice))field_status=field_scene->error();
-            if(field_scene->phase()==upstream::FieldPhase::Walking){mick_dialogue.clear();if(!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();}
+            auto& box=gameplay_scene->presentation;
+            bool text_accept=false;int choice_delta=0;
+            const bool back=world_input&&(down&KEY_B)!=0;
+            if(world_visible&&field_scene->phase()==upstream::FieldPhase::MickTalk){
+                const bool latched=field_scene->talk_accept_latched();
+                const bool accept=!latched&&world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse);
+                const bool choosing=field_scene->mick().waiting_choice()&&box.dialogue_finished()&&!box.dialogue_closing();
+                if(choosing)box.set_choice_rows(choice_data.trailing_blank_lines());else box.set_choice_rows(0);
+                if(box.dialogue_active()&&!box.dialogue_closing()&&!box.dialogue_finished())box.input(accept,!latched&&back);
+                else if(choosing){choice_delta=((down&KEY_DRIGHT)?1:0)-((down&KEY_DLEFT)?1:0);text_accept=accept;}
+                else if(field_scene->mick().state()==upstream::MickProgramState::WaitingText&&box.dialogue_finished()){box.input(accept,false,true,true);text_accept=box.take_dialogue_advance();}
+            }else box.set_choice_rows(0);
+            const bool choice_typing=field_scene->phase()==upstream::FieldPhase::MickTalk&&field_scene->mick().waiting_choice()&&!box.dialogue_finished();
+            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,back&&!choice_typing,text_accept,choice_delta))field_status=field_scene->error();
+            if(field_scene->phase()==upstream::FieldPhase::MickTalk){
+                const auto state=field_scene->mick().state();
+                if((state==upstream::MickProgramState::WaitingMotion||state==upstream::MickProgramState::Complete)&&box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();
+                if(world_visible&&!box.advance_chrome(dt))field_status=box.error();
+                if(state==upstream::MickProgramState::Complete&&!box.dialogue_active()&&!field_scene->finish_talk())field_status=field_scene->error();
+                const bool choosing=state==upstream::MickProgramState::WaitingChoice&&box.dialogue_finished()&&!box.dialogue_closing();
+                if(choosing&&!choice_data.groups().empty()&&choice_data.groups().front().options.size()>=2){
+                    const auto& opts=choice_data.groups().front().options;const uint32_t sel=std::min(field_scene->mick().choice_selection(),1u);
+                    const float tx=opts[sel].rect.x,ty=opts[sel].rect.y;
+                    if(!field_choice_shown||sel!=field_choice_sel){
+                        if(!field_choice_shown){field_choice_x=field_choice_from_x=tx;field_choice_y=field_choice_from_y=ty;field_choice_t=1;}
+                        else{field_choice_from_x=field_choice_x;field_choice_from_y=field_choice_y;field_choice_t=0;}
+                        field_choice_sel=sel;field_choice_shown=true;
+                    }
+                    const double move=choice_data.arrow_move_seconds();if(move>0)field_choice_t=std::min(1.0,field_choice_t+dt/move);
+                    const float remain=float(1-field_choice_t),ease=1.f-remain*remain*remain*remain;
+                    field_choice_x=field_choice_from_x+(tx-field_choice_from_x)*ease;field_choice_y=field_choice_from_y+(ty-field_choice_from_y)*ease;field_choice_clock+=dt;
+                }else field_choice_shown=false;
+            }else field_choice_shown=false;
+            box.take_audio_events();
+            if(field_scene->phase()==upstream::FieldPhase::Walking&&!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();
             door_sound_requests+=field_scene->take_sounds().size();
             requested_route=field_scene->take_route();
         }else{
@@ -1864,8 +1908,8 @@ int main(int argc,char** argv){
         else if(!gameplay_scene->world.end_scene_frame())house_error=gameplay_scene->world.error();
         // uiManager owns bars for the entire dialogue lifetime, including
         // showbox:false movement phrases. Closing text alone is not an end.
-        const bool bars_open=!in_field()&&world_visible&&!in_battle()&&(field_equipment_menu.visible()||gameplay_scene->world.cutscene_active()||
-            (gameplay_scene->presentation.dialogue_active()&&!gameplay_scene->presentation.dialogue_closing()));
+        const bool dialogue_bars=gameplay_scene->presentation.dialogue_active()&&!gameplay_scene->presentation.dialogue_closing();
+        const bool bars_open=world_visible&&!in_battle()&&(dialogue_bars||(!in_field()&&(field_equipment_menu.visible()||gameplay_scene->world.cutscene_active())));
         if(!world_blackbars.update(bars_open,dt))house_error="World blackbar animation rejected";
         if(audio_player.available()){
             // A parked House owner behind a field must not replay its request history.
@@ -1886,7 +1930,7 @@ int main(int argc,char** argv){
         record_entry_presented();locale_font.begin_frame();storage_counter_font.begin_frame();field_counter_font.begin_frame();if(draw_introduction&&!introduction_renderer.begin_frame())introduction_render_error="Introduction font frame ownership rejected";
         PROFILE_MARK(1);
         C2D_TargetClear(top,loading_indicator.background_color());C2D_TargetClear(bottom,dark);
-        C2D_SceneBegin(top);if(draw_house)house_top();if(draw_field)field_top();PROFILE_MARK(2);
+        C2D_SceneBegin(top);if(draw_house)house_top();if(draw_field){field_top();field_dialogue_overlay();}PROFILE_MARK(2);
         if(in_battle())battle_top();
         else if(draw_house){
             const auto canvas=house_data.view().parameter(upstream::HouseParameter::DisplayReference);

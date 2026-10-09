@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "e89350120d8b7e832ff860027c0d1845470b230e0388fdff27ada8cd67118e08",
+  "ir_sha256": "be999c034bf85e9f14e879926dcbad1fe1c7550346bba4350c1eb36be9065913",
   "sources": {
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
     "Data/Dialogue/Podunk/cutscenes/mick_bark.yaml": "c9ae2bd1e5c0078c96e54fc27d63e9cba60fbc9f8a49e5ec23787ab7c0be619d",
@@ -92,7 +92,7 @@
     "collision": "The foot rectangle moves with Mick and blocks the player; the sprite y-sorts on his live position",
     "bark": "Cutscene Area11 starts mick_bark and steps the player 16px north while gave_treats is clear",
     "rng": "Initial PCG state is after reviewed _ready draws; screen overlap then consumes butterfly, enemy and wander draws",
-    "display": "Field bottom-screen plain text and a two-line choice; house DialogueBox graphics are not restored"
+    "display": "Spoken lines use the world DialogueBox: name tag, open/close, typewriter and continue cursor. Two options use the source option grid and arrow. A phrase without name closes the tag. showbox false closes the box before the shove"
   },
   "unsupported": [
     "Telepathy thoughts woof_food and woof_key",

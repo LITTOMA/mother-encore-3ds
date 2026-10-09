@@ -180,6 +180,13 @@
       }
     },
     {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      }
+    },
+    {
       "translation_key": "DIALOGUE_PODUNK_WOOF_3",
       "localized": {
         "en": "[Ninten] gave Mick a good scratch!",
@@ -229,6 +236,13 @@
       }
     },
     {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_SECRET_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      }
+    },
+    {
       "translation_key": "DIALOGUE_PODUNK_WOOF_DEAL_0",
       "localized": {
         "en": "(I can smell some Dog Treats in the basement.)\n(If you fetch them for me, I'll let you go.)",
@@ -236,10 +250,24 @@
       }
     },
     {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_DEAL_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      }
+    },
+    {
       "translation_key": "DIALOGUE_PODUNK_WOOF_TREATS_0",
       "localized": {
         "en": "Woof!\n(Woah, are those Dog Treats? Give them to me!)",
         "zh_Hans_CN": "汪！\n（哇，那是狗狗零食？快把它们给我！）"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_TREATS_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
       }
     },
     {
@@ -264,10 +292,24 @@
       }
     },
     {
+      "translation_key": "DIALOGUE_PODUNK_WOOF_ANIMALS_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
+      }
+    },
+    {
       "translation_key": "DIALOGUE_PODUNK_CUTSCENES_MICK_BARK_0",
       "localized": {
         "en": "Woof woof!",
         "zh_Hans_CN": "汪汪！"
+      }
+    },
+    {
+      "translation_key": "DIALOGUE_PODUNK_CUTSCENES_MICK_BARK_SPEAKER_Mick",
+      "localized": {
+        "en": "Mick",
+        "zh_Hans_CN": "米克"
       }
     },
     {
@@ -285,25 +327,28 @@
     },
     {
       "op": "ShowText",
-      "a": 0
+      "a": 0,
+      "b": 1
     },
     {
       "op": "Choice",
-      "a": 5,
+      "a": 6,
       "b": 3,
-      "c": 6,
+      "c": 7,
       "d": 11
     },
     {
       "op": "ShowText",
-      "a": 1
+      "a": 2,
+      "b": 4294967295
     },
     {
       "op": "AwaitText"
     },
     {
       "op": "ShowText",
-      "a": 2
+      "a": 3,
+      "b": 1
     },
     {
       "op": "AwaitText"
@@ -315,7 +360,8 @@
     },
     {
       "op": "ShowText",
-      "a": 3
+      "a": 4,
+      "b": 1
     },
     {
       "op": "AwaitText"
@@ -329,7 +375,8 @@
     },
     {
       "op": "ShowText",
-      "a": 4
+      "a": 5,
+      "b": 1
     },
     {
       "op": "AwaitText"
@@ -343,7 +390,8 @@
     },
     {
       "op": "ShowText",
-      "a": 7
+      "a": 8,
+      "b": 9
     },
     {
       "op": "AwaitText"
@@ -353,7 +401,8 @@
     },
     {
       "op": "ShowText",
-      "a": 8
+      "a": 10,
+      "b": 11
     },
     {
       "op": "AwaitText"
@@ -363,14 +412,16 @@
     },
     {
       "op": "ShowText",
-      "a": 9
+      "a": 12,
+      "b": 13
     },
     {
       "op": "AwaitText"
     },
     {
       "op": "ShowText",
-      "a": 10
+      "a": 14,
+      "b": 4294967295
     },
     {
       "op": "AwaitText"
@@ -386,7 +437,8 @@
     },
     {
       "op": "ShowText",
-      "a": 11
+      "a": 15,
+      "b": 13
     },
     {
       "op": "AwaitText"
@@ -400,7 +452,8 @@
     },
     {
       "op": "ShowText",
-      "a": 12
+      "a": 16,
+      "b": 17
     },
     {
       "op": "AwaitText"
@@ -422,14 +475,16 @@
     },
     {
       "op": "ShowText",
-      "a": 13
+      "a": 18,
+      "b": 19
     },
     {
       "op": "AwaitText"
     },
     {
       "op": "ShowText",
-      "a": 14
+      "a": 20,
+      "b": 4294967295
     },
     {
       "op": "AwaitText"

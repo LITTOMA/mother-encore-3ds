@@ -63,7 +63,7 @@ private:
     std::vector<uint8_t> bytes_;
 };
 
-// Platform owns key-item removal, sounds and bottom-screen text. FieldScene owns flags and motion.
+// Platform owns key-item removal, sounds and the world dialogue box. FieldScene owns flags and motion.
 class MickHost {
 public:
     virtual ~MickHost()=default;
@@ -72,7 +72,7 @@ public:
     virtual bool flag(std::string_view,bool&,std::string&)=0;
     virtual bool set_flag(std::string_view,bool,std::string&)=0;
     virtual bool remove_key_item(std::string_view,std::string&)=0;
-    virtual bool show_text(std::string_view,std::string&)=0;
+    virtual bool show_text(std::string_view speaker,std::string_view body,std::string&)=0;
     virtual bool play_sound(std::string_view,std::string&)=0;
 };
 enum class MickProgramState:uint8_t {Idle,WaitingText,WaitingChoice,WaitingMotion,Complete,Failed};

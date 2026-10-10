@@ -138,4 +138,7 @@ private:
     bool wander_armed_=false,looking_=false,probing_=false;
     uint32_t anim_=0,choice_index_=0,choice_text_[2]{},choice_pc_[2]{};
 };
+// text_tools.gd replaces [ui_*], [PartyLead] and [Ninten] before the box draws.
+// The three button labels are the caller's checked device glyphs.
+bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error);
 }

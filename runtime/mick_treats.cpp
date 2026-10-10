@@ -325,4 +325,21 @@ bool MickRuntime::simulate(float dt,Vec2 player,Vec2 camera,Vec2 view,bool pause
     if(state_==MickProgramState::Failed)return false;
     e.clear();return true;
 }
+bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error){
+    if(name.empty()||accept.empty()||toggle.empty()||select.empty()){error="Dialogue tag label is empty";return false;}
+    std::string out;out.reserve(text.size());
+    for(size_t i=0;i<text.size();){
+        if(text[i]!='['){out.push_back(text[i]);++i;continue;}
+        const auto end=text.find(']',i);if(end==std::string::npos){error="Unclosed dialogue tag";return false;}
+        std::string tag=text.substr(i+1,end-i-1);for(char& c:tag)if(c>='A'&&c<='Z')c=char(c-'A'+'a');
+        std::string_view replacement;
+        if(tag=="ui_accept")replacement=accept;
+        else if(tag=="ui_toggle")replacement=toggle;
+        else if(tag=="ui_select")replacement=select;
+        else if(tag=="partylead"||tag=="ninten")replacement=name;
+        else{error="Unreviewed dialogue tag";return false;}
+        out.append(replacement.data(),replacement.size());i=end+1;
+    }
+    text.swap(out);error.clear();return true;
+}
 }

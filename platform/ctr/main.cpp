@@ -630,7 +630,8 @@ public:
  bool show_text(std::string_view speaker,std::string_view body,std::string&e)override{
   std::string out(body);
   const std::string lead=session_state.characters.empty()?std::string("Ninten"):session_state.characters[0].nickname;
-  for(size_t at=0;(at=out.find("[PartyLead]",at))!=std::string::npos;at+=lead.size())out.replace(at,11,lead);
+  // CTR A confirms, B runs, and START opens the menu. Nintendo-style Start is "+".
+  if(!upstream::resolve_dialogue_tags(out,lead,"A","B","+",e))return false;
   if(!gameplay_scene||!gameplay_scene->presentation.present_plain(speaker,out)){e=gameplay_scene?gameplay_scene->presentation.error():"World dialogue box is not ready";return false;}
   e.clear();return true;
  }

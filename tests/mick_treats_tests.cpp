@@ -45,6 +45,11 @@ int main(int argc,char** argv){
     CHECK(chinese.advance_text(error)&&host.speaker.empty()&&host.body=="看样子米克有事情和你说。");
     MickRuntime english;CHECK(english.initialize(view,host,error));
     CHECK(english.start_bark(error)&&host.body=="Woof woof!");
+    std::string tags="（而且，按住[ui_toggle]后再按下[ui_accept]来使用这个能力的念头更是想都别想。）";
+    CHECK(resolve_dialogue_tags(tags,"宁宁","A","B","+",error)&&tags=="（而且，按住B后再按下A来使用这个能力的念头更是想都别想。）");
+    std::string select_line="按[ui_select]并让[Ninten]选择";
+    CHECK(resolve_dialogue_tags(select_line,"宁宁","A","B","+",error)&&select_line=="按+并让宁宁选择");
+    std::string unknown="[ui_cancel]";CHECK(!resolve_dialogue_tags(unknown,"宁宁","A","B","+",error));
     MickData bad;
     auto speaker=bytes;uint32_t commands=0;bool patched=false;
     for(uint32_t i=0;i<9;++i){const uint8_t* d=speaker.data()+64+i*16;const uint32_t kind=uint32_t(d[0])|uint32_t(d[1])<<8|uint32_t(d[2])<<16|uint32_t(d[3])<<24;

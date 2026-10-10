@@ -653,6 +653,7 @@ bool bind_field_mick(upstream::FieldScene& scene,std::string& error){
  if(!scene.bind_mick(mick_data.view(),mick_effects,error))return false;
  scene.mick().set_locale(locale_selection.code());return true;
 }
+std::string field_status;
 void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y){
  if(!mick_sheet||!field_scene||!field_scene->mick().ready())return;
  const auto& mick=field_scene->mick();const auto view=mick.view();const auto t=view.texture();
@@ -670,8 +671,12 @@ void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y
  // Same depth as FieldRenderer tiles and the player; a higher depth always covers the player.
  C2D_DrawImageAt({image.tex,&sub},std::floor(center.x-camera_x+offset_x-float(fw)*.5f+.5f),
                  std::floor(center.y-camera_y+offset_y-float(fh)*.5f+.5f),0.f);
+ if(!house_prompt_renderer.ready()){field_status="Field prompt art is not loaded";return;}
+ const auto player=field_scene->world.player();const int choice=startup_settings_data.prompt_index(session_state.settings.button_prompts);
+ upstream::HousePromptPose pose;std::string why;
+ const bool paused=field_scene->phase()!=upstream::FieldPhase::Walking||field_scene->world.house_paused();
+ if(choice<0||!upstream::evaluate_npc_button_prompt(house_prompt_data,uint32_t(choice),player.position,player.direction,paused,player.crouch,mick.position(),mick.interact_center(),view.actor().interact_extents,pose,why)||!house_prompt_renderer.draw(pose,camera_x-offset_x,camera_y-offset_y))field_status=why.empty()?"Field prompt renderer rejected checked pose":why;
 }
-std::string field_status;
 bool in_field(){return field_scene!=nullptr;}
 bool bind_house_routes(upstream::HouseRuntime& house,std::string& error){
     using namespace upstream;

@@ -29,6 +29,22 @@ int main(int argc,char** argv){
     for(uint32_t i=0;i<view.count(MickSection::Commands);++i){const auto c=view.command(i);if(c.opcode!=uint32_t(MickOpcode::ShowText))continue;
         if(c.b==kMickNone)blank=true;else{CHECK(c.b<view.count(MickSection::Texts));const auto speaker=view.text(c.b);CHECK(!view.string(speaker.en).empty()&&!view.string(speaker.zh).empty());named=true;}}
     CHECK(named&&blank);
+    struct Host:MickHost{
+        std::string speaker,body;
+        bool validate_flag(std::string_view,std::string& e)override{e.clear();return true;}
+        bool validate_item(std::string_view,std::string& e)override{e.clear();return true;}
+        bool flag(std::string_view,bool& on,std::string& e)override{on=false;e.clear();return true;}
+        bool set_flag(std::string_view,bool,std::string& e)override{e.clear();return true;}
+        bool remove_key_item(std::string_view,std::string& e)override{e.clear();return true;}
+        bool show_text(std::string_view s,std::string_view b,std::string& e)override{speaker=std::string(s);body=std::string(b);e.clear();return true;}
+        bool play_sound(std::string_view,std::string& e)override{e.clear();return true;}
+    } host;
+    MickRuntime chinese;chinese.set_locale("zh_Hans_CN");
+    CHECK(chinese.initialize(view,host,error));
+    CHECK(chinese.start_bark(error)&&host.speaker=="米克"&&host.body=="汪汪！");
+    CHECK(chinese.advance_text(error)&&host.speaker.empty()&&host.body=="看样子米克有事情和你说。");
+    MickRuntime english;CHECK(english.initialize(view,host,error));
+    CHECK(english.start_bark(error)&&host.body=="Woof woof!");
     MickData bad;
     auto speaker=bytes;uint32_t commands=0;bool patched=false;
     for(uint32_t i=0;i<9;++i){const uint8_t* d=speaker.data()+64+i*16;const uint32_t kind=uint32_t(d[0])|uint32_t(d[1])<<8|uint32_t(d[2])<<16|uint32_t(d[3])<<24;

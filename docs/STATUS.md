@@ -34,7 +34,7 @@ Minnie 在玩偶胜利后的原版 Storage 选择已接入双栏仓库：帽子�
 
 Doll 的正常战斗画面已接入受检纹理后端：GPU 直接采样两层径向背景并重建有限调色板混合，不生成整帧 CPU 颜色图。后续性能修复将来源图像的旋转同色区域证明接入纹理消费者，直接输出两层原始索引区段，取消该路径的逐条带递归证书和 576 KB 残差表；帧常量及代表采样坐标预先缓存，统计按行汇总。下屏显示 `GPU index runs`、实际绘制区段、次数、CPU 准备 / 提交耗时和采样数。原始缩放、时间、调色板及边界精确后备保持原有行为，Pillow 路径沿用既有后端。真实 Doll 资源的私有主机计量已见 CPU 耗时下降；新构建的模拟器帧率和真机表现尚未验收，见 [战斗资源驻留](BATTLE_RESIDENCY_CHECKPOINT.md)。
 
-Podunk 室外由 `data/podunk.encmap`、`data/podunk.encroom` 与 `data/world.enclinks` 承载，构建时直接从固定上游场景编译；资源目录升至能力 4（含 HousePresents 与 MickTreats）。Mick（npc21）会在院子里漫步，并用已审查的 woof 树与南栅栏 `mick_bark` 推回完成给粮出图；台词画在上屏原版对话框里（见 [Mick](MICK_TREATS.md)）。进场随机数账本已按 400×240 视口消耗草丛、鸟、蝴蝶、闪光和其它漫步 NPC 的首次抽取，但敌人不生成、其它 NPC 不走路。其余 NPC 对话、音乐、过场区域、建筑入口和物件交互仍为开发边界或下屏提示。门音效与场内音乐尚未复现。模拟器与真机均未验证，详见 [Podunk 室外场景](PODUNK_FIELD.md)。
+Podunk 室外由 `data/podunk.encmap`、`data/podunk.encroom` 与 `data/world.enclinks` 承载，构建时直接从固定上游场景编译；资源目录升至能力 4（含 HousePresents 与 MickTreats）。Mick（npc21）会在院子里漫步，并用已审查的 woof 树与南栅栏 `mick_bark` 推回完成给粮出图；台词画在上屏原版对话框里，并使用标题画面选中的英文或简体中文（见 [Mick](MICK_TREATS.md)）。进场随机数账本已按 400×240 视口消耗草丛、鸟、蝴蝶、闪光和其它漫步 NPC 的首次抽取，但敌人不生成、其它 NPC 不走路。其余 NPC 对话、音乐、过场区域、建筑入口和物件交互仍为开发边界或下屏提示。门音效与场内音乐尚未复现。模拟器与真机均未验证，详见 [Podunk 室外场景](PODUNK_FIELD.md)。
 
 ## 未完成项
 

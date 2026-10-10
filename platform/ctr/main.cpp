@@ -649,8 +649,8 @@ bool load_mick_graphics(std::string& error){
 }
 bool bind_field_mick(upstream::FieldScene& scene,std::string& error){
  if(!mick_data.view().valid()&&!mick_data.load_file(resource_path(ResourceRole::MickTreats).c_str(),error))return false;
- scene.mick().set_locale(locale_selection.code());
- return scene.bind_mick(mick_data.view(),mick_effects,error);
+ if(!scene.bind_mick(mick_data.view(),mick_effects,error))return false;
+ scene.mick().set_locale(locale_selection.code());return true;
 }
 void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y){
  if(!mick_sheet||!field_scene||!field_scene->mick().ready())return;

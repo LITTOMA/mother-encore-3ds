@@ -145,7 +145,8 @@ bool MickRuntime::initialize(MickView view,MickHost&host,std::string&e){
     if(!host.validate_flag(view.string(a.require_flag),e)||!host.validate_flag(view.string(a.consume_flag),e)||!host.validate_item(view.string(a.item),e))return false;
     for(uint32_t i=0;i<view.count(MickSection::Programmes);++i){const auto g=view.programme(i);if(g.flag&&!host.validate_flag(view.string(g.flag),e))return false;
         for(uint32_t pc=0;pc<g.count;++pc){const auto c=view.command(g.first+pc);if(c.opcode==uint32_t(MickOpcode::SetFlag)&&!host.validate_flag(view.string(c.a),e))return false;}}
-    *this=MickRuntime{};view_=view;host_=&host;ready_=true;
+    const std::string locale=locale_;
+    *this=MickRuntime{};locale_=locale;view_=view;host_=&host;ready_=true;
     spawn_=position_=a.position;facing_=a.initial_direction;destination_=position_;
     rng_.set_state((uint64_t(a.rng_hi)<<32)|a.rng_lo);
     rng_done_.assign(view.count(MickSection::Rng),0);

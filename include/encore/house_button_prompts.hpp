@@ -31,4 +31,7 @@ struct HousePromptObservation {
 };
 struct HousePromptPose {bool visible=false;uint32_t target=house_no_index;Vec2 position{};};
 bool evaluate_house_button_prompt(const HouseButtonPromptData&,uint32_t choice,const HousePromptObservation&,HousePromptPose&,std::string&);
+// npc.tscn ButtonPrompt is not overridden on Mick. Every reviewed NPC target
+// must share one offset and category; that contract places the static icon.
+bool evaluate_npc_button_prompt(const HouseButtonPromptData&,uint32_t choice,Vec2 player,Vec2 direction,bool paused,bool crouching,Vec2 actor_position,Vec2 interact_center,Vec2 interact_extents,HousePromptPose&,std::string&);
 }

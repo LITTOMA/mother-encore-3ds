@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "kind": "encore.present-audio.source-binding",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "license_review": "Original upstream gift-box sound used in this game port under upstream LICENSE; not relicensed as MIT.",
+  "assets": [
+    {
+      "source": "Audio/Sound effects/Gift Box.mp3",
+      "identity": {"kind": "stable", "value": 1403},
+      "pcm": "sound/effects/gift-box.pcm",
+      "gain_db": 0.0,
+      "conversion": null
+    }
+  ]
+}

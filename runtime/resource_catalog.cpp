@@ -33,6 +33,8 @@ const char* suffix(uint32_t role) {
     case ResourceRole::FieldEquipment:return ".encfield";
     case ResourceRole::FieldRoom:return ".encroom";case ResourceRole::FieldMap:return ".encmap";
     case ResourceRole::WorldLinks:return ".enclinks";
+    case ResourceRole::HousePresents:return ".encpresent";
+    case ResourceRole::MickTreats:return ".encmick";
     }return nullptr;
 }
 bool canonical(const std::string& path) {
@@ -58,9 +60,9 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
     auto fail=[&](const char* message){error=message;return false;};
     if(!p||n<60||n>catalog_limit)return fail("Resource catalog size rejected");
     const auto capability=u32(p+20);
-    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||(capability!=1&&capability!=2)||u32(p+24)||u32(p+28))
+    if(std::memcmp(p,"ENCRSC01",8)||u32(p+8)!=1||u32(p+12)!=n||capability<1||capability>4||u32(p+24)||u32(p+28))
         return fail("Resource catalog schema/size/capability/reserved rejected");
-    const uint32_t max_role=capability==1?30:33;
+    const uint32_t max_role=capability==1?30:capability==2?33:capability==3?34:35;
     if(~encore::crc32_update(~0u,p+32,n-32)!=u32(p+16))return fail("Resource catalog checksum rejected");
     for(size_t i=0;i<20;++i){auto hex=[](char c){return c<='9'?c-'0':c-'a'+10;};
         if(p[32+i]!=uint8_t(hex(pin[i*2])*16+hex(pin[i*2+1])))return fail("Resource catalog source pin rejected");}
@@ -77,8 +79,10 @@ bool ResourceCatalog::load(const uint8_t* p,size_t n,std::string& error) {
         data.bindings_.push_back({id,static_cast<ResourceRole>(role),std::move(path),size,checksum});
     }
     for(bool present:roots)if(!present)return fail("Resource catalog missing required role");
-    if(capability==2){unsigned field=0;for(const auto& row:data.bindings_)field+=uint32_t(row.role)>=31;
-        if(field!=3)return fail("Resource catalog field scene roles incomplete");}
+    if(capability>=2){unsigned field=0,presents=0,mick=0;for(const auto& row:data.bindings_){field+=uint32_t(row.role)>=31&&uint32_t(row.role)<=33;presents+=row.role==ResourceRole::HousePresents;mick+=row.role==ResourceRole::MickTreats;}
+        if(field!=3)return fail("Resource catalog field scene roles incomplete");
+        if(presents!=(capability>=3?1u:0u))return fail("Resource catalog House present role rejected");
+        if(mick!=(capability>=4?1u:0u))return fail("Resource catalog Mick treats role rejected");}
     auto binding=[&](uint32_t id)->const Binding*{for(const auto& row:data.bindings_)if(row.id==id)return &row;return nullptr;};
     for(uint32_t i=0;i<pairs;++i){const auto battle=r.integer(),round=r.integer();
         const auto* b=binding(battle);const auto* v=binding(round);

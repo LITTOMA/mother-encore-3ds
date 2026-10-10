@@ -73,7 +73,7 @@ Continue、Save 和按钮提示分别使用 `continue-presentation-bindings.json
 
 ## Podunk 室外场景
 
-`content/podunk-field.json` 声明场景类别、物件精灵、跨场景路线、语言与输出路径；格子、图块形状、精灵、门与边界在每次编译时直接从固定上游提取（批量数据例外见 [ARCHITECTURE](ARCHITECTURE.md)）。`tools/podunk_field.py` 生成 `data/podunk.encmap`（ENCMAP01）、`data/podunk.encroom`、`data/world.enclinks`（ENCLNK01）与 `graphics/world/podunk` 图集，收据位于 `content/asset-receipts/graphics/world/podunk/source.json`。资源目录能力 2 新增 FieldRoom / FieldMap / WorldLinks 三个角色，绑定位于独立的 `content/field-resource-catalog.json`，由 `tools/resource_catalog.py` 与基础目录配方合并；开局房间 IR 固定的基础配方字节不变。房屋 `.enchouse`、存档格式与既有身份不变；旗标按名称与稳定 ID 跨场景，Podunk 房间必须携带与房屋相同的旗标表。范围与限制见 [PODUNK_FIELD](PODUNK_FIELD.md)。
+`content/podunk-field.json` 声明场景类别、物件精灵、跨场景路线、语言与输出路径；格子、图块形状、精灵、门与边界在每次编译时直接从固定上游提取（批量数据例外见 [ARCHITECTURE](ARCHITECTURE.md)）。`tools/podunk_field.py` 生成 `data/podunk.encmap`（ENCMAP01）、`data/podunk.encroom`、`data/world.enclinks`（ENCLNK01）与 `graphics/world/podunk` 图集，收据位于 `content/asset-receipts/graphics/world/podunk/source.json`。能力 2 的 FieldRoom / FieldMap / WorldLinks 与能力 3 的 HousePresents 绑定位于独立的 `content/extension-resource-catalog.json`，由 `tools/resource_catalog.py` 与基础目录配方合并；开局房间 IR 固定的基础配方字节不变。房屋礼物盒见 [房屋礼物盒](HOUSE_PRESENTS.md)。房屋 `.enchouse`、存档编码格式与既有身份不变；Session 资源格式 6 增加钥匙物品获取策略。旗标按名称与稳定 ID 跨场景，Podunk 房间必须携带与房屋相同的旗标表。范围与限制见 [PODUNK_FIELD](PODUNK_FIELD.md)。
 
 ## 自由行走装备菜单
 

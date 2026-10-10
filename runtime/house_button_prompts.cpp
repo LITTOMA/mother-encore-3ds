@@ -45,4 +45,15 @@ bool evaluate_house_button_prompt(const HouseButtonPromptData&d,uint32_t choice,
  if(selected!=house_no_index){const auto&t=d.targets[selected];const auto&s=o.targets[selected];if(s.enabled&&s.supported&&(d.choice_masks[choice]&t.category)){out.visible=true;out.target=selected;out.position={s.position.x+t.offset.x,s.position.y+t.offset.y};}}
  e.clear();return true;
 }
+bool evaluate_npc_button_prompt(const HouseButtonPromptData&d,uint32_t choice,Vec2 player,Vec2 direction,bool paused,bool crouching,Vec2 actor,Vec2 center,Vec2 extents,HousePromptPose&out,std::string&e){
+ out={};bool found=false;Vec2 offset{};uint32_t category=0;
+ if(!d.valid()||choice>=d.choice_masks.size()||!finite(player)||!finite(direction)||!finite(actor)||!finite(center)||!finite(extents)||extents.x<=0||extents.y<=0)return fail(e,"NPC prompt observation rejected");
+ for(const auto&t:d.targets)if(t.kind==HousePromptKind::Npc){if(!found){offset=t.offset;category=t.category;found=true;}else if(!same(offset,t.offset)||category!=t.category)return fail(e,"NPC prompt offset/category disagree");}
+ if(!found||!category)return fail(e,"NPC prompt contract is absent");
+ if(paused||crouching){e.clear();return true;}
+ const float length=std::hypot(direction.x,direction.y);if(!std::isfinite(length)||length<=0)return fail(e,"Button prompt direction rejected");
+ const Vec2 origin{player.x+d.ray_origin.x,player.y+d.ray_origin.y},unit{direction.x/length,direction.y/length};if(!finite(origin))return fail(e,"Button prompt ray origin rejected");
+ float distance=0;if(ray(origin,unit,d.ray_length,center,extents,distance)&&(d.choice_masks[choice]&category)){out.visible=true;out.position={actor.x+offset.x,actor.y+offset.y};}
+ e.clear();return true;
+}
 }

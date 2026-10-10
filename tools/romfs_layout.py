@@ -8,7 +8,7 @@ EXTENSIONS = {
     'data': {
         '.encbars', '.encbattle', '.encchoices', '.enccontinue',
         '.encfx', '.enchouse', '.encinput', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield', '.encitems', '.encload',
-        '.enclinks', '.enclocale', '.encmap', '.encmigration', '.encnewgame', '.encphone',
+        '.enclinks', '.enclocale', '.encmap', '.encmick', '.encmigration', '.encnewgame', '.encphone', '.encpresent',
         '.encprompts', '.encresources', '.encrestore', '.encroom', '.encround',
         '.encsavemenu', '.encsession', '.encsettings', '.enctitlelocale',
     },

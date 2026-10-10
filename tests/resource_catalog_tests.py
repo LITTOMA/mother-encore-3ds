@@ -18,7 +18,7 @@ from tools import resource_catalog as catalog
 class ResourceCatalogTests(unittest.TestCase):
     def setUp(self):
         self.base = catalog.load_ir()
-        self.fields = catalog.load_ir(catalog.FIELD_IR)
+        self.fields = catalog.load_ir(catalog.EXTENSION_IR)
         self.ir = catalog.load_catalog()
         self.fixture_parent = ROOT / 'build/resource-catalog-python'
         self.fixture_parent.mkdir(parents=True, exist_ok=True)
@@ -49,10 +49,14 @@ class ResourceCatalogTests(unittest.TestCase):
             self.assertEqual(output.read_bytes(), expected)
 
     def test_field_extension_is_separate_and_fail_closed(self):
-        self.assertFalse(any(row['role'] in catalog.FIELD_ROLES for row in self.base['bindings']))
-        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.FIELD_ROLES)
+        self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
+        self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES)
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 2)
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 4)
+        without_mick = [row for row in self.ir['bindings'] if row['role'] != 'MickTreats']
+        self.assertEqual(catalog.capability_for(without_mick), 3)
+        without_presents = [row for row in without_mick if row['role'] != 'HousePresents']
+        self.assertEqual(catalog.capability_for(without_presents), 2)
 
         def reject(edit_base=None, edit_fields=None):
             base, fields = copy.deepcopy(self.base), copy.deepcopy(self.fields)
@@ -64,13 +68,17 @@ class ResourceCatalogTests(unittest.TestCase):
                 catalog.merge_catalog(base, fields)
 
         for key, value in [('schema', 2), ('schema', True), ('kind', 'encore.native-resource-catalog.source-ir'),
+                           ('kind', 'encore.field-resource-catalog.source-ir'),
                            ('commit', '0' * 40), ('scope', ''), ('sources', {}), ('bindings', []),
                            ('bindings', {}), ('encounters', []), ('unknown', 1)]:
             with self.subTest(key=key, value=value):
                 reject(edit_fields=lambda ir: ir.update({key: value}))
         reject(edit_fields=lambda ir: ir.pop('scope'))
         reject(edit_fields=lambda ir: ir['bindings'][0].update(unknown=1))
-        reject(edit_fields=lambda ir: ir['bindings'].pop())
+        reject(edit_fields=lambda ir: ir['bindings'].pop(0))
+        reject(edit_fields=lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role'] == 'HousePresents']))
+        reject(edit_fields=lambda ir: ir['bindings'][3].update(id=35))
+        reject(edit_fields=lambda ir: ir['bindings'][3].update(path='data/opening.encroom'))
         reject(edit_fields=lambda ir: ir['bindings'].append(copy.deepcopy(ir['bindings'][0])))
         reject(edit_fields=lambda ir: ir['bindings'].append(dict(id=1, role='Room', path='data/other.encroom')))
         reject(edit_fields=lambda ir: ir['bindings'][0].update(id=30))
@@ -199,7 +207,7 @@ class ResourceCatalogTests(unittest.TestCase):
         for size in range(len(original)):
             with self.subTest(size=size), self.assertRaises(ValueError):
                 catalog.decode(original[:size])
-        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 2), (24, 1), (28, 1)]:
+        for offset, value in [(8, 0), (8, 2), (20, 0), (20, 1), (20, 2), (20, 5), (24, 1), (28, 1)]:
             bad = bytearray(original)
             struct.pack_into('<I', bad, offset, value)
             with self.subTest(offset=offset, value=value), self.assertRaises(ValueError):

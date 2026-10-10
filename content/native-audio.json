@@ -214,6 +214,14 @@
       "import_sha256": "ec8c7281ddb3886730d39aa18f8ce194909e089f6ceafa394154032f8dca1bca",
       "pcm_path": "sound/effects/field-menu-close.pcm",
       "gain_db": 0
+    },
+    {
+      "stable_id": 1403,
+      "source_path": "res://Audio/Sound effects/Gift Box.mp3",
+      "source_sha256": "c9599bd8d5ffee3143f708655b1c58ef978f4c4dd436385b2c1adce6ec076e01",
+      "import_sha256": "f5f176c5a44d6451962b31b9c75cf4e96ef849418b6c8ddf32010ee439042199",
+      "pcm_path": "sound/effects/gift-box.pcm",
+      "gain_db": 0.0
     }
   ]
 }

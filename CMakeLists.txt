@@ -13,7 +13,7 @@ add_library(encore_core
     runtime/house_inspection_data.cpp
     runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp runtime/storage_data.cpp runtime/storage_menu.cpp runtime/item_details.cpp runtime/drawer_program.cpp
     runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp
-    runtime/music_regions.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
+    runtime/music_regions.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_audio.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp runtime/room_data.cpp runtime/content.cpp runtime/file_io.cpp runtime/story.cpp
     runtime/game.cpp runtime/save.cpp runtime/progression.cpp runtime/movement.cpp runtime/animation.cpp runtime/collision.cpp runtime/world_flags.cpp runtime/world.cpp runtime/opening_trigger.cpp runtime/dialogue.cpp runtime/actor_actions.cpp runtime/cutscene_camera.cpp)
 target_include_directories(encore_core PUBLIC include)
 if(MSVC)
@@ -289,7 +289,7 @@ endif()
 if(BUILD_TESTING)
  add_executable(encore_phone_runtime_tests tests/phone_runtime_tests.cpp)
  target_link_libraries(encore_phone_runtime_tests PRIVATE encore_core)
- add_test(NAME phone_runtime COMMAND encore_phone_runtime_tests ${CMAKE_SOURCE_DIR}/romfs/world/house/opening.encphone ${CMAKE_SOURCE_DIR}/content/phone-stage/native-animation.bin)
+ add_test(NAME phone_runtime COMMAND encore_phone_runtime_tests ${CMAKE_SOURCE_DIR}/romfs/world/house/opening.encphone ${CMAKE_SOURCE_DIR}/content/phone-stage/native-animation.bin ${CMAKE_SOURCE_DIR}/romfs/sound/banks/opening.encaudio)
 endif()
 
 if(BUILD_TESTING)
@@ -312,6 +312,9 @@ if(BUILD_TESTING)
 endif()
 
 if(BUILD_TESTING)
+ add_executable(encore_house_audio_tests tests/house_audio_tests.cpp)
+ target_link_libraries(encore_house_audio_tests PRIVATE encore_core)
+ add_test(NAME house_audio COMMAND encore_house_audio_tests ${CMAKE_SOURCE_DIR}/romfs)
  add_executable(encore_dad_record_sequence_tests tests/dad_record_sequence_tests.cpp)
  target_link_libraries(encore_dad_record_sequence_tests PRIVATE encore_core)
  add_test(NAME dad_record_sequence COMMAND encore_dad_record_sequence_tests ${CMAKE_SOURCE_DIR}/romfs/world/house/opening.encroom ${CMAKE_SOURCE_DIR}/romfs/world/house/opening.enchouse ${CMAKE_SOURCE_DIR}/romfs/battle/lamp/opening.encbattle ${CMAKE_SOURCE_DIR}/romfs/world/house/opening.encphone ${CMAKE_SOURCE_DIR}/romfs/ui/opening.encchoices ${CMAKE_SOURCE_DIR}/romfs/ui/opening.encsavemenu)
@@ -677,7 +680,7 @@ if(BUILD_TESTING)
  add_custom_target(encore_phone_binding_fixtures COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/test_phone_presentation_bindings.py --prepare-only WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
  add_dependencies(encore_phone_runtime_tests encore_phone_binding_fixtures)
  add_test(NAME phone_presentation_bindings COMMAND ${Python3_EXECUTABLE} -m unittest tests.test_phone_presentation_bindings)
- add_test(NAME phone_regenerated_consumer COMMAND encore_phone_runtime_tests ${CMAKE_SOURCE_DIR}/build/phone-presentation-fixtures/regenerated.encphone ${CMAKE_SOURCE_DIR}/content/phone-stage/native-animation.bin)
+ add_test(NAME phone_regenerated_consumer COMMAND encore_phone_runtime_tests ${CMAKE_SOURCE_DIR}/build/phone-presentation-fixtures/regenerated.encphone ${CMAKE_SOURCE_DIR}/content/phone-stage/native-animation.bin ${CMAKE_SOURCE_DIR}/romfs/sound/banks/opening.encaudio)
  set_tests_properties(phone_presentation_bindings phone_regenerated_consumer PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
 

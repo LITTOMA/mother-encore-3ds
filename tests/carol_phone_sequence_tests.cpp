@@ -43,6 +43,18 @@ struct Fixture {
   check(runtime.initialize(h,world,presentation),runtime.error());
   check(phone.initialize(p),phone.error());check(runtime.bind_phone(phone),runtime.error());
   check(!phone.ringing(0),"Initialization never invents Ring playback from flags");
+  const auto generic_count=world.audio_requests().size();const auto typed_count=runtime.phone_sounds().size();
+  PhoneSoundRequest bad;bad.object=0;
+  check(!runtime.play_phone_sound(bad),"Empty source request rejected");
+  bad.source_path=p.string(p.resource(p.object(0).resource).path);
+  check(!runtime.play_phone_sound(bad),"Texture path cannot masquerade as phone audio");
+  bad.source_path=p.string(p.object(0).ring_sound);bad.kind=PhoneSoundKind(99);
+  check(!runtime.play_phone_sound(bad),"Unknown phone cue rejected");
+  bad.kind=PhoneSoundKind::Hangup;
+  check(!runtime.play_phone_sound(bad),"Cue kind cannot play another source sound");
+  bad.kind=PhoneSoundKind::Ring;bad.object=phone_no_index;
+  check(!runtime.play_phone_sound(bad),"Unknown phone object rejected");
+  check(world.audio_requests().size()==generic_count&&runtime.phone_sounds().size()==typed_count,"Rejected phone requests preserve both queues");
  }
  void step(WalkInput input={},bool accept=false,bool cancel=false){
   ++frames;check(runtime.before_physics(input),runtime.error());
@@ -54,6 +66,12 @@ struct Fixture {
   check(ok,runtime.error());
   blocker_before_end_scene=world.body_enabled(blocker);
   check(world.end_scene_frame(),world.error());
+  for(const auto& request:world.audio_requests())if(request.kind==AudioRequestKind::PlayEffect){
+   auto path=room.string(room.resource(request.resource_index).path_string);if(path.substr(0,6)=="res://")path.remove_prefix(6);
+   for(uint32_t i=0;i<phone.view().count(PhoneSection::Objects);++i){const auto object=phone.view().object(i);
+    check(path!=phone.view().string(object.ring_sound)&&path!=phone.view().string(object.hangup_sound),"Phone cues have one owner, never a duplicate generic effect");
+   }
+  }
  }
  void warp(Vec2 p,Vec2 d){check(world.warp_same_scene(p,d),world.error());check(runtime.after_physics(),runtime.error());}
  void await_text(){for(unsigned i=0;i<16&&!presentation.dialogue_active();++i)step();if(!presentation.dialogue_active())std::cerr<<"await text: house="<<unsigned(runtime.phase())<<" world="<<unsigned(world.stage())<<" index="<<runtime.story_index()<<" pos="<<world.player().position.x<<","<<world.player().position.y<<" error="<<runtime.error()<<"\n";check(presentation.dialogue_active(),"Source interaction presents its checked text");}
@@ -163,7 +181,7 @@ void check_carol_call(Fixture&f,bool area){
  remaining=1;unsigned ring_ticks=0;
  while(remaining>=0){f.step({},true,true);remaining-=dt;++ring_ticks;no_confirm(f.presentation);check(!f.world.story_flag("phone_ring"),"Ringing animation does not write story flag early");if(remaining>=0)check(f.world.phrase()==ring,"A/B cannot skip one-second ring timer");if(ring_ticks==1)check(f.phone.pose(0).frame==1&&f.phone.clip_time(0)==dt,"Phone animation advances once per shared idle, including cutscene");}
  check(f.world.phrase()==answer&&sound_count(f.runtime,PhoneSoundKind::Ring)==2,"One source ring cycle emits exactly its 0.083/0.332 sound keys");
- const auto phone_object=f.phone.view().object(0);for(const auto&s:f.runtime.phone_sounds())if(s.kind==PhoneSoundKind::Ring)check(s.object==0&&s.resource==phone_object.ring_sound&&s.bus==phone_object.audio_bus&&s.positional&&same(s.position,phone_object.audio_center),"Every ring pulse retains original resource, player identity, bus and position");
+ const auto phone_object=f.phone.view().object(0);for(const auto&s:f.runtime.phone_sounds())if(s.kind==PhoneSoundKind::Ring)check(s.object==0&&s.source_path==f.phone.view().string(phone_object.ring_sound)&&s.bus==phone_object.audio_bus&&s.positional&&same(s.position,phone_object.audio_center),"Every ring pulse retains original resource, player identity, bus and position");
  check(close(f.world.actor(f.carol_actor).direction.x,-1)&&close(f.world.actor(f.carol_actor).direction.y,0),"Carol completes source left turn during hidden ring pause");
  check(f.finish_text(answer)==0&&printed(f.presentation)=="Oh! That must be him.","Source answer recognition line is manual");
  check(!f.world.story_flag("phone_ring"),"Flag remains false until label7 starts");const auto printed_before_final=f.presentation.visible_characters();f.confirm(final);
@@ -211,7 +229,7 @@ void check_first_dad(Fixture&f){
  check(ring_at_pickup>=ring_requests&&!f.phone.ringing(0),"Phone pickup selects Idle immediately after any due source pulse");
  check(sound_count(f.runtime,PhoneSoundKind::Hangup)==hangups+1&&f.runtime.phone_sounds().back().kind==PhoneSoundKind::Hangup,"Pickup replaces the source audio player with Hangup");
  const auto sound=f.runtime.phone_sounds().back();const auto object=f.phone.view().object(0);
- check(sound.object==0&&sound.positional&&same(sound.position,object.audio_center)&&sound.bus==object.audio_bus&&sound.resource==object.hangup_sound,"Hangup retains same source object, bus and positional binding as Ring");
+ check(sound.object==0&&sound.positional&&same(sound.position,object.audio_center)&&sound.bus==object.audio_bus&&sound.source_path==f.phone.view().string(object.hangup_sound),"Hangup retains same source object, bus and positional binding as Ring");
  check_phone_identity(f,seen);check(f.world.body_enabled(f.blocker)&&!f.world.story_flag("talked_to_dad"),"Picking up does not set talked_to_dad early");
  check(f.finish_text(0)==0&&printed(f.presentation)=="Ninten picked up the phone."&&!f.presentation.dialogue_pose().name_visible,"Original pickup narration stays unnamed");
  f.confirm(1);check(f.finish_text(1)==5,"First Dad explanation retains five original WAIT markers");check_phone_identity(f,seen);

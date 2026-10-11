@@ -42,6 +42,7 @@
 #include <ctime>
 #include <memory>
 #include "encore/house_runtime.hpp"
+#include "encore/house_audio.hpp"
 #include "encore/house_presentation.hpp"
 #include "encore/blackbars.hpp"
 #include "encore/battle_action_presentation.hpp"
@@ -203,6 +204,11 @@ std::vector<std::string> battle_paths;
 std::vector<uint32_t> battle_draw_order;
 unsigned view_width=400,view_height=240;
 bool reference_view=false;
+#if defined(ENCORE_DEBUG_REFERENCE_VIEW) && ENCORE_DEBUG_REFERENCE_VIEW
+constexpr bool debug_reference_view_enabled=true;
+#else
+constexpr bool debug_reference_view_enabled=false;
+#endif
 double shader_time=0;
 double compose_ms=0,upload_ms=0,background_submit_ms=0;
 #ifdef ENCORE_FRAME_PROFILE
@@ -454,6 +460,7 @@ bool load_ui_font_only(std::string&error){
 }
 // Title and naming need checked world metadata for save admission, not the
 // room's image owners. Prepare those once before exposing a new/loaded house.
+bool prepare_house_audio(std::string&error);
 bool ensure_house_graphics(std::string&error){
     if(house_graphics_ready)return true;
     wait_for_gpu_idle();LoadingScope loading("Preparing house graphics",4);
@@ -461,22 +468,7 @@ bool ensure_house_graphics(std::string&error){
        !loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error)&&(present_data.view().valid()||present_data.load_file(resource_path(ResourceRole::HousePresents).c_str(),error))&&present_renderer.load(present_data.view(),"romfs:/",error);},"house-atlases")||
        !loading.step([&]{if(!items_renderer.load(items_data.view(),"romfs:/",error)||!item_details_renderer.load(item_details_data.view(),items_data.view(),"romfs:/",error))return false;
            item_details_renderer.set_locale(locale_selection.code());items_renderer.set_details(&item_details_renderer);storage_renderer.set_details(&item_details_renderer);return true;},"item-atlases")||
-       !loading.step([&]{
-           if(!audio_player.available())return true;
-           const auto room=opening_data.view();
-           for(uint32_t i=0;i<room.resource_count();++i){const auto r=room.resource(i);
-               if(r.kind!=uint16_t(upstream::RoomResourceKind::AudioRequestOnly))continue;
-               // Prefetch source identity, not saved/gameplay identity: one
-               // source can have separate room and cutscene bank stable IDs.
-               bool found=false;
-               for(uint32_t j=0;j<menu_audio_bank.count();++j){const auto asset=menu_audio_bank.asset(j);
-                   if(asset.source_path==room.string(r.path_string)&&asset.source_sha256==r.sha256){
-                       found=true;if(!audio_player.prepare(asset.stable_id,error))return false;break;}
-               }
-               if(!found){error="House audio source is absent from checked bank";return false;}
-           }
-           return true;
-       },"house-audio")||!loading.finish())return false;
+       !loading.step([&]{return prepare_house_audio(error);},"house-audio")||!loading.finish())return false;
     house_graphics_ready=true;return true;
 }
 bool initialize_world_effect(std::string&error){
@@ -747,6 +739,14 @@ bool prepare_source_audio(const std::string& path,std::string&error){
     }
     error="Sound is absent from checked audio bank";return false;
 }
+bool prepare_house_audio(std::string&error){
+    if(!audio_player.available())return true;
+    std::vector<uint32_t> ids;
+    if(!upstream::build_house_audio_plan(opening_data.view(),house_data.view(),phone_data.view(),
+        choice_data,save_menu_data,gameplay_audio,menu_audio_bank,ids,error))return false;
+    for(auto id:ids)if(!audio_player.prepare(id,error))return false;
+    return true;
+}
 bool prepare_title_audio(std::string&error){
     if(!prepare_source_audio(continue_data.title_music(),error))return false;
     for(uint32_t i=0;i<uint32_t(upstream::ContinueSound::Count);++i)
@@ -757,7 +757,7 @@ bool play_source_audio(const std::string& path,ctr::AudioLane lane=ctr::AudioLan
     for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto asset=menu_audio_bank.asset(i);if(asset.source_path==path||(asset.source_path.substr(0,6)=="res://"&&asset.source_path.substr(6)==path)){if(!audio_player.available())return true;std::string error;
         if(!audio_player.prepared(asset.stable_id)){LoadingScope loading("Preparing sound",1);if(!loading.step([&]{return audio_player.prepare(asset.stable_id,error);},"pcm-validation")||!loading.finish()){audio_status=error;return false;}}
         if(!audio_player.play(asset.stable_id,lane,error,gain,0,pitch,repeat)){audio_status=error;return false;}return true;}}
-    house_error="Menu sound is absent from checked audio bank";return false;
+    house_error="Sound is absent from checked audio bank: "+path;return false;
 }
 bool play_gameplay_cue(upstream::GameplayCue cue,ctr::AudioLane lane=ctr::AudioLane::Effect,bool repeat=false){return play_source_audio(gameplay_audio.path(cue),lane,0,1,repeat);}
 void process_battle_audio(){
@@ -1506,7 +1506,9 @@ void house_bottom(){
         text(3,14,128,0.29f,timing,ink,292);
     }else
 #endif
-    text(3,14,143,0.37f,"D-pad: move / choose    A: select\nSELECT: reference view + restart\nExit: title menu",ink,292);
+    text(3,14,143,0.37f,debug_reference_view_enabled&&continue_menu.phase()==upstream::ContinuePhase::Title?
+         "D-pad: move / choose    A: select\nL+R+SELECT: reference view + restart\nExit: title menu":
+         "D-pad: move / choose    A: select\nSTART: house menu / intro skip\nExit: title menu",ink,292);
     char position[240];const auto& player=gameplay_scene->world.player();
     if(stage==upstream::OpeningStage::Walking){
         const auto instance=room.actor_instance(scene.player_instance_index);
@@ -1570,7 +1572,7 @@ void field_bottom(){
     const auto nearby=field_scene->nearby_notices(player,200.f,3);
     if(!nearby.empty()&&field_scene->phase()==FieldPhase::Walking){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
     text(2,14,84,0.35f,scope,muted,292);
-    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART menus are not ported in this field\nSELECT: reference view + restart",ink,292);
+    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART menus are not ported in this field",ink,292);
     char position[160];const auto instance=room.actor_instance(room.scene().player_instance_index);
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
@@ -1689,7 +1691,12 @@ int main(int argc,char** argv){
         hidScanInput();u32 down=hidKeysDown(),held=hidKeysHeld();
         // START is not a global quit shortcut: UI editing must not discard the
         // pending session. Normal exit is the explicit title-menu request.
-        if((down&KEY_SELECT)&&!introduction.active()){
+        // The destructive reference-view reset is an explicit developer build
+        // option, available only on the title screen with both shoulders held.
+        // SELECT alone is reserved for gameplay input.
+        if(debug_reference_view_enabled&&continue_menu.phase()==upstream::ContinuePhase::Title&&!new_game_setup.active()&&!introduction.active()&&
+           (down&KEY_SELECT)&&(held&(KEY_L|KEY_R))==(KEY_L|KEY_R)){
+            down&=~u32(KEY_SELECT|KEY_L|KEY_R); // Do not also cycle the title locale.
             wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();field_choice_navigation.reset();reference_view=!reference_view;const auto native=battle_data.view().parameter(upstream::BattleParameter::CanvasSize);view_width=reference_view?unsigned(native.x):400;view_height=reference_view?unsigned(native.y):240;loaded_battle_path.clear();world_effect_assets_ready=false;
             if(!reset_development_game(error)||!open_continue(error))break;last=osGetTime();accumulator=0;
         }
@@ -1808,7 +1815,7 @@ int main(int argc,char** argv){
             for(const auto& sound:gameplay_scene->house.take_sounds()){++house_sound_requests;const auto path=house_data.view().string(sound.sound);if(!path.empty())play_source_audio(std::string(path));}
             process_dialogue_audio(gameplay_scene->presentation);
             for(const auto& sound:gameplay_scene->house.take_phone_sounds()){
-                const auto phone=phone_data.view();play_source_audio(std::string(phone.string(phone.resource(sound.resource).path)),ctr::AudioLane::Phone);
+                play_source_audio(std::string(sound.source_path),ctr::AudioLane::Phone);
             }
             process_present_audio();
             requested_route=gameplay_scene->house.take_scene_route();

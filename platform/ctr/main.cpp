@@ -1064,7 +1064,7 @@ void process_scene_door_events(){
             auto& world=in_field()?field_scene->world:gameplay_scene->world;
             if(!world.set_story_flag(e.text,e.value,false))field_status="Door flag write rejected";
         }else if(e.kind==K::FadeMusic){std::string error;if(audio_player.available()&&!audio_player.fade_music(e.seconds,error))audio_status=error;}
-        else if(e.kind==K::PlaySound){++door_sound_requests;if(!e.text.empty())play_source_audio(e.text);}
+        else if(e.kind==K::PlaySound){++door_sound_requests;if(!e.text.empty())play_source_audio(std::string(e.text));}
         else if(e.kind==K::Unpause){
             if(in_field()){if(!field_scene->finish_transition())field_status=field_scene->error();}
             else if(!gameplay_scene->world.unpause_from_house())house_error="Scene door unpause rejected";

@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.runtime_layout import source_path, load as load_layout
-FILES=('content/native-new-game.json','content/native-house-button-prompts.json','content/native-continue.json')
+FILES=('content/native-new-game.json','content/native-house-button-prompts.json','content/native-continue.json','content/native-title-locales.json')
 def sha(b):return hashlib.sha256(b).hexdigest()
 def old_file(base,path):return subprocess.check_output(['git','show',base+':'+path],cwd=ROOT)
 def semantic(document):

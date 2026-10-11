@@ -422,7 +422,7 @@ def checked_pair(root, binding, formation, source):
         files[path] = data
     return {'key': formation['key'], 'battle_pack': binding['battle_pack'], 'round_pack': binding['round_pack'],
             'battle_id': metadata[0], 'enemy_id': members[0]['enemy'], 'participant_count': 2,
-            'source_binding': binding, 'files': {str(k): sha(v) for k, v in sorted(files.items())}}
+            'source_binding': binding, 'files': {k.as_posix(): sha(v) for k, v in sorted(files.items())}}
 
 
 def validate_manifest(doc):

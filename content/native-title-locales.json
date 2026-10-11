@@ -15,7 +15,7 @@
   },
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
-    "content/native-continue.json": "f4672d17079560d62f29cc3c549fea7bdbd9ed31e366f29ccc118d31f0ca1284"
+    "content/native-continue.json": "f00cd70711890fee2d06c52e10aed6c958298e180693cb33e456166c7f37a25c"
   },
   "fallback": "en",
   "outputs": {

@@ -1657,7 +1657,7 @@ int main(int argc,char** argv){
     if(!open_continue(error,&loading)||!loading.step([&]{return prepare_title_audio(error);},"title-audio")||!loading.finish()){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
     }
     {char line[120];const int n=std::snprintf(line,sizeof(line),"ENCORE_STARTUP_READY elapsed_ms=%.3f\n",double(svcGetSystemTick()-load_epoch_tick)/CPU_TICKS_PER_MSEC);if(n>0)svcOutputDebugString(line,size_t(n));}
-    upstream::MenuNavigationRepeat menu_navigation;
+    upstream::MenuNavigationRepeat menu_navigation,field_choice_navigation;
     std::atomic<bool> input_resume_reset{false};aptHookCookie input_hook{};
     aptHook(&input_hook,[](APT_HookType kind,void* state){
         if(kind==APTHOOK_ONSUSPEND||kind==APTHOOK_ONRESTORE||kind==APTHOOK_ONSLEEP||kind==APTHOOK_ONWAKEUP)
@@ -1665,12 +1665,17 @@ int main(int argc,char** argv){
     },&input_resume_reset);
     // Content IDs need not fit bit fields; compare the complete owner tuple
     // and issue a session token rather than hashing/packing arbitrary IDs.
-    using InputOwner=std::array<uint32_t,13>;
+    const auto field_choice_ready=[&]{
+        const auto& box=gameplay_scene->presentation;
+        return in_field()&&field_scene->phase()==upstream::FieldPhase::MickTalk&&
+            field_scene->mick().waiting_choice()&&box.dialogue_finished()&&!box.dialogue_closing();
+    };
+    using InputOwner=std::array<uint32_t,14>;
     InputOwner prior_input_owner{};bool have_input_owner=false;uint32_t input_owner_token=0;
     const auto input_context=[&]()->uint32_t{
         if(!gameplay_scene->world.healthy()||!house_error.empty()||!round_error.empty())return 0;
         const bool battle=in_battle();
-        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase())+(in_field()?64u+uint32_t(field_scene->phase()):0u),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase())}};
+        const InputOwner owner{{uint32_t(battle),uint32_t(gameplay_scene->world.stage()),uint32_t(gameplay_scene->house.phase())+(in_field()?64u+uint32_t(field_scene->phase()):0u),battle?uint32_t(battle_entry.phase()):0u,battle&&round_ready?uint32_t(battle_round.phase())+1u:0u,gameplay_scene->world.pending_dialogue_id(),uint32_t(dialogue_choices.phase()),uint32_t(save_menu.phase())+(save_open_failed?100u:0u),uint32_t(continue_menu.phase()),uint32_t(new_game_setup.phase())*32u+new_game_setup.field_index(),uint32_t(introduction.phase()),uint32_t(storage_menu.phase())+(storage_open_failed?100u:0u),uint32_t(field_equipment_menu.phase()),uint32_t(field_choice_ready())}};
         if(!have_input_owner||owner!=prior_input_owner){prior_input_owner=owner;have_input_owner=true;if(++input_owner_token==0)++input_owner_token;}
         return input_owner_token;
     };
@@ -1679,13 +1684,13 @@ int main(int argc,char** argv){
         PROFILE_START();
         const uint64_t frame_load_generation=loading_generation;
         if(input_resume_reset.exchange(false,std::memory_order_relaxed)){
-            native_input.reset();menu_navigation.reset();last=osGetTime();accumulator=0;
+            native_input.reset();menu_navigation.reset();field_choice_navigation.reset();last=osGetTime();accumulator=0;
         }
         hidScanInput();u32 down=hidKeysDown(),held=hidKeysHeld();
         // START is not a global quit shortcut: UI editing must not discard the
         // pending session. Normal exit is the explicit title-menu request.
         if((down&KEY_SELECT)&&!introduction.active()){
-            wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();reference_view=!reference_view;const auto native=battle_data.view().parameter(upstream::BattleParameter::CanvasSize);view_width=reference_view?unsigned(native.x):400;view_height=reference_view?unsigned(native.y):240;loaded_battle_path.clear();world_effect_assets_ready=false;
+            wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();field_choice_navigation.reset();reference_view=!reference_view;const auto native=battle_data.view().parameter(upstream::BattleParameter::CanvasSize);view_width=reference_view?unsigned(native.x):400;view_height=reference_view?unsigned(native.y):240;loaded_battle_path.clear();world_effect_assets_ready=false;
             if(!reset_development_game(error)||!open_continue(error))break;last=osGetTime();accumulator=0;
         }
         u64 now=osGetTime();uint64_t elapsed=now-last;last=now;
@@ -1708,6 +1713,7 @@ int main(int argc,char** argv){
         const auto native_controls=native_input.sample(sampled_context,circle.dx,circle.dy,
             {(held&KEY_DLEFT)!=0,(held&KEY_DRIGHT)!=0,(held&KEY_DUP)!=0,(held&KEY_DDOWN)!=0},
             (held&KEY_TOUCH)!=0,touch.px,touch.py,double(elapsed)/1000.0);
+        const auto repeat=items_data.view().parameter(upstream::ItemParameter::InputRepeat);
         const double real_dt=double(std::min<uint64_t>(elapsed,100))/1000.0;
         const double time_scale=round_ready?round_presentation.advance_real_time(real_dt):1.0;
         const double dt=double(float(real_dt*time_scale));
@@ -1746,20 +1752,27 @@ int main(int argc,char** argv){
         }
         gameplay_scene->world.attach_random(battle_random);
         shader_time+=dt;if((world_input||field_equipment_menu.visible())&&session_state_ready)session_state.playtime_seconds+=dt;
+        // Mick uses an independent choice consumer; route the checked native
+        // direction through the same repeat policy once per HID frame. A choice
+        // becoming ready must not inherit a stick held during text or walking.
+        const bool field_choice_input=field_choice_ready()&&world_input&&input_context()==sampled_context;
+        const auto field_navigation=field_choice_navigation.sample(field_choice_input?sampled_context:0,
+            field_choice_input?native_controls.direction.x:0,0,double(elapsed)/1000.0,repeat.x,repeat.y);
         uint32_t requested_route=upstream::WorldLinksData::kNotFound;
         if(in_field()){
             if(region_music.phase()==ctr::MusicRegionServicePhase::Active){std::string why;if(!region_music.idle_frame(field_music_epoch,why))audio_status=why;}
             if(world_visible&&field_scene->world.healthy())field_scene->world.idle_frame(dt);
             auto& box=gameplay_scene->presentation;
             bool text_accept=false;int choice_delta=0;
-            const bool back=world_input&&(down&KEY_B)!=0;
+            const bool field_input_allowed=world_input&&input_context()==sampled_context;
+            const bool back=field_input_allowed&&(down&KEY_B)!=0;
             if(world_visible&&field_scene->phase()==upstream::FieldPhase::MickTalk){
                 const bool latched=field_scene->talk_accept_latched();
-                const bool accept=!latched&&world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse);
+                const bool accept=!latched&&field_input_allowed&&((down&KEY_A)!=0||native_controls.confirm_pulse);
                 const bool choosing=field_scene->mick().waiting_choice()&&box.dialogue_finished()&&!box.dialogue_closing();
                 if(choosing)box.set_choice_rows(choice_data.trailing_blank_lines());else box.set_choice_rows(0);
                 if(box.dialogue_active()&&!box.dialogue_closing()&&!box.dialogue_finished())box.input(accept,!latched&&back);
-                else if(choosing){choice_delta=((down&KEY_DRIGHT)?1:0)-((down&KEY_DLEFT)?1:0);text_accept=accept;}
+                else if(choosing){choice_delta=field_navigation.x;text_accept=accept;}
                 else if(field_scene->mick().state()==upstream::MickProgramState::WaitingText&&box.dialogue_finished()){box.input(accept,false,true,true);text_accept=box.take_dialogue_advance();}
             }else box.set_choice_rows(0);
             const bool choice_typing=field_scene->phase()==upstream::FieldPhase::MickTalk&&field_scene->mick().waiting_choice()&&!box.dialogue_finished();
@@ -1809,7 +1822,7 @@ int main(int argc,char** argv){
         if(scene_door.active()){
             process_scene_door_events();
             if(!scene_door.idle_frame(dt,error)){field_status=error;scene_door.cancel();}
-            else if(scene_door.phase()==upstream::SceneDoorPhase::SwapRequested){wait_for_gpu_idle();perform_scene_swap();last=osGetTime();accumulator=0;native_input.reset();menu_navigation.reset();}
+            else if(scene_door.phase()==upstream::SceneDoorPhase::SwapRequested){wait_for_gpu_idle();perform_scene_swap();last=osGetTime();accumulator=0;native_input.reset();menu_navigation.reset();field_choice_navigation.reset();}
             process_scene_door_events();
         }else if(scene_door.phase()==upstream::SceneDoorPhase::Done)scene_door.cancel();
         if(battle_handoff_pending()&&!battle_outcome.advance_post_win())round_error=battle_outcome.error();
@@ -1823,7 +1836,6 @@ int main(int argc,char** argv){
         const bool same_input_owner=input_context()==sampled_context;
         const int held_x=physical_direction?physical_x:(same_input_owner?native_controls.touch_direction.x:0);
         const int held_y=physical_direction?physical_y:(same_input_owner?native_controls.touch_direction.y:0);
-        const auto repeat=items_data.view().parameter(upstream::ItemParameter::InputRepeat);
         uint32_t navigation_context=0;
         if(in_battle()&&round_ready&&round_error.empty()){
             const auto p=battle_round.phase();
@@ -1844,11 +1856,11 @@ int main(int argc,char** argv){
             if(!new_game_setup.step(dt,{input_allowed?navigation.x:0,input_allowed?navigation.y:0,input_allowed&&((down&KEY_A)!=0||native_controls.confirm_pulse),input_allowed&&(down&KEY_B)!=0,input_allowed&&(down&KEY_X)!=0,input_allowed&&(down&KEY_Y)!=0,input_allowed&&(down&KEY_R)!=0,input_allowed&&(down&KEY_L)!=0},error))continue_status=error;
             const int preview_flavor=startup_settings_data.flavor_index(new_game_setup.preview_flavor());if(preview_flavor<0)continue_status="Settings preview palette rejected";else if(ctr::loading_menu_flavor_selected()!=uint32_t(preview_flavor)){wait_for_gpu_idle();ctr::loading_menu_flavor_select(uint32_t(preview_flavor));}
             for(const auto&sound:new_game_setup.take_sounds())play_source_audio(sound);
-            if(new_game_setup.phase()==upstream::NamingPhase::Cancelled){wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();ctr::loading_menu_flavor_select(uint32_t(startup_settings_data.flavor_index(session_state.settings.menu_flavor)));pending_new_game=PendingNewGame{};if(!open_continue(error))house_error=error;native_input.reset();menu_navigation.reset();accumulator=0;}
+            if(new_game_setup.phase()==upstream::NamingPhase::Cancelled){wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();ctr::loading_menu_flavor_select(uint32_t(startup_settings_data.flavor_index(session_state.settings.menu_flavor)));pending_new_game=PendingNewGame{};if(!open_continue(error))house_error=error;native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;}
             else if(new_game_setup.phase()==upstream::NamingPhase::Accepted){
                 wait_for_gpu_idle();
                 if(!begin_introduction(error)){const auto problem=error;introduction.close();introduction_renderer.free();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};ctr::loading_menu_flavor_select(uint32_t(startup_settings_data.flavor_index(session_state.settings.menu_flavor)));if(!open_continue(error))house_error=error;continue_status="Original introduction rejected: "+problem;}
-                native_input.reset();menu_navigation.reset();accumulator=0;
+                native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;
             }
         }else if(continue_menu.is_open()){
             if(continue_menu.phase()==upstream::ContinuePhase::Title&&same_input_owner){if(down&KEY_L)cycle_native_locale(-1);else if(down&KEY_R)cycle_native_locale(1);}
@@ -1865,7 +1877,7 @@ int main(int argc,char** argv){
                 else if(event.kind==Kind::LoadRequested){
                     const bool loaded=apply_loaded_slot(event.slot,error);if(!loaded)continue_status="Load rejected: "+error;
                     std::string acknowledge_error;if(!continue_menu.acknowledge_load(loaded,acknowledge_error))continue_status=acknowledge_error;
-                    native_input.reset();menu_navigation.reset();accumulator=0;
+                    native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;
                 }else if(event.kind==Kind::BoundaryRequested){
                     if(event.boundary==upstream::ContinueBoundary::NewGame){
                         if(!stage_new_game(error)){continue_status=error;break;}
@@ -1884,7 +1896,7 @@ int main(int argc,char** argv){
                         if(!new_game_renderer.ready()){LoadingScope loading("Preparing naming",1);if(!loading.step([&]{return new_game_renderer.load(new_game_data,startup_settings_data,error);})||!loading.finish()){restore_title();break;}}
                         texture_owner_checkpoint("naming-loaded");if(!new_game_setup.open(new_game_data,startup_settings_data,error)){restore_title();break;}
                         if(!play_source_audio(introduction_data.music,ctr::AudioLane::Music,introduction_data.music_gain)){error=audio_status;restore_title();break;}
-                        continue_menu.close();native_input.reset();menu_navigation.reset();accumulator=0;
+                        continue_menu.close();native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;
                     }
                     else continue_status="This original menu action is not ported; B returns";
                 }
@@ -1892,7 +1904,7 @@ int main(int argc,char** argv){
             if(release_ready){if(!gameplay_scene->world.unpause_from_house())house_error="Loaded player ready boundary rejected";restore_input_pending=false;}
         }
         if(continue_exit)break;
-        const auto abort_intro=[&]{const auto problem=error;wait_for_gpu_idle();introduction.close();introduction_renderer.free();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();accumulator=0;if(!open_continue(error))house_error=error;continue_status="Original introduction rejected: "+problem;introduction_render_error.clear();};
+        const auto abort_intro=[&]{const auto problem=error;wait_for_gpu_idle();introduction.close();introduction_renderer.free();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;if(!open_continue(error))house_error=error;continue_status="Original introduction rejected: "+problem;introduction_render_error.clear();};
         if(intro_active_at_frame_start&&introduction.active()){
             if(introduction_house_committed){const auto camera=gameplay_scene->world.cutscene_camera().center(),player=gameplay_scene->world.player().position;introduction.set_focus(player.x-camera.x+view_width*.5f,player.y-camera.y+view_height*.5f);}
             if(!introduction_render_error.empty()){error=introduction_render_error;abort_intro();}
@@ -1905,10 +1917,10 @@ int main(int argc,char** argv){
                     wait_for_gpu_idle();
                     if(!introduction_renderer.retire_scene_visuals(introduction.pose(),error))abort_intro();
                     else if(!commit_named_new_game(error))abort_intro();
-                    else{introduction_house_committed=true;introduction.rebind_random(battle_random);new_game_setup.close();wait_for_gpu_idle();new_game_renderer.free();native_input.reset();menu_navigation.reset();accumulator=0;}
+                    else{introduction_house_committed=true;introduction.rebind_random(battle_random);new_game_setup.close();wait_for_gpu_idle();new_game_renderer.free();native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;}
                 }
                 if(introduction.active()&&introduction.pose().scene_visible&&new_game_renderer.ready()){wait_for_gpu_idle();new_game_renderer.free();texture_owner_checkpoint("naming-released");}
-                if(introduction.complete()){wait_for_gpu_idle();introduction.close();introduction_renderer.free();native_input.reset();menu_navigation.reset();accumulator=0;}
+                if(introduction.complete()){wait_for_gpu_idle();introduction.close();introduction_renderer.free();native_input.reset();menu_navigation.reset();field_choice_navigation.reset();accumulator=0;}
             }
         }
         if(dialogue_choices.active()){
@@ -2027,7 +2039,7 @@ int main(int argc,char** argv){
             if(in_battle()&&battle_entry.encounter_audio_pending())if(!audio_player.play(battle_entry.take_encounter_audio(),ctr::AudioLane::Jingle,error))audio_status=error;
         }else if(in_battle()&&battle_entry.encounter_audio_pending())battle_entry.take_encounter_audio();
         if(!region_music.update(dt,audio_player,error))audio_status=error;
-        if(frame_load_generation!=loading_generation){last=osGetTime();accumulator=0;native_input.reset();menu_navigation.reset();}
+        if(frame_load_generation!=loading_generation){last=osGetTime();accumulator=0;native_input.reset();menu_navigation.reset();field_choice_navigation.reset();}
         if(!in_field()&&!update_house_prompt(error))house_error=error;
         upstream::IntroductionPose intro_pose;
         bool draw_introduction=introduction.active();

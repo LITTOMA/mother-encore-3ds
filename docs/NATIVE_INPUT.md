@@ -53,6 +53,12 @@ menu HID direction interpretation stays unchanged. Touch directions use the same
 existing 350ms/100ms repeat gate, which emits at most one step per physical frame.
 Physical A and the touch confirm pulse must be ORed once at the platform boundary.
 
+Mick's field yes/no row consumes the checked native direction (D-pad, Circle Pad
+or touch stick) through this existing repeat gate. It ignores the vertical axis.
+The row becoming visible changes input ownership; a held device must return to
+neutral/lift before it can change that selection, and closing it clears repeat
+debt. Player movement remains paused throughout the dialogue.
+
 The first touch anywhere in 320×240 fixes that gesture's logical origin. Dragging
 past the activation radius latches a drag until lift. Returning to center merely
 stops direction output; it can never turn that drag back into a tap. Lift ends

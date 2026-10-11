@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "kind": "encore.platform-loading-feedback",
+  "show_delay_ms": 250,
+  "minimum_visible_ms": 200,
+  "frame_interval_ms": 50
+}

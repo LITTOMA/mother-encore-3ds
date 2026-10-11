@@ -32,7 +32,13 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
     "compatibility/reviews/ninten-animation-v0410.json": "c9393b789fdc351a8482aa92a88ce989d1056f0bfca7e12c43884c9024be79f6",
+    "content/loading-feedback.json": "2110362b761b6c5a86e346401133bd201998fed7d3dc92dc3a6ee3999f0aea53",
     "reports/m3-actor-reference-reviewed/animation.json": "f40f4e417cfb51ad7afe1cf16dab0c4c706dc00023a4eba2bf78e6f7a8e26d94"
+  },
+  "feedback": {
+    "frame_interval_ms": 50,
+    "minimum_visible_ms": 200,
+    "show_delay_ms": 250
   },
   "inspected_loading_paths": [
     "Scripts/global/SceneTransition.gd",
@@ -65,7 +71,7 @@
       "sha256": "d8d4a3b4d7306de037b0c311a3d1bd31532d0148b0b0d0b52dc39a662ad705d8"
     }
   },
-  "schema": 1,
+  "schema": 2,
   "scope": "Platform loading indicator reuses original Ninten Walk Right. No dedicated production loading sprite was found in the inspected loading paths; original scene transitions use fades.",
   "sources": {
     "Graphics/Character Sprites/Ninten/main.png": "f853d9e379453381a5e4b13a2ede2904d164429c755ff84019b4ef3fd5317db9",

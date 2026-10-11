@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/animation.hpp"
+#include "encore/loading_feedback.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <string>
@@ -15,6 +16,7 @@ public:
     bool load_file(const char*, std::string&);
     bool valid() const { return valid_; }
     uint32_t background_color() const { return background_; }
+    LoadingFeedbackPolicy feedback_policy()const{return feedback_policy_;}
     uint32_t texture_width() const { return texture_width_; }
     uint32_t texture_height() const { return texture_height_; }
     uint32_t frame_width() const { return frame_width_; }
@@ -35,6 +37,7 @@ private:
     uint32_t background_=0, texture_width_=0, texture_height_=0, frame_width_=0, frame_height_=0;
     uint32_t frame_count_=0, right_margin_=0, bottom_margin_=0;
     FrameClip clip_{};
+    LoadingFeedbackPolicy feedback_policy_{};
     std::vector<uint16_t> source_frames_;
     std::string texture_path_;
     std::vector<Viewport> viewports_;

@@ -19,7 +19,7 @@ from tools.asset_receipts import receipt_path, receipt_entries
 from tools import native_battle
 IR_PATH=ROOT/'content/doll-entry.json'
 OUT=ROOT/'romfs/graphics/battle/doll'
-PACK=ROOT/'romfs/data/doll-entry.encbattle'
+PACK=ROOT/'romfs/battle/doll/doll-entry.encbattle'
 RECEIPT=receipt_path(OUT, ROOT)
 PIN='7d9246600fffe518408f5830d4848635019005a3'
 EXTRA_ART=[('background','Graphics/Battle BGS/baby.png','doll-background.bpx','indexed'),('enemy','Graphics/Battle Sprites/doll.png','doll-enemy.t3x','texture'),('background-palette','Graphics/Battle BGS/baby_pal.png','doll-palette.bpx','indexed')]

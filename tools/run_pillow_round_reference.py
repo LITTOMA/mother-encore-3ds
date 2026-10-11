@@ -47,7 +47,7 @@ def main():
  result=json.loads((a.reports/'reference.json').read_text());require(result['engine']['string']=='3.6.2-stable (official)','Unexpected Godot engine');comparisons=[]
  for case in result['cases']:
   require(case['boundary']in['next_menu','win'],'Unexpected Pillow action boundary')
-  native=json.loads(subprocess.check_output([str(a.probe.resolve()),str(ROOT/'romfs/data/pillow-entry.encround'),str(ROOT/'romfs/data/pillow-entry.encbattle'),str(case['seed'])],text=True))
+  native=json.loads(subprocess.check_output([str(a.probe.resolve()),str(ROOT/'romfs/battle/pillow/pillow-entry.encround'),str(ROOT/'romfs/battle/pillow/pillow-entry.encbattle'),str(case['seed'])],text=True))
   expected={'boundary':case['boundary'],'player_hp':case['hp']['ninten'],'enemy_hp':case['hp']['lamp'],'turn':case['turn'],'raw_draw_count':case['raw_draw_count'],'next_randi':case['next_randi'],'decisions':[{'actor':0 if e['user']=='ninten'else 1,'target':0 if e['target']=='ninten'else 1,'damage':e['damage'],'smash':e['smash']}for e in case['events']if e['event']=='damage']}
   require(native==expected,'Pillow source/native action mismatch: '+str((case['seed'],native,expected)));comparisons.append({'seed':case['seed'],'actual':native,'match':True})
  (a.reports/'comparison.json').write_text(json.dumps(comparisons,indent=2)+'\n');(a.reports/'receipt.json').write_text(json.dumps({'commit':ex.lock['commit'],'godot_sha256':base.sha(a.godot),'tool_sha256':base.sha(__file__),'sources':metadata['sources'],'cases':len(comparisons),'limits':metadata['adapters']},indent=2)+'\n');print('Official Godot Pillow action/RNG comparison:',len(comparisons),'first rounds match')

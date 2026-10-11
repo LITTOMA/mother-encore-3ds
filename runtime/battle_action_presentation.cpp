@@ -195,7 +195,7 @@ bool BattleActionPresentation::begin(RoundView c,BattleView e,SourceRandom&r,con
  
  text_=BattleTextPacer{};
  if(!text_.set_text_speed(c.rule(RoundRule::TextSecondsPerChar)))return fail("Invalid checked battle text speed");
- effects_.clear();
+ effects_.clear();audio_.clear();
  pointer_={};
  dialogue_cursor_=slot(RoundPresentationSlot::DialogueCursor);
  background_={};
@@ -402,7 +402,8 @@ bool BattleActionPresentation::emit(const BattleRoundCue&cue,SourceRandom&r){
  break;
  
  case BattleRoundCueKind::TurnStart:if(actor>=actors_.size())return fail("Turn actor invalid");
- if(actor==enemy_)actors_[actor].animation=slot(RoundPresentationSlot::EnemyFlash);
+ if(actor==enemy_){actors_[actor].animation=slot(RoundPresentationSlot::EnemyFlash);audio_.push_back(GameplayCue::EnemyTurn);}
+ else if(cue.skill<content_.count(RoundSection::Skills)&&content_.skill(cue.skill).skill_type!=0)audio_.push_back(GameplayCue::Attack);
  break;
  
  case BattleRoundCueKind::Dialogue:if(cue.text==round_no_index)return text_.begin(content_,{});
@@ -419,7 +420,7 @@ bool BattleActionPresentation::emit(const BattleRoundCue&cue,SourceRandom&r){
  auto&a=actors_[target];
  a.hp=cue.hp_after;
  
- if(cue.smash){background_=slot(RoundPresentationSlot::SmashBackground);
+ if(cue.smash){audio_.push_back(GameplayCue::Smash);background_=slot(RoundPresentationSlot::SmashBackground);
  const auto o=content_.parameter(RoundParameter::SmashOffset);
  auto pos=effect_position(target,true);
  pos.x+=o.x;
@@ -451,9 +452,10 @@ bool BattleActionPresentation::emit(const BattleRoundCue&cue,SourceRandom&r){
  const auto skill=content_.skill(cue.skill);
  if(skill.hit_media!=round_no_index){effects_.push_back(clip(skill.hit_media,effect_position(target,false)));effects_.back().target=target;}
  
- if(target==enemy_){a.animation=slot(RoundPresentationSlot::EnemyHit);
+ if(target==enemy_){if(!cue.smash)audio_.push_back(GameplayCue::Hit);a.animation=slot(RoundPresentationSlot::EnemyHit);
  }else if(target==player_){hp_.set_target(cue.hp_after);
  const auto hit=content_.parameter(RoundParameter::PartyHit);
+ audio_.push_back(cue.hp_after<=0?GameplayCue::MortalDamage:(a.defending||cue.amount>player_maxhp_/hit.x)?GameplayCue::HurtCritical:GameplayCue::Hurt);
  const auto intensity=content_.parameter(RoundParameter::PlateHitIntensity);
  const auto current=actor_pose(target);
  
@@ -475,6 +477,7 @@ bool BattleActionPresentation::emit(const BattleRoundCue&cue,SourceRandom&r){
  break;
  }
  case BattleRoundCueKind::Miss:{if(target>=actors_.size())return fail("Miss actor invalid");
+ audio_.push_back(target==player_?GameplayCue::Dodge:GameplayCue::Miss);
  const auto fm=content_.parameter(RoundParameter::RisingNumberSize);
  auto pos=effect_position(target,true);
  pos.x-=fm.x/2;
@@ -492,6 +495,7 @@ bool BattleActionPresentation::emit(const BattleRoundCue&cue,SourceRandom&r){
  
  case BattleRoundCueKind::Defeat:if(target>=actors_.size())return fail("Defeat actor invalid");
  actors_[target].dead=true;
+ if(target!=enemy_||!content_.encounter().boss)audio_.push_back(target==enemy_?GameplayCue::EnemyDefeat:GameplayCue::PlayerDefeat);
  if(target==enemy_){actors_[target].animation=slot(RoundPresentationSlot::EnemyDefeat);
   if(content_.encounter().boss){boss_defeat_=true;boss_time_=0;next_boss_shake_=0;hp_.stop_scrolling();commands_=target_open_=false;}
  }

@@ -6,7 +6,7 @@ import extract_house as x
 class HouseCompilerTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.ir=json.loads((ROOT/'content/native-house.json').read_text());cls.pres=json.loads((ROOT/'content/native-house-presentation.json').read_text());cls.blob=(ROOT/'romfs/data/opening.enchouse').read_bytes()
+  cls.ir=json.loads((ROOT/'content/native-house.json').read_text());cls.pres=json.loads((ROOT/'content/native-house-presentation.json').read_text());cls.blob=(ROOT/'romfs/world/house/opening.enchouse').read_bytes()
   # Mutations below must start from an accepted current-schema encoding.
   h.parse_pack(h.encode(h.lower(cls.ir,cls.pres),version=cls.ir['schema']))
  def test_deterministic_source_and_binary(self):
@@ -69,7 +69,7 @@ class HouseCompilerTests(unittest.TestCase):
  def test_data_only_and_staging(self):
   ir=copy.deepcopy(self.ir);ir['doors'][0]['destination'][0]+=1;ir['segments'][0]['tokens'][0]['text']='Changed externally, ';ir['npcs'][0]['view_radius']=45
   t=h.parse_pack(h.encode(h.lower(ir,self.pres),version=ir['schema']));self.assertEqual(t['Doors'][0][8],221);self.assertEqual(t['Npcs'][0][18],45)
-  files=h.stage_files(ROOT/'romfs');self.assertIn(Path('data/opening.enchouse'),files);self.assertEqual(len(files),1+len(self.pres['resources']))
+  files=h.stage_files(ROOT/'romfs');self.assertIn(Path('world/house/opening.enchouse'),files);self.assertEqual(len(files),1+len(self.pres['resources']))
  def test_revision6_delay_newline_tokens_and_legacy_bounds(self):
   # Keep a bounded historical prefix so token admission is independent of
   # current House7's additive source dialogues and capacity expansion.

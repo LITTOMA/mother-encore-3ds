@@ -23,7 +23,7 @@ class BossPresentationBindings(unittest.TestCase):
  def test_actual_extraction_and_binary_remain_identical(self):
   extracted=doll_round.build();self.assertEqual(extracted,self.ir)
   native_round.verify_sources(extracted,SOURCE_ROOT)
-  self.assertEqual(native_round.encode(native_round.lower(extracted,root=SOURCE_ROOT)),(SOURCE_ROOT/'romfs/data/doll-entry.encround').read_bytes())
+  self.assertEqual(native_round.encode(native_round.lower(extracted,root=SOURCE_ROOT)),(SOURCE_ROOT/'romfs/battle/doll/doll-entry.encround').read_bytes())
  def test_unknown_versions_pins_fields_and_duplicate_json(self):
   for value in [0,2,99,True,'1',None]:self.reject(lambda r:r.update(schema=value))
   self.reject(lambda r:r.update(commit='0'*40))
@@ -85,7 +85,7 @@ class BossPresentationBindings(unittest.TestCase):
      if path==source:
       self.assertIn(before.encode(),data);data=data.replace(before.encode(),after.encode());sha=hashlib.sha256(data).hexdigest();recipe['sources'][path]=sha;inventory['files'][path]['sha256']=sha
      target=root/'upstream/MOTHER-Encore'/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
-    for path in ['upstream.lock','content/doll-entry.json','content/native-battle.json','romfs/data/opening.encroom']:
+    for path in ['upstream.lock','content/doll-entry.json','content/native-battle.json','romfs/world/house/opening.encroom']:
      target=root/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((SOURCE_ROOT/path).read_bytes())
     target=root/'compatibility/upstream-inventory.json';target.parent.mkdir(parents=True);target.write_text(json.dumps(inventory),encoding='utf-8')
     with self.assertRaises(ValueError):bindings.load(root,recipe)
@@ -93,6 +93,6 @@ class BossPresentationBindings(unittest.TestCase):
   recipe=copy.deepcopy(self.recipe);recipe['animations']['enemy_defeat']['anchor']=[.25,.5]
   ir=doll_round.build(recipe);media=ir['presentation']['media'][ir['presentation']['bindings']['EnemyDefeat']]
   self.assertEqual(media['anchor'],[.25,.5]);self.assertEqual(ir['encounter'],self.ir['encounter']);self.assertEqual(ir['growth'],self.ir['growth'])
-  blob=native_round.encode(native_round.lower(ir,root=SOURCE_ROOT));self.assertNotEqual(blob,(SOURCE_ROOT/'romfs/data/doll-entry.encround').read_bytes());native_round.parse_pack(blob)
+  blob=native_round.encode(native_round.lower(ir,root=SOURCE_ROOT));self.assertNotEqual(blob,(SOURCE_ROOT/'romfs/battle/doll/doll-entry.encround').read_bytes());native_round.parse_pack(blob)
 
 if __name__=='__main__':unittest.main()

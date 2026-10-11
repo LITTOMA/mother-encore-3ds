@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.extract_battle_entry import Extractor,properties,node as source_node,one,require
 IR=ROOT/'content/native-introduction.json'
-PACK=ROOT/'romfs/data/opening.encintro'
+PACK=ROOT/'romfs/story/opening.encintro'
 RECEIPT=ROOT/'content/asset-receipts/graphics/cutscenes/introduction/source.json'
 BINDINGS=ROOT/'content/introduction-bindings.json'
 def node(text,path):
@@ -220,7 +220,7 @@ def encode(d):
  for s in d['text_sounds']:text(s)
  return struct.pack('<8s4I',b'ENCINTRO',1,len(out)+24,zlib.crc32(out),1)+out
 def stage_files(root):
- d=json.loads(IR.read_text(encoding='utf8'));verify(d);raw=(Path(root)/'data/opening.encintro').read_bytes();require(raw==encode(d),'Stale introduction pack');files={Path('data/opening.encintro'):raw}
+ d=json.loads(IR.read_text(encoding='utf8'));verify(d);raw=(Path(root)/'story/opening.encintro').read_bytes();require(raw==encode(d),'Stale introduction pack');files={Path('story/opening.encintro'):raw}
  for r in d['resources']:
   raw=(Path(root)/r['path']).read_bytes();require(len(raw)==r['bytes'] and sha(Path(root)/r['path'])==r['sha256'],'Staged introduction texture changed');files[Path(r['path'])]=raw
  return files

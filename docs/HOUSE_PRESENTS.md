@@ -14,7 +14,7 @@
 
 ## 数据与消费者
 
-`content/house-presents.json` 为来源 IR；`tools/house_presents.py` 编译 `data/opening.encpresent`（ENCPRS01）。礼物盒文本追加进既有 `.enchouse`（稳定对话 ID 70–72），不重复字体图集除非新增码位。贴图由真实 `tex3ds` 在 `make 3dsx` 时生成到 `graphics/world/presents/`。
+`content/house-presents.json` 为来源 IR；`tools/house_presents.py` 编译 `world/house/opening.encpresent`（ENCPRS01）。礼物盒文本追加进既有 `.enchouse`（稳定对话 ID 70–72），不重复字体图集除非新增码位。贴图由真实 `tex3ds` 在 `make 3dsx` 时生成到 `graphics/world/presents/`。
 
 资源目录能力 3 增加 HousePresents 角色，绑定位于 `content/extension-resource-catalog.json`，与开局房间配方分开以免改写其来源指纹。Session 资源格式 / 能力 6 增加钥匙物品获取策略：`got_dog_treats` 为真时钥匙栏在默认 CashCard 之后持有 DogTreats；格式 1–5 仍按旧钥匙栏范围加载。
 

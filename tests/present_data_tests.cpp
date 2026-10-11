@@ -11,7 +11,7 @@ static unsigned checks=0;static std::string error;
 static void put(std::vector<uint8_t>&b,size_t at,uint32_t v){for(unsigned i=0;i<4;++i)b[at+i]=uint8_t(v>>(8*i));}
 static void fix(std::vector<uint8_t>&b){put(b,12,uint32_t(b.size()));put(b,16,encore::crc32(b.data()+32,b.size()-32));}
 int main(int argc,char**argv){
- const char*path=argc>1?argv[1]:"romfs/data/opening.encpresent";
+ const char*path=argc>1?argv[1]:"romfs/world/house/opening.encpresent";
  PresentData data;CHECK(data.load_file(path,error));CHECK(data.view().count(PresentSection::Objects)==4);
  CHECK(data.view().count(PresentSection::Programs)==1);CHECK(data.view().count(PresentSection::Textures)==4);
  CHECK(data.view().count(PresentSection::Clips)==2);CHECK(data.view().command(0).opcode==uint32_t(PresentOpcode::BranchFlag));

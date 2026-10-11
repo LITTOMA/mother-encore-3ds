@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "kind": "encore.gameplay-audio.bindings",
+  "commit": "7d9246600fffe518408f5830d4848635019005a3",
+  "license_review": "Upstream LICENSE permits assets and music for modifications of this game. Preserve Team Encore notice; assets are not relicensed under the code MIT grant.",
+  "cues": [
+    {
+      "role": "MenuOpen",
+      "source": "Scripts/global/audioManager.gd",
+      "dictionary": "_sound_effects",
+      "key": "menu_open"
+    },
+    {
+      "role": "MenuClose",
+      "source": "Scripts/global/audioManager.gd",
+      "dictionary": "_sound_effects",
+      "key": "menu_close"
+    },
+    {
+      "role": "Confirm",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "cursor2"
+    },
+    {
+      "role": "Cursor",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "cursor1"
+    },
+    {
+      "role": "Back",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "back"
+    },
+    {
+      "role": "Error",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "error"
+    },
+    {
+      "role": "EnemyTurn",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "enemyturn"
+    },
+    {
+      "role": "EnemyDefeat",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "enemydefeated"
+    },
+    {
+      "role": "PlayerDefeat",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "playerdefeated"
+    },
+    {
+      "role": "MortalDamage",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "mortaldamage"
+    },
+    {
+      "role": "Smash",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "smash"
+    },
+    {
+      "role": "Hurt",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "hurt1"
+    },
+    {
+      "role": "HurtCritical",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "hurt2"
+    },
+    {
+      "role": "Dodge",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "dodge"
+    },
+    {
+      "role": "Miss",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "miss"
+    },
+    {
+      "role": "Swing",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "swing"
+    },
+    {
+      "role": "Attack",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "attack1"
+    },
+    {
+      "role": "Hit",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "bash"
+    },
+    {
+      "role": "LearnedPsi",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_sound_effects",
+      "key": "psilearned"
+    },
+    {
+      "role": "BossVictory",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_musical_effects",
+      "key": "youwonboss"
+    },
+    {
+      "role": "VictoryLoop",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_musical_effects",
+      "key": "victory"
+    },
+    {
+      "role": "LevelUp",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_musical_effects",
+      "key": "lvlup"
+    },
+    {
+      "role": "LevelUpLayer",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_musical_effects",
+      "key": "lvlup_ninten"
+    },
+    {
+      "role": "Victory",
+      "source": "Scripts/UI/Battle/BattleSystem.gd",
+      "dictionary": "_musical_effects",
+      "key": "youwon"
+    }
+  ],
+  "extra_sources": [
+    "Audio/Sound effects/M3/door_open.wav",
+    "Audio/Sound effects/Door_Short.mp3",
+    "Audio/Sound effects/Stairs_Down.mp3",
+    "Audio/Sound effects/Stairs_Up.mp3",
+    "Audio/Sound effects/bash.mp3",
+    "Audio/Sound effects/text/Female.mp3",
+    "Audio/Sound effects/text/Kid.mp3",
+    "Audio/Sound effects/text/Adult.mp3",
+    "Audio/Sound effects/M3/Woof Woof!.wav",
+    "Audio/Sound effects/M3/Dog_whining.wav"
+  ],
+  "conversions": {
+    "Audio/Sound effects/EB/miss.wav": {
+      "source_sample_rate": 96000,
+      "output_sample_rate": 48000
+    }
+  }
+}

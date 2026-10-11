@@ -205,7 +205,7 @@ def parse_sections(blob):
  pool=sections[0];require(pool and pool[0]==0 and pool[-1]==0,'Battle pool bounds');pool.decode('utf-8')
  return sections
 
-def stage_files(source,pack_path=Path('data/opening.encbattle')):
+def stage_files(source,pack_path=Path('battle/lamp/opening.encbattle')):
  pack_path=Path(pack_path);require(not pack_path.is_absolute() and '..' not in pack_path.parts,'Unsafe battle pack path')
  blob=(source/pack_path).read_bytes();sections=parse_sections(blob);pool=sections[0]
  files={pack_path:blob}
@@ -219,9 +219,9 @@ def stage_files(source,pack_path=Path('data/opening.encbattle')):
  return files
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('action',choices=['compile','verify'],nargs='?',default='compile');p.add_argument('--input',type=Path,default=ROOT/'content/native-battle.json');p.add_argument('--out',type=Path,default=ROOT/'romfs/data/opening.encbattle');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['compile','verify'],nargs='?',default='compile');p.add_argument('--input',type=Path,default=ROOT/'content/native-battle.json');p.add_argument('--out',type=Path,default=ROOT/'romfs/battle/lamp/opening.encbattle');a=p.parse_args()
  try:
-  ir=json.loads(a.input.read_text());verify_sources(ir);assets=json.loads((ROOT/ir['presentation']['asset_receipt_path']).read_text());tables=lower(ir,assets,(ROOT/'romfs/data/opening.encroom').read_bytes());blob=encode(tables,ir['commit']);parse_sections(blob)
+  ir=json.loads(a.input.read_text());verify_sources(ir);assets=json.loads((ROOT/ir['presentation']['asset_receipt_path']).read_text());tables=lower(ir,assets,(ROOT/'romfs/world/house/opening.encroom').read_bytes());blob=encode(tables,ir['commit']);parse_sections(blob)
   if a.action=='compile':a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_bytes(blob);(ROOT/'build/battle-content-manifest.json').write_text(json.dumps({'schema':1,'ir_sha256':digest(a.input),'bytes':len(blob),'sha256':hashlib.sha256(blob).hexdigest(),'roles':tables['roles'],'sections':{k:len(v)for k,v in tables.items()if k not in ('roles','version')}},indent=2)+'\n')
   else:require(a.out.read_bytes()==blob,'Battle pack stale or changed')
   print('Battle content:',len(blob),'bytes; external data only')

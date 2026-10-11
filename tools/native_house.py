@@ -188,12 +188,12 @@ def validate(t,version=4):
  for c in t['StoryConditions']:require(c[0]in[1,2]and bool(string(c[1]))and c[2]in[0,1],'House story condition')
 
 def stage_files(source):
- blob=(source/'data/opening.enchouse').read_bytes();t=parse_pack(blob);p=t['Strings'];out={Path('data/opening.enchouse'):blob}
+ blob=(source/'world/house/opening.enchouse').read_bytes();t=parse_pack(blob);p=t['Strings'];out={Path('world/house/opening.enchouse'):blob}
  for r in t['Resources']:
   path=p[r[1]:p.index(0,r[1])].decode();require(safe_path(path),'House staged path');full=(source/path).resolve();require(full.is_relative_to(source.resolve()),'House staged escape');data=full.read_bytes();require(hashlib.sha256(data).digest()==r[7],'House staged hash');out[Path(path)]=data
  return out
 def main():
- p=argparse.ArgumentParser();p.add_argument('action',nargs='?',choices=['compile','verify'],default='compile');p.add_argument('--input',type=Path,default=ROOT/'content/native-house.json');p.add_argument('--presentation',type=Path,default=ROOT/'content/native-house-presentation.json');p.add_argument('--out',type=Path,default=ROOT/'romfs/data/opening.enchouse');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('action',nargs='?',choices=['compile','verify'],default='compile');p.add_argument('--input',type=Path,default=ROOT/'content/native-house.json');p.add_argument('--presentation',type=Path,default=ROOT/'content/native-house-presentation.json');p.add_argument('--out',type=Path,default=ROOT/'romfs/world/house/opening.enchouse');a=p.parse_args()
  try:
   ir=json.loads(a.input.read_text());pres=json.loads(a.presentation.read_text());verify_sources(ir,pres);t=lower(ir,pres);blob=encode(t,ir['commit'],ir['schema']);parse_pack(blob)
   if a.action=='compile':

@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / 'tools'))
 from tools.extract_battle_entry import Extractor, PIN, node, one, properties, require
 
 IR = 'content/native-house-inspections.json'
-PACK = 'romfs/data/opening.encinspect'
+PACK = 'romfs/world/house/opening.encinspect'
 REPORT = 'reports/house-inspections/source-review.json'
 HOUSE = 'Maps/podunk/Nintens House.tscn'
 SCENE = 'Nodes/Reusables/interact_dialog.tscn'
@@ -210,10 +210,10 @@ def stage_files(source):
     source=Path(source)
     ir=load(ROOT)
     expected=encode(lower(ir,read_json(ROOT/'content/native-house.json')))
-    blob=(source/'data/opening.encinspect').read_bytes()
+    blob=(source/'world/house/opening.encinspect').read_bytes()
     parse_pack(blob)
     require(blob==expected,'Staged inspection binary differs from reviewed source/House bindings')
-    return {Path('data/opening.encinspect'):blob}
+    return {Path('world/house/opening.encinspect'):blob}
 
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('action',choices=('extract','compile','verify')); args=parser.parse_args()

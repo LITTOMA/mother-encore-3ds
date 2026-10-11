@@ -10,7 +10,7 @@ from tools.extract_battle_entry import Extractor,require,one,node,properties
 from tools.upstream import read_json,write_json
 from tools.menu_audio_binding import source_sound
 from tools import save_menu_assets
-RECIPE=ROOT/'content/native-continue.json';PACK=ROOT/'romfs/data/opening.enccontinue';REPORT=ROOT/'reports/continue-menu'
+RECIPE=ROOT/'content/native-continue.json';PACK=ROOT/'romfs/ui/opening.enccontinue';REPORT=ROOT/'reports/continue-menu'
 
 def checked_bindings():return load_ui_bindings('continue-presentation-bindings.json',BINDING_SCHEMA,ROOT,expected_checks=66,expected_contracts=106)
 BINDING_SCHEMA={'source_0':str,'source_1':str,'source_2':str,'source_3':str,'source_4':str,'source_5':str,'source_6':str,'source_7':str,'source_8':str,'source_9':str,'source_10':str,'source_11':str,'source_12':str,'source_13':str,'source_14':str,'source_15':str,'source_16':str,'source_17':str,'source_18':str,'node_0':str,'node_1':str,'node_2':str,'node_3':str,'node_4':str,'node_5':str,'node_6':str,'node_7':str,'node_8':str,'node_9':str,'node_10':str,'node_11':str,'node_12':str,'viewport':[int,int],'translation_keys':[str,str,str,str],'sheets':[[str,str,[int,int],int],[str,str,[int,int],int],[str,str,[int,int],int]],'sheet_root':str,'title_node_root':str,'options':[[str,str],[str,str],[str,str],[str,str]],'menu_node_root':str,'animation_ids':[int,int,int,int],'fade_animations':[[str,int],[str,int],[str,int],[str,int]],'cursor_size':[float,float],'selected_cursor_tracks':[int,int,int,int],'instant_visibility_tracks':[int,int,int],'final_hidden_tracks':[int,int,int,int,int,int,int,int,int,int,int,int,int,int,int],'shader_material':int,'selected_animation':int,'sounds':[str,str,str,str],'music_root':str,'background_color':int,'font_outline':int,'font_char_spacing':int,'font_space_spacing':int,'resource_root':str,'resource_suffix':str,'background_name':str,'layer_name_prefix':str,'selected_name_suffix':str,'tint_tracks':[int,int]}
@@ -149,7 +149,7 @@ def assets(tex3ds,godot):
  ex,r,probe=extract();build=ROOT/'build/continue-assets';build.mkdir(parents=True,exist_ok=True);REPORT.mkdir(parents=True,exist_ok=True);(ROOT/'romfs/graphics/ui/continue').mkdir(parents=True,exist_ok=True)
  write_json(build/'input.json',probe);(build/b['source_18']).write_text('config_version=4\n[logging]\nfile_logging/enable_logging=false\n');(build/'probe.gd').write_text(PROBE)
  run=subprocess.run([str(godot.resolve()),'--path',str(build.resolve()),'-s','probe.gd'],capture_output=True,text=True,timeout=30,env=dict(os.environ,XDG_DATA_HOME=str(build/'userdata')));(REPORT/'native-reference.log').write_text(run.stdout+run.stderr);require(run.returncode==0 and 'CONTINUE_REFERENCE_OK'in run.stdout,'Continue native reference failed')
- ref=read_json(build/'reference.json');require(ref['engine']['hash']=='3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8','Unknown Godot');write_json(REPORT/'native-layout.json',ref);(REPORT/'native-fade-oracle.txt').write_text(''.join(' '.join(str(v)for v in row)+'\n'for row in ref['fades']));r['viewports']=ref['viewports'];r['native_reference_sha256']=sha(REPORT/'native-layout.json');r['dependencies']={'content/native-save-menu.json':sha(save_menu_assets.RECIPE),'romfs/data/opening.encsavemenu':sha(save_menu_assets.PACK)};r['outputs']={}
+ ref=read_json(build/'reference.json');require(ref['engine']['hash']=='3cd3caab6779a7f3ec3bbeb9f200db50c735cfc8','Unknown Godot');write_json(REPORT/'native-layout.json',ref);(REPORT/'native-fade-oracle.txt').write_text(''.join(' '.join(str(v)for v in row)+'\n'for row in ref['fades']));r['viewports']=ref['viewports'];r['native_reference_sha256']=sha(REPORT/'native-layout.json');r['dependencies']={'content/native-save-menu.json':sha(save_menu_assets.RECIPE),'romfs/ui/opening.encsavemenu':sha(save_menu_assets.PACK)};r['outputs']={}
  for a in r['resources']:
   img=Image.open(ex.upstream/a['source']).convert('RGBA')
   if a['crop']:x,y,w,h=a['crop'];img=img.crop((x,y,x+w,y+h))
@@ -198,8 +198,8 @@ def compile_pack(r=None):
 def stage_files(source_root):
  global b;b=checked_bindings()
  r=read_json(RECIPE);verify_recipe(r);root=Path(source_root).resolve();out={}
- for name in ['data/opening.enccontinue']+list(r['outputs']):
-  rel=Path(name);require(not rel.is_absolute()and'..'not in rel.parts and'\\'not in name and':'not in name,'Continue stage path');p=(root/rel).resolve();require(p.is_relative_to(root),'Continue stage path escape');raw=p.read_bytes();require(raw==encode(r)if name=='data/opening.enccontinue'else hashlib.sha256(raw).hexdigest()==r['outputs'][name]['sha256'],'Stale Continue staged bytes');out[rel]=raw
+ for name in ['ui/opening.enccontinue']+list(r['outputs']):
+  rel=Path(name);require(not rel.is_absolute()and'..'not in rel.parts and'\\'not in name and':'not in name,'Continue stage path');p=(root/rel).resolve();require(p.is_relative_to(root),'Continue stage path escape');raw=p.read_bytes();require(raw==encode(r)if name=='ui/opening.enccontinue'else hashlib.sha256(raw).hexdigest()==r['outputs'][name]['sha256'],'Stale Continue staged bytes');out[rel]=raw
  return out
 if __name__=='__main__':
  ap=argparse.ArgumentParser();ap.add_argument('command',choices=['assets','compile','verify']);ap.add_argument('--tex3ds',type=Path,default=Path(os.environ.get('DEVKITPRO','/opt/devkitpro'))/'tools/bin/tex3ds');ap.add_argument('--godot',type=Path,default=Path('/workspace/scratch/c6ba063dd54d/toolchain/godot-3.6.2/Godot_v3.6.2-stable_linux_headless.64'));a=ap.parse_args()

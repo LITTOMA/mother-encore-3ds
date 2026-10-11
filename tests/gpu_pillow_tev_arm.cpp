@@ -17,7 +17,7 @@ void state(bool correction){
  else C3D_AlphaBlend(GPU_BLEND_ADD,GPU_BLEND_ADD,GPU_ONE,GPU_ZERO,GPU_ONE,GPU_ZERO);
 }
 bool run(FILE* log){
- encore::upstream::BattleData data;std::string error;if(!data.load_file("romfs:/data/pillow-entry.encbattle",error))return false;
+ encore::upstream::BattleData data;std::string error;if(!data.load_file("romfs:/battle/pillow/pillow-entry.encbattle",error))return false;
  auto view=data.view();auto resource=view.resource(view.background(0).resource);gpu_span::Image image;if(!gpu_span::image("romfs:/"+std::string(view.string(resource.path)),resource,image)||image.palette.size()!=6)return false;
  auto* target=C3D_RenderTargetCreate(64,64,GPU_RB_RGBA8,-1);auto* readback=static_cast<uint32_t*>(linearAlloc(64*64*4));auto* vertices=static_cast<Vertex*>(linearAlloc(36*6*sizeof(Vertex)));
  C3D_Tex half{},parity{};if(!target||!readback||!vertices||!C3D_TexInit(&half,8,8,GPU_RGBA8)||!C3D_TexInit(&parity,8,8,GPU_RGBA8))return false;

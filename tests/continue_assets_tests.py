@@ -41,8 +41,8 @@ class ContinueAssetsTests(unittest.TestCase):
   with tempfile.TemporaryDirectory()as temp:
    root=Path(temp)/'romfs';root.mkdir()
    for p,b in files.items():target=root/p;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(b)
-   pack=root/'data/opening.enccontinue';pack.write_bytes(pack.read_bytes()+b'x')
+   pack=root/'ui/opening.enccontinue';pack.write_bytes(pack.read_bytes()+b'x')
    with self.assertRaises(ValueError):c.stage_files(root)
-   pack.write_bytes(files[Path('data/opening.enccontinue')]);asset=next(p for p in files if p.suffix=='.t3x');outside=Path(temp)/'outside';outside.write_bytes(files[asset]);(root/asset).unlink();(root/asset).symlink_to(outside)
+   pack.write_bytes(files[Path('ui/opening.enccontinue')]);asset=next(p for p in files if p.suffix=='.t3x');outside=Path(temp)/'outside';outside.write_bytes(files[asset]);(root/asset).unlink();(root/asset).symlink_to(outside)
    with self.assertRaises(ValueError):c.stage_files(root)
 if __name__=='__main__':unittest.main()

@@ -248,14 +248,14 @@ def validate(t):
   r=t['Media'][jump][3];require(r<len(t['Resources'])and t['Resources'][r][2]==1,'Round return party resource')
   frames=par['ReturnPartyFrames'];require(all(0<=f<t['Resources'][r][5]*t['Resources'][r][6]and f.is_integer()for f in frames[:2])and frames[2:]==(0,0),'Round return party frame')
 
-def stage_files(source,pack_path=Path('data/opening.encround')):
+def stage_files(source,pack_path=Path('battle/lamp/opening.encround')):
  blob=(source/pack_path).read_bytes();tables=parse_pack(blob);pool=tables['Strings'];result={pack_path:blob}
  for r in tables['Resources']:
   path=pool[r[1]:pool.index(0,r[1])].decode();require(safe_path(path),'Round staged path');full=(source/path).resolve();require(full.is_relative_to(source.resolve()),'Round staged escape');data=full.read_bytes();require(hashlib.sha256(data).digest()==r[7],'Round staged hash');result[Path(path)]=data
  return result
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('action',nargs='?',choices=['compile','verify'],default='compile');p.add_argument('--input',type=Path,default=ROOT/'content/native-round.json');p.add_argument('--out',type=Path,default=ROOT/'romfs/data/opening.encround');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('action',nargs='?',choices=['compile','verify'],default='compile');p.add_argument('--input',type=Path,default=ROOT/'content/native-round.json');p.add_argument('--out',type=Path,default=ROOT/'romfs/battle/lamp/opening.encround');a=p.parse_args()
  try:
   ir=json.loads(a.input.read_text());verify_sources(ir);tables=lower(ir);blob=encode(tables,ir['commit']);parse_pack(blob)
   if a.action=='compile':

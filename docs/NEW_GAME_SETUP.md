@@ -62,7 +62,7 @@ they do not remain resident alongside normal gameplay textures.
 ## Data and source checks
 
 `tools/new_game_assets.py` produces `content/native-new-game.json`, the checked
-`romfs/data/opening.encnewgame`, and two original-font keyboard texture layers.
+`romfs/ui/opening.encnewgame`, and two original-font keyboard texture layers.
 It reuses the checked Plain box, cursor, Ninten and shadow textures. Content,
 translations, source animation keys, limits, layout, blacklist, defaults and
 battle bindings are external resources, not C++ game-content tables.

@@ -77,7 +77,7 @@ struct Content {
     std::vector<encore::FrozenBackgroundKernel::Layer> layers;
     std::vector<encore::ScalarBackgroundKernel::Layer> scalar_layers;
     bool load(const std::string& root,std::string& error){
-        if(!data.load_file((root+"/data/doll-entry.encbattle").c_str(),error))return false;
+        if(!data.load_file((root+"/battle/doll/doll-entry.encbattle").c_str(),error))return false;
         const auto view=data.view();
         if(view.count(encore::upstream::BattleSection::Backgrounds)!=2){error="Expected checked two-layer fixture";return false;}
         source.resize(2);palette.resize(2);

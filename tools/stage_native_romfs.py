@@ -12,12 +12,18 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
     source=ROOT/'romfs';target=ROOT/'build/ctr/native-romfs'
     from resource_catalog import decode, stage_files as catalog_files
-    catalog=decode((source/'data/native.encresources').read_bytes())
+    catalog=decode((source/'system/native.encresources').read_bytes())
     catalog_bindings={b['id']:b['path'] for b in catalog['bindings']}
     companions={catalog_bindings[e['battle_id']]:catalog_bindings[e['round_id']] for e in catalog['encounters']}
-    blob=(source/'data/opening.encroom').read_bytes();room=parse_pack(blob)
-    files={Path('data/opening.encroom'):blob}
+    blob=(source/'world/house/opening.encroom').read_bytes();room=parse_pack(blob)
+    files={Path('world/house/opening.encroom'):blob}
     files.update(audio_files(source))
+    from gameplay_audio import stage_files as gameplay_audio_files
+    files.update(gameplay_audio_files(source))
+    from music_zones import stage_files as music_zone_files
+    from podunk_music import stage_files as music_files
+    files.update(music_zone_files(source))
+    files.update(music_files(source))
     files.update(battle_files(source))
     files.update(round_files(source))
     files.update(house_files(source))

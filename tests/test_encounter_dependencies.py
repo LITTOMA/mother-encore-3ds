@@ -89,7 +89,7 @@ class EncounterDependenciesTests(unittest.TestCase):
     def test_existing_checked_pairs_adapt(self):
         result = e.adapt_compiled_dependencies(self.doc, [LAMP,DOLL,PILLOW], 42, ROOT)
         self.assertEqual(result['scene_epoch'], 42)
-        self.assertEqual([p['battle_pack'] for p in result['encounters']], ['data/opening.encbattle','data/doll-entry.encbattle','data/pillow-entry.encbattle'])
+        self.assertEqual([p['battle_pack'] for p in result['encounters']], ['battle/lamp/opening.encbattle','battle/doll/doll-entry.encbattle','battle/pillow/pillow-entry.encbattle'])
         self.assertTrue(all(set(p) == {'key','battle_pack','round_pack'} for p in result['encounters']))
 
     def test_source_scene_and_multi_enemy_fail_readiness(self):
@@ -144,7 +144,7 @@ class EncounterDependenciesTests(unittest.TestCase):
     def test_battle_round_mismatch_rejected(self):
         formation = self.formations[LAMP]
         binding = dict(formation['compiled']['source_binding'])
-        binding['round_pack'] = 'data/doll-entry.encround'
+        binding['round_pack'] = 'battle/doll/doll-entry.encround'
         with self.assertRaisesRegex(e.DependencyError, 'pair bytes'):
             e.checked_pair(ROOT, binding, formation, e.Compiler(ROOT))
 

@@ -58,6 +58,6 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.rejects('Keys',0,2,0)
     def test_actual_staged_resources(self):
         files=pack.stage_files(ROOT/'romfs')
-        self.assertEqual(files[Path('data/opening.encfield')],self.blob)
+        self.assertEqual(files[Path('ui/opening.encfield')],self.blob)
         self.assertEqual(len(files),1+len(self.ir['resources']))
 if __name__=='__main__':unittest.main()

@@ -8,7 +8,7 @@ from tools.extract_battle_entry import Extractor,node,one,animation,require,prop
 from tools.source_settings import choices
 from tools.save_menu_assets import normalize
 from tools.startup_settings_bindings import load as load_bindings, inherited_label, texture
-IR=ROOT/'content/native-startup-settings.json';PACK=ROOT/'romfs/data/opening.encsettings'
+IR=ROOT/'content/native-startup-settings.json';PACK=ROOT/'romfs/ui/opening.encsettings'
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def rect(p):
  x,y=p.get('margin_left',0),p.get('margin_top',0);return [x,y,p.get('margin_right',0)-x,p.get('margin_bottom',0)-y]
@@ -102,7 +102,7 @@ def encode(r):
  return struct.pack('<8s4I',b'ENCSETUI',2,24+len(raw),zlib.crc32(raw),1)+raw
 
 def stage_files(root):
- r=json.loads(IR.read_text());base=extract();require({k:v for k,v in r.items()if k!='outputs'}==base,'Settings source recipe changed');files={Path('data/opening.encsettings'):(Path(root)/'data/opening.encsettings').read_bytes()};require(files[Path('data/opening.encsettings')]==encode(r),'Settings pack stale')
+ r=json.loads(IR.read_text());base=extract();require({k:v for k,v in r.items()if k!='outputs'}==base,'Settings source recipe changed');files={Path('ui/opening.encsettings'):(Path(root)/'ui/opening.encsettings').read_bytes()};require(files[Path('ui/opening.encsettings')]==encode(r),'Settings pack stale')
  for p,d in r['outputs'].items():
   raw=(Path(root)/p).read_bytes();require(hashlib.sha256(raw).hexdigest()==d,'Settings texture changed');files[Path(p)]=raw
  return files

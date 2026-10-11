@@ -4,7 +4,7 @@
 
 ## 原生入口资源绑定
 
-`content/native-resource-catalog.json` 声明原生入口的稳定资源角色、相对路径和显式 battle / round 配对。它是已支持范围的原生连接适配数据，不是上游 Godot 文件格式，也不增加玩法范围。`tools/resource_catalog.py` 核对来源指纹，从现有受检二进制生成 `data/native.encresources`，记录各文件大小与 CRC。普通编译不重新提取或覆盖 IR。
+`content/native-resource-catalog.json` 声明原生入口的稳定资源角色、相对路径和显式 battle / round 配对。它是已支持范围的原生连接适配数据，不是上游 Godot 文件格式，也不增加玩法范围。`tools/resource_catalog.py` 核对来源指纹，从现有受检二进制生成 `system/native.encresources`，记录各文件大小与 CRC。普通编译不重新提取或覆盖 IR。
 
 共享加载器拒绝未知版本、能力、来源身份和角色、重复身份 / 路径、非法路径 / 后缀、坏配对、截断、损坏与非零保留字段。失败保留既有目录。启动在构造游戏流程前检查目录引用的文件；内容仍需经过各自的语义加载器。CRC 用于损坏检测，不是认证。目录拥有路径字符串，启动后保持不变，RomFS 不提供覆盖或热更新。
 
@@ -73,10 +73,10 @@ Continue、Save 和按钮提示分别使用 `continue-presentation-bindings.json
 
 ## Podunk 室外场景
 
-`content/podunk-field.json` 声明场景类别、物件精灵、跨场景路线、语言与输出路径；格子、图块形状、精灵、门与边界在每次编译时直接从固定上游提取（批量数据例外见 [ARCHITECTURE](ARCHITECTURE.md)）。`tools/podunk_field.py` 生成 `data/podunk.encmap`（ENCMAP01）、`data/podunk.encroom`、`data/world.enclinks`（ENCLNK01）与 `graphics/world/podunk` 图集，收据位于 `content/asset-receipts/graphics/world/podunk/source.json`。能力 2 的 FieldRoom / FieldMap / WorldLinks 与能力 3 的 HousePresents 绑定位于独立的 `content/extension-resource-catalog.json`，由 `tools/resource_catalog.py` 与基础目录配方合并；开局房间 IR 固定的基础配方字节不变。房屋礼物盒见 [房屋礼物盒](HOUSE_PRESENTS.md)。房屋 `.enchouse`、存档编码格式与既有身份不变；Session 资源格式 6 增加钥匙物品获取策略。旗标按名称与稳定 ID 跨场景，Podunk 房间必须携带与房屋相同的旗标表。范围与限制见 [PODUNK_FIELD](PODUNK_FIELD.md)。
+`content/podunk-field.json` 声明场景类别、物件精灵、跨场景路线、语言与输出路径；格子、图块形状、精灵、门与边界在每次编译时直接从固定上游提取（批量数据例外见 [ARCHITECTURE](ARCHITECTURE.md)）。`tools/podunk_field.py` 生成 `world/podunk/podunk.encmap`（ENCMAP01）、`world/podunk/podunk.encroom`、`world/world.enclinks`（ENCLNK01）与 `graphics/world/podunk` 图集，收据位于 `content/asset-receipts/graphics/world/podunk/source.json`。能力 2 的 FieldRoom / FieldMap / WorldLinks 与能力 3 的 HousePresents 绑定位于独立的 `content/extension-resource-catalog.json`，由 `tools/resource_catalog.py` 与基础目录配方合并；开局房间 IR 固定的基础配方字节不变。房屋礼物盒见 [房屋礼物盒](HOUSE_PRESENTS.md)。房屋 `.enchouse`、存档编码格式与既有身份不变；Session 资源格式 6 增加钥匙物品获取策略。旗标按名称与稳定 ID 跨场景，Podunk 房间必须携带与房屋相同的旗标表。范围与限制见 [PODUNK_FIELD](PODUNK_FIELD.md)。
 
 ## 自由行走装备菜单
 
-`native-field-equipment.json` / `field-equipment-assets.json` 从固定上游 Pause / Equip 场景、脚本、动画、翻译、库存与角色属性提取完整局部来源。`field_equipment.py` 普通编译重新对照来源与 IR，编译独立 `data/opening.encfield`（ENCFIE01，格式 / 能力 1），纹理归入 `graphics/ui/equipment`。`field-audio-binding.json` 补入两个原版 Pause 音效，其他菜单音效复用受检音频 bank 的稳定身份；PCM 位于 `sound/effects`。JSON、转换配方及收据均不进入 RomFS。
+`native-field-equipment.json` / `field-equipment-assets.json` 从固定上游 Pause / Equip 场景、脚本、动画、翻译、库存与角色属性提取完整局部来源。`field_equipment.py` 普通编译重新对照来源与 IR，编译独立 `ui/opening.encfield`（ENCFIE01，格式 / 能力 1），纹理归入 `graphics/ui/equipment`。`field-audio-binding.json` 补入两个原版 Pause 音效，其他菜单音效复用受检音频 bank 的稳定身份；PCM 位于 `sound/effects`。JSON、转换配方及收据均不进入 RomFS。
 
 共享消费者执行六项 Pause 命令的导航、已开放 Equip 的四槽、适用库存与 None、来源七项属性预览及确认。3DS 平台以独立候选库存与既有 Session 派生机制校验后提交，UID、剂量、物品数量、存档编码与随机流保持原有身份。其他命令、队员、装备、物品使用仍受限；具体范围见 [FIELD_EQUIPMENT](FIELD_EQUIPMENT.md)。

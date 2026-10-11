@@ -26,7 +26,7 @@ def fixtures():
     assert baseline == json.loads((ROOT / 'content/doll-round.json').read_text(encoding='utf-8'))
     tables = native_round.lower(baseline, root=ROOT)
     original = native_round.encode(tables)
-    assert original == (ROOT / 'romfs/data/doll-entry.encround').read_bytes()
+    assert original == (ROOT / 'romfs/battle/doll/doll-entry.encround').read_bytes()
     candidate = copy.deepcopy(recipe)
     candidate['animations']['enemy_defeat']['anchor'] = [.25, .5]
     candidate['animations']['defeat_flash']['anchor'] = [.125, .25]

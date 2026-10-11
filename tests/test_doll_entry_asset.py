@@ -13,7 +13,7 @@ class DollEntryAssetTests(unittest.TestCase):
  def test_deterministic_bundle_and_safe_staging(self):
   self.assertEqual(self.blob,doll.PACK.read_bytes());self.assertEqual(struct.unpack_from('<I',self.blob,8)[0],2)
   self.assertEqual(self.blob,native.encode(native.lower(self.ir,self.assets),self.ir['commit']))
-  files=native.stage_files(ROOT/'romfs',Path('data/doll-entry.encbattle'))
+  files=native.stage_files(ROOT/'romfs',Path('battle/doll/doll-entry.encbattle'))
   self.assertEqual(len(files),len(self.tables['resources'])+1);self.assertIn(Path('graphics/ui/house/doll.t3x'),files)
   with self.assertRaises(native.ContentError):native.stage_files(ROOT/'romfs',Path('../else'))
  def test_lossless_background_and_palette(self):

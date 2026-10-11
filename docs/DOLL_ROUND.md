@@ -4,7 +4,7 @@ Pinned source: `7d9246600fffe518408f5830d4848635019005a3` (Act2v0.4.1.0).
 
 The Doll entry resource has battle ID 2. The previous round resource belonged to
 Lamp, battle ID 1, so using it at the Doll menu failed the checked participant
-binding. `data/doll-entry.encround` now supplies the independent Doll binding,
+binding. `battle/doll/doll-entry.encround` now supplies the independent Doll binding,
 original localized action text, 5:1 tackle/float AI, textures, boss presentation,
 and rewards. `opening.encround` retains its v2 format and bytes. The Doll pack
 uses v3 with checked Encounter, Growth, and BossShakes sections; execution and

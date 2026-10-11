@@ -13,7 +13,7 @@ from tools.extract_battle_entry import Extractor,require,one,node,properties
 from tools.upstream import read_json,write_json
 from tools.menu_audio_binding import source_sound
 from tools.naming_presentation_bindings import load as load_presentation,check as check_presentation,IR as PRESENTATION_IR
-IR=ROOT/'content/native-new-game.json';PACK=ROOT/'romfs/data/opening.encnewgame';REPORT=ROOT/'reports/new-game-setup'
+IR=ROOT/'content/native-new-game.json';PACK=ROOT/'romfs/ui/opening.encnewgame';REPORT=ROOT/'reports/new-game-setup'
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def rect(p):
  x,y=p.get('margin_left',0),p.get('margin_top',0);return [x,y,p.get('margin_right',0)-x,p.get('margin_bottom',0)-y]
@@ -276,7 +276,7 @@ def verify(r):
  for p,v in r['outputs'].items():require(sha(ROOT/'romfs'/p)==v['sha256'],'Changed naming texture '+p)
 
 def stage_files(root):
- r=read_json(IR);verify(r);files={Path('data/opening.encnewgame'):(Path(root)/'data/opening.encnewgame').read_bytes()};require(files[Path('data/opening.encnewgame')]==encode(r),'Stale naming pack')
+ r=read_json(IR);verify(r);files={Path('ui/opening.encnewgame'):(Path(root)/'ui/opening.encnewgame').read_bytes()};require(files[Path('ui/opening.encnewgame')]==encode(r),'Stale naming pack')
  for p,v in r['outputs'].items():
   path=Path(p);require(not path.is_absolute()and'..'not in path.parts,'Unsafe name resource');raw=(Path(root)/path).read_bytes();require(hashlib.sha256(raw).hexdigest()==v['sha256'],'Staged naming texture mismatch');files[path]=raw
  return files

@@ -400,7 +400,7 @@ def checked_pair(root, binding, formation, source):
     try:
         native_battle.ROOT = native_round.ROOT = root
         assets = json.loads((root / entry['presentation']['asset_receipt_path']).read_text())
-        expected_battle = native_battle.encode(native_battle.lower(entry, assets, (root / 'romfs/data/opening.encroom').read_bytes()), PIN)
+        expected_battle = native_battle.encode(native_battle.lower(entry, assets, (root / 'romfs/world/house/opening.encroom').read_bytes()), PIN)
         expected_round = native_round.encode(native_round.lower(round_ir), PIN)
     finally:
         native_battle.ROOT, native_round.ROOT = old_battle, old_round

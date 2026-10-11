@@ -112,7 +112,8 @@ class Extractor:
             self.reviews[name] = review
 
     def file(self, relative, expected=None):
-        path = self.root / relative
+        from tools.runtime_layout import source_path
+        path = self.root / source_path(relative, self.root)
         digest = sha(path)
         require(expected is None or digest == expected, 'Changed unreviewed input: ' + relative)
         self.sources[relative] = digest

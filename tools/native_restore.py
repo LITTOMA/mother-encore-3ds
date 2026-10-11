@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.extract_battle_entry import Extractor, node, one, properties, require
 IR=ROOT/'content/native-restore.json'
-PACK=ROOT/'romfs/data/opening.encrestore'
+PACK=ROOT/'romfs/session/opening.encrestore'
 NO_INDEX=0xffffffff
 HOUSE='Maps/podunk/Nintens House.tscn'
 
@@ -87,7 +87,7 @@ def extract():
  ex.text('Scripts/Main/Flag Landmarks.gd');ex.text('Nodes/Reusables/flag landmarks.tscn')
  ex.text('Scripts/Main/Openable Door.gd');ex.text('Scripts/Main/roomshaker.gd')
  ex.text('Maps/Testing/phone.gd');ex.text('Scripts/global/SceneTransition.gd')
- dependencies=['content/native-opening.json','content/native-house.json','romfs/data/opening.encroom','romfs/data/opening.enchouse']
+ dependencies=['content/native-opening.json','content/native-house.json','romfs/world/house/opening.encroom','romfs/world/house/opening.enchouse']
  fingerprints={name:dict(bytes=(ROOT/path).stat().st_size,sha256=digest(ROOT/path))for name,path in [('room',dependencies[2]),('house',dependencies[3])]}
  result=dict(schema=1,kind='encore.native-restore.source-ir',commit=ex.lock['commit'],sources=ex.sources,dependencies={p:digest(ROOT/p)for p in dependencies},fingerprints=fingerprints,scene_id=room['sections']['Scene'][0]['stable_id'],scene_path=room['strings'][room['sections']['Scene'][0]['source_scene_string']],npc_event_positions=npcs,music_areas=areas,inventory_load_order=orders,uid_policy=1,projection_policy='Absent native characters retain frozen source initial inventories; this is a bounded native save projection, not original missing-character fallback.',existing_coverage={'authored_npc_positions':'House Npcs and Room ActorInstance remain authoritative; reinstantiate every load','landmark_deletion':'Room DeferredFlagBodyDeletion and existing Room/House trigger conditions; refresh then scene-frame flush','unsupported_landmarks':'Door NPC remains outside the native slice; optional Pillow/Minnie trigger lifetimes are handled by checked House conditions','phone_and_roomshaker':'Fresh instances start idle; flags alone do not start their animations/timers'})
  validate(result,room,house);return result
@@ -98,7 +98,7 @@ def validate(r,room=None,house=None):
  room=room or read(ROOT/'content/native-opening.json');house=house or read(ROOT/'content/native-house.json')
  require(r['commit']==room['upstream_commit']==house['commit'],'Restore source pin mismatch')
  require(r['scene_id']==room['sections']['Scene'][0]['stable_id'] and r['scene_path']==room['strings'][room['sections']['Scene'][0]['source_scene_string']],'Restore scene binding rejected')
- for name,path in [('room','romfs/data/opening.encroom'),('house','romfs/data/opening.enchouse')]:
+ for name,path in [('room','romfs/world/house/opening.encroom'),('house','romfs/world/house/opening.enchouse')]:
   fields(r['fingerprints'][name],['bytes','sha256'],'fingerprint');require(r['fingerprints'][name]==dict(bytes=(ROOT/path).stat().st_size,sha256=digest(ROOT/path)),'Restore dependency fingerprint changed')
  def condition(c):
   fields(c,['flag_index','flag_id','flag_name','expected_value'],'condition');require(type(c['flag_index'])is int and 0<=c['flag_index']<len(room['sections']['Flag']) and type(c['expected_value'])is bool,'Restore condition index/value')
@@ -153,7 +153,7 @@ def encode(r):
 
 def verify_recipe(r):require(r==extract(),'Restore recipe differs from pinned source or reviewed scope')
 def stage_files(source_root):
- r=read(IR);verify_recipe(r);root=Path(source_root).resolve();relative=Path('data/opening.encrestore');target=(root/relative).resolve();require(target.is_relative_to(root),'Restore stage path escapes root');raw=target.read_bytes();require(raw==encode(r),'Stale staged restore pack');return {relative:raw}
+ r=read(IR);verify_recipe(r);root=Path(source_root).resolve();relative=Path('session/opening.encrestore');target=(root/relative).resolve();require(target.is_relative_to(root),'Restore stage path escapes root');raw=target.read_bytes();require(raw==encode(r),'Stale staged restore pack');return {relative:raw}
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('action',choices=['extract','compile','verify'],nargs='?',default='compile');a=ap.parse_args()
  if a.action=='extract':r=extract();IR.write_text(json.dumps(r,indent=2)+'\n')

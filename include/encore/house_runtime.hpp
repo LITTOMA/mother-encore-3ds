@@ -53,6 +53,7 @@ public:
  bool get_phone_flag(uint32_t,bool&)const override;
  bool play_phone_sound(const PhoneSoundRequest&)override;
  const std::vector<PhoneSoundRequest>&phone_sounds()const{return phone_sounds_;}
+ std::vector<PhoneSoundRequest>take_phone_sounds(){auto result=std::move(phone_sounds_);phone_sounds_.clear();return result;}
  bool before_physics(WalkInput&);
  bool after_physics();
  bool idle_frame(double delta,bool accept,bool cancel);

@@ -24,7 +24,7 @@ from tools.phone_dialogue import write_json
 from tools.menu_audio_binding import source_sound
 
 RECIPE = ROOT / 'content/native-dialogue-choices.json'
-PACK = ROOT / 'romfs/data/opening.encchoices'
+PACK = ROOT / 'romfs/ui/opening.encchoices'
 REPORT = ROOT / 'reports/dad-record'
 SOURCES = ['Nodes/Ui/DialogueBox.tscn', 'Nodes/Ui/DialogueOptions.tscn', 'Nodes/Ui/arrow.tscn',
            'Scripts/UI/DialogueBox.gd', 'Scripts/UI/AbstractDialogueBox.gd', 'Scripts/UI/cursor.gd',
@@ -243,13 +243,13 @@ def stage_files(source_root):
     verify_recipe(recipe)
     root = Path(source_root).resolve()
     out = {}
-    for name in ('data/opening.encchoices', recipe['arrow_resource']['path'], recipe['font_path']):
+    for name in ('ui/opening.encchoices', recipe['arrow_resource']['path'], recipe['font_path']):
         p = Path(name)
         require(not p.is_absolute() and '..' not in p.parts and '\\' not in name and ':' not in name, 'Choice stage path rejected')
         target = (root / p).resolve()
         require(target.is_relative_to(root), 'Choice stage path escaped root')
         raw = target.read_bytes()
-        if name == 'data/opening.encchoices': require(raw == encode(recipe), 'Stale choice pack')
+        if name == 'ui/opening.encchoices': require(raw == encode(recipe), 'Stale choice pack')
         else: require(hashlib.sha256(raw).hexdigest() == recipe['dependencies']['romfs/' + name], 'Changed choice shared resource')
         out[p] = raw
     return out

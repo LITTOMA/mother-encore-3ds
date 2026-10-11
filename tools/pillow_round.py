@@ -15,7 +15,7 @@ from doll_round import digest, read, write, conditional_growth_policy, return_mu
 from pillow_entry_asset import POST_WIN
 
 IR = ROOT / 'content/pillow-round.json'
-PACK = ROOT / 'romfs/data/pillow-entry.encround'
+PACK = ROOT / 'romfs/battle/pillow/pillow-entry.encround'
 REPORT = ROOT / 'reports/pillow-battle'
 
 def build():
@@ -58,7 +58,7 @@ def build():
     victory.update(initial_exp=base['victory']['reward_exp'], initial_bank=base['victory']['reward_cash'], initial_earned_cash=base['victory']['reward_cash'],
                    reward_exp=enemy['exp'], reward_cash=enemy['cash'], exp_text=text('BATTLE_MSG_EXP_ONE_ALLY', 9, dict(name=name, value=enemy['exp'])))
     from native_content import parse_pack
-    room = parse_pack((ROOT / 'romfs/data/opening.encroom').read_bytes())
+    room = parse_pack((ROOT / 'romfs/world/house/opening.encroom').read_bytes())
     body = [b for b in room['sections']['BodyRule'] if room['strings'][b['source_path_string']] == 'Objects/pillow']
     require(len(body) == 1, 'Pillow body binding'); victory['enemy_body_id'] = body[0]['body_id']
     presentation = ir['presentation']; receipt = read(ROOT / 'content/asset-receipts/graphics/battle/pillow/source.json')

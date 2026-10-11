@@ -13,7 +13,7 @@ static void put(std::vector<uint8_t>&b,size_t p,uint32_t n){for(unsigned i=0;i<4
 static void fix(std::vector<uint8_t>&b){put(b,16,0);put(b,16,encore::crc32(b.data(),b.size()));}
 static uint32_t section(const std::vector<uint8_t>&b,ItemSection s){return get(b,64+(uint32_t(s)-1)*16+4);}
 int main(int argc,char**argv){
- const char*path=argc>1?argv[1]:"romfs/data/opening.encitems";std::string error;std::vector<uint8_t>b;CHECK(encore::read_file(path,b,1024*1024,error));
+ const char*path=argc>1?argv[1]:"romfs/ui/opening.encitems";std::string error;std::vector<uint8_t>b;CHECK(encore::read_file(path,b,1024*1024,error));
  ItemData data;CHECK(data.load_file(path,error));auto view=data.view();CHECK(view.valid());CHECK(view.metadata().capacity==16);CHECK(view.metadata().owner==1);CHECK(view.count(ItemSection::Definitions)==2);CHECK(view.count(ItemSection::Instances)==1);
  auto def=view.definition(0);CHECK(def.flags==uint32_t(ItemDefinitionFlag::Equipment));CHECK(def.equipment_slot==3&&def.can_use==1);CHECK(view.string(def.name)=="Baseball Cap");CHECK(!view.string(def.description).empty());CHECK(view.string(def.description).find('\n')!=std::string_view::npos);
  auto initial=view.initial_instance(0);CHECK(initial.definition==0&&initial.equipped==1&&initial.doses==1);CHECK(view.parameter(ItemParameter::GridShape).x==2&&view.parameter(ItemParameter::GridShape).y==5);CHECK(view.clip_for(ItemClipRole::Open)!=item_no_index&&view.clip_for(ItemClipRole::Close)!=item_no_index&&view.clip_for(ItemClipRole::CursorIdle)!=item_no_index);CHECK(view.layout_for(ItemLayoutRole::Panel)!=item_no_index);CHECK(view.sound_for(ItemSoundEvent::Move).audio_id>0);

@@ -52,8 +52,13 @@ class ResourceCatalogTests(unittest.TestCase):
         self.assertFalse(any(row['role'] in catalog.EXTENSION_ROLES for row in self.base['bindings']))
         self.assertEqual({row['role'] for row in self.fields['bindings']}, catalog.EXTENSION_ROLES)
         self.assertEqual(catalog.capability_for(self.base['bindings']), 1)
-        self.assertEqual(catalog.capability_for(self.ir['bindings']), 4)
-        without_mick = [row for row in self.ir['bindings'] if row['role'] != 'MickTreats']
+        self.assertEqual(catalog.capability_for(self.ir['bindings']), 5)
+        audio_roles={'GameplayAudio','FieldMusic','FieldAudio','FieldMusicZones'}
+        legacy=[row for row in self.ir['bindings'] if row['role'] not in audio_roles]
+        self.assertEqual(catalog.capability_for(legacy), 4)
+        for role in audio_roles:
+            self.reject(lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role']!=role]))
+        without_mick = [row for row in legacy if row['role'] != 'MickTreats']
         self.assertEqual(catalog.capability_for(without_mick), 3)
         without_presents = [row for row in without_mick if row['role'] != 'HousePresents']
         self.assertEqual(catalog.capability_for(without_presents), 2)
@@ -78,12 +83,12 @@ class ResourceCatalogTests(unittest.TestCase):
         reject(edit_fields=lambda ir: ir['bindings'].pop(0))
         reject(edit_fields=lambda ir: ir.update(bindings=[row for row in ir['bindings'] if row['role'] == 'HousePresents']))
         reject(edit_fields=lambda ir: ir['bindings'][3].update(id=35))
-        reject(edit_fields=lambda ir: ir['bindings'][3].update(path='data/opening.encroom'))
+        reject(edit_fields=lambda ir: ir['bindings'][3].update(path='world/house/opening.encroom'))
         reject(edit_fields=lambda ir: ir['bindings'].append(copy.deepcopy(ir['bindings'][0])))
         reject(edit_fields=lambda ir: ir['bindings'].append(dict(id=1, role='Room', path='data/other.encroom')))
         reject(edit_fields=lambda ir: ir['bindings'][0].update(id=30))
         reject(edit_fields=lambda ir: ir['bindings'][0].update(path=self.base['bindings'][0]['path']))
-        reject(edit_fields=lambda ir: ir['bindings'][1].update(path='data/podunk.encroom'))
+        reject(edit_fields=lambda ir: ir['bindings'][1].update(path='world/podunk/podunk.encroom'))
         reject(edit_fields=lambda ir: ir['sources'].update({'project.godot': '0' * 64}))
         reject(edit_base=lambda ir: ir['bindings'].append(copy.deepcopy(self.fields['bindings'][0])))
         candidate = copy.deepcopy(self.fields)
@@ -118,7 +123,7 @@ class ResourceCatalogTests(unittest.TestCase):
     def test_introduction_optional_singleton_and_typed_path(self):
         index = next(i for i, row in enumerate(self.ir['bindings']) if row['role'] == 'Introduction')
         self.assertEqual(self.ir['bindings'][index]['id'], 25)
-        for key, value in [('id', 256), ('id', 24), ('path', 'data/opening.encroom'), ('role', 'Unknown')]:
+        for key, value in [('id', 256), ('id', 24), ('path', 'world/house/opening.encroom'), ('role', 'Unknown')]:
             self.reject(lambda ir: ir['bindings'][index].update({key: value}))
         older = copy.deepcopy(self.ir)
         older['bindings'].pop(index)
@@ -225,7 +230,7 @@ class ResourceCatalogTests(unittest.TestCase):
     def test_release_stage_requires_every_catalog_bound_file_and_fingerprint(self):
         files = {Path(row['path']): (ROOT / 'romfs' / row['path']).read_bytes()
                  for row in self.ir['bindings']}
-        expected = {Path('data/native.encresources'): catalog.OUT.read_bytes()}
+        expected = {Path('system/native.encresources'): catalog.OUT.read_bytes()}
         self.assertEqual(catalog.stage_files(ROOT / 'romfs', files), expected)
         victim = next(iter(files))
         missing = dict(files)

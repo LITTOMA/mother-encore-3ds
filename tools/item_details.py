@@ -16,7 +16,7 @@ IR = 'content/native-item-details.json'
 RECIPE = 'content/item-details-assets.json'
 REVIEW = 'reports/item-details-source/source-review.json'
 RECEIPT = 'content/asset-receipts/graphics/ui/item-details/source.json'
-PACK = 'romfs/data/opening.encdetails'
+PACK = 'romfs/ui/opening.encdetails'
 ICON = 'Graphics/UI/Ailments/Asthma.png'
 OUTPUT = 'graphics/ui/item-details/asthma-status.t3x'
 NAMES = ('Strings', 'Definitions', 'Locales', 'Presentations', 'Tokens', 'Resources', 'Parameters')
@@ -423,10 +423,10 @@ def compile_pack(root=ROOT):
 
 def stage_files(source):
     source = Path(source); ir = load(ROOT); receipt = verify_receipt(ir, ROOT, source)
-    blob = (source / 'data/opening.encdetails').read_bytes()
+    blob = (source / 'ui/opening.encdetails').read_bytes()
     require(blob == encode(lower(ir, receipt)), 'Staged details pack differs from reviewed source/receipt')
     parse_pack(blob)
-    return {Path('data/opening.encdetails'): blob, Path(OUTPUT): (source / OUTPUT).read_bytes()}
+    return {Path('ui/opening.encdetails'): blob, Path(OUTPUT): (source / OUTPUT).read_bytes()}
 
 
 def main():

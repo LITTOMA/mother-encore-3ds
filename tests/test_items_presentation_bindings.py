@@ -17,7 +17,7 @@ class ItemsPresentationBindingsTests(unittest.TestCase):
   self.assertEqual(assets.make_recipe(ex),bindings.read(ROOT/'content/items-assets.json'))
   ir=assets.export_ir(ex,definitions,raw,self.reference,self.ir['resources'],self.ir['dependencies'],write=False)
   self.assertEqual(ir,self.ir);native.verify_sources(ir,ROOT)
-  self.assertEqual(native.encode(native.lower(ir,root=ROOT)),(ROOT/'romfs/data/opening.encitems').read_bytes())
+  self.assertEqual(native.encode(native.lower(ir,root=ROOT)),(ROOT/'romfs/ui/opening.encitems').read_bytes())
   receipt=bindings.read(ROOT/'content/asset-receipts/graphics/ui/items/source.json')
   for row in receipt['resources']:self.assertEqual(bindings.sha(ROOT/'romfs'/row['path']),row['sha256'])
  def test_versions_pin_unknown_missing_and_duplicate_fields(self):
@@ -87,7 +87,7 @@ class ItemsPresentationBindingsTests(unittest.TestCase):
    with patch.object(bindings,'IR',path):
     ex,definitions,raw=assets.reviewed_extract();changed=assets.export_ir(ex,definitions,raw,self.reference,self.ir['resources'],self.ir['dependencies'],write=False)
     native.verify_sources(changed,ROOT);blob=native.encode(native.lower(changed,root=ROOT));native.parse_pack(blob)
-   self.assertNotEqual(blob,(ROOT/'romfs/data/opening.encitems').read_bytes())
+   self.assertNotEqual(blob,(ROOT/'romfs/ui/opening.encitems').read_bytes())
    self.assertEqual(changed['definitions'],self.ir['definitions']);self.assertEqual(changed['initial_inventory'],self.ir['initial_inventory']);self.assertEqual(changed['sounds'],self.ir['sounds']);self.assertEqual(changed['clips'],self.ir['clips'])
 
 if __name__=='__main__':unittest.main()

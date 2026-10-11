@@ -29,7 +29,7 @@ class WorldProgramBindingsTest(unittest.TestCase):
         self.assertEqual(actual['strings'],self.baseline['strings'])
         self.assertEqual(actual['sections'],self.baseline['sections'])
         self.assertEqual(mapping,json.loads((ROOT/'content/native-source-map.json').read_text()))
-        self.assertEqual(compile_ir(actual)[0][HEADER_BYTES:],(ROOT/'romfs/data/opening.encroom').read_bytes()[HEADER_BYTES:])
+        self.assertEqual(compile_ir(actual)[0][HEADER_BYTES:],(ROOT/'romfs/world/house/opening.encroom').read_bytes()[HEADER_BYTES:])
         bindings.verify_room(bindings.load(ex),actual,ex)
     def test_schema_pin_missing_duplicate_json(self):
         for value in (None,0,2,True,'1'):self.rejected(lambda r:r.update(schema=value))

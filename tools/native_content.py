@@ -457,7 +457,8 @@ def verify_provenance(ir, root=ROOT):
         from tools.programme_lowering_recipe import verify_room
         verify_room(ir,root)
     for name,expected in ir['provenance']['sources'].items():
-        path=(root/name).resolve()
+        from tools.runtime_layout import source_path
+        path=(root/source_path(name, root)).resolve()
         try:path.relative_to(root.resolve())
         except ValueError as exc:raise ContentError('Provenance path escaped root')from exc
         check(path.is_file(),'Missing reviewed source: '+name)
@@ -471,7 +472,8 @@ def file_crc(data):
 
 def compile_ir(ir):
     validate_ir(ir)
-    strings=ir['strings'];sections=ir['sections']
+    from tools.runtime_layout import runtime_path
+    strings=[runtime_path(s) if s.startswith('data/') else s for s in ir['strings']];sections=ir['sections']
     raw_strings=[s.encode('utf-8')+b'\0'for s in strings]
     string_pool=b''.join(raw_strings)
     data=bytearray(HEADER_BYTES+len(SCHEMAS)*DIRECTORY_BYTES)
@@ -491,7 +493,7 @@ def compile_ir(ir):
     for i,raw in enumerate(raw_strings):
         struct.pack_into('<II',data,ref_offset+i*8,cursor,len(raw)-1);cursor+=len(raw)
     compiler_sha=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
-    fingerprint=hashlib.sha256(canonical({'ir':ir,'compiler_sha256':compiler_sha})).digest()
+    fingerprint=hashlib.sha256(canonical({'ir':ir,'compiler_sha256':compiler_sha,'runtime_strings':strings})).digest()
     header=struct.pack('<8sHH9IHHI20s32sIII8s',MAGIC,1,0,HEADER_BYTES,len(data),0x01020304,TARGET,FAMILY,ir['rules'],ir['capabilities'],ir['scene_id'],HEADER_BYTES,len(SCHEMAS),DIRECTORY_BYTES,0,bytes.fromhex(ir['upstream_commit']),fingerprint,ir['exporter_version'],ir['adapter_revision'],0,bytes(8))
     data[:HEADER_BYTES]=header
     struct.pack_into('<I',data,52,file_crc(data))
@@ -564,7 +566,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('action',choices=['compile','verify','inspect'],nargs='?',default='compile')
     p.add_argument('--input',type=Path,default=ROOT/'content/native-opening.json')
-    p.add_argument('--out',type=Path,default=ROOT/'romfs/data/opening.encroom')
+    p.add_argument('--out',type=Path,default=ROOT/'romfs/world/house/opening.encroom')
     p.add_argument('--manifest',type=Path,default=ROOT/'build/native-content-manifest.json')
     a=p.parse_args()
     try:

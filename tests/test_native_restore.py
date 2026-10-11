@@ -9,7 +9,7 @@ class RestoreCompilerTests(unittest.TestCase):
  def test_source_recipe_and_staged_binary(self):
   self.assertEqual(restore.extract(),self.ir)
   self.assertEqual(restore.encode(self.ir),restore.PACK.read_bytes())
-  self.assertEqual(restore.stage_files(ROOT/'romfs'),{Path('data/opening.encrestore'):restore.PACK.read_bytes()})
+  self.assertEqual(restore.stage_files(ROOT/'romfs'),{Path('session/opening.encrestore'):restore.PACK.read_bytes()})
  def test_only_missing_npc_event_data_and_last_match_order(self):
   rows=self.ir['npc_event_positions'];self.assertEqual(len(rows),2)
   self.assertEqual([r['condition']['flag_name']for r in rows],['minnie_leave','doll_defeated'])

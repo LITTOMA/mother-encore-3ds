@@ -1,5 +1,7 @@
 # Bounded original-audio backend
 
+Current integration: [audio completion and resource layout](AUDIO_COMPLETION.md). The early opening-only audit below describes the original backend scope; the current bank additionally includes world/dialogue/battle effects and result music. Podunk uses a separate five-track bank and the existing region controller.
+
 This implements playback submission and PCM streaming for the current original
 opening slice. It is not the complete Godot audio graph and does not establish
 speaker output on hardware or an emulator by itself.

@@ -33,7 +33,7 @@ class ItemsBinaryTests(unittest.TestCase):
     def test_deterministic_checked_external_resource(self):
         m.verify_sources(self.ir)
         self.assertEqual(self.blob, m.encode(m.lower(self.ir)))
-        self.assertEqual(self.blob, (ROOT / 'romfs/data/opening.encitems').read_bytes())
+        self.assertEqual(self.blob, (ROOT / 'romfs/ui/opening.encitems').read_bytes())
         parsed = m.parse_pack(self.blob)
         self.assertEqual(parsed['Metadata'][0][0], self.ir['capacity'])
         self.assertEqual(parsed['Instances'][0][2:], (1, 1))
@@ -149,13 +149,13 @@ class ItemsBinaryTests(unittest.TestCase):
     def test_exact_asset_staging_and_changed_hash(self):
         files = m.stage_files(ROOT / 'romfs')
         self.assertEqual(len(files), len(self.tables['Resources']) + 1)
-        self.assertEqual(files[Path('data/opening.encitems')], self.blob)
+        self.assertEqual(files[Path('ui/opening.encitems')], self.blob)
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             for name, data in files.items():
                 (root / name).parent.mkdir(parents=True, exist_ok=True)
                 (root / name).write_bytes(data)
-            resource = next(name for name in files if name != Path('data/opening.encitems'))
+            resource = next(name for name in files if name != Path('ui/opening.encitems'))
             (root / resource).write_bytes(b'changed')
             with self.assertRaises(ValueError):
                 m.stage_files(root)

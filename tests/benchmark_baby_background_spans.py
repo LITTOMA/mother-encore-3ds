@@ -67,7 +67,7 @@ def main():
         subprocess.run([str(binary),str(build)],check=True,env=env)
     else:
         for w,h in [(400,240),(320,180),(37,29),(401,241)]:
-            subprocess.run([str(binary),str(ROOT/"romfs/data/doll-entry.encbattle"),str(ROOT/"romfs"),str(w),str(h),str(a.samples),str(a.iterations),"0.066666667"],check=True,env=env)
+            subprocess.run([str(binary),str(ROOT/"romfs/battle/doll/doll-entry.encbattle"),str(ROOT/"romfs"),str(w),str(h),str(a.samples),str(a.iterations),"0.066666667"],check=True,env=env)
     manifest = {"scope":"Host only; exact scalar parity and frozen current-production timing baseline", "command":command,
                 "sources":{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in ["include/encore/background_kernel.hpp","tests/baby_background_span_prototype.hpp","tests/baby_background_kernel_tests.cpp","tests/baby_background_performance_tests.cpp"]}}
     (build/(target+"-manifest.json")).write_text(json.dumps(manifest,indent=2)+"\n")

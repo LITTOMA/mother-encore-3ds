@@ -6,7 +6,7 @@ using Kernel=encore::RowLinearBackgroundKernel;
 void require(bool b,const char* s){if(!b){std::fprintf(stderr,"FAIL %s\n",s);std::exit(1);}}
 double ms(std::chrono::steady_clock::time_point t){return std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-t).count();}
 int main(){
- encore::upstream::BattleData data;std::string error;require(data.load_file("romfs/data/pillow-entry.encbattle",error),error.c_str());const auto v=data.view();
+ encore::upstream::BattleData data;std::string error;require(data.load_file("romfs/battle/pillow/pillow-entry.encbattle",error),error.c_str());const auto v=data.view();
  gpu_span::Image src[2],pal[2];std::vector<encore::BackgroundKernel::Layer> layers;std::vector<encore::ScalarBackgroundKernel::Layer> scalar;
  for(unsigned n=0;n<2;++n){const auto b=v.background(n);const auto r=v.resource(b.resource);require(gpu_span::image("romfs/"+std::string(v.string(r.path)),r,src[n]),"image");layers.push_back(gpu_span::layer<encore::BackgroundKernel>(b,src[n],pal[n]));scalar.push_back(gpu_span::layer<encore::ScalarBackgroundKernel>(b,src[n],pal[n]));}
  uint64_t pixels=0;

@@ -15,7 +15,7 @@ IR='content/native-field-equipment.json'
 RECIPE='content/field-equipment-assets.json'
 REVIEW='reports/field-equipment-source/source-review.json'
 RECEIPT='content/asset-receipts/graphics/ui/equipment/source.json'
-PACK='romfs/data/opening.encfield'
+PACK='romfs/ui/opening.encfield'
 NIL=0xffffffff
 NAMES=('Strings','Parameters','Bindings','Commands','Slots','Equipment','Resources','Layouts','Clips','Keys')
 FORMATS=(None,'<If','<III','<IIII','<IIII','<III7i','<7I32s2I','<7I10f4I','<IIIf','<3f')
@@ -237,7 +237,7 @@ def validate(t):
 def compile_pack(root=ROOT):
     root=Path(root);ir=load(root);receipt=verify_receipt(ir,root);blob=encode(lower(ir,receipt));parse_pack(blob);target=root/PACK;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(blob);print('Field equipment compile: %d checked bytes; six known commands / Equip only'%len(blob))
 def stage_files(source):
-    source=Path(source);ir=load();receipt=verify_receipt(ir,ROOT,source);blob=(source/'data/opening.encfield').read_bytes();require(blob==encode(lower(ir,receipt)),'Field staged pack differs from source');parse_pack(blob);return {Path('data/opening.encfield'):blob,**{Path(r['output']):(source/r['output']).read_bytes() for r in ir['resources']}}
+    source=Path(source);ir=load();receipt=verify_receipt(ir,ROOT,source);blob=(source/'ui/opening.encfield').read_bytes();require(blob==encode(lower(ir,receipt)),'Field staged pack differs from source');parse_pack(blob);return {Path('ui/opening.encfield'):blob,**{Path(r['output']):(source/r['output']).read_bytes() for r in ir['resources']}}
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('extract','assets','compile','verify'));p.add_argument('--tex3ds',type=Path);a=p.parse_args()
     if a.action=='extract':extract();print('Field equipment source extract: admitted')

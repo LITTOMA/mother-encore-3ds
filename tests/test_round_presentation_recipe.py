@@ -61,7 +61,7 @@ class PresentationRecipeTests(unittest.TestCase):
         expected=(assets.REPORT/'presentation.json').read_bytes()
         self.assertEqual((json.dumps(fresh,indent=2,sort_keys=True,ensure_ascii=False)+'\n').encode(),expected)
         self.assertEqual(report_to_ir(fresh),json.loads((ROOT/'content/native-round.json').read_text(encoding='utf-8')))
-        self.assertEqual(compile_report(fresh),(ROOT/'romfs/data/opening.encround').read_bytes())
+        self.assertEqual(compile_report(fresh),(ROOT/'romfs/battle/lamp/opening.encround').read_bytes())
     def test_recipe_contract_rejects_unknown_missing_and_versions(self):
         for key in self.original:
             value=copy.deepcopy(self.original);del value[key]

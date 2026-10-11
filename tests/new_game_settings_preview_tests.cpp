@@ -20,15 +20,15 @@ void repair(std::vector<uint8_t>&b){u32(b,12,uint32_t(b.size()));u32(b,16,encore
 StartupSettingsData load(const std::string&path){StartupSettingsData result;CHECK(result.load_file(path.c_str(),error));return result;}
 }
 int main(int argc,char**argv){
- CHECK(argc==3);const std::string root=argv[1],fixtures=argv[2];NewGameSetupData names;CHECK(names.load_file((root+"/opening.encnewgame").c_str(),error));
- auto source=load(root+"/opening.encsettings");CHECK(source.preview_minimum_characters==5);NewGameSetup menu;const auto source_defaults=source.defaults();
+ CHECK(argc==3);const std::string root=argv[1],fixtures=argv[2];NewGameSetupData names;CHECK(names.load_file((root+"/ui/opening.encnewgame").c_str(),error));
+ auto source=load(root+"/ui/opening.encsettings");CHECK(source.preview_minimum_characters==5);NewGameSetup menu;const auto source_defaults=source.defaults();
  auto five=load(fixtures+"/five.encsettings");open_preview(menu,names,five);CHECK(menu.preview_characters()==5);tick(menu,1);CHECK(menu.preview_characters()==5);
  auto six=load(fixtures+"/six.encsettings");open_preview(menu,names,six);CHECK(menu.preview_characters()==0);const double period=six.speeds[menu.option()];tick(menu,period);CHECK(menu.preview_characters()==0);tick(menu,period/2);CHECK(menu.preview_characters()==1);tick(menu,1);CHECK(menu.preview_characters()==2);
  // All-label predicate: a nonselected short label disables the selected preview.
  auto mixed=load(fixtures+"/mixed.encsettings");open_preview(menu,names,mixed);CHECK(menu.option()!=2&&menu.preview_characters()==6);
  // Same executable and labels, different independently loaded threshold.
  auto changed=load(fixtures+"/five-threshold4.encsettings");open_preview(menu,names,changed);CHECK(menu.preview_characters()==0);tick(menu,1);CHECK(menu.preview_characters()==1);NamingInput down;down.y=1;tick(menu,0,down);CHECK(menu.preview_characters()==0);tick(menu,1);CHECK(menu.preview_characters()==1);NamingInput cancel;cancel.cancel=true;tick(menu,0,cancel);CHECK(menu.phase()==NamingPhase::Settings&&menu.preview_characters()==0);
- LocaleCatalog catalog;CHECK(catalog.load_file((root+"/localization.enclocale").c_str(),error));LocaleSelection selected;CHECK(selected.bind(catalog,error));auto zero=load(fixtures+"/source-threshold0.encsettings");
+ LocaleCatalog catalog;CHECK(catalog.load_file((root+"/localization/localization.enclocale").c_str(),error));LocaleSelection selected;CHECK(selected.bind(catalog,error));auto zero=load(fixtures+"/source-threshold0.encsettings");
  for(const char*code:{"en","zh_Hans_CN"}){
   CHECK(selected.select(code,error));open_preview(menu,names,source,&selected);bool worthwhile=true;size_t chosen=0;bool multibyte=false;
   for(size_t i=0;i<source.panels[0].labels.size();++i){const auto text=menu.localized("settings.panel/0/"+std::to_string(i),source.panels[0].labels[i].text);size_t count=0;CHECK(encore::utf8_count(text,count));CHECK(count>0);multibyte|=text.size()>count;worthwhile&=count>source.preview_minimum_characters;if(i==menu.option())chosen=count;}
@@ -36,7 +36,7 @@ int main(int argc,char**argv){
   open_preview(menu,names,zero,&selected);CHECK(menu.preview_characters()==0);tick(menu,zero.speeds[menu.option()]*1.5);CHECK(menu.preview_characters()==1);
  }
  CHECK(source.defaults().text_speed==source_defaults.text_speed&&source.defaults().menu_flavor==source_defaults.menu_flavor&&source.defaults().button_prompts==source_defaults.button_prompts);
- std::vector<uint8_t>bytes;CHECK(encore::read_file((root+"/opening.encsettings").c_str(),bytes,1024*1024,error));
+ std::vector<uint8_t>bytes;CHECK(encore::read_file((root+"/ui/opening.encsettings").c_str(),bytes,1024*1024,error));
  const auto reject=[&](const std::vector<uint8_t>&bad){CHECK(!source.load(bad.data(),bad.size(),error));CHECK(source.valid()&&source.preview_minimum_characters==5&&source.defaults().text_speed==source_defaults.text_speed);};
  for(uint32_t threshold:{1025u,UINT32_MAX}){auto bad=bytes;u32(bad,bad.size()-4,threshold);repair(bad);reject(bad);}
  for(uint32_t version:{0u,1u,3u}){auto bad=bytes;u32(bad,8,version);reject(bad);}auto bad=bytes;u32(bad,20,2);reject(bad);

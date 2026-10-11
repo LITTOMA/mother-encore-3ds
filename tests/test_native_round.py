@@ -6,7 +6,7 @@ import native_round as n
 class RoundCompilerTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.ir=json.loads((ROOT/'content/native-round.json').read_text());cls.blob=(ROOT/'romfs/data/opening.encround').read_bytes()
+  cls.ir=json.loads((ROOT/'content/native-round.json').read_text());cls.blob=(ROOT/'romfs/battle/lamp/opening.encround').read_bytes()
  def test_sources_and_deterministic_compile(self):
   n.verify_sources(self.ir);self.assertEqual(n.encode(n.lower(self.ir)),self.blob);n.parse_pack(self.blob)
  def test_actual_attack_not_similarly_named_bash(self):
@@ -40,7 +40,7 @@ class RoundCompilerTests(unittest.TestCase):
    b=bytearray(self.blob);struct.pack_into('<I',b,off,value);struct.pack_into('<I',b,16,0);struct.pack_into('<I',b,16,zlib.crc32(b))
    with self.subTest(offset=off),self.assertRaises(n.ContentError):n.parse_pack(b)
  def test_staging_hashes_and_escape(self):
-  files=n.stage_files(ROOT/'romfs');self.assertEqual(files[Path('data/opening.encround')],self.blob)
+  files=n.stage_files(ROOT/'romfs');self.assertEqual(files[Path('battle/lamp/opening.encround')],self.blob)
   if self.ir['presentation']['resources']:
    ir=copy.deepcopy(self.ir);ir['presentation']['resources'][0]['path']='../secret'
    with self.assertRaises(n.ContentError):n.lower(ir,verify_assets=False)
@@ -93,7 +93,7 @@ class RoundCompilerTests(unittest.TestCase):
  def test_return_camera_source_and_rejection(self):
   import extract_battle_round as extract
   from native_content import parse_pack
-  room=parse_pack((ROOT/'romfs/data/opening.encroom').read_bytes())
+  room=parse_pack((ROOT/'romfs/world/house/opening.encroom').read_bytes())
   class Source:
    def __init__(self,changed=None):self.changed=changed or {}
    def text(self,path):return self.changed.get(path,(ROOT/'upstream/MOTHER-Encore'/path).read_text())

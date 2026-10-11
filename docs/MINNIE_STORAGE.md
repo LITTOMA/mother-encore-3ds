@@ -12,7 +12,7 @@ Record 捕获实际背包和仓库；LOAD 在独立候选状态中验证并准�
 
 ## 资源与兼容
 
-- `native-storage.json` / `storage-assets.json` 保存来源 IR 与转换配方；`native_storage.py` 生成 `data/opening.encstorage`（ENCSTG01，格式 / 能力 / 规则 1）。纹理按类型放在 `graphics/ui/storage`，菜单声音放在 `sound/effects`。JSON 与审查记录不进入 RomFS。
+- `native-storage.json` / `storage-assets.json` 保存来源 IR 与转换配方；`native_storage.py` 生成 `ui/opening.encstorage`（ENCSTG01，格式 / 能力 / 规则 1）。纹理按类型放在 `graphics/ui/storage`，菜单声音放在 `sound/effects`。JSON 与审查记录不进入 RomFS。
 - Room 增加独立能力 8 的 OpenStorage 指令，与紧邻 AwaitSubmenu 形成受检回调边界；游戏规则仍为 7，旧能力 4–7 保持各自指令限制。
 - Session 资源 v5 加入来源派生的库存守恒与装备策略；存档编码格式及稳定物品身份不变，旧 Session 资源仍按原有受限范围加载。
 - 加载器检查版本、CRC、目录、UTF-8、有限数值、引用、路径、来源 pin 与 Items 身份；资源生成和打包也检查来源及产物指纹。

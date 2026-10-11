@@ -8,9 +8,9 @@ spec=importlib.util.spec_from_file_location('native_battle',ROOT/'tools/native_b
 class BattleBinaryTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
-  cls.ir=json.loads((ROOT/'content/native-battle.json').read_text());cls.assets=json.loads((ROOT/'content/asset-receipts/graphics/battle/lamp/source.json').read_text());cls.room=(ROOT/'romfs/data/opening.encroom').read_bytes();cls.tables=m.lower(cls.ir,cls.assets,cls.room);cls.blob=m.encode(cls.tables,cls.ir['commit'])
+  cls.ir=json.loads((ROOT/'content/native-battle.json').read_text());cls.assets=json.loads((ROOT/'content/asset-receipts/graphics/battle/lamp/source.json').read_text());cls.room=(ROOT/'romfs/world/house/opening.encroom').read_bytes();cls.tables=m.lower(cls.ir,cls.assets,cls.room);cls.blob=m.encode(cls.tables,cls.ir['commit'])
  def test_deterministic_external_binary(self):
-  self.assertEqual(self.blob,m.encode(m.lower(self.ir,self.assets,self.room),self.ir['commit']));self.assertEqual(self.blob,(ROOT/'romfs/data/opening.encbattle').read_bytes());self.assertEqual(len(m.parse_sections(self.blob)),12)
+  self.assertEqual(self.blob,m.encode(m.lower(self.ir,self.assets,self.room),self.ir['commit']));self.assertEqual(self.blob,(ROOT/'romfs/battle/lamp/opening.encbattle').read_bytes());self.assertEqual(len(m.parse_sections(self.blob)),12)
  def test_all_truncations(self):
   for n in range(len(self.blob)):
    with self.assertRaises((ValueError,UnicodeError,struct.error)):m.parse_sections(self.blob[:n])
@@ -19,7 +19,7 @@ class BattleBinaryTests(unittest.TestCase):
    b=bytearray(self.blob);struct.pack_into('<I',b,offset,value);struct.pack_into('<I',b,16,0);struct.pack_into('<I',b,16,zlib.crc32(b))
    with self.assertRaises((ValueError,UnicodeError,struct.error)):m.parse_sections(b)
  def test_staging_exact_resources(self):
-  files=m.stage_files(ROOT/'romfs');self.assertIn(Path('data/opening.encbattle'),files);self.assertEqual(len(files),len(self.tables['resources'])+1)
+  files=m.stage_files(ROOT/'romfs');self.assertIn(Path('battle/lamp/opening.encbattle'),files);self.assertEqual(len(files),len(self.tables['resources'])+1)
  def test_changed_source_fails(self):
   ir=json.loads(json.dumps(self.ir));key=next(iter(ir['sources']));ir['sources'][key]='0'*64
   with self.assertRaises(m.ContentError):m.verify_sources(ir)

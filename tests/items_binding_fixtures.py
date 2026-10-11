@@ -13,7 +13,7 @@ def candidate():
 
 def fixtures(output):
  baseline=bindings.read(ROOT/'content/native-items.json');native.verify_sources(baseline,ROOT)
- original=native.encode(native.lower(baseline,root=ROOT));assert original==(ROOT/'romfs/data/opening.encitems').read_bytes()
+ original=native.encode(native.lower(baseline,root=ROOT));assert original==(ROOT/'romfs/ui/opening.encitems').read_bytes()
  require_candidate=bindings.read(output/'bindings.json');assert require_candidate==candidate()
  with patch.object(bindings,'IR',output/'bindings.json'):
   ex,definitions,raw=assets.reviewed_extract();reference=bindings.read(ROOT/'reports/items-menu-source/native-layout.json')

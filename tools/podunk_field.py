@@ -6,7 +6,7 @@ source scene classes are drawn, collide, route, or remain explicit development
 boundaries). TileMap cells, tile shapes, sprites and doors are read directly
 from the pinned upstream scene every compile; no intermediate dump is stored.
 Every flattened source node must match exactly one policy class or the compile
-fails. Outputs: data/podunk.encmap, data/podunk.encroom, data/world.enclinks and
+fails. Outputs: world/podunk/podunk.encmap, world/podunk/podunk.encroom, world/world.enclinks and
 packed RGBA8 atlases under graphics/world/podunk.
 """
 from __future__ import annotations

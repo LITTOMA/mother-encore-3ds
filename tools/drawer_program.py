@@ -13,7 +13,7 @@ from tools.extract_battle_entry import Extractor, PIN, require, node
 
 IR='content/native-drawer-program.json'
 REVIEW='reports/drawer-program/source-review.json'
-PACK='romfs/data/opening.encdrawer'
+PACK='romfs/world/house/opening.encdrawer'
 PATH="Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml"
 TABLE="Translations/TranslatedText/dialogue_Podunk_non-person text_Ninten's house - sheet.csv"
 SCENE='Maps/podunk/Nintens House.tscn'
@@ -237,9 +237,9 @@ def parse_pack(blob):
     return tables
 
 def stage_files(source):
-    ir=load(ROOT);blob=(Path(source)/'data/opening.encdrawer').read_bytes()
+    ir=load(ROOT);blob=(Path(source)/'world/house/opening.encdrawer').read_bytes()
     parse_pack(blob);require(blob==encode(lower(ir,read_json(ROOT/'content/native-house.json'))),'Staged Drawer binary differs from reviewed bindings')
-    return {Path('data/opening.encdrawer'):blob}
+    return {Path('world/house/opening.encdrawer'):blob}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('action',choices=('extract','compile','verify'));args=p.parse_args()

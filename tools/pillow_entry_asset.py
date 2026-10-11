@@ -20,7 +20,7 @@ from tools.doll_entry_asset import sha
 PIN = '7d9246600fffe518408f5830d4848635019005a3'
 IR_PATH = ROOT / 'content/pillow-entry.json'
 OUT = ROOT / 'romfs/graphics/battle/pillow'
-PACK = ROOT / 'romfs/data/pillow-entry.encbattle'
+PACK = ROOT / 'romfs/battle/pillow/pillow-entry.encbattle'
 RECEIPT = receipt_path(OUT, ROOT)
 REPORT = ROOT / 'reports/pillow-battle'
 WORLD_SOURCE = 'Graphics/Character Sprites/Npcs/1dir/pillow.png'

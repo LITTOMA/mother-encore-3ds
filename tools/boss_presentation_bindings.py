@@ -119,7 +119,7 @@ def load(root=ROOT,recipe=None):
     cutscene=yaml.safe_load(sources[encounter['cutscene_source']]);require(encounter['cutscene_step']in cutscene and 'startbattle'in cutscene[encounter['cutscene_step']],'Unknown boss cutscene step');request=cutscene[encounter['cutscene_step']]['startbattle']
     require(request['battlers']==[{encounter['actor']:encounter['actor']}]and request['actorskeep']=={encounter['actor']:True}and safe(request['wincutscene']),'Boss cutscene binding mismatch')
     from native_content import parse_pack
-    room=parse_pack((root/'romfs/data/opening.encroom').read_bytes())
+    room=parse_pack((root/'romfs/world/house/opening.encroom').read_bytes())
     require(sum(room['strings'][b['source_path_string']]==encounter['body_source']for b in room['sections']['BodyRule'])==1,'Unknown/ambiguous boss body binding')
     progression=recipe['progression'];fields(progression,['source','character_source','party_constant','party_id','learn_table','promoted_level','following_level','learned_skill','skill_source','stat_order','stat_table','stat_labels'],'boss progression binding')
     require(progression['source']in sources and progression['character_source']in sources and progression['skill_source']in sources and all(identifier(progression[k])for k in('party_constant','party_id','learn_table','learned_skill','stat_table')),'Unknown progression source/identity')
@@ -160,7 +160,7 @@ def check_round(ir,recipe,root=ROOT):
     binding=recipe['encounter'];request=yaml.safe_load((root/'upstream/MOTHER-Encore'/binding['cutscene_source']).read_text(encoding='utf-8'))[binding['cutscene_step']]['startbattle']
     require(encounter['post_win_script']==request['wincutscene']and encounter['keep_actor']==int(request['actorskeep'][binding['actor']]),'Boss round retained actor/post-win source mismatch')
     from native_content import parse_pack
-    room=parse_pack((root/'romfs/data/opening.encroom').read_bytes())
+    room=parse_pack((root/'romfs/world/house/opening.encroom').read_bytes())
     body=next(b for b in room['sections']['BodyRule']if room['strings'][b['source_path_string']]==binding['body_source'])
     require(ir['victory']['enemy_body_id']==body['body_id']and encounter['following_level_exp']==room['sections']['Experience'][progression['following_level']-1]['required_total_exp'],'Boss body/next-level stable binding mismatch')
     for purpose,index in [('experience',ir['victory']['exp_text']),('level',encounter['level_text']),('learning',encounter['learned_text'])]:

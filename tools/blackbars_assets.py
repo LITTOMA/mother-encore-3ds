@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT))
 from tools.extract_battle_entry import Extractor, animation, node, one, require
 
 IR = ROOT / 'content/native-blackbars.json'
-PACK = Path('data/opening.encbars')
+PACK = Path('ui/opening.encbars')
 SCENE = 'Nodes/Ui/Blackbars.tscn'
 
 

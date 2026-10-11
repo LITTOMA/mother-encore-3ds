@@ -34,6 +34,7 @@ public:
     bool ready()const{return sheet_&&data_.valid();}
     bool valid()const{return ready();}
     uint32_t background_color()const{return data_.background_color();}
+    LoadingFeedbackPolicy feedback_policy()const{return data_.feedback_policy();}
     int frame_at(double elapsed_seconds)const{return ready()?data_.frame_at(elapsed_seconds):-1;}
     bool draw(int width,int height,double elapsed_seconds)const {
         upstream::LoadingIndicatorPlacement pose;

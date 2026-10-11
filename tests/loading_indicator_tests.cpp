@@ -46,6 +46,36 @@ int main(int argc,char** argv){
     assert(data.load(bytes.data(),bytes.size(),error)&&error.empty()&&data.valid());
     assert(data.texture_width()==93&&data.texture_height()==29&&data.frame_width()==31&&data.frame_height()==29);
     assert(data.background_color()==0xff1c1c1cu);
+    const auto policy=data.feedback_policy();
+    assert(policy.valid()&&policy.show_delay_ms==250&&policy.minimum_visible_ms==200&&policy.frame_interval_ms==50);
+    // No sleeps: exercise the wall-clock gate at exact reveal/hold boundaries.
+    for(uint64_t duration:std::vector<uint64_t>{0,5,50,249,250,1000}) {
+        encore::LoadingFeedback fast;assert(fast.begin(1000,policy));
+        if(duration<250)assert(!fast.should_draw(1000+duration));
+        fast.finish(); // No successful draw: completion cannot start an animation.
+        assert(!fast.shown()&&!fast.should_draw(1000+duration)&&!fast.remaining_visible_ms(1000+duration));
+    }
+    encore::LoadingFeedback gate;assert(gate.begin(1000,policy));
+    assert(!gate.should_draw(999)&&!gate.presented(1249)&&!gate.shown());
+    assert(gate.should_draw(1250)&&!gate.shown()); // GPU failure leaves it eligible to retry.
+    assert(gate.presented(1250)&&gate.shown()&&gate.animation_seconds(1250)==0);
+    assert(!gate.should_draw(1249)&&!gate.should_draw(1299)&&gate.should_draw(1300));
+    assert(gate.presented(1300)&&gate.animation_seconds(1300)==.05);
+    gate.finish();
+    assert(gate.remaining_visible_ms(1260)==190&&gate.remaining_visible_ms(1250)==200);
+    assert(gate.remaining_visible_ms(1300)==150&&gate.remaining_visible_ms(1449)==1);
+    assert(!gate.remaining_visible_ms(1249)&&!gate.remaining_visible_ms(1450)&&!gate.should_draw(1450));
+    // Nested work uses this same gate; observing new work never restarts its delay.
+    assert(gate.begin(2000,policy)&&gate.presented(2250));
+    assert(gate.should_draw(2300)&&gate.presented(2300));
+    gate.finish();assert(gate.remaining_visible_ms(2400)==50&&!gate.remaining_visible_ms(2450));
+    assert(gate.begin(3000,policy)&&gate.presented(3250));
+    gate.finish();assert(!gate.remaining_visible_ms(4000)&&!gate.should_draw(4000));
+    for(const auto invalid:std::vector<encore::LoadingFeedbackPolicy>{{0,200,50},{10001,200,50},{250,0,50},
+            {250,2001,50},{250,200,0},{250,2000,1001},{250,50,51}}) {
+        assert(!gate.begin(0,invalid)&&!gate.shown()&&!gate.should_draw(10000)&&!gate.presented(10000));
+        gate.finish();assert(!gate.remaining_visible_ms(10000));
+    }
     for(const auto& expected:std::vector<std::pair<double,int>>{{0,20},{.1,20},{.21,21},{.41,22},{.61,21},{.81,20},{1.01,21}})
         assert(data.frame_at(expected.first)==expected.second);
     const double key=double(.2f);
@@ -123,7 +153,12 @@ int main(int argc,char** argv){
     bad=bytes;put(bad,68,3);reject(bad);
     bad=bytes;put(bad,72,0);reject(bad);
     bad=bytes;put(bad,100,20);reject(bad); // Duplicate source-frame mapping.
-    bad=bytes;bad[112]='/';reject(bad); // Unsafe relative texture path.
+    for(auto offset:std::vector<size_t>{8,20}){bad=bytes;put(bad,offset,1);reject(bad);} // Prior schema/capability.
+    for(auto offset:std::vector<size_t>{108,112,116}){bad=bytes;put(bad,offset,0);reject(bad);}
+    for(const auto value:std::vector<std::pair<size_t,uint32_t>>{{108,10001},{112,2001},{116,1001},{116,201}}){
+        bad=bytes;put(bad,value.first,value.second);reject(bad);
+    }
+    bad=bytes;bad[124]='/';reject(bad); // Unsafe relative texture path follows timing policy.
     bad=bytes;put(bad,bad.size()-16,38);reject(bad); // Even legacy placement cannot fit.
     bad=bytes;put(bad,bad.size()-4,1);reject(bad); // Frame cannot fit viewport.
     assert(!data.load(nullptr,bytes.size(),error));
@@ -138,6 +173,7 @@ int main(int argc,char** argv){
     assert(observer_calls==0&&live_textures==1&&live_metadata==1); // Bootstrap never reenters observer.
     encore::report_load_progress(encore::LoadPhase::Scene,1,1);assert(observer_calls==1);
     assert(renderer.background_color()==0xff1c1c1cu&&renderer.frame_at(.41)==22);
+    assert(renderer.feedback_policy().show_delay_ms==policy.show_delay_ms);
     assert(renderer.draw(400,240,.41)&&drawn_x==361&&drawn_y==203&&drawn_sub.width==31&&drawn_sub.height==29);
     assert(drawn_sub.left==.484375f&&drawn_sub.right==.7265625f);
     assert(renderer.draw(320,180,.21)&&drawn_x==281&&drawn_y==143&&drawn_sub.left==.2421875f);
@@ -167,5 +203,5 @@ int main(int argc,char** argv){
     rotated=false;assert(renderer.load(root.c_str(),"ui/indicator.encload",error));renderer.free();renderer.free();
     assert(!renderer.ready()&&live_textures==0&&live_metadata==0);
     assert(!renderer.load(nullptr,"ui/indicator.encload",error)&&!renderer.load("/missing-loading-root/","ui/indicator.encload",error));
-    std::puts("PASS loading indicator: checked data, original timing, both viewports, progress placement/rounding/UV parity, bootstrap isolation, rejection and cleanup");
+    std::puts("PASS loading indicator: checked timing policy/gate, original animation, both viewports, progress placement/rounding/UV parity, bootstrap isolation, rejection and cleanup");
 }

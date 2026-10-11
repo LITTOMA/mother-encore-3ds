@@ -35,7 +35,7 @@ struct Reader {
 bool LoadingIndicatorData::load(const uint8_t* p,size_t n,std::string& error) {
     auto fail=[&](const char* message){error=message;return false;};
     if(!p||n<24||n>limit)return fail("Loading indicator pack size rejected");
-    if(std::memcmp(p,"ENCLD001",8)||u32(p+8)!=1||u32(p+12)!=n||u32(p+20)!=1)
+    if(std::memcmp(p,"ENCLD001",8)||u32(p+8)!=2||u32(p+12)!=n||u32(p+20)!=2)
         return fail("Loading indicator schema/size/capability rejected");
     if(crc(p+24,n-24)!=u32(p+16))return fail("Loading indicator checksum rejected");
     LoadingIndicatorData data;Reader r{p+24,n-24};
@@ -62,6 +62,8 @@ bool LoadingIndicatorData::load(const uint8_t* p,size_t n,std::string& error) {
         for(auto prior:data.source_frames_)if(prior==frame)return fail("Loading indicator duplicate source frame rejected");
         data.source_frames_.push_back(static_cast<uint16_t>(frame));
     }
+    data.feedback_policy_={r.integer(),r.integer(),r.integer()};
+    if(!data.feedback_policy_.valid())return fail("Loading feedback timing rejected");
     data.texture_path_=r.path();const auto viewports=r.integer();
     if(!viewports||viewports>8)return fail("Loading indicator viewport count rejected");
     for(uint32_t i=0;i<viewports;++i) {

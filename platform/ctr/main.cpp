@@ -306,12 +306,33 @@ C3D_RenderTarget* loading_top=nullptr;
 ctr::LoadingIndicatorRenderer loading_indicator;
 float view_x();float view_y();
 uint64_t loading_generation=0;
+struct LoadingScope;
+LoadingScope* active_loading_scope=nullptr;
 struct LoadingScope {
-    const char* label;u64 started=0,last_frame=0;unsigned frames=0,next_task=0;
-    LoadingTaskPlan plan;bool force_frame=false;
+    const char* label;u64 started=0,last_service=0;unsigned frames=0,next_task=0;
+    LoadingScope* parent=nullptr;
+    LoadingTaskPlan plan;LoadingFeedback feedback;
+    bool serviced=false,completion_only=false;
     ScopedLoadProgress observer;
-    explicit LoadingScope(const char* value,unsigned tasks):label(value),started(osGetTime()),observer(pulse,this){plan.begin(tasks);report_load_progress(LoadPhase::Scene,0,0);}
-    bool complete(){if(!plan.complete_task(next_task))return false;++next_task;report_load_progress(LoadPhase::Scene,next_task,next_task);return true;}
+    explicit LoadingScope(const char* value,unsigned tasks):label(value),started(osGetTime()),parent(active_loading_scope),observer(pulse,this){
+        plan.begin(tasks);
+        if(!parent&&!feedback.begin(started,loading_indicator.feedback_policy()))plan.fail();
+        active_loading_scope=this;report_load_progress(LoadPhase::Scene,0,0);
+    }
+    LoadingScope& outermost(){return parent?parent->outermost():*this;}
+    void service_audio(u64 now){
+        auto& root=outermost();
+        if(root.serviced&&now>=root.last_service&&now-root.last_service<root.feedback.policy().frame_interval_ms)return;
+        root.last_service=now;root.serviced=true;
+        // Independent of the visual gate: delayed/hidden loading must still feed
+        // existing queues, without advancing game clocks or fade timelines.
+        if(audio_player.available()){std::string audio_error;if(!audio_player.pump_streams(audio_error))audio_status=audio_error;}
+    }
+    bool complete(){
+        if(!plan.complete_task(next_task))return false;
+        ++next_task;completion_only=next_task==plan.total_tasks();
+        report_load_progress(LoadPhase::Scene,next_task,next_task);completion_only=false;return true;
+    }
     template<class Work> bool step(Work work,const char* resource="task"){
         const auto tick=svcGetSystemTick();const bool ok=work();
         char line[240];const int n=std::snprintf(line,sizeof(line),"ENCORE_LOAD_TASK scope=%s task=%u resource=%s elapsed_ms=%.3f ok=%u\n",label,next_task,resource,double(svcGetSystemTick()-tick)/CPU_TICKS_PER_MSEC,unsigned(ok));
@@ -321,14 +342,23 @@ struct LoadingScope {
 #endif
         if(!ok){plan.fail();return false;}return complete();
     }
-    bool finish(){if(!plan.finish())return false;force_frame=true;report_load_progress(LoadPhase::Scene,next_task,next_task);force_frame=false;return true;}
+    bool finish(){
+        if(!plan.finish())return false;
+        if(parent)return true; // Nested tasks share the outer transaction's gate.
+        feedback.finish();
+        // Only an actually presented indicator gets a minimum visible interval.
+        // Hidden fast loads return immediately; success never reveals a frame.
+        while(const auto remaining=feedback.remaining_visible_ms(osGetTime())){
+            report_load_progress(LoadPhase::Scene,next_task,next_task);
+            svcSleepThread(int64_t(std::min<uint64_t>(remaining,feedback.policy().frame_interval_ms))*1000000);
+        }
+        return true;
+    }
     static void pulse(void* context,const LoadProgress& progress){
         (void)progress;
-        auto& self=*static_cast<LoadingScope*>(context);const u64 now=osGetTime();
-        if(!loading_top||!loading_indicator.ready()||(!self.force_frame&&self.frames&&now-self.last_frame<50))return;
-        // First-use PCM checking can happen while title/naming music is active.
-        // Feed existing queues without advancing game clocks or fade timelines.
-        if(audio_player.available()){std::string audio_error;if(!audio_player.pump_streams(audio_error))audio_status=audio_error;}
+        auto& self=*static_cast<LoadingScope*>(context);auto& root=self.outermost();const u64 now=osGetTime();
+        self.service_audio(now);
+        if(!loading_top||!loading_indicator.ready()||(!root.feedback.shown()&&self.completion_only)||!root.feedback.should_draw(now))return;
         // Keep first-use reads out of the playing story and its door fades.
         // At the final HouseReady boundary the story visuals are retired, but
         // Introduction stays active until the House reveal completes. Permit
@@ -336,21 +366,22 @@ struct LoadingScope {
         // committed, preserve the reveal again. Do not advance game clocks.
         if(introduction.active()&&(!introduction.house_ready()||introduction_house_committed))return;
         if(!C3D_FrameBegin(C3D_FRAME_SYNCDRAW))return;
+        const double animation_time=root.feedback.animation_seconds(now);
         C2D_TargetClear(loading_top,C2D_Color32(0,0,0,255));C2D_SceneBegin(loading_top);
         C2D_DrawRectSolid(view_x(),view_y(),0,float(view_width),float(view_height),loading_indicator.background_color());
         C3D_Mtx saved_view;C2D_ViewSave(&saved_view);C2D_ViewTranslate(view_x(),view_y());
-        loading_indicator.draw_progress(int(view_width),int(view_height),double(now-self.started)/1000.0,0.0); // Fixed bottom-left; task progress is diagnostic only.
+        loading_indicator.draw_progress(int(view_width),int(view_height),animation_time,0.0); // Fixed bottom-left; task progress is diagnostic only.
         C2D_ViewRestore(&saved_view);
-        C3D_FrameEnd(0);self.last_frame=now;++self.frames;
+        C3D_FrameEnd(0);root.feedback.presented(osGetTime());++self.frames;
 #ifdef ENCORE_TEXT_QA
-        if(qa_log){std::fprintf(qa_log,"LOADING stage=%s elapsed=%llu heartbeat=%u phase=%u completed=%llu total=%llu\n",self.label,(unsigned long long)(now-self.started),self.frames,unsigned(progress.phase),(unsigned long long)progress.completed,(unsigned long long)progress.total);std::fprintf(qa_log,"LOADING_ACTOR frame=%d elapsed=%llu viewport=%ux%u task_percent=%u\n",loading_indicator.frame_at(double(now-self.started)/1000.0),(unsigned long long)(now-self.started),view_width,view_height,unsigned(self.plan.percent()));std::fflush(qa_log);}
+        if(qa_log){std::fprintf(qa_log,"LOADING stage=%s elapsed=%llu heartbeat=%u phase=%u completed=%llu total=%llu\n",self.label,(unsigned long long)(now-self.started),self.frames,unsigned(progress.phase),(unsigned long long)progress.completed,(unsigned long long)progress.total);std::fprintf(qa_log,"LOADING_ACTOR frame=%d elapsed=%llu viewport=%ux%u task_percent=%u\n",loading_indicator.frame_at(animation_time),(unsigned long long)(now-root.started),view_width,view_height,unsigned(self.plan.percent()));std::fflush(qa_log);}
 #endif
     }
     ~LoadingScope(){
         if(plan.state()==LoadingTaskPlanState::Running)plan.fail();
-        ++loading_generation;
+        active_loading_scope=parent;++loading_generation;
 #ifdef ENCORE_TEXT_QA
-        if(qa_log){std::fprintf(qa_log,"LOAD_DONE stage=%s elapsed=%llu heartbeats=%u committed=%u tasks=%llu/%llu\n",label,(unsigned long long)(osGetTime()-started),frames,unsigned(plan.state()==LoadingTaskPlanState::Succeeded),(unsigned long long)plan.completed_tasks(),(unsigned long long)plan.total_tasks());std::fflush(qa_log);}
+        if(qa_log){std::fprintf(qa_log,"LOAD_DONE stage=%s elapsed=%llu heartbeats=%u committed=%u tasks=%llu/%llu shown=%u\n",label,(unsigned long long)(osGetTime()-started),frames,unsigned(plan.state()==LoadingTaskPlanState::Succeeded),(unsigned long long)plan.completed_tasks(),(unsigned long long)plan.total_tasks(),unsigned(outermost().feedback.shown()));std::fflush(qa_log);}
 #endif
     }
 };

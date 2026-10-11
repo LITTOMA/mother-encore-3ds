@@ -24,6 +24,7 @@ from tools.extract_battle_entry import Extractor, animation, node, one, require
 from tools.upstream import read_json, write_json
 
 RECIPE = ROOT / 'content/native-loading-indicator.json'
+FEEDBACK = ROOT / 'content/loading-feedback.json'
 PACK = ROOT / 'romfs/ui/indicator.encload'
 REVIEW = ROOT / 'compatibility/reviews/ninten-animation-v0410.json'
 REFERENCE = ROOT / 'reports/m3-actor-reference-reviewed/animation.json'
@@ -38,6 +39,24 @@ def sha(path):
 
 def f32(number):
     return struct.unpack('<f', struct.pack('<f', number))[0]
+
+
+def feedback_policy():
+    policy = read_json(FEEDBACK)
+    require(type(policy) is dict and set(policy) == {'schema', 'kind', 'show_delay_ms', 'minimum_visible_ms', 'frame_interval_ms'} and
+            type(policy['schema']) is int and policy['schema'] == 1 and
+            policy['kind'] == 'encore.platform-loading-feedback', 'Unsupported loading feedback policy')
+    timings = {k: policy[k] for k in ('show_delay_ms', 'minimum_visible_ms', 'frame_interval_ms')}
+    validate_feedback(timings)
+    return timings
+
+
+def validate_feedback(policy):
+    require(type(policy) is dict and set(policy) == {'show_delay_ms', 'minimum_visible_ms', 'frame_interval_ms'},
+            'Unknown/missing loading feedback fields')
+    require(all(type(policy[k]) is int for k in ('show_delay_ms', 'minimum_visible_ms', 'frame_interval_ms')) and
+            0 < policy['show_delay_ms'] <= 10000 and 0 < policy['minimum_visible_ms'] <= 2000 and
+            0 < policy['frame_interval_ms'] <= min(1000, policy['minimum_visible_ms']), 'Invalid loading feedback timing')
 
 
 def extract():
@@ -89,10 +108,12 @@ def extract():
             'Walking native reference differs from source')
     unique = list(dict.fromkeys(frames))
     require(all(type(frame) is int and 0 <= frame < grid[0] * grid[1] for frame in unique), 'Source frame outside grid')
-    result = dict(schema=1, kind='encore.loading-indicator.source-ir', commit=ex.lock['commit'], sources=ex.sources,
+    result = dict(schema=2, kind='encore.loading-indicator.source-ir', commit=ex.lock['commit'], sources=ex.sources,
                   scope='Platform loading indicator reuses original Ninten Walk Right. No dedicated production loading sprite was found in the inspected loading paths; original scene transitions use fades.',
                   inspected_loading_paths=inspected,
-                  dependencies={REVIEW.relative_to(ROOT).as_posix(): sha(REVIEW), REFERENCE.relative_to(ROOT).as_posix(): sha(REFERENCE)},
+                  dependencies={REVIEW.relative_to(ROOT).as_posix(): sha(REVIEW), REFERENCE.relative_to(ROOT).as_posix(): sha(REFERENCE),
+                                FEEDBACK.relative_to(ROOT).as_posix(): sha(FEEDBACK)},
+                  feedback=feedback_policy(),
                   animation=dict(name=clip['name'], source_resource=f'{SCENE}::{identifier}', length=f32(clip['length']),
                                  loop=True, keys=[dict(time=t, frame=unique.index(frame), source_frame=frame) for t, frame in zip(times, frames)]),
                   texture=dict(path=TEXTURE_PATH, source=TEXTURE, source_grid=grid, source_frames=unique,
@@ -107,8 +128,9 @@ def extract():
 
 
 def validate_ir(r):
-    require(r['schema'] == 1 and r['kind'] == 'encore.loading-indicator.source-ir', 'Unsupported loading recipe')
+    require(type(r['schema']) is int and r['schema'] == 2 and r['kind'] == 'encore.loading-indicator.source-ir', 'Unsupported loading recipe')
     t, a, l = r['texture'], r['animation'], r['layout']
+    validate_feedback(r['feedback'])
     require(t['path'] == TEXTURE_PATH and all(type(t[k]) is int and 0 < t[k] <= 1024 for k in ['width', 'height', 'frame_width', 'frame_height']), 'Invalid loading texture')
     require(0 < len(t['source_frames']) <= 16 and t['width'] == t['frame_width'] * len(t['source_frames']) and t['height'] == t['frame_height'], 'Invalid loading strip')
     require(a['loop'] is True and math.isfinite(a['length']) and 0 < a['length'] <= 120 and 0 < len(a['keys']) <= 16, 'Invalid loading timeline')
@@ -135,12 +157,14 @@ def encode(r):
         payload.extend(struct.pack('<fI', k['time'], k['frame']))
     for frame in t['source_frames']:
         payload.extend(struct.pack('<I', frame))
+    policy = r['feedback']
+    payload.extend(struct.pack('<3I', policy['show_delay_ms'], policy['minimum_visible_ms'], policy['frame_interval_ms']))
     path = t['path'].encode('ascii')
     payload.extend(struct.pack('<I', len(path)) + path)
     payload.extend(struct.pack('<I', len(l['viewports'])))
     for v in l['viewports']:
         payload.extend(struct.pack('<2I', *v))
-    return struct.pack('<8s4I', b'ENCLD001', 1, 24 + len(payload), zlib.crc32(payload), 1) + payload
+    return struct.pack('<8s4I', b'ENCLD001', 2, 24 + len(payload), zlib.crc32(payload), 2) + payload
 
 
 def verify_recipe(r):
@@ -190,7 +214,7 @@ def assets(tex3ds):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['assets', 'compile', 'verify'])
+    parser.add_argument('action', choices=['assets', 'refresh', 'compile', 'verify'])
     parser.add_argument('--tex3ds', type=Path)
     args = parser.parse_args()
     try:
@@ -198,10 +222,16 @@ def main():
             require(args.tex3ds is not None, '--tex3ds is required for assets')
             assets(args.tex3ds)
         else:
+            if args.action == 'refresh':
+                _, r, _ = extract()
+                previous = read_json(RECIPE)
+                r['outputs'] = previous['outputs']
+                verify_recipe(r)
+                write_json(RECIPE, r)
             r = read_json(RECIPE)
             verify_recipe(r)
             binary = encode(r)
-            if args.action == 'compile':
+            if args.action in ('refresh', 'compile'):
                 PACK.parent.mkdir(parents=True, exist_ok=True)
                 PACK.write_bytes(binary)
             else:

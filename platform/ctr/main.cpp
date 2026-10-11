@@ -757,7 +757,7 @@ bool play_source_audio(const std::string& path,ctr::AudioLane lane=ctr::AudioLan
     for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto asset=menu_audio_bank.asset(i);if(asset.source_path==path||(asset.source_path.substr(0,6)=="res://"&&asset.source_path.substr(6)==path)){if(!audio_player.available())return true;std::string error;
         if(!audio_player.prepared(asset.stable_id)){LoadingScope loading("Preparing sound",1);if(!loading.step([&]{return audio_player.prepare(asset.stable_id,error);},"pcm-validation")||!loading.finish()){audio_status=error;return false;}}
         if(!audio_player.play(asset.stable_id,lane,error,gain,0,pitch,repeat)){audio_status=error;return false;}return true;}}
-    house_error="Menu sound is absent from checked audio bank";return false;
+    house_error="Sound is absent from checked audio bank: "+path;return false;
 }
 bool play_gameplay_cue(upstream::GameplayCue cue,ctr::AudioLane lane=ctr::AudioLane::Effect,bool repeat=false){return play_source_audio(gameplay_audio.path(cue),lane,0,1,repeat);}
 void process_battle_audio(){
@@ -1795,7 +1795,7 @@ int main(int argc,char** argv){
             for(const auto& sound:gameplay_scene->house.take_sounds()){++house_sound_requests;const auto path=house_data.view().string(sound.sound);if(!path.empty())play_source_audio(std::string(path));}
             process_dialogue_audio(gameplay_scene->presentation);
             for(const auto& sound:gameplay_scene->house.take_phone_sounds()){
-                const auto phone=phone_data.view();play_source_audio(std::string(phone.string(phone.resource(sound.resource).path)),ctr::AudioLane::Phone);
+                play_source_audio(std::string(sound.source_path),ctr::AudioLane::Phone);
             }
             process_present_audio();
             requested_route=gameplay_scene->house.take_scene_route();

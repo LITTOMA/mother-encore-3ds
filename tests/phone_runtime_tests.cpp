@@ -1,4 +1,5 @@
 #include "encore/phone_runtime.hpp"
+#include "encore/audio_data.hpp"
 #include "encore/content.hpp"
 #include <cmath>
 #include <cstring>
@@ -13,17 +14,26 @@ struct Sounds:PhoneSoundSink {std::vector<PhoneSoundRequest>requests;bool accept
 uint32_t get(const std::vector<uint8_t>&b,size_t p){return uint32_t(b[p])|(uint32_t(b[p+1])<<8)|(uint32_t(b[p+2])<<16)|(uint32_t(b[p+3])<<24);}
 }
 int main(int argc,char**argv){
- if(argc!=3){std::cerr<<"usage: phone_runtime_tests opening.encphone native-animation.bin\n";return 2;}
+ if(argc!=4){std::cerr<<"usage: phone_runtime_tests opening.encphone native-animation.bin opening.encaudio\n";return 2;}
  PhoneData data;std::string error;check(data.load_file(argv[1],error),error.c_str());if(!data.view())return 1;
+ AudioBank bank;if(!bank.load_file(argv[3],error)){check(false,error.c_str());return 1;}
+ const auto bank_has_path=[&](std::string_view path){
+  if(path.empty())return false;
+  for(uint32_t i=0;i<bank.count();++i){auto source=bank.asset(i).source_path;if(source.substr(0,6)=="res://")source.remove_prefix(6);if(source==path)return true;}
+  return false;
+ };
  auto view=data.view();auto object=view.object(0);PhoneRuntime runtime;Flags flags;flags.values.resize(view.count(PhoneSection::FlagRefs),false);Sounds sounds;
  check(runtime.initialize(view),"initialize");check(!runtime.ringing(0),"default idle never rings from flags");
  check(runtime.pose(0).frame==object.initial_frame,"source initial frame");
  check(runtime.advance(double(1.0f/60),sounds)&&sounds.requests.empty(),"idle emits no sound");
  PhoneInteraction result;
  check(runtime.interact(0,flags,result)&&result.program==object.default_program,"default dispatch");
- check(result.sound.kind==PhoneSoundKind::Hangup&&result.sound.resource==object.hangup_sound&&result.sound.positional,"typed hangup request");
+ check(result.sound.kind==PhoneSoundKind::Hangup&&result.sound.source_path==view.string(object.hangup_sound)&&result.sound.positional,"typed hangup request");
  check(result.sound.position.x==object.audio_center.x&&result.sound.position.y==object.audio_center.y&&result.sound.bus==object.audio_bus,"sound spatial metadata");
  check(result.phone_location==object.phone_location,"phone location returned");
+ check(object.hangup_sound>=view.count(PhoneSection::Resources)&&object.ring_sound>=view.count(PhoneSection::Resources),"sound offsets are not texture-resource indices");
+ check(bank_has_path(result.sound.source_path),"actual hangup request resolves into the checked audio bank");
+ check(!bank_has_path({})&&!bank_has_path(view.string(view.resource(object.resource).path)),"empty and texture paths cannot resolve as phone audio");
  for(uint32_t i=0;i<object.dispatch_count;++i){auto d=view.dispatch(object.first_dispatch+i);flags.values[d.flag_ref]=true;check(runtime.interact(0,flags,result)&&result.program==d.program,"last matching override wins");}
  check(runtime.ring(0),"ring start");check(runtime.advance(double(1.0f/60),sounds),"ring update");auto time=runtime.clip_time(0);auto frame=runtime.pose(0).frame;
  check(runtime.ring(0)&&runtime.clip_time(0)==time&&runtime.pose(0).frame==frame,"already-ringing call is idempotent");
@@ -37,15 +47,18 @@ int main(int argc,char**argv){
  auto count=get(reference,8);uint64_t bits=uint64_t(get(reference,12))|(uint64_t(get(reference,16))<<32);double delta;std::memcpy(&delta,&bits,8);
  check(reference.size()==20+size_t(count)*24,"native oracle size");if(reference.size()!=20+size_t(count)*24)return 1;
  check(runtime.initialize(view),"oracle reset");flags.values.assign(flags.values.size(),false);sounds.requests.clear();
+ uint32_t ring_requests=0;
  for(uint32_t i=0;i<count;++i){size_t at=20+size_t(i)*24;auto tick=get(reference,at),action=get(reference,at+4),before=get(reference,at+8),after=get(reference,at+12),sound_count=get(reference,at+16),ringing=get(reference,at+20);
   check(tick==i,"oracle tick ordering");
   if(action==1)check(runtime.ring(0),"oracle ring");else if(action==2)check(runtime.interact(0,flags,result),"oracle interact");else check(action==0,"oracle action");
   if(runtime.pose(0).frame!=before){std::cerr<<"Before frame mismatch at "<<tick<<'\n';++failures;}
   sounds.requests.clear();check(runtime.advance(delta,sounds),"oracle advance");
+  for(const auto& request:sounds.requests){++ring_requests;check(request.kind==PhoneSoundKind::Ring&&request.source_path==view.string(object.ring_sound)&&bank_has_path(request.source_path),"actual ring request resolves into the checked audio bank");}
   if(runtime.pose(0).frame!=after||sounds.requests.size()!=sound_count||runtime.ringing(0)!=bool(ringing)){
    std::cerr<<"Oracle mismatch at "<<tick<<" frame="<<runtime.pose(0).frame<<" expected="<<after<<" sounds="<<sounds.requests.size()<<" expected="<<sound_count<<'\n';++failures;
   }
  }
+ check(ring_requests>0,"native oracle emitted ring requests for audio-bank binding checks");
  check(runtime.initialize(view),"invalid query reset");flags.resolved=false;result.program=UINT32_MAX;
  check(!runtime.interact(0,flags,result)&&result.program==UINT32_MAX&&!runtime.valid(),"unresolved flags reject without result");
  for(double invalid:{0.0,-1.0,.251,double(INFINITY),double(NAN)}){check(runtime.initialize(view),"delta reset");check(!runtime.advance(invalid,sounds)&&!runtime.valid(),"invalid delta rejected");}

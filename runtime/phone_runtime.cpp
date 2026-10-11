@@ -17,8 +17,8 @@ bool PhoneRuntime::ring(uint32_t object){
  // AnimationPlayer.play changes current_animation immediately; keys apply on its next process.
  state.clip=o.ring_clip;state.time=0;state.started=false;return true;
 }
-PhoneSoundRequest PhoneRuntime::sound(uint32_t object,uint32_t resource,PhoneSoundKind kind)const{
- auto o=view_.object(object);return {kind,object,resource,o.audio_bus,o.audio_center,bool(o.policy&uint32_t(PhonePolicy::Positional))};
+PhoneSoundRequest PhoneRuntime::sound(uint32_t object,uint32_t path_offset,PhoneSoundKind kind)const{
+ auto o=view_.object(object);return {kind,object,view_.string(path_offset),o.audio_bus,o.audio_center,bool(o.policy&uint32_t(PhonePolicy::Positional))};
 }
 bool PhoneRuntime::interaction_program(uint32_t object,const PhoneFlagQuery&query,uint32_t&out)const{
  if(!valid()||object>=states_.size())return false;

@@ -163,7 +163,7 @@ void check_carol_call(Fixture&f,bool area){
  remaining=1;unsigned ring_ticks=0;
  while(remaining>=0){f.step({},true,true);remaining-=dt;++ring_ticks;no_confirm(f.presentation);check(!f.world.story_flag("phone_ring"),"Ringing animation does not write story flag early");if(remaining>=0)check(f.world.phrase()==ring,"A/B cannot skip one-second ring timer");if(ring_ticks==1)check(f.phone.pose(0).frame==1&&f.phone.clip_time(0)==dt,"Phone animation advances once per shared idle, including cutscene");}
  check(f.world.phrase()==answer&&sound_count(f.runtime,PhoneSoundKind::Ring)==2,"One source ring cycle emits exactly its 0.083/0.332 sound keys");
- const auto phone_object=f.phone.view().object(0);for(const auto&s:f.runtime.phone_sounds())if(s.kind==PhoneSoundKind::Ring)check(s.object==0&&s.resource==phone_object.ring_sound&&s.bus==phone_object.audio_bus&&s.positional&&same(s.position,phone_object.audio_center),"Every ring pulse retains original resource, player identity, bus and position");
+ const auto phone_object=f.phone.view().object(0);for(const auto&s:f.runtime.phone_sounds())if(s.kind==PhoneSoundKind::Ring)check(s.object==0&&s.source_path==f.phone.view().string(phone_object.ring_sound)&&s.bus==phone_object.audio_bus&&s.positional&&same(s.position,phone_object.audio_center),"Every ring pulse retains original resource, player identity, bus and position");
  check(close(f.world.actor(f.carol_actor).direction.x,-1)&&close(f.world.actor(f.carol_actor).direction.y,0),"Carol completes source left turn during hidden ring pause");
  check(f.finish_text(answer)==0&&printed(f.presentation)=="Oh! That must be him.","Source answer recognition line is manual");
  check(!f.world.story_flag("phone_ring"),"Flag remains false until label7 starts");const auto printed_before_final=f.presentation.visible_characters();f.confirm(final);
@@ -211,7 +211,7 @@ void check_first_dad(Fixture&f){
  check(ring_at_pickup>=ring_requests&&!f.phone.ringing(0),"Phone pickup selects Idle immediately after any due source pulse");
  check(sound_count(f.runtime,PhoneSoundKind::Hangup)==hangups+1&&f.runtime.phone_sounds().back().kind==PhoneSoundKind::Hangup,"Pickup replaces the source audio player with Hangup");
  const auto sound=f.runtime.phone_sounds().back();const auto object=f.phone.view().object(0);
- check(sound.object==0&&sound.positional&&same(sound.position,object.audio_center)&&sound.bus==object.audio_bus&&sound.resource==object.hangup_sound,"Hangup retains same source object, bus and positional binding as Ring");
+ check(sound.object==0&&sound.positional&&same(sound.position,object.audio_center)&&sound.bus==object.audio_bus&&sound.source_path==f.phone.view().string(object.hangup_sound),"Hangup retains same source object, bus and positional binding as Ring");
  check_phone_identity(f,seen);check(f.world.body_enabled(f.blocker)&&!f.world.story_flag("talked_to_dad"),"Picking up does not set talked_to_dad early");
  check(f.finish_text(0)==0&&printed(f.presentation)=="Ninten picked up the phone."&&!f.presentation.dialogue_pose().name_visible,"Original pickup narration stays unnamed");
  f.confirm(1);check(f.finish_text(1)==5,"First Dad explanation retains five original WAIT markers");check_phone_identity(f,seen);

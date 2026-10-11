@@ -357,7 +357,7 @@ bool HouseRuntime::get_phone_flag(uint32_t index,bool&value)const{
 }
 bool HouseRuntime::play_phone_sound(const PhoneSoundRequest&request){
  if(!phone_||request.object>=phone_->view().count(PhoneSection::Objects))return false;
- const auto requested=phone_->view().string(request.resource);const auto room=world_->content();
+ const auto requested=request.source_path;const auto room=world_->content();
  uint32_t resource=house_no_index;
  for(uint32_t i=0;i<room.resource_count();++i){const auto r=room.resource(i);auto path=room.string(r.path_string);if(path.substr(0,6)=="res://")path.remove_prefix(6);if(r.kind==2&&path==requested){resource=i;break;}}
  if(resource==house_no_index||!world_->request_sound(resource))return false;

@@ -14,7 +14,7 @@ engine identity and whole-file source hashes. An offline build can use the
 checked parser receipt in `reports/m5-lamp-dialogue-reference/dialogue.json`.
 Both routes validate the exact reviewed document digest, command shapes,
 actor/object/method names, numeric domains and linear phrase targets before
-emitting external JSON. The reviewed IR compiler then encodes typed indexed commands into `romfs/data/opening.encroom`; no production C++ content header is emitted.
+emitting external JSON. The reviewed IR compiler then encodes typed indexed commands into `romfs/world/house/opening.encroom`; no production C++ content header is emitted.
 
 The review pins the dialogue, parser, handler, Timer scene, actor/NPC scripts,
 house scene, MusicChanger's embedded script, room shaker script/scene and audio

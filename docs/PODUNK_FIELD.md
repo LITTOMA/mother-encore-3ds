@@ -20,16 +20,16 @@
 按严格程序 / 数据分离与 fail-closed 规则，`podunk.tscn` 展开后的 8,686 个节点全部归入配方类别；未归类节点使编译失败。
 
 - 阻挡边界（接触即暂停，下屏说明，B 回到上一个安全点）：13 扇通往建筑 / Merrysville 的门、除 Mick 南栅栏以外的过场区域、跳跃区、桥层切换、事件触发区、上锁的门。房门南侧 `Cutscene Area11` 在 `gave_treats` 之前改为 `mick_bark` 往北推回，给粮后消失，见 [Mick](MICK_TREATS.md)。
-- 提示（下屏列出附近未移植对象，不生成）：其余 NPC、敌人生成器、鸟、蝴蝶、蒲公英、调查点、音乐区、楼梯、踏步音、闪光、野外礼物盒与公用电话等交互。Mick（npc21）已移植漫步与已审查对话，见 [Mick](MICK_TREATS.md)。房屋内四个礼物盒已绘制，仅 Present4 可领取狗粮，见 [房屋礼物盒](HOUSE_PRESENTS.md)。
+- 提示（下屏列出附近未移植对象，不生成）：其余 NPC、敌人生成器、鸟、蝴蝶、蒲公英、调查点、楼梯、踏步音、闪光、野外礼物盒与公用电话等交互。Mick（npc21）已移植漫步与已审查对话，见 [Mick](MICK_TREATS.md)。房屋内四个礼物盒已绘制，仅 Present4 可领取狗粮，见 [房屋礼物盒](HOUSE_PRESENTS.md)。
 - Podunk 中不开放 START 菜单、存档与战斗。
 
 ## 数据与格式
 
 `content/podunk-field.json` 只保存审查过的策略：场景类别、物件精灵、路线、语言与输出路径。`tools/podunk_field.py` 每次编译直接读取固定上游（`Extractor` 核对清单 SHA-256 与 checkout 干净），不保存中间 JSON 转储。输出：
 
-- `data/podunk.encmap`（ENCMAP01，格式 / 能力 1，21 段）：图集、帧、图片与语言变体、图块、碰撞模板、条件、图层、区块、格子、精灵、绘制条目与分组、可开启门、门、边界、提示、镜头区域、静态体。
-- `data/podunk.encroom`（ENCRMD01 rules 7 / capabilities 8）：复用房屋 IR 的玩家配置、178 个旗标（同名同 ID）、规则与经验表，Podunk 场景身份 2，无剧情程序。
-- `data/world.enclinks`（ENCLNK01）：场景（房屋 1、Podunk 2）与两条路线；所有门参数来自 `Door.gd` 默认值加实例覆盖。
+- `world/podunk/podunk.encmap`（ENCMAP01，格式 / 能力 1，21 段）：图集、帧、图片与语言变体、图块、碰撞模板、条件、图层、区块、格子、精灵、绘制条目与分组、可开启门、门、边界、提示、镜头区域、静态体。
+- `world/podunk/podunk.encroom`（ENCRMD01 rules 7 / capabilities 8）：复用房屋 IR 的玩家配置、178 个旗标（同名同 ID）、规则与经验表，Podunk 场景身份 2，无剧情程序。
+- `world/world.enclinks`（ENCLNK01）：场景（房屋 1、Podunk 2）与两条路线；所有门参数来自 `Door.gd` 默认值加实例覆盖。
 - `graphics/world/podunk/atlas-*.t3x`：只打包实际用到的图像区域，tex3ds `-f rgba8 -z none`；收据 `content/asset-receipts/graphics/world/podunk/source.json` 记录解码后 RGBA 哈希、t3x 哈希与 tex3ds 哈希。当前为 1 页 1024×1024（t3x 4,194,325 字节，加载后约 4 MiB 线性内存）。
 
 重新生成：`make podunk-field`（需要 devkitPro 的 tex3ds）。没有本机 devkitPro 时，可让主机 Python 绘制图集、由固定镜像中的同一个 tex3ds 转换：
@@ -56,7 +56,7 @@ python tools/resource_catalog.py compile
 
 - 进入 Podunk 时，原版在子节点先于父节点的 `_ready` 里抽取全局随机数，屏幕进入时草丛、鸟、蝴蝶、闪光、敌人生成器和漫步 NPC 再抽取。Mick 包把 `_ready` 之后的状态和首次视口重叠账本写进 `ENCMIK01`，只为对齐 Mick 自己的漫步等待；敌人不生成，其它 NPC 不走路。鸟离开屏幕后的再次 `_ready` 不在该账本里。
 - 敌人生成器的 `randi` 已按 400×240 首次重叠写进 Mick 随机数账本；生成敌人与进入战斗仍是后续口径。
-- 门音效（`M3/door_open.wav`、`Door_Short.mp3`）不在受检音频库中，只计数，与房屋同场景门现状一致；Podunk 音乐区未接入，场内无音乐。
+- 门音效已加入受检音频库并播放；13 个原版音乐区域由受检碰撞多边形驱动原有区域音乐控制器，五首曲目单独打包，见 [音频补全](AUDIO_COMPLETION.md)。
 - Y 坐标恰好相等时：TileMap 格子绘制项与子节点在 Godot 中按绘制下标排序且排序不稳定；本实现采用“格子按创建顺序、子节点按树顺序、玩家最后”。Mick 与玩家 Y 相同时也画在玩家下面。下标 0 的并列顺序未对照验证。
 - 翻转的图块凸形状以世界坐标重新规范绕向，SAT 轴符号与 Godot 的变换法线相反，只影响恰好相等的平局选轴。
 - 草丛晃动、闪光、其余 NPC、物件交互未实现；AnimatedTexture 相位从进入场景开始计时（原版为资源首次绘制）。

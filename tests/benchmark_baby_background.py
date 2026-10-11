@@ -46,7 +46,7 @@ def main() -> None:
     if a.sanitize:
         env["ASAN_OPTIONS"] = "detect_leaks=0"
     for w, h in [(400, 240), (320, 180)]:
-        subprocess.run([str(binary), str(ROOT / "romfs/data/doll-entry.encbattle"), str(ROOT / "romfs"), str(w), str(h), str(a.samples), str(a.iterations), str(a.step)], check=True, env=env)
+        subprocess.run([str(binary), str(ROOT / "romfs/battle/doll/doll-entry.encbattle"), str(ROOT / "romfs"), str(w), str(h), str(a.samples), str(a.iterations), str(a.step)], check=True, env=env)
 
 
 if __name__ == "__main__":

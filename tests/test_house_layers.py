@@ -191,8 +191,8 @@ class HouseLayersTests(unittest.TestCase):
                           'graphics/actors/emotes.t3x', 'graphics/actors/shadow.t3x', 'graphics/world/house-layers/objects.t3x']
         original_paths += ['graphics/world/house-map/house-%02d.t3x' % i for i in range(15)]
         original_paths += ['res://Audio/Music/Poltergeist.ogg', 'res://Audio/Sound effects/bash.mp3',
-                           'res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav', 'data/opening.encbattle',
-                           'graphics/ui/house/doll.t3x', 'graphics/ui/house/mimmie.t3x', 'data/doll-entry.encbattle']
+                           'res://Audio/Sound effects/M3/PK_Thunder_a_b_y_O_hit.wav', 'battle/lamp/opening.encbattle',
+                           'graphics/ui/house/doll.t3x', 'graphics/ui/house/mimmie.t3x', 'battle/doll/doll-entry.encbattle']
         resources = self.ir['sections']['Resource']
         self.assertEqual([(r['stable_id'], self.ir['strings'][r['path_string']]) for r in resources[:27]],
                          list(enumerate(original_paths, 1)))

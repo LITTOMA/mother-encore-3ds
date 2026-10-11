@@ -1,7 +1,7 @@
 # Original admitted item descriptions
 
 The battle Items menu and Minnie Storage consume an independent checked
-`data/opening.encdetails` resource. It covers the admitted BaseballCap and
+`ui/opening.encdetails` resource. It covers the admitted BaseballCap and
 AsthmaSpray descriptions in English and Simplified Chinese, actual session
 nickname, original Asthma image, current spray doses and source item value.
 This adds presentation, not item-use/status-healing actions or new inventory IDs.

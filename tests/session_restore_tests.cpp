@@ -19,14 +19,14 @@ void put(std::vector<uint8_t>&bytes,size_t at,uint32_t value){for(unsigned i=0;i
 void fix_battle_crc(std::vector<uint8_t>&bytes){put(bytes,16,0);put(bytes,16,encore::crc32(bytes.data(),bytes.size()));}
 }
 int main(int argc,char**argv){
- const std::string root=argc>1?argv[1]:"romfs/data";std::string error;
+ const std::string root=argc>1?argv[1]:"romfs";std::string error;
  NativeSessionData data;RoomData room;HouseData house;BattleRoundData round;ItemData items;BattleData font;
- CHECK(data.load_file((root+"/opening.encsession").c_str(),error));
- CHECK(room.load_file((root+"/opening.encroom").c_str(),error));
- CHECK(house.load_file((root+"/opening.enchouse").c_str(),error));
- CHECK(round.load_file((root+"/doll-entry.encround").c_str(),error));
- CHECK(items.load_file((root+"/opening.encitems").c_str(),error));
- CHECK(font.load_file((root+"/opening.encbattle").c_str(),error));
+ CHECK(data.load_file((root+"/session/opening.encsession").c_str(),error));
+ CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));
+ CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));
+ CHECK(round.load_file((root+"/battle/doll/doll-entry.encround").c_str(),error));
+ CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));
+ CHECK(font.load_file((root+"/battle/lamp/opening.encbattle").c_str(),error));
  PreparedSessionRestore prepared;CHECK(!prepared.valid());
  auto prepare=[&](const SessionSnapshot&state){return prepare_session_restore(data,room.view(),house.view(),round.view(),items.view(),font.view(),state,prepared,error);};
  CHECK(prepare(data.defaults()));CHECK(prepared.valid());
@@ -100,7 +100,7 @@ int main(int argc,char**argv){
 
  // A checked font is not proof that every dynamic user name can be rendered.
  // Remove one required glyph through a separate, CRC-correct fixture pack.
- std::vector<uint8_t>font_bytes;CHECK(encore::read_file((root+"/opening.encbattle").c_str(),font_bytes,1024*1024,error));
+ std::vector<uint8_t>font_bytes;CHECK(encore::read_file((root+"/battle/lamp/opening.encbattle").c_str(),font_bytes,1024*1024,error));
  const auto glyph_base=get(font_bytes,64+11*16+4);bool removed=false;
  for(uint32_t i=0;i<font.view().count(BattleSection::Glyphs);++i)if(font.view().glyph(i).codepoint=='A'){put(font_bytes,glyph_base+i*36,0x1000);removed=true;break;}
  CHECK(removed);fix_battle_crc(font_bytes);BattleData incomplete_font;CHECK(incomplete_font.load(font_bytes.data(),font_bytes.size(),error));

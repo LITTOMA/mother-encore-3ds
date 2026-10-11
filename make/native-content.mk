@@ -6,7 +6,7 @@ PYTHON ?= python3
 export ENCORE_CONTENT_RUN_ID := $(shell "$(PYTHON)" -c "import uuid; print(uuid.uuid4().hex)")
 $(info CONTENT RUN $(ENCORE_CONTENT_RUN_ID))
 CONTENT_RUNNER ?= "$(PYTHON)" tools/run_content_task.py
-CONTENT_TASKS := audio bars input phone effects doll-entry pillow-entry room battle \
+CONTENT_TASKS := audio gameplay-audio music-zones bars input phone effects doll-entry pillow-entry room battle \
  round doll-round pillow-round house house-presents mick-treats items-check items session migration restore \
  continue loading naming settings prompts locale introduction inspections drawer storage item-details field-equipment
 .PHONY: native-content $(CONTENT_TASKS) catalog encounters
@@ -36,6 +36,10 @@ session: drawer items storage house-presents mick-treats
 
 audio:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/restore_audio.py
+music-zones:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/music_zones.py
+gameplay-audio:
+	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/gameplay_audio.py
 bars:
 	$(CONTENT_RUNNER) $@ -- "$(PYTHON)" tools/blackbars_assets.py compile
 input:

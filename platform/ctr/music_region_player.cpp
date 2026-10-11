@@ -22,7 +22,7 @@ bool MusicRegionPlayer::begin_prepare(const char*bank,const char*root,const upst
 }
 MusicPreparationStep MusicRegionPlayer::prepare_step(uint32_t budget,std::string&e){
  if(prepared_){e.clear();return MusicPreparationStep::Ready;}
- if(!preparing_||!budget||budget>65536){e="Invalid music region preparation state/byte budget";return MusicPreparationStep::Failed;}
+ if(!preparing_||!budget||budget>maximum_prepare_bytes){e="Invalid music region preparation state/byte budget";return MusicPreparationStep::Failed;}
  auto abort=[&](const char*message){shutdown();e=message;return MusicPreparationStep::Failed;};
  if(validation_track_<track_count_){
   auto&t=tracks_[validation_track_];const auto&a=t.asset;

@@ -349,10 +349,10 @@ def validate(t):
 
 
 def stage_files(source):
-    blob = (source / 'data/opening.encitems').read_bytes()
+    blob = (source / 'ui/opening.encitems').read_bytes()
     t = parse_pack(blob)
     p = t['Strings']
-    out = {Path('data/opening.encitems'): blob}
+    out = {Path('ui/opening.encitems'): blob}
     for r in t['Resources']:
         path = p[r[1]:p.index(0, r[1])].decode()
         full = (source / path).resolve()
@@ -367,7 +367,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('action', nargs='?', choices=['compile', 'verify'], default='compile')
     parser.add_argument('--input', type=Path, default=ROOT / 'content/native-items.json')
-    parser.add_argument('--out', type=Path, default=ROOT / 'romfs/data/opening.encitems')
+    parser.add_argument('--out', type=Path, default=ROOT / 'romfs/ui/opening.encitems')
     args = parser.parse_args()
     try:
         ir = json.loads(args.input.read_text())

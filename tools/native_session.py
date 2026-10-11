@@ -14,7 +14,7 @@ from tools.extract_battle_entry import Extractor, one, require
 from tools.native_content import OPCODES
 from tools.source_settings import choices as settings_choices
 IR=ROOT/'content/native-session.json'
-PACK=ROOT/'romfs/data/opening.encsession'
+PACK=ROOT/'romfs/session/opening.encsession'
 def read(p): return json.loads(Path(p).read_text())
 def digest(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
@@ -271,7 +271,7 @@ def verify_recipe(r):
     require(r==extract(),'Native session recipe differs from pinned source or reviewed scope')
 
 def stage_files(source_root):
-    r=read(IR);verify_recipe(r);root=Path(source_root).resolve();relative=Path("data/opening.encsession");target=(root/relative).resolve()
+    r=read(IR);verify_recipe(r);root=Path(source_root).resolve();relative=Path("session/opening.encsession");target=(root/relative).resolve()
     require(target.is_relative_to(root),"Native session stage path escapes root")
     raw=target.read_bytes();require(raw==encode(r),"Stale staged native session pack")
     return {relative:raw}

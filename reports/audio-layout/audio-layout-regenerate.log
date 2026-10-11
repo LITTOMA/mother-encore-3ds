@@ -1,0 +1,168 @@
+Extracted reviewed opening IR: Resource=39, Vec2=416, Polygon=105, BodyRule=21, Overlay=290, MapDraw=15, Clip=72, Key=234, DirectionFrame=20, ActorProfile=7, ActorInstance=7, CameraArea=8, Flag=178, InitialFlag=1, Condition=2, Trigger=1, Program=19, Command=570, Binding=9, Battle=3, Rule=27, Experience=30, Scene=1, AnimationBinding=76, MovementPath=19, MovementEntry=48
+Extracted 8 doors, 3 unsupported routes, 135 dialogue sections
+Extracted round IR: 71 reviewed sources
+Doll round: 19932 bytes; checked source ENCRND01 v5
+Pillow round: 18764 bytes; checked ENCRND01 v5
+Native session: 9470 bytes; checked source/defaults/stat rows; save-only bridge
+Native data: 65608 bytes, 28 sections; no C++ generation or compilation
+Restore content: 1433 bytes; source NPC event order, music areas, inventory allocation metadata
+Migrated unchanged UI recipe dependencies: content\native-new-game.json
+Migrated unchanged UI recipe dependencies: content\native-house-button-prompts.json
+Migrated unchanged UI recipe dependencies: content\native-continue.json
+Podunk field: 44 layers, 169977 cells, 1 atlas pages, world/podunk/podunk.encmap 1620684 bytes, world/podunk/podunk.encroom 11536 bytes, world/world.enclinks 528 bytes
+CONTENT RUN 53e87f4cf54f4e62bca0e932b1383fd8
+"python" tools/run_content_task.py audio -- "python" tools/restore_audio.py
+"python" tools/run_content_task.py gameplay-audio -- "python" tools/gameplay_audio.py
+"python" tools/run_content_task.py music-zones -- "python" tools/music_zones.py
+"python" tools/run_content_task.py bars -- "python" tools/blackbars_assets.py compile
+CONTENT START audio pid=61920 at=2026-10-11T06:55:19.396729+00:00
+CONTENT START gameplay-audio pid=28064 at=2026-10-11T06:55:19.409614+00:00
+CONTENT START music-zones pid=59236 at=2026-10-11T06:55:19.418931+00:00
+CONTENT START bars pid=59508 at=2026-10-11T06:55:19.426969+00:00
+Blackbar compile: source-owned animation and layer verified
+CONTENT END bars pid=59508 status=0 seconds=0.462
+"python" tools/run_content_task.py input -- "python" tools/native_input.py compile
+Compiled gameplay sound cues: 24
+CONTENT END gameplay-audio pid=28064 status=0 seconds=0.488
+"python" tools/run_content_task.py phone -- "python" tools/native_phone.py compile
+CONTENT START input pid=32852 at=2026-10-11T06:55:20.081745+00:00
+{
+  "status": "verified",
+  "assets": 58,
+  "restored": 0,
+  "converted_bytes": 0
+}
+CONTENT END audio pid=61920 status=0 seconds=0.704
+CONTENT START phone pid=61520 at=2026-10-11T06:55:20.093537+00:00
+"python" tools/run_content_task.py effects -- "python" tools/world_effect_assets.py compile
+Native input tuning: 88 checked bytes
+CONTENT END input pid=32852 status=0 seconds=0.206
+"python" tools/run_content_task.py doll-entry -- "python" tools/doll_entry_asset.py compile
+CONTENT START effects pid=51916 at=2026-10-11T06:55:20.316035+00:00
+CONTENT START doll-entry pid=43036 at=2026-10-11T06:55:20.481692+00:00
+D:\GameDev\3DS\mother-encore-3ds\romfs\story\melody.encfx: 532 checked bytes
+CONTENT END effects pid=51916 status=0 seconds=0.354
+"python" tools/run_content_task.py pillow-entry -- "python" tools/pillow_entry_asset.py compile
+CONTENT START pillow-entry pid=23184 at=2026-10-11T06:55:20.845810+00:00
+Compiled music region geometry: 1755 bytes
+CONTENT END music-zones pid=59236 status=0 seconds=2.320
+"python" tools/run_content_task.py round -- "python" tools/native_round.py compile
+Doll entry compile: 12516 bytes; no combat or fabricated palette period
+CONTENT END doll-entry pid=43036 status=0 seconds=1.299
+"python" tools/run_content_task.py doll-round -- "python" tools/doll_round.py compile
+Native phone compile complete: 864 bytes
+CONTENT END phone pid=61520 status=0 seconds=1.838
+"python" tools/run_content_task.py pillow-round -- "python" tools/pillow_round.py compile
+CONTENT START round pid=60516 at=2026-10-11T06:55:21.929155+00:00
+CONTENT START doll-round pid=16276 at=2026-10-11T06:55:21.965154+00:00
+CONTENT START pillow-round pid=53648 at=2026-10-11T06:55:22.126735+00:00
+Pillow entry compile: 12444 bytes
+CONTENT END pillow-entry pid=23184 status=0 seconds=1.496
+"python" tools/run_content_task.py house -- "python" tools/native_house.py compile
+CONTENT START house pid=18788 at=2026-10-11T06:55:22.546615+00:00
+Battle round content: 17764 bytes; checked independent ENCRND01
+CONTENT END round pid=60516 status=0 seconds=0.863
+"python" tools/run_content_task.py mick-treats -- "python" tools/mick_treats.py compile
+CONTENT START mick-treats pid=62184 at=2026-10-11T06:55:22.969163+00:00
+Pillow round: 18764 bytes; checked ENCRND01 v5
+CONTENT END pillow-round pid=53648 status=0 seconds=0.880
+Doll round: 19932 bytes; checked source ENCRND01 v5
+CONTENT END doll-round pid=16276 status=0 seconds=1.042
+"python" tools/run_content_task.py items-check -- "python" tools/items_assets.py verify
+"python" tools/run_content_task.py migration -- "python" tools/session_migration.py compile
+CONTENT START items-check pid=56180 at=2026-10-11T06:55:23.199341+00:00
+CONTENT START migration pid=16976 at=2026-10-11T06:55:23.210510+00:00
+Session migration: 98666 bytes; frozen rules6 validation; unchanged snapshot payload
+CONTENT END migration pid=16976 status=0 seconds=0.253
+"python" tools/run_content_task.py continue -- "python" tools/continue_assets.py compile
+CONTENT START continue pid=52700 at=2026-10-11T06:55:23.622742+00:00
+Verified source-pinned Items art, IR dependencies and native layout provenance
+CONTENT END items-check pid=56180 status=0 seconds=1.451
+"python" tools/run_content_task.py loading -- "python" tools/loading_indicator_assets.py compile
+CONTENT START loading pid=54616 at=2026-10-11T06:55:24.825991+00:00
+Mick treats pack written without textures; console tex3ds compile is required before staging
+Mick treats pack: 13848 bytes; checked ENCMIK01
+CONTENT END mick-treats pid=62184 status=0 seconds=2.022
+"python" tools/run_content_task.py naming -- "python" tools/new_game_assets.py compile
+CONTENT START naming pid=58940 at=2026-10-11T06:55:25.164268+00:00
+Verified loading indicator source, texture and checked data
+CONTENT END loading pid=54616 status=0 seconds=0.559
+"python" tools/run_content_task.py settings -- "python" tools/startup_settings_assets.py compile
+CONTENT START settings pid=58424 at=2026-10-11T06:55:25.558702+00:00
+CONTENT END continue pid=52700 status=0 seconds=3.137
+"python" tools/run_content_task.py prompts -- "python" tools/house_button_prompt_assets.py verify
+Settings UI pack compiled 2597 bytes
+CONTENT END settings pid=58424 status=0 seconds=1.244
+"python" tools/run_content_task.py settings-check -- "python" tools/startup_settings_assets.py verify
+CONTENT START prompts pid=27884 at=2026-10-11T06:55:26.961851+00:00
+CONTENT START settings-check pid=31292 at=2026-10-11T06:55:26.999965+00:00
+Checked startup naming pack: 18660 bytes
+CONTENT END naming pid=58940 status=0 seconds=2.461
+"python" tools/run_content_task.py introduction -- "python" tools/native_introduction.py compile
+CONTENT START introduction pid=38424 at=2026-10-11T06:55:27.794003+00:00
+Settings source/pack/assets verified
+CONTENT END settings-check pid=31292 status=0 seconds=1.244
+"python" tools/run_content_task.py room -- "python" tools/native_content.py compile
+CONTENT START room pid=52044 at=2026-10-11T06:55:28.417630+00:00
+House prompts: 1452 bytes
+CONTENT END prompts pid=27884 status=0 seconds=1.545
+"python" tools/run_content_task.py items -- "python" tools/native_items.py compile
+CONTENT START items pid=58660 at=2026-10-11T06:55:28.678645+00:00
+Original two-scene Introduction: 11409 checked bytes
+CONTENT END introduction pid=38424 status=0 seconds=1.298
+Items resource: 5872 bytes; 2 definitions; 1 initial instances
+CONTENT END items pid=58660 status=0 seconds=1.498
+"python" tools/run_content_task.py storage -- "python" tools/native_storage.py compile
+"python" tools/run_content_task.py item-details -- "python" tools/item_details.py compile
+CONTENT START storage pid=49436 at=2026-10-11T06:55:30.368746+00:00
+CONTENT START item-details pid=56452 at=2026-10-11T06:55:30.373360+00:00
+Item details compile: 1244 checked bytes; independent ENCITD01, descriptions only
+CONTENT END item-details pid=56452 status=0 seconds=0.495
+"python" tools/run_content_task.py field-equipment -- "python" tools/field_equipment.py compile
+CONTENT START field-equipment pid=39400 at=2026-10-11T06:55:31.044323+00:00
+Storage binary: 5460 bytes; UID transfer and equipment data
+CONTENT END storage pid=49436 status=0 seconds=0.745
+Field equipment compile: 6400 checked bytes; six known commands / Equip only
+CONTENT END field-equipment pid=39400 status=0 seconds=0.723
+Native data: 65608 bytes, 28 sections; no C++ generation or compilation
+CONTENT END room pid=52044 status=0 seconds=46.364
+"python" tools/run_content_task.py battle -- "python" tools/native_battle.py compile
+CONTENT START battle pid=31972 at=2026-10-11T06:56:14.936187+00:00
+Battle content: 12296 bytes; external data only
+CONTENT END battle pid=31972 status=0 seconds=1.151
+House content: 22596 bytes; checked independent ENCHSE01
+CONTENT END house pid=18788 status=0 seconds=62.399
+"python" tools/run_content_task.py house-presents -- "python" tools/house_presents.py compile
+"python" tools/run_content_task.py drawer -- "python" tools/drawer_program.py compile
+"python" tools/run_content_task.py restore -- "python" tools/native_restore.py compile
+"python" tools/run_content_task.py inspections -- "python" tools/house_inspection.py compile
+CONTENT START house-presents pid=17164 at=2026-10-11T06:56:25.142481+00:00
+CONTENT START drawer pid=51372 at=2026-10-11T06:56:25.154123+00:00
+CONTENT START restore pid=32312 at=2026-10-11T06:56:25.159280+00:00
+CONTENT START inspections pid=61740 at=2026-10-11T06:56:25.173420+00:00
+Drawer programme: 720 bytes; checked ENCDRP01
+CONTENT END drawer pid=51372 status=0 seconds=0.520
+Restore content: 1433 bytes; source NPC event order, music areas, inventory allocation metadata
+CONTENT END restore pid=32312 status=0 seconds=0.552
+House presents pack written without textures; console tex3ds compile is required before staging
+House presents pack: 1860 bytes; checked ENCPRS01
+CONTENT END house-presents pid=17164 status=0 seconds=0.575
+"python" tools/run_content_task.py session -- "python" tools/native_session.py compile
+"python" tools/run_content_task.py locale -- "python" tools/localization_assets.py compile
+House inspections: 1748 bytes; checked ENCHIN01
+CONTENT END inspections pid=61740 status=0 seconds=0.710
+CONTENT START session pid=61260 at=2026-10-11T06:56:25.882321+00:00
+CONTENT START locale pid=58748 at=2026-10-11T06:56:25.886060+00:00
+Locale catalog: 13 locales; 3882 keys; 356 bindings; 3268732 bytes
+CONTENT END locale pid=58748 status=0 seconds=0.830
+Native session: 9470 bytes; checked source/defaults/stat rows; save-only bridge
+CONTENT END session pid=61260 status=0 seconds=2.505
+"python" tools/run_content_task.py catalog -- "python" tools/resource_catalog.py compile
+"python" tools/run_content_task.py encounters -- "python" tools/encounter_dependencies.py compile
+CONTENT START catalog pid=22880 at=2026-10-11T06:56:28.563705+00:00
+CONTENT START encounters pid=18040 at=2026-10-11T06:56:28.565895+00:00
+Native resource catalog: 1974 checked bytes, 41 typed bindings
+CONTENT END catalog pid=22880 status=0 seconds=0.523
+{"bytes": 1168598, "checked_pairs": 3, "enemy_profiles": 45, "formations": 20, "manifest": "D:\\GameDev\\3DS\\mother-encore-3ds\\content\\encounter-dependencies.json", "multi_enemy_formations": 1, "reinforcement_tables": 6, "rng_samples_consumed": 0, "scenes": 13, "sha256": "c66ffdcb4c4a66eeb1c8b5905df60521b47cb4efea79e03a285a0c9d835448b8", "source_candidates": 196, "spawners": 192}
+CONTENT END encounters pid=18040 status=0 seconds=3.228
+"CONTENT RUN 53e87f4cf54f4e62bca0e932b1383fd8 complete"

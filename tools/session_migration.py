@@ -12,7 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from tools.native_session import encode as encode_session
 FROZEN=ROOT/'content/legacy-rules6'
-PACK=ROOT/'romfs/data/rules6-to7.encmigration'
+PACK=ROOT/'romfs/session/rules6-to7.encmigration'
 ORDER=['opening.encsession','opening.encroom','opening.enchouse','opening.encround','opening.encitems']
 def require(value,message):
     if not value:raise ValueError(message)
@@ -42,7 +42,7 @@ def encode(root=ROOT):
     return struct.pack('<8s4I',b'ENCMIG01',1,24+len(payload),zlib.crc32(payload),1)+payload
 
 def stage_files(source_root):
-    relative=Path('data/rules6-to7.encmigration');data=(Path(source_root)/relative).read_bytes()
+    relative=Path('session/rules6-to7.encmigration');data=(Path(source_root)/relative).read_bytes()
     require(data==encode(),'Stale staged migration pack');return {relative:data}
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('action',choices=['compile','verify'],nargs='?',default='compile');args=ap.parse_args();data=encode()

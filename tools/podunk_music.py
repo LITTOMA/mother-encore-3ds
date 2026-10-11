@@ -123,6 +123,23 @@ def compile_audio_isolated(recipe,upstream,output,compiler):
         report.parent.mkdir(parents=True, exist_ok=True)
         report.write_text(json.dumps(manifest,indent=2)+'\n')
         return manifest
+def stage_files(source):
+    from tools.audio_asset import parse_bank
+    source=Path(source);recipe=json.loads((ROOT/'content/podunk-music.json').read_text())
+    blob=checked(recipe,ROOT/'upstream/MOTHER-Encore');path=Path('sound/banks/podunk.encmusic')
+    require((source/path).read_bytes()==blob,'Stale Podunk music binding')
+    bankpath=Path('sound/banks/podunk.encaudio');bank=(source/bankpath).read_bytes()
+    receipt=json.loads((ROOT/'content/asset-receipts/audio/podunk.json').read_text())
+    files={path:blob}
+    decoded=parse_bank(bank)
+    require(set(row['path'] for row in receipt['files'])=={str(bankpath)}|{a['pcm_path'] for a in decoded['assets']},'Unexpected Podunk receipt files')
+    require({a['stable_id'] for a in decoded['assets']}=={t['stable_id'] for t in recipe['tracks']},'Podunk music/audio track mismatch')
+    for row in receipt['files']:
+        target=Path(row['path']);data=(source/target).read_bytes()
+        require(len(data)==row['size'] and sha(data)==row['sha256'],'Podunk audio receipt mismatch')
+        files[target]=data
+    require(bankpath in files,'Missing Podunk audio bank receipt');return files
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('action',choices=['audit','compile','audio']);p.add_argument('--project',type=Path,default=DEFAULT_PROJECT);p.add_argument('--output',type=Path,default=ROOT/'romfs');args=p.parse_args();upstream=args.project/'upstream/MOTHER-Encore';recipe_path=ROOT/'content/podunk-music.json'
     if args.action=='audit':recipe_path.write_text(json.dumps(read_source(upstream),indent=2)+'\n');return

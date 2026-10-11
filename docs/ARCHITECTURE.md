@@ -2,7 +2,7 @@
 
 ## 当前数据流
 
-固定只读上游 → 官方Godot3.6.2原生解析/精确导出与行为参考 → 审查后的外部content/native-opening.json → tools/native_content.py → RomFS/data/opening.encroom。
+固定只读上游 → 官方Godot3.6.2原生解析/精确导出与行为参考 → 审查后的外部content/native-opening.json → tools/native_content.py → RomFS/world/house/opening.encroom。
 
 图片经tex3ds编译为独立t3x。opening.encroom含资源引用与指纹，不把全游戏所有资源强塞进单文件。
 目前25,024字节、26类section覆盖当前开局切片：几何、body规则、flags/defaults、trigger、出生点、演员实例/profile、动画/方向帧、相机区域、Y-sort/底图布局、YAML命令、对象绑定、战斗请求和运动/动作/相机/经验规则。

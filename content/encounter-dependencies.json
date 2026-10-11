@@ -6462,11 +6462,11 @@
       "combat_gate": "checked_pair_available_for_existing_single_party_binding_only",
       "compiled": {
         "battle_id": 2,
-        "battle_pack": "data/doll-entry.encbattle",
+        "battle_pack": "battle/doll/doll-entry.encbattle",
         "enemy_id": "doll",
         "files": {
-          "data/doll-entry.encbattle": "60977b67c72352c56aea3c2f807254a4892afb77835ba55e580217aac496f27d",
-          "data/doll-entry.encround": "a93c005b5d0f117f82a1b65613314aa969f450d98a1f2196b958800fd52cdacf",
+          "battle/doll/doll-entry.encbattle": "60977b67c72352c56aea3c2f807254a4892afb77835ba55e580217aac496f27d",
+          "battle/doll/doll-entry.encround": "a93c005b5d0f117f82a1b65613314aa969f450d98a1f2196b958800fd52cdacf",
           "graphics/actors/ninten-main.t3x": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
           "graphics/battle/doll/doll-background.bpx": "17995e19af6cf8b23aa7672ff888c7dd6aafdd128cd4ade02b36654b9f19ac90",
           "graphics/battle/doll/doll-enemy.t3x": "5e542028e34dd921048a9fb04d7e6bd579800d3eccc71680a3606a1739d322de",
@@ -6502,13 +6502,13 @@
         },
         "key": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml#6",
         "participant_count": 2,
-        "round_pack": "data/doll-entry.encround",
+        "round_pack": "battle/doll/doll-entry.encround",
         "source_binding": {
-          "battle_pack": "data/doll-entry.encbattle",
+          "battle_pack": "battle/doll/doll-entry.encbattle",
           "entry_ir": "content/doll-entry.json",
           "formation": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml#6",
           "round_ir": "content/doll-round.json",
-          "round_pack": "data/doll-entry.encround"
+          "round_pack": "battle/doll/doll-entry.encround"
         }
       },
       "key": "Data/Dialogue/Podunk/cutscenes/doll_attack.yaml#6",
@@ -6851,11 +6851,11 @@
       "combat_gate": "checked_pair_available_for_existing_single_party_binding_only",
       "compiled": {
         "battle_id": 1,
-        "battle_pack": "data/opening.encbattle",
+        "battle_pack": "battle/lamp/opening.encbattle",
         "enemy_id": "lamp",
         "files": {
-          "data/opening.encbattle": "0211ff0c02be4a9f4de74c080d47c52a9fb80e3f1ebc87821e109d93f4f45d4f",
-          "data/opening.encround": "fcc6946d95f58d553737e52fccbda746388cf3b14a61480c5c221e2987d59dfe",
+          "battle/lamp/opening.encbattle": "0211ff0c02be4a9f4de74c080d47c52a9fb80e3f1ebc87821e109d93f4f45d4f",
+          "battle/lamp/opening.encround": "fcc6946d95f58d553737e52fccbda746388cf3b14a61480c5c221e2987d59dfe",
           "graphics/actors/lamp.t3x": "aecc093a963e7e5ee1544f8091ea5cd8efebe82b47189c8d2d1caea1f204ff03",
           "graphics/actors/ninten-main.t3x": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
           "graphics/battle/lamp/background.bpx": "f8cf9bdeba285fac267130c65f476a1477210e1a3aef922db7a94e6942c4bec5",
@@ -6891,13 +6891,13 @@
         },
         "key": "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml#12",
         "participant_count": 2,
-        "round_pack": "data/opening.encround",
+        "round_pack": "battle/lamp/opening.encround",
         "source_binding": {
-          "battle_pack": "data/opening.encbattle",
+          "battle_pack": "battle/lamp/opening.encbattle",
           "entry_ir": "content/native-battle.json",
           "formation": "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml#12",
           "round_ir": "content/native-round.json",
-          "round_pack": "data/opening.encround"
+          "round_pack": "battle/lamp/opening.encround"
         }
       },
       "key": "Data/Dialogue/Podunk/cutscenes/lamp_attack.yaml#12",
@@ -7235,11 +7235,11 @@
       "combat_gate": "checked_pair_available_for_existing_single_party_binding_only",
       "compiled": {
         "battle_id": 3,
-        "battle_pack": "data/pillow-entry.encbattle",
+        "battle_pack": "battle/pillow/pillow-entry.encbattle",
         "enemy_id": "pillow",
         "files": {
-          "data/pillow-entry.encbattle": "d496e994932ee8d519fffa002994a896cf5f5e504bbc62523e0cbd32049c30ea",
-          "data/pillow-entry.encround": "6a4e2f29111055aac1661ee2a741433678381ddeb07bfa8ed2bf7b6ad03df567",
+          "battle/pillow/pillow-entry.encbattle": "d496e994932ee8d519fffa002994a896cf5f5e504bbc62523e0cbd32049c30ea",
+          "battle/pillow/pillow-entry.encround": "6a4e2f29111055aac1661ee2a741433678381ddeb07bfa8ed2bf7b6ad03df567",
           "graphics/actors/ninten-main.t3x": "0c67074f1f6af60134e10d25bb7fe5ed04ac0321385393c6a6f14a163875d9a2",
           "graphics/battle/lamp/basic.t3x": "63e259d5f3e2db0b403799f0334d573c6eedef173b7cce9f2ef78e1dd74a18b6",
           "graphics/battle/lamp/box.t3x": "a09b0a8b1717ff3b013a776a45dc7abaee3924e2bc86dfd02d516b74cbcee807",
@@ -7274,13 +7274,13 @@
         },
         "key": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml#6",
         "participant_count": 2,
-        "round_pack": "data/pillow-entry.encround",
+        "round_pack": "battle/pillow/pillow-entry.encround",
         "source_binding": {
-          "battle_pack": "data/pillow-entry.encbattle",
+          "battle_pack": "battle/pillow/pillow-entry.encbattle",
           "entry_ir": "content/pillow-entry.json",
           "formation": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml#6",
           "round_ir": "content/pillow-round.json",
-          "round_pack": "data/pillow-entry.encround"
+          "round_pack": "battle/pillow/pillow-entry.encround"
         }
       },
       "key": "Data/Dialogue/Podunk/cutscenes/pillow_attack.yaml#6",

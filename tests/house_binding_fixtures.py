@@ -12,7 +12,7 @@ def candidate():
 
 def fixtures(output):
  baseline=bindings.read(ROOT/'content/native-house.json');presentation=bindings.read(ROOT/'content/native-house-presentation.json');native_house.verify_sources(baseline,presentation,ROOT)
- original=native_house.encode(native_house.lower(baseline,presentation,ROOT),baseline['commit'],baseline['schema']);assert original==(ROOT/'romfs/data/opening.enchouse').read_bytes()
+ original=native_house.encode(native_house.lower(baseline,presentation,ROOT),baseline['commit'],baseline['schema']);assert original==(ROOT/'romfs/world/house/opening.enchouse').read_bytes()
  assert bindings.read(output/'bindings.json')==candidate()
  with patch.object(bindings,'IR',output/'bindings.json'):
   changed=extract_house.build(ROOT);assert changed==baseline

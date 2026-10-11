@@ -24,7 +24,7 @@ class BattleEntryBindingsTest(unittest.TestCase):
   from tools import doll_entry_asset,pillow_entry_asset
   for name,extract in [('native-battle',lambda:Extractor(ROOT).build()),('doll-entry',doll_entry_asset.extract),('pillow-entry',pillow_entry_asset.extract)]:
    old=json.loads((ROOT/'content'/str(name+'.json')).read_text(encoding='utf8'));actual=extract();self.assertEqual({k:v for k,v in actual.items()if k not in('entry_bindings','sources')},{k:v for k,v in old.items()if k not in('entry_bindings','sources')})
-   n.verify_sources(actual);assets=json.loads((ROOT/actual['presentation']['asset_receipt_path']).read_text(encoding='utf8'));blob=n.encode(n.lower(actual,assets,(ROOT/'romfs/data/opening.encroom').read_bytes()),actual['commit']);n.parse_sections(blob)
+   n.verify_sources(actual);assets=json.loads((ROOT/actual['presentation']['asset_receipt_path']).read_text(encoding='utf8'));blob=n.encode(n.lower(actual,assets,(ROOT/'romfs/world/house/opening.encroom').read_bytes()),actual['commit']);n.parse_sections(blob)
    self.assertEqual(blob,(ROOT/'romfs/data'/str('opening.encbattle'if name=='native-battle'else name+'.encbattle')).read_bytes())
  def test_schema_pin_missing_unknown_duplicate(self):
   for value in [None,0,2,True,'1']:self.rejected(lambda r:r.update(schema=value))
@@ -65,11 +65,11 @@ class BattleEntryBindingsTest(unittest.TestCase):
   actual=Extractor(ROOT).build();assets=json.loads((ROOT/actual['presentation']['asset_receipt_path']).read_text(encoding='utf8'))
   for mutate in [lambda r:r['presentation']['derived_layout'].update(plate_position=[120,132]),lambda r:r['menu'].update(cursor_repeat_delay_seconds=.1),lambda r:r.update(entry_bindings={'path':b.IR,'sha256':'0'*64})]:
    bad=copy.deepcopy(actual);mutate(bad)
-   with self.assertRaises(ValueError):n.lower(bad,assets,(ROOT/'romfs/data/opening.encroom').read_bytes())
+   with self.assertRaises(ValueError):n.lower(bad,assets,(ROOT/'romfs/world/house/opening.encroom').read_bytes())
   bad=copy.deepcopy(assets);next(r for r in bad['resources']if r['name']==self.recipe['menu'][1]['asset_alias'])['source']='Graphics/UI/Battle/bashIcon.png'
-  with self.assertRaises(ValueError):n.lower(actual,bad,(ROOT/'romfs/data/opening.encroom').read_bytes())
+  with self.assertRaises(ValueError):n.lower(actual,bad,(ROOT/'romfs/world/house/opening.encroom').read_bytes())
  def test_external_compiler_policy_changes_actual_binary_field(self):
-  actual=Extractor(ROOT).build();assets=json.loads((ROOT/actual['presentation']['asset_receipt_path']).read_text(encoding='utf8'));room=(ROOT/'romfs/data/opening.encroom').read_bytes();before=n.lower(actual,assets,room)
+  actual=Extractor(ROOT).build();assets=json.loads((ROOT/actual['presentation']['asset_receipt_path']).read_text(encoding='utf8'));room=(ROOT/'romfs/world/house/opening.encroom').read_bytes();before=n.lower(actual,assets,room)
   changed=copy.deepcopy(self.recipe);changed['compiler']['background_margins'][0]+=1
   with tempfile.TemporaryDirectory(dir=ROOT/'build')as d:
    root=Path(d);p=root/b.IR;p.parent.mkdir();p.write_text(json.dumps(changed),encoding='utf8')

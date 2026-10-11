@@ -7,7 +7,7 @@ sys.path.insert(0,str(ROOT))
 from tools.drawer_program import fields,safe_path,write_json,digest
 from tools.extract_battle_entry import PIN,require
 from tools.storage_assets import IR,ROLES,PARAMETERS,BINDINGS,load,verify_receipt
-PACK='romfs/data/opening.encstorage'
+PACK='romfs/ui/opening.encstorage'
 NIL=0xffffffff
 NAMES=['Strings','Policies','Parameters','Bindings','Resources','Layouts','Equipment']
 FORMATS=[None,'<6I','<If','<2I','<7I32s','<7I10f4I','<I7i']
@@ -115,7 +115,7 @@ def validate(t):
         require(len(e)==8 and e[0] in ids and e[0] not in seen and all(integer(v,0,65535) for v in e[1:]),'Storage equipment');seen.add(e[0])
 
 def stage_files(source):
-    source=Path(source);blob=(source/'data/opening.encstorage').read_bytes();t=parse_pack(blob);pool=t['Strings'];out={Path('data/opening.encstorage'):blob}
+    source=Path(source);blob=(source/'ui/opening.encstorage').read_bytes();t=parse_pack(blob);pool=t['Strings'];out={Path('ui/opening.encstorage'):blob}
     for r in t['Resources']:
         path=pool[r[1]:pool.index(0,r[1])].decode();data=(source/path).read_bytes();require(hashlib.sha256(data).digest()==r[7],'Storage staged texture hash');out[Path(path)]=data
     return out

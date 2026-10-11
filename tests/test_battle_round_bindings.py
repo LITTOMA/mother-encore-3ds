@@ -16,10 +16,10 @@ class BattleRoundBindings(unittest.TestCase):
         extracted = extract_battle_round.build()
         stored = json.loads((ROOT / 'content/native-round.json').read_text(encoding='utf-8'))
         self.assertEqual(extracted, stored)
-        self.assertEqual(native_round.encode(native_round.lower(extracted)), (ROOT / 'romfs/data/opening.encround').read_bytes())
+        self.assertEqual(native_round.encode(native_round.lower(extracted)), (ROOT / 'romfs/battle/lamp/opening.encround').read_bytes())
         doll = doll_round.build()
         self.assertEqual(doll, json.loads((ROOT / 'content/doll-round.json').read_text(encoding='utf-8')))
-        self.assertEqual(native_round.encode(native_round.lower(doll)), (ROOT / 'romfs/data/doll-entry.encround').read_bytes())
+        self.assertEqual(native_round.encode(native_round.lower(doll)), (ROOT / 'romfs/battle/doll/doll-entry.encround').read_bytes())
 
     def test_schema_unknown_missing_and_duplicate_fields(self):
         for schema in [None, True, 0, 2, 1.0, '1']:

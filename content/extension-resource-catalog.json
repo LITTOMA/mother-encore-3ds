@@ -35,6 +35,26 @@
       "id": 35,
       "role": "MickTreats",
       "path": "data/podunk.encmick"
+    },
+    {
+      "id": 36,
+      "role": "GameplayAudio",
+      "path": "sound/banks/gameplay.enccues"
+    },
+    {
+      "id": 37,
+      "role": "FieldMusic",
+      "path": "sound/banks/podunk.encmusic"
+    },
+    {
+      "id": 38,
+      "role": "FieldAudio",
+      "path": "sound/banks/podunk.encaudio"
+    },
+    {
+      "id": 39,
+      "role": "FieldMusicZones",
+      "path": "sound/banks/podunk.enczones"
     }
   ]
 }

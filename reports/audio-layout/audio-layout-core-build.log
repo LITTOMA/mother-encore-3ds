@@ -1,0 +1,250 @@
+适用于 .NET Framework MSBuild 版本 17.14.23+b0019275e
+
+  1>Checking Build System
+  Building Custom Rule D:/GameDev/3DS/mother-encore-3ds/CMakeLists.txt
+  music_zones.cpp
+  gameplay_audio.cpp
+  field_data.cpp
+  world_links.cpp
+  field_scene.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore\blackbars.hpp(32,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  (编译源文件“../../runtime/field_scene.cpp”)
+  
+  present_data.cpp
+  house_presents.cpp
+  mick_treats.cpp
+  house_inspection_data.cpp
+  field_equipment_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(37,170): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\field_equipment_data.cpp(70,136): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  field_equipment_menu.cpp
+  storage_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\storage_data.cpp(55,215): warning C4457: “n”的声明隐藏了函数参数 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\storage_data.cpp(32,47):
+      参见“n”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\storage_data.cpp(66,121): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  storage_menu.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\storage_menu.cpp(40,218): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  item_details.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\item_details.cpp(38,174): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\item_details.cpp(59,138): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  drawer_program.cpp
+  resource_catalog.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore\resource_catalog.hpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  (编译源文件“../../runtime/resource_catalog.cpp”)
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\resource_catalog.cpp(128,94): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  localization.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\localization.cpp(71,123): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  localized_presentation.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\localized_presentation.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  locale_preference.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\locale_preference.cpp(5,10): error C1083: 无法打开包括文件: “unistd.h”: No such file or directory [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  source_font.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\source_font.cpp(28,21): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  正在生成代码...
+  正在编译...
+  title_locale_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\title_locale_data.cpp(34,68): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  music_regions.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\music_regions.cpp(41,75): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  introduction.cpp
+D:\GameDev\3DS\mother-encore-3ds\include\encore\blackbars.hpp(32,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  (编译源文件“../../runtime/introduction.cpp”)
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\introduction.cpp(54,7): warning C4458: “resources”的声明隐藏了类成员 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\include\encore\introduction.hpp(43,28):
+      参见“encore::upstream::IntroductionData::resources”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\introduction.cpp(59,7): warning C4458: “locales”的声明隐藏了类成员 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\include\encore\introduction.hpp(43,62):
+      参见“encore::upstream::IntroductionData::locales”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\introduction.cpp(65,7): warning C4458: “scenes”的声明隐藏了类成员 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\include\encore\introduction.hpp(43,93):
+      参见“encore::upstream::IntroductionData::scenes”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\introduction.cpp(71,31): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\introduction.cpp(80,7): warning C4458: “doors”的声明隐藏了类成员 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\include\encore\introduction.hpp(46,24):
+      参见“encore::upstream::IntroductionData::doors”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\introduction.cpp(87,82): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  new_game_setup.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\new_game_setup.cpp(78,14): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\new_game_setup.cpp(157,141): warning C4456: “count”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\new_game_setup.cpp(154,18):
+      参见“count”的声明
+  
+  startup_settings.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\startup_settings.cpp(32,163): warning C4458: “description”的声明隐藏了类成员 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\include\encore\startup_settings.hpp(23,47):
+      参见“encore::upstream::StartupSettingsData::description”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\startup_settings.cpp(38,140): warning C4457: “p”的声明隐藏了函数参数 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\startup_settings.cpp(29,46):
+      参见“p”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\startup_settings.cpp(42,70): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  house_button_prompts.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\house_button_prompts.cpp(22,141): warning C4457: “p”的声明隐藏了函数参数 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\house_button_prompts.cpp(17,48):
+      参见“p”的声明
+  
+  loading_indicator_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\loading_indicator_data.cpp(81,21): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  continue_menu_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\continue_menu_data.cpp(55,127): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  continue_menu.cpp
+  slot_preference.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\slot_preference.cpp(49,35): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\slot_preference.cpp(69,32): warning C4996: '_open': This function or variable may be unsafe. Consider using _sopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  restore_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\restore_data.cpp(98,14): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  session_restore.cpp
+  session_migration.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\session_migration.cpp(22,14): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  load_rng.cpp
+  fresh_house.cpp
+  dialogue_choices_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\dialogue_choices_data.cpp(65,71): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  dialogue_choices.cpp
+  phone_data.cpp
+  phone_runtime.cpp
+  native_session.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(107,31): warning C4457: “n”的声明隐藏了函数参数 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(76,53):
+      参见“n”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(111,14): warning C4456: “count”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(86,13):
+      参见“count”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(120,42): warning C4457: “n”的声明隐藏了函数参数 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(76,53):
+      参见“n”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(120,77): warning C4456: “unique”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(90,75):
+      参见“unique”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(122,56): warning C4457: “p”的声明隐藏了函数参数 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(76,44):
+      参见“p”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(133,14): warning C4457: “n”的声明隐藏了函数参数 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(76,53):
+      参见“n”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(151,14): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(231,35): warning C4456: “source”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\native_session.cpp(227,33):
+      参见“source”的声明
+  
+  正在生成代码...
+  正在编译...
+  session_save.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\session_save.cpp(179,35): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\session_save.cpp(199,32): warning C4996: '_open': This function or variable may be unsafe. Consider using _sopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  save_menu_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\save_menu_data.cpp(57,124): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  save_menu.cpp
+  native_input.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\native_input.cpp(67,26): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  world_effect_data.cpp
+  world_effect.cpp
+  items_data.cpp
+  items_menu.cpp
+  house_runtime.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5310,24): warning C4244: “=”: 从“const _Ty”转换到“unsigned char”，可能丢失数据 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5310,24): warning C4244:         with [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5310,24): warning C4244:         [ [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5310,24): warning C4244:             _Ty=int [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5310,24): warning C4244:         ] [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  (编译源文件“../../runtime/house_runtime.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5310,24):
+      模板实例化上下文(最早的实例化上下文)为
+          D:\GameDev\3DS\mother-encore-3ds\runtime\house_runtime.cpp(122,8):
+          查看对正在编译的函数 模板 实例化“void std::fill<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,int>(const _FwdIt,const _FwdIt,const int &)”的引用
+          with
+          [
+              _Ty=uint8_t,
+              _FwdIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<uint8_t>>>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5264,37): warning C4244: “初始化”: 从“const _Ty”转换到“unsigned char”，可能丢失数据 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5264,37): warning C4244:         with [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5264,37): warning C4244:         [ [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5264,37): warning C4244:             _Ty=int [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5264,37): warning C4244:         ] [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  (编译源文件“../../runtime/house_runtime.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5264,37):
+      模板实例化上下文(最早的实例化上下文)为
+          D:\GameDev\3DS\mother-encore-3ds\runtime\house_runtime.cpp(122,8):
+          查看对正在编译的函数 模板 实例化“void std::fill<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,int>(const _FwdIt,const _FwdIt,const int &)”的引用
+          with
+          [
+              _Ty=uint8_t,
+              _FwdIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<uint8_t>>>
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Tools\MSVC\14.44.35207\include\xutility(5299,22):
+          查看对正在编译的函数 模板 实例化“void std::_Fill_memset<unsigned char*,_Ty>(_CtgIt,const _Ty,const size_t)”的引用
+          with
+          [
+              _Ty=int,
+              _CtgIt=unsigned char *
+          ]
+  
+  house_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\house_data.cpp(94,852): warning C4456: “v”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\house_data.cpp(55,12):
+      参见“v”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\house_data.cpp(94,1106): warning C4456: “v”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\house_data.cpp(55,12):
+      参见“v”的声明
+  
+  house_presentation.cpp
+  battle_outcome.cpp
+  battle_round.cpp
+  battle_round_data.cpp
+  battle_action_presentation.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\battle_action_presentation.cpp(15,57): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\battle_action_presentation.cpp(22,55): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  source_random.cpp
+  audio_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\audio_data.cpp(54,22): warning C4456: “n”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\audio_data.cpp(47,20):
+      参见“n”的声明
+  
+D:\GameDev\3DS\mother-encore-3ds\runtime\audio_data.cpp(85,26): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\audio_data.cpp(108,26): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  battle_data.cpp
+  battle_entry.cpp
+  room_data.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\room_data.cpp(588,76): warning C4456: “profile”的声明隐藏了上一个本地声明 [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+      D:\GameDev\3DS\mother-encore-3ds\runtime\room_data.cpp(556,80):
+      参见“profile”的声明
+  
+  正在生成代码...
+  正在编译...
+  content.cpp
+  file_io.cpp
+D:\GameDev\3DS\mother-encore-3ds\runtime\file_io.cpp(8,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\file_io.cpp(18,18): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+D:\GameDev\3DS\mother-encore-3ds\runtime\file_io.cpp(23,47): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [D:\GameDev\3DS\mother-encore-3ds\build\audio-layout-host\encore_core.vcxproj]
+  story.cpp
+  game.cpp
+  save.cpp
+  progression.cpp
+  movement.cpp
+  animation.cpp
+  collision.cpp
+  world_flags.cpp
+  world.cpp
+  opening_trigger.cpp
+  dialogue.cpp
+  actor_actions.cpp
+  cutscene_camera.cpp
+  正在生成代码...

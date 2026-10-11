@@ -35,11 +35,11 @@ class ItemDetailsFormat(unittest.TestCase):
 
     def test_stage_actual_resources(self):
         outputs = pack.stage_files(ROOT / 'romfs')
-        self.assertEqual(set(outputs), {Path('data/opening.encdetails'),Path(pack.OUTPUT)})
-        self.assertEqual(outputs[Path('data/opening.encdetails')], self.blob)
+        self.assertEqual(set(outputs), {Path('ui/opening.encdetails'),Path(pack.OUTPUT)})
+        self.assertEqual(outputs[Path('ui/opening.encdetails')], self.blob)
 
     def staged_copy(self, target):
-        for path in ('data/opening.encdetails',pack.OUTPUT):
+        for path in ('ui/opening.encdetails',pack.OUTPUT):
             dest = target / path; dest.parent.mkdir(parents=True,exist_ok=True)
             shutil.copyfile(ROOT / 'romfs' / path,dest)
 
@@ -58,7 +58,7 @@ class ItemDetailsFormat(unittest.TestCase):
     def test_stage_rejects_corrupt_pack(self):
         with tempfile.TemporaryDirectory() as tmp:
             target = Path(tmp); self.staged_copy(target)
-            path = target / 'data/opening.encdetails'; blob = bytearray(path.read_bytes()); blob[-1] ^= 1
+            path = target / 'ui/opening.encdetails'; blob = bytearray(path.read_bytes()); blob[-1] ^= 1
             path.write_bytes(blob)
             with self.assertRaises(ValueError): pack.stage_files(target)
 

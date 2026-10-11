@@ -5,7 +5,7 @@ import native_round as n
 import doll_round as doll
 class DollRoundTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.ir=json.loads((ROOT/'content/doll-round.json').read_text());cls.blob=(ROOT/'romfs/data/doll-entry.encround').read_bytes()
+ def setUpClass(cls):cls.ir=json.loads((ROOT/'content/doll-round.json').read_text());cls.blob=(ROOT/'romfs/battle/doll/doll-entry.encround').read_bytes()
  def test_checked_sources_and_deterministic_binary(self):
   n.verify_sources(self.ir);self.assertEqual(n.encode(n.lower(self.ir)),self.blob);t=n.parse_pack(self.blob);self.assertEqual(struct.unpack_from('<I',self.blob,8)[0],5);self.assertEqual(len(t['Growth']),7);self.assertEqual(len(t['Encounter'][0]),10)
  def test_source_encounter_and_progression(self):
@@ -69,5 +69,5 @@ class DollRoundTests(unittest.TestCase):
    ir=copy.deepcopy(self.ir);ir['presentation']['events'][m['first_event']]['kind']=1
    with self.assertRaises(n.ContentError):n.parse_pack(n.encode(n.lower(ir,verify_assets=False)))
  def test_staging_uses_companion_pack(self):
-  files=n.stage_files(ROOT/'romfs',Path('data/doll-entry.encround'));self.assertEqual(files[Path('data/doll-entry.encround')],self.blob);self.assertIn(Path('graphics/battle/doll/doll-enemy.t3x'),files)
+  files=n.stage_files(ROOT/'romfs',Path('battle/doll/doll-entry.encround'));self.assertEqual(files[Path('battle/doll/doll-entry.encround')],self.blob);self.assertIn(Path('graphics/battle/doll/doll-enemy.t3x'),files)
 if __name__=='__main__':unittest.main()

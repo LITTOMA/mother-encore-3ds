@@ -102,7 +102,7 @@ class CommittedOutputTests(unittest.TestCase):
     def test_stage_files_are_receipt_checked(self):
         files = pf.stage_files()
         names = {p.as_posix() for p in files}
-        self.assertTrue({'data/podunk.encmap', 'data/podunk.encroom', 'data/world.enclinks'} <= names)
+        self.assertTrue({'world/podunk/podunk.encmap', 'world/podunk/podunk.encroom', 'world/world.enclinks'} <= names)
         self.assertTrue(any(n.startswith('graphics/world/podunk/') for n in names))
 
 

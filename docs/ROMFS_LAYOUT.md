@@ -14,7 +14,15 @@ romfs/
     effects/          # 音效 PCM
     banks/            # 受检音频索引、循环点与播放参数
   fonts/              # 字体二进制元数据及字形图集
-  data/               # 场景、剧情、战斗、菜单、输入及目录等二进制资源
+  world/house/        # 房屋场景、交互、门、电话与礼物
+  world/podunk/       # 室外地图、场景与 Mick
+  world/world.enclinks # 跨场景路由
+  battle/{lamp,doll,pillow}/ # 遭遇与回合资源
+  story/              # 开场和剧情效果
+  session/            # 会话、恢复与迁移规则
+  system/             # 资源目录及输入参数
+  localization/       # 翻译和标题语言数据
+  ui/                 # 菜单、提示与布局二进制
   licenses/           # 打包时从受检许可文件生成
 ```
 
@@ -27,3 +35,7 @@ romfs/
 编译后的战斗 / 回合资源指纹由 `tools/encounter_dependencies.py compile` 在 Make / CMake 内容生成的最后一步更新。它先核对固定上游、来源 IR、实际二进制与全部引用素材，再写入遭遇清单；测试同时检查清单的规范字节及三个已支持遭遇的实际准入，旧指纹仍须拒绝。
 
 命名界面在目录重组前的参考提交是 `c02fc001a443e070697ae904c0879926875e50bc`。其历史玩法字节包含十一条资源路径，改名后直接计算原哈希会不一致。`tests/fixtures/naming-romfs-paths.json` 仅记录这十一条已审查改名；测试在副本中逐条还原长度前缀与路径后，继续核对原有参考哈希，其它玩法字节不得改变。缺失、重复、未知路径、调参变化和坏头部均拒绝；完整当前编码还须与实际命名资源逐字节相等。此还原只用于测试，游戏和发布包继续使用 `graphics/` 路径。
+
+目录迁移由 `content/runtime-layout.json` 明确列举 37 条映射。已审查 IR 的逻辑路径可保留，编译时投影到新路径；运行时没有旧路径回退。未知 `data/` 路径和分类错误必须拒绝。房屋 pack 指纹覆盖最终字符串，资源目录 capability 5 要求音效角色、场内音乐、音频银行与区域几何四个绑定完整。稳定 ID、游戏 rules 和存档 schema 没有随文件移动升级。
+
+迁移依赖记录须先通过原提取器生成。`tools/migrate_layout_dependencies.py --base <reviewed-main>` 仅接受元数据依赖变化；`--receipts-only` 只接受图形工具中逐字匹配的路径替换，并核对原 IR 和所有纹理字节。不能用它批准玩法或图像变化。

@@ -7,7 +7,7 @@ from tools import session_migration as migration
 class MigrationAssets(unittest.TestCase):
  def test_reproducible_checked_pack(self):
   self.assertEqual(migration.encode(),migration.PACK.read_bytes())
-  self.assertEqual(migration.stage_files(ROOT/'romfs'),{Path('data/rules6-to7.encmigration'):migration.PACK.read_bytes()})
+  self.assertEqual(migration.stage_files(ROOT/'romfs'),{Path('session/rules6-to7.encmigration'):migration.PACK.read_bytes()})
  def reject_changed_recipe(self,filename,edit):
   original=migration.read
   def changed(path):

@@ -12,11 +12,11 @@
 
 ## 数据与消费者
 
-`content/native-house-inspections.json` 为来源 IR；`tools/house_inspection.py` 编译 `data/opening.encinspect`（ENCHIN01）。该资源只持有调查几何、绑定和条件，文本由追加链接进入既有 `.enchouse`，不重复字体或图像。
+`content/native-house-inspections.json` 为来源 IR；`tools/house_inspection.py` 编译 `world/house/opening.encinspect`（ENCHIN01）。该资源只持有调查几何、绑定和条件，文本由追加链接进入既有 `.enchouse`，不重复字体或图像。
 
 HouseInspectionData 检查版本、能力、目录边界、校验和、身份、引用及数值。HouseRuntime 绑定时检查来源、旗标注册和 House 对话索引／路径；普通启动、New Game 和 LOAD 都绑定同一资源。3DS 从受检资源目录加载该二进制，不读取 JSON。提示格式能力 2 增加调查对象，继续接受已有能力 1 的解析路径；存档格式、游戏规则和既有稳定身份保持不变。
 
-抽屉另由 `content/native-drawer-program.json` 编译为 `data/opening.encdrawer`（ENCDRP01，格式／能力／规则 1）。独立指令保留背包条件、赠予、文本确认、音效和旗标顺序；消费者在执行前检查全部文本、物品、旗标和音效引用。物品 UID 由既有共享来源随机流和 UID 注册表产生，满背包分支不生成 UID；失败的库存追加不提交部分物品状态。
+抽屉另由 `content/native-drawer-program.json` 编译为 `world/house/opening.encdrawer`（ENCDRP01，格式／能力／规则 1）。独立指令保留背包条件、赠予、文本确认、音效和旗标顺序；消费者在执行前检查全部文本、物品、旗标和音效引用。物品 UID 由既有共享来源随机流和 UID 注册表产生，满背包分支不生成 UID；失败的库存追加不提交部分物品状态。
 
 新增原版文本使 House 达到 129 段、66 个对话记录，超过旧格式的 128 段／64 对话上限。因此 House 独立资源格式／能力／规则升至 7，上限为 256 段／128 对话；token 上限仍为 256。加载器保留格式 4–6 的原有能力和容量限制，未知格式明确拒绝。Room 与存档格式、默认值和既有身份保持不变。
 

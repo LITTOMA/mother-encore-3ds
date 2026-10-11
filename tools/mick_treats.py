@@ -5,7 +5,7 @@ Build-time adapter only. Spoken trees, the south-fence bark, 4dir clips and the
 field-enter RNG ledger are data. Telepathy, the heart emote and other NPC
 movement stay out. Phrase text is printed by the existing world DialogueBox;
 [PartyLead] is substituted at runtime.
-Outputs: data/podunk.encmick and graphics/world/mick/mick.t3x.
+Outputs: world/podunk/podunk.encmick and graphics/world/mick/mick.t3x.
 """
 from __future__ import annotations
 import argparse, csv, hashlib, io, json, math, re, struct, subprocess, sys
@@ -19,7 +19,7 @@ from tools.godot_text import Document, Rect2, Vec2, instantiate, owner_of  # noq
 IR = 'content/mick-treats.json'
 REVIEW = 'reports/mick-treats/source-review.json'
 RECEIPT = 'content/asset-receipts/graphics/world/mick/source.json'
-PACK = 'data/podunk.encmick'
+PACK = 'world/podunk/podunk.encmick'
 SCENE = 'Maps/podunk/podunk.tscn'
 NPC = 'Nodes/Reusables/npc.tscn'
 SPRITE = 'Graphics/Character Sprites/Npcs/4dir/mick.png'

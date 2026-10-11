@@ -12,7 +12,7 @@ class NativeSessionTests(unittest.TestCase):
     def test_checked_source_and_staging(self):
         native.verify_recipe(self.recipe)
         self.assertEqual(native.PACK.read_bytes(),native.encode(self.recipe))
-        self.assertEqual(native.stage_files(native.ROOT/'romfs'),{Path('data/opening.encsession'):native.PACK.read_bytes()})
+        self.assertEqual(native.stage_files(native.ROOT/'romfs'),{Path('session/opening.encsession'):native.PACK.read_bytes()})
     def test_source_defaults_and_derived_values(self):
         r=self.recipe;s=r['defaults'];c=s['characters'][0]
         self.assertEqual((r['saved_flag'],r['earned_cash_flag']),('saved','earned_cash'))
@@ -106,7 +106,7 @@ class NativeSessionTests(unittest.TestCase):
             with self.assertRaises(ValueError):native.verify_recipe(bad)
     def test_stale_or_escaping_stage_rejected(self):
         with tempfile.TemporaryDirectory()as name:
-            root=Path(name);(root/'data').mkdir();target=root/'data/opening.encsession';target.write_bytes(b'stale')
+            root=Path(name);(root/'session').mkdir();target=root/'session/opening.encsession';target.write_bytes(b'stale')
             with self.assertRaises(ValueError):native.stage_files(root)
             target.unlink();target.symlink_to(native.PACK)
             with self.assertRaises(ValueError):native.stage_files(root)

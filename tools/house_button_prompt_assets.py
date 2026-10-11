@@ -6,7 +6,7 @@ from PIL import Image,ImageDraw,ImageFont
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools.ui_presentation_bindings import load as load_ui_bindings
 from tools.extract_battle_entry import Extractor,node,require
-IR=ROOT/'content/native-house-button-prompts.json';PACK=ROOT/'romfs/data/opening.encprompts';REPORT=ROOT/'reports/new-game-settings/prompts';WORK=ROOT/'build/house-button-prompts'
+IR=ROOT/'content/native-house-button-prompts.json';PACK=ROOT/'romfs/ui/opening.encprompts';REPORT=ROOT/'reports/new-game-settings/prompts';WORK=ROOT/'build/house-button-prompts'
 
 def checked_bindings():return load_ui_bindings('prompts-presentation-bindings.json',BINDING_SCHEMA,ROOT,expected_checks=41,expected_contracts=102)
 BINDING_SCHEMA={'source_0':str,'source_1':str,'source_2':str,'source_3':str,'source_4':str,'source_5':str,'source_6':str,'source_7':str,'source_8':str,'source_9':str,'source_10':str,'source_11':str,'source_12':str,'source_13':str,'source_14':str,'source_15':str,'source_16':str,'source_17':str,'source_18':str,'node_0':str,'node_1':str,'node_2':str,'node_3':str,'node_4':str,'node_5':str,'node_6':str,'node_7':str,'preview_rows':[[str,str,int],[str,str,int]],'preview_root':str,'preview_prompt_suffix':str,'choice_masks':[int,int,int,int],'choices':[str,str,str,str],'house_target_rows':[[int,str,int],[int,str,int]],'phone_kind':int,'phone_category':int,'door_origin':float,'color':int,'resource_root':str,'resource_suffix':str,'accept_name':str,'label':str,'arrow_rotation':int}
@@ -130,7 +130,7 @@ def verify(d):
 
 def stage_files(source_root):
  global b;b=checked_bindings()
- d=json.loads(IR.read_text());verify(d);root=Path(source_root);relative=Path('data/opening.encprompts');binary=(root/relative).read_bytes();require(binary==encode(d),'Stale staged prompt pack');files={relative:binary}
+ d=json.loads(IR.read_text());verify(d);root=Path(source_root);relative=Path('ui/opening.encprompts');binary=(root/relative).read_bytes();require(binary==encode(d),'Stale staged prompt pack');files={relative:binary}
  for r in d['resources']:
   path=Path(r['path']);raw=(root/path).read_bytes();require(hashlib.sha256(raw).hexdigest()==r['sha256'],'Staged prompt texture mismatch');files[path]=raw
  return files

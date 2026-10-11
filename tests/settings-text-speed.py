@@ -40,6 +40,6 @@ log=[(REPORT/"focused-host.log").read_text()] if (REPORT/"focused-host.log").exi
 def run(args):
  result=subprocess.run(args,cwd=ROOT,capture_output=True,text=True);log.append('$ '+' '.join(map(str,args))+'\n'+result.stdout+result.stderr);(REPORT/'focused-host.log').write_text('\n'.join(log));assert result.returncode==0,log[-1];return result.stdout
 run(command)
-result=run([str(WORK/'settings-text-speed'),str(WORK),str(ROOT/'romfs/data/opening.encround'),str(ROOT/'romfs/data/opening.encbattle'),str(oracle)])
+result=run([str(WORK/'settings-text-speed'),str(WORK),str(ROOT/'romfs/battle/lamp/opening.encround'),str(ROOT/'romfs/battle/lamp/opening.encbattle'),str(oracle)])
 (REPORT/'result.json').write_text(json.dumps(dict(status='passed',scope='One focused host check; no new Godot run, ARM, GUI, hardware or save operations',result=result.strip(),source_choices=speeds,sources={p:hashlib.sha256((UP/p).read_bytes()).hexdigest() for p in paths},recorded_default_oracle=dict(path=str(oracle),sha256=hashlib.sha256(oracle.read_bytes()).hexdigest()),battle_text_rows={k:len(v) for k,v in texts.items()},battle_token_scope='Current checked battle rows contain no delay, speed or wait tags. Future tagged content needs a source-preserving token schema; no guessed reconstruction from precompiled text.'),indent=2)+'\n')
 print(result,end='')

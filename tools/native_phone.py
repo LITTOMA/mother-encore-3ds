@@ -22,7 +22,7 @@ SECTIONS=['Strings','Resources','Objects','Clips','FrameKeys','SoundKeys','FlagR
 FORMATS=[None,'<7I32s','<18I20f','<9Id','<dI','<dI','<2I','<2I']
 STRIDES=[1]+[struct.calcsize(f)for f in FORMATS[1:]]
 HEADER=64+16*len(SECTIONS)
-OUT=ROOT/'romfs/data/opening.encphone'
+OUT=ROOT/'romfs/world/house/opening.encphone'
 NO_INDEX=0xffffffff
 
 
@@ -136,7 +136,7 @@ def stage_files(source_root):
         path=(source_root/relative).resolve()
         require(path.is_relative_to(resolved_root),'Phone staged path escape')
         return path.read_bytes()
-    relative=Path('data/opening.encphone')
+    relative=Path('world/house/opening.encphone')
     blob=read(relative)
     parsed=parse_pack(blob)
     require(blob==compile_pack(ROOT),'Staged phone pack/source IR mismatch')

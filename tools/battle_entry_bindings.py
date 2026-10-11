@@ -220,9 +220,9 @@ def fixtures(output,project=None,recipe=None):
             with tempfile.TemporaryDirectory(dir=project/'build')as temporary:
                 ROOT=Path(temporary);target=ROOT/IR;target.parent.mkdir();target.write_text(json.dumps(recipe,indent=2),encoding='utf8')
                 entry=Extractor(project).build();assets=read(project/entry['presentation']['asset_receipt_path']);native_battle.verify_sources(entry)
-                tables=native_battle.lower(entry,assets,(project/'romfs/data/opening.encroom').read_bytes());blob=native_battle.encode(tables,entry['commit']);native_battle.parse_sections(blob)
+                tables=native_battle.lower(entry,assets,(project/'romfs/world/house/opening.encroom').read_bytes());blob=native_battle.encode(tables,entry['commit']);native_battle.parse_sections(blob)
                 (output/str(label+'.encbattle')).write_bytes(blob)
-        require((output/'baseline.encbattle').read_bytes()==(project/'romfs/data/opening.encbattle').read_bytes(),'Entry fixture baseline drift')
+        require((output/'baseline.encbattle').read_bytes()==(project/'romfs/battle/lamp/opening.encbattle').read_bytes(),'Entry fixture baseline drift')
         require((output/'baseline.encbattle').read_bytes()!=(output/'changed.encbattle').read_bytes(),'Entry adapter data fixture did not change binary')
     finally:ROOT=original
     print('Original-entry compiler fixtures; only plate BG left margin differs by one')

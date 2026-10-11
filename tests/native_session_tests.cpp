@@ -12,9 +12,9 @@ static unsigned checks=0;
 static void put(std::vector<uint8_t>&b,size_t at,uint32_t v){for(unsigned i=0;i<4;++i)b[at+i]=uint8_t(v>>(8*i));}
 static void fix(std::vector<uint8_t>&b){put(b,12,uint32_t(b.size()));put(b,16,encore::crc32(b.data()+24,b.size()-24));}
 int main(int argc,char**argv){
- const std::string root=argc>1?argv[1]:"romfs/data";std::string error;
+ const std::string root=argc>1?argv[1]:"romfs";std::string error;
  NativeSessionData data;RoomData room;HouseData house;BattleRoundData round;ItemData items;InventoryState inventory;
- CHECK(data.load_file((root+"/opening.encsession").c_str(),error));CHECK(room.load_file((root+"/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/opening.enchouse").c_str(),error));CHECK(round.load_file((root+"/doll-entry.encround").c_str(),error));CHECK(items.load_file((root+"/opening.encitems").c_str(),error));CHECK(inventory.initialize(items.view()));
+ CHECK(data.load_file((root+"/session/opening.encsession").c_str(),error));CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));CHECK(round.load_file((root+"/battle/doll/doll-entry.encround").c_str(),error));CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(inventory.initialize(items.view()));
  auto validate=[&](const SessionSnapshot&s){return validate_native_session_snapshot(data,room.view(),house.view(),round.view(),items.view(),s,error);};
  CHECK(data.leader_id()=="ninten");CHECK(data.saved_flag_id()=="saved");CHECK(data.earned_cash_flag_id()=="earned_cash");CHECK(data.defaults().flags.size()==178);CHECK(validate(data.defaults()));
  const auto&initial=data.defaults().characters[0];CHECK(initial.nickname=="Ninten");CHECK(initial.permanent_boosts.empty());CHECK(initial.affinity_multipliers.size()==1&&initial.affinity_multipliers[0].id=="asthma"&&initial.affinity_multipliers[0].value==1);CHECK(initial.inventory[0].item_id=="BaseballCap"&&initial.inventory[0].equipped&&initial.inventory[0].doses==1);CHECK(data.defaults().key_items[0].item_id=="CashCard"&&data.defaults().key_items[0].uid!=initial.inventory[0].uid);
@@ -65,7 +65,7 @@ int main(int argc,char**argv){
  CHECK(inactive_bytes(output)==inactive_bytes(input.state));
  CHECK(encode_session_save(output,data.compatibility(),encoded,error));CHECK(decode_session_save(encoded.data(),encoded.size(),data.compatibility(),restored,error));CHECK(validate(restored));CHECK(inactive_bytes(restored)==inactive_bytes(output));
  auto previous=output;input.state.characters[1].hp++;CHECK(!build());CHECK(inactive_bytes(output)==inactive_bytes(previous));input.state.characters[1].hp--;
- std::vector<uint8_t>bytes;CHECK(encore::read_file((root+"/opening.encsession").c_str(),bytes,1024*1024,error));
+ std::vector<uint8_t>bytes;CHECK(encore::read_file((root+"/session/opening.encsession").c_str(),bytes,1024*1024,error));
  for(size_t n=0;n<bytes.size();++n)CHECK(!data.load(bytes.data(),n,error));
  CHECK(data.valid()&&data.leader_id()=="ninten");
  for(size_t i=0;i<bytes.size();++i){auto mutation=bytes;mutation[i]^=1;CHECK(!data.load(mutation.data(),mutation.size(),error));}

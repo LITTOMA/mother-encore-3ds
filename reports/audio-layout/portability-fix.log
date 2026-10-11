@@ -1,0 +1,6 @@
+Migrated unchanged UI recipe dependencies: content\native-new-game.json
+Migrated unchanged UI recipe dependencies: content\native-house-button-prompts.json
+Migrated unchanged UI recipe dependencies: content\native-continue.json
+Migrated unchanged UI recipe dependencies: content\native-title-locales.json
+Verified title locale metadata/textures and unchanged English/primary title assets
+{"bytes": 1168305, "checked_pairs": 3, "enemy_profiles": 45, "formations": 20, "manifest": "D:\\GameDev\\3DS\\mother-encore-3ds\\content\\encounter-dependencies.json", "multi_enemy_formations": 1, "reinforcement_tables": 6, "rng_samples_consumed": 0, "scenes": 13, "sha256": "682479e3aea17f5ccdb5ab3cf124b592a92dfe81ae5fb7967f10fb30a9269add", "source_candidates": 196, "spawners": 192}

@@ -1,0 +1,6 @@
+2026-10-11T07:03:32.2080178Z platform/ctr/main.cpp:1067:100: error: invalid initialization of reference of type 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'} from expression of type 'const std::string_view' {aka 'const std::basic_string_view<char>'}
+2026-10-11T07:03:33.7592344Z make[1]: *** [platform/ctr/Makefile:70: build/ctr/platform/ctr/main.o] Error 1
+2026-10-11T07:03:47.5476238Z ValueError: Title locale source drift: dependencies
+2026-10-11T07:03:47.5752301Z make[1]: *** [platform/ctr/Makefile:67: stage-romfs] Error 1
+2026-10-11T07:03:47.5755012Z make: *** [Makefile:101: 3dsx] Error 2
+2026-10-11T07:03:47.5772531Z ##[error]Process completed with exit code 2.

@@ -36,7 +36,7 @@ class PillowSourceBindings(unittest.TestCase):
  def test_unsafe_artifact_selectors_are_rejected(self):
   for path in [['append','world_manifest'],['append','attack_receipt'],['append','scene'],['append','native_receipts',0,'path']]:self.reject(path,'../outside.json')
  def test_battle_catalog_and_choice_identity(self):
-  for path,value in [(['append','battle_enemy'],'doll'),(['append','battle_path'],'data/doll-entry.encbattle'),(['append','battle_id'],99),(['append','choices_index'],0),(['append','choices_id'],'unknown'),(['tutorial','choice_groups',0,'cancel_target_pc'],0)]:self.reject(path,value)
+  for path,value in [(['append','battle_enemy'],'doll'),(['append','battle_path'],'battle/doll/doll-entry.encbattle'),(['append','battle_id'],99),(['append','choices_index'],0),(['append','choices_id'],'unknown'),(['tutorial','choice_groups',0,'cancel_target_pc'],0)]:self.reject(path,value)
  def test_unknown_emission_reference_opcode_phase_and_source_payload(self):
   path=self.recipe['paths']['attack'];self.reject(['linears',path,'commands',0,'kind'],'IgnoreUnknown');self.reject(['linears',path,'commands',0,'phrase'],99)
   i=next(i for i,c in enumerate(self.recipe['linears'][path]['commands'])if c['kind']=='MoveActorPath');self.reject(['linears',path,'commands',i,'path'],{'$unknown':['0']})

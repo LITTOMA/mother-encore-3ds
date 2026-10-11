@@ -58,7 +58,7 @@ def check(project, output):
             if (stage / relative).read_bytes() != (extracted / relative).read_bytes():
                 raise ValueError('CIA RomFS bytes differ: ' + str(relative))
         resource_catalog.stage_files(extracted)
-        catalog = (stage / 'data/native.encresources').read_bytes()
+        catalog = (stage / 'system/native.encresources').read_bytes()
         if catalog not in romfs:
             raise ValueError('3DSX embedded RomFS lacks the checked resource catalog')
         for row in resource_catalog.decode(catalog)['bindings']:

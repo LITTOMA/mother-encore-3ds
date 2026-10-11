@@ -17,7 +17,7 @@
 
 ## 数据与消费者
 
-`content/mick-treats.json` 为来源 IR；`tools/mick_treats.py` 编译 `data/podunk.encmick`（ENCMIK01，演员记录 200 字节，九个段）。贴图由真实 `tex3ds` 生成到 `graphics/world/mick/mick.t3x`。
+`content/mick-treats.json` 为来源 IR；`tools/mick_treats.py` 编译 `world/podunk/podunk.encmick`（ENCMIK01，演员记录 200 字节，九个段）。贴图由真实 `tex3ds` 生成到 `graphics/world/mick/mick.t3x`。
 
 资源目录能力 4 的 MickTreats 角色仍指向该包。`gave_treats` 与 `mick_scratch` 进入会话 `mutable_flags`。钥匙获取策略仍是 DogTreats 绑定 `consumed_flag_id=gave_treats`。
 

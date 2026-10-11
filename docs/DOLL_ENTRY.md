@@ -5,7 +5,7 @@ This slice provides the original Doll entrance, roster, menu and background data
 
 ## Resource identity
 
-`content/doll-entry.json` is explicit reviewed input. `tools/doll_entry_asset.py extract` refreshes it only when requested; ordinary compilation does not re-extract source. The compiler produces `romfs/data/doll-entry.encbattle`, referenced by Room battle stable ID2, player instance0, Doll instance2. The binary has no dependency on Room bytes, avoiding a resource-hash cycle.
+`content/doll-entry.json` is explicit reviewed input. `tools/doll_entry_asset.py extract` refreshes it only when requested; ordinary compilation does not re-extract source. The compiler produces `romfs/battle/doll/doll-entry.encbattle`, referenced by Room battle stable ID2, player instance0, Doll instance2. The binary has no dependency on Room bytes, avoiding a resource-hash cycle.
 
 The pack reuses the checked opening transition/font/menu resources, Ninten's existing texture and `graphics/ui/house/doll.t3x`. Full Mimmie and Doll sheets plus emote art already exist in the checked house/actor bundles; no duplicate textures are introduced. The cinematic Room adapter supplies source Float, Mimmie directional animation and exclamation tracks.
 

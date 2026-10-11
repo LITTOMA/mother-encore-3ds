@@ -107,7 +107,7 @@ struct Target {
 
 static bool run(FILE* log){
  log_file=log;encore::upstream::BattleData data;std::string error;
- if(!data.load_file("romfs:/data/pillow-entry.encbattle",error)){message("READBACK FAIL load %s\n",error.c_str());return false;}
+ if(!data.load_file("romfs:/battle/pillow/pillow-entry.encbattle",error)){message("READBACK FAIL load %s\n",error.c_str());return false;}
  const auto v=data.view();gpu_span::Image src[2],pal[2];std::vector<encore::BackgroundKernel::Layer> layers;std::vector<encore::ScalarBackgroundKernel::Layer> scalar;
  for(unsigned n=0;n<2;++n){const auto b=v.background(n);const auto r=v.resource(b.resource);if(!gpu_span::image("romfs:/"+std::string(v.string(r.path)),r,src[n]))return false;layers.push_back(gpu_span::layer<encore::BackgroundKernel>(b,src[n],pal[n]));scalar.push_back(gpu_span::layer<encore::ScalarBackgroundKernel>(b,src[n],pal[n]));}
  constexpr uint32_t w=400,h=240;encore::RowLinearBackgroundKernel direct;encore::BackgroundKernel baseline;encore::ScalarBackgroundKernel oracle;

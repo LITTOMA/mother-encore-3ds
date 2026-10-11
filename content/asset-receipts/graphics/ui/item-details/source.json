@@ -2,7 +2,7 @@
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "ir_sha256": "6cc26a78ab1a11b851039e2a2b6fd8c0bcdcbcbe3b57a8095e77d2cbc10330ff",
-  "producer_sha256": "de51d7537367e61c932b1983847920995fc7e132cf61b4f8a8088f48188620d2",
+  "producer_sha256": "a4f1dc738e72a5404762c8a05d1ec862e60ca8da9d3f7b997d3f00746e4248fe",
   "tex3ds_sha256": "58cecde429b2c4d1b4e09ae85b1f3b6851bf78914117d0e7bf8f1ba1a0a47c9e",
   "outputs": {
     "graphics/ui/item-details/asthma-status.t3x": {

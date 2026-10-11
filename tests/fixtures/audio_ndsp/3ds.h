@@ -9,5 +9,6 @@ enum {NDSP_WBUF_FREE=0,NDSP_WBUF_QUEUED=1,NDSP_WBUF_PLAYING=2,NDSP_WBUF_DONE=3};
 enum {NDSP_INTERP_POLYPHASE=0,NDSP_FORMAT_MONO_PCM16=5,NDSP_FORMAT_STEREO_PCM16=6};
 Result ndspInit();void ndspExit();void ndspSetMasterVol(float);void ndspChnReset(int);
 void* linearAlloc(size_t);void linearFree(void*);uint32_t ndspGetDroppedFrames();
+void ndspChnSetPaused(int,bool);
 void ndspChnWaveBufClear(int);void ndspChnSetMix(int,float*);Result DSP_FlushDataCache(const void*,uint32_t);
 void ndspChnWaveBufAdd(int,ndspWaveBuf*);void ndspChnSetInterp(int,int);void ndspChnSetRate(int,float);void ndspChnSetFormat(int,int);

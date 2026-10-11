@@ -59,7 +59,7 @@ class PhonePackTests(unittest.TestCase):
 
     def test_staging_checks_exact_pack_and_referenced_texture(self):
         files=p.stage_files(p.ROOT/'romfs')
-        self.assertEqual(set(files),{Path('data/opening.encphone'),Path('graphics/ui/phone/phone.t3x')})
+        self.assertEqual(set(files),{Path('world/house/opening.encphone'),Path('graphics/ui/phone/phone.t3x')})
         for target in files:
             with tempfile.TemporaryDirectory()as td:
                 root=Path(td)
@@ -70,9 +70,10 @@ class PhonePackTests(unittest.TestCase):
                 with self.assertRaises(ValueError):p.stage_files(root)
         with tempfile.TemporaryDirectory()as td:
             root=Path(td)
-            (root/'data').mkdir()
-            (root/'data/opening.encphone').write_bytes(self.blob)
-            (root/'phone-preview').symlink_to(p.ROOT/'romfs/graphics/ui/phone',target_is_directory=True)
+            (root/'world/house').mkdir(parents=True)
+            (root/'graphics/ui').mkdir(parents=True)
+            (root/'world/house/opening.encphone').write_bytes(self.blob)
+            (root/'graphics/ui/phone').symlink_to(p.ROOT/'romfs/graphics/ui/phone',target_is_directory=True)
             with self.assertRaisesRegex(ValueError,'path escape'):p.stage_files(root)
 
 

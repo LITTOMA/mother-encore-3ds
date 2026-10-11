@@ -35,8 +35,8 @@ class SaveMenuAssetsTests(unittest.TestCase):
   with tempfile.TemporaryDirectory()as temp:
    root=Path(temp)/'romfs';root.mkdir()
    for p,b in files.items():target=root/p;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(b)
-   pack=root/'data/opening.encsavemenu';pack.write_bytes(pack.read_bytes()+b'x')
+   pack=root/'ui/opening.encsavemenu';pack.write_bytes(pack.read_bytes()+b'x')
    with self.assertRaises(ValueError):s.stage_files(root)
-   pack.write_bytes(files[Path('data/opening.encsavemenu')]);a=next(x for x in files if x.suffix=='.t3x');outside=Path(temp)/'outside';outside.write_bytes(files[a]);(root/a).unlink();(root/a).symlink_to(outside)
+   pack.write_bytes(files[Path('ui/opening.encsavemenu')]);a=next(x for x in files if x.suffix=='.t3x');outside=Path(temp)/'outside';outside.write_bytes(files[a]);(root/a).unlink();(root/a).symlink_to(outside)
    with self.assertRaises(ValueError):s.stage_files(root)
 if __name__=='__main__':unittest.main()

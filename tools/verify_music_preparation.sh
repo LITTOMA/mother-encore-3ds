@@ -14,5 +14,5 @@ build/music_region_prepare_tests "${ARGS[@]}" >reports/prepare-tests.log 2>&1
 g++ "${COMMON[@]}" "${CORE[@]}" "${NEW[@]}" tests/music_region_service_tests.cpp -Wl,--wrap=fopen -o build/music_region_service_tests >reports/service-build.log 2>&1
 build/music_region_service_tests "${ARGS[@]}" >reports/service-tests.log 2>&1
 g++ "${COMMON[@]}" "${CORE[@]}" platform/ctr/audio_player.cpp tests/audio_player_regression.cpp -o build/audio_regression_hooked >reports/audio-regression-hooked-build.log 2>&1
-build/audio_regression_hooked "${ARGS[@]:0:2}" "$BASE/romfs/data/opening.encroom" >reports/audio-regression-hooked.log
+build/audio_regression_hooked "${ARGS[@]:0:2}" "$BASE/romfs/world/house/opening.encroom" >reports/audio-regression-hooked.log
 cmp "${ENCORE_AUDIO_REGRESSION_REFERENCE:-reports/startup-music-gpu-checkpoint/inputs/podunk-music-service/audio-regression-original.log}" reports/audio-regression-hooked.log

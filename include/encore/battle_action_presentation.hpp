@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/battle_round.hpp"
+#include "encore/gameplay_audio.hpp"
 #include "encore/battle_entry.hpp"
 #include <algorithm>
 #include <array>
@@ -47,6 +48,7 @@ public:
  void set_text_resolver(BattleTextResolver resolver,void*context){text_resolver_=resolver;text_context_=context;}
  bool set_actor_base(uint32_t,const BattlePose&);bool set_plate_base(BattleValue);
  bool emit(const BattleRoundCue&,SourceRandom&)override;
+ std::vector<GameplayCue>take_audio_events(){auto result=std::move(audio_);audio_.clear();return result;}
  bool ready(BattleRoundGate,uint32_t)const override;int32_t current_hp(uint32_t)const override;
  bool physics_frame(double);bool idle_frame(double);void input(bool accept,bool cancel){text_.input(accept,cancel);}
  // Call once per actual frame with unscaled real delta. Source Slowmo uses real
@@ -78,6 +80,7 @@ public:
  const char*error()const{return error_;}
  const RoundView& content()const{return content_;}
 private:
+ std::vector<GameplayCue>audio_;
  struct Clip {uint32_t media=round_no_index,target=round_no_index;double time=0;Vec2 origin{},input{1,1};bool active=false;std::string text;};
  struct Actor {BattlePose base{};Clip animation{},motion{};bool apply_damage=false,hide_pending=false,hidden=false,defending=false,dead=false;int32_t hp=0;uint32_t restore_media=round_no_index;};
  BattleTextResolver text_resolver_=nullptr;void*text_context_=nullptr;

@@ -14,16 +14,16 @@ class PillowBattleTests(unittest.TestCase):
         cls.receipt = json.loads(entry.RECEIPT.read_text())
         cls.blob, cls.tables = entry.compile_pack(cls.ir)
         cls.round = json.loads((ROOT / 'content/pillow-round.json').read_text())
-        cls.round_blob = (ROOT / 'romfs/data/pillow-entry.encround').read_bytes()
+        cls.round_blob = (ROOT / 'romfs/battle/pillow/pillow-entry.encround').read_bytes()
 
     def test_source_and_deterministic_compilation(self):
         self.assertEqual(self.blob, entry.PACK.read_bytes())
         native_round.verify_sources(self.round)
         self.assertEqual(native_round.encode(native_round.lower(self.round)), self.round_blob)
         self.assertEqual(native_round.parse_pack(self.round_blob).version, 5)
-        files = native_battle.stage_files(ROOT / 'romfs', Path('data/pillow-entry.encbattle'))
+        files = native_battle.stage_files(ROOT / 'romfs', Path('battle/pillow/pillow-entry.encbattle'))
         self.assertIn(Path('graphics/battle/pillow/pillow-world.t3x'), files)
-        files = native_round.stage_files(ROOT / 'romfs', Path('data/pillow-entry.encround'))
+        files = native_round.stage_files(ROOT / 'romfs', Path('battle/pillow/pillow-entry.encround'))
         self.assertIn(Path('graphics/battle/pillow/pillow-enemy.t3x'), files)
 
     def test_exact_enemy_rewards_and_normal_encounter(self):

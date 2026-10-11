@@ -103,12 +103,12 @@ def build(root=ROOT,presentation=None):
  'HpFastMultiplier':num(r'const SCROLL_SPEED_FAST_MODE_MULT := ([0-9.]+)','HP fast multiplier',plate)}
  require(list(rules)==RULE_NAMES[:19],'Rule schema drift')
  from native_content import parse_pack
- room=parse_pack((root/'romfs/data/opening.encroom').read_bytes());battle=room['sections']['Battle'][0]
+ room=parse_pack((root/'romfs/world/house/opening.encroom').read_bytes());battle=room['sections']['Battle'][0]
  binding=dict(battle_id=battle['stable_id'],player_participant=0,enemy_participant=1,basic_skill=skill_names.index(recipe['constants']['basic']['skill']),guard_skill=skill_names.index(recipe['constants']['guard']['skill']),locale='en',enemy_name=text(enemy['name'],4),enemy_article=text(enemy['article'],5),enemy_outro=text('',6,enemy_context,literal=one(r'else "(\{n0\}\{name\} became tame!)"',sysrc,'default enemy outro')[1]),mortal_damage=text('BATTLE_MSG_MORTAL_DAMAGE',7,enemy_context),no_effect=text('BATTLE_MSG_TARGET_NO_EFFECT',8,player_context),show_intro_outro=int(entry['entry']['show_intro_outro']),win_flag=entry['entry']['win_flag'])
  # Menu IDs are compiler bindings to the existing independent battle-entry resource.
  from native_battle import parse_sections
  import struct
- sections=parse_sections((root/'romfs/data/opening.encbattle').read_bytes())
+ sections=parse_sections((root/'romfs/battle/lamp/opening.encbattle').read_bytes())
  mids=[struct.unpack_from('<4I',sections[7],i)[0] for i in range(0,len(sections[7]),16)]
  require(len(mids)==len(entry['menu']['actions'])==3,'Unreviewed first menu')
  menus={v['id']:mids[i]for i,v in enumerate(entry['menu']['actions'])}

@@ -17,7 +17,7 @@ from tools.godot_text import Document, ExtRef, SubRef, Vec2, instantiate
 IR = 'content/house-presents.json'
 REVIEW = 'reports/house-presents/source-review.json'
 RECEIPT = 'content/asset-receipts/graphics/world/presents/source.json'
-PACK = 'data/opening.encpresent'
+PACK = 'world/house/opening.encpresent'
 SCENE = 'Maps/podunk/Nintens House.tscn'
 PRESENT = 'Nodes/Overworld/Objects/Present.tscn'
 SPARKLES = 'Nodes/Reusables/Effects/Sparkles.tscn'

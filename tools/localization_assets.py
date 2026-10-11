@@ -135,10 +135,10 @@ def encode(d):
  number(len(grammar));raw.extend(grammar)
  return struct.pack('<8s4I',b'ENCL10N1',2,len(raw)+24,zlib.crc32(raw),0)+raw
 def stage_files(root):
- d=extract();blob=encode(d);path=Path('data/localization.enclocale');actual=(Path(root)/path).read_bytes();require(actual==blob,'Locale catalog does not match current source keys/bindings');return {path:actual}
+ d=extract();blob=encode(d);path=Path('localization/localization.enclocale');actual=(Path(root)/path).read_bytes();require(actual==blob,'Locale catalog does not match current source keys/bindings');return {path:actual}
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('action',choices=['compile','verify']);a=p.parse_args();d=extract();b=encode(d);dest=LANE/'romfs/data/localization.enclocale'
+ p=argparse.ArgumentParser();p.add_argument('action',choices=['compile','verify']);a=p.parse_args();d=extract();b=encode(d);dest=LANE/'romfs/localization/localization.enclocale'
  if a.action=='compile':write(LANE/'content/native-localization.json',d);dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(b)
  else:require(dest.read_bytes()==b,'Locale catalog is stale')
  print('Locale catalog:',len(d['locales']),'locales;',len(d['records']),'keys;',len(d['bindings']),'bindings;',len(b),'bytes')

@@ -9,7 +9,7 @@ from tools.ui_presentation_bindings import load as load_ui_bindings
 from tools.extract_battle_entry import Extractor,require,one,node,properties
 from tools.upstream import read_json,write_json
 from tools.menu_audio_binding import source_sound
-RECIPE=ROOT/'content/native-save-menu.json';OUT=ROOT/'romfs/graphics/ui/save';PACK=ROOT/'romfs/data/opening.encsavemenu';REPORT=ROOT/'reports/save-menu'
+RECIPE=ROOT/'content/native-save-menu.json';OUT=ROOT/'romfs/graphics/ui/save';PACK=ROOT/'romfs/ui/opening.encsavemenu';REPORT=ROOT/'reports/save-menu'
 
 def checked_bindings():return load_ui_bindings('save-presentation-bindings.json',BINDING_SCHEMA,ROOT,expected_checks=44,expected_contracts=123)
 BINDING_SCHEMA={'source_0':str,'source_1':str,'source_2':str,'source_3':str,'source_4':str,'source_5':str,'source_6':str,'source_7':str,'source_8':str,'source_9':str,'source_10':str,'source_11':str,'source_12':str,'source_13':str,'source_14':str,'source_15':str,'source_16':str,'source_17':str,'source_18':str,'source_19':str,'source_20':str,'node_0':str,'node_1':str,'node_2':str,'node_3':str,'node_4':str,'node_5':str,'node_6':str,'node_7':str,'node_8':str,'node_9':str,'translation_keys':[str,str,str,str,str,str,str],'card_layout_nodes':[str,str,str,str,str,str,str,str,str],'viewports':[int,int,int,int],'body_insets':[int,int],'cursor_size':[float,float],'icons':[str,str,str,str,str],'icon_root':str,'icon_suffix':str,'arrow_grid':[int,int],'font_recipe':{'size':int,'first':int,'last':int,'cell':[int,int],'columns':int,'outline':int,'char_spacing':int,'space_spacing':int},'atlas':[int,int],'glyph_inset':[int,int],'old_palette':[str,str,str,str,str],'text_color':str,'time_color':str,'outline_color':str,'scroll':float,'sounds':[str,str,str],'eb_top':int,'eb_bottom':int,'resource_root':str,'resource_suffix':str,'card_name_prefix':str,'confirm_name_prefix':str,'cursor_name':str,'arrow_name':str,'icon_name_prefix':str,'font_path':str,'outline_path':str,'right_anchor_layouts':[int,int]}
@@ -208,14 +208,14 @@ def stage_files(source_root):
     global b;b=checked_bindings()
     """Return exact checked RomFS bytes; reject symlinks/path escapes and drift."""
     r=read_json(RECIPE);verify_recipe(r);source_root=Path(source_root).resolve()
-    names={'data/opening.encsavemenu'}|{a['path'] for a in r['resources']}|{p.removeprefix('romfs/') for p in r['dependencies'] if p.endswith(b['resource_suffix'])}
+    names={'ui/opening.encsavemenu'}|{a['path'] for a in r['resources']}|{p.removeprefix('romfs/') for p in r['dependencies'] if p.endswith(b['resource_suffix'])}
     out={}
     for name in names:
         relative=Path(name)
         require(not relative.is_absolute() and '..' not in relative.parts and '\\' not in name and ':' not in name,'Save menu stage path rejected')
         target=(source_root/relative).resolve();require(target.is_relative_to(source_root),'Save menu stage path escape')
         raw=target.read_bytes()
-        if name=='data/opening.encsavemenu':require(raw==encode(r),'Stale staged save menu pack')
+        if name=='ui/opening.encsavemenu':require(raw==encode(r),'Stale staged save menu pack')
         else:
             digest=r['outputs'][name]['sha256'] if name in r['outputs'] else r['dependencies']['romfs/'+name]
             require(hashlib.sha256(raw).hexdigest()==digest,'Changed staged save menu resource: '+name)

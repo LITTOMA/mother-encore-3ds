@@ -9,6 +9,7 @@ namespace {
 unsigned checks=0;Result init_result=0,flush_result=0;bool ndsp_started=false;int exits=0;size_t allocated=0;bool fail_alloc=false;
 constexpr size_t channel_count=24;
 std::array<std::vector<ndspWaveBuf*>,channel_count> queues;std::array<float,channel_count> gains{},rates{};float master=0;
+std::array<bool,channel_count> paused{};unsigned pause_calls=0;
 void check(bool ok,const char* why){++checks;if(!ok){std::cerr<<"FAIL: "<<why<<"\n";std::exit(1);}}
 size_t channel(int lane){check(lane>=0&&size_t(lane)<queues.size(),"NDSP double channel in bounds");return size_t(lane);}
 void drain(int lane){auto& queue=queues[channel(lane)];for(auto* b:queue)b->status=NDSP_WBUF_DONE;queue.clear();}
@@ -28,6 +29,7 @@ void ndspChnWaveBufClear(int lane){drain(lane);}
 void ndspChnSetMix(int lane,float* mix){gains[channel(lane)]=mix[0];check(mix[0]==mix[1],"stereo equal gain");}
 Result DSP_FlushDataCache(const void* p,uint32_t size){check(p&&size>0&&size<=2048*4,"bounded flush");return flush_result;}
 void ndspChnWaveBufAdd(int lane,ndspWaveBuf* wave){auto& queue=queues[channel(lane)];check(ndsp_started&&wave->data_pcm16&&wave->nsamples>0&&wave->nsamples<=2048&&!wave->looping,"valid frame queue");wave->status=NDSP_WBUF_QUEUED;queue.push_back(wave);}
+void ndspChnSetPaused(int lane,bool value){paused[channel(lane)]=value;++pause_calls;}
 void ndspChnSetInterp(int lane,int){channel(lane);}void ndspChnSetRate(int lane,float rate){rates[channel(lane)]=rate;}void ndspChnSetFormat(int lane,int){channel(lane);}
 int main(int argc,char** argv){
     check(argc==4,"provide audio bank, asset root, room pack");ctr::AudioPlayer player;std::string error;
@@ -44,7 +46,7 @@ int main(int argc,char** argv){
     check(!player.prepare(12345,error)&&!player.prepared(12345),"unknown preparation identity rejected");
     check(!player.prepared(21)&&player.prepare(21,error)&&player.prepared(21),"full PCM admission is deferred until requested");
     check(player.prepare(21,error)&&player.submitted_voices()==0&&queues[0].empty(),"cached preparation has no playback side effects");
-    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(6),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
+    check(!player.play(12345,ctr::AudioLane::Music,error),"unknown asset rejected");check(!player.play(21,static_cast<ctr::AudioLane>(8),error)&&!player.play(21,static_cast<ctr::AudioLane>(255),error),"unknown lanes rejected");
     upstream::RoomData room;check(room.load_file(argv[3],error),error.c_str());
     std::vector<upstream::OpeningAudioRequest> requests={{upstream::AudioRequestKind::FadeMusic,upstream::kRoomNoIndex,2,0},{upstream::AudioRequestKind::PlayMusic,20,0,2}};
     check(player.consume(room.view(),requests,error),error.c_str());check(player.consumed_requests()==2&&player.submitted_voices()==1&&queues[0].size()==3,"typed requests consumed and music queued");
@@ -103,17 +105,30 @@ int main(int argc,char** argv){
     for(size_t lane=0;lane<4;++lane)check(!queues[lane].empty()&&queues[lane].front()->data_pcm16==prior_buffers[lane],"same streaming buffer reused after reset");
     upstream::AudioBank checked_bank;upstream::AudioAsset house_music;check(checked_bank.load_file(argv[1],error)&&checked_bank.find(34,house_music),"checked music gain available");
     check(std::abs(gains[0]-upstream::audio_linear_gain(house_music.gain_db))<.00001f,"fresh music has no stale fade gain");
+    // Title uses a distinct checked stream on Music; effects must not mute it.
+    check(player.play(1202,ctr::AudioLane::Music,error),"title music starts");
+    const auto title_queues=queues;const auto title_pause_calls=pause_calls;
+    check(player.pause_lane(ctr::AudioLane::Music,true,error)&&paused[0],"pause targets live music");
+    check(player.update(1,error)&&queues==title_queues,"paused music keeps its queue");
+    check(player.pause_lane(ctr::AudioLane::Music,true,error)&&pause_calls==title_pause_calls+1,"duplicate pause is inert");
+    check(player.pause_lane(ctr::AudioLane::Music,false,error)&&!paused[0]&&queues==title_queues,"resume preserves queued music");
+    check(player.pause_lane(ctr::AudioLane::Music,true,error)&&player.stop_lane(ctr::AudioLane::Music,error)&&!paused[0]&&queues[0].empty(),"stop releases paused channel");
+    const auto clean_start_pause_calls=pause_calls;
+    check(player.play(1202,ctr::AudioLane::Music,error)&&pause_calls==clean_start_pause_calls&&!paused[0],"fresh title start does not issue redundant pause commands");
+    check(!player.pause_lane(static_cast<ctr::AudioLane>(255),true,error),"invalid pause lane rejected");
     const auto before_aux=queues;const auto before_aux_bytes=allocated;
     for(float pitch:{0.f,-1.f,5.f,NAN,INFINITY})check(!player.play(1101,ctr::AudioLane::AuxiliaryEffect0,error,0,0,pitch)&&queues==before_aux&&allocated==before_aux_bytes,"invalid pitch preserves all voices and allocations");
     fail_alloc=true;check(!player.play(1101,ctr::AudioLane::AuxiliaryEffect0,error)&&queues==before_aux&&allocated==before_aux_bytes,"auxiliary allocation failure preserves live voices");fail_alloc=false;
     check(player.play(1101,ctr::AudioLane::AuxiliaryEffect0,error,0,0,.85f)&&player.play(1102,ctr::AudioLane::AuxiliaryEffect1,error,0,0,1.f),"independent auxiliary effects can overlap text and music");
-    upstream::AudioAsset pitched;check(checked_bank.find(1101,pitched)&&std::abs(rates[22]-float(pitched.sample_rate)*.85f)<.01f,"checked pitch reaches NDSP sample rate");
-    check(allocated==before_aux_bytes+2*3*2048*2*2&&!queues[22].empty()&&!queues[23].empty(),"auxiliary buffers allocated only on demand on reserved channels");
+    upstream::AudioAsset pitched;check(checked_bank.find(1101,pitched)&&std::abs(rates[20]-float(pitched.sample_rate)*.85f)<.01f,"checked pitch reaches NDSP sample rate");
+    check(allocated==before_aux_bytes+2*3*2048*2*2&&!queues[20].empty()&&!queues[21].empty(),"auxiliary buffers allocated only on demand on reserved channels");
     for(size_t i=4;i<20;++i)check(queues[i].empty(),"area music channel reservation remains untouched");
     const auto with_aux=queues;check(!player.stop_lane(static_cast<ctr::AudioLane>(255),error)&&queues==with_aux,"unknown stop target fails without mutation");
-    check(player.stop_lane(ctr::AudioLane::AuxiliaryEffect0,error)&&queues[22].empty()&&queues[23]==with_aux[23]&&queues[1]==with_aux[1],"targeted effect stop preserves thunder and text");
+    check(player.play(1201,ctr::AudioLane::Text,error)&&player.play(36,ctr::AudioLane::Phone,error)&&!queues[22].empty()&&!queues[23].empty(),"text and phone own separate hardware channels");
+    check(player.stop_lane(ctr::AudioLane::Text,error)&&player.stop_lane(ctr::AudioLane::Phone,error),"text and phone stop independently");
+    check(player.stop_lane(ctr::AudioLane::AuxiliaryEffect0,error)&&queues[20].empty()&&queues[21]==with_aux[21]&&queues[1]==with_aux[1],"targeted effect stop preserves thunder and text");
     check(!player.fade_all_music(NAN,error)&&!player.fade_all_music(-1,error)&&!player.fade_all_music(61,error),"invalid global music fades rejected");
-    check(player.fade_all_music(0,error)&&queues[0].empty()&&queues[3].empty()&&queues[23]==with_aux[23]&&queues[1]==with_aux[1]&&queues[2]==with_aux[2],"global music fade affects both music voices and preserves every effect");
+    check(player.fade_all_music(0,error)&&queues[0].empty()&&queues[3].empty()&&queues[21]==with_aux[21]&&queues[1]==with_aux[1]&&queues[2]==with_aux[2],"global music fade affects both music voices and preserves every effect");
     check(player.dropped_frames()==7,"platform drop count reported");player.shutdown();check(!player.available()&&player.dropped_frames()==0,"shutdown explicit");
     player.reset_scene();check(!player.available()&&!ndsp_started,"scene reset after shutdown stays unavailable");
     for(const auto& queue:queues)check(queue.empty(),"shutdown drains all four channels before freeing buffers");

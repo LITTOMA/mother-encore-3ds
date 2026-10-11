@@ -15,9 +15,9 @@ struct Fixture {
  unsigned tick=0;
  explicit Fixture(const std::string&root){
   std::string error;
-  CHECK(room.load_file((root+"/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/opening.enchouse").c_str(),error));
-  CHECK(font.load_file((root+"/opening.encbattle").c_str(),error));CHECK(entry.load_file((root+"/pillow-entry.encbattle").c_str(),error));
-  CHECK(round.load_file((root+"/pillow-entry.encround").c_str(),error));CHECK(choice_data.load_file((root+"/opening.encchoices").c_str(),error));
+  CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));
+  CHECK(font.load_file((root+"/battle/lamp/opening.encbattle").c_str(),error));CHECK(entry.load_file((root+"/battle/pillow/pillow-entry.encbattle").c_str(),error));
+  CHECK(round.load_file((root+"/battle/pillow/pillow-entry.encround").c_str(),error));CHECK(choice_data.load_file((root+"/ui/opening.encchoices").c_str(),error));
   CHECK(world.initialize(room.view(),{400,240}));world.attach_random(random);
   // Explicit generated post-Lamp harness. It does not claim a full NewGame run.
   CHECK(world.set_story_flag("poltergeist",true,true));CHECK(world.warp_same_scene({176,394},{0,-1}));

@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "path": "sound/banks/opening.encaudio",
+      "size": 9185,
+      "identical_payload_found": true
+    },
+    {
+      "path": "ui/opening.enccontinue",
+      "size": 1775,
+      "identical_payload_found": true
+    },
+    {
+      "path": "sound/music/title-mother-earth.pcm",
+      "size": 22311936,
+      "identical_payload_found": true
+    }
+  ],
+  "title_nonzero_samples": 11150822,
+  "title_peak": 32767
+}

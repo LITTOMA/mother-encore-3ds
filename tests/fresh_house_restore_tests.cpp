@@ -24,7 +24,7 @@ std::string printed(const HousePresentation&p){std::string text;for(const auto&l
 struct Resources {
  NativeSessionData session;RoomData room;HouseData house;BattleRoundData round;ItemData items;BattleData font;PhoneData phone;RestoreData restore;DialogueChoicesData choices;SaveMenuData save;
  explicit Resources(const std::string&root){
-  CHECK(session.load_file((root+"/opening.encsession").c_str(),error));CHECK(room.load_file((root+"/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/opening.enchouse").c_str(),error));CHECK(round.load_file((root+"/doll-entry.encround").c_str(),error));CHECK(items.load_file((root+"/opening.encitems").c_str(),error));CHECK(font.load_file((root+"/opening.encbattle").c_str(),error));CHECK(phone.load_file((root+"/opening.encphone").c_str(),error));CHECK(restore.load_file((root+"/opening.encrestore").c_str(),room.view(),house.view(),error));CHECK(choices.load_file((root+"/opening.encchoices").c_str(),error));CHECK(save.load_file((root+"/opening.encsavemenu").c_str(),error));
+  CHECK(session.load_file((root+"/session/opening.encsession").c_str(),error));CHECK(room.load_file((root+"/world/house/opening.encroom").c_str(),error));CHECK(house.load_file((root+"/world/house/opening.enchouse").c_str(),error));CHECK(round.load_file((root+"/battle/doll/doll-entry.encround").c_str(),error));CHECK(items.load_file((root+"/ui/opening.encitems").c_str(),error));CHECK(font.load_file((root+"/battle/lamp/opening.encbattle").c_str(),error));CHECK(phone.load_file((root+"/world/house/opening.encphone").c_str(),error));CHECK(restore.load_file((root+"/session/opening.encrestore").c_str(),room.view(),house.view(),error));CHECK(choices.load_file((root+"/ui/opening.encchoices").c_str(),error));CHECK(save.load_file((root+"/ui/opening.encsavemenu").c_str(),error));
  }
  bool prepare(const SessionSnapshot&s,PreparedSessionRestore&p)const{return prepare_session_restore(session,room.view(),house.view(),round.view(),items.view(),font.view(),s,p,error);}
  bool fresh(const PreparedSessionRestore&p,SourceRandom&r,Vec2 viewport,std::unique_ptr<FreshHouseState>&out)const{return prepare_fresh_house(p,restore,room.view(),house.view(),font.view(),phone.view(),r,viewport,out,error);}
@@ -117,7 +117,7 @@ void run(const Resources&r,Vec2 viewport,const std::filesystem::path&directory){
 }
 }
 int main(int argc,char**argv){
- const Resources resources(argc>1?argv[1]:"romfs/data");std::filesystem::path directory;std::error_code ec;const char*tmp=std::getenv("TMPDIR");if(!tmp)tmp="/tmp";for(unsigned i=0;i<1000;++i){const auto candidate=std::filesystem::path(tmp)/("encore-fresh-house-restore-"+std::to_string(i));if(std::filesystem::create_directory(candidate,ec)){directory=candidate;break;}}CHECK(!directory.empty());
+ const Resources resources(argc>1?argv[1]:"romfs");std::filesystem::path directory;std::error_code ec;const char*tmp=std::getenv("TMPDIR");if(!tmp)tmp="/tmp";for(unsigned i=0;i<1000;++i){const auto candidate=std::filesystem::path(tmp)/("encore-fresh-house-restore-"+std::to_string(i));if(std::filesystem::create_directory(candidate,ec)){directory=candidate;break;}}CHECK(!directory.empty());
  for(Vec2 viewport:{Vec2{400,240},Vec2{320,180}}){run(resources,viewport,directory);collision_and_directions(resources,viewport);}
  std::filesystem::remove_all(directory,ec);CHECK(!ec);std::printf("FreshHouseRestore: %u checks; no GUI, renderer, original full-scene or hardware claim\n",checks);
 }

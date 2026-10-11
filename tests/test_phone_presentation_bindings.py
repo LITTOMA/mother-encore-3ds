@@ -30,7 +30,7 @@ class PhonePresentationBindingsTests(unittest.TestCase):
         actual=phone_assets.build(ROOT)
         self.assertEqual(json.loads(expected),actual)
         self.assertEqual(json.dumps(actual,indent=2,ensure_ascii=False)+'\n',expected)
-        self.assertEqual(native_phone.compile_pack(ROOT),(ROOT/'romfs/data/opening.encphone').read_bytes())
+        self.assertEqual(native_phone.compile_pack(ROOT),(ROOT/'romfs/world/house/opening.encphone').read_bytes())
 
     def test_missing_unknown_schema_and_nested_fields(self):
         for key in self.value:self.rejected(lambda v,k=key:v.pop(k))
@@ -107,7 +107,7 @@ class PhonePresentationBindingsTests(unittest.TestCase):
         self.rejected(lambda v:v['clips'][1]['animation']['tracks'][0]['keys']['values'].__setitem__(0,0))
 
     def test_ordinary_compile_gate_rejects_and_preserves_existing_outputs(self):
-        paths=[ROOT/'romfs/data/opening.encphone',ROOT/'compatibility/reviews/phone-pack.json']
+        paths=[ROOT/'romfs/world/house/opening.encphone',ROOT/'compatibility/reviews/phone-pack.json']
         before=[p.read_bytes()for p in paths]
         for mutation in [lambda v:v.update(extra=1),lambda v:v['sprite'].update(path='graphics/ui/phone/changed.t3x')]:
             value=copy.deepcopy(self.value);mutation(value)

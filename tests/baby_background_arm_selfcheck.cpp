@@ -86,7 +86,7 @@ uint32_t gpu_word(uint32_t c){return ((c&0xffu)<<24)|((c&0xff00u)<<8)|((c>>8)&0x
 double elapsed(u64 start){return double(svcGetSystemTick()-start)/CPU_TICKS_PER_MSEC;}
 bool run(){
     std::string error;encore::upstream::BattleData data;
-    if(!data.load_file("romfs:/data/doll-entry.encbattle",error)){message("FAIL data: %s\n",error.c_str());return false;}
+    if(!data.load_file("romfs:/battle/doll/doll-entry.encbattle",error)){message("FAIL data: %s\n",error.c_str());return false;}
     const auto view=data.view();if(view.count(encore::upstream::BattleSection::Backgrounds)!=2){message("FAIL layer count\n");return false;}
     std::vector<Image> source(2),palette(2);
     std::vector<encore::BackgroundKernel::Layer> layers;

@@ -6,7 +6,7 @@
 #include <string>
 
 namespace encore::ctr {
-enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5 };
+enum class AudioLane : uint8_t { Music=0, Effect=1, Jingle=2, DialogueMusic=3, AuxiliaryEffect0=4, AuxiliaryEffect1=5, Text=6, Phone=7 };
 // Read-only snapshot of the existing bounded Music owner, not a inferred
 // source-player graph. generation identifies a successful Music start and never
 // resets across scene stop/reset/reinitialize; inactive snapshots retain it.
@@ -35,10 +35,12 @@ public:
     // Also safe when NDSP was unavailable; does not retry initialization.
     void reset_scene();
     bool consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error);
-    bool play(uint32_t stable_audio_id,AudioLane lane,std::string& error,float gain_db=0,double fadein_seconds=0,float pitch=1);
+    bool play(uint32_t stable_audio_id,AudioLane lane,std::string& error,float gain_db=0,double fadein_seconds=0,float pitch=1,bool repeat=false);
     bool fade_music(double duration,std::string& error);
     bool fade_all_music(double duration,std::string& error);
     bool stop_lane(AudioLane,std::string& error);
+    bool playing(AudioLane lane)const{return uint32_t(lane)<lane_count&&voices_[uint32_t(lane)].active;}
+    bool pause_lane(AudioLane,bool,std::string&);
     bool update(double delta,std::string& error);
     bool available() const{return ready_;}
     MusicObservation observe_music() const;
@@ -53,14 +55,14 @@ public:
     uint32_t dropped_frames() const{return ready_?ndspGetDroppedFrames():0;}
     uint32_t queued_frames() const{return queued_frames_;}
 private:
-    static constexpr uint32_t lane_count=6,buffer_count=3,buffer_frames=2048;
+    static constexpr uint32_t lane_count=8,buffer_count=3,buffer_frames=2048;
     struct Voice {
         upstream::AudioAsset asset{};
         upstream::AudioFade fade;
         std::array<ndspWaveBuf,buffer_count> waves{};
         int16_t* samples=nullptr;
         uint32_t asset_index=0;
-        bool active=false,fading=false,stop_after_fade=false;
+        bool active=false,fading=false,stop_after_fade=false,repeat=false,paused=false;
     };
     bool prepare_index(uint32_t index,std::string& error);
     bool refill(uint32_t lane,std::string& error);

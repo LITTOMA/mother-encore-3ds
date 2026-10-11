@@ -52,6 +52,8 @@
 #include "encore/menu_navigation.hpp"
 #include "encore/native_input.hpp"
 #include "encore/resource_catalog.hpp"
+#include "encore/gameplay_audio.hpp"
+#include "encore/music_zones.hpp"
 #include "encore/field_scene.hpp"
 #include "encore/mick_treats.hpp"
 #include "encore/world_links.hpp"
@@ -509,7 +511,7 @@ bool resolve_dialogue_value(void*state,upstream::HouseTokenKind kind,std::string
     if(kind==upstream::HouseTokenKind::CurrentCash){value=std::to_string(session_rewards.cash);return true;}
     return false;
 }
-bool play_source_audio(const std::string&,ctr::AudioLane,float,float);
+bool play_source_audio(const std::string&,ctr::AudioLane,float,float,bool=false);
 // Scene-independent effect owner: scene text/flags are handled by HouseRuntime.
 // Every mutation uses stable inventory/RNG owners shared by the actual game.
 class DrawerEffects final:public upstream::DrawerHost {
@@ -597,6 +599,8 @@ upstream::FieldScene* mick_bind_target=nullptr;
 upstream::FieldScene* mick_host_field(){return field_scene?field_scene.get():mick_bind_target;}
 upstream::SceneDoorTransition scene_door;
 uint64_t door_sound_requests=0;
+upstream::MusicZones field_music_zones;upstream::MusicRegionData field_music_data;
+std::vector<bool>field_music_contacts;uint64_t field_music_epoch=0;
 class MickEffects final:public upstream::MickHost {
 public:
  bool validate_flag(std::string_view name,std::string&e)override{
@@ -624,8 +628,8 @@ public:
   if(it==keys.end()){e.clear();return true;}
   keys.erase(it);e.clear();return true;
  }
- bool play_sound(std::string_view,std::string& e)override{
-  ++door_sound_requests;e.clear();return true;
+ bool play_sound(std::string_view path,std::string& e)override{
+   ++door_sound_requests;if(!play_source_audio(std::string(path),ctr::AudioLane::Effect,0,1)){e=house_error.empty()?audio_status:house_error;return false;}e.clear();return true;
  }
  bool show_text(std::string_view speaker,std::string_view body,std::string&e)override{
   std::string out(body);
@@ -732,6 +736,8 @@ bool update_house_prompt(std::string&error){
  }
  return evaluate_house_button_prompt(house_prompt_data,uint32_t(startup_settings_data.prompt_index(session_state.settings.button_prompts)),observation,house_prompt_pose,error);
 }
+upstream::GameplayAudioData gameplay_audio;
+size_t outcome_audio_cursor=0;bool victory_loop_pending=false,battle_music_owned=false;
 bool prepare_source_audio(const std::string& path,std::string&error){
     for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto asset=menu_audio_bank.asset(i);
         if(asset.source_path==path||(asset.source_path.substr(0,6)=="res://"&&asset.source_path.substr(6)==path)){
@@ -747,11 +753,51 @@ bool prepare_title_audio(std::string&error){
         if(!prepare_source_audio(continue_data.sound(upstream::ContinueSound(i)),error))return false;
     return true;
 }
-bool play_source_audio(const std::string& path,ctr::AudioLane lane=ctr::AudioLane::Effect,float gain=0,float pitch=1){
+bool play_source_audio(const std::string& path,ctr::AudioLane lane=ctr::AudioLane::Effect,float gain=0,float pitch=1,bool repeat){
     for(uint32_t i=0;i<menu_audio_bank.count();++i){const auto asset=menu_audio_bank.asset(i);if(asset.source_path==path||(asset.source_path.substr(0,6)=="res://"&&asset.source_path.substr(6)==path)){if(!audio_player.available())return true;std::string error;
         if(!audio_player.prepared(asset.stable_id)){LoadingScope loading("Preparing sound",1);if(!loading.step([&]{return audio_player.prepare(asset.stable_id,error);},"pcm-validation")||!loading.finish()){audio_status=error;return false;}}
-        if(!audio_player.play(asset.stable_id,lane,error,gain,0,pitch)){audio_status=error;return false;}return true;}}
+        if(!audio_player.play(asset.stable_id,lane,error,gain,0,pitch,repeat)){audio_status=error;return false;}return true;}}
     house_error="Menu sound is absent from checked audio bank";return false;
+}
+bool play_gameplay_cue(upstream::GameplayCue cue,ctr::AudioLane lane=ctr::AudioLane::Effect,bool repeat=false){return play_source_audio(gameplay_audio.path(cue),lane,0,1,repeat);}
+void process_battle_audio(){
+ using C=upstream::GameplayCue;using E=upstream::BattleRewardEvent;
+ for(const auto cue:round_presentation.take_audio_events()){
+  const auto lane=cue==C::Smash?ctr::AudioLane::AuxiliaryEffect1:(cue==C::Hit?ctr::AudioLane::AuxiliaryEffect0:ctr::AudioLane::Effect);
+  play_gameplay_cue(cue,lane);
+ }
+ const auto& events=battle_outcome.events();
+ while(outcome_audio_cursor<events.size()){
+  const auto event=events[outcome_audio_cursor++];
+  const bool result_music=round_data.view().encounter().boss||!gameplay_scene->world.battle_request().overworld_music;
+  if(event==E::VictoryStarted&&result_music){
+   std::string error;
+   const auto victory=round_data.view().encounter().boss?C::BossVictory:C::Victory;
+   if(!prepare_source_audio(gameplay_audio.path(victory),error)||!prepare_source_audio(gameplay_audio.path(C::VictoryLoop),error)){audio_status=error;continue;}
+   audio_player.pause_lane(ctr::AudioLane::Music,true,error);
+   battle_music_owned=play_gameplay_cue(victory,ctr::AudioLane::Jingle);victory_loop_pending=battle_music_owned;
+    if(!battle_music_owned)audio_player.pause_lane(ctr::AudioLane::Music,false,error);
+  }else if(event==E::LevelCommitted&&result_music){
+   std::string error;
+   if(!prepare_source_audio(gameplay_audio.path(C::LevelUp),error)||!prepare_source_audio(gameplay_audio.path(C::LevelUpLayer),error)){audio_status=error;continue;}
+   victory_loop_pending=false;
+   if(!audio_player.playing(ctr::AudioLane::DialogueMusic)){play_gameplay_cue(C::LevelUp,ctr::AudioLane::Jingle,true);play_gameplay_cue(C::LevelUpLayer,ctr::AudioLane::DialogueMusic,true);}
+   }else if(event==E::ReturnStarted&&battle_music_owned){
+   std::string error;victory_loop_pending=battle_music_owned=false;
+   if(audio_player.available()){audio_player.stop_lane(ctr::AudioLane::Jingle,error);audio_player.stop_lane(ctr::AudioLane::DialogueMusic,error);audio_player.pause_lane(ctr::AudioLane::Music,false,error);}
+  }
+ }
+ if(victory_loop_pending&&audio_player.available()&&!audio_player.playing(ctr::AudioLane::Jingle)){
+  victory_loop_pending=false;play_gameplay_cue(C::VictoryLoop,ctr::AudioLane::Jingle,true);
+ }
+}
+void process_dialogue_audio(upstream::HousePresentation& box){
+ for(const auto& e:box.take_audio_events()){
+  using K=upstream::HouseAudioKind;using C=upstream::GameplayCue;
+  if(e.kind==K::VoiceStart)play_source_audio(e.voice,ctr::AudioLane::Text,0,float(e.pitch));
+  else if(e.kind==K::VoiceStop){std::string error;if(audio_player.available()&&!audio_player.stop_lane(ctr::AudioLane::Text,error))audio_status=error;}
+  else play_gameplay_cue(e.kind==K::MenuOpen?C::MenuOpen:e.kind==K::MenuClose?C::MenuClose:C::Confirm);
+ }
 }
 bool load_introduction(std::string&error){
     if(!introduction_data.valid()&&!introduction_data.load_file(resource_path(ResourceRole::Introduction).c_str(),error))return false;
@@ -911,7 +957,7 @@ bool write_record_slot(uint32_t slot,std::string&error){
     const auto metadata=slot_metadata(snapshot);if(!save_menu.acknowledge_save(true,&metadata,error))return false;
     std::string preference_error;remember_slot(slot,preference_error);error=preference_error;return true;
 }
-void initialize_audio(){audio_status.clear();if(!audio_player.initialize(resource_path(ResourceRole::Audio).c_str(),"romfs:/",audio_status))audio_status="Audio unavailable: "+audio_status;}
+void initialize_audio(){audio_status.clear();if(!gameplay_audio.load_file(resource_path(ResourceRole::GameplayAudio).c_str(),audio_status))return;if(!audio_player.initialize(resource_path(ResourceRole::Audio).c_str(),"romfs:/",audio_status))audio_status="Audio unavailable: "+audio_status;}
 bool open_continue(std::string&error,LoadingScope* parent=nullptr){
     cancel_battle_prewarm();
     std::unique_ptr<LoadingScope> owned;
@@ -1018,8 +1064,7 @@ void process_scene_door_events(){
             auto& world=in_field()?field_scene->world:gameplay_scene->world;
             if(!world.set_story_flag(e.text,e.value,false))field_status="Door flag write rejected";
         }else if(e.kind==K::FadeMusic){std::string error;if(audio_player.available()&&!audio_player.fade_music(e.seconds,error))audio_status=error;}
-        // Door sounds are not in the checked audio bank yet; requests are counted like House door sounds.
-        else if(e.kind==K::PlaySound)++door_sound_requests;
+        else if(e.kind==K::PlaySound){++door_sound_requests;if(!e.text.empty())play_source_audio(std::string(e.text));}
         else if(e.kind==K::Unpause){
             if(in_field()){if(!field_scene->finish_transition())field_status=field_scene->error();}
             else if(!gameplay_scene->world.unpause_from_house())house_error="Scene door unpause rejected";
@@ -1031,6 +1076,41 @@ void release_house_graphics(){
     cancel_battle_prewarm();wait_for_gpu_idle();
     // The field draws the same DialogueBox, so its ninepatches stay resident.
     opening_actor.free();present_renderer.free();room_draw_items.clear();house_graphics_ready=false;
+}
+bool prepare_field_music(std::string& error){
+ using namespace upstream;
+ if(!field_music_zones.load_file(resource_path(ResourceRole::FieldMusicZones).c_str(),error)||
+    !field_music_data.load_file(resource_path(ResourceRole::FieldMusic).c_str(),error)||!field_music_zones.matches(field_music_data,error))return false;
+ if(!audio_player.available())return true;
+ if(region_music.phase()==ctr::MusicRegionServicePhase::Dormant){
+  if(!region_music.begin_prepare(resource_path(ResourceRole::FieldMusic).c_str(),resource_path(ResourceRole::FieldAudio).c_str(),"romfs:/",MusicRegionController::maximum_voices,audio_player,error))return false;
+  while(region_music.phase()==ctr::MusicRegionServicePhase::Preparing)
+   if(ctr::pump_region_music_preparation(region_music,audio_player,ctr::MusicRegionPlayer::maximum_prepare_bytes,error)==ctr::MusicPreparationStep::Failed)return false;
+ }
+ return true;
+}
+bool commit_field_music(std::string& error){
+ if(field_music_epoch==UINT64_MAX){error="Music scene identity exhausted";return false;}
+ if(audio_player.available()&&!region_music.commit_scene(field_music_epoch+1,audio_player,error))return false;
+ ++field_music_epoch;field_music_contacts.assign(field_music_zones.zones().size(),false);return true;
+}
+bool finish_field_music(std::string& error){
+ if(region_music.phase()!=ctr::MusicRegionServicePhase::Active)return true;
+ for(const auto& zone:field_music_zones.zones())if(!region_music.tree_exit(field_music_epoch,zone.path,error))return false;
+ field_music_contacts.clear();return region_music.finish_scene(field_music_epoch,error);
+}
+void update_field_music(){
+ if(!in_field()||region_music.phase()!=ctr::MusicRegionServicePhase::Active)return;
+ upstream::MusicRegionContext context;context.in_cutscene=field_scene->phase()==upstream::FieldPhase::MickTalk||field_scene->world.cutscene_active();
+ context.flag=[](std::string_view flag){return field_scene->world.story_flag(flag);};
+ std::string error;
+ for(size_t i=0;i<field_music_contacts.size();++i){
+  const bool inside=!field_music_data.regions()[i].disabled&&field_music_zones.overlaps(i,field_room_data.view(),field_scene->world.player().position);
+  if(inside==field_music_contacts[i])continue;
+  const auto& path=field_music_zones.zones()[i].path;
+  const bool ok=inside?region_music.area_enter(field_music_epoch,path,context,audio_player,error):region_music.area_exit(field_music_epoch,path,context,error);
+  if(!ok){audio_status=error;return;}field_music_contacts[i]=inside;
+ }
 }
 bool load_field_resources(std::string& error){
     using namespace upstream;
@@ -1047,7 +1127,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     LoadingScope loading("Entering field",5);
     SessionSnapshot snapshot;
     if(!loading.step([&]{return collect_session_snapshot(snapshot,error);},"house-state")||
-       !loading.step([&]{return load_field_resources(error);},"field-metadata"))return false;
+       !loading.step([&]{return load_field_resources(error)&&prepare_field_music(error);},"field-metadata"))return false;
     const auto room=field_room_data.view();std::vector<bool> flags(room.flag_count(),false);
     for(uint32_t i=0;i<room.flag_count();++i)flags[i]=gameplay_scene->world.story_flag(room.string(room.flag(i).name_string));
     auto candidate=std::make_unique<FieldScene>();
@@ -1060,6 +1140,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);},"field-atlases")){
         release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     if(!loading.finish()){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
+    if(!commit_field_music(error)){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
     session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();field_choice_shown=false;
@@ -1095,6 +1176,7 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
         if(!field_actor.load(field_room_data.view(),restore)||!field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),restore))field_status="Field graphics restore failed: "+restore;
         return false;}
     if(!loading.finish())return false;
+    if(!finish_field_music(error))return false;
     // Same owner commit as New Game / LOAD, without LOAD's source UID reallocation.
     battle_entry=BattleEntry{};battle_round=BattleRound{};battle_outcome=BattleOutcome{};round_presentation=BattleActionPresentation{};round_ready=false;round_error.clear();
     session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
@@ -1186,6 +1268,7 @@ bool begin_round(){
     }
     if(!party||!enemy||!plate){round_error="Missing action presentation bindings";return false;}
     round_host.bind(round_presentation,gameplay_scene->world,round_data.view());
+    outcome_audio_cursor=0;victory_loop_pending=battle_music_owned=false;
     if(!battle_outcome.initialize(round_data.view(),opening_data.view(),session_rewards_valid?&session_rewards:nullptr)){round_error=battle_outcome.error();return false;}
     if(!battle_round.begin(round_data.view(),view,battle_random,round_host,session_rewards_valid?&session_rewards:nullptr)){round_error=battle_round.error();return false;}
     return round_ready=true;
@@ -1357,6 +1440,17 @@ void house_top(){
     for(const auto&bar:bars.bars)if(bar.h>0)BattleRenderer::draw_rect(view_x()+bar.x,view_y()+bar.y,bar.w,bar.h,bars.color);
 
 }
+std::string audio_diagnostic(){
+    if(!audio_status.empty())return audio_status;
+    if(!audio_player.available())return "Audio backend unavailable";
+    static std::string cached;static u64 sampled=0;const auto now=osGetTime();
+    if(!cached.empty()&&now-sampled<500)return cached;
+    sampled=now;
+    // Read the actual music channel too: accepted queues do not prove output.
+    const auto music=audio_player.observe_music();
+    char line[160];std::snprintf(line,sizeof(line),"BGM id=%lu voice=%u DSP=%u paused=%u\npos=%lu seq=%u submitted=%lu",static_cast<unsigned long>(music.asset_id),unsigned(music.playing),unsigned(ndspChnIsPlaying(0)),unsigned(ndspChnIsPaused(0)),static_cast<unsigned long>(ndspChnGetSamplePos(0)),unsigned(ndspChnGetWaveBufSeq(0)),static_cast<unsigned long>(audio_player.submitted_voices()));
+    cached=line;return cached;
+}
 void house_bottom(){
     const auto room=opening_data.view();const auto scene=room.scene();
     text(0,14,9,0.48f,"ROOM RUNTIME",accent,292);
@@ -1451,7 +1545,7 @@ void house_bottom(){
         if(!battle_renderer.draw_text(label.c_str(),14,190,1,1,ink))locale_status=locale_font.last_error();
         if(!locale_status.empty())text(4,14,174,0.30f,locale_status,muted,292);
     }else text(4,14,in_battle()?180:192,0.30f,gameplay_scene->world.healthy()?telemetry:gameplay_scene->world.error(),muted,292);
-    text(5,14,212,0.27f,audio_status.empty()?"Audio backend initialized (output unverified)":audio_status,muted,292);
+    text(5,14,212,0.27f,audio_diagnostic(),muted,292);
 }
 
 void field_top(){
@@ -1480,7 +1574,7 @@ void field_bottom(){
     char position[160];const auto instance=room.actor_instance(room.scene().player_instance_index);
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
-    text(5,14,212,0.27f,audio_status.empty()?"Audio backend initialized (output unverified)":audio_status,muted,292);
+    text(5,14,212,0.27f,audio_diagnostic(),muted,292);
 }
 void field_dialogue_overlay(){
     const auto bars=world_blackbars.pose(float(view_width),float(view_height));
@@ -1525,7 +1619,7 @@ int main(int argc,char** argv){
     upstream::NativeInputData native_input_data;
     upstream::NativeInputAdapter native_input;
     loading_top=top;
-    if(!resource_catalog.load_file("romfs:/data/native.encresources",error)||!resource_catalog.verify_files("romfs:/",error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
+    if(!resource_catalog.load_file("romfs:/system/native.encresources",error)||!resource_catalog.verify_files("romfs:/",error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
     if(!loading_indicator.load("romfs:/",resource_catalog.path(ResourceRole::LoadingIndicator).c_str(),error)){free_house();free_debug_text();C2D_Fini();C3D_Fini();error_console(error);romfsExit();gfxExit();return 1;}
     { LoadingScope loading("Starting game",23);
     // Keep checked metadata for saves/reference view, but admit only UI glyph
@@ -1632,6 +1726,7 @@ int main(int argc,char** argv){
                     bool ok=field_scene->before_physics(input);
                     if(ok&&field_scene->world.healthy())field_scene->world.advance(input);
                     ok=ok&&field_scene->after_physics();
+                    if(ok)update_field_music();
                     if(ok&&field_scene->phase()==upstream::FieldPhase::Walking){
                         std::string why;ok=field_scene->try_mick(world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse),why);
                         if(!ok)field_status=field_scene->error();
@@ -1653,6 +1748,7 @@ int main(int argc,char** argv){
         shader_time+=dt;if((world_input||field_equipment_menu.visible())&&session_state_ready)session_state.playtime_seconds+=dt;
         uint32_t requested_route=upstream::WorldLinksData::kNotFound;
         if(in_field()){
+            if(region_music.phase()==ctr::MusicRegionServicePhase::Active){std::string why;if(!region_music.idle_frame(field_music_epoch,why))audio_status=why;}
             if(world_visible&&field_scene->world.healthy())field_scene->world.idle_frame(dt);
             auto& box=gameplay_scene->presentation;
             bool text_accept=false;int choice_delta=0;
@@ -1687,16 +1783,20 @@ int main(int argc,char** argv){
                     field_choice_x=field_choice_from_x+(tx-field_choice_from_x)*ease;field_choice_y=field_choice_from_y+(ty-field_choice_from_y)*ease;field_choice_clock+=dt;
                 }else field_choice_shown=false;
             }else field_choice_shown=false;
-            box.take_audio_events();
+            process_dialogue_audio(box);
             if(field_scene->phase()==upstream::FieldPhase::Walking&&!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();
-            door_sound_requests+=field_scene->take_sounds().size();
+            for(const auto sound:field_scene->take_sounds()){++door_sound_requests;if(!sound.empty())play_source_audio(std::string(sound));}
             requested_route=field_scene->take_route();
         }else{
             if(world_visible&&gameplay_scene->world.healthy())gameplay_scene->world.idle_frame(dt);
             if(world_visible&&house_error.empty()&&!gameplay_scene->presentation.idle_frame(dt))house_error=gameplay_scene->presentation.error();
             if(world_visible&&house_error.empty()&&!gameplay_scene->house.idle_frame(dt,world_input&&((down&KEY_A)!=0||(input_context()==sampled_context&&native_controls.confirm_pulse)),world_input&&(down&KEY_B)!=0))house_error=gameplay_scene->house.error();
             if(world_visible&&house_error.empty()&&!advance_world_effect(dt,house_error)){}
-            house_sound_requests+=gameplay_scene->house.take_sounds().size()+gameplay_scene->presentation.take_audio_events().size();
+            for(const auto& sound:gameplay_scene->house.take_sounds()){++house_sound_requests;const auto path=house_data.view().string(sound.sound);if(!path.empty())play_source_audio(std::string(path));}
+            process_dialogue_audio(gameplay_scene->presentation);
+            for(const auto& sound:gameplay_scene->house.take_phone_sounds()){
+                const auto phone=phone_data.view();play_source_audio(std::string(phone.string(phone.resource(sound.resource).path)),ctr::AudioLane::Phone);
+            }
             process_present_audio();
             requested_route=gameplay_scene->house.take_scene_route();
         }
@@ -1871,7 +1971,10 @@ int main(int argc,char** argv){
                 const auto phase=battle_round.phase();
                 if(phase==upstream::BattleRoundPhase::Commands){
                     const int menu_direction=navigation.x;
+                    const auto old_selection=battle_entry.selection();
                     battle_entry.input(menu_direction,confirm,cancel,true);
+                    if(battle_entry.selection()!=old_selection)play_gameplay_cue(upstream::GameplayCue::Cursor);
+                    if(battle_entry.phase()==upstream::BattleEntryPhase::ActionRequested)play_gameplay_cue(upstream::GameplayCue::Confirm);
                     if(battle_entry.phase()==upstream::BattleEntryPhase::ActionRequested&&!battle_round.request_menu(battle_entry.requested_action()))round_error=battle_round.error();
                     if(battle_round.phase()==upstream::BattleRoundPhase::Items){items_status.clear();if(!items_menu.open())round_error=items_menu.error();}
                 }else if(phase==upstream::BattleRoundPhase::Items){
@@ -1882,7 +1985,7 @@ int main(int argc,char** argv){
                     const auto result=items_menu.take_result();
                     if(result==upstream::ItemMenuResult::Back){items_status.clear();if(!battle_round.return_from_items())round_error=battle_round.error();}
                     else if(result==upstream::ItemMenuResult::Selected)items_status="This item action is not implemented; B returns";
-                }else if(phase==upstream::BattleRoundPhase::Targeting||phase==upstream::BattleRoundPhase::Unsupported){if(!battle_round.target_input(direction,confirm,cancel))round_error=battle_round.error();}
+                }else if(phase==upstream::BattleRoundPhase::Targeting||phase==upstream::BattleRoundPhase::Unsupported){if(!battle_round.target_input(direction,confirm,cancel))round_error=battle_round.error();else if(cancel&&battle_round.phase()==upstream::BattleRoundPhase::Commands)play_gameplay_cue(upstream::GameplayCue::Back);}
                 else round_presentation.input(confirm,cancel);
                 if(!items_menu.idle_frame(dt))round_error=items_menu.error();
                 for(const auto event:items_menu.take_sounds()){const auto sound=items_data.view().sound_for(event);if(audio_player.available()&&sound.audio_id){std::string audio_error;if(!audio_player.play(sound.audio_id,ctr::AudioLane::Effect,audio_error))audio_status=audio_error;}}
@@ -1907,6 +2010,7 @@ int main(int argc,char** argv){
                     if(!ok)round_error="Battle return callback rejected";
                 }
                 if(!battle_outcome.idle_frame())round_error=battle_outcome.error();
+                process_battle_audio();
                 if(battle_handoff_pending()){session_rewards=battle_outcome.state();session_rewards_valid=true;}
             }
         }

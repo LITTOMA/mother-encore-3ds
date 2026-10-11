@@ -7,7 +7,7 @@ sys.path.insert(0,str(ROOT/'tools'));sys.path.insert(0,str(ROOT))
 import native_round as native
 from extract_battle_entry import Extractor,one,properties,require,node
 from round_assets import Presentation
-IR=ROOT/'content/doll-round.json';PACK=ROOT/'romfs/data/doll-entry.encround';REPORT=ROOT/'reports/doll-round'
+IR=ROOT/'content/doll-round.json';PACK=ROOT/'romfs/battle/doll/doll-entry.encround';REPORT=ROOT/'reports/doll-round'
 def digest(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def read(p):return json.loads(Path(p).read_text())
 def write(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v,indent=2,ensure_ascii=False)+'\n')
@@ -59,7 +59,7 @@ def build(bindings=None):
  ir['enemy_choices']=[dict(skill=next(i for i,s in enumerate(ir['skills'])if Path(s['source']).stem==c['skill']),weight=c['weight'])for c in enemy['skills']]
  v=ir['victory'];v.update(initial_exp=base['victory']['reward_exp'],initial_bank=base['victory']['reward_cash'],initial_earned_cash=base['victory']['reward_cash'],reward_exp=enemy['exp'],reward_cash=enemy['cash'],exp_text=text(text_bindings['experience']['key'],text_bindings['experience']['role'],dict(name=name,value=enemy['exp'])))
  from native_content import parse_pack
- room=parse_pack((ROOT/'romfs/data/opening.encroom').read_bytes());body=[b for b in room['sections']['BodyRule']if room['strings'][b['source_path_string']]==enc['body_source']];require(len(body)==1,'Doll body binding');v['enemy_body_id']=body[0]['body_id']
+ room=parse_pack((ROOT/'romfs/world/house/opening.encroom').read_bytes());body=[b for b in room['sections']['BodyRule']if room['strings'][b['source_path_string']]==enc['body_source']];require(len(body)==1,'Doll body binding');v['enemy_body_id']=body[0]['body_id']
  p=ir['presentation'];receipt=read(ROOT/'content/asset-receipts/graphics/battle/doll/source.json');r=next(r for r in receipt['resources']if r['name']==enc['receipt_resource']);idx=next(m['resource']for m in p['media']if m['role']==2)
  resource=p['resources'][idx];resource.update(path=r['output'],width=r['width'],height=r['height'],columns=1,rows=1,sha256=digest(ROOT/'romfs'/r['output']));ex.data(enc['sprite_source'])
  for m in p['media']:

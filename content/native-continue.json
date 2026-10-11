@@ -38,7 +38,7 @@
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
   "dependencies": {
     "content/native-save-menu.json": "b218ea6d27f378d59413eebff938b8ef3cc0d9ec5e65124deb2efa210ecfa0db",
-    "romfs/data/opening.encsavemenu": "b9fddce89858deb1ce2e6209c81f72b8a9c84fcfd4adf72fae2bb508cf70239c"
+    "romfs/ui/opening.encsavemenu": "b9fddce89858deb1ce2e6209c81f72b8a9c84fcfd4adf72fae2bb508cf70239c"
   },
   "door_music_fade": 0.8,
   "door_speeds": [

@@ -17,6 +17,7 @@ CXXFLAGS := $(ARCH) -std=gnu++17 -O2 -g -Wall -Wextra -Wpedantic -mword-relocati
 LDFLAGS := $(ARCH) -specs=3dsx.specs -g -Wl,--gc-sections,-Map,$(ROOT)/dist/encore-native.map
 LDLIBS := -L$(CTRULIB)/lib -lcitro2d -lcitro3d -lctru -lm
 SOURCES := runtime/storage_data.cpp runtime/storage_menu.cpp runtime/drawer_program.cpp runtime/house_inspection_data.cpp runtime/resource_catalog.cpp runtime/localization.cpp runtime/localized_presentation.cpp runtime/locale_preference.cpp runtime/source_font.cpp runtime/title_locale_data.cpp runtime/introduction.cpp runtime/new_game_setup.cpp runtime/startup_settings.cpp runtime/house_button_prompts.cpp runtime/loading_indicator_data.cpp runtime/continue_menu_data.cpp runtime/continue_menu.cpp runtime/slot_preference.cpp runtime/restore_data.cpp runtime/session_restore.cpp runtime/session_migration.cpp runtime/load_rng.cpp runtime/fresh_house.cpp runtime/dialogue_choices_data.cpp runtime/dialogue_choices.cpp runtime/phone_data.cpp runtime/phone_runtime.cpp runtime/native_session.cpp runtime/session_save.cpp runtime/save_menu_data.cpp runtime/save_menu.cpp runtime/native_input.cpp runtime/world_effect_data.cpp runtime/world_effect.cpp runtime/items_data.cpp runtime/items_menu.cpp runtime/house_runtime.cpp runtime/house_data.cpp runtime/house_presentation.cpp runtime/battle_outcome.cpp runtime/battle_round.cpp runtime/battle_round_data.cpp runtime/battle_action_presentation.cpp runtime/source_random.cpp runtime/audio_data.cpp runtime/battle_data.cpp runtime/battle_entry.cpp platform/ctr/audio_player.cpp runtime/music_regions.cpp platform/ctr/music_region_player.cpp platform/ctr/music_region_service.cpp runtime/room_data.cpp runtime/file_io.cpp runtime/progression.cpp runtime/movement.cpp runtime/animation.cpp runtime/collision.cpp runtime/world_flags.cpp runtime/world.cpp runtime/opening_trigger.cpp runtime/dialogue.cpp runtime/actor_actions.cpp runtime/cutscene_camera.cpp platform/ctr/main.cpp
+SOURCES += runtime/music_zones.cpp runtime/gameplay_audio.cpp
 SOURCES += runtime/item_details.cpp runtime/field_equipment_data.cpp runtime/field_equipment_menu.cpp
 SOURCES += runtime/field_data.cpp runtime/world_links.cpp runtime/field_scene.cpp
 SOURCES += runtime/present_data.cpp runtime/house_presents.cpp runtime/mick_treats.cpp
@@ -74,6 +75,6 @@ $(APP).elf: $(OBJECTS)
 $(APP).smdh: assets/icon.png
 	@mkdir -p dist
 	$(TOOLS)/smdhtool --create "Encore Native Preview" "Mother Encore port development" "Encore Native contributors" $< $@
-$(APP).3dsx: $(APP).elf $(APP).smdh stage-romfs $(wildcard romfs/graphics/world/house-map/*) $(wildcard romfs/graphics/actors/*) $(wildcard romfs/graphics/world/house-layers/*) $(wildcard romfs/data/*)
+$(APP).3dsx: $(APP).elf $(APP).smdh stage-romfs $(wildcard romfs/graphics/world/house-map/*) $(wildcard romfs/graphics/actors/*) $(wildcard romfs/graphics/world/house-layers/*) $(wildcard romfs/world/house/* romfs/world/podunk/* romfs/battle/*/* romfs/story/* romfs/session/* romfs/system/* romfs/localization/* romfs/ui/*)
 	$(TOOLS)/3dsxtool $(APP).elf $@ --smdh=$(APP).smdh --romfs=$(ROOT)/build/ctr/native-romfs
 -include $(OBJECTS:.o=.d)

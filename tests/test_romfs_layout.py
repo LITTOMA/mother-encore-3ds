@@ -11,8 +11,8 @@ class RomFSLayoutTests(unittest.TestCase):
                       'sound/music/house.pcm', 'sound/effects/bash.pcm',
                       'sound/banks/opening.encaudio', 'sound/banks/podunk.encmusic',
                       'fonts/source-fonts.encfont', 'fonts/page.t3x',
-                      Path('data/opening.encroom'), 'data/native.encinput', 'data/melody.encfx',
-                      'data/podunk.encmick', 'data/opening.encpresent',
+                      Path('world/house/opening.encroom'), 'system/native.encinput', 'story/melody.encfx',
+                      'world/podunk/podunk.encmick', 'world/house/opening.encpresent',
                       'licenses/license-sources.json'])
 
     def test_build_metadata_and_legacy_paths_rejected(self):

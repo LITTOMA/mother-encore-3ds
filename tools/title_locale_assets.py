@@ -12,7 +12,7 @@ from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE_ROOT=ROOT if (ROOT/'upstream/MOTHER-Encore').exists() else ROOT.parents[1]/'encore-native'
 RECIPE=ROOT/'content/native-title-locales.json'
-PACK=ROOT/'romfs/data/opening.enctitlelocale'
+PACK=ROOT/'romfs/localization/opening.enctitlelocale'
 LOCALES=('zh_Hans_CN',)  # Explicit first native rendering checkpoint.
 
 def require(ok,message):
@@ -94,9 +94,9 @@ def assets(tex3ds):
 
 def stage_files(source_root):
     recipe=read(RECIPE);verify_recipe(recipe);root=Path(source_root).resolve();files={}
-    for path in ['data/opening.enctitlelocale',*recipe['outputs']]:
+    for path in ['localization/opening.enctitlelocale',*recipe['outputs']]:
         rel=Path(path);p=(root/rel).resolve();require(p.is_relative_to(root),'Title locale stage path escape')
-        data=p.read_bytes();require(data==encode(recipe) if path=='data/opening.enctitlelocale' else hashlib.sha256(data).hexdigest()==recipe['outputs'][path]['sha256'],'Stale staged title locale bytes')
+        data=p.read_bytes();require(data==encode(recipe) if path=='localization/opening.enctitlelocale' else hashlib.sha256(data).hexdigest()==recipe['outputs'][path]['sha256'],'Stale staged title locale bytes')
         files[rel]=data
     return files
 

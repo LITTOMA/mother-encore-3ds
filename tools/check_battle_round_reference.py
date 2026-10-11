@@ -12,7 +12,7 @@ def main():
  results=[]
  for case in reference['cases']:
   if case['name'].startswith('equal_speed_'):continue # separate source comparator fixtures, altered inputs
-  got=json.loads(subprocess.check_output([str(args.probe.resolve()),str(ROOT/'romfs/data/opening.encround'),str(ROOT/'romfs/data/opening.encbattle'),str(case['seed'])],text=True))
+  got=json.loads(subprocess.check_output([str(args.probe.resolve()),str(ROOT/'romfs/battle/lamp/opening.encround'),str(ROOT/'romfs/battle/lamp/opening.encbattle'),str(case['seed'])],text=True))
   expected={'boundary':case['boundary'],'player_hp':case['hp']['ninten'],'enemy_hp':case['hp']['lamp'],'turn':case['turn'],'raw_draw_count':case['raw_draw_count'],'next_randi':case['next_randi']}
   assert all(got[k]==v for k,v in expected.items()),(case['name'],got,expected)
   native_damage=[{'actor':0 if e['user']=='ninten' else 1,'target':0 if e['target']=='ninten' else 1,'damage':e['damage'],'smash':e['smash']}for e in case['events']if e['event']=='damage']

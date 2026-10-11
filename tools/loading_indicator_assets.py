@@ -24,7 +24,7 @@ from tools.extract_battle_entry import Extractor, animation, node, one, require
 from tools.upstream import read_json, write_json
 
 RECIPE = ROOT / 'content/native-loading-indicator.json'
-PACK = ROOT / 'romfs/data/indicator.encload'
+PACK = ROOT / 'romfs/ui/indicator.encload'
 REVIEW = ROOT / 'compatibility/reviews/ninten-animation-v0410.json'
 REFERENCE = ROOT / 'reports/m3-actor-reference-reviewed/animation.json'
 SCENE = 'Nodes/Reusables/Player.tscn'

@@ -3,15 +3,15 @@ from pathlib import PurePath, PurePosixPath
 
 EXTENSIONS = {
     'graphics': {'.t3x', '.bpx'},
-    'sound': {'.pcm', '.encaudio', '.encmusic'},
+    'sound': {'.pcm', '.encaudio', '.encmusic', '.enccues', '.enczones'},
     'fonts': {'.t3x', '.encfont'},
-    'data': {
-        '.encbars', '.encbattle', '.encchoices', '.enccontinue',
-        '.encfx', '.enchouse', '.encinput', '.encintro', '.encinspect', '.encdrawer', '.encstorage', '.encdetails', '.encfield', '.encitems', '.encload',
-        '.enclinks', '.enclocale', '.encmap', '.encmick', '.encmigration', '.encnewgame', '.encphone', '.encpresent',
-        '.encprompts', '.encresources', '.encrestore', '.encroom', '.encround',
-        '.encsavemenu', '.encsession', '.encsettings', '.enctitlelocale',
-    },
+    'world': {'.encroom', '.enchouse', '.encinspect', '.encdrawer', '.encphone', '.encpresent', '.encmap', '.encmick', '.enclinks'},
+    'battle': {'.encbattle', '.encround'},
+    'story': {'.encintro', '.encfx'},
+    'session': {'.encsession', '.encrestore', '.encmigration'},
+    'system': {'.encresources', '.encinput'},
+    'localization': {'.enclocale', '.enctitlelocale'},
+    'ui': {'.encbars', '.encchoices', '.enccontinue', '.encdetails', '.encfield', '.encitems', '.encload', '.encnewgame', '.encprompts', '.encsavemenu', '.encsettings', '.encstorage'},
 }
 
 
@@ -32,7 +32,7 @@ def check_layout(files):
             raise ValueError('Unclassified runtime resource: ' + name)
         if category == 'sound' and (len(path.parts) < 3 or
                 path.parts[1] not in ('music', 'effects', 'banks') or
-                (path.parts[1] == 'banks') != (path.suffix in ('.encaudio', '.encmusic'))):
+                (path.parts[1] == 'banks') != (path.suffix in ('.encaudio', '.encmusic', '.enccues', '.enczones'))):
             raise ValueError('Unclassified sound resource: ' + name)
 
 

@@ -203,6 +203,11 @@ std::vector<std::string> battle_paths;
 std::vector<uint32_t> battle_draw_order;
 unsigned view_width=400,view_height=240;
 bool reference_view=false;
+#if defined(ENCORE_DEBUG_REFERENCE_VIEW) && ENCORE_DEBUG_REFERENCE_VIEW
+constexpr bool debug_reference_view_enabled=true;
+#else
+constexpr bool debug_reference_view_enabled=false;
+#endif
 double shader_time=0;
 double compose_ms=0,upload_ms=0,background_submit_ms=0;
 #ifdef ENCORE_FRAME_PROFILE
@@ -1506,7 +1511,9 @@ void house_bottom(){
         text(3,14,128,0.29f,timing,ink,292);
     }else
 #endif
-    text(3,14,143,0.37f,"D-pad: move / choose    A: select\nSELECT: reference view + restart\nExit: title menu",ink,292);
+    text(3,14,143,0.37f,debug_reference_view_enabled&&continue_menu.phase()==upstream::ContinuePhase::Title?
+         "D-pad: move / choose    A: select\nL+R+SELECT: reference view + restart\nExit: title menu":
+         "D-pad: move / choose    A: select\nSTART: house menu / intro skip\nExit: title menu",ink,292);
     char position[240];const auto& player=gameplay_scene->world.player();
     if(stage==upstream::OpeningStage::Walking){
         const auto instance=room.actor_instance(scene.player_instance_index);
@@ -1570,7 +1577,7 @@ void field_bottom(){
     const auto nearby=field_scene->nearby_notices(player,200.f,3);
     if(!nearby.empty()&&field_scene->phase()==FieldPhase::Walking){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
     text(2,14,84,0.35f,scope,muted,292);
-    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART menus are not ported in this field\nSELECT: reference view + restart",ink,292);
+    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART menus are not ported in this field",ink,292);
     char position[160];const auto instance=room.actor_instance(room.scene().player_instance_index);
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
@@ -1684,7 +1691,12 @@ int main(int argc,char** argv){
         hidScanInput();u32 down=hidKeysDown(),held=hidKeysHeld();
         // START is not a global quit shortcut: UI editing must not discard the
         // pending session. Normal exit is the explicit title-menu request.
-        if((down&KEY_SELECT)&&!introduction.active()){
+        // The destructive reference-view reset is an explicit developer build
+        // option, available only on the title screen with both shoulders held.
+        // SELECT alone is reserved for gameplay input.
+        if(debug_reference_view_enabled&&continue_menu.phase()==upstream::ContinuePhase::Title&&!new_game_setup.active()&&!introduction.active()&&
+           (down&KEY_SELECT)&&(held&(KEY_L|KEY_R))==(KEY_L|KEY_R)){
+            down&=~u32(KEY_SELECT|KEY_L|KEY_R); // Do not also cycle the title locale.
             wait_for_gpu_idle();new_game_renderer.free();new_game_setup.close();pending_new_game=PendingNewGame{};native_input.reset();menu_navigation.reset();reference_view=!reference_view;const auto native=battle_data.view().parameter(upstream::BattleParameter::CanvasSize);view_width=reference_view?unsigned(native.x):400;view_height=reference_view?unsigned(native.y):240;loaded_battle_path.clear();world_effect_assets_ready=false;
             if(!reset_development_game(error)||!open_continue(error))break;last=osGetTime();accumulator=0;
         }

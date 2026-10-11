@@ -28,6 +28,19 @@ APP := dist/encore-native
 EXPERIMENTAL_GPU_BACKGROUND ?= 0
 EXPERIMENTAL_GPU_CERTIFICATES ?= 0
 EXPERIMENTAL_GPU_TEXTURE_STRIPS ?= 0
+# Destructive reference-view shortcut: opt in for developer builds only.
+DEBUG_REFERENCE_VIEW ?= 0
+ifeq ($(DEBUG_REFERENCE_VIEW),1)
+CPPFLAGS += -DENCORE_DEBUG_REFERENCE_VIEW=1
+else ifneq ($(DEBUG_REFERENCE_VIEW),0)
+$(error DEBUG_REFERENCE_VIEW must be 0 or 1)
+endif
+.PHONY: reference-view-mode-force
+reference-view-mode-force:
+build/ctr/reference-view-mode.stamp: reference-view-mode-force
+	@mkdir -p $(dir $@)
+	@printf '%s\n' '$(DEBUG_REFERENCE_VIEW)' | cmp -s - $@ || printf '%s\n' '$(DEBUG_REFERENCE_VIEW)' > $@
+build/ctr/platform/ctr/main.o: build/ctr/reference-view-mode.stamp
 .PHONY: gpu-background-mode-force
 gpu-background-mode-force:
 build/ctr/gpu-background-mode.stamp: gpu-background-mode-force

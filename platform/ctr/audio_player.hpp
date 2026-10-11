@@ -62,7 +62,7 @@ private:
         std::array<ndspWaveBuf,buffer_count> waves{};
         int16_t* samples=nullptr;
         uint32_t asset_index=0;
-        bool active=false,fading=false,stop_after_fade=false,repeat=false;
+        bool active=false,fading=false,stop_after_fade=false,repeat=false,paused=false;
     };
     bool prepare_index(uint32_t index,std::string& error);
     bool refill(uint32_t lane,std::string& error);

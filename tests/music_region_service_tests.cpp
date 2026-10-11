@@ -24,6 +24,7 @@ void ndspChnReset(int i){channel(i);drain(i);}void ndspChnWaveBufClear(int i){ch
 void ndspChnSetMix(int i,float*v){channel(i);check(v[0]==v[1],"stereo mix unchanged");}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n&&n<=8192,"checked streaming payload");return 0;}
 void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){check(dsp,"NDSP owner still alive");p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
+void ndspChnSetPaused(int lane,bool){channel(lane);++mutations;}
 void ndspChnSetInterp(int i,int){channel(i);}void ndspChnSetRate(int i,float){channel(i);}void ndspChnSetFormat(int i,int){channel(i);}
 bool complete_prepare(ctr::MusicRegionService&service,const char*regions,const char*bank,const char*root,uint32_t capacity,const ctr::AudioPlayer&owner,std::string&e){
  if(!service.begin_prepare(regions,bank,root,capacity,owner,e))return false;

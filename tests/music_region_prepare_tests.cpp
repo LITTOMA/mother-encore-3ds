@@ -60,6 +60,7 @@ void ndspChnReset(int i){channel(i);drain(i);}void ndspChnWaveBufClear(int i){ch
 void ndspChnSetMix(int i,float*v){channel(i);++mix_writes;gain[size_t(i)]=v[0];check(v[0]==v[1],"stereo equal");}
 Result DSP_FlushDataCache(const void*p,uint32_t n){check(p&&n&&n<=8192,"bounded streaming payload");return 0;}
 void ndspChnWaveBufAdd(int i,ndspWaveBuf*p){check(dsp,"real owner lifetime");p->status=NDSP_WBUF_QUEUED;queues[channel(i)].push_back(p);}
+void ndspChnSetPaused(int lane,bool){channel(lane);++mutations;}
 void ndspChnSetInterp(int i,int){channel(i);}void ndspChnSetRate(int i,float){channel(i);}void ndspChnSetFormat(int i,int){channel(i);}
 int main(int argc,char**argv){
  check(argc==6,"opening bank/root and region pack/bank/root");std::string e;ctr::AudioPlayer owner;ctr::MusicRegionService service;
@@ -89,7 +90,7 @@ int main(int argc,char**argv){
  begin();before=mutations+owner_calls;const auto error_before=error_injections;inject_error=true;const auto error_result=service.prepare_step(8192,e);inject_error=false;
  check(error_injections==error_before+1,"read-error fault actually reached the PCM read");
  check(error_result==ctr::MusicPreparationStep::Failed&&region_files.empty()&&mutations+owner_calls==before,"read error rejected with rollback");
- begin();before=mutations+owner_calls;check(service.prepare_step(65537,e)==ctr::MusicPreparationStep::Failed&&service.phase()==ctr::MusicRegionServicePhase::Dormant&&mutations+owner_calls==before,"over-limit byte budget rejected without touching old queues");
+ begin();before=mutations+owner_calls;check(service.prepare_step(ctr::MusicRegionPlayer::maximum_prepare_bytes+1,e)==ctr::MusicPreparationStep::Failed&&service.phase()==ctr::MusicRegionServicePhase::Dormant&&mutations+owner_calls==before,"over-limit byte budget rejected without touching old queues");
  begin();before=mutations+owner_calls;inject_corruption=true;auto corrupt=ctr::MusicPreparationStep::Progress;unsigned corrupt_steps=0;
  while(corrupt==ctr::MusicPreparationStep::Progress&&corrupt_steps++<3000)corrupt=service.prepare_step(8192,e);
  inject_corruption=false;check(corrupt==ctr::MusicPreparationStep::Failed&&e=="Region PCM length/checksum/read validation failed"&&region_files.empty()&&mutations+owner_calls==before,"incremental CRC detects read-byte corruption and rolls back only the candidate");
@@ -97,7 +98,7 @@ int main(int argc,char**argv){
  //44.1kHz queue consumes. This is deliberately not a real hardware benchmark.
  begin();slow_reads=true;max_read_request=0;read_bytes=0;const auto mix_before=mix_writes;
  unsigned steps=0;ctr::MusicPreparationStep result=ctr::MusicPreparationStep::Progress;
- while(result==ctr::MusicPreparationStep::Progress&&steps++<20000){const auto bytes=read_bytes;result=ctr::pump_region_music_preparation(service,owner,65536,e);check(result!=ctr::MusicPreparationStep::Failed,e.c_str());check(read_bytes-bytes<=8192,"cooperative step has only one bounded8KiB region read");}
+ while(result==ctr::MusicPreparationStep::Progress&&steps++<20000){const auto bytes=read_bytes;result=ctr::pump_region_music_preparation(service,owner,ctr::MusicRegionPlayer::maximum_prepare_bytes,e);check(result!=ctr::MusicPreparationStep::Failed,e.c_str());check(read_bytes-bytes<=8192,"cooperative step has only one bounded8KiB region read");}
  slow_reads=false;
  check(result==ctr::MusicPreparationStep::Ready&&service.phase()==ctr::MusicRegionServicePhase::Prepared&&service.prepared_pcm_bytes()==service.total_pcm_bytes()&&read_bytes==77419288,"full real PCM validation reaches Ready with exact length/CRC");
  check(underruns==0&&modeled_read_milliseconds>400000,"old queue stayed fed under explicit slow-read model");

@@ -70,10 +70,15 @@ void AudioPlayer::reset_scene(){
     for(auto& voice:voices_){auto* samples=voice.samples;voice=Voice{};voice.samples=samples;}
     consumed_=0;submitted_=completed_=queued_frames_=0;
 }
-void AudioPlayer::stop(uint32_t lane){ndspChnSetPaused(hardware_channel(lane),false);ndspChnWaveBufClear(hardware_channel(lane));voices_[lane].active=false;voices_[lane].fading=false;}
+void AudioPlayer::stop(uint32_t lane){
+    auto& voice=voices_[lane];
+    ndspChnWaveBufClear(hardware_channel(lane));
+    if(voice.paused)ndspChnSetPaused(hardware_channel(lane),false);
+    voice.active=voice.fading=voice.paused=false;
+}
 void AudioPlayer::mix(uint32_t lane){float volumes[12]{};const float gain=upstream::audio_linear_gain(voices_[lane].fade.db());volumes[0]=gain;volumes[1]=gain;ndspChnSetMix(hardware_channel(lane),volumes);}
 bool AudioPlayer::refill(uint32_t lane,std::string& error){
-    auto& voice=voices_[lane];if(!voice.active)return true;bool queued=false;
+    auto& voice=voices_[lane];if(!voice.active||voice.paused)return true;bool queued=false;
     for(uint32_t i=0;i<buffer_count;++i){auto& wave=voice.waves[i];
         if(wave.status==NDSP_WBUF_QUEUED||wave.status==NDSP_WBUF_PLAYING){queued=true;continue;}
         uint32_t frames=0;int16_t* samples=voice.samples+size_t(i)*buffer_frames*2;
@@ -137,7 +142,9 @@ bool AudioPlayer::stop_lane(AudioLane which,std::string& error){
 }
 bool AudioPlayer::pause_lane(AudioLane lane,bool paused,std::string& error){
  if(uint32_t(lane)>=lane_count){error="Unsupported pause lane";return false;}
- if(ready_)ndspChnSetPaused(hardware_channel(uint32_t(lane)),paused);
+ if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
+ auto& voice=voices_[uint32_t(lane)];
+ if(voice.active&&voice.paused!=paused){ndspChnSetPaused(hardware_channel(uint32_t(lane)),paused);voice.paused=paused;}
  error.clear();return true;
 }
 bool AudioPlayer::consume(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,std::string& error){
@@ -167,7 +174,7 @@ bool AudioPlayer::pump_streams(std::string& error){
 bool AudioPlayer::update(double delta,std::string& error){
     if(!ready_){error="Audio unavailable: NDSP is not initialized";return false;}
     if(!std::isfinite(delta)||delta<0){error="Invalid audio frame delta";return false;}
-    for(uint32_t i=0;i<lane_count;++i){auto& v=voices_[i];if(!v.active)continue;
+    for(uint32_t i=0;i<lane_count;++i){auto& v=voices_[i];if(!v.active||v.paused)continue;
         if(v.fading){v.fade.advance(delta);mix(i);if(!v.fade.active()){v.fading=false;if(v.stop_after_fade){stop(i);continue;}}}
         if(!refill(i,error))return false;
     }error.clear();return true;

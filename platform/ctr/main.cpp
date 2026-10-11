@@ -1085,7 +1085,7 @@ bool prepare_field_music(std::string& error){
  if(region_music.phase()==ctr::MusicRegionServicePhase::Dormant){
   if(!region_music.begin_prepare(resource_path(ResourceRole::FieldMusic).c_str(),resource_path(ResourceRole::FieldAudio).c_str(),"romfs:/",MusicRegionController::maximum_voices,audio_player,error))return false;
   while(region_music.phase()==ctr::MusicRegionServicePhase::Preparing)
-   if(ctr::pump_region_music_preparation(region_music,audio_player,256*1024,error)==ctr::MusicPreparationStep::Failed)return false;
+   if(ctr::pump_region_music_preparation(region_music,audio_player,ctr::MusicRegionPlayer::maximum_prepare_bytes,error)==ctr::MusicPreparationStep::Failed)return false;
  }
  return true;
 }
@@ -1440,6 +1440,17 @@ void house_top(){
     for(const auto&bar:bars.bars)if(bar.h>0)BattleRenderer::draw_rect(view_x()+bar.x,view_y()+bar.y,bar.w,bar.h,bars.color);
 
 }
+std::string audio_diagnostic(){
+    if(!audio_status.empty())return audio_status;
+    if(!audio_player.available())return "Audio backend unavailable";
+    static std::string cached;static u64 sampled=0;const auto now=osGetTime();
+    if(!cached.empty()&&now-sampled<500)return cached;
+    sampled=now;
+    // Read the actual music channel too: accepted queues do not prove output.
+    const auto music=audio_player.observe_music();
+    char line[160];std::snprintf(line,sizeof(line),"BGM id=%lu voice=%u DSP=%u paused=%u\npos=%lu seq=%u submitted=%lu",static_cast<unsigned long>(music.asset_id),unsigned(music.playing),unsigned(ndspChnIsPlaying(0)),unsigned(ndspChnIsPaused(0)),static_cast<unsigned long>(ndspChnGetSamplePos(0)),unsigned(ndspChnGetWaveBufSeq(0)),static_cast<unsigned long>(audio_player.submitted_voices()));
+    cached=line;return cached;
+}
 void house_bottom(){
     const auto room=opening_data.view();const auto scene=room.scene();
     text(0,14,9,0.48f,"ROOM RUNTIME",accent,292);
@@ -1534,7 +1545,7 @@ void house_bottom(){
         if(!battle_renderer.draw_text(label.c_str(),14,190,1,1,ink))locale_status=locale_font.last_error();
         if(!locale_status.empty())text(4,14,174,0.30f,locale_status,muted,292);
     }else text(4,14,in_battle()?180:192,0.30f,gameplay_scene->world.healthy()?telemetry:gameplay_scene->world.error(),muted,292);
-    text(5,14,212,0.27f,audio_status.empty()?"Audio backend initialized (output unverified)":audio_status,muted,292);
+    text(5,14,212,0.27f,audio_diagnostic(),muted,292);
 }
 
 void field_top(){
@@ -1563,7 +1574,7 @@ void field_bottom(){
     char position[160];const auto instance=room.actor_instance(room.scene().player_instance_index);
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
-    text(5,14,212,0.27f,audio_status.empty()?"Audio backend initialized (output unverified)":audio_status,muted,292);
+    text(5,14,212,0.27f,audio_diagnostic(),muted,292);
 }
 void field_dialogue_overlay(){
     const auto bars=world_blackbars.pose(float(view_width),float(view_height));

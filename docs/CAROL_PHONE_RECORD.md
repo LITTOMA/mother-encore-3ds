@@ -8,6 +8,16 @@ Record opens the original ten-slot menu with checked layout, fonts, palette, act
 
 All new content lives in external checked Room/House/choices/save-menu/session/phone resources. C++ implements bounded control flow, callbacks, rendering and storage. Room6 adds explicit forward branch, choice suspension and submenu suspension instructions; House6 adds source delay/newline tokens. Older supported pack revisions keep their original operand restrictions.
 
+## Phone audio preparation
+
+The house admission boundary prepares the Room audio sources (including digest checks), all nonempty House voice bindings, Phone object and animation sounds, dialogue-choice and Record menu cues, and dialogue open/close/confirm cues. The plan resolves paths from checked resources to bank stable IDs and deduplicates them; failure does not publish a partial plan. PCM streams remain cached across scene resets, so a first Dad/Record interaction reuses admitted audio without opening a new sound-loading scope.
+
+A Phone request has one playback owner. It is validated against its checked object's sound kind/path and the Room audio binding, then queued only for the Phone lane. Previously the same request also entered the generic world effect queue: after Phone playback, the Effect lane rejected the concurrent asset and could retry it late. Removing that duplicate preserves the original Ring animation's sound keys and pickup's same-player replacement.
+
+The pinned house Phone uses `phonering.wav` and `phonehangup.wav`; `Maps/Testing/phone.gd` deliberately uses the latter on pickup. The separate `phone.wav` file is not a call cue in this audited script/scene and is not added by filename inference. Dad's Adult voice, choice cursor/confirm/cancel sounds and SaveSelect cursor/back sounds already have checked bank bindings. Original positional attenuation and SaveSelect music-bus muffling remain outside this audio backend's established scope.
+
+Regression coverage was added for plan completeness, missing Dad voice, mismatched Room source digest, invalid owners, invalid Phone requests and the absence of duplicate generic Phone effects in the shared Carol/Dad sequence. Tests remain manual; syntax compilation and actual cross-build/packaging receipts cover different verification levels.
+
 ## Native storage boundary
 
 Files are written to `sdmc:/3ds/encore-native/save-<one-based-slot>.encsave`. The native schema stores stable identities, current HP/PP, EXP/level, skills, source equipment/key items, money, flags, seen/encountered history, player location/facing and session settings. Derived combat stats are validated against external source rows rather than stored as invented permanent boosts. The first saved file preserves the source's pre-write `saved=false`; the live flag becomes true only after a successful write. Original RNG is not serialized. A future LOAD must reproduce source reconstruction side effects: inventory creation eagerly calls the UID fallback, which randomizes and draws even for a saved UID. This stage does not yet execute LOAD or claim random-stream restoration.

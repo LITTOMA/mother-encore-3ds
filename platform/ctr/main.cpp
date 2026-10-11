@@ -42,6 +42,7 @@
 #include <ctime>
 #include <memory>
 #include "encore/house_runtime.hpp"
+#include "encore/house_audio.hpp"
 #include "encore/house_presentation.hpp"
 #include "encore/blackbars.hpp"
 #include "encore/battle_action_presentation.hpp"
@@ -454,6 +455,7 @@ bool load_ui_font_only(std::string&error){
 }
 // Title and naming need checked world metadata for save admission, not the
 // room's image owners. Prepare those once before exposing a new/loaded house.
+bool prepare_house_audio(std::string&error);
 bool ensure_house_graphics(std::string&error){
     if(house_graphics_ready)return true;
     wait_for_gpu_idle();LoadingScope loading("Preparing house graphics",4);
@@ -461,22 +463,7 @@ bool ensure_house_graphics(std::string&error){
        !loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error)&&(present_data.view().valid()||present_data.load_file(resource_path(ResourceRole::HousePresents).c_str(),error))&&present_renderer.load(present_data.view(),"romfs:/",error);},"house-atlases")||
        !loading.step([&]{if(!items_renderer.load(items_data.view(),"romfs:/",error)||!item_details_renderer.load(item_details_data.view(),items_data.view(),"romfs:/",error))return false;
            item_details_renderer.set_locale(locale_selection.code());items_renderer.set_details(&item_details_renderer);storage_renderer.set_details(&item_details_renderer);return true;},"item-atlases")||
-       !loading.step([&]{
-           if(!audio_player.available())return true;
-           const auto room=opening_data.view();
-           for(uint32_t i=0;i<room.resource_count();++i){const auto r=room.resource(i);
-               if(r.kind!=uint16_t(upstream::RoomResourceKind::AudioRequestOnly))continue;
-               // Prefetch source identity, not saved/gameplay identity: one
-               // source can have separate room and cutscene bank stable IDs.
-               bool found=false;
-               for(uint32_t j=0;j<menu_audio_bank.count();++j){const auto asset=menu_audio_bank.asset(j);
-                   if(asset.source_path==room.string(r.path_string)&&asset.source_sha256==r.sha256){
-                       found=true;if(!audio_player.prepare(asset.stable_id,error))return false;break;}
-               }
-               if(!found){error="House audio source is absent from checked bank";return false;}
-           }
-           return true;
-       },"house-audio")||!loading.finish())return false;
+       !loading.step([&]{return prepare_house_audio(error);},"house-audio")||!loading.finish())return false;
     house_graphics_ready=true;return true;
 }
 bool initialize_world_effect(std::string&error){
@@ -746,6 +733,14 @@ bool prepare_source_audio(const std::string& path,std::string&error){
         }
     }
     error="Sound is absent from checked audio bank";return false;
+}
+bool prepare_house_audio(std::string&error){
+    if(!audio_player.available())return true;
+    std::vector<uint32_t> ids;
+    if(!upstream::build_house_audio_plan(opening_data.view(),house_data.view(),phone_data.view(),
+        choice_data,save_menu_data,gameplay_audio,menu_audio_bank,ids,error))return false;
+    for(auto id:ids)if(!audio_player.prepare(id,error))return false;
+    return true;
 }
 bool prepare_title_audio(std::string&error){
     if(!prepare_source_audio(continue_data.title_music(),error))return false;

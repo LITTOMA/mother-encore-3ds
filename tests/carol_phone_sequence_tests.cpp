@@ -43,6 +43,18 @@ struct Fixture {
   check(runtime.initialize(h,world,presentation),runtime.error());
   check(phone.initialize(p),phone.error());check(runtime.bind_phone(phone),runtime.error());
   check(!phone.ringing(0),"Initialization never invents Ring playback from flags");
+  const auto generic_count=world.audio_requests().size();const auto typed_count=runtime.phone_sounds().size();
+  PhoneSoundRequest bad;bad.object=0;
+  check(!runtime.play_phone_sound(bad),"Empty source request rejected");
+  bad.source_path=p.string(p.resource(p.object(0).resource).path);
+  check(!runtime.play_phone_sound(bad),"Texture path cannot masquerade as phone audio");
+  bad.source_path=p.string(p.object(0).ring_sound);bad.kind=PhoneSoundKind(99);
+  check(!runtime.play_phone_sound(bad),"Unknown phone cue rejected");
+  bad.kind=PhoneSoundKind::Hangup;
+  check(!runtime.play_phone_sound(bad),"Cue kind cannot play another source sound");
+  bad.kind=PhoneSoundKind::Ring;bad.object=phone_no_index;
+  check(!runtime.play_phone_sound(bad),"Unknown phone object rejected");
+  check(world.audio_requests().size()==generic_count&&runtime.phone_sounds().size()==typed_count,"Rejected phone requests preserve both queues");
  }
  void step(WalkInput input={},bool accept=false,bool cancel=false){
   ++frames;check(runtime.before_physics(input),runtime.error());
@@ -54,6 +66,12 @@ struct Fixture {
   check(ok,runtime.error());
   blocker_before_end_scene=world.body_enabled(blocker);
   check(world.end_scene_frame(),world.error());
+  for(const auto& request:world.audio_requests())if(request.kind==AudioRequestKind::PlayEffect){
+   auto path=room.string(room.resource(request.resource_index).path_string);if(path.substr(0,6)=="res://")path.remove_prefix(6);
+   for(uint32_t i=0;i<phone.view().count(PhoneSection::Objects);++i){const auto object=phone.view().object(i);
+    check(path!=phone.view().string(object.ring_sound)&&path!=phone.view().string(object.hangup_sound),"Phone cues have one owner, never a duplicate generic effect");
+   }
+  }
  }
  void warp(Vec2 p,Vec2 d){check(world.warp_same_scene(p,d),world.error());check(runtime.after_physics(),runtime.error());}
  void await_text(){for(unsigned i=0;i<16&&!presentation.dialogue_active();++i)step();if(!presentation.dialogue_active())std::cerr<<"await text: house="<<unsigned(runtime.phase())<<" world="<<unsigned(world.stage())<<" index="<<runtime.story_index()<<" pos="<<world.player().position.x<<","<<world.player().position.y<<" error="<<runtime.error()<<"\n";check(presentation.dialogue_active(),"Source interaction presents its checked text");}

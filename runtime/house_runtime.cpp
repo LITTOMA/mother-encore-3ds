@@ -356,11 +356,20 @@ bool HouseRuntime::get_phone_flag(uint32_t index,bool&value)const{
  value=world_->story_flag(phone_->view().string(phone_->view().flag_ref(index).identity));return true;
 }
 bool HouseRuntime::play_phone_sound(const PhoneSoundRequest&request){
- if(!phone_||request.object>=phone_->view().count(PhoneSection::Objects))return false;
- const auto requested=request.source_path;const auto room=world_->content();
+ if(!world_||!world_->healthy()||!phone_||request.object>=phone_->view().count(PhoneSection::Objects))return false;
+ const auto object=phone_->view().object(request.object);
+ uint32_t sound=0;
+ if(request.kind==PhoneSoundKind::Ring)sound=object.ring_sound;
+ else if(request.kind==PhoneSoundKind::Hangup)sound=object.hangup_sound;
+ else return false;
+ const auto requested=request.source_path;
+ if(requested.empty()||requested!=phone_->view().string(sound))return false;
+ const auto room=world_->content();
  uint32_t resource=house_no_index;
- for(uint32_t i=0;i<room.resource_count();++i){const auto r=room.resource(i);auto path=room.string(r.path_string);if(path.substr(0,6)=="res://")path.remove_prefix(6);if(r.kind==2&&path==requested){resource=i;break;}}
- if(resource==house_no_index||!world_->request_sound(resource))return false;
+ for(uint32_t i=0;i<room.resource_count();++i){const auto r=room.resource(i);auto path=room.string(r.path_string);if(path.substr(0,6)=="res://")path.remove_prefix(6);if(r.kind==uint16_t(RoomResourceKind::AudioRequestOnly)&&path==requested){resource=i;break;}}
+ if(resource==house_no_index)return false;
+ // The source Phone owns one replace/restart player. Its typed queue is the
+ // sole playback path; a generic world effect would duplicate it on another lane.
  phone_sounds_.push_back(request);return true;
 }
 bool HouseRuntime::interact_phone(uint32_t index){

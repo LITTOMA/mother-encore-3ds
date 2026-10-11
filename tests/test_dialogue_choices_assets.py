@@ -40,7 +40,7 @@ class ChoicesAssets(unittest.TestCase):
         files = stage_files(ROOT / 'romfs')
         self.assertEqual(set(map(str, files)), {'ui/opening.encchoices', 'graphics/ui/house/cursor.t3x', 'graphics/battle/lamp/font.t3x'})
         with tempfile.TemporaryDirectory() as td:
-            p = Path(td); (p / 'data').mkdir(); (p / 'ui/opening.encchoices').symlink_to(PACK)
+            p = Path(td); (p / 'ui').mkdir(); (p / 'ui/opening.encchoices').symlink_to(PACK)
             with self.assertRaises(ValueError): stage_files(p)
 
 

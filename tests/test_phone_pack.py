@@ -70,9 +70,10 @@ class PhonePackTests(unittest.TestCase):
                 with self.assertRaises(ValueError):p.stage_files(root)
         with tempfile.TemporaryDirectory()as td:
             root=Path(td)
-            (root/'data').mkdir()
+            (root/'world/house').mkdir(parents=True)
+            (root/'graphics/ui').mkdir(parents=True)
             (root/'world/house/opening.encphone').write_bytes(self.blob)
-            (root/'phone-preview').symlink_to(p.ROOT/'romfs/graphics/ui/phone',target_is_directory=True)
+            (root/'graphics/ui/phone').symlink_to(p.ROOT/'romfs/graphics/ui/phone',target_is_directory=True)
             with self.assertRaisesRegex(ValueError,'path escape'):p.stage_files(root)
 
 

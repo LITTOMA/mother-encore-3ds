@@ -106,7 +106,7 @@ class NativeSessionTests(unittest.TestCase):
             with self.assertRaises(ValueError):native.verify_recipe(bad)
     def test_stale_or_escaping_stage_rejected(self):
         with tempfile.TemporaryDirectory()as name:
-            root=Path(name);(root/'data').mkdir();target=root/'session/opening.encsession';target.write_bytes(b'stale')
+            root=Path(name);(root/'session').mkdir();target=root/'session/opening.encsession';target.write_bytes(b'stale')
             with self.assertRaises(ValueError):native.stage_files(root)
             target.unlink();target.symlink_to(native.PACK)
             with self.assertRaises(ValueError):native.stage_files(root)

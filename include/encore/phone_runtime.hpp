@@ -1,5 +1,6 @@
 #pragma once
 #include "encore/phone_data.hpp"
+#include <string_view>
 #include <vector>
 
 namespace encore::upstream {
@@ -12,7 +13,9 @@ public:
 enum class PhoneSoundKind:uint32_t {Ring=1,Hangup=2};
 // object is the source audio-player identity. Requests replace/restart that
 // player's playback, rather than adding independent overlapping voices.
-struct PhoneSoundRequest {PhoneSoundKind kind=PhoneSoundKind::Ring;uint32_t object=phone_no_index,resource=0,bus=0;Vec2 position{};bool positional=false;};
+// source_path is resolved from the checked Phone string pool, never a texture
+// resource index. The owning PhoneData must outlive queued requests.
+struct PhoneSoundRequest {PhoneSoundKind kind=PhoneSoundKind::Ring;uint32_t object=phone_no_index;std::string_view source_path{};uint32_t bus=0;Vec2 position{};bool positional=false;};
 class PhoneSoundSink {public:virtual ~PhoneSoundSink()=default;virtual bool play_phone_sound(const PhoneSoundRequest&)=0;};
 struct PhoneInteraction {uint32_t program=0,phone_location=0;PhoneSoundRequest sound{};};
 struct PhonePose {uint32_t resource=phone_no_index,frame=0;Vec2 center{},sort_origin{};bool centered=false;};
@@ -34,6 +37,6 @@ public:
 private:
  struct State {uint32_t clip=phone_no_index,frame=0;double time=0;bool started=false;};
  PhoneView view_;std::vector<State>states_;bool failed_=false;const char*error_="";
- bool fail(const char*);PhoneSoundRequest sound(uint32_t object,uint32_t resource,PhoneSoundKind kind)const;
+ bool fail(const char*);PhoneSoundRequest sound(uint32_t object,uint32_t path_offset,PhoneSoundKind kind)const;
 };
 }

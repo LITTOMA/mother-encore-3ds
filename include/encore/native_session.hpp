@@ -23,6 +23,12 @@ struct NativeSessionStoragePolicy {
     std::string item_id;uint32_t doses=0,total_count=0;bool required=false;
     std::array<int32_t,7> boosts{};
 };
+// Schema 6: key items granted by a source flag. The item is held exactly while
+// flag_id is true and consumed_flag_id (if any) is false, after the defaults.
+struct NativeSessionKeyAcquisition {
+    std::string item_id,flag_id,consumed_flag_id;
+    uint32_t doses=0;
+};
 class NativeSessionData {
 public:
     bool load(const uint8_t*,size_t,std::string&);
@@ -49,6 +55,7 @@ public:
     const std::vector<NativeSessionAcquisition>& acquisitions()const{return acquisitions_;}
     uint32_t storage_capacity()const{return storage_capacity_;}
     const std::vector<NativeSessionStoragePolicy>& storage_policies()const{return storage_policies_;}
+    const std::vector<NativeSessionKeyAcquisition>& key_acquisitions()const{return key_acquisitions_;}
 private:
     std::vector<double> text_speeds_;
     std::vector<std::string> menu_flavors_,button_prompts_;
@@ -62,7 +69,11 @@ private:
     std::vector<uint32_t>camera_area_ids_;
     std::vector<NativeSessionAcquisition>acquisitions_;
     uint32_t storage_capacity_=0;std::vector<NativeSessionStoragePolicy>storage_policies_;
+    std::vector<NativeSessionKeyAcquisition>key_acquisitions_;
 };
+// Expected key inventory identities for the flags in s (defaults, then held
+// schema-6 acquisitions in policy order). UIDs are not part of identity.
+bool native_session_expected_key_items(const NativeSessionData&,const SessionSnapshot&,std::vector<SessionItem>&,std::string&);
 
 struct NativeSnapshotInput {
     // Initialize once from data.defaults(). The caller owns and updates all

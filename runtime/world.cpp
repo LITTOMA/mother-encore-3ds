@@ -193,6 +193,22 @@ bool OpeningWorld::warp_same_scene(Vec2 position,Vec2 direction){
     persistent_player_.state_->player_.position=position;persistent_player_.state_->player_.velocity={};
     return persistent_player_.state_->camera_.relocate_player(position);
 }
+bool OpeningWorld::script_move(Vec2 position,Vec2 direction,bool walking){
+    if(!healthy_||stage_!=OpeningStage::Walking||!std::isfinite(position.x)||!std::isfinite(position.y))return false;
+    const float x=std::abs(direction.x),y=std::abs(direction.y);
+    if(!std::isfinite(direction.x)||!std::isfinite(direction.y)||!((x==0||x==1)&&(y==0||y==1))||(x==0&&y==0))return false;
+    auto& p=persistent_player_.state_->player_;
+    const auto anim=walking?MotionAnimation::Walk:MotionAnimation::Idle;
+    const bool changed=p.direction.x!=direction.x||p.direction.y!=direction.y||p.animation!=anim;
+    p.position=position;p.velocity={};p.direction=direction;p.animation=anim;p.walking=walking;p.running=p.crouch=false;
+    if(changed){
+        persistent_player_.state_->clip_=walk_clip(anim,direction);FrameClip clip;
+        if(!content_.frame_clip(persistent_player_.state_->clip_,clip)||!begin_clip(clip,content_.clip(persistent_player_.state_->clip_).frame_count,persistent_player_.state_->playback_))return false;
+    }
+    if(walking){FrameClip clip;const auto selected=persistent_player_.state_->clip_;
+        if(!content_.frame_clip(selected,clip)||!advance_clip(clip,1.f/60.f,content_.clip(selected).frame_count,persistent_player_.state_->playback_))return false;}
+    return persistent_player_.state_->camera_.relocate_player(position);
+}
 bool OpeningWorld::set_initial_actor_pose(uint32_t index,Vec2 position,Vec2 direction){
     if(!healthy_||stage_!=OpeningStage::Walking||physics_tick_||idle_frame_||index>=actors_.size()||index==content_.scene().player_instance_index||actor_bound_[index]||!std::isfinite(position.x)||!std::isfinite(position.y)||!std::isfinite(direction.x)||!std::isfinite(direction.y)||(!direction.x&&!direction.y))return false;
     auto&actor=actors_[index];actor.position=position;actor.direction=direction;return true;

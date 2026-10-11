@@ -22,7 +22,7 @@ def extract():
  from localization_house import unescape,bindings as house_bindings
  sources={}; tables={}; records={}; superseded=[]
  def source(p):
-  sources[p]=sha(UPSTREAM/p);return (UPSTREAM/p).read_text()
+  sources[p]=sha(UPSTREAM/p);return (UPSTREAM/p).read_text(encoding='utf-8')
  global_source=source('Scripts/global/global.gd')
  locales=json.loads(re.search(r'const LANGUAGES := (\[[^\n]+\])',global_source)[1])
  disabled=json.loads(re.search(r'const LANGUAGES_DISABLED := (\[[^\n]*\])',global_source)[1])
@@ -79,7 +79,18 @@ def extract():
  bind('text.default_delay',delay,delay,'Scripts/global/text_tools.gd:_replace_tags:delay')
  adapter=load(BASE/'content/pillow-input.json');require(adapter['action']=='ui_toggle'and adapter['input_type']=='gamepad','CTR toggle adapter changed')
  bind('input.ui_toggle',adapter['label'],adapter['label'],'content/pillow-input.json:label')
- house=house_bindings(records,source,bind,tr)
+ # House present text is lowered with its fixed item; recompute it from the
+ # original CSV rows and require the reviewed present IR to agree.
+ from house_presents import bake
+ presents=load(BASE/'content/house-presents.json');fixed={}
+ for t in presents['texts']:
+  if not t['item']:continue
+  item=yaml.safe_load(source('Data/Items/'+t['item']+'.yaml'));key='@native.present/'+str(t['id'])
+  values={l:bake(records[t['translation_key']]['values'][l],records[item['name']]['values'][l],records[item['article']]['values'][l])for l in ('en','zh_Hans_CN')}
+  require(values==t['localized'],'House present text disagrees with original CSV rows: '+str(t['id']))
+  records[key]=dict(key=key,source=t['source_path']+'#'+t['translation_key']+'@'+t['item'],line=t['id'],values=values)
+  fixed[t['id']]=(key,t['label'])
+ house=house_bindings(records,source,bind,tr,fixed)
  from localization_battle import add as battle_bindings
  battles=battle_bindings(records,locales,source,bind,tr)
  # Checked current menu bindings. Literal display names never identify actors.

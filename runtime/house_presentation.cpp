@@ -71,7 +71,7 @@ bool HousePresentation::begin(HouseView c,BattleView font,SourceRandom&r){
  content_=c;font_=font;random_=&r;npcs_.assign(c.count(HouseSection::Npcs),{});
  text_seconds_=c.interaction().text_seconds;
  for(uint32_t i=0;i<npcs_.size();++i){const auto n=c.npc(i);auto&s=npcs_[i];s.position=n.position;s.direction=s.blend=n.default_direction;if(!s.animation.begin(c,s.blend,n.profile))return fail("Invalid NPC presentation profile");}
- active_=closing_=finished_=stopped_=talking_=voice_playing_=false;done_=true;choice_rows_=0;audio_.clear();lines_.clear();error_="";return true;
+ active_=closing_=finished_=stopped_=talking_=voice_playing_=external_=name_closing_=false;done_=true;choice_rows_=0;audio_.clear();lines_.clear();error_="";return true;
 }
 bool HousePresentation::set_text_speed(double seconds){
  if(!content_.valid()||!std::isfinite(seconds)||seconds<=0)return fail("Invalid world dialogue text speed");
@@ -152,7 +152,7 @@ bool HousePresentation::begin_dialogue(uint32_t first,uint32_t count,std::string
  if(!localized_.segments.empty()){speaker_=localized_.speaker;bullet_=localized_.bullet;}
  if(!valid_text(speaker_)||!valid_text(bullet_))return fail("Unsupported speaker/bullet glyph");
  choice_rows_=0;segment_=loaded_line_=visible_=0;loaded_count_=uint32_t(lines_[0].text.size())+(lines_[0].wait?1:0);
- box_time_=name_time_=name_size_time_=cursor_time_=text_time_=0;multiplier_=1;active_=true;advance_requested_=false;done_=closing_=finished_=stopped_=talking_=false;voice_playing_=false;
+ box_time_=name_time_=name_size_time_=cursor_time_=text_time_=0;multiplier_=1;active_=true;external_=name_closing_=false;advance_requested_=false;done_=closing_=finished_=stopped_=talking_=false;voice_playing_=false;
  name_width_=std::max(width(speaker_),content_.parameter(HouseParameter::NameSizing).w)+content_.parameter(HouseParameter::NameSizing).x;
  audio_.push_back({HouseAudioKind::MenuOpen,{},1});return true;
 }
@@ -180,7 +180,7 @@ void HousePresentation::clear_story_text(){
  text_time_=0;multiplier_=1;advance_requested_=false;finished_=true;stopped_=talking_=false;
  if(voice_playing_)voice(HouseAudioKind::VoiceStop);
 }
-void HousePresentation::close(bool sound){choice_rows_=0;if(npc_!=house_no_index)stop_npc_interaction(npc_);closing_=true;box_time_=name_time_=0;talking_=false;stopped_=false;visible_=0;if(voice_playing_)voice(HouseAudioKind::VoiceStop);if(sound)audio_.push_back({HouseAudioKind::MenuClose,{},1});}
+void HousePresentation::close(bool sound){choice_rows_=0;if(npc_!=house_no_index)stop_npc_interaction(npc_);closing_=true;name_closing_=false;box_time_=name_time_=0;talking_=false;stopped_=false;visible_=0;if(voice_playing_)voice(HouseAudioKind::VoiceStop);if(sound)audio_.push_back({HouseAudioKind::MenuClose,{},1});}
 void HousePresentation::hide_story_dialogue(bool sound){
  if(!active_||closing_)return;
  close(sound);lines_.assign(1,Line{});loaded_line_=loaded_count_=visible_=0;
@@ -209,9 +209,8 @@ bool HousePresentation::set_npc_replaced(uint32_t i,bool value){if(i>=npcs_.size
 bool HousePresentation::set_npc_visible(uint32_t i,bool value){if(i>=npcs_.size())return fail("Unknown NPC visibility");npcs_[i].visible=value;return true;}
 bool HousePresentation::restore_npc_pose(uint32_t i,Vec2 position,Vec2 direction){if(i>=npcs_.size()||!finite(position)||!finite(direction))return fail("Invalid NPC restoration");auto&s=npcs_[i];s.position=position;s.direction=s.blend=direction;s.animation.request(false,direction);return true;}
 bool HousePresentation::set_npc_looking(uint32_t i,bool looking){if(i>=npcs_.size())return fail("Unknown NPC view area");auto&s=npcs_[i];const auto n=content_.npc(i);if(!(n.flags&1))return true;if(s.looking&&!looking){s.return_timer=n.return_delay;s.return_pending=true;}s.looking=looking;return true;}
-bool HousePresentation::physics_frame(double dt,Vec2 player){
- if(!std::isfinite(dt)||dt<0||!finite(player))return fail("Invalid house physics delta/position");
- for(uint32_t i=0;i<npcs_.size();++i){auto&s=npcs_[i];if(s.replaced||!s.visible)continue;s.blend=s.direction;if(s.looking&&!(s.story_talking||(active_&&!closing_&&i==npc_&&talking_)))s.direction={player.x-s.position.x,player.y-s.position.y};s.animation.request(s.story_talking||(active_&&!closing_&&i==npc_&&talking_),s.blend);}
+bool HousePresentation::advance_dialogue(double dt){
+ if(!std::isfinite(dt)||dt<0)return fail("Invalid house physics delta/position");
  if(!active_||closing_||lines_.empty())return true;
  if(!finished_&&!stopped_){
   const double period=text_seconds_/multiplier_;
@@ -238,14 +237,25 @@ bool HousePresentation::physics_frame(double dt,Vec2 player){
  if(visible_>=loaded_count_&&voice_playing_)voice(HouseAudioKind::VoiceStop);
  return true;
 }
+bool HousePresentation::physics_frame(double dt,Vec2 player){
+ if(!std::isfinite(dt)||dt<0||!finite(player))return fail("Invalid house physics delta/position");
+ for(uint32_t i=0;i<npcs_.size();++i){auto&s=npcs_[i];if(s.replaced||!s.visible)continue;s.blend=s.direction;if(s.looking&&!(s.story_talking||(active_&&!closing_&&i==npc_&&talking_)))s.direction={player.x-s.position.x,player.y-s.position.y};s.animation.request(s.story_talking||(active_&&!closing_&&i==npc_&&talking_),s.blend);}
+ return advance_dialogue(dt);
+}
+bool HousePresentation::advance_chrome(double dt){
+ if(!std::isfinite(dt)||dt<0)return fail("Invalid house idle delta");
+ if(active_){box_time_+=dt;name_time_+=dt;name_size_time_+=dt;cursor_time_+=dt;
+  if(name_closing_&&name_time_>=clip(HouseClipRole::NameClose).duration)name_closing_=false;
+  if(closing_&&box_time_>=clip(HouseClipRole::DialogueClose).duration){active_=false;done_=true;closing_=false;external_=false;name_closing_=false;npc_=house_no_index;}}
+ return true;
+}
 bool HousePresentation::idle_frame(double dt){
  if(!std::isfinite(dt)||dt<0)return fail("Invalid house idle delta");
  for(uint32_t i=0;i<npcs_.size();++i){auto&s=npcs_[i];const auto n=content_.npc(i);
   if(s.return_pending){s.return_timer-=dt;if(s.return_timer<0){s.return_pending=false;if(!s.looking&&!(active_&&!closing_&&i==npc_))s.direction=n.default_direction;}}
   if(!s.animation.idle_frame(dt))return fail("Invalid NPC animation step");
  }
- if(active_){box_time_+=dt;name_time_+=dt;name_size_time_+=dt;cursor_time_+=dt;if(closing_&&box_time_>=clip(HouseClipRole::DialogueClose).duration){active_=false;done_=true;closing_=false;npc_=house_no_index;}}
- return true;
+ return advance_chrome(dt);
 }
 HouseNpcPose HousePresentation::npc_pose(uint32_t i)const{
  HouseNpcPose p;if(i>=npcs_.size())return p;const auto n=content_.npc(i);const auto profile=content_.profile(n.profile);
@@ -256,8 +266,8 @@ HouseDoorPose HousePresentation::openable_door_pose(uint32_t i,bool visible)cons
  p.resource=d.sprite_resource;p.position=d.sprite_position;p.offset=d.sprite_offset;p.visible=visible;return p;
 }
 WorldDialoguePose HousePresentation::dialogue_pose()const{
- WorldDialoguePose p;if(!active_)return p;p.visible=true;p.name_visible=!speaker_.empty();p.text_visible=!closing_;p.cursor_visible=!closing_&&!choice_rows_&&!lines_.empty()&&(finished_||stopped_);const auto br=content_.parameter(HouseParameter::DialogueRect),nr=content_.parameter(HouseParameter::NameRect);
- const auto box=sample(closing_?HouseClipRole::DialogueClose:HouseClipRole::DialogueOpen,box_time_);const auto name=sample(closing_?HouseClipRole::NameClose:HouseClipRole::NameOpen,name_time_);
+ WorldDialoguePose p;if(!active_)return p;p.visible=true;p.name_visible=!speaker_.empty()||(name_closing_&&!closing_);p.text_visible=!closing_;p.cursor_visible=!closing_&&!choice_rows_&&!lines_.empty()&&(finished_||stopped_);const auto br=content_.parameter(HouseParameter::DialogueRect),nr=content_.parameter(HouseParameter::NameRect);
+ const auto box=sample(closing_?HouseClipRole::DialogueClose:HouseClipRole::DialogueOpen,box_time_);const auto name=sample(closing_||name_closing_?HouseClipRole::NameClose:HouseClipRole::NameOpen,name_time_);
  p.box={box.position.x,box.position.y,br.z,br.w};const auto sizing=content_.parameter(HouseParameter::NameSizing);const float progress=float(std::min(name_size_time_/sizing.y,1.));const float w=nr.z+(name_width_-nr.z)*(1-std::pow(1-progress,sizing.z));
  p.name={p.box.x+name.position.x,p.box.y+name.position.y,w,nr.w};p.clip=content_.parameter(HouseParameter::DialogueClip);p.clip.x+=p.box.x;p.clip.y+=p.box.y;
  p.text_layout=content_.parameter(HouseParameter::DialogueText);p.bullet_layout=content_.parameter(HouseParameter::DialogueBullet);p.name_label=content_.parameter(HouseParameter::NameLabel);p.speaker=speaker_;p.bullet=bullet_;
@@ -267,10 +277,60 @@ WorldDialoguePose HousePresentation::dialogue_pose()const{
  const float scroll=std::max(0.f,(float(loaded_line_)+2+float(choice_rows_))*line_height-p.text_layout.w);
  for(uint32_t i=0;i<=loaded_line_&&i<lines_.size();++i){const auto&line=lines_[i];const uint32_t shown=visible_>line.first?std::min(visible_-line.first,uint32_t(line.text.size())):0;
   HouseTextLine display_line;display_line.y=float(i+1)*line_height-scroll;display_line.bullet=line.bullet;
-  for(uint32_t cell=0;cell<shown;++cell)if(line.text[cell]!='\0'&&line.text[cell]!=0x2063){const auto bytes=display_line.text.size();encore::utf8_append(uint32_t(line.text[cell]),display_line.text);display_line.colors.insert(display_line.colors.end(),display_line.text.size()-bytes,line.colors[cell]);}
+  for(uint32_t cell=0;cell<shown;++cell)if(line.text[cell]!='\0'&&line.text[cell]!=0x2063){const auto bytes=display_line.text.size();encore::utf8_append(uint32_t(line.text[cell]),display_line.text);const uint32_t color=cell<line.colors.size()?line.colors[cell]:0xffffffffu;display_line.colors.insert(display_line.colors.end(),display_line.text.size()-bytes,color);}
   p.lines.push_back(std::move(display_line));
  }
  return p;
+}
+bool HousePresentation::plain_glyphs(std::string_view text)const{
+ size_t cursor=0;uint32_t c=0;
+ while(cursor<text.size()){if(!encore::utf8_next(text,cursor,c))return false;if(c=='\n')continue;std::string one;if(!encore::utf8_append(c,one)||!valid_text(one))return false;}
+ return true;
+}
+bool HousePresentation::wrap_plain(std::string_view source,std::vector<Line>& out)const{
+ std::u32string text;if(!encore::utf8_decode(source,text))return false;
+ const auto interaction=content_.interaction();std::u32string separator;
+ if(!encore::utf8_decode(content_.string(interaction.word_separator),separator)||separator.empty())return false;
+ const float maximum=content_.parameter(HouseParameter::DialogueText).z;
+ std::u32string line;
+ auto push=[&]{
+  auto emit=[&](size_t from,size_t length){uint32_t offset=out.empty()?0:out.back().first+uint32_t(out.back().text.size());Line row;row.text=line.substr(from,length);row.first=offset;row.colors.assign(row.text.size(),0xffffffffu);out.push_back(std::move(row));};
+  if(width(line)>maximum){size_t start=0;float used=0;for(size_t i=0;i<line.size();++i){const float advance=width(std::u32string_view(line).substr(i,1));if(i>start&&used+advance>maximum){emit(start,i-start);start=i;used=0;}used+=advance;}if(line.size()>start)emit(start,line.size()-start);}
+  else if(!line.empty())emit(0,line.size());
+  line.clear();
+ };
+ size_t paragraph=0;
+ for(;;){const auto newline=text.find('\n',paragraph);const auto limit=newline==std::u32string::npos?text.size():newline;size_t start=paragraph;
+  for(;;){const auto end=text.find(separator,start);const auto stop=end==std::u32string::npos||end>=limit?limit:end;const auto word=text.substr(start,stop-start);
+   if(start==paragraph)line=word;else if(width(line+separator+word)>maximum){if(!line.empty())push();line=word;}else line+=separator+word;
+   if(stop==limit)break;start=end+separator.size();}
+  if(!line.empty())push();if(newline==std::u32string::npos)break;paragraph=newline+1;}
+ return true;
+}
+bool HousePresentation::present_plain(std::string_view speaker,std::string_view text){
+ if(!content_.valid())return fail("World dialogue box is not ready");
+ if(closing_)return fail("World dialogue box is closing");
+ if(active_&&!external_)return fail("House dialogue owns the box");
+ if(text.empty()||!plain_glyphs(speaker)||!plain_glyphs(text))return fail("Unsupported dialogue glyph");
+ std::vector<Line> built;if(!wrap_plain(text,built)||built.empty())return fail("World dialogue line produced no text");
+ const std::string speaker_text(speaker);const bool reuse=active_;const bool same=reuse&&!name_closing_&&speaker_==speaker_text;
+ const auto old_box=box_time_,old_name=name_time_,old_size=name_size_time_,old_cursor=cursor_time_;const auto old_visible=visible_;
+ if(same){
+  const uint32_t offset=lines_.empty()?0:lines_.back().first+uint32_t(lines_.back().text.size())+(lines_.back().wait?1u:0u);
+  const auto first_new=uint32_t(lines_.size());
+  for(auto& row:built){row.first+=offset;lines_.push_back(std::move(row));}
+  loaded_line_=first_new;visible_=old_visible;const auto& row=lines_[loaded_line_];loaded_count_=row.first+uint32_t(row.text.size());
+  box_time_=old_box;cursor_time_=old_cursor;name_time_=old_name;name_size_time_=old_size;
+ }else{
+  const bool had_name=!speaker_.empty()||name_closing_;lines_=std::move(built);speaker_=speaker_text;
+  if(speaker_.empty()){if(reuse&&had_name){name_closing_=true;name_time_=0;}}
+  else{name_closing_=false;name_time_=name_size_time_=0;const auto sizing=content_.parameter(HouseParameter::NameSizing);name_width_=std::max(width(speaker_),sizing.w)+sizing.x;}
+  loaded_line_=visible_=0;loaded_count_=uint32_t(lines_[0].text.size());
+  if(!reuse){box_time_=name_time_=name_size_time_=cursor_time_=0;audio_.push_back({HouseAudioKind::MenuOpen,{},1});active_=true;done_=false;}
+  else box_time_=old_box,cursor_time_=old_cursor;
+ }
+ text_time_=0;multiplier_=1;advance_requested_=false;choice_rows_=0;segment_=0;finished_=stopped_=talking_=false;voice_.clear();voice_playing_=false;
+ external_=true;npc_=house_no_index;done_=false;bullet_=std::string(content_.string(content_.interaction().bullet_string));error_="";return true;
 }
 std::vector<HouseAudioEvent>HousePresentation::take_audio_events(){auto result=std::move(audio_);audio_.clear();return result;}
 }

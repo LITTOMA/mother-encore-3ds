@@ -1,4 +1,5 @@
 #include <atomic>
+#include <cmath>
 #include <malloc.h>
 #include "encore/encounter_residency.hpp"
 #include <array>
@@ -14,6 +15,7 @@
 #include "world_effect_renderer.hpp"
 #include "house_renderer.hpp"
 #include "phone_renderer.hpp"
+#include "present_renderer.hpp"
 #include "dialogue_choices_renderer.hpp"
 #include "storage_renderer.hpp"
 #include "save_menu_renderer.hpp"
@@ -51,8 +53,10 @@
 #include "encore/native_input.hpp"
 #include "encore/resource_catalog.hpp"
 #include "encore/field_scene.hpp"
+#include "encore/mick_treats.hpp"
 #include "encore/world_links.hpp"
 #include "field_renderer.hpp"
+#include "loading_texture.hpp"
 #include "native_input_renderer.hpp"
 #include <algorithm>
 #include <cstdio>
@@ -133,6 +137,8 @@ uint32_t save_generation=0,last_save_slot=0;
 upstream::PhoneData phone_data;
 
 ctr::PhoneRenderer phone_renderer;
+upstream::PresentData present_data;
+ctr::PresentRenderer present_renderer;
 upstream::WorldEffectData world_effect_data;
 upstream::WorldEffect world_effect;
 WorldEffectRenderer world_effect_renderer;
@@ -450,7 +456,7 @@ bool ensure_house_graphics(std::string&error){
     if(house_graphics_ready)return true;
     wait_for_gpu_idle();LoadingScope loading("Preparing house graphics",4);
     if(!loading.step([&]{return opening_actor.load(opening_data.view(),error);},"room-atlases")||
-       !loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error);},"house-atlases")||
+       !loading.step([&]{return house_renderer.load(house_data.view(),"romfs:/",error)&&(present_data.view().valid()||present_data.load_file(resource_path(ResourceRole::HousePresents).c_str(),error))&&present_renderer.load(present_data.view(),"romfs:/",error);},"house-atlases")||
        !loading.step([&]{if(!items_renderer.load(items_data.view(),"romfs:/",error)||!item_details_renderer.load(item_details_data.view(),items_data.view(),"romfs:/",error))return false;
            item_details_renderer.set_locale(locale_selection.code());items_renderer.set_details(&item_details_renderer);storage_renderer.set_details(&item_details_renderer);return true;},"item-atlases")||
        !loading.step([&]{
@@ -539,17 +545,138 @@ public:
  bool play_sound(std::string_view name,std::string&e)override{if(!validate_sound(name,e))return false;if(!play_source_audio(std::string(name),ctr::AudioLane::Effect,0,1)){e=house_error.empty()?audio_status:house_error;return false;}return true;}
  bool set_flag(std::string_view,bool,std::string&e)override{e="Scene flags must be owned by HouseRuntime";return false;}
 } drawer_effects;
+// Present key-item grants: Inventory.add_item_available -> key_items (never full),
+// with Item.new's source randomize/randi UID on the shared stream and ledger.
+class PresentEffects final:public upstream::PresentEffects {
+public:
+ bool validate_item(upstream::PresentTemplate t,std::string_view name,std::string&e)override{
+  if(!t.key_item){e="Present grant is not a reviewed key item";return false;}
+  for(const auto&k:native_session_data.key_acquisitions())if(k.item_id==name&&k.doses==t.doses){e.clear();return true;}
+  e="Present grant is absent from checked session key acquisitions";return false;
+ }
+ bool validate_sound(std::string_view name,std::string&e)override{return drawer_effects.validate_sound(name,e);}
+ bool grant_item(upstream::PresentTemplate t,std::string_view name,std::string&e)override{
+  if(!validate_item(t,name,e))return false;
+  for(const auto&item:session_state.key_items)if(item.item_id==name){e="Present key item already held";return false;}
+  auto random=battle_random;auto ledger=generated_uid_ledger;
+  const upstream::LoadRngClockProvider clock=[](upstream::LoadRngClockSample&sample,std::string&why){const auto now=std::time(nullptr);if(now<0){why="Clock unavailable for source item entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
+  std::vector<upstream::LoadUidAllocation> trace;
+  if(!upstream::apply_load_uid_allocations(random,ledger,{{1,1}},clock,e,&trace)||trace.size()!=1){if(e.empty())e="Source key item UID allocation incomplete";return false;}
+  session_state.key_items.push_back({std::string(name),false,int64_t(t.doses),trace.front().generated_uid});
+  battle_random=random;generated_uid_ledger=std::move(ledger);e.clear();return true;
+ }
+ bool play_sound(std::string_view name,std::string&e)override{return drawer_effects.play_sound(name,e);}
+} present_effects;
+// The Present's own AudioStreamPlayer gets its own lane so Stop never cuts other sounds.
+void process_present_audio(){
+ for(const auto&r:gameplay_scene->presents.take_audio()){
+  if(!audio_player.available())continue;std::string error;
+  if(r.kind==upstream::PresentAudioKind::Stop){if(!audio_player.stop_lane(ctr::AudioLane::AuxiliaryEffect0,error))audio_status=error;}
+  else if(!play_source_audio(std::string(r.sound),ctr::AudioLane::AuxiliaryEffect0,0,1)&&house_error.empty())house_error="Present sound rejected";
+ }
+}
+bool bind_house_presents(GameplayScene& scene,std::string& error){
+ if(!present_data.view().valid()&&!present_data.load_file(resource_path(ResourceRole::HousePresents).c_str(),error))return false;
+ if(!scene.house.bind_presents(scene.presents,present_data.view(),present_effects)){error=scene.house.error();return false;}
+ return true;
+}
 // Linked exterior field scenes. The House owner stays the only save/LOAD
 // authority; a field owns movement, TileMap collision and explicit boundaries.
 upstream::WorldLinksData world_links;
 upstream::RoomData field_room_data;
 upstream::FieldMapData field_map_data;
+upstream::MickData mick_data;
 std::unique_ptr<upstream::FieldScene> field_scene;
 OpeningActorRenderer field_actor;
 FieldRenderer field_renderer;
+encore::ctr::LoadingSpriteSheet mick_sheet=nullptr;
+float field_choice_x=0,field_choice_y=0,field_choice_from_x=0,field_choice_from_y=0;
+double field_choice_t=1,field_choice_clock=0;uint32_t field_choice_sel=0;bool field_choice_shown=false;
+// Temporary FieldScene* while binding Mick before field_scene ownership commits.
+upstream::FieldScene* mick_bind_target=nullptr;
+upstream::FieldScene* mick_host_field(){return field_scene?field_scene.get():mick_bind_target;}
 upstream::SceneDoorTransition scene_door;
 uint64_t door_sound_requests=0;
+class MickEffects final:public upstream::MickHost {
+public:
+ bool validate_flag(std::string_view name,std::string&e)override{
+  auto*scene=mick_host_field();if(!scene){e="Mick flag validation requires a field scene";return false;}
+  const auto room=scene->world.content();
+  for(uint32_t i=0;i<room.flag_count();++i)if(room.string(room.flag(i).name_string)==name){e.clear();return true;}
+  e="Mick flag unregistered";return false;
+ }
+ bool validate_item(std::string_view name,std::string&e)override{
+  for(const auto&k:native_session_data.key_acquisitions())if(k.item_id==name){e.clear();return true;}
+  e="Mick key item absent from session acquisitions";return false;
+ }
+ bool flag(std::string_view name,bool&value,std::string&e)override{
+  auto*scene=mick_host_field();if(!scene){e="Mick flag read requires a field scene";return false;}
+  value=scene->world.story_flag(name);e.clear();return true;
+ }
+ bool set_flag(std::string_view name,bool value,std::string&e)override{
+  auto*scene=mick_host_field();
+  if(!scene||!scene->world.set_story_flag(name,value,false)){e="Mick flag write rejected";return false;}
+  e.clear();return true;
+ }
+ bool remove_key_item(std::string_view name,std::string&e)override{
+  auto&keys=session_state.key_items;
+  const auto it=std::find_if(keys.begin(),keys.end(),[&](const upstream::SessionItem&i){return i.item_id==name;});
+  if(it==keys.end()){e.clear();return true;}
+  keys.erase(it);e.clear();return true;
+ }
+ bool play_sound(std::string_view,std::string& e)override{
+  ++door_sound_requests;e.clear();return true;
+ }
+ bool show_text(std::string_view speaker,std::string_view body,std::string&e)override{
+  std::string out(body);
+  const std::string lead=session_state.characters.empty()?std::string("Ninten"):session_state.characters[0].nickname;
+  // CTR A confirms, B runs, and START opens the menu. Nintendo-style Start is "+".
+  if(!upstream::resolve_dialogue_tags(out,lead,"A","B","+",e))return false;
+  if(!gameplay_scene||!gameplay_scene->presentation.present_plain(speaker,out)){e=gameplay_scene?gameplay_scene->presentation.error():"World dialogue box is not ready";return false;}
+  e.clear();return true;
+ }
+} mick_effects;
+void release_mick_graphics(){if(mick_sheet){encore::ctr::loading_sprite_sheet_free(mick_sheet);mick_sheet=nullptr;}field_choice_shown=false;}
+bool load_mick_graphics(std::string& error){
+ if(mick_sheet)return true;
+ if(!mick_data.view().valid()&&!mick_data.load_file(resource_path(ResourceRole::MickTreats).c_str(),error))return false;
+ const auto t=mick_data.view().texture();const std::string path="romfs:/"+std::string(mick_data.view().string(t.path));
+ std::string why;mick_sheet=encore::ctr::loading_sprite_sheet_load(path.c_str(),&why);
+ if(!mick_sheet||encore::ctr::loading_sprite_sheet_count(mick_sheet)!=1){release_mick_graphics();error=why.empty()?"Mick atlas missing":why;return false;}
+ const auto image=encore::ctr::loading_sprite_sheet_get_image(mick_sheet,0);
+ if(!image.tex||!image.subtex||image.subtex->width!=t.width||image.subtex->height!=t.height||Tex3DS_SubTextureRotated(image.subtex)){
+  release_mick_graphics();error="Mick atlas layout differs from checked metadata";return false;}
+ C3D_TexSetFilter(image.tex,GPU_NEAREST,GPU_NEAREST);return true;
+}
+bool bind_field_mick(upstream::FieldScene& scene,std::string& error){
+ if(!mick_data.view().valid()&&!mick_data.load_file(resource_path(ResourceRole::MickTreats).c_str(),error))return false;
+ if(!scene.bind_mick(mick_data.view(),mick_effects,error))return false;
+ scene.mick().set_locale(locale_selection.code());return true;
+}
 std::string field_status;
+void draw_mick_actor(float camera_x,float camera_y,float offset_x,float offset_y){
+ if(!mick_sheet||!field_scene||!field_scene->mick().ready())return;
+ const auto& mick=field_scene->mick();const auto view=mick.view();const auto t=view.texture();
+ const auto frame=mick.sheet_frame();const auto center=mick.sprite_center();
+ const auto image=encore::ctr::loading_sprite_sheet_get_image(mick_sheet,0);
+ if(!image.tex||!image.subtex||!t.columns||!t.rows||frame>=uint32_t(t.columns)*uint32_t(t.rows))return;
+ // Same padded-atlas UV math as OpeningActorRenderer / PresentRenderer.
+ const unsigned fw=t.width/t.columns,fh=t.height/t.rows;
+ const unsigned u=(frame%t.columns)*fw,v=(frame/t.columns)*fh;
+ Tex3DS_SubTexture sub=*image.subtex;
+ const float du=(sub.right-sub.left)/float(t.width),dv=(sub.bottom-sub.top)/float(t.height);
+ const float left=sub.left,top=sub.top;
+ sub.left=left+u*du;sub.right=left+(u+fw)*du;sub.top=top+v*dv;sub.bottom=top+(v+fh)*dv;
+ sub.width=uint16_t(fw);sub.height=uint16_t(fh);
+ // Same depth as FieldRenderer tiles and the player; a higher depth always covers the player.
+ C2D_DrawImageAt({image.tex,&sub},std::floor(center.x-camera_x+offset_x-float(fw)*.5f+.5f),
+                 std::floor(center.y-camera_y+offset_y-float(fh)*.5f+.5f),0.f);
+ if(!house_prompt_renderer.ready()){field_status="Field prompt art is not loaded";return;}
+ const auto player=field_scene->world.player();const int choice=startup_settings_data.prompt_index(session_state.settings.button_prompts);
+ upstream::HousePromptPose pose;std::string why;
+ const bool paused=field_scene->phase()!=upstream::FieldPhase::Walking||field_scene->world.house_paused();
+ if(choice<0||!upstream::evaluate_npc_button_prompt(house_prompt_data,uint32_t(choice),player.position,player.direction,paused,player.crouch,mick.position(),mick.interact_center(),view.actor().interact_extents,pose,why)||!house_prompt_renderer.draw(pose,camera_x-offset_x,camera_y-offset_y))field_status=why.empty()?"Field prompt renderer rejected checked pose":why;
+}
 bool in_field(){return field_scene!=nullptr;}
 bool bind_house_routes(upstream::HouseRuntime& house,std::string& error){
     using namespace upstream;
@@ -579,6 +706,7 @@ bool initialize_house_interactions(std::string& error){
         house_assets_ready=true;
     }
     if(!gameplay_scene->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!gameplay_scene->house.bind_inspections(house_inspection_data.view())){error=gameplay_scene->house.error();return false;}
+    if(!bind_house_presents(*gameplay_scene,error))return false;
     if(!gameplay_scene->phone.initialize(phone_data.view())||!gameplay_scene->house.bind_phone(gameplay_scene->phone)){error=gameplay_scene->house.error();return false;}
     dialogue_choices.close();save_menu.close();save_open_failed=false;
     gameplay_scene->house.bind_choices(choice_data,dialogue_choices);
@@ -820,12 +948,15 @@ bool apply_loaded_slot(uint32_t slot,std::string&error){
     const LoadRngClockProvider clocks=[](LoadRngClockSample&sample,std::string&why){const auto unix_now=std::time(nullptr);if(unix_now<0){why="Clock unavailable for source LOAD entropy";return false;}const u64 ticks=svcGetSystemTick()-load_epoch_tick;sample.unix_seconds=uint64_t(unix_now);sample.ticks_usec=(ticks/SYSCLOCK_ARM11)*1000000+(ticks%SYSCLOCK_ARM11)*1000000/SYSCLOCK_ARM11;return true;};
     if(!loading.step([&]{return apply_load_uid_allocations(next_random,next_ledger,allocations,clocks,error);}))return false;
     if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
+    if(!bind_house_presents(*candidate,error))return false;
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);
     candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);
     if(!bind_house_routes(candidate->house,error))return false;
     if(!candidate->finish_scene_ready()||!candidate->world.pause_for_house()){error="Fresh scene ready boundary rejected";return false;}
+    // Source order: load_game UID fallbacks, then the scene's Sparkles _ready draws.
+    if(!candidate->presents.scene_ready(next_random,error))return false;
     if(!ensure_house_graphics(error)||!admit_encounter_scene(error))return false;
     // Stable owners are committed together. All validation/clock failures above
     // leave the old scene, inventory, random stream and game files untouched.
@@ -853,11 +984,13 @@ bool commit_named_new_game(std::string&error){
     std::unique_ptr<GameplayScene>candidate;
     if(!loading.step([&]{return prepare_fresh_house(prepared,restore_data,opening_data.view(),house_data.view(),house_font_data.view(),phone_data.view(),random,{float(view_width),float(view_height)},candidate,error);}))return false;
     if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
+    if(!bind_house_presents(*candidate,error))return false;
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);
     if(!bind_house_routes(candidate->house,error))return false;
     BattleItemsMenu checked_menu;if(!checked_menu.initialize(prepared.inventory)||!candidate->finish_scene_ready()){error="Named startup scene/menu preparation rejected";return false;}
+    if(!candidate->presents.scene_ready(random,error))return false;
     if(!ensure_house_graphics(error)||!admit_encounter_scene(error))return false;
     if(!loading.complete()||!loading.finish())return false;
     // Pending names and UID allocations become visible only with the new owner.
@@ -893,10 +1026,11 @@ void process_scene_door_events(){
         }
     }
 }
-void release_field_graphics(){wait_for_gpu_idle();field_renderer.free();field_actor.free();}
+void release_field_graphics(){wait_for_gpu_idle();field_renderer.free();field_actor.free();release_mick_graphics();}
 void release_house_graphics(){
     cancel_battle_prewarm();wait_for_gpu_idle();
-    opening_actor.free();house_renderer.free();room_draw_items.clear();house_graphics_ready=false;
+    // The field draws the same DialogueBox, so its ninepatches stay resident.
+    opening_actor.free();present_renderer.free();room_draw_items.clear();house_graphics_ready=false;
 }
 bool load_field_resources(std::string& error){
     using namespace upstream;
@@ -910,7 +1044,7 @@ bool load_field_resources(std::string& error){
 }
 bool enter_field(const upstream::WorldRoute& route,std::string& error){
     using namespace upstream;
-    LoadingScope loading("Entering field",4);
+    LoadingScope loading("Entering field",5);
     SessionSnapshot snapshot;
     if(!loading.step([&]{return collect_session_snapshot(snapshot,error);},"house-state")||
        !loading.step([&]{return load_field_resources(error);},"field-metadata"))return false;
@@ -918,13 +1052,17 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     for(uint32_t i=0;i<room.flag_count();++i)flags[i]=gameplay_scene->world.story_flag(room.string(room.flag(i).name_string));
     auto candidate=std::make_unique<FieldScene>();
     if(!loading.step([&]{return candidate->prepare(room,field_map_data.view(),world_links,flags,route.destination,route.direction,{float(view_width),float(view_height)},error);},"field-scene"))return false;
+    // Mick bind needs the prepared world for flag validation before graphics commit.
+    mick_bind_target=candidate.get();
+    if(!loading.step([&]{return bind_field_mick(*candidate,error);},"field-mick")){mick_bind_target=nullptr;return false;}
+    mick_bind_target=nullptr;
     release_house_graphics();
-    if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error);},"field-atlases")){
+    if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);},"field-atlases")){
         release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
-    if(!loading.finish())return false;
+    if(!loading.finish()){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
-    session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();
+    session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();field_choice_shown=false;
     dialogue_choices.close();save_menu.close();storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;
     error.clear();return true;
@@ -943,11 +1081,14 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
             prepare_session_restore(native_session_data,room,house_data.view(),round_data.view(),items_data.view(),house_font_data.view(),snapshot,prepared,error)&&
             prepare_fresh_house(prepared,restore_data,room,house_data.view(),house_font_data.view(),phone_data.view(),battle_random,{float(view_width),float(view_height)},candidate,error);},"house-scene"))return false;
     if(!candidate->house.bind_drawer(drawer_program_data.view(),drawer_effects)||!candidate->house.bind_inspections(house_inspection_data.view())){error=candidate->house.error();return false;}
+    if(!bind_house_presents(*candidate,error))return false;
     bind_localized_house(candidate->presentation);
     if(!candidate->presentation.set_text_speed(prepared.state.settings.text_speed)){error="Prepared session text speed rejected";return false;}
     candidate->house.bind_choices(choice_data,dialogue_choices);candidate->presentation.set_text_value_callback(resolve_dialogue_value,&candidate->world);
     if(!bind_house_routes(candidate->house,error))return false;
     if(!candidate->finish_scene_ready()||!candidate->world.pause_for_house()){error="Returned House ready boundary rejected";return false;}
+    auto ready_random=battle_random;
+    if(!candidate->presents.scene_ready(ready_random,error))return false;
     release_field_graphics();
     if(!loading.step([&]{return ensure_house_graphics(error)&&admit_encounter_scene(error);},"house-atlases")){
         std::string restore;release_house_graphics();
@@ -957,7 +1098,7 @@ bool enter_house_from_field(const upstream::WorldRoute& route,std::string& error
     // Same owner commit as New Game / LOAD, without LOAD's source UID reallocation.
     battle_entry=BattleEntry{};battle_round=BattleRound{};battle_outcome=BattleOutcome{};round_presentation=BattleActionPresentation{};round_ready=false;round_error.clear();
     session_state=std::move(prepared.state);session_rewards=std::move(prepared.stats);session_inventory=std::move(prepared.inventory);session_storage=std::move(prepared.storage);session_state_ready=session_rewards_valid=true;
-    candidate->world.attach_random(battle_random);candidate->presentation.rebind_random(battle_random);gameplay_scene.swap(candidate);field_scene.reset();
+    battle_random=ready_random;candidate->world.attach_random(battle_random);candidate->presentation.rebind_random(battle_random);gameplay_scene.swap(candidate);field_scene.reset();
     dialogue_choices.close();save_menu.close();save_open_failed=storage_open_failed=false;storage_menu=StorageMenu{};field_equipment_menu=FieldEquipmentMenu{};field_equipment_status.clear();save_status.clear();items_status.clear();house_error.clear();house_sound_requests=0;
     if(!items_menu.initialize(session_inventory)){error=items_menu.error();return false;}
     world_effect.reset();world_effect_consumed=0;world_effect_actors=0;world_effect_npc=kRoomNoIndex;audio_player.reset_scene_requests();
@@ -970,7 +1111,11 @@ void perform_scene_swap(){
     if(ok&&scene_door.swapped(error))return;
     scene_door.cancel();
     if(in_field()){field_status="Scene change rejected: "+error;field_scene->abort_transition(field_status);}
-    else {house_error.clear();gameplay_scene->house.abort_scene_transition("Scene change rejected; B returns");field_status=error;}
+    else {
+        // HouseRuntime keeps the pointer, so the text has to outlive this call.
+        static std::string scene_reject;
+        scene_reject=error.empty()?"Scene change rejected; B returns":"Scene change rejected: "+error+"; B returns";
+        house_error.clear();gameplay_scene->house.abort_scene_transition(scene_reject.c_str());field_status=error;}
 }
 void reset_field_state(){scene_door.cancel();if(in_field()){release_field_graphics();field_scene.reset();}field_status.clear();door_sound_requests=0;}
 void draw_door_masks(float focus_x,float focus_y){
@@ -989,6 +1134,7 @@ bool reset_development_game(std::string&error){
     auto fresh=std::make_unique<GameplayScene>();if(!fresh->world.initialize(opening_data.view(),{float(view_width),float(view_height)})){error=fresh->world.error();return false;}gameplay_scene.swap(fresh);if(!loading.complete())return false;
     if(loaded_battle_path!=resource_path(ResourceRole::Battle).c_str()){if(!battle_data.load_file(resource_path(ResourceRole::Battle).c_str(),error)||!load_battle_presentation(error)||!round_data.load_file(resource_path(ResourceRole::Round).c_str(),error)||!round_renderer.load(round_data.view(),"romfs:/",error))return false;loaded_battle_path=resource_path(ResourceRole::Battle).c_str();}
     if(!loading.complete()||!loading.step([&]{return initialize_house_interactions(error);}))return false;
+    if(!gameplay_scene->presents.scene_ready(battle_random,error))return false;
     region_music.shutdown();audio_player.reset_scene();return loading.complete()&&loading.finish();
 }
 bool begin_battle(std::string&error){
@@ -1131,10 +1277,10 @@ bool load_house(std::string& error){
     if(!opening_data.load_file(resource_path(ResourceRole::Room).c_str(),error)||!world_blackbars.load_file(resource_path(ResourceRole::Blackbars).c_str(),error))return false;
     const auto room=opening_data.view();
     if(!gameplay_scene->world.initialize(room,{float(view_width),float(view_height)})){error=gameplay_scene->world.error();return false;}
-    room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count());
+    room_draw_items.reserve(size_t(room.overlay_count())+room.actor_instance_count()+32);
     return true;
 }
-void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();field_renderer.free();field_actor.free();field_scene.reset();}
+void free_house(){cancel_battle_prewarm();std::string ignored;field_equipment_menu=upstream::FieldEquipmentMenu{};field_equipment_renderer.set_details(nullptr);field_equipment_renderer.free();field_counter_font.reset_at_safe_boundary(ignored);field_counter_text.free();field_equipment_assets_ready=false;locale_font.reset_at_safe_boundary(ignored);house_prompt_renderer.free();loading_indicator.free();continue_renderer.free();choice_renderer.free();save_renderer.free();phone_renderer.free();storage_renderer.free();storage_counter_font.reset_at_safe_boundary(ignored);storage_counter_text.free();storage_assets_ready=false;items_renderer.set_details(nullptr);storage_renderer.set_details(nullptr);item_details_renderer.free();items_renderer.free();region_music.shutdown();audio_player.shutdown();house_renderer.free();present_renderer.free();round_renderer.free();battle_renderer.free();opening_actor.free();room_draw_items.clear();field_renderer.free();field_actor.free();release_mick_graphics();field_scene.reset();}
 void text(unsigned index,float x,float y,float scale,const std::string& value,u32 color=ink,float width=380){
     auto& slot=debug_text[index];
     if(!slot.ready||slot.value!=value){
@@ -1165,6 +1311,7 @@ void house_top(){
     room_draw_items.clear();uint32_t order=0;
     for(uint32_t i=0;i<room.overlay_count();++i)if(!(room.overlay(i).flags&uint16_t(upstream::RoomOverlayFlag::Foreground)))room_draw_items.push_back({room.overlay(i).sort_y,0,i,order++});
     for(uint32_t i=0;i<phone_data.view().count(upstream::PhoneSection::Objects);++i)room_draw_items.push_back({gameplay_scene->phone.pose(i).sort_origin.y,3,i,order++});
+    if(present_renderer.loaded())for(uint32_t i=0;i<gameplay_scene->presents.count();++i)room_draw_items.push_back({gameplay_scene->presents.pose(i).position.y,4,i,order++});
     for(uint32_t i=0;i<room.actor_instance_count();++i){
         if(!gameplay_scene->world.instance_visible(i)||(world_effect.active()&&(world_effect_actors&(uint64_t(1)<<i))))continue;
         bool placed_npc=false;for(uint32_t j=0;j<house_data.view().count(upstream::HouseSection::Npcs);++j)placed_npc|=house_data.view().npc(j).room_actor_index==i;
@@ -1181,6 +1328,7 @@ void house_top(){
     for(const auto& draw:room_draw_items){
         if(draw.kind==0)opening_actor.draw_overlay(draw.index,cx,cy);
         else if(draw.kind==3){if(!phone_renderer.draw(gameplay_scene->phone.pose(draw.index),cx,cy))house_error="Phone renderer rejected checked pose";}
+        else if(draw.kind==4){if(!present_renderer.draw(gameplay_scene->presents.pose(draw.index),cx,cy))house_error="Present renderer rejected checked pose";}
         else if(draw.kind==2){if(!house_renderer.draw_npc(gameplay_scene->presentation.npc_pose(draw.index),cx,cy))house_error="NPC renderer rejected checked pose";}
         else if(draw.index==scene.player_instance_index&&!gameplay_scene->world.actor_bound(draw.index))
             opening_actor.draw_player(gameplay_scene->world.player().position,gameplay_scene->world.animation(),cx,cy);
@@ -1309,7 +1457,7 @@ void house_bottom(){
 void field_top(){
     const auto player=field_scene->world.player().position;
     const auto origin=field_scene->camera_origin(player,{float(view_width),float(view_height)});
-    if(!field_renderer.draw(*field_scene,field_actor,origin.x,origin.y,float(view_width),float(view_height),view_x(),view_y(),shader_time))field_status="Field renderer rejected checked map binding";
+    if(!field_renderer.draw(*field_scene,field_actor,origin.x,origin.y,float(view_width),float(view_height),view_x(),view_y(),shader_time,draw_mick_actor))field_status="Field renderer rejected checked map binding";
 }
 void field_bottom(){
     using namespace upstream;
@@ -1318,20 +1466,35 @@ void field_bottom(){
     text(1,14,39,0.4f,std::string(room.string(room.scene().version_string))+"\n"+std::string(room.string(room.scene().display_name_string))+": original TileMap layers and collision",ink,292);
     std::string scope;
     switch(field_scene->phase()){
-    case FieldPhase::Walking:scope="Native movement + TileMap collision\nNPCs, enemies, music and object interactions are not ported";break;
+    case FieldPhase::Walking:scope="Native movement + TileMap collision\nA near Mick: talk    south fence before treats: bark\nOther NPCs, enemies and music are not ported";break;
     case FieldPhase::DoorAwaitIdle:case FieldPhase::Transition:scope="Original door transition";break;
+    case FieldPhase::MickTalk:scope=field_scene->mick().waiting_choice()?"Dialogue\nLeft/Right: choose    A: confirm    B: cancel":"Dialogue";break;
     default:scope=field_scene->error();break;
     }
-    if(!field_status.empty())scope=field_status;
+    if(!field_status.empty()&&field_scene->phase()!=FieldPhase::MickTalk)scope=field_status;
     const auto player=field_scene->world.player().position;
     const auto nearby=field_scene->nearby_notices(player,200.f,3);
-    if(!nearby.empty()){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
+    if(!nearby.empty()&&field_scene->phase()==FieldPhase::Walking){scope+="\nNearby, not ported:";for(const auto&n:nearby){scope+=" ";scope+=std::string(map.text(map.notice(n.index).label));scope+=";";}}
     text(2,14,84,0.35f,scope,muted,292);
-    text(3,14,150,0.37f,"D-pad: move   B at a stop: return\nSTART menus are not ported in this field\nSELECT: reference view + restart",ink,292);
+    text(3,14,150,0.37f,"D-pad: move   A: talk / continue   B at a stop: return\nSTART menus are not ported in this field\nSELECT: reference view + restart",ink,292);
     char position[160];const auto instance=room.actor_instance(room.scene().player_instance_index);
     std::snprintf(position,sizeof(position),"%s: %.0f, %.0f  door sound requests %llu",room.string_data(instance.display_name_string),double(player.x),double(player.y),(unsigned long long)door_sound_requests);
     text(4,14,192,0.30f,position,muted,292);
     text(5,14,212,0.27f,audio_status.empty()?"Audio backend initialized (output unverified)":audio_status,muted,292);
+}
+void field_dialogue_overlay(){
+    const auto bars=world_blackbars.pose(float(view_width),float(view_height));
+    for(const auto& bar:bars.bars)if(bar.h>0)BattleRenderer::draw_rect(view_x()+bar.x,view_y()+bar.y,bar.w,bar.h,bars.color);
+    const auto canvas=house_data.view().parameter(upstream::HouseParameter::DisplayReference);
+    const auto pose=gameplay_scene->presentation.dialogue_pose();
+    if(!house_renderer.draw_dialogue(pose,battle_renderer,float(view_width)-canvas.x,float(view_height)-canvas.y,view_x(),view_y())){field_status="World dialogue renderer rejected checked pose";return;}
+    if(!pose.visible||field_scene->phase()!=upstream::FieldPhase::MickTalk||!field_scene->mick().waiting_choice()||!gameplay_scene->presentation.dialogue_finished()||gameplay_scene->presentation.dialogue_closing())return;
+    if(choice_data.groups().empty()||choice_data.groups().front().options.size()<2){field_status="Dialogue choice layout is not loaded";return;}
+    const double loop=choice_data.arrow_loop_seconds();uint32_t frame=0;const double anim=loop>0?std::fmod(field_choice_clock,loop):0;
+    for(const auto& key:choice_data.arrow_keys())if(key.time<=anim+1e-12)frame=key.frame;
+    const float box_x=view_x()+pose.box.x+pose.anchor.x*(float(view_width)-canvas.x),box_y=view_y()+pose.box.y+pose.anchor.y*(float(view_height)-canvas.y);
+    const auto left=std::string(field_scene->mick().choice_text(0)),right=std::string(field_scene->mick().choice_text(1));
+    if(!choice_renderer.draw_pair(left,right,field_choice_x,field_choice_y,frame,battle_renderer,box_x,box_y))field_status="Dialogue choice renderer rejected pose";
 }
 void error_console(const std::string& error){
     u16 width=0,height=0;
@@ -1469,6 +1632,12 @@ int main(int argc,char** argv){
                     bool ok=field_scene->before_physics(input);
                     if(ok&&field_scene->world.healthy())field_scene->world.advance(input);
                     ok=ok&&field_scene->after_physics();
+                    if(ok&&field_scene->phase()==upstream::FieldPhase::Walking){
+                        std::string why;ok=field_scene->try_mick(world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse),why);
+                        if(!ok)field_status=field_scene->error();
+                        else if(!why.empty())field_status=why;
+                    }
+                    if(ok&&field_scene->phase()==upstream::FieldPhase::MickTalk&&!gameplay_scene->presentation.advance_dialogue(double(float(time_scale/60.0))))field_status=gameplay_scene->presentation.error();
                     if(!ok)field_status=field_scene->error();
                 }
                 accumulator-=1000;continue;
@@ -1485,7 +1654,40 @@ int main(int argc,char** argv){
         uint32_t requested_route=upstream::WorldLinksData::kNotFound;
         if(in_field()){
             if(world_visible&&field_scene->world.healthy())field_scene->world.idle_frame(dt);
-            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,world_input&&(down&KEY_B)!=0))field_status=field_scene->error();
+            auto& box=gameplay_scene->presentation;
+            bool text_accept=false;int choice_delta=0;
+            const bool back=world_input&&(down&KEY_B)!=0;
+            if(world_visible&&field_scene->phase()==upstream::FieldPhase::MickTalk){
+                const bool latched=field_scene->talk_accept_latched();
+                const bool accept=!latched&&world_input&&((down&KEY_A)!=0||native_controls.confirm_pulse);
+                const bool choosing=field_scene->mick().waiting_choice()&&box.dialogue_finished()&&!box.dialogue_closing();
+                if(choosing)box.set_choice_rows(choice_data.trailing_blank_lines());else box.set_choice_rows(0);
+                if(box.dialogue_active()&&!box.dialogue_closing()&&!box.dialogue_finished())box.input(accept,!latched&&back);
+                else if(choosing){choice_delta=((down&KEY_DRIGHT)?1:0)-((down&KEY_DLEFT)?1:0);text_accept=accept;}
+                else if(field_scene->mick().state()==upstream::MickProgramState::WaitingText&&box.dialogue_finished()){box.input(accept,false,true,true);text_accept=box.take_dialogue_advance();}
+            }else box.set_choice_rows(0);
+            const bool choice_typing=field_scene->phase()==upstream::FieldPhase::MickTalk&&field_scene->mick().waiting_choice()&&!box.dialogue_finished();
+            if(world_visible&&field_scene->phase()!=upstream::FieldPhase::Error&&!field_scene->idle_frame(dt,back&&!choice_typing,text_accept,choice_delta))field_status=field_scene->error();
+            if(field_scene->phase()==upstream::FieldPhase::MickTalk){
+                const auto state=field_scene->mick().state();
+                if((state==upstream::MickProgramState::WaitingMotion||state==upstream::MickProgramState::Complete)&&box.dialogue_active()&&!box.dialogue_closing())box.close_story_dialogue();
+                if(world_visible&&!box.advance_chrome(dt))field_status=box.error();
+                if(state==upstream::MickProgramState::Complete&&!box.dialogue_active()&&!field_scene->finish_talk())field_status=field_scene->error();
+                const bool choosing=state==upstream::MickProgramState::WaitingChoice&&box.dialogue_finished()&&!box.dialogue_closing();
+                if(choosing&&!choice_data.groups().empty()&&choice_data.groups().front().options.size()>=2){
+                    const auto& opts=choice_data.groups().front().options;const uint32_t sel=std::min(field_scene->mick().choice_selection(),uint32_t{1});
+                    const float tx=opts[sel].rect.x,ty=opts[sel].rect.y;
+                    if(!field_choice_shown||sel!=field_choice_sel){
+                        if(!field_choice_shown){field_choice_x=field_choice_from_x=tx;field_choice_y=field_choice_from_y=ty;field_choice_t=1;}
+                        else{field_choice_from_x=field_choice_x;field_choice_from_y=field_choice_y;field_choice_t=0;}
+                        field_choice_sel=sel;field_choice_shown=true;
+                    }
+                    const double move=choice_data.arrow_move_seconds();if(move>0)field_choice_t=std::min(1.0,field_choice_t+dt/move);
+                    const float remain=float(1-field_choice_t),ease=1.f-remain*remain*remain*remain;
+                    field_choice_x=field_choice_from_x+(tx-field_choice_from_x)*ease;field_choice_y=field_choice_from_y+(ty-field_choice_from_y)*ease;field_choice_clock+=dt;
+                }else field_choice_shown=false;
+            }else field_choice_shown=false;
+            box.take_audio_events();
             if(field_scene->phase()==upstream::FieldPhase::Walking&&!field_status.empty()&&field_status.rfind("Scene change rejected",0)==0)field_status.clear();
             door_sound_requests+=field_scene->take_sounds().size();
             requested_route=field_scene->take_route();
@@ -1495,6 +1697,7 @@ int main(int argc,char** argv){
             if(world_visible&&house_error.empty()&&!gameplay_scene->house.idle_frame(dt,world_input&&((down&KEY_A)!=0||(input_context()==sampled_context&&native_controls.confirm_pulse)),world_input&&(down&KEY_B)!=0))house_error=gameplay_scene->house.error();
             if(world_visible&&house_error.empty()&&!advance_world_effect(dt,house_error)){}
             house_sound_requests+=gameplay_scene->house.take_sounds().size()+gameplay_scene->presentation.take_audio_events().size();
+            process_present_audio();
             requested_route=gameplay_scene->house.take_scene_route();
         }
         if(requested_route!=upstream::WorldLinksData::kNotFound){
@@ -1711,8 +1914,8 @@ int main(int argc,char** argv){
         else if(!gameplay_scene->world.end_scene_frame())house_error=gameplay_scene->world.error();
         // uiManager owns bars for the entire dialogue lifetime, including
         // showbox:false movement phrases. Closing text alone is not an end.
-        const bool bars_open=!in_field()&&world_visible&&!in_battle()&&(field_equipment_menu.visible()||gameplay_scene->world.cutscene_active()||
-            (gameplay_scene->presentation.dialogue_active()&&!gameplay_scene->presentation.dialogue_closing()));
+        const bool dialogue_bars=gameplay_scene->presentation.dialogue_active()&&!gameplay_scene->presentation.dialogue_closing();
+        const bool bars_open=world_visible&&!in_battle()&&(dialogue_bars||(!in_field()&&(field_equipment_menu.visible()||gameplay_scene->world.cutscene_active())));
         if(!world_blackbars.update(bars_open,dt))house_error="World blackbar animation rejected";
         if(audio_player.available()){
             // A parked House owner behind a field must not replay its request history.
@@ -1733,7 +1936,7 @@ int main(int argc,char** argv){
         record_entry_presented();locale_font.begin_frame();storage_counter_font.begin_frame();field_counter_font.begin_frame();if(draw_introduction&&!introduction_renderer.begin_frame())introduction_render_error="Introduction font frame ownership rejected";
         PROFILE_MARK(1);
         C2D_TargetClear(top,loading_indicator.background_color());C2D_TargetClear(bottom,dark);
-        C2D_SceneBegin(top);if(draw_house)house_top();if(draw_field)field_top();PROFILE_MARK(2);
+        C2D_SceneBegin(top);if(draw_house)house_top();if(draw_field){field_top();field_dialogue_overlay();}PROFILE_MARK(2);
         if(in_battle())battle_top();
         else if(draw_house){
             const auto canvas=house_data.view().parameter(upstream::HouseParameter::DisplayReference);

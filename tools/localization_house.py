@@ -14,13 +14,22 @@ def source_plain(s):
 def native_plain(parts):
  substitutions={2:'[Ninten]',5:'[EarnedCash]',6:'[BankCash]',7:'[CurrentCash]'}
  return re.sub(r'\s','',''.join(t['text']if t['kind']==1 else substitutions.get(t['kind'],'')for p in parts for t in p['tokens']))
-def bindings(catalog,source,bind,tr):
+def bindings(catalog,source,bind,tr,fixed=None):
+ """fixed maps a House dialogue ID to (synthetic key, source phrase label) for
+ text lowered at compile time with a fixed item (House presents)."""
+ fixed=fixed or {}
  house=load(BASE/'content/native-house.json');groups=[dict(first_segment=n['first_segment'],segment_count=n['segment_count'],source_path=n['dialogue_path'])for n in house['npcs']if n['segment_count']]+house['dialogues']
+ require(set(fixed)<={g.get('id')for g in groups},'Fixed House text binding without a House dialogue')
  result=[]
  for group in groups:
   first,count,path=group['first_segment'],group['segment_count'],group['source_path'];doc=yaml.safe_load(source(path));expected=native_plain(house['segments'][first:first+count]);matches=[]
-  for label,phrase in doc.items():
-   if isinstance(phrase,dict)and phrase.get('text')and source_plain(tr(phrase['text']))==expected:matches.append((label,phrase))
+  if group.get('id')in fixed:
+   synthetic,fixed_label=fixed[group['id']];phrase=dict(doc[fixed_label]);phrase['text']=synthetic
+   require(source_plain(tr(synthetic))==expected,f'Fixed House text mismatch {first}/{count} {path}')
+   matches.append((fixed_label,phrase))
+  else:
+   for label,phrase in doc.items():
+    if isinstance(phrase,dict)and phrase.get('text')and source_plain(tr(phrase['text']))==expected:matches.append((label,phrase))
   require(len(matches)==1,f'House source phrase ambiguous {first}/{count} {path}: {matches}')
   label,phrase=matches[0];key=phrase['text'];identity=f'house/{first}/{count}'
   bind(identity,key,tr(key),path+':'+str(label))

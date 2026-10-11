@@ -1823,6 +1823,24 @@
       }
     },
     {
+      "key": "@native.present/70",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml#DIALOGUE_ITEMDIALOGUE_PRESENTCHECK_0@DogTreats",
+      "line": 70,
+      "values": {
+        "en": "[@][PartyLead] opened the present.",
+        "zh_Hans_CN": "[@][PartyLead]拆开了礼物盒。"
+      }
+    },
+    {
+      "key": "@native.present/71",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml#DIALOGUE_ITEMDIALOGUE_PRESENTCHECK_1@DogTreats",
+      "line": 71,
+      "values": {
+        "en": "[@][PartyLead] got some Dog Treats!",
+        "zh_Hans_CN": "[@][PartyLead]获得了一些狗狗零食！"
+      }
+    },
+    {
       "key": "ACTION_RESULT_FAIL_ANY",
       "source": "Translations/TranslatedText/menus - sheet.csv",
       "line": 372,
@@ -78246,6 +78264,24 @@
       "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3:checked native token projection"
     },
     {
+      "identity": "house.expected/132/1",
+      "key": "5/0:0:2/2/0:1/20: opened the present.",
+      "expected": "5/0:0:2/2/0:1/20: opened the present.",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:0:checked native token projection"
+    },
+    {
+      "identity": "house.expected/133/1",
+      "key": "5/0:0:2/2/0:1/21: got some Dog Treats!",
+      "expected": "5/0:0:2/2/0:1/21: got some Dog Treats!",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:1:checked native token projection"
+    },
+    {
+      "identity": "house.expected/134/1",
+      "key": "5/0:0:1/1/13:It's empty...",
+      "expected": "5/0:0:1/1/13:It's empty...",
+      "origin": "Data/Dialogue/ItemDialogue/presentempty.yaml:0:checked native token projection"
+    },
+    {
       "identity": "house.expected/14/1",
       "key": "5/0:0:2/2/0:1/21: remembered the tune.",
       "expected": "5/0:0:2/2/0:1/21: remembered the tune.",
@@ -78976,6 +79012,24 @@
       "key": "DIALOGUE_PODUNK_MINNIE_STORAGE_3",
       "expected": "[@]See you later, and take care!",
       "origin": "Data/Dialogue/Podunk/minnie_storage.yaml:3"
+    },
+    {
+      "identity": "house/132/1",
+      "key": "@native.present/70",
+      "expected": "[@][PartyLead] opened the present.",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:0"
+    },
+    {
+      "identity": "house/133/1",
+      "key": "@native.present/71",
+      "expected": "[@][PartyLead] got some Dog Treats!",
+      "origin": "Data/Dialogue/ItemDialogue/presentcheck.yaml:1"
+    },
+    {
+      "identity": "house/134/1",
+      "key": "DIALOGUE_ITEMDIALOGUE_PRESENTEMPTY_0",
+      "expected": "[@]It's empty...",
+      "origin": "Data/Dialogue/ItemDialogue/presentempty.yaml:0"
     },
     {
       "identity": "house/14/1",
@@ -79785,6 +79839,7 @@
     "Maps/Naming screen.tscn": "cb9317d52dbfa640b7395cecfb9b889cfdfc36f4ede458a4e4b760ea1604dcfd",
     "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/languages/KoreanHangul.gd": "91705af4d0be5ac288c5b0c110a4b2db2daa7437998498bc25cffb114b2b6bbf",
+    "Data/Items/DogTreats.yaml": "0512818388242890d704214728e4603f90fa976571240f86361c2917c641d641",
     "Data/Dialogue/Podunk/carol_panic.yaml": "e74b73f1ab2500ab77c8be31bbd51a8c8a385302542f62d9bc750dc0612fb2f9",
     "Data/Dialogue/Podunk/mimmie_doll_defeated.yaml": "24937777b12b6796ec2c3ce357a95b032575926ec836a097aa37b8620808ed03",
     "Data/Dialogue/Reusable/doorblocked.yaml": "d6f8f581ffc9163dc3c145c3aea7e527d568c97388bbf21ab2d4de1970033e64",
@@ -79820,6 +79875,8 @@
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Mimmie Toybox.yaml": "4abf5ebc313061de1b05fdade7148093fdf91dcebfc405f79b203958470b0aad",
     "Data/Dialogue/Podunk/non-person text/Ninten's house/Bedside Drawer.yaml": "fb23124342b88f05a34323d0bee5bb63a32f634ba4c2026f5e88909e67708362",
     "Data/Dialogue/Podunk/minnie_storage.yaml": "a5a4a4e85854bdbecf999a887f27abe5238fc3412d42880c566ecbe0255dbcf4",
+    "Data/Dialogue/ItemDialogue/presentcheck.yaml": "0d7faebe7fa884315140d7e038f39bef61401baca5eb31d3207c3b3ebd182b42",
+    "Data/Dialogue/ItemDialogue/presentempty.yaml": "11622c6c634599909d8524bd4be8d8720950d029cb9d2c89c58c2b4dbebb8152",
     "Data/Battlers/lamp.yaml": "6e3b026757622c2d5e5b63e6d83162dd6b35c465a6417376e8ba5963bc1b3f19",
     "Data/Battlers/doll.yaml": "89fff7a6f682152b66207601190e24d03eb273e6d79243d8f34a9b98e72a6a97",
     "Data/Battlers/pillow.yaml": "61669b6bebdb287807b7dd3b0a87608598059cba83144dd2c8748a03de24d516",
@@ -80473,6 +80530,30 @@
       "speaker_key": "DIALOGUE_PODUNK_MINNIE_STORAGE_SPEAKER_Minnie",
       "source": "Data/Dialogue/Podunk/minnie_storage.yaml",
       "phrase": "3"
+    },
+    {
+      "first": 132,
+      "count": 1,
+      "key": "@native.present/70",
+      "speaker_key": "",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "phrase": "0"
+    },
+    {
+      "first": 133,
+      "count": 1,
+      "key": "@native.present/71",
+      "speaker_key": "",
+      "source": "Data/Dialogue/ItemDialogue/presentcheck.yaml",
+      "phrase": "1"
+    },
+    {
+      "first": 134,
+      "count": 1,
+      "key": "DIALOGUE_ITEMDIALOGUE_PRESENTEMPTY_0",
+      "speaker_key": "",
+      "source": "Data/Dialogue/ItemDialogue/presentempty.yaml",
+      "phrase": "0"
     }
   ],
   "battle_bindings": [

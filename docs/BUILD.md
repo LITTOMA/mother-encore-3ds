@@ -63,7 +63,7 @@ SD ZIP 包含真实 3DSX/CIA、所需资源及逐项核对的许可文件。运�
 
 ## GitHub runner 构建
 
-每次 main 更新（包括合并 PR）自动构建真实 3DSX / CIA，完成必要的来源、许可和打包校验后上传 Actions artifact。PR 创建 / 更新 / 重开、转为 Ready 和标签变化不启动工作流；测试仅在明确选择手动全面验证时运行，没有定时任务。
+每次分支推送（包括合并进 main）都为该提交自动构建真实 3DSX / CIA，完成必要的来源、许可和打包校验后上传 Actions artifact。PR 创建 / 更新 / 重开、转为 Ready 和标签变化不启动工作流；测试仅在明确选择手动全面验证时运行，没有定时任务。
 
 在 Actions 的 `3DS artifacts and manual full verification` 中选择目标分支和模式，再点击 **Run workflow**。默认 `build` 只构建下载包；明确选择 `full` 才运行全面测试：
 

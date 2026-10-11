@@ -5,11 +5,12 @@
 #include "encore/dialogue_choices.hpp"
 #include "encore/house_inspection_data.hpp"
 #include "encore/drawer_program.hpp"
+#include "encore/house_presents.hpp"
 #include "encore/world_links.hpp"
 #include <set>
 namespace encore::upstream {
 class HousePresentation;
-enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram,SceneDoorAwaitIdle,SceneTransition};
+enum class HousePhase:uint8_t {Idle,DoorAwaitIdle,DoorFadeIn,WarpAwaitIdle,DoorFadeOut,Dialogue,StoryBoundary,StoryRunning,Unsupported,Error,InspectionProgram,SceneDoorAwaitIdle,SceneTransition,PresentProgram};
 enum class HouseEventKind:uint8_t {Paused,DoorStarted,DoorEntered,PlayerMoved,FadeOutStarted,DoorDone,DialogueOpened,DialogueSeen,DialogueClosed,OpenableOpened,OpenableUnlocked,OpenableFlagWritten,OpenableNormal,DoorDialogueOpened,StoryRequested};
 struct HouseEvent {HouseEventKind kind{};uint32_t object=0;uint64_t physics_tick=0,idle_frame=0;Vec2 position{};};
 struct HouseSoundRequest {uint32_t sound=0;};
@@ -32,6 +33,10 @@ public:
  // refs. Bind before inspections; effects owns inventory/audio, never text/flags.
  bool bind_drawer(DrawerProgramView,DrawerHost& effects);
  void bind_choices(const DialogueChoicesData&data,DialogueChoices&model){choices_data_=&data;choices_=&model;}
+ // Present text and flags are owned here; effects own key-item grants and audio.
+ // Transactional: a rejected pack keeps the previous binding. Bind before scene ready.
+ bool bind_presents(PresentRuntime&,PresentView,PresentEffects&);
+ bool present_interaction_supported(uint32_t i)const{return presents_&&presents_->supported(i);}
  // Boundaries of kind UnsupportedScene whose source door has a reviewed route
  // become cross-scene doors; every other boundary keeps the development stop.
  bool bind_scene_routes(const WorldLinksData&links,uint32_t scene_id);
@@ -108,6 +113,21 @@ private:
  bool sync_story_dialogue();bool advance_story_dialogue(bool automatic);bool text_finished();
  bool resolve_npc_dialogue(uint32_t,uint32_t&first,uint32_t&count,uint32_t&program,uint32_t&seen)const;
  bool begin_door(uint32_t);bool interact();bool finish_door();
+ bool interact_present(uint32_t);
+ class PresentAdapter final:public PresentHost {
+ public:
+  HouseRuntime*owner=nullptr;PresentEffects*effects=nullptr;
+  bool validate_text(uint32_t,std::string_view,std::string&)override;
+  bool validate_flag(std::string_view n,std::string&e)override{return owner->validate_flag(n,e);}
+  bool validate_item(PresentTemplate t,std::string_view n,std::string&e)override{return effects->validate_item(t,n,e);}
+  bool validate_sound(std::string_view n,std::string&e)override{return effects->validate_sound(n,e);}
+  bool show_text(uint32_t,std::string&)override;
+  bool flag(std::string_view n,bool&v,std::string&e)override{return owner->flag(n,v,e);}
+  bool set_flag(std::string_view n,bool v,std::string&e)override{return owner->set_flag(n,v,e);}
+  bool grant_item(PresentTemplate t,std::string_view n,std::string&e)override{return effects->grant_item(t,n,e);}
+  bool play_sound(std::string_view n,std::string&e)override{return effects->play_sound(n,e);}
+ };
+ PresentAdapter present_host_;PresentRuntime*presents_=nullptr;std::string present_error_;
  const DialogueChoicesData*choices_data_=nullptr;DialogueChoices*choices_=nullptr;uint32_t choices_generation_=0;
  PhoneRuntime*phone_=nullptr;std::vector<PhoneSoundRequest>phone_sounds_;
  HouseInspectionView inspections_;

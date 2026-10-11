@@ -15,7 +15,11 @@ enum class ResourceRole : uint32_t {
     LoadingIndicator=22, EncounterBattle=23, EncounterRound=24, Introduction=25,
     HouseInspections=26, DrawerProgram=27, Storage=28, ItemDetails=29, FieldEquipment=30,
     // Capability 2: linked exterior field scenes.
-    FieldRoom=31, FieldMap=32, WorldLinks=33
+    FieldRoom=31, FieldMap=32, WorldLinks=33,
+    // Capability 3: capability 2 plus House present objects.
+    HousePresents=34,
+    // Capability 4: capability 3 plus Mick DogTreats → gave_treats.
+    MickTreats=35
 };
 
 class ResourceCatalog {

@@ -26,6 +26,19 @@ int main(int argc,char**argv){
  // A collidable unsupported candidate occludes an otherwise supported one.
  o.targets[0]={d.targets[0].position,true,true,false};o.targets[1]={d.targets[0].position,true,true,true};o.player={d.targets[0].center.x-d.ray_origin.x,d.targets[0].center.y+d.targets[0].extents.y+d.ray_length/2-d.ray_origin.y};o.direction={0,-1};check(evaluate_house_button_prompt(d,0,o,pose,error)&&!pose.visible,"no fallback through unsupported nearest collider");
  o.direction={0,0};check(!evaluate_house_button_prompt(d,0,o,pose,error)&&!pose.visible,"zero direction fails closed");o.direction={0,-1};check(!evaluate_house_button_prompt(d,99,o,pose,error),"unknown choice rejected");o.targets.pop_back();check(!evaluate_house_button_prompt(d,0,o,pose,error),"incomplete observation rejected");
+ uint32_t npc=0;bool have_npc=false;for(uint32_t i=0;i<d.targets.size();++i)if(d.targets[i].kind==HousePromptKind::Npc){npc=i;have_npc=true;break;}
+ check(have_npc,"reviewed NPC prompt target exists");
+ const auto& actor=d.targets[npc];const Vec2 standing{actor.center.x-d.ray_origin.x,actor.center.y-d.ray_origin.y};
+ check(evaluate_npc_button_prompt(d,0,standing,{0,-1},false,false,actor.position,actor.center,actor.extents,pose,error)&&pose.visible&&pose.position.x==actor.position.x+actor.offset.x&&pose.position.y==actor.position.y+actor.offset.y,"shared NPC offset places the static icon");
+ uint32_t excluded=0;for(;excluded<d.choice_masks.size()&&(d.choice_masks[excluded]&actor.category);++excluded){}
+ check(excluded<d.choice_masks.size()&&evaluate_npc_button_prompt(d,excluded,standing,{0,-1},false,false,actor.position,actor.center,actor.extents,pose,error)&&!pose.visible,"NPC icon follows the selected prompt category");
+ const Vec2 outside{actor.center.x-d.ray_origin.x,actor.center.y+actor.extents.y+1.f-d.ray_origin.y};
+ check(evaluate_npc_button_prompt(d,0,outside,{0,1},false,false,actor.position,actor.center,actor.extents,pose,error)&&!pose.visible,"NPC icon stays hidden when the detector faces away");
+ check(evaluate_npc_button_prompt(d,0,outside,{0,-1},false,false,actor.position,actor.center,actor.extents,pose,error)&&pose.visible,"NPC icon appears when the detector faces the actor");
+ check(evaluate_npc_button_prompt(d,0,standing,{0,-1},true,false,actor.position,actor.center,actor.extents,pose,error)&&!pose.visible,"paused NPC prompt stays hidden");
+ check(evaluate_npc_button_prompt(d,0,standing,{0,-1},false,true,actor.position,actor.center,actor.extents,pose,error)&&!pose.visible,"crouching NPC prompt stays hidden");
+ check(!evaluate_npc_button_prompt(d,0,standing,{0,0},false,false,actor.position,actor.center,actor.extents,pose,error),"NPC prompt rejects a zero direction");
+ check(!evaluate_npc_button_prompt(d,0,standing,{0,-1},false,false,actor.position,actor.center,{0,actor.extents.y},pose,error),"NPC prompt rejects an empty collider");
  std::vector<uint8_t>bytes;check(encore::read_file(argv[1],bytes,1024*1024,error),"pack bytes available");
  check(integer(bytes,8)==2&&integer(bytes,20)==2,"inspection producer declares schema and capability 2 in its actual binary header");
  bool has_inspection=false;for(const auto&t:d.targets)has_inspection|=t.kind==HousePromptKind::Inspection;

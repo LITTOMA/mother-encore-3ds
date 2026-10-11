@@ -1,5 +1,5 @@
 {
-  "schema": 5,
+  "schema": 6,
   "storage_capacity": 64,
   "storage_policies": [
     {
@@ -39,6 +39,14 @@
       "doses": 3,
       "max_count": 1,
       "flag_id": "got_asthma_spray"
+    }
+  ],
+  "key_acquisitions": [
+    {
+      "item_id": "DogTreats",
+      "doses": 1,
+      "flag_id": "got_dog_treats",
+      "consumed_flag_id": "gave_treats"
     }
   ],
   "settings_choices": {
@@ -2391,7 +2399,10 @@
     "doll_defeated",
     "doll_melody",
     "earned_cash",
+    "gave_treats",
     "got_asthma_spray",
+    "got_dog_treats",
+    "mick_scratch",
     "mimmie_ask_key",
     "mimmie_door_opened",
     "minnie_door",
@@ -2428,12 +2439,14 @@
   },
   "dependencies": {
     "content/native-opening.json": "91e4a791688eab92428138db6bb3a2dde8b9ed768c92019288c92bafb906b2a3",
-    "content/native-house.json": "480e603d34f9a78519c8d1de4b4f761ea0a19a8ff1b41c673db9f21450d1cdd1",
+    "content/native-house.json": "66a8eabffc04a33123dfe3bf80513755324033417296e639103879acc39b5648",
     "content/native-battle.json": "b299e4a554297b1643765332cba9203cc7ca6419d6cc9a1bd07a18af5569b8c7",
     "content/native-items.json": "49c51b7c8a81e26a634d8fa76154aa0413b97e74216c3b0eb397c43cc0084cb4",
     "content/native-round.json": "fbf1c23ae75dd8a3d9adb104d7badc3165382325aa148ccf92be17d616a6df02",
     "content/doll-round.json": "1e7a9607835e6f7d66ab8a0b7b6a54c96fe0c19ac05d926c16065b116aff144e",
     "content/native-drawer-program.json": "733fc67f30e14994175a299c98eedcafc352e7b23ea5f5fc41e26f867b016806",
+    "content/house-presents.json": "44b5bd75a4c5594d4b99052de23bcf54b67771153356bbefa3d26c63d0187792",
+    "content/mick-treats.json": "be999c034bf85e9f14e879926dcbad1fe1c7550346bba4350c1eb36be9065913",
     "content/native-storage.json": "c4cb1436789597fe592bb50f6e807913e3747aa363adb24b5e7a2771a9f480e2"
   }
 }

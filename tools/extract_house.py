@@ -73,11 +73,13 @@ def build(root=ROOT):
  from tools.link_house_inspections import append_house as append_inspections
  from tools.link_drawer_content import append_house as append_drawer
  from tools.storage_dialogue import append_house as append_storage
+ from tools.link_present_content import append_house as append_presents
  linked=append_house(ex,link_house(ex,ir,ir_room),ir_room)
  linked=append_family_house(ex,linked,ir_room)
  linked=append_inspections(ex,linked,ir_room)
  linked=append_drawer(ex,linked,ir_room)
- return append_storage(ex,linked,ir_room)
+ linked=append_storage(ex,linked,ir_room)
+ return append_presents(ex,linked,ir_room)
 def extend_source(ex,house,ir_room,ns,ng,segments,carol,overrides,root_name,ie,area,shape_node,view,radius,ret,b):
  def body(path):
   found=[b['body_id']for b in ir_room['sections']['BodyRule']if ir_room['strings'][b['source_path_string']]==path]
@@ -208,5 +210,5 @@ def source_review(ir,path):
  return {'schema':ir['schema'],'commit':PIN,'sources':ir['sources'],'dependencies':ir['dependencies'],'ir_sha256':sha(path),'mechanisms':['ancestor-scaled door shape and target minus (0,7)','same scene preserves rewards and flags','WAIT sections and source singleton-party dynamic name','NPC body binding and directional ray interaction','typed NPC program and override text bindings; unsupported later paths recoverable','Openable Action/Normal exact visibility and collider masks','blocked running-upward unlock without flags_updated','source Doll and Mimmie guard programs with explicit source flag conditions','original Doll inherited talker and original override-specific seen keys','source NPC stop-interaction direction return delay','six reviewed Carol/Phone linear programs and typed hint color tokens','original Carol Room actor binding; Area3/4 exact inherited geometry and contact/flag gates','Dad-normal graph retained separately until branch/menu integration']}
 def main():
  p=argparse.ArgumentParser();p.add_argument('--out',type=Path,default=ROOT/'content/native-house.json');a=p.parse_args()
- ir=build();a.out.write_text(json.dumps(ir,indent=2,ensure_ascii=False)+'\n');r=ROOT/'reports/house-data';r.mkdir(parents=True,exist_ok=True);(r/'source-review.json').write_text(json.dumps(source_review(ir,a.out),indent=2,ensure_ascii=False)+'\n');print('Extracted',len(ir['doors']),'doors,',len(ir['boundaries']),'unsupported routes,',len(ir['segments']),'dialogue sections')
+ ir=build();payload=json.dumps(ir,indent=2,ensure_ascii=False)+'\n';a.out.write_bytes(payload.encode('utf-8'));r=ROOT/'reports/house-data';r.mkdir(parents=True,exist_ok=True);review=json.dumps(source_review(ir,a.out),indent=2,ensure_ascii=False)+'\n';(r/'source-review.json').write_bytes(review.encode('utf-8'));print('Extracted',len(ir['doors']),'doors,',len(ir['boundaries']),'unsupported routes,',len(ir['segments']),'dialogue sections')
 if __name__=='__main__':main()

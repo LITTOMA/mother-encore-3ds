@@ -207,7 +207,7 @@ class Scene:
                 raise FieldError('Unclassified scene node %s (%s)' % (n.path, n.type))
 
     def conditions(self, path):
-        """FlagLandmark ancestors as (flag, expected) pairs; all must hold."""
+        """FlagLandmark ancestors and reviewed Area2D appear/disappear pairs; all must hold."""
         out = []
         for a in self.ancestors(path):
             node = self.by_path[a]
@@ -225,6 +225,15 @@ class Scene:
         if node.type == 'TileMap' and node.script:
             require(node.script == 'Scripts/Main/Flag Landmarks.gd', 'Unreviewed TileMap script at ' + path)
             appear, disappear = node.props.get('appear_flag', ''), node.props.get('disappear_flag', '')
+            if appear:
+                out.append((appear, True))
+            if disappear:
+                out.append((disappear, False))
+        # CutsceneArea.gd:_check_flags uses the instance's own appear/disappear
+        # exports. FlagLandmark ancestors do not cover that node.
+        if self.category.get(path) == 'boundary' and self.instance_root(node) and node.scene == 'Nodes/Reusables/CutsceneArea.tscn':
+            appear, disappear = node.props.get('appear_flag', ''), node.props.get('disappear_flag', '')
+            require(isinstance(appear, str) and isinstance(disappear, str), 'Bad CutsceneArea flags at ' + path)
             if appear:
                 out.append((appear, True))
             if disappear:
@@ -249,11 +258,13 @@ def load_recipe(path=RECIPE):
     require(recipe.get('schema') == 1 and recipe.get('kind') == 'encore.podunk-field.recipe', 'Unsupported Podunk recipe')
     require(recipe.get('commit') == PIN, 'Podunk recipe source pin mismatch')
     expected = {'schema', 'kind', 'commit', 'scope', 'scene', 'house', 'player', 'tileset', 'door', 'routes', 'locales',
-                'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
+                'ported_notices', 'categories', 'prop_sprites', 'labels', 'atlas_directory', 'outputs'}
     require(set(recipe) == expected, 'Unknown/missing Podunk recipe fields')
     valid = {'door', 'openable_door', 'grass', 'prop', 'flag_landmark', 'camera_area', 'boundary', 'notice'}
     require(all(v in valid for v in recipe['categories'].values()), 'Unknown recipe category')
     require(set(recipe['prop_sprites']) == {k for k, v in recipe['categories'].items() if v == 'prop'}, 'Prop sprite policy coverage')
+    require(isinstance(recipe['ported_notices'], list) and all(isinstance(p, str) and p for p in recipe['ported_notices']),
+            'ported_notices must be scene-relative paths')
     return recipe
 
 
@@ -999,6 +1010,8 @@ class Model:
                 for xf, extents in rects:
                     self._boundary(2, n.path, labels[n.scene], xf, extents, cond)
             elif cat == 'notice':
+                if n.path in self.recipe.get('ported_notices', []):
+                    continue
                 xf = sc.global_xf[n.path]
                 self.notices.append(dict(kind=1, path=self.string(n.path), label=self.string(labels[n.scene]),
                                          x=f32(xf.ox), y=f32(xf.oy), cond=cond))
@@ -1607,24 +1620,41 @@ def build_outputs(recipe):
 def compile_all(recipe, tex3ds, romfs=ROOT / 'romfs', command=None):
     """tex3ds is the binary recorded in the receipt. command optionally runs that
     same binary elsewhere (e.g. a pinned container); file arguments are then
-    repository-relative POSIX paths and the working directory is the repository."""
-    require(tex3ds is not None and Path(tex3ds).is_file(), 'Need tex3ds to compile Podunk atlases')
+    repository-relative POSIX paths and the working directory is the repository.
+    When atlas RGBA digests match an existing receipt and the RomFS .t3x files
+    are present, tex3ds may be omitted (map/room/links-only refresh)."""
     model, atlases, atlas_paths, outputs = build_outputs(recipe)
     STAGING.mkdir(parents=True, exist_ok=True)
+    prior = json.loads(RECEIPT.read_text(encoding='utf-8')) if RECEIPT.is_file() else None
+    reuse = (prior is not None and prior.get('schema') == 1 and prior.get('commit') == PIN and
+             [p['path'] for p in prior.get('pages', [])] == atlas_paths and
+             all(p['rgba_sha256'] == atlases.digest(i) and (p['width'], p['height']) == atlases.pages[i].size
+                 for i, p in enumerate(prior['pages'])) and
+             all((romfs / p['path']).is_file() for p in prior['pages']))
     pages = []
-    for index, (page, path) in enumerate(zip(atlases.pages, atlas_paths)):
-        png = STAGING / ('atlas-%02d.png' % index)
-        page.save(png, optimize=False)
-        target = romfs / path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        if command:
-            rel = lambda p: Path(p).resolve().relative_to(ROOT).as_posix()
-            subprocess.run(list(command) + ['-f', 'rgba8', '-z', 'none', '-o', rel(target), rel(png)], check=True, cwd=ROOT)
-        else:
-            subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(target), str(png)], check=True)
-        blob = target.read_bytes()
-        pages.append(dict(path=path, width=page.width, height=page.height, rgba_sha256=atlases.digest(index),
-                          t3x_sha256=sha(blob), bytes=len(blob)))
+    if reuse and (tex3ds is None or not Path(tex3ds).is_file()):
+        for page in prior['pages']:
+            blob = (romfs / page['path']).read_bytes()
+            require(sha(blob) == page['t3x_sha256'] and len(blob) == page['bytes'],
+                    'Podunk atlas differs from reusable receipt: ' + page['path'])
+            pages.append(dict(page))
+        tex3ds_digest = prior['tex3ds_sha256']
+    else:
+        require(tex3ds is not None and Path(tex3ds).is_file(), 'Need tex3ds to compile Podunk atlases')
+        for index, (page, path) in enumerate(zip(atlases.pages, atlas_paths)):
+            png = STAGING / ('atlas-%02d.png' % index)
+            page.save(png, optimize=False)
+            target = romfs / path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            if command:
+                rel = lambda p: Path(p).resolve().relative_to(ROOT).as_posix()
+                subprocess.run(list(command) + ['-f', 'rgba8', '-z', 'none', '-o', rel(target), rel(png)], check=True, cwd=ROOT)
+            else:
+                subprocess.run([str(tex3ds), '-f', 'rgba8', '-z', 'none', '-o', str(target), str(png)], check=True)
+            blob = target.read_bytes()
+            pages.append(dict(path=path, width=page.width, height=page.height, rgba_sha256=atlases.digest(index),
+                              t3x_sha256=sha(blob), bytes=len(blob)))
+        tex3ds_digest = sha(Path(tex3ds).read_bytes())
     for stale in sorted((romfs / recipe['atlas_directory']).glob('atlas-*.t3x')):
         require(stale.relative_to(romfs).as_posix() in atlas_paths, 'Stale Podunk atlas left in RomFS: ' + stale.name)
     for path, blob in outputs.items():
@@ -1632,7 +1662,7 @@ def compile_all(recipe, tex3ds, romfs=ROOT / 'romfs', command=None):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(blob)
     receipt = dict(schema=1, commit=PIN, recipe_sha256=sha(RECIPE.read_bytes()), compiler_sha256=sha(Path(__file__).read_bytes()),
-                   tex3ds_sha256=sha(Path(tex3ds).read_bytes()), format='rgba8', compression='none', pages=pages,
+                   tex3ds_sha256=tex3ds_digest, format='rgba8', compression='none', pages=pages,
                    outputs={path: dict(sha256=sha(blob), bytes=len(blob)) for path, blob in sorted(outputs.items())},
                    sources=model.sources.digests(), undefined_tile_cells=model.undefined_cells)
     RECEIPT.parent.mkdir(parents=True, exist_ok=True)

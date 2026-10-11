@@ -41,7 +41,7 @@ public:
     bool ready()const{return map_.valid()&&!sheets_.empty();}
     // camera: world top-left of the view; offset: screen position of the view.
     // Returns false if the scene and renderer disagree; the frame is then skipped.
-    bool draw(const encore::upstream::FieldScene& scene,const OpeningActorRenderer& actors,float camera_x,float camera_y,float width,float height,float offset_x,float offset_y,double time){
+    bool draw(const encore::upstream::FieldScene& scene,const OpeningActorRenderer& actors,float camera_x,float camera_y,float width,float height,float offset_x,float offset_y,double time,void (*extra)(float,float,float,float)=nullptr){
         using namespace encore::upstream;
         if(!ready()||scene.map().bytes_identity()!=map_.bytes_identity())return false;
         time_=time;cx_=camera_x;cy_=camera_y;w_=width;h_=height;ox_=offset_x;oy_=offset_y;deferred_.clear();
@@ -61,7 +61,9 @@ public:
                 // Grass alone contributes ~1000 y-sort items; skip ones wholly off-screen
                 // before the per-frame sort (Godot only sorts currently visible canvas items).
                 case FieldItemKind::Sprites:if(sprites_visible(scene,item.first,item.count))entries_.push_back({item.sort_y,item.order,2,item.first,item.count});break;
-                case FieldItemKind::Player:entries_.push_back({scene.world.player().position.y,item.order,3,0,0});break;
+                case FieldItemKind::Player:
+                    if(extra&&scene.mick().ready())entries_.push_back({scene.mick().sort_y(),item.order,4,0,0});
+                    entries_.push_back({scene.world.player().position.y,item.order,3,0,0});break;
                 default:break;}
             }
             // VisualServer ItemPtrSort: approximately equal Y falls back to collection order.
@@ -72,6 +74,7 @@ public:
                 if(e.kind==0)draw_cell(e.first,e.second,true);
                 else if(e.kind==1)draw_layer(scene,e.first);
                 else if(e.kind==2)draw_sprites(scene,e.first,e.second);
+                else if(e.kind==4)extra(cx_,cy_,ox_,oy_);
                 else actors.draw_player(scene.world.player().position,scene.world.animation(),cx_-ox_,cy_-oy_);
             }
         }

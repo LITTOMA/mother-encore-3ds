@@ -57,7 +57,7 @@ bool HouseRuntime::set_player_nickname(std::string_view name){
 std::string_view HouseRuntime::player_nickname()const{
  if(!nickname_.empty())return nickname_;const auto room=world_->content();return room.string(room.actor_instance(room.scene().player_instance_index).display_name_string);
 }
-bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error||phase_==HousePhase::SceneDoorAwaitIdle||phase_==HousePhase::SceneTransition;}
+bool HouseRuntime::blocks_player()const{return story_pending()||phase_==HousePhase::DoorAwaitIdle||phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::Dialogue||phase_==HousePhase::InspectionProgram||phase_==HousePhase::PresentProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error||phase_==HousePhase::SceneDoorAwaitIdle||phase_==HousePhase::SceneTransition;}
 bool HouseRuntime::entering_door()const{return phase_==HousePhase::DoorFadeIn||phase_==HousePhase::WarpAwaitIdle||(phase_==HousePhase::DoorFadeOut&&!door_unpaused_)||phase_==HousePhase::SceneTransition;}
 bool HouseRuntime::bind_scene_routes(const WorldLinksData&links,uint32_t scene_id){
  if(!content_.valid()||!links.valid()||links.find_scene(scene_id)==WorldLinksData::kNotFound)return fail("Scene route binding rejected");
@@ -228,7 +228,7 @@ bool HouseRuntime::story_conditions(uint32_t index)const{
  return true;
 }
 bool HouseRuntime::process_story_requests(){
- if(story_pending()||phase_==HousePhase::InspectionProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error)return true;
+ if(story_pending()||phase_==HousePhase::InspectionProgram||phase_==HousePhase::PresentProgram||phase_==HousePhase::Unsupported||phase_==HousePhase::Error)return true;
  for(uint32_t i=0;i<story_process_.size();++i)if(story_process_[i]&&idle_frame_>story_ready_idle_[i]){
   story_process_[i]=0;if(!story_conditions(i))continue;
   if(!world_->pause_for_house())return fail("Story trigger pause rejected");
@@ -274,6 +274,40 @@ bool HouseRuntime::bind_drawer(DrawerProgramView candidate,DrawerHost&effects){
  }
  for(uint32_t i=0;i<candidate.count(DrawerSection::Templates);++i){const auto t=candidate.item_template(i);if(!effects.validate_item(t,candidate.string(t.source),error))return reject("Inspection programme grant is unbound");}
  drawer_=candidate;drawer_effects_=&effects;drawer_runtime_.reset();error_="";return true;
+}
+bool HouseRuntime::bind_presents(PresentRuntime&runtime,PresentView candidate,PresentEffects&effects){
+ auto reject=[&](const char*text){error_=text;return false;};
+ if(!world_||!content_.valid()||!candidate.valid()||phase_!=HousePhase::Idle||story_pending()||presentation_->dialogue_active())return reject("House presents require an idle initialized scene");
+ if(std::memcmp(candidate.reviewed_commit(),content_.bytes()+32,20))return reject("House present provenance does not match house pack");
+ const auto room=world_->content();
+ for(uint32_t i=0;i<candidate.count(PresentSection::Objects);++i){const auto path=std::string(candidate.string(candidate.object(i).path))+"/StaticBody2D";
+  bool found=false;for(uint32_t b=0;b<room.body_rule_count();++b)found|=room.string(room.body_rule(b).source_path_string)==path;
+  if(!found)return reject("House present collision body absent from room pack");}
+ present_host_.owner=this;present_host_.effects=&effects;
+ if(!runtime.initialize(candidate,present_host_,present_error_)){error_="House present binding rejected";return false;}
+ presents_=&runtime;error_="";return true;
+}
+bool HouseRuntime::PresentAdapter::validate_text(uint32_t id,std::string_view path,std::string&e){
+ for(uint32_t d=0;d<owner->content_.count(HouseSection::Dialogues);++d){const auto text=owner->content_.dialogue(d);if(text.id==id&&owner->content_.string(text.source_path)==path){e.clear();return true;}}
+ e="House present text absent from house pack";return false;
+}
+bool HouseRuntime::PresentAdapter::show_text(uint32_t id,std::string&e){
+ for(uint32_t d=0;d<owner->content_.count(HouseSection::Dialogues);++d){const auto text=owner->content_.dialogue(d);if(text.id!=id)continue;
+  if(!owner->presentation_->present_story_dialogue(text.first_segment,text.segment_count,owner->player_nickname())){e=owner->presentation_->error();return false;}e.clear();return true;}
+ e="House present text absent";return false;
+}
+bool HouseRuntime::interact_present(uint32_t index){
+ if(!presents_||index>=presents_->count())return fail("Unbound house present interaction");
+ const auto object=presents_->view().object(index);const auto p=world_->player();
+ // ItemHolder.player_turn {x,y}: Player._turn_to on both axes, x preferred when wider.
+ Vec2 facing{object.position.x-p.position.x,object.position.y-p.position.y};
+ if(std::abs(facing.x)>std::abs(facing.y)&&facing.x!=0)facing={sign(facing.x),0};else if(facing.y!=0)facing={0,sign(facing.y)};else facing=p.direction;
+ if(!world_->set_house_direction(facing)||!world_->pause_for_house())return fail("House present player turn/pause rejected");
+ active_=index;
+ if(!presents_->supported(index)){phase_=HousePhase::Unsupported;error_="Unported source present item; B returns control";last_safe_position_=p.position;last_safe_direction_=p.direction;return true;}
+ phase_=HousePhase::PresentProgram;
+ if(!presents_->start(index,present_error_))return fail("House present programme rejected");
+ event(HouseEventKind::DialogueOpened,index);return true;
 }
 bool HouseRuntime::validate_text(uint32_t id,std::string&e){
  for(uint32_t d=0;d<content_.count(HouseSection::Dialogues);++d){const auto text=content_.dialogue(d);if(text.id==id&&drawer_&&content_.string(text.source_path)==drawer_.string(drawer_.binding().source_path)){e.clear();return true;}}
@@ -403,6 +437,10 @@ bool HouseRuntime::interact(){
  if(phone_)for(uint32_t i=0;i<phone_->view().count(PhoneSection::Objects);++i){const auto object=phone_->view().object(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,object.interact_center,object.interact_extents,distance)&&distance<nearest){selected_phone=i;nearest=distance;selected=selected_door=house_no_index;}}
  uint32_t selected_inspection=house_no_index;
  if(inspections_)for(uint32_t i=0;i<inspections_.count(HouseInspectionSection::Objects);++i){if(!inspection_visible(i))continue;const auto object=inspections_.object(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,object.interact_center,object.interact_extents,distance)&&distance<nearest){selected_inspection=i;nearest=distance;selected=selected_door=selected_phone=house_no_index;}}
+ // Present "interact" Area2D. The StaticBody2D "noproblem" hit is not ported here.
+ uint32_t selected_present=house_no_index;
+ if(presents_)for(uint32_t i=0;i<presents_->count();++i){const auto object=presents_->view().object(i);float distance=0;if(ray_rect(origin,direction,rules.ray_length,object.interact_center,object.interact_extents,distance)&&distance<nearest){selected_present=i;nearest=distance;selected=selected_door=selected_phone=selected_inspection=house_no_index;}}
+ if(selected_present!=house_no_index)return interact_present(selected_present);
  // Unsupported inspection programmes still own the nearest hit. Never ray
  // through one to an NPC/door/phone or to another object behind it.
  if(selected_inspection!=house_no_index)return interact_inspection(selected_inspection);
@@ -481,6 +519,7 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
  if(phase_==HousePhase::Error)return false;
  // The source Phone AnimationPlayer processes before deferred scene methods.
  if(phone_&&!phone_->advance(delta,*this))return fail(phone_->error());
+ if(presents_&&!presents_->advance(delta,present_error_))return fail("House present animation rejected");
  for(const auto call:world_->take_scene_calls())if(!phone_||!phone_->ring(call.object))return fail("Unbound source phone scene call");
  // CutsceneArea.gd connects battle_to_ov to _stop_process on every area.
  // Contacts armed before battle must not fire after the win script changes
@@ -544,6 +583,16 @@ bool HouseRuntime::idle_frame(double delta,bool accept,bool cancel){
    }
   }
   if(drawer_runtime_.state()==DrawerState::Complete&&presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Inspection programme unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}
+ }
+ else if(phase_==HousePhase::PresentProgram){
+  if(presents_->state()==PresentProgramState::WaitingText){
+   presentation_->input(accept,cancel,true,presents_->continues());
+   if(presentation_->take_dialogue_advance()){
+    if(!presents_->advance_text(present_error_))return fail("House present programme rejected");
+    if(presents_->state()==PresentProgramState::Complete)presentation_->close_story_dialogue();
+   }
+  }
+  if(presents_->state()==PresentProgramState::Complete&&presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("House present unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}
  }
  else if(phase_==HousePhase::Dialogue){presentation_->input(accept,cancel);if(presentation_->dialogue_done()){if(!world_->unpause_from_house())return fail("Dialogue unpause rejected");event(HouseEventKind::DialogueClosed,active_);phase_=HousePhase::Idle;}}
  else if((phase_==HousePhase::Idle||(phase_==HousePhase::DoorFadeOut&&door_unpaused_))&&accept&&!story_dialogue_input)return interact();

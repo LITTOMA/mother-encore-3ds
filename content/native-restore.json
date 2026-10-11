@@ -31,9 +31,9 @@
   },
   "dependencies": {
     "content/native-opening.json": "91e4a791688eab92428138db6bb3a2dde8b9ed768c92019288c92bafb906b2a3",
-    "content/native-house.json": "480e603d34f9a78519c8d1de4b4f761ea0a19a8ff1b41c673db9f21450d1cdd1",
+    "content/native-house.json": "66a8eabffc04a33123dfe3bf80513755324033417296e639103879acc39b5648",
     "romfs/data/opening.encroom": "2a2cd58ab2c35b4269ae67d4e73ea2619e5e193b0806e37f9c8aaf813e9ff4b9",
-    "romfs/data/opening.enchouse": "d5a9c52b3c964d9f25b03c2bc02c597c46489599b78da92ffccf759dc32e9638"
+    "romfs/data/opening.enchouse": "ed791ab21e0c9e257866f0aa592d6c3b843f6009918dbede19a1d55eb6891b5c"
   },
   "fingerprints": {
     "room": {
@@ -41,8 +41,8 @@
       "sha256": "2a2cd58ab2c35b4269ae67d4e73ea2619e5e193b0806e37f9c8aaf813e9ff4b9"
     },
     "house": {
-      "bytes": 22292,
-      "sha256": "d5a9c52b3c964d9f25b03c2bc02c597c46489599b78da92ffccf759dc32e9638"
+      "bytes": 22596,
+      "sha256": "ed791ab21e0c9e257866f0aa592d6c3b843f6009918dbede19a1d55eb6891b5c"
     }
   },
   "scene_id": 1,

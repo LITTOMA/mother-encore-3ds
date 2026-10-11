@@ -53,6 +53,17 @@ make cia EXPERIMENTAL_GPU_BACKGROUND=1 EXPERIMENTAL_GPU_CERTIFICATES=1 EXPERIMEN
 
 纹理条带恢复用于支持的 400×240 枕头背景；不支持的背景或未获纹理资源时沿用已有精确 spans / CPU 路径。战斗下屏的 `Background` 行显示实际后端。保留原 spans 配置可显式设 `EXPERIMENTAL_GPU_TEXTURE_STRIPS=0`；纯 CPU 配置为三个开关全部 `0`。此变更不构成新的模拟器帧率或真机采样精度结论。设备程序与主机测试共享游戏核心，M0 fixture 不进入生产设备程序。
 
+### 开发用参考画面快捷键
+
+默认 `DEBUG_REFERENCE_VIEW=0`，普通构建不会响应 SELECT 重置或改变画面尺寸。只有需要对照原作画面时，显式构建：
+
+```sh
+make 3dsx DEBUG_REFERENCE_VIEW=1
+make cia DEBUG_REFERENCE_VIEW=1
+```
+
+该开发构建只在标题页允许按住 L＋R 后按 SELECT，切换 400×240 / 320×180，并重建标题会话；命名、读档、开场、游戏和战斗过程中均禁用。标题页会显示对应提示，识别组合键后不再同时触发 L／R 的语言切换。恢复默认构建使用 `DEBUG_REFERENCE_VIEW=0`；平台 Makefile 的模式 stamp 会使输入入口重新编译，避免增量构建保留旧开关。该选项仅接受 `0` 或 `1`，不改变游戏资源、规则和存档格式。
+
 ## 打包
 
 ```sh

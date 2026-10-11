@@ -526,7 +526,10 @@ bool BattleActionPresentation::resolve_text(uint32_t index,std::string&value)con
  value=std::string(content_.string(content_.text(index).text));return true;
 }
 bool BattleActionPresentation::begin_outcome_text(uint32_t index){
- std::string value;if(!resolve_text(index,value))return fail("Source outcome text resolver rejected record");return begin_outcome_text(value);
+ std::string value;if(!resolve_text(index,value))return fail("Source outcome text resolver rejected record");
+ if(!begin_outcome_text(value))return false;
+ if(index==content_.encounter().learned_text&&index!=round_no_index)audio_.push_back(GameplayCue::LearnedPsi);
+ return true;
 }
 bool BattleActionPresentation::begin_outcome_text(std::string_view value){
  if(!victory_done()||return_started_)return fail("Outcome text before victory gate");

@@ -776,12 +776,12 @@ void process_battle_audio(){
    if(!prepare_source_audio(gameplay_audio.path(victory),error)||!prepare_source_audio(gameplay_audio.path(C::VictoryLoop),error)){audio_status=error;continue;}
    audio_player.pause_lane(ctr::AudioLane::Music,true,error);
    battle_music_owned=play_gameplay_cue(victory,ctr::AudioLane::Jingle);victory_loop_pending=battle_music_owned;
+    if(!battle_music_owned)audio_player.pause_lane(ctr::AudioLane::Music,false,error);
   }else if(event==E::LevelCommitted&&result_music){
    std::string error;
    if(!prepare_source_audio(gameplay_audio.path(C::LevelUp),error)||!prepare_source_audio(gameplay_audio.path(C::LevelUpLayer),error)){audio_status=error;continue;}
    victory_loop_pending=false;
    if(!audio_player.playing(ctr::AudioLane::DialogueMusic)){play_gameplay_cue(C::LevelUp,ctr::AudioLane::Jingle,true);play_gameplay_cue(C::LevelUpLayer,ctr::AudioLane::DialogueMusic,true);}
-  }else if(event==E::SkillLearned){play_gameplay_cue(C::LearnedPsi);
    }else if(event==E::ReturnStarted&&battle_music_owned){
    std::string error;victory_loop_pending=battle_music_owned=false;
    if(audio_player.available()){audio_player.stop_lane(ctr::AudioLane::Jingle,error);audio_player.stop_lane(ctr::AudioLane::DialogueMusic,error);audio_player.pause_lane(ctr::AudioLane::Music,false,error);}
@@ -1140,7 +1140,7 @@ bool enter_field(const upstream::WorldRoute& route,std::string& error){
     if(!loading.step([&]{return field_actor.load(room,error)&&field_renderer.load(field_map_data.view(),std::string(locale_selection.code()),error)&&load_mick_graphics(error);},"field-atlases")){
         release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     if(!loading.finish()){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
-    if(!commit_field_music(error))return false;
+    if(!commit_field_music(error)){release_field_graphics();std::string restore;if(!ensure_house_graphics(restore))house_error="House graphics restore failed: "+restore;return false;}
     // Commit: the House owner stays parked (paused in SceneTransition) behind the field.
     candidate->world.attach_random(battle_random);
     session_state=std::move(snapshot);field_scene=std::move(candidate);field_status.clear();field_choice_shown=false;

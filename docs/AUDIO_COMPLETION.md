@@ -6,7 +6,7 @@
 
 - 开局 bank 从 27 项扩为 53 项；原 27 项 PCM SHA、帧数及循环起点保持一致。Podunk 原有五首曲目另成一库，合计 58 项；PCM 从固定上游恢复，不纳入 Git。上游 LICENSE 对相关游戏修改的许可继续保留，素材不重新许可为 MIT。
 - gameplay-audio-bindings.json 从 audioManager.gd 和 BattleSystem.gd 的字典提取 24 个角色；另枚举并核对已审查房屋门、对白和 Mick 命令需要的声音。文件名只存在于资源；C++ 只使用执行角色和校验后的路径。
-- 房屋与室外门的开启、关闭、楼梯声；对白 voice start/stop 和菜单开合；电话请求；Mick 吠叫与呜咽接入实际播放。Text 与 Phone 分别使用 NDSP 22/23，区域音乐保留 4–19。电话暂未复现空间衰减。
+- 房屋与室外门的开启、关闭、楼梯声；对白 voice start/stop 和菜单开合；电话请求；Mick 吠叫与呜咽接入实际播放。Text 与 Phone 分别使用 NDSP 22/23，区域音乐保留 4–19。电话暂未复现空间衰减；战后恢复音乐的原版三秒淡入尚未映射。
 - 战斗按现有事件接入命令光标与确认、返回、敌人回合、命中、SMASH、受伤、濒死、闪避与普通击败；不消耗额外随机数。胜利按 boss / overworldBattleMusic 选择结算音乐，升级叠加 Ninten 轨，学习 PSI 播提示。升级两轨先完成 PCM 校验后提交；不宣称样本级同步。Boss 击败动画内部音轨、完整战斗文字语音仍需单独映射。
 - Podunk 的 13 个 MusicChanger 使用原场景矩形和凸分解多边形，与实际玩家碰撞体做 SAT 相交。以场景顺序提交进入/退出，交给现有 MusicRegionController 处理旗标、过场、共享曲目和渐变；换场发 tree_exit 并排空。这里没有实现 Godot 的通用区域系统，也不承诺同时边界事件的 Godot broadphase 顺序。
 

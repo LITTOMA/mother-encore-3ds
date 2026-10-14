@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "0da45edd791375dfab1a9a4f9062823cd6abe98e751d583db54a170cd0a20c17",
+  "ir_sha256": "daf15c76b8c3b0b1274949a819bab4af74a6d31e9c9017135b4b5c9613c03bcf",
   "sources": {
     "Audio/Sound effects/Cursor 1.mp3": "9612e8aea78f2619c1edc7552cebfe066bfa4d6462c409d3fec9a99f4952337f",
     "Audio/Sound effects/Cursor 1.mp3.import": "1fde4b8a13ee7a4057b42d3bc586c1ac7ebb1fbd9f90f45e42c31a05942f08e7",

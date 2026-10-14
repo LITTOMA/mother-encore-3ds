@@ -142,5 +142,5 @@ private:
 };
 // text_tools.gd replaces [ui_*], [PartyLead] and [Ninten] before the box draws.
 // The three button labels are the caller's checked device glyphs.
-bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error);
+bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error,std::string_view favorite_food={},uint32_t favorite_food_limit=0);
 }

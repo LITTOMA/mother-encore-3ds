@@ -21,7 +21,7 @@ NAMES=('Strings','Parameters','Bindings','Commands','Slots','Equipment','Resourc
 FORMATS=(None,'<If','<III','<IIII','<IIII','<III7i','<7I32s2I','<7I10f4I','<IIIf','<3f')
 STRIDES=(1,8,12,16,16,40,68,84,16,12)
 HEADER=224
-PARAMETERS=('ReferenceWidth','ReferenceHeight','PlatformWidth','PlatformHeight','PauseColumns','SlotPitch','ListPitch','StatPitch','CursorMoveSeconds','CursorFps','CursorFrame0','CursorFrame1','CursorFrame2','CursorFrame3','MainLineHeight','NumberLineHeight','NumberSpacing','LoopAround','PauseColumnPitch','PauseRowPitch','ListRows','BoostWeight0','BoostWeight1','BoostWeight2','BoostWeight3','BoostWeight4','BoostWeight5','BoostWeight6','OpenMask','ConfirmMask','CancelMask','ScopeMask','OwnerId','PsiCost','PsiLearnLevel','PsiAction','PsiRayX','PsiRayY','PsiRayLength')
+PARAMETERS=('ReferenceWidth','ReferenceHeight','PlatformWidth','PlatformHeight','PauseColumns','SlotPitch','ListPitch','StatPitch','CursorMoveSeconds','CursorFps','CursorFrame0','CursorFrame1','CursorFrame2','CursorFrame3','MainLineHeight','NumberLineHeight','NumberSpacing','LoopAround','PauseColumnPitch','PauseRowPitch','ListRows','BoostWeight0','BoostWeight1','BoostWeight2','BoostWeight3','BoostWeight4','BoostWeight5','BoostWeight6','OpenMask','ConfirmMask','CancelMask','ScopeMask','OwnerId','PsiCost','PsiLearnLevel','PsiAction','PsiRayX','PsiRayY','PsiRayLength','PsiFoodLimitEn','PsiFoodLimitZh')
 BINDINGS=('PauseTitle','EquipTitle','None','Empty','StatMaxHP','StatMaxPP','StatOffense','StatDefense','StatSpeed','StatIQ','StatGuts','Owner','MainFont','NumberFont','PauseOpenSound','PauseCloseSound','EquipOpenSound','EquipCloseSound','MoveSound','ConfirmSound','RestrictedSound','ClearSound','EquipSound','BackSound','Level','CashPattern','CashRight','PsiTitle','PsiSkillId','PsiName','PsiDescription','PsiFailure','PsiBaseSkill0','PsiBaseSkill1')
 ROLES=('PausePanel','PauseInside','PauseTitle','PauseCommand','PauseCash','EquipmentPanel','StatsPanel','Owner','EquipTitle','Portrait','SlotPanel','SlotLabel','SlotItem','ListPanel','ListItem','StatLabel','StatValue','StatProjected','StatIcon','DescriptionPanel','DescriptionText','Cursor','BoostEmpty','BoostBetter','BoostLower','PauseCursor','SlotCursor','CandidateCursor','CashLabel','CashValue','LevelLabel','LevelValue','PortraitEquipped','PortraitSuitable','PortraitBetter','PortraitLower','CashCents','PauseTitleBackdrop','PsiPanel','PsiTitlePanel','PsiTitle','PsiPortrait','PsiName','PsiDescription','PsiDivider','PsiCursor')
 CLIPS=('PauseOpen','PauseClose','EquipOpen','EquipClose','DescriptionOpen','DescriptionClose','PsiOpen','PsiClose')
@@ -166,6 +166,7 @@ def build(root=ROOT):
     for name,value in [('PsiSkillId',field['battle_skill']),('PsiBaseSkill0',levels[0]['skills'][0]),('PsiBaseSkill1',levels[0]['skills'][1])]:bindings[name]={'en':value,'zh_Hans_CN':value}
     detector=node(ex.text('Nodes/Reusables/Player.tscn'),'EventDetector')
     require(detector['position']==[0,6] and detector['cast_to']==[0,16] and detector['collide_with_areas'] is True,'PSI ray source changed')
+    params.update(PsiFoodLimitEn=len(menus['LONGEST_POSSIBLE_FOOD']['en']),PsiFoodLimitZh=len(menus['LONGEST_POSSIBLE_FOOD']['zh_CN']))
     params.update(PsiRayX=detector['position'][0],PsiRayY=detector['position'][1],PsiRayLength=detector['cast_to'][1])
     params.update(PsiCost=skill['pp_cost'],PsiLearnLevel=levels[1]['level'],PsiAction=1)
     require(node(psi,'PSIMenu/PSISelect')['margin_left']==31 and node(psi,'PSIMenu/PSISelect')['margin_top']==23 and node(psi,'PSIMenu/PSISelect')['margin_right']==-34 and node(psi,'PSIMenu/PSISelect')['margin_bottom']==-57,'PSI panel source geometry changed')
@@ -305,6 +306,7 @@ def validate(t):
     require(0<params['CursorMoveSeconds']<=2 and 0<params['CursorFps']<=60 and -16<=params['NumberSpacing']<=16,'Field cursor/font tuning')
     for i in range(4):require(integer(int(params['CursorFrame'+str(i)]),0,2) and params['CursorFrame'+str(i)]==int(params['CursorFrame'+str(i)]),'Field cursor frame')
     for i in range(7):require(0<params['BoostWeight'+str(i)]<=100,'Field stat score')
+    require(all(params[k]==int(params[k]) and 1<=params[k]<=512 for k in ('PsiFoodLimitEn','PsiFoodLimitZh')),'Field favourite food bounds')
     require(-64<=params['PsiRayX']<=64 and -64<=params['PsiRayY']<=64 and 0<params['PsiRayLength']<=64,'Field PSI ray geometry')
     require(params['PsiCost']==int(params['PsiCost']) and 0<=params['PsiCost']<=65535 and params['PsiLearnLevel']==int(params['PsiLearnLevel']) and 1<=params['PsiLearnLevel']<=100 and params['PsiAction']==1,'Field PSI policy/action')
     masks=[params[name] for name in ('OpenMask','ConfirmMask','CancelMask','ScopeMask')]

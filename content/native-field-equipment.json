@@ -131,6 +131,8 @@
     "CancelMask": 2,
     "ScopeMask": 512,
     "OwnerId": 1,
+    "PsiFoodLimitEn": 13,
+    "PsiFoodLimitZh": 11,
     "PsiRayX": 0,
     "PsiRayY": 6,
     "PsiRayLength": 16,

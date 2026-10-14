@@ -56,6 +56,11 @@ int main(int argc,char** argv){
     CHECK(thoughts.start_thought(false,error)&&host.speaker.empty());CHECK(!thoughts.start_thought(true,error)); // Active dialogue cannot be restarted.
     host.thought_done=false;host.reject_grant=true;MickRuntime failed;CHECK(failed.initialize(view,host,error)&&failed.start_thought(true,error));CHECK(!failed.advance_text(error)&&failed.state()==MickProgramState::Failed&&!host.thought_done&&host.grants==1);
     host.reject_item=true;MickRuntime unknown_key;CHECK(!unknown_key.initialize(view,host,error));host.reject_item=host.reject_grant=false;
+    std::string food_tag="I like [FaVfOoD].";CHECK(resolve_dialogue_tags(food_tag,"Ninten","A","B","+",error,"Burgers",4)&&food_tag=="I like Burg.");
+    food_tag="[FavFood]";CHECK(resolve_dialogue_tags(food_tag,"Ninten","A","B","+",error,"牛排寿司",2)&&food_tag=="牛排");
+    food_tag="[FavFood]";CHECK(resolve_dialogue_tags(food_tag,"Ninten","A","B","+",error,"",13)&&food_tag.empty());
+    food_tag="[FavFood]";CHECK(!resolve_dialogue_tags(food_tag,"Ninten","A","B","+",error)&&food_tag=="[FavFood]");CHECK(!resolve_dialogue_tags(food_tag,"Ninten","A","B","+",error,"Burgers",513));
+    const std::string malformed_food(1,char(0xff));CHECK(!resolve_dialogue_tags(food_tag,"Ninten","A","B","+",error,malformed_food,13)&&food_tag=="[FavFood]");
     MickData bad;
     auto speaker=bytes;uint32_t commands=0;bool patched=false;
     for(uint32_t i=0;i<9;++i){const uint8_t* d=speaker.data()+64+i*16;const uint32_t kind=uint32_t(d[0])|uint32_t(d[1])<<8|uint32_t(d[2])<<16|uint32_t(d[3])<<24;

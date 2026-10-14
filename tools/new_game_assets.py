@@ -275,14 +275,40 @@ def verify(r):
  check=dict(dependencies={});resolve_bindings(ex,check);require(check['bindings']==r['bindings'],'Changed battle name binding')
  for p,v in r['outputs'].items():require(sha(ROOT/'romfs'/p)==v['sha256'],'Changed naming texture '+p)
 
+def rebound_session_dependency(recipe,previous,current,current_sha):
+ require(set(previous)==set(current),'Changed naming session field set')
+ for key in previous:
+  if key not in ('key_acquisitions','mutable_flags','dependencies'):require(previous[key]==current[key],'Changed naming-relevant session '+key)
+ require(set(previous['mutable_flags'])<=set(current['mutable_flags']) and all(k in current['key_acquisitions'] for k in previous['key_acquisitions']),'Removed session acquisition/flag scope')
+ result=dict(recipe,dependencies=dict(recipe['dependencies']))
+ c,_,_=load_presentation(ROOT);require(c['session_ir'] in result['dependencies'],'Missing source naming session binding')
+ require(re.fullmatch('[0-9a-f]{64}',current_sha),'Invalid naming session fingerprint')
+ result['dependencies'][c['session_ir']]=current_sha
+ return result
+
+def reuse_session(base_commit):
+ require(re.fullmatch('[0-9a-f]{40}',base_commit or ''),'Naming dependency reuse requires exact baseline commit')
+ c,_,_=load_presentation(ROOT)
+ old=lambda name:subprocess.check_output(['git','show',base_commit+':'+name],cwd=ROOT)
+ prior_ir=old(IR.relative_to(ROOT).as_posix());prior_session=old(c['session_ir'])
+ recipe=json.loads(prior_ir);require(recipe['dependencies'][c['session_ir']]==hashlib.sha256(prior_session).hexdigest(),'Naming baseline session identity mismatch')
+ current=read_json(ROOT/c['session_ir'])
+ from tools.native_session import verify_recipe
+ verify_recipe(current)
+ candidate=rebound_session_dependency(recipe,json.loads(prior_session),current,sha(ROOT/c['session_ir']))
+ require(read_json(IR) in (recipe,candidate),'Naming baseline IR differs; do not rebind unrelated changes')
+ verify(candidate);require(encode(candidate)==PACK.read_bytes(),'Naming dependency update changes binary game/UI content')
+ IR.write_bytes((json.dumps(candidate,indent=2,ensure_ascii=False,sort_keys=True)+'\n').encode('utf8'));print('Naming session dependency re-admitted; exact game/UI binary and actual textures retained')
+
 def stage_files(root):
  r=read_json(IR);verify(r);files={Path('ui/opening.encnewgame'):(Path(root)/'ui/opening.encnewgame').read_bytes()};require(files[Path('ui/opening.encnewgame')]==encode(r),'Stale naming pack')
  for p,v in r['outputs'].items():
   path=Path(p);require(not path.is_absolute()and'..'not in path.parts,'Unsafe name resource');raw=(Path(root)/path).read_bytes();require(hashlib.sha256(raw).hexdigest()==v['sha256'],'Staged naming texture mismatch');files[path]=raw
  return files
 if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','compile','verify']);ap.add_argument('--tex3ds');ap.add_argument('--godot');a=ap.parse_args()
- if a.action=='assets':extract_assets(Path(a.tex3ds),Path(a.godot))
+ ap=argparse.ArgumentParser();ap.add_argument('action',choices=['assets','compile','verify','reuse-session']);ap.add_argument('--tex3ds');ap.add_argument('--godot');ap.add_argument('--base');a=ap.parse_args()
+ if a.action=='reuse-session':reuse_session(a.base)
+ elif a.action=='assets':extract_assets(Path(a.tex3ds),Path(a.godot))
  else:
   r=read_json(IR);verify(r);raw=encode(r)
   if a.action=='compile':PACK.write_bytes(raw)

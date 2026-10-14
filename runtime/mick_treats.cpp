@@ -1,6 +1,7 @@
 #include "encore/mick_treats.hpp"
 #include "encore/content.hpp"
 #include "encore/crc32.hpp"
+#include "encore/utf8.hpp"
 #include <cmath>
 #include <cstring>
 
@@ -335,8 +336,15 @@ bool MickRuntime::simulate(float dt,Vec2 player,Vec2 camera,Vec2 view,bool pause
     if(state_==MickProgramState::Failed)return false;
     e.clear();return true;
 }
-bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error){
+bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_view accept,std::string_view toggle,std::string_view select,std::string& error,std::string_view favorite_food,uint32_t favorite_food_limit){
     if(name.empty()||accept.empty()||toggle.empty()||select.empty()){error="Dialogue tag label is empty";return false;}
+    std::string_view food=favorite_food;
+    if(favorite_food_limit){
+        if(favorite_food_limit>512){error="Favourite food tag bound rejected";return false;}
+        size_t cursor=0,cut=0;uint32_t codepoint=0,count=0;
+        while(cursor<food.size()){if(!encore::utf8_next(food,cursor,codepoint)){error="Favourite food UTF-8 rejected";return false;}if(++count<=favorite_food_limit)cut=cursor;}
+        food=food.substr(0,cut);
+    }
     std::string out;out.reserve(text.size());
     for(size_t i=0;i<text.size();){
         if(text[i]!='['){out.push_back(text[i]);++i;continue;}
@@ -346,6 +354,7 @@ bool resolve_dialogue_tags(std::string& text,std::string_view name,std::string_v
         if(tag=="ui_accept")replacement=accept;
         else if(tag=="ui_toggle")replacement=toggle;
         else if(tag=="ui_select")replacement=select;
+        else if(tag=="favfood"){if(!favorite_food_limit){error="Favourite food context is missing";return false;}replacement=food;}
         else if(tag=="partylead"||tag=="ninten")replacement=name;
         else{error="Unreviewed dialogue tag";return false;}
         out.append(replacement.data(),replacement.size());i=end+1;

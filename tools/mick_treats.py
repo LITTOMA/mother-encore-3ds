@@ -92,6 +92,7 @@ def plain(raw):
     text = re.sub(r'\[/?color\]', '', text)
     text = re.sub(r'\n+', '\n', text).strip()
     require(text and '\0' not in text, 'Empty Mick phrase after tag strip')
+    require(all(tag.lower() in {'ui_accept','ui_toggle','ui_select','partylead','ninten','favfood'} for tag in re.findall(r'\[([^\]]+)\]',text)),'Unreviewed Mick runtime text tag')
     return text
 
 
@@ -265,6 +266,8 @@ def build(root=ROOT):
     bark_extents = [f32(abs(bark_rect['extents'].x * bark_scale.x)), f32(abs(bark_rect['extents'].y * bark_scale.y))]
     player=ex.text('Scripts/Main/party/Player.gd');ex.text('Scripts/UI/DialogueBox.gd');ex.text('Scripts/global/Inventory.gd')
     require('var collide = eventRayCaster.get_collider()' in player and 'target.telepathy()' in player,'Telepathy target dispatch changed')
+    text_tools=ex.text('Scripts/global/text_tools.gd')
+    require('result = _cut_custom_name(context.favorite_food, tag_content)' in text_tools and 'max_length = len(_tr("LONGEST_POSSIBLE_FOOD"))' in text_tools,'Favourite-food dialogue binding changed')
     thoughts=[['',mick.props.get('_thoughts')]]+list(mick.props.get('_all_thoughts'))
     require(thoughts==[['','Podunk/woof_food'],['mick_scratch','Podunk/woof_key'],['mick_telepathy','Podunk/woof_food']],'Mick thought selection changed')
     require(not mick.props.get('turn_to_player_on_telepathy',False),'Unreviewed telepathy NPC facing')

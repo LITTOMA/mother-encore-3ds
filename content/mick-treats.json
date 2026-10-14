@@ -83,6 +83,7 @@
     "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
     "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
     "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
     "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
     "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",

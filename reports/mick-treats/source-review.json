@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "commit": "7d9246600fffe518408f5830d4848635019005a3",
-  "ir_sha256": "32c782ea770e07904e57b3ae07e80485005f63b6a14cdcbc817aa52b12dcbcb2",
+  "ir_sha256": "39fa7a9d84d2f54a824545026e1e4c390c4455c581db46f108c4922dd43d73be",
   "sources": {
     "Data/Animations/4dir.yaml": "f9c45d6ce16f93cc1065b60caf4374aa0b170a73a9c4d87ab4caec88692257b4",
     "Data/Dialogue/Podunk/cutscenes/mick_bark.yaml": "c9ae2bd1e5c0078c96e54fc27d63e9cba60fbc9f8a49e5ec23787ab7c0be619d",
@@ -82,6 +82,7 @@
     "Scripts/UI/MapScreen/MapArrows.gd": "2d61084019e2b3d8f6da523600e75209b6cc5a473fe84502004483021d6bc185",
     "Scripts/debug/DebugStartPos.gd": "9eaf435ca90c8cdaa13e251dfc1aad2562e1235d4793502635e310bbd9df3ff7",
     "Scripts/global/Inventory.gd": "451b5bab92d6c3d949a6d1f957094aadc920453ab7681265de4b2e026adffe59",
+    "Scripts/global/text_tools.gd": "913a8b798afac66869c4a31364506c337a2d980df412edcee0e63dbaa54f15ac",
     "Scripts/misc/birds.gd": "665175ca3ee6cf7e45118f988afc4041656fc74f508a67ec1497b7d581986f34",
     "Scripts/misc/butterfly.gd": "6192e414785c09d96242fb5099e1369287b0c9d92464169858ebfa573d1be9d2",
     "Scripts/misc/character_tint.gd": "d792f101c88031d1398a22344143105ce25448960b9fbf95cbdbc437c3011744",

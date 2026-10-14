@@ -56,6 +56,9 @@ class MickTreatsTests(unittest.TestCase):
         for cap in (0,1,3):
             blob=bytearray(self.blob);struct.pack_into('<I',blob,20,cap)
             with self.assertRaises(ValueError):mick.parse(blob)
+    def test_favorite_food_and_unknown_runtime_tags(self):
+        self.assertEqual(mick.plain('[@][FavFood]'),'[FavFood]')
+        with self.assertRaises(ValueError):mick.plain('Read [unmapped_context].')
     def test_pack_round_trip(self):
         rows = mick.parse(self.blob)
         self.assertEqual(len(rows['Actor']) // 200, 1)

@@ -99,7 +99,7 @@ class FieldEquipmentFormat(unittest.TestCase):
         self.assertEqual(self.ir['parameters']['PsiCost'],0)
         self.assertEqual(self.ir['parameters']['PsiLearnLevel'],2)
         self.assertEqual(self.ir['parameters']['PsiRayY'],6)
-        for name,value in [('PsiCost',-1),('PsiCost',0.5),('PsiLearnLevel',0),('PsiAction',2),('PsiRayLength',0),('PsiRayY',65)]:
+        for name,value in [('PsiCost',-1),('PsiCost',0.5),('PsiLearnLevel',0),('PsiAction',2),('PsiRayLength',0),('PsiRayY',65),('PsiFoodLimitEn',0),('PsiFoodLimitZh',513)]:
             self.rejects('Parameters',pack.PARAMETERS.index(name),1,value)
         row=next(i for i,l in enumerate(self.ir['layouts']) if l['role']=='PsiPanel')
         self.rejects('Layouts',row,4,99);self.rejects('Layouts',row,3,5)

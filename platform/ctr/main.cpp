@@ -1802,7 +1802,7 @@ int main(int argc,char** argv){
                         const bool confirm=world_input&&input_context()==sampled_context&&((down&KEY_A)!=0||native_controls.confirm_pulse);
                         if(confirm&&!field_action_sampled){
                             field_action_sampled=true;std::string why;
-                            if(held&KEY_B){if(!use_field_psi(why))field_equipment_status=why;}
+                            if(field_scene->world.player().crouch){if(!use_field_psi(why))field_equipment_status=why;}
                             else{ok=field_scene->try_mick(true,why);if(!ok)field_status=field_scene->error();else if(!why.empty())field_status=why;}
                         }
                     }

@@ -61,6 +61,7 @@ public:
  bool begin(const IntroductionData&,SourceRandom&,const std::string&locale,float viewport_width,float viewport_height,std::string&);
  bool step(double delta,bool accept_hint,bool skip,std::string&);
  IntroductionPose pose()const;std::vector<IntroAudio>take_audio();
+ uint32_t scene_index()const{return scene_;}uint32_t door_index()const{return door_;}
  IntroPhase phase()const{return phase_;}bool active()const{return phase_!=IntroPhase::Inactive&&phase_!=IntroPhase::Complete;}
  bool complete()const{return phase_==IntroPhase::Complete;}bool playtime_started()const{return playtime_;}
  bool house_ready()const{return data_&&door_+1==data_->doors.size()&&(phase_==IntroPhase::DoorOut||phase_==IntroPhase::Complete);}

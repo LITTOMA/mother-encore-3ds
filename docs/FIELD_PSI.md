@@ -14,4 +14,6 @@ ENCFIE01 保持格式 v2、规则 1，能力升为 3，新增 PSI 策略 / 文�
 
 PSI 角色条底饰、其它队员 / 后续 PSI / 目标治疗、房屋 NPC 读心、原版 Telepathy focus shader、dot / heart 表情仍未实现。未补充本地环境字体或第三方二进制；原版贴图 / 音频保留上游许可和来源检查。Equip 的原 tex3ds 贴图复用要求原有全部来源 SHA、转换配方、转换函数 AST 及实际输出尺寸 / SHA / CRC 相同；额外的 PSI 逻辑来源必须经过完整来源 IR 重建和审查。
 
+首次自动构建在源资源准入阶段以 World audio coverage mismatch 失败：新增 woof_key 的获得物品音效用途未进入既有覆盖关联。已由 gameplay_audio 原生成器的 extract 路径更新；失败仍恢复原始配置，完整 loader 保留缺失 / 重复 / 未绑定来源拒绝。Item Received 复用既有稳定音频身份，cue 二进制与 PCM 未改变。失败日志保留在 build/psi-ci-first-job.log。
+
 本轮已完成资源生成 / 格式准入与 MSVC 共享核心语法检查。新增手动正常及负向用例覆盖技能未学会、未知技能、错误 PP / 能力 / 指令 / 节目、空射线、读心暂停归属、领取失败、不重复授予与保存 UID。按仓库约定未运行测试套件或 sanitizers。真实 3DSX / CIA 构建以候选提交 Actions 结果为准；模拟器和 Old / New 3DS 的实际显示、操作、音效和存档仍未验收。

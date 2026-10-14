@@ -4,6 +4,11 @@
 #include <functional>
 
 namespace encore::upstream {
+struct SessionSnapshot;
+// Select the admitted active party member from either a legacy singleton or a
+// complete startup roster. Inactive character records do not expand the party.
+// Failed selection leaves the previous index unchanged.
+bool field_equipment_character(FieldEquipmentView,const SessionSnapshot&,uint32_t&,std::string&);
 struct FieldEquipmentSnapshot {
  std::string owner,nickname;
  uint32_t level=0;

@@ -20,7 +20,7 @@ sd:/3ds/encore-native/encore-native.smdh
 | D-pad / Circle Pad | 移动、选择菜单 |
 | A | 确认、互动、推进文字 |
 | B | 返回；世界中的奔跑 / 蹲下切换 |
-| START | 房屋内打开 Pause / Equip；开场动画中跳过；退出使用标题菜单 Exit |
+| START | 房屋或 Podunk 室外打开 Pause / Equip；开场动画中跳过；退出使用标题菜单 Exit |
 | SELECT | 当前尚未映射游戏动作，保留给后续输入适配 |
 | 下屏拖动 | 虚拟摇杆移动 |
 | 下屏轻触 | 确认 |

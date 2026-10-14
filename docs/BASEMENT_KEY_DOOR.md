@@ -18,3 +18,5 @@ House 包格式 / 能力 / 规则仍为7，Session 资源格式仍为6；存档 
 - 官方 Godot 3.6.2：提取实际门与库存查找方法执行五项原版对照。服务、物品容器及 UI 是显式适配器；真实 deferred 属性和 AnimationPlayer 运行，声音、原版完整存档加载及画面不在此对照内。日志 / 方法与工具 SHA 留在 build/basement-key-door/original-reference-4，成功后删除临时工作副本。
 - 保存检查19318、House解析23095、来源/协议25项和新增重绑定边界20项已通过。Clang ASan/UBSan 的相关三项检查执行完成，Windows拦截器报告两种未处理指令警告，不能替代Linux/泄漏检查；locale_preference.cpp 未纳入这次 Windows 编译。首次真实构建和完整 CI 因遗漏的 Room/Prompt 来源指纹被拒绝，已通过原生成器重审：Room字符串和全部游戏section、Lamp/Doll/Pillow规则完全一致，仅已审查来源/依赖变化；Naming/Prompt二进制与纹理保持一致。第二次交叉构建继续拒绝陈旧的 Podunk 派生房间，已用原编译器复用受检纹理更新：全部解码玩法、图集、地图与场景链接不变，仅房间输入指纹变化。第二次 Clang 完整主机回归18/145失败，1474项门检查、House解析及Session检查已通过；Linux sanitizer 因主机失败未运行。后续真实交叉构建和模拟器结果待追加；旧 #49 全回归仍有已记录失败，不能据本段主机检查宣称全套通过。
 - Old / New 3DS 真机未验证。
+
+84eb8a9 的真实 ARM / 3DSX / CIA 及323项提取资源校验通过；最终 git diff 检查因两份调查工具 compile 报告的旧 House 指纹拒绝上传。已用原生成器更新这两份报告，Drawer / Inspection 二进制未变化。新增对白所需字体字形集合完全相同，独立复用工具保留字体二进制、图集和映射，并记录实际复用来源；没有改原字体生成器或开场字体指标。

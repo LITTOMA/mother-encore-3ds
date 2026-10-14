@@ -4,6 +4,7 @@
 This is Windows portable-profile automation, not a substitute for hardware or
 an original Godot oracle. Scenarios carry their own reviewed reference scope.
 """
+import math
 import argparse
 import base64
 import hashlib
@@ -42,12 +43,22 @@ def validate_scenario(scenario):
     known = set(decode(WIRE.pack(MAGIC, 3, WIRE.size, *([0]*(len(FIELDS)-2)), *([0.0]*4), *(b'' for _ in range(4)))))
     projection({k: 0 for k in known}, scenario['projection'])
     for step in scenario['steps']:
-        if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until'}:
+        if not isinstance(step, dict) or set(step) - {'name', 'buttons', 'circle', 'frames', 'wait', 'capture', 'same_as', 'audio_progress', 'expected_music', 'wait_audio', 'hold_until', 'repeat_until', 'max_attempts'}:
             raise ValueError('Unknown scenario step field')
         if not isinstance(step.get('name'), str) or not step['name'].replace('_', '').isalnum():
             raise ValueError('Unsafe scenario checkpoint name')
-        if any(not isinstance(step.get(key, {}), dict) or any(k not in known for k in step.get(key, {})) for key in ('wait', 'wait_audio', 'hold_until')):
+        if any(not isinstance(step.get(key, {}), dict) or any(k not in known for k in step.get(key, {})) for key in ('wait', 'wait_audio', 'hold_until', 'repeat_until')):
             raise ValueError('Unknown wait observation')
+        for key in ('wait', 'wait_audio', 'hold_until', 'repeat_until'):
+            for value in step.get(key, {}).values():
+                if isinstance(value, dict):
+                    if set(value) != {'min','max'} or any(type(v) not in (int,float) or not math.isfinite(v) for v in value.values()) or value['min'] > value['max']:
+                        raise ValueError('Invalid bounded observation interval')
+                elif type(value) not in (int,float,str) or (isinstance(value,float) and not math.isfinite(value)):
+                    raise ValueError('Invalid expected observation')
+        if 'repeat_until' in step or 'max_attempts' in step:
+            if not step.get('repeat_until') or 'buttons' not in step or 'hold_until' in step or type(step.get('max_attempts')) is not int or not 1 <= step['max_attempts'] <= 64:
+                raise ValueError('Invalid bounded input repetition')
         if type(step.get('frames', 4)) is not int or not 1 <= step.get('frames', 4) <= 600:
             raise ValueError('Input frame budget exceeded')
     if len({s['name'] for s in scenario['steps']}) != len(scenario['steps']):
@@ -129,6 +140,10 @@ def portable(source, target):
     return target / source.name
 
 
+def matches(state, expected):
+    return all(v['min'] <= state[k] <= v['max'] if isinstance(v,dict) else state[k] == v for k,v in expected.items())
+
+
 class Session:
     def __init__(self, client):
         self.client, self.address = client, None
@@ -170,10 +185,21 @@ class Session:
     def wait(self, expected, timeout=45):
         deadline = time.monotonic() + timeout
         state = self.state()
-        while any(state[k] != v for k, v in expected.items()) or not state['frame']:
+        while not matches(state, expected) or not state['frame']:
             if time.monotonic() >= deadline:
                 raise TimeoutError(f'Semantic wait failed: expected {expected}, observed {state}')
-            state = self.advance(8)
+            state = self.advance(1 if any(isinstance(v,dict) for v in expected.values()) else 8)
+        return state
+
+    def repeat_input(self, params, frames, expected, attempts):
+        state=self.state()
+        for _ in range(attempts):
+            if matches(state, expected):return state
+            self.client.call('input.set',params)
+            try:state=self.advance(frames)
+            finally:self.client.call('input.clear')
+            state=self.advance(4)
+        if not matches(state, expected):raise TimeoutError('Bounded input repetition did not reach expected state')
         return state
 
     def capture(self, path):
@@ -235,8 +261,13 @@ def run_once(args, scenario, index):
                     raise RuntimeError('Emulator diagnostic log budget exceeded')
                 if 'buttons' in step or 'circle' in step:
                     params = {'buttons': step.get('buttons', []), 'circle': step.get('circle', {'x': 0, 'y': 0, 'override': True})}
-                    client.call('input.set', params)
-                    if 'hold_until' in step:
+                    if 'repeat_until' in step:
+                        session.repeat_input(params,step.get('frames',4),step['repeat_until'],step['max_attempts'])
+                    else:
+                        client.call('input.set', params)
+                    if 'repeat_until' in step:
+                        pass
+                    elif 'hold_until' in step:
                         session.wait(step['hold_until'])
                     else:
                         session.advance(step.get('frames', 4))

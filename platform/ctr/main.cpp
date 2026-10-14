@@ -1682,7 +1682,7 @@ void publish_semantic_probe(){
     p.dsp_music_playing=audio_player.available()&&ndspChnIsPlaying(0);p.dsp_music_sample_pos=audio_player.available()?ndspChnGetSamplePos(0):0;p.dsp_music_wave_seq=audio_player.available()?ndspChnGetWaveBufSeq(0):0;
     p.psi_learned=field_equipment_menu.active()&&field_equipment_menu.psi_learned();p.intro_scene=introduction.scene_index();p.intro_door=introduction.door_index();
     p.battle_entry_phase=uint32_t(battle_entry.phase());p.battle_round_phase=round_ready?uint32_t(battle_round.phase()):UINT32_MAX;
-    p.battle_outcome_phase=uint32_t(battle_outcome.phase());p.enemy_hp=round_ready?uint32_t(std::max(0,battle_round.battler(round_data.view().binding().enemy_participant).target_hp)):0;
+    p.battle_outcome_phase=uint32_t(battle_outcome.phase());p.enemy_hp=round_ready?uint32_t(std::max<int32_t>(0,battle_round.battler(round_data.view().binding().enemy_participant).target_hp)):0;
     p.world_phrase=world?world->phrase():UINT32_MAX;p.door_unlocked_mask=0;
     if(gameplay_scene)for(uint32_t i=0;i<house_data.view().count(upstream::HouseSection::OpenableDoors);++i)if(gameplay_scene->house.openable_state(i).unlocked)p.door_unlocked_mask|=uint32_t(1)<<i;
     semantic_probe_text(p.house_error,house_error,p.overflow);semantic_probe_text(p.field_error,field_status,p.overflow);

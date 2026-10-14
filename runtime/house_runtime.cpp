@@ -232,30 +232,34 @@ bool HouseRuntime::advance_openables(double delta){
 bool HouseRuntime::interact_openable(uint32_t index){
  auto& state=openables_[index];const auto data=content_.openable_door(index);if(state.unlocked)return true;
  if(!content_.string(data.activates_flag).empty()||!content_.string(data.deactivates_flag).empty())return fail("Door flag notification side effects are not implemented");
- uint32_t selected=data.blocked_dialogue;
+ uint32_t selected=data.blocked_dialogue;bool held=false;
  if(!state.blocked){
   const auto key=content_.string(data.key);
   if(key.empty()||!key_inventory_||data.policy){
    if(!world_->pause_for_house())return fail("Door dialogue pause rejected");
    phase_=HousePhase::Unsupported;error_="Unported key/item interaction; B returns control";last_safe_position_=world_->player().position;last_safe_direction_=world_->player().direction;return true;
   }
-  bool held=false;if(!key_inventory_->has_key(key,held,key_error_))return fail("Key-door inventory query rejected");
+  if(!key_inventory_->has_key(key,held,key_error_))return fail("Key-door inventory query rejected");
   selected=door_dialogue(held?data.opened_dialogue:data.locked_dialogue);
   if(selected==house_no_index)return fail("Key-door source text absent/ambiguous");
-  if(held){
-   // Openable Door._use_key writes the flag, opens, then defers unlock.
-   // Source remove_key defaults false in the admitted door: preserve UID/doses.
-   if(!world_->set_story_flag(content_.string(data.flag),true,false))return fail("Key-door flag write rejected");
-   event(HouseEventKind::OpenableFlagWritten,index);
-   if(!open_openable(index))return false;
-   state.unlocked=true;state.collision_pending=true;state.collision_value=true;
-   event(HouseEventKind::OpenableUnlocked,index);
-  }
  }
  if(selected==house_no_index)return fail("Non-NPC dialogue is unbound");
+ // Prepare without publishing UI/audio or advancing RNG. A rejected locale or
+ // glyph must not leave a written flag/open door behind. These door spans are
+ // source literal/name text, with no dynamic currency effect callback.
+ auto candidate=*presentation_;const auto dialogue=content_.dialogue(selected);
+ if(!candidate.begin_dialogue(dialogue.first_segment,dialogue.segment_count,player_nickname()))return fail("Non-NPC dialogue rejected");
+ if(held){
+  // Openable Door._use_key writes the flag, opens, then defers unlock.
+  // Source remove_key defaults false in the admitted door: preserve UID/doses.
+  if(!world_->set_story_flag(content_.string(data.flag),true,false))return fail("Key-door flag write rejected");
+  event(HouseEventKind::OpenableFlagWritten,index);
+  if(!open_openable(index))return false;
+  state.unlocked=true;state.collision_pending=true;state.collision_value=true;
+  event(HouseEventKind::OpenableUnlocked,index);
+ }
  if(!world_->pause_for_house())return fail("Door dialogue pause rejected");
- const auto dialogue=content_.dialogue(selected);
- if(!presentation_->begin_dialogue(dialogue.first_segment,dialogue.segment_count,player_nickname()))return fail("Non-NPC dialogue rejected");
+ *presentation_=std::move(candidate);
  active_=index;phase_=HousePhase::Dialogue;event(HouseEventKind::DoorDialogueOpened,index);return true;
 }
 bool HouseRuntime::story_conditions(uint32_t index)const{

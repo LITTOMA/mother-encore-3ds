@@ -27,6 +27,25 @@ class KeyDoorBindings(unittest.TestCase):
         self.assertEqual(result['segments'],self.house['segments'])
         self.assertEqual(prefix['segments'],self.house['segments'][:-2])
 
+    def test_prompt_and_naming_dependency_reuse_rejects_semantic_changes(self):
+        from tools import house_button_prompt_assets as prompts,new_game_assets as naming
+        recipe=json.loads(prompts.IR.read_text());previous=copy.deepcopy(self.house)
+        candidate=prompts.rebound_house_dependency(recipe,previous,self.house,'a'*64)
+        self.assertEqual(prompts.encode(candidate),prompts.PACK.read_bytes())
+        for key in ('npcs','openable_doors','interaction'):
+            bad=copy.deepcopy(self.house);bad[key]={}
+            with self.assertRaises(ValueError):prompts.rebound_house_dependency(recipe,previous,bad,'a'*64)
+        round_ir=json.loads((ROOT/'content/native-round.json').read_text())
+        changed=copy.deepcopy(round_ir);changed['dependencies']={}
+        naming.rebound_checked_dependency(round_ir,changed)
+        changed['skills']=[]
+        with self.assertRaises(ValueError):naming.rebound_checked_dependency(round_ir,changed)
+        with self.assertRaises(ValueError):naming.rebound_checked_dependency({'unknown':1},{'unknown':2})
+        room=json.loads((ROOT/'content/native-opening.json').read_text());changed=copy.deepcopy(room);changed['provenance']={}
+        naming.rebound_checked_dependency(room,changed)
+        changed['sections']={}
+        with self.assertRaises(ValueError):naming.rebound_checked_dependency(room,changed)
+
     def test_unknown_binding_and_source_rejected(self):
         for mutate in (lambda b:b.update(schema=2),lambda b:b.update(extra=1),lambda b:b.update(commit='0'*40),
                        lambda b:b['sources'].update({'Data/Items/KeyBasement.yaml':'0'*64}),

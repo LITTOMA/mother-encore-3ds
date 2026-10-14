@@ -806,7 +806,7 @@ def main():
                 require(path.read_text(encoding='utf-8') == content, 'Baseline differs from ' + str(path))
             else:
                 path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(content, encoding='utf-8')
+                path.write_bytes(content.encode('utf-8'))
         print(('Verified' if args.check else 'Extracted') + ' reviewed opening IR: ' + ', '.join(name + '=' + str(len(rows)) for name, rows in ir['sections'].items()))
         return 0
     except (OSError, ValueError, KeyError, TypeError, ImportError, subprocess.CalledProcessError) as error:

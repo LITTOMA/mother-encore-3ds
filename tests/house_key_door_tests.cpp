@@ -6,6 +6,7 @@ using namespace encore::upstream;
 namespace {
 unsigned checks=0;
 void check(bool ok,const char*why){++checks;if(!ok){std::cerr<<why<<'\n';std::exit(1);}}
+bool reject_locale(void*,HouseView,uint32_t,uint32_t,std::string_view,LocalizedHouseSpan&,std::string&e){e="missing reviewed localized door text";return false;}
 struct Keys:HouseKeyInventory {
  bool held=false,reject=false,read_failure=false;unsigned reads=0;
  bool validate_key(std::string_view n,std::string&)override{return !reject&&!n.empty();}
@@ -55,5 +56,8 @@ int main(int argc,char**argv){
  check(restored_runtime.openable_state(door).unlocked&&!restored_runtime.door_interaction_supported(door),"Reinstantiation honors unlock flag and hides prompt");
  OpeningWorld failed;HousePresentation failed_presentation;HouseRuntime failed_runtime;SourceRandom failed_random(51);Keys failing;failing.read_failure=true;
  fixture(failed,failed_presentation,failed_runtime,failed_random,failing);check(!failed_runtime.idle_frame(1./60,true,false),"Inventory read failure rejects interaction");check(!failed.story_flag(flag)&&!failed.house_paused()&&failed_runtime.take_sounds().empty(),"Rejected inventory read preserves flag, pause and audio");
+ OpeningWorld bad_text_world;HousePresentation bad_text;HouseRuntime bad_text_runtime;SourceRandom bad_text_random(53);Keys held_key;held_key.held=true;
+ fixture(bad_text_world,bad_text,bad_text_runtime,bad_text_random,held_key);bad_text.set_locale_resolver(reject_locale,nullptr);const auto draws=bad_text_random.raw_draw_count();
+ check(!bad_text_runtime.idle_frame(1./60,true,false),"Rejected localized text fails before unlock");check(!bad_text_world.story_flag(flag)&&!bad_text_world.house_paused()&&!bad_text.dialogue_active()&&bad_text_runtime.take_sounds().empty()&&bad_text.take_audio_events().empty()&&held_key.held&&bad_text_random.raw_draw_count()==draws,"Text preparation rejection preserves flag, collider, key, pause, UI/audio and RNG");
  std::cout<<"House key door: "<<checks<<" checks; missing key, source ordering, deferred collider, repeat, restoration, failed inventory admission/read\n";
 }

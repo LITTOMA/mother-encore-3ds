@@ -287,6 +287,13 @@ def rebound_session_dependency(recipe,previous,current,current_sha):
  result['dependencies'][c['session_ir']]=current_sha
  return result
 
+def rebound_checked_dependency(previous,current):
+ require(set(previous)==set(current),'Changed naming dependency field set')
+ if previous.get('kind')=='encore.native-battle-round.source-ir':allowed={'dependencies'}
+ elif previous.get('schema')==1 and 'provenance' in previous and 'sections' in previous:allowed={'provenance'}
+ else:raise ValueError('Unreviewed naming dependency update')
+ require(all(previous[k]==current[k]for k in previous if k not in allowed),'Changed naming dependency gameplay')
+
 def reuse_session(base_commit):
  require(re.fullmatch('[0-9a-f]{40}',base_commit or ''),'Naming dependency reuse requires exact baseline commit')
  c,_,_=load_presentation(ROOT)
@@ -297,6 +304,11 @@ def reuse_session(base_commit):
  from tools.native_session import verify_recipe
  verify_recipe(current)
  candidate=rebound_session_dependency(recipe,json.loads(prior_session),current,sha(ROOT/c['session_ir']))
+ for path,digest in recipe['dependencies'].items():
+  if path==c['session_ir'] or sha(ROOT/path)==digest:continue
+  previous=old(path);require(hashlib.sha256(previous).hexdigest()==digest,'Naming baseline dependency identity mismatch: '+path)
+  rebound_checked_dependency(json.loads(previous),read_json(ROOT/path))
+  candidate['dependencies'][path]=sha(ROOT/path)
  require(read_json(IR) in (recipe,candidate),'Naming baseline IR differs; do not rebind unrelated changes')
  verify(candidate);require(encode(candidate)==PACK.read_bytes(),'Naming dependency update changes binary game/UI content')
  IR.write_bytes((json.dumps(candidate,indent=2,ensure_ascii=False,sort_keys=True)+'\n').encode('utf8'));print('Naming session dependency re-admitted; exact game/UI binary and actual textures retained')

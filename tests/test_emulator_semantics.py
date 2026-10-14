@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from tools.cdb_client import CdbClient, CdbError
 from tools.semantic_probe import MAGIC, WIRE, FIELDS, decode, projection
-from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original
+from tools.run_emulator_semantics import validate_scenario, validate_reference, compare_original, matches, Session
 
 
 def wire(**changes):
@@ -59,6 +59,24 @@ class WireBoundary(unittest.TestCase):
             change(candidate)
             with self.assertRaises(ValueError):
                 validate_scenario(candidate)
+
+    def test_bounded_intervals_and_input_repetition(self):
+        scenario=json.loads((ROOT/'tests/emulator/opening-menu.json').read_text())
+        step={'name':'bounded','buttons':['A'],'frames':120,'repeat_until':{'battle_active':0},'max_attempts':32,'wait':{'player_x':{'min':95,'max':97}}}
+        scenario['steps'].append(step);validate_scenario(scenario)
+        self.assertTrue(matches({'player_x':96},step['wait']))
+        self.assertFalse(matches({'player_x':98},step['wait']))
+        for change in ({'max_attempts':65},{'max_attempts':True},{'max_attempts':0},{'repeat_until':{}},{'hold_until':{'battle_active':0}},{'wait':{'player_x':{'min':98,'max':97}}},{'wait':{'player_x':{'min':False,'max':97}}},{'wait':{'player_x':{'min':0,'max':float('inf')}}},{'wait':{'player_x':{'min':0,'extra':1}}}):
+            candidate=copy.deepcopy(scenario);candidate['steps'][-1].update(change)
+            with self.assertRaises(ValueError):validate_scenario(candidate)
+        s=object.__new__(Session);s.client=mock.Mock();s.state=lambda:{'battle_active':1}
+        s.advance=mock.Mock(side_effect=[{'battle_active':1},{'battle_active':0}])
+        self.assertEqual(s.repeat_input({'buttons':['A']},4,{'battle_active':0},2),{'battle_active':0})
+        self.assertEqual([x.args[0] for x in s.client.call.call_args_list],['input.set','input.clear'])
+        s.client.reset_mock();s.advance=mock.Mock(return_value={'battle_active':1})
+        with self.assertRaises(TimeoutError):s.repeat_input({'buttons':['A']},4,{'battle_active':0},2)
+        self.assertEqual(s.advance.call_count,4)
+        self.assertEqual(s.client.call.call_count,4)
 
     def test_original_comparison_rejects_result_drift(self):
         original={'cases': {'pause_select_close': {'paused': False,'active': False}, 'pause_cancel_close': {'paused': False,'active': False}, 'psi_back': {'paused': True,'pause_active': True}, 'psi_unlearned': {'pp': 26,'skills': 0}}}

@@ -235,7 +235,7 @@ def run_once(args, scenario, index):
     startup = subprocess.STARTUPINFO()
     startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
     startup.wShowWindow = 0
-    client = process = None
+    client = process = session = None
     checkpoints, captures = {}, 0
     state = step = None
     result = {'status': 'failed', 'checkpoints': checkpoints}
@@ -296,8 +296,12 @@ def run_once(args, scenario, index):
             result['status'] = 'passed'
     except Exception as error:
         result['error'] = str(error)
-        if state is not None:
-            result['failed_observation'] = {'checkpoint': step['name'], 'observed': state}
+        fresh=False
+        if session is not None:
+            try:state=session.state();fresh=True
+            except Exception as observation_error:result['observation_error']=str(observation_error)
+        if state is not None and step is not None:
+            result['failed_observation'] = {'checkpoint': step['name'], 'observed': state, 'fresh':fresh}
         raise
     finally:
         if client:

@@ -38,6 +38,8 @@ Doll 的正常战斗画面已接入受检纹理后端：GPU 直接采样两层�
 
 Podunk 室外由 `world/podunk/podunk.encmap`、`world/podunk/podunk.encroom` 与 `world/world.enclinks` 承载，构建时直接从固定上游场景编译；资源目录升至能力 5（含 HousePresents、MickTreats 和完整音频绑定）。Mick（npc21）会在院子里漫步，并用已审查的 woof 树与南栅栏 `mick_bark` 推回完成给粮出图；走到他身边且事件射线碰到他时，显示与房屋 NPC 相同的静态按键提示。台词画在上屏原版对话框里，并使用标题画面选中的英文或简体中文（见 [Mick](MICK_TREATS.md)）。进场随机数账本已按 400×240 视口消耗草丛、鸟、蝴蝶、闪光和其它漫步 NPC 的首次抽取，但敌人不生成、其它 NPC 不走路。其余 NPC 对话、过场区域、建筑入口和物件交互仍为开发边界或下屏提示。门音效和 13 个音乐区域已接线，来源、边界和验证记录见 [音频补全](AUDIO_COMPLETION.md)。模拟器与真机均未验证，详见 [Podunk 室外场景](PODUNK_FIELD.md)。
 
+开局 BGM 中断修正：房间震动雷声的 Room ID 与音频库 ID 不同，旧消费者误判来源并阻断后续音乐请求，同时跳过已有流的补给。现在按来源路径和 SHA 精确匹配，错误请求仍报告并保留，但已有 BGM 继续更新；资源与剧情时序不变。新增回归用例未执行，设备听感尚未验收，详见 [音频补全](AUDIO_COMPLETION.md)。
+
 ## 未完成项
 
 - 后续内容继续遵守严格程序 / 数据分离；已迁移的开局范围、版本和验收边界见 [内容与绑定迁移](CONTENT_MIGRATION.md)。这不代表未移植地图与机制已经完成。

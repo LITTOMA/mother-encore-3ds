@@ -12,6 +12,8 @@ std::array<std::vector<ndspWaveBuf*>,channel_count> queues;std::array<float,chan
 std::array<bool,channel_count> paused{};unsigned pause_calls=0;
 void check(bool ok,const char* why){++checks;if(!ok){std::cerr<<"FAIL: "<<why<<"\n";std::exit(1);}}
 size_t channel(int lane){check(lane>=0&&size_t(lane)<queues.size(),"NDSP double channel in bounds");return size_t(lane);}
+void put32(std::vector<uint8_t>& bytes,size_t at,uint32_t value){for(unsigned i=0;i<4;++i)bytes[at+i]=uint8_t(value>>(i*8));}
+void fix_room_crc(std::vector<uint8_t>& bytes){put32(bytes,52,0);put32(bytes,52,upstream::audio_crc32(bytes.data(),bytes.size()));}
 void drain(int lane){auto& queue=queues[channel(lane)];for(auto* b:queue)b->status=NDSP_WBUF_DONE;queue.clear();}
 uint32_t room_resource(const upstream::RoomView& room,uint32_t id){
     for(uint32_t i=0;i<room.resource_count();++i)if(room.resource(i).stable_id==id)return i;
@@ -129,6 +131,41 @@ int main(int argc,char** argv){
     check(player.stop_lane(ctr::AudioLane::AuxiliaryEffect0,error)&&queues[20].empty()&&queues[21]==with_aux[21]&&queues[1]==with_aux[1],"targeted effect stop preserves thunder and text");
     check(!player.fade_all_music(NAN,error)&&!player.fade_all_music(-1,error)&&!player.fade_all_music(61,error),"invalid global music fades rejected");
     check(player.fade_all_music(0,error)&&queues[0].empty()&&queues[3].empty()&&queues[21]==with_aux[21]&&queues[1]==with_aux[1]&&queues[2]==with_aux[2],"global music fade affects both music voices and preserves every effect");
+    // RoomShaker uses room ID 23; Introduction shares that source as bank ID 1305.
+    // It must not block the later area/music requests once the first shake fires.
+    player.reset_scene();
+    for(uint32_t i=0;i<room.view().resource_count();++i){const auto resource=room.view().resource(i);
+        if(resource.kind==uint16_t(upstream::RoomResourceKind::AudioRequestOnly)){
+            upstream::AudioAsset joined;check(checked_bank.find_source(room.view().string(resource.path_string),resource.sha256,joined),"every real House audio dependency joins by reviewed source");
+        }
+    }
+    const auto thunder_resource=room_resource(room.view(),23);const auto thunder=room.view().resource(thunder_resource);
+    upstream::AudioAsset thunder_asset;check(checked_bank.find_source(room.view().string(thunder.path_string),thunder.sha256,thunder_asset)&&thunder_asset.stable_id==1305,"RoomShaker resolves shared Introduction thunder");
+    check(thunder.stable_id!=thunder_asset.stable_id&&!checked_bank.find(thunder.stable_id,pitched),"room and bank IDs are independent");
+    const std::vector<upstream::OpeningAudioRequest> opening_requests={
+        {upstream::AudioRequestKind::PlayMusic,room_resource(room.view(),21),0,2},
+        {upstream::AudioRequestKind::PlayEffect,thunder_resource,0,12},
+        {upstream::AudioRequestKind::PlayDialogueMusic,melody_resource,0,0},
+        {upstream::AudioRequestKind::PlayMusic,house_resource,0,0}};
+    check(player.update_room(room.view(),opening_requests,0,error),error.c_str());
+    check(player.consumed_requests()==4&&player.submitted_voices()==4&&player.observe_music().asset_id==34,"shake no longer blocks Doll melody or House music");
+    check(!queues[0].empty()&&!queues[1].empty()&&!queues[3].empty()&&rates[1]==float(thunder_asset.sample_rate),"checked music and thunder reach their separate channels");
+    const std::vector<upstream::OpeningAudioRequest> pending={
+        {upstream::AudioRequestKind::PlayEffect,thunder_resource,0,12},
+        {upstream::AudioRequestKind::PlayMusic,house_resource,0,0}};
+    for(bool wrong_digest:{true,false}){
+        const auto view=room.view();std::vector<uint8_t> changed(view.bytes(),view.bytes()+view.byte_size());
+        if(wrong_digest)changed[view.section_offset(upstream::RoomSection::Resource)+size_t(thunder_resource)*56+24]^=1;
+        else changed[size_t(view.string(thunder.path_string).data()-reinterpret_cast<const char*>(view.bytes()))+6]='X';
+        fix_room_crc(changed);upstream::RoomData rejected;
+        check(rejected.load(changed.data(),changed.size(),error),error.c_str());
+        player.reset_scene_requests();const auto submitted=player.submitted_voices(),before_refill=player.queued_frames();
+        const auto generation=player.observe_music().generation;drain(0);
+        check(!player.update_room(rejected.view(),pending,.01,error)&&error.find("source identity mismatch")!=error.npos,"unknown path/digest remains an explicit playback error");
+        check(player.consumed_requests()==0&&player.submitted_voices()==submitted&&player.observe_music().generation==generation,"failed source is not skipped and later music is not submitted");
+        check(queues[0].size()==3&&player.queued_frames()>before_refill&&player.playing(ctr::AudioLane::Music),"rejected request still refills the live BGM");
+        check(player.update_room(view,pending,.01,error)&&error.empty()&&player.consumed_requests()==2,"checked source retry consumes history without losing live playback");
+    }
     check(player.dropped_frames()==7,"platform drop count reported");player.shutdown();check(!player.available()&&player.dropped_frames()==0,"shutdown explicit");
     player.reset_scene();check(!player.available()&&!ndsp_started,"scene reset after shutdown stays unavailable");
     for(const auto& queue:queues)check(queue.empty(),"shutdown drains all four channels before freeing buffers");

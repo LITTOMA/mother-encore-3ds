@@ -42,6 +42,8 @@ public:
     bool playing(AudioLane lane)const{return uint32_t(lane)<lane_count&&voices_[uint32_t(lane)].active;}
     bool pause_lane(AudioLane,bool,std::string&);
     bool update(double delta,std::string& error);
+    // Rejected requests remain pending and reported; existing voices still refill.
+    bool update_room(const upstream::RoomView& room,const std::vector<upstream::OpeningAudioRequest>& requests,double delta,std::string& error);
     bool available() const{return ready_;}
     MusicObservation observe_music() const;
     // Loading cooperation only: feed existing queues and observe natural ends.

@@ -39,6 +39,12 @@ AudioAsset AudioBank::asset(uint32_t index)const{
     a.source_path={reinterpret_cast<const char*>(bytes_.data()+u32(p+68)),u32(p+72)};return a;
 }
 bool AudioBank::find(uint32_t id,AudioAsset& result)const{for(uint32_t i=0;i<count();++i)if(asset(i).stable_id==id){result=asset(i);return true;}return false;}
+bool AudioBank::find_source(std::string_view path,const std::array<uint8_t,32>& digest,AudioAsset& result)const{
+    for(uint32_t i=0;i<count();++i){const auto candidate=asset(i);
+        if(candidate.source_path==path&&candidate.source_sha256==digest){result=candidate;return true;}
+    }
+    return false;
+}
 bool AudioBank::load(const uint8_t* bytes,size_t size,std::string& error){
     auto fail=[&](const char* message){error=message;return false;};
     if(!bytes||size<header_size||size>max_bank_size)return fail("Audio bank size out of bounds");

@@ -132,7 +132,7 @@ def stage_files(source):
     receipt=json.loads((ROOT/'content/asset-receipts/audio/podunk.json').read_text())
     files={path:blob}
     decoded=parse_bank(bank)
-    require(set(row['path'] for row in receipt['files'])=={str(bankpath)}|{a['pcm_path'] for a in decoded['assets']},'Unexpected Podunk receipt files')
+    require(set(row['path'] for row in receipt['files'])=={bankpath.as_posix()}|{a['pcm_path'] for a in decoded['assets']},'Unexpected Podunk receipt files')
     require({a['stable_id'] for a in decoded['assets']}=={t['stable_id'] for t in recipe['tracks']},'Podunk music/audio track mismatch')
     for row in receipt['files']:
         target=Path(row['path']);data=(source/target).read_bytes()

@@ -46,6 +46,20 @@ class KeyDoorBindings(unittest.TestCase):
         changed['sections']={}
         with self.assertRaises(ValueError):naming.rebound_checked_dependency(room,changed)
 
+    def test_font_catalogue_reuse_requires_identical_glyphs(self):
+        from tools.source_font_reuse import catalogue_reuse
+        catalog={'commit':'pinned','locales':[{'name':'English','code':'en','font':'source'}],'records':[{'values':{'en':'abc'}}]}
+        manifest={'catalog_sha256':'old','pages':[{'sha256':'checked'}]}
+        result=catalogue_reuse(catalog,copy.deepcopy(catalog),manifest,'a'*64)
+        self.assertEqual(result['pages'],manifest['pages']);self.assertEqual(manifest['catalog_sha256'],'old')
+        changed=copy.deepcopy(catalog);changed['records'][0]['values']['en']='abc中'
+        with self.assertRaises(ValueError):catalogue_reuse(catalog,changed,manifest,'a'*64)
+        changed=copy.deepcopy(catalog);changed['locales'][0]['font']='unknown'
+        with self.assertRaises(ValueError):catalogue_reuse(catalog,changed,manifest,'a'*64)
+        changed=copy.deepcopy(catalog);changed['commit']='unknown'
+        with self.assertRaises(ValueError):catalogue_reuse(catalog,changed,manifest,'a'*64)
+        with self.assertRaises(ValueError):catalogue_reuse(catalog,catalog,manifest,'unknown')
+
     def test_unknown_binding_and_source_rejected(self):
         for mutate in (lambda b:b.update(schema=2),lambda b:b.update(extra=1),lambda b:b.update(commit='0'*40),
                        lambda b:b['sources'].update({'Data/Items/KeyBasement.yaml':'0'*64}),
